@@ -1,7 +1,5 @@
 var NAVTREEINDEX2 =
 {
-"d5/d6b/classSmtp.html":[4,0,77],
-"d5/d6b/classSmtp.html#a01a00f4b52964eec188c5681ec74758b":[4,0,77,13],
 "d5/d6b/classSmtp.html#a0a493d39818f762743e6d4e20c1fcddf":[4,0,77,6],
 "d5/d6b/classSmtp.html#a21644b0db666cf1b7691c78cb0204e43":[4,0,77,8],
 "d5/d6b/classSmtp.html#a2827151e3c7938f20ef793ce708a5f22":[4,0,77,3],
@@ -249,5 +247,7 @@ var NAVTREEINDEX2 =
 "d7/d1d/classTrigger.html#ad09d65f485b88e3624488ac8e48f5fc7":[4,0,90,3],
 "d7/d1d/classTrigger.html#ad66be13eb5b7c5f560fd8511565138c4":[4,0,90,11],
 "d7/d1d/classTrigger.html#aebcc15a350707b449aa98207b71dda34":[4,0,90,2],
-"d7/d1d/classTrigger.html#afcf974790b6e846cd89eba5a802e7fa5":[4,0,90,0]
+"d7/d1d/classTrigger.html#afcf974790b6e846cd89eba5a802e7fa5":[4,0,90,0],
+"d7/d38/classBlockQueue.html":[4,0,2],
+"d7/d38/classBlockQueue.html#a0b29d2db0a4fa1114fa4278416d41644":[4,0,2,4]
 };

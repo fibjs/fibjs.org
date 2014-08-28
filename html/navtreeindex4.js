@@ -1,7 +1,5 @@
 var NAVTREEINDEX4 =
 {
-"d8/d4c/classHttpResponse.html#a7c8a4dcbe3777feec747c1fe1cefb88e":[4,0,35,6],
-"d8/d4c/classHttpResponse.html#a8c456b35a88228f954974592e9b5c5ab":[4,0,35,13],
 "d8/d4c/classHttpResponse.html#a8ed24470ab5214955c70bb108209f9d4":[4,0,35,12],
 "d8/d4c/classHttpResponse.html#a9b19686184c56df8c1fca416751a71b3":[4,0,35,31],
 "d8/d4c/classHttpResponse.html#a9bafc9a247f9378904788642ab903e03":[4,0,35,3],
@@ -249,5 +247,7 @@ var NAVTREEINDEX4 =
 "db/d7d/classMongoCursor.html#a81d3581bb430a7982f5916668b060832":[4,0,51,4],
 "db/d7d/classMongoCursor.html#a84611a0b25226ce2a282838a2b46ff4b":[4,0,51,7],
 "db/d7d/classMongoCursor.html#ab9261a7662bc8bb4a898bc15dc16f206":[4,0,51,14],
-"db/d7d/classMongoCursor.html#aba4f2ce60710195d5a26e3966c264989":[4,0,51,0]
+"db/d7d/classMongoCursor.html#aba4f2ce60710195d5a26e3966c264989":[4,0,51,0],
+"db/d7d/classMongoCursor.html#ac61f07a7d6c5471293371086af3186bd":[4,0,51,12],
+"db/d7d/classMongoCursor.html#ad66be13eb5b7c5f560fd8511565138c4":[4,0,51,13]
 };
