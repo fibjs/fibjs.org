@@ -31,6 +31,9 @@ var classutil =
     [ "intersection", "d8/d61/classutil.html#adf0b6b3970027bac03b8a52ebd580b72", null ],
     [ "without", "d8/d61/classutil.html#a5927660d2094bcdf89cc07124e56add7", null ],
     [ "difference", "d8/d61/classutil.html#a58be3cdbca88bd87520d5764ce31f1ba", null ],
+    [ "each", "d8/d61/classutil.html#ac2e49de0b478db47c018ee9459251fac", null ],
+    [ "map", "d8/d61/classutil.html#a24e6b2ce72bf4f22904c4e0761f2b7b8", null ],
+    [ "reduce", "d8/d61/classutil.html#a119418c6ae84d9848a7521b0d23ed6da", null ],
     [ "Stats", "d8/d61/classutil.html#a345a3de75e6748ef3237bda10c84c92d", null ],
     [ "LruCache", "d8/d61/classutil.html#a236142a9837f80ea1f39d2cacd9b733c", null ],
     [ "buildInfo", "d8/d61/classutil.html#a38b22f190ce11008314b51470042ce2b", null ]
