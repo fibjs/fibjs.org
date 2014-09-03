@@ -4,6 +4,7 @@ var classX509Cert =
     [ "load", "d1/d66/classX509Cert.html#aca894870eaa65e6a19533b0ace0cb2be", null ],
     [ "load", "d1/d66/classX509Cert.html#ad55f80c91e087bcb8c7d356fcabd0697", null ],
     [ "loadFile", "d1/d66/classX509Cert.html#ad8d1c50338644b4a1ac00c8d2015e763", null ],
+    [ "loadRootCerts", "d1/d66/classX509Cert.html#a9264b3d438aa2d673de4842142e802a6", null ],
     [ "verify", "d1/d66/classX509Cert.html#a9c3f30cfaa7877498886af3761e352c2", null ],
     [ "dump", "d1/d66/classX509Cert.html#ab8b6b8427dec3e1294db2ebedc301b5b", null ],
     [ "clear", "d1/d66/classX509Cert.html#a77b2377e261f7206b7b5361e55a91d28", null ],

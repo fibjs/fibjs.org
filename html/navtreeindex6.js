@@ -1,5 +1,6 @@
 var NAVTREEINDEX6 =
 {
+"de/d0f/classLruCache.html#a6fce7c256bb93ea2a366e4258cb2a39f":[4,0,45,0],
 "de/d0f/classLruCache.html#a712f2067f0af560e382de4e5a8df6759":[4,0,45,1],
 "de/d0f/classLruCache.html#a9bbd359547d2f97c9945cbae947cd053":[4,0,45,9],
 "de/d0f/classLruCache.html#aac47180244d82cfa49c6cbfc3c6ae93a":[4,0,45,5],
@@ -211,8 +212,8 @@ var NAVTREEINDEX6 =
 "functions_d.html":[4,2,0,3],
 "functions_e.html":[4,2,0,4],
 "functions_f.html":[4,2,0,5],
-"functions_func.html":[4,2,1],
 "functions_func.html":[4,2,1,0],
+"functions_func.html":[4,2,1],
 "functions_func_b.html":[4,2,1,1],
 "functions_func_c.html":[4,2,1,2],
 "functions_func_d.html":[4,2,1,3],
@@ -248,6 +249,5 @@ var NAVTREEINDEX6 =
 "functions_p.html":[4,2,0,15],
 "functions_q.html":[4,2,0,16],
 "functions_r.html":[4,2,0,17],
-"functions_s.html":[4,2,0,18],
-"functions_t.html":[4,2,0,19]
+"functions_s.html":[4,2,0,18]
 };
