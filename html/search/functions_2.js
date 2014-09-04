@@ -27,7 +27,7 @@ var searchData=
   ['compile',['compile',['../de/de2/classre.html#a210fb1ffc2d442367932ea0f831e59e1',1,'re']]],
   ['concat',['concat',['../d6/da9/classList.html#ac4827e4196f21ea4b20ac15a55a62aa3',1,'List']]],
   ['condition',['Condition',['../d2/dd1/classcoroutine.html#a463e4db5114bdce2a92a95e17bb94750',1,'coroutine']]],
-  ['connect',['connect',['../d3/d75/classnet.html#ab2c4365c1eeb0ce2a3fff7595e2e3c3c',1,'net::connect()'],['../d5/d6b/classSmtp.html#a41b231bf2e52e5e24baf104e0accd6e5',1,'Smtp::connect()'],['../d4/d33/classSocket.html#a8ba69699eb78edef37f3874bb05016cd',1,'Socket::connect()'],['../d7/d3f/classSslSocket.html#ad7fc4978c4fea85e5f7bda1c85a59704',1,'SslSocket::connect()']]],
+  ['connect',['connect',['../d3/d75/classnet.html#a2432a0ee7fbea52ddd8b24ecee5bd5c2',1,'net::connect(String host, Integer port, Integer family=net.AF_INET) async'],['../d3/d75/classnet.html#a620c034b250762fcbacd4d72fdc5f0f1',1,'net::connect(String url) async'],['../d5/d6b/classSmtp.html#a41b231bf2e52e5e24baf104e0accd6e5',1,'Smtp::connect()'],['../d4/d33/classSocket.html#a8ba69699eb78edef37f3874bb05016cd',1,'Socket::connect()'],['../dd/d36/classssl.html#a2134de9d938a13f27312e166ba57932e',1,'ssl::connect()'],['../d7/d3f/classSslSocket.html#ad7fc4978c4fea85e5f7bda1c85a59704',1,'SslSocket::connect()']]],
   ['convert',['convert',['../d8/d00/classImage.html#ad862bf3bf93db7e5a7c7c29ece060453',1,'Image']]],
   ['cookie',['Cookie',['../d6/da8/classhttp.html#a8f3b344e2e2e196a92de9602d2203d61',1,'http']]],
   ['copy',['copy',['../d8/d00/classImage.html#a94025b861b19965a629b06824e25fda5',1,'Image']]],
