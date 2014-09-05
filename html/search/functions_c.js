@@ -1,6 +1,7 @@
 var searchData=
 [
   ['map',['map',['../d6/da9/classList.html#aff5474e5559d9f0bd1f2acc7f3039ab2',1,'List::map()'],['../db/d7d/classMongoCursor.html#ae250dbc24199762b2948487422049519',1,'MongoCursor::map()'],['../d8/d61/classutil.html#a24e6b2ce72bf4f22904c4e0761f2b7b8',1,'util::map()'],['../d3/d2d/classcollection.html#a45b6053d1d1063f010b12cb7f5a77c99',1,'collection::Map()'],['../d7/db0/classMap.html#a0f5ad0fd4563497b4214038cbca8b582',1,'Map::Map()']]],
+  ['match',['match',['../df/d61/classHttpCookie.html#a40e432c30689dbd71e3cf8938de5ff1b',1,'HttpCookie']]],
   ['md2',['md2',['../d5/df6/classhash.html#a9910a7f0744d47299013d60592b53f22',1,'hash']]],
   ['md4',['md4',['../d5/df6/classhash.html#ad5d8f14c8b31ae52b504d0da1450e26b',1,'hash']]],
   ['md5',['md5',['../d5/df6/classhash.html#a2ce50ba7996a62ae9f19f77a156b78bc',1,'hash::md5()'],['../d9/d4e/classuuid.html#a9e4a2d86e856c10c436302a7a3983a83',1,'uuid::md5()']]],

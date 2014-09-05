@@ -1,5 +1,7 @@
 var NAVTREEINDEX7 =
 {
+"functions_p.html":[4,2,0,15],
+"functions_q.html":[4,2,0,16],
 "functions_r.html":[4,2,0,17],
 "functions_s.html":[4,2,0,18],
 "functions_t.html":[4,2,0,19],
@@ -35,8 +37,8 @@ var NAVTREEINDEX7 =
 "functions_x.html":[4,2,0,23],
 "functions_z.html":[4,2,0,24],
 "hierarchy.html":[4,1],
-"index.html":[0],
 "index.html":[],
+"index.html":[0],
 "index.html#install_sec":[0,1],
 "index.html#install_step1":[0,1,0],
 "index.html#install_step2":[0,1,1],

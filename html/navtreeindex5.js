@@ -1,5 +1,6 @@
 var NAVTREEINDEX5 =
 {
+"db/d7d/classMongoCursor.html#a81d3581bb430a7982f5916668b060832":[4,0,51,4],
 "db/d7d/classMongoCursor.html#a84611a0b25226ce2a282838a2b46ff4b":[4,0,51,7],
 "db/d7d/classMongoCursor.html#ab9261a7662bc8bb4a898bc15dc16f206":[4,0,51,14],
 "db/d7d/classMongoCursor.html#aba4f2ce60710195d5a26e3966c264989":[4,0,51,0],
@@ -248,6 +249,5 @@ var NAVTREEINDEX5 =
 "de/d01/classtest.html#af0cd25d326c6fbed1eca286abb4df915":[4,0,88,4],
 "de/d0f/classLruCache.html":[4,0,45],
 "de/d0f/classLruCache.html#a1ce4671eff7a52fb7dd6be130180447f":[4,0,45,3],
-"de/d0f/classLruCache.html#a1f47f0c7f03ead1191f99b340edc0576":[4,0,45,2],
-"de/d0f/classLruCache.html#a35dd33c18d9de9c510a0971b32eab49e":[4,0,45,6]
+"de/d0f/classLruCache.html#a1f47f0c7f03ead1191f99b340edc0576":[4,0,45,2]
 };

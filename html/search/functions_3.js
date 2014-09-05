@@ -16,7 +16,7 @@ var searchData=
   ['del',['del',['../db/d15/classRedis.html#ab82f73848a2409c123b633c05294ca2e',1,'Redis::del(Array keys)'],['../db/d15/classRedis.html#a0ca852fc1075e833c7db632b5c404589',1,'Redis::del(...)'],['../df/dbc/classRedisHash.html#a35acad981389e288138c66b06bfdd757',1,'RedisHash::del(Array fields)'],['../df/dbc/classRedisHash.html#a85157309a13caf605121dad1b55769d4',1,'RedisHash::del(...)']]],
   ['describe',['describe',['../de/d01/classtest.html#a28c68bd81db526a96da4da2313a3a921',1,'test']]],
   ['detail',['detail',['../d1/dd4/classuuidValue.html#acdf7d45f83f0ad92f1301aba89eb20e4',1,'uuidValue']]],
-  ['difference',['difference',['../d8/d61/classutil.html#a58be3cdbca88bd87520d5764ce31f1ba',1,'util']]],
+  ['difference',['difference',['../d8/d61/classutil.html#aeee7da8e5a98a9794221cbbff0e1c43e',1,'util']]],
   ['digest',['digest',['../dd/d8f/classDigest.html#abdbf52a1ab8a032c4f09b31190141217',1,'Digest::digest(Buffer data)'],['../dd/d8f/classDigest.html#a09213c634e4fc513f302c99363bc10ac',1,'Digest::digest()'],['../d5/df6/classhash.html#a813b296a7ed5e852a7338087bdb95239',1,'hash::digest(Integer algo, Buffer data)'],['../d5/df6/classhash.html#a0198e943620fd6b63bd913d6a769bcae',1,'hash::digest(Integer algo)']]],
   ['dir',['dir',['../d6/df8/classconsole.html#ae3da6ad36822e14bae83c0af3d5d7e46',1,'console']]],
   ['dirname',['dirname',['../dc/d8a/classpath.html#aeb69e3ac13503ae13ec20bd954f8d5e7',1,'path']]],
