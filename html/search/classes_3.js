@@ -1,8 +1,8 @@
 var searchData=
 [
-  ['db',['db',['../de/d5f/classdb.html',1,'']]],
-  ['dbconnection',['DbConnection',['../d6/d91/classDbConnection.html',1,'']]],
-  ['dbresult',['DBResult',['../d0/de2/classDBResult.html',1,'']]],
-  ['dbrow',['DBRow',['../d2/d87/classDBRow.html',1,'']]],
-  ['digest',['Digest',['../dd/d8f/classDigest.html',1,'']]]
+  ['db',['db',['../d3/d75/interfacedb.html',1,'']]],
+  ['dbconnection',['DbConnection',['../d8/d2c/interfaceDbConnection.html',1,'']]],
+  ['dbresult',['DBResult',['../d9/db4/interfaceDBResult.html',1,'']]],
+  ['dbrow',['DBRow',['../d7/d8e/interfaceDBRow.html',1,'']]],
+  ['digest',['Digest',['../d3/d41/interfaceDigest.html',1,'']]]
 ];

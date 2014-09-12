@@ -1,0 +1,26 @@
+var interfaceXmlDocumentType =
+[
+    [ "insertBefore", "d4/d35/interfaceXmlDocumentType.html#a0f3b815f26c12b2c31249ecb747ee7db", null ],
+    [ "replaceChild", "d4/d35/interfaceXmlDocumentType.html#ad27424cb66b1039ddff3f6c297fbe0fd", null ],
+    [ "removeChild", "d4/d35/interfaceXmlDocumentType.html#a1b332c368e7f6bfa304a65f255c28dad", null ],
+    [ "appendChild", "d4/d35/interfaceXmlDocumentType.html#a9ffe09f7056e1c870968ed3d957b83c5", null ],
+    [ "hasChildNodes", "d4/d35/interfaceXmlDocumentType.html#a7144e0d715d39be72d7c14008fb1d74e", null ],
+    [ "cloneNode", "d4/d35/interfaceXmlDocumentType.html#ad997a00e2af8f05fe915dac55809e8e7", null ],
+    [ "normalize", "d4/d35/interfaceXmlDocumentType.html#a4762ae75380f9db0fc240fd3f91d5537", null ],
+    [ "dispose", "d4/d35/interfaceXmlDocumentType.html#a6b88dbc459449d2280338e5b702a68b4", null ],
+    [ "toString", "d4/d35/interfaceXmlDocumentType.html#ac61f07a7d6c5471293371086af3186bd", null ],
+    [ "toJSON", "d4/d35/interfaceXmlDocumentType.html#ad66be13eb5b7c5f560fd8511565138c4", null ],
+    [ "valueOf", "d4/d35/interfaceXmlDocumentType.html#ab9261a7662bc8bb4a898bc15dc16f206", null ],
+    [ "name", "d4/d35/interfaceXmlDocumentType.html#a3224f939c2efed4a0e90b5d50a89008a", null ],
+    [ "systemId", "d4/d35/interfaceXmlDocumentType.html#a09ec50ecc1cd4b52071dc654324d3081", null ],
+    [ "nodeName", "d4/d35/interfaceXmlDocumentType.html#ad493d7ec94ebfd1cb874d0b43920275d", null ],
+    [ "nodeValue", "d4/d35/interfaceXmlDocumentType.html#acb09ccf7866b614f7964fa67c73f3160", null ],
+    [ "nodeType", "d4/d35/interfaceXmlDocumentType.html#ab567cde9aaa2b765f0f16b4c963fa9d5", null ],
+    [ "parentNode", "d4/d35/interfaceXmlDocumentType.html#ac6727f3f092028418cdbf0b44225f58a", null ],
+    [ "childNodes", "d4/d35/interfaceXmlDocumentType.html#a059aaa73cdf03ffaedca637383a736a1", null ],
+    [ "firstChild", "d4/d35/interfaceXmlDocumentType.html#a531433c5bac57f29e3c6a353e52dff22", null ],
+    [ "lastChild", "d4/d35/interfaceXmlDocumentType.html#a6861687522fd0a6bfd5b132a52bcb097", null ],
+    [ "previousSibling", "d4/d35/interfaceXmlDocumentType.html#a1e2d8e642e8987ccfba221bed65fecf0", null ],
+    [ "nextSibling", "d4/d35/interfaceXmlDocumentType.html#afed941f3caa5ce3ccd9fbbeec0cefb39", null ],
+    [ "ownerDocument", "d4/d35/interfaceXmlDocumentType.html#ac337d5947ef6cc93ff2e62a86ada9bd4", null ]
+];
