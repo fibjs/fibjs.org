@@ -1,12 +1,12 @@
 var searchData=
 [
   ['wait',['wait',['../dc/d90/interfaceSemaphore.html#ab144395cba916969214bbe60f7521fed',1,'Semaphore']]],
-  ['warn',['warn',['../da/ddd/interfaceconsole.html#a85513e51e93e8d827ebedba45359161c',1,'console::warn(String fmt,...)'],['../da/ddd/interfaceconsole.html#a4731e95e6360c7bdf0513236bc0ea032',1,'console::warn(...)']]],
-  ['without',['without',['../db/d3d/interfaceutil.html#a0c5e0bae5b173e9264e980cc2e956c64',1,'util']]],
+  ['warn',['warn',['../dc/daa/namespaceconsole.html#a85513e51e93e8d827ebedba45359161c',1,'console::warn(String fmt,...)'],['../dc/daa/namespaceconsole.html#a4731e95e6360c7bdf0513236bc0ea032',1,'console::warn(...)']]],
+  ['without',['without',['../d6/d72/namespaceutil.html#a0c5e0bae5b173e9264e980cc2e956c64',1,'util']]],
   ['write',['write',['../d9/dae/interfaceBuffer.html#a9a321c93f4d41d75953063f9c443a199',1,'Buffer::write(Array datas)'],['../d9/dae/interfaceBuffer.html#ad5e1afa2239bc47359c0e3c6a61c5f20',1,'Buffer::write(Buffer data)'],['../d9/dae/interfaceBuffer.html#a9d8c75a500a8613157e889043a35faa5',1,'Buffer::write(String str, String codec=&quot;utf8&quot;)'],['../d6/db7/interfaceMessage.html#a42fdd87346cb529e34e1e12e41afe2bc',1,'Message::write()'],['../d4/dc7/interfaceStream.html#a9fe96dcae55a53aef7ceb56544bc83d9',1,'Stream::write()']]],
   ['writedoublebe',['writeDoubleBE',['../d9/dae/interfaceBuffer.html#aa0699049d7c5631acd3f5f0213a7b9d2',1,'Buffer']]],
   ['writedoublele',['writeDoubleLE',['../d9/dae/interfaceBuffer.html#adf45fe19c68fd9a58f8138a2ef509e77',1,'Buffer']]],
-  ['writefile',['writeFile',['../d3/d48/interfacefs.html#a2b9fe79326ffd7bca6e432f1a667f306',1,'fs']]],
+  ['writefile',['writeFile',['../d5/d8f/namespacefs.html#a2b9fe79326ffd7bca6e432f1a667f306',1,'fs']]],
   ['writefloatbe',['writeFloatBE',['../d9/dae/interfaceBuffer.html#ab81698ec4b2b292809b43bbba9a12c98',1,'Buffer']]],
   ['writefloatle',['writeFloatLE',['../d9/dae/interfaceBuffer.html#af0da2db736bab85c79464a57ab05df54',1,'Buffer']]],
   ['writeint16be',['writeInt16BE',['../d9/dae/interfaceBuffer.html#a0500f514967f73ae1c58b40757da1a26',1,'Buffer']]],

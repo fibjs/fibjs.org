@@ -1,35 +1,5 @@
 var hierarchy =
 [
-    [ "module", "d2/d3e/interfacemodule.html", [
-      [ "assert", "d0/d1a/interfaceassert.html", null ],
-      [ "collection", "d1/dfa/interfacecollection.html", null ],
-      [ "console", "da/ddd/interfaceconsole.html", null ],
-      [ "coroutine", "d2/d96/interfacecoroutine.html", null ],
-      [ "crypto", "d3/dd5/interfacecrypto.html", null ],
-      [ "db", "d3/d75/interfacedb.html", null ],
-      [ "encoding", "dc/d64/interfaceencoding.html", null ],
-      [ "fs", "d3/d48/interfacefs.html", null ],
-      [ "Function", "d1/dc0/interfaceFunction.html", null ],
-      [ "gd", "d4/d10/interfacegd.html", null ],
-      [ "global", "d3/d95/interfaceglobal.html", null ],
-      [ "hash", "d2/da7/interfacehash.html", null ],
-      [ "http", "db/d5c/interfacehttp.html", null ],
-      [ "io", "d0/d46/interfaceio.html", null ],
-      [ "mq", "d0/de4/interfacemq.html", null ],
-      [ "net", "d7/dc0/interfacenet.html", null ],
-      [ "os", "d7/dfa/interfaceos.html", null ],
-      [ "path", "db/d66/interfacepath.html", null ],
-      [ "process", "d9/d32/interfaceprocess.html", null ],
-      [ "re", "df/d04/interfacere.html", null ],
-      [ "rpc", "d9/d48/interfacerpc.html", null ],
-      [ "ssl", "d6/d6a/interfacessl.html", null ],
-      [ "test", "d6/d9e/interfacetest.html", null ],
-      [ "util", "db/d3d/interfaceutil.html", null ],
-      [ "uuid", "d5/d9a/interfaceuuid.html", null ],
-      [ "vm", "d0/d92/interfacevm.html", null ],
-      [ "xml", "d2/d3b/interfacexml.html", null ],
-      [ "zlib", "df/dc6/interfacezlib.html", null ]
-    ] ],
     [ "object", "db/d38/interfaceobject.html", [
       [ "Buffer", "d9/dae/interfaceBuffer.html", null ],
       [ "Cipher", "df/d49/interfaceCipher.html", null ],
@@ -41,6 +11,7 @@ var hierarchy =
       [ "Digest", "d3/d41/interfaceDigest.html", null ],
       [ "Expect", "d0/df6/interfaceExpect.html", null ],
       [ "Fiber", "d4/d39/interfaceFiber.html", null ],
+      [ "Function", "d1/dc0/interfaceFunction.html", null ],
       [ "GridFS", "d7/d34/interfaceGridFS.html", null ],
       [ "Handler", "da/d85/interfaceHandler.html", [
         [ "AsyncWait", "d2/d88/interfaceAsyncWait.html", null ],

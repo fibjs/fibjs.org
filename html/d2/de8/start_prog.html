@@ -46,6 +46,7 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'搜索');
     <ul class="tablist">
       <li><a href="../../index.html"><span>首页</span></a></li>
       <li class="current"><a href="../../pages.html"><span>相关页面</span></a></li>
+      <li><a href="../../namespaces.html"><span>命名空间</span></a></li>
       <li><a href="../../annotated.html"><span>类</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -85,7 +86,7 @@ $(document).ready(function(){initNavTree('d2/de8/start_prog.html','../../');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>全部</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>类</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>函数</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>变量</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>页</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>全部</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>类</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>命名空间</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>函数</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>变量</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>页</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -114,16 +115,16 @@ $(document).ready(function(){initNavTree('d2/de8/start_prog.html','../../');});
 开始写代码</h1>
 <h2><a class="anchor" id="prg_step1"></a>
 第一步：Hello, World!</h2>
-<p>选择你喜爱的文本编辑器，在 bin 目录下编辑生成一个 hello.js，内容如下： </p><div class="fragment"><div class="line"><a class="code" href="../../da/ddd/interfaceconsole.html">console</a>.<a class="code" href="../../da/ddd/interfaceconsole.html#a93b42645d56e3b4da5d2dc28ba6593cf">log</a>(<span class="stringliteral">&#39;Hello, World!&#39;</span>);</div>
+<p>选择你喜爱的文本编辑器，在 bin 目录下编辑生成一个 hello.js，内容如下： </p><div class="fragment"><div class="line"><a class="code" href="../../dc/daa/namespaceconsole.html">console</a>.log(<span class="stringliteral">&#39;Hello, World!&#39;</span>);</div>
 </div><!-- fragment --><p>然后即可执行： </p><div class="fragment"><div class="line">Release/fibjs hello</div>
 </div><!-- fragment --><p>可以看到屏幕输出： </p><div class="fragment"><div class="line">Hello, World!</div>
 </div><!-- fragment --><p>很简单是吧。</p>
 <h2><a class="anchor" id="prg_step2"></a>
 第二步：DANG, DANG, DANG...</h2>
-<p>接下来我们想写个大钟程序 dang.js，每隔一秒钟敲一声。当然你也可以间隔时间更长。 </p><div class="fragment"><div class="line">var <a class="code" href="../../d2/d96/interfacecoroutine.html">coroutine</a> = require(<span class="stringliteral">&quot;coroutine&quot;</span>);</div>
+<p>接下来我们想写个大钟程序 dang.js，每隔一秒钟敲一声。当然你也可以间隔时间更长。 </p><div class="fragment"><div class="line">var <a class="code" href="../../d6/d05/namespacecoroutine.html">coroutine</a> = require(<span class="stringliteral">&quot;coroutine&quot;</span>);</div>
 <div class="line"></div>
 <div class="line"><span class="keywordflow">while</span>(<span class="keyword">true</span>){</div>
-<div class="line">  <a class="code" href="../../da/ddd/interfaceconsole.html">console</a>.<a class="code" href="../../da/ddd/interfaceconsole.html#a93b42645d56e3b4da5d2dc28ba6593cf">log</a>(<span class="stringliteral">&#39;DANG...&#39;</span>);</div>
+<div class="line">  <a class="code" href="../../dc/daa/namespaceconsole.html">console</a>.log(<span class="stringliteral">&#39;DANG...&#39;</span>);</div>
 <div class="line">  coroutine.sleep(1000);</div>
 <div class="line">}</div>
 </div><!-- fragment --><p>执行后，你会看到屏幕如你想的那样，每隔一秒输出一个 'DANG...' </p><div class="fragment"><div class="line">DANG...</div>
@@ -137,7 +138,7 @@ $(document).ready(function(){initNavTree('d2/de8/start_prog.html','../../');});
 <div class="line"></div>
 <div class="line"><span class="keyword">function</span> dang(n){</div>
 <div class="line">  <span class="keywordflow">while</span>(<span class="keyword">true</span>){</div>
-<div class="line">    <a class="code" href="../../da/ddd/interfaceconsole.html">console</a>.<a class="code" href="../../da/ddd/interfaceconsole.html#a93b42645d56e3b4da5d2dc28ba6593cf">log</a>(<span class="stringliteral">&#39;DANG %d...&#39;</span>, n);</div>
+<div class="line">    <a class="code" href="../../dc/daa/namespaceconsole.html">console</a>.log(<span class="stringliteral">&#39;DANG %d...&#39;</span>, n);</div>
 <div class="line">    coroutine.sleep(1000);</div>
 <div class="line">  }</div>
 <div class="line">}</div>
@@ -163,7 +164,7 @@ $(document).ready(function(){initNavTree('d2/de8/start_prog.html','../../');});
 <div class="line"></div>
 <div class="line"><span class="keyword">function</span> dang(n){</div>
 <div class="line">  <span class="keywordflow">while</span>(<span class="keyword">true</span>){</div>
-<div class="line">    <a class="code" href="../../da/ddd/interfaceconsole.html">console</a>.<a class="code" href="../../da/ddd/interfaceconsole.html#a93b42645d56e3b4da5d2dc28ba6593cf">log</a>(<span class="stringliteral">&#39;DANG %d...&#39;</span>, n);</div>
+<div class="line">    <a class="code" href="../../dc/daa/namespaceconsole.html">console</a>.log(<span class="stringliteral">&#39;DANG %d...&#39;</span>, n);</div>
 <div class="line">    coroutine.sleep(1000);</div>
 <div class="line">  }</div>
 <div class="line">}</div>

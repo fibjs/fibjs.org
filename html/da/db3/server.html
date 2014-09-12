@@ -46,6 +46,7 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'搜索');
     <ul class="tablist">
       <li><a href="../../index.html"><span>首页</span></a></li>
       <li class="current"><a href="../../pages.html"><span>相关页面</span></a></li>
+      <li><a href="../../namespaces.html"><span>命名空间</span></a></li>
       <li><a href="../../annotated.html"><span>类</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -85,7 +86,7 @@ $(document).ready(function(){initNavTree('da/db3/server.html','../../');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>全部</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>类</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>函数</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>变量</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>页</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>全部</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>类</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>命名空间</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>函数</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>变量</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>页</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -107,15 +108,15 @@ $(document).ready(function(){initNavTree('da/db3/server.html','../../');});
 </div>
 <div class="textblock"><h1><a class="anchor" id="web_file"></a>
 静态文件服务器</h1>
-<p>使用 fibjs 创建一个简单的 web 服务器是一件很方便的事情。 </p><div class="fragment"><div class="line">var <a class="code" href="../../db/d5c/interfacehttp.html">http</a> = require(<span class="stringliteral">&#39;http&#39;</span>);</div>
+<p>使用 fibjs 创建一个简单的 web 服务器是一件很方便的事情。 </p><div class="fragment"><div class="line">var <a class="code" href="../../d3/d69/namespacehttp.html">http</a> = require(<span class="stringliteral">&#39;http&#39;</span>);</div>
 <div class="line"></div>
-<div class="line">var svr = <span class="keyword">new</span> http.Server(80, http.fileHandler(<span class="stringliteral">&#39;../fibjs/docs&#39;</span>));</div>
+<div class="line">var svr = <span class="keyword">new</span> <a class="code" href="../../d3/d69/namespacehttp.html">http</a>.Server(80, <a class="code" href="../../d3/d69/namespacehttp.html">http</a>.fileHandler(<span class="stringliteral">&#39;../fibjs/docs&#39;</span>));</div>
 <div class="line">svr.run();</div>
 </div><!-- fragment --><p>这个 web 服务器已经足够强大，支持自动压缩，支持预压缩，支持更新检查，作为普通的静态文件服务已经足够。</p>
 <p>然而我们显然不会满足于发布静态文件，因为无论是 apache 还是 nginx，都可以更专业地完成这一点，fibjs 的静态 web 服务器仅仅用于辅助完成一些不是很大量的前端文件下载。</p>
 <h1><a class="anchor" id="web_script"></a>
 动态服务器</h1>
-<p>一个动态服务器，其实并不比静态文件服务器复杂更多： </p><div class="fragment"><div class="line">var http = require(<span class="stringliteral">&#39;http&#39;</span>);</div>
+<p>一个动态服务器，其实并不比静态文件服务器复杂更多： </p><div class="fragment"><div class="line">var <a class="code" href="../../d3/d69/namespacehttp.html">http</a> = require(<span class="stringliteral">&#39;http&#39;</span>);</div>
 <div class="line"></div>
 <div class="line">var svr = <span class="keyword">new</span> http.Server(80, <span class="keyword">function</span>(r){</div>
 <div class="line">  r.response.write(<span class="stringliteral">&#39;Hello, World!&#39;</span>);</div>
@@ -125,7 +126,7 @@ $(document).ready(function(){initNavTree('da/db3/server.html','../../');});
 <h1><a class="anchor" id="web_both"></a>
 动静合一</h1>
 <p>当网站规模不大的时候，我们通常需要在同一台服务器上同时支持静态文件和动态请求： </p><div class="fragment"><div class="line">var http = require(<span class="stringliteral">&#39;http&#39;</span>);</div>
-<div class="line">var <a class="code" href="../../d0/de4/interfacemq.html">mq</a> = require(<span class="stringliteral">&#39;mq&#39;</span>);</div>
+<div class="line">var <a class="code" href="../../dd/dbd/namespacemq.html">mq</a> = require(<span class="stringliteral">&#39;mq&#39;</span>);</div>
 <div class="line"></div>
 <div class="line">var svr = <span class="keyword">new</span> http.Server(8080, <span class="keyword">new</span> mq.Routing({</div>
 <div class="line">    <span class="stringliteral">&#39;^/www(/.*)&#39;</span>: http.fileHandler(<span class="stringliteral">&#39;../fibjs</span></div>

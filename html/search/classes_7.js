@@ -1,8 +1,6 @@
 var searchData=
 [
   ['handler',['Handler',['../da/d85/interfaceHandler.html',1,'']]],
-  ['hash',['hash',['../d2/da7/interfacehash.html',1,'']]],
-  ['http',['http',['../db/d5c/interfacehttp.html',1,'']]],
   ['httpcollection',['HttpCollection',['../da/d34/interfaceHttpCollection.html',1,'']]],
   ['httpcookie',['HttpCookie',['../d3/dea/interfaceHttpCookie.html',1,'']]],
   ['httphandler',['HttpHandler',['../d6/d18/interfaceHttpHandler.html',1,'']]],

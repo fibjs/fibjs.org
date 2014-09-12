@@ -1,12 +1,15 @@
 var searchData=
 [
-  ['re',['re',['../df/d04/interfacere.html',1,'']]],
-  ['redis',['Redis',['../d7/d32/interfaceRedis.html',1,'']]],
-  ['redishash',['RedisHash',['../d9/d58/interfaceRedisHash.html',1,'']]],
-  ['redislist',['RedisList',['../d0/da2/interfaceRedisList.html',1,'']]],
-  ['redisset',['RedisSet',['../d3/dee/interfaceRedisSet.html',1,'']]],
-  ['redissortedset',['RedisSortedSet',['../db/d03/interfaceRedisSortedSet.html',1,'']]],
-  ['regex',['Regex',['../d1/d43/interfaceRegex.html',1,'']]],
-  ['routing',['Routing',['../df/dcb/interfaceRouting.html',1,'']]],
-  ['rpc',['rpc',['../d9/d48/interfacerpc.html',1,'']]]
+  ['sandbox',['SandBox',['../d5/dd4/interfaceSandBox.html',1,'']]],
+  ['seekablestream',['SeekableStream',['../d6/d9c/interfaceSeekableStream.html',1,'']]],
+  ['semaphore',['Semaphore',['../dc/d90/interfaceSemaphore.html',1,'']]],
+  ['smtp',['Smtp',['../da/de8/interfaceSmtp.html',1,'']]],
+  ['socket',['Socket',['../dd/d94/interfaceSocket.html',1,'']]],
+  ['sqlite',['SQLite',['../d7/df5/interfaceSQLite.html',1,'']]],
+  ['sslhandler',['SslHandler',['../df/dd8/interfaceSslHandler.html',1,'']]],
+  ['sslserver',['SslServer',['../d1/d5c/interfaceSslServer.html',1,'']]],
+  ['sslsocket',['SslSocket',['../d0/d97/interfaceSslSocket.html',1,'']]],
+  ['stat',['Stat',['../dc/da9/interfaceStat.html',1,'']]],
+  ['stats',['Stats',['../df/d0b/interfaceStats.html',1,'']]],
+  ['stream',['Stream',['../d4/dc7/interfaceStream.html',1,'']]]
 ];

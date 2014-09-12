@@ -2,7 +2,7 @@ var searchData=
 [
   ['false',['false',['../d0/df6/interfaceExpect.html#ae56ec0fe55dba24bb29e995412f23aa9',1,'Expect']]],
   ['family',['family',['../dd/d94/interfaceSocket.html#abf6546327fa4e426b1cf8933fd7ded14',1,'Socket']]],
-  ['fatal',['FATAL',['../da/ddd/interfaceconsole.html#af2febf98c41ce04e211f506926bea7d9',1,'console']]],
+  ['fatal',['FATAL',['../dc/daa/namespaceconsole.html#af2febf98c41ce04e211f506926bea7d9',1,'console']]],
   ['fields',['fields',['../d9/db4/interfaceDBResult.html#a6655635387709359c4ea872a0343d139',1,'DBResult']]],
   ['filename',['fileName',['../db/dd0/interfaceHttpUploadData.html#a64894e1cf2ed59584ac61a9bf876036a',1,'HttpUploadData::fileName()'],['../d7/df5/interfaceSQLite.html#a9a2a52bdba24af6fe86ba65b149e3f1b',1,'SQLite::fileName()']]],
   ['files',['files',['../d7/d34/interfaceGridFS.html#ab3f12323dc43b26000c88e90832a6a4b',1,'GridFS']]],

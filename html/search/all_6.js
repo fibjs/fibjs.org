@@ -1,12 +1,12 @@
 var searchData=
 [
-  ['gc',['GC',['../d3/d95/interfaceglobal.html#a02a28758a633a7b1493471415c8949ba',1,'global']]],
-  ['gcm',['GCM',['../d3/dd5/interfacecrypto.html#a88d8ecc273aee729deecbdd7844076d0',1,'crypto']]],
-  ['gd',['gd',['../d4/d10/interfacegd.html',1,'gd'],['../d4/d10/interfacegd.html#a792ac324d596f28e650565f9f5339cb1',1,'gd::GD()']]],
-  ['gd2',['GD2',['../d4/d10/interfacegd.html#a1f9f4b0a38d344d6131ac4fdde77d4a0',1,'gd']]],
+  ['gc',['GC',['../d4/dfd/namespaceglobal.html#a02a28758a633a7b1493471415c8949ba',1,'global']]],
+  ['gcm',['GCM',['../de/d36/namespacecrypto.html#a88d8ecc273aee729deecbdd7844076d0',1,'crypto']]],
+  ['gd',['gd',['../dd/d5d/namespacegd.html',1,'gd'],['../dd/d5d/namespacegd.html#a792ac324d596f28e650565f9f5339cb1',1,'gd::GD()']]],
+  ['gd2',['GD2',['../dd/d5d/namespacegd.html#a1f9f4b0a38d344d6131ac4fdde77d4a0',1,'gd']]],
   ['geneckey',['genEcKey',['../d5/dac/interfacePKey.html#a7773cc31cb3d406da8d84bce891e3474',1,'PKey']]],
   ['genrsakey',['genRsaKey',['../d5/dac/interfacePKey.html#ae2f135cd9eae89cf1a83a2b9f6e21118',1,'PKey']]],
-  ['get',['get',['../db/d5c/interfacehttp.html#af455f3026af00e563cdeddae18a7beea',1,'http::get()'],['../d0/d9e/interfaceLevelDB.html#a84f21756e54c8030b8c246639ad219ee',1,'LevelDB::get()'],['../dc/d81/interfaceLruCache.html#a1ce4671eff7a52fb7dd6be130180447f',1,'LruCache::get(String name)'],['../dc/d81/interfaceLruCache.html#aec228b06124cd2b23c58256101cbaba5',1,'LruCache::get(String name, Function updater)'],['../d2/dc1/interfaceMap.html#a13482d7a030543aff598e56289d57b3e',1,'Map::get()'],['../d7/d32/interfaceRedis.html#a80458b5c2686cb11a0692e297f73c696',1,'Redis::get()'],['../d9/d58/interfaceRedisHash.html#afc07ac81b6e3bf682e35d21d72ae4621',1,'RedisHash::get()'],['../d0/da2/interfaceRedisList.html#ae25495b5a6c48a1ac80954026b46a4e4',1,'RedisList::get()']]],
+  ['get',['get',['../d0/d9e/interfaceLevelDB.html#a84f21756e54c8030b8c246639ad219ee',1,'LevelDB::get()'],['../dc/d81/interfaceLruCache.html#a1ce4671eff7a52fb7dd6be130180447f',1,'LruCache::get(String name)'],['../dc/d81/interfaceLruCache.html#aec228b06124cd2b23c58256101cbaba5',1,'LruCache::get(String name, Function updater)'],['../d2/dc1/interfaceMap.html#a13482d7a030543aff598e56289d57b3e',1,'Map::get()'],['../d7/d32/interfaceRedis.html#a80458b5c2686cb11a0692e297f73c696',1,'Redis::get()'],['../d9/d58/interfaceRedisHash.html#afc07ac81b6e3bf682e35d21d72ae4621',1,'RedisHash::get()'],['../d0/da2/interfaceRedisList.html#ae25495b5a6c48a1ac80954026b46a4e4',1,'RedisList::get()'],['../d3/d69/namespacehttp.html#af455f3026af00e563cdeddae18a7beea',1,'http::get()']]],
   ['getall',['getAll',['../d9/d58/interfaceRedisHash.html#a0abb7d2505b10ceede89f6388d0d7f9d',1,'RedisHash']]],
   ['getattribute',['getAttribute',['../d7/ddb/interfaceXmlElement.html#a0d5d679dfa4674cec4934580751001d9',1,'XmlElement']]],
   ['getattributenode',['getAttributeNode',['../d7/ddb/interfaceXmlElement.html#a07d6652ff24013fb26d2cd5457b6ee77',1,'XmlElement']]],
@@ -24,12 +24,12 @@ var searchData=
   ['getset',['getset',['../d7/d32/interfaceRedis.html#a0a917ae043d84cf5b978021b81c34cde',1,'Redis::getset(Buffer key, Buffer value)'],['../d7/d32/interfaceRedis.html#a9139d00083d2795de81119ea1e9deec3',1,'Redis::getSet(Buffer key)']]],
   ['getsortedset',['getSortedSet',['../d7/d32/interfaceRedis.html#aff0567a3b6cf6eb95f5ab5606ae92309',1,'Redis']]],
   ['gettruecolorpixel',['getTrueColorPixel',['../d2/d41/interfaceImage.html#a585e3918e0516fab908afbb2ba53ba4f',1,'Image']]],
-  ['gif',['GIF',['../d4/d10/interfacegd.html#aa03a61a0909f9761082b9bf5b53fb596',1,'gd']]],
-  ['global',['global',['../d3/d95/interfaceglobal.html',1,'global'],['../d1/d43/interfaceRegex.html#a91bef45763139f15c2cab0ab35cebcc8',1,'Regex::global()']]],
-  ['greaterthan',['greaterThan',['../d0/d1a/interfaceassert.html#a402e1e36f03b891ad44a3281a64642a2',1,'assert::greaterThan()'],['../d0/df6/interfaceExpect.html#a73f75cab81e1d239595ee427e0ecbae3',1,'Expect::greaterThan()']]],
+  ['gif',['GIF',['../dd/d5d/namespacegd.html#aa03a61a0909f9761082b9bf5b53fb596',1,'gd']]],
+  ['global',['global',['../d4/dfd/namespaceglobal.html',1,'global'],['../d1/d43/interfaceRegex.html#a91bef45763139f15c2cab0ab35cebcc8',1,'Regex::global()']]],
+  ['greaterthan',['greaterThan',['../d0/df6/interfaceExpect.html#a73f75cab81e1d239595ee427e0ecbae3',1,'Expect::greaterThan()'],['../d2/dab/namespaceassert.html#a402e1e36f03b891ad44a3281a64642a2',1,'assert::greaterThan()']]],
   ['gridfs',['GridFS',['../d7/d34/interfaceGridFS.html',1,'']]],
-  ['gunzip',['gunzip',['../df/dc6/interfacezlib.html#a165562467d193e958c2349445dc3f90c',1,'zlib']]],
-  ['gunzipto',['gunzipTo',['../df/dc6/interfacezlib.html#ad2fdcb8ce8aac7124267a9e621766638',1,'zlib::gunzipTo(Buffer data, Stream stm) async'],['../df/dc6/interfacezlib.html#ad754fb667c7bffa4aa237ddad1109dab',1,'zlib::gunzipTo(Stream src, Stream stm) async']]],
-  ['gzip',['gzip',['../df/dc6/interfacezlib.html#a3a522ddbc8cde00ea8d9021c330c0ad5',1,'zlib']]],
-  ['gzipto',['gzipTo',['../df/dc6/interfacezlib.html#aaa9064c2afae1452123bbf6759e0d01a',1,'zlib::gzipTo(Buffer data, Stream stm) async'],['../df/dc6/interfacezlib.html#ac5f35bb15047380a3f30da60474557c0',1,'zlib::gzipTo(Stream src, Stream stm) async']]]
+  ['gunzip',['gunzip',['../d9/d3e/namespacezlib.html#a165562467d193e958c2349445dc3f90c',1,'zlib']]],
+  ['gunzipto',['gunzipTo',['../d9/d3e/namespacezlib.html#ad2fdcb8ce8aac7124267a9e621766638',1,'zlib::gunzipTo(Buffer data, Stream stm) async'],['../d9/d3e/namespacezlib.html#ad754fb667c7bffa4aa237ddad1109dab',1,'zlib::gunzipTo(Stream src, Stream stm) async']]],
+  ['gzip',['gzip',['../d9/d3e/namespacezlib.html#a3a522ddbc8cde00ea8d9021c330c0ad5',1,'zlib']]],
+  ['gzipto',['gzipTo',['../d9/d3e/namespacezlib.html#aaa9064c2afae1452123bbf6759e0d01a',1,'zlib::gzipTo(Buffer data, Stream stm) async'],['../d9/d3e/namespacezlib.html#ac5f35bb15047380a3f30da60474557c0',1,'zlib::gzipTo(Stream src, Stream stm) async']]]
 ];

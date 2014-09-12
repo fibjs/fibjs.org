@@ -46,6 +46,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'搜索');
     <ul class="tablist">
       <li><a href="index.html"><span>首页</span></a></li>
       <li><a href="pages.html"><span>相关页面</span></a></li>
+      <li><a href="namespaces.html"><span>命名空间</span></a></li>
       <li class="current"><a href="annotated.html"><span>类</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -105,7 +106,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'搜索');
       <li><a href="functions_v.html#index_v"><span>v</span></a></li>
       <li><a href="functions_w.html#index_w"><span>w</span></a></li>
       <li><a href="functions_x.html#index_x"><span>x</span></a></li>
-      <li><a href="functions_z.html#index_z"><span>z</span></a></li>
     </ul>
   </div>
 </div><!-- top -->
@@ -128,7 +128,7 @@ $(document).ready(function(){initNavTree('functions_h.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>全部</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>类</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>函数</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>变量</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>页</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>全部</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>类</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>命名空间</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>函数</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>变量</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>页</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -141,17 +141,9 @@ $(document).ready(function(){initNavTree('functions_h.html','');});
 <div class="textblock">这里列出了所有文档化的类成员，并附带类所属的文件:</div>
 
 <h3><a class="anchor" id="index_h"></a>- h -</h3><ul>
-<li>Handler()
-: <a class="el" href="db/d5c/interfacehttp.html#aeb7ec4214a199d4df745d067aaf71a3d">http</a>
-</li>
 <li>handler
 : <a class="el" href="d6/d18/interfaceHttpHandler.html#a31b90c96f95c0b9e80643aa2c7a52091">HttpHandler</a>
-</li>
-<li>Handler()
-: <a class="el" href="d6/d6a/interfacessl.html#a6abf182f9613d8f45513eac4e2fa20aa">ssl</a>
-</li>
-<li>handler
-: <a class="el" href="df/dd8/interfaceSslHandler.html#aaa16369650afb205fdac2e5f5a8f3028">SslHandler</a>
+, <a class="el" href="df/dd8/interfaceSslHandler.html#aaa16369650afb205fdac2e5f5a8f3028">SslHandler</a>
 , <a class="el" href="d7/d48/interfaceTcpServer.html#a4cc96bf996809c60c59c2e8df5daa653">TcpServer</a>
 </li>
 <li>has()
@@ -159,7 +151,6 @@ $(document).ready(function(){initNavTree('functions_h.html','');});
 , <a class="el" href="d0/d9e/interfaceLevelDB.html#a9592329ae5e30e313a40637d34171a11">LevelDB</a>
 , <a class="el" href="dc/d81/interfaceLruCache.html#a1f47f0c7f03ead1191f99b340edc0576">LruCache</a>
 , <a class="el" href="d2/dc1/interfaceMap.html#a3a28d7c75ff941b3d9d9d3b6e6d4e3e3">Map</a>
-, <a class="el" href="db/d3d/interfaceutil.html#a74c60b5a6328e1154f392e634cb40328">util</a>
 </li>
 <li>hasAttribute()
 : <a class="el" href="d7/ddb/interfaceXmlElement.html#ab2c0c929bb2edd6bb6d9e1f0436f29aa">XmlElement</a>
@@ -191,12 +182,6 @@ $(document).ready(function(){initNavTree('functions_h.html','');});
 <li>hex()
 : <a class="el" href="d9/dae/interfaceBuffer.html#ae792f93a92ad21c0c28e4953e91032cb">Buffer</a>
 </li>
-<li>hexDecode()
-: <a class="el" href="dc/d64/interfaceencoding.html#af057caa3f173428c397e8b13185940c6">encoding</a>
-</li>
-<li>hexEncode()
-: <a class="el" href="dc/d64/interfaceencoding.html#afaded7ab09c1a8882e73a4613a9716fd">encoding</a>
-</li>
 <li>hi
 : <a class="el" href="df/dc1/interfaceInt64.html#aa356139546e7fcc65dc524ed52f585b7">Int64</a>
 </li>
@@ -206,61 +191,20 @@ $(document).ready(function(){initNavTree('functions_h.html','');});
 <li>hint()
 : <a class="el" href="dc/d27/interfaceMongoCursor.html#afe5537d4e887dea551f20feba3627aaf">MongoCursor</a>
 </li>
-<li>hmac()
-: <a class="el" href="d2/da7/interfacehash.html#a330e7a9e3d593264815d68aa495e7a7d">hash</a>
-</li>
-<li>hmac_md2()
-: <a class="el" href="d2/da7/interfacehash.html#a47a5101b6771678d571e473b687626b0">hash</a>
-</li>
-<li>hmac_md4()
-: <a class="el" href="d2/da7/interfacehash.html#a6155daca64fd722c38e7324586d0993d">hash</a>
-</li>
-<li>hmac_md5()
-: <a class="el" href="d2/da7/interfacehash.html#a7e754ac11d237d72b1b935cd67f4cc9f">hash</a>
-</li>
-<li>hmac_ripemd160()
-: <a class="el" href="d2/da7/interfacehash.html#a4fa072e27d94ad8a84152863596869eb">hash</a>
-</li>
-<li>hmac_sha1()
-: <a class="el" href="d2/da7/interfacehash.html#aec4c9f56f93a0df54838af47b801f23e">hash</a>
-</li>
-<li>hmac_sha224()
-: <a class="el" href="d2/da7/interfacehash.html#a2d1483e5cd139848cab5063c0889d826">hash</a>
-</li>
-<li>hmac_sha256()
-: <a class="el" href="d2/da7/interfacehash.html#ac98cb2777ead9c4883e438d575bd625d">hash</a>
-</li>
-<li>hmac_sha384()
-: <a class="el" href="d2/da7/interfacehash.html#a3bf61d946548a6c637bd07f61e9ef2e0">hash</a>
-</li>
-<li>hmac_sha512()
-: <a class="el" href="d2/da7/interfacehash.html#a4de2d277d13b54cc16d433576a78abc7">hash</a>
-</li>
-<li>HORIZONTAL
-: <a class="el" href="d4/d10/interfacegd.html#aed32009ea9b9411460dbcb418fac8bdc">gd</a>
-</li>
 <li>host
 : <a class="el" href="dd/d23/interfaceUrl.html#adb97976e1e9083bfe92fd95555dfda36">Url</a>
 </li>
 <li>hostname
-: <a class="el" href="d7/dfa/interfaceos.html#a10d119aa110a46714071e81522b0645c">os</a>
-, <a class="el" href="dd/d23/interfaceUrl.html#a826ad49e0473aecf775352d18fad7a05">Url</a>
+: <a class="el" href="dd/d23/interfaceUrl.html#a826ad49e0473aecf775352d18fad7a05">Url</a>
 </li>
 <li>href
 : <a class="el" href="dd/d23/interfaceUrl.html#ab0e04fcefbb5ea69d357773973010e4d">Url</a>
-</li>
-<li>hsl()
-: <a class="el" href="d4/d10/interfacegd.html#a019d7f7f15237b710462208f3ab9b74e">gd</a>
-</li>
-<li>hsla()
-: <a class="el" href="d4/d10/interfacegd.html#a14fb8efd2fd9e7c1bbb0d7169a5eecca">gd</a>
 </li>
 <li>HttpCookie()
 : <a class="el" href="d3/dea/interfaceHttpCookie.html#aeaf22658ecce73e194a6effafdc555e9">HttpCookie</a>
 </li>
 <li>HttpHandler()
 : <a class="el" href="d6/d18/interfaceHttpHandler.html#a67076bb6a7281898aed64f09676d56a2">HttpHandler</a>
-, <a class="el" href="d0/de4/interfacemq.html#a57f8f9f44fbbf200b54df0139a56bb40">mq</a>
 </li>
 <li>httpOnly
 : <a class="el" href="d3/dea/interfaceHttpCookie.html#a5116746acee8713cfc7f854c0e0164ae">HttpCookie</a>
@@ -275,8 +219,7 @@ $(document).ready(function(){initNavTree('functions_h.html','');});
 : <a class="el" href="d4/d79/interfaceHttpServer.html#a260837a99d9746f316f74b68d477be66">HttpServer</a>
 </li>
 <li>HttpsServer()
-: <a class="el" href="db/d5c/interfacehttp.html#a5b21533b4e601a05f64dc3c814ba7b87">http</a>
-, <a class="el" href="d7/d42/interfaceHttpsServer.html#ac435f7579e779f28baa2231ba9ef5219">HttpsServer</a>
+: <a class="el" href="d7/d42/interfaceHttpsServer.html#a2656d6e85b9b201f297d2854411ed7e3">HttpsServer</a>
 </li>
 <li>httpStats
 : <a class="el" href="d4/d79/interfaceHttpServer.html#afd63b2bd5c6a3fd15d7edc4ea3fae70c">HttpServer</a>

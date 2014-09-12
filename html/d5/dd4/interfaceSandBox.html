@@ -46,6 +46,7 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'搜索');
     <ul class="tablist">
       <li><a href="../../index.html"><span>首页</span></a></li>
       <li><a href="../../pages.html"><span>相关页面</span></a></li>
+      <li><a href="../../namespaces.html"><span>命名空间</span></a></li>
       <li class="current"><a href="../../annotated.html"><span>类</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -92,7 +93,7 @@ $(document).ready(function(){initNavTree('d5/dd4/interfaceSandBox.html','../../'
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>全部</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>类</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>函数</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>变量</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>页</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>全部</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>类</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>命名空间</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>函数</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>变量</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>页</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -115,7 +116,8 @@ $(document).ready(function(){initNavTree('d5/dd4/interfaceSandBox.html','../../'
 <div class="dynheader">
 类 SandBox 继承关系图:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../df/dcb/interfaceSandBox__inherit__graph.svg" width="110" height="339"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../df/dcb/interfaceSandBox__inherit__graph.svg" width="110" height="339"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -159,11 +161,11 @@ Public 成员函数</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p>安全沙箱对象，用于管理一个独立的运行空间 </p>
-<p>所有的代码都运行在自己的沙箱中，全局的 require 会调用当前沙箱加载模块，沙箱会通过 require 传递给加载的沙箱。下面的示例创建一个沙箱，限制只允许访问全局基础模块中的 assert 模块，并添加 a 和 b 两个定制模块： </p><div class="fragment"><div class="line">var <a class="code" href="../../d0/d92/interfacevm.html">vm</a> = <a class="code" href="../../d5/dd4/interfaceSandBox.html#a134871a1c0b138d7b582225810ed6e9e">require</a>(<span class="stringliteral">&#39;vm&#39;</span>);</div>
+<p>所有的代码都运行在自己的沙箱中，全局的 require 会调用当前沙箱加载模块，沙箱会通过 require 传递给加载的沙箱。下面的示例创建一个沙箱，限制只允许访问全局基础模块中的 assert 模块，并添加 a 和 b 两个定制模块： </p><div class="fragment"><div class="line">var <a class="code" href="../../d8/d89/namespacevm.html">vm</a> = <a class="code" href="../../d5/dd4/interfaceSandBox.html#a134871a1c0b138d7b582225810ed6e9e">require</a>(<span class="stringliteral">&#39;vm&#39;</span>);</div>
 <div class="line">var sbox = <span class="keyword">new</span> vm.SandBox({</div>
 <div class="line">  a: 100,</div>
 <div class="line">  b: 200,</div>
-<div class="line">  assert: <a class="code" href="../../d5/dd4/interfaceSandBox.html#a134871a1c0b138d7b582225810ed6e9e">require</a>(<span class="stringliteral">&#39;assert&#39;</span>)</div>
+<div class="line">  <a class="code" href="../../d2/dab/namespaceassert.html">assert</a>: <a class="code" href="../../d5/dd4/interfaceSandBox.html#a134871a1c0b138d7b582225810ed6e9e">require</a>(<span class="stringliteral">&#39;assert&#39;</span>)</div>
 <div class="line">});</div>
 <div class="line"></div>
 <div class="line">var mod_in_sbox = sbox.require(<span class="stringliteral">&#39;./path/to/mod&#39;</span>);</div>

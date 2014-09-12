@@ -34,6 +34,14 @@ var NAVTREE =
         [ "小结", "d2/de8/start_prog.html#prg_step10", null ]
       ] ]
     ] ],
+    [ "命名空间", null, [
+      [ "命名空间列表", "namespaces.html", "namespaces" ],
+      [ "命名空间成员", "namespacemembers.html", [
+        [ "全部", "namespacemembers.html", "namespacemembers_dup" ],
+        [ "函数", "namespacemembers_func.html", "namespacemembers_func" ],
+        [ "变量", "namespacemembers_vars.html", null ]
+      ] ]
+    ] ],
     [ "类", null, [
       [ "类列表", "annotated.html", "annotated" ],
       [ "类继承关系", "hierarchy.html", "hierarchy" ],
@@ -49,14 +57,12 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"d2/d41/interfaceImage.html#a00f889fa05cda558fbb362b444cdcfd3",
-"d3/d51/interfaceXmlText.html#ac6727f3f092028418cdbf0b44225f58a",
-"d4/dfa/interfaceHttpRequest.html#a8ed24470ab5214955c70bb108209f9d4",
-"d7/d32/interfaceRedis.html#a4a9e5c8ccd85257bc2e36e7ee4f16940",
-"d7/dfa/interfaceos.html#af568dca7b66ce796e676741b24a4303a",
-"da/ddd/interfaceconsole.html#abb065e74e5380ca19bfd6e9a6b2a4117",
-"dc/d90/interfaceSemaphore.html#ab9261a7662bc8bb4a898bc15dc16f206",
-"df/dcb/interfaceRouting.html#a8a6a4aa5a8e90ef0340336dcde8a0a04"
+"d2/d68/interfaceMySQL.html#ab9261a7662bc8bb4a898bc15dc16f206",
+"d4/dd8/interfaceXmlCDATASection.html#a6861687522fd0a6bfd5b132a52bcb097",
+"d7/d32/interfaceRedis.html#a2d26d2cea1bab8f765bb5b958784bc47",
+"d9/d58/interfaceRedisHash.html#a51790a023293d74e9868423782ac1b42",
+"db/d38/interfaceobject.html#a6b88dbc459449d2280338e5b702a68b4",
+"de/dd8/interfaceList.html#aecc21fad0418e7f5e67fccbebcabd7a4"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

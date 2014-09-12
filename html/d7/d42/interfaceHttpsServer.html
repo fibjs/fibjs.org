@@ -46,6 +46,7 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'搜索');
     <ul class="tablist">
       <li><a href="../../index.html"><span>首页</span></a></li>
       <li><a href="../../pages.html"><span>相关页面</span></a></li>
+      <li><a href="../../namespaces.html"><span>命名空间</span></a></li>
       <li class="current"><a href="../../annotated.html"><span>类</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -92,7 +93,7 @@ $(document).ready(function(){initNavTree('d7/d42/interfaceHttpsServer.html','../
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>全部</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>类</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>函数</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>变量</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>页</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>全部</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>类</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>命名空间</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>函数</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>变量</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>页</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -116,7 +117,8 @@ $(document).ready(function(){initNavTree('d7/d42/interfaceHttpsServer.html','../
 <div class="dynheader">
 类 HttpsServer 继承关系图:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../d7/dea/interfaceHttpsServer__inherit__graph.svg" width="155" height="688"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../d7/dea/interfaceHttpsServer__inherit__graph.svg" width="155" height="688"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -190,7 +192,7 @@ Public 属性</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p>https 服务器对象 </p>
-<p>https 服务器对象是将 <a class="el" href="../../d1/d5c/interfaceSslServer.html" title="ssl 服务器对象，可方便创建一个标准多纤程 ssl 服务器 ">SslServer</a> 和 <a class="el" href="../../d6/d18/interfaceHttpHandler.html" title="http 协议转换处理器 ">HttpHandler</a> 组合封装的对象，方便快速搭建服务器，逻辑上相当于： </p><div class="fragment"><div class="line">var svr = <span class="keyword">new</span> <a class="code" href="../../d7/dc0/interfacenet.html">net</a>.SslServer(crt, key, addr, port, <span class="keyword">new</span> http.Handler(<span class="keyword">function</span>(req){</div>
+<p>https 服务器对象是将 <a class="el" href="../../d1/d5c/interfaceSslServer.html" title="ssl 服务器对象，可方便创建一个标准多纤程 ssl 服务器 ">SslServer</a> 和 <a class="el" href="../../d6/d18/interfaceHttpHandler.html" title="http 协议转换处理器 ">HttpHandler</a> 组合封装的对象，方便快速搭建服务器，逻辑上相当于： </p><div class="fragment"><div class="line">var svr = <span class="keyword">new</span> <a class="code" href="../../dc/d27/namespacenet.html">net</a>.SslServer(crt, key, addr, port, <span class="keyword">new</span> http.Handler(<span class="keyword">function</span>(req){</div>
 <div class="line">   ...</div>
 <div class="line">}));</div>
 </div><!-- fragment --><p>创建方法： </p><div class="fragment"><div class="line">var http = require(<span class="stringliteral">&quot;http&quot;</span>);</div>
@@ -243,7 +245,7 @@ Public 属性</h2></td></tr>
 <div class="line">]</div>
 </div><!-- fragment --> </td></tr>
     <tr><td class="paramname">port</td><td>指定 http 服务器侦听端口 </td></tr>
-    <tr><td class="paramname">hdlr</td><td>http 内置消息处理器，处理函数，或 javascript 消息映射对象，详见 <a class="el" href="../../d0/de4/interfacemq.html#a5ad6cd9f9ec59edab1abd1a8c6cac229" title="创建一个 javascript 消息处理器对象，传递值内置处理器则直接返回 ">mq.jsHandler</a> </td></tr>
+    <tr><td class="paramname">hdlr</td><td>http 内置消息处理器，处理函数，或 javascript 消息映射对象，详见 <a class="el" href="../../dd/dbd/namespacemq.html#a5ad6cd9f9ec59edab1abd1a8c6cac229" title="创建一个 javascript 消息处理器对象，传递值内置处理器则直接返回 ">mq.jsHandler</a> </td></tr>
   </table>
   </dd>
 </dl>
@@ -302,7 +304,7 @@ Public 属性</h2></td></tr>
 </div><!-- fragment --> </td></tr>
     <tr><td class="paramname">addr</td><td>指定 http 服务器侦听地址，为 "" 则在本机所有地址侦听 </td></tr>
     <tr><td class="paramname">port</td><td>指定 http 服务器侦听端口 </td></tr>
-    <tr><td class="paramname">hdlr</td><td>http 内置消息处理器，处理函数，或 javascript 消息映射对象，详见 <a class="el" href="../../d0/de4/interfacemq.html#a5ad6cd9f9ec59edab1abd1a8c6cac229" title="创建一个 javascript 消息处理器对象，传递值内置处理器则直接返回 ">mq.jsHandler</a> </td></tr>
+    <tr><td class="paramname">hdlr</td><td>http 内置消息处理器，处理函数，或 javascript 消息映射对象，详见 <a class="el" href="../../dd/dbd/namespacemq.html#a5ad6cd9f9ec59edab1abd1a8c6cac229" title="创建一个 javascript 消息处理器对象，传递值内置处理器则直接返回 ">mq.jsHandler</a> </td></tr>
   </table>
   </dd>
 </dl>
@@ -351,7 +353,7 @@ Public 属性</h2></td></tr>
     <tr><td class="paramname">crt</td><td><a class="el" href="../../dc/d22/interfaceX509Cert.html" title="x509 证书对象 ">X509Cert</a> 证书，用于客户端验证服务器 </td></tr>
     <tr><td class="paramname">key</td><td><a class="el" href="../../d5/dac/interfacePKey.html" title="不对称加密算法对象 ">PKey</a> 私钥，用于与客户端会话 </td></tr>
     <tr><td class="paramname">port</td><td>指定 http 服务器侦听端口 </td></tr>
-    <tr><td class="paramname">hdlr</td><td>http 内置消息处理器，处理函数，或 javascript 消息映射对象，详见 <a class="el" href="../../d0/de4/interfacemq.html#a5ad6cd9f9ec59edab1abd1a8c6cac229" title="创建一个 javascript 消息处理器对象，传递值内置处理器则直接返回 ">mq.jsHandler</a> </td></tr>
+    <tr><td class="paramname">hdlr</td><td>http 内置消息处理器，处理函数，或 javascript 消息映射对象，详见 <a class="el" href="../../dd/dbd/namespacemq.html#a5ad6cd9f9ec59edab1abd1a8c6cac229" title="创建一个 javascript 消息处理器对象，传递值内置处理器则直接返回 ">mq.jsHandler</a> </td></tr>
   </table>
   </dd>
 </dl>
@@ -407,7 +409,7 @@ Public 属性</h2></td></tr>
     <tr><td class="paramname">key</td><td><a class="el" href="../../d5/dac/interfacePKey.html" title="不对称加密算法对象 ">PKey</a> 私钥，用于与客户端会话 </td></tr>
     <tr><td class="paramname">addr</td><td>指定 http 服务器侦听地址，为 "" 则在本机所有地址侦听 </td></tr>
     <tr><td class="paramname">port</td><td>指定 http 服务器侦听端口 </td></tr>
-    <tr><td class="paramname">hdlr</td><td>http 内置消息处理器，处理函数，或 javascript 消息映射对象，详见 <a class="el" href="../../d0/de4/interfacemq.html#a5ad6cd9f9ec59edab1abd1a8c6cac229" title="创建一个 javascript 消息处理器对象，传递值内置处理器则直接返回 ">mq.jsHandler</a> </td></tr>
+    <tr><td class="paramname">hdlr</td><td>http 内置消息处理器，处理函数，或 javascript 消息映射对象，详见 <a class="el" href="../../dd/dbd/namespacemq.html#a5ad6cd9f9ec59edab1abd1a8c6cac229" title="创建一个 javascript 消息处理器对象，传递值内置处理器则直接返回 ">mq.jsHandler</a> </td></tr>
   </table>
   </dd>
 </dl>
