@@ -34,23 +34,8 @@ var NAVTREE =
         [ "小结", "d2/de8/start_prog.html#prg_step10", null ]
       ] ]
     ] ],
-    [ "命名空间", null, [
-      [ "命名空间列表", "namespaces.html", "namespaces" ],
-      [ "命名空间成员", "namespacemembers.html", [
-        [ "全部", "namespacemembers.html", "namespacemembers_dup" ],
-        [ "函数", "namespacemembers_func.html", "namespacemembers_func" ],
-        [ "变量", "namespacemembers_vars.html", null ]
-      ] ]
-    ] ],
-    [ "类", null, [
-      [ "类列表", "annotated.html", "annotated" ],
-      [ "类继承关系", "hierarchy.html", "hierarchy" ],
-      [ "类成员", "functions.html", [
-        [ "全部", "functions.html", "functions_dup" ],
-        [ "函数", "functions_func.html", "functions_func" ],
-        [ "变量", "functions_vars.html", "functions_vars" ]
-      ] ]
-    ] ]
+    [ "模块列表", "namespaces.html", "namespaces" ],
+    [ "对象列表", "annotated.html", "annotated" ]
   ] ]
 ];
 
