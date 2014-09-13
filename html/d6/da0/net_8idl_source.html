@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.8"/>
-<title>{FibJS: Fiber Javascript}: net.idl 源文件</title>
+<title>Javascript on Fiber: net.idl 源文件</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
@@ -28,8 +28,9 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="../../logo.png"/></td>
   <td style="padding-left: 0.5em;">
-   <div id="projectname">{FibJS: Fiber Javascript}
+   <div id="projectname">Javascript on Fiber
    </div>
    <div id="projectbrief">基于 Google v8 引擎实现的协程应用开发框架</div>
   </td>
@@ -45,9 +46,9 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'搜索');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="../../index.html"><span>首页</span></a></li>
-      <li><a href="../../pages.html"><span>相关页面</span></a></li>
-      <li><a href="../../namespaces.html"><span>模块列表</span></a></li>
-      <li><a href="../../annotated.html"><span>对象列表</span></a></li>
+      <li><a href="../../pages.html"><span>基础教程</span></a></li>
+      <li><a href="../../namespaces.html"><span>模块手册</span></a></li>
+      <li><a href="../../annotated.html"><span>对象手册</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -103,62 +104,53 @@ $(document).ready(function(){initNavTree('d6/da0/net_8idl_source.html','../../')
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
 <div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="../../dc/d27/namespacenet.html">    9</a></span>&#160;module <a class="code" href="../../dc/d27/namespacenet.html">net</a></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;{</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keyword">const</span> Integer <a class="code" href="../../dc/d27/namespacenet.html#a154e84bb59358d901425c2996f3d6fde">AF_INET</a> = 2;</div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="../../dc/d27/namespacenet.html#a154e84bb59358d901425c2996f3d6fde">   12</a></span>&#160;    <span class="keyword">const</span> Integer <a class="code" href="../../dc/d27/namespacenet.html#a154e84bb59358d901425c2996f3d6fde">AF_INET</a> = 2;</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keyword">const</span> Integer <a class="code" href="../../dc/d27/namespacenet.html#a20c82f9528e1f2132ea230ef72d273cd">AF_INET6</a> = 10;</div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="../../dc/d27/namespacenet.html#a20c82f9528e1f2132ea230ef72d273cd">   15</a></span>&#160;    <span class="keyword">const</span> Integer <a class="code" href="../../dc/d27/namespacenet.html#a20c82f9528e1f2132ea230ef72d273cd">AF_INET6</a> = 10;</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keyword">const</span> Integer <a class="code" href="../../dc/d27/namespacenet.html#a0f09649c39e779734972244418abb947">SOCK_STREAM</a> = 1;</div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="../../dc/d27/namespacenet.html#a0f09649c39e779734972244418abb947">   18</a></span>&#160;    <span class="keyword">const</span> Integer <a class="code" href="../../dc/d27/namespacenet.html#a0f09649c39e779734972244418abb947">SOCK_STREAM</a> = 1;</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keyword">const</span> Integer <a class="code" href="../../dc/d27/namespacenet.html#ad4fdfbcf4cec520964c559a52a69c2f7">SOCK_DGRAM</a> = 2;</div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="../../dc/d27/namespacenet.html#ad4fdfbcf4cec520964c559a52a69c2f7">   21</a></span>&#160;    <span class="keyword">const</span> Integer <a class="code" href="../../dc/d27/namespacenet.html#ad4fdfbcf4cec520964c559a52a69c2f7">SOCK_DGRAM</a> = 2;</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keyword">static</span> String <a class="code" href="../../dc/d27/namespacenet.html#a733a23e8a51fdc5e2b1e3cafaf6f0010">resolve</a>(String name, Integer family = AF_INET) async;</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keyword">static</span> String <a class="code" href="../../dc/d27/namespacenet.html#a3150c8ad034c6a907a1531327a94b9a3">ip</a>(String name) async;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    static String ip(String name) async;</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keyword">static</span> String <a class="code" href="../../dc/d27/namespacenet.html#a8274c0c7f3a4ee82b2e1686b7d5afb7f">ipv6</a>(String name) async;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    static String ipv6(String name) async;</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keyword">static</span> <a class="code" href="../../dd/d94/interfaceSocket.html">Socket</a> <span class="keyword">new</span> <a class="code" href="../../dd/d94/interfaceSocket.html">Socket</a>();</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    static <a class="code" href="../../dd/d94/interfaceSocket.html">Socket</a> new <a class="code" href="../../dd/d94/interfaceSocket.html">Socket</a>();</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keyword">static</span> <a class="code" href="../../d4/dc7/interfaceStream.html">Stream</a> <a class="code" href="../../dc/d27/namespacenet.html#a2432a0ee7fbea52ddd8b24ecee5bd5c2">connect</a>(String host, Integer port, Integer family = <a class="code" href="../../dc/d27/namespacenet.html">net</a>.AF_INET) async;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    static <a class="code" href="../../d4/dc7/interfaceStream.html">Stream</a> connect(String host, Integer port, Integer family = <a class="code" href="../../dc/d27/namespacenet.html">net</a>.AF_INET) async;</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keyword">static</span> <a class="code" href="../../d4/dc7/interfaceStream.html">Stream</a> <a class="code" href="../../dc/d27/namespacenet.html#a2432a0ee7fbea52ddd8b24ecee5bd5c2">connect</a>(String url) async;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    static <a class="code" href="../../d4/dc7/interfaceStream.html">Stream</a> connect(String url) async;</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keyword">static</span> <a class="code" href="../../da/de8/interfaceSmtp.html">Smtp</a> <span class="keyword">new</span> <a class="code" href="../../da/de8/interfaceSmtp.html">Smtp</a>();</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    static <a class="code" href="../../da/de8/interfaceSmtp.html">Smtp</a> new <a class="code" href="../../da/de8/interfaceSmtp.html">Smtp</a>();</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keyword">static</span> Smtp <a class="code" href="../../dc/d27/namespacenet.html#aa6774e649b7fb2336400fd006ab6371b">openSmtp</a>(String host, Integer port, Integer family = <a class="code" href="../../dc/d27/namespacenet.html">net</a>.AF_INET) async;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    static Smtp openSmtp(String host, Integer port, Integer family = <a class="code" href="../../dc/d27/namespacenet.html">net</a>.AF_INET) async;</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keyword">static</span> <a class="code" href="../../d7/d48/interfaceTcpServer.html">TcpServer</a> <span class="keyword">new</span> <a class="code" href="../../d7/d48/interfaceTcpServer.html">TcpServer</a>();</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    static <a class="code" href="../../d7/d48/interfaceTcpServer.html">TcpServer</a> new <a class="code" href="../../d7/d48/interfaceTcpServer.html">TcpServer</a>();</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keyword">static</span> <a class="code" href="../../dd/d23/interfaceUrl.html">Url</a> <span class="keyword">new</span> <a class="code" href="../../dd/d23/interfaceUrl.html">Url</a>();</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    static <a class="code" href="../../dd/d23/interfaceUrl.html">Url</a> new <a class="code" href="../../dd/d23/interfaceUrl.html">Url</a>();</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keyword">static</span> String <a class="code" href="../../dc/d27/namespacenet.html#ab30af1b267baf4be6092ddd2d868970c">backend</a>();</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    static String backend();</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;};</div>
-<div class="ttc" id="namespacenet_html_ab30af1b267baf4be6092ddd2d868970c"><div class="ttname"><a href="../../dc/d27/namespacenet.html#ab30af1b267baf4be6092ddd2d868970c">net::backend</a></div><div class="ttdeci">static String backend()</div><div class="ttdoc">查询当前系统异步网络引擎 </div></div>
-<div class="ttc" id="namespacenet_html_a154e84bb59358d901425c2996f3d6fde"><div class="ttname"><a href="../../dc/d27/namespacenet.html#a154e84bb59358d901425c2996f3d6fde">net::AF_INET</a></div><div class="ttdeci">const Integer AF_INET</div><div class="ttdoc">地址集常量，指定 ipv4 </div><div class="ttdef"><b>Definition:</b> net.idl:11</div></div>
-<div class="ttc" id="namespacenet_html_a2432a0ee7fbea52ddd8b24ecee5bd5c2"><div class="ttname"><a href="../../dc/d27/namespacenet.html#a2432a0ee7fbea52ddd8b24ecee5bd5c2">net::connect</a></div><div class="ttdeci">static Stream connect(String host, Integer port, Integer family=net.AF_INET) async</div><div class="ttdoc">创建一个 Socket 对象并建立连接，参见 Socket </div></div>
-<div class="ttc" id="namespacenet_html_a8274c0c7f3a4ee82b2e1686b7d5afb7f"><div class="ttname"><a href="../../dc/d27/namespacenet.html#a8274c0c7f3a4ee82b2e1686b7d5afb7f">net::ipv6</a></div><div class="ttdeci">static String ipv6(String name) async</div><div class="ttdoc">快速查询的主机 ipv6 地址，等效与 resolve(name, net.AF_INET6) </div></div>
+<div class="ttc" id="namespacenet_html_a154e84bb59358d901425c2996f3d6fde"><div class="ttname"><a href="../../dc/d27/namespacenet.html#a154e84bb59358d901425c2996f3d6fde">net::AF_INET</a></div><div class="ttdeci">const Integer AF_INET</div><div class="ttdoc">地址集常量，指定 ipv4 </div><div class="ttdef"><b>Definition:</b> net.idl:12</div></div>
 <div class="ttc" id="namespacenet_html"><div class="ttname"><a href="../../dc/d27/namespacenet.html">net</a></div><div class="ttdoc">网络访问模块 </div><div class="ttdef"><b>Definition:</b> net.idl:9</div></div>
 <div class="ttc" id="namespacenet_html_a733a23e8a51fdc5e2b1e3cafaf6f0010"><div class="ttname"><a href="../../dc/d27/namespacenet.html#a733a23e8a51fdc5e2b1e3cafaf6f0010">net::resolve</a></div><div class="ttdeci">static String resolve(String name, Integer family=AF_INET) async</div><div class="ttdoc">查询给定的主机名的地址 </div></div>
-<div class="ttc" id="namespacenet_html_a20c82f9528e1f2132ea230ef72d273cd"><div class="ttname"><a href="../../dc/d27/namespacenet.html#a20c82f9528e1f2132ea230ef72d273cd">net::AF_INET6</a></div><div class="ttdeci">const Integer AF_INET6</div><div class="ttdoc">地址集常量，指定 ipv6 </div><div class="ttdef"><b>Definition:</b> net.idl:14</div></div>
+<div class="ttc" id="namespacenet_html_a20c82f9528e1f2132ea230ef72d273cd"><div class="ttname"><a href="../../dc/d27/namespacenet.html#a20c82f9528e1f2132ea230ef72d273cd">net::AF_INET6</a></div><div class="ttdeci">const Integer AF_INET6</div><div class="ttdoc">地址集常量，指定 ipv6 </div><div class="ttdef"><b>Definition:</b> net.idl:15</div></div>
 <div class="ttc" id="interfaceSocket_html"><div class="ttname"><a href="../../dd/d94/interfaceSocket.html">Socket</a></div><div class="ttdoc">网络套接口对象 </div><div class="ttdef"><b>Definition:</b> Socket.idl:9</div></div>
-<div class="ttc" id="namespacenet_html_a3150c8ad034c6a907a1531327a94b9a3"><div class="ttname"><a href="../../dc/d27/namespacenet.html#a3150c8ad034c6a907a1531327a94b9a3">net::ip</a></div><div class="ttdeci">static String ip(String name) async</div><div class="ttdoc">快速查询的主机地址，等效与 resolve(name) </div></div>
 <div class="ttc" id="interfaceStream_html"><div class="ttname"><a href="../../d4/dc7/interfaceStream.html">Stream</a></div><div class="ttdoc">流操作对象，用于二进制数据流读写 </div><div class="ttdef"><b>Definition:</b> Stream.idl:5</div></div>
-<div class="ttc" id="namespacenet_html_aa6774e649b7fb2336400fd006ab6371b"><div class="ttname"><a href="../../dc/d27/namespacenet.html#aa6774e649b7fb2336400fd006ab6371b">net::openSmtp</a></div><div class="ttdeci">static Smtp openSmtp(String host, Integer port, Integer family=net.AF_INET) async</div><div class="ttdoc">创建一个 Smtp 对象并建立连接，参见 Smtp </div></div>
 <div class="ttc" id="interfaceUrl_html"><div class="ttname"><a href="../../dd/d23/interfaceUrl.html">Url</a></div><div class="ttdoc">Url 处理对象 </div><div class="ttdef"><b>Definition:</b> Url.idl:9</div></div>
 <div class="ttc" id="interfaceSmtp_html"><div class="ttname"><a href="../../da/de8/interfaceSmtp.html">Smtp</a></div><div class="ttdoc">Smtp对象 </div><div class="ttdef"><b>Definition:</b> Smtp.idl:5</div></div>
 <div class="ttc" id="interfaceTcpServer_html"><div class="ttname"><a href="../../d7/d48/interfaceTcpServer.html">TcpServer</a></div><div class="ttdoc">tcp 服务器对象，可方便创建一个标准多纤程 tcp 服务器 </div><div class="ttdef"><b>Definition:</b> TcpServer.idl:19</div></div>
-<div class="ttc" id="namespacenet_html_ad4fdfbcf4cec520964c559a52a69c2f7"><div class="ttname"><a href="../../dc/d27/namespacenet.html#ad4fdfbcf4cec520964c559a52a69c2f7">net::SOCK_DGRAM</a></div><div class="ttdeci">const Integer SOCK_DGRAM</div><div class="ttdoc">协议族常量，指定 udp </div><div class="ttdef"><b>Definition:</b> net.idl:20</div></div>
-<div class="ttc" id="namespacenet_html_a0f09649c39e779734972244418abb947"><div class="ttname"><a href="../../dc/d27/namespacenet.html#a0f09649c39e779734972244418abb947">net::SOCK_STREAM</a></div><div class="ttdeci">const Integer SOCK_STREAM</div><div class="ttdoc">协议族常量，指定 tcp </div><div class="ttdef"><b>Definition:</b> net.idl:17</div></div>
+<div class="ttc" id="namespacenet_html_ad4fdfbcf4cec520964c559a52a69c2f7"><div class="ttname"><a href="../../dc/d27/namespacenet.html#ad4fdfbcf4cec520964c559a52a69c2f7">net::SOCK_DGRAM</a></div><div class="ttdeci">const Integer SOCK_DGRAM</div><div class="ttdoc">协议族常量，指定 udp </div><div class="ttdef"><b>Definition:</b> net.idl:21</div></div>
+<div class="ttc" id="namespacenet_html_a0f09649c39e779734972244418abb947"><div class="ttname"><a href="../../dc/d27/namespacenet.html#a0f09649c39e779734972244418abb947">net::SOCK_STREAM</a></div><div class="ttdeci">const Integer SOCK_STREAM</div><div class="ttdoc">协议族常量，指定 tcp </div><div class="ttdef"><b>Definition:</b> net.idl:18</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-<!-- start footer part -->
-<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
-  <ul>
-    <li class="navelem"><b>net.idl</b></li>
-    <li class="footer">制作者
-    <a href="http://www.doxygen.org/index.html">
-    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.8 </li>
-  </ul>
-</div>
+<style type="text/css">
+#nav-sync {
+  display:none;
+}
+</style>
 </body>
 </html>

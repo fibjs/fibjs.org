@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.8"/>
-<title>{FibJS: Fiber Javascript}: 服务器编程</title>
+<title>Javascript on Fiber: 服务器编程</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
@@ -28,8 +28,9 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="../../logo.png"/></td>
   <td style="padding-left: 0.5em;">
-   <div id="projectname">{FibJS: Fiber Javascript}
+   <div id="projectname">Javascript on Fiber
    </div>
    <div id="projectbrief">基于 Google v8 引擎实现的协程应用开发框架</div>
   </td>
@@ -45,9 +46,9 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'搜索');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="../../index.html"><span>首页</span></a></li>
-      <li class="current"><a href="../../pages.html"><span>相关页面</span></a></li>
-      <li><a href="../../namespaces.html"><span>模块列表</span></a></li>
-      <li><a href="../../annotated.html"><span>对象列表</span></a></li>
+      <li class="current"><a href="../../pages.html"><span>基础教程</span></a></li>
+      <li><a href="../../namespaces.html"><span>模块手册</span></a></li>
+      <li><a href="../../annotated.html"><span>对象手册</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -110,13 +111,13 @@ $(document).ready(function(){initNavTree('da/db3/server.html','../../');});
 静态文件服务器</h1>
 <p>使用 fibjs 创建一个简单的 web 服务器是一件很方便的事情。 </p><div class="fragment"><div class="line">var <a class="code" href="../../d3/d69/namespacehttp.html">http</a> = require(<span class="stringliteral">&#39;http&#39;</span>);</div>
 <div class="line"></div>
-<div class="line">var svr = <span class="keyword">new</span> <a class="code" href="../../d3/d69/namespacehttp.html">http</a>.Server(80, <a class="code" href="../../d3/d69/namespacehttp.html">http</a>.fileHandler(<span class="stringliteral">&#39;../fibjs/docs&#39;</span>));</div>
+<div class="line">var svr = <span class="keyword">new</span> http.Server(80, http.fileHandler(<span class="stringliteral">&#39;../fibjs/docs&#39;</span>));</div>
 <div class="line">svr.run();</div>
 </div><!-- fragment --><p>这个 web 服务器已经足够强大，支持自动压缩，支持预压缩，支持更新检查，作为普通的静态文件服务已经足够。</p>
 <p>然而我们显然不会满足于发布静态文件，因为无论是 apache 还是 nginx，都可以更专业地完成这一点，fibjs 的静态 web 服务器仅仅用于辅助完成一些不是很大量的前端文件下载。</p>
 <h1><a class="anchor" id="web_script"></a>
 动态服务器</h1>
-<p>一个动态服务器，其实并不比静态文件服务器复杂更多： </p><div class="fragment"><div class="line">var <a class="code" href="../../d3/d69/namespacehttp.html">http</a> = require(<span class="stringliteral">&#39;http&#39;</span>);</div>
+<p>一个动态服务器，其实并不比静态文件服务器复杂更多： </p><div class="fragment"><div class="line">var http = require(<span class="stringliteral">&#39;http&#39;</span>);</div>
 <div class="line"></div>
 <div class="line">var svr = <span class="keyword">new</span> http.Server(80, <span class="keyword">function</span>(r){</div>
 <div class="line">  r.response.write(<span class="stringliteral">&#39;Hello, World!&#39;</span>);</div>
@@ -138,13 +139,10 @@ $(document).ready(function(){initNavTree('da/db3/server.html','../../');});
 <div class="line">svr.run();</div>
 </div><!-- fragment --> </div></div><!-- contents -->
 </div><!-- doc-content -->
-<!-- start footer part -->
-<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
-  <ul>
-    <li class="footer">制作者
-    <a href="http://www.doxygen.org/index.html">
-    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.8 </li>
-  </ul>
-</div>
+<style type="text/css">
+#nav-sync {
+  display:none;
+}
+</style>
 </body>
 </html>

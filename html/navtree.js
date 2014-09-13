@@ -1,6 +1,6 @@
 var NAVTREE =
 [
-  [ "{FibJS: Fiber Javascript}", "index.html", [
+  [ "Javascript on Fiber", "index.html", [
     [ "快速入门", "index.html", [
       [ "什么是 fibjs", "index.html#intro_sec", null ],
       [ "编译执行版本", "index.html#install_sec", [
@@ -34,8 +34,8 @@ var NAVTREE =
         [ "小结", "d2/de8/start_prog.html#prg_step10", null ]
       ] ]
     ] ],
-    [ "模块列表", "namespaces.html", "namespaces" ],
-    [ "对象列表", "annotated.html", "annotated" ]
+    [ "模块手册", "namespaces.html", "namespaces" ],
+    [ "对象手册", "annotated.html", "annotated" ]
   ] ]
 ];
 
