@@ -11,6 +11,16 @@ var NAVTREE =
         [ "第五步：歇一会，喝点什么", "index.html#install_step5", null ]
       ] ]
     ] ],
+    [ "开始写代码", "d2/de8/start_prog.html", [
+      [ "开始写代码", "d2/de8/start_prog.html#program_sec", [
+        [ "第一步：Hello, World!", "d2/de8/start_prog.html#prg_step1", null ],
+        [ "第二步：DANG, DANG, DANG...", "d2/de8/start_prog.html#prg_step2", null ],
+        [ "第三步：DANG 们", "d2/de8/start_prog.html#prg_step3", null ],
+        [ "进阶：并行作业", "d2/de8/start_prog.html#prg_step4", null ],
+        [ "再进一步：异步作业", "d2/de8/start_prog.html#prg_step5", null ],
+        [ "小结", "d2/de8/start_prog.html#prg_step10", null ]
+      ] ]
+    ] ],
     [ "模块管理", "d0/db5/module.html", [
       [ "基本组成", "d0/db5/module.html#element", [
         [ "require() 函数", "d0/db5/module.html#fun_require", null ],
@@ -23,16 +33,6 @@ var NAVTREE =
       [ "静态文件服务器", "da/db3/server.html#web_file", null ],
       [ "动态服务器", "da/db3/server.html#web_script", null ],
       [ "动静合一", "da/db3/server.html#web_both", null ]
-    ] ],
-    [ "开始写代码", "d2/de8/start_prog.html", [
-      [ "开始写代码", "d2/de8/start_prog.html#program_sec", [
-        [ "第一步：Hello, World!", "d2/de8/start_prog.html#prg_step1", null ],
-        [ "第二步：DANG, DANG, DANG...", "d2/de8/start_prog.html#prg_step2", null ],
-        [ "第三步：DANG 们", "d2/de8/start_prog.html#prg_step3", null ],
-        [ "进阶：并行作业", "d2/de8/start_prog.html#prg_step4", null ],
-        [ "再进一步：异步作业", "d2/de8/start_prog.html#prg_step5", null ],
-        [ "小结", "d2/de8/start_prog.html#prg_step10", null ]
-      ] ]
     ] ],
     [ "模块", "namespaces.html", "namespaces" ],
     [ "对象", "annotated.html", "annotated" ],
