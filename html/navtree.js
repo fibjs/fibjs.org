@@ -34,8 +34,10 @@ var NAVTREE =
         [ "小结", "d2/de8/start_prog.html#prg_step10", null ]
       ] ]
     ] ],
-    [ "模块手册", "namespaces.html", "namespaces" ],
-    [ "对象手册", "annotated.html", "annotated" ]
+    [ "模块", "namespaces.html", "namespaces" ],
+    [ "对象", "annotated.html", "annotated" ],
+    [ "下载", "^https://github.com/xicilion/fibjs", null ],
+    [ "社区", "^http://baoz.me/fibjs", null ]
   ] ]
 ];
 
