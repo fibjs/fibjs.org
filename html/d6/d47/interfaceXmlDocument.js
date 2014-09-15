@@ -2,6 +2,7 @@ var interfaceXmlDocument =
 [
     [ "XmlDocument", "d6/d47/interfaceXmlDocument.html#a92a56107f3c365f7bcd63f44a70ade53", null ],
     [ "loadXML", "d6/d47/interfaceXmlDocument.html#a090ba7d0f45051e779cab5fde45434bd", null ],
+    [ "saveHTML", "d6/d47/interfaceXmlDocument.html#a2c6a5115998d03c962beb2775ff41688", null ],
     [ "createElement", "d6/d47/interfaceXmlDocument.html#a65f8f46b4272aadc80c69196f7cf3922", null ],
     [ "createTextNode", "d6/d47/interfaceXmlDocument.html#a0161354317be92241b35ff74232f9e38", null ],
     [ "createComment", "d6/d47/interfaceXmlDocument.html#aae5e8747b5fccb29d22242e38a2d06c0", null ],
@@ -23,6 +24,9 @@ var interfaceXmlDocument =
     [ "valueOf", "d6/d47/interfaceXmlDocument.html#ab9261a7662bc8bb4a898bc15dc16f206", null ],
     [ "doctype", "d6/d47/interfaceXmlDocument.html#a7ec13b3947845575a3d6f8f8858ef56f", null ],
     [ "documentElement", "d6/d47/interfaceXmlDocument.html#afc1468819742b4eed35d50224d9cd4b8", null ],
+    [ "inputEncoding", "d6/d47/interfaceXmlDocument.html#a7b57a17ac49e4bac77f6d13e0e88e2f4", null ],
+    [ "xmlStandalone", "d6/d47/interfaceXmlDocument.html#a91c41b35fa22c16719c4382cf2ba2898", null ],
+    [ "xmlVersion", "d6/d47/interfaceXmlDocument.html#a0103461ca29872471fc2bee3b874ec40", null ],
     [ "nodeName", "d6/d47/interfaceXmlDocument.html#ad493d7ec94ebfd1cb874d0b43920275d", null ],
     [ "nodeValue", "d6/d47/interfaceXmlDocument.html#acb09ccf7866b614f7964fa67c73f3160", null ],
     [ "nodeType", "d6/d47/interfaceXmlDocument.html#ab567cde9aaa2b765f0f16b4c963fa9d5", null ],

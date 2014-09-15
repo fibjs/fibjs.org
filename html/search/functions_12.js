@@ -2,11 +2,13 @@ var searchData=
 [
   ['sandbox',['SandBox',['../d5/dd4/interfaceSandBox.html#acd3962edcd65e4270953bb1f45aae2e3',1,'SandBox::SandBox(Object mods, String name=&quot;&quot;)'],['../d5/dd4/interfaceSandBox.html#a897d1ac183aac3c8870d88af91c13b95',1,'SandBox::SandBox(Object mods, Function require, String name=&quot;&quot;)'],['../d8/d89/namespacevm.html#a8e842bfbf905fcd1ef830b1074f59a34',1,'vm::SandBox()']]],
   ['save',['save',['../d2/d41/interfaceImage.html#ad87ff3e83842e1f90eabe33106fb84ef',1,'Image::save(Stream stm, Integer format=gd.PNG, Integer quality=85) async'],['../d2/d41/interfaceImage.html#a00f889fa05cda558fbb362b444cdcfd3',1,'Image::save(String fname, Integer format=gd.PNG, Integer quality=85) async'],['../d6/d6b/interfaceMongoCollection.html#abd1ea540422082aaf3a47087b84e8e7e',1,'MongoCollection::save()']]],
+  ['savehtml',['saveHTML',['../d6/d47/interfaceXmlDocument.html#a2c6a5115998d03c962beb2775ff41688',1,'XmlDocument']]],
   ['score',['score',['../db/d03/interfaceRedisSortedSet.html#a7d66540ff84098ad5d6a786b88cd36d2',1,'RedisSortedSet']]],
   ['seek',['seek',['../d6/d9c/interfaceSeekableStream.html#a61e24c7dbe030d5b57bb141fdacbb068',1,'SeekableStream']]],
   ['semaphore',['Semaphore',['../dc/d90/interfaceSemaphore.html#adf61e8770130c9f386c7c78934028379',1,'Semaphore::Semaphore()'],['../d6/d05/namespacecoroutine.html#ad2e5afc5a4b37eddd41ffcd409000f23',1,'coroutine::Semaphore()']]],
   ['send',['send',['../dd/d94/interfaceSocket.html#a6dd1fa9ffddf9c82db0847a913fadc06',1,'Socket']]],
   ['sendto',['sendTo',['../d6/db7/interfaceMessage.html#a8c456b35a88228f954974592e9b5c5ab',1,'Message']]],
+  ['serialize',['serialize',['../d8/dd3/namespacexml.html#a0589f143e26b1b4f715f815bb6b93a07',1,'xml']]],
   ['server',['Server',['../d3/d69/namespacehttp.html#ad4fe0324266eb7ca3209352741b33f84',1,'http::Server()'],['../df/dd2/namespacessl.html#a1b74602d4f15362fe1a6aab2a8bdb79e',1,'ssl::Server()']]],
   ['set',['set',['../da/d34/interfaceHttpCollection.html#a957b8f7874f7d21f9d6c2a7b8b329e91',1,'HttpCollection::set(Object map)'],['../da/d34/interfaceHttpCollection.html#a3df31bf39192d0b908c09af400468943',1,'HttpCollection::set(String name, Variant value)'],['../d0/d9e/interfaceLevelDB.html#af7471527684740acdaa111864a91f4c1',1,'LevelDB::set()'],['../dc/d81/interfaceLruCache.html#aac47180244d82cfa49c6cbfc3c6ae93a',1,'LruCache::set()'],['../d7/d32/interfaceRedis.html#a8fad3e27970320f768ba37dadde09e8e',1,'Redis::set()'],['../d9/d58/interfaceRedisHash.html#ac1f0d251ddf8ffd73b9829e1fd27fe90',1,'RedisHash::set()'],['../d0/da2/interfaceRedisList.html#a4d7201eb2fab564735e94bfbd4520c32',1,'RedisList::set()']]],
   ['setattribute',['setAttribute',['../d7/ddb/interfaceXmlElement.html#ac567d5f34138040160d498a2972b8267',1,'XmlElement']]],

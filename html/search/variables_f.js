@@ -14,5 +14,6 @@ var searchData=
   ['previoussibling',['previousSibling',['../dc/d8f/interfaceXmlNode.html#a1e2d8e642e8987ccfba221bed65fecf0',1,'XmlNode']]],
   ['processing_5finstruction_5fnode',['PROCESSING_INSTRUCTION_NODE',['../d8/dd3/namespacexml.html#a1c6be2a4139cea954375c2aa2097c8d0',1,'xml']]],
   ['protocol',['protocol',['../da/d38/interfaceHttpMessage.html#a336551e60570807abff96b539b914d25',1,'HttpMessage::protocol()'],['../dd/d23/interfaceUrl.html#ac2cd4dcec1bb66d83a47a964440efe96',1,'Url::protocol()']]],
+  ['publicid',['publicId',['../d4/d35/interfaceXmlDocumentType.html#ac77700dc33f9ef1f39fdcff73a9e7f27',1,'XmlDocumentType']]],
   ['publickey',['publicKey',['../d5/dac/interfacePKey.html#a83de0c0a123cafc0ecbb383a4035c787',1,'PKey::publicKey()'],['../dc/d22/interfaceX509Cert.html#aa0eb4675329365a69795ff52cc385c94',1,'X509Cert::publicKey()'],['../d7/d8b/interfaceX509Req.html#a4d039bd80913600438b107d0273c3eb4',1,'X509Req::publicKey()']]]
 ];

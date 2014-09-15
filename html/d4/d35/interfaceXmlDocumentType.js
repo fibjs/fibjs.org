@@ -12,6 +12,7 @@ var interfaceXmlDocumentType =
     [ "toJSON", "d4/d35/interfaceXmlDocumentType.html#ad66be13eb5b7c5f560fd8511565138c4", null ],
     [ "valueOf", "d4/d35/interfaceXmlDocumentType.html#ab9261a7662bc8bb4a898bc15dc16f206", null ],
     [ "name", "d4/d35/interfaceXmlDocumentType.html#a3224f939c2efed4a0e90b5d50a89008a", null ],
+    [ "publicId", "d4/d35/interfaceXmlDocumentType.html#ac77700dc33f9ef1f39fdcff73a9e7f27", null ],
     [ "systemId", "d4/d35/interfaceXmlDocumentType.html#a09ec50ecc1cd4b52071dc654324d3081", null ],
     [ "nodeName", "d4/d35/interfaceXmlDocumentType.html#ad493d7ec94ebfd1cb874d0b43920275d", null ],
     [ "nodeValue", "d4/d35/interfaceXmlDocumentType.html#acb09ccf7866b614f7964fa67c73f3160", null ],

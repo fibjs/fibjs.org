@@ -18,6 +18,8 @@ var searchData=
   ['xmlnode',['XmlNode',['../dc/d8f/interfaceXmlNode.html',1,'']]],
   ['xmlnodelist',['XmlNodeList',['../de/da6/interfaceXmlNodeList.html',1,'']]],
   ['xmlprocessinginstruction',['XmlProcessingInstruction',['../da/df6/interfaceXmlProcessingInstruction.html',1,'']]],
+  ['xmlstandalone',['xmlStandalone',['../d6/d47/interfaceXmlDocument.html#a91c41b35fa22c16719c4382cf2ba2898',1,'XmlDocument']]],
   ['xmltext',['XmlText',['../d3/d51/interfaceXmlText.html',1,'']]],
+  ['xmlversion',['xmlVersion',['../d6/d47/interfaceXmlDocument.html#a0103461ca29872471fc2bee3b874ec40',1,'XmlDocument']]],
   ['xor',['xor',['../df/dc1/interfaceInt64.html#a5f73b05ad1535edf16cb000a4d2aeaad',1,'Int64']]]
 ];
