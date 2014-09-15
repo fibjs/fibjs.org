@@ -13,7 +13,6 @@ var searchData=
   ['getbit',['getBit',['../d7/d32/interfaceRedis.html#a6b643d1cc2c262197c5fd04640607b02',1,'Redis']]],
   ['getcollection',['getCollection',['../d6/d6b/interfaceMongoCollection.html#ab1ca4f5480c96c52b645c4c4020c0f1b',1,'MongoCollection::getCollection()'],['../df/d69/interfaceMongoDB.html#a2b74f067a6063f2265de6f97c31bedf5',1,'MongoDB::getCollection()']]],
   ['getdata',['getData',['../d2/d41/interfaceImage.html#a3be130ab6c1896964f2a3c38817c5f5f',1,'Image']]],
-  ['getelementbyid',['getElementById',['../d6/d47/interfaceXmlDocument.html#aa2853e0f7da2970e5b846b419afa3cdb',1,'XmlDocument']]],
   ['getelementsbytagname',['getElementsByTagName',['../d6/d47/interfaceXmlDocument.html#ae061dd60cf3a8f21f484d5e7d12d334d',1,'XmlDocument::getElementsByTagName()'],['../d7/ddb/interfaceXmlElement.html#a8d897bd451f636b4d8b6ad54f6589a84',1,'XmlElement::getElementsByTagName()']]],
   ['gethash',['getHash',['../d7/d32/interfaceRedis.html#aec7a520518baaa94aa65e08a9ac9b7d3',1,'Redis']]],
   ['getindexes',['getIndexes',['../d6/d6b/interfaceMongoCollection.html#a1d9aea4a6a89b75ca4a5152968dd3054',1,'MongoCollection']]],

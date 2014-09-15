@@ -1,6 +1,5 @@
 var NAVTREEINDEX3 =
 {
-"d7/d32/interfaceRedis.html#a1c2531df8e027c7650295364a6eed5ec":[5,46,30],
 "d7/d32/interfaceRedis.html#a1ff4f50f05ac259f0deca3a8ba26e8f9":[5,46,38],
 "d7/d32/interfaceRedis.html#a210b988ae291c178e3462e934d86af20":[5,46,17],
 "d7/d32/interfaceRedis.html#a2c006aff561c91d3180790cc2b05b366":[5,46,34],
@@ -249,5 +248,6 @@ var NAVTREEINDEX3 =
 "d9/d2f/interfaceMongoID.html#ad66be13eb5b7c5f560fd8511565138c4":[5,39,2],
 "d9/d3e/namespacezlib.html":[4,26],
 "d9/d58/interfaceRedisHash.html":[5,47],
-"d9/d58/interfaceRedisHash.html#a02488736b85a0df04c107d44d4ae6feb":[5,47,7]
+"d9/d58/interfaceRedisHash.html#a02488736b85a0df04c107d44d4ae6feb":[5,47,7],
+"d9/d58/interfaceRedisHash.html#a08e88fb674bab3f04ab8479895788961":[5,47,9]
 };
