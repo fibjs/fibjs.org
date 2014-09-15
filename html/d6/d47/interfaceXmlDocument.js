@@ -2,7 +2,6 @@ var interfaceXmlDocument =
 [
     [ "XmlDocument", "d6/d47/interfaceXmlDocument.html#a92a56107f3c365f7bcd63f44a70ade53", null ],
     [ "loadXML", "d6/d47/interfaceXmlDocument.html#a090ba7d0f45051e779cab5fde45434bd", null ],
-    [ "saveHTML", "d6/d47/interfaceXmlDocument.html#a2c6a5115998d03c962beb2775ff41688", null ],
     [ "createElement", "d6/d47/interfaceXmlDocument.html#a65f8f46b4272aadc80c69196f7cf3922", null ],
     [ "createTextNode", "d6/d47/interfaceXmlDocument.html#a0161354317be92241b35ff74232f9e38", null ],
     [ "createComment", "d6/d47/interfaceXmlDocument.html#aae5e8747b5fccb29d22242e38a2d06c0", null ],

@@ -2,7 +2,6 @@ var searchData=
 [
   ['sandbox',['SandBox',['../d5/dd4/interfaceSandBox.html#acd3962edcd65e4270953bb1f45aae2e3',1,'SandBox::SandBox(Object mods, String name=&quot;&quot;)'],['../d5/dd4/interfaceSandBox.html#a897d1ac183aac3c8870d88af91c13b95',1,'SandBox::SandBox(Object mods, Function require, String name=&quot;&quot;)'],['../d8/d89/namespacevm.html#a8e842bfbf905fcd1ef830b1074f59a34',1,'vm::SandBox()']]],
   ['save',['save',['../d2/d41/interfaceImage.html#ad87ff3e83842e1f90eabe33106fb84ef',1,'Image::save(Stream stm, Integer format=gd.PNG, Integer quality=85) async'],['../d2/d41/interfaceImage.html#a00f889fa05cda558fbb362b444cdcfd3',1,'Image::save(String fname, Integer format=gd.PNG, Integer quality=85) async'],['../d6/d6b/interfaceMongoCollection.html#abd1ea540422082aaf3a47087b84e8e7e',1,'MongoCollection::save()']]],
-  ['savehtml',['saveHTML',['../d6/d47/interfaceXmlDocument.html#a2c6a5115998d03c962beb2775ff41688',1,'XmlDocument']]],
   ['score',['score',['../db/d03/interfaceRedisSortedSet.html#a7d66540ff84098ad5d6a786b88cd36d2',1,'RedisSortedSet']]],
   ['seek',['seek',['../d6/d9c/interfaceSeekableStream.html#a61e24c7dbe030d5b57bb141fdacbb068',1,'SeekableStream']]],
   ['semaphore',['Semaphore',['../dc/d90/interfaceSemaphore.html#adf61e8770130c9f386c7c78934028379',1,'Semaphore::Semaphore()'],['../d6/d05/namespacecoroutine.html#ad2e5afc5a4b37eddd41ffcd409000f23',1,'coroutine::Semaphore()']]],
