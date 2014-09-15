@@ -1,6 +1,7 @@
 var interfaceXmlProcessingInstruction =
 [
     [ "insertBefore", "da/df6/interfaceXmlProcessingInstruction.html#a0f3b815f26c12b2c31249ecb747ee7db", null ],
+    [ "insertAfter", "da/df6/interfaceXmlProcessingInstruction.html#af6498d34059fcb58b982eba90742f66d", null ],
     [ "replaceChild", "da/df6/interfaceXmlProcessingInstruction.html#ad27424cb66b1039ddff3f6c297fbe0fd", null ],
     [ "removeChild", "da/df6/interfaceXmlProcessingInstruction.html#a1b332c368e7f6bfa304a65f255c28dad", null ],
     [ "appendChild", "da/df6/interfaceXmlProcessingInstruction.html#a9ffe09f7056e1c870968ed3d957b83c5", null ],

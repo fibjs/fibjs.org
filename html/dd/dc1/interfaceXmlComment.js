@@ -6,6 +6,7 @@ var interfaceXmlComment =
     [ "deleteData", "dd/dc1/interfaceXmlComment.html#af80e360c50c76851d60bd2871b3bc4ec", null ],
     [ "replaceData", "dd/dc1/interfaceXmlComment.html#a7c1ba30620bfa7624afaca01364b0880", null ],
     [ "insertBefore", "dd/dc1/interfaceXmlComment.html#a0f3b815f26c12b2c31249ecb747ee7db", null ],
+    [ "insertAfter", "dd/dc1/interfaceXmlComment.html#af6498d34059fcb58b982eba90742f66d", null ],
     [ "replaceChild", "dd/dc1/interfaceXmlComment.html#ad27424cb66b1039ddff3f6c297fbe0fd", null ],
     [ "removeChild", "dd/dc1/interfaceXmlComment.html#a1b332c368e7f6bfa304a65f255c28dad", null ],
     [ "appendChild", "dd/dc1/interfaceXmlComment.html#a9ffe09f7056e1c870968ed3d957b83c5", null ],

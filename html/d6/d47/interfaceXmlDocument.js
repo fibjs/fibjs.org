@@ -10,6 +10,7 @@ var interfaceXmlDocument =
     [ "createAttribute", "d6/d47/interfaceXmlDocument.html#a78757f17aca856db37c2783ba6d40a2a", null ],
     [ "getElementsByTagName", "d6/d47/interfaceXmlDocument.html#ae061dd60cf3a8f21f484d5e7d12d334d", null ],
     [ "insertBefore", "d6/d47/interfaceXmlDocument.html#a0f3b815f26c12b2c31249ecb747ee7db", null ],
+    [ "insertAfter", "d6/d47/interfaceXmlDocument.html#af6498d34059fcb58b982eba90742f66d", null ],
     [ "replaceChild", "d6/d47/interfaceXmlDocument.html#ad27424cb66b1039ddff3f6c297fbe0fd", null ],
     [ "removeChild", "d6/d47/interfaceXmlDocument.html#a1b332c368e7f6bfa304a65f255c28dad", null ],
     [ "appendChild", "d6/d47/interfaceXmlDocument.html#a9ffe09f7056e1c870968ed3d957b83c5", null ],

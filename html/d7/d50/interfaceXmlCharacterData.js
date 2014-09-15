@@ -6,6 +6,7 @@ var interfaceXmlCharacterData =
     [ "deleteData", "d7/d50/interfaceXmlCharacterData.html#af80e360c50c76851d60bd2871b3bc4ec", null ],
     [ "replaceData", "d7/d50/interfaceXmlCharacterData.html#a7c1ba30620bfa7624afaca01364b0880", null ],
     [ "insertBefore", "d7/d50/interfaceXmlCharacterData.html#a0f3b815f26c12b2c31249ecb747ee7db", null ],
+    [ "insertAfter", "d7/d50/interfaceXmlCharacterData.html#af6498d34059fcb58b982eba90742f66d", null ],
     [ "replaceChild", "d7/d50/interfaceXmlCharacterData.html#ad27424cb66b1039ddff3f6c297fbe0fd", null ],
     [ "removeChild", "d7/d50/interfaceXmlCharacterData.html#a1b332c368e7f6bfa304a65f255c28dad", null ],
     [ "appendChild", "d7/d50/interfaceXmlCharacterData.html#a9ffe09f7056e1c870968ed3d957b83c5", null ],
