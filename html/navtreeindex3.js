@@ -1,5 +1,9 @@
 var NAVTREEINDEX3 =
 {
+"d7/d32/interfaceRedis.html#a0acadaf191bafc9dff5c8f2dad482ba9":[5,46,15],
+"d7/d32/interfaceRedis.html#a0ca852fc1075e833c7db632b5c404589":[5,46,25],
+"d7/d32/interfaceRedis.html#a0e23cd9b50839ba65971e8b6f75be883":[5,46,18],
+"d7/d32/interfaceRedis.html#a0f5526aeab2fe0d16274926cad953bbd":[5,46,23],
 "d7/d32/interfaceRedis.html#a10dd880a7427becdd65bd8f811defa50":[5,46,22],
 "d7/d32/interfaceRedis.html#a15a7d998869acee87500de7ca2815c44":[5,46,27],
 "d7/d32/interfaceRedis.html#a17789191649407fd4176186e0b5b4881":[5,46,7],
@@ -245,9 +249,5 @@ var NAVTREEINDEX3 =
 "d8/d2c/interfaceDbConnection.html#ab9261a7662bc8bb4a898bc15dc16f206":[5,7,10],
 "d8/d2c/interfaceDbConnection.html#ac61f07a7d6c5471293371086af3186bd":[5,7,8],
 "d8/d2c/interfaceDbConnection.html#ad66be13eb5b7c5f560fd8511565138c4":[5,7,9],
-"d8/d2c/interfaceDbConnection.html#ae6d31f438b2c274f32aade526f92da2f":[5,7,6],
-"d8/d89/namespacevm.html":[4,24],
-"d8/dd3/namespacexml.html":[4,25],
-"d9/d2f/interfaceMongoID.html":[5,39],
-"d9/d2f/interfaceMongoID.html#a6b88dbc459449d2280338e5b702a68b4":[5,39,0]
+"d8/d2c/interfaceDbConnection.html#ae6d31f438b2c274f32aade526f92da2f":[5,7,6]
 };

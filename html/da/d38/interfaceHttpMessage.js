@@ -8,6 +8,8 @@ var interfaceHttpMessage =
     [ "setHeader", "da/d38/interfaceHttpMessage.html#ac5626cfdbeb975e16ab3b127b76b1864", null ],
     [ "setHeader", "da/d38/interfaceHttpMessage.html#a080e5427207dcae84985d7085f54761c", null ],
     [ "removeHeader", "da/d38/interfaceHttpMessage.html#a527c0eba05ae52d3b2c9a2cf284277bd", null ],
+    [ "read", "da/d38/interfaceHttpMessage.html#a1ac79feaa497a9bdb849d41ae5a5fc93", null ],
+    [ "readAll", "da/d38/interfaceHttpMessage.html#aff82e4029da32471f8d5b3bf6142e8fc", null ],
     [ "write", "da/d38/interfaceHttpMessage.html#a42fdd87346cb529e34e1e12e41afe2bc", null ],
     [ "clear", "da/d38/interfaceHttpMessage.html#a8ed24470ab5214955c70bb108209f9d4", null ],
     [ "sendTo", "da/d38/interfaceHttpMessage.html#a8c456b35a88228f954974592e9b5c5ab", null ],

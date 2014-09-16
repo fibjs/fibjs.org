@@ -1,6 +1,8 @@
 var interfacePacketMessage =
 [
     [ "PacketMessage", "df/da2/interfacePacketMessage.html#ab8d7b8d572327a380361d29eb9ea6045", null ],
+    [ "read", "df/da2/interfacePacketMessage.html#a1ac79feaa497a9bdb849d41ae5a5fc93", null ],
+    [ "readAll", "df/da2/interfacePacketMessage.html#aff82e4029da32471f8d5b3bf6142e8fc", null ],
     [ "write", "df/da2/interfacePacketMessage.html#a42fdd87346cb529e34e1e12e41afe2bc", null ],
     [ "clear", "df/da2/interfacePacketMessage.html#a8ed24470ab5214955c70bb108209f9d4", null ],
     [ "sendTo", "df/da2/interfacePacketMessage.html#a8c456b35a88228f954974592e9b5c5ab", null ],

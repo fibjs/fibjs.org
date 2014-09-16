@@ -1,6 +1,8 @@
 var interfaceMessage =
 [
     [ "Message", "d6/db7/interfaceMessage.html#a4fc4f717b634e66070366cb7722d7761", null ],
+    [ "read", "d6/db7/interfaceMessage.html#a1ac79feaa497a9bdb849d41ae5a5fc93", null ],
+    [ "readAll", "d6/db7/interfaceMessage.html#aff82e4029da32471f8d5b3bf6142e8fc", null ],
     [ "write", "d6/db7/interfaceMessage.html#a42fdd87346cb529e34e1e12e41afe2bc", null ],
     [ "clear", "d6/db7/interfaceMessage.html#a8ed24470ab5214955c70bb108209f9d4", null ],
     [ "sendTo", "d6/db7/interfaceMessage.html#a8c456b35a88228f954974592e9b5c5ab", null ],
