@@ -7,5 +7,6 @@ var interfacePacketHandler =
     [ "toJSON", "de/dba/interfacePacketHandler.html#ad66be13eb5b7c5f560fd8511565138c4", null ],
     [ "valueOf", "de/dba/interfacePacketHandler.html#ab9261a7662bc8bb4a898bc15dc16f206", null ],
     [ "maxSize", "de/dba/interfacePacketHandler.html#a9c4c370ef4273c8b2331731c9831f171", null ],
+    [ "handler", "de/dba/interfacePacketHandler.html#a5d91cad3ed8157490f14917d868f3ce5", null ],
     [ "stats", "de/dba/interfacePacketHandler.html#a5da9786be9bd56aec792e88ca9931c6a", null ]
 ];
