@@ -1,7 +1,8 @@
 var interfaceXmlDocument =
 [
-    [ "XmlDocument", "d6/d47/interfaceXmlDocument.html#a92a56107f3c365f7bcd63f44a70ade53", null ],
+    [ "XmlDocument", "d6/d47/interfaceXmlDocument.html#a71daa95a33b7a692549974258893b36e", null ],
     [ "loadXML", "d6/d47/interfaceXmlDocument.html#a090ba7d0f45051e779cab5fde45434bd", null ],
+    [ "loadHTML", "d6/d47/interfaceXmlDocument.html#a5b0da7b011960bc464f74aa8d41e803f", null ],
     [ "getElementsByTagName", "d6/d47/interfaceXmlDocument.html#ae061dd60cf3a8f21f484d5e7d12d334d", null ],
     [ "getElementsByTagNameNS", "d6/d47/interfaceXmlDocument.html#afbbefb9ea2e7fc953727f5818c467376", null ],
     [ "createElement", "d6/d47/interfaceXmlDocument.html#a65f8f46b4272aadc80c69196f7cf3922", null ],
