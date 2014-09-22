@@ -19,7 +19,6 @@ var searchData=
   ['sock_5fdgram',['SOCK_DGRAM',['../dc/d27/namespacenet.html#ad4fdfbcf4cec520964c559a52a69c2f7',1,'net']]],
   ['sock_5fstream',['SOCK_STREAM',['../dc/d27/namespacenet.html#a0f09649c39e779734972244418abb947',1,'net']]],
   ['socket',['socket',['../da/de8/interfaceSmtp.html#a01a00f4b52964eec188c5681ec74758b',1,'Smtp::socket()'],['../d7/d48/interfaceTcpServer.html#a65ac0b9f39100986818c71192a7a1ef7',1,'TcpServer::socket()']]],
-  ['specified',['specified',['../d7/dce/interfaceXmlAttr.html#aa58bbedf5d98bd17e30a197c8f2fec97',1,'XmlAttr']]],
   ['stats',['stats',['../d6/d18/interfaceHttpHandler.html#acf6c3dfa3ceb95d3195a96adde981d61',1,'HttpHandler::stats()'],['../de/dba/interfacePacketHandler.html#a5da9786be9bd56aec792e88ca9931c6a',1,'PacketHandler::stats()'],['../d7/d48/interfaceTcpServer.html#ac39165a6d1da69beae4283af1905fe98',1,'TcpServer::stats()']]],
   ['status',['status',['../d9/d71/interfaceHttpResponse.html#a418ebc4d556401052e637162210dcadd',1,'HttpResponse']]],
   ['stream',['stream',['../d0/d37/interfaceBufferedStream.html#adc842e860f92cdb58347758fcf2532af',1,'BufferedStream::stream()'],['../d6/db7/interfaceMessage.html#a9b19686184c56df8c1fca416751a71b3',1,'Message::stream()'],['../de/d36/namespacecrypto.html#affac186a18bbd7b81965e49608c88938',1,'crypto::STREAM()']]],

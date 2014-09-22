@@ -60,6 +60,6 @@ var searchData=
   ['isundefined',['isUndefined',['../d2/dab/namespaceassert.html#ad7fedc8b1050fad9fc39df83da013809',1,'assert::isUndefined()'],['../d6/d72/namespaceutil.html#a714d17751c410e69c111fc0d849b1cf8',1,'util::isUndefined()']]],
   ['iswritable',['isWritable',['../dc/da9/interfaceStat.html#a568f1871921d0ed38b885a8d7218ed5d',1,'Stat']]],
   ['it',['it',['../df/d04/namespacetest.html#ada0940ce267ec02e7a502ee402a693bd',1,'test']]],
-  ['item',['item',['../de/da6/interfaceXmlNodeList.html#a6e8b9a1cbabcd6583552eb7d0ef3ce56',1,'XmlNodeList']]],
+  ['item',['item',['../d2/de1/interfaceXmlNamedNodeMap.html#a4bb4a3be15097481e82208c334340052',1,'XmlNamedNodeMap::item()'],['../de/da6/interfaceXmlNodeList.html#a6e8b9a1cbabcd6583552eb7d0ef3ce56',1,'XmlNodeList::item()']]],
   ['ivsize',['ivSize',['../df/d49/interfaceCipher.html#a8008bbe01ddf221b6482cd26ac63d80d',1,'Cipher']]]
 ];

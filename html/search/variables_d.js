@@ -1,6 +1,7 @@
 var searchData=
 [
   ['name',['name',['../df/d49/interfaceCipher.html#a8c7a977f76574518766d47c86dbdec00',1,'Cipher::name()'],['../d3/d3a/interfaceFile.html#ae249a82a4ed27278e366b4f791c59d4f',1,'File::name()'],['../d3/dea/interfaceHttpCookie.html#a1021070764b5270a9b7dcb14a48e22e7',1,'HttpCookie::name()'],['../d5/dac/interfacePKey.html#aa2c0c0b3b94a7f6ecd551fa994413c6b',1,'PKey::name()'],['../dc/da9/interfaceStat.html#ad647ebf992d48ff3b14a01c27563171d',1,'Stat::name()'],['../d7/dce/interfaceXmlAttr.html#aa75b1e6801f25d023fcb2c181fae149e',1,'XmlAttr::name()'],['../d4/d35/interfaceXmlDocumentType.html#a3224f939c2efed4a0e90b5d50a89008a',1,'XmlDocumentType::name()']]],
+  ['namespaceuri',['namespaceURI',['../d7/dce/interfaceXmlAttr.html#adca7cfb0b2e30cb5e20e941fe0b0d67f',1,'XmlAttr::namespaceURI()'],['../d7/ddb/interfaceXmlElement.html#a9e1e86588b68fdbcc3209a5fa54846e9',1,'XmlElement::namespaceURI()']]],
   ['next',['next',['../dc/d22/interfaceX509Cert.html#a0546d54369b3208d63bc547c8fe0efcc',1,'X509Cert']]],
   ['nextsibling',['nextSibling',['../dc/d8f/interfaceXmlNode.html#afed941f3caa5ce3ccd9fbbeec0cefb39',1,'XmlNode']]],
   ['no_5fcompression',['NO_COMPRESSION',['../d9/d3e/namespacezlib.html#a19b2fc6d45f128c13160d90572cf808c',1,'zlib']]],

@@ -16,5 +16,7 @@ var searchData=
   ['lock',['Lock',['../de/da6/interfaceLock.html#a9944623567d8138b95e74fadc7190adb',1,'Lock::Lock()'],['../d6/d05/namespacecoroutine.html#aeab21c924c4513dade92623907574c5f',1,'coroutine::Lock()']]],
   ['log',['log',['../dc/daa/namespaceconsole.html#a93b42645d56e3b4da5d2dc28ba6593cf',1,'console::log(String fmt,...)'],['../dc/daa/namespaceconsole.html#ac3cab060d14c380024c402df70f73877',1,'console::log(...)']]],
   ['login',['login',['../da/de8/interfaceSmtp.html#a84a3ae6b9df42198f4a6bf26d4fc61b4',1,'Smtp']]],
+  ['lookupnamespaceuri',['lookupNamespaceURI',['../dc/d8f/interfaceXmlNode.html#a9940f8621d0e65b0fc82f6f8959ffe6c',1,'XmlNode']]],
+  ['lookupprefix',['lookupPrefix',['../dc/d8f/interfaceXmlNode.html#a4ab7d0f533aedede8504be1021e39c8b',1,'XmlNode']]],
   ['lrucache',['LruCache',['../dc/d81/interfaceLruCache.html#a6fce7c256bb93ea2a366e4258cb2a39f',1,'LruCache::LruCache()'],['../d6/d72/namespaceutil.html#a236142a9837f80ea1f39d2cacd9b733c',1,'util::LruCache()']]]
 ];

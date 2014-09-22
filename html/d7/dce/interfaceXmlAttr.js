@@ -1,28 +1,8 @@
 var interfaceXmlAttr =
 [
-    [ "insertBefore", "d7/dce/interfaceXmlAttr.html#a0f3b815f26c12b2c31249ecb747ee7db", null ],
-    [ "insertAfter", "d7/dce/interfaceXmlAttr.html#af6498d34059fcb58b982eba90742f66d", null ],
-    [ "replaceChild", "d7/dce/interfaceXmlAttr.html#ad27424cb66b1039ddff3f6c297fbe0fd", null ],
-    [ "removeChild", "d7/dce/interfaceXmlAttr.html#a1b332c368e7f6bfa304a65f255c28dad", null ],
-    [ "appendChild", "d7/dce/interfaceXmlAttr.html#a9ffe09f7056e1c870968ed3d957b83c5", null ],
-    [ "hasChildNodes", "d7/dce/interfaceXmlAttr.html#a7144e0d715d39be72d7c14008fb1d74e", null ],
-    [ "cloneNode", "d7/dce/interfaceXmlAttr.html#ad997a00e2af8f05fe915dac55809e8e7", null ],
-    [ "normalize", "d7/dce/interfaceXmlAttr.html#a4762ae75380f9db0fc240fd3f91d5537", null ],
-    [ "dispose", "d7/dce/interfaceXmlAttr.html#a6b88dbc459449d2280338e5b702a68b4", null ],
-    [ "toString", "d7/dce/interfaceXmlAttr.html#ac61f07a7d6c5471293371086af3186bd", null ],
-    [ "toJSON", "d7/dce/interfaceXmlAttr.html#ad66be13eb5b7c5f560fd8511565138c4", null ],
-    [ "valueOf", "d7/dce/interfaceXmlAttr.html#ab9261a7662bc8bb4a898bc15dc16f206", null ],
-    [ "name", "d7/dce/interfaceXmlAttr.html#aa75b1e6801f25d023fcb2c181fae149e", null ],
-    [ "specified", "d7/dce/interfaceXmlAttr.html#aa58bbedf5d98bd17e30a197c8f2fec97", null ],
+    [ "localName", "d7/dce/interfaceXmlAttr.html#ae1968b7ca6329c6106da0723ac993cc1", null ],
     [ "value", "d7/dce/interfaceXmlAttr.html#a8b7f7daea2667f93eb17e732bc254872", null ],
-    [ "nodeName", "d7/dce/interfaceXmlAttr.html#ad493d7ec94ebfd1cb874d0b43920275d", null ],
-    [ "nodeValue", "d7/dce/interfaceXmlAttr.html#acb09ccf7866b614f7964fa67c73f3160", null ],
-    [ "nodeType", "d7/dce/interfaceXmlAttr.html#ab567cde9aaa2b765f0f16b4c963fa9d5", null ],
-    [ "parentNode", "d7/dce/interfaceXmlAttr.html#ac6727f3f092028418cdbf0b44225f58a", null ],
-    [ "childNodes", "d7/dce/interfaceXmlAttr.html#a059aaa73cdf03ffaedca637383a736a1", null ],
-    [ "firstChild", "d7/dce/interfaceXmlAttr.html#a531433c5bac57f29e3c6a353e52dff22", null ],
-    [ "lastChild", "d7/dce/interfaceXmlAttr.html#a6861687522fd0a6bfd5b132a52bcb097", null ],
-    [ "previousSibling", "d7/dce/interfaceXmlAttr.html#a1e2d8e642e8987ccfba221bed65fecf0", null ],
-    [ "nextSibling", "d7/dce/interfaceXmlAttr.html#afed941f3caa5ce3ccd9fbbeec0cefb39", null ],
-    [ "ownerDocument", "d7/dce/interfaceXmlAttr.html#ac337d5947ef6cc93ff2e62a86ada9bd4", null ]
+    [ "name", "d7/dce/interfaceXmlAttr.html#aa75b1e6801f25d023fcb2c181fae149e", null ],
+    [ "namespaceURI", "d7/dce/interfaceXmlAttr.html#adca7cfb0b2e30cb5e20e941fe0b0d67f", null ],
+    [ "prefix", "d7/dce/interfaceXmlAttr.html#a9bc6de3301a791ae393d4f382bf6ea72", null ]
 ];
