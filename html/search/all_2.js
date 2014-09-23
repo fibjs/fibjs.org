@@ -10,6 +10,7 @@ var searchData=
   ['cfb64',['CFB64',['../de/d36/namespacecrypto.html#a0a1cddd2c09e9758f26a961ffc736e62',1,'crypto']]],
   ['chain',['Chain',['../d3/d78/interfaceChain.html',1,'Chain'],['../d3/d78/interfaceChain.html#ac3ffc3a20f954287a0a716eab003309b',1,'Chain::Chain()'],['../dd/dbd/namespacemq.html#adc2509ef9b804dd62d89c693a4ea65b6',1,'mq::Chain()']]],
   ['charset',['charset',['../d0/d37/interfaceBufferedStream.html#a3d617075c9b6ea5124a0e132ab31b3c5',1,'BufferedStream']]],
+  ['chdir',['chdir',['../d8/d25/namespaceprocess.html#a8561579fcdf7f34e795e6937829a39ff',1,'process']]],
   ['childnodes',['childNodes',['../dc/d8f/interfaceXmlNode.html#a059aaa73cdf03ffaedca637383a736a1',1,'XmlNode']]],
   ['chmod',['chmod',['../d3/d3a/interfaceFile.html#aa13cc9318e8f5ea58f0befb9ac709d72',1,'File::chmod()'],['../d5/d8f/namespacefs.html#a5b69648f9d4875d97bd01b007c095f94',1,'fs::chmod()']]],
   ['chord',['CHORD',['../dd/d5d/namespacegd.html#a022fb2b713f2bd7764e674572f3f6f76',1,'gd']]],
@@ -36,7 +37,6 @@ var searchData=
   ['colorresolvealpha',['colorResolveAlpha',['../d2/d41/interfaceImage.html#ab86e50beb02597d0ca86e8dfef49b3b2',1,'Image::colorResolveAlpha(Integer red, Integer green, Integer blue, Number alpha)'],['../d2/d41/interfaceImage.html#aeb55718a5fe65ed0e1e906c0e0d494c9',1,'Image::colorResolveAlpha(Integer color)']]],
   ['colors',['colors',['../dc/daa/namespaceconsole.html#ac66c67c224cee71b91094d3d6d6da15d',1,'console']]],
   ['colorstotal',['colorsTotal',['../d2/d41/interfaceImage.html#a9b5c37f5ae92d16e529147273a561203',1,'Image']]],
-  ['combine',['combine',['../d0/d43/namespacepath.html#a3d61d07eb72f122b18f74d930df2730f',1,'path']]],
   ['command',['command',['../d7/d32/interfaceRedis.html#abcc3b4d57289f58937a25245bc614359',1,'Redis::command()'],['../da/de8/interfaceSmtp.html#a8856c5ea86c3aa98d799ae76134970f5',1,'Smtp::command()']]],
   ['comment_5fnode',['COMMENT_NODE',['../d8/dd3/namespacexml.html#a8b18c7dcf1e516963ec735903b81d328',1,'xml']]],
   ['commit',['commit',['../d8/d2c/interfaceDbConnection.html#a1cfd7776b7f7b4a34e216f33b4df823b',1,'DbConnection::commit()'],['../d0/d9e/interfaceLevelDB.html#ad7d98e0ce00ca52d838a1b31d9d323ba',1,'LevelDB::commit()']]],
@@ -75,5 +75,6 @@ var searchData=
   ['crypto',['crypto',['../de/d36/namespacecrypto.html',1,'']]],
   ['ctime',['ctime',['../dc/da9/interfaceStat.html#af62482780f5ebea39cf8f173f424f7d4',1,'Stat']]],
   ['ctr',['CTR',['../de/d36/namespacecrypto.html#a01bb9b9d12fb491a950e0279a60f602d',1,'crypto']]],
-  ['current',['current',['../d6/d05/namespacecoroutine.html#ae2d278991596f4170f2be18ae8d71454',1,'coroutine']]]
+  ['current',['current',['../d6/d05/namespacecoroutine.html#ae2d278991596f4170f2be18ae8d71454',1,'coroutine']]],
+  ['cwd',['cwd',['../d8/d25/namespaceprocess.html#a59492653e6cf45081a9c8a348c57af16',1,'process']]]
 ];

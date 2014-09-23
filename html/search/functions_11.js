@@ -34,6 +34,7 @@ var searchData=
   ['readuint32le',['readUInt32LE',['../d9/dae/interfaceBuffer.html#a5f255361274039c12fbd58cea3a8972a',1,'Buffer']]],
   ['readuint8',['readUInt8',['../d9/dae/interfaceBuffer.html#a31773d42f004ef4effdee037a2471038',1,'Buffer']]],
   ['readuntil',['readUntil',['../d0/d37/interfaceBufferedStream.html#ab2c46249f028cc1dfdade4fe74ccc8de',1,'BufferedStream']]],
+  ['realpath',['realpath',['../d0/d43/namespacepath.html#a5ec915b6960885194e16dee92fa40b3c',1,'path']]],
   ['rectangle',['rectangle',['../d2/d41/interfaceImage.html#ace7d39b9ae123abe9431f0f1ebb66f73',1,'Image']]],
   ['recv',['recv',['../dd/d94/interfaceSocket.html#a28174e411f641885369212291b0302d2',1,'Socket']]],
   ['redirect',['redirect',['../d9/d71/interfaceHttpResponse.html#a3b4a9739aa8441aba59090faeca184da',1,'HttpResponse']]],

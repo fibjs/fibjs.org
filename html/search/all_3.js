@@ -21,6 +21,7 @@ var searchData=
   ['deflateto',['deflateTo',['../d9/d3e/namespacezlib.html#aa6b8b6d518e950dbaca2b18ab4330fbe',1,'zlib::deflateTo(Buffer data, Stream stm, Integer level=DEFAULT_COMPRESSION) async'],['../d9/d3e/namespacezlib.html#a26b0d322158d30cfb60c774ee212f8d1',1,'zlib::deflateTo(Stream src, Stream stm, Integer level=DEFAULT_COMPRESSION) async']]],
   ['del',['del',['../d7/d32/interfaceRedis.html#ab82f73848a2409c123b633c05294ca2e',1,'Redis::del(Array keys)'],['../d7/d32/interfaceRedis.html#a0ca852fc1075e833c7db632b5c404589',1,'Redis::del(...)'],['../d9/d58/interfaceRedisHash.html#a35acad981389e288138c66b06bfdd757',1,'RedisHash::del(Array fields)'],['../d9/d58/interfaceRedisHash.html#a85157309a13caf605121dad1b55769d4',1,'RedisHash::del(...)']]],
   ['deletedata',['deleteData',['../d7/d50/interfaceXmlCharacterData.html#af80e360c50c76851d60bd2871b3bc4ec',1,'XmlCharacterData']]],
+  ['delimiter',['delimiter',['../d0/d43/namespacepath.html#a3036db6751ec95465b014989251b2946',1,'path']]],
   ['des',['DES',['../de/d36/namespacecrypto.html#ae2125c6387aecbaab90570f65fb4f518',1,'crypto']]],
   ['des_5fede',['DES_EDE',['../de/d36/namespacecrypto.html#ae36cf5e98c7fdf6ca3d4eefba29491bc',1,'crypto']]],
   ['des_5fede3',['DES_EDE3',['../de/d36/namespacecrypto.html#a6a5919b052e90ecfc692123bf4657d04',1,'crypto']]],

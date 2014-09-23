@@ -1,6 +1,7 @@
 var searchData=
 [
   ['chain',['Chain',['../d3/d78/interfaceChain.html#ac3ffc3a20f954287a0a716eab003309b',1,'Chain::Chain()'],['../dd/dbd/namespacemq.html#adc2509ef9b804dd62d89c693a4ea65b6',1,'mq::Chain()']]],
+  ['chdir',['chdir',['../d8/d25/namespaceprocess.html#a8561579fcdf7f34e795e6937829a39ff',1,'process']]],
   ['chmod',['chmod',['../d3/d3a/interfaceFile.html#aa13cc9318e8f5ea58f0befb9ac709d72',1,'File::chmod()'],['../d5/d8f/namespacefs.html#a5b69648f9d4875d97bd01b007c095f94',1,'fs::chmod()']]],
   ['cipher',['Cipher',['../df/d49/interfaceCipher.html#af0b902f19da1b9dd5a689c9fc284d97e',1,'Cipher::Cipher(Integer provider, Buffer key)'],['../df/d49/interfaceCipher.html#ab6b3e680fdf5a609323ff03e850165b2',1,'Cipher::Cipher(Integer provider, Integer mode, Buffer key)'],['../df/d49/interfaceCipher.html#a264a3a79bce05873b19a45b4edda3899',1,'Cipher::Cipher(Integer provider, Integer mode, Buffer key, Buffer iv)'],['../de/d36/namespacecrypto.html#ad31b4cf7a60b15e0abde66067041852e',1,'crypto::Cipher()']]],
   ['clear',['clear',['../da/d34/interfaceHttpCollection.html#abb5c5b670c5e00501b6e67a26cc415e0',1,'HttpCollection::clear()'],['../dc/d81/interfaceLruCache.html#a712f2067f0af560e382de4e5a8df6759',1,'LruCache::clear()'],['../d2/dc1/interfaceMap.html#a2f509af9bf4d94ab4412b11f071f3249',1,'Map::clear()'],['../d2/d93/interfaceMemoryStream.html#ab4729b2a0ed520dc2c9ec13d6ba78083',1,'MemoryStream::clear()'],['../d6/db7/interfaceMessage.html#a8ed24470ab5214955c70bb108209f9d4',1,'Message::clear()'],['../d1/d56/interfaceQueue.html#a0d245f8b5cd9e660ef6f33afd9773d7d',1,'Queue::clear()'],['../dc/d22/interfaceX509Cert.html#a77b2377e261f7206b7b5361e55a91d28',1,'X509Cert::clear()'],['../d9/d86/interfaceX509Crl.html#a4e82b7556162d0ccaee7fab737c54335',1,'X509Crl::clear()']]],
@@ -21,7 +22,6 @@ var searchData=
   ['colorreplace',['colorReplace',['../d2/d41/interfaceImage.html#a7144eac161283e6acbdec4b60322fd42',1,'Image']]],
   ['colorresolve',['colorResolve',['../d2/d41/interfaceImage.html#a0a06c263c83f0fb55a056fa838d0cf53',1,'Image::colorResolve(Integer red, Integer green, Integer blue)'],['../d2/d41/interfaceImage.html#a10f7b33fa7d0656457d00c2e7006ab6a',1,'Image::colorResolve(Integer color)']]],
   ['colorresolvealpha',['colorResolveAlpha',['../d2/d41/interfaceImage.html#ab86e50beb02597d0ca86e8dfef49b3b2',1,'Image::colorResolveAlpha(Integer red, Integer green, Integer blue, Number alpha)'],['../d2/d41/interfaceImage.html#aeb55718a5fe65ed0e1e906c0e0d494c9',1,'Image::colorResolveAlpha(Integer color)']]],
-  ['combine',['combine',['../d0/d43/namespacepath.html#a3d61d07eb72f122b18f74d930df2730f',1,'path']]],
   ['command',['command',['../d7/d32/interfaceRedis.html#abcc3b4d57289f58937a25245bc614359',1,'Redis::command()'],['../da/de8/interfaceSmtp.html#a8856c5ea86c3aa98d799ae76134970f5',1,'Smtp::command()']]],
   ['commit',['commit',['../d8/d2c/interfaceDbConnection.html#a1cfd7776b7f7b4a34e216f33b4df823b',1,'DbConnection::commit()'],['../d0/d9e/interfaceLevelDB.html#ad7d98e0ce00ca52d838a1b31d9d323ba',1,'LevelDB::commit()']]],
   ['compare',['compare',['../df/dc1/interfaceInt64.html#a37fabf0a2e29ca3bcadcd130314d5ca1',1,'Int64']]],
@@ -50,5 +50,6 @@ var searchData=
   ['createtextnode',['createTextNode',['../d6/d47/interfaceXmlDocument.html#a0161354317be92241b35ff74232f9e38',1,'XmlDocument']]],
   ['crit',['crit',['../dc/daa/namespaceconsole.html#aafeccfedf3222b47114d8ec262f10294',1,'console::crit(String fmt,...)'],['../dc/daa/namespaceconsole.html#adf1c772e176fe40eb4ffae758cf22c64',1,'console::crit(...)']]],
   ['crop',['crop',['../d2/d41/interfaceImage.html#a945d440ac93ede21a89839946be8da8f',1,'Image']]],
-  ['current',['current',['../d6/d05/namespacecoroutine.html#ae2d278991596f4170f2be18ae8d71454',1,'coroutine']]]
+  ['current',['current',['../d6/d05/namespacecoroutine.html#ae2d278991596f4170f2be18ae8d71454',1,'coroutine']]],
+  ['cwd',['cwd',['../d8/d25/namespaceprocess.html#a59492653e6cf45081a9c8a348c57af16',1,'process']]]
 ];
