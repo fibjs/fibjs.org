@@ -1,8 +1,7 @@
 var interfaceXmlDocument =
 [
-    [ "XmlDocument", "d6/d47/interfaceXmlDocument.html#a71daa95a33b7a692549974258893b36e", null ],
-    [ "loadXML", "d6/d47/interfaceXmlDocument.html#a090ba7d0f45051e779cab5fde45434bd", null ],
-    [ "loadHTML", "d6/d47/interfaceXmlDocument.html#a5b0da7b011960bc464f74aa8d41e803f", null ],
+    [ "XmlDocument", "d6/d47/interfaceXmlDocument.html#a91a32361687383814fb9b20f4b47293a", null ],
+    [ "load", "d6/d47/interfaceXmlDocument.html#a8ca27c745df2550d267efc6b64575085", null ],
     [ "getElementsByTagName", "d6/d47/interfaceXmlDocument.html#ae061dd60cf3a8f21f484d5e7d12d334d", null ],
     [ "getElementsByTagNameNS", "d6/d47/interfaceXmlDocument.html#afbbefb9ea2e7fc953727f5818c467376", null ],
     [ "createElement", "d6/d47/interfaceXmlDocument.html#a65f8f46b4272aadc80c69196f7cf3922", null ],
@@ -30,6 +29,9 @@ var interfaceXmlDocument =
     [ "xmlVersion", "d6/d47/interfaceXmlDocument.html#a0103461ca29872471fc2bee3b874ec40", null ],
     [ "doctype", "d6/d47/interfaceXmlDocument.html#a7ec13b3947845575a3d6f8f8858ef56f", null ],
     [ "documentElement", "d6/d47/interfaceXmlDocument.html#afc1468819742b4eed35d50224d9cd4b8", null ],
+    [ "head", "d6/d47/interfaceXmlDocument.html#a1052d2e3c611f68426fd1870381bd8fe", null ],
+    [ "title", "d6/d47/interfaceXmlDocument.html#a0c4ac9f00a43be8a933fcd4d45612c8d", null ],
+    [ "body", "d6/d47/interfaceXmlDocument.html#a621149c54c557f6e0dfbb3612a723b82", null ],
     [ "nodeType", "d6/d47/interfaceXmlDocument.html#ab567cde9aaa2b765f0f16b4c963fa9d5", null ],
     [ "nodeName", "d6/d47/interfaceXmlDocument.html#ad493d7ec94ebfd1cb874d0b43920275d", null ],
     [ "nodeValue", "d6/d47/interfaceXmlDocument.html#acb09ccf7866b614f7964fa67c73f3160", null ],

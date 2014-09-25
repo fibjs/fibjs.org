@@ -9,6 +9,7 @@ var searchData=
   ['hasheader',['hasHeader',['../da/d38/interfaceHttpMessage.html#a9bafc9a247f9378904788642ab903e03',1,'HttpMessage']]],
   ['hasnext',['hasNext',['../dc/d27/interfaceMongoCursor.html#a4d30b04ba787bf502fc0defe1fb03385',1,'MongoCursor']]],
   ['have',['have',['../d0/df6/interfaceExpect.html#abf30a5901c5cd7fb1a9f7d35420c07a2',1,'Expect']]],
+  ['head',['head',['../d6/d47/interfaceXmlDocument.html#a1052d2e3c611f68426fd1870381bd8fe',1,'XmlDocument']]],
   ['headers',['headers',['../da/d38/interfaceHttpMessage.html#aedc41fa258d4d5cf91d2f850dd49ece4',1,'HttpMessage']]],
   ['height',['height',['../d2/d41/interfaceImage.html#a9b98a87b3cf26704f574a98268638875',1,'Image']]],
   ['hello',['hello',['../da/de8/interfaceSmtp.html#a2827151e3c7938f20ef793ce708a5f22',1,'Smtp']]],

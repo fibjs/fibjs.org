@@ -12,6 +12,7 @@ var searchData=
   ['childnodes',['childNodes',['../dc/d8f/interfaceXmlNode.html#a059aaa73cdf03ffaedca637383a736a1',1,'XmlNode']]],
   ['chord',['CHORD',['../dd/d5d/namespacegd.html#a022fb2b713f2bd7764e674572f3f6f76',1,'gd']]],
   ['chunks',['chunks',['../d7/d34/interfaceGridFS.html#a51c4888d0359afc9be25be0cffc2a6a1',1,'GridFS']]],
+  ['classname',['className',['../d7/ddb/interfaceXmlElement.html#ad2846c385dc6d236dfd0b6928ea213a3',1,'XmlElement']]],
   ['colors',['colors',['../dc/daa/namespaceconsole.html#ac66c67c224cee71b91094d3d6d6da15d',1,'console']]],
   ['colorstotal',['colorsTotal',['../d2/d41/interfaceImage.html#a9b5c37f5ae92d16e529147273a561203',1,'Image']]],
   ['comment_5fnode',['COMMENT_NODE',['../d8/dd3/namespacexml.html#a8b18c7dcf1e516963ec735903b81d328',1,'xml']]],

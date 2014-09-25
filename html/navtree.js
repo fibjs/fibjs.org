@@ -46,10 +46,10 @@ var NAVTREEINDEX =
 "annotated.html",
 "d2/d68/interfaceMySQL.html#ab9261a7662bc8bb4a898bc15dc16f206",
 "d4/dd8/interfaceXmlCDATASection.html#a4762ae75380f9db0fc240fd3f91d5537",
-"d7/d32/interfaceRedis.html#a04f350bace05c348daed5b1bdeb0b12e",
-"d9/d2f/interfaceMongoID.html#ab9261a7662bc8bb4a898bc15dc16f206",
-"db/d03/interfaceRedisSortedSet.html#a033c2cbea581c0071ee7a3f73f460bd8",
-"de/dba/interfacePacketHandler.html#a6b88dbc459449d2280338e5b702a68b4"
+"d7/d32/interfaceRedis.html",
+"d8/d2c/interfaceDbConnection.html#ad66be13eb5b7c5f560fd8511565138c4",
+"da/df6/interfaceXmlProcessingInstruction.html#ad66be13eb5b7c5f560fd8511565138c4",
+"de/da6/interfaceXmlNodeList.html#ac61f07a7d6c5471293371086af3186bd"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
