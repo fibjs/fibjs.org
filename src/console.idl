@@ -1,0 +1,276 @@
+
+/*! @brief 控制台访问对象
+
+ 全局对象。可用于提示信息，警告和错误记录。通过启动配置文件，可将日志定位
+ 到不同的设备，以便于跟踪。日志支持格式化输出，例如：
+ @code
+ console.log("%d + %d = %d", 100, 200, 100 + 200);
+ @endcode
+ 可以使用的格式化参数如下：
+ - %s - 字符串
+ - %d - 数字，包括整数和数字
+ - %j - 以 JSON 格式输出对象
+ - %% - 输出字符 '%' 本身
+ */
+module console
+{
+    /*! @brief loglevel 级别常量 */
+    const Integer FATAL = 0;
+
+    /*! @brief loglevel 级别常量 */
+    const Integer ALERT = 1;
+
+    /*! @brief loglevel 级别常量 */
+    const Integer CRIT = 2;
+
+    /*! @brief loglevel 级别常量 */
+    const Integer ERROR = 3;
+
+    /*! @brief loglevel 级别常量 */
+    const Integer WARN = 4;
+
+    /*! @brief loglevel 级别常量 */
+    const Integer NOTICE = 5;
+
+    /*! @brief loglevel 级别常量 */
+    const Integer INFO = 6;
+
+    /*! @brief loglevel 级别常量 */
+    const Integer DEBUG = 7;
+
+    /*! @brief loglevel 级别常量 */
+    const Integer NOTSET = 10;
+
+    /*! @brief 输出级别，用以过滤输出信息，缺省为 NOTSET，全部输出。信息过滤之后才会输出给 add 设定的各个设备。
+     */
+    static Integer loglevel;
+
+    /*! @brief 终端输出颜色配置对象，详见 TextColor */
+    static readonly TextColor colors;
+
+    /*! @brief 批量添加 console 输出系统，支持的设备为 console, syslog 和 file，最多可以添加 10 个输出
+
+     通过配置 console，可以将程序输出和系统错误发往不同设备，用于运行环境信息收集。
+
+     @code
+     console.add(["console", {
+        type: "syslog",
+        levels: [console.INFO, console.ERROR]
+     }]);
+     @endcode
+
+     @param cfg 输出配置数组
+     */
+    static add(Array cfg);
+
+    /*! @brief 添加 console 输出系统，支持的设备为 console, syslog 和 file，最多可以添加 10 个输出
+
+     通过配置 console，可以将程序输出和系统错误发往不同设备，用于运行环境信息收集。
+
+     cfg 为配置，可以为设备名称字符串：
+
+     @code
+     console.add("console");
+     @endcode
+
+     也可以为一个设备配置对象：
+     @code
+     console.add({
+        type: "console",
+        levels: [console.INFO, console.ERROR]  // 选项，省略则输出全部级别日志
+     });
+     @endcode
+
+     syslog 仅在 posix 平台有效：
+     @code
+     console.add({
+        type: "syslog",
+        levels: [console.INFO, console.ERROR]
+     });
+     @endcode
+
+     file 日志不支持简单调用：
+     @code
+     console.add({
+        type: "file",
+        levels: [console.INFO, console.ERROR],
+        path: "path/to/file",  // 必选项
+        split: "30m",  // 选项，可选值为 "day", "hour", "minute", "###k", "###m", "###g"
+        count: 10 // 选项，可选范围为 2-128，指定此项时必须提供 split
+     });
+     @endcode
+
+     @param cfg 输出配置
+     */
+    static add(Value cfg);
+
+    /*! @brief 初始化到缺省设置，只在 console 输出信息 */
+    static reset();
+
+    /*! @brief 记录普通日志信息，与 info 等同
+
+     记录一般等级的日志信息。通常用于输出非错误性提示信息。
+     @param fmt 格式化字符串
+     @param ... 可选参数列表
+     */
+    static log(String fmt, ...);
+
+    /*! @brief 记录普通日志信息，与 info 等同
+
+     记录一般等级的日志信息。通常用于输出非错误性提示信息。
+     @param ... 可选参数列表
+     */
+    static log(...);
+
+    /*! @brief 记录调试日志信息
+
+     记录调试日志信息。通常用于输出调试信息。不重要。
+     @param fmt 格式化字符串
+     @param ... 可选参数列表
+     */
+    static debug(String fmt, ...);
+
+    /*! @brief 记录调试日志信息
+
+     记录调试日志信息。通常用于输出调试信息。不重要。
+     @param ... 可选参数列表
+     */
+    static debug(...);
+
+    /*! @brief 记录普通日志信息，与 log 等同
+
+     记录一般等级的日志信息。通常用于输出非错误性提示信息。
+     @param fmt 格式化字符串
+     @param ... 可选参数列表
+     */
+    static info(String fmt, ...);
+
+    /*! @brief 记录普通日志信息，与 log 等同
+
+     记录一般等级的日志信息。通常用于输出非错误性提示信息。
+     @param ... 可选参数列表
+     */
+    static info(...);
+
+    /*! @brief 记录警告日志信息
+
+     记录警告日志信息。通常用于输出提示性调试信息。一般重要。
+     @param fmt 格式化字符串
+     @param ... 可选参数列表
+     */
+    static notice(String fmt, ...);
+
+    /*! @brief 记录警告日志信息
+
+     记录警告日志信息。通常用于输出提示性调试信息。一般重要。
+     @param ... 可选参数列表
+     */
+    static notice(...);
+
+    /*! @brief 记录警告日志信息
+
+     记录警告日志信息。通常用于输出警告性调试信息。重要。
+     @param fmt 格式化字符串
+     @param ... 可选参数列表
+     */
+    static warn(String fmt, ...);
+
+    /*! @brief 记录警告日志信息
+
+     记录警告日志信息。通常用于输出警告性调试信息。重要。
+     @param ... 可选参数列表
+     */
+    static warn(...);
+
+    /*! @brief 记录错误日志信息
+
+     记录用于错误日志信息。通常用于输出错误信息。非常重要。系统的出错信息也会以此等级记录。
+     @param fmt 格式化字符串
+     @param ... 可选参数列表
+     */
+    static error(String fmt, ...);
+
+    /*! @brief 记录错误日志信息
+
+     记录用于错误日志信息。通常用于输出错误信息。非常重要。系统的出错信息也会以此等级记录。
+     @param ... 可选参数列表
+     */
+    static error(...);
+
+    /*! @brief 记录关键错误日志信息
+
+     记录用于关键错误日志信息。通常用于输出关键错误信息。非常重要。
+     @param fmt 格式化字符串
+     @param ... 可选参数列表
+     */
+    static crit(String fmt, ...);
+
+    /*! @brief 记录关键错误日志信息
+
+     记录用于关键错误日志信息。通常用于输出关键错误信息。非常重要。
+     @param ... 可选参数列表
+     */
+    static crit(...);
+
+    /*! @brief 记录警报错误日志信息
+
+     记录用于警报错误日志信息。通常用于输出警报错误信息。非常重要。为最高级别信息。
+     @param fmt 格式化字符串
+     @param ... 可选参数列表
+     */
+    static alert(String fmt, ...);
+
+    /*! @brief 记录警报错误日志信息
+
+     记录用于警报错误日志信息。通常用于输出警报错误信息。非常重要。为最高级别信息。
+     @param ... 可选参数列表
+     */
+    static alert(...);
+
+    /*! @brief 用 JSON 格式输出对象
+     @param obj 给定要显示的对象
+     */
+    static dir(Value obj);
+
+    /*! @brief 启动一个计时器
+
+     @param label 标题，缺省为空字符串。
+     */
+    static time(String label = "time");
+
+    /*! @brief 统计指定计时器的数值
+
+     @param label 标题，缺省为空字符串。
+     */
+    static timeEnd(String label = "time");
+
+    /*! @brief 输出当前调用堆栈
+
+     通过日志输出当前调用堆栈。
+     @param label 标题，缺省为空字符串。
+     */
+    static trace(String label = "trace");
+
+    /*! @brief 断言测试，如果测试值为假，则报错
+     @param value 测试的数值
+     @param msg 报错信息
+     */
+    static assert(Value value, String msg = "");
+
+    /*! @brief 向控制台输出格式化文本，输出内容不会记入日志系统，输出文本后不会自动换行，可连续输出
+     @param fmt 格式化字符串
+     @param ... 可选参数列表
+     */
+    static print(String fmt, ...);
+
+    /*! @brief 向控制台输出格式化文本，输出内容不会记入日志系统，输出文本后不会自动换行，可连续输出
+     @param ... 可选参数列表
+     */
+    static print(...);
+
+    /*! @brief 从控制台读取用户输入
+     @param msg 提示信息
+     @return 返回用户输入的信息
+     */
+    static String readLine(String msg = "") async;
+};

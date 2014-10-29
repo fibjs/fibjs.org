@@ -1,0 +1,302 @@
+
+/*! @brief 常用工具模块 */
+module util
+{
+    /*! @brief 按照指定的格式格式化变量
+
+     @param fmt 格式化字符串
+     @param ... 可选参数列表
+     @return 返回格式化后的字符串
+     */
+    static String format(String fmt, ...);
+
+    /*! @brief 格式格式化变量
+
+     @param ... 可选参数列表
+     @return 返回格式化后的字符串
+     */
+    static String format(...);
+
+    /*! @brief 检测给定的变量是否不包含任何值(没有可枚举的属性)
+
+     @param v 给定需要检测的变量
+     @return 如果为空则返回 True
+     */
+    static Boolean isEmpty(Value v);
+
+    /*! @brief 检测给定的变量是否是数组
+
+     @param v 给定需要检测的变量
+     @return 如果是数组则返回 True
+     */
+    static Boolean isArray(Value v);
+
+    /*! @brief 检测给定的变量是否是 Boolean
+
+     @param v 给定需要检测的变量
+     @return 如果是 Boolean 则返回 True
+     */
+    static Boolean isBoolean(Value v);
+
+    /*! @brief 检测给定的变量是否是 Null
+
+     @param v 给定需要检测的变量
+     @return 如果是 Null 则返回 True
+     */
+    static Boolean isNull(Value v);
+
+    /*! @brief 检测给定的变量是否是 Null 或者 Undefined
+
+     @param v 给定需要检测的变量
+     @return 如果是 Null 或者 Undefined 则返回 True
+     */
+    static Boolean isNullOrUndefined(Value v);
+
+    /*! @brief 检测给定的变量是否是数字
+
+     @param v 给定需要检测的变量
+     @return 如果是数字则返回 True
+     */
+    static Boolean isNumber(Value v);
+
+    /*! @brief 检测给定的变量是否是字符串
+
+     @param v 给定需要检测的变量
+     @return 如果是字符串则返回 True
+     */
+    static Boolean isString(Value v);
+
+    /*! @brief 检测给定的变量是否是 Undefined
+
+     @param v 给定需要检测的变量
+     @return 如果是 Undefined 则返回 True
+     */
+    static Boolean isUndefined(Value v);
+
+    /*! @brief 检测给定的变量是否是正则对象
+
+     @param v 给定需要检测的变量
+     @return 如果是正则对象则返回 True
+     */
+    static Boolean isRegExp(Value v);
+
+    /*! @brief 检测给定的变量是否是对象
+
+     @param v 给定需要检测的变量
+     @return 如果是对象则返回 True
+     */
+    static Boolean isObject(Value v);
+
+    /*! @brief 检测给定的变量是否是日期对象
+
+     @param v 给定需要检测的变量
+     @return 如果是日期对象则返回 True
+     */
+    static Boolean isDate(Value v);
+
+    /*! @brief 检测给定的变量是否是函数对象
+
+     @param v 给定需要检测的变量
+     @return 如果是函数对象则返回 True
+     */
+    static Boolean isFunction(Value v);
+
+    /*! @brief 检测给定的变量是否是函数 Buffer 对象
+
+     @param v 给定需要检测的变量
+     @return 如果是函数 Buffer 对象则返回 True
+     */
+    static Boolean isBuffer(Value v);
+
+    /*! @brief 查询指定对象是否包含给定的键
+
+     @param v 给定需要查询的对象
+     @param key 指定需要查询的键
+     @return 返回对象的全部键数组
+     */
+    static Boolean has(Value v, String key);
+
+    /*! @brief 查询指定对象的全部键数组
+
+     @param v 给定需要查询的对象
+     @return 返回对象的全部键数组
+     */
+    static Array keys(Value v);
+
+    /*! @brief 查询指定对象的全部值数组
+
+     @param v 给定需要查询的对象
+     @return 返回对象的全部值数组
+     */
+    static Array values(Value v);
+
+    /*! @brief 克隆给定变量，如果是对象或数组，则复制内容到新对象
+
+     @param v 给定要克隆的变量
+     @return 返回克隆结果
+     */
+    static Value clone(Value v);
+
+    /*! @brief 将一个或者多个对象的键值扩展到指定对象
+
+     @param v 指定要扩展的对象
+     @param ... 指定一个或者多个用于扩展的对象
+     @return 返回扩展的结果
+     */
+    static Value extend(Value v, ...);
+
+    /*! @brief 返回一个object副本，只过滤出指定键的属性值
+
+     @param v 指定要过滤的对象
+     @param ... 指定一个或者多个用于选择的键
+     @return 返回过滤的结果
+     */
+    static Object pick(Value v, ...);
+
+    /*! @brief 返回一个object副本，只过排除指定键的属性值
+
+     @param v 指定要过滤的对象
+     @param ... 指定一个或者多个用于排除的键
+     @return 返回排除的结果
+     */
+    static Object omit(Value v, ...);
+
+    /*! @brief 获取数组的第一个元素
+
+     @param v 给定要获取的数组
+     @return 返回获取的元素
+     */
+    static Value first(Value v);
+
+    /*! @brief 获取数组的开始多个元素
+
+     @param v 给定要获取的数组
+     @param n 指定要获取的元素个数
+     @return 返回获取的元素数组
+     */
+    static Value first(Value v, Integer n);
+
+    /*! @brief 获取数组的第后一个元素
+
+     @param v 给定要获取的数组
+     @return 返回获取的元素
+     */
+    static Value last(Value v);
+
+    /*! @brief 获取数组的结尾多个元素
+
+     @param v 给定要获取的数组
+     @param n 指定要获取的元素个数
+     @return 返回获取的元素数组
+     */
+    static Value last(Value v, Integer n);
+
+    /*! @brief 获取数组的元素去重后的副本
+
+     @param v 给定要去重的数组
+     @param sorted 指定数组是否排序，如果指定数组排序，将使用快速算法
+     @return 返回去重元素后的数组
+     */
+    static Array unique(Value v, Boolean sorted = false);
+
+    /*! @brief 将一个或者多个数组的值合并成一个值唯一的数组
+
+     @param ... 指定一个或者多个用于合并的数组
+     @return 返回合并的结果
+     */
+    static Array union(...);
+
+    /*! @brief 返回一个包含 arr 数组中排除一个或者多个数组元素的交集
+
+     @param ... 指定一个或者多个用于计算交集的数组
+     @return 返回计算交集的结果
+     */
+    static Array intersection(...);
+
+    /*! @brief 将一个嵌套多层的数组(嵌套可以是任何层数)转换为只有一层的数组。 如果你传递 shallow 参数，数组将只减少一维的嵌套。
+
+     @param arr 指定需要转换的数组
+     @param shallow 指定是否只减少一维的嵌套，缺省为 false
+     @return 返回转换的结果
+     */
+    static Array flatten(Value arr, Boolean shallow = false);
+
+    /*! @brief 返回一个包含 arr 数组中排除一个或者多个元素后的数组
+
+     @param arr 指定需要排除的数组
+     @param ... 指定一个或者多个用于排除的元素
+     @return 返回排除的结果
+     */
+    static Array without(Value arr, ...);
+
+    /*! @brief 返回一个包含 arr 数组中排除 without 数组元素之后的数组
+
+     @param list 指定需要排除的数组
+     @param ... 指定用于排除的一个或者多个数组
+     @return 返回排除的结果
+     */
+    static Array difference(Array list, ...);
+
+    /*! @brief 遍历 list 中的所有元素，按顺序用遍历输出每个元素。如果传递了 context 参数，则把 iterator 绑定到 context 对象上。每次调用 iterator 都会传递三个参数：(element, index, list)
+
+     @param list 指定需要遍历的列表或对象
+     @param iterator 指定用于遍历的回调函数
+     @param context 指定调用 iterator 时绑定的 context 对象
+     @return 返回 list 本身
+     */
+    static Value each(Value list, Function iterator, Value context = undefined);
+
+    /*! @brief 通过变换函数（iterator迭代器）把 list 中的每个值映射到一个新的数组中。如果传递了 context 参数，则把 iterator 绑定到 context 对象上。每次调用 iterator 都会传递三个参数：(element, index, list)
+
+     @param list 指定需要变换的列表或对象
+     @param iterator 指定用于变换的回调函数
+     @param context 指定调用 iterator 时绑定的 context 对象
+     @return 返回变换的结果
+     */
+    static Array map(Value list, Function iterator, Value context = undefined);
+
+    /*! @brief 把 list中 元素归结为一个单独的数值。如果传递了 context 参数，则把 iterator 绑定到 context 对象上。每次调用 iterator 都会传递三个参数：(memo, element, index, list)
+
+     @param list 指定需要归结的列表或对象
+     @param iterator 指定用于归结的回调函数
+     @param memo 指定归结的初始值
+     @param context 指定调用 iterator 时绑定的 context 对象
+     @return 返回归结的结果
+     */
+    static Value reduce(Value list, Function iterator, Value memo, Value context = undefined);
+
+    /*! @brief 数据统计对象，用以构建应用运行时数据收集，参见 Stats 对象。*/
+    static Stats new Stats();
+
+    /*! @brief LRU(least recently used) 缓存对象，参见 LruCache 对象。*/
+    static LruCache new LruCache();
+
+    /*! @brief 查询当前引擎及各组件版本信息
+
+     @return 返回结构如下：
+     @code
+     {
+       "fibjs": "0.1.0",
+       "svn": 1753,
+       "build": "Dec 10 2013 21:44:17",
+       "vender": {
+         "ev": "4.11",
+         "exif": "0.6.21",
+         "gd": "2.1.0-alpha",
+         "jpeg": "8.3",
+         "log4cpp": "1.0",
+         "mongo": "0.7",
+         "pcre": "8.21",
+         "png": "1.5.4",
+         "sqlite": "3.8.1",
+         "tiff": "3.9.5",
+         "uuid": "1.6.2",
+         "v8": "3.23.17 (candidate)",
+         "zlib": "1.2.7",
+         "zmq": "3.1"
+       }
+     }
+     @endcode
+     */
+    static Object buildInfo();
+};
