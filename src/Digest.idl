@@ -1,22 +1,22 @@
-/*! @brief 信息摘要对象 */
+/*! @brief Message digest object */
 interface Digest : object
 {
-    /*! @brief 更新二进制摘要信息
-     @param data 二进制数据块
+    /*! @brief Update the binary digest
+     @param data The binary data blocks
      */
     update(Buffer data);
 
-    /*! @brief 计算并返回摘要
-     @param data 二进制数据块，此数据块将在计算前更新进摘要
-     @return 返回摘要的二进制数据
+    /*!	@brief Compute and return the digest
+     @param data Binary data packet which will be updated into the digest before computing
+     @return The binary digest
      */
     Buffer digest(Buffer data);
 
-    /*! @brief 计算并返回摘要
-      @return 返回摘要的二进制数据
+    /*!	@brief Compute and return the digest
+     @return The binary digest	
      */
     Buffer digest();
 
-    /*! @brief 查询当前信息摘要算法的摘要字节数 */
+    /*! @brief Query the number of bytes of the digest of the digest algorithm currently being used */
     readonly Integer size;
 };

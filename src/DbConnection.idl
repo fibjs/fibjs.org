@@ -1,39 +1,38 @@
-
-/*! @brief 数据库连接对象，用于建立和维护一个数据库连接会话。*/
+/*! @brief Database connection object which is used for creation and maintenance of the database connection session */
 interface DbConnection : object
 {
-    /*! @brief 关闭当前数据库连接 */
+    /*! @brief Close the database connection currenctly being used */
     close() async;
 
-    /*! @brief 在当前数据库连接上启动一个事务 */
+    /*! @brief Begin a transaction on current database connection */
     begin() async;
 
-    /*! @brief 提交当前数据库连接上的事务 */
+    /*! @brief Commit the transaction on current database connection */
     commit() async;
 
-    /*! @brief 回滚当前数据库连接上的事务 */
+    /*! @brief Rollback the transaction on current database connection */
     rollback() async;
 
-    /*! @brief 执行一个 sql 命令，并返回执行结果
+    /*!	@brief Execute a SQL statement and return the results
 
-     @param sql 格式化字符串，可选参数用 ? 指定。例如：'SELECT FROM TEST WHERE [id]=?'
-     @return 返回 sql 命令执行结果
+     @param sql Formatted string. Use question mark to mark variables. E.g. 'SELECT FROM TEST WHERE [id]=?'  
+     @return The query results
      */
     DBResult execute(String sql) async;
 
-    /*! @brief 执行一个 sql 命令，并返回执行结果，可根据参数格式化字符串
+    /*!	@brief Execute a  SQL statement and return the results
 
-     @param sql 格式化字符串，可选参数用 ? 指定。例如：'SELECT FROM TEST WHERE [id]=?'
-     @param ... 可选参数列表
-     @return 返回 sql 命令执行结果
+     @param sql Formatted string. Use question mark to mark variables. E.g. 'SELECT FROM TEST WHERE [id]=?'
+     @param ... The optional variables 
+     @return The query results     
      */
     DBResult execute(String sql, ...);
 
-    /*! @brief 格式化一个 sql 命令，并返回格式化结果
+    /*!	@brief Format a SQL statement, and return the formatted statement
 
-     @param sql 格式化字符串，可选参数用 ? 指定。例如：'SELECT FROM TEST WHERE [id]=?'
-     @param ... 可选参数列表
-     @return 返回格式化之后的 sql 命令
+     @param sql Formatted string. Use question mark to mark variables. E.g. 'SELECT FROM TEST WHERE [id]=?'
+     @param ... The optional variables
+     @return The formatted SQL statement
      */
     String format(String sql, ...);
 };
