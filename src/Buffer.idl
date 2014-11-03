@@ -1,7 +1,5 @@
-/*! @brief 二进制数据缓存对象，用于 io 读写的数据处理
- Buffer 对象为全局基础类，在任何时候都可以直接以 new Buffer(...) 创建：
+/*! @brief Binary buffer used in dealing with I/O reading and writing.
 
-    @brief Binary buffer used in dealing with I/O reading and writing.
  Buffer object is a global basic class which can be created by "new Buffer(...)" at anytime:
  @code
  var buf = new Buffer();
@@ -9,500 +7,297 @@
  */
 interface Buffer : object
 {
-    /*! @brief 缓存对象构造函数
-     @param datas 初始化数据数组
-
-        @brief Buffer constructor
+    /*! @brief Buffer constructor
      @param datas Initial data array
      */
     Buffer(Array datas);
     
-    /*! @brief 缓存对象构造函数
-     @param str 初始化字符串，字符串将以 utf-8 格式写入，缺省则创建一个空对象
-     @param codec 指定编码格式，允许值为："hex", "base64", "utf8", 或者系统支持的字符集
-
-        @brief Buffer constructor
+    /*! @brief Buffer constructor
      @param str Initial string encoded in UTF-8, by default it will create an empty object.
      @param codec The encode format, can be "hex", “base64”, "utf8" or any other character sets supported by the system. 
      */
     Buffer(String str, String codec = "utf8");
 
-    /*! @brief 缓存对象构造函数
-     @param size 初始化缓冲区大小
-
-        @brief Buffer constructor
+    /*! @brief Buffer constructor
      @param size Initial cache size
      */
     Buffer(Integer size = 0);
 
-    /*! @brief 缓存对象可使用下标直接访问二进制数据*/
     /*! @brief The binary data in the buffer can be accessed by using subscript*/ 
     Integer operator[];
 
-    /*! @brief 获取缓存对象的尺寸 */
     /*! @brief The buffer size */
     readonly Integer length;
 
-    /*! @brief 修改缓存对象尺寸
-     @param sz 指定新尺寸
-
-        @brief Resize the buffer
+    /*! @brief Resize the buffer
      @param sz New size
      */
     resize(Integer sz);
 
-    /*! @brief 向缓存对象写入一组数据
-     @param datas 初始化数据数组
-
-        @brief Write an array into the buffer
+    /*! @brief Write an array into the buffer
      @param datas Initial data array
      */
     write(Array datas);
 
-    /*! @brief 向缓存对象写入一组二进制数据
-     @param data 初始化二进制数据
-
-        @brief Write a set of binary data into the buffer
+    /*! @brief Write a set of binary data into the buffer
      @param data Initial binary data
      */
     write(Buffer data);
 
-    /*! @brief 向缓存对象写入字符串，字符串将以 utf-8 格式写入
-     @param str 要写入的字符串
-     @param codec 指定编码格式，允许值为："hex", "base64", "utf8", 或者系统支持的字符集
-
-        @brief Write a string encoded in utf-8 into buffer
+    /*! @brief Write a string encoded in utf-8 into buffer
      @param str String to write
      @param codec Coded format, can be "hex", “base64”, "utf8" or any other character sets supported by the system. 
      */
     write(String str, String codec = "utf8");
 
-    /*! @brief 从缓存对象读取一个 8 位无符号整型数值
-     @param offset 指定读取的起始位置
-     @param noAssert 指定读取越界时不抛出错误，缺省为 flase，抛出
-     @return 返回读取的整型数值
-
-	@brief Read an unsigned 8-bit integer from the buffer
+    /*!	@brief Read an unsigned 8-bit integer from the buffer
      @param offset The beginning of the address to read
      @param noAssert If true, then do not throw an error when overread. By default it's false.
      @return The targeted integer
      */
     Integer readUInt8(Integer offset, Boolean noAssert = false);
 
-    /*! @brief 从缓存对象读取一个 16 位无符号整型数值，以低字节序的存储方式
-     @param offset 指定读取的起始位置
-     @param noAssert 指定读取越界时不抛出错误，缺省为 flase，抛出
-     @return 返回读取的整型数值
-
-	@brief Read an unsigned 16-bit integer from the buffer and use the little-endian format for storage
+    /*!	@brief Read an unsigned 16-bit integer from the buffer and use the little-endian format for storage
      @param offset The beginning of the address to read
      @param noAssert If true, then do not throw an error when overread. By default it's false.
      @return The targeted integer
      */
     Integer readUInt16LE(Integer offset, Boolean noAssert = false);
-
-    /*! @brief 从缓存对象读取一个 16 位无符号整型数值，以高字节序的存储方式
-     @param offset 指定读取的起始位置
-     @param noAssert 指定读取越界时不抛出错误，缺省为 flase，抛出
-     @return 返回读取的整型数值
-
-	@brief Read an unsigned 16-bit integer from the buffer and use the big-endian format for storage
+   
+    /*!	@brief Read an unsigned 16-bit integer from the buffer and use the big-endian format for storage
      @param offset The beginning of the address to read
      @param noAssert If true, then do not throw an error when overread. By default it's false.
      @return The targeted integer
      */
     Integer readUInt16BE(Integer offset, Boolean noAssert = false);
-
-    /*! @brief 从缓存对象读取一个 32 位无符号整型数值，以低字节序的存储方式
-     @param offset 指定读取的起始位置
-     @param noAssert 指定读取越界时不抛出错误，缺省为 flase，抛出
-     @return 返回读取的整型数值
-
-	@brief Read an unsigned 32-bit integer from the buffer and use the little-endian format for storage
+    
+    /*!	@brief Read an unsigned 32-bit integer from the buffer and use the little-endian format for storage
      @param offset The beginning of the address to read
      @param noAssert If true, then do not throw an error when overread. By default it's false.
      @return The targeted integer
      */
     Long readUInt32LE(Integer offset, Boolean noAssert = false);
-
-    /*! @brief 从缓存对象读取一个 32 位无符号整型数值，以高字节序的存储方式
-     @param offset 指定读取的起始位置
-     @param noAssert 指定读取越界时不抛出错误，缺省为 flase，抛出
-     @return 返回读取的整型数值
-	
-	@brief Read an unsigned 32-bit integer from the buffer and use the big-endian format for storage
+    	
+    /*!	@brief Read an unsigned 32-bit integer from the buffer and use the big-endian format for storage
      @param offset The beginning of the address to read
      @param noAssert If true, then do not throw an error when overread. By default it's false.
      @return The targeted integer
      */
     Long readUInt32BE(Integer offset, Boolean noAssert = false);
 
-    /*! @brief 从缓存对象读取一个 8 位整型数值
-     @param offset 指定读取的起始位置
-     @param noAssert 指定读取越界时不抛出错误，缺省为 flase，抛出
-     @return 返回读取的整型数值
-
-	@brief Read an 8-bit integer from the buffer
+    /*!	@brief Read an 8-bit integer from the buffer
      @param offset The beginning of the address to read
      @param noAssert If true, then do not throw an error when overread. By default it's false.
      @return The targeted integer
      */
     Integer readInt8(Integer offset, Boolean noAssert = false);
 
-    /*! @brief 从缓存对象读取一个 16 位整型数值，以低字节序的存储方式
-     @param offset 指定读取的起始位置
-     @param noAssert 指定读取越界时不抛出错误，缺省为 flase，抛出
-     @return 返回读取的整型数值
-
-	@brief Read an 16-bit integer from the buffer and use the little-endian format for storage
+    /*!	@brief Read an 16-bit integer from the buffer and use the little-endian format for storage
      @param offset The beginning of the address to read
      @param noAssert If true, then do not throw an error when overread. By default it's false.
      @return The targeted integer
      */
     Integer readInt16LE(Integer offset, Boolean noAssert = false);
 
-    /*! @brief 从缓存对象读取一个 16 位整型数值，以高字节序的存储方式
-     @param offset 指定读取的起始位置
-     @param noAssert 指定读取越界时不抛出错误，缺省为 flase，抛出
-     @return 返回读取的整型数值
-
-	@brief Read an 16-bit integer from the buffer and use the big-endian format for storage
+    /*!	@brief Read an 16-bit integer from the buffer and use the big-endian format for storage
      @param offset The beginning of the address to read
      @param noAssert If true, then do not throw an error when overread. By default it's false.
      @return The targeted integer
      */
     Integer readInt16BE(Integer offset, Boolean noAssert = false);
 
-    /*! @brief 从缓存对象读取一个 32 位整型数值，以低字节序的存储方式
-     @param offset 指定读取的起始位置
-     @param noAssert 指定读取越界时不抛出错误，缺省为 flase，抛出
-     @return 返回读取的整型数值
-
-	@brief Read an 32-bit integer from the buffer and use the little-endian format for storage
+    /*!	@brief Read an 32-bit integer from the buffer and use the little-endian format for storage
      @param offset The beginning of the address to read
      @param noAssert If true, then do not throw an error when overread. By default it's false.
      @return The targeted integer
      */
     Integer readInt32LE(Integer offset, Boolean noAssert = false);
 
-    /*! @brief 从缓存对象读取一个 32 位整型数值，以高字节序的存储方式
-     @param offset 指定读取的起始位置
-     @param noAssert 指定读取越界时不抛出错误，缺省为 flase，抛出
-     @return 返回读取的整型数值
-
-	@brief Read an 32-bit integer from the buffer and use the big-endian format for storage
+    /*!	@brief Read an 32-bit integer from the buffer and use the big-endian format for storage
      @param offset The beginning of the address to read
      @param noAssert If true, then do not throw an error when overread. By default it's false.
      @return The targeted integer
      */
     Integer readInt32BE(Integer offset, Boolean noAssert = false);
 
-    /*! @brief 从缓存对象读取一个 64 位整型数值，以低字节序的存储方式
-     @param offset 指定读取的起始位置
-     @param noAssert 指定读取越界时不抛出错误，缺省为 flase，抛出
-     @return 返回读取的整型数值
-
-	@brief Read an 64-bit integer from the buffer and use the little-endian format for storage
+    /*!	@brief Read an 64-bit integer from the buffer and use the little-endian format for storage
      @param offset The beginning of the address to read
      @param noAssert If true, then do not throw an error when overread. By default it's false.
      @return The targeted integer
      */
     Int64 readInt64LE(Integer offset, Boolean noAssert = false);
 
-    /*! @brief 从缓存对象读取一个 64 位整型数值，以高字节序的存储方式
-     @param offset 指定读取的起始位置
-     @param noAssert 指定读取越界时不抛出错误，缺省为 flase，抛出
-     @return 返回读取的整型数值
-
-	@brief Read an 64-bit integer from the buffer and use the big-endian format for storage
+    /*!	@brief Read an 64-bit integer from the buffer and use the big-endian format for storage
      @param offset The beginning of the address to read
      @param noAssert If true, then do not throw an error when overread. By default it's false.
      @return The targeted integer
      */
     Int64 readInt64BE(Integer offset, Boolean noAssert = false);
 
-    /*! @brief 从缓存对象读取一个浮点数，以低字节序的存储方式
-     @param offset 指定读取的起始位置
-     @param noAssert 指定读取越界时不抛出错误，缺省为 flase，抛出
-     @return 返回读取的浮点数
-
-	@brief Read a float from the buffer and use the little-endian format for storage
+    /*!	@brief Read a float from the buffer and use the little-endian format for storage
      @param offset The beginning of the address to read
      @param noAssert If true, then do not throw an error when overread. By default it's false.
      @return The targeted float
      */
     Number readFloatLE(Integer offset, Boolean noAssert = false);
 
-    /*! @brief 从缓存对象读取一个浮点数，以高字节序的存储方式
-     @param offset 指定读取的起始位置
-     @param noAssert 指定读取越界时不抛出错误，缺省为 flase，抛出
-     @return 返回读取的浮点数
-
-	@brief Read a float from the buffer and use the big-endian format for storage
+    /*!	@brief Read a float from the buffer and use the big-endian format for storage
      @param offset The beginning of the address to read
      @param noAssert If true, then do not throw an error when overread. By default it's false.
      @return The targeted float
      */
     Number readFloatBE(Integer offset, Boolean noAssert = false);
 
-    /*! @brief 从缓存对象读取一个双精度浮点数，以低字节序的存储方式
-     @param offset 指定读取的起始位置
-     @param noAssert 指定读取越界时不抛出错误，缺省为 flase，抛出
-     @return 返回读取的双精度浮点数
-
-	@brief Read a double from the buffer and use the little-endian format for storage
+    /*!	@brief Read a double from the buffer and use the little-endian format for storage
      @param offset The beginning of the address to read
      @param noAssert If true, then do not throw an error when overread. By default it's false.
      @return The targeted double
      */
      Number readDoubleLE(Integer offset, Boolean noAssert = false);
 
-    /*! @brief 从缓存对象读取一个双精度浮点数，以高字节序的存储方式
-     @param offset 指定读取的起始位置
-     @param noAssert 指定读取越界时不抛出错误，缺省为 flase，抛出
-     @return 返回读取的双精度浮点数
-
-	@brief Read a double from the buffer and use the big-endian format for storage
+    /*!	@brief Read a double from the buffer and use the big-endian format for storage
      @param offset The beginning of the address to read
      @param noAssert If true, then do not throw an error when overread. By default it's false.
      @return The targeted double
      */
     Number readDoubleBE(Integer offset, Boolean noAssert = false);
 
-    /*! @brief 向缓存对象写入一个 8 位无符号整型数值
-     @param value 指定写入的数值
-     @param offset 指定写入的起始位置
-     @param noAssert 指定写入越界时不抛出错误，缺省为 flase，抛出
-
-	@brief Write an unsigned 8-bit integer into the buffer
+    /*!	@brief Write an unsigned 8-bit integer into the buffer
      @param value The value to write
      @param offset The beginning of the address to write
      @param noAssert If true, then do not throw an error when overwrite. By default it's false.
      */
     writeUInt8(Integer value, Integer offset, Boolean noAssert = false);
 
-    /*! @brief 向缓存对象写入一个 16 位无符号整型数值，以低字节序的存储方式
-     @param value 指定写入的数值
-     @param offset 指定写入的起始位置
-     @param noAssert 指定写入越界时不抛出错误，缺省为 flase，抛出
-
-	@brief Write an unsigned 16-bit integer into the buffer and use the little-endian format for storage
+    /*!	@brief Write an unsigned 16-bit integer into the buffer and use the little-endian format for storage
      @param value The value to write
      @param offset The beginning of the address to write
      @param noAssert If true, then do not throw an error when overwrite. By default it's false.
      */
     writeUInt16LE(Integer value, Integer offset, Boolean noAssert = false);
 
-    /*! @brief 向缓存对象写入一个 16 位无符号整型数值，以高字节序的存储方式
-     @param value 指定写入的数值
-     @param offset 指定写入的起始位置
-     @param noAssert 指定写入越界时不抛出错误，缺省为 flase，抛出
-
-	@brief Write an unsigned 16-bit integer into the buffer and use the big-endian format for storage
+    /*!	@brief Write an unsigned 16-bit integer into the buffer and use the big-endian format for storage
      @param value The value to write
      @param offset The beginning of the address to write
      @param noAssert If true, then do not throw an error when overwrite. By default it's false.
      */
     writeUInt16BE(Integer value, Integer offset, Boolean noAssert = false);
 
-    /*! @brief 向缓存对象写入一个 32 位无符号整型数值，以低字节序的存储方式
-     @param value 指定写入的数值
-     @param offset 指定写入的起始位置
-     @param noAssert 指定写入越界时不抛出错误，缺省为 flase，抛出
-
-	@brief Write an unsigned 32-bit integer into the buffer and use the little-endian format for storage
+    /*!	@brief Write an unsigned 32-bit integer into the buffer and use the little-endian format for storage
      @param value The value to write
      @param offset The beginning of the address to write
      @param noAssert If true, then do not throw an error when overwrite. By default it's false.
      */
     writeUInt32LE(Long value, Integer offset, Boolean noAssert = false);
 
-    /*! @brief 向缓存对象写入一个 32 位无符号整型数值，以高字节序的存储方式
-     @param value 指定写入的数值
-     @param offset 指定写入的起始位置
-     @param noAssert 指定写入越界时不抛出错误，缺省为 flase，抛出
-
-	@brief Write an unsigned 32-bit integer into the buffer and use the big-endian format for storage
+    /*!	@brief Write an unsigned 32-bit integer into the buffer and use the big-endian format for storage
      @param value The value to write
      @param offset The beginning of the address to write
      @param noAssert If true, then do not throw an error when overwrite. By default it's false.
      */
     writeUInt32BE(Long value, Integer offset, Boolean noAssert = false);
 
-    /*! @brief 向缓存对象写入一个 8 位整型数值
-     @param value 指定写入的数值
-     @param offset 指定写入的起始位置
-     @param noAssert 指定写入越界时不抛出错误，缺省为 flase，抛出
-
-	@brief Write an 8-bit integer into the buffer
+    /*!	@brief Write an 8-bit integer into the buffer
      @param value The value to write
      @param offset The beginning of the address to write
      @param noAssert If true, then do not throw an error when overwrite. By default it's false.
      */
     writeInt8(Integer value, Integer offset, Boolean noAssert = false);
 
-    /*! @brief 向缓存对象写入一个 16 位整型数值，以低字节序的存储方式
-     @param value 指定写入的数值
-     @param offset 指定写入的起始位置
-     @param noAssert 指定写入越界时不抛出错误，缺省为 flase，抛出
-
-	@brief Write a 16-bit integer into the buffer and use the little-endian format for storage
+    /*!	@brief Write a 16-bit integer into the buffer and use the little-endian format for storage
      @param value The value to write
      @param offset The beginning of the address to write
      @param noAssert If true, then do not throw an error when overwrite. By default it's false.
      */
     writeInt16LE(Integer value, Integer offset, Boolean noAssert = false);
 
-    /*! @brief 向缓存对象写入一个 16 位整型数值，以高字节序的存储方式
-     @param value 指定写入的数值
-     @param offset 指定写入的起始位置
-     @param noAssert 指定写入越界时不抛出错误，缺省为 flase，抛出
-
-	@brief Write a 16-bit integer into the buffer and use the big-endian format for storage
+    /*!	@brief Write a 16-bit integer into the buffer and use the big-endian format for storage
      @param value The value to write
      @param offset The beginning of the address to write
      @param noAssert If true, then do not throw an error when overwrite. By default it's false.
      */
     writeInt16BE(Integer value, Integer offset, Boolean noAssert = false);
 
-    /*! @brief 向缓存对象写入一个 32 位整型数值，以低字节序的存储方式
-     @param value 指定写入的数值
-     @param offset 指定写入的起始位置
-     @param noAssert 指定写入越界时不抛出错误，缺省为 flase，抛出
-
-	@brief Write a 32-bit integer into the buffer and use the little-endian format for storage
+    /*!	@brief Write a 32-bit integer into the buffer and use the little-endian format for storage
      @param value The value to write
      @param offset The beginning of the address to write
      @param noAssert If true, then do not throw an error when overwrite. By default it's false.
      */
     writeInt32LE(Integer value, Integer offset, Boolean noAssert = false);
 
-    /*! @brief 向缓存对象写入一个 32 位整型数值，以高字节序的存储方式
-     @param value 指定写入的数值
-     @param offset 指定写入的起始位置
-     @param noAssert 指定写入越界时不抛出错误，缺省为 flase，抛出
-
-	@brief Write a 32-bit integer into the buffer and use the big-endian format for storage
+    /*!	@brief Write a 32-bit integer into the buffer and use the big-endian format for storage
      @param value The value to write
      @param offset The beginning of the address to write
      @param noAssert If true, then do not throw an error when overwrite. By default it's false.
      */
     writeInt32BE(Integer value, Integer offset, Boolean noAssert = false);
 
-    /*! @brief 向缓存对象写入一个 64 位整型数值，以低字节序的存储方式
-     @param value 指定写入的数值
-     @param offset 指定写入的起始位置
-     @param noAssert 指定写入越界时不抛出错误，缺省为 flase，抛出
-
-	@brief Write a 64-bit integer into the buffer and use the little-endian format for storage
+    /*!	@brief Write a 64-bit integer into the buffer and use the little-endian format for storage
      @param value The value to write
      @param offset The beginning of the address to write
      @param noAssert If true, then do not throw an error when overwrite. By default it's false.
      */
     writeInt64LE(Int64 value, Integer offset, Boolean noAssert = false);
 
-    /*! @brief 向缓存对象写入一个 64 位整型数值，以高字节序的存储方式
-     @param value 指定写入的数值
-     @param offset 指定写入的起始位置
-     @param noAssert 指定写入越界时不抛出错误，缺省为 flase，抛出
-
-	@brief Write a 64-bit integer into the buffer and use the big-endian format for storage
+    /*!	@brief Write a 64-bit integer into the buffer and use the big-endian format for storage
      @param value The value to write
      @param offset The beginning of the address to write
      @param noAssert If true, then do not throw an error when overwrite. By default it's false.
      */
     writeInt64BE(Int64 value, Integer offset, Boolean noAssert = false);
 
-    /*! @brief 向缓存对象写入一个浮点数，以低字节序的存储方式
-     @param value 指定写入的数值
-     @param offset 指定写入的起始位置
-     @param noAssert 指定写入越界时不抛出错误，缺省为 flase，抛出
-
-	@brief Write a float into the buffer and use the little-endian format for storage
+    /*!	@brief Write a float into the buffer and use the little-endian format for storage
      @param value The value to write
      @param offset The beginning of the address to write
      @param noAssert If true, then do not throw an error when overwrite. By default it's false.
      */
     writeFloatLE(Number value, Integer offset, Boolean noAssert = false);
 
-    /*! @brief 向缓存对象写入一个浮点数，以高字节序的存储方式
-     @param value 指定写入的数值
-     @param offset 指定写入的起始位置
-     @param noAssert 指定写入越界时不抛出错误，缺省为 flase，抛出
-
-	@brief Write a float into the buffer and use the big-endian format for storage
+    /*!	@brief Write a float into the buffer and use the big-endian format for storage
      @param value The value to write
      @param offset The beginning of the address to write
      @param noAssert If true, then do not throw an error when overwrite. By default it's false.
      */
     writeFloatBE(Number value, Integer offset, Boolean noAssert = false);
 
-    /*! @brief 向缓存对象写入一个双精度浮点数，以低字节序的存储方式
-     @param value 指定写入的数值
-     @param offset 指定写入的起始位置
-     @param noAssert 指定写入越界时不抛出错误，缺省为 flase，抛出
-
-	@brief Write a double into the buffer and use the little-endian format for storage
+    /*!	@brief Write a double into the buffer and use the little-endian format for storage
      @param value The value to write
      @param offset The beginning of the address to write
      @param noAssert If true, then do not throw an error when overwrite. By default it's false.
      */
     writeDoubleLE(Number value, Integer offset, Boolean noAssert = false);
 
-    /*! @brief 向缓存对象写入一个双精度浮点数，以高字节序的存储方式
-     @param value 指定写入的数值
-     @param offset 指定写入的起始位置
-     @param noAssert 指定写入越界时不抛出错误，缺省为 flase，抛出
-
-        @brief Write a double into the buffer and use the big-endian format for storage
+    /*! @brief Write a double into the buffer and use the big-endian format for storage
      @param value The value to write
      @param offset The beginning of the address to write
      @param noAssert If true, then do not throw an error when overwrite. By default it's false.
      */
     writeDoubleBE(Number value, Integer offset, Boolean noAssert = false);
 
-    /*! @brief 返回一个新缓存对象，包含指定范围的数据，若范围超出缓存，则只返回有效部分数据
-     @param start 指定范围的起始，缺省从头开始
-     @param end 指定范围的结束，缺省到缓存结尾
-     @return 返回新的缓存对象
+    /*!	@brief return a new buffer that contains data in the specified range. If the data is out of range of the buffer, return the available part of the data.
 
-	@brief return a new buffer that contains data in the specified range. 
-	       If the data is out of range of the buffer, return the available part of the data.
      @param start The start of the specified range, by default it's the beginning of the buffer
      @param end The end of the specified range, by default it's the end of the buffer 
      */
     Buffer slice(Integer start = 0, Integer end = -1);
 
-    /*! @brief 使用 16 进制编码缓存对象内容
-     @return 返回编码字符串
-
-        @brief Store the data in the buffer with hexadecimal encoding?
+    /*! @brief Store the data in the buffer with hexadecimal encoding?
      @return The encoded string
      */
     String hex();
 
-    /*! @brief 使用 base64 编码缓存对象内容
-     @return 返回编码字符串
-
-        @brief Store the data in the buffer with base64 encoding?
+    /*! @brief Store the data in the buffer with base64 encoding?
      @return The encoded string
      */
     String base64();
 
-    /*! @brief 返回二进制数据的编码字符串
-     @param codec 指定编码格式，允许值为："hex", "base64", "utf8", 或者系统支持的字符集
-     @return 返回对象的字符串表示
-
-        @brief return the encoded string of the binary data 
+    /*! @brief return the encoded string of the binary data 
      @param codec The encode format, can be "hex", “base64”, "utf8" or any other character sets supported by the system.
      @return The string representing the value of the buffer.
     */
     String toString(String codec);
 
-    /*! @brief 返回二进制数据的 utf8 编码字符串
-     @return 返回对象的字符串表示
-
-	@brief return the utf8-encoded string of the binary data
+   /*! @brief return the utf8-encoded string of the binary data
      @return The string representing the value of the buffer.
     */
     String toString();
