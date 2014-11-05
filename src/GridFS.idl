@@ -1,7 +1,9 @@
 
 /*! @brief MongoDB GridFS 分布式文件系统访问对象
+    @brief MongoDB GridFS Distributed File System Access Object
 
  使用 MongoDB.fs 获取，创建方式：
+ You can create the object by:
  @code
  var gfs = mdb.fs;
  @endcode
@@ -9,37 +11,55 @@
 interface GridFS : object
 {
     /*! @brief 获取一个文件
+        @brief get a file
       @param name 指定获取的文件名
+      @param name specify the file's name
       @return 返回获取的文件
+      @return the file you get
      */
     MemoryStream retrieve(String name);
 
     /*! @brief 保存一个流到文件系统
+        @brief save a stream to the file system
       @param name 指定保存的文件名
+      @param name specify the name the file will be save as
       @param src 存放源数据的流对象
+      @param src the stream object that stores the source data
      */
     store(String name, Stream src);
 
     /*! @brief 保存一个二进制数据块到文件系统
+        @brief save a binary data block to the file system
       @param name 指定保存的文件名
+      @param name specify the name the file will be save as
       @param data 指定要保存的数据块
+      @param data specify the data block that will be saved
      */
     store(String name, Buffer data);
 
     /*! @brief 检测指定的文件是否存在
+        @brief detect whether the specified file exists
       @param name 指定要检测的文件名
+      @param name specify the name of the file to be detected
       @return 存在则返回 true
+      @return return true if the file exists
      */
     Boolean exists(String name);
 
     /*! @brief 删除指定的文件
+        @brief delete the specified file
       @param name 指定要删除的文件名
+      @param name specify the name of the file to be deleted
      */
     remove(String name);
 
-    /*! @brief 查询 GridFS 的元数据表     */
+    /*! @brief 查询 GridFS 的元数据表
+        @brief query the metadata table of GridFS
+    */
     readonly MongoCollection files;
 
-    /*! @brief 查询 GridFS 的分块数据表  */
+    /*! @brief 查询 GridFS 的分块数据表
+        @brief query the partitioned data table of GridFS
+    */
     readonly MongoCollection chunks;
 };
