@@ -1,55 +1,81 @@
 
 /*! @brief http 容器对象，用于 http header，cookie，query，form，等数据的存储与组织 */
+/*! @brief http container object, used to store and organize data like http header, cookie, query, form and so on */
 interface HttpCollection : object
 {
-    /*! @brief 清除容器数据 */
+    /*! @brief 清除容器数据
+        @brief clear the data in the container
+    */
     clear();
 
     /*! @brief 检查容器内是否存在指定键值的数据
+        @brief detect whether there is the data that has the specified key value
      @param name 指定要检查的键值
+     @param name specify the key to be detected
      @return 返回键值是否存在
+     @return return whether the key exists
      */
     Boolean has(String name);
 
     /*! @brief 查询指定键值的第一个值
+        @brief query the first value of the specified key
      @param name 指定要查询的键值
+     @param name specify the key to be queried
      @return 返回键值所对应的值，若不存在，则返回 undefined
+     @return return the key's corresponding value, if the value doesn't exists, return undefined
      */
     Variant first(String name);
 
     /*! @brief 查询指定键值的全部值
+        @brief query all value of the specified key
      @param name 指定要查询的键值
+     @param name specify the key to be queried
      @return 返回键值所对应全部值的数组，若数据不存在，则返回 null
+     @return return an array that contains all value of the key corresponded. If the data doesn't exists, return null.
      */
     List all(String name);
 
     /*! @brief 添加一个键值数据，添加数据并不修改已存在的键值的数据
+        @brief add a key and data and it won't modify the key and it's value that already exist.
      @param map 指定要添加的键值数据字典
+     @param map specify the key and value to be added.
      */
     add(Object map);
 
     /*! @brief 添加一个键值数据，添加数据并不修改已存在的键值的数据
+        @brief add a key and data and it won't modify the key and it's value that already exist.
      @param name 指定要添加的键值
+     @param name specify the key to be added
      @param value 指定要添加的数据
+     @param value specify the value to be added
      */
     add(String name, Variant value);
 
     /*! @brief 设定一个键值数据，设定数据将修改键值所对应的第一个数值，并清除相同键值的其余数据
+        @brief set a key's value, the first value of the key will be modified and other data of the same key will be cleared.
      @param map 指定要设定的键值数据字典
+     @param map specify the key-value to be modified.
      */
     set(Object map);
 
     /*! @brief 设定一个键值数据，设定数据将修改键值所对应的第一个数值，并清除相同键值的其余数据
+        @brief set a key's value, the first value of the key will be modified and other data of the same key will be cleared.
      @param name 指定要设定的键值
+     @param name specify the key to be modified
      @param value 指定要设定的数据
+     @param value spacify the value to be modified
      */
     set(String name, Variant value);
 
     /*! @brief 删除指定键值的全部值
+        @brief delete all value of the specified key
      @param name 指定要删除的键值
+     @param name specify the key to be deleted
      */
     remove(String name);
 
-    /*! @brief 允许使用键值下标直接访问数值 */
+    /*! @brief 允许使用键值下标直接访问数值
+        @brief allowing access to data by key index
+    */
     Variant operator[String];
 };
