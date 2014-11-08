@@ -1,7 +1,7 @@
 
-/*! @brief Variant 数组对象，一般用以返回一组 Variant 数据
+/*! @brief Variant Array object, return a list of Variant
 
- 用以创建和管理数组对象，创建方法：
+Used for create and manage array, to create:
  @code
  var collection = require("collection");
  var a = new collection.List();
@@ -9,77 +9,77 @@
  */
 interface List : object
 {
-    /*! @brief List 对象构造函数*/
+    /*! @brief List constructor*/
     List();
 
-    /*! @brief 数组可使用下标直接访问 Variant 数据*/
+    /*! @brief Able to use index to vist array*/
     Variant operator[];
 
-    /*! @brief 获取数组的尺寸 */
+    /*! @brief Get size of array */
     readonly Integer length;
 
-    /*! @brief 修改数组尺寸
-     @param sz 指定新尺寸
+    /*! @brief Resize array
+     @param sz New size
      */
     resize(Integer sz);
 
-    /*! @brief 在数组结尾添加一个元素
-      @param v 指定添加的元素
+    /*! @brief Append an element to end of array
+      @param v Element
      */
     push(Variant v);
 
-    /*! @brief 在数组结尾添加一个元素
-      @param ... 指定添加的多个元素
+    /*! @brief Appned elements to end of array
+      @param ... Elements
      */
     push(...);
 
-    /*! @brief 返回数组结尾的一个元素
-      @return 结尾的元素
+    /*! @brief Get last element in array
+      @return Return last element
      */
     Variant pop();
 
-    /*! @brief 返回一个新数组，包含指定范围的数据，若范围超出缓存，则只返回有效部分数据
-     @param start 指定范围的起始，缺省从头开始
-     @param end 指定范围的结束，缺省到缓存结尾
-     @return 返回新的数组
+    /*! @brief Slice a array in given range, ignore invalid range
+     @param start Start, default is 0
+     @param end End, default is end of array
+     @return Return new array
      */
     List slice(Integer start = 0, Integer end = -1);
 
-    /*! @brief 将当前数组与给定的一个或者多个数组合并
-     @param ... 给定的一个或多个数组
-     @return 返回合并的数组
+    /*! @brief Concatenate arrays
+     @param ... Original arrays
+     @return Return concatenated array
      */
     List concat(...);
 
-    /*! @brief 检测全部数据是否通过测试函数
-     @param func 测试函数
-     @param thisp 调用测试函数的 this 对象，可省略
-     @return 全部通过测试则返回 true
+    /*! @brief Test array with fucntion
+     @param func Test function
+     @param thisp Test object, can omit
+     @return Return true when all test passed
      */
     Boolean every(Function func, Object thisp = {});
 
-    /*! @brief 过滤通过测试的数据成为一个新的数组
-     @param func 测试函数
-     @param thisp 调用测试函数的 this 对象，可省略
-     @return 经过过滤的新数组
+    /*! @brief Filter elements to become a new array
+     @param func Filter function
+     @param thisp Test object, can omit
+     @return Return new array
      */
     List filter(Function func, Object thisp = {});
 
-    /*! @brief 遍历处理全部数据
-     @param func 处理函数
-     @param thisp 调用测试函数的 this 对象，可省略
+    /*! @brief Iterate all elements
+     @param func Handle function
+     @param thisp Test object, can omit
      */
     forEach(Function func, Object thisp = {});
 
-    /*! @brief 遍历处理全部数据并返回结果
-     @param func 处理函数
-     @param thisp 调用测试函数的 this 对象，可省略
-     @return 处理结果数组
+    /*! @brief Iterate all elements and return result
+     @param func Handle function
+     @param thisp Test object, can omit
+     @return Result array
      */
     List map(Function func, Object thisp = {});
 
-    /*! @brief 返回列表的 js 数组
-      @return 包含数据的 js 数组
+    /*! @brief Return as js array 
+      @return The js array that contains data
      */
     Array toArray();
 };
