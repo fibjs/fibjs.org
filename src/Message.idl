@@ -1,7 +1,7 @@
 
-/*! @brief 基础消息对象
+/*! @brief Basic message object
 
- Message 对象兼容于 mq 各个模块，可用于构建自定义消息处理系统，创建方法：
+ Message object compatible with all mq modules, used for custom messaging system, to create:
  @code
  var mq = require("mq");
  var m = new mq.Message();
@@ -9,56 +9,56 @@
  *  */
 interface Message : object
 {
-    /*! @brief 消息对象构造函数 */
+    /*! @brief Constructor */
     Message();
 
-    /*! @brief 消息的基本内容 */
+    /*! @brief Content */
     String value;
 
-    /*! @brief 消息的基本参数 */
+    /*! @brief Basic paramenters */
     List params;
 
-    /*! @brief 消息的返回结果 */
+    /*! @brief Return value */
     Variant result;
 
-    /*! @brief 包含消息数据部分的流对象 */
+    /*! @brief Stream that contains partial data */
     SeekableStream body;
 
-    /*! @brief 从流内读取指定大小的数据，此方法为 body 相应方法的别名
-     @param bytes 指定要读取的数据量，缺省为读取随机大小的数据块，读出的数据尺寸取决于设备
-     @return 返回从流内读取的数据，若无数据可读，或者连接中断，则返回 null
+    /*! @brief Read given size of data from stream, this is a alias to body method
+     @param bytes Size of data to read, default is random size which depends on your device
+     @return Return data from stream, null when nothing to read
      */
     Buffer read(Integer bytes = -1) async;
 
-    /*! @brief 从流内读取剩余的全部数据，此方法为 body 相应方法的别名
-     @return 返回从流内读取的数据，若无数据可读，或者连接中断，则返回 null
+    /*! @brief Read rest of data from stream, this is a alias to body method
+     @return Return data from stream, null when nothing to read
      */
     Buffer readAll() async;
 
-    /*! @brief 写入给定的数据，此方法为 body 相应方法的别名
-     @param data 给定要写入的数据
+    /*! @brief Write data to stream, this is a alias to body method
+     @param data Data to write
      */
     write(Buffer data) async;
 
-    /*! @brief 消息数据部分的长度 */
+    /*! @brief Length of message */
     readonly Long length;
 
-    /*! @brief 清除消息的内容 */
+    /*! @brief Clear message content */
     clear();
 
-    /*! @brief 发送格式化消息到给定的流对象
-     @param stm 指定接收格式化消息的流对象
+    /*! @brief Send formatted data to given stream
+     @param stm Stream to send data
      */
     sendTo(Stream stm) async;
 
-    /*! @brief 从给定的缓存流对象中读取格式化消息，并解析填充对象
-     @param stm 指定读取格式化消息的流对象
+    /*! @brief Read formatted data from given stream, parse and assgin values to object
+     @param stm Stream to receive data
      */
     readFrom(BufferedStream stm) async;
 
-    /*! @brief 查询消息 readFrom 时的流对象 */
+    /*! @brief Query stream object for readFrom */
     readonly Stream stream;
 
-    /*! @brief 获取响应消息对象*/
+    /*! @brief Get response body of message*/
     readonly Message response;
 };
