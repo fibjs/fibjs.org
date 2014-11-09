@@ -1,17 +1,17 @@
 
-/*! @brief 断言期望对象
-
- Expect 对象为 assert 模块内部对象，用于实现 expect 风格断言，创建：
+/*! @brief assertion expect object
+ Expect object is an inner object of assert object,
+ which can be used to create expect-style assertions, examples:
  @code
  var test = require("test");
  var obj = test.expect(exp);
  @endcode
- 或者直接引用：
+ or referring directly:
  @code
  var expect = require("expect");
  var obj = expect(exp);
  @endcode
- 或者通过 test.setup 配置：
+ or configuring by test.setup
  @code
  require("test").setup();
  var obj = expect(exp);
@@ -19,171 +19,175 @@
   */
 interface Expect : object
 {
-    /*! @brief 无任何修改，仅用于构建语义
-     @return 返回对象本身
+    /*! @brief no difference, only to build semantics
+     @return the object itself
      */
     readonly Expect to;
 
-    /*! @brief 无任何修改，仅用于构建语义
-     @return 返回对象本身
+    /*! @brief no difference, only to build semantics
+     @return the object itself
      */
     readonly Expect be;
 
-    /*! @brief 无任何修改，仅用于构建语义
-     @return 返回对象本身
+    /*! @brief no difference, only to build semantics
+     @return the obect itself
      */
     readonly Expect been;
 
-    /*! @brief 无任何修改，仅用于构建语义
-     @return 返回对象本身
+    /*! @brief no difference, only to build semantics
+     @return the object itself
      */
     readonly Expect is;
 
-    /*! @brief 无任何修改，仅用于构建语义
-     @return 返回对象本身
+    /*! @brief no difference, only to build semantics
+     @return the object itself
      */
     readonly Expect that;
 
-    /*! @brief 无任何修改，仅用于构建语义
-     @return 返回对象本身
+    /*! @brief no difference, only to build semantics
+     @return the object itself
      */
     readonly Expect and;
 
-    /*! @brief 无任何修改，仅用于构建语义
-     @return 返回对象本身
+    /*! @brief no difference, only to build semantics
+     @return the object itself
      */
     readonly Expect have;
 
-    /*! @brief 无任何修改，仅用于构建语义
-     @return 返回对象本身
+    /*! @brief no difference, only to build semantics
+     @return the object itself
      */
     readonly Expect with;
 
-    /*! @brief 无任何修改，仅用于构建语义
-     @return 返回对象本身
+    /*! @brief no difference, only to build semantics
+     @return the object itself
      */
     readonly Expect at;
 
-    /*! @brief 无任何修改，仅用于构建语义
-     @return 返回对象本身
+    /*! @brief no difference, only to build semantics
+     @return the object itself
      */
     readonly Expect of;
 
-    /*! @brief 无任何修改，仅用于构建语义
-     @return 返回对象本身
+    /*! @brief no difference, only to build semantics
+     @return the object itself
      */
     readonly Expect same;
 
-    /*! @brief 取反当前比对
-     @return 返回对象本身
+    /*! @invert the current comparison
+     @return the object itself
      */
     readonly Expect not;
 
-    /*! @brief 标记当前比对为深度比较
-     @return 返回对象本身
+    /*! @brief mark the current comparison as deep comparison
+     @return the object itself
      */
     readonly Expect deep;
 
-    /*! @brief 断言给定数值为制定类型，断言失败则抛出错误
-     @param type 指定断言的数据类型字符串
+    /*! @brief assert the given value as a specific type and throw an error when the assertion fails
+     @param type String assign the assertion's data type
      */
     a(String type);
 
-    /*! @brief 断言给定数值为制定类型，断言失败则抛出错误
-     @param type 指定断言的数据类型字符串
+    /*! @brief assert the given value as a specific type and throw an error when the assertion fails
+     @param type String assign the assertion's data type
      */
     an(String type);
 
-    /*! @brief 断言给定数值为真，断言失败则抛出错误*/
+    /*! @brief assert the given value as true and throw an error when the assertion fails */
     readonly Boolean ok;
 
-    /*! @brief 断言给定数值为 Boolean 类型 true，断言失败则抛出错误*/
+    /*! @brief assert the given value as true and throw an error when the assertion fails */
     readonly Boolean true;
 
-    /*! @brief 断言给定数值为 Boolean 类型 false，断言失败则抛出错误*/
+    /*! @brief assert the given value as false and throw an error when the assertion fails */
     readonly Boolean false;
 
-    /*! @brief 断言给定数值为 null，断言失败则抛出错误*/
+    /*! @brief assert the given value as null and throw an error when the assertion fails */
     readonly Boolean null;
 
-    /*! @brief 断言给定数值为 undefined，断言失败则抛出错误*/
+    /*! @brief assert the given value as undefined and throw an error when the assertion fails */
     readonly Boolean undefined;
 
-    /*! @brief 断言给定数值为函数，断言失败则抛出错误*/
+    /*! @brief assert the given value as function and throw an error when the assertion fails */
     readonly Boolean function;
 
-    /*! @brief 断言给定数值为对象，断言失败则抛出错误*/
+    /*! @brief assert the given value as object and throw an error when the assertion fails */
     readonly Boolean object;
 
-    /*! @brief 断言给定数值为数组，断言失败则抛出错误*/
+    /*! @brief assert the given value as array and throw an error when the assertion fails */
     readonly Boolean array;
 
-    /*! @brief 断言给定数值为字符串，断言失败则抛出错误*/
+    /*! @brief assert the given value as string and throw an error when the assertion fails */
     readonly Boolean string;
 
-    /*! @brief 断言给定数值为数字，断言失败则抛出错误*/
+    /*! @brief assert the given value as number and throw an error when the assertion fails */
     readonly Boolean number;
 
-    /*! @brief 断言给定数值为 Boolean 类型，断言失败则抛出错误*/
+    /*! @brief assert the given value as Boolean and throw an error when the assertion fails */
     readonly Boolean boolean;
 
-    /*! @brief 断言给定数值存在，断言失败则抛出错误*/
+    /*! @brief assert that the given value exists and throw an error when the assertion fails */
     readonly Boolean exist;
 
-    /*! @brief 断言给定数值严格等于预期的数值，若标记 deep 则深度比较，断言失败则抛出错误
-     @param expected 预期的数值
+    /*! @brief assert the given value as true and throw an error when the assertion fails
+     @param expected expected value
      */
     equal(Value expected);
 
-    /*! @brief 断言给定数值严格等于预期的数值，若标记 deep 则深度比较，断言失败则抛出错误
-     @param expected 预期的数值
+    /*! @brief assert that the given value is strict equal to the given value,
+        do deep comparison if deep is marked, throw an error when the assertion fails
+     @param expected expected value
      */
     eql(Value expected);
 
-    /*! @brief 断言给定数值大于预期的数值，断言失败则抛出错误
-     @param expected 预期的数值
+    /*! @brief assert that the given value is larger than the expected value, throw an error when the assertion fails
+     @param expected expected value
      */
     above(Value expected);
 
-    /*! @brief 断言给定数值大于预期的数值，断言失败则抛出错误
-     @param expected 预期的数值
+    /*! @brief assert that the given value is larger than the expected value, throw an error when the assertion fails
+     @param expected expected value
      */
     greaterThan(Value expected);
 
-    /*! @brief 断言给定数值最小为预期的数值，断言失败则抛出错误
-     @param expected 预期的数值
+    /*! @brief assert that the given value is no less than the expected value, throw an error when the assertion fails
+     @param expected expected value
      */
     least(Value expected);
 
-    /*! @brief 断言给定数值小于预期的数值，断言失败则抛出错误
-     @param expected 预期的数值
+    /*! @brief assert that the given value is less than the expected value, throw an error when the assertion fails
+     @param expected expected value
      */
     below(Value expected);
 
-    /*! @brief 断言给定数值小于预期的数值，断言失败则抛出错误
-     @param expected 预期的数值
+    /*! @brief assert that the given value is less than the expected value, throw an error when the assertion fails
+     @param expected expected value
      */
     lessThan(Value expected);
 
-    /*! @brief 断言给定数值最大为预期的数值，断言失败则抛出错误
-     @param expected 预期的数值
+    /*! @brief assert that the given value is no larger than the expected value, throw an error when the assertion fails
+     @param expected expected value
      */
     most(Value expected);
 
-    /*! @brief 断言给定数值包含指定属性，标记 deep 则深度比较，断言失败则抛出错误
-     @param prop 要测试的属性
+    /*! @brief assert that the given value contains specific property,
+        do deep comparison if deep is marked, throw an error when the assertion fails
+     @param prop property to be tested
      */
     property(Value prop);
 
-    /*! @brief 断言给定数值指定属性的值为给定值，标记 deep 则深度比较，断言失败则抛出错误
-     @param prop 要测试的属性
-     @param value 给定的值
+    /*! @brief assert that the given property of the given value is a specific value,
+        do deep comparison if deep is marked, throw an error when the assertion fails
+     @param prop property to be tested
+     @param value specific value
      */
     property(Value prop, Value value);
 
-    /*! @brief 测试数值近似等于预期值，断言失败则抛出错误
-     @param expected 预期的数值
-     @param delta 近似的小数精度
+    /*! @brief assert that the given value is close to the expected value,
+        do deep comparison if deep is marked, throw an error when the assertion fails
+     @param expected value
+     @param delta approximate decimal precision
      */
     closeTo(Value expected, Value delta);
 };

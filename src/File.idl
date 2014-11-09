@@ -1,30 +1,30 @@
-/*! @brief 文件操作对象，用于二进制文件读写
+/*! @brief file operands, used to operate the reading and writing of binary files.
 
- 文件操作对象用于对二进制文件进行操作，可使用 fs 模块打开和创建文件：
+ The file operand is used to do operations on binary files. Files can be opened and created by the fs module.
  @code
  var f = fs.open('test.txt');
  @endcode
  */
 interface File: SeekableStream
 {
-    /*! @brief 查询当前文件名 */
+    /*! @brief querying the name of the current file */
     readonly String name;
 
-    /*! @brief 修改文件尺寸，如果新尺寸小于原尺寸，则文件被截断
-      @param bytes 新的文件尺寸
+    /*! @brief modify the file size. The file will be truncated if the new size is less than before.
+      @param bytes new size of the file
      */
     truncate(Long bytes) async;
 
-    /*! @brief 查询文件是否到结尾
-     @return 返回 True 表示结尾
+    /*! @biref specifies if the query will get to the end of the file
+     @return query to the end of the file if true is returned
      */
     Boolean eof();
 
-    /*! @brief 将文件缓冲区内容写入物理设备 */
+    /*! @brief write file buffers to physical device */
     flush() async;
 
-    /*! @brief 查询当前文件的访问权限，Windows 不支持此方法
-     @param mode 指定设定的访问权限
+    /*! @brief query the access authority of the current file. This method is not supportes in Windows.
+     @param mode specify the access authority
      */
     chmod(Integer mode) async;
 };
