@@ -1,13 +1,10 @@
 
-/*! @brief http 协议转换处理器
-    @brief http Protocol Conversion Processor
+/*! @brief http Protocol Conversion Processor
 
-  用以将数据流转换为 http 协议消息，创建方式：
   conversing data stream to http protocol message, how to create:
   @code
   var hdlr = new mq.HttpHandler(...);
   @endcode
-  或者：
   or:
   @code
   var hdlr = new http.Handler(...);
@@ -15,53 +12,39 @@
  */
 interface HttpHandler: Handler
 {
-    /*! @brief 创建一个 http 协议处理器对象，将流对象的数据转变为 http 消息对象
-        @brief creating a http protocal processor object, conversing stream object's data to http message object
-     @param hdlr 内置消息处理器，处理函数，或 javascript 消息映射对象，详见 mq.jsHandler
+    /*! @brief creating a http protocal processor object, conversing stream object's data to http message object
      @param hdlr built-in message processor, handling functions or javascript message mapping object, see mq.jsHandler
      */
     HttpHandler(Value hdlr);
 
-    /*! @brief 查询和设置是否允许跨域请求，缺省为 false
-        @brief querying and setting whether cross-domain request is permitted, defaults to false
-    */
+    /*! @brief querying and setting whether cross-domain request is permitted, defaults to false */
     Boolean crossDomain;
 
-    /*! @brief 查询和设置是否允强制使用 gzip 压缩输出，缺省为 false
-        @brief querying and setting whether to compress the output by gzip, defaults to false
-    */
+    /*! @brief querying and setting whether to compress the output by gzip, defaults to false */
     Boolean forceGZIP;
 
-    /*! @brief 查询和设置最大请求头个数，缺省为 128
-        @brief querying and setting the max number of the header of requests, defaults to 128
-    */
+    /*! @brief querying and setting the max number of the header of requests, defaults to 128 */
     Integer maxHeadersCount;
 
-    /*! @brief 查询和设置最大上传尺寸，以字节为单位，缺省为 67108864(64M)
-        @brief querying and setting the max uploading size in bytes, defaults to 67108864(64M)
-    */
+    /*! @brief querying and setting the max uploading size in bytes, defaults to 67108864(64M) */
     Integer maxUploadSize;
 
-    /*! @brief http 协议转换处理器当前事件处理接口对象
-        @brief http current event processor interface object of the protocol conversion processor
-    */
+    /*! @brief http current event processor interface object of the protocol conversion processor */
     Handler handler;
 
-    /*! @brief 查询 http 协议转换处理器的工作状态
-        @brief querying the working state of the http protocol conversion processor
+    /*! @brief querying the working state of the http protocol conversion processor
 
-      返回的结果为一个 Stats 对象，结构如下：
       returning a Stats object, with the following structure:
       @code
       {
-          total : 1000,    // 总计处理的请求 total number of the requests that have been handled
-          pendding : 100,  // 当前正在处理的请求 current request being handled
-          request : 10,    // 新建的请求 the new request
-          response : 10,   // 发送的响应 response sent
-          error : 100,     // 发生的错误（不计入 404） errors, not including 404
-          error_400 : 10,  // 发生的请求错误 errors of request
-          error_404 : 12,  // 文件未找到的数量 missing files number
-          error_500 : 2    // 内部处理错误 internal processor error
+          total : 1000,    // total number of the requests that have been handled
+          pendding : 100,  // current request being handled
+          request : 10,    // the new request
+          response : 10,   // response sent
+          error : 100,     // errors, not including 404
+          error_400 : 10,  // errors of request
+          error_404 : 12,  // missing files number
+          error_500 : 2    // internal processor error
       }
       @endcode
      */

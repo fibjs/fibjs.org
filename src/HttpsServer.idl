@@ -1,7 +1,5 @@
-/*! @brief https 服务器对象
-    @brief https server object
+/*! @brief https server object
 
- https 服务器对象是将 SslServer 和 HttpHandler 组合封装的对象，方便快速搭建服务器，逻辑上相当于：
  http server object is the object that wrap SslServer and HttpHandler as a combination, which makes it convenient to build a server, logically equivalent to:
  @code
  var svr = new net.SslServer(crt, key, addr, port, new http.Handler(function(req){
@@ -9,7 +7,6 @@
  }));
  @endcode
 
- 创建方法：
  How to create:
  @code
  var http = require("http");
@@ -20,9 +17,7 @@
  */
 interface HttpsServer: HttpServer
 {
-    /*! @brief HttpsServer 构造函数，在所有本机地址侦听
-        @breif HttpsServer constructor, listen on all local addresses
-      @param certs 服务器证书列表，格式为
+    /*! @breif HttpsServer constructor, listen on all local addresses
       @param certs server certificate list, the format is:
         @code
         [
@@ -36,16 +31,12 @@ interface HttpsServer: HttpServer
             }
         ]
         @endcode
-      @param port 指定 http 服务器侦听端口
       @param port spcify http server listen port
-      @param hdlr http 内置消息处理器，处理函数，或 javascript 消息映射对象，详见 mq.jsHandler
       @param hdlr http built-in message handler, manipulation function or javascript message mapping object. See mq.jsHandler:
      */
     HttpsServer(Array certs, Integer port, Value hdlr);
 
-    /*! @brief HttpsServer 构造函数
-        @breif HttpsServer constructor, listen on all local addresses
-      @param certs 服务器证书列表，格式为
+    /*! @breif HttpsServer constructor, listen on all local addresses
       @param certs server certificate list, the format is:
         @code
         [
@@ -59,44 +50,32 @@ interface HttpsServer: HttpServer
             }
         ]
         @endcode
-      @param addr 指定 http 服务器侦听地址，为 "" 则在本机所有地址侦听
       @param addr specify http server listening address, listen on all local addressed if the param is ""
-      @param port 指定 http 服务器侦听端口
       @param port specify http server listen port
-      @param hdlr http 内置消息处理器，处理函数，或 javascript 消息映射对象，详见 mq.jsHandler
       @param hdlr http built-in message handler, manipulation function or javascript message mapping object. See mq.jsHandler
      */
     HttpsServer(Array certs, String addr, Integer port, Value hdlr);
 
-    /*! @brief HttpsServer 构造函数，在所有本机地址侦听
-        @brief HttpsServer constructor, listen on all local addresses
-      @param crt X509Cert 证书，用于客户端验证服务器
+    /*! @brief HttpsServer constructor, listen on all local addresses
       @param crt X509Cert certificate, used to verify the server on the client
-      @param key PKey 私钥，用于与客户端会话
       @param key PKey private key, used to get session with the client
-      @param port 指定 http 服务器侦听端口
       @param port spcify http server listen port
-      @param hdlr http 内置消息处理器，处理函数，或 javascript 消息映射对象，详见 mq.jsHandler
+      @param hdlr http built-in message handler, manipulation function or javascript message mapping object. See mq.jsHandler:
      */
     HttpsServer(X509Cert crt, PKey key, Integer port, Value hdlr);
 
-    /*! @brief HttpsServer 构造函数
-      @param crt X509Cert 证书，用于客户端验证服务器
-      @param key PKey 私钥，用于与客户端会话
-      @param addr 指定 http 服务器侦听地址，为 "" 则在本机所有地址侦听
-      @param port 指定 http 服务器侦听端口
-      @param hdlr http 内置消息处理器，处理函数，或 javascript 消息映射对象，详见 mq.jsHandler
+    /*! @brief HttpsServer constructor, listen on all local addresses
+      @param crt X509Cert certificate, used to verify the server on the client
+      @param key PKey private key, used to get session with the client
+      @param addr specify http server listening address, listen on all local addressed if the param is ""
+      @param port specify http server listen port
       @param hdlr http built-in message handler, manipulation function or javascript message mapping object. See mq.jsHandler:
      */
     HttpsServer(X509Cert crt, PKey key, String addr, Integer port, Value hdlr);
 
-    /*! @brief 设定证书验证模式，缺省为 VERIFY_REQUIRED
-        @brief set the certificate verify mode, defaults to VERIFY_REQUIRED
-    */
+    /*! @brief set the certificate verify mode, defaults to VERIFY_REQUIRED */
     Integer verification;
 
-    /*! @brief 客户端证书验证 ca
-        @brief client certificate verify ca
-    */
+    /*! @brief client certificate verify ca */
     readonly X509Cert ca;
 };

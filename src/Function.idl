@@ -1,13 +1,9 @@
 
-/*! @brief Function 模块不可直接引用，仅用于实现对 javascript Function 对象的扩展
-    @brief Function module cannot be referred directly. It is only used to extend JavaScript Function Object.
-*/
+/*! @brief Function module cannot be referred directly. It is only used to extend JavaScript Function Object. */
 interface Function : object
 {
-    /*! @brief 启动一个纤程
-        @brief start a fiber
+    /*! @brief start a fiber
 
-     启动纤程不需要特殊创建对象，之需要调用需要在纤程内执行的函数的 start 方法即可：
      Starting a fiber does not need to create any object. Just invoke the start method of the function that need to execute in the fiber.
      @code
      function func(v1, v2)
@@ -22,9 +18,7 @@ interface Function : object
      fb.join();
      @endcode
 
-     @param ... 可变参数序列，此序列会在纤程内传递给函数
      @param ... multiple assignment sequence, which will be passed to the function in the fiber.
-     @return 返回纤程对象
      @return fiber object
      */
     static Fiber start(...);

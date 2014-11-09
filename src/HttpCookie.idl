@@ -1,73 +1,47 @@
 
-/*! @brief http Cookie 对象，用于添加和处理 cookie
-    @brief http Cookie Object, used to add and handle cookies
-*/
+/*! @brief http Cookie Object, used to add and handle cookies */
 interface HttpCookie : object
 {
-    /*! @brief HttpCookie 构造函数，创建一个新的 HttpCookie 对象
-        @brief HttpCookie constructor, creating a new HttpCookie Object
-     @param opts 指定创建的 cookie 的属性
+    /*! @brief HttpCookie constructor, creating a new HttpCookie Object
      @param opts specify the properties of the cookie
     */
     HttpCookie(Object opts = {});
 
-    /*! @brief HttpCookie 构造函数，创建一个新的 HttpCookie 对象
-        @brief HttpCookie constructor, creating a new HttpCookie Object
-     @param name 指定创建的 cookie 名称
+    /*! @brief HttpCookie constructor, creating a new HttpCookie Object
      @param name specify the name of the cookie
-     @param value 指定创建的 cookie 值
      @param value specify the value of the cookie
-     @param opts 指定创建的 cookie 的其它属性
      @param opts specify other properties of the cookie
     */
     HttpCookie(String name, String value, Object opts = {});
 
-    /*! @brief 解析给定的字符串，填充 cookie 对象
-        @breif parsing the given string, filling out the object
-     @param header 指定需要解析的 header 字符串
+    /*! @breif parsing the given string, filling out the object
      @param header specify the header string that need to be parsed
     */
     parse(String header);
 
-    /*! @brief 检测给定的 url 是否匹配当前设置
-        @brief detecting whether the given url and the current configuration are matched
-     @param url 指定测试的 url
+    /*! @brief detecting whether the given url and the current configuration are matched
      @param url specify the url to be detected
     */
     Boolean match(String url);
 
-    /*! @brief 查询和设置 cookie 名称
-        @brief querying and setting the name of the cookie
-    */
+    /*! @brief querying and setting the name of the cookie */
     String name;
 
-    /*! @brief 查询和设置 cookie 的值
-        @brief querying and setting the value of the cookie
-    */
+    /*! @brief querying and setting the value of the cookie */
     String value;
 
-    /*! @brief 查询和设置 cookie 的域名范围
-        @breif querying and setting the damain scope of the cookie
-    */
+    /*! @breif querying and setting the damain scope of the cookie */
     String domain;
 
-    /*! @brief 查询和设置 cookie 的路径范围
-        @brief querying and setting the path scope of the cookie
-    */
+    /*! @brief querying and setting the path scope of the cookie */
     String path;
 
-    /*! @brief 查询和设置 cookie 的过期时间
-        @brief querying and setting the expire time of the cookie
-    */
+    /*! @brief querying and setting the expire time of the cookie */
     Date expires;
 
-    /*! @brief 查询和设置 cookie 是否仅允许 http 请求，缺省 false
-        @brief querying and settinng whether the cookie allows http request, defaults to false
-    */
+    /*! @brief querying and settinng whether the cookie allows http request, defaults to false */
     Boolean httpOnly;
 
-    /*! @brief 查询和设置 cookie 是否仅通过 https 传递，缺省 false
-        @brief querying and setting whether the cookie is only passed by https, defaults to false
-    */
+    /*! @brief querying and setting whether the cookie is only passed by https, defaults to false */
     Boolean secure;
 };
