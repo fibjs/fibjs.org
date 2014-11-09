@@ -1,59 +1,60 @@
 /*! @brief Buffer reader object
 
- BufferedReader object is used for caching the binary data stream object. It also provides text reading 
-function which only support utf-8 format conversion. Create method:  
+ BufferedReader object is used for caching the binary data stream object. It also provides text reading
+function which only support utf-8 format conversion. Create method:
  @code
  var reader = new io.BufferedStream(stream);
  @endcode
  */
 interface BufferedStream : Stream
 {
-    /*!	@brief BufferedStream Constructor
+    /*! @brief BufferedStream Constructor
       @param stm The binary base stream of the bufferedStream
      */
     BufferedStream(Stream stm);
 
-    /*!	@brief Read the text by the specified size  
-     @param size The size of the text to read. The size is measured in utf8 format or another specified code format. 
+    /*! @brief Read the text by the specified size
+     @param size The size of the text to read. The size is measured in utf8 format or another specified code format.
      @return The text to read. If no data to read or the connection is interrupted, return null.
      */
     String readText(Integer size) async;
 
-    /*!	@brief Read a line of text which ends with EOL, by default it ends with, posix:\"\\n\"；windows:\"\\r\\n\"
-     @param maxlen The maximum length of the string to read, measured in utf8 format, by default it is unlimited. 
+    /*! @brief Read a line of text which ends with EOL, by default it ends with, posix:\"\\n\"；windows:\"\\r\\n\"
+     @param maxlen The maximum length of the string to read, measured in utf8 format, by default it is unlimited.
      @return The text to read. If no data to read or the connection is interrupted, return null.
      */
     String readLine(Integer maxlen = -1) async;
 
-    /*!	@brief Read a line of text which ends with EOL, by default it ends with, posix:\"\\n\"；windows:\"\\r\\n\"
+    /*! @brief Read a line of text which ends with EOL, by default it ends with, posix:\"\\n\"；windows:\"\\r\\n\"
      @param maxlines The maximum lines of the text to read, by default it reads all of the lines.
-     @return The array of the lines to read. If no data to read or the connection is interrupted, return an empty array. 
+     @return The array of the lines to read. If no data to read or the connection is interrupted, return an empty array.
      */
     Array readLines(Integer maxlines = -1);
 
-    /*!	@brief Read a text string which ends with specified string 
+    /*! @brief Read a text string which ends with specified string
      @param mk The specified string with which the text string to read ends
+     @param maxlen The maximum length of the string to read, measured in utf8 format, by default it is unlimited.
      @return The string to read. If no data to read or the connection is interrupted, return null.
      */
     String readUntil(String mk, Integer maxlen = -1) async;
 
-    /*!	@brief Read a binary data packet
+    /*! @brief Read a binary data packet
      @param limit The maximum number of the byte to read. Throw an error when overread.
      @return The binary data block to read. If no data to read or the connection is interrupted, return null.
      */
     Buffer readPacket(Integer limit = -1) async;
 
-    /*!	@brief Write a string
+    /*! @brief Write a string
      @param txt The string to write
      */
     writeText(String txt) async;
 
-    /*!	@brief Write a string and a line break
+    /*! @brief Write a string and a line break
      @param txt The string to write
      */
     writeLine(String txt) async;
 
-    /*!	@brief Write a binary data packet
+    /*! @brief Write a binary data packet
      @param data The binary data to write
      */
     writePacket(Buffer data) async;
