@@ -1,61 +1,61 @@
 
-/*! @brief 消息队列模块 */
+/*! @brief Message queue module */
 module mq
 {
-    /*! @brief 创建一个消息对象，参见 Message */
+    /*! @brief Create a message obeject, see Message */
     static Message new Message();
 
-    /*! @brief 创建一个包处理消息对象，参见 PacketMessage */
+    /*! @brief Create a packet message object, see PacketMessage */
     static PacketMessage new PacketMessage();
 
-    /*! @brief 创建一个 Packet 包处理器，参见 PacketHandler */
+    /*! @brief Create a packet message hadler, see PacketHandler */
     static PacketHandler new PacketHandler();
 
-    /*! @brief 创建一个 http 协议处理器对象，参见 HttpHandler */
+    /*! @brief Create a HTTP handler, see HttpHandler */
     static HttpHandler new HttpHandler();
 
-    /*! @brief 创建一个消息处理器链处理对象，参见 Chain */
+    /*! @brief Create a message chain handler, see Chain */
     static Chain new Chain();
 
-    /*! @brief 创建一个消息处理器路由对象，参见 Routing*/
+    /*! @brief Create a message routing handler, see Routing*/
     static Routing new Routing();
 
-    /*! @brief 创建一个 javascript 消息处理器对象，传递值内置处理器则直接返回
-     @param hdlr 内置消息处理器，处理函数，或 javascript 消息映射对象，处理器将自动映射子对象及函数
-     @return 返回封装了处理函数的处理器
+    /*! @brief Create a javascript message handler, return immediately when pass by value
+     @param hdlr builtin handler, function or javascript mapping object, handler will map be mapped automatically
+     @return Return handler of handle function
 
-     消息处理函数语法如下：
+     Syntax:
      @code
      function func(v){
      }
      @endcode
-     参数 v 为正在处理的消息，返回结果允许有三种:
-     - Object javascript 对象，下一阶段将使用此对象进行消息映射
-     - Function javascript 函数，将使用此函数进行下一阶段处理
-     - Handler 内置处理器，将使用此处理器进行下一阶段处理
-     无返回或者其他的返回结果将结束消息处理。
+     Parameter v is the message to procee, there are three possibilities:
+     - Object javascript object, used for mapping message
+     - Function javascript function, used for next stage
+     - Handler Builtin handler for next stage
+     No return or other result will finish message processing.
 
-     使用消息映射对象处理器将根据对象属性嵌套逻辑处理消息，如下所示：
+     Use message mapping handler to handle nested logic as follows:
      @code
      hdlr = mq.jsHandler({
          // fun1
         fun1 : function(v){},
         sub : {
-            // sub.fun2 或者 sub/fun2
+            // sub.fun2 or sub/fun2
             fun2 : function(v){},
-            // sub.hdlr 或者 sub/hdlr
+            // sub.hdlr or sub/hdlr
             hdlr: myHandler
         }
      });
      @endcode
-     示例中 fun1 和 fun2 为普通的 javascript 处理函数，sub 为子对象，myHandler 为其他处理器对象
+     In the example, fun1 and fun2 are normal javascript handle function, sub is a sub-object, myHandler is a handler
      */
     static Handler jsHandler(Value hdlr);
 
-    /*! @brief 创建一个异步等待处理器
-      @return 返回创建的处理器
+    /*! @brief Create async handler
+      @return Return created handler
 
-     异步等待处理器用于需要异步处理的消息处理模式，示例如下：
+     Wait handler async as follows:
      @code
      function func(v){
          var await = mq.await();
@@ -67,20 +67,20 @@ module mq
          return await;
      }
      @endcode
-     示例是一个 javascript 消息处理函数，当函数返回时，消息处理引擎将等待 await，直到 await.end 被调用，才继续下一阶段的处理。
+     Example uses javascript message handle function, when it returns, message handle engine will wait for await until await.end being called.
      */
     static AsyncWait await();
 
-    /*! @brief 创建一个空处理器对象，次处理对象不做任何处理直接返回
-     @return 返回空处理函数
+    /*! @brief Create a empty handler
+     @return Return empry handler
      */
     static Handler nullHandler();
 
-    /*! @brief 使用给定的处理器处理一个消息或对象
-     @param hdlr 指定使用的处理器
-     @param v 指定要处理的消息或对象
+    /*! @brief Invoke a message or object to given handler
+     @param hdlr Handler to operate
+     @param v Message or object
 
-     不同于处理器的 invoke 方法，此方法将循环调用每个处理器的返回处理器，直到处理器返回 null 为止。
+     Unlike invoke method of handler, this will loop and wait every handler until reach null
      */
     static invoke(Handler hdlr, object v) async;
 };

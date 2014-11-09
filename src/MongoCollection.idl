@@ -1,6 +1,6 @@
-/*! @brief mongodb 数据库数据集对象
+/*! @brief mongodb database dataset object
 
- 使用 MongoDB.getCollection 创建：
+ Used for MongoDB.getCollection, to create:
  @code
  var col1 = mdb.getCollection('test');
  var col = mdb.test;
@@ -8,110 +8,110 @@
  */
 interface MongoCollection : object
 {
-    /*! @brief 根据给定的查询条件和返回字段设定，建立游标对象
-      @param query 指定查询条件的对象
-      @param projection 指定返回字段的对象
-      @return 返回游标对象
+    /*! @brief Create cursor by given conditions and return fields
+      @param query Query conditions
+      @param projection Return fields
+      @return Return cursor
      */
     MongoCursor find(Object query = {}, Object projection = {});
 
-    /*! @brief 根据给定的查询条件和返回字段设定，查询一条结果
-      @param query 指定查询条件的对象
-      @param projection 指定返回字段的对象
-      @return 返回第一条结果
+    /*! @brief Return one record by given conditions and return fields
+      @param query Query conditions
+      @param projection Return fields
+      @return Return first result
      */
     Object findOne(Object query = {}, Object projection = {});
 
-    /*! @brief 查询并修改
-      @param query 指定查询条件，修改数据
-      @return 返回修改前的结果及其他信息
+    /*! @brief Query and modify
+      @param query Condition to modify data
+      @return Return data before modification and other information
      */
     Object findAndModify(Object query);
 
-    /*! @brief 插入一组数据
-      @param documents 指定要插入的数据数组
+    /*! @brief Insert a list of data
+      @param documents Data to insert
      */
     insert(Array documents);
 
-    /*! @brief 插入一条数据
-      @param document 指定要插入的数据
+    /*! @brief Insert single record
+      @param document Data to insert
      */
     insert(Object document);
 
-    /*! @brief 保存一条数据，若数据包含 _id 字段，则为更新，否则为插入
-      @param document 指定要保存的数据
+    /*! @brief Insert a record, update of it has value on _id field
+      @param document Data to save
      */
     save(Object document);
 
-    /*! @brief 根据给定的查询条件更新数据
-      @param query 指定查询条件的对象
-      @param document 指定要更新的数据
-      @param upsert 数据不存在时，插入一条新数据，缺省为 false，不插入
-      @param multi 当符合条件的数据多于一条时，更新所有数据，缺省为 false，只更新第一条
+    /*! @brief Update data by given conditions
+      @param query Query conditions
+      @param document Data to update
+      @param upsert Indicates whether insert new record when not exists, default is false
+      @param multi Indicates whether update all records when more than one record match the condition, defualt is false
      */
     update(Object query, Object document, Boolean upsert = false, Boolean multi = false);
 
-    /*! @brief 根据给定的查询条件更新数据
-      @param query 指定查询条件的对象
-      @param document 指定要更新的数据
-      @param options 以对象字段传递的 upsert 和 multi 选项
+    /*! @brief Update data by given conditions
+      @param query Query conditions
+      @param document Data to update
+      @param options Set upsert and multi option as field
      */
     update(Object query, Object document, Object options);
 
-    /*! @brief 根据给定的查询条件删除数据
-      @param query 指定查询条件的对象
+    /*! @brief Delete data by given conditions
+      @param query Query conditions
      */
     remove(Object query);
 
-    /*! @brief 执行数据库命令
-      @param cmd 给定命令对象
+    /*! @brief Execute database commands
+      @param cmd Commands to execute
      */
     Object runCommand(Object cmd);
 
-    /*! @brief 执行数据库命令
-      @param cmd 给定命令名称
-      @param arg 给定命令参数选项
+    /*! @brief Execute database commands
+      @param cmd Command name
+      @param arg Command paramenters
      */
     Object runCommand(String cmd, Object arg = {});
 
-    /*! @brief 删除当前集合 */
+    /*! @brief Delete current collection */
     drop();
 
-    /*! @brief 在当前集合上创建索引
-      @param keys 给定索引字段、顺序和方向
-      @param options 给定索引的选项，唯一索引等
+    /*! @brief Create index in current collection
+      @param keys Index field, order and direction
+      @param options Option of index
      */
     ensureIndex(Object keys, Object options = {});
 
-    /*! @brief 重建当前集合的索引
-      @return 返回命令执行结果
+    /*! @brief Rebuild index of current collection
+      @return Return results of execution
      */
     Object reIndex();
 
-    /*! @brief 删除当前集合指定名称的索引
-      @param name 给定要删除的索引名称
-      @return 返回命令执行结果
+    /*! @brief Delete given index in current collection
+      @param name Index name
+      @return Return results of execution
      */
     Object dropIndex(String name);
 
-    /*! @brief 删除当前集合全部索引
-      @return 返回命令执行结果
+    /*! @brief Delete all indexes of current collection
+      @return Return results of execution
      */
     Object dropIndexes();
 
-    /*! @brief 查询当前集合全部索引
-      @return 返回包含索引的结果集
+    /*! @brief Query all indexes in current collection
+      @return Return result set 
      */
     MongoCursor getIndexes();
 
-    /*! @brief 获取当前集合子命名空间的集合对象
-      @param name 子命名空间名称
-      @return 返回新集合对象
+    /*! @brief Get obejct of collection
+      @param name Name of collection
+      @return Return new collection object
      */
     MongoCollection getCollection(String name);
 
-    /*! @brief 以属性方式快速获取当前集合子命名空间的集合对象
-      @return 返回新集合对象
+    /*! @brief Get collection by attributes
+      @return Return new collection object
      */
     readonly MongoCollection operator[String];
 };
