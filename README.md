@@ -12,3 +12,10 @@
 
 ## 文档生成
 在 src 目录运行 doxygen。
+
+## 贡献者
+* @lingyi
+* @alexandtang
+* @classicemi
+* @Unknwon
+* @IanZhao
