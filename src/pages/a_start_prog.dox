@@ -1,29 +1,29 @@
-/*! @page start_prog 开始写代码
+/*! @page start_prog Beginning
 @tableofcontents
-@section program_sec 开始写代码
+@section program_sec Beginning
 
-@subsection prg_step1 第一步：Hello, World!
+@subsection prg_step1 Step 1: Hello, World!
 
-选择你喜爱的文本编辑器，在 bin 目录下编辑生成一个 hello.js，内容如下：
+Choose your prefered editor and create hello.js under bin:
 @code
 console.log('Hello, World!');
 @endcode
 
-然后即可执行：
+And then run:
 @code
 Release/fibjs hello
 @endcode
 
-可以看到屏幕输出：
+Output as follows:
 @code
 Hello, World!
 @endcode
 
-很简单是吧。
+Yes, it’s so easy like ‘Hello, Wolrd!’ example of others languages.
 
-@subsection prg_step2 第二步：DANG, DANG, DANG...
+@subsection prg_step2 Step 2: DANG, DANG, DANG...
 
-接下来我们想写个大钟程序 dang.js，每隔一秒钟敲一声。当然你也可以间隔时间更长。
+And then, let’s make a simple program simulating a bell, whick makes a jow ‘DANG’ every second. Of course you can set a longer interval.
 @code
 var coroutine = require("coroutine");
 
@@ -33,7 +33,7 @@ while(true){
 }
 @endcode
 
-执行后，你会看到屏幕如你想的那样，每隔一秒输出一个 'DANG...'
+When running, it will output a ‘DANG’ every second on the screen: 
 @code
 DANG...
 DANG...
@@ -41,11 +41,12 @@ DANG...
 ......
 @endcode
 
-不幸的是，这个程序永远不会退出来，你只能通过 ctrl+c 终止它。
+It is to be noted that you have to run ctrl+c to terminate. If not, it will run forever.
 
-@subsection prg_step3 第三步：DANG 们
+@subsection prg_step3 Step 3: DANGs
 
-同一时刻只有一口大钟显然不是我们想要的，我们需要好多口大钟。
+As the example above, there is only a bell at a time, whick is not what we expected. What we expect is that, more than a bell exist and make jows at the same time.
+
 @code
 var coroutine = require("coroutine");
 
@@ -63,7 +64,7 @@ while(true)
   coroutine.sleep(1000);
 @endcode
 
-我们于是拥有 5 口大钟，每隔一秒同时敲响：
+Now there is 5 bells; everyone make a ‘DANG’ per second concurrently.
 @code
 DANG 0...
 DANG 1...
@@ -79,7 +80,7 @@ DANG 4...
 ...
 @endcode
 
-如果想更和谐一点，大钟们不要那么扎堆一起响，可以修改一下代码：
+Also, we could make a small change to make the ‘DANG’s seem more natrual. Don’t jow at the same time.
 @code
 var coroutine = require("coroutine");
 
@@ -99,9 +100,8 @@ while(true)
   coroutine.sleep(1000);
 @endcode
 
-@subsection prg_step4 进阶：并行作业
-
-利用协程，我们可以完成很多有趣的事情，也可以用更有趣的方式完成事情。在很多时候，我们需要在一次请求完成多个独立的数据库操作，而且大部分时候，这些操作之间并无制约关系。通过协程，我们可以很方便地将这些操作平行发送，以提高响应速度。
+@subsection prg_step4 Advance: Parallel Jobs
+With the help of coroutine, we can accomplish many funny things. Of course, we could deal with the same things by more funny ways. In many cases, there are some seperate database operations at a request. By means of coroutine, we could dispatch these operations into seperate coroutine tasks and make them handled parellelly. Obviously, it will be faster to response.
 @code
 var coroutine = require("coroutine");
 
@@ -118,11 +118,10 @@ function func(){
 }
 @endcode
 
-上述代码中的多个匿名函数，会被同时执行，并在全部完成后，继续下面的代码。
+Anonymous functions in the above section will be executed concurrently. After all functions finish, it goes on.
+@subsection prg_step5 More Advance: Asynchronous Jobs
 
-@subsection prg_step5 再进一步：异步作业
-
-同样道理，每次用户请求，总会有一些操作是不需要立即完成的，只有用户可以感知的部分需要在请求内完成，为了尽快响应用户，我们可以把用户暂时感知不到的请求丢到请求返回以后进行：
+Also, for a request, some operations don’t need response immediately; only ones that user are sensitive about will be got a reponse before timeout of the request. To make the response faster, we could process these requests asynchronusly, which users will not be sensitive about instantly.
 @code
 var coroutine = require("coroutine");
 
@@ -137,10 +136,10 @@ function func(){
 }
 @endcode
 
-上述代码中匿名函数便会延迟执行，而用户得以迅速得到反馈。
+The anonymous function above will be delayed to execute.
 
-@subsection prg_step10 小结
+@subsection prg_step10 Summary
 
-以优雅的协程编写并发 js 代码，总是比层层回调，更加让人心旷神怡的。准备好开启 fibjs 之旅吧。
+Let’s start fibjs! With coroutine, it’s more garaceful and delightful to write concurrent code than callbacks. 
 
 */
