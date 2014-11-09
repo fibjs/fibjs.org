@@ -1,6 +1,8 @@
 /*! @brief http 服务器对象
+    @brief http server object
 
  http 服务器对象是将 TcpServer 和 HttpHandler 组合封装的对象，方便快速搭建服务器，逻辑上相当于：
+ http server object is the object that wrap TcpServer and HttpHandler as a combination, which makes it convenient to build a server, logically equivalent to:
  @code
  var svr = new net.TcpServer(addr, port, new http.Handler(function(req){
     ...
@@ -8,6 +10,7 @@
  @endcode
 
  创建方法：
+ How to create:
  @code
  var http = require("http");
  var svr = new http.Server(80, function(req){
@@ -18,43 +21,60 @@
 interface HttpServer: TcpServer
 {
     /*! @brief HttpServer 构造函数，在所有本机地址侦听
+        @brief HttpServer constructor, listen on all local addresses
       @param port 指定 http 服务器侦听端口
+      @param port spcify http server listen port
       @param hdlr http 内置消息处理器，处理函数，或 javascript 消息映射对象，详见 mq.jsHandler
+      @param hdlr http built-in message handler, manipulation function or javascript message mapping object. See mq.jsHandler:
      */
     HttpServer(Integer port, Value hdlr);
 
     /*! @brief HttpServer 构造函数
+        @brief HttpServer constructor
       @param addr 指定 http 服务器侦听地址，为 "" 则在本机所有地址侦听
+      @param addr specify http server listening address, listen on all local addressed if the param is ""
       @param port 指定 http 服务器侦听端口
+      @param port specify http server listen port
       @param hdlr http 内置消息处理器，处理函数，或 javascript 消息映射对象，详见 mq.jsHandler
+      @param hdlr http built-in message handler, manipulation function or javascript message mapping object. See mq.jsHandler
      */
     HttpServer(String addr, Integer port, Value hdlr);
 
-    /*! @brief 查询和设置是否允许跨域请求，缺省为 false */
+    /*! @brief 查询和设置是否允许跨域请求，缺省为 false
+        @brief querying and setting whether cross-domain request is permitted, defaults to false
+    */
     Boolean crossDomain;
 
-    /*! @brief 查询和设置是否允强制使用 gzip 压缩输出，缺省为 false */
+    /*! @brief 查询和设置是否允强制使用 gzip 压缩输出，缺省为 false
+        @brief querying and setting whether the output is compressed by gzip, defaults to false
+    */
     Boolean forceGZIP;
 
-    /*! @brief 查询和设置最大请求头个数，缺省为 128 */
+    /*! @brief 查询和设置最大请求头个数，缺省为 128
+        @brief querying and setting the max number of request headers, defaults to 128
+    */
     Integer maxHeadersCount;
 
-    /*! @brief 查询和设置最大上传尺寸，以 MB 为单位，缺省为 64 */
+    /*! @brief 查询和设置最大上传尺寸，以 MB 为单位，缺省为 64
+        @brief querying and setting the max size of the uploading file in MB, defults to 64MB
+    */
     Integer maxUploadSize;
 
     /*! @brief 查询 http 协议转换处理器的工作状态
+        @brief querying working status of the http protocol conversion processor
 
       返回的结果为一个 Stats 对象，结构如下：
+      returning a stats object, see the structure:
       @code
       {
-          total : 1000,    // 总计处理的请求
-          pendding : 100,  // 当前正在处理的请求
-          request : 10,    // 新建的请求
-          response : 10,   // 发送的响应
-          error : 100,     // 发生的错误（不计入 404）
-          error_400 : 10,  // 发生的请求错误
-          error_404 : 12,  // 文件未找到的数量
-          error_500 : 2    // 内部处理错误
+          total : 1000,    // 总计处理的请求 total requests number that been handled
+          pendding : 100,  // 当前正在处理的请求 current request being handled
+          request : 10,    // 新建的请求 the new created request
+          response : 10,   // 发送的响应 sended response
+          error : 100,     // 发生的错误（不计入 404） errors, not including 404
+          error_400 : 10,  // 发生的请求错误 request errors
+          error_404 : 12,  // 文件未找到的数量 404 errors number
+          error_500 : 2    // 内部处理错误 internal processor error
       }
       @endcode
      */
