@@ -1,34 +1,34 @@
 
-/*! @brief Packet 包协议转换处理器
+/*! @brief Packet protocal converter
 
-  用以将数据流转换为 Packet 包协议消息。创建方式：
+  Used for convert data stream to Packet protocol message, to create:
   @code
   var pkghdlr = new mq.PacketHandler(...);
   @endcode
  */
 interface PacketHandler: Handler
 {
-    /*! @brief Packet 包处理器构造函数
-     @param hdlr 内置消息处理器，处理函数，或 javascript 消息映射对象，详见 mq.jsHandler
+    /*! @brief Packet constructor
+     @param hdlr Builtin message handler, handle function or javascript message mapping object, see mq.jsHandler
      */
     PacketHandler(Value hdlr);
 
-    /*! @brief 查询和设置最大包尺寸，以 MB 为单位，缺省为 64 */
+    /*! @brief Get and set maximum packet size in MB, default is 64 */
     Integer maxSize;
 
-    /*! @brief Packet 协议转换处理器当前事件处理接口对象 */
+    /*! @brief Packet protocol converter current handle interface object */
     Handler handler;
 
-    /*! @brief 查询 Packet 包协议转换处理器的工作状态
+    /*! @brief Get Packet protocol handler working status
 
-      返回的结果为一个 Stats 对象，结构如下：
+      Return Stats object as follows:
       @code
       {
-          total : 1000,    // 总计处理的请求
-          pendding : 100,  // 当前正在处理的请求
-          request : 10,    // 新建的请求
-          response : 10,   // 发送的响应
-          error : 100      // 发生的错误
+          total : 1000,    // Totoal handled requests
+          pendding : 100,  // Pendding requests to handle
+          request : 10,    // New requests
+          response : 10,   // Responsed requests
+          error : 100      // Error count
       }
       @endcode
      */

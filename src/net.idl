@@ -1,80 +1,80 @@
 
-/*! @brief 网络访问模块
+/*! @brief Network module
 
- 基础模块。可用于创建和操作网络资源，引用方式：
+ Used for create and operate netwrok resource, to use it:
  \code
  var net = require('net');
  \endcode
  */
 module net
 {
-    /*! @brief 地址集常量，指定 ipv4*/
+    /*! @brief ipv4 address constant */
     const Integer AF_INET = 2;
 
-    /*! @brief 地址集常量，指定 ipv6*/
+    /*! @brief ipv6 address constant*/
     const Integer AF_INET6 = 10;
 
-    /*! @brief 协议族常量，指定 tcp*/
+    /*! @brief tcp protocol suite constant */
     const Integer SOCK_STREAM = 1;
 
-    /*! @brief 协议族常量，指定 udp*/
+    /*! @brief udp protocol suite constant*/
     const Integer SOCK_DGRAM = 2;
 
-    /*! @brief 查询给定的主机名的地址
-     @param name 指定主机名
-     @param family 指定查询返回类型，缺省为 AF_INET
-     @return 返回查询的 ip 字符串
+    /*! @brief Resolve address of given host
+     @param name Home name
+     @param family Return type, default is AF_INET
+     @return Return IP result string
      */
     static String resolve(String name, Integer family = AF_INET) async;
 
-    /*! @brief 快速查询的主机地址，等效与 resolve(name)
-     @param name 指定主机名
-     @return 返回查询的 ip 字符串
+    /*! @brief Quick query host address, same as resolve(name)
+     @param name Host name
+     @return Return IP result string
      */
     static String ip(String name) async;
 
-    /*! @brief 快速查询的主机 ipv6 地址，等效与 resolve(name, net.AF_INET6)
-     @param name 指定主机名
-     @return 返回查询的 ipv6 字符串
+    /*! @brief Quick query host ipv6 address, same as resolve(name, net.AF_INET6)
+     @param name Host name
+     @return Return IPv6 result string
      */
     static String ipv6(String name) async;
 
-    /*! @brief 创建一个 Socket 对象，参见 Socket */
+    /*! @brief Create a Socket object, see Socket */
     static Socket new Socket();
 
-    /*! @brief 创建一个 Socket 对象并建立连接，参见 Socket
-     @param host 指定对方地址或主机名
-     @param port 指定对方端口
-     @param family 指定地址集，缺省为 AF_INET，ipv4
-     @return 返回连接成功的 Socket 对象
+    /*! @brief Create a Socket object and make connection, see Socket */
+     @param host Target address or host name
+     @param port Target port number
+     @param family Addree type, default is AF_INE, ipv4
+     @return Return connected Socket object
      */
     static Stream connect(String host, Integer port, Integer family = net.AF_INET) async;
 
-    /*! @brief 创建一个 Socket 或 SslSocket 对象并建立连接
-     @param url 指定连接的协议，可以是：tcp://host:port 或者 ssl://host:port
-     @return 返回连接成功的 Socket 或者 SslSocket 对象
+    /*! @brief Create a Socket or SslSocket and make connection
+     @param url URL with protocol, can be tcp://host:port or ssl://host:port
+     @return Return connected Socket or SslSocket object
      */
     static Stream connect(String url) async;
 
-    /*! @brief 创建一个 Smtp 对象，参见 Smtp */
+    /*! @brief Create a Smtp object, see Smtp */
     static Smtp new Smtp();
 
-    /*! @brief 创建一个 Smtp 对象并建立连接，参见 Smtp
-     @param host 指定对方地址或主机名
-     @param port 指定对方端口
-     @param family 指定地址集，缺省为 AF_INET，ipv4
-     @return 返回连接成功的 Smtp 对象
+    /*! @brief Create a Smtp object and make connection, see Smtp */
+     @param host Target address or host name
+     @param port Target port number
+     @param family Addree type, default is AF_INE, ipv4
+     @return Return connected Smtp object
      */
     static Smtp openSmtp(String host, Integer port, Integer family = net.AF_INET) async;
 
-    /*! @brief 创建一个 TcpServer 对象，参见 TcpServer */
+    /*! @brief Create a TcpServer object, see TcpServer */
     static TcpServer new TcpServer();
 
-    /*! @brief 创建一个 Url 对象，参见 Url */
+    /*! @brief Create a Url object, see Url */
     static Url new Url();
 
-    /*! @brief 查询当前系统异步网络引擎
-     @return 返回网络引擎名称
+    /*! @brief Get system backend async network engine
+     @return Return network engine name
     */
     static String backend();
 };
