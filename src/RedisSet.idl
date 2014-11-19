@@ -1,7 +1,7 @@
 
-/*! @brief Redis 数据库客户端 Set 对象，此对象为包含指定 key 的客户端，只有调用其方法才会操作数据库
+/*! @brief Redis database client Set object, it contains client of given key and has to operate it with database
 
- 用以操作 Redis 的 Set 对象，创建方法：
+ Used for Redis Set object, to create it:
  @code
  var db = require("db");
  var rdb = new db.openRedis("redis-server");
@@ -10,48 +10,48 @@
  */
 interface RedisSet : object
 {
-    /*! @brief 将一个或多个 member 元素加入到集合 key 当中，已经存在于集合的 member 元素将被忽略
-     @param members 指定要添加的元素数组
-     @return 被添加到集合中的新元素的数量，不包括被忽略的元素 */
+    /*! @brief Add one or more member to collection key, duplicates will be ignored
+     @param members Members to add
+     @return Return number of elements added, exclusive ignores */
     Integer add(Array members);
 
-    /*! @brief 同时将多个 field-value (域-值)对设置到哈希表中，此命令会覆盖哈希表中已存在的域
-     @param ... 指定要添加的元素列表
-     @return 被添加到集合中的新元素的数量，不包括被忽略的元素  */
+    /*! @brief Add multiple field-value to hash table, overwrite when exist
+     @param ... List of elements
+     @return Return number of elements added, exclusive ignores */
     Integer add(...);
 
-    /*! @brief 移除集合中的一个或多个 member 元素
-     @param members 指定要移除的元素数组
-     @return 被成功移除的元素的数量，不包括被忽略的元素 */
+    /*! @brief Remove one or more elements
+     @param members Members to remove
+     @return Return number of elements removed, exclusive ignores */
     Integer remove(Array members);
 
-    /*! @brief 移除集合中的一个或多个 member 元素
-     @param ... 指定要移除的元素列表
-     @return 被成功移除的元素的数量，不包括被忽略的元素  */
+    /*! @brief Remove one or more elements
+     @param ... List of elements to remove
+     @return Return number of elements removed, exclusive ignores */
     Integer remove(...);
 
-    /*! @brief 返回集合中元素的数量
-     @return 返回集合的长度 */
+    /*! @brief Get number of elements in collection
+     @return Return length of collection */
     Integer len();
 
-    /*! @brief 判断 member 元素是否集合的成员
-     @return 如果 member 元素是集合的成员，返回 true */
+    /*! @brief Chekc if member is in collection
+     @return Return true when member is in collection */
     Boolean exists(Buffer member);
 
-    /*! @brief 返回集合中的所有成员
-     @return 集合中所有成员的列表 */
+    /*! @brief Return all elements
+     @return Return list of members */
     List members();
 
-    /*! @brief 移除并返回集合中的一个随机元素
-     @return 被移除的随机元素。当集合是空集时，返回 null */
+    /*! @brief Remove and return a random element
+     @return Return removed element, null when collection is empty */
     Buffer pop();
 
-    /*! @brief 从集合中获取随机的一个元素
-     @return 返回一个元素；如果集合为空，返回 null */
+    /*! @brief Return a random element
+     @return Return a element, null when collection is empty */
     Value randMember();
 
-    /*! @brief 从集合中获取随机的若干元素
-     @param count 指定返回的元素个数。正数，返回一个包含 count 个元素的数组；负数，返回一个数组，数组中的元素可能会重复出现多次，而数组的长度为 count 的绝对值
-     @return 返回一个列表；如果集合为空，返回空列表 */
+    /*! @brief Get number of random elements
+     @param count Number of elements to return. Positive, return a array with given elements; negative, may have duplicated elements and length is the absolute value of count
+     @return Return a list with elements or empty list */
     Value randMember(Integer count);
 };
