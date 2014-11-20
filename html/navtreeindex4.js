@@ -1,5 +1,6 @@
 var NAVTREEINDEX4 =
 {
+"d8/d2c/interfaceDbConnection.html#ac61f07a7d6c5471293371086af3186bd":[5,7,8],
 "d8/d2c/interfaceDbConnection.html#ad66be13eb5b7c5f560fd8511565138c4":[5,7,9],
 "d8/d2c/interfaceDbConnection.html#ae6d31f438b2c274f32aade526f92da2f":[5,7,6],
 "d8/d89/namespacevm.html":[4,24],
@@ -248,6 +249,5 @@ var NAVTREEINDEX4 =
 "da/df6/interfaceXmlProcessingInstruction.html#ac61f07a7d6c5471293371086af3186bd":[5,83,11],
 "da/df6/interfaceXmlProcessingInstruction.html#ac6727f3f092028418cdbf0b44225f58a":[5,83,20],
 "da/df6/interfaceXmlProcessingInstruction.html#acb09ccf7866b614f7964fa67c73f3160":[5,83,18],
-"da/df6/interfaceXmlProcessingInstruction.html#ad27424cb66b1039ddff3f6c297fbe0fd":[5,83,8],
-"da/df6/interfaceXmlProcessingInstruction.html#ad493d7ec94ebfd1cb874d0b43920275d":[5,83,17]
+"da/df6/interfaceXmlProcessingInstruction.html#ad27424cb66b1039ddff3f6c297fbe0fd":[5,83,8]
 };

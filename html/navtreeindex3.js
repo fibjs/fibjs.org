@@ -1,5 +1,6 @@
 var NAVTREEINDEX3 =
 {
+"d6/df7/interfaceTrigger.html#afcf974790b6e846cd89eba5a802e7fa5":[5,67,0],
 "d7/d32/interfaceRedis.html":[5,46],
 "d7/d32/interfaceRedis.html#a0476f90872be6a8c94de65dfea6d6d05":[5,46,11],
 "d7/d32/interfaceRedis.html#a04f350bace05c348daed5b1bdeb0b12e":[5,46,10],
@@ -248,6 +249,5 @@ var NAVTREEINDEX3 =
 "d8/d2c/interfaceDbConnection.html#aa6d68c3a518d46207b42d7f638b07a1e":[5,7,1],
 "d8/d2c/interfaceDbConnection.html#ab4f47bec17ba6b3799c58ea8d0698b15":[5,7,3],
 "d8/d2c/interfaceDbConnection.html#ab5ddefb9b2c6c1a0cdfdac90e13de736":[5,7,5],
-"d8/d2c/interfaceDbConnection.html#ab9261a7662bc8bb4a898bc15dc16f206":[5,7,10],
-"d8/d2c/interfaceDbConnection.html#ac61f07a7d6c5471293371086af3186bd":[5,7,8]
+"d8/d2c/interfaceDbConnection.html#ab9261a7662bc8bb4a898bc15dc16f206":[5,7,10]
 };
