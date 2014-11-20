@@ -38,7 +38,7 @@ interface Redis : object
     mset(Object kvs);
 
     /*! @brief Set one or more kay-value pairs, overwrite when keys exist
-     @param kvs List of key/value pairs*/
+     @param ... List of key/value pairs*/
     mset(...);
 
     /*! @brief Set one or more kay-value pairs, ignore when keys not exist
@@ -46,7 +46,7 @@ interface Redis : object
     msetNX(Object kvs);
 
     /*! @brief Set one or more kay-value pairs, ignore when keys not exist
-     @param kvs List of key/value pairs*/
+     @param ... List of key/value pairs*/
     msetNX(...);
 
     /*! @brief Apeend new value to the end when key has a value, directly set when key not exists
@@ -92,7 +92,7 @@ interface Redis : object
     List mget(Array keys);
 
     /*! @brief Return one or more values of keys, return null for keys not exist
-     @param keys List of keys
+     @param ... List of keys
      @return Return list of values */
     List mget(...);
 
@@ -148,7 +148,7 @@ interface Redis : object
     Integer del(Array keys);
 
     /*! @brief Delete one or more keys
-     @param keys Keys to delete
+     @param ... Keys to delete
      @return Return number of deletions */
     Integer del(...);
 
@@ -175,7 +175,7 @@ interface Redis : object
 
     /*! @brief Rename key, return error when key not exists
      @param key Key to set
-     @param newkey New name */
+     @param newkey New name
      @return Return true when renamed, false when new name is used */
     Boolean renameNX(Buffer key, Buffer newkey);
 
@@ -234,7 +234,7 @@ interface Redis : object
     unpsub(String pattern, Function func);
 
     /*! @brief Unsubscribe all callback functions of a list of channels with pattern
-     @param pattern Unsubscription pattern
+     @param patterns Unsubscription pattern
     */
     unpsub(Array patterns);
 

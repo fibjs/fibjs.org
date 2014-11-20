@@ -24,7 +24,7 @@ interface RedisHash : object
     mset(Object kvs);
 
     /*! @brief Set multiple field-value pairs,  overwrite when fields exist
-     @param kvs List of field/value Pairs*/
+     @param ... List of field/value Pairs*/
     mset(...);
 
     /*! @brief Get value of field
@@ -38,7 +38,7 @@ interface RedisHash : object
     List mget(Array fields);
 
     /*! @brief Get one or more values of fields
-     @param fields Array of fields to query
+     @param ... Array of fields to query
      @return Return a list of values */
     List mget(...);
 
@@ -71,7 +71,7 @@ interface RedisHash : object
     Integer del(Array fields);
 
     /*! @brief Delete one or more fields, ignore when not exists
-     @param fields List of field to delete
+     @param ... List of field to delete
      @return Return number of deletions */
     Integer del(...);
 };
