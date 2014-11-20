@@ -108,7 +108,7 @@ $(document).ready(function(){initNavTree('df/dcb/interfaceRouting.html','../../'
 </div><!--header-->
 <div class="contents">
 
-<p>消息处理器路由对象  
+<p><a class="el" href="../../d6/db7/interfaceMessage.html" title="Basic message object. ">Message</a> handler router.  
  <a href="../../df/dcb/interfaceRouting.html#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for Routing:</div>
@@ -120,13 +120,13 @@ Inheritance diagram for Routing:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a8a6a4aa5a8e90ef0340336dcde8a0a04"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/dcb/interfaceRouting.html#a8a6a4aa5a8e90ef0340336dcde8a0a04">Routing</a> (Object map)</td></tr>
-<tr class="memdesc:a8a6a4aa5a8e90ef0340336dcde8a0a04"><td class="mdescLeft">&#160;</td><td class="mdescRight">创建一个消息处理器路由对象  <a href="#a8a6a4aa5a8e90ef0340336dcde8a0a04">More...</a><br /></td></tr>
+<tr class="memdesc:a8a6a4aa5a8e90ef0340336dcde8a0a04"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a routing handler.  <a href="#a8a6a4aa5a8e90ef0340336dcde8a0a04">More...</a><br /></td></tr>
 <tr class="separator:a8a6a4aa5a8e90ef0340336dcde8a0a04"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a134520405ec3d18b9bfe4b996c82e197"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/dcb/interfaceRouting.html#a134520405ec3d18b9bfe4b996c82e197">append</a> (Object map)</td></tr>
-<tr class="memdesc:a134520405ec3d18b9bfe4b996c82e197"><td class="mdescLeft">&#160;</td><td class="mdescRight">添加一组路由规则  <a href="#a134520405ec3d18b9bfe4b996c82e197">More...</a><br /></td></tr>
+<tr class="memdesc:a134520405ec3d18b9bfe4b996c82e197"><td class="mdescLeft">&#160;</td><td class="mdescRight">Append a group of rules.  <a href="#a134520405ec3d18b9bfe4b996c82e197">More...</a><br /></td></tr>
 <tr class="separator:a134520405ec3d18b9bfe4b996c82e197"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9a2446ce1b998f4df43be24dc23a66c9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/dcb/interfaceRouting.html#a9a2446ce1b998f4df43be24dc23a66c9">append</a> (String pattern, Value hdlr)</td></tr>
-<tr class="memdesc:a9a2446ce1b998f4df43be24dc23a66c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">添加一条路由规则  <a href="#a9a2446ce1b998f4df43be24dc23a66c9">More...</a><br /></td></tr>
+<tr class="memdesc:a9a2446ce1b998f4df43be24dc23a66c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Append a rule.  <a href="#a9a2446ce1b998f4df43be24dc23a66c9">More...</a><br /></td></tr>
 <tr class="separator:a9a2446ce1b998f4df43be24dc23a66c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af901258552a23961893c5bd6f18ce681"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../da/d85/interfaceHandler.html">Handler</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d85/interfaceHandler.html#af901258552a23961893c5bd6f18ce681">invoke</a> (<a class="el" href="../../db/d38/interfaceobject.html">object</a> v) async</td></tr>
 <tr class="memdesc:af901258552a23961893c5bd6f18ce681"><td class="mdescLeft">&#160;</td><td class="mdescRight">handle a message or an object  <a href="#af901258552a23961893c5bd6f18ce681">More...</a><br /></td></tr>
@@ -145,27 +145,27 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ab9261a7662bc8bb4a898bc15dc16f206"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>消息处理器路由对象 </p>
-<p>路由对象根据设定的规则匹配消息，将消息传递给符合规则的第一个处理器。后加入的路由规则优先匹配。创建方法： </p><div class="fragment"><div class="line">var routing = <span class="keyword">new</span> mq.Routing({</div>
+<div class="textblock"><p><a class="el" href="../../d6/db7/interfaceMessage.html" title="Basic message object. ">Message</a> handler router. </p>
+<p>Match router object by rules, and pass a handler to it. Newer rules match first. To create it: </p><div class="fragment"><div class="line">var routing = <span class="keyword">new</span> mq.Routing({</div>
 <div class="line">  <span class="stringliteral">&quot;^/func1(/.*)$&quot;</span>: func1,</div>
 <div class="line">  <span class="stringliteral">&quot;^/func2(/.*)$&quot;</span>: func2</div>
 <div class="line">});</div>
-</div><!-- fragment --><p> 正则表达式匹配的项目修改消息的 value 属性，子项目存入消息的 params 属性。例如： </p><div class="fragment"><div class="line">var routing = <span class="keyword">new</span> mq.Routing({</div>
+</div><!-- fragment --><p> Match with regular expression in value, and sub-item save to params: </p><div class="fragment"><div class="line">var routing = <span class="keyword">new</span> mq.Routing({</div>
 <div class="line">  <span class="stringliteral">&quot;^/func1(/([0-9]+)/([0-9]+)\.html)$&quot;</span>: func1,</div>
 <div class="line">});</div>
-</div><!-- fragment --><p> 匹配消息 "/func1/123/456.html" 后，value == "/123/456.html"，params == ["123", "456"];</p>
-<p>如果匹配的结果没有子项，则 value 为空，params 为空。例如： </p><div class="fragment"><div class="line">var routing = <span class="keyword">new</span> mq.Routing({</div>
+</div><!-- fragment --><p> To match "/func1/123/456.html", value == "/123/456.html", params == ["123", "456"];</p>
+<p>If no sub-item in result, value and params are empty: </p><div class="fragment"><div class="line">var routing = <span class="keyword">new</span> mq.Routing({</div>
 <div class="line">  <span class="stringliteral">&quot;^/func1/[0-9]+/[0-9]+\.html$&quot;</span>: func1,</div>
 <div class="line">});</div>
-</div><!-- fragment --><p> 匹配消息 "/func1/123/456.html" 后，value == ""，params == [];</p>
-<p>如果匹配的结果第一级有多个子项，则 value 为空，params 为第一级子项。例如： </p><div class="fragment"><div class="line">var routing = <span class="keyword">new</span> mq.Routing({</div>
+</div><!-- fragment --><p> To match "/func1/123/456.html", value == "", params == [];</p>
+<p>If result has more than one first-level sub-items, value is empty, and params are first-level sub-items: </p><div class="fragment"><div class="line">var routing = <span class="keyword">new</span> mq.Routing({</div>
 <div class="line">  <span class="stringliteral">&quot;^/func1/([0-9]+)/([0-9]+)\.html$&quot;</span>: func1,</div>
 <div class="line">});</div>
-</div><!-- fragment --><p> 匹配消息 "/func1/123/456.html" 后，value == ""，params == ["123", "456"];</p>
-<p>如果匹配的结果只有一个子项，并且无下级子项，则 value 和 params 均为此子项。例如： </p><div class="fragment"><div class="line">var routing = <span class="keyword">new</span> mq.Routing({</div>
+</div><!-- fragment --><p> To match "/func1/123/456.html", value == "", params == ["123", "456"];</p>
+<p>If there is only one sub-item and no more lower level items, value and params both become sub-items of this item: </p><div class="fragment"><div class="line">var routing = <span class="keyword">new</span> mq.Routing({</div>
 <div class="line">  <span class="stringliteral">&quot;^/func1/([0-9]+)/[0-9]+\.html$&quot;</span>: func1,</div>
 <div class="line">});</div>
-</div><!-- fragment --><p> 匹配消息 "/func1/123/456.html" 后，value == "123"，params == ["123"]; </p>
+</div><!-- fragment --><p> To match "/func1/123/456.html", value == "123", params == ["123"]; </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a8a6a4aa5a8e90ef0340336dcde8a0a04"></a>
 <div class="memitem">
@@ -181,10 +181,10 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>创建一个消息处理器路由对象 </p>
+<p>Create a routing handler. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">map</td><td>初始化路由参数 </td></tr>
+    <tr><td class="paramname">map</td><td>Initial params </td></tr>
   </table>
   </dd>
 </dl>
@@ -206,10 +206,10 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>添加一组路由规则 </p>
+<p>Append a group of rules. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">map</td><td>路由参数 </td></tr>
+    <tr><td class="paramname">map</td><td>Rules </td></tr>
   </table>
   </dd>
 </dl>
@@ -240,11 +240,11 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>添加一条路由规则 </p>
+<p>Append a rule. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">pattern</td><td>消息匹配格式 </td></tr>
-    <tr><td class="paramname">hdlr</td><td>内置消息处理器，处理函数，或 javascript 消息映射对象，详见 <a class="el" href="../../dd/dbd/namespacemq.html#a5ad6cd9f9ec59edab1abd1a8c6cac229" title="Create a javascript message handler, return immediately when pass by value. ">mq.jsHandler</a> </td></tr>
+    <tr><td class="paramname">pattern</td><td><a class="el" href="../../df/dcb/interfaceRouting.html" title="Message handler router. ">Routing</a> pattern </td></tr>
+    <tr><td class="paramname">hdlr</td><td>Built-in handler, handle function or javascript message mapping object, see <a class="el" href="../../dd/dbd/namespacemq.html#a5ad6cd9f9ec59edab1abd1a8c6cac229" title="Create a javascript message handler, return immediately when pass by value. ">mq.jsHandler</a> </td></tr>
   </table>
   </dd>
 </dl>
