@@ -37,7 +37,8 @@ var NAVTREE =
     [ "模块", "namespaces.html", "namespaces" ],
     [ "对象", "annotated.html", "annotated" ],
     [ "下载", "^https://github.com/xicilion/fibjs", null ],
-    [ "社区", "^http://baoz.me/fibjs", null ]
+    [ "社区", "^http://baoz.cn/fibjs", null ],
+    [ "English", "en/index.html", null ]
   ] ]
 ];
 
