@@ -1,20 +1,20 @@
 
-/*! @brief sqlite 数据库连接对象
+/*! @brief sqlite database connection object
 
- 使用 db.open 或 db.openSQLite 创建，创建方式：
+ Used for db.open or db.openSQLite, to create it:
  @code
  var slite = db.openSQLite("sqlite:/path/to/db");
  @endcode
 */
 interface SQLite : DbConnection
 {
-    /*! @brief 当前数据库文件名 */
+    /*! @brief Database file name */
     readonly String fileName;
 
-    /*! @brief 查询和设置数据库超时时间，以毫秒为单位 */
+    /*! @brief Get and set connection timeout in ms */
     Integer timeout;
 
-    /*! @brief 备份当前数据库到新文件
-     @param fileName 指定备份的数据库文件名 */
+    /*! @brief Backup current database to new location
+     @param fileName New location */
     backup(String fileName) async;
 };

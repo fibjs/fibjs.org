@@ -1,45 +1,45 @@
-/*! @brief ssl/tls 模块 */
+/*! @brief ssl/tls module */
 module ssl
 {
-    /*! @brief 证书验证模式，不验证 */
+    /*! @brief Verification mode, no verification */
     const Integer VERIFY_NONE = 0;
 
-    /*! @brief 证书验证模式，可选验证，允许验证不通过 */
+    /*! @brief Verification mode, optional verification, can be failed */
     const Integer VERIFY_OPTIONAL = 1;
 
-    /*! @brief 证书验证模式，要求验证，验证不通过则中断 */
+    /*! @brief Verification mode, abort when fail to verify */
     const Integer VERIFY_REQUIRED = 2;
 
-    /*! @brief 证书验证结果，证书超时 */
+    /*! @brief Verification result, certificate expired */
     const Integer BADCERT_EXPIRED = 1;
 
-    /*! @brief 证书验证结果，证书被撤销 */
+    /*! @brief Verification result, certificate revoked */
     const Integer BADCERT_REVOKED = 2;
 
-    /*! @brief 证书验证结果，证书名错误 */
+    /*! @brief Verification result, certificate mismatch */
     const Integer BADCERT_CN_MISMATCH = 4;
 
-    /*! @brief 证书验证结果，证书不可信 */
+    /*! @brief Verification result, certificate is not trusted */
     const Integer BADCERT_NOT_TRUSTED = 8;
 
-    /*! @brief 创建一个 SslSocket 对象，参见 SslSocket */
+    /*! @brief Create a SslSocket object, see SslSocket */
     static SslSocket new Socket();
 
-    /*! @brief 创建一个 SslHandler 对象，参见 SslHandler */
+    /*! @brief Create a SslHandler object, see SslHandler */
     static SslHandler new Handler();
 
-    /*! @brief 创建一个 SslServer 对象，参见 SslServer */
+    /*! @brief Create a SslServer object, see SslServer */
     static SslServer new Server();
 
-    /*! @brief 创建一个 SslSocket 对象并建立连接
-     @param url 指定连接的协议，可以是：ssl://host:port
-     @return 返回连接成功的 SslSocket 对象
+    /*! @brief Create a SslSocket and make connection
+     @param url Specify URL and protocol, e.g.: ssl://host:port
+     @return Return SslSocket when succeed
      */
     static Stream connect(String url) async;
 
-    /*! @brief 全局证书，用于 ssl 客户端模式验证服务器证书 */
+    /*! @brief Global cretificate, used for ssl client mode */
     static readonly X509Cert ca;
 
-    /*! @brief 设定证书验证模式，缺省为 VERIFY_REQUIRED */
+    /*! @brief Set verification mode, default is VERIFY_REQUIRED */
     static Integer verification;
 };

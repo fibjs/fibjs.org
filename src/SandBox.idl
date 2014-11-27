@@ -1,6 +1,7 @@
-/*! @brief 安全沙箱对象，用于管理一个独立的运行空间
+/*! @brief Sandbox, to manage a separate running space
 
-  所有的代码都运行在自己的沙箱中，全局的 require 会调用当前沙箱加载模块，沙箱会通过 require 传递给加载的沙箱。下面的示例创建一个沙箱，限制只允许访问全局基础模块中的 assert 模块，并添加 a 和 b 两个定制模块：
+  All code is running inside sandbox, global require uses current sandbox to load modules. 
+  Following example limits access to assert modules and add a and b two custom modules.
  @code
  var vm = require('vm');
  var sbox = new vm.SandBox({
@@ -14,50 +15,50 @@
  */
 interface SandBox : object
 {
-    /*! @brief 构造一个新的安全沙箱对象，并初始化基础模块
-     @param mods 指定要添加的模块对象字典
-     @param name 沙箱名称，命名沙箱会在抛出错误时回报所在沙箱
+    /*! @brief Constructor, initializes basic modules
+     @param mods Dictionary of modules
+     @param name Name of sandbox, used for error logging
      */
     SandBox(Object mods, String name = "");
 
-    /*! @brief 构造一个新的安全沙箱对象，并初始化基础模块
-     @param mods 指定要添加的模块对象字典
-     @param require 自定义 require 函数，当模块不存在时，先调用自定义函数，无返回再从文件中加载
-     @param name 沙箱名称，命名沙箱会在抛出错误时回报所在沙箱
+    /*! @brief Constructor, initializes basic modules
+     @param mods Dictionary of modules
+     @param require Custom require function, call it first when no module exists
+     @param name Name of sandbox, used for error logging
      */
     SandBox(Object mods, Function require, String name = "");
 
-    /*! @brief 向沙箱中添加一个基础模块
-     @param id 指定要添加的模块名称
-     @param mod 指定要添加的模块对象
+    /*! @brief Add a module to sandbox
+     @param id Module name
+     @param mod Module object
      */
     add(String id, Value mod);
 
-    /*! @brief 向沙箱中添加一组基础模块
-     @param mods 指定要添加的模块对象字典，添加的 javascript 模块将会生成一份复制，以避免沙箱修改对象产生互相干扰
+    /*! @brief Add a list of modules
+     @param mods Dictionary of modules, will generate a copy of javascript modules to prevent conflicts
      */
     add(Object mods);
 
-    /*! @brief 向沙箱中添加一个脚本模块
-     @param srcname 指定要添加的脚本名称，srcname 必须包含扩展名，比如 json 或者 js
-     @param script 指定要添加的脚本代码
-     @return 返回加载的模块对象
+    /*! @brief Add a script to sandbox
+     @param srcname Script name, must include extension, such as json or js
+     @param script Content of script
+     @return Return loaded module
      */
     Value addScript(String srcname, String script);
 
-    /*! @brief 从沙箱中删除指定的基础模块
-     @param id 指定要删除的模块名称
+    /*! @brief Remove a module from sandbox
+     @param id Module name
      */
     remove(String id);
 
-    /*! @brief 运行一个脚本
-     @param fname 指定要运行的脚本路径，此路径与当前运行脚本无关，永远从当前工作目录作为起始
+    /*! @brief Run a script
+     @param fname Script path, always relative to current work directory
      */
     run(String fname);
 
-    /*! @brief 加载一个模块并返回模块对象，更多信息参阅 @ref module
-     @param id 指定要加载的模块名称，查找路径与当前运行脚本无关，永远从当前工作目录作为起始
-     @return 返回加载的模块对象
+    /*! @brief Load and return a modules, see @ref module for details
+     @param id Module name, always relative to current work directory
+     @return Return loaded module
      */
     Value require(String id);
 };

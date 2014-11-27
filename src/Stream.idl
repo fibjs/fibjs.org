@@ -1,27 +1,27 @@
 
-/*! @brief 流操作对象，用于二进制数据流读写
+/*! @brief Stream object for binary data
 
-Stream 为基础对象，用于为流处理定义标准借口，不能独立创建 */
+Stream is a fundamental object to define interface, which cannot be created */
 interface Stream : object
 {
-    /*! @brief 从流内读取指定大小的数据
-     @param bytes 指定要读取的数据量，缺省为读取随机大小的数据块，读出的数据尺寸取决于设备
-     @return 返回从流内读取的数据，若无数据可读，或者连接中断，则返回 null
+    /*! @brief Read data from stram
+     @param bytes Data size to read, default is a random size depends on device
+     @return Return data, null if no data or connection lost
      */
     Buffer read(Integer bytes = -1) async;
 
-    /*! @brief 将给定的数据写入流
-     @param data 给定要写入的数据
+    /*! @brief Write data to stream
+     @param data Data to write
      */
     write(Buffer data) async;
 
-    /*! @brief 关闭当前流对象 */
+    /*! @brief Close stream */
     close() async;
 
-    /*! @brief 复制流数据到目标流中
-     @param stm 目标流对象
-     @param bytes 复制的字节数
-     @return 返回复制的字节数
+    /*! @brief Copy data to target stream
+     @param stm Target stream
+     @param bytes Number of data to copy
+     @return Return number of data copied
      */
     Long copyTo(Stream stm, Long bytes = -1) async;
 };

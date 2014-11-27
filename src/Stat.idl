@@ -1,70 +1,70 @@
 
-/*! @brief 文件的基础信息对象
+/*! @brief File info object
 
-  Stat 对象通过 fs.stat, File.stat, fs.readdir 查询，不可独立创建
+  Stat uses fs.stat, File.stat, fs.readdir to query and cannot be created
  */
 interface Stat : object
 {
-    /*! @brief 文件名称 */
+    /*! @brief File name */
     readonly String name;
 
-    /*! @brief 文件尺寸 */
+    /*! @brief File size */
     readonly Long size;
 
-    /*! @brief 文件权限，Windows 不支持此属性 */
+    /*! @brief File permission, Windows does not support this */
     readonly Integer mode;
 
-    /*! @brief 文件最后修改时间 */
+    /*! @brief File last modified time */
     readonly Date mtime;
 
-    /*! @brief 文件最后访问时间 */
+    /*! @brief File last access time */
     readonly Date atime;
 
-    /*! @brief 文件创建时间 */
+    /*! @brief File create time */
     readonly Date ctime;
 
-    /*! @brief 查询文件是否有写入权限
-     @return 为 true 则有写入权限
+    /*! @brief Check if has write permission
+     @return Return true when has write permission to file
      */
     Boolean isWritable();
 
-    /*! @brief 查询文件是否有读权限
-     @return 为 true 则有读权限
+    /*! @brief Check if has read permission
+     @return Return true when has read permission to file
      */
     Boolean isReadable();
 
-    /*! @brief 查询文件是否有执行权限
-     @return 为 true 则有执行权限
+    /*! @brief Check if has execute permission
+     @return Return true when has execute permission to file
      */
     Boolean isExecutable();
 
-    /*! @brief 查询文件是否隐藏
-     @return 为 true 则隐藏
+    /*! @brief Check if file is hidden
+     @return Return true when file is hidden
      */
     Boolean isHidden();
 
-    /*! @brief 查询文件是否是目录
-     @return 为 true 则是目录
+    /*! @brief Check if file is a directory
+     @return Return true when file is a directory
      */
     Boolean isDirectory();
 
-    /*! @brief 查询文件是否是文件
-     @return 为 true 则是文件
+    /*! @brief Check if file is a file
+     @return Return true when file is a file
      */
     Boolean isFile();
 
-    /*! @brief 查询文件是否是符号链接
-     @return 为 true 则是符号链接
+    /*! @brief Check if file is a symbolic link
+     @return Return true when file is a symbolic link
      */
     Boolean isSymbolicLink();
 
-    /*! @brief 查询文件是否是内存文件
-     @return 为 true 则是内存文件
+    /*! @brief Check if file is a memory file
+     @return Return true when file is a memory file
      */
     Boolean isMemory();
 
-    /*! @brief 查询文件是否是 Socket
-     @return 为 true 则是 Socket
+    /*! @brief Check if file is Socket
+     @return Return true when file is Socket
      */
     Boolean isSocket();
 };
