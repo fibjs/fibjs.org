@@ -35,6 +35,7 @@ var searchData=
   ['slice',['slice',['../d9/dae/interfaceBuffer.html#aaf00c6b9382f73a2c1c23b0444775252',1,'Buffer::slice()'],['../de/dd8/interfaceList.html#ab96d554cc6244b5c4407d47aef2dfc25',1,'List::slice()']]],
   ['smtp',['Smtp',['../da/de8/interfaceSmtp.html#acea5db5c9fdb0309e6179dc29db9e798',1,'Smtp::Smtp()'],['../dc/d27/namespacenet.html#a3c9a68f14d3e055b57e0d0d3c1ee5c26',1,'net::Smtp()']]],
   ['socket',['Socket',['../dd/d94/interfaceSocket.html#a3fcdc7696dd15634d0f9d51d95c2c25c',1,'Socket::Socket()'],['../dc/d27/namespacenet.html#a85b79fe654f522f7be31ef66aea02354',1,'net::Socket()'],['../df/dd2/namespacessl.html#a3e693a484518479be1381ed0251b7c82',1,'ssl::Socket()']]],
+  ['some',['some',['../de/dd8/interfaceList.html#a7023cff4af79ac96c5798ce92831b6f6',1,'List']]],
   ['sort',['sort',['../dc/d27/interfaceMongoCursor.html#a123006155ab34a7bdd56f8fc0b034ccc',1,'MongoCursor']]],
   ['splittext',['splitText',['../d3/d51/interfaceXmlText.html#aefc50860e0f557f3a4cb85ff1d7b1b36',1,'XmlText']]],
   ['sslhandler',['SslHandler',['../df/dd8/interfaceSslHandler.html#a40a6cc77561afea02e8f6468a66dbd2c',1,'SslHandler::SslHandler(Array certs, Value hdlr)'],['../df/dd8/interfaceSslHandler.html#a09430fb12c64e8a913593352e1a9c8aa',1,'SslHandler::SslHandler(X509Cert crt, PKey key, Value hdlr)']]],
