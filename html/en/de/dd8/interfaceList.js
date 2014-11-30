@@ -8,6 +8,7 @@ var interfaceList =
     [ "slice", "de/dd8/interfaceList.html#ab96d554cc6244b5c4407d47aef2dfc25", null ],
     [ "concat", "de/dd8/interfaceList.html#ac4827e4196f21ea4b20ac15a55a62aa3", null ],
     [ "every", "de/dd8/interfaceList.html#a751f05572731dcf0814f3f6ef74a2c44", null ],
+    [ "some", "de/dd8/interfaceList.html#a7023cff4af79ac96c5798ce92831b6f6", null ],
     [ "filter", "de/dd8/interfaceList.html#aecc21fad0418e7f5e67fccbebcabd7a4", null ],
     [ "forEach", "de/dd8/interfaceList.html#ad8b80fe919fe0ef22f731773487e3228", null ],
     [ "map", "de/dd8/interfaceList.html#aff5474e5559d9f0bd1f2acc7f3039ab2", null ],

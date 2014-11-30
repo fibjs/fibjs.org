@@ -7,6 +7,7 @@ var interfaceDBResult =
     [ "slice", "d9/db4/interfaceDBResult.html#ab96d554cc6244b5c4407d47aef2dfc25", null ],
     [ "concat", "d9/db4/interfaceDBResult.html#ac4827e4196f21ea4b20ac15a55a62aa3", null ],
     [ "every", "d9/db4/interfaceDBResult.html#a751f05572731dcf0814f3f6ef74a2c44", null ],
+    [ "some", "d9/db4/interfaceDBResult.html#a7023cff4af79ac96c5798ce92831b6f6", null ],
     [ "filter", "d9/db4/interfaceDBResult.html#aecc21fad0418e7f5e67fccbebcabd7a4", null ],
     [ "forEach", "d9/db4/interfaceDBResult.html#ad8b80fe919fe0ef22f731773487e3228", null ],
     [ "map", "d9/db4/interfaceDBResult.html#aff5474e5559d9f0bd1f2acc7f3039ab2", null ],
