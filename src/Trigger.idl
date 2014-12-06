@@ -1,64 +1,64 @@
 
-/*! @brief 事件触发对象，可用于建立观察者模式，支持事件触发的对象均继承于此，同一事件的同一函数只会产生一次回调
+/*! @brief Event trigger object can be used to establish the observer mode, the object supports event-triggered inherit this same function in the same event will generate a callback
 
- Event 对象可独立创建，以用于组建自定义的事件系统：
+ Event Objects can be created independently, for the formation of a custom event system:
  @code
  var e = new coroutine.Trigger();
  @endcode
  */
 interface Trigger : object
 {
-    /*! @brief 构造函数 */
+    /*! @brief Constructor */
     Trigger();
 
-    /*! @brief 绑定一个事件处理函数到对象
-      @param ev 指定事件的名称
-      @param func 指定事件处理函数
-      @return 返回成功绑定的数量，如果函数已绑定则返回 0
+    /*! @brief Bind an event handler to an object
+      @param ev Event name
+      @param func Event handler
+      @return Return binded number, reruen 0 it's already binded
      */
     Integer on(String ev, Function func);
 
-    /*! @brief 绑定一个事件处理函数到对象
-      @param map 指定事件映射关系，对象属性名称将作为事件名称，属性的值将作为事件处理函数
-      @return 返回成功绑定的数量
+    /*! @brief Bind an event handler to an object
+      @param map Mapping between the specified event, the object attribute name as the event name, value of the property as an event handler
+      @return Return binded number
      */
     Integer on(Object map);
 
-    /*! @brief 绑定一个一次性事件处理函数到对象，一次性处理函数只会触发一次
-      @param ev 指定事件的名称
-      @param func 指定事件处理函数
-      @return 返回成功绑定的数量，如果函数已绑定则返回 0
+    /*! @brief Bind a one-time event handler to an object, a one-time handler is triggered only once
+      @param ev Event name
+      @param func Event handler
+      @return Return binded number, reruen 0 it's already binded
      */
     Integer once(String ev, Function func);
 
-    /*! @brief 绑定一个一次性事件处理函数到对象，一次性处理函数只会触发一次
-      @param map 指定事件映射关系，对象属性名称将作为事件名称，属性的值将作为事件处理函数
-      @return 返回成功绑定的数量
+    /*! @brief Bind a one-time event handler to an object, a one-time handler is triggered only once
+      @param map Mapping between the specified event, the object attribute name as the event name, value of the property as an event handler
+      @return Return binded number
      */
     Integer once(Object map);
 
-    /*! @brief 从对象处理队列中取消指定函数
-      @param ev 指定事件的名称
-      @param func 指定事件处理函数
-      @return 返回成功取消的数量，如果函数未绑定则返回 0
+    /*! @brief Cancel the specified function from the object processing queue
+      @param ev Event name
+      @param func Event handler
+      @return Return unbinded number, reruen 0 it's not binded
      */
     Integer off(String ev, Function func);
 
-    /*! @brief 取消对象处理队列中的全部函数
-      @param ev 指定事件的名称
-      @return 此操作永远返回 0
+    /*! @brief Cancel object handles all the functions in the queue
+      @param ev Event name
+      @return Always return 0
      */
     Integer off(String ev);
 
-    /*! @brief 从对象处理队列中取消指定函数
-      @param map 指定事件映射关系，对象属性名称作为事件名称，属性的值作为事件处理函数
-      @return 返回成功取消的数量
+    /*! @brief Cancel the specified function from the object processing queue
+      @param map Mapping between the specified event, the object attribute name as the event name, value of the property as an event handler
+      @return Return unbinded number, reruen 0 it's not binded
      */
     Integer off(Object map);
 
-    /*! @brief 主动触发一个事件
-      @param ev 事件名称
-      @param ... 事件参数，将会传递给事件处理函数
+    /*! @brief Trigger an event
+      @param ev Event name
+      @param ... Event parameters will be passed to the event handler
      */
     trigger(String ev, ...);
 };
