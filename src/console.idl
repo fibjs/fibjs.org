@@ -1,16 +1,23 @@
 
 /*! @brief 控制台访问对象
+    @brief console module
 
  全局对象。可用于提示信息，警告和错误记录。通过启动配置文件，可将日志定位
+ Global reference. Console can be used to log info, warnings and errors. 
  到不同的设备，以便于跟踪。日志支持格式化输出，例如：
+ Log can be trace on different device when initialized from config files for tracking. Console logs support formatted output, e.g. 
  @code
  console.log("%d + %d = %d", 100, 200, 100 + 200);
  @endcode
  可以使用的格式化参数如下：
  - %s - 字符串
+ - %s - string
  - %d - 数字，包括整数和数字
+ - %d - number, including initeger and numbers
  - %j - 以 JSON 格式输出对象
+ - %j - output in JSON
  - %% - 输出字符 '%' 本身
+ - %% - output '%' character
  */
 module console
 {
@@ -42,15 +49,18 @@ module console
     const Integer NOTSET = 10;
 
     /*! @brief 输出级别，用以过滤输出信息，缺省为 NOTSET，全部输出。信息过滤之后才会输出给 add 设定的各个设备。
+        @brief logleve is used to filter the output logs, default is NOTSET, which will give logs for all levels. logs will be filter fisrt before sending to different devices added by "add"
      */
     static Integer loglevel;
 
     /*! @brief 终端输出颜色配置对象，详见 TextColor */
+    /*! @brief colors for console logs，reference TextColor */
     static readonly TextColor colors;
 
     /*! @brief 批量添加 console 输出系统，支持的设备为 console, syslog 和 file，最多可以添加 10 个输出
-
+        @brief batch add console logs, supportted devices are console, syslog and file, maximum output number is 10
      通过配置 console，可以将程序输出和系统错误发往不同设备，用于运行环境信息收集。
+     console can be configured to send program outputs and system errors to different devices, for collecting runtime information
 
      @code
      console.add(["console", {
@@ -60,6 +70,7 @@ module console
      @endcode
 
      @param cfg 输出配置数组
+     @param cfg an array of console log config
      */
     static add(Array cfg);
 
@@ -68,12 +79,15 @@ module console
      通过配置 console，可以将程序输出和系统错误发往不同设备，用于运行环境信息收集。
 
      cfg 为配置，可以为设备名称字符串：
+     cfg can be devices name as string
 
      @code
      console.add("console");
      @endcode
 
      也可以为一个设备配置对象：
+     configure target for single device
+
      @code
      console.add({
         type: "console",
@@ -82,6 +96,7 @@ module console
      @endcode
 
      syslog 仅在 posix 平台有效：
+     syslog only works on posix platform
      @code
      console.add({
         type: "syslog",
@@ -90,21 +105,25 @@ module console
      @endcode
 
      file 日志不支持简单调用：
+     file log dose not support simple calls
+
      @code
      console.add({
         type: "file",
         levels: [console.INFO, console.ERROR],
-        path: "path/to/file",  // 必选项
-        split: "30m",  // 选项，可选值为 "day", "hour", "minute", "###k", "###m", "###g"
-        count: 10 // 选项，可选范围为 2-128，指定此项时必须提供 split
+        path: "path/to/file",  // 必选项 // required
+        split: "30m",  // 选项，可选值为 "day", "hour", "minute", "###k", "###m", "###g" //optional, options can be "day", "hour", "minute", "###k", "###m", "###g"
+        count: 10 // 选项，可选范围为 2-128，指定此项时必须提供 split //optional, options can be any integer between 2-128
      });
      @endcode
 
      @param cfg 输出配置
+     @param cfg output configuration 
      */
     static add(Value cfg);
 
     /*! @brief 初始化到缺省设置，只在 console 输出信息 */
+        @brief initialize with default configuration, only output in console
     static reset();
 
     /*! @brief 记录普通日志信息，与 info 等同

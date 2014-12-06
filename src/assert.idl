@@ -1,17 +1,26 @@
 
 
 /*! @brief 断言测试模块，如果测试值为假，则报错，报错行为可设定继续运行或者错误抛出
+/*! @brief (单元)?unittest module, if testing return false, the emit error, error handling can be set to continue or raise exception
 
  引用方法：
+ how to use:
+
  @code
  var assert = require('assert');
  @endcode
+
  或者通过 test 模块引用：
+ or using testing unit:
+
  @code
  var test = require('test');
  var assert = test.assert;
  @endcode
+
  或者通过 test.setup 配置：
+ or you can use test.setup to set up test:
+
  @code
  require("test").setup();
  @endcode
@@ -19,64 +28,98 @@
 module assert
 {
     /*! @brief 测试数值为真，为假则断言失败
+    /*! @brief if testing result is ture then return true, if false the unittest fail
      @param actual 要测试的数值
+     @param actual testing value
      @param msg 断言失败时的提示信息
+     @param msg emit message on unittest fail
      */
     static ok(Value actual, String msg = "");
 
     /*! @brief 测试数值为假，为真则断言失败
      @param actual 要测试的数值
+     @param actual the value need to be tested
      @param msg 断言失败时的提示信息
+     @param msg the msg when unittest failed
      */
     static notOk(Value actual, String msg = "");
 
     /*! @brief 测试数值等于预期值，不相等则断言失败
+        @brief testing value match expected value, othewise throws error 
      @param actual 要测试的数值
+     @param actual the value need to be tested 
      @param expected 预期的数值
+     @param expected expected value from unittest
      @param msg 断言失败时的提示信息
+     @param msg the msg when unittest failed
      */
     static equal(Value actual, Value expected, String msg = "");
 
     /*! @brief 测试数值不等于预期值，相等则断言失败
+        @brief testing value should not match expected value, othewise throws error 
      @param actual 要测试的数值
+     @param actual the value need to be tested 
      @param expected 预期的数值
+     @param expected expected value from unittest
      @param msg 断言失败时的提示信息
+     @param msg the msg when unittest failed
      */
     static notEqual(Value actual, Value expected, String msg = "");
 
     /*! @brief 测试数值严格等于预期值，不相等则断言失败
+        @brief unittest value should strictly match expected value, othewise throws erros
      @param actual 要测试的数值
+     @param actual the value need to be tested
      @param expected 预期的数值
+     @param expected the expected value
      @param msg 断言失败时的提示信息
+     @param msg the msg when unittest failed
      */
     static strictEqual(Value actual, Value expected, String msg = "");
 
     /*! @brief 测试数值不严格等于预期值，相等则断言失败
+        @brief unittest value should not have to strictly match expected value, othewise throws erros
      @param actual 要测试的数值
+     @param actual the value need to be tested
      @param expected 预期的数值
+     @param expected the expected value
      @param msg 断言失败时的提示信息
+     @param msg the msg when unittest failed
      */
     static notStrictEqual(Value actual, Value expected, String msg = "");
 
     /*! @brief 测试数值深度等于预期值，不相等则断言失败
+        @brief unittest value should deeply match expected value, othewise throws erros
      @param actual 要测试的数值
+     @param actual the value need to be tested
      @param expected 预期的数值
+     @param expected the expected value
      @param msg 断言失败时的提示信息
+     @param msg the msg when unittest failed
      */
     static deepEqual(Value actual, Value expected, String msg = "");
 
     /*! @brief 测试数值不深度等于预期值，相等则断言失败
+        @brief unittest value should not have to deeply match expected value, othewise throws erros
      @param actual 要测试的数值
+     @param actual the value need to be tested
      @param expected 预期的数值
+     @param expected the expected value
      @param msg 断言失败时的提示信息
+     @param msg the msg when unittest failed
      */
     static notDeepEqual(Value actual, Value expected, String msg = "");
 
     /*! @brief 测试数值近似等于预期值，否则断言失败
+        @brief unittest value closely matching expected value, othewise throws errors 
      @param actual 要测试的数值
+     @param actual the value need to be tested
      @param expected 预期的数值
+     @param expected the expected value
      @param delta 近似的小数精度
+     @param delta decimal precision
      @param msg 断言失败时的提示信息
+     @param msg the msg when unittest failed
      */
     static closeTo(Value actual, Value expected, Value delta, String msg = "");
 
