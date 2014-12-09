@@ -1,279 +1,278 @@
 
-/*! @brief 常用工具模块 */
+/*! @brief Common tools module */
 module util
 {
-    /*! @brief 按照指定的格式格式化变量
+    /*! @brief Format string with variables
 
-     @param fmt 格式化字符串
-     @param ... 可选参数列表
-     @return 返回格式化后的字符串
+     @param fmt Format string
+     @param ... Aeguments
+     @return Return formatted string
      */
     static String format(String fmt, ...);
 
-    /*! @brief 格式格式化变量
+    /*! @brief Format variables
 
-     @param ... 可选参数列表
-     @return 返回格式化后的字符串
+     @param ... Aeguments
+     @return Return formatted string
      */
     static String format(...);
 
-    /*! @brief 检测给定的变量是否不包含任何值(没有可枚举的属性)
+    /*! @brief Check if variable is empty(no enumerable property)
 
-     @param v 给定需要检测的变量
-     @return 如果为空则返回 True
+     @param v Variable to check
+     @return Return true when it's empty
      */
     static Boolean isEmpty(Value v);
 
-    /*! @brief 检测给定的变量是否是数组
+    /*! @brief Check if variable is an array
 
-     @param v 给定需要检测的变量
-     @return 如果是数组则返回 True
+     @param v Variable to check
+     @return Return true when it's an array
      */
     static Boolean isArray(Value v);
 
-    /*! @brief 检测给定的变量是否是 Boolean
+    /*! @brief Check if variable is Boolean
 
-     @param v 给定需要检测的变量
-     @return 如果是 Boolean 则返回 True
+     @param v Variable to check
+     @return Return true when it's a Boolean
      */
     static Boolean isBoolean(Value v);
 
-    /*! @brief 检测给定的变量是否是 Null
+    /*! @brief Check if variable is Null
 
-     @param v 给定需要检测的变量
-     @return 如果是 Null 则返回 True
+     @param v Variable to check
+     @return Return true when it's Null
      */
     static Boolean isNull(Value v);
 
-    /*! @brief 检测给定的变量是否是 Null 或者 Undefined
+    /*! @brief Check if variable is Null or Undefined
 
-     @param v 给定需要检测的变量
-     @return 如果是 Null 或者 Undefined 则返回 True
+     @param v Variable to check
+     @return Return true when it's Null or Undefined
      */
     static Boolean isNullOrUndefined(Value v);
 
-    /*! @brief 检测给定的变量是否是数字
+    /*! @brief Check if variable is a number
 
-     @param v 给定需要检测的变量
-     @return 如果是数字则返回 True
+     @param v Variable to check
+     @return Return true when it's a number
      */
     static Boolean isNumber(Value v);
 
-    /*! @brief 检测给定的变量是否是字符串
+    /*! @brief Check if variable is a string
 
-     @param v 给定需要检测的变量
-     @return 如果是字符串则返回 True
+     @param v Variable to check
+     @return Return true when it's a string
      */
     static Boolean isString(Value v);
 
-    /*! @brief 检测给定的变量是否是 Undefined
+    /*! @brief Check if variable is Undefined
 
-     @param v 给定需要检测的变量
-     @return 如果是 Undefined 则返回 True
+     @param v Variable to check
+     @return Return true when it's Undefined
      */
     static Boolean isUndefined(Value v);
 
-    /*! @brief 检测给定的变量是否是正则对象
+    /*! @brief Check if variable is a regexp object
 
-     @param v 给定需要检测的变量
-     @return 如果是正则对象则返回 True
+     @param v Variable to check
+     @return Return true when it's a regexp object
      */
     static Boolean isRegExp(Value v);
 
-    /*! @brief 检测给定的变量是否是对象
+    /*! @brief Check if variable is an object
 
-     @param v 给定需要检测的变量
-     @return 如果是对象则返回 True
+     @param v Variable to check
+     @return Return true when it's an object
      */
     static Boolean isObject(Value v);
 
-    /*! @brief 检测给定的变量是否是日期对象
+    /*! @brief Check if variable is date object
 
-     @param v 给定需要检测的变量
-     @return 如果是日期对象则返回 True
+     @param v Variable to check
+     @return Return true when it's date object
      */
     static Boolean isDate(Value v);
 
-    /*! @brief 检测给定的变量是否是函数对象
+    /*! @brief Check if variable is a function
 
-     @param v 给定需要检测的变量
-     @return 如果是函数对象则返回 True
+     @param v Variable to check
+     @return Return true when it's a function
      */
     static Boolean isFunction(Value v);
 
-    /*! @brief 检测给定的变量是否是函数 Buffer 对象
+    /*! @brief Check if variable is a Buffer object
 
-     @param v 给定需要检测的变量
-     @return 如果是函数 Buffer 对象则返回 True
+     @param v Variable to check
+     @return Return true when it's a Buffer object
      */
     static Boolean isBuffer(Value v);
 
-    /*! @brief 查询指定对象是否包含给定的键
+    /*! @brief Check if object contains given key
 
-     @param v 给定需要查询的对象
-     @param key 指定需要查询的键
-     @return 返回对象的全部键数组
+     @param v Object to check
+     @param key Key to query
+     @return Return true when it contains key
      */
     static Boolean has(Value v, String key);
 
-    /*! @brief 查询指定对象的全部键数组
+    /*! @brief Get an array of all keys
 
-     @param v 给定需要查询的对象
-     @return 返回对象的全部键数组
+     @param v Object to check
+     @return Return an array of all keys
      */
     static Array keys(Value v);
 
-    /*! @brief 查询指定对象的全部值数组
+    /*! @brief Get an array of all values
 
-     @param v 给定需要查询的对象
-     @return 返回对象的全部值数组
+     @param v Object to check
+     @return Return an array of all keys
      */
     static Array values(Value v);
 
-    /*! @brief 克隆给定变量，如果是对象或数组，则复制内容到新对象
+    /*! @brief Clone a variable, copy internal content if it's an object or array
 
-     @param v 给定要克隆的变量
-     @return 返回克隆结果
+     @param v Variable to clone
+     @return Return cloned result
      */
     static Value clone(Value v);
 
-    /*! @brief 将一个或者多个对象的键值扩展到指定对象
+    /*! @brief Extend one or more values of objects to given object
 
-     @param v 指定要扩展的对象
-     @param ... 指定一个或者多个用于扩展的对象
-     @return 返回扩展的结果
+     @param v Object to be extended
+     @param ... One or more objects to extend
+     @return Return extended object
      */
     static Value extend(Value v, ...);
 
-    /*! @brief 返回一个object副本，只过滤出指定键的属性值
+    /*! @brief Return a copy of object with filtered attributes
 
-     @param v 指定要过滤的对象
-     @param ... 指定一个或者多个用于选择的键
-     @return 返回过滤的结果
+     @param v Object to filter
+     @param ... One or more attributes
+     @return Return copy of object
      */
     static Object pick(Value v, ...);
 
-    /*! @brief 返回一个object副本，只过排除指定键的属性值
+    /*! @brief Return a copy of object, exclude given attributes
 
-     @param v 指定要过滤的对象
-     @param ... 指定一个或者多个用于排除的键
-     @return 返回排除的结果
+     @param v Object to filter
+     @param ... One or more attributes to exclude
+     @return Return copy of object
      */
     static Object omit(Value v, ...);
 
-    /*! @brief 获取数组的第一个元素
+    /*! @brief Get first element in array
 
-     @param v 给定要获取的数组
-     @return 返回获取的元素
+     @param v Array to access
+     @return Return element
      */
     static Value first(Value v);
 
-    /*! @brief 获取数组的开始多个元素
+    /*! @brief Get first number of elements in array
 
-     @param v 给定要获取的数组
-     @param n 指定要获取的元素个数
-     @return 返回获取的元素数组
+     @param v Array to access
+     @param n Number of elements to get
+     @return Return array of elements
      */
     static Value first(Value v, Integer n);
 
-    /*! @brief 获取数组的第后一个元素
+    /*! @brief Get last element in array
 
-     @param v 给定要获取的数组
-     @return 返回获取的元素
+     @param v Array to access
+     @return Return element
      */
     static Value last(Value v);
 
-    /*! @brief 获取数组的结尾多个元素
+    /*! @brief Get number of element in the end of array
 
-     @param v 给定要获取的数组
-     @param n 指定要获取的元素个数
-     @return 返回获取的元素数组
+     @param v Array to access
+     @param n Number of elements to get
+     @return Return array of elements
      */
     static Value last(Value v, Integer n);
 
-    /*! @brief 获取数组的元素去重后的副本
+    /*! @brief Get array without duplicates
 
-     @param v 给定要去重的数组
-     @param sorted 指定数组是否排序，如果指定数组排序，将使用快速算法
-     @return 返回去重元素后的数组
+     @param v Array to access
+     @param sorted Indicates whether to sort or not, will use quick sort
+     @return Return unique array
      */
     static Array unique(Value v, Boolean sorted = false);
 
-    /*! @brief 将一个或者多个数组的值合并成一个值唯一的数组
+    /*! @brief Union one or more arrays into one unique array
 
-     @param ... 指定一个或者多个用于合并的数组
-     @return 返回合并的结果
+     @param ... Arrays to union
+     @return Return unioned array
      */
     static Array union(...);
 
-    /*! @brief 返回一个包含 arr 数组中排除一个或者多个数组元素的交集
+    /*! @brief Return intersections of arrays
 
-     @param ... 指定一个或者多个用于计算交集的数组
-     @return 返回计算交集的结果
+     @param ... Arrays to check
+     @return Return intersections
      */
     static Array intersection(...);
 
-    /*! @brief 将一个嵌套多层的数组(嵌套可以是任何层数)转换为只有一层的数组。 如果你传递 shallow 参数，数组将只减少一维的嵌套。
+    /*! @brief Convert multi-dimension arrays into one-dimension, only reduce one dimension if you pass shallow argument
 
-     @param arr 指定需要转换的数组
-     @param shallow 指定是否只减少一维的嵌套，缺省为 false
-     @return 返回转换的结果
+     @param arr Array to convert
+     @param shallow Indicates whether to reduce only one dimension or not, default is false
+     @return Return converted array
      */
     static Array flatten(Value arr, Boolean shallow = false);
 
-    /*! @brief 返回一个包含 arr 数组中排除一个或者多个元素后的数组
+    /*! @brief Return an array without given elements
 
-     @param arr 指定需要排除的数组
-     @param ... 指定一个或者多个用于排除的元素
-     @return 返回排除的结果
+     @param arr Array to access
+     @param ... Elements to exclude
+     @return Return result array
      */
     static Array without(Value arr, ...);
 
-    /*! @brief 返回一个包含 arr 数组中排除 without 数组元素之后的数组
+    /*! @brief Return differences of arrays
 
-     @param list 指定需要排除的数组
-     @param ... 指定用于排除的一个或者多个数组
-     @return 返回排除的结果
+     @param list Arrays to check
+     @return Return differences
      */
     static Array difference(Array list, ...);
 
-    /*! @brief 遍历 list 中的所有元素，按顺序用遍历输出每个元素。如果传递了 context 参数，则把 iterator 绑定到 context 对象上。每次调用 iterator 都会传递三个参数：(element, index, list)
+    /*! @brief Iterate list in order. If context is passed, then bind iterator to context. Each iteration will pass three arguments to context: element, index and list
 
-     @param list 指定需要遍历的列表或对象
-     @param iterator 指定用于遍历的回调函数
-     @param context 指定调用 iterator 时绑定的 context 对象
-     @return 返回 list 本身
+     @param list List or object to iterate
+     @param iterator Iterator callback
+     @param context Context object for binding
+     @return Return list itself
      */
     static Value each(Value list, Function iterator, Value context = undefined);
 
-    /*! @brief 通过变换函数（iterator迭代器）把 list 中的每个值映射到一个新的数组中。如果传递了 context 参数，则把 iterator 绑定到 context 对象上。每次调用 iterator 都会传递三个参数：(element, index, list)
+    /*! @brief Use iterator to map values to new array. If context is passed, then bind iterator to context. Each iteration will pass three arguments to context: element, index and list
 
-     @param list 指定需要变换的列表或对象
-     @param iterator 指定用于变换的回调函数
-     @param context 指定调用 iterator 时绑定的 context 对象
-     @return 返回变换的结果
+     @param list List or object to iterate
+     @param iterator Iterator callback
+     @param context Context object for binding
+     @return Return result array
      */
     static Array map(Value list, Function iterator, Value context = undefined);
 
-    /*! @brief 把 list中 元素归结为一个单独的数值。如果传递了 context 参数，则把 iterator 绑定到 context 对象上。每次调用 iterator 都会传递三个参数：(memo, element, index, list)
+    /*! @brief Reduce every element in list to a single number. If context is passed, then bind iterator to context. Each iteration will pass four arguments to context: memo, element, index and list
 
-     @param list 指定需要归结的列表或对象
-     @param iterator 指定用于归结的回调函数
-     @param memo 指定归结的初始值
-     @param context 指定调用 iterator 时绑定的 context 对象
-     @return 返回归结的结果
+     @param list List or object to iterate
+     @param iterator Iterator callback
+     @param memo Initial value
+     @param context Context object for binding
+     @return Return result array
      */
     static Value reduce(Value list, Function iterator, Value memo, Value context = undefined);
 
-    /*! @brief 数据统计对象，用以构建应用运行时数据收集，参见 Stats 对象。*/
+    /*! @brief Data statistic object for app runtime data collection, see Stats object */
     static Stats new Stats();
 
-    /*! @brief LRU(least recently used) 缓存对象，参见 LruCache 对象。*/
+    /*! @brief LRU(least recently used) cache object, see LruCache object */
     static LruCache new LruCache();
 
-    /*! @brief 查询当前引擎及各组件版本信息
+    /*! @brief Get current engine and components information
 
-     @return 返回结构如下：
+     @return Struct info:
      @code
      {
        "fibjs": "0.1.0",
