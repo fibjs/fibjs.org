@@ -1,58 +1,58 @@
 
-/*! @brief uuid 唯一 id 模块
+/*! @brief uuid unique id module
 
- 基础模块。提供唯一 id 的创建于操作
+ Fundamental module, used for create uuid
  \code
  var uuid = require('uuid');
  \endcode
  */
 module uuid
 {
-    /*! @brief md5 与 sha1 创建 uuid 时指定 name 命名为域名 */
+    /*! @brief Use name as DNS when create uuid by md5 and sha1 */
     const Integer DNS = 0;
 
-    /*! @brief md5 与 sha1 创建 uuid 时指定 name 命名为 url 地址 */
+    /*! @brief Use name as URL when create uuid by md5 and sha1 */
     const Integer URL = 1;
 
-    /*! @brief md5 与 sha1 创建 uuid 时指定 name 命名为 ISO OID */
+    /*! @brief Use name as ISO OID when create uuid by md5 and sha1 */
     const Integer OID = 2;
 
-    /*! @brief md5 与 sha1 创建 uuid 时指定 name 命名为 X.500 DN */
+    /*! @brief Use name as X.500 DN when create uuid by md5 and sha1 */
     const Integer X509 = 3;
 
-    /*! @brief 根据给定的字符串描述组建 uuid
-     @param s 指定描述 uuid 的字符串
-     @return 返回一个 uuidValue 类型的对象
+    /*! @brief Generate uuid by given string
+     @param s String to describe uuid
+     @return Return uuidValue object
      */
     static uuidValue uuid(String s);
 
-    /*! @brief 根据给定的二进制数据组建 uuid
-     @param data 指定描述 uuid 的二进制数据
-     @return 返回一个 uuidValue 类型的对象
+    /*! @brief Generate uuid by given binary data
+     @param data Data to describe uuid
+     @return Return uuidValue object
      */
     static uuidValue uuid(Buffer data);
 
-    /*! @brief 使用时间和主机名创建 uuid
-     @return 返回一个 uuidValue 类型的对象
+    /*! @brief Generate uuid by time and host name
+     @return Return uuidValue object
      */
     static uuidValue node();
 
-    /*! @brief 使用特定命名的 md5 创建 uuid
-     @param ns 指定命名空间，可以为 uuid.DNS, uuid.URL, uuid.OID, uuid.X509
-     @param name 指定名称
-     @return 返回一个 uuidValue 类型的对象
+    /*! @brief Generate uuid by given md5
+     @param ns Namespace, can be uuid.DNS, uuid.URL, uuid.OID, and uuid.X509
+     @param name Name of uuid
+     @return Return uuidValue object
      */
     static uuidValue md5(Integer ns, String name);
 
-    /*! @brief 使用随机数创建 uuid
-     @return 返回一个 uuidValue 类型的对象
+    /*! @brief Generate uuid randomly
+     @return Return uuidValue object
      */
     static uuidValue random();
 
-    /*! @brief 使用特定命名的 sha1 创建 uuid
-     @param ns 指定命名空间，可以为 uuid.DNS, uuid.URL, uuid.OID, uuid.X509
-     @param name 指定名称
-     @return 返回一个 uuidValue 类型的对象
+    /*! @brief Generate uuid by given sha1
+     @param ns Namespace, can be uuid.DNS, uuid.URL, uuid.OID, and uuid.X509
+     @param name Name of uuid
+     @return Return uuidValue object
      */
     static uuidValue sha1(Integer ns, String name);
 };
