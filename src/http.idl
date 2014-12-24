@@ -1,88 +1,92 @@
 
-/*! @brief 超文本传输协议模块，用以支持 http 协议处理 */
+/*! @brief HTTP transfer protocol module, handels http protocol*/
 module http
 {
-    /*! @brief 创建一个 http 请求对象，参见 HttpRequest */
+    /*! @brief create a http request object，reference HttpRequest */
     static HttpRequest new Request();
 
-    /*! @brief 创建一个 http 响应对象，参见 HttpResponse */
+    /*! @brief create a http response object，reference HttpResponse */
     static HttpResponse new Response();
 
-    /*! @brief 创建一个 http cookie 对象，参见 HttpCookie */
+    /*! @brief create a http cookie object，reference HttpCookie */
     static HttpCookie new Cookie();
 
-    /*! @brief 创建一个 http 服务器，参见 HttpServer */
+    /*! @brief create a http server，reference HttpServer */
     static HttpServer new Server();
 
-    /*! @brief 创建一个 https 服务器，参见 HttpsServer */
+    /*! @brief create a https server, reference HttpsServer */
     static HttpsServer new HttpsServer();
 
-    /*! @brief 创建一个 http 协议处理器对象，参见 HttpHandler */
+    /*! @brief create a http protocol handler，reference HttpHandler */
     static HttpHandler new Handler();
 
-    /*! @brief 创建一个 http 静态文件处理器，用以用静态文件响应 http 消息
+    /*! @brief create a http static file processor, in case of using static file to respond http request
      @param root 文件根路径
-     @param mimes 扩展 mime 设置
-     @return 返回一个静态文件处理器用于处理 http 消息
+     @param root file root folder
+     @param mimes extends mime settings
+     @param mimes extedns mime settings
+     @return return a static file processor to handle http request
 
      fileHandler 支持 gzip 预压缩，当请求接受 gzip 编码，且相同路径下 filename.ext.gz 文件存在时，将直接返回此文件，
-     从而避免重复压缩带来服务器负载。
+     fileHandler support gzip pre-compression，when accept gzip in content-typeand filename.ext.gz exists under same root，then return the file directly，
+     to avoid extra load on server.
      */
     static Handler fileHandler(String root, Object mimes = {});
 
-    /*! @brief 发送 http 请求到指定的流对象，并返回结果
-     @param conn 指定处理请求的流对象
-     @param req 要发送的 HttpRequest 对象
-     @return 返回服务器响应
+    /*! @brief send http request to connection object，return response
+     @param conn assign requested connection object
+     @param req the HttpRequest obejct need to be sent
+     @return return server response
      */
     static HttpResponse request(Stream conn, HttpRequest req) async;
 
-    /*! @brief 请求指定的 url，并返回结果
-     @param method 指定 http 请求方法：GET, POST 等
-     @param url 指定 url，必须是包含主机的完整 url
-     @param headers 指定附加的 http 头，缺省无附加头
-     @return 返回服务器响应
+    /*! @brief assign requested url, and return
+     @param method define http request method, such as: GET, POST
+     @param url assigned url，has to be full url with root path
+     @param headers  define http request header，default is None
+     @return reutrn server response
      */
     static HttpResponse request(String method, String url, Object headers = {});
 
-    /*! @brief 请求指定的 url，并返回结果
-     @param method 指定 http 请求方法：GET, POST 等
-     @param url 指定 url，必须是包含主机的完整 url
-     @param body 指定发送的 body 内容
-     @param headers 指定附加的 http 头，缺省无附加头
-     @return 返回服务器响应
+    /*! @brief define requested url，return response
+     @param method define http method, such as: GET, POST
+     @param url assigned url，has to be full url with root path
+     @param body define http body content
+     @param headers  define http request header，default is None
+     @return reutrn server response
      */
     static HttpResponse request(String method, String url, SeekableStream body, Object headers = {});
 
-    /*! @brief 请求指定的 url，并返回结果
-     @param method 指定 http 请求方法：GET, POST 等
-     @param url 指定 url，必须是包含主机的完整 url
-     @param body 指定发送的 body 内容
-     @param headers 指定附加的 http 头，缺省无附加头
-     @return 返回服务器响应
+    /*! @brief define requested url，return response
+     @param method define http method, such as: GET, POST
+     @param url assigned url，has to be full url with root path
+     @param body define http body content
+     @param headers  define http request header，default is None
+     @return reutrn server response
      */
     static HttpResponse request(String method, String url, Buffer body, Object headers = {});
 
-    /*! @brief 用 GET 方法请求指定的 url，并返回结果，等同于 request("GET", ...)
-     @param url 指定 url，必须是包含主机的完整 url
-     @param headers 指定附加的 http 头，缺省无附加头
-     @return 返回服务器响应
+    /*! @brief reuqest url with GET method，and return response，same as request("GET", ...)
+     @param method define http request method, such as: GET, POST
+     @param url assigned url，has to be full url with root path
+     @param headers  define http request header，default is None
+     @return reutrn server response
      */
     static HttpResponse get(String url, Object headers = {});
 
-    /*! @brief 用 POST 方法请求指定的 url，并返回结果，等同于 request("POST", ...)
-     @param url 指定 url，必须是包含主机的完整 url
-     @param body 指定发送的 body 内容
-     @param headers 指定附加的 http 头，缺省无附加头
-     @return 返回服务器响应
+    /*! @brief reuqest url with POST method，and return response，same as request("POST", ...)
+     @param method define http request method, such as: GET, POST
+     @param url assigned url，has to be full url with root path
+     @param headers  define http request header，default is None
+     @return reutrn server response
      */
     static HttpResponse post(String url, SeekableStream body, Object headers = {});
 
-    /*! @brief 用 POST 方法请求指定的 url，并返回结果，等同于 request("POST", ...)
-     @param url 指定 url，必须是包含主机的完整 url
-     @param body 指定发送的 body 内容
-     @param headers 指定附加的 http 头，缺省无附加头
-     @return 返回服务器响应
+    /*! @brief reuqest url with POST method，and return response，same as request("POST", ...)
+     @param method define http request method, such as: GET, POST
+     @param url assigned url，has to be full url with root path
+     @param headers  define http request header，default is None
+     @return reutrn server response
      */
     static HttpResponse post(String url, Buffer body, Object headers = {});
 };
