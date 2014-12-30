@@ -1,37 +1,37 @@
 
-/*! @brief x509 撤销证书对象
+/*! @brief x509 revoked certificate object
 
- X509Crl 对象属于 crypto 模块，创建：
+ X509Crl object belongs to crypto module, to create it:
  @code
  var k = new crypto.X509Crl();
  @endcode
  */
 interface X509Crl : object
 {
-    /*! @brief X509Crl 构造函数 */
+    /*! @brief X509Crl constructor */
     X509Crl();
 
-    /*! @brief 加载一个 DER 格式的撤销证书，可多次调用
-     @param derCrl DER 格式的撤销证书
+    /*! @brief Load a DER revoked certificate, can be called multiple times
+     @param derCrl DER format revoked certificate
     */
     load(Buffer derCrl);
 
-    /*! @brief 加载一个 PEM 格式的撤销证书，可多次调用
-     @param pemCrl PEM 格式的撤销证书
+    /*! @brief Load a PEM revoked certificate, can be called multiple times
+     @param pemCrl PEM format revoked certificate
     */
     load(String pemCrl);
 
-    /*! @brief 加载一个 PEM 格式的撤销证书，可多次调用
-     @param filename 撤销证书文件名
+    /*! @brief Load a PEM revoked certificate, can be called multiple times
+     @param filename Revoked certificate file name
     */
     loadFile(String filename);
 
-    /*! @brief 导出已经加载的撤销证书
-     @return 以数组方式导出撤销证书链
+    /*! @brief Dump loaded revoked certificate chain
+     @return Array of revoked certificates
     */
     Array dump();
 
-    /*! @brief 清空已经加载的撤销证书
+    /*! @brief Clear all loaded revoked certificates
     */
     clear();
 };
