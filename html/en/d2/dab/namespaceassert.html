@@ -107,13 +107,13 @@ $(document).ready(function(){initNavTree('d2/dab/namespaceassert.html','../../')
 </div><!--header-->
 <div class="contents">
 
-<p>断言测试模块，如果测试值为假，则报错，报错行为可设定继续运行或者错误抛出  
+<p>(单元)?unittest module, if testing return false, the emit error, error handling can be set to continue or raise exception  
 <a href="#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a6bc7d80bbf7943df46c671087f7cfce2"><td class="memItemLeft" align="right" valign="top">static&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/dab/namespaceassert.html#a6bc7d80bbf7943df46c671087f7cfce2">ok</a> (Value actual, String msg=&quot;&quot;)</td></tr>
-<tr class="memdesc:a6bc7d80bbf7943df46c671087f7cfce2"><td class="mdescLeft">&#160;</td><td class="mdescRight">测试数值为真，为假则断言失败  <a href="#a6bc7d80bbf7943df46c671087f7cfce2">More...</a><br /></td></tr>
+<tr class="memdesc:a6bc7d80bbf7943df46c671087f7cfce2"><td class="mdescLeft">&#160;</td><td class="mdescRight">if testing result is ture then return true, if false the unittest fail  <a href="#a6bc7d80bbf7943df46c671087f7cfce2">More...</a><br /></td></tr>
 <tr class="separator:a6bc7d80bbf7943df46c671087f7cfce2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac587cf8bf42a5f632c7c03e672040de8"><td class="memItemLeft" align="right" valign="top">static&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/dab/namespaceassert.html#ac587cf8bf42a5f632c7c03e672040de8">notOk</a> (Value actual, String msg=&quot;&quot;)</td></tr>
 <tr class="memdesc:ac587cf8bf42a5f632c7c03e672040de8"><td class="mdescLeft">&#160;</td><td class="mdescRight">测试数值为假，为真则断言失败  <a href="#ac587cf8bf42a5f632c7c03e672040de8">More...</a><br /></td></tr>
@@ -258,11 +258,14 @@ Functions</h2></td></tr>
 <tr class="separator:aa41904a1025725f280feab1e7312fa5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>断言测试模块，如果测试值为假，则报错，报错行为可设定继续运行或者错误抛出 </p>
-<p>引用方法： </p><div class="fragment"><div class="line">var <a class="code" href="../../d2/dab/namespaceassert.html">assert</a> = require(<span class="stringliteral">&#39;assert&#39;</span>);</div>
-</div><!-- fragment --><p> 或者通过 test 模块引用： </p><div class="fragment"><div class="line">var test = require(<span class="stringliteral">&#39;test&#39;</span>);</div>
+<div class="textblock"><p>(单元)?unittest module, if testing return false, the emit error, error handling can be set to continue or raise exception </p>
+<p>how to use:</p>
+<div class="fragment"><div class="line">var <a class="code" href="../../d2/dab/namespaceassert.html">assert</a> = require(<span class="stringliteral">&#39;assert&#39;</span>);</div>
+</div><!-- fragment --><p>or using testing unit:</p>
+<div class="fragment"><div class="line">var test = require(<span class="stringliteral">&#39;test&#39;</span>);</div>
 <div class="line">var assert = test.assert;</div>
-</div><!-- fragment --><p> 或者通过 <a class="el" href="../../df/d04/namespacetest.html#a38550424e855b291100020778b09064a" title="The current test environment initialization script, the test module method to copy a global variable ...">test.setup</a> 配置： </p><div class="fragment"><div class="line">require(<span class="stringliteral">&quot;test&quot;</span>).setup();</div>
+</div><!-- fragment --><p>or you can use <a class="el" href="../../df/d04/namespacetest.html#a38550424e855b291100020778b09064a" title="The current test environment initialization script, the test module method to copy a global variable ...">test.setup</a> to set up test:</p>
+<div class="fragment"><div class="line">require(<span class="stringliteral">&quot;test&quot;</span>).setup();</div>
 </div><!-- fragment --> </div><h2 class="groupheader">Function Documentation</h2>
 <a class="anchor" id="a6bc7d80bbf7943df46c671087f7cfce2"></a>
 <div class="memitem">
@@ -296,11 +299,13 @@ Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>测试数值为真，为假则断言失败 </p>
+<p>if testing result is ture then return true, if false the unittest fail </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">actual</td><td>要测试的数值 </td></tr>
+    <tr><td class="paramname">actual</td><td>testing value </td></tr>
     <tr><td class="paramname">msg</td><td>断言失败时的提示信息 </td></tr>
+    <tr><td class="paramname">msg</td><td>emit message on unittest fail </td></tr>
   </table>
   </dd>
 </dl>
@@ -343,7 +348,9 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">actual</td><td>要测试的数值 </td></tr>
+    <tr><td class="paramname">actual</td><td>the value need to be tested </td></tr>
     <tr><td class="paramname">msg</td><td>断言失败时的提示信息 </td></tr>
+    <tr><td class="paramname">msg</td><td>the msg when unittest failed </td></tr>
   </table>
   </dd>
 </dl>
@@ -389,11 +396,14 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>测试数值等于预期值，不相等则断言失败 </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>testing value match expected value, othewise throws error </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">actual</td><td>要测试的数值 </td></tr>
+    <tr><td class="paramname">actual</td><td>the value need to be tested </td></tr>
     <tr><td class="paramname">expected</td><td>预期的数值 </td></tr>
+    <tr><td class="paramname">expected</td><td>expected value from unittest </td></tr>
     <tr><td class="paramname">msg</td><td>断言失败时的提示信息 </td></tr>
+    <tr><td class="paramname">msg</td><td>the msg when unittest failed </td></tr>
   </table>
   </dd>
 </dl>
@@ -439,11 +449,14 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>测试数值不等于预期值，相等则断言失败 </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>testing value should not match expected value, othewise throws error </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">actual</td><td>要测试的数值 </td></tr>
+    <tr><td class="paramname">actual</td><td>the value need to be tested </td></tr>
     <tr><td class="paramname">expected</td><td>预期的数值 </td></tr>
+    <tr><td class="paramname">expected</td><td>expected value from unittest </td></tr>
     <tr><td class="paramname">msg</td><td>断言失败时的提示信息 </td></tr>
+    <tr><td class="paramname">msg</td><td>the msg when unittest failed </td></tr>
   </table>
   </dd>
 </dl>
@@ -489,11 +502,14 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>测试数值严格等于预期值，不相等则断言失败 </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>unittest value should strictly match expected value, othewise throws erros </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">actual</td><td>要测试的数值 </td></tr>
+    <tr><td class="paramname">actual</td><td>the value need to be tested </td></tr>
     <tr><td class="paramname">expected</td><td>预期的数值 </td></tr>
+    <tr><td class="paramname">expected</td><td>the expected value </td></tr>
     <tr><td class="paramname">msg</td><td>断言失败时的提示信息 </td></tr>
+    <tr><td class="paramname">msg</td><td>the msg when unittest failed </td></tr>
   </table>
   </dd>
 </dl>
@@ -539,11 +555,14 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>测试数值不严格等于预期值，相等则断言失败 </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>unittest value should not have to strictly match expected value, othewise throws erros </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">actual</td><td>要测试的数值 </td></tr>
+    <tr><td class="paramname">actual</td><td>the value need to be tested </td></tr>
     <tr><td class="paramname">expected</td><td>预期的数值 </td></tr>
+    <tr><td class="paramname">expected</td><td>the expected value </td></tr>
     <tr><td class="paramname">msg</td><td>断言失败时的提示信息 </td></tr>
+    <tr><td class="paramname">msg</td><td>the msg when unittest failed </td></tr>
   </table>
   </dd>
 </dl>
@@ -589,11 +608,14 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>测试数值深度等于预期值，不相等则断言失败 </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>unittest value should deeply match expected value, othewise throws erros </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">actual</td><td>要测试的数值 </td></tr>
+    <tr><td class="paramname">actual</td><td>the value need to be tested </td></tr>
     <tr><td class="paramname">expected</td><td>预期的数值 </td></tr>
+    <tr><td class="paramname">expected</td><td>the expected value </td></tr>
     <tr><td class="paramname">msg</td><td>断言失败时的提示信息 </td></tr>
+    <tr><td class="paramname">msg</td><td>the msg when unittest failed </td></tr>
   </table>
   </dd>
 </dl>
@@ -639,11 +661,14 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>测试数值不深度等于预期值，相等则断言失败 </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>unittest value should not have to deeply match expected value, othewise throws erros </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">actual</td><td>要测试的数值 </td></tr>
+    <tr><td class="paramname">actual</td><td>the value need to be tested </td></tr>
     <tr><td class="paramname">expected</td><td>预期的数值 </td></tr>
+    <tr><td class="paramname">expected</td><td>the expected value </td></tr>
     <tr><td class="paramname">msg</td><td>断言失败时的提示信息 </td></tr>
+    <tr><td class="paramname">msg</td><td>the msg when unittest failed </td></tr>
   </table>
   </dd>
 </dl>
@@ -695,12 +720,16 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>测试数值近似等于预期值，否则断言失败 </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>unittest value closely matching expected value, othewise throws errors </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">actual</td><td>要测试的数值 </td></tr>
+    <tr><td class="paramname">actual</td><td>the value need to be tested </td></tr>
     <tr><td class="paramname">expected</td><td>预期的数值 </td></tr>
+    <tr><td class="paramname">expected</td><td>the expected value </td></tr>
     <tr><td class="paramname">delta</td><td>近似的小数精度 </td></tr>
+    <tr><td class="paramname">delta</td><td>decimal precision </td></tr>
     <tr><td class="paramname">msg</td><td>断言失败时的提示信息 </td></tr>
+    <tr><td class="paramname">msg</td><td>the msg when unittest failed </td></tr>
   </table>
   </dd>
 </dl>
