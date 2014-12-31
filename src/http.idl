@@ -21,13 +21,11 @@ module http
     static HttpHandler new Handler();
 
     /*! @brief create a http static file processor, in case of using static file to respond http request
-     @param root 文件根路径
      @param root file root folder
      @param mimes extends mime settings
      @param mimes extedns mime settings
      @return return a static file processor to handle http request
 
-     fileHandler 支持 gzip 预压缩，当请求接受 gzip 编码，且相同路径下 filename.ext.gz 文件存在时，将直接返回此文件，
      fileHandler support gzip pre-compression，when accept gzip in content-typeand filename.ext.gz exists under same root，then return the file directly，
      to avoid extra load on server.
      */
@@ -67,7 +65,6 @@ module http
     static HttpResponse request(String method, String url, Buffer body, Object headers = {});
 
     /*! @brief reuqest url with GET method，and return response，same as request("GET", ...)
-     @param method define http request method, such as: GET, POST
      @param url assigned url，has to be full url with root path
      @param headers  define http request header，default is None
      @return reutrn server response
@@ -75,16 +72,16 @@ module http
     static HttpResponse get(String url, Object headers = {});
 
     /*! @brief reuqest url with POST method，and return response，same as request("POST", ...)
-     @param method define http request method, such as: GET, POST
      @param url assigned url，has to be full url with root path
+     @param body define http body content
      @param headers  define http request header，default is None
      @return reutrn server response
      */
     static HttpResponse post(String url, SeekableStream body, Object headers = {});
 
     /*! @brief reuqest url with POST method，and return response，same as request("POST", ...)
-     @param method define http request method, such as: GET, POST
      @param url assigned url，has to be full url with root path
+     @param body define http body content
      @param headers  define http request header，default is None
      @return reutrn server response
      */
