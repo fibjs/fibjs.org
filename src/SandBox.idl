@@ -1,6 +1,6 @@
 /*! @brief Sandbox, to manage a separate running space
 
-  All code is running inside sandbox, global require uses current sandbox to load modules. 
+  All code is running inside sandbox, global require uses current sandbox to load modules.
   Following example limits access to assert modules and add a and b two custom modules.
  @code
  var vm = require('vm');
@@ -50,6 +50,11 @@ interface SandBox : object
      @param id Module name
      */
     remove(String id);
+
+    /*! @brief clone current sandbox, the cloned sandbox contains all current sandbox module, same name and same require function.
+     @return cloned sanbox
+     */
+    SandBox clone();
 
     /*! @brief Run a script
      @param fname Script path, always relative to current work directory
