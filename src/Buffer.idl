@@ -50,6 +50,14 @@ interface Buffer : object
      */
     write(String str, String codec = "utf8");
 
+    /*! @brief Copies data from a region of this buffer to a region in the target buffer even if the target memory region overlaps with the source. If undefined the targetStart and sourceStart parameters default to 0 while sourceEnd defaults to buffer.length.
+     @param targetBuffer Buffer object - Buffer to copy into
+     @param targetStart Number, Optional, Default: 0
+     @param sourceStart Number, Optional, Default: 0
+     @param sourceEnd Number, Optional, Default: -1, represent buffer.length
+     */
+    Integer copy(Buffer targetBuffer, Integer targetStart = 0, Integer sourceStart = 0, Integer sourceEnd = -1);
+
     /*!	@brief Read an unsigned 8-bit integer from the buffer
      @param offset The beginning of the address to read
      @param noAssert If true, then do not throw an error when overread. By default it's false.
