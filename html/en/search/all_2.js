@@ -52,7 +52,7 @@ var searchData=
   ['convert',['convert',['../d2/d41/interfaceImage.html#ad862bf3bf93db7e5a7c7c29ece060453',1,'Image']]],
   ['cookie',['Cookie',['../d3/d69/namespacehttp.html#a8f3b344e2e2e196a92de9602d2203d61',1,'http']]],
   ['cookies',['cookies',['../d4/dfa/interfaceHttpRequest.html#a883cdefbbe1fec7aa89f011c941c0707',1,'HttpRequest::cookies()'],['../d9/d71/interfaceHttpResponse.html#ac86661de36347c4ef46e29c8ff4be146',1,'HttpResponse::cookies()']]],
-  ['copy',['copy',['../d2/d41/interfaceImage.html#a94025b861b19965a629b06824e25fda5',1,'Image']]],
+  ['copy',['copy',['../d9/dae/interfaceBuffer.html#a20c0b25cc08d40d7d988689808cd3553',1,'Buffer::copy()'],['../d2/d41/interfaceImage.html#a94025b861b19965a629b06824e25fda5',1,'Image::copy()']]],
   ['copymerge',['copyMerge',['../d2/d41/interfaceImage.html#a06bc2df9c85744029acb3ed3f10c0760',1,'Image']]],
   ['copymergegray',['copyMergeGray',['../d2/d41/interfaceImage.html#a9a3aa172885139848d09ee9dcff25fd5',1,'Image']]],
   ['copyresampled',['copyResampled',['../d2/d41/interfaceImage.html#a1ec0664b9c6bcb11daba2f42487a015b',1,'Image']]],

@@ -7,6 +7,7 @@ var interfaceBuffer =
     [ "write", "d9/dae/interfaceBuffer.html#a9a321c93f4d41d75953063f9c443a199", null ],
     [ "write", "d9/dae/interfaceBuffer.html#ad5e1afa2239bc47359c0e3c6a61c5f20", null ],
     [ "write", "d9/dae/interfaceBuffer.html#a9d8c75a500a8613157e889043a35faa5", null ],
+    [ "copy", "d9/dae/interfaceBuffer.html#a20c0b25cc08d40d7d988689808cd3553", null ],
     [ "readUInt8", "d9/dae/interfaceBuffer.html#a31773d42f004ef4effdee037a2471038", null ],
     [ "readUInt16LE", "d9/dae/interfaceBuffer.html#a67d1ffd55c172fa1e7fe7dd681408027", null ],
     [ "readUInt16BE", "d9/dae/interfaceBuffer.html#a2ed9c44da8519639a1d84ee50ddb5755", null ],
