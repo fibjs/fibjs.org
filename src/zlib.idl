@@ -1,29 +1,29 @@
 
-/*! @brief zlib 压缩解压模块
+/*! @brief zlib compress/uncompress module
 
- 使用方法：
+ How to use：
  @code
  var zlib = require('zlib');
  @endcode
  */
 module zlib
 {
-    /*! @brief deflate 压缩级别，设定不压缩 */
+    /*! @brief deflate compression level，default is 0 (no compression)*/
     const Integer NO_COMPRESSION = 0;
 
-    /*! @brief deflate 压缩级别，设定最快压缩 */
+    /*! @brief deflate compression level, set compression speed*/
     const Integer BEST_SPEED = 1;
 
-    /*! @brief deflate 压缩级别，设定最高压缩 */
+    /*! @brief deflate compression level，set highest compression level */
     const Integer BEST_COMPRESSION = 9;
 
-    /*! @brief deflate 压缩级别，设定缺省设置 */
+    /*! @brief deflate compression level, set default compression level*/
     const Integer DEFAULT_COMPRESSION = -1;
 
-    /*! @brief 使用 deflate 算法压缩数据
-     @param data 给定要压缩的数据
-     @param level 指定压缩级别，缺省为 DEFAULT_COMPRESSION
-     @return 返回压缩后的二进制数据
+    /*! @brief using deflate algorithm for compression
+     @param data the data need to be compressed
+     @param level set compression level，default set to DEFAULT_COMPRESSION
+     @return binary data as compression result
      */
     static Buffer deflate(Buffer data, Integer level = DEFAULT_COMPRESSION) async;
 
