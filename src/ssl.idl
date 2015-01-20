@@ -1,45 +1,45 @@
-/*! @brief ssl/tls 模块 */
+/*! @brief ssl/tls module */
 module ssl
 {
-    /*! @brief 证书验证模式，不验证 */
+    /*! @brief certificate verification mode, default is no verification*/
     const Integer VERIFY_NONE = 0;
 
-    /*! @brief 证书验证模式，可选验证，允许验证不通过 */
+    /*! @brief certificate verification mode, optional verification mode, will allow deny*/
     const Integer VERIFY_OPTIONAL = 1;
 
-    /*! @brief 证书验证模式，要求验证，验证不通过则中断 */
+    /*! @brief certificate verification mode, require verification, suspend if fails */
     const Integer VERIFY_REQUIRED = 2;
 
-    /*! @brief 证书验证结果，证书超时 */
+    /*! @brief verification result，timeout*/
     const Integer BADCERT_EXPIRED = 1;
 
-    /*! @brief 证书验证结果，证书被撤销 */
+    /*! @brief verification result，certificate has been revoked*/
     const Integer BADCERT_REVOKED = 2;
 
-    /*! @brief 证书验证结果，证书名错误 */
+    /*! @brief verification result，wrong certificate name*/
     const Integer BADCERT_CN_MISMATCH = 4;
 
-    /*! @brief 证书验证结果，证书不可信 */
+    /*! @brief verification result，certificate not trusted*/
     const Integer BADCERT_NOT_TRUSTED = 8;
 
-    /*! @brief 创建一个 SslSocket 对象，参见 SslSocket */
+    /*! @brief create a sslSocket object，reference sslSocket */
     static SslSocket new Socket();
 
-    /*! @brief 创建一个 SslHandler 对象，参见 SslHandler */
+    /*! @brief create a sslhandler object，reference sslhandler*/
     static SslHandler new Handler();
 
-    /*! @brief 创建一个 SslServer 对象，参见 SslServer */
+    /*! @brief create a sslServer object，reference sslServer*/
     static SslServer new Server();
 
-    /*! @brief 创建一个 SslSocket 对象并建立连接
-     @param url 指定连接的协议，可以是：ssl://host:port
-     @return 返回连接成功的 SslSocket 对象
+    /*! @brief create a SslSocket object and etablish a connection
+     @param url connection target url，e.g. ssl://host:port
+     @return successful connected SslSocket object
      */
     static Stream connect(String url) async;
 
-    /*! @brief 全局证书，用于 ssl 客户端模式验证服务器证书 */
+    /*! @brief global certificate，used when verfiy server certificate on client side */
     static readonly X509Cert ca;
 
-    /*! @brief 设定证书验证模式，缺省为 VERIFY_REQUIRED */
+    /*! @brief create verification mode，default is VERIFY_REQUIRED */
     static Integer verification;
 };
