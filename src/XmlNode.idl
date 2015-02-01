@@ -1,11 +1,11 @@
 
-/*! @brief XmlNode 对象是整个 DOM 的基础数据类型
+/*! @brief XmlNode object is fundamental data type of entire DOM
  */
 interface XmlNode : object
 {
-    /*! @brief 返回节点的节点类型
+    /*! @brief Get node type
 
-     不同对象的 nodeType 会返回不同的值：
+     Different nodeType returns different values:
      - XmlElement: ELEMENT_NODE(1)
      - XmlAttr: ATTRIBUTE_NODE(2)
      - XmlText: TEXT_NODE(3)
@@ -17,131 +17,131 @@ interface XmlNode : object
     */
     readonly Integer nodeType;
 
-    /*! @brief 返回节点的名称，根据其类型
+    /*! @brief Get node name based on its type
 
-     不同对象的 nodeName 会返回不同的值：
+     Different nodeName returns different values:
      - XmlElement: element name
-     - XmlAttr: 属性名称
+     - XmlAttr: Attribute name
      - XmlText: \#text
      - XmlCDATASection: \#cdata-section
-     - XmlProcessingInstruction: 返回指定目标 target
+     - XmlProcessingInstruction: Get specified target
      - XmlComment: \#comment
      - XmlDocument: \#document
-     - XmlDocumentType: doctype 名称
+     - XmlDocumentType: doctype name
     */
     readonly String nodeName;
 
-    /*! @brief 返回节点的名称，根据其类型
+    /*! @brief Get node name based on its type
 
-     不同对象的 nodeName 会返回不同的值：
+     Different nodeName returns different values:
      - XmlElement: null
-     - XmlAttr: 属性的值
-     - XmlText: 节点的内容
-     - XmlCDATASection: 节点的内容
-     - XmlProcessingInstruction: 返回指定内容 data
-     - XmlComment: 注释文本
+     - XmlAttr: Attribute value
+     - XmlText: Node content
+     - XmlCDATASection: Node content
+     - XmlProcessingInstruction: Get specified data
+     - XmlComment: Comment
      - XmlDocument: null
      - XmlDocumentType: null
     */
     String nodeValue;
 
-    /*! @brief 返回节点的根元素（XmlDocument 对象）
+    /*! @brief Get root element(XmlDocument)
     */
     readonly XmlDocument ownerDocument;
 
-    /*! @brief 可返回某节点的父节点
+    /*! @brief Get parent node
     */
     readonly XmlNode parentNode;
 
-    /*! @brief 查询是否存在子节点
-     @return 存在任何子节点时返回 true，否则返回 false
+    /*! @brief Check if node has child nodes
+     @return Return true if there are child nodes, false otherwise
     */
     Boolean hasChildNodes();
 
-    /*! @brief 返回指定节点的子节点的节点列表
+    /*! @brief Get child node list
     */
     readonly XmlNodeList childNodes;
 
-    /*! @brief 返回节点的首个子节点
+    /*! @brief Get first child node
     */
     readonly XmlNode firstChild;
 
-    /*! @brief 返回节点的最后一个子节点
+    /*! @brief Get last child node
     */
     readonly XmlNode lastChild;
 
-    /*! @brief 返回某节点之前紧跟的节点（处于同一树层级），如果没有此节点，那么该属性返回 null
+    /*! @brief Get previous sibling node, null if not exists
     */
     readonly XmlNode previousSibling;
 
-    /*! @brief 返回某个元素之后紧跟的节点（处于同一树层级中），如果无此节点，则属性返回 null
+    /*! @brief Get next sibling node, null if not exists
     */
     readonly XmlNode nextSibling;
 
-    /*! @brief 合并相邻的 Text 节点并删除空的 Text 节点
+    /*! @brief Normalize adjacent node text and delete nodes with empty text
 
-    这个方法将遍历当前节点的所有子孙节点，通过删除空的 Text 节点，已经合并所有相邻的 Text 节点来规范化文档。该方法在进行节点的插入或删除操作后，对于简化文档树的结构很有用。
+    This method iterates all child nodes of current node, and deletes all empty text nodes. It's very good for simplify document tree.
     */
     normalize();
 
-    /*! @brief 创建指定的节点的精确拷贝
+    /*! @brief Create clone of node
 
-     该方法将复制并返回调用它的节点的副本。如果传递给它的参数是 true，它还将递归复制当前节点的所有子孙节点。 否则，它只复制当前节点。返回的节点不属于文档树，它的 parentNode 属性为 null。当复制的是 Element 节点时，它的所有属性都将被复制。
-     @param deep 是否深度拷贝，为 true 时，被克隆的节点会克隆原节点的所有子节点
-     @return 返回所复制的节点
+     This method clone if calling node, it clones all child nodes if pass with true. Otherwise, it only clones current node. Returned node does not belong to any document tree, which means its parentNode is NULL. When cloned node is an Element, all of it attributes will be cloned as well.
+     @param deep Indicates whether to clone all child nodes or not
+     @return Return cloned node
     */
     XmlNode cloneNode(Boolean deep = true);
 
-    /*! @brief 返回在当前节点上匹配指定的命名空间 URI 的前缀
-     @param namespaceURI 指定匹配的命名空间 URI
-     @return 返回匹配的前缀，未匹配到返回 null
+    /*! @brief Lookup prefix of given namespace URI
+     @param namespaceURI Namespace URI
+     @return Return prefix, NULL when not found
     */
     String lookupPrefix(String namespaceURI);
 
-    /*! @brief 返回在当前节点上匹配指定的前缀的命名空间 URI
-     @param prefix 指定匹配的前缀
-     @return 返回匹配的命名空间 URI，未匹配到返回 null
+    /*! @brief Lookup namespace URI of given prefix
+     @param prefix Prefix to lookup
+     @return Return namespace URI, NULL when not found
     */
     String lookupNamespaceURI(String prefix);
 
-    /*! @brief 在已有的子节点前插入一个新的子节点
+    /*! @brief Insert a child node before current ones
 
-     如果文档树中已经存在了 newChild，它将从文档树中删除，然后重新插入它的新位置。来自一个文档的节点（或由一个文档创建的节点）不能插入另一个文档。也就是说，newChild 的 ownerDocument 属性必须与当前节点的 ownerDocument 属性相同。
-     @param newChild 插入新的节点
-     @param refChild 在此节点前插入新节点
-     @return 返回新的子节点
+     If document tree already has newChild, it will be replaced. Node from(or created b) a document cannot be inserted to another document. In other words, newChild's ownerDocument must be sames as current node.
+     @param newChild New child node
+     @param refChild Reference child node
+     @return Return new child node
     */
     XmlNode insertBefore(XmlNode newChild, XmlNode refChild);
 
-    /*! @brief 在已有的子节点后插入一个新的子节点
+    /*! @brief Insert a child node after current ones
 
-     如果文档树中已经存在了 newChild，它将从文档树中删除，然后重新插入它的新位置。来自一个文档的节点（或由一个文档创建的节点）不能插入另一个文档。也就是说，newChild 的 ownerDocument 属性必须与当前节点的 ownerDocument 属性相同。
-     @param newChild 插入新的节点
-     @param refChild 在此节点后插入新节点
-     @return 返回新的子节点
+     If document tree already has newChild, it will be replaced. Node from(or created b) a document cannot be inserted to another document. In other words, newChild's ownerDocument must be sames as current node.
+     @param newChild New child node
+     @param refChild Reference child node
+     @return Return new child node
     */
     XmlNode insertAfter(XmlNode newChild, XmlNode refChild);
 
-    /*! @brief 向节点的子节点列表的末尾添加新的子节点
+    /*! @brief Append a child node
 
-     如果文档树中已经存在了 newChild，它将从文档树中删除，然后重新插入它的新位置。来自一个文档的节点（或由一个文档创建的节点）不能插入另一个文档。也就是说，newChild 的 ownerDocument 属性必须与当前节点的 ownerDocument 属性相同。
-     @param newChild 指定添加的节点
-     @return 返回这个新的子节点
+     If document tree already has newChild, it will be replaced. Node from(or created b) a document cannot be inserted to another document. In other words, newChild's ownerDocument must be sames as current node.
+     @param newChild New child node
+     @return Return new child node
     */
     XmlNode appendChild(XmlNode newChild);
 
-    /*! @brief 将某个子节点替换为另一个
+    /*! @brief Replace a child node to another
 
-     如果文档树中已经存在了 newChild，它将从文档树中删除，然后重新插入它的新位置。来自一个文档的节点（或由一个文档创建的节点）不能插入另一个文档。也就是说，newChild 的 ownerDocument 属性必须与当前节点的 ownerDocument 属性相同。
-     @param newChild 指定新的节点
-     @param oldChild 指定被替换的节点
-     @return 如替换成功，此方法可返回被替换的节点，如替换失败，则返回 null
+     If document tree already has newChild, it will be replaced. Node from(or created b) a document cannot be inserted to another document. In other words, newChild's ownerDocument must be sames as current node.
+     @param newChild New child node
+     @param oldChild Old child node
+     @return Return new child node when succeed, NULL otherwise
     */
     XmlNode replaceChild(XmlNode newChild, XmlNode oldChild);
 
-    /*! @brief 从子节点列表中删除某个节点
-     @param oldChild 指定被删除的节点
-     @return 如删除成功，此方法可返回被删除的节点，如失败，则返回 null
+    /*! @brief Remove a child node
+     @param oldChild Child node to remove
+     @return Return removed child node when succeed, NULL otherwise
     */
     XmlNode removeChild(XmlNode oldChild);
 };
