@@ -3,6 +3,7 @@ var interfaceHttpResponse =
     [ "HttpResponse", "d9/d71/interfaceHttpResponse.html#ab2e6cd363b5ea437643017766f882066", null ],
     [ "addCookie", "d9/d71/interfaceHttpResponse.html#a2c99acd2e0949dd52a4c52acafc7a48b", null ],
     [ "redirect", "d9/d71/interfaceHttpResponse.html#a3b4a9739aa8441aba59090faeca184da", null ],
+    [ "sendHeader", "d9/d71/interfaceHttpResponse.html#a33aeecb1fcf5a32427b94553c1434079", null ],
     [ "hasHeader", "d9/d71/interfaceHttpResponse.html#a9bafc9a247f9378904788642ab903e03", null ],
     [ "firstHeader", "d9/d71/interfaceHttpResponse.html#a5db3f91a4a32b70e2fcbd188d8a452c9", null ],
     [ "allHeader", "d9/d71/interfaceHttpResponse.html#a30f6ddc198f9265a7b7d733f6620fc8b", null ],

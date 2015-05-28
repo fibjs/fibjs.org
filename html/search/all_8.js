@@ -5,6 +5,7 @@ var searchData=
   ['id',['id',['../d7/ddb/interfaceXmlElement.html#a2289ea1bafc4e091f2a7f0a0e12a9401',1,'XmlElement']]],
   ['ignorecase',['ignoreCase',['../d1/d43/interfaceRegex.html#ac2f8a95e4a1cac13a3312d0ec7eb0fd9',1,'Regex']]],
   ['image',['Image',['../d2/d41/interfaceImage.html',1,'']]],
+  ['importfile',['importFile',['../d5/dac/interfacePKey.html#a0925c1bccb7d62d1897b8f929e3aea02',1,'PKey']]],
   ['importkey',['importKey',['../d5/dac/interfacePKey.html#a15422214b8e3334ddfd485dff78e2921',1,'PKey::importKey(Buffer DerKey, String password=&quot;&quot;)'],['../d5/dac/interfacePKey.html#a5509986248d46a8f2423e3b0cc45f264',1,'PKey::importKey(String pemKey, String password=&quot;&quot;)']]],
   ['inc',['inc',['../df/d0b/interfaceStats.html#ac857dc0bd7bec8432933686c00f87f65',1,'Stats']]],
   ['incr',['incr',['../d7/d32/interfaceRedis.html#a0e23cd9b50839ba65971e8b6f75be883',1,'Redis::incr()'],['../d9/d58/interfaceRedisHash.html#a02488736b85a0df04c107d44d4ae6feb',1,'RedisHash::incr()'],['../db/d03/interfaceRedisSortedSet.html#aa25dbff8ea3d289447a2a5d1f75db6b4',1,'RedisSortedSet::incr()']]],

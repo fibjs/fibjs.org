@@ -2,6 +2,7 @@ var searchData=
 [
   ['iconvdecode',['iconvDecode',['../db/da8/namespaceencoding.html#aa1d988f384e1866928bdd8bbc5b6f127',1,'encoding']]],
   ['iconvencode',['iconvEncode',['../db/da8/namespaceencoding.html#a381c1c5e4d9e24edb4b56f904dfe7372',1,'encoding']]],
+  ['importfile',['importFile',['../d5/dac/interfacePKey.html#a0925c1bccb7d62d1897b8f929e3aea02',1,'PKey']]],
   ['importkey',['importKey',['../d5/dac/interfacePKey.html#a15422214b8e3334ddfd485dff78e2921',1,'PKey::importKey(Buffer DerKey, String password=&quot;&quot;)'],['../d5/dac/interfacePKey.html#a5509986248d46a8f2423e3b0cc45f264',1,'PKey::importKey(String pemKey, String password=&quot;&quot;)']]],
   ['inc',['inc',['../df/d0b/interfaceStats.html#ac857dc0bd7bec8432933686c00f87f65',1,'Stats']]],
   ['incr',['incr',['../d7/d32/interfaceRedis.html#a0e23cd9b50839ba65971e8b6f75be883',1,'Redis::incr()'],['../d9/d58/interfaceRedisHash.html#a02488736b85a0df04c107d44d4ae6feb',1,'RedisHash::incr()'],['../db/d03/interfaceRedisSortedSet.html#aa25dbff8ea3d289447a2a5d1f75db6b4',1,'RedisSortedSet::incr()']]],
