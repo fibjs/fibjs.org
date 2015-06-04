@@ -13,42 +13,43 @@
  */
 module console
 {
-    /*! @brief loglevel 级别常量 */
+    /*! @brief loglevel constant */
     const Integer FATAL = 0;
 
-    /*! @brief loglevel 级别常量 */
+    /*! @brief loglevel constant */
     const Integer ALERT = 1;
 
-    /*! @brief loglevel 级别常量 */
+    /*! @brief loglevel constant */
     const Integer CRIT = 2;
 
-    /*! @brief loglevel 级别常量 */
+    /*! @brief loglevel constant */
     const Integer ERROR = 3;
 
-    /*! @brief loglevel 级别常量 */
+    /*! @brief loglevel constant */
     const Integer WARN = 4;
 
-    /*! @brief loglevel 级别常量 */
+    /*! @brief loglevel constant */
     const Integer NOTICE = 5;
 
-    /*! @brief loglevel 级别常量 */
+    /*! @brief loglevel constant */
     const Integer INFO = 6;
 
-    /*! @brief loglevel 级别常量 */
+    /*! @brief loglevel constant */
     const Integer DEBUG = 7;
 
-    /*! @brief loglevel 级别常量 */
+    /*! @brief loglevel constant */
     const Integer NOTSET = 10;
 
-    /*! @brief logleve is used to filter the output logs, default is NOTSET, which will give logs for all levels. logs will be filter fisrt before sending to different devices added by "add"
+    /*! @brief loglevel is used to filter the output logs, default is NOTSET, which will give logs for all levels. logs will be filter fisrt before sending to different devices added by "add"
      */
     static Integer loglevel;
 
     /*! @brief colors for console logs，reference TextColor */
     static readonly TextColor colors;
 
-    /*! @brief batch add console logs, supportted devices are console, syslog and file, maximum output number is 10
-     console can be configured to send program outputs and system errors to different devices, for collecting runtime information
+    /*! @brief Batch add console output, supportted devices are console, syslog and file, maximum output number is 10.
+     
+     Console can be configured to send program outputs and system errors to different devices, for collecting runtime information.
 
      @code
      console.add(["console", {
@@ -57,33 +58,31 @@ module console
      }]);
      @endcode
 
-     @param cfg an array of console log config
+     @param cfg An array of console log config
      */
     static add(Array cfg);
 
-    /*! @brief 添加 console 输出系统，支持的设备为 console, syslog 和 file，最多可以添加 10 个输出
+    /*! @brief Add console output, supportted devices are console, syslog and file, maximum output number is 10.
 
-     通过配置 console，可以将程序输出和系统错误发往不同设备，用于运行环境信息收集。
+     Console can be configured to send program outputs and system errors to different devices, for collecting runtime information.
 
-     cfg 为配置，可以为设备名称字符串：
-     cfg can be devices name as string
+     Cfg is config which can be set as the string of devices name.
 
      @code
      console.add("console");
      @endcode
 
-     也可以为一个设备配置对象：
-     configure target for single device
+     You can also configure console levels for one device
 
      @code
      console.add({
         type: "console",
-        levels: [console.INFO, console.ERROR]  // 选项，省略则输出全部级别日志
+        levels: [console.INFO, console.ERROR]  // options, output all level of log if skip this option.
      });
      @endcode
 
-     syslog 仅在 posix 平台有效：
-     syslog only works on posix platform
+     Syslog only works on posix platform:
+
      @code
      console.add({
         type: "syslog",
@@ -91,191 +90,189 @@ module console
      });
      @endcode
 
-     file 日志不支持简单调用：
      file log dose not support simple calls
 
      @code
      console.add({
         type: "file",
         levels: [console.INFO, console.ERROR],
-        path: "path/to/file",  // 必选项 // required
-        split: "30m",  // 选项，可选值为 "day", "hour", "minute", "###k", "###m", "###g" //optional, options can be "day", "hour", "minute", "###k", "###m", "###g"
-        count: 10 // 选项，可选范围为 2-128，指定此项时必须提供 split //optional, options can be any integer between 2-128
+        path: "path/to/file",  // required
+        split: "30m",  //optional, options can be "day", "hour", "minute", "###k", "###m", "###g"
+        count: 10 //optional, options can be any integer between 2-128, this option requires the split option
      });
      @endcode
 
-     @param cfg 输出配置
-     @param cfg output configuration
+     @param cfg Output configuration
      */
     static add(Value cfg);
 
     /*! @brief initialize with default configuration, only output in console */
     static reset();
 
-    /*! @brief 记录普通日志信息，与 info 等同
+    /*! @brief Record INFO log, Equivalent to the info function.
 
-     记录一般等级的日志信息。通常用于输出非错误性提示信息。
-     @param fmt 格式化字符串
-     @param ... 可选参数列表
+     Record the INFO level of log information. Typically used to output the non-erroneous message.
+     @param fmt The format string
+     @param ... Optional parameter list
      */
     static log(String fmt, ...);
 
-    /*! @brief 记录普通日志信息，与 info 等同
+    /*! @brief Record INFO log, Equivalent to the info function.
 
-     记录一般等级的日志信息。通常用于输出非错误性提示信息。
-     @param ... 可选参数列表
+     Record the INFO level of log information. Typically used to output the non-erroneous message.
+     @param ... Optional parameter list
      */
     static log(...);
 
-    /*! @brief 记录调试日志信息
+    /*! @brief Record DEBUG log
 
-     记录调试日志信息。通常用于输出调试信息。不重要。
-     @param fmt 格式化字符串
-     @param ... 可选参数列表
+     Record the DEBUG level of log information. Typically used to output the debug message.
+     @param fmt The format string
+     @param ... Optional parameter list
      */
     static debug(String fmt, ...);
 
-    /*! @brief 记录调试日志信息
+    /*! @brief Record DEBUG log
 
-     记录调试日志信息。通常用于输出调试信息。不重要。
-     @param ... 可选参数列表
+     Record the DEBUG level of log information. Typically used to output the debug message.
+     @param ... Optional parameter list
      */
     static debug(...);
 
-    /*! @brief 记录普通日志信息，与 log 等同
+    /*! @brief Record INFO log, Equivalent to the log function.
 
-     记录一般等级的日志信息。通常用于输出非错误性提示信息。
-     @param fmt 格式化字符串
-     @param ... 可选参数列表
+     Record the INFO level of log information. Typically used to output the non-erroneous message.
+     @param fmt The format string
+     @param ... Optional parameter list
      */
     static info(String fmt, ...);
 
-    /*! @brief 记录普通日志信息，与 log 等同
+    /*! @brief Record INFO log, Equivalent to the log function.
 
-     记录一般等级的日志信息。通常用于输出非错误性提示信息。
-     @param ... 可选参数列表
+     Record the INFO level of log information. Typically used to output the non-erroneous message.
+     @param ... Optional parameter list
      */
     static info(...);
 
-    /*! @brief 记录警告日志信息
+    /*! @brief Record NOTICE log
 
-     记录警告日志信息。通常用于输出提示性调试信息。一般重要。
-     @param fmt 格式化字符串
-     @param ... 可选参数列表
+     Record the NOTICE level of log information. Typically used to output the suggestive debug message.
+     @param fmt The format string
+     @param ... Optional parameter list
      */
     static notice(String fmt, ...);
 
-    /*! @brief 记录警告日志信息
+    /*! @brief Record NOTICE log
 
-     记录警告日志信息。通常用于输出提示性调试信息。一般重要。
-     @param ... 可选参数列表
+     Record the NOTICE level of log information. Typically used to output the suggestive debug message.
+     @param ... Optional parameter list
      */
     static notice(...);
 
-    /*! @brief 记录警告日志信息
+    /*! @brief Record WARN log
 
-     记录警告日志信息。通常用于输出警告性调试信息。重要。
-     @param fmt 格式化字符串
-     @param ... 可选参数列表
+     Record the WARN level of log information. Typically used to output the warning debug message. Important.
+     @param fmt The format string
+     @param ... Optional parameter list
      */
     static warn(String fmt, ...);
 
-    /*! @brief 记录警告日志信息
+    /*! @brief Record WARN log
 
-     记录警告日志信息。通常用于输出警告性调试信息。重要。
-     @param ... 可选参数列表
+     Record the WARN level of log information. Typically used to output the warning debug message. Important.
+     @param ... Optional parameter list
      */
     static warn(...);
 
-    /*! @brief 记录错误日志信息
+    /*! @brief Record ERROR log
 
-     记录用于错误日志信息。通常用于输出错误信息。非常重要。系统的出错信息也会以此等级记录。
-     @param fmt 格式化字符串
-     @param ... 可选参数列表
+     Record the ERROR level of log information. Typically used to output the error message. Very important. System error message is also record in this level.
+     @param fmt The format string
+     @param ... Optional parameter list
      */
     static error(String fmt, ...);
 
-    /*! @brief 记录错误日志信息
+    /*! @brief Record ERROR log
 
-     记录用于错误日志信息。通常用于输出错误信息。非常重要。系统的出错信息也会以此等级记录。
-     @param ... 可选参数列表
+     Record the ERROR level of log information. Typically used to output the error message. Very important. System error message is also record in this level.
+     @param ... Optional parameter list
      */
     static error(...);
 
-    /*! @brief 记录关键错误日志信息
+    /*! @brief Record CRIT log
 
-     记录用于关键错误日志信息。通常用于输出关键错误信息。非常重要。
-     @param fmt 格式化字符串
-     @param ... 可选参数列表
+     Record the CRIT level of log information. Typically used to output the critical error message. Very important.
+     @param fmt The format string
+     @param ... Optional parameter list
      */
     static crit(String fmt, ...);
 
-    /*! @brief 记录关键错误日志信息
+    /*! @brief Record CRIT log
 
-     记录用于关键错误日志信息。通常用于输出关键错误信息。非常重要。
-     @param ... 可选参数列表
+     Record the CRIT level of log information. Typically used to output the critical error message. Very important.
+     @param ... Optional parameter list
      */
     static crit(...);
 
-    /*! @brief 记录警报错误日志信息
+    /*! @brief Record ALERT log
 
-     记录用于警报错误日志信息。通常用于输出警报错误信息。非常重要。为最高级别信息。
-     @param fmt 格式化字符串
-     @param ... 可选参数列表
+     Record the ALERT level of log information. Typically used to output the alert error message. Very important. This level is the highest one.
+     @param fmt The format string
+     @param ... Optional parameter list
      */
     static alert(String fmt, ...);
 
-    /*! @brief 记录警报错误日志信息
+    /*! @brief Record ALERT log
 
-     记录用于警报错误日志信息。通常用于输出警报错误信息。非常重要。为最高级别信息。
-     @param ... 可选参数列表
+     Record the ALERT level of log information. Typically used to output the alert error message. Very important. This level is the highest one.
+     @param ... Optional parameter list
      */
     static alert(...);
 
-    /*! @brief 用 JSON 格式输出对象
-     @param obj 给定要显示的对象
+    /*! @brief Output object in JSON format
+     @param obj The object given to display
      */
     static dir(Value obj);
 
-    /*! @brief 启动一个计时器
+    /*! @brief Start a timer
 
-     @param label 标题，缺省为空字符串。
+     @param label Title, default is an empty string.
      */
     static time(String label = "time");
 
-    /*! @brief 统计指定计时器的数值
+    /*! @brief Value of specified timer
 
-     @param label 标题，缺省为空字符串。
+     @param label Title, default is an empty string.
      */
     static timeEnd(String label = "time");
 
-    /*! @brief 输出当前调用堆栈
+    /*! @brief Output the current used stack
 
-     通过日志输出当前调用堆栈。
-     @param label 标题，缺省为空字符串。
+     Output the current used stack by log.
+     @param label Title, default is an empty string.
      */
     static trace(String label = "trace");
 
-    /*! @brief 断言测试，如果测试值为假，则报错
-     @param value 测试的数值
-     @param msg 报错信息
+    /*! @brief Assertion test, which will throw error when testing result is false.
+     @param value The value for test
+     @param msg Error message
      */
     static assert(Value value, String msg = "");
 
-    /*! @brief 向控制台输出格式化文本，输出内容不会记入日志系统，输出文本后不会自动换行，可连续输出
-     @param fmt 格式化字符串
-     @param ... 可选参数列表
+    /*! @brief Formatted text output to the console, the content will not be written to log system, and the output text does not wrap automatically, the output can output continuously. 
+     @param fmt The format string
+     @param ... Optional parameter list
      */
     static print(String fmt, ...);
 
-    /*! @brief 向控制台输出格式化文本，输出内容不会记入日志系统，输出文本后不会自动换行，可连续输出
-     @param ... 可选参数列表
+    /*! @brief Formatted text output to the console, the content will not be written to log system, and the output text does not wrap automatically, the output can output continuously. 
+     @param ... Optional parameter list
      */
     static print(...);
 
-    /*! @brief 从控制台读取用户输入
-     @param msg 提示信息
-     @return 返回用户输入的信息
+    /*! @brief Read the user input from the console
+     @param msg Prompt information
+     @return Returns the user input information.
      */
     static String readLine(String msg = "") async;
 };
