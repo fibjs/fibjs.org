@@ -1,70 +1,69 @@
 
-/*! @brief 数据库访问模块
+/*! @brief Database access module
 
- 基础模块。可用于创建和操作数据库资源，引用方式：
- basic module for create database and database operation, how to use
+ Basic module for create database and database operation, The way to use::
  \code
  var db = require('db');
  \endcode
  */
 module db
 {
-    /*! @brief 打开一个数据库，此方法为通用入口，根据提供的 connString 不同调用不同的引擎
-     @param connString 数据库描述，如：mysql://user:pass\@host/db
-     @return 返回数据库连接对象
+    /*! @brief This method offer a general entrance to open a database, call different engines according to the providing connString.
+     @param connString Database Description, For example: mysql://user:pass\@host/db
+     @return Returns the database connection object.
      */
     static object open(String connString) async;
 
-    /*! @brief 打开一个 mysql 数据库
-     @param connString 数据库描述，如：mysql://user:pass\@host/db
-     @return 返回数据库连接对象
+    /*! @brief Open a mysql database.
+     @param connString Database Description, For example: mysql://user:pass\@host/db
+     @return Returns the database connection object.
      */
     static MySQL openMySQL(String connString) async;
 
-    /*! @brief 打开一个 sqlite 数据库
-     @param connString 数据库描述，如：sqlite:test.db 或者 test.db
-     @return 返回数据库连接对象
+    /*! @brief Open a sqlite database.
+     @param connString Database Description, For example: sqlite:test.db or test.db
+     @return Returns the database connection object.
      */
     static SQLite openSQLite(String connString) async;
 
-    /*! @brief 打开一个 mongodb 数据库
-     @param connString 数据库描述
-     @return 返回数据库连接对象
+    /*! @brief Open a mongodb database.
+     @param connString Database Description
+     @return Returns the database connection object.
      */
     static MongoDB openMongoDB(String connString) async;
 
-    /*! @brief 打开一个 leveldb 数据库
-     @param connString 数据库描述，如：level:test.db 或者 test.db
-     @return 返回数据库对象
+    /*! @brief Open a leveldb database.
+     @param connString Database Description, For example: level:test.db or test.db
+     @return Returns the database connection object.
      */
     static LevelDB openLevelDB(String connString) async;
 
-    /*! @brief 打开一个 Redis 数据库
-     @param connString 数据库描述，如：redis://server:port 或者 "server"
-     @return 返回数据库连接对象
+    /*! @brief Open a Redis database.
+     @param connString Database Description, For example: redis://server:port or "server"
+     @return Returns the database connection object.
      */
     static Redis openRedis(String connString) async;
 
-    /*! @brief 格式化一个 sql 命令，并返回格式化结果
+    /*! @brief Formatting a sql command, and returns the formatted results
 
-     @param sql 格式化字符串，可选参数用 ? 指定。例如：'SELECT FROM TEST WHERE [id]=?'
-     @param ... 可选参数列表
-     @return 返回格式化之后的 sql 命令
+     @param sql Format string, optional parameters can be specified as '?', for example: 'SELECT FROM TEST WHERE [id]=?'
+     @param ... Optional parameter list
+     @return Return the formatted sql command.
      */
     static String format(String sql, ...);
 
-    /*! @brief 格式化一个 mysql 命令，并返回格式化结果
+    /*! @brief Formatting a sql command, and returns the formatted results
 
-     @param sql 格式化字符串，可选参数用 ? 指定。例如：'SELECT FROM TEST WHERE [id]=?'
-     @param ... 可选参数列表
-     @return 返回格式化之后的 sql 命令
+     @param sql Format string, optional parameters can be specified as '?', for example: 'SELECT FROM TEST WHERE [id]=?'
+     @param ... Optional parameter list
+     @return Return the formatted sql command.
      */
     static String formatMySQL(String sql, ...);
 
-    /*! @brief 将字符串编码为 SQL 安全编码字符串
-     @param str 要编码的字符串
-     @param mysql 指定 mysql 编码，缺省为 false
-     @return 返回编码后的字符串
+    /*! @brief String encoded as security coded SQL strings
+     @param str The string that need to be encoded
+     @param mysql Specify the Mysql encoding, the default value is false
+     @return Returns the encoded string
      */
     static String escape(String str, Boolean mysql = false);
 };

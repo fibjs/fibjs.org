@@ -1,134 +1,134 @@
 
-/*! @brief 图像文件处理模块
+/*! @brief Image processing module
 
- 基础模块。可用于创建和操作图像文件，引用方式：
+ Base module. It can be used to create and manipulate image files. The way to use：
  \code
  var gd = require('gd');
  \endcode
  */
 module gd
 {
-    /*! @brief 图像格式常量，标示当前图像来源为未知 */
+    /*! @brief Image type constants, marking the current image source is unknown. */
     const Integer NONE = 0;
 
-    /*! @brief 图像格式常量，标示当前图像来源为 jpeg 格式数据 */
+    /*! @brief Image type constant, marking the current image data source is jpeg. */
     const Integer JPEG = 1;
 
-    /*! @brief 图像格式常量，标示当前图像来源为 gif 格式数据 */
+    /*! @brief Image type constant, marking the current image data source is gif. */
     const Integer GIF = 2;
 
-    /*! @brief 图像格式常量，标示当前图像来源为 png 格式数据 */
+    /*! @brief Image type constant, marking the current image data source is png. */
     const Integer PNG = 3;
 
-    /*! @brief 图像格式常量，标示当前图像来源为 tiff 格式数据 */
+    /*! @brief Image type constant, marking the current image data source is tiff. */
     const Integer TIFF = 4;
 
-    /*! @brief 图像格式常量，标示当前图像来源为 bmp 格式数据 */
+    /*! @brief Image type constant, marking the current image data source is bmp. */
     const Integer BMP = 5;
 
-    /*! @brief 图像格式常量，标示当前图像来源为 gd 格式数据 */
+    /*! @brief Image type constant, marking the current image data source is gd. */
     const Integer GD = 6;
 
-    /*! @brief 图像格式常量，标示当前图像来源为 gd2 格式数据 */
+    /*! @brief Image type constant, marking the current image data source is gd2. */
     const Integer GD2 = 7;
 
-    /*! @brief 图像类型常量，标示当前图像为真彩色图像 */
+    /*! @brief Image type constants, labeled the current image as true color image. */
     const Integer TRUECOLOR = 0;
 
-    /*! @brief 图像类型常量，标示当前图像为调色板图像 */
+    /*! @brief Image type constants, labeled the current image to a palette image. */
     const Integer PALETTE = 1;
 
-    /*! @brief 扇形绘制样式，绘制一条连接开始和结束点的圆弧 */
+    /*! @brief Fan-shaped drawing style, draw a line connecting the start and end points of the arc. */
     const Integer ARC = 0;
 
-    /*! @brief 扇形绘制样式，绘制一条连接原点，开始和结束点的直线 */
+    /*! @brief Fan-shaped drawing style, draw a straight line connecting the origin, the beginning and ending points */
     const Integer CHORD = 1;
 
-    /*! @brief 扇形绘制样式，绘制不填充的扇形 */
+    /*! @brief Fan-shaped drawing style, drawing not filled fan */
     const Integer NOFILL = 2;
 
-    /*! @brief 扇形绘制样式，绘制一条连接起点和终点的弧和连接原点的直线 */
+    /*! @brief Fan-shaped drawing styles, draw a line connecting the start and end points of the arc and the straight line connecting the origin. */
     const Integer EDGED = 4;
 
-    /*! @brief 镜像方向，横向做镜像处理 */
+    /*! @brief Mirroring direction, processing transverse */
     const Integer HORIZONTAL = 1;
 
-    /*! @brief 镜像方向，纵向做镜像处理 */
+    /*! @brief Mirroring direction, processing longitudinal */
     const Integer VERTICAL = 2;
 
-    /*! @brief 镜像方向，横向和纵向都做镜像处理 */
+    /*! @brief Mirroring direction, processing transverse and longitudinal */
     const Integer BOTH = 3;
 
-    /*! @brief 旋转方向，向左旋转 */
+    /*! @brief Direction of rotation, left rotation */
     const Integer LEFT = 1;
 
-    /*! @brief 旋转方向，向右旋转 */
+    /*! @brief Direction of rotation, right rotation */
     const Integer RIGHT = 2;
 
 
-    /*! @brief 创建一个新图像
-     @param width 指定图像宽度
-     @param height 指定图像高度
-     @param color 指定图像类型，允许值为 gd.TRUECOLOR 或 gd.PALETTE
-     @return 返回创建成功的图像对象
+    /*! @brief Create a new image
+     @param width Specifies the width of the image.
+     @param height Specifies the height of the image.
+     @param color Specify the image type, the allowable value is gd.TRUECOLOR or gd.PALETTE
+     @return Returns the created image object of success.
      */
     static Image create(Integer width, Integer height, Integer color = gd.TRUECOLOR) async;
 
-    /*! @brief 从格式数据中解码图像
-     @param data 给定解码的图像数据
-     @return 返回解码成功的图像对象
+    /*! @brief Decoded image from the format data.
+     @param data The image data need decoded.
+     @return Return successfully decoded image object.
      */
     static Image load(Buffer data) async;
 
-    /*! @brief 从流对象中解码图像
-     @param stm 给定图像数据所在的流对象
-     @return 返回解码成功的图像对象
+    /*! @brief Decoded image from the stream object.
+     @param stm The stream object of the specified image data.
+     @return Return successfully decoded image object.
      */
     static Image load(SeekableStream stm) async;
 
-    /*! @brief 从指定文件中解码图像
-     @param fname 指定文件名
-     @return 返回解码成功的图像对象
+    /*! @brief Decoded image from the specified file.
+     @param fname Specify the file name.
+     @return Return successfully decoded image object.
      */
     static Image load(String fname) async;
 
-    /*! @brief 通过 rgb 颜色分量生成组合颜色
-     @param red 红色分量，范围为 0-255
-     @param green 绿色分量，范围为 0-255
-     @param blue 蓝色分量，范围为 0-255
-     @return 返回组合颜色
+    /*! @brief Generating a combined color through rgb color components.
+     @param red Red component in the range of 0-255
+     @param green Green component in the range of 0-255
+     @param blue Blue component in the range of 0-255
+     @return Returns the combined color.
      */
     static Integer rgb(Integer red, Integer green, Integer blue);
 
-    /*! @brief 通过 rgba 颜色分量生成组合颜色
-     @param red 红色分量，范围为 0-255
-     @param green 绿色分量，范围为 0-255
-     @param blue 蓝色分量，范围为 0-255
-     @param alpha 透明分量，范围为 0.0-1.0
-     @return 返回组合颜色
+    /*! @brief Generating a combined color through rgba color components.
+     @param red Red component in the range of 0-255
+     @param green Green component in the range of 0-255
+     @param blue Blue component in the range of 0-255
+     @param alpha Transparent component in the range of 0.0-1.0
+     @return Returns the combined color.
      */
     static Integer rgba(Integer red, Integer green, Integer blue, Number alpha);
 
-    /*! @brief 通过 hsl 颜色分量生成组合颜色
-     @param hue 色相分量，范围为 0-360
-     @param saturation 饱和度分量，范围为 0.0-1.0
-     @param lightness 亮度分量，范围为 0.0-1.0
-     @return 返回组合颜色
+    /*! @brief Generating a combined color through hsl color components.
+     @param hue Hue component in the range of 0-360.
+     @param saturation Saturation components in the range of 0.0-1.0
+     @param lightness Lightness component in the range of 0.0-1.0
+     @return Returns the combined color.
      */
     static Integer hsl(Number hue, Number saturation, Number lightness);
 
-    /*! @brief 通过 hsl 颜色分量生成组合颜色
-     @param hue 色相分量，范围为 0-360
-     @param saturation 饱和度分量，范围为 0.0-1.0
-     @param lightness 亮度分量，范围为 0.0-1.0
-     @param alpha 透明分量，范围为 0.0-1.0
-     @return 返回组合颜色
+    /*! @brief Generating a combined color through hsla color components.
+     @param hue Hue component in the range of 0-360.
+     @param saturation Saturation components in the range of 0.0-1.0
+     @param lightness Lightness component in the range of 0.0-1.0
+     @param alpha Transparent component in the range of 0.0-1.0
+     @return Returns the combined color.
      */
     static Integer hsla(Number hue, Number saturation, Number lightness, Number alpha);
 
-    /*! @brief 通过字符串生成组合颜色
-     @param color 指定颜色的字符串，如："#ff0000", "ff0000", "#f00", "f00"
-     @return 返回组合颜色
+    /*! @brief Generating a combined color by string
+     @param color The specified color string, e.g: "#ff0000", "ff0000", "#f00", "f00"
+     @return Returns the combined color.
      */
     static Integer color(String color);
 };
