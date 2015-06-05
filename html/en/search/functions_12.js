@@ -13,7 +13,6 @@ var searchData=
   ['setattribute',['setAttribute',['../d7/ddb/interfaceXmlElement.html#ac567d5f34138040160d498a2972b8267',1,'XmlElement']]],
   ['setattributens',['setAttributeNS',['../d7/ddb/interfaceXmlElement.html#a18fad1c573b68e90ce96993b2ea34134',1,'XmlElement']]],
   ['setbit',['setBit',['../d7/d32/interfaceRedis.html#aa049b28fabe3a5793718a0617cc349e7',1,'Redis']]],
-  ['setclientcert',['setClientCert',['../df/dd2/namespacessl.html#abfcba27187ce773724229ec641b2104c',1,'ssl']]],
   ['setheader',['setHeader',['../da/d38/interfaceHttpMessage.html#ac5626cfdbeb975e16ab3b127b76b1864',1,'HttpMessage::setHeader(Object map)'],['../da/d38/interfaceHttpMessage.html#a080e5427207dcae84985d7085f54761c',1,'HttpMessage::setHeader(String name, Variant value)']]],
   ['setnx',['setNX',['../d7/d32/interfaceRedis.html#af0e5289d7ddc2fa794a4ac6eee382d8c',1,'Redis::setNX()'],['../d9/d58/interfaceRedisHash.html#a61b0ac109f970cbf51ea426f81310fe5',1,'RedisHash::setNX()']]],
   ['setpixel',['setPixel',['../d2/d41/interfaceImage.html#aa59563ed17d30a71f39ff1e1755deff4',1,'Image']]],
