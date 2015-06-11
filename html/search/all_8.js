@@ -55,6 +55,7 @@ var searchData=
   ['isprivate',['isPrivate',['../d5/dac/interfacePKey.html#a2a83698502fb5933c10068def45519b6',1,'PKey']]],
   ['isreadable',['isReadable',['../dc/da9/interfaceStat.html#a62f57226030d955723f1bc2894faaf92',1,'Stat']]],
   ['isregexp',['isRegExp',['../d6/d72/namespaceutil.html#a197f6d19eb64708964feb8aeb51bc7a3',1,'util']]],
+  ['isset',['isSet',['../d7/ddf/interfaceEvent.html#a13d0c232c1ce2ecf3276bc1fae80a508',1,'Event']]],
   ['issocket',['isSocket',['../dc/da9/interfaceStat.html#a86560561f60b45ca4af6b9e935f18143',1,'Stat']]],
   ['isstring',['isString',['../d2/dab/namespaceassert.html#ad8d4452d1c18ac0762f27ad30d754d3e',1,'assert::isString()'],['../d6/d72/namespaceutil.html#a53b05938f4a3601a494f3733d1015d26',1,'util::isString()']]],
   ['issuer',['issuer',['../dc/d22/interfaceX509Cert.html#a72345ac653b7808dc7eb2cc0a9db1268',1,'X509Cert']]],
