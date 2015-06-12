@@ -13,7 +13,7 @@ var searchData=
   ['equal',['equal',['../d0/df6/interfaceExpect.html#aa8507593476087851d862726b802d7f1',1,'Expect::equal()'],['../df/dc1/interfaceInt64.html#a1cdcc1931d4021a31cf9a2f62d1fa881',1,'Int64::equal()'],['../d2/dab/namespaceassert.html#af37037ca6be593c635dc7a312e45f17e',1,'assert::equal()']]],
   ['error',['error',['../dc/daa/namespaceconsole.html#a3525bdec50b085e03d6ca5625a057914',1,'console::error(String fmt,...)'],['../dc/daa/namespaceconsole.html#abc33daf6e70210aa03b78832c2d6eea3',1,'console::error(...)']]],
   ['escape',['escape',['../d0/d45/namespacedb.html#aeb2f02c2858d45aeab3cd686e99ceabd',1,'db']]],
-  ['event',['Event',['../d6/d05/namespacecoroutine.html#ad0f8ed469664e3397be2684930305150',1,'coroutine']]],
+  ['event',['Event',['../d7/ddf/interfaceEvent.html#a33337ad9b309a903c822cb4693862d9c',1,'Event::Event()'],['../d6/d05/namespacecoroutine.html#ad0f8ed469664e3397be2684930305150',1,'coroutine::Event()']]],
   ['every',['every',['../de/dd8/interfaceList.html#a751f05572731dcf0814f3f6ef74a2c44',1,'List']]],
   ['exec',['exec',['../d1/d43/interfaceRegex.html#a4dd4fc54426487773dfc25914c2c1cf0',1,'Regex::exec()'],['../d8/d25/namespaceprocess.html#a8bf5e6a0915841de911f1f4e8142e67c',1,'process::exec()']]],
   ['execute',['execute',['../d8/d2c/interfaceDbConnection.html#a0f8cde8557dcc248e5c1064791355845',1,'DbConnection::execute(String sql) async'],['../d8/d2c/interfaceDbConnection.html#ab5ddefb9b2c6c1a0cdfdac90e13de736',1,'DbConnection::execute(String sql,...)']]],
