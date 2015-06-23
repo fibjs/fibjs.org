@@ -2,24 +2,4 @@
 /*! @brief Function module cannot be referred directly. It is only used to extend JavaScript Function Object. */
 interface Function : object
 {
-    /*! @brief start a fiber
-
-     Starting a fiber does not need to create any object. Just invoke the start method of the function that need to execute in the fiber.
-     @code
-     function func(v1, v2)
-     {
-         if(v1 > v2)
-             console.log(v1);
-         else
-             console.log(v2);
-     }
-
-     var fb = func.start(100, 200);
-     fb.join();
-     @endcode
-
-     @param ... multiple assignment sequence, which will be passed to the function in the fiber.
-     @return fiber object
-     */
-    static Fiber start(...);
 };
