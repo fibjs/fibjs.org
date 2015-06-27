@@ -115,8 +115,7 @@ $(document).ready(function(){initNavTree('d5/d45/interfaceCondition.html','../..
 <div class="dynheader">
 Inheritance diagram for Condition:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../de/d1f/interfaceCondition__inherit__graph.svg" width="110" height="447"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../de/d1f/interfaceCondition__inherit__graph.svg" width="110" height="447"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -160,20 +159,20 @@ Public Member Functions</h2></td></tr>
 <p><a class="el" href="../../d5/d45/interfaceCondition.html" title="Condition variable object. ">Condition</a> variable that used the global variables is a synchronization mechanism between fiber, always including two actions:   1) one fiber waiting for a condition be set, at the same time will hang themselves;   2) another fiber set the condition, and notify the waiting fiber continue.</p>
 <p>To avoid competition, each condition variable requires a <a class="el" href="../../de/da6/interfaceLock.html" title="Thread lock object. ">Lock</a> which can be created and passed in or created by fibjs.</p>
 <p>By using the condition variable, you can use it to control group of fiber switch;</p>
-<p>Here are an examples of two fiber switch:： </p><div class="fragment"><div class="line">var coroutine = require(<span class="stringliteral">&quot;coroutine&quot;</span>)</div>
-<div class="line">var cond = new coroutine.<a class="code" href="../../d5/d45/interfaceCondition.html">Condition</a>();</div>
-<div class="line">var ready = false;</div>
-<div class="line">var state = &quot;ready&quot;;</div>
+<p>Here are an examples of two fiber switch:： </p><div class="fragment"><div class="line">var coroutine = require(<span class="stringliteral">&quot;coroutine&quot;</span>);</div>
+<div class="line">var cond = <span class="keyword">new</span> coroutine.Condition();</div>
+<div class="line">var ready = <span class="keyword">false</span>;</div>
+<div class="line">var state = <span class="stringliteral">&quot;ready&quot;</span>;</div>
 <div class="line"></div>
-<div class="line">function funcwait() {</div>
-<div class="line">   cond.<a class="code" href="../../de/da6/interfaceLock.html#a172821036c61bf18f75953175227c4fa">acquire</a>();</div>
+<div class="line"><span class="keyword">function</span> funcwait() {</div>
+<div class="line">   cond.acquire();</div>
 <div class="line">   <span class="keywordflow">while</span> (!ready)</div>
 <div class="line">       cond.wait();</div>
 <div class="line">   state = <span class="stringliteral">&quot;go&quot;</span></div>
 <div class="line">   cond.release();</div>
 <div class="line">}</div>
 <div class="line"></div>
-<div class="line">funcwait.start();</div>
+<div class="line">coroutine.start(funcwait);</div>
 <div class="line"></div>
 <div class="line">cond.acquire();</div>
 <div class="line"><a class="code" href="../../dc/daa/namespaceconsole.html">console</a>.log(state)</div>
