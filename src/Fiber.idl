@@ -1,7 +1,7 @@
 
 /*! @brief Fiber operation object, this object cannot be created directly.
 
- This object, which is used to issue fibers and communications between fibers, will be returned after the fiber is created by Function.start or coroutine.start.
+ This object, which is used to issue fibers and communications between fibers, will be returned after the fiber is created by coroutine.start.
  Fiber's main function can access the fiber by this, or get the fiber by coroutine.current.
  @code
  function func(v1)
@@ -9,7 +9,7 @@
    console.log(v1 + this.v);
  }
 
- var fb = func.start(100);
+ var fb = coroutine.start(func,100);
 
  fb.v = 123;
 
@@ -40,7 +40,7 @@
 
  coroutine.current().v = 100;
 
- var fb = func.start();
+ var fb = coroutine.start(func);
 
  coroutine.current().v = 200;
 
