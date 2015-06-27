@@ -160,20 +160,20 @@ Public 成员函数</h2></td></tr>
 <p>条件变量是利用纤程间共享的全局变量来进行同步的一种机制，主要包括两个动作： 1）一个线程等待某个条件成立，而将自己挂起； 2）另一个线程使条件成立，并通知等待的纤程向下执行。</p>
 <p>为了防止竞争，每个条件变量都需要一个Lock的配合（Lock可自行显式创建并传递进来，也可交由fibjs为您创建）</p>
 <p>通过使用条件变量，可以利用一个条件变量控制一批纤程的开关；</p>
-<p>以下是两个纤程调度的实例： </p><div class="fragment"><div class="line">var coroutine = require(<span class="stringliteral">&quot;coroutine&quot;</span>)</div>
-<div class="line">var cond = new coroutine.<a class="code" href="../../d5/d45/interfaceCondition.html">Condition</a>();</div>
-<div class="line">var ready = false;</div>
-<div class="line">var state = &quot;ready&quot;;</div>
+<p>以下是两个纤程调度的实例： </p><div class="fragment"><div class="line">var coroutine = require(<span class="stringliteral">&quot;coroutine&quot;</span>);</div>
+<div class="line">var cond = <span class="keyword">new</span> coroutine.Condition();</div>
+<div class="line">var ready = <span class="keyword">false</span>;</div>
+<div class="line">var state = <span class="stringliteral">&quot;ready&quot;</span>;</div>
 <div class="line"></div>
-<div class="line">function funcwait() {</div>
-<div class="line">   cond.<a class="code" href="../../de/da6/interfaceLock.html#a172821036c61bf18f75953175227c4fa">acquire</a>();</div>
+<div class="line"><span class="keyword">function</span> funcwait() {</div>
+<div class="line">   cond.acquire();</div>
 <div class="line">   <span class="keywordflow">while</span> (!ready)</div>
 <div class="line">    cond.wait();</div>
 <div class="line">   state = <span class="stringliteral">&quot;go&quot;</span></div>
 <div class="line">   cond.release();</div>
 <div class="line">}</div>
 <div class="line"></div>
-<div class="line">funcwait.start();</div>
+<div class="line">coroutine.start(funcwait);</div>
 <div class="line"></div>
 <div class="line">cond.acquire();</div>
 <div class="line"><a class="code" href="../../dc/daa/namespaceconsole.html">console</a>.log(state)</div>
