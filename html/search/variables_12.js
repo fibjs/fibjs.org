@@ -13,7 +13,6 @@ var searchData=
   ['sha256',['SHA256',['../de/de9/namespacehash.html#a479d5d79b494b5324cc536b483b4619f',1,'hash']]],
   ['sha384',['SHA384',['../de/de9/namespacehash.html#ab3642bba484b7f0633956bae80dc6bd9',1,'hash']]],
   ['sha512',['SHA512',['../de/de9/namespacehash.html#a8ba2e8e53c773269d0e949bfd5e07fb8',1,'hash']]],
-  ['singleusermode',['singleUserMode',['../d6/d05/namespacecoroutine.html#af105dc75a226575e7b8e6c2e2312c1b2',1,'coroutine']]],
   ['size',['size',['../d3/d41/interfaceDigest.html#a4ffefefd60695d1448d2a79421b2b85d',1,'Digest::size()'],['../dc/d81/interfaceLruCache.html#aee1e7aea2978a02636cb4314bdb11420',1,'LruCache::size()'],['../d2/dc1/interfaceMap.html#a36abb4b144a680fb4a2152bac4ff80fa',1,'Map::size()'],['../dc/da9/interfaceStat.html#a2e40d56627672e702cfd14aae5bc40e5',1,'Stat::size()']]],
   ['slashes',['slashes',['../dd/d23/interfaceUrl.html#a77d7f7816531a40a03534c4b41a9a87c',1,'Url']]],
   ['slow',['slow',['../df/d04/namespacetest.html#a09913ac8583af372187ee252951103c4',1,'test']]],
