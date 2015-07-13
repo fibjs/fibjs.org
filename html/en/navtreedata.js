@@ -37,7 +37,7 @@ var NAVTREE =
     [ "Module", "namespaces.html", "namespaces" ],
     [ "Object", "annotated.html", "annotated" ],
     [ "Download", "^https://github.com/xicilion/fibjs", null ],
-    [ "Forum", "^http://baoz.cn/fibjs", null ],
+    [ "Forum", "^http://named.cn/fibjs", null ],
     [ "中文版", "../index.html", null ]
   ] ]
 ];
