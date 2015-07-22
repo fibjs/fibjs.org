@@ -15,7 +15,6 @@ var annotated =
     [ "Expect", "d0/df6/interfaceExpect.html", "d0/df6/interfaceExpect" ],
     [ "Fiber", "d4/d39/interfaceFiber.html", "d4/d39/interfaceFiber" ],
     [ "File", "d3/d3a/interfaceFile.html", "d3/d3a/interfaceFile" ],
-    [ "Function", "d1/dc0/interfaceFunction.html", "d1/dc0/interfaceFunction" ],
     [ "GridFS", "d7/d34/interfaceGridFS.html", "d7/d34/interfaceGridFS" ],
     [ "Handler", "da/d85/interfaceHandler.html", "da/d85/interfaceHandler" ],
     [ "HttpCollection", "da/d34/interfaceHttpCollection.html", "da/d34/interfaceHttpCollection" ],
