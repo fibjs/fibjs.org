@@ -26,7 +26,7 @@ var searchData=
   ['totalmem',['totalmem',['../da/de1/namespaceos.html#a1542770b2fd24d002d726fbbff0c0a2e',1,'os']]],
   ['trace',['trace',['../dc/daa/namespaceconsole.html#aa60d1f56ec155161db3f3d0e48c2c2d3',1,'console']]],
   ['transparent',['transparent',['../d2/d41/interfaceImage.html#a3b9f33aeaeb6019bb6526f3b3ce624b2',1,'Image']]],
-  ['trigger',['Trigger',['../d6/df7/interfaceTrigger.html',1,'Trigger'],['../d6/df7/interfaceTrigger.html#afcf974790b6e846cd89eba5a802e7fa5',1,'Trigger::Trigger()'],['../d6/df7/interfaceTrigger.html#acb19a1b266ed37fcfa6a6634d4388b0e',1,'Trigger::trigger(String ev,...)'],['../d6/d05/namespacecoroutine.html#a4f37b90d865f0349c9e2b301cce65257',1,'coroutine::Trigger()']]],
+  ['trigger',['Trigger',['../d6/df7/interfaceTrigger.html',1,'Trigger'],['../d6/df7/interfaceTrigger.html#acb19a1b266ed37fcfa6a6634d4388b0e',1,'Trigger::trigger(String ev,...)'],['../d6/df7/interfaceTrigger.html#afcf974790b6e846cd89eba5a802e7fa5',1,'Trigger::Trigger()'],['../d6/d05/namespacecoroutine.html#a4f37b90d865f0349c9e2b301cce65257',1,'coroutine::Trigger()']]],
   ['trim',['trim',['../d0/da2/interfaceRedisList.html#a5604e7fbd71da4e72701e7b03db3b344',1,'RedisList']]],
   ['true',['true',['../d0/df6/interfaceExpect.html#aaad4e98d0e6f706cf8c331e89f4a1542',1,'Expect']]],
   ['truecolor',['TRUECOLOR',['../dd/d5d/namespacegd.html#abb19e274d6ddf2f7ff7703956498af30',1,'gd']]],

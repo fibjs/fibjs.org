@@ -14,7 +14,7 @@ var searchData=
   ['tostring',['toString',['../d9/dae/interfaceBuffer.html#ac07208cf1718cc512217581c0e7c248f',1,'Buffer::toString(String codec)'],['../d9/dae/interfaceBuffer.html#a704ee70a5949e3ce5e3ed9efffbfd054',1,'Buffer::toString()'],['../df/dc1/interfaceInt64.html#a7dc9f0d9a2d27016b0b75cafd6a85350',1,'Int64::toString()'],['../db/d38/interfaceobject.html#ac61f07a7d6c5471293371086af3186bd',1,'object::toString()']]],
   ['totalmem',['totalmem',['../da/de1/namespaceos.html#a1542770b2fd24d002d726fbbff0c0a2e',1,'os']]],
   ['trace',['trace',['../dc/daa/namespaceconsole.html#aa60d1f56ec155161db3f3d0e48c2c2d3',1,'console']]],
-  ['trigger',['Trigger',['../d6/df7/interfaceTrigger.html#afcf974790b6e846cd89eba5a802e7fa5',1,'Trigger::Trigger()'],['../d6/df7/interfaceTrigger.html#acb19a1b266ed37fcfa6a6634d4388b0e',1,'Trigger::trigger(String ev,...)'],['../d6/d05/namespacecoroutine.html#a4f37b90d865f0349c9e2b301cce65257',1,'coroutine::Trigger()']]],
+  ['trigger',['trigger',['../d6/df7/interfaceTrigger.html#acb19a1b266ed37fcfa6a6634d4388b0e',1,'Trigger::trigger(String ev,...)'],['../d6/df7/interfaceTrigger.html#afcf974790b6e846cd89eba5a802e7fa5',1,'Trigger::Trigger()'],['../d6/d05/namespacecoroutine.html#a4f37b90d865f0349c9e2b301cce65257',1,'coroutine::Trigger()']]],
   ['trim',['trim',['../d0/da2/interfaceRedisList.html#a5604e7fbd71da4e72701e7b03db3b344',1,'RedisList']]],
   ['truncate',['truncate',['../d3/d3a/interfaceFile.html#a634c01460200da98755fda701fbace1a',1,'File']]],
   ['trywait',['trywait',['../dc/d90/interfaceSemaphore.html#ab555508a557440f9d2e27bd5f8223ea7',1,'Semaphore']]],

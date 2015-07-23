@@ -1,5 +1,6 @@
 var NAVTREEINDEX4 =
 {
+"d8/d89/namespacevm.html":[4,24],
 "d8/dd3/namespacexml.html":[4,25],
 "d9/d2f/interfaceMongoID.html":[5,38],
 "d9/d2f/interfaceMongoID.html#a6b88dbc459449d2280338e5b702a68b4":[5,38,0],
@@ -248,6 +249,5 @@ var NAVTREEINDEX4 =
 "da/df6/interfaceXmlProcessingInstruction.html#ac61f07a7d6c5471293371086af3186bd":[5,82,11],
 "da/df6/interfaceXmlProcessingInstruction.html#ac6727f3f092028418cdbf0b44225f58a":[5,82,20],
 "da/df6/interfaceXmlProcessingInstruction.html#acb09ccf7866b614f7964fa67c73f3160":[5,82,18],
-"da/df6/interfaceXmlProcessingInstruction.html#ad27424cb66b1039ddff3f6c297fbe0fd":[5,82,8],
-"da/df6/interfaceXmlProcessingInstruction.html#ad493d7ec94ebfd1cb874d0b43920275d":[5,82,17]
+"da/df6/interfaceXmlProcessingInstruction.html#ad27424cb66b1039ddff3f6c297fbe0fd":[5,82,8]
 };
