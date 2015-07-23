@@ -33,6 +33,8 @@ var searchData=
   ['host',['host',['../dd/d23/interfaceUrl.html#adb97976e1e9083bfe92fd95555dfda36',1,'Url']]],
   ['hostname',['hostname',['../dd/d23/interfaceUrl.html#a826ad49e0473aecf775352d18fad7a05',1,'Url::hostname()'],['../da/de1/namespaceos.html#a10d119aa110a46714071e81522b0645c',1,'os::hostname()']]],
   ['href',['href',['../dd/d23/interfaceUrl.html#ab0e04fcefbb5ea69d357773973010e4d',1,'Url']]],
+  ['hsb',['hsb',['../dd/d5d/namespacegd.html#a49abf5b15cc916fbdef973206c9f6b6f',1,'gd']]],
+  ['hsba',['hsba',['../dd/d5d/namespacegd.html#aa617175f56169bac97ea0a4fbc37ab70',1,'gd']]],
   ['hsl',['hsl',['../dd/d5d/namespacegd.html#a019d7f7f15237b710462208f3ab9b74e',1,'gd']]],
   ['hsla',['hsla',['../dd/d5d/namespacegd.html#a14fb8efd2fd9e7c1bbb0d7169a5eecca',1,'gd']]],
   ['http',['http',['../d3/d69/namespacehttp.html',1,'']]],

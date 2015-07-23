@@ -22,6 +22,8 @@ var searchData=
   ['hmac_5fsha256',['hmac_sha256',['../de/de9/namespacehash.html#ac98cb2777ead9c4883e438d575bd625d',1,'hash']]],
   ['hmac_5fsha384',['hmac_sha384',['../de/de9/namespacehash.html#a3bf61d946548a6c637bd07f61e9ef2e0',1,'hash']]],
   ['hmac_5fsha512',['hmac_sha512',['../de/de9/namespacehash.html#a4de2d277d13b54cc16d433576a78abc7',1,'hash']]],
+  ['hsb',['hsb',['../dd/d5d/namespacegd.html#a49abf5b15cc916fbdef973206c9f6b6f',1,'gd']]],
+  ['hsba',['hsba',['../dd/d5d/namespacegd.html#aa617175f56169bac97ea0a4fbc37ab70',1,'gd']]],
   ['hsl',['hsl',['../dd/d5d/namespacegd.html#a019d7f7f15237b710462208f3ab9b74e',1,'gd']]],
   ['hsla',['hsla',['../dd/d5d/namespacegd.html#a14fb8efd2fd9e7c1bbb0d7169a5eecca',1,'gd']]],
   ['httpcookie',['HttpCookie',['../d3/dea/interfaceHttpCookie.html#aeaf22658ecce73e194a6effafdc555e9',1,'HttpCookie::HttpCookie(Object opts={})'],['../d3/dea/interfaceHttpCookie.html#af2957caf7205c539659e8a0a18eb7a02',1,'HttpCookie::HttpCookie(String name, String value, Object opts={})']]],
