@@ -2,8 +2,8 @@ var interfaceInt64 =
 [
     [ "Int64", "df/dc1/interfaceInt64.html#ae400848aafc8ed4eb1ae43100e2c2642", null ],
     [ "Int64", "df/dc1/interfaceInt64.html#a8f76d7ffad5929a575aa6d7ee28e8d9d", null ],
-    [ "Int64", "df/dc1/interfaceInt64.html#a2d6e3cbedeb640fdb97804a1916c5b83", null ],
     [ "Int64", "df/dc1/interfaceInt64.html#a6c94b35e21035a0cc5c29400109786bf", null ],
+    [ "Int64", "df/dc1/interfaceInt64.html#a2d6e3cbedeb640fdb97804a1916c5b83", null ],
     [ "equal", "df/dc1/interfaceInt64.html#a1cdcc1931d4021a31cf9a2f62d1fa881", null ],
     [ "compare", "df/dc1/interfaceInt64.html#a37fabf0a2e29ca3bcadcd130314d5ca1", null ],
     [ "shiftLeft", "df/dc1/interfaceInt64.html#acbe2152ea45f78be39771e50d00f1b9f", null ],
