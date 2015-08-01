@@ -15,10 +15,10 @@ var searchData=
   ['between',['between',['../d0/d9e/interfaceLevelDB.html#a22d1e092c14dd70fc521f562a21a1575',1,'LevelDB']]],
   ['bind',['bind',['../dd/d94/interfaceSocket.html#a26a688b72c8b742d830a1d89e2a7a984',1,'Socket::bind(Integer port, Boolean allowIPv4=true)'],['../dd/d94/interfaceSocket.html#aea619a73174482ad558c95dc8d9a1fc4',1,'Socket::bind(String addr, Integer port, Boolean allowIPv4=true)']]],
   ['bitcount',['bitcount',['../d7/d32/interfaceRedis.html#ac89a7988a54cb5b6c9962048e72a3dbd',1,'Redis']]],
-  ['blockqueue',['BlockQueue',['../d4/db6/interfaceBlockQueue.html#a9f7669dc7635bfed46b5364e8f3a932a',1,'BlockQueue::BlockQueue()'],['../d6/d05/namespacecoroutine.html#a2fd7cfd64b935905126e5719afb3965c',1,'coroutine::BlockQueue()']]],
+  ['blockqueue',['BlockQueue',['../d4/db6/interfaceBlockQueue.html#a9f7669dc7635bfed46b5364e8f3a932a',1,'BlockQueue']]],
   ['bsondecode',['bsonDecode',['../db/da8/namespaceencoding.html#a17c2e82897b90e8fab350c667f077d1a',1,'encoding']]],
   ['bsonencode',['bsonEncode',['../db/da8/namespaceencoding.html#aa347199ad7dca52b72ca3653a9ec293f',1,'encoding']]],
-  ['buffer',['Buffer',['../d9/dae/interfaceBuffer.html#af19634a31b59ee8f2f4031715bf89952',1,'Buffer::Buffer(Array datas)'],['../d9/dae/interfaceBuffer.html#ab9e33ff0da7a8dd5c812330c1ed08c17',1,'Buffer::Buffer(String str, String codec=&quot;utf8&quot;)'],['../d9/dae/interfaceBuffer.html#a09fe57b4916e313b00c53a215445e469',1,'Buffer::Buffer(Integer size=0)'],['../d4/dfd/namespaceglobal.html#a77b5ab3a88955255ac7abc7251919fbc',1,'global::Buffer()']]],
+  ['buffer',['Buffer',['../d9/dae/interfaceBuffer.html#af19634a31b59ee8f2f4031715bf89952',1,'Buffer::Buffer(Array datas)'],['../d9/dae/interfaceBuffer.html#ab9e33ff0da7a8dd5c812330c1ed08c17',1,'Buffer::Buffer(String str, String codec=&quot;utf8&quot;)'],['../d9/dae/interfaceBuffer.html#a09fe57b4916e313b00c53a215445e469',1,'Buffer::Buffer(Integer size=0)']]],
   ['bufferedstream',['BufferedStream',['../d0/d37/interfaceBufferedStream.html#a6dde4ed97e788d9a9963b3548d1a837b',1,'BufferedStream::BufferedStream()'],['../d1/d96/namespaceio.html#a555ba063f09dc4745b6beb5a91395df5',1,'io::BufferedStream()']]],
   ['buildinfo',['buildInfo',['../d6/d72/namespaceutil.html#a38b22f190ce11008314b51470042ce2b',1,'util']]]
 ];

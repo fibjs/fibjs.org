@@ -15,7 +15,7 @@ var searchData=
   ['affected',['affected',['../d9/db4/interfaceDBResult.html#a76af35f41832f6ebd616bee6af603afe',1,'DBResult']]],
   ['after',['after',['../df/d04/namespacetest.html#a227f44f6942de86a78a0cef531de0bd2',1,'test']]],
   ['aftereach',['afterEach',['../df/d04/namespacetest.html#a5e2d4ee95a3dfbcc80378c677728114d',1,'test']]],
-  ['alert',['alert',['../dc/daa/namespaceconsole.html#a9ed78376361d4d5bf88eb622bd03e7dc',1,'console::alert(String fmt,...)'],['../dc/daa/namespaceconsole.html#af984caa1459a336e9420496f0b7d9f6c',1,'console::alert(...)'],['../dc/daa/namespaceconsole.html#aa8fd69bb52fd75fb7d68ef5c78205ceb',1,'console::ALERT()']]],
+  ['alert',['ALERT',['../dc/daa/namespaceconsole.html#aa8fd69bb52fd75fb7d68ef5c78205ceb',1,'console::ALERT()'],['../dc/daa/namespaceconsole.html#a9ed78376361d4d5bf88eb622bd03e7dc',1,'console::alert(String fmt,...)'],['../dc/daa/namespaceconsole.html#af984caa1459a336e9420496f0b7d9f6c',1,'console::alert(...)']]],
   ['all',['all',['../da/d34/interfaceHttpCollection.html#abcddc2b14a80318f28dfe860f3d1f5b2',1,'HttpCollection']]],
   ['allheader',['allHeader',['../da/d38/interfaceHttpMessage.html#a30f6ddc198f9265a7b7d733f6620fc8b',1,'HttpMessage']]],
   ['alphablending',['alphaBlending',['../d2/d41/interfaceImage.html#ac974ee7d1a7b5f3da2f744b7db75accd',1,'Image']]],

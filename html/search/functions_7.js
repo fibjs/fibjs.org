@@ -27,7 +27,7 @@ var searchData=
   ['hsl',['hsl',['../dd/d5d/namespacegd.html#a019d7f7f15237b710462208f3ab9b74e',1,'gd']]],
   ['hsla',['hsla',['../dd/d5d/namespacegd.html#a14fb8efd2fd9e7c1bbb0d7169a5eecca',1,'gd']]],
   ['httpcookie',['HttpCookie',['../d3/dea/interfaceHttpCookie.html#aeaf22658ecce73e194a6effafdc555e9',1,'HttpCookie::HttpCookie(Object opts={})'],['../d3/dea/interfaceHttpCookie.html#af2957caf7205c539659e8a0a18eb7a02',1,'HttpCookie::HttpCookie(String name, String value, Object opts={})']]],
-  ['httphandler',['HttpHandler',['../d6/d18/interfaceHttpHandler.html#a67076bb6a7281898aed64f09676d56a2',1,'HttpHandler::HttpHandler()'],['../dd/dbd/namespacemq.html#a57f8f9f44fbbf200b54df0139a56bb40',1,'mq::HttpHandler()']]],
+  ['httphandler',['HttpHandler',['../d6/d18/interfaceHttpHandler.html#a67076bb6a7281898aed64f09676d56a2',1,'HttpHandler']]],
   ['httprequest',['HttpRequest',['../d4/dfa/interfaceHttpRequest.html#a42b01e8d23e15e65ad9c712922a6a812',1,'HttpRequest']]],
   ['httpresponse',['HttpResponse',['../d9/d71/interfaceHttpResponse.html#ab2e6cd363b5ea437643017766f882066',1,'HttpResponse']]],
   ['httpserver',['HttpServer',['../d4/d79/interfaceHttpServer.html#a260837a99d9746f316f74b68d477be66',1,'HttpServer::HttpServer(Integer port, Value hdlr)'],['../d4/d79/interfaceHttpServer.html#aa374e3f8ec624c2b9468291aeb3d3f34',1,'HttpServer::HttpServer(String addr, Integer port, Value hdlr)']]],

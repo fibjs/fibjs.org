@@ -65,7 +65,7 @@ var searchData=
   ['rmdir',['rmdir',['../d5/d8f/namespacefs.html#ae63300a92680e28c3b2bd55046120049',1,'fs']]],
   ['rollback',['rollback',['../d8/d2c/interfaceDbConnection.html#ab4f47bec17ba6b3799c58ea8d0698b15',1,'DbConnection']]],
   ['rotate',['rotate',['../d2/d41/interfaceImage.html#a785c849f6b76c9672502577c1c0c6e24',1,'Image']]],
-  ['routing',['Routing',['../df/dcb/interfaceRouting.html#a8a6a4aa5a8e90ef0340336dcde8a0a04',1,'Routing::Routing()'],['../dd/dbd/namespacemq.html#a21b66793dfa6450ade051adf55de307a',1,'mq::Routing()']]],
+  ['routing',['Routing',['../df/dcb/interfaceRouting.html#a8a6a4aa5a8e90ef0340336dcde8a0a04',1,'Routing']]],
   ['rpop',['rpop',['../d0/da2/interfaceRedisList.html#a6da451046bc93c96bfe0cf8104d9c729',1,'RedisList']]],
   ['rpush',['rpush',['../d0/da2/interfaceRedisList.html#aac41c5209574e61ab57f2a1153956750',1,'RedisList::rpush(Array values)'],['../d0/da2/interfaceRedisList.html#ad39dcf8b76630b252337dbc70c5d0fe9',1,'RedisList::rpush(...)']]],
   ['run',['run',['../d5/dd4/interfaceSandBox.html#a0825ce67b1b94497b53d2bd8cabfbea7',1,'SandBox::run()'],['../d7/d48/interfaceTcpServer.html#a07331365e3d5b0275e00a2f6249a1538',1,'TcpServer::run()'],['../d4/dfd/namespaceglobal.html#a917c15ea7d2eafaa6df0aea5868a86e7',1,'global::run()'],['../df/d04/namespacetest.html#a693236093f60ba63cc1279edbc0506d5',1,'test::run()']]],

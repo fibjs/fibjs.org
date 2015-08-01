@@ -46,11 +46,11 @@ var NAVTREEINDEX =
 [
 "annotated.html",
 "d2/d68/interfaceMySQL.html#afb0238955b2dd36d2b3882661e1bde8d",
-"d4/dd8/interfaceXmlCDATASection.html#a6f6d07875167fb5ad93d9e86e006d97f",
-"d7/d32/interfaceRedis.html#a04f350bace05c348daed5b1bdeb0b12e",
-"d8/d89/namespacevm.html",
-"da/df6/interfaceXmlProcessingInstruction.html#ad493d7ec94ebfd1cb874d0b43920275d",
-"de/da6/interfaceXmlNodeList.html#ab9261a7662bc8bb4a898bc15dc16f206"
+"d4/dd8/interfaceXmlCDATASection.html#a6b88dbc459449d2280338e5b702a68b4",
+"d7/d32/interfaceRedis.html#a0476f90872be6a8c94de65dfea6d6d05",
+"d8/d2c/interfaceDbConnection.html#ae6d31f438b2c274f32aade526f92da2f",
+"da/df6/interfaceXmlProcessingInstruction.html#ad27424cb66b1039ddff3f6c297fbe0fd",
+"de/da6/interfaceXmlNodeList.html#a70db02cc61af59a5c618fa306abe5cb8"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

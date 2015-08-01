@@ -6,7 +6,7 @@ var searchData=
   ['dbconnection',['DbConnection',['../d8/d2c/interfaceDbConnection.html',1,'']]],
   ['dbresult',['DBResult',['../d9/db4/interfaceDBResult.html',1,'']]],
   ['dbrow',['DBRow',['../d7/d8e/interfaceDBRow.html',1,'']]],
-  ['debug',['debug',['../dc/daa/namespaceconsole.html#adff204aa3e37763481680087157754a1',1,'console::debug(String fmt,...)'],['../dc/daa/namespaceconsole.html#aec6d50753570141dda375e85594b5b6d',1,'console::debug(...)'],['../dc/daa/namespaceconsole.html#aea2731ad3aa0e877f14a6e99d964b432',1,'console::DEBUG()']]],
+  ['debug',['DEBUG',['../dc/daa/namespaceconsole.html#aea2731ad3aa0e877f14a6e99d964b432',1,'console::DEBUG()'],['../dc/daa/namespaceconsole.html#adff204aa3e37763481680087157754a1',1,'console::debug(String fmt,...)'],['../dc/daa/namespaceconsole.html#aec6d50753570141dda375e85594b5b6d',1,'console::debug(...)']]],
   ['dec',['dec',['../df/d0b/interfaceStats.html#a0b2c6d2c38c43e2e0c2394237fd10608',1,'Stats']]],
   ['decodeuri',['decodeURI',['../db/da8/namespaceencoding.html#aeb50ecb378e2b4da3d3a5b0ba24c6907',1,'encoding']]],
   ['decr',['decr',['../d7/d32/interfaceRedis.html#a210b988ae291c178e3462e934d86af20',1,'Redis']]],

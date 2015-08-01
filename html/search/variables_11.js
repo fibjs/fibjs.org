@@ -6,5 +6,6 @@ var searchData=
   ['result',['result',['../d6/db7/interfaceMessage.html#aff37dc807536324e1b576ffec75770b0',1,'Message']]],
   ['right',['RIGHT',['../dd/d5d/namespacegd.html#ad38a3f38117a471e8075602e1427a573',1,'gd']]],
   ['ripemd160',['RIPEMD160',['../de/de9/namespacehash.html#a85ec8a916512172c1d29e659acde0c20',1,'hash']]],
+  ['routing',['Routing',['../dd/dbd/namespacemq.html#a700eeaa284e5a94485b92331137e36b9',1,'mq']]],
   ['rxbuffersize',['rxBufferSize',['../d2/d68/interfaceMySQL.html#afb0238955b2dd36d2b3882661e1bde8d',1,'MySQL']]]
 ];
