@@ -1,7 +1,7 @@
 var searchData=
 [
   ['filehandler',['fileHandler',['../d3/d69/namespacehttp.html#a134a01399b1794974c1c969c07af8e5f',1,'http']]],
-  ['fill',['fill',['../d2/d41/interfaceImage.html#a30cb383d67f626470f9fb47cdc28e0d2',1,'Image']]],
+  ['fill',['fill',['../d9/dae/interfaceBuffer.html#aadf4933f8290b09189536b9dbfa4316b',1,'Buffer::fill()'],['../d2/d41/interfaceImage.html#a30cb383d67f626470f9fb47cdc28e0d2',1,'Image::fill()']]],
   ['filledarc',['filledArc',['../d2/d41/interfaceImage.html#a2ca6f3843b8428b8cab986231df2c00f',1,'Image']]],
   ['filledellipse',['filledEllipse',['../d2/d41/interfaceImage.html#a5bb12193e47901cc571bc128df1390e1',1,'Image']]],
   ['filledpolygon',['filledPolygon',['../d2/d41/interfaceImage.html#a37c35b1c00b3e4d04f3f8d79e120af90',1,'Image']]],

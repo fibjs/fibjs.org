@@ -1,0 +1,12 @@
+digraph "HttpsServer"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="{HttpsServer\n|+ verification\l+ ca\l|+ HttpsServer()\l+ HttpsServer()\l+ HttpsServer()\l+ HttpsServer()\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node2 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal",fontname="Helvetica"];
+  Node2 [label="{HttpServer\n|+ crossDomain\l+ forceGZIP\l+ maxHeadersCount\l+ maxUploadSize\l+ httpStats\l|+ HttpServer()\l+ HttpServer()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d4/d79/interfaceHttpServer.html",tooltip="http server object "];
+  Node3 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal",fontname="Helvetica"];
+  Node3 [label="{TcpServer\n|+ socket\l+ handler\l+ stats\l|+ TcpServer()\l+ TcpServer()\l+ run()\l+ asyncRun()\l+ stop()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d7/d48/interfaceTcpServer.html",tooltip="tcp server object for creating a multi-thread tcp server "];
+  Node4 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal",fontname="Helvetica"];
+  Node4 [label="{object\n||+ dispose()\l+ toString()\l+ toJSON()\l+ valueOf()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$db/d38/interfaceobject.html",tooltip="All objects inherit from this. "];
+}
