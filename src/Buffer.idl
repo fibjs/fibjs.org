@@ -11,12 +11,30 @@ interface Buffer : object
      @param datas Initial data array
      */
     Buffer(Array datas);
+
+    /*! @brief Buffer constructor
+     @param buffer otherBuffer
+     */
+    Buffer(Buffer buffer);
     
     /*! @brief Buffer constructor
      @param str Initial string encoded in UTF-8, by default it will create an empty object.
      @param codec The encode format, can be "hex", “base64”, "utf8" or any other character sets supported by the system. 
      */
     Buffer(String str, String codec = "utf8");
+
+    /*! @brief Check if variable is a Buffer object
+     @param v Variable to check
+     @return Return true when it's a Buffer object
+     */
+    static Boolean isBuffer(Value v);
+
+    /*! @brief Returns a buffer which is the result of concatenating the buffers in the list.
+     @param buflist Array List of Buffer objects to concat
+     @param cutLength Number Total length of the buffers when concatenated
+     @return Returns a buffer which is the result of concatenating the buffers in the list.
+    */
+    static Buffer concat(Array buflist, Integer cutLength = -1);
 
     /*! @brief Buffer constructor
      @param size Initial cache size
@@ -37,18 +55,60 @@ interface Buffer : object
     /*! @brief Write an array into the buffer
      @param datas Initial data array
      */
-    write(Array datas);
+    append(Array datas);
 
     /*! @brief Write a set of binary data into the buffer
      @param data Initial binary data
      */
-    write(Buffer data);
+    append(Buffer data);
 
     /*! @brief Write a string encoded in utf-8 into buffer
      @param str String to write
      @param codec Coded format, can be "hex", “base64”, "utf8" or any other character sets supported by the system. 
      */
-    write(String str, String codec = "utf8");
+    append(String str, String codec = "utf8");
+
+    /*! @brief Writes string to the buffer at offset using the given encoding. 
+     @param str String - data to be written to buffer
+     @param offset Number, Optional, Default 0
+     @param length Number, Optional, Default -1
+     @param codec Coded format, can be "hex", “base64”, "utf8" or any other character sets supported
+     @return Returns number of octets written.
+     */
+    Integer write(String str, Integer offset = 0, Integer length = -1, String codec = "utf8");
+
+    /*! @brief Fill the buffer with the specified objects.
+     @param v Data intend to be filled, and will fill the entire buffer when the offset and end is not specified.
+     @param offset Number, Optional, Default 0
+     @param end Number, Optional, Default -1
+     */
+    fill(Integer v, Integer offset = 0, Integer end = -1);
+
+    /*! @brief Fill the buffer with the specified objects.
+     @param v Data intend to be filled, and will fill the entire buffer when the offset and end is not specified.
+     @param offset Number, Optional, Default 0
+     @param end Number, Optional, Default -1
+     */
+    fill(Buffer v, Integer offset = 0, Integer end = -1);
+
+    /*! @brief Fill the buffer with the specified objects.
+     @param v Data intend to be filled, and will fill the entire buffer when the offset and end is not specified.
+     @param offset Number, Optional, Default 0
+     @param end Number, Optional, Default -1
+     */
+    fill(String v, Integer offset = 0, Integer end = -1);
+
+    /*! @brief Whether this and otherBuffer have the same bytes.
+     @param buf otherBuffer
+     @return Returns a boolean of whether this and otherBuffer have the same bytes.
+     */
+    Boolean equals(Buffer buf);
+
+    /*! @brief Compare the contents of the buffer
+     @param buf otherBuffer
+     @return Returns a number indicating whether this comes before or after or is the same as the otherBuffer in sort order.
+     */
+    Integer compare(Buffer buf);
 
     /*! @brief Copies data from a region of this buffer to a region in the target buffer even if the target memory region overlaps with the source. If undefined the targetStart and sourceStart parameters default to 0 while sourceEnd defaults to buffer.length.
      @param targetBuffer Buffer object - Buffer to copy into
@@ -302,9 +362,11 @@ interface Buffer : object
 
     /*! @brief return the encoded string of the binary data 
      @param codec The encode format, can be "hex", “base64”, "utf8" or any other character sets supported by the system.
+     @param offset The start position of string, Default: 0
+     @param end The end position of string, Default: -1
      @return The string representing the value of the buffer.
     */
-    String toString(String codec);
+    String toString(String codec, Integer offset = 0, Integer end = -1);
 
    /*! @brief return the utf8-encoded string of the binary data
      @return The string representing the value of the buffer.
