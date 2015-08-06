@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['map',['map',['../de/dd8/interfaceList.html#aff5474e5559d9f0bd1f2acc7f3039ab2',1,'List::map()'],['../dc/d27/interfaceMongoCursor.html#ae250dbc24199762b2948487422049519',1,'MongoCursor::map()'],['../d2/dc1/interfaceMap.html#a0f5ad0fd4563497b4214038cbca8b582',1,'Map::Map()'],['../d6/d72/namespaceutil.html#a24e6b2ce72bf4f22904c4e0761f2b7b8',1,'util::map()'],['../d7/d82/namespacecollection.html#a45b6053d1d1063f010b12cb7f5a77c99',1,'collection::Map()']]],
+  ['map',['map',['../de/dd8/interfaceList.html#aff5474e5559d9f0bd1f2acc7f3039ab2',1,'List::map()'],['../dc/d27/interfaceMongoCursor.html#ae250dbc24199762b2948487422049519',1,'MongoCursor::map()'],['../d2/dc1/interfaceMap.html#a0f5ad0fd4563497b4214038cbca8b582',1,'Map::Map()'],['../d6/d72/namespaceutil.html#a24e6b2ce72bf4f22904c4e0761f2b7b8',1,'util::map()']]],
   ['match',['match',['../d3/dea/interfaceHttpCookie.html#a40e432c30689dbd71e3cf8938de5ff1b',1,'HttpCookie']]],
   ['md2',['md2',['../de/de9/namespacehash.html#a9910a7f0744d47299013d60592b53f22',1,'hash']]],
   ['md4',['md4',['../de/de9/namespacehash.html#ad5d8f14c8b31ae52b504d0da1450e26b',1,'hash']]],
@@ -8,7 +8,7 @@ var searchData=
   ['members',['members',['../d3/dee/interfaceRedisSet.html#a5aa2f7795ced6b0d35184f1f29ea67f9',1,'RedisSet']]],
   ['memorystream',['MemoryStream',['../d2/d93/interfaceMemoryStream.html#a33b1b4e6e4b324747d95006c55da7e24',1,'MemoryStream::MemoryStream()'],['../d1/d96/namespaceio.html#a691927ba01140bce3ffa0d700f0f5914',1,'io::MemoryStream()']]],
   ['memoryusage',['memoryUsage',['../da/de1/namespaceos.html#a655f15d1790c184db42267a0bdef22cd',1,'os::memoryUsage()'],['../d8/d25/namespaceprocess.html#a30bf3a01655c4e12298c063786156d2b',1,'process::memoryUsage()']]],
-  ['message',['Message',['../d6/db7/interfaceMessage.html#a4fc4f717b634e66070366cb7722d7761',1,'Message::Message()'],['../dd/dbd/namespacemq.html#a7d6c9ff01166a11f7c115e488735def6',1,'mq::Message()']]],
+  ['message',['Message',['../d6/db7/interfaceMessage.html#a4fc4f717b634e66070366cb7722d7761',1,'Message']]],
   ['mget',['mget',['../d0/d9e/interfaceLevelDB.html#a971e7ac07e400589974f41ae0475f0a9',1,'LevelDB::mget()'],['../d7/d32/interfaceRedis.html#ad511c75f0b8b704b8f72322d854f9cc6',1,'Redis::mget(Array keys)'],['../d7/d32/interfaceRedis.html#a0acadaf191bafc9dff5c8f2dad482ba9',1,'Redis::mget(...)'],['../d9/d58/interfaceRedisHash.html#a91cccc59189209f7e27be07e41b9792a',1,'RedisHash::mget(Array fields)'],['../d9/d58/interfaceRedisHash.html#ae05e8adf0c2895411bc1368b4f657f19',1,'RedisHash::mget(...)']]],
   ['mkdir',['mkdir',['../d5/d8f/namespacefs.html#ad11bbef581ff87c5fc33e8b3d4b98dfb',1,'fs']]],
   ['most',['most',['../d0/df6/interfaceExpect.html#a02470a5b9fb9623b14b5d9c24bfb3c83',1,'Expect']]],

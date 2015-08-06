@@ -1,11 +1,11 @@
 var searchData=
 [
   ['wait',['wait',['../d5/d45/interfaceCondition.html#a77389487addf6b616767bd21d7386b0d',1,'Condition::wait()'],['../d7/ddf/interfaceEvent.html#a5088e961dddd82b86142b54ae9dd6b14',1,'Event::wait()'],['../dc/d90/interfaceSemaphore.html#ab144395cba916969214bbe60f7521fed',1,'Semaphore::wait()']]],
-  ['warn',['warn',['../da/d8a/interfaceTextColor.html#a1b2fab327d7b9814c9dd37b5f3861643',1,'TextColor::warn()'],['../dc/daa/namespaceconsole.html#ae02c4729b8e8c15a3b166ec5d4c08365',1,'console::WARN()'],['../dc/daa/namespaceconsole.html#a85513e51e93e8d827ebedba45359161c',1,'console::warn(String fmt,...)'],['../dc/daa/namespaceconsole.html#a4731e95e6360c7bdf0513236bc0ea032',1,'console::warn(...)']]],
+  ['warn',['warn',['../da/d8a/interfaceTextColor.html#a1b2fab327d7b9814c9dd37b5f3861643',1,'TextColor::warn()'],['../dc/daa/namespaceconsole.html#a85513e51e93e8d827ebedba45359161c',1,'console::warn(String fmt,...)'],['../dc/daa/namespaceconsole.html#a4731e95e6360c7bdf0513236bc0ea032',1,'console::warn(...)'],['../dc/daa/namespaceconsole.html#ae02c4729b8e8c15a3b166ec5d4c08365',1,'console::WARN()']]],
   ['width',['width',['../d2/d41/interfaceImage.html#a4070489397d4fb67ccc71db0e1efbfeb',1,'Image']]],
   ['with',['with',['../d0/df6/interfaceExpect.html#a8f99dbedc53310d436ff867240460b6d',1,'Expect']]],
   ['without',['without',['../d6/d72/namespaceutil.html#a0c5e0bae5b173e9264e980cc2e956c64',1,'util']]],
-  ['write',['write',['../d9/dae/interfaceBuffer.html#a9a321c93f4d41d75953063f9c443a199',1,'Buffer::write(Array datas)'],['../d9/dae/interfaceBuffer.html#ad5e1afa2239bc47359c0e3c6a61c5f20',1,'Buffer::write(Buffer data)'],['../d9/dae/interfaceBuffer.html#a9d8c75a500a8613157e889043a35faa5',1,'Buffer::write(String str, String codec=&quot;utf8&quot;)'],['../d6/db7/interfaceMessage.html#a42fdd87346cb529e34e1e12e41afe2bc',1,'Message::write()'],['../d4/dc7/interfaceStream.html#a9fe96dcae55a53aef7ceb56544bc83d9',1,'Stream::write()']]],
+  ['write',['write',['../d9/dae/interfaceBuffer.html#a366815494060d39ea7ba8d8e581dd233',1,'Buffer::write()'],['../d6/db7/interfaceMessage.html#a42fdd87346cb529e34e1e12e41afe2bc',1,'Message::write()'],['../d4/dc7/interfaceStream.html#a9fe96dcae55a53aef7ceb56544bc83d9',1,'Stream::write()']]],
   ['writedoublebe',['writeDoubleBE',['../d9/dae/interfaceBuffer.html#aa0699049d7c5631acd3f5f0213a7b9d2',1,'Buffer']]],
   ['writedoublele',['writeDoubleLE',['../d9/dae/interfaceBuffer.html#adf45fe19c68fd9a58f8138a2ef509e77',1,'Buffer']]],
   ['writefile',['writeFile',['../d5/d8f/namespacefs.html#a2b9fe79326ffd7bca6e432f1a667f306',1,'fs']]],

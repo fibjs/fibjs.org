@@ -7,6 +7,7 @@ var interfacePKey =
     [ "clone", "d5/dac/interfacePKey.html#af43ff2bc4e8e09020e3ae749f80ba845", null ],
     [ "importKey", "d5/dac/interfacePKey.html#a15422214b8e3334ddfd485dff78e2921", null ],
     [ "importKey", "d5/dac/interfacePKey.html#a5509986248d46a8f2423e3b0cc45f264", null ],
+    [ "importFile", "d5/dac/interfacePKey.html#a0925c1bccb7d62d1897b8f929e3aea02", null ],
     [ "exportPem", "d5/dac/interfacePKey.html#a5444bdb6ccb0ba131996414082c6bbcf", null ],
     [ "exportDer", "d5/dac/interfacePKey.html#a27bde6463e786c7a89e880df773550a4", null ],
     [ "encrypt", "d5/dac/interfacePKey.html#a9f2de9d142c9acb31dde03d5f7ef094a", null ],

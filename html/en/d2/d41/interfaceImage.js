@@ -62,5 +62,6 @@ var interfaceImage =
     [ "type", "d2/d41/interfaceImage.html#a5eab9a2875c655bcc7be9559b4502227", null ],
     [ "colorsTotal", "d2/d41/interfaceImage.html#a9b5c37f5ae92d16e529147273a561203", null ],
     [ "transparent", "d2/d41/interfaceImage.html#a3b9f33aeaeb6019bb6526f3b3ce624b2", null ],
+    [ "progressive", "d2/d41/interfaceImage.html#a60f94a909d3fcb6b7e032504aa0bc381", null ],
     [ "alphaBlending", "d2/d41/interfaceImage.html#ac974ee7d1a7b5f3da2f744b7db75accd", null ]
 ];
