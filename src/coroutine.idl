@@ -6,22 +6,22 @@
 module coroutine
 {
     /*! @brief Lock Object, reference Lock */
-    static Lock new Lock();
+    static Lock;
 
     /*! @brief Semaphore Object, reference Semaphore */
-    static Semaphore new Semaphore();
+    static Semaphore;
 
     /*! @brief Condition Object, reference Condition */
-    static Condition new Condition();
+    static Condition;
 
     /*! @brief Event Object, reference Event */
-    static Event new Event();
+    static Event;
 
     /*! @brief Event Trigger Object, which can be used to establish the observer pattern. The object support event triggers were inherited from this, reference Trigger */
-    static Trigger new Trigger();
+    static Trigger;
 
     /*! @brief BlockQueue Object, reference BlockQueue */
-    static BlockQueue new BlockQueue();
+    static BlockQueue;
 
     /*! @brief Start a fibers and return the fiber Object
      @param func Set a function to be executed by the fibers.
@@ -58,4 +58,10 @@ module coroutine
      @param ms Specify the suspend time in milliseconds, the default value is 0, which back to resume immediately.
      */
     static sleep(Integer ms = 0);
+
+    /*! @brief Returns the array of currently running fiber */
+    static readonly Array fibers;
+
+    /*! @brief Query or set the number of idle Fiber, suggest moderate increasing this value when server meet a bug shake. The default value is 256 */
+    static Integer spareFibers;
 };

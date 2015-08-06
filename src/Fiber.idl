@@ -52,6 +52,9 @@ interface Fiber : object
     /*! @brief waiting until the end of the fiber */
     join();
 
-    /*! @brief querying the fiber's caller */
+    /*! @brief Query the fiber's caller */
     readonly Fiber caller;
+
+    /*! @brief Query the call stack of the fiber, to get the non-current one can specified the parameters: - trace_fiber.*/
+	readonly String traceInfo;
 };

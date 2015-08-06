@@ -4,7 +4,6 @@ var interfaceBuffer =
     [ "Buffer", "d9/dae/interfaceBuffer.html#ac16e65f2c0d120d046cb02cc1841c17d", null ],
     [ "Buffer", "d9/dae/interfaceBuffer.html#ab9e33ff0da7a8dd5c812330c1ed08c17", null ],
     [ "Buffer", "d9/dae/interfaceBuffer.html#a09fe57b4916e313b00c53a215445e469", null ],
-    [ "isBuffer", "d9/dae/interfaceBuffer.html#a1f43dfeb72a863a1d2f398bad2a15160", null ],
     [ "concat", "d9/dae/interfaceBuffer.html#a6fddf91a1811f1057a512ff2e08b0361", null ],
     [ "resize", "d9/dae/interfaceBuffer.html#a551023131e4c63b198902143e5e5b274", null ],
     [ "append", "d9/dae/interfaceBuffer.html#a64a2c7fc815862b7c1d7858873bb33b0", null ],

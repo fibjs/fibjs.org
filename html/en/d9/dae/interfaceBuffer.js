@@ -1,6 +1,7 @@
 var interfaceBuffer =
 [
     [ "Buffer", "d9/dae/interfaceBuffer.html#af19634a31b59ee8f2f4031715bf89952", null ],
+    [ "Buffer", "d9/dae/interfaceBuffer.html#ac16e65f2c0d120d046cb02cc1841c17d", null ],
     [ "Buffer", "d9/dae/interfaceBuffer.html#ab9e33ff0da7a8dd5c812330c1ed08c17", null ],
     [ "Buffer", "d9/dae/interfaceBuffer.html#a09fe57b4916e313b00c53a215445e469", null ],
     [ "resize", "d9/dae/interfaceBuffer.html#a551023131e4c63b198902143e5e5b274", null ],

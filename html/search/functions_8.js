@@ -20,7 +20,7 @@ var searchData=
   ['ipv6',['ipv6',['../dc/d27/namespacenet.html#a8274c0c7f3a4ee82b2e1686b7d5afb7f',1,'net']]],
   ['isarray',['isArray',['../d2/dab/namespaceassert.html#a4942ac3b5ab6bc9c09d4cc807101fb13',1,'assert::isArray()'],['../d6/d72/namespaceutil.html#ad3750ee06a6344f1b775b3c7cdcfcbbc',1,'util::isArray()']]],
   ['isboolean',['isBoolean',['../d2/dab/namespaceassert.html#a52d954e5c3dd124d0839f5a6e2b181fd',1,'assert::isBoolean()'],['../d6/d72/namespaceutil.html#a2e8ba3944a9a4ba546ab32a82ac6ee75',1,'util::isBoolean()']]],
-  ['isbuffer',['isBuffer',['../d9/dae/interfaceBuffer.html#a1f43dfeb72a863a1d2f398bad2a15160',1,'Buffer::isBuffer()'],['../d6/d72/namespaceutil.html#a9b04005af45be1e1f72010fc527ee4ba',1,'util::isBuffer()']]],
+  ['isbuffer',['isBuffer',['../d6/d72/namespaceutil.html#a9b04005af45be1e1f72010fc527ee4ba',1,'util']]],
   ['isdate',['isDate',['../d6/d72/namespaceutil.html#a021ed90060f67225f96dc44d2a5fbcb9',1,'util']]],
   ['isdefined',['isDefined',['../d2/dab/namespaceassert.html#a558fc550572cebc80cf2ca4545db5ab3',1,'assert']]],
   ['isdirectory',['isDirectory',['../dc/da9/interfaceStat.html#a5970c0f2e6fc12189269dbd129109947',1,'Stat']]],
