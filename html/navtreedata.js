@@ -53,5 +53,5 @@ var NAVTREEINDEX =
 "de/da6/interfaceLock.html#a6b88dbc459449d2280338e5b702a68b4"
 ];
 
-var SYNCONMSG = 'click to disable panel synchronisation';
-var SYNCOFFMSG = 'click to enable panel synchronisation';
+var SYNCONMSG = '点击 关闭 面板同步';
+var SYNCOFFMSG = '点击 开启 面板同步';
