@@ -1,0 +1,37 @@
+
+/*! @brief HeapGraphNode represents a node in a heap graph. */
+interface HeapGraphNode : object
+{
+    /*! @brief node type, the value can be:
+     -	Hidden,         Hidden node, may be filtered when shown to user.
+     -	Array,          An array of elements.
+     -	String,         A string.
+     -	Object,         A JS object (except for arrays and strings).
+     -	Code,           Compiled code.
+     -	Closure,        Function closure.
+     -	RegExp,         RegExp.
+     -	HeapNumber,     Number stored in the heap.
+     -	Native,         Native object (not from V8 heap).
+     -	Synthetic,      Synthetic object, usualy used for grouping snapshot items together.
+     -	ConsString,     Concatenated string. A pair of pointers to strings.
+     -	SlicedString,   Sliced string. A fragment of another string.
+     -	Symbol,         A Symbol (ES6).
+     -	SimdValue,      A SIMD value stored in the heap (Proposed ES7).
+    */
+	readonly String type;
+
+    /*! @brief node name */
+    readonly String name;
+
+	/*! @brief node ID */
+	readonly Integer id;
+
+	/*! @brief node's own size, in bytes. */
+	readonly Integer shallowSize;
+
+    /*! @brief child nodes count of the node. */
+	readonly Integer childsCount;
+
+    /*! @brief child nodes list */
+	readonly List childs;
+};

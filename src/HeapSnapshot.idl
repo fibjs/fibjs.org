@@ -1,0 +1,33 @@
+
+/*! @brief HeapSnapshots record the state of the JS heap at some moment. */
+interface HeapSnapshot : object
+{
+    /*! @brief Compare with the specified snapshot.
+     @param before The snapshot need to be compared.
+     @return Return the difference between two snapshot.
+     */
+	Object diff(HeapSnapshot before);
+
+	/*! @brief Get the HeapGraphNode with specified ID.
+	 @param id Number, ID
+     @return Returns a HeapGraphNode by its id.
+     */
+	HeapGraphNode getNodeById(Integer id);
+
+	/*! @brief Get the serialized representation of the snapshot.
+     @return Return the serialized string of the snapshot.
+     */
+	String serialize();
+
+    /*! @brief Date information. */
+	readonly Date time;
+
+    /*! @brief The root node of the HeapSnapshots. */
+	readonly HeapGraphNode root;
+
+    /*! @brief The length of the HeapSnapshots's node list */
+	readonly Integer nodesCount;
+
+    /*! @brief HeapSnapshots's node list */
+	readonly List nodes;
+};

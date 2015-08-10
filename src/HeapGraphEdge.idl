@@ -1,0 +1,28 @@
+
+/*! @brief HeapSnapshotEdge represents a directed connection between heap graph nodes: from retainers to retained nodes.*/ 
+interface HeapGraphEdge : object
+{
+    /*! @brief connection type, the value can be:
+     -    ContextVariable,  A variable from a function context.
+     -    Element,          An element of an array.
+     -    Property,         A named object property.
+     -    Internal,         A link that can't be accessed from JS.
+     -    Hidden,           A link that is needed for proper sizes calculation.
+     -    Shortcut,         A link that must not be followed during sizes calculation.
+     -    Weak,             A weak reference (ignored by the GC).
+     */
+     readonly String type;
+
+     /*! @brief node name */
+     readonly String name;
+
+     /*! @brief Returns origin node.
+     @return Returns origin node.
+     */
+     HeapGraphNode getFromNode();
+
+     /*! @brief Returns destination node.
+     @return Returns destination node.
+     */
+     HeapGraphNode getToNode();
+};
