@@ -1,6 +1,5 @@
 var interfaceHeapSnapshot =
 [
-    [ "delete", "de/d09/interfaceHeapSnapshot.html#af214f9653b91cd414c1594d5675c2c8d", null ],
     [ "diff", "de/d09/interfaceHeapSnapshot.html#af6eba58a29be9c3dafe30fe6ef281913", null ],
     [ "getNodeById", "de/d09/interfaceHeapSnapshot.html#af00405058ecc8b96d4f09b556d2c4861", null ],
     [ "serialize", "de/d09/interfaceHeapSnapshot.html#acda83586ab6b22dc5e09a74e643e2750", null ],

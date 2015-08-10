@@ -53,5 +53,5 @@ var NAVTREEINDEX =
 "dd/dc1/interfaceXmlComment.html#ad27424cb66b1039ddff3f6c297fbe0fd"
 ];
 
-var SYNCONMSG = '点击 关闭 面板同步';
-var SYNCOFFMSG = '点击 开启 面板同步';
+var SYNCONMSG = 'click to disable panel synchronisation';
+var SYNCOFFMSG = 'click to enable panel synchronisation';
