@@ -2,7 +2,7 @@ var searchData=
 [
   ['iconvdecode',['iconvDecode',['../db/da8/namespaceencoding.html#aa1d988f384e1866928bdd8bbc5b6f127',1,'encoding']]],
   ['iconvencode',['iconvEncode',['../db/da8/namespaceencoding.html#a381c1c5e4d9e24edb4b56f904dfe7372',1,'encoding']]],
-  ['id',['id',['../d7/ddb/interfaceXmlElement.html#a2289ea1bafc4e091f2a7f0a0e12a9401',1,'XmlElement']]],
+  ['id',['id',['../df/db2/interfaceHeapGraphNode.html#ac8676ab128e82182641b95411f087ffc',1,'HeapGraphNode::id()'],['../d7/ddb/interfaceXmlElement.html#a2289ea1bafc4e091f2a7f0a0e12a9401',1,'XmlElement::id()']]],
   ['ignorecase',['ignoreCase',['../d1/d43/interfaceRegex.html#ac2f8a95e4a1cac13a3312d0ec7eb0fd9',1,'Regex']]],
   ['image',['Image',['../d2/d41/interfaceImage.html',1,'']]],
   ['importfile',['importFile',['../d5/dac/interfacePKey.html#a0925c1bccb7d62d1897b8f929e3aea02',1,'PKey']]],
@@ -11,7 +11,7 @@ var searchData=
   ['incr',['incr',['../d7/d32/interfaceRedis.html#a0e23cd9b50839ba65971e8b6f75be883',1,'Redis::incr()'],['../d9/d58/interfaceRedisHash.html#a02488736b85a0df04c107d44d4ae6feb',1,'RedisHash::incr()'],['../db/d03/interfaceRedisSortedSet.html#aa25dbff8ea3d289447a2a5d1f75db6b4',1,'RedisSortedSet::incr()']]],
   ['inflate',['inflate',['../d9/d3e/namespacezlib.html#aafe7acf37cd4edfe4355ddca34cdd123',1,'zlib']]],
   ['inflateto',['inflateTo',['../d9/d3e/namespacezlib.html#a1a585f4bb4ce9146953c29af284ba62f',1,'zlib::inflateTo(Buffer data, Stream stm) async'],['../d9/d3e/namespacezlib.html#a2f4fbd12a75605838e9aafdcc2813c10',1,'zlib::inflateTo(Stream src, Stream stm) async']]],
-  ['info',['info',['../dc/daa/namespaceconsole.html#a195000bab966ff5ccbf1ea69cf1cc12e',1,'console::info(String fmt,...)'],['../dc/daa/namespaceconsole.html#a88b9f04ef243106f58cbd0866072b7b5',1,'console::info(...)'],['../dc/daa/namespaceconsole.html#add424d51dfc7bd19ac906d010b9c7694',1,'console::INFO()']]],
+  ['info',['INFO',['../dc/daa/namespaceconsole.html#add424d51dfc7bd19ac906d010b9c7694',1,'console::INFO()'],['../dc/daa/namespaceconsole.html#a195000bab966ff5ccbf1ea69cf1cc12e',1,'console::info(String fmt,...)'],['../dc/daa/namespaceconsole.html#a88b9f04ef243106f58cbd0866072b7b5',1,'console::info(...)']]],
   ['innerhtml',['innerHTML',['../d7/ddb/interfaceXmlElement.html#ae253c6d9ada5b3b9a38b6b840a25394a',1,'XmlElement']]],
   ['inputencoding',['inputEncoding',['../d6/d47/interfaceXmlDocument.html#a7b57a17ac49e4bac77f6d13e0e88e2f4',1,'XmlDocument']]],
   ['insert',['insert',['../d6/d6b/interfaceMongoCollection.html#ad3910f53d7e3c1de13e7196cb5b68164',1,'MongoCollection::insert(Array documents)'],['../d6/d6b/interfaceMongoCollection.html#a3b3d039d9bf2e5260d11faa34166420b',1,'MongoCollection::insert(Object document)']]],

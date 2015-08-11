@@ -8,9 +8,13 @@ var searchData=
   ['textcontent',['textContent',['../d7/ddb/interfaceXmlElement.html#ad82b3b9cba5a26ac164a7b7e0eb087e7',1,'XmlElement']]],
   ['that',['that',['../d0/df6/interfaceExpect.html#a35480010d927aa457b70359fa41d4b33',1,'Expect']]],
   ['tiff',['TIFF',['../dd/d5d/namespacegd.html#a918b4315171c8819c3b6583957594070',1,'gd']]],
+  ['time',['time',['../de/d09/interfaceHeapSnapshot.html#a56efcbdd2f3826e591e30f175dadd840',1,'HeapSnapshot']]],
   ['timeout',['timeout',['../d7/df5/interfaceSQLite.html#ac1125a44ad8f97d1cf7e9a3acd08db1e',1,'SQLite']]],
   ['timezone',['timezone',['../da/de1/namespaceos.html#a9628c5429b13f4979df6569d374b5815',1,'os']]],
   ['title',['title',['../d6/d47/interfaceXmlDocument.html#a0c4ac9f00a43be8a933fcd4d45612c8d',1,'XmlDocument']]],
+  ['tls1',['tls1',['../df/dd2/namespacessl.html#ad9ce55d649306fbc05ec48e1ad58c1ca',1,'ssl']]],
+  ['tls1_5f1',['tls1_1',['../df/dd2/namespacessl.html#a8a3680d6d6598faef169730aa4b2767a',1,'ssl']]],
+  ['tls1_5f2',['tls1_2',['../df/dd2/namespacessl.html#a57fd4476a315e68394c7bce9c444b8c7',1,'ssl']]],
   ['to',['to',['../d0/df6/interfaceExpect.html#a4e211fec62704ffb2e78c235732157e6',1,'Expect']]],
   ['traceinfo',['traceInfo',['../d4/d39/interfaceFiber.html#aa5b3be762621e1a2868ed2d191696528',1,'Fiber']]],
   ['transparent',['transparent',['../d2/d41/interfaceImage.html#a3b9f33aeaeb6019bb6526f3b3ce624b2',1,'Image']]],
@@ -18,5 +22,5 @@ var searchData=
   ['true',['true',['../d0/df6/interfaceExpect.html#aaad4e98d0e6f706cf8c331e89f4a1542',1,'Expect']]],
   ['truecolor',['TRUECOLOR',['../dd/d5d/namespacegd.html#abb19e274d6ddf2f7ff7703956498af30',1,'gd']]],
   ['txbuffersize',['txBufferSize',['../d2/d68/interfaceMySQL.html#aaf5d8a266ab80bdb8d793898a87b6fd5',1,'MySQL']]],
-  ['type',['type',['../d2/d41/interfaceImage.html#a5eab9a2875c655bcc7be9559b4502227',1,'Image::type()'],['../dd/d94/interfaceSocket.html#a84ed037fcf775c6c38877da2626bdbbc',1,'Socket::type()'],['../dc/d22/interfaceX509Cert.html#ab415ea9cd56e2cf5f87d8d00a365714e',1,'X509Cert::type()'],['../da/de1/namespaceos.html#a14a15c5f48a949b3ed548d59ffcc05e2',1,'os::type()']]]
+  ['type',['type',['../d2/d65/interfaceHeapGraphEdge.html#a84466c46fea07b127957b2a9a9fd9c3e',1,'HeapGraphEdge::type()'],['../df/db2/interfaceHeapGraphNode.html#a908abcfffe631ea984c5699e01c1d404',1,'HeapGraphNode::type()'],['../d2/d41/interfaceImage.html#a5eab9a2875c655bcc7be9559b4502227',1,'Image::type()'],['../dd/d94/interfaceSocket.html#a84ed037fcf775c6c38877da2626bdbbc',1,'Socket::type()'],['../dc/d22/interfaceX509Cert.html#ab415ea9cd56e2cf5f87d8d00a365714e',1,'X509Cert::type()'],['../da/de1/namespaceos.html#a14a15c5f48a949b3ed548d59ffcc05e2',1,'os::type()']]]
 ];

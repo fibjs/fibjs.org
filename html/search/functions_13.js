@@ -1,6 +1,7 @@
 var searchData=
 [
   ['take',['take',['../d4/db6/interfaceBlockQueue.html#a963268100e0f5a993acd4ed529c71c22',1,'BlockQueue']]],
+  ['takesnapshot',['takeSnapshot',['../dc/dfc/namespaceprofiler.html#a8f0ddc26ac08a9e5bbf7680828216d98',1,'profiler']]],
   ['tcpserver',['TcpServer',['../d7/d48/interfaceTcpServer.html#a24820cac0c8a8e4b38fd696156946c33',1,'TcpServer::TcpServer(Integer port, Value listener)'],['../d7/d48/interfaceTcpServer.html#afc30a4a16900efa8d275e9f65286f967',1,'TcpServer::TcpServer(String addr, Integer port, Value listener)']]],
   ['tell',['tell',['../d6/d9c/interfaceSeekableStream.html#a6eca3ff0973d41afc4ead654733e86ed',1,'SeekableStream']]],
   ['test',['test',['../d1/d43/interfaceRegex.html#abe641d3bb0cd67dbd070de0b0e27d0a6',1,'Regex']]],
