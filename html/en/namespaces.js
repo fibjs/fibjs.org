@@ -18,6 +18,7 @@ var namespaces =
     [ "os", "da/de1/namespaceos.html", null ],
     [ "path", "d0/d43/namespacepath.html", null ],
     [ "process", "d8/d25/namespaceprocess.html", null ],
+    [ "profiler", "dc/dfc/namespaceprofiler.html", null ],
     [ "re", "d5/d83/namespacere.html", null ],
     [ "rpc", "d0/d14/namespacerpc.html", null ],
     [ "ssl", "df/dd2/namespacessl.html", null ],

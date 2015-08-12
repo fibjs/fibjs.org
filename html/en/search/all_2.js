@@ -12,6 +12,8 @@ var searchData=
   ['charset',['charset',['../d0/d37/interfaceBufferedStream.html#a3d617075c9b6ea5124a0e132ab31b3c5',1,'BufferedStream']]],
   ['chdir',['chdir',['../d8/d25/namespaceprocess.html#a8561579fcdf7f34e795e6937829a39ff',1,'process']]],
   ['childnodes',['childNodes',['../dc/d8f/interfaceXmlNode.html#a059aaa73cdf03ffaedca637383a736a1',1,'XmlNode']]],
+  ['childs',['childs',['../df/db2/interfaceHeapGraphNode.html#a9a847dcbbcd9e81583d8712a8f5df617',1,'HeapGraphNode']]],
+  ['childscount',['childsCount',['../df/db2/interfaceHeapGraphNode.html#ac547de5bc70cc5aea429f962d57e9986',1,'HeapGraphNode']]],
   ['chmod',['chmod',['../d3/d3a/interfaceFile.html#aa13cc9318e8f5ea58f0befb9ac709d72',1,'File::chmod()'],['../d5/d8f/namespacefs.html#a5b69648f9d4875d97bd01b007c095f94',1,'fs::chmod()']]],
   ['chord',['CHORD',['../dd/d5d/namespacegd.html#a022fb2b713f2bd7764e674572f3f6f76',1,'gd']]],
   ['chunks',['chunks',['../d7/d34/interfaceGridFS.html#a51c4888d0359afc9be25be0cffc2a6a1',1,'GridFS']]],

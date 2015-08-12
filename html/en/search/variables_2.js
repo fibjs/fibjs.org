@@ -11,6 +11,8 @@ var searchData=
   ['chain',['Chain',['../dd/dbd/namespacemq.html#aeebeb7b614fb3135cc9db79afe09c6fb',1,'mq']]],
   ['charset',['charset',['../d0/d37/interfaceBufferedStream.html#a3d617075c9b6ea5124a0e132ab31b3c5',1,'BufferedStream']]],
   ['childnodes',['childNodes',['../dc/d8f/interfaceXmlNode.html#a059aaa73cdf03ffaedca637383a736a1',1,'XmlNode']]],
+  ['childs',['childs',['../df/db2/interfaceHeapGraphNode.html#a9a847dcbbcd9e81583d8712a8f5df617',1,'HeapGraphNode']]],
+  ['childscount',['childsCount',['../df/db2/interfaceHeapGraphNode.html#ac547de5bc70cc5aea429f962d57e9986',1,'HeapGraphNode']]],
   ['chord',['CHORD',['../dd/d5d/namespacegd.html#a022fb2b713f2bd7764e674572f3f6f76',1,'gd']]],
   ['chunks',['chunks',['../d7/d34/interfaceGridFS.html#a51c4888d0359afc9be25be0cffc2a6a1',1,'GridFS']]],
   ['cipher',['Cipher',['../de/d36/namespacecrypto.html#a508b284453644f6759548048402fda04',1,'crypto']]],

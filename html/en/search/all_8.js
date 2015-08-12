@@ -2,7 +2,7 @@ var searchData=
 [
   ['iconvdecode',['iconvDecode',['../db/da8/namespaceencoding.html#aa1d988f384e1866928bdd8bbc5b6f127',1,'encoding']]],
   ['iconvencode',['iconvEncode',['../db/da8/namespaceencoding.html#a381c1c5e4d9e24edb4b56f904dfe7372',1,'encoding']]],
-  ['id',['id',['../d7/ddb/interfaceXmlElement.html#a2289ea1bafc4e091f2a7f0a0e12a9401',1,'XmlElement']]],
+  ['id',['id',['../df/db2/interfaceHeapGraphNode.html#ac8676ab128e82182641b95411f087ffc',1,'HeapGraphNode::id()'],['../d7/ddb/interfaceXmlElement.html#a2289ea1bafc4e091f2a7f0a0e12a9401',1,'XmlElement::id()']]],
   ['ignorecase',['ignoreCase',['../d1/d43/interfaceRegex.html#ac2f8a95e4a1cac13a3312d0ec7eb0fd9',1,'Regex']]],
   ['image',['Image',['../d2/d41/interfaceImage.html',1,'']]],
   ['importfile',['importFile',['../d5/dac/interfacePKey.html#a0925c1bccb7d62d1897b8f929e3aea02',1,'PKey']]],

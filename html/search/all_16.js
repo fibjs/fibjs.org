@@ -1,7 +1,7 @@
 var searchData=
 [
   ['wait',['wait',['../d5/d45/interfaceCondition.html#a77389487addf6b616767bd21d7386b0d',1,'Condition::wait()'],['../d7/ddf/interfaceEvent.html#a5088e961dddd82b86142b54ae9dd6b14',1,'Event::wait()'],['../dc/d90/interfaceSemaphore.html#ab144395cba916969214bbe60f7521fed',1,'Semaphore::wait()']]],
-  ['warn',['warn',['../da/d8a/interfaceTextColor.html#a1b2fab327d7b9814c9dd37b5f3861643',1,'TextColor::warn()'],['../dc/daa/namespaceconsole.html#a85513e51e93e8d827ebedba45359161c',1,'console::warn(String fmt,...)'],['../dc/daa/namespaceconsole.html#a4731e95e6360c7bdf0513236bc0ea032',1,'console::warn(...)'],['../dc/daa/namespaceconsole.html#ae02c4729b8e8c15a3b166ec5d4c08365',1,'console::WARN()']]],
+  ['warn',['warn',['../da/d8a/interfaceTextColor.html#a1b2fab327d7b9814c9dd37b5f3861643',1,'TextColor::warn()'],['../dc/daa/namespaceconsole.html#ae02c4729b8e8c15a3b166ec5d4c08365',1,'console::WARN()'],['../dc/daa/namespaceconsole.html#a85513e51e93e8d827ebedba45359161c',1,'console::warn(String fmt,...)'],['../dc/daa/namespaceconsole.html#a4731e95e6360c7bdf0513236bc0ea032',1,'console::warn(...)']]],
   ['width',['width',['../d2/d41/interfaceImage.html#a4070489397d4fb67ccc71db0e1efbfeb',1,'Image']]],
   ['with',['with',['../d0/df6/interfaceExpect.html#a8f99dbedc53310d436ff867240460b6d',1,'Expect']]],
   ['without',['without',['../d6/d72/namespaceutil.html#a0c5e0bae5b173e9264e980cc2e956c64',1,'util']]],

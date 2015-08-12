@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['name',['name',['../df/d49/interfaceCipher.html#a8c7a977f76574518766d47c86dbdec00',1,'Cipher::name()'],['../d3/d3a/interfaceFile.html#ae249a82a4ed27278e366b4f791c59d4f',1,'File::name()'],['../d3/dea/interfaceHttpCookie.html#a1021070764b5270a9b7dcb14a48e22e7',1,'HttpCookie::name()'],['../d5/dac/interfacePKey.html#aa2c0c0b3b94a7f6ecd551fa994413c6b',1,'PKey::name()'],['../dc/da9/interfaceStat.html#ad647ebf992d48ff3b14a01c27563171d',1,'Stat::name()'],['../d7/dce/interfaceXmlAttr.html#aa75b1e6801f25d023fcb2c181fae149e',1,'XmlAttr::name()'],['../d4/d35/interfaceXmlDocumentType.html#a3224f939c2efed4a0e90b5d50a89008a',1,'XmlDocumentType::name()']]],
+  ['name',['name',['../df/d49/interfaceCipher.html#a8c7a977f76574518766d47c86dbdec00',1,'Cipher::name()'],['../d3/d3a/interfaceFile.html#ae249a82a4ed27278e366b4f791c59d4f',1,'File::name()'],['../d2/d65/interfaceHeapGraphEdge.html#aa1e9e4d920c9d623e0677466790d7c3c',1,'HeapGraphEdge::name()'],['../df/db2/interfaceHeapGraphNode.html#a234eab36fa50d3cea03e364d99adfa46',1,'HeapGraphNode::name()'],['../d3/dea/interfaceHttpCookie.html#a1021070764b5270a9b7dcb14a48e22e7',1,'HttpCookie::name()'],['../d5/dac/interfacePKey.html#aa2c0c0b3b94a7f6ecd551fa994413c6b',1,'PKey::name()'],['../dc/da9/interfaceStat.html#ad647ebf992d48ff3b14a01c27563171d',1,'Stat::name()'],['../d7/dce/interfaceXmlAttr.html#aa75b1e6801f25d023fcb2c181fae149e',1,'XmlAttr::name()'],['../d4/d35/interfaceXmlDocumentType.html#a3224f939c2efed4a0e90b5d50a89008a',1,'XmlDocumentType::name()']]],
   ['namespaceuri',['namespaceURI',['../d7/dce/interfaceXmlAttr.html#adca7cfb0b2e30cb5e20e941fe0b0d67f',1,'XmlAttr::namespaceURI()'],['../d7/ddb/interfaceXmlElement.html#a9e1e86588b68fdbcc3209a5fa54846e9',1,'XmlElement::namespaceURI()']]],
   ['net',['net',['../dc/d27/namespacenet.html',1,'']]],
   ['networkinfo',['networkInfo',['../da/de1/namespaceos.html#ade138388eb17cb0d8804d3a615402a0e',1,'os']]],
@@ -9,6 +9,8 @@ var searchData=
   ['no_5fcompression',['NO_COMPRESSION',['../d9/d3e/namespacezlib.html#a19b2fc6d45f128c13160d90572cf808c',1,'zlib']]],
   ['node',['node',['../d1/dd6/namespaceuuid.html#a3be72ef23f930db13335c4ea41b4a8b1',1,'uuid']]],
   ['nodename',['nodeName',['../d7/dce/interfaceXmlAttr.html#a5d0f0148447a9070d2f83b148e706f4c',1,'XmlAttr::nodeName()'],['../dc/d8f/interfaceXmlNode.html#ad493d7ec94ebfd1cb874d0b43920275d',1,'XmlNode::nodeName()']]],
+  ['nodes',['nodes',['../de/d09/interfaceHeapSnapshot.html#aeb6eac8cbebd93ad448791eab14a0213',1,'HeapSnapshot']]],
+  ['nodescount',['nodesCount',['../de/d09/interfaceHeapSnapshot.html#a5216b49cd74a55c668562b493a734199',1,'HeapSnapshot']]],
   ['nodetype',['nodeType',['../dc/d8f/interfaceXmlNode.html#ab567cde9aaa2b765f0f16b4c963fa9d5',1,'XmlNode']]],
   ['nodevalue',['nodeValue',['../d7/dce/interfaceXmlAttr.html#a7d2ac1212fea99797c5c1e73d236bc55',1,'XmlAttr::nodeValue()'],['../dc/d8f/interfaceXmlNode.html#acb09ccf7866b614f7964fa67c73f3160',1,'XmlNode::nodeValue()']]],
   ['nofill',['NOFILL',['../dd/d5d/namespacegd.html#a80848d6faabd43d2b9ce3a983f549b72',1,'gd']]],
