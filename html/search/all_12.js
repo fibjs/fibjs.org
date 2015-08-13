@@ -34,7 +34,7 @@ var searchData=
   ['setxx',['setXX',['../d7/d32/interfaceRedis.html#a08352a52b0ff70c5cc30e1d1082b4bb1',1,'Redis']]],
   ['sha1',['sha1',['../de/de9/namespacehash.html#aeebd38030db2c9e6f51674759c74d050',1,'hash::sha1()'],['../d1/dd6/namespaceuuid.html#ac63af48b29552ad4d0b1ad5d59a21a52',1,'uuid::sha1()'],['../de/de9/namespacehash.html#a9fa379cb0df932c120a6797f45b651e5',1,'hash::SHA1()']]],
   ['sha224',['SHA224',['../de/de9/namespacehash.html#a97717b785cf7bdb90d7e134be8eefba4',1,'hash::SHA224()'],['../de/de9/namespacehash.html#aebaa45bb312a46a71194c9118dca1a08',1,'hash::sha224(Buffer data)']]],
-  ['sha256',['sha256',['../de/de9/namespacehash.html#aea552567d5fea762e5d8eedda0b0067a',1,'hash::sha256(Buffer data)'],['../de/de9/namespacehash.html#a479d5d79b494b5324cc536b483b4619f',1,'hash::SHA256()']]],
+  ['sha256',['SHA256',['../de/de9/namespacehash.html#a479d5d79b494b5324cc536b483b4619f',1,'hash::SHA256()'],['../de/de9/namespacehash.html#aea552567d5fea762e5d8eedda0b0067a',1,'hash::sha256(Buffer data)']]],
   ['sha384',['SHA384',['../de/de9/namespacehash.html#ab3642bba484b7f0633956bae80dc6bd9',1,'hash::SHA384()'],['../de/de9/namespacehash.html#a0e3112fca405da681a0d034e6dba4016',1,'hash::sha384(Buffer data)']]],
   ['sha512',['sha512',['../de/de9/namespacehash.html#a93e3215efb856aa97da67966530387f7',1,'hash::sha512(Buffer data)'],['../de/de9/namespacehash.html#a8ba2e8e53c773269d0e949bfd5e07fb8',1,'hash::SHA512()']]],
   ['shallowsize',['shallowSize',['../df/db2/interfaceHeapGraphNode.html#a2fc488376bc9a3f1632c625d005833e8',1,'HeapGraphNode']]],
