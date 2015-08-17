@@ -19,6 +19,9 @@ var searchData=
   ['timeout',['timeout',['../d7/df5/interfaceSQLite.html#ac1125a44ad8f97d1cf7e9a3acd08db1e',1,'SQLite']]],
   ['timezone',['timezone',['../da/de1/namespaceos.html#a9628c5429b13f4979df6569d374b5815',1,'os']]],
   ['title',['title',['../d6/d47/interfaceXmlDocument.html#a0c4ac9f00a43be8a933fcd4d45612c8d',1,'XmlDocument']]],
+  ['tls1',['tls1',['../df/dd2/namespacessl.html#ad9ce55d649306fbc05ec48e1ad58c1ca',1,'ssl']]],
+  ['tls1_5f1',['tls1_1',['../df/dd2/namespacessl.html#a8a3680d6d6598faef169730aa4b2767a',1,'ssl']]],
+  ['tls1_5f2',['tls1_2',['../df/dd2/namespacessl.html#a57fd4476a315e68394c7bce9c444b8c7',1,'ssl']]],
   ['to',['to',['../d0/df6/interfaceExpect.html#a4e211fec62704ffb2e78c235732157e6',1,'Expect::to()'],['../da/de8/interfaceSmtp.html#a0a493d39818f762743e6d4e20c1fcddf',1,'Smtp::to()']]],
   ['toarray',['toArray',['../de/dd8/interfaceList.html#a27852dc20a97256ca104253eb20e5f67',1,'List::toArray()'],['../dc/d27/interfaceMongoCursor.html#a3dd77ed83bce4414731d330a9c8df18e',1,'MongoCursor::toArray()'],['../d1/d56/interfaceQueue.html#a41b4a1b5c0945b260c91e950bad6a8a2',1,'Queue::toArray()']]],
   ['tojson',['toJSON',['../db/d38/interfaceobject.html#ad66be13eb5b7c5f560fd8511565138c4',1,'object']]],
@@ -36,6 +39,6 @@ var searchData=
   ['trywait',['trywait',['../dc/d90/interfaceSemaphore.html#ab555508a557440f9d2e27bd5f8223ea7',1,'Semaphore']]],
   ['ttl',['ttl',['../d7/d32/interfaceRedis.html#a15a7d998869acee87500de7ca2815c44',1,'Redis']]],
   ['txbuffersize',['txBufferSize',['../d2/d68/interfaceMySQL.html#aaf5d8a266ab80bdb8d793898a87b6fd5',1,'MySQL']]],
-  ['type',['type',['../d2/d65/interfaceHeapGraphEdge.html#a84466c46fea07b127957b2a9a9fd9c3e',1,'HeapGraphEdge::type()'],['../df/db2/interfaceHeapGraphNode.html#a908abcfffe631ea984c5699e01c1d404',1,'HeapGraphNode::type()'],['../d2/d41/interfaceImage.html#a5eab9a2875c655bcc7be9559b4502227',1,'Image::type()'],['../dd/d94/interfaceSocket.html#a84ed037fcf775c6c38877da2626bdbbc',1,'Socket::type()'],['../dc/d22/interfaceX509Cert.html#ab415ea9cd56e2cf5f87d8d00a365714e',1,'X509Cert::type()'],['../d7/d32/interfaceRedis.html#a10dd880a7427becdd65bd8f811defa50',1,'Redis::type()'],['../da/de1/namespaceos.html#a14a15c5f48a949b3ed548d59ffcc05e2',1,'os::type()']]],
+  ['type',['type',['../d2/d65/interfaceHeapGraphEdge.html#a19a1da02c6eba9b360262df7c126f226',1,'HeapGraphEdge::type()'],['../df/db2/interfaceHeapGraphNode.html#acd93d5e37e15c83e77b0158076331ef8',1,'HeapGraphNode::type()'],['../d2/d41/interfaceImage.html#a5eab9a2875c655bcc7be9559b4502227',1,'Image::type()'],['../dd/d94/interfaceSocket.html#a84ed037fcf775c6c38877da2626bdbbc',1,'Socket::type()'],['../dc/d22/interfaceX509Cert.html#ab415ea9cd56e2cf5f87d8d00a365714e',1,'X509Cert::type()'],['../d7/d32/interfaceRedis.html#a10dd880a7427becdd65bd8f811defa50',1,'Redis::type()'],['../da/de1/namespaceos.html#a14a15c5f48a949b3ed548d59ffcc05e2',1,'os::type()']]],
   ['typeof',['typeOf',['../d2/dab/namespaceassert.html#a6accf1f518a6bea5c608ea513742cad3',1,'assert']]]
 ];

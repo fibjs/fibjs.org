@@ -1,6 +1,7 @@
 var interfaceList =
 [
     [ "List", "de/dd8/interfaceList.html#a64d878a92d11f7c63c70cbe4e7dd4176", null ],
+    [ "freeze", "de/dd8/interfaceList.html#ae1fbf108bbded70019b31c675eaebcc8", null ],
     [ "resize", "de/dd8/interfaceList.html#a65b48a28764f7cfd800e98771770940a", null ],
     [ "push", "de/dd8/interfaceList.html#a3113d895fc3a023c60345adb451d4e5c", null ],
     [ "push", "de/dd8/interfaceList.html#a27892eb3174c7b278b5b6f025eb4b98d", null ],

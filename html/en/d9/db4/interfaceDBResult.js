@@ -1,5 +1,6 @@
 var interfaceDBResult =
 [
+    [ "freeze", "d9/db4/interfaceDBResult.html#ae1fbf108bbded70019b31c675eaebcc8", null ],
     [ "resize", "d9/db4/interfaceDBResult.html#a65b48a28764f7cfd800e98771770940a", null ],
     [ "push", "d9/db4/interfaceDBResult.html#a3113d895fc3a023c60345adb451d4e5c", null ],
     [ "push", "d9/db4/interfaceDBResult.html#a27892eb3174c7b278b5b6f025eb4b98d", null ],

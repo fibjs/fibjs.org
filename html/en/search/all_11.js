@@ -56,6 +56,7 @@ var searchData=
   ['removeheader',['removeHeader',['../da/d38/interfaceHttpMessage.html#a527c0eba05ae52d3b2c9a2cf284277bd',1,'HttpMessage']]],
   ['rename',['rename',['../d7/d32/interfaceRedis.html#a8a9cef1e918d643704ad16443d509a6c',1,'Redis::rename()'],['../d5/d8f/namespacefs.html#a6cfec17da170f79ad860f37515990603',1,'fs::rename()']]],
   ['renamenx',['renameNX',['../d7/d32/interfaceRedis.html#a1c2531df8e027c7650295364a6eed5ec',1,'Redis']]],
+  ['repl',['repl',['../d4/dfd/namespaceglobal.html#aa976e0437bfcac393e2ef5e1ccea5bca',1,'global']]],
   ['replacechild',['replaceChild',['../dc/d8f/interfaceXmlNode.html#ad27424cb66b1039ddff3f6c297fbe0fd',1,'XmlNode']]],
   ['replacedata',['replaceData',['../d7/d50/interfaceXmlCharacterData.html#a7c1ba30620bfa7624afaca01364b0880',1,'XmlCharacterData']]],
   ['request',['Request',['../d3/d69/namespacehttp.html#af42dded35bbc45313730fc90e9eb8f83',1,'http::Request()'],['../d3/d69/namespacehttp.html#a43fb75f3d1ff80ac16e4929245b13d1a',1,'http::request(Stream conn, HttpRequest req) async'],['../d3/d69/namespacehttp.html#a8633e20a8ce55d009060a4849a91c6b7',1,'http::request(String method, String url, Object headers={})'],['../d3/d69/namespacehttp.html#a18e9a81f160921e0788994d503a101d1',1,'http::request(String method, String url, SeekableStream body, Object headers={})'],['../d3/d69/namespacehttp.html#a6f93d3122d804f48b97c1506246fc0f3',1,'http::request(String method, String url, Buffer body, Object headers={})']]],

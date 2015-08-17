@@ -12,6 +12,8 @@ var searchData=
   ['deeppropertynotval',['deepPropertyNotVal',['../d2/dab/namespaceassert.html#a2fe6b107e4c006046154d31897370d69',1,'assert']]],
   ['deeppropertyval',['deepPropertyVal',['../d2/dab/namespaceassert.html#a3a807667d3596b22f245aec1837a1d3d',1,'assert']]],
   ['deflate',['deflate',['../d9/d3e/namespacezlib.html#a4bbb2133b9a39ea72db80e845a6ad0aa',1,'zlib']]],
+  ['deflateraw',['deflateRaw',['../d9/d3e/namespacezlib.html#a7a09dd4d3921bf70f09f2dc29672ccaa',1,'zlib']]],
+  ['deflaterawto',['deflateRawTo',['../d9/d3e/namespacezlib.html#a8b171e4ac0cedfdcfe0b042bd8f2f07d',1,'zlib::deflateRawTo(Buffer data, Stream stm, Integer level=DEFAULT_COMPRESSION) async'],['../d9/d3e/namespacezlib.html#a82dedb02bcde6653fc8f94c3d95b2f28',1,'zlib::deflateRawTo(Stream src, Stream stm, Integer level=DEFAULT_COMPRESSION) async']]],
   ['deflateto',['deflateTo',['../d9/d3e/namespacezlib.html#aa6b8b6d518e950dbaca2b18ab4330fbe',1,'zlib::deflateTo(Buffer data, Stream stm, Integer level=DEFAULT_COMPRESSION) async'],['../d9/d3e/namespacezlib.html#a26b0d322158d30cfb60c774ee212f8d1',1,'zlib::deflateTo(Stream src, Stream stm, Integer level=DEFAULT_COMPRESSION) async']]],
   ['del',['del',['../d7/d32/interfaceRedis.html#ab82f73848a2409c123b633c05294ca2e',1,'Redis::del(Array keys)'],['../d7/d32/interfaceRedis.html#a0ca852fc1075e833c7db632b5c404589',1,'Redis::del(...)'],['../d9/d58/interfaceRedisHash.html#a35acad981389e288138c66b06bfdd757',1,'RedisHash::del(Array fields)'],['../d9/d58/interfaceRedisHash.html#a85157309a13caf605121dad1b55769d4',1,'RedisHash::del(...)']]],
   ['deleteallheapsnapshots',['DeleteAllHeapSnapshots',['../dc/dfc/namespaceprofiler.html#aded7471964dc52ef231970b40aefb40c',1,'profiler']]],

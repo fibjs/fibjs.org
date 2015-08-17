@@ -20,6 +20,7 @@ var searchData=
   ['format',['format',['../d8/d2c/interfaceDbConnection.html#ae6d31f438b2c274f32aade526f92da2f',1,'DbConnection::format()'],['../dd/d23/interfaceUrl.html#ad2ff6a6d6440f76c7cdaaa2b740003a8',1,'Url::format()'],['../d0/d45/namespacedb.html#a34aceab3cf280744a6293fd472a6cbcc',1,'db::format()'],['../d6/d72/namespaceutil.html#a0e62c6dffcb92af6c4d397f66d49aeda',1,'util::format(String fmt,...)'],['../d6/d72/namespaceutil.html#a622d3f4ba0f379119973e8c5b3d06841',1,'util::format(...)']]],
   ['formatmysql',['formatMySQL',['../d0/d45/namespacedb.html#a730e29b155df6b5c9a5c1b2ce97c8386',1,'db']]],
   ['freemem',['freemem',['../da/de1/namespaceos.html#a571d36775ad176acbc76f7d12fb03bf1',1,'os']]],
+  ['freeze',['freeze',['../de/dd8/interfaceList.html#ae1fbf108bbded70019b31c675eaebcc8',1,'List']]],
   ['from',['from',['../da/de8/interfaceSmtp.html#ad8eb1e574533147e12bbb50ca32eda0b',1,'Smtp']]],
   ['fullpath',['fullpath',['../d0/d43/namespacepath.html#a39317bd9f009a2295d12865393d2d8d8',1,'path']]]
 ];
