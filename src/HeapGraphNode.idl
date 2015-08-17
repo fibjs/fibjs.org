@@ -3,22 +3,22 @@
 interface HeapGraphNode : object
 {
     /*! @brief node type, the value can be:
-     -  Hidden,         Hidden node, may be filtered when shown to user.
-     -  Array,          An array of elements.
-     -  String,         A string.
-     -  Object,         A JS object (except for arrays and strings).
-     -  Code,           Compiled code.
-     -  Closure,        Function closure.
-     -  RegExp,         RegExp.
-     -  HeapNumber,     Number stored in the heap.
-     -  Native,         Native object (not from V8 heap).
-     -  Synthetic,      Synthetic object, usualy used for grouping snapshot items together.
-     -  ConsString,     Concatenated string. A pair of pointers to strings.
-     -  SlicedString,   Sliced string. A fragment of another string.
-     -  Symbol,         A Symbol (ES6).
-     -  SimdValue,      A SIMD value stored in the heap (Proposed ES7).
+     - profiler.Node_Hidden,         Hidden node, may be filtered when shown to user.
+     - profiler.Node_Array,          An array of elements.
+     - profiler.Node_String,         A string.
+     - profiler.Node_Object,         A JS object (except for arrays and strings).
+     - profiler.Node_Code,           Compiled code.
+     - profiler.Node_Closure,        Function closure.
+     - profiler.Node_RegExp,         RegExp.
+     - profiler.Node_HeapNumber,     Number stored in the heap.
+     - profiler.Node_Native,         Native object (not from V8 heap).
+     - profiler.Node_Synthetic,      Synthetic object, usualy used for grouping snapshot items together.
+     - profiler.Node_ConsString,     Concatenated string. A pair of pointers to strings.
+     - profiler.Node_SlicedString,   Sliced string. A fragment of another string.
+     - profiler.Node_Symbol,         A Symbol (ES6).
+     - profiler.Node_SimdValue,      A SIMD value stored in the heap (Proposed ES7).
     */
-    readonly String type;
+    readonly Integer type;
 
     /*! @brief node name */
     readonly String name;
@@ -28,9 +28,6 @@ interface HeapGraphNode : object
 
     /*! @brief node's own size, in bytes. */
     readonly Integer shallowSize;
-
-    /*! @brief child nodes count of the node. */
-    readonly Integer childsCount;
 
     /*! @brief child nodes list */
     readonly List childs;

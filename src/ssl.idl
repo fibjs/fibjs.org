@@ -22,6 +22,18 @@ module ssl
     /*! @brief Verification result, certificate is not trusted */
     const Integer BADCERT_NOT_TRUSTED = 8;
 
+    /*! @brief ssl Protocol Version ssl 3.0 */
+    const Integer ssl3 = 0;
+
+    /*! @brief ssl Protocol Version tls 1.0 */
+    const Integer tls1 = 1;
+
+    /*! @brief ssl Protocol Version tls 1.1 */
+    const Integer tls1_1 = 2;
+
+    /*! @brief ssl Protocol Version tls 1.2 */
+    const Integer tls1_2 = 3;
+
     /*! @brief Create a SslSocket object, see SslSocket */
     static SslSocket new Socket();
 
@@ -55,4 +67,10 @@ module ssl
 
     /*! @brief Set verification mode, default is VERIFY_REQUIRED */
     static Integer verification;
+
+    /*! @brief Set the minimum version support, default ssl3 */
+    static Integer min_version;
+
+    /*! @brief Set the maximum version support, default tls1_1 */
+    static Integer max_version;
 };
