@@ -20,40 +20,40 @@ module zlib
     /*! @brief deflate compression level, default */
     const Integer DEFAULT_COMPRESSION = -1;
 
-    /*! @brief Use deflate to compress data
+    /*! @brief Use deflate to compress data (zlib format)
      @param data Raw data
      @param level Indicate compression level, default is DEFAULT_COMPRESSION
      @return Return compressed binary
      */
     static Buffer deflate(Buffer data, Integer level = DEFAULT_COMPRESSION) async;
 
-    /*! @brief Use deflate to compress data to stream
+    /*! @brief Use deflate to compress data to stream (zlib format)
      @param data Raw data
      @param stm Stream to write compressed data
      @param level Indicate compression level, default is DEFAULT_COMPRESSION
      */
     static deflateTo(Buffer data, Stream stm, Integer level = DEFAULT_COMPRESSION) async;
 
-    /*! @brief Use deflate to compress a stream data to another
+    /*! @brief Use deflate to compress a stream data to another (zlib format)
      @param src Original stream
      @param stm Target stream to write compressed data
      @param level Indicate compression level, default is DEFAULT_COMPRESSION
      */
     static deflateTo(Stream src, Stream stm, Integer level = DEFAULT_COMPRESSION) async;
 
-    /*! @brief Use deflate to decompress data
+    /*! @brief Use deflate to decompress data (zlib format)
      @param data Compressed data
      @return Return decompressed binary
      */
     static Buffer inflate(Buffer data) async;
 
-    /*! @brief Use deflate to decompress data to stream
+    /*! @brief Use deflate to decompress data to stream (zlib format)
      @param data Compressed data
      @param stm Stream to write decompressed data
      */
     static inflateTo(Buffer data, Stream stm) async;
 
-    /*! @brief Use deflate to decompress a stream data to another
+    /*! @brief Use deflate to decompress a stream data to another (zlib format)
      @param src Original stream
      @param stm Target stream to write decompressed data
      */
@@ -94,4 +94,43 @@ module zlib
      @param stm Target stream to write decompressed data
      */
     static gunzipTo(Stream src, Stream stm) async;
+
+    /*! @brief Use deflate to compress data (deflateRaw)
+     @param data Raw data
+     @param level Indicate compression level, default is DEFAULT_COMPRESSION
+     @return Return compressed binary
+     */
+    static Buffer deflateRaw(Buffer data, Integer level = DEFAULT_COMPRESSION) async;
+
+    /*! @brief Use deflate to compress data to stream (deflateRaw)
+     @param data Raw data
+     @param stm Stream to write compressed data
+     @param level Indicate compression level, default is DEFAULT_COMPRESSION
+     */
+    static deflateRawTo(Buffer data, Stream stm, Integer level = DEFAULT_COMPRESSION) async;
+
+    /*! @brief Use deflate to compress a stream data to another (deflateRaw)
+     @param src Original stream
+     @param stm Target stream to write compressed data
+     @param level Indicate compression level, default is DEFAULT_COMPRESSION
+     */
+    static deflateRawTo(Stream src, Stream stm, Integer level = DEFAULT_COMPRESSION) async;
+
+    /*! @brief Use deflate to decompress data (deflateRaw)
+     @param data Compressed data
+     @return Return decompressed binary
+     */
+    static Buffer inflateRaw(Buffer data) async;
+
+    /*! @brief Use deflate to decompress data to stream (deflateRaw)
+     @param data Compressed data
+     @param stm Stream to write decompressed data
+     */
+    static inflateRawTo(Buffer data, Stream stm) async;
+
+    /*! @brief Use deflate to decompress a stream data to another (deflateRaw)
+     @param src Original stream
+     @param stm Target stream to write decompressed data
+     */
+    static inflateRawTo(Stream src, Stream stm) async;
 };
