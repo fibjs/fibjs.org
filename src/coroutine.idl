@@ -31,17 +31,19 @@ module coroutine
     static Fiber start(Function func, ...);
 
     /*! @brief Execute a set of functions parallel, and wait for the return.
-     @param func An array of function to be executed parallel
+     @param funcs An array of function to be executed parallel
+     @param fibers Limit the number of concurrent fiber, default -1 (the number of funcs size).
      @return Returns the array of functions execute results
      */
-    static Array parallel(Array func);
+    static Array parallel(Array funcs, Integer fibers = -1);
 
     /*! @brief Execute a function deal with a set of data parallel, and wait for the return.
-     @param data An array of params to be executed by function parallel
-     @param func The function of execute parallel
+     @param datas An array of params to be executed by function parallel.
+     @param func The function executed parallel
+     @param fibers Limit the number of concurrent fiber, default -1 (the number of datas size).
      @return Returns the array of function execute results
      */
-    static Array parallel(Array data, Function func);
+    static Array parallel(Array datas, Function func, Integer fibers = -1);
 
     /*! @brief Execute a set of functions parallel, and wait for the return.
      @param ... A set of function to be execute parallel
