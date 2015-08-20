@@ -6,6 +6,7 @@ var interfaceHeapGraphNode =
     [ "valueOf", "df/db2/interfaceHeapGraphNode.html#ab9261a7662bc8bb4a898bc15dc16f206", null ],
     [ "type", "df/db2/interfaceHeapGraphNode.html#acd93d5e37e15c83e77b0158076331ef8", null ],
     [ "name", "df/db2/interfaceHeapGraphNode.html#a234eab36fa50d3cea03e364d99adfa46", null ],
+    [ "description", "df/db2/interfaceHeapGraphNode.html#a5446260080643ecdbe19aed45044bff6", null ],
     [ "id", "df/db2/interfaceHeapGraphNode.html#ac8676ab128e82182641b95411f087ffc", null ],
     [ "shallowSize", "df/db2/interfaceHeapGraphNode.html#a2fc488376bc9a3f1632c625d005833e8", null ],
     [ "childs", "df/db2/interfaceHeapGraphNode.html#a9a847dcbbcd9e81583d8712a8f5df617", null ]

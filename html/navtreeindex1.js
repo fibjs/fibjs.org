@@ -1,5 +1,6 @@
 var NAVTREEINDEX1 =
 {
+"d2/d68/interfaceMySQL.html#a6b88dbc459449d2280338e5b702a68b4":[5,42,8],
 "d2/d68/interfaceMySQL.html#aa6d68c3a518d46207b42d7f638b07a1e":[5,42,2],
 "d2/d68/interfaceMySQL.html#aaf5d8a266ab80bdb8d793898a87b6fd5":[5,42,13],
 "d2/d68/interfaceMySQL.html#ab4f47bec17ba6b3799c58ea8d0698b15":[5,42,4],
@@ -248,6 +249,5 @@ var NAVTREEINDEX1 =
 "d4/dc7/interfaceStream.html#ab9261a7662bc8bb4a898bc15dc16f206":[5,66,7],
 "d4/dc7/interfaceStream.html#ac61f07a7d6c5471293371086af3186bd":[5,66,5],
 "d4/dc7/interfaceStream.html#ad66be13eb5b7c5f560fd8511565138c4":[5,66,6],
-"d4/dd8/interfaceXmlCDATASection.html":[5,76],
-"d4/dd8/interfaceXmlCDATASection.html#a055bc3d28655697652e075ce4cde2383":[5,76,21]
+"d4/dd8/interfaceXmlCDATASection.html":[5,76]
 };

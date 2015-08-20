@@ -28,6 +28,7 @@ var searchData=
   ['des_5fede',['DES_EDE',['../de/d36/namespacecrypto.html#ae36cf5e98c7fdf6ca3d4eefba29491bc',1,'crypto']]],
   ['des_5fede3',['DES_EDE3',['../de/d36/namespacecrypto.html#a6a5919b052e90ecfc692123bf4657d04',1,'crypto']]],
   ['describe',['describe',['../df/d04/namespacetest.html#a28c68bd81db526a96da4da2313a3a921',1,'test']]],
+  ['description',['description',['../d2/d65/interfaceHeapGraphEdge.html#ac062f14a3f3e573b35925926ba6f5106',1,'HeapGraphEdge::description()'],['../df/db2/interfaceHeapGraphNode.html#a5446260080643ecdbe19aed45044bff6',1,'HeapGraphNode::description()']]],
   ['detail',['detail',['../d6/de7/interfaceuuidValue.html#acdf7d45f83f0ad92f1301aba89eb20e4',1,'uuidValue']]],
   ['diff',['diff',['../de/d09/interfaceHeapSnapshot.html#af6eba58a29be9c3dafe30fe6ef281913',1,'HeapSnapshot::diff()'],['../dc/dfc/namespaceprofiler.html#a26b2cb6a2931ab7f91ed748f7b567adc',1,'profiler::diff()']]],
   ['difference',['difference',['../d6/d72/namespaceutil.html#aeee7da8e5a98a9794221cbbff0e1c43e',1,'util']]],

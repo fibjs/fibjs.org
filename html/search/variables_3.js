@@ -8,6 +8,7 @@ var searchData=
   ['des',['DES',['../de/d36/namespacecrypto.html#ae2125c6387aecbaab90570f65fb4f518',1,'crypto']]],
   ['des_5fede',['DES_EDE',['../de/d36/namespacecrypto.html#ae36cf5e98c7fdf6ca3d4eefba29491bc',1,'crypto']]],
   ['des_5fede3',['DES_EDE3',['../de/d36/namespacecrypto.html#a6a5919b052e90ecfc692123bf4657d04',1,'crypto']]],
+  ['description',['description',['../d2/d65/interfaceHeapGraphEdge.html#ac062f14a3f3e573b35925926ba6f5106',1,'HeapGraphEdge::description()'],['../df/db2/interfaceHeapGraphNode.html#a5446260080643ecdbe19aed45044bff6',1,'HeapGraphNode::description()']]],
   ['dns',['DNS',['../d1/dd6/namespaceuuid.html#a8a295ea729b6143bc51745b719c43599',1,'uuid']]],
   ['doctype',['doctype',['../d6/d47/interfaceXmlDocument.html#a7ec13b3947845575a3d6f8f8858ef56f',1,'XmlDocument']]],
   ['document_5fnode',['DOCUMENT_NODE',['../d8/dd3/namespacexml.html#a6f91e78c27e99d87cd81699beaadea23',1,'xml']]],
