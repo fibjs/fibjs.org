@@ -13,8 +13,12 @@ module global
 
     /*! @brief Run a script
      @param fname Specifies the running path for script 
+     @param argv Specify the run parameters, which can be caught in script by argv.
      */
-    static run(String fname);
+    static run(String fname, Array argv = []);
+
+    /*! @brief Get the current script's run parameters, start js for process start parameter, and run script to obtain parameters passed */
+    static readonly Array argv;
 
     /*! @brief Load a module and return module object, reference @ref module
 
@@ -36,6 +40,34 @@ module global
     /*! @brief Mandatory for garbage collection*/
     static GC();
 
-    /*! @brief Enter the interactive mode, you can interactively execute the internal commands and code which can only be referenced when js start  */
-    static repl();
+    /*! @brief Enter the interactive mode, you can interactively execute the internal commands and code which can only be referenced when js start.
+     @param cmds Add commands in the following format:
+     @code
+        [
+            cmd: "test",
+            help: "this is a test",
+            exec: function(argv) {
+                console.log(argv);
+            }
+        ]
+     @endcode
+     */
+    static repl(Array cmds = []);
+
+    /*! @brief Enter the interactive mode, you can interactively execute the internal commands and code which can only be referenced when js start.
+
+     At the same time allowed only a Stream repl, close the previous one when create a new Stream repl.
+     @param out Input/output stream object, usually for a network connection
+     @param cmds Add commands in the following format:
+     @code
+        [
+            cmd: "test",
+            help: "this is a test",
+            exec: function(argv) {
+                console.log(argv);
+            }
+        ]
+     @endcode
+     */
+    static repl(Stream out, Array cmds = []);
 };
