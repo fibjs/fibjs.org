@@ -27,7 +27,7 @@ var searchData=
   ['arc',['arc',['../d2/d41/interfaceImage.html#aab87680bc57415638facc13065504523',1,'Image::arc()'],['../dd/d5d/namespacegd.html#a146c430b7504b0f5831fba84470e1599',1,'gd::ARC()']]],
   ['arc4',['ARC4',['../de/d36/namespacecrypto.html#ae69cd63207dd925851509f54b8e47c67',1,'crypto']]],
   ['arch',['arch',['../da/de1/namespaceos.html#a694ff78df5a8febb2a7a69c7722f7c34',1,'os']]],
-  ['argv',['argv',['../d8/d25/namespaceprocess.html#a2c1a6c800a4d1b0fdd5f9f405c5475d5',1,'process']]],
+  ['argv',['argv',['../d4/dfd/namespaceglobal.html#aef70d33af0f202e79eeac3e23c02e718',1,'global::argv()'],['../d8/d25/namespaceprocess.html#a2c1a6c800a4d1b0fdd5f9f405c5475d5',1,'process::argv()']]],
   ['array',['array',['../d0/df6/interfaceExpect.html#acde4d7cd6ad6d48edd984bf1c6849d1d',1,'Expect']]],
   ['assert',['assert',['../d2/dab/namespaceassert.html',1,'assert'],['../df/d04/namespacetest.html#a493023a30a7d385db92bbc7b81cb8aec',1,'test::assert()'],['../dc/daa/namespaceconsole.html#abb065e74e5380ca19bfd6e9a6b2a4117',1,'console::assert()']]],
   ['asyncrun',['asyncRun',['../d7/d48/interfaceTcpServer.html#a90e985acd2aaeddff07304e4d4d93c3f',1,'TcpServer']]],

@@ -56,7 +56,7 @@ var searchData=
   ['removeheader',['removeHeader',['../da/d38/interfaceHttpMessage.html#a527c0eba05ae52d3b2c9a2cf284277bd',1,'HttpMessage']]],
   ['rename',['rename',['../d7/d32/interfaceRedis.html#a8a9cef1e918d643704ad16443d509a6c',1,'Redis::rename()'],['../d5/d8f/namespacefs.html#a6cfec17da170f79ad860f37515990603',1,'fs::rename()']]],
   ['renamenx',['renameNX',['../d7/d32/interfaceRedis.html#a1c2531df8e027c7650295364a6eed5ec',1,'Redis']]],
-  ['repl',['repl',['../d4/dfd/namespaceglobal.html#aa976e0437bfcac393e2ef5e1ccea5bca',1,'global']]],
+  ['repl',['repl',['../d4/dfd/namespaceglobal.html#abae4e926703798996fa53e61c30cd710',1,'global::repl(Array cmds=[])'],['../d4/dfd/namespaceglobal.html#ac297812b42a1bfd1d9211b8ca07686e0',1,'global::repl(Stream out, Array cmds=[])']]],
   ['replacechild',['replaceChild',['../dc/d8f/interfaceXmlNode.html#ad27424cb66b1039ddff3f6c297fbe0fd',1,'XmlNode']]],
   ['replacedata',['replaceData',['../d7/d50/interfaceXmlCharacterData.html#a7c1ba30620bfa7624afaca01364b0880',1,'XmlCharacterData']]],
   ['request',['Request',['../d3/d69/namespacehttp.html#af42dded35bbc45313730fc90e9eb8f83',1,'http::Request()'],['../d3/d69/namespacehttp.html#a43fb75f3d1ff80ac16e4929245b13d1a',1,'http::request(Stream conn, HttpRequest req) async'],['../d3/d69/namespacehttp.html#a8633e20a8ce55d009060a4849a91c6b7',1,'http::request(String method, String url, Object headers={})'],['../d3/d69/namespacehttp.html#a18e9a81f160921e0788994d503a101d1',1,'http::request(String method, String url, SeekableStream body, Object headers={})'],['../d3/d69/namespacehttp.html#a6f93d3122d804f48b97c1506246fc0f3',1,'http::request(String method, String url, Buffer body, Object headers={})']]],
@@ -73,7 +73,7 @@ var searchData=
   ['rgb',['rgb',['../dd/d5d/namespacegd.html#a0706099b78bbf292b7d7898acc0b7aa2',1,'gd']]],
   ['rgba',['rgba',['../dd/d5d/namespacegd.html#ad330769672a80a55bbca412dd909358a',1,'gd']]],
   ['right',['RIGHT',['../dd/d5d/namespacegd.html#ad38a3f38117a471e8075602e1427a573',1,'gd']]],
-  ['ripemd160',['RIPEMD160',['../de/de9/namespacehash.html#a85ec8a916512172c1d29e659acde0c20',1,'hash::RIPEMD160()'],['../de/de9/namespacehash.html#a71a420a73d5a44d8d819bf3583cf58f2',1,'hash::ripemd160(Buffer data)']]],
+  ['ripemd160',['ripemd160',['../de/de9/namespacehash.html#a71a420a73d5a44d8d819bf3583cf58f2',1,'hash::ripemd160(Buffer data)'],['../de/de9/namespacehash.html#a85ec8a916512172c1d29e659acde0c20',1,'hash::RIPEMD160()']]],
   ['rmdir',['rmdir',['../d5/d8f/namespacefs.html#ae63300a92680e28c3b2bd55046120049',1,'fs']]],
   ['rollback',['rollback',['../d8/d2c/interfaceDbConnection.html#ab4f47bec17ba6b3799c58ea8d0698b15',1,'DbConnection']]],
   ['root',['root',['../de/d09/interfaceHeapSnapshot.html#ad212c5e17ae59cf4c5f08fa7f401b9ab',1,'HeapSnapshot']]],
@@ -82,7 +82,7 @@ var searchData=
   ['rpc',['rpc',['../d0/d14/namespacerpc.html',1,'']]],
   ['rpop',['rpop',['../d0/da2/interfaceRedisList.html#a6da451046bc93c96bfe0cf8104d9c729',1,'RedisList']]],
   ['rpush',['rpush',['../d0/da2/interfaceRedisList.html#aac41c5209574e61ab57f2a1153956750',1,'RedisList::rpush(Array values)'],['../d0/da2/interfaceRedisList.html#ad39dcf8b76630b252337dbc70c5d0fe9',1,'RedisList::rpush(...)']]],
-  ['run',['run',['../d5/dd4/interfaceSandBox.html#a0825ce67b1b94497b53d2bd8cabfbea7',1,'SandBox::run()'],['../d7/d48/interfaceTcpServer.html#a07331365e3d5b0275e00a2f6249a1538',1,'TcpServer::run()'],['../d4/dfd/namespaceglobal.html#a917c15ea7d2eafaa6df0aea5868a86e7',1,'global::run()'],['../df/d04/namespacetest.html#a8e9c3ee5b129b4f584ffc95ccae6bacb',1,'test::run()']]],
+  ['run',['run',['../d5/dd4/interfaceSandBox.html#a067679bd863305a489058868411a07f1',1,'SandBox::run()'],['../d7/d48/interfaceTcpServer.html#a07331365e3d5b0275e00a2f6249a1538',1,'TcpServer::run()'],['../d4/dfd/namespaceglobal.html#a9d3c7d79f836d3d5785a6b8f9ab4581c',1,'global::run()'],['../df/d04/namespacetest.html#a8e9c3ee5b129b4f584ffc95ccae6bacb',1,'test::run()']]],
   ['runcommand',['runCommand',['../d6/d6b/interfaceMongoCollection.html#a201b8645cd448b3be89dd347bef84452',1,'MongoCollection::runCommand(Object cmd)'],['../d6/d6b/interfaceMongoCollection.html#abb404d168426441c34f7a4d5f80237b2',1,'MongoCollection::runCommand(String cmd, Object arg={})'],['../df/d69/interfaceMongoDB.html#ac92423d94233e3b27c2d47409f5eeb33',1,'MongoDB::runCommand(Object cmd)'],['../df/d69/interfaceMongoDB.html#af7b4f5ffd6edeb8c493f8dcadea34525',1,'MongoDB::runCommand(String cmd, Value arg)']]],
   ['rxbuffersize',['rxBufferSize',['../d2/d68/interfaceMySQL.html#afb0238955b2dd36d2b3882661e1bde8d',1,'MySQL']]]
 ];
