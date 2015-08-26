@@ -4,6 +4,7 @@ var searchData=
   ['target',['target',['../da/df6/interfaceXmlProcessingInstruction.html#a5f255359977fba5d140f8b168c4cb159',1,'XmlProcessingInstruction']]],
   ['tcpserver',['TcpServer',['../dc/d27/namespacenet.html#a604049c078bee2cef17fa2e3ba9a9471',1,'net']]],
   ['tdd',['TDD',['../df/d04/namespacetest.html#a85a441d022214024a08c41758399f72d',1,'test']]],
+  ['text',['TEXT',['../d0/d42/namespacewebsocket.html#a6f7c73324ee8aefed39ea03d3e64458b',1,'websocket']]],
   ['text_5fnode',['TEXT_NODE',['../d8/dd3/namespacexml.html#ac8daa61ed64fe896f2df91ead3af6088',1,'xml']]],
   ['textcontent',['textContent',['../d7/ddb/interfaceXmlElement.html#ad82b3b9cba5a26ac164a7b7e0eb087e7',1,'XmlElement']]],
   ['that',['that',['../d0/df6/interfaceExpect.html#a35480010d927aa457b70359fa41d4b33',1,'Expect']]],
@@ -22,5 +23,5 @@ var searchData=
   ['true',['true',['../d0/df6/interfaceExpect.html#aaad4e98d0e6f706cf8c331e89f4a1542',1,'Expect']]],
   ['truecolor',['TRUECOLOR',['../dd/d5d/namespacegd.html#abb19e274d6ddf2f7ff7703956498af30',1,'gd']]],
   ['txbuffersize',['txBufferSize',['../d2/d68/interfaceMySQL.html#aaf5d8a266ab80bdb8d793898a87b6fd5',1,'MySQL']]],
-  ['type',['type',['../d2/d65/interfaceHeapGraphEdge.html#a19a1da02c6eba9b360262df7c126f226',1,'HeapGraphEdge::type()'],['../df/db2/interfaceHeapGraphNode.html#acd93d5e37e15c83e77b0158076331ef8',1,'HeapGraphNode::type()'],['../d2/d41/interfaceImage.html#a5eab9a2875c655bcc7be9559b4502227',1,'Image::type()'],['../dd/d94/interfaceSocket.html#a84ed037fcf775c6c38877da2626bdbbc',1,'Socket::type()'],['../dc/d22/interfaceX509Cert.html#ab415ea9cd56e2cf5f87d8d00a365714e',1,'X509Cert::type()'],['../da/de1/namespaceos.html#a14a15c5f48a949b3ed548d59ffcc05e2',1,'os::type()']]]
+  ['type',['type',['../d2/d65/interfaceHeapGraphEdge.html#a19a1da02c6eba9b360262df7c126f226',1,'HeapGraphEdge::type()'],['../df/db2/interfaceHeapGraphNode.html#acd93d5e37e15c83e77b0158076331ef8',1,'HeapGraphNode::type()'],['../d2/d41/interfaceImage.html#a5eab9a2875c655bcc7be9559b4502227',1,'Image::type()'],['../dd/d94/interfaceSocket.html#a84ed037fcf775c6c38877da2626bdbbc',1,'Socket::type()'],['../db/d5d/interfaceWebSocketMessage.html#ac9f85e5622186f8099899240f2fe70e0',1,'WebSocketMessage::type()'],['../dc/d22/interfaceX509Cert.html#ab415ea9cd56e2cf5f87d8d00a365714e',1,'X509Cert::type()'],['../da/de1/namespaceos.html#a14a15c5f48a949b3ed548d59ffcc05e2',1,'os::type()']]]
 ];

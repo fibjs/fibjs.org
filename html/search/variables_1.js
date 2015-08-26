@@ -9,6 +9,7 @@ var searchData=
   ['been',['been',['../d0/df6/interfaceExpect.html#a14299251d029a0cfc8bcef53c98c47f9',1,'Expect']]],
   ['best_5fcompression',['BEST_COMPRESSION',['../d9/d3e/namespacezlib.html#aa616c6868879479fa20e68a042fd0497',1,'zlib']]],
   ['best_5fspeed',['BEST_SPEED',['../d9/d3e/namespacezlib.html#ac1fa5896622f3a54952bda03eb7d3acd',1,'zlib']]],
+  ['binary',['BINARY',['../d0/d42/namespacewebsocket.html#ac2a5602c1ce5a962340711c820484685',1,'websocket']]],
   ['blockqueue',['BlockQueue',['../d6/d05/namespacecoroutine.html#a894fd1e509c5ab593a08d0a4a251eaaf',1,'coroutine']]],
   ['blocksize',['blockSize',['../df/d49/interfaceCipher.html#a0424c17e6db89678a25684610537d2cd',1,'Cipher']]],
   ['blowfish',['BLOWFISH',['../de/d36/namespacecrypto.html#a56d896ffff1587eba779010be7404803',1,'crypto']]],

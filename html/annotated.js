@@ -72,6 +72,8 @@ var annotated =
     [ "Trigger", "d6/df7/interfaceTrigger.html", "d6/df7/interfaceTrigger" ],
     [ "Url", "dd/d23/interfaceUrl.html", "dd/d23/interfaceUrl" ],
     [ "uuidValue", "d6/de7/interfaceuuidValue.html", "d6/de7/interfaceuuidValue" ],
+    [ "WebSocketHandler", "da/d20/interfaceWebSocketHandler.html", "da/d20/interfaceWebSocketHandler" ],
+    [ "WebSocketMessage", "db/d5d/interfaceWebSocketMessage.html", "db/d5d/interfaceWebSocketMessage" ],
     [ "X509Cert", "dc/d22/interfaceX509Cert.html", "dc/d22/interfaceX509Cert" ],
     [ "X509Crl", "d9/d86/interfaceX509Crl.html", "d9/d86/interfaceX509Crl" ],
     [ "X509Req", "d7/d8b/interfaceX509Req.html", "d7/d8b/interfaceX509Req" ],
