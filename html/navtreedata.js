@@ -53,5 +53,5 @@ var NAVTREEINDEX =
 "dd/d94/interfaceSocket.html#a7a38cc9beea41220157a0263dcd86bc7"
 ];
 
-var SYNCONMSG = 'click to disable panel synchronisation';
-var SYNCOFFMSG = 'click to enable panel synchronisation';
+var SYNCONMSG = '点击 关闭 面板同步';
+var SYNCOFFMSG = '点击 开启 面板同步';
