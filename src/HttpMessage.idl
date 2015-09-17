@@ -8,13 +8,16 @@ interface HttpMessage: Message
     /*! @brief container that contains the http meassge header, readonly */
     readonly HttpCollection headers;
 
-    /*! @brief querying and setting whether the connection keeps alive */
+    /*! @brief query and set whether the connection keeps alive */
     Boolean keepAlive;
 
-    /*! @brief querying and setting the max number of request headers, defaults to 128 */
+    /*! @brief query and set whether to upgrade protocol */
+    Boolean upgrade;
+
+    /*! @brief query and set the max number of request headers, defaults to 128 */
     Integer maxHeadersCount;
 
-    /*! @brief querying and setting the max size of the uploading file in bytes, defaults to 67108864(64M) */
+    /*! @brief query and set the max size of the uploading file in bytes, defaults to 67108864(64M) */
     Integer maxUploadSize;
 
     /*! @brief detect whether there is a message header that has the given key
@@ -38,7 +41,7 @@ interface HttpMessage: Message
     /*! @brief add a message header, add data without modifying headers of the existing keys
      @param map specify the data dictionary of the key and value that need to be added
      */
-    addHeader(Object map);
+    addHeader(Map map);
 
     /*! @brief add a message header, add data without modifying headers of the existing keys
      @param name specify the key need to be added
@@ -49,7 +52,7 @@ interface HttpMessage: Message
     /*! @brief set a message header, modify the first value of the key as the spcified data and remove other message headers of the same key
      @param map specify the data dictionary of the key and value that need to be modified
      */
-    setHeader(Object map);
+    setHeader(Map map);
 
     /*! @brief set a message header, modify the first value of the key as the spcified data and remove other message headers of the same key
      @param name specify the key need to be added
