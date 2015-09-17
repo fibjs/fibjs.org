@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['handler',['Handler',['../d3/d69/namespacehttp.html#aeb7ec4214a199d4df745d067aaf71a3d',1,'http::Handler()'],['../df/dd2/namespacessl.html#a6abf182f9613d8f45513eac4e2fa20aa',1,'ssl::Handler()']]],
+  ['handler',['Handler',['../d3/d69/namespacehttp.html#aeb7ec4214a199d4df745d067aaf71a3d',1,'http::Handler()'],['../df/dd2/namespacessl.html#a6abf182f9613d8f45513eac4e2fa20aa',1,'ssl::Handler()'],['../d0/d42/namespacewebsocket.html#ab412dcfeaa386b7a371c52c58ce6f06e',1,'websocket::Handler()']]],
   ['has',['has',['../da/d34/interfaceHttpCollection.html#aedcf309873cb83a1eb13144dcec9942a',1,'HttpCollection::has()'],['../d0/d9e/interfaceLevelDB.html#a9592329ae5e30e313a40637d34171a11',1,'LevelDB::has()'],['../dc/d81/interfaceLruCache.html#a1f47f0c7f03ead1191f99b340edc0576',1,'LruCache::has()'],['../d2/dc1/interfaceMap.html#a3a28d7c75ff941b3d9d9d3b6e6d4e3e3',1,'Map::has()'],['../d6/d72/namespaceutil.html#a74c60b5a6328e1154f392e634cb40328',1,'util::has()']]],
   ['hasattribute',['hasAttribute',['../d7/ddb/interfaceXmlElement.html#a59da5983eaeed09c34b073ccff10ec21',1,'XmlElement']]],
   ['hasattributens',['hasAttributeNS',['../d7/ddb/interfaceXmlElement.html#a2915ead08a052772959fe60344887373',1,'XmlElement']]],
