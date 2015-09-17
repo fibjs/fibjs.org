@@ -46,7 +46,7 @@ module http
      */
     static HttpResponse request(String method, String url, Object headers = {});
 
-    /*! @brief define requested url，return response
+    /*! @brief Request the specified url, and get the response
      @param method define http method, such as: GET, POST
      @param url assigned url，has to be full url with root path
      @param body define http body content
@@ -55,11 +55,20 @@ module http
      */
     static HttpResponse request(String method, String url, SeekableStream body, Object headers = {});
 
-    /*! @brief define requested url，return response
+    /*! @brief Request the specified url, and get the response
      @param method define http method, such as: GET, POST
      @param url assigned url，has to be full url with root path
      @param body define http body content
-     @param headers  define http request header，default is None
+     @param headers define http request header, default is None
+     @return reutrn server response
+     */
+    static HttpResponse request(String method, String url, SeekableStream body, Map headers) async;
+
+    /*! @brief Request the specified url, and get the response
+     @param method define http method, such as: GET, POST
+     @param url assigned url，has to be full url with root path
+     @param body define http body content
+     @param headers  define http request header, default is None
      @return reutrn server response
      */
     static HttpResponse request(String method, String url, Buffer body, Object headers = {});
