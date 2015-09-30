@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['gaussian_5fblur',['GAUSSIAN_BLUR',['../dd/d5d/namespacegd.html#aa4b820b26c471cba1b6f9838de5e1762',1,'gd']]],
   ['gc',['GC',['../d4/dfd/namespaceglobal.html#a02a28758a633a7b1493471415c8949ba',1,'global']]],
   ['gcm',['GCM',['../de/d36/namespacecrypto.html#a88d8ecc273aee729deecbdd7844076d0',1,'crypto']]],
   ['gd',['gd',['../dd/d5d/namespacegd.html',1,'gd'],['../dd/d5d/namespacegd.html#a792ac324d596f28e650565f9f5339cb1',1,'gd::GD()']]],
@@ -29,6 +30,7 @@ var searchData=
   ['gettruecolorpixel',['getTrueColorPixel',['../d2/d41/interfaceImage.html#a585e3918e0516fab908afbb2ba53ba4f',1,'Image']]],
   ['gif',['GIF',['../dd/d5d/namespacegd.html#aa03a61a0909f9761082b9bf5b53fb596',1,'gd']]],
   ['global',['global',['../d4/dfd/namespaceglobal.html',1,'global'],['../d1/d43/interfaceRegex.html#a91bef45763139f15c2cab0ab35cebcc8',1,'Regex::global()']]],
+  ['grayscale',['GRAYSCALE',['../dd/d5d/namespacegd.html#ab8647e4d0526f32e70fd31750288c390',1,'gd']]],
   ['greaterthan',['greaterThan',['../d0/df6/interfaceExpect.html#a73f75cab81e1d239595ee427e0ecbae3',1,'Expect::greaterThan()'],['../d2/dab/namespaceassert.html#a402e1e36f03b891ad44a3281a64642a2',1,'assert::greaterThan()']]],
   ['gridfs',['GridFS',['../d7/d34/interfaceGridFS.html',1,'']]],
   ['gunzip',['gunzip',['../d9/d3e/namespacezlib.html#a165562467d193e958c2349445dc3f90c',1,'zlib']]],

@@ -1,5 +1,7 @@
 var NAVTREEINDEX4 =
 {
+"d7/df5/interfaceSQLite.html#ac61f07a7d6c5471293371086af3186bd":[5,60,9],
+"d7/df5/interfaceSQLite.html#ad66be13eb5b7c5f560fd8511565138c4":[5,60,10],
 "d7/df5/interfaceSQLite.html#ae6d31f438b2c274f32aade526f92da2f":[5,60,7],
 "d8/d25/namespaceprocess.html":[4,17],
 "d8/d2c/interfaceDbConnection.html":[5,7],
@@ -247,7 +249,5 @@ var NAVTREEINDEX4 =
 "da/d8a/interfaceTextColor.html#af2f9ebf1de8543a516e82866df99363d":[5,68,7],
 "da/db3/server.html":[3],
 "da/db3/server.html#web_both":[3,2],
-"da/db3/server.html#web_file":[3,0],
-"da/db3/server.html#web_script":[3,1],
-"da/de1/namespaceos.html":[4,15]
+"da/db3/server.html#web_file":[3,0]
 };

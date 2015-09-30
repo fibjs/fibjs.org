@@ -8,6 +8,7 @@ var searchData=
   ['addcookie',['addCookie',['../d9/d71/interfaceHttpResponse.html#a2c99acd2e0949dd52a4c52acafc7a48b',1,'HttpResponse']]],
   ['addheader',['addHeader',['../da/d38/interfaceHttpMessage.html#ae6707cac0adff8bf5132993fa8de5edb',1,'HttpMessage::addHeader(Map map)'],['../da/d38/interfaceHttpMessage.html#ab3b564f6d8124ed9c889d378bca12f03',1,'HttpMessage::addHeader(String name, Variant value)']]],
   ['addscript',['addScript',['../d5/dd4/interfaceSandBox.html#ab8723cca963a5242b8a8c542464a7d65',1,'SandBox']]],
+  ['affine',['affine',['../d2/d41/interfaceImage.html#a6eb4138c4d2575c2327574e6beed5b81',1,'Image']]],
   ['after',['after',['../df/d04/namespacetest.html#a227f44f6942de86a78a0cef531de0bd2',1,'test']]],
   ['aftereach',['afterEach',['../df/d04/namespacetest.html#a5e2d4ee95a3dfbcc80378c677728114d',1,'test']]],
   ['alert',['alert',['../dc/daa/namespaceconsole.html#a9ed78376361d4d5bf88eb622bd03e7dc',1,'console::alert(String fmt,...)'],['../dc/daa/namespaceconsole.html#af984caa1459a336e9420496f0b7d9f6c',1,'console::alert(...)']]],

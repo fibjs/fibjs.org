@@ -1,5 +1,7 @@
 var NAVTREEINDEX6 =
 {
+"dd/d94/interfaceSocket.html#a6b88dbc459449d2280338e5b702a68b4":[5,59,14],
+"dd/d94/interfaceSocket.html#a6dd1fa9ffddf9c82db0847a913fadc06":[5,59,8],
 "dd/d94/interfaceSocket.html#a7a38cc9beea41220157a0263dcd86bc7":[5,59,10],
 "dd/d94/interfaceSocket.html#a84ed037fcf775c6c38877da2626bdbbc":[5,59,19],
 "dd/d94/interfaceSocket.html#a8ba69699eb78edef37f3874bb05016cd":[5,59,1],

@@ -52,6 +52,8 @@ var interfaceImage =
     [ "copyResized", "d2/d41/interfaceImage.html#a13cf7a5cda51ef9cf6ef0d3e23aa6553", null ],
     [ "copyResampled", "d2/d41/interfaceImage.html#a1ec0664b9c6bcb11daba2f42487a015b", null ],
     [ "copyRotated", "d2/d41/interfaceImage.html#ab0b8df81cbe5349133ce77e3236c7c0c", null ],
+    [ "filter", "d2/d41/interfaceImage.html#ac818a16dba6ada0df7c6e4ddb6cdffa8", null ],
+    [ "affine", "d2/d41/interfaceImage.html#a6eb4138c4d2575c2327574e6beed5b81", null ],
     [ "dispose", "d2/d41/interfaceImage.html#a6b88dbc459449d2280338e5b702a68b4", null ],
     [ "toString", "d2/d41/interfaceImage.html#ac61f07a7d6c5471293371086af3186bd", null ],
     [ "toJSON", "d2/d41/interfaceImage.html#ad66be13eb5b7c5f560fd8511565138c4", null ],
