@@ -435,7 +435,42 @@ interface Image : object
      @param srcY Indicates original top-left y coordinate
      @param width Indicates width
      @param height Indicate height
-     @param angle 指定旋转的角度
+     @param angle Indicate the angle of rotation
      */
     copyRotated(Image source, Number dstX, Number dstY, Integer srcX, Integer srcY, Integer width, Integer height, Integer angle) async;
+
+    /*! @brief Applies a filter to an image, incoming parameters according to the type of filter.
+     @param filterType
+     - MEAN_REMOVAL,    Uses mean removal to achieve a "sketchy" effect.
+     - EDGEDETECT,      Uses edge detection to highlight the edges in the image.
+     - EMBOSS,          Embosses the image.
+     - SELECTIVE_BLUR,  Blurs the image.
+     - GAUSSIAN_BLUR,   Blurs the image using the Gaussian method.
+     - NEGATE,          Reverses all colors of the image.
+     - GRAYSCALE,       Converts the image into grayscale.
+     - SMOOTH,          Makes the image smoother. Use arg1 to set the level of smoothness.
+     - BRIGHTNESS,      Changes the brightness of the image. Use arg1 to set the level of brightness. The range for the brightness is -255 to 255.
+     - CONTRAST,        Changes the contrast of the image. Use arg1 to set the level of contrast, The range for the contrast is 0~100.
+     - COLORIZE,        Changes the hue of the image, Use arg1, arg2 and arg3 in the form of red, green, blue and arg4 for the alpha channel.The range for each color is 0 to 255.
+     @param arg1 Filter parameters: The smoothness level of SMOOTH, The brightness level of BRIGHTNESS, The contrast level of CONTRAST,  The red value of COLORIZE.
+     @param arg2 Filter parameters: The green value of COLORIZE.
+     @param arg3 Filter parameters: The blue value of COLORIZE.
+     @param arg4 Filter parameters: The alpha value of COLORIZE.
+     */
+    filter(Integer filterType, Number arg1 = 0, Number arg2 = 0, Number arg3 = 0, Number arg4 = 0) async;
+
+    /*! @brief Return an image containing the affine transformed src image
+     @param affine Affine matrix which is composed of six double number.
+     @code
+        affine = [ a0, a1, b0, b1, a2, b2 ];
+        x' = a0x + a1y + a2;
+        y' = b0x + b1y + b2;
+     @endcode
+     @param x Optional x coordinate of the clip zone.
+     @param y Optional y coordinate of the clip zone.
+     @param width Optional width of the clip zone.
+     @param height Optional height of the clip zone.
+     @return Return the affine transformed src image.
+     */
+    Image affine(Array affine, Integer x = -1, Integer y = -1, Integer width = -1, Integer height = -1);
 };
