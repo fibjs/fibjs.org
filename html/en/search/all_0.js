@@ -13,6 +13,7 @@ var searchData=
   ['af_5finet',['AF_INET',['../dc/d27/namespacenet.html#a154e84bb59358d901425c2996f3d6fde',1,'net']]],
   ['af_5finet6',['AF_INET6',['../dc/d27/namespacenet.html#a20c82f9528e1f2132ea230ef72d273cd',1,'net']]],
   ['affected',['affected',['../d9/db4/interfaceDBResult.html#a76af35f41832f6ebd616bee6af603afe',1,'DBResult']]],
+  ['affine',['affine',['../d2/d41/interfaceImage.html#a6eb4138c4d2575c2327574e6beed5b81',1,'Image']]],
   ['after',['after',['../df/d04/namespacetest.html#a227f44f6942de86a78a0cef531de0bd2',1,'test']]],
   ['aftereach',['afterEach',['../df/d04/namespacetest.html#a5e2d4ee95a3dfbcc80378c677728114d',1,'test']]],
   ['alert',['ALERT',['../dc/daa/namespaceconsole.html#aa8fd69bb52fd75fb7d68ef5c78205ceb',1,'console::ALERT()'],['../dc/daa/namespaceconsole.html#a9ed78376361d4d5bf88eb622bd03e7dc',1,'console::alert(String fmt,...)'],['../dc/daa/namespaceconsole.html#af984caa1459a336e9420496f0b7d9f6c',1,'console::alert(...)']]],

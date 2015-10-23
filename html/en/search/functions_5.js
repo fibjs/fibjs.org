@@ -7,7 +7,7 @@ var searchData=
   ['filledpolygon',['filledPolygon',['../d2/d41/interfaceImage.html#a37c35b1c00b3e4d04f3f8d79e120af90',1,'Image']]],
   ['filledrectangle',['filledRectangle',['../d2/d41/interfaceImage.html#a36a7c53f7e8d7a72db238edb646d8e75',1,'Image']]],
   ['filltoborder',['fillToBorder',['../d2/d41/interfaceImage.html#a2a972da0b9f84185605cb1996fc8e95d',1,'Image']]],
-  ['filter',['filter',['../de/dd8/interfaceList.html#aecc21fad0418e7f5e67fccbebcabd7a4',1,'List']]],
+  ['filter',['filter',['../d2/d41/interfaceImage.html#ac818a16dba6ada0df7c6e4ddb6cdffa8',1,'Image::filter()'],['../de/dd8/interfaceList.html#aecc21fad0418e7f5e67fccbebcabd7a4',1,'List::filter()']]],
   ['find',['find',['../d6/d6b/interfaceMongoCollection.html#a132b26bdf7606377d44aca63e6196a77',1,'MongoCollection']]],
   ['findandmodify',['findAndModify',['../d6/d6b/interfaceMongoCollection.html#a5bd3aad0580995fd97ce621b67cef075',1,'MongoCollection']]],
   ['findone',['findOne',['../d6/d6b/interfaceMongoCollection.html#a06265972bac844168bcb34d026fab427',1,'MongoCollection']]],

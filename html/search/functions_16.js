@@ -19,7 +19,6 @@ var searchData=
   ['writeint64le',['writeInt64LE',['../d9/dae/interfaceBuffer.html#a1476421a3d84a0d27b02a44a7f38d680',1,'Buffer']]],
   ['writeint8',['writeInt8',['../d9/dae/interfaceBuffer.html#afad216b40b5a7f0c9980cadf63a9288d',1,'Buffer']]],
   ['writeline',['writeLine',['../d0/d37/interfaceBufferedStream.html#a4da24e0d02dc1725ae42545689588e52',1,'BufferedStream']]],
-  ['writepacket',['writePacket',['../d0/d37/interfaceBufferedStream.html#a694b70b4d2d1c0718af70ff30decc459',1,'BufferedStream']]],
   ['writetext',['writeText',['../d0/d37/interfaceBufferedStream.html#ab222e6d2021b844bccf45cdaa59729cf',1,'BufferedStream']]],
   ['writeuint16be',['writeUInt16BE',['../d9/dae/interfaceBuffer.html#ab853658a8ccf049770a020d6ab3a0f40',1,'Buffer']]],
   ['writeuint16le',['writeUInt16LE',['../d9/dae/interfaceBuffer.html#ad3440f99e0ee40eb4020f6009258c913',1,'Buffer']]],

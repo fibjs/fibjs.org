@@ -2,6 +2,7 @@ var searchData=
 [
   ['name',['name',['../df/d49/interfaceCipher.html#a8c7a977f76574518766d47c86dbdec00',1,'Cipher::name()'],['../d3/d3a/interfaceFile.html#ae249a82a4ed27278e366b4f791c59d4f',1,'File::name()'],['../d2/d65/interfaceHeapGraphEdge.html#aa1e9e4d920c9d623e0677466790d7c3c',1,'HeapGraphEdge::name()'],['../df/db2/interfaceHeapGraphNode.html#a234eab36fa50d3cea03e364d99adfa46',1,'HeapGraphNode::name()'],['../d3/dea/interfaceHttpCookie.html#a1021070764b5270a9b7dcb14a48e22e7',1,'HttpCookie::name()'],['../d5/dac/interfacePKey.html#aa2c0c0b3b94a7f6ecd551fa994413c6b',1,'PKey::name()'],['../dc/da9/interfaceStat.html#ad647ebf992d48ff3b14a01c27563171d',1,'Stat::name()'],['../d7/dce/interfaceXmlAttr.html#aa75b1e6801f25d023fcb2c181fae149e',1,'XmlAttr::name()'],['../d4/d35/interfaceXmlDocumentType.html#a3224f939c2efed4a0e90b5d50a89008a',1,'XmlDocumentType::name()']]],
   ['namespaceuri',['namespaceURI',['../d7/dce/interfaceXmlAttr.html#adca7cfb0b2e30cb5e20e941fe0b0d67f',1,'XmlAttr::namespaceURI()'],['../d7/ddb/interfaceXmlElement.html#a9e1e86588b68fdbcc3209a5fa54846e9',1,'XmlElement::namespaceURI()']]],
+  ['negate',['NEGATE',['../dd/d5d/namespacegd.html#a3177978adc87ff75dd47e95fb8967337',1,'gd']]],
   ['net',['net',['../dc/d27/namespacenet.html',1,'']]],
   ['networkinfo',['networkInfo',['../da/de1/namespaceos.html#ade138388eb17cb0d8804d3a615402a0e',1,'os']]],
   ['next',['next',['../dc/d22/interfaceX509Cert.html#a0546d54369b3208d63bc547c8fe0efcc',1,'X509Cert::next()'],['../dc/d27/interfaceMongoCursor.html#a81d3581bb430a7982f5916668b060832',1,'MongoCursor::next()']]],
@@ -39,7 +40,7 @@ var searchData=
   ['notequal',['notEqual',['../d2/dab/namespaceassert.html#a2685f5cac15c1818fdd1be92cbf369c1',1,'assert']]],
   ['notexist',['notExist',['../d2/dab/namespaceassert.html#a3d4e62849c9d75031ece79a91c96aa39',1,'assert']]],
   ['notgreaterthan',['notGreaterThan',['../d2/dab/namespaceassert.html#ac0a045550d46df6659c6a97f2b1554b6',1,'assert']]],
-  ['notice',['notice',['../da/d8a/interfaceTextColor.html#a9b7bce159ed5ec43137063a20a9e0e16',1,'TextColor::notice()'],['../dc/daa/namespaceconsole.html#a7bd9f400a69ccc58045bea58edc43614',1,'console::notice(String fmt,...)'],['../dc/daa/namespaceconsole.html#a9772882f183a2f91d26f8973ca95df3c',1,'console::notice(...)'],['../dc/daa/namespaceconsole.html#a69ec2512f58da156a3622655f50a583e',1,'console::NOTICE()']]],
+  ['notice',['notice',['../da/d8a/interfaceTextColor.html#a9b7bce159ed5ec43137063a20a9e0e16',1,'TextColor::notice()'],['../dc/daa/namespaceconsole.html#a69ec2512f58da156a3622655f50a583e',1,'console::NOTICE()'],['../dc/daa/namespaceconsole.html#a7bd9f400a69ccc58045bea58edc43614',1,'console::notice(String fmt,...)'],['../dc/daa/namespaceconsole.html#a9772882f183a2f91d26f8973ca95df3c',1,'console::notice(...)']]],
   ['notify',['notify',['../d5/d45/interfaceCondition.html#a167c3c9a7832c6d9cfc8d0e5fbab3c22',1,'Condition']]],
   ['notifyall',['notifyAll',['../d5/d45/interfaceCondition.html#a9036ab41db91675c07aea35c9e62cc10',1,'Condition']]],
   ['notlessthan',['notLessThan',['../d2/dab/namespaceassert.html#a552b2247c9920297cad7068a1fb007f0',1,'assert']]],

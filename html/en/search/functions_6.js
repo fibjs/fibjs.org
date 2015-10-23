@@ -20,7 +20,7 @@ var searchData=
   ['getnodebyid',['getNodeById',['../de/d09/interfaceHeapSnapshot.html#af00405058ecc8b96d4f09b556d2c4861',1,'HeapSnapshot']]],
   ['getpixel',['getPixel',['../d2/d41/interfaceImage.html#a862add7a52d4ed7faae9067282ed8ec1',1,'Image']]],
   ['getrange',['getRange',['../d7/d32/interfaceRedis.html#a04f350bace05c348daed5b1bdeb0b12e',1,'Redis']]],
-  ['getset',['getSet',['../d7/d32/interfaceRedis.html#a9139d00083d2795de81119ea1e9deec3',1,'Redis::getSet(Buffer key)'],['../d7/d32/interfaceRedis.html#a0a917ae043d84cf5b978021b81c34cde',1,'Redis::getset(Buffer key, Buffer value)']]],
+  ['getset',['getset',['../d7/d32/interfaceRedis.html#a0a917ae043d84cf5b978021b81c34cde',1,'Redis::getset(Buffer key, Buffer value)'],['../d7/d32/interfaceRedis.html#a9139d00083d2795de81119ea1e9deec3',1,'Redis::getSet(Buffer key)']]],
   ['getsortedset',['getSortedSet',['../d7/d32/interfaceRedis.html#aff0567a3b6cf6eb95f5ab5606ae92309',1,'Redis']]],
   ['gettonode',['getToNode',['../d2/d65/interfaceHeapGraphEdge.html#afc0ae5b4248fe3149ebe492b177696e1',1,'HeapGraphEdge']]],
   ['gettruecolorpixel',['getTrueColorPixel',['../d2/d41/interfaceImage.html#a585e3918e0516fab908afbb2ba53ba4f',1,'Image']]],

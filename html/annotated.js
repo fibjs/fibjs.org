@@ -44,8 +44,6 @@ var annotated =
     [ "MongoID", "d9/d2f/interfaceMongoID.html", "d9/d2f/interfaceMongoID" ],
     [ "MySQL", "d2/d68/interfaceMySQL.html", "d2/d68/interfaceMySQL" ],
     [ "object", "db/d38/interfaceobject.html", "db/d38/interfaceobject" ],
-    [ "PacketHandler", "de/dba/interfacePacketHandler.html", "de/dba/interfacePacketHandler" ],
-    [ "PacketMessage", "df/da2/interfacePacketMessage.html", "df/da2/interfacePacketMessage" ],
     [ "PKey", "d5/dac/interfacePKey.html", "d5/dac/interfacePKey" ],
     [ "Queue", "d1/d56/interfaceQueue.html", "d1/d56/interfaceQueue" ],
     [ "Redis", "d7/d32/interfaceRedis.html", "d7/d32/interfaceRedis" ],

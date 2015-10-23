@@ -1,5 +1,7 @@
 var NAVTREEINDEX2 =
 {
+"d4/dc7/interfaceStream.html#ab9261a7662bc8bb4a898bc15dc16f206":[5,66,7],
+"d4/dc7/interfaceStream.html#ac61f07a7d6c5471293371086af3186bd":[5,66,5],
 "d4/dc7/interfaceStream.html#ad66be13eb5b7c5f560fd8511565138c4":[5,66,6],
 "d4/dd8/interfaceXmlCDATASection.html":[5,78],
 "d4/dd8/interfaceXmlCDATASection.html#a055bc3d28655697652e075ce4cde2383":[5,78,21],
@@ -247,7 +249,5 @@ var NAVTREEINDEX2 =
 "d6/de7/interfaceuuidValue.html#ac61f07a7d6c5471293371086af3186bd":[5,71,3],
 "d6/de7/interfaceuuidValue.html#acdf7d45f83f0ad92f1301aba89eb20e4":[5,71,1],
 "d6/de7/interfaceuuidValue.html#ad66be13eb5b7c5f560fd8511565138c4":[5,71,4],
-"d6/de7/interfaceuuidValue.html#ae6a30c7c71dbfd82b2f10d7325e4c73b":[5,71,0],
-"d6/df7/interfaceTrigger.html":[5,69],
-"d6/df7/interfaceTrigger.html#a101c95c3d098435250e5d15db4eb7359":[5,69,1]
+"d6/de7/interfaceuuidValue.html#ae6a30c7c71dbfd82b2f10d7325e4c73b":[5,71,0]
 };

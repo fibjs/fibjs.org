@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['gaussian_5fblur',['GAUSSIAN_BLUR',['../dd/d5d/namespacegd.html#aa4b820b26c471cba1b6f9838de5e1762',1,'gd']]],
   ['gc',['GC',['../d4/dfd/namespaceglobal.html#a02a28758a633a7b1493471415c8949ba',1,'global']]],
   ['gcm',['GCM',['../de/d36/namespacecrypto.html#a88d8ecc273aee729deecbdd7844076d0',1,'crypto']]],
   ['gd',['gd',['../dd/d5d/namespacegd.html',1,'gd'],['../dd/d5d/namespacegd.html#a792ac324d596f28e650565f9f5339cb1',1,'gd::GD()']]],
@@ -23,12 +24,13 @@ var searchData=
   ['getnodebyid',['getNodeById',['../de/d09/interfaceHeapSnapshot.html#af00405058ecc8b96d4f09b556d2c4861',1,'HeapSnapshot']]],
   ['getpixel',['getPixel',['../d2/d41/interfaceImage.html#a862add7a52d4ed7faae9067282ed8ec1',1,'Image']]],
   ['getrange',['getRange',['../d7/d32/interfaceRedis.html#a04f350bace05c348daed5b1bdeb0b12e',1,'Redis']]],
-  ['getset',['getSet',['../d7/d32/interfaceRedis.html#a9139d00083d2795de81119ea1e9deec3',1,'Redis::getSet(Buffer key)'],['../d7/d32/interfaceRedis.html#a0a917ae043d84cf5b978021b81c34cde',1,'Redis::getset(Buffer key, Buffer value)']]],
+  ['getset',['getset',['../d7/d32/interfaceRedis.html#a0a917ae043d84cf5b978021b81c34cde',1,'Redis::getset(Buffer key, Buffer value)'],['../d7/d32/interfaceRedis.html#a9139d00083d2795de81119ea1e9deec3',1,'Redis::getSet(Buffer key)']]],
   ['getsortedset',['getSortedSet',['../d7/d32/interfaceRedis.html#aff0567a3b6cf6eb95f5ab5606ae92309',1,'Redis']]],
   ['gettonode',['getToNode',['../d2/d65/interfaceHeapGraphEdge.html#afc0ae5b4248fe3149ebe492b177696e1',1,'HeapGraphEdge']]],
   ['gettruecolorpixel',['getTrueColorPixel',['../d2/d41/interfaceImage.html#a585e3918e0516fab908afbb2ba53ba4f',1,'Image']]],
   ['gif',['GIF',['../dd/d5d/namespacegd.html#aa03a61a0909f9761082b9bf5b53fb596',1,'gd']]],
   ['global',['global',['../d4/dfd/namespaceglobal.html',1,'global'],['../d1/d43/interfaceRegex.html#a91bef45763139f15c2cab0ab35cebcc8',1,'Regex::global()']]],
+  ['grayscale',['GRAYSCALE',['../dd/d5d/namespacegd.html#ab8647e4d0526f32e70fd31750288c390',1,'gd']]],
   ['greaterthan',['greaterThan',['../d0/df6/interfaceExpect.html#a73f75cab81e1d239595ee427e0ecbae3',1,'Expect::greaterThan()'],['../d2/dab/namespaceassert.html#a402e1e36f03b891ad44a3281a64642a2',1,'assert::greaterThan()']]],
   ['gridfs',['GridFS',['../d7/d34/interfaceGridFS.html',1,'']]],
   ['gunzip',['gunzip',['../d9/d3e/namespacezlib.html#a165562467d193e958c2349445dc3f90c',1,'zlib']]],

@@ -1,7 +1,7 @@
 var searchData=
 [
   ['wait',['wait',['../d5/d45/interfaceCondition.html#a77389487addf6b616767bd21d7386b0d',1,'Condition::wait()'],['../d7/ddf/interfaceEvent.html#a5088e961dddd82b86142b54ae9dd6b14',1,'Event::wait()'],['../dc/d90/interfaceSemaphore.html#ab144395cba916969214bbe60f7521fed',1,'Semaphore::wait()']]],
-  ['warn',['warn',['../da/d8a/interfaceTextColor.html#a1b2fab327d7b9814c9dd37b5f3861643',1,'TextColor::warn()'],['../dc/daa/namespaceconsole.html#a85513e51e93e8d827ebedba45359161c',1,'console::warn(String fmt,...)'],['../dc/daa/namespaceconsole.html#a4731e95e6360c7bdf0513236bc0ea032',1,'console::warn(...)'],['../dc/daa/namespaceconsole.html#ae02c4729b8e8c15a3b166ec5d4c08365',1,'console::WARN()']]],
+  ['warn',['warn',['../da/d8a/interfaceTextColor.html#a1b2fab327d7b9814c9dd37b5f3861643',1,'TextColor::warn()'],['../dc/daa/namespaceconsole.html#ae02c4729b8e8c15a3b166ec5d4c08365',1,'console::WARN()'],['../dc/daa/namespaceconsole.html#a85513e51e93e8d827ebedba45359161c',1,'console::warn(String fmt,...)'],['../dc/daa/namespaceconsole.html#a4731e95e6360c7bdf0513236bc0ea032',1,'console::warn(...)']]],
   ['websocket',['websocket',['../d0/d42/namespacewebsocket.html',1,'']]],
   ['websockethandler',['WebSocketHandler',['../da/d20/interfaceWebSocketHandler.html',1,'WebSocketHandler'],['../da/d20/interfaceWebSocketHandler.html#a3ddeaa1c9e3d06b767b1b811bf4dde5e',1,'WebSocketHandler::WebSocketHandler()']]],
   ['websocketmessage',['WebSocketMessage',['../db/d5d/interfaceWebSocketMessage.html',1,'WebSocketMessage'],['../db/d5d/interfaceWebSocketMessage.html#a885c7d4696b159cc1cfb77a97466bd69',1,'WebSocketMessage::WebSocketMessage()']]],
@@ -22,7 +22,6 @@ var searchData=
   ['writeint64le',['writeInt64LE',['../d9/dae/interfaceBuffer.html#a1476421a3d84a0d27b02a44a7f38d680',1,'Buffer']]],
   ['writeint8',['writeInt8',['../d9/dae/interfaceBuffer.html#afad216b40b5a7f0c9980cadf63a9288d',1,'Buffer']]],
   ['writeline',['writeLine',['../d0/d37/interfaceBufferedStream.html#a4da24e0d02dc1725ae42545689588e52',1,'BufferedStream']]],
-  ['writepacket',['writePacket',['../d0/d37/interfaceBufferedStream.html#a694b70b4d2d1c0718af70ff30decc459',1,'BufferedStream']]],
   ['writetext',['writeText',['../d0/d37/interfaceBufferedStream.html#ab222e6d2021b844bccf45cdaa59729cf',1,'BufferedStream']]],
   ['writeuint16be',['writeUInt16BE',['../d9/dae/interfaceBuffer.html#ab853658a8ccf049770a020d6ab3a0f40',1,'Buffer']]],
   ['writeuint16le',['writeUInt16LE',['../d9/dae/interfaceBuffer.html#ad3440f99e0ee40eb4020f6009258c913',1,'Buffer']]],

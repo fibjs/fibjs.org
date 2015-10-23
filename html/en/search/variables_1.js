@@ -17,5 +17,6 @@ var searchData=
   ['body',['body',['../db/dd0/interfaceHttpUploadData.html#a1fd7218d0b341a9415f76a4bc0d34207',1,'HttpUploadData::body()'],['../d6/db7/interfaceMessage.html#a102e4b9b4a800bf24fd01a66df49b489',1,'Message::body()'],['../d6/d47/interfaceXmlDocument.html#a621149c54c557f6e0dfbb3612a723b82',1,'XmlDocument::body()']]],
   ['boolean',['boolean',['../d0/df6/interfaceExpect.html#ad9fea5eb5bacb3840bedd40451df047d',1,'Expect']]],
   ['both',['BOTH',['../dd/d5d/namespacegd.html#a777685b5adc4abb88c9acede6cc66c0e',1,'gd']]],
+  ['brightness',['BRIGHTNESS',['../dd/d5d/namespacegd.html#aadea7459b8ff35122c1b45980da86eea',1,'gd']]],
   ['buffer',['Buffer',['../d4/dfd/namespaceglobal.html#abe961e24f94e940799497f08f5704916',1,'global']]]
 ];
