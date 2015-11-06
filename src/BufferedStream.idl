@@ -38,12 +38,6 @@ interface BufferedStream : Stream
      */
     String readUntil(String mk, Integer maxlen = -1) async;
 
-    /*! @brief Read a binary data packet
-     @param limit The maximum number of the byte to read. Throw an error when overread.
-     @return The binary data block to read. If no data to read or the connection is interrupted, return null.
-     */
-    deprecated Buffer readPacket(Integer limit = -1) async;
-
     /*! @brief Write a string
      @param txt The string to write
      */
@@ -53,11 +47,6 @@ interface BufferedStream : Stream
      @param txt The string to write
      */
     writeLine(String txt) async;
-
-    /*! @brief Write a binary data packet
-     @param data The binary data to write
-     */
-    writePacket(Buffer data) async;
 
     /*! @brief Query the stream object when creating the buffer object */
     readonly Stream stream;
