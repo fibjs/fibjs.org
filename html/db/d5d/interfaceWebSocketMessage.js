@@ -6,7 +6,7 @@ var interfaceWebSocketMessage =
     [ "write", "db/d5d/interfaceWebSocketMessage.html#a42fdd87346cb529e34e1e12e41afe2bc", null ],
     [ "clear", "db/d5d/interfaceWebSocketMessage.html#a8ed24470ab5214955c70bb108209f9d4", null ],
     [ "sendTo", "db/d5d/interfaceWebSocketMessage.html#a8c456b35a88228f954974592e9b5c5ab", null ],
-    [ "readFrom", "db/d5d/interfaceWebSocketMessage.html#ad4a8dc64a0be31e60e98c671bc630203", null ],
+    [ "readFrom", "db/d5d/interfaceWebSocketMessage.html#a76cbd0ce572da0fd10218cc0aab973cf", null ],
     [ "dispose", "db/d5d/interfaceWebSocketMessage.html#a6b88dbc459449d2280338e5b702a68b4", null ],
     [ "toString", "db/d5d/interfaceWebSocketMessage.html#ac61f07a7d6c5471293371086af3186bd", null ],
     [ "toJSON", "db/d5d/interfaceWebSocketMessage.html#ad66be13eb5b7c5f560fd8511565138c4", null ],

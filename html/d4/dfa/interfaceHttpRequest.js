@@ -14,7 +14,7 @@ var interfaceHttpRequest =
     [ "write", "d4/dfa/interfaceHttpRequest.html#a42fdd87346cb529e34e1e12e41afe2bc", null ],
     [ "clear", "d4/dfa/interfaceHttpRequest.html#a8ed24470ab5214955c70bb108209f9d4", null ],
     [ "sendTo", "d4/dfa/interfaceHttpRequest.html#a8c456b35a88228f954974592e9b5c5ab", null ],
-    [ "readFrom", "d4/dfa/interfaceHttpRequest.html#ad4a8dc64a0be31e60e98c671bc630203", null ],
+    [ "readFrom", "d4/dfa/interfaceHttpRequest.html#a76cbd0ce572da0fd10218cc0aab973cf", null ],
     [ "dispose", "d4/dfa/interfaceHttpRequest.html#a6b88dbc459449d2280338e5b702a68b4", null ],
     [ "toString", "d4/dfa/interfaceHttpRequest.html#ac61f07a7d6c5471293371086af3186bd", null ],
     [ "toJSON", "d4/dfa/interfaceHttpRequest.html#ad66be13eb5b7c5f560fd8511565138c4", null ],
