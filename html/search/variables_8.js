@@ -1,13 +1,18 @@
 var searchData=
 [
-  ['id',['id',['../df/db2/interfaceHeapGraphNode.html#ac8676ab128e82182641b95411f087ffc',1,'HeapGraphNode::id()'],['../d7/ddb/interfaceXmlElement.html#a2289ea1bafc4e091f2a7f0a0e12a9401',1,'XmlElement::id()']]],
-  ['ignorecase',['ignoreCase',['../d1/d43/interfaceRegex.html#ac2f8a95e4a1cac13a3312d0ec7eb0fd9',1,'Regex']]],
-  ['info',['INFO',['../dc/daa/namespaceconsole.html#add424d51dfc7bd19ac906d010b9c7694',1,'console']]],
-  ['innerhtml',['innerHTML',['../d7/ddb/interfaceXmlElement.html#ae253c6d9ada5b3b9a38b6b840a25394a',1,'XmlElement']]],
-  ['inputencoding',['inputEncoding',['../d6/d47/interfaceXmlDocument.html#a7b57a17ac49e4bac77f6d13e0e88e2f4',1,'XmlDocument']]],
-  ['insertid',['insertId',['../d9/db4/interfaceDBResult.html#a9d489a96d737189b9765aba860fec60e',1,'DBResult']]],
-  ['int64',['Int64',['../d4/dfd/namespaceglobal.html#a45adb6a5d19452e78ecd07f0036cfdf9',1,'global']]],
-  ['is',['is',['../d0/df6/interfaceExpect.html#a5c4eaa8bc0a75b697baacf1a761881ba',1,'Expect']]],
-  ['issuer',['issuer',['../dc/d22/interfaceX509Cert.html#a72345ac653b7808dc7eb2cc0a9db1268',1,'X509Cert']]],
-  ['ivsize',['ivSize',['../df/d49/interfaceCipher.html#a8008bbe01ddf221b6482cd26ac63d80d',1,'Cipher']]]
+  ['handler',['handler',['../d6/d18/interfaceHttpHandler.html#a31b90c96f95c0b9e80643aa2c7a52091',1,'HttpHandler::handler()'],['../df/dd8/interfaceSslHandler.html#aaa16369650afb205fdac2e5f5a8f3028',1,'SslHandler::handler()'],['../d7/d48/interfaceTcpServer.html#a4cc96bf996809c60c59c2e8df5daa653',1,'TcpServer::handler()'],['../da/d20/interfaceWebSocketHandler.html#ab7c54e9e04c2672702c37fa7c8f17d6b',1,'WebSocketHandler::handler()']]],
+  ['hash',['hash',['../dd/d23/interfaceUrl.html#a8266785507de4265722ded03d1119d1e',1,'Url']]],
+  ['have',['have',['../d0/df6/interfaceExpect.html#abf30a5901c5cd7fb1a9f7d35420c07a2',1,'Expect']]],
+  ['head',['head',['../d6/d47/interfaceXmlDocument.html#a1052d2e3c611f68426fd1870381bd8fe',1,'XmlDocument']]],
+  ['headers',['headers',['../da/d38/interfaceHttpMessage.html#aedc41fa258d4d5cf91d2f850dd49ece4',1,'HttpMessage']]],
+  ['height',['height',['../d2/d41/interfaceImage.html#a9b98a87b3cf26704f574a98268638875',1,'Image']]],
+  ['hi',['hi',['../df/dc1/interfaceInt64.html#aa356139546e7fcc65dc524ed52f585b7',1,'Int64']]],
+  ['highlight',['highLight',['../da/d8a/interfaceTextColor.html#af2f9ebf1de8543a516e82866df99363d',1,'TextColor']]],
+  ['horizontal',['HORIZONTAL',['../dd/d5d/namespacegd.html#aed32009ea9b9411460dbcb418fac8bdc',1,'gd']]],
+  ['host',['host',['../dd/d23/interfaceUrl.html#adb97976e1e9083bfe92fd95555dfda36',1,'Url']]],
+  ['hostname',['hostname',['../dd/d23/interfaceUrl.html#a826ad49e0473aecf775352d18fad7a05',1,'Url::hostname()'],['../da/de1/namespaceos.html#a10d119aa110a46714071e81522b0645c',1,'os::hostname()']]],
+  ['href',['href',['../dd/d23/interfaceUrl.html#ab0e04fcefbb5ea69d357773973010e4d',1,'Url']]],
+  ['httphandler',['HttpHandler',['../dd/dbd/namespacemq.html#a654273b519c5b5f53b2b9f00cd6dd0ee',1,'mq']]],
+  ['httponly',['httpOnly',['../d3/dea/interfaceHttpCookie.html#a5116746acee8713cfc7f854c0e0164ae',1,'HttpCookie']]],
+  ['httpstats',['httpStats',['../d4/d79/interfaceHttpServer.html#afd63b2bd5c6a3fd15d7edc4ea3fae70c',1,'HttpServer']]]
 ];

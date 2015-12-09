@@ -1,14 +1,20 @@
 var searchData=
 [
-  ['value',['value',['../d3/dea/interfaceHttpCookie.html#aa93491877f72a151c7d44af9dfd3e3a7',1,'HttpCookie::value()'],['../d6/db7/interfaceMessage.html#a572dd6923c69839d8e29da3e342b8f76',1,'Message::value()'],['../d7/dce/interfaceXmlAttr.html#a8b7f7daea2667f93eb17e732bc254872',1,'XmlAttr::value()']]],
-  ['valueof',['valueOf',['../db/d38/interfaceobject.html#ab9261a7662bc8bb4a898bc15dc16f206',1,'object']]],
-  ['values',['values',['../d6/d72/namespaceutil.html#a635d7c351eeae4580728d278ef79c8c3',1,'util']]],
-  ['verification',['verification',['../d7/d42/interfaceHttpsServer.html#a13d68cbb20df9dcf7f6c451370e48e58',1,'HttpsServer::verification()'],['../df/dd8/interfaceSslHandler.html#a5aaada7d1b3790a9de4a20fbf9eddebc',1,'SslHandler::verification()'],['../d1/d5c/interfaceSslServer.html#a05763b8ddf655f5bf70986007e9e783b',1,'SslServer::verification()'],['../d0/d97/interfaceSslSocket.html#aedb74c712c82af1e7cd72dd5224ab04b',1,'SslSocket::verification()'],['../df/dd2/namespacessl.html#a6c0ed13233d572829abc2c2043e6c8a7',1,'ssl::verification()']]],
-  ['verify',['verify',['../d5/dac/interfacePKey.html#a2728751b5e6a1eafe8f06c01f9f9a5f0',1,'PKey::verify()'],['../dc/d22/interfaceX509Cert.html#a9c3f30cfaa7877498886af3761e352c2',1,'X509Cert::verify()']]],
-  ['verify_5fnone',['VERIFY_NONE',['../df/dd2/namespacessl.html#a057dc4d491d35e764dc18dab3d9c5a7f',1,'ssl']]],
-  ['verify_5foptional',['VERIFY_OPTIONAL',['../df/dd2/namespacessl.html#a75161c730b3e4a749ac8d409fc2a3c79',1,'ssl']]],
-  ['verify_5frequired',['VERIFY_REQUIRED',['../df/dd2/namespacessl.html#ad394e86a4d3616559e5f8f4da312cd8a',1,'ssl']]],
-  ['version',['version',['../dc/d22/interfaceX509Cert.html#af38ce8e9508c32488d8963ef2478997b',1,'X509Cert::version()'],['../da/de1/namespaceos.html#a2c3e53a918b2455b73d33dc896a0d831',1,'os::version()']]],
-  ['vertical',['VERTICAL',['../dd/d5d/namespacegd.html#a9dfdb4a3291de9e0d6e0f33d4b05123b',1,'gd']]],
-  ['vm',['vm',['../d8/d89/namespacevm.html',1,'']]]
+  ['umask',['umask',['../d5/d8f/namespacefs.html#a5e69516c3f8512b7b4564cf65449f4c7',1,'fs']]],
+  ['undefined',['undefined',['../d0/df6/interfaceExpect.html#a09c2d66511679a6a0db4fde9c990b417',1,'Expect']]],
+  ['union',['union',['../d6/d72/namespaceutil.html#aae81b8225da8434a2513f9cea9c716a4',1,'util']]],
+  ['unique',['unique',['../d6/d72/namespaceutil.html#aa4e3b3c1ed02f946cd77e6b10ffe5209',1,'util']]],
+  ['unlink',['unlink',['../d5/d8f/namespacefs.html#ad9728d670aa8f486d76c4052f6c8acd5',1,'fs']]],
+  ['unpsub',['unpsub',['../d7/d32/interfaceRedis.html#a2d26d2cea1bab8f765bb5b958784bc47',1,'Redis::unpsub(String pattern)'],['../d7/d32/interfaceRedis.html#ab62ae6f27cac0685f76b32f17b512408',1,'Redis::unpsub(String pattern, Function func)'],['../d7/d32/interfaceRedis.html#a38755960e0e8384b852e8bf3b9cb4ee7',1,'Redis::unpsub(Array patterns)'],['../d7/d32/interfaceRedis.html#a5b98e8b7fccf5f1184efd27454d001e6',1,'Redis::unpsub(Object map)']]],
+  ['unsub',['unsub',['../d7/d32/interfaceRedis.html#aff9f809876d8447ca344e0845c7fbd88',1,'Redis::unsub(Buffer channel)'],['../d7/d32/interfaceRedis.html#a2c006aff561c91d3180790cc2b05b366',1,'Redis::unsub(Buffer channel, Function func)'],['../d7/d32/interfaceRedis.html#ae01fbf20c38001bba77ce6140f872d82',1,'Redis::unsub(Array channels)'],['../d7/d32/interfaceRedis.html#a4a9e5c8ccd85257bc2e36e7ee4f16940',1,'Redis::unsub(Object map)']]],
+  ['update',['update',['../d3/d41/interfaceDigest.html#ac699e20f28b80cbdbd678155ab271dd7',1,'Digest::update()'],['../d6/d6b/interfaceMongoCollection.html#a07c0076fbb6551b54cdd89d192f3fdf5',1,'MongoCollection::update(Object query, Object document, Boolean upsert=false, Boolean multi=false)'],['../d6/d6b/interfaceMongoCollection.html#abd3a6d526b752895af7d0d76c39dfd1c',1,'MongoCollection::update(Object query, Object document, Object options)']]],
+  ['upgrade',['upgrade',['../da/d38/interfaceHttpMessage.html#a8bb8e89cb8c043db64bc6572f6ad97c9',1,'HttpMessage']]],
+  ['uptime',['uptime',['../df/d0b/interfaceStats.html#a32d73f6238ce28d6651f18465af79ae0',1,'Stats::uptime()'],['../da/de1/namespaceos.html#a7fa90fa210d31f489f824de639820d42',1,'os::uptime()']]],
+  ['url',['Url',['../dd/d23/interfaceUrl.html',1,'Url'],['../dd/d23/interfaceUrl.html#a9a1f4ab58de0b3d7d55708e7ecad1adc',1,'Url::Url(Object args)'],['../dd/d23/interfaceUrl.html#aec1f5c08b7c5046e838286600f2e955a',1,'Url::Url(String url=&quot;&quot;)'],['../d1/dd6/namespaceuuid.html#a83e49a96e6da072f08266ca23df3c62e',1,'uuid::URL()'],['../dc/d27/namespacenet.html#a254010f94b041097344bfcedde46b0ad',1,'net::Url()']]],
+  ['usage',['usage',['../dc/d22/interfaceX509Cert.html#abf97c5907bc00259d7dce54d788ff235',1,'X509Cert']]],
+  ['use',['use',['../d2/d68/interfaceMySQL.html#af3d7af443d45a1e778aa00a76c28f51b',1,'MySQL']]],
+  ['username',['username',['../dd/d23/interfaceUrl.html#a824c81c2a6c19971bd3b321ff4009ab2',1,'Url']]],
+  ['util',['util',['../d6/d72/namespaceutil.html',1,'']]],
+  ['uuid',['uuid',['../d1/dd6/namespaceuuid.html',1,'uuid'],['../d1/dd6/namespaceuuid.html#a5fdc6d7f478a448083de3d30305d9d79',1,'uuid::uuid(String s)'],['../d1/dd6/namespaceuuid.html#a61e618bfdc2d1146b05c0a73b7dbfe25',1,'uuid::uuid(Buffer data)']]],
+  ['uuidvalue',['uuidValue',['../d6/de7/interfaceuuidValue.html',1,'']]]
 ];
