@@ -18,6 +18,7 @@ var searchData=
   ['time',['time',['../de/d09/interfaceHeapSnapshot.html#a56efcbdd2f3826e591e30f175dadd840',1,'HeapSnapshot::time()'],['../dc/daa/namespaceconsole.html#aafdd7ca53b206fdeb5ca882510374475',1,'console::time()'],['../da/de1/namespaceos.html#a38a7252c2af6bb54a57fb80d75ab6b6c',1,'os::time()']]],
   ['timeend',['timeEnd',['../dc/daa/namespaceconsole.html#ab53e089924e192a2fa616e362f0bb71c',1,'console']]],
   ['timeout',['timeout',['../d7/df5/interfaceSQLite.html#ac1125a44ad8f97d1cf7e9a3acd08db1e',1,'SQLite']]],
+  ['timer',['Timer',['../df/df8/interfaceTimer.html',1,'']]],
   ['timezone',['timezone',['../da/de1/namespaceos.html#a9628c5429b13f4979df6569d374b5815',1,'os']]],
   ['title',['title',['../d6/d47/interfaceXmlDocument.html#a0c4ac9f00a43be8a933fcd4d45612c8d',1,'XmlDocument']]],
   ['tls1',['tls1',['../df/dd2/namespacessl.html#ad9ce55d649306fbc05ec48e1ad58c1ca',1,'ssl']]],

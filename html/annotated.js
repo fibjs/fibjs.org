@@ -67,6 +67,7 @@ var annotated =
     [ "Stream", "d4/dc7/interfaceStream.html", "d4/dc7/interfaceStream" ],
     [ "TcpServer", "d7/d48/interfaceTcpServer.html", "d7/d48/interfaceTcpServer" ],
     [ "TextColor", "da/d8a/interfaceTextColor.html", "da/d8a/interfaceTextColor" ],
+    [ "Timer", "df/df8/interfaceTimer.html", "df/df8/interfaceTimer" ],
     [ "Trigger", "d6/df7/interfaceTrigger.html", "d6/df7/interfaceTrigger" ],
     [ "Url", "dd/d23/interfaceUrl.html", "dd/d23/interfaceUrl" ],
     [ "uuidValue", "d6/de7/interfaceuuidValue.html", "d6/de7/interfaceuuidValue" ],
