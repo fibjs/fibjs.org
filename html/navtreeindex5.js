@@ -1,5 +1,6 @@
 var NAVTREEINDEX5 =
 {
+"da/de1/namespaceos.html":[4,15],
 "da/de8/interfaceSmtp.html":[5,56],
 "da/de8/interfaceSmtp.html#a01a00f4b52964eec188c5681ec74758b":[5,56,13],
 "da/de8/interfaceSmtp.html#a0a493d39818f762743e6d4e20c1fcddf":[5,56,6],
@@ -248,6 +249,5 @@ var NAVTREEINDEX5 =
 "dd/d94/interfaceSocket.html#a4ad81f48d21bceda7bc1c27389685c6f":[5,57,21],
 "dd/d94/interfaceSocket.html#a52b486b973a47fb3fc79668a9742360f":[5,57,12],
 "dd/d94/interfaceSocket.html#a5520387ebf75fa030283055371859d8b":[5,57,13],
-"dd/d94/interfaceSocket.html#a6b88dbc459449d2280338e5b702a68b4":[5,57,14],
-"dd/d94/interfaceSocket.html#a6dd1fa9ffddf9c82db0847a913fadc06":[5,57,8]
+"dd/d94/interfaceSocket.html#a6b88dbc459449d2280338e5b702a68b4":[5,57,14]
 };

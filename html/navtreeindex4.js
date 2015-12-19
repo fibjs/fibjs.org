@@ -1,5 +1,6 @@
 var NAVTREEINDEX4 =
 {
+"d7/df5/interfaceSQLite.html#ad66be13eb5b7c5f560fd8511565138c4":[5,58,10],
 "d7/df5/interfaceSQLite.html#ae6d31f438b2c274f32aade526f92da2f":[5,58,7],
 "d8/d25/namespaceprocess.html":[4,17],
 "d8/d2c/interfaceDbConnection.html":[5,7],
@@ -248,6 +249,5 @@ var NAVTREEINDEX4 =
 "da/db3/server.html":[3],
 "da/db3/server.html#web_both":[3,2],
 "da/db3/server.html#web_file":[3,0],
-"da/db3/server.html#web_script":[3,1],
-"da/de1/namespaceos.html":[4,15]
+"da/db3/server.html#web_script":[3,1]
 };

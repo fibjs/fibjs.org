@@ -1,6 +1,7 @@
 var searchData=
 [
   ['gaussian_5fblur',['GAUSSIAN_BLUR',['../dd/d5d/namespacegd.html#aa4b820b26c471cba1b6f9838de5e1762',1,'gd']]],
+  ['gaussianblur',['gaussianBlur',['../d2/d41/interfaceImage.html#adc344a12326c23f86a2b08b76f900714',1,'Image']]],
   ['gc',['GC',['../d4/dfd/namespaceglobal.html#a02a28758a633a7b1493471415c8949ba',1,'global']]],
   ['gcm',['GCM',['../de/d36/namespacecrypto.html#a88d8ecc273aee729deecbdd7844076d0',1,'crypto']]],
   ['gd',['gd',['../dd/d5d/namespacegd.html',1,'gd'],['../dd/d5d/namespacegd.html#a792ac324d596f28e650565f9f5339cb1',1,'gd::GD()']]],

@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['gaussianblur',['gaussianBlur',['../d2/d41/interfaceImage.html#adc344a12326c23f86a2b08b76f900714',1,'Image']]],
   ['gc',['GC',['../d4/dfd/namespaceglobal.html#a02a28758a633a7b1493471415c8949ba',1,'global']]],
   ['geneckey',['genEcKey',['../d5/dac/interfacePKey.html#a7773cc31cb3d406da8d84bce891e3474',1,'PKey']]],
   ['genrsakey',['genRsaKey',['../d5/dac/interfacePKey.html#ae2f135cd9eae89cf1a83a2b9f6e21118',1,'PKey']]],
