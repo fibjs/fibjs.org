@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['packethandler',['PacketHandler',['../de/dba/interfacePacketHandler.html',1,'PacketHandler'],['../de/dba/interfacePacketHandler.html#a9bd426450648d97f94d5be8f1cecbccd',1,'PacketHandler::PacketHandler()'],['../dd/dbd/namespacemq.html#adb2835081ace5ea865b5baa5ec734af3',1,'mq::PacketHandler()']]],
-  ['packetmessage',['PacketMessage',['../df/da2/interfacePacketMessage.html',1,'PacketMessage'],['../df/da2/interfacePacketMessage.html#ab8d7b8d572327a380361d29eb9ea6045',1,'PacketMessage::PacketMessage()'],['../dd/dbd/namespacemq.html#a2d0843507550bd3403d4f88f82d75a5a',1,'mq::PacketMessage()']]],
   ['paddingmode',['paddingMode',['../df/d49/interfaceCipher.html#a07e38f623fdf31678559b62b4672a855',1,'Cipher']]],
   ['palette',['PALETTE',['../dd/d5d/namespacegd.html#aa2a13a4b909b87aeae041a916e71c7c2',1,'gd']]],
   ['parallel',['parallel',['../d6/d05/namespacecoroutine.html#a265ed258231cc730ea14ada21d80e718',1,'coroutine::parallel(Array funcs, Integer fibers=-1)'],['../d6/d05/namespacecoroutine.html#a495ba9988ad78bf14dce8ba03ee963d5',1,'coroutine::parallel(Array datas, Function func, Integer fibers=-1)'],['../d6/d05/namespacecoroutine.html#aff48cfd6c77937aa2f5065a139192c93',1,'coroutine::parallel(...)']]],
@@ -29,7 +27,7 @@ var searchData=
   ['post',['post',['../dc/d90/interfaceSemaphore.html#a2b45b66bfcb4fd6a03c998dd8e21d27e',1,'Semaphore::post()'],['../d3/d69/namespacehttp.html#aa08e3830d32a214ccc4f586f117b1da2',1,'http::post(String url, SeekableStream body, Object headers={})'],['../d3/d69/namespacehttp.html#a10ad303eed6fdb7a0a37d5ef8b735919',1,'http::post(String url, Buffer body, Object headers={})']]],
   ['prefix',['prefix',['../d7/dce/interfaceXmlAttr.html#a9bc6de3301a791ae393d4f382bf6ea72',1,'XmlAttr::prefix()'],['../d7/ddb/interfaceXmlElement.html#a101dd0d1f3b77c7fa0be6d7964772d9b',1,'XmlElement::prefix()']]],
   ['previoussibling',['previousSibling',['../dc/d8f/interfaceXmlNode.html#a1e2d8e642e8987ccfba221bed65fecf0',1,'XmlNode']]],
-  ['print',['PRINT',['../dc/daa/namespaceconsole.html#a375520719c386b7a2aa0c05ef6d3f3ac',1,'console::PRINT()'],['../dc/daa/namespaceconsole.html#aa6fdaace53b2b761e09d73e3a1092442',1,'console::print(String fmt,...)'],['../dc/daa/namespaceconsole.html#a1448b275c7cc42856cf5ff8a0bd795ae',1,'console::print(...)']]],
+  ['print',['print',['../dc/daa/namespaceconsole.html#aa6fdaace53b2b761e09d73e3a1092442',1,'console::print(String fmt,...)'],['../dc/daa/namespaceconsole.html#a1448b275c7cc42856cf5ff8a0bd795ae',1,'console::print(...)'],['../dc/daa/namespaceconsole.html#a375520719c386b7a2aa0c05ef6d3f3ac',1,'console::PRINT()']]],
   ['process',['process',['../d8/d25/namespaceprocess.html',1,'']]],
   ['processing_5finstruction_5fnode',['PROCESSING_INSTRUCTION_NODE',['../d8/dd3/namespacexml.html#a1c6be2a4139cea954375c2aa2097c8d0',1,'xml']]],
   ['profiler',['profiler',['../dc/dfc/namespaceprofiler.html',1,'']]],

@@ -27,7 +27,6 @@ var searchData=
   ['readint8',['readInt8',['../d9/dae/interfaceBuffer.html#a01c6953280f5ed7df68813f93b4d31a5',1,'Buffer']]],
   ['readline',['readLine',['../d0/d37/interfaceBufferedStream.html#a3e772d8b52548a59a1308e3eac07c027',1,'BufferedStream::readLine()'],['../dc/daa/namespaceconsole.html#a99e8e4d13c991dad4750cbd6a7a9e6c8',1,'console::readLine()']]],
   ['readlines',['readLines',['../d0/d37/interfaceBufferedStream.html#a72779ef151e7eeffa99138341f80eeef',1,'BufferedStream::readLines()'],['../d5/d8f/namespacefs.html#acb42968e4acb281d4633997321392ab1',1,'fs::readLines()']]],
-  ['readpacket',['readPacket',['../d0/d37/interfaceBufferedStream.html#aa76d6e14828e1213941fc0da81c3eabb',1,'BufferedStream']]],
   ['readtext',['readText',['../d0/d37/interfaceBufferedStream.html#a048aa0f487763f8007493a16b261c00b',1,'BufferedStream']]],
   ['readuint16be',['readUInt16BE',['../d9/dae/interfaceBuffer.html#a2ed9c44da8519639a1d84ee50ddb5755',1,'Buffer']]],
   ['readuint16le',['readUInt16LE',['../d9/dae/interfaceBuffer.html#a67d1ffd55c172fa1e7fe7dd681408027',1,'Buffer']]],

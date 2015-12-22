@@ -49,8 +49,8 @@ var NAVTREEINDEX =
 "d4/dc7/interfaceStream.html#ac61f07a7d6c5471293371086af3186bd",
 "d6/df7/interfaceTrigger.html#a101c95c3d098435250e5d15db4eb7359",
 "d7/df5/interfaceSQLite.html#ad66be13eb5b7c5f560fd8511565138c4",
-"da/de1/namespaceos.html",
-"dd/d94/interfaceSocket.html#a6dd1fa9ffddf9c82db0847a913fadc06"
+"da/db3/server.html#web_both",
+"dd/d94/interfaceSocket.html#a52b486b973a47fb3fc79668a9742360f"
 ];
 
 var SYNCONMSG = '点击 关闭 面板同步';
