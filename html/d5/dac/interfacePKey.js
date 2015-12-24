@@ -12,7 +12,7 @@ var interfacePKey =
     [ "exportDer", "d5/dac/interfacePKey.html#a27bde6463e786c7a89e880df773550a4", null ],
     [ "encrypt", "d5/dac/interfacePKey.html#a9f2de9d142c9acb31dde03d5f7ef094a", null ],
     [ "decrypt", "d5/dac/interfacePKey.html#a8357b8385141031a683ccf41058dbed0", null ],
-    [ "sign", "d5/dac/interfacePKey.html#a6b84f432a5b8c372c15e13b4636bfa76", null ],
+    [ "sign", "d5/dac/interfacePKey.html#aab4b38d767cfab0a2c8798a1ef90b49e", null ],
     [ "verify", "d5/dac/interfacePKey.html#a2728751b5e6a1eafe8f06c01f9f9a5f0", null ],
     [ "dispose", "d5/dac/interfacePKey.html#a6b88dbc459449d2280338e5b702a68b4", null ],
     [ "toString", "d5/dac/interfacePKey.html#ac61f07a7d6c5471293371086af3186bd", null ],
