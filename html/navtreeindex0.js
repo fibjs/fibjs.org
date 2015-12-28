@@ -1,7 +1,7 @@
 var NAVTREEINDEX0 =
 {
 "annotated.html":[5],
-"d0/d14/namespacerpc.html":[4,20],
+"d0/d14/namespacerpc.html":[4,26],
 "d0/d37/interfaceBufferedStream.html":[5,3],
 "d0/d37/interfaceBufferedStream.html#a048aa0f487763f8007493a16b261c00b":[5,3,1],
 "d0/d37/interfaceBufferedStream.html#a3d617075c9b6ea5124a0e132ab31b3c5":[5,3,16],
@@ -21,9 +21,9 @@ var NAVTREEINDEX0 =
 "d0/d37/interfaceBufferedStream.html#ad66be13eb5b7c5f560fd8511565138c4":[5,3,13],
 "d0/d37/interfaceBufferedStream.html#adaa9b52ec60c27e739b762a26b3f0a8d":[5,3,17],
 "d0/d37/interfaceBufferedStream.html#adc842e860f92cdb58347758fcf2532af":[5,3,15],
-"d0/d42/namespacewebsocket.html":[4,26],
-"d0/d43/namespacepath.html":[4,16],
-"d0/d45/namespacedb.html":[4,5],
+"d0/d42/namespacewebsocket.html":[4,32],
+"d0/d43/namespacepath.html":[4,22],
+"d0/d45/namespacedb.html":[4,8],
 "d0/d97/interfaceSslSocket.html":[5,61],
 "d0/d97/interfaceSslSocket.html#a2b2147675964c4f18d521c1f3805bb5d":[5,61,13],
 "d0/d97/interfaceSslSocket.html#a52b486b973a47fb3fc79668a9742360f":[5,61,6],
@@ -168,8 +168,9 @@ var NAVTREEINDEX0 =
 "d1/d5c/interfaceSslServer.html#ad66be13eb5b7c5f560fd8511565138c4":[5,60,9],
 "d1/d5c/interfaceSslServer.html#add3bc709b4b30dc6894afbaeec37703f":[5,60,0],
 "d1/d5c/interfaceSslServer.html#af61a58eaa7b7b6bcc1471713778ec797":[5,60,6],
-"d1/d96/namespaceio.html":[4,12],
-"d1/dd6/namespaceuuid.html":[4,24],
+"d1/d96/namespaceio.html":[4,17],
+"d1/db2/namespacejson.html":[4,18],
+"d1/dd6/namespaceuuid.html":[4,30],
 "d2/d41/interfaceImage.html":[5,29],
 "d2/d41/interfaceImage.html#a00f889fa05cda558fbb362b444cdcfd3":[5,29,2],
 "d2/d41/interfaceImage.html#a06bc2df9c85744029acb3ed3f10c0760":[5,29,47],
@@ -248,6 +249,5 @@ var NAVTREEINDEX0 =
 "d2/d65/interfaceHeapGraphEdge.html#ac61f07a7d6c5471293371086af3186bd":[5,17,3],
 "d2/d65/interfaceHeapGraphEdge.html#ad66be13eb5b7c5f560fd8511565138c4":[5,17,4],
 "d2/d65/interfaceHeapGraphEdge.html#afc0ae5b4248fe3149ebe492b177696e1":[5,17,1],
-"d2/d68/interfaceMySQL.html":[5,42],
-"d2/d68/interfaceMySQL.html#a0f8cde8557dcc248e5c1064791355845":[5,42,5]
+"d2/d68/interfaceMySQL.html":[5,42]
 };

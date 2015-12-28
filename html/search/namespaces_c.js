@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['re',['re',['../d5/d83/namespacere.html',1,'']]],
-  ['rpc',['rpc',['../d0/d14/namespacerpc.html',1,'']]]
+  ['os',['os',['../da/de1/namespaceos.html',1,'']]]
 ];

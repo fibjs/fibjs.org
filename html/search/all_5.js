@@ -15,6 +15,7 @@ var searchData=
   ['element_5fnode',['ELEMENT_NODE',['../d8/dd3/namespacexml.html#ad4764c995e496ba8e7af34eb67cc71ce',1,'xml']]],
   ['ellipse',['ellipse',['../d2/d41/interfaceImage.html#a8ec826f48b670dafe8510c97b38b01dc',1,'Image']]],
   ['emboss',['EMBOSS',['../dd/d5d/namespacegd.html#a0239ff80205ec44d2a653cefa8085e27',1,'gd']]],
+  ['encode',['encode',['../d4/dba/namespacebase32.html#abcb8ee9ecac2cf5cc508cbe896cede6b',1,'base32::encode()'],['../d5/d37/namespacebase64.html#a7d87dfe597e9e95be6e570ba4d4baf40',1,'base64::encode()'],['../d7/d28/namespacebson.html#a595936db3cfd3c57b2711f8eb1812672',1,'bson::encode()'],['../d3/da1/namespacehex.html#a581b5701a55f8498bcc5d923490ea970',1,'hex::encode()'],['../df/d0d/namespaceiconv.html#a2b847d0399bc812657931cefcc7fb0bd',1,'iconv::encode()'],['../d1/db2/namespacejson.html#a332abe5ce26d71b3d8d6c62fd7639181',1,'json::encode()']]],
   ['encodeuri',['encodeURI',['../db/da8/namespaceencoding.html#adb05f8f3455536f38d2ee61484f3f2b5',1,'encoding']]],
   ['encodeuricomponent',['encodeURIComponent',['../db/da8/namespaceencoding.html#a80b109e00081be72ca81ac4f9f033fb6',1,'encoding']]],
   ['encoding',['encoding',['../db/da8/namespaceencoding.html',1,'']]],
