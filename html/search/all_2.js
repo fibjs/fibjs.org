@@ -12,6 +12,7 @@ var searchData=
   ['base64',['base64',['../d5/d37/namespacebase64.html',1,'base64'],['../d9/dae/interfaceBuffer.html#a36df68fd3011d583c237346289fe22d3',1,'Buffer::base64()'],['../db/da8/namespaceencoding.html#a8081785db1dfad236b086d4e2a9c79ba',1,'encoding::base64()']]],
   ['base64decode',['base64Decode',['../db/da8/namespaceencoding.html#a49935417ee1734f4c8008cbf9cef37db',1,'encoding']]],
   ['base64encode',['base64Encode',['../db/da8/namespaceencoding.html#ac01212b33bc396f9b56d5ead42d9d1dc',1,'encoding']]],
+  ['base64vlq',['base64vlq',['../de/d5c/namespacebase64vlq.html',1,'base64vlq'],['../db/da8/namespaceencoding.html#a7b9b39387963aca4019374e72257d87d',1,'encoding::base64vlq()']]],
   ['basename',['basename',['../d0/d43/namespacepath.html#a82751cb3c3cda3cbd756667343737f4d',1,'path']]],
   ['bdd',['BDD',['../df/d04/namespacetest.html#ae4137e9ca407ce2fe025a9b61cabe1cd',1,'test']]],
   ['be',['be',['../d0/df6/interfaceExpect.html#aa2896b5ae99886b5fce68ba05058e18f',1,'Expect']]],

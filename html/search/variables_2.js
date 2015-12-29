@@ -6,6 +6,7 @@ var searchData=
   ['badcert_5frevoked',['BADCERT_REVOKED',['../df/dd2/namespacessl.html#a2c2535a0b748318087c99cfdc12c2cc6',1,'ssl']]],
   ['base32',['base32',['../db/da8/namespaceencoding.html#a86bde7f64f9870f2de7c7cdaa3da6ad3',1,'encoding']]],
   ['base64',['base64',['../db/da8/namespaceencoding.html#a8081785db1dfad236b086d4e2a9c79ba',1,'encoding']]],
+  ['base64vlq',['base64vlq',['../db/da8/namespaceencoding.html#a7b9b39387963aca4019374e72257d87d',1,'encoding']]],
   ['bdd',['BDD',['../df/d04/namespacetest.html#ae4137e9ca407ce2fe025a9b61cabe1cd',1,'test']]],
   ['be',['be',['../d0/df6/interfaceExpect.html#aa2896b5ae99886b5fce68ba05058e18f',1,'Expect']]],
   ['been',['been',['../d0/df6/interfaceExpect.html#a14299251d029a0cfc8bcef53c98c47f9',1,'Expect']]],

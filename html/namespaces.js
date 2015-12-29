@@ -3,6 +3,7 @@ var namespaces =
     [ "assert", "d2/dab/namespaceassert.html", null ],
     [ "base32", "d4/dba/namespacebase32.html", null ],
     [ "base64", "d5/d37/namespacebase64.html", null ],
+    [ "base64vlq", "de/d5c/namespacebase64vlq.html", null ],
     [ "bson", "d7/d28/namespacebson.html", null ],
     [ "collection", "d7/d82/namespacecollection.html", null ],
     [ "console", "dc/daa/namespaceconsole.html", null ],
