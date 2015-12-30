@@ -41,7 +41,7 @@ var searchData=
   ['sha224',['sha224',['../de/de9/namespacehash.html#aebaa45bb312a46a71194c9118dca1a08',1,'hash::sha224(Buffer data)'],['../de/de9/namespacehash.html#a97717b785cf7bdb90d7e134be8eefba4',1,'hash::SHA224()']]],
   ['sha256',['SHA256',['../de/de9/namespacehash.html#a479d5d79b494b5324cc536b483b4619f',1,'hash::SHA256()'],['../de/de9/namespacehash.html#aea552567d5fea762e5d8eedda0b0067a',1,'hash::sha256(Buffer data)']]],
   ['sha384',['SHA384',['../de/de9/namespacehash.html#ab3642bba484b7f0633956bae80dc6bd9',1,'hash::SHA384()'],['../de/de9/namespacehash.html#a0e3112fca405da681a0d034e6dba4016',1,'hash::sha384(Buffer data)']]],
-  ['sha512',['sha512',['../de/de9/namespacehash.html#a93e3215efb856aa97da67966530387f7',1,'hash::sha512(Buffer data)'],['../de/de9/namespacehash.html#a8ba2e8e53c773269d0e949bfd5e07fb8',1,'hash::SHA512()']]],
+  ['sha512',['SHA512',['../de/de9/namespacehash.html#a8ba2e8e53c773269d0e949bfd5e07fb8',1,'hash::SHA512()'],['../de/de9/namespacehash.html#a93e3215efb856aa97da67966530387f7',1,'hash::sha512(Buffer data)']]],
   ['shallowsize',['shallowSize',['../df/db2/interfaceHeapGraphNode.html#a2fc488376bc9a3f1632c625d005833e8',1,'HeapGraphNode']]],
   ['shiftleft',['shiftLeft',['../df/dc1/interfaceInt64.html#acbe2152ea45f78be39771e50d00f1b9f',1,'Int64']]],
   ['shiftright',['shiftRight',['../df/dc1/interfaceInt64.html#a770d45ef40dbddcb9892b96370930b72',1,'Int64']]],

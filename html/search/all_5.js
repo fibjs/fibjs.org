@@ -23,7 +23,7 @@ var searchData=
   ['end',['end',['../d2/d88/interfaceAsyncWait.html#adf311589dec033121d3b99e126481798',1,'AsyncWait']]],
   ['ensureindex',['ensureIndex',['../d6/d6b/interfaceMongoCollection.html#abdc1aaa831b564895fad5000d30a7357',1,'MongoCollection']]],
   ['eof',['eof',['../d3/d3a/interfaceFile.html#a372a49f942bf3f15b5b3918662ffcfc7',1,'File']]],
-  ['eol',['EOL',['../d0/d37/interfaceBufferedStream.html#adaa9b52ec60c27e739b762a26b3f0a8d',1,'BufferedStream']]],
+  ['eol',['EOL',['../d0/d37/interfaceBufferedStream.html#adaa9b52ec60c27e739b762a26b3f0a8d',1,'BufferedStream::EOL()'],['../da/de1/namespaceos.html#a76c7476a457aa1af25ca82a3fdb7e982',1,'os::EOL()']]],
   ['eql',['eql',['../d0/df6/interfaceExpect.html#ab1800257df8c06dd9d759c9c2dd91f72',1,'Expect']]],
   ['equal',['equal',['../d0/df6/interfaceExpect.html#aa8507593476087851d862726b802d7f1',1,'Expect::equal()'],['../df/dc1/interfaceInt64.html#a1cdcc1931d4021a31cf9a2f62d1fa881',1,'Int64::equal()'],['../d2/dab/namespaceassert.html#af37037ca6be593c635dc7a312e45f17e',1,'assert::equal()']]],
   ['equals',['equals',['../d9/dae/interfaceBuffer.html#ab9dcbdb139e1fb0d2a4d5c7fa595edaa',1,'Buffer']]],
