@@ -10,6 +10,6 @@ var searchData=
   ['localname',['localName',['../d7/dce/interfaceXmlAttr.html#ae1968b7ca6329c6106da0723ac993cc1',1,'XmlAttr::localName()'],['../d7/ddb/interfaceXmlElement.html#ae26ae672ca2ce0f66ac27cddd998593c',1,'XmlElement::localName()']]],
   ['localport',['localPort',['../dd/d94/interfaceSocket.html#a1ae0c4a75caaaf1010430520dd8beca1',1,'Socket']]],
   ['lock',['Lock',['../d6/d05/namespacecoroutine.html#a226a62a1d477109cbb28d436dbe23ca2',1,'coroutine']]],
-  ['loglevel',['loglevel',['../dc/daa/namespaceconsole.html#a903b5848bef37d438c976f38338569db',1,'console']]],
+  ['loglevel',['loglevel',['../dc/daa/namespaceconsole.html#a903b5848bef37d438c976f38338569db',1,'console::loglevel()'],['../d6/d05/namespacecoroutine.html#ad273c2ae236cbf873603d22e18e9ccd8',1,'coroutine::loglevel()']]],
   ['lrucache',['LruCache',['../d6/d72/namespaceutil.html#a3ede61ad29d3fe58b912ef9b9e7ed326',1,'util']]]
 ];

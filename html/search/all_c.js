@@ -30,7 +30,7 @@ var searchData=
   ['lock',['Lock',['../de/da6/interfaceLock.html',1,'Lock'],['../de/da6/interfaceLock.html#a9944623567d8138b95e74fadc7190adb',1,'Lock::Lock()'],['../d6/d05/namespacecoroutine.html#a226a62a1d477109cbb28d436dbe23ca2',1,'coroutine::Lock()']]],
   ['log',['log',['../dc/daa/namespaceconsole.html#a93b42645d56e3b4da5d2dc28ba6593cf',1,'console::log(String fmt,...)'],['../dc/daa/namespaceconsole.html#ac3cab060d14c380024c402df70f73877',1,'console::log(...)']]],
   ['login',['login',['../da/de8/interfaceSmtp.html#a84a3ae6b9df42198f4a6bf26d4fc61b4',1,'Smtp']]],
-  ['loglevel',['loglevel',['../dc/daa/namespaceconsole.html#a903b5848bef37d438c976f38338569db',1,'console']]],
+  ['loglevel',['loglevel',['../dc/daa/namespaceconsole.html#a903b5848bef37d438c976f38338569db',1,'console::loglevel()'],['../d6/d05/namespacecoroutine.html#ad273c2ae236cbf873603d22e18e9ccd8',1,'coroutine::loglevel()']]],
   ['lookupnamespaceuri',['lookupNamespaceURI',['../dc/d8f/interfaceXmlNode.html#a9940f8621d0e65b0fc82f6f8959ffe6c',1,'XmlNode']]],
   ['lookupprefix',['lookupPrefix',['../dc/d8f/interfaceXmlNode.html#a4ab7d0f533aedede8504be1021e39c8b',1,'XmlNode']]],
   ['lrucache',['LruCache',['../dc/d81/interfaceLruCache.html',1,'LruCache'],['../dc/d81/interfaceLruCache.html#a6fce7c256bb93ea2a366e4258cb2a39f',1,'LruCache::LruCache()'],['../d6/d72/namespaceutil.html#a3ede61ad29d3fe58b912ef9b9e7ed326',1,'util::LruCache()']]]
