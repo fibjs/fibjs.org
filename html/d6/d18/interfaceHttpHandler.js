@@ -1,6 +1,7 @@
 var interfaceHttpHandler =
 [
     [ "HttpHandler", "d6/d18/interfaceHttpHandler.html#a67076bb6a7281898aed64f09676d56a2", null ],
+    [ "onerror", "d6/d18/interfaceHttpHandler.html#ab1f2dd7c640113a81ae4130aa5709e5a", null ],
     [ "invoke", "d6/d18/interfaceHttpHandler.html#af901258552a23961893c5bd6f18ce681", null ],
     [ "dispose", "d6/d18/interfaceHttpHandler.html#a6b88dbc459449d2280338e5b702a68b4", null ],
     [ "toString", "d6/d18/interfaceHttpHandler.html#ac61f07a7d6c5471293371086af3186bd", null ],

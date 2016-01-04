@@ -1,5 +1,8 @@
 var NAVTREEINDEX5 =
 {
+"da/d8a/interfaceTextColor.html#a56f6aeb7a8f24f3f294c61e1199f7e0b":[5,66,6],
+"da/d8a/interfaceTextColor.html#a6b88dbc459449d2280338e5b702a68b4":[5,66,0],
+"da/d8a/interfaceTextColor.html#a9b7bce159ed5ec43137063a20a9e0e16":[5,66,4],
 "da/d8a/interfaceTextColor.html#ab9261a7662bc8bb4a898bc15dc16f206":[5,66,3],
 "da/d8a/interfaceTextColor.html#ac61f07a7d6c5471293371086af3186bd":[5,66,1],
 "da/d8a/interfaceTextColor.html#ad66be13eb5b7c5f560fd8511565138c4":[5,66,2],
@@ -246,8 +249,5 @@ var NAVTREEINDEX5 =
 "dd/d23/interfaceUrl.html#adb97976e1e9083bfe92fd95555dfda36":[5,69,16],
 "dd/d23/interfaceUrl.html#ae614e05676af551facac7901448f87d3":[5,69,21],
 "dd/d23/interfaceUrl.html#aec1f5c08b7c5046e838286600f2e955a":[5,69,1],
-"dd/d5d/namespacegd.html":[4,12],
-"dd/d94/interfaceSocket.html":[5,57],
-"dd/d94/interfaceSocket.html#a0501ceb52579d56a7eb406e1bbc2f697":[5,57,22],
-"dd/d94/interfaceSocket.html#a1ae0c4a75caaaf1010430520dd8beca1":[5,57,23]
+"dd/d5d/namespacegd.html":[4,12]
 };

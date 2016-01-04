@@ -1,5 +1,8 @@
 var NAVTREEINDEX4 =
 {
+"d7/df5/interfaceSQLite.html#a6b88dbc459449d2280338e5b702a68b4":[5,58,8],
+"d7/df5/interfaceSQLite.html#a9a2a52bdba24af6fe86ba65b149e3f1b":[5,58,12],
+"d7/df5/interfaceSQLite.html#aa6d68c3a518d46207b42d7f638b07a1e":[5,58,2],
 "d7/df5/interfaceSQLite.html#ab4f47bec17ba6b3799c58ea8d0698b15":[5,58,4],
 "d7/df5/interfaceSQLite.html#ab5ddefb9b2c6c1a0cdfdac90e13de736":[5,58,6],
 "d7/df5/interfaceSQLite.html#ab9261a7662bc8bb4a898bc15dc16f206":[5,58,11],
@@ -246,8 +249,5 @@ var NAVTREEINDEX4 =
 "da/d85/interfaceHandler.html#ad66be13eb5b7c5f560fd8511565138c4":[5,16,3],
 "da/d85/interfaceHandler.html#af901258552a23961893c5bd6f18ce681":[5,16,0],
 "da/d8a/interfaceTextColor.html":[5,66],
-"da/d8a/interfaceTextColor.html#a1b2fab327d7b9814c9dd37b5f3861643":[5,66,5],
-"da/d8a/interfaceTextColor.html#a56f6aeb7a8f24f3f294c61e1199f7e0b":[5,66,6],
-"da/d8a/interfaceTextColor.html#a6b88dbc459449d2280338e5b702a68b4":[5,66,0],
-"da/d8a/interfaceTextColor.html#a9b7bce159ed5ec43137063a20a9e0e16":[5,66,4]
+"da/d8a/interfaceTextColor.html#a1b2fab327d7b9814c9dd37b5f3861643":[5,66,5]
 };

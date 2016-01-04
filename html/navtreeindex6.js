@@ -1,5 +1,8 @@
 var NAVTREEINDEX6 =
 {
+"dd/d94/interfaceSocket.html":[5,57],
+"dd/d94/interfaceSocket.html#a0501ceb52579d56a7eb406e1bbc2f697":[5,57,22],
+"dd/d94/interfaceSocket.html#a1ae0c4a75caaaf1010430520dd8beca1":[5,57,23],
 "dd/d94/interfaceSocket.html#a26a688b72c8b742d830a1d89e2a7a984":[5,57,2],
 "dd/d94/interfaceSocket.html#a28174e411f641885369212291b0302d2":[5,57,6],
 "dd/d94/interfaceSocket.html#a3dfc92fcb136c355eee826905b37487c":[5,57,5],
@@ -209,8 +212,8 @@ var NAVTREEINDEX6 =
 "df/df8/interfaceTimer.html#ac61f07a7d6c5471293371086af3186bd":[5,67,2],
 "df/df8/interfaceTimer.html#ad66be13eb5b7c5f560fd8511565138c4":[5,67,3],
 "en/index.html":[8],
-"index.html":[0],
 "index.html":[],
+"index.html":[0],
 "index.html#install_sec":[0,1],
 "index.html#install_step1":[0,1,0],
 "index.html#install_step2":[0,1,1],

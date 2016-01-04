@@ -4,6 +4,7 @@ var interfaceHttpsServer =
     [ "HttpsServer", "d7/d42/interfaceHttpsServer.html#a2656d6e85b9b201f297d2854411ed7e3", null ],
     [ "HttpsServer", "d7/d42/interfaceHttpsServer.html#a4cc82150413c398984d3afebd305b3a7", null ],
     [ "HttpsServer", "d7/d42/interfaceHttpsServer.html#ac435f7579e779f28baa2231ba9ef5219", null ],
+    [ "onerror", "d7/d42/interfaceHttpsServer.html#a3867bfb2a99b35a13c0fcc711676aa22", null ],
     [ "run", "d7/d42/interfaceHttpsServer.html#a07331365e3d5b0275e00a2f6249a1538", null ],
     [ "asyncRun", "d7/d42/interfaceHttpsServer.html#a90e985acd2aaeddff07304e4d4d93c3f", null ],
     [ "stop", "d7/d42/interfaceHttpsServer.html#af61a58eaa7b7b6bcc1471713778ec797", null ],
