@@ -2,6 +2,7 @@ var searchData=
 [
   ['last',['last',['../d6/d72/namespaceutil.html#adabb887de98cc0bd54035af02452225b',1,'util::last(Value v)'],['../d6/d72/namespaceutil.html#a764290a833d1fbfdb3616374f54be720',1,'util::last(Value v, Integer n)']]],
   ['lastchild',['lastChild',['../dc/d8f/interfaceXmlNode.html#a6861687522fd0a6bfd5b132a52bcb097',1,'XmlNode']]],
+  ['lasterror',['lastError',['../d6/db7/interfaceMessage.html#a9509ae285aedede9fa31804eff207379',1,'Message']]],
   ['lastindex',['lastIndex',['../d1/d43/interfaceRegex.html#a7a36b53fcaef538a5c81c8569c508fdf',1,'Regex']]],
   ['least',['least',['../d0/df6/interfaceExpect.html#a80a82dccaf29e7dcb10f1f2347b1c550',1,'Expect']]],
   ['left',['LEFT',['../dd/d5d/namespacegd.html#a4e70973abe19fc25232aa82e4b0c38c8',1,'gd']]],

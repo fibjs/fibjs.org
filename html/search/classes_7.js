@@ -1,6 +1,7 @@
 var searchData=
 [
   ['handler',['Handler',['../da/d85/interfaceHandler.html',1,'']]],
+  ['handlerex',['HandlerEx',['../dc/de5/interfaceHandlerEx.html',1,'']]],
   ['heapgraphedge',['HeapGraphEdge',['../d2/d65/interfaceHeapGraphEdge.html',1,'']]],
   ['heapgraphnode',['HeapGraphNode',['../df/db2/interfaceHeapGraphNode.html',1,'']]],
   ['heapsnapshot',['HeapSnapshot',['../de/d09/interfaceHeapSnapshot.html',1,'']]],

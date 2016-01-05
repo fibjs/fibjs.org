@@ -17,6 +17,7 @@ var annotated =
     [ "File", "d3/d3a/interfaceFile.html", "d3/d3a/interfaceFile" ],
     [ "GridFS", "d7/d34/interfaceGridFS.html", "d7/d34/interfaceGridFS" ],
     [ "Handler", "da/d85/interfaceHandler.html", "da/d85/interfaceHandler" ],
+    [ "HandlerEx", "dc/de5/interfaceHandlerEx.html", "dc/de5/interfaceHandlerEx" ],
     [ "HeapGraphEdge", "d2/d65/interfaceHeapGraphEdge.html", "d2/d65/interfaceHeapGraphEdge" ],
     [ "HeapGraphNode", "df/db2/interfaceHeapGraphNode.html", "df/db2/interfaceHeapGraphNode" ],
     [ "HeapSnapshot", "de/d09/interfaceHeapSnapshot.html", "de/d09/interfaceHeapSnapshot" ],

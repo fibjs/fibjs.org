@@ -30,5 +30,6 @@ var interfaceHttpMessage =
     [ "body", "da/d38/interfaceHttpMessage.html#a102e4b9b4a800bf24fd01a66df49b489", null ],
     [ "length", "da/d38/interfaceHttpMessage.html#a26e77ec52998a43c1b97fd4b7229283c", null ],
     [ "stream", "da/d38/interfaceHttpMessage.html#a9b19686184c56df8c1fca416751a71b3", null ],
-    [ "response", "da/d38/interfaceHttpMessage.html#a78167fa1a78f782d15ea7122333eb53d", null ]
+    [ "response", "da/d38/interfaceHttpMessage.html#a78167fa1a78f782d15ea7122333eb53d", null ],
+    [ "lastError", "da/d38/interfaceHttpMessage.html#a9509ae285aedede9fa31804eff207379", null ]
 ];
