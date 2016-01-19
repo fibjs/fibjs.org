@@ -47,10 +47,10 @@ var NAVTREEINDEX =
 "annotated.html",
 "d2/d68/interfaceMySQL.html#a0f8cde8557dcc248e5c1064791355845",
 "d4/dc7/interfaceStream.html#a6b88dbc459449d2280338e5b702a68b4",
-"d6/de7/interfaceuuidValue.html",
-"d7/df5/interfaceSQLite.html#a1cfd7776b7f7b4a34e216f33b4df823b",
-"da/d85/interfaceHandler.html#ac61f07a7d6c5471293371086af3186bd",
-"dd/d23/interfaceUrl.html#a9ac4f2b9ae213852f6922640ba4efcf6"
+"d6/db7/interfaceMessage.html#a9b19686184c56df8c1fca416751a71b3",
+"d7/ddf/interfaceEvent.html#ad11a1833268d15bc545b958789bd7e74",
+"da/d38/interfaceHttpMessage.html#ae6707cac0adff8bf5132993fa8de5edb",
+"dd/d23/interfaceUrl.html#a6b88dbc459449d2280338e5b702a68b4"
 ];
 
 var SYNCONMSG = '点击 关闭 面板同步';

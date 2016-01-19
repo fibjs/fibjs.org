@@ -66,6 +66,7 @@ var annotated =
     [ "Stat", "dc/da9/interfaceStat.html", "dc/da9/interfaceStat" ],
     [ "Stats", "df/d0b/interfaceStats.html", "df/d0b/interfaceStats" ],
     [ "Stream", "d4/dc7/interfaceStream.html", "d4/dc7/interfaceStream" ],
+    [ "Task", "d5/df1/interfaceTask.html", "d5/df1/interfaceTask" ],
     [ "TcpServer", "d7/d48/interfaceTcpServer.html", "d7/d48/interfaceTcpServer" ],
     [ "TextColor", "da/d8a/interfaceTextColor.html", "da/d8a/interfaceTextColor" ],
     [ "Timer", "df/df8/interfaceTimer.html", "df/df8/interfaceTimer" ],
