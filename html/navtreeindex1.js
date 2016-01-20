@@ -247,7 +247,7 @@ var NAVTREEINDEX1 =
 "d4/db6/interfaceBlockQueue.html#af17aa223359d90dd6682a37eff715399":[5,1,6],
 "d4/db6/interfaceBlockQueue.html#af4525da4992c5d5260af11dfb7f98d3f":[5,1,1],
 "d4/dba/namespacebase32.html":[4,1],
-"d4/dc7/interfaceStream.html":[5,65],
-"d4/dc7/interfaceStream.html#a52b486b973a47fb3fc79668a9742360f":[5,65,2],
-"d4/dc7/interfaceStream.html#a5520387ebf75fa030283055371859d8b":[5,65,3]
+"d4/dc7/interfaceStream.html":[5,66],
+"d4/dc7/interfaceStream.html#a52b486b973a47fb3fc79668a9742360f":[5,66,2],
+"d4/dc7/interfaceStream.html#a5520387ebf75fa030283055371859d8b":[5,66,3]
 };

@@ -4,7 +4,7 @@ var searchData=
   ['take',['take',['../d4/db6/interfaceBlockQueue.html#a963268100e0f5a993acd4ed529c71c22',1,'BlockQueue']]],
   ['takesnapshot',['takeSnapshot',['../dc/dfc/namespaceprofiler.html#a8f0ddc26ac08a9e5bbf7680828216d98',1,'profiler']]],
   ['target',['target',['../da/df6/interfaceXmlProcessingInstruction.html#a5f255359977fba5d140f8b168c4cb159',1,'XmlProcessingInstruction']]],
-  ['task',['Task',['../d5/df1/interfaceTask.html',1,'Task'],['../d5/df1/interfaceTask.html#a3c8f3d16b831c788758f4f97fc2f982f',1,'Task::Task()'],['../d6/d05/namespacecoroutine.html#a47a5de5af1d77603bc03c79152db89c9',1,'coroutine::Task()']]],
+  ['task',['Task',['../d0/d14/namespacerpc.html#a104b7da6f0f38c0f84302d846b934bca',1,'rpc']]],
   ['tcpserver',['TcpServer',['../d7/d48/interfaceTcpServer.html',1,'TcpServer'],['../d7/d48/interfaceTcpServer.html#a24820cac0c8a8e4b38fd696156946c33',1,'TcpServer::TcpServer(Integer port, Value listener)'],['../d7/d48/interfaceTcpServer.html#afc30a4a16900efa8d275e9f65286f967',1,'TcpServer::TcpServer(String addr, Integer port, Value listener)'],['../dc/d27/namespacenet.html#a604049c078bee2cef17fa2e3ba9a9471',1,'net::TcpServer()']]],
   ['tdd',['TDD',['../df/d04/namespacetest.html#a85a441d022214024a08c41758399f72d',1,'test']]],
   ['tell',['tell',['../d6/d9c/interfaceSeekableStream.html#a6eca3ff0973d41afc4ead654733e86ed',1,'SeekableStream']]],

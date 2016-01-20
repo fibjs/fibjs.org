@@ -2,7 +2,6 @@ var searchData=
 [
   ['tagname',['tagName',['../d7/ddb/interfaceXmlElement.html#ad903ff8a883193fbde76fac48221e84d',1,'XmlElement']]],
   ['target',['target',['../da/df6/interfaceXmlProcessingInstruction.html#a5f255359977fba5d140f8b168c4cb159',1,'XmlProcessingInstruction']]],
-  ['task',['Task',['../d6/d05/namespacecoroutine.html#a47a5de5af1d77603bc03c79152db89c9',1,'coroutine']]],
   ['tcpserver',['TcpServer',['../dc/d27/namespacenet.html#a604049c078bee2cef17fa2e3ba9a9471',1,'net']]],
   ['tdd',['TDD',['../df/d04/namespacetest.html#a85a441d022214024a08c41758399f72d',1,'test']]],
   ['text',['TEXT',['../d0/d42/namespacewebsocket.html#a6f7c73324ee8aefed39ea03d3e64458b',1,'websocket']]],
