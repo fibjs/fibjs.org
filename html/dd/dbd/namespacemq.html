@@ -176,24 +176,12 @@ $(document).ready(function(){initNavTree('dd/dbd/namespacemq.html','../../');});
   </dd>
 </dl>
 <dl class="section return"><dt>返回</dt><dd>返回封装了处理函数的处理器</dd></dl>
-<p>消息处理函数语法如下： </p><div class="fragment"><div class="line"><span class="keyword">function</span> func(v){</div>
-<div class="line">}</div>
-</div><!-- fragment --><p> 参数 v 为正在处理的消息，返回结果允许有三种:</p><ul>
+<p>消息处理函数语法如下： </p><div class="fragment"><div class="line"><span class="keyword">function</span> func(v){</div><div class="line">}</div></div><!-- fragment --><p> 参数 v 为正在处理的消息，返回结果允许有三种:</p><ul>
 <li>Object javascript 对象，下一阶段将使用此对象进行消息映射</li>
 <li>Function javascript 函数，将使用此函数进行下一阶段处理</li>
 <li><a class="el" href="../../da/d85/interfaceHandler.html" title="消息处理器接口 ">Handler</a> 内置处理器，将使用此处理器进行下一阶段处理 无返回或者其他的返回结果将结束消息处理。</li>
 </ul>
-<p>使用消息映射对象处理器将根据对象属性嵌套逻辑处理消息，如下所示： </p><div class="fragment"><div class="line">hdlr = mq.jsHandler({</div>
-<div class="line">    <span class="comment">// fun1</span></div>
-<div class="line">   fun1 : <span class="keyword">function</span>(v){},</div>
-<div class="line">   sub : {</div>
-<div class="line">       <span class="comment">// sub.fun2 或者 sub/fun2</span></div>
-<div class="line">       fun2 : <span class="keyword">function</span>(v){},</div>
-<div class="line">       <span class="comment">// sub.hdlr 或者 sub/hdlr</span></div>
-<div class="line">       hdlr: myHandler</div>
-<div class="line">   }</div>
-<div class="line">});</div>
-</div><!-- fragment --><p> 示例中 fun1 和 fun2 为普通的 javascript 处理函数，sub 为子对象，myHandler 为其他处理器对象 </p>
+<p>使用消息映射对象处理器将根据对象属性嵌套逻辑处理消息，如下所示： </p><div class="fragment"><div class="line">hdlr = mq.jsHandler({</div><div class="line">    <span class="comment">// fun1</span></div><div class="line">   fun1 : <span class="keyword">function</span>(v){},</div><div class="line">   sub : {</div><div class="line">       <span class="comment">// sub.fun2 或者 sub/fun2</span></div><div class="line">       fun2 : <span class="keyword">function</span>(v){},</div><div class="line">       <span class="comment">// sub.hdlr 或者 sub/hdlr</span></div><div class="line">       hdlr: myHandler</div><div class="line">   }</div><div class="line">});</div></div><!-- fragment --><p> 示例中 fun1 和 fun2 为普通的 javascript 处理函数，sub 为子对象，myHandler 为其他处理器对象 </p>
 
 </div>
 </div>
@@ -220,16 +208,7 @@ $(document).ready(function(){initNavTree('dd/dbd/namespacemq.html','../../');});
 
 <p>创建一个异步等待处理器 </p>
 <dl class="section return"><dt>返回</dt><dd>返回创建的处理器</dd></dl>
-<p>异步等待处理器用于需要异步处理的消息处理模式，示例如下： </p><div class="fragment"><div class="line"><span class="keyword">function</span> func(v){</div>
-<div class="line">    var <a class="code" href="../../dd/dbd/namespacemq.html#aaa3477ed3695f5da7f9916db0becc6fb">await</a> = mq.await();</div>
-<div class="line"></div>
-<div class="line">    call_some_async_func(v1, v2, v3, <span class="keyword">function</span>() {</div>
-<div class="line">            await.end();</div>
-<div class="line">        });</div>
-<div class="line"></div>
-<div class="line">    <span class="keywordflow">return</span> <a class="code" href="../../dd/dbd/namespacemq.html#aaa3477ed3695f5da7f9916db0becc6fb">await</a>;</div>
-<div class="line">}</div>
-</div><!-- fragment --><p> 示例是一个 javascript 消息处理函数，当函数返回时，消息处理引擎将等待 await，直到 await.end 被调用，才继续下一阶段的处理。 </p>
+<p>异步等待处理器用于需要异步处理的消息处理模式，示例如下： </p><div class="fragment"><div class="line"><span class="keyword">function</span> func(v){</div><div class="line">    var <a class="code" href="../../dd/dbd/namespacemq.html#aaa3477ed3695f5da7f9916db0becc6fb">await</a> = mq.await();</div><div class="line"></div><div class="line">    call_some_async_func(v1, v2, v3, <span class="keyword">function</span>() {</div><div class="line">            await.end();</div><div class="line">        });</div><div class="line"></div><div class="line">    <span class="keywordflow">return</span> <a class="code" href="../../dd/dbd/namespacemq.html#aaa3477ed3695f5da7f9916db0becc6fb">await</a>;</div><div class="line">}</div></div><!-- fragment --><p> 示例是一个 javascript 消息处理函数，当函数返回时，消息处理引擎将等待 await，直到 await.end 被调用，才继续下一阶段的处理。 </p>
 
 </div>
 </div>
