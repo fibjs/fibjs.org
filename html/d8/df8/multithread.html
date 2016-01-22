@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 
-<title>Javascript on Fiber: 服务器编程</title>
+<title>Javascript on Fiber: 发挥多核的威力</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
@@ -84,7 +84,7 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'搜索');
   </div>
 </div>
 <script type="text/javascript">
-$(document).ready(function(){initNavTree('da/db3/server.html','../../');});
+$(document).ready(function(){initNavTree('d8/df8/multithread.html','../../');});
 </script>
 <div id="doc-content">
 <!-- window showing the filter options -->
@@ -103,40 +103,25 @@ $(document).ready(function(){initNavTree('da/db3/server.html','../../');});
 
 <div class="header">
   <div class="headertitle">
-<div class="title">服务器编程 </div>  </div>
+<div class="title">发挥多核的威力 </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1><a class="anchor" id="web_file"></a>
-静态文件服务器</h1>
-<p>使用 fibjs 创建一个简单的 web 服务器是一件很方便的事情。 </p><div class="fragment"><div class="line">var <a class="code" href="../../d3/d69/namespacehttp.html">http</a> = require(<span class="stringliteral">&#39;http&#39;</span>);</div>
+<div class="textblock"><p>JavaScript 是个单线程编程语言，虽然 fibjs 通过 fiber 将并发引入 JavaScript 开发，但是并不能真正让 JavaScript 可以并行运算。为了解决这个问题，fibjs 在 0.2.0 开始引入多 vm 运算，通过多个独立的 JavaScript vm 达到充分利用多核 cpu 的需求。</p>
+<h1><a class="anchor" id="basic"></a>
+基础接口</h1>
+<p>fibjs 启用多核运算的方式及其简单，因为多核运算的实现是基于多个 vm 的，而多个 vm 之间并不能共享数据，因此，在 vm 之间便需要通过 rpc 模块交互。示例如下：</p>
+<div class="fragment"><div class="line">var <a class="code" href="../../d0/d14/namespacerpc.html">rpc</a> = require(<span class="stringliteral">&quot;rpc&quot;</span>);</div>
 <div class="line"></div>
-<div class="line">var svr = <span class="keyword">new</span> http.Server(80, http.fileHandler(<span class="stringliteral">&#39;../fibjs/docs&#39;</span>));</div>
-<div class="line">svr.run();</div>
-</div><!-- fragment --><p>这个 web 服务器已经足够强大，支持自动压缩，支持预压缩，支持更新检查，作为普通的静态文件服务已经足够。</p>
-<p>然而我们显然不会满足于发布静态文件，因为无论是 apache 还是 nginx，都可以更专业地完成这一点，fibjs 的静态 web 服务器仅仅用于辅助完成一些不是很大量的前端文件下载。</p>
-<h1><a class="anchor" id="web_script"></a>
-动态服务器</h1>
-<p>一个动态服务器，其实并不比静态文件服务器复杂更多： </p><div class="fragment"><div class="line">var http = require(<span class="stringliteral">&#39;http&#39;</span>);</div>
+<div class="line">var task = rpc.open(<span class="stringliteral">&quot;path/to.js&quot;</span>);</div>
 <div class="line"></div>
-<div class="line">var svr = <span class="keyword">new</span> http.Server(80, <span class="keyword">function</span>(r){</div>
-<div class="line">  r.response.write(<span class="stringliteral">&#39;Hello, World!&#39;</span>);</div>
-<div class="line">});</div>
-<div class="line">svr.run();</div>
-</div><!-- fragment --><p>这里只是一个简单的文本响应，构建更复杂的动态服务器需要进一步修改。</p>
-<h1><a class="anchor" id="web_both"></a>
-动静合一</h1>
-<p>当网站规模不大的时候，我们通常需要在同一台服务器上同时支持静态文件和动态请求： </p><div class="fragment"><div class="line">var http = require(<span class="stringliteral">&#39;http&#39;</span>);</div>
-<div class="line">var <a class="code" href="../../dd/dbd/namespacemq.html">mq</a> = require(<span class="stringliteral">&#39;mq&#39;</span>);</div>
-<div class="line"></div>
-<div class="line">var svr = <span class="keyword">new</span> http.Server(8080, <span class="keyword">new</span> mq.Routing({</div>
-<div class="line">    <span class="stringliteral">&#39;^/www(/.*)&#39;</span>: http.fileHandler(<span class="stringliteral">&#39;../fibjs</span></div>
-<div class="line"><span class="stringliteral">/docs&#39;</span>),</div>
-<div class="line">    <span class="stringliteral">&#39;^/rpc(/.*)&#39;</span>: function(r) {</div>
-<div class="line">        r.response.write(<span class="stringliteral">&#39;Hello, World!&#39;</span>);</div>
-<div class="line">    }</div>
-<div class="line">}));</div>
-<div class="line">svr.run();</div>
-</div><!-- fragment --> </div></div><!-- contents -->
+<div class="line"><a class="code" href="../../dc/daa/namespaceconsole.html">console</a>.log(task.func1(100, 200));</div>
+<div class="line"><a class="code" href="../../dc/daa/namespaceconsole.html">console</a>.log(task.sub1.func2(100, 200, 300));</div>
+</div><!-- fragment --><p>示例中，多核运算与普通模块引用的差别，主要是 rpc.open，通过 rpc.open，可以创建一个 <a class="el" href="../../d6/d66/interfaceRpcTask.html" title="rpc 任务代理对象 ">RpcTask</a> 代理对象，用于封装发往运算 vm 的请求和返回结果。</p>
+<p><a class="el" href="../../d6/d66/interfaceRpcTask.html" title="rpc 任务代理对象 ">RpcTask</a> 对象同时还负责对远程对象的子对象引用的封装，比如 task.sub1 就会创建一个新的 <a class="el" href="../../d6/d66/interfaceRpcTask.html" title="rpc 任务代理对象 ">RpcTask</a> 代理对象，指向 vm 中模块 path/to.js 的 sub1 对象。</p>
+<h1><a class="anchor" id="limit"></a>
+约束</h1>
+<p>因为多核运算需要通过 rpc 交互，所以在请求和返回时，便对数据有比较严格的约束。无论是传递参数，还是返回结果，都必须是可以序列化的数据。简单说就是必须是可以 json 编码解码的数据。如果传递一个有类型的对象，则只会传递为一个无类型的对象和数据来。 </p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <style type="text/css">
 body {

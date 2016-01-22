@@ -29,6 +29,10 @@ var NAVTREE =
         [ "exports 对象", "d0/db5/module.html#obj_exports", null ]
       ] ]
     ] ],
+    [ "发挥多核的威力", "d8/df8/multithread.html", [
+      [ "基础接口", "d8/df8/multithread.html#basic", null ],
+      [ "约束", "d8/df8/multithread.html#limit", null ]
+    ] ],
     [ "服务器编程", "da/db3/server.html", [
       [ "静态文件服务器", "da/db3/server.html#web_file", null ],
       [ "动态服务器", "da/db3/server.html#web_script", null ],
@@ -47,10 +51,10 @@ var NAVTREEINDEX =
 "annotated.html",
 "d2/d68/interfaceMySQL.html#a0f8cde8557dcc248e5c1064791355845",
 "d4/dc7/interfaceStream.html#a6b88dbc459449d2280338e5b702a68b4",
-"d6/db7/interfaceMessage.html#a9509ae285aedede9fa31804eff207379",
-"d7/ddf/interfaceEvent.html#ac61f07a7d6c5471293371086af3186bd",
-"da/d38/interfaceHttpMessage.html#ad66be13eb5b7c5f560fd8511565138c4",
-"dd/d23/interfaceUrl.html#a5752a673c73ba86ad126bcf7fec39db3"
+"d6/db7/interfaceMessage.html#a9b19686184c56df8c1fca416751a71b3",
+"d7/ddf/interfaceEvent.html#ad11a1833268d15bc545b958789bd7e74",
+"da/d38/interfaceHttpMessage.html#ac61f07a7d6c5471293371086af3186bd",
+"dd/d23/interfaceUrl.html#a323b5d381772594de0d2b1d92f0654cf"
 ];
 
 var SYNCONMSG = '点击 关闭 面板同步';
