@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['server_20programming',['Server Programming',['../da/db3/server.html',1,'']]]
+  ['server_20programming',['Server Programming',['../server.html',1,'']]]
 ];

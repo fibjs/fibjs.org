@@ -156,17 +156,7 @@ Public Member Functions</h2></td></tr>
 <div class="textblock"><p><a class="el" href="../../dc/d90/interfaceSemaphore.html" title="Semaphore object. ">Semaphore</a> object. </p>
 <p><a class="el" href="../../dc/d90/interfaceSemaphore.html" title="Semaphore object. ">Semaphore</a> has a counter inside, descrease one after calling acquire and wait, increase one after calling release and post. Counter will be not negative because thread will in sleep when counter is 0, until other threads use release or post to increase counter.</p>
 <p><a class="el" href="../../dc/d90/interfaceSemaphore.html" title="Semaphore object. ">Semaphore</a> is commonly used limited resource usage and producer/consumer model application.</p>
-<p>Use database as an example to limit concurrency: </p><div class="fragment"><div class="line">var maxconnections = 5;</div>
-<div class="line">var l = <span class="keyword">new</span> coroutine.Semaphore(maxconnections);</div>
-<div class="line"></div>
-<div class="line">......</div>
-<div class="line"></div>
-<div class="line">l.acquire();</div>
-<div class="line">var conn = connectdb()</div>
-<div class="line">.....</div>
-<div class="line">conn.close();</div>
-<div class="line">l.release();</div>
-</div><!-- fragment --><p>Producer/consumer model usually use with semaphore and queue together. Producer post data and consumer wait for it. </p>
+<p>Use database as an example to limit concurrency: </p><div class="fragment"><div class="line">var maxconnections = 5;</div><div class="line">var l = <span class="keyword">new</span> coroutine.Semaphore(maxconnections);</div><div class="line"></div><div class="line">......</div><div class="line"></div><div class="line">l.acquire();</div><div class="line">var conn = connectdb()</div><div class="line">.....</div><div class="line">conn.close();</div><div class="line">l.release();</div></div><!-- fragment --><p>Producer/consumer model usually use with semaphore and queue together. Producer post data and consumer wait for it. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="adf61e8770130c9f386c7c78934028379"></a>
 <div class="memitem">

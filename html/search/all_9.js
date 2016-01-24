@@ -1,8 +1,6 @@
 var searchData=
 [
   ['iconv',['iconv',['../df/d0d/namespaceiconv.html',1,'iconv'],['../db/da8/namespaceencoding.html#a0dbaa330ad92c375b861260259da14b4',1,'encoding::iconv()']]],
-  ['iconvdecode',['iconvDecode',['../db/da8/namespaceencoding.html#ac64cf048045628480b71bfa0fabda202',1,'encoding']]],
-  ['iconvencode',['iconvEncode',['../db/da8/namespaceencoding.html#a43774e85d68c3e3d8e0e40abf9c5c58a',1,'encoding']]],
   ['id',['id',['../df/db2/interfaceHeapGraphNode.html#ac8676ab128e82182641b95411f087ffc',1,'HeapGraphNode::id()'],['../d7/ddb/interfaceXmlElement.html#a2289ea1bafc4e091f2a7f0a0e12a9401',1,'XmlElement::id()']]],
   ['ignorecase',['ignoreCase',['../d1/d43/interfaceRegex.html#ac2f8a95e4a1cac13a3312d0ec7eb0fd9',1,'Regex']]],
   ['image',['Image',['../d2/d41/interfaceImage.html',1,'']]],

@@ -77,12 +77,6 @@ var NAVTREEINDEX0 =
 "d0/da2/interfaceRedisList.html#ad39dcf8b76630b252337dbc70c5d0fe9":[5,48,4],
 "d0/da2/interfaceRedisList.html#ad66be13eb5b7c5f560fd8511565138c4":[5,48,16],
 "d0/da2/interfaceRedisList.html#ae25495b5a6c48a1ac80954026b46a4e4":[5,48,7],
-"d0/db5/module.html":[2],
-"d0/db5/module.html#element":[2,0],
-"d0/db5/module.html#fun_define":[2,0,1],
-"d0/db5/module.html#fun_require":[2,0,0],
-"d0/db5/module.html#obj_exports":[2,0,3],
-"d0/db5/module.html#obj_module":[2,0,2],
 "d0/df6/interfaceExpect.html":[5,12],
 "d0/df6/interfaceExpect.html#a02470a5b9fb9623b14b5d9c24bfb3c83":[5,12,9],
 "d0/df6/interfaceExpect.html#a09c2d66511679a6a0db4fde9c990b417":[5,12,34],
@@ -249,5 +243,11 @@ var NAVTREEINDEX0 =
 "d2/d65/interfaceHeapGraphEdge.html#afc0ae5b4248fe3149ebe492b177696e1":[5,17,1],
 "d2/d68/interfaceMySQL.html":[5,42],
 "d2/d68/interfaceMySQL.html#a0f8cde8557dcc248e5c1064791355845":[5,42,5],
-"d2/d68/interfaceMySQL.html#a1cfd7776b7f7b4a34e216f33b4df823b":[5,42,3]
+"d2/d68/interfaceMySQL.html#a1cfd7776b7f7b4a34e216f33b4df823b":[5,42,3],
+"d2/d68/interfaceMySQL.html#a4f19b7fb871da01a3133649c27797a83":[5,42,1],
+"d2/d68/interfaceMySQL.html#a6b88dbc459449d2280338e5b702a68b4":[5,42,8],
+"d2/d68/interfaceMySQL.html#aa6d68c3a518d46207b42d7f638b07a1e":[5,42,2],
+"d2/d68/interfaceMySQL.html#aaf5d8a266ab80bdb8d793898a87b6fd5":[5,42,13],
+"d2/d68/interfaceMySQL.html#ab4f47bec17ba6b3799c58ea8d0698b15":[5,42,4],
+"d2/d68/interfaceMySQL.html#ab5ddefb9b2c6c1a0cdfdac90e13de736":[5,42,6]
 };
