@@ -5,24 +5,24 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 
 <title>Javascript on Fiber: 模块管理</title>
-<link href="tabs.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="jquery.js"></script>
-<script type="text/javascript" src="dynsections.js"></script>
-<link href="navtree.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="resize.js"></script>
-<script type="text/javascript" src="navtreedata.js"></script>
-<script type="text/javascript" src="navtree.js"></script>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
 <script type="text/javascript">
   $(document).ready(initResizable);
   $(window).load(resizeHeight);
 </script>
-<link href="search/search.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="search/searchdata.js"></script>
-<script type="text/javascript" src="search/search.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
 <script type="text/javascript">
   $(document).ready(function() { init_search(); });
 </script>
-<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -30,7 +30,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="../../logo.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Javascript on Fiber
    </div>
@@ -43,21 +43,21 @@
 <!-- end header part -->
 
 <script type="text/javascript">
-var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+var searchBox = new SearchBox("searchBox", "../../search",false,'搜索');
 </script>
   <div id="navrow1" class="tabs">
     <ul class="tablist">
-      <li><a href="index.html"><span>首页</span></a></li>
-      <li class="current"><a href="pages.html"><span>教程</span></a></li>
-      <li><a href="namespaces.html"><span>模块</span></a></li>
-      <li><a href="annotated.html"><span>对象</span></a></li>
+      <li><a href="../../index.html"><span>首页</span></a></li>
+      <li class="current"><a href="../../pages.html"><span>教程</span></a></li>
+      <li><a href="../../namespaces.html"><span>模块</span></a></li>
+      <li><a href="../../annotated.html"><span>对象</span></a></li>
       <li><a href="https://github.com/xicilion/fibjs"><span>下载</span></a></li>
       <li><a href="http://named.cn/fibjs"><span>社区</span></a></li>
-      <li><a href="en/index.html"><span>English</span></a></li>
+      <li><a href="../../en/index.html"><span>English</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
-          <img id="MSearchSelect" src="search/mag_sel.png"
+          <img id="MSearchSelect" src="../../search/mag_sel.png"
                onmouseover="return searchBox.OnSearchSelectShow()"
                onmouseout="return searchBox.OnSearchSelectHide()"
                alt=""/>
@@ -66,7 +66,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'搜索');
                onblur="searchBox.OnSearchFieldFocus(false)" 
                onkeyup="searchBox.OnSearchFieldChange(event)"/>
           </span><span class="right">
-            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="../../search/close.png" alt=""/></a>
           </span>
         </div>
       </li>
@@ -84,7 +84,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'搜索');
   </div>
 </div>
 <script type="text/javascript">
-$(document).ready(function(){initNavTree('module.html','');});
+$(document).ready(function(){initNavTree('d0/db5/module.html','../../');});
 </script>
 <div id="doc-content">
 <!-- window showing the filter options -->
@@ -106,10 +106,19 @@ $(document).ready(function(){initNavTree('module.html','');});
 <div class="title">模块管理 </div>  </div>
 </div><!--header-->
 <div class="contents">
+<div class="toc"><h3>目录</h3>
+<ul><li class="level1"><a href="#element">基本组成</a><ul><li class="level2"><a href="#fun_require">require() 函数</a></li>
+<li class="level2"><a href="#fun_define">define() 函数</a></li>
+<li class="level2"><a href="#obj_module">module 对象</a></li>
+<li class="level2"><a href="#obj_exports">exports 对象</a></li>
+</ul>
+</li>
+</ul>
+</div>
 <div class="textblock"><p>fibjs 采用 CommonJS 模块加载机制进行模块管理，支持直接使用同步和异步加载语法，以兼容前端代码。 </p>
 <h1><a class="anchor" id="element"></a>
 基本组成</h1>
-<p>模块加载由四个基本元素组成，包含两个函数 <a class="el" href="module.html#fun_require">require() 函数</a>, <a class="el" href="module.html#fun_define">define() 函数</a> 和两个对象 <a class="el" href="module.html#obj_module">module 对象</a>, <a class="el" href="module.html#obj_exports">exports 对象</a> 。 This page contains the subsections subsection1 and subsection2. For more info see page page2. </p>
+<p>模块加载由四个基本元素组成，包含两个函数 <a class="el" href="../../d0/db5/module.html#fun_require">require() 函数</a>, <a class="el" href="../../d0/db5/module.html#fun_define">define() 函数</a> 和两个对象 <a class="el" href="../../d0/db5/module.html#obj_module">module 对象</a>, <a class="el" href="../../d0/db5/module.html#obj_exports">exports 对象</a> 。 This page contains the subsections subsection1 and subsection2. For more info see page page2. </p>
 <h2><a class="anchor" id="fun_require"></a>
 require() 函数</h2>
 <p>Text. </p>

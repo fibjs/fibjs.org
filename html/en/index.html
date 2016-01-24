@@ -106,6 +106,17 @@ $(document).ready(function(){initNavTree('index.html','');});
 <div class="title">Quick Start </div>  </div>
 </div><!--header-->
 <div class="contents">
+<div class="toc"><h3>Table of Contents</h3>
+<ul><li class="level1"><a href="#intro_sec">What’s fibjs</a></li>
+<li class="level1"><a href="#install_sec">Build release</a><ul><li class="level2"><a href="#install_step1">Step 1: Preparation for Building</a></li>
+<li class="level2"><a href="#install_step2">Step 2: Fetch source code</a></li>
+<li class="level2"><a href="#install_step3">Step 3: Building</a></li>
+<li class="level2"><a href="#install_step4">Step 4: Test cases</a></li>
+<li class="level2"><a href="#install_step5">Step 5: Have a rest and drinking</a></li>
+</ul>
+</li>
+</ul>
+</div>
 <div class="textblock"><h1><a class="anchor" id="intro_sec"></a>
 What’s fibjs</h1>
 <p>Fibjs is an application server framework bassed on Google V8 Javascript engine. Fibjs, as distinct from node.js, uses fiber to deal with multiplex of V8 engine. By reconstruct with lots of C++ components, heavy operations of consume much CPU time are devolved to background threads, which will release threads of V8 engine and compete for concurrent time.</p>
@@ -114,9 +125,22 @@ Build release</h1>
 <h2><a class="anchor" id="install_step1"></a>
 Step 1: Preparation for Building</h2>
 <p><b>For</b> Windows, installing Visual Studio 2011</p>
-<p><b>For</b> *nix, dependency tools for building: </p><div class="fragment"><div class="line">cmake</div><div class="line">make</div><div class="line">libexecinfo</div></div><!-- fragment --><p><b>For</b> MacOSX，take Brew for example, besides XCode and command line tools, cmake is needed: </p><div class="fragment"><div class="line">brew install cmake</div></div><!-- fragment --><p><b>For</b> Ubuntu: </p><div class="fragment"><div class="line">sudo apt-<span class="keyword">get</span> install g++</div><div class="line">sudo apt-<span class="keyword">get</span> install make</div><div class="line">sudo apt-<span class="keyword">get</span> install cmake</div></div><!-- fragment --><p>For 32-bit binary, additionally, multilib needs to be installed: </p><div class="fragment"><div class="line">sudo apt-<span class="keyword">get</span> install g++-multilib</div></div><!-- fragment --><p><b>For</b> FreeBSD: </p><div class="fragment"><div class="line">sudo pkg_add -r cmake</div><div class="line">sudo pkg_add -r libexecinfo</div></div><!-- fragment --><h2><a class="anchor" id="install_step2"></a>
+<p><b>For</b> *nix, dependency tools for building: </p><div class="fragment"><div class="line">cmake</div>
+<div class="line">make</div>
+<div class="line">libexecinfo</div>
+</div><!-- fragment --><p><b>For</b> MacOSX，take Brew for example, besides XCode and command line tools, cmake is needed: </p><div class="fragment"><div class="line">brew install cmake</div>
+</div><!-- fragment --><p><b>For</b> Ubuntu: </p><div class="fragment"><div class="line">sudo apt-<span class="keyword">get</span> install g++</div>
+<div class="line">sudo apt-<span class="keyword">get</span> install make</div>
+<div class="line">sudo apt-<span class="keyword">get</span> install cmake</div>
+</div><!-- fragment --><p>For 32-bit binary, additionally, multilib needs to be installed: </p><div class="fragment"><div class="line">sudo apt-<span class="keyword">get</span> install g++-multilib</div>
+</div><!-- fragment --><p><b>For</b> FreeBSD: </p><div class="fragment"><div class="line">sudo pkg_add -r cmake</div>
+<div class="line">sudo pkg_add -r libexecinfo</div>
+</div><!-- fragment --><h2><a class="anchor" id="install_step2"></a>
 Step 2: Fetch source code</h2>
-<div class="fragment"><div class="line">mkdir fibjs</div><div class="line">cd fibjs</div><div class="line">git clone https:<span class="comment">//github.com/xicilion/fibjs .</span></div></div><!-- fragment --><h2><a class="anchor" id="install_step3"></a>
+<div class="fragment"><div class="line">mkdir fibjs</div>
+<div class="line">cd fibjs</div>
+<div class="line">git clone https:<span class="comment">//github.com/xicilion/fibjs .</span></div>
+</div><!-- fragment --><h2><a class="anchor" id="install_step3"></a>
 Step 3: Building</h2>
 <p><b>For</b> Windows, open fibjs.sln and build.</p>
 <p>For *nix, run buil (shell file) to build. Building options as follows:</p>
@@ -127,10 +151,27 @@ Step 3: Building</h2>
 <li><code><b>Release32:</b> Build</code> 32-bit Release version </li>
 <li><code><b>Debug32:</b> Build</code> 32-bit Debug version</li>
 </ul>
-<p><b>For</b> example, building Release as follows: </p><div class="fragment"><div class="line">sh build Release</div></div><!-- fragment --><h2><a class="anchor" id="install_step4"></a>
+<p><b>For</b> example, building Release as follows: </p><div class="fragment"><div class="line">sh build Release</div>
+</div><!-- fragment --><h2><a class="anchor" id="install_step4"></a>
 Step 4: Test cases</h2>
 <p>Enter directory <b>test</b>, and then run <b></b>../bin/{$OS}_Release/fibjs main.js, which will go through all test cases .</p>
-<p>All test cases pass, if output looks like as follows: </p><div class="fragment"><div class="line">.......</div><div class="line">db</div><div class="line">  √ escape</div><div class="line">  √ formatMySQL</div><div class="line">  sqlite</div><div class="line">    √ empty sql</div><div class="line">    √ create table</div><div class="line">    √ intert</div><div class="line">    √ select</div><div class="line">    √ callback</div><div class="line">    √ binary (835ms) </div><div class="line"></div><div class="line">BUG:simple_api_call</div><div class="line">  √ not hungup (109ms) </div><div class="line"></div><div class="line">√ 312 tests completed (6727ms)</div></div><!-- fragment --><h2><a class="anchor" id="install_step5"></a>
+<p>All test cases pass, if output looks like as follows: </p><div class="fragment"><div class="line">.......</div>
+<div class="line">db</div>
+<div class="line">  √ escape</div>
+<div class="line">  √ formatMySQL</div>
+<div class="line">  sqlite</div>
+<div class="line">    √ empty sql</div>
+<div class="line">    √ create table</div>
+<div class="line">    √ intert</div>
+<div class="line">    √ select</div>
+<div class="line">    √ callback</div>
+<div class="line">    √ binary (835ms) </div>
+<div class="line"></div>
+<div class="line">BUG:simple_api_call</div>
+<div class="line">  √ not hungup (109ms) </div>
+<div class="line"></div>
+<div class="line">√ 312 tests completed (6727ms)</div>
+</div><!-- fragment --><h2><a class="anchor" id="install_step5"></a>
 Step 5: Have a rest and drinking</h2>
 <p>Now a executable fibjs is ready. Let’s celebrate! Coffee, beer, cola are all OK.</p>
 <p>Finally, Lion leave some extra trivial words here. It looks interesting but bullshit! I’m so sure that these words make no sense and stray away from the main subject of this article definitely. If you still persist to know what he said, go on with Google translator. I keep the original sentence leaving as follows. ^_^ 我一般会喝点可乐，不乱神，不乱性，又能补充能量。天冷的时候就喝点热的果珍，虽然里面什么水果成分都没有。:&lt; </p>

@@ -149,9 +149,39 @@ Public Attributes</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="../../d4/d39/interfaceFiber.html" title="Fiber operation object, this object cannot be created directly. ">Fiber</a> operation object, this object cannot be created directly. </p>
-<p>This object, which is used to issue fibers and communications between fibers, will be returned after the fiber is created by <a class="el" href="../../d6/d05/namespacecoroutine.html#aab30743ccc280e7950189c50a0afabde" title="Start a fibers and return the fiber Object. ">coroutine.start</a>. <a class="el" href="../../d4/d39/interfaceFiber.html" title="Fiber operation object, this object cannot be created directly. ">Fiber</a>'s main function can access the fiber by this, or get the fiber by <a class="el" href="../../d6/d05/namespacecoroutine.html#ae2d278991596f4170f2be18ae8d71454" title="Returns the current fiber. ">coroutine.current</a>. </p><div class="fragment"><div class="line"><span class="keyword">function</span> func(v1)</div><div class="line">{</div><div class="line">  <a class="code" href="../../dc/daa/namespaceconsole.html">console</a>.log(v1 + this.v);</div><div class="line">}</div><div class="line"></div><div class="line">var fb = coroutine.start(func,100);</div><div class="line"></div><div class="line">fb.v = 123;</div><div class="line"></div><div class="line">fb.join();</div></div><!-- fragment --><p><a class="el" href="../../d4/d39/interfaceFiber.html" title="Fiber operation object, this object cannot be created directly. ">Fiber</a> Local Storage is done by the shared <a class="el" href="../../d4/d39/interfaceFiber.html" title="Fiber operation object, this object cannot be created directly. ">Fiber</a> object. Current fiber can be accessed by <a class="el" href="../../d6/d05/namespacecoroutine.html#ae2d278991596f4170f2be18ae8d71454" title="Returns the current fiber. ">coroutine.current</a>, and the data can be shared by querying and modifying the fiber's variables.</p>
-<div class="fragment"><div class="line"><span class="keyword">function</span> func()</div><div class="line">{</div><div class="line">  <a class="code" href="../../dc/daa/namespaceconsole.html">console</a>.log(coroutine.current().v);</div><div class="line">}</div><div class="line"></div><div class="line">coroutine.current().v = 100;</div><div class="line"></div><div class="line">func();</div></div><!-- fragment --><p>When a new fiber is created, the current fiber's local variables will be copied to the new fiber. After that, each fiber's local variables won't have any effect on other's, unless the variable is referenced by other objects.</p>
-<div class="fragment"><div class="line"><span class="keyword">function</span> func()</div><div class="line">{</div><div class="line">  <a class="code" href="../../dc/daa/namespaceconsole.html">console</a>.log(coroutine.current().v);</div><div class="line">}</div><div class="line"></div><div class="line">coroutine.current().v = 100;</div><div class="line"></div><div class="line">var fb = coroutine.start(func);</div><div class="line"></div><div class="line">coroutine.current().v = 200;</div><div class="line"></div><div class="line">fb.join();</div></div><!-- fragment --> </div><h2 class="groupheader">Member Function Documentation</h2>
+<p>This object, which is used to issue fibers and communications between fibers, will be returned after the fiber is created by <a class="el" href="../../d6/d05/namespacecoroutine.html#aab30743ccc280e7950189c50a0afabde" title="Start a fibers and return the fiber Object. ">coroutine.start</a>. <a class="el" href="../../d4/d39/interfaceFiber.html" title="Fiber operation object, this object cannot be created directly. ">Fiber</a>'s main function can access the fiber by this, or get the fiber by <a class="el" href="../../d6/d05/namespacecoroutine.html#ae2d278991596f4170f2be18ae8d71454" title="Returns the current fiber. ">coroutine.current</a>. </p><div class="fragment"><div class="line"><span class="keyword">function</span> func(v1)</div>
+<div class="line">{</div>
+<div class="line">  <a class="code" href="../../dc/daa/namespaceconsole.html">console</a>.log(v1 + this.v);</div>
+<div class="line">}</div>
+<div class="line"></div>
+<div class="line">var fb = coroutine.start(func,100);</div>
+<div class="line"></div>
+<div class="line">fb.v = 123;</div>
+<div class="line"></div>
+<div class="line">fb.join();</div>
+</div><!-- fragment --><p><a class="el" href="../../d4/d39/interfaceFiber.html" title="Fiber operation object, this object cannot be created directly. ">Fiber</a> Local Storage is done by the shared <a class="el" href="../../d4/d39/interfaceFiber.html" title="Fiber operation object, this object cannot be created directly. ">Fiber</a> object. Current fiber can be accessed by <a class="el" href="../../d6/d05/namespacecoroutine.html#ae2d278991596f4170f2be18ae8d71454" title="Returns the current fiber. ">coroutine.current</a>, and the data can be shared by querying and modifying the fiber's variables.</p>
+<div class="fragment"><div class="line"><span class="keyword">function</span> func()</div>
+<div class="line">{</div>
+<div class="line">  <a class="code" href="../../dc/daa/namespaceconsole.html">console</a>.log(coroutine.current().v);</div>
+<div class="line">}</div>
+<div class="line"></div>
+<div class="line">coroutine.current().v = 100;</div>
+<div class="line"></div>
+<div class="line">func();</div>
+</div><!-- fragment --><p>When a new fiber is created, the current fiber's local variables will be copied to the new fiber. After that, each fiber's local variables won't have any effect on other's, unless the variable is referenced by other objects.</p>
+<div class="fragment"><div class="line"><span class="keyword">function</span> func()</div>
+<div class="line">{</div>
+<div class="line">  <a class="code" href="../../dc/daa/namespaceconsole.html">console</a>.log(coroutine.current().v);</div>
+<div class="line">}</div>
+<div class="line"></div>
+<div class="line">coroutine.current().v = 100;</div>
+<div class="line"></div>
+<div class="line">var fb = coroutine.start(func);</div>
+<div class="line"></div>
+<div class="line">coroutine.current().v = 200;</div>
+<div class="line"></div>
+<div class="line">fb.join();</div>
+</div><!-- fragment --> </div><h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="a0a2e20184dee5e7a4f90f3e62ff65b7e"></a>
 <div class="memitem">
 <div class="memproto">

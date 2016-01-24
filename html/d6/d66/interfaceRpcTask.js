@@ -1,5 +1,6 @@
 var interfaceRpcTask =
 [
+    [ "RpcTask", "d6/d66/interfaceRpcTask.html#a53de9a9de81303d092d05aa226a39253", null ],
     [ "Function", "d6/d66/interfaceRpcTask.html#a4893a061d5d00d1229f423099433e6eb", null ],
     [ "dispose", "d6/d66/interfaceRpcTask.html#a6b88dbc459449d2280338e5b702a68b4", null ],
     [ "toString", "d6/d66/interfaceRpcTask.html#ac61f07a7d6c5471293371086af3186bd", null ],

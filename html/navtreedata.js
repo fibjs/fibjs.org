@@ -11,32 +11,28 @@ var NAVTREE =
         [ "第五步：歇一会，喝点什么", "index.html#install_step5", null ]
       ] ]
     ] ],
-    [ "开始写代码", "start_prog.html", [
-      [ "开始写代码", "start_prog.html#program_sec", [
-        [ "第一步：Hello, World!", "start_prog.html#prg_step1", null ],
-        [ "第二步：DANG, DANG, DANG...", "start_prog.html#prg_step2", null ],
-        [ "第三步：DANG 们", "start_prog.html#prg_step3", null ],
-        [ "进阶：并行作业", "start_prog.html#prg_step4", null ],
-        [ "再进一步：异步作业", "start_prog.html#prg_step5", null ],
-        [ "小结", "start_prog.html#prg_step10", null ]
+    [ "开始写代码", "d2/de8/start_prog.html", [
+      [ "开始写代码", "d2/de8/start_prog.html#program_sec", [
+        [ "第一步：Hello, World!", "d2/de8/start_prog.html#prg_step1", null ],
+        [ "第二步：DANG, DANG, DANG...", "d2/de8/start_prog.html#prg_step2", null ],
+        [ "第三步：DANG 们", "d2/de8/start_prog.html#prg_step3", null ],
+        [ "进阶：并行作业", "d2/de8/start_prog.html#prg_step4", null ],
+        [ "再进一步：异步作业", "d2/de8/start_prog.html#prg_step5", null ],
+        [ "小结", "d2/de8/start_prog.html#prg_step10", null ]
       ] ]
     ] ],
-    [ "模块管理", "module.html", [
-      [ "基本组成", "module.html#element", [
-        [ "require() 函数", "module.html#fun_require", null ],
-        [ "define() 函数", "module.html#fun_define", null ],
-        [ "module 对象", "module.html#obj_module", null ],
-        [ "exports 对象", "module.html#obj_exports", null ]
+    [ "模块管理", "d0/db5/module.html", [
+      [ "基本组成", "d0/db5/module.html#element", [
+        [ "require() 函数", "d0/db5/module.html#fun_require", null ],
+        [ "define() 函数", "d0/db5/module.html#fun_define", null ],
+        [ "module 对象", "d0/db5/module.html#obj_module", null ],
+        [ "exports 对象", "d0/db5/module.html#obj_exports", null ]
       ] ]
     ] ],
-    [ "发挥多核的威力", "multithread.html", [
-      [ "基础接口", "multithread.html#basic", null ],
-      [ "约束", "multithread.html#limit", null ]
-    ] ],
-    [ "服务器编程", "server.html", [
-      [ "静态文件服务器", "server.html#web_file", null ],
-      [ "动态服务器", "server.html#web_script", null ],
-      [ "动静合一", "server.html#web_both", null ]
+    [ "服务器编程", "da/db3/server.html", [
+      [ "静态文件服务器", "da/db3/server.html#web_file", null ],
+      [ "动态服务器", "da/db3/server.html#web_script", null ],
+      [ "动静合一", "da/db3/server.html#web_both", null ]
     ] ],
     [ "模块", "namespaces.html", "namespaces" ],
     [ "对象", "annotated.html", "annotated" ],
@@ -49,13 +45,12 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"d2/d68/interfaceMySQL.html#ab4f47bec17ba6b3799c58ea8d0698b15",
-"d4/dd8/interfaceXmlCDATASection.html#a4ab7d0f533aedede8504be1021e39c8b",
-"d6/df7/interfaceTrigger.html",
-"d7/df5/interfaceSQLite.html#ab9261a7662bc8bb4a898bc15dc16f206",
+"d2/d68/interfaceMySQL.html#a0f8cde8557dcc248e5c1064791355845",
+"d4/dc7/interfaceStream.html#a6b88dbc459449d2280338e5b702a68b4",
+"d6/db7/interfaceMessage.html#a9509ae285aedede9fa31804eff207379",
+"d7/ddf/interfaceEvent.html#ac61f07a7d6c5471293371086af3186bd",
 "da/d38/interfaceHttpMessage.html#ad66be13eb5b7c5f560fd8511565138c4",
-"dd/d23/interfaceUrl.html#a8266785507de4265722ded03d1119d1e",
-"pages.html"
+"dd/d23/interfaceUrl.html#a5752a673c73ba86ad126bcf7fec39db3"
 ];
 
 var SYNCONMSG = '点击 关闭 面板同步';

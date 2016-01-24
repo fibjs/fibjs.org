@@ -1,5 +1,7 @@
 var searchData=
 [
+  ['iconvdecode',['iconvDecode',['../db/da8/namespaceencoding.html#ac64cf048045628480b71bfa0fabda202',1,'encoding']]],
+  ['iconvencode',['iconvEncode',['../db/da8/namespaceencoding.html#a43774e85d68c3e3d8e0e40abf9c5c58a',1,'encoding']]],
   ['importfile',['importFile',['../d5/dac/interfacePKey.html#a0925c1bccb7d62d1897b8f929e3aea02',1,'PKey']]],
   ['importkey',['importKey',['../d5/dac/interfacePKey.html#a15422214b8e3334ddfd485dff78e2921',1,'PKey::importKey(Buffer DerKey, String password=&quot;&quot;)'],['../d5/dac/interfacePKey.html#a5509986248d46a8f2423e3b0cc45f264',1,'PKey::importKey(String pemKey, String password=&quot;&quot;)']]],
   ['inc',['inc',['../df/d0b/interfaceStats.html#ac857dc0bd7bec8432933686c00f87f65',1,'Stats']]],

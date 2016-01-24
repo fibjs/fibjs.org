@@ -238,7 +238,8 @@ Variables</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>console module </p>
-<p>Global reference. Console can be used to log info, warnings and errors. Log can be trace on different device when initialized from config files for tracking. Console logs support formatted output, e.g. </p><div class="fragment"><div class="line"><a class="code" href="../../dc/daa/namespaceconsole.html">console</a>.log(<span class="stringliteral">&quot;%d + %d = %d&quot;</span>, 100, 200, 100 + 200);</div></div><!-- fragment --><ul>
+<p>Global reference. Console can be used to log info, warnings and errors. Log can be trace on different device when initialized from config files for tracking. Console logs support formatted output, e.g. </p><div class="fragment"><div class="line"><a class="code" href="../../dc/daa/namespaceconsole.html">console</a>.log(<span class="stringliteral">&quot;%d + %d = %d&quot;</span>, 100, 200, 100 + 200);</div>
+</div><!-- fragment --><ul>
 <li>s - string</li>
 <li>d - number, including initeger and numbers</li>
 <li>j - output in JSON</li>
@@ -269,7 +270,11 @@ Variables</h2></td></tr>
 
 <p>Batch add console output, supportted devices are console, syslog and file, maximum output number is 10. </p>
 <p>Console can be configured to send program outputs and system errors to different devices, for collecting runtime information.</p>
-<div class="fragment"><div class="line"><a class="code" href="../../dc/daa/namespaceconsole.html">console</a>.add([<span class="stringliteral">&quot;console&quot;</span>, {</div><div class="line">   type: <span class="stringliteral">&quot;syslog&quot;</span>,</div><div class="line">   levels: [<a class="code" href="../../dc/daa/namespaceconsole.html">console</a>.INFO, <a class="code" href="../../dc/daa/namespaceconsole.html">console</a>.ERROR]</div><div class="line">}]);</div></div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
+<div class="fragment"><div class="line"><a class="code" href="../../dc/daa/namespaceconsole.html">console</a>.add([<span class="stringliteral">&quot;console&quot;</span>, {</div>
+<div class="line">   type: <span class="stringliteral">&quot;syslog&quot;</span>,</div>
+<div class="line">   levels: [<a class="code" href="../../dc/daa/namespaceconsole.html">console</a>.INFO, <a class="code" href="../../dc/daa/namespaceconsole.html">console</a>.ERROR]</div>
+<div class="line">}]);</div>
+</div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">cfg</td><td>An array of console log config </td></tr>
   </table>
@@ -303,10 +308,26 @@ Variables</h2></td></tr>
 <p>Add console output, supportted devices are console, syslog and file, maximum output number is 10. </p>
 <p>Console can be configured to send program outputs and system errors to different devices, for collecting runtime information.</p>
 <p>Cfg is config which can be set as the string of devices name.</p>
-<div class="fragment"><div class="line"><a class="code" href="../../dc/daa/namespaceconsole.html">console</a>.add(<span class="stringliteral">&quot;console&quot;</span>);</div></div><!-- fragment --><p>You can also configure console levels for one device</p>
-<div class="fragment"><div class="line"><a class="code" href="../../dc/daa/namespaceconsole.html">console</a>.add({</div><div class="line">   type: <span class="stringliteral">&quot;console&quot;</span>,</div><div class="line">   levels: [<a class="code" href="../../dc/daa/namespaceconsole.html">console</a>.INFO, <a class="code" href="../../dc/daa/namespaceconsole.html">console</a>.ERROR]  <span class="comment">// options, output all level of log if skip this option.</span></div><div class="line">});</div></div><!-- fragment --><p>Syslog only works on posix platform:</p>
-<div class="fragment"><div class="line"><a class="code" href="../../dc/daa/namespaceconsole.html">console</a>.add({</div><div class="line">   type: <span class="stringliteral">&quot;syslog&quot;</span>,</div><div class="line">   levels: [<a class="code" href="../../dc/daa/namespaceconsole.html">console</a>.INFO, <a class="code" href="../../dc/daa/namespaceconsole.html">console</a>.ERROR]</div><div class="line">});</div></div><!-- fragment --><p>file log dose not support simple calls</p>
-<div class="fragment"><div class="line"><a class="code" href="../../dc/daa/namespaceconsole.html">console</a>.add({</div><div class="line">   type: <span class="stringliteral">&quot;file&quot;</span>,</div><div class="line">   levels: [<a class="code" href="../../dc/daa/namespaceconsole.html">console</a>.INFO, <a class="code" href="../../dc/daa/namespaceconsole.html">console</a>.ERROR],</div><div class="line">   <a class="code" href="../../d0/d43/namespacepath.html">path</a>: <span class="stringliteral">&quot;path/to/file&quot;</span>,  <span class="comment">// required</span></div><div class="line">   split: <span class="stringliteral">&quot;30m&quot;</span>,  <span class="comment">//optional, options can be &quot;day&quot;, &quot;hour&quot;, &quot;minute&quot;, &quot;###k&quot;, &quot;###m&quot;, &quot;###g&quot;</span></div><div class="line">   count: 10 <span class="comment">//optional, options can be any integer between 2-128, this option requires the split option</span></div><div class="line">});</div></div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
+<div class="fragment"><div class="line"><a class="code" href="../../dc/daa/namespaceconsole.html">console</a>.add(<span class="stringliteral">&quot;console&quot;</span>);</div>
+</div><!-- fragment --><p>You can also configure console levels for one device</p>
+<div class="fragment"><div class="line"><a class="code" href="../../dc/daa/namespaceconsole.html">console</a>.add({</div>
+<div class="line">   type: <span class="stringliteral">&quot;console&quot;</span>,</div>
+<div class="line">   levels: [<a class="code" href="../../dc/daa/namespaceconsole.html">console</a>.INFO, <a class="code" href="../../dc/daa/namespaceconsole.html">console</a>.ERROR]  <span class="comment">// options, output all level of log if skip this option.</span></div>
+<div class="line">});</div>
+</div><!-- fragment --><p>Syslog only works on posix platform:</p>
+<div class="fragment"><div class="line"><a class="code" href="../../dc/daa/namespaceconsole.html">console</a>.add({</div>
+<div class="line">   type: <span class="stringliteral">&quot;syslog&quot;</span>,</div>
+<div class="line">   levels: [<a class="code" href="../../dc/daa/namespaceconsole.html">console</a>.INFO, <a class="code" href="../../dc/daa/namespaceconsole.html">console</a>.ERROR]</div>
+<div class="line">});</div>
+</div><!-- fragment --><p>file log dose not support simple calls</p>
+<div class="fragment"><div class="line"><a class="code" href="../../dc/daa/namespaceconsole.html">console</a>.add({</div>
+<div class="line">   type: <span class="stringliteral">&quot;file&quot;</span>,</div>
+<div class="line">   levels: [<a class="code" href="../../dc/daa/namespaceconsole.html">console</a>.INFO, <a class="code" href="../../dc/daa/namespaceconsole.html">console</a>.ERROR],</div>
+<div class="line">   <a class="code" href="../../d0/d43/namespacepath.html">path</a>: <span class="stringliteral">&quot;path/to/file&quot;</span>,  <span class="comment">// required</span></div>
+<div class="line">   split: <span class="stringliteral">&quot;30m&quot;</span>,  <span class="comment">//optional, options can be &quot;day&quot;, &quot;hour&quot;, &quot;minute&quot;, &quot;###k&quot;, &quot;###m&quot;, &quot;###g&quot;</span></div>
+<div class="line">   count: 10 <span class="comment">//optional, options can be any integer between 2-128, this option requires the split option</span></div>
+<div class="line">});</div>
+</div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">cfg</td><td>Output configuration </td></tr>
   </table>

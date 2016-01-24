@@ -20,7 +20,7 @@ var searchData=
   ['min_5fversion',['min_version',['../df/dd2/namespacessl.html#a1d8846b94ac9932b67090fd405890ccd',1,'ssl']]],
   ['mkdir',['mkdir',['../d5/d8f/namespacefs.html#ad11bbef581ff87c5fc33e8b3d4b98dfb',1,'fs']]],
   ['mode',['mode',['../dc/da9/interfaceStat.html#ae3cbd0224aa659cbcab4bad383519385',1,'Stat']]],
-  ['module_20management',['Module Management',['../module.html',1,'']]],
+  ['module_20management',['Module Management',['../d0/db5/module.html',1,'']]],
   ['mongocollection',['MongoCollection',['../d6/d6b/interfaceMongoCollection.html',1,'']]],
   ['mongocursor',['MongoCursor',['../dc/d27/interfaceMongoCursor.html',1,'']]],
   ['mongodb',['MongoDB',['../df/d69/interfaceMongoDB.html',1,'']]],

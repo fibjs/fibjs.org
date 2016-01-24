@@ -13,7 +13,7 @@ var searchData=
   ['one_5fand_5fzeros',['ONE_AND_ZEROS',['../de/d36/namespacecrypto.html#a41db1f1be606b56e544c7550907c664d',1,'crypto']]],
   ['onerror',['onerror',['../dc/de5/interfaceHandlerEx.html#a07f68bb81b189e6820abb6510433ceca',1,'HandlerEx::onerror()'],['../d4/d79/interfaceHttpServer.html#a3867bfb2a99b35a13c0fcc711676aa22',1,'HttpServer::onerror()']]],
   ['onsuberror',['onsuberror',['../d7/d32/interfaceRedis.html#af96772db675918003d9974601a3d7df7',1,'Redis']]],
-  ['open',['open',['../d0/d45/namespacedb.html#ae6a25ce20c2a752cf20e7a577207f198',1,'db::open()'],['../d5/d8f/namespacefs.html#a3cd7e391b7ec9e731e7daaa84b3c8dcc',1,'fs::open()'],['../d0/d14/namespacerpc.html#a564133bd028f08feeb607dbdc6e58c46',1,'rpc::open()']]],
+  ['open',['open',['../d0/d45/namespacedb.html#ae6a25ce20c2a752cf20e7a577207f198',1,'db::open()'],['../d5/d8f/namespacefs.html#a3cd7e391b7ec9e731e7daaa84b3c8dcc',1,'fs::open()']]],
   ['openleveldb',['openLevelDB',['../d0/d45/namespacedb.html#af39786855964f572f8d9e34a115bdaf6',1,'db']]],
   ['openmongodb',['openMongoDB',['../d0/d45/namespacedb.html#a29551281115a5042ad34b3d361dddc51',1,'db']]],
   ['openmysql',['openMySQL',['../d0/d45/namespacedb.html#ad989737ba63bbaeb48fc899769557f5e',1,'db']]],
