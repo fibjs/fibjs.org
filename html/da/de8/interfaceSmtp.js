@@ -10,6 +10,7 @@ var interfaceSmtp =
     [ "data", "da/de8/interfaceSmtp.html#a3c97e94446fb2eefccd442dcafc2c769", null ],
     [ "quit", "da/de8/interfaceSmtp.html#a21644b0db666cf1b7691c78cb0204e43", null ],
     [ "dispose", "da/de8/interfaceSmtp.html#a6b88dbc459449d2280338e5b702a68b4", null ],
+    [ "equals", "da/de8/interfaceSmtp.html#a94c197c586ecfcb7cb733e0d543ce5ad", null ],
     [ "toString", "da/de8/interfaceSmtp.html#ac61f07a7d6c5471293371086af3186bd", null ],
     [ "toJSON", "da/de8/interfaceSmtp.html#ad66be13eb5b7c5f560fd8511565138c4", null ],
     [ "valueOf", "da/de8/interfaceSmtp.html#ab9261a7662bc8bb4a898bc15dc16f206", null ],

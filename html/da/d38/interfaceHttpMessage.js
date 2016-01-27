@@ -15,6 +15,7 @@ var interfaceHttpMessage =
     [ "sendTo", "da/d38/interfaceHttpMessage.html#a8c456b35a88228f954974592e9b5c5ab", null ],
     [ "readFrom", "da/d38/interfaceHttpMessage.html#a76cbd0ce572da0fd10218cc0aab973cf", null ],
     [ "dispose", "da/d38/interfaceHttpMessage.html#a6b88dbc459449d2280338e5b702a68b4", null ],
+    [ "equals", "da/d38/interfaceHttpMessage.html#a94c197c586ecfcb7cb733e0d543ce5ad", null ],
     [ "toString", "da/d38/interfaceHttpMessage.html#ac61f07a7d6c5471293371086af3186bd", null ],
     [ "toJSON", "da/d38/interfaceHttpMessage.html#ad66be13eb5b7c5f560fd8511565138c4", null ],
     [ "valueOf", "da/d38/interfaceHttpMessage.html#ab9261a7662bc8bb4a898bc15dc16f206", null ],

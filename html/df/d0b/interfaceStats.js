@@ -8,6 +8,7 @@ var interfaceStats =
     [ "reset", "df/d0b/interfaceStats.html#ab62c5543881b3e0f775e4e03f1790517", null ],
     [ "uptime", "df/d0b/interfaceStats.html#a32d73f6238ce28d6651f18465af79ae0", null ],
     [ "dispose", "df/d0b/interfaceStats.html#a6b88dbc459449d2280338e5b702a68b4", null ],
+    [ "equals", "df/d0b/interfaceStats.html#a94c197c586ecfcb7cb733e0d543ce5ad", null ],
     [ "toString", "df/d0b/interfaceStats.html#ac61f07a7d6c5471293371086af3186bd", null ],
     [ "toJSON", "df/d0b/interfaceStats.html#ad66be13eb5b7c5f560fd8511565138c4", null ],
     [ "valueOf", "df/d0b/interfaceStats.html#ab9261a7662bc8bb4a898bc15dc16f206", null ],

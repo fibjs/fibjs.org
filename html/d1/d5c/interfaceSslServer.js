@@ -8,6 +8,7 @@ var interfaceSslServer =
     [ "asyncRun", "d1/d5c/interfaceSslServer.html#a90e985acd2aaeddff07304e4d4d93c3f", null ],
     [ "stop", "d1/d5c/interfaceSslServer.html#af61a58eaa7b7b6bcc1471713778ec797", null ],
     [ "dispose", "d1/d5c/interfaceSslServer.html#a6b88dbc459449d2280338e5b702a68b4", null ],
+    [ "equals", "d1/d5c/interfaceSslServer.html#a94c197c586ecfcb7cb733e0d543ce5ad", null ],
     [ "toString", "d1/d5c/interfaceSslServer.html#ac61f07a7d6c5471293371086af3186bd", null ],
     [ "toJSON", "d1/d5c/interfaceSslServer.html#ad66be13eb5b7c5f560fd8511565138c4", null ],
     [ "valueOf", "d1/d5c/interfaceSslServer.html#ab9261a7662bc8bb4a898bc15dc16f206", null ],

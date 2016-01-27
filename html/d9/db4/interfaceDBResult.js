@@ -14,6 +14,7 @@ var interfaceDBResult =
     [ "map", "d9/db4/interfaceDBResult.html#aff5474e5559d9f0bd1f2acc7f3039ab2", null ],
     [ "toArray", "d9/db4/interfaceDBResult.html#a27852dc20a97256ca104253eb20e5f67", null ],
     [ "dispose", "d9/db4/interfaceDBResult.html#a6b88dbc459449d2280338e5b702a68b4", null ],
+    [ "equals", "d9/db4/interfaceDBResult.html#a94c197c586ecfcb7cb733e0d543ce5ad", null ],
     [ "toString", "d9/db4/interfaceDBResult.html#ac61f07a7d6c5471293371086af3186bd", null ],
     [ "toJSON", "d9/db4/interfaceDBResult.html#ad66be13eb5b7c5f560fd8511565138c4", null ],
     [ "valueOf", "d9/db4/interfaceDBResult.html#ab9261a7662bc8bb4a898bc15dc16f206", null ],

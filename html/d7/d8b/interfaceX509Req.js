@@ -9,6 +9,7 @@ var interfaceX509Req =
     [ "exportDer", "d7/d8b/interfaceX509Req.html#abee2b45b8e74584de7ff2c0aeb461f33", null ],
     [ "sign", "d7/d8b/interfaceX509Req.html#a6539f318125f8a29d49ceda762302de4", null ],
     [ "dispose", "d7/d8b/interfaceX509Req.html#a6b88dbc459449d2280338e5b702a68b4", null ],
+    [ "equals", "d7/d8b/interfaceX509Req.html#a94c197c586ecfcb7cb733e0d543ce5ad", null ],
     [ "toString", "d7/d8b/interfaceX509Req.html#ac61f07a7d6c5471293371086af3186bd", null ],
     [ "toJSON", "d7/d8b/interfaceX509Req.html#ad66be13eb5b7c5f560fd8511565138c4", null ],
     [ "valueOf", "d7/d8b/interfaceX509Req.html#ab9261a7662bc8bb4a898bc15dc16f206", null ],

@@ -8,6 +8,7 @@ var interfaceWebSocketMessage =
     [ "sendTo", "db/d5d/interfaceWebSocketMessage.html#a8c456b35a88228f954974592e9b5c5ab", null ],
     [ "readFrom", "db/d5d/interfaceWebSocketMessage.html#a76cbd0ce572da0fd10218cc0aab973cf", null ],
     [ "dispose", "db/d5d/interfaceWebSocketMessage.html#a6b88dbc459449d2280338e5b702a68b4", null ],
+    [ "equals", "db/d5d/interfaceWebSocketMessage.html#a94c197c586ecfcb7cb733e0d543ce5ad", null ],
     [ "toString", "db/d5d/interfaceWebSocketMessage.html#ac61f07a7d6c5471293371086af3186bd", null ],
     [ "toJSON", "db/d5d/interfaceWebSocketMessage.html#ad66be13eb5b7c5f560fd8511565138c4", null ],
     [ "valueOf", "db/d5d/interfaceWebSocketMessage.html#ab9261a7662bc8bb4a898bc15dc16f206", null ],

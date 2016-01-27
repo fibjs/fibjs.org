@@ -13,6 +13,7 @@ var interfaceRedisSortedSet =
     [ "rank", "db/d03/interfaceRedisSortedSet.html#a7b00968e7bac705cfdae353277d07f35", null ],
     [ "rankRev", "db/d03/interfaceRedisSortedSet.html#a033c2cbea581c0071ee7a3f73f460bd8", null ],
     [ "dispose", "db/d03/interfaceRedisSortedSet.html#a6b88dbc459449d2280338e5b702a68b4", null ],
+    [ "equals", "db/d03/interfaceRedisSortedSet.html#a94c197c586ecfcb7cb733e0d543ce5ad", null ],
     [ "toString", "db/d03/interfaceRedisSortedSet.html#ac61f07a7d6c5471293371086af3186bd", null ],
     [ "toJSON", "db/d03/interfaceRedisSortedSet.html#ad66be13eb5b7c5f560fd8511565138c4", null ],
     [ "valueOf", "db/d03/interfaceRedisSortedSet.html#ab9261a7662bc8bb4a898bc15dc16f206", null ]

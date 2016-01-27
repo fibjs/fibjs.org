@@ -10,6 +10,7 @@ var interfaceHttpCollection =
     [ "set", "da/d34/interfaceHttpCollection.html#a3df31bf39192d0b908c09af400468943", null ],
     [ "remove", "da/d34/interfaceHttpCollection.html#a01f67073954a3dfe86fd98df950cc3e4", null ],
     [ "dispose", "da/d34/interfaceHttpCollection.html#a6b88dbc459449d2280338e5b702a68b4", null ],
+    [ "equals", "da/d34/interfaceHttpCollection.html#a94c197c586ecfcb7cb733e0d543ce5ad", null ],
     [ "toString", "da/d34/interfaceHttpCollection.html#ac61f07a7d6c5471293371086af3186bd", null ],
     [ "toJSON", "da/d34/interfaceHttpCollection.html#ad66be13eb5b7c5f560fd8511565138c4", null ],
     [ "valueOf", "da/d34/interfaceHttpCollection.html#ab9261a7662bc8bb4a898bc15dc16f206", null ],

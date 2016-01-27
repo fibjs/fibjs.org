@@ -7,6 +7,7 @@ var interfaceUrl =
     [ "resolve", "dd/d23/interfaceUrl.html#aa205a8a31485774d1c830dc559f032ff", null ],
     [ "normalize", "dd/d23/interfaceUrl.html#a323b5d381772594de0d2b1d92f0654cf", null ],
     [ "dispose", "dd/d23/interfaceUrl.html#a6b88dbc459449d2280338e5b702a68b4", null ],
+    [ "equals", "dd/d23/interfaceUrl.html#a94c197c586ecfcb7cb733e0d543ce5ad", null ],
     [ "toString", "dd/d23/interfaceUrl.html#ac61f07a7d6c5471293371086af3186bd", null ],
     [ "toJSON", "dd/d23/interfaceUrl.html#ad66be13eb5b7c5f560fd8511565138c4", null ],
     [ "valueOf", "dd/d23/interfaceUrl.html#ab9261a7662bc8bb4a898bc15dc16f206", null ],

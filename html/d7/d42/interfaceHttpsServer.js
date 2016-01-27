@@ -9,6 +9,7 @@ var interfaceHttpsServer =
     [ "asyncRun", "d7/d42/interfaceHttpsServer.html#a90e985acd2aaeddff07304e4d4d93c3f", null ],
     [ "stop", "d7/d42/interfaceHttpsServer.html#af61a58eaa7b7b6bcc1471713778ec797", null ],
     [ "dispose", "d7/d42/interfaceHttpsServer.html#a6b88dbc459449d2280338e5b702a68b4", null ],
+    [ "equals", "d7/d42/interfaceHttpsServer.html#a94c197c586ecfcb7cb733e0d543ce5ad", null ],
     [ "toString", "d7/d42/interfaceHttpsServer.html#ac61f07a7d6c5471293371086af3186bd", null ],
     [ "toJSON", "d7/d42/interfaceHttpsServer.html#ad66be13eb5b7c5f560fd8511565138c4", null ],
     [ "valueOf", "d7/d42/interfaceHttpsServer.html#ab9261a7662bc8bb4a898bc15dc16f206", null ],

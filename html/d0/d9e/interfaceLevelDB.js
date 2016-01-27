@@ -13,6 +13,7 @@ var interfaceLevelDB =
     [ "commit", "d0/d9e/interfaceLevelDB.html#ad7d98e0ce00ca52d838a1b31d9d323ba", null ],
     [ "close", "d0/d9e/interfaceLevelDB.html#ab757e7bc24ac6020559062e30e0f2b46", null ],
     [ "dispose", "d0/d9e/interfaceLevelDB.html#a6b88dbc459449d2280338e5b702a68b4", null ],
+    [ "equals", "d0/d9e/interfaceLevelDB.html#a94c197c586ecfcb7cb733e0d543ce5ad", null ],
     [ "toString", "d0/d9e/interfaceLevelDB.html#ac61f07a7d6c5471293371086af3186bd", null ],
     [ "toJSON", "d0/d9e/interfaceLevelDB.html#ad66be13eb5b7c5f560fd8511565138c4", null ],
     [ "valueOf", "d0/d9e/interfaceLevelDB.html#ab9261a7662bc8bb4a898bc15dc16f206", null ]

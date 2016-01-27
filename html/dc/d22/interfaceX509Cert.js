@@ -9,6 +9,7 @@ var interfaceX509Cert =
     [ "dump", "dc/d22/interfaceX509Cert.html#ab8b6b8427dec3e1294db2ebedc301b5b", null ],
     [ "clear", "dc/d22/interfaceX509Cert.html#a77b2377e261f7206b7b5361e55a91d28", null ],
     [ "dispose", "dc/d22/interfaceX509Cert.html#a6b88dbc459449d2280338e5b702a68b4", null ],
+    [ "equals", "dc/d22/interfaceX509Cert.html#a94c197c586ecfcb7cb733e0d543ce5ad", null ],
     [ "toString", "dc/d22/interfaceX509Cert.html#ac61f07a7d6c5471293371086af3186bd", null ],
     [ "toJSON", "dc/d22/interfaceX509Cert.html#ad66be13eb5b7c5f560fd8511565138c4", null ],
     [ "valueOf", "dc/d22/interfaceX509Cert.html#ab9261a7662bc8bb4a898bc15dc16f206", null ],

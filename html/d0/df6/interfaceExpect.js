@@ -14,6 +14,7 @@ var interfaceExpect =
     [ "property", "d0/df6/interfaceExpect.html#ab6b9e0f41589eaae6b968a8585885548", null ],
     [ "closeTo", "d0/df6/interfaceExpect.html#ad68fd4e8d4aea4d89d9f2ad655d1a309", null ],
     [ "dispose", "d0/df6/interfaceExpect.html#a6b88dbc459449d2280338e5b702a68b4", null ],
+    [ "equals", "d0/df6/interfaceExpect.html#a94c197c586ecfcb7cb733e0d543ce5ad", null ],
     [ "toString", "d0/df6/interfaceExpect.html#ac61f07a7d6c5471293371086af3186bd", null ],
     [ "toJSON", "d0/df6/interfaceExpect.html#ad66be13eb5b7c5f560fd8511565138c4", null ],
     [ "valueOf", "d0/df6/interfaceExpect.html#ab9261a7662bc8bb4a898bc15dc16f206", null ],

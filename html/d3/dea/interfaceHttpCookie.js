@@ -5,6 +5,7 @@ var interfaceHttpCookie =
     [ "parse", "d3/dea/interfaceHttpCookie.html#acc36fa46966c57a77192caf01495748f", null ],
     [ "match", "d3/dea/interfaceHttpCookie.html#a40e432c30689dbd71e3cf8938de5ff1b", null ],
     [ "dispose", "d3/dea/interfaceHttpCookie.html#a6b88dbc459449d2280338e5b702a68b4", null ],
+    [ "equals", "d3/dea/interfaceHttpCookie.html#a94c197c586ecfcb7cb733e0d543ce5ad", null ],
     [ "toString", "d3/dea/interfaceHttpCookie.html#ac61f07a7d6c5471293371086af3186bd", null ],
     [ "toJSON", "d3/dea/interfaceHttpCookie.html#ad66be13eb5b7c5f560fd8511565138c4", null ],
     [ "valueOf", "d3/dea/interfaceHttpCookie.html#ab9261a7662bc8bb4a898bc15dc16f206", null ],

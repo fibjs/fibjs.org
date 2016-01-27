@@ -15,6 +15,7 @@ var interfaceList =
     [ "map", "de/dd8/interfaceList.html#aff5474e5559d9f0bd1f2acc7f3039ab2", null ],
     [ "toArray", "de/dd8/interfaceList.html#a27852dc20a97256ca104253eb20e5f67", null ],
     [ "dispose", "de/dd8/interfaceList.html#a6b88dbc459449d2280338e5b702a68b4", null ],
+    [ "equals", "de/dd8/interfaceList.html#a94c197c586ecfcb7cb733e0d543ce5ad", null ],
     [ "toString", "de/dd8/interfaceList.html#ac61f07a7d6c5471293371086af3186bd", null ],
     [ "toJSON", "de/dd8/interfaceList.html#ad66be13eb5b7c5f560fd8511565138c4", null ],
     [ "valueOf", "de/dd8/interfaceList.html#ab9261a7662bc8bb4a898bc15dc16f206", null ],

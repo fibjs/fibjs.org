@@ -22,6 +22,7 @@ var interfaceXmlDocument =
     [ "replaceChild", "d6/d47/interfaceXmlDocument.html#ad27424cb66b1039ddff3f6c297fbe0fd", null ],
     [ "removeChild", "d6/d47/interfaceXmlDocument.html#a1b332c368e7f6bfa304a65f255c28dad", null ],
     [ "dispose", "d6/d47/interfaceXmlDocument.html#a6b88dbc459449d2280338e5b702a68b4", null ],
+    [ "equals", "d6/d47/interfaceXmlDocument.html#a94c197c586ecfcb7cb733e0d543ce5ad", null ],
     [ "toString", "d6/d47/interfaceXmlDocument.html#ac61f07a7d6c5471293371086af3186bd", null ],
     [ "toJSON", "d6/d47/interfaceXmlDocument.html#ad66be13eb5b7c5f560fd8511565138c4", null ],
     [ "valueOf", "d6/d47/interfaceXmlDocument.html#ab9261a7662bc8bb4a898bc15dc16f206", null ],

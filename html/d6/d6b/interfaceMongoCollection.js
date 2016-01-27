@@ -19,6 +19,7 @@ var interfaceMongoCollection =
     [ "getIndexes", "d6/d6b/interfaceMongoCollection.html#a1d9aea4a6a89b75ca4a5152968dd3054", null ],
     [ "getCollection", "d6/d6b/interfaceMongoCollection.html#ab1ca4f5480c96c52b645c4c4020c0f1b", null ],
     [ "dispose", "d6/d6b/interfaceMongoCollection.html#a6b88dbc459449d2280338e5b702a68b4", null ],
+    [ "equals", "d6/d6b/interfaceMongoCollection.html#a94c197c586ecfcb7cb733e0d543ce5ad", null ],
     [ "toString", "d6/d6b/interfaceMongoCollection.html#ac61f07a7d6c5471293371086af3186bd", null ],
     [ "toJSON", "d6/d6b/interfaceMongoCollection.html#ad66be13eb5b7c5f560fd8511565138c4", null ],
     [ "valueOf", "d6/d6b/interfaceMongoCollection.html#ab9261a7662bc8bb4a898bc15dc16f206", null ],

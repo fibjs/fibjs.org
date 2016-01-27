@@ -73,6 +73,7 @@ var interfaceBuffer =
     [ "toString", "d9/dae/interfaceBuffer.html#ac53cf114c773e7246fc35933cf393d62", null ],
     [ "toString", "d9/dae/interfaceBuffer.html#a704ee70a5949e3ce5e3ed9efffbfd054", null ],
     [ "dispose", "d9/dae/interfaceBuffer.html#a6b88dbc459449d2280338e5b702a68b4", null ],
+    [ "equals", "d9/dae/interfaceBuffer.html#a94c197c586ecfcb7cb733e0d543ce5ad", null ],
     [ "toJSON", "d9/dae/interfaceBuffer.html#ad66be13eb5b7c5f560fd8511565138c4", null ],
     [ "valueOf", "d9/dae/interfaceBuffer.html#ab9261a7662bc8bb4a898bc15dc16f206", null ],
     [ "operator[]", "d9/dae/interfaceBuffer.html#ab9877007db2fad366b7fb0fae861243a", null ],

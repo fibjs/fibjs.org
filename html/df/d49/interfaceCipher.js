@@ -7,6 +7,7 @@ var interfaceCipher =
     [ "encrypt", "df/d49/interfaceCipher.html#ac1c907b2bbe76b1c312663d3e135030f", null ],
     [ "decrypt", "df/d49/interfaceCipher.html#ad8540db73a6b68b8372d908c48ad26fc", null ],
     [ "dispose", "df/d49/interfaceCipher.html#a6b88dbc459449d2280338e5b702a68b4", null ],
+    [ "equals", "df/d49/interfaceCipher.html#a94c197c586ecfcb7cb733e0d543ce5ad", null ],
     [ "toString", "df/d49/interfaceCipher.html#ac61f07a7d6c5471293371086af3186bd", null ],
     [ "toJSON", "df/d49/interfaceCipher.html#ad66be13eb5b7c5f560fd8511565138c4", null ],
     [ "valueOf", "df/d49/interfaceCipher.html#ab9261a7662bc8bb4a898bc15dc16f206", null ],

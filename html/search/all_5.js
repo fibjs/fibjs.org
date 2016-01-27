@@ -26,7 +26,7 @@ var searchData=
   ['eol',['EOL',['../d0/d37/interfaceBufferedStream.html#adaa9b52ec60c27e739b762a26b3f0a8d',1,'BufferedStream::EOL()'],['../da/de1/namespaceos.html#a76c7476a457aa1af25ca82a3fdb7e982',1,'os::EOL()']]],
   ['eql',['eql',['../d0/df6/interfaceExpect.html#ab1800257df8c06dd9d759c9c2dd91f72',1,'Expect']]],
   ['equal',['equal',['../d0/df6/interfaceExpect.html#aa8507593476087851d862726b802d7f1',1,'Expect::equal()'],['../df/dc1/interfaceInt64.html#a1cdcc1931d4021a31cf9a2f62d1fa881',1,'Int64::equal()'],['../d2/dab/namespaceassert.html#af37037ca6be593c635dc7a312e45f17e',1,'assert::equal()']]],
-  ['equals',['equals',['../d9/dae/interfaceBuffer.html#ab9dcbdb139e1fb0d2a4d5c7fa595edaa',1,'Buffer']]],
+  ['equals',['equals',['../d9/dae/interfaceBuffer.html#ab9dcbdb139e1fb0d2a4d5c7fa595edaa',1,'Buffer::equals()'],['../db/d38/interfaceobject.html#a94c197c586ecfcb7cb733e0d543ce5ad',1,'object::equals()']]],
   ['error',['error',['../da/d8a/interfaceTextColor.html#a56f6aeb7a8f24f3f294c61e1199f7e0b',1,'TextColor::error()'],['../dc/daa/namespaceconsole.html#a60c0dd0c74056a542643ec7202b5954d',1,'console::ERROR()'],['../dc/daa/namespaceconsole.html#a3525bdec50b085e03d6ca5625a057914',1,'console::error(String fmt,...)'],['../dc/daa/namespaceconsole.html#abc33daf6e70210aa03b78832c2d6eea3',1,'console::error(...)']]],
   ['escape',['escape',['../d0/d45/namespacedb.html#aeb2f02c2858d45aeab3cd686e99ceabd',1,'db']]],
   ['event',['Event',['../d7/ddf/interfaceEvent.html',1,'Event'],['../d7/ddf/interfaceEvent.html#a33337ad9b309a903c822cb4693862d9c',1,'Event::Event()'],['../d6/d05/namespacecoroutine.html#a3c3e442ce88f0a47155c7645ddef2c11',1,'coroutine::Event()']]],

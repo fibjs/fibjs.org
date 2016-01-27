@@ -10,6 +10,7 @@ var interfaceStat =
     [ "isMemory", "dc/da9/interfaceStat.html#a34b8a148a3c7d4570ed19e642d7d5a72", null ],
     [ "isSocket", "dc/da9/interfaceStat.html#a86560561f60b45ca4af6b9e935f18143", null ],
     [ "dispose", "dc/da9/interfaceStat.html#a6b88dbc459449d2280338e5b702a68b4", null ],
+    [ "equals", "dc/da9/interfaceStat.html#a94c197c586ecfcb7cb733e0d543ce5ad", null ],
     [ "toString", "dc/da9/interfaceStat.html#ac61f07a7d6c5471293371086af3186bd", null ],
     [ "toJSON", "dc/da9/interfaceStat.html#ad66be13eb5b7c5f560fd8511565138c4", null ],
     [ "valueOf", "dc/da9/interfaceStat.html#ab9261a7662bc8bb4a898bc15dc16f206", null ],
