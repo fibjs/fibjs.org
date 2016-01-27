@@ -1,6 +1,5 @@
 var NAVTREEINDEX7 =
 {
-"df/d69/interfaceMongoDB.html#ac92423d94233e3b27c2d47409f5eeb33":[6,41,1],
 "df/d69/interfaceMongoDB.html#ad66be13eb5b7c5f560fd8511565138c4":[6,41,8],
 "df/d69/interfaceMongoDB.html#af7b4f5ffd6edeb8c493f8dcadea34525":[6,41,2],
 "df/db2/interfaceHeapGraphNode.html":[6,19],

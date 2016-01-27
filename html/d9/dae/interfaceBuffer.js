@@ -23,7 +23,6 @@ var interfaceBuffer =
     [ "indexOf", "d9/dae/interfaceBuffer.html#a9d448e1807dcd9daa13ef8b6d2428f72", null ],
     [ "indexOf", "d9/dae/interfaceBuffer.html#abdeb1565858b58cf9733196968c5225b", null ],
     [ "indexOf", "d9/dae/interfaceBuffer.html#ad221c2260a109cf8ac4b2c0805a1d85b", null ],
-    [ "equals", "d9/dae/interfaceBuffer.html#ab9dcbdb139e1fb0d2a4d5c7fa595edaa", null ],
     [ "compare", "d9/dae/interfaceBuffer.html#a75f1e644fc46657e3f6b6383da864e78", null ],
     [ "copy", "d9/dae/interfaceBuffer.html#a20c0b25cc08d40d7d988689808cd3553", null ],
     [ "readUInt8", "d9/dae/interfaceBuffer.html#aae723cf790b185594362a97a0d310b2f", null ],
