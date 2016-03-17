@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['wait',['wait',['../d5/d45/interfaceCondition.html#a77389487addf6b616767bd21d7386b0d',1,'Condition::wait()'],['../d7/ddf/interfaceEvent.html#a5088e961dddd82b86142b54ae9dd6b14',1,'Event::wait()'],['../dc/d90/interfaceSemaphore.html#ab144395cba916969214bbe60f7521fed',1,'Semaphore::wait()']]],
-  ['warn',['warn',['../da/d8a/interfaceTextColor.html#a1b2fab327d7b9814c9dd37b5f3861643',1,'TextColor::warn()'],['../dc/daa/namespaceconsole.html#a85513e51e93e8d827ebedba45359161c',1,'console::warn(String fmt,...)'],['../dc/daa/namespaceconsole.html#a4731e95e6360c7bdf0513236bc0ea032',1,'console::warn(...)'],['../dc/daa/namespaceconsole.html#ae02c4729b8e8c15a3b166ec5d4c08365',1,'console::WARN()']]],
+  ['wait',['wait',['../d5/d45/interfaceCondition.html#a77389487addf6b616767bd21d7386b0d',1,'Condition::wait()'],['../d7/ddf/interfaceEvent.html#a5088e961dddd82b86142b54ae9dd6b14',1,'Event::wait()'],['../dc/d90/interfaceSemaphore.html#ab144395cba916969214bbe60f7521fed',1,'Semaphore::wait()'],['../d8/d10/interfaceSubProcess.html#aa72a9338112f7e69cd10f1c38d0a1aba',1,'SubProcess::wait()']]],
+  ['warn',['warn',['../da/d8a/interfaceTextColor.html#a1b2fab327d7b9814c9dd37b5f3861643',1,'TextColor::warn()'],['../dc/daa/namespaceconsole.html#ae02c4729b8e8c15a3b166ec5d4c08365',1,'console::WARN()'],['../dc/daa/namespaceconsole.html#a85513e51e93e8d827ebedba45359161c',1,'console::warn(String fmt,...)'],['../dc/daa/namespaceconsole.html#a4731e95e6360c7bdf0513236bc0ea032',1,'console::warn(...)']]],
   ['webp',['WEBP',['../dd/d5d/namespacegd.html#af148e7fcb262e4a23c923a1031eed702',1,'gd']]],
   ['websocket',['websocket',['../d0/d42/namespacewebsocket.html',1,'']]],
   ['websockethandler',['WebSocketHandler',['../da/d20/interfaceWebSocketHandler.html',1,'WebSocketHandler'],['../da/d20/interfaceWebSocketHandler.html#a3ddeaa1c9e3d06b767b1b811bf4dde5e',1,'WebSocketHandler::WebSocketHandler()']]],

@@ -28,6 +28,8 @@ var searchData=
   ['ssl3',['ssl3',['../df/dd2/namespacessl.html#a2e2fa66a1277385bf35c28109ac0129c',1,'ssl']]],
   ['stats',['stats',['../dc/de5/interfaceHandlerEx.html#aac577f5c46a14d73943fd80882ae17bb',1,'HandlerEx::stats()'],['../d7/d48/interfaceTcpServer.html#ac39165a6d1da69beae4283af1905fe98',1,'TcpServer::stats()'],['../d6/d72/namespaceutil.html#aa2c3668cf097906a77de04ae7243fd1e',1,'util::Stats()']]],
   ['status',['status',['../d9/d71/interfaceHttpResponse.html#a418ebc4d556401052e637162210dcadd',1,'HttpResponse']]],
+  ['stdin',['stdin',['../d8/d10/interfaceSubProcess.html#a70316e3b036f9f3e9da188b3f6c09be4',1,'SubProcess']]],
+  ['stdout',['stdout',['../d8/d10/interfaceSubProcess.html#a33914fe2eb22865fc20391313a1b3f70',1,'SubProcess']]],
   ['stream',['stream',['../d0/d37/interfaceBufferedStream.html#adc842e860f92cdb58347758fcf2532af',1,'BufferedStream::stream()'],['../d6/db7/interfaceMessage.html#a9b19686184c56df8c1fca416751a71b3',1,'Message::stream()'],['../de/d36/namespacecrypto.html#affac186a18bbd7b81965e49608c88938',1,'crypto::STREAM()']]],
   ['string',['string',['../d0/df6/interfaceExpect.html#a82d5903aca490a3a6c416b138cadc2f0',1,'Expect']]],
   ['subject',['subject',['../dc/d22/interfaceX509Cert.html#a496a03ab80e5b3c6bdc01626df6900ba',1,'X509Cert::subject()'],['../d7/d8b/interfaceX509Req.html#a3f636dc3d8417ac6e5b508989f6d91c6',1,'X509Req::subject()']]],

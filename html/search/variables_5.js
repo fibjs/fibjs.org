@@ -12,9 +12,11 @@ var searchData=
   ['edgedetect',['EDGEDETECT',['../dd/d5d/namespacegd.html#ab6c9bd03d47937861bc87e0c91e48d49',1,'gd']]],
   ['element_5fnode',['ELEMENT_NODE',['../d8/dd3/namespacexml.html#ad4764c995e496ba8e7af34eb67cc71ce',1,'xml']]],
   ['emboss',['EMBOSS',['../dd/d5d/namespacegd.html#a0239ff80205ec44d2a653cefa8085e27',1,'gd']]],
+  ['env',['env',['../d8/d25/namespaceprocess.html#a5452c47f4dfe56944cb47893c53d1476',1,'process']]],
   ['eol',['EOL',['../d0/d37/interfaceBufferedStream.html#adaa9b52ec60c27e739b762a26b3f0a8d',1,'BufferedStream::EOL()'],['../da/de1/namespaceos.html#a76c7476a457aa1af25ca82a3fdb7e982',1,'os::EOL()']]],
   ['error',['error',['../da/d8a/interfaceTextColor.html#a56f6aeb7a8f24f3f294c61e1199f7e0b',1,'TextColor::error()'],['../dc/daa/namespaceconsole.html#a60c0dd0c74056a542643ec7202b5954d',1,'console::ERROR()']]],
   ['event',['Event',['../d6/d05/namespacecoroutine.html#a3c3e442ce88f0a47155c7645ddef2c11',1,'coroutine']]],
+  ['execargv',['execArgv',['../d8/d25/namespaceprocess.html#a12522010d9ba6e2d19f1aae35d09cc03',1,'process']]],
   ['execpath',['execPath',['../da/de1/namespaceos.html#ab093bc75a863a2f57ef93277e1b11a2a',1,'os::execPath()'],['../d8/d25/namespaceprocess.html#ade6cd663e8d8b831023dcfe0b34a9bed',1,'process::execPath()']]],
   ['exist',['exist',['../d0/df6/interfaceExpect.html#ac4f92d399ab7f74970d0bbc709fded48',1,'Expect']]],
   ['expires',['expires',['../d3/dea/interfaceHttpCookie.html#a687e66f2cf20e7e700f2e598033d81b0',1,'HttpCookie']]]

@@ -77,7 +77,7 @@ var searchData=
   ['createelementns',['createElementNS',['../d6/d47/interfaceXmlDocument.html#add0d5e3725732650e2bea73fae27f9bb',1,'XmlDocument']]],
   ['createprocessinginstruction',['createProcessingInstruction',['../d6/d47/interfaceXmlDocument.html#a92213bba69053fc344a7481e1e2c6035',1,'XmlDocument']]],
   ['createtextnode',['createTextNode',['../d6/d47/interfaceXmlDocument.html#a0161354317be92241b35ff74232f9e38',1,'XmlDocument']]],
-  ['crit',['CRIT',['../dc/daa/namespaceconsole.html#a0a9c19825a7e11769d5646cb24002d1b',1,'console::CRIT()'],['../dc/daa/namespaceconsole.html#aafeccfedf3222b47114d8ec262f10294',1,'console::crit(String fmt,...)'],['../dc/daa/namespaceconsole.html#adf1c772e176fe40eb4ffae758cf22c64',1,'console::crit(...)']]],
+  ['crit',['crit',['../dc/daa/namespaceconsole.html#aafeccfedf3222b47114d8ec262f10294',1,'console::crit(String fmt,...)'],['../dc/daa/namespaceconsole.html#adf1c772e176fe40eb4ffae758cf22c64',1,'console::crit(...)'],['../dc/daa/namespaceconsole.html#a0a9c19825a7e11769d5646cb24002d1b',1,'console::CRIT()']]],
   ['crop',['crop',['../d2/d41/interfaceImage.html#a945d440ac93ede21a89839946be8da8f',1,'Image']]],
   ['crossdomain',['crossDomain',['../d6/d18/interfaceHttpHandler.html#acc43d9a11fa2e9b7aa62f4ca0ae91b93',1,'HttpHandler::crossDomain()'],['../d4/d79/interfaceHttpServer.html#a113023f684bec5d69809b283afcdcca4',1,'HttpServer::crossDomain()']]],
   ['crypto',['crypto',['../de/d36/namespacecrypto.html',1,'']]],

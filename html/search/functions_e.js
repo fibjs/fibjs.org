@@ -9,7 +9,7 @@ var searchData=
   ['once',['once',['../d6/df7/interfaceTrigger.html#ad09d65f485b88e3624488ac8e48f5fc7',1,'Trigger::once(String ev, Function func)'],['../d6/df7/interfaceTrigger.html#a497604e081ef6098c08fd826fb52b307',1,'Trigger::once(Object map)']]],
   ['onerror',['onerror',['../dc/de5/interfaceHandlerEx.html#a07f68bb81b189e6820abb6510433ceca',1,'HandlerEx::onerror()'],['../d4/d79/interfaceHttpServer.html#a3867bfb2a99b35a13c0fcc711676aa22',1,'HttpServer::onerror()']]],
   ['onsuberror',['onsuberror',['../d7/d32/interfaceRedis.html#af96772db675918003d9974601a3d7df7',1,'Redis']]],
-  ['open',['open',['../d0/d45/namespacedb.html#ae6a25ce20c2a752cf20e7a577207f198',1,'db::open()'],['../d5/d8f/namespacefs.html#a3cd7e391b7ec9e731e7daaa84b3c8dcc',1,'fs::open()'],['../d0/d14/namespacerpc.html#a564133bd028f08feeb607dbdc6e58c46',1,'rpc::open()']]],
+  ['open',['open',['../d0/d45/namespacedb.html#ae6a25ce20c2a752cf20e7a577207f198',1,'db::open()'],['../d5/d8f/namespacefs.html#a3cd7e391b7ec9e731e7daaa84b3c8dcc',1,'fs::open()'],['../d8/d25/namespaceprocess.html#aae5284cd12d7829a4892eb43450b6e0b',1,'process::open(String command, Array args, Object opts={})'],['../d8/d25/namespaceprocess.html#a8705d424d2621e41adc98d6755c176ab',1,'process::open(String command, Object opts={})'],['../d0/d14/namespacerpc.html#a564133bd028f08feeb607dbdc6e58c46',1,'rpc::open()']]],
   ['openleveldb',['openLevelDB',['../d0/d45/namespacedb.html#af39786855964f572f8d9e34a115bdaf6',1,'db']]],
   ['openmongodb',['openMongoDB',['../d0/d45/namespacedb.html#a29551281115a5042ad34b3d361dddc51',1,'db']]],
   ['openmysql',['openMySQL',['../d0/d45/namespacedb.html#ad989737ba63bbaeb48fc899769557f5e',1,'db']]],

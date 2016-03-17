@@ -1,10 +1,12 @@
 var interfaceList =
 [
     [ "List", "de/dd8/interfaceList.html#a64d878a92d11f7c63c70cbe4e7dd4176", null ],
+    [ "List", "de/dd8/interfaceList.html#a3d059d0fdf0e05923d55f1c3f391f9e1", null ],
     [ "freeze", "de/dd8/interfaceList.html#ae1fbf108bbded70019b31c675eaebcc8", null ],
     [ "resize", "de/dd8/interfaceList.html#a65b48a28764f7cfd800e98771770940a", null ],
     [ "push", "de/dd8/interfaceList.html#a3113d895fc3a023c60345adb451d4e5c", null ],
     [ "push", "de/dd8/interfaceList.html#a27892eb3174c7b278b5b6f025eb4b98d", null ],
+    [ "pushArray", "de/dd8/interfaceList.html#ae4be698e4448a4d719b4633e897a4aca", null ],
     [ "pop", "de/dd8/interfaceList.html#a576664822a395ecf272fc5c1cd637526", null ],
     [ "slice", "de/dd8/interfaceList.html#ab96d554cc6244b5c4407d47aef2dfc25", null ],
     [ "concat", "de/dd8/interfaceList.html#ac4827e4196f21ea4b20ac15a55a62aa3", null ],

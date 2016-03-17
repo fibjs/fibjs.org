@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['wait',['wait',['../d5/d45/interfaceCondition.html#a77389487addf6b616767bd21d7386b0d',1,'Condition::wait()'],['../d7/ddf/interfaceEvent.html#a5088e961dddd82b86142b54ae9dd6b14',1,'Event::wait()'],['../dc/d90/interfaceSemaphore.html#ab144395cba916969214bbe60f7521fed',1,'Semaphore::wait()']]],
+  ['wait',['wait',['../d5/d45/interfaceCondition.html#a77389487addf6b616767bd21d7386b0d',1,'Condition::wait()'],['../d7/ddf/interfaceEvent.html#a5088e961dddd82b86142b54ae9dd6b14',1,'Event::wait()'],['../dc/d90/interfaceSemaphore.html#ab144395cba916969214bbe60f7521fed',1,'Semaphore::wait()'],['../d8/d10/interfaceSubProcess.html#aa72a9338112f7e69cd10f1c38d0a1aba',1,'SubProcess::wait()']]],
   ['warn',['warn',['../dc/daa/namespaceconsole.html#a85513e51e93e8d827ebedba45359161c',1,'console::warn(String fmt,...)'],['../dc/daa/namespaceconsole.html#a4731e95e6360c7bdf0513236bc0ea032',1,'console::warn(...)']]],
   ['websockethandler',['WebSocketHandler',['../da/d20/interfaceWebSocketHandler.html#a3ddeaa1c9e3d06b767b1b811bf4dde5e',1,'WebSocketHandler']]],
   ['websocketmessage',['WebSocketMessage',['../db/d5d/interfaceWebSocketMessage.html#a885c7d4696b159cc1cfb77a97466bd69',1,'WebSocketMessage']]],
