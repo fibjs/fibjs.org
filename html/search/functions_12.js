@@ -56,5 +56,5 @@ var searchData=
   ['strlen',['strlen',['../d7/d32/interfaceRedis.html#a0476f90872be6a8c94de65dfea6d6d05',1,'Redis']]],
   ['sub',['sub',['../df/dc1/interfaceInt64.html#a73317460aa29ea9164287ecd10e477c1',1,'Int64::sub()'],['../d7/d32/interfaceRedis.html#ae6e3358cb6d36a1d8dbc5e97d03a9254',1,'Redis::sub(Buffer channel, Function func)'],['../d7/d32/interfaceRedis.html#af132093d5c027212f07c80ac7cda2a5f',1,'Redis::sub(Object map)']]],
   ['substringdata',['substringData',['../d7/d50/interfaceXmlCharacterData.html#a2e8f8f0fe64a8843d0b976714deed4b0',1,'XmlCharacterData']]],
-  ['system',['system',['../d8/d25/namespaceprocess.html#a8ba452b49b82fff2709f27929faa57cf',1,'process']]]
+  ['system',['system',['../d8/d25/namespaceprocess.html#a0fe525fab792d9d0e1b0c7574b335da2',1,'process']]]
 ];
