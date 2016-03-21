@@ -38,7 +38,7 @@ var searchData=
   ['size',['size',['../dc/d27/interfaceMongoCursor.html#aef6a5f9cf1ee475d698d4c2e17e1cf3e',1,'MongoCursor::size()'],['../d6/d9c/interfaceSeekableStream.html#af31c485565a6699bd6b8209d46ba0acb',1,'SeekableStream::size()']]],
   ['skip',['skip',['../dc/d27/interfaceMongoCursor.html#aba4f2ce60710195d5a26e3966c264989',1,'MongoCursor']]],
   ['sleep',['sleep',['../d6/d05/namespacecoroutine.html#ae9ce1c1d0ffbff909196806efabe7fa3',1,'coroutine']]],
-  ['slice',['slice',['../d9/dae/interfaceBuffer.html#aaf00c6b9382f73a2c1c23b0444775252',1,'Buffer::slice()'],['../de/dd8/interfaceList.html#ab96d554cc6244b5c4407d47aef2dfc25',1,'List::slice()']]],
+  ['slice',['slice',['../d9/dae/interfaceBuffer.html#a8d70ddf3f6507a842d30726081f1a974',1,'Buffer::slice(Integer start=0)'],['../d9/dae/interfaceBuffer.html#a7a5eb1ce2472fea27a03e8efd25b7a2e',1,'Buffer::slice(Integer start, Integer end)'],['../de/dd8/interfaceList.html#ab96d554cc6244b5c4407d47aef2dfc25',1,'List::slice()']]],
   ['smtp',['Smtp',['../da/de8/interfaceSmtp.html#acea5db5c9fdb0309e6179dc29db9e798',1,'Smtp']]],
   ['socket',['Socket',['../dd/d94/interfaceSocket.html#a3fcdc7696dd15634d0f9d51d95c2c25c',1,'Socket::Socket()'],['../df/dd2/namespacessl.html#a3e693a484518479be1381ed0251b7c82',1,'ssl::Socket()']]],
   ['some',['some',['../de/dd8/interfaceList.html#a7023cff4af79ac96c5798ce92831b6f6',1,'List']]],

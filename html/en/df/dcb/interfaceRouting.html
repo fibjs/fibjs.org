@@ -148,10 +148,26 @@ Public Member Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="../../d6/db7/interfaceMessage.html" title="Basic message object. ">Message</a> handler router. </p>
-<p>Match router object by rules, and pass a handler to it. Newer rules match first. To create it: </p><div class="fragment"><div class="line">var routing = <span class="keyword">new</span> mq.Routing({</div><div class="line">  <span class="stringliteral">&quot;^/func1(/.*)$&quot;</span>: func1,</div><div class="line">  <span class="stringliteral">&quot;^/func2(/.*)$&quot;</span>: func2</div><div class="line">});</div></div><!-- fragment --><p> Match with regular expression in value, and sub-item save to params: </p><div class="fragment"><div class="line">var routing = <span class="keyword">new</span> mq.Routing({</div><div class="line">  <span class="stringliteral">&quot;^/func1(/([0-9]+)/([0-9]+)\.html)$&quot;</span>: func1,</div><div class="line">});</div></div><!-- fragment --><p> To match "/func1/123/456.html", value == "/123/456.html", params == ["123", "456"];</p>
-<p>If no sub-item in result, value and params are empty: </p><div class="fragment"><div class="line">var routing = <span class="keyword">new</span> mq.Routing({</div><div class="line">  <span class="stringliteral">&quot;^/func1/[0-9]+/[0-9]+\.html$&quot;</span>: func1,</div><div class="line">});</div></div><!-- fragment --><p> To match "/func1/123/456.html", value == "", params == [];</p>
-<p>If result has more than one first-level sub-items, value is empty, and params are first-level sub-items: </p><div class="fragment"><div class="line">var routing = <span class="keyword">new</span> mq.Routing({</div><div class="line">  <span class="stringliteral">&quot;^/func1/([0-9]+)/([0-9]+)\.html$&quot;</span>: func1,</div><div class="line">});</div></div><!-- fragment --><p> To match "/func1/123/456.html", value == "", params == ["123", "456"];</p>
-<p>If there is only one sub-item and no more lower level items, value and params both become sub-items of this item: </p><div class="fragment"><div class="line">var routing = <span class="keyword">new</span> mq.Routing({</div><div class="line">  <span class="stringliteral">&quot;^/func1/([0-9]+)/[0-9]+\.html$&quot;</span>: func1,</div><div class="line">});</div></div><!-- fragment --><p> To match "/func1/123/456.html", value == "123", params == ["123"]; </p>
+<p>Match router object by rules, and pass a handler to it. Newer rules match first. To create it: </p><div class="fragment"><div class="line">var routing = <span class="keyword">new</span> mq.Routing({</div>
+<div class="line">  <span class="stringliteral">&quot;^/func1(/.*)$&quot;</span>: func1,</div>
+<div class="line">  <span class="stringliteral">&quot;^/func2(/.*)$&quot;</span>: func2</div>
+<div class="line">});</div>
+</div><!-- fragment --><p> Match with regular expression in value, and sub-item save to params: </p><div class="fragment"><div class="line">var routing = <span class="keyword">new</span> mq.Routing({</div>
+<div class="line">  <span class="stringliteral">&quot;^/func1(/([0-9]+)/([0-9]+)\.html)$&quot;</span>: func1,</div>
+<div class="line">});</div>
+</div><!-- fragment --><p> To match "/func1/123/456.html", value == "/123/456.html", params == ["123", "456"];</p>
+<p>If no sub-item in result, value and params are empty: </p><div class="fragment"><div class="line">var routing = <span class="keyword">new</span> mq.Routing({</div>
+<div class="line">  <span class="stringliteral">&quot;^/func1/[0-9]+/[0-9]+\.html$&quot;</span>: func1,</div>
+<div class="line">});</div>
+</div><!-- fragment --><p> To match "/func1/123/456.html", value == "", params == [];</p>
+<p>If result has more than one first-level sub-items, value is empty, and params are first-level sub-items: </p><div class="fragment"><div class="line">var routing = <span class="keyword">new</span> mq.Routing({</div>
+<div class="line">  <span class="stringliteral">&quot;^/func1/([0-9]+)/([0-9]+)\.html$&quot;</span>: func1,</div>
+<div class="line">});</div>
+</div><!-- fragment --><p> To match "/func1/123/456.html", value == "", params == ["123", "456"];</p>
+<p>If there is only one sub-item and no more lower level items, value and params both become sub-items of this item: </p><div class="fragment"><div class="line">var routing = <span class="keyword">new</span> mq.Routing({</div>
+<div class="line">  <span class="stringliteral">&quot;^/func1/([0-9]+)/[0-9]+\.html$&quot;</span>: func1,</div>
+<div class="line">});</div>
+</div><!-- fragment --><p> To match "/func1/123/456.html", value == "123", params == ["123"]; </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a8a6a4aa5a8e90ef0340336dcde8a0a04"></a>
 <div class="memitem">

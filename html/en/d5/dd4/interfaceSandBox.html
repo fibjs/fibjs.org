@@ -146,7 +146,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a067679bd863305a489058868411a07f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Run a script.  <a href="#a067679bd863305a489058868411a07f1">More...</a><br /></td></tr>
 <tr class="separator:a067679bd863305a489058868411a07f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a134871a1c0b138d7b582225810ed6e9e"><td class="memItemLeft" align="right" valign="top">Value&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dd4/interfaceSandBox.html#a134871a1c0b138d7b582225810ed6e9e">require</a> (String id)</td></tr>
-<tr class="memdesc:a134871a1c0b138d7b582225810ed6e9e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load and return a modules, see <a class="el" href="../../module.html">Module Management</a> for details.  <a href="#a134871a1c0b138d7b582225810ed6e9e">More...</a><br /></td></tr>
+<tr class="memdesc:a134871a1c0b138d7b582225810ed6e9e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load and return a modules, see <a class="el" href="../../d0/db5/module.html">Module Management</a> for details.  <a href="#a134871a1c0b138d7b582225810ed6e9e">More...</a><br /></td></tr>
 <tr class="separator:a134871a1c0b138d7b582225810ed6e9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6b88dbc459449d2280338e5b702a68b4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d38/interfaceobject.html#a6b88dbc459449d2280338e5b702a68b4">dispose</a> ()</td></tr>
 <tr class="memdesc:a6b88dbc459449d2280338e5b702a68b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Force dispose object immediately.  <a href="#a6b88dbc459449d2280338e5b702a68b4">More...</a><br /></td></tr>
@@ -163,7 +163,15 @@ Public Member Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Sandbox, to manage a separate running space. </p>
-<p>All code is running inside sandbox, global require uses current sandbox to load modules. Following example limits access to assert modules and add a and b two custom modules. </p><div class="fragment"><div class="line">var <a class="code" href="../../d8/d89/namespacevm.html">vm</a> = <a class="code" href="../../d5/dd4/interfaceSandBox.html#a134871a1c0b138d7b582225810ed6e9e">require</a>(<span class="stringliteral">&#39;vm&#39;</span>);</div><div class="line">var sbox = <span class="keyword">new</span> vm.SandBox({</div><div class="line">  a: 100,</div><div class="line">  b: 200,</div><div class="line">  <a class="code" href="../../d2/dab/namespaceassert.html">assert</a>: <a class="code" href="../../d5/dd4/interfaceSandBox.html#a134871a1c0b138d7b582225810ed6e9e">require</a>(<span class="stringliteral">&#39;assert&#39;</span>)</div><div class="line">});</div><div class="line"></div><div class="line">var mod_in_sbox = sbox.require(<span class="stringliteral">&#39;./path/to/mod&#39;</span>);</div></div><!-- fragment --> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<p>All code is running inside sandbox, global require uses current sandbox to load modules. Following example limits access to assert modules and add a and b two custom modules. </p><div class="fragment"><div class="line">var <a class="code" href="../../d8/d89/namespacevm.html">vm</a> = <a class="code" href="../../d5/dd4/interfaceSandBox.html#a134871a1c0b138d7b582225810ed6e9e">require</a>(<span class="stringliteral">&#39;vm&#39;</span>);</div>
+<div class="line">var sbox = <span class="keyword">new</span> vm.SandBox({</div>
+<div class="line">  a: 100,</div>
+<div class="line">  b: 200,</div>
+<div class="line">  <a class="code" href="../../d2/dab/namespaceassert.html">assert</a>: <a class="code" href="../../d5/dd4/interfaceSandBox.html#a134871a1c0b138d7b582225810ed6e9e">require</a>(<span class="stringliteral">&#39;assert&#39;</span>)</div>
+<div class="line">});</div>
+<div class="line"></div>
+<div class="line">var mod_in_sbox = sbox.require(<span class="stringliteral">&#39;./path/to/mod&#39;</span>);</div>
+</div><!-- fragment --> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="acd3962edcd65e4270953bb1f45aae2e3"></a>
 <div class="memitem">
 <div class="memproto">
@@ -428,7 +436,7 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Load and return a modules, see <a class="el" href="../../module.html">Module Management</a> for details. </p>
+<p>Load and return a modules, see <a class="el" href="../../d0/db5/module.html">Module Management</a> for details. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">id</td><td>Module name, always relative to current work directory </td></tr>
