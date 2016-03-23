@@ -11,32 +11,32 @@ var NAVTREE =
         [ "第五步：歇一会，喝点什么", "index.html#install_step5", null ]
       ] ]
     ] ],
-    [ "开始写代码", "d2/de8/start_prog.html", [
-      [ "开始写代码", "d2/de8/start_prog.html#program_sec", [
-        [ "第一步：Hello, World!", "d2/de8/start_prog.html#prg_step1", null ],
-        [ "第二步：DANG, DANG, DANG...", "d2/de8/start_prog.html#prg_step2", null ],
-        [ "第三步：DANG 们", "d2/de8/start_prog.html#prg_step3", null ],
-        [ "进阶：并行作业", "d2/de8/start_prog.html#prg_step4", null ],
-        [ "再进一步：异步作业", "d2/de8/start_prog.html#prg_step5", null ],
-        [ "小结", "d2/de8/start_prog.html#prg_step10", null ]
+    [ "开始写代码", "start_prog.html", [
+      [ "开始写代码", "start_prog.html#program_sec", [
+        [ "第一步：Hello, World!", "start_prog.html#prg_step1", null ],
+        [ "第二步：DANG, DANG, DANG...", "start_prog.html#prg_step2", null ],
+        [ "第三步：DANG 们", "start_prog.html#prg_step3", null ],
+        [ "进阶：并行作业", "start_prog.html#prg_step4", null ],
+        [ "再进一步：异步作业", "start_prog.html#prg_step5", null ],
+        [ "小结", "start_prog.html#prg_step10", null ]
       ] ]
     ] ],
-    [ "模块管理", "d0/db5/module.html", [
-      [ "基本组成", "d0/db5/module.html#element", [
-        [ "require() 函数", "d0/db5/module.html#fun_require", null ],
-        [ "define() 函数", "d0/db5/module.html#fun_define", null ],
-        [ "module 对象", "d0/db5/module.html#obj_module", null ],
-        [ "exports 对象", "d0/db5/module.html#obj_exports", null ]
+    [ "模块管理", "module.html", [
+      [ "基本组成", "module.html#element", [
+        [ "require() 函数", "module.html#fun_require", null ],
+        [ "define() 函数", "module.html#fun_define", null ],
+        [ "module 对象", "module.html#obj_module", null ],
+        [ "exports 对象", "module.html#obj_exports", null ]
       ] ]
     ] ],
-    [ "发挥多核的威力", "d8/df8/multithread.html", [
-      [ "基础接口", "d8/df8/multithread.html#basic", null ],
-      [ "约束", "d8/df8/multithread.html#limit", null ]
+    [ "发挥多核的威力", "multithread.html", [
+      [ "基础接口", "multithread.html#basic", null ],
+      [ "约束", "multithread.html#limit", null ]
     ] ],
-    [ "服务器编程", "da/db3/server.html", [
-      [ "静态文件服务器", "da/db3/server.html#web_file", null ],
-      [ "动态服务器", "da/db3/server.html#web_script", null ],
-      [ "动静合一", "da/db3/server.html#web_both", null ]
+    [ "服务器编程", "server.html", [
+      [ "静态文件服务器", "server.html#web_file", null ],
+      [ "动态服务器", "server.html#web_script", null ],
+      [ "动静合一", "server.html#web_both", null ]
     ] ],
     [ "模块", "namespaces.html", "namespaces" ],
     [ "对象", "annotated.html", "annotated" ],
@@ -49,13 +49,13 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"d2/d65/interfaceHeapGraphEdge.html#a356ed50a5ac3498dbc98548800c9c960",
-"d4/d79/interfaceHttpServer.html#af81d2548a59dc91a7c408e785edbe095",
-"d6/d6b/interfaceMongoCollection.html#abdc1aaa831b564895fad5000d30a7357",
-"d7/ddb/interfaceXmlElement.html#a2289ea1bafc4e091f2a7f0a0e12a9401",
-"d9/dae/interfaceBuffer.html#ad221c2260a109cf8ac4b2c0805a1d85b",
-"dc/d22/interfaceX509Cert.html#ad66be13eb5b7c5f560fd8511565138c4",
-"de/dd8/interfaceList.html#ad8b80fe919fe0ef22f731773487e3228"
+"d2/d65/interfaceHeapGraphEdge.html#ac61f07a7d6c5471293371086af3186bd",
+"d4/db6/interfaceBlockQueue.html#a9f7669dc7635bfed46b5364e8f3a932a",
+"d6/d9c/interfaceSeekableStream.html#a7a38cc9beea41220157a0263dcd86bc7",
+"d7/ddb/interfaceXmlElement.html#a9940f8621d0e65b0fc82f6f8959ffe6c",
+"d9/dae/interfaceBuffer.html#af609ff01a079a58c39b3fc72a5528e05",
+"dc/d27/interfaceMongoCursor.html#aef6a5f9cf1ee475d698d4c2e17e1cf3e",
+"df/d0d/namespaceiconv.html"
 ];
 
 var SYNCONMSG = '点击 关闭 面板同步';

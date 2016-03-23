@@ -29,7 +29,7 @@ var searchData=
   ['gettonode',['getToNode',['../d2/d65/interfaceHeapGraphEdge.html#afc0ae5b4248fe3149ebe492b177696e1',1,'HeapGraphEdge']]],
   ['gettruecolorpixel',['getTrueColorPixel',['../d2/d41/interfaceImage.html#a585e3918e0516fab908afbb2ba53ba4f',1,'Image']]],
   ['gif',['GIF',['../dd/d5d/namespacegd.html#aa03a61a0909f9761082b9bf5b53fb596',1,'gd']]],
-  ['global',['global',['../d4/dfd/namespaceglobal.html',1,'global'],['../d1/d43/interfaceRegex.html#a91bef45763139f15c2cab0ab35cebcc8',1,'Regex::global()']]],
+  ['global',['global',['../d4/dfd/namespaceglobal.html',1,'global'],['../d1/d43/interfaceRegex.html#a91bef45763139f15c2cab0ab35cebcc8',1,'Regex::global()'],['../d4/dfd/namespaceglobal.html#aa4f42695f031cd02e151e9bb16831dd6',1,'global::global()']]],
   ['grayscale',['GRAYSCALE',['../dd/d5d/namespacegd.html#ab8647e4d0526f32e70fd31750288c390',1,'gd']]],
   ['greaterthan',['greaterThan',['../d0/df6/interfaceExpect.html#a73f75cab81e1d239595ee427e0ecbae3',1,'Expect::greaterThan()'],['../d2/dab/namespaceassert.html#a402e1e36f03b891ad44a3281a64642a2',1,'assert::greaterThan()']]],
   ['gridfs',['GridFS',['../d7/d34/interfaceGridFS.html',1,'']]],
