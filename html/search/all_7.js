@@ -19,6 +19,7 @@ var searchData=
   ['getfromnode',['getFromNode',['../d2/d65/interfaceHeapGraphEdge.html#a356ed50a5ac3498dbc98548800c9c960',1,'HeapGraphEdge']]],
   ['gethash',['getHash',['../d7/d32/interfaceRedis.html#aec7a520518baaa94aa65e08a9ac9b7d3',1,'Redis']]],
   ['getindexes',['getIndexes',['../d6/d6b/interfaceMongoCollection.html#a1d9aea4a6a89b75ca4a5152968dd3054',1,'MongoCollection']]],
+  ['getinfo',['getinfo',['../d9/d03/interfaceZipFile.html#a84d72b392200615ff0f99c59d7a710a9',1,'ZipFile']]],
   ['getlist',['getList',['../d7/d32/interfaceRedis.html#abce17a68ed559afe687c7d5c734bc850',1,'Redis']]],
   ['getnameditem',['getNamedItem',['../d2/de1/interfaceXmlNamedNodeMap.html#ac0db13708a78f1336050ba9ae92b1d20',1,'XmlNamedNodeMap']]],
   ['getnodebyid',['getNodeById',['../de/d09/interfaceHeapSnapshot.html#af00405058ecc8b96d4f09b556d2c4861',1,'HeapSnapshot']]],

@@ -5,7 +5,7 @@ var interfaceLevelDB =
     [ "mget", "d0/d9e/interfaceLevelDB.html#a971e7ac07e400589974f41ae0475f0a9", null ],
     [ "set", "d0/d9e/interfaceLevelDB.html#af7471527684740acdaa111864a91f4c1", null ],
     [ "mset", "d0/d9e/interfaceLevelDB.html#a210d910eb60e2283c58ea80723f1bd79", null ],
-    [ "remove", "d0/d9e/interfaceLevelDB.html#a5d566ec8720265abb7bef86f5e263d44", null ],
+    [ "mremove", "d0/d9e/interfaceLevelDB.html#a3be2ea7036459e243b775a5f89bdcd7c", null ],
     [ "remove", "d0/d9e/interfaceLevelDB.html#ab1f78e521fec46db732413be435d37ce", null ],
     [ "forEach", "d0/d9e/interfaceLevelDB.html#ae9f6c2e0b6bfabd58e4e0bd6ed94163c", null ],
     [ "between", "d0/d9e/interfaceLevelDB.html#a22d1e092c14dd70fc521f562a21a1575", null ],

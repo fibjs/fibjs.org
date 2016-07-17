@@ -10,6 +10,7 @@ var searchData=
   ['inflaterawto',['inflateRawTo',['../d9/d3e/namespacezlib.html#af15999662fec5f069ee6f25e3821bf43',1,'zlib::inflateRawTo(Buffer data, Stream stm) async'],['../d9/d3e/namespacezlib.html#aa3e4997d8d6449b0a43fba7660c20298',1,'zlib::inflateRawTo(Stream src, Stream stm) async']]],
   ['inflateto',['inflateTo',['../d9/d3e/namespacezlib.html#a1a585f4bb4ce9146953c29af284ba62f',1,'zlib::inflateTo(Buffer data, Stream stm) async'],['../d9/d3e/namespacezlib.html#a2f4fbd12a75605838e9aafdcc2813c10',1,'zlib::inflateTo(Stream src, Stream stm) async']]],
   ['info',['info',['../dc/daa/namespaceconsole.html#a195000bab966ff5ccbf1ea69cf1cc12e',1,'console::info(String fmt,...)'],['../dc/daa/namespaceconsole.html#a88b9f04ef243106f58cbd0866072b7b5',1,'console::info(...)']]],
+  ['infolist',['infolist',['../d9/d03/interfaceZipFile.html#af82f627e7e148fdf18b44c94815e32a3',1,'ZipFile']]],
   ['insert',['insert',['../d6/d6b/interfaceMongoCollection.html#ad3910f53d7e3c1de13e7196cb5b68164',1,'MongoCollection::insert(Array documents)'],['../d6/d6b/interfaceMongoCollection.html#a3b3d039d9bf2e5260d11faa34166420b',1,'MongoCollection::insert(Object document)']]],
   ['insertafter',['insertAfter',['../d0/da2/interfaceRedisList.html#a4163e7aeaa525e280a8ce87a9e8373ef',1,'RedisList::insertAfter()'],['../dc/d8f/interfaceXmlNode.html#af6498d34059fcb58b982eba90742f66d',1,'XmlNode::insertAfter()']]],
   ['insertbefore',['insertBefore',['../d0/da2/interfaceRedisList.html#a01e77ae5ed3b771a993f9473c52d1a6f',1,'RedisList::insertBefore()'],['../dc/d8f/interfaceXmlNode.html#a0f3b815f26c12b2c31249ecb747ee7db',1,'XmlNode::insertBefore()']]],
@@ -55,6 +56,7 @@ var searchData=
   ['istrue',['isTrue',['../d2/dab/namespaceassert.html#a20f89c88bfd5356e32731af24821968b',1,'assert']]],
   ['isundefined',['isUndefined',['../d2/dab/namespaceassert.html#ad7fedc8b1050fad9fc39df83da013809',1,'assert::isUndefined()'],['../d6/d72/namespaceutil.html#a714d17751c410e69c111fc0d849b1cf8',1,'util::isUndefined()']]],
   ['iswritable',['isWritable',['../dc/da9/interfaceStat.html#a568f1871921d0ed38b885a8d7218ed5d',1,'Stat']]],
+  ['iszipfile',['isZipFile',['../d7/def/namespacezip.html#a78a618601555d349854b60afe4255c3c',1,'zip']]],
   ['it',['it',['../df/d04/namespacetest.html#ada0940ce267ec02e7a502ee402a693bd',1,'test']]],
   ['item',['item',['../d2/de1/interfaceXmlNamedNodeMap.html#a4bb4a3be15097481e82208c334340052',1,'XmlNamedNodeMap::item()'],['../de/da6/interfaceXmlNodeList.html#a6e8b9a1cbabcd6583552eb7d0ef3ce56',1,'XmlNodeList::item()']]]
 ];

@@ -37,8 +37,8 @@ var searchData=
   ['settimeout',['setTimeout',['../d4/dfd/namespaceglobal.html#ac00dfff0257504ca0d4a9d9e01e52e6f',1,'global']]],
   ['setup',['setup',['../df/d04/namespacetest.html#a38550424e855b291100020778b09064a',1,'test']]],
   ['setxx',['setXX',['../d7/d32/interfaceRedis.html#a08352a52b0ff70c5cc30e1d1082b4bb1',1,'Redis']]],
-  ['sha1',['SHA1',['../de/de9/namespacehash.html#a9fa379cb0df932c120a6797f45b651e5',1,'hash::SHA1()'],['../de/de9/namespacehash.html#aeebd38030db2c9e6f51674759c74d050',1,'hash::sha1(Buffer data)'],['../d1/dd6/namespaceuuid.html#ac63af48b29552ad4d0b1ad5d59a21a52',1,'uuid::sha1()']]],
-  ['sha224',['sha224',['../de/de9/namespacehash.html#aebaa45bb312a46a71194c9118dca1a08',1,'hash::sha224(Buffer data)'],['../de/de9/namespacehash.html#a97717b785cf7bdb90d7e134be8eefba4',1,'hash::SHA224()']]],
+  ['sha1',['sha1',['../de/de9/namespacehash.html#aeebd38030db2c9e6f51674759c74d050',1,'hash::sha1()'],['../d1/dd6/namespaceuuid.html#ac63af48b29552ad4d0b1ad5d59a21a52',1,'uuid::sha1()'],['../de/de9/namespacehash.html#a9fa379cb0df932c120a6797f45b651e5',1,'hash::SHA1()']]],
+  ['sha224',['SHA224',['../de/de9/namespacehash.html#a97717b785cf7bdb90d7e134be8eefba4',1,'hash::SHA224()'],['../de/de9/namespacehash.html#aebaa45bb312a46a71194c9118dca1a08',1,'hash::sha224(Buffer data)']]],
   ['sha256',['SHA256',['../de/de9/namespacehash.html#a479d5d79b494b5324cc536b483b4619f',1,'hash::SHA256()'],['../de/de9/namespacehash.html#aea552567d5fea762e5d8eedda0b0067a',1,'hash::sha256(Buffer data)']]],
   ['sha384',['sha384',['../de/de9/namespacehash.html#a0e3112fca405da681a0d034e6dba4016',1,'hash::sha384(Buffer data)'],['../de/de9/namespacehash.html#ab3642bba484b7f0633956bae80dc6bd9',1,'hash::SHA384()']]],
   ['sha512',['sha512',['../de/de9/namespacehash.html#a93e3215efb856aa97da67966530387f7',1,'hash::sha512(Buffer data)'],['../de/de9/namespacehash.html#a8ba2e8e53c773269d0e949bfd5e07fb8',1,'hash::SHA512()']]],
@@ -69,7 +69,7 @@ var searchData=
   ['sslsocket',['SslSocket',['../d0/d97/interfaceSslSocket.html',1,'SslSocket'],['../d0/d97/interfaceSslSocket.html#aaa1ff2e967332f3fbb8de3fa3d49d896',1,'SslSocket::SslSocket(Array certs=[])'],['../d0/d97/interfaceSslSocket.html#a7ec64273a450f8eb1de94a04b970de0b',1,'SslSocket::SslSocket(X509Cert crt, PKey key)']]],
   ['start',['start',['../d6/d05/namespacecoroutine.html#aab30743ccc280e7950189c50a0afabde',1,'coroutine::start()'],['../d8/d25/namespaceprocess.html#aa2569c7583e8dd1c3b92086002c6e741',1,'process::start(String command, Array args, Object opts={})'],['../d8/d25/namespaceprocess.html#a930139c20bcdedef5d5fbd9ec22ed7ef',1,'process::start(String command, Object opts={})']]],
   ['stat',['Stat',['../dc/da9/interfaceStat.html',1,'Stat'],['../d6/d9c/interfaceSeekableStream.html#a18f7e1862399c42a167a2b30009592d0',1,'SeekableStream::stat()'],['../d5/d8f/namespacefs.html#a51eb9e7e0bebba7af47eeff6ddcb6425',1,'fs::stat()']]],
-  ['stats',['Stats',['../df/d0b/interfaceStats.html',1,'Stats'],['../df/d0b/interfaceStats.html#a5529e542d61824715b210fa103c9939b',1,'Stats::Stats(Array keys)'],['../df/d0b/interfaceStats.html#acb5cc49c1e2f36ccf98066c862ff326c',1,'Stats::Stats(Array staticKeys, Array keys)'],['../dc/de5/interfaceHandlerEx.html#aac577f5c46a14d73943fd80882ae17bb',1,'HandlerEx::stats()'],['../d7/d48/interfaceTcpServer.html#ac39165a6d1da69beae4283af1905fe98',1,'TcpServer::stats()'],['../d6/d72/namespaceutil.html#aa2c3668cf097906a77de04ae7243fd1e',1,'util::Stats()']]],
+  ['stats',['Stats',['../df/d0b/interfaceStats.html',1,'Stats'],['../dc/de5/interfaceHandlerEx.html#aac577f5c46a14d73943fd80882ae17bb',1,'HandlerEx::stats()'],['../d7/d48/interfaceTcpServer.html#ac39165a6d1da69beae4283af1905fe98',1,'TcpServer::stats()'],['../df/d0b/interfaceStats.html#a5529e542d61824715b210fa103c9939b',1,'Stats::Stats(Array keys)'],['../df/d0b/interfaceStats.html#acb5cc49c1e2f36ccf98066c862ff326c',1,'Stats::Stats(Array staticKeys, Array keys)'],['../d6/d72/namespaceutil.html#aa2c3668cf097906a77de04ae7243fd1e',1,'util::Stats()']]],
   ['status',['status',['../d9/d71/interfaceHttpResponse.html#a418ebc4d556401052e637162210dcadd',1,'HttpResponse']]],
   ['stdin',['stdin',['../d8/d10/interfaceSubProcess.html#a70316e3b036f9f3e9da188b3f6c09be4',1,'SubProcess']]],
   ['stdout',['stdout',['../d8/d10/interfaceSubProcess.html#a33914fe2eb22865fc20391313a1b3f70',1,'SubProcess']]],
@@ -83,6 +83,7 @@ var searchData=
   ['subject',['subject',['../dc/d22/interfaceX509Cert.html#a496a03ab80e5b3c6bdc01626df6900ba',1,'X509Cert::subject()'],['../d7/d8b/interfaceX509Req.html#a3f636dc3d8417ac6e5b508989f6d91c6',1,'X509Req::subject()']]],
   ['subprocess',['SubProcess',['../d8/d10/interfaceSubProcess.html',1,'']]],
   ['substringdata',['substringData',['../d7/d50/interfaceXmlCharacterData.html#a2e8f8f0fe64a8843d0b976714deed4b0',1,'XmlCharacterData']]],
+  ['sync',['sync',['../d4/dfd/namespaceglobal.html#adcddd1b6155e7ecd7bc95fef1227a1d1',1,'global']]],
   ['system',['system',['../d8/d25/namespaceprocess.html#a0fe525fab792d9d0e1b0c7574b335da2',1,'process']]],
   ['systemid',['systemId',['../d4/d35/interfaceXmlDocumentType.html#a09ec50ecc1cd4b52071dc654324d3081',1,'XmlDocumentType']]]
 ];
