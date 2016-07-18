@@ -13,25 +13,31 @@ module process
     /*! @brief Get full execution path */
     static readonly String execPath;
 
-    /*! @brief Exit current process with code
-     @param code Return process code
+   /*! @brief The full path of current executable file */
+    static readonly String execPath;
+
+    /*! @brief The environment variable object of current executable file */
+    static readonly Object env;
+
+    /*! @brief Exit current process, and return result.
+     @param code result of process.
      */
     static exit(Integer code);
 
-    /*! @brief Get work directory path
-     @return Return work directory path
+    /*! @brief Return current work path of the operating system.
+     @return Work path.
      */
     static String cwd();
 
-    /*! @brief Change work directory path
-     @param directory New work directory path
+    /*! @brief Change the current work path of operating system.
+     @param directory The new work path.
      */
     static chdir(String directory);
 
-    /*! @brief Get process memory usage
-     @return Return memory usage
+    /*! @brief Get report of memory the current process consumpt.
+     @return Memory report object.
 
-     Usage includes:
+     Memory report like this:
      @code
      {
        "rss": 8622080,
@@ -39,27 +45,108 @@ module process
        "heapUsed": 1621800
      }
      @endcode
-     Notes:
-     - rss Physical memory being occupied by current process
-     - heapTotal Return v8 engine heap memory size
-     - heapUsed Return v8 engine heap memory size in use
+     among the report：
+     - rss Occupation of physical memory.
+     - heapTotal Total heap memory of v8.
+     - heapUsed Heap memory occupied by v8.
      */
     static Object memoryUsage();
 
-    /*! @brief Execute commnad and return results
-     @param cmd Command to run
-     @return Return execution results
+    /*! @brief System call, run bash command and return result code.
+     @param cmd Bash command.
+     @return Result code of bash command running.
      */
-    static Integer system(String cmd) async;
+    deprecated static Integer system(String cmd) async;
 
-    /*! @brief Execute commnad and get access to results
-     @param cmd Command to run
-     @return Return file contains execution results
+    /*! @brief System call, run bash command and return result object.
+     @param cmd Bash command.
+     @return Stream object consisting result and output of bash command running.
      */
-    static BufferedStream popen(String cmd) async;
+    deprecated static BufferedStream popen(String cmd) async;
 
-    /*! @brief Execute command and return immediately
-     @param cmd Command to run
+    /*! @brief Run specific bash command and return immediately.
+     @param cmd Bash command.
      */
-    static exec(String cmd);
+    deprecated static exec(String cmd);
+
+    /*! @brief Create chlid process taking charge of stdin and stdout and run bash command.
+     @param command Bash command to be executed.
+     @param args Arguments for bash command.
+     @param opts Option of child process, such as:
+     @code
+        {
+            "timeout": 100, // unit ms
+            "envs": [] // Enviroment variable of child process.
+        }
+     @endcode
+     @return Child process object containing result of command.
+     */
+    static SubProcess open(String command, Array args, Object opts = {});
+
+    /*! @brief Create chlid process taking charge of stdin and stdout and run bash command.
+     @param command Bash command.
+     @param opts Option of child process, such as:
+     @code
+        {
+            "timeout": 100, // unit ms
+            "envs": [] // Environment variable of child process.
+        }
+     @endcode
+     @return Child process object containing result of command.
+     */
+    static SubProcess open(String command, Object opts = {});
+
+    /*! @brief Create chlid process and run bash command.
+     @param command Bash command.
+     @param args Arguments of bash command.
+     @param opts Option of child process, such as:
+     @code
+        {
+            "timeout": 100, // unit ms
+            "envs": [] // Environment variable of child process.
+        }
+     @endcode
+     @return Child process object containing result of the command.
+     */
+    static SubProcess start(String command, Array args, Object opts = {});
+
+    /*! @brief Create chlid process and run bash command.
+     @param command Bash command.
+     @param opts Option of child process, such as:
+     @code
+        {
+            "timeout": 100, // unit ms
+            "envs": [] // Environment variable of child process.
+        }
+     @endcode
+     @return Child process object containing result of the command.
+     */
+    static SubProcess start(String command, Object opts = {});
+
+    /*! @brief Run bash command and return result code.
+     @param command Bash command.
+     @param args Arguments of bash command.
+     @param opts Option of child process, such as:
+     @code
+        {
+            "timeout": 100, // unit ms
+            "envs": [] // Environment variable of child process.
+        }
+     @endcode
+     @return Result code of bash command.
+     */
+    static Integer run(String command, Array args, Object opts = {});
+
+    /*! @brief Run bash command and return result code.
+     @param command Bash command.
+     @param opts Option of child process, such as:
+     @code
+        {
+            "timeout": 100, // unit ms
+            "envs": [] // Environment variable of child process.
+        }
+     @endcode
+     @return Result code of bash command.
+     */
+    static Integer run(String command, Object opts = {});
 };
