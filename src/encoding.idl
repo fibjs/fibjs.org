@@ -1,109 +1,55 @@
 
-/*! @brief Encoding and decoding module, used to process different data encoding format and binary conversion.
- The way to use:
+/*! @brief module with encode and decode operations between hex and other format data.
+ to use:
  @code
  var encoding = require('encoding');
  @endcode
  */
 module encoding
 {
-    /*! @brief Encode with base32
-     @param data Data to be encoded
-     @return Returns the encoded string.
-     */
-    static String base32Encode(Buffer data);
+    /*! @brief base32 encode and decode module */
+    static base32;
 
-    /*! @brief Decode the data to binary with base32
-     @param data The string to be decoded.
-     @return Returns decoding binary data.
-     */
-    static Buffer base32Decode(String data);
+    /*! @brief base64 encode and decode module */
+    static base64;
 
-    /*! @brief Encode with base64
-     @param data Data to be encoded
-     @return Returns the encoded string.
-     */
-    static String base64Encode(Buffer data);
+    /*! @brief base64vlq encode and decode module */
+    static base64vlq;
 
-    /*! @brief Decode the data to binary with base64
-     @param data The string to be decoded.
-     @return Returns decoding binary data.
-     */
-    static Buffer base64Decode(String data);
+    /*! @brief hex encode and decode module */
+    static hex;
 
-    /*! @brief Encode with hex
-     @param data Data to be encoded
-     @return Returns the encoded string.
-     */
-    static String hexEncode(Buffer data);
+    /*! @brief iconv encode and decode module */
+    static iconv;
 
-    /*! @brief Decode the data to binary with hex
-     @param data The string to be decoded.
-     @return Returns decoding binary data.
-     */
-    static Buffer hexDecode(String data);
+    /*! @brief json encode and decode module */
+    static json;
 
-    /*! @brief Convert the text to binary data by iconv
-     @param charset Specify the character set
-     @param data The text to be converted.
-     @return Returns decoding binary data.
-     */
-    static Buffer iconvEncode(String charset, String data);
+    /*! @brief bson encode and decode module */
+    static bson;
 
-    /*! @brief Convert the buffer to text by iconv
-     @param charset Specify the character set
-     @param data The binary data to be converted.
-     @return Returns the encoded string.
-     */
-    static String iconvDecode(String charset, Buffer data);
-
-    /*! @brief Encode the string to Javascript escaped string that can be contained in the javascript code.
-     @param str The string to encode
-     @param json Specifies generate the string json compatible.
-     @return Returns the encoded string.
+    /*! @brief Encode string to javascript  将字符串编码为 javascript 转义字符串，用以在 javascript 代码中包含文本
+     @param str 要编码的字符串
+     @param json 是否生成json兼容字符串
+     @return 返回编码的字符串
      */
     static String jsstr(String str, Boolean json = false);
 
-    /*! @brief url encoding
-     @param url The url to be encoded
-     @return Returns the encoded string.
+    /*! @brief url 字符串安全编码
+     @param url 要编码的 url
+     @return 返回编码的字符串
      */
     static String encodeURI(String url);
 
-    /*! @brief url component encoding
-     @param url The url to be encoded
-     @return Returns the encoded string.
+    /*! @brief url 部件字符串安全编码
+     @param url 要编码的 url
+     @return 返回编码的字符串
      */
     static String encodeURIComponent(String url);
 
-    /*! @brief url decoding
-     @param url The url to be decoded
-     @return Return the decoded string.
+    /*! @brief url 安全字符串解码
+     @param url 要解码的 url
+     @return 返回解码的字符串
      */
     static String decodeURI(String url);
-
-    /*! @brief Encode with json
-     @param data The variables to be encoded
-     @return Return the encoded string.
-     */
-    static String jsonEncode(Value data);
-
-    /*! @brief Decode the string to variable with hex
-     @param data The string to be decoded.
-     @return Returns the decoded variable
-     */
-    static Value jsonDecode(String data);
-
-    /*! @brief Encode with bson
-     @param data The variables to be encoded
-     @return Return the encoded binary data.
-     */
-    static Buffer bsonEncode(Object data);
-
-    /*! @brief Decode the string to variable with bson
-     @param data The binary data to be decoded
-     @return Returns the decoded variable
-     */
-    static Object bsonDecode(Buffer data);
 };
-
