@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['handler',['Handler',['../da/d85/interfaceHandler.html',1,'Handler'],['../d6/d18/interfaceHttpHandler.html#a31b90c96f95c0b9e80643aa2c7a52091',1,'HttpHandler::handler()'],['../df/dd8/interfaceSslHandler.html#aaa16369650afb205fdac2e5f5a8f3028',1,'SslHandler::handler()'],['../d7/d48/interfaceTcpServer.html#a4cc96bf996809c60c59c2e8df5daa653',1,'TcpServer::handler()'],['../da/d20/interfaceWebSocketHandler.html#ab7c54e9e04c2672702c37fa7c8f17d6b',1,'WebSocketHandler::handler()'],['../d3/d69/namespacehttp.html#aeb7ec4214a199d4df745d067aaf71a3d',1,'http::Handler()'],['../df/dd2/namespacessl.html#a6abf182f9613d8f45513eac4e2fa20aa',1,'ssl::Handler()'],['../d0/d42/namespacewebsocket.html#ab412dcfeaa386b7a371c52c58ce6f06e',1,'websocket::Handler()']]],
+  ['handler',['Handler',['../da/d85/interfaceHandler.html',1,'Handler'],['../dc/de5/interfaceHandlerEx.html#ae8dab25701a40bccbedff54d6db8e3ad',1,'HandlerEx::handler()'],['../d6/d18/interfaceHttpHandler.html#a31b90c96f95c0b9e80643aa2c7a52091',1,'HttpHandler::handler()'],['../df/dd8/interfaceSslHandler.html#aaa16369650afb205fdac2e5f5a8f3028',1,'SslHandler::handler()'],['../d7/d48/interfaceTcpServer.html#a4cc96bf996809c60c59c2e8df5daa653',1,'TcpServer::handler()'],['../da/d20/interfaceWebSocketHandler.html#ab7c54e9e04c2672702c37fa7c8f17d6b',1,'WebSocketHandler::handler()'],['../d3/d69/namespacehttp.html#aeb7ec4214a199d4df745d067aaf71a3d',1,'http::Handler()'],['../df/dd2/namespacessl.html#a6abf182f9613d8f45513eac4e2fa20aa',1,'ssl::Handler()'],['../d0/d42/namespacewebsocket.html#ab412dcfeaa386b7a371c52c58ce6f06e',1,'websocket::Handler()']]],
+  ['handlerex',['HandlerEx',['../dc/de5/interfaceHandlerEx.html',1,'']]],
   ['has',['has',['../da/d34/interfaceHttpCollection.html#aedcf309873cb83a1eb13144dcec9942a',1,'HttpCollection::has()'],['../d0/d9e/interfaceLevelDB.html#a9592329ae5e30e313a40637d34171a11',1,'LevelDB::has()'],['../dc/d81/interfaceLruCache.html#a1f47f0c7f03ead1191f99b340edc0576',1,'LruCache::has()'],['../d2/dc1/interfaceMap.html#a3a28d7c75ff941b3d9d9d3b6e6d4e3e3',1,'Map::has()'],['../d6/d72/namespaceutil.html#a74c60b5a6328e1154f392e634cb40328',1,'util::has()']]],
   ['hasattribute',['hasAttribute',['../d7/ddb/interfaceXmlElement.html#a59da5983eaeed09c34b073ccff10ec21',1,'XmlElement']]],
   ['hasattributens',['hasAttributeNS',['../d7/ddb/interfaceXmlElement.html#a2915ead08a052772959fe60344887373',1,'XmlElement']]],
@@ -16,9 +17,7 @@ var searchData=
   ['heapsnapshot',['HeapSnapshot',['../de/d09/interfaceHeapSnapshot.html',1,'']]],
   ['height',['height',['../d2/d41/interfaceImage.html#a9b98a87b3cf26704f574a98268638875',1,'Image']]],
   ['hello',['hello',['../da/de8/interfaceSmtp.html#a2827151e3c7938f20ef793ce708a5f22',1,'Smtp']]],
-  ['hex',['hex',['../d9/dae/interfaceBuffer.html#ae792f93a92ad21c0c28e4953e91032cb',1,'Buffer']]],
-  ['hexdecode',['hexDecode',['../db/da8/namespaceencoding.html#af057caa3f173428c397e8b13185940c6',1,'encoding']]],
-  ['hexencode',['hexEncode',['../db/da8/namespaceencoding.html#afaded7ab09c1a8882e73a4613a9716fd',1,'encoding']]],
+  ['hex',['hex',['../d3/da1/namespacehex.html',1,'hex'],['../d9/dae/interfaceBuffer.html#ae792f93a92ad21c0c28e4953e91032cb',1,'Buffer::hex()'],['../db/da8/namespaceencoding.html#a7b35b7c093e622b0fdfe8177856e7b78',1,'encoding::hex()']]],
   ['hi',['hi',['../df/dc1/interfaceInt64.html#aa356139546e7fcc65dc524ed52f585b7',1,'Int64']]],
   ['highlight',['highLight',['../da/d8a/interfaceTextColor.html#af2f9ebf1de8543a516e82866df99363d',1,'TextColor']]],
   ['hint',['hint',['../dc/d27/interfaceMongoCursor.html#afe5537d4e887dea551f20feba3627aaf',1,'MongoCursor']]],

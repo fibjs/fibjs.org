@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['encoding',['encoding',['../db/da8/namespaceencoding.html',1,'']]]
+  ['db',['db',['../d0/d45/namespacedb.html',1,'']]]
 ];

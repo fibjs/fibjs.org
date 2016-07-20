@@ -12,7 +12,7 @@ var searchData=
   ['uptime',['uptime',['../df/d0b/interfaceStats.html#a32d73f6238ce28d6651f18465af79ae0',1,'Stats::uptime()'],['../da/de1/namespaceos.html#a7fa90fa210d31f489f824de639820d42',1,'os::uptime()']]],
   ['url',['Url',['../dd/d23/interfaceUrl.html',1,'Url'],['../dd/d23/interfaceUrl.html#a9a1f4ab58de0b3d7d55708e7ecad1adc',1,'Url::Url(Object args)'],['../dd/d23/interfaceUrl.html#aec1f5c08b7c5046e838286600f2e955a',1,'Url::Url(String url=&quot;&quot;)'],['../d1/dd6/namespaceuuid.html#a83e49a96e6da072f08266ca23df3c62e',1,'uuid::URL()'],['../dc/d27/namespacenet.html#a254010f94b041097344bfcedde46b0ad',1,'net::Url()']]],
   ['usage',['usage',['../dc/d22/interfaceX509Cert.html#abf97c5907bc00259d7dce54d788ff235',1,'X509Cert']]],
-  ['use',['use',['../d2/d68/interfaceMySQL.html#af3d7af443d45a1e778aa00a76c28f51b',1,'MySQL']]],
+  ['use',['use',['../d2/d68/interfaceMySQL.html#a0aeffca10267f078960d20ac1c705b39',1,'MySQL']]],
   ['username',['username',['../dd/d23/interfaceUrl.html#a824c81c2a6c19971bd3b321ff4009ab2',1,'Url']]],
   ['util',['util',['../d6/d72/namespaceutil.html',1,'']]],
   ['uuid',['uuid',['../d1/dd6/namespaceuuid.html',1,'uuid'],['../d1/dd6/namespaceuuid.html#a5fdc6d7f478a448083de3d30305d9d79',1,'uuid::uuid(String s)'],['../d1/dd6/namespaceuuid.html#a61e618bfdc2d1146b05c0a73b7dbfe25',1,'uuid::uuid(Buffer data)']]],

@@ -76,7 +76,7 @@ var searchData=
   ['stop',['stop',['../d7/d48/interfaceTcpServer.html#af61a58eaa7b7b6bcc1471713778ec797',1,'TcpServer']]],
   ['store',['store',['../d7/d34/interfaceGridFS.html#ae6b355ca7a7e7fae976d3b3789c35045',1,'GridFS::store(String name, Stream src)'],['../d7/d34/interfaceGridFS.html#a811549d931a6845bfae574cd32dd1085',1,'GridFS::store(String name, Buffer data)']]],
   ['stream',['Stream',['../d4/dc7/interfaceStream.html',1,'Stream'],['../d0/d37/interfaceBufferedStream.html#adc842e860f92cdb58347758fcf2532af',1,'BufferedStream::stream()'],['../d6/db7/interfaceMessage.html#a9b19686184c56df8c1fca416751a71b3',1,'Message::stream()'],['../de/d36/namespacecrypto.html#affac186a18bbd7b81965e49608c88938',1,'crypto::STREAM()']]],
-  ['strictequal',['strictEqual',['../d2/dab/namespaceassert.html#a2cb47b83fabc213b290b9b4ce7564f35',1,'assert']]],
+  ['strictequal',['strictEqual',['../d2/dab/namespaceassert.html#ad9f3a1dbfbda3d6c4f128bb42651b9f2',1,'assert']]],
   ['string',['string',['../d0/df6/interfaceExpect.html#a82d5903aca490a3a6c416b138cadc2f0',1,'Expect']]],
   ['strlen',['strlen',['../d7/d32/interfaceRedis.html#a0476f90872be6a8c94de65dfea6d6d05',1,'Redis']]],
   ['sub',['sub',['../df/dc1/interfaceInt64.html#a73317460aa29ea9164287ecd10e477c1',1,'Int64::sub()'],['../d7/d32/interfaceRedis.html#ae6e3358cb6d36a1d8dbc5e97d03a9254',1,'Redis::sub(Buffer channel, Function func)'],['../d7/d32/interfaceRedis.html#af132093d5c027212f07c80ac7cda2a5f',1,'Redis::sub(Object map)']]],

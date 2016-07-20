@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['iconvdecode',['iconvDecode',['../db/da8/namespaceencoding.html#aa1d988f384e1866928bdd8bbc5b6f127',1,'encoding']]],
-  ['iconvencode',['iconvEncode',['../db/da8/namespaceencoding.html#a381c1c5e4d9e24edb4b56f904dfe7372',1,'encoding']]],
+  ['iconv',['iconv',['../df/d0d/namespaceiconv.html',1,'iconv'],['../db/da8/namespaceencoding.html#a0dbaa330ad92c375b861260259da14b4',1,'encoding::iconv()']]],
   ['id',['id',['../df/db2/interfaceHeapGraphNode.html#ac8676ab128e82182641b95411f087ffc',1,'HeapGraphNode::id()'],['../d7/ddb/interfaceXmlElement.html#a2289ea1bafc4e091f2a7f0a0e12a9401',1,'XmlElement::id()']]],
   ['ignorecase',['ignoreCase',['../d1/d43/interfaceRegex.html#ac2f8a95e4a1cac13a3312d0ec7eb0fd9',1,'Regex']]],
   ['image',['Image',['../d2/d41/interfaceImage.html',1,'']]],
@@ -14,6 +13,7 @@ var searchData=
   ['inflaterawto',['inflateRawTo',['../d9/d3e/namespacezlib.html#af15999662fec5f069ee6f25e3821bf43',1,'zlib::inflateRawTo(Buffer data, Stream stm) async'],['../d9/d3e/namespacezlib.html#aa3e4997d8d6449b0a43fba7660c20298',1,'zlib::inflateRawTo(Stream src, Stream stm) async']]],
   ['inflateto',['inflateTo',['../d9/d3e/namespacezlib.html#a1a585f4bb4ce9146953c29af284ba62f',1,'zlib::inflateTo(Buffer data, Stream stm) async'],['../d9/d3e/namespacezlib.html#a2f4fbd12a75605838e9aafdcc2813c10',1,'zlib::inflateTo(Stream src, Stream stm) async']]],
   ['info',['INFO',['../dc/daa/namespaceconsole.html#add424d51dfc7bd19ac906d010b9c7694',1,'console::INFO()'],['../dc/daa/namespaceconsole.html#a195000bab966ff5ccbf1ea69cf1cc12e',1,'console::info(String fmt,...)'],['../dc/daa/namespaceconsole.html#a88b9f04ef243106f58cbd0866072b7b5',1,'console::info(...)']]],
+  ['infolist',['infolist',['../d9/d03/interfaceZipFile.html#af82f627e7e148fdf18b44c94815e32a3',1,'ZipFile']]],
   ['innerhtml',['innerHTML',['../d7/ddb/interfaceXmlElement.html#ae253c6d9ada5b3b9a38b6b840a25394a',1,'XmlElement']]],
   ['inputencoding',['inputEncoding',['../d6/d47/interfaceXmlDocument.html#a7b57a17ac49e4bac77f6d13e0e88e2f4',1,'XmlDocument']]],
   ['insert',['insert',['../d6/d6b/interfaceMongoCollection.html#ad3910f53d7e3c1de13e7196cb5b68164',1,'MongoCollection::insert(Array documents)'],['../d6/d6b/interfaceMongoCollection.html#a3b3d039d9bf2e5260d11faa34166420b',1,'MongoCollection::insert(Object document)']]],
@@ -65,6 +65,7 @@ var searchData=
   ['istrue',['isTrue',['../d2/dab/namespaceassert.html#a20f89c88bfd5356e32731af24821968b',1,'assert']]],
   ['isundefined',['isUndefined',['../d2/dab/namespaceassert.html#ad7fedc8b1050fad9fc39df83da013809',1,'assert::isUndefined()'],['../d6/d72/namespaceutil.html#a714d17751c410e69c111fc0d849b1cf8',1,'util::isUndefined()']]],
   ['iswritable',['isWritable',['../dc/da9/interfaceStat.html#a568f1871921d0ed38b885a8d7218ed5d',1,'Stat']]],
+  ['iszipfile',['isZipFile',['../d7/def/namespacezip.html#a78a618601555d349854b60afe4255c3c',1,'zip']]],
   ['it',['it',['../df/d04/namespacetest.html#ada0940ce267ec02e7a502ee402a693bd',1,'test']]],
   ['item',['item',['../d2/de1/interfaceXmlNamedNodeMap.html#a4bb4a3be15097481e82208c334340052',1,'XmlNamedNodeMap::item()'],['../de/da6/interfaceXmlNodeList.html#a6e8b9a1cbabcd6583552eb7d0ef3ce56',1,'XmlNodeList::item()']]],
   ['ivsize',['ivSize',['../df/d49/interfaceCipher.html#a8008bbe01ddf221b6482cd26ac63d80d',1,'Cipher']]]

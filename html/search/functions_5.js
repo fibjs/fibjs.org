@@ -1,7 +1,7 @@
 var searchData=
 [
   ['filehandler',['fileHandler',['../d3/d69/namespacehttp.html#a134a01399b1794974c1c969c07af8e5f',1,'http']]],
-  ['fill',['fill',['../d9/dae/interfaceBuffer.html#a4721f68daf73eb601939a74886b6555e',1,'Buffer::fill(Integer v, Integer offset=0, Integer end=-1)'],['../d9/dae/interfaceBuffer.html#a781ab3aecae18222088a538b529edb2c',1,'Buffer::fill(Buffer v, Integer offset=0, Integer end=-1)'],['../d9/dae/interfaceBuffer.html#abeb106a9d3ff3d5746b6a49043fa8d5a',1,'Buffer::fill(String v, Integer offset=0, Integer end=-1)'],['../d2/d41/interfaceImage.html#a30cb383d67f626470f9fb47cdc28e0d2',1,'Image::fill()']]],
+  ['fill',['fill',['../d9/dae/interfaceBuffer.html#a4721f68daf73eb601939a74886b6555e',1,'Buffer::fill(Integer v, Integer offset=0, Integer end=-1)'],['../d9/dae/interfaceBuffer.html#a781ab3aecae18222088a538b529edb2c',1,'Buffer::fill(Buffer v, Integer offset=0, Integer end=-1)'],['../d9/dae/interfaceBuffer.html#a8dcc7f80f400a066bafdc8032efa8b36',1,'Buffer::fill(XString v, Integer offset=0, Integer end=-1)'],['../d2/d41/interfaceImage.html#a30cb383d67f626470f9fb47cdc28e0d2',1,'Image::fill()']]],
   ['filledarc',['filledArc',['../d2/d41/interfaceImage.html#a2ca6f3843b8428b8cab986231df2c00f',1,'Image']]],
   ['filledellipse',['filledEllipse',['../d2/d41/interfaceImage.html#a5bb12193e47901cc571bc128df1390e1',1,'Image']]],
   ['filledpolygon',['filledPolygon',['../d2/d41/interfaceImage.html#a37c35b1c00b3e4d04f3f8d79e120af90',1,'Image']]],
@@ -17,8 +17,8 @@ var searchData=
   ['flip',['flip',['../d2/d41/interfaceImage.html#aba81dd690e0c232a4b988480dccb06ad',1,'Image']]],
   ['flush',['flush',['../d3/d3a/interfaceFile.html#acfb3dabde3a0b975724e82e8bd03950d',1,'File']]],
   ['foreach',['forEach',['../d0/d9e/interfaceLevelDB.html#ae9f6c2e0b6bfabd58e4e0bd6ed94163c',1,'LevelDB::forEach()'],['../de/dd8/interfaceList.html#ad8b80fe919fe0ef22f731773487e3228',1,'List::forEach()'],['../dc/d27/interfaceMongoCursor.html#a84611a0b25226ce2a282838a2b46ff4b',1,'MongoCursor::forEach()']]],
-  ['format',['format',['../d8/d2c/interfaceDbConnection.html#ae6d31f438b2c274f32aade526f92da2f',1,'DbConnection::format()'],['../dd/d23/interfaceUrl.html#ad2ff6a6d6440f76c7cdaaa2b740003a8',1,'Url::format()'],['../d0/d45/namespacedb.html#a34aceab3cf280744a6293fd472a6cbcc',1,'db::format()'],['../d6/d72/namespaceutil.html#a0e62c6dffcb92af6c4d397f66d49aeda',1,'util::format(String fmt,...)'],['../d6/d72/namespaceutil.html#a622d3f4ba0f379119973e8c5b3d06841',1,'util::format(...)']]],
-  ['formatmysql',['formatMySQL',['../d0/d45/namespacedb.html#a730e29b155df6b5c9a5c1b2ce97c8386',1,'db']]],
+  ['format',['format',['../d8/d2c/interfaceDbConnection.html#abb7850ee58840fc634559d3d0f4e479b',1,'DbConnection::format()'],['../dd/d23/interfaceUrl.html#ad2ff6a6d6440f76c7cdaaa2b740003a8',1,'Url::format()'],['../d0/d45/namespacedb.html#a365c6fde05e61fdc6708e38bc168252f',1,'db::format()'],['../d6/d72/namespaceutil.html#a1618cabddf0a5d7fd4efab57bfa8bb56',1,'util::format(XString fmt,...)'],['../d6/d72/namespaceutil.html#a065b9df9d8da5173e312d2368779a788',1,'util::format(...)']]],
+  ['formatmysql',['formatMySQL',['../d0/d45/namespacedb.html#aed42c6175f05fb5834dbbdc8d87fe92e',1,'db']]],
   ['freemem',['freemem',['../da/de1/namespaceos.html#a571d36775ad176acbc76f7d12fb03bf1',1,'os']]],
   ['freeze',['freeze',['../de/dd8/interfaceList.html#ae1fbf108bbded70019b31c675eaebcc8',1,'List']]],
   ['from',['from',['../da/de8/interfaceSmtp.html#ad8eb1e574533147e12bbb50ca32eda0b',1,'Smtp']]],

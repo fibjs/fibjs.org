@@ -4,6 +4,9 @@ var searchData=
   ['badcert_5fexpired',['BADCERT_EXPIRED',['../df/dd2/namespacessl.html#a268c6e5af25047189e3c5f0f5d07055e',1,'ssl']]],
   ['badcert_5fnot_5ftrusted',['BADCERT_NOT_TRUSTED',['../df/dd2/namespacessl.html#aabc1deedebc1e64e686b0caead187884',1,'ssl']]],
   ['badcert_5frevoked',['BADCERT_REVOKED',['../df/dd2/namespacessl.html#a2c2535a0b748318087c99cfdc12c2cc6',1,'ssl']]],
+  ['base32',['base32',['../db/da8/namespaceencoding.html#a86bde7f64f9870f2de7c7cdaa3da6ad3',1,'encoding']]],
+  ['base64',['base64',['../db/da8/namespaceencoding.html#a8081785db1dfad236b086d4e2a9c79ba',1,'encoding']]],
+  ['base64vlq',['base64vlq',['../db/da8/namespaceencoding.html#a7b9b39387963aca4019374e72257d87d',1,'encoding']]],
   ['bdd',['BDD',['../df/d04/namespacetest.html#ae4137e9ca407ce2fe025a9b61cabe1cd',1,'test']]],
   ['be',['be',['../d0/df6/interfaceExpect.html#aa2896b5ae99886b5fce68ba05058e18f',1,'Expect']]],
   ['been',['been',['../d0/df6/interfaceExpect.html#a14299251d029a0cfc8bcef53c98c47f9',1,'Expect']]],
@@ -18,5 +21,6 @@ var searchData=
   ['boolean',['boolean',['../d0/df6/interfaceExpect.html#ad9fea5eb5bacb3840bedd40451df047d',1,'Expect']]],
   ['both',['BOTH',['../dd/d5d/namespacegd.html#a777685b5adc4abb88c9acede6cc66c0e',1,'gd']]],
   ['brightness',['BRIGHTNESS',['../dd/d5d/namespacegd.html#aadea7459b8ff35122c1b45980da86eea',1,'gd']]],
+  ['bson',['bson',['../db/da8/namespaceencoding.html#a4ad734b31015e44f43735c15e54f5c5e',1,'encoding']]],
   ['buffer',['Buffer',['../d4/dfd/namespaceglobal.html#abe961e24f94e940799497f08f5704916',1,'global']]]
 ];

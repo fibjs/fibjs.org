@@ -17,6 +17,7 @@ var annotated =
     [ "File", "d3/d3a/interfaceFile.html", "d3/d3a/interfaceFile" ],
     [ "GridFS", "d7/d34/interfaceGridFS.html", "d7/d34/interfaceGridFS" ],
     [ "Handler", "da/d85/interfaceHandler.html", "da/d85/interfaceHandler" ],
+    [ "HandlerEx", "dc/de5/interfaceHandlerEx.html", "dc/de5/interfaceHandlerEx" ],
     [ "HeapGraphEdge", "d2/d65/interfaceHeapGraphEdge.html", "d2/d65/interfaceHeapGraphEdge" ],
     [ "HeapGraphNode", "df/db2/interfaceHeapGraphNode.html", "df/db2/interfaceHeapGraphNode" ],
     [ "HeapSnapshot", "de/d09/interfaceHeapSnapshot.html", "de/d09/interfaceHeapSnapshot" ],
@@ -53,6 +54,7 @@ var annotated =
     [ "RedisSortedSet", "db/d03/interfaceRedisSortedSet.html", "db/d03/interfaceRedisSortedSet" ],
     [ "Regex", "d1/d43/interfaceRegex.html", "d1/d43/interfaceRegex" ],
     [ "Routing", "df/dcb/interfaceRouting.html", "df/dcb/interfaceRouting" ],
+    [ "RpcTask", "d6/d66/interfaceRpcTask.html", "d6/d66/interfaceRpcTask" ],
     [ "SandBox", "d5/dd4/interfaceSandBox.html", "d5/dd4/interfaceSandBox" ],
     [ "SeekableStream", "d6/d9c/interfaceSeekableStream.html", "d6/d9c/interfaceSeekableStream" ],
     [ "Semaphore", "dc/d90/interfaceSemaphore.html", "dc/d90/interfaceSemaphore" ],
@@ -65,8 +67,10 @@ var annotated =
     [ "Stat", "dc/da9/interfaceStat.html", "dc/da9/interfaceStat" ],
     [ "Stats", "df/d0b/interfaceStats.html", "df/d0b/interfaceStats" ],
     [ "Stream", "d4/dc7/interfaceStream.html", "d4/dc7/interfaceStream" ],
+    [ "SubProcess", "d8/d10/interfaceSubProcess.html", "d8/d10/interfaceSubProcess" ],
     [ "TcpServer", "d7/d48/interfaceTcpServer.html", "d7/d48/interfaceTcpServer" ],
     [ "TextColor", "da/d8a/interfaceTextColor.html", "da/d8a/interfaceTextColor" ],
+    [ "Timer", "df/df8/interfaceTimer.html", "df/df8/interfaceTimer" ],
     [ "Trigger", "d6/df7/interfaceTrigger.html", "d6/df7/interfaceTrigger" ],
     [ "Url", "dd/d23/interfaceUrl.html", "dd/d23/interfaceUrl" ],
     [ "uuidValue", "d6/de7/interfaceuuidValue.html", "d6/de7/interfaceuuidValue" ],
@@ -86,5 +90,7 @@ var annotated =
     [ "XmlNode", "dc/d8f/interfaceXmlNode.html", "dc/d8f/interfaceXmlNode" ],
     [ "XmlNodeList", "de/da6/interfaceXmlNodeList.html", "de/da6/interfaceXmlNodeList" ],
     [ "XmlProcessingInstruction", "da/df6/interfaceXmlProcessingInstruction.html", "da/df6/interfaceXmlProcessingInstruction" ],
-    [ "XmlText", "d3/d51/interfaceXmlText.html", "d3/d51/interfaceXmlText" ]
+    [ "XmlText", "d3/d51/interfaceXmlText.html", "d3/d51/interfaceXmlText" ],
+    [ "ZipFile", "d9/d03/interfaceZipFile.html", "d9/d03/interfaceZipFile" ],
+    [ "ZipInfo", "d6/d9b/interfaceZipInfo.html", "d6/d9b/interfaceZipInfo" ]
 ];

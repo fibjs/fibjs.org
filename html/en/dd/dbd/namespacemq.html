@@ -176,12 +176,24 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Return handler of handle function</dd></dl>
-<p>Syntax: </p><div class="fragment"><div class="line"><span class="keyword">function</span> func(v){</div><div class="line">}</div></div><!-- fragment --><p> Parameter v is the message to procee, there are three possibilities:</p><ul>
+<p>Syntax: </p><div class="fragment"><div class="line"><span class="keyword">function</span> func(v){</div>
+<div class="line">}</div>
+</div><!-- fragment --><p> Parameter v is the message to procee, there are three possibilities:</p><ul>
 <li>Object javascript object, used for mapping message</li>
 <li>Function javascript function, used for next stage</li>
 <li><a class="el" href="../../da/d85/interfaceHandler.html" title="Meassage Handler Interface. ">Handler</a> Builtin handler for next stage No return or other result will finish message processing.</li>
 </ul>
-<p>Use message mapping handler to handle nested logic as follows: </p><div class="fragment"><div class="line">hdlr = mq.jsHandler({</div><div class="line">    <span class="comment">// fun1</span></div><div class="line">   fun1 : <span class="keyword">function</span>(v){},</div><div class="line">   sub : {</div><div class="line">       <span class="comment">// sub.fun2 or sub/fun2</span></div><div class="line">       fun2 : <span class="keyword">function</span>(v){},</div><div class="line">       <span class="comment">// sub.hdlr or sub/hdlr</span></div><div class="line">       hdlr: myHandler</div><div class="line">   }</div><div class="line">});</div></div><!-- fragment --><p> In the example, fun1 and fun2 are normal javascript handle function, sub is a sub-object, myHandler is a handler </p>
+<p>Use message mapping handler to handle nested logic as follows: </p><div class="fragment"><div class="line">hdlr = mq.jsHandler({</div>
+<div class="line">    <span class="comment">// fun1</span></div>
+<div class="line">   fun1 : <span class="keyword">function</span>(v){},</div>
+<div class="line">   sub : {</div>
+<div class="line">       <span class="comment">// sub.fun2 or sub/fun2</span></div>
+<div class="line">       fun2 : <span class="keyword">function</span>(v){},</div>
+<div class="line">       <span class="comment">// sub.hdlr or sub/hdlr</span></div>
+<div class="line">       hdlr: myHandler</div>
+<div class="line">   }</div>
+<div class="line">});</div>
+</div><!-- fragment --><p> In the example, fun1 and fun2 are normal javascript handle function, sub is a sub-object, myHandler is a handler </p>
 
 </div>
 </div>
@@ -208,7 +220,16 @@ Variables</h2></td></tr>
 
 <p>Create async handler. </p>
 <dl class="section return"><dt>Returns</dt><dd>Return created handler</dd></dl>
-<p>Wait handler async as follows: </p><div class="fragment"><div class="line"><span class="keyword">function</span> func(v){</div><div class="line">    var <a class="code" href="../../dd/dbd/namespacemq.html#aaa3477ed3695f5da7f9916db0becc6fb">await</a> = mq.await();</div><div class="line"></div><div class="line">    call_some_async_func(v1, v2, v3, <span class="keyword">function</span>() {</div><div class="line">            await.end();</div><div class="line">        });</div><div class="line"></div><div class="line">    <span class="keywordflow">return</span> <a class="code" href="../../dd/dbd/namespacemq.html#aaa3477ed3695f5da7f9916db0becc6fb">await</a>;</div><div class="line">}</div></div><!-- fragment --><p> Example uses javascript message handle function, when it returns, message handle engine will wait for await until await.end being called. </p>
+<p>Wait handler async as follows: </p><div class="fragment"><div class="line"><span class="keyword">function</span> func(v){</div>
+<div class="line">    var <a class="code" href="../../dd/dbd/namespacemq.html#aaa3477ed3695f5da7f9916db0becc6fb">await</a> = mq.await();</div>
+<div class="line"></div>
+<div class="line">    call_some_async_func(v1, v2, v3, <span class="keyword">function</span>() {</div>
+<div class="line">            await.end();</div>
+<div class="line">        });</div>
+<div class="line"></div>
+<div class="line">    <span class="keywordflow">return</span> <a class="code" href="../../dd/dbd/namespacemq.html#aaa3477ed3695f5da7f9916db0becc6fb">await</a>;</div>
+<div class="line">}</div>
+</div><!-- fragment --><p> Example uses javascript message handle function, when it returns, message handle engine will wait for await until await.end being called. </p>
 
 </div>
 </div>

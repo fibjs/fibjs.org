@@ -163,7 +163,32 @@ Public 成员函数</h2></td></tr>
 <p>条件变量是利用纤程间共享的全局变量来进行同步的一种机制，主要包括两个动作： 1）一个线程等待某个条件成立，而将自己挂起； 2）另一个线程使条件成立，并通知等待的纤程向下执行。</p>
 <p>为了防止竞争，每个条件变量都需要一个Lock的配合（Lock可自行显式创建并传递进来，也可交由fibjs为您创建）</p>
 <p>通过使用条件变量，可以利用一个条件变量控制一批纤程的开关；</p>
-<p>以下是两个纤程调度的实例： </p><div class="fragment"><div class="line">var coroutine = require(<span class="stringliteral">&quot;coroutine&quot;</span>);</div><div class="line">var cond = <span class="keyword">new</span> coroutine.Condition();</div><div class="line">var ready = <span class="keyword">false</span>;</div><div class="line">var state = <span class="stringliteral">&quot;ready&quot;</span>;</div><div class="line"></div><div class="line"><span class="keyword">function</span> funcwait() {</div><div class="line">   cond.acquire();</div><div class="line">   <span class="keywordflow">while</span> (!ready)</div><div class="line">    cond.wait();</div><div class="line">   state = <span class="stringliteral">&quot;go&quot;</span></div><div class="line">   cond.release();</div><div class="line">}</div><div class="line"></div><div class="line">coroutine.start(funcwait);</div><div class="line"></div><div class="line">cond.acquire();</div><div class="line"><a class="code" href="../../dc/daa/namespaceconsole.html">console</a>.log(state)</div><div class="line">ready = <span class="keyword">true</span>;</div><div class="line">cond.notify();</div><div class="line">coroutine.sleep();</div><div class="line"><a class="code" href="../../dc/daa/namespaceconsole.html">console</a>.log(state);</div><div class="line"></div><div class="line">will output:</div><div class="line">ready</div><div class="line">go</div></div><!-- fragment --> </div><h2 class="groupheader">构造及析构函数说明</h2>
+<p>以下是两个纤程调度的实例： </p><div class="fragment"><div class="line">var coroutine = require(<span class="stringliteral">&quot;coroutine&quot;</span>);</div>
+<div class="line">var cond = <span class="keyword">new</span> coroutine.Condition();</div>
+<div class="line">var ready = <span class="keyword">false</span>;</div>
+<div class="line">var state = <span class="stringliteral">&quot;ready&quot;</span>;</div>
+<div class="line"></div>
+<div class="line"><span class="keyword">function</span> funcwait() {</div>
+<div class="line">   cond.acquire();</div>
+<div class="line">   <span class="keywordflow">while</span> (!ready)</div>
+<div class="line">    cond.wait();</div>
+<div class="line">   state = <span class="stringliteral">&quot;go&quot;</span></div>
+<div class="line">   cond.release();</div>
+<div class="line">}</div>
+<div class="line"></div>
+<div class="line">coroutine.start(funcwait);</div>
+<div class="line"></div>
+<div class="line">cond.acquire();</div>
+<div class="line"><a class="code" href="../../dc/daa/namespaceconsole.html">console</a>.log(state)</div>
+<div class="line">ready = <span class="keyword">true</span>;</div>
+<div class="line">cond.notify();</div>
+<div class="line">coroutine.sleep();</div>
+<div class="line"><a class="code" href="../../dc/daa/namespaceconsole.html">console</a>.log(state);</div>
+<div class="line"></div>
+<div class="line">will output:</div>
+<div class="line">ready</div>
+<div class="line">go</div>
+</div><!-- fragment --> </div><h2 class="groupheader">构造及析构函数说明</h2>
 <a class="anchor" id="af11513db4fcbde93961fa0b65e7ab764"></a>
 <div class="memitem">
 <div class="memproto">
@@ -401,7 +426,7 @@ Public 成员函数</h2></td></tr>
 <p>返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现 </p>
 <dl class="section return"><dt>返回</dt><dd>返回对象的字符串表示 </dd></dl>
 
-<p>在 <a class="el" href="../../d9/dae/interfaceBuffer.html#a704ee70a5949e3ce5e3ed9efffbfd054">Buffer</a> 内被实现.</p>
+<p>在 <a class="el" href="../../d9/dae/interfaceBuffer.html#a06274bc1877ac498ac513938b91f9f89">Buffer</a> 内被实现.</p>
 
 </div>
 </div>

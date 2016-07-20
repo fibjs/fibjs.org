@@ -1,11 +1,12 @@
 var searchData=
 [
-  ['handler',['handler',['../d6/d18/interfaceHttpHandler.html#a31b90c96f95c0b9e80643aa2c7a52091',1,'HttpHandler::handler()'],['../df/dd8/interfaceSslHandler.html#aaa16369650afb205fdac2e5f5a8f3028',1,'SslHandler::handler()'],['../d7/d48/interfaceTcpServer.html#a4cc96bf996809c60c59c2e8df5daa653',1,'TcpServer::handler()'],['../da/d20/interfaceWebSocketHandler.html#ab7c54e9e04c2672702c37fa7c8f17d6b',1,'WebSocketHandler::handler()']]],
+  ['handler',['handler',['../dc/de5/interfaceHandlerEx.html#ae8dab25701a40bccbedff54d6db8e3ad',1,'HandlerEx::handler()'],['../d6/d18/interfaceHttpHandler.html#a31b90c96f95c0b9e80643aa2c7a52091',1,'HttpHandler::handler()'],['../df/dd8/interfaceSslHandler.html#aaa16369650afb205fdac2e5f5a8f3028',1,'SslHandler::handler()'],['../d7/d48/interfaceTcpServer.html#a4cc96bf996809c60c59c2e8df5daa653',1,'TcpServer::handler()'],['../da/d20/interfaceWebSocketHandler.html#ab7c54e9e04c2672702c37fa7c8f17d6b',1,'WebSocketHandler::handler()']]],
   ['hash',['hash',['../dd/d23/interfaceUrl.html#a8266785507de4265722ded03d1119d1e',1,'Url']]],
   ['have',['have',['../d0/df6/interfaceExpect.html#abf30a5901c5cd7fb1a9f7d35420c07a2',1,'Expect']]],
   ['head',['head',['../d6/d47/interfaceXmlDocument.html#a1052d2e3c611f68426fd1870381bd8fe',1,'XmlDocument']]],
   ['headers',['headers',['../da/d38/interfaceHttpMessage.html#aedc41fa258d4d5cf91d2f850dd49ece4',1,'HttpMessage']]],
   ['height',['height',['../d2/d41/interfaceImage.html#a9b98a87b3cf26704f574a98268638875',1,'Image']]],
+  ['hex',['hex',['../db/da8/namespaceencoding.html#a7b35b7c093e622b0fdfe8177856e7b78',1,'encoding']]],
   ['hi',['hi',['../df/dc1/interfaceInt64.html#aa356139546e7fcc65dc524ed52f585b7',1,'Int64']]],
   ['highlight',['highLight',['../da/d8a/interfaceTextColor.html#af2f9ebf1de8543a516e82866df99363d',1,'TextColor']]],
   ['horizontal',['HORIZONTAL',['../dd/d5d/namespacegd.html#aed32009ea9b9411460dbcb418fac8bdc',1,'gd']]],

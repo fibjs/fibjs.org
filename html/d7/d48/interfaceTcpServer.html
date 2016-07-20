@@ -167,7 +167,18 @@ Public 属性</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p>tcp 服务器对象，可方便创建一个标准多纤程 tcp 服务器 </p>
-<p>使用 <a class="el" href="../../d7/d48/interfaceTcpServer.html" title="tcp 服务器对象，可方便创建一个标准多纤程 tcp 服务器 ">TcpServer</a> 对象可以迅速创建一个多纤程并发处理的 tcp 服务器。 </p><div class="fragment"><div class="line"><span class="keyword">function</span> func(conn)</div><div class="line">{</div><div class="line">    var data;</div><div class="line"></div><div class="line">    <span class="keywordflow">while</span>(data = conn.read())</div><div class="line">        conn.write(data);</div><div class="line"></div><div class="line">    conn.close();</div><div class="line">}</div><div class="line"></div><div class="line"><span class="keyword">new</span> <a class="code" href="../../dc/d27/namespacenet.html">net</a>.TcpServer(8080, func).run();</div></div><!-- fragment --> </div><h2 class="groupheader">构造及析构函数说明</h2>
+<p>使用 <a class="el" href="../../d7/d48/interfaceTcpServer.html" title="tcp 服务器对象，可方便创建一个标准多纤程 tcp 服务器 ">TcpServer</a> 对象可以迅速创建一个多纤程并发处理的 tcp 服务器。 </p><div class="fragment"><div class="line"><span class="keyword">function</span> func(conn)</div>
+<div class="line">{</div>
+<div class="line">    var data;</div>
+<div class="line"></div>
+<div class="line">    <span class="keywordflow">while</span>(data = conn.read())</div>
+<div class="line">        conn.write(data);</div>
+<div class="line"></div>
+<div class="line">    conn.close();</div>
+<div class="line">}</div>
+<div class="line"></div>
+<div class="line"><span class="keyword">new</span> <a class="code" href="../../dc/d27/namespacenet.html">net</a>.TcpServer(8080, func).run();</div>
+</div><!-- fragment --> </div><h2 class="groupheader">构造及析构函数说明</h2>
 <a class="anchor" id="a24820cac0c8a8e4b38fd696156946c33"></a>
 <div class="memitem">
 <div class="memproto">
@@ -379,7 +390,7 @@ Public 属性</h2></td></tr>
 <p>返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现 </p>
 <dl class="section return"><dt>返回</dt><dd>返回对象的字符串表示 </dd></dl>
 
-<p>在 <a class="el" href="../../d9/dae/interfaceBuffer.html#a704ee70a5949e3ce5e3ed9efffbfd054">Buffer</a> 内被实现.</p>
+<p>在 <a class="el" href="../../d9/dae/interfaceBuffer.html#a06274bc1877ac498ac513938b91f9f89">Buffer</a> 内被实现.</p>
 
 </div>
 </div>
@@ -482,7 +493,13 @@ Public 属性</h2></td></tr>
 </div><div class="memdoc">
 
 <p>查询当前服务器运行状态 </p>
-<p>返回的结果为一个 <a class="el" href="../../df/d0b/interfaceStats.html" title="数据统计对象，用以构建应用运行时数据收集 ">Stats</a> 对象，初始化计数器如下： </p><div class="fragment"><div class="line">{</div><div class="line">    total : 1000,      <span class="comment">// 总计处理的连接</span></div><div class="line">    connections : 100, <span class="comment">// 当前正在处理的连接</span></div><div class="line">    accept : 10,       <span class="comment">// 上次查询后新建的连接</span></div><div class="line">    close : 10         <span class="comment">// 上次查询后关闭的连接</span></div><div class="line">}</div></div><!-- fragment --> 
+<p>返回的结果为一个 <a class="el" href="../../df/d0b/interfaceStats.html" title="数据统计对象，用以构建应用运行时数据收集 ">Stats</a> 对象，初始化计数器如下： </p><div class="fragment"><div class="line">{</div>
+<div class="line">    total : 1000,      <span class="comment">// 总计处理的连接</span></div>
+<div class="line">    connections : 100, <span class="comment">// 当前正在处理的连接</span></div>
+<div class="line">    accept : 10,       <span class="comment">// 上次查询后新建的连接</span></div>
+<div class="line">    close : 10         <span class="comment">// 上次查询后关闭的连接</span></div>
+<div class="line">}</div>
+</div><!-- fragment --> 
 </div>
 </div>
 </div><!-- contents -->

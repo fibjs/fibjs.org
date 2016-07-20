@@ -52,7 +52,7 @@ var searchData=
   ['stats',['Stats',['../df/d0b/interfaceStats.html#a5529e542d61824715b210fa103c9939b',1,'Stats::Stats(Array keys)'],['../df/d0b/interfaceStats.html#acb5cc49c1e2f36ccf98066c862ff326c',1,'Stats::Stats(Array staticKeys, Array keys)']]],
   ['stop',['stop',['../d7/d48/interfaceTcpServer.html#af61a58eaa7b7b6bcc1471713778ec797',1,'TcpServer']]],
   ['store',['store',['../d7/d34/interfaceGridFS.html#ae6b355ca7a7e7fae976d3b3789c35045',1,'GridFS::store(String name, Stream src)'],['../d7/d34/interfaceGridFS.html#a811549d931a6845bfae574cd32dd1085',1,'GridFS::store(String name, Buffer data)']]],
-  ['strictequal',['strictEqual',['../d2/dab/namespaceassert.html#a2cb47b83fabc213b290b9b4ce7564f35',1,'assert']]],
+  ['strictequal',['strictEqual',['../d2/dab/namespaceassert.html#ad9f3a1dbfbda3d6c4f128bb42651b9f2',1,'assert']]],
   ['strlen',['strlen',['../d7/d32/interfaceRedis.html#a0476f90872be6a8c94de65dfea6d6d05',1,'Redis']]],
   ['sub',['sub',['../df/dc1/interfaceInt64.html#a73317460aa29ea9164287ecd10e477c1',1,'Int64::sub()'],['../d7/d32/interfaceRedis.html#ae6e3358cb6d36a1d8dbc5e97d03a9254',1,'Redis::sub(Buffer channel, Function func)'],['../d7/d32/interfaceRedis.html#af132093d5c027212f07c80ac7cda2a5f',1,'Redis::sub(Object map)']]],
   ['substringdata',['substringData',['../d7/d50/interfaceXmlCharacterData.html#a2e8f8f0fe64a8843d0b976714deed4b0',1,'XmlCharacterData']]],

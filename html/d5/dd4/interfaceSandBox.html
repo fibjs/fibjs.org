@@ -146,7 +146,7 @@ Public 成员函数</h2></td></tr>
 <tr class="memdesc:a067679bd863305a489058868411a07f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">运行一个脚本  <a href="#a067679bd863305a489058868411a07f1">更多...</a><br /></td></tr>
 <tr class="separator:a067679bd863305a489058868411a07f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a134871a1c0b138d7b582225810ed6e9e"><td class="memItemLeft" align="right" valign="top">Value&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dd4/interfaceSandBox.html#a134871a1c0b138d7b582225810ed6e9e">require</a> (String id)</td></tr>
-<tr class="memdesc:a134871a1c0b138d7b582225810ed6e9e"><td class="mdescLeft">&#160;</td><td class="mdescRight">加载一个模块并返回模块对象，更多信息参阅 <a class="el" href="../../module.html">模块管理</a>  <a href="#a134871a1c0b138d7b582225810ed6e9e">更多...</a><br /></td></tr>
+<tr class="memdesc:a134871a1c0b138d7b582225810ed6e9e"><td class="mdescLeft">&#160;</td><td class="mdescRight">加载一个模块并返回模块对象，更多信息参阅 <a class="el" href="../../d0/db5/module.html">模块管理</a>  <a href="#a134871a1c0b138d7b582225810ed6e9e">更多...</a><br /></td></tr>
 <tr class="separator:a134871a1c0b138d7b582225810ed6e9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6b88dbc459449d2280338e5b702a68b4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d38/interfaceobject.html#a6b88dbc459449d2280338e5b702a68b4">dispose</a> ()</td></tr>
 <tr class="memdesc:a6b88dbc459449d2280338e5b702a68b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">强制回收对象，调用此方法后，对象资源将立即释放  <a href="#a6b88dbc459449d2280338e5b702a68b4">更多...</a><br /></td></tr>
@@ -166,7 +166,15 @@ Public 成员函数</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p>安全沙箱对象，用于管理一个独立的运行空间 </p>
-<p>所有的代码都运行在自己的沙箱中，全局的 require 会调用当前沙箱加载模块，沙箱会通过 require 传递给加载的沙箱。下面的示例创建一个沙箱，限制只允许访问全局基础模块中的 assert 模块，并添加 a 和 b 两个定制模块： </p><div class="fragment"><div class="line">var <a class="code" href="../../d8/d89/namespacevm.html">vm</a> = <a class="code" href="../../d5/dd4/interfaceSandBox.html#a134871a1c0b138d7b582225810ed6e9e">require</a>(<span class="stringliteral">&#39;vm&#39;</span>);</div><div class="line">var sbox = <span class="keyword">new</span> vm.SandBox({</div><div class="line">  a: 100,</div><div class="line">  b: 200,</div><div class="line">  <a class="code" href="../../d2/dab/namespaceassert.html">assert</a>: <a class="code" href="../../d5/dd4/interfaceSandBox.html#a134871a1c0b138d7b582225810ed6e9e">require</a>(<span class="stringliteral">&#39;assert&#39;</span>)</div><div class="line">});</div><div class="line"></div><div class="line">var mod_in_sbox = sbox.require(<span class="stringliteral">&#39;./path/to/mod&#39;</span>);</div></div><!-- fragment --> </div><h2 class="groupheader">构造及析构函数说明</h2>
+<p>所有的代码都运行在自己的沙箱中，全局的 require 会调用当前沙箱加载模块，沙箱会通过 require 传递给加载的沙箱。下面的示例创建一个沙箱，限制只允许访问全局基础模块中的 assert 模块，并添加 a 和 b 两个定制模块： </p><div class="fragment"><div class="line">var <a class="code" href="../../d8/d89/namespacevm.html">vm</a> = <a class="code" href="../../d5/dd4/interfaceSandBox.html#a134871a1c0b138d7b582225810ed6e9e">require</a>(<span class="stringliteral">&#39;vm&#39;</span>);</div>
+<div class="line">var sbox = <span class="keyword">new</span> vm.SandBox({</div>
+<div class="line">  a: 100,</div>
+<div class="line">  b: 200,</div>
+<div class="line">  <a class="code" href="../../d2/dab/namespaceassert.html">assert</a>: <a class="code" href="../../d5/dd4/interfaceSandBox.html#a134871a1c0b138d7b582225810ed6e9e">require</a>(<span class="stringliteral">&#39;assert&#39;</span>)</div>
+<div class="line">});</div>
+<div class="line"></div>
+<div class="line">var mod_in_sbox = sbox.require(<span class="stringliteral">&#39;./path/to/mod&#39;</span>);</div>
+</div><!-- fragment --> </div><h2 class="groupheader">构造及析构函数说明</h2>
 <a class="anchor" id="acd3962edcd65e4270953bb1f45aae2e3"></a>
 <div class="memitem">
 <div class="memproto">
@@ -431,7 +439,7 @@ Public 成员函数</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>加载一个模块并返回模块对象，更多信息参阅 <a class="el" href="../../module.html">模块管理</a> </p>
+<p>加载一个模块并返回模块对象，更多信息参阅 <a class="el" href="../../d0/db5/module.html">模块管理</a> </p>
 <dl class="params"><dt>参数</dt><dd>
   <table class="params">
     <tr><td class="paramname">id</td><td>指定要加载的模块名称，查找路径与当前运行脚本无关，永远从当前工作目录作为起始 </td></tr>
@@ -524,7 +532,7 @@ Public 成员函数</h2></td></tr>
 <p>返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现 </p>
 <dl class="section return"><dt>返回</dt><dd>返回对象的字符串表示 </dd></dl>
 
-<p>在 <a class="el" href="../../d9/dae/interfaceBuffer.html#a704ee70a5949e3ce5e3ed9efffbfd054">Buffer</a> 内被实现.</p>
+<p>在 <a class="el" href="../../d9/dae/interfaceBuffer.html#a06274bc1877ac498ac513938b91f9f89">Buffer</a> 内被实现.</p>
 
 </div>
 </div>

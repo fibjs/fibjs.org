@@ -21,6 +21,8 @@ var searchData=
   ['colors',['colors',['../dc/daa/namespaceconsole.html#ac66c67c224cee71b91094d3d6d6da15d',1,'console']]],
   ['colorstotal',['colorsTotal',['../d2/d41/interfaceImage.html#a9b5c37f5ae92d16e529147273a561203',1,'Image']]],
   ['comment_5fnode',['COMMENT_NODE',['../d8/dd3/namespacexml.html#a8b18c7dcf1e516963ec735903b81d328',1,'xml']]],
+  ['compress_5fsize',['compress_size',['../d6/d9b/interfaceZipInfo.html#a1826c30d48ccd4761ce571ab9fed36ea',1,'ZipInfo']]],
+  ['compress_5ftype',['compress_type',['../d6/d9b/interfaceZipInfo.html#a05802e19c34f094baf6df6c9c131d0cd',1,'ZipInfo']]],
   ['condition',['Condition',['../d6/d05/namespacecoroutine.html#ad2d4666ecf87c2101743b1b5cf60fb23',1,'coroutine']]],
   ['console',['console',['../d4/dfd/namespaceglobal.html#ac56f4cb08af5e4988ff5e4bdd8afb700',1,'global']]],
   ['contenttransferencoding',['contentTransferEncoding',['../db/dd0/interfaceHttpUploadData.html#afdc22e05a8c573d27f7f191a82f91d0a',1,'HttpUploadData']]],

@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['data',['data',['../d7/d50/interfaceXmlCharacterData.html#a6f6d07875167fb5ad93d9e86e006d97f',1,'XmlCharacterData::data()'],['../da/df6/interfaceXmlProcessingInstruction.html#afb10b2a484a15680e8e36abd5a4e8557',1,'XmlProcessingInstruction::data()']]],
+  ['data',['data',['../d7/d50/interfaceXmlCharacterData.html#a6f6d07875167fb5ad93d9e86e006d97f',1,'XmlCharacterData::data()'],['../da/df6/interfaceXmlProcessingInstruction.html#afb10b2a484a15680e8e36abd5a4e8557',1,'XmlProcessingInstruction::data()'],['../d6/d9b/interfaceZipInfo.html#a4d93cb9855db697fe9918c5337c76ee1',1,'ZipInfo::data()']]],
+  ['date',['date',['../d6/d9b/interfaceZipInfo.html#adad7b4f27154679f534b26e86f06a017',1,'ZipInfo']]],
   ['debug',['DEBUG',['../dc/daa/namespaceconsole.html#aea2731ad3aa0e877f14a6e99d964b432',1,'console']]],
   ['deep',['deep',['../d0/df6/interfaceExpect.html#a3035232cdf5cd2c9c9773219aed627b1',1,'Expect']]],
   ['default_5fcompression',['DEFAULT_COMPRESSION',['../d9/d3e/namespacezlib.html#ae2546475689a2db791939b2903c9ec67',1,'zlib']]],

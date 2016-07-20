@@ -1,11 +1,11 @@
 var searchData=
 [
-  ['wait',['wait',['../d5/d45/interfaceCondition.html#a77389487addf6b616767bd21d7386b0d',1,'Condition::wait()'],['../d7/ddf/interfaceEvent.html#a5088e961dddd82b86142b54ae9dd6b14',1,'Event::wait()'],['../dc/d90/interfaceSemaphore.html#ab144395cba916969214bbe60f7521fed',1,'Semaphore::wait()']]],
+  ['wait',['wait',['../d5/d45/interfaceCondition.html#a77389487addf6b616767bd21d7386b0d',1,'Condition::wait()'],['../d7/ddf/interfaceEvent.html#a5088e961dddd82b86142b54ae9dd6b14',1,'Event::wait()'],['../dc/d90/interfaceSemaphore.html#ab144395cba916969214bbe60f7521fed',1,'Semaphore::wait()'],['../d8/d10/interfaceSubProcess.html#aa72a9338112f7e69cd10f1c38d0a1aba',1,'SubProcess::wait()']]],
   ['warn',['warn',['../dc/daa/namespaceconsole.html#a85513e51e93e8d827ebedba45359161c',1,'console::warn(String fmt,...)'],['../dc/daa/namespaceconsole.html#a4731e95e6360c7bdf0513236bc0ea032',1,'console::warn(...)']]],
   ['websockethandler',['WebSocketHandler',['../da/d20/interfaceWebSocketHandler.html#a3ddeaa1c9e3d06b767b1b811bf4dde5e',1,'WebSocketHandler']]],
   ['websocketmessage',['WebSocketMessage',['../db/d5d/interfaceWebSocketMessage.html#a885c7d4696b159cc1cfb77a97466bd69',1,'WebSocketMessage']]],
   ['without',['without',['../d6/d72/namespaceutil.html#a0c5e0bae5b173e9264e980cc2e956c64',1,'util']]],
-  ['write',['write',['../d9/dae/interfaceBuffer.html#a366815494060d39ea7ba8d8e581dd233',1,'Buffer::write()'],['../d6/db7/interfaceMessage.html#a42fdd87346cb529e34e1e12e41afe2bc',1,'Message::write()'],['../d4/dc7/interfaceStream.html#a9fe96dcae55a53aef7ceb56544bc83d9',1,'Stream::write()']]],
+  ['write',['write',['../d9/dae/interfaceBuffer.html#a366815494060d39ea7ba8d8e581dd233',1,'Buffer::write()'],['../d6/db7/interfaceMessage.html#a42fdd87346cb529e34e1e12e41afe2bc',1,'Message::write()'],['../d4/dc7/interfaceStream.html#a9fe96dcae55a53aef7ceb56544bc83d9',1,'Stream::write()'],['../d9/d03/interfaceZipFile.html#ae5815c0356b8f70ce0c55f587fa9392f',1,'ZipFile::write(String filename) async'],['../d9/d03/interfaceZipFile.html#ac7804bd983497d966a07dc531df220fd',1,'ZipFile::write(Buffer data, String inZipName) async'],['../d9/d03/interfaceZipFile.html#a81b946420003f56b53e0c53872a9529f',1,'ZipFile::write(SeekableStream strm, String inZipName) async']]],
   ['writedoublebe',['writeDoubleBE',['../d9/dae/interfaceBuffer.html#aa0699049d7c5631acd3f5f0213a7b9d2',1,'Buffer']]],
   ['writedoublele',['writeDoubleLE',['../d9/dae/interfaceBuffer.html#adf45fe19c68fd9a58f8138a2ef509e77',1,'Buffer']]],
   ['writefile',['writeFile',['../d5/d8f/namespacefs.html#a2b9fe79326ffd7bca6e432f1a667f306',1,'fs']]],

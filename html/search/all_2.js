@@ -1,13 +1,13 @@
 var searchData=
 [
   ['backend',['backend',['../dc/d27/namespacenet.html#ab30af1b267baf4be6092ddd2d868970c',1,'net']]],
-  ['backup',['backup',['../d7/df5/interfaceSQLite.html#a10a16277a7833d9e3a0e70b8c9be47fd',1,'SQLite']]],
+  ['backup',['backup',['../d7/df5/interfaceSQLite.html#a3d70c542058a26bae8f0dc32a9362783',1,'SQLite']]],
   ['badcert_5fcn_5fmismatch',['BADCERT_CN_MISMATCH',['../df/dd2/namespacessl.html#ab698e8eaf3f67237be0e22494751a9ed',1,'ssl']]],
   ['badcert_5fexpired',['BADCERT_EXPIRED',['../df/dd2/namespacessl.html#a268c6e5af25047189e3c5f0f5d07055e',1,'ssl']]],
   ['badcert_5fnot_5ftrusted',['BADCERT_NOT_TRUSTED',['../df/dd2/namespacessl.html#aabc1deedebc1e64e686b0caead187884',1,'ssl']]],
   ['badcert_5frevoked',['BADCERT_REVOKED',['../df/dd2/namespacessl.html#a2c2535a0b748318087c99cfdc12c2cc6',1,'ssl']]],
   ['base32',['base32',['../d4/dba/namespacebase32.html',1,'base32'],['../db/da8/namespaceencoding.html#a86bde7f64f9870f2de7c7cdaa3da6ad3',1,'encoding::base32()']]],
-  ['base64',['base64',['../d5/d37/namespacebase64.html',1,'base64'],['../d9/dae/interfaceBuffer.html#a36df68fd3011d583c237346289fe22d3',1,'Buffer::base64()'],['../db/da8/namespaceencoding.html#a8081785db1dfad236b086d4e2a9c79ba',1,'encoding::base64()']]],
+  ['base64',['base64',['../d5/d37/namespacebase64.html',1,'base64'],['../d9/dae/interfaceBuffer.html#aa958e2710ece7bbff11deac5136fc10e',1,'Buffer::base64()'],['../db/da8/namespaceencoding.html#a8081785db1dfad236b086d4e2a9c79ba',1,'encoding::base64()']]],
   ['base64vlq',['base64vlq',['../de/d5c/namespacebase64vlq.html',1,'base64vlq'],['../db/da8/namespaceencoding.html#a7b9b39387963aca4019374e72257d87d',1,'encoding::base64vlq()']]],
   ['basename',['basename',['../d0/d43/namespacepath.html#a82751cb3c3cda3cbd756667343737f4d',1,'path']]],
   ['bdd',['BDD',['../df/d04/namespacetest.html#ae4137e9ca407ce2fe025a9b61cabe1cd',1,'test']]],
@@ -32,7 +32,7 @@ var searchData=
   ['both',['BOTH',['../dd/d5d/namespacegd.html#a777685b5adc4abb88c9acede6cc66c0e',1,'gd']]],
   ['brightness',['BRIGHTNESS',['../dd/d5d/namespacegd.html#aadea7459b8ff35122c1b45980da86eea',1,'gd']]],
   ['bson',['bson',['../d7/d28/namespacebson.html',1,'bson'],['../db/da8/namespaceencoding.html#a4ad734b31015e44f43735c15e54f5c5e',1,'encoding::bson()']]],
-  ['buffer',['Buffer',['../d9/dae/interfaceBuffer.html',1,'Buffer'],['../d9/dae/interfaceBuffer.html#af19634a31b59ee8f2f4031715bf89952',1,'Buffer::Buffer(Array datas)'],['../d9/dae/interfaceBuffer.html#a35e7f5e09a2e2976d2f9344459101b0a',1,'Buffer::Buffer(ArrayBuffer datas)'],['../d9/dae/interfaceBuffer.html#af609ff01a079a58c39b3fc72a5528e05',1,'Buffer::Buffer(TypedArray datas)'],['../d9/dae/interfaceBuffer.html#ac16e65f2c0d120d046cb02cc1841c17d',1,'Buffer::Buffer(Buffer buffer)'],['../d9/dae/interfaceBuffer.html#ab9e33ff0da7a8dd5c812330c1ed08c17',1,'Buffer::Buffer(String str, String codec=&quot;utf8&quot;)'],['../d9/dae/interfaceBuffer.html#a09fe57b4916e313b00c53a215445e469',1,'Buffer::Buffer(Integer size=0)'],['../d4/dfd/namespaceglobal.html#abe961e24f94e940799497f08f5704916',1,'global::Buffer()']]],
+  ['buffer',['Buffer',['../d9/dae/interfaceBuffer.html',1,'Buffer'],['../d9/dae/interfaceBuffer.html#af19634a31b59ee8f2f4031715bf89952',1,'Buffer::Buffer(Array datas)'],['../d9/dae/interfaceBuffer.html#a35e7f5e09a2e2976d2f9344459101b0a',1,'Buffer::Buffer(ArrayBuffer datas)'],['../d9/dae/interfaceBuffer.html#af609ff01a079a58c39b3fc72a5528e05',1,'Buffer::Buffer(TypedArray datas)'],['../d9/dae/interfaceBuffer.html#ac16e65f2c0d120d046cb02cc1841c17d',1,'Buffer::Buffer(Buffer buffer)'],['../d9/dae/interfaceBuffer.html#a97a9136973f048706f48547e6d9c3d21',1,'Buffer::Buffer(XString str, XString codec=&quot;utf8&quot;)'],['../d9/dae/interfaceBuffer.html#a09fe57b4916e313b00c53a215445e469',1,'Buffer::Buffer(Integer size=0)'],['../d4/dfd/namespaceglobal.html#abe961e24f94e940799497f08f5704916',1,'global::Buffer()']]],
   ['bufferedstream',['BufferedStream',['../d0/d37/interfaceBufferedStream.html',1,'BufferedStream'],['../d0/d37/interfaceBufferedStream.html#a6dde4ed97e788d9a9963b3548d1a837b',1,'BufferedStream::BufferedStream()'],['../d1/d96/namespaceio.html#a555ba063f09dc4745b6beb5a91395df5',1,'io::BufferedStream()']]],
   ['buildinfo',['buildInfo',['../d6/d72/namespaceutil.html#a38b22f190ce11008314b51470042ce2b',1,'util']]]
 ];

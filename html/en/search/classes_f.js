@@ -11,5 +11,6 @@ var searchData=
   ['sslsocket',['SslSocket',['../d0/d97/interfaceSslSocket.html',1,'']]],
   ['stat',['Stat',['../dc/da9/interfaceStat.html',1,'']]],
   ['stats',['Stats',['../df/d0b/interfaceStats.html',1,'']]],
-  ['stream',['Stream',['../d4/dc7/interfaceStream.html',1,'']]]
+  ['stream',['Stream',['../d4/dc7/interfaceStream.html',1,'']]],
+  ['subprocess',['SubProcess',['../d8/d10/interfaceSubProcess.html',1,'']]]
 ];

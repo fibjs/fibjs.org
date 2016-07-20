@@ -43,7 +43,7 @@ var searchData=
   ['sslhandler',['SslHandler',['../df/dd8/interfaceSslHandler.html#a40a6cc77561afea02e8f6468a66dbd2c',1,'SslHandler::SslHandler(Array certs, Value hdlr)'],['../df/dd8/interfaceSslHandler.html#a09430fb12c64e8a913593352e1a9c8aa',1,'SslHandler::SslHandler(X509Cert crt, PKey key, Value hdlr)']]],
   ['sslserver',['SslServer',['../d1/d5c/interfaceSslServer.html#add3bc709b4b30dc6894afbaeec37703f',1,'SslServer::SslServer(Array certs, Integer port, Value listener)'],['../d1/d5c/interfaceSslServer.html#a74078f3049c6446198b9cdab87961307',1,'SslServer::SslServer(Array certs, String addr, Integer port, Value listener)'],['../d1/d5c/interfaceSslServer.html#a66ed2e6f0a79b27c46aaeaef3b701eb5',1,'SslServer::SslServer(X509Cert crt, PKey key, Integer port, Value listener)'],['../d1/d5c/interfaceSslServer.html#a411f364ef81d954cf3d72456640fbde1',1,'SslServer::SslServer(X509Cert crt, PKey key, String addr, Integer port, Value listener)']]],
   ['sslsocket',['SslSocket',['../d0/d97/interfaceSslSocket.html#aaa1ff2e967332f3fbb8de3fa3d49d896',1,'SslSocket::SslSocket(Array certs=[])'],['../d0/d97/interfaceSslSocket.html#a7ec64273a450f8eb1de94a04b970de0b',1,'SslSocket::SslSocket(X509Cert crt, PKey key)']]],
-  ['start',['start',['../d6/d05/namespacecoroutine.html#aab30743ccc280e7950189c50a0afabde',1,'coroutine']]],
+  ['start',['start',['../d6/d05/namespacecoroutine.html#aab30743ccc280e7950189c50a0afabde',1,'coroutine::start()'],['../d8/d25/namespaceprocess.html#aa2569c7583e8dd1c3b92086002c6e741',1,'process::start(String command, Array args, Object opts={})'],['../d8/d25/namespaceprocess.html#a930139c20bcdedef5d5fbd9ec22ed7ef',1,'process::start(String command, Object opts={})']]],
   ['stat',['stat',['../d6/d9c/interfaceSeekableStream.html#a18f7e1862399c42a167a2b30009592d0',1,'SeekableStream::stat()'],['../d5/d8f/namespacefs.html#a51eb9e7e0bebba7af47eeff6ddcb6425',1,'fs::stat()']]],
   ['stats',['Stats',['../df/d0b/interfaceStats.html#a5529e542d61824715b210fa103c9939b',1,'Stats::Stats(Array keys)'],['../df/d0b/interfaceStats.html#acb5cc49c1e2f36ccf98066c862ff326c',1,'Stats::Stats(Array staticKeys, Array keys)']]],
   ['stop',['stop',['../d7/d48/interfaceTcpServer.html#af61a58eaa7b7b6bcc1471713778ec797',1,'TcpServer']]],
@@ -52,5 +52,5 @@ var searchData=
   ['strlen',['strlen',['../d7/d32/interfaceRedis.html#a0476f90872be6a8c94de65dfea6d6d05',1,'Redis']]],
   ['sub',['sub',['../df/dc1/interfaceInt64.html#a73317460aa29ea9164287ecd10e477c1',1,'Int64::sub()'],['../d7/d32/interfaceRedis.html#ae6e3358cb6d36a1d8dbc5e97d03a9254',1,'Redis::sub(Buffer channel, Function func)'],['../d7/d32/interfaceRedis.html#af132093d5c027212f07c80ac7cda2a5f',1,'Redis::sub(Object map)']]],
   ['substringdata',['substringData',['../d7/d50/interfaceXmlCharacterData.html#a2e8f8f0fe64a8843d0b976714deed4b0',1,'XmlCharacterData']]],
-  ['system',['system',['../d8/d25/namespaceprocess.html#a8ba452b49b82fff2709f27929faa57cf',1,'process']]]
+  ['system',['system',['../d8/d25/namespaceprocess.html#a0fe525fab792d9d0e1b0c7574b335da2',1,'process']]]
 ];
