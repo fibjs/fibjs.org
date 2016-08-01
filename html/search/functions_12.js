@@ -35,6 +35,7 @@ var searchData=
   ['shiftleft',['shiftLeft',['../df/dc1/interfaceInt64.html#acbe2152ea45f78be39771e50d00f1b9f',1,'Int64']]],
   ['shiftright',['shiftRight',['../df/dc1/interfaceInt64.html#a770d45ef40dbddcb9892b96370930b72',1,'Int64']]],
   ['sign',['sign',['../d5/dac/interfacePKey.html#aab4b38d767cfab0a2c8798a1ef90b49e',1,'PKey::sign()'],['../d7/d8b/interfaceX509Req.html#a6539f318125f8a29d49ceda762302de4',1,'X509Req::sign()']]],
+  ['simplerandombytes',['simpleRandomBytes',['../de/d36/namespacecrypto.html#ab50ae54bb2eeadd6bd5aee7509c1f613',1,'crypto']]],
   ['size',['size',['../dc/d27/interfaceMongoCursor.html#aef6a5f9cf1ee475d698d4c2e17e1cf3e',1,'MongoCursor::size()'],['../d6/d9c/interfaceSeekableStream.html#af31c485565a6699bd6b8209d46ba0acb',1,'SeekableStream::size()']]],
   ['skip',['skip',['../dc/d27/interfaceMongoCursor.html#aba4f2ce60710195d5a26e3966c264989',1,'MongoCursor']]],
   ['sleep',['sleep',['../d6/d05/namespacecoroutine.html#ae9ce1c1d0ffbff909196806efabe7fa3',1,'coroutine']]],
@@ -52,10 +53,9 @@ var searchData=
   ['stats',['Stats',['../df/d0b/interfaceStats.html#a5529e542d61824715b210fa103c9939b',1,'Stats::Stats(Array keys)'],['../df/d0b/interfaceStats.html#acb5cc49c1e2f36ccf98066c862ff326c',1,'Stats::Stats(Array staticKeys, Array keys)']]],
   ['stop',['stop',['../d7/d48/interfaceTcpServer.html#af61a58eaa7b7b6bcc1471713778ec797',1,'TcpServer']]],
   ['store',['store',['../d7/d34/interfaceGridFS.html#ae6b355ca7a7e7fae976d3b3789c35045',1,'GridFS::store(String name, Stream src)'],['../d7/d34/interfaceGridFS.html#a811549d931a6845bfae574cd32dd1085',1,'GridFS::store(String name, Buffer data)']]],
-  ['strictequal',['strictEqual',['../d2/dab/namespaceassert.html#ad9f3a1dbfbda3d6c4f128bb42651b9f2',1,'assert']]],
+  ['strictequal',['strictEqual',['../d2/dab/namespaceassert.html#a2cb47b83fabc213b290b9b4ce7564f35',1,'assert']]],
   ['strlen',['strlen',['../d7/d32/interfaceRedis.html#a0476f90872be6a8c94de65dfea6d6d05',1,'Redis']]],
   ['sub',['sub',['../df/dc1/interfaceInt64.html#a73317460aa29ea9164287ecd10e477c1',1,'Int64::sub()'],['../d7/d32/interfaceRedis.html#ae6e3358cb6d36a1d8dbc5e97d03a9254',1,'Redis::sub(Buffer channel, Function func)'],['../d7/d32/interfaceRedis.html#af132093d5c027212f07c80ac7cda2a5f',1,'Redis::sub(Object map)']]],
   ['substringdata',['substringData',['../d7/d50/interfaceXmlCharacterData.html#a2e8f8f0fe64a8843d0b976714deed4b0',1,'XmlCharacterData']]],
-  ['sync',['sync',['../d4/dfd/namespaceglobal.html#adcddd1b6155e7ecd7bc95fef1227a1d1',1,'global']]],
-  ['system',['system',['../d8/d25/namespaceprocess.html#a0fe525fab792d9d0e1b0c7574b335da2',1,'process']]]
+  ['sync',['sync',['../d4/dfd/namespaceglobal.html#adcddd1b6155e7ecd7bc95fef1227a1d1',1,'global']]]
 ];

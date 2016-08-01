@@ -12,7 +12,7 @@ var searchData=
   ['clone',['clone',['../d2/d41/interfaceImage.html#a9269f51f177b5c662610b357d5030b8b',1,'Image::clone()'],['../d2/d93/interfaceMemoryStream.html#acebceddcdb996785b6f2923183638dc6',1,'MemoryStream::clone()'],['../d5/dac/interfacePKey.html#af43ff2bc4e8e09020e3ae749f80ba845',1,'PKey::clone()'],['../d5/dd4/interfaceSandBox.html#a581daffaf92d0b1266c60f100a66ad40',1,'SandBox::clone()'],['../d6/d72/namespaceutil.html#ac5b6c43b53cdaa1ee2b948766afaebd0',1,'util::clone()']]],
   ['clonenode',['cloneNode',['../dc/d8f/interfaceXmlNode.html#ad997a00e2af8f05fe915dac55809e8e7',1,'XmlNode']]],
   ['close',['close',['../d8/d2c/interfaceDbConnection.html#a4f19b7fb871da01a3133649c27797a83',1,'DbConnection::close()'],['../d0/d9e/interfaceLevelDB.html#ab757e7bc24ac6020559062e30e0f2b46',1,'LevelDB::close()'],['../df/d69/interfaceMongoDB.html#a939ad35987de39274fdb7d662887549c',1,'MongoDB::close()'],['../d7/d32/interfaceRedis.html#a6fed94980317b56c987da5fa83a19fd9',1,'Redis::close()'],['../d4/dc7/interfaceStream.html#a52b486b973a47fb3fc79668a9742360f',1,'Stream::close()'],['../d9/d03/interfaceZipFile.html#a79b6a90f45d4e66d9e92582f43a1ceb1',1,'ZipFile::close()']]],
-  ['closeto',['closeTo',['../d0/df6/interfaceExpect.html#ad68fd4e8d4aea4d89d9f2ad655d1a309',1,'Expect::closeTo()'],['../d2/dab/namespaceassert.html#a24bbaeecc815aa9f3d87eb800f8ce1c7',1,'assert::closeTo()']]],
+  ['closeto',['closeTo',['../d0/df6/interfaceExpect.html#ad68fd4e8d4aea4d89d9f2ad655d1a309',1,'Expect::closeTo()'],['../d2/dab/namespaceassert.html#a57f9d7269de9767896481d6c6491b053',1,'assert::closeTo()']]],
   ['color',['color',['../dd/d5d/namespacegd.html#aa810ccf3c53765e07860a6e4bc4e86a0',1,'gd']]],
   ['colorallocate',['colorAllocate',['../d2/d41/interfaceImage.html#ad0fa3981ec535cec673652bf6fc3dc29',1,'Image::colorAllocate(Integer red, Integer green, Integer blue)'],['../d2/d41/interfaceImage.html#accc465175cd5925211a49a24e8149c1a',1,'Image::colorAllocate(Integer color)']]],
   ['colorallocatealpha',['colorAllocateAlpha',['../d2/d41/interfaceImage.html#ad99f34e196b5b799685e52b5d75f3451',1,'Image::colorAllocateAlpha(Integer red, Integer green, Integer blue, Number alpha)'],['../d2/d41/interfaceImage.html#a93e0ffa66a7c0487480c1923d1168a1b',1,'Image::colorAllocateAlpha(Integer color)']]],
@@ -51,7 +51,7 @@ var searchData=
   ['createelementns',['createElementNS',['../d6/d47/interfaceXmlDocument.html#add0d5e3725732650e2bea73fae27f9bb',1,'XmlDocument']]],
   ['createprocessinginstruction',['createProcessingInstruction',['../d6/d47/interfaceXmlDocument.html#a92213bba69053fc344a7481e1e2c6035',1,'XmlDocument']]],
   ['createtextnode',['createTextNode',['../d6/d47/interfaceXmlDocument.html#a0161354317be92241b35ff74232f9e38',1,'XmlDocument']]],
-  ['crit',['crit',['../dc/daa/namespaceconsole.html#a3bee65d40e0b91c149d59933549e1587',1,'console::crit(XString fmt,...)'],['../dc/daa/namespaceconsole.html#adf1c772e176fe40eb4ffae758cf22c64',1,'console::crit(...)']]],
+  ['crit',['crit',['../dc/daa/namespaceconsole.html#aafeccfedf3222b47114d8ec262f10294',1,'console::crit(String fmt,...)'],['../dc/daa/namespaceconsole.html#adf1c772e176fe40eb4ffae758cf22c64',1,'console::crit(...)']]],
   ['crop',['crop',['../d2/d41/interfaceImage.html#a945d440ac93ede21a89839946be8da8f',1,'Image']]],
   ['current',['current',['../d6/d05/namespacecoroutine.html#ae2d278991596f4170f2be18ae8d71454',1,'coroutine']]],
   ['cwd',['cwd',['../d8/d25/namespaceprocess.html#a59492653e6cf45081a9c8a348c57af16',1,'process']]]

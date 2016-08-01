@@ -9,6 +9,6 @@ var searchData=
   ['update',['update',['../d3/d41/interfaceDigest.html#ac699e20f28b80cbdbd678155ab271dd7',1,'Digest::update()'],['../d6/d6b/interfaceMongoCollection.html#a07c0076fbb6551b54cdd89d192f3fdf5',1,'MongoCollection::update(Object query, Object document, Boolean upsert=false, Boolean multi=false)'],['../d6/d6b/interfaceMongoCollection.html#abd3a6d526b752895af7d0d76c39dfd1c',1,'MongoCollection::update(Object query, Object document, Object options)']]],
   ['uptime',['uptime',['../df/d0b/interfaceStats.html#a32d73f6238ce28d6651f18465af79ae0',1,'Stats::uptime()'],['../da/de1/namespaceos.html#a7fa90fa210d31f489f824de639820d42',1,'os::uptime()']]],
   ['url',['Url',['../dd/d23/interfaceUrl.html#a9a1f4ab58de0b3d7d55708e7ecad1adc',1,'Url::Url(Object args)'],['../dd/d23/interfaceUrl.html#aec1f5c08b7c5046e838286600f2e955a',1,'Url::Url(String url=&quot;&quot;)']]],
-  ['use',['use',['../d2/d68/interfaceMySQL.html#a0aeffca10267f078960d20ac1c705b39',1,'MySQL']]],
+  ['use',['use',['../d2/d68/interfaceMySQL.html#af3d7af443d45a1e778aa00a76c28f51b',1,'MySQL']]],
   ['uuid',['uuid',['../d1/dd6/namespaceuuid.html#a5fdc6d7f478a448083de3d30305d9d79',1,'uuid::uuid(String s)'],['../d1/dd6/namespaceuuid.html#a61e618bfdc2d1146b05c0a73b7dbfe25',1,'uuid::uuid(Buffer data)']]]
 ];

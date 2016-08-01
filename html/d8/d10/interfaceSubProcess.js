@@ -2,12 +2,12 @@ var interfaceSubProcess =
 [
     [ "kill", "d8/d10/interfaceSubProcess.html#a6233362c8a8b13def10f836ed9330fd2", null ],
     [ "wait", "d8/d10/interfaceSubProcess.html#aa72a9338112f7e69cd10f1c38d0a1aba", null ],
-    [ "readText", "d8/d10/interfaceSubProcess.html#af4d77dccc27fdf352258ae4f975d26d4", null ],
-    [ "readLine", "d8/d10/interfaceSubProcess.html#a214a3e23788506409a08e012795dc32a", null ],
+    [ "readText", "d8/d10/interfaceSubProcess.html#a048aa0f487763f8007493a16b261c00b", null ],
+    [ "readLine", "d8/d10/interfaceSubProcess.html#a3e772d8b52548a59a1308e3eac07c027", null ],
     [ "readLines", "d8/d10/interfaceSubProcess.html#a72779ef151e7eeffa99138341f80eeef", null ],
-    [ "readUntil", "d8/d10/interfaceSubProcess.html#ad721944a28143da2cea73869bd526fc4", null ],
-    [ "writeText", "d8/d10/interfaceSubProcess.html#a8d02dbcd5c14482f3dac43a7e51aba61", null ],
-    [ "writeLine", "d8/d10/interfaceSubProcess.html#a4149c7e2463d070c1dec2d396aa76052", null ],
+    [ "readUntil", "d8/d10/interfaceSubProcess.html#ab2c46249f028cc1dfdade4fe74ccc8de", null ],
+    [ "writeText", "d8/d10/interfaceSubProcess.html#ab222e6d2021b844bccf45cdaa59729cf", null ],
+    [ "writeLine", "d8/d10/interfaceSubProcess.html#a4da24e0d02dc1725ae42545689588e52", null ],
     [ "read", "d8/d10/interfaceSubProcess.html#a7a38cc9beea41220157a0263dcd86bc7", null ],
     [ "write", "d8/d10/interfaceSubProcess.html#a9fe96dcae55a53aef7ceb56544bc83d9", null ],
     [ "close", "d8/d10/interfaceSubProcess.html#a52b486b973a47fb3fc79668a9742360f", null ],
@@ -21,6 +21,6 @@ var interfaceSubProcess =
     [ "stdin", "d8/d10/interfaceSubProcess.html#a70316e3b036f9f3e9da188b3f6c09be4", null ],
     [ "stdout", "d8/d10/interfaceSubProcess.html#a33914fe2eb22865fc20391313a1b3f70", null ],
     [ "stream", "d8/d10/interfaceSubProcess.html#adc842e860f92cdb58347758fcf2532af", null ],
-    [ "charset", "d8/d10/interfaceSubProcess.html#a6ec1c71eadcfc1c1712c819bbf032317", null ],
-    [ "EOL", "d8/d10/interfaceSubProcess.html#a9fb5891ea70a485a0737d29093d23851", null ]
+    [ "charset", "d8/d10/interfaceSubProcess.html#a3d617075c9b6ea5124a0e132ab31b3c5", null ],
+    [ "EOL", "d8/d10/interfaceSubProcess.html#adaa9b52ec60c27e739b762a26b3f0a8d", null ]
 ];

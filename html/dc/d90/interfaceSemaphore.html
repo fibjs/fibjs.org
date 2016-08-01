@@ -159,17 +159,7 @@ Public 成员函数</h2></td></tr>
 <div class="textblock"><p>纤程信号量对象 </p>
 <p>信号量对象管理一个内部计数器，此计数器调用 acquire 或者 wait 后减一，调用 release 或者 post 后加一。 计数器不会减至负数，因为 acquire 和 wait 在发现数值为 0 的时候，会休眠当前纤程，直至其它纤程通过 release 或 post 增加计数器的值。</p>
 <p>信号量常用的场合是限制资源并发使用，以及生产者/消费者模式的应用。</p>
-<p>以数据库请求为例，限制资源并发使用的情形： </p><div class="fragment"><div class="line">var maxconnections = 5;</div>
-<div class="line">var l = <span class="keyword">new</span> coroutine.Semaphore(maxconnections);</div>
-<div class="line"></div>
-<div class="line">......</div>
-<div class="line"></div>
-<div class="line">l.acquire();</div>
-<div class="line">var conn = connectdb()</div>
-<div class="line">.....</div>
-<div class="line">conn.close();</div>
-<div class="line">l.release();</div>
-</div><!-- fragment --><p>生产者/消费者模式通常则将信号量与队列配合使用。生产者向队列中加入数据，并 post 一个信号，消费者则先 wait 信号，获取信号后去队查询取数据。 </p>
+<p>以数据库请求为例，限制资源并发使用的情形： </p><div class="fragment"><div class="line">var maxconnections = 5;</div><div class="line">var l = <span class="keyword">new</span> coroutine.Semaphore(maxconnections);</div><div class="line"></div><div class="line">......</div><div class="line"></div><div class="line">l.acquire();</div><div class="line">var conn = connectdb()</div><div class="line">.....</div><div class="line">conn.close();</div><div class="line">l.release();</div></div><!-- fragment --><p>生产者/消费者模式通常则将信号量与队列配合使用。生产者向队列中加入数据，并 post 一个信号，消费者则先 wait 信号，获取信号后去队查询取数据。 </p>
 </div><h2 class="groupheader">构造及析构函数说明</h2>
 <a class="anchor" id="adf61e8770130c9f386c7c78934028379"></a>
 <div class="memitem">
@@ -392,7 +382,7 @@ Public 成员函数</h2></td></tr>
 <p>返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现 </p>
 <dl class="section return"><dt>返回</dt><dd>返回对象的字符串表示 </dd></dl>
 
-<p>在 <a class="el" href="../../d9/dae/interfaceBuffer.html#a06274bc1877ac498ac513938b91f9f89">Buffer</a> 内被实现.</p>
+<p>在 <a class="el" href="../../d9/dae/interfaceBuffer.html#a704ee70a5949e3ce5e3ed9efffbfd054">Buffer</a> 内被实现.</p>
 
 </div>
 </div>
