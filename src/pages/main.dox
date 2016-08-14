@@ -8,57 +8,143 @@ Fibjs is an application server framework bassed on Google V8 Javascript engine. 
 
 @subsection install_step1 Step 1: Preparation for Building
 
-@b For Windows, installing Visual Studio 2011
+@b For Windows, installing Visual Studio 2015
 
-@b For \*nix, dependency tools for building:
+@b For unix, dependency tools for building:
 @code
-cmake
-make
-libexecinfo
+GCC 4.8 or newer
+CMake 2.6 or newer
+GNU Make 3.81 or newer
+libexecinfo (FreeBSD and OpenBSD only)
 @endcode
 
 @b For MacOSX，take Brew for example, besides XCode and command line tools, cmake is needed:
 @code
 brew install cmake
+brew install git
 @endcode
 
 @b For Ubuntu:
 @code
-sudo apt-get install g++
-sudo apt-get install make
-sudo apt-get install cmake
+apt install g++
+apt install make
+apt install cmake
+apt install git
 @endcode
 
 For 32-bit binary, additionally, multilib needs to be installed:
 @code
-sudo apt-get install g++-multilib
+apt install gcc-multilib
+apt install g++-multilib
 @endcode
 
-@b For FreeBSD:
+@b For 32bit-Arm on Ubuntu:
 @code
-sudo pkg_add -r cmake
-sudo pkg_add -r libexecinfo
+apt install gcc-arm-linux-gnueabihf
+apt install g++-arm-linux-gnueabihf
+@endcode
+
+For 64bit-Arm on Ubuntu:
+@code
+apt install gcc-aarch64-linux-gnu
+apt install g++-aarch64-linux-gnu
+@endcode
+
+@b For 32bit-mips on Ubuntu:
+@code
+apt install gcc-mips-linux-gnu
+apt install g++-mips-linux-gnu
+@endcode
+
+For 64bit-mips on Ubuntu:
+@code
+apt install gcc-mips64-linux-gnuabi64
+apt install g++-mips64-linux-gnuabi64
+@endcode
+
+@b For 32bit-powerpc on Ubuntu:
+@code
+apt install gcc-powerpc-linux-gnu
+apt install g++-powerpc-linux-gnu
+@endcode
+
+For 64bit-powerpc on Ubuntu:
+@code
+apt install gcc-powerpc64-linux-gnu
+apt install g++-powerpc64-linux-gnu
+@endcode
+
+fix:
+@code
+rm -f /usr/include/asm
+ln -s x86_64-linux-gnu /usr/include/i386-linux-gnu
+ln -s x86_64-linux-gnu /usr/include/x86_64-linux-gnux32
+@endcode
+
+@b For Fedora:
+@code
+yum install gcc-c++
+yum install libstdc++-static
+yum install make
+yum install cmake
+yum install git
+@endcode
+
+For 32bit-Fedora:
+@code
+yum install glibc-devel.i686
+yum install libstdc++-static.i686
+@endcode
+
+@b For FreeBSD(8, 9):
+@code
+pkg_add -r cmake
+pkg_add -r libexecinfo
+pkg_add -r git
+@endcode
+
+For FreeBSD10 and higher:
+@code
+pkg install cmake
+pkg install libexecinfo
+pkg install git
 @endcode
 
 @subsection install_step2 Step 2: Fetch source code
 
+current fibjs project github address: https://github.com/xicilion/fibjs
+
+Under appropriate directory run commands below:
 @code
-mkdir fibjs
+git clone https://github.com/xicilion/fibjs.git
 cd fibjs
-git clone https://github.com/xicilion/fibjs .
+git submodule init
+git submodule update
 @endcode
 
 @subsection install_step3 Step 3: Building
 
-@b For Windows, open fibjs.sln and build.
+@b For Windows, click Windows Start then select All program then select Visual Studio 2015 then select Visual Studio Tools then select Developer Command Prompt for VS2015.
+You will open a terminal, find the fibjs root directory and run 'build'
 
-For \*nix, run buil (shell file) to build. Building options as follows:
+For \*nix/linux, run buil (shell file) to build.
+run command:
+@code
+sh build [options] [-jn] [-v] [-h]
+@endcode
 
+options：
 @li @c @b clean: Clear building result for re-build cleanly.
 @li @c @b Release: Build Release version
 @li @c @b Debug: Build Debug version
-@li @c @b Release32: Build 32-bit Release version
-@li @c @b Debug32: Build 32-bit Debug version
+@li @c @b i386: Build 32-bit version
+@li @c @b amd64: Build 64-bit version
+@li @c @b arm: Cross compile 32-bit arm version
+@li @c @b arm64: Cross compile 64-bit arm version
+@li @c @b mips: Cross compile 32-bit mips version
+@li @c @b mips64: Cross compile 64-bit mips version
+@li @c @b ppc: Cross compile 32-bit powerpc version
+@li @c @b ppc64: Cross compile 64-bit powerpc version
 
 @b For example, building Release as follows:
 @code
