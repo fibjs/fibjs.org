@@ -15,7 +15,7 @@ var searchData=
   ['heapgraphedge',['HeapGraphEdge',['../d2/d65/interfaceHeapGraphEdge.html',1,'']]],
   ['heapgraphnode',['HeapGraphNode',['../df/db2/interfaceHeapGraphNode.html',1,'']]],
   ['heapsnapshot',['HeapSnapshot',['../de/d09/interfaceHeapSnapshot.html',1,'']]],
-  ['height',['height',['../d2/d41/interfaceImage.html#a9b98a87b3cf26704f574a98268638875',1,'Image']]],
+  ['height',['height',['../d2/d41/interfaceImage.html#a9b98a87b3cf26704f574a98268638875',1,'Image::height()'],['../dc/daa/namespaceconsole.html#abc88f7bfa59e0f00c9016a2118f3c082',1,'console::height()']]],
   ['hello',['hello',['../da/de8/interfaceSmtp.html#a2827151e3c7938f20ef793ce708a5f22',1,'Smtp']]],
   ['hex',['hex',['../d3/da1/namespacehex.html',1,'hex'],['../d9/dae/interfaceBuffer.html#ae792f93a92ad21c0c28e4953e91032cb',1,'Buffer::hex()'],['../db/da8/namespaceencoding.html#a7b35b7c093e622b0fdfe8177856e7b78',1,'encoding::hex()']]],
   ['hi',['hi',['../df/dc1/interfaceInt64.html#aa356139546e7fcc65dc524ed52f585b7',1,'Int64']]],

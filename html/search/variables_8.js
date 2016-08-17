@@ -5,7 +5,7 @@ var searchData=
   ['have',['have',['../d0/df6/interfaceExpect.html#abf30a5901c5cd7fb1a9f7d35420c07a2',1,'Expect']]],
   ['head',['head',['../d6/d47/interfaceXmlDocument.html#a1052d2e3c611f68426fd1870381bd8fe',1,'XmlDocument']]],
   ['headers',['headers',['../da/d38/interfaceHttpMessage.html#aedc41fa258d4d5cf91d2f850dd49ece4',1,'HttpMessage']]],
-  ['height',['height',['../d2/d41/interfaceImage.html#a9b98a87b3cf26704f574a98268638875',1,'Image']]],
+  ['height',['height',['../d2/d41/interfaceImage.html#a9b98a87b3cf26704f574a98268638875',1,'Image::height()'],['../dc/daa/namespaceconsole.html#abc88f7bfa59e0f00c9016a2118f3c082',1,'console::height()']]],
   ['hex',['hex',['../db/da8/namespaceencoding.html#a7b35b7c093e622b0fdfe8177856e7b78',1,'encoding']]],
   ['hi',['hi',['../df/dc1/interfaceInt64.html#aa356139546e7fcc65dc524ed52f585b7',1,'Int64']]],
   ['highlight',['highLight',['../da/d8a/interfaceTextColor.html#af2f9ebf1de8543a516e82866df99363d',1,'TextColor']]],
