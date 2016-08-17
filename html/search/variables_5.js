@@ -12,6 +12,7 @@ var searchData=
   ['edgedetect',['EDGEDETECT',['../dd/d5d/namespacegd.html#ab6c9bd03d47937861bc87e0c91e48d49',1,'gd']]],
   ['element_5fnode',['ELEMENT_NODE',['../d8/dd3/namespacexml.html#ad4764c995e496ba8e7af34eb67cc71ce',1,'xml']]],
   ['emboss',['EMBOSS',['../dd/d5d/namespacegd.html#a0239ff80205ec44d2a653cefa8085e27',1,'gd']]],
+  ['enablecookie',['enableCookie',['../df/d4b/interfaceHttpClient.html#a4141eb3b0a13493eeca267366a3fa162',1,'HttpClient::enableCookie()'],['../d3/d69/namespacehttp.html#ad63225275dd098971f669a6ebf034330',1,'http::enableCookie()']]],
   ['env',['env',['../d8/d25/namespaceprocess.html#a5452c47f4dfe56944cb47893c53d1476',1,'process']]],
   ['eol',['EOL',['../d0/d37/interfaceBufferedStream.html#adaa9b52ec60c27e739b762a26b3f0a8d',1,'BufferedStream::EOL()'],['../da/de1/namespaceos.html#a76c7476a457aa1af25ca82a3fdb7e982',1,'os::EOL()']]],
   ['error',['error',['../da/d8a/interfaceTextColor.html#a56f6aeb7a8f24f3f294c61e1199f7e0b',1,'TextColor::error()'],['../dc/daa/namespaceconsole.html#a60c0dd0c74056a542643ec7202b5954d',1,'console::ERROR()']]],

@@ -29,7 +29,7 @@ var searchData=
   ['contenttype',['contentType',['../db/dd0/interfaceHttpUploadData.html#afc4c67023232895364f2b719e31d5fa4',1,'HttpUploadData']]],
   ['continue',['CONTINUE',['../d0/d42/namespacewebsocket.html#a42b0763a6a31aee82b45c0d9cf305bd3',1,'websocket']]],
   ['contrast',['CONTRAST',['../dd/d5d/namespacegd.html#a83dbf998b5c3a10703de76e477726117',1,'gd']]],
-  ['cookies',['cookies',['../d4/dfa/interfaceHttpRequest.html#a883cdefbbe1fec7aa89f011c941c0707',1,'HttpRequest::cookies()'],['../d9/d71/interfaceHttpResponse.html#ac86661de36347c4ef46e29c8ff4be146',1,'HttpResponse::cookies()']]],
+  ['cookies',['cookies',['../df/d4b/interfaceHttpClient.html#a390bee48cbe064af5e2f0896d5a9d461',1,'HttpClient::cookies()'],['../d4/dfa/interfaceHttpRequest.html#a883cdefbbe1fec7aa89f011c941c0707',1,'HttpRequest::cookies()'],['../d9/d71/interfaceHttpResponse.html#ac86661de36347c4ef46e29c8ff4be146',1,'HttpResponse::cookies()'],['../d3/d69/namespacehttp.html#af4f4d8ac3708d3d8d3b3ddcf8b2f65be',1,'http::cookies()']]],
   ['crit',['CRIT',['../dc/daa/namespaceconsole.html#a0a9c19825a7e11769d5646cb24002d1b',1,'console']]],
   ['crossdomain',['crossDomain',['../d6/d18/interfaceHttpHandler.html#acc43d9a11fa2e9b7aa62f4ca0ae91b93',1,'HttpHandler::crossDomain()'],['../d4/d79/interfaceHttpServer.html#a113023f684bec5d69809b283afcdcca4',1,'HttpServer::crossDomain()']]],
   ['ctime',['ctime',['../dc/da9/interfaceStat.html#af62482780f5ebea39cf8f173f424f7d4',1,'Stat']]],

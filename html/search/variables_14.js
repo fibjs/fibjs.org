@@ -10,7 +10,7 @@ var searchData=
   ['that',['that',['../d0/df6/interfaceExpect.html#a35480010d927aa457b70359fa41d4b33',1,'Expect']]],
   ['tiff',['TIFF',['../dd/d5d/namespacegd.html#a918b4315171c8819c3b6583957594070',1,'gd']]],
   ['time',['time',['../de/d09/interfaceHeapSnapshot.html#a56efcbdd2f3826e591e30f175dadd840',1,'HeapSnapshot']]],
-  ['timeout',['timeout',['../d7/df5/interfaceSQLite.html#ac1125a44ad8f97d1cf7e9a3acd08db1e',1,'SQLite']]],
+  ['timeout',['timeout',['../df/d4b/interfaceHttpClient.html#a76b5945b16fbcab94ef57cb5f273e0b0',1,'HttpClient::timeout()'],['../dd/d94/interfaceSocket.html#a63b56cb6723b0309d0c1b42e63061689',1,'Socket::timeout()'],['../d7/df5/interfaceSQLite.html#ac1125a44ad8f97d1cf7e9a3acd08db1e',1,'SQLite::timeout()'],['../d3/d69/namespacehttp.html#ae1a1f798ae94ad2c33f690458cf3bae1',1,'http::timeout()']]],
   ['timezone',['timezone',['../da/de1/namespaceos.html#a9628c5429b13f4979df6569d374b5815',1,'os']]],
   ['title',['title',['../d6/d47/interfaceXmlDocument.html#a0c4ac9f00a43be8a933fcd4d45612c8d',1,'XmlDocument']]],
   ['tls1',['tls1',['../df/dd2/namespacessl.html#ad9ce55d649306fbc05ec48e1ad58c1ca',1,'ssl']]],

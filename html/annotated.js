@@ -21,6 +21,7 @@ var annotated =
     [ "HeapGraphEdge", "d2/d65/interfaceHeapGraphEdge.html", "d2/d65/interfaceHeapGraphEdge" ],
     [ "HeapGraphNode", "df/db2/interfaceHeapGraphNode.html", "df/db2/interfaceHeapGraphNode" ],
     [ "HeapSnapshot", "de/d09/interfaceHeapSnapshot.html", "de/d09/interfaceHeapSnapshot" ],
+    [ "HttpClient", "df/d4b/interfaceHttpClient.html", "df/d4b/interfaceHttpClient" ],
     [ "HttpCollection", "da/d34/interfaceHttpCollection.html", "da/d34/interfaceHttpCollection" ],
     [ "HttpCookie", "d3/dea/interfaceHttpCookie.html", "d3/dea/interfaceHttpCookie" ],
     [ "HttpHandler", "d6/d18/interfaceHttpHandler.html", "d6/d18/interfaceHttpHandler" ],

@@ -4,7 +4,7 @@ var interfaceSocket =
     [ "connect", "dd/d94/interfaceSocket.html#a8ba69699eb78edef37f3874bb05016cd", null ],
     [ "bind", "dd/d94/interfaceSocket.html#a26a688b72c8b742d830a1d89e2a7a984", null ],
     [ "bind", "dd/d94/interfaceSocket.html#aea619a73174482ad558c95dc8d9a1fc4", null ],
-    [ "listen", "dd/d94/interfaceSocket.html#ab35e6c9affac9881a993684fc4fc7a16", null ],
+    [ "listen", "dd/d94/interfaceSocket.html#a5f558b76ef3f614f2e9a146b10d6577f", null ],
     [ "accept", "dd/d94/interfaceSocket.html#a3dfc92fcb136c355eee826905b37487c", null ],
     [ "recv", "dd/d94/interfaceSocket.html#a28174e411f641885369212291b0302d2", null ],
     [ "recvFrom", "dd/d94/interfaceSocket.html#ac70ea37d63458ce3378302345f3b5e41", null ],
@@ -24,5 +24,6 @@ var interfaceSocket =
     [ "remoteAddress", "dd/d94/interfaceSocket.html#aea5a56e9aa58cd921df2d28693aa52c7", null ],
     [ "remotePort", "dd/d94/interfaceSocket.html#a4ad81f48d21bceda7bc1c27389685c6f", null ],
     [ "localAddress", "dd/d94/interfaceSocket.html#a0501ceb52579d56a7eb406e1bbc2f697", null ],
-    [ "localPort", "dd/d94/interfaceSocket.html#a1ae0c4a75caaaf1010430520dd8beca1", null ]
+    [ "localPort", "dd/d94/interfaceSocket.html#a1ae0c4a75caaaf1010430520dd8beca1", null ],
+    [ "timeout", "dd/d94/interfaceSocket.html#a63b56cb6723b0309d0c1b42e63061689", null ]
 ];

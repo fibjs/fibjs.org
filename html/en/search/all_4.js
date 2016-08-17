@@ -45,6 +45,6 @@ var searchData=
   ['exportpem',['exportPem',['../d5/dac/interfacePKey.html#a5444bdb6ccb0ba131996414082c6bbcf',1,'PKey::exportPem()'],['../d7/d8b/interfaceX509Req.html#a04beec98fd58cc43f14ecfaac4535226',1,'X509Req::exportPem()']]],
   ['extend',['extend',['../d6/d72/namespaceutil.html#a7e6ad69b1143fc3a406c8a74d9bac73e',1,'util']]],
   ['extname',['extname',['../d0/d43/namespacepath.html#aea5f6966a2f57a23cb34dd2700f8ffe5',1,'path']]],
-  ['extract',['extract',['../d9/d03/interfaceZipFile.html#abefdaf0f14049c2e559bbeafcbe95e0e',1,'ZipFile::extract(String member, String path) async'],['../d9/d03/interfaceZipFile.html#a07cf4ac020aaf6ac89dd93315662f1b4',1,'ZipFile::extract(String member, SeekableStream strm) async']]],
-  ['extractall',['extractAll',['../d9/d03/interfaceZipFile.html#ab9b9225e0459c12b05f1c5600de29479',1,'ZipFile']]]
+  ['extract',['extract',['../d9/d03/interfaceZipFile.html#a55657751e4d645780bb093180f302f91',1,'ZipFile::extract(String member, String path, String password=&quot;&quot;) async'],['../d9/d03/interfaceZipFile.html#a0a5ea45af147eb5d0d3591b8383dd101',1,'ZipFile::extract(String member, SeekableStream strm, String password=&quot;&quot;) async']]],
+  ['extractall',['extractAll',['../d9/d03/interfaceZipFile.html#ad51a2202cf8d67812938449fec4604f8',1,'ZipFile']]]
 ];

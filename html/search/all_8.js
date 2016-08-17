@@ -40,6 +40,7 @@ var searchData=
   ['hsl',['hsl',['../dd/d5d/namespacegd.html#a019d7f7f15237b710462208f3ab9b74e',1,'gd']]],
   ['hsla',['hsla',['../dd/d5d/namespacegd.html#a14fb8efd2fd9e7c1bbb0d7169a5eecca',1,'gd']]],
   ['http',['http',['../d3/d69/namespacehttp.html',1,'']]],
+  ['httpclient',['HttpClient',['../df/d4b/interfaceHttpClient.html',1,'HttpClient'],['../df/d4b/interfaceHttpClient.html#a30fe3a951e8f7a0c6e58755c91f3a1d4',1,'HttpClient::HttpClient()']]],
   ['httpcollection',['HttpCollection',['../da/d34/interfaceHttpCollection.html',1,'']]],
   ['httpcookie',['HttpCookie',['../d3/dea/interfaceHttpCookie.html',1,'HttpCookie'],['../d3/dea/interfaceHttpCookie.html#aeaf22658ecce73e194a6effafdc555e9',1,'HttpCookie::HttpCookie(Object opts={})'],['../d3/dea/interfaceHttpCookie.html#af2957caf7205c539659e8a0a18eb7a02',1,'HttpCookie::HttpCookie(String name, String value, Object opts={})']]],
   ['httphandler',['HttpHandler',['../d6/d18/interfaceHttpHandler.html',1,'HttpHandler'],['../d6/d18/interfaceHttpHandler.html#a67076bb6a7281898aed64f09676d56a2',1,'HttpHandler::HttpHandler()'],['../dd/dbd/namespacemq.html#a654273b519c5b5f53b2b9f00cd6dd0ee',1,'mq::HttpHandler()']]],
