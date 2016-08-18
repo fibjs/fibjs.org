@@ -18,5 +18,6 @@ var searchData=
   ['atime',['atime',['../dc/da9/interfaceStat.html#ab6d9f86562712b75c8361cef6b4c747a',1,'Stat']]],
   ['attribute_5fnode',['ATTRIBUTE_NODE',['../d8/dd3/namespacexml.html#aeb6ad449149d274b73192191666e9a0e',1,'xml']]],
   ['attributes',['attributes',['../d7/ddb/interfaceXmlElement.html#ab20822b125fbc59145e049d1bdf2c5f6',1,'XmlElement']]],
-  ['auth',['auth',['../dd/d23/interfaceUrl.html#a5752a673c73ba86ad126bcf7fec39db3',1,'Url']]]
+  ['auth',['auth',['../dd/d23/interfaceUrl.html#a5752a673c73ba86ad126bcf7fec39db3',1,'Url']]],
+  ['autoredirect',['autoRedirect',['../df/d4b/interfaceHttpClient.html#ace67856ff037fd012bfffdc2ad114a5c',1,'HttpClient::autoRedirect()'],['../d3/d69/namespacehttp.html#ac0f150a1864b7eec388501ed97228f6e',1,'http::autoRedirect()']]]
 ];

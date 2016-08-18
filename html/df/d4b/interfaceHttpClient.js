@@ -16,5 +16,6 @@ var interfaceHttpClient =
     [ "valueOf", "df/d4b/interfaceHttpClient.html#ab9261a7662bc8bb4a898bc15dc16f206", null ],
     [ "cookies", "df/d4b/interfaceHttpClient.html#a390bee48cbe064af5e2f0896d5a9d461", null ],
     [ "timeout", "df/d4b/interfaceHttpClient.html#a76b5945b16fbcab94ef57cb5f273e0b0", null ],
-    [ "enableCookie", "df/d4b/interfaceHttpClient.html#a4141eb3b0a13493eeca267366a3fa162", null ]
+    [ "enableCookie", "df/d4b/interfaceHttpClient.html#a4141eb3b0a13493eeca267366a3fa162", null ],
+    [ "autoRedirect", "df/d4b/interfaceHttpClient.html#ace67856ff037fd012bfffdc2ad114a5c", null ]
 ];
