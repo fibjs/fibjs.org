@@ -9,6 +9,7 @@ var searchData=
   ['hasnext',['hasNext',['../dc/d27/interfaceMongoCursor.html#a4d30b04ba787bf502fc0defe1fb03385',1,'MongoCursor']]],
   ['hello',['hello',['../da/de8/interfaceSmtp.html#a2827151e3c7938f20ef793ce708a5f22',1,'Smtp']]],
   ['hex',['hex',['../d9/dae/interfaceBuffer.html#ae792f93a92ad21c0c28e4953e91032cb',1,'Buffer']]],
+  ['hidecursor',['hideCursor',['../dc/daa/namespaceconsole.html#aa0e58bd0ff8e45c14fd3680201204cf5',1,'console']]],
   ['hint',['hint',['../dc/d27/interfaceMongoCursor.html#afe5537d4e887dea551f20feba3627aaf',1,'MongoCursor']]],
   ['hmac',['hmac',['../de/de9/namespacehash.html#a330e7a9e3d593264815d68aa495e7a7d',1,'hash']]],
   ['hmac_5fmd2',['hmac_md2',['../de/de9/namespacehash.html#a47a5101b6771678d571e473b687626b0',1,'hash']]],

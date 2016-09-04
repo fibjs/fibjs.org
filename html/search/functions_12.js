@@ -34,6 +34,7 @@ var searchData=
   ['sha512',['sha512',['../de/de9/namespacehash.html#a93e3215efb856aa97da67966530387f7',1,'hash']]],
   ['shiftleft',['shiftLeft',['../df/dc1/interfaceInt64.html#acbe2152ea45f78be39771e50d00f1b9f',1,'Int64']]],
   ['shiftright',['shiftRight',['../df/dc1/interfaceInt64.html#a770d45ef40dbddcb9892b96370930b72',1,'Int64']]],
+  ['showcursor',['showCursor',['../dc/daa/namespaceconsole.html#a8b7e531b09b6fb12fd3bee0d59644ccb',1,'console']]],
   ['sign',['sign',['../d5/dac/interfacePKey.html#aab4b38d767cfab0a2c8798a1ef90b49e',1,'PKey::sign()'],['../d7/d8b/interfaceX509Req.html#a6539f318125f8a29d49ceda762302de4',1,'X509Req::sign()']]],
   ['simplerandombytes',['simpleRandomBytes',['../de/d36/namespacecrypto.html#ab50ae54bb2eeadd6bd5aee7509c1f613',1,'crypto']]],
   ['size',['size',['../dc/d27/interfaceMongoCursor.html#aef6a5f9cf1ee475d698d4c2e17e1cf3e',1,'MongoCursor::size()'],['../d6/d9c/interfaceSeekableStream.html#af31c485565a6699bd6b8209d46ba0acb',1,'SeekableStream::size()']]],

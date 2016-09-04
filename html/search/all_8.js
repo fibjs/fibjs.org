@@ -19,6 +19,7 @@ var searchData=
   ['hello',['hello',['../da/de8/interfaceSmtp.html#a2827151e3c7938f20ef793ce708a5f22',1,'Smtp']]],
   ['hex',['hex',['../d3/da1/namespacehex.html',1,'hex'],['../d9/dae/interfaceBuffer.html#ae792f93a92ad21c0c28e4953e91032cb',1,'Buffer::hex()'],['../db/da8/namespaceencoding.html#a7b35b7c093e622b0fdfe8177856e7b78',1,'encoding::hex()']]],
   ['hi',['hi',['../df/dc1/interfaceInt64.html#aa356139546e7fcc65dc524ed52f585b7',1,'Int64']]],
+  ['hidecursor',['hideCursor',['../dc/daa/namespaceconsole.html#aa0e58bd0ff8e45c14fd3680201204cf5',1,'console']]],
   ['highlight',['highLight',['../da/d8a/interfaceTextColor.html#af2f9ebf1de8543a516e82866df99363d',1,'TextColor']]],
   ['hint',['hint',['../dc/d27/interfaceMongoCursor.html#afe5537d4e887dea551f20feba3627aaf',1,'MongoCursor']]],
   ['hmac',['hmac',['../de/de9/namespacehash.html#a330e7a9e3d593264815d68aa495e7a7d',1,'hash']]],
