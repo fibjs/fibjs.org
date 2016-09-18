@@ -23,7 +23,7 @@ var searchData=
   ['smtp',['Smtp',['../dc/d27/namespacenet.html#abfe21b74c13164de4fc3d68a3953d0dd',1,'net']]],
   ['sock_5fdgram',['SOCK_DGRAM',['../dc/d27/namespacenet.html#ad4fdfbcf4cec520964c559a52a69c2f7',1,'net']]],
   ['sock_5fstream',['SOCK_STREAM',['../dc/d27/namespacenet.html#a0f09649c39e779734972244418abb947',1,'net']]],
-  ['socket',['socket',['../da/de8/interfaceSmtp.html#a01a00f4b52964eec188c5681ec74758b',1,'Smtp::socket()'],['../d7/d48/interfaceTcpServer.html#a65ac0b9f39100986818c71192a7a1ef7',1,'TcpServer::socket()'],['../dc/d27/namespacenet.html#a061614c759869e144b8fa364dd5fa962',1,'net::Socket()']]],
+  ['socket',['socket',['../da/de8/interfaceSmtp.html#a269ca7c15d49785f978f1310bd44d769',1,'Smtp::socket()'],['../d7/d48/interfaceTcpServer.html#a65ac0b9f39100986818c71192a7a1ef7',1,'TcpServer::socket()'],['../dc/d27/namespacenet.html#a061614c759869e144b8fa364dd5fa962',1,'net::Socket()']]],
   ['sparefibers',['spareFibers',['../d6/d05/namespacecoroutine.html#ae47cf3d92af5a5f333659aa613d6d3a0',1,'coroutine']]],
   ['ssl3',['ssl3',['../df/dd2/namespacessl.html#a2e2fa66a1277385bf35c28109ac0129c',1,'ssl']]],
   ['stats',['stats',['../dc/de5/interfaceHandlerEx.html#aac577f5c46a14d73943fd80882ae17bb',1,'HandlerEx::stats()'],['../d7/d48/interfaceTcpServer.html#ac39165a6d1da69beae4283af1905fe98',1,'TcpServer::stats()'],['../d6/d72/namespaceutil.html#aa2c3668cf097906a77de04ae7243fd1e',1,'util::Stats()']]],
