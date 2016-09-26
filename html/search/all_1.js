@@ -8,7 +8,7 @@ var searchData=
   ['addcookie',['addCookie',['../d9/d71/interfaceHttpResponse.html#a2c99acd2e0949dd52a4c52acafc7a48b',1,'HttpResponse']]],
   ['addheader',['addHeader',['../da/d38/interfaceHttpMessage.html#ae6707cac0adff8bf5132993fa8de5edb',1,'HttpMessage::addHeader(Map map)'],['../da/d38/interfaceHttpMessage.html#ab3b564f6d8124ed9c889d378bca12f03',1,'HttpMessage::addHeader(String name, Variant value)']]],
   ['address',['address',['../d4/dfa/interfaceHttpRequest.html#af2376806cefea583924ddd0f42b0762e',1,'HttpRequest']]],
-  ['addscript',['addScript',['../d5/dd4/interfaceSandBox.html#ab8723cca963a5242b8a8c542464a7d65',1,'SandBox::addScript(String srcname, String script)'],['../d5/dd4/interfaceSandBox.html#afc127b887856100d6621e7662cd7befa',1,'SandBox::addScript(String srcname, Buffer script)']]],
+  ['addscript',['addScript',['../d5/dd4/interfaceSandBox.html#afc127b887856100d6621e7662cd7befa',1,'SandBox']]],
   ['aes',['AES',['../de/d36/namespacecrypto.html#a556706d9c14c546032161c0470993101',1,'crypto']]],
   ['af_5finet',['AF_INET',['../dc/d27/namespacenet.html#a154e84bb59358d901425c2996f3d6fde',1,'net']]],
   ['af_5finet6',['AF_INET6',['../dc/d27/namespacenet.html#a20c82f9528e1f2132ea230ef72d273cd',1,'net']]],

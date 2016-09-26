@@ -14,6 +14,7 @@ var namespaces =
     [ "fs", "d5/d8f/namespacefs.html", null ],
     [ "gd", "dd/d5d/namespacegd.html", null ],
     [ "global", "d4/dfd/namespaceglobal.html", null ],
+    [ "gui", "d7/dc4/namespacegui.html", null ],
     [ "hash", "de/de9/namespacehash.html", null ],
     [ "hex", "d3/da1/namespacehex.html", null ],
     [ "http", "d3/d69/namespacehttp.html", null ],

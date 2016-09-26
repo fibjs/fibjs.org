@@ -6,6 +6,7 @@ var searchData=
   ['websocket',['websocket',['../d0/d42/namespacewebsocket.html',1,'']]],
   ['websockethandler',['WebSocketHandler',['../da/d20/interfaceWebSocketHandler.html',1,'WebSocketHandler'],['../da/d20/interfaceWebSocketHandler.html#a3ddeaa1c9e3d06b767b1b811bf4dde5e',1,'WebSocketHandler::WebSocketHandler()']]],
   ['websocketmessage',['WebSocketMessage',['../db/d5d/interfaceWebSocketMessage.html',1,'WebSocketMessage'],['../db/d5d/interfaceWebSocketMessage.html#a885c7d4696b159cc1cfb77a97466bd69',1,'WebSocketMessage::WebSocketMessage()']]],
+  ['webview',['WebView',['../d8/d79/interfaceWebView.html',1,'']]],
   ['width',['width',['../d2/d41/interfaceImage.html#a4070489397d4fb67ccc71db0e1efbfeb',1,'Image::width()'],['../dc/daa/namespaceconsole.html#a4d00b4e3b1b1b4cf9cf79515119286f4',1,'console::width()']]],
   ['with',['with',['../d0/df6/interfaceExpect.html#a8f99dbedc53310d436ff867240460b6d',1,'Expect']]],
   ['without',['without',['../d6/d72/namespaceutil.html#a0c5e0bae5b173e9264e980cc2e956c64',1,'util']]],

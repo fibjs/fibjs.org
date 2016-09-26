@@ -34,6 +34,7 @@ var searchData=
   ['grayscale',['GRAYSCALE',['../dd/d5d/namespacegd.html#ab8647e4d0526f32e70fd31750288c390',1,'gd']]],
   ['greaterthan',['greaterThan',['../d0/df6/interfaceExpect.html#a73f75cab81e1d239595ee427e0ecbae3',1,'Expect::greaterThan()'],['../d2/dab/namespaceassert.html#a402e1e36f03b891ad44a3281a64642a2',1,'assert::greaterThan()']]],
   ['gridfs',['GridFS',['../d7/d34/interfaceGridFS.html',1,'']]],
+  ['gui',['gui',['../d7/dc4/namespacegui.html',1,'']]],
   ['gunzip',['gunzip',['../d9/d3e/namespacezlib.html#a165562467d193e958c2349445dc3f90c',1,'zlib']]],
   ['gunzipto',['gunzipTo',['../d9/d3e/namespacezlib.html#ad2fdcb8ce8aac7124267a9e621766638',1,'zlib::gunzipTo(Buffer data, Stream stm) async'],['../d9/d3e/namespacezlib.html#ad754fb667c7bffa4aa237ddad1109dab',1,'zlib::gunzipTo(Stream src, Stream stm) async']]],
   ['gzip',['gzip',['../d9/d3e/namespacezlib.html#a3a522ddbc8cde00ea8d9021c330c0ad5',1,'zlib']]],

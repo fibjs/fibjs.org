@@ -6,7 +6,6 @@ var interfaceSandBox =
     [ "add", "d5/dd4/interfaceSandBox.html#a52cc7bce6ed5417d16b48c28cd3fc137", null ],
     [ "compile", "d5/dd4/interfaceSandBox.html#a33a30e49f50ebe2a56ef8aaeaab8affb", null ],
     [ "compile", "d5/dd4/interfaceSandBox.html#a9910d5dabf0c4ef2749328bdb9e2c0e3", null ],
-    [ "addScript", "d5/dd4/interfaceSandBox.html#ab8723cca963a5242b8a8c542464a7d65", null ],
     [ "addScript", "d5/dd4/interfaceSandBox.html#afc127b887856100d6621e7662cd7befa", null ],
     [ "remove", "d5/dd4/interfaceSandBox.html#a0ee2b7c07ba2ac80f043a36a401fa72b", null ],
     [ "clone", "d5/dd4/interfaceSandBox.html#a581daffaf92d0b1266c60f100a66ad40", null ],

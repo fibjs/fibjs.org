@@ -77,6 +77,7 @@ var annotated =
     [ "uuidValue", "d6/de7/interfaceuuidValue.html", "d6/de7/interfaceuuidValue" ],
     [ "WebSocketHandler", "da/d20/interfaceWebSocketHandler.html", "da/d20/interfaceWebSocketHandler" ],
     [ "WebSocketMessage", "db/d5d/interfaceWebSocketMessage.html", "db/d5d/interfaceWebSocketMessage" ],
+    [ "WebView", "d8/d79/interfaceWebView.html", "d8/d79/interfaceWebView" ],
     [ "X509Cert", "dc/d22/interfaceX509Cert.html", "dc/d22/interfaceX509Cert" ],
     [ "X509Crl", "d9/d86/interfaceX509Crl.html", "d9/d86/interfaceX509Crl" ],
     [ "X509Req", "d7/d8b/interfaceX509Req.html", "d7/d8b/interfaceX509Req" ],
