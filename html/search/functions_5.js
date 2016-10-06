@@ -11,6 +11,7 @@ var searchData=
   ['find',['find',['../d6/d6b/interfaceMongoCollection.html#a132b26bdf7606377d44aca63e6196a77',1,'MongoCollection']]],
   ['findandmodify',['findAndModify',['../d6/d6b/interfaceMongoCollection.html#a5bd3aad0580995fd97ce621b67cef075',1,'MongoCollection']]],
   ['findone',['findOne',['../d6/d6b/interfaceMongoCollection.html#a06265972bac844168bcb34d026fab427',1,'MongoCollection']]],
+  ['findwindow',['findWindow',['../d8/d10/interfaceSubProcess.html#a9983313833723cf08614d778aad67022',1,'SubProcess']]],
   ['first',['first',['../da/d34/interfaceHttpCollection.html#aaa6d755a2a64f0743189ba612b4d5a05',1,'HttpCollection::first()'],['../d6/d72/namespaceutil.html#a27d45a4bba7a8874fba7391dee3be9dd',1,'util::first(Value v)'],['../d6/d72/namespaceutil.html#af9c17139c1ed0e4a7d0aa3244990768a',1,'util::first(Value v, Integer n)']]],
   ['firstheader',['firstHeader',['../da/d38/interfaceHttpMessage.html#a5db3f91a4a32b70e2fcbd188d8a452c9',1,'HttpMessage']]],
   ['flatten',['flatten',['../d6/d72/namespaceutil.html#aa9c3e271b742d44d012e3039bcdf7eb2',1,'util']]],

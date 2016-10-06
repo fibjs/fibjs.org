@@ -1,5 +1,6 @@
 var NAVTREEINDEX5 =
 {
+"d9/dae/interfaceBuffer.html#a6cc2d62cea93c2d41243c2d87697315f":[6,2,40],
 "d9/dae/interfaceBuffer.html#a6fddf91a1811f1057a512ff2e08b0361":[6,2,7],
 "d9/dae/interfaceBuffer.html#a704ee70a5949e3ce5e3ed9efffbfd054":[6,2,71],
 "d9/dae/interfaceBuffer.html#a727bb638fb35cfa28b0471068b108af9":[6,2,41],
@@ -248,6 +249,5 @@ var NAVTREEINDEX5 =
 "db/d5d/interfaceWebSocketMessage.html#ac9f85e5622186f8099899240f2fe70e0":[6,76,12],
 "db/d5d/interfaceWebSocketMessage.html#ad66be13eb5b7c5f560fd8511565138c4":[6,76,10],
 "db/d5d/interfaceWebSocketMessage.html#aff37dc807536324e1b576ffec75770b0":[6,76,17],
-"db/d5d/interfaceWebSocketMessage.html#aff82e4029da32471f8d5b3bf6142e8fc":[6,76,2],
-"db/da8/namespaceencoding.html":[5,10]
+"db/d5d/interfaceWebSocketMessage.html#aff82e4029da32471f8d5b3bf6142e8fc":[6,76,2]
 };

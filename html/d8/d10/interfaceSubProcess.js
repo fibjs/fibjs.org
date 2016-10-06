@@ -2,6 +2,7 @@ var interfaceSubProcess =
 [
     [ "kill", "d8/d10/interfaceSubProcess.html#a6233362c8a8b13def10f836ed9330fd2", null ],
     [ "wait", "d8/d10/interfaceSubProcess.html#aa72a9338112f7e69cd10f1c38d0a1aba", null ],
+    [ "findWindow", "d8/d10/interfaceSubProcess.html#a9983313833723cf08614d778aad67022", null ],
     [ "readText", "d8/d10/interfaceSubProcess.html#a048aa0f487763f8007493a16b261c00b", null ],
     [ "readLine", "d8/d10/interfaceSubProcess.html#a3e772d8b52548a59a1308e3eac07c027", null ],
     [ "readLines", "d8/d10/interfaceSubProcess.html#a72779ef151e7eeffa99138341f80eeef", null ],
