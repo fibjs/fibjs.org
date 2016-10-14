@@ -69,7 +69,7 @@ var searchData=
   ['rmdir',['rmdir',['../d5/d8f/namespacefs.html#ae63300a92680e28c3b2bd55046120049',1,'fs']]],
   ['rollback',['rollback',['../d8/d2c/interfaceDbConnection.html#ab4f47bec17ba6b3799c58ea8d0698b15',1,'DbConnection']]],
   ['rotate',['rotate',['../d2/d41/interfaceImage.html#a785c849f6b76c9672502577c1c0c6e24',1,'Image']]],
-  ['routing',['Routing',['../df/dcb/interfaceRouting.html#a8a6a4aa5a8e90ef0340336dcde8a0a04',1,'Routing']]],
+  ['routing',['Routing',['../df/dcb/interfaceRouting.html#a87c001a9073c9897040354dec511faeb',1,'Routing::Routing(Object map={})'],['../df/dcb/interfaceRouting.html#ace3f5485e24bd3e0636722eb640a7a68',1,'Routing::Routing(String method, Object map)']]],
   ['rpop',['rpop',['../d0/da2/interfaceRedisList.html#a6da451046bc93c96bfe0cf8104d9c729',1,'RedisList']]],
   ['rpush',['rpush',['../d0/da2/interfaceRedisList.html#aac41c5209574e61ab57f2a1153956750',1,'RedisList::rpush(Array values)'],['../d0/da2/interfaceRedisList.html#ad39dcf8b76630b252337dbc70c5d0fe9',1,'RedisList::rpush(...)']]],
   ['run',['run',['../d5/dd4/interfaceSandBox.html#a067679bd863305a489058868411a07f1',1,'SandBox::run()'],['../d7/d48/interfaceTcpServer.html#a07331365e3d5b0275e00a2f6249a1538',1,'TcpServer::run()'],['../d4/dfd/namespaceglobal.html#a9d3c7d79f836d3d5785a6b8f9ab4581c',1,'global::run()'],['../d8/d25/namespaceprocess.html#add057f3b20e86373a9b1ba9e1757504c',1,'process::run(String command, Array args, Object opts={})'],['../d8/d25/namespaceprocess.html#ada594bfe0c7da5d9346cb074292bb13d',1,'process::run(String command, Object opts={})'],['../df/d04/namespacetest.html#a8e9c3ee5b129b4f584ffc95ccae6bacb',1,'test::run()']]],

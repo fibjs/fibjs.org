@@ -1,8 +1,17 @@
 var interfaceRouting =
 [
-    [ "Routing", "df/dcb/interfaceRouting.html#a8a6a4aa5a8e90ef0340336dcde8a0a04", null ],
+    [ "Routing", "df/dcb/interfaceRouting.html#a87c001a9073c9897040354dec511faeb", null ],
+    [ "Routing", "df/dcb/interfaceRouting.html#ace3f5485e24bd3e0636722eb640a7a68", null ],
     [ "append", "df/dcb/interfaceRouting.html#a134520405ec3d18b9bfe4b996c82e197", null ],
     [ "append", "df/dcb/interfaceRouting.html#a9a2446ce1b998f4df43be24dc23a66c9", null ],
+    [ "append", "df/dcb/interfaceRouting.html#a315d3bdc4afaca5aa3a7c4c55fdc63a6", null ],
+    [ "append", "df/dcb/interfaceRouting.html#af6d56be99bbbfea81359685b272412d2", null ],
+    [ "all", "df/dcb/interfaceRouting.html#a1b50c72b9f7b3ab2c87ee593a6bb0342", null ],
+    [ "all", "df/dcb/interfaceRouting.html#a4d854803937dba71e5df8c1daf7124ef", null ],
+    [ "get", "df/dcb/interfaceRouting.html#a7a7497eacb2d606dec8f4aa48257c00f", null ],
+    [ "get", "df/dcb/interfaceRouting.html#a8d82ebf1af2eae04af60b01b7d032457", null ],
+    [ "post", "df/dcb/interfaceRouting.html#a2422e6299608c604ce5d6e3bca8ee9be", null ],
+    [ "post", "df/dcb/interfaceRouting.html#a854b575a804802391b99fe8affdafe13", null ],
     [ "invoke", "df/dcb/interfaceRouting.html#af901258552a23961893c5bd6f18ce681", null ],
     [ "dispose", "df/dcb/interfaceRouting.html#a6b88dbc459449d2280338e5b702a68b4", null ],
     [ "equals", "df/dcb/interfaceRouting.html#a94c197c586ecfcb7cb733e0d543ce5ad", null ],

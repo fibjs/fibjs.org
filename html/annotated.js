@@ -59,6 +59,7 @@ var annotated =
     [ "SandBox", "d5/dd4/interfaceSandBox.html", "d5/dd4/interfaceSandBox" ],
     [ "SeekableStream", "d6/d9c/interfaceSeekableStream.html", "d6/d9c/interfaceSeekableStream" ],
     [ "Semaphore", "dc/d90/interfaceSemaphore.html", "dc/d90/interfaceSemaphore" ],
+    [ "Service", "d1/db9/interfaceService.html", "d1/db9/interfaceService" ],
     [ "Smtp", "da/de8/interfaceSmtp.html", "da/de8/interfaceSmtp" ],
     [ "Socket", "dd/d94/interfaceSocket.html", "dd/d94/interfaceSocket" ],
     [ "SQLite", "d7/df5/interfaceSQLite.html", "d7/df5/interfaceSQLite" ],

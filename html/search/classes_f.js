@@ -3,6 +3,7 @@ var searchData=
   ['sandbox',['SandBox',['../d5/dd4/interfaceSandBox.html',1,'']]],
   ['seekablestream',['SeekableStream',['../d6/d9c/interfaceSeekableStream.html',1,'']]],
   ['semaphore',['Semaphore',['../dc/d90/interfaceSemaphore.html',1,'']]],
+  ['service',['Service',['../d1/db9/interfaceService.html',1,'']]],
   ['smtp',['Smtp',['../da/de8/interfaceSmtp.html',1,'']]],
   ['socket',['Socket',['../dd/d94/interfaceSocket.html',1,'']]],
   ['sqlite',['SQLite',['../d7/df5/interfaceSQLite.html',1,'']]],

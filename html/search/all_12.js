@@ -81,7 +81,7 @@ var searchData=
   ['rollback',['rollback',['../d8/d2c/interfaceDbConnection.html#ab4f47bec17ba6b3799c58ea8d0698b15',1,'DbConnection']]],
   ['root',['root',['../de/d09/interfaceHeapSnapshot.html#ad212c5e17ae59cf4c5f08fa7f401b9ab',1,'HeapSnapshot']]],
   ['rotate',['rotate',['../d2/d41/interfaceImage.html#a785c849f6b76c9672502577c1c0c6e24',1,'Image']]],
-  ['routing',['Routing',['../df/dcb/interfaceRouting.html',1,'Routing'],['../df/dcb/interfaceRouting.html#a8a6a4aa5a8e90ef0340336dcde8a0a04',1,'Routing::Routing()'],['../dd/dbd/namespacemq.html#a700eeaa284e5a94485b92331137e36b9',1,'mq::Routing()']]],
+  ['routing',['Routing',['../df/dcb/interfaceRouting.html',1,'Routing'],['../df/dcb/interfaceRouting.html#a87c001a9073c9897040354dec511faeb',1,'Routing::Routing(Object map={})'],['../df/dcb/interfaceRouting.html#ace3f5485e24bd3e0636722eb640a7a68',1,'Routing::Routing(String method, Object map)'],['../dd/dbd/namespacemq.html#a700eeaa284e5a94485b92331137e36b9',1,'mq::Routing()']]],
   ['rpc',['rpc',['../d0/d14/namespacerpc.html',1,'']]],
   ['rpctask',['RpcTask',['../d6/d66/interfaceRpcTask.html',1,'']]],
   ['rpop',['rpop',['../d0/da2/interfaceRedisList.html#a6da451046bc93c96bfe0cf8104d9c729',1,'RedisList']]],
