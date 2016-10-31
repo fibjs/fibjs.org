@@ -7,7 +7,7 @@ var searchData=
   ['dbconnection',['DbConnection',['../d8/d2c/interfaceDbConnection.html',1,'']]],
   ['dbresult',['DBResult',['../d9/db4/interfaceDBResult.html',1,'']]],
   ['dbrow',['DBRow',['../d7/d8e/interfaceDBRow.html',1,'']]],
-  ['debug',['DEBUG',['../dc/daa/namespaceconsole.html#aea2731ad3aa0e877f14a6e99d964b432',1,'console::DEBUG()'],['../dc/daa/namespaceconsole.html#adff204aa3e37763481680087157754a1',1,'console::debug(String fmt,...)'],['../dc/daa/namespaceconsole.html#aec6d50753570141dda375e85594b5b6d',1,'console::debug(...)']]],
+  ['debug',['debug',['../dc/daa/namespaceconsole.html#adff204aa3e37763481680087157754a1',1,'console::debug(String fmt,...)'],['../dc/daa/namespaceconsole.html#aec6d50753570141dda375e85594b5b6d',1,'console::debug(...)'],['../dc/daa/namespaceconsole.html#aea2731ad3aa0e877f14a6e99d964b432',1,'console::DEBUG()']]],
   ['dec',['dec',['../df/d0b/interfaceStats.html#a0b2c6d2c38c43e2e0c2394237fd10608',1,'Stats']]],
   ['decode',['decode',['../d4/dba/namespacebase32.html#afe529218e5132fc597aac4427ff969eb',1,'base32::decode()'],['../d5/d37/namespacebase64.html#a1b1708235f97fb7a2e36771b64abee44',1,'base64::decode()'],['../de/d5c/namespacebase64vlq.html#a7806e9baeb01ce2567581fe5f7062663',1,'base64vlq::decode()'],['../d7/d28/namespacebson.html#ab8c2313bc8936afd251368a04029b2a6',1,'bson::decode()'],['../d3/da1/namespacehex.html#a011682402d37d61858e68f191d64ba16',1,'hex::decode()'],['../df/d0d/namespaceiconv.html#acaccba51ff251325271bf58e4a90040b',1,'iconv::decode()'],['../d1/db2/namespacejson.html#aeedd41dd1edaec86d654a1e1f7176952',1,'json::decode()']]],
   ['decodeuri',['decodeURI',['../db/da8/namespaceencoding.html#aeb50ecb378e2b4da3d3a5b0ba24c6907',1,'encoding']]],

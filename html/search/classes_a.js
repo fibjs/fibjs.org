@@ -7,5 +7,6 @@ var searchData=
   ['mongocursor',['MongoCursor',['../dc/d27/interfaceMongoCursor.html',1,'']]],
   ['mongodb',['MongoDB',['../df/d69/interfaceMongoDB.html',1,'']]],
   ['mongoid',['MongoID',['../d9/d2f/interfaceMongoID.html',1,'']]],
+  ['mssql',['MSSQL',['../dc/d01/interfaceMSSQL.html',1,'']]],
   ['mysql',['MySQL',['../d2/d68/interfaceMySQL.html',1,'']]]
 ];

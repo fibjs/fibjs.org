@@ -10,6 +10,7 @@ var searchData=
   ['semaphore',['Semaphore',['../d6/d05/namespacecoroutine.html#aaac99b6519649dc9212bbbf8edad8479',1,'coroutine']]],
   ['sep',['sep',['../d0/d43/namespacepath.html#afa7870c20e6c51ddda12e9d84873e616',1,'path']]],
   ['serial',['serial',['../dc/d22/interfaceX509Cert.html#afa2659fac486d044a7c4e11eb6857cb7',1,'X509Cert']]],
+  ['service',['Service',['../da/de1/namespaceos.html#aac1b1ba65f75d448fcdfbb065039451c',1,'os']]],
   ['sha1',['SHA1',['../de/de9/namespacehash.html#a9fa379cb0df932c120a6797f45b651e5',1,'hash']]],
   ['sha224',['SHA224',['../de/de9/namespacehash.html#a97717b785cf7bdb90d7e134be8eefba4',1,'hash']]],
   ['sha256',['SHA256',['../de/de9/namespacehash.html#a479d5d79b494b5324cc536b483b4619f',1,'hash']]],

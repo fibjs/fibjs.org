@@ -33,6 +33,7 @@ var searchData=
   ['mremove',['mremove',['../d0/d9e/interfaceLevelDB.html#a3be2ea7036459e243b775a5f89bdcd7c',1,'LevelDB']]],
   ['mset',['mset',['../d0/d9e/interfaceLevelDB.html#a210d910eb60e2283c58ea80723f1bd79',1,'LevelDB::mset()'],['../d7/d32/interfaceRedis.html#a2f01136669c713f14ddea847e24daeac',1,'Redis::mset(Object kvs)'],['../d7/d32/interfaceRedis.html#a96751caed808fb9ce4a834b8cee5720e',1,'Redis::mset(...)'],['../d9/d58/interfaceRedisHash.html#a51790a023293d74e9868423782ac1b42',1,'RedisHash::mset(Object kvs)'],['../d9/d58/interfaceRedisHash.html#ace7739b42d9793c4777d3f09143a5dff',1,'RedisHash::mset(...)']]],
   ['msetnx',['msetNX',['../d7/d32/interfaceRedis.html#a9995f1451a20a8e6a2fa22c8f01100e8',1,'Redis::msetNX(Object kvs)'],['../d7/d32/interfaceRedis.html#a17789191649407fd4176186e0b5b4881',1,'Redis::msetNX(...)']]],
+  ['mssql',['MSSQL',['../dc/d01/interfaceMSSQL.html',1,'']]],
   ['mtime',['mtime',['../dc/da9/interfaceStat.html#a356bbde5f558716ffc9ca7e4cf6f5aae',1,'Stat']]],
   ['multiline',['multiline',['../d1/d43/interfaceRegex.html#a8bcded08d6f62d75b73fa98ee60f0af2',1,'Regex']]],
   ['mysql',['MySQL',['../d2/d68/interfaceMySQL.html',1,'']]]

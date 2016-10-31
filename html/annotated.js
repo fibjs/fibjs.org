@@ -44,6 +44,7 @@ var annotated =
     [ "MongoCursor", "dc/d27/interfaceMongoCursor.html", "dc/d27/interfaceMongoCursor" ],
     [ "MongoDB", "df/d69/interfaceMongoDB.html", "df/d69/interfaceMongoDB" ],
     [ "MongoID", "d9/d2f/interfaceMongoID.html", "d9/d2f/interfaceMongoID" ],
+    [ "MSSQL", "dc/d01/interfaceMSSQL.html", "dc/d01/interfaceMSSQL" ],
     [ "MySQL", "d2/d68/interfaceMySQL.html", "d2/d68/interfaceMySQL" ],
     [ "object", "db/d38/interfaceobject.html", "db/d38/interfaceobject" ],
     [ "PKey", "d5/dac/interfacePKey.html", "d5/dac/interfacePKey" ],

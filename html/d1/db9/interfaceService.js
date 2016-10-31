@@ -1,7 +1,7 @@
 var interfaceService =
 [
-    [ "Service", "d1/db9/interfaceService.html#a10f2d7bfd306a0d106f37bf4ef14737d", null ],
-    [ "install", "d1/db9/interfaceService.html#af8c27fa09f784468b3c901dc0499d216", null ],
+    [ "Service", "d1/db9/interfaceService.html#ac85d65d8c967f0efab06a7c4caea2057", null ],
+    [ "install", "d1/db9/interfaceService.html#a6edfafaefac4b102982976a58129975b", null ],
     [ "remove", "d1/db9/interfaceService.html#a60600b11e7dd6f121ed6867098c164c7", null ],
     [ "start", "d1/db9/interfaceService.html#a824ff228f2be2e53d063b39fed6977e5", null ],
     [ "stop", "d1/db9/interfaceService.html#afcd3c8f92c0563c2cbb4f3a7ebcbf1d7", null ],
@@ -9,6 +9,9 @@ var interfaceService =
     [ "run", "d1/db9/interfaceService.html#a8a6c076b72cd7227bd004cc8c3f3ec15", null ],
     [ "isInstalled", "d1/db9/interfaceService.html#a42a8a45c383dad88bd947599fc2b6e30", null ],
     [ "isRunning", "d1/db9/interfaceService.html#a15e519e09244886ec05da940f741b15c", null ],
+    [ "onstop", "d1/db9/interfaceService.html#abf14569c344d6fc2102630b2b5a29224", null ],
+    [ "onpause", "d1/db9/interfaceService.html#ac875cf8f4e31624f1feee65f5176f975", null ],
+    [ "oncontinue", "d1/db9/interfaceService.html#a5d5c30e768f93fee1b96f56cf2f692ba", null ],
     [ "on", "d1/db9/interfaceService.html#a101c95c3d098435250e5d15db4eb7359", null ],
     [ "on", "d1/db9/interfaceService.html#aebcc15a350707b449aa98207b71dda34", null ],
     [ "once", "d1/db9/interfaceService.html#ad09d65f485b88e3624488ac8e48f5fc7", null ],
