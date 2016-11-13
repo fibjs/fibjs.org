@@ -1,5 +1,6 @@
 var interfaceWebView =
 [
+    [ "close", "d8/d79/interfaceWebView.html#ac8c1d90b7a9e8628773659b7bdf7d96b", null ],
     [ "onclose", "d8/d79/interfaceWebView.html#a04b07cb65bfd38e8bc4de1eb586971b0", null ],
     [ "on", "d8/d79/interfaceWebView.html#a101c95c3d098435250e5d15db4eb7359", null ],
     [ "on", "d8/d79/interfaceWebView.html#aebcc15a350707b449aa98207b71dda34", null ],
