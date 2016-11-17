@@ -23,6 +23,7 @@ var searchData=
   ['openmssql',['openMSSQL',['../d0/d45/namespacedb.html#a741783d57c0f78c8a2aae72222968bbf',1,'db']]],
   ['openmysql',['openMySQL',['../d0/d45/namespacedb.html#ad989737ba63bbaeb48fc899769557f5e',1,'db']]],
   ['openpolygon',['openPolygon',['../d2/d41/interfaceImage.html#a8defab8f38e88961f71a0e279ed856b6',1,'Image']]],
+  ['openprinter',['openPrinter',['../da/de1/namespaceos.html#ac6499d5510ef83569c731b3eebff4a1e',1,'os']]],
   ['openredis',['openRedis',['../d0/d45/namespacedb.html#a4d7f2379592b1a85a802b8b895ba27df',1,'db']]],
   ['opensmtp',['openSmtp',['../dc/d27/namespacenet.html#aa0f917a1cc6aa9aecfe130456e3f9415',1,'net']]],
   ['opensqlite',['openSQLite',['../d0/d45/namespacedb.html#a1986951d5ca68ee0ba8361053a84f637',1,'db']]],
