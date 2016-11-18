@@ -1,7 +1,10 @@
 var interfaceWebView =
 [
     [ "close", "d8/d79/interfaceWebView.html#ac8c1d90b7a9e8628773659b7bdf7d96b", null ],
+    [ "wait", "d8/d79/interfaceWebView.html#af06cc19bbd116eda7014d05de244525d", null ],
+    [ "postMessage", "d8/d79/interfaceWebView.html#a8dc8fa09bbd4895ef3bd94c5289bbaed", null ],
     [ "onclose", "d8/d79/interfaceWebView.html#a04b07cb65bfd38e8bc4de1eb586971b0", null ],
+    [ "onmessage", "d8/d79/interfaceWebView.html#a507f1ea6c4f3e68bcad743aeaeeff10f", null ],
     [ "on", "d8/d79/interfaceWebView.html#a101c95c3d098435250e5d15db4eb7359", null ],
     [ "on", "d8/d79/interfaceWebView.html#aebcc15a350707b449aa98207b71dda34", null ],
     [ "once", "d8/d79/interfaceWebView.html#ad09d65f485b88e3624488ac8e48f5fc7", null ],
