@@ -3,6 +3,8 @@ var interfaceWebView =
     [ "close", "d8/d79/interfaceWebView.html#ac8c1d90b7a9e8628773659b7bdf7d96b", null ],
     [ "wait", "d8/d79/interfaceWebView.html#af06cc19bbd116eda7014d05de244525d", null ],
     [ "postMessage", "d8/d79/interfaceWebView.html#a8dc8fa09bbd4895ef3bd94c5289bbaed", null ],
+    [ "onmove", "d8/d79/interfaceWebView.html#af83300db43f76666e8d599c6b43c75a0", null ],
+    [ "onsize", "d8/d79/interfaceWebView.html#af7276c16665130a7a500b00f7b57bd95", null ],
     [ "onclose", "d8/d79/interfaceWebView.html#a04b07cb65bfd38e8bc4de1eb586971b0", null ],
     [ "onmessage", "d8/d79/interfaceWebView.html#a507f1ea6c4f3e68bcad743aeaeeff10f", null ],
     [ "on", "d8/d79/interfaceWebView.html#a101c95c3d098435250e5d15db4eb7359", null ],

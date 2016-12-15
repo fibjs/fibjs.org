@@ -31,6 +31,7 @@ var namespaces =
     [ "rpc", "d0/d14/namespacerpc.html", null ],
     [ "ssl", "df/dd2/namespacessl.html", null ],
     [ "test", "df/d04/namespacetest.html", null ],
+    [ "url", "d3/da2/namespaceurl.html", null ],
     [ "util", "d6/d72/namespaceutil.html", null ],
     [ "uuid", "d1/dd6/namespaceuuid.html", null ],
     [ "vm", "d8/d89/namespacevm.html", null ],

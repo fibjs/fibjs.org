@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['address',['address',['../d4/dfa/interfaceHttpRequest.html#af2376806cefea583924ddd0f42b0762e',1,'HttpRequest']]],
+  ['address',['address',['../dd/d53/interfaceDatagramPacket.html#a814ca037a73047d66cbd8c888880d5f1',1,'DatagramPacket::address()'],['../d4/dfa/interfaceHttpRequest.html#af2376806cefea583924ddd0f42b0762e',1,'HttpRequest::address()']]],
   ['aes',['AES',['../de/d36/namespacecrypto.html#a556706d9c14c546032161c0470993101',1,'crypto']]],
   ['af_5finet',['AF_INET',['../dc/d27/namespacenet.html#a154e84bb59358d901425c2996f3d6fde',1,'net']]],
   ['af_5finet6',['AF_INET6',['../dc/d27/namespacenet.html#a20c82f9528e1f2132ea230ef72d273cd',1,'net']]],
@@ -18,6 +18,6 @@ var searchData=
   ['atime',['atime',['../dc/da9/interfaceStat.html#ab6d9f86562712b75c8361cef6b4c747a',1,'Stat']]],
   ['attribute_5fnode',['ATTRIBUTE_NODE',['../d8/dd3/namespacexml.html#aeb6ad449149d274b73192191666e9a0e',1,'xml']]],
   ['attributes',['attributes',['../d7/ddb/interfaceXmlElement.html#ab20822b125fbc59145e049d1bdf2c5f6',1,'XmlElement']]],
-  ['auth',['auth',['../dd/d23/interfaceUrl.html#a5752a673c73ba86ad126bcf7fec39db3',1,'Url']]],
+  ['auth',['auth',['../de/de5/interfaceUrlObject.html#ad5b12f00a3faf99e3a4b0eba4fe2d387',1,'UrlObject']]],
   ['autoredirect',['autoRedirect',['../df/d4b/interfaceHttpClient.html#ace67856ff037fd012bfffdc2ad114a5c',1,'HttpClient::autoRedirect()'],['../d3/d69/namespacehttp.html#ac0f150a1864b7eec388501ed97228f6e',1,'http::autoRedirect()']]]
 ];

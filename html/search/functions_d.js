@@ -4,7 +4,7 @@ var searchData=
   ['networkinfo',['networkInfo',['../da/de1/namespaceos.html#ade138388eb17cb0d8804d3a615402a0e',1,'os']]],
   ['next',['next',['../dc/d27/interfaceMongoCursor.html#a81d3581bb430a7982f5916668b060832',1,'MongoCursor']]],
   ['node',['node',['../d1/dd6/namespaceuuid.html#a3be72ef23f930db13335c4ea41b4a8b1',1,'uuid']]],
-  ['normalize',['normalize',['../dd/d23/interfaceUrl.html#a323b5d381772594de0d2b1d92f0654cf',1,'Url::normalize()'],['../dc/d8f/interfaceXmlNode.html#a4762ae75380f9db0fc240fd3f91d5537',1,'XmlNode::normalize()'],['../d0/d43/namespacepath.html#ab5940f0638ae1ecf73788c7c6e5da56c',1,'path::normalize()']]],
+  ['normalize',['normalize',['../de/de5/interfaceUrlObject.html#a052b9bed3f449b293fb855a62b459625',1,'UrlObject::normalize()'],['../dc/d8f/interfaceXmlNode.html#a4762ae75380f9db0fc240fd3f91d5537',1,'XmlNode::normalize()'],['../d0/d43/namespacepath.html#ab5940f0638ae1ecf73788c7c6e5da56c',1,'path::normalize()']]],
   ['notcloseto',['notCloseTo',['../d2/dab/namespaceassert.html#a785eff37919f22095e68cc20d85b0020',1,'assert']]],
   ['notdeepequal',['notDeepEqual',['../d2/dab/namespaceassert.html#af2e1f574fd2ccb3c2c36717d14e33f67',1,'assert']]],
   ['notdeepproperty',['notDeepProperty',['../d2/dab/namespaceassert.html#a202a5d1189e44f0cbab67cfcbdfb4fae',1,'assert']]],

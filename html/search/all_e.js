@@ -31,7 +31,7 @@ var searchData=
   ['nofill',['NOFILL',['../dd/d5d/namespacegd.html#a80848d6faabd43d2b9ce3a983f549b72',1,'gd']]],
   ['none',['NONE',['../dd/d5d/namespacegd.html#a518c92aca0a3c46626b4d852111b4a18',1,'gd']]],
   ['nopadding',['NOPADDING',['../de/d36/namespacecrypto.html#a1fb0ffa413d7a32d39fc22c95fd80017',1,'crypto']]],
-  ['normalize',['normalize',['../dd/d23/interfaceUrl.html#a323b5d381772594de0d2b1d92f0654cf',1,'Url::normalize()'],['../dc/d8f/interfaceXmlNode.html#a4762ae75380f9db0fc240fd3f91d5537',1,'XmlNode::normalize()'],['../d0/d43/namespacepath.html#ab5940f0638ae1ecf73788c7c6e5da56c',1,'path::normalize()']]],
+  ['normalize',['normalize',['../de/de5/interfaceUrlObject.html#a052b9bed3f449b293fb855a62b459625',1,'UrlObject::normalize()'],['../dc/d8f/interfaceXmlNode.html#a4762ae75380f9db0fc240fd3f91d5537',1,'XmlNode::normalize()'],['../d0/d43/namespacepath.html#ab5940f0638ae1ecf73788c7c6e5da56c',1,'path::normalize()']]],
   ['not',['not',['../d0/df6/interfaceExpect.html#aa18a68b7a171f5e222cb7da0f7978414',1,'Expect']]],
   ['notafter',['notAfter',['../dc/d22/interfaceX509Cert.html#a8c518c812c19ad64004aae98665e6fe4',1,'X509Cert']]],
   ['notbefore',['notBefore',['../dc/d22/interfaceX509Cert.html#af70b6fa809fa67627311a5fbede1364d',1,'X509Cert']]],

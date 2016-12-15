@@ -10,10 +10,11 @@ var searchData=
   ['update',['update',['../d3/d41/interfaceDigest.html#ac699e20f28b80cbdbd678155ab271dd7',1,'Digest::update()'],['../d6/d6b/interfaceMongoCollection.html#a07c0076fbb6551b54cdd89d192f3fdf5',1,'MongoCollection::update(Object query, Object document, Boolean upsert=false, Boolean multi=false)'],['../d6/d6b/interfaceMongoCollection.html#abd3a6d526b752895af7d0d76c39dfd1c',1,'MongoCollection::update(Object query, Object document, Object options)']]],
   ['upgrade',['upgrade',['../da/d38/interfaceHttpMessage.html#a8bb8e89cb8c043db64bc6572f6ad97c9',1,'HttpMessage']]],
   ['uptime',['uptime',['../df/d0b/interfaceStats.html#a32d73f6238ce28d6651f18465af79ae0',1,'Stats::uptime()'],['../da/de1/namespaceos.html#a7fa90fa210d31f489f824de639820d42',1,'os::uptime()']]],
-  ['url',['Url',['../dd/d23/interfaceUrl.html',1,'Url'],['../dd/d23/interfaceUrl.html#a9a1f4ab58de0b3d7d55708e7ecad1adc',1,'Url::Url(Object args)'],['../dd/d23/interfaceUrl.html#aec1f5c08b7c5046e838286600f2e955a',1,'Url::Url(String url=&quot;&quot;)'],['../dc/d27/namespacenet.html#a254010f94b041097344bfcedde46b0ad',1,'net::Url()'],['../d1/dd6/namespaceuuid.html#a83e49a96e6da072f08266ca23df3c62e',1,'uuid::URL()']]],
+  ['url',['url',['../d3/da2/namespaceurl.html',1,'url'],['../d1/dd6/namespaceuuid.html#a83e49a96e6da072f08266ca23df3c62e',1,'uuid::URL()']]],
+  ['urlobject',['UrlObject',['../de/de5/interfaceUrlObject.html',1,'UrlObject'],['../de/de5/interfaceUrlObject.html#a9973e019acc7d2fbf86be1a187473968',1,'UrlObject::UrlObject(Object args)'],['../de/de5/interfaceUrlObject.html#ab9bc36ab8ea7c68899ef09421d141a9e',1,'UrlObject::UrlObject(String url=&quot;&quot;)'],['../dc/d27/namespacenet.html#a2cb6e0d1afab8ad6659170125b5f188c',1,'net::UrlObject()']]],
   ['usage',['usage',['../dc/d22/interfaceX509Cert.html#abf97c5907bc00259d7dce54d788ff235',1,'X509Cert']]],
   ['use',['use',['../d2/d68/interfaceMySQL.html#af3d7af443d45a1e778aa00a76c28f51b',1,'MySQL::use()'],['../dc/d01/interfaceMSSQL.html#a5c86112295e3da4ff6bcc8902869a5c0',1,'MSSQL::use()']]],
-  ['username',['username',['../dd/d23/interfaceUrl.html#a824c81c2a6c19971bd3b321ff4009ab2',1,'Url']]],
+  ['username',['username',['../de/de5/interfaceUrlObject.html#ae49bfa5b016d2ad39ba3bf59bbc529d1',1,'UrlObject']]],
   ['util',['util',['../d6/d72/namespaceutil.html',1,'']]],
   ['uuid',['uuid',['../d1/dd6/namespaceuuid.html',1,'uuid'],['../d1/dd6/namespaceuuid.html#a5fdc6d7f478a448083de3d30305d9d79',1,'uuid::uuid(String s)'],['../d1/dd6/namespaceuuid.html#a61e618bfdc2d1146b05c0a73b7dbfe25',1,'uuid::uuid(Buffer data)']]],
   ['uuidvalue',['uuidValue',['../d6/de7/interfaceuuidValue.html',1,'']]]

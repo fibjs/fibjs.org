@@ -1,7 +1,7 @@
 var searchData=
 [
   ['same',['same',['../d0/df6/interfaceExpect.html#a26edc025931583875ab49d56077d59bd',1,'Expect']]],
-  ['search',['search',['../dd/d23/interfaceUrl.html#ae614e05676af551facac7901448f87d3',1,'Url']]],
+  ['search',['search',['../de/de5/interfaceUrlObject.html#ab5426c67e41de4c5fe359de4998552c2',1,'UrlObject']]],
   ['secure',['secure',['../d3/dea/interfaceHttpCookie.html#a29e500ecc9bfa106175a1b7f328ea064',1,'HttpCookie']]],
   ['seek_5fcur',['SEEK_CUR',['../d5/d8f/namespacefs.html#a47d661f0ea44717dba85abf4f035be8e',1,'fs']]],
   ['seek_5fend',['SEEK_END',['../d5/d8f/namespacefs.html#aced3fe18686f4aa8395b19dc0885e429',1,'fs']]],
@@ -18,7 +18,7 @@ var searchData=
   ['sha512',['SHA512',['../de/de9/namespacehash.html#a8ba2e8e53c773269d0e949bfd5e07fb8',1,'hash']]],
   ['shallowsize',['shallowSize',['../df/db2/interfaceHeapGraphNode.html#a2fc488376bc9a3f1632c625d005833e8',1,'HeapGraphNode']]],
   ['size',['size',['../d3/d41/interfaceDigest.html#a4ffefefd60695d1448d2a79421b2b85d',1,'Digest::size()'],['../dc/d81/interfaceLruCache.html#aee1e7aea2978a02636cb4314bdb11420',1,'LruCache::size()'],['../d2/dc1/interfaceMap.html#a36abb4b144a680fb4a2152bac4ff80fa',1,'Map::size()'],['../dc/da9/interfaceStat.html#a2e40d56627672e702cfd14aae5bc40e5',1,'Stat::size()']]],
-  ['slashes',['slashes',['../dd/d23/interfaceUrl.html#a77d7f7816531a40a03534c4b41a9a87c',1,'Url']]],
+  ['slashes',['slashes',['../de/de5/interfaceUrlObject.html#a40e1d5babea7a04c5210d330d0b42f0d',1,'UrlObject']]],
   ['slow',['slow',['../df/d04/namespacetest.html#a09913ac8583af372187ee252951103c4',1,'test']]],
   ['smooth',['SMOOTH',['../dd/d5d/namespacegd.html#ab946d118ee8c1feefb6ee154426f391e',1,'gd']]],
   ['smtp',['Smtp',['../dc/d27/namespacenet.html#abfe21b74c13164de4fc3d68a3953d0dd',1,'net']]],
