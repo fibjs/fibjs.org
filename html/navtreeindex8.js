@@ -1,5 +1,6 @@
 var NAVTREEINDEX8 =
 {
+"module.html#fun_require":[2,0,0],
 "module.html#obj_exports":[2,0,3],
 "module.html#obj_module":[2,0,2],
 "multithread.html":[3],
