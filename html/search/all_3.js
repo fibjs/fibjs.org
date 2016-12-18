@@ -69,6 +69,7 @@ var searchData=
   ['copyresampled',['copyResampled',['../d2/d41/interfaceImage.html#a1ec0664b9c6bcb11daba2f42487a015b',1,'Image']]],
   ['copyresized',['copyResized',['../d2/d41/interfaceImage.html#a13cf7a5cda51ef9cf6ef0d3e23aa6553',1,'Image']]],
   ['copyrotated',['copyRotated',['../d2/d41/interfaceImage.html#ab0b8df81cbe5349133ce77e3236c7c0c',1,'Image']]],
+  ['copystream',['copyStream',['../d1/d96/namespaceio.html#a6fe2425142541de1af0a52de63b88e4c',1,'io']]],
   ['copyto',['copyTo',['../d4/dc7/interfaceStream.html#a5520387ebf75fa030283055371859d8b',1,'Stream']]],
   ['coroutine',['coroutine',['../d6/d05/namespacecoroutine.html',1,'']]],
   ['count',['count',['../dc/d27/interfaceMongoCursor.html#a6d446e0a87acf54801d5c132b0384fd8',1,'MongoCursor::count()'],['../db/d03/interfaceRedisSortedSet.html#a5b8a0c27f7ff02745450716447f14793',1,'RedisSortedSet::count()']]],

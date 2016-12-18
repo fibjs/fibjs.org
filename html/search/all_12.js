@@ -78,7 +78,7 @@ var searchData=
   ['rgb',['rgb',['../dd/d5d/namespacegd.html#a0706099b78bbf292b7d7898acc0b7aa2',1,'gd']]],
   ['rgba',['rgba',['../dd/d5d/namespacegd.html#ad330769672a80a55bbca412dd909358a',1,'gd']]],
   ['right',['RIGHT',['../dd/d5d/namespacegd.html#ad38a3f38117a471e8075602e1427a573',1,'gd']]],
-  ['ripemd160',['RIPEMD160',['../de/de9/namespacehash.html#a85ec8a916512172c1d29e659acde0c20',1,'hash::RIPEMD160()'],['../de/de9/namespacehash.html#a71a420a73d5a44d8d819bf3583cf58f2',1,'hash::ripemd160(Buffer data)']]],
+  ['ripemd160',['ripemd160',['../de/de9/namespacehash.html#a71a420a73d5a44d8d819bf3583cf58f2',1,'hash::ripemd160(Buffer data)'],['../de/de9/namespacehash.html#a85ec8a916512172c1d29e659acde0c20',1,'hash::RIPEMD160()']]],
   ['rmdir',['rmdir',['../d5/d8f/namespacefs.html#ae63300a92680e28c3b2bd55046120049',1,'fs']]],
   ['rollback',['rollback',['../d8/d2c/interfaceDbConnection.html#ab4f47bec17ba6b3799c58ea8d0698b15',1,'DbConnection']]],
   ['root',['root',['../de/d09/interfaceHeapSnapshot.html#ad212c5e17ae59cf4c5f08fa7f401b9ab',1,'HeapSnapshot']]],
