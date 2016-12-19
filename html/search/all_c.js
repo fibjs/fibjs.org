@@ -10,7 +10,7 @@ var searchData=
   ['length',['length',['../d9/dae/interfaceBuffer.html#a31eae850157fbe1e15cf7e333c795793',1,'Buffer::length()'],['../de/dd8/interfaceList.html#ac14dd2e85d341d532c0a7c3f107922f0',1,'List::length()'],['../d6/db7/interfaceMessage.html#a26e77ec52998a43c1b97fd4b7229283c',1,'Message::length()'],['../d1/d56/interfaceQueue.html#a5d54db5509dc75de10b7c15f3bb1996b',1,'Queue::length()'],['../d7/d50/interfaceXmlCharacterData.html#a055bc3d28655697652e075ce4cde2383',1,'XmlCharacterData::length()'],['../d2/de1/interfaceXmlNamedNodeMap.html#a5086206b10b414c7b6b2b2c4a372233f',1,'XmlNamedNodeMap::length()'],['../de/da6/interfaceXmlNodeList.html#a70db02cc61af59a5c618fa306abe5cb8',1,'XmlNodeList::length()']]],
   ['lessthan',['lessThan',['../d0/df6/interfaceExpect.html#ae73ba4fcdf0a8c2610bc2c1bbab6f358',1,'Expect::lessThan()'],['../d2/dab/namespaceassert.html#a4b1b450014e4539994cd105a8f9d0eb9',1,'assert::lessThan()']]],
   ['leveldb',['LevelDB',['../d0/d9e/interfaceLevelDB.html',1,'']]],
-  ['limit',['limit',['../dc/d27/interfaceMongoCursor.html#a7e591ebbad75e2e4019e8ad922e1d402',1,'MongoCursor']]],
+  ['limit',['limit',['../dc/d27/interfaceMongoCursor.html#ab28242e744c2f3668f73631e41e1b44c',1,'MongoCursor']]],
   ['line',['line',['../d2/d41/interfaceImage.html#ab4ca0dbea7a43ea1ee0995eeb68a529f',1,'Image']]],
   ['list',['List',['../de/dd8/interfaceList.html',1,'List'],['../de/dd8/interfaceList.html#a64d878a92d11f7c63c70cbe4e7dd4176',1,'List::List()'],['../de/dd8/interfaceList.html#a3d059d0fdf0e05923d55f1c3f391f9e1',1,'List::List(Array data)'],['../d7/d82/namespacecollection.html#a15c51504e48fb0694b33224d2c42b400',1,'collection::List()']]],
   ['listen',['listen',['../dd/d94/interfaceSocket.html#ab35e6c9affac9881a993684fc4fc7a16',1,'Socket']]],

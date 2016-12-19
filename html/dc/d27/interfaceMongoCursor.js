@@ -1,7 +1,7 @@
 var interfaceMongoCursor =
 [
-    [ "skip", "dc/d27/interfaceMongoCursor.html#aba4f2ce60710195d5a26e3966c264989", null ],
-    [ "limit", "dc/d27/interfaceMongoCursor.html#a7e591ebbad75e2e4019e8ad922e1d402", null ],
+    [ "skip", "dc/d27/interfaceMongoCursor.html#a556f86003f28362f15cbda78ba636d34", null ],
+    [ "limit", "dc/d27/interfaceMongoCursor.html#ab28242e744c2f3668f73631e41e1b44c", null ],
     [ "sort", "dc/d27/interfaceMongoCursor.html#a123006155ab34a7bdd56f8fc0b034ccc", null ],
     [ "hasNext", "dc/d27/interfaceMongoCursor.html#a4d30b04ba787bf502fc0defe1fb03385", null ],
     [ "next", "dc/d27/interfaceMongoCursor.html#a81d3581bb430a7982f5916668b060832", null ],

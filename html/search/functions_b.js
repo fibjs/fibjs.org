@@ -4,7 +4,7 @@ var searchData=
   ['least',['least',['../d0/df6/interfaceExpect.html#a80a82dccaf29e7dcb10f1f2347b1c550',1,'Expect']]],
   ['len',['len',['../d9/d58/interfaceRedisHash.html#a26ef98c343228656940c7a64909b5dd1',1,'RedisHash::len()'],['../d0/da2/interfaceRedisList.html#aa976e16b1b36eb515c2c3779445bdf6e',1,'RedisList::len()'],['../d3/dee/interfaceRedisSet.html#ad906a3ba2dfe4520f8044450eba90c9b',1,'RedisSet::len()'],['../db/d03/interfaceRedisSortedSet.html#a46d1cfc5c8bb2d88ecaa6f0d2f5fc52f',1,'RedisSortedSet::len()']]],
   ['lessthan',['lessThan',['../d0/df6/interfaceExpect.html#ae73ba4fcdf0a8c2610bc2c1bbab6f358',1,'Expect::lessThan()'],['../d2/dab/namespaceassert.html#a4b1b450014e4539994cd105a8f9d0eb9',1,'assert::lessThan()']]],
-  ['limit',['limit',['../dc/d27/interfaceMongoCursor.html#a7e591ebbad75e2e4019e8ad922e1d402',1,'MongoCursor']]],
+  ['limit',['limit',['../dc/d27/interfaceMongoCursor.html#ab28242e744c2f3668f73631e41e1b44c',1,'MongoCursor']]],
   ['line',['line',['../d2/d41/interfaceImage.html#ab4ca0dbea7a43ea1ee0995eeb68a529f',1,'Image']]],
   ['list',['List',['../de/dd8/interfaceList.html#a64d878a92d11f7c63c70cbe4e7dd4176',1,'List::List()'],['../de/dd8/interfaceList.html#a3d059d0fdf0e05923d55f1c3f391f9e1',1,'List::List(Array data)']]],
   ['listen',['listen',['../dd/d94/interfaceSocket.html#ab35e6c9affac9881a993684fc4fc7a16',1,'Socket']]],

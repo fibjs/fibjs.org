@@ -39,7 +39,7 @@ var searchData=
   ['sign',['sign',['../d5/dac/interfacePKey.html#aab4b38d767cfab0a2c8798a1ef90b49e',1,'PKey::sign()'],['../d7/d8b/interfaceX509Req.html#a6539f318125f8a29d49ceda762302de4',1,'X509Req::sign()']]],
   ['simplerandombytes',['simpleRandomBytes',['../de/d36/namespacecrypto.html#ab50ae54bb2eeadd6bd5aee7509c1f613',1,'crypto']]],
   ['size',['size',['../dc/d27/interfaceMongoCursor.html#aef6a5f9cf1ee475d698d4c2e17e1cf3e',1,'MongoCursor::size()'],['../d6/d9c/interfaceSeekableStream.html#af31c485565a6699bd6b8209d46ba0acb',1,'SeekableStream::size()']]],
-  ['skip',['skip',['../dc/d27/interfaceMongoCursor.html#aba4f2ce60710195d5a26e3966c264989',1,'MongoCursor']]],
+  ['skip',['skip',['../dc/d27/interfaceMongoCursor.html#a556f86003f28362f15cbda78ba636d34',1,'MongoCursor']]],
   ['sleep',['sleep',['../d6/d05/namespacecoroutine.html#ae9ce1c1d0ffbff909196806efabe7fa3',1,'coroutine']]],
   ['slice',['slice',['../d9/dae/interfaceBuffer.html#a8d70ddf3f6507a842d30726081f1a974',1,'Buffer::slice(Integer start=0)'],['../d9/dae/interfaceBuffer.html#a7a5eb1ce2472fea27a03e8efd25b7a2e',1,'Buffer::slice(Integer start, Integer end)'],['../de/dd8/interfaceList.html#ab96d554cc6244b5c4407d47aef2dfc25',1,'List::slice()']]],
   ['smtp',['Smtp',['../da/de8/interfaceSmtp.html#acea5db5c9fdb0309e6179dc29db9e798',1,'Smtp']]],
