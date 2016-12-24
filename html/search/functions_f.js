@@ -10,6 +10,7 @@ var searchData=
   ['persist',['persist',['../d7/d32/interfaceRedis.html#a09e229eec5a1d028afbe1566a6833c6b',1,'Redis']]],
   ['pick',['pick',['../d6/d72/namespaceutil.html#aa0eef00f17cd0bd5953a1613aa2f3c70',1,'util']]],
   ['pkey',['PKey',['../d5/dac/interfacePKey.html#af503c064e1ddf986b394b751ddb0c4ff',1,'PKey']]],
+  ['platform',['platform',['../da/de1/namespaceos.html#aff54c410825cad9935237f740452bb42',1,'os']]],
   ['poll',['poll',['../d1/d56/interfaceQueue.html#af17aa223359d90dd6682a37eff715399',1,'Queue']]],
   ['polygon',['polygon',['../d2/d41/interfaceImage.html#a38ba5e3eba520cac72a1d3c28d605e84',1,'Image']]],
   ['pop',['pop',['../de/dd8/interfaceList.html#a576664822a395ecf272fc5c1cd637526',1,'List::pop()'],['../d0/da2/interfaceRedisList.html#a941e12250013a5c002b3e3d5593c7458',1,'RedisList::pop()'],['../d3/dee/interfaceRedisSet.html#aa53a6e8ce28ac3cf527649e780f91554',1,'RedisSet::pop()']]],
