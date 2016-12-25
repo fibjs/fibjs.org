@@ -21,7 +21,7 @@ var searchData=
   ['best_5fspeed',['BEST_SPEED',['../d9/d3e/namespacezlib.html#ac1fa5896622f3a54952bda03eb7d3acd',1,'zlib']]],
   ['between',['between',['../d0/d9e/interfaceLevelDB.html#a22d1e092c14dd70fc521f562a21a1575',1,'LevelDB']]],
   ['binary',['BINARY',['../d0/d42/namespacewebsocket.html#ac2a5602c1ce5a962340711c820484685',1,'websocket']]],
-  ['bind',['bind',['../dd/d94/interfaceSocket.html#a26a688b72c8b742d830a1d89e2a7a984',1,'Socket::bind(Integer port, Boolean allowIPv4=true)'],['../dd/d94/interfaceSocket.html#aea619a73174482ad558c95dc8d9a1fc4',1,'Socket::bind(String addr, Integer port, Boolean allowIPv4=true)']]],
+  ['bind',['bind',['../dd/d94/interfaceSocket.html#aa279dd695883943420d01f34f0782daf',1,'Socket::bind(Integer port, Boolean allowIPv4=true) async'],['../dd/d94/interfaceSocket.html#aea07b6a7cb87f5d8d4501229af83ade8',1,'Socket::bind(String addr, Integer port, Boolean allowIPv4=true) async']]],
   ['bitcount',['bitcount',['../d7/d32/interfaceRedis.html#ac89a7988a54cb5b6c9962048e72a3dbd',1,'Redis']]],
   ['blockqueue',['BlockQueue',['../d4/db6/interfaceBlockQueue.html',1,'BlockQueue'],['../d4/db6/interfaceBlockQueue.html#a9f7669dc7635bfed46b5364e8f3a932a',1,'BlockQueue::BlockQueue()'],['../d6/d05/namespacecoroutine.html#a894fd1e509c5ab593a08d0a4a251eaaf',1,'coroutine::BlockQueue()']]],
   ['blocksize',['blockSize',['../df/d49/interfaceCipher.html#a0424c17e6db89678a25684610537d2cd',1,'Cipher']]],

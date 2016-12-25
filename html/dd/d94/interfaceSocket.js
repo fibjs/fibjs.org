@@ -2,8 +2,8 @@ var interfaceSocket =
 [
     [ "Socket", "dd/d94/interfaceSocket.html#a3fcdc7696dd15634d0f9d51d95c2c25c", null ],
     [ "connect", "dd/d94/interfaceSocket.html#a8ba69699eb78edef37f3874bb05016cd", null ],
-    [ "bind", "dd/d94/interfaceSocket.html#a26a688b72c8b742d830a1d89e2a7a984", null ],
-    [ "bind", "dd/d94/interfaceSocket.html#aea619a73174482ad558c95dc8d9a1fc4", null ],
+    [ "bind", "dd/d94/interfaceSocket.html#aa279dd695883943420d01f34f0782daf", null ],
+    [ "bind", "dd/d94/interfaceSocket.html#aea07b6a7cb87f5d8d4501229af83ade8", null ],
     [ "listen", "dd/d94/interfaceSocket.html#ab35e6c9affac9881a993684fc4fc7a16", null ],
     [ "accept", "dd/d94/interfaceSocket.html#a3dfc92fcb136c355eee826905b37487c", null ],
     [ "recv", "dd/d94/interfaceSocket.html#a28174e411f641885369212291b0302d2", null ],
