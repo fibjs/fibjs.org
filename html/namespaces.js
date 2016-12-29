@@ -11,6 +11,7 @@ var namespaces =
     [ "crypto", "de/d36/namespacecrypto.html", null ],
     [ "db", "d0/d45/namespacedb.html", null ],
     [ "encoding", "db/da8/namespaceencoding.html", null ],
+    [ "events", "d8/dd5/namespaceevents.html", null ],
     [ "fs", "d5/d8f/namespacefs.html", null ],
     [ "gd", "dd/d5d/namespacegd.html", null ],
     [ "global", "d4/dfd/namespaceglobal.html", null ],

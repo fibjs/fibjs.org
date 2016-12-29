@@ -15,6 +15,7 @@ var searchData=
   ['inflateto',['inflateTo',['../d9/d3e/namespacezlib.html#a1a585f4bb4ce9146953c29af284ba62f',1,'zlib::inflateTo(Buffer data, Stream stm) async'],['../d9/d3e/namespacezlib.html#a2f4fbd12a75605838e9aafdcc2813c10',1,'zlib::inflateTo(Stream src, Stream stm) async']]],
   ['info',['info',['../dc/daa/namespaceconsole.html#a195000bab966ff5ccbf1ea69cf1cc12e',1,'console::info(String fmt,...)'],['../dc/daa/namespaceconsole.html#a88b9f04ef243106f58cbd0866072b7b5',1,'console::info(...)'],['../dc/d27/namespacenet.html#a6dc82ff0480d7ab92c6f8522a7af416e',1,'net::info()'],['../dc/daa/namespaceconsole.html#add424d51dfc7bd19ac906d010b9c7694',1,'console::INFO()']]],
   ['infolist',['infolist',['../d9/d03/interfaceZipFile.html#af82f627e7e148fdf18b44c94815e32a3',1,'ZipFile']]],
+  ['inherits',['inherits',['../d6/d72/namespaceutil.html#af5e3830ae1159b5783477efc721b4c10',1,'util']]],
   ['innerhtml',['innerHTML',['../d7/ddb/interfaceXmlElement.html#ae253c6d9ada5b3b9a38b6b840a25394a',1,'XmlElement']]],
   ['inputencoding',['inputEncoding',['../d6/d47/interfaceXmlDocument.html#a7b57a17ac49e4bac77f6d13e0e88e2f4',1,'XmlDocument']]],
   ['insert',['insert',['../d6/d6b/interfaceMongoCollection.html#ad3910f53d7e3c1de13e7196cb5b68164',1,'MongoCollection::insert(Array documents)'],['../d6/d6b/interfaceMongoCollection.html#a3b3d039d9bf2e5260d11faa34166420b',1,'MongoCollection::insert(Object document)']]],

@@ -13,6 +13,7 @@ var annotated =
     [ "DBRow", "d7/d8e/interfaceDBRow.html", "d7/d8e/interfaceDBRow" ],
     [ "Digest", "d3/d41/interfaceDigest.html", "d3/d41/interfaceDigest" ],
     [ "Event", "d7/ddf/interfaceEvent.html", "d7/ddf/interfaceEvent" ],
+    [ "EventEmitter", "dd/df3/interfaceEventEmitter.html", "dd/df3/interfaceEventEmitter" ],
     [ "Expect", "d0/df6/interfaceExpect.html", "d0/df6/interfaceExpect" ],
     [ "Fiber", "d4/d39/interfaceFiber.html", "d4/d39/interfaceFiber" ],
     [ "File", "d3/d3a/interfaceFile.html", "d3/d3a/interfaceFile" ],
