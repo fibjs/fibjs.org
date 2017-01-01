@@ -14,5 +14,6 @@ var interfaceMySQL =
     [ "toJSON", "d2/d68/interfaceMySQL.html#ad66be13eb5b7c5f560fd8511565138c4", null ],
     [ "valueOf", "d2/d68/interfaceMySQL.html#ab9261a7662bc8bb4a898bc15dc16f206", null ],
     [ "rxBufferSize", "d2/d68/interfaceMySQL.html#afb0238955b2dd36d2b3882661e1bde8d", null ],
-    [ "txBufferSize", "d2/d68/interfaceMySQL.html#aaf5d8a266ab80bdb8d793898a87b6fd5", null ]
+    [ "txBufferSize", "d2/d68/interfaceMySQL.html#aaf5d8a266ab80bdb8d793898a87b6fd5", null ],
+    [ "type", "d2/d68/interfaceMySQL.html#aa06bab531a9c86359904e83f0e5e6477", null ]
 ];

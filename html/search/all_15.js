@@ -11,7 +11,7 @@ var searchData=
   ['upgrade',['upgrade',['../da/d38/interfaceHttpMessage.html#a8bb8e89cb8c043db64bc6572f6ad97c9',1,'HttpMessage']]],
   ['uptime',['uptime',['../df/d0b/interfaceStats.html#a32d73f6238ce28d6651f18465af79ae0',1,'Stats::uptime()'],['../da/de1/namespaceos.html#a7fa90fa210d31f489f824de639820d42',1,'os::uptime()']]],
   ['url',['url',['../d3/da2/namespaceurl.html',1,'url'],['../dc/d27/namespacenet.html#a80bea43f05c2193eb13f9d7000ccf32b',1,'net::Url()'],['../d1/dd6/namespaceuuid.html#a83e49a96e6da072f08266ca23df3c62e',1,'uuid::URL()']]],
-  ['urlobject',['UrlObject',['../de/de5/interfaceUrlObject.html',1,'UrlObject'],['../de/de5/interfaceUrlObject.html#a9973e019acc7d2fbf86be1a187473968',1,'UrlObject::UrlObject(Object args)'],['../de/de5/interfaceUrlObject.html#ab9bc36ab8ea7c68899ef09421d141a9e',1,'UrlObject::UrlObject(String url=&quot;&quot;)']]],
+  ['urlobject',['UrlObject',['../de/de5/interfaceUrlObject.html',1,'UrlObject'],['../de/de5/interfaceUrlObject.html#a9973e019acc7d2fbf86be1a187473968',1,'UrlObject::UrlObject(Object args)'],['../de/de5/interfaceUrlObject.html#a4dbb4ad0e52bf14599bc731a8f8d87ba',1,'UrlObject::UrlObject(String url=&quot;&quot;, Boolean parseQueryString=false)']]],
   ['usage',['usage',['../dc/d22/interfaceX509Cert.html#abf97c5907bc00259d7dce54d788ff235',1,'X509Cert']]],
   ['use',['use',['../d2/d68/interfaceMySQL.html#af3d7af443d45a1e778aa00a76c28f51b',1,'MySQL::use()'],['../dc/d01/interfaceMSSQL.html#a5c86112295e3da4ff6bcc8902869a5c0',1,'MSSQL::use()']]],
   ['useragent',['userAgent',['../df/d4b/interfaceHttpClient.html#ad90d65faa88f13cee74b3177f4214cb0',1,'HttpClient::userAgent()'],['../d3/d69/namespacehttp.html#ab2c77b1e9c3d364e79138357ca41530d',1,'http::userAgent()']]],

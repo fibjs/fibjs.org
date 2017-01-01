@@ -12,5 +12,6 @@ var interfaceMSSQL =
     [ "equals", "dc/d01/interfaceMSSQL.html#a94c197c586ecfcb7cb733e0d543ce5ad", null ],
     [ "toString", "dc/d01/interfaceMSSQL.html#ac61f07a7d6c5471293371086af3186bd", null ],
     [ "toJSON", "dc/d01/interfaceMSSQL.html#ad66be13eb5b7c5f560fd8511565138c4", null ],
-    [ "valueOf", "dc/d01/interfaceMSSQL.html#ab9261a7662bc8bb4a898bc15dc16f206", null ]
+    [ "valueOf", "dc/d01/interfaceMSSQL.html#ab9261a7662bc8bb4a898bc15dc16f206", null ],
+    [ "type", "dc/d01/interfaceMSSQL.html#aa06bab531a9c86359904e83f0e5e6477", null ]
 ];

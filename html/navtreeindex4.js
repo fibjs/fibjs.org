@@ -1,5 +1,6 @@
 var NAVTREEINDEX4 =
 {
+"d7/d50/interfaceXmlCharacterData.html#ad27424cb66b1039ddff3f6c297fbe0fd":[6,87,13],
 "d7/d50/interfaceXmlCharacterData.html#ad493d7ec94ebfd1cb874d0b43920275d":[6,87,23],
 "d7/d50/interfaceXmlCharacterData.html#ad66be13eb5b7c5f560fd8511565138c4":[6,87,18],
 "d7/d50/interfaceXmlCharacterData.html#ad997a00e2af8f05fe915dac55809e8e7":[6,87,7],
@@ -108,6 +109,7 @@ var NAVTREEINDEX4 =
 "d7/df5/interfaceSQLite.html#a6b88dbc459449d2280338e5b702a68b4":[6,65,8],
 "d7/df5/interfaceSQLite.html#a94c197c586ecfcb7cb733e0d543ce5ad":[6,65,9],
 "d7/df5/interfaceSQLite.html#a9a2a52bdba24af6fe86ba65b149e3f1b":[6,65,13],
+"d7/df5/interfaceSQLite.html#aa06bab531a9c86359904e83f0e5e6477":[6,65,15],
 "d7/df5/interfaceSQLite.html#aa6d68c3a518d46207b42d7f638b07a1e":[6,65,2],
 "d7/df5/interfaceSQLite.html#ab4f47bec17ba6b3799c58ea8d0698b15":[6,65,4],
 "d7/df5/interfaceSQLite.html#ab5ddefb9b2c6c1a0cdfdac90e13de736":[6,65,6],
@@ -148,6 +150,7 @@ var NAVTREEINDEX4 =
 "d8/d2c/interfaceDbConnection.html#a4f19b7fb871da01a3133649c27797a83":[6,8,0],
 "d8/d2c/interfaceDbConnection.html#a6b88dbc459449d2280338e5b702a68b4":[6,8,7],
 "d8/d2c/interfaceDbConnection.html#a94c197c586ecfcb7cb733e0d543ce5ad":[6,8,8],
+"d8/d2c/interfaceDbConnection.html#aa06bab531a9c86359904e83f0e5e6477":[6,8,12],
 "d8/d2c/interfaceDbConnection.html#aa6d68c3a518d46207b42d7f638b07a1e":[6,8,1],
 "d8/d2c/interfaceDbConnection.html#ab4f47bec17ba6b3799c58ea8d0698b15":[6,8,3],
 "d8/d2c/interfaceDbConnection.html#ab5ddefb9b2c6c1a0cdfdac90e13de736":[6,8,5],
@@ -246,8 +249,5 @@ var NAVTREEINDEX4 =
 "d9/d71/interfaceHttpResponse.html#a418ebc4d556401052e637162210dcadd":[6,29,23],
 "d9/d71/interfaceHttpResponse.html#a42fdd87346cb529e34e1e12e41afe2bc":[6,29,14],
 "d9/d71/interfaceHttpResponse.html#a527c0eba05ae52d3b2c9a2cf284277bd":[6,29,11],
-"d9/d71/interfaceHttpResponse.html#a572dd6923c69839d8e29da3e342b8f76":[6,29,31],
-"d9/d71/interfaceHttpResponse.html#a5db3f91a4a32b70e2fcbd188d8a452c9":[6,29,5],
-"d9/d71/interfaceHttpResponse.html#a6650a9dcb99102b5e70cf1e3fa034cb9":[6,29,29],
-"d9/d71/interfaceHttpResponse.html#a6b88dbc459449d2280338e5b702a68b4":[6,29,18]
+"d9/d71/interfaceHttpResponse.html#a572dd6923c69839d8e29da3e342b8f76":[6,29,31]
 };

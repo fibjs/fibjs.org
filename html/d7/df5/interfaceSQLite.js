@@ -14,5 +14,6 @@ var interfaceSQLite =
     [ "toJSON", "d7/df5/interfaceSQLite.html#ad66be13eb5b7c5f560fd8511565138c4", null ],
     [ "valueOf", "d7/df5/interfaceSQLite.html#ab9261a7662bc8bb4a898bc15dc16f206", null ],
     [ "fileName", "d7/df5/interfaceSQLite.html#a9a2a52bdba24af6fe86ba65b149e3f1b", null ],
-    [ "timeout", "d7/df5/interfaceSQLite.html#ac1125a44ad8f97d1cf7e9a3acd08db1e", null ]
+    [ "timeout", "d7/df5/interfaceSQLite.html#ac1125a44ad8f97d1cf7e9a3acd08db1e", null ],
+    [ "type", "d7/df5/interfaceSQLite.html#aa06bab531a9c86359904e83f0e5e6477", null ]
 ];

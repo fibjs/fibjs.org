@@ -11,5 +11,6 @@ var interfaceDbConnection =
     [ "equals", "d8/d2c/interfaceDbConnection.html#a94c197c586ecfcb7cb733e0d543ce5ad", null ],
     [ "toString", "d8/d2c/interfaceDbConnection.html#ac61f07a7d6c5471293371086af3186bd", null ],
     [ "toJSON", "d8/d2c/interfaceDbConnection.html#ad66be13eb5b7c5f560fd8511565138c4", null ],
-    [ "valueOf", "d8/d2c/interfaceDbConnection.html#ab9261a7662bc8bb4a898bc15dc16f206", null ]
+    [ "valueOf", "d8/d2c/interfaceDbConnection.html#ab9261a7662bc8bb4a898bc15dc16f206", null ],
+    [ "type", "d8/d2c/interfaceDbConnection.html#aa06bab531a9c86359904e83f0e5e6477", null ]
 ];
