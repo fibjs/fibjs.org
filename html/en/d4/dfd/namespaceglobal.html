@@ -4,6 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Javascript on Fiber: global Module Reference</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
@@ -14,14 +15,10 @@
 <script type="text/javascript" src="../../navtree.js"></script>
 <script type="text/javascript">
   $(document).ready(initResizable);
-  $(window).load(resizeHeight);
 </script>
 <link href="../../search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../search/searchdata.js"></script>
 <script type="text/javascript" src="../../search/search.js"></script>
-<script type="text/javascript">
-  $(document).ready(function() { init_search(); });
-</script>
 <link href="../../doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -45,33 +42,15 @@
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 </script>
-  <div id="navrow1" class="tabs">
-    <ul class="tablist">
-      <li><a href="../../index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="../../pages.html"><span>Tutorial</span></a></li>
-      <li><a href="../../namespaces.html"><span>Module</span></a></li>
-      <li><a href="../../annotated.html"><span>Object</span></a></li>
-      <li><a href="https://github.com/xicilion/fibjs"><span>Download</span></a></li>
-      <li><a href="http://named.cn/fibjs"><span>Forum</span></a></li>
-      <li><a href="../../../index.html"><span>中文版</span></a></li>
-      <li>
-        <div id="MSearchBox" class="MSearchBoxInactive">
-        <span class="left">
-          <img id="MSearchSelect" src="../../search/mag_sel.png"
-               onmouseover="return searchBox.OnSearchSelectShow()"
-               onmouseout="return searchBox.OnSearchSelectHide()"
-               alt=""/>
-          <input type="text" id="MSearchField" value="Search" accesskey="S"
-               onfocus="searchBox.OnSearchFieldFocus(true)" 
-               onblur="searchBox.OnSearchFieldFocus(false)" 
-               onkeyup="searchBox.OnSearchFieldChange(event)"/>
-          </span><span class="right">
-            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="../../search/close.png" alt=""/></a>
-          </span>
-        </div>
-      </li>
-    </ul>
-  </div>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('../../',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
 </div><!-- top -->
 <div id="side-nav" class="ui-resizable side-nav-resizable">
   <div id="nav-tree">
@@ -119,7 +98,7 @@ Functions</h2></td></tr>
 <tr class="memdesc:a9d3c7d79f836d3d5785a6b8f9ab4581c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Run a script.  <a href="#a9d3c7d79f836d3d5785a6b8f9ab4581c">More...</a><br /></td></tr>
 <tr class="separator:a9d3c7d79f836d3d5785a6b8f9ab4581c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9b11defd1000737a5b70b50edfcc8156"><td class="memItemLeft" align="right" valign="top">static Value&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/dfd/namespaceglobal.html#a9b11defd1000737a5b70b50edfcc8156">require</a> (String id)</td></tr>
-<tr class="memdesc:a9b11defd1000737a5b70b50edfcc8156"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load a module and return module object, reference <a class="el" href="../../module.html">Module Management</a>.  <a href="#a9b11defd1000737a5b70b50edfcc8156">More...</a><br /></td></tr>
+<tr class="memdesc:a9b11defd1000737a5b70b50edfcc8156"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load a module and return module object, reference <a class="el" href="../../d0/db5/module.html">Module Management</a>.  <a href="#a9b11defd1000737a5b70b50edfcc8156">More...</a><br /></td></tr>
 <tr class="separator:a9b11defd1000737a5b70b50edfcc8156"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a02a28758a633a7b1493471415c8949ba"><td class="memItemLeft" align="right" valign="top">static&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/dfd/namespaceglobal.html#a02a28758a633a7b1493471415c8949ba">GC</a> ()</td></tr>
 <tr class="memdesc:a02a28758a633a7b1493471415c8949ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mandatory for garbage collection.  <a href="#a02a28758a633a7b1493471415c8949ba">More...</a><br /></td></tr>
@@ -149,7 +128,9 @@ Variables</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Global object, which can be accessed by all scripts. </p>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="a9d3c7d79f836d3d5785a6b8f9ab4581c"></a>
+<a id="a9d3c7d79f836d3d5785a6b8f9ab4581c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9d3c7d79f836d3d5785a6b8f9ab4581c">&#9670;&nbsp;</a></span>run()</h2>
+
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -192,7 +173,9 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a9b11defd1000737a5b70b50edfcc8156"></a>
+<a id="a9b11defd1000737a5b70b50edfcc8156"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9b11defd1000737a5b70b50edfcc8156">&#9670;&nbsp;</a></span>require()</h2>
+
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -214,7 +197,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Load a module and return module object, reference <a class="el" href="../../module.html">Module Management</a>. </p>
+<p>Load a module and return module object, reference <a class="el" href="../../d0/db5/module.html">Module Management</a>. </p>
 <p>require can be used to load the base module, such as file module.</p>
 <p>Base module is initializing when the sandbox created, only need pass the id when referencing, e.g: require("net")。</p>
 <p><a class="el" href="../../d3/d3a/interfaceFile.html" title="file operands, used to operate the reading and writing of binary files. ">File</a> module is user-defined modules which required by the relative path beginning with './' or '../'. <a class="el" href="../../d3/d3a/interfaceFile.html" title="file operands, used to operate the reading and writing of binary files. ">File</a> module supports .js and .json file.</p>
@@ -230,7 +213,9 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a02a28758a633a7b1493471415c8949ba"></a>
+<a id="a02a28758a633a7b1493471415c8949ba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a02a28758a633a7b1493471415c8949ba">&#9670;&nbsp;</a></span>GC()</h2>
+
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -255,7 +240,9 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="abae4e926703798996fa53e61c30cd710"></a>
+<a id="abae4e926703798996fa53e61c30cd710"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abae4e926703798996fa53e61c30cd710">&#9670;&nbsp;</a></span>repl() <span class="overload">[1/2]</span></h2>
+
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -287,7 +274,9 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ac297812b42a1bfd1d9211b8ca07686e0"></a>
+<a id="ac297812b42a1bfd1d9211b8ca07686e0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac297812b42a1bfd1d9211b8ca07686e0">&#9670;&nbsp;</a></span>repl() <span class="overload">[2/2]</span></h2>
+
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -331,7 +320,9 @@ Variables</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Variable Documentation</h2>
-<a class="anchor" id="abe961e24f94e940799497f08f5704916"></a>
+<a id="abe961e24f94e940799497f08f5704916"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abe961e24f94e940799497f08f5704916">&#9670;&nbsp;</a></span>Buffer</h2>
+
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -353,7 +344,9 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a45adb6a5d19452e78ecd07f0036cfdf9"></a>
+<a id="a45adb6a5d19452e78ecd07f0036cfdf9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a45adb6a5d19452e78ecd07f0036cfdf9">&#9670;&nbsp;</a></span>Int64</h2>
+
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -375,7 +368,9 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ac56f4cb08af5e4988ff5e4bdd8afb700"></a>
+<a id="ac56f4cb08af5e4988ff5e4bdd8afb700"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac56f4cb08af5e4988ff5e4bdd8afb700">&#9670;&nbsp;</a></span>console</h2>
+
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -397,7 +392,9 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="aef70d33af0f202e79eeac3e23c02e718"></a>
+<a id="aef70d33af0f202e79eeac3e23c02e718"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aef70d33af0f202e79eeac3e23c02e718">&#9670;&nbsp;</a></span>argv</h2>
+
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">

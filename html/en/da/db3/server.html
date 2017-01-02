@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Javascript on Fiber: Server Programming</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="../../logo.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Javascript on Fiber
+   </div>
+   <div id="projectbrief">A developement framework of the coroutines based on Google&#39;s V8 Engine</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('../../',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('da/db3/server.html','../../');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">Server Programming </div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="toc"><h3>Table of Contents</h3>
+<ul><li class="level1"><a href="#web_file">Static File Server</a></li>
+<li class="level1"><a href="#web_script">Dynamic Server</a></li>
+<li class="level1"><a href="#web_both">Both Static and Dynamic Supoort</a></li>
+</ul>
+</div>
+<div class="textblock"><h1><a class="anchor" id="web_file"></a>
+Static File Server</h1>
+<p>It is very easy to create a simple Web server with fibjs: </p><div class="fragment"><div class="line">var <a class="code" href="../../d3/d69/namespacehttp.html">http</a> = require(<span class="stringliteral">&#39;http&#39;</span>);</div><div class="line"></div><div class="line">var svr = <span class="keyword">new</span> http.Server(80, http.fileHandler(<span class="stringliteral">&#39;../fibjs/docs&#39;</span>));</div><div class="line">svr.run();</div></div><!-- fragment --><p>As a regular static file server, it’s grossly powerful. Meanwhile, the above server supports compression (automatically), precompression, update checking,etc.</p>
+<p>But fibjs is not just for static files; the same jobs will also be competed by both Apache and Nginx perfessionally. Fibjs’ static Web server could serve as a downloading server auxiliarily for small-scale frontend files.</p>
+<h1><a class="anchor" id="web_script"></a>
+Dynamic Server</h1>
+<p>As a dynamic server, its implementation will not be more comprehensible than the static one: </p><div class="fragment"><div class="line">var http = require(<span class="stringliteral">&#39;http&#39;</span>);</div><div class="line"></div><div class="line">var svr = <span class="keyword">new</span> http.Server(80, <span class="keyword">function</span>(r){</div><div class="line">  r.response.write(<span class="stringliteral">&#39;Hello, World!&#39;</span>);</div><div class="line">});</div><div class="line">svr.run();</div></div><!-- fragment --><p>This example just a demo of simple text, “Hello, World!” for example. Of course, it needs to implement further for building a more comprehensible dynamic server.</p>
+<h1><a class="anchor" id="web_both"></a>
+Both Static and Dynamic Supoort</h1>
+<p>When the website is small-scale, we commonly just need a server, supporting both static file and dynamic request. </p><div class="fragment"><div class="line">var http = require(<span class="stringliteral">&#39;http&#39;</span>);</div><div class="line">var <a class="code" href="../../dd/dbd/namespacemq.html">mq</a> = require(<span class="stringliteral">&#39;mq&#39;</span>);</div><div class="line"></div><div class="line">var svr = <span class="keyword">new</span> http.Server(8080, <span class="keyword">new</span> mq.Routing({</div><div class="line">    <span class="stringliteral">&#39;^/www(/.*)&#39;</span>: http.fileHandler(<span class="stringliteral">&#39;../fibjs</span></div><div class="line"><span class="stringliteral">/docs&#39;</span>),</div><div class="line">    <span class="stringliteral">&#39;^/rpc(/.*)&#39;</span>: function(r) {</div><div class="line">        r.response.write(<span class="stringliteral">&#39;Hello, World!&#39;</span>);</div><div class="line">    }</div><div class="line">}));</div><div class="line">svr.run();</div></div><!-- fragment --> </div></div><!-- contents -->
+</div><!-- doc-content -->
+<style type="text/css">
+body {
+	color: #666666;
+}
+a, .contents a:visited {
+	color: #3399ee;
+}
+.icona, #nav-sync {
+  display:none;
+}
+.directory td.entry, .directory td.desc {
+  padding: 8px;
+}
+</style>
+</body>
+</html>

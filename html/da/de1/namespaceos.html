@@ -4,6 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Javascript on Fiber: os 模块参考手册</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
@@ -14,14 +15,10 @@
 <script type="text/javascript" src="../../navtree.js"></script>
 <script type="text/javascript">
   $(document).ready(initResizable);
-  $(window).load(resizeHeight);
 </script>
 <link href="../../search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../search/searchdata.js"></script>
 <script type="text/javascript" src="../../search/search.js"></script>
-<script type="text/javascript">
-  $(document).ready(function() { init_search(); });
-</script>
 <link href="../../doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -45,33 +42,15 @@
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "../../search",false,'搜索');
 </script>
-  <div id="navrow1" class="tabs">
-    <ul class="tablist">
-      <li><a href="../../index.html"><span>首页</span></a></li>
-      <li><a href="../../pages.html"><span>教程</span></a></li>
-      <li><a href="../../namespaces.html"><span>模块</span></a></li>
-      <li><a href="../../annotated.html"><span>对象</span></a></li>
-      <li><a href="https://github.com/xicilion/fibjs"><span>下载</span></a></li>
-      <li><a href="http://named.cn/fibjs"><span>社区</span></a></li>
-      <li><a href="../../en/index.html"><span>English</span></a></li>
-      <li>
-        <div id="MSearchBox" class="MSearchBoxInactive">
-        <span class="left">
-          <img id="MSearchSelect" src="../../search/mag_sel.png"
-               onmouseover="return searchBox.OnSearchSelectShow()"
-               onmouseout="return searchBox.OnSearchSelectHide()"
-               alt=""/>
-          <input type="text" id="MSearchField" value="搜索" accesskey="S"
-               onfocus="searchBox.OnSearchFieldFocus(true)" 
-               onblur="searchBox.OnSearchFieldFocus(false)" 
-               onkeyup="searchBox.OnSearchFieldChange(event)"/>
-          </span><span class="right">
-            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="../../search/close.png" alt=""/></a>
-          </span>
-        </div>
-      </li>
-    </ul>
-  </div>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('../../',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
 </div><!-- top -->
 <div id="side-nav" class="ui-resizable side-nav-resizable">
   <div id="nav-tree">
@@ -158,7 +137,7 @@ $(document).ready(function(){initNavTree('da/de1/namespaceos.html','../../');});
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 变量</h2></td></tr>
 <tr class="memitem:aac1b1ba65f75d448fcdfbb065039451c"><td class="memItemLeft" align="right" valign="top">static&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/de1/namespaceos.html#aac1b1ba65f75d448fcdfbb065039451c">Service</a></td></tr>
-<tr class="memdesc:aac1b1ba65f75d448fcdfbb065039451c"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../d1/db9/interfaceService.html" title="系统服务管理对象 ">Service</a> 构造函数，参见 <a class="el" href="../../d1/db9/interfaceService.html" title="系统服务管理对象 ">Service</a>.  <a href="#aac1b1ba65f75d448fcdfbb065039451c">更多...</a><br /></td></tr>
+<tr class="memdesc:aac1b1ba65f75d448fcdfbb065039451c"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../d1/db9/interfaceService.html" title="系统服务管理对象 ">Service</a> 构造函数，参见 <a class="el" href="../../d1/db9/interfaceService.html" title="系统服务管理对象 ">Service</a>  <a href="#aac1b1ba65f75d448fcdfbb065039451c">更多...</a><br /></td></tr>
 <tr class="separator:aac1b1ba65f75d448fcdfbb065039451c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a10d119aa110a46714071e81522b0645c"><td class="memItemLeft" align="right" valign="top">static readonly String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/de1/namespaceos.html#a10d119aa110a46714071e81522b0645c">hostname</a></td></tr>
 <tr class="memdesc:a10d119aa110a46714071e81522b0645c"><td class="mdescLeft">&#160;</td><td class="mdescRight">查询当前运行环境主机名  <a href="#a10d119aa110a46714071e81522b0645c">更多...</a><br /></td></tr>
@@ -185,7 +164,9 @@ $(document).ready(function(){initNavTree('da/de1/namespaceos.html','../../');});
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p>操作系统与文件系统处理模块 </p>
 <p>使用方法： </p><div class="fragment"><div class="line">var <a class="code" href="../../da/de1/namespaceos.html">os</a> = require(<span class="stringliteral">&#39;os&#39;</span>);</div></div><!-- fragment --> </div><h2 class="groupheader">函数说明</h2>
-<a class="anchor" id="a7fa90fa210d31f489f824de639820d42"></a>
+<a id="a7fa90fa210d31f489f824de639820d42"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7fa90fa210d31f489f824de639820d42">&#9670;&nbsp;</a></span>uptime()</h2>
+
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -211,7 +192,9 @@ $(document).ready(function(){initNavTree('da/de1/namespaceos.html','../../');});
 
 </div>
 </div>
-<a class="anchor" id="af568dca7b66ce796e676741b24a4303a"></a>
+<a id="af568dca7b66ce796e676741b24a4303a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af568dca7b66ce796e676741b24a4303a">&#9670;&nbsp;</a></span>loadavg()</h2>
+
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -237,7 +220,9 @@ $(document).ready(function(){initNavTree('da/de1/namespaceos.html','../../');});
 
 </div>
 </div>
-<a class="anchor" id="a1542770b2fd24d002d726fbbff0c0a2e"></a>
+<a id="a1542770b2fd24d002d726fbbff0c0a2e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1542770b2fd24d002d726fbbff0c0a2e">&#9670;&nbsp;</a></span>totalmem()</h2>
+
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -263,7 +248,9 @@ $(document).ready(function(){initNavTree('da/de1/namespaceos.html','../../');});
 
 </div>
 </div>
-<a class="anchor" id="a571d36775ad176acbc76f7d12fb03bf1"></a>
+<a id="a571d36775ad176acbc76f7d12fb03bf1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a571d36775ad176acbc76f7d12fb03bf1">&#9670;&nbsp;</a></span>freemem()</h2>
+
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -289,7 +276,9 @@ $(document).ready(function(){initNavTree('da/de1/namespaceos.html','../../');});
 
 </div>
 </div>
-<a class="anchor" id="a2fe28e658af2fa4ed18aff69a99fff0c"></a>
+<a id="a2fe28e658af2fa4ed18aff69a99fff0c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2fe28e658af2fa4ed18aff69a99fff0c">&#9670;&nbsp;</a></span>CPUInfo()</h2>
+
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -315,7 +304,9 @@ $(document).ready(function(){initNavTree('da/de1/namespaceos.html','../../');});
 
 </div>
 </div>
-<a class="anchor" id="a693209d07a04870c1d24fb8bb17605ac"></a>
+<a id="a693209d07a04870c1d24fb8bb17605ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a693209d07a04870c1d24fb8bb17605ac">&#9670;&nbsp;</a></span>CPUs()</h2>
+
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -341,7 +332,9 @@ $(document).ready(function(){initNavTree('da/de1/namespaceos.html','../../');});
 
 </div>
 </div>
-<a class="anchor" id="ade138388eb17cb0d8804d3a615402a0e"></a>
+<a id="ade138388eb17cb0d8804d3a615402a0e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ade138388eb17cb0d8804d3a615402a0e">&#9670;&nbsp;</a></span>networkInfo()</h2>
+
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -367,7 +360,9 @@ $(document).ready(function(){initNavTree('da/de1/namespaceos.html','../../');});
 
 </div>
 </div>
-<a class="anchor" id="abe73d9151c52d8e17e85dbada0622716"></a>
+<a id="abe73d9151c52d8e17e85dbada0622716"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abe73d9151c52d8e17e85dbada0622716">&#9670;&nbsp;</a></span>printerInfo()</h2>
+
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -393,7 +388,9 @@ $(document).ready(function(){initNavTree('da/de1/namespaceos.html','../../');});
 
 </div>
 </div>
-<a class="anchor" id="ac6499d5510ef83569c731b3eebff4a1e"></a>
+<a id="ac6499d5510ef83569c731b3eebff4a1e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac6499d5510ef83569c731b3eebff4a1e">&#9670;&nbsp;</a></span>openPrinter()</h2>
+
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -426,7 +423,9 @@ $(document).ready(function(){initNavTree('da/de1/namespaceos.html','../../');});
 
 </div>
 </div>
-<a class="anchor" id="aff54c410825cad9935237f740452bb42"></a>
+<a id="aff54c410825cad9935237f740452bb42"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff54c410825cad9935237f740452bb42">&#9670;&nbsp;</a></span>platform()</h2>
+
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -451,7 +450,9 @@ $(document).ready(function(){initNavTree('da/de1/namespaceos.html','../../');});
 
 </div>
 </div>
-<a class="anchor" id="a38a7252c2af6bb54a57fb80d75ab6b6c"></a>
+<a id="a38a7252c2af6bb54a57fb80d75ab6b6c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a38a7252c2af6bb54a57fb80d75ab6b6c">&#9670;&nbsp;</a></span>time()</h2>
+
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -484,7 +485,9 @@ $(document).ready(function(){initNavTree('da/de1/namespaceos.html','../../');});
 
 </div>
 </div>
-<a class="anchor" id="acc7b083abafccb5d71e9b83c99683635"></a>
+<a id="acc7b083abafccb5d71e9b83c99683635"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acc7b083abafccb5d71e9b83c99683635">&#9670;&nbsp;</a></span>dateAdd()</h2>
+
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -535,7 +538,9 @@ $(document).ready(function(){initNavTree('da/de1/namespaceos.html','../../');});
 
 </div>
 </div>
-<a class="anchor" id="a655f15d1790c184db42267a0bdef22cd"></a>
+<a id="a655f15d1790c184db42267a0bdef22cd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a655f15d1790c184db42267a0bdef22cd">&#9670;&nbsp;</a></span>memoryUsage()</h2>
+
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -568,7 +573,9 @@ $(document).ready(function(){initNavTree('da/de1/namespaceos.html','../../');});
 </div>
 </div>
 <h2 class="groupheader">变量说明</h2>
-<a class="anchor" id="aac1b1ba65f75d448fcdfbb065039451c"></a>
+<a id="aac1b1ba65f75d448fcdfbb065039451c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aac1b1ba65f75d448fcdfbb065039451c">&#9670;&nbsp;</a></span>Service</h2>
+
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -586,11 +593,13 @@ $(document).ready(function(){initNavTree('da/de1/namespaceos.html','../../');});
 </table>
 </div><div class="memdoc">
 
-<p><a class="el" href="../../d1/db9/interfaceService.html" title="系统服务管理对象 ">Service</a> 构造函数，参见 <a class="el" href="../../d1/db9/interfaceService.html" title="系统服务管理对象 ">Service</a>. </p>
+<p><a class="el" href="../../d1/db9/interfaceService.html" title="系统服务管理对象 ">Service</a> 构造函数，参见 <a class="el" href="../../d1/db9/interfaceService.html" title="系统服务管理对象 ">Service</a> </p>
 
 </div>
 </div>
-<a class="anchor" id="a10d119aa110a46714071e81522b0645c"></a>
+<a id="a10d119aa110a46714071e81522b0645c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a10d119aa110a46714071e81522b0645c">&#9670;&nbsp;</a></span>hostname</h2>
+
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -612,7 +621,9 @@ $(document).ready(function(){initNavTree('da/de1/namespaceos.html','../../');});
 
 </div>
 </div>
-<a class="anchor" id="a14a15c5f48a949b3ed548d59ffcc05e2"></a>
+<a id="a14a15c5f48a949b3ed548d59ffcc05e2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a14a15c5f48a949b3ed548d59ffcc05e2">&#9670;&nbsp;</a></span>type</h2>
+
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -634,7 +645,9 @@ $(document).ready(function(){initNavTree('da/de1/namespaceos.html','../../');});
 
 </div>
 </div>
-<a class="anchor" id="a2c3e53a918b2455b73d33dc896a0d831"></a>
+<a id="a2c3e53a918b2455b73d33dc896a0d831"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c3e53a918b2455b73d33dc896a0d831">&#9670;&nbsp;</a></span>version</h2>
+
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -656,7 +669,9 @@ $(document).ready(function(){initNavTree('da/de1/namespaceos.html','../../');});
 
 </div>
 </div>
-<a class="anchor" id="a694ff78df5a8febb2a7a69c7722f7c34"></a>
+<a id="a694ff78df5a8febb2a7a69c7722f7c34"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a694ff78df5a8febb2a7a69c7722f7c34">&#9670;&nbsp;</a></span>arch</h2>
+
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -678,7 +693,9 @@ $(document).ready(function(){initNavTree('da/de1/namespaceos.html','../../');});
 
 </div>
 </div>
-<a class="anchor" id="a9628c5429b13f4979df6569d374b5815"></a>
+<a id="a9628c5429b13f4979df6569d374b5815"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9628c5429b13f4979df6569d374b5815">&#9670;&nbsp;</a></span>timezone</h2>
+
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -700,7 +717,9 @@ $(document).ready(function(){initNavTree('da/de1/namespaceos.html','../../');});
 
 </div>
 </div>
-<a class="anchor" id="a76c7476a457aa1af25ca82a3fdb7e982"></a>
+<a id="a76c7476a457aa1af25ca82a3fdb7e982"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a76c7476a457aa1af25ca82a3fdb7e982">&#9670;&nbsp;</a></span>EOL</h2>
+
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -722,7 +741,9 @@ $(document).ready(function(){initNavTree('da/de1/namespaceos.html','../../');});
 
 </div>
 </div>
-<a class="anchor" id="ab093bc75a863a2f57ef93277e1b11a2a"></a>
+<a id="ab093bc75a863a2f57ef93277e1b11a2a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab093bc75a863a2f57ef93277e1b11a2a">&#9670;&nbsp;</a></span>execPath</h2>
+
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">

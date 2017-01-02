@@ -4,6 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Javascript on Fiber: SandBox Interface Reference</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
@@ -14,14 +15,10 @@
 <script type="text/javascript" src="../../navtree.js"></script>
 <script type="text/javascript">
   $(document).ready(initResizable);
-  $(window).load(resizeHeight);
 </script>
 <link href="../../search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../search/searchdata.js"></script>
 <script type="text/javascript" src="../../search/search.js"></script>
-<script type="text/javascript">
-  $(document).ready(function() { init_search(); });
-</script>
 <link href="../../doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -45,33 +42,15 @@
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 </script>
-  <div id="navrow1" class="tabs">
-    <ul class="tablist">
-      <li><a href="../../index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="../../pages.html"><span>Tutorial</span></a></li>
-      <li><a href="../../namespaces.html"><span>Module</span></a></li>
-      <li><a href="../../annotated.html"><span>Object</span></a></li>
-      <li><a href="https://github.com/xicilion/fibjs"><span>Download</span></a></li>
-      <li><a href="http://named.cn/fibjs"><span>Forum</span></a></li>
-      <li><a href="../../../index.html"><span>中文版</span></a></li>
-      <li>
-        <div id="MSearchBox" class="MSearchBoxInactive">
-        <span class="left">
-          <img id="MSearchSelect" src="../../search/mag_sel.png"
-               onmouseover="return searchBox.OnSearchSelectShow()"
-               onmouseout="return searchBox.OnSearchSelectHide()"
-               alt=""/>
-          <input type="text" id="MSearchField" value="Search" accesskey="S"
-               onfocus="searchBox.OnSearchFieldFocus(true)" 
-               onblur="searchBox.OnSearchFieldFocus(false)" 
-               onkeyup="searchBox.OnSearchFieldChange(event)"/>
-          </span><span class="right">
-            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="../../search/close.png" alt=""/></a>
-          </span>
-        </div>
-      </li>
-    </ul>
-  </div>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('../../',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
 </div><!-- top -->
 <div id="side-nav" class="ui-resizable side-nav-resizable">
   <div id="nav-tree">
@@ -146,7 +125,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a067679bd863305a489058868411a07f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Run a script.  <a href="#a067679bd863305a489058868411a07f1">More...</a><br /></td></tr>
 <tr class="separator:a067679bd863305a489058868411a07f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a134871a1c0b138d7b582225810ed6e9e"><td class="memItemLeft" align="right" valign="top">Value&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dd4/interfaceSandBox.html#a134871a1c0b138d7b582225810ed6e9e">require</a> (String id)</td></tr>
-<tr class="memdesc:a134871a1c0b138d7b582225810ed6e9e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load and return a modules, see <a class="el" href="../../module.html">Module Management</a> for details.  <a href="#a134871a1c0b138d7b582225810ed6e9e">More...</a><br /></td></tr>
+<tr class="memdesc:a134871a1c0b138d7b582225810ed6e9e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load and return a modules, see <a class="el" href="../../d0/db5/module.html">Module Management</a> for details.  <a href="#a134871a1c0b138d7b582225810ed6e9e">More...</a><br /></td></tr>
 <tr class="separator:a134871a1c0b138d7b582225810ed6e9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6b88dbc459449d2280338e5b702a68b4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d38/interfaceobject.html#a6b88dbc459449d2280338e5b702a68b4">dispose</a> ()</td></tr>
 <tr class="memdesc:a6b88dbc459449d2280338e5b702a68b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Force dispose object immediately.  <a href="#a6b88dbc459449d2280338e5b702a68b4">More...</a><br /></td></tr>
@@ -164,7 +143,9 @@ Public Member Functions</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Sandbox, to manage a separate running space. </p>
 <p>All code is running inside sandbox, global require uses current sandbox to load modules. Following example limits access to assert modules and add a and b two custom modules. </p><div class="fragment"><div class="line">var <a class="code" href="../../d8/d89/namespacevm.html">vm</a> = <a class="code" href="../../d5/dd4/interfaceSandBox.html#a134871a1c0b138d7b582225810ed6e9e">require</a>(<span class="stringliteral">&#39;vm&#39;</span>);</div><div class="line">var sbox = <span class="keyword">new</span> vm.SandBox({</div><div class="line">  a: 100,</div><div class="line">  b: 200,</div><div class="line">  <a class="code" href="../../d2/dab/namespaceassert.html">assert</a>: <a class="code" href="../../d5/dd4/interfaceSandBox.html#a134871a1c0b138d7b582225810ed6e9e">require</a>(<span class="stringliteral">&#39;assert&#39;</span>)</div><div class="line">});</div><div class="line"></div><div class="line">var mod_in_sbox = sbox.require(<span class="stringliteral">&#39;./path/to/mod&#39;</span>);</div></div><!-- fragment --> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="acd3962edcd65e4270953bb1f45aae2e3"></a>
+<a id="acd3962edcd65e4270953bb1f45aae2e3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acd3962edcd65e4270953bb1f45aae2e3">&#9670;&nbsp;</a></span>SandBox() <span class="overload">[1/2]</span></h2>
+
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -199,7 +180,9 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a897d1ac183aac3c8870d88af91c13b95"></a>
+<a id="a897d1ac183aac3c8870d88af91c13b95"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a897d1ac183aac3c8870d88af91c13b95">&#9670;&nbsp;</a></span>SandBox() <span class="overload">[2/2]</span></h2>
+
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -242,7 +225,9 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="a7573771a7de4c0910807d52af7a3a8c6"></a>
+<a id="a7573771a7de4c0910807d52af7a3a8c6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7573771a7de4c0910807d52af7a3a8c6">&#9670;&nbsp;</a></span>add() <span class="overload">[1/2]</span></h2>
+
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -277,7 +262,9 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a52cc7bce6ed5417d16b48c28cd3fc137"></a>
+<a id="a52cc7bce6ed5417d16b48c28cd3fc137"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a52cc7bce6ed5417d16b48c28cd3fc137">&#9670;&nbsp;</a></span>add() <span class="overload">[2/2]</span></h2>
+
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -301,7 +288,9 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ab8723cca963a5242b8a8c542464a7d65"></a>
+<a id="ab8723cca963a5242b8a8c542464a7d65"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab8723cca963a5242b8a8c542464a7d65">&#9670;&nbsp;</a></span>addScript()</h2>
+
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -337,7 +326,9 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a0ee2b7c07ba2ac80f043a36a401fa72b"></a>
+<a id="a0ee2b7c07ba2ac80f043a36a401fa72b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ee2b7c07ba2ac80f043a36a401fa72b">&#9670;&nbsp;</a></span>remove()</h2>
+
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -361,7 +352,9 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a581daffaf92d0b1266c60f100a66ad40"></a>
+<a id="a581daffaf92d0b1266c60f100a66ad40"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a581daffaf92d0b1266c60f100a66ad40">&#9670;&nbsp;</a></span>clone()</h2>
+
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -379,7 +372,9 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a067679bd863305a489058868411a07f1"></a>
+<a id="a067679bd863305a489058868411a07f1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a067679bd863305a489058868411a07f1">&#9670;&nbsp;</a></span>run()</h2>
+
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -414,7 +409,9 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a134871a1c0b138d7b582225810ed6e9e"></a>
+<a id="a134871a1c0b138d7b582225810ed6e9e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a134871a1c0b138d7b582225810ed6e9e">&#9670;&nbsp;</a></span>require()</h2>
+
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -428,7 +425,7 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Load and return a modules, see <a class="el" href="../../module.html">Module Management</a> for details. </p>
+<p>Load and return a modules, see <a class="el" href="../../d0/db5/module.html">Module Management</a> for details. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">id</td><td>Module name, always relative to current work directory </td></tr>
@@ -439,7 +436,9 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a6b88dbc459449d2280338e5b702a68b4"></a>
+<a id="a6b88dbc459449d2280338e5b702a68b4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6b88dbc459449d2280338e5b702a68b4">&#9670;&nbsp;</a></span>dispose()</h2>
+
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -464,7 +463,9 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ac61f07a7d6c5471293371086af3186bd"></a>
+<a id="ac61f07a7d6c5471293371086af3186bd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac61f07a7d6c5471293371086af3186bd">&#9670;&nbsp;</a></span>toString()</h2>
+
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -492,7 +493,9 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ad66be13eb5b7c5f560fd8511565138c4"></a>
+<a id="ad66be13eb5b7c5f560fd8511565138c4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad66be13eb5b7c5f560fd8511565138c4">&#9670;&nbsp;</a></span>toJSON()</h2>
+
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -525,7 +528,9 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ab9261a7662bc8bb4a898bc15dc16f206"></a>
+<a id="ab9261a7662bc8bb4a898bc15dc16f206"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab9261a7662bc8bb4a898bc15dc16f206">&#9670;&nbsp;</a></span>valueOf()</h2>
+
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">

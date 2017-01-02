@@ -4,6 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Javascript on Fiber: fs Module Reference</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
@@ -14,14 +15,10 @@
 <script type="text/javascript" src="../../navtree.js"></script>
 <script type="text/javascript">
   $(document).ready(initResizable);
-  $(window).load(resizeHeight);
 </script>
 <link href="../../search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../search/searchdata.js"></script>
 <script type="text/javascript" src="../../search/search.js"></script>
-<script type="text/javascript">
-  $(document).ready(function() { init_search(); });
-</script>
 <link href="../../doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -45,33 +42,15 @@
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 </script>
-  <div id="navrow1" class="tabs">
-    <ul class="tablist">
-      <li><a href="../../index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="../../pages.html"><span>Tutorial</span></a></li>
-      <li><a href="../../namespaces.html"><span>Module</span></a></li>
-      <li><a href="../../annotated.html"><span>Object</span></a></li>
-      <li><a href="https://github.com/xicilion/fibjs"><span>Download</span></a></li>
-      <li><a href="http://named.cn/fibjs"><span>Forum</span></a></li>
-      <li><a href="../../../index.html"><span>中文版</span></a></li>
-      <li>
-        <div id="MSearchBox" class="MSearchBoxInactive">
-        <span class="left">
-          <img id="MSearchSelect" src="../../search/mag_sel.png"
-               onmouseover="return searchBox.OnSearchSelectShow()"
-               onmouseout="return searchBox.OnSearchSelectHide()"
-               alt=""/>
-          <input type="text" id="MSearchField" value="Search" accesskey="S"
-               onfocus="searchBox.OnSearchFieldFocus(true)" 
-               onblur="searchBox.OnSearchFieldFocus(false)" 
-               onkeyup="searchBox.OnSearchFieldChange(event)"/>
-          </span><span class="right">
-            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="../../search/close.png" alt=""/></a>
-          </span>
-        </div>
-      </li>
-    </ul>
-  </div>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('../../',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
 </div><!-- top -->
 <div id="side-nav" class="ui-resizable side-nav-resizable">
   <div id="nav-tree">
@@ -145,7 +124,7 @@ Functions</h2></td></tr>
 <tr class="memitem:a3cd7e391b7ec9e731e7daaa84b3c8dcc"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="../../d3/d3a/interfaceFile.html">File</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d8f/namespacefs.html#a3cd7e391b7ec9e731e7daaa84b3c8dcc">open</a> (String fname, String flags=&quot;r&quot;) async</td></tr>
 <tr class="memdesc:a3cd7e391b7ec9e731e7daaa84b3c8dcc"><td class="mdescLeft">&#160;</td><td class="mdescRight">open file to read, write or read and write  <a href="#a3cd7e391b7ec9e731e7daaa84b3c8dcc">More...</a><br /></td></tr>
 <tr class="separator:a3cd7e391b7ec9e731e7daaa84b3c8dcc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa80cc9f3e691bf8f2a2377c234e2b179"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa80cc9f3e691bf8f2a2377c234e2b179"></a>
+<tr class="memitem:aa80cc9f3e691bf8f2a2377c234e2b179"><td class="memItemLeft" align="right" valign="top"><a id="aa80cc9f3e691bf8f2a2377c234e2b179"></a>
 static <a class="el" href="../../d3/d3a/interfaceFile.html">File</a>&#160;</td><td class="memItemRight" valign="bottom"><b>tmpFile</b> () async</td></tr>
 <tr class="separator:aa80cc9f3e691bf8f2a2377c234e2b179"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaf625a15d9268621cb10eacc4154db5e"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="../../d0/d37/interfaceBufferedStream.html">BufferedStream</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d8f/namespacefs.html#aaf625a15d9268621cb10eacc4154db5e">openTextStream</a> (String fname, String flags=&quot;r&quot;) async</td></tr>
@@ -176,7 +155,9 @@ Variables</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>file system module </p>
 <p>how to use </p><div class="fragment"><div class="line">var <a class="code" href="../../d5/d8f/namespacefs.html">fs</a> = require(<span class="stringliteral">&#39;fs&#39;</span>);</div></div><!-- fragment --> </div><h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="a4abe84709aae93e90cf3028c6c13db96"></a>
+<a id="a4abe84709aae93e90cf3028c6c13db96"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4abe84709aae93e90cf3028c6c13db96">&#9670;&nbsp;</a></span>exists()</h2>
+
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -209,7 +190,9 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ad9728d670aa8f486d76c4052f6c8acd5"></a>
+<a id="ad9728d670aa8f486d76c4052f6c8acd5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad9728d670aa8f486d76c4052f6c8acd5">&#9670;&nbsp;</a></span>unlink()</h2>
+
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -241,7 +224,9 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a5e69516c3f8512b7b4564cf65449f4c7"></a>
+<a id="a5e69516c3f8512b7b4564cf65449f4c7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5e69516c3f8512b7b4564cf65449f4c7">&#9670;&nbsp;</a></span>umask()</h2>
+
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -274,7 +259,9 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ad11bbef581ff87c5fc33e8b3d4b98dfb"></a>
+<a id="ad11bbef581ff87c5fc33e8b3d4b98dfb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad11bbef581ff87c5fc33e8b3d4b98dfb">&#9670;&nbsp;</a></span>mkdir()</h2>
+
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -317,7 +304,9 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ae63300a92680e28c3b2bd55046120049"></a>
+<a id="ae63300a92680e28c3b2bd55046120049"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae63300a92680e28c3b2bd55046120049">&#9670;&nbsp;</a></span>rmdir()</h2>
+
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -349,7 +338,9 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a6cfec17da170f79ad860f37515990603"></a>
+<a id="a6cfec17da170f79ad860f37515990603"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6cfec17da170f79ad860f37515990603">&#9670;&nbsp;</a></span>rename()</h2>
+
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -392,7 +383,9 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a5b69648f9d4875d97bd01b007c095f94"></a>
+<a id="a5b69648f9d4875d97bd01b007c095f94"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5b69648f9d4875d97bd01b007c095f94">&#9670;&nbsp;</a></span>chmod()</h2>
+
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -435,7 +428,9 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a51eb9e7e0bebba7af47eeff6ddcb6425"></a>
+<a id="a51eb9e7e0bebba7af47eeff6ddcb6425"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a51eb9e7e0bebba7af47eeff6ddcb6425">&#9670;&nbsp;</a></span>stat()</h2>
+
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -468,7 +463,9 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a598ef237aea287f4328743429f81ede1"></a>
+<a id="a598ef237aea287f4328743429f81ede1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a598ef237aea287f4328743429f81ede1">&#9670;&nbsp;</a></span>readdir()</h2>
+
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -501,7 +498,9 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a3cd7e391b7ec9e731e7daaa84b3c8dcc"></a>
+<a id="a3cd7e391b7ec9e731e7daaa84b3c8dcc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3cd7e391b7ec9e731e7daaa84b3c8dcc">&#9670;&nbsp;</a></span>open()</h2>
+
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -553,7 +552,9 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="aaf625a15d9268621cb10eacc4154db5e"></a>
+<a id="aaf625a15d9268621cb10eacc4154db5e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaf625a15d9268621cb10eacc4154db5e">&#9670;&nbsp;</a></span>openTextStream()</h2>
+
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -605,7 +606,9 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a7e1ad1be495a3c5e986908fa56861acd"></a>
+<a id="a7e1ad1be495a3c5e986908fa56861acd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e1ad1be495a3c5e986908fa56861acd">&#9670;&nbsp;</a></span>readFile()</h2>
+
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -638,7 +641,9 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="acb42968e4acb281d4633997321392ab1"></a>
+<a id="acb42968e4acb281d4633997321392ab1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acb42968e4acb281d4633997321392ab1">&#9670;&nbsp;</a></span>readLines()</h2>
+
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -682,7 +687,9 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a2b9fe79326ffd7bca6e432f1a667f306"></a>
+<a id="a2b9fe79326ffd7bca6e432f1a667f306"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2b9fe79326ffd7bca6e432f1a667f306">&#9670;&nbsp;</a></span>writeFile()</h2>
+
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -726,7 +733,9 @@ Variables</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Variable Documentation</h2>
-<a class="anchor" id="a2b952f3aa980367f628f5b07b0b07fb9"></a>
+<a id="a2b952f3aa980367f628f5b07b0b07fb9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2b952f3aa980367f628f5b07b0b07fb9">&#9670;&nbsp;</a></span>SEEK_SET</h2>
+
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -740,7 +749,9 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a47d661f0ea44717dba85abf4f035be8e"></a>
+<a id="a47d661f0ea44717dba85abf4f035be8e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a47d661f0ea44717dba85abf4f035be8e">&#9670;&nbsp;</a></span>SEEK_CUR</h2>
+
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -754,7 +765,9 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="aced3fe18686f4aa8395b19dc0885e429"></a>
+<a id="aced3fe18686f4aa8395b19dc0885e429"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aced3fe18686f4aa8395b19dc0885e429">&#9670;&nbsp;</a></span>SEEK_END</h2>
+
 <div class="memitem">
 <div class="memproto">
       <table class="memname">

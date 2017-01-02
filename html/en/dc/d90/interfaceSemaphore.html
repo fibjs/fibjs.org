@@ -4,6 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Javascript on Fiber: Semaphore Interface Reference</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
@@ -14,14 +15,10 @@
 <script type="text/javascript" src="../../navtree.js"></script>
 <script type="text/javascript">
   $(document).ready(initResizable);
-  $(window).load(resizeHeight);
 </script>
 <link href="../../search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../search/searchdata.js"></script>
 <script type="text/javascript" src="../../search/search.js"></script>
-<script type="text/javascript">
-  $(document).ready(function() { init_search(); });
-</script>
 <link href="../../doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -45,33 +42,15 @@
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 </script>
-  <div id="navrow1" class="tabs">
-    <ul class="tablist">
-      <li><a href="../../index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="../../pages.html"><span>Tutorial</span></a></li>
-      <li><a href="../../namespaces.html"><span>Module</span></a></li>
-      <li><a href="../../annotated.html"><span>Object</span></a></li>
-      <li><a href="https://github.com/xicilion/fibjs"><span>Download</span></a></li>
-      <li><a href="http://named.cn/fibjs"><span>Forum</span></a></li>
-      <li><a href="../../../index.html"><span>中文版</span></a></li>
-      <li>
-        <div id="MSearchBox" class="MSearchBoxInactive">
-        <span class="left">
-          <img id="MSearchSelect" src="../../search/mag_sel.png"
-               onmouseover="return searchBox.OnSearchSelectShow()"
-               onmouseout="return searchBox.OnSearchSelectHide()"
-               alt=""/>
-          <input type="text" id="MSearchField" value="Search" accesskey="S"
-               onfocus="searchBox.OnSearchFieldFocus(true)" 
-               onblur="searchBox.OnSearchFieldFocus(false)" 
-               onkeyup="searchBox.OnSearchFieldChange(event)"/>
-          </span><span class="right">
-            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="../../search/close.png" alt=""/></a>
-          </span>
-        </div>
-      </li>
-    </ul>
-  </div>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('../../',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
 </div><!-- top -->
 <div id="side-nav" class="ui-resizable side-nav-resizable">
   <div id="nav-tree">
@@ -158,7 +137,9 @@ Public Member Functions</h2></td></tr>
 <p><a class="el" href="../../dc/d90/interfaceSemaphore.html" title="Semaphore object. ">Semaphore</a> is commonly used limited resource usage and producer/consumer model application.</p>
 <p>Use database as an example to limit concurrency: </p><div class="fragment"><div class="line">var maxconnections = 5;</div><div class="line">var l = <span class="keyword">new</span> coroutine.Semaphore(maxconnections);</div><div class="line"></div><div class="line">......</div><div class="line"></div><div class="line">l.acquire();</div><div class="line">var conn = connectdb()</div><div class="line">.....</div><div class="line">conn.close();</div><div class="line">l.release();</div></div><!-- fragment --><p>Producer/consumer model usually use with semaphore and queue together. Producer post data and consumer wait for it. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="adf61e8770130c9f386c7c78934028379"></a>
+<a id="adf61e8770130c9f386c7c78934028379"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adf61e8770130c9f386c7c78934028379">&#9670;&nbsp;</a></span>Semaphore()</h2>
+
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -183,7 +164,9 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="ab144395cba916969214bbe60f7521fed"></a>
+<a id="ab144395cba916969214bbe60f7521fed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab144395cba916969214bbe60f7521fed">&#9670;&nbsp;</a></span>wait()</h2>
+
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -200,7 +183,9 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a2b45b66bfcb4fd6a03c998dd8e21d27e"></a>
+<a id="a2b45b66bfcb4fd6a03c998dd8e21d27e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2b45b66bfcb4fd6a03c998dd8e21d27e">&#9670;&nbsp;</a></span>post()</h2>
+
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -217,7 +202,9 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ab555508a557440f9d2e27bd5f8223ea7"></a>
+<a id="ab555508a557440f9d2e27bd5f8223ea7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab555508a557440f9d2e27bd5f8223ea7">&#9670;&nbsp;</a></span>trywait()</h2>
+
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -235,7 +222,9 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a172821036c61bf18f75953175227c4fa"></a>
+<a id="a172821036c61bf18f75953175227c4fa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a172821036c61bf18f75953175227c4fa">&#9670;&nbsp;</a></span>acquire()</h2>
+
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -271,7 +260,9 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ad11a1833268d15bc545b958789bd7e74"></a>
+<a id="ad11a1833268d15bc545b958789bd7e74"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad11a1833268d15bc545b958789bd7e74">&#9670;&nbsp;</a></span>release()</h2>
+
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -297,7 +288,9 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a6b88dbc459449d2280338e5b702a68b4"></a>
+<a id="a6b88dbc459449d2280338e5b702a68b4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6b88dbc459449d2280338e5b702a68b4">&#9670;&nbsp;</a></span>dispose()</h2>
+
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -322,7 +315,9 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ac61f07a7d6c5471293371086af3186bd"></a>
+<a id="ac61f07a7d6c5471293371086af3186bd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac61f07a7d6c5471293371086af3186bd">&#9670;&nbsp;</a></span>toString()</h2>
+
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -350,7 +345,9 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ad66be13eb5b7c5f560fd8511565138c4"></a>
+<a id="ad66be13eb5b7c5f560fd8511565138c4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad66be13eb5b7c5f560fd8511565138c4">&#9670;&nbsp;</a></span>toJSON()</h2>
+
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -383,7 +380,9 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ab9261a7662bc8bb4a898bc15dc16f206"></a>
+<a id="ab9261a7662bc8bb4a898bc15dc16f206"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab9261a7662bc8bb4a898bc15dc16f206">&#9670;&nbsp;</a></span>valueOf()</h2>
+
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">

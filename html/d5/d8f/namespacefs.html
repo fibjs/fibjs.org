@@ -4,6 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Javascript on Fiber: fs 模块参考手册</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
@@ -14,14 +15,10 @@
 <script type="text/javascript" src="../../navtree.js"></script>
 <script type="text/javascript">
   $(document).ready(initResizable);
-  $(window).load(resizeHeight);
 </script>
 <link href="../../search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../search/searchdata.js"></script>
 <script type="text/javascript" src="../../search/search.js"></script>
-<script type="text/javascript">
-  $(document).ready(function() { init_search(); });
-</script>
 <link href="../../doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -45,33 +42,15 @@
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "../../search",false,'搜索');
 </script>
-  <div id="navrow1" class="tabs">
-    <ul class="tablist">
-      <li><a href="../../index.html"><span>首页</span></a></li>
-      <li><a href="../../pages.html"><span>教程</span></a></li>
-      <li><a href="../../namespaces.html"><span>模块</span></a></li>
-      <li><a href="../../annotated.html"><span>对象</span></a></li>
-      <li><a href="https://github.com/xicilion/fibjs"><span>下载</span></a></li>
-      <li><a href="http://named.cn/fibjs"><span>社区</span></a></li>
-      <li><a href="../../en/index.html"><span>English</span></a></li>
-      <li>
-        <div id="MSearchBox" class="MSearchBoxInactive">
-        <span class="left">
-          <img id="MSearchSelect" src="../../search/mag_sel.png"
-               onmouseover="return searchBox.OnSearchSelectShow()"
-               onmouseout="return searchBox.OnSearchSelectHide()"
-               alt=""/>
-          <input type="text" id="MSearchField" value="搜索" accesskey="S"
-               onfocus="searchBox.OnSearchFieldFocus(true)" 
-               onblur="searchBox.OnSearchFieldFocus(false)" 
-               onkeyup="searchBox.OnSearchFieldChange(event)"/>
-          </span><span class="right">
-            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="../../search/close.png" alt=""/></a>
-          </span>
-        </div>
-      </li>
-    </ul>
-  </div>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('../../',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
 </div><!-- top -->
 <div id="side-nav" class="ui-resizable side-nav-resizable">
   <div id="nav-tree">
@@ -148,7 +127,7 @@ $(document).ready(function(){initNavTree('d5/d8f/namespacefs.html','../../');});
 <tr class="memitem:a9e774ee83e01eb9115e65c0c2c38e8b4"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="../../d6/d9c/interfaceSeekableStream.html">SeekableStream</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d8f/namespacefs.html#a9e774ee83e01eb9115e65c0c2c38e8b4">open</a> (String fname, String flags=&quot;r&quot;) async</td></tr>
 <tr class="memdesc:a9e774ee83e01eb9115e65c0c2c38e8b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">打开文件，用于读取，写入，或者同时读写  <a href="#a9e774ee83e01eb9115e65c0c2c38e8b4">更多...</a><br /></td></tr>
 <tr class="separator:a9e774ee83e01eb9115e65c0c2c38e8b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a89dd7e13cf5af6cf45cae584dc37016b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a89dd7e13cf5af6cf45cae584dc37016b"></a>
+<tr class="memitem:a89dd7e13cf5af6cf45cae584dc37016b"><td class="memItemLeft" align="right" valign="top"><a id="a89dd7e13cf5af6cf45cae584dc37016b"></a>
 static <a class="el" href="../../d6/d9c/interfaceSeekableStream.html">SeekableStream</a>&#160;</td><td class="memItemRight" valign="bottom"><b>tmpFile</b> () async</td></tr>
 <tr class="separator:a89dd7e13cf5af6cf45cae584dc37016b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaf625a15d9268621cb10eacc4154db5e"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="../../d0/d37/interfaceBufferedStream.html">BufferedStream</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d8f/namespacefs.html#aaf625a15d9268621cb10eacc4154db5e">openTextStream</a> (String fname, String flags=&quot;r&quot;) async</td></tr>
@@ -185,7 +164,9 @@ static <a class="el" href="../../d6/d9c/interfaceSeekableStream.html">SeekableSt
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p>文件系统处理模块 </p>
 <p>使用方法： </p><div class="fragment"><div class="line">var <a class="code" href="../../d5/d8f/namespacefs.html">fs</a> = require(<span class="stringliteral">&#39;fs&#39;</span>);</div></div><!-- fragment --> </div><h2 class="groupheader">函数说明</h2>
-<a class="anchor" id="a4abe84709aae93e90cf3028c6c13db96"></a>
+<a id="a4abe84709aae93e90cf3028c6c13db96"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4abe84709aae93e90cf3028c6c13db96">&#9670;&nbsp;</a></span>exists()</h2>
+
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -218,7 +199,9 @@ static <a class="el" href="../../d6/d9c/interfaceSeekableStream.html">SeekableSt
 
 </div>
 </div>
-<a class="anchor" id="ad9728d670aa8f486d76c4052f6c8acd5"></a>
+<a id="ad9728d670aa8f486d76c4052f6c8acd5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad9728d670aa8f486d76c4052f6c8acd5">&#9670;&nbsp;</a></span>unlink()</h2>
+
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -250,7 +233,9 @@ static <a class="el" href="../../d6/d9c/interfaceSeekableStream.html">SeekableSt
 
 </div>
 </div>
-<a class="anchor" id="a5e69516c3f8512b7b4564cf65449f4c7"></a>
+<a id="a5e69516c3f8512b7b4564cf65449f4c7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5e69516c3f8512b7b4564cf65449f4c7">&#9670;&nbsp;</a></span>umask()</h2>
+
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -283,7 +268,9 @@ static <a class="el" href="../../d6/d9c/interfaceSeekableStream.html">SeekableSt
 
 </div>
 </div>
-<a class="anchor" id="ad11bbef581ff87c5fc33e8b3d4b98dfb"></a>
+<a id="ad11bbef581ff87c5fc33e8b3d4b98dfb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad11bbef581ff87c5fc33e8b3d4b98dfb">&#9670;&nbsp;</a></span>mkdir()</h2>
+
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -326,7 +313,9 @@ static <a class="el" href="../../d6/d9c/interfaceSeekableStream.html">SeekableSt
 
 </div>
 </div>
-<a class="anchor" id="ae63300a92680e28c3b2bd55046120049"></a>
+<a id="ae63300a92680e28c3b2bd55046120049"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae63300a92680e28c3b2bd55046120049">&#9670;&nbsp;</a></span>rmdir()</h2>
+
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -358,7 +347,9 @@ static <a class="el" href="../../d6/d9c/interfaceSeekableStream.html">SeekableSt
 
 </div>
 </div>
-<a class="anchor" id="a6cfec17da170f79ad860f37515990603"></a>
+<a id="a6cfec17da170f79ad860f37515990603"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6cfec17da170f79ad860f37515990603">&#9670;&nbsp;</a></span>rename()</h2>
+
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -401,7 +392,9 @@ static <a class="el" href="../../d6/d9c/interfaceSeekableStream.html">SeekableSt
 
 </div>
 </div>
-<a class="anchor" id="aeff5066a3493122a9cecd8977cbd83d9"></a>
+<a id="aeff5066a3493122a9cecd8977cbd83d9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeff5066a3493122a9cecd8977cbd83d9">&#9670;&nbsp;</a></span>copy()</h2>
+
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -444,7 +437,9 @@ static <a class="el" href="../../d6/d9c/interfaceSeekableStream.html">SeekableSt
 
 </div>
 </div>
-<a class="anchor" id="a5b69648f9d4875d97bd01b007c095f94"></a>
+<a id="a5b69648f9d4875d97bd01b007c095f94"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5b69648f9d4875d97bd01b007c095f94">&#9670;&nbsp;</a></span>chmod()</h2>
+
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -487,7 +482,9 @@ static <a class="el" href="../../d6/d9c/interfaceSeekableStream.html">SeekableSt
 
 </div>
 </div>
-<a class="anchor" id="a51eb9e7e0bebba7af47eeff6ddcb6425"></a>
+<a id="a51eb9e7e0bebba7af47eeff6ddcb6425"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a51eb9e7e0bebba7af47eeff6ddcb6425">&#9670;&nbsp;</a></span>stat()</h2>
+
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -520,7 +517,9 @@ static <a class="el" href="../../d6/d9c/interfaceSeekableStream.html">SeekableSt
 
 </div>
 </div>
-<a class="anchor" id="a598ef237aea287f4328743429f81ede1"></a>
+<a id="a598ef237aea287f4328743429f81ede1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a598ef237aea287f4328743429f81ede1">&#9670;&nbsp;</a></span>readdir()</h2>
+
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -553,7 +552,9 @@ static <a class="el" href="../../d6/d9c/interfaceSeekableStream.html">SeekableSt
 
 </div>
 </div>
-<a class="anchor" id="a9e774ee83e01eb9115e65c0c2c38e8b4"></a>
+<a id="a9e774ee83e01eb9115e65c0c2c38e8b4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9e774ee83e01eb9115e65c0c2c38e8b4">&#9670;&nbsp;</a></span>open()</h2>
+
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -605,7 +606,9 @@ static <a class="el" href="../../d6/d9c/interfaceSeekableStream.html">SeekableSt
 
 </div>
 </div>
-<a class="anchor" id="aaf625a15d9268621cb10eacc4154db5e"></a>
+<a id="aaf625a15d9268621cb10eacc4154db5e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaf625a15d9268621cb10eacc4154db5e">&#9670;&nbsp;</a></span>openTextStream()</h2>
+
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -657,7 +660,9 @@ static <a class="el" href="../../d6/d9c/interfaceSeekableStream.html">SeekableSt
 
 </div>
 </div>
-<a class="anchor" id="a3c55a9cb42fc1d40decfd30bd2e739e1"></a>
+<a id="a3c55a9cb42fc1d40decfd30bd2e739e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3c55a9cb42fc1d40decfd30bd2e739e1">&#9670;&nbsp;</a></span>readTextFile()</h2>
+
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -690,7 +695,9 @@ static <a class="el" href="../../d6/d9c/interfaceSeekableStream.html">SeekableSt
 
 </div>
 </div>
-<a class="anchor" id="aeb0ddbf1776f7d70fa8eb8f9f0f7cb5d"></a>
+<a id="aeb0ddbf1776f7d70fa8eb8f9f0f7cb5d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb0ddbf1776f7d70fa8eb8f9f0f7cb5d">&#9670;&nbsp;</a></span>readFile()</h2>
+
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -723,7 +730,9 @@ static <a class="el" href="../../d6/d9c/interfaceSeekableStream.html">SeekableSt
 
 </div>
 </div>
-<a class="anchor" id="acb42968e4acb281d4633997321392ab1"></a>
+<a id="acb42968e4acb281d4633997321392ab1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acb42968e4acb281d4633997321392ab1">&#9670;&nbsp;</a></span>readLines()</h2>
+
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -767,7 +776,9 @@ static <a class="el" href="../../d6/d9c/interfaceSeekableStream.html">SeekableSt
 
 </div>
 </div>
-<a class="anchor" id="a7f608ea611628c8dc7aadc79f7056085"></a>
+<a id="a7f608ea611628c8dc7aadc79f7056085"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7f608ea611628c8dc7aadc79f7056085">&#9670;&nbsp;</a></span>writeTextFile()</h2>
+
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -810,7 +821,9 @@ static <a class="el" href="../../d6/d9c/interfaceSeekableStream.html">SeekableSt
 
 </div>
 </div>
-<a class="anchor" id="a4cfc37144cc2ba63948970a603240117"></a>
+<a id="a4cfc37144cc2ba63948970a603240117"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4cfc37144cc2ba63948970a603240117">&#9670;&nbsp;</a></span>writeFile()</h2>
+
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -854,7 +867,9 @@ static <a class="el" href="../../d6/d9c/interfaceSeekableStream.html">SeekableSt
 </div>
 </div>
 <h2 class="groupheader">变量说明</h2>
-<a class="anchor" id="a2b952f3aa980367f628f5b07b0b07fb9"></a>
+<a id="a2b952f3aa980367f628f5b07b0b07fb9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2b952f3aa980367f628f5b07b0b07fb9">&#9670;&nbsp;</a></span>SEEK_SET</h2>
+
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -868,7 +883,9 @@ static <a class="el" href="../../d6/d9c/interfaceSeekableStream.html">SeekableSt
 
 </div>
 </div>
-<a class="anchor" id="a47d661f0ea44717dba85abf4f035be8e"></a>
+<a id="a47d661f0ea44717dba85abf4f035be8e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a47d661f0ea44717dba85abf4f035be8e">&#9670;&nbsp;</a></span>SEEK_CUR</h2>
+
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -882,7 +899,9 @@ static <a class="el" href="../../d6/d9c/interfaceSeekableStream.html">SeekableSt
 
 </div>
 </div>
-<a class="anchor" id="aced3fe18686f4aa8395b19dc0885e429"></a>
+<a id="aced3fe18686f4aa8395b19dc0885e429"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aced3fe18686f4aa8395b19dc0885e429">&#9670;&nbsp;</a></span>SEEK_END</h2>
+
 <div class="memitem">
 <div class="memproto">
       <table class="memname">

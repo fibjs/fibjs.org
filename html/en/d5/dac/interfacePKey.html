@@ -4,6 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Javascript on Fiber: PKey Interface Reference</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
@@ -14,14 +15,10 @@
 <script type="text/javascript" src="../../navtree.js"></script>
 <script type="text/javascript">
   $(document).ready(initResizable);
-  $(window).load(resizeHeight);
 </script>
 <link href="../../search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../search/searchdata.js"></script>
 <script type="text/javascript" src="../../search/search.js"></script>
-<script type="text/javascript">
-  $(document).ready(function() { init_search(); });
-</script>
 <link href="../../doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -45,33 +42,15 @@
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 </script>
-  <div id="navrow1" class="tabs">
-    <ul class="tablist">
-      <li><a href="../../index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="../../pages.html"><span>Tutorial</span></a></li>
-      <li><a href="../../namespaces.html"><span>Module</span></a></li>
-      <li><a href="../../annotated.html"><span>Object</span></a></li>
-      <li><a href="https://github.com/xicilion/fibjs"><span>Download</span></a></li>
-      <li><a href="http://named.cn/fibjs"><span>Forum</span></a></li>
-      <li><a href="../../../index.html"><span>中文版</span></a></li>
-      <li>
-        <div id="MSearchBox" class="MSearchBoxInactive">
-        <span class="left">
-          <img id="MSearchSelect" src="../../search/mag_sel.png"
-               onmouseover="return searchBox.OnSearchSelectShow()"
-               onmouseout="return searchBox.OnSearchSelectHide()"
-               alt=""/>
-          <input type="text" id="MSearchField" value="Search" accesskey="S"
-               onfocus="searchBox.OnSearchFieldFocus(true)" 
-               onblur="searchBox.OnSearchFieldFocus(false)" 
-               onkeyup="searchBox.OnSearchFieldChange(event)"/>
-          </span><span class="right">
-            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="../../search/close.png" alt=""/></a>
-          </span>
-        </div>
-      </li>
-    </ul>
-  </div>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('../../',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
 </div><!-- top -->
 <div id="side-nav" class="ui-resizable side-nav-resizable">
   <div id="nav-tree">
@@ -192,7 +171,9 @@ Public Attributes</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Asymmetric encryption algorithm object. </p>
 <p><a class="el" href="../../d5/dac/interfacePKey.html" title="Asymmetric encryption algorithm object. ">PKey</a> belongs to crypto module, to create: </p><div class="fragment"><div class="line">var k = <span class="keyword">new</span> <a class="code" href="../../de/d36/namespacecrypto.html">crypto</a>.PKey();</div></div><!-- fragment --> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="af503c064e1ddf986b394b751ddb0c4ff"></a>
+<a id="af503c064e1ddf986b394b751ddb0c4ff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af503c064e1ddf986b394b751ddb0c4ff">&#9670;&nbsp;</a></span>PKey()</h2>
+
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -210,7 +191,9 @@ Public Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="ae2f135cd9eae89cf1a83a2b9f6e21118"></a>
+<a id="ae2f135cd9eae89cf1a83a2b9f6e21118"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae2f135cd9eae89cf1a83a2b9f6e21118">&#9670;&nbsp;</a></span>genRsaKey()</h2>
+
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -234,7 +217,9 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a7773cc31cb3d406da8d84bce891e3474"></a>
+<a id="a7773cc31cb3d406da8d84bce891e3474"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7773cc31cb3d406da8d84bce891e3474">&#9670;&nbsp;</a></span>genEcKey()</h2>
+
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -258,7 +243,9 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a2a83698502fb5933c10068def45519b6"></a>
+<a id="a2a83698502fb5933c10068def45519b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2a83698502fb5933c10068def45519b6">&#9670;&nbsp;</a></span>isPrivate()</h2>
+
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -276,7 +263,9 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="af43ff2bc4e8e09020e3ae749f80ba845"></a>
+<a id="af43ff2bc4e8e09020e3ae749f80ba845"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af43ff2bc4e8e09020e3ae749f80ba845">&#9670;&nbsp;</a></span>clone()</h2>
+
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -294,7 +283,9 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a15422214b8e3334ddfd485dff78e2921"></a>
+<a id="a15422214b8e3334ddfd485dff78e2921"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a15422214b8e3334ddfd485dff78e2921">&#9670;&nbsp;</a></span>importKey() <span class="overload">[1/2]</span></h2>
+
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -329,7 +320,9 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a5509986248d46a8f2423e3b0cc45f264"></a>
+<a id="a5509986248d46a8f2423e3b0cc45f264"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5509986248d46a8f2423e3b0cc45f264">&#9670;&nbsp;</a></span>importKey() <span class="overload">[2/2]</span></h2>
+
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -364,7 +357,9 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a0925c1bccb7d62d1897b8f929e3aea02"></a>
+<a id="a0925c1bccb7d62d1897b8f929e3aea02"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0925c1bccb7d62d1897b8f929e3aea02">&#9670;&nbsp;</a></span>importFile()</h2>
+
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -399,7 +394,9 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a5444bdb6ccb0ba131996414082c6bbcf"></a>
+<a id="a5444bdb6ccb0ba131996414082c6bbcf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5444bdb6ccb0ba131996414082c6bbcf">&#9670;&nbsp;</a></span>exportPem()</h2>
+
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -417,7 +414,9 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a27bde6463e786c7a89e880df773550a4"></a>
+<a id="a27bde6463e786c7a89e880df773550a4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a27bde6463e786c7a89e880df773550a4">&#9670;&nbsp;</a></span>exportDer()</h2>
+
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -435,7 +434,9 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a9f2de9d142c9acb31dde03d5f7ef094a"></a>
+<a id="a9f2de9d142c9acb31dde03d5f7ef094a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9f2de9d142c9acb31dde03d5f7ef094a">&#9670;&nbsp;</a></span>encrypt()</h2>
+
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -460,7 +461,9 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a8357b8385141031a683ccf41058dbed0"></a>
+<a id="a8357b8385141031a683ccf41058dbed0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8357b8385141031a683ccf41058dbed0">&#9670;&nbsp;</a></span>decrypt()</h2>
+
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -485,7 +488,9 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a6b84f432a5b8c372c15e13b4636bfa76"></a>
+<a id="a6b84f432a5b8c372c15e13b4636bfa76"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6b84f432a5b8c372c15e13b4636bfa76">&#9670;&nbsp;</a></span>sign()</h2>
+
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -510,7 +515,9 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a2728751b5e6a1eafe8f06c01f9f9a5f0"></a>
+<a id="a2728751b5e6a1eafe8f06c01f9f9a5f0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2728751b5e6a1eafe8f06c01f9f9a5f0">&#9670;&nbsp;</a></span>verify()</h2>
+
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -546,7 +553,9 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a6b88dbc459449d2280338e5b702a68b4"></a>
+<a id="a6b88dbc459449d2280338e5b702a68b4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6b88dbc459449d2280338e5b702a68b4">&#9670;&nbsp;</a></span>dispose()</h2>
+
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -571,7 +580,9 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ac61f07a7d6c5471293371086af3186bd"></a>
+<a id="ac61f07a7d6c5471293371086af3186bd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac61f07a7d6c5471293371086af3186bd">&#9670;&nbsp;</a></span>toString()</h2>
+
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -599,7 +610,9 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ad66be13eb5b7c5f560fd8511565138c4"></a>
+<a id="ad66be13eb5b7c5f560fd8511565138c4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad66be13eb5b7c5f560fd8511565138c4">&#9670;&nbsp;</a></span>toJSON()</h2>
+
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -632,7 +645,9 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ab9261a7662bc8bb4a898bc15dc16f206"></a>
+<a id="ab9261a7662bc8bb4a898bc15dc16f206"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab9261a7662bc8bb4a898bc15dc16f206">&#9670;&nbsp;</a></span>valueOf()</h2>
+
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -659,7 +674,9 @@ Public Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a class="anchor" id="aa2c0c0b3b94a7f6ecd551fa994413c6b"></a>
+<a id="aa2c0c0b3b94a7f6ecd551fa994413c6b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa2c0c0b3b94a7f6ecd551fa994413c6b">&#9670;&nbsp;</a></span>name</h2>
+
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -673,7 +690,9 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a6d980218a4b4cd50e7c8acd125f58461"></a>
+<a id="a6d980218a4b4cd50e7c8acd125f58461"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6d980218a4b4cd50e7c8acd125f58461">&#9670;&nbsp;</a></span>keySize</h2>
+
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -687,7 +706,9 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a83de0c0a123cafc0ecbb383a4035c787"></a>
+<a id="a83de0c0a123cafc0ecbb383a4035c787"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a83de0c0a123cafc0ecbb383a4035c787">&#9670;&nbsp;</a></span>publicKey</h2>
+
 <div class="memitem">
 <div class="memproto">
       <table class="memname">

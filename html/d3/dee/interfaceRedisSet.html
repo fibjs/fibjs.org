@@ -4,6 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Javascript on Fiber: RedisSet接口 参考</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
@@ -14,14 +15,10 @@
 <script type="text/javascript" src="../../navtree.js"></script>
 <script type="text/javascript">
   $(document).ready(initResizable);
-  $(window).load(resizeHeight);
 </script>
 <link href="../../search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../search/searchdata.js"></script>
 <script type="text/javascript" src="../../search/search.js"></script>
-<script type="text/javascript">
-  $(document).ready(function() { init_search(); });
-</script>
 <link href="../../doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -45,33 +42,15 @@
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "../../search",false,'搜索');
 </script>
-  <div id="navrow1" class="tabs">
-    <ul class="tablist">
-      <li><a href="../../index.html"><span>首页</span></a></li>
-      <li><a href="../../pages.html"><span>教程</span></a></li>
-      <li><a href="../../namespaces.html"><span>模块</span></a></li>
-      <li><a href="../../annotated.html"><span>对象</span></a></li>
-      <li><a href="https://github.com/xicilion/fibjs"><span>下载</span></a></li>
-      <li><a href="http://named.cn/fibjs"><span>社区</span></a></li>
-      <li><a href="../../en/index.html"><span>English</span></a></li>
-      <li>
-        <div id="MSearchBox" class="MSearchBoxInactive">
-        <span class="left">
-          <img id="MSearchSelect" src="../../search/mag_sel.png"
-               onmouseover="return searchBox.OnSearchSelectShow()"
-               onmouseout="return searchBox.OnSearchSelectHide()"
-               alt=""/>
-          <input type="text" id="MSearchField" value="搜索" accesskey="S"
-               onfocus="searchBox.OnSearchFieldFocus(true)" 
-               onblur="searchBox.OnSearchFieldFocus(false)" 
-               onkeyup="searchBox.OnSearchFieldChange(event)"/>
-          </span><span class="right">
-            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="../../search/close.png" alt=""/></a>
-          </span>
-        </div>
-      </li>
-    </ul>
-  </div>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('../../',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
 </div><!-- top -->
 <div id="side-nav" class="ui-resizable side-nav-resizable">
   <div id="nav-tree">
@@ -170,7 +149,9 @@ Public 成员函数</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p><a class="el" href="../../d7/d32/interfaceRedis.html" title="Redis 数据库客户端对象 ">Redis</a> 数据库客户端 Set 对象，此对象为包含指定 key 的客户端，只有调用其方法才会操作数据库 </p>
 <p>用以操作 <a class="el" href="../../d7/d32/interfaceRedis.html" title="Redis 数据库客户端对象 ">Redis</a> 的 Set 对象，创建方法： </p><div class="fragment"><div class="line">var db = require(<span class="stringliteral">&quot;db&quot;</span>);</div><div class="line">var rdb = <span class="keyword">new</span> db.openRedis(<span class="stringliteral">&quot;redis-server&quot;</span>);</div><div class="line">var <span class="keyword">set</span> = rdb.getSet(<span class="stringliteral">&quot;test&quot;</span>);</div></div><!-- fragment --> </div><h2 class="groupheader">成员函数说明</h2>
-<a class="anchor" id="a5743d474f0b70ad7724aba02e02e5aac"></a>
+<a id="a5743d474f0b70ad7724aba02e02e5aac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5743d474f0b70ad7724aba02e02e5aac">&#9670;&nbsp;</a></span>add() <span class="overload">[1/2]</span></h2>
+
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -195,7 +176,9 @@ Public 成员函数</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a6cd2103d4dd8bc93ba167000e7a29991"></a>
+<a id="a6cd2103d4dd8bc93ba167000e7a29991"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6cd2103d4dd8bc93ba167000e7a29991">&#9670;&nbsp;</a></span>add() <span class="overload">[2/2]</span></h2>
+
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -220,7 +203,9 @@ Public 成员函数</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a7549c5eff67a81a05e92e9a4c5f62ed3"></a>
+<a id="a7549c5eff67a81a05e92e9a4c5f62ed3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7549c5eff67a81a05e92e9a4c5f62ed3">&#9670;&nbsp;</a></span>remove() <span class="overload">[1/2]</span></h2>
+
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -245,7 +230,9 @@ Public 成员函数</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a138514c1662cba198c4dbc1b7f994b88"></a>
+<a id="a138514c1662cba198c4dbc1b7f994b88"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a138514c1662cba198c4dbc1b7f994b88">&#9670;&nbsp;</a></span>remove() <span class="overload">[2/2]</span></h2>
+
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -270,7 +257,9 @@ Public 成员函数</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ad906a3ba2dfe4520f8044450eba90c9b"></a>
+<a id="ad906a3ba2dfe4520f8044450eba90c9b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad906a3ba2dfe4520f8044450eba90c9b">&#9670;&nbsp;</a></span>len()</h2>
+
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -288,7 +277,9 @@ Public 成员函数</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a451d5ac9129642f683a2f692d02e6bab"></a>
+<a id="a451d5ac9129642f683a2f692d02e6bab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a451d5ac9129642f683a2f692d02e6bab">&#9670;&nbsp;</a></span>exists()</h2>
+
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -307,7 +298,9 @@ Public 成员函数</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a5aa2f7795ced6b0d35184f1f29ea67f9"></a>
+<a id="a5aa2f7795ced6b0d35184f1f29ea67f9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5aa2f7795ced6b0d35184f1f29ea67f9">&#9670;&nbsp;</a></span>members()</h2>
+
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -325,7 +318,9 @@ Public 成员函数</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="aa53a6e8ce28ac3cf527649e780f91554"></a>
+<a id="aa53a6e8ce28ac3cf527649e780f91554"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa53a6e8ce28ac3cf527649e780f91554">&#9670;&nbsp;</a></span>pop()</h2>
+
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -343,7 +338,9 @@ Public 成员函数</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a4ce36ad16b4d65e66f5d278fa68bf36f"></a>
+<a id="a4ce36ad16b4d65e66f5d278fa68bf36f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4ce36ad16b4d65e66f5d278fa68bf36f">&#9670;&nbsp;</a></span>randMember() <span class="overload">[1/2]</span></h2>
+
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -361,7 +358,9 @@ Public 成员函数</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a5ab861f89683196b6015b1bf8502205a"></a>
+<a id="a5ab861f89683196b6015b1bf8502205a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5ab861f89683196b6015b1bf8502205a">&#9670;&nbsp;</a></span>randMember() <span class="overload">[2/2]</span></h2>
+
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -386,7 +385,9 @@ Public 成员函数</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a6b88dbc459449d2280338e5b702a68b4"></a>
+<a id="a6b88dbc459449d2280338e5b702a68b4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6b88dbc459449d2280338e5b702a68b4">&#9670;&nbsp;</a></span>dispose()</h2>
+
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -411,7 +412,9 @@ Public 成员函数</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a94c197c586ecfcb7cb733e0d543ce5ad"></a>
+<a id="a94c197c586ecfcb7cb733e0d543ce5ad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a94c197c586ecfcb7cb733e0d543ce5ad">&#9670;&nbsp;</a></span>equals()</h2>
+
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -444,7 +447,9 @@ Public 成员函数</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ac61f07a7d6c5471293371086af3186bd"></a>
+<a id="ac61f07a7d6c5471293371086af3186bd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac61f07a7d6c5471293371086af3186bd">&#9670;&nbsp;</a></span>toString()</h2>
+
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -472,7 +477,9 @@ Public 成员函数</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ad66be13eb5b7c5f560fd8511565138c4"></a>
+<a id="ad66be13eb5b7c5f560fd8511565138c4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad66be13eb5b7c5f560fd8511565138c4">&#9670;&nbsp;</a></span>toJSON()</h2>
+
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -505,7 +512,9 @@ Public 成员函数</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ab9261a7662bc8bb4a898bc15dc16f206"></a>
+<a id="ab9261a7662bc8bb4a898bc15dc16f206"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab9261a7662bc8bb4a898bc15dc16f206">&#9670;&nbsp;</a></span>valueOf()</h2>
+
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">

@@ -4,6 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Javascript on Fiber: SQLite Interface Reference</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
@@ -14,14 +15,10 @@
 <script type="text/javascript" src="../../navtree.js"></script>
 <script type="text/javascript">
   $(document).ready(initResizable);
-  $(window).load(resizeHeight);
 </script>
 <link href="../../search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../search/searchdata.js"></script>
 <script type="text/javascript" src="../../search/search.js"></script>
-<script type="text/javascript">
-  $(document).ready(function() { init_search(); });
-</script>
 <link href="../../doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -45,33 +42,15 @@
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 </script>
-  <div id="navrow1" class="tabs">
-    <ul class="tablist">
-      <li><a href="../../index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="../../pages.html"><span>Tutorial</span></a></li>
-      <li><a href="../../namespaces.html"><span>Module</span></a></li>
-      <li><a href="../../annotated.html"><span>Object</span></a></li>
-      <li><a href="https://github.com/xicilion/fibjs"><span>Download</span></a></li>
-      <li><a href="http://named.cn/fibjs"><span>Forum</span></a></li>
-      <li><a href="../../../index.html"><span>中文版</span></a></li>
-      <li>
-        <div id="MSearchBox" class="MSearchBoxInactive">
-        <span class="left">
-          <img id="MSearchSelect" src="../../search/mag_sel.png"
-               onmouseover="return searchBox.OnSearchSelectShow()"
-               onmouseout="return searchBox.OnSearchSelectHide()"
-               alt=""/>
-          <input type="text" id="MSearchField" value="Search" accesskey="S"
-               onfocus="searchBox.OnSearchFieldFocus(true)" 
-               onblur="searchBox.OnSearchFieldFocus(false)" 
-               onkeyup="searchBox.OnSearchFieldChange(event)"/>
-          </span><span class="right">
-            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="../../search/close.png" alt=""/></a>
-          </span>
-        </div>
-      </li>
-    </ul>
-  </div>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('../../',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
 </div><!-- top -->
 <div id="side-nav" class="ui-resizable side-nav-resizable">
   <div id="nav-tree">
@@ -171,7 +150,9 @@ Public Attributes</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>sqlite database connection object </p>
 <p>Used for <a class="el" href="../../d0/d45/namespacedb.html#ae6a25ce20c2a752cf20e7a577207f198" title="This method offer a general entrance to open a database, call different engines according to the prov...">db.open</a> or <a class="el" href="../../d0/d45/namespacedb.html#a1986951d5ca68ee0ba8361053a84f637" title="Open a sqlite database. ">db.openSQLite</a>, to create it: </p><div class="fragment"><div class="line">var slite = db.openSQLite(<span class="stringliteral">&quot;sqlite:/path/to/db&quot;</span>);</div></div><!-- fragment --> </div><h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="a10a16277a7833d9e3a0e70b8c9be47fd"></a>
+<a id="a10a16277a7833d9e3a0e70b8c9be47fd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a10a16277a7833d9e3a0e70b8c9be47fd">&#9670;&nbsp;</a></span>backup()</h2>
+
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -195,7 +176,9 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a4f19b7fb871da01a3133649c27797a83"></a>
+<a id="a4f19b7fb871da01a3133649c27797a83"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4f19b7fb871da01a3133649c27797a83">&#9670;&nbsp;</a></span>close()</h2>
+
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -220,7 +203,9 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="aa6d68c3a518d46207b42d7f638b07a1e"></a>
+<a id="aa6d68c3a518d46207b42d7f638b07a1e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa6d68c3a518d46207b42d7f638b07a1e">&#9670;&nbsp;</a></span>begin()</h2>
+
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -245,7 +230,9 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a1cfd7776b7f7b4a34e216f33b4df823b"></a>
+<a id="a1cfd7776b7f7b4a34e216f33b4df823b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1cfd7776b7f7b4a34e216f33b4df823b">&#9670;&nbsp;</a></span>commit()</h2>
+
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -270,7 +257,9 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ab4f47bec17ba6b3799c58ea8d0698b15"></a>
+<a id="ab4f47bec17ba6b3799c58ea8d0698b15"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab4f47bec17ba6b3799c58ea8d0698b15">&#9670;&nbsp;</a></span>rollback()</h2>
+
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -295,7 +284,9 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a0f8cde8557dcc248e5c1064791355845"></a>
+<a id="a0f8cde8557dcc248e5c1064791355845"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0f8cde8557dcc248e5c1064791355845">&#9670;&nbsp;</a></span>execute() <span class="overload">[1/2]</span></h2>
+
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -328,7 +319,9 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ab5ddefb9b2c6c1a0cdfdac90e13de736"></a>
+<a id="ab5ddefb9b2c6c1a0cdfdac90e13de736"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab5ddefb9b2c6c1a0cdfdac90e13de736">&#9670;&nbsp;</a></span>execute() <span class="overload">[2/2]</span></h2>
+
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -372,7 +365,9 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ae6d31f438b2c274f32aade526f92da2f"></a>
+<a id="ae6d31f438b2c274f32aade526f92da2f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae6d31f438b2c274f32aade526f92da2f">&#9670;&nbsp;</a></span>format()</h2>
+
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -416,7 +411,9 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a6b88dbc459449d2280338e5b702a68b4"></a>
+<a id="a6b88dbc459449d2280338e5b702a68b4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6b88dbc459449d2280338e5b702a68b4">&#9670;&nbsp;</a></span>dispose()</h2>
+
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -441,7 +438,9 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ac61f07a7d6c5471293371086af3186bd"></a>
+<a id="ac61f07a7d6c5471293371086af3186bd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac61f07a7d6c5471293371086af3186bd">&#9670;&nbsp;</a></span>toString()</h2>
+
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -469,7 +468,9 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ad66be13eb5b7c5f560fd8511565138c4"></a>
+<a id="ad66be13eb5b7c5f560fd8511565138c4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad66be13eb5b7c5f560fd8511565138c4">&#9670;&nbsp;</a></span>toJSON()</h2>
+
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -502,7 +503,9 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ab9261a7662bc8bb4a898bc15dc16f206"></a>
+<a id="ab9261a7662bc8bb4a898bc15dc16f206"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab9261a7662bc8bb4a898bc15dc16f206">&#9670;&nbsp;</a></span>valueOf()</h2>
+
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -529,7 +532,9 @@ Public Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a class="anchor" id="a9a2a52bdba24af6fe86ba65b149e3f1b"></a>
+<a id="a9a2a52bdba24af6fe86ba65b149e3f1b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9a2a52bdba24af6fe86ba65b149e3f1b">&#9670;&nbsp;</a></span>fileName</h2>
+
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -543,7 +548,9 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ac1125a44ad8f97d1cf7e9a3acd08db1e"></a>
+<a id="ac1125a44ad8f97d1cf7e9a3acd08db1e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac1125a44ad8f97d1cf7e9a3acd08db1e">&#9670;&nbsp;</a></span>timeout</h2>
+
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
