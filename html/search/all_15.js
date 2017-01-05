@@ -15,7 +15,7 @@ var searchData=
   ['usage',['usage',['../dc/d22/interfaceX509Cert.html#abf97c5907bc00259d7dce54d788ff235',1,'X509Cert']]],
   ['use',['use',['../d2/d68/interfaceMySQL.html#af3d7af443d45a1e778aa00a76c28f51b',1,'MySQL::use()'],['../dc/d01/interfaceMSSQL.html#a5c86112295e3da4ff6bcc8902869a5c0',1,'MSSQL::use()']]],
   ['useragent',['userAgent',['../df/d4b/interfaceHttpClient.html#ad90d65faa88f13cee74b3177f4214cb0',1,'HttpClient::userAgent()'],['../d3/d69/namespacehttp.html#ab2c77b1e9c3d364e79138357ca41530d',1,'http::userAgent()']]],
-  ['username',['username',['../de/de5/interfaceUrlObject.html#ae49bfa5b016d2ad39ba3bf59bbc529d1',1,'UrlObject']]],
+  ['username',['username',['../de/de5/interfaceUrlObject.html#ab1acae796bc860407fdb9fc80ae23f45',1,'UrlObject']]],
   ['util',['util',['../d6/d72/namespaceutil.html',1,'']]],
   ['uuid',['uuid',['../d1/dd6/namespaceuuid.html',1,'uuid'],['../d1/dd6/namespaceuuid.html#a5fdc6d7f478a448083de3d30305d9d79',1,'uuid::uuid(String s)'],['../d1/dd6/namespaceuuid.html#a61e618bfdc2d1146b05c0a73b7dbfe25',1,'uuid::uuid(Buffer data)']]],
   ['uuidvalue',['uuidValue',['../d6/de7/interfaceuuidValue.html',1,'']]]
