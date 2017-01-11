@@ -13,6 +13,8 @@ var interfaceDBResult =
     [ "filter", "d9/db4/interfaceDBResult.html#aecc21fad0418e7f5e67fccbebcabd7a4", null ],
     [ "forEach", "d9/db4/interfaceDBResult.html#ad8b80fe919fe0ef22f731773487e3228", null ],
     [ "map", "d9/db4/interfaceDBResult.html#aff5474e5559d9f0bd1f2acc7f3039ab2", null ],
+    [ "sort", "d9/db4/interfaceDBResult.html#a68bdab9cb1d731ce5b8116c2693213ce", null ],
+    [ "sort", "d9/db4/interfaceDBResult.html#a98b2230525baa2b7b7bea9b2c1df4fbe", null ],
     [ "toArray", "d9/db4/interfaceDBResult.html#a27852dc20a97256ca104253eb20e5f67", null ],
     [ "dispose", "d9/db4/interfaceDBResult.html#a6b88dbc459449d2280338e5b702a68b4", null ],
     [ "equals", "d9/db4/interfaceDBResult.html#a94c197c586ecfcb7cb733e0d543ce5ad", null ],

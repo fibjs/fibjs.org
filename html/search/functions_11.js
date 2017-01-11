@@ -11,6 +11,7 @@ var searchData=
   ['read',['read',['../d6/db7/interfaceMessage.html#a1ac79feaa497a9bdb849d41ae5a5fc93',1,'Message::read()'],['../d4/dc7/interfaceStream.html#a7a38cc9beea41220157a0263dcd86bc7',1,'Stream::read()'],['../d9/d03/interfaceZipFile.html#a61271ea9f98f04cb8d091d7841c442fd',1,'ZipFile::read()']]],
   ['readall',['readAll',['../d6/db7/interfaceMessage.html#aff82e4029da32471f8d5b3bf6142e8fc',1,'Message::readAll()'],['../d6/d9c/interfaceSeekableStream.html#a7884a629ffef5ed7d3ca51af8eb52bfb',1,'SeekableStream::readAll()'],['../d9/d03/interfaceZipFile.html#a84e7d90c614a63ff04ffefba683895bf',1,'ZipFile::readAll()']]],
   ['readdir',['readdir',['../d5/d8f/namespacefs.html#a598ef237aea287f4328743429f81ede1',1,'fs']]],
+  ['readdirsync',['readdirSync',['../d5/d8f/namespacefs.html#a8b687854a662b716a575b6c8b80963b4',1,'fs']]],
   ['readdoublebe',['readDoubleBE',['../d9/dae/interfaceBuffer.html#a9685960508dc926d3231d7dcd5bbb2b6',1,'Buffer']]],
   ['readdoublele',['readDoubleLE',['../d9/dae/interfaceBuffer.html#adb6bbf1658b43c21d7579ff59916d3f8',1,'Buffer']]],
   ['readfile',['readFile',['../d5/d8f/namespacefs.html#aeb0ddbf1776f7d70fa8eb8f9f0f7cb5d',1,'fs']]],
