@@ -42,6 +42,7 @@ var searchData=
   ['execute',['execute',['../d8/d2c/interfaceDbConnection.html#a0f8cde8557dcc248e5c1064791355845',1,'DbConnection::execute(String sql) async'],['../d8/d2c/interfaceDbConnection.html#ab5ddefb9b2c6c1a0cdfdac90e13de736',1,'DbConnection::execute(String sql,...)']]],
   ['exist',['exist',['../d0/df6/interfaceExpect.html#ac4f92d399ab7f74970d0bbc709fded48',1,'Expect::exist()'],['../d2/dab/namespaceassert.html#ae5e2442dccceb697ae9f41bce599cc48',1,'assert::exist()']]],
   ['exists',['exists',['../d7/d34/interfaceGridFS.html#a6be0722869d22e9c7e24124f7b89bac7',1,'GridFS::exists()'],['../d7/d32/interfaceRedis.html#a94379d8f6c93448e2ea6df5d5dc9f888',1,'Redis::exists()'],['../d9/d58/interfaceRedisHash.html#a60bb38924cf1174b1871c923f49e7bee',1,'RedisHash::exists()'],['../d3/dee/interfaceRedisSet.html#a451d5ac9129642f683a2f692d02e6bab',1,'RedisSet::exists()'],['../d5/d8f/namespacefs.html#a4abe84709aae93e90cf3028c6c13db96',1,'fs::exists()']]],
+  ['existssync',['existsSync',['../d5/d8f/namespacefs.html#a828508b6b6a7baa69929e54f11bd0121',1,'fs']]],
   ['exit',['exit',['../d8/d25/namespaceprocess.html#a219dc13763dff453b237901c89bc6add',1,'process']]],
   ['expect',['Expect',['../d0/df6/interfaceExpect.html',1,'Expect'],['../df/d04/namespacetest.html#a278434a7f57c827da6585fc0f23499ea',1,'test::expect()']]],
   ['expire',['expire',['../d7/d32/interfaceRedis.html#ae7417ef57367f0b0d6d302f32354fe55',1,'Redis']]],

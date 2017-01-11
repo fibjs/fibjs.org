@@ -26,6 +26,7 @@ var searchData=
   ['openredis',['openRedis',['../d0/d45/namespacedb.html#a4d7f2379592b1a85a802b8b895ba27df',1,'db']]],
   ['opensmtp',['openSmtp',['../dc/d27/namespacenet.html#aa0f917a1cc6aa9aecfe130456e3f9415',1,'net']]],
   ['opensqlite',['openSQLite',['../d0/d45/namespacedb.html#a1986951d5ca68ee0ba8361053a84f637',1,'db']]],
+  ['opensync',['openSync',['../d5/d8f/namespacefs.html#a405870e84dfb1e371e37dbfc84b91bb9',1,'fs']]],
   ['opentextstream',['openTextStream',['../d5/d8f/namespacefs.html#aaf625a15d9268621cb10eacc4154db5e',1,'fs']]],
   ['or',['or',['../df/dc1/interfaceInt64.html#aa22505e8e3807d664ace66a95e0b89a1',1,'Int64']]]
 ];

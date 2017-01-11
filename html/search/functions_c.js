@@ -11,6 +11,7 @@ var searchData=
   ['message',['Message',['../d6/db7/interfaceMessage.html#a4fc4f717b634e66070366cb7722d7761',1,'Message::Message()'],['../d0/d42/namespacewebsocket.html#acbea8ddfa08a7bcd756f775342a33a92',1,'websocket::Message()']]],
   ['mget',['mget',['../d0/d9e/interfaceLevelDB.html#a971e7ac07e400589974f41ae0475f0a9',1,'LevelDB::mget()'],['../d7/d32/interfaceRedis.html#ad511c75f0b8b704b8f72322d854f9cc6',1,'Redis::mget(Array keys)'],['../d7/d32/interfaceRedis.html#a0acadaf191bafc9dff5c8f2dad482ba9',1,'Redis::mget(...)'],['../d9/d58/interfaceRedisHash.html#a91cccc59189209f7e27be07e41b9792a',1,'RedisHash::mget(Array fields)'],['../d9/d58/interfaceRedisHash.html#ae05e8adf0c2895411bc1368b4f657f19',1,'RedisHash::mget(...)']]],
   ['mkdir',['mkdir',['../d5/d8f/namespacefs.html#ad11bbef581ff87c5fc33e8b3d4b98dfb',1,'fs']]],
+  ['mkdirsync',['mkdirSync',['../d5/d8f/namespacefs.html#a82c90f7692b9fbea8577fc99628320d9',1,'fs']]],
   ['most',['most',['../d0/df6/interfaceExpect.html#a02470a5b9fb9623b14b5d9c24bfb3c83',1,'Expect']]],
   ['mousedown',['mouseDown',['../dc/daa/namespaceconsole.html#a71713e2b3cce9309bda5eddcaeabd7cc',1,'console']]],
   ['mouseup',['mouseUp',['../dc/daa/namespaceconsole.html#a6756ba1222147f78e22cf56c097a52a8',1,'console']]],

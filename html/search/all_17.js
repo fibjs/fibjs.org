@@ -14,6 +14,7 @@ var searchData=
   ['writedoublebe',['writeDoubleBE',['../d9/dae/interfaceBuffer.html#aa0699049d7c5631acd3f5f0213a7b9d2',1,'Buffer']]],
   ['writedoublele',['writeDoubleLE',['../d9/dae/interfaceBuffer.html#adf45fe19c68fd9a58f8138a2ef509e77',1,'Buffer']]],
   ['writefile',['writeFile',['../d5/d8f/namespacefs.html#a4cfc37144cc2ba63948970a603240117',1,'fs']]],
+  ['writefilesync',['writeFileSync',['../d5/d8f/namespacefs.html#a8a885a62f0e269f303cd59b00511eca0',1,'fs']]],
   ['writefloatbe',['writeFloatBE',['../d9/dae/interfaceBuffer.html#ab81698ec4b2b292809b43bbba9a12c98',1,'Buffer']]],
   ['writefloatle',['writeFloatLE',['../d9/dae/interfaceBuffer.html#af0da2db736bab85c79464a57ab05df54',1,'Buffer']]],
   ['writeint16be',['writeInt16BE',['../d9/dae/interfaceBuffer.html#a7f011b8d733be7c9b3b43f56f3a2aa67',1,'Buffer']]],

@@ -14,6 +14,7 @@ var searchData=
   ['childnodes',['childNodes',['../dc/d8f/interfaceXmlNode.html#a059aaa73cdf03ffaedca637383a736a1',1,'XmlNode']]],
   ['childs',['childs',['../df/db2/interfaceHeapGraphNode.html#a9a847dcbbcd9e81583d8712a8f5df617',1,'HeapGraphNode']]],
   ['chmod',['chmod',['../d3/d3a/interfaceFile.html#aa13cc9318e8f5ea58f0befb9ac709d72',1,'File::chmod()'],['../d5/d8f/namespacefs.html#a5b69648f9d4875d97bd01b007c095f94',1,'fs::chmod()']]],
+  ['chmodsync',['chmodSync',['../d5/d8f/namespacefs.html#a471a11730f2ab34cbe85287548ec6675',1,'fs']]],
   ['chord',['CHORD',['../dd/d5d/namespacegd.html#a022fb2b713f2bd7764e674572f3f6f76',1,'gd']]],
   ['chunks',['chunks',['../d7/d34/interfaceGridFS.html#a51c4888d0359afc9be25be0cffc2a6a1',1,'GridFS']]],
   ['cipher',['Cipher',['../df/d49/interfaceCipher.html',1,'Cipher'],['../df/d49/interfaceCipher.html#af0b902f19da1b9dd5a689c9fc284d97e',1,'Cipher::Cipher(Integer provider, Buffer key)'],['../df/d49/interfaceCipher.html#ab6b3e680fdf5a609323ff03e850165b2',1,'Cipher::Cipher(Integer provider, Integer mode, Buffer key)'],['../df/d49/interfaceCipher.html#a264a3a79bce05873b19a45b4edda3899',1,'Cipher::Cipher(Integer provider, Integer mode, Buffer key, Buffer iv)'],['../de/d36/namespacecrypto.html#a508b284453644f6759548048402fda04',1,'crypto::Cipher()']]],
