@@ -52,7 +52,7 @@ var searchData=
   ['size',['size',['../d3/d41/interfaceDigest.html#a4ffefefd60695d1448d2a79421b2b85d',1,'Digest::size()'],['../dc/d81/interfaceLruCache.html#aee1e7aea2978a02636cb4314bdb11420',1,'LruCache::size()'],['../d2/dc1/interfaceMap.html#a36abb4b144a680fb4a2152bac4ff80fa',1,'Map::size()'],['../dc/da9/interfaceStat.html#a2e40d56627672e702cfd14aae5bc40e5',1,'Stat::size()'],['../dc/d27/interfaceMongoCursor.html#aef6a5f9cf1ee475d698d4c2e17e1cf3e',1,'MongoCursor::size()'],['../d6/d9c/interfaceSeekableStream.html#af31c485565a6699bd6b8209d46ba0acb',1,'SeekableStream::size()']]],
   ['skip',['skip',['../dc/d27/interfaceMongoCursor.html#a556f86003f28362f15cbda78ba636d34',1,'MongoCursor']]],
   ['slashes',['slashes',['../de/de5/interfaceUrlObject.html#a0dc8affee7499f3284475d97d71b8995',1,'UrlObject']]],
-  ['sleep',['sleep',['../d6/d05/namespacecoroutine.html#ae9ce1c1d0ffbff909196806efabe7fa3',1,'coroutine']]],
+  ['sleep',['sleep',['../d6/d05/namespacecoroutine.html#a33b697ae989607c6a860676f8f30a0c9',1,'coroutine']]],
   ['slice',['slice',['../d9/dae/interfaceBuffer.html#a8d70ddf3f6507a842d30726081f1a974',1,'Buffer::slice(Integer start=0)'],['../d9/dae/interfaceBuffer.html#a7a5eb1ce2472fea27a03e8efd25b7a2e',1,'Buffer::slice(Integer start, Integer end)'],['../de/dd8/interfaceList.html#ab96d554cc6244b5c4407d47aef2dfc25',1,'List::slice()']]],
   ['slow',['slow',['../df/d04/namespacetest.html#a09913ac8583af372187ee252951103c4',1,'test']]],
   ['smooth',['SMOOTH',['../dd/d5d/namespacegd.html#ab946d118ee8c1feefb6ee154426f391e',1,'gd']]],
