@@ -7,6 +7,7 @@ var interfaceCondition =
     [ "notifyAll", "d5/d45/interfaceCondition.html#a9036ab41db91675c07aea35c9e62cc10", null ],
     [ "acquire", "d5/d45/interfaceCondition.html#a172821036c61bf18f75953175227c4fa", null ],
     [ "release", "d5/d45/interfaceCondition.html#ad11a1833268d15bc545b958789bd7e74", null ],
+    [ "count", "d5/d45/interfaceCondition.html#ae81aa0dc5e2d399ccae8b92211377cd9", null ],
     [ "dispose", "d5/d45/interfaceCondition.html#a6b88dbc459449d2280338e5b702a68b4", null ],
     [ "equals", "d5/d45/interfaceCondition.html#a94c197c586ecfcb7cb733e0d543ce5ad", null ],
     [ "toString", "d5/d45/interfaceCondition.html#ac61f07a7d6c5471293371086af3186bd", null ],

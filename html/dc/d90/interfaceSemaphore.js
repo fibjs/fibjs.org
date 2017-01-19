@@ -6,6 +6,7 @@ var interfaceSemaphore =
     [ "trywait", "dc/d90/interfaceSemaphore.html#ab555508a557440f9d2e27bd5f8223ea7", null ],
     [ "acquire", "dc/d90/interfaceSemaphore.html#a172821036c61bf18f75953175227c4fa", null ],
     [ "release", "dc/d90/interfaceSemaphore.html#ad11a1833268d15bc545b958789bd7e74", null ],
+    [ "count", "dc/d90/interfaceSemaphore.html#ae81aa0dc5e2d399ccae8b92211377cd9", null ],
     [ "dispose", "dc/d90/interfaceSemaphore.html#a6b88dbc459449d2280338e5b702a68b4", null ],
     [ "equals", "dc/d90/interfaceSemaphore.html#a94c197c586ecfcb7cb733e0d543ce5ad", null ],
     [ "toString", "dc/d90/interfaceSemaphore.html#ac61f07a7d6c5471293371086af3186bd", null ],

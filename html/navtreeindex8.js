@@ -1,5 +1,9 @@
 var NAVTREEINDEX8 =
 {
+"df/d69/interfaceMongoDB.html#ac92423d94233e3b27c2d47409f5eeb33":[6,44,1],
+"df/d69/interfaceMongoDB.html#ad66be13eb5b7c5f560fd8511565138c4":[6,44,8],
+"df/d69/interfaceMongoDB.html#af7b4f5ffd6edeb8c493f8dcadea34525":[6,44,2],
+"df/db2/interfaceHeapGraphNode.html":[6,21],
 "df/db2/interfaceHeapGraphNode.html#a234eab36fa50d3cea03e364d99adfa46":[6,21,6],
 "df/db2/interfaceHeapGraphNode.html#a2fc488376bc9a3f1632c625d005833e8":[6,21,9],
 "df/db2/interfaceHeapGraphNode.html#a5446260080643ecdbe19aed45044bff6":[6,21,7],

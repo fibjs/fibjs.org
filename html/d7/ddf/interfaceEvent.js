@@ -8,6 +8,7 @@ var interfaceEvent =
     [ "wait", "d7/ddf/interfaceEvent.html#a5088e961dddd82b86142b54ae9dd6b14", null ],
     [ "acquire", "d7/ddf/interfaceEvent.html#a172821036c61bf18f75953175227c4fa", null ],
     [ "release", "d7/ddf/interfaceEvent.html#ad11a1833268d15bc545b958789bd7e74", null ],
+    [ "count", "d7/ddf/interfaceEvent.html#ae81aa0dc5e2d399ccae8b92211377cd9", null ],
     [ "dispose", "d7/ddf/interfaceEvent.html#a6b88dbc459449d2280338e5b702a68b4", null ],
     [ "equals", "d7/ddf/interfaceEvent.html#a94c197c586ecfcb7cb733e0d543ce5ad", null ],
     [ "toString", "d7/ddf/interfaceEvent.html#ac61f07a7d6c5471293371086af3186bd", null ],

@@ -73,7 +73,7 @@ var searchData=
   ['copystream',['copyStream',['../d1/d96/namespaceio.html#a6fe2425142541de1af0a52de63b88e4c',1,'io']]],
   ['copyto',['copyTo',['../d4/dc7/interfaceStream.html#a5520387ebf75fa030283055371859d8b',1,'Stream']]],
   ['coroutine',['coroutine',['../d6/d05/namespacecoroutine.html',1,'']]],
-  ['count',['count',['../dc/d27/interfaceMongoCursor.html#a6d446e0a87acf54801d5c132b0384fd8',1,'MongoCursor::count()'],['../db/d03/interfaceRedisSortedSet.html#a5b8a0c27f7ff02745450716447f14793',1,'RedisSortedSet::count()']]],
+  ['count',['count',['../de/da6/interfaceLock.html#ae81aa0dc5e2d399ccae8b92211377cd9',1,'Lock::count()'],['../dc/d27/interfaceMongoCursor.html#a6d446e0a87acf54801d5c132b0384fd8',1,'MongoCursor::count()'],['../db/d03/interfaceRedisSortedSet.html#a5b8a0c27f7ff02745450716447f14793',1,'RedisSortedSet::count()']]],
   ['cpuinfo',['CPUInfo',['../da/de1/namespaceos.html#a2fe28e658af2fa4ed18aff69a99fff0c',1,'os']]],
   ['cpus',['CPUs',['../da/de1/namespaceos.html#a693209d07a04870c1d24fb8bb17605ac',1,'os']]],
   ['create',['create',['../dd/d5d/namespacegd.html#a3349d9352130d7050247113235a3e1a9',1,'gd']]],

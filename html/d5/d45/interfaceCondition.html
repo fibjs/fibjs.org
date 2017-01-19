@@ -94,7 +94,7 @@ $(document).ready(function(){initNavTree('d5/d45/interfaceCondition.html','../..
 <div class="dynheader">
 类 Condition 继承关系图:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../de/d1f/interfaceCondition__inherit__graph.svg" width="110" height="460"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../de/d1f/interfaceCondition__inherit__graph.svg" width="110" height="474"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 <table class="memberdecls">
@@ -121,6 +121,9 @@ Public 成员函数</h2></td></tr>
 <tr class="memitem:ad11a1833268d15bc545b958789bd7e74"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/da6/interfaceLock.html#ad11a1833268d15bc545b958789bd7e74">release</a> ()</td></tr>
 <tr class="memdesc:ad11a1833268d15bc545b958789bd7e74"><td class="mdescLeft">&#160;</td><td class="mdescRight">释放锁的拥有权  <a href="#ad11a1833268d15bc545b958789bd7e74">更多...</a><br /></td></tr>
 <tr class="separator:ad11a1833268d15bc545b958789bd7e74"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae81aa0dc5e2d399ccae8b92211377cd9"><td class="memItemLeft" align="right" valign="top">Integer&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/da6/interfaceLock.html#ae81aa0dc5e2d399ccae8b92211377cd9">count</a> ()</td></tr>
+<tr class="memdesc:ae81aa0dc5e2d399ccae8b92211377cd9"><td class="mdescLeft">&#160;</td><td class="mdescRight">查询当前等待任务数  <a href="#ae81aa0dc5e2d399ccae8b92211377cd9">更多...</a><br /></td></tr>
+<tr class="separator:ae81aa0dc5e2d399ccae8b92211377cd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6b88dbc459449d2280338e5b702a68b4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d38/interfaceobject.html#a6b88dbc459449d2280338e5b702a68b4">dispose</a> ()</td></tr>
 <tr class="memdesc:a6b88dbc459449d2280338e5b702a68b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">强制回收对象，调用此方法后，对象资源将立即释放  <a href="#a6b88dbc459449d2280338e5b702a68b4">更多...</a><br /></td></tr>
 <tr class="separator:a6b88dbc459449d2280338e5b702a68b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -142,7 +145,7 @@ Public 成员函数</h2></td></tr>
 <p>条件变量是利用纤程间共享的全局变量来进行同步的一种机制，主要包括两个动作： 1）一个线程等待某个条件成立，而将自己挂起； 2）另一个线程使条件成立，并通知等待的纤程向下执行。</p>
 <p>为了防止竞争，每个条件变量都需要一个Lock的配合（Lock可自行显式创建并传递进来，也可交由fibjs为您创建）</p>
 <p>通过使用条件变量，可以利用一个条件变量控制一批纤程的开关；</p>
-<p>以下是两个纤程调度的实例： </p><div class="fragment"><div class="line">var coroutine = require(<span class="stringliteral">&quot;coroutine&quot;</span>);</div><div class="line">var cond = <span class="keyword">new</span> coroutine.Condition();</div><div class="line">var ready = <span class="keyword">false</span>;</div><div class="line">var state = <span class="stringliteral">&quot;ready&quot;</span>;</div><div class="line"></div><div class="line"><span class="keyword">function</span> funcwait() {</div><div class="line">   cond.acquire();</div><div class="line">   <span class="keywordflow">while</span> (!ready)</div><div class="line">    cond.wait();</div><div class="line">   state = <span class="stringliteral">&quot;go&quot;</span></div><div class="line">   cond.release();</div><div class="line">}</div><div class="line"></div><div class="line">coroutine.start(funcwait);</div><div class="line"></div><div class="line">cond.acquire();</div><div class="line"><a class="code" href="../../dc/daa/namespaceconsole.html">console</a>.log(state)</div><div class="line">ready = <span class="keyword">true</span>;</div><div class="line">cond.notify();</div><div class="line">coroutine.sleep();</div><div class="line"><a class="code" href="../../dc/daa/namespaceconsole.html">console</a>.log(state);</div><div class="line"></div><div class="line">will output:</div><div class="line">ready</div><div class="line">go</div></div><!-- fragment --> </div><h2 class="groupheader">构造及析构函数说明</h2>
+<p>以下是两个纤程调度的实例： </p><div class="fragment"><div class="line">var coroutine = require(<span class="stringliteral">&quot;coroutine&quot;</span>);</div><div class="line">var cond = <span class="keyword">new</span> coroutine.Condition();</div><div class="line">var ready = <span class="keyword">false</span>;</div><div class="line">var state = <span class="stringliteral">&quot;ready&quot;</span>;</div><div class="line"></div><div class="line"><span class="keyword">function</span> funcwait() {</div><div class="line">   cond.acquire();</div><div class="line">   <span class="keywordflow">while</span> (!ready)</div><div class="line">       cond.wait();</div><div class="line">   state = <span class="stringliteral">&quot;go&quot;</span></div><div class="line">   cond.release();</div><div class="line">}</div><div class="line"></div><div class="line">coroutine.start(funcwait);</div><div class="line"></div><div class="line">cond.acquire();</div><div class="line"><a class="code" href="../../dc/daa/namespaceconsole.html">console</a>.log(state)</div><div class="line">ready = <span class="keyword">true</span>;</div><div class="line">cond.notify();</div><div class="line">coroutine.sleep();</div><div class="line"><a class="code" href="../../dc/daa/namespaceconsole.html">console</a>.log(state);</div><div class="line"></div><div class="line">will output:</div><div class="line">ready</div><div class="line">go</div></div><!-- fragment --> </div><h2 class="groupheader">构造及析构函数说明</h2>
 <a id="af11513db4fcbde93961fa0b65e7ab764"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af11513db4fcbde93961fa0b65e7ab764">&#9670;&nbsp;</a></span>Condition() <span class="overload">[1/2]</span></h2>
 
@@ -309,6 +312,34 @@ Public 成员函数</h2></td></tr>
 
 <p>释放锁的拥有权 </p>
 <p>此方法将释放对锁的拥有权，如果当前纤程未拥有锁，此方法将抛出错误。 </p>
+
+</div>
+</div>
+<a id="ae81aa0dc5e2d399ccae8b92211377cd9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae81aa0dc5e2d399ccae8b92211377cd9">&#9670;&nbsp;</a></span>count()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Integer Lock.count </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>查询当前等待任务数 </p>
+<dl class="section return"><dt>返回</dt><dd>返回任务数 </dd></dl>
 
 </div>
 </div>
