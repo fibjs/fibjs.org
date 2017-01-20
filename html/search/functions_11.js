@@ -64,7 +64,7 @@ var searchData=
   ['resample',['resample',['../d2/d41/interfaceImage.html#a614a6ee403a9a2b3f7544f83bdbbedfd',1,'Image']]],
   ['reset',['reset',['../df/d0b/interfaceStats.html#ab62c5543881b3e0f775e4e03f1790517',1,'Stats::reset()'],['../dc/daa/namespaceconsole.html#ac5c17a9ecdac8ec7966bff0754f3122b',1,'console::reset()']]],
   ['resize',['resize',['../d9/dae/interfaceBuffer.html#a551023131e4c63b198902143e5e5b274',1,'Buffer::resize()'],['../de/dd8/interfaceList.html#a65b48a28764f7cfd800e98771770940a',1,'List::resize()']]],
-  ['resolve',['resolve',['../de/de5/interfaceUrlObject.html#a674ec6b492c02c26f3c3db3a2c74863d',1,'UrlObject::resolve()'],['../dc/d27/namespacenet.html#a733a23e8a51fdc5e2b1e3cafaf6f0010',1,'net::resolve()']]],
+  ['resolve',['resolve',['../de/de5/interfaceUrlObject.html#a674ec6b492c02c26f3c3db3a2c74863d',1,'UrlObject::resolve()'],['../dc/d27/namespacenet.html#a733a23e8a51fdc5e2b1e3cafaf6f0010',1,'net::resolve()'],['../d0/d43/namespacepath.html#ad7a5c3dcc290cdf508621d865e52d1d8',1,'path::resolve()']]],
   ['response',['Response',['../d3/d69/namespacehttp.html#a70902187780a1f3b2927b2a2f50213b5',1,'http']]],
   ['restart',['restart',['../d1/db9/interfaceService.html#a2690bf63f46424992ecc68084c2f3aff',1,'Service']]],
   ['restore',['restore',['../d7/d32/interfaceRedis.html#a05a2403b622164125d45bdadfddfe0f6',1,'Redis']]],
