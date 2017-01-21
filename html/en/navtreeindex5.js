@@ -1,5 +1,13 @@
 var NAVTREEINDEX5 =
 {
+"da/d20/interfaceWebSocketHandler.html#ab7c54e9e04c2672702c37fa7c8f17d6b":[5,74,7],
+"da/d20/interfaceWebSocketHandler.html#ab9261a7662bc8bb4a898bc15dc16f206":[5,74,5],
+"da/d20/interfaceWebSocketHandler.html#ac61f07a7d6c5471293371086af3186bd":[5,74,3],
+"da/d20/interfaceWebSocketHandler.html#ad66be13eb5b7c5f560fd8511565138c4":[5,74,4],
+"da/d20/interfaceWebSocketHandler.html#af901258552a23961893c5bd6f18ce681":[5,74,1],
+"da/d34/interfaceHttpCollection.html":[5,21],
+"da/d34/interfaceHttpCollection.html#a01f67073954a3dfe86fd98df950cc3e4":[5,21,8],
+"da/d34/interfaceHttpCollection.html#a3df31bf39192d0b908c09af400468943":[5,21,7],
 "da/d34/interfaceHttpCollection.html#a43deef7817ecced782fa1da441f1b840":[5,21,13],
 "da/d34/interfaceHttpCollection.html#a6b88dbc459449d2280338e5b702a68b4":[5,21,9],
 "da/d34/interfaceHttpCollection.html#a8d29b11f34d2314c43994ed48a5d02e8":[5,21,4],
@@ -241,13 +249,5 @@ var NAVTREEINDEX5 =
 "dc/d8f/interfaceXmlNode.html#ad493d7ec94ebfd1cb874d0b43920275d":[5,87,15],
 "dc/d8f/interfaceXmlNode.html#ad66be13eb5b7c5f560fd8511565138c4":[5,87,12],
 "dc/d8f/interfaceXmlNode.html#ad997a00e2af8f05fe915dac55809e8e7":[5,87,2],
-"dc/d8f/interfaceXmlNode.html#af6498d34059fcb58b982eba90742f66d":[5,87,6],
-"dc/d8f/interfaceXmlNode.html#afed941f3caa5ce3ccd9fbbeec0cefb39":[5,87,23],
-"dc/d90/interfaceSemaphore.html":[5,57],
-"dc/d90/interfaceSemaphore.html#a172821036c61bf18f75953175227c4fa":[5,57,4],
-"dc/d90/interfaceSemaphore.html#a2b45b66bfcb4fd6a03c998dd8e21d27e":[5,57,2],
-"dc/d90/interfaceSemaphore.html#a6b88dbc459449d2280338e5b702a68b4":[5,57,6],
-"dc/d90/interfaceSemaphore.html#ab144395cba916969214bbe60f7521fed":[5,57,1],
-"dc/d90/interfaceSemaphore.html#ab555508a557440f9d2e27bd5f8223ea7":[5,57,3],
-"dc/d90/interfaceSemaphore.html#ab9261a7662bc8bb4a898bc15dc16f206":[5,57,9]
+"dc/d8f/interfaceXmlNode.html#af6498d34059fcb58b982eba90742f66d":[5,87,6]
 };

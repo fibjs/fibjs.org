@@ -12,6 +12,7 @@ var searchData=
   ['ping',['PING',['../d0/d42/namespacewebsocket.html#a8e9cf43e3c40b9b6c5945e7c9d6913ec',1,'websocket']]],
   ['pkcs7',['PKCS7',['../de/d36/namespacecrypto.html#af958cf0ea80b8aaf1fea66e00909f597',1,'crypto']]],
   ['pkey',['PKey',['../de/d36/namespacecrypto.html#a9f9d7a590b15bcbf3142b4577735017d',1,'crypto']]],
+  ['platform',['platform',['../d8/d25/namespaceprocess.html#af6d11f7f0f3d0ad46e9a7e701a6f78b8',1,'process']]],
   ['png',['PNG',['../dd/d5d/namespacegd.html#a5fa79061354a3b7f82d3626da946d45d',1,'gd']]],
   ['pong',['PONG',['../d0/d42/namespacewebsocket.html#a5d81c92474471a7a6dd86c287f0fb402',1,'websocket']]],
   ['port',['port',['../dd/d23/interfaceUrl.html#ac69114ed8fad0b7cb381812694407403',1,'Url']]],
