@@ -22,6 +22,29 @@ module process
     /*! @brief The environment variable object of current executable file */
     static readonly Object env;
 
+    /*! @brief query current cpu's architecture，possible value can be: 'amd64', 'arm', 'arm64', or 'ia32' */
+    static readonly String arch;
+
+    /*! @brief query current platform，possible value can be: 'darwin', 'freebsd', 'linux', or 'win32' */
+    static readonly String platform;
+
+    /*! @brief change the current umask，Windows does't support this.
+     @param mask the mask to set
+     @return the previous mask
+    */
+    static Integer umask(Integer mask);
+
+    /*! @brief change the current umask，Windows does't support this.
+     @param mask octonary string(e.g: "0664")
+     @return the previous mask
+    */
+    static Integer umask(String mask);
+
+    /*! @brief return the current umask，Windows does't support this.
+     @return the current mask
+    */
+    static Integer umask();
+
     /*! @brief Exit current process, and return result.
      @param code result of process.
      */
@@ -36,6 +59,11 @@ module process
      @param directory The new work path.
      */
     static chdir(String directory);
+
+    /*! @brief returns the system uptime in number of seconds.
+     @return seconds
+    */
+    static Number uptime();
 
     /*! @brief Get report of memory the current process consumpt.
      @return Memory report object.
@@ -55,22 +83,11 @@ module process
      */
     static Object memoryUsage();
 
-    /*! @brief System call, run bash command and return result code.
-     @param cmd Bash command.
-     @return Result code of bash command running.
+    /*! @brief start a fiber
+     @param func function to be executed in the new fiber.
+     @param ... params which will be passed to the func.
      */
-    deprecated static Integer system(String cmd) async;
-
-    /*! @brief System call, run bash command and return result object.
-     @param cmd Bash command.
-     @return Stream object consisting result and output of bash command running.
-     */
-    deprecated static BufferedStream popen(String cmd) async;
-
-    /*! @brief Run specific bash command and return immediately.
-     @param cmd Bash command.
-     */
-    deprecated static exec(String cmd);
+    static nextTick(Function func, ...);
 
     /*! @brief Create chlid process taking charge of stdin and stdout and run bash command.
      @param command Bash command to be executed.
