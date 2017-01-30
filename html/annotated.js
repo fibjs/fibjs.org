@@ -78,7 +78,6 @@ var annotated =
     [ "Timer", "df/df8/interfaceTimer.html", "df/df8/interfaceTimer" ],
     [ "Trigger", "d6/df7/interfaceTrigger.html", "d6/df7/interfaceTrigger" ],
     [ "UrlObject", "de/de5/interfaceUrlObject.html", "de/de5/interfaceUrlObject" ],
-    [ "uuidValue", "d6/de7/interfaceuuidValue.html", "d6/de7/interfaceuuidValue" ],
     [ "WebSocketHandler", "da/d20/interfaceWebSocketHandler.html", "da/d20/interfaceWebSocketHandler" ],
     [ "WebSocketMessage", "db/d5d/interfaceWebSocketMessage.html", "db/d5d/interfaceWebSocketMessage" ],
     [ "WebView", "d8/d79/interfaceWebView.html", "d8/d79/interfaceWebView" ],

@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['data',['data',['../dd/d53/interfaceDatagramPacket.html#a8ec893b977daa9fb890f1ceaaf4c089d',1,'DatagramPacket::data()'],['../d7/d50/interfaceXmlCharacterData.html#a6f6d07875167fb5ad93d9e86e006d97f',1,'XmlCharacterData::data()'],['../da/df6/interfaceXmlProcessingInstruction.html#afb10b2a484a15680e8e36abd5a4e8557',1,'XmlProcessingInstruction::data()'],['../d6/d9b/interfaceZipInfo.html#a4d93cb9855db697fe9918c5337c76ee1',1,'ZipInfo::data()'],['../da/de8/interfaceSmtp.html#a3c97e94446fb2eefccd442dcafc2c769',1,'Smtp::data()'],['../d6/de7/interfaceuuidValue.html#ae6a30c7c71dbfd82b2f10d7325e4c73b',1,'uuidValue::data()']]],
+  ['data',['data',['../dd/d53/interfaceDatagramPacket.html#a8ec893b977daa9fb890f1ceaaf4c089d',1,'DatagramPacket::data()'],['../d7/d50/interfaceXmlCharacterData.html#a6f6d07875167fb5ad93d9e86e006d97f',1,'XmlCharacterData::data()'],['../da/df6/interfaceXmlProcessingInstruction.html#afb10b2a484a15680e8e36abd5a4e8557',1,'XmlProcessingInstruction::data()'],['../d6/d9b/interfaceZipInfo.html#a4d93cb9855db697fe9918c5337c76ee1',1,'ZipInfo::data()'],['../da/de8/interfaceSmtp.html#a3c97e94446fb2eefccd442dcafc2c769',1,'Smtp::data()']]],
   ['datagrampacket',['DatagramPacket',['../dd/d53/interfaceDatagramPacket.html',1,'']]],
   ['date',['date',['../d6/d9b/interfaceZipInfo.html#adad7b4f27154679f534b26e86f06a017',1,'ZipInfo']]],
   ['dateadd',['dateAdd',['../da/de1/namespaceos.html#acc7b083abafccb5d71e9b83c99683635',1,'os']]],
@@ -32,7 +32,6 @@ var searchData=
   ['des_5fede3',['DES_EDE3',['../de/d36/namespacecrypto.html#a6a5919b052e90ecfc692123bf4657d04',1,'crypto']]],
   ['describe',['describe',['../df/d04/namespacetest.html#a28c68bd81db526a96da4da2313a3a921',1,'test']]],
   ['description',['description',['../d2/d65/interfaceHeapGraphEdge.html#ac062f14a3f3e573b35925926ba6f5106',1,'HeapGraphEdge::description()'],['../df/db2/interfaceHeapGraphNode.html#a5446260080643ecdbe19aed45044bff6',1,'HeapGraphNode::description()']]],
-  ['detail',['detail',['../d6/de7/interfaceuuidValue.html#acdf7d45f83f0ad92f1301aba89eb20e4',1,'uuidValue']]],
   ['diff',['diff',['../de/d09/interfaceHeapSnapshot.html#af6eba58a29be9c3dafe30fe6ef281913',1,'HeapSnapshot::diff()'],['../dc/dfc/namespaceprofiler.html#a26b2cb6a2931ab7f91ed748f7b567adc',1,'profiler::diff()']]],
   ['difference',['difference',['../d6/d72/namespaceutil.html#aeee7da8e5a98a9794221cbbff0e1c43e',1,'util']]],
   ['digest',['Digest',['../d3/d41/interfaceDigest.html',1,'Digest'],['../d3/d41/interfaceDigest.html#abdbf52a1ab8a032c4f09b31190141217',1,'Digest::digest(Buffer data)'],['../d3/d41/interfaceDigest.html#a09213c634e4fc513f302c99363bc10ac',1,'Digest::digest()'],['../de/de9/namespacehash.html#a813b296a7ed5e852a7338087bdb95239',1,'hash::digest(Integer algo, Buffer data)'],['../de/de9/namespacehash.html#a0198e943620fd6b63bd913d6a769bcae',1,'hash::digest(Integer algo)']]],

@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['data',['data',['../da/de8/interfaceSmtp.html#a3c97e94446fb2eefccd442dcafc2c769',1,'Smtp::data()'],['../d6/de7/interfaceuuidValue.html#ae6a30c7c71dbfd82b2f10d7325e4c73b',1,'uuidValue::data()']]],
+  ['data',['data',['../da/de8/interfaceSmtp.html#a3c97e94446fb2eefccd442dcafc2c769',1,'Smtp']]],
   ['dateadd',['dateAdd',['../da/de1/namespaceos.html#acc7b083abafccb5d71e9b83c99683635',1,'os']]],
   ['debug',['debug',['../dc/daa/namespaceconsole.html#adff204aa3e37763481680087157754a1',1,'console::debug(String fmt,...)'],['../dc/daa/namespaceconsole.html#aec6d50753570141dda375e85594b5b6d',1,'console::debug(...)']]],
   ['dec',['dec',['../df/d0b/interfaceStats.html#a0b2c6d2c38c43e2e0c2394237fd10608',1,'Stats']]],
@@ -19,7 +19,6 @@ var searchData=
   ['del',['del',['../df/d4b/interfaceHttpClient.html#a8a191fc10b4a70694f14a8a442d388ab',1,'HttpClient::del()'],['../d7/d32/interfaceRedis.html#ab82f73848a2409c123b633c05294ca2e',1,'Redis::del(Array keys)'],['../d7/d32/interfaceRedis.html#a0ca852fc1075e833c7db632b5c404589',1,'Redis::del(...)'],['../d9/d58/interfaceRedisHash.html#a35acad981389e288138c66b06bfdd757',1,'RedisHash::del(Array fields)'],['../d9/d58/interfaceRedisHash.html#a85157309a13caf605121dad1b55769d4',1,'RedisHash::del(...)'],['../df/dcb/interfaceRouting.html#a82d4a2a11776d2baf4e04e8788d04f98',1,'Routing::del(Object map)'],['../df/dcb/interfaceRouting.html#a837f33a4540c46c32fa336dbaa29c4bb',1,'Routing::del(String pattern, Value hdlr)'],['../d3/d69/namespacehttp.html#a8caf9daf40340f5cfef4f9d13ee81f99',1,'http::del()']]],
   ['deletedata',['deleteData',['../d7/d50/interfaceXmlCharacterData.html#af80e360c50c76851d60bd2871b3bc4ec',1,'XmlCharacterData']]],
   ['describe',['describe',['../df/d04/namespacetest.html#a28c68bd81db526a96da4da2313a3a921',1,'test']]],
-  ['detail',['detail',['../d6/de7/interfaceuuidValue.html#acdf7d45f83f0ad92f1301aba89eb20e4',1,'uuidValue']]],
   ['diff',['diff',['../de/d09/interfaceHeapSnapshot.html#af6eba58a29be9c3dafe30fe6ef281913',1,'HeapSnapshot::diff()'],['../dc/dfc/namespaceprofiler.html#a26b2cb6a2931ab7f91ed748f7b567adc',1,'profiler::diff()']]],
   ['difference',['difference',['../d6/d72/namespaceutil.html#aeee7da8e5a98a9794221cbbff0e1c43e',1,'util']]],
   ['digest',['digest',['../d3/d41/interfaceDigest.html#abdbf52a1ab8a032c4f09b31190141217',1,'Digest::digest(Buffer data)'],['../d3/d41/interfaceDigest.html#a09213c634e4fc513f302c99363bc10ac',1,'Digest::digest()'],['../de/de9/namespacehash.html#a813b296a7ed5e852a7338087bdb95239',1,'hash::digest(Integer algo, Buffer data)'],['../de/de9/namespacehash.html#a0198e943620fd6b63bd913d6a769bcae',1,'hash::digest(Integer algo)']]],
