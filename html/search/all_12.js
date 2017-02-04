@@ -49,7 +49,7 @@ var searchData=
   ['redislist',['RedisList',['../d0/da2/interfaceRedisList.html',1,'']]],
   ['redisset',['RedisSet',['../d3/dee/interfaceRedisSet.html',1,'']]],
   ['redissortedset',['RedisSortedSet',['../db/d03/interfaceRedisSortedSet.html',1,'']]],
-  ['reduce',['reduce',['../d6/d72/namespaceutil.html#a119418c6ae84d9848a7521b0d23ed6da',1,'util']]],
+  ['reduce',['reduce',['../de/dd8/interfaceList.html#ad1b23b885308d059a4c1f5f9c284e3e7',1,'List::reduce()'],['../d6/d72/namespaceutil.html#a119418c6ae84d9848a7521b0d23ed6da',1,'util::reduce()']]],
   ['regex',['Regex',['../d1/d43/interfaceRegex.html',1,'']]],
   ['reindex',['reIndex',['../d6/d6b/interfaceMongoCollection.html#ae10a60fee59387a2dd9383732c80bdfa',1,'MongoCollection']]],
   ['release',['release',['../de/da6/interfaceLock.html#ad11a1833268d15bc545b958789bd7e74',1,'Lock']]],

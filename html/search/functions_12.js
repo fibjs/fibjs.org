@@ -45,7 +45,7 @@ var searchData=
   ['smtp',['Smtp',['../da/de8/interfaceSmtp.html#acea5db5c9fdb0309e6179dc29db9e798',1,'Smtp']]],
   ['snowflake',['snowflake',['../d1/dd6/namespaceuuid.html#a44047b1644e65e90e5c8894a209a8e28',1,'uuid']]],
   ['socket',['Socket',['../dd/d94/interfaceSocket.html#a3fcdc7696dd15634d0f9d51d95c2c25c',1,'Socket::Socket()'],['../df/dd2/namespacessl.html#a3e693a484518479be1381ed0251b7c82',1,'ssl::Socket()']]],
-  ['some',['some',['../de/dd8/interfaceList.html#a7023cff4af79ac96c5798ce92831b6f6',1,'List']]],
+  ['some',['some',['../de/dd8/interfaceList.html#a20c4154b4a24b5c3a2b34b09133e6e45',1,'List']]],
   ['sort',['sort',['../de/dd8/interfaceList.html#a68bdab9cb1d731ce5b8116c2693213ce',1,'List::sort(Function func)'],['../de/dd8/interfaceList.html#a98b2230525baa2b7b7bea9b2c1df4fbe',1,'List::sort()'],['../dc/d27/interfaceMongoCursor.html#a123006155ab34a7bdd56f8fc0b034ccc',1,'MongoCursor::sort()']]],
   ['splittext',['splitText',['../d3/d51/interfaceXmlText.html#aefc50860e0f557f3a4cb85ff1d7b1b36',1,'XmlText']]],
   ['sslhandler',['SslHandler',['../df/dd8/interfaceSslHandler.html#a40a6cc77561afea02e8f6468a66dbd2c',1,'SslHandler::SslHandler(Array certs, Value hdlr)'],['../df/dd8/interfaceSslHandler.html#a09430fb12c64e8a913593352e1a9c8aa',1,'SslHandler::SslHandler(X509Cert crt, PKey key, Value hdlr)']]],
