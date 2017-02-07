@@ -6,7 +6,7 @@ var searchData=
   ['score',['score',['../db/d03/interfaceRedisSortedSet.html#a7d66540ff84098ad5d6a786b88cd36d2',1,'RedisSortedSet']]],
   ['seek',['seek',['../d6/d9c/interfaceSeekableStream.html#a61e24c7dbe030d5b57bb141fdacbb068',1,'SeekableStream']]],
   ['semaphore',['Semaphore',['../dc/d90/interfaceSemaphore.html#adf61e8770130c9f386c7c78934028379',1,'Semaphore']]],
-  ['send',['send',['../dd/d94/interfaceSocket.html#a6dd1fa9ffddf9c82db0847a913fadc06',1,'Socket']]],
+  ['send',['send',['../dd/d94/interfaceSocket.html#a6dd1fa9ffddf9c82db0847a913fadc06',1,'Socket::send()'],['../d0/d05/interfaceZmqSocket.html#a1ef658701c5e98f971212547c1533a54',1,'ZmqSocket::send()']]],
   ['sendheader',['sendHeader',['../d9/d71/interfaceHttpResponse.html#a33aeecb1fcf5a32427b94553c1434079',1,'HttpResponse']]],
   ['sendto',['sendTo',['../d6/db7/interfaceMessage.html#a8c456b35a88228f954974592e9b5c5ab',1,'Message']]],
   ['serialize',['serialize',['../d8/dd3/namespacexml.html#a655b1893ddaa6b87c1dc83473c0bc2fc',1,'xml']]],

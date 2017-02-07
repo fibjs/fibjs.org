@@ -41,7 +41,7 @@ var searchData=
   ['readuintle',['readUIntLE',['../d9/dae/interfaceBuffer.html#a65706e4a98d90c462f97e7fbfea24d8f',1,'Buffer']]],
   ['readuntil',['readUntil',['../d0/d37/interfaceBufferedStream.html#ab2c46249f028cc1dfdade4fe74ccc8de',1,'BufferedStream']]],
   ['rectangle',['rectangle',['../d2/d41/interfaceImage.html#ace7d39b9ae123abe9431f0f1ebb66f73',1,'Image']]],
-  ['recv',['recv',['../dd/d94/interfaceSocket.html#a28174e411f641885369212291b0302d2',1,'Socket']]],
+  ['recv',['recv',['../dd/d94/interfaceSocket.html#a28174e411f641885369212291b0302d2',1,'Socket::recv()'],['../d0/d05/interfaceZmqSocket.html#a2039ff3a7f5c6c127a5a6b8615e5718c',1,'ZmqSocket::recv()']]],
   ['redirect',['redirect',['../d9/d71/interfaceHttpResponse.html#a3b4a9739aa8441aba59090faeca184da',1,'HttpResponse']]],
   ['reduce',['reduce',['../de/dd8/interfaceList.html#ad1b23b885308d059a4c1f5f9c284e3e7',1,'List::reduce()'],['../d6/d72/namespaceutil.html#a119418c6ae84d9848a7521b0d23ed6da',1,'util::reduce()']]],
   ['reindex',['reIndex',['../d6/d6b/interfaceMongoCollection.html#ae10a60fee59387a2dd9383732c80bdfa',1,'MongoCollection']]],

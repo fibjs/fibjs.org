@@ -9,7 +9,7 @@ var searchData=
   ['hex',['hex',['../db/da8/namespaceencoding.html#a7b35b7c093e622b0fdfe8177856e7b78',1,'encoding']]],
   ['hi',['hi',['../df/dc1/interfaceInt64.html#aa356139546e7fcc65dc524ed52f585b7',1,'Int64']]],
   ['highlight',['highLight',['../da/d8a/interfaceTextColor.html#af2f9ebf1de8543a516e82866df99363d',1,'TextColor']]],
-  ['horizontal',['HORIZONTAL',['../dd/d5d/namespacegd.html#aed32009ea9b9411460dbcb418fac8bdc',1,'gd']]],
+  ['horizontal',['HORIZONTAL',['../dd/d5d/namespacegd.html#ac6e7f1f566728c076c6cfaf4803f7e78',1,'gd']]],
   ['host',['host',['../de/de5/interfaceUrlObject.html#accfb037b5e5b4cc2767a7c688e835c37',1,'UrlObject']]],
   ['hostid',['hostID',['../d1/dd6/namespaceuuid.html#a6b4bcf3627071cbf4684d9dfa4327bf9',1,'uuid']]],
   ['hostname',['hostname',['../de/de5/interfaceUrlObject.html#a6e803af86cfe7fb66af86a316cd15216',1,'UrlObject::hostname()'],['../da/de1/namespaceos.html#a10d119aa110a46714071e81522b0645c',1,'os::hostname()']]],

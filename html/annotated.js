@@ -97,5 +97,6 @@ var annotated =
     [ "XmlProcessingInstruction", "da/df6/interfaceXmlProcessingInstruction.html", "da/df6/interfaceXmlProcessingInstruction" ],
     [ "XmlText", "d3/d51/interfaceXmlText.html", "d3/d51/interfaceXmlText" ],
     [ "ZipFile", "d9/d03/interfaceZipFile.html", "d9/d03/interfaceZipFile" ],
-    [ "ZipInfo", "d6/d9b/interfaceZipInfo.html", "d6/d9b/interfaceZipInfo" ]
+    [ "ZipInfo", "d6/d9b/interfaceZipInfo.html", "d6/d9b/interfaceZipInfo" ],
+    [ "ZmqSocket", "d0/d05/interfaceZmqSocket.html", "d0/d05/interfaceZmqSocket" ]
 ];

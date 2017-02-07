@@ -39,5 +39,6 @@ var namespaces =
     [ "websocket", "d0/d42/namespacewebsocket.html", null ],
     [ "xml", "d8/dd3/namespacexml.html", null ],
     [ "zip", "d7/def/namespacezip.html", null ],
-    [ "zlib", "d9/d3e/namespacezlib.html", null ]
+    [ "zlib", "d9/d3e/namespacezlib.html", null ],
+    [ "zmq", "d0/db9/namespacezmq.html", null ]
 ];

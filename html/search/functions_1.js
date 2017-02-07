@@ -9,7 +9,7 @@ var searchData=
   ['begin',['begin',['../d8/d2c/interfaceDbConnection.html#aa6d68c3a518d46207b42d7f638b07a1e',1,'DbConnection::begin()'],['../d0/d9e/interfaceLevelDB.html#aa3fab8d3decb8054f9124b070672105f',1,'LevelDB::begin()']]],
   ['below',['below',['../d0/df6/interfaceExpect.html#ac7340f0a34d0826759759fa575c0da6f',1,'Expect']]],
   ['between',['between',['../d0/d9e/interfaceLevelDB.html#a22d1e092c14dd70fc521f562a21a1575',1,'LevelDB']]],
-  ['bind',['bind',['../dd/d94/interfaceSocket.html#aa279dd695883943420d01f34f0782daf',1,'Socket::bind(Integer port, Boolean allowIPv4=true) async'],['../dd/d94/interfaceSocket.html#aea07b6a7cb87f5d8d4501229af83ade8',1,'Socket::bind(String addr, Integer port, Boolean allowIPv4=true) async']]],
+  ['bind',['bind',['../dd/d94/interfaceSocket.html#aa279dd695883943420d01f34f0782daf',1,'Socket::bind(Integer port, Boolean allowIPv4=true) async'],['../dd/d94/interfaceSocket.html#aea07b6a7cb87f5d8d4501229af83ade8',1,'Socket::bind(String addr, Integer port, Boolean allowIPv4=true) async'],['../d0/d05/interfaceZmqSocket.html#a80bf21ff3ce1e7bf0eb9b6699ad30460',1,'ZmqSocket::bind()']]],
   ['bitcount',['bitcount',['../d7/d32/interfaceRedis.html#ac89a7988a54cb5b6c9962048e72a3dbd',1,'Redis']]],
   ['blockqueue',['BlockQueue',['../d4/db6/interfaceBlockQueue.html#a9f7669dc7635bfed46b5364e8f3a932a',1,'BlockQueue']]],
   ['bridge',['bridge',['../d1/d96/namespaceio.html#a52aa08e90d3e3f0fe44814329eac6473',1,'io']]],
