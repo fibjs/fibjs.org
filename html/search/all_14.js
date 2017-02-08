@@ -34,7 +34,6 @@ var searchData=
   ['trace',['trace',['../dc/daa/namespaceconsole.html#aa60d1f56ec155161db3f3d0e48c2c2d3',1,'console']]],
   ['traceinfo',['traceInfo',['../d4/d39/interfaceFiber.html#aa5b3be762621e1a2868ed2d191696528',1,'Fiber']]],
   ['transparent',['transparent',['../d2/d41/interfaceImage.html#a3b9f33aeaeb6019bb6526f3b3ce624b2',1,'Image']]],
-  ['trigger',['Trigger',['../d6/df7/interfaceTrigger.html',1,'Trigger'],['../d6/df7/interfaceTrigger.html#afcf974790b6e846cd89eba5a802e7fa5',1,'Trigger::Trigger()'],['../d6/df7/interfaceTrigger.html#acb19a1b266ed37fcfa6a6634d4388b0e',1,'Trigger::trigger(String ev,...)'],['../d6/d05/namespacecoroutine.html#a4680d42c68c016dd9c48573523c1eef7',1,'coroutine::Trigger()']]],
   ['trim',['trim',['../d0/da2/interfaceRedisList.html#a5604e7fbd71da4e72701e7b03db3b344',1,'RedisList']]],
   ['true',['true',['../d0/df6/interfaceExpect.html#aaad4e98d0e6f706cf8c331e89f4a1542',1,'Expect']]],
   ['truecolor',['TRUECOLOR',['../dd/d5d/namespacegd.html#a2a174492923023dd07fe9e0ce1a90202',1,'gd']]],

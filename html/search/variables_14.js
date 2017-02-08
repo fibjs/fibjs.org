@@ -19,7 +19,6 @@ var searchData=
   ['to',['to',['../d0/df6/interfaceExpect.html#a4e211fec62704ffb2e78c235732157e6',1,'Expect']]],
   ['traceinfo',['traceInfo',['../d4/d39/interfaceFiber.html#aa5b3be762621e1a2868ed2d191696528',1,'Fiber']]],
   ['transparent',['transparent',['../d2/d41/interfaceImage.html#a3b9f33aeaeb6019bb6526f3b3ce624b2',1,'Image']]],
-  ['trigger',['Trigger',['../d6/d05/namespacecoroutine.html#a4680d42c68c016dd9c48573523c1eef7',1,'coroutine']]],
   ['true',['true',['../d0/df6/interfaceExpect.html#aaad4e98d0e6f706cf8c331e89f4a1542',1,'Expect']]],
   ['truecolor',['TRUECOLOR',['../dd/d5d/namespacegd.html#a2a174492923023dd07fe9e0ce1a90202',1,'gd']]],
   ['txbuffersize',['txBufferSize',['../d2/d68/interfaceMySQL.html#aaf5d8a266ab80bdb8d793898a87b6fd5',1,'MySQL']]],

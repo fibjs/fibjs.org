@@ -76,7 +76,6 @@ var annotated =
     [ "TcpServer", "d7/d48/interfaceTcpServer.html", "d7/d48/interfaceTcpServer" ],
     [ "TextColor", "da/d8a/interfaceTextColor.html", "da/d8a/interfaceTextColor" ],
     [ "Timer", "df/df8/interfaceTimer.html", "df/df8/interfaceTimer" ],
-    [ "Trigger", "d6/df7/interfaceTrigger.html", "d6/df7/interfaceTrigger" ],
     [ "UrlObject", "de/de5/interfaceUrlObject.html", "de/de5/interfaceUrlObject" ],
     [ "WebSocketHandler", "da/d20/interfaceWebSocketHandler.html", "da/d20/interfaceWebSocketHandler" ],
     [ "WebSocketMessage", "db/d5d/interfaceWebSocketMessage.html", "db/d5d/interfaceWebSocketMessage" ],

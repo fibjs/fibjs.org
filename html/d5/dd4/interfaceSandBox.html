@@ -100,12 +100,12 @@ $(document).ready(function(){initNavTree('d5/dd4/interfaceSandBox.html','../../'
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public 成员函数</h2></td></tr>
-<tr class="memitem:acd3962edcd65e4270953bb1f45aae2e3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dd4/interfaceSandBox.html#acd3962edcd65e4270953bb1f45aae2e3">SandBox</a> (Object mods, String name=&quot;&quot;)</td></tr>
-<tr class="memdesc:acd3962edcd65e4270953bb1f45aae2e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">构造一个新的安全沙箱对象，并初始化基础模块  <a href="#acd3962edcd65e4270953bb1f45aae2e3">更多...</a><br /></td></tr>
-<tr class="separator:acd3962edcd65e4270953bb1f45aae2e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a897d1ac183aac3c8870d88af91c13b95"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dd4/interfaceSandBox.html#a897d1ac183aac3c8870d88af91c13b95">SandBox</a> (Object mods, Function <a class="el" href="../../d5/dd4/interfaceSandBox.html#a8208bd9c2bc5300f73ef7986acda925c">require</a>, String name=&quot;&quot;)</td></tr>
-<tr class="memdesc:a897d1ac183aac3c8870d88af91c13b95"><td class="mdescLeft">&#160;</td><td class="mdescRight">构造一个新的安全沙箱对象，并初始化基础模块  <a href="#a897d1ac183aac3c8870d88af91c13b95">更多...</a><br /></td></tr>
-<tr class="separator:a897d1ac183aac3c8870d88af91c13b95"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6bcf2fd870c68fd74c879775746f5602"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dd4/interfaceSandBox.html#a6bcf2fd870c68fd74c879775746f5602">SandBox</a> (Object mods)</td></tr>
+<tr class="memdesc:a6bcf2fd870c68fd74c879775746f5602"><td class="mdescLeft">&#160;</td><td class="mdescRight">构造一个新的安全沙箱对象，并初始化基础模块  <a href="#a6bcf2fd870c68fd74c879775746f5602">更多...</a><br /></td></tr>
+<tr class="separator:a6bcf2fd870c68fd74c879775746f5602"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f40b3af867a1df6577a798895d73fb1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dd4/interfaceSandBox.html#a4f40b3af867a1df6577a798895d73fb1">SandBox</a> (Object mods, Function <a class="el" href="../../d5/dd4/interfaceSandBox.html#a8208bd9c2bc5300f73ef7986acda925c">require</a>)</td></tr>
+<tr class="memdesc:a4f40b3af867a1df6577a798895d73fb1"><td class="mdescLeft">&#160;</td><td class="mdescRight">构造一个新的安全沙箱对象，并初始化基础模块  <a href="#a4f40b3af867a1df6577a798895d73fb1">更多...</a><br /></td></tr>
+<tr class="separator:a4f40b3af867a1df6577a798895d73fb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7573771a7de4c0910807d52af7a3a8c6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dd4/interfaceSandBox.html#a7573771a7de4c0910807d52af7a3a8c6">add</a> (String id, Value mod)</td></tr>
 <tr class="memdesc:a7573771a7de4c0910807d52af7a3a8c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">向沙箱中添加一个基础模块  <a href="#a7573771a7de4c0910807d52af7a3a8c6">更多...</a><br /></td></tr>
 <tr class="separator:a7573771a7de4c0910807d52af7a3a8c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -152,8 +152,8 @@ Public 成员函数</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p>安全沙箱对象，用于管理一个独立的运行空间 </p>
 <p>所有的代码都运行在自己的沙箱中，全局的 require 会调用当前沙箱加载模块，沙箱会通过 require 传递给加载的沙箱。下面的示例创建一个沙箱，限制只允许访问全局基础模块中的 assert 模块，并添加 a 和 b 两个定制模块： </p><div class="fragment"><div class="line">var <a class="code" href="../../d8/d89/namespacevm.html">vm</a> = <a class="code" href="../../d5/dd4/interfaceSandBox.html#a8208bd9c2bc5300f73ef7986acda925c">require</a>(<span class="stringliteral">&#39;vm&#39;</span>);</div><div class="line">var sbox = <span class="keyword">new</span> vm.SandBox({</div><div class="line">  a: 100,</div><div class="line">  b: 200,</div><div class="line">  <a class="code" href="../../d2/dab/namespaceassert.html">assert</a>: <a class="code" href="../../d5/dd4/interfaceSandBox.html#a8208bd9c2bc5300f73ef7986acda925c">require</a>(<span class="stringliteral">&#39;assert&#39;</span>)</div><div class="line">});</div><div class="line"></div><div class="line">var mod_in_sbox = sbox.require(<span class="stringliteral">&#39;./path/to/mod&#39;</span>);</div></div><!-- fragment --> </div><h2 class="groupheader">构造及析构函数说明</h2>
-<a id="acd3962edcd65e4270953bb1f45aae2e3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acd3962edcd65e4270953bb1f45aae2e3">&#9670;&nbsp;</a></span>SandBox() <span class="overload">[1/2]</span></h2>
+<a id="a6bcf2fd870c68fd74c879775746f5602"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6bcf2fd870c68fd74c879775746f5602">&#9670;&nbsp;</a></span>SandBox() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -162,18 +162,8 @@ Public 成员函数</h2></td></tr>
           <td class="memname">SandBox.SandBox </td>
           <td>(</td>
           <td class="paramtype">Object&#160;</td>
-          <td class="paramname"><em>mods</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramname"><em>mods</em></td><td>)</td>
           <td></td>
-          <td class="paramtype">String&#160;</td>
-          <td class="paramname"><em>name</em> = <code>&quot;&quot;</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -182,15 +172,14 @@ Public 成员函数</h2></td></tr>
 <dl class="params"><dt>参数</dt><dd>
   <table class="params">
     <tr><td class="paramname">mods</td><td>指定要添加的模块对象字典 </td></tr>
-    <tr><td class="paramname">name</td><td>沙箱名称，命名沙箱会在抛出错误时回报所在沙箱 </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a id="a897d1ac183aac3c8870d88af91c13b95"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a897d1ac183aac3c8870d88af91c13b95">&#9670;&nbsp;</a></span>SandBox() <span class="overload">[2/2]</span></h2>
+<a id="a4f40b3af867a1df6577a798895d73fb1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4f40b3af867a1df6577a798895d73fb1">&#9670;&nbsp;</a></span>SandBox() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -205,13 +194,7 @@ Public 成员函数</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">Function&#160;</td>
-          <td class="paramname"><em>require</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">String&#160;</td>
-          <td class="paramname"><em>name</em> = <code>&quot;&quot;</code>&#160;</td>
+          <td class="paramname"><em>require</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -226,7 +209,6 @@ Public 成员函数</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">mods</td><td>指定要添加的模块对象字典 </td></tr>
     <tr><td class="paramname">require</td><td>自定义 require 函数，当模块不存在时，先调用自定义函数，无返回再从文件中加载 </td></tr>
-    <tr><td class="paramname">name</td><td>沙箱名称，命名沙箱会在抛出错误时回报所在沙箱 </td></tr>
   </table>
   </dd>
 </dl>

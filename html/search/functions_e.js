@@ -1,12 +1,12 @@
 var searchData=
 [
-  ['off',['off',['../d6/df7/interfaceTrigger.html#abfdd94a52ee12e7fcffe2c044d70cee3',1,'Trigger::off(String ev, Function func)'],['../d6/df7/interfaceTrigger.html#ab240d558c9f4043f1e159c08beba278a',1,'Trigger::off(String ev)'],['../d6/df7/interfaceTrigger.html#a1227f3a0cfeb5be138deba4e21fa42eb',1,'Trigger::off(Object map)']]],
+  ['off',['off',['../dd/df3/interfaceEventEmitter.html#a01c2bd0c19fb21e7aaaa1c4fddfabced',1,'EventEmitter::off(String ev, Function func)'],['../dd/df3/interfaceEventEmitter.html#aea781a43088f3029ab4b5f14791a440d',1,'EventEmitter::off(String ev)'],['../dd/df3/interfaceEventEmitter.html#a82edd72a539d36137119ebd993f23395',1,'EventEmitter::off(Object map)']]],
   ['offer',['offer',['../d1/d56/interfaceQueue.html#a0b29d2db0a4fa1114fa4278416d41644',1,'Queue']]],
   ['oid',['oid',['../df/d69/interfaceMongoDB.html#a0d73dd0798dce386a83652c91a620175',1,'MongoDB']]],
   ['ok',['ok',['../d2/dab/namespaceassert.html#a6bc7d80bbf7943df46c671087f7cfce2',1,'assert']]],
   ['omit',['omit',['../d6/d72/namespaceutil.html#a819fa689debef312b6ec388e8b6fa0c4',1,'util']]],
-  ['on',['on',['../d6/df7/interfaceTrigger.html#a101c95c3d098435250e5d15db4eb7359',1,'Trigger::on(String ev, Function func)'],['../d6/df7/interfaceTrigger.html#aebcc15a350707b449aa98207b71dda34',1,'Trigger::on(Object map)']]],
-  ['once',['once',['../d6/df7/interfaceTrigger.html#ad09d65f485b88e3624488ac8e48f5fc7',1,'Trigger::once(String ev, Function func)'],['../d6/df7/interfaceTrigger.html#a497604e081ef6098c08fd826fb52b307',1,'Trigger::once(Object map)']]],
+  ['on',['on',['../dd/df3/interfaceEventEmitter.html#a388f4d809433e17e6aefb1bde7baa5b9',1,'EventEmitter::on(String ev, Function func)'],['../dd/df3/interfaceEventEmitter.html#ac82b7b65a886ae2bad0bb358415c4750',1,'EventEmitter::on(Object map)']]],
+  ['once',['once',['../dd/df3/interfaceEventEmitter.html#ab5651960dd5fdc87af374ad614bc57d4',1,'EventEmitter::once(String ev, Function func)'],['../dd/df3/interfaceEventEmitter.html#ad227caf91d3c4a6a3202e626ba347ee3',1,'EventEmitter::once(Object map)']]],
   ['onclose',['onclose',['../d8/d79/interfaceWebView.html#a04b07cb65bfd38e8bc4de1eb586971b0',1,'WebView']]],
   ['oncontinue',['oncontinue',['../d1/db9/interfaceService.html#a5d5c30e768f93fee1b96f56cf2f692ba',1,'Service']]],
   ['onerror',['onerror',['../dc/de5/interfaceHandlerEx.html#a07f68bb81b189e6820abb6510433ceca',1,'HandlerEx::onerror()'],['../d4/d79/interfaceHttpServer.html#a3867bfb2a99b35a13c0fcc711676aa22',1,'HttpServer::onerror()']]],

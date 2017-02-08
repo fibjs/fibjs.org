@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['sandbox',['SandBox',['../d5/dd4/interfaceSandBox.html#acd3962edcd65e4270953bb1f45aae2e3',1,'SandBox::SandBox(Object mods, String name=&quot;&quot;)'],['../d5/dd4/interfaceSandBox.html#a897d1ac183aac3c8870d88af91c13b95',1,'SandBox::SandBox(Object mods, Function require, String name=&quot;&quot;)'],['../d8/d89/namespacevm.html#a8e842bfbf905fcd1ef830b1074f59a34',1,'vm::SandBox()']]],
+  ['sandbox',['SandBox',['../d5/dd4/interfaceSandBox.html#a6bcf2fd870c68fd74c879775746f5602',1,'SandBox::SandBox(Object mods)'],['../d5/dd4/interfaceSandBox.html#a4f40b3af867a1df6577a798895d73fb1',1,'SandBox::SandBox(Object mods, Function require)'],['../d8/d89/namespacevm.html#a8e842bfbf905fcd1ef830b1074f59a34',1,'vm::SandBox()']]],
   ['save',['save',['../de/d09/interfaceHeapSnapshot.html#aa4f17a9e85bf99789d8df12c5d29cca5',1,'HeapSnapshot::save()'],['../d2/d41/interfaceImage.html#ad87ff3e83842e1f90eabe33106fb84ef',1,'Image::save(Stream stm, Integer format=gd.PNG, Integer quality=85) async'],['../d2/d41/interfaceImage.html#a00f889fa05cda558fbb362b444cdcfd3',1,'Image::save(String fname, Integer format=gd.PNG, Integer quality=85) async'],['../d6/d6b/interfaceMongoCollection.html#abd1ea540422082aaf3a47087b84e8e7e',1,'MongoCollection::save()']]],
   ['savesnapshot',['saveSnapshot',['../dc/dfc/namespaceprofiler.html#a522199cc72b9b3128d9ef505b28d23ce',1,'profiler']]],
   ['score',['score',['../db/d03/interfaceRedisSortedSet.html#a7d66540ff84098ad5d6a786b88cd36d2',1,'RedisSortedSet']]],

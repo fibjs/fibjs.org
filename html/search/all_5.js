@@ -15,7 +15,7 @@ var searchData=
   ['element_5fnode',['ELEMENT_NODE',['../d8/dd3/namespacexml.html#ab311752b8246c43e16053423d479c73a',1,'xml']]],
   ['ellipse',['ellipse',['../d2/d41/interfaceImage.html#a8ec826f48b670dafe8510c97b38b01dc',1,'Image']]],
   ['emboss',['EMBOSS',['../dd/d5d/namespacegd.html#ab39ceafe66e419b4e408117c305d7af9',1,'gd']]],
-  ['emit',['emit',['../d6/df7/interfaceTrigger.html#a7dd8e9d1d9aa3b85ecba80058f0717b6',1,'Trigger']]],
+  ['emit',['emit',['../dd/df3/interfaceEventEmitter.html#a7082057c2484cab5a5267ff416f3a003',1,'EventEmitter']]],
   ['enablecookie',['enableCookie',['../df/d4b/interfaceHttpClient.html#a4141eb3b0a13493eeca267366a3fa162',1,'HttpClient::enableCookie()'],['../d3/d69/namespacehttp.html#ad63225275dd098971f669a6ebf034330',1,'http::enableCookie()']]],
   ['encode',['encode',['../d4/dba/namespacebase32.html#abcb8ee9ecac2cf5cc508cbe896cede6b',1,'base32::encode()'],['../d5/d37/namespacebase64.html#a7d87dfe597e9e95be6e570ba4d4baf40',1,'base64::encode()'],['../de/d5c/namespacebase64vlq.html#a82d92173f328ec3c9dd3ad0ec6fbcce6',1,'base64vlq::encode(Integer data)'],['../de/d5c/namespacebase64vlq.html#aa51fc819ce5fedc0775934c4cad7a46d',1,'base64vlq::encode(Array data)'],['../d7/d28/namespacebson.html#a595936db3cfd3c57b2711f8eb1812672',1,'bson::encode()'],['../d3/da1/namespacehex.html#a581b5701a55f8498bcc5d923490ea970',1,'hex::encode()'],['../df/d0d/namespaceiconv.html#a2b847d0399bc812657931cefcc7fb0bd',1,'iconv::encode()'],['../d1/db2/namespacejson.html#a332abe5ce26d71b3d8d6c62fd7639181',1,'json::encode()']]],
   ['encodeuri',['encodeURI',['../db/da8/namespaceencoding.html#adb05f8f3455536f38d2ee61484f3f2b5',1,'encoding']]],
