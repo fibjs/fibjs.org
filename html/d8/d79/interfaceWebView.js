@@ -1,5 +1,7 @@
 var interfaceWebView =
 [
+    [ "setHtml", "d8/d79/interfaceWebView.html#ae875df8bcbc8c545d2f2995fbec51898", null ],
+    [ "print", "d8/d79/interfaceWebView.html#a29d0b11722a159cb6e944c24eda58b61", null ],
     [ "close", "d8/d79/interfaceWebView.html#ac8c1d90b7a9e8628773659b7bdf7d96b", null ],
     [ "wait", "d8/d79/interfaceWebView.html#af06cc19bbd116eda7014d05de244525d", null ],
     [ "postMessage", "d8/d79/interfaceWebView.html#a8dc8fa09bbd4895ef3bd94c5289bbaed", null ],

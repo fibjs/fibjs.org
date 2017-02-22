@@ -1,5 +1,7 @@
 var NAVTREEINDEX7 =
 {
+"dd/d94/interfaceSocket.html#a3fcdc7696dd15634d0f9d51d95c2c25c":[6,64,0],
+"dd/d94/interfaceSocket.html#a4ad81f48d21bceda7bc1c27389685c6f":[6,64,22],
 "dd/d94/interfaceSocket.html#a52b486b973a47fb3fc79668a9742360f":[6,64,12],
 "dd/d94/interfaceSocket.html#a5520387ebf75fa030283055371859d8b":[6,64,13],
 "dd/d94/interfaceSocket.html#a63b56cb6723b0309d0c1b42e63061689":[6,64,25],
@@ -247,7 +249,5 @@ var NAVTREEINDEX7 =
 "df/d4b/interfaceHttpClient.html#ab525b42709d51cc127cacdee2e6787a0":[6,23,14],
 "df/d4b/interfaceHttpClient.html#ab63e2af167b7a697d6f24c36d9375e96":[6,23,13],
 "df/d4b/interfaceHttpClient.html#ab9261a7662bc8bb4a898bc15dc16f206":[6,23,21],
-"df/d4b/interfaceHttpClient.html#aba05ab71a1c54e5e0604f378d06e42c8":[6,23,16],
-"df/d4b/interfaceHttpClient.html#ac4cd4b87b4a448c51bb372446e13d66f":[6,23,11],
-"df/d4b/interfaceHttpClient.html#ac61f07a7d6c5471293371086af3186bd":[6,23,19]
+"df/d4b/interfaceHttpClient.html#aba05ab71a1c54e5e0604f378d06e42c8":[6,23,16]
 };

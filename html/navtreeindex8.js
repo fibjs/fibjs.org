@@ -1,5 +1,7 @@
 var NAVTREEINDEX8 =
 {
+"df/d4b/interfaceHttpClient.html#ac4cd4b87b4a448c51bb372446e13d66f":[6,23,11],
+"df/d4b/interfaceHttpClient.html#ac61f07a7d6c5471293371086af3186bd":[6,23,19],
 "df/d4b/interfaceHttpClient.html#ace67856ff037fd012bfffdc2ad114a5c":[6,23,25],
 "df/d4b/interfaceHttpClient.html#ad66be13eb5b7c5f560fd8511565138c4":[6,23,20],
 "df/d4b/interfaceHttpClient.html#ad90d65faa88f13cee74b3177f4214cb0":[6,23,26],
