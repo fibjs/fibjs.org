@@ -77,6 +77,7 @@ var annotated =
     [ "TextColor", "da/d8a/interfaceTextColor.html", "da/d8a/interfaceTextColor" ],
     [ "Timer", "df/df8/interfaceTimer.html", "df/df8/interfaceTimer" ],
     [ "UrlObject", "de/de5/interfaceUrlObject.html", "de/de5/interfaceUrlObject" ],
+    [ "WebSocket", "de/d2a/interfaceWebSocket.html", "de/d2a/interfaceWebSocket" ],
     [ "WebSocketHandler", "da/d20/interfaceWebSocketHandler.html", "da/d20/interfaceWebSocketHandler" ],
     [ "WebSocketMessage", "db/d5d/interfaceWebSocketMessage.html", "db/d5d/interfaceWebSocketMessage" ],
     [ "WebView", "d8/d79/interfaceWebView.html", "d8/d79/interfaceWebView" ],

@@ -9,9 +9,6 @@ var interfaceService =
     [ "run", "d1/db9/interfaceService.html#a8a6c076b72cd7227bd004cc8c3f3ec15", null ],
     [ "isInstalled", "d1/db9/interfaceService.html#a42a8a45c383dad88bd947599fc2b6e30", null ],
     [ "isRunning", "d1/db9/interfaceService.html#a15e519e09244886ec05da940f741b15c", null ],
-    [ "onstop", "d1/db9/interfaceService.html#abf14569c344d6fc2102630b2b5a29224", null ],
-    [ "onpause", "d1/db9/interfaceService.html#ac875cf8f4e31624f1feee65f5176f975", null ],
-    [ "oncontinue", "d1/db9/interfaceService.html#a5d5c30e768f93fee1b96f56cf2f692ba", null ],
     [ "on", "d1/db9/interfaceService.html#a388f4d809433e17e6aefb1bde7baa5b9", null ],
     [ "on", "d1/db9/interfaceService.html#ac82b7b65a886ae2bad0bb358415c4750", null ],
     [ "addListener", "d1/db9/interfaceService.html#a89f2ae2b116392cf0b5d4ebc194d4006", null ],
@@ -33,5 +30,8 @@ var interfaceService =
     [ "toString", "d1/db9/interfaceService.html#ac61f07a7d6c5471293371086af3186bd", null ],
     [ "toJSON", "d1/db9/interfaceService.html#ad66be13eb5b7c5f560fd8511565138c4", null ],
     [ "valueOf", "d1/db9/interfaceService.html#ab9261a7662bc8bb4a898bc15dc16f206", null ],
-    [ "name", "d1/db9/interfaceService.html#a2305f09f071c74dad0c5f21a8eade5d1", null ]
+    [ "name", "d1/db9/interfaceService.html#a2305f09f071c74dad0c5f21a8eade5d1", null ],
+    [ "onstop", "d1/db9/interfaceService.html#a836c85f8b91b763330a009d3bdb38ce9", null ],
+    [ "onpause", "d1/db9/interfaceService.html#aad1431e9a03070f0d3c4b6e311903d44", null ],
+    [ "oncontinue", "d1/db9/interfaceService.html#a722532295654f274d561fa5f14579a60", null ]
 ];

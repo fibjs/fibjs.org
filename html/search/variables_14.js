@@ -4,7 +4,7 @@ var searchData=
   ['target',['target',['../da/df6/interfaceXmlProcessingInstruction.html#a5f255359977fba5d140f8b168c4cb159',1,'XmlProcessingInstruction']]],
   ['tcpserver',['TcpServer',['../dc/d27/namespacenet.html#a604049c078bee2cef17fa2e3ba9a9471',1,'net']]],
   ['tdd',['TDD',['../df/d04/namespacetest.html#a6ed0e472953388d47f141b5419e76174',1,'test']]],
-  ['text',['TEXT',['../d0/d42/namespacewebsocket.html#a7ebc04b026c6b1cdd56d89f333f0c66f',1,'websocket']]],
+  ['text',['TEXT',['../d6/d5b/namespacews.html#a4d96d672e1a66d81b22160a35d64b2cd',1,'ws']]],
   ['text_5fnode',['TEXT_NODE',['../d8/dd3/namespacexml.html#a4d199c62d6eebe73d90a5d1248935edb',1,'xml']]],
   ['textcontent',['textContent',['../d7/ddb/interfaceXmlElement.html#ad82b3b9cba5a26ac164a7b7e0eb087e7',1,'XmlElement']]],
   ['that',['that',['../d0/df6/interfaceExpect.html#a35480010d927aa457b70359fa41d4b33',1,'Expect']]],

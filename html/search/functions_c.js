@@ -8,7 +8,7 @@ var searchData=
   ['members',['members',['../d3/dee/interfaceRedisSet.html#a5aa2f7795ced6b0d35184f1f29ea67f9',1,'RedisSet']]],
   ['memorystream',['MemoryStream',['../d2/d93/interfaceMemoryStream.html#a33b1b4e6e4b324747d95006c55da7e24',1,'MemoryStream::MemoryStream()'],['../d1/d96/namespaceio.html#a691927ba01140bce3ffa0d700f0f5914',1,'io::MemoryStream()']]],
   ['memoryusage',['memoryUsage',['../da/de1/namespaceos.html#a655f15d1790c184db42267a0bdef22cd',1,'os::memoryUsage()'],['../d8/d25/namespaceprocess.html#a30bf3a01655c4e12298c063786156d2b',1,'process::memoryUsage()']]],
-  ['message',['Message',['../d6/db7/interfaceMessage.html#a4fc4f717b634e66070366cb7722d7761',1,'Message::Message()'],['../d0/d42/namespacewebsocket.html#acbea8ddfa08a7bcd756f775342a33a92',1,'websocket::Message()']]],
+  ['message',['Message',['../d6/db7/interfaceMessage.html#a4fc4f717b634e66070366cb7722d7761',1,'Message::Message()'],['../d6/d5b/namespacews.html#aa2b5f4578eeddf16c44ce360f313bfed',1,'ws::Message()']]],
   ['mget',['mget',['../d0/d9e/interfaceLevelDB.html#a971e7ac07e400589974f41ae0475f0a9',1,'LevelDB::mget()'],['../d7/d32/interfaceRedis.html#ad511c75f0b8b704b8f72322d854f9cc6',1,'Redis::mget(Array keys)'],['../d7/d32/interfaceRedis.html#a0acadaf191bafc9dff5c8f2dad482ba9',1,'Redis::mget(...)'],['../d9/d58/interfaceRedisHash.html#a91cccc59189209f7e27be07e41b9792a',1,'RedisHash::mget(Array fields)'],['../d9/d58/interfaceRedisHash.html#ae05e8adf0c2895411bc1368b4f657f19',1,'RedisHash::mget(...)']]],
   ['mkdir',['mkdir',['../d5/d8f/namespacefs.html#ad11bbef581ff87c5fc33e8b3d4b98dfb',1,'fs']]],
   ['mkdirsync',['mkdirSync',['../d5/d8f/namespacefs.html#a82c90f7692b9fbea8577fc99628320d9',1,'fs']]],

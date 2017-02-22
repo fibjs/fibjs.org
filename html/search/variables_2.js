@@ -12,7 +12,7 @@ var searchData=
   ['been',['been',['../d0/df6/interfaceExpect.html#a14299251d029a0cfc8bcef53c98c47f9',1,'Expect']]],
   ['best_5fcompression',['BEST_COMPRESSION',['../d9/d3e/namespacezlib.html#a090b26bf155fd859256b03d502276296',1,'zlib']]],
   ['best_5fspeed',['BEST_SPEED',['../d9/d3e/namespacezlib.html#acef162e62929d79fc28c29dd19e233f3',1,'zlib']]],
-  ['binary',['BINARY',['../d0/d42/namespacewebsocket.html#ae5a0721c23ac5cca7d9e8e1a36b22474',1,'websocket']]],
+  ['binary',['BINARY',['../d6/d5b/namespacews.html#afa728c423531bf6240c2533bd62c9eed',1,'ws']]],
   ['blockqueue',['BlockQueue',['../d6/d05/namespacecoroutine.html#a894fd1e509c5ab593a08d0a4a251eaaf',1,'coroutine']]],
   ['blocksize',['blockSize',['../df/d49/interfaceCipher.html#a0424c17e6db89678a25684610537d2cd',1,'Cipher']]],
   ['blowfish',['BLOWFISH',['../de/d36/namespacecrypto.html#aa70ce841ea022557c5a0728d3dd76a17',1,'crypto']]],

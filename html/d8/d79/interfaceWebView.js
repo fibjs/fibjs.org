@@ -3,10 +3,6 @@ var interfaceWebView =
     [ "close", "d8/d79/interfaceWebView.html#ac8c1d90b7a9e8628773659b7bdf7d96b", null ],
     [ "wait", "d8/d79/interfaceWebView.html#af06cc19bbd116eda7014d05de244525d", null ],
     [ "postMessage", "d8/d79/interfaceWebView.html#a8dc8fa09bbd4895ef3bd94c5289bbaed", null ],
-    [ "onmove", "d8/d79/interfaceWebView.html#af83300db43f76666e8d599c6b43c75a0", null ],
-    [ "onsize", "d8/d79/interfaceWebView.html#af7276c16665130a7a500b00f7b57bd95", null ],
-    [ "onclose", "d8/d79/interfaceWebView.html#a04b07cb65bfd38e8bc4de1eb586971b0", null ],
-    [ "onmessage", "d8/d79/interfaceWebView.html#a507f1ea6c4f3e68bcad743aeaeeff10f", null ],
     [ "on", "d8/d79/interfaceWebView.html#a388f4d809433e17e6aefb1bde7baa5b9", null ],
     [ "on", "d8/d79/interfaceWebView.html#ac82b7b65a886ae2bad0bb358415c4750", null ],
     [ "addListener", "d8/d79/interfaceWebView.html#a89f2ae2b116392cf0b5d4ebc194d4006", null ],
@@ -27,5 +23,11 @@ var interfaceWebView =
     [ "equals", "d8/d79/interfaceWebView.html#a94c197c586ecfcb7cb733e0d543ce5ad", null ],
     [ "toString", "d8/d79/interfaceWebView.html#ac61f07a7d6c5471293371086af3186bd", null ],
     [ "toJSON", "d8/d79/interfaceWebView.html#ad66be13eb5b7c5f560fd8511565138c4", null ],
-    [ "valueOf", "d8/d79/interfaceWebView.html#ab9261a7662bc8bb4a898bc15dc16f206", null ]
+    [ "valueOf", "d8/d79/interfaceWebView.html#ab9261a7662bc8bb4a898bc15dc16f206", null ],
+    [ "visible", "d8/d79/interfaceWebView.html#aed9b345181eb463765a87bc726109b0f", null ],
+    [ "onload", "d8/d79/interfaceWebView.html#ac5fb73e07c7c3c0cdb074be967947b3e", null ],
+    [ "onmove", "d8/d79/interfaceWebView.html#aeb0b7e47a366806109535e6dc070a309", null ],
+    [ "onsize", "d8/d79/interfaceWebView.html#a9781c23c86765694d5c8cdfb3d840b03", null ],
+    [ "onclose", "d8/d79/interfaceWebView.html#aff22d22a2e33f4f19e6e37b71d8c558e", null ],
+    [ "onmessage", "d8/d79/interfaceWebView.html#a4d865e5fff646e0e856e115858cfd559", null ]
 ];

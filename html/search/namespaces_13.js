@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['websocket',['websocket',['../d0/d42/namespacewebsocket.html',1,'']]]
+  ['ws',['ws',['../d6/d5b/namespacews.html',1,'']]]
 ];

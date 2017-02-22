@@ -49,14 +49,14 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"d2/d41/interfaceImage.html#a614a6ee403a9a2b3f7544f83bdbbedfd",
-"d4/d35/interfaceXmlDocumentType.html#a1e2d8e642e8987ccfba221bed65fecf0",
-"d6/d47/interfaceXmlDocument.html#a7ec13b3947845575a3d6f8f8858ef56f",
+"d2/d41/interfaceImage.html#a6b88dbc459449d2280338e5b702a68b4",
+"d4/d35/interfaceXmlDocumentType.html#a3224f939c2efed4a0e90b5d50a89008a",
+"d6/d47/interfaceXmlDocument.html#a8ca27c745df2550d267efc6b64575085",
 "d7/d50/interfaceXmlCharacterData.html#af6498d34059fcb58b982eba90742f66d",
-"d9/d71/interfaceHttpResponse.html#a6650a9dcb99102b5e70cf1e3fa034cb9",
-"da/df6/interfaceXmlProcessingInstruction.html#a4762ae75380f9db0fc240fd3f91d5537",
-"dd/d94/interfaceSocket.html#a6b88dbc459449d2280338e5b702a68b4",
-"df/dc1/interfaceInt64.html#a37fabf0a2e29ca3bcadcd130314d5ca1"
+"d9/d71/interfaceHttpResponse.html#a572dd6923c69839d8e29da3e342b8f76",
+"da/df6/interfaceXmlProcessingInstruction.html#a1b332c368e7f6bfa304a65f255c28dad",
+"dd/d94/interfaceSocket.html#a52b486b973a47fb3fc79668a9742360f",
+"df/d4b/interfaceHttpClient.html#ace67856ff037fd012bfffdc2ad114a5c"
 ];
 
 var SYNCONMSG = '点击 关闭 面板同步';

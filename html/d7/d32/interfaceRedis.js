@@ -43,7 +43,6 @@ var interfaceRedis =
     [ "unpsub", "d7/d32/interfaceRedis.html#ab62ae6f27cac0685f76b32f17b512408", null ],
     [ "unpsub", "d7/d32/interfaceRedis.html#a38755960e0e8384b852e8bf3b9cb4ee7", null ],
     [ "unpsub", "d7/d32/interfaceRedis.html#a5b98e8b7fccf5f1184efd27454d001e6", null ],
-    [ "onsuberror", "d7/d32/interfaceRedis.html#af96772db675918003d9974601a3d7df7", null ],
     [ "pub", "d7/d32/interfaceRedis.html#ae11d8554fc2d37dc908ea7ecd7e4f9a8", null ],
     [ "getHash", "d7/d32/interfaceRedis.html#aec7a520518baaa94aa65e08a9ac9b7d3", null ],
     [ "getList", "d7/d32/interfaceRedis.html#abce17a68ed559afe687c7d5c734bc850", null ],
@@ -56,5 +55,6 @@ var interfaceRedis =
     [ "equals", "d7/d32/interfaceRedis.html#a94c197c586ecfcb7cb733e0d543ce5ad", null ],
     [ "toString", "d7/d32/interfaceRedis.html#ac61f07a7d6c5471293371086af3186bd", null ],
     [ "toJSON", "d7/d32/interfaceRedis.html#ad66be13eb5b7c5f560fd8511565138c4", null ],
-    [ "valueOf", "d7/d32/interfaceRedis.html#ab9261a7662bc8bb4a898bc15dc16f206", null ]
+    [ "valueOf", "d7/d32/interfaceRedis.html#ab9261a7662bc8bb4a898bc15dc16f206", null ],
+    [ "onsuberror", "d7/d32/interfaceRedis.html#aeb0e17c23ef4eb7b81105434fad93837", null ]
 ];

@@ -1,6 +1,6 @@
 var interfaceWebSocketMessage =
 [
-    [ "WebSocketMessage", "db/d5d/interfaceWebSocketMessage.html#a885c7d4696b159cc1cfb77a97466bd69", null ],
+    [ "WebSocketMessage", "db/d5d/interfaceWebSocketMessage.html#a95a2f6d5831d014f9f3303152a84eb4d", null ],
     [ "read", "db/d5d/interfaceWebSocketMessage.html#a1ac79feaa497a9bdb849d41ae5a5fc93", null ],
     [ "readAll", "db/d5d/interfaceWebSocketMessage.html#aff82e4029da32471f8d5b3bf6142e8fc", null ],
     [ "write", "db/d5d/interfaceWebSocketMessage.html#a42fdd87346cb529e34e1e12e41afe2bc", null ],
@@ -13,6 +13,7 @@ var interfaceWebSocketMessage =
     [ "toJSON", "db/d5d/interfaceWebSocketMessage.html#ad66be13eb5b7c5f560fd8511565138c4", null ],
     [ "valueOf", "db/d5d/interfaceWebSocketMessage.html#ab9261a7662bc8bb4a898bc15dc16f206", null ],
     [ "type", "db/d5d/interfaceWebSocketMessage.html#ac9f85e5622186f8099899240f2fe70e0", null ],
+    [ "data", "db/d5d/interfaceWebSocketMessage.html#ab9725a7f0612408f7233f20a95ecb0fb", null ],
     [ "masked", "db/d5d/interfaceWebSocketMessage.html#a95b52182675f23ccee2a661554f9417c", null ],
     [ "maxSize", "db/d5d/interfaceWebSocketMessage.html#aa4d5d83514ff5471b6d465a41902da26", null ],
     [ "value", "db/d5d/interfaceWebSocketMessage.html#a572dd6923c69839d8e29da3e342b8f76", null ],

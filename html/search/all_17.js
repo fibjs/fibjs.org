@@ -3,9 +3,9 @@ var searchData=
   ['wait',['wait',['../d5/d45/interfaceCondition.html#a77389487addf6b616767bd21d7386b0d',1,'Condition::wait()'],['../d7/ddf/interfaceEvent.html#a5088e961dddd82b86142b54ae9dd6b14',1,'Event::wait()'],['../dc/d90/interfaceSemaphore.html#ab144395cba916969214bbe60f7521fed',1,'Semaphore::wait()'],['../d8/d10/interfaceSubProcess.html#aa72a9338112f7e69cd10f1c38d0a1aba',1,'SubProcess::wait()'],['../d8/d79/interfaceWebView.html#af06cc19bbd116eda7014d05de244525d',1,'WebView::wait()']]],
   ['warn',['warn',['../da/d8a/interfaceTextColor.html#a1b2fab327d7b9814c9dd37b5f3861643',1,'TextColor::warn()'],['../dc/daa/namespaceconsole.html#a0ef293e9f40df74a625c0e23284308b3',1,'console::WARN()'],['../dc/daa/namespaceconsole.html#a85513e51e93e8d827ebedba45359161c',1,'console::warn(String fmt,...)'],['../dc/daa/namespaceconsole.html#a4731e95e6360c7bdf0513236bc0ea032',1,'console::warn(...)']]],
   ['webp',['WEBP',['../dd/d5d/namespacegd.html#ab062c3c1622ec7ffb3b2f2e2033b433d',1,'gd']]],
-  ['websocket',['websocket',['../d0/d42/namespacewebsocket.html',1,'']]],
+  ['websocket',['WebSocket',['../de/d2a/interfaceWebSocket.html',1,'']]],
   ['websockethandler',['WebSocketHandler',['../da/d20/interfaceWebSocketHandler.html',1,'WebSocketHandler'],['../da/d20/interfaceWebSocketHandler.html#a3ddeaa1c9e3d06b767b1b811bf4dde5e',1,'WebSocketHandler::WebSocketHandler()']]],
-  ['websocketmessage',['WebSocketMessage',['../db/d5d/interfaceWebSocketMessage.html',1,'WebSocketMessage'],['../db/d5d/interfaceWebSocketMessage.html#a885c7d4696b159cc1cfb77a97466bd69',1,'WebSocketMessage::WebSocketMessage()']]],
+  ['websocketmessage',['WebSocketMessage',['../db/d5d/interfaceWebSocketMessage.html',1,'WebSocketMessage'],['../db/d5d/interfaceWebSocketMessage.html#a95a2f6d5831d014f9f3303152a84eb4d',1,'WebSocketMessage::WebSocketMessage()']]],
   ['webview',['WebView',['../d8/d79/interfaceWebView.html',1,'']]],
   ['width',['width',['../d2/d41/interfaceImage.html#a4070489397d4fb67ccc71db0e1efbfeb',1,'Image::width()'],['../dc/daa/namespaceconsole.html#a4d00b4e3b1b1b4cf9cf79515119286f4',1,'console::width()']]],
   ['with',['with',['../d0/df6/interfaceExpect.html#a8f99dbedc53310d436ff867240460b6d',1,'Expect']]],
@@ -35,5 +35,6 @@ var searchData=
   ['writeuint32le',['writeUInt32LE',['../d9/dae/interfaceBuffer.html#a605bb5ecfade9ae81414cab5d66f84cd',1,'Buffer']]],
   ['writeuint8',['writeUInt8',['../d9/dae/interfaceBuffer.html#af1da42601f703f00e56e7ca78c9885dd',1,'Buffer']]],
   ['writeuintbe',['writeUIntBE',['../d9/dae/interfaceBuffer.html#a50fc7fd8840cd9f61ee85c42fb067eeb',1,'Buffer']]],
-  ['writeuintle',['writeUIntLE',['../d9/dae/interfaceBuffer.html#a203611d60114f6d977b8c4f231342275',1,'Buffer']]]
+  ['writeuintle',['writeUIntLE',['../d9/dae/interfaceBuffer.html#a203611d60114f6d977b8c4f231342275',1,'Buffer']]],
+  ['ws',['ws',['../d6/d5b/namespacews.html',1,'']]]
 ];

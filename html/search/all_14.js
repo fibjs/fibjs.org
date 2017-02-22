@@ -8,7 +8,7 @@ var searchData=
   ['tdd',['TDD',['../df/d04/namespacetest.html#a6ed0e472953388d47f141b5419e76174',1,'test']]],
   ['tell',['tell',['../d6/d9c/interfaceSeekableStream.html#a6eca3ff0973d41afc4ead654733e86ed',1,'SeekableStream']]],
   ['test',['test',['../df/d04/namespacetest.html',1,'test'],['../d1/d43/interfaceRegex.html#abe641d3bb0cd67dbd070de0b0e27d0a6',1,'Regex::test()']]],
-  ['text',['TEXT',['../d0/d42/namespacewebsocket.html#a7ebc04b026c6b1cdd56d89f333f0c66f',1,'websocket']]],
+  ['text',['TEXT',['../d6/d5b/namespacews.html#a4d96d672e1a66d81b22160a35d64b2cd',1,'ws']]],
   ['text_5fnode',['TEXT_NODE',['../d8/dd3/namespacexml.html#a4d199c62d6eebe73d90a5d1248935edb',1,'xml']]],
   ['textcolor',['TextColor',['../da/d8a/interfaceTextColor.html',1,'']]],
   ['textcontent',['textContent',['../d7/ddb/interfaceXmlElement.html#ad82b3b9cba5a26ac164a7b7e0eb087e7',1,'XmlElement']]],
