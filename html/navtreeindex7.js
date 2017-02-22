@@ -56,6 +56,7 @@ var NAVTREEINDEX7 =
 "dd/dc1/interfaceXmlComment.html#af6498d34059fcb58b982eba90742f66d":[6,87,11],
 "dd/dc1/interfaceXmlComment.html#af80e360c50c76851d60bd2871b3bc4ec":[6,87,3],
 "dd/dc1/interfaceXmlComment.html#afed941f3caa5ce3ccd9fbbeec0cefb39":[6,87,31],
+"dd/dec/namespacequerystring.html":[5,28],
 "dd/df3/interfaceEventEmitter.html":[6,13],
 "dd/df3/interfaceEventEmitter.html#a01c2bd0c19fb21e7aaaa1c4fddfabced":[6,13,7],
 "dd/df3/interfaceEventEmitter.html#a1a162248b9217abebe252848b8b3df93":[6,13,4],
@@ -200,7 +201,7 @@ var NAVTREEINDEX7 =
 "de/de5/interfaceUrlObject.html#ad08a18303379e8252e4030a094059679":[6,76,21],
 "de/de5/interfaceUrlObject.html#ad66be13eb5b7c5f560fd8511565138c4":[6,76,9],
 "de/de9/namespacehash.html":[5,16],
-"df/d04/namespacetest.html":[5,31],
+"df/d04/namespacetest.html":[5,32],
 "df/d0b/interfaceStats.html":[6,70],
 "df/d0b/interfaceStats.html#a0b2c6d2c38c43e2e0c2394237fd10608":[6,70,3],
 "df/d0b/interfaceStats.html#a2406fd72f30bf875b99ac550cf7f36b9":[6,70,4],
@@ -248,6 +249,5 @@ var NAVTREEINDEX7 =
 "df/d4b/interfaceHttpClient.html#a94c197c586ecfcb7cb733e0d543ce5ad":[6,23,18],
 "df/d4b/interfaceHttpClient.html#ab525b42709d51cc127cacdee2e6787a0":[6,23,14],
 "df/d4b/interfaceHttpClient.html#ab63e2af167b7a697d6f24c36d9375e96":[6,23,13],
-"df/d4b/interfaceHttpClient.html#ab9261a7662bc8bb4a898bc15dc16f206":[6,23,21],
-"df/d4b/interfaceHttpClient.html#aba05ab71a1c54e5e0604f378d06e42c8":[6,23,16]
+"df/d4b/interfaceHttpClient.html#ab9261a7662bc8bb4a898bc15dc16f206":[6,23,21]
 };
