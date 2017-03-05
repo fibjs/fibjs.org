@@ -1,7 +1,7 @@
 var interfaceWebSocket =
 [
     [ "WebSocket", "de/d2a/interfaceWebSocket.html#a5ab3a9d89386f2b3b788b1e8885925ce", null ],
-    [ "close", "de/d2a/interfaceWebSocket.html#ade178a5b7a8d35ad4b6ae0fd24e51be3", null ],
+    [ "close", "de/d2a/interfaceWebSocket.html#aeb83a12b086fa9247329b0ecf10296df", null ],
     [ "send", "de/d2a/interfaceWebSocket.html#a427cec55de171c0a63b565b319a5ef1a", null ],
     [ "send", "de/d2a/interfaceWebSocket.html#a52f1410359c1b6a5fd24fd53776d777e", null ],
     [ "on", "de/d2a/interfaceWebSocket.html#a388f4d809433e17e6aefb1bde7baa5b9", null ],

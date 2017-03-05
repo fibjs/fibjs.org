@@ -15,5 +15,6 @@ var searchData=
   ['document_5fnode',['DOCUMENT_NODE',['../d8/dd3/namespacexml.html#ac6530153d760a4819a51f0328797622a',1,'xml']]],
   ['document_5ftype_5fnode',['DOCUMENT_TYPE_NODE',['../d8/dd3/namespacexml.html#ade5a1368668d8f3f61c0c335c9b03509',1,'xml']]],
   ['documentelement',['documentElement',['../d6/d47/interfaceXmlDocument.html#afc1468819742b4eed35d50224d9cd4b8',1,'XmlDocument']]],
-  ['domain',['domain',['../d3/dea/interfaceHttpCookie.html#a6ae230932670e696206af980c2a9d510',1,'HttpCookie']]]
+  ['domain',['domain',['../d3/dea/interfaceHttpCookie.html#a6ae230932670e696206af980c2a9d510',1,'HttpCookie']]],
+  ['dword',['DWORD',['../de/d1f/namespaceregistry.html#ac52af98904b43315db870da1f75f03c4',1,'registry']]]
 ];

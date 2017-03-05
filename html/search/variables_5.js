@@ -21,5 +21,6 @@ var searchData=
   ['execargv',['execArgv',['../d8/d25/namespaceprocess.html#a12522010d9ba6e2d19f1aae35d09cc03',1,'process']]],
   ['execpath',['execPath',['../da/de1/namespaceos.html#ab093bc75a863a2f57ef93277e1b11a2a',1,'os::execPath()'],['../d8/d25/namespaceprocess.html#ade6cd663e8d8b831023dcfe0b34a9bed',1,'process::execPath()']]],
   ['exist',['exist',['../d0/df6/interfaceExpect.html#ac4f92d399ab7f74970d0bbc709fded48',1,'Expect']]],
+  ['expand_5fsz',['EXPAND_SZ',['../de/d1f/namespaceregistry.html#ab23e2e3ac7b22931578e1aff3ab037fe',1,'registry']]],
   ['expires',['expires',['../d3/dea/interfaceHttpCookie.html#a687e66f2cf20e7e700f2e598033d81b0',1,'HttpCookie']]]
 ];

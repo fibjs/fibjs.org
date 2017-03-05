@@ -35,5 +35,6 @@ var searchData=
   ['string',['string',['../d0/df6/interfaceExpect.html#a82d5903aca490a3a6c416b138cadc2f0',1,'Expect']]],
   ['sub',['SUB',['../d0/db9/namespacezmq.html#aabb3b82c6fd99038391fb98dfa76d9e3',1,'zmq']]],
   ['subject',['subject',['../dc/d22/interfaceX509Cert.html#a496a03ab80e5b3c6bdc01626df6900ba',1,'X509Cert::subject()'],['../d7/d8b/interfaceX509Req.html#a3f636dc3d8417ac6e5b508989f6d91c6',1,'X509Req::subject()']]],
-  ['systemid',['systemId',['../d4/d35/interfaceXmlDocumentType.html#a09ec50ecc1cd4b52071dc654324d3081',1,'XmlDocumentType']]]
+  ['systemid',['systemId',['../d4/d35/interfaceXmlDocumentType.html#a09ec50ecc1cd4b52071dc654324d3081',1,'XmlDocumentType']]],
+  ['sz',['SZ',['../de/d1f/namespaceregistry.html#a4f43a31a288aa96864578dc1dede5fe9',1,'registry']]]
 ];

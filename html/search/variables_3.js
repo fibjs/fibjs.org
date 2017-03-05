@@ -15,6 +15,7 @@ var searchData=
   ['chord',['CHORD',['../dd/d5d/namespacegd.html#a5a6179b00dcad09bbc24671d2df87f50',1,'gd']]],
   ['chunks',['chunks',['../d7/d34/interfaceGridFS.html#a51c4888d0359afc9be25be0cffc2a6a1',1,'GridFS']]],
   ['cipher',['Cipher',['../de/d36/namespacecrypto.html#a508b284453644f6759548048402fda04',1,'crypto']]],
+  ['classes_5froot',['CLASSES_ROOT',['../de/d1f/namespaceregistry.html#a169064db623c1c7d0204b197f98a0486',1,'registry']]],
   ['classname',['className',['../d7/ddb/interfaceXmlElement.html#ad2846c385dc6d236dfd0b6928ea213a3',1,'XmlElement']]],
   ['close',['CLOSE',['../d6/d5b/namespacews.html#a8759852a22ada79b26a07268ec5dad66',1,'ws']]],
   ['colorize',['COLORIZE',['../dd/d5d/namespacegd.html#ab2bcca76c2114d2f1a88e2a35a50a452',1,'gd']]],
@@ -33,5 +34,7 @@ var searchData=
   ['crit',['CRIT',['../dc/daa/namespaceconsole.html#ad5c0ac01d68bf889d9facb1c4ec5be6c',1,'console']]],
   ['crossdomain',['crossDomain',['../d6/d18/interfaceHttpHandler.html#acc43d9a11fa2e9b7aa62f4ca0ae91b93',1,'HttpHandler::crossDomain()'],['../d4/d79/interfaceHttpServer.html#a113023f684bec5d69809b283afcdcca4',1,'HttpServer::crossDomain()']]],
   ['ctime',['ctime',['../dc/da9/interfaceStat.html#af62482780f5ebea39cf8f173f424f7d4',1,'Stat']]],
-  ['ctr',['CTR',['../de/d36/namespacecrypto.html#af175807246df0acb157b9e272dd19c5b',1,'crypto']]]
+  ['ctr',['CTR',['../de/d36/namespacecrypto.html#af175807246df0acb157b9e272dd19c5b',1,'crypto']]],
+  ['current_5fconfig',['CURRENT_CONFIG',['../de/d1f/namespaceregistry.html#a3a98fe918f95011c757278e1a7ea6aaf',1,'registry']]],
+  ['current_5fuser',['CURRENT_USER',['../de/d1f/namespaceregistry.html#a643771ab43dd2c5d8928cdcda2591187',1,'registry']]]
 ];

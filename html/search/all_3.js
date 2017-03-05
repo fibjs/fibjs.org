@@ -18,6 +18,7 @@ var searchData=
   ['chord',['CHORD',['../dd/d5d/namespacegd.html#a5a6179b00dcad09bbc24671d2df87f50',1,'gd']]],
   ['chunks',['chunks',['../d7/d34/interfaceGridFS.html#a51c4888d0359afc9be25be0cffc2a6a1',1,'GridFS']]],
   ['cipher',['Cipher',['../df/d49/interfaceCipher.html',1,'Cipher'],['../df/d49/interfaceCipher.html#af0b902f19da1b9dd5a689c9fc284d97e',1,'Cipher::Cipher(Integer provider, Buffer key)'],['../df/d49/interfaceCipher.html#ab6b3e680fdf5a609323ff03e850165b2',1,'Cipher::Cipher(Integer provider, Integer mode, Buffer key)'],['../df/d49/interfaceCipher.html#a264a3a79bce05873b19a45b4edda3899',1,'Cipher::Cipher(Integer provider, Integer mode, Buffer key, Buffer iv)'],['../de/d36/namespacecrypto.html#a508b284453644f6759548048402fda04',1,'crypto::Cipher()']]],
+  ['classes_5froot',['CLASSES_ROOT',['../de/d1f/namespaceregistry.html#a169064db623c1c7d0204b197f98a0486',1,'registry']]],
   ['classname',['className',['../d7/ddb/interfaceXmlElement.html#ad2846c385dc6d236dfd0b6928ea213a3',1,'XmlElement']]],
   ['clear',['clear',['../d7/ddf/interfaceEvent.html#a32a508bc842a8befdca8501b7f6d09d6',1,'Event::clear()'],['../da/d34/interfaceHttpCollection.html#abb5c5b670c5e00501b6e67a26cc415e0',1,'HttpCollection::clear()'],['../dc/d81/interfaceLruCache.html#a712f2067f0af560e382de4e5a8df6759',1,'LruCache::clear()'],['../d2/dc1/interfaceMap.html#a2f509af9bf4d94ab4412b11f071f3249',1,'Map::clear()'],['../d2/d93/interfaceMemoryStream.html#ab4729b2a0ed520dc2c9ec13d6ba78083',1,'MemoryStream::clear()'],['../d6/db7/interfaceMessage.html#a8ed24470ab5214955c70bb108209f9d4',1,'Message::clear()'],['../d1/d56/interfaceQueue.html#a0d245f8b5cd9e660ef6f33afd9773d7d',1,'Queue::clear()'],['../df/df8/interfaceTimer.html#a5356570c9c2b70c9398ab51f8d22c6ae',1,'Timer::clear()'],['../dc/d22/interfaceX509Cert.html#a77b2377e261f7206b7b5361e55a91d28',1,'X509Cert::clear()'],['../d9/d86/interfaceX509Crl.html#a4e82b7556162d0ccaee7fab737c54335',1,'X509Crl::clear()'],['../dc/daa/namespaceconsole.html#a7b4492de83e2fd262641388f73c63b3b',1,'console::clear()']]],
   ['clearimmediate',['clearImmediate',['../d4/dfd/namespaceglobal.html#a9afefd1c182fe82b28e6ba8a334bc345',1,'global']]],
@@ -90,5 +91,7 @@ var searchData=
   ['ctime',['ctime',['../dc/da9/interfaceStat.html#af62482780f5ebea39cf8f173f424f7d4',1,'Stat']]],
   ['ctr',['CTR',['../de/d36/namespacecrypto.html#af175807246df0acb157b9e272dd19c5b',1,'crypto']]],
   ['current',['current',['../d6/d05/namespacecoroutine.html#ae2d278991596f4170f2be18ae8d71454',1,'coroutine']]],
+  ['current_5fconfig',['CURRENT_CONFIG',['../de/d1f/namespaceregistry.html#a3a98fe918f95011c757278e1a7ea6aaf',1,'registry']]],
+  ['current_5fuser',['CURRENT_USER',['../de/d1f/namespaceregistry.html#a643771ab43dd2c5d8928cdcda2591187',1,'registry']]],
   ['cwd',['cwd',['../d8/d25/namespaceprocess.html#a59492653e6cf45081a9c8a348c57af16',1,'process']]]
 ];

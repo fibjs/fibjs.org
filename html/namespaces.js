@@ -30,6 +30,7 @@ var namespaces =
     [ "profiler", "dc/dfc/namespaceprofiler.html", null ],
     [ "querystring", "dd/dec/namespacequerystring.html", null ],
     [ "re", "d5/d83/namespacere.html", null ],
+    [ "registry", "de/d1f/namespaceregistry.html", null ],
     [ "rpc", "d0/d14/namespacerpc.html", null ],
     [ "ssl", "df/dd2/namespacessl.html", null ],
     [ "test", "df/d04/namespacetest.html", null ],

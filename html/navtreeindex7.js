@@ -92,6 +92,7 @@ var NAVTREEINDEX7 =
 "de/d09/interfaceHeapSnapshot.html#aeb6eac8cbebd93ad448791eab14a0213":[6,22,10],
 "de/d09/interfaceHeapSnapshot.html#af00405058ecc8b96d4f09b556d2c4861":[6,22,1],
 "de/d09/interfaceHeapSnapshot.html#af6eba58a29be9c3dafe30fe6ef281913":[6,22,0],
+"de/d1f/namespaceregistry.html":[5,30],
 "de/d2a/interfaceWebSocket.html":[6,77],
 "de/d2a/interfaceWebSocket.html#a01c2bd0c19fb21e7aaaa1c4fddfabced":[6,77,10],
 "de/d2a/interfaceWebSocket.html#a072602d7155ba651aa4e6c6664a697a3":[6,77,26],
@@ -121,9 +122,9 @@ var NAVTREEINDEX7 =
 "de/d2a/interfaceWebSocket.html#ad227caf91d3c4a6a3202e626ba347ee3":[6,77,9],
 "de/d2a/interfaceWebSocket.html#ad3ae868f4b1f648dc50ec8405b60eba0":[6,77,14],
 "de/d2a/interfaceWebSocket.html#ad66be13eb5b7c5f560fd8511565138c4":[6,77,23],
-"de/d2a/interfaceWebSocket.html#ade178a5b7a8d35ad4b6ae0fd24e51be3":[6,77,1],
 "de/d2a/interfaceWebSocket.html#ae86ea9d51327270a6afbd60eff71b092":[6,77,17],
 "de/d2a/interfaceWebSocket.html#aea781a43088f3029ab4b5f14791a440d":[6,77,11],
+"de/d2a/interfaceWebSocket.html#aeb83a12b086fa9247329b0ecf10296df":[6,77,1],
 "de/d2a/interfaceWebSocket.html#af03c4baab71f98f82b6bc906d05ed54a":[6,77,28],
 "de/d2a/interfaceWebSocket.html#af1b46194d13632215766bb3c035a8524":[6,77,32],
 "de/d36/namespacecrypto.html":[5,8],
@@ -201,7 +202,7 @@ var NAVTREEINDEX7 =
 "de/de5/interfaceUrlObject.html#ad08a18303379e8252e4030a094059679":[6,76,21],
 "de/de5/interfaceUrlObject.html#ad66be13eb5b7c5f560fd8511565138c4":[6,76,9],
 "de/de9/namespacehash.html":[5,16],
-"df/d04/namespacetest.html":[5,32],
+"df/d04/namespacetest.html":[5,33],
 "df/d0b/interfaceStats.html":[6,70],
 "df/d0b/interfaceStats.html#a0b2c6d2c38c43e2e0c2394237fd10608":[6,70,3],
 "df/d0b/interfaceStats.html#a2406fd72f30bf875b99ac550cf7f36b9":[6,70,4],
@@ -248,6 +249,5 @@ var NAVTREEINDEX7 =
 "df/d4b/interfaceHttpClient.html#a8a191fc10b4a70694f14a8a442d388ab":[6,23,10],
 "df/d4b/interfaceHttpClient.html#a94c197c586ecfcb7cb733e0d543ce5ad":[6,23,18],
 "df/d4b/interfaceHttpClient.html#ab525b42709d51cc127cacdee2e6787a0":[6,23,14],
-"df/d4b/interfaceHttpClient.html#ab63e2af167b7a697d6f24c36d9375e96":[6,23,13],
-"df/d4b/interfaceHttpClient.html#ab9261a7662bc8bb4a898bc15dc16f206":[6,23,21]
+"df/d4b/interfaceHttpClient.html#ab63e2af167b7a697d6f24c36d9375e96":[6,23,13]
 };
