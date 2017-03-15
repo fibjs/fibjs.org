@@ -15,6 +15,8 @@ var interfaceHttpResponse =
     [ "read", "d9/d71/interfaceHttpResponse.html#a1ac79feaa497a9bdb849d41ae5a5fc93", null ],
     [ "readAll", "d9/d71/interfaceHttpResponse.html#aff82e4029da32471f8d5b3bf6142e8fc", null ],
     [ "write", "d9/d71/interfaceHttpResponse.html#a42fdd87346cb529e34e1e12e41afe2bc", null ],
+    [ "end", "d9/d71/interfaceHttpResponse.html#a9523c814b236f3063cdef2c891ff6c4f", null ],
+    [ "isEnded", "d9/d71/interfaceHttpResponse.html#ad4d3acff1c80add57aa193af917133ab", null ],
     [ "clear", "d9/d71/interfaceHttpResponse.html#a8ed24470ab5214955c70bb108209f9d4", null ],
     [ "sendTo", "d9/d71/interfaceHttpResponse.html#a8c456b35a88228f954974592e9b5c5ab", null ],
     [ "readFrom", "d9/d71/interfaceHttpResponse.html#a76cbd0ce572da0fd10218cc0aab973cf", null ],

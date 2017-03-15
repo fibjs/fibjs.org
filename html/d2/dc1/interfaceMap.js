@@ -7,6 +7,8 @@ var interfaceMap =
     [ "get", "d2/dc1/interfaceMap.html#ac7579f6947315102d10e512d7f5ecc51", null ],
     [ "put", "d2/dc1/interfaceMap.html#a65ed4a00924275ce5950cc4bff2bdc7a", null ],
     [ "put", "d2/dc1/interfaceMap.html#a02530ee18885b28d65b845561bbb02b0", null ],
+    [ "set", "d2/dc1/interfaceMap.html#ae410749c4bb7e29ce7e00ea43aa61a4c", null ],
+    [ "set", "d2/dc1/interfaceMap.html#a692567d2f01d6a7db4a35b54203fb88d", null ],
     [ "remove", "d2/dc1/interfaceMap.html#a6b806548d3e2d156511fc2326e044c36", null ],
     [ "isEmpty", "d2/dc1/interfaceMap.html#a4592579a691b6d1c84f8d53d2e94ce29", null ],
     [ "dispose", "d2/dc1/interfaceMap.html#a6b88dbc459449d2280338e5b702a68b4", null ],

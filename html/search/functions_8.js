@@ -29,6 +29,7 @@ var searchData=
   ['isdefined',['isDefined',['../d2/dab/namespaceassert.html#a558fc550572cebc80cf2ca4545db5ab3',1,'assert']]],
   ['isdirectory',['isDirectory',['../dc/da9/interfaceStat.html#a5970c0f2e6fc12189269dbd129109947',1,'Stat']]],
   ['isempty',['isEmpty',['../dc/d81/interfaceLruCache.html#a9bbd359547d2f97c9945cbae947cd053',1,'LruCache::isEmpty()'],['../d2/dc1/interfaceMap.html#a4592579a691b6d1c84f8d53d2e94ce29',1,'Map::isEmpty()'],['../d6/d72/namespaceutil.html#aef5ab4a130ee02216b8e0a7be55b6d0d',1,'util::isEmpty()']]],
+  ['isended',['isEnded',['../d6/db7/interfaceMessage.html#ad4d3acff1c80add57aa193af917133ab',1,'Message']]],
   ['isexecutable',['isExecutable',['../dc/da9/interfaceStat.html#a523a68f67f4cf80115a2cc7aa04bae5d',1,'Stat']]],
   ['isfalse',['isFalse',['../d2/dab/namespaceassert.html#ad5c6df12d35b760fb09c4e34aa5fa2c0',1,'assert']]],
   ['isfile',['isFile',['../dc/da9/interfaceStat.html#abf6cc36a2d4edc90d7e40d199e6f7916',1,'Stat']]],

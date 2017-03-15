@@ -8,7 +8,7 @@ var searchData=
   ['encodeuri',['encodeURI',['../db/da8/namespaceencoding.html#adb05f8f3455536f38d2ee61484f3f2b5',1,'encoding']]],
   ['encodeuricomponent',['encodeURIComponent',['../db/da8/namespaceencoding.html#a80b109e00081be72ca81ac4f9f033fb6',1,'encoding']]],
   ['encrypt',['encrypt',['../df/d49/interfaceCipher.html#ac1c907b2bbe76b1c312663d3e135030f',1,'Cipher::encrypt()'],['../d5/dac/interfacePKey.html#a9f2de9d142c9acb31dde03d5f7ef094a',1,'PKey::encrypt()']]],
-  ['end',['end',['../d2/d88/interfaceAsyncWait.html#adf311589dec033121d3b99e126481798',1,'AsyncWait']]],
+  ['end',['end',['../d2/d88/interfaceAsyncWait.html#adf311589dec033121d3b99e126481798',1,'AsyncWait::end()'],['../d6/db7/interfaceMessage.html#a9523c814b236f3063cdef2c891ff6c4f',1,'Message::end()']]],
   ['ensureindex',['ensureIndex',['../d6/d6b/interfaceMongoCollection.html#abdc1aaa831b564895fad5000d30a7357',1,'MongoCollection']]],
   ['eof',['eof',['../d3/d3a/interfaceFile.html#a372a49f942bf3f15b5b3918662ffcfc7',1,'File']]],
   ['eql',['eql',['../d0/df6/interfaceExpect.html#ab1800257df8c06dd9d759c9c2dd91f72',1,'Expect']]],
