@@ -23,5 +23,5 @@ var searchData=
   ['arc',['arc',['../d2/d41/interfaceImage.html#aab87680bc57415638facc13065504523',1,'Image']]],
   ['assert',['assert',['../dc/daa/namespaceconsole.html#abb065e74e5380ca19bfd6e9a6b2a4117',1,'console']]],
   ['asyncrun',['asyncRun',['../d7/d48/interfaceTcpServer.html#a90e985acd2aaeddff07304e4d4d93c3f',1,'TcpServer']]],
-  ['await',['await',['../dd/dbd/namespacemq.html#aaa3477ed3695f5da7f9916db0becc6fb',1,'mq']]]
+  ['await',['await',['../dd/dbd/namespacemq.html#a5126c326919188bb74c56d26556a047b',1,'mq::await()'],['../dd/dbd/namespacemq.html#ac9a89fff2aaca53c4a5f76f0e09e5909',1,'mq::await(Function proc)']]]
 ];

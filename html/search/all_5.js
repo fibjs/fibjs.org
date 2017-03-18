@@ -2,6 +2,7 @@ var searchData=
 [
   ['each',['each',['../d6/d72/namespaceutil.html#ac2e49de0b478db47c018ee9459251fac',1,'util']]],
   ['ecb',['ECB',['../de/d36/namespacecrypto.html#af0ec60de4a8a5a92c6ab948bc7e0b0f8',1,'crypto']]],
+  ['edge',['EDGE',['../d7/dc4/namespacegui.html#a77b51fbb35d819a319afcb6a02a0c23d',1,'gui']]],
   ['edge_5fcontextvariable',['Edge_ContextVariable',['../dc/dfc/namespaceprofiler.html#ab65aa1c0e7175ad001a3b37397b90648',1,'profiler']]],
   ['edge_5felement',['Edge_Element',['../dc/dfc/namespaceprofiler.html#ad3ac4e0af7649bc5c61217e3a9f5a44a',1,'profiler']]],
   ['edge_5fhidden',['Edge_Hidden',['../dc/dfc/namespaceprofiler.html#a7e86385bb02a8af4b5ee9dcff1b3d283',1,'profiler']]],
