@@ -313,11 +313,11 @@ Public 属性</h2></td></tr>
 <p>向 webview 内发送消息 </p>
 <dl class="params"><dt>参数</dt><dd>
   <table class="params">
-    <tr><td class="paramname">msg</td><td>要发送的消息 </td></tr>
+    <tr><td class="paramname">msg</td><td>要发送的消息</td></tr>
   </table>
   </dd>
 </dl>
-
+<div class="fragment"><div class="line"> <span class="comment">// index.js</span></div><div class="line">var <a class="code" href="../../d7/dc4/namespacegui.html">gui</a> = require(<span class="stringliteral">&#39;gui&#39;</span>);</div><div class="line">var webview = gui.open(<span class="stringliteral">&#39;fs:index.html&#39;</span>);</div><div class="line"></div><div class="line">webview.postMessage(<span class="stringliteral">&quot;hello from fibjs&quot;</span>);</div><div class="line"></div><div class="line"><span class="comment">// index.html</span></div><div class="line">&lt;script&gt;</div><div class="line">window.external.onmessage = <span class="keyword">function</span>(msg){</div><div class="line"> alert(msg); <span class="comment">// 会出现内容为 &#39;hello from fibjs&#39; 的弹窗</span></div><div class="line">};</div><div class="line">&lt;/script&gt;</div></div><!-- fragment --> 
 </div>
 </div>
 <a id="a388f4d809433e17e6aefb1bde7baa5b9"></a>
@@ -1112,7 +1112,7 @@ Public 属性</h2></td></tr>
 </div><div class="memdoc">
 
 <p>查询和绑定窗口移动事件，相当于 on("move", func); </p>
-
+<div class="fragment"><div class="line">var gui = require(<span class="stringliteral">&#39;gui&#39;</span>);</div><div class="line">var webview = gui.open(<span class="stringliteral">&#39;fs:index.html&#39;</span>);</div><div class="line"></div><div class="line">webview.onmove = <span class="keyword">function</span>(xoffset, yoffset) {}</div></div><!-- fragment --> 
 </div>
 </div>
 <a id="a9781c23c86765694d5c8cdfb3d840b03"></a>
@@ -1128,7 +1128,7 @@ Public 属性</h2></td></tr>
 </div><div class="memdoc">
 
 <p>查询和绑定窗口尺寸改变事件，相当于 on("size", func); </p>
-
+<div class="fragment"><div class="line">var gui = require(<span class="stringliteral">&#39;gui&#39;</span>);</div><div class="line">var webview = gui.open(<span class="stringliteral">&#39;fs:index.html&#39;</span>);</div><div class="line"></div><div class="line">webview.onsize = <span class="keyword">function</span>(width, height) {}</div></div><!-- fragment --> 
 </div>
 </div>
 <a id="aff22d22a2e33f4f19e6e37b71d8c558e"></a>
@@ -1144,7 +1144,7 @@ Public 属性</h2></td></tr>
 </div><div class="memdoc">
 
 <p>查询和绑定窗口关闭事件，相当于 on("close", func); </p>
-
+<div class="fragment"><div class="line">var gui = require(<span class="stringliteral">&#39;gui&#39;</span>);</div><div class="line">var webview = gui.open(<span class="stringliteral">&#39;fs:index.html&#39;</span>);</div><div class="line"></div><div class="line">webview.onclose = <span class="keyword">function</span>() {}</div></div><!-- fragment --> 
 </div>
 </div>
 <a id="a4d865e5fff646e0e856e115858cfd559"></a>
@@ -1160,7 +1160,7 @@ Public 属性</h2></td></tr>
 </div><div class="memdoc">
 
 <p>查询和绑定接受 webview 内 postMessage 消息事件，相当于 on("message", func); </p>
-
+<div class="fragment"><div class="line"><span class="comment">// index.html</span></div><div class="line">&lt;script&gt;</div><div class="line">window.external.postMessage(<span class="stringliteral">&#39;hello from html&#39;</span>)</div><div class="line">&lt;/script&gt;</div><div class="line"></div><div class="line"><span class="comment">// index.js</span></div><div class="line">var gui = require(<span class="stringliteral">&#39;gui&#39;</span>);</div><div class="line">var webview = gui.open(<span class="stringliteral">&#39;fs:index.html&#39;</span>);</div><div class="line"></div><div class="line">webview.onmessage = <span class="keyword">function</span>(msg) {</div><div class="line">    <a class="code" href="../../dc/daa/namespaceconsole.html">console</a>.log(msg); <span class="comment">// 将会打印 &#39;hello from html&#39;</span></div><div class="line">}</div></div><!-- fragment --> 
 </div>
 </div>
 </div><!-- contents -->
