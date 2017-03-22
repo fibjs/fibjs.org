@@ -4,7 +4,6 @@ var searchData=
   ['warn',['warn',['../da/d8a/interfaceTextColor.html#a1b2fab327d7b9814c9dd37b5f3861643',1,'TextColor::warn()'],['../dc/daa/namespaceconsole.html#a85513e51e93e8d827ebedba45359161c',1,'console::warn(String fmt,...)'],['../dc/daa/namespaceconsole.html#a4731e95e6360c7bdf0513236bc0ea032',1,'console::warn(...)'],['../dc/daa/namespaceconsole.html#a0ef293e9f40df74a625c0e23284308b3',1,'console::WARN()']]],
   ['webp',['WEBP',['../dd/d5d/namespacegd.html#ab062c3c1622ec7ffb3b2f2e2033b433d',1,'gd']]],
   ['websocket',['WebSocket',['../de/d2a/interfaceWebSocket.html',1,'']]],
-  ['websocketevent',['WebSocketEvent',['../d2/d03/interfaceWebSocketEvent.html',1,'']]],
   ['websockethandler',['WebSocketHandler',['../da/d20/interfaceWebSocketHandler.html',1,'WebSocketHandler'],['../da/d20/interfaceWebSocketHandler.html#a3ddeaa1c9e3d06b767b1b811bf4dde5e',1,'WebSocketHandler::WebSocketHandler()']]],
   ['websocketmessage',['WebSocketMessage',['../db/d5d/interfaceWebSocketMessage.html',1,'WebSocketMessage'],['../db/d5d/interfaceWebSocketMessage.html#a95a2f6d5831d014f9f3303152a84eb4d',1,'WebSocketMessage::WebSocketMessage()']]],
   ['webview',['WebView',['../d8/d79/interfaceWebView.html',1,'']]],

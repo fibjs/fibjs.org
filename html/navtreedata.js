@@ -49,14 +49,14 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"d2/d41/interfaceImage.html#a38ba5e3eba520cac72a1d3c28d605e84",
-"d3/dee/interfaceRedisSet.html#a94c197c586ecfcb7cb733e0d543ce5ad",
-"d6/d47/interfaceXmlDocument.html#a0161354317be92241b35ff74232f9e38",
-"d7/d50/interfaceXmlCharacterData.html#a2e8f8f0fe64a8843d0b976714deed4b0",
-"d9/d58/interfaceRedisHash.html#a60bb38924cf1174b1871c923f49e7bee",
-"da/d85/interfaceHandler.html#ac61f07a7d6c5471293371086af3186bd",
-"dc/da9/interfaceStat.html#a6b88dbc459449d2280338e5b702a68b4",
-"df/d0b/interfaceStats.html#ab9261a7662bc8bb4a898bc15dc16f206"
+"d2/d41/interfaceImage.html#a6b88dbc459449d2280338e5b702a68b4",
+"d4/d35/interfaceXmlDocumentType.html#a1b332c368e7f6bfa304a65f255c28dad",
+"d6/d47/interfaceXmlDocument.html#a621149c54c557f6e0dfbb3612a723b82",
+"d7/d50/interfaceXmlCharacterData.html#a9940f8621d0e65b0fc82f6f8959ffe6c",
+"d9/d58/interfaceRedisHash.html#ad66be13eb5b7c5f560fd8511565138c4",
+"da/d8a/interfaceTextColor.html#ac61f07a7d6c5471293371086af3186bd",
+"dc/da9/interfaceStat.html#a62f57226030d955723f1bc2894faaf92",
+"df/d0b/interfaceStats.html#ab62c5543881b3e0f775e4e03f1790517"
 ];
 
 var SYNCONMSG = '点击 关闭 面板同步';

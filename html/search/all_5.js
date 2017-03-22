@@ -35,6 +35,7 @@ var searchData=
   ['escape',['escape',['../d0/d45/namespacedb.html#aeb2f02c2858d45aeab3cd686e99ceabd',1,'db::escape()'],['../dd/dec/namespacequerystring.html#a0d4f027e4c158f33e968eb4dcd0efb6a',1,'querystring::escape()']]],
   ['event',['Event',['../d7/ddf/interfaceEvent.html',1,'Event'],['../d7/ddf/interfaceEvent.html#a33337ad9b309a903c822cb4693862d9c',1,'Event::Event()'],['../d6/d05/namespacecoroutine.html#a3c3e442ce88f0a47155c7645ddef2c11',1,'coroutine::Event()']]],
   ['eventemitter',['EventEmitter',['../dd/df3/interfaceEventEmitter.html',1,'EventEmitter'],['../dd/df3/interfaceEventEmitter.html#a3fb9421434e0cfcf3e8e891bb149e4db',1,'EventEmitter::EventEmitter()'],['../d8/dd5/namespaceevents.html#a3237c9e961ea4b7cf9cf44c485fff63e',1,'events::EventEmitter()']]],
+  ['eventinfo',['EventInfo',['../db/d0b/interfaceEventInfo.html',1,'']]],
   ['events',['events',['../d8/dd5/namespaceevents.html',1,'']]],
   ['every',['every',['../de/dd8/interfaceList.html#a6e12fa7417d23c22322a1d957085cdae',1,'List']]],
   ['exec',['exec',['../d1/d43/interfaceRegex.html#a4dd4fc54426487773dfc25914c2c1cf0',1,'Regex']]],

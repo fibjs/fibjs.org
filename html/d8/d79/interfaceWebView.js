@@ -29,7 +29,7 @@ var interfaceWebView =
     [ "visible", "d8/d79/interfaceWebView.html#aed9b345181eb463765a87bc726109b0f", null ],
     [ "onload", "d8/d79/interfaceWebView.html#ac5fb73e07c7c3c0cdb074be967947b3e", null ],
     [ "onmove", "d8/d79/interfaceWebView.html#aeb0b7e47a366806109535e6dc070a309", null ],
-    [ "onsize", "d8/d79/interfaceWebView.html#a9781c23c86765694d5c8cdfb3d840b03", null ],
+    [ "onresize", "d8/d79/interfaceWebView.html#afa16f328221b3562dbd92248707e4179", null ],
     [ "onclose", "d8/d79/interfaceWebView.html#aff22d22a2e33f4f19e6e37b71d8c558e", null ],
     [ "onmessage", "d8/d79/interfaceWebView.html#a4d865e5fff646e0e856e115858cfd559", null ]
 ];
