@@ -51,12 +51,12 @@ var NAVTREEINDEX =
 "annotated.html",
 "d2/d41/interfaceImage.html#a38ba5e3eba520cac72a1d3c28d605e84",
 "d3/dee/interfaceRedisSet.html#a94c197c586ecfcb7cb733e0d543ce5ad",
-"d6/d47/interfaceXmlDocument.html#a1052d2e3c611f68426fd1870381bd8fe",
-"d7/d50/interfaceXmlCharacterData.html#a7c1ba30620bfa7624afaca01364b0880",
-"d9/d58/interfaceRedisHash.html#ac61f07a7d6c5471293371086af3186bd",
-"da/db3/server.html#web_script",
-"dc/de5/interfaceHandlerEx.html#ab9261a7662bc8bb4a898bc15dc16f206",
-"df/d49/interfaceCipher.html#ac61f07a7d6c5471293371086af3186bd"
+"d6/d47/interfaceXmlDocument.html#a0161354317be92241b35ff74232f9e38",
+"d7/d50/interfaceXmlCharacterData.html#a2e8f8f0fe64a8843d0b976714deed4b0",
+"d9/d58/interfaceRedisHash.html#a60bb38924cf1174b1871c923f49e7bee",
+"da/d85/interfaceHandler.html#ac61f07a7d6c5471293371086af3186bd",
+"dc/da9/interfaceStat.html#a6b88dbc459449d2280338e5b702a68b4",
+"df/d0b/interfaceStats.html#ab9261a7662bc8bb4a898bc15dc16f206"
 ];
 
 var SYNCONMSG = '点击 关闭 面板同步';
