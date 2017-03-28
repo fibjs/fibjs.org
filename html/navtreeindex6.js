@@ -1,5 +1,6 @@
 var NAVTREEINDEX6 =
 {
+"da/d8a/interfaceTextColor.html#ab9261a7662bc8bb4a898bc15dc16f206":[6,75,4],
 "da/d8a/interfaceTextColor.html#ac61f07a7d6c5471293371086af3186bd":[6,75,2],
 "da/d8a/interfaceTextColor.html#ad66be13eb5b7c5f560fd8511565138c4":[6,75,3],
 "da/d8a/interfaceTextColor.html#af2f9ebf1de8543a516e82866df99363d":[6,75,8],
@@ -248,6 +249,5 @@ var NAVTREEINDEX6 =
 "dc/da9/interfaceStat.html#a34b8a148a3c7d4570ed19e642d7d5a72":[6,70,7],
 "dc/da9/interfaceStat.html#a356bbde5f558716ffc9ca7e4cf6f5aae":[6,70,17],
 "dc/da9/interfaceStat.html#a523a68f67f4cf80115a2cc7aa04bae5d":[6,70,2],
-"dc/da9/interfaceStat.html#a568f1871921d0ed38b885a8d7218ed5d":[6,70,0],
-"dc/da9/interfaceStat.html#a5970c0f2e6fc12189269dbd129109947":[6,70,4]
+"dc/da9/interfaceStat.html#a568f1871921d0ed38b885a8d7218ed5d":[6,70,0]
 };

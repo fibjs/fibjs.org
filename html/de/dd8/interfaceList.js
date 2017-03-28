@@ -5,6 +5,7 @@ var interfaceList =
     [ "freeze", "de/dd8/interfaceList.html#ae1fbf108bbded70019b31c675eaebcc8", null ],
     [ "resize", "de/dd8/interfaceList.html#a65b48a28764f7cfd800e98771770940a", null ],
     [ "push", "de/dd8/interfaceList.html#ae0416483c1e69ee30f8a0a076f102cb9", null ],
+    [ "indexOf", "de/dd8/interfaceList.html#a81263b6563acd0b245dcce388c8b34f2", null ],
     [ "push", "de/dd8/interfaceList.html#a00815b301c817f743c6112b127f915ce", null ],
     [ "pushArray", "de/dd8/interfaceList.html#ae4be698e4448a4d719b4633e897a4aca", null ],
     [ "pop", "de/dd8/interfaceList.html#a576664822a395ecf272fc5c1cd637526", null ],
