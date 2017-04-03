@@ -49,14 +49,14 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"d2/d41/interfaceImage.html#a6b88dbc459449d2280338e5b702a68b4",
-"d4/d35/interfaceXmlDocumentType.html#a1b332c368e7f6bfa304a65f255c28dad",
+"d2/d41/interfaceImage.html#a614a6ee403a9a2b3f7544f83bdbbedfd",
+"d4/d35/interfaceXmlDocumentType.html#a0f3b815f26c12b2c31249ecb747ee7db",
 "d6/d47/interfaceXmlDocument.html#a621149c54c557f6e0dfbb3612a723b82",
-"d7/d50/interfaceXmlCharacterData.html#a9940f8621d0e65b0fc82f6f8959ffe6c",
-"d9/d58/interfaceRedisHash.html#ad66be13eb5b7c5f560fd8511565138c4",
-"da/d8a/interfaceTextColor.html#ab9261a7662bc8bb4a898bc15dc16f206",
-"dc/da9/interfaceStat.html#a5970c0f2e6fc12189269dbd129109947",
-"df/d0b/interfaceStats.html#a6b88dbc459449d2280338e5b702a68b4"
+"d7/d50/interfaceXmlCharacterData.html#a9ffe09f7056e1c870968ed3d957b83c5",
+"d9/d58/interfaceRedisHash.html#ae05e8adf0c2895411bc1368b4f657f19",
+"da/d8a/interfaceTextColor.html#ad66be13eb5b7c5f560fd8511565138c4",
+"dc/da9/interfaceStat.html#a6b88dbc459449d2280338e5b702a68b4",
+"df/d0b/interfaceStats.html#a94c197c586ecfcb7cb733e0d543ce5ad"
 ];
 
 var SYNCONMSG = '点击 关闭 面板同步';

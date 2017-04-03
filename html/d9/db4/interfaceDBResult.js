@@ -5,6 +5,7 @@ var interfaceDBResult =
     [ "push", "d9/db4/interfaceDBResult.html#ae0416483c1e69ee30f8a0a076f102cb9", null ],
     [ "push", "d9/db4/interfaceDBResult.html#a00815b301c817f743c6112b127f915ce", null ],
     [ "indexOf", "d9/db4/interfaceDBResult.html#a81263b6563acd0b245dcce388c8b34f2", null ],
+    [ "lastIndexOf", "d9/db4/interfaceDBResult.html#acf3cd37672f3391b63b73c231686f6ec", null ],
     [ "pushArray", "d9/db4/interfaceDBResult.html#ae4be698e4448a4d719b4633e897a4aca", null ],
     [ "pop", "d9/db4/interfaceDBResult.html#a576664822a395ecf272fc5c1cd637526", null ],
     [ "slice", "d9/db4/interfaceDBResult.html#ab96d554cc6244b5c4407d47aef2dfc25", null ],

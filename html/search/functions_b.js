@@ -1,6 +1,7 @@
 var searchData=
 [
   ['last',['last',['../d6/d72/namespaceutil.html#adabb887de98cc0bd54035af02452225b',1,'util::last(Value v)'],['../d6/d72/namespaceutil.html#a764290a833d1fbfdb3616374f54be720',1,'util::last(Value v, Integer n)']]],
+  ['lastindexof',['lastIndexOf',['../de/dd8/interfaceList.html#acf3cd37672f3391b63b73c231686f6ec',1,'List']]],
   ['least',['least',['../d0/df6/interfaceExpect.html#a80a82dccaf29e7dcb10f1f2347b1c550',1,'Expect']]],
   ['len',['len',['../d9/d58/interfaceRedisHash.html#a26ef98c343228656940c7a64909b5dd1',1,'RedisHash::len()'],['../d0/da2/interfaceRedisList.html#aa976e16b1b36eb515c2c3779445bdf6e',1,'RedisList::len()'],['../d3/dee/interfaceRedisSet.html#ad906a3ba2dfe4520f8044450eba90c9b',1,'RedisSet::len()'],['../db/d03/interfaceRedisSortedSet.html#a46d1cfc5c8bb2d88ecaa6f0d2f5fc52f',1,'RedisSortedSet::len()']]],
   ['lessthan',['lessThan',['../d0/df6/interfaceExpect.html#ae73ba4fcdf0a8c2610bc2c1bbab6f358',1,'Expect::lessThan()'],['../d2/dab/namespaceassert.html#a4b1b450014e4539994cd105a8f9d0eb9',1,'assert::lessThan()']]],

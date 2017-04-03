@@ -1,6 +1,5 @@
 var NAVTREEINDEX4 =
 {
-"d7/d50/interfaceXmlCharacterData.html#a9940f8621d0e65b0fc82f6f8959ffe6c":[6,87,9],
 "d7/d50/interfaceXmlCharacterData.html#a9ffe09f7056e1c870968ed3d957b83c5":[6,87,12],
 "d7/d50/interfaceXmlCharacterData.html#aae7555a1459acb786386042ce7db0a8f":[6,87,1],
 "d7/d50/interfaceXmlCharacterData.html#ab567cde9aaa2b765f0f16b4c963fa9d5":[6,87,22],
@@ -249,5 +248,6 @@ var NAVTREEINDEX4 =
 "d9/d58/interfaceRedisHash.html#ab9261a7662bc8bb4a898bc15dc16f206":[6,53,18],
 "d9/d58/interfaceRedisHash.html#ac1f0d251ddf8ffd73b9829e1fd27fe90":[6,53,0],
 "d9/d58/interfaceRedisHash.html#ac61f07a7d6c5471293371086af3186bd":[6,53,16],
-"d9/d58/interfaceRedisHash.html#ace7739b42d9793c4777d3f09143a5dff":[6,53,3]
+"d9/d58/interfaceRedisHash.html#ace7739b42d9793c4777d3f09143a5dff":[6,53,3],
+"d9/d58/interfaceRedisHash.html#ad66be13eb5b7c5f560fd8511565138c4":[6,53,17]
 };

@@ -14,5 +14,6 @@ var interfaceLruCache =
     [ "toString", "dc/d81/interfaceLruCache.html#ac61f07a7d6c5471293371086af3186bd", null ],
     [ "toJSON", "dc/d81/interfaceLruCache.html#ad66be13eb5b7c5f560fd8511565138c4", null ],
     [ "valueOf", "dc/d81/interfaceLruCache.html#ab9261a7662bc8bb4a898bc15dc16f206", null ],
-    [ "size", "dc/d81/interfaceLruCache.html#aee1e7aea2978a02636cb4314bdb11420", null ]
+    [ "size", "dc/d81/interfaceLruCache.html#aee1e7aea2978a02636cb4314bdb11420", null ],
+    [ "timeout", "dc/d81/interfaceLruCache.html#a996507b2a6a3568fbfb37fb78cdd9985", null ]
 ];

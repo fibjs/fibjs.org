@@ -80,7 +80,6 @@ var searchData=
   ['response',['response',['../d6/db7/interfaceMessage.html#a78167fa1a78f782d15ea7122333eb53d',1,'Message::response()'],['../d3/d69/namespacehttp.html#a70902187780a1f3b2927b2a2f50213b5',1,'http::Response()']]],
   ['restart',['restart',['../d1/db9/interfaceService.html#a2690bf63f46424992ecc68084c2f3aff',1,'Service']]],
   ['restore',['restore',['../d7/d32/interfaceRedis.html#a05a2403b622164125d45bdadfddfe0f6',1,'Redis']]],
-  ['result',['result',['../d6/db7/interfaceMessage.html#aff37dc807536324e1b576ffec75770b0',1,'Message']]],
   ['retrieve',['retrieve',['../d7/d34/interfaceGridFS.html#a5c4af1ca1182a02bbbc4be877bfe374b',1,'GridFS']]],
   ['rewind',['rewind',['../d6/d9c/interfaceSeekableStream.html#a96c92db52bea85a8080771db0d89c024',1,'SeekableStream']]],
   ['rgb',['rgb',['../dd/d5d/namespacegd.html#a0706099b78bbf292b7d7898acc0b7aa2',1,'gd']]],

@@ -15,5 +15,6 @@ var interfaceSslSocket =
     [ "valueOf", "d0/d97/interfaceSslSocket.html#ab9261a7662bc8bb4a898bc15dc16f206", null ],
     [ "verification", "d0/d97/interfaceSslSocket.html#aedb74c712c82af1e7cd72dd5224ab04b", null ],
     [ "ca", "d0/d97/interfaceSslSocket.html#a2b2147675964c4f18d521c1f3805bb5d", null ],
-    [ "peerCert", "d0/d97/interfaceSslSocket.html#abb0d358298f6a4c3ef8ddef11a668930", null ]
+    [ "peerCert", "d0/d97/interfaceSslSocket.html#abb0d358298f6a4c3ef8ddef11a668930", null ],
+    [ "stream", "d0/d97/interfaceSslSocket.html#a70536bb732533a509bd43b725a331cbc", null ]
 ];

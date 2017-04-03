@@ -42,6 +42,7 @@ var NAVTREEINDEX0 =
 "d0/d97/interfaceSslSocket.html#a52b486b973a47fb3fc79668a9742360f":[6,69,6],
 "d0/d97/interfaceSslSocket.html#a5520387ebf75fa030283055371859d8b":[6,69,7],
 "d0/d97/interfaceSslSocket.html#a6b88dbc459449d2280338e5b702a68b4":[6,69,8],
+"d0/d97/interfaceSslSocket.html#a70536bb732533a509bd43b725a331cbc":[6,69,16],
 "d0/d97/interfaceSslSocket.html#a7a38cc9beea41220157a0263dcd86bc7":[6,69,4],
 "d0/d97/interfaceSslSocket.html#a7ec64273a450f8eb1de94a04b970de0b":[6,69,1],
 "d0/d97/interfaceSslSocket.html#a88752950a708f6bc5cf40bf2c3e498d0":[6,69,3],
@@ -248,6 +249,5 @@ var NAVTREEINDEX0 =
 "d2/d41/interfaceImage.html#a585e3918e0516fab908afbb2ba53ba4f":[6,34,24],
 "d2/d41/interfaceImage.html#a5bb12193e47901cc571bc128df1390e1":[6,34,34],
 "d2/d41/interfaceImage.html#a5eab9a2875c655bcc7be9559b4502227":[6,34,63],
-"d2/d41/interfaceImage.html#a60f94a909d3fcb6b7e032504aa0bc381":[6,34,66],
-"d2/d41/interfaceImage.html#a614a6ee403a9a2b3f7544f83bdbbedfd":[6,34,41]
+"d2/d41/interfaceImage.html#a60f94a909d3fcb6b7e032504aa0bc381":[6,34,66]
 };

@@ -37,7 +37,6 @@ var interfaceHttpResponse =
     [ "BINARY", "d9/d71/interfaceHttpResponse.html#af7db72d4421bbf118ab6b1072f575a21", null ],
     [ "value", "d9/d71/interfaceHttpResponse.html#a572dd6923c69839d8e29da3e342b8f76", null ],
     [ "params", "d9/d71/interfaceHttpResponse.html#a9d9a47e71f4a592898d50e0ea410a19f", null ],
-    [ "result", "d9/d71/interfaceHttpResponse.html#aff37dc807536324e1b576ffec75770b0", null ],
     [ "type", "d9/d71/interfaceHttpResponse.html#a80c564023d4dc05172d4ad4f8610705b", null ],
     [ "data", "d9/d71/interfaceHttpResponse.html#ad589b01e49ba1c57a65906267be3ad2d", null ],
     [ "body", "d9/d71/interfaceHttpResponse.html#a102e4b9b4a800bf24fd01a66df49b489", null ],

@@ -1,6 +1,5 @@
 var NAVTREEINDEX8 =
 {
-"df/d0b/interfaceStats.html#a6b88dbc459449d2280338e5b702a68b4":[6,71,7],
 "df/d0b/interfaceStats.html#a94c197c586ecfcb7cb733e0d543ce5ad":[6,71,8],
 "df/d0b/interfaceStats.html#ab62c5543881b3e0f775e4e03f1790517":[6,71,5],
 "df/d0b/interfaceStats.html#ab9261a7662bc8bb4a898bc15dc16f206":[6,71,11],

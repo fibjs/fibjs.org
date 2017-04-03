@@ -18,7 +18,6 @@ var interfaceMessage =
     [ "BINARY", "d6/db7/interfaceMessage.html#af7db72d4421bbf118ab6b1072f575a21", null ],
     [ "value", "d6/db7/interfaceMessage.html#a572dd6923c69839d8e29da3e342b8f76", null ],
     [ "params", "d6/db7/interfaceMessage.html#a9d9a47e71f4a592898d50e0ea410a19f", null ],
-    [ "result", "d6/db7/interfaceMessage.html#aff37dc807536324e1b576ffec75770b0", null ],
     [ "type", "d6/db7/interfaceMessage.html#a80c564023d4dc05172d4ad4f8610705b", null ],
     [ "data", "d6/db7/interfaceMessage.html#ad589b01e49ba1c57a65906267be3ad2d", null ],
     [ "body", "d6/db7/interfaceMessage.html#a102e4b9b4a800bf24fd01a66df49b489", null ],
