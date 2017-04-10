@@ -15,7 +15,7 @@ var searchData=
   ['url',['url',['../d3/da2/namespaceurl.html',1,'url'],['../d1/dd6/namespaceuuid.html#a777611efce7d88f7529d948acdde8da4',1,'uuid::URL()'],['../dc/d27/namespacenet.html#a80bea43f05c2193eb13f9d7000ccf32b',1,'net::Url()']]],
   ['urlobject',['UrlObject',['../de/de5/interfaceUrlObject.html',1,'UrlObject'],['../de/de5/interfaceUrlObject.html#a9973e019acc7d2fbf86be1a187473968',1,'UrlObject::UrlObject(Object args)'],['../de/de5/interfaceUrlObject.html#a4dbb4ad0e52bf14599bc731a8f8d87ba',1,'UrlObject::UrlObject(String url=&quot;&quot;, Boolean parseQueryString=false)']]],
   ['usage',['usage',['../dc/d22/interfaceX509Cert.html#abf97c5907bc00259d7dce54d788ff235',1,'X509Cert']]],
-  ['use',['use',['../d2/d68/interfaceMySQL.html#af3d7af443d45a1e778aa00a76c28f51b',1,'MySQL::use()'],['../dc/d01/interfaceMSSQL.html#a5c86112295e3da4ff6bcc8902869a5c0',1,'MSSQL::use()']]],
+  ['use',['use',['../dc/d01/interfaceMSSQL.html#a5c86112295e3da4ff6bcc8902869a5c0',1,'MSSQL::use()'],['../d2/d68/interfaceMySQL.html#af3d7af443d45a1e778aa00a76c28f51b',1,'MySQL::use()']]],
   ['useragent',['userAgent',['../df/d4b/interfaceHttpClient.html#ad90d65faa88f13cee74b3177f4214cb0',1,'HttpClient::userAgent()'],['../d3/d69/namespacehttp.html#ab2c77b1e9c3d364e79138357ca41530d',1,'http::userAgent()']]],
   ['username',['username',['../de/de5/interfaceUrlObject.html#ab1acae796bc860407fdb9fc80ae23f45',1,'UrlObject']]],
   ['users',['USERS',['../de/d1f/namespaceregistry.html#a4962469ceb053f31ad137610e83863bf',1,'registry']]],

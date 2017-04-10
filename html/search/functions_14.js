@@ -13,5 +13,5 @@ var searchData=
   ['uptime',['uptime',['../df/d0b/interfaceStats.html#a32d73f6238ce28d6651f18465af79ae0',1,'Stats::uptime()'],['../da/de1/namespaceos.html#a7fa90fa210d31f489f824de639820d42',1,'os::uptime()'],['../d8/d25/namespaceprocess.html#a37ac67356e04ce3c54b6a707f0e2783e',1,'process::uptime()']]],
   ['url',['Url',['../dc/d27/namespacenet.html#a80bea43f05c2193eb13f9d7000ccf32b',1,'net']]],
   ['urlobject',['UrlObject',['../de/de5/interfaceUrlObject.html#a9973e019acc7d2fbf86be1a187473968',1,'UrlObject::UrlObject(Object args)'],['../de/de5/interfaceUrlObject.html#a4dbb4ad0e52bf14599bc731a8f8d87ba',1,'UrlObject::UrlObject(String url=&quot;&quot;, Boolean parseQueryString=false)']]],
-  ['use',['use',['../d2/d68/interfaceMySQL.html#af3d7af443d45a1e778aa00a76c28f51b',1,'MySQL::use()'],['../dc/d01/interfaceMSSQL.html#a5c86112295e3da4ff6bcc8902869a5c0',1,'MSSQL::use()']]]
+  ['use',['use',['../dc/d01/interfaceMSSQL.html#a5c86112295e3da4ff6bcc8902869a5c0',1,'MSSQL::use()'],['../d2/d68/interfaceMySQL.html#af3d7af443d45a1e778aa00a76c28f51b',1,'MySQL::use()']]]
 ];
