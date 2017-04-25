@@ -85,7 +85,7 @@ var searchData=
   ['rgb',['rgb',['../dd/d5d/namespacegd.html#a0706099b78bbf292b7d7898acc0b7aa2',1,'gd']]],
   ['rgba',['rgba',['../dd/d5d/namespacegd.html#ad330769672a80a55bbca412dd909358a',1,'gd']]],
   ['right',['RIGHT',['../dd/d5d/namespacegd.html#a6f4a1982db74e4656421815e55f1b876',1,'gd']]],
-  ['ripemd160',['RIPEMD160',['../de/de9/namespacehash.html#ad0dca017211b72aebc3c7e28fc832051',1,'hash::RIPEMD160()'],['../de/de9/namespacehash.html#a71a420a73d5a44d8d819bf3583cf58f2',1,'hash::ripemd160(Buffer data)']]],
+  ['ripemd160',['ripemd160',['../de/de9/namespacehash.html#a71a420a73d5a44d8d819bf3583cf58f2',1,'hash::ripemd160(Buffer data)'],['../de/de9/namespacehash.html#ad0dca017211b72aebc3c7e28fc832051',1,'hash::RIPEMD160()']]],
   ['rmdir',['rmdir',['../d5/d8f/namespacefs.html#ae63300a92680e28c3b2bd55046120049',1,'fs']]],
   ['rmdirsync',['rmdirSync',['../d5/d8f/namespacefs.html#a20b380c23534d145eecead87d9b2cab8',1,'fs']]],
   ['rollback',['rollback',['../d8/d2c/interfaceDbConnection.html#ab4f47bec17ba6b3799c58ea8d0698b15',1,'DbConnection']]],

@@ -100,9 +100,6 @@ $(document).ready(function(){initNavTree('dd/dbd/namespacemq.html','../../');});
 <tr class="memitem:a5126c326919188bb74c56d26556a047b"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="../../da/d85/interfaceHandler.html">Handler</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dbd/namespacemq.html#a5126c326919188bb74c56d26556a047b">await</a> ()</td></tr>
 <tr class="memdesc:a5126c326919188bb74c56d26556a047b"><td class="mdescLeft">&#160;</td><td class="mdescRight">创建一个异步等待处理器  <a href="#a5126c326919188bb74c56d26556a047b">更多...</a><br /></td></tr>
 <tr class="separator:a5126c326919188bb74c56d26556a047b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac9a89fff2aaca53c4a5f76f0e09e5909"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="../../da/d85/interfaceHandler.html">Handler</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dbd/namespacemq.html#ac9a89fff2aaca53c4a5f76f0e09e5909">await</a> (Function proc)</td></tr>
-<tr class="memdesc:ac9a89fff2aaca53c4a5f76f0e09e5909"><td class="mdescLeft">&#160;</td><td class="mdescRight">创建一个异步等待处理器  <a href="#ac9a89fff2aaca53c4a5f76f0e09e5909">更多...</a><br /></td></tr>
-<tr class="separator:ac9a89fff2aaca53c4a5f76f0e09e5909"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a61c7dcb771bac38c446e827460e550cc"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="../../da/d85/interfaceHandler.html">Handler</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dbd/namespacemq.html#a61c7dcb771bac38c446e827460e550cc">nullHandler</a> ()</td></tr>
 <tr class="memdesc:a61c7dcb771bac38c446e827460e550cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">创建一个空处理器对象，次处理对象不做任何处理直接返回  <a href="#a61c7dcb771bac38c446e827460e550cc">更多...</a><br /></td></tr>
 <tr class="separator:a61c7dcb771bac38c446e827460e550cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -177,7 +174,7 @@ $(document).ready(function(){initNavTree('dd/dbd/namespacemq.html','../../');});
 </div>
 </div>
 <a id="a5126c326919188bb74c56d26556a047b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5126c326919188bb74c56d26556a047b">&#9670;&nbsp;</a></span>await() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a5126c326919188bb74c56d26556a047b">&#9670;&nbsp;</a></span>await()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -202,42 +199,6 @@ $(document).ready(function(){initNavTree('dd/dbd/namespacemq.html','../../');});
 <p>创建一个异步等待处理器 </p>
 <dl class="section return"><dt>返回</dt><dd>返回创建的处理器</dd></dl>
 <p>异步等待处理器用于需要异步处理的消息处理模式，示例如下： </p><div class="fragment"><div class="line"><span class="keyword">function</span> func(v){</div><div class="line">    var <a class="code" href="../../dd/dbd/namespacemq.html#a5126c326919188bb74c56d26556a047b">await</a> = mq.await();</div><div class="line"></div><div class="line">    call_some_async_func(v1, v2, v3, <span class="keyword">function</span>() {</div><div class="line">            await.end();</div><div class="line">        });</div><div class="line"></div><div class="line">    <span class="keywordflow">return</span> <a class="code" href="../../dd/dbd/namespacemq.html#a5126c326919188bb74c56d26556a047b">await</a>;</div><div class="line">}</div></div><!-- fragment --><p> 示例是一个 javascript 消息处理函数，当函数返回时，消息处理引擎将等待 await，直到 await.end 被调用，才继续下一阶段的处理。 </p>
-
-</div>
-</div>
-<a id="ac9a89fff2aaca53c4a5f76f0e09e5909"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac9a89fff2aaca53c4a5f76f0e09e5909">&#9670;&nbsp;</a></span>await() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static <a class="el" href="../../da/d85/interfaceHandler.html">Handler</a> mq.await </td>
-          <td>(</td>
-          <td class="paramtype">Function&#160;</td>
-          <td class="paramname"><em>proc</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>创建一个异步等待处理器 </p>
-<dl class="params"><dt>参数</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">proc</td><td>指定异步处理事务 </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>返回</dt><dd>返回创建的处理器</dd></dl>
-<p>异步等待处理器用于需要异步处理的消息处理模式，示例如下： </p><div class="fragment"><div class="line">var hdr = mq.await((v, done) =&gt; {</div><div class="line">   ....</div><div class="line">   ....</div><div class="line"></div><div class="line">   done();</div><div class="line">};</div></div><!-- fragment --><p> 示例是一个异步消息处理器，处理器接受任务后，将进入异步运行状态，直到 done 被调用，才继续下一阶段的处理。 </p>
 
 </div>
 </div>

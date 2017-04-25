@@ -2,6 +2,7 @@ var searchData=
 [
   ['map',['Map',['../d7/d82/namespacecollection.html#ad0f23254ad53aeee1cb7a2f28cf6b211',1,'collection']]],
   ['masked',['masked',['../db/d5d/interfaceWebSocketMessage.html#a95b52182675f23ccee2a661554f9417c',1,'WebSocketMessage']]],
+  ['master',['Master',['../d4/dfd/namespaceglobal.html#a7cc1aadc227bcaf2498e158bfb4a0c49',1,'global']]],
   ['max_5fversion',['max_version',['../df/dd2/namespacessl.html#abbf0d10acbe83afd31677cb8857044ea',1,'ssl']]],
   ['maxheaderscount',['maxHeadersCount',['../d6/d18/interfaceHttpHandler.html#aa3d3073109d381dcc4f0241c68546ff7',1,'HttpHandler::maxHeadersCount()'],['../da/d38/interfaceHttpMessage.html#a6650a9dcb99102b5e70cf1e3fa034cb9',1,'HttpMessage::maxHeadersCount()'],['../d4/d79/interfaceHttpServer.html#a232a50ee5dcdb467f7176988ac9d833e',1,'HttpServer::maxHeadersCount()']]],
   ['maxsize',['maxSize',['../da/d20/interfaceWebSocketHandler.html#a61ac2c66681d2994d685ddd7b89679a6',1,'WebSocketHandler::maxSize()'],['../db/d5d/interfaceWebSocketMessage.html#aa4d5d83514ff5471b6d465a41902da26',1,'WebSocketMessage::maxSize()']]],

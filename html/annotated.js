@@ -82,6 +82,7 @@ var annotated =
     [ "WebSocketHandler", "da/d20/interfaceWebSocketHandler.html", "da/d20/interfaceWebSocketHandler" ],
     [ "WebSocketMessage", "db/d5d/interfaceWebSocketMessage.html", "db/d5d/interfaceWebSocketMessage" ],
     [ "WebView", "d8/d79/interfaceWebView.html", "d8/d79/interfaceWebView" ],
+    [ "Worker", "dd/dce/interfaceWorker.html", "dd/dce/interfaceWorker" ],
     [ "X509Cert", "dc/d22/interfaceX509Cert.html", "dc/d22/interfaceX509Cert" ],
     [ "X509Crl", "d9/d86/interfaceX509Crl.html", "d9/d86/interfaceX509Crl" ],
     [ "X509Req", "d7/d8b/interfaceX509Req.html", "d7/d8b/interfaceX509Req" ],

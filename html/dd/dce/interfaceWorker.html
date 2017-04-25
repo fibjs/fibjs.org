@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Javascript on Fiber: EventEmitter接口 参考</title>
+<title>Javascript on Fiber: Worker接口 参考</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
@@ -63,7 +63,7 @@ $(function() {
   </div>
 </div>
 <script type="text/javascript">
-$(document).ready(function(){initNavTree('dd/df3/interfaceEventEmitter.html','../../');});
+$(document).ready(function(){initNavTree('dd/dce/interfaceWorker.html','../../');});
 </script>
 <div id="doc-content">
 <!-- window showing the filter options -->
@@ -83,26 +83,33 @@ $(document).ready(function(){initNavTree('dd/df3/interfaceEventEmitter.html','..
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public 成员函数</a> &#124;
-<a href="../../d8/dc3/interfaceEventEmitter-members.html">所有成员列表</a>  </div>
+<a href="#pub-attribs">Public 属性</a> &#124;
+<a href="../../d3/dac/interfaceWorker-members.html">所有成员列表</a>  </div>
   <div class="headertitle">
-<div class="title">EventEmitter接口 参考</div>  </div>
+<div class="title">Worker接口 参考</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>事件触发对象，可用于建立观察者模式，支持事件触发的对象均继承于此，同一事件的同一函数只会产生一次回调  
- <a href="../../dd/df3/interfaceEventEmitter.html#details">更多...</a></p>
+<p>独立线程工作对象  
+ <a href="../../dd/dce/interfaceWorker.html#details">更多...</a></p>
 <div class="dynheader">
-类 EventEmitter 继承关系图:</div>
+类 Worker 继承关系图:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../dd/d1d/interfaceEventEmitter__inherit__graph.svg" width="535" height="740"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../dc/dfd/interfaceWorker__inherit__graph.svg" width="166" height="634"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public 成员函数</h2></td></tr>
-<tr class="memitem:a3fb9421434e0cfcf3e8e891bb149e4db"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/df3/interfaceEventEmitter.html#a3fb9421434e0cfcf3e8e891bb149e4db">EventEmitter</a> ()</td></tr>
-<tr class="memdesc:a3fb9421434e0cfcf3e8e891bb149e4db"><td class="mdescLeft">&#160;</td><td class="mdescRight">构造函数  <a href="#a3fb9421434e0cfcf3e8e891bb149e4db">更多...</a><br /></td></tr>
-<tr class="separator:a3fb9421434e0cfcf3e8e891bb149e4db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a952a5533d713e875bea5cf638830ae"><td class="memItemLeft" align="right" valign="top"><a id="a7a952a5533d713e875bea5cf638830ae"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Worker</b> (String path, Object opts={})</td></tr>
+<tr class="separator:a7a952a5533d713e875bea5cf638830ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af8cdc67926543ba79d4d9d2969b5575f"><td class="memItemLeft" align="right" valign="top"><a id="af8cdc67926543ba79d4d9d2969b5575f"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>postMessage</b> (String data)</td></tr>
+<tr class="separator:af8cdc67926543ba79d4d9d2969b5575f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9209dcdb666cecfed1c614d3e5534172"><td class="memItemLeft" align="right" valign="top"><a id="a9209dcdb666cecfed1c614d3e5534172"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>postMessage</b> (<a class="el" href="../../d9/dae/interfaceBuffer.html">Buffer</a> data)</td></tr>
+<tr class="separator:a9209dcdb666cecfed1c614d3e5534172"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a388f4d809433e17e6aefb1bde7baa5b9"><td class="memItemLeft" align="right" valign="top">Object&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/df3/interfaceEventEmitter.html#a388f4d809433e17e6aefb1bde7baa5b9">on</a> (String ev, Function func)</td></tr>
 <tr class="memdesc:a388f4d809433e17e6aefb1bde7baa5b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">绑定一个事件处理函数到对象  <a href="#a388f4d809433e17e6aefb1bde7baa5b9">更多...</a><br /></td></tr>
 <tr class="separator:a388f4d809433e17e6aefb1bde7baa5b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -166,35 +173,27 @@ Public 成员函数</h2></td></tr>
 <tr class="memitem:ab9261a7662bc8bb4a898bc15dc16f206"><td class="memItemLeft" align="right" valign="top">Value&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d38/interfaceobject.html#ab9261a7662bc8bb4a898bc15dc16f206">valueOf</a> ()</td></tr>
 <tr class="memdesc:ab9261a7662bc8bb4a898bc15dc16f206"><td class="mdescLeft">&#160;</td><td class="mdescRight">返回对象本身的数值  <a href="#ab9261a7662bc8bb4a898bc15dc16f206">更多...</a><br /></td></tr>
 <tr class="separator:ab9261a7662bc8bb4a898bc15dc16f206"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Public 属性</h2></td></tr>
+<tr class="memitem:a217855d6020c0ac96360b14e70bfc76e"><td class="memItemLeft" align="right" valign="top"><a id="a217855d6020c0ac96360b14e70bfc76e"></a>
+Function&#160;</td><td class="memItemRight" valign="bottom"><b>onopen</b></td></tr>
+<tr class="separator:a217855d6020c0ac96360b14e70bfc76e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1555511e15bfbb45e75358bcd1b7331d"><td class="memItemLeft" align="right" valign="top"><a id="a1555511e15bfbb45e75358bcd1b7331d"></a>
+Function&#160;</td><td class="memItemRight" valign="bottom"><b>onmessage</b></td></tr>
+<tr class="separator:a1555511e15bfbb45e75358bcd1b7331d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
-<div class="textblock"><p>事件触发对象，可用于建立观察者模式，支持事件触发的对象均继承于此，同一事件的同一函数只会产生一次回调 </p>
-<p><a class="el" href="../../d7/ddf/interfaceEvent.html" title="事件对象 ">Event</a> 对象可独立创建，以用于组建自定义的事件系统： </p><div class="fragment"><div class="line">var e = <span class="keyword">new</span> <a class="code" href="../../d8/dd5/namespaceevents.html">events</a>.EventEmitter();</div></div><!-- fragment --> </div><h2 class="groupheader">构造及析构函数说明</h2>
-<a id="a3fb9421434e0cfcf3e8e891bb149e4db"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3fb9421434e0cfcf3e8e891bb149e4db">&#9670;&nbsp;</a></span>EventEmitter()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">EventEmitter.EventEmitter </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>构造函数 </p>
-
-</div>
-</div>
-<h2 class="groupheader">成员函数说明</h2>
+<div class="textblock"><p>独立线程工作对象 </p>
+</div><h2 class="groupheader">成员函数说明</h2>
 <a id="a388f4d809433e17e6aefb1bde7baa5b9"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a388f4d809433e17e6aefb1bde7baa5b9">&#9670;&nbsp;</a></span>on() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">Object EventEmitter.on </td>
@@ -214,6 +213,11 @@ Public 成员函数</h2></td></tr>
           <td></td><td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>绑定一个事件处理函数到对象 </p>
@@ -233,6 +237,9 @@ Public 成员函数</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">Object EventEmitter.on </td>
@@ -242,6 +249,11 @@ Public 成员函数</h2></td></tr>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>绑定一个事件处理函数到对象 </p>
@@ -260,6 +272,9 @@ Public 成员函数</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">Object EventEmitter.addListener </td>
@@ -279,6 +294,11 @@ Public 成员函数</h2></td></tr>
           <td></td><td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>绑定一个事件处理函数到对象 </p>
@@ -298,6 +318,9 @@ Public 成员函数</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">Object EventEmitter.addListener </td>
@@ -307,6 +330,11 @@ Public 成员函数</h2></td></tr>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>绑定一个事件处理函数到对象 </p>
@@ -325,6 +353,9 @@ Public 成员函数</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">Object EventEmitter.once </td>
@@ -344,6 +375,11 @@ Public 成员函数</h2></td></tr>
           <td></td><td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>绑定一个一次性事件处理函数到对象，一次性处理函数只会触发一次 </p>
@@ -363,6 +399,9 @@ Public 成员函数</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">Object EventEmitter.once </td>
@@ -372,6 +411,11 @@ Public 成员函数</h2></td></tr>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>绑定一个一次性事件处理函数到对象，一次性处理函数只会触发一次 </p>
@@ -390,6 +434,9 @@ Public 成员函数</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">Object EventEmitter.off </td>
@@ -409,6 +456,11 @@ Public 成员函数</h2></td></tr>
           <td></td><td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>从对象处理队列中取消指定函数 </p>
@@ -428,6 +480,9 @@ Public 成员函数</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">Object EventEmitter.off </td>
@@ -437,6 +492,11 @@ Public 成员函数</h2></td></tr>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>取消对象处理队列中的全部函数 </p>
@@ -455,6 +515,9 @@ Public 成员函数</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">Object EventEmitter.off </td>
@@ -464,6 +527,11 @@ Public 成员函数</h2></td></tr>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>从对象处理队列中取消指定函数 </p>
@@ -482,6 +550,9 @@ Public 成员函数</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">Object EventEmitter.removeListener </td>
@@ -501,6 +572,11 @@ Public 成员函数</h2></td></tr>
           <td></td><td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>从对象处理队列中取消指定函数 </p>
@@ -520,6 +596,9 @@ Public 成员函数</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">Object EventEmitter.removeListener </td>
@@ -529,6 +608,11 @@ Public 成员函数</h2></td></tr>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>取消对象处理队列中的全部函数 </p>
@@ -547,6 +631,9 @@ Public 成员函数</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">Object EventEmitter.removeListener </td>
@@ -556,6 +643,11 @@ Public 成员函数</h2></td></tr>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>从对象处理队列中取消指定函数 </p>
@@ -574,6 +666,9 @@ Public 成员函数</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">Object EventEmitter.removeAllListeners </td>
@@ -583,6 +678,11 @@ Public 成员函数</h2></td></tr>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>从对象处理队列中取消所有事件的所有监听器， 如果指定事件，则移除指定事件的所有监听器。 </p>
@@ -601,6 +701,9 @@ Public 成员函数</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">Array EventEmitter.listeners </td>
@@ -610,6 +713,11 @@ Public 成员函数</h2></td></tr>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>查询对象指定事件的监听器数组 </p>
@@ -628,6 +736,9 @@ Public 成员函数</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">Boolean EventEmitter.emit </td>
@@ -647,6 +758,11 @@ Public 成员函数</h2></td></tr>
           <td></td><td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>主动触发一个事件 </p>

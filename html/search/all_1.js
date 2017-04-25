@@ -40,5 +40,5 @@ var searchData=
   ['attributes',['attributes',['../d7/ddb/interfaceXmlElement.html#ab20822b125fbc59145e049d1bdf2c5f6',1,'XmlElement']]],
   ['auth',['auth',['../de/de5/interfaceUrlObject.html#a6c1d9c2b59d694b992a2a76bb8f1027f',1,'UrlObject']]],
   ['autoredirect',['autoRedirect',['../df/d4b/interfaceHttpClient.html#ace67856ff037fd012bfffdc2ad114a5c',1,'HttpClient::autoRedirect()'],['../d3/d69/namespacehttp.html#ac0f150a1864b7eec388501ed97228f6e',1,'http::autoRedirect()']]],
-  ['await',['await',['../dd/dbd/namespacemq.html#a5126c326919188bb74c56d26556a047b',1,'mq::await()'],['../dd/dbd/namespacemq.html#ac9a89fff2aaca53c4a5f76f0e09e5909',1,'mq::await(Function proc)']]]
+  ['await',['await',['../dd/dbd/namespacemq.html#a5126c326919188bb74c56d26556a047b',1,'mq']]]
 ];

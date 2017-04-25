@@ -51,7 +51,7 @@ var searchData=
   ['comment_5fnode',['COMMENT_NODE',['../d8/dd3/namespacexml.html#afa6d78573a0ea1615b5e60a03bd217e4',1,'xml']]],
   ['commit',['commit',['../d8/d2c/interfaceDbConnection.html#a1cfd7776b7f7b4a34e216f33b4df823b',1,'DbConnection::commit()'],['../d0/d9e/interfaceLevelDB.html#ad7d98e0ce00ca52d838a1b31d9d323ba',1,'LevelDB::commit()']]],
   ['compare',['compare',['../d9/dae/interfaceBuffer.html#a75f1e644fc46657e3f6b6383da864e78',1,'Buffer::compare()'],['../df/dc1/interfaceInt64.html#a37fabf0a2e29ca3bcadcd130314d5ca1',1,'Int64::compare()']]],
-  ['compile',['compile',['../d5/dd4/interfaceSandBox.html#a33a30e49f50ebe2a56ef8aaeaab8affb',1,'SandBox::compile(String srcname, String script)'],['../d5/dd4/interfaceSandBox.html#a9910d5dabf0c4ef2749328bdb9e2c0e3',1,'SandBox::compile(String script)'],['../d5/d83/namespacere.html#a210fb1ffc2d442367932ea0f831e59e1',1,'re::compile()']]],
+  ['compile',['compile',['../d5/dd4/interfaceSandBox.html#a5c15b9e76b70c13bbe60374afa5cd935',1,'SandBox::compile(String srcname, String script, Integer mode=0)'],['../d5/dd4/interfaceSandBox.html#a78cff7ba4d76343edc1b1cd9e192b031',1,'SandBox::compile(String script, Integer mode=0)'],['../d5/d83/namespacere.html#a210fb1ffc2d442367932ea0f831e59e1',1,'re::compile()']]],
   ['compress_5fsize',['compress_size',['../d6/d9b/interfaceZipInfo.html#a1826c30d48ccd4761ce571ab9fed36ea',1,'ZipInfo']]],
   ['compress_5ftype',['compress_type',['../d6/d9b/interfaceZipInfo.html#a05802e19c34f094baf6df6c9c131d0cd',1,'ZipInfo']]],
   ['concat',['concat',['../d9/dae/interfaceBuffer.html#a6fddf91a1811f1057a512ff2e08b0361',1,'Buffer::concat()'],['../de/dd8/interfaceList.html#ac4827e4196f21ea4b20ac15a55a62aa3',1,'List::concat()']]],
