@@ -1,8 +1,7 @@
 var interfaceWorker =
 [
     [ "Worker", "dd/dce/interfaceWorker.html#a7a952a5533d713e875bea5cf638830ae", null ],
-    [ "postMessage", "dd/dce/interfaceWorker.html#af8cdc67926543ba79d4d9d2969b5575f", null ],
-    [ "postMessage", "dd/dce/interfaceWorker.html#a9209dcdb666cecfed1c614d3e5534172", null ],
+    [ "postMessage", "dd/dce/interfaceWorker.html#a8c0bd8235ce4b1ec6e172bf9f05a9907", null ],
     [ "on", "dd/dce/interfaceWorker.html#a388f4d809433e17e6aefb1bde7baa5b9", null ],
     [ "on", "dd/dce/interfaceWorker.html#ac82b7b65a886ae2bad0bb358415c4750", null ],
     [ "addListener", "dd/dce/interfaceWorker.html#a89f2ae2b116392cf0b5d4ebc194d4006", null ],
@@ -24,6 +23,5 @@ var interfaceWorker =
     [ "toString", "dd/dce/interfaceWorker.html#ac61f07a7d6c5471293371086af3186bd", null ],
     [ "toJSON", "dd/dce/interfaceWorker.html#ad66be13eb5b7c5f560fd8511565138c4", null ],
     [ "valueOf", "dd/dce/interfaceWorker.html#ab9261a7662bc8bb4a898bc15dc16f206", null ],
-    [ "onopen", "dd/dce/interfaceWorker.html#a217855d6020c0ac96360b14e70bfc76e", null ],
     [ "onmessage", "dd/dce/interfaceWorker.html#a1555511e15bfbb45e75358bcd1b7331d", null ]
 ];

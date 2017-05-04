@@ -12,7 +12,7 @@ var searchData=
   ['ensureindex',['ensureIndex',['../d6/d6b/interfaceMongoCollection.html#abdc1aaa831b564895fad5000d30a7357',1,'MongoCollection']]],
   ['eof',['eof',['../d3/d3a/interfaceFile.html#a372a49f942bf3f15b5b3918662ffcfc7',1,'File']]],
   ['eql',['eql',['../d0/df6/interfaceExpect.html#ab1800257df8c06dd9d759c9c2dd91f72',1,'Expect']]],
-  ['equal',['equal',['../d0/df6/interfaceExpect.html#aa8507593476087851d862726b802d7f1',1,'Expect::equal()'],['../df/dc1/interfaceInt64.html#a1cdcc1931d4021a31cf9a2f62d1fa881',1,'Int64::equal()'],['../d2/dab/namespaceassert.html#af37037ca6be593c635dc7a312e45f17e',1,'assert::equal()']]],
+  ['equal',['equal',['../d0/df6/interfaceExpect.html#aa8507593476087851d862726b802d7f1',1,'Expect::equal()'],['../d2/dab/namespaceassert.html#af37037ca6be593c635dc7a312e45f17e',1,'assert::equal()']]],
   ['equals',['equals',['../db/d38/interfaceobject.html#a94c197c586ecfcb7cb733e0d543ce5ad',1,'object']]],
   ['error',['error',['../dc/daa/namespaceconsole.html#a3525bdec50b085e03d6ca5625a057914',1,'console::error(String fmt,...)'],['../dc/daa/namespaceconsole.html#abc33daf6e70210aa03b78832c2d6eea3',1,'console::error(...)']]],
   ['escape',['escape',['../d0/d45/namespacedb.html#aeb2f02c2858d45aeab3cd686e99ceabd',1,'db::escape()'],['../dd/dec/namespacequerystring.html#a0d4f027e4c158f33e968eb4dcd0efb6a',1,'querystring::escape()']]],

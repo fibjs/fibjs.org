@@ -56,7 +56,7 @@ var NAVTREEINDEX =
 "d9/d58/interfaceRedisHash.html#ae05e8adf0c2895411bc1368b4f657f19",
 "da/d8a/interfaceTextColor.html#ad66be13eb5b7c5f560fd8511565138c4",
 "dc/da9/interfaceStat.html#a6b88dbc459449d2280338e5b702a68b4",
-"de/de5/interfaceUrlObject.html#a4dbb4ad0e52bf14599bc731a8f8d87ba"
+"de/de5/interfaceUrlObject.html#a6b88dbc459449d2280338e5b702a68b4"
 ];
 
 var SYNCONMSG = '点击 关闭 面板同步';
