@@ -2,7 +2,7 @@ var interfaceChain =
 [
     [ "Chain", "d3/d78/interfaceChain.html#ac3ffc3a20f954287a0a716eab003309b", null ],
     [ "append", "d3/d78/interfaceChain.html#a702712b4b03f43f15d24e217afad5fe2", null ],
-    [ "append", "d3/d78/interfaceChain.html#ab53cecfa978a2263e38334d0e4c3bddb", null ],
+    [ "append", "d3/d78/interfaceChain.html#a4a0cb148e525fae20c3a40975a5e1633", null ],
     [ "invoke", "d3/d78/interfaceChain.html#af901258552a23961893c5bd6f18ce681", null ],
     [ "dispose", "d3/d78/interfaceChain.html#a6b88dbc459449d2280338e5b702a68b4", null ],
     [ "equals", "d3/d78/interfaceChain.html#a94c197c586ecfcb7cb733e0d543ce5ad", null ],

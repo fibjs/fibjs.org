@@ -101,12 +101,12 @@ $(document).ready(function(){initNavTree('d4/d79/interfaceHttpServer.html','../.
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public 成员函数</h2></td></tr>
-<tr class="memitem:a260837a99d9746f316f74b68d477be66"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d79/interfaceHttpServer.html#a260837a99d9746f316f74b68d477be66">HttpServer</a> (Integer port, Value hdlr)</td></tr>
-<tr class="memdesc:a260837a99d9746f316f74b68d477be66"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../d4/d79/interfaceHttpServer.html" title="http 服务器对象 ">HttpServer</a> 构造函数，在所有本机地址侦听  <a href="#a260837a99d9746f316f74b68d477be66">更多...</a><br /></td></tr>
-<tr class="separator:a260837a99d9746f316f74b68d477be66"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa374e3f8ec624c2b9468291aeb3d3f34"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d79/interfaceHttpServer.html#aa374e3f8ec624c2b9468291aeb3d3f34">HttpServer</a> (String addr, Integer port, Value hdlr)</td></tr>
-<tr class="memdesc:aa374e3f8ec624c2b9468291aeb3d3f34"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../d4/d79/interfaceHttpServer.html" title="http 服务器对象 ">HttpServer</a> 构造函数  <a href="#aa374e3f8ec624c2b9468291aeb3d3f34">更多...</a><br /></td></tr>
-<tr class="separator:aa374e3f8ec624c2b9468291aeb3d3f34"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b9eee3d8e04faa3ac24736454ec3fff"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d79/interfaceHttpServer.html#a4b9eee3d8e04faa3ac24736454ec3fff">HttpServer</a> (Integer port, <a class="el" href="../../da/d85/interfaceHandler.html">Handler</a> hdlr)</td></tr>
+<tr class="memdesc:a4b9eee3d8e04faa3ac24736454ec3fff"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../d4/d79/interfaceHttpServer.html" title="http 服务器对象 ">HttpServer</a> 构造函数，在所有本机地址侦听  <a href="#a4b9eee3d8e04faa3ac24736454ec3fff">更多...</a><br /></td></tr>
+<tr class="separator:a4b9eee3d8e04faa3ac24736454ec3fff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e1fa512d656d49e309b0e7548aaf9ad"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d79/interfaceHttpServer.html#a6e1fa512d656d49e309b0e7548aaf9ad">HttpServer</a> (String addr, Integer port, <a class="el" href="../../da/d85/interfaceHandler.html">Handler</a> hdlr)</td></tr>
+<tr class="memdesc:a6e1fa512d656d49e309b0e7548aaf9ad"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../d4/d79/interfaceHttpServer.html" title="http 服务器对象 ">HttpServer</a> 构造函数  <a href="#a6e1fa512d656d49e309b0e7548aaf9ad">更多...</a><br /></td></tr>
+<tr class="separator:a6e1fa512d656d49e309b0e7548aaf9ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3867bfb2a99b35a13c0fcc711676aa22"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d79/interfaceHttpServer.html#a3867bfb2a99b35a13c0fcc711676aa22">onerror</a> (Object hdlrs)</td></tr>
 <tr class="memdesc:a3867bfb2a99b35a13c0fcc711676aa22"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置错误处理器  <a href="#a3867bfb2a99b35a13c0fcc711676aa22">更多...</a><br /></td></tr>
 <tr class="separator:a3867bfb2a99b35a13c0fcc711676aa22"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -165,8 +165,8 @@ Public 属性</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p>http 服务器对象 </p>
 <p>http 服务器对象是将 <a class="el" href="../../d7/d48/interfaceTcpServer.html" title="tcp 服务器对象，可方便创建一个标准多纤程 tcp 服务器 ">TcpServer</a> 和 <a class="el" href="../../d6/d18/interfaceHttpHandler.html" title="http 协议转换处理器 ">HttpHandler</a> 组合封装的对象，方便快速搭建服务器，逻辑上相当于： </p><div class="fragment"><div class="line">var svr = <span class="keyword">new</span> <a class="code" href="../../dc/d27/namespacenet.html">net</a>.TcpServer(addr, port, <span class="keyword">new</span> http.Handler(<span class="keyword">function</span>(req){</div><div class="line">   ...</div><div class="line">}));</div></div><!-- fragment --><p>创建方法： </p><div class="fragment"><div class="line">var http = require(<span class="stringliteral">&quot;http&quot;</span>);</div><div class="line">var svr = <span class="keyword">new</span> http.Server(80, <span class="keyword">function</span>(req){</div><div class="line">    ...</div><div class="line">});</div></div><!-- fragment --> </div><h2 class="groupheader">构造及析构函数说明</h2>
-<a id="a260837a99d9746f316f74b68d477be66"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a260837a99d9746f316f74b68d477be66">&#9670;&nbsp;</a></span>HttpServer() <span class="overload">[1/2]</span></h2>
+<a id="a4b9eee3d8e04faa3ac24736454ec3fff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b9eee3d8e04faa3ac24736454ec3fff">&#9670;&nbsp;</a></span>HttpServer() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -180,7 +180,7 @@ Public 属性</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">Value&#160;</td>
+          <td class="paramtype"><a class="el" href="../../da/d85/interfaceHandler.html">Handler</a>&#160;</td>
           <td class="paramname"><em>hdlr</em>&#160;</td>
         </tr>
         <tr>
@@ -195,15 +195,15 @@ Public 属性</h2></td></tr>
 <dl class="params"><dt>参数</dt><dd>
   <table class="params">
     <tr><td class="paramname">port</td><td>指定 http 服务器侦听端口 </td></tr>
-    <tr><td class="paramname">hdlr</td><td>http 内置消息处理器，处理函数，链式处理数组，路由对象，详见 <a class="el" href="../../dd/dbd/namespacemq.html#a5ad6cd9f9ec59edab1abd1a8c6cac229" title="创建一个 javascript 消息处理器对象，传递值内置处理器则直接返回 ">mq.jsHandler</a> </td></tr>
+    <tr><td class="paramname">hdlr</td><td>http 内置消息处理器，处理函数，链式处理数组，路由对象，详见 <a class="el" href="../../dd/dbd/namespacemq.html#a167237eac82c8242341503f840e154ad" title="创建一个消息处理器对象，传递值内置处理器则直接返回 ">mq.Handler</a> </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a id="aa374e3f8ec624c2b9468291aeb3d3f34"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa374e3f8ec624c2b9468291aeb3d3f34">&#9670;&nbsp;</a></span>HttpServer() <span class="overload">[2/2]</span></h2>
+<a id="a6e1fa512d656d49e309b0e7548aaf9ad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6e1fa512d656d49e309b0e7548aaf9ad">&#9670;&nbsp;</a></span>HttpServer() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -223,7 +223,7 @@ Public 属性</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">Value&#160;</td>
+          <td class="paramtype"><a class="el" href="../../da/d85/interfaceHandler.html">Handler</a>&#160;</td>
           <td class="paramname"><em>hdlr</em>&#160;</td>
         </tr>
         <tr>
@@ -239,7 +239,7 @@ Public 属性</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">addr</td><td>指定 http 服务器侦听地址，为 "" 则在本机所有地址侦听 </td></tr>
     <tr><td class="paramname">port</td><td>指定 http 服务器侦听端口 </td></tr>
-    <tr><td class="paramname">hdlr</td><td>http 内置消息处理器，处理函数，链式处理数组，路由对象，详见 <a class="el" href="../../dd/dbd/namespacemq.html#a5ad6cd9f9ec59edab1abd1a8c6cac229" title="创建一个 javascript 消息处理器对象，传递值内置处理器则直接返回 ">mq.jsHandler</a> </td></tr>
+    <tr><td class="paramname">hdlr</td><td>http 内置消息处理器，处理函数，链式处理数组，路由对象，详见 <a class="el" href="../../dd/dbd/namespacemq.html#a167237eac82c8242341503f840e154ad" title="创建一个消息处理器对象，传递值内置处理器则直接返回 ">mq.Handler</a> </td></tr>
   </table>
   </dd>
 </dl>
@@ -266,7 +266,7 @@ Public 属性</h2></td></tr>
 <p>设置错误处理器 </p>
 <dl class="params"><dt>参数</dt><dd>
   <table class="params">
-    <tr><td class="paramname">hdlrs</td><td>指定不同的错误的处理器，key 是错误号，value 是处理器，可以是内置消息处理器，处理函数，链式处理数组，路由对象，详见 <a class="el" href="../../dd/dbd/namespacemq.html#a5ad6cd9f9ec59edab1abd1a8c6cac229" title="创建一个 javascript 消息处理器对象，传递值内置处理器则直接返回 ">mq.jsHandler</a> 使用方式： <div class="fragment"><div class="line">hdlr.onerror({</div><div class="line">    <span class="stringliteral">&quot;404&quot;</span>: <span class="keyword">function</span>(v)</div><div class="line">           {</div><div class="line">               ...</div><div class="line">           },</div><div class="line">    <span class="stringliteral">&quot;500&quot;</span>: <span class="keyword">new</span> mq.Routing(...)</div><div class="line">})</div></div><!-- fragment --> </td></tr>
+    <tr><td class="paramname">hdlrs</td><td>指定不同的错误的处理器，key 是错误号，value 是处理器，可以是内置消息处理器，处理函数，链式处理数组，路由对象，详见 <a class="el" href="../../dd/dbd/namespacemq.html#a167237eac82c8242341503f840e154ad" title="创建一个消息处理器对象，传递值内置处理器则直接返回 ">mq.Handler</a> 使用方式： <div class="fragment"><div class="line">hdlr.onerror({</div><div class="line">    <span class="stringliteral">&quot;404&quot;</span>: <span class="keyword">function</span>(v)</div><div class="line">           {</div><div class="line">               ...</div><div class="line">           },</div><div class="line">    <span class="stringliteral">&quot;500&quot;</span>: <span class="keyword">new</span> mq.Routing(...)</div><div class="line">})</div></div><!-- fragment --> </td></tr>
   </table>
   </dd>
 </dl>

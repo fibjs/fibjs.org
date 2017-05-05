@@ -1,6 +1,6 @@
 var interfaceWebSocketHandler =
 [
-    [ "WebSocketHandler", "da/d20/interfaceWebSocketHandler.html#a3ddeaa1c9e3d06b767b1b811bf4dde5e", null ],
+    [ "WebSocketHandler", "da/d20/interfaceWebSocketHandler.html#ad0c1e9fc0a5308bd95b5c7ad42e4f680", null ],
     [ "onerror", "da/d20/interfaceWebSocketHandler.html#a07f68bb81b189e6820abb6510433ceca", null ],
     [ "invoke", "da/d20/interfaceWebSocketHandler.html#af901258552a23961893c5bd6f18ce681", null ],
     [ "dispose", "da/d20/interfaceWebSocketHandler.html#a6b88dbc459449d2280338e5b702a68b4", null ],

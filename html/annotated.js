@@ -59,7 +59,6 @@ var annotated =
     [ "RedisSortedSet", "db/d03/interfaceRedisSortedSet.html", "db/d03/interfaceRedisSortedSet" ],
     [ "Regex", "d1/d43/interfaceRegex.html", "d1/d43/interfaceRegex" ],
     [ "Routing", "df/dcb/interfaceRouting.html", "df/dcb/interfaceRouting" ],
-    [ "RpcTask", "d6/d66/interfaceRpcTask.html", "d6/d66/interfaceRpcTask" ],
     [ "SandBox", "d5/dd4/interfaceSandBox.html", "d5/dd4/interfaceSandBox" ],
     [ "SeekableStream", "d6/d9c/interfaceSeekableStream.html", "d6/d9c/interfaceSeekableStream" ],
     [ "Semaphore", "dc/d90/interfaceSemaphore.html", "dc/d90/interfaceSemaphore" ],
