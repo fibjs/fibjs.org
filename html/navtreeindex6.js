@@ -1,7 +1,5 @@
 var NAVTREEINDEX6 =
 {
-"da/de1/namespaceos.html":[5,24],
-"da/de8/interfaceSmtp.html":[6,63],
 "da/de8/interfaceSmtp.html#a0a493d39818f762743e6d4e20c1fcddf":[6,63,6],
 "da/de8/interfaceSmtp.html#a21644b0db666cf1b7691c78cb0204e43":[6,63,8],
 "da/de8/interfaceSmtp.html#a269ca7c15d49785f978f1310bd44d769":[6,63,15],
@@ -249,5 +247,7 @@ var NAVTREEINDEX6 =
 "dc/da9/interfaceStat.html#a94c197c586ecfcb7cb733e0d543ce5ad":[6,69,10],
 "dc/da9/interfaceStat.html#a9ebfa050810515a36ecbf2549d8f8b5f":[6,69,6],
 "dc/da9/interfaceStat.html#ab6d9f86562712b75c8361cef6b4c747a":[6,69,18],
-"dc/da9/interfaceStat.html#ab9261a7662bc8bb4a898bc15dc16f206":[6,69,13]
+"dc/da9/interfaceStat.html#ab9261a7662bc8bb4a898bc15dc16f206":[6,69,13],
+"dc/da9/interfaceStat.html#abf6cc36a2d4edc90d7e40d199e6f7916":[6,69,5],
+"dc/da9/interfaceStat.html#ac61f07a7d6c5471293371086af3186bd":[6,69,11]
 };
