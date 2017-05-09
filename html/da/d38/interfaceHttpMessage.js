@@ -27,6 +27,7 @@ var interfaceHttpMessage =
     [ "upgrade", "da/d38/interfaceHttpMessage.html#a8bb8e89cb8c043db64bc6572f6ad97c9", null ],
     [ "maxHeadersCount", "da/d38/interfaceHttpMessage.html#a6650a9dcb99102b5e70cf1e3fa034cb9", null ],
     [ "maxUploadSize", "da/d38/interfaceHttpMessage.html#ac79f330568ff19112fe82806362fc004", null ],
+    [ "socket", "da/d38/interfaceHttpMessage.html#a4806abb0cf1aa3b63393964fa8c8a1ba", null ],
     [ "TEXT", "da/d38/interfaceHttpMessage.html#a000884d63a01946b76597ccc37da9e07", null ],
     [ "BINARY", "da/d38/interfaceHttpMessage.html#af7db72d4421bbf118ab6b1072f575a21", null ],
     [ "value", "da/d38/interfaceHttpMessage.html#a572dd6923c69839d8e29da3e342b8f76", null ],

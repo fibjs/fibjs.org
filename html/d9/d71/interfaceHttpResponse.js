@@ -33,6 +33,7 @@ var interfaceHttpResponse =
     [ "upgrade", "d9/d71/interfaceHttpResponse.html#a8bb8e89cb8c043db64bc6572f6ad97c9", null ],
     [ "maxHeadersCount", "d9/d71/interfaceHttpResponse.html#a6650a9dcb99102b5e70cf1e3fa034cb9", null ],
     [ "maxUploadSize", "d9/d71/interfaceHttpResponse.html#ac79f330568ff19112fe82806362fc004", null ],
+    [ "socket", "d9/d71/interfaceHttpResponse.html#a4806abb0cf1aa3b63393964fa8c8a1ba", null ],
     [ "TEXT", "d9/d71/interfaceHttpResponse.html#a000884d63a01946b76597ccc37da9e07", null ],
     [ "BINARY", "d9/d71/interfaceHttpResponse.html#af7db72d4421bbf118ab6b1072f575a21", null ],
     [ "value", "d9/d71/interfaceHttpResponse.html#a572dd6923c69839d8e29da3e342b8f76", null ],
