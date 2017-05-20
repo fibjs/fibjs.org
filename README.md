@@ -5,7 +5,7 @@
 直接翻译 src 内 *.idl 和 *.dox 文件注释。
 
 ## 翻译流程：
-1. 在此处评论认领翻译文件 https://github.com/xicilion/fibjs_docs/issues/2
+1. 在此处评论认领翻译文件 https://github.com/fibjs/fibjs_docs/issues/2
 2. fork 此项目
 3. 本地翻译并提交
 4. 校验后合并到主项目
