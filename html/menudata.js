@@ -3,6 +3,6 @@ var menudata={children:[
 {text:"教程",url:"pages.html"},
 {text:"模块",url:"namespaces.html"},
 {text:"对象",url:"annotated.html"},
-{text:"下载",url:"https://github.com/xicilion/fibjs"},
+{text:"下载",url:"http://fibjs.org/downloads/"},
 {text:"社区",url:"http://named.cn/fibjs"},
 {text:"English",url:"en/index.html"}]}
