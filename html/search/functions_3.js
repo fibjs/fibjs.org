@@ -23,7 +23,7 @@ var searchData=
   ['difference',['difference',['../d6/d72/namespaceutil.html#aeee7da8e5a98a9794221cbbff0e1c43e',1,'util']]],
   ['digest',['digest',['../d3/d41/interfaceDigest.html#abdbf52a1ab8a032c4f09b31190141217',1,'Digest::digest(Buffer data)'],['../d3/d41/interfaceDigest.html#a09213c634e4fc513f302c99363bc10ac',1,'Digest::digest()'],['../de/de9/namespacehash.html#a813b296a7ed5e852a7338087bdb95239',1,'hash::digest(Integer algo, Buffer data)'],['../de/de9/namespacehash.html#a0198e943620fd6b63bd913d6a769bcae',1,'hash::digest(Integer algo)']]],
   ['dir',['dir',['../dc/daa/namespaceconsole.html#ae3da6ad36822e14bae83c0af3d5d7e46',1,'console']]],
-  ['dirname',['dirname',['../d0/d43/namespacepath.html#aeb69e3ac13503ae13ec20bd954f8d5e7',1,'path']]],
+  ['dirname',['dirname',['../d0/d43/namespacepath.html#aeb69e3ac13503ae13ec20bd954f8d5e7',1,'path::dirname()'],['../d2/da8/namespacepath__posix.html#a6f9cbfe851752d5dfde4e43fd376e5f3',1,'path_posix::dirname()'],['../d7/d8a/namespacepath__win32.html#a238368a49490989734687a75e6204b25',1,'path_win32::dirname()']]],
   ['dispose',['dispose',['../db/d38/interfaceobject.html#a6b88dbc459449d2280338e5b702a68b4',1,'object']]],
   ['document',['Document',['../d8/dd3/namespacexml.html#aee20b8a00005a17396dca652208f21b3',1,'xml']]],
   ['doesnotthrow',['doesNotThrow',['../d2/dab/namespaceassert.html#aa41904a1025725f280feab1e7312fa5a',1,'assert']]],

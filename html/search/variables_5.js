@@ -18,7 +18,6 @@ var searchData=
   ['eol',['EOL',['../d0/d37/interfaceBufferedStream.html#adaa9b52ec60c27e739b762a26b3f0a8d',1,'BufferedStream::EOL()'],['../da/de1/namespaceos.html#a76c7476a457aa1af25ca82a3fdb7e982',1,'os::EOL()']]],
   ['error',['error',['../da/d8a/interfaceTextColor.html#a56f6aeb7a8f24f3f294c61e1199f7e0b',1,'TextColor::error()'],['../dc/daa/namespaceconsole.html#a6d0e3a1f6f76a58b7b7048281e366f48',1,'console::ERROR()']]],
   ['event',['Event',['../d6/d05/namespacecoroutine.html#a3c3e442ce88f0a47155c7645ddef2c11',1,'coroutine']]],
-  ['eventemitter',['EventEmitter',['../d8/dd5/namespaceevents.html#a3237c9e961ea4b7cf9cf44c485fff63e',1,'events']]],
   ['execargv',['execArgv',['../d8/d25/namespaceprocess.html#a12522010d9ba6e2d19f1aae35d09cc03',1,'process']]],
   ['execpath',['execPath',['../da/de1/namespaceos.html#ab093bc75a863a2f57ef93277e1b11a2a',1,'os::execPath()'],['../d8/d25/namespaceprocess.html#ade6cd663e8d8b831023dcfe0b34a9bed',1,'process::execPath()']]],
   ['exist',['exist',['../d0/df6/interfaceExpect.html#ac4f92d399ab7f74970d0bbc709fded48',1,'Expect']]],

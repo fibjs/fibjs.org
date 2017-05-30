@@ -24,6 +24,7 @@ var searchData=
   ['encoding',['encoding',['../db/da8/namespaceencoding.html',1,'']]],
   ['encrypt',['encrypt',['../df/d49/interfaceCipher.html#ac1c907b2bbe76b1c312663d3e135030f',1,'Cipher::encrypt()'],['../d5/dac/interfacePKey.html#a9f2de9d142c9acb31dde03d5f7ef094a',1,'PKey::encrypt()']]],
   ['end',['end',['../d2/d88/interfaceAsyncWait.html#adf311589dec033121d3b99e126481798',1,'AsyncWait::end()'],['../d6/db7/interfaceMessage.html#a9523c814b236f3063cdef2c891ff6c4f',1,'Message::end()']]],
+  ['endianness',['endianness',['../da/de1/namespaceos.html#a172c85b522b1836e099a62901642dda2',1,'os']]],
   ['ensureindex',['ensureIndex',['../d6/d6b/interfaceMongoCollection.html#abdc1aaa831b564895fad5000d30a7357',1,'MongoCollection']]],
   ['env',['env',['../d8/d25/namespaceprocess.html#a5452c47f4dfe56944cb47893c53d1476',1,'process']]],
   ['eof',['eof',['../d3/d3a/interfaceFile.html#a372a49f942bf3f15b5b3918662ffcfc7',1,'File']]],
@@ -34,9 +35,8 @@ var searchData=
   ['error',['error',['../da/d8a/interfaceTextColor.html#a56f6aeb7a8f24f3f294c61e1199f7e0b',1,'TextColor::error()'],['../dc/daa/namespaceconsole.html#a3525bdec50b085e03d6ca5625a057914',1,'console::error(String fmt,...)'],['../dc/daa/namespaceconsole.html#abc33daf6e70210aa03b78832c2d6eea3',1,'console::error(...)'],['../dc/daa/namespaceconsole.html#a6d0e3a1f6f76a58b7b7048281e366f48',1,'console::ERROR()']]],
   ['escape',['escape',['../d0/d45/namespacedb.html#aeb2f02c2858d45aeab3cd686e99ceabd',1,'db::escape()'],['../dd/dec/namespacequerystring.html#a0d4f027e4c158f33e968eb4dcd0efb6a',1,'querystring::escape()']]],
   ['event',['Event',['../d7/ddf/interfaceEvent.html',1,'Event'],['../d7/ddf/interfaceEvent.html#a33337ad9b309a903c822cb4693862d9c',1,'Event::Event()'],['../d6/d05/namespacecoroutine.html#a3c3e442ce88f0a47155c7645ddef2c11',1,'coroutine::Event()']]],
-  ['eventemitter',['EventEmitter',['../dd/df3/interfaceEventEmitter.html',1,'EventEmitter'],['../dd/df3/interfaceEventEmitter.html#a3fb9421434e0cfcf3e8e891bb149e4db',1,'EventEmitter::EventEmitter()'],['../d8/dd5/namespaceevents.html#a3237c9e961ea4b7cf9cf44c485fff63e',1,'events::EventEmitter()']]],
+  ['eventemitter',['EventEmitter',['../dd/df3/interfaceEventEmitter.html',1,'EventEmitter'],['../dd/df3/interfaceEventEmitter.html#a3fb9421434e0cfcf3e8e891bb149e4db',1,'EventEmitter::EventEmitter()']]],
   ['eventinfo',['EventInfo',['../db/d0b/interfaceEventInfo.html',1,'']]],
-  ['events',['events',['../d8/dd5/namespaceevents.html',1,'']]],
   ['every',['every',['../de/dd8/interfaceList.html#a6e12fa7417d23c22322a1d957085cdae',1,'List']]],
   ['exec',['exec',['../d1/d43/interfaceRegex.html#a4dd4fc54426487773dfc25914c2c1cf0',1,'Regex']]],
   ['execargv',['execArgv',['../d8/d25/namespaceprocess.html#a12522010d9ba6e2d19f1aae35d09cc03',1,'process']]],
@@ -53,7 +53,7 @@ var searchData=
   ['exportder',['exportDer',['../d5/dac/interfacePKey.html#a27bde6463e786c7a89e880df773550a4',1,'PKey::exportDer()'],['../d7/d8b/interfaceX509Req.html#abee2b45b8e74584de7ff2c0aeb461f33',1,'X509Req::exportDer()']]],
   ['exportpem',['exportPem',['../d5/dac/interfacePKey.html#a5444bdb6ccb0ba131996414082c6bbcf',1,'PKey::exportPem()'],['../d7/d8b/interfaceX509Req.html#a04beec98fd58cc43f14ecfaac4535226',1,'X509Req::exportPem()']]],
   ['extend',['extend',['../d6/d72/namespaceutil.html#a7e6ad69b1143fc3a406c8a74d9bac73e',1,'util']]],
-  ['extname',['extname',['../d0/d43/namespacepath.html#aea5f6966a2f57a23cb34dd2700f8ffe5',1,'path']]],
+  ['extname',['extname',['../d0/d43/namespacepath.html#aea5f6966a2f57a23cb34dd2700f8ffe5',1,'path::extname()'],['../d2/da8/namespacepath__posix.html#a622e44810661d700d6fc50f8c00cfc33',1,'path_posix::extname()'],['../d7/d8a/namespacepath__win32.html#ad694aa1a1d47b3c06cebd8dfb0dc3cde',1,'path_win32::extname()']]],
   ['extract',['extract',['../d9/d03/interfaceZipFile.html#a55657751e4d645780bb093180f302f91',1,'ZipFile::extract(String member, String path, String password=&quot;&quot;) async'],['../d9/d03/interfaceZipFile.html#a0a5ea45af147eb5d0d3591b8383dd101',1,'ZipFile::extract(String member, SeekableStream strm, String password=&quot;&quot;) async']]],
   ['extractall',['extractAll',['../d9/d03/interfaceZipFile.html#ad51a2202cf8d67812938449fec4604f8',1,'ZipFile']]]
 ];

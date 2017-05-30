@@ -9,6 +9,7 @@ var searchData=
   ['encodeuricomponent',['encodeURIComponent',['../db/da8/namespaceencoding.html#a80b109e00081be72ca81ac4f9f033fb6',1,'encoding']]],
   ['encrypt',['encrypt',['../df/d49/interfaceCipher.html#ac1c907b2bbe76b1c312663d3e135030f',1,'Cipher::encrypt()'],['../d5/dac/interfacePKey.html#a9f2de9d142c9acb31dde03d5f7ef094a',1,'PKey::encrypt()']]],
   ['end',['end',['../d2/d88/interfaceAsyncWait.html#adf311589dec033121d3b99e126481798',1,'AsyncWait::end()'],['../d6/db7/interfaceMessage.html#a9523c814b236f3063cdef2c891ff6c4f',1,'Message::end()']]],
+  ['endianness',['endianness',['../da/de1/namespaceos.html#a172c85b522b1836e099a62901642dda2',1,'os']]],
   ['ensureindex',['ensureIndex',['../d6/d6b/interfaceMongoCollection.html#abdc1aaa831b564895fad5000d30a7357',1,'MongoCollection']]],
   ['eof',['eof',['../d3/d3a/interfaceFile.html#a372a49f942bf3f15b5b3918662ffcfc7',1,'File']]],
   ['eql',['eql',['../d0/df6/interfaceExpect.html#ab1800257df8c06dd9d759c9c2dd91f72',1,'Expect']]],
@@ -30,7 +31,7 @@ var searchData=
   ['exportder',['exportDer',['../d5/dac/interfacePKey.html#a27bde6463e786c7a89e880df773550a4',1,'PKey::exportDer()'],['../d7/d8b/interfaceX509Req.html#abee2b45b8e74584de7ff2c0aeb461f33',1,'X509Req::exportDer()']]],
   ['exportpem',['exportPem',['../d5/dac/interfacePKey.html#a5444bdb6ccb0ba131996414082c6bbcf',1,'PKey::exportPem()'],['../d7/d8b/interfaceX509Req.html#a04beec98fd58cc43f14ecfaac4535226',1,'X509Req::exportPem()']]],
   ['extend',['extend',['../d6/d72/namespaceutil.html#a7e6ad69b1143fc3a406c8a74d9bac73e',1,'util']]],
-  ['extname',['extname',['../d0/d43/namespacepath.html#aea5f6966a2f57a23cb34dd2700f8ffe5',1,'path']]],
+  ['extname',['extname',['../d0/d43/namespacepath.html#aea5f6966a2f57a23cb34dd2700f8ffe5',1,'path::extname()'],['../d2/da8/namespacepath__posix.html#a622e44810661d700d6fc50f8c00cfc33',1,'path_posix::extname()'],['../d7/d8a/namespacepath__win32.html#ad694aa1a1d47b3c06cebd8dfb0dc3cde',1,'path_win32::extname()']]],
   ['extract',['extract',['../d9/d03/interfaceZipFile.html#a55657751e4d645780bb093180f302f91',1,'ZipFile::extract(String member, String path, String password=&quot;&quot;) async'],['../d9/d03/interfaceZipFile.html#a0a5ea45af147eb5d0d3591b8383dd101',1,'ZipFile::extract(String member, SeekableStream strm, String password=&quot;&quot;) async']]],
   ['extractall',['extractAll',['../d9/d03/interfaceZipFile.html#ad51a2202cf8d67812938449fec4604f8',1,'ZipFile']]]
 ];

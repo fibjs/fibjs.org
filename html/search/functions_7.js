@@ -21,6 +21,8 @@ var searchData=
   ['hmac_5fsha256',['hmac_sha256',['../de/de9/namespacehash.html#ac98cb2777ead9c4883e438d575bd625d',1,'hash']]],
   ['hmac_5fsha384',['hmac_sha384',['../de/de9/namespacehash.html#a3bf61d946548a6c637bd07f61e9ef2e0',1,'hash']]],
   ['hmac_5fsha512',['hmac_sha512',['../de/de9/namespacehash.html#a4de2d277d13b54cc16d433576a78abc7',1,'hash']]],
+  ['homedir',['homedir',['../da/de1/namespaceos.html#ac2282fdd163836c835031802cce7f602',1,'os']]],
+  ['hostname',['hostname',['../da/de1/namespaceos.html#a22d64f5c5be7b0a916fa95dabd491ca7',1,'os']]],
   ['hsb',['hsb',['../dd/d5d/namespacegd.html#a49abf5b15cc916fbdef973206c9f6b6f',1,'gd']]],
   ['hsba',['hsba',['../dd/d5d/namespacegd.html#aa617175f56169bac97ea0a4fbc37ab70',1,'gd']]],
   ['hsl',['hsl',['../dd/d5d/namespacegd.html#a019d7f7f15237b710462208f3ab9b74e',1,'gd']]],

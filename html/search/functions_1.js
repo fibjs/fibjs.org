@@ -3,7 +3,7 @@ var searchData=
   ['backend',['backend',['../dc/d27/namespacenet.html#ab30af1b267baf4be6092ddd2d868970c',1,'net']]],
   ['backup',['backup',['../d7/df5/interfaceSQLite.html#a10a16277a7833d9e3a0e70b8c9be47fd',1,'SQLite']]],
   ['base64',['base64',['../d9/dae/interfaceBuffer.html#a36df68fd3011d583c237346289fe22d3',1,'Buffer']]],
-  ['basename',['basename',['../d0/d43/namespacepath.html#a82751cb3c3cda3cbd756667343737f4d',1,'path']]],
+  ['basename',['basename',['../d0/d43/namespacepath.html#a82751cb3c3cda3cbd756667343737f4d',1,'path::basename()'],['../d2/da8/namespacepath__posix.html#acaf47f0c914e80cac3e83525ef529218',1,'path_posix::basename()'],['../d7/d8a/namespacepath__win32.html#a138dddd1e7ce117e6cbe4f4f299debe4',1,'path_win32::basename()']]],
   ['before',['before',['../df/d04/namespacetest.html#af0cd25d326c6fbed1eca286abb4df915',1,'test']]],
   ['beforeeach',['beforeEach',['../df/d04/namespacetest.html#a934439b75ffe6517612b37f8f64a7d0e',1,'test']]],
   ['begin',['begin',['../d8/d2c/interfaceDbConnection.html#aa6d68c3a518d46207b42d7f638b07a1e',1,'DbConnection::begin()'],['../d0/d9e/interfaceLevelDB.html#aa3fab8d3decb8054f9124b070672105f',1,'LevelDB::begin()']]],

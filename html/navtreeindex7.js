@@ -1,5 +1,7 @@
 var NAVTREEINDEX7 =
 {
+"dc/da9/interfaceStat.html#a9ebfa050810515a36ecbf2549d8f8b5f":[6,69,6],
+"dc/da9/interfaceStat.html#ab6d9f86562712b75c8361cef6b4c747a":[6,69,18],
 "dc/da9/interfaceStat.html#ab9261a7662bc8bb4a898bc15dc16f206":[6,69,13],
 "dc/da9/interfaceStat.html#abf6cc36a2d4edc90d7e40d199e6f7916":[6,69,5],
 "dc/da9/interfaceStat.html#ac61f07a7d6c5471293371086af3186bd":[6,69,11],
@@ -18,7 +20,7 @@ var NAVTREEINDEX7 =
 "dc/de5/interfaceHandlerEx.html#ad66be13eb5b7c5f560fd8511565138c4":[6,20,5],
 "dc/de5/interfaceHandlerEx.html#ae8dab25701a40bccbedff54d6db8e3ad":[6,20,7],
 "dc/de5/interfaceHandlerEx.html#af901258552a23961893c5bd6f18ce681":[6,20,1],
-"dc/dfc/namespaceprofiler.html":[5,27],
+"dc/dfc/namespaceprofiler.html":[5,28],
 "dd/d53/interfaceDatagramPacket.html":[6,7],
 "dd/d53/interfaceDatagramPacket.html#a6b88dbc459449d2280338e5b702a68b4":[6,7,0],
 "dd/d53/interfaceDatagramPacket.html#a814ca037a73047d66cbd8c888880d5f1":[6,7,6],
@@ -28,7 +30,7 @@ var NAVTREEINDEX7 =
 "dd/d53/interfaceDatagramPacket.html#ab9261a7662bc8bb4a898bc15dc16f206":[6,7,4],
 "dd/d53/interfaceDatagramPacket.html#ac61f07a7d6c5471293371086af3186bd":[6,7,2],
 "dd/d53/interfaceDatagramPacket.html#ad66be13eb5b7c5f560fd8511565138c4":[6,7,3],
-"dd/d5d/namespacegd.html":[5,13],
+"dd/d5d/namespacegd.html":[5,12],
 "dd/d94/interfaceSocket.html":[6,64],
 "dd/d94/interfaceSocket.html#a0501ceb52579d56a7eb406e1bbc2f697":[6,64,23],
 "dd/d94/interfaceSocket.html#a1ae0c4a75caaaf1010430520dd8beca1":[6,64,24],
@@ -56,7 +58,7 @@ var NAVTREEINDEX7 =
 "dd/d94/interfaceSocket.html#ad66be13eb5b7c5f560fd8511565138c4":[6,64,17],
 "dd/d94/interfaceSocket.html#aea07b6a7cb87f5d8d4501229af83ade8":[6,64,3],
 "dd/d94/interfaceSocket.html#aea5a56e9aa58cd921df2d28693aa52c7":[6,64,21],
-"dd/dbd/namespacemq.html":[5,22],
+"dd/dbd/namespacemq.html":[5,21],
 "dd/dc1/interfaceXmlComment.html":[6,88],
 "dd/dc1/interfaceXmlComment.html#a055bc3d28655697652e075ce4cde2383":[6,88,21],
 "dd/dc1/interfaceXmlComment.html#a059aaa73cdf03ffaedca637383a736a1":[6,88,27],
@@ -115,7 +117,7 @@ var NAVTREEINDEX7 =
 "dd/dce/interfaceWorker.html#ad66be13eb5b7c5f560fd8511565138c4":[6,81,21],
 "dd/dce/interfaceWorker.html#ae86ea9d51327270a6afbd60eff71b092":[6,81,15],
 "dd/dce/interfaceWorker.html#aea781a43088f3029ab4b5f14791a440d":[6,81,9],
-"dd/dec/namespacequerystring.html":[5,28],
+"dd/dec/namespacequerystring.html":[5,29],
 "dd/df3/interfaceEventEmitter.html":[6,13],
 "dd/df3/interfaceEventEmitter.html#a01c2bd0c19fb21e7aaaa1c4fddfabced":[6,13,7],
 "dd/df3/interfaceEventEmitter.html#a1a162248b9217abebe252848b8b3df93":[6,13,4],
@@ -151,7 +153,7 @@ var NAVTREEINDEX7 =
 "de/d09/interfaceHeapSnapshot.html#aeb6eac8cbebd93ad448791eab14a0213":[6,23,10],
 "de/d09/interfaceHeapSnapshot.html#af00405058ecc8b96d4f09b556d2c4861":[6,23,1],
 "de/d09/interfaceHeapSnapshot.html#af6eba58a29be9c3dafe30fe6ef281913":[6,23,0],
-"de/d1f/namespaceregistry.html":[5,30],
+"de/d1f/namespaceregistry.html":[5,31],
 "de/d2a/interfaceWebSocket.html":[6,77],
 "de/d2a/interfaceWebSocket.html#a01c2bd0c19fb21e7aaaa1c4fddfabced":[6,77,10],
 "de/d2a/interfaceWebSocket.html#a072602d7155ba651aa4e6c6664a697a3":[6,77,26],
@@ -247,7 +249,5 @@ var NAVTREEINDEX7 =
 "de/de5/interfaceUrlObject.html#a674ec6b492c02c26f3c3db3a2c74863d":[6,76,4],
 "de/de5/interfaceUrlObject.html#a6b88dbc459449d2280338e5b702a68b4":[6,76,6],
 "de/de5/interfaceUrlObject.html#a6c1d9c2b59d694b992a2a76bb8f1027f":[6,76,14],
-"de/de5/interfaceUrlObject.html#a6e803af86cfe7fb66af86a316cd15216":[6,76,18],
-"de/de5/interfaceUrlObject.html#a716a47bb894050a008344e471233a6c4":[6,76,24],
-"de/de5/interfaceUrlObject.html#a8ec7e82002f0ab32e8e8023efcb6e13e":[6,76,16]
+"de/de5/interfaceUrlObject.html#a6e803af86cfe7fb66af86a316cd15216":[6,76,18]
 };

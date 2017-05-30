@@ -21,6 +21,7 @@ var searchData=
   ['appendchild',['appendChild',['../dc/d8f/interfaceXmlNode.html#a9ffe09f7056e1c870968ed3d957b83c5',1,'XmlNode']]],
   ['appenddata',['appendData',['../d7/d50/interfaceXmlCharacterData.html#aae7555a1459acb786386042ce7db0a8f',1,'XmlCharacterData']]],
   ['arc',['arc',['../d2/d41/interfaceImage.html#aab87680bc57415638facc13065504523',1,'Image']]],
+  ['arch',['arch',['../da/de1/namespaceos.html#a3501b58815907337f35e8ce7257eeef6',1,'os']]],
   ['assert',['assert',['../dc/daa/namespaceconsole.html#abb065e74e5380ca19bfd6e9a6b2a4117',1,'console']]],
   ['asyncrun',['asyncRun',['../d7/d48/interfaceTcpServer.html#a90e985acd2aaeddff07304e4d4d93c3f',1,'TcpServer']]],
   ['await',['await',['../dd/dbd/namespacemq.html#a5126c326919188bb74c56d26556a047b',1,'mq']]]

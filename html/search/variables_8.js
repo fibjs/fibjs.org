@@ -12,7 +12,7 @@ var searchData=
   ['horizontal',['HORIZONTAL',['../dd/d5d/namespacegd.html#ac6e7f1f566728c076c6cfaf4803f7e78',1,'gd']]],
   ['host',['host',['../de/de5/interfaceUrlObject.html#accfb037b5e5b4cc2767a7c688e835c37',1,'UrlObject']]],
   ['hostid',['hostID',['../d1/dd6/namespaceuuid.html#a6b4bcf3627071cbf4684d9dfa4327bf9',1,'uuid']]],
-  ['hostname',['hostname',['../de/de5/interfaceUrlObject.html#a6e803af86cfe7fb66af86a316cd15216',1,'UrlObject::hostname()'],['../da/de1/namespaceos.html#a10d119aa110a46714071e81522b0645c',1,'os::hostname()']]],
+  ['hostname',['hostname',['../de/de5/interfaceUrlObject.html#a6e803af86cfe7fb66af86a316cd15216',1,'UrlObject']]],
   ['href',['href',['../de/de5/interfaceUrlObject.html#a9f6e940e6fd2947ee55a2fc3a6ac5662',1,'UrlObject']]],
   ['httphandler',['HttpHandler',['../dd/dbd/namespacemq.html#a654273b519c5b5f53b2b9f00cd6dd0ee',1,'mq']]],
   ['httponly',['httpOnly',['../d3/dea/interfaceHttpCookie.html#a5116746acee8713cfc7f854c0e0164ae',1,'HttpCookie']]],

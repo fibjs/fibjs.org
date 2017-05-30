@@ -9,7 +9,7 @@ var searchData=
   ['base32',['base32',['../d4/dba/namespacebase32.html',1,'base32'],['../db/da8/namespaceencoding.html#a86bde7f64f9870f2de7c7cdaa3da6ad3',1,'encoding::base32()']]],
   ['base64',['base64',['../d5/d37/namespacebase64.html',1,'base64'],['../d9/dae/interfaceBuffer.html#a36df68fd3011d583c237346289fe22d3',1,'Buffer::base64()'],['../db/da8/namespaceencoding.html#a8081785db1dfad236b086d4e2a9c79ba',1,'encoding::base64()']]],
   ['base64vlq',['base64vlq',['../de/d5c/namespacebase64vlq.html',1,'base64vlq'],['../db/da8/namespaceencoding.html#a7b9b39387963aca4019374e72257d87d',1,'encoding::base64vlq()']]],
-  ['basename',['basename',['../d0/d43/namespacepath.html#a82751cb3c3cda3cbd756667343737f4d',1,'path']]],
+  ['basename',['basename',['../d0/d43/namespacepath.html#a82751cb3c3cda3cbd756667343737f4d',1,'path::basename()'],['../d2/da8/namespacepath__posix.html#acaf47f0c914e80cac3e83525ef529218',1,'path_posix::basename()'],['../d7/d8a/namespacepath__win32.html#a138dddd1e7ce117e6cbe4f4f299debe4',1,'path_win32::basename()']]],
   ['bdd',['BDD',['../df/d04/namespacetest.html#ae7fde33ef252f535d81d8ecef132e1d4',1,'test']]],
   ['be',['be',['../d0/df6/interfaceExpect.html#aa2896b5ae99886b5fce68ba05058e18f',1,'Expect']]],
   ['been',['been',['../d0/df6/interfaceExpect.html#a14299251d029a0cfc8bcef53c98c47f9',1,'Expect']]],

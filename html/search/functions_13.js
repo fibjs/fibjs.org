@@ -20,7 +20,7 @@ var searchData=
   ['truncate',['truncate',['../d3/d3a/interfaceFile.html#a634c01460200da98755fda701fbace1a',1,'File']]],
   ['trywait',['trywait',['../dc/d90/interfaceSemaphore.html#ab555508a557440f9d2e27bd5f8223ea7',1,'Semaphore']]],
   ['ttl',['ttl',['../d7/d32/interfaceRedis.html#a15a7d998869acee87500de7ca2815c44',1,'Redis']]],
-  ['type',['type',['../d7/d32/interfaceRedis.html#a10dd880a7427becdd65bd8f811defa50',1,'Redis']]],
+  ['type',['type',['../d7/d32/interfaceRedis.html#a10dd880a7427becdd65bd8f811defa50',1,'Redis::type()'],['../da/de1/namespaceos.html#a35263bf2550b7a3a0e7a0f3d63057414',1,'os::type()']]],
   ['typeof',['typeOf',['../d2/dab/namespaceassert.html#a6accf1f518a6bea5c608ea513742cad3',1,'assert']]],
   ['typestring',['typeString',['../dc/daa/namespaceconsole.html#a27cb8761dbf061f1df28926d7c3ed8dc',1,'console']]]
 ];

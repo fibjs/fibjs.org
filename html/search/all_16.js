@@ -8,7 +8,7 @@ var searchData=
   ['verify_5fnone',['VERIFY_NONE',['../df/dd2/namespacessl.html#a564b817c09bd7d5dbd69f37b5611faac',1,'ssl']]],
   ['verify_5foptional',['VERIFY_OPTIONAL',['../df/dd2/namespacessl.html#a6ac0e9a89953bc84150bee5e6197532b',1,'ssl']]],
   ['verify_5frequired',['VERIFY_REQUIRED',['../df/dd2/namespacessl.html#aef7f0df6e4f88a9ba748108d80017c76',1,'ssl']]],
-  ['version',['version',['../dc/d22/interfaceX509Cert.html#af38ce8e9508c32488d8963ef2478997b',1,'X509Cert::version()'],['../da/de1/namespaceos.html#a2c3e53a918b2455b73d33dc896a0d831',1,'os::version()'],['../d8/d25/namespaceprocess.html#aff2687419abe092406c7db42dbbf9ed3',1,'process::version()']]],
+  ['version',['version',['../dc/d22/interfaceX509Cert.html#af38ce8e9508c32488d8963ef2478997b',1,'X509Cert::version()'],['../d8/d25/namespaceprocess.html#aff2687419abe092406c7db42dbbf9ed3',1,'process::version()']]],
   ['vertical',['VERTICAL',['../dd/d5d/namespacegd.html#adce01ecc7fc29288a3cdf7109d948d34',1,'gd']]],
   ['visible',['visible',['../d8/d79/interfaceWebView.html#aed9b345181eb463765a87bc726109b0f',1,'WebView']]],
   ['vm',['vm',['../d8/d89/namespacevm.html',1,'']]],
