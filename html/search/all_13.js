@@ -41,9 +41,9 @@ var searchData=
   ['setxx',['setXX',['../d7/d32/interfaceRedis.html#a08352a52b0ff70c5cc30e1d1082b4bb1',1,'Redis']]],
   ['sha1',['SHA1',['../de/de9/namespacehash.html#ae6d6e5a2a8d662ca993fba1e1ea29b44',1,'hash::SHA1()'],['../de/de9/namespacehash.html#aeebd38030db2c9e6f51674759c74d050',1,'hash::sha1(Buffer data)'],['../d1/dd6/namespaceuuid.html#a675f01c7dddee8889ac4a75298e8694e',1,'uuid::sha1()']]],
   ['sha224',['SHA224',['../de/de9/namespacehash.html#a34fdd3e887eceac4cb2abd916b409caa',1,'hash::SHA224()'],['../de/de9/namespacehash.html#aebaa45bb312a46a71194c9118dca1a08',1,'hash::sha224(Buffer data)']]],
-  ['sha256',['SHA256',['../de/de9/namespacehash.html#af6eaa5c40117ecd45c53c2988cc1eff0',1,'hash::SHA256()'],['../de/de9/namespacehash.html#aea552567d5fea762e5d8eedda0b0067a',1,'hash::sha256(Buffer data)']]],
-  ['sha384',['SHA384',['../de/de9/namespacehash.html#a2dff891b6426a50f09cd2d13fadf28e8',1,'hash::SHA384()'],['../de/de9/namespacehash.html#a0e3112fca405da681a0d034e6dba4016',1,'hash::sha384(Buffer data)']]],
-  ['sha512',['sha512',['../de/de9/namespacehash.html#a93e3215efb856aa97da67966530387f7',1,'hash::sha512(Buffer data)'],['../de/de9/namespacehash.html#a362a5b2450a352638057768e66d6474c',1,'hash::SHA512()']]],
+  ['sha256',['sha256',['../de/de9/namespacehash.html#aea552567d5fea762e5d8eedda0b0067a',1,'hash::sha256(Buffer data)'],['../de/de9/namespacehash.html#af6eaa5c40117ecd45c53c2988cc1eff0',1,'hash::SHA256()']]],
+  ['sha384',['sha384',['../de/de9/namespacehash.html#a0e3112fca405da681a0d034e6dba4016',1,'hash::sha384(Buffer data)'],['../de/de9/namespacehash.html#a2dff891b6426a50f09cd2d13fadf28e8',1,'hash::SHA384()']]],
+  ['sha512',['SHA512',['../de/de9/namespacehash.html#a362a5b2450a352638057768e66d6474c',1,'hash::SHA512()'],['../de/de9/namespacehash.html#a93e3215efb856aa97da67966530387f7',1,'hash::sha512(Buffer data)']]],
   ['shallowsize',['shallowSize',['../df/db2/interfaceHeapGraphNode.html#a2fc488376bc9a3f1632c625d005833e8',1,'HeapGraphNode']]],
   ['shiftleft',['shiftLeft',['../df/dc1/interfaceInt64.html#acbe2152ea45f78be39771e50d00f1b9f',1,'Int64']]],
   ['shiftright',['shiftRight',['../df/dc1/interfaceInt64.html#a770d45ef40dbddcb9892b96370930b72',1,'Int64']]],
@@ -90,7 +90,7 @@ var searchData=
   ['subject',['subject',['../dc/d22/interfaceX509Cert.html#a496a03ab80e5b3c6bdc01626df6900ba',1,'X509Cert::subject()'],['../d7/d8b/interfaceX509Req.html#a3f636dc3d8417ac6e5b508989f6d91c6',1,'X509Req::subject()']]],
   ['subprocess',['SubProcess',['../d8/d10/interfaceSubProcess.html',1,'']]],
   ['substringdata',['substringData',['../d7/d50/interfaceXmlCharacterData.html#a2e8f8f0fe64a8843d0b976714deed4b0',1,'XmlCharacterData']]],
-  ['sync',['sync',['../d4/dfd/namespaceglobal.html#adcddd1b6155e7ecd7bc95fef1227a1d1',1,'global']]],
+  ['sync',['sync',['../d6/d72/namespaceutil.html#a8f1d2d410379b8a8b8b56cf994c0bfb9',1,'util']]],
   ['systemid',['systemId',['../d4/d35/interfaceXmlDocumentType.html#a09ec50ecc1cd4b52071dc654324d3081',1,'XmlDocumentType']]],
   ['sz',['SZ',['../de/d1f/namespaceregistry.html#a4f43a31a288aa96864578dc1dede5fe9',1,'registry']]]
 ];
