@@ -36,7 +36,7 @@ var searchData=
   ['postmessage',['postMessage',['../d8/d79/interfaceWebView.html#a8dc8fa09bbd4895ef3bd94c5289bbaed',1,'WebView']]],
   ['prefix',['prefix',['../d7/dce/interfaceXmlAttr.html#a9bc6de3301a791ae393d4f382bf6ea72',1,'XmlAttr::prefix()'],['../d7/ddb/interfaceXmlElement.html#a101dd0d1f3b77c7fa0be6d7964772d9b',1,'XmlElement::prefix()']]],
   ['previoussibling',['previousSibling',['../dc/d8f/interfaceXmlNode.html#a1e2d8e642e8987ccfba221bed65fecf0',1,'XmlNode']]],
-  ['print',['print',['../d8/d79/interfaceWebView.html#a29d0b11722a159cb6e944c24eda58b61',1,'WebView::print()'],['../dc/daa/namespaceconsole.html#aa6fdaace53b2b761e09d73e3a1092442',1,'console::print(String fmt,...)'],['../dc/daa/namespaceconsole.html#a1448b275c7cc42856cf5ff8a0bd795ae',1,'console::print(...)'],['../dc/daa/namespaceconsole.html#a1ac5b2039e5f4db797ca1f1845ad6ab3',1,'console::PRINT()']]],
+  ['print',['print',['../d8/d79/interfaceWebView.html#a29d0b11722a159cb6e944c24eda58b61',1,'WebView::print()'],['../dc/daa/namespaceconsole.html#a1ac5b2039e5f4db797ca1f1845ad6ab3',1,'console::PRINT()'],['../dc/daa/namespaceconsole.html#aa6fdaace53b2b761e09d73e3a1092442',1,'console::print(String fmt,...)'],['../dc/daa/namespaceconsole.html#a1448b275c7cc42856cf5ff8a0bd795ae',1,'console::print(...)']]],
   ['printerinfo',['printerInfo',['../da/de1/namespaceos.html#abe73d9151c52d8e17e85dbada0622716',1,'os']]],
   ['process',['process',['../d8/d25/namespaceprocess.html',1,'process'],['../d4/dfd/namespaceglobal.html#ad468089ebe56b9e9dfdba90e2eb596bb',1,'global::process()']]],
   ['processing_5finstruction_5fnode',['PROCESSING_INSTRUCTION_NODE',['../d8/dd3/namespacexml.html#aa4834e4a22fdda71e99ac1e3a1cec09a',1,'xml']]],
