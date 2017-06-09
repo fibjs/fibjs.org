@@ -5,6 +5,10 @@ var searchData=
   ['lasterror',['lastError',['../d6/db7/interfaceMessage.html#a9509ae285aedede9fa31804eff207379',1,'Message']]],
   ['lastindex',['lastIndex',['../d1/d43/interfaceRegex.html#a7a36b53fcaef538a5c81c8569c508fdf',1,'Regex']]],
   ['lastindexof',['lastIndexOf',['../de/dd8/interfaceList.html#acf3cd37672f3391b63b73c231686f6ec',1,'List']]],
+  ['lchmod',['lchmod',['../d5/d8f/namespacefs.html#ac948a66d19cbf40fc2639ab3acccff6b',1,'fs']]],
+  ['lchmodsync',['lchmodSync',['../d5/d8f/namespacefs.html#aa94545b07bd9bbdbf1c3d36ae1561d33',1,'fs']]],
+  ['lchown',['lchown',['../d5/d8f/namespacefs.html#ada8062677f865b9c68657ea03028b00e',1,'fs']]],
+  ['lchownsync',['lchownSync',['../d5/d8f/namespacefs.html#a1e161dde1d678c1ee328bc1156196438',1,'fs']]],
   ['least',['least',['../d0/df6/interfaceExpect.html#a80a82dccaf29e7dcb10f1f2347b1c550',1,'Expect']]],
   ['left',['LEFT',['../dd/d5d/namespacegd.html#acf1b92e9f3e6ff4b7f2537a470e31b13',1,'gd']]],
   ['len',['len',['../d9/d58/interfaceRedisHash.html#a26ef98c343228656940c7a64909b5dd1',1,'RedisHash::len()'],['../d0/da2/interfaceRedisList.html#aa976e16b1b36eb515c2c3779445bdf6e',1,'RedisList::len()'],['../d3/dee/interfaceRedisSet.html#ad906a3ba2dfe4520f8044450eba90c9b',1,'RedisSet::len()'],['../db/d03/interfaceRedisSortedSet.html#a46d1cfc5c8bb2d88ecaa6f0d2f5fc52f',1,'RedisSortedSet::len()']]],
@@ -13,6 +17,8 @@ var searchData=
   ['leveldb',['LevelDB',['../d0/d9e/interfaceLevelDB.html',1,'']]],
   ['limit',['limit',['../dc/d27/interfaceMongoCursor.html#ab28242e744c2f3668f73631e41e1b44c',1,'MongoCursor']]],
   ['line',['line',['../d2/d41/interfaceImage.html#ab4ca0dbea7a43ea1ee0995eeb68a529f',1,'Image']]],
+  ['link',['link',['../d5/d8f/namespacefs.html#a349d50aa8ef513431f765232a0e106a6',1,'fs']]],
+  ['linksync',['linkSync',['../d5/d8f/namespacefs.html#aed43a9ed500c1dac8debe6731c1db204',1,'fs']]],
   ['list',['List',['../de/dd8/interfaceList.html',1,'List'],['../de/dd8/interfaceList.html#a64d878a92d11f7c63c70cbe4e7dd4176',1,'List::List()'],['../de/dd8/interfaceList.html#a3d059d0fdf0e05923d55f1c3f391f9e1',1,'List::List(Array data)'],['../d7/d82/namespacecollection.html#a15c51504e48fb0694b33224d2c42b400',1,'collection::List()']]],
   ['listen',['listen',['../dd/d94/interfaceSocket.html#ab35e6c9affac9881a993684fc4fc7a16',1,'Socket']]],
   ['listeners',['listeners',['../dd/df3/interfaceEventEmitter.html#a31115e26c11533f553dbd4fb19773494',1,'EventEmitter']]],
@@ -39,5 +45,7 @@ var searchData=
   ['loglevel',['loglevel',['../dc/daa/namespaceconsole.html#a903b5848bef37d438c976f38338569db',1,'console::loglevel()'],['../d6/d05/namespacecoroutine.html#ad273c2ae236cbf873603d22e18e9ccd8',1,'coroutine::loglevel()']]],
   ['lookupnamespaceuri',['lookupNamespaceURI',['../dc/d8f/interfaceXmlNode.html#a9940f8621d0e65b0fc82f6f8959ffe6c',1,'XmlNode']]],
   ['lookupprefix',['lookupPrefix',['../dc/d8f/interfaceXmlNode.html#a4ab7d0f533aedede8504be1021e39c8b',1,'XmlNode']]],
-  ['lrucache',['LruCache',['../dc/d81/interfaceLruCache.html',1,'LruCache'],['../dc/d81/interfaceLruCache.html#a6fce7c256bb93ea2a366e4258cb2a39f',1,'LruCache::LruCache()'],['../d6/d72/namespaceutil.html#a3ede61ad29d3fe58b912ef9b9e7ed326',1,'util::LruCache()']]]
+  ['lrucache',['LruCache',['../dc/d81/interfaceLruCache.html',1,'LruCache'],['../dc/d81/interfaceLruCache.html#a6fce7c256bb93ea2a366e4258cb2a39f',1,'LruCache::LruCache()'],['../d6/d72/namespaceutil.html#a3ede61ad29d3fe58b912ef9b9e7ed326',1,'util::LruCache()']]],
+  ['lstat',['lstat',['../d5/d8f/namespacefs.html#ac1893920b1ca1b6e2da32f55f31568ae',1,'fs']]],
+  ['lstatsync',['lstatSync',['../d5/d8f/namespacefs.html#a962337fd119344312257c8ff136fc716',1,'fs']]]
 ];

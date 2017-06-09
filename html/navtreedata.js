@@ -51,12 +51,12 @@ var NAVTREEINDEX =
 "annotated.html",
 "d2/d41/interfaceImage.html#a6b88dbc459449d2280338e5b702a68b4",
 "d4/d35/interfaceXmlDocumentType.html#a0f3b815f26c12b2c31249ecb747ee7db",
-"d6/d47/interfaceXmlDocument.html#a65635b56b9384871c5465c12662ad128",
-"d7/d50/interfaceXmlCharacterData.html#ad27424cb66b1039ddff3f6c297fbe0fd",
-"d9/d71/interfaceHttpResponse.html#a30f6ddc198f9265a7b7d733f6620fc8b",
-"da/db3/server.html#web_file",
-"dc/da9/interfaceStat.html#a9ebfa050810515a36ecbf2549d8f8b5f",
-"de/de5/interfaceUrlObject.html#a716a47bb894050a008344e471233a6c4"
+"d6/d47/interfaceXmlDocument.html#a621149c54c557f6e0dfbb3612a723b82",
+"d7/d50/interfaceXmlCharacterData.html#acb09ccf7866b614f7964fa67c73f3160",
+"d9/d71/interfaceHttpResponse.html#a2c99acd2e0949dd52a4c52acafc7a48b",
+"da/db3/server.html#web_both",
+"dc/da9/interfaceStat.html#a94c197c586ecfcb7cb733e0d543ce5ad",
+"de/de5/interfaceUrlObject.html#a6e803af86cfe7fb66af86a316cd15216"
 ];
 
 var SYNCONMSG = '点击 关闭 面板同步';

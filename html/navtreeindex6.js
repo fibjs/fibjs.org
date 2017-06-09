@@ -1,5 +1,6 @@
 var NAVTREEINDEX6 =
 {
+"da/db3/server.html#web_both":[4,2],
 "da/db3/server.html#web_file":[4,0],
 "da/db3/server.html#web_script":[4,1],
 "da/de1/namespaceos.html":[5,23],
@@ -248,6 +249,5 @@ var NAVTREEINDEX6 =
 "dc/da9/interfaceStat.html#a5970c0f2e6fc12189269dbd129109947":[6,69,4],
 "dc/da9/interfaceStat.html#a62f57226030d955723f1bc2894faaf92":[6,69,1],
 "dc/da9/interfaceStat.html#a6b88dbc459449d2280338e5b702a68b4":[6,69,9],
-"dc/da9/interfaceStat.html#a86560561f60b45ca4af6b9e935f18143":[6,69,8],
-"dc/da9/interfaceStat.html#a94c197c586ecfcb7cb733e0d543ce5ad":[6,69,10]
+"dc/da9/interfaceStat.html#a86560561f60b45ca4af6b9e935f18143":[6,69,8]
 };

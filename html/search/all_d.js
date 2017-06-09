@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['map',['Map',['../d2/dc1/interfaceMap.html',1,'Map'],['../de/dd8/interfaceList.html#a19caac0bba96f0e768fd6f8310c505fa',1,'List::map()'],['../dc/d27/interfaceMongoCursor.html#ae250dbc24199762b2948487422049519',1,'MongoCursor::map()'],['../d2/dc1/interfaceMap.html#a0f5ad0fd4563497b4214038cbca8b582',1,'Map::Map()'],['../d2/dc1/interfaceMap.html#a3ff63596161275db8b47eb9daf4eae0e',1,'Map::Map(Object map)'],['../d6/d72/namespaceutil.html#a24e6b2ce72bf4f22904c4e0761f2b7b8',1,'util::map()'],['../d7/d82/namespacecollection.html#ad0f23254ad53aeee1cb7a2f28cf6b211',1,'collection::Map()']]],
+  ['map',['Map',['../d2/dc1/interfaceMap.html',1,'Map'],['../de/dd8/interfaceList.html#a19caac0bba96f0e768fd6f8310c505fa',1,'List::map()'],['../dc/d27/interfaceMongoCursor.html#ae250dbc24199762b2948487422049519',1,'MongoCursor::map()'],['../d2/dc1/interfaceMap.html#a0f5ad0fd4563497b4214038cbca8b582',1,'Map::Map()'],['../d2/dc1/interfaceMap.html#a3ff63596161275db8b47eb9daf4eae0e',1,'Map::Map(Object map)'],['../d7/d82/namespacecollection.html#ad0f23254ad53aeee1cb7a2f28cf6b211',1,'collection::Map()'],['../d6/d72/namespaceutil.html#a24e6b2ce72bf4f22904c4e0761f2b7b8',1,'util::map()']]],
   ['masked',['masked',['../db/d5d/interfaceWebSocketMessage.html#a95b52182675f23ccee2a661554f9417c',1,'WebSocketMessage']]],
   ['master',['Master',['../d4/dfd/namespaceglobal.html#a7cc1aadc227bcaf2498e158bfb4a0c49',1,'global']]],
   ['match',['match',['../d3/dea/interfaceHttpCookie.html#a40e432c30689dbd71e3cf8938de5ff1b',1,'HttpCookie']]],
