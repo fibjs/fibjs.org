@@ -30,7 +30,7 @@ var searchData=
   ['gettonode',['getToNode',['../d2/d65/interfaceHeapGraphEdge.html#afc0ae5b4248fe3149ebe492b177696e1',1,'HeapGraphEdge']]],
   ['gettruecolorpixel',['getTrueColorPixel',['../d2/d41/interfaceImage.html#a585e3918e0516fab908afbb2ba53ba4f',1,'Image']]],
   ['gif',['GIF',['../dd/d5d/namespacegd.html#a733d16843306db18543358a63f1727e0',1,'gd']]],
-  ['global',['global',['../d4/dfd/namespaceglobal.html',1,'global'],['../d1/d43/interfaceRegex.html#a91bef45763139f15c2cab0ab35cebcc8',1,'Regex::global()'],['../d4/dfd/namespaceglobal.html#a5cd5ee85c6c24c7ac98735978622d50b',1,'global::global()']]],
+  ['global',['global',['../d4/dfd/namespaceglobal.html',1,'global'],['../d1/d43/interfaceRegex.html#a91bef45763139f15c2cab0ab35cebcc8',1,'Regex::global()'],['../d5/dd4/interfaceSandBox.html#a1cdad4e865f767adf3f54c084c5f2a1b',1,'SandBox::global()'],['../d4/dfd/namespaceglobal.html#a5cd5ee85c6c24c7ac98735978622d50b',1,'global::global()']]],
   ['grayscale',['GRAYSCALE',['../dd/d5d/namespacegd.html#ad4e83e34191c3fda275620016c76c2ad',1,'gd']]],
   ['greaterthan',['greaterThan',['../d0/df6/interfaceExpect.html#a73f75cab81e1d239595ee427e0ecbae3',1,'Expect::greaterThan()'],['../d2/dab/namespaceassert.html#a402e1e36f03b891ad44a3281a64642a2',1,'assert::greaterThan()']]],
   ['gridfs',['GridFS',['../d7/d34/interfaceGridFS.html',1,'']]],

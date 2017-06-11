@@ -51,12 +51,12 @@ var NAVTREEINDEX =
 "annotated.html",
 "d2/d41/interfaceImage.html#a6b88dbc459449d2280338e5b702a68b4",
 "d4/d35/interfaceXmlDocumentType.html#a0f3b815f26c12b2c31249ecb747ee7db",
-"d6/d47/interfaceXmlDocument.html#a621149c54c557f6e0dfbb3612a723b82",
-"d7/d50/interfaceXmlCharacterData.html#acb09ccf7866b614f7964fa67c73f3160",
-"d9/d71/interfaceHttpResponse.html#a2c99acd2e0949dd52a4c52acafc7a48b",
-"da/db3/server.html#web_both",
-"dc/da9/interfaceStat.html#a94c197c586ecfcb7cb733e0d543ce5ad",
-"de/de5/interfaceUrlObject.html#a6e803af86cfe7fb66af86a316cd15216"
+"d6/d47/interfaceXmlDocument.html#a4762ae75380f9db0fc240fd3f91d5537",
+"d7/d50/interfaceXmlCharacterData.html#ac61f07a7d6c5471293371086af3186bd",
+"d9/d71/interfaceHttpResponse.html#a102e4b9b4a800bf24fd01a66df49b489",
+"da/d8a/interfaceTextColor.html#ad66be13eb5b7c5f560fd8511565138c4",
+"dc/da9/interfaceStat.html#a62f57226030d955723f1bc2894faaf92",
+"de/de5/interfaceUrlObject.html#a674ec6b492c02c26f3c3db3a2c74863d"
 ];
 
 var SYNCONMSG = '点击 关闭 面板同步';

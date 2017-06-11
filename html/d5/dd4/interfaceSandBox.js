@@ -2,6 +2,8 @@ var interfaceSandBox =
 [
     [ "SandBox", "d5/dd4/interfaceSandBox.html#a6bcf2fd870c68fd74c879775746f5602", null ],
     [ "SandBox", "d5/dd4/interfaceSandBox.html#a4f40b3af867a1df6577a798895d73fb1", null ],
+    [ "SandBox", "d5/dd4/interfaceSandBox.html#a4148dc2df1fafdcaf829bc89ce48c666", null ],
+    [ "SandBox", "d5/dd4/interfaceSandBox.html#aab3ba4e2fb0d07f25b6a3bb825ddde15", null ],
     [ "add", "d5/dd4/interfaceSandBox.html#a7573771a7de4c0910807d52af7a3a8c6", null ],
     [ "add", "d5/dd4/interfaceSandBox.html#a52cc7bce6ed5417d16b48c28cd3fc137", null ],
     [ "addScript", "d5/dd4/interfaceSandBox.html#afc127b887856100d6621e7662cd7befa", null ],
@@ -14,5 +16,6 @@ var interfaceSandBox =
     [ "equals", "d5/dd4/interfaceSandBox.html#a94c197c586ecfcb7cb733e0d543ce5ad", null ],
     [ "toString", "d5/dd4/interfaceSandBox.html#ac61f07a7d6c5471293371086af3186bd", null ],
     [ "toJSON", "d5/dd4/interfaceSandBox.html#ad66be13eb5b7c5f560fd8511565138c4", null ],
-    [ "valueOf", "d5/dd4/interfaceSandBox.html#ab9261a7662bc8bb4a898bc15dc16f206", null ]
+    [ "valueOf", "d5/dd4/interfaceSandBox.html#ab9261a7662bc8bb4a898bc15dc16f206", null ],
+    [ "global", "d5/dd4/interfaceSandBox.html#a1cdad4e865f767adf3f54c084c5f2a1b", null ]
 ];
