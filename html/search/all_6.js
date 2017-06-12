@@ -27,7 +27,7 @@ var searchData=
   ['firstheader',['firstHeader',['../da/d38/interfaceHttpMessage.html#a5db3f91a4a32b70e2fcbd188d8a452c9',1,'HttpMessage']]],
   ['flatten',['flatten',['../d6/d72/namespaceutil.html#aa9c3e271b742d44d012e3039bcdf7eb2',1,'util']]],
   ['flip',['flip',['../d2/d41/interfaceImage.html#aba81dd690e0c232a4b988480dccb06ad',1,'Image']]],
-  ['flush',['flush',['../d3/d3a/interfaceFile.html#acfb3dabde3a0b975724e82e8bd03950d',1,'File']]],
+  ['flush',['flush',['../d6/d9c/interfaceSeekableStream.html#a4b5fdaed709628aac3c94f1ee7355ae5',1,'SeekableStream']]],
   ['forcegzip',['forceGZIP',['../d6/d18/interfaceHttpHandler.html#a2e5ab62678914f83f438f6e95d0cbb18',1,'HttpHandler::forceGZIP()'],['../d4/d79/interfaceHttpServer.html#aa802ab792b939d7492447bdd253bda9a',1,'HttpServer::forceGZIP()']]],
   ['foreach',['forEach',['../d0/d9e/interfaceLevelDB.html#ae9f6c2e0b6bfabd58e4e0bd6ed94163c',1,'LevelDB::forEach()'],['../de/dd8/interfaceList.html#adadfc3cdcc76d77d3b4dea8dfc7f0e44',1,'List::forEach()'],['../dc/d27/interfaceMongoCursor.html#a84611a0b25226ce2a282838a2b46ff4b',1,'MongoCursor::forEach()']]],
   ['form',['form',['../d4/dfa/interfaceHttpRequest.html#a9009b8fbfdd8d254587ff33e4f2e1fec',1,'HttpRequest']]],

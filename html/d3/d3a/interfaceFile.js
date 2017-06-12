@@ -1,14 +1,14 @@
 var interfaceFile =
 [
-    [ "truncate", "d3/d3a/interfaceFile.html#a634c01460200da98755fda701fbace1a", null ],
-    [ "eof", "d3/d3a/interfaceFile.html#a372a49f942bf3f15b5b3918662ffcfc7", null ],
-    [ "flush", "d3/d3a/interfaceFile.html#acfb3dabde3a0b975724e82e8bd03950d", null ],
     [ "chmod", "d3/d3a/interfaceFile.html#aa13cc9318e8f5ea58f0befb9ac709d72", null ],
     [ "seek", "d3/d3a/interfaceFile.html#a61e24c7dbe030d5b57bb141fdacbb068", null ],
     [ "tell", "d3/d3a/interfaceFile.html#a6eca3ff0973d41afc4ead654733e86ed", null ],
     [ "rewind", "d3/d3a/interfaceFile.html#a96c92db52bea85a8080771db0d89c024", null ],
     [ "size", "d3/d3a/interfaceFile.html#af31c485565a6699bd6b8209d46ba0acb", null ],
     [ "readAll", "d3/d3a/interfaceFile.html#a7884a629ffef5ed7d3ca51af8eb52bfb", null ],
+    [ "truncate", "d3/d3a/interfaceFile.html#aa54feaa9c94f268cad044bacf272180a", null ],
+    [ "eof", "d3/d3a/interfaceFile.html#a3950beb771f624da70df376062db1337", null ],
+    [ "flush", "d3/d3a/interfaceFile.html#a4b5fdaed709628aac3c94f1ee7355ae5", null ],
     [ "stat", "d3/d3a/interfaceFile.html#a18f7e1862399c42a167a2b30009592d0", null ],
     [ "read", "d3/d3a/interfaceFile.html#a7a38cc9beea41220157a0263dcd86bc7", null ],
     [ "write", "d3/d3a/interfaceFile.html#a9fe96dcae55a53aef7ceb56544bc83d9", null ],

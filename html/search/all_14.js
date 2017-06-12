@@ -38,7 +38,7 @@ var searchData=
   ['trim',['trim',['../d0/da2/interfaceRedisList.html#a5604e7fbd71da4e72701e7b03db3b344',1,'RedisList']]],
   ['true',['true',['../d0/df6/interfaceExpect.html#aaad4e98d0e6f706cf8c331e89f4a1542',1,'Expect']]],
   ['truecolor',['TRUECOLOR',['../dd/d5d/namespacegd.html#a2a174492923023dd07fe9e0ce1a90202',1,'gd']]],
-  ['truncate',['truncate',['../d3/d3a/interfaceFile.html#a634c01460200da98755fda701fbace1a',1,'File::truncate()'],['../d5/d8f/namespacefs.html#a5611f0d7ae9a3dd82334fa8185ac93fd',1,'fs::truncate()']]],
+  ['truncate',['truncate',['../d6/d9c/interfaceSeekableStream.html#aa54feaa9c94f268cad044bacf272180a',1,'SeekableStream::truncate()'],['../d5/d8f/namespacefs.html#a5611f0d7ae9a3dd82334fa8185ac93fd',1,'fs::truncate()']]],
   ['truncatesync',['truncateSync',['../d5/d8f/namespacefs.html#aa3a98f6143db819a2b48a1a77c7313a9',1,'fs']]],
   ['trywait',['trywait',['../dc/d90/interfaceSemaphore.html#ab555508a557440f9d2e27bd5f8223ea7',1,'Semaphore']]],
   ['ttl',['ttl',['../d7/d32/interfaceRedis.html#a15a7d998869acee87500de7ca2815c44',1,'Redis']]],

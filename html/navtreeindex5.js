@@ -1,5 +1,11 @@
 var NAVTREEINDEX5 =
 {
+"d9/d58/interfaceRedisHash.html#ad66be13eb5b7c5f560fd8511565138c4":[6,53,17],
+"d9/d58/interfaceRedisHash.html#ae05e8adf0c2895411bc1368b4f657f19":[6,53,6],
+"d9/d58/interfaceRedisHash.html#afc07ac81b6e3bf682e35d21d72ae4621":[6,53,4],
+"d9/d71/interfaceHttpResponse.html":[6,30],
+"d9/d71/interfaceHttpResponse.html#a000884d63a01946b76597ccc37da9e07":[6,30,34],
+"d9/d71/interfaceHttpResponse.html#a080e5427207dcae84985d7085f54761c":[6,30,10],
 "d9/d71/interfaceHttpResponse.html#a102e4b9b4a800bf24fd01a66df49b489":[6,30,40],
 "d9/d71/interfaceHttpResponse.html#a1ac79feaa497a9bdb849d41ae5a5fc93":[6,30,12],
 "d9/d71/interfaceHttpResponse.html#a26e77ec52998a43c1b97fd4b7229283c":[6,30,41],
@@ -243,11 +249,5 @@ var NAVTREEINDEX5 =
 "da/d85/interfaceHandler.html#ad66be13eb5b7c5f560fd8511565138c4":[6,19,7],
 "da/d85/interfaceHandler.html#af901258552a23961893c5bd6f18ce681":[6,19,3],
 "da/d8a/interfaceTextColor.html":[6,74],
-"da/d8a/interfaceTextColor.html#a1b2fab327d7b9814c9dd37b5f3861643":[6,74,6],
-"da/d8a/interfaceTextColor.html#a56f6aeb7a8f24f3f294c61e1199f7e0b":[6,74,7],
-"da/d8a/interfaceTextColor.html#a6b88dbc459449d2280338e5b702a68b4":[6,74,0],
-"da/d8a/interfaceTextColor.html#a94c197c586ecfcb7cb733e0d543ce5ad":[6,74,1],
-"da/d8a/interfaceTextColor.html#a9b7bce159ed5ec43137063a20a9e0e16":[6,74,5],
-"da/d8a/interfaceTextColor.html#ab9261a7662bc8bb4a898bc15dc16f206":[6,74,4],
-"da/d8a/interfaceTextColor.html#ac61f07a7d6c5471293371086af3186bd":[6,74,2]
+"da/d8a/interfaceTextColor.html#a1b2fab327d7b9814c9dd37b5f3861643":[6,74,6]
 };

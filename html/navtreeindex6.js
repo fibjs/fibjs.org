@@ -1,5 +1,11 @@
 var NAVTREEINDEX6 =
 {
+"da/d8a/interfaceTextColor.html#a56f6aeb7a8f24f3f294c61e1199f7e0b":[6,74,7],
+"da/d8a/interfaceTextColor.html#a6b88dbc459449d2280338e5b702a68b4":[6,74,0],
+"da/d8a/interfaceTextColor.html#a94c197c586ecfcb7cb733e0d543ce5ad":[6,74,1],
+"da/d8a/interfaceTextColor.html#a9b7bce159ed5ec43137063a20a9e0e16":[6,74,5],
+"da/d8a/interfaceTextColor.html#ab9261a7662bc8bb4a898bc15dc16f206":[6,74,4],
+"da/d8a/interfaceTextColor.html#ac61f07a7d6c5471293371086af3186bd":[6,74,2],
 "da/d8a/interfaceTextColor.html#ad66be13eb5b7c5f560fd8511565138c4":[6,74,3],
 "da/d8a/interfaceTextColor.html#af2f9ebf1de8543a516e82866df99363d":[6,74,8],
 "da/db3/server.html":[4],
@@ -243,11 +249,5 @@ var NAVTREEINDEX6 =
 "dc/d90/interfaceSemaphore.html#adf61e8770130c9f386c7c78934028379":[6,61,0],
 "dc/d90/interfaceSemaphore.html#ae81aa0dc5e2d399ccae8b92211377cd9":[6,61,6],
 "dc/da9/interfaceStat.html":[6,69],
-"dc/da9/interfaceStat.html#a2552c268128d45631dcc9a28417e6553":[6,69,3],
-"dc/da9/interfaceStat.html#a2e40d56627672e702cfd14aae5bc40e5":[6,69,15],
-"dc/da9/interfaceStat.html#a34b8a148a3c7d4570ed19e642d7d5a72":[6,69,7],
-"dc/da9/interfaceStat.html#a356bbde5f558716ffc9ca7e4cf6f5aae":[6,69,17],
-"dc/da9/interfaceStat.html#a523a68f67f4cf80115a2cc7aa04bae5d":[6,69,2],
-"dc/da9/interfaceStat.html#a568f1871921d0ed38b885a8d7218ed5d":[6,69,0],
-"dc/da9/interfaceStat.html#a5970c0f2e6fc12189269dbd129109947":[6,69,4]
+"dc/da9/interfaceStat.html#a2552c268128d45631dcc9a28417e6553":[6,69,3]
 };
