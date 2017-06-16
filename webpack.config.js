@@ -71,54 +71,79 @@ marked.setOptions({
 
 function build_docs() {
     console.log();
-    var _tmpl = ejs.compile(fs.readFileSync('web/dist/docs.html').toString());
 
-    var guide = 'docs';
-    var guide_to = 'web/dist';
+    var config = {
+        from: 'docs',
+        to: 'web/dist',
+        groups: {
+            "guide": {
+                title: '开发指南',
+                path: "docs/guide"
+            },
+            "module": {
+                title: '基础模块',
+                path: "docs/manual/module"
+            },
+            "object": {
+                title: '内置对象',
+                path: "docs/manual/object"
+            }
+        }
+    };
+
+    var groups = config.groups;
+
+    var _tmpl = ejs.compile(fs.readFileSync(path.join(config.to, '/docs.html')).toString());
 
     function read_doc(p) {
-        var html = marked(fs.readFileSync(p).toString());
+        var md = fs.readFileSync(p).toString();
+        var html = marked(md);
 
         html = html.replace(/href=\".*\.md\"/g, s => {
-            s = s.substr(6, s.length - 7).toLowerCase() + ".html";
-            s = "/" + path.join(path.dirname(p), s);
-            s = 'href="' + s + '"';
-            return s;
+            var s1 = s.substr(6, s.length - 7);
+            if (s1.indexOf('http') == 0)
+                return s;
+
+            s1 = s1.toLowerCase() + ".html";
+            s1 = "/" + path.join(path.dirname(p), s1);
+            s1 = 'href="' + s1 + '"';
+            return s1;
         });
 
         return html;
     }
 
-    var groups = {
-        "guide": {
-            title: '开发指南',
-            url: '/docs/guide/readme.md.html',
-            toc: read_doc('docs/guide/README.md')
-        },
-        "module": {
-            title: '基础模块',
-            url: '/docs/manual/module/readme.md.html',
-            toc: read_doc('docs/manual/module/README.md')
-        },
-        "object": {
-            title: '内置对象',
-            url: '/docs/manual/object/readme.md.html',
-            toc: read_doc('docs/manual/object/README.md')
-        }
-    };
-
-    function test_group(p) {
-        return p.replace("/manual/", "/").split("/")[1];
+    for (var g in groups) {
+        groups[g].url = "/" + groups[g].path + '/readme.md.html';
+        groups[g].toc = read_doc(groups[g].path + '/README.md');
     }
 
-    recursiveReadSync(guide).forEach(function (file) {
+    function test_group(p) {
+        for (var g in groups)
+            if (p.indexOf(groups[g].path) == 0)
+                return g;
+
+        return "";
+    }
+
+    recursiveReadSync(config.from).forEach(function (file) {
         var p = file.toLowerCase();
-        var file1 = path.join(guide_to, p);
+        var file1 = path.join(config.to, p);
 
         mkdir.mkdirsSync(path.dirname(file1));
         var doc = read_doc(file);
         var r = /<h[1-9]?.*>(.*)<\/h[1-9]?>/.exec(doc);
         var title = r ? r[1] : '';
+
+        if (title === '') {
+            for (var g in groups)
+                if (file === groups[g].path + '/README.md') {
+                    title = groups[g].title;
+                    doc = '<h1>' + groups[g].title + '</h1>' + doc;
+                    break;
+                }
+        }
+
         fs.writeFileSync(file1 + ".html", _tmpl({
             title: title,
             group: test_group(p),
