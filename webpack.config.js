@@ -94,7 +94,7 @@ function build_docs() {
 
     var groups = config.groups;
 
-    var _tmpl = ejs.compile(fs.readFileSync(path.join('web/dist/docs.html')).toString());
+    var _tmpl = ejs.compile(fs.readFileSync(path.join(config.dist, 'docs.html')).toString());
 
     function read_doc(p) {
         var md = fs.readFileSync(p).toString();
