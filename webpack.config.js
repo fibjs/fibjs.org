@@ -74,32 +74,33 @@ function build_docs() {
 
     var config = {
         from: 'docs',
-        to: 'web/dist',
+        dist: 'web/dist',
+        to: 'docs',
         groups: {
             "guide": {
                 title: '开发指南',
-                path: "docs/guide"
+                path: "guide"
             },
             "module": {
                 title: '基础模块',
-                path: "docs/manual/module"
+                path: "manual/module"
             },
             "object": {
                 title: '内置对象',
-                path: "docs/manual/object"
+                path: "manual/object"
             }
         }
     };
 
     var groups = config.groups;
 
-    var _tmpl = ejs.compile(fs.readFileSync(path.join(config.to, '/docs.html')).toString());
+    var _tmpl = ejs.compile(fs.readFileSync(path.join('web/dist/docs.html')).toString());
 
     function read_doc(p) {
         var md = fs.readFileSync(p).toString();
         var html = marked(md);
 
-        html = html.replace(/href=\".*\.md\"/g, s => {
+        html = html.replace(/href=\"[^"]*\.md\"/g, s => {
             var s1 = s.substr(6, s.length - 7);
             if (s1.indexOf('http') == 0)
                 return s;
@@ -114,21 +115,22 @@ function build_docs() {
     }
 
     for (var g in groups) {
-        groups[g].url = "/" + groups[g].path + '/readme.md.html';
-        groups[g].toc = read_doc(groups[g].path + '/README.md');
+        groups[g].url = "/" + path.join(config.from, groups[g].path, 'readme.md.html');
+        groups[g].toc = read_doc(path.join(config.from, groups[g].path, 'README.md'));
     }
 
     function test_group(p) {
         for (var g in groups)
-            if (p.indexOf(groups[g].path) == 0)
+            if (p.indexOf(groups[g].path) != -1)
                 return g;
 
         return "";
     }
 
     recursiveReadSync(config.from).forEach(function (file) {
-        var p = file.toLowerCase();
-        var file1 = path.join(config.to, p);
+        var p = path.relative(config.from, file.toLowerCase());
+        p = path.join(config.to, p) + '.html';
+        var file1 = path.join(config.dist, p);
 
         mkdir.mkdirsSync(path.dirname(file1));
         var doc = read_doc(file);
@@ -137,19 +139,31 @@ function build_docs() {
 
         if (title === '') {
             for (var g in groups)
-                if (file === groups[g].path + '/README.md') {
+                if (file === path.join(config.from, groups[g].path, 'README.md')) {
                     title = groups[g].title;
                     doc = '<h1>' + groups[g].title + '</h1>' + doc;
                     break;
                 }
         }
 
-        fs.writeFileSync(file1 + ".html", _tmpl({
+        var html = _tmpl({
             title: title,
             group: test_group(p),
             groups: groups,
             doc: doc
-        }));
+        });
+
+        var re = new RegExp('href=\"\/' + config.from + '/[^"]*\"', 'g');
+
+        html = html.replace(re, s => {
+            var s1 = s.substr(12, s.length - 13);
+            s1 = path.join('/', config.to, s1);
+            s1 = 'href="' + s1 + '"';
+
+            return s1;
+        });
+
+        fs.writeFileSync(file1, html);
     });
 }
 
