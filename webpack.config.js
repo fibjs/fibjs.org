@@ -89,10 +89,22 @@ function build_docs() {
         return html;
     }
 
-    var toc = {
-        "guide": read_doc('docs/guide/README.md'),
-        "module": read_doc('docs/manual/module/README.md'),
-        "object": read_doc('docs/manual/object/README.md')
+    var groups = {
+        "guide": {
+            title: '开发指南',
+            url: '/docs/guide/readme.md.html',
+            toc: read_doc('docs/guide/README.md')
+        },
+        "module": {
+            title: '基础模块',
+            url: '/docs/manual/module/readme.md.html',
+            toc: read_doc('docs/manual/module/README.md')
+        },
+        "object": {
+            title: '内置对象',
+            url: '/docs/manual/object/readme.md.html',
+            toc: read_doc('docs/manual/object/README.md')
+        }
     };
 
     function test_group(p) {
@@ -104,10 +116,14 @@ function build_docs() {
         var file1 = path.join(guide_to, p);
 
         mkdir.mkdirsSync(path.dirname(file1));
+        var doc = read_doc(file);
+        var r = /<h[1-9]?.*>(.*)<\/h[1-9]?>/.exec(doc);
+        var title = r ? r[1] : '';
         fs.writeFileSync(file1 + ".html", _tmpl({
-            toc: toc,
+            title: title,
             group: test_group(p),
-            doc: read_doc(file)
+            groups: groups,
+            doc: doc
         }));
     });
 }
