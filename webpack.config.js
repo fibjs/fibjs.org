@@ -128,33 +128,37 @@ function build_docs() {
     }
 
     recursiveReadSync(config.from).forEach(function (file) {
-        var p = path.relative(config.from, file.toLowerCase());
-        p = path.join(config.to, p) + '.html';
-        var file1 = path.join(config.dist, p);
+        var basename = path.basename(file);
+        if (basename.charAt(0) !== '.') {
 
-        mkdir.mkdirsSync(path.dirname(file1));
-        var doc = read_doc(file);
-        var r = /<h[1-9]?.*>(.*)<\/h[1-9]?>/.exec(doc);
-        var title = r ? r[1] : '';
+            var p = path.relative(config.from, file.toLowerCase());
+            p = path.join(config.to, p) + '.html';
+            var file1 = path.join(config.dist, p);
 
-        var html = _tmpl({
-            title: title,
-            group: test_group(p),
-            groups: groups,
-            doc: doc
-        });
+            mkdir.mkdirsSync(path.dirname(file1));
+            var doc = read_doc(file);
+            var r = /<h[1-9]?.*>(.*)<\/h[1-9]?>/.exec(doc);
+            var title = r ? r[1] : '';
 
-        var re = new RegExp('href=\"\/' + config.from + '/[^"]*\"', 'g');
+            var html = _tmpl({
+                title: title,
+                group: test_group(p),
+                groups: groups,
+                doc: doc
+            });
 
-        html = html.replace(re, s => {
-            var s1 = s.substr(12, s.length - 13);
-            s1 = path.join('/', config.to, s1);
-            s1 = 'href="' + s1 + '"';
+            var re = new RegExp('href=\"\/' + config.from + '/[^"]*\"', 'g');
 
-            return s1;
-        });
+            html = html.replace(re, s => {
+                var s1 = s.substr(12, s.length - 13);
+                s1 = path.join('/', config.to, s1);
+                s1 = 'href="' + s1 + '"';
 
-        fs.writeFileSync(file1, html);
+                return s1;
+            });
+
+            fs.writeFileSync(file1, html);
+        }
     });
 }
 
@@ -250,26 +254,28 @@ var pages = path.resolve('./web/src/pages');
 
 recursiveReadSync(pages).forEach(function (file) {
     file = path.relative(pages, file);
-    var basename = path.basename(file, path.extname(file));
+    var basename = path.basename(file);
 
-    if (/\.(html|htm|shtml)$/.test(file)) {
-        webpack_config.plugins.push(new HtmlWebpackPlugin({
-            filename: file,
-            template: path.resolve(pages, file),
-            inject: true,
-            minify: {
-                removeComments: true,
-                collapseWhitespace: true,
-                removeAttributeQuotes: true
-                // more options:
-                // https://github.com/kangax/html-minifier#options-quick-reference
-            },
-            // necessary to consistently work with multiple chunks via CommonsChunkPlugin
-            chunksSortMode: 'dependency',
-            chunks: ['common', file.replace(/\.(html|htm|shtml)$/, '')]
-        }));
-    } else if (/.jsx?$/.test(file)) {
-        webpack_config.entry[file.replace(/.jsx?$/, '')] = path.resolve(pages, file);
+    if (basename.charAt(0) !== '.') {
+        if (/\.(html|htm|shtml)$/.test(file)) {
+            webpack_config.plugins.push(new HtmlWebpackPlugin({
+                filename: file,
+                template: path.resolve(pages, file),
+                inject: true,
+                minify: {
+                    removeComments: true,
+                    collapseWhitespace: true,
+                    removeAttributeQuotes: true
+                    // more options:
+                    // https://github.com/kangax/html-minifier#options-quick-reference
+                },
+                // necessary to consistently work with multiple chunks via CommonsChunkPlugin
+                chunksSortMode: 'dependency',
+                chunks: ['common', file.replace(/\.(html|htm|shtml)$/, '')]
+            }));
+        } else if (/.jsx?$/.test(file)) {
+            webpack_config.entry[file.replace(/.jsx?$/, '')] = path.resolve(pages, file);
+        }
     }
 });
 
