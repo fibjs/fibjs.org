@@ -116,7 +116,7 @@ function build_docs() {
 
     for (var g in groups) {
         groups[g].url = "/" + path.join(config.from, groups[g].path, 'readme.md.html');
-        groups[g].toc = read_doc(path.join(config.from, groups[g].path, 'README.md'));
+        groups[g].toc = read_doc(path.join(config.from, groups[g].path, 'SUMMARY.md'));
     }
 
     function test_group(p) {
@@ -136,15 +136,6 @@ function build_docs() {
         var doc = read_doc(file);
         var r = /<h[1-9]?.*>(.*)<\/h[1-9]?>/.exec(doc);
         var title = r ? r[1] : '';
-
-        if (title === '') {
-            for (var g in groups)
-                if (file === path.join(config.from, groups[g].path, 'README.md')) {
-                    title = groups[g].title;
-                    doc = '<h1>' + groups[g].title + '</h1>' + doc;
-                    break;
-                }
-        }
 
         var html = _tmpl({
             title: title,
