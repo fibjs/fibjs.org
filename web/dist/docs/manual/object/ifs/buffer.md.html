@@ -1,0 +1,1088 @@
+<!DOCTYPE html><html><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="initial-scale=1,maximum-scale=1,user-scalable=no"><title> 对象 Buffer </title><link href=/css/common.css rel=stylesheet><link href=/css/docs.css rel=stylesheet></head><body><div class="navbar navbar-default navbar-static-top" role=navigation><div class=container><div class=navbar-header><button type=button class="navbar-toggle collapsed" data-toggle=collapse data-target=#navbar aria-expanded=false aria-controls=navbar><span class=sr-only>Toggle navigation</span> <span class=icon-bar></span> <span class=icon-bar></span> <span class=icon-bar></span></button> <a class=navbar-brand href=/ ><img src=/imgs/logo.png> <span>Javascript on Fiber</span></a></div><div id=navbar class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right"><li><a href=/docs/guide/readme.md.html>GUIDE</a></li><li><a href=/docs/manual/module/readme.md.html>MANUAL</a></li></ul></div></div></div><div class=container>  <ol class=breadcrumb><li><a href=/ >首页</a></li><li><a href="/docs/manual/object/readme.md.html"> 内置对象 </a></li><li class=active> 对象 Buffer </li></ol>  <div class="sidebar hidden-xs col-xs-3"><input type=text class="form-control search" placeholder="Search for..."><div class=panel-group id=accordion role=tablist>  <div class=panel><div class=panel-heading role=tab id=headingOne><h4 class=panel-title><a data-toggle=collapse data-parent=#accordion href="#collapse_guide" aria-controls="collapse_guide"> 开发指南 </a></h4></div><div id="collapse_guide" class="panel-collapse collapse " aria-labelledby=headingOne><div class=panel-body> <ul>
+<li><a href="/docs/guide/about.md.html">快速上手</a></li>
+<li><a href="/docs/guide/install/readme.md.html">基本安装</a><ul>
+<li><a href="/docs/guide/install/build.md.html">自己编译 </a></li>
+</ul>
+</li>
+</ul>
+ </div></div></div>  <div class=panel><div class=panel-heading role=tab id=headingOne><h4 class=panel-title><a data-toggle=collapse data-parent=#accordion href="#collapse_module" aria-controls="collapse_module"> 基础模块 </a></h4></div><div id="collapse_module" class="panel-collapse collapse " aria-labelledby=headingOne><div class=panel-body> <ul>
+<li><a href="/docs/manual/module/ifs/assert.md.html">assert</a></li>
+<li><a href="/docs/manual/module/ifs/base32.md.html">base32</a></li>
+<li><a href="/docs/manual/module/ifs/base64.md.html">base64</a></li>
+<li><a href="/docs/manual/module/ifs/base64vlq.md.html">base64vlq</a></li>
+<li><a href="/docs/manual/module/ifs/bson.md.html">bson</a></li>
+<li><a href="/docs/manual/module/ifs/collection.md.html">collection</a></li>
+<li><a href="/docs/manual/module/ifs/console.md.html">console</a></li>
+<li><a href="/docs/manual/module/ifs/coroutine.md.html">coroutine</a></li>
+<li><a href="/docs/manual/module/ifs/crypto.md.html">crypto</a></li>
+<li><a href="/docs/manual/module/ifs/db.md.html">db</a></li>
+<li><a href="/docs/manual/module/ifs/encoding.md.html">encoding</a></li>
+<li><a href="/docs/manual/module/ifs/fs.md.html">fs</a></li>
+<li><a href="/docs/manual/module/ifs/gd.md.html">gd</a></li>
+<li><a href="/docs/manual/module/ifs/global.md.html">global</a></li>
+<li><a href="/docs/manual/module/ifs/gui.md.html">gui</a></li>
+<li><a href="/docs/manual/module/ifs/hash.md.html">hash</a></li>
+<li><a href="/docs/manual/module/ifs/hex.md.html">hex</a></li>
+<li><a href="/docs/manual/module/ifs/http.md.html">http</a></li>
+<li><a href="/docs/manual/module/ifs/iconv.md.html">iconv</a></li>
+<li><a href="/docs/manual/module/ifs/io.md.html">io</a></li>
+<li><a href="/docs/manual/module/ifs/json.md.html">json</a></li>
+<li><a href="/docs/manual/module/ifs/mq.md.html">mq</a></li>
+<li><a href="/docs/manual/module/ifs/net.md.html">net</a></li>
+<li><a href="/docs/manual/module/ifs/os.md.html">os</a></li>
+<li><a href="/docs/manual/module/ifs/path.md.html">path</a></li>
+<li><a href="/docs/manual/module/ifs/path_posix.md.html">path_posix</a></li>
+<li><a href="/docs/manual/module/ifs/path_win32.md.html">path_win32</a></li>
+<li><a href="/docs/manual/module/ifs/process.md.html">process</a></li>
+<li><a href="/docs/manual/module/ifs/profiler.md.html">profiler</a></li>
+<li><a href="/docs/manual/module/ifs/querystring.md.html">querystring</a></li>
+<li><a href="/docs/manual/module/ifs/re.md.html">re</a></li>
+<li><a href="/docs/manual/module/ifs/registry.md.html">registry</a></li>
+<li><a href="/docs/manual/module/ifs/ssl.md.html">ssl</a></li>
+<li><a href="/docs/manual/module/ifs/test.md.html">test</a></li>
+<li><a href="/docs/manual/module/ifs/timers.md.html">timers</a></li>
+<li><a href="/docs/manual/module/ifs/url.md.html">url</a></li>
+<li><a href="/docs/manual/module/ifs/util.md.html">util</a></li>
+<li><a href="/docs/manual/module/ifs/uuid.md.html">uuid</a></li>
+<li><a href="/docs/manual/module/ifs/vm.md.html">vm</a></li>
+<li><a href="/docs/manual/module/ifs/ws.md.html">ws</a></li>
+<li><a href="/docs/manual/module/ifs/xml.md.html">xml</a></li>
+<li><a href="/docs/manual/module/ifs/zip.md.html">zip</a></li>
+<li><a href="/docs/manual/module/ifs/zlib.md.html">zlib</a></li>
+<li><a href="/docs/manual/module/ifs/zmq.md.html">zmq</a></li>
+</ul>
+ </div></div></div>  <div class=panel><div class=panel-heading role=tab id=headingOne><h4 class=panel-title><a data-toggle=collapse data-parent=#accordion href="#collapse_object" aria-controls="collapse_object"> 内置对象 </a></h4></div><div id="collapse_object" class="panel-collapse collapse in" aria-labelledby=headingOne><div class=panel-body> <ul>
+<li><a href="/docs/manual/object/ifs/asyncwait.md.html">AsyncWait</a></li>
+<li><a href="/docs/manual/object/ifs/blockqueue.md.html">BlockQueue</a></li>
+<li><a href="/docs/manual/object/ifs/buffer.md.html">Buffer</a></li>
+<li><a href="/docs/manual/object/ifs/bufferedstream.md.html">BufferedStream</a></li>
+<li><a href="/docs/manual/object/ifs/chain.md.html">Chain</a></li>
+<li><a href="/docs/manual/object/ifs/cipher.md.html">Cipher</a></li>
+<li><a href="/docs/manual/object/ifs/condition.md.html">Condition</a></li>
+<li><a href="/docs/manual/object/ifs/datagrampacket.md.html">DatagramPacket</a></li>
+<li><a href="/docs/manual/object/ifs/dbconnection.md.html">DbConnection</a></li>
+<li><a href="/docs/manual/object/ifs/dbresult.md.html">DBResult</a></li>
+<li><a href="/docs/manual/object/ifs/dbrow.md.html">DBRow</a></li>
+<li><a href="/docs/manual/object/ifs/digest.md.html">Digest</a></li>
+<li><a href="/docs/manual/object/ifs/event.md.html">Event</a></li>
+<li><a href="/docs/manual/object/ifs/eventemitter.md.html">EventEmitter</a></li>
+<li><a href="/docs/manual/object/ifs/eventinfo.md.html">EventInfo</a></li>
+<li><a href="/docs/manual/object/ifs/fiber.md.html">Fiber</a></li>
+<li><a href="/docs/manual/object/ifs/file.md.html">File</a></li>
+<li><a href="/docs/manual/object/ifs/gridfs.md.html">GridFS</a></li>
+<li><a href="/docs/manual/object/ifs/handler.md.html">Handler</a></li>
+<li><a href="/docs/manual/object/ifs/handlerex.md.html">HandlerEx</a></li>
+<li><a href="/docs/manual/object/ifs/heapgraphedge.md.html">HeapGraphEdge</a></li>
+<li><a href="/docs/manual/object/ifs/heapgraphnode.md.html">HeapGraphNode</a></li>
+<li><a href="/docs/manual/object/ifs/heapsnapshot.md.html">HeapSnapshot</a></li>
+<li><a href="/docs/manual/object/ifs/httpclient.md.html">HttpClient</a></li>
+<li><a href="/docs/manual/object/ifs/httpcollection.md.html">HttpCollection</a></li>
+<li><a href="/docs/manual/object/ifs/httpcookie.md.html">HttpCookie</a></li>
+<li><a href="/docs/manual/object/ifs/httphandler.md.html">HttpHandler</a></li>
+<li><a href="/docs/manual/object/ifs/httpmessage.md.html">HttpMessage</a></li>
+<li><a href="/docs/manual/object/ifs/httprequest.md.html">HttpRequest</a></li>
+<li><a href="/docs/manual/object/ifs/httpresponse.md.html">HttpResponse</a></li>
+<li><a href="/docs/manual/object/ifs/httpserver.md.html">HttpServer</a></li>
+<li><a href="/docs/manual/object/ifs/httpsserver.md.html">HttpsServer</a></li>
+<li><a href="/docs/manual/object/ifs/httpuploaddata.md.html">HttpUploadData</a></li>
+<li><a href="/docs/manual/object/ifs/image.md.html">Image</a></li>
+<li><a href="/docs/manual/object/ifs/int64.md.html">Int64</a></li>
+<li><a href="/docs/manual/object/ifs/leveldb.md.html">LevelDB</a></li>
+<li><a href="/docs/manual/object/ifs/list.md.html">List</a></li>
+<li><a href="/docs/manual/object/ifs/lock.md.html">Lock</a></li>
+<li><a href="/docs/manual/object/ifs/lrucache.md.html">LruCache</a></li>
+<li><a href="/docs/manual/object/ifs/map.md.html">Map</a></li>
+<li><a href="/docs/manual/object/ifs/memorystream.md.html">MemoryStream</a></li>
+<li><a href="/docs/manual/object/ifs/message.md.html">Message</a></li>
+<li><a href="/docs/manual/object/ifs/mongocollection.md.html">MongoCollection</a></li>
+<li><a href="/docs/manual/object/ifs/mongocursor.md.html">MongoCursor</a></li>
+<li><a href="/docs/manual/object/ifs/mongodb.md.html">MongoDB</a></li>
+<li><a href="/docs/manual/object/ifs/mongoid.md.html">MongoID</a></li>
+<li><a href="/docs/manual/object/ifs/mssql.md.html">MSSQL</a></li>
+<li><a href="/docs/manual/object/ifs/mysql.md.html">MySQL</a></li>
+<li><a href="/docs/manual/object/ifs/object.md.html">object</a></li>
+<li><a href="/docs/manual/object/ifs/pkey.md.html">PKey</a></li>
+<li><a href="/docs/manual/object/ifs/queue.md.html">Queue</a></li>
+<li><a href="/docs/manual/object/ifs/redis.md.html">Redis</a></li>
+<li><a href="/docs/manual/object/ifs/redishash.md.html">RedisHash</a></li>
+<li><a href="/docs/manual/object/ifs/redislist.md.html">RedisList</a></li>
+<li><a href="/docs/manual/object/ifs/redisset.md.html">RedisSet</a></li>
+<li><a href="/docs/manual/object/ifs/redissortedset.md.html">RedisSortedSet</a></li>
+<li><a href="/docs/manual/object/ifs/regex.md.html">Regex</a></li>
+<li><a href="/docs/manual/object/ifs/routing.md.html">Routing</a></li>
+<li><a href="/docs/manual/object/ifs/sandbox.md.html">SandBox</a></li>
+<li><a href="/docs/manual/object/ifs/seekablestream.md.html">SeekableStream</a></li>
+<li><a href="/docs/manual/object/ifs/semaphore.md.html">Semaphore</a></li>
+<li><a href="/docs/manual/object/ifs/service.md.html">Service</a></li>
+<li><a href="/docs/manual/object/ifs/smtp.md.html">Smtp</a></li>
+<li><a href="/docs/manual/object/ifs/socket.md.html">Socket</a></li>
+<li><a href="/docs/manual/object/ifs/sqlite.md.html">SQLite</a></li>
+<li><a href="/docs/manual/object/ifs/sslhandler.md.html">SslHandler</a></li>
+<li><a href="/docs/manual/object/ifs/sslserver.md.html">SslServer</a></li>
+<li><a href="/docs/manual/object/ifs/sslsocket.md.html">SslSocket</a></li>
+<li><a href="/docs/manual/object/ifs/stat.md.html">Stat</a></li>
+<li><a href="/docs/manual/object/ifs/stats.md.html">Stats</a></li>
+<li><a href="/docs/manual/object/ifs/stream.md.html">Stream</a></li>
+<li><a href="/docs/manual/object/ifs/subprocess.md.html">SubProcess</a></li>
+<li><a href="/docs/manual/object/ifs/tcpserver.md.html">TcpServer</a></li>
+<li><a href="/docs/manual/object/ifs/textcolor.md.html">TextColor</a></li>
+<li><a href="/docs/manual/object/ifs/timer.md.html">Timer</a></li>
+<li><a href="/docs/manual/object/ifs/urlobject.md.html">UrlObject</a></li>
+<li><a href="/docs/manual/object/ifs/websocket.md.html">WebSocket</a></li>
+<li><a href="/docs/manual/object/ifs/websockethandler.md.html">WebSocketHandler</a></li>
+<li><a href="/docs/manual/object/ifs/websocketmessage.md.html">WebSocketMessage</a></li>
+<li><a href="/docs/manual/object/ifs/webview.md.html">WebView</a></li>
+<li><a href="/docs/manual/object/ifs/worker.md.html">Worker</a></li>
+<li><a href="/docs/manual/object/ifs/x509cert.md.html">X509Cert</a></li>
+<li><a href="/docs/manual/object/ifs/x509crl.md.html">X509Crl</a></li>
+<li><a href="/docs/manual/object/ifs/x509req.md.html">X509Req</a></li>
+<li><a href="/docs/manual/object/ifs/xmlattr.md.html">XmlAttr</a></li>
+<li><a href="/docs/manual/object/ifs/xmlcdatasection.md.html">XmlCDATASection</a></li>
+<li><a href="/docs/manual/object/ifs/xmlcharacterdata.md.html">XmlCharacterData</a></li>
+<li><a href="/docs/manual/object/ifs/xmlcomment.md.html">XmlComment</a></li>
+<li><a href="/docs/manual/object/ifs/xmldocument.md.html">XmlDocument</a></li>
+<li><a href="/docs/manual/object/ifs/xmldocumenttype.md.html">XmlDocumentType</a></li>
+<li><a href="/docs/manual/object/ifs/xmlelement.md.html">XmlElement</a></li>
+<li><a href="/docs/manual/object/ifs/xmlnamednodemap.md.html">XmlNamedNodeMap</a></li>
+<li><a href="/docs/manual/object/ifs/xmlnode.md.html">XmlNode</a></li>
+<li><a href="/docs/manual/object/ifs/xmlnodelist.md.html">XmlNodeList</a></li>
+<li><a href="/docs/manual/object/ifs/xmlprocessinginstruction.md.html">XmlProcessingInstruction</a></li>
+<li><a href="/docs/manual/object/ifs/xmltext.md.html">XmlText</a></li>
+<li><a href="/docs/manual/object/ifs/zipfile.md.html">ZipFile</a></li>
+<li><a href="/docs/manual/object/ifs/zipinfo.md.html">ZipInfo</a></li>
+<li><a href="/docs/manual/object/ifs/zmqsocket.md.html">ZmqSocket</a></li>
+</ul>
+ </div></div></div>  </div></div><div class="content col-xs-12 col-sm-9"> <h1 id="-buffer">对象 Buffer</h1>
+<p>二进制数据缓存对象，用于 io 读写的数据处理</p>
+<p>Buffer 对象为全局基础类，在任何时候都可以直接以 new Buffer(...) 创建：
+@code
+var buf = new Buffer();
+@endcode</p>
+<h2 id="-">构造函数</h2>
+<h3 id="buffer">Buffer</h3>
+<p>缓存对象构造函数</p>
+<pre><code class="lang-JavaScript"> <span class="hljs-keyword">new</span> Buffer(<span class="hljs-built_in">Array</span> datas);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>datas - 初始化数据数组</li>
+</ul>
+<h3 id="buffer">Buffer</h3>
+<p>缓存对象构造函数</p>
+<pre><code class="lang-JavaScript"> <span class="hljs-keyword">new</span> Buffer(<span class="hljs-built_in">ArrayBuffer</span> datas);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>datas - 初始化数据数组</li>
+</ul>
+<h3 id="buffer">Buffer</h3>
+<p>缓存对象构造函数</p>
+<pre><code class="lang-JavaScript"> <span class="hljs-keyword">new</span> Buffer(TypedArray datas);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>datas - 初始化数据数组</li>
+</ul>
+<h3 id="buffer">Buffer</h3>
+<p>缓存对象构造函数</p>
+<pre><code class="lang-JavaScript"> <span class="hljs-keyword">new</span> Buffer(Buffer buffer);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>buffer - 初始化Buffer对象</li>
+</ul>
+<h3 id="buffer">Buffer</h3>
+<p>缓存对象构造函数</p>
+<pre><code class="lang-JavaScript"> <span class="hljs-keyword">new</span> Buffer(<span class="hljs-built_in">String</span> str,
+                <span class="hljs-built_in">String</span> codec = <span class="hljs-string">"utf8"</span>);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>str - 初始化字符串，字符串将以 utf-8 格式写入，缺省则创建一个空对象</li>
+<li>codec - 指定编码格式，允许值为：&#34;hex&#34;, &#34;base64&#34;, &#34;utf8&#34;, 或者系统支持的字符集</li>
+</ul>
+<h3 id="buffer">Buffer</h3>
+<p>缓存对象构造函数</p>
+<pre><code class="lang-JavaScript"> <span class="hljs-keyword">new</span> Buffer(Integer size = <span class="hljs-number">0</span>);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>size - 初始化缓冲区大小</li>
+</ul>
+<h2 id="-">函数</h2>
+<h3 id="isbuffer">isBuffer</h3>
+<p>检测给定的变量是否是 Buffer 对象</p>
+<pre><code class="lang-JavaScript"><span class="hljs-built_in">Boolean</span> Buffer.isBuffer(Value v);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>v - 给定需要检测的变量</li>
+</ul>
+<p><strong> 返回结果:</strong></p>
+<ul>
+<li>传入对象是否 Buffer 对象</li>
+</ul>
+<h3 id="concat">concat</h3>
+<p>拼接多个缓存区中的数据</p>
+<pre><code class="lang-JavaScript">Buffer Buffer.concat(<span class="hljs-built_in">Array</span> buflist,
+                Integer cutLength = <span class="hljs-number">-1</span>);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>buflist - 待拼接的Buffer数组</li>
+<li>cutLength - 截取多少个Buffer对象</li>
+</ul>
+<p><strong> 返回结果:</strong></p>
+<ul>
+<li>拼接后产生的新 Buffer 对象</li>
+</ul>
+<h3 id="resize">resize</h3>
+<p>修改缓存对象尺寸</p>
+<pre><code class="lang-JavaScript">Buffer.resize(Integer sz);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>sz - 指定新尺寸</li>
+</ul>
+<h3 id="append">append</h3>
+<p>在缓存对象尾部写入一组数据</p>
+<pre><code class="lang-JavaScript">Buffer.append(<span class="hljs-built_in">Array</span> datas);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>datas - 初始化数据数组</li>
+</ul>
+<h3 id="append">append</h3>
+<p>在缓存对象尾部写入一组数据</p>
+<pre><code class="lang-JavaScript">Buffer.append(TypedArray datas);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>datas - 初始化数据数组</li>
+</ul>
+<h3 id="append">append</h3>
+<p>在缓存对象尾部写入一组数据</p>
+<pre><code class="lang-JavaScript">Buffer.append(<span class="hljs-built_in">ArrayBuffer</span> datas);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>datas - 初始化数据数组</li>
+</ul>
+<h3 id="append">append</h3>
+<p>在缓存对象尾部写入一组二进制数据</p>
+<pre><code class="lang-JavaScript">Buffer.append(Buffer data);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>data - 初始化二进制数据</li>
+</ul>
+<h3 id="append">append</h3>
+<p>在缓存对象尾部写入字符串，字符串将以 utf-8 格式写入</p>
+<pre><code class="lang-JavaScript">Buffer.append(<span class="hljs-built_in">String</span> str,
+                <span class="hljs-built_in">String</span> codec = <span class="hljs-string">"utf8"</span>);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>str - 要写入的字符串</li>
+<li>codec - 指定编码格式，允许值为：&#34;hex&#34;, &#34;base64&#34;, &#34;utf8&#34;, 或者系统支持的字符集</li>
+</ul>
+<h3 id="write">write</h3>
+<p>向缓存对象写入指定字符串，字符串默认为utf-8，越界时只写入部分数据</p>
+<pre><code class="lang-JavaScript">Integer Buffer.write(<span class="hljs-built_in">String</span> str,
+                Integer offset = <span class="hljs-number">0</span>,
+                Integer length = <span class="hljs-number">-1</span>,
+                <span class="hljs-built_in">String</span> codec = <span class="hljs-string">"utf8"</span>);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>str - 待写入的字符串</li>
+<li>offset - 写入起始位置</li>
+<li>length - 写入长度（单位字节，默认值-1），未指定时为待写入字符串的长度</li>
+<li>codec - 指定编码格式，允许值为：&#34;hex&#34;, &#34;base64&#34;, &#34;utf8&#34;, 或者系统支持的字符集</li>
+</ul>
+<p><strong> 返回结果:</strong></p>
+<ul>
+<li>写入的数据字节长度</li>
+</ul>
+<h3 id="write">write</h3>
+<p>向缓存对象写入指定字符串，字符串默认为utf-8，越界时只写入部分数据</p>
+<pre><code class="lang-JavaScript">Integer Buffer.write(<span class="hljs-built_in">String</span> str,
+                Integer offset = <span class="hljs-number">0</span>,
+                <span class="hljs-built_in">String</span> codec = <span class="hljs-string">"utf8"</span>);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>str - 待写入的字符串</li>
+<li>offset - 写入起始位置</li>
+<li>codec - 指定编码格式，允许值为：&#34;hex&#34;, &#34;base64&#34;, &#34;utf8&#34;, 或者系统支持的字符集</li>
+</ul>
+<p><strong> 返回结果:</strong></p>
+<ul>
+<li>写入的数据字节长度</li>
+</ul>
+<h3 id="write">write</h3>
+<p>向缓存对象写入指定字符串，字符串默认为utf-8，越界时只写入部分数据</p>
+<pre><code class="lang-JavaScript">Integer Buffer.write(<span class="hljs-built_in">String</span> str,
+                <span class="hljs-built_in">String</span> codec = <span class="hljs-string">"utf8"</span>);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>str - 待写入的字符串</li>
+<li>codec - 指定编码格式，允许值为：&#34;hex&#34;, &#34;base64&#34;, &#34;utf8&#34;, 或者系统支持的字符集</li>
+</ul>
+<p><strong> 返回结果:</strong></p>
+<ul>
+<li>写入的数据字节长度</li>
+</ul>
+<h3 id="fill">fill</h3>
+<p>为Buffer对象填充指定内容数据</p>
+<pre><code class="lang-JavaScript">Buffer Buffer.fill(Integer v,
+                Integer offset = <span class="hljs-number">0</span>,
+                Integer end = <span class="hljs-number">-1</span>);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>v - 需要填充的数据，如果未指定offset和end，将填充满整个buffer</li>
+<li>offset - 填充起始位置</li>
+<li>end - 填充终止位置</li>
+</ul>
+<p><strong> 返回结果:</strong></p>
+<ul>
+<li>返回当前 Buffer 对象</li>
+</ul>
+<h3 id="fill">fill</h3>
+<p>为Buffer对象填充指定内容数据</p>
+<pre><code class="lang-JavaScript">Buffer Buffer.fill(Buffer v,
+                Integer offset = <span class="hljs-number">0</span>,
+                Integer end = <span class="hljs-number">-1</span>);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>v - 需要填充的数据，如果未指定offset和end，将填充满整个buffer</li>
+<li>offset - 填充起始位置</li>
+<li>end - 填充终止位置</li>
+</ul>
+<p><strong> 返回结果:</strong></p>
+<ul>
+<li>返回当前 Buffer 对象</li>
+</ul>
+<h3 id="fill">fill</h3>
+<p>为Buffer对象填充指定内容数据</p>
+<pre><code class="lang-JavaScript">Buffer Buffer.fill(<span class="hljs-built_in">String</span> v,
+                Integer offset = <span class="hljs-number">0</span>,
+                Integer end = <span class="hljs-number">-1</span>);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>v - 需要填充的数据，如果未指定offset和end，将填充满整个buffer</li>
+<li>offset - 填充起始位置</li>
+<li>end - 填充终止位置</li>
+</ul>
+<p><strong> 返回结果:</strong></p>
+<ul>
+<li>返回当前 Buffer 对象</li>
+</ul>
+<h3 id="indexof">indexOf</h3>
+<p>返回某个指定数据在Buffer中首次出现的位置</p>
+<pre><code class="lang-JavaScript">Integer Buffer.indexOf(Integer v,
+                Integer offset = <span class="hljs-number">0</span>);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>v - 待查找数据，如果未指定offset，默认从起始位开始</li>
+<li>offset - 起始查找位置</li>
+</ul>
+<h3 id="indexof">indexOf</h3>
+<p>返回某个指定数据在Buffer中首次出现的位置</p>
+<pre><code class="lang-JavaScript">Integer Buffer.indexOf(Buffer v,
+                Integer offset = <span class="hljs-number">0</span>);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>v - 待查找数据，如果未指定offset，默认从起始位开始</li>
+<li>offset - 起始查找位置</li>
+</ul>
+<h3 id="indexof">indexOf</h3>
+<p>返回某个指定数据在Buffer中首次出现的位置</p>
+<pre><code class="lang-JavaScript">Integer Buffer.indexOf(<span class="hljs-built_in">String</span> v,
+                Integer offset = <span class="hljs-number">0</span>);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>v - 待查找数据，如果未指定offset，默认从起始位开始</li>
+<li>offset - 起始查找位置</li>
+</ul>
+<h3 id="compare">compare</h3>
+<p>比较缓存区的内容</p>
+<pre><code class="lang-JavaScript">Integer Buffer.compare(Buffer buf);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>buf - 待比较缓存对象</li>
+</ul>
+<p><strong> 返回结果:</strong></p>
+<ul>
+<li>内容比较结果</li>
+</ul>
+<h3 id="copy">copy</h3>
+<p>从源缓存对象区域拷贝数据到目标缓存对象区域</p>
+<pre><code class="lang-JavaScript">Integer Buffer.copy(Buffer targetBuffer,
+                Integer targetStart = <span class="hljs-number">0</span>,
+                Integer sourceStart = <span class="hljs-number">0</span>,
+                Integer sourceEnd = <span class="hljs-number">-1</span>);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>targetBuffer - 目标缓存对象</li>
+<li>targetStart - 目标缓存对象开始拷贝字节位置，缺省为 0</li>
+<li>sourceStart - 源缓存对象开始字节位置, 缺省为 0</li>
+<li>sourceEnd - 源缓存对象结束字节位置, 缺省为 -1,表示源数据长度</li>
+</ul>
+<p><strong> 返回结果:</strong></p>
+<ul>
+<li>拷贝的数据字节长度</li>
+</ul>
+<h3 id="readuint8">readUInt8</h3>
+<p>从缓存对象读取一个 8 位无符号整型数值</p>
+<pre><code class="lang-JavaScript">Integer Buffer.readUInt8(Integer offset = <span class="hljs-number">0</span>,
+                <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>offset - 指定读取的起始位置，缺省为 0</li>
+<li>noAssert - 指定读取越界时不抛出错误，缺省为 flase，抛出</li>
+</ul>
+<p><strong> 返回结果:</strong></p>
+<ul>
+<li>返回读取的整型数值</li>
+</ul>
+<h3 id="readuint16le">readUInt16LE</h3>
+<p>从缓存对象读取一个 16 位无符号整型数值，以低字节序的存储方式</p>
+<pre><code class="lang-JavaScript">Integer Buffer.readUInt16LE(Integer offset = <span class="hljs-number">0</span>,
+                <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>offset - 指定读取的起始位置，缺省为 0</li>
+<li>noAssert - 指定读取越界时不抛出错误，缺省为 flase，抛出</li>
+</ul>
+<p><strong> 返回结果:</strong></p>
+<ul>
+<li>返回读取的整型数值</li>
+</ul>
+<h3 id="readuint16be">readUInt16BE</h3>
+<p>从缓存对象读取一个 16 位无符号整型数值，以高字节序的存储方式</p>
+<pre><code class="lang-JavaScript">Integer Buffer.readUInt16BE(Integer offset = <span class="hljs-number">0</span>,
+                <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>offset - 指定读取的起始位置，缺省为 0</li>
+<li>noAssert - 指定读取越界时不抛出错误，缺省为 flase，抛出</li>
+</ul>
+<p><strong> 返回结果:</strong></p>
+<ul>
+<li>返回读取的整型数值</li>
+</ul>
+<h3 id="readuint32le">readUInt32LE</h3>
+<p>从缓存对象读取一个 32 位无符号整型数值，以低字节序的存储方式</p>
+<pre><code class="lang-JavaScript">Long Buffer.readUInt32LE(Integer offset = <span class="hljs-number">0</span>,
+                <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>offset - 指定读取的起始位置，缺省为 0</li>
+<li>noAssert - 指定读取越界时不抛出错误，缺省为 flase，抛出</li>
+</ul>
+<p><strong> 返回结果:</strong></p>
+<ul>
+<li>返回读取的整型数值</li>
+</ul>
+<h3 id="readuint32be">readUInt32BE</h3>
+<p>从缓存对象读取一个 32 位无符号整型数值，以高字节序的存储方式</p>
+<pre><code class="lang-JavaScript">Long Buffer.readUInt32BE(Integer offset = <span class="hljs-number">0</span>,
+                <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>offset - 指定读取的起始位置，缺省为 0</li>
+<li>noAssert - 指定读取越界时不抛出错误，缺省为 flase，抛出</li>
+</ul>
+<p><strong> 返回结果:</strong></p>
+<ul>
+<li>返回读取的整型数值</li>
+</ul>
+<h3 id="readuintle">readUIntLE</h3>
+<p>从缓存对象读取一个无符号整型数值，最大支持 48 位，以低字节序的存储方式</p>
+<pre><code class="lang-JavaScript">Long Buffer.readUIntLE(Integer offset = <span class="hljs-number">0</span>,
+                <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>offset - 指定读取的起始位置，缺省为 0</li>
+<li>noAssert - 指定读取越界时不抛出错误，缺省为 flase，抛出</li>
+</ul>
+<p><strong> 返回结果:</strong></p>
+<ul>
+<li>返回读取的整型数值</li>
+</ul>
+<h3 id="readuintbe">readUIntBE</h3>
+<p>从缓存对象读取一个无符号整型数值，最大支持 48 位，以高字节序的存储方式</p>
+<pre><code class="lang-JavaScript">Long Buffer.readUIntBE(Integer offset = <span class="hljs-number">0</span>,
+                <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>offset - 指定读取的起始位置，缺省为 0</li>
+<li>noAssert - 指定读取越界时不抛出错误，缺省为 flase，抛出</li>
+</ul>
+<p><strong> 返回结果:</strong></p>
+<ul>
+<li>返回读取的整型数值</li>
+</ul>
+<h3 id="readint8">readInt8</h3>
+<p>从缓存对象读取一个 8 位整型数值</p>
+<pre><code class="lang-JavaScript">Integer Buffer.readInt8(Integer offset = <span class="hljs-number">0</span>,
+                <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>offset - 指定读取的起始位置，缺省为 0</li>
+<li>noAssert - 指定读取越界时不抛出错误，缺省为 flase，抛出</li>
+</ul>
+<p><strong> 返回结果:</strong></p>
+<ul>
+<li>返回读取的整型数值</li>
+</ul>
+<h3 id="readint16le">readInt16LE</h3>
+<p>从缓存对象读取一个 16 位整型数值，以低字节序的存储方式</p>
+<pre><code class="lang-JavaScript">Integer Buffer.readInt16LE(Integer offset = <span class="hljs-number">0</span>,
+                <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>offset - 指定读取的起始位置，缺省为 0</li>
+<li>noAssert - 指定读取越界时不抛出错误，缺省为 flase，抛出</li>
+</ul>
+<p><strong> 返回结果:</strong></p>
+<ul>
+<li>返回读取的整型数值</li>
+</ul>
+<h3 id="readint16be">readInt16BE</h3>
+<p>从缓存对象读取一个 16 位整型数值，以高字节序的存储方式</p>
+<pre><code class="lang-JavaScript">Integer Buffer.readInt16BE(Integer offset = <span class="hljs-number">0</span>,
+                <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>offset - 指定读取的起始位置，缺省为 0</li>
+<li>noAssert - 指定读取越界时不抛出错误，缺省为 flase，抛出</li>
+</ul>
+<p><strong> 返回结果:</strong></p>
+<ul>
+<li>返回读取的整型数值</li>
+</ul>
+<h3 id="readint32le">readInt32LE</h3>
+<p>从缓存对象读取一个 32 位整型数值，以低字节序的存储方式</p>
+<pre><code class="lang-JavaScript">Integer Buffer.readInt32LE(Integer offset = <span class="hljs-number">0</span>,
+                <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>offset - 指定读取的起始位置，缺省为 0</li>
+<li>noAssert - 指定读取越界时不抛出错误，缺省为 flase，抛出</li>
+</ul>
+<p><strong> 返回结果:</strong></p>
+<ul>
+<li>返回读取的整型数值</li>
+</ul>
+<h3 id="readint32be">readInt32BE</h3>
+<p>从缓存对象读取一个 32 位整型数值，以高字节序的存储方式</p>
+<pre><code class="lang-JavaScript">Integer Buffer.readInt32BE(Integer offset = <span class="hljs-number">0</span>,
+                <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>offset - 指定读取的起始位置，缺省为 0</li>
+<li>noAssert - 指定读取越界时不抛出错误，缺省为 flase，抛出</li>
+</ul>
+<p><strong> 返回结果:</strong></p>
+<ul>
+<li>返回读取的整型数值</li>
+</ul>
+<h3 id="readintle">readIntLE</h3>
+<p>从缓存对象读取一个整型数值，最大支持 48 位，以低字节序的存储方式</p>
+<pre><code class="lang-JavaScript">Long Buffer.readIntLE(Integer offset = <span class="hljs-number">0</span>,
+                <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>offset - 指定读取的起始位置，缺省为 0</li>
+<li>noAssert - 指定读取越界时不抛出错误，缺省为 flase，抛出</li>
+</ul>
+<p><strong> 返回结果:</strong></p>
+<ul>
+<li>返回读取的整型数值</li>
+</ul>
+<h3 id="readintbe">readIntBE</h3>
+<p>从缓存对象读取一个整型数值，最大支持 48 位，以高字节序的存储方式</p>
+<pre><code class="lang-JavaScript">Long Buffer.readIntBE(Integer offset = <span class="hljs-number">0</span>,
+                <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>offset - 指定读取的起始位置，缺省为 0</li>
+<li>noAssert - 指定读取越界时不抛出错误，缺省为 flase，抛出</li>
+</ul>
+<p><strong> 返回结果:</strong></p>
+<ul>
+<li>返回读取的整型数值</li>
+</ul>
+<h3 id="readint64le">readInt64LE</h3>
+<p>从缓存对象读取一个 64 位整型数值，以低字节序的存储方式</p>
+<pre><code class="lang-JavaScript">Int64 Buffer.readInt64LE(Integer offset = <span class="hljs-number">0</span>,
+                <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>offset - 指定读取的起始位置，缺省为 0</li>
+<li>noAssert - 指定读取越界时不抛出错误，缺省为 flase，抛出</li>
+</ul>
+<p><strong> 返回结果:</strong></p>
+<ul>
+<li>返回读取的整型数值</li>
+</ul>
+<h3 id="readint64be">readInt64BE</h3>
+<p>从缓存对象读取一个 64 位整型数值，以高字节序的存储方式</p>
+<pre><code class="lang-JavaScript">Int64 Buffer.readInt64BE(Integer offset = <span class="hljs-number">0</span>,
+                <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>offset - 指定读取的起始位置，缺省为 0</li>
+<li>noAssert - 指定读取越界时不抛出错误，缺省为 flase，抛出</li>
+</ul>
+<p><strong> 返回结果:</strong></p>
+<ul>
+<li>返回读取的整型数值</li>
+</ul>
+<h3 id="readfloatle">readFloatLE</h3>
+<p>从缓存对象读取一个浮点数，以低字节序的存储方式</p>
+<pre><code class="lang-JavaScript"><span class="hljs-built_in">Number</span> Buffer.readFloatLE(Integer offset = <span class="hljs-number">0</span>,
+                <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>offset - 指定读取的起始位置，缺省为 0</li>
+<li>noAssert - 指定读取越界时不抛出错误，缺省为 flase，抛出</li>
+</ul>
+<p><strong> 返回结果:</strong></p>
+<ul>
+<li>返回读取的浮点数</li>
+</ul>
+<h3 id="readfloatbe">readFloatBE</h3>
+<p>从缓存对象读取一个浮点数，以高字节序的存储方式</p>
+<pre><code class="lang-JavaScript"><span class="hljs-built_in">Number</span> Buffer.readFloatBE(Integer offset = <span class="hljs-number">0</span>,
+                <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>offset - 指定读取的起始位置，缺省为 0</li>
+<li>noAssert - 指定读取越界时不抛出错误，缺省为 flase，抛出</li>
+</ul>
+<p><strong> 返回结果:</strong></p>
+<ul>
+<li>返回读取的浮点数</li>
+</ul>
+<h3 id="readdoublele">readDoubleLE</h3>
+<p>从缓存对象读取一个双精度浮点数，以低字节序的存储方式</p>
+<pre><code class="lang-JavaScript"><span class="hljs-built_in">Number</span> Buffer.readDoubleLE(Integer offset = <span class="hljs-number">0</span>,
+                <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>offset - 指定读取的起始位置，缺省为 0</li>
+<li>noAssert - 指定读取越界时不抛出错误，缺省为 flase，抛出</li>
+</ul>
+<p><strong> 返回结果:</strong></p>
+<ul>
+<li>返回读取的双精度浮点数</li>
+</ul>
+<h3 id="readdoublebe">readDoubleBE</h3>
+<p>从缓存对象读取一个双精度浮点数，以高字节序的存储方式</p>
+<pre><code class="lang-JavaScript"><span class="hljs-built_in">Number</span> Buffer.readDoubleBE(Integer offset = <span class="hljs-number">0</span>,
+                <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>offset - 指定读取的起始位置，缺省为 0</li>
+<li>noAssert - 指定读取越界时不抛出错误，缺省为 flase，抛出</li>
+</ul>
+<p><strong> 返回结果:</strong></p>
+<ul>
+<li>返回读取的双精度浮点数</li>
+</ul>
+<h3 id="writeuint8">writeUInt8</h3>
+<p>向缓存对象写入一个 8 位无符号整型数值</p>
+<pre><code class="lang-JavaScript">Buffer.writeUInt8(Integer value,
+                Integer offset = <span class="hljs-number">0</span>,
+                <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>value - 指定写入的数值</li>
+<li>offset - 指定写入的起始位置</li>
+<li>noAssert - 指定写入越界时不抛出错误，缺省为 flase，抛出</li>
+</ul>
+<h3 id="writeuint16le">writeUInt16LE</h3>
+<p>向缓存对象写入一个 16 位无符号整型数值，以低字节序的存储方式</p>
+<pre><code class="lang-JavaScript">Buffer.writeUInt16LE(Integer value,
+                Integer offset = <span class="hljs-number">0</span>,
+                <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>value - 指定写入的数值</li>
+<li>offset - 指定写入的起始位置</li>
+<li>noAssert - 指定写入越界时不抛出错误，缺省为 flase，抛出</li>
+</ul>
+<h3 id="writeuint16be">writeUInt16BE</h3>
+<p>向缓存对象写入一个 16 位无符号整型数值，以高字节序的存储方式</p>
+<pre><code class="lang-JavaScript">Buffer.writeUInt16BE(Integer value,
+                Integer offset = <span class="hljs-number">0</span>,
+                <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>value - 指定写入的数值</li>
+<li>offset - 指定写入的起始位置</li>
+<li>noAssert - 指定写入越界时不抛出错误，缺省为 flase，抛出</li>
+</ul>
+<h3 id="writeuint32le">writeUInt32LE</h3>
+<p>向缓存对象写入一个 32 位无符号整型数值，以低字节序的存储方式</p>
+<pre><code class="lang-JavaScript">Buffer.writeUInt32LE(Long value,
+                Integer offset = <span class="hljs-number">0</span>,
+                <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>value - 指定写入的数值</li>
+<li>offset - 指定写入的起始位置</li>
+<li>noAssert - 指定写入越界时不抛出错误，缺省为 flase，抛出</li>
+</ul>
+<h3 id="writeuint32be">writeUInt32BE</h3>
+<p>向缓存对象写入一个 32 位无符号整型数值，以高字节序的存储方式</p>
+<pre><code class="lang-JavaScript">Buffer.writeUInt32BE(Long value,
+                Integer offset = <span class="hljs-number">0</span>,
+                <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>value - 指定写入的数值</li>
+<li>offset - 指定写入的起始位置</li>
+<li>noAssert - 指定写入越界时不抛出错误，缺省为 flase，抛出</li>
+</ul>
+<h3 id="writeuintle">writeUIntLE</h3>
+<p>向缓存对象写入一个无符号整型数值，最大支持 48 位，以低字节序的存储方式</p>
+<pre><code class="lang-JavaScript">Buffer.writeUIntLE(Long value,
+                Integer offset = <span class="hljs-number">0</span>,
+                <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>value - 指定写入的数值</li>
+<li>offset - 指定写入的起始位置</li>
+<li>noAssert - 指定写入越界时不抛出错误，缺省为 flase，抛出</li>
+</ul>
+<h3 id="writeuintbe">writeUIntBE</h3>
+<p>向缓存对象写入一个无符号整型数值，最大支持 48 位，以高字节序的存储方式</p>
+<pre><code class="lang-JavaScript">Buffer.writeUIntBE(Long value,
+                Integer offset = <span class="hljs-number">0</span>,
+                <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>value - 指定写入的数值</li>
+<li>offset - 指定写入的起始位置</li>
+<li>noAssert - 指定写入越界时不抛出错误，缺省为 flase，抛出</li>
+</ul>
+<h3 id="writeint8">writeInt8</h3>
+<p>向缓存对象写入一个 8 位整型数值</p>
+<pre><code class="lang-JavaScript">Buffer.writeInt8(Integer value,
+                Integer offset = <span class="hljs-number">0</span>,
+                <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>value - 指定写入的数值</li>
+<li>offset - 指定写入的起始位置</li>
+<li>noAssert - 指定写入越界时不抛出错误，缺省为 flase，抛出</li>
+</ul>
+<h3 id="writeint16le">writeInt16LE</h3>
+<p>向缓存对象写入一个 16 位整型数值，以低字节序的存储方式</p>
+<pre><code class="lang-JavaScript">Buffer.writeInt16LE(Integer value,
+                Integer offset = <span class="hljs-number">0</span>,
+                <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>value - 指定写入的数值</li>
+<li>offset - 指定写入的起始位置</li>
+<li>noAssert - 指定写入越界时不抛出错误，缺省为 flase，抛出</li>
+</ul>
+<h3 id="writeint16be">writeInt16BE</h3>
+<p>向缓存对象写入一个 16 位整型数值，以高字节序的存储方式</p>
+<pre><code class="lang-JavaScript">Buffer.writeInt16BE(Integer value,
+                Integer offset = <span class="hljs-number">0</span>,
+                <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>value - 指定写入的数值</li>
+<li>offset - 指定写入的起始位置</li>
+<li>noAssert - 指定写入越界时不抛出错误，缺省为 flase，抛出</li>
+</ul>
+<h3 id="writeint32le">writeInt32LE</h3>
+<p>向缓存对象写入一个 32 位整型数值，以低字节序的存储方式</p>
+<pre><code class="lang-JavaScript">Buffer.writeInt32LE(Integer value,
+                Integer offset = <span class="hljs-number">0</span>,
+                <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>value - 指定写入的数值</li>
+<li>offset - 指定写入的起始位置</li>
+<li>noAssert - 指定写入越界时不抛出错误，缺省为 flase，抛出</li>
+</ul>
+<h3 id="writeint32be">writeInt32BE</h3>
+<p>向缓存对象写入一个 32 位整型数值，以高字节序的存储方式</p>
+<pre><code class="lang-JavaScript">Buffer.writeInt32BE(Integer value,
+                Integer offset = <span class="hljs-number">0</span>,
+                <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>value - 指定写入的数值</li>
+<li>offset - 指定写入的起始位置</li>
+<li>noAssert - 指定写入越界时不抛出错误，缺省为 flase，抛出</li>
+</ul>
+<h3 id="writeintle">writeIntLE</h3>
+<p>向缓存对象写入一个整型数值，最大支持 48 位，以低字节序的存储方式</p>
+<pre><code class="lang-JavaScript">Buffer.writeIntLE(Long value,
+                Integer offset = <span class="hljs-number">0</span>,
+                <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>value - 指定写入的数值</li>
+<li>offset - 指定写入的起始位置</li>
+<li>noAssert - 指定写入越界时不抛出错误，缺省为 flase，抛出</li>
+</ul>
+<h3 id="writeintbe">writeIntBE</h3>
+<p>向缓存对象写入一个整型数值，最大支持 48 位，以高字节序的存储方式</p>
+<pre><code class="lang-JavaScript">Buffer.writeIntBE(Long value,
+                Integer offset = <span class="hljs-number">0</span>,
+                <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>value - 指定写入的数值</li>
+<li>offset - 指定写入的起始位置</li>
+<li>noAssert - 指定写入越界时不抛出错误，缺省为 flase，抛出</li>
+</ul>
+<h3 id="writeint64le">writeInt64LE</h3>
+<p>向缓存对象写入一个 64 位整型数值，以低字节序的存储方式</p>
+<pre><code class="lang-JavaScript">Buffer.writeInt64LE(Int64 value,
+                Integer offset = <span class="hljs-number">0</span>,
+                <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>value - 指定写入的数值</li>
+<li>offset - 指定写入的起始位置</li>
+<li>noAssert - 指定写入越界时不抛出错误，缺省为 flase，抛出</li>
+</ul>
+<h3 id="writeint64be">writeInt64BE</h3>
+<p>向缓存对象写入一个 64 位整型数值，以高字节序的存储方式</p>
+<pre><code class="lang-JavaScript">Buffer.writeInt64BE(Int64 value,
+                Integer offset = <span class="hljs-number">0</span>,
+                <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>value - 指定写入的数值</li>
+<li>offset - 指定写入的起始位置</li>
+<li>noAssert - 指定写入越界时不抛出错误，缺省为 flase，抛出</li>
+</ul>
+<h3 id="writefloatle">writeFloatLE</h3>
+<p>向缓存对象写入一个浮点数，以低字节序的存储方式</p>
+<pre><code class="lang-JavaScript">Buffer.writeFloatLE(<span class="hljs-built_in">Number</span> value,
+                Integer offset,
+                <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>value - 指定写入的数值</li>
+<li>offset - 指定写入的起始位置</li>
+<li>noAssert - 指定写入越界时不抛出错误，缺省为 flase，抛出</li>
+</ul>
+<h3 id="writefloatbe">writeFloatBE</h3>
+<p>向缓存对象写入一个浮点数，以高字节序的存储方式</p>
+<pre><code class="lang-JavaScript">Buffer.writeFloatBE(<span class="hljs-built_in">Number</span> value,
+                Integer offset,
+                <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>value - 指定写入的数值</li>
+<li>offset - 指定写入的起始位置</li>
+<li>noAssert - 指定写入越界时不抛出错误，缺省为 flase，抛出</li>
+</ul>
+<h3 id="writedoublele">writeDoubleLE</h3>
+<p>向缓存对象写入一个双精度浮点数，以低字节序的存储方式</p>
+<pre><code class="lang-JavaScript">Buffer.writeDoubleLE(<span class="hljs-built_in">Number</span> value,
+                Integer offset,
+                <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>value - 指定写入的数值</li>
+<li>offset - 指定写入的起始位置</li>
+<li>noAssert - 指定写入越界时不抛出错误，缺省为 flase，抛出</li>
+</ul>
+<h3 id="writedoublebe">writeDoubleBE</h3>
+<p>向缓存对象写入一个双精度浮点数，以高字节序的存储方式</p>
+<pre><code class="lang-JavaScript">Buffer.writeDoubleBE(<span class="hljs-built_in">Number</span> value,
+                Integer offset,
+                <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>value - 指定写入的数值</li>
+<li>offset - 指定写入的起始位置</li>
+<li>noAssert - 指定写入越界时不抛出错误，缺省为 flase，抛出</li>
+</ul>
+<h3 id="slice">slice</h3>
+<p>返回一个新缓存对象，包含指定起始到缓存结尾的数据</p>
+<pre><code class="lang-JavaScript">Buffer Buffer.slice(Integer start = <span class="hljs-number">0</span>);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>start - 指定范围的起始，缺省从头开始</li>
+</ul>
+<p><strong> 返回结果:</strong></p>
+<ul>
+<li>返回新的缓存对象</li>
+</ul>
+<h3 id="slice">slice</h3>
+<p>返回一个新缓存对象，包含指定范围的数据，若范围超出缓存，则只返回有效部分数据</p>
+<pre><code class="lang-JavaScript">Buffer Buffer.slice(Integer start,
+                Integer end);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>start - 指定范围的起始</li>
+<li>end - 指定范围的结束</li>
+</ul>
+<p><strong> 返回结果:</strong></p>
+<ul>
+<li>返回新的缓存对象</li>
+</ul>
+<h3 id="hex">hex</h3>
+<p>使用 16 进制编码缓存对象内容</p>
+<pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> Buffer.hex();
+</code></pre>
+<p><strong> 返回结果:</strong></p>
+<ul>
+<li>返回编码字符串</li>
+</ul>
+<h3 id="base64">base64</h3>
+<p>使用 base64 编码缓存对象内容</p>
+<pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> Buffer.base64();
+</code></pre>
+<p><strong> 返回结果:</strong></p>
+<ul>
+<li>返回编码字符串</li>
+</ul>
+<h3 id="toarray">toArray</h3>
+<p>返回全部二进制数据的数组</p>
+<pre><code class="lang-JavaScript"><span class="hljs-built_in">Array</span> Buffer.toArray();
+</code></pre>
+<p><strong> 返回结果:</strong></p>
+<ul>
+<li>返回包含对象数据的数组</li>
+</ul>
+<h3 id="tostring">toString</h3>
+<p>返回二进制数据的编码字符串</p>
+<pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> Buffer.toString(<span class="hljs-built_in">String</span> codec,
+                Integer offset = <span class="hljs-number">0</span>,
+                Integer end = <span class="hljs-number">-1</span>);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>codec - 指定编码格式，允许值为：&#34;hex&#34;, &#34;base64&#34;, &#34;utf8&#34;, 或者系统支持的字符集</li>
+<li>offset - 读取起始位置</li>
+<li>end - 读取终止位置</li>
+</ul>
+<p><strong> 返回结果:</strong></p>
+<ul>
+<li>返回对象的字符串表示</li>
+</ul>
+<h3 id="tostring">toString</h3>
+<p>返回二进制数据的 utf8 编码字符串</p>
+<pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> Buffer.toString();
+</code></pre>
+<p><strong> 返回结果:</strong></p>
+<ul>
+<li>返回对象的字符串表示</li>
+</ul>
+<h3 id="dispose">dispose</h3>
+<p>强制回收对象，调用此方法后，对象资源将立即释放</p>
+<pre><code class="lang-JavaScript">Buffer.dispose();
+</code></pre>
+<h3 id="equals">equals</h3>
+<p>比较当前对象与给定的对象是否相等</p>
+<pre><code class="lang-JavaScript"><span class="hljs-built_in">Boolean</span> Buffer.equals(object expected);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>expected - 制定比较的目标对象</li>
+</ul>
+<p><strong> 返回结果:</strong></p>
+<ul>
+<li>返回对象比较的结果</li>
+</ul>
+<h3 id="tostring">toString</h3>
+<p>返回对象的字符串表示，一般返回 &#34;[Native Object]&#34;，对象可以根据自己的特性重新实现</p>
+<pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> Buffer.toString();
+</code></pre>
+<p><strong> 返回结果:</strong></p>
+<ul>
+<li>返回对象的字符串表示</li>
+</ul>
+<h3 id="tojson">toJSON</h3>
+<p>返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合</p>
+<pre><code class="lang-JavaScript">Value Buffer.toJSON(<span class="hljs-built_in">String</span> key = <span class="hljs-string">""</span>);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>key - 未使用</li>
+</ul>
+<p><strong> 返回结果:</strong></p>
+<ul>
+<li>返回包含可 JSON 序列化的值</li>
+</ul>
+<h3 id="valueof">valueOf</h3>
+<p>返回对象本身的数值</p>
+<pre><code class="lang-JavaScript">Value Buffer.valueOf();
+</code></pre>
+<p><strong> 返回结果:</strong></p>
+<ul>
+<li>返回对象本身的数值</li>
+</ul>
+<h2 id="-">属性</h2>
+<h3 id="length">length</h3>
+<p>获取缓存对象的尺寸</p>
+<pre><code class="lang-JavaScript">readonly Integer Buffer.length;
+</code></pre>
+ </div></div><div class=container><div class=footer><p>&copy; 2017 fibjs.org</p></div></div><script type=text/javascript src=/js/common.js></script><script type=text/javascript src=/js/docs.js></script></body></html>

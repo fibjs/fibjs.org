@@ -1,0 +1,716 @@
+<!DOCTYPE html><html><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="initial-scale=1,maximum-scale=1,user-scalable=no"><title> 模块 fs </title><link href=/css/common.css rel=stylesheet><link href=/css/docs.css rel=stylesheet></head><body><div class="navbar navbar-default navbar-static-top" role=navigation><div class=container><div class=navbar-header><button type=button class="navbar-toggle collapsed" data-toggle=collapse data-target=#navbar aria-expanded=false aria-controls=navbar><span class=sr-only>Toggle navigation</span> <span class=icon-bar></span> <span class=icon-bar></span> <span class=icon-bar></span></button> <a class=navbar-brand href=/ ><img src=/imgs/logo.png> <span>Javascript on Fiber</span></a></div><div id=navbar class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right"><li><a href=/docs/guide/readme.md.html>GUIDE</a></li><li><a href=/docs/manual/module/readme.md.html>MANUAL</a></li></ul></div></div></div><div class=container>  <ol class=breadcrumb><li><a href=/ >首页</a></li><li><a href="/docs/manual/module/readme.md.html"> 基础模块 </a></li><li class=active> 模块 fs </li></ol>  <div class="sidebar hidden-xs col-xs-3"><input type=text class="form-control search" placeholder="Search for..."><div class=panel-group id=accordion role=tablist>  <div class=panel><div class=panel-heading role=tab id=headingOne><h4 class=panel-title><a data-toggle=collapse data-parent=#accordion href="#collapse_guide" aria-controls="collapse_guide"> 开发指南 </a></h4></div><div id="collapse_guide" class="panel-collapse collapse " aria-labelledby=headingOne><div class=panel-body> <ul>
+<li><a href="/docs/guide/about.md.html">快速上手</a></li>
+<li><a href="/docs/guide/install/readme.md.html">基本安装</a><ul>
+<li><a href="/docs/guide/install/build.md.html">自己编译 </a></li>
+</ul>
+</li>
+</ul>
+ </div></div></div>  <div class=panel><div class=panel-heading role=tab id=headingOne><h4 class=panel-title><a data-toggle=collapse data-parent=#accordion href="#collapse_module" aria-controls="collapse_module"> 基础模块 </a></h4></div><div id="collapse_module" class="panel-collapse collapse in" aria-labelledby=headingOne><div class=panel-body> <ul>
+<li><a href="/docs/manual/module/ifs/assert.md.html">assert</a></li>
+<li><a href="/docs/manual/module/ifs/base32.md.html">base32</a></li>
+<li><a href="/docs/manual/module/ifs/base64.md.html">base64</a></li>
+<li><a href="/docs/manual/module/ifs/base64vlq.md.html">base64vlq</a></li>
+<li><a href="/docs/manual/module/ifs/bson.md.html">bson</a></li>
+<li><a href="/docs/manual/module/ifs/collection.md.html">collection</a></li>
+<li><a href="/docs/manual/module/ifs/console.md.html">console</a></li>
+<li><a href="/docs/manual/module/ifs/coroutine.md.html">coroutine</a></li>
+<li><a href="/docs/manual/module/ifs/crypto.md.html">crypto</a></li>
+<li><a href="/docs/manual/module/ifs/db.md.html">db</a></li>
+<li><a href="/docs/manual/module/ifs/encoding.md.html">encoding</a></li>
+<li><a href="/docs/manual/module/ifs/fs.md.html">fs</a></li>
+<li><a href="/docs/manual/module/ifs/gd.md.html">gd</a></li>
+<li><a href="/docs/manual/module/ifs/global.md.html">global</a></li>
+<li><a href="/docs/manual/module/ifs/gui.md.html">gui</a></li>
+<li><a href="/docs/manual/module/ifs/hash.md.html">hash</a></li>
+<li><a href="/docs/manual/module/ifs/hex.md.html">hex</a></li>
+<li><a href="/docs/manual/module/ifs/http.md.html">http</a></li>
+<li><a href="/docs/manual/module/ifs/iconv.md.html">iconv</a></li>
+<li><a href="/docs/manual/module/ifs/io.md.html">io</a></li>
+<li><a href="/docs/manual/module/ifs/json.md.html">json</a></li>
+<li><a href="/docs/manual/module/ifs/mq.md.html">mq</a></li>
+<li><a href="/docs/manual/module/ifs/net.md.html">net</a></li>
+<li><a href="/docs/manual/module/ifs/os.md.html">os</a></li>
+<li><a href="/docs/manual/module/ifs/path.md.html">path</a></li>
+<li><a href="/docs/manual/module/ifs/path_posix.md.html">path_posix</a></li>
+<li><a href="/docs/manual/module/ifs/path_win32.md.html">path_win32</a></li>
+<li><a href="/docs/manual/module/ifs/process.md.html">process</a></li>
+<li><a href="/docs/manual/module/ifs/profiler.md.html">profiler</a></li>
+<li><a href="/docs/manual/module/ifs/querystring.md.html">querystring</a></li>
+<li><a href="/docs/manual/module/ifs/re.md.html">re</a></li>
+<li><a href="/docs/manual/module/ifs/registry.md.html">registry</a></li>
+<li><a href="/docs/manual/module/ifs/ssl.md.html">ssl</a></li>
+<li><a href="/docs/manual/module/ifs/test.md.html">test</a></li>
+<li><a href="/docs/manual/module/ifs/timers.md.html">timers</a></li>
+<li><a href="/docs/manual/module/ifs/url.md.html">url</a></li>
+<li><a href="/docs/manual/module/ifs/util.md.html">util</a></li>
+<li><a href="/docs/manual/module/ifs/uuid.md.html">uuid</a></li>
+<li><a href="/docs/manual/module/ifs/vm.md.html">vm</a></li>
+<li><a href="/docs/manual/module/ifs/ws.md.html">ws</a></li>
+<li><a href="/docs/manual/module/ifs/xml.md.html">xml</a></li>
+<li><a href="/docs/manual/module/ifs/zip.md.html">zip</a></li>
+<li><a href="/docs/manual/module/ifs/zlib.md.html">zlib</a></li>
+<li><a href="/docs/manual/module/ifs/zmq.md.html">zmq</a></li>
+</ul>
+ </div></div></div>  <div class=panel><div class=panel-heading role=tab id=headingOne><h4 class=panel-title><a data-toggle=collapse data-parent=#accordion href="#collapse_object" aria-controls="collapse_object"> 内置对象 </a></h4></div><div id="collapse_object" class="panel-collapse collapse " aria-labelledby=headingOne><div class=panel-body> <ul>
+<li><a href="/docs/manual/object/ifs/asyncwait.md.html">AsyncWait</a></li>
+<li><a href="/docs/manual/object/ifs/blockqueue.md.html">BlockQueue</a></li>
+<li><a href="/docs/manual/object/ifs/buffer.md.html">Buffer</a></li>
+<li><a href="/docs/manual/object/ifs/bufferedstream.md.html">BufferedStream</a></li>
+<li><a href="/docs/manual/object/ifs/chain.md.html">Chain</a></li>
+<li><a href="/docs/manual/object/ifs/cipher.md.html">Cipher</a></li>
+<li><a href="/docs/manual/object/ifs/condition.md.html">Condition</a></li>
+<li><a href="/docs/manual/object/ifs/datagrampacket.md.html">DatagramPacket</a></li>
+<li><a href="/docs/manual/object/ifs/dbconnection.md.html">DbConnection</a></li>
+<li><a href="/docs/manual/object/ifs/dbresult.md.html">DBResult</a></li>
+<li><a href="/docs/manual/object/ifs/dbrow.md.html">DBRow</a></li>
+<li><a href="/docs/manual/object/ifs/digest.md.html">Digest</a></li>
+<li><a href="/docs/manual/object/ifs/event.md.html">Event</a></li>
+<li><a href="/docs/manual/object/ifs/eventemitter.md.html">EventEmitter</a></li>
+<li><a href="/docs/manual/object/ifs/eventinfo.md.html">EventInfo</a></li>
+<li><a href="/docs/manual/object/ifs/fiber.md.html">Fiber</a></li>
+<li><a href="/docs/manual/object/ifs/file.md.html">File</a></li>
+<li><a href="/docs/manual/object/ifs/gridfs.md.html">GridFS</a></li>
+<li><a href="/docs/manual/object/ifs/handler.md.html">Handler</a></li>
+<li><a href="/docs/manual/object/ifs/handlerex.md.html">HandlerEx</a></li>
+<li><a href="/docs/manual/object/ifs/heapgraphedge.md.html">HeapGraphEdge</a></li>
+<li><a href="/docs/manual/object/ifs/heapgraphnode.md.html">HeapGraphNode</a></li>
+<li><a href="/docs/manual/object/ifs/heapsnapshot.md.html">HeapSnapshot</a></li>
+<li><a href="/docs/manual/object/ifs/httpclient.md.html">HttpClient</a></li>
+<li><a href="/docs/manual/object/ifs/httpcollection.md.html">HttpCollection</a></li>
+<li><a href="/docs/manual/object/ifs/httpcookie.md.html">HttpCookie</a></li>
+<li><a href="/docs/manual/object/ifs/httphandler.md.html">HttpHandler</a></li>
+<li><a href="/docs/manual/object/ifs/httpmessage.md.html">HttpMessage</a></li>
+<li><a href="/docs/manual/object/ifs/httprequest.md.html">HttpRequest</a></li>
+<li><a href="/docs/manual/object/ifs/httpresponse.md.html">HttpResponse</a></li>
+<li><a href="/docs/manual/object/ifs/httpserver.md.html">HttpServer</a></li>
+<li><a href="/docs/manual/object/ifs/httpsserver.md.html">HttpsServer</a></li>
+<li><a href="/docs/manual/object/ifs/httpuploaddata.md.html">HttpUploadData</a></li>
+<li><a href="/docs/manual/object/ifs/image.md.html">Image</a></li>
+<li><a href="/docs/manual/object/ifs/int64.md.html">Int64</a></li>
+<li><a href="/docs/manual/object/ifs/leveldb.md.html">LevelDB</a></li>
+<li><a href="/docs/manual/object/ifs/list.md.html">List</a></li>
+<li><a href="/docs/manual/object/ifs/lock.md.html">Lock</a></li>
+<li><a href="/docs/manual/object/ifs/lrucache.md.html">LruCache</a></li>
+<li><a href="/docs/manual/object/ifs/map.md.html">Map</a></li>
+<li><a href="/docs/manual/object/ifs/memorystream.md.html">MemoryStream</a></li>
+<li><a href="/docs/manual/object/ifs/message.md.html">Message</a></li>
+<li><a href="/docs/manual/object/ifs/mongocollection.md.html">MongoCollection</a></li>
+<li><a href="/docs/manual/object/ifs/mongocursor.md.html">MongoCursor</a></li>
+<li><a href="/docs/manual/object/ifs/mongodb.md.html">MongoDB</a></li>
+<li><a href="/docs/manual/object/ifs/mongoid.md.html">MongoID</a></li>
+<li><a href="/docs/manual/object/ifs/mssql.md.html">MSSQL</a></li>
+<li><a href="/docs/manual/object/ifs/mysql.md.html">MySQL</a></li>
+<li><a href="/docs/manual/object/ifs/object.md.html">object</a></li>
+<li><a href="/docs/manual/object/ifs/pkey.md.html">PKey</a></li>
+<li><a href="/docs/manual/object/ifs/queue.md.html">Queue</a></li>
+<li><a href="/docs/manual/object/ifs/redis.md.html">Redis</a></li>
+<li><a href="/docs/manual/object/ifs/redishash.md.html">RedisHash</a></li>
+<li><a href="/docs/manual/object/ifs/redislist.md.html">RedisList</a></li>
+<li><a href="/docs/manual/object/ifs/redisset.md.html">RedisSet</a></li>
+<li><a href="/docs/manual/object/ifs/redissortedset.md.html">RedisSortedSet</a></li>
+<li><a href="/docs/manual/object/ifs/regex.md.html">Regex</a></li>
+<li><a href="/docs/manual/object/ifs/routing.md.html">Routing</a></li>
+<li><a href="/docs/manual/object/ifs/sandbox.md.html">SandBox</a></li>
+<li><a href="/docs/manual/object/ifs/seekablestream.md.html">SeekableStream</a></li>
+<li><a href="/docs/manual/object/ifs/semaphore.md.html">Semaphore</a></li>
+<li><a href="/docs/manual/object/ifs/service.md.html">Service</a></li>
+<li><a href="/docs/manual/object/ifs/smtp.md.html">Smtp</a></li>
+<li><a href="/docs/manual/object/ifs/socket.md.html">Socket</a></li>
+<li><a href="/docs/manual/object/ifs/sqlite.md.html">SQLite</a></li>
+<li><a href="/docs/manual/object/ifs/sslhandler.md.html">SslHandler</a></li>
+<li><a href="/docs/manual/object/ifs/sslserver.md.html">SslServer</a></li>
+<li><a href="/docs/manual/object/ifs/sslsocket.md.html">SslSocket</a></li>
+<li><a href="/docs/manual/object/ifs/stat.md.html">Stat</a></li>
+<li><a href="/docs/manual/object/ifs/stats.md.html">Stats</a></li>
+<li><a href="/docs/manual/object/ifs/stream.md.html">Stream</a></li>
+<li><a href="/docs/manual/object/ifs/subprocess.md.html">SubProcess</a></li>
+<li><a href="/docs/manual/object/ifs/tcpserver.md.html">TcpServer</a></li>
+<li><a href="/docs/manual/object/ifs/textcolor.md.html">TextColor</a></li>
+<li><a href="/docs/manual/object/ifs/timer.md.html">Timer</a></li>
+<li><a href="/docs/manual/object/ifs/urlobject.md.html">UrlObject</a></li>
+<li><a href="/docs/manual/object/ifs/websocket.md.html">WebSocket</a></li>
+<li><a href="/docs/manual/object/ifs/websockethandler.md.html">WebSocketHandler</a></li>
+<li><a href="/docs/manual/object/ifs/websocketmessage.md.html">WebSocketMessage</a></li>
+<li><a href="/docs/manual/object/ifs/webview.md.html">WebView</a></li>
+<li><a href="/docs/manual/object/ifs/worker.md.html">Worker</a></li>
+<li><a href="/docs/manual/object/ifs/x509cert.md.html">X509Cert</a></li>
+<li><a href="/docs/manual/object/ifs/x509crl.md.html">X509Crl</a></li>
+<li><a href="/docs/manual/object/ifs/x509req.md.html">X509Req</a></li>
+<li><a href="/docs/manual/object/ifs/xmlattr.md.html">XmlAttr</a></li>
+<li><a href="/docs/manual/object/ifs/xmlcdatasection.md.html">XmlCDATASection</a></li>
+<li><a href="/docs/manual/object/ifs/xmlcharacterdata.md.html">XmlCharacterData</a></li>
+<li><a href="/docs/manual/object/ifs/xmlcomment.md.html">XmlComment</a></li>
+<li><a href="/docs/manual/object/ifs/xmldocument.md.html">XmlDocument</a></li>
+<li><a href="/docs/manual/object/ifs/xmldocumenttype.md.html">XmlDocumentType</a></li>
+<li><a href="/docs/manual/object/ifs/xmlelement.md.html">XmlElement</a></li>
+<li><a href="/docs/manual/object/ifs/xmlnamednodemap.md.html">XmlNamedNodeMap</a></li>
+<li><a href="/docs/manual/object/ifs/xmlnode.md.html">XmlNode</a></li>
+<li><a href="/docs/manual/object/ifs/xmlnodelist.md.html">XmlNodeList</a></li>
+<li><a href="/docs/manual/object/ifs/xmlprocessinginstruction.md.html">XmlProcessingInstruction</a></li>
+<li><a href="/docs/manual/object/ifs/xmltext.md.html">XmlText</a></li>
+<li><a href="/docs/manual/object/ifs/zipfile.md.html">ZipFile</a></li>
+<li><a href="/docs/manual/object/ifs/zipinfo.md.html">ZipInfo</a></li>
+<li><a href="/docs/manual/object/ifs/zmqsocket.md.html">ZmqSocket</a></li>
+</ul>
+ </div></div></div>  </div></div><div class="content col-xs-12 col-sm-9"> <h1 id="-fs">模块 fs</h1>
+<p>文件系统处理模块</p>
+<p>使用方法：
+@code
+var fs = require(&#39;fs&#39;);
+@endcode</p>
+<h2 id="-">函数</h2>
+<h3 id="exists">exists</h3>
+<p>查询指定的文件或目录是否存在</p>
+<pre><code class="lang-JavaScript"><span class="hljs-built_in">Boolean</span> fs.exists(<span class="hljs-built_in">String</span> path);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>path - 指定要查询的路径</li>
+</ul>
+<p><strong> 返回结果:</strong></p>
+<ul>
+<li>返回 True 表示文件或目录存在</li>
+</ul>
+<h3 id="existssync">existsSync</h3>
+<p>查询指定的文件或目录是否存在，是 exists 的同步版兼容接口</p>
+<pre><code class="lang-JavaScript"><span class="hljs-built_in">Boolean</span> fs.existsSync(<span class="hljs-built_in">String</span> path);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>path - 指定要查询的路径</li>
+</ul>
+<p><strong> 返回结果:</strong></p>
+<ul>
+<li>返回 True 表示文件或目录存在</li>
+</ul>
+<h3 id="access">access</h3>
+<p>查询用户对指定的文件的权限</p>
+<pre><code class="lang-JavaScript">fs.access(<span class="hljs-built_in">String</span> path,
+                Integer mode = <span class="hljs-number">0</span>);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>path - 指定要查询的路径</li>
+<li>mode - 指定查询的权限,默认为文件是否存在</li>
+</ul>
+<h3 id="accesssync">accessSync</h3>
+<p>查询用户对指定的文件的权限, accesss同步兼容版本</p>
+<pre><code class="lang-JavaScript">fs.accessSync(<span class="hljs-built_in">String</span> path,
+                Integer mode = <span class="hljs-number">0</span>);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>path - 指定要查询的路径</li>
+<li>mode - 指定查询的权限,默认为文件是否存在</li>
+</ul>
+<h3 id="link">link</h3>
+<p>创建硬链接文件, windows 下不支持此方法</p>
+<pre><code class="lang-JavaScript">fs.link(<span class="hljs-built_in">String</span> oldPath,
+                <span class="hljs-built_in">String</span> newPath);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>oldPath - 源文件</li>
+<li>newPath - 将要被创建的文件</li>
+</ul>
+<h3 id="linksync">linkSync</h3>
+<p>创建硬链接文件，windows 下不支持此方法，是 link 的同步版兼容接口</p>
+<pre><code class="lang-JavaScript">fs.linkSync(<span class="hljs-built_in">String</span> oldPath,
+                <span class="hljs-built_in">String</span> newPath);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>oldPath - 源文件</li>
+<li>newPath - 将要被创建的文件</li>
+</ul>
+<h3 id="unlink">unlink</h3>
+<p>删除指定的文件</p>
+<pre><code class="lang-JavaScript">fs.unlink(<span class="hljs-built_in">String</span> path);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>path - 指定要删除的路径</li>
+</ul>
+<h3 id="unlinksync">unlinkSync</h3>
+<p>删除指定的文件，是 unlink 的同步版兼容接口</p>
+<pre><code class="lang-JavaScript">fs.unlinkSync(<span class="hljs-built_in">String</span> path);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>path - 指定要删除的路径</li>
+</ul>
+<h3 id="mkdir">mkdir</h3>
+<p>创建一个目录</p>
+<pre><code class="lang-JavaScript">fs.mkdir(<span class="hljs-built_in">String</span> path,
+                Integer mode = <span class="hljs-number">0777</span>);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>path - 指定要创建的目录名</li>
+<li>mode - 指定文件权限，Windows 忽略此参数</li>
+</ul>
+<h3 id="mkdirsync">mkdirSync</h3>
+<p>创建一个目录，是 mkdir 的同步版兼容接口</p>
+<pre><code class="lang-JavaScript">fs.mkdirSync(<span class="hljs-built_in">String</span> path,
+                Integer mode = <span class="hljs-number">0777</span>);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>path - 指定要创建的目录名</li>
+<li>mode - 指定文件权限，Windows 忽略此参数</li>
+</ul>
+<h3 id="rmdir">rmdir</h3>
+<p>删除一个目录</p>
+<pre><code class="lang-JavaScript">fs.rmdir(<span class="hljs-built_in">String</span> path);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>path - 指定要删除的目录名</li>
+</ul>
+<h3 id="rmdirsync">rmdirSync</h3>
+<p>删除一个目录，是 rmdir 的同步版兼容接口</p>
+<pre><code class="lang-JavaScript">fs.rmdirSync(<span class="hljs-built_in">String</span> path);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>path - 指定要删除的目录名</li>
+</ul>
+<h3 id="rename">rename</h3>
+<p>重新命名一个文件</p>
+<pre><code class="lang-JavaScript">fs.rename(<span class="hljs-built_in">String</span> <span class="hljs-keyword">from</span>,
+                <span class="hljs-built_in">String</span> to);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>from - 指定更名的文件</li>
+<li>to - 指定要修改的新文件名</li>
+</ul>
+<h3 id="renamesync">renameSync</h3>
+<p>重新命名一个文件，是 rename 的同步版兼容接口</p>
+<pre><code class="lang-JavaScript">fs.renameSync(<span class="hljs-built_in">String</span> <span class="hljs-keyword">from</span>,
+                <span class="hljs-built_in">String</span> to);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>from - 指定更名的文件</li>
+<li>to - 指定要修改的新文件名</li>
+</ul>
+<h3 id="copy">copy</h3>
+<p>复制一个文件</p>
+<pre><code class="lang-JavaScript">fs.copy(<span class="hljs-built_in">String</span> <span class="hljs-keyword">from</span>,
+                <span class="hljs-built_in">String</span> to);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>from - 指定更名的文件</li>
+<li>to - 指定要修改的新文件名</li>
+</ul>
+<h3 id="chmod">chmod</h3>
+<p>设置指定文件的访问权限，Windows 不支持此方法</p>
+<pre><code class="lang-JavaScript">fs.chmod(<span class="hljs-built_in">String</span> path,
+                Integer mode);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>path - 指定操作的文件</li>
+<li>mode - 指定设定的访问权限</li>
+</ul>
+<h3 id="chmodsync">chmodSync</h3>
+<p>设置指定文件的访问权限，是 chmod 的同步版兼容接口</p>
+<pre><code class="lang-JavaScript">fs.chmodSync(<span class="hljs-built_in">String</span> path,
+                Integer mode);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>path - 指定操作的文件</li>
+<li>mode - 指定设定的访问权限</li>
+</ul>
+<h3 id="lchmod">lchmod</h3>
+<p>设置指定文件的访问权限，若文件是软连接则不改变指向文件的权限，Windows 不支持此方法</p>
+<pre><code class="lang-JavaScript">fs.lchmod(<span class="hljs-built_in">String</span> path,
+                Integer mode);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>path - 指定操作的文件</li>
+<li>mode - 指定设定的访问权限</li>
+</ul>
+<h3 id="lchmodsync">lchmodSync</h3>
+<p>设置指定文件的访问权限，若文件是软连接则不改变指向文件的权限，是 lchmod 的同步版兼容接口</p>
+<pre><code class="lang-JavaScript">fs.lchmodSync(<span class="hljs-built_in">String</span> path,
+                Integer mode);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>path - 指定操作的文件</li>
+<li>mode - 指定设定的访问权限</li>
+</ul>
+<h3 id="chown">chown</h3>
+<p>设置指定文件的拥有者，Windows 不支持此方法</p>
+<pre><code class="lang-JavaScript">fs.chown(<span class="hljs-built_in">String</span> path,
+                Integer uid,
+                Integer gid);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>path - 指定设置的文件</li>
+<li>uid - 文件拥有者用户id</li>
+<li>gid - 文件拥有者组id</li>
+</ul>
+<h3 id="chownsync">chownSync</h3>
+<p>设置指定文件的拥有者，Windows 不支持此方法, 是 chown 的同步版兼容接口</p>
+<pre><code class="lang-JavaScript">fs.chownSync(<span class="hljs-built_in">String</span> path,
+                Integer uid,
+                Integer gid);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>path - 指定设置的文件</li>
+<li>uid - 文件拥有者用户id</li>
+<li>gid - 文件拥有者组id</li>
+</ul>
+<h3 id="lchown">lchown</h3>
+<p>设置指定文件的拥有者，如果指定的文件是软连接则不会改变其指向文件的拥有者，Windows 不支持此方法</p>
+<pre><code class="lang-JavaScript">fs.lchown(<span class="hljs-built_in">String</span> path,
+                Integer uid,
+                Integer gid);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>path - 指定设置的文件</li>
+<li>uid - 文件拥有者用户id</li>
+<li>gid - 文件拥有者组id</li>
+</ul>
+<h3 id="lchownsync">lchownSync</h3>
+<p>设置指定文件的拥有者，如果指定的文件是软连接则不会改变其指向文件的拥有者，Windows 不支持此方法, 是 lchown 的同步版兼容接口</p>
+<pre><code class="lang-JavaScript">fs.lchownSync(<span class="hljs-built_in">String</span> path,
+                Integer uid,
+                Integer gid);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>path - 指定设置的文件</li>
+<li>uid - 文件拥有者用户id</li>
+<li>gid - 文件拥有者组id</li>
+</ul>
+<h3 id="stat">stat</h3>
+<p>查询指定文件的基础信息</p>
+<pre><code class="lang-JavaScript">Stat fs.stat(<span class="hljs-built_in">String</span> path);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>path - 指定查询的文件</li>
+</ul>
+<p><strong> 返回结果:</strong></p>
+<ul>
+<li>返回文件的基础信息</li>
+</ul>
+<h3 id="statsync">statSync</h3>
+<p>查询指定文件的基础信息，是 stat 的同步版兼容接口</p>
+<pre><code class="lang-JavaScript">Stat fs.statSync(<span class="hljs-built_in">String</span> path);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>path - 指定查询的文件</li>
+</ul>
+<p><strong> 返回结果:</strong></p>
+<ul>
+<li>返回文件的基础信息</li>
+</ul>
+<h3 id="lstat">lstat</h3>
+<p>查询指定文件的基础信息, 和stat不同的是, 当path是一个软连接的时候，返回的将是这个软连接的信息而不是指向的文件的信息</p>
+<pre><code class="lang-JavaScript">Stat fs.lstat(<span class="hljs-built_in">String</span> path);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>path - 指定查询的文件</li>
+</ul>
+<p><strong> 返回结果:</strong></p>
+<ul>
+<li>返回文件的基础信息</li>
+</ul>
+<h3 id="lstatsync">lstatSync</h3>
+<p>查询指定文件的基础信息，是 lstat 的同步版兼容接口</p>
+<pre><code class="lang-JavaScript">Stat fs.lstatSync(<span class="hljs-built_in">String</span> path);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>path - 指定查询的文件</li>
+</ul>
+<p><strong> 返回结果:</strong></p>
+<ul>
+<li>返回文件的基础信息</li>
+</ul>
+<h3 id="readlink">readlink</h3>
+<p>读取指定的软连接文件, windows 下不支持此方法</p>
+<pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> fs.readlink(<span class="hljs-built_in">String</span> path);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>path - 指定读取的软连接文件</li>
+</ul>
+<p><strong> 返回结果:</strong></p>
+<ul>
+<li>返回软连接指向的文件名</li>
+</ul>
+<h3 id="readlinksync">readlinkSync</h3>
+<p>读取指定的软连接文件，windows 下不支持此方法，是 readlink 的同步版兼容接口</p>
+<pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> fs.readlinkSync(<span class="hljs-built_in">String</span> path);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>path - 指定读取的软连接文件</li>
+</ul>
+<p><strong> 返回结果:</strong></p>
+<ul>
+<li>返回软连接指向的文件名</li>
+</ul>
+<h3 id="realpath">realpath</h3>
+<p>返回指定路径的绝对路径，如果指定路径中包含相对路径也会被展开</p>
+<pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> fs.realpath(<span class="hljs-built_in">String</span> path);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>path - 指定读取的路径</li>
+</ul>
+<p><strong> 返回结果:</strong></p>
+<ul>
+<li>返回处理后的绝对路径</li>
+</ul>
+<h3 id="realpathsync">realpathSync</h3>
+<p>返回指定路径的绝对路径，如果指定路径中包含相对路径也会被展开，是 realpath 的同步版兼容接口</p>
+<pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> fs.realpathSync(<span class="hljs-built_in">String</span> path);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>path - 指定读取的路径</li>
+</ul>
+<p><strong> 返回结果:</strong></p>
+<ul>
+<li>返回处理后的绝对路径</li>
+</ul>
+<h3 id="symlink">symlink</h3>
+<p>创建软连接文件</p>
+<pre><code class="lang-JavaScript">fs.symlink(<span class="hljs-built_in">String</span> target,
+                <span class="hljs-built_in">String</span> linkpath);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>target - 目标文件，可以是文件、目录、或不存在的路径</li>
+<li>linkpath - 将被创建的软连接文件</li>
+</ul>
+<h3 id="symlinksync">symlinkSync</h3>
+<p>创建软连接文件, 是 symlink 的同步版兼容接口</p>
+<pre><code class="lang-JavaScript">fs.symlinkSync(<span class="hljs-built_in">String</span> target,
+                <span class="hljs-built_in">String</span> linkpath);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>target - 目标文件，可以是文件、目录、或不存在的路径</li>
+<li>linkpath - 将被创建的软连接文件</li>
+</ul>
+<h3 id="truncate">truncate</h3>
+<p>修改文件尺寸,如果指定的长度大于源文件大小则用&#39;\0&#39;填充，否则多于的文件内容将丢失</p>
+<pre><code class="lang-JavaScript">fs.truncate(<span class="hljs-built_in">String</span> path,
+                Integer len);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>path - 指定被修改文件的路径</li>
+<li>len - 指定修改后文件的大小</li>
+</ul>
+<h3 id="truncatesync">truncateSync</h3>
+<p>修改文件尺寸,如果指定的长度大于源文件大小则用&#39;\0&#39;填充，否则多于的文件内容将丢失，是 truncate 的同步版兼容接口</p>
+<pre><code class="lang-JavaScript">fs.truncateSync(<span class="hljs-built_in">String</span> path,
+                Integer len);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>path - 指定被修改文件的路径</li>
+<li>len - 指定修改后文件的大小</li>
+</ul>
+<h3 id="readdir">readdir</h3>
+<p>读取指定目录的文件信息</p>
+<pre><code class="lang-JavaScript">List fs.readdir(<span class="hljs-built_in">String</span> path);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>path - 指定查询的目录</li>
+</ul>
+<p><strong> 返回结果:</strong></p>
+<ul>
+<li>返回目录的文件信息数组</li>
+</ul>
+<h3 id="readdirsync">readdirSync</h3>
+<p>读取指定目录的文件信息，是 readdir 的同步版兼容接口</p>
+<pre><code class="lang-JavaScript">List fs.readdirSync(<span class="hljs-built_in">String</span> path);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>path - 指定查询的目录</li>
+</ul>
+<p><strong> 返回结果:</strong></p>
+<ul>
+<li>返回目录的文件信息数组</li>
+</ul>
+<h3 id="open">open</h3>
+<p>打开文件，用于读取，写入，或者同时读写</p>
+<pre><code class="lang-JavaScript">SeekableStream fs.open(<span class="hljs-built_in">String</span> fname,
+                <span class="hljs-built_in">String</span> flags = <span class="hljs-string">"r"</span>);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>fname - 指定文件名</li>
+<li>flags - 指定文件打开方式，缺省为 &#34;r&#34;，只读方式。支持的方式如下：</li>
+</ul>
+<p><strong> 返回结果:</strong></p>
+<ul>
+<li>返回打开的文件对象</li>
+</ul>
+<h3 id="opensync">openSync</h3>
+<p>打开文件，用于读取，写入，或者同时读写，是 open 的同步版兼容接口</p>
+<pre><code class="lang-JavaScript">SeekableStream fs.openSync(<span class="hljs-built_in">String</span> fname,
+                <span class="hljs-built_in">String</span> flags = <span class="hljs-string">"r"</span>);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>fname - 指定文件名</li>
+<li>flags - 指定文件打开方式，缺省为 &#34;r&#34;，只读方式。支持的方式如下：</li>
+</ul>
+<p><strong> 返回结果:</strong></p>
+<ul>
+<li>返回打开的文件对象</li>
+</ul>
+<h3 id="opentextstream">openTextStream</h3>
+<p>打开文本文件，用于读取，写入，或者同时读写</p>
+<pre><code class="lang-JavaScript">BufferedStream fs.openTextStream(<span class="hljs-built_in">String</span> fname,
+                <span class="hljs-built_in">String</span> flags = <span class="hljs-string">"r"</span>);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>fname - 指定文件名</li>
+<li>flags - 指定文件打开方式，缺省为 &#34;r&#34;，只读方式。支持的方式如下：</li>
+</ul>
+<p><strong> 返回结果:</strong></p>
+<ul>
+<li>返回打开的文件对象</li>
+</ul>
+<h3 id="readtextfile">readTextFile</h3>
+<p>打开文本文件，并读取内容</p>
+<pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> fs.readTextFile(<span class="hljs-built_in">String</span> fname);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>fname - 指定文件名</li>
+</ul>
+<p><strong> 返回结果:</strong></p>
+<ul>
+<li>返回文件文本内容</li>
+</ul>
+<h3 id="readfile">readFile</h3>
+<p>打开二进制文件，并读取内容</p>
+<pre><code class="lang-JavaScript">Buffer fs.readFile(<span class="hljs-built_in">String</span> fname);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>fname - 指定文件名</li>
+</ul>
+<p><strong> 返回结果:</strong></p>
+<ul>
+<li>返回文件文本内容</li>
+</ul>
+<h3 id="readfilesync">readFileSync</h3>
+<p>打开二进制文件，并读取内容，是 readFile 的同步版兼容接口</p>
+<pre><code class="lang-JavaScript">Buffer fs.readFileSync(<span class="hljs-built_in">String</span> fname);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>fname - 指定文件名</li>
+</ul>
+<p><strong> 返回结果:</strong></p>
+<ul>
+<li>返回文件文本内容</li>
+</ul>
+<h3 id="readlines">readLines</h3>
+<p>打开文件，以数组方式读取一组文本行，行结尾标识基于 EOL 属性的设置，缺省时，posix:&#34;\n&#34;；windows:&#34;\r\n&#34;</p>
+<pre><code class="lang-JavaScript"><span class="hljs-built_in">Array</span> fs.readLines(<span class="hljs-built_in">String</span> fname,
+                Integer maxlines = <span class="hljs-number">-1</span>);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>fname - 指定文件名</li>
+<li>maxlines - 指定此次读取的最大行数，缺省读取全部文本行</li>
+</ul>
+<p><strong> 返回结果:</strong></p>
+<ul>
+<li>返回读取的文本行数组，若无数据可读，或者连接中断，空数组</li>
+</ul>
+<h3 id="writetextfile">writeTextFile</h3>
+<p>创建文本文件，并写入内容</p>
+<pre><code class="lang-JavaScript">fs.writeTextFile(<span class="hljs-built_in">String</span> fname,
+                <span class="hljs-built_in">String</span> txt);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>fname - 指定文件名</li>
+<li>txt - 指定要写入的字符串</li>
+</ul>
+<h3 id="writefile">writeFile</h3>
+<p>创建二进制文件，并写入内容</p>
+<pre><code class="lang-JavaScript">fs.writeFile(<span class="hljs-built_in">String</span> fname,
+                Buffer data);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>fname - 指定文件名</li>
+<li>data - 指定要写入的二进制数据</li>
+</ul>
+<h3 id="writefilesync">writeFileSync</h3>
+<p>创建二进制文件，并写入内容，是 writeFile 的同步版兼容接口</p>
+<pre><code class="lang-JavaScript">fs.writeFileSync(<span class="hljs-built_in">String</span> fname,
+                Buffer data);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>fname - 指定文件名</li>
+<li>data - 指定要写入的二进制数据</li>
+</ul>
+<h3 id="appendfile">appendFile</h3>
+<p>创建二进制文件，并写入内容</p>
+<pre><code class="lang-JavaScript">fs.appendFile(<span class="hljs-built_in">String</span> fname,
+                Buffer data);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>fname - 指定文件名</li>
+<li>data - 指定要写入的二进制数据</li>
+</ul>
+<h3 id="appendfilesync">appendFileSync</h3>
+<p>创建二进制文件，并写入内容，是 appendFile 的同步版兼容接口</p>
+<pre><code class="lang-JavaScript">fs.appendFileSync(<span class="hljs-built_in">String</span> fname,
+                Buffer data);
+</code></pre>
+<p><strong> 调用参数: </strong></p>
+<ul>
+<li>fname - 指定文件名</li>
+<li>data - 指定要写入的二进制数据</li>
+</ul>
+<h2 id="-">属性</h2>
+<h3 id="constants">constants</h3>
+<p>fs模块的常量对象</p>
+<pre><code class="lang-JavaScript">readonly <span class="hljs-built_in">Object</span> fs.constants;
+</code></pre>
+<h2 id="-">常量</h2>
+<h3 id="seek_set">SEEK_SET</h3>
+<p>seek 方式常量，移动到绝对位置</p>
+<pre><code class="lang-JavaScript">fs.SEEK_SET;
+</code></pre>
+<h3 id="seek_cur">SEEK_CUR</h3>
+<p>seek 方式常量，移动到当前位置的相对位置</p>
+<pre><code class="lang-JavaScript">fs.SEEK_CUR;
+</code></pre>
+<h3 id="seek_end">SEEK_END</h3>
+<p>seek 方式常量，移动到文件结尾的相对位置</p>
+<pre><code class="lang-JavaScript">fs.SEEK_END;
+</code></pre>
+ </div></div><div class=container><div class=footer><p>&copy; 2017 fibjs.org</p></div></div><script type=text/javascript src=/js/common.js></script><script type=text/javascript src=/js/docs.js></script></body></html>

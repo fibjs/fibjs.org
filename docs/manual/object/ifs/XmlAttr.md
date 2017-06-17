@@ -1,0 +1,97 @@
+# 对象 XmlAttr
+XmlAttr 对象表示 XmlElement 对象的属性
+
+## 函数
+        
+### dispose
+强制回收对象，调用此方法后，对象资源将立即释放
+```JavaScript
+XmlAttr.dispose();
+```
+
+### equals
+比较当前对象与给定的对象是否相等
+```JavaScript
+Boolean XmlAttr.equals(object expected);
+```
+
+** 调用参数: **
+* expected - 制定比较的目标对象
+
+** 返回结果:**
+* 返回对象比较的结果
+
+### toString
+返回对象的字符串表示，一般返回 &#34;[Native Object]&#34;，对象可以根据自己的特性重新实现
+```JavaScript
+String XmlAttr.toString();
+```
+
+** 返回结果:**
+* 返回对象的字符串表示
+
+### toJSON
+返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合
+```JavaScript
+Value XmlAttr.toJSON(String key = "");
+```
+
+** 调用参数: **
+* key - 未使用
+
+** 返回结果:**
+* 返回包含可 JSON 序列化的值
+
+### valueOf
+返回对象本身的数值
+```JavaScript
+Value XmlAttr.valueOf();
+```
+
+** 返回结果:**
+* 返回对象本身的数值
+
+## 属性
+        
+### localName
+查询元素的本地名称。如果选定的节点无命名空间，则该属性等同于 nodeName
+```JavaScript
+readonly String XmlAttr.localName;
+```
+
+### value
+属性的值
+```JavaScript
+String XmlAttr.value;
+```
+
+### name
+属性的名称
+```JavaScript
+readonly String XmlAttr.name;
+```
+
+### namespaceURI
+查询元素的命名空间的 URI。如果选定的节点无命名空间，则该属性返回 NULL
+```JavaScript
+readonly String XmlAttr.namespaceURI;
+```
+
+### prefix
+查询和设置元素的命名空间前缀。如果选定的节点无命名空间，则该属性返回 NULL
+```JavaScript
+String XmlAttr.prefix;
+```
+
+### nodeName
+属性的名称，为兼容的目的
+```JavaScript
+readonly String XmlAttr.nodeName;
+```
+
+### nodeValue
+属性的值，为兼容的目的
+```JavaScript
+String XmlAttr.nodeValue;
+```
+

@@ -1,0 +1,461 @@
+# 对象 XmlDocument
+XmlDocument 对象代表整个 XML 文档
+
+XmlDocument 对象是一棵文档树的根，可为我们提供对文档数据的最初（或最顶层）的访问入口。
+用于元素节点、文本节点、注释、处理指令等均无法存在于 XmlDocument 之外， XmlDocument 对象同样提供了创建这些对象的方法。 XmlNode 对象提供了一个 ownerDocument 属性，此属性可把它们与在其中创建它们的 XmlDocument 关联起来。
+## 构造函数
+        
+### XmlDocument
+构造一个 XmlDocument 对象
+```JavaScript
+ new XmlDocument(String type = "text/xml");
+```
+
+** 调用参数: **
+* type - 指定文档对象的类型，缺省为 &#34;text/xml&#34;，若需要处理 html 则需要指定 &#34;text/html&#34;
+
+## 函数
+        
+### load
+通过解析一个 XML/HTML 字符串来组成该文档，不支持多语种
+```JavaScript
+XmlDocument.load(String source);
+```
+
+** 调用参数: **
+* source - 要解析的 XML/HTML 文本，取决于文档创建时的类型
+
+### load
+通过解析一个二进制 XML/HTML 字符串来组成该文档，并根据语种自动转换
+```JavaScript
+XmlDocument.load(Buffer source);
+```
+
+** 调用参数: **
+* source - 要解析的 XML/HTML 文本，取决于文档创建时的类型
+
+### getElementsByTagName
+返回带有指定名称的所有元素的一个节点列表
+```JavaScript
+XmlNodeList XmlDocument.getElementsByTagName(String tagName);
+```
+
+** 调用参数: **
+* tagName - 需检索的标签名。值 &#34;*&#34; 匹配所有的标签
+
+** 返回结果:**
+* 文档树中具有指定标记的 XmlElement 节点的 XmlNodeList 集合。返回的元素节点的顺序就是它们在源文档中出现的顺序。
+
+该方法将返回一个 XmlNodeList 对象（可以作为只读数组处理），该对象存放文档中具有指定标签名的所有 XmlElement 节点，它们存放的顺序就是在源文档中出现的顺序。 XmlNodeList 对象是“活”的，即如果在文档中添加或删除了指定标签名的元素，它的内容会自动进行必要的更新。
+
+### getElementsByTagNameNS
+返回带有指定命名空间和名称的所有元素的一个节点列表
+```JavaScript
+XmlNodeList XmlDocument.getElementsByTagNameNS(String namespaceURI,
+                String localName);
+```
+
+** 调用参数: **
+* namespaceURI - 指定检索的命名空间 URI。值 &#34;*&#34; 可匹配所有的标签
+* localName - 需检索的标签名。值 &#34;*&#34; 匹配所有的标签
+
+** 返回结果:**
+* 文档树中具有指定标记的 XmlElement 节点的 XmlNodeList 集合。返回的元素节点的顺序就是它们在源文档中出现的顺序。
+
+该方法与 getElementsByTagName() 方法相似，只是它根据命名空间和名称来检索元素。
+
+### createElement
+创建元素节点
+```JavaScript
+XmlElement XmlDocument.createElement(String tagName);
+```
+
+** 调用参数: **
+* tagName - 指定元素节点规定名称
+
+** 返回结果:**
+* 返回新创建的 XmlElement 节点，具有指定的标签名
+
+### createElementNS
+创建带有指定命名空间的元素节点
+```JavaScript
+XmlElement XmlDocument.createElementNS(String namespaceURI,
+                String qualifiedName);
+```
+
+** 调用参数: **
+* namespaceURI - 指定元素节点命名空间 URI
+* qualifiedName - 指定元素节点规定名称
+
+** 返回结果:**
+* 返回新创建的 XmlElement 节点，具有指定的标签名
+
+### createTextNode
+创建文本节点
+```JavaScript
+XmlText XmlDocument.createTextNode(String data);
+```
+
+** 调用参数: **
+* data - 指定此节点的文本
+
+** 返回结果:**
+* 返回新创建的 XmlText 节点，表示指定的 data 字符串
+
+### createComment
+创建注释节点
+```JavaScript
+XmlComment XmlDocument.createComment(String data);
+```
+
+** 调用参数: **
+* data - 指定此节点的注释文本
+
+** 返回结果:**
+* 返回新创建的 XmlComment 节点，注释文本为指定的 data
+
+### createCDATASection
+创建 XmlCDATASection 节点
+```JavaScript
+XmlCDATASection XmlDocument.createCDATASection(String data);
+```
+
+** 调用参数: **
+* data - 指定此节点规定 CDATA 数据
+
+** 返回结果:**
+* 返回新创建的 XmlCDATASection 节点，内容为指定的 data
+
+### createProcessingInstruction
+创建 XmlProcessingInstruction 节点
+```JavaScript
+XmlProcessingInstruction XmlDocument.createProcessingInstruction(String target,
+                String data);
+```
+
+** 调用参数: **
+* target - 指定处理指令的目标
+* data - 指定处理指令的内容文本
+
+** 返回结果:**
+* 新创建的 ProcessingInstruction 节点
+
+### hasChildNodes
+查询是否存在子节点
+```JavaScript
+Boolean XmlDocument.hasChildNodes();
+```
+
+** 返回结果:**
+* 存在任何子节点时返回 true，否则返回 false
+
+### normalize
+合并相邻的 Text 节点并删除空的 Text 节点
+```JavaScript
+XmlDocument.normalize();
+```
+
+这个方法将遍历当前节点的所有子孙节点，通过删除空的 Text 节点，已经合并所有相邻的 Text 节点来规范化文档。该方法在进行节点的插入或删除操作后，对于简化文档树的结构很有用。
+
+### cloneNode
+创建指定的节点的精确拷贝
+```JavaScript
+XmlNode XmlDocument.cloneNode(Boolean deep = true);
+```
+
+** 调用参数: **
+* deep - 是否深度拷贝，为 true 时，被克隆的节点会克隆原节点的所有子节点
+
+** 返回结果:**
+* 返回所复制的节点
+
+该方法将复制并返回调用它的节点的副本。如果传递给它的参数是 true，它还将递归复制当前节点的所有子孙节点。 否则，它只复制当前节点。返回的节点不属于文档树，它的 parentNode 属性为 null。当复制的是 Element 节点时，它的所有属性都将被复制。
+
+### lookupPrefix
+返回在当前节点上匹配指定的命名空间 URI 的前缀
+```JavaScript
+String XmlDocument.lookupPrefix(String namespaceURI);
+```
+
+** 调用参数: **
+* namespaceURI - 指定匹配的命名空间 URI
+
+** 返回结果:**
+* 返回匹配的前缀，未匹配到返回 null
+
+### lookupNamespaceURI
+返回在当前节点上匹配指定的前缀的命名空间 URI
+```JavaScript
+String XmlDocument.lookupNamespaceURI(String prefix);
+```
+
+** 调用参数: **
+* prefix - 指定匹配的前缀
+
+** 返回结果:**
+* 返回匹配的命名空间 URI，未匹配到返回 null
+
+### insertBefore
+在已有的子节点前插入一个新的子节点
+```JavaScript
+XmlNode XmlDocument.insertBefore(XmlNode newChild,
+                XmlNode refChild);
+```
+
+** 调用参数: **
+* newChild - 插入新的节点
+* refChild - 在此节点前插入新节点
+
+** 返回结果:**
+* 返回新的子节点
+
+如果文档树中已经存在了 newChild，它将从文档树中删除，然后重新插入它的新位置。来自一个文档的节点（或由一个文档创建的节点）不能插入另一个文档。也就是说，newChild 的 ownerDocument 属性必须与当前节点的 ownerDocument 属性相同。
+
+### insertAfter
+在已有的子节点后插入一个新的子节点
+```JavaScript
+XmlNode XmlDocument.insertAfter(XmlNode newChild,
+                XmlNode refChild);
+```
+
+** 调用参数: **
+* newChild - 插入新的节点
+* refChild - 在此节点后插入新节点
+
+** 返回结果:**
+* 返回新的子节点
+
+如果文档树中已经存在了 newChild，它将从文档树中删除，然后重新插入它的新位置。来自一个文档的节点（或由一个文档创建的节点）不能插入另一个文档。也就是说，newChild 的 ownerDocument 属性必须与当前节点的 ownerDocument 属性相同。
+
+### appendChild
+向节点的子节点列表的末尾添加新的子节点
+```JavaScript
+XmlNode XmlDocument.appendChild(XmlNode newChild);
+```
+
+** 调用参数: **
+* newChild - 指定添加的节点
+
+** 返回结果:**
+* 返回这个新的子节点
+
+如果文档树中已经存在了 newChild，它将从文档树中删除，然后重新插入它的新位置。来自一个文档的节点（或由一个文档创建的节点）不能插入另一个文档。也就是说，newChild 的 ownerDocument 属性必须与当前节点的 ownerDocument 属性相同。
+
+### replaceChild
+将某个子节点替换为另一个
+```JavaScript
+XmlNode XmlDocument.replaceChild(XmlNode newChild,
+                XmlNode oldChild);
+```
+
+** 调用参数: **
+* newChild - 指定新的节点
+* oldChild - 指定被替换的节点
+
+** 返回结果:**
+* 如替换成功，此方法可返回被替换的节点，如替换失败，则返回 null
+
+如果文档树中已经存在了 newChild，它将从文档树中删除，然后重新插入它的新位置。来自一个文档的节点（或由一个文档创建的节点）不能插入另一个文档。也就是说，newChild 的 ownerDocument 属性必须与当前节点的 ownerDocument 属性相同。
+
+### removeChild
+从子节点列表中删除某个节点
+```JavaScript
+XmlNode XmlDocument.removeChild(XmlNode oldChild);
+```
+
+** 调用参数: **
+* oldChild - 指定被删除的节点
+
+** 返回结果:**
+* 如删除成功，此方法可返回被删除的节点，如失败，则返回 null
+
+### dispose
+强制回收对象，调用此方法后，对象资源将立即释放
+```JavaScript
+XmlDocument.dispose();
+```
+
+### equals
+比较当前对象与给定的对象是否相等
+```JavaScript
+Boolean XmlDocument.equals(object expected);
+```
+
+** 调用参数: **
+* expected - 制定比较的目标对象
+
+** 返回结果:**
+* 返回对象比较的结果
+
+### toString
+返回对象的字符串表示，一般返回 &#34;[Native Object]&#34;，对象可以根据自己的特性重新实现
+```JavaScript
+String XmlDocument.toString();
+```
+
+** 返回结果:**
+* 返回对象的字符串表示
+
+### toJSON
+返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合
+```JavaScript
+Value XmlDocument.toJSON(String key = "");
+```
+
+** 调用参数: **
+* key - 未使用
+
+** 返回结果:**
+* 返回包含可 JSON 序列化的值
+
+### valueOf
+返回对象本身的数值
+```JavaScript
+Value XmlDocument.valueOf();
+```
+
+** 返回结果:**
+* 返回对象本身的数值
+
+## 属性
+        
+### inputEncoding
+返回用于文档的编码（在解析时）
+```JavaScript
+readonly String XmlDocument.inputEncoding;
+```
+
+### xmlStandalone
+设置或返回文档是否为 standalone
+```JavaScript
+Boolean XmlDocument.xmlStandalone;
+```
+
+### xmlVersion
+设置或返回文档的 XML 版本
+```JavaScript
+String XmlDocument.xmlVersion;
+```
+
+### doctype
+返回与文档相关的文档类型声明（Document Type Declaration）
+```JavaScript
+readonly XmlDocumentType XmlDocument.doctype;
+```
+
+对于没有 DTD 的 XML 文档，则返回 null。此属性可提供对 XmlDocumentType 对象（ XmlDocument 的一个子节点）的直接访问。
+
+### documentElement
+返回文档的根节点
+```JavaScript
+readonly XmlElement XmlDocument.documentElement;
+```
+
+### head
+返回 HTML 文档的 head 节点，仅在 html 模式有效
+```JavaScript
+readonly XmlElement XmlDocument.head;
+```
+
+### title
+返回 HTML 文档的 title 节点的内容，仅在 html 模式有效
+```JavaScript
+readonly String XmlDocument.title;
+```
+
+### body
+返回 HTML 文档的 body 节点，仅在 html 模式有效
+```JavaScript
+readonly XmlElement XmlDocument.body;
+```
+
+### nodeType
+返回节点的节点类型
+```JavaScript
+readonly Integer XmlDocument.nodeType;
+```
+
+不同对象的 nodeType 会返回不同的值：
+- XmlElement: ELEMENT_NODE(1)
+- XmlAttr: ATTRIBUTE_NODE(2)
+- XmlText: TEXT_NODE(3)
+- XmlCDATASection: CDATA_SECTION_NODE(4)
+- XmlProcessingInstruction: PROCESSING_INSTRUCTION_NODE(7)
+- XmlComment: COMMENT_NODE(8)
+- XmlDocument: DOCUMENT_NODE(9)
+- XmlDocumentType: DOCUMENT_TYPE_NODE(10)
+
+### nodeName
+返回节点的名称，根据其类型
+```JavaScript
+readonly String XmlDocument.nodeName;
+```
+
+不同对象的 nodeName 会返回不同的值：
+- XmlElement: element name
+- XmlAttr: 属性名称
+- XmlText: \#text
+- XmlCDATASection: \#cdata-section
+- XmlProcessingInstruction: 返回指定目标 target
+- XmlComment: \#comment
+- XmlDocument: \#document
+- XmlDocumentType: doctype 名称
+
+### nodeValue
+返回节点的名称，根据其类型
+```JavaScript
+String XmlDocument.nodeValue;
+```
+
+不同对象的 nodeName 会返回不同的值：
+- XmlElement: null
+- XmlAttr: 属性的值
+- XmlText: 节点的内容
+- XmlCDATASection: 节点的内容
+- XmlProcessingInstruction: 返回指定内容 data
+- XmlComment: 注释文本
+- XmlDocument: null
+- XmlDocumentType: null
+
+### ownerDocument
+返回节点的根元素（XmlDocument 对象）
+```JavaScript
+readonly XmlDocument XmlDocument.ownerDocument;
+```
+
+### parentNode
+可返回某节点的父节点
+```JavaScript
+readonly XmlNode XmlDocument.parentNode;
+```
+
+### childNodes
+返回指定节点的子节点的节点列表
+```JavaScript
+readonly XmlNodeList XmlDocument.childNodes;
+```
+
+### firstChild
+返回节点的首个子节点
+```JavaScript
+readonly XmlNode XmlDocument.firstChild;
+```
+
+### lastChild
+返回节点的最后一个子节点
+```JavaScript
+readonly XmlNode XmlDocument.lastChild;
+```
+
+### previousSibling
+返回某节点之前紧跟的节点（处于同一树层级），如果没有此节点，那么该属性返回 null
+```JavaScript
+readonly XmlNode XmlDocument.previousSibling;
+```
+
+### nextSibling
+返回某个元素之后紧跟的节点（处于同一树层级中），如果无此节点，则属性返回 null
+```JavaScript
+readonly XmlNode XmlDocument.nextSibling;
+```
+

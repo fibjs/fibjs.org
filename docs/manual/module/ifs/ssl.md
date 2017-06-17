@@ -1,0 +1,137 @@
+# 模块 ssl
+ssl/tls 模块
+
+## 函数
+        
+### connect
+创建一个 SslSocket 对象并建立连接
+```JavaScript
+Stream ssl.connect(String url,
+                Integer timeout = 0);
+```
+
+** 调用参数: **
+* url - 指定连接的协议，可以是：ssl://host:port
+* timeout - 指定超时时间，单位是毫秒，默认为0
+
+** 返回结果:**
+* 返回连接成功的 SslSocket 对象
+
+### setClientCert
+设定缺省客户端证书
+```JavaScript
+ssl.setClientCert(X509Cert crt,
+                PKey key);
+```
+
+** 调用参数: **
+* crt - X509Cert 证书，用于客户端验证服务器
+* key - PKey 私钥，用于与客户端会话
+
+### loadClientCertFile
+从文件中加载缺省客户端证书
+```JavaScript
+ssl.loadClientCertFile(String crtFile,
+                String keyFile,
+                String password = "");
+```
+
+** 调用参数: **
+* crtFile - X509Cert 证书文件，用于客户端验证服务器
+* keyFile - PKey 私钥文件，用于与客户端会话
+* password - 解密密码
+
+## 属性
+        
+### ca
+全局证书，用于 ssl 客户端模式验证服务器证书
+```JavaScript
+readonly X509Cert ssl.ca;
+```
+
+### verification
+设定证书验证模式，缺省为 VERIFY_REQUIRED
+```JavaScript
+Integer ssl.verification;
+```
+
+### min_version
+设定最低版本支持，缺省 ssl3
+```JavaScript
+Integer ssl.min_version;
+```
+
+### max_version
+设定最高版本支持，缺省 tls1_1
+```JavaScript
+Integer ssl.max_version;
+```
+
+## 常量
+        
+### VERIFY_NONE
+证书验证模式，不验证
+```JavaScript
+ssl.VERIFY_NONE;
+```
+
+### VERIFY_OPTIONAL
+证书验证模式，可选验证，允许验证不通过
+```JavaScript
+ssl.VERIFY_OPTIONAL;
+```
+
+### VERIFY_REQUIRED
+证书验证模式，要求验证，验证不通过则中断
+```JavaScript
+ssl.VERIFY_REQUIRED;
+```
+
+### BADCERT_EXPIRED
+证书验证结果，证书超时
+```JavaScript
+ssl.BADCERT_EXPIRED;
+```
+
+### BADCERT_REVOKED
+证书验证结果，证书被撤销
+```JavaScript
+ssl.BADCERT_REVOKED;
+```
+
+### BADCERT_CN_MISMATCH
+证书验证结果，证书名错误
+```JavaScript
+ssl.BADCERT_CN_MISMATCH;
+```
+
+### BADCERT_NOT_TRUSTED
+证书验证结果，证书不可信
+```JavaScript
+ssl.BADCERT_NOT_TRUSTED;
+```
+
+### ssl3
+ssl 协议版本 ssl 3.0
+```JavaScript
+ssl.ssl3;
+```
+
+### tls1
+ssl 协议版本 tls 1.0
+```JavaScript
+ssl.tls1;
+```
+
+### tls1_1
+ssl 协议版本 tls 1.1
+```JavaScript
+ssl.tls1_1;
+```
+
+### tls1_2
+ssl 协议版本 tls 1.2
+```JavaScript
+ssl.tls1_2;
+```
+

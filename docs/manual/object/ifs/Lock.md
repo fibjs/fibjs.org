@@ -1,0 +1,97 @@
+# 对象 Lock
+纤程锁对象
+
+不同于操作系统的锁，纤程锁是纯逻辑实现，加锁与解锁负荷很小
+@code
+var l = new coroutine.Lock();
+l.acquire();
+.....
+l.release();
+@endcode
+## 构造函数
+        
+### Lock
+构造函数
+```JavaScript
+ new Lock();
+```
+
+## 函数
+        
+### acquire
+获取锁的拥有权
+```JavaScript
+Boolean Lock.acquire(Boolean blocking = true);
+```
+
+** 调用参数: **
+* blocking - 指定是否等待，为 true 时等待，缺省为真
+
+** 返回结果:**
+* 返回是否成功获取锁，为 true 表示成功获取
+
+### release
+释放锁的拥有权
+```JavaScript
+Lock.release();
+```
+
+此方法将释放对锁的拥有权，如果当前纤程未拥有锁，此方法将抛出错误。
+
+### count
+查询当前等待任务数
+```JavaScript
+Integer Lock.count();
+```
+
+** 返回结果:**
+* 返回任务数
+
+### dispose
+强制回收对象，调用此方法后，对象资源将立即释放
+```JavaScript
+Lock.dispose();
+```
+
+### equals
+比较当前对象与给定的对象是否相等
+```JavaScript
+Boolean Lock.equals(object expected);
+```
+
+** 调用参数: **
+* expected - 制定比较的目标对象
+
+** 返回结果:**
+* 返回对象比较的结果
+
+### toString
+返回对象的字符串表示，一般返回 &#34;[Native Object]&#34;，对象可以根据自己的特性重新实现
+```JavaScript
+String Lock.toString();
+```
+
+** 返回结果:**
+* 返回对象的字符串表示
+
+### toJSON
+返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合
+```JavaScript
+Value Lock.toJSON(String key = "");
+```
+
+** 调用参数: **
+* key - 未使用
+
+** 返回结果:**
+* 返回包含可 JSON 序列化的值
+
+### valueOf
+返回对象本身的数值
+```JavaScript
+Value Lock.valueOf();
+```
+
+** 返回结果:**
+* 返回对象本身的数值
+
