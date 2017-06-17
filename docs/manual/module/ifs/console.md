@@ -92,6 +92,7 @@ console.log(String fmt,
 * ... - 可选参数列表
 
 记录一般等级的日志信息。通常用于输出非错误性提示信息。
+
 --------------------------
 记录普通日志信息，与 info 等同
 ```JavaScript
@@ -115,6 +116,7 @@ console.debug(String fmt,
 * ... - 可选参数列表
 
 记录调试日志信息。通常用于输出调试信息。不重要。
+
 --------------------------
 记录调试日志信息
 ```JavaScript
@@ -138,6 +140,7 @@ console.info(String fmt,
 * ... - 可选参数列表
 
 记录一般等级的日志信息。通常用于输出非错误性提示信息。
+
 --------------------------
 记录普通日志信息，与 log 等同
 ```JavaScript
@@ -161,6 +164,7 @@ console.notice(String fmt,
 * ... - 可选参数列表
 
 记录警告日志信息。通常用于输出提示性调试信息。一般重要。
+
 --------------------------
 记录警告日志信息
 ```JavaScript
@@ -184,6 +188,7 @@ console.warn(String fmt,
 * ... - 可选参数列表
 
 记录警告日志信息。通常用于输出警告性调试信息。重要。
+
 --------------------------
 记录警告日志信息
 ```JavaScript
@@ -207,6 +212,7 @@ console.error(String fmt,
 * ... - 可选参数列表
 
 记录用于错误日志信息。通常用于输出错误信息。非常重要。系统的出错信息也会以此等级记录。
+
 --------------------------
 记录错误日志信息
 ```JavaScript
@@ -230,6 +236,7 @@ console.crit(String fmt,
 * ... - 可选参数列表
 
 记录用于关键错误日志信息。通常用于输出关键错误信息。非常重要。
+
 --------------------------
 记录关键错误日志信息
 ```JavaScript
@@ -253,6 +260,7 @@ console.alert(String fmt,
 * ... - 可选参数列表
 
 记录用于警报错误日志信息。通常用于输出警报错误信息。非常重要。为最高级别信息。
+
 --------------------------
 记录警报错误日志信息
 ```JavaScript
@@ -378,6 +386,7 @@ console.keyDown(String key,
 - 方向键：up, down,left, right, home, end, pageup, pagedown
 - 编辑键：backspace, delete, insert, enter, tab, escape, space
 - 控制键：control, alt, shift, command
+
 --------------------------
 按下一个按键
 ```JavaScript
@@ -411,6 +420,7 @@ console.keyUp(String key,
 - 方向键：up, down,left, right, home, end, pageup, pagedown
 - 编辑键：backspace, delete, insert, enter, tab, escape, space
 - 控制键：control, alt, shift, command
+
 --------------------------
 松开一个按键
 ```JavaScript
@@ -444,6 +454,7 @@ console.keyTap(String key,
 - 方向键：up, down,left, right, home, end, pageup, pagedown
 - 编辑键：backspace, delete, insert, enter, tab, escape, space
 - 控制键：control, alt, shift, command
+
 --------------------------
 点击并松开一个按键
 ```JavaScript

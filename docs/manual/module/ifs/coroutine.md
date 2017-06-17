@@ -1,7 +1,10 @@
 # 模块 coroutine
 并发控制模块
 
-引用方法：var coroutine = require('coroutine');
+引用方法：
+```JavaScript
+var coroutine = require('coroutine');
+```
 ## 函数
         
 ### start
