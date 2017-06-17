@@ -13,10 +13,10 @@ var path = require(&#39;path&#39;).posix;
 String path_posix.normalize(String path);
 ```
 
-** 调用参数: **
+**调用参数:**
 * path - 给定的未处理的路径
 
-** 返回结果:**
+**返回结果:**
 * 返回经过处理的路径
 
 ### basename
@@ -26,11 +26,11 @@ String path_posix.basename(String path,
                 String ext = "");
 ```
 
-** 调用参数: **
+**调用参数:**
 * path - 给定查询的路径
 * ext - 指定扩展名，若文件名中有符合条件的扩展名，将自动取消
 
-** 返回结果:**
+**返回结果:**
 * 返回文件名称
 
 ### extname
@@ -39,10 +39,10 @@ String path_posix.basename(String path,
 String path_posix.extname(String path);
 ```
 
-** 调用参数: **
+**调用参数:**
 * path - 给定查询的路径
 
-** 返回结果:**
+**返回结果:**
 * 返回得到的扩展名
 
 ### dirname
@@ -51,10 +51,10 @@ String path_posix.extname(String path);
 String path_posix.dirname(String path);
 ```
 
-** 调用参数: **
+**调用参数:**
 * path - 给定查询的路径
 
-** 返回结果:**
+**返回结果:**
 * 返回得到的目录的路径
 
 ### fullpath
@@ -63,10 +63,10 @@ String path_posix.dirname(String path);
 String path_posix.fullpath(String path);
 ```
 
-** 调用参数: **
+**调用参数:**
 * path - 给定转换的路径
 
-** 返回结果:**
+**返回结果:**
 * 返回转换的全路径
 
 ### isAbsolute
@@ -75,10 +75,10 @@ String path_posix.fullpath(String path);
 Boolean path_posix.isAbsolute(String path);
 ```
 
-** 调用参数: **
+**调用参数:**
 * path - 给定需要识别的路径
 
-** 返回结果:**
+**返回结果:**
 * 是绝对路径则返回 true
 
 ### join
@@ -87,10 +87,10 @@ Boolean path_posix.isAbsolute(String path);
 String path_posix.join(...);
 ```
 
-** 调用参数: **
+**调用参数:**
 * ... - 一个或多个相关的路径
 
-** 返回结果:**
+**返回结果:**
 * 返回得到的新路径
 
 ### resolve
@@ -99,10 +99,10 @@ String path_posix.join(...);
 String path_posix.resolve(...);
 ```
 
-** 调用参数: **
+**调用参数:**
 * ... - 一个或多个相关的路径
 
-** 返回结果:**
+**返回结果:**
 * 返回得到的新路径
 
 ## 属性

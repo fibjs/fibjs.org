@@ -15,10 +15,10 @@ var set = rdb.getSet(&#34;test&#34;);
 Integer RedisSet.add(Array members);
 ```
 
-** 调用参数: **
+**调用参数:**
 * members - 指定要添加的元素数组
 
-** 返回结果:**
+**返回结果:**
 * 被添加到集合中的新元素的数量，不包括被忽略的元素
 
 ### add
@@ -27,10 +27,10 @@ Integer RedisSet.add(Array members);
 Integer RedisSet.add(...);
 ```
 
-** 调用参数: **
+**调用参数:**
 * ... - 指定要添加的元素列表
 
-** 返回结果:**
+**返回结果:**
 * 被添加到集合中的新元素的数量，不包括被忽略的元素
 
 ### remove
@@ -39,10 +39,10 @@ Integer RedisSet.add(...);
 Integer RedisSet.remove(Array members);
 ```
 
-** 调用参数: **
+**调用参数:**
 * members - 指定要移除的元素数组
 
-** 返回结果:**
+**返回结果:**
 * 被成功移除的元素的数量，不包括被忽略的元素
 
 ### remove
@@ -51,10 +51,10 @@ Integer RedisSet.remove(Array members);
 Integer RedisSet.remove(...);
 ```
 
-** 调用参数: **
+**调用参数:**
 * ... - 指定要移除的元素列表
 
-** 返回结果:**
+**返回结果:**
 * 被成功移除的元素的数量，不包括被忽略的元素
 
 ### len
@@ -63,7 +63,7 @@ Integer RedisSet.remove(...);
 Integer RedisSet.len();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 返回集合的长度
 
 ### exists
@@ -72,9 +72,9 @@ Integer RedisSet.len();
 Boolean RedisSet.exists(Buffer member);
 ```
 
-** 调用参数: **
+**调用参数:**
 
-** 返回结果:**
+**返回结果:**
 * 如果 member 元素是集合的成员，返回 true
 
 ### members
@@ -83,7 +83,7 @@ Boolean RedisSet.exists(Buffer member);
 List RedisSet.members();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 集合中所有成员的列表
 
 ### pop
@@ -92,7 +92,7 @@ List RedisSet.members();
 Buffer RedisSet.pop();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 被移除的随机元素。当集合是空集时，返回 null
 
 ### randMember
@@ -101,7 +101,7 @@ Buffer RedisSet.pop();
 Value RedisSet.randMember();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 返回一个元素；如果集合为空，返回 null
 
 ### randMember
@@ -110,10 +110,10 @@ Value RedisSet.randMember();
 Value RedisSet.randMember(Integer count);
 ```
 
-** 调用参数: **
+**调用参数:**
 * count - 指定返回的元素个数。正数，返回一个包含 count 个元素的数组；负数，返回一个数组，数组中的元素可能会重复出现多次，而数组的长度为 count 的绝对值
 
-** 返回结果:**
+**返回结果:**
 * 返回一个列表；如果集合为空，返回空列表
 
 ### dispose
@@ -128,10 +128,10 @@ RedisSet.dispose();
 Boolean RedisSet.equals(object expected);
 ```
 
-** 调用参数: **
+**调用参数:**
 * expected - 制定比较的目标对象
 
-** 返回结果:**
+**返回结果:**
 * 返回对象比较的结果
 
 ### toString
@@ -140,7 +140,7 @@ Boolean RedisSet.equals(object expected);
 String RedisSet.toString();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 返回对象的字符串表示
 
 ### toJSON
@@ -149,10 +149,10 @@ String RedisSet.toString();
 Value RedisSet.toJSON(String key = "");
 ```
 
-** 调用参数: **
+**调用参数:**
 * key - 未使用
 
-** 返回结果:**
+**返回结果:**
 * 返回包含可 JSON 序列化的值
 
 ### valueOf
@@ -161,6 +161,6 @@ Value RedisSet.toJSON(String key = "");
 Value RedisSet.valueOf();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 返回对象本身的数值
 

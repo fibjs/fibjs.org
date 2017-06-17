@@ -17,7 +17,7 @@ var msg = new ws.Message();
                 Integer maxSize = 67108864);
 ```
 
-** 调用参数: **
+**调用参数:**
 * type - websocket 消息类型，缺省为 websocket.BINARY
 * masked - websocket 消息掩码，缺省为 true
 * maxSize - 最大包尺寸，以 MB 为单位，缺省为 67108864(64M)
@@ -30,10 +30,10 @@ var msg = new ws.Message();
 Buffer WebSocketMessage.read(Integer bytes = -1);
 ```
 
-** 调用参数: **
+**调用参数:**
 * bytes - 指定要读取的数据量，缺省为读取随机大小的数据块，读出的数据尺寸取决于设备
 
-** 返回结果:**
+**返回结果:**
 * 返回从流内读取的数据，若无数据可读，或者连接中断，则返回 null
 
 ### readAll
@@ -42,7 +42,7 @@ Buffer WebSocketMessage.read(Integer bytes = -1);
 Buffer WebSocketMessage.readAll();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 返回从流内读取的数据，若无数据可读，或者连接中断，则返回 null
 
 ### write
@@ -51,7 +51,7 @@ Buffer WebSocketMessage.readAll();
 WebSocketMessage.write(Buffer data);
 ```
 
-** 调用参数: **
+**调用参数:**
 * data - 给定要写入的数据
 
 ### end
@@ -66,7 +66,7 @@ WebSocketMessage.end();
 Boolean WebSocketMessage.isEnded();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 结束则返回 true
 
 ### clear
@@ -81,7 +81,7 @@ WebSocketMessage.clear();
 WebSocketMessage.sendTo(Stream stm);
 ```
 
-** 调用参数: **
+**调用参数:**
 * stm - 指定接收格式化消息的流对象
 
 ### readFrom
@@ -90,7 +90,7 @@ WebSocketMessage.sendTo(Stream stm);
 WebSocketMessage.readFrom(Stream stm);
 ```
 
-** 调用参数: **
+**调用参数:**
 * stm - 指定读取格式化消息的流对象
 
 ### dispose
@@ -105,10 +105,10 @@ WebSocketMessage.dispose();
 Boolean WebSocketMessage.equals(object expected);
 ```
 
-** 调用参数: **
+**调用参数:**
 * expected - 制定比较的目标对象
 
-** 返回结果:**
+**返回结果:**
 * 返回对象比较的结果
 
 ### toString
@@ -117,7 +117,7 @@ Boolean WebSocketMessage.equals(object expected);
 String WebSocketMessage.toString();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 返回对象的字符串表示
 
 ### toJSON
@@ -126,10 +126,10 @@ String WebSocketMessage.toString();
 Value WebSocketMessage.toJSON(String key = "");
 ```
 
-** 调用参数: **
+**调用参数:**
 * key - 未使用
 
-** 返回结果:**
+**返回结果:**
 * 返回包含可 JSON 序列化的值
 
 ### valueOf
@@ -138,7 +138,7 @@ Value WebSocketMessage.toJSON(String key = "");
 Value WebSocketMessage.valueOf();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 返回对象本身的数值
 
 ## 属性

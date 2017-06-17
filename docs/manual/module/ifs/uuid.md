@@ -13,7 +13,7 @@ var uuid = require(&#39;uuid&#39;);
 Buffer uuid.node();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 返回一个生成的二进制 id
 
 ### md5
@@ -23,11 +23,11 @@ Buffer uuid.md5(Integer ns,
                 String name);
 ```
 
-** 调用参数: **
+**调用参数:**
 * ns - 指定命名空间，可以为 uuid.DNS, uuid.URL, uuid.OID, uuid.X509
 * name - 指定名称
 
-** 返回结果:**
+**返回结果:**
 * 返回一个生成的二进制 id
 
 ### random
@@ -36,7 +36,7 @@ Buffer uuid.md5(Integer ns,
 Buffer uuid.random();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 返回一个生成的二进制 id
 
 ### sha1
@@ -46,11 +46,11 @@ Buffer uuid.sha1(Integer ns,
                 String name);
 ```
 
-** 调用参数: **
+**调用参数:**
 * ns - 指定命名空间，可以为 uuid.DNS, uuid.URL, uuid.OID, uuid.X509
 * name - 指定名称
 
-** 返回结果:**
+**返回结果:**
 * 返回一个生成的二进制 id
 
 ### snowflake
@@ -59,7 +59,7 @@ Buffer uuid.sha1(Integer ns,
 Buffer uuid.snowflake();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 返回一个生成的二进制 id
 
 ## 属性

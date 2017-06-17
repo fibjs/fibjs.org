@@ -9,7 +9,7 @@ HttpCookie 构造函数，创建一个新的 HttpCookie 对象
  new HttpCookie(Object opts = {});
 ```
 
-** 调用参数: **
+**调用参数:**
 * opts - 指定创建的 cookie 的属性
 
 ### HttpCookie
@@ -20,7 +20,7 @@ HttpCookie 构造函数，创建一个新的 HttpCookie 对象
                 Object opts = {});
 ```
 
-** 调用参数: **
+**调用参数:**
 * name - 指定创建的 cookie 名称
 * value - 指定创建的 cookie 值
 * opts - 指定创建的 cookie 的其它属性
@@ -33,7 +33,7 @@ HttpCookie 构造函数，创建一个新的 HttpCookie 对象
 HttpCookie.parse(String header);
 ```
 
-** 调用参数: **
+**调用参数:**
 * header - 指定需要解析的 header 字符串
 
 ### match
@@ -42,7 +42,7 @@ HttpCookie.parse(String header);
 Boolean HttpCookie.match(String url);
 ```
 
-** 调用参数: **
+**调用参数:**
 * url - 指定测试的 url
 
 ### dispose
@@ -57,10 +57,10 @@ HttpCookie.dispose();
 Boolean HttpCookie.equals(object expected);
 ```
 
-** 调用参数: **
+**调用参数:**
 * expected - 制定比较的目标对象
 
-** 返回结果:**
+**返回结果:**
 * 返回对象比较的结果
 
 ### toString
@@ -69,7 +69,7 @@ Boolean HttpCookie.equals(object expected);
 String HttpCookie.toString();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 返回对象的字符串表示
 
 ### toJSON
@@ -78,10 +78,10 @@ String HttpCookie.toString();
 Value HttpCookie.toJSON(String key = "");
 ```
 
-** 调用参数: **
+**调用参数:**
 * key - 未使用
 
-** 返回结果:**
+**返回结果:**
 * 返回包含可 JSON 序列化的值
 
 ### valueOf
@@ -90,7 +90,7 @@ Value HttpCookie.toJSON(String key = "");
 Value HttpCookie.valueOf();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 返回对象本身的数值
 
 ## 属性

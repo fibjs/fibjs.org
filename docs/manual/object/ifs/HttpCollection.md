@@ -15,10 +15,10 @@ HttpCollection.clear();
 Boolean HttpCollection.has(String name);
 ```
 
-** 调用参数: **
+**调用参数:**
 * name - 指定要检查的键值
 
-** 返回结果:**
+**返回结果:**
 * 返回键值是否存在
 
 ### first
@@ -27,10 +27,10 @@ Boolean HttpCollection.has(String name);
 Variant HttpCollection.first(String name);
 ```
 
-** 调用参数: **
+**调用参数:**
 * name - 指定要查询的键值
 
-** 返回结果:**
+**返回结果:**
 * 返回键值所对应的值，若不存在，则返回 undefined
 
 ### all
@@ -39,10 +39,10 @@ Variant HttpCollection.first(String name);
 List HttpCollection.all(String name);
 ```
 
-** 调用参数: **
+**调用参数:**
 * name - 指定要查询的键值
 
-** 返回结果:**
+**返回结果:**
 * 返回键值所对应全部值的数组，若数据不存在，则返回 null
 
 ### add
@@ -51,7 +51,7 @@ List HttpCollection.all(String name);
 HttpCollection.add(Map map);
 ```
 
-** 调用参数: **
+**调用参数:**
 * map - 指定要添加的键值数据字典
 
 ### add
@@ -61,7 +61,7 @@ HttpCollection.add(String name,
                 Variant value);
 ```
 
-** 调用参数: **
+**调用参数:**
 * name - 指定要添加的键值
 * value - 指定要添加的数据
 
@@ -71,7 +71,7 @@ HttpCollection.add(String name,
 HttpCollection.set(Map map);
 ```
 
-** 调用参数: **
+**调用参数:**
 * map - 指定要设定的键值数据字典
 
 ### set
@@ -81,7 +81,7 @@ HttpCollection.set(String name,
                 Variant value);
 ```
 
-** 调用参数: **
+**调用参数:**
 * name - 指定要设定的键值
 * value - 指定要设定的数据
 
@@ -91,7 +91,7 @@ HttpCollection.set(String name,
 HttpCollection.remove(String name);
 ```
 
-** 调用参数: **
+**调用参数:**
 * name - 指定要删除的键值
 
 ### dispose
@@ -106,10 +106,10 @@ HttpCollection.dispose();
 Boolean HttpCollection.equals(object expected);
 ```
 
-** 调用参数: **
+**调用参数:**
 * expected - 制定比较的目标对象
 
-** 返回结果:**
+**返回结果:**
 * 返回对象比较的结果
 
 ### toString
@@ -118,7 +118,7 @@ Boolean HttpCollection.equals(object expected);
 String HttpCollection.toString();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 返回对象的字符串表示
 
 ### toJSON
@@ -127,10 +127,10 @@ String HttpCollection.toString();
 Value HttpCollection.toJSON(String key = "");
 ```
 
-** 调用参数: **
+**调用参数:**
 * key - 未使用
 
-** 返回结果:**
+**返回结果:**
 * 返回包含可 JSON 序列化的值
 
 ### valueOf
@@ -139,6 +139,6 @@ Value HttpCollection.toJSON(String key = "");
 Value HttpCollection.valueOf();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 返回对象本身的数值
 

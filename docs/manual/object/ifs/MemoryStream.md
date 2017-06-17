@@ -21,7 +21,7 @@ MemoryStream 构造函数
 MemoryStream.setTime(Date d);
 ```
 
-** 调用参数: **
+**调用参数:**
 * d - 指定要设定的时间
 
 ### clone
@@ -30,7 +30,7 @@ MemoryStream.setTime(Date d);
 MemoryStream MemoryStream.clone();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 返回只读的内存流对象
 
 ### clear
@@ -46,7 +46,7 @@ MemoryStream.seek(Long offset,
                 Integer whence);
 ```
 
-** 调用参数: **
+**调用参数:**
 * offset - 指定新的位置
 * whence - 指定位置基准，允许的值为：SEEK_SET, SEEK_CUR, SEEK_END
 
@@ -56,7 +56,7 @@ MemoryStream.seek(Long offset,
 Long MemoryStream.tell();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 返回流当前位置
 
 ### rewind
@@ -71,7 +71,7 @@ MemoryStream.rewind();
 Long MemoryStream.size();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 返回流尺寸
 
 ### readAll
@@ -80,7 +80,7 @@ Long MemoryStream.size();
 Buffer MemoryStream.readAll();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 返回从流内读取的数据，若无数据可读，或者连接中断，则返回 null
 
 ### truncate
@@ -89,7 +89,7 @@ Buffer MemoryStream.readAll();
 MemoryStream.truncate(Long bytes);
 ```
 
-** 调用参数: **
+**调用参数:**
 * bytes - 新的文件尺寸
 
 ### eof
@@ -98,7 +98,7 @@ MemoryStream.truncate(Long bytes);
 Boolean MemoryStream.eof();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 返回 True 表示结尾
 
 ### flush
@@ -113,7 +113,7 @@ MemoryStream.flush();
 Stat MemoryStream.stat();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 返回 Stat 对象描述文件信息
 
 ### read
@@ -122,10 +122,10 @@ Stat MemoryStream.stat();
 Buffer MemoryStream.read(Integer bytes = -1);
 ```
 
-** 调用参数: **
+**调用参数:**
 * bytes - 指定要读取的数据量，缺省为读取随机大小的数据块，读出的数据尺寸取决于设备
 
-** 返回结果:**
+**返回结果:**
 * 返回从流内读取的数据，若无数据可读，或者连接中断，则返回 null
 
 ### write
@@ -134,7 +134,7 @@ Buffer MemoryStream.read(Integer bytes = -1);
 MemoryStream.write(Buffer data);
 ```
 
-** 调用参数: **
+**调用参数:**
 * data - 给定要写入的数据
 
 ### close
@@ -150,11 +150,11 @@ Long MemoryStream.copyTo(Stream stm,
                 Long bytes = -1);
 ```
 
-** 调用参数: **
+**调用参数:**
 * stm - 目标流对象
 * bytes - 复制的字节数
 
-** 返回结果:**
+**返回结果:**
 * 返回复制的字节数
 
 ### dispose
@@ -169,10 +169,10 @@ MemoryStream.dispose();
 Boolean MemoryStream.equals(object expected);
 ```
 
-** 调用参数: **
+**调用参数:**
 * expected - 制定比较的目标对象
 
-** 返回结果:**
+**返回结果:**
 * 返回对象比较的结果
 
 ### toString
@@ -181,7 +181,7 @@ Boolean MemoryStream.equals(object expected);
 String MemoryStream.toString();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 返回对象的字符串表示
 
 ### toJSON
@@ -190,10 +190,10 @@ String MemoryStream.toString();
 Value MemoryStream.toJSON(String key = "");
 ```
 
-** 调用参数: **
+**调用参数:**
 * key - 未使用
 
-** 返回结果:**
+**返回结果:**
 * 返回包含可 JSON 序列化的值
 
 ### valueOf
@@ -202,6 +202,6 @@ Value MemoryStream.toJSON(String key = "");
 Value MemoryStream.valueOf();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 返回对象本身的数值
 

@@ -19,11 +19,11 @@ Buffer iconv.encode(String charset,
                 String data);
 ```
 
-** 调用参数: **
+**调用参数:**
 * charset - 指定字符集
 * data - 要转换的文本
 
-** 返回结果:**
+**返回结果:**
 * 返回解码的二进制数据
 
 ### decode
@@ -33,10 +33,10 @@ String iconv.decode(String charset,
                 Buffer data);
 ```
 
-** 调用参数: **
+**调用参数:**
 * charset - 指定字符集
 * data - 要转换的二进制数据
 
-** 返回结果:**
+**返回结果:**
 * 返回编码的字符串
 

@@ -13,10 +13,10 @@ var db = require(&#39;db&#39;);
 object db.open(String connString);
 ```
 
-** 调用参数: **
+**调用参数:**
 * connString - 数据库描述，如：mysql://user:pass\@host/db
 
-** 返回结果:**
+**返回结果:**
 * 返回数据库连接对象
 
 ### openMySQL
@@ -25,10 +25,10 @@ object db.open(String connString);
 MySQL db.openMySQL(String connString);
 ```
 
-** 调用参数: **
+**调用参数:**
 * connString - 数据库描述，如：mysql://user:pass\@host/db
 
-** 返回结果:**
+**返回结果:**
 * 返回数据库连接对象
 
 ### openMSSQL
@@ -37,10 +37,10 @@ MySQL db.openMySQL(String connString);
 MSSQL db.openMSSQL(String connString);
 ```
 
-** 调用参数: **
+**调用参数:**
 * connString - 数据库描述，如：mssql://user:pass\@host/db
 
-** 返回结果:**
+**返回结果:**
 * 返回数据库连接对象
 
 ### openSQLite
@@ -49,10 +49,10 @@ MSSQL db.openMSSQL(String connString);
 SQLite db.openSQLite(String connString);
 ```
 
-** 调用参数: **
+**调用参数:**
 * connString - 数据库描述，如：sqlite:test.db 或者 test.db
 
-** 返回结果:**
+**返回结果:**
 * 返回数据库连接对象
 
 ### openMongoDB
@@ -61,10 +61,10 @@ SQLite db.openSQLite(String connString);
 MongoDB db.openMongoDB(String connString);
 ```
 
-** 调用参数: **
+**调用参数:**
 * connString - 数据库描述
 
-** 返回结果:**
+**返回结果:**
 * 返回数据库连接对象
 
 ### openLevelDB
@@ -73,10 +73,10 @@ MongoDB db.openMongoDB(String connString);
 LevelDB db.openLevelDB(String connString);
 ```
 
-** 调用参数: **
+**调用参数:**
 * connString - 数据库描述，如：level:test.db 或者 test.db
 
-** 返回结果:**
+**返回结果:**
 * 返回数据库对象
 
 ### openRedis
@@ -85,10 +85,10 @@ LevelDB db.openLevelDB(String connString);
 Redis db.openRedis(String connString);
 ```
 
-** 调用参数: **
+**调用参数:**
 * connString - 数据库描述，如：redis://server:port 或者 &#34;server&#34;
 
-** 返回结果:**
+**返回结果:**
 * 返回数据库连接对象
 
 ### format
@@ -98,11 +98,11 @@ String db.format(String sql,
                 ...);
 ```
 
-** 调用参数: **
+**调用参数:**
 * sql - 格式化字符串，可选参数用 ? 指定。例如：&#39;SELECT FROM TEST WHERE [id]=?&#39;
 * ... - 可选参数列表
 
-** 返回结果:**
+**返回结果:**
 * 返回格式化之后的 sql 命令
 
 ### formatMySQL
@@ -112,11 +112,11 @@ String db.formatMySQL(String sql,
                 ...);
 ```
 
-** 调用参数: **
+**调用参数:**
 * sql - 格式化字符串，可选参数用 ? 指定。例如：&#39;SELECT FROM TEST WHERE [id]=?&#39;
 * ... - 可选参数列表
 
-** 返回结果:**
+**返回结果:**
 * 返回格式化之后的 sql 命令
 
 ### formatMSSQL
@@ -126,11 +126,11 @@ String db.formatMSSQL(String sql,
                 ...);
 ```
 
-** 调用参数: **
+**调用参数:**
 * sql - 格式化字符串，可选参数用 ? 指定。例如：&#39;SELECT FROM TEST WHERE [id]=?&#39;
 * ... - 可选参数列表
 
-** 返回结果:**
+**返回结果:**
 * 返回格式化之后的 sql 命令
 
 ### escape
@@ -140,10 +140,10 @@ String db.escape(String str,
                 Boolean mysql = false);
 ```
 
-** 调用参数: **
+**调用参数:**
 * str - 要编码的字符串
 * mysql - 指定 mysql 编码，缺省为 false
 
-** 返回结果:**
+**返回结果:**
 * 返回编码后的字符串
 

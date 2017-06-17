@@ -9,7 +9,7 @@
 Digest.update(Buffer data);
 ```
 
-** 调用参数: **
+**调用参数:**
 * data - 二进制数据块
 
 ### digest
@@ -18,10 +18,10 @@ Digest.update(Buffer data);
 Buffer Digest.digest(Buffer data);
 ```
 
-** 调用参数: **
+**调用参数:**
 * data - 二进制数据块，此数据块将在计算前更新进摘要
 
-** 返回结果:**
+**返回结果:**
 * 返回摘要的二进制数据
 
 ### digest
@@ -30,7 +30,7 @@ Buffer Digest.digest(Buffer data);
 Buffer Digest.digest();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 返回摘要的二进制数据
 
 ### dispose
@@ -45,10 +45,10 @@ Digest.dispose();
 Boolean Digest.equals(object expected);
 ```
 
-** 调用参数: **
+**调用参数:**
 * expected - 制定比较的目标对象
 
-** 返回结果:**
+**返回结果:**
 * 返回对象比较的结果
 
 ### toString
@@ -57,7 +57,7 @@ Boolean Digest.equals(object expected);
 String Digest.toString();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 返回对象的字符串表示
 
 ### toJSON
@@ -66,10 +66,10 @@ String Digest.toString();
 Value Digest.toJSON(String key = "");
 ```
 
-** 调用参数: **
+**调用参数:**
 * key - 未使用
 
-** 返回结果:**
+**返回结果:**
 * 返回包含可 JSON 序列化的值
 
 ### valueOf
@@ -78,7 +78,7 @@ Value Digest.toJSON(String key = "");
 Value Digest.valueOf();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 返回对象本身的数值
 
 ## 属性

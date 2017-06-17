@@ -10,11 +10,11 @@ XmlDocument xml.parse(String source,
                 String type = "text/xml");
 ```
 
-** 调用参数: **
+**调用参数:**
 * source - 指定需要解析的 xml/html 文本
 * type - 指定文本类型，缺省为 text/xml，也可指定为 text/html
 
-** 返回结果:**
+**返回结果:**
 * 返回创建的 XmlDocument 对象
 
 ### parse
@@ -24,11 +24,11 @@ XmlDocument xml.parse(Buffer source,
                 String type = "text/xml");
 ```
 
-** 调用参数: **
+**调用参数:**
 * source - 指定需要解析的 xml/html 二进制数据
 * type - 指定文本类型，缺省为 text/xml，也可指定为 text/html
 
-** 返回结果:**
+**返回结果:**
 * 返回创建的 XmlDocument 对象
 
 ### serialize
@@ -37,10 +37,10 @@ XmlDocument xml.parse(Buffer source,
 String xml.serialize(XmlNode node);
 ```
 
-** 调用参数: **
+**调用参数:**
 * node - 指定需要序列化的 XmlNode
 
-** 返回结果:**
+**返回结果:**
 * 返回序列化的字符串
 
 ## 常量

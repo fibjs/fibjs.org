@@ -13,7 +13,7 @@ var gui = require(&#39;gui&#39;);
 gui.setVersion(Integer ver);
 ```
 
-** 调用参数: **
+**调用参数:**
 
 ### open
 打开一个窗口并访问指定网址
@@ -21,10 +21,10 @@ gui.setVersion(Integer ver);
 WebView gui.open(String url);
 ```
 
-** 调用参数: **
+**调用参数:**
 * url - 指定的网址，，可以使用 fs:path 访问本地文件系统
 
-** 返回结果:**
+**返回结果:**
 * 返回打开的窗口对象
 
 ### open
@@ -34,11 +34,11 @@ WebView gui.open(String url,
                 Map opt);
 ```
 
-** 调用参数: **
+**调用参数:**
 * url - 指定的网址，，可以使用 fs:path 访问本地文件系统
 * opt - 打开窗口参数，支持以下参数:
 
-** 返回结果:**
+**返回结果:**
 * 返回打开的窗口对象
 
 ## 常量

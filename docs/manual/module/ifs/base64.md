@@ -18,10 +18,10 @@ var base64 = require(&#39;base64&#39;);
 String base64.encode(Buffer data);
 ```
 
-** 调用参数: **
+**调用参数:**
 * data - 要编码的数据
 
-** 返回结果:**
+**返回结果:**
 * 返回编码的字符串
 
 ### decode
@@ -30,9 +30,9 @@ String base64.encode(Buffer data);
 Buffer base64.decode(String data);
 ```
 
-** 调用参数: **
+**调用参数:**
 * data - 要解码的字符串
 
-** 返回结果:**
+**返回结果:**
 * 返回解码的二进制数据
 

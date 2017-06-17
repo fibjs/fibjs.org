@@ -169,7 +169,7 @@ var sbox = new vm.SandBox({
 <p>构造一个新的安全沙箱对象，并初始化基础模块</p>
 <pre><code class="lang-JavaScript"> <span class="hljs-keyword">new</span> SandBox(<span class="hljs-built_in">Object</span> mods);
 </code></pre>
-<p><strong> 调用参数: </strong></p>
+<p><strong>调用参数:</strong></p>
 <ul>
 <li>mods - 指定要添加的模块对象字典</li>
 </ul>
@@ -178,7 +178,7 @@ var sbox = new vm.SandBox({
 <pre><code class="lang-JavaScript"> <span class="hljs-keyword">new</span> SandBox(<span class="hljs-built_in">Object</span> mods,
                 <span class="hljs-built_in">Function</span> <span class="hljs-built_in">require</span>);
 </code></pre>
-<p><strong> 调用参数: </strong></p>
+<p><strong>调用参数:</strong></p>
 <ul>
 <li>mods - 指定要添加的模块对象字典</li>
 <li>require - 自定义 require 函数，当模块不存在时，先调用自定义函数，无返回再从文件中加载</li>
@@ -188,7 +188,7 @@ var sbox = new vm.SandBox({
 <pre><code class="lang-JavaScript"> <span class="hljs-keyword">new</span> SandBox(<span class="hljs-built_in">Object</span> mods,
                 <span class="hljs-built_in">Object</span> global);
 </code></pre>
-<p><strong> 调用参数: </strong></p>
+<p><strong>调用参数:</strong></p>
 <ul>
 <li>mods - 指定要添加的模块对象字典</li>
 <li>global - 指定初始化的 Global 属性</li>
@@ -199,7 +199,7 @@ var sbox = new vm.SandBox({
                 <span class="hljs-built_in">Function</span> <span class="hljs-built_in">require</span>,
                 <span class="hljs-built_in">Object</span> global);
 </code></pre>
-<p><strong> 调用参数: </strong></p>
+<p><strong>调用参数:</strong></p>
 <ul>
 <li>mods - 指定要添加的模块对象字典</li>
 <li>require - 自定义 require 函数，当模块不存在时，先调用自定义函数，无返回再从文件中加载</li>
@@ -211,7 +211,7 @@ var sbox = new vm.SandBox({
 <pre><code class="lang-JavaScript">SandBox.add(<span class="hljs-built_in">String</span> id,
                 Value mod);
 </code></pre>
-<p><strong> 调用参数: </strong></p>
+<p><strong>调用参数:</strong></p>
 <ul>
 <li>id - 指定要添加的模块名称，此路径与当前运行脚本无关，必须为绝对路径或者模块名</li>
 <li>mod - 指定要添加的模块对象</li>
@@ -220,7 +220,7 @@ var sbox = new vm.SandBox({
 <p>向沙箱中添加一组基础模块</p>
 <pre><code class="lang-JavaScript">SandBox.add(<span class="hljs-built_in">Object</span> mods);
 </code></pre>
-<p><strong> 调用参数: </strong></p>
+<p><strong>调用参数:</strong></p>
 <ul>
 <li>mods - 指定要添加的模块对象字典，添加的 javascript 模块将会生成一份复制，以避免沙箱修改对象产生互相干扰</li>
 </ul>
@@ -229,12 +229,12 @@ var sbox = new vm.SandBox({
 <pre><code class="lang-JavaScript">Value SandBox.addScript(<span class="hljs-built_in">String</span> srcname,
                 Buffer script);
 </code></pre>
-<p><strong> 调用参数: </strong></p>
+<p><strong>调用参数:</strong></p>
 <ul>
 <li>srcname - 指定要添加的脚本名称，srcname 必须包含扩展名，比如 json 或者 js, jsc</li>
 <li>script - 指定要添加的二进制代码</li>
 </ul>
-<p><strong> 返回结果:</strong></p>
+<p><strong>返回结果:</strong></p>
 <ul>
 <li>返回加载的模块对象</li>
 </ul>
@@ -242,7 +242,7 @@ var sbox = new vm.SandBox({
 <p>从沙箱中删除指定的基础模块</p>
 <pre><code class="lang-JavaScript">SandBox.remove(<span class="hljs-built_in">String</span> id);
 </code></pre>
-<p><strong> 调用参数: </strong></p>
+<p><strong>调用参数:</strong></p>
 <ul>
 <li>id - 指定要删除的模块名称，此路径与当前运行脚本无关，必须为绝对路径或者模块名</li>
 </ul>
@@ -250,7 +250,7 @@ var sbox = new vm.SandBox({
 <p>复制当前沙箱，新沙箱包含当前沙箱的模块，以及相同的名称和 require 函数</p>
 <pre><code class="lang-JavaScript">SandBox SandBox.clone();
 </code></pre>
-<p><strong> 返回结果:</strong></p>
+<p><strong>返回结果:</strong></p>
 <ul>
 <li>复制的新沙箱</li>
 </ul>
@@ -259,7 +259,7 @@ var sbox = new vm.SandBox({
 <pre><code class="lang-JavaScript">SandBox.run(<span class="hljs-built_in">String</span> fname,
                 <span class="hljs-built_in">Array</span> argv = []);
 </code></pre>
-<p><strong> 调用参数: </strong></p>
+<p><strong>调用参数:</strong></p>
 <ul>
 <li>fname - 指定要运行的脚本路径，此路径与当前运行脚本无关，必须为绝对路径</li>
 <li>argv - 指定要运行的参数，此参数可在脚本内使用 argv 获取</li>
@@ -269,12 +269,12 @@ var sbox = new vm.SandBox({
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> SandBox.resovle(<span class="hljs-built_in">String</span> id,
                 <span class="hljs-built_in">String</span> base);
 </code></pre>
-<p><strong> 调用参数: </strong></p>
+<p><strong>调用参数:</strong></p>
 <ul>
 <li>id - 指定要加载的模块名称</li>
 <li>base - 指定查找路径</li>
 </ul>
-<p><strong> 返回结果:</strong></p>
+<p><strong>返回结果:</strong></p>
 <ul>
 <li>返回加载的模块完整文件名</li>
 </ul>
@@ -283,12 +283,12 @@ var sbox = new vm.SandBox({
 <pre><code class="lang-JavaScript">Value SandBox.require(<span class="hljs-built_in">String</span> id,
                 <span class="hljs-built_in">String</span> base);
 </code></pre>
-<p><strong> 调用参数: </strong></p>
+<p><strong>调用参数:</strong></p>
 <ul>
 <li>id - 指定要加载的模块名称</li>
 <li>base - 指定查找路径</li>
 </ul>
-<p><strong> 返回结果:</strong></p>
+<p><strong>返回结果:</strong></p>
 <ul>
 <li>返回加载的模块对象</li>
 </ul>
@@ -300,11 +300,11 @@ var sbox = new vm.SandBox({
 <p>比较当前对象与给定的对象是否相等</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">Boolean</span> SandBox.equals(object expected);
 </code></pre>
-<p><strong> 调用参数: </strong></p>
+<p><strong>调用参数:</strong></p>
 <ul>
 <li>expected - 制定比较的目标对象</li>
 </ul>
-<p><strong> 返回结果:</strong></p>
+<p><strong>返回结果:</strong></p>
 <ul>
 <li>返回对象比较的结果</li>
 </ul>
@@ -312,7 +312,7 @@ var sbox = new vm.SandBox({
 <p>返回对象的字符串表示，一般返回 &#34;[Native Object]&#34;，对象可以根据自己的特性重新实现</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> SandBox.toString();
 </code></pre>
-<p><strong> 返回结果:</strong></p>
+<p><strong>返回结果:</strong></p>
 <ul>
 <li>返回对象的字符串表示</li>
 </ul>
@@ -320,11 +320,11 @@ var sbox = new vm.SandBox({
 <p>返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合</p>
 <pre><code class="lang-JavaScript">Value SandBox.toJSON(<span class="hljs-built_in">String</span> key = <span class="hljs-string">""</span>);
 </code></pre>
-<p><strong> 调用参数: </strong></p>
+<p><strong>调用参数:</strong></p>
 <ul>
 <li>key - 未使用</li>
 </ul>
-<p><strong> 返回结果:</strong></p>
+<p><strong>返回结果:</strong></p>
 <ul>
 <li>返回包含可 JSON 序列化的值</li>
 </ul>
@@ -332,7 +332,7 @@ var sbox = new vm.SandBox({
 <p>返回对象本身的数值</p>
 <pre><code class="lang-JavaScript">Value SandBox.valueOf();
 </code></pre>
-<p><strong> 返回结果:</strong></p>
+<p><strong>返回结果:</strong></p>
 <ul>
 <li>返回对象本身的数值</li>
 </ul>

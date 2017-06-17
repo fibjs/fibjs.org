@@ -33,10 +33,10 @@ DbConnection.rollback();
 DBResult DbConnection.execute(String sql);
 ```
 
-** 调用参数: **
+**调用参数:**
 * sql - 格式化字符串，可选参数用 ? 指定。例如：&#39;SELECT FROM TEST WHERE [id]=?&#39;
 
-** 返回结果:**
+**返回结果:**
 * 返回 sql 命令执行结果
 
 ### execute
@@ -46,11 +46,11 @@ DBResult DbConnection.execute(String sql,
                 ...);
 ```
 
-** 调用参数: **
+**调用参数:**
 * sql - 格式化字符串，可选参数用 ? 指定。例如：&#39;SELECT FROM TEST WHERE [id]=?&#39;
 * ... - 可选参数列表
 
-** 返回结果:**
+**返回结果:**
 * 返回 sql 命令执行结果
 
 ### format
@@ -60,11 +60,11 @@ String DbConnection.format(String sql,
                 ...);
 ```
 
-** 调用参数: **
+**调用参数:**
 * sql - 格式化字符串，可选参数用 ? 指定。例如：&#39;SELECT FROM TEST WHERE [id]=?&#39;
 * ... - 可选参数列表
 
-** 返回结果:**
+**返回结果:**
 * 返回格式化之后的 sql 命令
 
 ### dispose
@@ -79,10 +79,10 @@ DbConnection.dispose();
 Boolean DbConnection.equals(object expected);
 ```
 
-** 调用参数: **
+**调用参数:**
 * expected - 制定比较的目标对象
 
-** 返回结果:**
+**返回结果:**
 * 返回对象比较的结果
 
 ### toString
@@ -91,7 +91,7 @@ Boolean DbConnection.equals(object expected);
 String DbConnection.toString();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 返回对象的字符串表示
 
 ### toJSON
@@ -100,10 +100,10 @@ String DbConnection.toString();
 Value DbConnection.toJSON(String key = "");
 ```
 
-** 调用参数: **
+**调用参数:**
 * key - 未使用
 
-** 返回结果:**
+**返回结果:**
 * 返回包含可 JSON 序列化的值
 
 ### valueOf
@@ -112,7 +112,7 @@ Value DbConnection.toJSON(String key = "");
 Value DbConnection.valueOf();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 返回对象本身的数值
 
 ## 属性

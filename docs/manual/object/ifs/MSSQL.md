@@ -13,7 +13,7 @@ var sql = db.openMSSQL(&#34;mssql://user:pass@host/db&#34;);
 MSSQL.use(String dbName);
 ```
 
-** 调用参数: **
+**调用参数:**
 * dbName - 指定数据库名
 
 ### close
@@ -46,10 +46,10 @@ MSSQL.rollback();
 DBResult MSSQL.execute(String sql);
 ```
 
-** 调用参数: **
+**调用参数:**
 * sql - 格式化字符串，可选参数用 ? 指定。例如：&#39;SELECT FROM TEST WHERE [id]=?&#39;
 
-** 返回结果:**
+**返回结果:**
 * 返回 sql 命令执行结果
 
 ### execute
@@ -59,11 +59,11 @@ DBResult MSSQL.execute(String sql,
                 ...);
 ```
 
-** 调用参数: **
+**调用参数:**
 * sql - 格式化字符串，可选参数用 ? 指定。例如：&#39;SELECT FROM TEST WHERE [id]=?&#39;
 * ... - 可选参数列表
 
-** 返回结果:**
+**返回结果:**
 * 返回 sql 命令执行结果
 
 ### format
@@ -73,11 +73,11 @@ String MSSQL.format(String sql,
                 ...);
 ```
 
-** 调用参数: **
+**调用参数:**
 * sql - 格式化字符串，可选参数用 ? 指定。例如：&#39;SELECT FROM TEST WHERE [id]=?&#39;
 * ... - 可选参数列表
 
-** 返回结果:**
+**返回结果:**
 * 返回格式化之后的 sql 命令
 
 ### dispose
@@ -92,10 +92,10 @@ MSSQL.dispose();
 Boolean MSSQL.equals(object expected);
 ```
 
-** 调用参数: **
+**调用参数:**
 * expected - 制定比较的目标对象
 
-** 返回结果:**
+**返回结果:**
 * 返回对象比较的结果
 
 ### toString
@@ -104,7 +104,7 @@ Boolean MSSQL.equals(object expected);
 String MSSQL.toString();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 返回对象的字符串表示
 
 ### toJSON
@@ -113,10 +113,10 @@ String MSSQL.toString();
 Value MSSQL.toJSON(String key = "");
 ```
 
-** 调用参数: **
+**调用参数:**
 * key - 未使用
 
-** 返回结果:**
+**返回结果:**
 * 返回包含可 JSON 序列化的值
 
 ### valueOf
@@ -125,7 +125,7 @@ Value MSSQL.toJSON(String key = "");
 Value MSSQL.valueOf();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 返回对象本身的数值
 
 ## 属性

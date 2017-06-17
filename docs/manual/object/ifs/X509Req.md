@@ -21,7 +21,7 @@ X509Req 构造函数，根据给定的信息创建一个证书请求
                 Integer hash = undefined);
 ```
 
-** 调用参数: **
+**调用参数:**
 * subject - 证书的主题可分辨名称
 * key - 证书的公钥
 * hash - 证书摘要算法，缺省为 hash.SHA1
@@ -34,7 +34,7 @@ X509Req 构造函数，根据给定的信息创建一个证书请求
 X509Req.load(Buffer derReq);
 ```
 
-** 调用参数: **
+**调用参数:**
 * derReq - DER 格式的证书请求
 
 ### load
@@ -43,7 +43,7 @@ X509Req.load(Buffer derReq);
 X509Req.load(String pemReq);
 ```
 
-** 调用参数: **
+**调用参数:**
 * pemReq - PEM 格式的证书请求
 
 ### loadFile
@@ -52,7 +52,7 @@ X509Req.load(String pemReq);
 X509Req.loadFile(String filename);
 ```
 
-** 调用参数: **
+**调用参数:**
 * filename - 证书请求文件名
 
 ### exportPem
@@ -61,7 +61,7 @@ X509Req.loadFile(String filename);
 String X509Req.exportPem();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 当前证书请求的 PEM 格式编码
 
 ### exportDer
@@ -70,7 +70,7 @@ String X509Req.exportPem();
 Buffer X509Req.exportDer();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 当前证书请求的 DER 格式编码
 
 ### sign
@@ -81,12 +81,12 @@ X509Cert X509Req.sign(String issuer,
                 Object opts = {});
 ```
 
-** 调用参数: **
+**调用参数:**
 * issuer - 签名机构的可分辨名称
 * key - 签名机构的私钥
 * opts - 其他可选参数
 
-** 返回结果:**
+**返回结果:**
 * 返回签名后的正式证书
 
 ### dispose
@@ -101,10 +101,10 @@ X509Req.dispose();
 Boolean X509Req.equals(object expected);
 ```
 
-** 调用参数: **
+**调用参数:**
 * expected - 制定比较的目标对象
 
-** 返回结果:**
+**返回结果:**
 * 返回对象比较的结果
 
 ### toString
@@ -113,7 +113,7 @@ Boolean X509Req.equals(object expected);
 String X509Req.toString();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 返回对象的字符串表示
 
 ### toJSON
@@ -122,10 +122,10 @@ String X509Req.toString();
 Value X509Req.toJSON(String key = "");
 ```
 
-** 调用参数: **
+**调用参数:**
 * key - 未使用
 
-** 返回结果:**
+**返回结果:**
 * 返回包含可 JSON 序列化的值
 
 ### valueOf
@@ -134,7 +134,7 @@ Value X509Req.toJSON(String key = "");
 Value X509Req.valueOf();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 返回对象本身的数值
 
 ## 属性

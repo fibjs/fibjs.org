@@ -18,10 +18,10 @@ var json = require(&#39;json&#39;);
 String json.encode(Value data);
 ```
 
-** 调用参数: **
+**调用参数:**
 * data - 要编码的变量
 
-** 返回结果:**
+**返回结果:**
 * 返回编码的字符串
 
 ### decode
@@ -30,9 +30,9 @@ String json.encode(Value data);
 Value json.decode(String data);
 ```
 
-** 调用参数: **
+**调用参数:**
 * data - 要解码的字符串
 
-** 返回结果:**
+**返回结果:**
 * 返回解码的变量
 

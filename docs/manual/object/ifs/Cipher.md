@@ -14,7 +14,7 @@ Cipher 构造函数，仅用于 ARC4 初始化
                 Buffer key);
 ```
 
-** 调用参数: **
+**调用参数:**
 * provider - 指定加密算法
 * key - 指定加密解密密码
 
@@ -26,7 +26,7 @@ Cipher 构造函数
                 Buffer key);
 ```
 
-** 调用参数: **
+**调用参数:**
 * provider - 指定加密算法
 * mode - 指定分组密码工作模式
 * key - 指定加密解密密码
@@ -40,7 +40,7 @@ Cipher 构造函数
                 Buffer iv);
 ```
 
-** 调用参数: **
+**调用参数:**
 * provider - 指定加密算法
 * mode - 指定分组密码工作模式
 * key - 指定加密解密密码
@@ -54,7 +54,7 @@ Cipher 构造函数
 Cipher.paddingMode(Integer mode);
 ```
 
-** 调用参数: **
+**调用参数:**
 * mode - 指定填充模式，缺省为 PADDING_PKCS7
 
 ### encrypt
@@ -63,10 +63,10 @@ Cipher.paddingMode(Integer mode);
 Buffer Cipher.encrypt(Buffer data);
 ```
 
-** 调用参数: **
+**调用参数:**
 * data - 指定要加密的数据
 
-** 返回结果:**
+**返回结果:**
 * 返回加密后的数据
 
 ### decrypt
@@ -75,10 +75,10 @@ Buffer Cipher.encrypt(Buffer data);
 Buffer Cipher.decrypt(Buffer data);
 ```
 
-** 调用参数: **
+**调用参数:**
 * data - 指定要解密的数据
 
-** 返回结果:**
+**返回结果:**
 * 返回解密后的数据
 
 ### dispose
@@ -93,10 +93,10 @@ Cipher.dispose();
 Boolean Cipher.equals(object expected);
 ```
 
-** 调用参数: **
+**调用参数:**
 * expected - 制定比较的目标对象
 
-** 返回结果:**
+**返回结果:**
 * 返回对象比较的结果
 
 ### toString
@@ -105,7 +105,7 @@ Boolean Cipher.equals(object expected);
 String Cipher.toString();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 返回对象的字符串表示
 
 ### toJSON
@@ -114,10 +114,10 @@ String Cipher.toString();
 Value Cipher.toJSON(String key = "");
 ```
 
-** 调用参数: **
+**调用参数:**
 * key - 未使用
 
-** 返回结果:**
+**返回结果:**
 * 返回包含可 JSON 序列化的值
 
 ### valueOf
@@ -126,7 +126,7 @@ Value Cipher.toJSON(String key = "");
 Value Cipher.valueOf();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 返回对象本身的数值
 
 ## 属性

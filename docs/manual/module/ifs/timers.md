@@ -9,7 +9,7 @@ timers 模块
 timers.clearInterval(Timer t);
 ```
 
-** 调用参数: **
+**调用参数:**
 * t - 指定要清除的定时器
 
 ### clearTimeout
@@ -18,7 +18,7 @@ timers.clearInterval(Timer t);
 timers.clearTimeout(Timer t);
 ```
 
-** 调用参数: **
+**调用参数:**
 * t - 指定要清除的定时器
 
 ### clearImmediate
@@ -27,7 +27,7 @@ timers.clearTimeout(Timer t);
 timers.clearImmediate(Timer t);
 ```
 
-** 调用参数: **
+**调用参数:**
 * t - 指定要清除的定时器
 
 ### setInterval
@@ -37,11 +37,11 @@ Timer timers.setInterval(Function callback,
                 Integer timeout);
 ```
 
-** 调用参数: **
+**调用参数:**
 * callback - 指定回调函数
 * timeout - 指定间隔的时间，以毫秒为单位
 
-** 返回结果:**
+**返回结果:**
 * 返回定时器对象
 
 ### setTimeout
@@ -51,11 +51,11 @@ Timer timers.setTimeout(Function callback,
                 Integer timeout);
 ```
 
-** 调用参数: **
+**调用参数:**
 * callback - 指定回调函数
 * timeout - 指定延时的时间，以毫秒为单位
 
-** 返回结果:**
+**返回结果:**
 * 返回定时器对象
 
 ### setImmediate
@@ -64,9 +64,9 @@ Timer timers.setTimeout(Function callback,
 Timer timers.setImmediate(Function callback);
 ```
 
-** 调用参数: **
+**调用参数:**
 * callback - 指定回调函数
 
-** 返回结果:**
+**返回结果:**
 * 返回定时器对象
 

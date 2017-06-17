@@ -18,10 +18,10 @@ var bson = require(&#39;bson&#39;);
 Buffer bson.encode(Object data);
 ```
 
-** 调用参数: **
+**调用参数:**
 * data - 要编码的变量
 
-** 返回结果:**
+**返回结果:**
 * 返回编码的二进制数据
 
 ### decode
@@ -30,9 +30,9 @@ Buffer bson.encode(Object data);
 Object bson.decode(Buffer data);
 ```
 
-** 调用参数: **
+**调用参数:**
 * data - 要解码的二进制数据
 
-** 返回结果:**
+**返回结果:**
 * 返回解码的变量
 

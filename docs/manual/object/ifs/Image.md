@@ -15,11 +15,11 @@ Buffer Image.getData(Integer format = undefined,
                 Integer quality = 85);
 ```
 
-** 调用参数: **
+**调用参数:**
 * format - 指定返回数据的格式，允许值为 gd.PNG, gd.JPEG, gd.GIF, gd.BMP, gd.WEBP, 缺省为 gd.PNG
 * quality - 当格式为 gd.JPEG 或 gd.WEBP 时用于指定压缩质量，缺省为 85，其他格式忽略此参数
 
-** 返回结果:**
+**返回结果:**
 * 返回格式化的数据
 
 ### save
@@ -30,7 +30,7 @@ Image.save(Stream stm,
                 Integer quality = 85);
 ```
 
-** 调用参数: **
+**调用参数:**
 * stm - 指定要存入的流对象
 * format - 指定返回数据的格式，允许值为 gd.PNG, gd.JPEG, gd.GIF, gd.BMP, gd.WEBP, 缺省为 gd.PNG
 * quality - 当格式为 gd.JPEG 或 gd.WEBP 时用于指定压缩质量，缺省为 85，其他格式忽略此参数
@@ -43,7 +43,7 @@ Image.save(String fname,
                 Integer quality = 85);
 ```
 
-** 调用参数: **
+**调用参数:**
 * fname - 指定文件名
 * format - 指定返回数据的格式，允许值为 gd.PNG, gd.JPEG, gd.GIF, gd.BMP, gd.WEBP, 缺省为 gd.PNG
 * quality - 当格式为 gd.JPEG 时用于指定压缩质量，缺省为 85，其他格式忽略此参数
@@ -56,12 +56,12 @@ Integer Image.colorAllocate(Integer red,
                 Integer blue);
 ```
 
-** 调用参数: **
+**调用参数:**
 * red - 红色分量，范围为 0-255
 * green - 绿色分量，范围为 0-255
 * blue - 蓝色分量，范围为 0-255
 
-** 返回结果:**
+**返回结果:**
 * 返回颜色号，不成功返回 -1
 
 ### colorAllocate
@@ -70,10 +70,10 @@ Integer Image.colorAllocate(Integer red,
 Integer Image.colorAllocate(Integer color);
 ```
 
-** 调用参数: **
+**调用参数:**
 * color - 组合颜色值，可由 gd.color, gb.rgb, gd.rgba 等函数生成
 
-** 返回结果:**
+**返回结果:**
 * 返回颜色号，不成功返回 -1
 
 ### colorAllocateAlpha
@@ -85,13 +85,13 @@ Integer Image.colorAllocateAlpha(Integer red,
                 Number alpha);
 ```
 
-** 调用参数: **
+**调用参数:**
 * red - 红色分量，范围为 0-255
 * green - 绿色分量，范围为 0-255
 * blue - 蓝色分量，范围为 0-255
 * alpha - 透明分量，范围为 0-1.0
 
-** 返回结果:**
+**返回结果:**
 * 返回颜色号，不成功返回 -1
 
 ### colorAllocateAlpha
@@ -100,10 +100,10 @@ Integer Image.colorAllocateAlpha(Integer red,
 Integer Image.colorAllocateAlpha(Integer color);
 ```
 
-** 调用参数: **
+**调用参数:**
 * color - 组合颜色值，可由 gd.color, gb.rgb, gd.rgba 等函数生成
 
-** 返回结果:**
+**返回结果:**
 * 返回颜色号，不成功返回 -1
 
 ### colorClosest
@@ -114,12 +114,12 @@ Integer Image.colorClosest(Integer red,
                 Integer blue);
 ```
 
-** 调用参数: **
+**调用参数:**
 * red - 红色分量，范围为 0-255
 * green - 绿色分量，范围为 0-255
 * blue - 蓝色分量，范围为 0-255
 
-** 返回结果:**
+**返回结果:**
 * 返回颜色号，不成功返回 -1
 
 ### colorClosest
@@ -128,10 +128,10 @@ Integer Image.colorClosest(Integer red,
 Integer Image.colorClosest(Integer color);
 ```
 
-** 调用参数: **
+**调用参数:**
 * color - 组合颜色值，可由 gd.color, gb.rgb, gd.rgba 等函数生成
 
-** 返回结果:**
+**返回结果:**
 * 返回颜色号，不成功返回 -1
 
 ### colorClosestHWB
@@ -142,12 +142,12 @@ Integer Image.colorClosestHWB(Integer red,
                 Integer blue);
 ```
 
-** 调用参数: **
+**调用参数:**
 * red - 红色分量，范围为 0-255
 * green - 绿色分量，范围为 0-255
 * blue - 蓝色分量，范围为 0-255
 
-** 返回结果:**
+**返回结果:**
 * 返回颜色号，不成功返回 -1
 
 ### colorClosestHWB
@@ -156,10 +156,10 @@ Integer Image.colorClosestHWB(Integer red,
 Integer Image.colorClosestHWB(Integer color);
 ```
 
-** 调用参数: **
+**调用参数:**
 * color - 组合颜色值，可由 gd.color, gb.rgb, gd.rgba 等函数生成
 
-** 返回结果:**
+**返回结果:**
 * 返回颜色号，不成功返回 -1
 
 ### colorClosestAlpha
@@ -171,13 +171,13 @@ Integer Image.colorClosestAlpha(Integer red,
                 Number alpha);
 ```
 
-** 调用参数: **
+**调用参数:**
 * red - 红色分量，范围为 0-255
 * green - 绿色分量，范围为 0-255
 * blue - 蓝色分量，范围为 0-255
 * alpha - 透明分量，范围为 0-1.0
 
-** 返回结果:**
+**返回结果:**
 * 返回颜色号，不成功返回 -1
 
 ### colorClosestAlpha
@@ -186,10 +186,10 @@ Integer Image.colorClosestAlpha(Integer red,
 Integer Image.colorClosestAlpha(Integer color);
 ```
 
-** 调用参数: **
+**调用参数:**
 * color - 组合颜色值，可由 gd.color, gb.rgb, gd.rgba 等函数生成
 
-** 返回结果:**
+**返回结果:**
 * 返回颜色号，不成功返回 -1
 
 ### colorExact
@@ -200,12 +200,12 @@ Integer Image.colorExact(Integer red,
                 Integer blue);
 ```
 
-** 调用参数: **
+**调用参数:**
 * red - 红色分量，范围为 0-255
 * green - 绿色分量，范围为 0-255
 * blue - 蓝色分量，范围为 0-255
 
-** 返回结果:**
+**返回结果:**
 * 返回颜色号，不成功返回 -1
 
 ### colorExact
@@ -214,10 +214,10 @@ Integer Image.colorExact(Integer red,
 Integer Image.colorExact(Integer color);
 ```
 
-** 调用参数: **
+**调用参数:**
 * color - 组合颜色值，可由 gd.color, gb.rgb, gd.rgba 等函数生成
 
-** 返回结果:**
+**返回结果:**
 * 返回颜色号，不成功返回 -1
 
 ### colorExactAlpha
@@ -229,13 +229,13 @@ Integer Image.colorExactAlpha(Integer red,
                 Number alpha);
 ```
 
-** 调用参数: **
+**调用参数:**
 * red - 红色分量，范围为 0-255
 * green - 绿色分量，范围为 0-255
 * blue - 蓝色分量，范围为 0-255
 * alpha - 透明分量，范围为 0-1.0
 
-** 返回结果:**
+**返回结果:**
 * 返回颜色号，不成功返回 -1
 
 ### colorExactAlpha
@@ -244,10 +244,10 @@ Integer Image.colorExactAlpha(Integer red,
 Integer Image.colorExactAlpha(Integer color);
 ```
 
-** 调用参数: **
+**调用参数:**
 * color - 组合颜色值，可由 gd.color, gb.rgb, gd.rgba 等函数生成
 
-** 返回结果:**
+**返回结果:**
 * 返回颜色号，不成功返回 -1
 
 ### colorResolve
@@ -258,12 +258,12 @@ Integer Image.colorResolve(Integer red,
                 Integer blue);
 ```
 
-** 调用参数: **
+**调用参数:**
 * red - 红色分量，范围为 0-255
 * green - 绿色分量，范围为 0-255
 * blue - 蓝色分量，范围为 0-255
 
-** 返回结果:**
+**返回结果:**
 * 返回颜色号，不成功返回 -1
 
 ### colorResolve
@@ -272,10 +272,10 @@ Integer Image.colorResolve(Integer red,
 Integer Image.colorResolve(Integer color);
 ```
 
-** 调用参数: **
+**调用参数:**
 * color - 组合颜色值，可由 gd.color, gb.rgb, gd.rgba 等函数生成
 
-** 返回结果:**
+**返回结果:**
 * 返回颜色号，不成功返回 -1
 
 ### colorResolveAlpha
@@ -287,13 +287,13 @@ Integer Image.colorResolveAlpha(Integer red,
                 Number alpha);
 ```
 
-** 调用参数: **
+**调用参数:**
 * red - 红色分量，范围为 0-255
 * green - 绿色分量，范围为 0-255
 * blue - 蓝色分量，范围为 0-255
 * alpha - 透明分量，范围为 0-1.0
 
-** 返回结果:**
+**返回结果:**
 * 返回颜色号，不成功返回 -1
 
 ### colorResolveAlpha
@@ -302,10 +302,10 @@ Integer Image.colorResolveAlpha(Integer red,
 Integer Image.colorResolveAlpha(Integer color);
 ```
 
-** 调用参数: **
+**调用参数:**
 * color - 组合颜色值，可由 gd.color, gb.rgb, gd.rgba 等函数生成
 
-** 返回结果:**
+**返回结果:**
 * 返回颜色号，不成功返回 -1
 
 ### colorDeallocate
@@ -314,7 +314,7 @@ Integer Image.colorResolveAlpha(Integer color);
 Image.colorDeallocate(Integer color);
 ```
 
-** 调用参数: **
+**调用参数:**
 * color - 指定要释放的颜色号
 
 ### clip
@@ -326,7 +326,7 @@ Image.clip(Integer x1,
                 Integer y2);
 ```
 
-** 调用参数: **
+**调用参数:**
 * x1 - 剪切窗口的左上 x 坐标
 * y1 - 剪切窗口的左上 y 坐标
 * x2 - 剪切窗口的右下 x 坐标
@@ -339,11 +339,11 @@ Integer Image.getPixel(Integer x,
                 Integer y);
 ```
 
-** 调用参数: **
+**调用参数:**
 * x - 指定查询的 x 坐标
 * y - 指定查询的 y 坐标
 
-** 返回结果:**
+**返回结果:**
 * 返回指定点的颜色号
 
 ### getTrueColorPixel
@@ -353,11 +353,11 @@ Integer Image.getTrueColorPixel(Integer x,
                 Integer y);
 ```
 
-** 调用参数: **
+**调用参数:**
 * x - 指定查询的 x 坐标
 * y - 指定查询的 y 坐标
 
-** 返回结果:**
+**返回结果:**
 * 返回指定点的颜色号
 
 ### setPixel
@@ -368,7 +368,7 @@ Image.setPixel(Integer x,
                 Integer color);
 ```
 
-** 调用参数: **
+**调用参数:**
 * x - 指定画点的 x 坐标
 * y - 指定画点的 y 坐标
 * color - 指定画点的颜色号
@@ -379,7 +379,7 @@ Image.setPixel(Integer x,
 Image.setThickness(Integer thickness);
 ```
 
-** 调用参数: **
+**调用参数:**
 * thickness - 画线的宽度
 
 ### line
@@ -392,7 +392,7 @@ Image.line(Integer x1,
                 Integer color);
 ```
 
-** 调用参数: **
+**调用参数:**
 * x1 - 指定画线的起始 x 坐标
 * y1 - 指定画线的起始 y 坐标
 * x2 - 指定画线的结束 x 坐标
@@ -409,7 +409,7 @@ Image.rectangle(Integer x1,
                 Integer color);
 ```
 
-** 调用参数: **
+**调用参数:**
 * x1 - 指定左上角 x 坐标
 * y1 - 指定左上角 y 坐标
 * x2 - 指定右下角 x 坐标
@@ -426,7 +426,7 @@ Image.filledRectangle(Integer x1,
                 Integer color);
 ```
 
-** 调用参数: **
+**调用参数:**
 * x1 - 指定左上角 x 坐标
 * y1 - 指定左上角 y 坐标
 * x2 - 指定右下角 x 坐标
@@ -440,7 +440,7 @@ Image.polygon(Array points,
                 Integer color);
 ```
 
-** 调用参数: **
+**调用参数:**
 * points - 包含多边形点的数组，如 [[1, 1], [1, 10], [10, 15], [10, 20]]
 * color - 指定矩形的颜色号
 
@@ -451,7 +451,7 @@ Image.openPolygon(Array points,
                 Integer color);
 ```
 
-** 调用参数: **
+**调用参数:**
 * points - 包含多边形点的数组，如 [[1, 1], [1, 10], [10, 15], [10, 20]]
 * color - 指定矩形的颜色号
 
@@ -462,7 +462,7 @@ Image.filledPolygon(Array points,
                 Integer color);
 ```
 
-** 调用参数: **
+**调用参数:**
 * points - 包含多边形点的数组，如 [[1, 1], [1, 10], [10, 15], [10, 20]]
 * color - 指定矩形的颜色号
 
@@ -476,7 +476,7 @@ Image.ellipse(Integer x,
                 Integer color);
 ```
 
-** 调用参数: **
+**调用参数:**
 * x - 椭圆中心的 x 坐标
 * y - 椭圆中心的 y 坐标
 * width - 椭圆的宽度
@@ -493,7 +493,7 @@ Image.filledEllipse(Integer x,
                 Integer color);
 ```
 
-** 调用参数: **
+**调用参数:**
 * x - 椭圆中心的 x 坐标
 * y - 椭圆中心的 y 坐标
 * width - 椭圆的宽度
@@ -512,7 +512,7 @@ Image.arc(Integer x,
                 Integer color);
 ```
 
-** 调用参数: **
+**调用参数:**
 * x - 扇形中心的 x 坐标
 * y - 扇形中心的 y 坐标
 * width - 扇形所在椭圆的宽度
@@ -534,7 +534,7 @@ Image.filledArc(Integer x,
                 Integer style = undefined);
 ```
 
-** 调用参数: **
+**调用参数:**
 * x - 扇形中心的 x 坐标
 * y - 扇形中心的 y 坐标
 * width - 扇形所在椭圆的宽度
@@ -552,7 +552,7 @@ Image.fill(Integer x,
                 Integer color);
 ```
 
-** 调用参数: **
+**调用参数:**
 * x - 开始填充的 x 坐标
 * y - 开始填充的 y 坐标
 * color - 指定填充的颜色号
@@ -566,7 +566,7 @@ Image.fillToBorder(Integer x,
                 Integer color);
 ```
 
-** 调用参数: **
+**调用参数:**
 * x - 开始填充的 x 坐标
 * y - 开始填充的 y 坐标
 * borderColor - 指定边框的颜色号
@@ -579,7 +579,7 @@ Image.colorReplace(Integer src,
                 Integer dst);
 ```
 
-** 调用参数: **
+**调用参数:**
 * src - 指定要替换的颜色
 * dst - 指定新颜色
 
@@ -589,7 +589,7 @@ Image.colorReplace(Integer src,
 Image Image.clone();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 返回复制的新图像对象
 
 ### resample
@@ -599,11 +599,11 @@ Image Image.resample(Integer width,
                 Integer height);
 ```
 
-** 调用参数: **
+**调用参数:**
 * width - 指定拉伸的宽度
 * height - 指定拉伸的高度
 
-** 返回结果:**
+**返回结果:**
 * 返回新图像对象
 
 ### crop
@@ -615,13 +615,13 @@ Image Image.crop(Integer x,
                 Integer height);
 ```
 
-** 调用参数: **
+**调用参数:**
 * x - 剪切窗口的左上 x 坐标
 * y - 剪切窗口的左上 y 坐标
 * width - 剪切窗口的宽度
 * height - 剪切窗口的高度
 
-** 返回结果:**
+**返回结果:**
 * 返回剪切出的图像
 
 ### flip
@@ -630,7 +630,7 @@ Image Image.crop(Integer x,
 Image.flip(Integer dir = undefined);
 ```
 
-** 调用参数: **
+**调用参数:**
 * dir - 镜像方向，允许值为 gd.BOTH,gd.HORIZONTAL, gd.VERTICAL, 缺省为 gd.HORIZONTAL
 
 ### rotate
@@ -639,7 +639,7 @@ Image.flip(Integer dir = undefined);
 Image.rotate(Integer dir);
 ```
 
-** 调用参数: **
+**调用参数:**
 * dir - 旋转方向，允许值为 gd.LEFT, gd.RIGHT
 
 ### convert
@@ -648,7 +648,7 @@ Image.rotate(Integer dir);
 Image.convert(Integer color = undefined);
 ```
 
-** 调用参数: **
+**调用参数:**
 * color - 指定图像类型，允许值为 gd.TRUECOLOR 或 gd.PALETTE
 
 ### copy
@@ -663,7 +663,7 @@ Image.copy(Image source,
                 Integer height);
 ```
 
-** 调用参数: **
+**调用参数:**
 * source - 源图像对象
 * dstX - 指定复制目标的 x 坐标
 * dstY - 指定复制目标的 y 坐标
@@ -685,7 +685,7 @@ Image.copyMerge(Image source,
                 Integer percent);
 ```
 
-** 调用参数: **
+**调用参数:**
 * source - 源图像对象
 * dstX - 指定复制目标的 x 坐标
 * dstY - 指定复制目标的 y 坐标
@@ -708,7 +708,7 @@ Image.copyMergeGray(Image source,
                 Integer percent);
 ```
 
-** 调用参数: **
+**调用参数:**
 * source - 源图像对象
 * dstX - 指定复制目标的 x 坐标
 * dstY - 指定复制目标的 y 坐标
@@ -732,7 +732,7 @@ Image.copyResized(Image source,
                 Integer srcH);
 ```
 
-** 调用参数: **
+**调用参数:**
 * source - 源图像对象
 * dstX - 指定复制目标的 x 坐标
 * dstY - 指定复制目标的 y 坐标
@@ -757,7 +757,7 @@ Image.copyResampled(Image source,
                 Integer srcH);
 ```
 
-** 调用参数: **
+**调用参数:**
 * source - 源图像对象
 * dstX - 指定复制目标的 x 坐标
 * dstY - 指定复制目标的 y 坐标
@@ -781,7 +781,7 @@ Image.copyRotated(Image source,
                 Number angle);
 ```
 
-** 调用参数: **
+**调用参数:**
 * source - 源图像对象
 * dstX - 指定复制目标的 x 坐标
 * dstY - 指定复制目标的 y 坐标
@@ -801,7 +801,7 @@ Image.filter(Integer filterType,
                 Number arg4 = 0);
 ```
 
-** 调用参数: **
+**调用参数:**
 * filterType - 过滤器类型
 * arg1 - 过滤器所需参数: SMOOTH 的平滑级别、BRIGHTNESS 的亮度级别、CONTRAST 的对比度级别、COLORIZE 的 red 分值
 * arg2 - 过滤器所需参数: COLORIZE 的 green 分值
@@ -818,14 +818,14 @@ Image Image.affine(Array affine,
                 Integer height = -1);
 ```
 
-** 调用参数: **
+**调用参数:**
 * affine - 仿射矩阵，由6个double类型的数字组成
 * x - 可选剪切区域的原点 x 坐标
 * y - 可选剪切区域的原点 y 坐标
 * width - 可选剪切区域的的宽度
 * height - 可选剪切区域的的高度
 
-** 返回结果:**
+**返回结果:**
 * 返回仿射后的图像
 
 ### gaussianBlur
@@ -834,7 +834,7 @@ Image Image.affine(Array affine,
 Image.gaussianBlur(Integer radius);
 ```
 
-** 调用参数: **
+**调用参数:**
 * radius - 模糊半径
 
 ### dispose
@@ -849,10 +849,10 @@ Image.dispose();
 Boolean Image.equals(object expected);
 ```
 
-** 调用参数: **
+**调用参数:**
 * expected - 制定比较的目标对象
 
-** 返回结果:**
+**返回结果:**
 * 返回对象比较的结果
 
 ### toString
@@ -861,7 +861,7 @@ Boolean Image.equals(object expected);
 String Image.toString();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 返回对象的字符串表示
 
 ### toJSON
@@ -870,10 +870,10 @@ String Image.toString();
 Value Image.toJSON(String key = "");
 ```
 
-** 调用参数: **
+**调用参数:**
 * key - 未使用
 
-** 返回结果:**
+**返回结果:**
 * 返回包含可 JSON 序列化的值
 
 ### valueOf
@@ -882,7 +882,7 @@ Value Image.toJSON(String key = "");
 Value Image.valueOf();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 返回对象本身的数值
 
 ## 属性

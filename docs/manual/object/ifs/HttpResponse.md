@@ -17,7 +17,7 @@ HttpResponse 构造函数，创建一个新的 HttpResponse 对象
 HttpResponse.addCookie(HttpCookie cookie);
 ```
 
-** 调用参数: **
+**调用参数:**
 * cookie - 指定要添加的 HttpCookie 对象
 
 ### redirect
@@ -26,7 +26,7 @@ HttpResponse.addCookie(HttpCookie cookie);
 HttpResponse.redirect(String url);
 ```
 
-** 调用参数: **
+**调用参数:**
 * url - 重定向的地址
 
 ### sendHeader
@@ -35,7 +35,7 @@ HttpResponse.redirect(String url);
 HttpResponse.sendHeader(Stream stm);
 ```
 
-** 调用参数: **
+**调用参数:**
 * stm - 指定接收格式化消息的流对象
 
 ### hasHeader
@@ -44,10 +44,10 @@ HttpResponse.sendHeader(Stream stm);
 Boolean HttpResponse.hasHeader(String name);
 ```
 
-** 调用参数: **
+**调用参数:**
 * name - 指定要检查的键值
 
-** 返回结果:**
+**返回结果:**
 * 返回键值是否存在
 
 ### firstHeader
@@ -56,10 +56,10 @@ Boolean HttpResponse.hasHeader(String name);
 Variant HttpResponse.firstHeader(String name);
 ```
 
-** 调用参数: **
+**调用参数:**
 * name - 指定要查询的键值
 
-** 返回结果:**
+**返回结果:**
 * 返回键值所对应的值，若不存在，则返回 undefined
 
 ### allHeader
@@ -68,10 +68,10 @@ Variant HttpResponse.firstHeader(String name);
 List HttpResponse.allHeader(String name);
 ```
 
-** 调用参数: **
+**调用参数:**
 * name - 指定要查询的键值
 
-** 返回结果:**
+**返回结果:**
 * 返回键值所对应全部值的数组，若数据不存在，则返回 null
 
 ### addHeader
@@ -80,7 +80,7 @@ List HttpResponse.allHeader(String name);
 HttpResponse.addHeader(Map map);
 ```
 
-** 调用参数: **
+**调用参数:**
 * map - 指定要添加的键值数据字典
 
 ### addHeader
@@ -90,7 +90,7 @@ HttpResponse.addHeader(String name,
                 Variant value);
 ```
 
-** 调用参数: **
+**调用参数:**
 * name - 指定要添加的键值
 * value - 指定要添加的数据
 
@@ -100,7 +100,7 @@ HttpResponse.addHeader(String name,
 HttpResponse.setHeader(Map map);
 ```
 
-** 调用参数: **
+**调用参数:**
 * map - 指定要设定的键值数据字典
 
 ### setHeader
@@ -110,7 +110,7 @@ HttpResponse.setHeader(String name,
                 Variant value);
 ```
 
-** 调用参数: **
+**调用参数:**
 * name - 指定要设定的键值
 * value - 指定要设定的数据
 
@@ -120,7 +120,7 @@ HttpResponse.setHeader(String name,
 HttpResponse.removeHeader(String name);
 ```
 
-** 调用参数: **
+**调用参数:**
 * name - 指定要删除的键值
 
 ### read
@@ -129,10 +129,10 @@ HttpResponse.removeHeader(String name);
 Buffer HttpResponse.read(Integer bytes = -1);
 ```
 
-** 调用参数: **
+**调用参数:**
 * bytes - 指定要读取的数据量，缺省为读取随机大小的数据块，读出的数据尺寸取决于设备
 
-** 返回结果:**
+**返回结果:**
 * 返回从流内读取的数据，若无数据可读，或者连接中断，则返回 null
 
 ### readAll
@@ -141,7 +141,7 @@ Buffer HttpResponse.read(Integer bytes = -1);
 Buffer HttpResponse.readAll();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 返回从流内读取的数据，若无数据可读，或者连接中断，则返回 null
 
 ### write
@@ -150,7 +150,7 @@ Buffer HttpResponse.readAll();
 HttpResponse.write(Buffer data);
 ```
 
-** 调用参数: **
+**调用参数:**
 * data - 给定要写入的数据
 
 ### end
@@ -165,7 +165,7 @@ HttpResponse.end();
 Boolean HttpResponse.isEnded();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 结束则返回 true
 
 ### clear
@@ -180,7 +180,7 @@ HttpResponse.clear();
 HttpResponse.sendTo(Stream stm);
 ```
 
-** 调用参数: **
+**调用参数:**
 * stm - 指定接收格式化消息的流对象
 
 ### readFrom
@@ -189,7 +189,7 @@ HttpResponse.sendTo(Stream stm);
 HttpResponse.readFrom(Stream stm);
 ```
 
-** 调用参数: **
+**调用参数:**
 * stm - 指定读取格式化消息的流对象
 
 ### dispose
@@ -204,10 +204,10 @@ HttpResponse.dispose();
 Boolean HttpResponse.equals(object expected);
 ```
 
-** 调用参数: **
+**调用参数:**
 * expected - 制定比较的目标对象
 
-** 返回结果:**
+**返回结果:**
 * 返回对象比较的结果
 
 ### toString
@@ -216,7 +216,7 @@ Boolean HttpResponse.equals(object expected);
 String HttpResponse.toString();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 返回对象的字符串表示
 
 ### toJSON
@@ -225,10 +225,10 @@ String HttpResponse.toString();
 Value HttpResponse.toJSON(String key = "");
 ```
 
-** 调用参数: **
+**调用参数:**
 * key - 未使用
 
-** 返回结果:**
+**返回结果:**
 * 返回包含可 JSON 序列化的值
 
 ### valueOf
@@ -237,7 +237,7 @@ Value HttpResponse.toJSON(String key = "");
 Value HttpResponse.valueOf();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 返回对象本身的数值
 
 ## 属性

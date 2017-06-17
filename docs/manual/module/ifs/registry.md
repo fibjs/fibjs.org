@@ -15,11 +15,11 @@ List registry.listSubKey(Integer root,
                 String key);
 ```
 
-** 调用参数: **
+**调用参数:**
 * root - 指定注册表根
 * key - 指定键值
 
-** 返回结果:**
+**返回结果:**
 * 返回该键值下所有子健
 
 ### listValue
@@ -29,11 +29,11 @@ List registry.listValue(Integer root,
                 String key);
 ```
 
-** 调用参数: **
+**调用参数:**
 * root - 指定注册表根
 * key - 指定键值
 
-** 返回结果:**
+**返回结果:**
 * 返回该键值下所有数据的健
 
 ### get
@@ -43,11 +43,11 @@ Value registry.get(Integer root,
                 String key);
 ```
 
-** 调用参数: **
+**调用参数:**
 * root - 指定注册表根
 * key - 指定键值
 
-** 返回结果:**
+**返回结果:**
 * 返回指定键值的数值
 
 ### set
@@ -59,7 +59,7 @@ registry.set(Integer root,
                 Integer type = undefined);
 ```
 
-** 调用参数: **
+**调用参数:**
 * root - 指定注册表根
 * key - 指定键值
 * value - 指定数字
@@ -74,7 +74,7 @@ registry.set(Integer root,
                 Integer type = undefined);
 ```
 
-** 调用参数: **
+**调用参数:**
 * root - 指定注册表根
 * key - 指定键值
 * value - 指定字符串
@@ -88,7 +88,7 @@ registry.set(Integer root,
                 Array value);
 ```
 
-** 调用参数: **
+**调用参数:**
 * root - 指定注册表根
 * key - 指定键值
 * value - 指定多字符串数组
@@ -101,7 +101,7 @@ registry.set(Integer root,
                 Buffer value);
 ```
 
-** 调用参数: **
+**调用参数:**
 * root - 指定注册表根
 * key - 指定键值
 * value - 指定二进制数据
@@ -113,7 +113,7 @@ registry.del(Integer root,
                 String key);
 ```
 
-** 调用参数: **
+**调用参数:**
 * root - 指定注册表根
 * key - 指定键值
 

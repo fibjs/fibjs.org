@@ -9,10 +9,10 @@ XmlElement 对象表示 XML 文档中的元素
 String XmlElement.getAttribute(String name);
 ```
 
-** 调用参数: **
+**调用参数:**
 * name - 指定查询的属性名
 
-** 返回结果:**
+**返回结果:**
 * 返回属性的值
 
 ### getAttributeNS
@@ -22,11 +22,11 @@ String XmlElement.getAttributeNS(String namespaceURI,
                 String localName);
 ```
 
-** 调用参数: **
+**调用参数:**
 * namespaceURI - 指定查询的命名空间 URI
 * localName - 指定查询的属性名
 
-** 返回结果:**
+**返回结果:**
 * 返回属性的值
 
 ### setAttribute
@@ -36,7 +36,7 @@ XmlElement.setAttribute(String name,
                 String value);
 ```
 
-** 调用参数: **
+**调用参数:**
 * name - 指定要设置的属性名
 * value - 指定要设置的属性值
 
@@ -50,7 +50,7 @@ XmlElement.setAttributeNS(String namespaceURI,
                 String value);
 ```
 
-** 调用参数: **
+**调用参数:**
 * namespaceURI - 指定要设置的命名空间 URI
 * qualifiedName - 指定要设置的属性名
 * value - 指定要设置的属性值
@@ -63,7 +63,7 @@ XmlElement.setAttributeNS(String namespaceURI,
 XmlElement.removeAttribute(String name);
 ```
 
-** 调用参数: **
+**调用参数:**
 * name - 指定删除的属性名
 
 ### removeAttributeNS
@@ -73,7 +73,7 @@ XmlElement.removeAttributeNS(String namespaceURI,
                 String localName);
 ```
 
-** 调用参数: **
+**调用参数:**
 * namespaceURI - 指定要删除的命名空间 URI
 * localName - 指定删除的属性名
 
@@ -83,10 +83,10 @@ XmlElement.removeAttributeNS(String namespaceURI,
 Boolean XmlElement.hasAttribute(String name);
 ```
 
-** 调用参数: **
+**调用参数:**
 * name - 指定查询的属性名称
 
-** 返回结果:**
+**返回结果:**
 * 如果当前元素节点拥有指定属性，则返回 true，否则返回 false
 
 ### hasAttributeNS
@@ -96,11 +96,11 @@ Boolean XmlElement.hasAttributeNS(String namespaceURI,
                 String localName);
 ```
 
-** 调用参数: **
+**调用参数:**
 * namespaceURI - 指定要查询的命名空间 URI
 * localName - 指定查询的属性名称
 
-** 返回结果:**
+**返回结果:**
 * 如果当前元素节点拥有指定属性，则返回 true，否则返回 false
 
 ### getElementsByTagName
@@ -109,10 +109,10 @@ Boolean XmlElement.hasAttributeNS(String namespaceURI,
 XmlNodeList XmlElement.getElementsByTagName(String tagName);
 ```
 
-** 调用参数: **
+**调用参数:**
 * tagName - 需检索的标签名。值 &#34;*&#34; 匹配所有的标签
 
-** 返回结果:**
+**返回结果:**
 * 节点树中具有指定标记的 XmlElement 节点的 XmlNodeList 集合。返回的元素节点的顺序就是它们在源文档中出现的顺序。
 
 该方法将遍历指定元素的子孙节点，返回一个 XmlElement 节点的 XmlNodeList 对象，表示所有具有指定标签名的文档元素。元素在返回的数组中的顺序就是它们出现在文档源代码中的顺序。
@@ -126,11 +126,11 @@ XmlNodeList XmlElement.getElementsByTagNameNS(String namespaceURI,
                 String localName);
 ```
 
-** 调用参数: **
+**调用参数:**
 * namespaceURI - 指定要查询的命名空间 URI
 * localName - 需检索的标签名。值 &#34;*&#34; 匹配所有的标签
 
-** 返回结果:**
+**返回结果:**
 * 节点树中具有指定标记的 XmlElement 节点的 XmlNodeList 集合。返回的元素节点的顺序就是它们在源文档中出现的顺序。
 
 该方法与 getElementsByTagName 方法相似，只是想获取的元素的标记名被指定为命名空间 URI 和在命名空间中定义的本地名的组合。
@@ -141,7 +141,7 @@ XmlNodeList XmlElement.getElementsByTagNameNS(String namespaceURI,
 Boolean XmlElement.hasChildNodes();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 存在任何子节点时返回 true，否则返回 false
 
 ### normalize
@@ -158,10 +158,10 @@ XmlElement.normalize();
 XmlNode XmlElement.cloneNode(Boolean deep = true);
 ```
 
-** 调用参数: **
+**调用参数:**
 * deep - 是否深度拷贝，为 true 时，被克隆的节点会克隆原节点的所有子节点
 
-** 返回结果:**
+**返回结果:**
 * 返回所复制的节点
 
 该方法将复制并返回调用它的节点的副本。如果传递给它的参数是 true，它还将递归复制当前节点的所有子孙节点。 否则，它只复制当前节点。返回的节点不属于文档树，它的 parentNode 属性为 null。当复制的是 Element 节点时，它的所有属性都将被复制。
@@ -172,10 +172,10 @@ XmlNode XmlElement.cloneNode(Boolean deep = true);
 String XmlElement.lookupPrefix(String namespaceURI);
 ```
 
-** 调用参数: **
+**调用参数:**
 * namespaceURI - 指定匹配的命名空间 URI
 
-** 返回结果:**
+**返回结果:**
 * 返回匹配的前缀，未匹配到返回 null
 
 ### lookupNamespaceURI
@@ -184,10 +184,10 @@ String XmlElement.lookupPrefix(String namespaceURI);
 String XmlElement.lookupNamespaceURI(String prefix);
 ```
 
-** 调用参数: **
+**调用参数:**
 * prefix - 指定匹配的前缀
 
-** 返回结果:**
+**返回结果:**
 * 返回匹配的命名空间 URI，未匹配到返回 null
 
 ### insertBefore
@@ -197,11 +197,11 @@ XmlNode XmlElement.insertBefore(XmlNode newChild,
                 XmlNode refChild);
 ```
 
-** 调用参数: **
+**调用参数:**
 * newChild - 插入新的节点
 * refChild - 在此节点前插入新节点
 
-** 返回结果:**
+**返回结果:**
 * 返回新的子节点
 
 如果文档树中已经存在了 newChild，它将从文档树中删除，然后重新插入它的新位置。来自一个文档的节点（或由一个文档创建的节点）不能插入另一个文档。也就是说，newChild 的 ownerDocument 属性必须与当前节点的 ownerDocument 属性相同。
@@ -213,11 +213,11 @@ XmlNode XmlElement.insertAfter(XmlNode newChild,
                 XmlNode refChild);
 ```
 
-** 调用参数: **
+**调用参数:**
 * newChild - 插入新的节点
 * refChild - 在此节点后插入新节点
 
-** 返回结果:**
+**返回结果:**
 * 返回新的子节点
 
 如果文档树中已经存在了 newChild，它将从文档树中删除，然后重新插入它的新位置。来自一个文档的节点（或由一个文档创建的节点）不能插入另一个文档。也就是说，newChild 的 ownerDocument 属性必须与当前节点的 ownerDocument 属性相同。
@@ -228,10 +228,10 @@ XmlNode XmlElement.insertAfter(XmlNode newChild,
 XmlNode XmlElement.appendChild(XmlNode newChild);
 ```
 
-** 调用参数: **
+**调用参数:**
 * newChild - 指定添加的节点
 
-** 返回结果:**
+**返回结果:**
 * 返回这个新的子节点
 
 如果文档树中已经存在了 newChild，它将从文档树中删除，然后重新插入它的新位置。来自一个文档的节点（或由一个文档创建的节点）不能插入另一个文档。也就是说，newChild 的 ownerDocument 属性必须与当前节点的 ownerDocument 属性相同。
@@ -243,11 +243,11 @@ XmlNode XmlElement.replaceChild(XmlNode newChild,
                 XmlNode oldChild);
 ```
 
-** 调用参数: **
+**调用参数:**
 * newChild - 指定新的节点
 * oldChild - 指定被替换的节点
 
-** 返回结果:**
+**返回结果:**
 * 如替换成功，此方法可返回被替换的节点，如替换失败，则返回 null
 
 如果文档树中已经存在了 newChild，它将从文档树中删除，然后重新插入它的新位置。来自一个文档的节点（或由一个文档创建的节点）不能插入另一个文档。也就是说，newChild 的 ownerDocument 属性必须与当前节点的 ownerDocument 属性相同。
@@ -258,10 +258,10 @@ XmlNode XmlElement.replaceChild(XmlNode newChild,
 XmlNode XmlElement.removeChild(XmlNode oldChild);
 ```
 
-** 调用参数: **
+**调用参数:**
 * oldChild - 指定被删除的节点
 
-** 返回结果:**
+**返回结果:**
 * 如删除成功，此方法可返回被删除的节点，如失败，则返回 null
 
 ### dispose
@@ -276,10 +276,10 @@ XmlElement.dispose();
 Boolean XmlElement.equals(object expected);
 ```
 
-** 调用参数: **
+**调用参数:**
 * expected - 制定比较的目标对象
 
-** 返回结果:**
+**返回结果:**
 * 返回对象比较的结果
 
 ### toString
@@ -288,7 +288,7 @@ Boolean XmlElement.equals(object expected);
 String XmlElement.toString();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 返回对象的字符串表示
 
 ### toJSON
@@ -297,10 +297,10 @@ String XmlElement.toString();
 Value XmlElement.toJSON(String key = "");
 ```
 
-** 调用参数: **
+**调用参数:**
 * key - 未使用
 
-** 返回结果:**
+**返回结果:**
 * 返回包含可 JSON 序列化的值
 
 ### valueOf
@@ -309,7 +309,7 @@ Value XmlElement.toJSON(String key = "");
 Value XmlElement.valueOf();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 返回对象本身的数值
 
 ## 属性

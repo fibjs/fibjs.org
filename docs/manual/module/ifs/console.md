@@ -19,7 +19,7 @@ console.log(&#34;%d + %d = %d&#34;, 100, 200, 100 + 200);
 console.add(Array cfg);
 ```
 
-** 调用参数: **
+**调用参数:**
 * cfg - 输出配置数组
 
 通过配置 console，可以将程序输出和系统错误发往不同设备，用于运行环境信息收集。
@@ -37,7 +37,7 @@ console.add([&#34;console&#34;, {
 console.add(Value cfg);
 ```
 
-** 调用参数: **
+**调用参数:**
 * cfg - 输出配置
 
 通过配置 console，可以将程序输出和系统错误发往不同设备，用于运行环境信息收集。
@@ -88,7 +88,7 @@ console.log(String fmt,
                 ...);
 ```
 
-** 调用参数: **
+**调用参数:**
 * fmt - 格式化字符串
 * ... - 可选参数列表
 
@@ -100,7 +100,7 @@ console.log(String fmt,
 console.log(...);
 ```
 
-** 调用参数: **
+**调用参数:**
 * ... - 可选参数列表
 
 记录一般等级的日志信息。通常用于输出非错误性提示信息。
@@ -112,7 +112,7 @@ console.debug(String fmt,
                 ...);
 ```
 
-** 调用参数: **
+**调用参数:**
 * fmt - 格式化字符串
 * ... - 可选参数列表
 
@@ -124,7 +124,7 @@ console.debug(String fmt,
 console.debug(...);
 ```
 
-** 调用参数: **
+**调用参数:**
 * ... - 可选参数列表
 
 记录调试日志信息。通常用于输出调试信息。不重要。
@@ -136,7 +136,7 @@ console.info(String fmt,
                 ...);
 ```
 
-** 调用参数: **
+**调用参数:**
 * fmt - 格式化字符串
 * ... - 可选参数列表
 
@@ -148,7 +148,7 @@ console.info(String fmt,
 console.info(...);
 ```
 
-** 调用参数: **
+**调用参数:**
 * ... - 可选参数列表
 
 记录一般等级的日志信息。通常用于输出非错误性提示信息。
@@ -160,7 +160,7 @@ console.notice(String fmt,
                 ...);
 ```
 
-** 调用参数: **
+**调用参数:**
 * fmt - 格式化字符串
 * ... - 可选参数列表
 
@@ -172,7 +172,7 @@ console.notice(String fmt,
 console.notice(...);
 ```
 
-** 调用参数: **
+**调用参数:**
 * ... - 可选参数列表
 
 记录警告日志信息。通常用于输出提示性调试信息。一般重要。
@@ -184,7 +184,7 @@ console.warn(String fmt,
                 ...);
 ```
 
-** 调用参数: **
+**调用参数:**
 * fmt - 格式化字符串
 * ... - 可选参数列表
 
@@ -196,7 +196,7 @@ console.warn(String fmt,
 console.warn(...);
 ```
 
-** 调用参数: **
+**调用参数:**
 * ... - 可选参数列表
 
 记录警告日志信息。通常用于输出警告性调试信息。重要。
@@ -208,7 +208,7 @@ console.error(String fmt,
                 ...);
 ```
 
-** 调用参数: **
+**调用参数:**
 * fmt - 格式化字符串
 * ... - 可选参数列表
 
@@ -220,7 +220,7 @@ console.error(String fmt,
 console.error(...);
 ```
 
-** 调用参数: **
+**调用参数:**
 * ... - 可选参数列表
 
 记录用于错误日志信息。通常用于输出错误信息。非常重要。系统的出错信息也会以此等级记录。
@@ -232,7 +232,7 @@ console.crit(String fmt,
                 ...);
 ```
 
-** 调用参数: **
+**调用参数:**
 * fmt - 格式化字符串
 * ... - 可选参数列表
 
@@ -244,7 +244,7 @@ console.crit(String fmt,
 console.crit(...);
 ```
 
-** 调用参数: **
+**调用参数:**
 * ... - 可选参数列表
 
 记录用于关键错误日志信息。通常用于输出关键错误信息。非常重要。
@@ -256,7 +256,7 @@ console.alert(String fmt,
                 ...);
 ```
 
-** 调用参数: **
+**调用参数:**
 * fmt - 格式化字符串
 * ... - 可选参数列表
 
@@ -268,7 +268,7 @@ console.alert(String fmt,
 console.alert(...);
 ```
 
-** 调用参数: **
+**调用参数:**
 * ... - 可选参数列表
 
 记录用于警报错误日志信息。通常用于输出警报错误信息。非常重要。为最高级别信息。
@@ -279,7 +279,7 @@ console.alert(...);
 console.dir(Value obj);
 ```
 
-** 调用参数: **
+**调用参数:**
 * obj - 给定要显示的对象
 
 ### time
@@ -288,7 +288,7 @@ console.dir(Value obj);
 console.time(String label = "time");
 ```
 
-** 调用参数: **
+**调用参数:**
 * label - 标题，缺省为空字符串。
 
 ### timeEnd
@@ -297,7 +297,7 @@ console.time(String label = "time");
 console.timeEnd(String label = "time");
 ```
 
-** 调用参数: **
+**调用参数:**
 * label - 标题，缺省为空字符串。
 
 ### trace
@@ -306,7 +306,7 @@ console.timeEnd(String label = "time");
 console.trace(String label = "trace");
 ```
 
-** 调用参数: **
+**调用参数:**
 * label - 标题，缺省为空字符串。
 
 通过日志输出当前调用堆栈。
@@ -318,7 +318,7 @@ console.assert(Value value,
                 String msg = "");
 ```
 
-** 调用参数: **
+**调用参数:**
 * value - 测试的数值
 * msg - 报错信息
 
@@ -329,7 +329,7 @@ console.print(String fmt,
                 ...);
 ```
 
-** 调用参数: **
+**调用参数:**
 * fmt - 格式化字符串
 * ... - 可选参数列表
 
@@ -339,7 +339,7 @@ console.print(String fmt,
 console.print(...);
 ```
 
-** 调用参数: **
+**调用参数:**
 * ... - 可选参数列表
 
 ### moveTo
@@ -349,7 +349,7 @@ console.moveTo(Integer row,
                 Integer column);
 ```
 
-** 调用参数: **
+**调用参数:**
 * row - 指定新光标的行坐标
 * column - 指定新光标的列坐标
 
@@ -378,7 +378,7 @@ console.keyDown(String key,
                 String modifier = "");
 ```
 
-** 调用参数: **
+**调用参数:**
 * key - 指定按键，单字符直接传入，功能键传入名称：
 * modifier - 指定控制键，可以为：control, alt, shift, command
 
@@ -389,7 +389,7 @@ console.keyDown(String key,
                 Array modifier);
 ```
 
-** 调用参数: **
+**调用参数:**
 * key - 指定按键，单字符直接传入，功能键传入名称：
 * modifier - 指定控制键数组，可以为：control, alt, shift, command
 
@@ -400,7 +400,7 @@ console.keyUp(String key,
                 String modifier = "");
 ```
 
-** 调用参数: **
+**调用参数:**
 * key - 指定按键，单字符直接传入，功能键传入名称：
 * modifier - 指定控制键，可以为：control, alt, shift, command
 
@@ -411,7 +411,7 @@ console.keyUp(String key,
                 Array modifier);
 ```
 
-** 调用参数: **
+**调用参数:**
 * key - 指定按键，单字符直接传入，功能键传入名称：
 * modifier - 指定控制键数组，可以为：control, alt, shift, command
 
@@ -422,7 +422,7 @@ console.keyTap(String key,
                 String modifier = "");
 ```
 
-** 调用参数: **
+**调用参数:**
 * key - 指定按键，单字符直接传入，功能键传入名称：
 * modifier - 指定控制键，可以为：control, alt, shift, command
 
@@ -433,7 +433,7 @@ console.keyTap(String key,
                 Array modifier);
 ```
 
-** 调用参数: **
+**调用参数:**
 * key - 指定按键，单字符直接传入，功能键传入名称：
 * modifier - 指定控制键数组，可以为：control, alt, shift, command
 
@@ -443,7 +443,7 @@ console.keyTap(String key,
 console.typeString(String text);
 ```
 
-** 调用参数: **
+**调用参数:**
 * text - 指定输入的字符串
 
 ### moveMouse
@@ -453,7 +453,7 @@ console.moveMouse(Integer x,
                 Integer y);
 ```
 
-** 调用参数: **
+**调用参数:**
 * x - 指定 x 坐标
 * y - 指定 y 坐标
 
@@ -463,7 +463,7 @@ console.moveMouse(Integer x,
 console.mouseUp(String button);
 ```
 
-** 调用参数: **
+**调用参数:**
 * button - 指定鼠标键名称，允许值为: left, right, moddle
 
 ### mouseDown
@@ -472,7 +472,7 @@ console.mouseUp(String button);
 console.mouseDown(String button);
 ```
 
-** 调用参数: **
+**调用参数:**
 * button - 指定鼠标键名称，允许值为: left, right, moddle
 
 ### clickMouse
@@ -482,7 +482,7 @@ console.clickMouse(String button,
                 Boolean dbclick = false);
 ```
 
-** 调用参数: **
+**调用参数:**
 * button - 指定鼠标键名称，允许值为: left, right, moddle
 * dbclick - 指定是否双击，缺省为 false
 
@@ -492,10 +492,10 @@ console.clickMouse(String button,
 String console.readLine(String msg = "");
 ```
 
-** 调用参数: **
+**调用参数:**
 * msg - 提示信息
 
-** 返回结果:**
+**返回结果:**
 * 返回用户输入的信息
 
 ## 属性

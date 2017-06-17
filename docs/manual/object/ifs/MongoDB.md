@@ -13,10 +13,10 @@ var mdb = db.openMongoDB(&#34;mongodb://host/db&#34;);
 MongoCollection MongoDB.getCollection(String name);
 ```
 
-** 调用参数: **
+**调用参数:**
 * name - 指定集合的名称
 
-** 返回结果:**
+**返回结果:**
 * 返回指定的集合对象
 
 ### runCommand
@@ -25,10 +25,10 @@ MongoCollection MongoDB.getCollection(String name);
 Object MongoDB.runCommand(Object cmd);
 ```
 
-** 调用参数: **
+**调用参数:**
 * cmd - 指定命令和参数的字典对象
 
-** 返回结果:**
+**返回结果:**
 * 返回命令执行结果
 
 ### runCommand
@@ -38,11 +38,11 @@ Object MongoDB.runCommand(String cmd,
                 Value arg);
 ```
 
-** 调用参数: **
+**调用参数:**
 * cmd - 指定命令名
 * arg - 指定命令参数
 
-** 返回结果:**
+**返回结果:**
 * 返回命令执行结果
 
 ### oid
@@ -51,10 +51,10 @@ Object MongoDB.runCommand(String cmd,
 MongoID MongoDB.oid(String hexStr = "");
 ```
 
-** 调用参数: **
+**调用参数:**
 * hexStr - 初始化 16 进制字符串，缺省生成新的 id
 
-** 返回结果:**
+**返回结果:**
 * 新 _objectid 对象
 
 ### close
@@ -75,10 +75,10 @@ MongoDB.dispose();
 Boolean MongoDB.equals(object expected);
 ```
 
-** 调用参数: **
+**调用参数:**
 * expected - 制定比较的目标对象
 
-** 返回结果:**
+**返回结果:**
 * 返回对象比较的结果
 
 ### toString
@@ -87,7 +87,7 @@ Boolean MongoDB.equals(object expected);
 String MongoDB.toString();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 返回对象的字符串表示
 
 ### toJSON
@@ -96,10 +96,10 @@ String MongoDB.toString();
 Value MongoDB.toJSON(String key = "");
 ```
 
-** 调用参数: **
+**调用参数:**
 * key - 未使用
 
-** 返回结果:**
+**返回结果:**
 * 返回包含可 JSON 序列化的值
 
 ### valueOf
@@ -108,7 +108,7 @@ Value MongoDB.toJSON(String key = "");
 Value MongoDB.valueOf();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 返回对象本身的数值
 
 ## 属性

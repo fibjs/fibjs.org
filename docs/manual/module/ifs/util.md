@@ -10,11 +10,11 @@ String util.format(String fmt,
                 ...);
 ```
 
-** 调用参数: **
+**调用参数:**
 * fmt - 格式化字符串
 * ... - 可选参数列表
 
-** 返回结果:**
+**返回结果:**
 * 返回格式化后的字符串
 
 ### format
@@ -23,10 +23,10 @@ String util.format(String fmt,
 String util.format(...);
 ```
 
-** 调用参数: **
+**调用参数:**
 * ... - 可选参数列表
 
-** 返回结果:**
+**返回结果:**
 * 返回格式化后的字符串
 
 ### inherits
@@ -36,7 +36,7 @@ util.inherits(Value constructor,
                 Value superConstructor);
 ```
 
-** 调用参数: **
+**调用参数:**
 * constructor - 初始的构造函数
 * superConstructor - 被继承的超类
 
@@ -46,10 +46,10 @@ util.inherits(Value constructor,
 Boolean util.isEmpty(Value v);
 ```
 
-** 调用参数: **
+**调用参数:**
 * v - 给定需要检测的变量
 
-** 返回结果:**
+**返回结果:**
 * 如果为空则返回 True
 
 ### isArray
@@ -58,10 +58,10 @@ Boolean util.isEmpty(Value v);
 Boolean util.isArray(Value v);
 ```
 
-** 调用参数: **
+**调用参数:**
 * v - 给定需要检测的变量
 
-** 返回结果:**
+**返回结果:**
 * 如果是数组则返回 True
 
 ### isBoolean
@@ -70,10 +70,10 @@ Boolean util.isArray(Value v);
 Boolean util.isBoolean(Value v);
 ```
 
-** 调用参数: **
+**调用参数:**
 * v - 给定需要检测的变量
 
-** 返回结果:**
+**返回结果:**
 * 如果是 Boolean 则返回 True
 
 ### isNull
@@ -82,10 +82,10 @@ Boolean util.isBoolean(Value v);
 Boolean util.isNull(Value v);
 ```
 
-** 调用参数: **
+**调用参数:**
 * v - 给定需要检测的变量
 
-** 返回结果:**
+**返回结果:**
 * 如果是 Null 则返回 True
 
 ### isNullOrUndefined
@@ -94,10 +94,10 @@ Boolean util.isNull(Value v);
 Boolean util.isNullOrUndefined(Value v);
 ```
 
-** 调用参数: **
+**调用参数:**
 * v - 给定需要检测的变量
 
-** 返回结果:**
+**返回结果:**
 * 如果是 Null 或者 Undefined 则返回 True
 
 ### isNumber
@@ -106,10 +106,10 @@ Boolean util.isNullOrUndefined(Value v);
 Boolean util.isNumber(Value v);
 ```
 
-** 调用参数: **
+**调用参数:**
 * v - 给定需要检测的变量
 
-** 返回结果:**
+**返回结果:**
 * 如果是数字则返回 True
 
 ### isString
@@ -118,10 +118,10 @@ Boolean util.isNumber(Value v);
 Boolean util.isString(Value v);
 ```
 
-** 调用参数: **
+**调用参数:**
 * v - 给定需要检测的变量
 
-** 返回结果:**
+**返回结果:**
 * 如果是字符串则返回 True
 
 ### isUndefined
@@ -130,10 +130,10 @@ Boolean util.isString(Value v);
 Boolean util.isUndefined(Value v);
 ```
 
-** 调用参数: **
+**调用参数:**
 * v - 给定需要检测的变量
 
-** 返回结果:**
+**返回结果:**
 * 如果是 Undefined 则返回 True
 
 ### isRegExp
@@ -142,10 +142,10 @@ Boolean util.isUndefined(Value v);
 Boolean util.isRegExp(Value v);
 ```
 
-** 调用参数: **
+**调用参数:**
 * v - 给定需要检测的变量
 
-** 返回结果:**
+**返回结果:**
 * 如果是正则对象则返回 True
 
 ### isObject
@@ -154,10 +154,10 @@ Boolean util.isRegExp(Value v);
 Boolean util.isObject(Value v);
 ```
 
-** 调用参数: **
+**调用参数:**
 * v - 给定需要检测的变量
 
-** 返回结果:**
+**返回结果:**
 * 如果是对象则返回 True
 
 ### isDate
@@ -166,10 +166,10 @@ Boolean util.isObject(Value v);
 Boolean util.isDate(Value v);
 ```
 
-** 调用参数: **
+**调用参数:**
 * v - 给定需要检测的变量
 
-** 返回结果:**
+**返回结果:**
 * 如果是日期对象则返回 True
 
 ### isNativeError
@@ -178,10 +178,10 @@ Boolean util.isDate(Value v);
 Boolean util.isNativeError(Value v);
 ```
 
-** 调用参数: **
+**调用参数:**
 * v - 给定需要检测的变量
 
-** 返回结果:**
+**返回结果:**
 * 如果是错误对象则返回 True
 
 ### isPrimitive
@@ -190,10 +190,10 @@ Boolean util.isNativeError(Value v);
 Boolean util.isPrimitive(Value v);
 ```
 
-** 调用参数: **
+**调用参数:**
 * v - 给定需要检测的变量
 
-** 返回结果:**
+**返回结果:**
 * 如果是原始类型则返回 True
 
 ### isSymbol
@@ -202,10 +202,10 @@ Boolean util.isPrimitive(Value v);
 Boolean util.isSymbol(Value v);
 ```
 
-** 调用参数: **
+**调用参数:**
 * v - 给定需要检测的变量
 
-** 返回结果:**
+**返回结果:**
 * 如果是Symbol类型则返回 True
 
 ### isDataView
@@ -214,10 +214,10 @@ Boolean util.isSymbol(Value v);
 Boolean util.isDataView(Value v);
 ```
 
-** 调用参数: **
+**调用参数:**
 * v - 给定需要检测的变量
 
-** 返回结果:**
+**返回结果:**
 * 如果是 DataView 类型则返回 True
 
 ### isExternal
@@ -226,10 +226,10 @@ Boolean util.isDataView(Value v);
 Boolean util.isExternal(Value v);
 ```
 
-** 调用参数: **
+**调用参数:**
 * v - 给定需要检测的变量
 
-** 返回结果:**
+**返回结果:**
 * 如果是 External 类型则返回 True
 
 ### isMap
@@ -238,10 +238,10 @@ Boolean util.isExternal(Value v);
 Boolean util.isMap(Value v);
 ```
 
-** 调用参数: **
+**调用参数:**
 * v - 给定需要检测的变量
 
-** 返回结果:**
+**返回结果:**
 * 如果是 Map 类型则返回 True
 
 ### isMapIterator
@@ -250,10 +250,10 @@ Boolean util.isMap(Value v);
 Boolean util.isMapIterator(Value v);
 ```
 
-** 调用参数: **
+**调用参数:**
 * v - 给定需要检测的变量
 
-** 返回结果:**
+**返回结果:**
 * 如果是 MapIterator 类型则返回 True
 
 ### isPromise
@@ -262,10 +262,10 @@ Boolean util.isMapIterator(Value v);
 Boolean util.isPromise(Value v);
 ```
 
-** 调用参数: **
+**调用参数:**
 * v - 给定需要检测的变量
 
-** 返回结果:**
+**返回结果:**
 * 如果是 Promise 类型则返回 True
 
 ### isSet
@@ -274,10 +274,10 @@ Boolean util.isPromise(Value v);
 Boolean util.isSet(Value v);
 ```
 
-** 调用参数: **
+**调用参数:**
 * v - 给定需要检测的变量
 
-** 返回结果:**
+**返回结果:**
 * 如果是 Set 类型则返回 True
 
 ### isSetIterator
@@ -286,10 +286,10 @@ Boolean util.isSet(Value v);
 Boolean util.isSetIterator(Value v);
 ```
 
-** 调用参数: **
+**调用参数:**
 * v - 给定需要检测的变量
 
-** 返回结果:**
+**返回结果:**
 * 如果是 SetIterator 类型则返回 True
 
 ### isTypedArray
@@ -298,10 +298,10 @@ Boolean util.isSetIterator(Value v);
 Boolean util.isTypedArray(Value v);
 ```
 
-** 调用参数: **
+**调用参数:**
 * v - 给定需要检测的变量
 
-** 返回结果:**
+**返回结果:**
 * 如果是 TypedArray 类型则返回 True
 
 ### isUint8Array
@@ -310,10 +310,10 @@ Boolean util.isTypedArray(Value v);
 Boolean util.isUint8Array(Value v);
 ```
 
-** 调用参数: **
+**调用参数:**
 * v - 给定需要检测的变量
 
-** 返回结果:**
+**返回结果:**
 * 如果是 Uint8Array 类型则返回 True
 
 ### isFunction
@@ -322,10 +322,10 @@ Boolean util.isUint8Array(Value v);
 Boolean util.isFunction(Value v);
 ```
 
-** 调用参数: **
+**调用参数:**
 * v - 给定需要检测的变量
 
-** 返回结果:**
+**返回结果:**
 * 如果是函数对象则返回 True
 
 ### isBuffer
@@ -334,10 +334,10 @@ Boolean util.isFunction(Value v);
 Boolean util.isBuffer(Value v);
 ```
 
-** 调用参数: **
+**调用参数:**
 * v - 给定需要检测的变量
 
-** 返回结果:**
+**返回结果:**
 * 如果是函数 Buffer 对象则返回 True
 
 ### has
@@ -347,11 +347,11 @@ Boolean util.has(Value v,
                 String key);
 ```
 
-** 调用参数: **
+**调用参数:**
 * v - 给定需要查询的对象
 * key - 指定需要查询的键
 
-** 返回结果:**
+**返回结果:**
 * 返回对象的全部键数组
 
 ### keys
@@ -360,10 +360,10 @@ Boolean util.has(Value v,
 Array util.keys(Value v);
 ```
 
-** 调用参数: **
+**调用参数:**
 * v - 给定需要查询的对象
 
-** 返回结果:**
+**返回结果:**
 * 返回对象的全部键数组
 
 ### values
@@ -372,10 +372,10 @@ Array util.keys(Value v);
 Array util.values(Value v);
 ```
 
-** 调用参数: **
+**调用参数:**
 * v - 给定需要查询的对象
 
-** 返回结果:**
+**返回结果:**
 * 返回对象的全部值数组
 
 ### clone
@@ -384,10 +384,10 @@ Array util.values(Value v);
 Value util.clone(Value v);
 ```
 
-** 调用参数: **
+**调用参数:**
 * v - 给定要克隆的变量
 
-** 返回结果:**
+**返回结果:**
 * 返回克隆结果
 
 ### extend
@@ -397,11 +397,11 @@ Value util.extend(Value v,
                 ...);
 ```
 
-** 调用参数: **
+**调用参数:**
 * v - 指定要扩展的对象
 * ... - 指定一个或者多个用于扩展的对象
 
-** 返回结果:**
+**返回结果:**
 * 返回扩展的结果
 
 ### pick
@@ -411,11 +411,11 @@ Object util.pick(Value v,
                 ...);
 ```
 
-** 调用参数: **
+**调用参数:**
 * v - 指定要过滤的对象
 * ... - 指定一个或者多个用于选择的键
 
-** 返回结果:**
+**返回结果:**
 * 返回过滤的结果
 
 ### omit
@@ -425,11 +425,11 @@ Object util.omit(Value v,
                 ...);
 ```
 
-** 调用参数: **
+**调用参数:**
 * v - 指定要过滤的对象
 * ... - 指定一个或者多个用于排除的键
 
-** 返回结果:**
+**返回结果:**
 * 返回排除的结果
 
 ### first
@@ -438,10 +438,10 @@ Object util.omit(Value v,
 Value util.first(Value v);
 ```
 
-** 调用参数: **
+**调用参数:**
 * v - 给定要获取的数组
 
-** 返回结果:**
+**返回结果:**
 * 返回获取的元素
 
 ### first
@@ -451,11 +451,11 @@ Value util.first(Value v,
                 Integer n);
 ```
 
-** 调用参数: **
+**调用参数:**
 * v - 给定要获取的数组
 * n - 指定要获取的元素个数
 
-** 返回结果:**
+**返回结果:**
 * 返回获取的元素数组
 
 ### last
@@ -464,10 +464,10 @@ Value util.first(Value v,
 Value util.last(Value v);
 ```
 
-** 调用参数: **
+**调用参数:**
 * v - 给定要获取的数组
 
-** 返回结果:**
+**返回结果:**
 * 返回获取的元素
 
 ### last
@@ -477,11 +477,11 @@ Value util.last(Value v,
                 Integer n);
 ```
 
-** 调用参数: **
+**调用参数:**
 * v - 给定要获取的数组
 * n - 指定要获取的元素个数
 
-** 返回结果:**
+**返回结果:**
 * 返回获取的元素数组
 
 ### unique
@@ -491,11 +491,11 @@ Array util.unique(Value v,
                 Boolean sorted = false);
 ```
 
-** 调用参数: **
+**调用参数:**
 * v - 给定要去重的数组
 * sorted - 指定数组是否排序，如果指定数组排序，将使用快速算法
 
-** 返回结果:**
+**返回结果:**
 * 返回去重元素后的数组
 
 ### union
@@ -504,10 +504,10 @@ Array util.unique(Value v,
 Array util.union(...);
 ```
 
-** 调用参数: **
+**调用参数:**
 * ... - 指定一个或者多个用于合并的数组
 
-** 返回结果:**
+**返回结果:**
 * 返回合并的结果
 
 ### intersection
@@ -516,10 +516,10 @@ Array util.union(...);
 Array util.intersection(...);
 ```
 
-** 调用参数: **
+**调用参数:**
 * ... - 指定一个或者多个用于计算交集的数组
 
-** 返回结果:**
+**返回结果:**
 * 返回计算交集的结果
 
 ### flatten
@@ -529,11 +529,11 @@ Array util.flatten(Value arr,
                 Boolean shallow = false);
 ```
 
-** 调用参数: **
+**调用参数:**
 * arr - 指定需要转换的数组
 * shallow - 指定是否只减少一维的嵌套，缺省为 false
 
-** 返回结果:**
+**返回结果:**
 * 返回转换的结果
 
 ### without
@@ -543,11 +543,11 @@ Array util.without(Value arr,
                 ...);
 ```
 
-** 调用参数: **
+**调用参数:**
 * arr - 指定需要排除的数组
 * ... - 指定一个或者多个用于排除的元素
 
-** 返回结果:**
+**返回结果:**
 * 返回排除的结果
 
 ### difference
@@ -557,11 +557,11 @@ Array util.difference(Array list,
                 ...);
 ```
 
-** 调用参数: **
+**调用参数:**
 * list - 指定需要排除的数组
 * ... - 指定用于排除的一个或者多个数组
 
-** 返回结果:**
+**返回结果:**
 * 返回排除的结果
 
 ### each
@@ -572,12 +572,12 @@ Value util.each(Value list,
                 Value context = undefined);
 ```
 
-** 调用参数: **
+**调用参数:**
 * list - 指定需要遍历的列表或对象
 * iterator - 指定用于遍历的回调函数
 * context - 指定调用 iterator 时绑定的 context 对象
 
-** 返回结果:**
+**返回结果:**
 * 返回 list 本身
 
 ### map
@@ -588,12 +588,12 @@ Array util.map(Value list,
                 Value context = undefined);
 ```
 
-** 调用参数: **
+**调用参数:**
 * list - 指定需要变换的列表或对象
 * iterator - 指定用于变换的回调函数
 * context - 指定调用 iterator 时绑定的 context 对象
 
-** 返回结果:**
+**返回结果:**
 * 返回变换的结果
 
 ### reduce
@@ -605,13 +605,13 @@ Value util.reduce(Value list,
                 Value context = undefined);
 ```
 
-** 调用参数: **
+**调用参数:**
 * list - 指定需要归结的列表或对象
 * iterator - 指定用于归结的回调函数
 * memo - 指定归结的初始值
 * context - 指定调用 iterator 时绑定的 context 对象
 
-** 返回结果:**
+**返回结果:**
 * 返回归结的结果
 
 ### compile
@@ -622,12 +622,12 @@ Buffer util.compile(String srcname,
                 Integer mode = 0);
 ```
 
-** 调用参数: **
+**调用参数:**
 * srcname - 指定要添加的脚本名称
 * script - 指定要编译的脚本代码
 * mode - 编译模式，0: module, 1: main, 2: script, 3: worker，缺省为 0
 
-** 返回结果:**
+**返回结果:**
 * 返回编译出的二进制代码
 
 ### compile
@@ -637,11 +637,11 @@ Buffer util.compile(String script,
                 Integer mode = 0);
 ```
 
-** 调用参数: **
+**调用参数:**
 * script - 指定要编译的脚本代码
 * mode - 编译模式，0: module, 1: main, 2: script, 3: worker，缺省为 0
 
-** 返回结果:**
+**返回结果:**
 * 返回编译出的二进制代码
 
 ### sync
@@ -650,10 +650,10 @@ Buffer util.compile(String script,
 Function util.sync(Function func);
 ```
 
-** 调用参数: **
+**调用参数:**
 * func - 给定需要包裹的方法
 
-** 返回结果:**
+**返回结果:**
 * 返回同步运行的方法
 
 ### buildInfo
@@ -662,6 +662,6 @@ Function util.sync(Function func);
 Object util.buildInfo();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 返回结构如下：
 

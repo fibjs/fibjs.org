@@ -49,7 +49,7 @@ String os.arch();
 Number os.uptime();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 返回表示时间的数值
 
 ### loadavg
@@ -58,7 +58,7 @@ Number os.uptime();
 Array os.loadavg();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 返回包含三个负载数据的数组
 
 ### totalmem
@@ -67,7 +67,7 @@ Array os.loadavg();
 Long os.totalmem();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 返回内存数据
 
 ### freemem
@@ -76,7 +76,7 @@ Long os.totalmem();
 Long os.freemem();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 返回内存数据
 
 ### cpus
@@ -85,7 +85,7 @@ Long os.freemem();
 Array os.cpus();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 返回包含 cpu 参数的数组，每一项对应一个 cpu
 
 ### cpuNumbers
@@ -94,7 +94,7 @@ Array os.cpus();
 Integer os.cpuNumbers();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 返回 cpu 个数
 
 ### tmpdir
@@ -103,7 +103,7 @@ Integer os.cpuNumbers();
 String os.tmpdir();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 返回临时文件目录
 
 ### userInfo
@@ -112,9 +112,9 @@ String os.tmpdir();
 Object os.userInfo(Object options = {});
 ```
 
-** 调用参数: **
+**调用参数:**
 
-** 返回结果:**
+**返回结果:**
 * 当前有效执行用户信息
 
 ### networkInterfaces
@@ -123,7 +123,7 @@ Object os.userInfo(Object options = {});
 Object os.networkInterfaces();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 返回网卡信息
 
 ### printerInfo
@@ -132,7 +132,7 @@ Object os.networkInterfaces();
 Array os.printerInfo();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 返回打印机信息
 
 ### openPrinter
@@ -141,10 +141,10 @@ Array os.printerInfo();
 BufferedStream os.openPrinter(String name);
 ```
 
-** 调用参数: **
+**调用参数:**
 * name - 打印机名称
 
-** 返回结果:**
+**返回结果:**
 * 返回打印机输出对象
 
 ### platform
@@ -159,10 +159,10 @@ String os.platform();
 Date os.time(String tmString = "");
 ```
 
-** 调用参数: **
+**调用参数:**
 * tmString - 时间字符串，缺省则查询当前时间
 
-** 返回结果:**
+**返回结果:**
 * 返回 javascript Date 对象
 
 ### dateAdd
@@ -173,12 +173,12 @@ Date os.dateAdd(Date d,
                 String part);
 ```
 
-** 调用参数: **
+**调用参数:**
 * d - 指定用于计算 Date 对象
 * num - 指定运算的数值
 * part - 指定运算的时间部位，接收值为：&#34;year&#34;, &#34;month&#34;, &#34;day&#34;, &#34;hour&#34;, &#34;minute&#34;, &#34;second&#34;
 
-** 返回结果:**
+**返回结果:**
 * 返回 javascript Date 对象
 
 ### memoryUsage
@@ -187,7 +187,7 @@ Date os.dateAdd(Date d,
 Object os.memoryUsage();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 返回包含内存报告
 
 ## 属性

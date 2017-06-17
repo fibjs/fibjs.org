@@ -13,7 +13,7 @@ BufferedStream 构造函数
  new BufferedStream(Stream stm);
 ```
 
-** 调用参数: **
+**调用参数:**
 * stm - BufferedStream 的二进制基础流对象
 
 ## 函数
@@ -24,10 +24,10 @@ BufferedStream 构造函数
 String BufferedStream.readText(Integer size);
 ```
 
-** 调用参数: **
+**调用参数:**
 * size - 指定读取的文本字符个数，以 utf8 或者指定的编码字节数为准
 
-** 返回结果:**
+**返回结果:**
 * 返回读取的文本字符串，若无数据可读，或者连接中断，则返回 null
 
 ### readLine
@@ -36,10 +36,10 @@ String BufferedStream.readText(Integer size);
 String BufferedStream.readLine(Integer maxlen = -1);
 ```
 
-** 调用参数: **
+**调用参数:**
 * maxlen - 指定此次读取的最大字符串，以 utf8 编码字节数为准，缺省不限制字符数
 
-** 返回结果:**
+**返回结果:**
 * 返回读取的文本字符串，若无数据可读，或者连接中断，则返回 null
 
 ### readLines
@@ -48,10 +48,10 @@ String BufferedStream.readLine(Integer maxlen = -1);
 Array BufferedStream.readLines(Integer maxlines = -1);
 ```
 
-** 调用参数: **
+**调用参数:**
 * maxlines - 指定此次读取的最大行数，缺省读取全部文本行
 
-** 返回结果:**
+**返回结果:**
 * 返回读取的文本行数组，若无数据可读，或者连接中断，空数组
 
 ### readUntil
@@ -61,11 +61,11 @@ String BufferedStream.readUntil(String mk,
                 Integer maxlen = -1);
 ```
 
-** 调用参数: **
+**调用参数:**
 * mk - 指定结尾的字符串
 * maxlen - 指定此次读取的最大字符串，以 utf8 编码字节数为准，缺省不限制字符数
 
-** 返回结果:**
+**返回结果:**
 * 返回读取的文本字符串，若无数据可读，或者连接中断，则返回 null
 
 ### writeText
@@ -74,7 +74,7 @@ String BufferedStream.readUntil(String mk,
 BufferedStream.writeText(String txt);
 ```
 
-** 调用参数: **
+**调用参数:**
 * txt - 指定写入的字符串
 
 ### writeLine
@@ -83,7 +83,7 @@ BufferedStream.writeText(String txt);
 BufferedStream.writeLine(String txt);
 ```
 
-** 调用参数: **
+**调用参数:**
 * txt - 指定写入的字符串
 
 ### read
@@ -92,10 +92,10 @@ BufferedStream.writeLine(String txt);
 Buffer BufferedStream.read(Integer bytes = -1);
 ```
 
-** 调用参数: **
+**调用参数:**
 * bytes - 指定要读取的数据量，缺省为读取随机大小的数据块，读出的数据尺寸取决于设备
 
-** 返回结果:**
+**返回结果:**
 * 返回从流内读取的数据，若无数据可读，或者连接中断，则返回 null
 
 ### write
@@ -104,7 +104,7 @@ Buffer BufferedStream.read(Integer bytes = -1);
 BufferedStream.write(Buffer data);
 ```
 
-** 调用参数: **
+**调用参数:**
 * data - 给定要写入的数据
 
 ### close
@@ -120,11 +120,11 @@ Long BufferedStream.copyTo(Stream stm,
                 Long bytes = -1);
 ```
 
-** 调用参数: **
+**调用参数:**
 * stm - 目标流对象
 * bytes - 复制的字节数
 
-** 返回结果:**
+**返回结果:**
 * 返回复制的字节数
 
 ### dispose
@@ -139,10 +139,10 @@ BufferedStream.dispose();
 Boolean BufferedStream.equals(object expected);
 ```
 
-** 调用参数: **
+**调用参数:**
 * expected - 制定比较的目标对象
 
-** 返回结果:**
+**返回结果:**
 * 返回对象比较的结果
 
 ### toString
@@ -151,7 +151,7 @@ Boolean BufferedStream.equals(object expected);
 String BufferedStream.toString();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 返回对象的字符串表示
 
 ### toJSON
@@ -160,10 +160,10 @@ String BufferedStream.toString();
 Value BufferedStream.toJSON(String key = "");
 ```
 
-** 调用参数: **
+**调用参数:**
 * key - 未使用
 
-** 返回结果:**
+**返回结果:**
 * 返回包含可 JSON 序列化的值
 
 ### valueOf
@@ -172,7 +172,7 @@ Value BufferedStream.toJSON(String key = "");
 Value BufferedStream.valueOf();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 返回对象本身的数值
 
 ## 属性

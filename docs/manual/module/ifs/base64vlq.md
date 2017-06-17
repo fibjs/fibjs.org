@@ -18,10 +18,10 @@ var base64vlq = require(&#39;base64vlq&#39;);
 String base64vlq.encode(Integer data);
 ```
 
-** 调用参数: **
+**调用参数:**
 * data - 要编码的数据
 
-** 返回结果:**
+**返回结果:**
 * 返回编码的字符串
 
 ### encode
@@ -30,10 +30,10 @@ String base64vlq.encode(Integer data);
 String base64vlq.encode(Array data);
 ```
 
-** 调用参数: **
+**调用参数:**
 * data - 要编码的数据
 
-** 返回结果:**
+**返回结果:**
 * 返回编码的字符串
 
 ### decode
@@ -42,9 +42,9 @@ String base64vlq.encode(Array data);
 Array base64vlq.decode(String data);
 ```
 
-** 调用参数: **
+**调用参数:**
 * data - 要解码的字符串
 
-** 返回结果:**
+**返回结果:**
 * 返回解码的二进制数据
 

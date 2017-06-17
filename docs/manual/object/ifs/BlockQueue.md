@@ -14,7 +14,7 @@ var q = new coroutine.BlockQueue(100);
  new BlockQueue(Integer size);
 ```
 
-** 调用参数: **
+**调用参数:**
 * size - 指定队列尺寸
 
 ## 函数
@@ -25,7 +25,7 @@ var q = new coroutine.BlockQueue(100);
 BlockQueue.put(Value e);
 ```
 
-** 调用参数: **
+**调用参数:**
 * e - 要插入的元素
 
 ### take
@@ -34,7 +34,7 @@ BlockQueue.put(Value e);
 Value BlockQueue.take();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 返回取出的元素
 
 ### add
@@ -43,10 +43,10 @@ Value BlockQueue.take();
 Boolean BlockQueue.add(Value e);
 ```
 
-** 调用参数: **
+**调用参数:**
 * e - 要插入的元素
 
-** 返回结果:**
+**返回结果:**
 * 成功返回 True
 
 ### offer
@@ -55,10 +55,10 @@ Boolean BlockQueue.add(Value e);
 Boolean BlockQueue.offer(Value e);
 ```
 
-** 调用参数: **
+**调用参数:**
 * e - 要插入的元素
 
-** 返回结果:**
+**返回结果:**
 * 成功返回 True
 
 ### remove
@@ -67,7 +67,7 @@ Boolean BlockQueue.offer(Value e);
 Value BlockQueue.remove();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 返回取出的元素
 
 ### poll
@@ -76,7 +76,7 @@ Value BlockQueue.remove();
 Value BlockQueue.poll();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 返回取出的元素，队列为空则返回 Null
 
 ### element
@@ -85,7 +85,7 @@ Value BlockQueue.poll();
 Value BlockQueue.element();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 返回取出的元素
 
 ### peek
@@ -94,7 +94,7 @@ Value BlockQueue.element();
 Value BlockQueue.peek();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 返回取出的元素，队列为空则返回 Null
 
 ### clear
@@ -109,7 +109,7 @@ BlockQueue.clear();
 Array BlockQueue.toArray();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 包含数据的 js 数组
 
 ### dispose
@@ -124,10 +124,10 @@ BlockQueue.dispose();
 Boolean BlockQueue.equals(object expected);
 ```
 
-** 调用参数: **
+**调用参数:**
 * expected - 制定比较的目标对象
 
-** 返回结果:**
+**返回结果:**
 * 返回对象比较的结果
 
 ### toString
@@ -136,7 +136,7 @@ Boolean BlockQueue.equals(object expected);
 String BlockQueue.toString();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 返回对象的字符串表示
 
 ### toJSON
@@ -145,10 +145,10 @@ String BlockQueue.toString();
 Value BlockQueue.toJSON(String key = "");
 ```
 
-** 调用参数: **
+**调用参数:**
 * key - 未使用
 
-** 返回结果:**
+**返回结果:**
 * 返回包含可 JSON 序列化的值
 
 ### valueOf
@@ -157,7 +157,7 @@ Value BlockQueue.toJSON(String key = "");
 Value BlockQueue.valueOf();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 返回对象本身的数值
 
 ## 属性

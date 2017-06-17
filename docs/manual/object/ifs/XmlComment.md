@@ -14,7 +14,7 @@ String XmlComment.substringData(Integer offset,
                 Integer count);
 ```
 
-** 调用参数: **
+**调用参数:**
 * offset - 要返回的第一个字符的位置
 * count - 要返回的子串中的字符数
 
@@ -24,7 +24,7 @@ String XmlComment.substringData(Integer offset,
 XmlComment.appendData(String arg);
 ```
 
-** 调用参数: **
+**调用参数:**
 * arg - 要附加到节点的字符串
 
 ### insertData
@@ -34,7 +34,7 @@ XmlComment.insertData(Integer offset,
                 String arg);
 ```
 
-** 调用参数: **
+**调用参数:**
 * offset - 要把字符串插入节点的字符位置
 * arg - 要插入的字符串
 
@@ -45,7 +45,7 @@ XmlComment.deleteData(Integer offset,
                 Integer count);
 ```
 
-** 调用参数: **
+**调用参数:**
 * offset - 要删除的第一个字符的位置
 * count - 要删除的字符的数量
 
@@ -57,7 +57,7 @@ XmlComment.replaceData(Integer offset,
                 String arg);
 ```
 
-** 调用参数: **
+**调用参数:**
 * offset - 节点要替换的字符位置
 * count - 要替换的字符的数量
 * arg - 要插入的字符串
@@ -68,7 +68,7 @@ XmlComment.replaceData(Integer offset,
 Boolean XmlComment.hasChildNodes();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 存在任何子节点时返回 true，否则返回 false
 
 ### normalize
@@ -85,10 +85,10 @@ XmlComment.normalize();
 XmlNode XmlComment.cloneNode(Boolean deep = true);
 ```
 
-** 调用参数: **
+**调用参数:**
 * deep - 是否深度拷贝，为 true 时，被克隆的节点会克隆原节点的所有子节点
 
-** 返回结果:**
+**返回结果:**
 * 返回所复制的节点
 
 该方法将复制并返回调用它的节点的副本。如果传递给它的参数是 true，它还将递归复制当前节点的所有子孙节点。 否则，它只复制当前节点。返回的节点不属于文档树，它的 parentNode 属性为 null。当复制的是 Element 节点时，它的所有属性都将被复制。
@@ -99,10 +99,10 @@ XmlNode XmlComment.cloneNode(Boolean deep = true);
 String XmlComment.lookupPrefix(String namespaceURI);
 ```
 
-** 调用参数: **
+**调用参数:**
 * namespaceURI - 指定匹配的命名空间 URI
 
-** 返回结果:**
+**返回结果:**
 * 返回匹配的前缀，未匹配到返回 null
 
 ### lookupNamespaceURI
@@ -111,10 +111,10 @@ String XmlComment.lookupPrefix(String namespaceURI);
 String XmlComment.lookupNamespaceURI(String prefix);
 ```
 
-** 调用参数: **
+**调用参数:**
 * prefix - 指定匹配的前缀
 
-** 返回结果:**
+**返回结果:**
 * 返回匹配的命名空间 URI，未匹配到返回 null
 
 ### insertBefore
@@ -124,11 +124,11 @@ XmlNode XmlComment.insertBefore(XmlNode newChild,
                 XmlNode refChild);
 ```
 
-** 调用参数: **
+**调用参数:**
 * newChild - 插入新的节点
 * refChild - 在此节点前插入新节点
 
-** 返回结果:**
+**返回结果:**
 * 返回新的子节点
 
 如果文档树中已经存在了 newChild，它将从文档树中删除，然后重新插入它的新位置。来自一个文档的节点（或由一个文档创建的节点）不能插入另一个文档。也就是说，newChild 的 ownerDocument 属性必须与当前节点的 ownerDocument 属性相同。
@@ -140,11 +140,11 @@ XmlNode XmlComment.insertAfter(XmlNode newChild,
                 XmlNode refChild);
 ```
 
-** 调用参数: **
+**调用参数:**
 * newChild - 插入新的节点
 * refChild - 在此节点后插入新节点
 
-** 返回结果:**
+**返回结果:**
 * 返回新的子节点
 
 如果文档树中已经存在了 newChild，它将从文档树中删除，然后重新插入它的新位置。来自一个文档的节点（或由一个文档创建的节点）不能插入另一个文档。也就是说，newChild 的 ownerDocument 属性必须与当前节点的 ownerDocument 属性相同。
@@ -155,10 +155,10 @@ XmlNode XmlComment.insertAfter(XmlNode newChild,
 XmlNode XmlComment.appendChild(XmlNode newChild);
 ```
 
-** 调用参数: **
+**调用参数:**
 * newChild - 指定添加的节点
 
-** 返回结果:**
+**返回结果:**
 * 返回这个新的子节点
 
 如果文档树中已经存在了 newChild，它将从文档树中删除，然后重新插入它的新位置。来自一个文档的节点（或由一个文档创建的节点）不能插入另一个文档。也就是说，newChild 的 ownerDocument 属性必须与当前节点的 ownerDocument 属性相同。
@@ -170,11 +170,11 @@ XmlNode XmlComment.replaceChild(XmlNode newChild,
                 XmlNode oldChild);
 ```
 
-** 调用参数: **
+**调用参数:**
 * newChild - 指定新的节点
 * oldChild - 指定被替换的节点
 
-** 返回结果:**
+**返回结果:**
 * 如替换成功，此方法可返回被替换的节点，如替换失败，则返回 null
 
 如果文档树中已经存在了 newChild，它将从文档树中删除，然后重新插入它的新位置。来自一个文档的节点（或由一个文档创建的节点）不能插入另一个文档。也就是说，newChild 的 ownerDocument 属性必须与当前节点的 ownerDocument 属性相同。
@@ -185,10 +185,10 @@ XmlNode XmlComment.replaceChild(XmlNode newChild,
 XmlNode XmlComment.removeChild(XmlNode oldChild);
 ```
 
-** 调用参数: **
+**调用参数:**
 * oldChild - 指定被删除的节点
 
-** 返回结果:**
+**返回结果:**
 * 如删除成功，此方法可返回被删除的节点，如失败，则返回 null
 
 ### dispose
@@ -203,10 +203,10 @@ XmlComment.dispose();
 Boolean XmlComment.equals(object expected);
 ```
 
-** 调用参数: **
+**调用参数:**
 * expected - 制定比较的目标对象
 
-** 返回结果:**
+**返回结果:**
 * 返回对象比较的结果
 
 ### toString
@@ -215,7 +215,7 @@ Boolean XmlComment.equals(object expected);
 String XmlComment.toString();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 返回对象的字符串表示
 
 ### toJSON
@@ -224,10 +224,10 @@ String XmlComment.toString();
 Value XmlComment.toJSON(String key = "");
 ```
 
-** 调用参数: **
+**调用参数:**
 * key - 未使用
 
-** 返回结果:**
+**返回结果:**
 * 返回包含可 JSON 序列化的值
 
 ### valueOf
@@ -236,7 +236,7 @@ Value XmlComment.toJSON(String key = "");
 Value XmlComment.valueOf();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 返回对象本身的数值
 
 ## 属性

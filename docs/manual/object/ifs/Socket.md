@@ -14,7 +14,7 @@ Socket 构造函数，创建一个新的 Socket 对象
                 Integer type = undefined);
 ```
 
-** 调用参数: **
+**调用参数:**
 * family - 指定地址集，缺省为 AF_INET，ipv4
 * type - 指定协议族，缺省为 SOCK_STREAM，tcp
 
@@ -27,7 +27,7 @@ Socket.connect(String host,
                 Integer port);
 ```
 
-** 调用参数: **
+**调用参数:**
 * host - 指定对方地址或主机名
 * port - 指定对方端口
 
@@ -38,7 +38,7 @@ Socket.bind(Integer port,
                 Boolean allowIPv4 = true);
 ```
 
-** 调用参数: **
+**调用参数:**
 * port - 指定绑定的端口
 * allowIPv4 - 指定是否接受 ipv4 连接，缺省为 true。本参数在 ipv6 时有效，并依赖于操作系统
 
@@ -50,7 +50,7 @@ Socket.bind(String addr,
                 Boolean allowIPv4 = true);
 ```
 
-** 调用参数: **
+**调用参数:**
 * addr - 指定绑定的地址
 * port - 指定绑定的端口
 * allowIPv4 - 指定是否接受 ipv4 连接，缺省为 true。本参数在 ipv6 时有效，并依赖于操作系统
@@ -61,7 +61,7 @@ Socket.bind(String addr,
 Socket.listen(Integer backlog = 120);
 ```
 
-** 调用参数: **
+**调用参数:**
 * backlog - 指定请求队列长度，超出的请求将被拒绝，缺省为 120
 
 ### accept
@@ -70,7 +70,7 @@ Socket.listen(Integer backlog = 120);
 Socket Socket.accept();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 返回接收到得连接对象
 
 ### recv
@@ -79,10 +79,10 @@ Socket Socket.accept();
 Buffer Socket.recv(Integer bytes = -1);
 ```
 
-** 调用参数: **
+**调用参数:**
 * bytes - 指定要读取的数据量，缺省读取任意尺寸的数据
 
-** 返回结果:**
+**返回结果:**
 * 返回从连接读取的数据
 
 ### recvfrom
@@ -91,7 +91,7 @@ Buffer Socket.recv(Integer bytes = -1);
 DatagramPacket Socket.recvfrom(Integer bytes = -1);
 ```
 
-** 调用参数: **
+**调用参数:**
 
 ### send
 将给定的数据写入连接，此方法等效于 write 方法
@@ -99,7 +99,7 @@ DatagramPacket Socket.recvfrom(Integer bytes = -1);
 Socket.send(Buffer data);
 ```
 
-** 调用参数: **
+**调用参数:**
 * data - 给定要写入的数据
 
 ### sendto
@@ -110,7 +110,7 @@ Socket.sendto(Buffer data,
                 Integer port);
 ```
 
-** 调用参数: **
+**调用参数:**
 
 ### read
 从流内读取指定大小的数据
@@ -118,10 +118,10 @@ Socket.sendto(Buffer data,
 Buffer Socket.read(Integer bytes = -1);
 ```
 
-** 调用参数: **
+**调用参数:**
 * bytes - 指定要读取的数据量，缺省为读取随机大小的数据块，读出的数据尺寸取决于设备
 
-** 返回结果:**
+**返回结果:**
 * 返回从流内读取的数据，若无数据可读，或者连接中断，则返回 null
 
 ### write
@@ -130,7 +130,7 @@ Buffer Socket.read(Integer bytes = -1);
 Socket.write(Buffer data);
 ```
 
-** 调用参数: **
+**调用参数:**
 * data - 给定要写入的数据
 
 ### close
@@ -146,11 +146,11 @@ Long Socket.copyTo(Stream stm,
                 Long bytes = -1);
 ```
 
-** 调用参数: **
+**调用参数:**
 * stm - 目标流对象
 * bytes - 复制的字节数
 
-** 返回结果:**
+**返回结果:**
 * 返回复制的字节数
 
 ### dispose
@@ -165,10 +165,10 @@ Socket.dispose();
 Boolean Socket.equals(object expected);
 ```
 
-** 调用参数: **
+**调用参数:**
 * expected - 制定比较的目标对象
 
-** 返回结果:**
+**返回结果:**
 * 返回对象比较的结果
 
 ### toString
@@ -177,7 +177,7 @@ Boolean Socket.equals(object expected);
 String Socket.toString();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 返回对象的字符串表示
 
 ### toJSON
@@ -186,10 +186,10 @@ String Socket.toString();
 Value Socket.toJSON(String key = "");
 ```
 
-** 调用参数: **
+**调用参数:**
 * key - 未使用
 
-** 返回结果:**
+**返回结果:**
 * 返回包含可 JSON 序列化的值
 
 ### valueOf
@@ -198,7 +198,7 @@ Value Socket.toJSON(String key = "");
 Value Socket.valueOf();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 返回对象本身的数值
 
 ## 属性

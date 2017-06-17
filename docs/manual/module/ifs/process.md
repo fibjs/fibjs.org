@@ -13,10 +13,10 @@ var process = require(&#39;process&#39;);
 Integer process.umask(Integer mask);
 ```
 
-** 调用参数: **
+**调用参数:**
 * mask - 指定新的掩码
 
-** 返回结果:**
+**返回结果:**
 * 返回之前的 mask
 
 ### umask
@@ -25,10 +25,10 @@ Integer process.umask(Integer mask);
 Integer process.umask(String mask);
 ```
 
-** 调用参数: **
+**调用参数:**
 * mask - 指定新的掩码， 字符串类型八进制(e.g: &#34;0664&#34;)
 
-** 返回结果:**
+**返回结果:**
 * 返回之前的 mask
 
 ### umask
@@ -37,7 +37,7 @@ Integer process.umask(String mask);
 Integer process.umask();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 返回当前的 mask 值
 
 ### exit
@@ -46,7 +46,7 @@ Integer process.umask();
 process.exit(Integer code);
 ```
 
-** 调用参数: **
+**调用参数:**
 * code - 返回进程结果
 
 ### cwd
@@ -55,7 +55,7 @@ process.exit(Integer code);
 String process.cwd();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 返回当前系统路径
 
 ### chdir
@@ -64,7 +64,7 @@ String process.cwd();
 process.chdir(String directory);
 ```
 
-** 调用参数: **
+**调用参数:**
 * directory - 指定设定的新路径
 
 ### uptime
@@ -73,7 +73,7 @@ process.chdir(String directory);
 Number process.uptime();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 返回表示时间的数值
 
 ### memoryUsage
@@ -82,7 +82,7 @@ Number process.uptime();
 Object process.memoryUsage();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 返回包含内存报告
 
 ### nextTick
@@ -92,7 +92,7 @@ process.nextTick(Function func,
                 ...);
 ```
 
-** 调用参数: **
+**调用参数:**
 * func - 制定纤程执行的函数
 * ... - 可变参数序列，此序列会在纤程内传递给函数
 
@@ -104,12 +104,12 @@ SubProcess process.open(String command,
                 Object opts = {});
 ```
 
-** 调用参数: **
+**调用参数:**
 * command - 指定运行的命令行
 * args - 指定运行的参数列表
 * opts - 指定运行的选项，支持的选项如下：
 
-** 返回结果:**
+**返回结果:**
 * 返回包含运行结果的进程对象
 
 ### open
@@ -119,11 +119,11 @@ SubProcess process.open(String command,
                 Object opts = {});
 ```
 
-** 调用参数: **
+**调用参数:**
 * command - 指定运行的命令行
 * opts - 指定运行的选项，支持的选项如下：
 
-** 返回结果:**
+**返回结果:**
 * 返回包含运行结果的进程对象
 
 ### start
@@ -134,12 +134,12 @@ SubProcess process.start(String command,
                 Object opts = {});
 ```
 
-** 调用参数: **
+**调用参数:**
 * command - 指定运行的命令行
 * args - 指定运行的参数列表
 * opts - 指定运行的选项，支持的选项如下：
 
-** 返回结果:**
+**返回结果:**
 * 返回包含运行结果的进程对象
 
 ### start
@@ -149,11 +149,11 @@ SubProcess process.start(String command,
                 Object opts = {});
 ```
 
-** 调用参数: **
+**调用参数:**
 * command - 指定运行的命令行
 * opts - 指定运行的选项，支持的选项如下：
 
-** 返回结果:**
+**返回结果:**
 * 返回包含运行结果的进程对象
 
 ### run
@@ -164,12 +164,12 @@ Integer process.run(String command,
                 Object opts = {});
 ```
 
-** 调用参数: **
+**调用参数:**
 * command - 指定运行的命令行
 * args - 指定运行的参数列表
 * opts - 指定运行的选项，支持的选项如下：
 
-** 返回结果:**
+**返回结果:**
 * 返回命令的运行结果
 
 ### run
@@ -179,11 +179,11 @@ Integer process.run(String command,
                 Object opts = {});
 ```
 
-** 调用参数: **
+**调用参数:**
 * command - 指定运行的命令行
 * opts - 指定运行的选项，支持的选项如下：
 
-** 返回结果:**
+**返回结果:**
 * 返回命令的运行结果
 
 ## 属性

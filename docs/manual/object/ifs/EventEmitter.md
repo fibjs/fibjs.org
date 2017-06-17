@@ -24,11 +24,11 @@ Object EventEmitter.on(String ev,
                 Function func);
 ```
 
-** 调用参数: **
+**调用参数:**
 * ev - 指定事件的名称
 * func - 指定事件处理函数
 
-** 返回结果:**
+**返回结果:**
 * 返回成功绑定的数量，如果函数已绑定则返回 0
 
 ### on
@@ -37,10 +37,10 @@ Object EventEmitter.on(String ev,
 Object EventEmitter.on(Object map);
 ```
 
-** 调用参数: **
+**调用参数:**
 * map - 指定事件映射关系，对象属性名称将作为事件名称，属性的值将作为事件处理函数
 
-** 返回结果:**
+**返回结果:**
 * 返回事件对象本身，便于链式调用
 
 ### addListener
@@ -50,11 +50,11 @@ Object EventEmitter.addListener(String ev,
                 Function func);
 ```
 
-** 调用参数: **
+**调用参数:**
 * ev - 指定事件的名称
 * func - 指定事件处理函数
 
-** 返回结果:**
+**返回结果:**
 * 返回事件对象本身，便于链式调用
 
 ### addListener
@@ -63,10 +63,10 @@ Object EventEmitter.addListener(String ev,
 Object EventEmitter.addListener(Object map);
 ```
 
-** 调用参数: **
+**调用参数:**
 * map - 指定事件映射关系，对象属性名称将作为事件名称，属性的值将作为事件处理函数
 
-** 返回结果:**
+**返回结果:**
 * 返回事件对象本身，便于链式调用
 
 ### prependListener
@@ -76,11 +76,11 @@ Object EventEmitter.prependListener(String ev,
                 Function func);
 ```
 
-** 调用参数: **
+**调用参数:**
 * ev - 指定事件的名称
 * func - 指定事件处理函数
 
-** 返回结果:**
+**返回结果:**
 * 返回成功绑定的数量，如果函数已绑定则返回 0
 
 ### prependListener
@@ -89,11 +89,11 @@ Object EventEmitter.prependListener(String ev,
 Object EventEmitter.prependListener(Object map);
 ```
 
-** 调用参数: **
+**调用参数:**
 * ev - 指定事件的名称
 * func - 指定事件处理函数
 
-** 返回结果:**
+**返回结果:**
 * 返回成功绑定的数量，如果函数已绑定则返回 0
 
 ### once
@@ -103,11 +103,11 @@ Object EventEmitter.once(String ev,
                 Function func);
 ```
 
-** 调用参数: **
+**调用参数:**
 * ev - 指定事件的名称
 * func - 指定事件处理函数
 
-** 返回结果:**
+**返回结果:**
 * 返回事件对象本身，便于链式调用
 
 ### once
@@ -116,10 +116,10 @@ Object EventEmitter.once(String ev,
 Object EventEmitter.once(Object map);
 ```
 
-** 调用参数: **
+**调用参数:**
 * map - 指定事件映射关系，对象属性名称将作为事件名称，属性的值将作为事件处理函数
 
-** 返回结果:**
+**返回结果:**
 * 返回事件对象本身，便于链式调用
 
 ### prependOnceListener
@@ -129,11 +129,11 @@ Object EventEmitter.prependOnceListener(String ev,
                 Function func);
 ```
 
-** 调用参数: **
+**调用参数:**
 * ev - 指定事件的名称
 * func - 指定事件处理函数
 
-** 返回结果:**
+**返回结果:**
 * 返回成功绑定的数量，如果函数已绑定则返回 0
 
 ### prependOnceListener
@@ -142,11 +142,11 @@ Object EventEmitter.prependOnceListener(String ev,
 Object EventEmitter.prependOnceListener(Object map);
 ```
 
-** 调用参数: **
+**调用参数:**
 * ev - 指定事件的名称
 * func - 指定事件处理函数
 
-** 返回结果:**
+**返回结果:**
 * 返回成功绑定的数量，如果函数已绑定则返回 0
 
 ### off
@@ -156,11 +156,11 @@ Object EventEmitter.off(String ev,
                 Function func);
 ```
 
-** 调用参数: **
+**调用参数:**
 * ev - 指定事件的名称
 * func - 指定事件处理函数
 
-** 返回结果:**
+**返回结果:**
 * 返回事件对象本身，便于链式调用
 
 ### off
@@ -169,10 +169,10 @@ Object EventEmitter.off(String ev,
 Object EventEmitter.off(String ev);
 ```
 
-** 调用参数: **
+**调用参数:**
 * ev - 指定事件的名称
 
-** 返回结果:**
+**返回结果:**
 * 返回事件对象本身，便于链式调用
 
 ### off
@@ -181,10 +181,10 @@ Object EventEmitter.off(String ev);
 Object EventEmitter.off(Object map);
 ```
 
-** 调用参数: **
+**调用参数:**
 * map - 指定事件映射关系，对象属性名称作为事件名称，属性的值作为事件处理函数
 
-** 返回结果:**
+**返回结果:**
 * 返回事件对象本身，便于链式调用
 
 ### removeListener
@@ -194,11 +194,11 @@ Object EventEmitter.removeListener(String ev,
                 Function func);
 ```
 
-** 调用参数: **
+**调用参数:**
 * ev - 指定事件的名称
 * func - 指定事件处理函数
 
-** 返回结果:**
+**返回结果:**
 * 返回事件对象本身，便于链式调用
 
 ### removeListener
@@ -207,10 +207,10 @@ Object EventEmitter.removeListener(String ev,
 Object EventEmitter.removeListener(String ev);
 ```
 
-** 调用参数: **
+**调用参数:**
 * ev - 指定事件的名称
 
-** 返回结果:**
+**返回结果:**
 * 返回事件对象本身，便于链式调用
 
 ### removeListener
@@ -219,10 +219,10 @@ Object EventEmitter.removeListener(String ev);
 Object EventEmitter.removeListener(Object map);
 ```
 
-** 调用参数: **
+**调用参数:**
 * map - 指定事件映射关系，对象属性名称作为事件名称，属性的值作为事件处理函数
 
-** 返回结果:**
+**返回结果:**
 * 返回事件对象本身，便于链式调用
 
 ### removeAllListeners
@@ -231,10 +231,10 @@ Object EventEmitter.removeListener(Object map);
 Object EventEmitter.removeAllListeners(Array evs = []);
 ```
 
-** 调用参数: **
+**调用参数:**
 * evs - 指定事件的名称
 
-** 返回结果:**
+**返回结果:**
 * 返回事件对象本身，便于链式调用
 
 ### setMaxListeners
@@ -243,7 +243,7 @@ Object EventEmitter.removeAllListeners(Array evs = []);
 EventEmitter.setMaxListeners(Integer n);
 ```
 
-** 调用参数: **
+**调用参数:**
 * n - 指定事件的数量
 
 ### getMaxListeners
@@ -258,10 +258,10 @@ Integer EventEmitter.getMaxListeners();
 Array EventEmitter.listeners(String ev);
 ```
 
-** 调用参数: **
+**调用参数:**
 * ev - 指定事件的名称
 
-** 返回结果:**
+**返回结果:**
 * 返回指定事件的监听器数组
 
 ### listenerCount
@@ -270,10 +270,10 @@ Array EventEmitter.listeners(String ev);
 Integer EventEmitter.listenerCount(String ev);
 ```
 
-** 调用参数: **
+**调用参数:**
 * ev - 指定事件的名称
 
-** 返回结果:**
+**返回结果:**
 * 返回指定事件的监听器数量
 
 ### eventNames
@@ -282,7 +282,7 @@ Integer EventEmitter.listenerCount(String ev);
 Array EventEmitter.eventNames();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 返回事件名称数组
 
 ### emit
@@ -292,11 +292,11 @@ Boolean EventEmitter.emit(String ev,
                 ...);
 ```
 
-** 调用参数: **
+**调用参数:**
 * ev - 事件名称
 * ... - 事件参数，将会传递给事件处理函数
 
-** 返回结果:**
+**返回结果:**
 * 返回事件触发状态，有响应事件返回 true，否则返回 false
 
 ### dispose
@@ -311,10 +311,10 @@ EventEmitter.dispose();
 Boolean EventEmitter.equals(object expected);
 ```
 
-** 调用参数: **
+**调用参数:**
 * expected - 制定比较的目标对象
 
-** 返回结果:**
+**返回结果:**
 * 返回对象比较的结果
 
 ### toString
@@ -323,7 +323,7 @@ Boolean EventEmitter.equals(object expected);
 String EventEmitter.toString();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 返回对象的字符串表示
 
 ### toJSON
@@ -332,10 +332,10 @@ String EventEmitter.toString();
 Value EventEmitter.toJSON(String key = "");
 ```
 
-** 调用参数: **
+**调用参数:**
 * key - 未使用
 
-** 返回结果:**
+**返回结果:**
 * 返回包含可 JSON 序列化的值
 
 ### valueOf
@@ -344,7 +344,7 @@ Value EventEmitter.toJSON(String key = "");
 Value EventEmitter.valueOf();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 返回对象本身的数值
 
 ## 属性

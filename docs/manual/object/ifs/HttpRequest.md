@@ -17,10 +17,10 @@ HttpRequest 构造函数，创建一个新的 HttpRequest 对象
 Boolean HttpRequest.hasHeader(String name);
 ```
 
-** 调用参数: **
+**调用参数:**
 * name - 指定要检查的键值
 
-** 返回结果:**
+**返回结果:**
 * 返回键值是否存在
 
 ### firstHeader
@@ -29,10 +29,10 @@ Boolean HttpRequest.hasHeader(String name);
 Variant HttpRequest.firstHeader(String name);
 ```
 
-** 调用参数: **
+**调用参数:**
 * name - 指定要查询的键值
 
-** 返回结果:**
+**返回结果:**
 * 返回键值所对应的值，若不存在，则返回 undefined
 
 ### allHeader
@@ -41,10 +41,10 @@ Variant HttpRequest.firstHeader(String name);
 List HttpRequest.allHeader(String name);
 ```
 
-** 调用参数: **
+**调用参数:**
 * name - 指定要查询的键值
 
-** 返回结果:**
+**返回结果:**
 * 返回键值所对应全部值的数组，若数据不存在，则返回 null
 
 ### addHeader
@@ -53,7 +53,7 @@ List HttpRequest.allHeader(String name);
 HttpRequest.addHeader(Map map);
 ```
 
-** 调用参数: **
+**调用参数:**
 * map - 指定要添加的键值数据字典
 
 ### addHeader
@@ -63,7 +63,7 @@ HttpRequest.addHeader(String name,
                 Variant value);
 ```
 
-** 调用参数: **
+**调用参数:**
 * name - 指定要添加的键值
 * value - 指定要添加的数据
 
@@ -73,7 +73,7 @@ HttpRequest.addHeader(String name,
 HttpRequest.setHeader(Map map);
 ```
 
-** 调用参数: **
+**调用参数:**
 * map - 指定要设定的键值数据字典
 
 ### setHeader
@@ -83,7 +83,7 @@ HttpRequest.setHeader(String name,
                 Variant value);
 ```
 
-** 调用参数: **
+**调用参数:**
 * name - 指定要设定的键值
 * value - 指定要设定的数据
 
@@ -93,7 +93,7 @@ HttpRequest.setHeader(String name,
 HttpRequest.removeHeader(String name);
 ```
 
-** 调用参数: **
+**调用参数:**
 * name - 指定要删除的键值
 
 ### read
@@ -102,10 +102,10 @@ HttpRequest.removeHeader(String name);
 Buffer HttpRequest.read(Integer bytes = -1);
 ```
 
-** 调用参数: **
+**调用参数:**
 * bytes - 指定要读取的数据量，缺省为读取随机大小的数据块，读出的数据尺寸取决于设备
 
-** 返回结果:**
+**返回结果:**
 * 返回从流内读取的数据，若无数据可读，或者连接中断，则返回 null
 
 ### readAll
@@ -114,7 +114,7 @@ Buffer HttpRequest.read(Integer bytes = -1);
 Buffer HttpRequest.readAll();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 返回从流内读取的数据，若无数据可读，或者连接中断，则返回 null
 
 ### write
@@ -123,7 +123,7 @@ Buffer HttpRequest.readAll();
 HttpRequest.write(Buffer data);
 ```
 
-** 调用参数: **
+**调用参数:**
 * data - 给定要写入的数据
 
 ### end
@@ -138,7 +138,7 @@ HttpRequest.end();
 Boolean HttpRequest.isEnded();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 结束则返回 true
 
 ### clear
@@ -153,7 +153,7 @@ HttpRequest.clear();
 HttpRequest.sendTo(Stream stm);
 ```
 
-** 调用参数: **
+**调用参数:**
 * stm - 指定接收格式化消息的流对象
 
 ### readFrom
@@ -162,7 +162,7 @@ HttpRequest.sendTo(Stream stm);
 HttpRequest.readFrom(Stream stm);
 ```
 
-** 调用参数: **
+**调用参数:**
 * stm - 指定读取格式化消息的流对象
 
 ### dispose
@@ -177,10 +177,10 @@ HttpRequest.dispose();
 Boolean HttpRequest.equals(object expected);
 ```
 
-** 调用参数: **
+**调用参数:**
 * expected - 制定比较的目标对象
 
-** 返回结果:**
+**返回结果:**
 * 返回对象比较的结果
 
 ### toString
@@ -189,7 +189,7 @@ Boolean HttpRequest.equals(object expected);
 String HttpRequest.toString();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 返回对象的字符串表示
 
 ### toJSON
@@ -198,10 +198,10 @@ String HttpRequest.toString();
 Value HttpRequest.toJSON(String key = "");
 ```
 
-** 调用参数: **
+**调用参数:**
 * key - 未使用
 
-** 返回结果:**
+**返回结果:**
 * 返回包含可 JSON 序列化的值
 
 ### valueOf
@@ -210,7 +210,7 @@ Value HttpRequest.toJSON(String key = "");
 Value HttpRequest.valueOf();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 返回对象本身的数值
 
 ## 属性

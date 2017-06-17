@@ -47,7 +47,7 @@ var routing = new mq.Routing({
  new Routing(Object map = {});
 ```
 
-** 调用参数: **
+**调用参数:**
 * map - 初始化路由参数
 
 ### Routing
@@ -57,7 +57,7 @@ var routing = new mq.Routing({
                 Object map);
 ```
 
-** 调用参数: **
+**调用参数:**
 * method - 指定 http 请求方法，&#34;*&#34; 接受所有方法
 * map - 初始化路由参数
 
@@ -69,7 +69,7 @@ var routing = new mq.Routing({
 Routing.append(Routing route);
 ```
 
-** 调用参数: **
+**调用参数:**
 * route - 已经初始化的路由对象
 
 ### append
@@ -78,7 +78,7 @@ Routing.append(Routing route);
 Routing.append(Object map);
 ```
 
-** 调用参数: **
+**调用参数:**
 * map - 路由参数
 
 ### append
@@ -88,7 +88,7 @@ Routing.append(String pattern,
                 Handler hdlr);
 ```
 
-** 调用参数: **
+**调用参数:**
 * pattern - 消息匹配格式
 * hdlr - 内置消息处理器，处理函数，链式处理数组，路由对象，详见 mq.Handler
 
@@ -99,7 +99,7 @@ Routing.append(String method,
                 Object map);
 ```
 
-** 调用参数: **
+**调用参数:**
 * method - 指定 http 请求方法，&#34;*&#34; 接受所有方法
 * map - 路由参数
 
@@ -111,7 +111,7 @@ Routing.append(String method,
                 Handler hdlr);
 ```
 
-** 调用参数: **
+**调用参数:**
 * method - 指定 http 请求方法，&#34;*&#34; 接受所有方法
 * pattern - 消息匹配格式
 * hdlr - 内置消息处理器，处理函数，链式处理数组，路由对象，详见 mq.Handler
@@ -122,7 +122,7 @@ Routing.append(String method,
 Routing.all(Object map);
 ```
 
-** 调用参数: **
+**调用参数:**
 * map - 路由参数
 
 ### all
@@ -132,7 +132,7 @@ Routing.all(String pattern,
                 Handler hdlr);
 ```
 
-** 调用参数: **
+**调用参数:**
 * pattern - 消息匹配格式
 * hdlr - 内置消息处理器，处理函数，链式处理数组，路由对象，详见 mq.Handler
 
@@ -142,7 +142,7 @@ Routing.all(String pattern,
 Routing.get(Object map);
 ```
 
-** 调用参数: **
+**调用参数:**
 * map - 路由参数
 
 ### get
@@ -152,7 +152,7 @@ Routing.get(String pattern,
                 Handler hdlr);
 ```
 
-** 调用参数: **
+**调用参数:**
 * pattern - 消息匹配格式
 * hdlr - 内置消息处理器，处理函数，链式处理数组，路由对象，详见 mq.Handler
 
@@ -162,7 +162,7 @@ Routing.get(String pattern,
 Routing.post(Object map);
 ```
 
-** 调用参数: **
+**调用参数:**
 * map - 路由参数
 
 ### post
@@ -172,7 +172,7 @@ Routing.post(String pattern,
                 Handler hdlr);
 ```
 
-** 调用参数: **
+**调用参数:**
 * pattern - 消息匹配格式
 * hdlr - 内置消息处理器，处理函数，链式处理数组，路由对象，详见 mq.Handler
 
@@ -182,7 +182,7 @@ Routing.post(String pattern,
 Routing.del(Object map);
 ```
 
-** 调用参数: **
+**调用参数:**
 * map - 路由参数
 
 ### del
@@ -192,7 +192,7 @@ Routing.del(String pattern,
                 Handler hdlr);
 ```
 
-** 调用参数: **
+**调用参数:**
 * pattern - 消息匹配格式
 * hdlr - 内置消息处理器，处理函数，链式处理数组，路由对象，详见 mq.Handler
 
@@ -202,7 +202,7 @@ Routing.del(String pattern,
 Routing.put(Object map);
 ```
 
-** 调用参数: **
+**调用参数:**
 * map - 路由参数
 
 ### put
@@ -212,7 +212,7 @@ Routing.put(String pattern,
                 Handler hdlr);
 ```
 
-** 调用参数: **
+**调用参数:**
 * pattern - 消息匹配格式
 * hdlr - 内置消息处理器，处理函数，链式处理数组，路由对象，详见 mq.Handler
 
@@ -222,7 +222,7 @@ Routing.put(String pattern,
 Routing.patch(Object map);
 ```
 
-** 调用参数: **
+**调用参数:**
 * map - 路由参数
 
 ### patch
@@ -232,7 +232,7 @@ Routing.patch(String pattern,
                 Handler hdlr);
 ```
 
-** 调用参数: **
+**调用参数:**
 * pattern - 消息匹配格式
 * hdlr - 内置消息处理器，处理函数，链式处理数组，路由对象，详见 mq.Handler
 
@@ -242,10 +242,10 @@ Routing.patch(String pattern,
 Handler Routing.invoke(object v);
 ```
 
-** 调用参数: **
+**调用参数:**
 * v - 指定处理的消息或对象
 
-** 返回结果:**
+**返回结果:**
 * 返回下一步的处理器
 
 ### dispose
@@ -260,10 +260,10 @@ Routing.dispose();
 Boolean Routing.equals(object expected);
 ```
 
-** 调用参数: **
+**调用参数:**
 * expected - 制定比较的目标对象
 
-** 返回结果:**
+**返回结果:**
 * 返回对象比较的结果
 
 ### toString
@@ -272,7 +272,7 @@ Boolean Routing.equals(object expected);
 String Routing.toString();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 返回对象的字符串表示
 
 ### toJSON
@@ -281,10 +281,10 @@ String Routing.toString();
 Value Routing.toJSON(String key = "");
 ```
 
-** 调用参数: **
+**调用参数:**
 * key - 未使用
 
-** 返回结果:**
+**返回结果:**
 * 返回包含可 JSON 序列化的值
 
 ### valueOf
@@ -293,6 +293,6 @@ Value Routing.toJSON(String key = "");
 Value Routing.valueOf();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 返回对象本身的数值
 

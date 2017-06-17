@@ -10,7 +10,7 @@ Stat 对象通过 fs.stat, File.stat, fs.readdir 查询，不可独立创建
 Boolean Stat.isWritable();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 为 true 则有写入权限
 
 ### isReadable
@@ -19,7 +19,7 @@ Boolean Stat.isWritable();
 Boolean Stat.isReadable();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 为 true 则有读权限
 
 ### isExecutable
@@ -28,7 +28,7 @@ Boolean Stat.isReadable();
 Boolean Stat.isExecutable();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 为 true 则有执行权限
 
 ### isHidden
@@ -37,7 +37,7 @@ Boolean Stat.isExecutable();
 Boolean Stat.isHidden();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 为 true 则隐藏
 
 ### isDirectory
@@ -46,7 +46,7 @@ Boolean Stat.isHidden();
 Boolean Stat.isDirectory();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 为 true 则是目录
 
 ### isFile
@@ -55,7 +55,7 @@ Boolean Stat.isDirectory();
 Boolean Stat.isFile();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 为 true 则是文件
 
 ### isSymbolicLink
@@ -64,7 +64,7 @@ Boolean Stat.isFile();
 Boolean Stat.isSymbolicLink();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 为 true 则是符号链接
 
 ### isMemory
@@ -73,7 +73,7 @@ Boolean Stat.isSymbolicLink();
 Boolean Stat.isMemory();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 为 true 则是内存文件
 
 ### isSocket
@@ -82,7 +82,7 @@ Boolean Stat.isMemory();
 Boolean Stat.isSocket();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 为 true 则是 Socket
 
 ### dispose
@@ -97,10 +97,10 @@ Stat.dispose();
 Boolean Stat.equals(object expected);
 ```
 
-** 调用参数: **
+**调用参数:**
 * expected - 制定比较的目标对象
 
-** 返回结果:**
+**返回结果:**
 * 返回对象比较的结果
 
 ### toString
@@ -109,7 +109,7 @@ Boolean Stat.equals(object expected);
 String Stat.toString();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 返回对象的字符串表示
 
 ### toJSON
@@ -118,10 +118,10 @@ String Stat.toString();
 Value Stat.toJSON(String key = "");
 ```
 
-** 调用参数: **
+**调用参数:**
 * key - 未使用
 
-** 返回结果:**
+**返回结果:**
 * 返回包含可 JSON 序列化的值
 
 ### valueOf
@@ -130,7 +130,7 @@ Value Stat.toJSON(String key = "");
 Value Stat.valueOf();
 ```
 
-** 返回结果:**
+**返回结果:**
 * 返回对象本身的数值
 
 ## 属性

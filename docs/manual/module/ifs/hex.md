@@ -18,10 +18,10 @@ var hex = require(&#39;hex&#39;);
 String hex.encode(Buffer data);
 ```
 
-** 调用参数: **
+**调用参数:**
 * data - 要编码的数据
 
-** 返回结果:**
+**返回结果:**
 * 返回编码的字符串
 
 ### decode
@@ -30,9 +30,9 @@ String hex.encode(Buffer data);
 Buffer hex.decode(String data);
 ```
 
-** 调用参数: **
+**调用参数:**
 * data - 要解码的字符串
 
-** 返回结果:**
+**返回结果:**
 * 返回解码的二进制数据
 

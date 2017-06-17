@@ -10,7 +10,7 @@ global.run(String fname,
                 Array argv = []);
 ```
 
-** 调用参数: **
+**调用参数:**
 * fname - 指定要运行的脚本路径
 * argv - 指定要运行的参数，此参数可在脚本内使用 argv 获取
 
@@ -20,7 +20,7 @@ global.run(String fname,
 global.clearInterval(Timer t);
 ```
 
-** 调用参数: **
+**调用参数:**
 * t - 指定要清除的定时器
 
 ### clearTimeout
@@ -29,7 +29,7 @@ global.clearInterval(Timer t);
 global.clearTimeout(Timer t);
 ```
 
-** 调用参数: **
+**调用参数:**
 * t - 指定要清除的定时器
 
 ### clearImmediate
@@ -38,7 +38,7 @@ global.clearTimeout(Timer t);
 global.clearImmediate(Timer t);
 ```
 
-** 调用参数: **
+**调用参数:**
 * t - 指定要清除的定时器
 
 ### setInterval
@@ -48,11 +48,11 @@ Timer global.setInterval(Function callback,
                 Integer timeout);
 ```
 
-** 调用参数: **
+**调用参数:**
 * callback - 指定回调函数
 * timeout - 指定间隔的时间，以毫秒为单位
 
-** 返回结果:**
+**返回结果:**
 * 返回定时器对象
 
 ### setTimeout
@@ -62,11 +62,11 @@ Timer global.setTimeout(Function callback,
                 Integer timeout);
 ```
 
-** 调用参数: **
+**调用参数:**
 * callback - 指定回调函数
 * timeout - 指定延时的时间，以毫秒为单位
 
-** 返回结果:**
+**返回结果:**
 * 返回定时器对象
 
 ### setImmediate
@@ -75,10 +75,10 @@ Timer global.setTimeout(Function callback,
 Timer global.setImmediate(Function callback);
 ```
 
-** 调用参数: **
+**调用参数:**
 * callback - 指定回调函数
 
-** 返回结果:**
+**返回结果:**
 * 返回定时器对象
 
 ### require
@@ -87,10 +87,10 @@ Timer global.setImmediate(Function callback);
 Value global.require(String id);
 ```
 
-** 调用参数: **
+**调用参数:**
 * id - 指定要加载的模块名称
 
-** 返回结果:**
+**返回结果:**
 * 返回加载模块的引出对象
 
 require 可用于加载基础模块，文件模块。
@@ -115,7 +115,7 @@ global.GC();
 global.repl(Array cmds = []);
 ```
 
-** 调用参数: **
+**调用参数:**
 * cmds - 补充命令，格式如下：
 
 ### repl
@@ -125,7 +125,7 @@ global.repl(Stream out,
                 Array cmds = []);
 ```
 
-** 调用参数: **
+**调用参数:**
 * out - 输入输出流对象，通常为网络连接
 * cmds - 补充命令，格式如下：
 

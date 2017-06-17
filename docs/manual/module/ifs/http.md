@@ -10,11 +10,11 @@ Handler http.fileHandler(String root,
                 Object mimes = {});
 ```
 
-** 调用参数: **
+**调用参数:**
 * root - 文件根路径
 * mimes - 扩展 mime 设置
 
-** 返回结果:**
+**返回结果:**
 * 返回一个静态文件处理器用于处理 http 消息
 
 ### request
@@ -24,11 +24,11 @@ HttpResponse http.request(Stream conn,
                 HttpRequest req);
 ```
 
-** 调用参数: **
+**调用参数:**
 * conn - 指定处理请求的流对象
 * req - 要发送的 HttpRequest 对象
 
-** 返回结果:**
+**返回结果:**
 * 返回服务器响应
 
 ### request
@@ -39,12 +39,12 @@ HttpResponse http.request(String method,
                 Object headers = {});
 ```
 
-** 调用参数: **
+**调用参数:**
 * method - 指定 http 请求方法：GET, POST 等
 * url - 指定 url，必须是包含主机的完整 url
 * headers - 指定附加的 http 头，缺省无附加头
 
-** 返回结果:**
+**返回结果:**
 * 返回服务器响应
 
 ### request
@@ -56,13 +56,13 @@ HttpResponse http.request(String method,
                 Map headers);
 ```
 
-** 调用参数: **
+**调用参数:**
 * method - 指定 http 请求方法：GET, POST 等
 * url - 指定 url，必须是包含主机的完整 url
 * body - 指定发送的 body 内容
 * headers - 指定附加的 http 头
 
-** 返回结果:**
+**返回结果:**
 * 返回服务器响应
 
 ### request
@@ -74,13 +74,13 @@ HttpResponse http.request(String method,
                 Object headers = {});
 ```
 
-** 调用参数: **
+**调用参数:**
 * method - 指定 http 请求方法：GET, POST 等
 * url - 指定 url，必须是包含主机的完整 url
 * body - 指定发送的 body 内容
 * headers - 指定附加的 http 头，缺省无附加头
 
-** 返回结果:**
+**返回结果:**
 * 返回服务器响应
 
 ### request
@@ -92,13 +92,13 @@ HttpResponse http.request(String method,
                 Object headers = {});
 ```
 
-** 调用参数: **
+**调用参数:**
 * method - 指定 http 请求方法：GET, POST 等
 * url - 指定 url，必须是包含主机的完整 url
 * body - 指定发送的 body 内容
 * headers - 指定附加的 http 头，缺省无附加头
 
-** 返回结果:**
+**返回结果:**
 * 返回服务器响应
 
 ### get
@@ -108,11 +108,11 @@ HttpResponse http.get(String url,
                 Object headers = {});
 ```
 
-** 调用参数: **
+**调用参数:**
 * url - 指定 url，必须是包含主机的完整 url
 * headers - 指定附加的 http 头，缺省无附加头
 
-** 返回结果:**
+**返回结果:**
 * 返回服务器响应
 
 ### post
@@ -123,12 +123,12 @@ HttpResponse http.post(String url,
                 Object headers = {});
 ```
 
-** 调用参数: **
+**调用参数:**
 * url - 指定 url，必须是包含主机的完整 url
 * body - 指定发送的 body 内容
 * headers - 指定附加的 http 头，缺省无附加头
 
-** 返回结果:**
+**返回结果:**
 * 返回服务器响应
 
 ### post
@@ -139,12 +139,12 @@ HttpResponse http.post(String url,
                 Object headers = {});
 ```
 
-** 调用参数: **
+**调用参数:**
 * url - 指定 url，必须是包含主机的完整 url
 * body - 指定发送的 body 内容
 * headers - 指定附加的 http 头，缺省无附加头
 
-** 返回结果:**
+**返回结果:**
 * 返回服务器响应
 
 ### post
@@ -154,11 +154,11 @@ HttpResponse http.post(String url,
                 Object headers = {});
 ```
 
-** 调用参数: **
+**调用参数:**
 * url - 指定 url，必须是包含主机的完整 url
 * headers - 指定附加的 http 头，缺省无附加头
 
-** 返回结果:**
+**返回结果:**
 * 返回服务器响应
 
 ### del
@@ -168,11 +168,11 @@ HttpResponse http.del(String url,
                 Object headers = {});
 ```
 
-** 调用参数: **
+**调用参数:**
 * url - 指定 url，必须是包含主机的完整 url
 * headers - 指定附加的 http 头，缺省无附加头
 
-** 返回结果:**
+**返回结果:**
 * 返回服务器响应
 
 ### put
@@ -183,12 +183,12 @@ HttpResponse http.put(String url,
                 Object headers = {});
 ```
 
-** 调用参数: **
+**调用参数:**
 * url - 指定 url，必须是包含主机的完整 url
 * body - 指定发送的 body 内容
 * headers - 指定附加的 http 头，缺省无附加头
 
-** 返回结果:**
+**返回结果:**
 * 返回服务器响应
 
 ### put
@@ -199,12 +199,12 @@ HttpResponse http.put(String url,
                 Object headers = {});
 ```
 
-** 调用参数: **
+**调用参数:**
 * url - 指定 url，必须是包含主机的完整 url
 * body - 指定发送的 body 内容
 * headers - 指定附加的 http 头，缺省无附加头
 
-** 返回结果:**
+**返回结果:**
 * 返回服务器响应
 
 ### put
@@ -214,11 +214,11 @@ HttpResponse http.put(String url,
                 Object headers = {});
 ```
 
-** 调用参数: **
+**调用参数:**
 * url - 指定 url，必须是包含主机的完整 url
 * headers - 指定附加的 http 头，缺省无附加头
 
-** 返回结果:**
+**返回结果:**
 * 返回服务器响应
 
 ### patch
@@ -229,12 +229,12 @@ HttpResponse http.patch(String url,
                 Object headers = {});
 ```
 
-** 调用参数: **
+**调用参数:**
 * url - 指定 url，必须是包含主机的完整 url
 * body - 指定发送的 body 内容
 * headers - 指定附加的 http 头，缺省无附加头
 
-** 返回结果:**
+**返回结果:**
 * 返回服务器响应
 
 ### patch
@@ -245,12 +245,12 @@ HttpResponse http.patch(String url,
                 Object headers = {});
 ```
 
-** 调用参数: **
+**调用参数:**
 * url - 指定 url，必须是包含主机的完整 url
 * body - 指定发送的 body 内容
 * headers - 指定附加的 http 头，缺省无附加头
 
-** 返回结果:**
+**返回结果:**
 * 返回服务器响应
 
 ### patch
@@ -260,11 +260,11 @@ HttpResponse http.patch(String url,
                 Object headers = {});
 ```
 
-** 调用参数: **
+**调用参数:**
 * url - 指定 url，必须是包含主机的完整 url
 * headers - 指定附加的 http 头，缺省无附加头
 
-** 返回结果:**
+**返回结果:**
 * 返回服务器响应
 
 ## 属性
