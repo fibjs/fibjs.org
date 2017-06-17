@@ -1,14 +1,14 @@
 # 对象 Cipher
 对称加密算法对象
 
-Cipher 对象属于 crypto 模块，创建：
+[Cipher](/docs/manual/object/ifs/cipher.md.html) 对象属于 [crypto](/docs/manual/module/ifs/crypto.md.html) 模块，创建：
 ```JavaScript
 var c = new crypto.Cipher(crypto.AES, crypto.ECB, ...);
 ```
 ## 构造函数
         
 ### Cipher
-Cipher 构造函数，仅用于 ARC4 初始化
+[Cipher](/docs/manual/object/ifs/cipher.md.html) 构造函数，仅用于 ARC4 初始化
 ```JavaScript
  new Cipher(Integer provider,
                 Buffer key);
@@ -19,7 +19,7 @@ Cipher 构造函数，仅用于 ARC4 初始化
 * key - 指定加密解密密码
 
 --------------------------
-Cipher 构造函数
+[Cipher](/docs/manual/object/ifs/cipher.md.html) 构造函数
 ```JavaScript
  new Cipher(Integer provider,
                 Integer mode,
@@ -32,7 +32,7 @@ Cipher 构造函数
 * key - 指定加密解密密码
 
 --------------------------
-Cipher 构造函数
+[Cipher](/docs/manual/object/ifs/cipher.md.html) 构造函数
 ```JavaScript
  new Cipher(Integer provider,
                 Integer mode,
@@ -100,7 +100,7 @@ Boolean Cipher.equals(object expected);
 * 返回对象比较的结果
 
 ### toString
-返回对象的字符串表示，一般返回 &#34;[Native Object]&#34;，对象可以根据自己的特性重新实现
+返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现
 ```JavaScript
 String Cipher.toString();
 ```

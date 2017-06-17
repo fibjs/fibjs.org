@@ -56,7 +56,7 @@ static Value registry.get(Integer root,
 static registry.set(Integer root,
                 String key,
                 Number value,
-                Integer type = undefined);
+                Integer type = DWORD);
 ```
 
 调用参数:
@@ -71,7 +71,7 @@ static registry.set(Integer root,
 static registry.set(Integer root,
                 String key,
                 String value,
-                Integer type = undefined);
+                Integer type = SZ);
 ```
 
 调用参数:

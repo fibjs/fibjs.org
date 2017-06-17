@@ -80,13 +80,13 @@ static LevelDB db.openLevelDB(String connString) async;
 * 返回数据库对象
 
 ### openRedis
-打开一个 Redis 数据库
+打开一个 [Redis](/docs/manual/object/ifs/redis.md.html) 数据库
 ```JavaScript
 static Redis db.openRedis(String connString) async;
 ```
 
 调用参数:
-* connString - 数据库描述，如：redis://server:port 或者 &#34;server&#34;
+* connString - 数据库描述，如：redis://server:port 或者 "server"
 
 返回结果:
 * 返回数据库连接对象
@@ -99,7 +99,7 @@ static String db.format(String sql,
 ```
 
 调用参数:
-* sql - 格式化字符串，可选参数用 ? 指定。例如：&#39;SELECT FROM TEST WHERE [id]=?&#39;
+* sql - 格式化字符串，可选参数用 ? 指定。例如：'SELECT FROM TEST WHERE [id]=?'
 * ... - 可选参数列表
 
 返回结果:
@@ -113,7 +113,7 @@ static String db.formatMySQL(String sql,
 ```
 
 调用参数:
-* sql - 格式化字符串，可选参数用 ? 指定。例如：&#39;SELECT FROM TEST WHERE [id]=?&#39;
+* sql - 格式化字符串，可选参数用 ? 指定。例如：'SELECT FROM TEST WHERE [id]=?'
 * ... - 可选参数列表
 
 返回结果:
@@ -127,7 +127,7 @@ static String db.formatMSSQL(String sql,
 ```
 
 调用参数:
-* sql - 格式化字符串，可选参数用 ? 指定。例如：&#39;SELECT FROM TEST WHERE [id]=?&#39;
+* sql - 格式化字符串，可选参数用 ? 指定。例如：'SELECT FROM TEST WHERE [id]=?'
 * ... - 可选参数列表
 
 返回结果:

@@ -1,10 +1,10 @@
 # 对象 Smtp
-Smtp对象
+[Smtp](/docs/manual/object/ifs/smtp.md.html)对象
 
 ## 构造函数
         
 ### Smtp
-Smtp 对象构造函数
+[Smtp](/docs/manual/object/ifs/smtp.md.html) 对象构造函数
 ```JavaScript
  new Smtp();
 ```
@@ -106,7 +106,7 @@ Boolean Smtp.equals(object expected);
 * 返回对象比较的结果
 
 ### toString
-返回对象的字符串表示，一般返回 &#34;[Native Object]&#34;，对象可以根据自己的特性重新实现
+返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现
 ```JavaScript
 String Smtp.toString();
 ```
@@ -144,7 +144,7 @@ Integer Smtp.timeout;
 ```
 
 ### socket
-查询 Smtp 对象当前连接的 Socket
+查询 [Smtp](/docs/manual/object/ifs/smtp.md.html) 对象当前连接的 [Socket](/docs/manual/object/ifs/socket.md.html)
 ```JavaScript
 readonly Stream Smtp.socket;
 ```

@@ -1,7 +1,7 @@
 # 对象 WebSocket
-WebSocket 包协议转换处理器
+[WebSocket](/docs/manual/object/ifs/websocket.md.html) 包协议转换处理器
 
-用以将 Http 协议转换为 WebSocket 包协议消息。创建方式：
+用以将 Http 协议转换为 [WebSocket](/docs/manual/object/ifs/websocket.md.html) 包协议消息。创建方式：
 ```JavaScript
 var ws = require("ws");
 
@@ -347,7 +347,7 @@ Boolean WebSocket.equals(object expected);
 * 返回对象比较的结果
 
 ### toString
-返回对象的字符串表示，一般返回 &#34;[Native Object]&#34;，对象可以根据自己的特性重新实现
+返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现
 ```JavaScript
 String WebSocket.toString();
 ```

@@ -22,7 +22,7 @@ Boolean TextColor.equals(object expected);
 * 返回对象比较的结果
 
 ### toString
-返回对象的字符串表示，一般返回 &#34;[Native Object]&#34;，对象可以根据自己的特性重新实现
+返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现
 ```JavaScript
 String TextColor.toString();
 ```
@@ -54,19 +54,19 @@ Value TextColor.valueOf();
 ## 属性
         
 ### notice
-指定 console.notice 颜色
+指定 [console](/docs/manual/module/ifs/console.md.html).notice 颜色
 ```JavaScript
 String TextColor.notice;
 ```
 
 ### warn
-指定 console.warn 颜色
+指定 [console](/docs/manual/module/ifs/console.md.html).warn 颜色
 ```JavaScript
 String TextColor.warn;
 ```
 
 ### error
-指定 console.error 颜色
+指定 [console](/docs/manual/module/ifs/console.md.html).error 颜色
 ```JavaScript
 String TextColor.error;
 ```

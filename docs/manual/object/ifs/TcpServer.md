@@ -1,7 +1,7 @@
 # 对象 TcpServer
 tcp 服务器对象，可方便创建一个标准多纤程 tcp 服务器
 
-使用 TcpServer 对象可以迅速创建一个多纤程并发处理的 tcp 服务器。
+使用 [TcpServer](/docs/manual/object/ifs/tcpserver.md.html) 对象可以迅速创建一个多纤程并发处理的 tcp 服务器。
 ```JavaScript
 function func(conn)
 {
@@ -18,7 +18,7 @@ new net.TcpServer(8080, func).run();
 ## 构造函数
         
 ### TcpServer
-TcpServer 构造函数，在所有本机地址侦听
+[TcpServer](/docs/manual/object/ifs/tcpserver.md.html) 构造函数，在所有本机地址侦听
 ```JavaScript
  new TcpServer(Integer port,
                 Handler listener);
@@ -29,7 +29,7 @@ TcpServer 构造函数，在所有本机地址侦听
 * listener - 指定 tcp 接收到的内置消息处理器，处理函数，链式处理数组，路由对象，详见 mq.Handler
 
 --------------------------
-TcpServer 构造函数
+[TcpServer](/docs/manual/object/ifs/tcpserver.md.html) 构造函数
 ```JavaScript
  new TcpServer(String addr,
                 Integer port,
@@ -37,7 +37,7 @@ TcpServer 构造函数
 ```
 
 调用参数:
-* addr - 指定 tcp 服务器侦听地址，为 &#34;&#34; 则在本机所有地址侦听
+* addr - 指定 tcp 服务器侦听地址，为 "" 则在本机所有地址侦听
 * port - 指定 tcp 服务器侦听端口
 * listener - 指定 tcp 接收到的连接的内置消息处理器，处理函数，链式处理数组，路由对象，详见 mq.Handler
 
@@ -80,7 +80,7 @@ Boolean TcpServer.equals(object expected);
 * 返回对象比较的结果
 
 ### toString
-返回对象的字符串表示，一般返回 &#34;[Native Object]&#34;，对象可以根据自己的特性重新实现
+返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现
 ```JavaScript
 String TcpServer.toString();
 ```
@@ -112,7 +112,7 @@ Value TcpServer.valueOf();
 ## 属性
         
 ### socket
-服务器当前侦听的 Socket 对象
+服务器当前侦听的 [Socket](/docs/manual/object/ifs/socket.md.html) 对象
 ```JavaScript
 readonly Socket TcpServer.socket;
 ```
@@ -129,7 +129,7 @@ Handler TcpServer.handler;
 readonly Stats TcpServer.stats;
 ```
 
-返回的结果为一个 Stats 对象，初始化计数器如下：
+返回的结果为一个 [Stats](/docs/manual/object/ifs/stats.md.html) 对象，初始化计数器如下：
 ```JavaScript
 {
     total : 1000,      // 总计处理的连接

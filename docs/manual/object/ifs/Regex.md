@@ -46,7 +46,7 @@ Boolean Regex.equals(object expected);
 * 返回对象比较的结果
 
 ### toString
-返回对象的字符串表示，一般返回 &#34;[Native Object]&#34;，对象可以根据自己的特性重新实现
+返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现
 ```JavaScript
 String Regex.toString();
 ```
@@ -84,13 +84,13 @@ Integer Regex.lastIndex;
 ```
 
 ### global
-查询正则表达式是否具有标志 &#34;g&#34;。它声明了给定的正则表达式是否执行全局匹配。如果 g 标志被设置，则该属性为 true，否则为 false
+查询正则表达式是否具有标志 "g"。它声明了给定的正则表达式是否执行全局匹配。如果 g 标志被设置，则该属性为 true，否则为 false
 ```JavaScript
 readonly Boolean Regex.global;
 ```
 
 ### ignoreCase
-查询正则表达式是否设置 &#34;i&#34; 标志。如果设置了 &#34;i&#34; 标志，则返回 true，否则返回 false
+查询正则表达式是否设置 "i" 标志。如果设置了 "i" 标志，则返回 true，否则返回 false
 ```JavaScript
 readonly Boolean Regex.ignoreCase;
 ```

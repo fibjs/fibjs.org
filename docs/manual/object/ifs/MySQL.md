@@ -1,7 +1,7 @@
 # 对象 MySQL
 mysql 数据库连接对象
 
-使用 db.open 或 db.openMySQL 创建，创建方式：
+使用 [db](/docs/manual/module/ifs/db.md.html).open 或 [db](/docs/manual/module/ifs/db.md.html).openMySQL 创建，创建方式：
 ```JavaScript
 var msql = db.openMySQL("mysql://user:pass@host/db");
 ```
@@ -47,7 +47,7 @@ DBResult MySQL.execute(String sql) async;
 ```
 
 调用参数:
-* sql - 格式化字符串，可选参数用 ? 指定。例如：&#39;SELECT FROM TEST WHERE [id]=?&#39;
+* sql - 格式化字符串，可选参数用 ? 指定。例如：'SELECT FROM TEST WHERE [id]=?'
 
 返回结果:
 * 返回 sql 命令执行结果
@@ -60,7 +60,7 @@ DBResult MySQL.execute(String sql,
 ```
 
 调用参数:
-* sql - 格式化字符串，可选参数用 ? 指定。例如：&#39;SELECT FROM TEST WHERE [id]=?&#39;
+* sql - 格式化字符串，可选参数用 ? 指定。例如：'SELECT FROM TEST WHERE [id]=?'
 * ... - 可选参数列表
 
 返回结果:
@@ -74,7 +74,7 @@ String MySQL.format(String sql,
 ```
 
 调用参数:
-* sql - 格式化字符串，可选参数用 ? 指定。例如：&#39;SELECT FROM TEST WHERE [id]=?&#39;
+* sql - 格式化字符串，可选参数用 ? 指定。例如：'SELECT FROM TEST WHERE [id]=?'
 * ... - 可选参数列表
 
 返回结果:
@@ -99,7 +99,7 @@ Boolean MySQL.equals(object expected);
 * 返回对象比较的结果
 
 ### toString
-返回对象的字符串表示，一般返回 &#34;[Native Object]&#34;，对象可以根据自己的特性重新实现
+返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现
 ```JavaScript
 String MySQL.toString();
 ```

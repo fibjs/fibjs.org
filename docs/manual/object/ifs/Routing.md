@@ -58,7 +58,7 @@ var routing = new mq.Routing({
 ```
 
 调用参数:
-* method - 指定 http 请求方法，&#34;*&#34; 接受所有方法
+* method - 指定 http 请求方法，"*" 接受所有方法
 * map - 初始化路由参数
 
 ## 函数
@@ -100,7 +100,7 @@ Routing.append(String method,
 ```
 
 调用参数:
-* method - 指定 http 请求方法，&#34;*&#34; 接受所有方法
+* method - 指定 http 请求方法，"*" 接受所有方法
 * map - 路由参数
 
 --------------------------
@@ -112,12 +112,12 @@ Routing.append(String method,
 ```
 
 调用参数:
-* method - 指定 http 请求方法，&#34;*&#34; 接受所有方法
+* method - 指定 http 请求方法，"*" 接受所有方法
 * pattern - 消息匹配格式
 * hdlr - 内置消息处理器，处理函数，链式处理数组，路由对象，详见 mq.Handler
 
 ### all
-添加一组接受所有 http 方法路由规则
+添加一组接受所有 [http](/docs/manual/module/ifs/http.md.html) 方法路由规则
 ```JavaScript
 Routing.all(Object map);
 ```
@@ -126,7 +126,7 @@ Routing.all(Object map);
 * map - 路由参数
 
 --------------------------
-添加一条接受所有 http 方法路由规则
+添加一条接受所有 [http](/docs/manual/module/ifs/http.md.html) 方法路由规则
 ```JavaScript
 Routing.all(String pattern,
                 Handler hdlr);
@@ -146,7 +146,7 @@ Routing.get(Object map);
 * map - 路由参数
 
 --------------------------
-添加一条接受 http GET 方法路由规则
+添加一条接受 [http](/docs/manual/module/ifs/http.md.html) GET 方法路由规则
 ```JavaScript
 Routing.get(String pattern,
                 Handler hdlr);
@@ -157,7 +157,7 @@ Routing.get(String pattern,
 * hdlr - 内置消息处理器，处理函数，链式处理数组，路由对象，详见 mq.Handler
 
 ### post
-添加一组接受 http POST 方法路由规则
+添加一组接受 [http](/docs/manual/module/ifs/http.md.html) POST 方法路由规则
 ```JavaScript
 Routing.post(Object map);
 ```
@@ -166,7 +166,7 @@ Routing.post(Object map);
 * map - 路由参数
 
 --------------------------
-添加一条接受 http POST 方法路由规则
+添加一条接受 [http](/docs/manual/module/ifs/http.md.html) POST 方法路由规则
 ```JavaScript
 Routing.post(String pattern,
                 Handler hdlr);
@@ -177,7 +177,7 @@ Routing.post(String pattern,
 * hdlr - 内置消息处理器，处理函数，链式处理数组，路由对象，详见 mq.Handler
 
 ### del
-添加一组接受 http DELETE 方法路由规则
+添加一组接受 [http](/docs/manual/module/ifs/http.md.html) DELETE 方法路由规则
 ```JavaScript
 Routing.del(Object map);
 ```
@@ -186,7 +186,7 @@ Routing.del(Object map);
 * map - 路由参数
 
 --------------------------
-添加一条接受 http DELETE 方法路由规则
+添加一条接受 [http](/docs/manual/module/ifs/http.md.html) DELETE 方法路由规则
 ```JavaScript
 Routing.del(String pattern,
                 Handler hdlr);
@@ -206,7 +206,7 @@ Routing.put(Object map);
 * map - 路由参数
 
 --------------------------
-添加一条接受 http PUT 方法路由规则
+添加一条接受 [http](/docs/manual/module/ifs/http.md.html) PUT 方法路由规则
 ```JavaScript
 Routing.put(String pattern,
                 Handler hdlr);
@@ -226,7 +226,7 @@ Routing.patch(Object map);
 * map - 路由参数
 
 --------------------------
-添加一条接受 http PATCH 方法路由规则
+添加一条接受 [http](/docs/manual/module/ifs/http.md.html) PATCH 方法路由规则
 ```JavaScript
 Routing.patch(String pattern,
                 Handler hdlr);
@@ -267,7 +267,7 @@ Boolean Routing.equals(object expected);
 * 返回对象比较的结果
 
 ### toString
-返回对象的字符串表示，一般返回 &#34;[Native Object]&#34;，对象可以根据自己的特性重新实现
+返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现
 ```JavaScript
 String Routing.toString();
 ```

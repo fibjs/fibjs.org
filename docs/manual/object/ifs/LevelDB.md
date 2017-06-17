@@ -1,5 +1,5 @@
 # 对象 LevelDB
-LevelDB 数据库对象
+[LevelDB](/docs/manual/object/ifs/leveldb.md.html) 数据库对象
 
 用以创建和管理字典对象，创建方法：
 ```JavaScript
@@ -163,7 +163,7 @@ Boolean LevelDB.equals(object expected);
 * 返回对象比较的结果
 
 ### toString
-返回对象的字符串表示，一般返回 &#34;[Native Object]&#34;，对象可以根据自己的特性重新实现
+返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现
 ```JavaScript
 String LevelDB.toString();
 ```

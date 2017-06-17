@@ -4,13 +4,13 @@
 ## 对象
         
 ### Stats
-数据统计对象，用以构建应用运行时数据收集，参见 Stats 对象。
+数据统计对象，用以构建应用运行时数据收集，参见 [Stats](/docs/manual/object/ifs/stats.md.html) 对象。
 ```JavaScript
 Stats util.Stats;
 ```
 
 ### LruCache
-LRU(least recently used) 缓存对象，参见 LruCache 对象。
+LRU(least recently used) 缓存对象，参见 [LruCache](/docs/manual/object/ifs/lrucache.md.html) 对象。
 ```JavaScript
 LruCache util.LruCache;
 ```
@@ -247,7 +247,7 @@ static Boolean util.isExternal(Value v);
 * 如果是 External 类型则返回 True
 
 ### isMap
-检测给定的变量是否是 Map 类型
+检测给定的变量是否是 [Map](/docs/manual/object/ifs/map.md.html) 类型
 ```JavaScript
 static Boolean util.isMap(Value v);
 ```
@@ -343,7 +343,7 @@ static Boolean util.isFunction(Value v);
 * 如果是函数对象则返回 True
 
 ### isBuffer
-检测给定的变量是否是函数 Buffer 对象
+检测给定的变量是否是函数 [Buffer](/docs/manual/object/ifs/buffer.md.html) 对象
 ```JavaScript
 static Boolean util.isBuffer(Value v);
 ```
@@ -419,7 +419,7 @@ static Value util.extend(Value v,
 * 返回扩展的结果
 
 ### pick
-返回一个object副本，只过滤出指定键的属性值
+返回一个[object](/docs/manual/object/ifs/object.md.html)副本，只过滤出指定键的属性值
 ```JavaScript
 static Object util.pick(Value v,
                 ...);
@@ -433,7 +433,7 @@ static Object util.pick(Value v,
 * 返回过滤的结果
 
 ### omit
-返回一个object副本，只过排除指定键的属性值
+返回一个[object](/docs/manual/object/ifs/object.md.html)副本，只过排除指定键的属性值
 ```JavaScript
 static Object util.omit(Value v,
                 ...);

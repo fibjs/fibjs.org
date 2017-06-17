@@ -1,7 +1,7 @@
 # 对象 GridFS
-MongoDB GridFS 分布式文件系统访问对象
+[MongoDB](/docs/manual/object/ifs/mongodb.md.html) [GridFS](/docs/manual/object/ifs/gridfs.md.html) 分布式文件系统访问对象
 
-使用 MongoDB.fs 获取，创建方式：
+使用 [MongoDB](/docs/manual/object/ifs/mongodb.md.html).[fs](/docs/manual/module/ifs/fs.md.html) 获取，创建方式：
 ```JavaScript
 var gfs = mdb.fs;
 ```
@@ -81,7 +81,7 @@ Boolean GridFS.equals(object expected);
 * 返回对象比较的结果
 
 ### toString
-返回对象的字符串表示，一般返回 &#34;[Native Object]&#34;，对象可以根据自己的特性重新实现
+返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现
 ```JavaScript
 String GridFS.toString();
 ```
@@ -113,13 +113,13 @@ Value GridFS.valueOf();
 ## 属性
         
 ### files
-查询 GridFS 的元数据表
+查询 [GridFS](/docs/manual/object/ifs/gridfs.md.html) 的元数据表
 ```JavaScript
 readonly MongoCollection GridFS.files;
 ```
 
 ### chunks
-查询 GridFS 的分块数据表
+查询 [GridFS](/docs/manual/object/ifs/gridfs.md.html) 的分块数据表
 ```JavaScript
 readonly MongoCollection GridFS.chunks;
 ```

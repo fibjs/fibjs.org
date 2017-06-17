@@ -1,7 +1,7 @@
 # 对象 MongoDB
 mongodb 数据库连接对象
 
-使用 db.open 或 db.openMongoDB 创建，创建方式：
+使用 [db](/docs/manual/module/ifs/db.md.html).open 或 [db](/docs/manual/module/ifs/db.md.html).openMongoDB 创建，创建方式：
 ```JavaScript
 var mdb = db.openMongoDB("mongodb://host/db");
 ```
@@ -20,7 +20,7 @@ MongoCollection MongoDB.getCollection(String name);
 * 返回指定的集合对象
 
 ### runCommand
-指定一个 MongoDB 数据库命令
+指定一个 [MongoDB](/docs/manual/object/ifs/mongodb.md.html) 数据库命令
 ```JavaScript
 Object MongoDB.runCommand(Object cmd);
 ```
@@ -32,7 +32,7 @@ Object MongoDB.runCommand(Object cmd);
 * 返回命令执行结果
 
 --------------------------
-指定一个简单的 MongoDB 数据库命令
+指定一个简单的 [MongoDB](/docs/manual/object/ifs/mongodb.md.html) 数据库命令
 ```JavaScript
 Object MongoDB.runCommand(String cmd,
                 Value arg);
@@ -82,7 +82,7 @@ Boolean MongoDB.equals(object expected);
 * 返回对象比较的结果
 
 ### toString
-返回对象的字符串表示，一般返回 &#34;[Native Object]&#34;，对象可以根据自己的特性重新实现
+返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现
 ```JavaScript
 String MongoDB.toString();
 ```
@@ -114,7 +114,7 @@ Value MongoDB.valueOf();
 ## 属性
         
 ### fs
-获取 GridFS 访问对象
+获取 [GridFS](/docs/manual/object/ifs/gridfs.md.html) 访问对象
 ```JavaScript
 readonly GridFS MongoDB.fs;
 ```

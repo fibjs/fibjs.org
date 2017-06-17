@@ -1,5 +1,5 @@
 # 模块 zlib
-zlib 压缩解压模块
+[zlib](/docs/manual/module/ifs/zlib.md.html) 压缩解压模块
 
 使用方法：
 ```JavaScript
@@ -8,10 +8,10 @@ var zlib = require('zlib');
 ## 函数
         
 ### deflate
-使用 deflate 算法压缩数据(zlib格式)
+使用 deflate 算法压缩数据([zlib](/docs/manual/module/ifs/zlib.md.html)格式)
 ```JavaScript
 static Buffer zlib.deflate(Buffer data,
-                Integer level = undefined) async;
+                Integer level = DEFAULT_COMPRESSION) async;
 ```
 
 调用参数:
@@ -22,11 +22,11 @@ static Buffer zlib.deflate(Buffer data,
 * 返回压缩后的二进制数据
 
 ### deflateTo
-使用 deflate 算法压缩数据到流对象中(zlib格式)
+使用 deflate 算法压缩数据到流对象中([zlib](/docs/manual/module/ifs/zlib.md.html)格式)
 ```JavaScript
 static zlib.deflateTo(Buffer data,
                 Stream stm,
-                Integer level = undefined) async;
+                Integer level = DEFAULT_COMPRESSION) async;
 ```
 
 调用参数:
@@ -35,11 +35,11 @@ static zlib.deflateTo(Buffer data,
 * level - 指定压缩级别，缺省为 DEFAULT_COMPRESSION
 
 --------------------------
-使用 deflate 算法压缩源流中的数据到流对象中(zlib格式)
+使用 deflate 算法压缩源流中的数据到流对象中([zlib](/docs/manual/module/ifs/zlib.md.html)格式)
 ```JavaScript
 static zlib.deflateTo(Stream src,
                 Stream stm,
-                Integer level = undefined) async;
+                Integer level = DEFAULT_COMPRESSION) async;
 ```
 
 调用参数:
@@ -48,7 +48,7 @@ static zlib.deflateTo(Stream src,
 * level - 指定压缩级别，缺省为 DEFAULT_COMPRESSION
 
 ### inflate
-解压缩 deflate 算法压缩的数据(zlib格式)
+解压缩 deflate 算法压缩的数据([zlib](/docs/manual/module/ifs/zlib.md.html)格式)
 ```JavaScript
 static Buffer zlib.inflate(Buffer data) async;
 ```
@@ -60,7 +60,7 @@ static Buffer zlib.inflate(Buffer data) async;
 * 返回解压缩后的二进制数据
 
 ### inflateTo
-解压缩 deflate 算法压缩的数据到流对象中(zlib格式)
+解压缩 deflate 算法压缩的数据到流对象中([zlib](/docs/manual/module/ifs/zlib.md.html)格式)
 ```JavaScript
 static zlib.inflateTo(Buffer data,
                 Stream stm) async;
@@ -71,7 +71,7 @@ static zlib.inflateTo(Buffer data,
 * stm - 指定存储解压缩数据的流
 
 --------------------------
-解压缩源流中 deflate 算法压缩的数据到流对象中(zlib格式)
+解压缩源流中 deflate 算法压缩的数据到流对象中([zlib](/docs/manual/module/ifs/zlib.md.html)格式)
 ```JavaScript
 static zlib.inflateTo(Stream src,
                 Stream stm) async;
@@ -153,7 +153,7 @@ static zlib.gunzipTo(Stream src,
 使用 deflate 算法压缩数据(deflateRaw)
 ```JavaScript
 static Buffer zlib.deflateRaw(Buffer data,
-                Integer level = undefined) async;
+                Integer level = DEFAULT_COMPRESSION) async;
 ```
 
 调用参数:
@@ -168,7 +168,7 @@ static Buffer zlib.deflateRaw(Buffer data,
 ```JavaScript
 static zlib.deflateRawTo(Buffer data,
                 Stream stm,
-                Integer level = undefined) async;
+                Integer level = DEFAULT_COMPRESSION) async;
 ```
 
 调用参数:
@@ -181,7 +181,7 @@ static zlib.deflateRawTo(Buffer data,
 ```JavaScript
 static zlib.deflateRawTo(Stream src,
                 Stream stm,
-                Integer level = undefined) async;
+                Integer level = DEFAULT_COMPRESSION) async;
 ```
 
 调用参数:

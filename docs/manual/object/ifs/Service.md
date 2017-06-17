@@ -380,7 +380,7 @@ Boolean Service.equals(object expected);
 * 返回对象比较的结果
 
 ### toString
-返回对象的字符串表示，一般返回 &#34;[Native Object]&#34;，对象可以根据自己的特性重新实现
+返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现
 ```JavaScript
 String Service.toString();
 ```
@@ -418,19 +418,19 @@ String Service.name;
 ```
 
 ### onstop
-查询和绑定服务停止事件，相当于 on(&#34;stop&#34;, func);
+查询和绑定服务停止事件，相当于 on("stop", func);
 ```JavaScript
 Function Service.onstop;
 ```
 
 ### onpause
-查询和绑定服务暂停事件，相当于 on(&#34;pause&#34;, func);
+查询和绑定服务暂停事件，相当于 on("pause", func);
 ```JavaScript
 Function Service.onpause;
 ```
 
 ### oncontinue
-查询和绑定服务恢复事件，相当于 on(&#34;continue&#34;, func);
+查询和绑定服务恢复事件，相当于 on("continue", func);
 ```JavaScript
 Function Service.oncontinue;
 ```

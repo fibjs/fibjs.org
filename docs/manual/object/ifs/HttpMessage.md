@@ -1,5 +1,5 @@
 # 对象 HttpMessage
-http 基础消息对象
+[http](/docs/manual/module/ifs/http.md.html) 基础消息对象
 
 ## 函数
         
@@ -119,7 +119,7 @@ HttpMessage.write(Buffer data) async;
 * data - 给定要写入的数据
 
 ### end
-设置当前消息处理结束，Chain 处理器不再继续后面的事务
+设置当前消息处理结束，[Chain](/docs/manual/object/ifs/chain.md.html) 处理器不再继续后面的事务
 ```JavaScript
 HttpMessage.end();
 ```
@@ -176,7 +176,7 @@ Boolean HttpMessage.equals(object expected);
 * 返回对象比较的结果
 
 ### toString
-返回对象的字符串表示，一般返回 &#34;[Native Object]&#34;，对象可以根据自己的特性重新实现
+返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现
 ```JavaScript
 String HttpMessage.toString();
 ```
@@ -214,7 +214,7 @@ String HttpMessage.protocol;
 ```
 
 ### headers
-包含消息中 http 消息头的容器，只读属性
+包含消息中 [http](/docs/manual/module/ifs/http.md.html) 消息头的容器，只读属性
 ```JavaScript
 readonly HttpCollection HttpMessage.headers;
 ```

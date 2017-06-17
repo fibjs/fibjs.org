@@ -108,25 +108,25 @@ static String path.resolve(...);
 ## 属性
         
 ### sep
-查询当前操作系统的路径分割字符，posix 返回 &#39;/&#39;, windows 返回  &#39;\\&#39;
+查询当前操作系统的路径分割字符，posix 返回 '/', windows 返回  '\\'
 ```JavaScript
 static readonly String path.sep;
 ```
 
 ### delimiter
-查询当前操作系统的多路径组合字符，posix 返回 &#39;:&#39;, windows 返回  &#39;;&#39;
+查询当前操作系统的多路径组合字符，posix 返回 ':', windows 返回  ';'
 ```JavaScript
 static readonly String path.delimiter;
 ```
 
 ### posix
-posix 实现，参见 path_posix
+posix 实现，参见 [path_posix](/docs/manual/module/ifs/path_posix.md.html)
 ```JavaScript
 static readonly Object path.posix;
 ```
 
 ### win32
-windows 实现，参见 path_win32
+windows 实现，参见 [path_win32](/docs/manual/module/ifs/path_win32.md.html)
 ```JavaScript
 static readonly Object path.win32;
 ```

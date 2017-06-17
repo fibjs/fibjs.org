@@ -1,7 +1,7 @@
 # 对象 Buffer
-二进制数据缓存对象，用于 io 读写的数据处理
+二进制数据缓存对象，用于 [io](/docs/manual/module/ifs/io.md.html) 读写的数据处理
 
-Buffer 对象为全局基础类，在任何时候都可以直接以 new Buffer(...) 创建：
+[Buffer](/docs/manual/object/ifs/buffer.md.html) 对象为全局基础类，在任何时候都可以直接以 new [Buffer](/docs/manual/object/ifs/buffer.md.html)(...) 创建：
 ```JavaScript
 var buf = new Buffer();
 ```
@@ -52,7 +52,7 @@ var buf = new Buffer();
 
 调用参数:
 * str - 初始化字符串，字符串将以 utf-8 格式写入，缺省则创建一个空对象
-* codec - 指定编码格式，允许值为：&#34;hex&#34;, &#34;base64&#34;, &#34;utf8&#34;, 或者系统支持的字符集
+* codec - 指定编码格式，允许值为："hex", "base64", "utf8", 或者系统支持的字符集
 
 --------------------------
 缓存对象构造函数
@@ -66,7 +66,7 @@ var buf = new Buffer();
 ## 函数
         
 ### isBuffer
-检测给定的变量是否是 Buffer 对象
+检测给定的变量是否是 [Buffer](/docs/manual/object/ifs/buffer.md.html) 对象
 ```JavaScript
 static Boolean Buffer.isBuffer(Value v);
 ```
@@ -145,7 +145,7 @@ Buffer.append(String str,
 
 调用参数:
 * str - 要写入的字符串
-* codec - 指定编码格式，允许值为：&#34;hex&#34;, &#34;base64&#34;, &#34;utf8&#34;, 或者系统支持的字符集
+* codec - 指定编码格式，允许值为："hex", "base64", "utf8", 或者系统支持的字符集
 
 ### write
 向缓存对象写入指定字符串，字符串默认为utf-8，越界时只写入部分数据
@@ -160,7 +160,7 @@ Integer Buffer.write(String str,
 * str - 待写入的字符串
 * offset - 写入起始位置
 * length - 写入长度（单位字节，默认值-1），未指定时为待写入字符串的长度
-* codec - 指定编码格式，允许值为：&#34;hex&#34;, &#34;base64&#34;, &#34;utf8&#34;, 或者系统支持的字符集
+* codec - 指定编码格式，允许值为："hex", "base64", "utf8", 或者系统支持的字符集
 
 返回结果:
 * 写入的数据字节长度
@@ -176,7 +176,7 @@ Integer Buffer.write(String str,
 调用参数:
 * str - 待写入的字符串
 * offset - 写入起始位置
-* codec - 指定编码格式，允许值为：&#34;hex&#34;, &#34;base64&#34;, &#34;utf8&#34;, 或者系统支持的字符集
+* codec - 指定编码格式，允许值为："hex", "base64", "utf8", 或者系统支持的字符集
 
 返回结果:
 * 写入的数据字节长度
@@ -190,13 +190,13 @@ Integer Buffer.write(String str,
 
 调用参数:
 * str - 待写入的字符串
-* codec - 指定编码格式，允许值为：&#34;hex&#34;, &#34;base64&#34;, &#34;utf8&#34;, 或者系统支持的字符集
+* codec - 指定编码格式，允许值为："hex", "base64", "utf8", 或者系统支持的字符集
 
 返回结果:
 * 写入的数据字节长度
 
 ### fill
-为Buffer对象填充指定内容数据
+为[Buffer](/docs/manual/object/ifs/buffer.md.html)对象填充指定内容数据
 ```JavaScript
 Buffer Buffer.fill(Integer v,
                 Integer offset = 0,
@@ -212,7 +212,7 @@ Buffer Buffer.fill(Integer v,
 * 返回当前 Buffer 对象
 
 --------------------------
-为Buffer对象填充指定内容数据
+为[Buffer](/docs/manual/object/ifs/buffer.md.html)对象填充指定内容数据
 ```JavaScript
 Buffer Buffer.fill(Buffer v,
                 Integer offset = 0,
@@ -228,7 +228,7 @@ Buffer Buffer.fill(Buffer v,
 * 返回当前 Buffer 对象
 
 --------------------------
-为Buffer对象填充指定内容数据
+为[Buffer](/docs/manual/object/ifs/buffer.md.html)对象填充指定内容数据
 ```JavaScript
 Buffer Buffer.fill(String v,
                 Integer offset = 0,
@@ -244,7 +244,7 @@ Buffer Buffer.fill(String v,
 * 返回当前 Buffer 对象
 
 ### indexOf
-返回某个指定数据在Buffer中首次出现的位置
+返回某个指定数据在[Buffer](/docs/manual/object/ifs/buffer.md.html)中首次出现的位置
 ```JavaScript
 Integer Buffer.indexOf(Integer v,
                 Integer offset = 0);
@@ -255,7 +255,7 @@ Integer Buffer.indexOf(Integer v,
 * offset - 起始查找位置
 
 --------------------------
-返回某个指定数据在Buffer中首次出现的位置
+返回某个指定数据在[Buffer](/docs/manual/object/ifs/buffer.md.html)中首次出现的位置
 ```JavaScript
 Integer Buffer.indexOf(Buffer v,
                 Integer offset = 0);
@@ -266,7 +266,7 @@ Integer Buffer.indexOf(Buffer v,
 * offset - 起始查找位置
 
 --------------------------
-返回某个指定数据在Buffer中首次出现的位置
+返回某个指定数据在[Buffer](/docs/manual/object/ifs/buffer.md.html)中首次出现的位置
 ```JavaScript
 Integer Buffer.indexOf(String v,
                 Integer offset = 0);
@@ -882,7 +882,7 @@ String Buffer.hex();
 * 返回编码字符串
 
 ### base64
-使用 base64 编码缓存对象内容
+使用 [base64](/docs/manual/module/ifs/base64.md.html) 编码缓存对象内容
 ```JavaScript
 String Buffer.base64();
 ```
@@ -908,7 +908,7 @@ String Buffer.toString(String codec,
 ```
 
 调用参数:
-* codec - 指定编码格式，允许值为：&#34;hex&#34;, &#34;base64&#34;, &#34;utf8&#34;, 或者系统支持的字符集
+* codec - 指定编码格式，允许值为："hex", "base64", "utf8", 或者系统支持的字符集
 * offset - 读取起始位置
 * end - 读取终止位置
 
@@ -943,7 +943,7 @@ Boolean Buffer.equals(object expected);
 * 返回对象比较的结果
 
 ### toString
-返回对象的字符串表示，一般返回 &#34;[Native Object]&#34;，对象可以根据自己的特性重新实现
+返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现
 ```JavaScript
 String Buffer.toString();
 ```

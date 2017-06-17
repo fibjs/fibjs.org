@@ -1,7 +1,7 @@
 # 对象 WebSocketHandler
-WebSocket 包协议转换处理器
+[WebSocket](/docs/manual/object/ifs/websocket.md.html) 包协议转换处理器
 
-用以将 Http 协议转换为 WebSocket 包协议消息。创建方式：
+用以将 Http 协议转换为 [WebSocket](/docs/manual/object/ifs/websocket.md.html) 包协议消息。创建方式：
 ```JavaScript
 var ws = require("ws");
 
@@ -10,7 +10,7 @@ var pkghdlr = new ws.WebSocketHandler(...);
 ## 构造函数
         
 ### WebSocketHandler
-WebSocket 包处理器构造函数
+[WebSocket](/docs/manual/object/ifs/websocket.md.html) 包处理器构造函数
 ```JavaScript
  new WebSocketHandler(Handler hdlr);
 ```
@@ -71,7 +71,7 @@ Boolean WebSocketHandler.equals(object expected);
 * 返回对象比较的结果
 
 ### toString
-返回对象的字符串表示，一般返回 &#34;[Native Object]&#34;，对象可以根据自己的特性重新实现
+返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现
 ```JavaScript
 String WebSocketHandler.toString();
 ```
@@ -109,18 +109,18 @@ Integer WebSocketHandler.maxSize;
 ```
 
 ### handler
-WebSocket 协议转换处理器当前事件处理接口对象
+[WebSocket](/docs/manual/object/ifs/websocket.md.html) 协议转换处理器当前事件处理接口对象
 ```JavaScript
 Handler WebSocketHandler.handler;
 ```
 
 ### stats
-查询 WebSocket 包协议转换处理器的工作状态
+查询 [WebSocket](/docs/manual/object/ifs/websocket.md.html) 包协议转换处理器的工作状态
 ```JavaScript
 readonly Stats WebSocketHandler.stats;
 ```
 
-返回的结果为一个 Stats 对象，结构如下：
+返回的结果为一个 [Stats](/docs/manual/object/ifs/stats.md.html) 对象，结构如下：
 ```JavaScript
 {
     total : 1000,    // 总计处理的请求

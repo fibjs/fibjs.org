@@ -8,7 +8,7 @@ var os = require('os');
 ## 对象
         
 ### Service
-Service 构造函数，参见 Service
+[Service](/docs/manual/object/ifs/service.md.html) 构造函数，参见 [Service](/docs/manual/object/ifs/service.md.html)
 ```JavaScript
 Service os.Service;
 ```
@@ -46,7 +46,7 @@ static String os.homedir();
 ```
 
 ### arch
-查询当前 cpu 环境，可能的结果为 &#39;amd64&#39;, &#39;arm&#39;, &#39;arm64&#39;, &#39;ia32&#39;
+查询当前 cpu 环境，可能的结果为 'amd64', 'arm', 'arm64', 'ia32'
 ```JavaScript
 static String os.arch();
 ```
@@ -156,7 +156,7 @@ static BufferedStream os.openPrinter(String name) async;
 * 返回打印机输出对象
 
 ### platform
-查询当前平台名称，可能的结果为 &#39;darwin&#39;, &#39;freebsd&#39;, &#39;linux&#39;, 或 &#39;win32&#39;
+查询当前平台名称，可能的结果为 'darwin', 'freebsd', 'linux', 或 'win32'
 ```JavaScript
 static String os.platform();
 ```
@@ -184,7 +184,7 @@ static Date os.dateAdd(Date d,
 调用参数:
 * d - 指定用于计算 Date 对象
 * num - 指定运算的数值
-* part - 指定运算的时间部位，接收值为：&#34;year&#34;, &#34;month&#34;, &#34;day&#34;, &#34;hour&#34;, &#34;minute&#34;, &#34;second&#34;
+* part - 指定运算的时间部位，接收值为："year", "month", "day", "hour", "minute", "second"
 
 返回结果:
 * 返回 javascript Date 对象
@@ -221,7 +221,7 @@ static readonly Integer os.timezone;
 ```
 
 ### EOL
-查询当前运行环境行结尾标识，posix:\&#34;\\n\&#34;；windows:\&#34;\\r\\n\&#34;
+查询当前运行环境行结尾标识，posix:\"\\n\"；windows:\"\\r\\n\"
 ```JavaScript
 static readonly String os.EOL;
 ```

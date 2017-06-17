@@ -1,10 +1,10 @@
 # 对象 HttpCookie
-http Cookie 对象，用于添加和处理 cookie
+[http](/docs/manual/module/ifs/http.md.html) Cookie 对象，用于添加和处理 cookie
 
 ## 构造函数
         
 ### HttpCookie
-HttpCookie 构造函数，创建一个新的 HttpCookie 对象
+[HttpCookie](/docs/manual/object/ifs/httpcookie.md.html) 构造函数，创建一个新的 [HttpCookie](/docs/manual/object/ifs/httpcookie.md.html) 对象
 ```JavaScript
  new HttpCookie(Object opts = {});
 ```
@@ -13,7 +13,7 @@ HttpCookie 构造函数，创建一个新的 HttpCookie 对象
 * opts - 指定创建的 cookie 的属性
 
 --------------------------
-HttpCookie 构造函数，创建一个新的 HttpCookie 对象
+[HttpCookie](/docs/manual/object/ifs/httpcookie.md.html) 构造函数，创建一个新的 [HttpCookie](/docs/manual/object/ifs/httpcookie.md.html) 对象
 ```JavaScript
  new HttpCookie(String name,
                 String value,
@@ -37,7 +37,7 @@ HttpCookie.parse(String header);
 * header - 指定需要解析的 header 字符串
 
 ### match
-检测给定的 url 是否匹配当前设置
+检测给定的 [url](/docs/manual/module/ifs/url.md.html) 是否匹配当前设置
 ```JavaScript
 Boolean HttpCookie.match(String url);
 ```
@@ -64,7 +64,7 @@ Boolean HttpCookie.equals(object expected);
 * 返回对象比较的结果
 
 ### toString
-返回对象的字符串表示，一般返回 &#34;[Native Object]&#34;，对象可以根据自己的特性重新实现
+返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现
 ```JavaScript
 String HttpCookie.toString();
 ```
@@ -126,7 +126,7 @@ Date HttpCookie.expires;
 ```
 
 ### httpOnly
-查询和设置 cookie 是否仅允许 http 请求，缺省 false
+查询和设置 cookie 是否仅允许 [http](/docs/manual/module/ifs/http.md.html) 请求，缺省 false
 ```JavaScript
 Boolean HttpCookie.httpOnly;
 ```

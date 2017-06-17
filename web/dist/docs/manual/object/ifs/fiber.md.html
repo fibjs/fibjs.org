@@ -154,8 +154,8 @@
 </ul>
  </div></div></div>  </div></div><div class="content col-xs-12 col-sm-9"> <h1 id="-fiber">对象 Fiber</h1>
 <p>纤程操作对象，此对象不可直接创建</p>
-<p>使用 coroutine.start 创建纤程后，将返回此对象，用于纤程处理和纤程间通信。
-纤程主函数可以通过 this 访问本纤程对象，也可通过 coroutine.current 获取当前纤程。</p>
+<p>使用 <a href=../../module/ifs/coroutine.md.html>coroutine</a>.start 创建纤程后，将返回此对象，用于纤程处理和纤程间通信。
+纤程主函数可以通过 this 访问本纤程对象，也可通过 <a href=../../module/ifs/coroutine.md.html>coroutine</a>.current 获取当前纤程。</p>
 <pre><code class="lang-JavaScript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">func</span>(<span class="hljs-params">v1</span>)
 </span>{
   <span class="hljs-built_in">console</span>.log(v1 + <span class="hljs-keyword">this</span>.v);
@@ -167,7 +167,7 @@ fb.v = <span class="hljs-number">123</span>;
 
 fb.join();
 </code></pre>
-<p>纤程局部存储通过共享的 Fiber 对象完成，通过 coroutine.current 获取当前纤程，通过修改和查询其变量达到共享数据的目的。</p>
+<p>纤程局部存储通过共享的 <a href=fiber.md.html>Fiber</a> 对象完成，通过 <a href=../../module/ifs/coroutine.md.html>coroutine</a>.current 获取当前纤程，通过修改和查询其变量达到共享数据的目的。</p>
 <pre><code class="lang-JavaScript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">func</span>(<span class="hljs-params"></span>)
 </span>{
   <span class="hljs-built_in">console</span>.log(coroutine.current().v);
@@ -213,7 +213,7 @@ fb.join();
 <li>返回对象比较的结果</li>
 </ul>
 <h3 id="tostring">toString</h3>
-<p>返回对象的字符串表示，一般返回 &#34;[Native Object]&#34;，对象可以根据自己的特性重新实现</p>
+<p>返回对象的字符串表示，一般返回 &quot;[Native Object]&quot;，对象可以根据自己的特性重新实现</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> Fiber.toString();
 </code></pre>
 <p>返回结果:</p>

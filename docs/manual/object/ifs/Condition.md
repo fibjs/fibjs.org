@@ -5,7 +5,7 @@
 1）一个线程等待某个条件成立，而将自己挂起；
 2）另一个线程使条件成立，并通知等待的纤程向下执行。
 
-为了防止竞争，每个条件变量都需要一个Lock的配合（Lock可自行显式创建并传递进来，也可交由fibjs为您创建）
+为了防止竞争，每个条件变量都需要一个[Lock](/docs/manual/object/ifs/lock.md.html)的配合（[Lock](/docs/manual/object/ifs/lock.md.html)可自行显式创建并传递进来，也可交由fibjs为您创建）
 
 通过使用条件变量，可以利用一个条件变量控制一批纤程的开关；
 
@@ -129,7 +129,7 @@ Boolean Condition.equals(object expected);
 * 返回对象比较的结果
 
 ### toString
-返回对象的字符串表示，一般返回 &#34;[Native Object]&#34;，对象可以根据自己的特性重新实现
+返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现
 ```JavaScript
 String Condition.toString();
 ```

@@ -50,7 +50,7 @@ String SubProcess.readText(Integer size) async;
 * 返回读取的文本字符串，若无数据可读，或者连接中断，则返回 null
 
 ### readLine
-读取一行文本，行结尾标识基于 EOL 属性的设置，缺省时，posix:\&#34;\\n\&#34;；windows:\&#34;\\r\\n\&#34;
+读取一行文本，行结尾标识基于 EOL 属性的设置，缺省时，posix:\"\\n\"；windows:\"\\r\\n\"
 ```JavaScript
 String SubProcess.readLine(Integer maxlen = -1) async;
 ```
@@ -62,7 +62,7 @@ String SubProcess.readLine(Integer maxlen = -1) async;
 * 返回读取的文本字符串，若无数据可读，或者连接中断，则返回 null
 
 ### readLines
-以数组方式读取一组文本行，行结尾标识基于 EOL 属性的设置，缺省时，posix:\&#34;\\n\&#34;；windows:\&#34;\\r\\n\&#34;
+以数组方式读取一组文本行，行结尾标识基于 EOL 属性的设置，缺省时，posix:\"\\n\"；windows:\"\\r\\n\"
 ```JavaScript
 Array SubProcess.readLines(Integer maxlines = -1);
 ```
@@ -165,7 +165,7 @@ Boolean SubProcess.equals(object expected);
 * 返回对象比较的结果
 
 ### toString
-返回对象的字符串表示，一般返回 &#34;[Native Object]&#34;，对象可以根据自己的特性重新实现
+返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现
 ```JavaScript
 String SubProcess.toString();
 ```
@@ -227,7 +227,7 @@ String SubProcess.charset;
 ```
 
 ### EOL
-查询和设置行结尾标识，缺省时，posix:\&#34;\\n\&#34;；windows:\&#34;\\r\\n\&#34;
+查询和设置行结尾标识，缺省时，posix:\"\\n\"；windows:\"\\r\\n\"
 ```JavaScript
 String SubProcess.EOL;
 ```

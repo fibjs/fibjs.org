@@ -8,43 +8,43 @@ var encoding = require('encoding');
 ## 对象
         
 ### base32
-base32 编码与解码模块
+[base32](/docs/manual/module/ifs/base32.md.html) 编码与解码模块
 ```JavaScript
 base32 encoding.base32;
 ```
 
 ### base64
-base64 编码与解码模块
+[base64](/docs/manual/module/ifs/base64.md.html) 编码与解码模块
 ```JavaScript
 base64 encoding.base64;
 ```
 
 ### base64vlq
-base64vlq 编码与解码模块
+[base64vlq](/docs/manual/module/ifs/base64vlq.md.html) 编码与解码模块
 ```JavaScript
 base64vlq encoding.base64vlq;
 ```
 
 ### hex
-hex 编码与解码模块
+[hex](/docs/manual/module/ifs/hex.md.html) 编码与解码模块
 ```JavaScript
 hex encoding.hex;
 ```
 
 ### iconv
-iconv 编码与解码模块
+[iconv](/docs/manual/module/ifs/iconv.md.html) 编码与解码模块
 ```JavaScript
 iconv encoding.iconv;
 ```
 
 ### json
-json 编码与解码模块
+[json](/docs/manual/module/ifs/json.md.html) 编码与解码模块
 ```JavaScript
 json encoding.json;
 ```
 
 ### bson
-bson 编码与解码模块
+[bson](/docs/manual/module/ifs/bson.md.html) 编码与解码模块
 ```JavaScript
 bson encoding.bson;
 ```
@@ -66,7 +66,7 @@ static String encoding.jsstr(String str,
 * 返回编码的字符串
 
 ### encodeURI
-url 字符串安全编码
+[url](/docs/manual/module/ifs/url.md.html) 字符串安全编码
 ```JavaScript
 static String encoding.encodeURI(String url);
 ```
@@ -78,7 +78,7 @@ static String encoding.encodeURI(String url);
 * 返回编码的字符串
 
 ### encodeURIComponent
-url 部件字符串安全编码
+[url](/docs/manual/module/ifs/url.md.html) 部件字符串安全编码
 ```JavaScript
 static String encoding.encodeURIComponent(String url);
 ```
@@ -90,7 +90,7 @@ static String encoding.encodeURIComponent(String url);
 * 返回编码的字符串
 
 ### decodeURI
-url 安全字符串解码
+[url](/docs/manual/module/ifs/url.md.html) 安全字符串解码
 ```JavaScript
 static String encoding.decodeURI(String url);
 ```

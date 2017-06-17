@@ -8,13 +8,13 @@ var io = require('io');
 ## 对象
         
 ### MemoryStream
-创建一个内存流对象，参见 MemoryStream
+创建一个内存流对象，参见 [MemoryStream](/docs/manual/object/ifs/memorystream.md.html)
 ```JavaScript
 MemoryStream io.MemoryStream;
 ```
 
 ### BufferedStream
-创建一个缓存流读取对象，参见 BufferedStream
+创建一个缓存流读取对象，参见 [BufferedStream](/docs/manual/object/ifs/bufferedstream.md.html)
 ```JavaScript
 BufferedStream io.BufferedStream;
 ```

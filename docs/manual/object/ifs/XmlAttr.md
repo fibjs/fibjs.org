@@ -1,5 +1,5 @@
 # 对象 XmlAttr
-XmlAttr 对象表示 XmlElement 对象的属性
+[XmlAttr](/docs/manual/object/ifs/xmlattr.md.html) 对象表示 [XmlElement](/docs/manual/object/ifs/xmlelement.md.html) 对象的属性
 
 ## 函数
         
@@ -22,7 +22,7 @@ Boolean XmlAttr.equals(object expected);
 * 返回对象比较的结果
 
 ### toString
-返回对象的字符串表示，一般返回 &#34;[Native Object]&#34;，对象可以根据自己的特性重新实现
+返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现
 ```JavaScript
 String XmlAttr.toString();
 ```

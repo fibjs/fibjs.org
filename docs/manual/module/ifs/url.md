@@ -1,10 +1,10 @@
 # 模块 url
-url 处理模块
+[url](/docs/manual/module/ifs/url.md.html) 处理模块
 
 ## 函数
         
 ### format
-参数构造 UrlObject 对象
+参数构造 [UrlObject](/docs/manual/object/ifs/urlobject.md.html) 对象
 ```JavaScript
 static String url.format(Object args);
 ```
@@ -13,7 +13,7 @@ static String url.format(Object args);
 * args - 指定构造参数的字典对象，支持的字段有：protocol, slashes, username, password, hostname, port, pathname, query, hash
 
 ### parse
-解析一个 url 字符串
+解析一个 [url](/docs/manual/module/ifs/url.md.html) 字符串
 ```JavaScript
 static UrlObject url.parse(String url,
                 Boolean parseQueryString = false);

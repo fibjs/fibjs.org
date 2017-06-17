@@ -1,10 +1,10 @@
 # 对象 HeapGraphEdge
-HeapGraphEdge表示两个HeapGraphNode节点间的关联，从上游节点到下游节点
+[HeapGraphEdge](/docs/manual/object/ifs/heapgraphedge.md.html)表示两个[HeapGraphNode](/docs/manual/object/ifs/heapgraphnode.md.html)节点间的关联，从上游节点到下游节点
 
 ## 函数
         
 ### getFromNode
-获取HeapGraphEdge的上游HeapGraphNode节点
+获取[HeapGraphEdge](/docs/manual/object/ifs/heapgraphedge.md.html)的上游[HeapGraphNode](/docs/manual/object/ifs/heapgraphnode.md.html)节点
 ```JavaScript
 HeapGraphNode HeapGraphEdge.getFromNode();
 ```
@@ -13,7 +13,7 @@ HeapGraphNode HeapGraphEdge.getFromNode();
 * 返回源HeapGraphNode节点
 
 ### getToNode
-获取HeapGraphEdge的下游HeapGraphNode节点
+获取[HeapGraphEdge](/docs/manual/object/ifs/heapgraphedge.md.html)的下游[HeapGraphNode](/docs/manual/object/ifs/heapgraphnode.md.html)节点
 ```JavaScript
 HeapGraphNode HeapGraphEdge.getToNode();
 ```
@@ -40,7 +40,7 @@ Boolean HeapGraphEdge.equals(object expected);
 * 返回对象比较的结果
 
 ### toString
-返回对象的字符串表示，一般返回 &#34;[Native Object]&#34;，对象可以根据自己的特性重新实现
+返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现
 ```JavaScript
 String HeapGraphEdge.toString();
 ```
@@ -77,13 +77,13 @@ Value HeapGraphEdge.valueOf();
 readonly Integer HeapGraphEdge.type;
 ```
 
-- profiler.Edge_ContextVariable,  函数中的变量
-- profiler.Edge_Element,          数组中的元素
-- profiler.Edge_Property,         有名对象的属性
-- profiler.Edge_Internal,         JS无法进入的链接
-- profiler.Edge_Hidden,           指向需要事先计算出空间大小的节点
-- profiler.Edge_Shortcut,         指向无法事先计算出空间大小的节点
-- profiler.Edge_Weak,             一个弱引用（被GC忽视）
+- [profiler](/docs/manual/module/ifs/profiler.md.html).Edge_ContextVariable,  函数中的变量
+- [profiler](/docs/manual/module/ifs/profiler.md.html).Edge_Element,          数组中的元素
+- [profiler](/docs/manual/module/ifs/profiler.md.html).Edge_Property,         有名对象的属性
+- [profiler](/docs/manual/module/ifs/profiler.md.html).Edge_Internal,         JS无法进入的链接
+- [profiler](/docs/manual/module/ifs/profiler.md.html).Edge_Hidden,           指向需要事先计算出空间大小的节点
+- [profiler](/docs/manual/module/ifs/profiler.md.html).Edge_Shortcut,         指向无法事先计算出空间大小的节点
+- [profiler](/docs/manual/module/ifs/profiler.md.html).Edge_Weak,             一个弱引用（被GC忽视）
 
 ### name
 链接名称

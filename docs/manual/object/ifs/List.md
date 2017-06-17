@@ -9,13 +9,13 @@ var a = new collection.List();
 ## 构造函数
         
 ### List
-List 对象构造函数
+[List](/docs/manual/object/ifs/list.md.html) 对象构造函数
 ```JavaScript
  new List();
 ```
 
 --------------------------
-List 对象构造函数
+[List](/docs/manual/object/ifs/list.md.html) 对象构造函数
 ```JavaScript
  new List(Array data);
 ```
@@ -275,7 +275,7 @@ Boolean List.equals(object expected);
 * 返回对象比较的结果
 
 ### toString
-返回对象的字符串表示，一般返回 &#34;[Native Object]&#34;，对象可以根据自己的特性重新实现
+返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现
 ```JavaScript
 String List.toString();
 ```

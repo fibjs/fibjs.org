@@ -12,7 +12,7 @@ var msg = new ws.Message();
 ### WebSocketMessage
 包处理消息对象构造函数
 ```JavaScript
- new WebSocketMessage(Integer type = undefined,
+ new WebSocketMessage(Integer type = ws.BINARY,
                 Boolean masked = true,
                 Integer maxSize = 67108864);
 ```
@@ -55,7 +55,7 @@ WebSocketMessage.write(Buffer data) async;
 * data - 给定要写入的数据
 
 ### end
-设置当前消息处理结束，Chain 处理器不再继续后面的事务
+设置当前消息处理结束，[Chain](/docs/manual/object/ifs/chain.md.html) 处理器不再继续后面的事务
 ```JavaScript
 WebSocketMessage.end();
 ```
@@ -112,7 +112,7 @@ Boolean WebSocketMessage.equals(object expected);
 * 返回对象比较的结果
 
 ### toString
-返回对象的字符串表示，一般返回 &#34;[Native Object]&#34;，对象可以根据自己的特性重新实现
+返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现
 ```JavaScript
 String WebSocketMessage.toString();
 ```

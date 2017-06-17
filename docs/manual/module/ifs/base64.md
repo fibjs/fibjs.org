@@ -1,5 +1,5 @@
 # 模块 base64
-base64 编码与解码模块
+[base64](/docs/manual/module/ifs/base64.md.html) 编码与解码模块
 
 引用方式：
 ```JavaScript
@@ -13,7 +13,7 @@ var base64 = require('base64');
 ## 函数
         
 ### encode
-以 base64 方式编码数据
+以 [base64](/docs/manual/module/ifs/base64.md.html) 方式编码数据
 ```JavaScript
 static String base64.encode(Buffer data);
 ```
@@ -25,7 +25,7 @@ static String base64.encode(Buffer data);
 * 返回编码的字符串
 
 ### decode
-以 base64 方式解码字符串为二进制数据
+以 [base64](/docs/manual/module/ifs/base64.md.html) 方式解码字符串为二进制数据
 ```JavaScript
 static Buffer base64.decode(String data);
 ```

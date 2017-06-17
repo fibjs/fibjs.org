@@ -1,14 +1,14 @@
 # 对象 MemoryStream
 内存流对象
 
-MemoryStream 对象创建一个基于内存的流对象，创建方法：
+[MemoryStream](/docs/manual/object/ifs/memorystream.md.html) 对象创建一个基于内存的流对象，创建方法：
 ```JavaScript
 var ms = new io.MemoryStream();
 ```
 ## 构造函数
         
 ### MemoryStream
-MemoryStream 构造函数
+[MemoryStream](/docs/manual/object/ifs/memorystream.md.html) 构造函数
 ```JavaScript
  new MemoryStream();
 ```
@@ -176,7 +176,7 @@ Boolean MemoryStream.equals(object expected);
 * 返回对象比较的结果
 
 ### toString
-返回对象的字符串表示，一般返回 &#34;[Native Object]&#34;，对象可以根据自己的特性重新实现
+返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现
 ```JavaScript
 String MemoryStream.toString();
 ```

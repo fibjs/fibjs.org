@@ -1,14 +1,14 @@
 # 对象 X509Crl
 x509 撤销证书对象
 
-X509Crl 对象属于 crypto 模块，创建：
+[X509Crl](/docs/manual/object/ifs/x509crl.md.html) 对象属于 [crypto](/docs/manual/module/ifs/crypto.md.html) 模块，创建：
 ```JavaScript
 var k = new crypto.X509Crl();
 ```
 ## 构造函数
         
 ### X509Crl
-X509Crl 构造函数
+[X509Crl](/docs/manual/object/ifs/x509crl.md.html) 构造函数
 ```JavaScript
  new X509Crl();
 ```
@@ -76,7 +76,7 @@ Boolean X509Crl.equals(object expected);
 * 返回对象比较的结果
 
 ### toString
-返回对象的字符串表示，一般返回 &#34;[Native Object]&#34;，对象可以根据自己的特性重新实现
+返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现
 ```JavaScript
 String X509Crl.toString();
 ```

@@ -12,7 +12,7 @@ var gd = require('gd');
 ```JavaScript
 static Image gd.create(Integer width,
                 Integer height,
-                Integer color = undefined) async;
+                Integer color = gd.TRUECOLOR) async;
 ```
 
 调用参数:
@@ -168,7 +168,7 @@ static Integer gd.color(String color);
 ```
 
 调用参数:
-* color - 指定颜色的字符串，如：&#34;#ff0000&#34;, &#34;ff0000&#34;, &#34;#f00&#34;, &#34;f00&#34;
+* color - 指定颜色的字符串，如："#ff0000", "ff0000", "#f00", "f00"
 
 返回结果:
 * 返回组合颜色

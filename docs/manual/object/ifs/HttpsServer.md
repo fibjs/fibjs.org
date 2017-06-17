@@ -1,7 +1,7 @@
 # 对象 HttpsServer
 https 服务器对象
 
-https 服务器对象是将 SslServer 和 HttpHandler 组合封装的对象，方便快速搭建服务器，逻辑上相当于：
+https 服务器对象是将 [SslServer](/docs/manual/object/ifs/sslserver.md.html) 和 [HttpHandler](/docs/manual/object/ifs/httphandler.md.html) 组合封装的对象，方便快速搭建服务器，逻辑上相当于：
 ```JavaScript
 var svr = new net.SslServer(crt, key, addr, port, new http.Handler(function(req){
    ...
@@ -18,7 +18,7 @@ var svr = new http.HttpsServer(crt, key, 443, function(req){
 ## 构造函数
         
 ### HttpsServer
-HttpsServer 构造函数，在所有本机地址侦听
+[HttpsServer](/docs/manual/object/ifs/httpsserver.md.html) 构造函数，在所有本机地址侦听
 ```JavaScript
  new HttpsServer(Array certs,
                 Integer port,
@@ -45,7 +45,7 @@ certs 格式为：
 ```
 
 --------------------------
-HttpsServer 构造函数
+[HttpsServer](/docs/manual/object/ifs/httpsserver.md.html) 构造函数
 ```JavaScript
  new HttpsServer(Array certs,
                 String addr,
@@ -55,7 +55,7 @@ HttpsServer 构造函数
 
 调用参数:
 * certs - 服务器证书列表
-* addr - 指定 http 服务器侦听地址，为 &#34;&#34; 则在本机所有地址侦听
+* addr - 指定 http 服务器侦听地址，为 "" 则在本机所有地址侦听
 * port - 指定 http 服务器侦听端口
 * hdlr - http 内置消息处理器，处理函数，链式处理数组，路由对象，详见
 
@@ -74,7 +74,7 @@ certs 格式为：
 ```
 
 --------------------------
-HttpsServer 构造函数，在所有本机地址侦听
+[HttpsServer](/docs/manual/object/ifs/httpsserver.md.html) 构造函数，在所有本机地址侦听
 ```JavaScript
  new HttpsServer(X509Cert crt,
                 PKey key,
@@ -89,7 +89,7 @@ HttpsServer 构造函数，在所有本机地址侦听
 * hdlr - http 内置消息处理器，处理函数，链式处理数组，路由对象，详见
 
 --------------------------
-HttpsServer 构造函数
+[HttpsServer](/docs/manual/object/ifs/httpsserver.md.html) 构造函数
 ```JavaScript
  new HttpsServer(X509Cert crt,
                 PKey key,
@@ -101,7 +101,7 @@ HttpsServer 构造函数
 调用参数:
 * crt - X509Cert 证书，用于客户端验证服务器
 * key - PKey 私钥，用于与客户端会话
-* addr - 指定 http 服务器侦听地址，为 &#34;&#34; 则在本机所有地址侦听
+* addr - 指定 http 服务器侦听地址，为 "" 则在本机所有地址侦听
 * port - 指定 http 服务器侦听端口
 * hdlr - http 内置消息处理器，处理函数，链式处理数组，路由对象，详见
 
@@ -164,7 +164,7 @@ Boolean HttpsServer.equals(object expected);
 * 返回对象比较的结果
 
 ### toString
-返回对象的字符串表示，一般返回 &#34;[Native Object]&#34;，对象可以根据自己的特性重新实现
+返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现
 ```JavaScript
 String HttpsServer.toString();
 ```
@@ -232,12 +232,12 @@ Integer HttpsServer.maxUploadSize;
 ```
 
 ### httpStats
-查询 http 协议转换处理器的工作状态
+查询 [http](/docs/manual/module/ifs/http.md.html) 协议转换处理器的工作状态
 ```JavaScript
 readonly Stats HttpsServer.httpStats;
 ```
 
-返回的结果为一个 Stats 对象，结构如下：
+返回的结果为一个 [Stats](/docs/manual/object/ifs/stats.md.html) 对象，结构如下：
 ```JavaScript
 {
     total : 1000,    // 总计处理的请求
@@ -252,7 +252,7 @@ readonly Stats HttpsServer.httpStats;
 ```
 
 ### socket
-服务器当前侦听的 Socket 对象
+服务器当前侦听的 [Socket](/docs/manual/object/ifs/socket.md.html) 对象
 ```JavaScript
 readonly Socket HttpsServer.socket;
 ```
@@ -269,7 +269,7 @@ Handler HttpsServer.handler;
 readonly Stats HttpsServer.stats;
 ```
 
-返回的结果为一个 Stats 对象，初始化计数器如下：
+返回的结果为一个 [Stats](/docs/manual/object/ifs/stats.md.html) 对象，初始化计数器如下：
 ```JavaScript
 {
     total : 1000,      // 总计处理的连接

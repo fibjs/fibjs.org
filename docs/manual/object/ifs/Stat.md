@@ -1,7 +1,7 @@
 # 对象 Stat
 文件的基础信息对象
 
-Stat 对象通过 fs.stat, File.stat, fs.readdir 查询，不可独立创建
+[Stat](/docs/manual/object/ifs/stat.md.html) 对象通过 [fs](/docs/manual/module/ifs/fs.md.html).stat, [File](/docs/manual/object/ifs/file.md.html).stat, [fs](/docs/manual/module/ifs/fs.md.html).readdir 查询，不可独立创建
 ## 函数
         
 ### isWritable
@@ -77,7 +77,7 @@ Boolean Stat.isMemory();
 * 为 true 则是内存文件
 
 ### isSocket
-查询文件是否是 Socket
+查询文件是否是 [Socket](/docs/manual/object/ifs/socket.md.html)
 ```JavaScript
 Boolean Stat.isSocket();
 ```
@@ -104,7 +104,7 @@ Boolean Stat.equals(object expected);
 * 返回对象比较的结果
 
 ### toString
-返回对象的字符串表示，一般返回 &#34;[Native Object]&#34;，对象可以根据自己的特性重新实现
+返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现
 ```JavaScript
 String Stat.toString();
 ```

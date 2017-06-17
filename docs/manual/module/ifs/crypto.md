@@ -8,31 +8,31 @@ var crypto = require('crypto');
 ## 对象
         
 ### Cipher
-Cipher 构造函数，参见 Cipher
+[Cipher](/docs/manual/object/ifs/cipher.md.html) 构造函数，参见 [Cipher](/docs/manual/object/ifs/cipher.md.html)
 ```JavaScript
 Cipher crypto.Cipher;
 ```
 
 ### PKey
-PKey 构造函数，参见 PKey
+[PKey](/docs/manual/object/ifs/pkey.md.html) 构造函数，参见 [PKey](/docs/manual/object/ifs/pkey.md.html)
 ```JavaScript
 PKey crypto.PKey;
 ```
 
 ### X509Cert
-X509Cert 构造函数，参见 X509Cert
+[X509Cert](/docs/manual/object/ifs/x509cert.md.html) 构造函数，参见 [X509Cert](/docs/manual/object/ifs/x509cert.md.html)
 ```JavaScript
 X509Cert crypto.X509Cert;
 ```
 
 ### X509Crl
-X509Crl 构造函数，参见 X509Crl
+[X509Crl](/docs/manual/object/ifs/x509crl.md.html) 构造函数，参见 [X509Crl](/docs/manual/object/ifs/x509crl.md.html)
 ```JavaScript
 X509Crl crypto.X509Crl;
 ```
 
 ### X509Req
-X509Req 构造函数，参见 X509Req
+[X509Req](/docs/manual/object/ifs/x509req.md.html) 构造函数，参见 [X509Req](/docs/manual/object/ifs/x509req.md.html)
 ```JavaScript
 X509Req crypto.X509Req;
 ```
@@ -59,7 +59,7 @@ static X509Cert crypto.loadCert(String filename);
 调用参数:
 * filename - 证书文件名
 
-loadFile 加载 mozilla 的 certdata,txt， 可于 http://hg.mozilla.org/releases/mozilla-release/raw-file/default/security/nss/lib/ckfw/builtins/certdata.txt 下载使用
+loadFile 加载 mozilla 的 certdata,txt， 可于 [http](/docs/manual/module/ifs/http.md.html)://hg.mozilla.org/releases/mozilla-release/raw-file/default/security/nss/lib/ckfw/builtins/certdata.txt 下载使用
 
 ### loadCrl
 加载一个 PEM/DER 格式的撤销证书，可多次调用

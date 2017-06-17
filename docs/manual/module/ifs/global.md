@@ -4,13 +4,13 @@
 ## 对象
         
 ### Buffer
-二进制数据缓存对象，用于 io 读写的数据处理，参见 Buffer 对象。
+二进制数据缓存对象，用于 [io](/docs/manual/module/ifs/io.md.html) 读写的数据处理，参见 [Buffer](/docs/manual/object/ifs/buffer.md.html) 对象。
 ```JavaScript
 Buffer global.Buffer;
 ```
 
 ### Int64
-64位整数对象，参见 Int64 对象。
+64位整数对象，参见 [Int64](/docs/manual/object/ifs/int64.md.html) 对象。
 ```JavaScript
 Int64 global.Int64;
 ```
@@ -121,11 +121,11 @@ static Value global.require(String id);
 
 require 可用于加载基础模块，文件模块。
 
-基础模块是沙箱创建时初始化的模块，引用时只需传递相应的 id，比如 require("net")。
+基础模块是沙箱创建时初始化的模块，引用时只需传递相应的 id，比如 require("[net](/docs/manual/module/ifs/net.md.html)")。
 
-文件模块是用户自定义模块，引用时需传递以 ./ 或 ../ 开头的相对路径。文件模块支持 .js 和 .json 文件。
+文件模块是用户自定义模块，引用时需传递以 ./ 或 ../ 开头的相对路径。文件模块支持 .js 和 .[json](/docs/manual/module/ifs/json.md.html) 文件。
 
-文件模块也支持 package.json 格式，当模块为目录结构时，require 会先查询 package.json 中的 main，未发现则尝试加载路径下的 index.js 或 index.json。
+文件模块也支持 package.[json](/docs/manual/module/ifs/json.md.html) 格式，当模块为目录结构时，require 会先查询 package.[json](/docs/manual/module/ifs/json.md.html) 中的 main，未发现则尝试加载路径下的 index.js 或 index.[json](/docs/manual/module/ifs/json.md.html)。
 
 若引用路径不是 ./ 或 ../ 开头，并且非基础模块，require 则先在启动路径查找，然后从当前模块所在路径下的 node_modules 查找，并上级目录递归。
 
@@ -175,7 +175,7 @@ static global.repl(Stream out,
 * out - 输入输出流对象，通常为网络连接
 * cmds - 补充命令
 
-同一时刻只允许一个 Stream repl，新建一个 Stream repl 时，前一个 repl 将被关闭。
+同一时刻只允许一个 [Stream](/docs/manual/object/ifs/stream.md.html) repl，新建一个 [Stream](/docs/manual/object/ifs/stream.md.html) repl 时，前一个 repl 将被关闭。
 
 参数 cmd 格式如下：
 ```JavaScript
@@ -199,7 +199,7 @@ static global.repl(Stream out,
 ## 属性
         
 ### Master
-Worker 宿主对象，仅在 Worker 入口脚本有效
+[Worker](/docs/manual/object/ifs/worker.md.html) 宿主对象，仅在 [Worker](/docs/manual/object/ifs/worker.md.html) 入口脚本有效
 ```JavaScript
 static readonly Worker global.Master;
 ```

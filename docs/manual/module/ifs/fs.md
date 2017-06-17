@@ -287,7 +287,7 @@ static Stat fs.statSync(String path);
 * 返回文件的基础信息
 
 ### lstat
-查询指定文件的基础信息, 和stat不同的是, 当path是一个软连接的时候，返回的将是这个软连接的信息而不是指向的文件的信息
+查询指定文件的基础信息, 和stat不同的是, 当[path](/docs/manual/module/ifs/path.md.html)是一个软连接的时候，返回的将是这个软连接的信息而不是指向的文件的信息
 ```JavaScript
 static Stat fs.lstat(String path) async;
 ```
@@ -381,7 +381,7 @@ static fs.symlinkSync(String target,
 * linkpath - 将被创建的软连接文件
 
 ### truncate
-修改文件尺寸,如果指定的长度大于源文件大小则用&#39;\0&#39;填充，否则多于的文件内容将丢失
+修改文件尺寸,如果指定的长度大于源文件大小则用'\0'填充，否则多于的文件内容将丢失
 ```JavaScript
 static fs.truncate(String path,
                 Integer len) async;
@@ -392,7 +392,7 @@ static fs.truncate(String path,
 * len - 指定修改后文件的大小
 
 ### truncateSync
-修改文件尺寸,如果指定的长度大于源文件大小则用&#39;\0&#39;填充，否则多于的文件内容将丢失，是 truncate 的同步版兼容接口
+修改文件尺寸,如果指定的长度大于源文件大小则用'\0'填充，否则多于的文件内容将丢失，是 truncate 的同步版兼容接口
 ```JavaScript
 static fs.truncateSync(String path,
                 Integer len);
@@ -435,7 +435,7 @@ static SeekableStream fs.open(String fname,
 
 调用参数:
 * fname - 指定文件名
-* flags - 指定文件打开方式，缺省为 &#34;r&#34;，只读方式
+* flags - 指定文件打开方式，缺省为 "r"，只读方式
 
 返回结果:
 * 返回打开的文件对象
@@ -457,7 +457,7 @@ static SeekableStream fs.openSync(String fname,
 
 调用参数:
 * fname - 指定文件名
-* flags - 指定文件打开方式，缺省为 &#34;r&#34;，只读方式
+* flags - 指定文件打开方式，缺省为 "r"，只读方式
 
 返回结果:
 * 返回打开的文件对象
@@ -479,7 +479,7 @@ static BufferedStream fs.openTextStream(String fname,
 
 调用参数:
 * fname - 指定文件名
-* flags - 指定文件打开方式，缺省为 &#34;r&#34;，只读方式
+* flags - 指定文件打开方式，缺省为 "r"，只读方式
 
 返回结果:
 * 返回打开的文件对象
@@ -529,7 +529,7 @@ static Buffer fs.readFileSync(String fname);
 * 返回文件文本内容
 
 ### readLines
-打开文件，以数组方式读取一组文本行，行结尾标识基于 EOL 属性的设置，缺省时，posix:&#34;\n&#34;；windows:&#34;\r\n&#34;
+打开文件，以数组方式读取一组文本行，行结尾标识基于 EOL 属性的设置，缺省时，posix:"\n"；windows:"\r\n"
 ```JavaScript
 static Array fs.readLines(String fname,
                 Integer maxlines = -1);
@@ -600,7 +600,7 @@ static fs.appendFileSync(String fname,
 ## 属性
         
 ### constants
-fs模块的常量对象
+[fs](/docs/manual/module/ifs/fs.md.html)模块的常量对象
 ```JavaScript
 static readonly Object fs.constants;
 ```

@@ -1,5 +1,5 @@
 # 模块 json
-json 编码与解码模块
+[json](/docs/manual/module/ifs/json.md.html) 编码与解码模块
 
 引用方式：
 ```JavaScript
@@ -13,7 +13,7 @@ var json = require('json');
 ## 函数
         
 ### encode
-以 json 格式编码变量
+以 [json](/docs/manual/module/ifs/json.md.html) 格式编码变量
 ```JavaScript
 static String json.encode(Value data);
 ```
@@ -25,7 +25,7 @@ static String json.encode(Value data);
 * 返回编码的字符串
 
 ### decode
-以 json 方式解码字符串为一个变量
+以 [json](/docs/manual/module/ifs/json.md.html) 方式解码字符串为一个变量
 ```JavaScript
 static Value json.decode(String data);
 ```

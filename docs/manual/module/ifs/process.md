@@ -26,7 +26,7 @@ static Integer process.umask(String mask);
 ```
 
 调用参数:
-* mask - 指定新的掩码， 字符串类型八进制(e.g: &#34;0664&#34;)
+* mask - 指定新的掩码， 字符串类型八进制(e.g: "0664")
 
 返回结果:
 * 返回之前的 mask
@@ -279,13 +279,13 @@ static readonly Object process.env;
 ```
 
 ### arch
-查询当前 cpu 环境，可能的结果为 &#39;amd64&#39;, &#39;arm&#39;, &#39;arm64&#39;, &#39;ia32&#39;
+查询当前 cpu 环境，可能的结果为 'amd64', 'arm', 'arm64', 'ia32'
 ```JavaScript
 static readonly String process.arch;
 ```
 
 ### platform
-查询当前平台名称，可能的结果为 &#39;darwin&#39;, &#39;freebsd&#39;, &#39;linux&#39;, 或 &#39;win32&#39;
+查询当前平台名称，可能的结果为 'darwin', 'freebsd', 'linux', 或 'win32'
 ```JavaScript
 static readonly String process.platform;
 ```

@@ -1,5 +1,5 @@
 # 模块 base64vlq
-base64vlq 编码与解码模块
+[base64vlq](/docs/manual/module/ifs/base64vlq.md.html) 编码与解码模块
 
 引用方式：
 ```JavaScript
@@ -13,7 +13,7 @@ var base64vlq = require('base64vlq');
 ## 函数
         
 ### encode
-以 base64vlq 方式编码数据
+以 [base64vlq](/docs/manual/module/ifs/base64vlq.md.html) 方式编码数据
 ```JavaScript
 static String base64vlq.encode(Integer data);
 ```
@@ -25,7 +25,7 @@ static String base64vlq.encode(Integer data);
 * 返回编码的字符串
 
 --------------------------
-以 base64vlq 方式编码数据
+以 [base64vlq](/docs/manual/module/ifs/base64vlq.md.html) 方式编码数据
 ```JavaScript
 static String base64vlq.encode(Array data);
 ```
@@ -37,7 +37,7 @@ static String base64vlq.encode(Array data);
 * 返回编码的字符串
 
 ### decode
-以 base64vlq 方式解码字符串为二进制数据
+以 [base64vlq](/docs/manual/module/ifs/base64vlq.md.html) 方式解码字符串为二进制数据
 ```JavaScript
 static Array base64vlq.decode(String data);
 ```

@@ -1,7 +1,7 @@
 # 对象 SslHandler
-ssl 协议转换处理器
+[ssl](/docs/manual/module/ifs/ssl.md.html) 协议转换处理器
 
-用以将数据流转换为 ssl 流协议。SslHandler 是对 SslSocket 的封装，用于构建服务器，逻辑上相当于：
+用以将数据流转换为 [ssl](/docs/manual/module/ifs/ssl.md.html) 流协议。[SslHandler](/docs/manual/object/ifs/sslhandler.md.html) 是对 [SslSocket](/docs/manual/object/ifs/sslsocket.md.html) 的封装，用于构建服务器，逻辑上相当于：
 ```JavaScript
 var ss = new ssl.Socket(crt, key);
 
@@ -14,7 +14,7 @@ function(s){
 ## 构造函数
         
 ### SslHandler
-SslHandler 构造函数，创建一个新的 SslHandler 对象
+[SslHandler](/docs/manual/object/ifs/sslhandler.md.html) 构造函数，创建一个新的 [SslHandler](/docs/manual/object/ifs/sslhandler.md.html) 对象
 ```JavaScript
  new SslHandler(Array certs,
                 Handler hdlr);
@@ -39,7 +39,7 @@ certs 格式为：
 ```
 
 --------------------------
-SslHandler 构造函数，创建一个新的 SslHandler 对象
+[SslHandler](/docs/manual/object/ifs/sslhandler.md.html) 构造函数，创建一个新的 [SslHandler](/docs/manual/object/ifs/sslhandler.md.html) 对象
 ```JavaScript
  new SslHandler(X509Cert crt,
                 PKey key,
@@ -84,7 +84,7 @@ Boolean SslHandler.equals(object expected);
 * 返回对象比较的结果
 
 ### toString
-返回对象的字符串表示，一般返回 &#34;[Native Object]&#34;，对象可以根据自己的特性重新实现
+返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现
 ```JavaScript
 String SslHandler.toString();
 ```
@@ -128,7 +128,7 @@ readonly X509Cert SslHandler.ca;
 ```
 
 ### handler
-ssl 协议转换处理器当前事件处理接口对象
+[ssl](/docs/manual/module/ifs/ssl.md.html) 协议转换处理器当前事件处理接口对象
 ```JavaScript
 Handler SslHandler.handler;
 ```

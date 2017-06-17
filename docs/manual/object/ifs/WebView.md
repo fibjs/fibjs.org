@@ -360,7 +360,7 @@ Boolean WebView.equals(object expected);
 * 返回对象比较的结果
 
 ### toString
-返回对象的字符串表示，一般返回 &#34;[Native Object]&#34;，对象可以根据自己的特性重新实现
+返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现
 ```JavaScript
 String WebView.toString();
 ```
@@ -398,13 +398,13 @@ Boolean WebView.visible;
 ```
 
 ### onload
-查询和绑定加载成功事件，相当于 on(&#34;load&#34;, func);
+查询和绑定加载成功事件，相当于 on("load", func);
 ```JavaScript
 Function WebView.onload;
 ```
 
 ### onmove
-查询和绑定窗口移动事件，相当于 on(&#34;move&#34;, func);
+查询和绑定窗口移动事件，相当于 on("move", func);
 ```JavaScript
 Function WebView.onmove;
 ```
@@ -419,7 +419,7 @@ webview.onmove = function(evt) {
 	 	```
 
 ### onresize
-查询和绑定窗口尺寸改变事件，相当于 on(&#34;size&#34;, func);
+查询和绑定窗口尺寸改变事件，相当于 on("size", func);
 ```JavaScript
 Function WebView.onresize;
 ```
@@ -434,7 +434,7 @@ webview.onresize = function(evt) {
 ```
 
 ### onclose
-查询和绑定窗口关闭事件，相当于 on(&#34;close&#34;, func);
+查询和绑定窗口关闭事件，相当于 on("close", func);
 ```JavaScript
 Function WebView.onclose;
 ```
@@ -447,7 +447,7 @@ webview.onclose = function() {}
 	 	```
 
 ### onmessage
-查询和绑定接受 webview 内 postMessage 消息事件，相当于 on(&#34;message&#34;, func);
+查询和绑定接受 webview 内 postMessage 消息事件，相当于 on("message", func);
 ```JavaScript
 Function WebView.onmessage;
 ```

@@ -153,17 +153,17 @@
 <li><a href=zmqsocket.md.html>ZmqSocket</a></li>
 </ul>
  </div></div></div>  </div></div><div class="content col-xs-12 col-sm-9"> <h1 id="-xmldocument">对象 XmlDocument</h1>
-<p>XmlDocument 对象代表整个 XML 文档</p>
-<p>XmlDocument 对象是一棵文档树的根，可为我们提供对文档数据的最初（或最顶层）的访问入口。
-用于元素节点、文本节点、注释、处理指令等均无法存在于 XmlDocument 之外， XmlDocument 对象同样提供了创建这些对象的方法。 XmlNode 对象提供了一个 ownerDocument 属性，此属性可把它们与在其中创建它们的 XmlDocument 关联起来。</p>
+<p><a href=xmldocument.md.html>XmlDocument</a> 对象代表整个 XML 文档</p>
+<p><a href=xmldocument.md.html>XmlDocument</a> 对象是一棵文档树的根，可为我们提供对文档数据的最初（或最顶层）的访问入口。
+用于元素节点、文本节点、注释、处理指令等均无法存在于 <a href=xmldocument.md.html>XmlDocument</a> 之外， <a href=xmldocument.md.html>XmlDocument</a> 对象同样提供了创建这些对象的方法。 <a href=xmlnode.md.html>XmlNode</a> 对象提供了一个 ownerDocument 属性，此属性可把它们与在其中创建它们的 <a href=xmldocument.md.html>XmlDocument</a> 关联起来。</p>
 <h2 id="-">构造函数</h2>
 <h3 id="xmldocument">XmlDocument</h3>
-<p>构造一个 XmlDocument 对象</p>
+<p>构造一个 <a href=xmldocument.md.html>XmlDocument</a> 对象</p>
 <pre><code class="lang-JavaScript"> <span class="hljs-keyword">new</span> XmlDocument(<span class="hljs-built_in">String</span> type = <span class="hljs-string">"text/xml"</span>);
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>type - 指定文档对象的类型，缺省为 &#34;text/xml&#34;，若需要处理 html 则需要指定 &#34;text/html&#34;</li>
+<li>type - 指定文档对象的类型，缺省为 &quot;text/xml&quot;，若需要处理 html 则需要指定 &quot;text/html&quot;</li>
 </ul>
 <h2 id="-">函数</h2>
 <h3 id="load">load</h3>
@@ -188,13 +188,13 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>tagName - 需检索的标签名。值 &#34;*&#34; 匹配所有的标签</li>
+<li>tagName - 需检索的标签名。值 &quot;*&quot; 匹配所有的标签</li>
 </ul>
 <p>返回结果:</p>
 <ul>
 <li>文档树中具有指定标记的 XmlElement 节点的 XmlNodeList 集合。返回的元素节点的顺序就是它们在源文档中出现的顺序。</li>
 </ul>
-<p>该方法将返回一个 XmlNodeList 对象（可以作为只读数组处理），该对象存放文档中具有指定标签名的所有 XmlElement 节点，它们存放的顺序就是在源文档中出现的顺序。 XmlNodeList 对象是“活”的，即如果在文档中添加或删除了指定标签名的元素，它的内容会自动进行必要的更新。</p>
+<p>该方法将返回一个 <a href=xmlnodelist.md.html>XmlNodeList</a> 对象（可以作为只读数组处理），该对象存放文档中具有指定标签名的所有 <a href=xmlelement.md.html>XmlElement</a> 节点，它们存放的顺序就是在源文档中出现的顺序。 <a href=xmlnodelist.md.html>XmlNodeList</a> 对象是“活”的，即如果在文档中添加或删除了指定标签名的元素，它的内容会自动进行必要的更新。</p>
 <h3 id="getelementsbytagnamens">getElementsByTagNameNS</h3>
 <p>返回带有指定命名空间和名称的所有元素的一个节点列表</p>
 <pre><code class="lang-JavaScript">XmlNodeList XmlDocument.getElementsByTagNameNS(<span class="hljs-built_in">String</span> namespaceURI,
@@ -202,8 +202,8 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>namespaceURI - 指定检索的命名空间 URI。值 &#34;*&#34; 可匹配所有的标签</li>
-<li>localName - 需检索的标签名。值 &#34;*&#34; 匹配所有的标签</li>
+<li>namespaceURI - 指定检索的命名空间 URI。值 &quot;*&quot; 可匹配所有的标签</li>
+<li>localName - 需检索的标签名。值 &quot;*&quot; 匹配所有的标签</li>
 </ul>
 <p>返回结果:</p>
 <ul>
@@ -261,7 +261,7 @@
 <li>返回新创建的 XmlComment 节点，注释文本为指定的 data</li>
 </ul>
 <h3 id="createcdatasection">createCDATASection</h3>
-<p>创建 XmlCDATASection 节点</p>
+<p>创建 <a href=xmlcdatasection.md.html>XmlCDATASection</a> 节点</p>
 <pre><code class="lang-JavaScript">XmlCDATASection XmlDocument.createCDATASection(<span class="hljs-built_in">String</span> data);
 </code></pre>
 <p>调用参数:</p>
@@ -273,7 +273,7 @@
 <li>返回新创建的 XmlCDATASection 节点，内容为指定的 data</li>
 </ul>
 <h3 id="createprocessinginstruction">createProcessingInstruction</h3>
-<p>创建 XmlProcessingInstruction 节点</p>
+<p>创建 <a href=xmlprocessinginstruction.md.html>XmlProcessingInstruction</a> 节点</p>
 <pre><code class="lang-JavaScript">XmlProcessingInstruction XmlDocument.createProcessingInstruction(<span class="hljs-built_in">String</span> target,
                 <span class="hljs-built_in">String</span> data);
 </code></pre>
@@ -423,7 +423,7 @@
 <li>返回对象比较的结果</li>
 </ul>
 <h3 id="tostring">toString</h3>
-<p>返回对象的字符串表示，一般返回 &#34;[Native Object]&#34;，对象可以根据自己的特性重新实现</p>
+<p>返回对象的字符串表示，一般返回 &quot;[Native Object]&quot;，对象可以根据自己的特性重新实现</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> XmlDocument.toString();
 </code></pre>
 <p>返回结果:</p>
@@ -467,7 +467,7 @@
 <p>返回与文档相关的文档类型声明（Document Type Declaration）</p>
 <pre><code class="lang-JavaScript">readonly XmlDocumentType XmlDocument.doctype;
 </code></pre>
-<p>对于没有 DTD 的 XML 文档，则返回 null。此属性可提供对 XmlDocumentType 对象（ XmlDocument 的一个子节点）的直接访问。</p>
+<p>对于没有 DTD 的 XML 文档，则返回 null。此属性可提供对 <a href=xmldocumenttype.md.html>XmlDocumentType</a> 对象（ <a href=xmldocument.md.html>XmlDocument</a> 的一个子节点）的直接访问。</p>
 <h3 id="documentelement">documentElement</h3>
 <p>返回文档的根节点</p>
 <pre><code class="lang-JavaScript">readonly XmlElement XmlDocument.documentElement;
@@ -490,14 +490,14 @@
 </code></pre>
 <p>不同对象的 nodeType 会返回不同的值：</p>
 <ul>
-<li>XmlElement: ELEMENT_NODE(1)</li>
-<li>XmlAttr: ATTRIBUTE_NODE(2)</li>
-<li>XmlText: TEXT_NODE(3)</li>
-<li>XmlCDATASection: CDATA_SECTION_NODE(4)</li>
-<li>XmlProcessingInstruction: PROCESSING_INSTRUCTION_NODE(7)</li>
-<li>XmlComment: COMMENT_NODE(8)</li>
-<li>XmlDocument: DOCUMENT_NODE(9)</li>
-<li>XmlDocumentType: DOCUMENT_TYPE_NODE(10)</li>
+<li><a href=xmlelement.md.html>XmlElement</a>: ELEMENT_NODE(1)</li>
+<li><a href=xmlattr.md.html>XmlAttr</a>: ATTRIBUTE_NODE(2)</li>
+<li><a href=xmltext.md.html>XmlText</a>: TEXT_NODE(3)</li>
+<li><a href=xmlcdatasection.md.html>XmlCDATASection</a>: CDATA_SECTION_NODE(4)</li>
+<li><a href=xmlprocessinginstruction.md.html>XmlProcessingInstruction</a>: PROCESSING_INSTRUCTION_NODE(7)</li>
+<li><a href=xmlcomment.md.html>XmlComment</a>: COMMENT_NODE(8)</li>
+<li><a href=xmldocument.md.html>XmlDocument</a>: DOCUMENT_NODE(9)</li>
+<li><a href=xmldocumenttype.md.html>XmlDocumentType</a>: DOCUMENT_TYPE_NODE(10)</li>
 </ul>
 <h3 id="nodename">nodeName</h3>
 <p>返回节点的名称，根据其类型</p>
@@ -505,14 +505,14 @@
 </code></pre>
 <p>不同对象的 nodeName 会返回不同的值：</p>
 <ul>
-<li>XmlElement: element name</li>
-<li>XmlAttr: 属性名称</li>
-<li>XmlText: #text</li>
-<li>XmlCDATASection: #cdata-section</li>
-<li>XmlProcessingInstruction: 返回指定目标 target</li>
-<li>XmlComment: #comment</li>
-<li>XmlDocument: #document</li>
-<li>XmlDocumentType: doctype 名称</li>
+<li><a href=xmlelement.md.html>XmlElement</a>: element name</li>
+<li><a href=xmlattr.md.html>XmlAttr</a>: 属性名称</li>
+<li><a href=xmltext.md.html>XmlText</a>: #text</li>
+<li><a href=xmlcdatasection.md.html>XmlCDATASection</a>: #cdata-section</li>
+<li><a href=xmlprocessinginstruction.md.html>XmlProcessingInstruction</a>: 返回指定目标 target</li>
+<li><a href=xmlcomment.md.html>XmlComment</a>: #comment</li>
+<li><a href=xmldocument.md.html>XmlDocument</a>: #document</li>
+<li><a href=xmldocumenttype.md.html>XmlDocumentType</a>: doctype 名称</li>
 </ul>
 <h3 id="nodevalue">nodeValue</h3>
 <p>返回节点的名称，根据其类型</p>
@@ -520,17 +520,17 @@
 </code></pre>
 <p>不同对象的 nodeName 会返回不同的值：</p>
 <ul>
-<li>XmlElement: null</li>
-<li>XmlAttr: 属性的值</li>
-<li>XmlText: 节点的内容</li>
-<li>XmlCDATASection: 节点的内容</li>
-<li>XmlProcessingInstruction: 返回指定内容 data</li>
-<li>XmlComment: 注释文本</li>
-<li>XmlDocument: null</li>
-<li>XmlDocumentType: null</li>
+<li><a href=xmlelement.md.html>XmlElement</a>: null</li>
+<li><a href=xmlattr.md.html>XmlAttr</a>: 属性的值</li>
+<li><a href=xmltext.md.html>XmlText</a>: 节点的内容</li>
+<li><a href=xmlcdatasection.md.html>XmlCDATASection</a>: 节点的内容</li>
+<li><a href=xmlprocessinginstruction.md.html>XmlProcessingInstruction</a>: 返回指定内容 data</li>
+<li><a href=xmlcomment.md.html>XmlComment</a>: 注释文本</li>
+<li><a href=xmldocument.md.html>XmlDocument</a>: null</li>
+<li><a href=xmldocumenttype.md.html>XmlDocumentType</a>: null</li>
 </ul>
 <h3 id="ownerdocument">ownerDocument</h3>
-<p>返回节点的根元素（XmlDocument 对象）</p>
+<p>返回节点的根元素（<a href=xmldocument.md.html>XmlDocument</a> 对象）</p>
 <pre><code class="lang-JavaScript">readonly XmlDocument XmlDocument.ownerDocument;
 </code></pre>
 <h3 id="parentnode">parentNode</h3>

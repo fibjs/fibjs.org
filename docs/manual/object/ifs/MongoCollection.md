@@ -1,7 +1,7 @@
 # 对象 MongoCollection
 mongodb 数据库数据集对象
 
-使用 MongoDB.getCollection 创建：
+使用 [MongoDB](/docs/manual/object/ifs/mongodb.md.html).getCollection 创建：
 ```JavaScript
 var col1 = mdb.getCollection('test');
 var col = mdb.test;
@@ -219,7 +219,7 @@ Boolean MongoCollection.equals(object expected);
 * 返回对象比较的结果
 
 ### toString
-返回对象的字符串表示，一般返回 &#34;[Native Object]&#34;，对象可以根据自己的特性重新实现
+返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现
 ```JavaScript
 String MongoCollection.toString();
 ```

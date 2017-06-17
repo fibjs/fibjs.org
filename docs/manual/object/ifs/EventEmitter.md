@@ -1,7 +1,7 @@
 # 对象 EventEmitter
 事件触发对象，可用于建立观察者模式，支持事件触发的对象均继承于此，同一事件的同一函数只会产生一次回调
 
-Event 对象可独立创建，以用于组建自定义的事件系统：
+[Event](/docs/manual/object/ifs/event.md.html) 对象可独立创建，以用于组建自定义的事件系统：
 ```JavaScript
 var EventEmitter = require('events');
 
@@ -318,7 +318,7 @@ Boolean EventEmitter.equals(object expected);
 * 返回对象比较的结果
 
 ### toString
-返回对象的字符串表示，一般返回 &#34;[Native Object]&#34;，对象可以根据自己的特性重新实现
+返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现
 ```JavaScript
 String EventEmitter.toString();
 ```

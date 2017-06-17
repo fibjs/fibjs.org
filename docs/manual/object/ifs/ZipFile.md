@@ -1,5 +1,5 @@
 # 对象 ZipFile
-zip 文件访问对象
+[zip](/docs/manual/module/ifs/zip.md.html) 文件访问对象
 
 ## 函数
         
@@ -127,7 +127,7 @@ ZipFile.write(SeekableStream strm,
 * password - 解压密码, 默认没有密码
 
 ### close
-关闭打开的zip文件
+关闭打开的[zip](/docs/manual/module/ifs/zip.md.html)文件
 ```JavaScript
 ZipFile.close() async;
 ```
@@ -151,7 +151,7 @@ Boolean ZipFile.equals(object expected);
 * 返回对象比较的结果
 
 ### toString
-返回对象的字符串表示，一般返回 &#34;[Native Object]&#34;，对象可以根据自己的特性重新实现
+返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现
 ```JavaScript
 String ZipFile.toString();
 ```

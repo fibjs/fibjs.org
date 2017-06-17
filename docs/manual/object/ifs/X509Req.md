@@ -1,24 +1,24 @@
 # 对象 X509Req
 x509 证书请求对象
 
-X509Req 对象属于 crypto 模块，创建：
+[X509Req](/docs/manual/object/ifs/x509req.md.html) 对象属于 [crypto](/docs/manual/module/ifs/crypto.md.html) 模块，创建：
 ```JavaScript
 var k = new crypto.X509Req();
 ```
 ## 构造函数
         
 ### X509Req
-X509Req 构造函数
+[X509Req](/docs/manual/object/ifs/x509req.md.html) 构造函数
 ```JavaScript
  new X509Req();
 ```
 
 --------------------------
-X509Req 构造函数，根据给定的信息创建一个证书请求
+[X509Req](/docs/manual/object/ifs/x509req.md.html) 构造函数，根据给定的信息创建一个证书请求
 ```JavaScript
  new X509Req(String subject,
                 PKey key,
-                Integer hash = undefined);
+                Integer hash = hash.SHA1);
 ```
 
 调用参数:
@@ -120,7 +120,7 @@ Boolean X509Req.equals(object expected);
 * 返回对象比较的结果
 
 ### toString
-返回对象的字符串表示，一般返回 &#34;[Native Object]&#34;，对象可以根据自己的特性重新实现
+返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现
 ```JavaScript
 String X509Req.toString();
 ```

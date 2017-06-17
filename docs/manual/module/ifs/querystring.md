@@ -1,5 +1,5 @@
 # 模块 querystring
-http query 处理模块
+[http](/docs/manual/module/ifs/http.md.html) query 处理模块
 
 引用方法：
 ```JavaScript
@@ -8,7 +8,7 @@ var querystring = require('querystring');
 ## 函数
         
 ### escape
-url 部件字符串安全编码
+[url](/docs/manual/module/ifs/url.md.html) 部件字符串安全编码
 ```JavaScript
 static String querystring.escape(String str);
 ```
@@ -20,7 +20,7 @@ static String querystring.escape(String str);
 * 返回编码的字符串
 
 ### unescape
-url 安全字符串解码
+[url](/docs/manual/module/ifs/url.md.html) 安全字符串解码
 ```JavaScript
 static String querystring.unescape(String str);
 ```
@@ -42,7 +42,7 @@ static HttpCollection querystring.parse(String str,
 
 调用参数:
 * str - 要解析的字符串
-* sep - 解析时使用的分割字符串，缺省为 &amp;
+* sep - 解析时使用的分割字符串，缺省为 &
 * eq - 解析时使用的赋值字符串，缺省为 =
 
 返回结果:
@@ -59,7 +59,7 @@ static String querystring.stringify(Object obj,
 
 调用参数:
 * obj - 要序列化的对象
-* sep - 序列化时使用的分割字符串，缺省为 &amp;
+* sep - 序列化时使用的分割字符串，缺省为 &
 * eq - 序列化时使用的赋值字符串，缺省为 =
 
 返回结果:

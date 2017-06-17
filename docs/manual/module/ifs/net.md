@@ -8,25 +8,25 @@ var net = require('net');
 ## 对象
         
 ### Socket
-创建一个 Socket 对象，参见 Socket
+创建一个 [Socket](/docs/manual/object/ifs/socket.md.html) 对象，参见 [Socket](/docs/manual/object/ifs/socket.md.html)
 ```JavaScript
 Socket net.Socket;
 ```
 
 ### Smtp
-创建一个 Smtp 对象，参见 Smtp
+创建一个 [Smtp](/docs/manual/object/ifs/smtp.md.html) 对象，参见 [Smtp](/docs/manual/object/ifs/smtp.md.html)
 ```JavaScript
 Smtp net.Smtp;
 ```
 
 ### TcpServer
-创建一个 TcpServer 对象，参见 TcpServer
+创建一个 [TcpServer](/docs/manual/object/ifs/tcpserver.md.html) 对象，参见 [TcpServer](/docs/manual/object/ifs/tcpserver.md.html)
 ```JavaScript
 TcpServer net.TcpServer;
 ```
 
 ### Url
-创建一个 UrlObject 对象，参见 UrlObject
+创建一个 [UrlObject](/docs/manual/object/ifs/urlobject.md.html) 对象，参见 [UrlObject](/docs/manual/object/ifs/urlobject.md.html)
 ```JavaScript
 UrlObject net.Url;
 ```
@@ -46,7 +46,7 @@ static Object net.info();
 查询给定的主机名的地址
 ```JavaScript
 static String net.resolve(String name,
-                Integer family = undefined) async;
+                Integer family = AF_INET) async;
 ```
 
 调用参数:
@@ -69,7 +69,7 @@ static String net.ip(String name) async;
 * 返回查询的 ip 字符串
 
 ### ipv6
-快速查询的主机 ipv6 地址，等效与 resolve(name, net.AF_INET6)
+快速查询的主机 ipv6 地址，等效与 resolve(name, [net](/docs/manual/module/ifs/net.md.html).AF_INET6)
 ```JavaScript
 static String net.ipv6(String name) async;
 ```
@@ -81,12 +81,12 @@ static String net.ipv6(String name) async;
 * 返回查询的 ipv6 字符串
 
 ### connect
-创建一个 Socket 对象并建立连接，参见 Socket
+创建一个 [Socket](/docs/manual/object/ifs/socket.md.html) 对象并建立连接，参见 [Socket](/docs/manual/object/ifs/socket.md.html)
 ```JavaScript
 static Stream net.connect(String host,
                 Integer port,
                 Integer timeout = 0,
-                Integer family = undefined) async;
+                Integer family = net.AF_INET) async;
 ```
 
 调用参数:
@@ -99,7 +99,7 @@ static Stream net.connect(String host,
 * 返回连接成功的 Socket 对象
 
 --------------------------
-创建一个 Socket 或 SslSocket 对象并建立连接
+创建一个 [Socket](/docs/manual/object/ifs/socket.md.html) 或 [SslSocket](/docs/manual/object/ifs/sslsocket.md.html) 对象并建立连接
 ```JavaScript
 static Stream net.connect(String url,
                 Integer timeout = 0) async;
@@ -113,7 +113,7 @@ static Stream net.connect(String url,
 * 返回连接成功的 Socket 或者 SslSocket 对象
 
 ### openSmtp
-创建一个 Smtp 对象并建立连接，参见 Smtp
+创建一个 [Smtp](/docs/manual/object/ifs/smtp.md.html) 对象并建立连接，参见 [Smtp](/docs/manual/object/ifs/smtp.md.html)
 ```JavaScript
 static Smtp net.openSmtp(String url,
                 Integer timeout = 0) async;

@@ -4,9 +4,9 @@ ZeroMQ 套接口对象
 ## 构造函数
         
 ### ZmqSocket
-ZmqSocket 对象构造函数
+[ZmqSocket](/docs/manual/object/ifs/zmqsocket.md.html) 对象构造函数
 ```JavaScript
- new ZmqSocket(Integer type = undefined);
+ new ZmqSocket(Integer type = zmq.PAIR);
 ```
 
 调用参数:
@@ -21,7 +21,7 @@ ZmqSocket.bind(String addr);
 ```
 
 调用参数:
-* addr - 指定绑定的地址，如：&#34;tcp://*:3000&#34;
+* addr - 指定绑定的地址，如："tcp://*:3000"
 
 ### connect
 连接到指定地址的服务器
@@ -30,7 +30,7 @@ ZmqSocket.connect(String addr);
 ```
 
 调用参数:
-* addr - 指定连接的地址，如：&#34;tcp://*:3000&#34;
+* addr - 指定连接的地址，如："tcp://*:3000"
 
 ### recv
 接收一个数据包
@@ -75,7 +75,7 @@ Boolean ZmqSocket.equals(object expected);
 * 返回对象比较的结果
 
 ### toString
-返回对象的字符串表示，一般返回 &#34;[Native Object]&#34;，对象可以根据自己的特性重新实现
+返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现
 ```JavaScript
 String ZmqSocket.toString();
 ```

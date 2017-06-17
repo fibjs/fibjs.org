@@ -1,7 +1,7 @@
 # 对象 Stream
 流操作对象，用于二进制数据流读写
 
-Stream 为基础对象，用于为流处理定义标准借口，不能独立创建
+[Stream](/docs/manual/object/ifs/stream.md.html) 为基础对象，用于为流处理定义标准借口，不能独立创建
 ## 函数
         
 ### read
@@ -64,7 +64,7 @@ Boolean Stream.equals(object expected);
 * 返回对象比较的结果
 
 ### toString
-返回对象的字符串表示，一般返回 &#34;[Native Object]&#34;，对象可以根据自己的特性重新实现
+返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现
 ```JavaScript
 String Stream.toString();
 ```

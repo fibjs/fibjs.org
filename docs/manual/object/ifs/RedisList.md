@@ -1,7 +1,7 @@
 # 对象 RedisList
-Redis 数据库客户端 List 对象，此对象为包含指定 key 的客户端，只有调用其方法才会操作数据库
+[Redis](/docs/manual/object/ifs/redis.md.html) 数据库客户端 [List](/docs/manual/object/ifs/list.md.html) 对象，此对象为包含指定 key 的客户端，只有调用其方法才会操作数据库
 
-用以操作 Redis 的 List 对象，创建方法：
+用以操作 [Redis](/docs/manual/object/ifs/redis.md.html) 的 [List](/docs/manual/object/ifs/list.md.html) 对象，创建方法：
 ```JavaScript
 var db = require("db");
 var rdb = new db.openRedis("redis-server");
@@ -193,7 +193,7 @@ Boolean RedisList.equals(object expected);
 * 返回对象比较的结果
 
 ### toString
-返回对象的字符串表示，一般返回 &#34;[Native Object]&#34;，对象可以根据自己的特性重新实现
+返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现
 ```JavaScript
 String RedisList.toString();
 ```

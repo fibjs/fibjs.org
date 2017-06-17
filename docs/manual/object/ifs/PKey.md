@@ -1,14 +1,14 @@
 # 对象 PKey
 不对称加密算法对象
 
-PKey 对象属于 crypto 模块，创建：
+[PKey](/docs/manual/object/ifs/pkey.md.html) 对象属于 [crypto](/docs/manual/module/ifs/crypto.md.html) 模块，创建：
 ```JavaScript
 var k = new crypto.PKey();
 ```
 ## 构造函数
         
 ### PKey
-PKey 构造函数
+[PKey](/docs/manual/object/ifs/pkey.md.html) 构造函数
 ```JavaScript
  new PKey();
 ```
@@ -31,7 +31,7 @@ PKey.genEcKey(String curve = "secp521r1") async;
 ```
 
 调用参数:
-* curve - 指定预置椭圆曲线，可选值为：&#34;secp521r1&#34;, &#34;brainpoolP512r1&#34;, &#34;secp384r1&#34;, &#34;brainpoolP384r1&#34;, &#34;secp256r1&#34;, &#34;secp256k1&#34;, &#34;brainpoolP256r1&#34;, &#34;secp224r1&#34;, &#34;secp224k1&#34;, &#34;secp192r1&#34;, &#34;secp192k1&#34;
+* curve - 指定预置椭圆曲线，可选值为："secp521r1", "brainpoolP512r1", "secp384r1", "brainpoolP384r1", "secp256r1", "secp256k1", "brainpoolP256r1", "secp224r1", "secp224k1", "secp192r1", "secp192k1"
 
 ### isPrivate
 查询当前密钥是否为私钥
@@ -173,7 +173,7 @@ Boolean PKey.equals(object expected);
 * 返回对象比较的结果
 
 ### toString
-返回对象的字符串表示，一般返回 &#34;[Native Object]&#34;，对象可以根据自己的特性重新实现
+返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现
 ```JavaScript
 String PKey.toString();
 ```

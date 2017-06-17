@@ -13,7 +13,7 @@ console.log("%d + %d = %d", 100, 200, 100 + 200);
 ## 函数
         
 ### add
-批量添加 console 输出系统，支持的设备为 console, syslog 和 file，最多可以添加 10 个输出
+批量添加 [console](/docs/manual/module/ifs/console.md.html) 输出系统，支持的设备为 [console](/docs/manual/module/ifs/console.md.html), syslog 和 file，最多可以添加 10 个输出
 ```JavaScript
 static console.add(Array cfg);
 ```
@@ -21,7 +21,7 @@ static console.add(Array cfg);
 调用参数:
 * cfg - 输出配置数组
 
-通过配置 console，可以将程序输出和系统错误发往不同设备，用于运行环境信息收集。
+通过配置 [console](/docs/manual/module/ifs/console.md.html)，可以将程序输出和系统错误发往不同设备，用于运行环境信息收集。
 
 ```JavaScript
 console.add(["console", {
@@ -31,7 +31,7 @@ console.add(["console", {
 ```
 
 --------------------------
-添加 console 输出系统，支持的设备为 console, syslog 和 file，最多可以添加 10 个输出
+添加 [console](/docs/manual/module/ifs/console.md.html) 输出系统，支持的设备为 [console](/docs/manual/module/ifs/console.md.html), syslog 和 file，最多可以添加 10 个输出
 ```JavaScript
 static console.add(Value cfg);
 ```
@@ -39,7 +39,7 @@ static console.add(Value cfg);
 调用参数:
 * cfg - 输出配置
 
-通过配置 console，可以将程序输出和系统错误发往不同设备，用于运行环境信息收集。
+通过配置 [console](/docs/manual/module/ifs/console.md.html)，可以将程序输出和系统错误发往不同设备，用于运行环境信息收集。
 
 cfg 为配置，可以为设备名称字符串：
 
@@ -75,7 +75,7 @@ console.add({
 ```
 
 ### reset
-初始化到缺省设置，只在 console 输出信息
+初始化到缺省设置，只在 [console](/docs/manual/module/ifs/console.md.html) 输出信息
 ```JavaScript
 static console.reset();
 ```
@@ -542,7 +542,7 @@ static Integer console.loglevel;
 ```
 
 ### colors
-终端输出颜色配置对象，详见 TextColor
+终端输出颜色配置对象，详见 [TextColor](/docs/manual/object/ifs/textcolor.md.html)
 ```JavaScript
 static readonly TextColor console.colors;
 ```

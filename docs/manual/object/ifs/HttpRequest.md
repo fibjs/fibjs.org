@@ -1,10 +1,10 @@
 # 对象 HttpRequest
-http 请求消息对象
+[http](/docs/manual/module/ifs/http.md.html) 请求消息对象
 
 ## 构造函数
         
 ### HttpRequest
-HttpRequest 构造函数，创建一个新的 HttpRequest 对象
+[HttpRequest](/docs/manual/object/ifs/httprequest.md.html) 构造函数，创建一个新的 [HttpRequest](/docs/manual/object/ifs/httprequest.md.html) 对象
 ```JavaScript
  new HttpRequest();
 ```
@@ -127,7 +127,7 @@ HttpRequest.write(Buffer data) async;
 * data - 给定要写入的数据
 
 ### end
-设置当前消息处理结束，Chain 处理器不再继续后面的事务
+设置当前消息处理结束，[Chain](/docs/manual/object/ifs/chain.md.html) 处理器不再继续后面的事务
 ```JavaScript
 HttpRequest.end();
 ```
@@ -184,7 +184,7 @@ Boolean HttpRequest.equals(object expected);
 * 返回对象比较的结果
 
 ### toString
-返回对象的字符串表示，一般返回 &#34;[Native Object]&#34;，对象可以根据自己的特性重新实现
+返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现
 ```JavaScript
 String HttpRequest.toString();
 ```
@@ -258,7 +258,7 @@ String HttpRequest.protocol;
 ```
 
 ### headers
-包含消息中 http 消息头的容器，只读属性
+包含消息中 [http](/docs/manual/module/ifs/http.md.html) 消息头的容器，只读属性
 ```JavaScript
 readonly HttpCollection HttpRequest.headers;
 ```

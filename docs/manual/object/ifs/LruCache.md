@@ -1,7 +1,7 @@
 # 对象 LruCache
 LRU(least recently used) 缓存对象
 
-LruCache 用以维护一个 LRU 缓存，创建方法：
+[LruCache](/docs/manual/object/ifs/lrucache.md.html) 用以维护一个 LRU 缓存，创建方法：
 ```JavaScript
 var util = require("util");
 var c = new util.LruCache(10, 100);
@@ -9,7 +9,7 @@ var c = new util.LruCache(10, 100);
 ## 构造函数
         
 ### LruCache
-LruCache 对象构造函数
+[LruCache](/docs/manual/object/ifs/lrucache.md.html) 对象构造函数
 ```JavaScript
  new LruCache(Integer size,
                 Integer timeout = 0);
@@ -122,7 +122,7 @@ Boolean LruCache.equals(object expected);
 * 返回对象比较的结果
 
 ### toString
-返回对象的字符串表示，一般返回 &#34;[Native Object]&#34;，对象可以根据自己的特性重新实现
+返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现
 ```JavaScript
 String LruCache.toString();
 ```

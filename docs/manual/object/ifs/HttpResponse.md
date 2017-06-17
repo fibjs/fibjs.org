@@ -1,10 +1,10 @@
 # 对象 HttpResponse
-http 响应消息对象
+[http](/docs/manual/module/ifs/http.md.html) 响应消息对象
 
 ## 构造函数
         
 ### HttpResponse
-HttpResponse 构造函数，创建一个新的 HttpResponse 对象
+[HttpResponse](/docs/manual/object/ifs/httpresponse.md.html) 构造函数，创建一个新的 [HttpResponse](/docs/manual/object/ifs/httpresponse.md.html) 对象
 ```JavaScript
  new HttpResponse();
 ```
@@ -12,7 +12,7 @@ HttpResponse 构造函数，创建一个新的 HttpResponse 对象
 ## 函数
         
 ### addCookie
-向 cookies 添加一个 HttpCookie 对象
+向 cookies 添加一个 [HttpCookie](/docs/manual/object/ifs/httpcookie.md.html) 对象
 ```JavaScript
 HttpResponse.addCookie(HttpCookie cookie);
 ```
@@ -30,7 +30,7 @@ HttpResponse.redirect(String url);
 * url - 重定向的地址
 
 ### sendHeader
-仅发送格式化 http 头到给定的流对象
+仅发送格式化 [http](/docs/manual/module/ifs/http.md.html) 头到给定的流对象
 ```JavaScript
 HttpResponse.sendHeader(Stream stm) async;
 ```
@@ -154,7 +154,7 @@ HttpResponse.write(Buffer data) async;
 * data - 给定要写入的数据
 
 ### end
-设置当前消息处理结束，Chain 处理器不再继续后面的事务
+设置当前消息处理结束，[Chain](/docs/manual/object/ifs/chain.md.html) 处理器不再继续后面的事务
 ```JavaScript
 HttpResponse.end();
 ```
@@ -211,7 +211,7 @@ Boolean HttpResponse.equals(object expected);
 * 返回对象比较的结果
 
 ### toString
-返回对象的字符串表示，一般返回 &#34;[Native Object]&#34;，对象可以根据自己的特性重新实现
+返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现
 ```JavaScript
 String HttpResponse.toString();
 ```
@@ -249,7 +249,7 @@ Integer HttpResponse.status;
 ```
 
 ### cookies
-返回当前消息的 HttpCookie 对象列表
+返回当前消息的 [HttpCookie](/docs/manual/object/ifs/httpcookie.md.html) 对象列表
 ```JavaScript
 readonly List HttpResponse.cookies;
 ```
@@ -261,7 +261,7 @@ String HttpResponse.protocol;
 ```
 
 ### headers
-包含消息中 http 消息头的容器，只读属性
+包含消息中 [http](/docs/manual/module/ifs/http.md.html) 消息头的容器，只读属性
 ```JavaScript
 readonly HttpCollection HttpResponse.headers;
 ```
