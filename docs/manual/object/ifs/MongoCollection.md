@@ -2,10 +2,10 @@
 mongodb 数据库数据集对象
 
 使用 MongoDB.getCollection 创建：
-@code
-var col1 = mdb.getCollection(&#39;test&#39;);
+```JavaScript
+var col1 = mdb.getCollection('test');
 var col = mdb.test;
-@endcode
+```
 ## 函数
         
 ### find
@@ -15,11 +15,11 @@ MongoCursor MongoCollection.find(Object query = {},
                 Object projection = {});
 ```
 
-**调用参数:**
+调用参数:
 * query - 指定查询条件的对象
 * projection - 指定返回字段的对象
 
-**返回结果:**
+返回结果:
 * 返回游标对象
 
 ### findOne
@@ -29,11 +29,11 @@ Object MongoCollection.findOne(Object query = {},
                 Object projection = {});
 ```
 
-**调用参数:**
+调用参数:
 * query - 指定查询条件的对象
 * projection - 指定返回字段的对象
 
-**返回结果:**
+返回结果:
 * 返回第一条结果
 
 ### findAndModify
@@ -42,10 +42,10 @@ Object MongoCollection.findOne(Object query = {},
 Object MongoCollection.findAndModify(Object query);
 ```
 
-**调用参数:**
+调用参数:
 * query - 指定查询条件，修改数据
 
-**返回结果:**
+返回结果:
 * 返回修改前的结果及其他信息
 
 ### insert
@@ -54,16 +54,16 @@ Object MongoCollection.findAndModify(Object query);
 MongoCollection.insert(Array documents);
 ```
 
-**调用参数:**
+调用参数:
 * documents - 指定要插入的数据数组
 
-### insert
+--------------------------
 插入一条数据
 ```JavaScript
 MongoCollection.insert(Object document);
 ```
 
-**调用参数:**
+调用参数:
 * document - 指定要插入的数据
 
 ### save
@@ -72,7 +72,7 @@ MongoCollection.insert(Object document);
 MongoCollection.save(Object document);
 ```
 
-**调用参数:**
+调用参数:
 * document - 指定要保存的数据
 
 ### update
@@ -84,13 +84,13 @@ MongoCollection.update(Object query,
                 Boolean multi = false);
 ```
 
-**调用参数:**
+调用参数:
 * query - 指定查询条件的对象
 * document - 指定要更新的数据
 * upsert - 数据不存在时，插入一条新数据，缺省为 false，不插入
 * multi - 当符合条件的数据多于一条时，更新所有数据，缺省为 false，只更新第一条
 
-### update
+--------------------------
 根据给定的查询条件更新数据
 ```JavaScript
 MongoCollection.update(Object query,
@@ -98,7 +98,7 @@ MongoCollection.update(Object query,
                 Object options);
 ```
 
-**调用参数:**
+调用参数:
 * query - 指定查询条件的对象
 * document - 指定要更新的数据
 * options - 以对象字段传递的 upsert 和 multi 选项
@@ -109,7 +109,7 @@ MongoCollection.update(Object query,
 MongoCollection.remove(Object query);
 ```
 
-**调用参数:**
+调用参数:
 * query - 指定查询条件的对象
 
 ### runCommand
@@ -118,17 +118,17 @@ MongoCollection.remove(Object query);
 Object MongoCollection.runCommand(Object cmd);
 ```
 
-**调用参数:**
+调用参数:
 * cmd - 给定命令对象
 
-### runCommand
+--------------------------
 执行数据库命令
 ```JavaScript
 Object MongoCollection.runCommand(String cmd,
                 Object arg = {});
 ```
 
-**调用参数:**
+调用参数:
 * cmd - 给定命令名称
 * arg - 给定命令参数选项
 
@@ -145,7 +145,7 @@ MongoCollection.ensureIndex(Object keys,
                 Object options = {});
 ```
 
-**调用参数:**
+调用参数:
 * keys - 给定索引字段、顺序和方向
 * options - 给定索引的选项，唯一索引等
 
@@ -155,7 +155,7 @@ MongoCollection.ensureIndex(Object keys,
 Object MongoCollection.reIndex();
 ```
 
-**返回结果:**
+返回结果:
 * 返回命令执行结果
 
 ### dropIndex
@@ -164,10 +164,10 @@ Object MongoCollection.reIndex();
 Object MongoCollection.dropIndex(String name);
 ```
 
-**调用参数:**
+调用参数:
 * name - 给定要删除的索引名称
 
-**返回结果:**
+返回结果:
 * 返回命令执行结果
 
 ### dropIndexes
@@ -176,7 +176,7 @@ Object MongoCollection.dropIndex(String name);
 Object MongoCollection.dropIndexes();
 ```
 
-**返回结果:**
+返回结果:
 * 返回命令执行结果
 
 ### getIndexes
@@ -185,7 +185,7 @@ Object MongoCollection.dropIndexes();
 MongoCursor MongoCollection.getIndexes();
 ```
 
-**返回结果:**
+返回结果:
 * 返回包含索引的结果集
 
 ### getCollection
@@ -194,10 +194,10 @@ MongoCursor MongoCollection.getIndexes();
 MongoCollection MongoCollection.getCollection(String name);
 ```
 
-**调用参数:**
+调用参数:
 * name - 子命名空间名称
 
-**返回结果:**
+返回结果:
 * 返回新集合对象
 
 ### dispose
@@ -212,10 +212,10 @@ MongoCollection.dispose();
 Boolean MongoCollection.equals(object expected);
 ```
 
-**调用参数:**
+调用参数:
 * expected - 制定比较的目标对象
 
-**返回结果:**
+返回结果:
 * 返回对象比较的结果
 
 ### toString
@@ -224,7 +224,7 @@ Boolean MongoCollection.equals(object expected);
 String MongoCollection.toString();
 ```
 
-**返回结果:**
+返回结果:
 * 返回对象的字符串表示
 
 ### toJSON
@@ -233,10 +233,10 @@ String MongoCollection.toString();
 Value MongoCollection.toJSON(String key = "");
 ```
 
-**调用参数:**
+调用参数:
 * key - 未使用
 
-**返回结果:**
+返回结果:
 * 返回包含可 JSON 序列化的值
 
 ### valueOf
@@ -245,6 +245,6 @@ Value MongoCollection.toJSON(String key = "");
 Value MongoCollection.valueOf();
 ```
 
-**返回结果:**
+返回结果:
 * 返回对象本身的数值
 

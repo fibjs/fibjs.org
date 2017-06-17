@@ -9,10 +9,10 @@ mongodb 数据库数据游标对象
 MongoCursor MongoCursor.skip(Integer num);
 ```
 
-**调用参数:**
+调用参数:
 * num - 记录数
 
-**返回结果:**
+返回结果:
 * 返回游标对象本身便于链式调用
 
 ### limit
@@ -21,10 +21,10 @@ MongoCursor MongoCursor.skip(Integer num);
 MongoCursor MongoCursor.limit(Integer size);
 ```
 
-**调用参数:**
+调用参数:
 * size - 记录数
 
-**返回结果:**
+返回结果:
 * 返回游标对象本身便于链式调用
 
 ### sort
@@ -33,10 +33,10 @@ MongoCursor MongoCursor.limit(Integer size);
 MongoCursor MongoCursor.sort(Object opts);
 ```
 
-**调用参数:**
+调用参数:
 * opts - 指定排序条件
 
-**返回结果:**
+返回结果:
 * 返回游标对象本身便于链式调用
 
 ### hasNext
@@ -45,7 +45,7 @@ MongoCursor MongoCursor.sort(Object opts);
 Boolean MongoCursor.hasNext();
 ```
 
-**返回结果:**
+返回结果:
 * 有记录则返回 true
 
 ### next
@@ -54,7 +54,7 @@ Boolean MongoCursor.hasNext();
 Object MongoCursor.next();
 ```
 
-**返回结果:**
+返回结果:
 * 记录对象，无记录则返回 null
 
 ### count
@@ -63,10 +63,10 @@ Object MongoCursor.next();
 Integer MongoCursor.count(Boolean applySkipLimit = false);
 ```
 
-**调用参数:**
+调用参数:
 * applySkipLimit - 指定是否查询 skip 和 limit 后的记录数，缺省为 false，查询全部记录数
 
-**返回结果:**
+返回结果:
 * 返回记录总数
 
 ### size
@@ -75,7 +75,7 @@ Integer MongoCursor.count(Boolean applySkipLimit = false);
 Integer MongoCursor.size();
 ```
 
-**返回结果:**
+返回结果:
 * 返回记录总数
 
 ### forEach
@@ -84,7 +84,7 @@ Integer MongoCursor.size();
 MongoCursor.forEach(Function func);
 ```
 
-**调用参数:**
+调用参数:
 * func - 指定处理函数
 
 ### map
@@ -93,10 +93,10 @@ MongoCursor.forEach(Function func);
 Array MongoCursor.map(Function func);
 ```
 
-**调用参数:**
+调用参数:
 * func - 指定处理函数
 
-**返回结果:**
+返回结果:
 * 返回处理结果数组
 
 ### toArray
@@ -105,7 +105,7 @@ Array MongoCursor.map(Function func);
 Array MongoCursor.toArray();
 ```
 
-**返回结果:**
+返回结果:
 * 返回包含全部数据的 Javascript 数组
 
 ### hint
@@ -114,10 +114,10 @@ Array MongoCursor.toArray();
 MongoCursor MongoCursor.hint(Object opts);
 ```
 
-**调用参数:**
+调用参数:
 * opts - 指定强制使用的索引
 
-**返回结果:**
+返回结果:
 * 返回游标对象本身便于链式调用
 
 ### dispose
@@ -132,10 +132,10 @@ MongoCursor.dispose();
 Boolean MongoCursor.equals(object expected);
 ```
 
-**调用参数:**
+调用参数:
 * expected - 制定比较的目标对象
 
-**返回结果:**
+返回结果:
 * 返回对象比较的结果
 
 ### toString
@@ -144,7 +144,7 @@ Boolean MongoCursor.equals(object expected);
 String MongoCursor.toString();
 ```
 
-**返回结果:**
+返回结果:
 * 返回对象的字符串表示
 
 ### toJSON
@@ -153,10 +153,10 @@ String MongoCursor.toString();
 Value MongoCursor.toJSON(String key = "");
 ```
 
-**调用参数:**
+调用参数:
 * key - 未使用
 
-**返回结果:**
+返回结果:
 * 返回包含可 JSON 序列化的值
 
 ### valueOf
@@ -165,6 +165,6 @@ Value MongoCursor.toJSON(String key = "");
 Value MongoCursor.valueOf();
 ```
 
-**返回结果:**
+返回结果:
 * 返回对象本身的数值
 

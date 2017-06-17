@@ -3,7 +3,7 @@
 
 使用 coroutine.start 创建纤程后，将返回此对象，用于纤程处理和纤程间通信。
 纤程主函数可以通过 this 访问本纤程对象，也可通过 coroutine.current 获取当前纤程。
-@code
+```JavaScript
 function func(v1)
 {
   console.log(v1 + this.v);
@@ -14,11 +14,11 @@ var fb = coroutine.start(func,100);
 fb.v = 123;
 
 fb.join();
-@endcode
+```
 
 纤程局部存储通过共享的 Fiber 对象完成，通过 coroutine.current 获取当前纤程，通过修改和查询其变量达到共享数据的目的。
 
-@code
+```JavaScript
 function func()
 {
   console.log(coroutine.current().v);
@@ -27,11 +27,11 @@ function func()
 coroutine.current().v = 100;
 
 func();
-@endcode
+```
 
 纤程在创建时，会自动复制当前纤程的局部变量到新的纤程，之后，各自的局部变量的修改不会相互影响，除非变量本身为对象引用。
 
-@code
+```JavaScript
 function func()
 {
   console.log(coroutine.current().v);
@@ -44,7 +44,7 @@ var fb = coroutine.start(func);
 coroutine.current().v = 200;
 
 fb.join();
-@endcode
+```
 ## 函数
         
 ### join
@@ -65,10 +65,10 @@ Fiber.dispose();
 Boolean Fiber.equals(object expected);
 ```
 
-**调用参数:**
+调用参数:
 * expected - 制定比较的目标对象
 
-**返回结果:**
+返回结果:
 * 返回对象比较的结果
 
 ### toString
@@ -77,7 +77,7 @@ Boolean Fiber.equals(object expected);
 String Fiber.toString();
 ```
 
-**返回结果:**
+返回结果:
 * 返回对象的字符串表示
 
 ### toJSON
@@ -86,10 +86,10 @@ String Fiber.toString();
 Value Fiber.toJSON(String key = "");
 ```
 
-**调用参数:**
+调用参数:
 * key - 未使用
 
-**返回结果:**
+返回结果:
 * 返回包含可 JSON 序列化的值
 
 ### valueOf
@@ -98,7 +98,7 @@ Value Fiber.toJSON(String key = "");
 Value Fiber.valueOf();
 ```
 
-**返回结果:**
+返回结果:
 * 返回对象本身的数值
 
 ## 属性

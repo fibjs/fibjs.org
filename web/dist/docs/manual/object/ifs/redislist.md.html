@@ -154,34 +154,33 @@
 </ul>
  </div></div></div>  </div></div><div class="content col-xs-12 col-sm-9"> <h1 id="-redislist">对象 RedisList</h1>
 <p>Redis 数据库客户端 List 对象，此对象为包含指定 key 的客户端，只有调用其方法才会操作数据库</p>
-<p>用以操作 Redis 的 List 对象，创建方法：
-@code
-var db = require(&#34;db&#34;);
-var rdb = new db.openRedis(&#34;redis-server&#34;);
-var list = rdb.getList(&#34;test&#34;);
-@endcode</p>
+<p>用以操作 Redis 的 List 对象，创建方法：</p>
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">var</span> db = <span class="hljs-built_in">require</span>(<span class="hljs-string">"db"</span>);
+<span class="hljs-keyword">var</span> rdb = <span class="hljs-keyword">new</span> db.openRedis(<span class="hljs-string">"redis-server"</span>);
+<span class="hljs-keyword">var</span> list = rdb.getList(<span class="hljs-string">"test"</span>);
+</code></pre>
 <h2 id="-">函数</h2>
 <h3 id="push">push</h3>
 <p>将一个或多个值 value 插入到列表的表头</p>
 <pre><code class="lang-JavaScript">Integer RedisList.push(<span class="hljs-built_in">Array</span> values);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>values - 指定要插入的数据</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>插入后，列表的长度</li>
 </ul>
-<h3 id="push">push</h3>
+<hr>
 <p>将一个或多个值 value 插入到列表的表头</p>
 <pre><code class="lang-JavaScript">Integer RedisList.push(...);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>... - 指定要插入的数据</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>插入后，列表的长度</li>
 </ul>
@@ -189,7 +188,7 @@ var list = rdb.getList(&#34;test&#34;);
 <p>移除并返回列表 key 的头元素</p>
 <pre><code class="lang-JavaScript">Buffer RedisList.pop();
 </code></pre>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>列表的头元素，如果列表为空则返回 null</li>
 </ul>
@@ -197,23 +196,23 @@ var list = rdb.getList(&#34;test&#34;);
 <p>将一个或多个值 value 插入到列表的表尾(最右边)</p>
 <pre><code class="lang-JavaScript">Integer RedisList.rpush(<span class="hljs-built_in">Array</span> values);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>values - 指定要插入的数据</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>插入后，列表的长度</li>
 </ul>
-<h3 id="rpush">rpush</h3>
+<hr>
 <p>将一个或多个值 value 插入到列表的表尾(最右边)</p>
 <pre><code class="lang-JavaScript">Integer RedisList.rpush(...);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>... - 指定要插入的数据</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>插入后，列表的长度</li>
 </ul>
@@ -221,7 +220,7 @@ var list = rdb.getList(&#34;test&#34;);
 <p>移除并返回列表 key 的表尾(最右边)元素</p>
 <pre><code class="lang-JavaScript">Buffer RedisList.rpop();
 </code></pre>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>列表的头元素，如果列表为空则返回 null</li>
 </ul>
@@ -230,7 +229,7 @@ var list = rdb.getList(&#34;test&#34;);
 <pre><code class="lang-JavaScript">RedisList.set(Integer index,
                 Buffer value);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>index - 指定要修改的下标</li>
 <li>value - 指定要修改的数据</li>
@@ -239,11 +238,11 @@ var list = rdb.getList(&#34;test&#34;);
 <p>返回列表中，下标为 index 的元素</p>
 <pre><code class="lang-JavaScript">Buffer RedisList.get(Integer index);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>index - 指定要查询的下标</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>列表中下标为 index 的元素</li>
 </ul>
@@ -252,12 +251,12 @@ var list = rdb.getList(&#34;test&#34;);
 <pre><code class="lang-JavaScript">Integer RedisList.insertBefore(Buffer pivot,
                 Buffer value);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>pivot - 指定插入时查找的数据</li>
 <li>value - 指定要插入的数据</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>插入后，列表的长度</li>
 </ul>
@@ -266,12 +265,12 @@ var list = rdb.getList(&#34;test&#34;);
 <pre><code class="lang-JavaScript">Integer RedisList.insertAfter(Buffer pivot,
                 Buffer value);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>pivot - 指定插入时查找的数据</li>
 <li>value - 指定要插入的数据</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>插入后，列表的长度</li>
 </ul>
@@ -280,12 +279,12 @@ var list = rdb.getList(&#34;test&#34;);
 <pre><code class="lang-JavaScript">Integer RedisList.remove(Integer count,
                 Buffer value);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>count - 指定删除的元素数量</li>
 <li>value - 指定要删除的数值</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>被移除元素的数量</li>
 </ul>
@@ -294,7 +293,7 @@ var list = rdb.getList(&#34;test&#34;);
 <pre><code class="lang-JavaScript">RedisList.trim(Integer start,
                 Integer stop);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>start - 指定修剪的起始下标，0 表示第一个元素，-1 表示最后一个元素</li>
 <li>stop - 指定修剪的结束下标，0 表示第一个元素，-1 表示最后一个元素</li>
@@ -303,7 +302,7 @@ var list = rdb.getList(&#34;test&#34;);
 <p>返回列表的长度</p>
 <pre><code class="lang-JavaScript">Integer RedisList.len();
 </code></pre>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回列表的长度</li>
 </ul>
@@ -312,12 +311,12 @@ var list = rdb.getList(&#34;test&#34;);
 <pre><code class="lang-JavaScript">List RedisList.range(Integer start,
                 Integer stop);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>start - 指定查询的起始下标，0 表示第一个元素，-1 表示最后一个元素</li>
 <li>stop - 指定查询的结束下标，0 表示第一个元素，-1 表示最后一个元素</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>包含指定区间内的元素的数组</li>
 </ul>
@@ -329,11 +328,11 @@ var list = rdb.getList(&#34;test&#34;);
 <p>比较当前对象与给定的对象是否相等</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">Boolean</span> RedisList.equals(object expected);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>expected - 制定比较的目标对象</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回对象比较的结果</li>
 </ul>
@@ -341,7 +340,7 @@ var list = rdb.getList(&#34;test&#34;);
 <p>返回对象的字符串表示，一般返回 &#34;[Native Object]&#34;，对象可以根据自己的特性重新实现</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> RedisList.toString();
 </code></pre>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回对象的字符串表示</li>
 </ul>
@@ -349,11 +348,11 @@ var list = rdb.getList(&#34;test&#34;);
 <p>返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合</p>
 <pre><code class="lang-JavaScript">Value RedisList.toJSON(<span class="hljs-built_in">String</span> key = <span class="hljs-string">""</span>);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>key - 未使用</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回包含可 JSON 序列化的值</li>
 </ul>
@@ -361,7 +360,7 @@ var list = rdb.getList(&#34;test&#34;);
 <p>返回对象本身的数值</p>
 <pre><code class="lang-JavaScript">Value RedisList.valueOf();
 </code></pre>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回对象本身的数值</li>
 </ul>

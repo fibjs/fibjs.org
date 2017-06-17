@@ -2,9 +2,9 @@
 文件系统处理模块
 
 使用方法：
-@code
-var fs = require(&#39;fs&#39;);
-@endcode
+```JavaScript
+var fs = require('fs');
+```
 ## 函数
         
 ### exists
@@ -13,10 +13,10 @@ var fs = require(&#39;fs&#39;);
 Boolean fs.exists(String path);
 ```
 
-**调用参数:**
+调用参数:
 * path - 指定要查询的路径
 
-**返回结果:**
+返回结果:
 * 返回 True 表示文件或目录存在
 
 ### existsSync
@@ -25,10 +25,10 @@ Boolean fs.exists(String path);
 Boolean fs.existsSync(String path);
 ```
 
-**调用参数:**
+调用参数:
 * path - 指定要查询的路径
 
-**返回结果:**
+返回结果:
 * 返回 True 表示文件或目录存在
 
 ### access
@@ -38,7 +38,7 @@ fs.access(String path,
                 Integer mode = 0);
 ```
 
-**调用参数:**
+调用参数:
 * path - 指定要查询的路径
 * mode - 指定查询的权限,默认为文件是否存在
 
@@ -49,7 +49,7 @@ fs.accessSync(String path,
                 Integer mode = 0);
 ```
 
-**调用参数:**
+调用参数:
 * path - 指定要查询的路径
 * mode - 指定查询的权限,默认为文件是否存在
 
@@ -60,7 +60,7 @@ fs.link(String oldPath,
                 String newPath);
 ```
 
-**调用参数:**
+调用参数:
 * oldPath - 源文件
 * newPath - 将要被创建的文件
 
@@ -71,7 +71,7 @@ fs.linkSync(String oldPath,
                 String newPath);
 ```
 
-**调用参数:**
+调用参数:
 * oldPath - 源文件
 * newPath - 将要被创建的文件
 
@@ -81,7 +81,7 @@ fs.linkSync(String oldPath,
 fs.unlink(String path);
 ```
 
-**调用参数:**
+调用参数:
 * path - 指定要删除的路径
 
 ### unlinkSync
@@ -90,7 +90,7 @@ fs.unlink(String path);
 fs.unlinkSync(String path);
 ```
 
-**调用参数:**
+调用参数:
 * path - 指定要删除的路径
 
 ### mkdir
@@ -100,7 +100,7 @@ fs.mkdir(String path,
                 Integer mode = 0777);
 ```
 
-**调用参数:**
+调用参数:
 * path - 指定要创建的目录名
 * mode - 指定文件权限，Windows 忽略此参数
 
@@ -111,7 +111,7 @@ fs.mkdirSync(String path,
                 Integer mode = 0777);
 ```
 
-**调用参数:**
+调用参数:
 * path - 指定要创建的目录名
 * mode - 指定文件权限，Windows 忽略此参数
 
@@ -121,7 +121,7 @@ fs.mkdirSync(String path,
 fs.rmdir(String path);
 ```
 
-**调用参数:**
+调用参数:
 * path - 指定要删除的目录名
 
 ### rmdirSync
@@ -130,7 +130,7 @@ fs.rmdir(String path);
 fs.rmdirSync(String path);
 ```
 
-**调用参数:**
+调用参数:
 * path - 指定要删除的目录名
 
 ### rename
@@ -140,7 +140,7 @@ fs.rename(String from,
                 String to);
 ```
 
-**调用参数:**
+调用参数:
 * from - 指定更名的文件
 * to - 指定要修改的新文件名
 
@@ -151,7 +151,7 @@ fs.renameSync(String from,
                 String to);
 ```
 
-**调用参数:**
+调用参数:
 * from - 指定更名的文件
 * to - 指定要修改的新文件名
 
@@ -162,7 +162,7 @@ fs.copy(String from,
                 String to);
 ```
 
-**调用参数:**
+调用参数:
 * from - 指定更名的文件
 * to - 指定要修改的新文件名
 
@@ -173,7 +173,7 @@ fs.chmod(String path,
                 Integer mode);
 ```
 
-**调用参数:**
+调用参数:
 * path - 指定操作的文件
 * mode - 指定设定的访问权限
 
@@ -184,7 +184,7 @@ fs.chmodSync(String path,
                 Integer mode);
 ```
 
-**调用参数:**
+调用参数:
 * path - 指定操作的文件
 * mode - 指定设定的访问权限
 
@@ -195,7 +195,7 @@ fs.lchmod(String path,
                 Integer mode);
 ```
 
-**调用参数:**
+调用参数:
 * path - 指定操作的文件
 * mode - 指定设定的访问权限
 
@@ -206,7 +206,7 @@ fs.lchmodSync(String path,
                 Integer mode);
 ```
 
-**调用参数:**
+调用参数:
 * path - 指定操作的文件
 * mode - 指定设定的访问权限
 
@@ -218,7 +218,7 @@ fs.chown(String path,
                 Integer gid);
 ```
 
-**调用参数:**
+调用参数:
 * path - 指定设置的文件
 * uid - 文件拥有者用户id
 * gid - 文件拥有者组id
@@ -231,7 +231,7 @@ fs.chownSync(String path,
                 Integer gid);
 ```
 
-**调用参数:**
+调用参数:
 * path - 指定设置的文件
 * uid - 文件拥有者用户id
 * gid - 文件拥有者组id
@@ -244,7 +244,7 @@ fs.lchown(String path,
                 Integer gid);
 ```
 
-**调用参数:**
+调用参数:
 * path - 指定设置的文件
 * uid - 文件拥有者用户id
 * gid - 文件拥有者组id
@@ -257,7 +257,7 @@ fs.lchownSync(String path,
                 Integer gid);
 ```
 
-**调用参数:**
+调用参数:
 * path - 指定设置的文件
 * uid - 文件拥有者用户id
 * gid - 文件拥有者组id
@@ -268,10 +268,10 @@ fs.lchownSync(String path,
 Stat fs.stat(String path);
 ```
 
-**调用参数:**
+调用参数:
 * path - 指定查询的文件
 
-**返回结果:**
+返回结果:
 * 返回文件的基础信息
 
 ### statSync
@@ -280,10 +280,10 @@ Stat fs.stat(String path);
 Stat fs.statSync(String path);
 ```
 
-**调用参数:**
+调用参数:
 * path - 指定查询的文件
 
-**返回结果:**
+返回结果:
 * 返回文件的基础信息
 
 ### lstat
@@ -292,10 +292,10 @@ Stat fs.statSync(String path);
 Stat fs.lstat(String path);
 ```
 
-**调用参数:**
+调用参数:
 * path - 指定查询的文件
 
-**返回结果:**
+返回结果:
 * 返回文件的基础信息
 
 ### lstatSync
@@ -304,10 +304,10 @@ Stat fs.lstat(String path);
 Stat fs.lstatSync(String path);
 ```
 
-**调用参数:**
+调用参数:
 * path - 指定查询的文件
 
-**返回结果:**
+返回结果:
 * 返回文件的基础信息
 
 ### readlink
@@ -316,10 +316,10 @@ Stat fs.lstatSync(String path);
 String fs.readlink(String path);
 ```
 
-**调用参数:**
+调用参数:
 * path - 指定读取的软连接文件
 
-**返回结果:**
+返回结果:
 * 返回软连接指向的文件名
 
 ### readlinkSync
@@ -328,10 +328,10 @@ String fs.readlink(String path);
 String fs.readlinkSync(String path);
 ```
 
-**调用参数:**
+调用参数:
 * path - 指定读取的软连接文件
 
-**返回结果:**
+返回结果:
 * 返回软连接指向的文件名
 
 ### realpath
@@ -340,10 +340,10 @@ String fs.readlinkSync(String path);
 String fs.realpath(String path);
 ```
 
-**调用参数:**
+调用参数:
 * path - 指定读取的路径
 
-**返回结果:**
+返回结果:
 * 返回处理后的绝对路径
 
 ### realpathSync
@@ -352,10 +352,10 @@ String fs.realpath(String path);
 String fs.realpathSync(String path);
 ```
 
-**调用参数:**
+调用参数:
 * path - 指定读取的路径
 
-**返回结果:**
+返回结果:
 * 返回处理后的绝对路径
 
 ### symlink
@@ -365,7 +365,7 @@ fs.symlink(String target,
                 String linkpath);
 ```
 
-**调用参数:**
+调用参数:
 * target - 目标文件，可以是文件、目录、或不存在的路径
 * linkpath - 将被创建的软连接文件
 
@@ -376,7 +376,7 @@ fs.symlinkSync(String target,
                 String linkpath);
 ```
 
-**调用参数:**
+调用参数:
 * target - 目标文件，可以是文件、目录、或不存在的路径
 * linkpath - 将被创建的软连接文件
 
@@ -387,7 +387,7 @@ fs.truncate(String path,
                 Integer len);
 ```
 
-**调用参数:**
+调用参数:
 * path - 指定被修改文件的路径
 * len - 指定修改后文件的大小
 
@@ -398,7 +398,7 @@ fs.truncateSync(String path,
                 Integer len);
 ```
 
-**调用参数:**
+调用参数:
 * path - 指定被修改文件的路径
 * len - 指定修改后文件的大小
 
@@ -408,10 +408,10 @@ fs.truncateSync(String path,
 List fs.readdir(String path);
 ```
 
-**调用参数:**
+调用参数:
 * path - 指定查询的目录
 
-**返回结果:**
+返回结果:
 * 返回目录的文件信息数组
 
 ### readdirSync
@@ -420,10 +420,10 @@ List fs.readdir(String path);
 List fs.readdirSync(String path);
 ```
 
-**调用参数:**
+调用参数:
 * path - 指定查询的目录
 
-**返回结果:**
+返回结果:
 * 返回目录的文件信息数组
 
 ### open
@@ -433,12 +433,20 @@ SeekableStream fs.open(String fname,
                 String flags = "r");
 ```
 
-**调用参数:**
+调用参数:
 * fname - 指定文件名
-* flags - 指定文件打开方式，缺省为 &#34;r&#34;，只读方式。支持的方式如下：
+* flags - 指定文件打开方式，缺省为 &#34;r&#34;，只读方式
 
-**返回结果:**
+返回结果:
 * 返回打开的文件对象
+
+参数 flags 支持的方式如下：
+- 'r' 只读方式，文件不存在则抛出错误。
+- 'r+' 读写方式，文件不存在则抛出错误。
+- 'w' 只写方式，文件不存在则自动创建，存在则将被清空。
+- 'w+' 读写方式，文件不存在则自动创建。
+- 'a' 只写添加方式，文件不存在则自动创建。
+- 'a+' 读写添加方式，文件不存在则自动创建。
 
 ### openSync
 打开文件，用于读取，写入，或者同时读写，是 open 的同步版兼容接口
@@ -447,12 +455,20 @@ SeekableStream fs.openSync(String fname,
                 String flags = "r");
 ```
 
-**调用参数:**
+调用参数:
 * fname - 指定文件名
-* flags - 指定文件打开方式，缺省为 &#34;r&#34;，只读方式。支持的方式如下：
+* flags - 指定文件打开方式，缺省为 &#34;r&#34;，只读方式
 
-**返回结果:**
+返回结果:
 * 返回打开的文件对象
+
+参数 flags 支持的方式如下：
+- 'r' 只读方式，文件不存在则抛出错误。
+- 'r+' 读写方式，文件不存在则抛出错误。
+- 'w' 只写方式，文件不存在则自动创建，存在则将被清空。
+- 'w+' 读写方式，文件不存在则自动创建。
+- 'a' 只写添加方式，文件不存在则自动创建。
+- 'a+' 读写添加方式，文件不存在则自动创建。
 
 ### openTextStream
 打开文本文件，用于读取，写入，或者同时读写
@@ -461,12 +477,20 @@ BufferedStream fs.openTextStream(String fname,
                 String flags = "r");
 ```
 
-**调用参数:**
+调用参数:
 * fname - 指定文件名
-* flags - 指定文件打开方式，缺省为 &#34;r&#34;，只读方式。支持的方式如下：
+* flags - 指定文件打开方式，缺省为 &#34;r&#34;，只读方式
 
-**返回结果:**
+返回结果:
 * 返回打开的文件对象
+
+参数 flags 支持的方式如下：
+- 'r' 只读方式，文件不存在则抛出错误。
+- 'r+' 读写方式，文件不存在则抛出错误。
+- 'w' 只写方式，文件不存在则自动创建，存在则将被清空。
+- 'w+' 读写方式，文件不存在则自动创建。
+- 'a' 只写添加方式，文件不存在则自动创建。
+- 'a+' 读写添加方式，文件不存在则自动创建。
 
 ### readTextFile
 打开文本文件，并读取内容
@@ -474,10 +498,10 @@ BufferedStream fs.openTextStream(String fname,
 String fs.readTextFile(String fname);
 ```
 
-**调用参数:**
+调用参数:
 * fname - 指定文件名
 
-**返回结果:**
+返回结果:
 * 返回文件文本内容
 
 ### readFile
@@ -486,10 +510,10 @@ String fs.readTextFile(String fname);
 Buffer fs.readFile(String fname);
 ```
 
-**调用参数:**
+调用参数:
 * fname - 指定文件名
 
-**返回结果:**
+返回结果:
 * 返回文件文本内容
 
 ### readFileSync
@@ -498,10 +522,10 @@ Buffer fs.readFile(String fname);
 Buffer fs.readFileSync(String fname);
 ```
 
-**调用参数:**
+调用参数:
 * fname - 指定文件名
 
-**返回结果:**
+返回结果:
 * 返回文件文本内容
 
 ### readLines
@@ -511,11 +535,11 @@ Array fs.readLines(String fname,
                 Integer maxlines = -1);
 ```
 
-**调用参数:**
+调用参数:
 * fname - 指定文件名
 * maxlines - 指定此次读取的最大行数，缺省读取全部文本行
 
-**返回结果:**
+返回结果:
 * 返回读取的文本行数组，若无数据可读，或者连接中断，空数组
 
 ### writeTextFile
@@ -525,7 +549,7 @@ fs.writeTextFile(String fname,
                 String txt);
 ```
 
-**调用参数:**
+调用参数:
 * fname - 指定文件名
 * txt - 指定要写入的字符串
 
@@ -536,7 +560,7 @@ fs.writeFile(String fname,
                 Buffer data);
 ```
 
-**调用参数:**
+调用参数:
 * fname - 指定文件名
 * data - 指定要写入的二进制数据
 
@@ -547,7 +571,7 @@ fs.writeFileSync(String fname,
                 Buffer data);
 ```
 
-**调用参数:**
+调用参数:
 * fname - 指定文件名
 * data - 指定要写入的二进制数据
 
@@ -558,7 +582,7 @@ fs.appendFile(String fname,
                 Buffer data);
 ```
 
-**调用参数:**
+调用参数:
 * fname - 指定文件名
 * data - 指定要写入的二进制数据
 
@@ -569,7 +593,7 @@ fs.appendFileSync(String fname,
                 Buffer data);
 ```
 
-**调用参数:**
+调用参数:
 * fname - 指定文件名
 * data - 指定要写入的二进制数据
 

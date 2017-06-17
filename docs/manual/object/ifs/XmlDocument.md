@@ -11,7 +11,7 @@ XmlDocument 对象是一棵文档树的根，可为我们提供对文档数据�
  new XmlDocument(String type = "text/xml");
 ```
 
-**调用参数:**
+调用参数:
 * type - 指定文档对象的类型，缺省为 &#34;text/xml&#34;，若需要处理 html 则需要指定 &#34;text/html&#34;
 
 ## 函数
@@ -22,16 +22,16 @@ XmlDocument 对象是一棵文档树的根，可为我们提供对文档数据�
 XmlDocument.load(String source);
 ```
 
-**调用参数:**
+调用参数:
 * source - 要解析的 XML/HTML 文本，取决于文档创建时的类型
 
-### load
+--------------------------
 通过解析一个二进制 XML/HTML 字符串来组成该文档，并根据语种自动转换
 ```JavaScript
 XmlDocument.load(Buffer source);
 ```
 
-**调用参数:**
+调用参数:
 * source - 要解析的 XML/HTML 文本，取决于文档创建时的类型
 
 ### getElementsByTagName
@@ -40,10 +40,10 @@ XmlDocument.load(Buffer source);
 XmlNodeList XmlDocument.getElementsByTagName(String tagName);
 ```
 
-**调用参数:**
+调用参数:
 * tagName - 需检索的标签名。值 &#34;*&#34; 匹配所有的标签
 
-**返回结果:**
+返回结果:
 * 文档树中具有指定标记的 XmlElement 节点的 XmlNodeList 集合。返回的元素节点的顺序就是它们在源文档中出现的顺序。
 
 该方法将返回一个 XmlNodeList 对象（可以作为只读数组处理），该对象存放文档中具有指定标签名的所有 XmlElement 节点，它们存放的顺序就是在源文档中出现的顺序。 XmlNodeList 对象是“活”的，即如果在文档中添加或删除了指定标签名的元素，它的内容会自动进行必要的更新。
@@ -55,11 +55,11 @@ XmlNodeList XmlDocument.getElementsByTagNameNS(String namespaceURI,
                 String localName);
 ```
 
-**调用参数:**
+调用参数:
 * namespaceURI - 指定检索的命名空间 URI。值 &#34;*&#34; 可匹配所有的标签
 * localName - 需检索的标签名。值 &#34;*&#34; 匹配所有的标签
 
-**返回结果:**
+返回结果:
 * 文档树中具有指定标记的 XmlElement 节点的 XmlNodeList 集合。返回的元素节点的顺序就是它们在源文档中出现的顺序。
 
 该方法与 getElementsByTagName() 方法相似，只是它根据命名空间和名称来检索元素。
@@ -70,10 +70,10 @@ XmlNodeList XmlDocument.getElementsByTagNameNS(String namespaceURI,
 XmlElement XmlDocument.createElement(String tagName);
 ```
 
-**调用参数:**
+调用参数:
 * tagName - 指定元素节点规定名称
 
-**返回结果:**
+返回结果:
 * 返回新创建的 XmlElement 节点，具有指定的标签名
 
 ### createElementNS
@@ -83,11 +83,11 @@ XmlElement XmlDocument.createElementNS(String namespaceURI,
                 String qualifiedName);
 ```
 
-**调用参数:**
+调用参数:
 * namespaceURI - 指定元素节点命名空间 URI
 * qualifiedName - 指定元素节点规定名称
 
-**返回结果:**
+返回结果:
 * 返回新创建的 XmlElement 节点，具有指定的标签名
 
 ### createTextNode
@@ -96,10 +96,10 @@ XmlElement XmlDocument.createElementNS(String namespaceURI,
 XmlText XmlDocument.createTextNode(String data);
 ```
 
-**调用参数:**
+调用参数:
 * data - 指定此节点的文本
 
-**返回结果:**
+返回结果:
 * 返回新创建的 XmlText 节点，表示指定的 data 字符串
 
 ### createComment
@@ -108,10 +108,10 @@ XmlText XmlDocument.createTextNode(String data);
 XmlComment XmlDocument.createComment(String data);
 ```
 
-**调用参数:**
+调用参数:
 * data - 指定此节点的注释文本
 
-**返回结果:**
+返回结果:
 * 返回新创建的 XmlComment 节点，注释文本为指定的 data
 
 ### createCDATASection
@@ -120,10 +120,10 @@ XmlComment XmlDocument.createComment(String data);
 XmlCDATASection XmlDocument.createCDATASection(String data);
 ```
 
-**调用参数:**
+调用参数:
 * data - 指定此节点规定 CDATA 数据
 
-**返回结果:**
+返回结果:
 * 返回新创建的 XmlCDATASection 节点，内容为指定的 data
 
 ### createProcessingInstruction
@@ -133,11 +133,11 @@ XmlProcessingInstruction XmlDocument.createProcessingInstruction(String target,
                 String data);
 ```
 
-**调用参数:**
+调用参数:
 * target - 指定处理指令的目标
 * data - 指定处理指令的内容文本
 
-**返回结果:**
+返回结果:
 * 新创建的 ProcessingInstruction 节点
 
 ### hasChildNodes
@@ -146,7 +146,7 @@ XmlProcessingInstruction XmlDocument.createProcessingInstruction(String target,
 Boolean XmlDocument.hasChildNodes();
 ```
 
-**返回结果:**
+返回结果:
 * 存在任何子节点时返回 true，否则返回 false
 
 ### normalize
@@ -163,10 +163,10 @@ XmlDocument.normalize();
 XmlNode XmlDocument.cloneNode(Boolean deep = true);
 ```
 
-**调用参数:**
+调用参数:
 * deep - 是否深度拷贝，为 true 时，被克隆的节点会克隆原节点的所有子节点
 
-**返回结果:**
+返回结果:
 * 返回所复制的节点
 
 该方法将复制并返回调用它的节点的副本。如果传递给它的参数是 true，它还将递归复制当前节点的所有子孙节点。 否则，它只复制当前节点。返回的节点不属于文档树，它的 parentNode 属性为 null。当复制的是 Element 节点时，它的所有属性都将被复制。
@@ -177,10 +177,10 @@ XmlNode XmlDocument.cloneNode(Boolean deep = true);
 String XmlDocument.lookupPrefix(String namespaceURI);
 ```
 
-**调用参数:**
+调用参数:
 * namespaceURI - 指定匹配的命名空间 URI
 
-**返回结果:**
+返回结果:
 * 返回匹配的前缀，未匹配到返回 null
 
 ### lookupNamespaceURI
@@ -189,10 +189,10 @@ String XmlDocument.lookupPrefix(String namespaceURI);
 String XmlDocument.lookupNamespaceURI(String prefix);
 ```
 
-**调用参数:**
+调用参数:
 * prefix - 指定匹配的前缀
 
-**返回结果:**
+返回结果:
 * 返回匹配的命名空间 URI，未匹配到返回 null
 
 ### insertBefore
@@ -202,11 +202,11 @@ XmlNode XmlDocument.insertBefore(XmlNode newChild,
                 XmlNode refChild);
 ```
 
-**调用参数:**
+调用参数:
 * newChild - 插入新的节点
 * refChild - 在此节点前插入新节点
 
-**返回结果:**
+返回结果:
 * 返回新的子节点
 
 如果文档树中已经存在了 newChild，它将从文档树中删除，然后重新插入它的新位置。来自一个文档的节点（或由一个文档创建的节点）不能插入另一个文档。也就是说，newChild 的 ownerDocument 属性必须与当前节点的 ownerDocument 属性相同。
@@ -218,11 +218,11 @@ XmlNode XmlDocument.insertAfter(XmlNode newChild,
                 XmlNode refChild);
 ```
 
-**调用参数:**
+调用参数:
 * newChild - 插入新的节点
 * refChild - 在此节点后插入新节点
 
-**返回结果:**
+返回结果:
 * 返回新的子节点
 
 如果文档树中已经存在了 newChild，它将从文档树中删除，然后重新插入它的新位置。来自一个文档的节点（或由一个文档创建的节点）不能插入另一个文档。也就是说，newChild 的 ownerDocument 属性必须与当前节点的 ownerDocument 属性相同。
@@ -233,10 +233,10 @@ XmlNode XmlDocument.insertAfter(XmlNode newChild,
 XmlNode XmlDocument.appendChild(XmlNode newChild);
 ```
 
-**调用参数:**
+调用参数:
 * newChild - 指定添加的节点
 
-**返回结果:**
+返回结果:
 * 返回这个新的子节点
 
 如果文档树中已经存在了 newChild，它将从文档树中删除，然后重新插入它的新位置。来自一个文档的节点（或由一个文档创建的节点）不能插入另一个文档。也就是说，newChild 的 ownerDocument 属性必须与当前节点的 ownerDocument 属性相同。
@@ -248,11 +248,11 @@ XmlNode XmlDocument.replaceChild(XmlNode newChild,
                 XmlNode oldChild);
 ```
 
-**调用参数:**
+调用参数:
 * newChild - 指定新的节点
 * oldChild - 指定被替换的节点
 
-**返回结果:**
+返回结果:
 * 如替换成功，此方法可返回被替换的节点，如替换失败，则返回 null
 
 如果文档树中已经存在了 newChild，它将从文档树中删除，然后重新插入它的新位置。来自一个文档的节点（或由一个文档创建的节点）不能插入另一个文档。也就是说，newChild 的 ownerDocument 属性必须与当前节点的 ownerDocument 属性相同。
@@ -263,10 +263,10 @@ XmlNode XmlDocument.replaceChild(XmlNode newChild,
 XmlNode XmlDocument.removeChild(XmlNode oldChild);
 ```
 
-**调用参数:**
+调用参数:
 * oldChild - 指定被删除的节点
 
-**返回结果:**
+返回结果:
 * 如删除成功，此方法可返回被删除的节点，如失败，则返回 null
 
 ### dispose
@@ -281,10 +281,10 @@ XmlDocument.dispose();
 Boolean XmlDocument.equals(object expected);
 ```
 
-**调用参数:**
+调用参数:
 * expected - 制定比较的目标对象
 
-**返回结果:**
+返回结果:
 * 返回对象比较的结果
 
 ### toString
@@ -293,7 +293,7 @@ Boolean XmlDocument.equals(object expected);
 String XmlDocument.toString();
 ```
 
-**返回结果:**
+返回结果:
 * 返回对象的字符串表示
 
 ### toJSON
@@ -302,10 +302,10 @@ String XmlDocument.toString();
 Value XmlDocument.toJSON(String key = "");
 ```
 
-**调用参数:**
+调用参数:
 * key - 未使用
 
-**返回结果:**
+返回结果:
 * 返回包含可 JSON 序列化的值
 
 ### valueOf
@@ -314,7 +314,7 @@ Value XmlDocument.toJSON(String key = "");
 Value XmlDocument.valueOf();
 ```
 
-**返回结果:**
+返回结果:
 * 返回对象本身的数值
 
 ## 属性

@@ -2,9 +2,9 @@
 x509 撤销证书对象
 
 X509Crl 对象属于 crypto 模块，创建：
-@code
+```JavaScript
 var k = new crypto.X509Crl();
-@endcode
+```
 ## 构造函数
         
 ### X509Crl
@@ -21,16 +21,16 @@ X509Crl 构造函数
 X509Crl.load(Buffer derCrl);
 ```
 
-**调用参数:**
+调用参数:
 * derCrl - DER 格式的撤销证书
 
-### load
+--------------------------
 加载一个 PEM 格式的撤销证书，可多次调用
 ```JavaScript
 X509Crl.load(String pemCrl);
 ```
 
-**调用参数:**
+调用参数:
 * pemCrl - PEM 格式的撤销证书
 
 ### loadFile
@@ -39,7 +39,7 @@ X509Crl.load(String pemCrl);
 X509Crl.loadFile(String filename);
 ```
 
-**调用参数:**
+调用参数:
 * filename - 撤销证书文件名
 
 ### dump
@@ -48,7 +48,7 @@ X509Crl.loadFile(String filename);
 Array X509Crl.dump();
 ```
 
-**返回结果:**
+返回结果:
 * 以数组方式导出撤销证书链
 
 ### clear
@@ -69,10 +69,10 @@ X509Crl.dispose();
 Boolean X509Crl.equals(object expected);
 ```
 
-**调用参数:**
+调用参数:
 * expected - 制定比较的目标对象
 
-**返回结果:**
+返回结果:
 * 返回对象比较的结果
 
 ### toString
@@ -81,7 +81,7 @@ Boolean X509Crl.equals(object expected);
 String X509Crl.toString();
 ```
 
-**返回结果:**
+返回结果:
 * 返回对象的字符串表示
 
 ### toJSON
@@ -90,10 +90,10 @@ String X509Crl.toString();
 Value X509Crl.toJSON(String key = "");
 ```
 
-**调用参数:**
+调用参数:
 * key - 未使用
 
-**返回结果:**
+返回结果:
 * 返回包含可 JSON 序列化的值
 
 ### valueOf
@@ -102,6 +102,6 @@ Value X509Crl.toJSON(String key = "");
 Value X509Crl.valueOf();
 ```
 
-**返回结果:**
+返回结果:
 * 返回对象本身的数值
 

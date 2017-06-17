@@ -2,9 +2,9 @@
 MongoDB GridFS 分布式文件系统访问对象
 
 使用 MongoDB.fs 获取，创建方式：
-@code
+```JavaScript
 var gfs = mdb.fs;
-@endcode
+```
 ## 函数
         
 ### retrieve
@@ -13,10 +13,10 @@ var gfs = mdb.fs;
 MemoryStream GridFS.retrieve(String name);
 ```
 
-**调用参数:**
+调用参数:
 * name - 指定获取的文件名
 
-**返回结果:**
+返回结果:
 * 返回获取的文件
 
 ### store
@@ -26,18 +26,18 @@ GridFS.store(String name,
                 Stream src);
 ```
 
-**调用参数:**
+调用参数:
 * name - 指定保存的文件名
 * src - 存放源数据的流对象
 
-### store
+--------------------------
 保存一个二进制数据块到文件系统
 ```JavaScript
 GridFS.store(String name,
                 Buffer data);
 ```
 
-**调用参数:**
+调用参数:
 * name - 指定保存的文件名
 * data - 指定要保存的数据块
 
@@ -47,10 +47,10 @@ GridFS.store(String name,
 Boolean GridFS.exists(String name);
 ```
 
-**调用参数:**
+调用参数:
 * name - 指定要检测的文件名
 
-**返回结果:**
+返回结果:
 * 存在则返回 true
 
 ### remove
@@ -59,7 +59,7 @@ Boolean GridFS.exists(String name);
 GridFS.remove(String name);
 ```
 
-**调用参数:**
+调用参数:
 * name - 指定要删除的文件名
 
 ### dispose
@@ -74,10 +74,10 @@ GridFS.dispose();
 Boolean GridFS.equals(object expected);
 ```
 
-**调用参数:**
+调用参数:
 * expected - 制定比较的目标对象
 
-**返回结果:**
+返回结果:
 * 返回对象比较的结果
 
 ### toString
@@ -86,7 +86,7 @@ Boolean GridFS.equals(object expected);
 String GridFS.toString();
 ```
 
-**返回结果:**
+返回结果:
 * 返回对象的字符串表示
 
 ### toJSON
@@ -95,10 +95,10 @@ String GridFS.toString();
 Value GridFS.toJSON(String key = "");
 ```
 
-**调用参数:**
+调用参数:
 * key - 未使用
 
-**返回结果:**
+返回结果:
 * 返回包含可 JSON 序列化的值
 
 ### valueOf
@@ -107,7 +107,7 @@ Value GridFS.toJSON(String key = "");
 Value GridFS.valueOf();
 ```
 
-**返回结果:**
+返回结果:
 * 返回对象本身的数值
 
 ## 属性

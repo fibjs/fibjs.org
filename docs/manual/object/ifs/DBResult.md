@@ -15,7 +15,7 @@ DBResult.freeze();
 DBResult.resize(Integer sz);
 ```
 
-**调用参数:**
+调用参数:
 * sz - 指定新尺寸
 
 ### push
@@ -24,10 +24,10 @@ DBResult.resize(Integer sz);
 Integer DBResult.push(Variant v);
 ```
 
-**调用参数:**
+调用参数:
 * v - 指定添加的元素
 
-**返回结果:**
+返回结果:
 * 添加元素之后数组的长度
 
 ### indexOf
@@ -37,12 +37,17 @@ Integer DBResult.indexOf(Variant searchElement,
                 Integer fromIndex = 0);
 ```
 
-**调用参数:**
+调用参数:
 * searchElement - 要查找的元素
 * fromIndex - 开始查找的位置。如果该索引值大于或等于数组长度，意味着不会在数组里查找，返回-1。
 
-**返回结果:**
+返回结果:
 * 首个被找到的元素在数组中的索引位置; 若没有找到则返回 -1
+
+如果参数 fromIndex 中提供的索引值是一个负值，则将其作为数组末尾的一个抵消，即-1表示从最后一个元素开始查找，
+-2表示从倒数第二个元素开始查找 ，以此类推。
+
+注意：如果参数中提供的索引值是一个负值，仍然从前向后查询数组。如果抵消后的索引值仍小于0，则整个数组都将会被查询。其默认值为0.
 
 ### lastIndexOf
 lastIndexOf() 方法返回指定元素在数组中的最后一个的索引，如果不存在则返回 -1。从数组的后面向前查找，从 fromIndex 处开始。
@@ -51,12 +56,16 @@ Integer DBResult.lastIndexOf(Variant searchElement,
                 Integer fromIndex = 0);
 ```
 
-**调用参数:**
+调用参数:
 * searchElement - 要查找的元素
 * fromIndex - 从此位置开始逆向查找。默认为数组的长度减 1，即整个数组都被查找。
 
-**返回结果:**
+返回结果:
 * 给定元素在数组中最后一次出现的索引位置; 若没有找到则返回 -1
+
+如果参数 searchElement 大于或等于数组的长度，则整个数组会被查找。
+如果为负值，将其视为从数组末尾向前的偏移。即使该值为负，数组仍然会被从后向前查找。
+如果该值为负时，其绝对值大于数组长度，则方法返回 -1，即数组不会被查找
 
 ### push
 在数组结尾添加一个元素
@@ -64,10 +73,10 @@ Integer DBResult.lastIndexOf(Variant searchElement,
 Integer DBResult.push(...);
 ```
 
-**调用参数:**
+调用参数:
 * ... - 指定添加的多个元素
 
-**返回结果:**
+返回结果:
 * 添加元素之后数组的长度
 
 ### pushArray
@@ -76,7 +85,7 @@ Integer DBResult.push(...);
 DBResult.pushArray(Array data);
 ```
 
-**调用参数:**
+调用参数:
 * data - 添加的一组元素
 
 ### pop
@@ -85,7 +94,7 @@ DBResult.pushArray(Array data);
 Variant DBResult.pop();
 ```
 
-**返回结果:**
+返回结果:
 * 结尾的元素
 
 ### slice
@@ -95,11 +104,11 @@ List DBResult.slice(Integer start = 0,
                 Integer end = -1);
 ```
 
-**调用参数:**
+调用参数:
 * start - 指定范围的起始，缺省从头开始
 * end - 指定范围的结束，缺省到缓存结尾
 
-**返回结果:**
+返回结果:
 * 返回新的数组
 
 ### concat
@@ -108,10 +117,10 @@ List DBResult.slice(Integer start = 0,
 List DBResult.concat(...);
 ```
 
-**调用参数:**
+调用参数:
 * ... - 给定的一个或多个数组
 
-**返回结果:**
+返回结果:
 * 返回合并的数组
 
 ### every
@@ -121,11 +130,11 @@ Boolean DBResult.every(Function func,
                 Value thisArg = undefined);
 ```
 
-**调用参数:**
+调用参数:
 * func - 测试函数
 * thisArg - 调用测试函数的参数，可省略
 
-**返回结果:**
+返回结果:
 * 全部通过测试则返回 true
 
 ### some
@@ -135,11 +144,11 @@ Boolean DBResult.some(Function func,
                 Value thisArg = undefined);
 ```
 
-**调用参数:**
+调用参数:
 * func - 测试函数
 * thisArg - 调用测试函数的参数，可省略
 
-**返回结果:**
+返回结果:
 * 全部不通过测试则返回 false，否则返回true
 
 ### filter
@@ -149,11 +158,11 @@ List DBResult.filter(Function func,
                 Value thisArg = undefined);
 ```
 
-**调用参数:**
+调用参数:
 * func - 测试函数
 * thisArg - 调用过滤函数的参数，可省略
 
-**返回结果:**
+返回结果:
 * 经过过滤的新数组
 
 ### forEach
@@ -163,7 +172,7 @@ DBResult.forEach(Function func,
                 Value thisArg = undefined);
 ```
 
-**调用参数:**
+调用参数:
 * func - 处理函数
 * thisArg - 调用处理函数的参数，可省略
 
@@ -174,11 +183,11 @@ List DBResult.map(Function func,
                 Value thisArg = undefined);
 ```
 
-**调用参数:**
+调用参数:
 * func - 处理函数
 * thisArg - 调用处理函数的参数，可省略
 
-**返回结果:**
+返回结果:
 * 处理结果数组
 
 ### reduce
@@ -188,11 +197,11 @@ Value DBResult.reduce(Function func,
                 Value initVal = undefined);
 ```
 
-**调用参数:**
+调用参数:
 * func - 处理函数
 * initVal - 初始值，可省略
 
-**返回结果:**
+返回结果:
 * 处理结果数组
 
 ### sort
@@ -201,19 +210,19 @@ Value DBResult.reduce(Function func,
 List DBResult.sort(Function func);
 ```
 
-**调用参数:**
+调用参数:
 * func - 比较处理函数
 
-**返回结果:**
+返回结果:
 * 列表本身
 
-### sort
+--------------------------
 排序全部数据并返回列表本身
 ```JavaScript
 List DBResult.sort();
 ```
 
-**返回结果:**
+返回结果:
 * 列表本身
 
 ### toArray
@@ -222,7 +231,7 @@ List DBResult.sort();
 Array DBResult.toArray();
 ```
 
-**返回结果:**
+返回结果:
 * 包含数据的 js 数组
 
 ### dispose
@@ -237,10 +246,10 @@ DBResult.dispose();
 Boolean DBResult.equals(object expected);
 ```
 
-**调用参数:**
+调用参数:
 * expected - 制定比较的目标对象
 
-**返回结果:**
+返回结果:
 * 返回对象比较的结果
 
 ### toString
@@ -249,7 +258,7 @@ Boolean DBResult.equals(object expected);
 String DBResult.toString();
 ```
 
-**返回结果:**
+返回结果:
 * 返回对象的字符串表示
 
 ### toJSON
@@ -258,10 +267,10 @@ String DBResult.toString();
 Value DBResult.toJSON(String key = "");
 ```
 
-**调用参数:**
+调用参数:
 * key - 未使用
 
-**返回结果:**
+返回结果:
 * 返回包含可 JSON 序列化的值
 
 ### valueOf
@@ -270,7 +279,7 @@ Value DBResult.toJSON(String key = "");
 Value DBResult.valueOf();
 ```
 
-**返回结果:**
+返回结果:
 * 返回对象本身的数值
 
 ## 属性

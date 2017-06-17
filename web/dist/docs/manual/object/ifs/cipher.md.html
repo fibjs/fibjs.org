@@ -154,41 +154,40 @@
 </ul>
  </div></div></div>  </div></div><div class="content col-xs-12 col-sm-9"> <h1 id="-cipher">对象 Cipher</h1>
 <p>对称加密算法对象</p>
-<p>Cipher 对象属于 crypto 模块，创建：
-@code
-var c = new crypto.Cipher(crypto.AES, crypto.ECB, ...);
-@endcode</p>
+<p>Cipher 对象属于 crypto 模块，创建：</p>
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">var</span> c = <span class="hljs-keyword">new</span> crypto.Cipher(crypto.AES, crypto.ECB, ...);
+</code></pre>
 <h2 id="-">构造函数</h2>
 <h3 id="cipher">Cipher</h3>
 <p>Cipher 构造函数，仅用于 ARC4 初始化</p>
 <pre><code class="lang-JavaScript"> <span class="hljs-keyword">new</span> Cipher(Integer provider,
                 Buffer key);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>provider - 指定加密算法</li>
 <li>key - 指定加密解密密码</li>
 </ul>
-<h3 id="cipher">Cipher</h3>
+<hr>
 <p>Cipher 构造函数</p>
 <pre><code class="lang-JavaScript"> <span class="hljs-keyword">new</span> Cipher(Integer provider,
                 Integer mode,
                 Buffer key);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>provider - 指定加密算法</li>
 <li>mode - 指定分组密码工作模式</li>
 <li>key - 指定加密解密密码</li>
 </ul>
-<h3 id="cipher">Cipher</h3>
+<hr>
 <p>Cipher 构造函数</p>
 <pre><code class="lang-JavaScript"> <span class="hljs-keyword">new</span> Cipher(Integer provider,
                 Integer mode,
                 Buffer key,
                 Buffer iv);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>provider - 指定加密算法</li>
 <li>mode - 指定分组密码工作模式</li>
@@ -200,7 +199,7 @@ var c = new crypto.Cipher(crypto.AES, crypto.ECB, ...);
 <p>使用填充模式</p>
 <pre><code class="lang-JavaScript">Cipher.paddingMode(Integer mode);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>mode - 指定填充模式，缺省为 PADDING_PKCS7</li>
 </ul>
@@ -208,11 +207,11 @@ var c = new crypto.Cipher(crypto.AES, crypto.ECB, ...);
 <p>使用当前算法密码加密数据</p>
 <pre><code class="lang-JavaScript">Buffer Cipher.encrypt(Buffer data);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>data - 指定要加密的数据</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回加密后的数据</li>
 </ul>
@@ -220,11 +219,11 @@ var c = new crypto.Cipher(crypto.AES, crypto.ECB, ...);
 <p>使用当前算法密码解密数据</p>
 <pre><code class="lang-JavaScript">Buffer Cipher.decrypt(Buffer data);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>data - 指定要解密的数据</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回解密后的数据</li>
 </ul>
@@ -236,11 +235,11 @@ var c = new crypto.Cipher(crypto.AES, crypto.ECB, ...);
 <p>比较当前对象与给定的对象是否相等</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">Boolean</span> Cipher.equals(object expected);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>expected - 制定比较的目标对象</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回对象比较的结果</li>
 </ul>
@@ -248,7 +247,7 @@ var c = new crypto.Cipher(crypto.AES, crypto.ECB, ...);
 <p>返回对象的字符串表示，一般返回 &#34;[Native Object]&#34;，对象可以根据自己的特性重新实现</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> Cipher.toString();
 </code></pre>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回对象的字符串表示</li>
 </ul>
@@ -256,11 +255,11 @@ var c = new crypto.Cipher(crypto.AES, crypto.ECB, ...);
 <p>返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合</p>
 <pre><code class="lang-JavaScript">Value Cipher.toJSON(<span class="hljs-built_in">String</span> key = <span class="hljs-string">""</span>);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>key - 未使用</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回包含可 JSON 序列化的值</li>
 </ul>
@@ -268,7 +267,7 @@ var c = new crypto.Cipher(crypto.AES, crypto.ECB, ...);
 <p>返回对象本身的数值</p>
 <pre><code class="lang-JavaScript">Value Cipher.valueOf();
 </code></pre>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回对象本身的数值</li>
 </ul>

@@ -159,40 +159,43 @@
 2）另一个线程使条件成立，并通知等待的纤程向下执行。</p>
 <p>为了防止竞争，每个条件变量都需要一个Lock的配合（Lock可自行显式创建并传递进来，也可交由fibjs为您创建）</p>
 <p>通过使用条件变量，可以利用一个条件变量控制一批纤程的开关；</p>
-<p>以下是两个纤程调度的实例：
-@code
-var coroutine = require(&#34;coroutine&#34;);
-var cond = new coroutine.Condition();
-var ready = false;
-var state = &#34;ready&#34;;</p>
-<p>function funcwait() {
+<p>以下是两个纤程调度的实例：</p>
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">var</span> coroutine = <span class="hljs-built_in">require</span>(<span class="hljs-string">"coroutine"</span>);
+<span class="hljs-keyword">var</span> cond = <span class="hljs-keyword">new</span> coroutine.Condition();
+<span class="hljs-keyword">var</span> ready = <span class="hljs-literal">false</span>;
+<span class="hljs-keyword">var</span> state = <span class="hljs-string">"ready"</span>;
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">funcwait</span>(<span class="hljs-params"></span>) </span>{
    cond.acquire();
-   while (!ready)
+   <span class="hljs-keyword">while</span> (!ready)
        cond.wait();
-   state = &#34;go&#34;
+   state = <span class="hljs-string">"go"</span>
    cond.release();
-}</p>
-<p>coroutine.start(funcwait);</p>
-<p>cond.acquire();
-console.log(state)
-ready = true;
+}
+
+coroutine.start(funcwait);
+
+cond.acquire();
+<span class="hljs-built_in">console</span>.log(state)
+ready = <span class="hljs-literal">true</span>;
 cond.notify();
 coroutine.sleep();
-console.log(state);</p>
-<p>will output:
-ready
+<span class="hljs-built_in">console</span>.log(state);
+</code></pre>
+<p>will output:</p>
+<pre><code class="lang-sh">ready
 go
-@endcode</p>
+</code></pre>
 <h2 id="-">构造函数</h2>
 <h3 id="condition">Condition</h3>
 <p>条件变量构造函数（条件变量所需的锁由fibjs内部构造）</p>
 <pre><code class="lang-JavaScript"> <span class="hljs-keyword">new</span> Condition();
 </code></pre>
-<h3 id="condition">Condition</h3>
+<hr>
 <p>条件变量构造函数</p>
 <pre><code class="lang-JavaScript"> <span class="hljs-keyword">new</span> Condition(Lock lock);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>lock - 使用自行构造的锁</li>
 </ul>
@@ -213,14 +216,17 @@ go
 <p>获取锁的拥有权</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">Boolean</span> Condition.acquire(<span class="hljs-built_in">Boolean</span> blocking = <span class="hljs-literal">true</span>);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>blocking - 指定是否等待，为 true 时等待，缺省为真</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回是否成功获取锁，为 true 表示成功获取</li>
 </ul>
+<p>acquire 方法用于获取锁的拥有权，当锁处于可获取状态时，此方法立即返回 true。</p>
+<p>当锁不可获取，且 blocking 为 true，则当前纤程进入休眠，当其他纤程释放锁后，此方法返回 true。</p>
+<p>当锁不可获取，且 blocking 为 false，则方法返回 false。</p>
 <h3 id="release">release</h3>
 <p>释放锁的拥有权</p>
 <pre><code class="lang-JavaScript">Condition.release();
@@ -230,7 +236,7 @@ go
 <p>查询当前等待任务数</p>
 <pre><code class="lang-JavaScript">Integer Condition.count();
 </code></pre>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回任务数</li>
 </ul>
@@ -242,11 +248,11 @@ go
 <p>比较当前对象与给定的对象是否相等</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">Boolean</span> Condition.equals(object expected);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>expected - 制定比较的目标对象</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回对象比较的结果</li>
 </ul>
@@ -254,7 +260,7 @@ go
 <p>返回对象的字符串表示，一般返回 &#34;[Native Object]&#34;，对象可以根据自己的特性重新实现</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> Condition.toString();
 </code></pre>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回对象的字符串表示</li>
 </ul>
@@ -262,11 +268,11 @@ go
 <p>返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合</p>
 <pre><code class="lang-JavaScript">Value Condition.toJSON(<span class="hljs-built_in">String</span> key = <span class="hljs-string">""</span>);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>key - 未使用</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回包含可 JSON 序列化的值</li>
 </ul>
@@ -274,7 +280,7 @@ go
 <p>返回对象本身的数值</p>
 <pre><code class="lang-JavaScript">Value Condition.valueOf();
 </code></pre>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回对象本身的数值</li>
 </ul>

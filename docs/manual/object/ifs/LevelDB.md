@@ -2,10 +2,10 @@
 LevelDB 数据库对象
 
 用以创建和管理字典对象，创建方法：
-@code
-var db = require(&#34;db&#34;);
-var test = new db.openLevelDB(&#34;test.db&#34;);
-@endcode
+```JavaScript
+var db = require("db");
+var test = new db.openLevelDB("test.db");
+```
 ## 函数
         
 ### has
@@ -14,10 +14,10 @@ var test = new db.openLevelDB(&#34;test.db&#34;);
 Boolean LevelDB.has(Buffer key);
 ```
 
-**调用参数:**
+调用参数:
 * key - 指定要检查的键值
 
-**返回结果:**
+返回结果:
 * 返回键值是否存在
 
 ### get
@@ -26,10 +26,10 @@ Boolean LevelDB.has(Buffer key);
 Buffer LevelDB.get(Buffer key);
 ```
 
-**调用参数:**
+调用参数:
 * key - 指定要查询的键值
 
-**返回结果:**
+返回结果:
 * 返回键值所对应的值，若不存在，则返回 null
 
 ### mget
@@ -38,7 +38,7 @@ Buffer LevelDB.get(Buffer key);
 List LevelDB.mget(Array keys);
 ```
 
-**调用参数:**
+调用参数:
 * keys - 指定要查询的键值数组
 
 ### set
@@ -48,7 +48,7 @@ LevelDB.set(Buffer key,
                 Buffer value);
 ```
 
-**调用参数:**
+调用参数:
 * key - 指定要设定的键值
 * value - 指定要设定的数据
 
@@ -58,7 +58,7 @@ LevelDB.set(Buffer key,
 LevelDB.mset(Object map);
 ```
 
-**调用参数:**
+调用参数:
 * map - 指定要设定的键值数据字典
 
 ### mremove
@@ -67,7 +67,7 @@ LevelDB.mset(Object map);
 LevelDB.mremove(Array keys);
 ```
 
-**调用参数:**
+调用参数:
 * keys - 指定要删除的键值数组
 
 ### remove
@@ -76,7 +76,7 @@ LevelDB.mremove(Array keys);
 LevelDB.remove(Buffer key);
 ```
 
-**调用参数:**
+调用参数:
 * key - 指定要删除的键值
 
 ### forEach
@@ -85,8 +85,19 @@ LevelDB.remove(Buffer key);
 LevelDB.forEach(Function func);
 ```
 
-**调用参数:**
+调用参数:
 * func - 枚举回调函数
+
+回调函数有两个参数，(value, key)
+
+```JavaScript
+var db = require("db");
+var test = new db.openLevelDB("test.db");
+
+test.forEach(function(value, key){
+   ...
+});
+```
 
 ### between
 枚举数据库中键值在 from 和 to 之间的键值对
@@ -96,10 +107,21 @@ LevelDB.between(Buffer from,
                 Function func);
 ```
 
-**调用参数:**
+调用参数:
 * from - 枚举的最小键值，枚举时包含此键值
 * to - 枚举的最大键值，枚举时不包含此键值
 * func - 枚举回调函数
+
+回调函数有两个参数，(value, key)
+
+```JavaScript
+var db = require("db");
+var test = new db.openLevelDB("test.db");
+
+test.between("aaa", "bbb", function(value, key){
+   ...
+});
+```
 
 ### begin
 在当前数据库上开启一个事务
@@ -107,7 +129,7 @@ LevelDB.between(Buffer from,
 LevelDB LevelDB.begin();
 ```
 
-**返回结果:**
+返回结果:
 * 返回一个开启的事务对象
 
 ### commit
@@ -134,10 +156,10 @@ LevelDB.dispose();
 Boolean LevelDB.equals(object expected);
 ```
 
-**调用参数:**
+调用参数:
 * expected - 制定比较的目标对象
 
-**返回结果:**
+返回结果:
 * 返回对象比较的结果
 
 ### toString
@@ -146,7 +168,7 @@ Boolean LevelDB.equals(object expected);
 String LevelDB.toString();
 ```
 
-**返回结果:**
+返回结果:
 * 返回对象的字符串表示
 
 ### toJSON
@@ -155,10 +177,10 @@ String LevelDB.toString();
 Value LevelDB.toJSON(String key = "");
 ```
 
-**调用参数:**
+调用参数:
 * key - 未使用
 
-**返回结果:**
+返回结果:
 * 返回包含可 JSON 序列化的值
 
 ### valueOf
@@ -167,6 +189,6 @@ Value LevelDB.toJSON(String key = "");
 Value LevelDB.valueOf();
 ```
 
-**返回结果:**
+返回结果:
 * 返回对象本身的数值
 

@@ -17,7 +17,7 @@ Smtp 对象构造函数
 Smtp.connect(String url);
 ```
 
-**调用参数:**
+调用参数:
 * url - 指定连接的协议，可以是：tcp://host:port 或者 ssl://host:port
 
 ### command
@@ -27,11 +27,11 @@ String Smtp.command(String cmd,
                 String arg);
 ```
 
-**调用参数:**
+调用参数:
 * cmd - 命令名
 * arg - 参数
 
-**返回结果:**
+返回结果:
 * 如果成功，返回服务器响应
 
 ### hello
@@ -40,7 +40,7 @@ String Smtp.command(String cmd,
 Smtp.hello(String hostname = "localhost");
 ```
 
-**调用参数:**
+调用参数:
 * hostname - 主机名，缺省为“localhost”
 
 ### login
@@ -50,7 +50,7 @@ Smtp.login(String username,
                 String password);
 ```
 
-**调用参数:**
+调用参数:
 * username - 用户名
 * password - 密码
 
@@ -60,7 +60,7 @@ Smtp.login(String username,
 Smtp.from(String address);
 ```
 
-**调用参数:**
+调用参数:
 * address - 发件人信箱
 
 ### to
@@ -69,7 +69,7 @@ Smtp.from(String address);
 Smtp.to(String address);
 ```
 
-**调用参数:**
+调用参数:
 * address - 收件人信箱
 
 ### data
@@ -78,7 +78,7 @@ Smtp.to(String address);
 Smtp.data(String txt);
 ```
 
-**调用参数:**
+调用参数:
 * txt - 要发送的文本
 
 ### quit
@@ -99,10 +99,10 @@ Smtp.dispose();
 Boolean Smtp.equals(object expected);
 ```
 
-**调用参数:**
+调用参数:
 * expected - 制定比较的目标对象
 
-**返回结果:**
+返回结果:
 * 返回对象比较的结果
 
 ### toString
@@ -111,7 +111,7 @@ Boolean Smtp.equals(object expected);
 String Smtp.toString();
 ```
 
-**返回结果:**
+返回结果:
 * 返回对象的字符串表示
 
 ### toJSON
@@ -120,10 +120,10 @@ String Smtp.toString();
 Value Smtp.toJSON(String key = "");
 ```
 
-**调用参数:**
+调用参数:
 * key - 未使用
 
-**返回结果:**
+返回结果:
 * 返回包含可 JSON 序列化的值
 
 ### valueOf
@@ -132,7 +132,7 @@ Value Smtp.toJSON(String key = "");
 Value Smtp.valueOf();
 ```
 
-**返回结果:**
+返回结果:
 * 返回对象本身的数值
 
 ## 属性

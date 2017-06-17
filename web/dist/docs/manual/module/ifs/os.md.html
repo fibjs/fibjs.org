@@ -154,10 +154,9 @@
 </ul>
  </div></div></div>  </div></div><div class="content col-xs-12 col-sm-9"> <h1 id="-os">模块 os</h1>
 <p>操作系统与文件系统处理模块</p>
-<p>使用方法：
-@code
-var os = require(&#39;os&#39;);
-@endcode</p>
+<p>使用方法：</p>
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">var</span> os = <span class="hljs-built_in">require</span>(<span class="hljs-string">'os'</span>);
+</code></pre>
 <h2 id="-">函数</h2>
 <h3 id="hostname">hostname</h3>
 <p>查询当前运行环境主机名</p>
@@ -187,7 +186,7 @@ var os = require(&#39;os&#39;);
 <p>查询运行环境运行时间，以秒为单位</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">Number</span> os.uptime();
 </code></pre>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回表示时间的数值</li>
 </ul>
@@ -195,7 +194,7 @@ var os = require(&#39;os&#39;);
 <p>查询运行环境 1分钟，5分钟，15分钟平均负载</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">Array</span> os.loadavg();
 </code></pre>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回包含三个负载数据的数组</li>
 </ul>
@@ -203,7 +202,7 @@ var os = require(&#39;os&#39;);
 <p>查询运行环境总内存，以字节为单位</p>
 <pre><code class="lang-JavaScript">Long os.totalmem();
 </code></pre>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回内存数据</li>
 </ul>
@@ -211,7 +210,7 @@ var os = require(&#39;os&#39;);
 <p>查询运行环境可用内存，以字节为单位</p>
 <pre><code class="lang-JavaScript">Long os.freemem();
 </code></pre>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回内存数据</li>
 </ul>
@@ -219,7 +218,7 @@ var os = require(&#39;os&#39;);
 <p>查询当前运行环境 cpu 个数和参数</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">Array</span> os.cpus();
 </code></pre>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回包含 cpu 参数的数组，每一项对应一个 cpu</li>
 </ul>
@@ -227,7 +226,7 @@ var os = require(&#39;os&#39;);
 <p>查询当前运行环境 cpu 个数</p>
 <pre><code class="lang-JavaScript">Integer os.cpuNumbers();
 </code></pre>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回 cpu 个数</li>
 </ul>
@@ -235,7 +234,7 @@ var os = require(&#39;os&#39;);
 <p>查询当前运行环境临时文件目录</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> os.tmpdir();
 </code></pre>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回临时文件目录</li>
 </ul>
@@ -243,8 +242,8 @@ var os = require(&#39;os&#39;);
 <p>返回当前有效执行用户信息</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">Object</span> os.userInfo(<span class="hljs-built_in">Object</span> options = {});
 </code></pre>
-<p><strong>调用参数:</strong></p>
-<p><strong>返回结果:</strong></p>
+<p>调用参数:</p>
+<p>返回结果:</p>
 <ul>
 <li>当前有效执行用户信息</li>
 </ul>
@@ -252,7 +251,7 @@ var os = require(&#39;os&#39;);
 <p>查询当前运行环境网络信息</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">Object</span> os.networkInterfaces();
 </code></pre>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回网卡信息</li>
 </ul>
@@ -260,7 +259,7 @@ var os = require(&#39;os&#39;);
 <p>查询当前主机的打印机信息</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">Array</span> os.printerInfo();
 </code></pre>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回打印机信息</li>
 </ul>
@@ -268,11 +267,11 @@ var os = require(&#39;os&#39;);
 <p>创建一个打印机输出对象</p>
 <pre><code class="lang-JavaScript">BufferedStream os.openPrinter(<span class="hljs-built_in">String</span> name);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>name - 打印机名称</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回打印机输出对象</li>
 </ul>
@@ -284,11 +283,11 @@ var os = require(&#39;os&#39;);
 <p>解析时间字符串或查询运行环境当前时间</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">Date</span> os.time(<span class="hljs-built_in">String</span> tmString = <span class="hljs-string">""</span>);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>tmString - 时间字符串，缺省则查询当前时间</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回 javascript Date 对象</li>
 </ul>
@@ -298,13 +297,13 @@ var os = require(&#39;os&#39;);
                 Integer num,
                 <span class="hljs-built_in">String</span> part);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>d - 指定用于计算 Date 对象</li>
 <li>num - 指定运算的数值</li>
 <li>part - 指定运算的时间部位，接收值为：&#34;year&#34;, &#34;month&#34;, &#34;day&#34;, &#34;hour&#34;, &#34;minute&#34;, &#34;second&#34;</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回 javascript Date 对象</li>
 </ul>
@@ -312,11 +311,26 @@ var os = require(&#39;os&#39;);
 <p>查询当前进程内存使用报告</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">Object</span> os.memoryUsage();
 </code></pre>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回包含内存报告</li>
 </ul>
-<h2 id="-">属性</h2>
+<p>内存报告生成类似以下结果：</p>
+<pre><code class="lang-JavaScript">{
+  <span class="hljs-string">"rss"</span>: <span class="hljs-number">8622080</span>,
+  <span class="hljs-string">"heapTotal"</span>: <span class="hljs-number">4083456</span>,
+  <span class="hljs-string">"heapUsed"</span>: <span class="hljs-number">1621800</span>,
+  <span class="hljs-string">"nativeObjects"</span>: <span class="hljs-number">122</span>
+}
+</code></pre>
+<p>其中：</p>
+<ul>
+<li>rss 返回进程当前占用物理内存大小</li>
+<li>heapTotal 返回 v8 引擎堆内存大小</li>
+<li>heapUsed 返回 v8 引擎正在使用堆内存大小</li>
+<li>nativeObjects 返回当前有效内置对象数<h2 id="-">属性</h2>
+</li>
+</ul>
 <h3 id="timezone">timezone</h3>
 <p>查询运行环境当前时区</p>
 <pre><code class="lang-JavaScript">readonly Integer os.timezone;

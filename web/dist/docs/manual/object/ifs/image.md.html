@@ -154,23 +154,22 @@
 </ul>
  </div></div></div>  </div></div><div class="content col-xs-12 col-sm-9"> <h1 id="-image">对象 Image</h1>
 <p>图像处理对象，用以对图像进行转换，绘制，存储等操作</p>
-<p>Image 对象属于 gd 模块，创建：
-@code
-var img = gd.create(640, 480);
-var img1 = gd.load(data);
-@endcode</p>
+<p>Image 对象属于 gd 模块，创建：</p>
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">var</span> img = gd.create(<span class="hljs-number">640</span>, <span class="hljs-number">480</span>);
+<span class="hljs-keyword">var</span> img1 = gd.load(data);
+</code></pre>
 <h2 id="-">函数</h2>
 <h3 id="getdata">getData</h3>
 <p>按照指定的格式返回图像数据</p>
 <pre><code class="lang-JavaScript">Buffer Image.getData(Integer format = <span class="hljs-literal">undefined</span>,
                 Integer quality = <span class="hljs-number">85</span>);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>format - 指定返回数据的格式，允许值为 gd.PNG, gd.JPEG, gd.GIF, gd.BMP, gd.WEBP, 缺省为 gd.PNG</li>
 <li>quality - 当格式为 gd.JPEG 或 gd.WEBP 时用于指定压缩质量，缺省为 85，其他格式忽略此参数</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回格式化的数据</li>
 </ul>
@@ -180,19 +179,19 @@ var img1 = gd.load(data);
                 Integer format = <span class="hljs-literal">undefined</span>,
                 Integer quality = <span class="hljs-number">85</span>);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>stm - 指定要存入的流对象</li>
 <li>format - 指定返回数据的格式，允许值为 gd.PNG, gd.JPEG, gd.GIF, gd.BMP, gd.WEBP, 缺省为 gd.PNG</li>
 <li>quality - 当格式为 gd.JPEG 或 gd.WEBP 时用于指定压缩质量，缺省为 85，其他格式忽略此参数</li>
 </ul>
-<h3 id="save">save</h3>
+<hr>
 <p>按照指定的格式将图像数据存入指定文件，文件将被强制覆盖</p>
 <pre><code class="lang-JavaScript">Image.save(<span class="hljs-built_in">String</span> fname,
                 Integer format = <span class="hljs-literal">undefined</span>,
                 Integer quality = <span class="hljs-number">85</span>);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>fname - 指定文件名</li>
 <li>format - 指定返回数据的格式，允许值为 gd.PNG, gd.JPEG, gd.GIF, gd.BMP, gd.WEBP, 缺省为 gd.PNG</li>
@@ -204,25 +203,25 @@ var img1 = gd.load(data);
                 Integer green,
                 Integer blue);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>red - 红色分量，范围为 0-255</li>
 <li>green - 绿色分量，范围为 0-255</li>
 <li>blue - 蓝色分量，范围为 0-255</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回颜色号，不成功返回 -1</li>
 </ul>
-<h3 id="colorallocate">colorAllocate</h3>
+<hr>
 <p>为指定的颜色申请一个颜色号，对于 gd.PALETTE 图像，颜色号为调色板索引，对于 gd.TRUECOLOR 图像，颜色号为 rgb 编码数值</p>
 <pre><code class="lang-JavaScript">Integer Image.colorAllocate(Integer color);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>color - 组合颜色值，可由 gd.color, gb.rgb, gd.rgba 等函数生成</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回颜色号，不成功返回 -1</li>
 </ul>
@@ -233,26 +232,26 @@ var img1 = gd.load(data);
                 Integer blue,
                 <span class="hljs-built_in">Number</span> alpha);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>red - 红色分量，范围为 0-255</li>
 <li>green - 绿色分量，范围为 0-255</li>
 <li>blue - 蓝色分量，范围为 0-255</li>
 <li>alpha - 透明分量，范围为 0-1.0</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回颜色号，不成功返回 -1</li>
 </ul>
-<h3 id="colorallocatealpha">colorAllocateAlpha</h3>
+<hr>
 <p>为指定的颜色及透明申请一个颜色号，对于 gd.PALETTE 图像，颜色号为调色板索引，对于 gd.TRUECOLOR 图像，颜色号为 rgba 编码数值</p>
 <pre><code class="lang-JavaScript">Integer Image.colorAllocateAlpha(Integer color);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>color - 组合颜色值，可由 gd.color, gb.rgb, gd.rgba 等函数生成</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回颜色号，不成功返回 -1</li>
 </ul>
@@ -262,25 +261,25 @@ var img1 = gd.load(data);
                 Integer green,
                 Integer blue);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>red - 红色分量，范围为 0-255</li>
 <li>green - 绿色分量，范围为 0-255</li>
 <li>blue - 蓝色分量，范围为 0-255</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回颜色号，不成功返回 -1</li>
 </ul>
-<h3 id="colorclosest">colorClosest</h3>
+<hr>
 <p>为指定的颜色查找一个最接近的颜色号，对于 gd.PALETTE 图像，颜色号为调色板索引，对于 gd.TRUECOLOR 图像，颜色号为 rgb 编码数值</p>
 <pre><code class="lang-JavaScript">Integer Image.colorClosest(Integer color);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>color - 组合颜色值，可由 gd.color, gb.rgb, gd.rgba 等函数生成</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回颜色号，不成功返回 -1</li>
 </ul>
@@ -290,25 +289,25 @@ var img1 = gd.load(data);
                 Integer green,
                 Integer blue);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>red - 红色分量，范围为 0-255</li>
 <li>green - 绿色分量，范围为 0-255</li>
 <li>blue - 蓝色分量，范围为 0-255</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回颜色号，不成功返回 -1</li>
 </ul>
-<h3 id="colorclosesthwb">colorClosestHWB</h3>
+<hr>
 <p>为指定的颜色查找一个最接近的颜色号，此方法使用 Hue/White/Black 计算查找最接近颜色，对于 gd.PALETTE 图像，颜色号为调色板索引，对于 gd.TRUECOLOR 图像，颜色号为 rgb 编码数值</p>
 <pre><code class="lang-JavaScript">Integer Image.colorClosestHWB(Integer color);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>color - 组合颜色值，可由 gd.color, gb.rgb, gd.rgba 等函数生成</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回颜色号，不成功返回 -1</li>
 </ul>
@@ -319,26 +318,26 @@ var img1 = gd.load(data);
                 Integer blue,
                 <span class="hljs-built_in">Number</span> alpha);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>red - 红色分量，范围为 0-255</li>
 <li>green - 绿色分量，范围为 0-255</li>
 <li>blue - 蓝色分量，范围为 0-255</li>
 <li>alpha - 透明分量，范围为 0-1.0</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回颜色号，不成功返回 -1</li>
 </ul>
-<h3 id="colorclosestalpha">colorClosestAlpha</h3>
+<hr>
 <p>为指定的颜色及透明查找一个最接近的颜色号，对于 gd.PALETTE 图像，颜色号为调色板索引，对于 gd.TRUECOLOR 图像，颜色号为 rgba 编码数值</p>
 <pre><code class="lang-JavaScript">Integer Image.colorClosestAlpha(Integer color);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>color - 组合颜色值，可由 gd.color, gb.rgb, gd.rgba 等函数生成</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回颜色号，不成功返回 -1</li>
 </ul>
@@ -348,25 +347,25 @@ var img1 = gd.load(data);
                 Integer green,
                 Integer blue);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>red - 红色分量，范围为 0-255</li>
 <li>green - 绿色分量，范围为 0-255</li>
 <li>blue - 蓝色分量，范围为 0-255</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回颜色号，不成功返回 -1</li>
 </ul>
-<h3 id="colorexact">colorExact</h3>
+<hr>
 <p>查找指定的颜色对应的颜色号，对于 gd.PALETTE 图像，颜色号为调色板索引，对于 gd.TRUECOLOR 图像，颜色号为 rgb 编码数值</p>
 <pre><code class="lang-JavaScript">Integer Image.colorExact(Integer color);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>color - 组合颜色值，可由 gd.color, gb.rgb, gd.rgba 等函数生成</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回颜色号，不成功返回 -1</li>
 </ul>
@@ -377,26 +376,26 @@ var img1 = gd.load(data);
                 Integer blue,
                 <span class="hljs-built_in">Number</span> alpha);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>red - 红色分量，范围为 0-255</li>
 <li>green - 绿色分量，范围为 0-255</li>
 <li>blue - 蓝色分量，范围为 0-255</li>
 <li>alpha - 透明分量，范围为 0-1.0</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回颜色号，不成功返回 -1</li>
 </ul>
-<h3 id="colorexactalpha">colorExactAlpha</h3>
+<hr>
 <p>查找指定的颜色及透明对应的颜色号，对于 gd.PALETTE 图像，颜色号为调色板索引，对于 gd.TRUECOLOR 图像，颜色号为 rgba 编码数值</p>
 <pre><code class="lang-JavaScript">Integer Image.colorExactAlpha(Integer color);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>color - 组合颜色值，可由 gd.color, gb.rgb, gd.rgba 等函数生成</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回颜色号，不成功返回 -1</li>
 </ul>
@@ -406,25 +405,25 @@ var img1 = gd.load(data);
                 Integer green,
                 Integer blue);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>red - 红色分量，范围为 0-255</li>
 <li>green - 绿色分量，范围为 0-255</li>
 <li>blue - 蓝色分量，范围为 0-255</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回颜色号，不成功返回 -1</li>
 </ul>
-<h3 id="colorresolve">colorResolve</h3>
+<hr>
 <p>查找指定的颜色对应的颜色号，如果颜色不存在，则为其申请一个新颜色号，对于 gd.PALETTE 图像，颜色号为调色板索引，对于 gd.TRUECOLOR 图像，颜色号为 rgb 编码数值</p>
 <pre><code class="lang-JavaScript">Integer Image.colorResolve(Integer color);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>color - 组合颜色值，可由 gd.color, gb.rgb, gd.rgba 等函数生成</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回颜色号，不成功返回 -1</li>
 </ul>
@@ -435,26 +434,26 @@ var img1 = gd.load(data);
                 Integer blue,
                 <span class="hljs-built_in">Number</span> alpha);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>red - 红色分量，范围为 0-255</li>
 <li>green - 绿色分量，范围为 0-255</li>
 <li>blue - 蓝色分量，范围为 0-255</li>
 <li>alpha - 透明分量，范围为 0-1.0</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回颜色号，不成功返回 -1</li>
 </ul>
-<h3 id="colorresolvealpha">colorResolveAlpha</h3>
+<hr>
 <p>查找指定的颜色及透明对应的颜色号，如果颜色不存在，则为其申请一个新颜色号，对于 gd.PALETTE 图像，颜色号为调色板索引，对于 gd.TRUECOLOR 图像，颜色号为 rgba 编码数值</p>
 <pre><code class="lang-JavaScript">Integer Image.colorResolveAlpha(Integer color);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>color - 组合颜色值，可由 gd.color, gb.rgb, gd.rgba 等函数生成</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回颜色号，不成功返回 -1</li>
 </ul>
@@ -462,7 +461,7 @@ var img1 = gd.load(data);
 <p>释放指定的颜色号，释放的颜色号将会被再次申请后替换</p>
 <pre><code class="lang-JavaScript">Image.colorDeallocate(Integer color);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>color - 指定要释放的颜色号</li>
 </ul>
@@ -473,7 +472,7 @@ var img1 = gd.load(data);
                 Integer x2,
                 Integer y2);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>x1 - 剪切窗口的左上 x 坐标</li>
 <li>y1 - 剪切窗口的左上 y 坐标</li>
@@ -485,12 +484,12 @@ var img1 = gd.load(data);
 <pre><code class="lang-JavaScript">Integer Image.getPixel(Integer x,
                 Integer y);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>x - 指定查询的 x 坐标</li>
 <li>y - 指定查询的 y 坐标</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回指定点的颜色号</li>
 </ul>
@@ -499,12 +498,12 @@ var img1 = gd.load(data);
 <pre><code class="lang-JavaScript">Integer Image.getTrueColorPixel(Integer x,
                 Integer y);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>x - 指定查询的 x 坐标</li>
 <li>y - 指定查询的 y 坐标</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回指定点的颜色号</li>
 </ul>
@@ -514,7 +513,7 @@ var img1 = gd.load(data);
                 Integer y,
                 Integer color);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>x - 指定画点的 x 坐标</li>
 <li>y - 指定画点的 y 坐标</li>
@@ -524,7 +523,7 @@ var img1 = gd.load(data);
 <p>设定画线的宽度，line, rectangle, arc 等方法画线时缺省宽度为一个像素，可使用此方法改变线的宽度</p>
 <pre><code class="lang-JavaScript">Image.setThickness(Integer thickness);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>thickness - 画线的宽度</li>
 </ul>
@@ -536,7 +535,7 @@ var img1 = gd.load(data);
                 Integer y2,
                 Integer color);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>x1 - 指定画线的起始 x 坐标</li>
 <li>y1 - 指定画线的起始 y 坐标</li>
@@ -552,7 +551,7 @@ var img1 = gd.load(data);
                 Integer y2,
                 Integer color);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>x1 - 指定左上角 x 坐标</li>
 <li>y1 - 指定左上角 y 坐标</li>
@@ -568,7 +567,7 @@ var img1 = gd.load(data);
                 Integer y2,
                 Integer color);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>x1 - 指定左上角 x 坐标</li>
 <li>y1 - 指定左上角 y 坐标</li>
@@ -581,7 +580,7 @@ var img1 = gd.load(data);
 <pre><code class="lang-JavaScript">Image.polygon(<span class="hljs-built_in">Array</span> points,
                 Integer color);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>points - 包含多边形点的数组，如 [[1, 1], [1, 10], [10, 15], [10, 20]]</li>
 <li>color - 指定矩形的颜色号</li>
@@ -591,7 +590,7 @@ var img1 = gd.load(data);
 <pre><code class="lang-JavaScript">Image.openPolygon(<span class="hljs-built_in">Array</span> points,
                 Integer color);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>points - 包含多边形点的数组，如 [[1, 1], [1, 10], [10, 15], [10, 20]]</li>
 <li>color - 指定矩形的颜色号</li>
@@ -601,7 +600,7 @@ var img1 = gd.load(data);
 <pre><code class="lang-JavaScript">Image.filledPolygon(<span class="hljs-built_in">Array</span> points,
                 Integer color);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>points - 包含多边形点的数组，如 [[1, 1], [1, 10], [10, 15], [10, 20]]</li>
 <li>color - 指定矩形的颜色号</li>
@@ -614,7 +613,7 @@ var img1 = gd.load(data);
                 Integer height,
                 Integer color);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>x - 椭圆中心的 x 坐标</li>
 <li>y - 椭圆中心的 y 坐标</li>
@@ -630,7 +629,7 @@ var img1 = gd.load(data);
                 Integer height,
                 Integer color);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>x - 椭圆中心的 x 坐标</li>
 <li>y - 椭圆中心的 y 坐标</li>
@@ -648,7 +647,7 @@ var img1 = gd.load(data);
                 Integer end,
                 Integer color);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>x - 扇形中心的 x 坐标</li>
 <li>y - 扇形中心的 y 坐标</li>
@@ -669,7 +668,7 @@ var img1 = gd.load(data);
                 Integer color,
                 Integer style = <span class="hljs-literal">undefined</span>);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>x - 扇形中心的 x 坐标</li>
 <li>y - 扇形中心的 y 坐标</li>
@@ -686,7 +685,7 @@ var img1 = gd.load(data);
                 Integer y,
                 Integer color);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>x - 开始填充的 x 坐标</li>
 <li>y - 开始填充的 y 坐标</li>
@@ -699,7 +698,7 @@ var img1 = gd.load(data);
                 Integer borderColor,
                 Integer color);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>x - 开始填充的 x 坐标</li>
 <li>y - 开始填充的 y 坐标</li>
@@ -711,7 +710,7 @@ var img1 = gd.load(data);
 <pre><code class="lang-JavaScript">Image.colorReplace(Integer src,
                 Integer dst);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>src - 指定要替换的颜色</li>
 <li>dst - 指定新颜色</li>
@@ -720,7 +719,7 @@ var img1 = gd.load(data);
 <p>复制当前图像为一个新图像</p>
 <pre><code class="lang-JavaScript">Image Image.clone();
 </code></pre>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回复制的新图像对象</li>
 </ul>
@@ -729,12 +728,12 @@ var img1 = gd.load(data);
 <pre><code class="lang-JavaScript">Image Image.resample(Integer width,
                 Integer height);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>width - 指定拉伸的宽度</li>
 <li>height - 指定拉伸的高度</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回新图像对象</li>
 </ul>
@@ -745,14 +744,14 @@ var img1 = gd.load(data);
                 Integer width,
                 Integer height);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>x - 剪切窗口的左上 x 坐标</li>
 <li>y - 剪切窗口的左上 y 坐标</li>
 <li>width - 剪切窗口的宽度</li>
 <li>height - 剪切窗口的高度</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回剪切出的图像</li>
 </ul>
@@ -760,7 +759,7 @@ var img1 = gd.load(data);
 <p>镜像当前图像</p>
 <pre><code class="lang-JavaScript">Image.flip(Integer dir = <span class="hljs-literal">undefined</span>);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>dir - 镜像方向，允许值为 gd.BOTH,gd.HORIZONTAL, gd.VERTICAL, 缺省为 gd.HORIZONTAL</li>
 </ul>
@@ -768,7 +767,7 @@ var img1 = gd.load(data);
 <p>旋转当前图像</p>
 <pre><code class="lang-JavaScript">Image.rotate(Integer dir);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>dir - 旋转方向，允许值为 gd.LEFT, gd.RIGHT</li>
 </ul>
@@ -776,7 +775,7 @@ var img1 = gd.load(data);
 <p>转换当前图像类型</p>
 <pre><code class="lang-JavaScript">Image.convert(Integer color = <span class="hljs-literal">undefined</span>);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>color - 指定图像类型，允许值为 gd.TRUECOLOR 或 gd.PALETTE</li>
 </ul>
@@ -790,7 +789,7 @@ var img1 = gd.load(data);
                 Integer width,
                 Integer height);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>source - 源图像对象</li>
 <li>dstX - 指定复制目标的 x 坐标</li>
@@ -811,7 +810,7 @@ var img1 = gd.load(data);
                 Integer height,
                 Integer percent);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>source - 源图像对象</li>
 <li>dstX - 指定复制目标的 x 坐标</li>
@@ -833,7 +832,7 @@ var img1 = gd.load(data);
                 Integer height,
                 Integer percent);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>source - 源图像对象</li>
 <li>dstX - 指定复制目标的 x 坐标</li>
@@ -856,7 +855,7 @@ var img1 = gd.load(data);
                 Integer srcW,
                 Integer srcH);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>source - 源图像对象</li>
 <li>dstX - 指定复制目标的 x 坐标</li>
@@ -880,7 +879,7 @@ var img1 = gd.load(data);
                 Integer srcW,
                 Integer srcH);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>source - 源图像对象</li>
 <li>dstX - 指定复制目标的 x 坐标</li>
@@ -903,7 +902,7 @@ var img1 = gd.load(data);
                 Integer height,
                 <span class="hljs-built_in">Number</span> angle);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>source - 源图像对象</li>
 <li>dstX - 指定复制目标的 x 坐标</li>
@@ -922,13 +921,27 @@ var img1 = gd.load(data);
                 <span class="hljs-built_in">Number</span> arg3 = <span class="hljs-number">0</span>,
                 <span class="hljs-built_in">Number</span> arg4 = <span class="hljs-number">0</span>);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>filterType - 过滤器类型</li>
 <li>arg1 - 过滤器所需参数: SMOOTH 的平滑级别、BRIGHTNESS 的亮度级别、CONTRAST 的对比度级别、COLORIZE 的 red 分值</li>
 <li>arg2 - 过滤器所需参数: COLORIZE 的 green 分值</li>
 <li>arg3 - 过滤器所需参数: COLORIZE 的 blue 分值</li>
 <li>arg4 - 过滤器所需参数: COLORIZE 的透明度 alpha 分值</li>
+</ul>
+<p>参数 filterType 可以为以下数值：</p>
+<ul>
+<li>MEAN_REMOVAL,    用平均移除法来达到轮廓效果</li>
+<li>EDGEDETECT,      用边缘检测来突出图像的边缘</li>
+<li>EMBOSS,          使图像浮雕化</li>
+<li>SELECTIVE_BLUR,  模糊图像</li>
+<li>GAUSSIAN_BLUR,   用高斯算法模糊图像</li>
+<li>NEGATE,          将图像中所有颜色反转</li>
+<li>GRAYSCALE,       将图像转换为灰度图</li>
+<li>SMOOTH,          使图像更柔滑，用arg1设定柔滑级别</li>
+<li>BRIGHTNESS,      改变图像的亮度，用arg1设定亮度级别，取值范围是-255~255</li>
+<li>CONTRAST,        改变图像的对比度，用arg1设定对比度级别，取值范围是0~100</li>
+<li>COLORIZE,        改变图像的色调，用arg1、arg2、arg3分别指定red、blue、green分值，每种颜色范围是0~255，arg4为透明度，取值返回是0~127</li>
 </ul>
 <h3 id="affine">affine</h3>
 <p>根据给定的矩阵，对当前图像进行仿射</p>
@@ -938,23 +951,28 @@ var img1 = gd.load(data);
                 Integer width = <span class="hljs-number">-1</span>,
                 Integer height = <span class="hljs-number">-1</span>);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
-<li>affine - 仿射矩阵，由6个double类型的数字组成</li>
+<li>affine - 仿射矩阵，由  6 个 double 类型的数字组成</li>
 <li>x - 可选剪切区域的原点 x 坐标</li>
 <li>y - 可选剪切区域的原点 y 坐标</li>
 <li>width - 可选剪切区域的的宽度</li>
 <li>height - 可选剪切区域的的高度</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回仿射后的图像</li>
 </ul>
+<p>参数 affine 是一个数组：</p>
+<pre><code class="lang-JavaScript">   affine = [ a0, a1, b0, b1, a2, b2 ];
+   x&#39; = a0x + a1y + a2;
+   y&#39; = b0x + b1y + b2;
+</code></pre>
 <h3 id="gaussianblur">gaussianBlur</h3>
 <p>对当前图像进行高斯模糊处理</p>
 <pre><code class="lang-JavaScript">Image.gaussianBlur(Integer radius);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>radius - 模糊半径</li>
 </ul>
@@ -966,11 +984,11 @@ var img1 = gd.load(data);
 <p>比较当前对象与给定的对象是否相等</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">Boolean</span> Image.equals(object expected);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>expected - 制定比较的目标对象</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回对象比较的结果</li>
 </ul>
@@ -978,7 +996,7 @@ var img1 = gd.load(data);
 <p>返回对象的字符串表示，一般返回 &#34;[Native Object]&#34;，对象可以根据自己的特性重新实现</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> Image.toString();
 </code></pre>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回对象的字符串表示</li>
 </ul>
@@ -986,11 +1004,11 @@ var img1 = gd.load(data);
 <p>返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合</p>
 <pre><code class="lang-JavaScript">Value Image.toJSON(<span class="hljs-built_in">String</span> key = <span class="hljs-string">""</span>);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>key - 未使用</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回包含可 JSON 序列化的值</li>
 </ul>
@@ -998,7 +1016,7 @@ var img1 = gd.load(data);
 <p>返回对象本身的数值</p>
 <pre><code class="lang-JavaScript">Value Image.valueOf();
 </code></pre>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回对象本身的数值</li>
 </ul>

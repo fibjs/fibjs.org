@@ -2,11 +2,11 @@
 WebSocket 包协议转换处理器
 
 用以将 Http 协议转换为 WebSocket 包协议消息。创建方式：
-@code
-var ws = require(&#34;ws&#34;);
+```JavaScript
+var ws = require("ws");
 
 var pkghdlr = new ws.WebSocketHandler(...);
-@endcode
+```
 ## 构造函数
         
 ### WebSocketHandler
@@ -15,7 +15,7 @@ WebSocket 包处理器构造函数
  new WebSocketHandler(Handler hdlr);
 ```
 
-**调用参数:**
+调用参数:
 * hdlr - 内置消息处理器，处理函数，链式处理数组，路由对象，详见 mq.Handler
 
 ## 函数
@@ -26,8 +26,19 @@ WebSocket 包处理器构造函数
 WebSocketHandler.onerror(Object hdlrs);
 ```
 
-**调用参数:**
+调用参数:
 * hdlrs - 指定不同的错误的处理器，key 是错误号，value 是处理器，可以是内置消息处理器，处理函数，链式处理数组，路由对象，详见 mq.Handler
+
+使用方式：
+```JavaScript
+hdlr.onerror({
+    "404": function(v)
+        {
+            ...
+        },
+    "500": new mq.Routing(...)
+})
+```
 
 ### invoke
 处理一个消息或对象
@@ -35,10 +46,10 @@ WebSocketHandler.onerror(Object hdlrs);
 Handler WebSocketHandler.invoke(object v);
 ```
 
-**调用参数:**
+调用参数:
 * v - 指定处理的消息或对象
 
-**返回结果:**
+返回结果:
 * 返回下一步的处理器
 
 ### dispose
@@ -53,10 +64,10 @@ WebSocketHandler.dispose();
 Boolean WebSocketHandler.equals(object expected);
 ```
 
-**调用参数:**
+调用参数:
 * expected - 制定比较的目标对象
 
-**返回结果:**
+返回结果:
 * 返回对象比较的结果
 
 ### toString
@@ -65,7 +76,7 @@ Boolean WebSocketHandler.equals(object expected);
 String WebSocketHandler.toString();
 ```
 
-**返回结果:**
+返回结果:
 * 返回对象的字符串表示
 
 ### toJSON
@@ -74,10 +85,10 @@ String WebSocketHandler.toString();
 Value WebSocketHandler.toJSON(String key = "");
 ```
 
-**调用参数:**
+调用参数:
 * key - 未使用
 
-**返回结果:**
+返回结果:
 * 返回包含可 JSON 序列化的值
 
 ### valueOf
@@ -86,7 +97,7 @@ Value WebSocketHandler.toJSON(String key = "");
 Value WebSocketHandler.valueOf();
 ```
 
-**返回结果:**
+返回结果:
 * 返回对象本身的数值
 
 ## 属性
@@ -110,7 +121,7 @@ readonly Stats WebSocketHandler.stats;
 ```
 
 返回的结果为一个 Stats 对象，结构如下：
-@code
+```JavaScript
 {
     total : 1000,    // 总计处理的请求
     pendding : 100,  // 当前正在处理的请求
@@ -118,5 +129,5 @@ readonly Stats WebSocketHandler.stats;
     response : 10,   // 发送的响应
     error : 100      // 发生的错误
 }
-@endcode
+```
 

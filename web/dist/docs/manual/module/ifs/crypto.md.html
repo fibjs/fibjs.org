@@ -154,17 +154,16 @@
 </ul>
  </div></div></div>  </div></div><div class="content col-xs-12 col-sm-9"> <h1 id="-crypto">模块 crypto</h1>
 <p>加密算法模块</p>
-<p>使用方法：
-@code
-var crypto = require(&#39;crypto&#39;);
-@endcode</p>
+<p>使用方法：</p>
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">var</span> crypto = <span class="hljs-built_in">require</span>(<span class="hljs-string">'crypto'</span>);
+</code></pre>
 <h2 id="-">函数</h2>
 <h3 id="loadpkey">loadPKey</h3>
 <p>加载一个 PEM/DER 格式的密钥文件</p>
 <pre><code class="lang-JavaScript">PKey crypto.loadPKey(<span class="hljs-built_in">String</span> filename,
                 <span class="hljs-built_in">String</span> password = <span class="hljs-string">""</span>);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>filename - 密钥文件名</li>
 <li>password - 解密密码</li>
@@ -173,7 +172,7 @@ var crypto = require(&#39;crypto&#39;);
 <p>加载一个 CRT/PEM/DER/TXT 格式的证书，可多次调用</p>
 <pre><code class="lang-JavaScript">X509Cert crypto.loadCert(<span class="hljs-built_in">String</span> filename);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>filename - 证书文件名</li>
 </ul>
@@ -182,7 +181,7 @@ var crypto = require(&#39;crypto&#39;);
 <p>加载一个 PEM/DER 格式的撤销证书，可多次调用</p>
 <pre><code class="lang-JavaScript">X509Crl crypto.loadCrl(<span class="hljs-built_in">String</span> filename);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>filename - 撤销证书文件名</li>
 </ul>
@@ -190,7 +189,7 @@ var crypto = require(&#39;crypto&#39;);
 <p>加载一个 PEM/DER 格式的证书请求，可多次调用</p>
 <pre><code class="lang-JavaScript">X509Req crypto.loadReq(<span class="hljs-built_in">String</span> filename);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>filename - 证书请求文件名</li>
 </ul>
@@ -198,11 +197,11 @@ var crypto = require(&#39;crypto&#39;);
 <p>生成指定尺寸的随机数，使用 havege 生成器</p>
 <pre><code class="lang-JavaScript">Buffer crypto.randomBytes(Integer size);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>size - 指定生成的随机数尺寸</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回生成的随机数</li>
 </ul>
@@ -210,11 +209,11 @@ var crypto = require(&#39;crypto&#39;);
 <p>生成指定尺寸的低强度随机数，使用快速的算法</p>
 <pre><code class="lang-JavaScript">Buffer crypto.simpleRandomBytes(Integer size);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>size - 指定生成的随机数尺寸</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回生成的随机数</li>
 </ul>
@@ -222,11 +221,11 @@ var crypto = require(&#39;crypto&#39;);
 <p>生成指定尺寸的伪随机数，使用 entropy 生成器</p>
 <pre><code class="lang-JavaScript">Buffer crypto.pseudoRandomBytes(Integer size);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>size - 指定生成的随机数尺寸</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回生成的随机数</li>
 </ul>
@@ -236,13 +235,13 @@ var crypto = require(&#39;crypto&#39;);
                 <span class="hljs-built_in">String</span> title,
                 Integer size = <span class="hljs-number">8</span>);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>data - 指定要展示的数据</li>
 <li>title - 指定字符图像的标题，多字节字符会导致宽度错误</li>
 <li>size - 字符图像尺寸</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回生成的可视化字符串图像</li>
 </ul>
@@ -254,7 +253,7 @@ var crypto = require(&#39;crypto&#39;);
                 Integer size,
                 Integer algo);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>password - 指定使用的密码</li>
 <li>salt - 指定 hmac 使用的 salt</li>
@@ -262,11 +261,11 @@ var crypto = require(&#39;crypto&#39;);
 <li>size - 指定钥匙尺寸</li>
 <li>algo - 指定要使用的 hash 算法，详见 hash 模块</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回生成的二进制钥匙</li>
 </ul>
-<h3 id="pbkdf1">pbkdf1</h3>
+<hr>
 <p>依据 pbkdf1 根据明文 password 生成要求的二进制钥匙</p>
 <pre><code class="lang-JavaScript">Buffer crypto.pbkdf1(Buffer password,
                 Buffer salt,
@@ -274,7 +273,7 @@ var crypto = require(&#39;crypto&#39;);
                 Integer size,
                 <span class="hljs-built_in">String</span> algoName);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>password - 指定使用的密码</li>
 <li>salt - 指定 hmac 使用的 salt</li>
@@ -282,7 +281,7 @@ var crypto = require(&#39;crypto&#39;);
 <li>size - 指定钥匙尺寸</li>
 <li>algoName - 指定要使用的 hash 算法，详见 hash 模块</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回生成的二进制钥匙</li>
 </ul>
@@ -294,7 +293,7 @@ var crypto = require(&#39;crypto&#39;);
                 Integer size,
                 Integer algo);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>password - 指定使用的密码</li>
 <li>salt - 指定 hmac 使用的 salt</li>
@@ -302,11 +301,11 @@ var crypto = require(&#39;crypto&#39;);
 <li>size - 指定钥匙尺寸</li>
 <li>algo - 指定要使用的 hash 算法，详见 hash 模块</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回生成的二进制钥匙</li>
 </ul>
-<h3 id="pbkdf2">pbkdf2</h3>
+<hr>
 <p>依据 rfc2898 根据明文 password 生成要求的二进制钥匙</p>
 <pre><code class="lang-JavaScript">Buffer crypto.pbkdf2(Buffer password,
                 Buffer salt,
@@ -314,7 +313,7 @@ var crypto = require(&#39;crypto&#39;);
                 Integer size,
                 <span class="hljs-built_in">String</span> algoName);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>password - 指定使用的密码</li>
 <li>salt - 指定 hmac 使用的 salt</li>
@@ -322,7 +321,7 @@ var crypto = require(&#39;crypto&#39;);
 <li>size - 指定钥匙尺寸</li>
 <li>algoName - 指定要使用的 hash 算法，详见 hash 模块</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回生成的二进制钥匙</li>
 </ul>
@@ -334,7 +333,7 @@ var crypto = require(&#39;crypto&#39;);
                 Integer size,
                 <span class="hljs-built_in">String</span> algoName);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>password - 指定使用的密码</li>
 <li>salt - 指定 hmac 使用的 salt</li>
@@ -342,7 +341,7 @@ var crypto = require(&#39;crypto&#39;);
 <li>size - 指定钥匙尺寸</li>
 <li>algoName - 指定要使用的 hash 算法，详见 hash 模块</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回生成的二进制钥匙</li>
 </ul>

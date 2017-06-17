@@ -155,36 +155,42 @@
  </div></div></div>  </div></div><div class="content col-xs-12 col-sm-9"> <h1 id="-fiber">对象 Fiber</h1>
 <p>纤程操作对象，此对象不可直接创建</p>
 <p>使用 coroutine.start 创建纤程后，将返回此对象，用于纤程处理和纤程间通信。
-纤程主函数可以通过 this 访问本纤程对象，也可通过 coroutine.current 获取当前纤程。
-@code
-function func(v1)
-{
-  console.log(v1 + this.v);
-}</p>
-<p>var fb = coroutine.start(func,100);</p>
-<p>fb.v = 123;</p>
-<p>fb.join();
-@endcode</p>
+纤程主函数可以通过 this 访问本纤程对象，也可通过 coroutine.current 获取当前纤程。</p>
+<pre><code class="lang-JavaScript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">func</span>(<span class="hljs-params">v1</span>)
+</span>{
+  <span class="hljs-built_in">console</span>.log(v1 + <span class="hljs-keyword">this</span>.v);
+}
+
+<span class="hljs-keyword">var</span> fb = coroutine.start(func,<span class="hljs-number">100</span>);
+
+fb.v = <span class="hljs-number">123</span>;
+
+fb.join();
+</code></pre>
 <p>纤程局部存储通过共享的 Fiber 对象完成，通过 coroutine.current 获取当前纤程，通过修改和查询其变量达到共享数据的目的。</p>
-<p>@code
-function func()
-{
-  console.log(coroutine.current().v);
-}</p>
-<p>coroutine.current().v = 100;</p>
-<p>func();
-@endcode</p>
+<pre><code class="lang-JavaScript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">func</span>(<span class="hljs-params"></span>)
+</span>{
+  <span class="hljs-built_in">console</span>.log(coroutine.current().v);
+}
+
+coroutine.current().v = <span class="hljs-number">100</span>;
+
+func();
+</code></pre>
 <p>纤程在创建时，会自动复制当前纤程的局部变量到新的纤程，之后，各自的局部变量的修改不会相互影响，除非变量本身为对象引用。</p>
-<p>@code
-function func()
-{
-  console.log(coroutine.current().v);
-}</p>
-<p>coroutine.current().v = 100;</p>
-<p>var fb = coroutine.start(func);</p>
-<p>coroutine.current().v = 200;</p>
-<p>fb.join();
-@endcode</p>
+<pre><code class="lang-JavaScript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">func</span>(<span class="hljs-params"></span>)
+</span>{
+  <span class="hljs-built_in">console</span>.log(coroutine.current().v);
+}
+
+coroutine.current().v = <span class="hljs-number">100</span>;
+
+<span class="hljs-keyword">var</span> fb = coroutine.start(func);
+
+coroutine.current().v = <span class="hljs-number">200</span>;
+
+fb.join();
+</code></pre>
 <h2 id="-">函数</h2>
 <h3 id="join">join</h3>
 <p>等待纤程结束</p>
@@ -198,11 +204,11 @@ function func()
 <p>比较当前对象与给定的对象是否相等</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">Boolean</span> Fiber.equals(object expected);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>expected - 制定比较的目标对象</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回对象比较的结果</li>
 </ul>
@@ -210,7 +216,7 @@ function func()
 <p>返回对象的字符串表示，一般返回 &#34;[Native Object]&#34;，对象可以根据自己的特性重新实现</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> Fiber.toString();
 </code></pre>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回对象的字符串表示</li>
 </ul>
@@ -218,11 +224,11 @@ function func()
 <p>返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合</p>
 <pre><code class="lang-JavaScript">Value Fiber.toJSON(<span class="hljs-built_in">String</span> key = <span class="hljs-string">""</span>);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>key - 未使用</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回包含可 JSON 序列化的值</li>
 </ul>
@@ -230,7 +236,7 @@ function func()
 <p>返回对象本身的数值</p>
 <pre><code class="lang-JavaScript">Value Fiber.valueOf();
 </code></pre>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回对象本身的数值</li>
 </ul>

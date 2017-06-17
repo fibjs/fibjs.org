@@ -10,7 +10,7 @@ SeekableStream.seek(Long offset,
                 Integer whence);
 ```
 
-**调用参数:**
+调用参数:
 * offset - 指定新的位置
 * whence - 指定位置基准，允许的值为：SEEK_SET, SEEK_CUR, SEEK_END
 
@@ -20,7 +20,7 @@ SeekableStream.seek(Long offset,
 Long SeekableStream.tell();
 ```
 
-**返回结果:**
+返回结果:
 * 返回流当前位置
 
 ### rewind
@@ -35,7 +35,7 @@ SeekableStream.rewind();
 Long SeekableStream.size();
 ```
 
-**返回结果:**
+返回结果:
 * 返回流尺寸
 
 ### readAll
@@ -44,7 +44,7 @@ Long SeekableStream.size();
 Buffer SeekableStream.readAll();
 ```
 
-**返回结果:**
+返回结果:
 * 返回从流内读取的数据，若无数据可读，或者连接中断，则返回 null
 
 ### truncate
@@ -53,7 +53,7 @@ Buffer SeekableStream.readAll();
 SeekableStream.truncate(Long bytes);
 ```
 
-**调用参数:**
+调用参数:
 * bytes - 新的文件尺寸
 
 ### eof
@@ -62,7 +62,7 @@ SeekableStream.truncate(Long bytes);
 Boolean SeekableStream.eof();
 ```
 
-**返回结果:**
+返回结果:
 * 返回 True 表示结尾
 
 ### flush
@@ -77,7 +77,7 @@ SeekableStream.flush();
 Stat SeekableStream.stat();
 ```
 
-**返回结果:**
+返回结果:
 * 返回 Stat 对象描述文件信息
 
 ### read
@@ -86,10 +86,10 @@ Stat SeekableStream.stat();
 Buffer SeekableStream.read(Integer bytes = -1);
 ```
 
-**调用参数:**
+调用参数:
 * bytes - 指定要读取的数据量，缺省为读取随机大小的数据块，读出的数据尺寸取决于设备
 
-**返回结果:**
+返回结果:
 * 返回从流内读取的数据，若无数据可读，或者连接中断，则返回 null
 
 ### write
@@ -98,7 +98,7 @@ Buffer SeekableStream.read(Integer bytes = -1);
 SeekableStream.write(Buffer data);
 ```
 
-**调用参数:**
+调用参数:
 * data - 给定要写入的数据
 
 ### close
@@ -114,11 +114,11 @@ Long SeekableStream.copyTo(Stream stm,
                 Long bytes = -1);
 ```
 
-**调用参数:**
+调用参数:
 * stm - 目标流对象
 * bytes - 复制的字节数
 
-**返回结果:**
+返回结果:
 * 返回复制的字节数
 
 ### dispose
@@ -133,10 +133,10 @@ SeekableStream.dispose();
 Boolean SeekableStream.equals(object expected);
 ```
 
-**调用参数:**
+调用参数:
 * expected - 制定比较的目标对象
 
-**返回结果:**
+返回结果:
 * 返回对象比较的结果
 
 ### toString
@@ -145,7 +145,7 @@ Boolean SeekableStream.equals(object expected);
 String SeekableStream.toString();
 ```
 
-**返回结果:**
+返回结果:
 * 返回对象的字符串表示
 
 ### toJSON
@@ -154,10 +154,10 @@ String SeekableStream.toString();
 Value SeekableStream.toJSON(String key = "");
 ```
 
-**调用参数:**
+调用参数:
 * key - 未使用
 
-**返回结果:**
+返回结果:
 * 返回包含可 JSON 序列化的值
 
 ### valueOf
@@ -166,6 +166,6 @@ Value SeekableStream.toJSON(String key = "");
 Value SeekableStream.valueOf();
 ```
 
-**返回结果:**
+返回结果:
 * 返回对象本身的数值
 

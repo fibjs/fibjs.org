@@ -160,96 +160,98 @@
 <pre><code class="lang-JavaScript">Handler http.fileHandler(<span class="hljs-built_in">String</span> root,
                 <span class="hljs-built_in">Object</span> mimes = {});
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>root - 文件根路径</li>
 <li>mimes - 扩展 mime 设置</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回一个静态文件处理器用于处理 http 消息</li>
 </ul>
+<p>fileHandler 支持 gzip 预压缩，当请求接受 gzip 编码，且相同路径下 filename.ext.gz 文件存在时，将直接返回此文件，
+从而避免重复压缩带来服务器负载。</p>
 <h3 id="request">request</h3>
 <p>发送 http 请求到指定的流对象，并返回结果</p>
 <pre><code class="lang-JavaScript">HttpResponse http.request(Stream conn,
                 HttpRequest req);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>conn - 指定处理请求的流对象</li>
 <li>req - 要发送的 HttpRequest 对象</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回服务器响应</li>
 </ul>
-<h3 id="request">request</h3>
+<hr>
 <p>请求指定的 url，并返回结果</p>
 <pre><code class="lang-JavaScript">HttpResponse http.request(<span class="hljs-built_in">String</span> method,
                 <span class="hljs-built_in">String</span> url,
                 <span class="hljs-built_in">Object</span> headers = {});
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>method - 指定 http 请求方法：GET, POST 等</li>
 <li>url - 指定 url，必须是包含主机的完整 url</li>
 <li>headers - 指定附加的 http 头，缺省无附加头</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回服务器响应</li>
 </ul>
-<h3 id="request">request</h3>
+<hr>
 <p>请求指定的 url，并返回结果</p>
 <pre><code class="lang-JavaScript">HttpResponse http.request(<span class="hljs-built_in">String</span> method,
                 <span class="hljs-built_in">String</span> url,
                 SeekableStream body,
                 <span class="hljs-built_in">Map</span> headers);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>method - 指定 http 请求方法：GET, POST 等</li>
 <li>url - 指定 url，必须是包含主机的完整 url</li>
 <li>body - 指定发送的 body 内容</li>
 <li>headers - 指定附加的 http 头</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回服务器响应</li>
 </ul>
-<h3 id="request">request</h3>
+<hr>
 <p>请求指定的 url，并返回结果</p>
 <pre><code class="lang-JavaScript">HttpResponse http.request(<span class="hljs-built_in">String</span> method,
                 <span class="hljs-built_in">String</span> url,
                 SeekableStream body,
                 <span class="hljs-built_in">Object</span> headers = {});
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>method - 指定 http 请求方法：GET, POST 等</li>
 <li>url - 指定 url，必须是包含主机的完整 url</li>
 <li>body - 指定发送的 body 内容</li>
 <li>headers - 指定附加的 http 头，缺省无附加头</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回服务器响应</li>
 </ul>
-<h3 id="request">request</h3>
+<hr>
 <p>请求指定的 url，并返回结果</p>
 <pre><code class="lang-JavaScript">HttpResponse http.request(<span class="hljs-built_in">String</span> method,
                 <span class="hljs-built_in">String</span> url,
                 Buffer body,
                 <span class="hljs-built_in">Object</span> headers = {});
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>method - 指定 http 请求方法：GET, POST 等</li>
 <li>url - 指定 url，必须是包含主机的完整 url</li>
 <li>body - 指定发送的 body 内容</li>
 <li>headers - 指定附加的 http 头，缺省无附加头</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回服务器响应</li>
 </ul>
@@ -258,12 +260,12 @@
 <pre><code class="lang-JavaScript">HttpResponse http.get(<span class="hljs-built_in">String</span> url,
                 <span class="hljs-built_in">Object</span> headers = {});
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>url - 指定 url，必须是包含主机的完整 url</li>
 <li>headers - 指定附加的 http 头，缺省无附加头</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回服务器响应</li>
 </ul>
@@ -273,43 +275,43 @@
                 SeekableStream body,
                 <span class="hljs-built_in">Object</span> headers = {});
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>url - 指定 url，必须是包含主机的完整 url</li>
 <li>body - 指定发送的 body 内容</li>
 <li>headers - 指定附加的 http 头，缺省无附加头</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回服务器响应</li>
 </ul>
-<h3 id="post">post</h3>
+<hr>
 <p>用 POST 方法请求指定的 url，并返回结果，等同于 request(&#34;POST&#34;, ...)</p>
 <pre><code class="lang-JavaScript">HttpResponse http.post(<span class="hljs-built_in">String</span> url,
                 Buffer body,
                 <span class="hljs-built_in">Object</span> headers = {});
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>url - 指定 url，必须是包含主机的完整 url</li>
 <li>body - 指定发送的 body 内容</li>
 <li>headers - 指定附加的 http 头，缺省无附加头</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回服务器响应</li>
 </ul>
-<h3 id="post">post</h3>
+<hr>
 <p>用 POST 方法请求指定的 url，并返回结果，等同于 request(&#34;POST&#34;, ...)</p>
 <pre><code class="lang-JavaScript">HttpResponse http.post(<span class="hljs-built_in">String</span> url,
                 <span class="hljs-built_in">Object</span> headers = {});
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>url - 指定 url，必须是包含主机的完整 url</li>
 <li>headers - 指定附加的 http 头，缺省无附加头</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回服务器响应</li>
 </ul>
@@ -318,12 +320,12 @@
 <pre><code class="lang-JavaScript">HttpResponse http.del(<span class="hljs-built_in">String</span> url,
                 <span class="hljs-built_in">Object</span> headers = {});
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>url - 指定 url，必须是包含主机的完整 url</li>
 <li>headers - 指定附加的 http 头，缺省无附加头</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回服务器响应</li>
 </ul>
@@ -333,43 +335,43 @@
                 SeekableStream body,
                 <span class="hljs-built_in">Object</span> headers = {});
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>url - 指定 url，必须是包含主机的完整 url</li>
 <li>body - 指定发送的 body 内容</li>
 <li>headers - 指定附加的 http 头，缺省无附加头</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回服务器响应</li>
 </ul>
-<h3 id="put">put</h3>
+<hr>
 <p>用 PUT 方法请求指定的 url，并返回结果，等同于 request(&#34;PUT&#34;, ...)</p>
 <pre><code class="lang-JavaScript">HttpResponse http.put(<span class="hljs-built_in">String</span> url,
                 Buffer body,
                 <span class="hljs-built_in">Object</span> headers = {});
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>url - 指定 url，必须是包含主机的完整 url</li>
 <li>body - 指定发送的 body 内容</li>
 <li>headers - 指定附加的 http 头，缺省无附加头</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回服务器响应</li>
 </ul>
-<h3 id="put">put</h3>
+<hr>
 <p>用 PUT 方法请求指定的 url，并返回结果，等同于 request(&#34;PUT&#34;, ...)</p>
 <pre><code class="lang-JavaScript">HttpResponse http.put(<span class="hljs-built_in">String</span> url,
                 <span class="hljs-built_in">Object</span> headers = {});
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>url - 指定 url，必须是包含主机的完整 url</li>
 <li>headers - 指定附加的 http 头，缺省无附加头</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回服务器响应</li>
 </ul>
@@ -379,43 +381,43 @@
                 SeekableStream body,
                 <span class="hljs-built_in">Object</span> headers = {});
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>url - 指定 url，必须是包含主机的完整 url</li>
 <li>body - 指定发送的 body 内容</li>
 <li>headers - 指定附加的 http 头，缺省无附加头</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回服务器响应</li>
 </ul>
-<h3 id="patch">patch</h3>
+<hr>
 <p>用 PATCH 方法请求指定的 url，并返回结果，等同于 request(&#34;PATCH&#34;, ...)</p>
 <pre><code class="lang-JavaScript">HttpResponse http.patch(<span class="hljs-built_in">String</span> url,
                 Buffer body,
                 <span class="hljs-built_in">Object</span> headers = {});
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>url - 指定 url，必须是包含主机的完整 url</li>
 <li>body - 指定发送的 body 内容</li>
 <li>headers - 指定附加的 http 头，缺省无附加头</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回服务器响应</li>
 </ul>
-<h3 id="patch">patch</h3>
+<hr>
 <p>用 PATCH 方法请求指定的 url，并返回结果，等同于 request(&#34;PATCH&#34;, ...)</p>
 <pre><code class="lang-JavaScript">HttpResponse http.patch(<span class="hljs-built_in">String</span> url,
                 <span class="hljs-built_in">Object</span> headers = {});
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>url - 指定 url，必须是包含主机的完整 url</li>
 <li>headers - 指定附加的 http 头，缺省无附加头</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回服务器响应</li>
 </ul>

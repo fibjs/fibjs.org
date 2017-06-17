@@ -154,21 +154,20 @@
 </ul>
  </div></div></div>  </div></div><div class="content col-xs-12 col-sm-9"> <h1 id="-list">对象 List</h1>
 <p>Variant 数组对象，一般用以返回一组 Variant 数据</p>
-<p>用以创建和管理数组对象，创建方法：
-@code
-var collection = require(&#34;collection&#34;);
-var a = new collection.List();
-@endcode</p>
+<p>用以创建和管理数组对象，创建方法：</p>
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">var</span> collection = <span class="hljs-built_in">require</span>(<span class="hljs-string">"collection"</span>);
+<span class="hljs-keyword">var</span> a = <span class="hljs-keyword">new</span> collection.List();
+</code></pre>
 <h2 id="-">构造函数</h2>
 <h3 id="list">List</h3>
 <p>List 对象构造函数</p>
 <pre><code class="lang-JavaScript"> <span class="hljs-keyword">new</span> List();
 </code></pre>
-<h3 id="list">List</h3>
+<hr>
 <p>List 对象构造函数</p>
 <pre><code class="lang-JavaScript"> <span class="hljs-keyword">new</span> List(<span class="hljs-built_in">Array</span> data);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>data - 初始化的一组元素</li>
 </ul>
@@ -181,7 +180,7 @@ var a = new collection.List();
 <p>修改数组尺寸</p>
 <pre><code class="lang-JavaScript">List.resize(Integer sz);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>sz - 指定新尺寸</li>
 </ul>
@@ -189,11 +188,11 @@ var a = new collection.List();
 <p>在数组结尾添加一个元素</p>
 <pre><code class="lang-JavaScript">Integer List.push(Variant v);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>v - 指定添加的元素</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>添加元素之后数组的长度</li>
 </ul>
@@ -202,38 +201,44 @@ var a = new collection.List();
 <pre><code class="lang-JavaScript">Integer List.indexOf(Variant searchElement,
                 Integer fromIndex = <span class="hljs-number">0</span>);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>searchElement - 要查找的元素</li>
 <li>fromIndex - 开始查找的位置。如果该索引值大于或等于数组长度，意味着不会在数组里查找，返回-1。</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>首个被找到的元素在数组中的索引位置; 若没有找到则返回 -1</li>
 </ul>
+<p>如果参数 fromIndex 中提供的索引值是一个负值，则将其作为数组末尾的一个抵消，即-1表示从最后一个元素开始查找，
+-2表示从倒数第二个元素开始查找 ，以此类推。</p>
+<p>注意：如果参数中提供的索引值是一个负值，仍然从前向后查询数组。如果抵消后的索引值仍小于0，则整个数组都将会被查询。其默认值为0.</p>
 <h3 id="lastindexof">lastIndexOf</h3>
 <p>lastIndexOf() 方法返回指定元素在数组中的最后一个的索引，如果不存在则返回 -1。从数组的后面向前查找，从 fromIndex 处开始。</p>
 <pre><code class="lang-JavaScript">Integer List.lastIndexOf(Variant searchElement,
                 Integer fromIndex = <span class="hljs-number">0</span>);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>searchElement - 要查找的元素</li>
 <li>fromIndex - 从此位置开始逆向查找。默认为数组的长度减 1，即整个数组都被查找。</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>给定元素在数组中最后一次出现的索引位置; 若没有找到则返回 -1</li>
 </ul>
+<p>如果参数 searchElement 大于或等于数组的长度，则整个数组会被查找。
+如果为负值，将其视为从数组末尾向前的偏移。即使该值为负，数组仍然会被从后向前查找。
+如果该值为负时，其绝对值大于数组长度，则方法返回 -1，即数组不会被查找</p>
 <h3 id="push">push</h3>
 <p>在数组结尾添加一个元素</p>
 <pre><code class="lang-JavaScript">Integer List.push(...);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>... - 指定添加的多个元素</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>添加元素之后数组的长度</li>
 </ul>
@@ -241,7 +246,7 @@ var a = new collection.List();
 <p>在数组结尾添加一组元素</p>
 <pre><code class="lang-JavaScript">List.pushArray(<span class="hljs-built_in">Array</span> data);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>data - 添加的一组元素</li>
 </ul>
@@ -249,7 +254,7 @@ var a = new collection.List();
 <p>返回数组结尾的一个元素</p>
 <pre><code class="lang-JavaScript">Variant List.pop();
 </code></pre>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>结尾的元素</li>
 </ul>
@@ -258,12 +263,12 @@ var a = new collection.List();
 <pre><code class="lang-JavaScript">List List.slice(Integer start = <span class="hljs-number">0</span>,
                 Integer end = <span class="hljs-number">-1</span>);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>start - 指定范围的起始，缺省从头开始</li>
 <li>end - 指定范围的结束，缺省到缓存结尾</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回新的数组</li>
 </ul>
@@ -271,11 +276,11 @@ var a = new collection.List();
 <p>将当前数组与给定的一个或者多个数组合并</p>
 <pre><code class="lang-JavaScript">List List.concat(...);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>... - 给定的一个或多个数组</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回合并的数组</li>
 </ul>
@@ -284,12 +289,12 @@ var a = new collection.List();
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">Boolean</span> List.every(<span class="hljs-built_in">Function</span> func,
                 Value thisArg = <span class="hljs-literal">undefined</span>);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>func - 测试函数</li>
 <li>thisArg - 调用测试函数的参数，可省略</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>全部通过测试则返回 true</li>
 </ul>
@@ -298,12 +303,12 @@ var a = new collection.List();
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">Boolean</span> List.some(<span class="hljs-built_in">Function</span> func,
                 Value thisArg = <span class="hljs-literal">undefined</span>);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>func - 测试函数</li>
 <li>thisArg - 调用测试函数的参数，可省略</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>全部不通过测试则返回 false，否则返回true</li>
 </ul>
@@ -312,12 +317,12 @@ var a = new collection.List();
 <pre><code class="lang-JavaScript">List List.filter(<span class="hljs-built_in">Function</span> func,
                 Value thisArg = <span class="hljs-literal">undefined</span>);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>func - 测试函数</li>
 <li>thisArg - 调用过滤函数的参数，可省略</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>经过过滤的新数组</li>
 </ul>
@@ -326,7 +331,7 @@ var a = new collection.List();
 <pre><code class="lang-JavaScript">List.forEach(<span class="hljs-built_in">Function</span> func,
                 Value thisArg = <span class="hljs-literal">undefined</span>);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>func - 处理函数</li>
 <li>thisArg - 调用处理函数的参数，可省略</li>
@@ -336,12 +341,12 @@ var a = new collection.List();
 <pre><code class="lang-JavaScript">List List.map(<span class="hljs-built_in">Function</span> func,
                 Value thisArg = <span class="hljs-literal">undefined</span>);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>func - 处理函数</li>
 <li>thisArg - 调用处理函数的参数，可省略</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>处理结果数组</li>
 </ul>
@@ -350,12 +355,12 @@ var a = new collection.List();
 <pre><code class="lang-JavaScript">Value List.reduce(<span class="hljs-built_in">Function</span> func,
                 Value initVal = <span class="hljs-literal">undefined</span>);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>func - 处理函数</li>
 <li>initVal - 初始值，可省略</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>处理结果数组</li>
 </ul>
@@ -363,19 +368,19 @@ var a = new collection.List();
 <p>排序全部数据并返回列表本身</p>
 <pre><code class="lang-JavaScript">List List.sort(<span class="hljs-built_in">Function</span> func);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>func - 比较处理函数</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>列表本身</li>
 </ul>
-<h3 id="sort">sort</h3>
+<hr>
 <p>排序全部数据并返回列表本身</p>
 <pre><code class="lang-JavaScript">List List.sort();
 </code></pre>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>列表本身</li>
 </ul>
@@ -383,7 +388,7 @@ var a = new collection.List();
 <p>返回列表的 js 数组</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">Array</span> List.toArray();
 </code></pre>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>包含数据的 js 数组</li>
 </ul>
@@ -395,11 +400,11 @@ var a = new collection.List();
 <p>比较当前对象与给定的对象是否相等</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">Boolean</span> List.equals(object expected);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>expected - 制定比较的目标对象</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回对象比较的结果</li>
 </ul>
@@ -407,7 +412,7 @@ var a = new collection.List();
 <p>返回对象的字符串表示，一般返回 &#34;[Native Object]&#34;，对象可以根据自己的特性重新实现</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> List.toString();
 </code></pre>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回对象的字符串表示</li>
 </ul>
@@ -415,11 +420,11 @@ var a = new collection.List();
 <p>返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合</p>
 <pre><code class="lang-JavaScript">Value List.toJSON(<span class="hljs-built_in">String</span> key = <span class="hljs-string">""</span>);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>key - 未使用</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回包含可 JSON 序列化的值</li>
 </ul>
@@ -427,7 +432,7 @@ var a = new collection.List();
 <p>返回对象本身的数值</p>
 <pre><code class="lang-JavaScript">Value List.valueOf();
 </code></pre>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回对象本身的数值</li>
 </ul>

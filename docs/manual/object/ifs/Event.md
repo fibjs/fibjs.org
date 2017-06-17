@@ -10,7 +10,7 @@
  new Event(Boolean value = false);
 ```
 
-**调用参数:**
+调用参数:
 * value - 指定是否等待，为 true 时等待，缺省为 false
 
 ## 函数
@@ -51,11 +51,17 @@ Event.wait();
 Boolean Event.acquire(Boolean blocking = true);
 ```
 
-**调用参数:**
+调用参数:
 * blocking - 指定是否等待，为 true 时等待，缺省为真
 
-**返回结果:**
+返回结果:
 * 返回是否成功获取锁，为 true 表示成功获取
+
+acquire 方法用于获取锁的拥有权，当锁处于可获取状态时，此方法立即返回 true。
+
+当锁不可获取，且 blocking 为 true，则当前纤程进入休眠，当其他纤程释放锁后，此方法返回 true。
+
+当锁不可获取，且 blocking 为 false，则方法返回 false。
 
 ### release
 释放锁的拥有权
@@ -71,7 +77,7 @@ Event.release();
 Integer Event.count();
 ```
 
-**返回结果:**
+返回结果:
 * 返回任务数
 
 ### dispose
@@ -86,10 +92,10 @@ Event.dispose();
 Boolean Event.equals(object expected);
 ```
 
-**调用参数:**
+调用参数:
 * expected - 制定比较的目标对象
 
-**返回结果:**
+返回结果:
 * 返回对象比较的结果
 
 ### toString
@@ -98,7 +104,7 @@ Boolean Event.equals(object expected);
 String Event.toString();
 ```
 
-**返回结果:**
+返回结果:
 * 返回对象的字符串表示
 
 ### toJSON
@@ -107,10 +113,10 @@ String Event.toString();
 Value Event.toJSON(String key = "");
 ```
 
-**调用参数:**
+调用参数:
 * key - 未使用
 
-**返回结果:**
+返回结果:
 * 返回包含可 JSON 序列化的值
 
 ### valueOf
@@ -119,6 +125,6 @@ Value Event.toJSON(String key = "");
 Value Event.valueOf();
 ```
 
-**返回结果:**
+返回结果:
 * 返回对象本身的数值
 

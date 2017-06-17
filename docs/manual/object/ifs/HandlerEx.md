@@ -9,8 +9,19 @@
 HandlerEx.onerror(Object hdlrs);
 ```
 
-**调用参数:**
+调用参数:
 * hdlrs - 指定不同的错误的处理器，key 是错误号，value 是处理器，可以是内置消息处理器，处理函数，链式处理数组，路由对象，详见 mq.Handler
+
+使用方式：
+```JavaScript
+hdlr.onerror({
+    "404": function(v)
+        {
+            ...
+        },
+    "500": new mq.Routing(...)
+})
+```
 
 ### invoke
 处理一个消息或对象
@@ -18,10 +29,10 @@ HandlerEx.onerror(Object hdlrs);
 Handler HandlerEx.invoke(object v);
 ```
 
-**调用参数:**
+调用参数:
 * v - 指定处理的消息或对象
 
-**返回结果:**
+返回结果:
 * 返回下一步的处理器
 
 ### dispose
@@ -36,10 +47,10 @@ HandlerEx.dispose();
 Boolean HandlerEx.equals(object expected);
 ```
 
-**调用参数:**
+调用参数:
 * expected - 制定比较的目标对象
 
-**返回结果:**
+返回结果:
 * 返回对象比较的结果
 
 ### toString
@@ -48,7 +59,7 @@ Boolean HandlerEx.equals(object expected);
 String HandlerEx.toString();
 ```
 
-**返回结果:**
+返回结果:
 * 返回对象的字符串表示
 
 ### toJSON
@@ -57,10 +68,10 @@ String HandlerEx.toString();
 Value HandlerEx.toJSON(String key = "");
 ```
 
-**调用参数:**
+调用参数:
 * key - 未使用
 
-**返回结果:**
+返回结果:
 * 返回包含可 JSON 序列化的值
 
 ### valueOf
@@ -69,7 +80,7 @@ Value HandlerEx.toJSON(String key = "");
 Value HandlerEx.valueOf();
 ```
 
-**返回结果:**
+返回结果:
 * 返回对象本身的数值
 
 ## 属性
@@ -87,7 +98,7 @@ readonly Stats HandlerEx.stats;
 ```
 
 返回的结果为一个 Stats 对象，结构如下：
-@code
+```JavaScript
 {
     total : 1000,    // 总计处理的请求
     pendding : 100,  // 当前正在处理的请求
@@ -95,5 +106,5 @@ readonly Stats HandlerEx.stats;
     response : 10,   // 发送的响应
     error : 100      // 发生的错误
 }
-@endcode
+```
 

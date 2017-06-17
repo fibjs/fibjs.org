@@ -15,10 +15,10 @@ AsyncWait.end();
 Handler AsyncWait.invoke(object v);
 ```
 
-**调用参数:**
+调用参数:
 * v - 指定处理的消息或对象
 
-**返回结果:**
+返回结果:
 * 返回下一步的处理器
 
 ### dispose
@@ -33,10 +33,10 @@ AsyncWait.dispose();
 Boolean AsyncWait.equals(object expected);
 ```
 
-**调用参数:**
+调用参数:
 * expected - 制定比较的目标对象
 
-**返回结果:**
+返回结果:
 * 返回对象比较的结果
 
 ### toString
@@ -45,7 +45,7 @@ Boolean AsyncWait.equals(object expected);
 String AsyncWait.toString();
 ```
 
-**返回结果:**
+返回结果:
 * 返回对象的字符串表示
 
 ### toJSON
@@ -54,10 +54,10 @@ String AsyncWait.toString();
 Value AsyncWait.toJSON(String key = "");
 ```
 
-**调用参数:**
+调用参数:
 * key - 未使用
 
-**返回结果:**
+返回结果:
 * 返回包含可 JSON 序列化的值
 
 ### valueOf
@@ -66,6 +66,6 @@ Value AsyncWait.toJSON(String key = "");
 Value AsyncWait.valueOf();
 ```
 
-**返回结果:**
+返回结果:
 * 返回对象本身的数值
 

@@ -2,9 +2,9 @@
 内存 profiler 模块
 
 使用方法：
-@code
-var profiler = require(&#39;profiler&#39;);
-@endcode
+```JavaScript
+var profiler = require('profiler');
+```
 ## 函数
         
 ### saveSnapshot
@@ -13,7 +13,7 @@ var profiler = require(&#39;profiler&#39;);
 profiler.saveSnapshot(String fname);
 ```
 
-**调用参数:**
+调用参数:
 * fname - 堆快照名称
 
 ### loadSnapshot
@@ -22,10 +22,10 @@ profiler.saveSnapshot(String fname);
 HeapSnapshot profiler.loadSnapshot(String fname);
 ```
 
-**调用参数:**
+调用参数:
 * fname - 堆快照名称
 
-**返回结果:**
+返回结果:
 * 返回读取到的堆快照
 
 ### takeSnapshot
@@ -34,7 +34,7 @@ HeapSnapshot profiler.loadSnapshot(String fname);
 HeapSnapshot profiler.takeSnapshot();
 ```
 
-**返回结果:**
+返回结果:
 * 返回获取到的堆信息快照
 
 ### diff
@@ -43,10 +43,10 @@ HeapSnapshot profiler.takeSnapshot();
 Object profiler.diff(Function test);
 ```
 
-**调用参数:**
+调用参数:
 * test - 给定要测试的函数
 
-**返回结果:**
+返回结果:
 * 返回对比的结果
 
 ## 常量

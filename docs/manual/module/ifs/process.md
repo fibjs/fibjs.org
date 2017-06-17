@@ -2,9 +2,9 @@
 进程处理模块，用以管理当前进程的资源
 
 引用方法：
-@code
-var process = require(&#39;process&#39;);
-@endcode
+```JavaScript
+var process = require('process');
+```
 ## 函数
         
 ### umask
@@ -13,31 +13,31 @@ var process = require(&#39;process&#39;);
 Integer process.umask(Integer mask);
 ```
 
-**调用参数:**
+调用参数:
 * mask - 指定新的掩码
 
-**返回结果:**
+返回结果:
 * 返回之前的 mask
 
-### umask
+--------------------------
 改变当前的 umask，Windows 不支持此方法
 ```JavaScript
 Integer process.umask(String mask);
 ```
 
-**调用参数:**
+调用参数:
 * mask - 指定新的掩码， 字符串类型八进制(e.g: &#34;0664&#34;)
 
-**返回结果:**
+返回结果:
 * 返回之前的 mask
 
-### umask
+--------------------------
 返回当前的 umask，Windows 不支持此方法
 ```JavaScript
 Integer process.umask();
 ```
 
-**返回结果:**
+返回结果:
 * 返回当前的 mask 值
 
 ### exit
@@ -46,7 +46,7 @@ Integer process.umask();
 process.exit(Integer code);
 ```
 
-**调用参数:**
+调用参数:
 * code - 返回进程结果
 
 ### cwd
@@ -55,7 +55,7 @@ process.exit(Integer code);
 String process.cwd();
 ```
 
-**返回结果:**
+返回结果:
 * 返回当前系统路径
 
 ### chdir
@@ -64,7 +64,7 @@ String process.cwd();
 process.chdir(String directory);
 ```
 
-**调用参数:**
+调用参数:
 * directory - 指定设定的新路径
 
 ### uptime
@@ -73,7 +73,7 @@ process.chdir(String directory);
 Number process.uptime();
 ```
 
-**返回结果:**
+返回结果:
 * 返回表示时间的数值
 
 ### memoryUsage
@@ -82,8 +82,21 @@ Number process.uptime();
 Object process.memoryUsage();
 ```
 
-**返回结果:**
+返回结果:
 * 返回包含内存报告
+
+内存报告生成类似以下结果：
+```JavaScript
+{
+  "rss": 8622080,
+  "heapTotal": 4083456,
+  "heapUsed": 1621800
+}
+```
+其中：
+- rss 返回进程当前占用物理内存大小
+- heapTotal 返回 v8 引擎堆内存大小
+- heapUsed 返回 v8 引擎正在使用堆内存大小
 
 ### nextTick
 启动一个纤程
@@ -92,7 +105,7 @@ process.nextTick(Function func,
                 ...);
 ```
 
-**调用参数:**
+调用参数:
 * func - 制定纤程执行的函数
 * ... - 可变参数序列，此序列会在纤程内传递给函数
 
@@ -104,27 +117,42 @@ SubProcess process.open(String command,
                 Object opts = {});
 ```
 
-**调用参数:**
+调用参数:
 * command - 指定运行的命令行
 * args - 指定运行的参数列表
-* opts - 指定运行的选项，支持的选项如下：
+* opts - 指定运行的选项
 
-**返回结果:**
+返回结果:
 * 返回包含运行结果的进程对象
 
-### open
+opts 支持的选项如下：
+```JavaScript
+{
+    "timeout": 100, // 单位为 ms
+    "envs": [] // 进程环境变量
+}
+```
+--------------------------
 运行指定的命令行，接管进程输入输出流，并返回进程对象
 ```JavaScript
 SubProcess process.open(String command,
                 Object opts = {});
 ```
 
-**调用参数:**
+调用参数:
 * command - 指定运行的命令行
-* opts - 指定运行的选项，支持的选项如下：
+* opts - 指定运行的选项
 
-**返回结果:**
+返回结果:
 * 返回包含运行结果的进程对象
+
+opts 支持的选项如下：
+```JavaScript
+{
+    "timeout": 100, // 单位为 ms
+    "envs": [] // 进程环境变量
+}
+```
 
 ### start
 运行指定的命令行，并返回进程对象
@@ -134,27 +162,42 @@ SubProcess process.start(String command,
                 Object opts = {});
 ```
 
-**调用参数:**
+调用参数:
 * command - 指定运行的命令行
 * args - 指定运行的参数列表
-* opts - 指定运行的选项，支持的选项如下：
+* opts - 指定运行的选项
 
-**返回结果:**
+返回结果:
 * 返回包含运行结果的进程对象
 
-### start
+opts 支持的选项如下：
+```JavaScript
+{
+    "timeout": 100, // 单位为 ms
+    "envs": [] // 进程环境变量
+}
+```
+--------------------------
 运行指定的命令行，并返回进程对象
 ```JavaScript
 SubProcess process.start(String command,
                 Object opts = {});
 ```
 
-**调用参数:**
+调用参数:
 * command - 指定运行的命令行
-* opts - 指定运行的选项，支持的选项如下：
+* opts - 指定运行的选项
 
-**返回结果:**
+返回结果:
 * 返回包含运行结果的进程对象
+
+opts 支持的选项如下：
+```JavaScript
+{
+    "timeout": 100, // 单位为 ms
+    "envs": [] // 进程环境变量
+}
+```
 
 ### run
 运行指定的命令行，并返回进程的结束代码
@@ -164,28 +207,42 @@ Integer process.run(String command,
                 Object opts = {});
 ```
 
-**调用参数:**
+调用参数:
 * command - 指定运行的命令行
 * args - 指定运行的参数列表
-* opts - 指定运行的选项，支持的选项如下：
+* opts - 指定运行的选项
 
-**返回结果:**
+返回结果:
 * 返回命令的运行结果
 
-### run
+opts 支持的选项如下：
+```JavaScript
+{
+    "timeout": 100, // 单位为 ms
+    "envs": [] // 进程环境变量
+}
+```
+--------------------------
 运行指定的命令行，并返回进程的结束代码
 ```JavaScript
 Integer process.run(String command,
                 Object opts = {});
 ```
 
-**调用参数:**
+调用参数:
 * command - 指定运行的命令行
-* opts - 指定运行的选项，支持的选项如下：
+* opts - 指定运行的选项
 
-**返回结果:**
+返回结果:
 * 返回命令的运行结果
 
+opts 支持的选项如下：
+```JavaScript
+{
+    "timeout": 100, // 单位为 ms
+    "envs": [] // 进程环境变量
+}
+```
 ## 属性
         
 ### argv

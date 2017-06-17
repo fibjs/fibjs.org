@@ -4,11 +4,11 @@ http客户端对象
 http客户端对象模拟浏览器环境缓存cookie，并在访问url的时候携带对应的cookie，不同的http客户端对象是相互隔离的，提供http的request、get、post等方法。
 用法如下：
 
-@code
-var http = require(&#39;http&#39;);
+```JavaScript
+var http = require('http');
 var httpClient = new http.Client();
-httpClient.request(&#39;GET&#39;, &#39;http://fibjs.org&#39;);
-@endcode
+httpClient.request('GET', 'http://fibjs.org');
+```
 ## 构造函数
         
 ### HttpClient
@@ -26,14 +26,14 @@ HttpResponse HttpClient.request(Stream conn,
                 HttpRequest req);
 ```
 
-**调用参数:**
+调用参数:
 * conn - 指定处理请求的流对象
 * req - 要发送的 HttpRequest 对象
 
-**返回结果:**
+返回结果:
 * 返回服务器响应
 
-### request
+--------------------------
 请求指定的 url，并返回结果
 ```JavaScript
 HttpResponse HttpClient.request(String method,
@@ -41,15 +41,15 @@ HttpResponse HttpClient.request(String method,
                 Object headers = {});
 ```
 
-**调用参数:**
+调用参数:
 * method - 指定 http 请求方法：GET, POST 等
 * url - 指定 url，必须是包含主机的完整 url
 * headers - 指定附加的 http 头，缺省无附加头
 
-**返回结果:**
+返回结果:
 * 返回服务器响应
 
-### request
+--------------------------
 请求指定的 url，并返回结果
 ```JavaScript
 HttpResponse HttpClient.request(String method,
@@ -58,16 +58,16 @@ HttpResponse HttpClient.request(String method,
                 Map headers);
 ```
 
-**调用参数:**
+调用参数:
 * method - 指定 http 请求方法：GET, POST 等
 * url - 指定 url，必须是包含主机的完整 url
 * body - 指定发送的 body 内容
 * headers - 指定附加的 http 头
 
-**返回结果:**
+返回结果:
 * 返回服务器响应
 
-### request
+--------------------------
 请求指定的 url，并返回结果
 ```JavaScript
 HttpResponse HttpClient.request(String method,
@@ -76,16 +76,16 @@ HttpResponse HttpClient.request(String method,
                 Object headers = {});
 ```
 
-**调用参数:**
+调用参数:
 * method - 指定 http 请求方法：GET, POST 等
 * url - 指定 url，必须是包含主机的完整 url
 * body - 指定发送的 body 内容
 * headers - 指定附加的 http 头，缺省无附加头
 
-**返回结果:**
+返回结果:
 * 返回服务器响应
 
-### request
+--------------------------
 请求指定的 url，并返回结果
 ```JavaScript
 HttpResponse HttpClient.request(String method,
@@ -94,13 +94,13 @@ HttpResponse HttpClient.request(String method,
                 Object headers = {});
 ```
 
-**调用参数:**
+调用参数:
 * method - 指定 http 请求方法：GET, POST 等
 * url - 指定 url，必须是包含主机的完整 url
 * body - 指定发送的 body 内容
 * headers - 指定附加的 http 头，缺省无附加头
 
-**返回结果:**
+返回结果:
 * 返回服务器响应
 
 ### get
@@ -110,11 +110,11 @@ HttpResponse HttpClient.get(String url,
                 Object headers = {});
 ```
 
-**调用参数:**
+调用参数:
 * url - 指定 url，必须是包含主机的完整 url
 * headers - 指定附加的 http 头，缺省无附加头
 
-**返回结果:**
+返回结果:
 * 返回服务器响应
 
 ### post
@@ -125,15 +125,15 @@ HttpResponse HttpClient.post(String url,
                 Object headers = {});
 ```
 
-**调用参数:**
+调用参数:
 * url - 指定 url，必须是包含主机的完整 url
 * body - 指定发送的 body 内容
 * headers - 指定附加的 http 头，缺省无附加头
 
-**返回结果:**
+返回结果:
 * 返回服务器响应
 
-### post
+--------------------------
 用 POST 方法请求指定的 url，并返回结果，等同于 request(&#34;POST&#34;, ...)
 ```JavaScript
 HttpResponse HttpClient.post(String url,
@@ -141,26 +141,26 @@ HttpResponse HttpClient.post(String url,
                 Object headers = {});
 ```
 
-**调用参数:**
+调用参数:
 * url - 指定 url，必须是包含主机的完整 url
 * body - 指定发送的 body 内容
 * headers - 指定附加的 http 头，缺省无附加头
 
-**返回结果:**
+返回结果:
 * 返回服务器响应
 
-### post
+--------------------------
 用 POST 方法请求指定的 url，并返回结果，等同于 request(&#34;POST&#34;, ...)
 ```JavaScript
 HttpResponse HttpClient.post(String url,
                 Object headers = {});
 ```
 
-**调用参数:**
+调用参数:
 * url - 指定 url，必须是包含主机的完整 url
 * headers - 指定附加的 http 头，缺省无附加头
 
-**返回结果:**
+返回结果:
 * 返回服务器响应
 
 ### del
@@ -170,11 +170,11 @@ HttpResponse HttpClient.del(String url,
                 Object headers = {});
 ```
 
-**调用参数:**
+调用参数:
 * url - 指定 url，必须是包含主机的完整 url
 * headers - 指定附加的 http 头，缺省无附加头
 
-**返回结果:**
+返回结果:
 * 返回服务器响应
 
 ### put
@@ -185,15 +185,15 @@ HttpResponse HttpClient.put(String url,
                 Object headers = {});
 ```
 
-**调用参数:**
+调用参数:
 * url - 指定 url，必须是包含主机的完整 url
 * body - 指定发送的 body 内容
 * headers - 指定附加的 http 头，缺省无附加头
 
-**返回结果:**
+返回结果:
 * 返回服务器响应
 
-### put
+--------------------------
 用 PUT 方法请求指定的 url，并返回结果，等同于 request(&#34;PUT&#34;, ...)
 ```JavaScript
 HttpResponse HttpClient.put(String url,
@@ -201,26 +201,26 @@ HttpResponse HttpClient.put(String url,
                 Object headers = {});
 ```
 
-**调用参数:**
+调用参数:
 * url - 指定 url，必须是包含主机的完整 url
 * body - 指定发送的 body 内容
 * headers - 指定附加的 http 头，缺省无附加头
 
-**返回结果:**
+返回结果:
 * 返回服务器响应
 
-### put
+--------------------------
 用 PUT 方法请求指定的 url，并返回结果，等同于 request(&#34;PUT&#34;, ...)
 ```JavaScript
 HttpResponse HttpClient.put(String url,
                 Object headers = {});
 ```
 
-**调用参数:**
+调用参数:
 * url - 指定 url，必须是包含主机的完整 url
 * headers - 指定附加的 http 头，缺省无附加头
 
-**返回结果:**
+返回结果:
 * 返回服务器响应
 
 ### patch
@@ -231,15 +231,15 @@ HttpResponse HttpClient.patch(String url,
                 Object headers = {});
 ```
 
-**调用参数:**
+调用参数:
 * url - 指定 url，必须是包含主机的完整 url
 * body - 指定发送的 body 内容
 * headers - 指定附加的 http 头，缺省无附加头
 
-**返回结果:**
+返回结果:
 * 返回服务器响应
 
-### patch
+--------------------------
 用 PATCH 方法请求指定的 url，并返回结果，等同于 request(&#34;PATCH&#34;, ...)
 ```JavaScript
 HttpResponse HttpClient.patch(String url,
@@ -247,26 +247,26 @@ HttpResponse HttpClient.patch(String url,
                 Object headers = {});
 ```
 
-**调用参数:**
+调用参数:
 * url - 指定 url，必须是包含主机的完整 url
 * body - 指定发送的 body 内容
 * headers - 指定附加的 http 头，缺省无附加头
 
-**返回结果:**
+返回结果:
 * 返回服务器响应
 
-### patch
+--------------------------
 用 PATCH 方法请求指定的 url，并返回结果，等同于 request(&#34;PATCH&#34;, ...)
 ```JavaScript
 HttpResponse HttpClient.patch(String url,
                 Object headers = {});
 ```
 
-**调用参数:**
+调用参数:
 * url - 指定 url，必须是包含主机的完整 url
 * headers - 指定附加的 http 头，缺省无附加头
 
-**返回结果:**
+返回结果:
 * 返回服务器响应
 
 ### dispose
@@ -281,10 +281,10 @@ HttpClient.dispose();
 Boolean HttpClient.equals(object expected);
 ```
 
-**调用参数:**
+调用参数:
 * expected - 制定比较的目标对象
 
-**返回结果:**
+返回结果:
 * 返回对象比较的结果
 
 ### toString
@@ -293,7 +293,7 @@ Boolean HttpClient.equals(object expected);
 String HttpClient.toString();
 ```
 
-**返回结果:**
+返回结果:
 * 返回对象的字符串表示
 
 ### toJSON
@@ -302,10 +302,10 @@ String HttpClient.toString();
 Value HttpClient.toJSON(String key = "");
 ```
 
-**调用参数:**
+调用参数:
 * key - 未使用
 
-**返回结果:**
+返回结果:
 * 返回包含可 JSON 序列化的值
 
 ### valueOf
@@ -314,7 +314,7 @@ Value HttpClient.toJSON(String key = "");
 Value HttpClient.valueOf();
 ```
 
-**返回结果:**
+返回结果:
 * 返回对象本身的数值
 
 ## 属性

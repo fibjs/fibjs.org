@@ -9,10 +9,10 @@ XmlNamedNodeMap 对象表示一个无顺序的属性列表
 XmlAttr XmlNamedNodeMap.item(Integer index);
 ```
 
-**调用参数:**
+调用参数:
 * index - 指定要查询的索引
 
-**返回结果:**
+返回结果:
 * 指定索引号的属性
 
 ### getNamedItem
@@ -21,10 +21,10 @@ XmlAttr XmlNamedNodeMap.item(Integer index);
 XmlAttr XmlNamedNodeMap.getNamedItem(String name);
 ```
 
-**调用参数:**
+调用参数:
 * name - 指定要查询的名称
 
-**返回结果:**
+返回结果:
 * 返回查询出的属性
 
 ### dispose
@@ -39,10 +39,10 @@ XmlNamedNodeMap.dispose();
 Boolean XmlNamedNodeMap.equals(object expected);
 ```
 
-**调用参数:**
+调用参数:
 * expected - 制定比较的目标对象
 
-**返回结果:**
+返回结果:
 * 返回对象比较的结果
 
 ### toString
@@ -51,7 +51,7 @@ Boolean XmlNamedNodeMap.equals(object expected);
 String XmlNamedNodeMap.toString();
 ```
 
-**返回结果:**
+返回结果:
 * 返回对象的字符串表示
 
 ### toJSON
@@ -60,10 +60,10 @@ String XmlNamedNodeMap.toString();
 Value XmlNamedNodeMap.toJSON(String key = "");
 ```
 
-**调用参数:**
+调用参数:
 * key - 未使用
 
-**返回结果:**
+返回结果:
 * 返回包含可 JSON 序列化的值
 
 ### valueOf
@@ -72,7 +72,7 @@ Value XmlNamedNodeMap.toJSON(String key = "");
 Value XmlNamedNodeMap.valueOf();
 ```
 
-**返回结果:**
+返回结果:
 * 返回对象本身的数值
 
 ## 属性

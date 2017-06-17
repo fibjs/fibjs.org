@@ -1,7 +1,7 @@
 # 模块 coroutine
 并发控制模块
 
-引用方法：var coroutine = require(&#39;coroutine&#39;);
+引用方法：var coroutine = require('coroutine');
 ## 函数
         
 ### start
@@ -11,11 +11,11 @@ Fiber coroutine.start(Function func,
                 ...);
 ```
 
-**调用参数:**
+调用参数:
 * func - 制定纤程执行的函数
 * ... - 可变参数序列，此序列会在纤程内传递给函数
 
-**返回结果:**
+返回结果:
 * 返回纤程对象
 
 ### parallel
@@ -25,14 +25,14 @@ Array coroutine.parallel(Array funcs,
                 Integer fibers = -1);
 ```
 
-**调用参数:**
+调用参数:
 * funcs - 并行执行的函数数组
 * fibers - 限制并发 fiber 数量，缺省为 -1，启用与 funcs 数量相同 fiber
 
-**返回结果:**
+返回结果:
 * 返回函数执行结果的数组
 
-### parallel
+--------------------------
 并行执行一个函数处理一组数据，并等待返回
 ```JavaScript
 Array coroutine.parallel(Array datas,
@@ -40,15 +40,15 @@ Array coroutine.parallel(Array datas,
                 Integer fibers = -1);
 ```
 
-**调用参数:**
+调用参数:
 * datas - 并行执行的数据数组
 * func - 并行执行的函数
 * fibers - 限制并发 fiber 数量，缺省为 -1，启用与 datas 数量相同 fiber
 
-**返回结果:**
+返回结果:
 * 返回函数执行结果的数组
 
-### parallel
+--------------------------
 并行执行一个函数多次，并等待返回
 ```JavaScript
 Array coroutine.parallel(Function func,
@@ -56,24 +56,24 @@ Array coroutine.parallel(Function func,
                 Integer fibers = -1);
 ```
 
-**调用参数:**
+调用参数:
 * func - 并行执行的函数数
 * num - 重复任务数量
 * fibers - 限制并发 fiber 数量，缺省为 -1，启用与 funcs 数量相同 fiber
 
-**返回结果:**
+返回结果:
 * 返回函数执行结果的数组
 
-### parallel
+--------------------------
 并行执行一组函数，并等待返回
 ```JavaScript
 Array coroutine.parallel(...);
 ```
 
-**调用参数:**
+调用参数:
 * ... - 一组并行执行的函数
 
-**返回结果:**
+返回结果:
 * 返回函数执行结果的数组
 
 ### current
@@ -82,7 +82,7 @@ Array coroutine.parallel(...);
 Fiber coroutine.current();
 ```
 
-**返回结果:**
+返回结果:
 * 当前纤程对象
 
 ### sleep
@@ -91,7 +91,7 @@ Fiber coroutine.current();
 coroutine.sleep(Integer ms = 0);
 ```
 
-**调用参数:**
+调用参数:
 * ms - 指定要暂停的时间，以毫秒为单位，缺省为 0，即有空闲立即回恢复运行
 
 ## 属性

@@ -7,7 +7,7 @@
 信号量常用的场合是限制资源并发使用，以及生产者/消费者模式的应用。
 
 以数据库请求为例，限制资源并发使用的情形：
-@code
+```JavaScript
 var maxconnections = 5;
 var l = new coroutine.Semaphore(maxconnections);
 
@@ -18,7 +18,7 @@ var conn = connectdb()
 .....
 conn.close();
 l.release();
-@endcode
+```
 
 生产者/消费者模式通常则将信号量与队列配合使用。生产者向队列中加入数据，并 post 一个信号，消费者则先 wait 信号，获取信号后去队查询取数据。
 ## 构造函数
@@ -29,7 +29,7 @@ l.release();
  new Semaphore(Integer value = 1);
 ```
 
-**调用参数:**
+调用参数:
 * value - 计数器初始数值
 
 ## 函数
@@ -52,7 +52,7 @@ Semaphore.post();
 Boolean Semaphore.trywait();
 ```
 
-**返回结果:**
+返回结果:
 * 获取成功则返回 true
 
 ### acquire
@@ -61,11 +61,17 @@ Boolean Semaphore.trywait();
 Boolean Semaphore.acquire(Boolean blocking = true);
 ```
 
-**调用参数:**
+调用参数:
 * blocking - 指定是否等待，为 true 时等待，缺省为真
 
-**返回结果:**
+返回结果:
 * 返回是否成功获取锁，为 true 表示成功获取
+
+acquire 方法用于获取锁的拥有权，当锁处于可获取状态时，此方法立即返回 true。
+
+当锁不可获取，且 blocking 为 true，则当前纤程进入休眠，当其他纤程释放锁后，此方法返回 true。
+
+当锁不可获取，且 blocking 为 false，则方法返回 false。
 
 ### release
 释放锁的拥有权
@@ -81,7 +87,7 @@ Semaphore.release();
 Integer Semaphore.count();
 ```
 
-**返回结果:**
+返回结果:
 * 返回任务数
 
 ### dispose
@@ -96,10 +102,10 @@ Semaphore.dispose();
 Boolean Semaphore.equals(object expected);
 ```
 
-**调用参数:**
+调用参数:
 * expected - 制定比较的目标对象
 
-**返回结果:**
+返回结果:
 * 返回对象比较的结果
 
 ### toString
@@ -108,7 +114,7 @@ Boolean Semaphore.equals(object expected);
 String Semaphore.toString();
 ```
 
-**返回结果:**
+返回结果:
 * 返回对象的字符串表示
 
 ### toJSON
@@ -117,10 +123,10 @@ String Semaphore.toString();
 Value Semaphore.toJSON(String key = "");
 ```
 
-**调用参数:**
+调用参数:
 * key - 未使用
 
-**返回结果:**
+返回结果:
 * 返回包含可 JSON 序列化的值
 
 ### valueOf
@@ -129,6 +135,6 @@ Value Semaphore.toJSON(String key = "");
 Value Semaphore.valueOf();
 ```
 
-**返回结果:**
+返回结果:
 * 返回对象本身的数值
 

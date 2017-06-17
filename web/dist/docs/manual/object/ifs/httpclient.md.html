@@ -156,11 +156,10 @@
 <p>http客户端对象</p>
 <p>http客户端对象模拟浏览器环境缓存cookie，并在访问url的时候携带对应的cookie，不同的http客户端对象是相互隔离的，提供http的request、get、post等方法。
 用法如下：</p>
-<p>@code
-var http = require(&#39;http&#39;);
-var httpClient = new http.Client();
-httpClient.request(&#39;GET&#39;, &#39;<a href="http://fibjs.org&amp;#39">http://fibjs.org&amp;#39</a>;);
-@endcode</p>
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">var</span> http = <span class="hljs-built_in">require</span>(<span class="hljs-string">'http'</span>);
+<span class="hljs-keyword">var</span> httpClient = <span class="hljs-keyword">new</span> http.Client();
+httpClient.request(<span class="hljs-string">'GET'</span>, <span class="hljs-string">'http://fibjs.org'</span>);
+</code></pre>
 <h2 id="-">构造函数</h2>
 <h3 id="httpclient">HttpClient</h3>
 <p>HttpClient 构造函数，创建一个新的HttpClient对象</p>
@@ -172,82 +171,82 @@ httpClient.request(&#39;GET&#39;, &#39;<a href="http://fibjs.org&amp;#39">http:/
 <pre><code class="lang-JavaScript">HttpResponse HttpClient.request(Stream conn,
                 HttpRequest req);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>conn - 指定处理请求的流对象</li>
 <li>req - 要发送的 HttpRequest 对象</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回服务器响应</li>
 </ul>
-<h3 id="request">request</h3>
+<hr>
 <p>请求指定的 url，并返回结果</p>
 <pre><code class="lang-JavaScript">HttpResponse HttpClient.request(<span class="hljs-built_in">String</span> method,
                 <span class="hljs-built_in">String</span> url,
                 <span class="hljs-built_in">Object</span> headers = {});
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>method - 指定 http 请求方法：GET, POST 等</li>
 <li>url - 指定 url，必须是包含主机的完整 url</li>
 <li>headers - 指定附加的 http 头，缺省无附加头</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回服务器响应</li>
 </ul>
-<h3 id="request">request</h3>
+<hr>
 <p>请求指定的 url，并返回结果</p>
 <pre><code class="lang-JavaScript">HttpResponse HttpClient.request(<span class="hljs-built_in">String</span> method,
                 <span class="hljs-built_in">String</span> url,
                 SeekableStream body,
                 <span class="hljs-built_in">Map</span> headers);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>method - 指定 http 请求方法：GET, POST 等</li>
 <li>url - 指定 url，必须是包含主机的完整 url</li>
 <li>body - 指定发送的 body 内容</li>
 <li>headers - 指定附加的 http 头</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回服务器响应</li>
 </ul>
-<h3 id="request">request</h3>
+<hr>
 <p>请求指定的 url，并返回结果</p>
 <pre><code class="lang-JavaScript">HttpResponse HttpClient.request(<span class="hljs-built_in">String</span> method,
                 <span class="hljs-built_in">String</span> url,
                 SeekableStream body,
                 <span class="hljs-built_in">Object</span> headers = {});
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>method - 指定 http 请求方法：GET, POST 等</li>
 <li>url - 指定 url，必须是包含主机的完整 url</li>
 <li>body - 指定发送的 body 内容</li>
 <li>headers - 指定附加的 http 头，缺省无附加头</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回服务器响应</li>
 </ul>
-<h3 id="request">request</h3>
+<hr>
 <p>请求指定的 url，并返回结果</p>
 <pre><code class="lang-JavaScript">HttpResponse HttpClient.request(<span class="hljs-built_in">String</span> method,
                 <span class="hljs-built_in">String</span> url,
                 Buffer body,
                 <span class="hljs-built_in">Object</span> headers = {});
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>method - 指定 http 请求方法：GET, POST 等</li>
 <li>url - 指定 url，必须是包含主机的完整 url</li>
 <li>body - 指定发送的 body 内容</li>
 <li>headers - 指定附加的 http 头，缺省无附加头</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回服务器响应</li>
 </ul>
@@ -256,12 +255,12 @@ httpClient.request(&#39;GET&#39;, &#39;<a href="http://fibjs.org&amp;#39">http:/
 <pre><code class="lang-JavaScript">HttpResponse HttpClient.get(<span class="hljs-built_in">String</span> url,
                 <span class="hljs-built_in">Object</span> headers = {});
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>url - 指定 url，必须是包含主机的完整 url</li>
 <li>headers - 指定附加的 http 头，缺省无附加头</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回服务器响应</li>
 </ul>
@@ -271,43 +270,43 @@ httpClient.request(&#39;GET&#39;, &#39;<a href="http://fibjs.org&amp;#39">http:/
                 SeekableStream body,
                 <span class="hljs-built_in">Object</span> headers = {});
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>url - 指定 url，必须是包含主机的完整 url</li>
 <li>body - 指定发送的 body 内容</li>
 <li>headers - 指定附加的 http 头，缺省无附加头</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回服务器响应</li>
 </ul>
-<h3 id="post">post</h3>
+<hr>
 <p>用 POST 方法请求指定的 url，并返回结果，等同于 request(&#34;POST&#34;, ...)</p>
 <pre><code class="lang-JavaScript">HttpResponse HttpClient.post(<span class="hljs-built_in">String</span> url,
                 Buffer body,
                 <span class="hljs-built_in">Object</span> headers = {});
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>url - 指定 url，必须是包含主机的完整 url</li>
 <li>body - 指定发送的 body 内容</li>
 <li>headers - 指定附加的 http 头，缺省无附加头</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回服务器响应</li>
 </ul>
-<h3 id="post">post</h3>
+<hr>
 <p>用 POST 方法请求指定的 url，并返回结果，等同于 request(&#34;POST&#34;, ...)</p>
 <pre><code class="lang-JavaScript">HttpResponse HttpClient.post(<span class="hljs-built_in">String</span> url,
                 <span class="hljs-built_in">Object</span> headers = {});
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>url - 指定 url，必须是包含主机的完整 url</li>
 <li>headers - 指定附加的 http 头，缺省无附加头</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回服务器响应</li>
 </ul>
@@ -316,12 +315,12 @@ httpClient.request(&#39;GET&#39;, &#39;<a href="http://fibjs.org&amp;#39">http:/
 <pre><code class="lang-JavaScript">HttpResponse HttpClient.del(<span class="hljs-built_in">String</span> url,
                 <span class="hljs-built_in">Object</span> headers = {});
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>url - 指定 url，必须是包含主机的完整 url</li>
 <li>headers - 指定附加的 http 头，缺省无附加头</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回服务器响应</li>
 </ul>
@@ -331,43 +330,43 @@ httpClient.request(&#39;GET&#39;, &#39;<a href="http://fibjs.org&amp;#39">http:/
                 SeekableStream body,
                 <span class="hljs-built_in">Object</span> headers = {});
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>url - 指定 url，必须是包含主机的完整 url</li>
 <li>body - 指定发送的 body 内容</li>
 <li>headers - 指定附加的 http 头，缺省无附加头</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回服务器响应</li>
 </ul>
-<h3 id="put">put</h3>
+<hr>
 <p>用 PUT 方法请求指定的 url，并返回结果，等同于 request(&#34;PUT&#34;, ...)</p>
 <pre><code class="lang-JavaScript">HttpResponse HttpClient.put(<span class="hljs-built_in">String</span> url,
                 Buffer body,
                 <span class="hljs-built_in">Object</span> headers = {});
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>url - 指定 url，必须是包含主机的完整 url</li>
 <li>body - 指定发送的 body 内容</li>
 <li>headers - 指定附加的 http 头，缺省无附加头</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回服务器响应</li>
 </ul>
-<h3 id="put">put</h3>
+<hr>
 <p>用 PUT 方法请求指定的 url，并返回结果，等同于 request(&#34;PUT&#34;, ...)</p>
 <pre><code class="lang-JavaScript">HttpResponse HttpClient.put(<span class="hljs-built_in">String</span> url,
                 <span class="hljs-built_in">Object</span> headers = {});
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>url - 指定 url，必须是包含主机的完整 url</li>
 <li>headers - 指定附加的 http 头，缺省无附加头</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回服务器响应</li>
 </ul>
@@ -377,43 +376,43 @@ httpClient.request(&#39;GET&#39;, &#39;<a href="http://fibjs.org&amp;#39">http:/
                 SeekableStream body,
                 <span class="hljs-built_in">Object</span> headers = {});
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>url - 指定 url，必须是包含主机的完整 url</li>
 <li>body - 指定发送的 body 内容</li>
 <li>headers - 指定附加的 http 头，缺省无附加头</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回服务器响应</li>
 </ul>
-<h3 id="patch">patch</h3>
+<hr>
 <p>用 PATCH 方法请求指定的 url，并返回结果，等同于 request(&#34;PATCH&#34;, ...)</p>
 <pre><code class="lang-JavaScript">HttpResponse HttpClient.patch(<span class="hljs-built_in">String</span> url,
                 Buffer body,
                 <span class="hljs-built_in">Object</span> headers = {});
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>url - 指定 url，必须是包含主机的完整 url</li>
 <li>body - 指定发送的 body 内容</li>
 <li>headers - 指定附加的 http 头，缺省无附加头</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回服务器响应</li>
 </ul>
-<h3 id="patch">patch</h3>
+<hr>
 <p>用 PATCH 方法请求指定的 url，并返回结果，等同于 request(&#34;PATCH&#34;, ...)</p>
 <pre><code class="lang-JavaScript">HttpResponse HttpClient.patch(<span class="hljs-built_in">String</span> url,
                 <span class="hljs-built_in">Object</span> headers = {});
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>url - 指定 url，必须是包含主机的完整 url</li>
 <li>headers - 指定附加的 http 头，缺省无附加头</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回服务器响应</li>
 </ul>
@@ -425,11 +424,11 @@ httpClient.request(&#39;GET&#39;, &#39;<a href="http://fibjs.org&amp;#39">http:/
 <p>比较当前对象与给定的对象是否相等</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">Boolean</span> HttpClient.equals(object expected);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>expected - 制定比较的目标对象</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回对象比较的结果</li>
 </ul>
@@ -437,7 +436,7 @@ httpClient.request(&#39;GET&#39;, &#39;<a href="http://fibjs.org&amp;#39">http:/
 <p>返回对象的字符串表示，一般返回 &#34;[Native Object]&#34;，对象可以根据自己的特性重新实现</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> HttpClient.toString();
 </code></pre>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回对象的字符串表示</li>
 </ul>
@@ -445,11 +444,11 @@ httpClient.request(&#39;GET&#39;, &#39;<a href="http://fibjs.org&amp;#39">http:/
 <p>返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合</p>
 <pre><code class="lang-JavaScript">Value HttpClient.toJSON(<span class="hljs-built_in">String</span> key = <span class="hljs-string">""</span>);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>key - 未使用</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回包含可 JSON 序列化的值</li>
 </ul>
@@ -457,7 +456,7 @@ httpClient.request(&#39;GET&#39;, &#39;<a href="http://fibjs.org&amp;#39">http:/
 <p>返回对象本身的数值</p>
 <pre><code class="lang-JavaScript">Value HttpClient.valueOf();
 </code></pre>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回对象本身的数值</li>
 </ul>

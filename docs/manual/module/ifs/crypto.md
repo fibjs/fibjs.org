@@ -2,9 +2,9 @@
 加密算法模块
 
 使用方法：
-@code
-var crypto = require(&#39;crypto&#39;);
-@endcode
+```JavaScript
+var crypto = require('crypto');
+```
 ## 函数
         
 ### loadPKey
@@ -14,7 +14,7 @@ PKey crypto.loadPKey(String filename,
                 String password = "");
 ```
 
-**调用参数:**
+调用参数:
 * filename - 密钥文件名
 * password - 解密密码
 
@@ -24,7 +24,7 @@ PKey crypto.loadPKey(String filename,
 X509Cert crypto.loadCert(String filename);
 ```
 
-**调用参数:**
+调用参数:
 * filename - 证书文件名
 
 loadFile 加载 mozilla 的 certdata,txt， 可于 http://hg.mozilla.org/releases/mozilla-release/raw-file/default/security/nss/lib/ckfw/builtins/certdata.txt 下载使用
@@ -35,7 +35,7 @@ loadFile 加载 mozilla 的 certdata,txt， 可于 http://hg.mozilla.org/release
 X509Crl crypto.loadCrl(String filename);
 ```
 
-**调用参数:**
+调用参数:
 * filename - 撤销证书文件名
 
 ### loadReq
@@ -44,7 +44,7 @@ X509Crl crypto.loadCrl(String filename);
 X509Req crypto.loadReq(String filename);
 ```
 
-**调用参数:**
+调用参数:
 * filename - 证书请求文件名
 
 ### randomBytes
@@ -53,10 +53,10 @@ X509Req crypto.loadReq(String filename);
 Buffer crypto.randomBytes(Integer size);
 ```
 
-**调用参数:**
+调用参数:
 * size - 指定生成的随机数尺寸
 
-**返回结果:**
+返回结果:
 * 返回生成的随机数
 
 ### simpleRandomBytes
@@ -65,10 +65,10 @@ Buffer crypto.randomBytes(Integer size);
 Buffer crypto.simpleRandomBytes(Integer size);
 ```
 
-**调用参数:**
+调用参数:
 * size - 指定生成的随机数尺寸
 
-**返回结果:**
+返回结果:
 * 返回生成的随机数
 
 ### pseudoRandomBytes
@@ -77,10 +77,10 @@ Buffer crypto.simpleRandomBytes(Integer size);
 Buffer crypto.pseudoRandomBytes(Integer size);
 ```
 
-**调用参数:**
+调用参数:
 * size - 指定生成的随机数尺寸
 
-**返回结果:**
+返回结果:
 * 返回生成的随机数
 
 ### randomArt
@@ -91,12 +91,12 @@ String crypto.randomArt(Buffer data,
                 Integer size = 8);
 ```
 
-**调用参数:**
+调用参数:
 * data - 指定要展示的数据
 * title - 指定字符图像的标题，多字节字符会导致宽度错误
 * size - 字符图像尺寸
 
-**返回结果:**
+返回结果:
 * 返回生成的可视化字符串图像
 
 ### pbkdf1
@@ -109,17 +109,17 @@ Buffer crypto.pbkdf1(Buffer password,
                 Integer algo);
 ```
 
-**调用参数:**
+调用参数:
 * password - 指定使用的密码
 * salt - 指定 hmac 使用的 salt
 * iterations - 指定迭代次数
 * size - 指定钥匙尺寸
 * algo - 指定要使用的 hash 算法，详见 hash 模块
 
-**返回结果:**
+返回结果:
 * 返回生成的二进制钥匙
 
-### pbkdf1
+--------------------------
 依据 pbkdf1 根据明文 password 生成要求的二进制钥匙
 ```JavaScript
 Buffer crypto.pbkdf1(Buffer password,
@@ -129,14 +129,14 @@ Buffer crypto.pbkdf1(Buffer password,
                 String algoName);
 ```
 
-**调用参数:**
+调用参数:
 * password - 指定使用的密码
 * salt - 指定 hmac 使用的 salt
 * iterations - 指定迭代次数
 * size - 指定钥匙尺寸
 * algoName - 指定要使用的 hash 算法，详见 hash 模块
 
-**返回结果:**
+返回结果:
 * 返回生成的二进制钥匙
 
 ### pbkdf2
@@ -149,17 +149,17 @@ Buffer crypto.pbkdf2(Buffer password,
                 Integer algo);
 ```
 
-**调用参数:**
+调用参数:
 * password - 指定使用的密码
 * salt - 指定 hmac 使用的 salt
 * iterations - 指定迭代次数
 * size - 指定钥匙尺寸
 * algo - 指定要使用的 hash 算法，详见 hash 模块
 
-**返回结果:**
+返回结果:
 * 返回生成的二进制钥匙
 
-### pbkdf2
+--------------------------
 依据 rfc2898 根据明文 password 生成要求的二进制钥匙
 ```JavaScript
 Buffer crypto.pbkdf2(Buffer password,
@@ -169,14 +169,14 @@ Buffer crypto.pbkdf2(Buffer password,
                 String algoName);
 ```
 
-**调用参数:**
+调用参数:
 * password - 指定使用的密码
 * salt - 指定 hmac 使用的 salt
 * iterations - 指定迭代次数
 * size - 指定钥匙尺寸
 * algoName - 指定要使用的 hash 算法，详见 hash 模块
 
-**返回结果:**
+返回结果:
 * 返回生成的二进制钥匙
 
 ### pbkdf2Sync
@@ -189,14 +189,14 @@ Buffer crypto.pbkdf2Sync(Buffer password,
                 String algoName);
 ```
 
-**调用参数:**
+调用参数:
 * password - 指定使用的密码
 * salt - 指定 hmac 使用的 salt
 * iterations - 指定迭代次数
 * size - 指定钥匙尺寸
 * algoName - 指定要使用的 hash 算法，详见 hash 模块
 
-**返回结果:**
+返回结果:
 * 返回生成的二进制钥匙
 
 ## 常量

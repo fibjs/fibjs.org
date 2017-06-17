@@ -1,16 +1,15 @@
 # 模块 console
 控制台访问对象
 
-全局对象。可用于提示信息，警告和错误记录。通过启动配置文件，可将日志定位
-到不同的设备，以便于跟踪。日志支持格式化输出，例如：
-@code
-console.log(&#34;%d + %d = %d&#34;, 100, 200, 100 + 200);
-@endcode
+全局对象。可用于提示信息，警告和错误记录。通过启动配置文件，可将日志定位到不同的设备，以便于跟踪。日志支持格式化输出，例如：
+```JavaScript
+console.log("%d + %d = %d", 100, 200, 100 + 200);
+```
 可以使用的格式化参数如下：
 - %s - 字符串
 - %d - 数字，包括整数和数字
 - %j - 以 JSON 格式输出对象
-- %% - 输出字符 &#39;%&#39; 本身
+- %% - 输出字符 '%' 本身
 ## 函数
         
 ### add
@@ -19,61 +18,61 @@ console.log(&#34;%d + %d = %d&#34;, 100, 200, 100 + 200);
 console.add(Array cfg);
 ```
 
-**调用参数:**
+调用参数:
 * cfg - 输出配置数组
 
 通过配置 console，可以将程序输出和系统错误发往不同设备，用于运行环境信息收集。
 
-@code
-console.add([&#34;console&#34;, {
-   type: &#34;syslog&#34;,
+```JavaScript
+console.add(["console", {
+   type: "syslog",
    levels: [console.INFO, console.ERROR]
 }]);
-@endcode
+```
 
-### add
+--------------------------
 添加 console 输出系统，支持的设备为 console, syslog 和 file，最多可以添加 10 个输出
 ```JavaScript
 console.add(Value cfg);
 ```
 
-**调用参数:**
+调用参数:
 * cfg - 输出配置
 
 通过配置 console，可以将程序输出和系统错误发往不同设备，用于运行环境信息收集。
 
 cfg 为配置，可以为设备名称字符串：
 
-@code
-console.add(&#34;console&#34;);
-@endcode
+```JavaScript
+console.add("console");
+```
 
 也可以为一个设备配置对象：
-@code
+```JavaScript
 console.add({
-   type: &#34;console&#34;,
+   type: "console",
    levels: [console.INFO, console.ERROR]  // 选项，省略则输出全部级别日志
 });
-@endcode
+```
 
 syslog 仅在 posix 平台有效：
-@code
+```JavaScript
 console.add({
-   type: &#34;syslog&#34;,
+   type: "syslog",
    levels: [console.INFO, console.ERROR]
 });
-@endcode
+```
 
 file 日志不支持简单调用：
-@code
+```JavaScript
 console.add({
-   type: &#34;file&#34;,
+   type: "file",
    levels: [console.INFO, console.ERROR],
-   path: &#34;path/to/file&#34;,  // 必选项
-   split: &#34;30m&#34;,  // 选项，可选值为 &#34;day&#34;, &#34;hour&#34;, &#34;minute&#34;, &#34;###k&#34;, &#34;###m&#34;, &#34;###g&#34;
+   path: "path/to/file",  // 必选项
+   split: "30m",  // 选项，可选值为 "day", "hour", "minute", "###k", "###m", "###g"
    count: 10 // 选项，可选范围为 2-128，指定此项时必须提供 split
 });
-@endcode
+```
 
 ### reset
 初始化到缺省设置，只在 console 输出信息
@@ -88,19 +87,18 @@ console.log(String fmt,
                 ...);
 ```
 
-**调用参数:**
+调用参数:
 * fmt - 格式化字符串
 * ... - 可选参数列表
 
 记录一般等级的日志信息。通常用于输出非错误性提示信息。
-
-### log
+--------------------------
 记录普通日志信息，与 info 等同
 ```JavaScript
 console.log(...);
 ```
 
-**调用参数:**
+调用参数:
 * ... - 可选参数列表
 
 记录一般等级的日志信息。通常用于输出非错误性提示信息。
@@ -112,19 +110,18 @@ console.debug(String fmt,
                 ...);
 ```
 
-**调用参数:**
+调用参数:
 * fmt - 格式化字符串
 * ... - 可选参数列表
 
 记录调试日志信息。通常用于输出调试信息。不重要。
-
-### debug
+--------------------------
 记录调试日志信息
 ```JavaScript
 console.debug(...);
 ```
 
-**调用参数:**
+调用参数:
 * ... - 可选参数列表
 
 记录调试日志信息。通常用于输出调试信息。不重要。
@@ -136,19 +133,18 @@ console.info(String fmt,
                 ...);
 ```
 
-**调用参数:**
+调用参数:
 * fmt - 格式化字符串
 * ... - 可选参数列表
 
 记录一般等级的日志信息。通常用于输出非错误性提示信息。
-
-### info
+--------------------------
 记录普通日志信息，与 log 等同
 ```JavaScript
 console.info(...);
 ```
 
-**调用参数:**
+调用参数:
 * ... - 可选参数列表
 
 记录一般等级的日志信息。通常用于输出非错误性提示信息。
@@ -160,19 +156,18 @@ console.notice(String fmt,
                 ...);
 ```
 
-**调用参数:**
+调用参数:
 * fmt - 格式化字符串
 * ... - 可选参数列表
 
 记录警告日志信息。通常用于输出提示性调试信息。一般重要。
-
-### notice
+--------------------------
 记录警告日志信息
 ```JavaScript
 console.notice(...);
 ```
 
-**调用参数:**
+调用参数:
 * ... - 可选参数列表
 
 记录警告日志信息。通常用于输出提示性调试信息。一般重要。
@@ -184,19 +179,18 @@ console.warn(String fmt,
                 ...);
 ```
 
-**调用参数:**
+调用参数:
 * fmt - 格式化字符串
 * ... - 可选参数列表
 
 记录警告日志信息。通常用于输出警告性调试信息。重要。
-
-### warn
+--------------------------
 记录警告日志信息
 ```JavaScript
 console.warn(...);
 ```
 
-**调用参数:**
+调用参数:
 * ... - 可选参数列表
 
 记录警告日志信息。通常用于输出警告性调试信息。重要。
@@ -208,19 +202,18 @@ console.error(String fmt,
                 ...);
 ```
 
-**调用参数:**
+调用参数:
 * fmt - 格式化字符串
 * ... - 可选参数列表
 
 记录用于错误日志信息。通常用于输出错误信息。非常重要。系统的出错信息也会以此等级记录。
-
-### error
+--------------------------
 记录错误日志信息
 ```JavaScript
 console.error(...);
 ```
 
-**调用参数:**
+调用参数:
 * ... - 可选参数列表
 
 记录用于错误日志信息。通常用于输出错误信息。非常重要。系统的出错信息也会以此等级记录。
@@ -232,19 +225,18 @@ console.crit(String fmt,
                 ...);
 ```
 
-**调用参数:**
+调用参数:
 * fmt - 格式化字符串
 * ... - 可选参数列表
 
 记录用于关键错误日志信息。通常用于输出关键错误信息。非常重要。
-
-### crit
+--------------------------
 记录关键错误日志信息
 ```JavaScript
 console.crit(...);
 ```
 
-**调用参数:**
+调用参数:
 * ... - 可选参数列表
 
 记录用于关键错误日志信息。通常用于输出关键错误信息。非常重要。
@@ -256,19 +248,18 @@ console.alert(String fmt,
                 ...);
 ```
 
-**调用参数:**
+调用参数:
 * fmt - 格式化字符串
 * ... - 可选参数列表
 
 记录用于警报错误日志信息。通常用于输出警报错误信息。非常重要。为最高级别信息。
-
-### alert
+--------------------------
 记录警报错误日志信息
 ```JavaScript
 console.alert(...);
 ```
 
-**调用参数:**
+调用参数:
 * ... - 可选参数列表
 
 记录用于警报错误日志信息。通常用于输出警报错误信息。非常重要。为最高级别信息。
@@ -279,7 +270,7 @@ console.alert(...);
 console.dir(Value obj);
 ```
 
-**调用参数:**
+调用参数:
 * obj - 给定要显示的对象
 
 ### time
@@ -288,7 +279,7 @@ console.dir(Value obj);
 console.time(String label = "time");
 ```
 
-**调用参数:**
+调用参数:
 * label - 标题，缺省为空字符串。
 
 ### timeEnd
@@ -297,7 +288,7 @@ console.time(String label = "time");
 console.timeEnd(String label = "time");
 ```
 
-**调用参数:**
+调用参数:
 * label - 标题，缺省为空字符串。
 
 ### trace
@@ -306,7 +297,7 @@ console.timeEnd(String label = "time");
 console.trace(String label = "trace");
 ```
 
-**调用参数:**
+调用参数:
 * label - 标题，缺省为空字符串。
 
 通过日志输出当前调用堆栈。
@@ -318,7 +309,7 @@ console.assert(Value value,
                 String msg = "");
 ```
 
-**调用参数:**
+调用参数:
 * value - 测试的数值
 * msg - 报错信息
 
@@ -329,17 +320,17 @@ console.print(String fmt,
                 ...);
 ```
 
-**调用参数:**
+调用参数:
 * fmt - 格式化字符串
 * ... - 可选参数列表
 
-### print
+--------------------------
 向控制台输出格式化文本，输出内容不会记入日志系统，输出文本后不会自动换行，可连续输出
 ```JavaScript
 console.print(...);
 ```
 
-**调用参数:**
+调用参数:
 * ... - 可选参数列表
 
 ### moveTo
@@ -349,7 +340,7 @@ console.moveTo(Integer row,
                 Integer column);
 ```
 
-**调用参数:**
+调用参数:
 * row - 指定新光标的行坐标
 * column - 指定新光标的列坐标
 
@@ -378,20 +369,31 @@ console.keyDown(String key,
                 String modifier = "");
 ```
 
-**调用参数:**
-* key - 指定按键，单字符直接传入，功能键传入名称：
+调用参数:
+* key - 指定按键，单字符直接传入，功能键传入名称
 * modifier - 指定控制键，可以为：control, alt, shift, command
 
-### keyDown
+参数 key 可以使用字符串传入功能键：
+- 功能键：f1 - f12
+- 方向键：up, down,left, right, home, end, pageup, pagedown
+- 编辑键：backspace, delete, insert, enter, tab, escape, space
+- 控制键：control, alt, shift, command
+--------------------------
 按下一个按键
 ```JavaScript
 console.keyDown(String key,
                 Array modifier);
 ```
 
-**调用参数:**
-* key - 指定按键，单字符直接传入，功能键传入名称：
+调用参数:
+* key - 指定按键，单字符直接传入，功能键传入名称
 * modifier - 指定控制键数组，可以为：control, alt, shift, command
+
+参数 key 可以使用字符串传入功能键：
+- 功能键：f1 - f12
+- 方向键：up, down,left, right, home, end, pageup, pagedown
+- 编辑键：backspace, delete, insert, enter, tab, escape, space
+- 控制键：control, alt, shift, command
 
 ### keyUp
 松开一个按键
@@ -400,20 +402,31 @@ console.keyUp(String key,
                 String modifier = "");
 ```
 
-**调用参数:**
-* key - 指定按键，单字符直接传入，功能键传入名称：
+调用参数:
+* key - 指定按键，单字符直接传入，功能键传入名称
 * modifier - 指定控制键，可以为：control, alt, shift, command
 
-### keyUp
+参数 key 可以使用字符串传入功能键：
+- 功能键：f1 - f12
+- 方向键：up, down,left, right, home, end, pageup, pagedown
+- 编辑键：backspace, delete, insert, enter, tab, escape, space
+- 控制键：control, alt, shift, command
+--------------------------
 松开一个按键
 ```JavaScript
 console.keyUp(String key,
                 Array modifier);
 ```
 
-**调用参数:**
-* key - 指定按键，单字符直接传入，功能键传入名称：
+调用参数:
+* key - 指定按键，单字符直接传入，功能键传入名称
 * modifier - 指定控制键数组，可以为：control, alt, shift, command
+
+参数 key 可以使用字符串传入功能键：
+- 功能键：f1 - f12
+- 方向键：up, down,left, right, home, end, pageup, pagedown
+- 编辑键：backspace, delete, insert, enter, tab, escape, space
+- 控制键：control, alt, shift, command
 
 ### keyTap
 点击并松开一个按键
@@ -422,20 +435,31 @@ console.keyTap(String key,
                 String modifier = "");
 ```
 
-**调用参数:**
-* key - 指定按键，单字符直接传入，功能键传入名称：
+调用参数:
+* key - 指定按键，单字符直接传入，功能键传入名称
 * modifier - 指定控制键，可以为：control, alt, shift, command
 
-### keyTap
+参数 key 可以使用字符串传入功能键：
+- 功能键：f1 - f12
+- 方向键：up, down,left, right, home, end, pageup, pagedown
+- 编辑键：backspace, delete, insert, enter, tab, escape, space
+- 控制键：control, alt, shift, command
+--------------------------
 点击并松开一个按键
 ```JavaScript
 console.keyTap(String key,
                 Array modifier);
 ```
 
-**调用参数:**
-* key - 指定按键，单字符直接传入，功能键传入名称：
+调用参数:
+* key - 指定按键，单字符直接传入，功能键传入名称
 * modifier - 指定控制键数组，可以为：control, alt, shift, command
+
+参数 key 可以使用字符串传入功能键：
+- 功能键：f1 - f12
+- 方向键：up, down,left, right, home, end, pageup, pagedown
+- 编辑键：backspace, delete, insert, enter, tab, escape, space
+- 控制键：control, alt, shift, command
 
 ### typeString
 输入一个字符串
@@ -443,7 +467,7 @@ console.keyTap(String key,
 console.typeString(String text);
 ```
 
-**调用参数:**
+调用参数:
 * text - 指定输入的字符串
 
 ### moveMouse
@@ -453,7 +477,7 @@ console.moveMouse(Integer x,
                 Integer y);
 ```
 
-**调用参数:**
+调用参数:
 * x - 指定 x 坐标
 * y - 指定 y 坐标
 
@@ -463,7 +487,7 @@ console.moveMouse(Integer x,
 console.mouseUp(String button);
 ```
 
-**调用参数:**
+调用参数:
 * button - 指定鼠标键名称，允许值为: left, right, moddle
 
 ### mouseDown
@@ -472,7 +496,7 @@ console.mouseUp(String button);
 console.mouseDown(String button);
 ```
 
-**调用参数:**
+调用参数:
 * button - 指定鼠标键名称，允许值为: left, right, moddle
 
 ### clickMouse
@@ -482,7 +506,7 @@ console.clickMouse(String button,
                 Boolean dbclick = false);
 ```
 
-**调用参数:**
+调用参数:
 * button - 指定鼠标键名称，允许值为: left, right, moddle
 * dbclick - 指定是否双击，缺省为 false
 
@@ -492,10 +516,10 @@ console.clickMouse(String button,
 String console.readLine(String msg = "");
 ```
 
-**调用参数:**
+调用参数:
 * msg - 提示信息
 
-**返回结果:**
+返回结果:
 * 返回用户输入的信息
 
 ## 属性

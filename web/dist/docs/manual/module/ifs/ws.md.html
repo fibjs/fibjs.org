@@ -154,22 +154,21 @@
 </ul>
  </div></div></div>  </div></div><div class="content col-xs-12 col-sm-9"> <h1 id="-ws">模块 ws</h1>
 <p>websocket 支持模块</p>
-<p>使用方法：
-@code
-var ws = require(&#39;ws&#39;);
-@endcode</p>
+<p>使用方法：</p>
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">var</span> ws = <span class="hljs-built_in">require</span>(<span class="hljs-string">'ws'</span>);
+</code></pre>
 <h2 id="-">函数</h2>
 <h3 id="connect">connect</h3>
 <p>创建一个 websocket 连接，并返回握手成功的 Stream 对象</p>
 <pre><code class="lang-JavaScript">Stream ws.connect(<span class="hljs-built_in">String</span> url,
                 <span class="hljs-built_in">String</span> origin = <span class="hljs-string">""</span>);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>url - 指定连接的 url，支持 ws:// 和 wss:// 协议</li>
 <li>origin - 指定连接的授权域名</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回连接成功的 Stream 对象，可能为 Socket 或者 SslSocket</li>
 </ul>
@@ -177,11 +176,11 @@ var ws = require(&#39;ws&#39;);
 <p>创建一个 websocket 协议处理器，从 http 接收 upgrade 请求并握手，生成 WebSocket 对象</p>
 <pre><code class="lang-JavaScript">Handler ws.upgrade(<span class="hljs-built_in">Function</span> accept);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>accept - 连接成功处理函数，参数为 WebSocket 对象</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回协议处理器，可与 HttpServer, Chain, Routing 等对接</li>
 </ul>

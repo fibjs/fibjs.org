@@ -154,56 +154,51 @@
 </ul>
  </div></div></div>  </div></div><div class="content col-xs-12 col-sm-9"> <h1 id="-routing">对象 Routing</h1>
 <p>消息处理器路由对象</p>
-<p>路由对象根据设定的规则匹配消息，将消息传递给符合规则的第一个处理器。后加入的路由规则优先匹配。创建方法：
-@code
-var routing = new mq.Routing({
-  &#34;^/func1(/.<em>)$&#34;: func1,
-  &#34;^/func2(/.</em>)$&#34;: func2
+<p>路由对象根据设定的规则匹配消息，将消息传递给符合规则的第一个处理器。后加入的路由规则优先匹配。创建方法：</p>
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">var</span> routing = <span class="hljs-keyword">new</span> mq.Routing({
+  <span class="hljs-string">"^/func1(/.*)$"</span>: func1,
+  <span class="hljs-string">"^/func2(/.*)$"</span>: func2
 });
-@endcode
-正则表达式匹配的项目修改消息的 value 属性，子项目存入消息的 params 属性。例如：
-@code
-var routing = new mq.Routing({
-  &#34;^/func1(/([0-9]+)/([0-9]+).html)$&#34;: func1,
+</code></pre>
+<p>正则表达式匹配的项目修改消息的 value 属性，子项目存入消息的 params 属性。例如：</p>
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">var</span> routing = <span class="hljs-keyword">new</span> mq.Routing({
+  <span class="hljs-string">"^/func1(/([0-9]+)/([0-9]+)\.html)$"</span>: func1,
 });
-@endcode
-匹配消息 &#34;/func1/123/456.html&#34; 后，value == &#34;/123/456.html&#34;，params == [&#34;123&#34;, &#34;456&#34;];</p>
-<p>如果匹配的结果没有子项，则 value 为空，params 为空。例如：
-@code
-var routing = new mq.Routing({
-  &#34;^/func1/[0-9]+/[0-9]+.html$&#34;: func1,
+</code></pre>
+<p>匹配消息 &quot;/func1/123/456.html&quot; 后，value == &quot;/123/456.html&quot;，params == [&quot;123&quot;, &quot;456&quot;];</p>
+<p>如果匹配的结果没有子项，则 value 为空，params 为空。例如：</p>
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">var</span> routing = <span class="hljs-keyword">new</span> mq.Routing({
+  <span class="hljs-string">"^/func1/[0-9]+/[0-9]+\.html$"</span>: func1,
 });
-@endcode
-匹配消息 &#34;/func1/123/456.html&#34; 后，value == &#34;&#34;，params == [];</p>
-<p>如果匹配的结果第一级有多个子项，则 value 为空，params 为第一级子项。例如：
-@code
-var routing = new mq.Routing({
-  &#34;^/func1/([0-9]+)/([0-9]+).html$&#34;: func1,
+</code></pre>
+<p>匹配消息 &quot;/func1/123/456.html&quot; 后，value == &quot;&quot;，params == [];</p>
+<p>如果匹配的结果第一级有多个子项，则 value 为空，params 为第一级子项。例如：</p>
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">var</span> routing = <span class="hljs-keyword">new</span> mq.Routing({
+  <span class="hljs-string">"^/func1/([0-9]+)/([0-9]+)\.html$"</span>: func1,
 });
-@endcode
-匹配消息 &#34;/func1/123/456.html&#34; 后，value == &#34;&#34;，params == [&#34;123&#34;, &#34;456&#34;];</p>
-<p>如果匹配的结果只有一个子项，并且无下级子项，则 value 和 params 均为此子项。例如：
-@code
-var routing = new mq.Routing({
-  &#34;^/func1/([0-9]+)/[0-9]+.html$&#34;: func1,
+</code></pre>
+<p>匹配消息 &quot;/func1/123/456.html&quot; 后，value == &quot;&quot;，params == [&quot;123&quot;, &quot;456&quot;];</p>
+<p>如果匹配的结果只有一个子项，并且无下级子项，则 value 和 params 均为此子项。例如：</p>
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">var</span> routing = <span class="hljs-keyword">new</span> mq.Routing({
+  <span class="hljs-string">"^/func1/([0-9]+)/[0-9]+\.html$"</span>: func1,
 });
-@endcode
-匹配消息 &#34;/func1/123/456.html&#34; 后，value == &#34;123&#34;，params == [&#34;123&#34;];</p>
+</code></pre>
+<p>匹配消息 &quot;/func1/123/456.html&quot; 后，value == &quot;123&quot;，params == [&quot;123&quot;];</p>
 <h2 id="-">构造函数</h2>
 <h3 id="routing">Routing</h3>
 <p>创建一个消息处理器路由对象</p>
 <pre><code class="lang-JavaScript"> <span class="hljs-keyword">new</span> Routing(<span class="hljs-built_in">Object</span> map = {});
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>map - 初始化路由参数</li>
 </ul>
-<h3 id="routing">Routing</h3>
+<hr>
 <p>创建一个消息处理器路由对象</p>
 <pre><code class="lang-JavaScript"> <span class="hljs-keyword">new</span> Routing(<span class="hljs-built_in">String</span> method,
                 <span class="hljs-built_in">Object</span> map);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>method - 指定 http 请求方法，&#34;*&#34; 接受所有方法</li>
 <li>map - 初始化路由参数</li>
@@ -213,45 +208,45 @@ var routing = new mq.Routing({
 <p>从已有路由对象中添加规则，添加后原路由将被清空</p>
 <pre><code class="lang-JavaScript">Routing.append(Routing route);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>route - 已经初始化的路由对象</li>
 </ul>
-<h3 id="append">append</h3>
+<hr>
 <p>添加一组路由规则</p>
 <pre><code class="lang-JavaScript">Routing.append(<span class="hljs-built_in">Object</span> map);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>map - 路由参数</li>
 </ul>
-<h3 id="append">append</h3>
+<hr>
 <p>添加一条路由规则</p>
 <pre><code class="lang-JavaScript">Routing.append(<span class="hljs-built_in">String</span> pattern,
                 Handler hdlr);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>pattern - 消息匹配格式</li>
 <li>hdlr - 内置消息处理器，处理函数，链式处理数组，路由对象，详见 mq.Handler</li>
 </ul>
-<h3 id="append">append</h3>
+<hr>
 <p>添加一组路由规则</p>
 <pre><code class="lang-JavaScript">Routing.append(<span class="hljs-built_in">String</span> method,
                 <span class="hljs-built_in">Object</span> map);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>method - 指定 http 请求方法，&#34;*&#34; 接受所有方法</li>
 <li>map - 路由参数</li>
 </ul>
-<h3 id="append">append</h3>
+<hr>
 <p>添加一条路由规则</p>
 <pre><code class="lang-JavaScript">Routing.append(<span class="hljs-built_in">String</span> method,
                 <span class="hljs-built_in">String</span> pattern,
                 Handler hdlr);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>method - 指定 http 请求方法，&#34;*&#34; 接受所有方法</li>
 <li>pattern - 消息匹配格式</li>
@@ -261,16 +256,16 @@ var routing = new mq.Routing({
 <p>添加一组接受所有 http 方法路由规则</p>
 <pre><code class="lang-JavaScript">Routing.all(<span class="hljs-built_in">Object</span> map);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>map - 路由参数</li>
 </ul>
-<h3 id="all">all</h3>
+<hr>
 <p>添加一条接受所有 http 方法路由规则</p>
 <pre><code class="lang-JavaScript">Routing.all(<span class="hljs-built_in">String</span> pattern,
                 Handler hdlr);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>pattern - 消息匹配格式</li>
 <li>hdlr - 内置消息处理器，处理函数，链式处理数组，路由对象，详见 mq.Handler</li>
@@ -279,16 +274,16 @@ var routing = new mq.Routing({
 <p>添加一组 GET 方法路由规则</p>
 <pre><code class="lang-JavaScript">Routing.get(<span class="hljs-built_in">Object</span> map);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>map - 路由参数</li>
 </ul>
-<h3 id="get">get</h3>
+<hr>
 <p>添加一条接受 http GET 方法路由规则</p>
 <pre><code class="lang-JavaScript">Routing.get(<span class="hljs-built_in">String</span> pattern,
                 Handler hdlr);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>pattern - 消息匹配格式</li>
 <li>hdlr - 内置消息处理器，处理函数，链式处理数组，路由对象，详见 mq.Handler</li>
@@ -297,16 +292,16 @@ var routing = new mq.Routing({
 <p>添加一组接受 http POST 方法路由规则</p>
 <pre><code class="lang-JavaScript">Routing.post(<span class="hljs-built_in">Object</span> map);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>map - 路由参数</li>
 </ul>
-<h3 id="post">post</h3>
+<hr>
 <p>添加一条接受 http POST 方法路由规则</p>
 <pre><code class="lang-JavaScript">Routing.post(<span class="hljs-built_in">String</span> pattern,
                 Handler hdlr);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>pattern - 消息匹配格式</li>
 <li>hdlr - 内置消息处理器，处理函数，链式处理数组，路由对象，详见 mq.Handler</li>
@@ -315,16 +310,16 @@ var routing = new mq.Routing({
 <p>添加一组接受 http DELETE 方法路由规则</p>
 <pre><code class="lang-JavaScript">Routing.del(<span class="hljs-built_in">Object</span> map);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>map - 路由参数</li>
 </ul>
-<h3 id="del">del</h3>
+<hr>
 <p>添加一条接受 http DELETE 方法路由规则</p>
 <pre><code class="lang-JavaScript">Routing.del(<span class="hljs-built_in">String</span> pattern,
                 Handler hdlr);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>pattern - 消息匹配格式</li>
 <li>hdlr - 内置消息处理器，处理函数，链式处理数组，路由对象，详见 mq.Handler</li>
@@ -333,16 +328,16 @@ var routing = new mq.Routing({
 <p>添加一组 PUT 方法路由规则</p>
 <pre><code class="lang-JavaScript">Routing.put(<span class="hljs-built_in">Object</span> map);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>map - 路由参数</li>
 </ul>
-<h3 id="put">put</h3>
+<hr>
 <p>添加一条接受 http PUT 方法路由规则</p>
 <pre><code class="lang-JavaScript">Routing.put(<span class="hljs-built_in">String</span> pattern,
                 Handler hdlr);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>pattern - 消息匹配格式</li>
 <li>hdlr - 内置消息处理器，处理函数，链式处理数组，路由对象，详见 mq.Handler</li>
@@ -351,16 +346,16 @@ var routing = new mq.Routing({
 <p>添加一组 PATCH 方法路由规则</p>
 <pre><code class="lang-JavaScript">Routing.patch(<span class="hljs-built_in">Object</span> map);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>map - 路由参数</li>
 </ul>
-<h3 id="patch">patch</h3>
+<hr>
 <p>添加一条接受 http PATCH 方法路由规则</p>
 <pre><code class="lang-JavaScript">Routing.patch(<span class="hljs-built_in">String</span> pattern,
                 Handler hdlr);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>pattern - 消息匹配格式</li>
 <li>hdlr - 内置消息处理器，处理函数，链式处理数组，路由对象，详见 mq.Handler</li>
@@ -369,11 +364,11 @@ var routing = new mq.Routing({
 <p>处理一个消息或对象</p>
 <pre><code class="lang-JavaScript">Handler Routing.invoke(object v);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>v - 指定处理的消息或对象</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回下一步的处理器</li>
 </ul>
@@ -385,11 +380,11 @@ var routing = new mq.Routing({
 <p>比较当前对象与给定的对象是否相等</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">Boolean</span> Routing.equals(object expected);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>expected - 制定比较的目标对象</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回对象比较的结果</li>
 </ul>
@@ -397,7 +392,7 @@ var routing = new mq.Routing({
 <p>返回对象的字符串表示，一般返回 &#34;[Native Object]&#34;，对象可以根据自己的特性重新实现</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> Routing.toString();
 </code></pre>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回对象的字符串表示</li>
 </ul>
@@ -405,11 +400,11 @@ var routing = new mq.Routing({
 <p>返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合</p>
 <pre><code class="lang-JavaScript">Value Routing.toJSON(<span class="hljs-built_in">String</span> key = <span class="hljs-string">""</span>);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>key - 未使用</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回包含可 JSON 序列化的值</li>
 </ul>
@@ -417,7 +412,7 @@ var routing = new mq.Routing({
 <p>返回对象本身的数值</p>
 <pre><code class="lang-JavaScript">Value Routing.valueOf();
 </code></pre>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回对象本身的数值</li>
 </ul>

@@ -2,11 +2,11 @@
 Redis 数据库客户端 List 对象，此对象为包含指定 key 的客户端，只有调用其方法才会操作数据库
 
 用以操作 Redis 的 List 对象，创建方法：
-@code
-var db = require(&#34;db&#34;);
-var rdb = new db.openRedis(&#34;redis-server&#34;);
-var list = rdb.getList(&#34;test&#34;);
-@endcode
+```JavaScript
+var db = require("db");
+var rdb = new db.openRedis("redis-server");
+var list = rdb.getList("test");
+```
 ## 函数
         
 ### push
@@ -15,22 +15,22 @@ var list = rdb.getList(&#34;test&#34;);
 Integer RedisList.push(Array values);
 ```
 
-**调用参数:**
+调用参数:
 * values - 指定要插入的数据
 
-**返回结果:**
+返回结果:
 * 插入后，列表的长度
 
-### push
+--------------------------
 将一个或多个值 value 插入到列表的表头
 ```JavaScript
 Integer RedisList.push(...);
 ```
 
-**调用参数:**
+调用参数:
 * ... - 指定要插入的数据
 
-**返回结果:**
+返回结果:
 * 插入后，列表的长度
 
 ### pop
@@ -39,7 +39,7 @@ Integer RedisList.push(...);
 Buffer RedisList.pop();
 ```
 
-**返回结果:**
+返回结果:
 * 列表的头元素，如果列表为空则返回 null
 
 ### rpush
@@ -48,22 +48,22 @@ Buffer RedisList.pop();
 Integer RedisList.rpush(Array values);
 ```
 
-**调用参数:**
+调用参数:
 * values - 指定要插入的数据
 
-**返回结果:**
+返回结果:
 * 插入后，列表的长度
 
-### rpush
+--------------------------
 将一个或多个值 value 插入到列表的表尾(最右边)
 ```JavaScript
 Integer RedisList.rpush(...);
 ```
 
-**调用参数:**
+调用参数:
 * ... - 指定要插入的数据
 
-**返回结果:**
+返回结果:
 * 插入后，列表的长度
 
 ### rpop
@@ -72,7 +72,7 @@ Integer RedisList.rpush(...);
 Buffer RedisList.rpop();
 ```
 
-**返回结果:**
+返回结果:
 * 列表的头元素，如果列表为空则返回 null
 
 ### set
@@ -82,7 +82,7 @@ RedisList.set(Integer index,
                 Buffer value);
 ```
 
-**调用参数:**
+调用参数:
 * index - 指定要修改的下标
 * value - 指定要修改的数据
 
@@ -92,10 +92,10 @@ RedisList.set(Integer index,
 Buffer RedisList.get(Integer index);
 ```
 
-**调用参数:**
+调用参数:
 * index - 指定要查询的下标
 
-**返回结果:**
+返回结果:
 * 列表中下标为 index 的元素
 
 ### insertBefore
@@ -105,11 +105,11 @@ Integer RedisList.insertBefore(Buffer pivot,
                 Buffer value);
 ```
 
-**调用参数:**
+调用参数:
 * pivot - 指定插入时查找的数据
 * value - 指定要插入的数据
 
-**返回结果:**
+返回结果:
 * 插入后，列表的长度
 
 ### insertAfter
@@ -119,11 +119,11 @@ Integer RedisList.insertAfter(Buffer pivot,
                 Buffer value);
 ```
 
-**调用参数:**
+调用参数:
 * pivot - 指定插入时查找的数据
 * value - 指定要插入的数据
 
-**返回结果:**
+返回结果:
 * 插入后，列表的长度
 
 ### remove
@@ -133,11 +133,11 @@ Integer RedisList.remove(Integer count,
                 Buffer value);
 ```
 
-**调用参数:**
+调用参数:
 * count - 指定删除的元素数量
 * value - 指定要删除的数值
 
-**返回结果:**
+返回结果:
 * 被移除元素的数量
 
 ### trim
@@ -147,7 +147,7 @@ RedisList.trim(Integer start,
                 Integer stop);
 ```
 
-**调用参数:**
+调用参数:
 * start - 指定修剪的起始下标，0 表示第一个元素，-1 表示最后一个元素
 * stop - 指定修剪的结束下标，0 表示第一个元素，-1 表示最后一个元素
 
@@ -157,7 +157,7 @@ RedisList.trim(Integer start,
 Integer RedisList.len();
 ```
 
-**返回结果:**
+返回结果:
 * 返回列表的长度
 
 ### range
@@ -167,11 +167,11 @@ List RedisList.range(Integer start,
                 Integer stop);
 ```
 
-**调用参数:**
+调用参数:
 * start - 指定查询的起始下标，0 表示第一个元素，-1 表示最后一个元素
 * stop - 指定查询的结束下标，0 表示第一个元素，-1 表示最后一个元素
 
-**返回结果:**
+返回结果:
 * 包含指定区间内的元素的数组
 
 ### dispose
@@ -186,10 +186,10 @@ RedisList.dispose();
 Boolean RedisList.equals(object expected);
 ```
 
-**调用参数:**
+调用参数:
 * expected - 制定比较的目标对象
 
-**返回结果:**
+返回结果:
 * 返回对象比较的结果
 
 ### toString
@@ -198,7 +198,7 @@ Boolean RedisList.equals(object expected);
 String RedisList.toString();
 ```
 
-**返回结果:**
+返回结果:
 * 返回对象的字符串表示
 
 ### toJSON
@@ -207,10 +207,10 @@ String RedisList.toString();
 Value RedisList.toJSON(String key = "");
 ```
 
-**调用参数:**
+调用参数:
 * key - 未使用
 
-**返回结果:**
+返回结果:
 * 返回包含可 JSON 序列化的值
 
 ### valueOf
@@ -219,6 +219,6 @@ Value RedisList.toJSON(String key = "");
 Value RedisList.valueOf();
 ```
 
-**返回结果:**
+返回结果:
 * 返回对象本身的数值
 

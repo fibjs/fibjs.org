@@ -10,11 +10,11 @@ Stream ssl.connect(String url,
                 Integer timeout = 0);
 ```
 
-**调用参数:**
+调用参数:
 * url - 指定连接的协议，可以是：ssl://host:port
 * timeout - 指定超时时间，单位是毫秒，默认为0
 
-**返回结果:**
+返回结果:
 * 返回连接成功的 SslSocket 对象
 
 ### setClientCert
@@ -24,7 +24,7 @@ ssl.setClientCert(X509Cert crt,
                 PKey key);
 ```
 
-**调用参数:**
+调用参数:
 * crt - X509Cert 证书，用于客户端验证服务器
 * key - PKey 私钥，用于与客户端会话
 
@@ -36,7 +36,7 @@ ssl.loadClientCertFile(String crtFile,
                 String password = "");
 ```
 
-**调用参数:**
+调用参数:
 * crtFile - X509Cert 证书文件，用于客户端验证服务器
 * keyFile - PKey 私钥文件，用于与客户端会话
 * password - 解密密码

@@ -154,23 +154,22 @@
 </ul>
  </div></div></div>  </div></div><div class="content col-xs-12 col-sm-9"> <h1 id="-registry">模块 registry</h1>
 <p>Windows 注册表访问模块</p>
-<p>引用方式：
-@code
-var registry = require(&#39;registry&#39;);
-var value = registry.get(registry.CLASSES_ROOT, &#34;\node1\node2\value&#34;);
-@endcode</p>
+<p>引用方式：</p>
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">var</span> registry = <span class="hljs-built_in">require</span>(<span class="hljs-string">'registry'</span>);
+<span class="hljs-keyword">var</span> value = registry.get(registry.CLASSES_ROOT, <span class="hljs-string">"\node1\node2\value"</span>);
+</code></pre>
 <h2 id="-">函数</h2>
 <h3 id="listsubkey">listSubKey</h3>
 <p>返回指定键值下的所有子健</p>
 <pre><code class="lang-JavaScript">List registry.listSubKey(Integer root,
                 <span class="hljs-built_in">String</span> key);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>root - 指定注册表根</li>
 <li>key - 指定键值</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回该键值下所有子健</li>
 </ul>
@@ -179,12 +178,12 @@ var value = registry.get(registry.CLASSES_ROOT, &#34;\node1\node2\value&#34;);
 <pre><code class="lang-JavaScript">List registry.listValue(Integer root,
                 <span class="hljs-built_in">String</span> key);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>root - 指定注册表根</li>
 <li>key - 指定键值</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回该键值下所有数据的健</li>
 </ul>
@@ -193,12 +192,12 @@ var value = registry.get(registry.CLASSES_ROOT, &#34;\node1\node2\value&#34;);
 <pre><code class="lang-JavaScript">Value registry.get(Integer root,
                 <span class="hljs-built_in">String</span> key);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>root - 指定注册表根</li>
 <li>key - 指定键值</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回指定键值的数值</li>
 </ul>
@@ -209,46 +208,46 @@ var value = registry.get(registry.CLASSES_ROOT, &#34;\node1\node2\value&#34;);
                 <span class="hljs-built_in">Number</span> value,
                 Integer type = <span class="hljs-literal">undefined</span>);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>root - 指定注册表根</li>
 <li>key - 指定键值</li>
 <li>value - 指定数字</li>
 <li>type - 指定类型，允许的类型为 DWORD 和 QWORD，缺省为 DWORD</li>
 </ul>
-<h3 id="set">set</h3>
+<hr>
 <p>设置指定键值为字符串</p>
 <pre><code class="lang-JavaScript">registry.set(Integer root,
                 <span class="hljs-built_in">String</span> key,
                 <span class="hljs-built_in">String</span> value,
                 Integer type = <span class="hljs-literal">undefined</span>);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>root - 指定注册表根</li>
 <li>key - 指定键值</li>
 <li>value - 指定字符串</li>
 <li>type - 指定类型，允许的类型为 SZ 和 EXPAND_SZ，缺省为 SZ</li>
 </ul>
-<h3 id="set">set</h3>
+<hr>
 <p>设置指定键值为多字符串</p>
 <pre><code class="lang-JavaScript">registry.set(Integer root,
                 <span class="hljs-built_in">String</span> key,
                 <span class="hljs-built_in">Array</span> value);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>root - 指定注册表根</li>
 <li>key - 指定键值</li>
 <li>value - 指定多字符串数组</li>
 </ul>
-<h3 id="set">set</h3>
+<hr>
 <p>设置指定键值为二进制</p>
 <pre><code class="lang-JavaScript">registry.set(Integer root,
                 <span class="hljs-built_in">String</span> key,
                 Buffer value);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>root - 指定注册表根</li>
 <li>key - 指定键值</li>
@@ -259,7 +258,7 @@ var value = registry.get(registry.CLASSES_ROOT, &#34;\node1\node2\value&#34;);
 <pre><code class="lang-JavaScript">registry.del(Integer root,
                 <span class="hljs-built_in">String</span> key);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>root - 指定注册表根</li>
 <li>key - 指定键值</li>

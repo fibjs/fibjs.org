@@ -154,33 +154,45 @@
 </ul>
  </div></div></div>  </div></div><div class="content col-xs-12 col-sm-9"> <h1 id="-sslhandler">对象 SslHandler</h1>
 <p>ssl 协议转换处理器</p>
-<p>用以将数据流转换为 ssl 流协议。SslHandler 是对 SslSocket 的封装，用于构建服务器，逻辑上相当于：
-@code
-var ss = new ssl.Socket(crt, key);</p>
-<p>function(s){
-   var s1 = ss.accept(s);
+<p>用以将数据流转换为 ssl 流协议。SslHandler 是对 SslSocket 的封装，用于构建服务器，逻辑上相当于：</p>
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">var</span> ss = <span class="hljs-keyword">new</span> ssl.Socket(crt, key);
+
+<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">s</span>)</span>{
+   <span class="hljs-keyword">var</span> s1 = ss.accept(s);
    hdlr.invoke(s1);
    s1.close();
 }
-@endcode</p>
+</code></pre>
 <h2 id="-">构造函数</h2>
 <h3 id="sslhandler">SslHandler</h3>
 <p>SslHandler 构造函数，创建一个新的 SslHandler 对象</p>
 <pre><code class="lang-JavaScript"> <span class="hljs-keyword">new</span> SslHandler(<span class="hljs-built_in">Array</span> certs,
                 Handler hdlr);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
-<li>certs - 服务器证书列表，格式为</li>
+<li>certs - 服务器证书列表</li>
 <li>hdlr - 内置消息处理器，处理函数，链式处理数组，路由对象，详见 mq.Handler</li>
 </ul>
-<h3 id="sslhandler">SslHandler</h3>
+<p>certs 格式为：</p>
+<pre><code class="lang-JavaScript">[
+    {
+        <span class="hljs-attr">crt</span>: [X509Cert object],
+        <span class="hljs-attr">key</span>: [PKey object]
+    },
+    {
+        <span class="hljs-attr">crt</span>: [X509Cert object],
+        <span class="hljs-attr">key</span>: [PKey object]
+    }
+]
+</code></pre>
+<hr>
 <p>SslHandler 构造函数，创建一个新的 SslHandler 对象</p>
 <pre><code class="lang-JavaScript"> <span class="hljs-keyword">new</span> SslHandler(X509Cert crt,
                 PKey key,
                 Handler hdlr);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>crt - X509Cert 证书，用于客户端验证服务器</li>
 <li>key - PKey 私钥，用于与客户端会话</li>
@@ -191,11 +203,11 @@ var ss = new ssl.Socket(crt, key);</p>
 <p>处理一个消息或对象</p>
 <pre><code class="lang-JavaScript">Handler SslHandler.invoke(object v);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>v - 指定处理的消息或对象</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回下一步的处理器</li>
 </ul>
@@ -207,11 +219,11 @@ var ss = new ssl.Socket(crt, key);</p>
 <p>比较当前对象与给定的对象是否相等</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">Boolean</span> SslHandler.equals(object expected);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>expected - 制定比较的目标对象</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回对象比较的结果</li>
 </ul>
@@ -219,7 +231,7 @@ var ss = new ssl.Socket(crt, key);</p>
 <p>返回对象的字符串表示，一般返回 &#34;[Native Object]&#34;，对象可以根据自己的特性重新实现</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> SslHandler.toString();
 </code></pre>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回对象的字符串表示</li>
 </ul>
@@ -227,11 +239,11 @@ var ss = new ssl.Socket(crt, key);</p>
 <p>返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合</p>
 <pre><code class="lang-JavaScript">Value SslHandler.toJSON(<span class="hljs-built_in">String</span> key = <span class="hljs-string">""</span>);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>key - 未使用</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回包含可 JSON 序列化的值</li>
 </ul>
@@ -239,7 +251,7 @@ var ss = new ssl.Socket(crt, key);</p>
 <p>返回对象本身的数值</p>
 <pre><code class="lang-JavaScript">Value SslHandler.valueOf();
 </code></pre>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回对象本身的数值</li>
 </ul>

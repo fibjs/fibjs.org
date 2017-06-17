@@ -2,9 +2,9 @@
 网络访问模块
 
 基础模块。可用于创建和操作网络资源，引用方式：
-\code
-var net = require(&#39;net&#39;);
-\endcode
+```JavaScript
+var net = require('net');
+```
 ## 函数
         
 ### info
@@ -13,7 +13,7 @@ var net = require(&#39;net&#39;);
 Object net.info();
 ```
 
-**返回结果:**
+返回结果:
 * 返回网卡信息
 
 ### resolve
@@ -23,11 +23,11 @@ String net.resolve(String name,
                 Integer family = undefined);
 ```
 
-**调用参数:**
+调用参数:
 * name - 指定主机名
 * family - 指定查询返回类型，缺省为 AF_INET
 
-**返回结果:**
+返回结果:
 * 返回查询的 ip 字符串
 
 ### ip
@@ -36,10 +36,10 @@ String net.resolve(String name,
 String net.ip(String name);
 ```
 
-**调用参数:**
+调用参数:
 * name - 指定主机名
 
-**返回结果:**
+返回结果:
 * 返回查询的 ip 字符串
 
 ### ipv6
@@ -48,10 +48,10 @@ String net.ip(String name);
 String net.ipv6(String name);
 ```
 
-**调用参数:**
+调用参数:
 * name - 指定主机名
 
-**返回结果:**
+返回结果:
 * 返回查询的 ipv6 字符串
 
 ### connect
@@ -63,27 +63,27 @@ Stream net.connect(String host,
                 Integer family = undefined);
 ```
 
-**调用参数:**
+调用参数:
 * host - 指定对方地址或主机名
 * port - 指定对方端口
 * timeout - 指定超时时间，单位是毫秒，默认为0
 * family - 指定地址集，缺省为 AF_INET，ipv4
 
-**返回结果:**
+返回结果:
 * 返回连接成功的 Socket 对象
 
-### connect
+--------------------------
 创建一个 Socket 或 SslSocket 对象并建立连接
 ```JavaScript
 Stream net.connect(String url,
                 Integer timeout = 0);
 ```
 
-**调用参数:**
+调用参数:
 * url - 指定连接的协议，可以是：tcp://host:port 或者 ssl://host:port
 * timeout - 指定超时时间，单位是毫秒，默认为0
 
-**返回结果:**
+返回结果:
 * 返回连接成功的 Socket 或者 SslSocket 对象
 
 ### openSmtp
@@ -93,11 +93,11 @@ Smtp net.openSmtp(String url,
                 Integer timeout = 0);
 ```
 
-**调用参数:**
+调用参数:
 * url - 指定连接的协议，可以是：tcp://host:port 或者 ssl://host:port
 * timeout - 指定超时时间，单位是毫秒，默认为0
 
-**返回结果:**
+返回结果:
 * 返回连接成功的 Smtp 对象
 
 ### backend
@@ -106,7 +106,7 @@ Smtp net.openSmtp(String url,
 String net.backend();
 ```
 
-**返回结果:**
+返回结果:
 * 返回网络引擎名称
 
 ## 常量

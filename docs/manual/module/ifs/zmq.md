@@ -2,9 +2,9 @@
 zeroMQ 消息队列模块
 
 基础模块。提供 zeroMQ 消息队列支撑。
-\code
-var zmq = require(&#39;zmq&#39;);
-\endcode
+```JavaScript
+var zmq = require('zmq');
+```
 ## 常量
         
 ### PAIR

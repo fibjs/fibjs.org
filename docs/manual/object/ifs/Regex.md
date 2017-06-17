@@ -9,10 +9,10 @@
 Array Regex.exec(String str);
 ```
 
-**调用参数:**
+调用参数:
 * str - 要检索的字符串
 
-**返回结果:**
+返回结果:
 * 返回一个数组，其中存放匹配的结果。如果未找到匹配，则返回值为 null
 
 ### test
@@ -21,10 +21,10 @@ Array Regex.exec(String str);
 Boolean Regex.test(String str);
 ```
 
-**调用参数:**
+调用参数:
 * str - 要检索的字符串
 
-**返回结果:**
+返回结果:
 * 如果字符串 str 中含有匹配的文本，则返回 true，否则返回 false
 
 ### dispose
@@ -39,10 +39,10 @@ Regex.dispose();
 Boolean Regex.equals(object expected);
 ```
 
-**调用参数:**
+调用参数:
 * expected - 制定比较的目标对象
 
-**返回结果:**
+返回结果:
 * 返回对象比较的结果
 
 ### toString
@@ -51,7 +51,7 @@ Boolean Regex.equals(object expected);
 String Regex.toString();
 ```
 
-**返回结果:**
+返回结果:
 * 返回对象的字符串表示
 
 ### toJSON
@@ -60,10 +60,10 @@ String Regex.toString();
 Value Regex.toJSON(String key = "");
 ```
 
-**调用参数:**
+调用参数:
 * key - 未使用
 
-**返回结果:**
+返回结果:
 * 返回包含可 JSON 序列化的值
 
 ### valueOf
@@ -72,7 +72,7 @@ Value Regex.toJSON(String key = "");
 Value Regex.valueOf();
 ```
 
-**返回结果:**
+返回结果:
 * 返回对象本身的数值
 
 ## 属性

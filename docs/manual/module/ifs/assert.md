@@ -2,18 +2,18 @@
 断言测试模块，如果测试值为假，则报错，报错行为可设定继续运行或者错误抛出
 
 引用方法：
-@code
-var assert = require(&#39;assert&#39;);
-@endcode
+```JavaScript
+var assert = require('assert');
+```
 或者通过 test 模块引用：
-@code
-var test = require(&#39;test&#39;);
+```JavaScript
+var test = require('test');
 var assert = test.assert;
-@endcode
+```
 或者通过 test.setup 配置：
-@code
-require(&#34;test&#34;).setup();
-@endcode
+```JavaScript
+require("test").setup();
+```
 ## 函数
         
 ### Function
@@ -23,7 +23,7 @@ assert.Function(Value actual,
                 String msg = "");
 ```
 
-**调用参数:**
+调用参数:
 * actual - 要测试的数值
 * msg - 断言失败时的提示信息
 
@@ -34,7 +34,7 @@ assert.ok(Value actual,
                 String msg = "");
 ```
 
-**调用参数:**
+调用参数:
 * actual - 要测试的数值
 * msg - 断言失败时的提示信息
 
@@ -45,7 +45,7 @@ assert.notOk(Value actual,
                 String msg = "");
 ```
 
-**调用参数:**
+调用参数:
 * actual - 要测试的数值
 * msg - 断言失败时的提示信息
 
@@ -57,7 +57,7 @@ assert.equal(Value actual,
                 String msg = "");
 ```
 
-**调用参数:**
+调用参数:
 * actual - 要测试的数值
 * expected - 预期的数值
 * msg - 断言失败时的提示信息
@@ -70,7 +70,7 @@ assert.notEqual(Value actual,
                 String msg = "");
 ```
 
-**调用参数:**
+调用参数:
 * actual - 要测试的数值
 * expected - 预期的数值
 * msg - 断言失败时的提示信息
@@ -83,7 +83,7 @@ assert.strictEqual(Value actual,
                 String msg = "");
 ```
 
-**调用参数:**
+调用参数:
 * actual - 要测试的数值
 * expected - 预期的数值
 * msg - 断言失败时的提示信息
@@ -96,7 +96,7 @@ assert.notStrictEqual(Value actual,
                 String msg = "");
 ```
 
-**调用参数:**
+调用参数:
 * actual - 要测试的数值
 * expected - 预期的数值
 * msg - 断言失败时的提示信息
@@ -109,7 +109,7 @@ assert.deepEqual(Value actual,
                 String msg = "");
 ```
 
-**调用参数:**
+调用参数:
 * actual - 要测试的数值
 * expected - 预期的数值
 * msg - 断言失败时的提示信息
@@ -122,7 +122,7 @@ assert.notDeepEqual(Value actual,
                 String msg = "");
 ```
 
-**调用参数:**
+调用参数:
 * actual - 要测试的数值
 * expected - 预期的数值
 * msg - 断言失败时的提示信息
@@ -136,7 +136,7 @@ assert.closeTo(Value actual,
                 String msg = "");
 ```
 
-**调用参数:**
+调用参数:
 * actual - 要测试的数值
 * expected - 预期的数值
 * delta - 近似的小数精度
@@ -151,7 +151,7 @@ assert.notCloseTo(Value actual,
                 String msg = "");
 ```
 
-**调用参数:**
+调用参数:
 * actual - 要测试的数值
 * expected - 预期的数值
 * delta - 近似的小数精度
@@ -165,7 +165,7 @@ assert.lessThan(Value actual,
                 String msg = "");
 ```
 
-**调用参数:**
+调用参数:
 * actual - 要测试的数值
 * expected - 预期的数值
 * msg - 断言失败时的提示信息
@@ -178,7 +178,7 @@ assert.notLessThan(Value actual,
                 String msg = "");
 ```
 
-**调用参数:**
+调用参数:
 * actual - 要测试的数值
 * expected - 预期的数值
 * msg - 断言失败时的提示信息
@@ -191,7 +191,7 @@ assert.greaterThan(Value actual,
                 String msg = "");
 ```
 
-**调用参数:**
+调用参数:
 * actual - 要测试的数值
 * expected - 预期的数值
 * msg - 断言失败时的提示信息
@@ -204,7 +204,7 @@ assert.notGreaterThan(Value actual,
                 String msg = "");
 ```
 
-**调用参数:**
+调用参数:
 * actual - 要测试的数值
 * expected - 预期的数值
 * msg - 断言失败时的提示信息
@@ -216,7 +216,7 @@ assert.exist(Value actual,
                 String msg = "");
 ```
 
-**调用参数:**
+调用参数:
 * actual - 要测试的数值
 * msg - 断言失败时的提示信息
 
@@ -227,7 +227,7 @@ assert.notExist(Value actual,
                 String msg = "");
 ```
 
-**调用参数:**
+调用参数:
 * actual - 要测试的数值
 * msg - 断言失败时的提示信息
 
@@ -238,7 +238,7 @@ assert.isTrue(Value actual,
                 String msg = "");
 ```
 
-**调用参数:**
+调用参数:
 * actual - 要测试的数值
 * msg - 断言失败时的提示信息
 
@@ -249,7 +249,7 @@ assert.isNotTrue(Value actual,
                 String msg = "");
 ```
 
-**调用参数:**
+调用参数:
 * actual - 要测试的数值
 * msg - 断言失败时的提示信息
 
@@ -260,7 +260,7 @@ assert.isFalse(Value actual,
                 String msg = "");
 ```
 
-**调用参数:**
+调用参数:
 * actual - 要测试的数值
 * msg - 断言失败时的提示信息
 
@@ -271,7 +271,7 @@ assert.isNotFalse(Value actual,
                 String msg = "");
 ```
 
-**调用参数:**
+调用参数:
 * actual - 要测试的数值
 * msg - 断言失败时的提示信息
 
@@ -282,7 +282,7 @@ assert.isNull(Value actual,
                 String msg = "");
 ```
 
-**调用参数:**
+调用参数:
 * actual - 要测试的数值
 * msg - 断言失败时的提示信息
 
@@ -293,7 +293,7 @@ assert.isNotNull(Value actual,
                 String msg = "");
 ```
 
-**调用参数:**
+调用参数:
 * actual - 要测试的数值
 * msg - 断言失败时的提示信息
 
@@ -304,7 +304,7 @@ assert.isUndefined(Value actual,
                 String msg = "");
 ```
 
-**调用参数:**
+调用参数:
 * actual - 要测试的数值
 * msg - 断言失败时的提示信息
 
@@ -315,7 +315,7 @@ assert.isDefined(Value actual,
                 String msg = "");
 ```
 
-**调用参数:**
+调用参数:
 * actual - 要测试的数值
 * msg - 断言失败时的提示信息
 
@@ -326,7 +326,7 @@ assert.isFunction(Value actual,
                 String msg = "");
 ```
 
-**调用参数:**
+调用参数:
 * actual - 要测试的数值
 * msg - 断言失败时的提示信息
 
@@ -337,7 +337,7 @@ assert.isNotFunction(Value actual,
                 String msg = "");
 ```
 
-**调用参数:**
+调用参数:
 * actual - 要测试的数值
 * msg - 断言失败时的提示信息
 
@@ -348,7 +348,7 @@ assert.isObject(Value actual,
                 String msg = "");
 ```
 
-**调用参数:**
+调用参数:
 * actual - 要测试的数值
 * msg - 断言失败时的提示信息
 
@@ -359,7 +359,7 @@ assert.isNotObject(Value actual,
                 String msg = "");
 ```
 
-**调用参数:**
+调用参数:
 * actual - 要测试的数值
 * msg - 断言失败时的提示信息
 
@@ -370,7 +370,7 @@ assert.isArray(Value actual,
                 String msg = "");
 ```
 
-**调用参数:**
+调用参数:
 * actual - 要测试的数值
 * msg - 断言失败时的提示信息
 
@@ -381,7 +381,7 @@ assert.isNotArray(Value actual,
                 String msg = "");
 ```
 
-**调用参数:**
+调用参数:
 * actual - 要测试的数值
 * msg - 断言失败时的提示信息
 
@@ -392,7 +392,7 @@ assert.isString(Value actual,
                 String msg = "");
 ```
 
-**调用参数:**
+调用参数:
 * actual - 要测试的数值
 * msg - 断言失败时的提示信息
 
@@ -403,7 +403,7 @@ assert.isNotString(Value actual,
                 String msg = "");
 ```
 
-**调用参数:**
+调用参数:
 * actual - 要测试的数值
 * msg - 断言失败时的提示信息
 
@@ -414,7 +414,7 @@ assert.isNumber(Value actual,
                 String msg = "");
 ```
 
-**调用参数:**
+调用参数:
 * actual - 要测试的数值
 * msg - 断言失败时的提示信息
 
@@ -425,7 +425,7 @@ assert.isNotNumber(Value actual,
                 String msg = "");
 ```
 
-**调用参数:**
+调用参数:
 * actual - 要测试的数值
 * msg - 断言失败时的提示信息
 
@@ -436,7 +436,7 @@ assert.isBoolean(Value actual,
                 String msg = "");
 ```
 
-**调用参数:**
+调用参数:
 * actual - 要测试的数值
 * msg - 断言失败时的提示信息
 
@@ -447,7 +447,7 @@ assert.isNotBoolean(Value actual,
                 String msg = "");
 ```
 
-**调用参数:**
+调用参数:
 * actual - 要测试的数值
 * msg - 断言失败时的提示信息
 
@@ -459,7 +459,7 @@ assert.typeOf(Value actual,
                 String msg = "");
 ```
 
-**调用参数:**
+调用参数:
 * actual - 要测试的数值
 * type - 指定的类型
 * msg - 断言失败时的提示信息
@@ -472,7 +472,7 @@ assert.notTypeOf(Value actual,
                 String msg = "");
 ```
 
-**调用参数:**
+调用参数:
 * actual - 要测试的数值
 * type - 指定的类型
 * msg - 断言失败时的提示信息
@@ -485,7 +485,7 @@ assert.property(Value object,
                 String msg = "");
 ```
 
-**调用参数:**
+调用参数:
 * object - 要测试的对象
 * prop - 要测试的属性
 * msg - 断言失败时的提示信息
@@ -498,7 +498,7 @@ assert.notProperty(Value object,
                 String msg = "");
 ```
 
-**调用参数:**
+调用参数:
 * object - 要测试的对象
 * prop - 要测试的属性
 * msg - 断言失败时的提示信息
@@ -511,7 +511,7 @@ assert.deepProperty(Value object,
                 String msg = "");
 ```
 
-**调用参数:**
+调用参数:
 * object - 要测试的对象
 * prop - 要测试的属性，以“.”分割
 * msg - 断言失败时的提示信息
@@ -524,7 +524,7 @@ assert.notDeepProperty(Value object,
                 String msg = "");
 ```
 
-**调用参数:**
+调用参数:
 * object - 要测试的对象
 * prop - 要测试的属性，以“.”分割
 * msg - 断言失败时的提示信息
@@ -538,7 +538,7 @@ assert.propertyVal(Value object,
                 String msg = "");
 ```
 
-**调用参数:**
+调用参数:
 * object - 要测试的对象
 * prop - 要测试的属性
 * value - 给定的值
@@ -553,7 +553,7 @@ assert.propertyNotVal(Value object,
                 String msg = "");
 ```
 
-**调用参数:**
+调用参数:
 * object - 要测试的对象
 * prop - 要测试的属性
 * value - 给定的值
@@ -568,7 +568,7 @@ assert.deepPropertyVal(Value object,
                 String msg = "");
 ```
 
-**调用参数:**
+调用参数:
 * object - 要测试的对象
 * prop - 要测试的属性，以“.”分割
 * value - 给定的值
@@ -583,7 +583,7 @@ assert.deepPropertyNotVal(Value object,
                 String msg = "");
 ```
 
-**调用参数:**
+调用参数:
 * object - 要测试的对象
 * prop - 要测试的属性，以“.”分割
 * value - 给定的值
@@ -596,7 +596,7 @@ assert.throws(Function block,
                 String msg = "");
 ```
 
-**调用参数:**
+调用参数:
 * block - 指定测试的代码，以函数形式给出
 * msg - 断言失败时的提示信息
 
@@ -607,7 +607,7 @@ assert.doesNotThrow(Function block,
                 String msg = "");
 ```
 
-**调用参数:**
+调用参数:
 * block - 指定测试的代码，以函数形式给出
 * msg - 断言失败时的提示信息
 

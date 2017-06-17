@@ -154,11 +154,10 @@
 </ul>
  </div></div></div>  </div></div><div class="content col-xs-12 col-sm-9"> <h1 id="-message">对象 Message</h1>
 <p>基础消息对象</p>
-<p>Message 对象兼容于 mq 各个模块，可用于构建自定义消息处理系统，创建方法：
-@code
-var mq = require(&#34;mq&#34;);
-var m = new mq.Message();
-@endcode</p>
+<p>Message 对象兼容于 mq 各个模块，可用于构建自定义消息处理系统，创建方法：</p>
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">var</span> mq = <span class="hljs-built_in">require</span>(<span class="hljs-string">"mq"</span>);
+<span class="hljs-keyword">var</span> m = <span class="hljs-keyword">new</span> mq.Message();
+</code></pre>
 <h2 id="-">构造函数</h2>
 <h3 id="message">Message</h3>
 <p>消息对象构造函数</p>
@@ -169,11 +168,11 @@ var m = new mq.Message();
 <p>从流内读取指定大小的数据，此方法为 body 相应方法的别名</p>
 <pre><code class="lang-JavaScript">Buffer Message.read(Integer bytes = <span class="hljs-number">-1</span>);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>bytes - 指定要读取的数据量，缺省为读取随机大小的数据块，读出的数据尺寸取决于设备</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回从流内读取的数据，若无数据可读，或者连接中断，则返回 null</li>
 </ul>
@@ -181,7 +180,7 @@ var m = new mq.Message();
 <p>从流内读取剩余的全部数据，此方法为 body 相应方法的别名</p>
 <pre><code class="lang-JavaScript">Buffer Message.readAll();
 </code></pre>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回从流内读取的数据，若无数据可读，或者连接中断，则返回 null</li>
 </ul>
@@ -189,7 +188,7 @@ var m = new mq.Message();
 <p>写入给定的数据，此方法为 body 相应方法的别名</p>
 <pre><code class="lang-JavaScript">Message.write(Buffer data);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>data - 给定要写入的数据</li>
 </ul>
@@ -201,7 +200,7 @@ var m = new mq.Message();
 <p>查询当前消息是否结束</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">Boolean</span> Message.isEnded();
 </code></pre>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>结束则返回 true</li>
 </ul>
@@ -213,7 +212,7 @@ var m = new mq.Message();
 <p>发送格式化消息到给定的流对象</p>
 <pre><code class="lang-JavaScript">Message.sendTo(Stream stm);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>stm - 指定接收格式化消息的流对象</li>
 </ul>
@@ -221,7 +220,7 @@ var m = new mq.Message();
 <p>从给定的缓存流对象中读取格式化消息，并解析填充对象</p>
 <pre><code class="lang-JavaScript">Message.readFrom(Stream stm);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>stm - 指定读取格式化消息的流对象</li>
 </ul>
@@ -233,11 +232,11 @@ var m = new mq.Message();
 <p>比较当前对象与给定的对象是否相等</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">Boolean</span> Message.equals(object expected);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>expected - 制定比较的目标对象</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回对象比较的结果</li>
 </ul>
@@ -245,7 +244,7 @@ var m = new mq.Message();
 <p>返回对象的字符串表示，一般返回 &#34;[Native Object]&#34;，对象可以根据自己的特性重新实现</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> Message.toString();
 </code></pre>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回对象的字符串表示</li>
 </ul>
@@ -253,11 +252,11 @@ var m = new mq.Message();
 <p>返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合</p>
 <pre><code class="lang-JavaScript">Value Message.toJSON(<span class="hljs-built_in">String</span> key = <span class="hljs-string">""</span>);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>key - 未使用</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回包含可 JSON 序列化的值</li>
 </ul>
@@ -265,7 +264,7 @@ var m = new mq.Message();
 <p>返回对象本身的数值</p>
 <pre><code class="lang-JavaScript">Value Message.valueOf();
 </code></pre>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回对象本身的数值</li>
 </ul>

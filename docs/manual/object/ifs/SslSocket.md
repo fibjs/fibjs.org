@@ -2,9 +2,9 @@
 ssl 网络套接口对象
 
 SslSocket 属于 ssl 模块，创建方法
-\code
+```JavaScript
 var s = new ssl.Socket();
-\endcode
+```
 ## 构造函数
         
 ### SslSocket
@@ -13,17 +13,30 @@ SslSocket 构造函数，创建一个新的 SslSocket 对象
  new SslSocket(Array certs = []);
 ```
 
-**调用参数:**
-* certs - 服务器证书列表，格式为
+调用参数:
+* certs - 服务器证书列表
 
-### SslSocket
+certs 格式为：
+```JavaScript
+[
+    {
+        crt: [X509Cert object],
+        key: [PKey object]
+    },
+    {
+        crt: [X509Cert object],
+        key: [PKey object]
+    }
+]
+```
+--------------------------
 SslSocket 构造函数，创建一个新的 SslSocket 对象
 ```JavaScript
  new SslSocket(X509Cert crt,
                 PKey key);
 ```
 
-**调用参数:**
+调用参数:
 * crt - X509Cert 证书，用于客户端验证服务器
 * key - PKey 私钥，用于与客户端会话
 
@@ -36,11 +49,11 @@ Integer SslSocket.connect(Stream s,
                 String server_name = "");
 ```
 
-**调用参数:**
+调用参数:
 * s - 给定的底层连接
 * server_name - 指定服务器名称，可缺省
 
-**返回结果:**
+返回结果:
 * 连接成功返回 0，证书可选验证时，验证不成功则返回非 0，详细错误见 ssl 模块
 
 ### accept
@@ -49,10 +62,10 @@ Integer SslSocket.connect(Stream s,
 SslSocket SslSocket.accept(Stream s);
 ```
 
-**调用参数:**
+调用参数:
 * s - 给定的底层连接
 
-**返回结果:**
+返回结果:
 * 返回新建立的 SslSocket 对象
 
 ### read
@@ -61,10 +74,10 @@ SslSocket SslSocket.accept(Stream s);
 Buffer SslSocket.read(Integer bytes = -1);
 ```
 
-**调用参数:**
+调用参数:
 * bytes - 指定要读取的数据量，缺省为读取随机大小的数据块，读出的数据尺寸取决于设备
 
-**返回结果:**
+返回结果:
 * 返回从流内读取的数据，若无数据可读，或者连接中断，则返回 null
 
 ### write
@@ -73,7 +86,7 @@ Buffer SslSocket.read(Integer bytes = -1);
 SslSocket.write(Buffer data);
 ```
 
-**调用参数:**
+调用参数:
 * data - 给定要写入的数据
 
 ### close
@@ -89,11 +102,11 @@ Long SslSocket.copyTo(Stream stm,
                 Long bytes = -1);
 ```
 
-**调用参数:**
+调用参数:
 * stm - 目标流对象
 * bytes - 复制的字节数
 
-**返回结果:**
+返回结果:
 * 返回复制的字节数
 
 ### dispose
@@ -108,10 +121,10 @@ SslSocket.dispose();
 Boolean SslSocket.equals(object expected);
 ```
 
-**调用参数:**
+调用参数:
 * expected - 制定比较的目标对象
 
-**返回结果:**
+返回结果:
 * 返回对象比较的结果
 
 ### toString
@@ -120,7 +133,7 @@ Boolean SslSocket.equals(object expected);
 String SslSocket.toString();
 ```
 
-**返回结果:**
+返回结果:
 * 返回对象的字符串表示
 
 ### toJSON
@@ -129,10 +142,10 @@ String SslSocket.toString();
 Value SslSocket.toJSON(String key = "");
 ```
 
-**调用参数:**
+调用参数:
 * key - 未使用
 
-**返回结果:**
+返回结果:
 * 返回包含可 JSON 序列化的值
 
 ### valueOf
@@ -141,7 +154,7 @@ Value SslSocket.toJSON(String key = "");
 Value SslSocket.valueOf();
 ```
 
-**返回结果:**
+返回结果:
 * 返回对象本身的数值
 
 ## 属性

@@ -10,17 +10,17 @@
 通过使用条件变量，可以利用一个条件变量控制一批纤程的开关；
 
 以下是两个纤程调度的实例：
-@code
-var coroutine = require(&#34;coroutine&#34;);
+```JavaScript
+var coroutine = require("coroutine");
 var cond = new coroutine.Condition();
 var ready = false;
-var state = &#34;ready&#34;;
+var state = "ready";
 
 function funcwait() {
    cond.acquire();
    while (!ready)
        cond.wait();
-   state = &#34;go&#34;
+   state = "go"
    cond.release();
 }
 
@@ -32,11 +32,12 @@ ready = true;
 cond.notify();
 coroutine.sleep();
 console.log(state);
-
+```
 will output:
+```sh
 ready
 go
-@endcode
+```
 ## 构造函数
         
 ### Condition
@@ -45,13 +46,13 @@ go
  new Condition();
 ```
 
-### Condition
+--------------------------
 条件变量构造函数
 ```JavaScript
  new Condition(Lock lock);
 ```
 
-**调用参数:**
+调用参数:
 * lock - 使用自行构造的锁
 
 ## 函数
@@ -80,11 +81,17 @@ Condition.notifyAll();
 Boolean Condition.acquire(Boolean blocking = true);
 ```
 
-**调用参数:**
+调用参数:
 * blocking - 指定是否等待，为 true 时等待，缺省为真
 
-**返回结果:**
+返回结果:
 * 返回是否成功获取锁，为 true 表示成功获取
+
+acquire 方法用于获取锁的拥有权，当锁处于可获取状态时，此方法立即返回 true。
+
+当锁不可获取，且 blocking 为 true，则当前纤程进入休眠，当其他纤程释放锁后，此方法返回 true。
+
+当锁不可获取，且 blocking 为 false，则方法返回 false。
 
 ### release
 释放锁的拥有权
@@ -100,7 +107,7 @@ Condition.release();
 Integer Condition.count();
 ```
 
-**返回结果:**
+返回结果:
 * 返回任务数
 
 ### dispose
@@ -115,10 +122,10 @@ Condition.dispose();
 Boolean Condition.equals(object expected);
 ```
 
-**调用参数:**
+调用参数:
 * expected - 制定比较的目标对象
 
-**返回结果:**
+返回结果:
 * 返回对象比较的结果
 
 ### toString
@@ -127,7 +134,7 @@ Boolean Condition.equals(object expected);
 String Condition.toString();
 ```
 
-**返回结果:**
+返回结果:
 * 返回对象的字符串表示
 
 ### toJSON
@@ -136,10 +143,10 @@ String Condition.toString();
 Value Condition.toJSON(String key = "");
 ```
 
-**调用参数:**
+调用参数:
 * key - 未使用
 
-**返回结果:**
+返回结果:
 * 返回包含可 JSON 序列化的值
 
 ### valueOf
@@ -148,6 +155,6 @@ Value Condition.toJSON(String key = "");
 Value Condition.valueOf();
 ```
 
-**返回结果:**
+返回结果:
 * 返回对象本身的数值
 

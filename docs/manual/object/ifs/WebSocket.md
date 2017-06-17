@@ -2,11 +2,11 @@
 WebSocket 包协议转换处理器
 
 用以将 Http 协议转换为 WebSocket 包协议消息。创建方式：
-@code
-var ws = require(&#34;ws&#34;);
+```JavaScript
+var ws = require("ws");
 
 var sock = new ws.WebSocket(...);
-@endcode
+```
 ## 构造函数
         
 ### WebSocket
@@ -17,7 +17,7 @@ var sock = new ws.WebSocket(...);
                 String origin = "");
 ```
 
-**调用参数:**
+调用参数:
 
 ## 函数
         
@@ -28,7 +28,7 @@ WebSocket.close(Integer code = 1000,
                 String reason = "");
 ```
 
-**调用参数:**
+调用参数:
 
 ### send
 
@@ -36,15 +36,15 @@ WebSocket.close(Integer code = 1000,
 WebSocket.send(String data);
 ```
 
-**调用参数:**
+调用参数:
 
-### send
+--------------------------
 
 ```JavaScript
 WebSocket.send(Buffer data);
 ```
 
-**调用参数:**
+调用参数:
 
 ### on
 绑定一个事件处理函数到对象
@@ -53,23 +53,23 @@ Object WebSocket.on(String ev,
                 Function func);
 ```
 
-**调用参数:**
+调用参数:
 * ev - 指定事件的名称
 * func - 指定事件处理函数
 
-**返回结果:**
+返回结果:
 * 返回成功绑定的数量，如果函数已绑定则返回 0
 
-### on
+--------------------------
 绑定一个事件处理函数到对象
 ```JavaScript
 Object WebSocket.on(Object map);
 ```
 
-**调用参数:**
+调用参数:
 * map - 指定事件映射关系，对象属性名称将作为事件名称，属性的值将作为事件处理函数
 
-**返回结果:**
+返回结果:
 * 返回事件对象本身，便于链式调用
 
 ### addListener
@@ -79,23 +79,23 @@ Object WebSocket.addListener(String ev,
                 Function func);
 ```
 
-**调用参数:**
+调用参数:
 * ev - 指定事件的名称
 * func - 指定事件处理函数
 
-**返回结果:**
+返回结果:
 * 返回事件对象本身，便于链式调用
 
-### addListener
+--------------------------
 绑定一个事件处理函数到对象
 ```JavaScript
 Object WebSocket.addListener(Object map);
 ```
 
-**调用参数:**
+调用参数:
 * map - 指定事件映射关系，对象属性名称将作为事件名称，属性的值将作为事件处理函数
 
-**返回结果:**
+返回结果:
 * 返回事件对象本身，便于链式调用
 
 ### prependListener
@@ -105,24 +105,24 @@ Object WebSocket.prependListener(String ev,
                 Function func);
 ```
 
-**调用参数:**
+调用参数:
 * ev - 指定事件的名称
 * func - 指定事件处理函数
 
-**返回结果:**
+返回结果:
 * 返回成功绑定的数量，如果函数已绑定则返回 0
 
-### prependListener
+--------------------------
 绑定一个事件处理函数到对象起始
 ```JavaScript
 Object WebSocket.prependListener(Object map);
 ```
 
-**调用参数:**
+调用参数:
 * ev - 指定事件的名称
 * func - 指定事件处理函数
 
-**返回结果:**
+返回结果:
 * 返回成功绑定的数量，如果函数已绑定则返回 0
 
 ### once
@@ -132,23 +132,23 @@ Object WebSocket.once(String ev,
                 Function func);
 ```
 
-**调用参数:**
+调用参数:
 * ev - 指定事件的名称
 * func - 指定事件处理函数
 
-**返回结果:**
+返回结果:
 * 返回事件对象本身，便于链式调用
 
-### once
+--------------------------
 绑定一个一次性事件处理函数到对象，一次性处理函数只会触发一次
 ```JavaScript
 Object WebSocket.once(Object map);
 ```
 
-**调用参数:**
+调用参数:
 * map - 指定事件映射关系，对象属性名称将作为事件名称，属性的值将作为事件处理函数
 
-**返回结果:**
+返回结果:
 * 返回事件对象本身，便于链式调用
 
 ### prependOnceListener
@@ -158,24 +158,24 @@ Object WebSocket.prependOnceListener(String ev,
                 Function func);
 ```
 
-**调用参数:**
+调用参数:
 * ev - 指定事件的名称
 * func - 指定事件处理函数
 
-**返回结果:**
+返回结果:
 * 返回成功绑定的数量，如果函数已绑定则返回 0
 
-### prependOnceListener
+--------------------------
 绑定一个事件处理函数到对象起始
 ```JavaScript
 Object WebSocket.prependOnceListener(Object map);
 ```
 
-**调用参数:**
+调用参数:
 * ev - 指定事件的名称
 * func - 指定事件处理函数
 
-**返回结果:**
+返回结果:
 * 返回成功绑定的数量，如果函数已绑定则返回 0
 
 ### off
@@ -185,35 +185,35 @@ Object WebSocket.off(String ev,
                 Function func);
 ```
 
-**调用参数:**
+调用参数:
 * ev - 指定事件的名称
 * func - 指定事件处理函数
 
-**返回结果:**
+返回结果:
 * 返回事件对象本身，便于链式调用
 
-### off
+--------------------------
 取消对象处理队列中的全部函数
 ```JavaScript
 Object WebSocket.off(String ev);
 ```
 
-**调用参数:**
+调用参数:
 * ev - 指定事件的名称
 
-**返回结果:**
+返回结果:
 * 返回事件对象本身，便于链式调用
 
-### off
+--------------------------
 从对象处理队列中取消指定函数
 ```JavaScript
 Object WebSocket.off(Object map);
 ```
 
-**调用参数:**
+调用参数:
 * map - 指定事件映射关系，对象属性名称作为事件名称，属性的值作为事件处理函数
 
-**返回结果:**
+返回结果:
 * 返回事件对象本身，便于链式调用
 
 ### removeListener
@@ -223,35 +223,35 @@ Object WebSocket.removeListener(String ev,
                 Function func);
 ```
 
-**调用参数:**
+调用参数:
 * ev - 指定事件的名称
 * func - 指定事件处理函数
 
-**返回结果:**
+返回结果:
 * 返回事件对象本身，便于链式调用
 
-### removeListener
+--------------------------
 取消对象处理队列中的全部函数
 ```JavaScript
 Object WebSocket.removeListener(String ev);
 ```
 
-**调用参数:**
+调用参数:
 * ev - 指定事件的名称
 
-**返回结果:**
+返回结果:
 * 返回事件对象本身，便于链式调用
 
-### removeListener
+--------------------------
 从对象处理队列中取消指定函数
 ```JavaScript
 Object WebSocket.removeListener(Object map);
 ```
 
-**调用参数:**
+调用参数:
 * map - 指定事件映射关系，对象属性名称作为事件名称，属性的值作为事件处理函数
 
-**返回结果:**
+返回结果:
 * 返回事件对象本身，便于链式调用
 
 ### removeAllListeners
@@ -260,10 +260,10 @@ Object WebSocket.removeListener(Object map);
 Object WebSocket.removeAllListeners(Array evs = []);
 ```
 
-**调用参数:**
+调用参数:
 * evs - 指定事件的名称
 
-**返回结果:**
+返回结果:
 * 返回事件对象本身，便于链式调用
 
 ### setMaxListeners
@@ -272,7 +272,7 @@ Object WebSocket.removeAllListeners(Array evs = []);
 WebSocket.setMaxListeners(Integer n);
 ```
 
-**调用参数:**
+调用参数:
 * n - 指定事件的数量
 
 ### getMaxListeners
@@ -287,10 +287,10 @@ Integer WebSocket.getMaxListeners();
 Array WebSocket.listeners(String ev);
 ```
 
-**调用参数:**
+调用参数:
 * ev - 指定事件的名称
 
-**返回结果:**
+返回结果:
 * 返回指定事件的监听器数组
 
 ### listenerCount
@@ -299,10 +299,10 @@ Array WebSocket.listeners(String ev);
 Integer WebSocket.listenerCount(String ev);
 ```
 
-**调用参数:**
+调用参数:
 * ev - 指定事件的名称
 
-**返回结果:**
+返回结果:
 * 返回指定事件的监听器数量
 
 ### eventNames
@@ -311,7 +311,7 @@ Integer WebSocket.listenerCount(String ev);
 Array WebSocket.eventNames();
 ```
 
-**返回结果:**
+返回结果:
 * 返回事件名称数组
 
 ### emit
@@ -321,11 +321,11 @@ Boolean WebSocket.emit(String ev,
                 ...);
 ```
 
-**调用参数:**
+调用参数:
 * ev - 事件名称
 * ... - 事件参数，将会传递给事件处理函数
 
-**返回结果:**
+返回结果:
 * 返回事件触发状态，有响应事件返回 true，否则返回 false
 
 ### dispose
@@ -340,10 +340,10 @@ WebSocket.dispose();
 Boolean WebSocket.equals(object expected);
 ```
 
-**调用参数:**
+调用参数:
 * expected - 制定比较的目标对象
 
-**返回结果:**
+返回结果:
 * 返回对象比较的结果
 
 ### toString
@@ -352,7 +352,7 @@ Boolean WebSocket.equals(object expected);
 String WebSocket.toString();
 ```
 
-**返回结果:**
+返回结果:
 * 返回对象的字符串表示
 
 ### toJSON
@@ -361,10 +361,10 @@ String WebSocket.toString();
 Value WebSocket.toJSON(String key = "");
 ```
 
-**调用参数:**
+调用参数:
 * key - 未使用
 
-**返回结果:**
+返回结果:
 * 返回包含可 JSON 序列化的值
 
 ### valueOf
@@ -373,7 +373,7 @@ Value WebSocket.toJSON(String key = "");
 Value WebSocket.valueOf();
 ```
 
-**返回结果:**
+返回结果:
 * 返回对象本身的数值
 
 ## 属性

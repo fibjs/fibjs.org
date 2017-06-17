@@ -2,10 +2,10 @@
 Url 处理对象
 
 基础模块。提供 url 的格式化，解析与拼装
-\code
-var url = new net.Url(&#39;http://www.xici.net/&#39;);
-var url = new net.Url({protocol: &#39;http:&#39;, hostname:&#39;www.xici.net&#39;, pathname:&#39;/&#39;});
-\endcode
+```JavaScript
+var url = new net.Url('http://www.xici.net/');
+var url = new net.Url({protocol: 'http:', hostname:'www.xici.net', pathname:'/'});
+```
 ## 构造函数
         
 ### UrlObject
@@ -14,17 +14,17 @@ UrlObject 对象构造函数，使用参数构造
  new UrlObject(Object args);
 ```
 
-**调用参数:**
+调用参数:
 * args - 指定构造参数的字典对象，支持的字段有：protocol, slashes, username, password, hostname, port, pathname, query, hash
 
-### UrlObject
+--------------------------
 UrlObject 对象构造函数，使用 url 字符串构造
 ```JavaScript
  new UrlObject(String url = "",
                 Boolean parseQueryString = false);
 ```
 
-**调用参数:**
+调用参数:
 * url - 指定构造 url 字符串
 * parseQueryString - 指定是否解析 query
 
@@ -37,7 +37,7 @@ UrlObject.parse(String url,
                 Boolean parseQueryString = false);
 ```
 
-**调用参数:**
+调用参数:
 * url - 指定需要解析的 url 字符串
 * parseQueryString - 指定是否解析 query
 
@@ -47,7 +47,7 @@ UrlObject.parse(String url,
 UrlObject.format(Object args);
 ```
 
-**调用参数:**
+调用参数:
 * args - 指定构造参数的字典对象，支持的字段有：protocol, slashes, username, password, hostname, port, pathname, query, hash
 
 ### resolve
@@ -56,7 +56,7 @@ UrlObject.format(Object args);
 UrlObject UrlObject.resolve(String url);
 ```
 
-**调用参数:**
+调用参数:
 * url - 指定新的路径
 
 ### normalize
@@ -77,10 +77,10 @@ UrlObject.dispose();
 Boolean UrlObject.equals(object expected);
 ```
 
-**调用参数:**
+调用参数:
 * expected - 制定比较的目标对象
 
-**返回结果:**
+返回结果:
 * 返回对象比较的结果
 
 ### toString
@@ -89,7 +89,7 @@ Boolean UrlObject.equals(object expected);
 String UrlObject.toString();
 ```
 
-**返回结果:**
+返回结果:
 * 返回对象的字符串表示
 
 ### toJSON
@@ -98,10 +98,10 @@ String UrlObject.toString();
 Value UrlObject.toJSON(String key = "");
 ```
 
-**调用参数:**
+调用参数:
 * key - 未使用
 
-**返回结果:**
+返回结果:
 * 返回包含可 JSON 序列化的值
 
 ### valueOf
@@ -110,7 +110,7 @@ Value UrlObject.toJSON(String key = "");
 Value UrlObject.valueOf();
 ```
 
-**返回结果:**
+返回结果:
 * 返回对象本身的数值
 
 ## 属性

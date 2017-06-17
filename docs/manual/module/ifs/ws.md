@@ -2,9 +2,9 @@
 websocket 支持模块
 
 使用方法：
-@code
-var ws = require(&#39;ws&#39;);
-@endcode
+```JavaScript
+var ws = require('ws');
+```
 ## 函数
         
 ### connect
@@ -14,11 +14,11 @@ Stream ws.connect(String url,
                 String origin = "");
 ```
 
-**调用参数:**
+调用参数:
 * url - 指定连接的 url，支持 ws:// 和 wss:// 协议
 * origin - 指定连接的授权域名
 
-**返回结果:**
+返回结果:
 * 返回连接成功的 Stream 对象，可能为 Socket 或者 SslSocket
 
 ### upgrade
@@ -27,10 +27,10 @@ Stream ws.connect(String url,
 Handler ws.upgrade(Function accept);
 ```
 
-**调用参数:**
+调用参数:
 * accept - 连接成功处理函数，参数为 WebSocket 对象
 
-**返回结果:**
+返回结果:
 * 返回协议处理器，可与 HttpServer, Chain, Routing 等对接
 
 ## 常量

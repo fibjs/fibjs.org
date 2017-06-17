@@ -2,19 +2,19 @@
 https 服务器对象
 
 https 服务器对象是将 SslServer 和 HttpHandler 组合封装的对象，方便快速搭建服务器，逻辑上相当于：
-@code
+```JavaScript
 var svr = new net.SslServer(crt, key, addr, port, new http.Handler(function(req){
    ...
 }));
-@endcode
+```
 
 创建方法：
-@code
-var http = require(&#34;http&#34;);
+```JavaScript
+var http = require("http");
 var svr = new http.HttpsServer(crt, key, 443, function(req){
     ...
 });
-@endcode
+```
 ## 构造函数
         
 ### HttpsServer
@@ -25,12 +25,25 @@ HttpsServer 构造函数，在所有本机地址侦听
                 Handler hdlr);
 ```
 
-**调用参数:**
-* certs - 服务器证书列表，格式为
+调用参数:
+* certs - 服务器证书列表
 * port - 指定 http 服务器侦听端口
 * hdlr - http 内置消息处理器，处理函数，链式处理数组，路由对象，详见
 
-### HttpsServer
+certs 格式为：
+```JavaScript
+[
+    {
+        crt: [X509Cert object],
+        key: [PKey object]
+    },
+    {
+        crt: [X509Cert object],
+        key: [PKey object]
+    }
+]
+```
+--------------------------
 HttpsServer 构造函数
 ```JavaScript
  new HttpsServer(Array certs,
@@ -39,13 +52,26 @@ HttpsServer 构造函数
                 Handler hdlr);
 ```
 
-**调用参数:**
-* certs - 服务器证书列表，格式为
+调用参数:
+* certs - 服务器证书列表
 * addr - 指定 http 服务器侦听地址，为 &#34;&#34; 则在本机所有地址侦听
 * port - 指定 http 服务器侦听端口
 * hdlr - http 内置消息处理器，处理函数，链式处理数组，路由对象，详见
 
-### HttpsServer
+certs 格式为：
+```JavaScript
+[
+    {
+        crt: [X509Cert object],
+        key: [PKey object]
+    },
+    {
+        crt: [X509Cert object],
+        key: [PKey object]
+    }
+]
+```
+--------------------------
 HttpsServer 构造函数，在所有本机地址侦听
 ```JavaScript
  new HttpsServer(X509Cert crt,
@@ -54,13 +80,13 @@ HttpsServer 构造函数，在所有本机地址侦听
                 Handler hdlr);
 ```
 
-**调用参数:**
+调用参数:
 * crt - X509Cert 证书，用于客户端验证服务器
 * key - PKey 私钥，用于与客户端会话
 * port - 指定 http 服务器侦听端口
 * hdlr - http 内置消息处理器，处理函数，链式处理数组，路由对象，详见
 
-### HttpsServer
+--------------------------
 HttpsServer 构造函数
 ```JavaScript
  new HttpsServer(X509Cert crt,
@@ -70,7 +96,7 @@ HttpsServer 构造函数
                 Handler hdlr);
 ```
 
-**调用参数:**
+调用参数:
 * crt - X509Cert 证书，用于客户端验证服务器
 * key - PKey 私钥，用于与客户端会话
 * addr - 指定 http 服务器侦听地址，为 &#34;&#34; 则在本机所有地址侦听
@@ -85,8 +111,19 @@ HttpsServer 构造函数
 HttpsServer.onerror(Object hdlrs);
 ```
 
-**调用参数:**
+调用参数:
 * hdlrs - 指定不同的错误的处理器，key 是错误号，value 是处理器，可以是内置消息处理器，处理函数，链式处理数组，路由对象，详见 mq.Handler
+
+使用方式：
+```JavaScript
+  hdlr.onerror({
+      "404": function(v)
+              {
+                  ...
+              },
+      "500": new mq.Routing(...)
+  })
+```
 
 ### run
 运行服务器并开始接收和分发连接，此函数不会返回
@@ -118,10 +155,10 @@ HttpsServer.dispose();
 Boolean HttpsServer.equals(object expected);
 ```
 
-**调用参数:**
+调用参数:
 * expected - 制定比较的目标对象
 
-**返回结果:**
+返回结果:
 * 返回对象比较的结果
 
 ### toString
@@ -130,7 +167,7 @@ Boolean HttpsServer.equals(object expected);
 String HttpsServer.toString();
 ```
 
-**返回结果:**
+返回结果:
 * 返回对象的字符串表示
 
 ### toJSON
@@ -139,10 +176,10 @@ String HttpsServer.toString();
 Value HttpsServer.toJSON(String key = "");
 ```
 
-**调用参数:**
+调用参数:
 * key - 未使用
 
-**返回结果:**
+返回结果:
 * 返回包含可 JSON 序列化的值
 
 ### valueOf
@@ -151,7 +188,7 @@ Value HttpsServer.toJSON(String key = "");
 Value HttpsServer.valueOf();
 ```
 
-**返回结果:**
+返回结果:
 * 返回对象本身的数值
 
 ## 属性
@@ -199,7 +236,7 @@ readonly Stats HttpsServer.httpStats;
 ```
 
 返回的结果为一个 Stats 对象，结构如下：
-@code
+```JavaScript
 {
     total : 1000,    // 总计处理的请求
     pendding : 100,  // 当前正在处理的请求
@@ -210,7 +247,7 @@ readonly Stats HttpsServer.httpStats;
     error_404 : 12,  // 文件未找到的数量
     error_500 : 2    // 内部处理错误
 }
-@endcode
+```
 
 ### socket
 服务器当前侦听的 Socket 对象
@@ -231,12 +268,12 @@ readonly Stats HttpsServer.stats;
 ```
 
 返回的结果为一个 Stats 对象，初始化计数器如下：
-@code
+```JavaScript
 {
     total : 1000,      // 总计处理的连接
     connections : 100, // 当前正在处理的连接
     accept : 10,       // 上次查询后新建的连接
     close : 10         // 上次查询后关闭的连接
 }
-@endcode
+```
 

@@ -2,7 +2,7 @@
 ssl 协议转换处理器
 
 用以将数据流转换为 ssl 流协议。SslHandler 是对 SslSocket 的封装，用于构建服务器，逻辑上相当于：
-@code
+```JavaScript
 var ss = new ssl.Socket(crt, key);
 
 function(s){
@@ -10,7 +10,7 @@ function(s){
    hdlr.invoke(s1);
    s1.close();
 }
-@endcode
+```
 ## 构造函数
         
 ### SslHandler
@@ -20,11 +20,24 @@ SslHandler 构造函数，创建一个新的 SslHandler 对象
                 Handler hdlr);
 ```
 
-**调用参数:**
-* certs - 服务器证书列表，格式为
+调用参数:
+* certs - 服务器证书列表
 * hdlr - 内置消息处理器，处理函数，链式处理数组，路由对象，详见 mq.Handler
 
-### SslHandler
+certs 格式为：
+```JavaScript
+[
+    {
+        crt: [X509Cert object],
+        key: [PKey object]
+    },
+    {
+        crt: [X509Cert object],
+        key: [PKey object]
+    }
+]
+```
+--------------------------
 SslHandler 构造函数，创建一个新的 SslHandler 对象
 ```JavaScript
  new SslHandler(X509Cert crt,
@@ -32,7 +45,7 @@ SslHandler 构造函数，创建一个新的 SslHandler 对象
                 Handler hdlr);
 ```
 
-**调用参数:**
+调用参数:
 * crt - X509Cert 证书，用于客户端验证服务器
 * key - PKey 私钥，用于与客户端会话
 * hdlr - 内置消息处理器，处理函数，链式处理数组，路由对象，详见 mq.Handler
@@ -45,10 +58,10 @@ SslHandler 构造函数，创建一个新的 SslHandler 对象
 Handler SslHandler.invoke(object v);
 ```
 
-**调用参数:**
+调用参数:
 * v - 指定处理的消息或对象
 
-**返回结果:**
+返回结果:
 * 返回下一步的处理器
 
 ### dispose
@@ -63,10 +76,10 @@ SslHandler.dispose();
 Boolean SslHandler.equals(object expected);
 ```
 
-**调用参数:**
+调用参数:
 * expected - 制定比较的目标对象
 
-**返回结果:**
+返回结果:
 * 返回对象比较的结果
 
 ### toString
@@ -75,7 +88,7 @@ Boolean SslHandler.equals(object expected);
 String SslHandler.toString();
 ```
 
-**返回结果:**
+返回结果:
 * 返回对象的字符串表示
 
 ### toJSON
@@ -84,10 +97,10 @@ String SslHandler.toString();
 Value SslHandler.toJSON(String key = "");
 ```
 
-**调用参数:**
+调用参数:
 * key - 未使用
 
-**返回结果:**
+返回结果:
 * 返回包含可 JSON 序列化的值
 
 ### valueOf
@@ -96,7 +109,7 @@ Value SslHandler.toJSON(String key = "");
 Value SslHandler.valueOf();
 ```
 
-**返回结果:**
+返回结果:
 * 返回对象本身的数值
 
 ## 属性

@@ -2,10 +2,10 @@
 Windows 注册表访问模块
 
 引用方式：
-@code
-var registry = require(&#39;registry&#39;);
-var value = registry.get(registry.CLASSES_ROOT, &#34;\node1\node2\value&#34;);
-@endcode
+```JavaScript
+var registry = require('registry');
+var value = registry.get(registry.CLASSES_ROOT, "\node1\node2\value");
+```
 ## 函数
         
 ### listSubKey
@@ -15,11 +15,11 @@ List registry.listSubKey(Integer root,
                 String key);
 ```
 
-**调用参数:**
+调用参数:
 * root - 指定注册表根
 * key - 指定键值
 
-**返回结果:**
+返回结果:
 * 返回该键值下所有子健
 
 ### listValue
@@ -29,11 +29,11 @@ List registry.listValue(Integer root,
                 String key);
 ```
 
-**调用参数:**
+调用参数:
 * root - 指定注册表根
 * key - 指定键值
 
-**返回结果:**
+返回结果:
 * 返回该键值下所有数据的健
 
 ### get
@@ -43,11 +43,11 @@ Value registry.get(Integer root,
                 String key);
 ```
 
-**调用参数:**
+调用参数:
 * root - 指定注册表根
 * key - 指定键值
 
-**返回结果:**
+返回结果:
 * 返回指定键值的数值
 
 ### set
@@ -59,13 +59,13 @@ registry.set(Integer root,
                 Integer type = undefined);
 ```
 
-**调用参数:**
+调用参数:
 * root - 指定注册表根
 * key - 指定键值
 * value - 指定数字
 * type - 指定类型，允许的类型为 DWORD 和 QWORD，缺省为 DWORD
 
-### set
+--------------------------
 设置指定键值为字符串
 ```JavaScript
 registry.set(Integer root,
@@ -74,13 +74,13 @@ registry.set(Integer root,
                 Integer type = undefined);
 ```
 
-**调用参数:**
+调用参数:
 * root - 指定注册表根
 * key - 指定键值
 * value - 指定字符串
 * type - 指定类型，允许的类型为 SZ 和 EXPAND_SZ，缺省为 SZ
 
-### set
+--------------------------
 设置指定键值为多字符串
 ```JavaScript
 registry.set(Integer root,
@@ -88,12 +88,12 @@ registry.set(Integer root,
                 Array value);
 ```
 
-**调用参数:**
+调用参数:
 * root - 指定注册表根
 * key - 指定键值
 * value - 指定多字符串数组
 
-### set
+--------------------------
 设置指定键值为二进制
 ```JavaScript
 registry.set(Integer root,
@@ -101,7 +101,7 @@ registry.set(Integer root,
                 Buffer value);
 ```
 
-**调用参数:**
+调用参数:
 * root - 指定注册表根
 * key - 指定键值
 * value - 指定二进制数据
@@ -113,7 +113,7 @@ registry.del(Integer root,
                 String key);
 ```
 
-**调用参数:**
+调用参数:
 * root - 指定注册表根
 * key - 指定键值
 

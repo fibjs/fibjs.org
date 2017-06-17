@@ -2,9 +2,9 @@
 zlib 压缩解压模块
 
 使用方法：
-@code
-var zlib = require(&#39;zlib&#39;);
-@endcode
+```JavaScript
+var zlib = require('zlib');
+```
 ## 函数
         
 ### deflate
@@ -14,11 +14,11 @@ Buffer zlib.deflate(Buffer data,
                 Integer level = undefined);
 ```
 
-**调用参数:**
+调用参数:
 * data - 给定要压缩的数据
 * level - 指定压缩级别，缺省为 DEFAULT_COMPRESSION
 
-**返回结果:**
+返回结果:
 * 返回压缩后的二进制数据
 
 ### deflateTo
@@ -29,12 +29,12 @@ zlib.deflateTo(Buffer data,
                 Integer level = undefined);
 ```
 
-**调用参数:**
+调用参数:
 * data - 给定要压缩的数据
 * stm - 指定存储压缩数据的流
 * level - 指定压缩级别，缺省为 DEFAULT_COMPRESSION
 
-### deflateTo
+--------------------------
 使用 deflate 算法压缩源流中的数据到流对象中(zlib格式)
 ```JavaScript
 zlib.deflateTo(Stream src,
@@ -42,7 +42,7 @@ zlib.deflateTo(Stream src,
                 Integer level = undefined);
 ```
 
-**调用参数:**
+调用参数:
 * src - 给定要压缩的数据所在的流
 * stm - 指定存储压缩数据的流
 * level - 指定压缩级别，缺省为 DEFAULT_COMPRESSION
@@ -53,10 +53,10 @@ zlib.deflateTo(Stream src,
 Buffer zlib.inflate(Buffer data);
 ```
 
-**调用参数:**
+调用参数:
 * data - 给定压缩后的数据
 
-**返回结果:**
+返回结果:
 * 返回解压缩后的二进制数据
 
 ### inflateTo
@@ -66,18 +66,18 @@ zlib.inflateTo(Buffer data,
                 Stream stm);
 ```
 
-**调用参数:**
+调用参数:
 * data - 给定要解压缩的数据
 * stm - 指定存储解压缩数据的流
 
-### inflateTo
+--------------------------
 解压缩源流中 deflate 算法压缩的数据到流对象中(zlib格式)
 ```JavaScript
 zlib.inflateTo(Stream src,
                 Stream stm);
 ```
 
-**调用参数:**
+调用参数:
 * src - 给定要解压缩的数据所在的流
 * stm - 指定存储解压缩数据的流
 
@@ -87,10 +87,10 @@ zlib.inflateTo(Stream src,
 Buffer zlib.gzip(Buffer data);
 ```
 
-**调用参数:**
+调用参数:
 * data - 给定要压缩的数据
 
-**返回结果:**
+返回结果:
 * 返回压缩后的二进制数据
 
 ### gzipTo
@@ -100,18 +100,18 @@ zlib.gzipTo(Buffer data,
                 Stream stm);
 ```
 
-**调用参数:**
+调用参数:
 * data - 给定要压缩的数据
 * stm - 指定存储压缩数据的流
 
-### gzipTo
+--------------------------
 使用 gzip 算法压缩源流中的数据到流对象中
 ```JavaScript
 zlib.gzipTo(Stream src,
                 Stream stm);
 ```
 
-**调用参数:**
+调用参数:
 * src - 给定要压缩的数据所在的流
 * stm - 指定存储压缩数据的流
 
@@ -121,10 +121,10 @@ zlib.gzipTo(Stream src,
 Buffer zlib.gunzip(Buffer data);
 ```
 
-**调用参数:**
+调用参数:
 * data - 给定压缩后的数据
 
-**返回结果:**
+返回结果:
 * 返回解压缩后的二进制数据
 
 ### gunzipTo
@@ -134,18 +134,18 @@ zlib.gunzipTo(Buffer data,
                 Stream stm);
 ```
 
-**调用参数:**
+调用参数:
 * data - 给定要解压缩的数据
 * stm - 指定存储解压缩数据的流
 
-### gunzipTo
+--------------------------
 解压缩源流中 gzip 算法压缩的数据到流对象中
 ```JavaScript
 zlib.gunzipTo(Stream src,
                 Stream stm);
 ```
 
-**调用参数:**
+调用参数:
 * src - 给定要解压缩的数据所在的流
 * stm - 指定存储解压缩数据的流
 
@@ -156,11 +156,11 @@ Buffer zlib.deflateRaw(Buffer data,
                 Integer level = undefined);
 ```
 
-**调用参数:**
+调用参数:
 * data - 给定要压缩的数据
 * level - 指定压缩级别，缺省为 DEFAULT_COMPRESSION
 
-**返回结果:**
+返回结果:
 * 返回压缩后的二进制数据
 
 ### deflateRawTo
@@ -171,12 +171,12 @@ zlib.deflateRawTo(Buffer data,
                 Integer level = undefined);
 ```
 
-**调用参数:**
+调用参数:
 * data - 给定要压缩的数据
 * stm - 指定存储压缩数据的流
 * level - 指定压缩级别，缺省为 DEFAULT_COMPRESSION
 
-### deflateRawTo
+--------------------------
 使用 deflate 算法压缩源流中的数据到流对象中(deflateRaw)
 ```JavaScript
 zlib.deflateRawTo(Stream src,
@@ -184,7 +184,7 @@ zlib.deflateRawTo(Stream src,
                 Integer level = undefined);
 ```
 
-**调用参数:**
+调用参数:
 * src - 给定要压缩的数据所在的流
 * stm - 指定存储压缩数据的流
 * level - 指定压缩级别，缺省为 DEFAULT_COMPRESSION
@@ -195,10 +195,10 @@ zlib.deflateRawTo(Stream src,
 Buffer zlib.inflateRaw(Buffer data);
 ```
 
-**调用参数:**
+调用参数:
 * data - 给定压缩后的数据
 
-**返回结果:**
+返回结果:
 * 返回解压缩后的二进制数据
 
 ### inflateRawTo
@@ -208,18 +208,18 @@ zlib.inflateRawTo(Buffer data,
                 Stream stm);
 ```
 
-**调用参数:**
+调用参数:
 * data - 给定要解压缩的数据
 * stm - 指定存储解压缩数据的流
 
-### inflateRawTo
+--------------------------
 解压缩源流中 deflate 算法压缩的数据到流对象中(inflateRaw)
 ```JavaScript
 zlib.inflateRawTo(Stream src,
                 Stream stm);
 ```
 
-**调用参数:**
+调用参数:
 * src - 给定要解压缩的数据所在的流
 * stm - 指定存储解压缩数据的流
 

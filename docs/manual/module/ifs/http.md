@@ -10,12 +10,15 @@ Handler http.fileHandler(String root,
                 Object mimes = {});
 ```
 
-**调用参数:**
+调用参数:
 * root - 文件根路径
 * mimes - 扩展 mime 设置
 
-**返回结果:**
+返回结果:
 * 返回一个静态文件处理器用于处理 http 消息
+
+fileHandler 支持 gzip 预压缩，当请求接受 gzip 编码，且相同路径下 filename.ext.gz 文件存在时，将直接返回此文件，
+从而避免重复压缩带来服务器负载。
 
 ### request
 发送 http 请求到指定的流对象，并返回结果
@@ -24,14 +27,14 @@ HttpResponse http.request(Stream conn,
                 HttpRequest req);
 ```
 
-**调用参数:**
+调用参数:
 * conn - 指定处理请求的流对象
 * req - 要发送的 HttpRequest 对象
 
-**返回结果:**
+返回结果:
 * 返回服务器响应
 
-### request
+--------------------------
 请求指定的 url，并返回结果
 ```JavaScript
 HttpResponse http.request(String method,
@@ -39,15 +42,15 @@ HttpResponse http.request(String method,
                 Object headers = {});
 ```
 
-**调用参数:**
+调用参数:
 * method - 指定 http 请求方法：GET, POST 等
 * url - 指定 url，必须是包含主机的完整 url
 * headers - 指定附加的 http 头，缺省无附加头
 
-**返回结果:**
+返回结果:
 * 返回服务器响应
 
-### request
+--------------------------
 请求指定的 url，并返回结果
 ```JavaScript
 HttpResponse http.request(String method,
@@ -56,16 +59,16 @@ HttpResponse http.request(String method,
                 Map headers);
 ```
 
-**调用参数:**
+调用参数:
 * method - 指定 http 请求方法：GET, POST 等
 * url - 指定 url，必须是包含主机的完整 url
 * body - 指定发送的 body 内容
 * headers - 指定附加的 http 头
 
-**返回结果:**
+返回结果:
 * 返回服务器响应
 
-### request
+--------------------------
 请求指定的 url，并返回结果
 ```JavaScript
 HttpResponse http.request(String method,
@@ -74,16 +77,16 @@ HttpResponse http.request(String method,
                 Object headers = {});
 ```
 
-**调用参数:**
+调用参数:
 * method - 指定 http 请求方法：GET, POST 等
 * url - 指定 url，必须是包含主机的完整 url
 * body - 指定发送的 body 内容
 * headers - 指定附加的 http 头，缺省无附加头
 
-**返回结果:**
+返回结果:
 * 返回服务器响应
 
-### request
+--------------------------
 请求指定的 url，并返回结果
 ```JavaScript
 HttpResponse http.request(String method,
@@ -92,13 +95,13 @@ HttpResponse http.request(String method,
                 Object headers = {});
 ```
 
-**调用参数:**
+调用参数:
 * method - 指定 http 请求方法：GET, POST 等
 * url - 指定 url，必须是包含主机的完整 url
 * body - 指定发送的 body 内容
 * headers - 指定附加的 http 头，缺省无附加头
 
-**返回结果:**
+返回结果:
 * 返回服务器响应
 
 ### get
@@ -108,11 +111,11 @@ HttpResponse http.get(String url,
                 Object headers = {});
 ```
 
-**调用参数:**
+调用参数:
 * url - 指定 url，必须是包含主机的完整 url
 * headers - 指定附加的 http 头，缺省无附加头
 
-**返回结果:**
+返回结果:
 * 返回服务器响应
 
 ### post
@@ -123,15 +126,15 @@ HttpResponse http.post(String url,
                 Object headers = {});
 ```
 
-**调用参数:**
+调用参数:
 * url - 指定 url，必须是包含主机的完整 url
 * body - 指定发送的 body 内容
 * headers - 指定附加的 http 头，缺省无附加头
 
-**返回结果:**
+返回结果:
 * 返回服务器响应
 
-### post
+--------------------------
 用 POST 方法请求指定的 url，并返回结果，等同于 request(&#34;POST&#34;, ...)
 ```JavaScript
 HttpResponse http.post(String url,
@@ -139,26 +142,26 @@ HttpResponse http.post(String url,
                 Object headers = {});
 ```
 
-**调用参数:**
+调用参数:
 * url - 指定 url，必须是包含主机的完整 url
 * body - 指定发送的 body 内容
 * headers - 指定附加的 http 头，缺省无附加头
 
-**返回结果:**
+返回结果:
 * 返回服务器响应
 
-### post
+--------------------------
 用 POST 方法请求指定的 url，并返回结果，等同于 request(&#34;POST&#34;, ...)
 ```JavaScript
 HttpResponse http.post(String url,
                 Object headers = {});
 ```
 
-**调用参数:**
+调用参数:
 * url - 指定 url，必须是包含主机的完整 url
 * headers - 指定附加的 http 头，缺省无附加头
 
-**返回结果:**
+返回结果:
 * 返回服务器响应
 
 ### del
@@ -168,11 +171,11 @@ HttpResponse http.del(String url,
                 Object headers = {});
 ```
 
-**调用参数:**
+调用参数:
 * url - 指定 url，必须是包含主机的完整 url
 * headers - 指定附加的 http 头，缺省无附加头
 
-**返回结果:**
+返回结果:
 * 返回服务器响应
 
 ### put
@@ -183,15 +186,15 @@ HttpResponse http.put(String url,
                 Object headers = {});
 ```
 
-**调用参数:**
+调用参数:
 * url - 指定 url，必须是包含主机的完整 url
 * body - 指定发送的 body 内容
 * headers - 指定附加的 http 头，缺省无附加头
 
-**返回结果:**
+返回结果:
 * 返回服务器响应
 
-### put
+--------------------------
 用 PUT 方法请求指定的 url，并返回结果，等同于 request(&#34;PUT&#34;, ...)
 ```JavaScript
 HttpResponse http.put(String url,
@@ -199,26 +202,26 @@ HttpResponse http.put(String url,
                 Object headers = {});
 ```
 
-**调用参数:**
+调用参数:
 * url - 指定 url，必须是包含主机的完整 url
 * body - 指定发送的 body 内容
 * headers - 指定附加的 http 头，缺省无附加头
 
-**返回结果:**
+返回结果:
 * 返回服务器响应
 
-### put
+--------------------------
 用 PUT 方法请求指定的 url，并返回结果，等同于 request(&#34;PUT&#34;, ...)
 ```JavaScript
 HttpResponse http.put(String url,
                 Object headers = {});
 ```
 
-**调用参数:**
+调用参数:
 * url - 指定 url，必须是包含主机的完整 url
 * headers - 指定附加的 http 头，缺省无附加头
 
-**返回结果:**
+返回结果:
 * 返回服务器响应
 
 ### patch
@@ -229,15 +232,15 @@ HttpResponse http.patch(String url,
                 Object headers = {});
 ```
 
-**调用参数:**
+调用参数:
 * url - 指定 url，必须是包含主机的完整 url
 * body - 指定发送的 body 内容
 * headers - 指定附加的 http 头，缺省无附加头
 
-**返回结果:**
+返回结果:
 * 返回服务器响应
 
-### patch
+--------------------------
 用 PATCH 方法请求指定的 url，并返回结果，等同于 request(&#34;PATCH&#34;, ...)
 ```JavaScript
 HttpResponse http.patch(String url,
@@ -245,26 +248,26 @@ HttpResponse http.patch(String url,
                 Object headers = {});
 ```
 
-**调用参数:**
+调用参数:
 * url - 指定 url，必须是包含主机的完整 url
 * body - 指定发送的 body 内容
 * headers - 指定附加的 http 头，缺省无附加头
 
-**返回结果:**
+返回结果:
 * 返回服务器响应
 
-### patch
+--------------------------
 用 PATCH 方法请求指定的 url，并返回结果，等同于 request(&#34;PATCH&#34;, ...)
 ```JavaScript
 HttpResponse http.patch(String url,
                 Object headers = {});
 ```
 
-**调用参数:**
+调用参数:
 * url - 指定 url，必须是包含主机的完整 url
 * headers - 指定附加的 http 头，缺省无附加头
 
-**返回结果:**
+返回结果:
 * 返回服务器响应
 
 ## 属性

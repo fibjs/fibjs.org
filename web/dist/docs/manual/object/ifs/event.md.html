@@ -160,7 +160,7 @@
 <p>事件对象构造函数</p>
 <pre><code class="lang-JavaScript"> <span class="hljs-keyword">new</span> Event(<span class="hljs-built_in">Boolean</span> value = <span class="hljs-literal">false</span>);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>value - 指定是否等待，为 true 时等待，缺省为 false</li>
 </ul>
@@ -189,14 +189,17 @@
 <p>获取锁的拥有权</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">Boolean</span> Event.acquire(<span class="hljs-built_in">Boolean</span> blocking = <span class="hljs-literal">true</span>);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>blocking - 指定是否等待，为 true 时等待，缺省为真</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回是否成功获取锁，为 true 表示成功获取</li>
 </ul>
+<p>acquire 方法用于获取锁的拥有权，当锁处于可获取状态时，此方法立即返回 true。</p>
+<p>当锁不可获取，且 blocking 为 true，则当前纤程进入休眠，当其他纤程释放锁后，此方法返回 true。</p>
+<p>当锁不可获取，且 blocking 为 false，则方法返回 false。</p>
 <h3 id="release">release</h3>
 <p>释放锁的拥有权</p>
 <pre><code class="lang-JavaScript">Event.release();
@@ -206,7 +209,7 @@
 <p>查询当前等待任务数</p>
 <pre><code class="lang-JavaScript">Integer Event.count();
 </code></pre>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回任务数</li>
 </ul>
@@ -218,11 +221,11 @@
 <p>比较当前对象与给定的对象是否相等</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">Boolean</span> Event.equals(object expected);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>expected - 制定比较的目标对象</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回对象比较的结果</li>
 </ul>
@@ -230,7 +233,7 @@
 <p>返回对象的字符串表示，一般返回 &#34;[Native Object]&#34;，对象可以根据自己的特性重新实现</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> Event.toString();
 </code></pre>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回对象的字符串表示</li>
 </ul>
@@ -238,11 +241,11 @@
 <p>返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合</p>
 <pre><code class="lang-JavaScript">Value Event.toJSON(<span class="hljs-built_in">String</span> key = <span class="hljs-string">""</span>);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>key - 未使用</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回包含可 JSON 序列化的值</li>
 </ul>
@@ -250,7 +253,7 @@
 <p>返回对象本身的数值</p>
 <pre><code class="lang-JavaScript">Value Event.valueOf();
 </code></pre>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回对象本身的数值</li>
 </ul>

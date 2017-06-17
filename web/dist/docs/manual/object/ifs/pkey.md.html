@@ -154,10 +154,9 @@
 </ul>
  </div></div></div>  </div></div><div class="content col-xs-12 col-sm-9"> <h1 id="-pkey">对象 PKey</h1>
 <p>不对称加密算法对象</p>
-<p>PKey 对象属于 crypto 模块，创建：
-@code
-var k = new crypto.PKey();
-@endcode</p>
+<p>PKey 对象属于 crypto 模块，创建：</p>
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">var</span> k = <span class="hljs-keyword">new</span> crypto.PKey();
+</code></pre>
 <h2 id="-">构造函数</h2>
 <h3 id="pkey">PKey</h3>
 <p>PKey 构造函数</p>
@@ -168,7 +167,7 @@ var k = new crypto.PKey();
 <p>生成一个 RSA 私钥</p>
 <pre><code class="lang-JavaScript">PKey.genRsaKey(Integer size);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>size - 指定 RSA 密钥长度，bit 为单位</li>
 </ul>
@@ -176,7 +175,7 @@ var k = new crypto.PKey();
 <p>生成一个 EC 私钥</p>
 <pre><code class="lang-JavaScript">PKey.genEcKey(<span class="hljs-built_in">String</span> curve = <span class="hljs-string">"secp521r1"</span>);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>curve - 指定预置椭圆曲线，可选值为：&#34;secp521r1&#34;, &#34;brainpoolP512r1&#34;, &#34;secp384r1&#34;, &#34;brainpoolP384r1&#34;, &#34;secp256r1&#34;, &#34;secp256k1&#34;, &#34;brainpoolP256r1&#34;, &#34;secp224r1&#34;, &#34;secp224k1&#34;, &#34;secp192r1&#34;, &#34;secp192k1&#34;</li>
 </ul>
@@ -184,7 +183,7 @@ var k = new crypto.PKey();
 <p>查询当前密钥是否为私钥</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">Boolean</span> PKey.isPrivate();
 </code></pre>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>为 True 表示为私钥</li>
 </ul>
@@ -192,7 +191,7 @@ var k = new crypto.PKey();
 <p>复制当前密钥</p>
 <pre><code class="lang-JavaScript">PKey PKey.clone();
 </code></pre>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>当前密钥的复制对象</li>
 </ul>
@@ -201,17 +200,17 @@ var k = new crypto.PKey();
 <pre><code class="lang-JavaScript">PKey.importKey(Buffer DerKey,
                 <span class="hljs-built_in">String</span> password = <span class="hljs-string">""</span>);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>DerKey - DER 格式的密钥</li>
 <li>password - 解密密码</li>
 </ul>
-<h3 id="importkey">importKey</h3>
+<hr>
 <p>加载一个 PEM 格式的密钥</p>
 <pre><code class="lang-JavaScript">PKey.importKey(<span class="hljs-built_in">String</span> pemKey,
                 <span class="hljs-built_in">String</span> password = <span class="hljs-string">""</span>);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>pemKey - PEM 格式的密钥</li>
 <li>password - 解密密码</li>
@@ -221,7 +220,7 @@ var k = new crypto.PKey();
 <pre><code class="lang-JavaScript">PKey.importFile(<span class="hljs-built_in">String</span> filename,
                 <span class="hljs-built_in">String</span> password = <span class="hljs-string">""</span>);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>filename - 密钥文件名</li>
 <li>password - 解密密码</li>
@@ -230,7 +229,7 @@ var k = new crypto.PKey();
 <p>返回当前 key 的 PEM 格式编码</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> PKey.exportPem();
 </code></pre>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>当前 key 的 PEM 格式编码</li>
 </ul>
@@ -238,7 +237,7 @@ var k = new crypto.PKey();
 <p>返回当前 key 的 DER 格式编码</p>
 <pre><code class="lang-JavaScript">Buffer PKey.exportDer();
 </code></pre>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>当前 key 的 DER 格式编码</li>
 </ul>
@@ -246,11 +245,11 @@ var k = new crypto.PKey();
 <p>使用当前算法密码公钥加密数据</p>
 <pre><code class="lang-JavaScript">Buffer PKey.encrypt(Buffer data);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>data - 指定要加密的数据</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回加密后的数据</li>
 </ul>
@@ -258,11 +257,11 @@ var k = new crypto.PKey();
 <p>使用当前算法密码私钥解密数据</p>
 <pre><code class="lang-JavaScript">Buffer PKey.decrypt(Buffer data);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>data - 指定要解密的数据</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回解密后的数据</li>
 </ul>
@@ -271,12 +270,12 @@ var k = new crypto.PKey();
 <pre><code class="lang-JavaScript">Buffer PKey.sign(Buffer data,
                 Integer alg = <span class="hljs-number">0</span>);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>data - 指定要签名的数据</li>
 <li>alg - 指定要签名的算法, 默认0. 支持算法: 0=NONE,1=MD2,2=MD4,3=MD5,4=SHA1,5=SHA224,6=SHA256,7=SHA384,8=SHA512,9=RIPEMD160</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回签名后的数据</li>
 </ul>
@@ -285,12 +284,12 @@ var k = new crypto.PKey();
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">Boolean</span> PKey.verify(Buffer sign,
                 Buffer data);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>sign - 指定要验证的签名</li>
 <li>data - 指定要验证的数据</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回验证后的结果</li>
 </ul>
@@ -302,11 +301,11 @@ var k = new crypto.PKey();
 <p>比较当前对象与给定的对象是否相等</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">Boolean</span> PKey.equals(object expected);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>expected - 制定比较的目标对象</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回对象比较的结果</li>
 </ul>
@@ -314,7 +313,7 @@ var k = new crypto.PKey();
 <p>返回对象的字符串表示，一般返回 &#34;[Native Object]&#34;，对象可以根据自己的特性重新实现</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> PKey.toString();
 </code></pre>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回对象的字符串表示</li>
 </ul>
@@ -322,11 +321,11 @@ var k = new crypto.PKey();
 <p>返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合</p>
 <pre><code class="lang-JavaScript">Value PKey.toJSON(<span class="hljs-built_in">String</span> key = <span class="hljs-string">""</span>);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>key - 未使用</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回包含可 JSON 序列化的值</li>
 </ul>
@@ -334,7 +333,7 @@ var k = new crypto.PKey();
 <p>返回对象本身的数值</p>
 <pre><code class="lang-JavaScript">Value PKey.valueOf();
 </code></pre>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回对象本身的数值</li>
 </ul>
@@ -351,7 +350,7 @@ var k = new crypto.PKey();
 <p>返回当前密钥的公钥</p>
 <pre><code class="lang-JavaScript">readonly PKey PKey.publicKey;
 </code></pre>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>当前密钥的公钥</li>
 </ul>

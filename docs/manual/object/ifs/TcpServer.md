@@ -2,7 +2,7 @@
 tcp 服务器对象，可方便创建一个标准多纤程 tcp 服务器
 
 使用 TcpServer 对象可以迅速创建一个多纤程并发处理的 tcp 服务器。
-@code
+```JavaScript
 function func(conn)
 {
     var data;
@@ -14,7 +14,7 @@ function func(conn)
 }
 
 new net.TcpServer(8080, func).run();
-@endcode
+```
 ## 构造函数
         
 ### TcpServer
@@ -24,11 +24,11 @@ TcpServer 构造函数，在所有本机地址侦听
                 Handler listener);
 ```
 
-**调用参数:**
+调用参数:
 * port - 指定 tcp 服务器侦听端口
 * listener - 指定 tcp 接收到的内置消息处理器，处理函数，链式处理数组，路由对象，详见 mq.Handler
 
-### TcpServer
+--------------------------
 TcpServer 构造函数
 ```JavaScript
  new TcpServer(String addr,
@@ -36,7 +36,7 @@ TcpServer 构造函数
                 Handler listener);
 ```
 
-**调用参数:**
+调用参数:
 * addr - 指定 tcp 服务器侦听地址，为 &#34;&#34; 则在本机所有地址侦听
 * port - 指定 tcp 服务器侦听端口
 * listener - 指定 tcp 接收到的连接的内置消息处理器，处理函数，链式处理数组，路由对象，详见 mq.Handler
@@ -73,10 +73,10 @@ TcpServer.dispose();
 Boolean TcpServer.equals(object expected);
 ```
 
-**调用参数:**
+调用参数:
 * expected - 制定比较的目标对象
 
-**返回结果:**
+返回结果:
 * 返回对象比较的结果
 
 ### toString
@@ -85,7 +85,7 @@ Boolean TcpServer.equals(object expected);
 String TcpServer.toString();
 ```
 
-**返回结果:**
+返回结果:
 * 返回对象的字符串表示
 
 ### toJSON
@@ -94,10 +94,10 @@ String TcpServer.toString();
 Value TcpServer.toJSON(String key = "");
 ```
 
-**调用参数:**
+调用参数:
 * key - 未使用
 
-**返回结果:**
+返回结果:
 * 返回包含可 JSON 序列化的值
 
 ### valueOf
@@ -106,7 +106,7 @@ Value TcpServer.toJSON(String key = "");
 Value TcpServer.valueOf();
 ```
 
-**返回结果:**
+返回结果:
 * 返回对象本身的数值
 
 ## 属性
@@ -130,12 +130,12 @@ readonly Stats TcpServer.stats;
 ```
 
 返回的结果为一个 Stats 对象，初始化计数器如下：
-@code
+```JavaScript
 {
     total : 1000,      // 总计处理的连接
     connections : 100, // 当前正在处理的连接
     accept : 10,       // 上次查询后新建的连接
     close : 10         // 上次查询后关闭的连接
 }
-@endcode
+```
 

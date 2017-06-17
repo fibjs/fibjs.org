@@ -159,15 +159,27 @@
 <p>创建一个异步等待处理器</p>
 <pre><code class="lang-JavaScript">Handler mq.await();
 </code></pre>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回创建的处理器</li>
 </ul>
+<p>异步等待处理器用于需要异步处理的消息处理模式，示例如下：</p>
+<pre><code class="lang-JavaScript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">func</span>(<span class="hljs-params">v</span>)</span>{
+    <span class="hljs-keyword">var</span> <span class="hljs-keyword">await</span> = mq.await();
+
+    call_some_async_func(v1, v2, v3, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+            <span class="hljs-keyword">await</span>.end();
+        });
+
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">await</span>;
+}
+</code></pre>
+<p>示例是一个 javascript 消息处理函数，当函数返回时，消息处理引擎将等待 await，直到 await.end 被调用，才继续下一阶段的处理。</p>
 <h3 id="nullhandler">nullHandler</h3>
 <p>创建一个空处理器对象，次处理对象不做任何处理直接返回</p>
 <pre><code class="lang-JavaScript">Handler mq.nullHandler();
 </code></pre>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回空处理函数</li>
 </ul>
@@ -176,9 +188,10 @@
 <pre><code class="lang-JavaScript">mq.invoke(Handler hdlr,
                 object v);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>hdlr - 指定使用的处理器</li>
 <li>v - 指定要处理的消息或对象</li>
 </ul>
+<p>不同于处理器的 invoke 方法，此方法将循环调用每个处理器的返回处理器，直到处理器返回 null 为止。</p>
  </div></div><div class=container><div class=footer><p>&copy; 2017 fibjs.org</p></div></div><script type=text/javascript src=../../../../js/common.js></script><script type=text/javascript src=../../../../js/docs.js></script></body></html>

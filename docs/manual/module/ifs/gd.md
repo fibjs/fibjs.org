@@ -2,9 +2,9 @@
 图像文件处理模块
 
 基础模块。可用于创建和操作图像文件，引用方式：
-\code
-var gd = require(&#39;gd&#39;);
-\endcode
+```JavaScript
+var gd = require('gd');
+```
 ## 函数
         
 ### create
@@ -15,12 +15,12 @@ Image gd.create(Integer width,
                 Integer color = undefined);
 ```
 
-**调用参数:**
+调用参数:
 * width - 指定图像宽度
 * height - 指定图像高度
 * color - 指定图像类型，允许值为 gd.TRUECOLOR 或 gd.PALETTE
 
-**返回结果:**
+返回结果:
 * 返回创建成功的图像对象
 
 ### load
@@ -29,34 +29,34 @@ Image gd.create(Integer width,
 Image gd.load(Buffer data);
 ```
 
-**调用参数:**
+调用参数:
 * data - 给定解码的图像数据
 
-**返回结果:**
+返回结果:
 * 返回解码成功的图像对象
 
-### load
+--------------------------
 从流对象中解码图像
 ```JavaScript
 Image gd.load(SeekableStream stm);
 ```
 
-**调用参数:**
+调用参数:
 * stm - 给定图像数据所在的流对象
 
-**返回结果:**
+返回结果:
 * 返回解码成功的图像对象
 
-### load
+--------------------------
 从指定文件中解码图像
 ```JavaScript
 Image gd.load(String fname);
 ```
 
-**调用参数:**
+调用参数:
 * fname - 指定文件名
 
-**返回结果:**
+返回结果:
 * 返回解码成功的图像对象
 
 ### rgb
@@ -67,12 +67,12 @@ Integer gd.rgb(Integer red,
                 Integer blue);
 ```
 
-**调用参数:**
+调用参数:
 * red - 红色分量，范围为 0-255
 * green - 绿色分量，范围为 0-255
 * blue - 蓝色分量，范围为 0-255
 
-**返回结果:**
+返回结果:
 * 返回组合颜色
 
 ### rgba
@@ -84,13 +84,13 @@ Integer gd.rgba(Integer red,
                 Number alpha);
 ```
 
-**调用参数:**
+调用参数:
 * red - 红色分量，范围为 0-255
 * green - 绿色分量，范围为 0-255
 * blue - 蓝色分量，范围为 0-255
 * alpha - 透明分量，范围为 0.0-1.0
 
-**返回结果:**
+返回结果:
 * 返回组合颜色
 
 ### hsl
@@ -101,12 +101,12 @@ Integer gd.hsl(Number hue,
                 Number lightness);
 ```
 
-**调用参数:**
+调用参数:
 * hue - 色相分量，范围为 0-360
 * saturation - 饱和度分量，范围为 0.0-1.0
 * lightness - 亮度分量，范围为 0.0-1.0
 
-**返回结果:**
+返回结果:
 * 返回组合颜色
 
 ### hsla
@@ -118,13 +118,13 @@ Integer gd.hsla(Number hue,
                 Number alpha);
 ```
 
-**调用参数:**
+调用参数:
 * hue - 色相分量，范围为 0-360
 * saturation - 饱和度分量，范围为 0.0-1.0
 * lightness - 亮度分量，范围为 0.0-1.0
 * alpha - 透明分量，范围为 0.0-1.0
 
-**返回结果:**
+返回结果:
 * 返回组合颜色
 
 ### hsb
@@ -135,12 +135,12 @@ Integer gd.hsb(Number hue,
                 Number brightness);
 ```
 
-**调用参数:**
+调用参数:
 * hue - 色相分量，范围为 0-360
 * saturation - 饱和度分量，范围为 0.0-1.0
 * brightness - 明亮程度分量，范围为 0.0-1.0
 
-**返回结果:**
+返回结果:
 * 返回组合颜色
 
 ### hsba
@@ -152,13 +152,13 @@ Integer gd.hsba(Number hue,
                 Number alpha);
 ```
 
-**调用参数:**
+调用参数:
 * hue - 色相分量，范围为 0-360
 * saturation - 饱和度分量，范围为 0.0-1.0
 * brightness - 明亮程度分量，范围为 0.0-1.0
 * alpha - 透明分量，范围为 0.0-1.0
 
-**返回结果:**
+返回结果:
 * 返回组合颜色
 
 ### color
@@ -167,10 +167,10 @@ Integer gd.hsba(Number hue,
 Integer gd.color(String color);
 ```
 
-**调用参数:**
+调用参数:
 * color - 指定颜色的字符串，如：&#34;#ff0000&#34;, &#34;ff0000&#34;, &#34;#f00&#34;, &#34;f00&#34;
 
-**返回结果:**
+返回结果:
 * 返回组合颜色
 
 ## 常量

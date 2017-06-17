@@ -2,10 +2,10 @@
 字典对象
 
 用以创建和管理字典对象，创建方法：
-@code
-var collection = require(&#34;collection&#34;);
+```JavaScript
+var collection = require("collection");
 var m = new collection.Map();
-@endcode
+```
 ## 构造函数
         
 ### Map
@@ -14,13 +14,13 @@ Map 构造函数
  new Map();
 ```
 
-### Map
+--------------------------
 Map 构造函数
 ```JavaScript
  new Map(Object map);
 ```
 
-**调用参数:**
+调用参数:
 * map - 用于初始化的 js 字典对象
 
 ## 函数
@@ -37,10 +37,10 @@ Map.clear();
 Boolean Map.has(String name);
 ```
 
-**调用参数:**
+调用参数:
 * name - 指定要检查的键值
 
-**返回结果:**
+返回结果:
 * 返回键值是否存在
 
 ### get
@@ -49,10 +49,10 @@ Boolean Map.has(String name);
 Variant Map.get(String name);
 ```
 
-**调用参数:**
+调用参数:
 * name - 指定要查询的键值
 
-**返回结果:**
+返回结果:
 * 返回键值所对应的值，若不存在，则返回 null
 
 ### put
@@ -61,17 +61,17 @@ Variant Map.get(String name);
 Map.put(Object map);
 ```
 
-**调用参数:**
+调用参数:
 * map - 指定要设定的键值数据字典
 
-### put
+--------------------------
 添加一个键值数据
 ```JavaScript
 Map.put(String name,
                 Variant value);
 ```
 
-**调用参数:**
+调用参数:
 * name - 指定要设定的键值
 * value - 指定要设定的数据
 
@@ -81,17 +81,17 @@ Map.put(String name,
 Map.set(Object map);
 ```
 
-**调用参数:**
+调用参数:
 * map - 指定要设定的键值数据字典
 
-### set
+--------------------------
 设定一个键值数据，键值不存在则插入新数据
 ```JavaScript
 Map.set(String name,
                 Variant value);
 ```
 
-**调用参数:**
+调用参数:
 * name - 指定要设定的键值
 * value - 指定要设定的数据
 
@@ -101,7 +101,7 @@ Map.set(String name,
 Map.remove(String name);
 ```
 
-**调用参数:**
+调用参数:
 * name - 指定要删除的键值
 
 ### isEmpty
@@ -110,7 +110,7 @@ Map.remove(String name);
 Boolean Map.isEmpty();
 ```
 
-**返回结果:**
+返回结果:
 * 容器内无数值则返回 true
 
 ### dispose
@@ -125,10 +125,10 @@ Map.dispose();
 Boolean Map.equals(object expected);
 ```
 
-**调用参数:**
+调用参数:
 * expected - 制定比较的目标对象
 
-**返回结果:**
+返回结果:
 * 返回对象比较的结果
 
 ### toString
@@ -137,7 +137,7 @@ Boolean Map.equals(object expected);
 String Map.toString();
 ```
 
-**返回结果:**
+返回结果:
 * 返回对象的字符串表示
 
 ### toJSON
@@ -146,10 +146,10 @@ String Map.toString();
 Value Map.toJSON(String key = "");
 ```
 
-**调用参数:**
+调用参数:
 * key - 未使用
 
-**返回结果:**
+返回结果:
 * 返回包含可 JSON 序列化的值
 
 ### valueOf
@@ -158,7 +158,7 @@ Value Map.toJSON(String key = "");
 Value Map.valueOf();
 ```
 
-**返回结果:**
+返回结果:
 * 返回对象本身的数值
 
 ## 属性

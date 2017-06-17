@@ -154,40 +154,39 @@
 </ul>
  </div></div></div>  </div></div><div class="content col-xs-12 col-sm-9"> <h1 id="-process">模块 process</h1>
 <p>进程处理模块，用以管理当前进程的资源</p>
-<p>引用方法：
-@code
-var process = require(&#39;process&#39;);
-@endcode</p>
+<p>引用方法：</p>
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">var</span> process = <span class="hljs-built_in">require</span>(<span class="hljs-string">'process'</span>);
+</code></pre>
 <h2 id="-">函数</h2>
 <h3 id="umask">umask</h3>
 <p>改变当前的 umask，Windows 不支持此方法</p>
 <pre><code class="lang-JavaScript">Integer process.umask(Integer mask);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>mask - 指定新的掩码</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回之前的 mask</li>
 </ul>
-<h3 id="umask">umask</h3>
+<hr>
 <p>改变当前的 umask，Windows 不支持此方法</p>
 <pre><code class="lang-JavaScript">Integer process.umask(<span class="hljs-built_in">String</span> mask);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>mask - 指定新的掩码， 字符串类型八进制(e.g: &#34;0664&#34;)</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回之前的 mask</li>
 </ul>
-<h3 id="umask">umask</h3>
+<hr>
 <p>返回当前的 umask，Windows 不支持此方法</p>
 <pre><code class="lang-JavaScript">Integer process.umask();
 </code></pre>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回当前的 mask 值</li>
 </ul>
@@ -195,7 +194,7 @@ var process = require(&#39;process&#39;);
 <p>退出当前进程，并返回结果</p>
 <pre><code class="lang-JavaScript">process.exit(Integer code);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>code - 返回进程结果</li>
 </ul>
@@ -203,7 +202,7 @@ var process = require(&#39;process&#39;);
 <p>返回操作系统当前工作路径</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> process.cwd();
 </code></pre>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回当前系统路径</li>
 </ul>
@@ -211,7 +210,7 @@ var process = require(&#39;process&#39;);
 <p>修改操作系统当前工作路径</p>
 <pre><code class="lang-JavaScript">process.chdir(<span class="hljs-built_in">String</span> directory);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>directory - 指定设定的新路径</li>
 </ul>
@@ -219,7 +218,7 @@ var process = require(&#39;process&#39;);
 <p>查询运行环境运行时间，以秒为单位</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">Number</span> process.uptime();
 </code></pre>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回表示时间的数值</li>
 </ul>
@@ -227,16 +226,29 @@ var process = require(&#39;process&#39;);
 <p>查询当前进程内存使用报告</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">Object</span> process.memoryUsage();
 </code></pre>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回包含内存报告</li>
+</ul>
+<p>内存报告生成类似以下结果：</p>
+<pre><code class="lang-JavaScript">{
+  <span class="hljs-string">"rss"</span>: <span class="hljs-number">8622080</span>,
+  <span class="hljs-string">"heapTotal"</span>: <span class="hljs-number">4083456</span>,
+  <span class="hljs-string">"heapUsed"</span>: <span class="hljs-number">1621800</span>
+}
+</code></pre>
+<p>其中：</p>
+<ul>
+<li>rss 返回进程当前占用物理内存大小</li>
+<li>heapTotal 返回 v8 引擎堆内存大小</li>
+<li>heapUsed 返回 v8 引擎正在使用堆内存大小</li>
 </ul>
 <h3 id="nexttick">nextTick</h3>
 <p>启动一个纤程</p>
 <pre><code class="lang-JavaScript">process.nextTick(<span class="hljs-built_in">Function</span> func,
                 ...);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>func - 制定纤程执行的函数</li>
 <li>... - 可变参数序列，此序列会在纤程内传递给函数</li>
@@ -247,90 +259,126 @@ var process = require(&#39;process&#39;);
                 <span class="hljs-built_in">Array</span> args,
                 <span class="hljs-built_in">Object</span> opts = {});
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>command - 指定运行的命令行</li>
 <li>args - 指定运行的参数列表</li>
-<li>opts - 指定运行的选项，支持的选项如下：</li>
+<li>opts - 指定运行的选项</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回包含运行结果的进程对象</li>
 </ul>
-<h3 id="open">open</h3>
+<p>opts 支持的选项如下：</p>
+<pre><code class="lang-JavaScript">{
+    <span class="hljs-string">"timeout"</span>: <span class="hljs-number">100</span>, <span class="hljs-comment">// 单位为 ms</span>
+    <span class="hljs-string">"envs"</span>: [] <span class="hljs-comment">// 进程环境变量</span>
+}
+</code></pre>
+<hr>
 <p>运行指定的命令行，接管进程输入输出流，并返回进程对象</p>
 <pre><code class="lang-JavaScript">SubProcess process.open(<span class="hljs-built_in">String</span> command,
                 <span class="hljs-built_in">Object</span> opts = {});
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>command - 指定运行的命令行</li>
-<li>opts - 指定运行的选项，支持的选项如下：</li>
+<li>opts - 指定运行的选项</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回包含运行结果的进程对象</li>
 </ul>
+<p>opts 支持的选项如下：</p>
+<pre><code class="lang-JavaScript">{
+    <span class="hljs-string">"timeout"</span>: <span class="hljs-number">100</span>, <span class="hljs-comment">// 单位为 ms</span>
+    <span class="hljs-string">"envs"</span>: [] <span class="hljs-comment">// 进程环境变量</span>
+}
+</code></pre>
 <h3 id="start">start</h3>
 <p>运行指定的命令行，并返回进程对象</p>
 <pre><code class="lang-JavaScript">SubProcess process.start(<span class="hljs-built_in">String</span> command,
                 <span class="hljs-built_in">Array</span> args,
                 <span class="hljs-built_in">Object</span> opts = {});
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>command - 指定运行的命令行</li>
 <li>args - 指定运行的参数列表</li>
-<li>opts - 指定运行的选项，支持的选项如下：</li>
+<li>opts - 指定运行的选项</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回包含运行结果的进程对象</li>
 </ul>
-<h3 id="start">start</h3>
+<p>opts 支持的选项如下：</p>
+<pre><code class="lang-JavaScript">{
+    <span class="hljs-string">"timeout"</span>: <span class="hljs-number">100</span>, <span class="hljs-comment">// 单位为 ms</span>
+    <span class="hljs-string">"envs"</span>: [] <span class="hljs-comment">// 进程环境变量</span>
+}
+</code></pre>
+<hr>
 <p>运行指定的命令行，并返回进程对象</p>
 <pre><code class="lang-JavaScript">SubProcess process.start(<span class="hljs-built_in">String</span> command,
                 <span class="hljs-built_in">Object</span> opts = {});
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>command - 指定运行的命令行</li>
-<li>opts - 指定运行的选项，支持的选项如下：</li>
+<li>opts - 指定运行的选项</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回包含运行结果的进程对象</li>
 </ul>
+<p>opts 支持的选项如下：</p>
+<pre><code class="lang-JavaScript">{
+    <span class="hljs-string">"timeout"</span>: <span class="hljs-number">100</span>, <span class="hljs-comment">// 单位为 ms</span>
+    <span class="hljs-string">"envs"</span>: [] <span class="hljs-comment">// 进程环境变量</span>
+}
+</code></pre>
 <h3 id="run">run</h3>
 <p>运行指定的命令行，并返回进程的结束代码</p>
 <pre><code class="lang-JavaScript">Integer process.run(<span class="hljs-built_in">String</span> command,
                 <span class="hljs-built_in">Array</span> args,
                 <span class="hljs-built_in">Object</span> opts = {});
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>command - 指定运行的命令行</li>
 <li>args - 指定运行的参数列表</li>
-<li>opts - 指定运行的选项，支持的选项如下：</li>
+<li>opts - 指定运行的选项</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回命令的运行结果</li>
 </ul>
-<h3 id="run">run</h3>
+<p>opts 支持的选项如下：</p>
+<pre><code class="lang-JavaScript">{
+    <span class="hljs-string">"timeout"</span>: <span class="hljs-number">100</span>, <span class="hljs-comment">// 单位为 ms</span>
+    <span class="hljs-string">"envs"</span>: [] <span class="hljs-comment">// 进程环境变量</span>
+}
+</code></pre>
+<hr>
 <p>运行指定的命令行，并返回进程的结束代码</p>
 <pre><code class="lang-JavaScript">Integer process.run(<span class="hljs-built_in">String</span> command,
                 <span class="hljs-built_in">Object</span> opts = {});
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>command - 指定运行的命令行</li>
-<li>opts - 指定运行的选项，支持的选项如下：</li>
+<li>opts - 指定运行的选项</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回命令的运行结果</li>
 </ul>
+<p>opts 支持的选项如下：</p>
+<pre><code class="lang-JavaScript">{
+    <span class="hljs-string">"timeout"</span>: <span class="hljs-number">100</span>, <span class="hljs-comment">// 单位为 ms</span>
+    <span class="hljs-string">"envs"</span>: [] <span class="hljs-comment">// 进程环境变量</span>
+}
+</code></pre>
 <h2 id="-">属性</h2>
 <h3 id="argv">argv</h3>
 <p>返回当前进程的命令行参数</p>

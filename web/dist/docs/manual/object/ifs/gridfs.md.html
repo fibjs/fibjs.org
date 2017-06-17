@@ -154,20 +154,19 @@
 </ul>
  </div></div></div>  </div></div><div class="content col-xs-12 col-sm-9"> <h1 id="-gridfs">对象 GridFS</h1>
 <p>MongoDB GridFS 分布式文件系统访问对象</p>
-<p>使用 MongoDB.fs 获取，创建方式：
-@code
-var gfs = mdb.fs;
-@endcode</p>
+<p>使用 MongoDB.fs 获取，创建方式：</p>
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">var</span> gfs = mdb.fs;
+</code></pre>
 <h2 id="-">函数</h2>
 <h3 id="retrieve">retrieve</h3>
 <p>获取一个文件</p>
 <pre><code class="lang-JavaScript">MemoryStream GridFS.retrieve(<span class="hljs-built_in">String</span> name);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>name - 指定获取的文件名</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回获取的文件</li>
 </ul>
@@ -176,17 +175,17 @@ var gfs = mdb.fs;
 <pre><code class="lang-JavaScript">GridFS.store(<span class="hljs-built_in">String</span> name,
                 Stream src);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>name - 指定保存的文件名</li>
 <li>src - 存放源数据的流对象</li>
 </ul>
-<h3 id="store">store</h3>
+<hr>
 <p>保存一个二进制数据块到文件系统</p>
 <pre><code class="lang-JavaScript">GridFS.store(<span class="hljs-built_in">String</span> name,
                 Buffer data);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>name - 指定保存的文件名</li>
 <li>data - 指定要保存的数据块</li>
@@ -195,11 +194,11 @@ var gfs = mdb.fs;
 <p>检测指定的文件是否存在</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">Boolean</span> GridFS.exists(<span class="hljs-built_in">String</span> name);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>name - 指定要检测的文件名</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>存在则返回 true</li>
 </ul>
@@ -207,7 +206,7 @@ var gfs = mdb.fs;
 <p>删除指定的文件</p>
 <pre><code class="lang-JavaScript">GridFS.remove(<span class="hljs-built_in">String</span> name);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>name - 指定要删除的文件名</li>
 </ul>
@@ -219,11 +218,11 @@ var gfs = mdb.fs;
 <p>比较当前对象与给定的对象是否相等</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">Boolean</span> GridFS.equals(object expected);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>expected - 制定比较的目标对象</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回对象比较的结果</li>
 </ul>
@@ -231,7 +230,7 @@ var gfs = mdb.fs;
 <p>返回对象的字符串表示，一般返回 &#34;[Native Object]&#34;，对象可以根据自己的特性重新实现</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> GridFS.toString();
 </code></pre>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回对象的字符串表示</li>
 </ul>
@@ -239,11 +238,11 @@ var gfs = mdb.fs;
 <p>返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合</p>
 <pre><code class="lang-JavaScript">Value GridFS.toJSON(<span class="hljs-built_in">String</span> key = <span class="hljs-string">""</span>);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>key - 未使用</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回包含可 JSON 序列化的值</li>
 </ul>
@@ -251,7 +250,7 @@ var gfs = mdb.fs;
 <p>返回对象本身的数值</p>
 <pre><code class="lang-JavaScript">Value GridFS.valueOf();
 </code></pre>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回对象本身的数值</li>
 </ul>

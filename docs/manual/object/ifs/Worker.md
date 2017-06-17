@@ -10,7 +10,7 @@
                 Object opts = {});
 ```
 
-**调用参数:**
+调用参数:
 
 ## 函数
         
@@ -20,7 +20,7 @@
 Worker.postMessage(Value data);
 ```
 
-**调用参数:**
+调用参数:
 
 ### on
 绑定一个事件处理函数到对象
@@ -29,23 +29,23 @@ Object Worker.on(String ev,
                 Function func);
 ```
 
-**调用参数:**
+调用参数:
 * ev - 指定事件的名称
 * func - 指定事件处理函数
 
-**返回结果:**
+返回结果:
 * 返回成功绑定的数量，如果函数已绑定则返回 0
 
-### on
+--------------------------
 绑定一个事件处理函数到对象
 ```JavaScript
 Object Worker.on(Object map);
 ```
 
-**调用参数:**
+调用参数:
 * map - 指定事件映射关系，对象属性名称将作为事件名称，属性的值将作为事件处理函数
 
-**返回结果:**
+返回结果:
 * 返回事件对象本身，便于链式调用
 
 ### addListener
@@ -55,23 +55,23 @@ Object Worker.addListener(String ev,
                 Function func);
 ```
 
-**调用参数:**
+调用参数:
 * ev - 指定事件的名称
 * func - 指定事件处理函数
 
-**返回结果:**
+返回结果:
 * 返回事件对象本身，便于链式调用
 
-### addListener
+--------------------------
 绑定一个事件处理函数到对象
 ```JavaScript
 Object Worker.addListener(Object map);
 ```
 
-**调用参数:**
+调用参数:
 * map - 指定事件映射关系，对象属性名称将作为事件名称，属性的值将作为事件处理函数
 
-**返回结果:**
+返回结果:
 * 返回事件对象本身，便于链式调用
 
 ### prependListener
@@ -81,24 +81,24 @@ Object Worker.prependListener(String ev,
                 Function func);
 ```
 
-**调用参数:**
+调用参数:
 * ev - 指定事件的名称
 * func - 指定事件处理函数
 
-**返回结果:**
+返回结果:
 * 返回成功绑定的数量，如果函数已绑定则返回 0
 
-### prependListener
+--------------------------
 绑定一个事件处理函数到对象起始
 ```JavaScript
 Object Worker.prependListener(Object map);
 ```
 
-**调用参数:**
+调用参数:
 * ev - 指定事件的名称
 * func - 指定事件处理函数
 
-**返回结果:**
+返回结果:
 * 返回成功绑定的数量，如果函数已绑定则返回 0
 
 ### once
@@ -108,23 +108,23 @@ Object Worker.once(String ev,
                 Function func);
 ```
 
-**调用参数:**
+调用参数:
 * ev - 指定事件的名称
 * func - 指定事件处理函数
 
-**返回结果:**
+返回结果:
 * 返回事件对象本身，便于链式调用
 
-### once
+--------------------------
 绑定一个一次性事件处理函数到对象，一次性处理函数只会触发一次
 ```JavaScript
 Object Worker.once(Object map);
 ```
 
-**调用参数:**
+调用参数:
 * map - 指定事件映射关系，对象属性名称将作为事件名称，属性的值将作为事件处理函数
 
-**返回结果:**
+返回结果:
 * 返回事件对象本身，便于链式调用
 
 ### prependOnceListener
@@ -134,24 +134,24 @@ Object Worker.prependOnceListener(String ev,
                 Function func);
 ```
 
-**调用参数:**
+调用参数:
 * ev - 指定事件的名称
 * func - 指定事件处理函数
 
-**返回结果:**
+返回结果:
 * 返回成功绑定的数量，如果函数已绑定则返回 0
 
-### prependOnceListener
+--------------------------
 绑定一个事件处理函数到对象起始
 ```JavaScript
 Object Worker.prependOnceListener(Object map);
 ```
 
-**调用参数:**
+调用参数:
 * ev - 指定事件的名称
 * func - 指定事件处理函数
 
-**返回结果:**
+返回结果:
 * 返回成功绑定的数量，如果函数已绑定则返回 0
 
 ### off
@@ -161,35 +161,35 @@ Object Worker.off(String ev,
                 Function func);
 ```
 
-**调用参数:**
+调用参数:
 * ev - 指定事件的名称
 * func - 指定事件处理函数
 
-**返回结果:**
+返回结果:
 * 返回事件对象本身，便于链式调用
 
-### off
+--------------------------
 取消对象处理队列中的全部函数
 ```JavaScript
 Object Worker.off(String ev);
 ```
 
-**调用参数:**
+调用参数:
 * ev - 指定事件的名称
 
-**返回结果:**
+返回结果:
 * 返回事件对象本身，便于链式调用
 
-### off
+--------------------------
 从对象处理队列中取消指定函数
 ```JavaScript
 Object Worker.off(Object map);
 ```
 
-**调用参数:**
+调用参数:
 * map - 指定事件映射关系，对象属性名称作为事件名称，属性的值作为事件处理函数
 
-**返回结果:**
+返回结果:
 * 返回事件对象本身，便于链式调用
 
 ### removeListener
@@ -199,35 +199,35 @@ Object Worker.removeListener(String ev,
                 Function func);
 ```
 
-**调用参数:**
+调用参数:
 * ev - 指定事件的名称
 * func - 指定事件处理函数
 
-**返回结果:**
+返回结果:
 * 返回事件对象本身，便于链式调用
 
-### removeListener
+--------------------------
 取消对象处理队列中的全部函数
 ```JavaScript
 Object Worker.removeListener(String ev);
 ```
 
-**调用参数:**
+调用参数:
 * ev - 指定事件的名称
 
-**返回结果:**
+返回结果:
 * 返回事件对象本身，便于链式调用
 
-### removeListener
+--------------------------
 从对象处理队列中取消指定函数
 ```JavaScript
 Object Worker.removeListener(Object map);
 ```
 
-**调用参数:**
+调用参数:
 * map - 指定事件映射关系，对象属性名称作为事件名称，属性的值作为事件处理函数
 
-**返回结果:**
+返回结果:
 * 返回事件对象本身，便于链式调用
 
 ### removeAllListeners
@@ -236,10 +236,10 @@ Object Worker.removeListener(Object map);
 Object Worker.removeAllListeners(Array evs = []);
 ```
 
-**调用参数:**
+调用参数:
 * evs - 指定事件的名称
 
-**返回结果:**
+返回结果:
 * 返回事件对象本身，便于链式调用
 
 ### setMaxListeners
@@ -248,7 +248,7 @@ Object Worker.removeAllListeners(Array evs = []);
 Worker.setMaxListeners(Integer n);
 ```
 
-**调用参数:**
+调用参数:
 * n - 指定事件的数量
 
 ### getMaxListeners
@@ -263,10 +263,10 @@ Integer Worker.getMaxListeners();
 Array Worker.listeners(String ev);
 ```
 
-**调用参数:**
+调用参数:
 * ev - 指定事件的名称
 
-**返回结果:**
+返回结果:
 * 返回指定事件的监听器数组
 
 ### listenerCount
@@ -275,10 +275,10 @@ Array Worker.listeners(String ev);
 Integer Worker.listenerCount(String ev);
 ```
 
-**调用参数:**
+调用参数:
 * ev - 指定事件的名称
 
-**返回结果:**
+返回结果:
 * 返回指定事件的监听器数量
 
 ### eventNames
@@ -287,7 +287,7 @@ Integer Worker.listenerCount(String ev);
 Array Worker.eventNames();
 ```
 
-**返回结果:**
+返回结果:
 * 返回事件名称数组
 
 ### emit
@@ -297,11 +297,11 @@ Boolean Worker.emit(String ev,
                 ...);
 ```
 
-**调用参数:**
+调用参数:
 * ev - 事件名称
 * ... - 事件参数，将会传递给事件处理函数
 
-**返回结果:**
+返回结果:
 * 返回事件触发状态，有响应事件返回 true，否则返回 false
 
 ### dispose
@@ -316,10 +316,10 @@ Worker.dispose();
 Boolean Worker.equals(object expected);
 ```
 
-**调用参数:**
+调用参数:
 * expected - 制定比较的目标对象
 
-**返回结果:**
+返回结果:
 * 返回对象比较的结果
 
 ### toString
@@ -328,7 +328,7 @@ Boolean Worker.equals(object expected);
 String Worker.toString();
 ```
 
-**返回结果:**
+返回结果:
 * 返回对象的字符串表示
 
 ### toJSON
@@ -337,10 +337,10 @@ String Worker.toString();
 Value Worker.toJSON(String key = "");
 ```
 
-**调用参数:**
+调用参数:
 * key - 未使用
 
-**返回结果:**
+返回结果:
 * 返回包含可 JSON 序列化的值
 
 ### valueOf
@@ -349,7 +349,7 @@ Value Worker.toJSON(String key = "");
 Value Worker.valueOf();
 ```
 
-**返回结果:**
+返回结果:
 * 返回对象本身的数值
 
 ## 属性

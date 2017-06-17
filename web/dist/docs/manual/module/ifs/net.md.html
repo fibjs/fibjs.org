@@ -154,16 +154,15 @@
 </ul>
  </div></div></div>  </div></div><div class="content col-xs-12 col-sm-9"> <h1 id="-net">模块 net</h1>
 <p>网络访问模块</p>
-<p>基础模块。可用于创建和操作网络资源，引用方式：
-\code
-var net = require(&#39;net&#39;);
-\endcode</p>
+<p>基础模块。可用于创建和操作网络资源，引用方式：</p>
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">var</span> net = <span class="hljs-built_in">require</span>(<span class="hljs-string">'net'</span>);
+</code></pre>
 <h2 id="-">函数</h2>
 <h3 id="info">info</h3>
 <p>查询当前运行环境网络信息</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">Object</span> net.info();
 </code></pre>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回网卡信息</li>
 </ul>
@@ -172,12 +171,12 @@ var net = require(&#39;net&#39;);
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> net.resolve(<span class="hljs-built_in">String</span> name,
                 Integer family = <span class="hljs-literal">undefined</span>);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>name - 指定主机名</li>
 <li>family - 指定查询返回类型，缺省为 AF_INET</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回查询的 ip 字符串</li>
 </ul>
@@ -185,11 +184,11 @@ var net = require(&#39;net&#39;);
 <p>快速查询的主机地址，等效与 resolve(name)</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> net.ip(<span class="hljs-built_in">String</span> name);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>name - 指定主机名</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回查询的 ip 字符串</li>
 </ul>
@@ -197,11 +196,11 @@ var net = require(&#39;net&#39;);
 <p>快速查询的主机 ipv6 地址，等效与 resolve(name, net.AF_INET6)</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> net.ipv6(<span class="hljs-built_in">String</span> name);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>name - 指定主机名</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回查询的 ipv6 字符串</li>
 </ul>
@@ -212,28 +211,28 @@ var net = require(&#39;net&#39;);
                 Integer timeout = <span class="hljs-number">0</span>,
                 Integer family = <span class="hljs-literal">undefined</span>);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>host - 指定对方地址或主机名</li>
 <li>port - 指定对方端口</li>
 <li>timeout - 指定超时时间，单位是毫秒，默认为0</li>
 <li>family - 指定地址集，缺省为 AF_INET，ipv4</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回连接成功的 Socket 对象</li>
 </ul>
-<h3 id="connect">connect</h3>
+<hr>
 <p>创建一个 Socket 或 SslSocket 对象并建立连接</p>
 <pre><code class="lang-JavaScript">Stream net.connect(<span class="hljs-built_in">String</span> url,
                 Integer timeout = <span class="hljs-number">0</span>);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>url - 指定连接的协议，可以是：tcp://host:port 或者 ssl://host:port</li>
 <li>timeout - 指定超时时间，单位是毫秒，默认为0</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回连接成功的 Socket 或者 SslSocket 对象</li>
 </ul>
@@ -242,12 +241,12 @@ var net = require(&#39;net&#39;);
 <pre><code class="lang-JavaScript">Smtp net.openSmtp(<span class="hljs-built_in">String</span> url,
                 Integer timeout = <span class="hljs-number">0</span>);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>url - 指定连接的协议，可以是：tcp://host:port 或者 ssl://host:port</li>
 <li>timeout - 指定超时时间，单位是毫秒，默认为0</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回连接成功的 Smtp 对象</li>
 </ul>
@@ -255,7 +254,7 @@ var net = require(&#39;net&#39;);
 <p>查询当前系统异步网络引擎</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> net.backend();
 </code></pre>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回网络引擎名称</li>
 </ul>

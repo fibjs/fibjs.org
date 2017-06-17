@@ -21,7 +21,7 @@ List ZipFile.infolist();
 ZipInfo ZipFile.getinfo(String member);
 ```
 
-**调用参数:**
+调用参数:
 * member - 指定要获取信息的文件名
 
 ### read
@@ -31,11 +31,11 @@ Buffer ZipFile.read(String member,
                 String password = "");
 ```
 
-**调用参数:**
+调用参数:
 * member - 指定要读取的文件名
 * password - 解压密码, 默认没有密码
 
-**返回结果:**
+返回结果:
 * 返回文件的所有数据
 
 ### readAll
@@ -44,10 +44,10 @@ Buffer ZipFile.read(String member,
 List ZipFile.readAll(String password = "");
 ```
 
-**调用参数:**
+调用参数:
 * password - 解压密码, 默认没有密码
 
-**返回结果:**
+返回结果:
 * 包含所有文件数据及信息的列表
 
 ### extract
@@ -58,12 +58,12 @@ ZipFile.extract(String member,
                 String password = "");
 ```
 
-**调用参数:**
+调用参数:
 * member - 指定要解压的文件名
 * path - 指定要解压到的路径
 * password - 解压密码, 默认没有密码
 
-### extract
+--------------------------
 解压指定文件到流
 ```JavaScript
 ZipFile.extract(String member,
@@ -71,7 +71,7 @@ ZipFile.extract(String member,
                 String password = "");
 ```
 
-**调用参数:**
+调用参数:
 * member - 指定要解压的文件名
 * strm - 指定要解压到的流
 * password - 解压密码, 默认没有密码
@@ -83,7 +83,7 @@ ZipFile.extractAll(String path,
                 String password = "");
 ```
 
-**调用参数:**
+调用参数:
 * path - 指定要解压到的路径
 * password - 解压密码, 默认没有密码
 
@@ -95,12 +95,12 @@ ZipFile.write(String filename,
                 String password = "");
 ```
 
-**调用参数:**
+调用参数:
 * filename - 指定要写入的文件
 * inZipName - 压缩在zip文件内的文件名
 * password - 解压密码, 默认没有密码
 
-### write
+--------------------------
 写入指定文件到压缩文件
 ```JavaScript
 ZipFile.write(Buffer data,
@@ -108,12 +108,12 @@ ZipFile.write(Buffer data,
                 String password = "");
 ```
 
-**调用参数:**
+调用参数:
 * data - 指定要写入的文件数据
 * inZipName - 压缩在zip文件内的文件名
 * password - 解压密码, 默认没有密码
 
-### write
+--------------------------
 写入指定文件到压缩文件
 ```JavaScript
 ZipFile.write(SeekableStream strm,
@@ -121,7 +121,7 @@ ZipFile.write(SeekableStream strm,
                 String password = "");
 ```
 
-**调用参数:**
+调用参数:
 * strm - 指定要写入文件数据流
 * inZipName - 压缩在zip文件内的文件名
 * password - 解压密码, 默认没有密码
@@ -144,10 +144,10 @@ ZipFile.dispose();
 Boolean ZipFile.equals(object expected);
 ```
 
-**调用参数:**
+调用参数:
 * expected - 制定比较的目标对象
 
-**返回结果:**
+返回结果:
 * 返回对象比较的结果
 
 ### toString
@@ -156,7 +156,7 @@ Boolean ZipFile.equals(object expected);
 String ZipFile.toString();
 ```
 
-**返回结果:**
+返回结果:
 * 返回对象的字符串表示
 
 ### toJSON
@@ -165,10 +165,10 @@ String ZipFile.toString();
 Value ZipFile.toJSON(String key = "");
 ```
 
-**调用参数:**
+调用参数:
 * key - 未使用
 
-**返回结果:**
+返回结果:
 * 返回包含可 JSON 序列化的值
 
 ### valueOf
@@ -177,6 +177,6 @@ Value ZipFile.toJSON(String key = "");
 Value ZipFile.valueOf();
 ```
 
-**返回结果:**
+返回结果:
 * 返回对象本身的数值
 

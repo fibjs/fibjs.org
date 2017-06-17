@@ -2,10 +2,10 @@
 基础消息对象
 
 Message 对象兼容于 mq 各个模块，可用于构建自定义消息处理系统，创建方法：
-@code
-var mq = require(&#34;mq&#34;);
+```JavaScript
+var mq = require("mq");
 var m = new mq.Message();
-@endcode
+```
 ## 构造函数
         
 ### Message
@@ -22,10 +22,10 @@ var m = new mq.Message();
 Buffer Message.read(Integer bytes = -1);
 ```
 
-**调用参数:**
+调用参数:
 * bytes - 指定要读取的数据量，缺省为读取随机大小的数据块，读出的数据尺寸取决于设备
 
-**返回结果:**
+返回结果:
 * 返回从流内读取的数据，若无数据可读，或者连接中断，则返回 null
 
 ### readAll
@@ -34,7 +34,7 @@ Buffer Message.read(Integer bytes = -1);
 Buffer Message.readAll();
 ```
 
-**返回结果:**
+返回结果:
 * 返回从流内读取的数据，若无数据可读，或者连接中断，则返回 null
 
 ### write
@@ -43,7 +43,7 @@ Buffer Message.readAll();
 Message.write(Buffer data);
 ```
 
-**调用参数:**
+调用参数:
 * data - 给定要写入的数据
 
 ### end
@@ -58,7 +58,7 @@ Message.end();
 Boolean Message.isEnded();
 ```
 
-**返回结果:**
+返回结果:
 * 结束则返回 true
 
 ### clear
@@ -73,7 +73,7 @@ Message.clear();
 Message.sendTo(Stream stm);
 ```
 
-**调用参数:**
+调用参数:
 * stm - 指定接收格式化消息的流对象
 
 ### readFrom
@@ -82,7 +82,7 @@ Message.sendTo(Stream stm);
 Message.readFrom(Stream stm);
 ```
 
-**调用参数:**
+调用参数:
 * stm - 指定读取格式化消息的流对象
 
 ### dispose
@@ -97,10 +97,10 @@ Message.dispose();
 Boolean Message.equals(object expected);
 ```
 
-**调用参数:**
+调用参数:
 * expected - 制定比较的目标对象
 
-**返回结果:**
+返回结果:
 * 返回对象比较的结果
 
 ### toString
@@ -109,7 +109,7 @@ Boolean Message.equals(object expected);
 String Message.toString();
 ```
 
-**返回结果:**
+返回结果:
 * 返回对象的字符串表示
 
 ### toJSON
@@ -118,10 +118,10 @@ String Message.toString();
 Value Message.toJSON(String key = "");
 ```
 
-**调用参数:**
+调用参数:
 * key - 未使用
 
-**返回结果:**
+返回结果:
 * 返回包含可 JSON 序列化的值
 
 ### valueOf
@@ -130,7 +130,7 @@ Value Message.toJSON(String key = "");
 Value Message.valueOf();
 ```
 
-**返回结果:**
+返回结果:
 * 返回对象本身的数值
 
 ## 属性

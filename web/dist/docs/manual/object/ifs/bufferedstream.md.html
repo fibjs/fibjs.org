@@ -154,16 +154,15 @@
 </ul>
  </div></div></div>  </div></div><div class="content col-xs-12 col-sm-9"> <h1 id="-bufferedstream">对象 BufferedStream</h1>
 <p>缓存读取对象</p>
-<p>BufferedReader 对象用于对二进制流对象数据进行缓存，并提供文本读取能力，仅支持 utf-8 格式转换。创建方法：
-@code
-var reader = new io.BufferedStream(stream);
-@endcode</p>
+<p>BufferedReader 对象用于对二进制流对象数据进行缓存，并提供文本读取能力，仅支持 utf-8 格式转换。创建方法：</p>
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">var</span> reader = <span class="hljs-keyword">new</span> io.BufferedStream(stream);
+</code></pre>
 <h2 id="-">构造函数</h2>
 <h3 id="bufferedstream">BufferedStream</h3>
 <p>BufferedStream 构造函数</p>
 <pre><code class="lang-JavaScript"> <span class="hljs-keyword">new</span> BufferedStream(Stream stm);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>stm - BufferedStream 的二进制基础流对象</li>
 </ul>
@@ -172,11 +171,11 @@ var reader = new io.BufferedStream(stream);
 <p>读取指定字符的文本</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> BufferedStream.readText(Integer size);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>size - 指定读取的文本字符个数，以 utf8 或者指定的编码字节数为准</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回读取的文本字符串，若无数据可读，或者连接中断，则返回 null</li>
 </ul>
@@ -184,11 +183,11 @@ var reader = new io.BufferedStream(stream);
 <p>读取一行文本，行结尾标识基于 EOL 属性的设置，缺省时，posix:\&#34;\n\&#34;；windows:\&#34;\r\n\&#34;</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> BufferedStream.readLine(Integer maxlen = <span class="hljs-number">-1</span>);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>maxlen - 指定此次读取的最大字符串，以 utf8 编码字节数为准，缺省不限制字符数</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回读取的文本字符串，若无数据可读，或者连接中断，则返回 null</li>
 </ul>
@@ -196,11 +195,11 @@ var reader = new io.BufferedStream(stream);
 <p>以数组方式读取一组文本行，行结尾标识基于 EOL 属性的设置，缺省时，posix:\&#34;\n\&#34;；windows:\&#34;\r\n\&#34;</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">Array</span> BufferedStream.readLines(Integer maxlines = <span class="hljs-number">-1</span>);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>maxlines - 指定此次读取的最大行数，缺省读取全部文本行</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回读取的文本行数组，若无数据可读，或者连接中断，空数组</li>
 </ul>
@@ -209,12 +208,12 @@ var reader = new io.BufferedStream(stream);
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> BufferedStream.readUntil(<span class="hljs-built_in">String</span> mk,
                 Integer maxlen = <span class="hljs-number">-1</span>);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>mk - 指定结尾的字符串</li>
 <li>maxlen - 指定此次读取的最大字符串，以 utf8 编码字节数为准，缺省不限制字符数</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回读取的文本字符串，若无数据可读，或者连接中断，则返回 null</li>
 </ul>
@@ -222,7 +221,7 @@ var reader = new io.BufferedStream(stream);
 <p>写入一个字符串</p>
 <pre><code class="lang-JavaScript">BufferedStream.writeText(<span class="hljs-built_in">String</span> txt);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>txt - 指定写入的字符串</li>
 </ul>
@@ -230,7 +229,7 @@ var reader = new io.BufferedStream(stream);
 <p>写入一个字符串，并写入换行符</p>
 <pre><code class="lang-JavaScript">BufferedStream.writeLine(<span class="hljs-built_in">String</span> txt);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>txt - 指定写入的字符串</li>
 </ul>
@@ -238,11 +237,11 @@ var reader = new io.BufferedStream(stream);
 <p>从流内读取指定大小的数据</p>
 <pre><code class="lang-JavaScript">Buffer BufferedStream.read(Integer bytes = <span class="hljs-number">-1</span>);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>bytes - 指定要读取的数据量，缺省为读取随机大小的数据块，读出的数据尺寸取决于设备</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回从流内读取的数据，若无数据可读，或者连接中断，则返回 null</li>
 </ul>
@@ -250,7 +249,7 @@ var reader = new io.BufferedStream(stream);
 <p>将给定的数据写入流</p>
 <pre><code class="lang-JavaScript">BufferedStream.write(Buffer data);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>data - 给定要写入的数据</li>
 </ul>
@@ -263,12 +262,12 @@ var reader = new io.BufferedStream(stream);
 <pre><code class="lang-JavaScript">Long BufferedStream.copyTo(Stream stm,
                 Long bytes = <span class="hljs-number">-1</span>);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>stm - 目标流对象</li>
 <li>bytes - 复制的字节数</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回复制的字节数</li>
 </ul>
@@ -280,11 +279,11 @@ var reader = new io.BufferedStream(stream);
 <p>比较当前对象与给定的对象是否相等</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">Boolean</span> BufferedStream.equals(object expected);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>expected - 制定比较的目标对象</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回对象比较的结果</li>
 </ul>
@@ -292,7 +291,7 @@ var reader = new io.BufferedStream(stream);
 <p>返回对象的字符串表示，一般返回 &#34;[Native Object]&#34;，对象可以根据自己的特性重新实现</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> BufferedStream.toString();
 </code></pre>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回对象的字符串表示</li>
 </ul>
@@ -300,11 +299,11 @@ var reader = new io.BufferedStream(stream);
 <p>返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合</p>
 <pre><code class="lang-JavaScript">Value BufferedStream.toJSON(<span class="hljs-built_in">String</span> key = <span class="hljs-string">""</span>);
 </code></pre>
-<p><strong>调用参数:</strong></p>
+<p>调用参数:</p>
 <ul>
 <li>key - 未使用</li>
 </ul>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回包含可 JSON 序列化的值</li>
 </ul>
@@ -312,7 +311,7 @@ var reader = new io.BufferedStream(stream);
 <p>返回对象本身的数值</p>
 <pre><code class="lang-JavaScript">Value BufferedStream.valueOf();
 </code></pre>
-<p><strong>返回结果:</strong></p>
+<p>返回结果:</p>
 <ul>
 <li>返回对象本身的数值</li>
 </ul>
