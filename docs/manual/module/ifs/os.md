@@ -5,48 +5,56 @@
 ```JavaScript
 var os = require('os');
 ```
+## 对象
+        
+### Service
+Service 构造函数，参见 Service
+```JavaScript
+Service os.Service;
+```
+
 ## 函数
         
 ### hostname
 查询当前运行环境主机名
 ```JavaScript
-String os.hostname();
+static String os.hostname();
 ```
 
 ### endianness
 the endianness of the CPU for which the fibjs binary was compiled.
 ```JavaScript
-String os.endianness();
+static String os.endianness();
 ```
 
 ### type
 查询当前运行环境操作系统名称
 ```JavaScript
-String os.type();
+static String os.type();
 ```
 
 ### release
 查询当前运行环境操作系统版本
 ```JavaScript
-String os.release();
+static String os.release();
 ```
 
 ### homedir
 查询当前用户目录
 ```JavaScript
-String os.homedir();
+static String os.homedir();
 ```
 
 ### arch
 查询当前 cpu 环境，可能的结果为 &#39;amd64&#39;, &#39;arm&#39;, &#39;arm64&#39;, &#39;ia32&#39;
 ```JavaScript
-String os.arch();
+static String os.arch();
 ```
 
 ### uptime
 查询运行环境运行时间，以秒为单位
 ```JavaScript
-Number os.uptime();
+static Number os.uptime();
 ```
 
 返回结果:
@@ -55,7 +63,7 @@ Number os.uptime();
 ### loadavg
 查询运行环境 1分钟，5分钟，15分钟平均负载
 ```JavaScript
-Array os.loadavg();
+static Array os.loadavg();
 ```
 
 返回结果:
@@ -64,7 +72,7 @@ Array os.loadavg();
 ### totalmem
 查询运行环境总内存，以字节为单位
 ```JavaScript
-Long os.totalmem();
+static Long os.totalmem();
 ```
 
 返回结果:
@@ -73,7 +81,7 @@ Long os.totalmem();
 ### freemem
 查询运行环境可用内存，以字节为单位
 ```JavaScript
-Long os.freemem();
+static Long os.freemem();
 ```
 
 返回结果:
@@ -82,7 +90,7 @@ Long os.freemem();
 ### cpus
 查询当前运行环境 cpu 个数和参数
 ```JavaScript
-Array os.cpus();
+static Array os.cpus();
 ```
 
 返回结果:
@@ -91,7 +99,7 @@ Array os.cpus();
 ### cpuNumbers
 查询当前运行环境 cpu 个数
 ```JavaScript
-Integer os.cpuNumbers();
+static Integer os.cpuNumbers();
 ```
 
 返回结果:
@@ -100,7 +108,7 @@ Integer os.cpuNumbers();
 ### tmpdir
 查询当前运行环境临时文件目录
 ```JavaScript
-String os.tmpdir();
+static String os.tmpdir();
 ```
 
 返回结果:
@@ -109,7 +117,7 @@ String os.tmpdir();
 ### userInfo
 返回当前有效执行用户信息
 ```JavaScript
-Object os.userInfo(Object options = {});
+static Object os.userInfo(Object options = {});
 ```
 
 调用参数:
@@ -120,7 +128,7 @@ Object os.userInfo(Object options = {});
 ### networkInterfaces
 查询当前运行环境网络信息
 ```JavaScript
-Object os.networkInterfaces();
+static Object os.networkInterfaces();
 ```
 
 返回结果:
@@ -129,7 +137,7 @@ Object os.networkInterfaces();
 ### printerInfo
 查询当前主机的打印机信息
 ```JavaScript
-Array os.printerInfo();
+static Array os.printerInfo();
 ```
 
 返回结果:
@@ -138,7 +146,7 @@ Array os.printerInfo();
 ### openPrinter
 创建一个打印机输出对象
 ```JavaScript
-BufferedStream os.openPrinter(String name);
+static BufferedStream os.openPrinter(String name) async;
 ```
 
 调用参数:
@@ -150,13 +158,13 @@ BufferedStream os.openPrinter(String name);
 ### platform
 查询当前平台名称，可能的结果为 &#39;darwin&#39;, &#39;freebsd&#39;, &#39;linux&#39;, 或 &#39;win32&#39;
 ```JavaScript
-String os.platform();
+static String os.platform();
 ```
 
 ### time
 解析时间字符串或查询运行环境当前时间
 ```JavaScript
-Date os.time(String tmString = "");
+static Date os.time(String tmString = "");
 ```
 
 调用参数:
@@ -168,7 +176,7 @@ Date os.time(String tmString = "");
 ### dateAdd
 时间计算函数，根据 part 指定计算时间
 ```JavaScript
-Date os.dateAdd(Date d,
+static Date os.dateAdd(Date d,
                 Integer num,
                 String part);
 ```
@@ -184,7 +192,7 @@ Date os.dateAdd(Date d,
 ### memoryUsage
 查询当前进程内存使用报告
 ```JavaScript
-Object os.memoryUsage();
+static Object os.memoryUsage();
 ```
 
 返回结果:
@@ -209,18 +217,18 @@ Object os.memoryUsage();
 ### timezone
 查询运行环境当前时区
 ```JavaScript
-readonly Integer os.timezone;
+static readonly Integer os.timezone;
 ```
 
 ### EOL
 查询当前运行环境行结尾标识，posix:\&#34;\\n\&#34;；windows:\&#34;\\r\\n\&#34;
 ```JavaScript
-readonly String os.EOL;
+static readonly String os.EOL;
 ```
 
 ### execPath
 查询当前运行执行文件完整路径
 ```JavaScript
-readonly String os.execPath;
+static readonly String os.execPath;
 ```
 

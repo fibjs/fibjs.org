@@ -60,7 +60,7 @@ Cipher.paddingMode(Integer mode);
 ### encrypt
 使用当前算法密码加密数据
 ```JavaScript
-Buffer Cipher.encrypt(Buffer data);
+Buffer Cipher.encrypt(Buffer data) async;
 ```
 
 调用参数:
@@ -72,7 +72,7 @@ Buffer Cipher.encrypt(Buffer data);
 ### decrypt
 使用当前算法密码解密数据
 ```JavaScript
-Buffer Cipher.decrypt(Buffer data);
+Buffer Cipher.decrypt(Buffer data) async;
 ```
 
 调用参数:

@@ -10,7 +10,7 @@ var profiler = require('profiler');
 ### saveSnapshot
 根据指定名称保存一个堆快照
 ```JavaScript
-profiler.saveSnapshot(String fname);
+static profiler.saveSnapshot(String fname);
 ```
 
 调用参数:
@@ -19,7 +19,7 @@ profiler.saveSnapshot(String fname);
 ### loadSnapshot
 根据指定名称读取一个堆快照
 ```JavaScript
-HeapSnapshot profiler.loadSnapshot(String fname);
+static HeapSnapshot profiler.loadSnapshot(String fname);
 ```
 
 调用参数:
@@ -31,7 +31,7 @@ HeapSnapshot profiler.loadSnapshot(String fname);
 ### takeSnapshot
 获取当前时间节点的堆快照，堆快照记录了当前时刻JS堆的状态
 ```JavaScript
-HeapSnapshot profiler.takeSnapshot();
+static HeapSnapshot profiler.takeSnapshot();
 ```
 
 返回结果:
@@ -40,7 +40,7 @@ HeapSnapshot profiler.takeSnapshot();
 ### diff
 执行给定的函数，并对比执行前后 v8 堆的变化
 ```JavaScript
-Object profiler.diff(Function test);
+static Object profiler.diff(Function test);
 ```
 
 调用参数:
@@ -54,126 +54,126 @@ Object profiler.diff(Function test);
 ### Node_Hidden
 隐藏节点，当显示给用户时可以被过滤掉
 ```JavaScript
-profiler.Node_Hidden;
+const profiler.Node_Hidden = 0;
 ```
 
 ### Node_Array
 数组
 ```JavaScript
-profiler.Node_Array;
+const profiler.Node_Array = 1;
 ```
 
 ### Node_String
 字符串
 ```JavaScript
-profiler.Node_String;
+const profiler.Node_String = 2;
 ```
 
 ### Node_Object
 JS对象（字符串和数组除外）
 ```JavaScript
-profiler.Node_Object;
+const profiler.Node_Object = 3;
 ```
 
 ### Node_Code
 编译后的代码
 ```JavaScript
-profiler.Node_Code;
+const profiler.Node_Code = 4;
 ```
 
 ### Node_Closure
 函数闭包
 ```JavaScript
-profiler.Node_Closure;
+const profiler.Node_Closure = 5;
 ```
 
 ### Node_RegExp
 正则表达式
 ```JavaScript
-profiler.Node_RegExp;
+const profiler.Node_RegExp = 6;
 ```
 
 ### Node_HeapNumber
 堆中排好序的数字
 ```JavaScript
-profiler.Node_HeapNumber;
+const profiler.Node_HeapNumber = 7;
 ```
 
 ### Node_Native
 Native对象（非v8堆上的）
 ```JavaScript
-profiler.Node_Native;
+const profiler.Node_Native = 8;
 ```
 
 ### Node_Synthetic
 Synthetic对象
 ```JavaScript
-profiler.Node_Synthetic;
+const profiler.Node_Synthetic = 9;
 ```
 
 ### Node_ConsString
 拼接的字符串
 ```JavaScript
-profiler.Node_ConsString;
+const profiler.Node_ConsString = 10;
 ```
 
 ### Node_SlicedString
 分割的字符串
 ```JavaScript
-profiler.Node_SlicedString;
+const profiler.Node_SlicedString = 11;
 ```
 
 ### Node_Symbol
 符号（ES6）
 ```JavaScript
-profiler.Node_Symbol;
+const profiler.Node_Symbol = 12;
 ```
 
 ### Node_SimdValue
 堆中排好序的SIMD值(ES7)
 ```JavaScript
-profiler.Node_SimdValue;
+const profiler.Node_SimdValue = 13;
 ```
 
 ### Edge_ContextVariable
 函数中的变量
 ```JavaScript
-profiler.Edge_ContextVariable;
+const profiler.Edge_ContextVariable = 0;
 ```
 
 ### Edge_Element
 数组中的元素
 ```JavaScript
-profiler.Edge_Element;
+const profiler.Edge_Element = 1;
 ```
 
 ### Edge_Property
 有名对象的属性
 ```JavaScript
-profiler.Edge_Property;
+const profiler.Edge_Property = 2;
 ```
 
 ### Edge_Internal
 JS无法进入的链接
 ```JavaScript
-profiler.Edge_Internal;
+const profiler.Edge_Internal = 3;
 ```
 
 ### Edge_Hidden
 指向需要事先计算出空间大小的节点
 ```JavaScript
-profiler.Edge_Hidden;
+const profiler.Edge_Hidden = 4;
 ```
 
 ### Edge_Shortcut
 指向无法事先计算出空间大小的节点
 ```JavaScript
-profiler.Edge_Shortcut;
+const profiler.Edge_Shortcut = 5;
 ```
 
 ### Edge_Weak
 一个弱引用（被GC忽视）
 ```JavaScript
-profiler.Edge_Weak;
+const profiler.Edge_Weak = 6;
 ```
 

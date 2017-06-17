@@ -192,7 +192,7 @@
 <h3 id="connect">connect</h3>
 <p>在给定的连接上连接 ssl 连接，客户端模式</p>
 <pre><code class="lang-JavaScript">Integer SslSocket.connect(Stream s,
-                <span class="hljs-built_in">String</span> server_name = <span class="hljs-string">""</span>);
+                <span class="hljs-built_in">String</span> server_name = <span class="hljs-string">""</span>) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -205,7 +205,7 @@
 </ul>
 <h3 id="accept">accept</h3>
 <p>在给定的连接上接收一个 ssl 连接，并生成一个新的 SslSocket</p>
-<pre><code class="lang-JavaScript">SslSocket SslSocket.accept(Stream s);
+<pre><code class="lang-JavaScript">SslSocket SslSocket.accept(Stream s) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -217,7 +217,7 @@
 </ul>
 <h3 id="read">read</h3>
 <p>从流内读取指定大小的数据</p>
-<pre><code class="lang-JavaScript">Buffer SslSocket.read(Integer bytes = <span class="hljs-number">-1</span>);
+<pre><code class="lang-JavaScript">Buffer SslSocket.read(Integer bytes = <span class="hljs-number">-1</span>) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -229,7 +229,7 @@
 </ul>
 <h3 id="write">write</h3>
 <p>将给定的数据写入流</p>
-<pre><code class="lang-JavaScript">SslSocket.write(Buffer data);
+<pre><code class="lang-JavaScript">SslSocket.write(Buffer data) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -237,12 +237,12 @@
 </ul>
 <h3 id="close">close</h3>
 <p>关闭当前流对象</p>
-<pre><code class="lang-JavaScript">SslSocket.close();
+<pre><code class="lang-JavaScript">SslSocket.close() <span class="hljs-keyword">async</span>;
 </code></pre>
 <h3 id="copyto">copyTo</h3>
 <p>复制流数据到目标流中</p>
 <pre><code class="lang-JavaScript">Long SslSocket.copyTo(Stream stm,
-                Long bytes = <span class="hljs-number">-1</span>);
+                Long bytes = <span class="hljs-number">-1</span>) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>

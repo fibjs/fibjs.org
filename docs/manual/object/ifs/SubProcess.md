@@ -19,7 +19,7 @@ SubProcess.kill(Integer signal);
 ### wait
 等待当前对象指向的进程结束，并返回进程结束代码
 ```JavaScript
-Integer SubProcess.wait();
+Integer SubProcess.wait() async;
 ```
 
 返回结果:
@@ -40,7 +40,7 @@ Value SubProcess.findWindow(String name);
 ### readText
 读取指定字符的文本
 ```JavaScript
-String SubProcess.readText(Integer size);
+String SubProcess.readText(Integer size) async;
 ```
 
 调用参数:
@@ -52,7 +52,7 @@ String SubProcess.readText(Integer size);
 ### readLine
 读取一行文本，行结尾标识基于 EOL 属性的设置，缺省时，posix:\&#34;\\n\&#34;；windows:\&#34;\\r\\n\&#34;
 ```JavaScript
-String SubProcess.readLine(Integer maxlen = -1);
+String SubProcess.readLine(Integer maxlen = -1) async;
 ```
 
 调用参数:
@@ -77,7 +77,7 @@ Array SubProcess.readLines(Integer maxlines = -1);
 读取一个文本字符串，以指定的字节为结尾
 ```JavaScript
 String SubProcess.readUntil(String mk,
-                Integer maxlen = -1);
+                Integer maxlen = -1) async;
 ```
 
 调用参数:
@@ -90,7 +90,7 @@ String SubProcess.readUntil(String mk,
 ### writeText
 写入一个字符串
 ```JavaScript
-SubProcess.writeText(String txt);
+SubProcess.writeText(String txt) async;
 ```
 
 调用参数:
@@ -99,7 +99,7 @@ SubProcess.writeText(String txt);
 ### writeLine
 写入一个字符串，并写入换行符
 ```JavaScript
-SubProcess.writeLine(String txt);
+SubProcess.writeLine(String txt) async;
 ```
 
 调用参数:
@@ -108,7 +108,7 @@ SubProcess.writeLine(String txt);
 ### read
 从流内读取指定大小的数据
 ```JavaScript
-Buffer SubProcess.read(Integer bytes = -1);
+Buffer SubProcess.read(Integer bytes = -1) async;
 ```
 
 调用参数:
@@ -120,7 +120,7 @@ Buffer SubProcess.read(Integer bytes = -1);
 ### write
 将给定的数据写入流
 ```JavaScript
-SubProcess.write(Buffer data);
+SubProcess.write(Buffer data) async;
 ```
 
 调用参数:
@@ -129,14 +129,14 @@ SubProcess.write(Buffer data);
 ### close
 关闭当前流对象
 ```JavaScript
-SubProcess.close();
+SubProcess.close() async;
 ```
 
 ### copyTo
 复制流数据到目标流中
 ```JavaScript
 Long SubProcess.copyTo(Stream stm,
-                Long bytes = -1);
+                Long bytes = -1) async;
 ```
 
 调用参数:

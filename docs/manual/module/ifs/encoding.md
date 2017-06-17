@@ -5,12 +5,56 @@
 ```JavaScript
 var encoding = require('encoding');
 ```
+## 对象
+        
+### base32
+base32 编码与解码模块
+```JavaScript
+base32 encoding.base32;
+```
+
+### base64
+base64 编码与解码模块
+```JavaScript
+base64 encoding.base64;
+```
+
+### base64vlq
+base64vlq 编码与解码模块
+```JavaScript
+base64vlq encoding.base64vlq;
+```
+
+### hex
+hex 编码与解码模块
+```JavaScript
+hex encoding.hex;
+```
+
+### iconv
+iconv 编码与解码模块
+```JavaScript
+iconv encoding.iconv;
+```
+
+### json
+json 编码与解码模块
+```JavaScript
+json encoding.json;
+```
+
+### bson
+bson 编码与解码模块
+```JavaScript
+bson encoding.bson;
+```
+
 ## 函数
         
 ### jsstr
 将字符串编码为 javascript 转义字符串，用以在 javascript 代码中包含文本
 ```JavaScript
-String encoding.jsstr(String str,
+static String encoding.jsstr(String str,
                 Boolean json = false);
 ```
 
@@ -24,7 +68,7 @@ String encoding.jsstr(String str,
 ### encodeURI
 url 字符串安全编码
 ```JavaScript
-String encoding.encodeURI(String url);
+static String encoding.encodeURI(String url);
 ```
 
 调用参数:
@@ -36,7 +80,7 @@ String encoding.encodeURI(String url);
 ### encodeURIComponent
 url 部件字符串安全编码
 ```JavaScript
-String encoding.encodeURIComponent(String url);
+static String encoding.encodeURIComponent(String url);
 ```
 
 调用参数:
@@ -48,7 +92,7 @@ String encoding.encodeURIComponent(String url);
 ### decodeURI
 url 安全字符串解码
 ```JavaScript
-String encoding.decodeURI(String url);
+static String encoding.decodeURI(String url);
 ```
 
 调用参数:

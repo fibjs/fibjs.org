@@ -60,7 +60,7 @@ MongoID MongoDB.oid(String hexStr = "");
 ### close
 关闭当前数据库连接
 ```JavaScript
-MongoDB.close();
+MongoDB.close() async;
 ```
 
 ### dispose

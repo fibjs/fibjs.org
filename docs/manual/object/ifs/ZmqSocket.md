@@ -35,7 +35,7 @@ ZmqSocket.connect(String addr);
 ### recv
 接收一个数据包
 ```JavaScript
-Buffer ZmqSocket.recv();
+Buffer ZmqSocket.recv() async;
 ```
 
 返回结果:

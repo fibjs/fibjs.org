@@ -130,7 +130,7 @@ HttpsServer.onerror(Object hdlrs);
 ### run
 运行服务器并开始接收和分发连接，此函数不会返回
 ```JavaScript
-HttpsServer.run();
+HttpsServer.run() async;
 ```
 
 ### asyncRun
@@ -142,7 +142,7 @@ HttpsServer.asyncRun();
 ### stop
 关闭 socket中止正在运行的服务器
 ```JavaScript
-HttpsServer.stop();
+HttpsServer.stop() async;
 ```
 
 ### dispose

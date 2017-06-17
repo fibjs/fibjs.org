@@ -157,10 +157,15 @@
 <p>引用方法：</p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">var</span> test = <span class="hljs-built_in">require</span>(<span class="hljs-string">'test'</span>);
 </code></pre>
+<h2 id="-">对象</h2>
+<h3 id="assert">assert</h3>
+<p>断言测试模块，如果测试值为假，则报错，报错行为可设定继续运行或者错误抛出</p>
+<pre><code class="lang-JavaScript">assert test.assert;
+</code></pre>
 <h2 id="-">函数</h2>
 <h3 id="describe">describe</h3>
 <p>定义一个测试模块，可嵌套定义</p>
-<pre><code class="lang-JavaScript">test.describe(<span class="hljs-built_in">String</span> name,
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> test.describe(<span class="hljs-built_in">String</span> name,
                 <span class="hljs-built_in">Function</span> block);
 </code></pre>
 <p>调用参数:</p>
@@ -170,7 +175,7 @@
 </ul>
 <h3 id="xdescribe">xdescribe</h3>
 <p>停止测试的模块定义</p>
-<pre><code class="lang-JavaScript">test.xdescribe(<span class="hljs-built_in">String</span> name,
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> test.xdescribe(<span class="hljs-built_in">String</span> name,
                 <span class="hljs-built_in">Function</span> block);
 </code></pre>
 <p>调用参数:</p>
@@ -180,7 +185,7 @@
 </ul>
 <h3 id="it">it</h3>
 <p>定义一个测试项目</p>
-<pre><code class="lang-JavaScript">test.it(<span class="hljs-built_in">String</span> name,
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> test.it(<span class="hljs-built_in">String</span> name,
                 <span class="hljs-built_in">Function</span> block);
 </code></pre>
 <p>调用参数:</p>
@@ -190,7 +195,7 @@
 </ul>
 <h3 id="xit">xit</h3>
 <p>禁止测试的项目定义</p>
-<pre><code class="lang-JavaScript">test.xit(<span class="hljs-built_in">String</span> name,
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> test.xit(<span class="hljs-built_in">String</span> name,
                 <span class="hljs-built_in">Function</span> block);
 </code></pre>
 <p>调用参数:</p>
@@ -200,7 +205,7 @@
 </ul>
 <h3 id="before">before</h3>
 <p>定义当前测试模块进入事件</p>
-<pre><code class="lang-JavaScript">test.before(<span class="hljs-built_in">Function</span> func);
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> test.before(<span class="hljs-built_in">Function</span> func);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -208,7 +213,7 @@
 </ul>
 <h3 id="after">after</h3>
 <p>定义当前测试模块退出事件</p>
-<pre><code class="lang-JavaScript">test.after(<span class="hljs-built_in">Function</span> func);
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> test.after(<span class="hljs-built_in">Function</span> func);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -216,7 +221,7 @@
 </ul>
 <h3 id="beforeeach">beforeEach</h3>
 <p>定义当前测试模块测试项目进入事件</p>
-<pre><code class="lang-JavaScript">test.beforeEach(<span class="hljs-built_in">Function</span> func);
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> test.beforeEach(<span class="hljs-built_in">Function</span> func);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -224,7 +229,7 @@
 </ul>
 <h3 id="aftereach">afterEach</h3>
 <p>定义当前测试模块测试项目退出事件</p>
-<pre><code class="lang-JavaScript">test.afterEach(<span class="hljs-built_in">Function</span> func);
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> test.afterEach(<span class="hljs-built_in">Function</span> func);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -232,7 +237,7 @@
 </ul>
 <h3 id="run">run</h3>
 <p>开始执行定义的测试模块</p>
-<pre><code class="lang-JavaScript">Integer test.run(Integer loglevel = <span class="hljs-literal">undefined</span>);
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> Integer test.run(Integer loglevel = <span class="hljs-literal">undefined</span>);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -244,7 +249,7 @@
 </ul>
 <h3 id="setup">setup</h3>
 <p>初始化当前脚本的测试环境，将 test 模块方法复制为当前脚本全局变量</p>
-<pre><code class="lang-JavaScript">test.setup(Integer mode = <span class="hljs-literal">undefined</span>);
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> test.setup(Integer mode = <span class="hljs-literal">undefined</span>);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -253,15 +258,15 @@
 <h2 id="-">属性</h2>
 <h3 id="slow">slow</h3>
 <p>设置和查询慢速测试警告阀值，以 ms 为单位，缺省为 75</p>
-<pre><code class="lang-JavaScript">Integer test.slow;
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> Integer test.slow;
 </code></pre>
 <h2 id="-">常量</h2>
 <h3 id="bdd">BDD</h3>
 <p>定义 BDD(Behavior Drive Development) 测试环境，支持 describe, xdescribe, it, xit, before, after, beforeEach 和 afterEach，同时初始化 assert 和expect</p>
-<pre><code class="lang-JavaScript">test.BDD;
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">const</span> test.BDD = <span class="hljs-number">0</span>;
 </code></pre>
 <h3 id="tdd">TDD</h3>
 <p>定义 TDD(Test Drive Development) 测试环境，支持 suite, xsuite, test, xtest, setup, teardown, suiteSetup 和 suiteTeardown，同时初始化 assert 和expect</p>
-<pre><code class="lang-JavaScript">test.TDD;
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">const</span> test.TDD = <span class="hljs-number">1</span>;
 </code></pre>
  </div></div><div class=container><div class=footer><p>&copy; 2017 fibjs.org</p></div></div><script type=text/javascript src=../../../../js/common.js></script><script type=text/javascript src=../../../../js/docs.js></script></body></html>

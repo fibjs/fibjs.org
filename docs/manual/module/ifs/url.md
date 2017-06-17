@@ -6,7 +6,7 @@ url 处理模块
 ### format
 参数构造 UrlObject 对象
 ```JavaScript
-String url.format(Object args);
+static String url.format(Object args);
 ```
 
 调用参数:
@@ -15,7 +15,7 @@ String url.format(Object args);
 ### parse
 解析一个 url 字符串
 ```JavaScript
-UrlObject url.parse(String url,
+static UrlObject url.parse(String url,
                 Boolean parseQueryString = false);
 ```
 

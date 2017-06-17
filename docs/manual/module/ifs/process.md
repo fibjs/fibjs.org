@@ -10,7 +10,7 @@ var process = require('process');
 ### umask
 改变当前的 umask，Windows 不支持此方法
 ```JavaScript
-Integer process.umask(Integer mask);
+static Integer process.umask(Integer mask);
 ```
 
 调用参数:
@@ -22,7 +22,7 @@ Integer process.umask(Integer mask);
 --------------------------
 改变当前的 umask，Windows 不支持此方法
 ```JavaScript
-Integer process.umask(String mask);
+static Integer process.umask(String mask);
 ```
 
 调用参数:
@@ -34,7 +34,7 @@ Integer process.umask(String mask);
 --------------------------
 返回当前的 umask，Windows 不支持此方法
 ```JavaScript
-Integer process.umask();
+static Integer process.umask();
 ```
 
 返回结果:
@@ -43,7 +43,7 @@ Integer process.umask();
 ### exit
 退出当前进程，并返回结果
 ```JavaScript
-process.exit(Integer code);
+static process.exit(Integer code);
 ```
 
 调用参数:
@@ -52,7 +52,7 @@ process.exit(Integer code);
 ### cwd
 返回操作系统当前工作路径
 ```JavaScript
-String process.cwd();
+static String process.cwd();
 ```
 
 返回结果:
@@ -61,7 +61,7 @@ String process.cwd();
 ### chdir
 修改操作系统当前工作路径
 ```JavaScript
-process.chdir(String directory);
+static process.chdir(String directory);
 ```
 
 调用参数:
@@ -70,7 +70,7 @@ process.chdir(String directory);
 ### uptime
 查询运行环境运行时间，以秒为单位
 ```JavaScript
-Number process.uptime();
+static Number process.uptime();
 ```
 
 返回结果:
@@ -79,7 +79,7 @@ Number process.uptime();
 ### memoryUsage
 查询当前进程内存使用报告
 ```JavaScript
-Object process.memoryUsage();
+static Object process.memoryUsage();
 ```
 
 返回结果:
@@ -101,7 +101,7 @@ Object process.memoryUsage();
 ### nextTick
 启动一个纤程
 ```JavaScript
-process.nextTick(Function func,
+static process.nextTick(Function func,
                 ...);
 ```
 
@@ -112,7 +112,7 @@ process.nextTick(Function func,
 ### open
 运行指定的命令行，接管进程输入输出流，并返回进程对象
 ```JavaScript
-SubProcess process.open(String command,
+static SubProcess process.open(String command,
                 Array args,
                 Object opts = {});
 ```
@@ -136,7 +136,7 @@ opts 支持的选项如下：
 --------------------------
 运行指定的命令行，接管进程输入输出流，并返回进程对象
 ```JavaScript
-SubProcess process.open(String command,
+static SubProcess process.open(String command,
                 Object opts = {});
 ```
 
@@ -158,7 +158,7 @@ opts 支持的选项如下：
 ### start
 运行指定的命令行，并返回进程对象
 ```JavaScript
-SubProcess process.start(String command,
+static SubProcess process.start(String command,
                 Array args,
                 Object opts = {});
 ```
@@ -182,7 +182,7 @@ opts 支持的选项如下：
 --------------------------
 运行指定的命令行，并返回进程对象
 ```JavaScript
-SubProcess process.start(String command,
+static SubProcess process.start(String command,
                 Object opts = {});
 ```
 
@@ -204,7 +204,7 @@ opts 支持的选项如下：
 ### run
 运行指定的命令行，并返回进程的结束代码
 ```JavaScript
-Integer process.run(String command,
+static Integer process.run(String command,
                 Array args,
                 Object opts = {});
 ```
@@ -228,7 +228,7 @@ opts 支持的选项如下：
 --------------------------
 运行指定的命令行，并返回进程的结束代码
 ```JavaScript
-Integer process.run(String command,
+static Integer process.run(String command,
                 Object opts = {});
 ```
 
@@ -251,42 +251,42 @@ opts 支持的选项如下：
 ### argv
 返回当前进程的命令行参数
 ```JavaScript
-readonly Array process.argv;
+static readonly Array process.argv;
 ```
 
 ### execArgv
 返回当前进程的特殊命令行参数，这些参数被 fibjs 用于设置运行环境
 ```JavaScript
-readonly Array process.execArgv;
+static readonly Array process.execArgv;
 ```
 
 ### version
 返回fibjs版本字符串
 ```JavaScript
-readonly String process.version;
+static readonly String process.version;
 ```
 
 ### execPath
 查询当前运行执行文件完整路径
 ```JavaScript
-readonly String process.execPath;
+static readonly String process.execPath;
 ```
 
 ### env
 查询当前进程的环境变量
 ```JavaScript
-readonly Object process.env;
+static readonly Object process.env;
 ```
 
 ### arch
 查询当前 cpu 环境，可能的结果为 &#39;amd64&#39;, &#39;arm&#39;, &#39;arm64&#39;, &#39;ia32&#39;
 ```JavaScript
-readonly String process.arch;
+static readonly String process.arch;
 ```
 
 ### platform
 查询当前平台名称，可能的结果为 &#39;darwin&#39;, &#39;freebsd&#39;, &#39;linux&#39;, 或 &#39;win32&#39;
 ```JavaScript
-readonly String process.platform;
+static readonly String process.platform;
 ```
 

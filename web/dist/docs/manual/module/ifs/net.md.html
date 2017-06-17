@@ -157,10 +157,27 @@
 <p>基础模块。可用于创建和操作网络资源，引用方式：</p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">var</span> net = <span class="hljs-built_in">require</span>(<span class="hljs-string">'net'</span>);
 </code></pre>
+<h2 id="-">对象</h2>
+<h3 id="socket">Socket</h3>
+<p>创建一个 Socket 对象，参见 Socket</p>
+<pre><code class="lang-JavaScript">Socket net.Socket;
+</code></pre>
+<h3 id="smtp">Smtp</h3>
+<p>创建一个 Smtp 对象，参见 Smtp</p>
+<pre><code class="lang-JavaScript">Smtp net.Smtp;
+</code></pre>
+<h3 id="tcpserver">TcpServer</h3>
+<p>创建一个 TcpServer 对象，参见 TcpServer</p>
+<pre><code class="lang-JavaScript">TcpServer net.TcpServer;
+</code></pre>
+<h3 id="url">Url</h3>
+<p>创建一个 UrlObject 对象，参见 UrlObject</p>
+<pre><code class="lang-JavaScript">UrlObject net.Url;
+</code></pre>
 <h2 id="-">函数</h2>
 <h3 id="info">info</h3>
 <p>查询当前运行环境网络信息</p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">Object</span> net.info();
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> <span class="hljs-built_in">Object</span> net.info();
 </code></pre>
 <p>返回结果:</p>
 <ul>
@@ -168,8 +185,8 @@
 </ul>
 <h3 id="resolve">resolve</h3>
 <p>查询给定的主机名的地址</p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> net.resolve(<span class="hljs-built_in">String</span> name,
-                Integer family = <span class="hljs-literal">undefined</span>);
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> <span class="hljs-built_in">String</span> net.resolve(<span class="hljs-built_in">String</span> name,
+                Integer family = <span class="hljs-literal">undefined</span>) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -182,7 +199,7 @@
 </ul>
 <h3 id="ip">ip</h3>
 <p>快速查询的主机地址，等效与 resolve(name)</p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> net.ip(<span class="hljs-built_in">String</span> name);
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> <span class="hljs-built_in">String</span> net.ip(<span class="hljs-built_in">String</span> name) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -194,7 +211,7 @@
 </ul>
 <h3 id="ipv6">ipv6</h3>
 <p>快速查询的主机 ipv6 地址，等效与 resolve(name, net.AF_INET6)</p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> net.ipv6(<span class="hljs-built_in">String</span> name);
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> <span class="hljs-built_in">String</span> net.ipv6(<span class="hljs-built_in">String</span> name) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -206,10 +223,10 @@
 </ul>
 <h3 id="connect">connect</h3>
 <p>创建一个 Socket 对象并建立连接，参见 Socket</p>
-<pre><code class="lang-JavaScript">Stream net.connect(<span class="hljs-built_in">String</span> host,
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> Stream net.connect(<span class="hljs-built_in">String</span> host,
                 Integer port,
                 Integer timeout = <span class="hljs-number">0</span>,
-                Integer family = <span class="hljs-literal">undefined</span>);
+                Integer family = <span class="hljs-literal">undefined</span>) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -224,8 +241,8 @@
 </ul>
 <hr>
 <p>创建一个 Socket 或 SslSocket 对象并建立连接</p>
-<pre><code class="lang-JavaScript">Stream net.connect(<span class="hljs-built_in">String</span> url,
-                Integer timeout = <span class="hljs-number">0</span>);
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> Stream net.connect(<span class="hljs-built_in">String</span> url,
+                Integer timeout = <span class="hljs-number">0</span>) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -238,8 +255,8 @@
 </ul>
 <h3 id="opensmtp">openSmtp</h3>
 <p>创建一个 Smtp 对象并建立连接，参见 Smtp</p>
-<pre><code class="lang-JavaScript">Smtp net.openSmtp(<span class="hljs-built_in">String</span> url,
-                Integer timeout = <span class="hljs-number">0</span>);
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> Smtp net.openSmtp(<span class="hljs-built_in">String</span> url,
+                Integer timeout = <span class="hljs-number">0</span>) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -252,7 +269,7 @@
 </ul>
 <h3 id="backend">backend</h3>
 <p>查询当前系统异步网络引擎</p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> net.backend();
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> <span class="hljs-built_in">String</span> net.backend();
 </code></pre>
 <p>返回结果:</p>
 <ul>
@@ -261,18 +278,18 @@
 <h2 id="-">常量</h2>
 <h3 id="af_inet">AF_INET</h3>
 <p>地址集常量，指定 ipv4</p>
-<pre><code class="lang-JavaScript">net.AF_INET;
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">const</span> net.AF_INET = <span class="hljs-number">2</span>;
 </code></pre>
 <h3 id="af_inet6">AF_INET6</h3>
 <p>地址集常量，指定 ipv6</p>
-<pre><code class="lang-JavaScript">net.AF_INET6;
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">const</span> net.AF_INET6 = <span class="hljs-number">10</span>;
 </code></pre>
 <h3 id="sock_stream">SOCK_STREAM</h3>
 <p>协议族常量，指定 tcp</p>
-<pre><code class="lang-JavaScript">net.SOCK_STREAM;
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">const</span> net.SOCK_STREAM = <span class="hljs-number">1</span>;
 </code></pre>
 <h3 id="sock_dgram">SOCK_DGRAM</h3>
 <p>协议族常量，指定 udp</p>
-<pre><code class="lang-JavaScript">net.SOCK_DGRAM;
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">const</span> net.SOCK_DGRAM = <span class="hljs-number">2</span>;
 </code></pre>
  </div></div><div class=container><div class=footer><p>&copy; 2017 fibjs.org</p></div></div><script type=text/javascript src=../../../../js/common.js></script><script type=text/javascript src=../../../../js/docs.js></script></body></html>

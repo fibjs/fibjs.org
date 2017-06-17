@@ -26,7 +26,7 @@ hdlr.onerror({
 ### invoke
 处理一个消息或对象
 ```JavaScript
-Handler HandlerEx.invoke(object v);
+Handler HandlerEx.invoke(object v) async;
 ```
 
 调用参数:

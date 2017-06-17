@@ -10,7 +10,7 @@ var slite = db.openSQLite("sqlite:/path/to/db");
 ### backup
 备份当前数据库到新文件
 ```JavaScript
-SQLite.backup(String fileName);
+SQLite.backup(String fileName) async;
 ```
 
 调用参数:
@@ -19,31 +19,31 @@ SQLite.backup(String fileName);
 ### close
 关闭当前数据库连接
 ```JavaScript
-SQLite.close();
+SQLite.close() async;
 ```
 
 ### begin
 在当前数据库连接上启动一个事务
 ```JavaScript
-SQLite.begin();
+SQLite.begin() async;
 ```
 
 ### commit
 提交当前数据库连接上的事务
 ```JavaScript
-SQLite.commit();
+SQLite.commit() async;
 ```
 
 ### rollback
 回滚当前数据库连接上的事务
 ```JavaScript
-SQLite.rollback();
+SQLite.rollback() async;
 ```
 
 ### execute
 执行一个 sql 命令，并返回执行结果
 ```JavaScript
-DBResult SQLite.execute(String sql);
+DBResult SQLite.execute(String sql) async;
 ```
 
 调用参数:

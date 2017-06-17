@@ -154,10 +154,39 @@
 </ul>
  </div></div></div>  </div></div><div class="content col-xs-12 col-sm-9"> <h1 id="-http">模块 http</h1>
 <p>超文本传输协议模块，用以支持 http 协议处理</p>
+<h2 id="-">对象</h2>
+<h3 id="request">Request</h3>
+<p>创建一个 http 请求对象，参见 HttpRequest</p>
+<pre><code class="lang-JavaScript">HttpRequest http.Request;
+</code></pre>
+<h3 id="response">Response</h3>
+<p>创建一个 http 响应对象，参见 HttpResponse</p>
+<pre><code class="lang-JavaScript">HttpResponse http.Response;
+</code></pre>
+<h3 id="cookie">Cookie</h3>
+<p>创建一个 http cookie 对象，参见 HttpCookie</p>
+<pre><code class="lang-JavaScript">HttpCookie http.Cookie;
+</code></pre>
+<h3 id="server">Server</h3>
+<p>创建一个 http 服务器，参见 HttpServer</p>
+<pre><code class="lang-JavaScript">HttpServer http.Server;
+</code></pre>
+<h3 id="client">Client</h3>
+<p>创建一个 http 客户端，参见 HttpClient</p>
+<pre><code class="lang-JavaScript">HttpClient http.Client;
+</code></pre>
+<h3 id="httpsserver">HttpsServer</h3>
+<p>创建一个 https 服务器，参见 HttpsServer</p>
+<pre><code class="lang-JavaScript">HttpsServer http.HttpsServer;
+</code></pre>
+<h3 id="handler">Handler</h3>
+<p>创建一个 http 协议处理器对象，参见 HttpHandler</p>
+<pre><code class="lang-JavaScript">HttpHandler http.Handler;
+</code></pre>
 <h2 id="-">函数</h2>
 <h3 id="filehandler">fileHandler</h3>
 <p>创建一个 http 静态文件处理器，用以用静态文件响应 http 消息</p>
-<pre><code class="lang-JavaScript">Handler http.fileHandler(<span class="hljs-built_in">String</span> root,
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> Handler http.fileHandler(<span class="hljs-built_in">String</span> root,
                 <span class="hljs-built_in">Object</span> mimes = {});
 </code></pre>
 <p>调用参数:</p>
@@ -173,8 +202,8 @@
 从而避免重复压缩带来服务器负载。</p>
 <h3 id="request">request</h3>
 <p>发送 http 请求到指定的流对象，并返回结果</p>
-<pre><code class="lang-JavaScript">HttpResponse http.request(Stream conn,
-                HttpRequest req);
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> HttpResponse http.request(Stream conn,
+                HttpRequest req) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -187,7 +216,7 @@
 </ul>
 <hr>
 <p>请求指定的 url，并返回结果</p>
-<pre><code class="lang-JavaScript">HttpResponse http.request(<span class="hljs-built_in">String</span> method,
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> HttpResponse http.request(<span class="hljs-built_in">String</span> method,
                 <span class="hljs-built_in">String</span> url,
                 <span class="hljs-built_in">Object</span> headers = {});
 </code></pre>
@@ -203,10 +232,10 @@
 </ul>
 <hr>
 <p>请求指定的 url，并返回结果</p>
-<pre><code class="lang-JavaScript">HttpResponse http.request(<span class="hljs-built_in">String</span> method,
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> HttpResponse http.request(<span class="hljs-built_in">String</span> method,
                 <span class="hljs-built_in">String</span> url,
                 SeekableStream body,
-                <span class="hljs-built_in">Map</span> headers);
+                <span class="hljs-built_in">Map</span> headers) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -221,7 +250,7 @@
 </ul>
 <hr>
 <p>请求指定的 url，并返回结果</p>
-<pre><code class="lang-JavaScript">HttpResponse http.request(<span class="hljs-built_in">String</span> method,
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> HttpResponse http.request(<span class="hljs-built_in">String</span> method,
                 <span class="hljs-built_in">String</span> url,
                 SeekableStream body,
                 <span class="hljs-built_in">Object</span> headers = {});
@@ -239,7 +268,7 @@
 </ul>
 <hr>
 <p>请求指定的 url，并返回结果</p>
-<pre><code class="lang-JavaScript">HttpResponse http.request(<span class="hljs-built_in">String</span> method,
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> HttpResponse http.request(<span class="hljs-built_in">String</span> method,
                 <span class="hljs-built_in">String</span> url,
                 Buffer body,
                 <span class="hljs-built_in">Object</span> headers = {});
@@ -257,7 +286,7 @@
 </ul>
 <h3 id="get">get</h3>
 <p>用 GET 方法请求指定的 url，并返回结果，等同于 request(&#34;GET&#34;, ...)</p>
-<pre><code class="lang-JavaScript">HttpResponse http.get(<span class="hljs-built_in">String</span> url,
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> HttpResponse http.get(<span class="hljs-built_in">String</span> url,
                 <span class="hljs-built_in">Object</span> headers = {});
 </code></pre>
 <p>调用参数:</p>
@@ -271,7 +300,7 @@
 </ul>
 <h3 id="post">post</h3>
 <p>用 POST 方法请求指定的 url，并返回结果，等同于 request(&#34;POST&#34;, ...)</p>
-<pre><code class="lang-JavaScript">HttpResponse http.post(<span class="hljs-built_in">String</span> url,
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> HttpResponse http.post(<span class="hljs-built_in">String</span> url,
                 SeekableStream body,
                 <span class="hljs-built_in">Object</span> headers = {});
 </code></pre>
@@ -287,7 +316,7 @@
 </ul>
 <hr>
 <p>用 POST 方法请求指定的 url，并返回结果，等同于 request(&#34;POST&#34;, ...)</p>
-<pre><code class="lang-JavaScript">HttpResponse http.post(<span class="hljs-built_in">String</span> url,
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> HttpResponse http.post(<span class="hljs-built_in">String</span> url,
                 Buffer body,
                 <span class="hljs-built_in">Object</span> headers = {});
 </code></pre>
@@ -303,7 +332,7 @@
 </ul>
 <hr>
 <p>用 POST 方法请求指定的 url，并返回结果，等同于 request(&#34;POST&#34;, ...)</p>
-<pre><code class="lang-JavaScript">HttpResponse http.post(<span class="hljs-built_in">String</span> url,
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> HttpResponse http.post(<span class="hljs-built_in">String</span> url,
                 <span class="hljs-built_in">Object</span> headers = {});
 </code></pre>
 <p>调用参数:</p>
@@ -317,7 +346,7 @@
 </ul>
 <h3 id="del">del</h3>
 <p>用 DELETE 方法请求指定的 url，并返回结果，等同于 request(&#34;DELETE&#34;, ...)</p>
-<pre><code class="lang-JavaScript">HttpResponse http.del(<span class="hljs-built_in">String</span> url,
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> HttpResponse http.del(<span class="hljs-built_in">String</span> url,
                 <span class="hljs-built_in">Object</span> headers = {});
 </code></pre>
 <p>调用参数:</p>
@@ -331,7 +360,7 @@
 </ul>
 <h3 id="put">put</h3>
 <p>用 PUT 方法请求指定的 url，并返回结果，等同于 request(&#34;PUT&#34;, ...)</p>
-<pre><code class="lang-JavaScript">HttpResponse http.put(<span class="hljs-built_in">String</span> url,
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> HttpResponse http.put(<span class="hljs-built_in">String</span> url,
                 SeekableStream body,
                 <span class="hljs-built_in">Object</span> headers = {});
 </code></pre>
@@ -347,7 +376,7 @@
 </ul>
 <hr>
 <p>用 PUT 方法请求指定的 url，并返回结果，等同于 request(&#34;PUT&#34;, ...)</p>
-<pre><code class="lang-JavaScript">HttpResponse http.put(<span class="hljs-built_in">String</span> url,
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> HttpResponse http.put(<span class="hljs-built_in">String</span> url,
                 Buffer body,
                 <span class="hljs-built_in">Object</span> headers = {});
 </code></pre>
@@ -363,7 +392,7 @@
 </ul>
 <hr>
 <p>用 PUT 方法请求指定的 url，并返回结果，等同于 request(&#34;PUT&#34;, ...)</p>
-<pre><code class="lang-JavaScript">HttpResponse http.put(<span class="hljs-built_in">String</span> url,
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> HttpResponse http.put(<span class="hljs-built_in">String</span> url,
                 <span class="hljs-built_in">Object</span> headers = {});
 </code></pre>
 <p>调用参数:</p>
@@ -377,7 +406,7 @@
 </ul>
 <h3 id="patch">patch</h3>
 <p>用 PATCH 方法请求指定的 url，并返回结果，等同于 request(&#34;PATCH&#34;, ...)</p>
-<pre><code class="lang-JavaScript">HttpResponse http.patch(<span class="hljs-built_in">String</span> url,
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> HttpResponse http.patch(<span class="hljs-built_in">String</span> url,
                 SeekableStream body,
                 <span class="hljs-built_in">Object</span> headers = {});
 </code></pre>
@@ -393,7 +422,7 @@
 </ul>
 <hr>
 <p>用 PATCH 方法请求指定的 url，并返回结果，等同于 request(&#34;PATCH&#34;, ...)</p>
-<pre><code class="lang-JavaScript">HttpResponse http.patch(<span class="hljs-built_in">String</span> url,
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> HttpResponse http.patch(<span class="hljs-built_in">String</span> url,
                 Buffer body,
                 <span class="hljs-built_in">Object</span> headers = {});
 </code></pre>
@@ -409,7 +438,7 @@
 </ul>
 <hr>
 <p>用 PATCH 方法请求指定的 url，并返回结果，等同于 request(&#34;PATCH&#34;, ...)</p>
-<pre><code class="lang-JavaScript">HttpResponse http.patch(<span class="hljs-built_in">String</span> url,
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> HttpResponse http.patch(<span class="hljs-built_in">String</span> url,
                 <span class="hljs-built_in">Object</span> headers = {});
 </code></pre>
 <p>调用参数:</p>
@@ -424,22 +453,22 @@
 <h2 id="-">属性</h2>
 <h3 id="cookies">cookies</h3>
 <p>返回http客户端的 HttpCookie 对象列表</p>
-<pre><code class="lang-JavaScript">readonly List http.cookies;
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> readonly List http.cookies;
 </code></pre>
 <h3 id="timeout">timeout</h3>
 <p>查询和设置超时时间</p>
-<pre><code class="lang-JavaScript">Integer http.timeout;
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> Integer http.timeout;
 </code></pre>
 <h3 id="enablecookie">enableCookie</h3>
 <p>cookie功能开关，默认开启</p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">Boolean</span> http.enableCookie;
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> <span class="hljs-built_in">Boolean</span> http.enableCookie;
 </code></pre>
 <h3 id="autoredirect">autoRedirect</h3>
 <p>自动redirect功能开关，默认开启</p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">Boolean</span> http.autoRedirect;
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> <span class="hljs-built_in">Boolean</span> http.autoRedirect;
 </code></pre>
 <h3 id="useragent">userAgent</h3>
 <p>查询和设置 http 请求中的浏览器标识</p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> http.userAgent;
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> <span class="hljs-built_in">String</span> http.userAgent;
 </code></pre>
  </div></div><div class=container><div class=footer><p>&copy; 2017 fibjs.org</p></div></div><script type=text/javascript src=../../../../js/common.js></script><script type=text/javascript src=../../../../js/docs.js></script></body></html>

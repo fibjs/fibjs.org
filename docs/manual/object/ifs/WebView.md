@@ -6,7 +6,7 @@
 ### setHtml
 设置 webview 的页面 html
 ```JavaScript
-WebView.setHtml(String html);
+WebView.setHtml(String html) async;
 ```
 
 调用参数:
@@ -15,7 +15,7 @@ WebView.setHtml(String html);
 ### print
 打印当前窗口文档
 ```JavaScript
-WebView.print(Integer mode = 1);
+WebView.print(Integer mode = 1) async;
 ```
 
 调用参数:
@@ -24,19 +24,19 @@ WebView.print(Integer mode = 1);
 ### close
 关闭当前窗口
 ```JavaScript
-WebView.close();
+WebView.close() async;
 ```
 
 ### wait
 等待当前窗口关闭
 ```JavaScript
-WebView.wait();
+WebView.wait() async;
 ```
 
 ### postMessage
 向 webview 内发送消息
 ```JavaScript
-WebView.postMessage(String msg);
+WebView.postMessage(String msg) async;
 ```
 
 调用参数:
@@ -472,6 +472,6 @@ webview.onmessage = function(msg) {
 ### defaultMaxListeners
 默认全局最大监听器数
 ```JavaScript
-Integer WebView.defaultMaxListeners;
+static Integer WebView.defaultMaxListeners;
 ```
 

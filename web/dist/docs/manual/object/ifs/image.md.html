@@ -162,7 +162,7 @@
 <h3 id="getdata">getData</h3>
 <p>按照指定的格式返回图像数据</p>
 <pre><code class="lang-JavaScript">Buffer Image.getData(Integer format = <span class="hljs-literal">undefined</span>,
-                Integer quality = <span class="hljs-number">85</span>);
+                Integer quality = <span class="hljs-number">85</span>) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -177,7 +177,7 @@
 <p>按照指定的格式将图像数据存入流对象</p>
 <pre><code class="lang-JavaScript">Image.save(Stream stm,
                 Integer format = <span class="hljs-literal">undefined</span>,
-                Integer quality = <span class="hljs-number">85</span>);
+                Integer quality = <span class="hljs-number">85</span>) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -189,7 +189,7 @@
 <p>按照指定的格式将图像数据存入指定文件，文件将被强制覆盖</p>
 <pre><code class="lang-JavaScript">Image.save(<span class="hljs-built_in">String</span> fname,
                 Integer format = <span class="hljs-literal">undefined</span>,
-                Integer quality = <span class="hljs-number">85</span>);
+                Integer quality = <span class="hljs-number">85</span>) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -708,7 +708,7 @@
 <h3 id="colorreplace">colorReplace</h3>
 <p>替换图像中指定的颜色为新颜色</p>
 <pre><code class="lang-JavaScript">Image.colorReplace(Integer src,
-                Integer dst);
+                Integer dst) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -717,7 +717,7 @@
 </ul>
 <h3 id="clone">clone</h3>
 <p>复制当前图像为一个新图像</p>
-<pre><code class="lang-JavaScript">Image Image.clone();
+<pre><code class="lang-JavaScript">Image Image.clone() <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>返回结果:</p>
 <ul>
@@ -726,7 +726,7 @@
 <h3 id="resample">resample</h3>
 <p>根据图像拉伸生成一个新尺寸的图像</p>
 <pre><code class="lang-JavaScript">Image Image.resample(Integer width,
-                Integer height);
+                Integer height) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -742,7 +742,7 @@
 <pre><code class="lang-JavaScript">Image Image.crop(Integer x,
                 Integer y,
                 Integer width,
-                Integer height);
+                Integer height) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -757,7 +757,7 @@
 </ul>
 <h3 id="flip">flip</h3>
 <p>镜像当前图像</p>
-<pre><code class="lang-JavaScript">Image.flip(Integer dir = <span class="hljs-literal">undefined</span>);
+<pre><code class="lang-JavaScript">Image.flip(Integer dir = <span class="hljs-literal">undefined</span>) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -765,7 +765,7 @@
 </ul>
 <h3 id="rotate">rotate</h3>
 <p>旋转当前图像</p>
-<pre><code class="lang-JavaScript">Image.rotate(Integer dir);
+<pre><code class="lang-JavaScript">Image.rotate(Integer dir) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -773,7 +773,7 @@
 </ul>
 <h3 id="convert">convert</h3>
 <p>转换当前图像类型</p>
-<pre><code class="lang-JavaScript">Image.convert(Integer color = <span class="hljs-literal">undefined</span>);
+<pre><code class="lang-JavaScript">Image.convert(Integer color = <span class="hljs-literal">undefined</span>) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -787,7 +787,7 @@
                 Integer srcX,
                 Integer srcY,
                 Integer width,
-                Integer height);
+                Integer height) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -808,7 +808,7 @@
                 Integer srcY,
                 Integer width,
                 Integer height,
-                Integer percent);
+                Integer percent) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -830,7 +830,7 @@
                 Integer srcY,
                 Integer width,
                 Integer height,
-                Integer percent);
+                Integer percent) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -853,7 +853,7 @@
                 Integer dstW,
                 Integer dstH,
                 Integer srcW,
-                Integer srcH);
+                Integer srcH) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -877,7 +877,7 @@
                 Integer dstW,
                 Integer dstH,
                 Integer srcW,
-                Integer srcH);
+                Integer srcH) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -900,7 +900,7 @@
                 Integer srcY,
                 Integer width,
                 Integer height,
-                <span class="hljs-built_in">Number</span> angle);
+                <span class="hljs-built_in">Number</span> angle) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -919,7 +919,7 @@
                 <span class="hljs-built_in">Number</span> arg1 = <span class="hljs-number">0</span>,
                 <span class="hljs-built_in">Number</span> arg2 = <span class="hljs-number">0</span>,
                 <span class="hljs-built_in">Number</span> arg3 = <span class="hljs-number">0</span>,
-                <span class="hljs-built_in">Number</span> arg4 = <span class="hljs-number">0</span>);
+                <span class="hljs-built_in">Number</span> arg4 = <span class="hljs-number">0</span>) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -970,7 +970,7 @@
 </code></pre>
 <h3 id="gaussianblur">gaussianBlur</h3>
 <p>对当前图像进行高斯模糊处理</p>
-<pre><code class="lang-JavaScript">Image.gaussianBlur(Integer radius);
+<pre><code class="lang-JavaScript">Image.gaussianBlur(Integer radius) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>

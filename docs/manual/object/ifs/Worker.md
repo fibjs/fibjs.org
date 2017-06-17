@@ -363,6 +363,6 @@ Function Worker.onmessage;
 ### defaultMaxListeners
 默认全局最大监听器数
 ```JavaScript
-Integer Worker.defaultMaxListeners;
+static Integer Worker.defaultMaxListeners;
 ```
 

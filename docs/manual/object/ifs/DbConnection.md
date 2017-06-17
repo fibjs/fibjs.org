@@ -6,31 +6,31 @@
 ### close
 关闭当前数据库连接
 ```JavaScript
-DbConnection.close();
+DbConnection.close() async;
 ```
 
 ### begin
 在当前数据库连接上启动一个事务
 ```JavaScript
-DbConnection.begin();
+DbConnection.begin() async;
 ```
 
 ### commit
 提交当前数据库连接上的事务
 ```JavaScript
-DbConnection.commit();
+DbConnection.commit() async;
 ```
 
 ### rollback
 回滚当前数据库连接上的事务
 ```JavaScript
-DbConnection.rollback();
+DbConnection.rollback() async;
 ```
 
 ### execute
 执行一个 sql 命令，并返回执行结果
 ```JavaScript
-DBResult DbConnection.execute(String sql);
+DBResult DbConnection.execute(String sql) async;
 ```
 
 调用参数:

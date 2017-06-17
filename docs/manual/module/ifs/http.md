@@ -1,12 +1,56 @@
 # 模块 http
 超文本传输协议模块，用以支持 http 协议处理
 
+## 对象
+        
+### Request
+创建一个 http 请求对象，参见 HttpRequest
+```JavaScript
+HttpRequest http.Request;
+```
+
+### Response
+创建一个 http 响应对象，参见 HttpResponse
+```JavaScript
+HttpResponse http.Response;
+```
+
+### Cookie
+创建一个 http cookie 对象，参见 HttpCookie
+```JavaScript
+HttpCookie http.Cookie;
+```
+
+### Server
+创建一个 http 服务器，参见 HttpServer
+```JavaScript
+HttpServer http.Server;
+```
+
+### Client
+创建一个 http 客户端，参见 HttpClient
+```JavaScript
+HttpClient http.Client;
+```
+
+### HttpsServer
+创建一个 https 服务器，参见 HttpsServer
+```JavaScript
+HttpsServer http.HttpsServer;
+```
+
+### Handler
+创建一个 http 协议处理器对象，参见 HttpHandler
+```JavaScript
+HttpHandler http.Handler;
+```
+
 ## 函数
         
 ### fileHandler
 创建一个 http 静态文件处理器，用以用静态文件响应 http 消息
 ```JavaScript
-Handler http.fileHandler(String root,
+static Handler http.fileHandler(String root,
                 Object mimes = {});
 ```
 
@@ -23,8 +67,8 @@ fileHandler 支持 gzip 预压缩，当请求接受 gzip 编码，且相同路�
 ### request
 发送 http 请求到指定的流对象，并返回结果
 ```JavaScript
-HttpResponse http.request(Stream conn,
-                HttpRequest req);
+static HttpResponse http.request(Stream conn,
+                HttpRequest req) async;
 ```
 
 调用参数:
@@ -37,7 +81,7 @@ HttpResponse http.request(Stream conn,
 --------------------------
 请求指定的 url，并返回结果
 ```JavaScript
-HttpResponse http.request(String method,
+static HttpResponse http.request(String method,
                 String url,
                 Object headers = {});
 ```
@@ -53,10 +97,10 @@ HttpResponse http.request(String method,
 --------------------------
 请求指定的 url，并返回结果
 ```JavaScript
-HttpResponse http.request(String method,
+static HttpResponse http.request(String method,
                 String url,
                 SeekableStream body,
-                Map headers);
+                Map headers) async;
 ```
 
 调用参数:
@@ -71,7 +115,7 @@ HttpResponse http.request(String method,
 --------------------------
 请求指定的 url，并返回结果
 ```JavaScript
-HttpResponse http.request(String method,
+static HttpResponse http.request(String method,
                 String url,
                 SeekableStream body,
                 Object headers = {});
@@ -89,7 +133,7 @@ HttpResponse http.request(String method,
 --------------------------
 请求指定的 url，并返回结果
 ```JavaScript
-HttpResponse http.request(String method,
+static HttpResponse http.request(String method,
                 String url,
                 Buffer body,
                 Object headers = {});
@@ -107,7 +151,7 @@ HttpResponse http.request(String method,
 ### get
 用 GET 方法请求指定的 url，并返回结果，等同于 request(&#34;GET&#34;, ...)
 ```JavaScript
-HttpResponse http.get(String url,
+static HttpResponse http.get(String url,
                 Object headers = {});
 ```
 
@@ -121,7 +165,7 @@ HttpResponse http.get(String url,
 ### post
 用 POST 方法请求指定的 url，并返回结果，等同于 request(&#34;POST&#34;, ...)
 ```JavaScript
-HttpResponse http.post(String url,
+static HttpResponse http.post(String url,
                 SeekableStream body,
                 Object headers = {});
 ```
@@ -137,7 +181,7 @@ HttpResponse http.post(String url,
 --------------------------
 用 POST 方法请求指定的 url，并返回结果，等同于 request(&#34;POST&#34;, ...)
 ```JavaScript
-HttpResponse http.post(String url,
+static HttpResponse http.post(String url,
                 Buffer body,
                 Object headers = {});
 ```
@@ -153,7 +197,7 @@ HttpResponse http.post(String url,
 --------------------------
 用 POST 方法请求指定的 url，并返回结果，等同于 request(&#34;POST&#34;, ...)
 ```JavaScript
-HttpResponse http.post(String url,
+static HttpResponse http.post(String url,
                 Object headers = {});
 ```
 
@@ -167,7 +211,7 @@ HttpResponse http.post(String url,
 ### del
 用 DELETE 方法请求指定的 url，并返回结果，等同于 request(&#34;DELETE&#34;, ...)
 ```JavaScript
-HttpResponse http.del(String url,
+static HttpResponse http.del(String url,
                 Object headers = {});
 ```
 
@@ -181,7 +225,7 @@ HttpResponse http.del(String url,
 ### put
 用 PUT 方法请求指定的 url，并返回结果，等同于 request(&#34;PUT&#34;, ...)
 ```JavaScript
-HttpResponse http.put(String url,
+static HttpResponse http.put(String url,
                 SeekableStream body,
                 Object headers = {});
 ```
@@ -197,7 +241,7 @@ HttpResponse http.put(String url,
 --------------------------
 用 PUT 方法请求指定的 url，并返回结果，等同于 request(&#34;PUT&#34;, ...)
 ```JavaScript
-HttpResponse http.put(String url,
+static HttpResponse http.put(String url,
                 Buffer body,
                 Object headers = {});
 ```
@@ -213,7 +257,7 @@ HttpResponse http.put(String url,
 --------------------------
 用 PUT 方法请求指定的 url，并返回结果，等同于 request(&#34;PUT&#34;, ...)
 ```JavaScript
-HttpResponse http.put(String url,
+static HttpResponse http.put(String url,
                 Object headers = {});
 ```
 
@@ -227,7 +271,7 @@ HttpResponse http.put(String url,
 ### patch
 用 PATCH 方法请求指定的 url，并返回结果，等同于 request(&#34;PATCH&#34;, ...)
 ```JavaScript
-HttpResponse http.patch(String url,
+static HttpResponse http.patch(String url,
                 SeekableStream body,
                 Object headers = {});
 ```
@@ -243,7 +287,7 @@ HttpResponse http.patch(String url,
 --------------------------
 用 PATCH 方法请求指定的 url，并返回结果，等同于 request(&#34;PATCH&#34;, ...)
 ```JavaScript
-HttpResponse http.patch(String url,
+static HttpResponse http.patch(String url,
                 Buffer body,
                 Object headers = {});
 ```
@@ -259,7 +303,7 @@ HttpResponse http.patch(String url,
 --------------------------
 用 PATCH 方法请求指定的 url，并返回结果，等同于 request(&#34;PATCH&#34;, ...)
 ```JavaScript
-HttpResponse http.patch(String url,
+static HttpResponse http.patch(String url,
                 Object headers = {});
 ```
 
@@ -275,30 +319,30 @@ HttpResponse http.patch(String url,
 ### cookies
 返回http客户端的 HttpCookie 对象列表
 ```JavaScript
-readonly List http.cookies;
+static readonly List http.cookies;
 ```
 
 ### timeout
 查询和设置超时时间
 ```JavaScript
-Integer http.timeout;
+static Integer http.timeout;
 ```
 
 ### enableCookie
 cookie功能开关，默认开启
 ```JavaScript
-Boolean http.enableCookie;
+static Boolean http.enableCookie;
 ```
 
 ### autoRedirect
 自动redirect功能开关，默认开启
 ```JavaScript
-Boolean http.autoRedirect;
+static Boolean http.autoRedirect;
 ```
 
 ### userAgent
 查询和设置 http 请求中的浏览器标识
 ```JavaScript
-String http.userAgent;
+static String http.userAgent;
 ```
 

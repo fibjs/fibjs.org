@@ -15,7 +15,7 @@ var base64vlq = require('base64vlq');
 ### encode
 以 base64vlq 方式编码数据
 ```JavaScript
-String base64vlq.encode(Integer data);
+static String base64vlq.encode(Integer data);
 ```
 
 调用参数:
@@ -27,7 +27,7 @@ String base64vlq.encode(Integer data);
 --------------------------
 以 base64vlq 方式编码数据
 ```JavaScript
-String base64vlq.encode(Array data);
+static String base64vlq.encode(Array data);
 ```
 
 调用参数:
@@ -39,7 +39,7 @@ String base64vlq.encode(Array data);
 ### decode
 以 base64vlq 方式解码字符串为二进制数据
 ```JavaScript
-Array base64vlq.decode(String data);
+static Array base64vlq.decode(String data);
 ```
 
 调用参数:

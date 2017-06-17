@@ -10,7 +10,7 @@ var f = fs.open('test.txt');
 ### chmod
 查询当前文件的访问权限，Windows 不支持此方法
 ```JavaScript
-File.chmod(Integer mode);
+File.chmod(Integer mode) async;
 ```
 
 调用参数:
@@ -54,7 +54,7 @@ Long File.size();
 ### readAll
 从流内读取剩余的全部数据
 ```JavaScript
-Buffer File.readAll();
+Buffer File.readAll() async;
 ```
 
 返回结果:
@@ -63,7 +63,7 @@ Buffer File.readAll();
 ### truncate
 修改文件尺寸，如果新尺寸小于原尺寸，则文件被截断
 ```JavaScript
-File.truncate(Long bytes);
+File.truncate(Long bytes) async;
 ```
 
 调用参数:
@@ -81,13 +81,13 @@ Boolean File.eof();
 ### flush
 将文件缓冲区内容写入物理设备
 ```JavaScript
-File.flush();
+File.flush() async;
 ```
 
 ### stat
 查询当前文件的基础信息
 ```JavaScript
-Stat File.stat();
+Stat File.stat() async;
 ```
 
 返回结果:
@@ -96,7 +96,7 @@ Stat File.stat();
 ### read
 从流内读取指定大小的数据
 ```JavaScript
-Buffer File.read(Integer bytes = -1);
+Buffer File.read(Integer bytes = -1) async;
 ```
 
 调用参数:
@@ -108,7 +108,7 @@ Buffer File.read(Integer bytes = -1);
 ### write
 将给定的数据写入流
 ```JavaScript
-File.write(Buffer data);
+File.write(Buffer data) async;
 ```
 
 调用参数:
@@ -117,14 +117,14 @@ File.write(Buffer data);
 ### close
 关闭当前流对象
 ```JavaScript
-File.close();
+File.close() async;
 ```
 
 ### copyTo
 复制流数据到目标流中
 ```JavaScript
 Long File.copyTo(Stream stm,
-                Long bytes = -1);
+                Long bytes = -1) async;
 ```
 
 调用参数:

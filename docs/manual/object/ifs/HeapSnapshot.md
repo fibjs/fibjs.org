@@ -30,7 +30,7 @@ HeapGraphNode HeapSnapshot.getNodeById(Integer id);
 ### save
 根据指定名称保存HeapSnapshot
 ```JavaScript
-HeapSnapshot.save(String fname);
+HeapSnapshot.save(String fname) async;
 ```
 
 调用参数:

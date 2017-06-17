@@ -6,19 +6,19 @@ zip 文件访问对象
 ### namelist
 获取文件名列表
 ```JavaScript
-List ZipFile.namelist();
+List ZipFile.namelist() async;
 ```
 
 ### infolist
 获取文件信息列表
 ```JavaScript
-List ZipFile.infolist();
+List ZipFile.infolist() async;
 ```
 
 ### getinfo
 获取文件信息
 ```JavaScript
-ZipInfo ZipFile.getinfo(String member);
+ZipInfo ZipFile.getinfo(String member) async;
 ```
 
 调用参数:
@@ -28,7 +28,7 @@ ZipInfo ZipFile.getinfo(String member);
 返回从压缩文件读取的数据
 ```JavaScript
 Buffer ZipFile.read(String member,
-                String password = "");
+                String password = "") async;
 ```
 
 调用参数:
@@ -41,7 +41,7 @@ Buffer ZipFile.read(String member,
 ### readAll
 解压所有文件
 ```JavaScript
-List ZipFile.readAll(String password = "");
+List ZipFile.readAll(String password = "") async;
 ```
 
 调用参数:
@@ -55,7 +55,7 @@ List ZipFile.readAll(String password = "");
 ```JavaScript
 ZipFile.extract(String member,
                 String path,
-                String password = "");
+                String password = "") async;
 ```
 
 调用参数:
@@ -68,7 +68,7 @@ ZipFile.extract(String member,
 ```JavaScript
 ZipFile.extract(String member,
                 SeekableStream strm,
-                String password = "");
+                String password = "") async;
 ```
 
 调用参数:
@@ -80,7 +80,7 @@ ZipFile.extract(String member,
 解压所有文件到指定路径
 ```JavaScript
 ZipFile.extractAll(String path,
-                String password = "");
+                String password = "") async;
 ```
 
 调用参数:
@@ -92,7 +92,7 @@ ZipFile.extractAll(String path,
 ```JavaScript
 ZipFile.write(String filename,
                 String inZipName,
-                String password = "");
+                String password = "") async;
 ```
 
 调用参数:
@@ -105,7 +105,7 @@ ZipFile.write(String filename,
 ```JavaScript
 ZipFile.write(Buffer data,
                 String inZipName,
-                String password = "");
+                String password = "") async;
 ```
 
 调用参数:
@@ -118,7 +118,7 @@ ZipFile.write(Buffer data,
 ```JavaScript
 ZipFile.write(SeekableStream strm,
                 String inZipName,
-                String password = "");
+                String password = "") async;
 ```
 
 调用参数:
@@ -129,7 +129,7 @@ ZipFile.write(SeekableStream strm,
 ### close
 关闭打开的zip文件
 ```JavaScript
-ZipFile.close();
+ZipFile.close() async;
 ```
 
 ### dispose

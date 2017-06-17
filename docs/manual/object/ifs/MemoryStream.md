@@ -77,7 +77,7 @@ Long MemoryStream.size();
 ### readAll
 从流内读取剩余的全部数据
 ```JavaScript
-Buffer MemoryStream.readAll();
+Buffer MemoryStream.readAll() async;
 ```
 
 返回结果:
@@ -86,7 +86,7 @@ Buffer MemoryStream.readAll();
 ### truncate
 修改文件尺寸，如果新尺寸小于原尺寸，则文件被截断
 ```JavaScript
-MemoryStream.truncate(Long bytes);
+MemoryStream.truncate(Long bytes) async;
 ```
 
 调用参数:
@@ -104,13 +104,13 @@ Boolean MemoryStream.eof();
 ### flush
 将文件缓冲区内容写入物理设备
 ```JavaScript
-MemoryStream.flush();
+MemoryStream.flush() async;
 ```
 
 ### stat
 查询当前文件的基础信息
 ```JavaScript
-Stat MemoryStream.stat();
+Stat MemoryStream.stat() async;
 ```
 
 返回结果:
@@ -119,7 +119,7 @@ Stat MemoryStream.stat();
 ### read
 从流内读取指定大小的数据
 ```JavaScript
-Buffer MemoryStream.read(Integer bytes = -1);
+Buffer MemoryStream.read(Integer bytes = -1) async;
 ```
 
 调用参数:
@@ -131,7 +131,7 @@ Buffer MemoryStream.read(Integer bytes = -1);
 ### write
 将给定的数据写入流
 ```JavaScript
-MemoryStream.write(Buffer data);
+MemoryStream.write(Buffer data) async;
 ```
 
 调用参数:
@@ -140,14 +140,14 @@ MemoryStream.write(Buffer data);
 ### close
 关闭当前流对象
 ```JavaScript
-MemoryStream.close();
+MemoryStream.close() async;
 ```
 
 ### copyTo
 复制流数据到目标流中
 ```JavaScript
 Long MemoryStream.copyTo(Stream stm,
-                Long bytes = -1);
+                Long bytes = -1) async;
 ```
 
 调用参数:

@@ -23,7 +23,7 @@ HttpClient 构造函数，创建一个新的HttpClient对象
 发送 http 请求到指定的流对象，并返回结果
 ```JavaScript
 HttpResponse HttpClient.request(Stream conn,
-                HttpRequest req);
+                HttpRequest req) async;
 ```
 
 调用参数:
@@ -55,7 +55,7 @@ HttpResponse HttpClient.request(String method,
 HttpResponse HttpClient.request(String method,
                 String url,
                 SeekableStream body,
-                Map headers);
+                Map headers) async;
 ```
 
 调用参数:

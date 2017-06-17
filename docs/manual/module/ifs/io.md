@@ -5,14 +5,28 @@
 ```JavaScript
 var io = require('io');
 ```
+## 对象
+        
+### MemoryStream
+创建一个内存流对象，参见 MemoryStream
+```JavaScript
+MemoryStream io.MemoryStream;
+```
+
+### BufferedStream
+创建一个缓存流读取对象，参见 BufferedStream
+```JavaScript
+BufferedStream io.BufferedStream;
+```
+
 ## 函数
         
 ### copyStream
 复制流数据到目标流中
 ```JavaScript
-Long io.copyStream(Stream from,
+static Long io.copyStream(Stream from,
                 Stream to,
-                Long bytes = -1);
+                Long bytes = -1) async;
 ```
 
 调用参数:
@@ -26,8 +40,8 @@ Long io.copyStream(Stream from,
 ### bridge
 双向复制流数据，直到流中无数据，或者流被关闭
 ```JavaScript
-io.bridge(Stream stm1,
-                Stream stm2);
+static io.bridge(Stream stm1,
+                Stream stm2) async;
 ```
 
 调用参数:

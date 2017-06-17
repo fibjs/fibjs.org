@@ -5,71 +5,79 @@ zeroMQ 消息队列模块
 ```JavaScript
 var zmq = require('zmq');
 ```
+## 对象
+        
+### Socket
+
+```JavaScript
+ZmqSocket zmq.Socket;
+```
+
 ## 常量
         
 ### PAIR
 
 ```JavaScript
-zmq.PAIR;
+const zmq.PAIR = 0;
 ```
 
 ### PUB
 发布类型，所发送的消息将会分发给所有订阅者。
 ```JavaScript
-zmq.PUB;
+const zmq.PUB = 1;
 ```
 
 ### SUB
 订阅类型，用于接收 PUB 分发的消息。
 ```JavaScript
-zmq.SUB;
+const zmq.SUB = 2;
 ```
 
 ### REQ
 请求类型，此类型的接口只允许交替进行 send 和 recv 消息，每一个接受的消息都是最后一次发送请求的响应。
 ```JavaScript
-zmq.REQ;
+const zmq.REQ = 3;
 ```
 
 ### REP
 响应类型，此类型的接口只允许交替进行 recv 和 send 消息，每一个发送的消息都会作为最后一次接受的请求的回应。
 ```JavaScript
-zmq.REP;
+const zmq.REP = 4;
 ```
 
 ### DEALER
 
 ```JavaScript
-zmq.DEALER;
+const zmq.DEALER = 5;
 ```
 
 ### ROUTER
 
 ```JavaScript
-zmq.ROUTER;
+const zmq.ROUTER = 6;
 ```
 
 ### PULL
 获取消息类型，上游推送的消息将被公平的分发到此类接口。
 ```JavaScript
-zmq.PULL;
+const zmq.PULL = 7;
 ```
 
 ### PUSH
 推送类型，推送的消息将均衡发送到下游接口。
 ```JavaScript
-zmq.PUSH;
+const zmq.PUSH = 8;
 ```
 
 ### XPUB
 
 ```JavaScript
-zmq.XPUB;
+const zmq.XPUB = 9;
 ```
 
 ### XSUB
 
 ```JavaScript
-zmq.XSUB;
+const zmq.XSUB = 10;
 ```
 

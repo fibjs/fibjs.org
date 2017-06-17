@@ -14,4 +14,11 @@ var sbox = new vm.SandBox({
 
 var mod_in_sbox = sbox.require('./path/to/mod');
 ```
+## 对象
+        
+### SandBox
+创建一个 SandBox 对象，参见 SandBox
+```JavaScript
+SandBox vm.SandBox;
+```
 

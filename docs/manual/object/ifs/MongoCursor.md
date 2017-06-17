@@ -6,7 +6,7 @@ mongodb 数据库数据游标对象
 ### skip
 指定返回结果时跳过的记录数
 ```JavaScript
-MongoCursor MongoCursor.skip(Integer num);
+MongoCursor MongoCursor.skip(Integer num) async;
 ```
 
 调用参数:
@@ -18,7 +18,7 @@ MongoCursor MongoCursor.skip(Integer num);
 ### limit
 指定返回结果的最大记录数
 ```JavaScript
-MongoCursor MongoCursor.limit(Integer size);
+MongoCursor MongoCursor.limit(Integer size) async;
 ```
 
 调用参数:

@@ -78,7 +78,7 @@ Buffer X509Req.exportDer();
 ```JavaScript
 X509Cert X509Req.sign(String issuer,
                 PKey key,
-                Object opts = {});
+                Object opts = {}) async;
 ```
 
 调用参数:

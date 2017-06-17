@@ -35,7 +35,7 @@
 ### invoke
 处理一个消息或对象
 ```JavaScript
-Handler Handler.invoke(object v);
+Handler Handler.invoke(object v) async;
 ```
 
 调用参数:

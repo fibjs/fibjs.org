@@ -21,7 +21,7 @@ BufferedStream 构造函数
 ### readText
 读取指定字符的文本
 ```JavaScript
-String BufferedStream.readText(Integer size);
+String BufferedStream.readText(Integer size) async;
 ```
 
 调用参数:
@@ -33,7 +33,7 @@ String BufferedStream.readText(Integer size);
 ### readLine
 读取一行文本，行结尾标识基于 EOL 属性的设置，缺省时，posix:\&#34;\\n\&#34;；windows:\&#34;\\r\\n\&#34;
 ```JavaScript
-String BufferedStream.readLine(Integer maxlen = -1);
+String BufferedStream.readLine(Integer maxlen = -1) async;
 ```
 
 调用参数:
@@ -58,7 +58,7 @@ Array BufferedStream.readLines(Integer maxlines = -1);
 读取一个文本字符串，以指定的字节为结尾
 ```JavaScript
 String BufferedStream.readUntil(String mk,
-                Integer maxlen = -1);
+                Integer maxlen = -1) async;
 ```
 
 调用参数:
@@ -71,7 +71,7 @@ String BufferedStream.readUntil(String mk,
 ### writeText
 写入一个字符串
 ```JavaScript
-BufferedStream.writeText(String txt);
+BufferedStream.writeText(String txt) async;
 ```
 
 调用参数:
@@ -80,7 +80,7 @@ BufferedStream.writeText(String txt);
 ### writeLine
 写入一个字符串，并写入换行符
 ```JavaScript
-BufferedStream.writeLine(String txt);
+BufferedStream.writeLine(String txt) async;
 ```
 
 调用参数:
@@ -89,7 +89,7 @@ BufferedStream.writeLine(String txt);
 ### read
 从流内读取指定大小的数据
 ```JavaScript
-Buffer BufferedStream.read(Integer bytes = -1);
+Buffer BufferedStream.read(Integer bytes = -1) async;
 ```
 
 调用参数:
@@ -101,7 +101,7 @@ Buffer BufferedStream.read(Integer bytes = -1);
 ### write
 将给定的数据写入流
 ```JavaScript
-BufferedStream.write(Buffer data);
+BufferedStream.write(Buffer data) async;
 ```
 
 调用参数:
@@ -110,14 +110,14 @@ BufferedStream.write(Buffer data);
 ### close
 关闭当前流对象
 ```JavaScript
-BufferedStream.close();
+BufferedStream.close() async;
 ```
 
 ### copyTo
 复制流数据到目标流中
 ```JavaScript
 Long BufferedStream.copyTo(Stream stm,
-                Long bytes = -1);
+                Long bytes = -1) async;
 ```
 
 调用参数:

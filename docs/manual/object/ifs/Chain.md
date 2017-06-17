@@ -41,7 +41,7 @@ Chain.append(Handler hdlr);
 ### invoke
 处理一个消息或对象
 ```JavaScript
-Handler Chain.invoke(object v);
+Handler Chain.invoke(object v) async;
 ```
 
 调用参数:

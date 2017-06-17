@@ -12,7 +12,7 @@ var img1 = gd.load(data);
 按照指定的格式返回图像数据
 ```JavaScript
 Buffer Image.getData(Integer format = undefined,
-                Integer quality = 85);
+                Integer quality = 85) async;
 ```
 
 调用参数:
@@ -27,7 +27,7 @@ Buffer Image.getData(Integer format = undefined,
 ```JavaScript
 Image.save(Stream stm,
                 Integer format = undefined,
-                Integer quality = 85);
+                Integer quality = 85) async;
 ```
 
 调用参数:
@@ -40,7 +40,7 @@ Image.save(Stream stm,
 ```JavaScript
 Image.save(String fname,
                 Integer format = undefined,
-                Integer quality = 85);
+                Integer quality = 85) async;
 ```
 
 调用参数:
@@ -576,7 +576,7 @@ Image.fillToBorder(Integer x,
 替换图像中指定的颜色为新颜色
 ```JavaScript
 Image.colorReplace(Integer src,
-                Integer dst);
+                Integer dst) async;
 ```
 
 调用参数:
@@ -586,7 +586,7 @@ Image.colorReplace(Integer src,
 ### clone
 复制当前图像为一个新图像
 ```JavaScript
-Image Image.clone();
+Image Image.clone() async;
 ```
 
 返回结果:
@@ -596,7 +596,7 @@ Image Image.clone();
 根据图像拉伸生成一个新尺寸的图像
 ```JavaScript
 Image Image.resample(Integer width,
-                Integer height);
+                Integer height) async;
 ```
 
 调用参数:
@@ -612,7 +612,7 @@ Image Image.resample(Integer width,
 Image Image.crop(Integer x,
                 Integer y,
                 Integer width,
-                Integer height);
+                Integer height) async;
 ```
 
 调用参数:
@@ -627,7 +627,7 @@ Image Image.crop(Integer x,
 ### flip
 镜像当前图像
 ```JavaScript
-Image.flip(Integer dir = undefined);
+Image.flip(Integer dir = undefined) async;
 ```
 
 调用参数:
@@ -636,7 +636,7 @@ Image.flip(Integer dir = undefined);
 ### rotate
 旋转当前图像
 ```JavaScript
-Image.rotate(Integer dir);
+Image.rotate(Integer dir) async;
 ```
 
 调用参数:
@@ -645,7 +645,7 @@ Image.rotate(Integer dir);
 ### convert
 转换当前图像类型
 ```JavaScript
-Image.convert(Integer color = undefined);
+Image.convert(Integer color = undefined) async;
 ```
 
 调用参数:
@@ -660,7 +660,7 @@ Image.copy(Image source,
                 Integer srcX,
                 Integer srcY,
                 Integer width,
-                Integer height);
+                Integer height) async;
 ```
 
 调用参数:
@@ -682,7 +682,7 @@ Image.copyMerge(Image source,
                 Integer srcY,
                 Integer width,
                 Integer height,
-                Integer percent);
+                Integer percent) async;
 ```
 
 调用参数:
@@ -705,7 +705,7 @@ Image.copyMergeGray(Image source,
                 Integer srcY,
                 Integer width,
                 Integer height,
-                Integer percent);
+                Integer percent) async;
 ```
 
 调用参数:
@@ -729,7 +729,7 @@ Image.copyResized(Image source,
                 Integer dstW,
                 Integer dstH,
                 Integer srcW,
-                Integer srcH);
+                Integer srcH) async;
 ```
 
 调用参数:
@@ -754,7 +754,7 @@ Image.copyResampled(Image source,
                 Integer dstW,
                 Integer dstH,
                 Integer srcW,
-                Integer srcH);
+                Integer srcH) async;
 ```
 
 调用参数:
@@ -778,7 +778,7 @@ Image.copyRotated(Image source,
                 Integer srcY,
                 Integer width,
                 Integer height,
-                Number angle);
+                Number angle) async;
 ```
 
 调用参数:
@@ -798,7 +798,7 @@ Image.filter(Integer filterType,
                 Number arg1 = 0,
                 Number arg2 = 0,
                 Number arg3 = 0,
-                Number arg4 = 0);
+                Number arg4 = 0) async;
 ```
 
 调用参数:
@@ -851,7 +851,7 @@ Image Image.affine(Array affine,
 ### gaussianBlur
 对当前图像进行高斯模糊处理
 ```JavaScript
-Image.gaussianBlur(Integer radius);
+Image.gaussianBlur(Integer radius) async;
 ```
 
 调用参数:

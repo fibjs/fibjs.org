@@ -7,7 +7,7 @@ Stream 为基础对象，用于为流处理定义标准借口，不能独立创�
 ### read
 从流内读取指定大小的数据
 ```JavaScript
-Buffer Stream.read(Integer bytes = -1);
+Buffer Stream.read(Integer bytes = -1) async;
 ```
 
 调用参数:
@@ -19,7 +19,7 @@ Buffer Stream.read(Integer bytes = -1);
 ### write
 将给定的数据写入流
 ```JavaScript
-Stream.write(Buffer data);
+Stream.write(Buffer data) async;
 ```
 
 调用参数:
@@ -28,14 +28,14 @@ Stream.write(Buffer data);
 ### close
 关闭当前流对象
 ```JavaScript
-Stream.close();
+Stream.close() async;
 ```
 
 ### copyTo
 复制流数据到目标流中
 ```JavaScript
 Long Stream.copyTo(Stream stm,
-                Long bytes = -1);
+                Long bytes = -1) async;
 ```
 
 调用参数:

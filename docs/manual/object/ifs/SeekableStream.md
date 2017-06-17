@@ -41,7 +41,7 @@ Long SeekableStream.size();
 ### readAll
 从流内读取剩余的全部数据
 ```JavaScript
-Buffer SeekableStream.readAll();
+Buffer SeekableStream.readAll() async;
 ```
 
 返回结果:
@@ -50,7 +50,7 @@ Buffer SeekableStream.readAll();
 ### truncate
 修改文件尺寸，如果新尺寸小于原尺寸，则文件被截断
 ```JavaScript
-SeekableStream.truncate(Long bytes);
+SeekableStream.truncate(Long bytes) async;
 ```
 
 调用参数:
@@ -68,13 +68,13 @@ Boolean SeekableStream.eof();
 ### flush
 将文件缓冲区内容写入物理设备
 ```JavaScript
-SeekableStream.flush();
+SeekableStream.flush() async;
 ```
 
 ### stat
 查询当前文件的基础信息
 ```JavaScript
-Stat SeekableStream.stat();
+Stat SeekableStream.stat() async;
 ```
 
 返回结果:
@@ -83,7 +83,7 @@ Stat SeekableStream.stat();
 ### read
 从流内读取指定大小的数据
 ```JavaScript
-Buffer SeekableStream.read(Integer bytes = -1);
+Buffer SeekableStream.read(Integer bytes = -1) async;
 ```
 
 调用参数:
@@ -95,7 +95,7 @@ Buffer SeekableStream.read(Integer bytes = -1);
 ### write
 将给定的数据写入流
 ```JavaScript
-SeekableStream.write(Buffer data);
+SeekableStream.write(Buffer data) async;
 ```
 
 调用参数:
@@ -104,14 +104,14 @@ SeekableStream.write(Buffer data);
 ### close
 关闭当前流对象
 ```JavaScript
-SeekableStream.close();
+SeekableStream.close() async;
 ```
 
 ### copyTo
 复制流数据到目标流中
 ```JavaScript
 Long SeekableStream.copyTo(Stream stm,
-                Long bytes = -1);
+                Long bytes = -1) async;
 ```
 
 调用参数:

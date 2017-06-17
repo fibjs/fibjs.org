@@ -5,12 +5,50 @@
 ```JavaScript
 var coroutine = require('coroutine');
 ```
+## 对象
+        
+### Lock
+锁对象，参见 Lock
+```JavaScript
+Lock coroutine.Lock;
+```
+
+### Semaphore
+信号量对象，参见 Semaphore
+```JavaScript
+Semaphore coroutine.Semaphore;
+```
+
+### Condition
+条件变量对象，参见 Condition
+```JavaScript
+Condition coroutine.Condition;
+```
+
+### Event
+事件对象，参见 Event
+```JavaScript
+Event coroutine.Event;
+```
+
+### BlockQueue
+阻塞队列对象，参见 BlockQueue
+```JavaScript
+BlockQueue coroutine.BlockQueue;
+```
+
+### Worker
+独立线程工作对象，参见 Worker
+```JavaScript
+Worker coroutine.Worker;
+```
+
 ## 函数
         
 ### start
 启动一个纤程并返回纤程对象
 ```JavaScript
-Fiber coroutine.start(Function func,
+static Fiber coroutine.start(Function func,
                 ...);
 ```
 
@@ -24,7 +62,7 @@ Fiber coroutine.start(Function func,
 ### parallel
 并行执行一组函数，并等待返回
 ```JavaScript
-Array coroutine.parallel(Array funcs,
+static Array coroutine.parallel(Array funcs,
                 Integer fibers = -1);
 ```
 
@@ -38,7 +76,7 @@ Array coroutine.parallel(Array funcs,
 --------------------------
 并行执行一个函数处理一组数据，并等待返回
 ```JavaScript
-Array coroutine.parallel(Array datas,
+static Array coroutine.parallel(Array datas,
                 Function func,
                 Integer fibers = -1);
 ```
@@ -54,7 +92,7 @@ Array coroutine.parallel(Array datas,
 --------------------------
 并行执行一个函数多次，并等待返回
 ```JavaScript
-Array coroutine.parallel(Function func,
+static Array coroutine.parallel(Function func,
                 Integer num,
                 Integer fibers = -1);
 ```
@@ -70,7 +108,7 @@ Array coroutine.parallel(Function func,
 --------------------------
 并行执行一组函数，并等待返回
 ```JavaScript
-Array coroutine.parallel(...);
+static Array coroutine.parallel(...);
 ```
 
 调用参数:
@@ -82,7 +120,7 @@ Array coroutine.parallel(...);
 ### current
 返回当前纤程
 ```JavaScript
-Fiber coroutine.current();
+static Fiber coroutine.current();
 ```
 
 返回结果:
@@ -91,7 +129,7 @@ Fiber coroutine.current();
 ### sleep
 暂停当前纤程指定的时间
 ```JavaScript
-coroutine.sleep(Integer ms = 0);
+static coroutine.sleep(Integer ms = 0) async;
 ```
 
 调用参数:
@@ -102,24 +140,24 @@ coroutine.sleep(Integer ms = 0);
 ### fibers
 返回当前正在运行的全部 fiber 数组
 ```JavaScript
-readonly Array coroutine.fibers;
+static readonly Array coroutine.fibers;
 ```
 
 ### spareFibers
 查询和设置空闲 Fiber 数量，服务器抖动较大时可适度增加空闲 Fiber 数量。缺省为 256
 ```JavaScript
-Integer coroutine.spareFibers;
+static Integer coroutine.spareFibers;
 ```
 
 ### vmid
 查询当前 vm 编号
 ```JavaScript
-readonly Integer coroutine.vmid;
+static readonly Integer coroutine.vmid;
 ```
 
 ### loglevel
 修改和查询本 vm 的输出级别，用以过滤输出信息，缺省为 console.NOTSET，全部输出
 ```JavaScript
-Integer coroutine.loglevel;
+static Integer coroutine.loglevel;
 ```
 

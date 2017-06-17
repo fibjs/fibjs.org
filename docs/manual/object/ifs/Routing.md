@@ -239,7 +239,7 @@ Routing.patch(String pattern,
 ### invoke
 处理一个消息或对象
 ```JavaScript
-Handler Routing.invoke(object v);
+Handler Routing.invoke(object v) async;
 ```
 
 调用参数:

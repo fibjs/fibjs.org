@@ -5,12 +5,44 @@
 ```JavaScript
 var crypto = require('crypto');
 ```
+## 对象
+        
+### Cipher
+Cipher 构造函数，参见 Cipher
+```JavaScript
+Cipher crypto.Cipher;
+```
+
+### PKey
+PKey 构造函数，参见 PKey
+```JavaScript
+PKey crypto.PKey;
+```
+
+### X509Cert
+X509Cert 构造函数，参见 X509Cert
+```JavaScript
+X509Cert crypto.X509Cert;
+```
+
+### X509Crl
+X509Crl 构造函数，参见 X509Crl
+```JavaScript
+X509Crl crypto.X509Crl;
+```
+
+### X509Req
+X509Req 构造函数，参见 X509Req
+```JavaScript
+X509Req crypto.X509Req;
+```
+
 ## 函数
         
 ### loadPKey
 加载一个 PEM/DER 格式的密钥文件
 ```JavaScript
-PKey crypto.loadPKey(String filename,
+static PKey crypto.loadPKey(String filename,
                 String password = "");
 ```
 
@@ -21,7 +53,7 @@ PKey crypto.loadPKey(String filename,
 ### loadCert
 加载一个 CRT/PEM/DER/TXT 格式的证书，可多次调用
 ```JavaScript
-X509Cert crypto.loadCert(String filename);
+static X509Cert crypto.loadCert(String filename);
 ```
 
 调用参数:
@@ -32,7 +64,7 @@ loadFile 加载 mozilla 的 certdata,txt， 可于 http://hg.mozilla.org/release
 ### loadCrl
 加载一个 PEM/DER 格式的撤销证书，可多次调用
 ```JavaScript
-X509Crl crypto.loadCrl(String filename);
+static X509Crl crypto.loadCrl(String filename);
 ```
 
 调用参数:
@@ -41,7 +73,7 @@ X509Crl crypto.loadCrl(String filename);
 ### loadReq
 加载一个 PEM/DER 格式的证书请求，可多次调用
 ```JavaScript
-X509Req crypto.loadReq(String filename);
+static X509Req crypto.loadReq(String filename);
 ```
 
 调用参数:
@@ -50,7 +82,7 @@ X509Req crypto.loadReq(String filename);
 ### randomBytes
 生成指定尺寸的随机数，使用 havege 生成器
 ```JavaScript
-Buffer crypto.randomBytes(Integer size);
+static Buffer crypto.randomBytes(Integer size) async;
 ```
 
 调用参数:
@@ -62,7 +94,7 @@ Buffer crypto.randomBytes(Integer size);
 ### simpleRandomBytes
 生成指定尺寸的低强度随机数，使用快速的算法
 ```JavaScript
-Buffer crypto.simpleRandomBytes(Integer size);
+static Buffer crypto.simpleRandomBytes(Integer size) async;
 ```
 
 调用参数:
@@ -74,7 +106,7 @@ Buffer crypto.simpleRandomBytes(Integer size);
 ### pseudoRandomBytes
 生成指定尺寸的伪随机数，使用 entropy 生成器
 ```JavaScript
-Buffer crypto.pseudoRandomBytes(Integer size);
+static Buffer crypto.pseudoRandomBytes(Integer size) async;
 ```
 
 调用参数:
@@ -86,7 +118,7 @@ Buffer crypto.pseudoRandomBytes(Integer size);
 ### randomArt
 生成给定数据的可视化字符图像
 ```JavaScript
-String crypto.randomArt(Buffer data,
+static String crypto.randomArt(Buffer data,
                 String title,
                 Integer size = 8);
 ```
@@ -102,11 +134,11 @@ String crypto.randomArt(Buffer data,
 ### pbkdf1
 依据 pbkdf1 根据明文 password 生成要求的二进制钥匙
 ```JavaScript
-Buffer crypto.pbkdf1(Buffer password,
+static Buffer crypto.pbkdf1(Buffer password,
                 Buffer salt,
                 Integer iterations,
                 Integer size,
-                Integer algo);
+                Integer algo) async;
 ```
 
 调用参数:
@@ -122,11 +154,11 @@ Buffer crypto.pbkdf1(Buffer password,
 --------------------------
 依据 pbkdf1 根据明文 password 生成要求的二进制钥匙
 ```JavaScript
-Buffer crypto.pbkdf1(Buffer password,
+static Buffer crypto.pbkdf1(Buffer password,
                 Buffer salt,
                 Integer iterations,
                 Integer size,
-                String algoName);
+                String algoName) async;
 ```
 
 调用参数:
@@ -142,11 +174,11 @@ Buffer crypto.pbkdf1(Buffer password,
 ### pbkdf2
 依据 rfc2898 根据明文 password 生成要求的二进制钥匙
 ```JavaScript
-Buffer crypto.pbkdf2(Buffer password,
+static Buffer crypto.pbkdf2(Buffer password,
                 Buffer salt,
                 Integer iterations,
                 Integer size,
-                Integer algo);
+                Integer algo) async;
 ```
 
 调用参数:
@@ -162,11 +194,11 @@ Buffer crypto.pbkdf2(Buffer password,
 --------------------------
 依据 rfc2898 根据明文 password 生成要求的二进制钥匙
 ```JavaScript
-Buffer crypto.pbkdf2(Buffer password,
+static Buffer crypto.pbkdf2(Buffer password,
                 Buffer salt,
                 Integer iterations,
                 Integer size,
-                String algoName);
+                String algoName) async;
 ```
 
 调用参数:
@@ -182,7 +214,7 @@ Buffer crypto.pbkdf2(Buffer password,
 ### pbkdf2Sync
 依据 rfc2898 根据明文 password 生成要求的二进制钥匙，是 pbkdf2 的同步版兼容接口
 ```JavaScript
-Buffer crypto.pbkdf2Sync(Buffer password,
+static Buffer crypto.pbkdf2Sync(Buffer password,
                 Buffer salt,
                 Integer iterations,
                 Integer size,
@@ -204,126 +236,126 @@ Buffer crypto.pbkdf2Sync(Buffer password,
 ### AES
 指定对称加密算法 AES，支持 128, 192, 256 位 key，分组密码工作模式支持 ECB, CBC, CFB128, CTR, GCM
 ```JavaScript
-crypto.AES;
+const crypto.AES = 1;
 ```
 
 ### CAMELLIA
 指定对称加密算法 CAMELLIA，支持 128, 192, 256 位 key，分组密码工作模式支持 ECB, CBC, CFB128, CTR, GCM
 ```JavaScript
-crypto.CAMELLIA;
+const crypto.CAMELLIA = 2;
 ```
 
 ### DES
 指定对称加密算法 DES，支持 64 位 key，分组密码工作模式支持 ECB, CBC
 ```JavaScript
-crypto.DES;
+const crypto.DES = 3;
 ```
 
 ### DES_EDE
 指定对称加密算法 DES-EDE，支持 128 位 key，分组密码工作模式支持 ECB, CBC
 ```JavaScript
-crypto.DES_EDE;
+const crypto.DES_EDE = 4;
 ```
 
 ### DES_EDE3
 指定对称加密算法 DES-EDE3，支持 192 位 key，分组密码工作模式支持 ECB, CBC
 ```JavaScript
-crypto.DES_EDE3;
+const crypto.DES_EDE3 = 5;
 ```
 
 ### BLOWFISH
 指定对称加密算法 BLOWFISH，支持 192 位 key，分组密码工作模式支持 ECB, CBC, CFB64, CTR
 ```JavaScript
-crypto.BLOWFISH;
+const crypto.BLOWFISH = 6;
 ```
 
 ### ARC4
 指定对称加密算法 ARC4，支持 40, 56, 64, 128 位 key
 ```JavaScript
-crypto.ARC4;
+const crypto.ARC4 = 7;
 ```
 
 ### ECB
 指定分组密码工作模式支持 ECB
 ```JavaScript
-crypto.ECB;
+const crypto.ECB = 1;
 ```
 
 ### CBC
 指定分组密码工作模式支持 CBC
 ```JavaScript
-crypto.CBC;
+const crypto.CBC = 2;
 ```
 
 ### CFB64
 指定分组密码工作模式支持 CFB64
 ```JavaScript
-crypto.CFB64;
+const crypto.CFB64 = 3;
 ```
 
 ### CFB128
 指定分组密码工作模式支持 CFB128
 ```JavaScript
-crypto.CFB128;
+const crypto.CFB128 = 4;
 ```
 
 ### OFB
 指定分组密码工作模式支持 OFB
 ```JavaScript
-crypto.OFB;
+const crypto.OFB = 5;
 ```
 
 ### CTR
 指定分组密码工作模式支持 CTR
 ```JavaScript
-crypto.CTR;
+const crypto.CTR = 6;
 ```
 
 ### GCM
 指定分组密码工作模式支持 GCM
 ```JavaScript
-crypto.GCM;
+const crypto.GCM = 7;
 ```
 
 ### STREAM
 指定流密码模式
 ```JavaScript
-crypto.STREAM;
+const crypto.STREAM = 8;
 ```
 
 ### CCM
 指定分组密码工作模式支持 CCM
 ```JavaScript
-crypto.CCM;
+const crypto.CCM = 9;
 ```
 
 ### PKCS7
 指定填充模式为 PKCS7
 ```JavaScript
-crypto.PKCS7;
+const crypto.PKCS7 = 0;
 ```
 
 ### ONE_AND_ZEROS
 指定填充模式为 ONE_AND_ZEROS
 ```JavaScript
-crypto.ONE_AND_ZEROS;
+const crypto.ONE_AND_ZEROS = 1;
 ```
 
 ### ZEROS_AND_LEN
 指定填充模式为 ZEROS_AND_LEN
 ```JavaScript
-crypto.ZEROS_AND_LEN;
+const crypto.ZEROS_AND_LEN = 2;
 ```
 
 ### ZEROS
 指定填充模式为 ZEROS
 ```JavaScript
-crypto.ZEROS;
+const crypto.ZEROS = 3;
 ```
 
 ### NOPADDING
 指定填充模式为 NOPADDING
 ```JavaScript
-crypto.NOPADDING;
+const crypto.NOPADDING = 4;
 ```
 

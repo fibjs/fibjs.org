@@ -15,7 +15,7 @@ var iconv = require('iconv');
 ### encode
 用 iconv 将文本转换为二进制数据
 ```JavaScript
-Buffer iconv.encode(String charset,
+static Buffer iconv.encode(String charset,
                 String data);
 ```
 
@@ -29,7 +29,7 @@ Buffer iconv.encode(String charset,
 ### decode
 用 iconv 将 Buffer 内容转换为文本
 ```JavaScript
-String iconv.decode(String charset,
+static String iconv.decode(String charset,
                 Buffer data);
 ```
 

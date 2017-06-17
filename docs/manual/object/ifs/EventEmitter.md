@@ -352,6 +352,6 @@ Value EventEmitter.valueOf();
 ### defaultMaxListeners
 默认全局最大监听器数
 ```JavaScript
-Integer EventEmitter.defaultMaxListeners;
+static Integer EventEmitter.defaultMaxListeners;
 ```
 

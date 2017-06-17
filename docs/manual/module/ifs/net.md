@@ -5,12 +5,38 @@
 ```JavaScript
 var net = require('net');
 ```
+## 对象
+        
+### Socket
+创建一个 Socket 对象，参见 Socket
+```JavaScript
+Socket net.Socket;
+```
+
+### Smtp
+创建一个 Smtp 对象，参见 Smtp
+```JavaScript
+Smtp net.Smtp;
+```
+
+### TcpServer
+创建一个 TcpServer 对象，参见 TcpServer
+```JavaScript
+TcpServer net.TcpServer;
+```
+
+### Url
+创建一个 UrlObject 对象，参见 UrlObject
+```JavaScript
+UrlObject net.Url;
+```
+
 ## 函数
         
 ### info
 查询当前运行环境网络信息
 ```JavaScript
-Object net.info();
+static Object net.info();
 ```
 
 返回结果:
@@ -19,8 +45,8 @@ Object net.info();
 ### resolve
 查询给定的主机名的地址
 ```JavaScript
-String net.resolve(String name,
-                Integer family = undefined);
+static String net.resolve(String name,
+                Integer family = undefined) async;
 ```
 
 调用参数:
@@ -33,7 +59,7 @@ String net.resolve(String name,
 ### ip
 快速查询的主机地址，等效与 resolve(name)
 ```JavaScript
-String net.ip(String name);
+static String net.ip(String name) async;
 ```
 
 调用参数:
@@ -45,7 +71,7 @@ String net.ip(String name);
 ### ipv6
 快速查询的主机 ipv6 地址，等效与 resolve(name, net.AF_INET6)
 ```JavaScript
-String net.ipv6(String name);
+static String net.ipv6(String name) async;
 ```
 
 调用参数:
@@ -57,10 +83,10 @@ String net.ipv6(String name);
 ### connect
 创建一个 Socket 对象并建立连接，参见 Socket
 ```JavaScript
-Stream net.connect(String host,
+static Stream net.connect(String host,
                 Integer port,
                 Integer timeout = 0,
-                Integer family = undefined);
+                Integer family = undefined) async;
 ```
 
 调用参数:
@@ -75,8 +101,8 @@ Stream net.connect(String host,
 --------------------------
 创建一个 Socket 或 SslSocket 对象并建立连接
 ```JavaScript
-Stream net.connect(String url,
-                Integer timeout = 0);
+static Stream net.connect(String url,
+                Integer timeout = 0) async;
 ```
 
 调用参数:
@@ -89,8 +115,8 @@ Stream net.connect(String url,
 ### openSmtp
 创建一个 Smtp 对象并建立连接，参见 Smtp
 ```JavaScript
-Smtp net.openSmtp(String url,
-                Integer timeout = 0);
+static Smtp net.openSmtp(String url,
+                Integer timeout = 0) async;
 ```
 
 调用参数:
@@ -103,7 +129,7 @@ Smtp net.openSmtp(String url,
 ### backend
 查询当前系统异步网络引擎
 ```JavaScript
-String net.backend();
+static String net.backend();
 ```
 
 返回结果:
@@ -114,24 +140,24 @@ String net.backend();
 ### AF_INET
 地址集常量，指定 ipv4
 ```JavaScript
-net.AF_INET;
+const net.AF_INET = 2;
 ```
 
 ### AF_INET6
 地址集常量，指定 ipv6
 ```JavaScript
-net.AF_INET6;
+const net.AF_INET6 = 10;
 ```
 
 ### SOCK_STREAM
 协议族常量，指定 tcp
 ```JavaScript
-net.SOCK_STREAM;
+const net.SOCK_STREAM = 1;
 ```
 
 ### SOCK_DGRAM
 协议族常量，指定 udp
 ```JavaScript
-net.SOCK_DGRAM;
+const net.SOCK_DGRAM = 2;
 ```
 

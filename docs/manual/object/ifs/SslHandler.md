@@ -56,7 +56,7 @@ SslHandler 构造函数，创建一个新的 SslHandler 对象
 ### invoke
 处理一个消息或对象
 ```JavaScript
-Handler SslHandler.invoke(object v);
+Handler SslHandler.invoke(object v) async;
 ```
 
 调用参数:

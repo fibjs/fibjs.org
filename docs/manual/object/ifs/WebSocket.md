@@ -429,6 +429,6 @@ Function WebSocket.onerror;
 ### defaultMaxListeners
 默认全局最大监听器数
 ```JavaScript
-Integer WebSocket.defaultMaxListeners;
+static Integer WebSocket.defaultMaxListeners;
 ```
 

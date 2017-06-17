@@ -1,12 +1,38 @@
 # 模块 global
 全局对象，所有脚本均可以访问的基础对象
 
+## 对象
+        
+### Buffer
+二进制数据缓存对象，用于 io 读写的数据处理，参见 Buffer 对象。
+```JavaScript
+Buffer global.Buffer;
+```
+
+### Int64
+64位整数对象，参见 Int64 对象。
+```JavaScript
+Int64 global.Int64;
+```
+
+### console
+控制台访问对象
+```JavaScript
+console global.console;
+```
+
+### process
+控制台访问对象
+```JavaScript
+process global.process;
+```
+
 ## 函数
         
 ### run
 运行一个脚本
 ```JavaScript
-global.run(String fname,
+static global.run(String fname,
                 Array argv = []);
 ```
 
@@ -17,7 +43,7 @@ global.run(String fname,
 ### clearInterval
 清除指定的定时器
 ```JavaScript
-global.clearInterval(Timer t);
+static global.clearInterval(Timer t);
 ```
 
 调用参数:
@@ -26,7 +52,7 @@ global.clearInterval(Timer t);
 ### clearTimeout
 清除指定的定时器
 ```JavaScript
-global.clearTimeout(Timer t);
+static global.clearTimeout(Timer t);
 ```
 
 调用参数:
@@ -35,7 +61,7 @@ global.clearTimeout(Timer t);
 ### clearImmediate
 清除指定的定时器
 ```JavaScript
-global.clearImmediate(Timer t);
+static global.clearImmediate(Timer t);
 ```
 
 调用参数:
@@ -44,7 +70,7 @@ global.clearImmediate(Timer t);
 ### setInterval
 每间隔指定的时间后调用函数
 ```JavaScript
-Timer global.setInterval(Function callback,
+static Timer global.setInterval(Function callback,
                 Integer timeout);
 ```
 
@@ -58,7 +84,7 @@ Timer global.setInterval(Function callback,
 ### setTimeout
 在指定的时间后调用函数
 ```JavaScript
-Timer global.setTimeout(Function callback,
+static Timer global.setTimeout(Function callback,
                 Integer timeout);
 ```
 
@@ -72,7 +98,7 @@ Timer global.setTimeout(Function callback,
 ### setImmediate
 下一个空闲时间立即执行回调函数
 ```JavaScript
-Timer global.setImmediate(Function callback);
+static Timer global.setImmediate(Function callback);
 ```
 
 调用参数:
@@ -84,7 +110,7 @@ Timer global.setImmediate(Function callback);
 ### require
 加载一个模块并返回模块对象，更多信息参阅 @ref module
 ```JavaScript
-Value global.require(String id);
+static Value global.require(String id);
 ```
 
 调用参数:
@@ -106,13 +132,13 @@ require 可用于加载基础模块，文件模块。
 ### GC
 强制要求进行垃圾回收
 ```JavaScript
-global.GC();
+static global.GC();
 ```
 
 ### repl
 进入交互模式，可以交互执行内部命令和代码，仅在启动 js 可以引用
 ```JavaScript
-global.repl(Array cmds = []);
+static global.repl(Array cmds = []);
 ```
 
 调用参数:
@@ -141,7 +167,7 @@ global.repl(Array cmds = []);
 --------------------------
 进入交互模式，可以交互执行内部命令和代码，仅在启动 js 可以引用
 ```JavaScript
-global.repl(Stream out,
+static global.repl(Stream out,
                 Array cmds = []);
 ```
 
@@ -175,30 +201,30 @@ global.repl(Stream out,
 ### Master
 Worker 宿主对象，仅在 Worker 入口脚本有效
 ```JavaScript
-readonly Worker global.Master;
+static readonly Worker global.Master;
 ```
 
 ### global
 全局对象
 ```JavaScript
-readonly Object  new global;
+static readonly Object  new global;
 ```
 
 ### argv
 获取当前脚本的运行参数，启动 js 获取进程启动参数，run 执行的脚本获取传递的参数
 ```JavaScript
-readonly Array global.argv;
+static readonly Array global.argv;
 ```
 
 ### __filename
 当前脚本文件名
 ```JavaScript
-readonly String global.__filename;
+static readonly String global.__filename;
 ```
 
 ### __dirname
 当前脚本所在目录
 ```JavaScript
-readonly String global.__dirname;
+static readonly String global.__dirname;
 ```
 

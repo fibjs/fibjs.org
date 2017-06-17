@@ -46,7 +46,7 @@ TcpServer 构造函数
 ### run
 运行服务器并开始接收和分发连接，此函数不会返回
 ```JavaScript
-TcpServer.run();
+TcpServer.run() async;
 ```
 
 ### asyncRun
@@ -58,7 +58,7 @@ TcpServer.asyncRun();
 ### stop
 关闭 socket中止正在运行的服务器
 ```JavaScript
-TcpServer.stop();
+TcpServer.stop() async;
 ```
 
 ### dispose

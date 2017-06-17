@@ -12,7 +12,7 @@ AsyncWait.end();
 ### invoke
 处理一个消息或对象
 ```JavaScript
-Handler AsyncWait.invoke(object v);
+Handler AsyncWait.invoke(object v) async;
 ```
 
 调用参数:

@@ -15,7 +15,7 @@ var base64 = require('base64');
 ### encode
 以 base64 方式编码数据
 ```JavaScript
-String base64.encode(Buffer data);
+static String base64.encode(Buffer data);
 ```
 
 调用参数:
@@ -27,7 +27,7 @@ String base64.encode(Buffer data);
 ### decode
 以 base64 方式解码字符串为二进制数据
 ```JavaScript
-Buffer base64.decode(String data);
+static Buffer base64.decode(String data);
 ```
 
 调用参数:

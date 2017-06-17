@@ -172,7 +172,7 @@
 <h3 id="connect">connect</h3>
 <p>建立一个 tcp 连接</p>
 <pre><code class="lang-JavaScript">Socket.connect(<span class="hljs-built_in">String</span> host,
-                Integer port);
+                Integer port) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -182,7 +182,7 @@
 <h3 id="bind">bind</h3>
 <p>将当前 Socket 绑定至本地所有地址的指定端口</p>
 <pre><code class="lang-JavaScript">Socket.bind(Integer port,
-                <span class="hljs-built_in">Boolean</span> allowIPv4 = <span class="hljs-literal">true</span>);
+                <span class="hljs-built_in">Boolean</span> allowIPv4 = <span class="hljs-literal">true</span>) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -193,7 +193,7 @@
 <p>将当前 Socket 绑定至指定地址的指定端口</p>
 <pre><code class="lang-JavaScript">Socket.bind(<span class="hljs-built_in">String</span> addr,
                 Integer port,
-                <span class="hljs-built_in">Boolean</span> allowIPv4 = <span class="hljs-literal">true</span>);
+                <span class="hljs-built_in">Boolean</span> allowIPv4 = <span class="hljs-literal">true</span>) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -203,7 +203,7 @@
 </ul>
 <h3 id="listen">listen</h3>
 <p>开始监听连接请求</p>
-<pre><code class="lang-JavaScript">Socket.listen(Integer backlog = <span class="hljs-number">120</span>);
+<pre><code class="lang-JavaScript">Socket.listen(Integer backlog = <span class="hljs-number">120</span>) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -211,7 +211,7 @@
 </ul>
 <h3 id="accept">accept</h3>
 <p>等待并接受一个连接</p>
-<pre><code class="lang-JavaScript">Socket Socket.accept();
+<pre><code class="lang-JavaScript">Socket Socket.accept() <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>返回结果:</p>
 <ul>
@@ -219,7 +219,7 @@
 </ul>
 <h3 id="recv">recv</h3>
 <p>从连接读取指定大小的数据，不同于 read 方法，recv 并不保证读完要求的数据，而是在读取到数据后立即返回</p>
-<pre><code class="lang-JavaScript">Buffer Socket.recv(Integer bytes = <span class="hljs-number">-1</span>);
+<pre><code class="lang-JavaScript">Buffer Socket.recv(Integer bytes = <span class="hljs-number">-1</span>) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -230,12 +230,12 @@
 <li>返回从连接读取的数据</li>
 </ul>
 <h3 id="recvfrom">recvfrom</h3>
-<pre><code class="lang-JavaScript">DatagramPacket Socket.recvfrom(Integer bytes = <span class="hljs-number">-1</span>);
+<pre><code class="lang-JavaScript">DatagramPacket Socket.recvfrom(Integer bytes = <span class="hljs-number">-1</span>) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <h3 id="send">send</h3>
 <p>将给定的数据写入连接，此方法等效于 write 方法</p>
-<pre><code class="lang-JavaScript">Socket.send(Buffer data);
+<pre><code class="lang-JavaScript">Socket.send(Buffer data) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -244,12 +244,12 @@
 <h3 id="sendto">sendto</h3>
 <pre><code class="lang-JavaScript">Socket.sendto(Buffer data,
                 <span class="hljs-built_in">String</span> host,
-                Integer port);
+                Integer port) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <h3 id="read">read</h3>
 <p>从流内读取指定大小的数据</p>
-<pre><code class="lang-JavaScript">Buffer Socket.read(Integer bytes = <span class="hljs-number">-1</span>);
+<pre><code class="lang-JavaScript">Buffer Socket.read(Integer bytes = <span class="hljs-number">-1</span>) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -261,7 +261,7 @@
 </ul>
 <h3 id="write">write</h3>
 <p>将给定的数据写入流</p>
-<pre><code class="lang-JavaScript">Socket.write(Buffer data);
+<pre><code class="lang-JavaScript">Socket.write(Buffer data) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -269,12 +269,12 @@
 </ul>
 <h3 id="close">close</h3>
 <p>关闭当前流对象</p>
-<pre><code class="lang-JavaScript">Socket.close();
+<pre><code class="lang-JavaScript">Socket.close() <span class="hljs-keyword">async</span>;
 </code></pre>
 <h3 id="copyto">copyTo</h3>
 <p>复制流数据到目标流中</p>
 <pre><code class="lang-JavaScript">Long Socket.copyTo(Stream stm,
-                Long bytes = <span class="hljs-number">-1</span>);
+                Long bytes = <span class="hljs-number">-1</span>) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>

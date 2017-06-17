@@ -10,7 +10,7 @@ var sql = db.openMSSQL("mssql://user:pass@host/db");
 ### use
 选择当前数据库连接的缺省数据库
 ```JavaScript
-MSSQL.use(String dbName);
+MSSQL.use(String dbName) async;
 ```
 
 调用参数:
@@ -19,31 +19,31 @@ MSSQL.use(String dbName);
 ### close
 关闭当前数据库连接
 ```JavaScript
-MSSQL.close();
+MSSQL.close() async;
 ```
 
 ### begin
 在当前数据库连接上启动一个事务
 ```JavaScript
-MSSQL.begin();
+MSSQL.begin() async;
 ```
 
 ### commit
 提交当前数据库连接上的事务
 ```JavaScript
-MSSQL.commit();
+MSSQL.commit() async;
 ```
 
 ### rollback
 回滚当前数据库连接上的事务
 ```JavaScript
-MSSQL.rollback();
+MSSQL.rollback() async;
 ```
 
 ### execute
 执行一个 sql 命令，并返回执行结果
 ```JavaScript
-DBResult MSSQL.execute(String sql);
+DBResult MSSQL.execute(String sql) async;
 ```
 
 调用参数:

@@ -32,7 +32,7 @@ HttpResponse.redirect(String url);
 ### sendHeader
 仅发送格式化 http 头到给定的流对象
 ```JavaScript
-HttpResponse.sendHeader(Stream stm);
+HttpResponse.sendHeader(Stream stm) async;
 ```
 
 调用参数:
@@ -126,7 +126,7 @@ HttpResponse.removeHeader(String name);
 ### read
 从流内读取指定大小的数据，此方法为 body 相应方法的别名
 ```JavaScript
-Buffer HttpResponse.read(Integer bytes = -1);
+Buffer HttpResponse.read(Integer bytes = -1) async;
 ```
 
 调用参数:
@@ -138,7 +138,7 @@ Buffer HttpResponse.read(Integer bytes = -1);
 ### readAll
 从流内读取剩余的全部数据，此方法为 body 相应方法的别名
 ```JavaScript
-Buffer HttpResponse.readAll();
+Buffer HttpResponse.readAll() async;
 ```
 
 返回结果:
@@ -147,7 +147,7 @@ Buffer HttpResponse.readAll();
 ### write
 写入给定的数据，此方法为 body 相应方法的别名
 ```JavaScript
-HttpResponse.write(Buffer data);
+HttpResponse.write(Buffer data) async;
 ```
 
 调用参数:
@@ -177,7 +177,7 @@ HttpResponse.clear();
 ### sendTo
 发送格式化消息到给定的流对象
 ```JavaScript
-HttpResponse.sendTo(Stream stm);
+HttpResponse.sendTo(Stream stm) async;
 ```
 
 调用参数:
@@ -186,7 +186,7 @@ HttpResponse.sendTo(Stream stm);
 ### readFrom
 从给定的缓存流对象中读取格式化消息，并解析填充对象
 ```JavaScript
-HttpResponse.readFrom(Stream stm);
+HttpResponse.readFrom(Stream stm) async;
 ```
 
 调用参数:
@@ -355,12 +355,12 @@ String HttpResponse.lastError;
 ### TEXT
 指定消息类型 1，代表一个文本类型
 ```JavaScript
-HttpResponse.TEXT;
+const HttpResponse.TEXT = 1;
 ```
 
 ### BINARY
 指定消息类型 2，代表一个二进制类型
 ```JavaScript
-HttpResponse.BINARY;
+const HttpResponse.BINARY = 2;
 ```
 

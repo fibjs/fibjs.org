@@ -10,7 +10,7 @@ var path = require('path').win32;
 ### normalize
 标准化路径，处理路径中父目录等信息
 ```JavaScript
-String path_win32.normalize(String path);
+static String path_win32.normalize(String path);
 ```
 
 调用参数:
@@ -22,7 +22,7 @@ String path_win32.normalize(String path);
 ### basename
 查询路径中的文件名称，若指定扩展名，则自动取消匹配的扩展名
 ```JavaScript
-String path_win32.basename(String path,
+static String path_win32.basename(String path,
                 String ext = "");
 ```
 
@@ -36,7 +36,7 @@ String path_win32.basename(String path,
 ### extname
 查询路径中的文件扩展名
 ```JavaScript
-String path_win32.extname(String path);
+static String path_win32.extname(String path);
 ```
 
 调用参数:
@@ -48,7 +48,7 @@ String path_win32.extname(String path);
 ### dirname
 查询路径中的目录路径
 ```JavaScript
-String path_win32.dirname(String path);
+static String path_win32.dirname(String path);
 ```
 
 调用参数:
@@ -60,7 +60,7 @@ String path_win32.dirname(String path);
 ### fullpath
 转换给定路径为全路径
 ```JavaScript
-String path_win32.fullpath(String path);
+static String path_win32.fullpath(String path);
 ```
 
 调用参数:
@@ -72,7 +72,7 @@ String path_win32.fullpath(String path);
 ### isAbsolute
 识别给定的路径是否是绝对路径
 ```JavaScript
-Boolean path_win32.isAbsolute(String path);
+static Boolean path_win32.isAbsolute(String path);
 ```
 
 调用参数:
@@ -84,7 +84,7 @@ Boolean path_win32.isAbsolute(String path);
 ### join
 合并一系列路径成为一个单一路径
 ```JavaScript
-String path_win32.join(...);
+static String path_win32.join(...);
 ```
 
 调用参数:
@@ -96,7 +96,7 @@ String path_win32.join(...);
 ### resolve
 合并一系列路径成为一个绝对路径
 ```JavaScript
-String path_win32.resolve(...);
+static String path_win32.resolve(...);
 ```
 
 调用参数:
@@ -110,24 +110,24 @@ String path_win32.resolve(...);
 ### sep
 查询当前操作系统的路径分割字符，posix 返回 &#39;/&#39;, windows 返回  &#39;\\&#39;
 ```JavaScript
-readonly String path_win32.sep;
+static readonly String path_win32.sep;
 ```
 
 ### delimiter
 查询当前操作系统的多路径组合字符，posix 返回 &#39;:&#39;, windows 返回  &#39;;&#39;
 ```JavaScript
-readonly String path_win32.delimiter;
+static readonly String path_win32.delimiter;
 ```
 
 ### posix
 posix 实现，参见 path_posix
 ```JavaScript
-readonly Object path_win32.posix;
+static readonly Object path_win32.posix;
 ```
 
 ### win32
 windows 实现，参见 path_win32
 ```JavaScript
-readonly Object path_win32.win32;
+static readonly Object path_win32.win32;
 ```
 

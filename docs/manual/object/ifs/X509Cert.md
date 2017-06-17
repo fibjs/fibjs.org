@@ -55,7 +55,7 @@ X509Cert.loadRootCerts();
 ### verify
 使用当前证书链验证给定的证书
 ```JavaScript
-Boolean X509Cert.verify(X509Cert cert);
+Boolean X509Cert.verify(X509Cert cert) async;
 ```
 
 调用参数:

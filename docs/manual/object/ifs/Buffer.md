@@ -68,7 +68,7 @@ var buf = new Buffer();
 ### isBuffer
 检测给定的变量是否是 Buffer 对象
 ```JavaScript
-Boolean Buffer.isBuffer(Value v);
+static Boolean Buffer.isBuffer(Value v);
 ```
 
 调用参数:
@@ -80,7 +80,7 @@ Boolean Buffer.isBuffer(Value v);
 ### concat
 拼接多个缓存区中的数据
 ```JavaScript
-Buffer Buffer.concat(Array buflist,
+static Buffer Buffer.concat(Array buflist,
                 Integer cutLength = -1);
 ```
 

@@ -10,7 +10,7 @@ var zip = require('zip');
 ### isZipFile
 判断文件是否是zip格式
 ```JavaScript
-Boolean zip.isZipFile(String filename);
+static Boolean zip.isZipFile(String filename) async;
 ```
 
 调用参数:
@@ -22,9 +22,9 @@ Boolean zip.isZipFile(String filename);
 ### open
 打开一个zip文件
 ```JavaScript
-ZipFile zip.open(String path,
+static ZipFile zip.open(String path,
                 String mod = "r",
-                Integer compress_type = undefined);
+                Integer compress_type = undefined) async;
 ```
 
 调用参数:
@@ -38,9 +38,9 @@ ZipFile zip.open(String path,
 --------------------------
 打开一个zip文件
 ```JavaScript
-ZipFile zip.open(Buffer data,
+static ZipFile zip.open(Buffer data,
                 String mod = "r",
-                Integer compress_type = undefined);
+                Integer compress_type = undefined) async;
 ```
 
 调用参数:
@@ -54,9 +54,9 @@ ZipFile zip.open(Buffer data,
 --------------------------
 打开一个zip文件
 ```JavaScript
-ZipFile zip.open(SeekableStream strm,
+static ZipFile zip.open(SeekableStream strm,
                 String mod = "r",
-                Integer compress_type = undefined);
+                Integer compress_type = undefined) async;
 ```
 
 调用参数:
@@ -72,12 +72,12 @@ ZipFile zip.open(SeekableStream strm,
 ### ZIP_STORED
 压缩类型常量, 不压缩, 仅存储
 ```JavaScript
-zip.ZIP_STORED;
+const zip.ZIP_STORED = 0;
 ```
 
 ### ZIP_DEFLATED
 压缩类型常量, 需要依赖zlib库进行压缩
 ```JavaScript
-zip.ZIP_DEFLATED;
+const zip.ZIP_DEFLATED = 1;
 ```
 

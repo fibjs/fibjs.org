@@ -15,7 +15,7 @@ var bson = require('bson');
 ### encode
 以 bson 格式编码变量
 ```JavaScript
-Buffer bson.encode(Object data);
+static Buffer bson.encode(Object data);
 ```
 
 调用参数:
@@ -27,7 +27,7 @@ Buffer bson.encode(Object data);
 ### decode
 以 bson 方式解码字符串为一个变量
 ```JavaScript
-Object bson.decode(Buffer data);
+static Object bson.decode(Buffer data);
 ```
 
 调用参数:

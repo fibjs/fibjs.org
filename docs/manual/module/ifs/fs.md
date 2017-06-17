@@ -10,7 +10,7 @@ var fs = require('fs');
 ### exists
 查询指定的文件或目录是否存在
 ```JavaScript
-Boolean fs.exists(String path);
+static Boolean fs.exists(String path) async;
 ```
 
 调用参数:
@@ -22,7 +22,7 @@ Boolean fs.exists(String path);
 ### existsSync
 查询指定的文件或目录是否存在，是 exists 的同步版兼容接口
 ```JavaScript
-Boolean fs.existsSync(String path);
+static Boolean fs.existsSync(String path);
 ```
 
 调用参数:
@@ -34,8 +34,8 @@ Boolean fs.existsSync(String path);
 ### access
 查询用户对指定的文件的权限
 ```JavaScript
-fs.access(String path,
-                Integer mode = 0);
+static fs.access(String path,
+                Integer mode = 0) async;
 ```
 
 调用参数:
@@ -45,7 +45,7 @@ fs.access(String path,
 ### accessSync
 查询用户对指定的文件的权限, accesss同步兼容版本
 ```JavaScript
-fs.accessSync(String path,
+static fs.accessSync(String path,
                 Integer mode = 0);
 ```
 
@@ -56,8 +56,8 @@ fs.accessSync(String path,
 ### link
 创建硬链接文件, windows 下不支持此方法
 ```JavaScript
-fs.link(String oldPath,
-                String newPath);
+static fs.link(String oldPath,
+                String newPath) async;
 ```
 
 调用参数:
@@ -67,7 +67,7 @@ fs.link(String oldPath,
 ### linkSync
 创建硬链接文件，windows 下不支持此方法，是 link 的同步版兼容接口
 ```JavaScript
-fs.linkSync(String oldPath,
+static fs.linkSync(String oldPath,
                 String newPath);
 ```
 
@@ -78,7 +78,7 @@ fs.linkSync(String oldPath,
 ### unlink
 删除指定的文件
 ```JavaScript
-fs.unlink(String path);
+static fs.unlink(String path) async;
 ```
 
 调用参数:
@@ -87,7 +87,7 @@ fs.unlink(String path);
 ### unlinkSync
 删除指定的文件，是 unlink 的同步版兼容接口
 ```JavaScript
-fs.unlinkSync(String path);
+static fs.unlinkSync(String path);
 ```
 
 调用参数:
@@ -96,8 +96,8 @@ fs.unlinkSync(String path);
 ### mkdir
 创建一个目录
 ```JavaScript
-fs.mkdir(String path,
-                Integer mode = 0777);
+static fs.mkdir(String path,
+                Integer mode = 0777) async;
 ```
 
 调用参数:
@@ -107,7 +107,7 @@ fs.mkdir(String path,
 ### mkdirSync
 创建一个目录，是 mkdir 的同步版兼容接口
 ```JavaScript
-fs.mkdirSync(String path,
+static fs.mkdirSync(String path,
                 Integer mode = 0777);
 ```
 
@@ -118,7 +118,7 @@ fs.mkdirSync(String path,
 ### rmdir
 删除一个目录
 ```JavaScript
-fs.rmdir(String path);
+static fs.rmdir(String path) async;
 ```
 
 调用参数:
@@ -127,7 +127,7 @@ fs.rmdir(String path);
 ### rmdirSync
 删除一个目录，是 rmdir 的同步版兼容接口
 ```JavaScript
-fs.rmdirSync(String path);
+static fs.rmdirSync(String path);
 ```
 
 调用参数:
@@ -136,8 +136,8 @@ fs.rmdirSync(String path);
 ### rename
 重新命名一个文件
 ```JavaScript
-fs.rename(String from,
-                String to);
+static fs.rename(String from,
+                String to) async;
 ```
 
 调用参数:
@@ -147,7 +147,7 @@ fs.rename(String from,
 ### renameSync
 重新命名一个文件，是 rename 的同步版兼容接口
 ```JavaScript
-fs.renameSync(String from,
+static fs.renameSync(String from,
                 String to);
 ```
 
@@ -158,8 +158,8 @@ fs.renameSync(String from,
 ### copy
 复制一个文件
 ```JavaScript
-fs.copy(String from,
-                String to);
+static fs.copy(String from,
+                String to) async;
 ```
 
 调用参数:
@@ -169,8 +169,8 @@ fs.copy(String from,
 ### chmod
 设置指定文件的访问权限，Windows 不支持此方法
 ```JavaScript
-fs.chmod(String path,
-                Integer mode);
+static fs.chmod(String path,
+                Integer mode) async;
 ```
 
 调用参数:
@@ -180,7 +180,7 @@ fs.chmod(String path,
 ### chmodSync
 设置指定文件的访问权限，是 chmod 的同步版兼容接口
 ```JavaScript
-fs.chmodSync(String path,
+static fs.chmodSync(String path,
                 Integer mode);
 ```
 
@@ -191,8 +191,8 @@ fs.chmodSync(String path,
 ### lchmod
 设置指定文件的访问权限，若文件是软连接则不改变指向文件的权限，Windows 不支持此方法
 ```JavaScript
-fs.lchmod(String path,
-                Integer mode);
+static fs.lchmod(String path,
+                Integer mode) async;
 ```
 
 调用参数:
@@ -202,7 +202,7 @@ fs.lchmod(String path,
 ### lchmodSync
 设置指定文件的访问权限，若文件是软连接则不改变指向文件的权限，是 lchmod 的同步版兼容接口
 ```JavaScript
-fs.lchmodSync(String path,
+static fs.lchmodSync(String path,
                 Integer mode);
 ```
 
@@ -213,9 +213,9 @@ fs.lchmodSync(String path,
 ### chown
 设置指定文件的拥有者，Windows 不支持此方法
 ```JavaScript
-fs.chown(String path,
+static fs.chown(String path,
                 Integer uid,
-                Integer gid);
+                Integer gid) async;
 ```
 
 调用参数:
@@ -226,7 +226,7 @@ fs.chown(String path,
 ### chownSync
 设置指定文件的拥有者，Windows 不支持此方法, 是 chown 的同步版兼容接口
 ```JavaScript
-fs.chownSync(String path,
+static fs.chownSync(String path,
                 Integer uid,
                 Integer gid);
 ```
@@ -239,9 +239,9 @@ fs.chownSync(String path,
 ### lchown
 设置指定文件的拥有者，如果指定的文件是软连接则不会改变其指向文件的拥有者，Windows 不支持此方法
 ```JavaScript
-fs.lchown(String path,
+static fs.lchown(String path,
                 Integer uid,
-                Integer gid);
+                Integer gid) async;
 ```
 
 调用参数:
@@ -252,7 +252,7 @@ fs.lchown(String path,
 ### lchownSync
 设置指定文件的拥有者，如果指定的文件是软连接则不会改变其指向文件的拥有者，Windows 不支持此方法, 是 lchown 的同步版兼容接口
 ```JavaScript
-fs.lchownSync(String path,
+static fs.lchownSync(String path,
                 Integer uid,
                 Integer gid);
 ```
@@ -265,7 +265,7 @@ fs.lchownSync(String path,
 ### stat
 查询指定文件的基础信息
 ```JavaScript
-Stat fs.stat(String path);
+static Stat fs.stat(String path) async;
 ```
 
 调用参数:
@@ -277,7 +277,7 @@ Stat fs.stat(String path);
 ### statSync
 查询指定文件的基础信息，是 stat 的同步版兼容接口
 ```JavaScript
-Stat fs.statSync(String path);
+static Stat fs.statSync(String path);
 ```
 
 调用参数:
@@ -289,7 +289,7 @@ Stat fs.statSync(String path);
 ### lstat
 查询指定文件的基础信息, 和stat不同的是, 当path是一个软连接的时候，返回的将是这个软连接的信息而不是指向的文件的信息
 ```JavaScript
-Stat fs.lstat(String path);
+static Stat fs.lstat(String path) async;
 ```
 
 调用参数:
@@ -301,7 +301,7 @@ Stat fs.lstat(String path);
 ### lstatSync
 查询指定文件的基础信息，是 lstat 的同步版兼容接口
 ```JavaScript
-Stat fs.lstatSync(String path);
+static Stat fs.lstatSync(String path);
 ```
 
 调用参数:
@@ -313,7 +313,7 @@ Stat fs.lstatSync(String path);
 ### readlink
 读取指定的软连接文件, windows 下不支持此方法
 ```JavaScript
-String fs.readlink(String path);
+static String fs.readlink(String path) async;
 ```
 
 调用参数:
@@ -325,7 +325,7 @@ String fs.readlink(String path);
 ### readlinkSync
 读取指定的软连接文件，windows 下不支持此方法，是 readlink 的同步版兼容接口
 ```JavaScript
-String fs.readlinkSync(String path);
+static String fs.readlinkSync(String path);
 ```
 
 调用参数:
@@ -337,7 +337,7 @@ String fs.readlinkSync(String path);
 ### realpath
 返回指定路径的绝对路径，如果指定路径中包含相对路径也会被展开
 ```JavaScript
-String fs.realpath(String path);
+static String fs.realpath(String path) async;
 ```
 
 调用参数:
@@ -349,7 +349,7 @@ String fs.realpath(String path);
 ### realpathSync
 返回指定路径的绝对路径，如果指定路径中包含相对路径也会被展开，是 realpath 的同步版兼容接口
 ```JavaScript
-String fs.realpathSync(String path);
+static String fs.realpathSync(String path);
 ```
 
 调用参数:
@@ -361,8 +361,8 @@ String fs.realpathSync(String path);
 ### symlink
 创建软连接文件
 ```JavaScript
-fs.symlink(String target,
-                String linkpath);
+static fs.symlink(String target,
+                String linkpath) async;
 ```
 
 调用参数:
@@ -372,7 +372,7 @@ fs.symlink(String target,
 ### symlinkSync
 创建软连接文件, 是 symlink 的同步版兼容接口
 ```JavaScript
-fs.symlinkSync(String target,
+static fs.symlinkSync(String target,
                 String linkpath);
 ```
 
@@ -383,8 +383,8 @@ fs.symlinkSync(String target,
 ### truncate
 修改文件尺寸,如果指定的长度大于源文件大小则用&#39;\0&#39;填充，否则多于的文件内容将丢失
 ```JavaScript
-fs.truncate(String path,
-                Integer len);
+static fs.truncate(String path,
+                Integer len) async;
 ```
 
 调用参数:
@@ -394,7 +394,7 @@ fs.truncate(String path,
 ### truncateSync
 修改文件尺寸,如果指定的长度大于源文件大小则用&#39;\0&#39;填充，否则多于的文件内容将丢失，是 truncate 的同步版兼容接口
 ```JavaScript
-fs.truncateSync(String path,
+static fs.truncateSync(String path,
                 Integer len);
 ```
 
@@ -405,7 +405,7 @@ fs.truncateSync(String path,
 ### readdir
 读取指定目录的文件信息
 ```JavaScript
-List fs.readdir(String path);
+static List fs.readdir(String path) async;
 ```
 
 调用参数:
@@ -417,7 +417,7 @@ List fs.readdir(String path);
 ### readdirSync
 读取指定目录的文件信息，是 readdir 的同步版兼容接口
 ```JavaScript
-List fs.readdirSync(String path);
+static List fs.readdirSync(String path);
 ```
 
 调用参数:
@@ -429,8 +429,8 @@ List fs.readdirSync(String path);
 ### open
 打开文件，用于读取，写入，或者同时读写
 ```JavaScript
-SeekableStream fs.open(String fname,
-                String flags = "r");
+static SeekableStream fs.open(String fname,
+                String flags = "r") async;
 ```
 
 调用参数:
@@ -451,7 +451,7 @@ SeekableStream fs.open(String fname,
 ### openSync
 打开文件，用于读取，写入，或者同时读写，是 open 的同步版兼容接口
 ```JavaScript
-SeekableStream fs.openSync(String fname,
+static SeekableStream fs.openSync(String fname,
                 String flags = "r");
 ```
 
@@ -473,8 +473,8 @@ SeekableStream fs.openSync(String fname,
 ### openTextStream
 打开文本文件，用于读取，写入，或者同时读写
 ```JavaScript
-BufferedStream fs.openTextStream(String fname,
-                String flags = "r");
+static BufferedStream fs.openTextStream(String fname,
+                String flags = "r") async;
 ```
 
 调用参数:
@@ -495,7 +495,7 @@ BufferedStream fs.openTextStream(String fname,
 ### readTextFile
 打开文本文件，并读取内容
 ```JavaScript
-String fs.readTextFile(String fname);
+static String fs.readTextFile(String fname) async;
 ```
 
 调用参数:
@@ -507,7 +507,7 @@ String fs.readTextFile(String fname);
 ### readFile
 打开二进制文件，并读取内容
 ```JavaScript
-Buffer fs.readFile(String fname);
+static Buffer fs.readFile(String fname) async;
 ```
 
 调用参数:
@@ -519,7 +519,7 @@ Buffer fs.readFile(String fname);
 ### readFileSync
 打开二进制文件，并读取内容，是 readFile 的同步版兼容接口
 ```JavaScript
-Buffer fs.readFileSync(String fname);
+static Buffer fs.readFileSync(String fname);
 ```
 
 调用参数:
@@ -531,7 +531,7 @@ Buffer fs.readFileSync(String fname);
 ### readLines
 打开文件，以数组方式读取一组文本行，行结尾标识基于 EOL 属性的设置，缺省时，posix:&#34;\n&#34;；windows:&#34;\r\n&#34;
 ```JavaScript
-Array fs.readLines(String fname,
+static Array fs.readLines(String fname,
                 Integer maxlines = -1);
 ```
 
@@ -545,8 +545,8 @@ Array fs.readLines(String fname,
 ### writeTextFile
 创建文本文件，并写入内容
 ```JavaScript
-fs.writeTextFile(String fname,
-                String txt);
+static fs.writeTextFile(String fname,
+                String txt) async;
 ```
 
 调用参数:
@@ -556,8 +556,8 @@ fs.writeTextFile(String fname,
 ### writeFile
 创建二进制文件，并写入内容
 ```JavaScript
-fs.writeFile(String fname,
-                Buffer data);
+static fs.writeFile(String fname,
+                Buffer data) async;
 ```
 
 调用参数:
@@ -567,7 +567,7 @@ fs.writeFile(String fname,
 ### writeFileSync
 创建二进制文件，并写入内容，是 writeFile 的同步版兼容接口
 ```JavaScript
-fs.writeFileSync(String fname,
+static fs.writeFileSync(String fname,
                 Buffer data);
 ```
 
@@ -578,8 +578,8 @@ fs.writeFileSync(String fname,
 ### appendFile
 创建二进制文件，并写入内容
 ```JavaScript
-fs.appendFile(String fname,
-                Buffer data);
+static fs.appendFile(String fname,
+                Buffer data) async;
 ```
 
 调用参数:
@@ -589,7 +589,7 @@ fs.appendFile(String fname,
 ### appendFileSync
 创建二进制文件，并写入内容，是 appendFile 的同步版兼容接口
 ```JavaScript
-fs.appendFileSync(String fname,
+static fs.appendFileSync(String fname,
                 Buffer data);
 ```
 
@@ -602,7 +602,7 @@ fs.appendFileSync(String fname,
 ### constants
 fs模块的常量对象
 ```JavaScript
-readonly Object fs.constants;
+static readonly Object fs.constants;
 ```
 
 ## 常量
@@ -610,18 +610,18 @@ readonly Object fs.constants;
 ### SEEK_SET
 seek 方式常量，移动到绝对位置
 ```JavaScript
-fs.SEEK_SET;
+const fs.SEEK_SET = 0;
 ```
 
 ### SEEK_CUR
 seek 方式常量，移动到当前位置的相对位置
 ```JavaScript
-fs.SEEK_CUR;
+const fs.SEEK_CUR = 1;
 ```
 
 ### SEEK_END
 seek 方式常量，移动到文件结尾的相对位置
 ```JavaScript
-fs.SEEK_END;
+const fs.SEEK_END = 2;
 ```
 

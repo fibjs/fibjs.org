@@ -5,13 +5,33 @@ websocket 支持模块
 ```JavaScript
 var ws = require('ws');
 ```
+## 对象
+        
+### Message
+创建一个 websocket 消息对象，参见 WebSocketMessage
+```JavaScript
+WebSocketMessage ws.Message;
+```
+
+### Handler
+创建一个 websocket 包协议转换处理器，参见 WebSocketHandler
+```JavaScript
+WebSocketHandler ws.Handler;
+```
+
+### Socket
+
+```JavaScript
+WebSocket ws.Socket;
+```
+
 ## 函数
         
 ### connect
 创建一个 websocket 连接，并返回握手成功的 Stream 对象
 ```JavaScript
-Stream ws.connect(String url,
-                String origin = "");
+static Stream ws.connect(String url,
+                String origin = "") async;
 ```
 
 调用参数:
@@ -24,7 +44,7 @@ Stream ws.connect(String url,
 ### upgrade
 创建一个 websocket 协议处理器，从 http 接收 upgrade 请求并握手，生成 WebSocket 对象
 ```JavaScript
-Handler ws.upgrade(Function accept);
+static Handler ws.upgrade(Function accept);
 ```
 
 调用参数:
@@ -38,60 +58,60 @@ Handler ws.upgrade(Function accept);
 ### CONTINUE
 指定 websocket 消息类型 0，代表一个继续帧
 ```JavaScript
-ws.CONTINUE;
+const ws.CONTINUE = 0;
 ```
 
 ### TEXT
 指定 websocket 消息类型 1，代表一个文本帧
 ```JavaScript
-ws.TEXT;
+const ws.TEXT = 1;
 ```
 
 ### BINARY
 指定 websocket 消息类型 2，代表一个二进制帧
 ```JavaScript
-ws.BINARY;
+const ws.BINARY = 2;
 ```
 
 ### CLOSE
 指定 websocket 消息类型 8，连接关闭
 ```JavaScript
-ws.CLOSE;
+const ws.CLOSE = 8;
 ```
 
 ### PING
 指定 websocket 消息类型 9，代表一个 ping 帧
 ```JavaScript
-ws.PING;
+const ws.PING = 9;
 ```
 
 ### PONG
 指定 websocket 消息类型 10，代表一个 pong 帧
 ```JavaScript
-ws.PONG;
+const ws.PONG = 10;
 ```
 
 ### CONNECTING
 
 ```JavaScript
-ws.CONNECTING;
+const ws.CONNECTING = 0;
 ```
 
 ### OPEN
 
 ```JavaScript
-ws.OPEN;
+const ws.OPEN = 1;
 ```
 
 ### CLOSING
 
 ```JavaScript
-ws.CLOSING;
+const ws.CLOSING = 2;
 ```
 
 ### CLOSED
 
 ```JavaScript
-ws.CLOSED;
+const ws.CLOSED = 3;
 ```
 

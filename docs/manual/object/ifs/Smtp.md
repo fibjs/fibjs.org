@@ -14,7 +14,7 @@ Smtp 对象构造函数
 ### connect
 建立到指定的服务器
 ```JavaScript
-Smtp.connect(String url);
+Smtp.connect(String url) async;
 ```
 
 调用参数:
@@ -24,7 +24,7 @@ Smtp.connect(String url);
 发送指定命令，并返回响应，服务器报错则抛出错误
 ```JavaScript
 String Smtp.command(String cmd,
-                String arg);
+                String arg) async;
 ```
 
 调用参数:
@@ -37,7 +37,7 @@ String Smtp.command(String cmd,
 ### hello
 发送 HELO 命令，服务器报错则抛出错误
 ```JavaScript
-Smtp.hello(String hostname = "localhost");
+Smtp.hello(String hostname = "localhost") async;
 ```
 
 调用参数:
@@ -47,7 +47,7 @@ Smtp.hello(String hostname = "localhost");
 用指定的用户及密码登录服务器，服务器报错则抛出错误
 ```JavaScript
 Smtp.login(String username,
-                String password);
+                String password) async;
 ```
 
 调用参数:
@@ -57,7 +57,7 @@ Smtp.login(String username,
 ### from
 指定发件人信箱，服务器报错则抛出错误
 ```JavaScript
-Smtp.from(String address);
+Smtp.from(String address) async;
 ```
 
 调用参数:
@@ -66,7 +66,7 @@ Smtp.from(String address);
 ### to
 指定收件人信箱，服务器报错则抛出错误
 ```JavaScript
-Smtp.to(String address);
+Smtp.to(String address) async;
 ```
 
 调用参数:
@@ -75,7 +75,7 @@ Smtp.to(String address);
 ### data
 发送文本到收件人，服务器报错则抛出错误
 ```JavaScript
-Smtp.data(String txt);
+Smtp.data(String txt) async;
 ```
 
 调用参数:
@@ -84,7 +84,7 @@ Smtp.data(String txt);
 ### quit
 退出并关闭连接，服务器报错则抛出错误
 ```JavaScript
-Smtp.quit();
+Smtp.quit() async;
 ```
 
 ### dispose

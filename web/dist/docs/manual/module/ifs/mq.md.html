@@ -154,10 +154,54 @@
 </ul>
  </div></div></div>  </div></div><div class="content col-xs-12 col-sm-9"> <h1 id="-mq">模块 mq</h1>
 <p>消息队列模块</p>
+<h2 id="-">对象</h2>
+<h3 id="message">Message</h3>
+<p>创建一个消息对象，参见 Message</p>
+<pre><code class="lang-JavaScript">Message mq.Message;
+</code></pre>
+<h3 id="httphandler">HttpHandler</h3>
+<p>创建一个 http 协议处理器对象，参见 HttpHandler</p>
+<pre><code class="lang-JavaScript">HttpHandler mq.HttpHandler;
+</code></pre>
+<h3 id="handler">Handler</h3>
+<p>创建一个消息处理器对象，传递值内置处理器则直接返回</p>
+<pre><code class="lang-JavaScript">Handler mq.Handler;
+</code></pre>
+<p>返回结果:</p>
+<ul>
+<li>返回封装了处理函数的处理器</li>
+</ul>
+<p>hdlr 接受内置消息处理器，处理函数，链式处理数组，路由对象：</p>
+<ul>
+<li>Function javascript 函数，将使用此函数进行处理</li>
+<li>Handler 内置处理器，将使用此处理器进行处理</li>
+<li>链式处理数组，等同于返回 new mq.Chain(hdlr)，参见 Chain</li>
+<li>路由对象，等同于返回 new mq.Routing(hdlr)，参见 Routing</li>
+</ul>
+<p>消息处理函数语法如下：</p>
+<pre><code class="lang-JavaScript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">func</span>(<span class="hljs-params">v</span>)</span>{
+}
+</code></pre>
+<p>参数 v 为正在处理的消息，返回结果允许有四种:</p>
+<ul>
+<li>Function javascript 函数，将使用此函数进行下一阶段处理</li>
+<li>Handler 内置处理器，将使用此处理器进行下一阶段处理</li>
+<li>链式处理数组，等同于 new mq.Chain(v)，参见 Chain</li>
+<li>路由对象，等同于 new mq.Routing(v)，参见 Routing</li>
+</ul>
+<p>无返回或者其他的返回结果将结束消息处理。</p>
+<h3 id="chain">Chain</h3>
+<p>创建一个消息处理器链处理对象，参见 Chain</p>
+<pre><code class="lang-JavaScript">Chain mq.Chain;
+</code></pre>
+<h3 id="routing">Routing</h3>
+<p>创建一个消息处理器路由对象，参见 Routing</p>
+<pre><code class="lang-JavaScript">Routing mq.Routing;
+</code></pre>
 <h2 id="-">函数</h2>
 <h3 id="await">await</h3>
 <p>创建一个异步等待处理器</p>
-<pre><code class="lang-JavaScript">Handler mq.await();
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> Handler mq.await();
 </code></pre>
 <p>返回结果:</p>
 <ul>
@@ -177,7 +221,7 @@
 <p>示例是一个 javascript 消息处理函数，当函数返回时，消息处理引擎将等待 await，直到 await.end 被调用，才继续下一阶段的处理。</p>
 <h3 id="nullhandler">nullHandler</h3>
 <p>创建一个空处理器对象，次处理对象不做任何处理直接返回</p>
-<pre><code class="lang-JavaScript">Handler mq.nullHandler();
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> Handler mq.nullHandler();
 </code></pre>
 <p>返回结果:</p>
 <ul>
@@ -185,8 +229,8 @@
 </ul>
 <h3 id="invoke">invoke</h3>
 <p>使用给定的处理器处理一个消息或对象</p>
-<pre><code class="lang-JavaScript">mq.invoke(Handler hdlr,
-                object v);
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> mq.invoke(Handler hdlr,
+                object v) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>

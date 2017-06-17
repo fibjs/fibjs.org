@@ -10,7 +10,7 @@ var querystring = require('querystring');
 ### escape
 url 部件字符串安全编码
 ```JavaScript
-String querystring.escape(String str);
+static String querystring.escape(String str);
 ```
 
 调用参数:
@@ -22,7 +22,7 @@ String querystring.escape(String str);
 ### unescape
 url 安全字符串解码
 ```JavaScript
-String querystring.unescape(String str);
+static String querystring.unescape(String str);
 ```
 
 调用参数:
@@ -34,7 +34,7 @@ String querystring.unescape(String str);
 ### parse
 解析 query 字符串
 ```JavaScript
-HttpCollection querystring.parse(String str,
+static HttpCollection querystring.parse(String str,
                 String sep = "&",
                 String eq = "=",
                 Object opt = {});
@@ -51,7 +51,7 @@ HttpCollection querystring.parse(String str,
 ### stringify
 序列化一个对象为 query 字符串
 ```JavaScript
-String querystring.stringify(Object obj,
+static String querystring.stringify(Object obj,
                 String sep = "&",
                 String eq = "=",
                 Object opt = {});

@@ -10,7 +10,7 @@ var gui = require('gui');
 ### setVersion
 设置 WebView 内 ie 模拟版本
 ```JavaScript
-gui.setVersion(Integer ver);
+static gui.setVersion(Integer ver);
 ```
 
 调用参数:
@@ -18,7 +18,7 @@ gui.setVersion(Integer ver);
 ### open
 打开一个窗口并访问指定网址
 ```JavaScript
-WebView gui.open(String url);
+static WebView gui.open(String url) async;
 ```
 
 调用参数:
@@ -30,8 +30,8 @@ WebView gui.open(String url);
 --------------------------
 打开一个窗口并访问指定网址
 ```JavaScript
-WebView gui.open(String url,
-                Map opt);
+static WebView gui.open(String url,
+                Map opt) async;
 ```
 
 调用参数:
@@ -62,36 +62,36 @@ WebView gui.open(String url,
 ### IE7
 WebView ie 模拟版本，指定 ie7
 ```JavaScript
-gui.IE7;
+const gui.IE7 = 7000;
 ```
 
 ### IE8
 WebView ie 模拟版本，指定 ie8
 ```JavaScript
-gui.IE8;
+const gui.IE8 = 8000;
 ```
 
 ### IE9
 WebView ie 模拟版本，指定 ie9
 ```JavaScript
-gui.IE9;
+const gui.IE9 = 9000;
 ```
 
 ### IE10
 WebView ie 模拟版本，指定 ie10
 ```JavaScript
-gui.IE10;
+const gui.IE10 = 10000;
 ```
 
 ### IE11
 WebView ie 模拟版本，指定 ie11
 ```JavaScript
-gui.IE11;
+const gui.IE11 = 11000;
 ```
 
 ### EDGE
 WebView ie 模拟版本，指定 edge
 ```JavaScript
-gui.EDGE;
+const gui.EDGE = 11001;
 ```
 

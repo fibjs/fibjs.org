@@ -24,7 +24,7 @@ Socket 构造函数，创建一个新的 Socket 对象
 建立一个 tcp 连接
 ```JavaScript
 Socket.connect(String host,
-                Integer port);
+                Integer port) async;
 ```
 
 调用参数:
@@ -35,7 +35,7 @@ Socket.connect(String host,
 将当前 Socket 绑定至本地所有地址的指定端口
 ```JavaScript
 Socket.bind(Integer port,
-                Boolean allowIPv4 = true);
+                Boolean allowIPv4 = true) async;
 ```
 
 调用参数:
@@ -47,7 +47,7 @@ Socket.bind(Integer port,
 ```JavaScript
 Socket.bind(String addr,
                 Integer port,
-                Boolean allowIPv4 = true);
+                Boolean allowIPv4 = true) async;
 ```
 
 调用参数:
@@ -58,7 +58,7 @@ Socket.bind(String addr,
 ### listen
 开始监听连接请求
 ```JavaScript
-Socket.listen(Integer backlog = 120);
+Socket.listen(Integer backlog = 120) async;
 ```
 
 调用参数:
@@ -67,7 +67,7 @@ Socket.listen(Integer backlog = 120);
 ### accept
 等待并接受一个连接
 ```JavaScript
-Socket Socket.accept();
+Socket Socket.accept() async;
 ```
 
 返回结果:
@@ -76,7 +76,7 @@ Socket Socket.accept();
 ### recv
 从连接读取指定大小的数据，不同于 read 方法，recv 并不保证读完要求的数据，而是在读取到数据后立即返回
 ```JavaScript
-Buffer Socket.recv(Integer bytes = -1);
+Buffer Socket.recv(Integer bytes = -1) async;
 ```
 
 调用参数:
@@ -88,7 +88,7 @@ Buffer Socket.recv(Integer bytes = -1);
 ### recvfrom
 
 ```JavaScript
-DatagramPacket Socket.recvfrom(Integer bytes = -1);
+DatagramPacket Socket.recvfrom(Integer bytes = -1) async;
 ```
 
 调用参数:
@@ -96,7 +96,7 @@ DatagramPacket Socket.recvfrom(Integer bytes = -1);
 ### send
 将给定的数据写入连接，此方法等效于 write 方法
 ```JavaScript
-Socket.send(Buffer data);
+Socket.send(Buffer data) async;
 ```
 
 调用参数:
@@ -107,7 +107,7 @@ Socket.send(Buffer data);
 ```JavaScript
 Socket.sendto(Buffer data,
                 String host,
-                Integer port);
+                Integer port) async;
 ```
 
 调用参数:
@@ -115,7 +115,7 @@ Socket.sendto(Buffer data,
 ### read
 从流内读取指定大小的数据
 ```JavaScript
-Buffer Socket.read(Integer bytes = -1);
+Buffer Socket.read(Integer bytes = -1) async;
 ```
 
 调用参数:
@@ -127,7 +127,7 @@ Buffer Socket.read(Integer bytes = -1);
 ### write
 将给定的数据写入流
 ```JavaScript
-Socket.write(Buffer data);
+Socket.write(Buffer data) async;
 ```
 
 调用参数:
@@ -136,14 +136,14 @@ Socket.write(Buffer data);
 ### close
 关闭当前流对象
 ```JavaScript
-Socket.close();
+Socket.close() async;
 ```
 
 ### copyTo
 复制流数据到目标流中
 ```JavaScript
 Long Socket.copyTo(Stream stm,
-                Long bytes = -1);
+                Long bytes = -1) async;
 ```
 
 调用参数:

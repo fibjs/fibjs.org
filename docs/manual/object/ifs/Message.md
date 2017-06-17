@@ -19,7 +19,7 @@ var m = new mq.Message();
 ### read
 从流内读取指定大小的数据，此方法为 body 相应方法的别名
 ```JavaScript
-Buffer Message.read(Integer bytes = -1);
+Buffer Message.read(Integer bytes = -1) async;
 ```
 
 调用参数:
@@ -31,7 +31,7 @@ Buffer Message.read(Integer bytes = -1);
 ### readAll
 从流内读取剩余的全部数据，此方法为 body 相应方法的别名
 ```JavaScript
-Buffer Message.readAll();
+Buffer Message.readAll() async;
 ```
 
 返回结果:
@@ -40,7 +40,7 @@ Buffer Message.readAll();
 ### write
 写入给定的数据，此方法为 body 相应方法的别名
 ```JavaScript
-Message.write(Buffer data);
+Message.write(Buffer data) async;
 ```
 
 调用参数:
@@ -70,7 +70,7 @@ Message.clear();
 ### sendTo
 发送格式化消息到给定的流对象
 ```JavaScript
-Message.sendTo(Stream stm);
+Message.sendTo(Stream stm) async;
 ```
 
 调用参数:
@@ -79,7 +79,7 @@ Message.sendTo(Stream stm);
 ### readFrom
 从给定的缓存流对象中读取格式化消息，并解析填充对象
 ```JavaScript
-Message.readFrom(Stream stm);
+Message.readFrom(Stream stm) async;
 ```
 
 调用参数:
@@ -194,12 +194,12 @@ String Message.lastError;
 ### TEXT
 指定消息类型 1，代表一个文本类型
 ```JavaScript
-Message.TEXT;
+const Message.TEXT = 1;
 ```
 
 ### BINARY
 指定消息类型 2，代表一个二进制类型
 ```JavaScript
-Message.BINARY;
+const Message.BINARY = 2;
 ```
 

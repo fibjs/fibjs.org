@@ -58,7 +58,7 @@ Service.restart();
 ### run
 开始运行服务实体
 ```JavaScript
-Service.run();
+Service.run() async;
 ```
 
 ### isInstalled
@@ -438,6 +438,6 @@ Function Service.oncontinue;
 ### defaultMaxListeners
 默认全局最大监听器数
 ```JavaScript
-Integer Service.defaultMaxListeners;
+static Integer Service.defaultMaxListeners;
 ```
 

@@ -11,7 +11,7 @@ var test = new db.openLevelDB("test.db");
 ### has
 检查数据库内是否存在指定键值的数据
 ```JavaScript
-Boolean LevelDB.has(Buffer key);
+Boolean LevelDB.has(Buffer key) async;
 ```
 
 调用参数:
@@ -23,7 +23,7 @@ Boolean LevelDB.has(Buffer key);
 ### get
 查询指定键值的值
 ```JavaScript
-Buffer LevelDB.get(Buffer key);
+Buffer LevelDB.get(Buffer key) async;
 ```
 
 调用参数:
@@ -45,7 +45,7 @@ List LevelDB.mget(Array keys);
 设定一个键值数据，键值不存在则插入新数据
 ```JavaScript
 LevelDB.set(Buffer key,
-                Buffer value);
+                Buffer value) async;
 ```
 
 调用参数:
@@ -73,7 +73,7 @@ LevelDB.mremove(Array keys);
 ### remove
 删除指定键值的全部值
 ```JavaScript
-LevelDB.remove(Buffer key);
+LevelDB.remove(Buffer key) async;
 ```
 
 调用参数:
@@ -141,7 +141,7 @@ LevelDB.commit();
 ### close
 关闭当前数据库连接或事务
 ```JavaScript
-LevelDB.close();
+LevelDB.close() async;
 ```
 
 ### dispose

@@ -47,7 +47,7 @@ SslSocket 构造函数，创建一个新的 SslSocket 对象
 在给定的连接上连接 ssl 连接，客户端模式
 ```JavaScript
 Integer SslSocket.connect(Stream s,
-                String server_name = "");
+                String server_name = "") async;
 ```
 
 调用参数:
@@ -60,7 +60,7 @@ Integer SslSocket.connect(Stream s,
 ### accept
 在给定的连接上接收一个 ssl 连接，并生成一个新的 SslSocket
 ```JavaScript
-SslSocket SslSocket.accept(Stream s);
+SslSocket SslSocket.accept(Stream s) async;
 ```
 
 调用参数:
@@ -72,7 +72,7 @@ SslSocket SslSocket.accept(Stream s);
 ### read
 从流内读取指定大小的数据
 ```JavaScript
-Buffer SslSocket.read(Integer bytes = -1);
+Buffer SslSocket.read(Integer bytes = -1) async;
 ```
 
 调用参数:
@@ -84,7 +84,7 @@ Buffer SslSocket.read(Integer bytes = -1);
 ### write
 将给定的数据写入流
 ```JavaScript
-SslSocket.write(Buffer data);
+SslSocket.write(Buffer data) async;
 ```
 
 调用参数:
@@ -93,14 +93,14 @@ SslSocket.write(Buffer data);
 ### close
 关闭当前流对象
 ```JavaScript
-SslSocket.close();
+SslSocket.close() async;
 ```
 
 ### copyTo
 复制流数据到目标流中
 ```JavaScript
 Long SslSocket.copyTo(Stream stm,
-                Long bytes = -1);
+                Long bytes = -1) async;
 ```
 
 调用参数:

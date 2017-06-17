@@ -10,7 +10,7 @@ var uuid = require('uuid');
 ### node
 使用时间和主机名创建 uuid
 ```JavaScript
-Buffer uuid.node();
+static Buffer uuid.node();
 ```
 
 返回结果:
@@ -19,7 +19,7 @@ Buffer uuid.node();
 ### md5
 使用特定命名的 md5 创建 uuid
 ```JavaScript
-Buffer uuid.md5(Integer ns,
+static Buffer uuid.md5(Integer ns,
                 String name);
 ```
 
@@ -33,7 +33,7 @@ Buffer uuid.md5(Integer ns,
 ### random
 使用随机数创建 uuid
 ```JavaScript
-Buffer uuid.random();
+static Buffer uuid.random();
 ```
 
 返回结果:
@@ -42,7 +42,7 @@ Buffer uuid.random();
 ### sha1
 使用特定命名的 sha1 创建 uuid
 ```JavaScript
-Buffer uuid.sha1(Integer ns,
+static Buffer uuid.sha1(Integer ns,
                 String name);
 ```
 
@@ -56,7 +56,7 @@ Buffer uuid.sha1(Integer ns,
 ### snowflake
 使用 Snowflake 算法创建 uuid
 ```JavaScript
-Buffer uuid.snowflake();
+static Buffer uuid.snowflake();
 ```
 
 返回结果:
@@ -67,7 +67,7 @@ Buffer uuid.snowflake();
 ### hostID
 查询和修改 Snowflake 算法的主机 id
 ```JavaScript
-Integer uuid.hostID;
+static Integer uuid.hostID;
 ```
 
 ## 常量
@@ -75,24 +75,24 @@ Integer uuid.hostID;
 ### DNS
 md5 与 sha1 创建 uuid 时指定 name 命名为域名
 ```JavaScript
-uuid.DNS;
+const uuid.DNS = 0;
 ```
 
 ### URL
 md5 与 sha1 创建 uuid 时指定 name 命名为 url 地址
 ```JavaScript
-uuid.URL;
+const uuid.URL = 1;
 ```
 
 ### OID
 md5 与 sha1 创建 uuid 时指定 name 命名为 ISO OID
 ```JavaScript
-uuid.OID;
+const uuid.OID = 2;
 ```
 
 ### X509
 md5 与 sha1 创建 uuid 时指定 name 命名为 X.500 DN
 ```JavaScript
-uuid.X509;
+const uuid.X509 = 3;
 ```
 

@@ -99,7 +99,7 @@ HttpRequest.removeHeader(String name);
 ### read
 从流内读取指定大小的数据，此方法为 body 相应方法的别名
 ```JavaScript
-Buffer HttpRequest.read(Integer bytes = -1);
+Buffer HttpRequest.read(Integer bytes = -1) async;
 ```
 
 调用参数:
@@ -111,7 +111,7 @@ Buffer HttpRequest.read(Integer bytes = -1);
 ### readAll
 从流内读取剩余的全部数据，此方法为 body 相应方法的别名
 ```JavaScript
-Buffer HttpRequest.readAll();
+Buffer HttpRequest.readAll() async;
 ```
 
 返回结果:
@@ -120,7 +120,7 @@ Buffer HttpRequest.readAll();
 ### write
 写入给定的数据，此方法为 body 相应方法的别名
 ```JavaScript
-HttpRequest.write(Buffer data);
+HttpRequest.write(Buffer data) async;
 ```
 
 调用参数:
@@ -150,7 +150,7 @@ HttpRequest.clear();
 ### sendTo
 发送格式化消息到给定的流对象
 ```JavaScript
-HttpRequest.sendTo(Stream stm);
+HttpRequest.sendTo(Stream stm) async;
 ```
 
 调用参数:
@@ -159,7 +159,7 @@ HttpRequest.sendTo(Stream stm);
 ### readFrom
 从给定的缓存流对象中读取格式化消息，并解析填充对象
 ```JavaScript
-HttpRequest.readFrom(Stream stm);
+HttpRequest.readFrom(Stream stm) async;
 ```
 
 调用参数:
@@ -352,12 +352,12 @@ String HttpRequest.lastError;
 ### TEXT
 指定消息类型 1，代表一个文本类型
 ```JavaScript
-HttpRequest.TEXT;
+const HttpRequest.TEXT = 1;
 ```
 
 ### BINARY
 指定消息类型 2，代表一个二进制类型
 ```JavaScript
-HttpRequest.BINARY;
+const HttpRequest.BINARY = 2;
 ```
 

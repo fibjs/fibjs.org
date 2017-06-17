@@ -15,7 +15,7 @@ var hex = require('hex');
 ### encode
 以 hex 方式编码数据
 ```JavaScript
-String hex.encode(Buffer data);
+static String hex.encode(Buffer data);
 ```
 
 调用参数:
@@ -27,7 +27,7 @@ String hex.encode(Buffer data);
 ### decode
 以 hex 方式解码字符串为二进制数据
 ```JavaScript
-Buffer hex.decode(String data);
+static Buffer hex.decode(String data);
 ```
 
 调用参数:

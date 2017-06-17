@@ -18,7 +18,7 @@ PKey 构造函数
 ### genRsaKey
 生成一个 RSA 私钥
 ```JavaScript
-PKey.genRsaKey(Integer size);
+PKey.genRsaKey(Integer size) async;
 ```
 
 调用参数:
@@ -27,7 +27,7 @@ PKey.genRsaKey(Integer size);
 ### genEcKey
 生成一个 EC 私钥
 ```JavaScript
-PKey.genEcKey(String curve = "secp521r1");
+PKey.genEcKey(String curve = "secp521r1") async;
 ```
 
 调用参数:
@@ -105,7 +105,7 @@ Buffer PKey.exportDer();
 ### encrypt
 使用当前算法密码公钥加密数据
 ```JavaScript
-Buffer PKey.encrypt(Buffer data);
+Buffer PKey.encrypt(Buffer data) async;
 ```
 
 调用参数:
@@ -117,7 +117,7 @@ Buffer PKey.encrypt(Buffer data);
 ### decrypt
 使用当前算法密码私钥解密数据
 ```JavaScript
-Buffer PKey.decrypt(Buffer data);
+Buffer PKey.decrypt(Buffer data) async;
 ```
 
 调用参数:
@@ -130,7 +130,7 @@ Buffer PKey.decrypt(Buffer data);
 使用当前算法密码私钥签名数据
 ```JavaScript
 Buffer PKey.sign(Buffer data,
-                Integer alg = 0);
+                Integer alg = 0) async;
 ```
 
 调用参数:
@@ -144,7 +144,7 @@ Buffer PKey.sign(Buffer data,
 使用当前算法密码公钥验证数据
 ```JavaScript
 Boolean PKey.verify(Buffer sign,
-                Buffer data);
+                Buffer data) async;
 ```
 
 调用参数:

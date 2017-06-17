@@ -10,7 +10,7 @@ var msql = db.openMySQL("mysql://user:pass@host/db");
 ### use
 选择当前数据库连接的缺省数据库
 ```JavaScript
-MySQL.use(String dbName);
+MySQL.use(String dbName) async;
 ```
 
 调用参数:
@@ -19,31 +19,31 @@ MySQL.use(String dbName);
 ### close
 关闭当前数据库连接
 ```JavaScript
-MySQL.close();
+MySQL.close() async;
 ```
 
 ### begin
 在当前数据库连接上启动一个事务
 ```JavaScript
-MySQL.begin();
+MySQL.begin() async;
 ```
 
 ### commit
 提交当前数据库连接上的事务
 ```JavaScript
-MySQL.commit();
+MySQL.commit() async;
 ```
 
 ### rollback
 回滚当前数据库连接上的事务
 ```JavaScript
-MySQL.rollback();
+MySQL.rollback() async;
 ```
 
 ### execute
 执行一个 sql 命令，并返回执行结果
 ```JavaScript
-DBResult MySQL.execute(String sql);
+DBResult MySQL.execute(String sql) async;
 ```
 
 调用参数:

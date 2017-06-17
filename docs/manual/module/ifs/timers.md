@@ -6,7 +6,7 @@ timers 模块
 ### clearInterval
 清除指定的定时器
 ```JavaScript
-timers.clearInterval(Timer t);
+static timers.clearInterval(Timer t);
 ```
 
 调用参数:
@@ -15,7 +15,7 @@ timers.clearInterval(Timer t);
 ### clearTimeout
 清除指定的定时器
 ```JavaScript
-timers.clearTimeout(Timer t);
+static timers.clearTimeout(Timer t);
 ```
 
 调用参数:
@@ -24,7 +24,7 @@ timers.clearTimeout(Timer t);
 ### clearImmediate
 清除指定的定时器
 ```JavaScript
-timers.clearImmediate(Timer t);
+static timers.clearImmediate(Timer t);
 ```
 
 调用参数:
@@ -33,7 +33,7 @@ timers.clearImmediate(Timer t);
 ### setInterval
 每间隔指定的时间后调用函数
 ```JavaScript
-Timer timers.setInterval(Function callback,
+static Timer timers.setInterval(Function callback,
                 Integer timeout);
 ```
 
@@ -47,7 +47,7 @@ Timer timers.setInterval(Function callback,
 ### setTimeout
 在指定的时间后调用函数
 ```JavaScript
-Timer timers.setTimeout(Function callback,
+static Timer timers.setTimeout(Function callback,
                 Integer timeout);
 ```
 
@@ -61,7 +61,7 @@ Timer timers.setTimeout(Function callback,
 ### setImmediate
 下一个空闲时间立即执行回调函数
 ```JavaScript
-Timer timers.setImmediate(Function callback);
+static Timer timers.setImmediate(Function callback);
 ```
 
 调用参数:

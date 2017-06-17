@@ -157,15 +157,15 @@
 <h2 id="-">函数</h2>
 <h3 id="namelist">namelist</h3>
 <p>获取文件名列表</p>
-<pre><code class="lang-JavaScript">List ZipFile.namelist();
+<pre><code class="lang-JavaScript">List ZipFile.namelist() <span class="hljs-keyword">async</span>;
 </code></pre>
 <h3 id="infolist">infolist</h3>
 <p>获取文件信息列表</p>
-<pre><code class="lang-JavaScript">List ZipFile.infolist();
+<pre><code class="lang-JavaScript">List ZipFile.infolist() <span class="hljs-keyword">async</span>;
 </code></pre>
 <h3 id="getinfo">getinfo</h3>
 <p>获取文件信息</p>
-<pre><code class="lang-JavaScript">ZipInfo ZipFile.getinfo(<span class="hljs-built_in">String</span> member);
+<pre><code class="lang-JavaScript">ZipInfo ZipFile.getinfo(<span class="hljs-built_in">String</span> member) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -174,7 +174,7 @@
 <h3 id="read">read</h3>
 <p>返回从压缩文件读取的数据</p>
 <pre><code class="lang-JavaScript">Buffer ZipFile.read(<span class="hljs-built_in">String</span> member,
-                <span class="hljs-built_in">String</span> password = <span class="hljs-string">""</span>);
+                <span class="hljs-built_in">String</span> password = <span class="hljs-string">""</span>) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -187,7 +187,7 @@
 </ul>
 <h3 id="readall">readAll</h3>
 <p>解压所有文件</p>
-<pre><code class="lang-JavaScript">List ZipFile.readAll(<span class="hljs-built_in">String</span> password = <span class="hljs-string">""</span>);
+<pre><code class="lang-JavaScript">List ZipFile.readAll(<span class="hljs-built_in">String</span> password = <span class="hljs-string">""</span>) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -201,7 +201,7 @@
 <p>解压指定文件</p>
 <pre><code class="lang-JavaScript">ZipFile.extract(<span class="hljs-built_in">String</span> member,
                 <span class="hljs-built_in">String</span> path,
-                <span class="hljs-built_in">String</span> password = <span class="hljs-string">""</span>);
+                <span class="hljs-built_in">String</span> password = <span class="hljs-string">""</span>) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -213,7 +213,7 @@
 <p>解压指定文件到流</p>
 <pre><code class="lang-JavaScript">ZipFile.extract(<span class="hljs-built_in">String</span> member,
                 SeekableStream strm,
-                <span class="hljs-built_in">String</span> password = <span class="hljs-string">""</span>);
+                <span class="hljs-built_in">String</span> password = <span class="hljs-string">""</span>) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -224,7 +224,7 @@
 <h3 id="extractall">extractAll</h3>
 <p>解压所有文件到指定路径</p>
 <pre><code class="lang-JavaScript">ZipFile.extractAll(<span class="hljs-built_in">String</span> path,
-                <span class="hljs-built_in">String</span> password = <span class="hljs-string">""</span>);
+                <span class="hljs-built_in">String</span> password = <span class="hljs-string">""</span>) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -235,7 +235,7 @@
 <p>写入指定文件到压缩文件</p>
 <pre><code class="lang-JavaScript">ZipFile.write(<span class="hljs-built_in">String</span> filename,
                 <span class="hljs-built_in">String</span> inZipName,
-                <span class="hljs-built_in">String</span> password = <span class="hljs-string">""</span>);
+                <span class="hljs-built_in">String</span> password = <span class="hljs-string">""</span>) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -247,7 +247,7 @@
 <p>写入指定文件到压缩文件</p>
 <pre><code class="lang-JavaScript">ZipFile.write(Buffer data,
                 <span class="hljs-built_in">String</span> inZipName,
-                <span class="hljs-built_in">String</span> password = <span class="hljs-string">""</span>);
+                <span class="hljs-built_in">String</span> password = <span class="hljs-string">""</span>) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -259,7 +259,7 @@
 <p>写入指定文件到压缩文件</p>
 <pre><code class="lang-JavaScript">ZipFile.write(SeekableStream strm,
                 <span class="hljs-built_in">String</span> inZipName,
-                <span class="hljs-built_in">String</span> password = <span class="hljs-string">""</span>);
+                <span class="hljs-built_in">String</span> password = <span class="hljs-string">""</span>) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -269,7 +269,7 @@
 </ul>
 <h3 id="close">close</h3>
 <p>关闭打开的zip文件</p>
-<pre><code class="lang-JavaScript">ZipFile.close();
+<pre><code class="lang-JavaScript">ZipFile.close() <span class="hljs-keyword">async</span>;
 </code></pre>
 <h3 id="dispose">dispose</h3>
 <p>强制回收对象，调用此方法后，对象资源将立即释放</p>
