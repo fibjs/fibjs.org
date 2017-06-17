@@ -147,17 +147,31 @@ function build_docs() {
                 doc: doc
             });
 
-            var re = new RegExp('href=\"\/' + config.from + '/[^"]*\"', 'g');
+            var re = new RegExp('href=\"\/' + config.from + '/([^"> ]*)\"', 'g');
 
-            html = html.replace(re, s => {
-                var s1 = s.substr(12, s.length - 13);
-                s1 = path.join('/', config.to, s1);
-                s1 = 'href="' + s1 + '"';
-
-                return s1;
+            html = html.replace(re, (s, u) => {
+                u = path.join('/', config.to, u);
+                return 'href="' + u + '"';
             });
 
             fs.writeFileSync(file1, html);
+        }
+    });
+}
+
+function relative() {
+    var baseFolder = 'web/dist';
+    var re = new RegExp('(href|src)=\"?(\/[^"> ]*)\"?', 'g');
+
+    recursiveReadSync(baseFolder).forEach(function (file) {
+        if (path.extname(file) == '.html') {
+            var p = path.dirname('/' + path.relative(baseFolder, file));
+            var html = fs.readFileSync(file).toString();
+            html = html.replace(re, (s, t, u) => {
+                u = path.relative(p, u);
+                return t + '=' + u;
+            });
+            fs.writeFileSync(file, html);
         }
     });
 }
@@ -227,7 +241,10 @@ var webpack_config = {
             from: path.resolve('./web/src/imgs'),
             to: path.resolve('./web/dist/imgs')
         }]),
-        new WebpackOnBuildPlugin(build_docs)
+        new WebpackOnBuildPlugin(() => {
+            build_docs();
+            relative();
+        })
     ]
 };
 
