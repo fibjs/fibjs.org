@@ -28,6 +28,7 @@ function wget(u) {
     return releases.data;
 }
 var baseFolder = path.join(__dirname, '../web/dist/download');
+var distFolder = path.join(__dirname, '../web/dist/dist');
 
 function sync_releases() {
     var _tmpl = ejs.compile(fs.readTextFile(path.join(baseFolder, 'tmpl.html')));
@@ -45,10 +46,10 @@ function sync_releases() {
             var ne_file = false;
 
             function check(f, u, sz) {
-                var f1 = path.join(baseFolder, 'dist', r.tag_name, f);
+                var f1 = path.join(distFolder, r.tag_name, f);
                 if (fs.exists(f1))
                     if (sz == -1 || fs.stat(f1).size == sz)
-                        return 'dist/' + r.tag_name + '/' + f;
+                        return '../dist/' + r.tag_name + '/' + f;
                 return u;
             }
 
@@ -60,26 +61,32 @@ function sync_releases() {
             r.zipball_url = check('src-' + r.tag_name + '.zip', r.zipball_url, -1);
         });
 
-        fs.writeFile(path.join(baseFolder, 'index.html'), _tmpl({
+        var txt = _tmpl({
             info: info
-        }));
+        });
+
+        var fname = path.join(baseFolder, 'index.html');
+        if (!fs.exists(fname) || txt !== fs.readTextFile(fname)) {
+            fs.writeTextFile(fname, txt);
+            console.log(fname, 'updated.');
+        }
     }
 
     gen_page();
 
     try {
-        fs.mkdir(path.join(baseFolder, 'dist'));
+        fs.mkdir(distFolder);
     } catch (e) {}
 
     info.forEach(r => {
         var new_file = false;
 
         try {
-            fs.mkdir(path.join(baseFolder, 'dist', r.tag_name));
+            fs.mkdir(path.join(distFolder, r.tag_name));
         } catch (e) {}
 
         function download(f, u, sz) {
-            f = path.join(baseFolder, 'dist', r.tag_name, f);
+            f = path.join(distFolder, r.tag_name, f);
             if (fs.exists(f))
                 if (sz === -1 || fs.stat(f).size == sz)
                     return;
