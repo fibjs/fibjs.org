@@ -30,13 +30,15 @@
                     <div>
                         <h4>Archives</h4>
                         <ol class="list-unstyled">
-                            <%r.assets.forEach(f => {%>
+                            <%r.assets.forEach(f => {
+                                var re = /(\.gz)|(\.cab)|(\.xz)/g;
+                                if(!re.test(f.name)){%>
                                 <li>
                                     <a href="<%-f.browser_download_url%>">
                                         <%=f.name%>
                                     </a>
                                 </li>
-                                <%});%>
+                                <%}});%>
                                     <li>
                                         <a href="<%-r.tarball_url%>">Source code (tar.gz)</a>
                                     </li>
