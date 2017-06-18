@@ -1,6 +1,14 @@
 # 对象 XmlNodeList
 XmlNodeList 对象代表一个有顺序的节点列表
 
+## 下标操作
+        
+--------------------------
+可使用下标直接访问数据
+```JavaScript
+readonly XmlNode XmlNodeList[];
+```
+
 ## 函数
         
 ### item

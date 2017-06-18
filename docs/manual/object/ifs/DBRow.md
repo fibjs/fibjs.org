@@ -1,6 +1,20 @@
 # 对象 DBRow
 数据库记录对象
 
+## 下标操作
+        
+--------------------------
+对象数组可使用下标直接访问对象数据
+```JavaScript
+readonly Value DBRow[];
+```
+
+--------------------------
+可使用字段名下标直接访问对象数据
+```JavaScript
+readonly Value DBRow[String];
+```
+
 ## 函数
         
 ### dispose

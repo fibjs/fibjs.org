@@ -1,6 +1,14 @@
 # 对象 XmlNamedNodeMap
 XmlNamedNodeMap 对象表示一个无顺序的属性列表
 
+## 下标操作
+        
+--------------------------
+可使用下标直接访问数据
+```JavaScript
+readonly XmlAttr XmlNamedNodeMap[];
+```
+
 ## 函数
         
 ### item

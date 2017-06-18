@@ -63,6 +63,14 @@ var buf = new Buffer();
 调用参数:
 * size - 初始化缓冲区大小
 
+## 下标操作
+        
+--------------------------
+缓存对象可使用下标直接访问二进制数据
+```JavaScript
+Integer Buffer[];
+```
+
 ## 函数
         
 ### isBuffer

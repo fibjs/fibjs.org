@@ -1,6 +1,14 @@
 # 对象 HttpCollection
 [http](../../module/ifs/http.md) 容器对象，用于 [http](../../module/ifs/http.md) header，cookie，query，form，等数据的存储与组织
 
+## 下标操作
+        
+--------------------------
+允许使用键值下标直接访问数值
+```JavaScript
+Variant HttpCollection[String];
+```
+
 ## 函数
         
 ### clear

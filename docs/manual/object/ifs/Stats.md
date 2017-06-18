@@ -29,6 +29,14 @@ var stats = new util.Stats(["begin", "end", "error"]);
 * staticKeys - 指定静态计数器的名称，静态计数器不会被 reset
 * keys - 指定计数器的名称
 
+## 下标操作
+        
+--------------------------
+允许使用键值下标直接访问数值
+```JavaScript
+readonly Integer Stats[String];
+```
+
 ## 函数
         
 ### inc

@@ -5,6 +5,18 @@ mongodb 数据库连接对象
 ```JavaScript
 var mdb = db.openMongoDB("mongodb://host/db");
 ```
+## 下标操作
+        
+--------------------------
+快速获取指定集合访问对象
+```JavaScript
+readonly MongoCollection MongoDB[String];
+```
+
+用于使用属性快速获取集合对象，例如：
+```JavaScript
+var test = mdb.test;
+```
 ## 函数
         
 ### getCollection

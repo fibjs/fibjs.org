@@ -1,6 +1,14 @@
 # 对象 EventInfo
 事件信息对象，用于在事件中传递信息
 
+## 下标操作
+        
+--------------------------
+根据事件类型返回的详细信息
+```JavaScript
+readonly Integer EventInfo[String];
+```
+
 ## 函数
         
 ### dispose
