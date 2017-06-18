@@ -19,6 +19,7 @@ static String querystring.escape(String str);
 返回结果:
 * 返回编码的字符串
 
+--------------------------
 ### unescape
 [url](url.md) 安全字符串解码
 ```JavaScript
@@ -31,6 +32,7 @@ static String querystring.unescape(String str);
 返回结果:
 * 返回解码的字符串
 
+--------------------------
 ### parse
 解析 query 字符串
 ```JavaScript
@@ -48,6 +50,7 @@ static HttpCollection querystring.parse(String str,
 返回结果:
 * 返回解码的对象
 
+--------------------------
 ### stringify
 序列化一个对象为 query 字符串
 ```JavaScript

@@ -12,6 +12,7 @@ static String url.format(Object args);
 调用参数:
 * args - 指定构造参数的字典对象，支持的字段有：protocol, slashes, username, password, hostname, port, pathname, query, hash
 
+--------------------------
 ### parse
 解析一个 url 字符串
 ```JavaScript

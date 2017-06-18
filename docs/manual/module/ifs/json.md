@@ -24,6 +24,7 @@ static String json.encode(Value data);
 返回结果:
 * 返回编码的字符串
 
+--------------------------
 ### decode
 以 json 方式解码字符串为一个变量
 ```JavaScript

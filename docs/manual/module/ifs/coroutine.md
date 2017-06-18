@@ -13,30 +13,35 @@ var coroutine = require('coroutine');
 Lock coroutine.Lock;
 ```
 
+--------------------------
 ### Semaphore
 信号量对象，参见 [Semaphore](../../object/ifs/Semaphore.md)
 ```JavaScript
 Semaphore coroutine.Semaphore;
 ```
 
+--------------------------
 ### Condition
 条件变量对象，参见 [Condition](../../object/ifs/Condition.md)
 ```JavaScript
 Condition coroutine.Condition;
 ```
 
+--------------------------
 ### Event
 事件对象，参见 [Event](../../object/ifs/Event.md)
 ```JavaScript
 Event coroutine.Event;
 ```
 
+--------------------------
 ### BlockQueue
 阻塞队列对象，参见 [BlockQueue](../../object/ifs/BlockQueue.md)
 ```JavaScript
 BlockQueue coroutine.BlockQueue;
 ```
 
+--------------------------
 ### Worker
 独立线程工作对象，参见 [Worker](../../object/ifs/Worker.md)
 ```JavaScript
@@ -59,6 +64,7 @@ static Fiber coroutine.start(Function func,
 返回结果:
 * 返回纤程对象
 
+--------------------------
 ### parallel
 并行执行一组函数，并等待返回
 ```JavaScript
@@ -117,6 +123,7 @@ static Array coroutine.parallel(...);
 返回结果:
 * 返回函数执行结果的数组
 
+--------------------------
 ### current
 返回当前纤程
 ```JavaScript
@@ -126,6 +133,7 @@ static Fiber coroutine.current();
 返回结果:
 * 当前纤程对象
 
+--------------------------
 ### sleep
 暂停当前纤程指定的时间
 ```JavaScript
@@ -143,18 +151,21 @@ static coroutine.sleep(Integer ms = 0) async;
 static readonly Array coroutine.fibers;
 ```
 
+--------------------------
 ### spareFibers
 查询和设置空闲 [Fiber](../../object/ifs/Fiber.md) 数量，服务器抖动较大时可适度增加空闲 [Fiber](../../object/ifs/Fiber.md) 数量。缺省为 256
 ```JavaScript
 static Integer coroutine.spareFibers;
 ```
 
+--------------------------
 ### vmid
 查询当前 [vm](vm.md) 编号
 ```JavaScript
 static readonly Integer coroutine.vmid;
 ```
 
+--------------------------
 ### loglevel
 修改和查询本 [vm](vm.md) 的输出级别，用以过滤输出信息，缺省为 [console](console.md).NOTSET，全部输出
 ```JavaScript

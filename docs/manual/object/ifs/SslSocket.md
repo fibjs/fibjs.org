@@ -29,7 +29,6 @@ certs 格式为：
     }
 ]
 ```
-
 --------------------------
 SslSocket 构造函数，创建一个新的 SslSocket 对象
 ```JavaScript
@@ -57,6 +56,7 @@ Integer SslSocket.connect(Stream s,
 返回结果:
 * 连接成功返回 0，证书可选验证时，验证不成功则返回非 0，详细错误见 ssl 模块
 
+--------------------------
 ### accept
 在给定的连接上接收一个 [ssl](../../module/ifs/ssl.md) 连接，并生成一个新的 SslSocket
 ```JavaScript
@@ -69,6 +69,7 @@ SslSocket SslSocket.accept(Stream s) async;
 返回结果:
 * 返回新建立的 SslSocket 对象
 
+--------------------------
 ### read
 从流内读取指定大小的数据
 ```JavaScript
@@ -81,6 +82,7 @@ Buffer SslSocket.read(Integer bytes = -1) async;
 返回结果:
 * 返回从流内读取的数据，若无数据可读，或者连接中断，则返回 null
 
+--------------------------
 ### write
 将给定的数据写入流
 ```JavaScript
@@ -90,12 +92,14 @@ SslSocket.write(Buffer data) async;
 调用参数:
 * data - 给定要写入的数据
 
+--------------------------
 ### close
 关闭当前流对象
 ```JavaScript
 SslSocket.close() async;
 ```
 
+--------------------------
 ### copyTo
 复制流数据到目标流中
 ```JavaScript
@@ -110,12 +114,14 @@ Long SslSocket.copyTo(Stream stm,
 返回结果:
 * 返回复制的字节数
 
+--------------------------
 ### dispose
 强制回收对象，调用此方法后，对象资源将立即释放
 ```JavaScript
 SslSocket.dispose();
 ```
 
+--------------------------
 ### equals
 比较当前对象与给定的对象是否相等
 ```JavaScript
@@ -128,6 +134,7 @@ Boolean SslSocket.equals(object expected);
 返回结果:
 * 返回对象比较的结果
 
+--------------------------
 ### toString
 返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现
 ```JavaScript
@@ -137,6 +144,7 @@ String SslSocket.toString();
 返回结果:
 * 返回对象的字符串表示
 
+--------------------------
 ### toJSON
 返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合
 ```JavaScript
@@ -149,6 +157,7 @@ Value SslSocket.toJSON(String key = "");
 返回结果:
 * 返回包含可 JSON 序列化的值
 
+--------------------------
 ### valueOf
 返回对象本身的数值
 ```JavaScript
@@ -166,18 +175,21 @@ Value SslSocket.valueOf();
 Integer SslSocket.verification;
 ```
 
+--------------------------
 ### ca
 证书链，客户端模式 connect 时自动引用 [ssl](../../module/ifs/ssl.md).ca，服务器模式 accept 生成 SslSocket 自动引用当前 SslSocket 的 ca
 ```JavaScript
 readonly X509Cert SslSocket.ca;
 ```
 
+--------------------------
 ### peerCert
 连接对方的证书
 ```JavaScript
 readonly X509Cert SslSocket.peerCert;
 ```
 
+--------------------------
 ### stream
 查询消息 [ssl](../../module/ifs/ssl.md) 建立时的下层流对象
 ```JavaScript

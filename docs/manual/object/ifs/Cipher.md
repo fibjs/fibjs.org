@@ -57,6 +57,7 @@ Cipher.paddingMode(Integer mode);
 调用参数:
 * mode - 指定填充模式，缺省为 PADDING_PKCS7
 
+--------------------------
 ### encrypt
 使用当前算法密码加密数据
 ```JavaScript
@@ -69,6 +70,7 @@ Buffer Cipher.encrypt(Buffer data) async;
 返回结果:
 * 返回加密后的数据
 
+--------------------------
 ### decrypt
 使用当前算法密码解密数据
 ```JavaScript
@@ -81,12 +83,14 @@ Buffer Cipher.decrypt(Buffer data) async;
 返回结果:
 * 返回解密后的数据
 
+--------------------------
 ### dispose
 强制回收对象，调用此方法后，对象资源将立即释放
 ```JavaScript
 Cipher.dispose();
 ```
 
+--------------------------
 ### equals
 比较当前对象与给定的对象是否相等
 ```JavaScript
@@ -99,6 +103,7 @@ Boolean Cipher.equals(object expected);
 返回结果:
 * 返回对象比较的结果
 
+--------------------------
 ### toString
 返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现
 ```JavaScript
@@ -108,6 +113,7 @@ String Cipher.toString();
 返回结果:
 * 返回对象的字符串表示
 
+--------------------------
 ### toJSON
 返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合
 ```JavaScript
@@ -120,6 +126,7 @@ Value Cipher.toJSON(String key = "");
 返回结果:
 * 返回包含可 JSON 序列化的值
 
+--------------------------
 ### valueOf
 返回对象本身的数值
 ```JavaScript
@@ -137,18 +144,21 @@ Value Cipher.valueOf();
 readonly String Cipher.name;
 ```
 
+--------------------------
 ### keySize
 返回当前算法密码长度，以位为单位
 ```JavaScript
 readonly Integer Cipher.keySize;
 ```
 
+--------------------------
 ### ivSize
 返回当前算法初始向量长度，以字节为单位
 ```JavaScript
 readonly Integer Cipher.ivSize;
 ```
 
+--------------------------
 ### blockSize
 返回当前算法数据块长度，以字节为单位
 ```JavaScript

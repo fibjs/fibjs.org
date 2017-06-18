@@ -21,36 +21,42 @@ Service os.Service;
 static String os.hostname();
 ```
 
+--------------------------
 ### endianness
 the endianness of the CPU for which the fibjs binary was compiled.
 ```JavaScript
 static String os.endianness();
 ```
 
+--------------------------
 ### type
 查询当前运行环境操作系统名称
 ```JavaScript
 static String os.type();
 ```
 
+--------------------------
 ### release
 查询当前运行环境操作系统版本
 ```JavaScript
 static String os.release();
 ```
 
+--------------------------
 ### homedir
 查询当前用户目录
 ```JavaScript
 static String os.homedir();
 ```
 
+--------------------------
 ### arch
 查询当前 cpu 环境，可能的结果为 'amd64', 'arm', 'arm64', 'ia32'
 ```JavaScript
 static String os.arch();
 ```
 
+--------------------------
 ### uptime
 查询运行环境运行时间，以秒为单位
 ```JavaScript
@@ -60,6 +66,7 @@ static Number os.uptime();
 返回结果:
 * 返回表示时间的数值
 
+--------------------------
 ### loadavg
 查询运行环境 1分钟，5分钟，15分钟平均负载
 ```JavaScript
@@ -69,6 +76,7 @@ static Array os.loadavg();
 返回结果:
 * 返回包含三个负载数据的数组
 
+--------------------------
 ### totalmem
 查询运行环境总内存，以字节为单位
 ```JavaScript
@@ -78,6 +86,7 @@ static Long os.totalmem();
 返回结果:
 * 返回内存数据
 
+--------------------------
 ### freemem
 查询运行环境可用内存，以字节为单位
 ```JavaScript
@@ -87,6 +96,7 @@ static Long os.freemem();
 返回结果:
 * 返回内存数据
 
+--------------------------
 ### cpus
 查询当前运行环境 cpu 个数和参数
 ```JavaScript
@@ -96,6 +106,7 @@ static Array os.cpus();
 返回结果:
 * 返回包含 cpu 参数的数组，每一项对应一个 cpu
 
+--------------------------
 ### cpuNumbers
 查询当前运行环境 cpu 个数
 ```JavaScript
@@ -105,6 +116,7 @@ static Integer os.cpuNumbers();
 返回结果:
 * 返回 cpu 个数
 
+--------------------------
 ### tmpdir
 查询当前运行环境临时文件目录
 ```JavaScript
@@ -114,6 +126,7 @@ static String os.tmpdir();
 返回结果:
 * 返回临时文件目录
 
+--------------------------
 ### userInfo
 返回当前有效执行用户信息
 ```JavaScript
@@ -125,6 +138,7 @@ static Object os.userInfo(Object options = {});
 返回结果:
 * 当前有效执行用户信息
 
+--------------------------
 ### networkInterfaces
 查询当前运行环境网络信息
 ```JavaScript
@@ -134,6 +148,7 @@ static Object os.networkInterfaces();
 返回结果:
 * 返回网卡信息
 
+--------------------------
 ### printerInfo
 查询当前主机的打印机信息
 ```JavaScript
@@ -143,6 +158,7 @@ static Array os.printerInfo();
 返回结果:
 * 返回打印机信息
 
+--------------------------
 ### openPrinter
 创建一个打印机输出对象
 ```JavaScript
@@ -155,12 +171,14 @@ static BufferedStream os.openPrinter(String name) async;
 返回结果:
 * 返回打印机输出对象
 
+--------------------------
 ### platform
 查询当前平台名称，可能的结果为 'darwin', 'freebsd', 'linux', 或 'win32'
 ```JavaScript
 static String os.platform();
 ```
 
+--------------------------
 ### time
 解析时间字符串或查询运行环境当前时间
 ```JavaScript
@@ -173,6 +191,7 @@ static Date os.time(String tmString = "");
 返回结果:
 * 返回 javascript Date 对象
 
+--------------------------
 ### dateAdd
 时间计算函数，根据 part 指定计算时间
 ```JavaScript
@@ -189,6 +208,7 @@ static Date os.dateAdd(Date d,
 返回结果:
 * 返回 javascript Date 对象
 
+--------------------------
 ### memoryUsage
 查询当前进程内存使用报告
 ```JavaScript
@@ -220,12 +240,14 @@ static Object os.memoryUsage();
 static readonly Integer os.timezone;
 ```
 
+--------------------------
 ### EOL
 查询当前运行环境行结尾标识，posix:\"\\n\"；windows:\"\\r\\n\"
 ```JavaScript
 static readonly String os.EOL;
 ```
 
+--------------------------
 ### execPath
 查询当前运行执行文件完整路径
 ```JavaScript

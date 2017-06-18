@@ -166,6 +166,7 @@
 <ul>
 <li>fname - 堆快照名称</li>
 </ul>
+<hr>
 <h3 id="loadsnapshot">loadSnapshot</h3>
 <p>根据指定名称读取一个堆快照</p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> HeapSnapshot profiler.loadSnapshot(<span class="hljs-built_in">String</span> fname);
@@ -178,6 +179,7 @@
 <ul>
 <li>返回读取到的堆快照</li>
 </ul>
+<hr>
 <h3 id="takesnapshot">takeSnapshot</h3>
 <p>获取当前时间节点的堆快照，堆快照记录了当前时刻JS堆的状态</p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> HeapSnapshot profiler.takeSnapshot();
@@ -186,6 +188,7 @@
 <ul>
 <li>返回获取到的堆信息快照</li>
 </ul>
+<hr>
 <h3 id="diff">diff</h3>
 <p>执行给定的函数，并对比执行前后 v8 堆的变化</p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> <span class="hljs-built_in">Object</span> profiler.diff(<span class="hljs-built_in">Function</span> test);
@@ -203,82 +206,102 @@
 <p>隐藏节点，当显示给用户时可以被过滤掉</p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">const</span> profiler.Node_Hidden = <span class="hljs-number">0</span>;
 </code></pre>
+<hr>
 <h3 id="node_array">Node_Array</h3>
 <p>数组</p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">const</span> profiler.Node_Array = <span class="hljs-number">1</span>;
 </code></pre>
+<hr>
 <h3 id="node_string">Node_String</h3>
 <p>字符串</p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">const</span> profiler.Node_String = <span class="hljs-number">2</span>;
 </code></pre>
+<hr>
 <h3 id="node_object">Node_Object</h3>
 <p>JS对象（字符串和数组除外）</p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">const</span> profiler.Node_Object = <span class="hljs-number">3</span>;
 </code></pre>
+<hr>
 <h3 id="node_code">Node_Code</h3>
 <p>编译后的代码</p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">const</span> profiler.Node_Code = <span class="hljs-number">4</span>;
 </code></pre>
+<hr>
 <h3 id="node_closure">Node_Closure</h3>
 <p>函数闭包</p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">const</span> profiler.Node_Closure = <span class="hljs-number">5</span>;
 </code></pre>
+<hr>
 <h3 id="node_regexp">Node_RegExp</h3>
 <p>正则表达式</p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">const</span> profiler.Node_RegExp = <span class="hljs-number">6</span>;
 </code></pre>
+<hr>
 <h3 id="node_heapnumber">Node_HeapNumber</h3>
 <p>堆中排好序的数字</p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">const</span> profiler.Node_HeapNumber = <span class="hljs-number">7</span>;
 </code></pre>
+<hr>
 <h3 id="node_native">Node_Native</h3>
 <p>Native对象（非v8堆上的）</p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">const</span> profiler.Node_Native = <span class="hljs-number">8</span>;
 </code></pre>
+<hr>
 <h3 id="node_synthetic">Node_Synthetic</h3>
 <p>Synthetic对象</p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">const</span> profiler.Node_Synthetic = <span class="hljs-number">9</span>;
 </code></pre>
+<hr>
 <h3 id="node_consstring">Node_ConsString</h3>
 <p>拼接的字符串</p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">const</span> profiler.Node_ConsString = <span class="hljs-number">10</span>;
 </code></pre>
+<hr>
 <h3 id="node_slicedstring">Node_SlicedString</h3>
 <p>分割的字符串</p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">const</span> profiler.Node_SlicedString = <span class="hljs-number">11</span>;
 </code></pre>
+<hr>
 <h3 id="node_symbol">Node_Symbol</h3>
 <p>符号（ES6）</p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">const</span> profiler.Node_Symbol = <span class="hljs-number">12</span>;
 </code></pre>
+<hr>
 <h3 id="node_simdvalue">Node_SimdValue</h3>
 <p>堆中排好序的SIMD值(ES7)</p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">const</span> profiler.Node_SimdValue = <span class="hljs-number">13</span>;
 </code></pre>
+<hr>
 <h3 id="edge_contextvariable">Edge_ContextVariable</h3>
 <p>函数中的变量</p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">const</span> profiler.Edge_ContextVariable = <span class="hljs-number">0</span>;
 </code></pre>
+<hr>
 <h3 id="edge_element">Edge_Element</h3>
 <p>数组中的元素</p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">const</span> profiler.Edge_Element = <span class="hljs-number">1</span>;
 </code></pre>
+<hr>
 <h3 id="edge_property">Edge_Property</h3>
 <p>有名对象的属性</p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">const</span> profiler.Edge_Property = <span class="hljs-number">2</span>;
 </code></pre>
+<hr>
 <h3 id="edge_internal">Edge_Internal</h3>
 <p>JS无法进入的链接</p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">const</span> profiler.Edge_Internal = <span class="hljs-number">3</span>;
 </code></pre>
+<hr>
 <h3 id="edge_hidden">Edge_Hidden</h3>
 <p>指向需要事先计算出空间大小的节点</p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">const</span> profiler.Edge_Hidden = <span class="hljs-number">4</span>;
 </code></pre>
+<hr>
 <h3 id="edge_shortcut">Edge_Shortcut</h3>
 <p>指向无法事先计算出空间大小的节点</p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">const</span> profiler.Edge_Shortcut = <span class="hljs-number">5</span>;
 </code></pre>
+<hr>
 <h3 id="edge_weak">Edge_Weak</h3>
 <p>一个弱引用（被GC忽视）</p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">const</span> profiler.Edge_Weak = <span class="hljs-number">6</span>;

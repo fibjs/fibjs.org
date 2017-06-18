@@ -22,6 +22,7 @@ static List registry.listSubKey(Integer root,
 返回结果:
 * 返回该键值下所有子健
 
+--------------------------
 ### listValue
 返回指定键值下的所有数据的健
 ```JavaScript
@@ -36,6 +37,7 @@ static List registry.listValue(Integer root,
 返回结果:
 * 返回该键值下所有数据的健
 
+--------------------------
 ### get
 查询指定键值的数值
 ```JavaScript
@@ -50,6 +52,7 @@ static Value registry.get(Integer root,
 返回结果:
 * 返回指定键值的数值
 
+--------------------------
 ### set
 设置指定键值为数字
 ```JavaScript
@@ -106,6 +109,7 @@ static registry.set(Integer root,
 * key - 指定键值
 * value - 指定二进制数据
 
+--------------------------
 ### del
 删除指定键值的数值
 ```JavaScript
@@ -125,48 +129,56 @@ static registry.del(Integer root,
 const registry.CLASSES_ROOT = 0;
 ```
 
+--------------------------
 ### CURRENT_USER
 注册表根，存储当前用户设置的信息
 ```JavaScript
 const registry.CURRENT_USER = 1;
 ```
 
+--------------------------
 ### LOCAL_MACHINE
 注册表根，包括安装在计算机上的硬件和软件的信息
 ```JavaScript
 const registry.LOCAL_MACHINE = 2;
 ```
 
+--------------------------
 ### USERS
 注册表根，包含使用计算机的用户的信息
 ```JavaScript
 const registry.USERS = 3;
 ```
 
+--------------------------
 ### CURRENT_CONFIG
 注册表根，这个分支包含计算机当前的硬件配置信息
 ```JavaScript
 const registry.CURRENT_CONFIG = 5;
 ```
 
+--------------------------
 ### SZ
 注册表数据类型，字符串
 ```JavaScript
 const registry.SZ = 1;
 ```
 
+--------------------------
 ### EXPAND_SZ
 注册表数据类型，扩展字符串
 ```JavaScript
 const registry.EXPAND_SZ = 2;
 ```
 
+--------------------------
 ### DWORD
 注册表数据类型，32 位数值
 ```JavaScript
 const registry.DWORD = 4;
 ```
 
+--------------------------
 ### QWORD
 注册表数据类型，64 位数值
 ```JavaScript

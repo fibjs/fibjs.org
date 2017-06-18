@@ -9,6 +9,7 @@ HeapGraphNode表示堆视图中的一个节点
 HeapGraphNode.dispose();
 ```
 
+--------------------------
 ### equals
 比较当前对象与给定的对象是否相等
 ```JavaScript
@@ -21,6 +22,7 @@ Boolean HeapGraphNode.equals(object expected);
 返回结果:
 * 返回对象比较的结果
 
+--------------------------
 ### toString
 返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现
 ```JavaScript
@@ -30,6 +32,7 @@ String HeapGraphNode.toString();
 返回结果:
 * 返回对象的字符串表示
 
+--------------------------
 ### toJSON
 返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合
 ```JavaScript
@@ -42,6 +45,7 @@ Value HeapGraphNode.toJSON(String key = "");
 返回结果:
 * 返回包含可 JSON 序列化的值
 
+--------------------------
 ### valueOf
 返回对象本身的数值
 ```JavaScript
@@ -73,31 +77,35 @@ readonly Integer HeapGraphNode.type;
 - [profiler](../../module/ifs/profiler.md).Node_SlicedString,   分割的字符串
 - [profiler](../../module/ifs/profiler.md).Node_Symbol,         符号（ES6）
 - [profiler](../../module/ifs/profiler.md).Node_SimdValue,      堆中排好序的SIMD值(ES7)
-
+--------------------------
 ### name
 节点名称
 ```JavaScript
 readonly String HeapGraphNode.name;
 ```
 
+--------------------------
 ### description
 节点的描述
 ```JavaScript
 readonly String HeapGraphNode.description;
 ```
 
+--------------------------
 ### id
 节点ID
 ```JavaScript
 readonly Integer HeapGraphNode.id;
 ```
 
+--------------------------
 ### shallowSize
 节点大小，单位为字节
 ```JavaScript
 readonly Integer HeapGraphNode.shallowSize;
 ```
 
+--------------------------
 ### childs
 子节点列表，由[HeapGraphEdge](HeapGraphEdge.md)类型对象组成
 ```JavaScript

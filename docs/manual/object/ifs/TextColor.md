@@ -9,6 +9,7 @@
 TextColor.dispose();
 ```
 
+--------------------------
 ### equals
 比较当前对象与给定的对象是否相等
 ```JavaScript
@@ -21,6 +22,7 @@ Boolean TextColor.equals(object expected);
 返回结果:
 * 返回对象比较的结果
 
+--------------------------
 ### toString
 返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现
 ```JavaScript
@@ -30,6 +32,7 @@ String TextColor.toString();
 返回结果:
 * 返回对象的字符串表示
 
+--------------------------
 ### toJSON
 返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合
 ```JavaScript
@@ -42,6 +45,7 @@ Value TextColor.toJSON(String key = "");
 返回结果:
 * 返回包含可 JSON 序列化的值
 
+--------------------------
 ### valueOf
 返回对象本身的数值
 ```JavaScript
@@ -59,18 +63,21 @@ Value TextColor.valueOf();
 String TextColor.notice;
 ```
 
+--------------------------
 ### warn
 指定 [console](../../module/ifs/console.md).warn 颜色
 ```JavaScript
 String TextColor.warn;
 ```
 
+--------------------------
 ### error
 指定 [console](../../module/ifs/console.md).error 颜色
 ```JavaScript
 String TextColor.error;
 ```
 
+--------------------------
 ### highLight
 指定 highLight 颜色
 ```JavaScript

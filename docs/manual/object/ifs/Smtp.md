@@ -20,6 +20,7 @@ Smtp.connect(String url) async;
 调用参数:
 * url - 指定连接的协议，可以是：tcp://host:port 或者 ssl://host:port
 
+--------------------------
 ### command
 发送指定命令，并返回响应，服务器报错则抛出错误
 ```JavaScript
@@ -34,6 +35,7 @@ String Smtp.command(String cmd,
 返回结果:
 * 如果成功，返回服务器响应
 
+--------------------------
 ### hello
 发送 HELO 命令，服务器报错则抛出错误
 ```JavaScript
@@ -43,6 +45,7 @@ Smtp.hello(String hostname = "localhost") async;
 调用参数:
 * hostname - 主机名，缺省为“localhost”
 
+--------------------------
 ### login
 用指定的用户及密码登录服务器，服务器报错则抛出错误
 ```JavaScript
@@ -54,6 +57,7 @@ Smtp.login(String username,
 * username - 用户名
 * password - 密码
 
+--------------------------
 ### from
 指定发件人信箱，服务器报错则抛出错误
 ```JavaScript
@@ -63,6 +67,7 @@ Smtp.from(String address) async;
 调用参数:
 * address - 发件人信箱
 
+--------------------------
 ### to
 指定收件人信箱，服务器报错则抛出错误
 ```JavaScript
@@ -72,6 +77,7 @@ Smtp.to(String address) async;
 调用参数:
 * address - 收件人信箱
 
+--------------------------
 ### data
 发送文本到收件人，服务器报错则抛出错误
 ```JavaScript
@@ -81,18 +87,21 @@ Smtp.data(String txt) async;
 调用参数:
 * txt - 要发送的文本
 
+--------------------------
 ### quit
 退出并关闭连接，服务器报错则抛出错误
 ```JavaScript
 Smtp.quit() async;
 ```
 
+--------------------------
 ### dispose
 强制回收对象，调用此方法后，对象资源将立即释放
 ```JavaScript
 Smtp.dispose();
 ```
 
+--------------------------
 ### equals
 比较当前对象与给定的对象是否相等
 ```JavaScript
@@ -105,6 +114,7 @@ Boolean Smtp.equals(object expected);
 返回结果:
 * 返回对象比较的结果
 
+--------------------------
 ### toString
 返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现
 ```JavaScript
@@ -114,6 +124,7 @@ String Smtp.toString();
 返回结果:
 * 返回对象的字符串表示
 
+--------------------------
 ### toJSON
 返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合
 ```JavaScript
@@ -126,6 +137,7 @@ Value Smtp.toJSON(String key = "");
 返回结果:
 * 返回包含可 JSON 序列化的值
 
+--------------------------
 ### valueOf
 返回对象本身的数值
 ```JavaScript
@@ -143,6 +155,7 @@ Value Smtp.valueOf();
 Integer Smtp.timeout;
 ```
 
+--------------------------
 ### socket
 查询 Smtp 对象当前连接的 [Socket](Socket.md)
 ```JavaScript

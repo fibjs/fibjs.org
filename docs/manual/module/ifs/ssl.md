@@ -9,12 +9,14 @@ ssl/tls 模块
 SslSocket ssl.Socket;
 ```
 
+--------------------------
 ### Handler
 创建一个 [SslHandler](../../object/ifs/SslHandler.md) 对象，参见 [SslHandler](../../object/ifs/SslHandler.md)
 ```JavaScript
 SslHandler ssl.Handler;
 ```
 
+--------------------------
 ### Server
 创建一个 [SslServer](../../object/ifs/SslServer.md) 对象，参见 [SslServer](../../object/ifs/SslServer.md)
 ```JavaScript
@@ -37,6 +39,7 @@ static Stream ssl.connect(String url,
 返回结果:
 * 返回连接成功的 SslSocket 对象
 
+--------------------------
 ### setClientCert
 设定缺省客户端证书
 ```JavaScript
@@ -48,6 +51,7 @@ static ssl.setClientCert(X509Cert crt,
 * crt - X509Cert 证书，用于客户端验证服务器
 * key - PKey 私钥，用于与客户端会话
 
+--------------------------
 ### loadClientCertFile
 从文件中加载缺省客户端证书
 ```JavaScript
@@ -69,18 +73,21 @@ static ssl.loadClientCertFile(String crtFile,
 static readonly X509Cert ssl.ca;
 ```
 
+--------------------------
 ### verification
 设定证书验证模式，缺省为 VERIFY_REQUIRED
 ```JavaScript
 static Integer ssl.verification;
 ```
 
+--------------------------
 ### min_version
 设定最低版本支持，缺省 ssl3
 ```JavaScript
 static Integer ssl.min_version;
 ```
 
+--------------------------
 ### max_version
 设定最高版本支持，缺省 tls1_1
 ```JavaScript
@@ -95,60 +102,70 @@ static Integer ssl.max_version;
 const ssl.VERIFY_NONE = 0;
 ```
 
+--------------------------
 ### VERIFY_OPTIONAL
 证书验证模式，可选验证，允许验证不通过
 ```JavaScript
 const ssl.VERIFY_OPTIONAL = 1;
 ```
 
+--------------------------
 ### VERIFY_REQUIRED
 证书验证模式，要求验证，验证不通过则中断
 ```JavaScript
 const ssl.VERIFY_REQUIRED = 2;
 ```
 
+--------------------------
 ### BADCERT_EXPIRED
 证书验证结果，证书超时
 ```JavaScript
 const ssl.BADCERT_EXPIRED = 1;
 ```
 
+--------------------------
 ### BADCERT_REVOKED
 证书验证结果，证书被撤销
 ```JavaScript
 const ssl.BADCERT_REVOKED = 2;
 ```
 
+--------------------------
 ### BADCERT_CN_MISMATCH
 证书验证结果，证书名错误
 ```JavaScript
 const ssl.BADCERT_CN_MISMATCH = 4;
 ```
 
+--------------------------
 ### BADCERT_NOT_TRUSTED
 证书验证结果，证书不可信
 ```JavaScript
 const ssl.BADCERT_NOT_TRUSTED = 8;
 ```
 
+--------------------------
 ### ssl3
 ssl 协议版本 ssl 3.0
 ```JavaScript
 const ssl.ssl3 = 0;
 ```
 
+--------------------------
 ### tls1
 ssl 协议版本 tls 1.0
 ```JavaScript
 const ssl.tls1 = 1;
 ```
 
+--------------------------
 ### tls1_1
 ssl 协议版本 tls 1.1
 ```JavaScript
 const ssl.tls1_1 = 2;
 ```
 
+--------------------------
 ### tls1_2
 ssl 协议版本 tls 1.2
 ```JavaScript

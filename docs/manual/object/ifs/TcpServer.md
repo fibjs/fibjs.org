@@ -49,24 +49,28 @@ TcpServer 构造函数
 TcpServer.run() async;
 ```
 
+--------------------------
 ### asyncRun
 异步运行服务器并开始接收和分发连接，调用后立即返回，服务器在后台运行
 ```JavaScript
 TcpServer.asyncRun();
 ```
 
+--------------------------
 ### stop
 关闭 socket中止正在运行的服务器
 ```JavaScript
 TcpServer.stop() async;
 ```
 
+--------------------------
 ### dispose
 强制回收对象，调用此方法后，对象资源将立即释放
 ```JavaScript
 TcpServer.dispose();
 ```
 
+--------------------------
 ### equals
 比较当前对象与给定的对象是否相等
 ```JavaScript
@@ -79,6 +83,7 @@ Boolean TcpServer.equals(object expected);
 返回结果:
 * 返回对象比较的结果
 
+--------------------------
 ### toString
 返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现
 ```JavaScript
@@ -88,6 +93,7 @@ String TcpServer.toString();
 返回结果:
 * 返回对象的字符串表示
 
+--------------------------
 ### toJSON
 返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合
 ```JavaScript
@@ -100,6 +106,7 @@ Value TcpServer.toJSON(String key = "");
 返回结果:
 * 返回包含可 JSON 序列化的值
 
+--------------------------
 ### valueOf
 返回对象本身的数值
 ```JavaScript
@@ -117,12 +124,14 @@ Value TcpServer.valueOf();
 readonly Socket TcpServer.socket;
 ```
 
+--------------------------
 ### handler
 服务器当前事件处理接口对象
 ```JavaScript
 Handler TcpServer.handler;
 ```
 
+--------------------------
 ### stats
 查询当前服务器运行状态
 ```JavaScript

@@ -24,6 +24,7 @@ static String hex.encode(Buffer data);
 返回结果:
 * 返回编码的字符串
 
+--------------------------
 ### decode
 以 hex 方式解码字符串为二进制数据
 ```JavaScript

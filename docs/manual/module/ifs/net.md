@@ -13,18 +13,21 @@ var net = require('net');
 Socket net.Socket;
 ```
 
+--------------------------
 ### Smtp
 创建一个 [Smtp](../../object/ifs/Smtp.md) 对象，参见 [Smtp](../../object/ifs/Smtp.md)
 ```JavaScript
 Smtp net.Smtp;
 ```
 
+--------------------------
 ### TcpServer
 创建一个 [TcpServer](../../object/ifs/TcpServer.md) 对象，参见 [TcpServer](../../object/ifs/TcpServer.md)
 ```JavaScript
 TcpServer net.TcpServer;
 ```
 
+--------------------------
 ### Url
 创建一个 [UrlObject](../../object/ifs/UrlObject.md) 对象，参见 [UrlObject](../../object/ifs/UrlObject.md)
 ```JavaScript
@@ -42,6 +45,7 @@ static Object net.info();
 返回结果:
 * 返回网卡信息
 
+--------------------------
 ### resolve
 查询给定的主机名的地址
 ```JavaScript
@@ -56,6 +60,7 @@ static String net.resolve(String name,
 返回结果:
 * 返回查询的 ip 字符串
 
+--------------------------
 ### ip
 快速查询的主机地址，等效与 resolve(name)
 ```JavaScript
@@ -68,6 +73,7 @@ static String net.ip(String name) async;
 返回结果:
 * 返回查询的 ip 字符串
 
+--------------------------
 ### ipv6
 快速查询的主机 ipv6 地址，等效与 resolve(name, net.AF_INET6)
 ```JavaScript
@@ -80,6 +86,7 @@ static String net.ipv6(String name) async;
 返回结果:
 * 返回查询的 ipv6 字符串
 
+--------------------------
 ### connect
 创建一个 [Socket](../../object/ifs/Socket.md) 对象并建立连接，参见 [Socket](../../object/ifs/Socket.md)
 ```JavaScript
@@ -112,6 +119,7 @@ static Stream net.connect(String url,
 返回结果:
 * 返回连接成功的 Socket 或者 SslSocket 对象
 
+--------------------------
 ### openSmtp
 创建一个 [Smtp](../../object/ifs/Smtp.md) 对象并建立连接，参见 [Smtp](../../object/ifs/Smtp.md)
 ```JavaScript
@@ -126,6 +134,7 @@ static Smtp net.openSmtp(String url,
 返回结果:
 * 返回连接成功的 Smtp 对象
 
+--------------------------
 ### backend
 查询当前系统异步网络引擎
 ```JavaScript
@@ -143,18 +152,21 @@ static String net.backend();
 const net.AF_INET = 2;
 ```
 
+--------------------------
 ### AF_INET6
 地址集常量，指定 ipv6
 ```JavaScript
 const net.AF_INET6 = 10;
 ```
 
+--------------------------
 ### SOCK_STREAM
 协议族常量，指定 tcp
 ```JavaScript
 const net.SOCK_STREAM = 1;
 ```
 
+--------------------------
 ### SOCK_DGRAM
 协议族常量，指定 udp
 ```JavaScript

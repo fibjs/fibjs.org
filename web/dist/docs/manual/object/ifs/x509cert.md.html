@@ -179,7 +179,7 @@
 <ul>
 <li>txtCert - PEM 格式的证书</li>
 </ul>
-<p>load 加载 mozilla 的 certdata,txt， 可于 <a href=../../module/ifs/http.md.html>http</a>://hg.mozilla.org/releases/mozilla-release/raw-file/default/security/nss/lib/ckfw/builtins/certdata.txt 下载使用</p>
+<h2 id="load-mozilla-certdata-txt-http-module-ifs-http-md-hg-mozilla-org-releases-mozilla-release-raw-file-default-security-nss-lib-ckfw-builtins-certdata-txt-">load 加载 mozilla 的 certdata,txt， 可于 <a href=../../module/ifs/http.md.html>http</a>://hg.mozilla.org/releases/mozilla-release/raw-file/default/security/nss/lib/ckfw/builtins/certdata.txt 下载使用</h2>
 <h3 id="loadfile">loadFile</h3>
 <p>加载一个 CRT/PEM/DER/TXT 格式的证书，可多次调用</p>
 <pre><code class="lang-JavaScript">X509Cert.loadFile(<span class="hljs-built_in">String</span> filename);
@@ -188,11 +188,12 @@
 <ul>
 <li>filename - 证书文件名</li>
 </ul>
-<p>loadFile 加载 mozilla 的 certdata,txt， 可于 <a href=../../module/ifs/http.md.html>http</a>://hg.mozilla.org/releases/mozilla-release/raw-file/default/security/nss/lib/ckfw/builtins/certdata.txt 下载使用</p>
+<h2 id="loadfile-mozilla-certdata-txt-http-module-ifs-http-md-hg-mozilla-org-releases-mozilla-release-raw-file-default-security-nss-lib-ckfw-builtins-certdata-txt-">loadFile 加载 mozilla 的 certdata,txt， 可于 <a href=../../module/ifs/http.md.html>http</a>://hg.mozilla.org/releases/mozilla-release/raw-file/default/security/nss/lib/ckfw/builtins/certdata.txt 下载使用</h2>
 <h3 id="loadrootcerts">loadRootCerts</h3>
 <p>加载自带的缺省根证书，此证书内容源自：<a href=../../module/ifs/http.md.html>http</a>://hg.mozilla.org/releases/mozilla-release/raw-file/default/security/nss/lib/ckfw/builtins/certdata.txt</p>
 <pre><code class="lang-JavaScript">X509Cert.loadRootCerts();
 </code></pre>
+<hr>
 <h3 id="verify">verify</h3>
 <p>使用当前证书链验证给定的证书</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">Boolean</span> X509Cert.verify(X509Cert cert) <span class="hljs-keyword">async</span>;
@@ -205,6 +206,7 @@
 <ul>
 <li>如果验证成功则返回 True</li>
 </ul>
+<hr>
 <h3 id="dump">dump</h3>
 <p>导出已经加载的证书</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">Array</span> X509Cert.dump();
@@ -213,14 +215,17 @@
 <ul>
 <li>以数组方式导出证书链</li>
 </ul>
+<hr>
 <h3 id="clear">clear</h3>
 <p>清空已经加载的证书</p>
 <pre><code class="lang-JavaScript">X509Cert.clear();
 </code></pre>
+<hr>
 <h3 id="dispose">dispose</h3>
 <p>强制回收对象，调用此方法后，对象资源将立即释放</p>
 <pre><code class="lang-JavaScript">X509Cert.dispose();
 </code></pre>
+<hr>
 <h3 id="equals">equals</h3>
 <p>比较当前对象与给定的对象是否相等</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">Boolean</span> X509Cert.equals(object expected);
@@ -233,6 +238,7 @@
 <ul>
 <li>返回对象比较的结果</li>
 </ul>
+<hr>
 <h3 id="tostring">toString</h3>
 <p>返回对象的字符串表示，一般返回 &quot;[Native Object]&quot;，对象可以根据自己的特性重新实现</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> X509Cert.toString();
@@ -241,6 +247,7 @@
 <ul>
 <li>返回对象的字符串表示</li>
 </ul>
+<hr>
 <h3 id="tojson">toJSON</h3>
 <p>返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合</p>
 <pre><code class="lang-JavaScript">Value X509Cert.toJSON(<span class="hljs-built_in">String</span> key = <span class="hljs-string">""</span>);
@@ -253,6 +260,7 @@
 <ul>
 <li>返回包含可 JSON 序列化的值</li>
 </ul>
+<hr>
 <h3 id="valueof">valueOf</h3>
 <p>返回对象本身的数值</p>
 <pre><code class="lang-JavaScript">Value X509Cert.valueOf();
@@ -266,48 +274,57 @@
 <p>获取证书的版本</p>
 <pre><code class="lang-JavaScript">readonly Integer X509Cert.version;
 </code></pre>
+<hr>
 <h3 id="serial">serial</h3>
 <p>获取证书的序列号</p>
 <pre><code class="lang-JavaScript">readonly <span class="hljs-built_in">String</span> X509Cert.serial;
 </code></pre>
+<hr>
 <h3 id="issuer">issuer</h3>
 <p>获取证书颁发者的可分辨名称</p>
 <pre><code class="lang-JavaScript">readonly <span class="hljs-built_in">String</span> X509Cert.issuer;
 </code></pre>
+<hr>
 <h3 id="subject">subject</h3>
 <p>获取证书的主题可分辨名称</p>
 <pre><code class="lang-JavaScript">readonly <span class="hljs-built_in">String</span> X509Cert.subject;
 </code></pre>
+<hr>
 <h3 id="notbefore">notBefore</h3>
 <p>获取证书的生效时间</p>
 <pre><code class="lang-JavaScript">readonly <span class="hljs-built_in">Date</span> X509Cert.notBefore;
 </code></pre>
+<hr>
 <h3 id="notafter">notAfter</h3>
 <p>获取证书的到期时间</p>
 <pre><code class="lang-JavaScript">readonly <span class="hljs-built_in">Date</span> X509Cert.notAfter;
 </code></pre>
+<hr>
 <h3 id="ca">ca</h3>
 <p>获取证书是否是 ca 证书</p>
 <pre><code class="lang-JavaScript">readonly <span class="hljs-built_in">Boolean</span> X509Cert.ca;
 </code></pre>
+<hr>
 <h3 id="pathlen">pathlen</h3>
 <p>获取证书的 pathlen</p>
 <pre><code class="lang-JavaScript">readonly Integer X509Cert.pathlen;
 </code></pre>
+<hr>
 <h3 id="usage">usage</h3>
 <p>获取证书的使用范围</p>
 <pre><code class="lang-JavaScript">readonly <span class="hljs-built_in">String</span> X509Cert.usage;
 </code></pre>
-<p>结果为全部或部分以下内容：digitalSignature, nonRepudiation, keyEncipherment, dataEncipherment, keyAgreement, keyCertSign, cRLSign</p>
+<h2 id="-digitalsignature-nonrepudiation-keyencipherment-dataencipherment-keyagreement-keycertsign-crlsign">结果为全部或部分以下内容：digitalSignature, nonRepudiation, keyEncipherment, dataEncipherment, keyAgreement, keyCertSign, cRLSign</h2>
 <h3 id="type">type</h3>
 <p>获取证书的 Netscape 证书类型</p>
 <pre><code class="lang-JavaScript">readonly <span class="hljs-built_in">String</span> X509Cert.type;
 </code></pre>
-<p>结果为全部或部分以下内容：client, server, email, objsign, reserved, sslCA, emailCA, objCA</p>
+<h2 id="-client-server-email-objsign-reserved-sslca-emailca-objca">结果为全部或部分以下内容：client, server, email, objsign, reserved, sslCA, emailCA, objCA</h2>
 <h3 id="publickey">publicKey</h3>
 <p>获取证书的公钥</p>
 <pre><code class="lang-JavaScript">readonly PKey X509Cert.publicKey;
 </code></pre>
+<hr>
 <h3 id="next">next</h3>
 <p>获取证书链中得下一个证书</p>
 <pre><code class="lang-JavaScript">readonly X509Cert X509Cert.next;

@@ -13,36 +13,42 @@ var encoding = require('encoding');
 base32 encoding.base32;
 ```
 
+--------------------------
 ### base64
 [base64](base64.md) 编码与解码模块
 ```JavaScript
 base64 encoding.base64;
 ```
 
+--------------------------
 ### base64vlq
 [base64vlq](base64vlq.md) 编码与解码模块
 ```JavaScript
 base64vlq encoding.base64vlq;
 ```
 
+--------------------------
 ### hex
 [hex](hex.md) 编码与解码模块
 ```JavaScript
 hex encoding.hex;
 ```
 
+--------------------------
 ### iconv
 [iconv](iconv.md) 编码与解码模块
 ```JavaScript
 iconv encoding.iconv;
 ```
 
+--------------------------
 ### json
 [json](json.md) 编码与解码模块
 ```JavaScript
 json encoding.json;
 ```
 
+--------------------------
 ### bson
 [bson](bson.md) 编码与解码模块
 ```JavaScript
@@ -65,6 +71,7 @@ static String encoding.jsstr(String str,
 返回结果:
 * 返回编码的字符串
 
+--------------------------
 ### encodeURI
 [url](url.md) 字符串安全编码
 ```JavaScript
@@ -77,6 +84,7 @@ static String encoding.encodeURI(String url);
 返回结果:
 * 返回编码的字符串
 
+--------------------------
 ### encodeURIComponent
 [url](url.md) 部件字符串安全编码
 ```JavaScript
@@ -89,6 +97,7 @@ static String encoding.encodeURIComponent(String url);
 返回结果:
 * 返回编码的字符串
 
+--------------------------
 ### decodeURI
 [url](url.md) 安全字符串解码
 ```JavaScript

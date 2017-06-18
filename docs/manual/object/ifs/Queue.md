@@ -31,6 +31,7 @@ Boolean Queue.add(Value e);
 返回结果:
 * 成功返回 True
 
+--------------------------
 ### offer
 插入一个新的元素到队列，成功返回 True，队列满则返回 False
 ```JavaScript
@@ -43,6 +44,7 @@ Boolean Queue.offer(Value e);
 返回结果:
 * 成功返回 True
 
+--------------------------
 ### remove
 从队列中移除一个元素并返回，如果队列为空则抛出错误
 ```JavaScript
@@ -52,6 +54,7 @@ Value Queue.remove();
 返回结果:
 * 返回取出的元素
 
+--------------------------
 ### poll
 从队列中移除一个元素并返回
 ```JavaScript
@@ -61,6 +64,7 @@ Value Queue.poll();
 返回结果:
 * 返回取出的元素，队列为空则返回 Null
 
+--------------------------
 ### element
 从队列中返回一个元素，但不移除，队列为空则抛出错误
 ```JavaScript
@@ -70,6 +74,7 @@ Value Queue.element();
 返回结果:
 * 返回取出的元素
 
+--------------------------
 ### peek
 从队列中返回一个元素，但不移除
 ```JavaScript
@@ -79,12 +84,14 @@ Value Queue.peek();
 返回结果:
 * 返回取出的元素，队列为空则返回 Null
 
+--------------------------
 ### clear
 清除当前队列
 ```JavaScript
 Queue.clear();
 ```
 
+--------------------------
 ### toArray
 返回队列的 js 数组
 ```JavaScript
@@ -94,12 +101,14 @@ Array Queue.toArray();
 返回结果:
 * 包含数据的 js 数组
 
+--------------------------
 ### dispose
 强制回收对象，调用此方法后，对象资源将立即释放
 ```JavaScript
 Queue.dispose();
 ```
 
+--------------------------
 ### equals
 比较当前对象与给定的对象是否相等
 ```JavaScript
@@ -112,6 +121,7 @@ Boolean Queue.equals(object expected);
 返回结果:
 * 返回对象比较的结果
 
+--------------------------
 ### toString
 返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现
 ```JavaScript
@@ -121,6 +131,7 @@ String Queue.toString();
 返回结果:
 * 返回对象的字符串表示
 
+--------------------------
 ### toJSON
 返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合
 ```JavaScript
@@ -133,6 +144,7 @@ Value Queue.toJSON(String key = "");
 返回结果:
 * 返回包含可 JSON 序列化的值
 
+--------------------------
 ### valueOf
 返回对象本身的数值
 ```JavaScript

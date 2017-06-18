@@ -24,6 +24,7 @@ static Buffer bson.encode(Object data);
 返回结果:
 * 返回编码的二进制数据
 
+--------------------------
 ### decode
 以 bson 方式解码字符串为一个变量
 ```JavaScript

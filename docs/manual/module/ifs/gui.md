@@ -15,6 +15,7 @@ static gui.setVersion(Integer ver);
 
 调用参数:
 
+--------------------------
 ### open
 打开一个窗口并访问指定网址
 ```JavaScript
@@ -65,30 +66,35 @@ static WebView gui.open(String url,
 const gui.IE7 = 7000;
 ```
 
+--------------------------
 ### IE8
 [WebView](../../object/ifs/WebView.md) ie 模拟版本，指定 ie8
 ```JavaScript
 const gui.IE8 = 8000;
 ```
 
+--------------------------
 ### IE9
 [WebView](../../object/ifs/WebView.md) ie 模拟版本，指定 ie9
 ```JavaScript
 const gui.IE9 = 9000;
 ```
 
+--------------------------
 ### IE10
 [WebView](../../object/ifs/WebView.md) ie 模拟版本，指定 ie10
 ```JavaScript
 const gui.IE10 = 10000;
 ```
 
+--------------------------
 ### IE11
 [WebView](../../object/ifs/WebView.md) ie 模拟版本，指定 ie11
 ```JavaScript
 const gui.IE11 = 11000;
 ```
 
+--------------------------
 ### EDGE
 [WebView](../../object/ifs/WebView.md) ie 模拟版本，指定 edge
 ```JavaScript

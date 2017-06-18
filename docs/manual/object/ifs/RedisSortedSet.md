@@ -33,6 +33,7 @@ Integer RedisSortedSet.add(...);
 返回结果:
 * 被成功添加的新成员的数量，不包括那些被更新的、已经存在的成员
 
+--------------------------
 ### score
 返回有序集中，成员 member 的 score 值
 ```JavaScript
@@ -45,6 +46,7 @@ Buffer RedisSortedSet.score(Buffer member);
 返回结果:
 * member 成员的 score 值，以字符串形式表示
 
+--------------------------
 ### incr
 为有序集的成员 member 的 score 值加上增量 num
 ```JavaScript
@@ -59,6 +61,7 @@ Buffer RedisSortedSet.incr(Buffer member,
 返回结果:
 * member 成员的新 score 值，以字符串形式表示
 
+--------------------------
 ### remove
 移除有序集中的一个或多个 member 元素
 ```JavaScript
@@ -83,6 +86,7 @@ Integer RedisSortedSet.remove(...);
 返回结果:
 * 被成功移除的元素的数量，不包括被忽略的元素
 
+--------------------------
 ### len
 返回有序集中元素的数量
 ```JavaScript
@@ -92,6 +96,7 @@ Integer RedisSortedSet.len();
 返回结果:
 * 返回有序集的长度
 
+--------------------------
 ### count
 返回有序集中， score 值在 min 和 max 之间(默认包括 score 值等于 min 或 max )的成员的数量
 ```JavaScript
@@ -106,6 +111,7 @@ Integer RedisSortedSet.count(Integer min,
 返回结果:
 * score 值在 min 和 max 之间的成员的数量
 
+--------------------------
 ### range
 返回有序集中，指定区间内的成员，成员的位置按 score 值递增(从小到大)来排序
 ```JavaScript
@@ -122,6 +128,7 @@ List RedisSortedSet.range(Integer start,
 返回结果:
 * 指定区间内，带有 score 值(可选)的有序集成员的列表
 
+--------------------------
 ### rangeRev
 返回有序集中，指定区间内的成员，成员的位置按 score 值递减(从大到小)来排序
 ```JavaScript
@@ -138,6 +145,7 @@ List RedisSortedSet.rangeRev(Integer start,
 返回结果:
 * 指定区间内，带有 score 值(可选)的有序集成员的列表
 
+--------------------------
 ### rank
 有序集中成员 member 的排名。其中有序集成员按 score 值递增(从小到大)顺序排列
 ```JavaScript
@@ -150,6 +158,7 @@ Integer RedisSortedSet.rank(Buffer member);
 返回结果:
 * member 如果 member 是有序集 key 的成员，返回 member 的排名。如果 member 不是有序集 key 的成员，返回 nil
 
+--------------------------
 ### rankRev
 有序集中成员 member 的排名。其中有序集成员按 score 值递减(从大到小)顺序排列
 ```JavaScript
@@ -162,12 +171,14 @@ Integer RedisSortedSet.rankRev(Buffer member);
 返回结果:
 * member 如果 member 是有序集 key 的成员，返回 member 的排名。如果 member 不是有序集 key 的成员，返回 nil
 
+--------------------------
 ### dispose
 强制回收对象，调用此方法后，对象资源将立即释放
 ```JavaScript
 RedisSortedSet.dispose();
 ```
 
+--------------------------
 ### equals
 比较当前对象与给定的对象是否相等
 ```JavaScript
@@ -180,6 +191,7 @@ Boolean RedisSortedSet.equals(object expected);
 返回结果:
 * 返回对象比较的结果
 
+--------------------------
 ### toString
 返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现
 ```JavaScript
@@ -189,6 +201,7 @@ String RedisSortedSet.toString();
 返回结果:
 * 返回对象的字符串表示
 
+--------------------------
 ### toJSON
 返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合
 ```JavaScript
@@ -201,6 +214,7 @@ Value RedisSortedSet.toJSON(String key = "");
 返回结果:
 * 返回包含可 JSON 序列化的值
 
+--------------------------
 ### valueOf
 返回对象本身的数值
 ```JavaScript

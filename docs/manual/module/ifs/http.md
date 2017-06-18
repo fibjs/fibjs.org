@@ -9,36 +9,42 @@
 HttpRequest http.Request;
 ```
 
+--------------------------
 ### Response
 创建一个 http 响应对象，参见 [HttpResponse](../../object/ifs/HttpResponse.md)
 ```JavaScript
 HttpResponse http.Response;
 ```
 
+--------------------------
 ### Cookie
 创建一个 http cookie 对象，参见 [HttpCookie](../../object/ifs/HttpCookie.md)
 ```JavaScript
 HttpCookie http.Cookie;
 ```
 
+--------------------------
 ### Server
 创建一个 http 服务器，参见 [HttpServer](../../object/ifs/HttpServer.md)
 ```JavaScript
 HttpServer http.Server;
 ```
 
+--------------------------
 ### Client
 创建一个 http 客户端，参见 [HttpClient](../../object/ifs/HttpClient.md)
 ```JavaScript
 HttpClient http.Client;
 ```
 
+--------------------------
 ### HttpsServer
 创建一个 https 服务器，参见 [HttpsServer](../../object/ifs/HttpsServer.md)
 ```JavaScript
 HttpsServer http.HttpsServer;
 ```
 
+--------------------------
 ### Handler
 创建一个 http 协议处理器对象，参见 [HttpHandler](../../object/ifs/HttpHandler.md)
 ```JavaScript
@@ -63,7 +69,7 @@ static Handler http.fileHandler(String root,
 
 fileHandler 支持 gzip 预压缩，当请求接受 gzip 编码，且相同路径下 filename.ext.gz 文件存在时，将直接返回此文件，
 从而避免重复压缩带来服务器负载。
-
+--------------------------
 ### request
 发送 http 请求到指定的流对象，并返回结果
 ```JavaScript
@@ -148,6 +154,7 @@ static HttpResponse http.request(String method,
 返回结果:
 * 返回服务器响应
 
+--------------------------
 ### get
 用 GET 方法请求指定的 [url](url.md)，并返回结果，等同于 request("GET", ...)
 ```JavaScript
@@ -162,6 +169,7 @@ static HttpResponse http.get(String url,
 返回结果:
 * 返回服务器响应
 
+--------------------------
 ### post
 用 POST 方法请求指定的 [url](url.md)，并返回结果，等同于 request("POST", ...)
 ```JavaScript
@@ -208,6 +216,7 @@ static HttpResponse http.post(String url,
 返回结果:
 * 返回服务器响应
 
+--------------------------
 ### del
 用 DELETE 方法请求指定的 [url](url.md)，并返回结果，等同于 request("DELETE", ...)
 ```JavaScript
@@ -222,6 +231,7 @@ static HttpResponse http.del(String url,
 返回结果:
 * 返回服务器响应
 
+--------------------------
 ### put
 用 PUT 方法请求指定的 [url](url.md)，并返回结果，等同于 request("PUT", ...)
 ```JavaScript
@@ -268,6 +278,7 @@ static HttpResponse http.put(String url,
 返回结果:
 * 返回服务器响应
 
+--------------------------
 ### patch
 用 PATCH 方法请求指定的 [url](url.md)，并返回结果，等同于 request("PATCH", ...)
 ```JavaScript
@@ -322,24 +333,28 @@ static HttpResponse http.patch(String url,
 static readonly List http.cookies;
 ```
 
+--------------------------
 ### timeout
 查询和设置超时时间
 ```JavaScript
 static Integer http.timeout;
 ```
 
+--------------------------
 ### enableCookie
 cookie功能开关，默认开启
 ```JavaScript
 static Boolean http.enableCookie;
 ```
 
+--------------------------
 ### autoRedirect
 自动redirect功能开关，默认开启
 ```JavaScript
 static Boolean http.autoRedirect;
 ```
 
+--------------------------
 ### userAgent
 查询和设置 http 请求中的浏览器标识
 ```JavaScript

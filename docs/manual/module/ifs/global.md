@@ -9,18 +9,21 @@
 Buffer global.Buffer;
 ```
 
+--------------------------
 ### Int64
 64位整数对象，参见 [Int64](../../object/ifs/Int64.md) 对象。
 ```JavaScript
 Int64 global.Int64;
 ```
 
+--------------------------
 ### console
 控制台访问对象
 ```JavaScript
 console global.console;
 ```
 
+--------------------------
 ### process
 控制台访问对象
 ```JavaScript
@@ -40,6 +43,7 @@ static global.run(String fname,
 * fname - 指定要运行的脚本路径
 * argv - 指定要运行的参数，此参数可在脚本内使用 argv 获取
 
+--------------------------
 ### clearInterval
 清除指定的定时器
 ```JavaScript
@@ -49,6 +53,7 @@ static global.clearInterval(Timer t);
 调用参数:
 * t - 指定要清除的定时器
 
+--------------------------
 ### clearTimeout
 清除指定的定时器
 ```JavaScript
@@ -58,6 +63,7 @@ static global.clearTimeout(Timer t);
 调用参数:
 * t - 指定要清除的定时器
 
+--------------------------
 ### clearImmediate
 清除指定的定时器
 ```JavaScript
@@ -67,6 +73,7 @@ static global.clearImmediate(Timer t);
 调用参数:
 * t - 指定要清除的定时器
 
+--------------------------
 ### setInterval
 每间隔指定的时间后调用函数
 ```JavaScript
@@ -81,6 +88,7 @@ static Timer global.setInterval(Function callback,
 返回结果:
 * 返回定时器对象
 
+--------------------------
 ### setTimeout
 在指定的时间后调用函数
 ```JavaScript
@@ -95,6 +103,7 @@ static Timer global.setTimeout(Function callback,
 返回结果:
 * 返回定时器对象
 
+--------------------------
 ### setImmediate
 下一个空闲时间立即执行回调函数
 ```JavaScript
@@ -107,6 +116,7 @@ static Timer global.setImmediate(Function callback);
 返回结果:
 * 返回定时器对象
 
+--------------------------
 ### require
 加载一个模块并返回模块对象，更多信息参阅 @ref module
 ```JavaScript
@@ -129,12 +139,14 @@ require 可用于加载基础模块，文件模块。
 
 若引用路径不是 ./ 或 ../ 开头，并且非基础模块，require 则先在启动路径查找，然后从当前模块所在路径下的 node_modules 查找，并上级目录递归。
 
+--------------------------
 ### GC
 强制要求进行垃圾回收
 ```JavaScript
 static global.GC();
 ```
 
+--------------------------
 ### repl
 进入交互模式，可以交互执行内部命令和代码，仅在启动 js 可以引用
 ```JavaScript
@@ -163,7 +175,6 @@ static global.repl(Array cmds = []);
     }
 ]
 ```
-
 --------------------------
 进入交互模式，可以交互执行内部命令和代码，仅在启动 js 可以引用
 ```JavaScript
@@ -204,24 +215,28 @@ static global.repl(Stream out,
 static readonly Worker global.Master;
 ```
 
+--------------------------
 ### global
 全局对象
 ```JavaScript
 static readonly Object  new global;
 ```
 
+--------------------------
 ### argv
 获取当前脚本的运行参数，启动 js 获取进程启动参数，run 执行的脚本获取传递的参数
 ```JavaScript
 static readonly Array global.argv;
 ```
 
+--------------------------
 ### __filename
 当前脚本文件名
 ```JavaScript
 static readonly String global.__filename;
 ```
 
+--------------------------
 ### __dirname
 当前脚本所在目录
 ```JavaScript

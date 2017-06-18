@@ -25,7 +25,6 @@ Map 构造函数
 
 ## 下标操作
         
---------------------------
 允许使用键值下标直接访问数值
 ```JavaScript
 Variant Map[String];
@@ -39,6 +38,7 @@ Variant Map[String];
 Map.clear();
 ```
 
+--------------------------
 ### has
 检查容器内是否存在指定键值的数据
 ```JavaScript
@@ -51,6 +51,7 @@ Boolean Map.has(String name);
 返回结果:
 * 返回键值是否存在
 
+--------------------------
 ### get
 查询指定键值的值
 ```JavaScript
@@ -63,6 +64,7 @@ Variant Map.get(String name);
 返回结果:
 * 返回键值所对应的值，若不存在，则返回 null
 
+--------------------------
 ### put
 添加一组键值数据
 ```JavaScript
@@ -83,6 +85,7 @@ Map.put(String name,
 * name - 指定要设定的键值
 * value - 指定要设定的数据
 
+--------------------------
 ### set
 设定一组键值数据，键值不存在则插入一条新数据
 ```JavaScript
@@ -103,6 +106,7 @@ Map.set(String name,
 * name - 指定要设定的键值
 * value - 指定要设定的数据
 
+--------------------------
 ### remove
 删除指定键值的全部值
 ```JavaScript
@@ -112,6 +116,7 @@ Map.remove(String name);
 调用参数:
 * name - 指定要删除的键值
 
+--------------------------
 ### isEmpty
 检查容器是否为空
 ```JavaScript
@@ -121,12 +126,14 @@ Boolean Map.isEmpty();
 返回结果:
 * 容器内无数值则返回 true
 
+--------------------------
 ### dispose
 强制回收对象，调用此方法后，对象资源将立即释放
 ```JavaScript
 Map.dispose();
 ```
 
+--------------------------
 ### equals
 比较当前对象与给定的对象是否相等
 ```JavaScript
@@ -139,6 +146,7 @@ Boolean Map.equals(object expected);
 返回结果:
 * 返回对象比较的结果
 
+--------------------------
 ### toString
 返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现
 ```JavaScript
@@ -148,6 +156,7 @@ String Map.toString();
 返回结果:
 * 返回对象的字符串表示
 
+--------------------------
 ### toJSON
 返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合
 ```JavaScript
@@ -160,6 +169,7 @@ Value Map.toJSON(String key = "");
 返回结果:
 * 返回包含可 JSON 序列化的值
 
+--------------------------
 ### valueOf
 返回对象本身的数值
 ```JavaScript

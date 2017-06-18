@@ -26,6 +26,7 @@ static test.describe(String name,
 * name - 定义模块名称
 * block - 模块初始化代码
 
+--------------------------
 ### xdescribe
 停止测试的模块定义
 ```JavaScript
@@ -37,6 +38,7 @@ static test.xdescribe(String name,
 * name - 定义模块名称
 * block - 模块初始化代码
 
+--------------------------
 ### it
 定义一个测试项目
 ```JavaScript
@@ -48,6 +50,7 @@ static test.it(String name,
 * name - 定义项目名称
 * block - 测试内容
 
+--------------------------
 ### xit
 禁止测试的项目定义
 ```JavaScript
@@ -59,6 +62,7 @@ static test.xit(String name,
 * name - 定义项目名称
 * block - 测试内容
 
+--------------------------
 ### before
 定义当前测试模块进入事件
 ```JavaScript
@@ -68,6 +72,7 @@ static test.before(Function func);
 调用参数:
 * func - 事件函数
 
+--------------------------
 ### after
 定义当前测试模块退出事件
 ```JavaScript
@@ -77,6 +82,7 @@ static test.after(Function func);
 调用参数:
 * func - 事件函数
 
+--------------------------
 ### beforeEach
 定义当前测试模块测试项目进入事件
 ```JavaScript
@@ -86,6 +92,7 @@ static test.beforeEach(Function func);
 调用参数:
 * func - 事件函数
 
+--------------------------
 ### afterEach
 定义当前测试模块测试项目退出事件
 ```JavaScript
@@ -95,6 +102,7 @@ static test.afterEach(Function func);
 调用参数:
 * func - 事件函数
 
+--------------------------
 ### run
 开始执行定义的测试模块
 ```JavaScript
@@ -107,6 +115,7 @@ static Integer test.run(Integer loglevel = console.ERROR);
 返回结果:
 * 返回测试用例统计结果，正确则返回 0，错误则返回错误个数
 
+--------------------------
 ### setup
 初始化当前脚本的测试环境，将 test 模块方法复制为当前脚本全局变量
 ```JavaScript
@@ -132,6 +141,7 @@ static Integer test.slow;
 const test.BDD = 0;
 ```
 
+--------------------------
 ### TDD
 定义 TDD(Test Drive Development) 测试环境，支持 suite, xsuite, test, xtest, setup, teardown, suiteSetup 和 suiteTeardown，同时初始化 [assert](assert.md) 和expect
 ```JavaScript

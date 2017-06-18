@@ -74,12 +74,14 @@ console.add({
 });
 ```
 
+--------------------------
 ### reset
 初始化到缺省设置，只在 console 输出信息
 ```JavaScript
 static console.reset();
 ```
 
+--------------------------
 ### log
 记录普通日志信息，与 info 等同
 ```JavaScript
@@ -92,7 +94,6 @@ static console.log(String fmt,
 * ... - 可选参数列表
 
 记录一般等级的日志信息。通常用于输出非错误性提示信息。
-
 --------------------------
 记录普通日志信息，与 info 等同
 ```JavaScript
@@ -103,7 +104,7 @@ static console.log(...);
 * ... - 可选参数列表
 
 记录一般等级的日志信息。通常用于输出非错误性提示信息。
-
+--------------------------
 ### debug
 记录调试日志信息
 ```JavaScript
@@ -116,7 +117,6 @@ static console.debug(String fmt,
 * ... - 可选参数列表
 
 记录调试日志信息。通常用于输出调试信息。不重要。
-
 --------------------------
 记录调试日志信息
 ```JavaScript
@@ -127,7 +127,7 @@ static console.debug(...);
 * ... - 可选参数列表
 
 记录调试日志信息。通常用于输出调试信息。不重要。
-
+--------------------------
 ### info
 记录普通日志信息，与 log 等同
 ```JavaScript
@@ -140,7 +140,6 @@ static console.info(String fmt,
 * ... - 可选参数列表
 
 记录一般等级的日志信息。通常用于输出非错误性提示信息。
-
 --------------------------
 记录普通日志信息，与 log 等同
 ```JavaScript
@@ -151,7 +150,7 @@ static console.info(...);
 * ... - 可选参数列表
 
 记录一般等级的日志信息。通常用于输出非错误性提示信息。
-
+--------------------------
 ### notice
 记录警告日志信息
 ```JavaScript
@@ -164,7 +163,6 @@ static console.notice(String fmt,
 * ... - 可选参数列表
 
 记录警告日志信息。通常用于输出提示性调试信息。一般重要。
-
 --------------------------
 记录警告日志信息
 ```JavaScript
@@ -175,7 +173,7 @@ static console.notice(...);
 * ... - 可选参数列表
 
 记录警告日志信息。通常用于输出提示性调试信息。一般重要。
-
+--------------------------
 ### warn
 记录警告日志信息
 ```JavaScript
@@ -188,7 +186,6 @@ static console.warn(String fmt,
 * ... - 可选参数列表
 
 记录警告日志信息。通常用于输出警告性调试信息。重要。
-
 --------------------------
 记录警告日志信息
 ```JavaScript
@@ -199,7 +196,7 @@ static console.warn(...);
 * ... - 可选参数列表
 
 记录警告日志信息。通常用于输出警告性调试信息。重要。
-
+--------------------------
 ### error
 记录错误日志信息
 ```JavaScript
@@ -212,7 +209,6 @@ static console.error(String fmt,
 * ... - 可选参数列表
 
 记录用于错误日志信息。通常用于输出错误信息。非常重要。系统的出错信息也会以此等级记录。
-
 --------------------------
 记录错误日志信息
 ```JavaScript
@@ -223,7 +219,7 @@ static console.error(...);
 * ... - 可选参数列表
 
 记录用于错误日志信息。通常用于输出错误信息。非常重要。系统的出错信息也会以此等级记录。
-
+--------------------------
 ### crit
 记录关键错误日志信息
 ```JavaScript
@@ -236,7 +232,6 @@ static console.crit(String fmt,
 * ... - 可选参数列表
 
 记录用于关键错误日志信息。通常用于输出关键错误信息。非常重要。
-
 --------------------------
 记录关键错误日志信息
 ```JavaScript
@@ -247,7 +242,7 @@ static console.crit(...);
 * ... - 可选参数列表
 
 记录用于关键错误日志信息。通常用于输出关键错误信息。非常重要。
-
+--------------------------
 ### alert
 记录警报错误日志信息
 ```JavaScript
@@ -260,7 +255,6 @@ static console.alert(String fmt,
 * ... - 可选参数列表
 
 记录用于警报错误日志信息。通常用于输出警报错误信息。非常重要。为最高级别信息。
-
 --------------------------
 记录警报错误日志信息
 ```JavaScript
@@ -271,7 +265,7 @@ static console.alert(...);
 * ... - 可选参数列表
 
 记录用于警报错误日志信息。通常用于输出警报错误信息。非常重要。为最高级别信息。
-
+--------------------------
 ### dir
 用 JSON 格式输出对象
 ```JavaScript
@@ -281,6 +275,7 @@ static console.dir(Value obj);
 调用参数:
 * obj - 给定要显示的对象
 
+--------------------------
 ### time
 启动一个计时器
 ```JavaScript
@@ -290,6 +285,7 @@ static console.time(String label = "time");
 调用参数:
 * label - 标题，缺省为空字符串。
 
+--------------------------
 ### timeEnd
 统计指定计时器的数值
 ```JavaScript
@@ -299,6 +295,7 @@ static console.timeEnd(String label = "time");
 调用参数:
 * label - 标题，缺省为空字符串。
 
+--------------------------
 ### trace
 输出当前调用堆栈
 ```JavaScript
@@ -309,7 +306,7 @@ static console.trace(String label = "trace");
 * label - 标题，缺省为空字符串。
 
 通过日志输出当前调用堆栈。
-
+--------------------------
 ### assert
 断言测试，如果测试值为假，则报错
 ```JavaScript
@@ -321,6 +318,7 @@ static console.assert(Value value,
 * value - 测试的数值
 * msg - 报错信息
 
+--------------------------
 ### print
 向控制台输出格式化文本，输出内容不会记入日志系统，输出文本后不会自动换行，可连续输出
 ```JavaScript
@@ -341,6 +339,7 @@ static console.print(...);
 调用参数:
 * ... - 可选参数列表
 
+--------------------------
 ### moveTo
 移动控制台光标到指定位置
 ```JavaScript
@@ -352,24 +351,28 @@ static console.moveTo(Integer row,
 * row - 指定新光标的行坐标
 * column - 指定新光标的列坐标
 
+--------------------------
 ### hideCursor
 隐藏控制台光标
 ```JavaScript
 static console.hideCursor();
 ```
 
+--------------------------
 ### showCursor
 显示控制台光标
 ```JavaScript
 static console.showCursor();
 ```
 
+--------------------------
 ### clear
 清除控制台
 ```JavaScript
 static console.clear();
 ```
 
+--------------------------
 ### keyDown
 按下一个按键
 ```JavaScript
@@ -386,7 +389,6 @@ static console.keyDown(String key,
 - 方向键：up, down,left, right, home, end, pageup, pagedown
 - 编辑键：backspace, delete, insert, enter, tab, escape, space
 - 控制键：control, alt, shift, command
-
 --------------------------
 按下一个按键
 ```JavaScript
@@ -403,7 +405,7 @@ static console.keyDown(String key,
 - 方向键：up, down,left, right, home, end, pageup, pagedown
 - 编辑键：backspace, delete, insert, enter, tab, escape, space
 - 控制键：control, alt, shift, command
-
+--------------------------
 ### keyUp
 松开一个按键
 ```JavaScript
@@ -420,7 +422,6 @@ static console.keyUp(String key,
 - 方向键：up, down,left, right, home, end, pageup, pagedown
 - 编辑键：backspace, delete, insert, enter, tab, escape, space
 - 控制键：control, alt, shift, command
-
 --------------------------
 松开一个按键
 ```JavaScript
@@ -437,7 +438,7 @@ static console.keyUp(String key,
 - 方向键：up, down,left, right, home, end, pageup, pagedown
 - 编辑键：backspace, delete, insert, enter, tab, escape, space
 - 控制键：control, alt, shift, command
-
+--------------------------
 ### keyTap
 点击并松开一个按键
 ```JavaScript
@@ -454,7 +455,6 @@ static console.keyTap(String key,
 - 方向键：up, down,left, right, home, end, pageup, pagedown
 - 编辑键：backspace, delete, insert, enter, tab, escape, space
 - 控制键：control, alt, shift, command
-
 --------------------------
 点击并松开一个按键
 ```JavaScript
@@ -471,7 +471,7 @@ static console.keyTap(String key,
 - 方向键：up, down,left, right, home, end, pageup, pagedown
 - 编辑键：backspace, delete, insert, enter, tab, escape, space
 - 控制键：control, alt, shift, command
-
+--------------------------
 ### typeString
 输入一个字符串
 ```JavaScript
@@ -481,6 +481,7 @@ static console.typeString(String text);
 调用参数:
 * text - 指定输入的字符串
 
+--------------------------
 ### moveMouse
 移动鼠标到指定的位置
 ```JavaScript
@@ -492,6 +493,7 @@ static console.moveMouse(Integer x,
 * x - 指定 x 坐标
 * y - 指定 y 坐标
 
+--------------------------
 ### mouseUp
 按下一个鼠标键
 ```JavaScript
@@ -501,6 +503,7 @@ static console.mouseUp(String button);
 调用参数:
 * button - 指定鼠标键名称，允许值为: left, right, moddle
 
+--------------------------
 ### mouseDown
 放开一个鼠标键
 ```JavaScript
@@ -510,6 +513,7 @@ static console.mouseDown(String button);
 调用参数:
 * button - 指定鼠标键名称，允许值为: left, right, moddle
 
+--------------------------
 ### clickMouse
 点击一个鼠标键
 ```JavaScript
@@ -521,6 +525,7 @@ static console.clickMouse(String button,
 * button - 指定鼠标键名称，允许值为: left, right, moddle
 * dbclick - 指定是否双击，缺省为 false
 
+--------------------------
 ### readLine
 从控制台读取用户输入
 ```JavaScript
@@ -541,18 +546,21 @@ static String console.readLine(String msg = "") async;
 static Integer console.loglevel;
 ```
 
+--------------------------
 ### colors
 终端输出颜色配置对象，详见 [TextColor](../../object/ifs/TextColor.md)
 ```JavaScript
 static readonly TextColor console.colors;
 ```
 
+--------------------------
 ### width
 查询终端每行字符数
 ```JavaScript
 static readonly Integer console.width;
 ```
 
+--------------------------
 ### height
 查询终端行数
 ```JavaScript
@@ -567,54 +575,63 @@ loglevel 级别常量
 const console.FATAL = 0;
 ```
 
+--------------------------
 ### ALERT
 loglevel 级别常量
 ```JavaScript
 const console.ALERT = 1;
 ```
 
+--------------------------
 ### CRIT
 loglevel 级别常量
 ```JavaScript
 const console.CRIT = 2;
 ```
 
+--------------------------
 ### ERROR
 loglevel 级别常量
 ```JavaScript
 const console.ERROR = 3;
 ```
 
+--------------------------
 ### WARN
 loglevel 级别常量
 ```JavaScript
 const console.WARN = 4;
 ```
 
+--------------------------
 ### NOTICE
 loglevel 级别常量
 ```JavaScript
 const console.NOTICE = 5;
 ```
 
+--------------------------
 ### INFO
 loglevel 级别常量
 ```JavaScript
 const console.INFO = 6;
 ```
 
+--------------------------
 ### DEBUG
 loglevel 级别常量
 ```JavaScript
 const console.DEBUG = 7;
 ```
 
+--------------------------
 ### PRINT
 loglevel 仅用于输出，信息输出后不换行，file 和 syslog 不保存此级别信息
 ```JavaScript
 const console.PRINT = 9;
 ```
 
+--------------------------
 ### NOTSET
 loglevel 级别常量
 ```JavaScript

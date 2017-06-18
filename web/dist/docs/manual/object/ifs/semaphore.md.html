@@ -184,10 +184,12 @@ l.release();
 <p>等待一个信号量，等同于 acquire(true)</p>
 <pre><code class="lang-JavaScript">Semaphore.wait();
 </code></pre>
+<hr>
 <h3 id="post">post</h3>
 <p>释放一个信号量，等同于 release()</p>
 <pre><code class="lang-JavaScript">Semaphore.post();
 </code></pre>
+<hr>
 <h3 id="trywait">trywait</h3>
 <p>尝试获取一个信号，如不能获取，则立即返回并返回 false，等同于 acquire(false)</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">Boolean</span> Semaphore.trywait();
@@ -196,6 +198,7 @@ l.release();
 <ul>
 <li>获取成功则返回 true</li>
 </ul>
+<hr>
 <h3 id="acquire">acquire</h3>
 <p>获取锁的拥有权</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">Boolean</span> Semaphore.acquire(<span class="hljs-built_in">Boolean</span> blocking = <span class="hljs-literal">true</span>);
@@ -210,12 +213,12 @@ l.release();
 </ul>
 <p>acquire 方法用于获取锁的拥有权，当锁处于可获取状态时，此方法立即返回 true。</p>
 <p>当锁不可获取，且 blocking 为 true，则当前纤程进入休眠，当其他纤程释放锁后，此方法返回 true。</p>
-<p>当锁不可获取，且 blocking 为 false，则方法返回 false。</p>
+<h2 id="-blocking-false-false-">当锁不可获取，且 blocking 为 false，则方法返回 false。</h2>
 <h3 id="release">release</h3>
 <p>释放锁的拥有权</p>
 <pre><code class="lang-JavaScript">Semaphore.release();
 </code></pre>
-<p>此方法将释放对锁的拥有权，如果当前纤程未拥有锁，此方法将抛出错误。</p>
+<h2 id="-">此方法将释放对锁的拥有权，如果当前纤程未拥有锁，此方法将抛出错误。</h2>
 <h3 id="count">count</h3>
 <p>查询当前等待任务数</p>
 <pre><code class="lang-JavaScript">Integer Semaphore.count();
@@ -224,10 +227,12 @@ l.release();
 <ul>
 <li>返回任务数</li>
 </ul>
+<hr>
 <h3 id="dispose">dispose</h3>
 <p>强制回收对象，调用此方法后，对象资源将立即释放</p>
 <pre><code class="lang-JavaScript">Semaphore.dispose();
 </code></pre>
+<hr>
 <h3 id="equals">equals</h3>
 <p>比较当前对象与给定的对象是否相等</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">Boolean</span> Semaphore.equals(object expected);
@@ -240,6 +245,7 @@ l.release();
 <ul>
 <li>返回对象比较的结果</li>
 </ul>
+<hr>
 <h3 id="tostring">toString</h3>
 <p>返回对象的字符串表示，一般返回 &quot;[Native Object]&quot;，对象可以根据自己的特性重新实现</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> Semaphore.toString();
@@ -248,6 +254,7 @@ l.release();
 <ul>
 <li>返回对象的字符串表示</li>
 </ul>
+<hr>
 <h3 id="tojson">toJSON</h3>
 <p>返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合</p>
 <pre><code class="lang-JavaScript">Value Semaphore.toJSON(<span class="hljs-built_in">String</span> key = <span class="hljs-string">""</span>);
@@ -260,6 +267,7 @@ l.release();
 <ul>
 <li>返回包含可 JSON 序列化的值</li>
 </ul>
+<hr>
 <h3 id="valueof">valueOf</h3>
 <p>返回对象本身的数值</p>
 <pre><code class="lang-JavaScript">Value Semaphore.valueOf();

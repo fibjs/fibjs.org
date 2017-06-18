@@ -63,18 +63,21 @@ go
 Condition.wait();
 ```
 
+--------------------------
 ### notify
 通知一个被阻塞的纤程（最后加入纤程池的）向下继续执行
 ```JavaScript
 Condition.notify();
 ```
 
+--------------------------
 ### notifyAll
 通知所有被阻塞的纤程向下继续执行
 ```JavaScript
 Condition.notifyAll();
 ```
 
+--------------------------
 ### acquire
 获取锁的拥有权
 ```JavaScript
@@ -92,7 +95,7 @@ acquire 方法用于获取锁的拥有权，当锁处于可获取状态时，此
 当锁不可获取，且 blocking 为 true，则当前纤程进入休眠，当其他纤程释放锁后，此方法返回 true。
 
 当锁不可获取，且 blocking 为 false，则方法返回 false。
-
+--------------------------
 ### release
 释放锁的拥有权
 ```JavaScript
@@ -100,7 +103,7 @@ Condition.release();
 ```
 
 此方法将释放对锁的拥有权，如果当前纤程未拥有锁，此方法将抛出错误。
-
+--------------------------
 ### count
 查询当前等待任务数
 ```JavaScript
@@ -110,12 +113,14 @@ Integer Condition.count();
 返回结果:
 * 返回任务数
 
+--------------------------
 ### dispose
 强制回收对象，调用此方法后，对象资源将立即释放
 ```JavaScript
 Condition.dispose();
 ```
 
+--------------------------
 ### equals
 比较当前对象与给定的对象是否相等
 ```JavaScript
@@ -128,6 +133,7 @@ Boolean Condition.equals(object expected);
 返回结果:
 * 返回对象比较的结果
 
+--------------------------
 ### toString
 返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现
 ```JavaScript
@@ -137,6 +143,7 @@ String Condition.toString();
 返回结果:
 * 返回对象的字符串表示
 
+--------------------------
 ### toJSON
 返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合
 ```JavaScript
@@ -149,6 +156,7 @@ Value Condition.toJSON(String key = "");
 返回结果:
 * 返回包含可 JSON 序列化的值
 
+--------------------------
 ### valueOf
 返回对象本身的数值
 ```JavaScript

@@ -116,6 +116,7 @@ Routing.append(String method,
 * pattern - 消息匹配格式
 * hdlr - 内置消息处理器，处理函数，链式处理数组，路由对象，详见 mq.Handler
 
+--------------------------
 ### all
 添加一组接受所有 [http](../../module/ifs/http.md) 方法路由规则
 ```JavaScript
@@ -136,6 +137,7 @@ Routing.all(String pattern,
 * pattern - 消息匹配格式
 * hdlr - 内置消息处理器，处理函数，链式处理数组，路由对象，详见 mq.Handler
 
+--------------------------
 ### get
 添加一组 GET 方法路由规则
 ```JavaScript
@@ -156,6 +158,7 @@ Routing.get(String pattern,
 * pattern - 消息匹配格式
 * hdlr - 内置消息处理器，处理函数，链式处理数组，路由对象，详见 mq.Handler
 
+--------------------------
 ### post
 添加一组接受 [http](../../module/ifs/http.md) POST 方法路由规则
 ```JavaScript
@@ -176,6 +179,7 @@ Routing.post(String pattern,
 * pattern - 消息匹配格式
 * hdlr - 内置消息处理器，处理函数，链式处理数组，路由对象，详见 mq.Handler
 
+--------------------------
 ### del
 添加一组接受 [http](../../module/ifs/http.md) DELETE 方法路由规则
 ```JavaScript
@@ -196,6 +200,7 @@ Routing.del(String pattern,
 * pattern - 消息匹配格式
 * hdlr - 内置消息处理器，处理函数，链式处理数组，路由对象，详见 mq.Handler
 
+--------------------------
 ### put
 添加一组 PUT 方法路由规则
 ```JavaScript
@@ -216,6 +221,7 @@ Routing.put(String pattern,
 * pattern - 消息匹配格式
 * hdlr - 内置消息处理器，处理函数，链式处理数组，路由对象，详见 mq.Handler
 
+--------------------------
 ### patch
 添加一组 PATCH 方法路由规则
 ```JavaScript
@@ -236,6 +242,7 @@ Routing.patch(String pattern,
 * pattern - 消息匹配格式
 * hdlr - 内置消息处理器，处理函数，链式处理数组，路由对象，详见 mq.Handler
 
+--------------------------
 ### invoke
 处理一个消息或对象
 ```JavaScript
@@ -248,12 +255,14 @@ Handler Routing.invoke(object v) async;
 返回结果:
 * 返回下一步的处理器
 
+--------------------------
 ### dispose
 强制回收对象，调用此方法后，对象资源将立即释放
 ```JavaScript
 Routing.dispose();
 ```
 
+--------------------------
 ### equals
 比较当前对象与给定的对象是否相等
 ```JavaScript
@@ -266,6 +275,7 @@ Boolean Routing.equals(object expected);
 返回结果:
 * 返回对象比较的结果
 
+--------------------------
 ### toString
 返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现
 ```JavaScript
@@ -275,6 +285,7 @@ String Routing.toString();
 返回结果:
 * 返回对象的字符串表示
 
+--------------------------
 ### toJSON
 返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合
 ```JavaScript
@@ -287,6 +298,7 @@ Value Routing.toJSON(String key = "");
 返回结果:
 * 返回包含可 JSON 序列化的值
 
+--------------------------
 ### valueOf
 返回对象本身的数值
 ```JavaScript

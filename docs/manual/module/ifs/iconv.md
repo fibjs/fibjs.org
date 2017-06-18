@@ -26,6 +26,7 @@ static Buffer iconv.encode(String charset,
 返回结果:
 * 返回解码的二进制数据
 
+--------------------------
 ### decode
 用 iconv 将 [Buffer](../../object/ifs/Buffer.md) 内容转换为文本
 ```JavaScript

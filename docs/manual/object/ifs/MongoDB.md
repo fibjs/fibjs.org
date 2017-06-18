@@ -7,7 +7,6 @@ var mdb = db.openMongoDB("mongodb://host/db");
 ```
 ## 下标操作
         
---------------------------
 快速获取指定集合访问对象
 ```JavaScript
 readonly MongoCollection MongoDB[String];
@@ -31,6 +30,7 @@ MongoCollection MongoDB.getCollection(String name);
 返回结果:
 * 返回指定的集合对象
 
+--------------------------
 ### runCommand
 指定一个 MongoDB 数据库命令
 ```JavaScript
@@ -57,6 +57,7 @@ Object MongoDB.runCommand(String cmd,
 返回结果:
 * 返回命令执行结果
 
+--------------------------
 ### oid
 生成一个 mongodb _objectid 对象
 ```JavaScript
@@ -69,18 +70,21 @@ MongoID MongoDB.oid(String hexStr = "");
 返回结果:
 * 新 _objectid 对象
 
+--------------------------
 ### close
 关闭当前数据库连接
 ```JavaScript
 MongoDB.close() async;
 ```
 
+--------------------------
 ### dispose
 强制回收对象，调用此方法后，对象资源将立即释放
 ```JavaScript
 MongoDB.dispose();
 ```
 
+--------------------------
 ### equals
 比较当前对象与给定的对象是否相等
 ```JavaScript
@@ -93,6 +97,7 @@ Boolean MongoDB.equals(object expected);
 返回结果:
 * 返回对象比较的结果
 
+--------------------------
 ### toString
 返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现
 ```JavaScript
@@ -102,6 +107,7 @@ String MongoDB.toString();
 返回结果:
 * 返回对象的字符串表示
 
+--------------------------
 ### toJSON
 返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合
 ```JavaScript
@@ -114,6 +120,7 @@ Value MongoDB.toJSON(String key = "");
 返回结果:
 * 返回包含可 JSON 序列化的值
 
+--------------------------
 ### valueOf
 返回对象本身的数值
 ```JavaScript

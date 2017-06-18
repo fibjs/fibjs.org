@@ -19,6 +19,7 @@ static object db.open(String connString) async;
 返回结果:
 * 返回数据库连接对象
 
+--------------------------
 ### openMySQL
 打开一个 mysql 数据库
 ```JavaScript
@@ -31,6 +32,7 @@ static MySQL db.openMySQL(String connString) async;
 返回结果:
 * 返回数据库连接对象
 
+--------------------------
 ### openMSSQL
 打开一个 mysql 数据库
 ```JavaScript
@@ -43,6 +45,7 @@ static MSSQL db.openMSSQL(String connString) async;
 返回结果:
 * 返回数据库连接对象
 
+--------------------------
 ### openSQLite
 打开一个 sqlite 数据库
 ```JavaScript
@@ -55,6 +58,7 @@ static SQLite db.openSQLite(String connString) async;
 返回结果:
 * 返回数据库连接对象
 
+--------------------------
 ### openMongoDB
 打开一个 mongodb 数据库
 ```JavaScript
@@ -67,6 +71,7 @@ static MongoDB db.openMongoDB(String connString) async;
 返回结果:
 * 返回数据库连接对象
 
+--------------------------
 ### openLevelDB
 打开一个 leveldb 数据库
 ```JavaScript
@@ -79,6 +84,7 @@ static LevelDB db.openLevelDB(String connString) async;
 返回结果:
 * 返回数据库对象
 
+--------------------------
 ### openRedis
 打开一个 [Redis](../../object/ifs/Redis.md) 数据库
 ```JavaScript
@@ -91,6 +97,7 @@ static Redis db.openRedis(String connString) async;
 返回结果:
 * 返回数据库连接对象
 
+--------------------------
 ### format
 格式化一个 sql 命令，并返回格式化结果
 ```JavaScript
@@ -105,6 +112,7 @@ static String db.format(String sql,
 返回结果:
 * 返回格式化之后的 sql 命令
 
+--------------------------
 ### formatMySQL
 格式化一个 mysql 命令，并返回格式化结果
 ```JavaScript
@@ -119,6 +127,7 @@ static String db.formatMySQL(String sql,
 返回结果:
 * 返回格式化之后的 sql 命令
 
+--------------------------
 ### formatMSSQL
 格式化一个 mssql 命令，并返回格式化结果
 ```JavaScript
@@ -133,6 +142,7 @@ static String db.formatMSSQL(String sql,
 返回结果:
 * 返回格式化之后的 sql 命令
 
+--------------------------
 ### escape
 将字符串编码为 SQL 安全编码字符串
 ```JavaScript

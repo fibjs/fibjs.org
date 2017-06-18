@@ -19,6 +19,7 @@ static Boolean zip.isZipFile(String filename) async;
 返回结果:
 * 返回true代表文件是zip文件
 
+--------------------------
 ### open
 打开一个zip文件
 ```JavaScript
@@ -75,6 +76,7 @@ static ZipFile zip.open(SeekableStream strm,
 const zip.ZIP_STORED = 0;
 ```
 
+--------------------------
 ### ZIP_DEFLATED
 压缩类型常量, 需要依赖[zlib](zlib.md)库进行压缩
 ```JavaScript

@@ -80,6 +80,7 @@ SandBox.add(Object mods);
 调用参数:
 * mods - 指定要添加的模块对象字典，添加的 javascript 模块将会生成一份复制，以避免沙箱修改对象产生互相干扰
 
+--------------------------
 ### addScript
 向沙箱中添加一个脚本模块
 ```JavaScript
@@ -94,6 +95,7 @@ Value SandBox.addScript(String srcname,
 返回结果:
 * 返回加载的模块对象
 
+--------------------------
 ### remove
 从沙箱中删除指定的基础模块
 ```JavaScript
@@ -103,6 +105,7 @@ SandBox.remove(String id);
 调用参数:
 * id - 指定要删除的模块名称，此路径与当前运行脚本无关，必须为绝对路径或者模块名
 
+--------------------------
 ### clone
 复制当前沙箱，新沙箱包含当前沙箱的模块，以及相同的名称和 require 函数
 ```JavaScript
@@ -112,6 +115,7 @@ SandBox SandBox.clone();
 返回结果:
 * 复制的新沙箱
 
+--------------------------
 ### run
 运行一个脚本
 ```JavaScript
@@ -123,6 +127,7 @@ SandBox.run(String fname,
 * fname - 指定要运行的脚本路径，此路径与当前运行脚本无关，必须为绝对路径
 * argv - 指定要运行的参数，此参数可在脚本内使用 argv 获取
 
+--------------------------
 ### resovle
 查询一个模块并返回模块完整文件名
 ```JavaScript
@@ -137,6 +142,7 @@ String SandBox.resovle(String id,
 返回结果:
 * 返回加载的模块完整文件名
 
+--------------------------
 ### require
 加载一个模块并返回模块对象
 ```JavaScript
@@ -151,12 +157,14 @@ Value SandBox.require(String id,
 返回结果:
 * 返回加载的模块对象
 
+--------------------------
 ### dispose
 强制回收对象，调用此方法后，对象资源将立即释放
 ```JavaScript
 SandBox.dispose();
 ```
 
+--------------------------
 ### equals
 比较当前对象与给定的对象是否相等
 ```JavaScript
@@ -169,6 +177,7 @@ Boolean SandBox.equals(object expected);
 返回结果:
 * 返回对象比较的结果
 
+--------------------------
 ### toString
 返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现
 ```JavaScript
@@ -178,6 +187,7 @@ String SandBox.toString();
 返回结果:
 * 返回对象的字符串表示
 
+--------------------------
 ### toJSON
 返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合
 ```JavaScript
@@ -190,6 +200,7 @@ Value SandBox.toJSON(String key = "");
 返回结果:
 * 返回包含可 JSON 序列化的值
 
+--------------------------
 ### valueOf
 返回对象本身的数值
 ```JavaScript

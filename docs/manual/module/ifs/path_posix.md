@@ -19,6 +19,7 @@ static String path_posix.normalize(String path);
 返回结果:
 * 返回经过处理的路径
 
+--------------------------
 ### basename
 查询路径中的文件名称，若指定扩展名，则自动取消匹配的扩展名
 ```JavaScript
@@ -33,6 +34,7 @@ static String path_posix.basename(String path,
 返回结果:
 * 返回文件名称
 
+--------------------------
 ### extname
 查询路径中的文件扩展名
 ```JavaScript
@@ -45,6 +47,7 @@ static String path_posix.extname(String path);
 返回结果:
 * 返回得到的扩展名
 
+--------------------------
 ### dirname
 查询路径中的目录路径
 ```JavaScript
@@ -57,6 +60,7 @@ static String path_posix.dirname(String path);
 返回结果:
 * 返回得到的目录的路径
 
+--------------------------
 ### fullpath
 转换给定路径为全路径
 ```JavaScript
@@ -69,6 +73,7 @@ static String path_posix.fullpath(String path);
 返回结果:
 * 返回转换的全路径
 
+--------------------------
 ### isAbsolute
 识别给定的路径是否是绝对路径
 ```JavaScript
@@ -81,6 +86,7 @@ static Boolean path_posix.isAbsolute(String path);
 返回结果:
 * 是绝对路径则返回 true
 
+--------------------------
 ### join
 合并一系列路径成为一个单一路径
 ```JavaScript
@@ -93,6 +99,7 @@ static String path_posix.join(...);
 返回结果:
 * 返回得到的新路径
 
+--------------------------
 ### resolve
 合并一系列路径成为一个绝对路径
 ```JavaScript
@@ -113,18 +120,21 @@ static String path_posix.resolve(...);
 static readonly String path_posix.sep;
 ```
 
+--------------------------
 ### delimiter
 查询当前操作系统的多路径组合字符，posix 返回 ':', windows 返回  ';'
 ```JavaScript
 static readonly String path_posix.delimiter;
 ```
 
+--------------------------
 ### posix
 posix 实现，参见 path_posix
 ```JavaScript
 static readonly Object path_posix.posix;
 ```
 
+--------------------------
 ### win32
 windows 实现，参见 [path_win32](path_win32.md)
 ```JavaScript

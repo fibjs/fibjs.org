@@ -159,14 +159,17 @@
 <p>二进制数据缓存对象，用于 <a href=io.md.html>io</a> 读写的数据处理，参见 <a href=../../object/ifs/buffer.md.html>Buffer</a> 对象。</p>
 <pre><code class="lang-JavaScript">Buffer global.Buffer;
 </code></pre>
+<hr>
 <h3 id="int64">Int64</h3>
 <p>64位整数对象，参见 <a href=../../object/ifs/int64.md.html>Int64</a> 对象。</p>
 <pre><code class="lang-JavaScript">Int64 global.Int64;
 </code></pre>
+<hr>
 <h3 id="console">console</h3>
 <p>控制台访问对象</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">console</span> global.console;
 </code></pre>
+<hr>
 <h3 id="process">process</h3>
 <p>控制台访问对象</p>
 <pre><code class="lang-JavaScript">process global.process;
@@ -182,6 +185,7 @@
 <li>fname - 指定要运行的脚本路径</li>
 <li>argv - 指定要运行的参数，此参数可在脚本内使用 argv 获取</li>
 </ul>
+<hr>
 <h3 id="clearinterval">clearInterval</h3>
 <p>清除指定的定时器</p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> global.clearInterval(Timer t);
@@ -190,6 +194,7 @@
 <ul>
 <li>t - 指定要清除的定时器</li>
 </ul>
+<hr>
 <h3 id="cleartimeout">clearTimeout</h3>
 <p>清除指定的定时器</p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> global.clearTimeout(Timer t);
@@ -198,6 +203,7 @@
 <ul>
 <li>t - 指定要清除的定时器</li>
 </ul>
+<hr>
 <h3 id="clearimmediate">clearImmediate</h3>
 <p>清除指定的定时器</p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> global.clearImmediate(Timer t);
@@ -206,6 +212,7 @@
 <ul>
 <li>t - 指定要清除的定时器</li>
 </ul>
+<hr>
 <h3 id="setinterval">setInterval</h3>
 <p>每间隔指定的时间后调用函数</p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> Timer global.setInterval(<span class="hljs-built_in">Function</span> callback,
@@ -220,6 +227,7 @@
 <ul>
 <li>返回定时器对象</li>
 </ul>
+<hr>
 <h3 id="settimeout">setTimeout</h3>
 <p>在指定的时间后调用函数</p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> Timer global.setTimeout(<span class="hljs-built_in">Function</span> callback,
@@ -234,6 +242,7 @@
 <ul>
 <li>返回定时器对象</li>
 </ul>
+<hr>
 <h3 id="setimmediate">setImmediate</h3>
 <p>下一个空闲时间立即执行回调函数</p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> Timer global.setImmediate(<span class="hljs-built_in">Function</span> callback);
@@ -246,6 +255,7 @@
 <ul>
 <li>返回定时器对象</li>
 </ul>
+<hr>
 <h3 id="require">require</h3>
 <p>加载一个模块并返回模块对象，更多信息参阅 @ref module</p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> Value global.require(<span class="hljs-built_in">String</span> id);
@@ -263,10 +273,12 @@
 <p>文件模块是用户自定义模块，引用时需传递以 ./ 或 ../ 开头的相对路径。文件模块支持 .js 和 .<a href=json.md.html>json</a> 文件。</p>
 <p>文件模块也支持 package.<a href=json.md.html>json</a> 格式，当模块为目录结构时，require 会先查询 package.<a href=json.md.html>json</a> 中的 main，未发现则尝试加载路径下的 index.js 或 index.<a href=json.md.html>json</a>。</p>
 <p>若引用路径不是 ./ 或 ../ 开头，并且非基础模块，require 则先在启动路径查找，然后从当前模块所在路径下的 node_modules 查找，并上级目录递归。</p>
+<hr>
 <h3 id="gc">GC</h3>
 <p>强制要求进行垃圾回收</p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> global.GC();
 </code></pre>
+<hr>
 <h3 id="repl">repl</h3>
 <p>进入交互模式，可以交互执行内部命令和代码，仅在启动 js 可以引用</p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> global.repl(<span class="hljs-built_in">Array</span> cmds = []);
@@ -327,18 +339,22 @@
 <p><a href=../../object/ifs/worker.md.html>Worker</a> 宿主对象，仅在 <a href=../../object/ifs/worker.md.html>Worker</a> 入口脚本有效</p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> readonly Worker global.Master;
 </code></pre>
+<hr>
 <h3 id="global">global</h3>
 <p>全局对象</p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> readonly <span class="hljs-built_in">Object</span>  <span class="hljs-keyword">new</span> global;
 </code></pre>
+<hr>
 <h3 id="argv">argv</h3>
 <p>获取当前脚本的运行参数，启动 js 获取进程启动参数，run 执行的脚本获取传递的参数</p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> readonly <span class="hljs-built_in">Array</span> global.argv;
 </code></pre>
+<hr>
 <h3 id="__filename">__filename</h3>
 <p>当前脚本文件名</p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> readonly <span class="hljs-built_in">String</span> global.__filename;
 </code></pre>
+<hr>
 <h3 id="__dirname">__dirname</h3>
 <p>当前脚本所在目录</p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> readonly <span class="hljs-built_in">String</span> global.__dirname;

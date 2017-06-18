@@ -24,6 +24,7 @@ static String base32.encode(Buffer data);
 返回结果:
 * 返回编码的字符串
 
+--------------------------
 ### decode
 以 base32 方式解码字符串为二进制数据
 ```JavaScript

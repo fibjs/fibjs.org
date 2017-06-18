@@ -33,6 +33,7 @@ Integer RedisSet.add(...);
 返回结果:
 * 被添加到集合中的新元素的数量，不包括被忽略的元素
 
+--------------------------
 ### remove
 移除集合中的一个或多个 member 元素
 ```JavaScript
@@ -57,6 +58,7 @@ Integer RedisSet.remove(...);
 返回结果:
 * 被成功移除的元素的数量，不包括被忽略的元素
 
+--------------------------
 ### len
 返回集合中元素的数量
 ```JavaScript
@@ -66,6 +68,7 @@ Integer RedisSet.len();
 返回结果:
 * 返回集合的长度
 
+--------------------------
 ### exists
 判断 member 元素是否集合的成员
 ```JavaScript
@@ -77,6 +80,7 @@ Boolean RedisSet.exists(Buffer member);
 返回结果:
 * 如果 member 元素是集合的成员，返回 true
 
+--------------------------
 ### members
 返回集合中的所有成员
 ```JavaScript
@@ -86,6 +90,7 @@ List RedisSet.members();
 返回结果:
 * 集合中所有成员的列表
 
+--------------------------
 ### pop
 移除并返回集合中的一个随机元素
 ```JavaScript
@@ -95,6 +100,7 @@ Buffer RedisSet.pop();
 返回结果:
 * 被移除的随机元素。当集合是空集时，返回 null
 
+--------------------------
 ### randMember
 从集合中获取随机的一个元素
 ```JavaScript
@@ -116,12 +122,14 @@ Value RedisSet.randMember(Integer count);
 返回结果:
 * 返回一个列表；如果集合为空，返回空列表
 
+--------------------------
 ### dispose
 强制回收对象，调用此方法后，对象资源将立即释放
 ```JavaScript
 RedisSet.dispose();
 ```
 
+--------------------------
 ### equals
 比较当前对象与给定的对象是否相等
 ```JavaScript
@@ -134,6 +142,7 @@ Boolean RedisSet.equals(object expected);
 返回结果:
 * 返回对象比较的结果
 
+--------------------------
 ### toString
 返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现
 ```JavaScript
@@ -143,6 +152,7 @@ String RedisSet.toString();
 返回结果:
 * 返回对象的字符串表示
 
+--------------------------
 ### toJSON
 返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合
 ```JavaScript
@@ -155,6 +165,7 @@ Value RedisSet.toJSON(String key = "");
 返回结果:
 * 返回包含可 JSON 序列化的值
 
+--------------------------
 ### valueOf
 返回对象本身的数值
 ```JavaScript

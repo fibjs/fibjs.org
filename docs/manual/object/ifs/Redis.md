@@ -22,6 +22,7 @@ Value Redis.command(String cmd,
 返回结果:
 * 返回服务器返回的结果
 
+--------------------------
 ### set
 将字符串值 value 关联到 key，如果 key 已经持有其他值， SET 就覆写旧值，无视类型
 ```JavaScript
@@ -35,6 +36,7 @@ Redis.set(Buffer key,
 * value - 指定要关联的数据
 * ttl - 以毫秒为单位为 key 设置生存时间；如果 ttl 为 0 ，那么不设置生存时间
 
+--------------------------
 ### setNX
 将 key 的值设为 value ，当且仅当 key 不存在。若给定的 key 已经存在，则 SETNX 不做任何动作。
 ```JavaScript
@@ -48,6 +50,7 @@ Redis.setNX(Buffer key,
 * value - 指定要关联的数据
 * ttl - 以毫秒为单位为 key 设置生存时间；如果 ttl 为 0 ，那么不设置生存时间
 
+--------------------------
 ### setXX
 将 key 的值设为 value，只在键已经存在时，才对键进行设置操作。
 ```JavaScript
@@ -61,6 +64,7 @@ Redis.setXX(Buffer key,
 * value - 指定要关联的数据
 * ttl - 以毫秒为单位为 key 设置生存时间；如果 ttl 为 0 ，那么不设置生存时间
 
+--------------------------
 ### mset
 同时设置一个或多个 key-value 对。如果某个给定 key 已经存在，那么 MSET 会用新值覆盖原来的旧值
 ```JavaScript
@@ -79,6 +83,7 @@ Redis.mset(...);
 调用参数:
 * ... - 指定要设置的 key/value 列表
 
+--------------------------
 ### msetNX
 同时设置一个或多个 key-value 对，当且仅当所有给定 key 都不存在
 ```JavaScript
@@ -97,6 +102,7 @@ Redis.msetNX(...);
 调用参数:
 * ... - 指定要设置的 key/value 列表
 
+--------------------------
 ### append
 如果 key 已经存在并且是一个字符串，append 命令将 value 追加到 key 原来的值的末尾。如果 key 不存在，append 就简单地将给定 key 设为 value
 ```JavaScript
@@ -111,6 +117,7 @@ Integer Redis.append(Buffer key,
 返回结果:
 * 追加 value 之后， key 中字符串的长度
 
+--------------------------
 ### setRange
 用 value 参数覆写给定 key 所储存的字符串值，从偏移量 offset 开始
 ```JavaScript
@@ -127,6 +134,7 @@ Integer Redis.setRange(Buffer key,
 返回结果:
 * 被修改之后，字符串的长度
 
+--------------------------
 ### getRange
 返回 key 中字符串值的子字符串，字符串的截取范围由 start 和 end 两个偏移量决定(包括 start 和 end 在内)
 ```JavaScript
@@ -143,6 +151,7 @@ Buffer Redis.getRange(Buffer key,
 返回结果:
 * 截取得出的子字符串
 
+--------------------------
 ### strlen
 返回 key 所储存的字符串值的长度。当 key 储存的不是字符串值时，返回一个错误
 ```JavaScript
@@ -155,6 +164,7 @@ Integer Redis.strlen(Buffer key);
 返回结果:
 * 字符串值的长度。当 key 不存在时，返回 0
 
+--------------------------
 ### bitcount
 计算给定字符串中，被设置为 1 的比特位的数量
 ```JavaScript
@@ -171,6 +181,7 @@ Integer Redis.bitcount(Buffer key,
 返回结果:
 * 被设置为 1 的位的数量
 
+--------------------------
 ### get
 返回 key 所关联的字符串值，如果 key 不存在那么返回特殊值 Null
 ```JavaScript
@@ -183,6 +194,7 @@ Buffer Redis.get(Buffer key);
 返回结果:
 * 当 key 不存在时，返回 Null ，否则，返回 key 的值
 
+--------------------------
 ### mget
 返回所有(一个或多个)给定 key 的值。如果给定的 key 里面，有某个 key 不存在，那么这个 key 返回特殊值 nil 。
 ```JavaScript
@@ -207,6 +219,7 @@ List Redis.mget(...);
 返回结果:
 * 一个包含所有给定 key 的值的列表
 
+--------------------------
 ### getset
 将给定 key 的值设为 value ，并返回 key 的旧值(old value)
 ```JavaScript
@@ -221,6 +234,7 @@ Buffer Redis.getset(Buffer key,
 返回结果:
 * 返回给定 key 的旧值
 
+--------------------------
 ### decr
 将 key 所储存的值减去减量
 ```JavaScript
@@ -235,6 +249,7 @@ Long Redis.decr(Buffer key,
 返回结果:
 * 减去 num 之后，key 的值
 
+--------------------------
 ### incr
 将 key 所储存的值加上增量
 ```JavaScript
@@ -249,6 +264,7 @@ Long Redis.incr(Buffer key,
 返回结果:
 * 加上 num 之后，key 的值
 
+--------------------------
 ### setBit
 对 key 所储存的字符串值，设置或清除指定偏移量上的位(bit)
 ```JavaScript
@@ -265,6 +281,7 @@ Integer Redis.setBit(Buffer key,
 返回结果:
 * 指定偏移量原来储存的位
 
+--------------------------
 ### getBit
 对 key 所储存的字符串值，获取指定偏移量上的位(bit)
 ```JavaScript
@@ -279,6 +296,7 @@ Integer Redis.getBit(Buffer key,
 返回结果:
 * 字符串值指定偏移量上的位(bit)
 
+--------------------------
 ### exists
 检查给定 key 是否存在
 ```JavaScript
@@ -291,6 +309,7 @@ Boolean Redis.exists(Buffer key);
 返回结果:
 * 若 key 存在，返回 True，否则返回 False
 
+--------------------------
 ### type
 返回 key 所储存的值的类型
 ```JavaScript
@@ -303,6 +322,7 @@ String Redis.type(Buffer key);
 返回结果:
 * 返回 key 所储存的值的类型，可能的值为 none(key不存在) string(字符串) list(列表) set(集合) zset(有序集) hash(哈希表)
 
+--------------------------
 ### keys
 查找所有符合给定模式 pattern 的 key
 ```JavaScript
@@ -315,6 +335,7 @@ List Redis.keys(String pattern);
 返回结果:
 * 符合给定模式的 key 列表
 
+--------------------------
 ### del
 删除给定的一个或多个 key，不存在的 key 会被忽略
 ```JavaScript
@@ -339,6 +360,7 @@ Integer Redis.del(...);
 返回结果:
 * 被删除 key 的数量
 
+--------------------------
 ### expire
 为给定 key 设置生存时间，当 key 过期时，它会被自动删除
 ```JavaScript
@@ -353,6 +375,7 @@ Boolean Redis.expire(Buffer key,
 返回结果:
 * 若 key 存在，返回 True，否则返回 False
 
+--------------------------
 ### ttl
 返回给定 key 的剩余生存时间
 ```JavaScript
@@ -365,6 +388,7 @@ Long Redis.ttl(Buffer key);
 返回结果:
 * 以毫秒为单位，返回 key 的剩余生存时间，当 key 不存在时，返回 -2，当 key 存在但没有设置剩余生存时间时，返回 -1
 
+--------------------------
 ### persist
 移除给定 key 的生存时间，将这个 key 从『易失的』(带生存时间 key )转换成『持久的』(一个不带生存时间、永不过期的 key)
 ```JavaScript
@@ -377,6 +401,7 @@ Boolean Redis.persist(Buffer key);
 返回结果:
 * 若 key 存在，返回 True，否则返回 False
 
+--------------------------
 ### rename
 将 key 改名为 newkey，当 key 和 newkey 相同，或者 key 不存在时，返回一个错误
 ```JavaScript
@@ -388,6 +413,7 @@ Redis.rename(Buffer key,
 * key - 指定要改名的 key
 * newkey - 指定要改名的目的 key
 
+--------------------------
 ### renameNX
 当且仅当 newkey 不存在时，将 key 改名为 newkey，当 key 不存在时，返回一个错误
 ```JavaScript
@@ -402,6 +428,7 @@ Boolean Redis.renameNX(Buffer key,
 返回结果:
 * 修改成功时，返回 True，如果 newkey 已经存在，返回 False
 
+--------------------------
 ### sub
 订阅给定的一个频道的信息，当消息发生时自动调用 func，func 包含两个参数，依次为 channel 和 message，同一频道同一函数只会回调一次
 ```JavaScript
@@ -422,6 +449,7 @@ Redis.sub(Object map);
 调用参数:
 * map - 指定频道映射关系，对象属性名称将作为频道名称，属性的值将作为回调函数
 
+--------------------------
 ### unsub
 退订给定的频道的全部回调
 ```JavaScript
@@ -460,6 +488,7 @@ Redis.unsub(Object map);
 调用参数:
 * map - 指定频道映射关系，对象属性名称将作为频道名称，属性的值将作为回调函数
 
+--------------------------
 ### psub
 按照模板订阅一组频道的信息，当消息发生时自动调用 func，func 包含三个参数，依次为 channel，message 和 pattern，同一模板同一函数只会回调一次
 ```JavaScript
@@ -480,6 +509,7 @@ Redis.psub(Object map);
 调用参数:
 * map - 指定频道映射关系，对象属性名称将作为频道模板，属性的值将作为回调函数
 
+--------------------------
 ### unpsub
 退订给定模板的频道的全部回调
 ```JavaScript
@@ -518,6 +548,7 @@ Redis.unpsub(Object map);
 调用参数:
 * map - 指定频道映射关系，对象属性名称将作为频道模板，属性的值将作为回调函数
 
+--------------------------
 ### pub
 将信息 message 发送到指定的频道 channel
 ```JavaScript
@@ -529,6 +560,7 @@ Integer Redis.pub(Buffer channel,
 * channel - 指定发布的频道
 * message - 指定发布的消息
 
+--------------------------
 ### getHash
 获取指定 key 的 Hash 对象，此对象为包含指定 key 的客户端，只有调用其方法才会操作数据库
 ```JavaScript
@@ -541,6 +573,7 @@ RedisHash Redis.getHash(Buffer key);
 返回结果:
 * 返回包含指定 key 的 Hash 对象
 
+--------------------------
 ### getList
 获取指定 key 的 [List](List.md) 对象，此对象为包含指定 key 的客户端，只有调用其方法才会操作数据库
 ```JavaScript
@@ -553,6 +586,7 @@ RedisList Redis.getList(Buffer key);
 返回结果:
 * 返回包含指定 key 的 List 对象
 
+--------------------------
 ### getSet
 获取指定 key 的 Set 对象，此对象为包含指定 key 的客户端，只有调用其方法才会操作数据库
 ```JavaScript
@@ -565,6 +599,7 @@ RedisSet Redis.getSet(Buffer key);
 返回结果:
 * 返回包含指定 key 的 Set 对象
 
+--------------------------
 ### getSortedSet
 获取指定 key 的 SortedSet 对象，此对象为包含指定 key 的客户端，只有调用其方法才会操作数据库
 ```JavaScript
@@ -577,6 +612,7 @@ RedisSortedSet Redis.getSortedSet(Buffer key);
 返回结果:
 * 返回包含指定 key 的 SortedSet 对象
 
+--------------------------
 ### dump
 序列化给定 key ，并返回被序列化的值，使用 restore 命令可以将这个值反序列化为 Redis 键
 ```JavaScript
@@ -589,6 +625,7 @@ Buffer Redis.dump(Buffer key);
 返回结果:
 * 返回序列化之后的值，如果 key 不存在，那么返回 null
 
+--------------------------
 ### restore
 反序列化给定的序列化值，并将它和给定的 key 关联
 ```JavaScript
@@ -602,18 +639,21 @@ Redis.restore(Buffer key,
 * data - 指定要反序列化的数据
 * ttl - 以毫秒为单位为 key 设置生存时间；如果 ttl 为 0 ，那么不设置生存时间
 
+--------------------------
 ### close
 关闭当前数据库连接或事务
 ```JavaScript
 Redis.close();
 ```
 
+--------------------------
 ### dispose
 强制回收对象，调用此方法后，对象资源将立即释放
 ```JavaScript
 Redis.dispose();
 ```
 
+--------------------------
 ### equals
 比较当前对象与给定的对象是否相等
 ```JavaScript
@@ -626,6 +666,7 @@ Boolean Redis.equals(object expected);
 返回结果:
 * 返回对象比较的结果
 
+--------------------------
 ### toString
 返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现
 ```JavaScript
@@ -635,6 +676,7 @@ String Redis.toString();
 返回结果:
 * 返回对象的字符串表示
 
+--------------------------
 ### toJSON
 返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合
 ```JavaScript
@@ -647,6 +689,7 @@ Value Redis.toJSON(String key = "");
 返回结果:
 * 返回包含可 JSON 序列化的值
 
+--------------------------
 ### valueOf
 返回对象本身的数值
 ```JavaScript

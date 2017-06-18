@@ -13,12 +13,14 @@ var collection = require("collection");
 Map collection.Map;
 ```
 
+--------------------------
 ### List
 创建一个 [List](../../object/ifs/List.md) 容器，参见 [List](../../object/ifs/List.md)
 ```JavaScript
 List collection.List;
 ```
 
+--------------------------
 ### Queue
 创建一个 [Queue](../../object/ifs/Queue.md) 容器，参见 [Queue](../../object/ifs/Queue.md)
 ```JavaScript

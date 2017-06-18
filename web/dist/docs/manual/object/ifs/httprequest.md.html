@@ -172,6 +172,7 @@
 <ul>
 <li>返回键值是否存在</li>
 </ul>
+<hr>
 <h3 id="firstheader">firstHeader</h3>
 <p>查询指定键值的第一个消息头</p>
 <pre><code class="lang-JavaScript">Variant HttpRequest.firstHeader(<span class="hljs-built_in">String</span> name);
@@ -184,6 +185,7 @@
 <ul>
 <li>返回键值所对应的值，若不存在，则返回 undefined</li>
 </ul>
+<hr>
 <h3 id="allheader">allHeader</h3>
 <p>查询指定键值的全部消息头</p>
 <pre><code class="lang-JavaScript">List HttpRequest.allHeader(<span class="hljs-built_in">String</span> name);
@@ -196,6 +198,7 @@
 <ul>
 <li>返回键值所对应全部值的数组，若数据不存在，则返回 null</li>
 </ul>
+<hr>
 <h3 id="addheader">addHeader</h3>
 <p>添加一个消息头，添加数据并不修改已存在的键值的消息头</p>
 <pre><code class="lang-JavaScript">HttpRequest.addHeader(<span class="hljs-built_in">Map</span> map);
@@ -214,6 +217,7 @@
 <li>name - 指定要添加的键值</li>
 <li>value - 指定要添加的数据</li>
 </ul>
+<hr>
 <h3 id="setheader">setHeader</h3>
 <p>设定一个消息头，设定数据将修改键值所对应的第一个数值，并清除相同键值的其余消息头</p>
 <pre><code class="lang-JavaScript">HttpRequest.setHeader(<span class="hljs-built_in">Map</span> map);
@@ -232,6 +236,7 @@
 <li>name - 指定要设定的键值</li>
 <li>value - 指定要设定的数据</li>
 </ul>
+<hr>
 <h3 id="removeheader">removeHeader</h3>
 <p>删除指定键值的全部消息头</p>
 <pre><code class="lang-JavaScript">HttpRequest.removeHeader(<span class="hljs-built_in">String</span> name);
@@ -240,6 +245,7 @@
 <ul>
 <li>name - 指定要删除的键值</li>
 </ul>
+<hr>
 <h3 id="read">read</h3>
 <p>从流内读取指定大小的数据，此方法为 body 相应方法的别名</p>
 <pre><code class="lang-JavaScript">Buffer HttpRequest.read(Integer bytes = <span class="hljs-number">-1</span>) <span class="hljs-keyword">async</span>;
@@ -252,6 +258,7 @@
 <ul>
 <li>返回从流内读取的数据，若无数据可读，或者连接中断，则返回 null</li>
 </ul>
+<hr>
 <h3 id="readall">readAll</h3>
 <p>从流内读取剩余的全部数据，此方法为 body 相应方法的别名</p>
 <pre><code class="lang-JavaScript">Buffer HttpRequest.readAll() <span class="hljs-keyword">async</span>;
@@ -260,6 +267,7 @@
 <ul>
 <li>返回从流内读取的数据，若无数据可读，或者连接中断，则返回 null</li>
 </ul>
+<hr>
 <h3 id="write">write</h3>
 <p>写入给定的数据，此方法为 body 相应方法的别名</p>
 <pre><code class="lang-JavaScript">HttpRequest.write(Buffer data) <span class="hljs-keyword">async</span>;
@@ -268,10 +276,12 @@
 <ul>
 <li>data - 给定要写入的数据</li>
 </ul>
+<hr>
 <h3 id="end">end</h3>
 <p>设置当前消息处理结束，<a href=chain.md.html>Chain</a> 处理器不再继续后面的事务</p>
 <pre><code class="lang-JavaScript">HttpRequest.end();
 </code></pre>
+<hr>
 <h3 id="isended">isEnded</h3>
 <p>查询当前消息是否结束</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">Boolean</span> HttpRequest.isEnded();
@@ -280,10 +290,12 @@
 <ul>
 <li>结束则返回 true</li>
 </ul>
+<hr>
 <h3 id="clear">clear</h3>
 <p>清除消息的内容</p>
 <pre><code class="lang-JavaScript">HttpRequest.clear();
 </code></pre>
+<hr>
 <h3 id="sendto">sendTo</h3>
 <p>发送格式化消息到给定的流对象</p>
 <pre><code class="lang-JavaScript">HttpRequest.sendTo(Stream stm) <span class="hljs-keyword">async</span>;
@@ -292,6 +304,7 @@
 <ul>
 <li>stm - 指定接收格式化消息的流对象</li>
 </ul>
+<hr>
 <h3 id="readfrom">readFrom</h3>
 <p>从给定的缓存流对象中读取格式化消息，并解析填充对象</p>
 <pre><code class="lang-JavaScript">HttpRequest.readFrom(Stream stm) <span class="hljs-keyword">async</span>;
@@ -300,10 +313,12 @@
 <ul>
 <li>stm - 指定读取格式化消息的流对象</li>
 </ul>
+<hr>
 <h3 id="dispose">dispose</h3>
 <p>强制回收对象，调用此方法后，对象资源将立即释放</p>
 <pre><code class="lang-JavaScript">HttpRequest.dispose();
 </code></pre>
+<hr>
 <h3 id="equals">equals</h3>
 <p>比较当前对象与给定的对象是否相等</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">Boolean</span> HttpRequest.equals(object expected);
@@ -316,6 +331,7 @@
 <ul>
 <li>返回对象比较的结果</li>
 </ul>
+<hr>
 <h3 id="tostring">toString</h3>
 <p>返回对象的字符串表示，一般返回 &quot;[Native Object]&quot;，对象可以根据自己的特性重新实现</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> HttpRequest.toString();
@@ -324,6 +340,7 @@
 <ul>
 <li>返回对象的字符串表示</li>
 </ul>
+<hr>
 <h3 id="tojson">toJSON</h3>
 <p>返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合</p>
 <pre><code class="lang-JavaScript">Value HttpRequest.toJSON(<span class="hljs-built_in">String</span> key = <span class="hljs-string">""</span>);
@@ -336,6 +353,7 @@
 <ul>
 <li>返回包含可 JSON 序列化的值</li>
 </ul>
+<hr>
 <h3 id="valueof">valueOf</h3>
 <p>返回对象本身的数值</p>
 <pre><code class="lang-JavaScript">Value HttpRequest.valueOf();
@@ -349,86 +367,107 @@
 <p>查询和设置请求方法</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> HttpRequest.method;
 </code></pre>
+<hr>
 <h3 id="address">address</h3>
 <p>查询和设置请求地址</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> HttpRequest.address;
 </code></pre>
+<hr>
 <h3 id="querystring">queryString</h3>
 <p>查询和设置请求查询字符串</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> HttpRequest.queryString;
 </code></pre>
+<hr>
 <h3 id="cookies">cookies</h3>
 <p>获取包含消息 cookies 的容器</p>
 <pre><code class="lang-JavaScript">readonly HttpCollection HttpRequest.cookies;
 </code></pre>
+<hr>
 <h3 id="form">form</h3>
 <p>获取包含消息 form 的容器</p>
 <pre><code class="lang-JavaScript">readonly HttpCollection HttpRequest.form;
 </code></pre>
+<hr>
 <h3 id="query">query</h3>
 <p>获取包含消息 query 的容器</p>
 <pre><code class="lang-JavaScript">readonly HttpCollection HttpRequest.query;
 </code></pre>
+<hr>
 <h3 id="protocol">protocol</h3>
 <p>协议版本信息，允许的格式为：HTTP/#.#</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> HttpRequest.protocol;
 </code></pre>
+<hr>
 <h3 id="headers">headers</h3>
 <p>包含消息中 <a href=../../module/ifs/http.md.html>http</a> 消息头的容器，只读属性</p>
 <pre><code class="lang-JavaScript">readonly HttpCollection HttpRequest.headers;
 </code></pre>
+<hr>
 <h3 id="keepalive">keepAlive</h3>
 <p>查询和设定是否保持连接</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">Boolean</span> HttpRequest.keepAlive;
 </code></pre>
+<hr>
 <h3 id="upgrade">upgrade</h3>
 <p>查询和设定是否是升级协议</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">Boolean</span> HttpRequest.upgrade;
 </code></pre>
+<hr>
 <h3 id="maxheaderscount">maxHeadersCount</h3>
 <p>查询和设置最大请求头个数，缺省为 128</p>
 <pre><code class="lang-JavaScript">Integer HttpRequest.maxHeadersCount;
 </code></pre>
+<hr>
 <h3 id="maxuploadsize">maxUploadSize</h3>
 <p>查询和设置最大上传尺寸，以字节为单位，缺省为 67108864(64M)</p>
 <pre><code class="lang-JavaScript">Integer HttpRequest.maxUploadSize;
 </code></pre>
+<hr>
 <h3 id="socket">socket</h3>
 <p>查询当前对象的来源 socket</p>
 <pre><code class="lang-JavaScript">readonly Stream HttpRequest.socket;
 </code></pre>
+<hr>
 <h3 id="value">value</h3>
 <p>消息的基本内容</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> HttpRequest.value;
 </code></pre>
+<hr>
 <h3 id="params">params</h3>
 <p>消息的基本参数</p>
 <pre><code class="lang-JavaScript">List HttpRequest.params;
 </code></pre>
+<hr>
 <h3 id="type">type</h3>
 <p>消息类型</p>
 <pre><code class="lang-JavaScript">Integer HttpRequest.type;
 </code></pre>
+<hr>
 <h3 id="data">data</h3>
 <p>查询消息的数据</p>
 <pre><code class="lang-JavaScript">readonly Value HttpRequest.data;
 </code></pre>
+<hr>
 <h3 id="body">body</h3>
 <p>包含消息数据部分的流对象</p>
 <pre><code class="lang-JavaScript">SeekableStream HttpRequest.body;
 </code></pre>
+<hr>
 <h3 id="length">length</h3>
 <p>消息数据部分的长度</p>
 <pre><code class="lang-JavaScript">readonly Long HttpRequest.length;
 </code></pre>
+<hr>
 <h3 id="stream">stream</h3>
 <p>查询消息 readFrom 时的流对象</p>
 <pre><code class="lang-JavaScript">readonly Stream HttpRequest.stream;
 </code></pre>
+<hr>
 <h3 id="response">response</h3>
 <p>获取响应消息对象</p>
 <pre><code class="lang-JavaScript">readonly Message HttpRequest.response;
 </code></pre>
+<hr>
 <h3 id="lasterror">lastError</h3>
 <p>查询和设置消息处理的最后错误</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> HttpRequest.lastError;
@@ -438,6 +477,7 @@
 <p>指定消息类型 1，代表一个文本类型</p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">const</span> HttpRequest.TEXT = <span class="hljs-number">1</span>;
 </code></pre>
+<hr>
 <h3 id="binary">BINARY</h3>
 <p>指定消息类型 2，代表一个二进制类型</p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">const</span> HttpRequest.BINARY = <span class="hljs-number">2</span>;

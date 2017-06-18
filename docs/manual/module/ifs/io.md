@@ -13,6 +13,7 @@ var io = require('io');
 MemoryStream io.MemoryStream;
 ```
 
+--------------------------
 ### BufferedStream
 创建一个缓存流读取对象，参见 [BufferedStream](../../object/ifs/BufferedStream.md)
 ```JavaScript
@@ -37,6 +38,7 @@ static Long io.copyStream(Stream from,
 返回结果:
 * 返回复制的字节数
 
+--------------------------
 ### bridge
 双向复制流数据，直到流中无数据，或者流被关闭
 ```JavaScript

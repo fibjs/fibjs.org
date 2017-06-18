@@ -23,6 +23,7 @@ ZmqSocket.bind(String addr);
 调用参数:
 * addr - 指定绑定的地址，如："tcp://*:3000"
 
+--------------------------
 ### connect
 连接到指定地址的服务器
 ```JavaScript
@@ -32,6 +33,7 @@ ZmqSocket.connect(String addr);
 调用参数:
 * addr - 指定连接的地址，如："tcp://*:3000"
 
+--------------------------
 ### recv
 接收一个数据包
 ```JavaScript
@@ -41,6 +43,7 @@ Buffer ZmqSocket.recv() async;
 返回结果:
 * 返回接收到的数据包
 
+--------------------------
 ### send
 发送一个数据包
 ```JavaScript
@@ -50,18 +53,21 @@ ZmqSocket.send(Buffer data);
 调用参数:
 * data - 指定发送的数据包
 
+--------------------------
 ### close
 关闭当前 socket
 ```JavaScript
 ZmqSocket.close();
 ```
 
+--------------------------
 ### dispose
 强制回收对象，调用此方法后，对象资源将立即释放
 ```JavaScript
 ZmqSocket.dispose();
 ```
 
+--------------------------
 ### equals
 比较当前对象与给定的对象是否相等
 ```JavaScript
@@ -74,6 +80,7 @@ Boolean ZmqSocket.equals(object expected);
 返回结果:
 * 返回对象比较的结果
 
+--------------------------
 ### toString
 返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现
 ```JavaScript
@@ -83,6 +90,7 @@ String ZmqSocket.toString();
 返回结果:
 * 返回对象的字符串表示
 
+--------------------------
 ### toJSON
 返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合
 ```JavaScript
@@ -95,6 +103,7 @@ Value ZmqSocket.toJSON(String key = "");
 返回结果:
 * 返回包含可 JSON 序列化的值
 
+--------------------------
 ### valueOf
 返回对象本身的数值
 ```JavaScript

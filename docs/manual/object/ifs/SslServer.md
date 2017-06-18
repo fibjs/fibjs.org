@@ -43,7 +43,6 @@ certs 格式为：
     }
 ]
 ```
-
 --------------------------
 SslServer 构造函数
 ```JavaScript
@@ -72,7 +71,6 @@ certs 格式为：
     }
 ]
 ```
-
 --------------------------
 SslServer 构造函数，在所有本机地址侦听
 ```JavaScript
@@ -113,24 +111,28 @@ SslServer 构造函数
 SslServer.run() async;
 ```
 
+--------------------------
 ### asyncRun
 异步运行服务器并开始接收和分发连接，调用后立即返回，服务器在后台运行
 ```JavaScript
 SslServer.asyncRun();
 ```
 
+--------------------------
 ### stop
 关闭 socket中止正在运行的服务器
 ```JavaScript
 SslServer.stop() async;
 ```
 
+--------------------------
 ### dispose
 强制回收对象，调用此方法后，对象资源将立即释放
 ```JavaScript
 SslServer.dispose();
 ```
 
+--------------------------
 ### equals
 比较当前对象与给定的对象是否相等
 ```JavaScript
@@ -143,6 +145,7 @@ Boolean SslServer.equals(object expected);
 返回结果:
 * 返回对象比较的结果
 
+--------------------------
 ### toString
 返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现
 ```JavaScript
@@ -152,6 +155,7 @@ String SslServer.toString();
 返回结果:
 * 返回对象的字符串表示
 
+--------------------------
 ### toJSON
 返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合
 ```JavaScript
@@ -164,6 +168,7 @@ Value SslServer.toJSON(String key = "");
 返回结果:
 * 返回包含可 JSON 序列化的值
 
+--------------------------
 ### valueOf
 返回对象本身的数值
 ```JavaScript
@@ -181,24 +186,28 @@ Value SslServer.valueOf();
 Integer SslServer.verification;
 ```
 
+--------------------------
 ### ca
 客户端证书验证证书链
 ```JavaScript
 readonly X509Cert SslServer.ca;
 ```
 
+--------------------------
 ### socket
 服务器当前侦听的 [Socket](Socket.md) 对象
 ```JavaScript
 readonly Socket SslServer.socket;
 ```
 
+--------------------------
 ### handler
 服务器当前事件处理接口对象
 ```JavaScript
 Handler SslServer.handler;
 ```
 
+--------------------------
 ### stats
 查询当前服务器运行状态
 ```JavaScript

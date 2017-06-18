@@ -169,22 +169,27 @@
 <p>判断事件对象是否为true</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">Boolean</span> Event.isSet();
 </code></pre>
+<hr>
 <h3 id="set">set</h3>
 <p>激活事件（将事件状态改为true），并调用pulse()</p>
 <pre><code class="lang-JavaScript">Event.set();
 </code></pre>
+<hr>
 <h3 id="pulse">pulse</h3>
 <p>激活等待该事件的所有纤程</p>
 <pre><code class="lang-JavaScript">Event.pulse();
 </code></pre>
+<hr>
 <h3 id="clear">clear</h3>
 <p>重置事件（将事件状态改为false）</p>
 <pre><code class="lang-JavaScript">Event.clear();
 </code></pre>
+<hr>
 <h3 id="wait">wait</h3>
 <p>等待一个事件</p>
 <pre><code class="lang-JavaScript">Event.wait();
 </code></pre>
+<hr>
 <h3 id="acquire">acquire</h3>
 <p>获取锁的拥有权</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">Boolean</span> Event.acquire(<span class="hljs-built_in">Boolean</span> blocking = <span class="hljs-literal">true</span>);
@@ -199,12 +204,12 @@
 </ul>
 <p>acquire 方法用于获取锁的拥有权，当锁处于可获取状态时，此方法立即返回 true。</p>
 <p>当锁不可获取，且 blocking 为 true，则当前纤程进入休眠，当其他纤程释放锁后，此方法返回 true。</p>
-<p>当锁不可获取，且 blocking 为 false，则方法返回 false。</p>
+<h2 id="-blocking-false-false-">当锁不可获取，且 blocking 为 false，则方法返回 false。</h2>
 <h3 id="release">release</h3>
 <p>释放锁的拥有权</p>
 <pre><code class="lang-JavaScript">Event.release();
 </code></pre>
-<p>此方法将释放对锁的拥有权，如果当前纤程未拥有锁，此方法将抛出错误。</p>
+<h2 id="-">此方法将释放对锁的拥有权，如果当前纤程未拥有锁，此方法将抛出错误。</h2>
 <h3 id="count">count</h3>
 <p>查询当前等待任务数</p>
 <pre><code class="lang-JavaScript">Integer Event.count();
@@ -213,10 +218,12 @@
 <ul>
 <li>返回任务数</li>
 </ul>
+<hr>
 <h3 id="dispose">dispose</h3>
 <p>强制回收对象，调用此方法后，对象资源将立即释放</p>
 <pre><code class="lang-JavaScript">Event.dispose();
 </code></pre>
+<hr>
 <h3 id="equals">equals</h3>
 <p>比较当前对象与给定的对象是否相等</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">Boolean</span> Event.equals(object expected);
@@ -229,6 +236,7 @@
 <ul>
 <li>返回对象比较的结果</li>
 </ul>
+<hr>
 <h3 id="tostring">toString</h3>
 <p>返回对象的字符串表示，一般返回 &quot;[Native Object]&quot;，对象可以根据自己的特性重新实现</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> Event.toString();
@@ -237,6 +245,7 @@
 <ul>
 <li>返回对象的字符串表示</li>
 </ul>
+<hr>
 <h3 id="tojson">toJSON</h3>
 <p>返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合</p>
 <pre><code class="lang-JavaScript">Value Event.toJSON(<span class="hljs-built_in">String</span> key = <span class="hljs-string">""</span>);
@@ -249,6 +258,7 @@
 <ul>
 <li>返回包含可 JSON 序列化的值</li>
 </ul>
+<hr>
 <h3 id="valueof">valueOf</h3>
 <p>返回对象本身的数值</p>
 <pre><code class="lang-JavaScript">Value Event.valueOf();
