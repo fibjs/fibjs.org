@@ -232,6 +232,7 @@ static Object os.memoryUsage();
 - heapTotal 返回 v8 引擎堆内存大小
 - heapUsed 返回 v8 引擎正在使用堆内存大小
 - nativeObjects 返回当前有效内置对象数
+
 ## 属性
         
 ### timezone

@@ -16,6 +16,7 @@ readonly MongoCollection MongoDB[String];
 ```JavaScript
 var test = mdb.test;
 ```
+
 ## 函数
         
 ### getCollection

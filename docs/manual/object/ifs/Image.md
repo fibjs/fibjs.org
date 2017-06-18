@@ -862,6 +862,7 @@ Image.filter(Integer filterType,
 - BRIGHTNESS,      改变图像的亮度，用arg1设定亮度级别，取值范围是-255~255
 - CONTRAST,        改变图像的对比度，用arg1设定对比度级别，取值范围是0~100
 - COLORIZE,        改变图像的色调，用arg1、arg2、arg3分别指定red、blue、green分值，每种颜色范围是0~255，arg4为透明度，取值返回是0~127
+
 --------------------------
 ### affine
 根据给定的矩阵，对当前图像进行仿射
@@ -889,6 +890,7 @@ Image Image.affine(Array affine,
    x' = a0x + a1y + a2;
    y' = b0x + b1y + b2;
 ```
+
 --------------------------
 ### gaussianBlur
 对当前图像进行高斯模糊处理

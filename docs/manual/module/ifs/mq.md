@@ -44,6 +44,7 @@ function func(v){
 - 路由对象，等同于 new mq.[Routing](../../object/ifs/Routing.md)(v)，参见 [Routing](../../object/ifs/Routing.md)
 
 无返回或者其他的返回结果将结束消息处理。
+
 --------------------------
 ### Chain
 创建一个消息处理器链处理对象，参见 [Chain](../../object/ifs/Chain.md)
@@ -82,6 +83,7 @@ function func(v){
 }
 ```
 示例是一个 javascript 消息处理函数，当函数返回时，消息处理引擎将等待 await，直到 await.end 被调用，才继续下一阶段的处理。
+
 --------------------------
 ### nullHandler
 创建一个空处理器对象，次处理对象不做任何处理直接返回

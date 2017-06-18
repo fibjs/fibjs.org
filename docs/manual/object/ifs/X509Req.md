@@ -104,6 +104,7 @@ opts 接收的字段如下：
     type: ""        // 证书 Netscape 证书类型，接收：client, server, email, objsign, reserved, sslCA, emailCA, objCA
 }
 ```
+
 --------------------------
 ### dispose
 强制回收对象，调用此方法后，对象资源将立即释放

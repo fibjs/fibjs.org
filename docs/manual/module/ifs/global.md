@@ -175,6 +175,7 @@ static global.repl(Array cmds = []);
     }
 ]
 ```
+
 --------------------------
 进入交互模式，可以交互执行内部命令和代码，仅在启动 js 可以引用
 ```JavaScript
@@ -207,6 +208,7 @@ static global.repl(Stream out,
     }
 ]
 ```
+
 ## 属性
         
 ### Master

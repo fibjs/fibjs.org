@@ -90,6 +90,7 @@ readonly Integer HeapGraphEdge.type;
 - [profiler](../../module/ifs/profiler.md).Edge_Hidden,           指向需要事先计算出空间大小的节点
 - [profiler](../../module/ifs/profiler.md).Edge_Shortcut,         指向无法事先计算出空间大小的节点
 - [profiler](../../module/ifs/profiler.md).Edge_Weak,             一个弱引用（被GC忽视）
+
 --------------------------
 ### name
 链接名称

@@ -65,6 +65,7 @@ static X509Cert crypto.loadCert(String filename);
 * filename - 证书文件名
 
 loadFile 加载 mozilla 的 certdata,txt， 可于 [http](http.md)://hg.mozilla.org/releases/mozilla-release/raw-file/default/security/nss/lib/ckfw/builtins/certdata.txt 下载使用
+
 --------------------------
 ### loadCrl
 加载一个 PEM/DER 格式的撤销证书，可多次调用

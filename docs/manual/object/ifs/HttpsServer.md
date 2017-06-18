@@ -43,6 +43,7 @@ certs 格式为：
     }
 ]
 ```
+
 --------------------------
 HttpsServer 构造函数
 ```JavaScript
@@ -71,6 +72,7 @@ certs 格式为：
     }
 ]
 ```
+
 --------------------------
 HttpsServer 构造函数，在所有本机地址侦听
 ```JavaScript
@@ -124,6 +126,7 @@ HttpsServer.onerror(Object hdlrs);
       "500": new mq.Routing(...)
   })
 ```
+
 --------------------------
 ### run
 运行服务器并开始接收和分发连接，此函数不会返回
@@ -261,6 +264,7 @@ readonly Stats HttpsServer.httpStats;
     error_500 : 2    // 内部处理错误
 }
 ```
+
 --------------------------
 ### socket
 服务器当前侦听的 [Socket](Socket.md) 对象

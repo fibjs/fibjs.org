@@ -442,6 +442,7 @@ webview.onmove = function(evt) {
 	console.log(evt.left, evt.top);
 }
 	 	```
+
 --------------------------
 ### onresize
 查询和绑定窗口尺寸改变事件，相当于 on("size", func);
@@ -457,6 +458,7 @@ webview.onresize = function(evt) {
 	console.log(evt.width, evt.height);
 }
 ```
+
 --------------------------
 ### onclose
 查询和绑定窗口关闭事件，相当于 on("close", func);
@@ -470,6 +472,7 @@ var webview = gui.open('fs:index.html');
 
 webview.onclose = function() {}
 	 	```
+
 --------------------------
 ### onmessage
 查询和绑定接受 webview 内 postMessage 消息事件，相当于 on("message", func);
@@ -493,6 +496,7 @@ webview.onmessage = function(msg) {
 	console.log(msg); // 将会打印 'hello from html'
 }
 ```
+
 --------------------------
 ### defaultMaxListeners
 默认全局最大监听器数

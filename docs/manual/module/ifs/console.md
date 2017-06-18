@@ -94,6 +94,7 @@ static console.log(String fmt,
 * ... - 可选参数列表
 
 记录一般等级的日志信息。通常用于输出非错误性提示信息。
+
 --------------------------
 记录普通日志信息，与 info 等同
 ```JavaScript
@@ -104,6 +105,7 @@ static console.log(...);
 * ... - 可选参数列表
 
 记录一般等级的日志信息。通常用于输出非错误性提示信息。
+
 --------------------------
 ### debug
 记录调试日志信息
@@ -117,6 +119,7 @@ static console.debug(String fmt,
 * ... - 可选参数列表
 
 记录调试日志信息。通常用于输出调试信息。不重要。
+
 --------------------------
 记录调试日志信息
 ```JavaScript
@@ -127,6 +130,7 @@ static console.debug(...);
 * ... - 可选参数列表
 
 记录调试日志信息。通常用于输出调试信息。不重要。
+
 --------------------------
 ### info
 记录普通日志信息，与 log 等同
@@ -140,6 +144,7 @@ static console.info(String fmt,
 * ... - 可选参数列表
 
 记录一般等级的日志信息。通常用于输出非错误性提示信息。
+
 --------------------------
 记录普通日志信息，与 log 等同
 ```JavaScript
@@ -150,6 +155,7 @@ static console.info(...);
 * ... - 可选参数列表
 
 记录一般等级的日志信息。通常用于输出非错误性提示信息。
+
 --------------------------
 ### notice
 记录警告日志信息
@@ -163,6 +169,7 @@ static console.notice(String fmt,
 * ... - 可选参数列表
 
 记录警告日志信息。通常用于输出提示性调试信息。一般重要。
+
 --------------------------
 记录警告日志信息
 ```JavaScript
@@ -173,6 +180,7 @@ static console.notice(...);
 * ... - 可选参数列表
 
 记录警告日志信息。通常用于输出提示性调试信息。一般重要。
+
 --------------------------
 ### warn
 记录警告日志信息
@@ -186,6 +194,7 @@ static console.warn(String fmt,
 * ... - 可选参数列表
 
 记录警告日志信息。通常用于输出警告性调试信息。重要。
+
 --------------------------
 记录警告日志信息
 ```JavaScript
@@ -196,6 +205,7 @@ static console.warn(...);
 * ... - 可选参数列表
 
 记录警告日志信息。通常用于输出警告性调试信息。重要。
+
 --------------------------
 ### error
 记录错误日志信息
@@ -209,6 +219,7 @@ static console.error(String fmt,
 * ... - 可选参数列表
 
 记录用于错误日志信息。通常用于输出错误信息。非常重要。系统的出错信息也会以此等级记录。
+
 --------------------------
 记录错误日志信息
 ```JavaScript
@@ -219,6 +230,7 @@ static console.error(...);
 * ... - 可选参数列表
 
 记录用于错误日志信息。通常用于输出错误信息。非常重要。系统的出错信息也会以此等级记录。
+
 --------------------------
 ### crit
 记录关键错误日志信息
@@ -232,6 +244,7 @@ static console.crit(String fmt,
 * ... - 可选参数列表
 
 记录用于关键错误日志信息。通常用于输出关键错误信息。非常重要。
+
 --------------------------
 记录关键错误日志信息
 ```JavaScript
@@ -242,6 +255,7 @@ static console.crit(...);
 * ... - 可选参数列表
 
 记录用于关键错误日志信息。通常用于输出关键错误信息。非常重要。
+
 --------------------------
 ### alert
 记录警报错误日志信息
@@ -255,6 +269,7 @@ static console.alert(String fmt,
 * ... - 可选参数列表
 
 记录用于警报错误日志信息。通常用于输出警报错误信息。非常重要。为最高级别信息。
+
 --------------------------
 记录警报错误日志信息
 ```JavaScript
@@ -265,6 +280,7 @@ static console.alert(...);
 * ... - 可选参数列表
 
 记录用于警报错误日志信息。通常用于输出警报错误信息。非常重要。为最高级别信息。
+
 --------------------------
 ### dir
 用 JSON 格式输出对象
@@ -306,6 +322,7 @@ static console.trace(String label = "trace");
 * label - 标题，缺省为空字符串。
 
 通过日志输出当前调用堆栈。
+
 --------------------------
 ### assert
 断言测试，如果测试值为假，则报错
@@ -389,6 +406,7 @@ static console.keyDown(String key,
 - 方向键：up, down,left, right, home, end, pageup, pagedown
 - 编辑键：backspace, delete, insert, enter, tab, escape, space
 - 控制键：control, alt, shift, command
+
 --------------------------
 按下一个按键
 ```JavaScript
@@ -405,6 +423,7 @@ static console.keyDown(String key,
 - 方向键：up, down,left, right, home, end, pageup, pagedown
 - 编辑键：backspace, delete, insert, enter, tab, escape, space
 - 控制键：control, alt, shift, command
+
 --------------------------
 ### keyUp
 松开一个按键
@@ -422,6 +441,7 @@ static console.keyUp(String key,
 - 方向键：up, down,left, right, home, end, pageup, pagedown
 - 编辑键：backspace, delete, insert, enter, tab, escape, space
 - 控制键：control, alt, shift, command
+
 --------------------------
 松开一个按键
 ```JavaScript
@@ -438,6 +458,7 @@ static console.keyUp(String key,
 - 方向键：up, down,left, right, home, end, pageup, pagedown
 - 编辑键：backspace, delete, insert, enter, tab, escape, space
 - 控制键：control, alt, shift, command
+
 --------------------------
 ### keyTap
 点击并松开一个按键
@@ -455,6 +476,7 @@ static console.keyTap(String key,
 - 方向键：up, down,left, right, home, end, pageup, pagedown
 - 编辑键：backspace, delete, insert, enter, tab, escape, space
 - 控制键：control, alt, shift, command
+
 --------------------------
 点击并松开一个按键
 ```JavaScript
@@ -471,6 +493,7 @@ static console.keyTap(String key,
 - 方向键：up, down,left, right, home, end, pageup, pagedown
 - 编辑键：backspace, delete, insert, enter, tab, escape, space
 - 控制键：control, alt, shift, command
+
 --------------------------
 ### typeString
 输入一个字符串

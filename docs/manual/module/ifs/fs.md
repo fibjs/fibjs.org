@@ -484,6 +484,7 @@ static SeekableStream fs.open(String fname,
 - 'w+' 读写方式，文件不存在则自动创建。
 - 'a' 只写添加方式，文件不存在则自动创建。
 - 'a+' 读写添加方式，文件不存在则自动创建。
+
 --------------------------
 ### openSync
 打开文件，用于读取，写入，或者同时读写，是 open 的同步版兼容接口
@@ -506,6 +507,7 @@ static SeekableStream fs.openSync(String fname,
 - 'w+' 读写方式，文件不存在则自动创建。
 - 'a' 只写添加方式，文件不存在则自动创建。
 - 'a+' 读写添加方式，文件不存在则自动创建。
+
 --------------------------
 ### openTextStream
 打开文本文件，用于读取，写入，或者同时读写
@@ -528,6 +530,7 @@ static BufferedStream fs.openTextStream(String fname,
 - 'w+' 读写方式，文件不存在则自动创建。
 - 'a' 只写添加方式，文件不存在则自动创建。
 - 'a+' 读写添加方式，文件不存在则自动创建。
+
 --------------------------
 ### readTextFile
 打开文本文件，并读取内容

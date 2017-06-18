@@ -48,6 +48,7 @@ XmlNodeList XmlDocument.getElementsByTagName(String tagName);
 * 文档树中具有指定标记的 XmlElement 节点的 XmlNodeList 集合。返回的元素节点的顺序就是它们在源文档中出现的顺序。
 
 该方法将返回一个 [XmlNodeList](XmlNodeList.md) 对象（可以作为只读数组处理），该对象存放文档中具有指定标签名的所有 [XmlElement](XmlElement.md) 节点，它们存放的顺序就是在源文档中出现的顺序。 [XmlNodeList](XmlNodeList.md) 对象是“活”的，即如果在文档中添加或删除了指定标签名的元素，它的内容会自动进行必要的更新。
+
 --------------------------
 ### getElementsByTagNameNS
 返回带有指定命名空间和名称的所有元素的一个节点列表
@@ -64,6 +65,7 @@ XmlNodeList XmlDocument.getElementsByTagNameNS(String namespaceURI,
 * 文档树中具有指定标记的 XmlElement 节点的 XmlNodeList 集合。返回的元素节点的顺序就是它们在源文档中出现的顺序。
 
 该方法与 getElementsByTagName() 方法相似，只是它根据命名空间和名称来检索元素。
+
 --------------------------
 ### createElement
 创建元素节点
@@ -164,6 +166,7 @@ XmlDocument.normalize();
 ```
 
 这个方法将遍历当前节点的所有子孙节点，通过删除空的 Text 节点，已经合并所有相邻的 Text 节点来规范化文档。该方法在进行节点的插入或删除操作后，对于简化文档树的结构很有用。
+
 --------------------------
 ### cloneNode
 创建指定的节点的精确拷贝
@@ -178,6 +181,7 @@ XmlNode XmlDocument.cloneNode(Boolean deep = true);
 * 返回所复制的节点
 
 该方法将复制并返回调用它的节点的副本。如果传递给它的参数是 true，它还将递归复制当前节点的所有子孙节点。 否则，它只复制当前节点。返回的节点不属于文档树，它的 parentNode 属性为 null。当复制的是 Element 节点时，它的所有属性都将被复制。
+
 --------------------------
 ### lookupPrefix
 返回在当前节点上匹配指定的命名空间 URI 的前缀
@@ -220,6 +224,7 @@ XmlNode XmlDocument.insertBefore(XmlNode newChild,
 * 返回新的子节点
 
 如果文档树中已经存在了 newChild，它将从文档树中删除，然后重新插入它的新位置。来自一个文档的节点（或由一个文档创建的节点）不能插入另一个文档。也就是说，newChild 的 ownerDocument 属性必须与当前节点的 ownerDocument 属性相同。
+
 --------------------------
 ### insertAfter
 在已有的子节点后插入一个新的子节点
@@ -236,6 +241,7 @@ XmlNode XmlDocument.insertAfter(XmlNode newChild,
 * 返回新的子节点
 
 如果文档树中已经存在了 newChild，它将从文档树中删除，然后重新插入它的新位置。来自一个文档的节点（或由一个文档创建的节点）不能插入另一个文档。也就是说，newChild 的 ownerDocument 属性必须与当前节点的 ownerDocument 属性相同。
+
 --------------------------
 ### appendChild
 向节点的子节点列表的末尾添加新的子节点
@@ -250,6 +256,7 @@ XmlNode XmlDocument.appendChild(XmlNode newChild);
 * 返回这个新的子节点
 
 如果文档树中已经存在了 newChild，它将从文档树中删除，然后重新插入它的新位置。来自一个文档的节点（或由一个文档创建的节点）不能插入另一个文档。也就是说，newChild 的 ownerDocument 属性必须与当前节点的 ownerDocument 属性相同。
+
 --------------------------
 ### replaceChild
 将某个子节点替换为另一个
@@ -266,6 +273,7 @@ XmlNode XmlDocument.replaceChild(XmlNode newChild,
 * 如替换成功，此方法可返回被替换的节点，如替换失败，则返回 null
 
 如果文档树中已经存在了 newChild，它将从文档树中删除，然后重新插入它的新位置。来自一个文档的节点（或由一个文档创建的节点）不能插入另一个文档。也就是说，newChild 的 ownerDocument 属性必须与当前节点的 ownerDocument 属性相同。
+
 --------------------------
 ### removeChild
 从子节点列表中删除某个节点
@@ -362,6 +370,7 @@ readonly XmlDocumentType XmlDocument.doctype;
 ```
 
 对于没有 DTD 的 XML 文档，则返回 null。此属性可提供对 [XmlDocumentType](XmlDocumentType.md) 对象（ XmlDocument 的一个子节点）的直接访问。
+
 --------------------------
 ### documentElement
 返回文档的根节点
@@ -406,6 +415,7 @@ readonly Integer XmlDocument.nodeType;
 - [XmlComment](XmlComment.md): COMMENT_NODE(8)
 - [XmlDocument](XmlDocument.md): DOCUMENT_NODE(9)
 - [XmlDocumentType](XmlDocumentType.md): DOCUMENT_TYPE_NODE(10)
+
 --------------------------
 ### nodeName
 返回节点的名称，根据其类型
@@ -422,6 +432,7 @@ readonly String XmlDocument.nodeName;
 - [XmlComment](XmlComment.md): \#comment
 - [XmlDocument](XmlDocument.md): \#document
 - [XmlDocumentType](XmlDocumentType.md): doctype 名称
+
 --------------------------
 ### nodeValue
 返回节点的名称，根据其类型
@@ -438,6 +449,7 @@ String XmlDocument.nodeValue;
 - [XmlComment](XmlComment.md): 注释文本
 - [XmlDocument](XmlDocument.md): null
 - [XmlDocumentType](XmlDocumentType.md): null
+
 --------------------------
 ### ownerDocument
 返回节点的根元素（[XmlDocument](XmlDocument.md) 对象）

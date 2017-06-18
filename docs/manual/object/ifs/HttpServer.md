@@ -62,6 +62,7 @@ HttpServer.onerror(Object hdlrs);
       "500": new mq.Routing(...)
   })
 ```
+
 --------------------------
 ### run
 运行服务器并开始接收和分发连接，此函数不会返回
@@ -185,6 +186,7 @@ readonly Stats HttpServer.httpStats;
     error_500 : 2    // 内部处理错误
 }
 ```
+
 --------------------------
 ### socket
 服务器当前侦听的 [Socket](Socket.md) 对象

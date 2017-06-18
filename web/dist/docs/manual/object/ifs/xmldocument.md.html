@@ -195,7 +195,8 @@
 <ul>
 <li>文档树中具有指定标记的 XmlElement 节点的 XmlNodeList 集合。返回的元素节点的顺序就是它们在源文档中出现的顺序。</li>
 </ul>
-<h2 id="-xmlnodelist-xmlnodelist-md-xmlelement-xmlelement-md-xmlnodelist-xmlnodelist-md-">该方法将返回一个 <a href=xmlnodelist.md.html>XmlNodeList</a> 对象（可以作为只读数组处理），该对象存放文档中具有指定标签名的所有 <a href=xmlelement.md.html>XmlElement</a> 节点，它们存放的顺序就是在源文档中出现的顺序。 <a href=xmlnodelist.md.html>XmlNodeList</a> 对象是“活”的，即如果在文档中添加或删除了指定标签名的元素，它的内容会自动进行必要的更新。</h2>
+<p>该方法将返回一个 <a href=xmlnodelist.md.html>XmlNodeList</a> 对象（可以作为只读数组处理），该对象存放文档中具有指定标签名的所有 <a href=xmlelement.md.html>XmlElement</a> 节点，它们存放的顺序就是在源文档中出现的顺序。 <a href=xmlnodelist.md.html>XmlNodeList</a> 对象是“活”的，即如果在文档中添加或删除了指定标签名的元素，它的内容会自动进行必要的更新。</p>
+<hr>
 <h3 id="getelementsbytagnamens">getElementsByTagNameNS</h3>
 <p>返回带有指定命名空间和名称的所有元素的一个节点列表</p>
 <pre><code class="lang-JavaScript">XmlNodeList XmlDocument.getElementsByTagNameNS(<span class="hljs-built_in">String</span> namespaceURI,
@@ -210,7 +211,8 @@
 <ul>
 <li>文档树中具有指定标记的 XmlElement 节点的 XmlNodeList 集合。返回的元素节点的顺序就是它们在源文档中出现的顺序。</li>
 </ul>
-<h2 id="-getelementsbytagname-">该方法与 getElementsByTagName() 方法相似，只是它根据命名空间和名称来检索元素。</h2>
+<p>该方法与 getElementsByTagName() 方法相似，只是它根据命名空间和名称来检索元素。</p>
+<hr>
 <h3 id="createelement">createElement</h3>
 <p>创建元素节点</p>
 <pre><code class="lang-JavaScript">XmlElement XmlDocument.createElement(<span class="hljs-built_in">String</span> tagName);
@@ -306,7 +308,8 @@
 <p>合并相邻的 Text 节点并删除空的 Text 节点</p>
 <pre><code class="lang-JavaScript">XmlDocument.normalize();
 </code></pre>
-<h2 id="-text-text-">这个方法将遍历当前节点的所有子孙节点，通过删除空的 Text 节点，已经合并所有相邻的 Text 节点来规范化文档。该方法在进行节点的插入或删除操作后，对于简化文档树的结构很有用。</h2>
+<p>这个方法将遍历当前节点的所有子孙节点，通过删除空的 Text 节点，已经合并所有相邻的 Text 节点来规范化文档。该方法在进行节点的插入或删除操作后，对于简化文档树的结构很有用。</p>
+<hr>
 <h3 id="clonenode">cloneNode</h3>
 <p>创建指定的节点的精确拷贝</p>
 <pre><code class="lang-JavaScript">XmlNode XmlDocument.cloneNode(<span class="hljs-built_in">Boolean</span> deep = <span class="hljs-literal">true</span>);
@@ -319,7 +322,8 @@
 <ul>
 <li>返回所复制的节点</li>
 </ul>
-<h2 id="-true-parentnode-null-element-">该方法将复制并返回调用它的节点的副本。如果传递给它的参数是 true，它还将递归复制当前节点的所有子孙节点。 否则，它只复制当前节点。返回的节点不属于文档树，它的 parentNode 属性为 null。当复制的是 Element 节点时，它的所有属性都将被复制。</h2>
+<p>该方法将复制并返回调用它的节点的副本。如果传递给它的参数是 true，它还将递归复制当前节点的所有子孙节点。 否则，它只复制当前节点。返回的节点不属于文档树，它的 parentNode 属性为 null。当复制的是 Element 节点时，它的所有属性都将被复制。</p>
+<hr>
 <h3 id="lookupprefix">lookupPrefix</h3>
 <p>返回在当前节点上匹配指定的命名空间 URI 的前缀</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> XmlDocument.lookupPrefix(<span class="hljs-built_in">String</span> namespaceURI);
@@ -360,7 +364,8 @@
 <ul>
 <li>返回新的子节点</li>
 </ul>
-<h2 id="-newchild-newchild-ownerdocument-ownerdocument-">如果文档树中已经存在了 newChild，它将从文档树中删除，然后重新插入它的新位置。来自一个文档的节点（或由一个文档创建的节点）不能插入另一个文档。也就是说，newChild 的 ownerDocument 属性必须与当前节点的 ownerDocument 属性相同。</h2>
+<p>如果文档树中已经存在了 newChild，它将从文档树中删除，然后重新插入它的新位置。来自一个文档的节点（或由一个文档创建的节点）不能插入另一个文档。也就是说，newChild 的 ownerDocument 属性必须与当前节点的 ownerDocument 属性相同。</p>
+<hr>
 <h3 id="insertafter">insertAfter</h3>
 <p>在已有的子节点后插入一个新的子节点</p>
 <pre><code class="lang-JavaScript">XmlNode XmlDocument.insertAfter(XmlNode newChild,
@@ -375,7 +380,8 @@
 <ul>
 <li>返回新的子节点</li>
 </ul>
-<h2 id="-newchild-newchild-ownerdocument-ownerdocument-">如果文档树中已经存在了 newChild，它将从文档树中删除，然后重新插入它的新位置。来自一个文档的节点（或由一个文档创建的节点）不能插入另一个文档。也就是说，newChild 的 ownerDocument 属性必须与当前节点的 ownerDocument 属性相同。</h2>
+<p>如果文档树中已经存在了 newChild，它将从文档树中删除，然后重新插入它的新位置。来自一个文档的节点（或由一个文档创建的节点）不能插入另一个文档。也就是说，newChild 的 ownerDocument 属性必须与当前节点的 ownerDocument 属性相同。</p>
+<hr>
 <h3 id="appendchild">appendChild</h3>
 <p>向节点的子节点列表的末尾添加新的子节点</p>
 <pre><code class="lang-JavaScript">XmlNode XmlDocument.appendChild(XmlNode newChild);
@@ -388,7 +394,8 @@
 <ul>
 <li>返回这个新的子节点</li>
 </ul>
-<h2 id="-newchild-newchild-ownerdocument-ownerdocument-">如果文档树中已经存在了 newChild，它将从文档树中删除，然后重新插入它的新位置。来自一个文档的节点（或由一个文档创建的节点）不能插入另一个文档。也就是说，newChild 的 ownerDocument 属性必须与当前节点的 ownerDocument 属性相同。</h2>
+<p>如果文档树中已经存在了 newChild，它将从文档树中删除，然后重新插入它的新位置。来自一个文档的节点（或由一个文档创建的节点）不能插入另一个文档。也就是说，newChild 的 ownerDocument 属性必须与当前节点的 ownerDocument 属性相同。</p>
+<hr>
 <h3 id="replacechild">replaceChild</h3>
 <p>将某个子节点替换为另一个</p>
 <pre><code class="lang-JavaScript">XmlNode XmlDocument.replaceChild(XmlNode newChild,
@@ -403,7 +410,8 @@
 <ul>
 <li>如替换成功，此方法可返回被替换的节点，如替换失败，则返回 null</li>
 </ul>
-<h2 id="-newchild-newchild-ownerdocument-ownerdocument-">如果文档树中已经存在了 newChild，它将从文档树中删除，然后重新插入它的新位置。来自一个文档的节点（或由一个文档创建的节点）不能插入另一个文档。也就是说，newChild 的 ownerDocument 属性必须与当前节点的 ownerDocument 属性相同。</h2>
+<p>如果文档树中已经存在了 newChild，它将从文档树中删除，然后重新插入它的新位置。来自一个文档的节点（或由一个文档创建的节点）不能插入另一个文档。也就是说，newChild 的 ownerDocument 属性必须与当前节点的 ownerDocument 属性相同。</p>
+<hr>
 <h3 id="removechild">removeChild</h3>
 <p>从子节点列表中删除某个节点</p>
 <pre><code class="lang-JavaScript">XmlNode XmlDocument.removeChild(XmlNode oldChild);
@@ -485,7 +493,8 @@
 <p>返回与文档相关的文档类型声明（Document Type Declaration）</p>
 <pre><code class="lang-JavaScript">readonly XmlDocumentType XmlDocument.doctype;
 </code></pre>
-<h2 id="-dtd-xml-null-xmldocumenttype-xmldocumenttype-md-xmldocument-">对于没有 DTD 的 XML 文档，则返回 null。此属性可提供对 <a href=xmldocumenttype.md.html>XmlDocumentType</a> 对象（ XmlDocument 的一个子节点）的直接访问。</h2>
+<p>对于没有 DTD 的 XML 文档，则返回 null。此属性可提供对 <a href=xmldocumenttype.md.html>XmlDocumentType</a> 对象（ XmlDocument 的一个子节点）的直接访问。</p>
+<hr>
 <h3 id="documentelement">documentElement</h3>
 <p>返回文档的根节点</p>
 <pre><code class="lang-JavaScript">readonly XmlElement XmlDocument.documentElement;

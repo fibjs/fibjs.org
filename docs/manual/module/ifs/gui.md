@@ -58,6 +58,7 @@ static WebView gui.open(String url,
 }
 ```
 当设定 width 和 height，而未设定 left 或 right 时，窗口将自动居中
+
 ## 常量
         
 ### IE7

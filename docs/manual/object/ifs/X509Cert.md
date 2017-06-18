@@ -34,6 +34,7 @@ X509Cert.load(String txtCert);
 * txtCert - PEM 格式的证书
 
 load 加载 mozilla 的 certdata,txt， 可于 [http](../../module/ifs/http.md)://hg.mozilla.org/releases/mozilla-release/raw-file/default/security/nss/lib/ckfw/builtins/certdata.txt 下载使用
+
 --------------------------
 ### loadFile
 加载一个 CRT/PEM/DER/TXT 格式的证书，可多次调用
@@ -45,6 +46,7 @@ X509Cert.loadFile(String filename);
 * filename - 证书文件名
 
 loadFile 加载 mozilla 的 certdata,txt， 可于 [http](../../module/ifs/http.md)://hg.mozilla.org/releases/mozilla-release/raw-file/default/security/nss/lib/ckfw/builtins/certdata.txt 下载使用
+
 --------------------------
 ### loadRootCerts
 加载自带的缺省根证书，此证书内容源自：[http](../../module/ifs/http.md)://hg.mozilla.org/releases/mozilla-release/raw-file/default/security/nss/lib/ckfw/builtins/certdata.txt
@@ -200,6 +202,7 @@ readonly String X509Cert.usage;
 ```
 
 结果为全部或部分以下内容：digitalSignature, nonRepudiation, keyEncipherment, dataEncipherment, keyAgreement, keyCertSign, cRLSign
+
 --------------------------
 ### type
 获取证书的 Netscape 证书类型
@@ -208,6 +211,7 @@ readonly String X509Cert.type;
 ```
 
 结果为全部或部分以下内容：client, server, email, objsign, reserved, sslCA, emailCA, objCA
+
 --------------------------
 ### publicKey
 获取证书的公钥

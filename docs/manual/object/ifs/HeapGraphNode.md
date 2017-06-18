@@ -77,6 +77,7 @@ readonly Integer HeapGraphNode.type;
 - [profiler](../../module/ifs/profiler.md).Node_SlicedString,   分割的字符串
 - [profiler](../../module/ifs/profiler.md).Node_Symbol,         符号（ES6）
 - [profiler](../../module/ifs/profiler.md).Node_SimdValue,      堆中排好序的SIMD值(ES7)
+
 --------------------------
 ### name
 节点名称

@@ -105,6 +105,7 @@ test.forEach(function(value, key){
    ...
 });
 ```
+
 --------------------------
 ### between
 枚举数据库中键值在 from 和 to 之间的键值对
@@ -129,6 +130,7 @@ test.between("aaa", "bbb", function(value, key){
    ...
 });
 ```
+
 --------------------------
 ### begin
 在当前数据库上开启一个事务
