@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- include "../../common/meta.html" -->
+    <title>
+        Download@Fiber 上的 JavaScript
+    </title>
+</head>
+
+<body>
+    <!-- include "../../common/header.html" -->
+    <div class="container">
+        <div class="starter-template">
+            <h1>下载</h1>
+            <p class="lead"></p>
+        </div>
+        <%info.forEach(r => {
+            var d = r.published_at.substr(0,  10);%>
+            <h2>
+                <%=d + ', Version ' + r.tag_name%>
+            </h2>
+            <div class="row">
+                <div class="col-sm-7">
+                    <%-r.html%>
+                </div>
+                <!-- /.blog-main -->
+
+                <div class="col-sm-4 col-sm-offset-1">
+                    <div>
+                        <h4>Archives</h4>
+                        <ol class="list-unstyled">
+                            <%r.assets.forEach(f => {%>
+                                <li>
+                                    <a href="<%-f.browser_download_url%>">
+                                        <%=f.name%>
+                                    </a>
+                                </li>
+                                <%});%>
+                                    <li>
+                                        <a href="<%-r.tarball_url%>">Source code (tar.gz)</a>
+                                    </li>
+                                    <li>
+                                        <a href="<%-r.zipball_url%>">Source code (zip)</a>
+                                    </li>
+                        </ol>
+                    </div>
+                </div>
+                <!-- /.blog-sidebar -->
+
+            </div>
+            <!-- /.row -->
+            <%});%>
+
+    </div>
+    <!-- /.container -->
+
+    <!-- include "../../common/footer.html" -->
+</body>
+
+</html>
