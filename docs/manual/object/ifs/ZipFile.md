@@ -1,5 +1,5 @@
 # 对象 ZipFile
-[zip](/docs/manual/module/ifs/zip.md.html) 文件访问对象
+[zip](../../module/ifs/zip.md) 文件访问对象
 
 ## 函数
         
@@ -127,7 +127,7 @@ ZipFile.write(SeekableStream strm,
 * password - 解压密码, 默认没有密码
 
 ### close
-关闭打开的[zip](/docs/manual/module/ifs/zip.md.html)文件
+关闭打开的[zip](../../module/ifs/zip.md)文件
 ```JavaScript
 ZipFile.close() async;
 ```

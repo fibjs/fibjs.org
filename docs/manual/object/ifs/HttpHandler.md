@@ -1,7 +1,7 @@
 # 对象 HttpHandler
-[http](/docs/manual/module/ifs/http.md.html) 协议转换处理器
+[http](../../module/ifs/http.md) 协议转换处理器
 
-用以将数据流转换为 [http](/docs/manual/module/ifs/http.md.html) 协议消息，创建方式：
+用以将数据流转换为 [http](../../module/ifs/http.md) 协议消息，创建方式：
 ```JavaScript
 var hdlr = new mq.HttpHandler(...);
 ```
@@ -12,7 +12,7 @@ var hdlr = new http.Handler(...);
 ## 构造函数
         
 ### HttpHandler
-创建一个 [http](/docs/manual/module/ifs/http.md.html) 协议处理器对象，将流对象的数据转变为 [http](/docs/manual/module/ifs/http.md.html) 消息对象
+创建一个 [http](../../module/ifs/http.md) 协议处理器对象，将流对象的数据转变为 [http](../../module/ifs/http.md) 消息对象
 ```JavaScript
  new HttpHandler(Handler hdlr);
 ```
@@ -129,18 +129,18 @@ Integer HttpHandler.maxUploadSize;
 ```
 
 ### handler
-[WebSocket](/docs/manual/object/ifs/websocket.md.html) 协议转换处理器当前事件处理接口对象
+[WebSocket](WebSocket.md) 协议转换处理器当前事件处理接口对象
 ```JavaScript
 Handler HttpHandler.handler;
 ```
 
 ### stats
-查询 [WebSocket](/docs/manual/object/ifs/websocket.md.html) 包协议转换处理器的工作状态
+查询 [WebSocket](WebSocket.md) 包协议转换处理器的工作状态
 ```JavaScript
 readonly Stats HttpHandler.stats;
 ```
 
-返回的结果为一个 [Stats](/docs/manual/object/ifs/stats.md.html) 对象，结构如下：
+返回的结果为一个 [Stats](Stats.md) 对象，结构如下：
 ```JavaScript
 {
     total : 1000,    // 总计处理的请求

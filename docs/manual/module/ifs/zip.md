@@ -1,5 +1,5 @@
 # 模块 zip
-[zip](/docs/manual/module/ifs/zip.md.html) 格式文件压缩解压模块
+zip 格式文件压缩解压模块
 
 使用方法：
 ```JavaScript
@@ -8,7 +8,7 @@ var zip = require('zip');
 ## 函数
         
 ### isZipFile
-判断文件是否是[zip](/docs/manual/module/ifs/zip.md.html)格式
+判断文件是否是zip格式
 ```JavaScript
 static Boolean zip.isZipFile(String filename) async;
 ```
@@ -20,7 +20,7 @@ static Boolean zip.isZipFile(String filename) async;
 * 返回true代表文件是zip文件
 
 ### open
-打开一个[zip](/docs/manual/module/ifs/zip.md.html)文件
+打开一个zip文件
 ```JavaScript
 static ZipFile zip.open(String path,
                 String mod = "r",
@@ -36,7 +36,7 @@ static ZipFile zip.open(String path,
 * 返回zip文件对象
 
 --------------------------
-打开一个[zip](/docs/manual/module/ifs/zip.md.html)文件
+打开一个zip文件
 ```JavaScript
 static ZipFile zip.open(Buffer data,
                 String mod = "r",
@@ -52,7 +52,7 @@ static ZipFile zip.open(Buffer data,
 * 返回zip文件对象
 
 --------------------------
-打开一个[zip](/docs/manual/module/ifs/zip.md.html)文件
+打开一个zip文件
 ```JavaScript
 static ZipFile zip.open(SeekableStream strm,
                 String mod = "r",
@@ -76,7 +76,7 @@ const zip.ZIP_STORED = 0;
 ```
 
 ### ZIP_DEFLATED
-压缩类型常量, 需要依赖[zlib](/docs/manual/module/ifs/zlib.md.html)库进行压缩
+压缩类型常量, 需要依赖[zlib](zlib.md)库进行压缩
 ```JavaScript
 const zip.ZIP_DEFLATED = 1;
 ```

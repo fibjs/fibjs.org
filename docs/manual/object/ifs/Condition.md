@@ -5,7 +5,7 @@
 1）一个线程等待某个条件成立，而将自己挂起；
 2）另一个线程使条件成立，并通知等待的纤程向下执行。
 
-为了防止竞争，每个条件变量都需要一个[Lock](/docs/manual/object/ifs/lock.md.html)的配合（[Lock](/docs/manual/object/ifs/lock.md.html)可自行显式创建并传递进来，也可交由fibjs为您创建）
+为了防止竞争，每个条件变量都需要一个[Lock](Lock.md)的配合（[Lock](Lock.md)可自行显式创建并传递进来，也可交由fibjs为您创建）
 
 通过使用条件变量，可以利用一个条件变量控制一批纤程的开关；
 

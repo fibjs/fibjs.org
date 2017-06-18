@@ -8,7 +8,7 @@ var gui = require('gui');
 ## 函数
         
 ### setVersion
-设置 [WebView](/docs/manual/object/ifs/webview.md.html) 内 ie 模拟版本
+设置 [WebView](../../object/ifs/WebView.md) 内 ie 模拟版本
 ```JavaScript
 static gui.setVersion(Integer ver);
 ```
@@ -60,37 +60,37 @@ static WebView gui.open(String url,
 ## 常量
         
 ### IE7
-[WebView](/docs/manual/object/ifs/webview.md.html) ie 模拟版本，指定 ie7
+[WebView](../../object/ifs/WebView.md) ie 模拟版本，指定 ie7
 ```JavaScript
 const gui.IE7 = 7000;
 ```
 
 ### IE8
-[WebView](/docs/manual/object/ifs/webview.md.html) ie 模拟版本，指定 ie8
+[WebView](../../object/ifs/WebView.md) ie 模拟版本，指定 ie8
 ```JavaScript
 const gui.IE8 = 8000;
 ```
 
 ### IE9
-[WebView](/docs/manual/object/ifs/webview.md.html) ie 模拟版本，指定 ie9
+[WebView](../../object/ifs/WebView.md) ie 模拟版本，指定 ie9
 ```JavaScript
 const gui.IE9 = 9000;
 ```
 
 ### IE10
-[WebView](/docs/manual/object/ifs/webview.md.html) ie 模拟版本，指定 ie10
+[WebView](../../object/ifs/WebView.md) ie 模拟版本，指定 ie10
 ```JavaScript
 const gui.IE10 = 10000;
 ```
 
 ### IE11
-[WebView](/docs/manual/object/ifs/webview.md.html) ie 模拟版本，指定 ie11
+[WebView](../../object/ifs/WebView.md) ie 模拟版本，指定 ie11
 ```JavaScript
 const gui.IE11 = 11000;
 ```
 
 ### EDGE
-[WebView](/docs/manual/object/ifs/webview.md.html) ie 模拟版本，指定 edge
+[WebView](../../object/ifs/WebView.md) ie 模拟版本，指定 edge
 ```JavaScript
 const gui.EDGE = 11001;
 ```

@@ -1,5 +1,5 @@
 # 对象 HttpCollection
-[http](/docs/manual/module/ifs/http.md.html) 容器对象，用于 [http](/docs/manual/module/ifs/http.md.html) header，cookie，query，form，等数据的存储与组织
+[http](../../module/ifs/http.md) 容器对象，用于 [http](../../module/ifs/http.md) header，cookie，query，form，等数据的存储与组织
 
 ## 函数
         

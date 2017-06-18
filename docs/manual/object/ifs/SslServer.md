@@ -1,7 +1,7 @@
 # 对象 SslServer
-[ssl](/docs/manual/module/ifs/ssl.md.html) 服务器对象，可方便创建一个标准多纤程 [ssl](/docs/manual/module/ifs/ssl.md.html) 服务器
+[ssl](../../module/ifs/ssl.md) 服务器对象，可方便创建一个标准多纤程 [ssl](../../module/ifs/ssl.md) 服务器
 
-[SslServer](/docs/manual/object/ifs/sslserver.md.html) 对象是将 [TcpServer](/docs/manual/object/ifs/tcpserver.md.html) 和 [SslHandler](/docs/manual/object/ifs/sslhandler.md.html) 组合封装的对象，方便快速搭建服务器，逻辑上相当于：
+SslServer 对象是将 [TcpServer](TcpServer.md) 和 [SslHandler](SslHandler.md) 组合封装的对象，方便快速搭建服务器，逻辑上相当于：
 ```JavaScript
 var svr = new net.SslServer(addr, port, new ssl.Handler(crt, key, function(req){
    ...
@@ -18,7 +18,7 @@ var svr = new http.Server(crt, key, function(req){
 ## 构造函数
         
 ### SslServer
-[SslServer](/docs/manual/object/ifs/sslserver.md.html) 构造函数，在所有本机地址侦听
+SslServer 构造函数，在所有本机地址侦听
 ```JavaScript
  new SslServer(Array certs,
                 Integer port,
@@ -45,7 +45,7 @@ certs 格式为：
 ```
 
 --------------------------
-[SslServer](/docs/manual/object/ifs/sslserver.md.html) 构造函数
+SslServer 构造函数
 ```JavaScript
  new SslServer(Array certs,
                 String addr,
@@ -74,7 +74,7 @@ certs 格式为：
 ```
 
 --------------------------
-[SslServer](/docs/manual/object/ifs/sslserver.md.html) 构造函数，在所有本机地址侦听
+SslServer 构造函数，在所有本机地址侦听
 ```JavaScript
  new SslServer(X509Cert crt,
                 PKey key,
@@ -89,7 +89,7 @@ certs 格式为：
 * listener - 指定 ssl 接收到的内置消息处理器，处理函数，链式处理数组，路由对象，详见 mq.Handler
 
 --------------------------
-[SslServer](/docs/manual/object/ifs/sslserver.md.html) 构造函数
+SslServer 构造函数
 ```JavaScript
  new SslServer(X509Cert crt,
                 PKey key,
@@ -188,7 +188,7 @@ readonly X509Cert SslServer.ca;
 ```
 
 ### socket
-服务器当前侦听的 [Socket](/docs/manual/object/ifs/socket.md.html) 对象
+服务器当前侦听的 [Socket](Socket.md) 对象
 ```JavaScript
 readonly Socket SslServer.socket;
 ```
@@ -205,7 +205,7 @@ Handler SslServer.handler;
 readonly Stats SslServer.stats;
 ```
 
-返回的结果为一个 [Stats](/docs/manual/object/ifs/stats.md.html) 对象，初始化计数器如下：
+返回的结果为一个 [Stats](Stats.md) 对象，初始化计数器如下：
 ```JavaScript
 {
     total : 1000,      // 总计处理的连接

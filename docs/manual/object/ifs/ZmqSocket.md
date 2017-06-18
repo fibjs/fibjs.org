@@ -4,7 +4,7 @@ ZeroMQ 套接口对象
 ## 构造函数
         
 ### ZmqSocket
-[ZmqSocket](/docs/manual/object/ifs/zmqsocket.md.html) 对象构造函数
+ZmqSocket 对象构造函数
 ```JavaScript
  new ZmqSocket(Integer type = zmq.PAIR);
 ```

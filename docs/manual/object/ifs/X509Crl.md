@@ -1,14 +1,14 @@
 # 对象 X509Crl
 x509 撤销证书对象
 
-[X509Crl](/docs/manual/object/ifs/x509crl.md.html) 对象属于 [crypto](/docs/manual/module/ifs/crypto.md.html) 模块，创建：
+X509Crl 对象属于 [crypto](../../module/ifs/crypto.md) 模块，创建：
 ```JavaScript
 var k = new crypto.X509Crl();
 ```
 ## 构造函数
         
 ### X509Crl
-[X509Crl](/docs/manual/object/ifs/x509crl.md.html) 构造函数
+X509Crl 构造函数
 ```JavaScript
  new X509Crl();
 ```

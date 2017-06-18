@@ -287,7 +287,7 @@ static Stat fs.statSync(String path);
 * 返回文件的基础信息
 
 ### lstat
-查询指定文件的基础信息, 和stat不同的是, 当[path](/docs/manual/module/ifs/path.md.html)是一个软连接的时候，返回的将是这个软连接的信息而不是指向的文件的信息
+查询指定文件的基础信息, 和stat不同的是, 当[path](path.md)是一个软连接的时候，返回的将是这个软连接的信息而不是指向的文件的信息
 ```JavaScript
 static Stat fs.lstat(String path) async;
 ```
@@ -600,7 +600,7 @@ static fs.appendFileSync(String fname,
 ## 属性
         
 ### constants
-[fs](/docs/manual/module/ifs/fs.md.html)模块的常量对象
+fs模块的常量对象
 ```JavaScript
 static readonly Object fs.constants;
 ```

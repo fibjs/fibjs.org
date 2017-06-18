@@ -80,7 +80,7 @@ static LevelDB db.openLevelDB(String connString) async;
 * 返回数据库对象
 
 ### openRedis
-打开一个 [Redis](/docs/manual/object/ifs/redis.md.html) 数据库
+打开一个 [Redis](../../object/ifs/Redis.md) 数据库
 ```JavaScript
 static Redis db.openRedis(String connString) async;
 ```

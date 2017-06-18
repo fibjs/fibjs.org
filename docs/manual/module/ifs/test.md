@@ -108,7 +108,7 @@ static Integer test.run(Integer loglevel = console.ERROR);
 * 返回测试用例统计结果，正确则返回 0，错误则返回错误个数
 
 ### setup
-初始化当前脚本的测试环境，将 [test](/docs/manual/module/ifs/test.md.html) 模块方法复制为当前脚本全局变量
+初始化当前脚本的测试环境，将 test 模块方法复制为当前脚本全局变量
 ```JavaScript
 static test.setup(Integer mode = BDD);
 ```
@@ -127,13 +127,13 @@ static Integer test.slow;
 ## 常量
         
 ### BDD
-定义 BDD(Behavior Drive Development) 测试环境，支持 describe, xdescribe, it, xit, before, after, beforeEach 和 afterEach，同时初始化 [assert](/docs/manual/module/ifs/assert.md.html) 和expect
+定义 BDD(Behavior Drive Development) 测试环境，支持 describe, xdescribe, it, xit, before, after, beforeEach 和 afterEach，同时初始化 [assert](assert.md) 和expect
 ```JavaScript
 const test.BDD = 0;
 ```
 
 ### TDD
-定义 TDD(Test Drive Development) 测试环境，支持 suite, xsuite, [test](/docs/manual/module/ifs/test.md.html), xtest, setup, teardown, suiteSetup 和 suiteTeardown，同时初始化 [assert](/docs/manual/module/ifs/assert.md.html) 和expect
+定义 TDD(Test Drive Development) 测试环境，支持 suite, xsuite, test, xtest, setup, teardown, suiteSetup 和 suiteTeardown，同时初始化 [assert](assert.md) 和expect
 ```JavaScript
 const test.TDD = 1;
 ```

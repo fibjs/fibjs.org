@@ -1,14 +1,14 @@
 # 对象 MemoryStream
 内存流对象
 
-[MemoryStream](/docs/manual/object/ifs/memorystream.md.html) 对象创建一个基于内存的流对象，创建方法：
+MemoryStream 对象创建一个基于内存的流对象，创建方法：
 ```JavaScript
 var ms = new io.MemoryStream();
 ```
 ## 构造函数
         
 ### MemoryStream
-[MemoryStream](/docs/manual/object/ifs/memorystream.md.html) 构造函数
+MemoryStream 构造函数
 ```JavaScript
  new MemoryStream();
 ```

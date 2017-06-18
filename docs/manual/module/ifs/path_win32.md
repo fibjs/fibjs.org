@@ -120,13 +120,13 @@ static readonly String path_win32.delimiter;
 ```
 
 ### posix
-posix 实现，参见 [path_posix](/docs/manual/module/ifs/path_posix.md.html)
+posix 实现，参见 [path_posix](path_posix.md)
 ```JavaScript
 static readonly Object path_win32.posix;
 ```
 
 ### win32
-windows 实现，参见 [path_win32](/docs/manual/module/ifs/path_win32.md.html)
+windows 实现，参见 path_win32
 ```JavaScript
 static readonly Object path_win32.win32;
 ```

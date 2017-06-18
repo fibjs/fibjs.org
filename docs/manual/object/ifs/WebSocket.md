@@ -1,7 +1,7 @@
 # 对象 WebSocket
-[WebSocket](/docs/manual/object/ifs/websocket.md.html) 包协议转换处理器
+WebSocket 包协议转换处理器
 
-用以将 Http 协议转换为 [WebSocket](/docs/manual/object/ifs/websocket.md.html) 包协议消息。创建方式：
+用以将 Http 协议转换为 WebSocket 包协议消息。创建方式：
 ```JavaScript
 var ws = require("ws");
 

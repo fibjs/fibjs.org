@@ -1,5 +1,5 @@
 # 模块 bson
-[bson](/docs/manual/module/ifs/bson.md.html) 编码与解码模块
+bson 编码与解码模块
 
 引用方式：
 ```JavaScript
@@ -13,7 +13,7 @@ var bson = require('bson');
 ## 函数
         
 ### encode
-以 [bson](/docs/manual/module/ifs/bson.md.html) 格式编码变量
+以 bson 格式编码变量
 ```JavaScript
 static Buffer bson.encode(Object data);
 ```
@@ -25,7 +25,7 @@ static Buffer bson.encode(Object data);
 * 返回编码的二进制数据
 
 ### decode
-以 [bson](/docs/manual/module/ifs/bson.md.html) 方式解码字符串为一个变量
+以 bson 方式解码字符串为一个变量
 ```JavaScript
 static Object bson.decode(Buffer data);
 ```

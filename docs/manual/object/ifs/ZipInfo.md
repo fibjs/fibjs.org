@@ -1,5 +1,5 @@
 # 对象 ZipInfo
-[zip](/docs/manual/module/ifs/zip.md.html) 文件访问对象
+[zip](../../module/ifs/zip.md) 文件访问对象
 
 ## 函数
         

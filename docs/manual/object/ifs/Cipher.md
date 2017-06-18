@@ -1,14 +1,14 @@
 # 对象 Cipher
 对称加密算法对象
 
-[Cipher](/docs/manual/object/ifs/cipher.md.html) 对象属于 [crypto](/docs/manual/module/ifs/crypto.md.html) 模块，创建：
+Cipher 对象属于 [crypto](../../module/ifs/crypto.md) 模块，创建：
 ```JavaScript
 var c = new crypto.Cipher(crypto.AES, crypto.ECB, ...);
 ```
 ## 构造函数
         
 ### Cipher
-[Cipher](/docs/manual/object/ifs/cipher.md.html) 构造函数，仅用于 ARC4 初始化
+Cipher 构造函数，仅用于 ARC4 初始化
 ```JavaScript
  new Cipher(Integer provider,
                 Buffer key);
@@ -19,7 +19,7 @@ var c = new crypto.Cipher(crypto.AES, crypto.ECB, ...);
 * key - 指定加密解密密码
 
 --------------------------
-[Cipher](/docs/manual/object/ifs/cipher.md.html) 构造函数
+Cipher 构造函数
 ```JavaScript
  new Cipher(Integer provider,
                 Integer mode,
@@ -32,7 +32,7 @@ var c = new crypto.Cipher(crypto.AES, crypto.ECB, ...);
 * key - 指定加密解密密码
 
 --------------------------
-[Cipher](/docs/manual/object/ifs/cipher.md.html) 构造函数
+Cipher 构造函数
 ```JavaScript
  new Cipher(Integer provider,
                 Integer mode,

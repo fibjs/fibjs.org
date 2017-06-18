@@ -1,7 +1,7 @@
 # 对象 SandBox
 安全沙箱对象，用于管理一个独立的运行空间
 
- 所有的代码都运行在自己的沙箱中，全局的 require 会调用当前沙箱加载模块，沙箱会通过 require 传递给加载的沙箱。下面的示例创建一个沙箱，限制只允许访问全局基础模块中的 [assert](/docs/manual/module/ifs/assert.md.html) 模块，并添加 a 和 b 两个定制模块：
+ 所有的代码都运行在自己的沙箱中，全局的 require 会调用当前沙箱加载模块，沙箱会通过 require 传递给加载的沙箱。下面的示例创建一个沙箱，限制只允许访问全局基础模块中的 [assert](../../module/ifs/assert.md) 模块，并添加 a 和 b 两个定制模块：
 ```JavaScript
 var vm = require('vm');
 var sbox = new vm.SandBox({
@@ -202,7 +202,7 @@ Value SandBox.valueOf();
 ## 属性
         
 ### global
-查询沙箱的 [global](/docs/manual/module/ifs/global.md.html) 对象
+查询沙箱的 [global](../../module/ifs/global.md) 对象
 ```JavaScript
 readonly Object SandBox.global;
 ```

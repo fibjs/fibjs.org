@@ -9,13 +9,13 @@ var m = new collection.Map();
 ## 构造函数
         
 ### Map
-[Map](/docs/manual/object/ifs/map.md.html) 构造函数
+Map 构造函数
 ```JavaScript
  new Map();
 ```
 
 --------------------------
-[Map](/docs/manual/object/ifs/map.md.html) 构造函数
+Map 构造函数
 ```JavaScript
  new Map(Object map);
 ```

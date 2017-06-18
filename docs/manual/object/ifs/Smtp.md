@@ -1,10 +1,10 @@
 # 对象 Smtp
-[Smtp](/docs/manual/object/ifs/smtp.md.html)对象
+Smtp对象
 
 ## 构造函数
         
 ### Smtp
-[Smtp](/docs/manual/object/ifs/smtp.md.html) 对象构造函数
+Smtp 对象构造函数
 ```JavaScript
  new Smtp();
 ```
@@ -144,7 +144,7 @@ Integer Smtp.timeout;
 ```
 
 ### socket
-查询 [Smtp](/docs/manual/object/ifs/smtp.md.html) 对象当前连接的 [Socket](/docs/manual/object/ifs/socket.md.html)
+查询 Smtp 对象当前连接的 [Socket](Socket.md)
 ```JavaScript
 readonly Stream Smtp.socket;
 ```

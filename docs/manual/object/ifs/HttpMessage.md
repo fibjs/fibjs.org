@@ -1,5 +1,5 @@
 # 对象 HttpMessage
-[http](/docs/manual/module/ifs/http.md.html) 基础消息对象
+[http](../../module/ifs/http.md) 基础消息对象
 
 ## 函数
         
@@ -119,7 +119,7 @@ HttpMessage.write(Buffer data) async;
 * data - 给定要写入的数据
 
 ### end
-设置当前消息处理结束，[Chain](/docs/manual/object/ifs/chain.md.html) 处理器不再继续后面的事务
+设置当前消息处理结束，[Chain](Chain.md) 处理器不再继续后面的事务
 ```JavaScript
 HttpMessage.end();
 ```
@@ -214,7 +214,7 @@ String HttpMessage.protocol;
 ```
 
 ### headers
-包含消息中 [http](/docs/manual/module/ifs/http.md.html) 消息头的容器，只读属性
+包含消息中 [http](../../module/ifs/http.md) 消息头的容器，只读属性
 ```JavaScript
 readonly HttpCollection HttpMessage.headers;
 ```

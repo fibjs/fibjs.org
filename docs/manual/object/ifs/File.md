@@ -1,7 +1,7 @@
 # 对象 File
 文件操作对象，用于二进制文件读写
 
-文件操作对象用于对二进制文件进行操作，可使用 [fs](/docs/manual/module/ifs/fs.md.html) 模块打开和创建文件：
+文件操作对象用于对二进制文件进行操作，可使用 [fs](../../module/ifs/fs.md) 模块打开和创建文件：
 ```JavaScript
 var f = fs.open('test.txt');
 ```

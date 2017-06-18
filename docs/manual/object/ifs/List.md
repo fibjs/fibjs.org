@@ -9,13 +9,13 @@ var a = new collection.List();
 ## 构造函数
         
 ### List
-[List](/docs/manual/object/ifs/list.md.html) 对象构造函数
+List 对象构造函数
 ```JavaScript
  new List();
 ```
 
 --------------------------
-[List](/docs/manual/object/ifs/list.md.html) 对象构造函数
+List 对象构造函数
 ```JavaScript
  new List(Array data);
 ```

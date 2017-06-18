@@ -1,7 +1,7 @@
 # 对象 HttpServer
-[http](/docs/manual/module/ifs/http.md.html) 服务器对象
+[http](../../module/ifs/http.md) 服务器对象
 
-[http](/docs/manual/module/ifs/http.md.html) 服务器对象是将 [TcpServer](/docs/manual/object/ifs/tcpserver.md.html) 和 [HttpHandler](/docs/manual/object/ifs/httphandler.md.html) 组合封装的对象，方便快速搭建服务器，逻辑上相当于：
+[http](../../module/ifs/http.md) 服务器对象是将 [TcpServer](TcpServer.md) 和 [HttpHandler](HttpHandler.md) 组合封装的对象，方便快速搭建服务器，逻辑上相当于：
 ```JavaScript
 var svr = new net.TcpServer(addr, port, new http.Handler(function(req){
    ...
@@ -18,7 +18,7 @@ var svr = new http.Server(80, function(req){
 ## 构造函数
         
 ### HttpServer
-[HttpServer](/docs/manual/object/ifs/httpserver.md.html) 构造函数，在所有本机地址侦听
+HttpServer 构造函数，在所有本机地址侦听
 ```JavaScript
  new HttpServer(Integer port,
                 Handler hdlr);
@@ -29,7 +29,7 @@ var svr = new http.Server(80, function(req){
 * hdlr - http 内置消息处理器，处理函数，链式处理数组，路由对象，详见 mq.Handler
 
 --------------------------
-[HttpServer](/docs/manual/object/ifs/httpserver.md.html) 构造函数
+HttpServer 构造函数
 ```JavaScript
  new HttpServer(String addr,
                 Integer port,
@@ -156,12 +156,12 @@ Integer HttpServer.maxUploadSize;
 ```
 
 ### httpStats
-查询 [http](/docs/manual/module/ifs/http.md.html) 协议转换处理器的工作状态
+查询 [http](../../module/ifs/http.md) 协议转换处理器的工作状态
 ```JavaScript
 readonly Stats HttpServer.httpStats;
 ```
 
-返回的结果为一个 [Stats](/docs/manual/object/ifs/stats.md.html) 对象，结构如下：
+返回的结果为一个 [Stats](Stats.md) 对象，结构如下：
 ```JavaScript
 {
     total : 1000,    // 总计处理的请求
@@ -176,7 +176,7 @@ readonly Stats HttpServer.httpStats;
 ```
 
 ### socket
-服务器当前侦听的 [Socket](/docs/manual/object/ifs/socket.md.html) 对象
+服务器当前侦听的 [Socket](Socket.md) 对象
 ```JavaScript
 readonly Socket HttpServer.socket;
 ```
@@ -193,7 +193,7 @@ Handler HttpServer.handler;
 readonly Stats HttpServer.stats;
 ```
 
-返回的结果为一个 [Stats](/docs/manual/object/ifs/stats.md.html) 对象，初始化计数器如下：
+返回的结果为一个 [Stats](Stats.md) 对象，初始化计数器如下：
 ```JavaScript
 {
     total : 1000,      // 总计处理的连接

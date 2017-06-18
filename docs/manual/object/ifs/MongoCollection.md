@@ -1,7 +1,7 @@
 # 对象 MongoCollection
 mongodb 数据库数据集对象
 
-使用 [MongoDB](/docs/manual/object/ifs/mongodb.md.html).getCollection 创建：
+使用 [MongoDB](MongoDB.md).getCollection 创建：
 ```JavaScript
 var col1 = mdb.getCollection('test');
 var col = mdb.test;

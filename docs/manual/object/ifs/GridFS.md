@@ -1,7 +1,7 @@
 # 对象 GridFS
-[MongoDB](/docs/manual/object/ifs/mongodb.md.html) [GridFS](/docs/manual/object/ifs/gridfs.md.html) 分布式文件系统访问对象
+[MongoDB](MongoDB.md) GridFS 分布式文件系统访问对象
 
-使用 [MongoDB](/docs/manual/object/ifs/mongodb.md.html).[fs](/docs/manual/module/ifs/fs.md.html) 获取，创建方式：
+使用 [MongoDB](MongoDB.md).[fs](../../module/ifs/fs.md) 获取，创建方式：
 ```JavaScript
 var gfs = mdb.fs;
 ```
@@ -113,13 +113,13 @@ Value GridFS.valueOf();
 ## 属性
         
 ### files
-查询 [GridFS](/docs/manual/object/ifs/gridfs.md.html) 的元数据表
+查询 GridFS 的元数据表
 ```JavaScript
 readonly MongoCollection GridFS.files;
 ```
 
 ### chunks
-查询 [GridFS](/docs/manual/object/ifs/gridfs.md.html) 的分块数据表
+查询 GridFS 的分块数据表
 ```JavaScript
 readonly MongoCollection GridFS.chunks;
 ```

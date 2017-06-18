@@ -1,5 +1,5 @@
 # 模块 timers
-[timers](/docs/manual/module/ifs/timers.md.html) 模块
+timers 模块
 
 ## 函数
         

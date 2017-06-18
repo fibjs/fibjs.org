@@ -8,13 +8,13 @@ var ws = require('ws');
 ## 对象
         
 ### Message
-创建一个 websocket 消息对象，参见 [WebSocketMessage](/docs/manual/object/ifs/websocketmessage.md.html)
+创建一个 websocket 消息对象，参见 [WebSocketMessage](../../object/ifs/WebSocketMessage.md)
 ```JavaScript
 WebSocketMessage ws.Message;
 ```
 
 ### Handler
-创建一个 websocket 包协议转换处理器，参见 [WebSocketHandler](/docs/manual/object/ifs/websockethandler.md.html)
+创建一个 websocket 包协议转换处理器，参见 [WebSocketHandler](../../object/ifs/WebSocketHandler.md)
 ```JavaScript
 WebSocketHandler ws.Handler;
 ```
@@ -28,7 +28,7 @@ WebSocket ws.Socket;
 ## 函数
         
 ### connect
-创建一个 websocket 连接，并返回握手成功的 [Stream](/docs/manual/object/ifs/stream.md.html) 对象
+创建一个 websocket 连接，并返回握手成功的 [Stream](../../object/ifs/Stream.md) 对象
 ```JavaScript
 static Stream ws.connect(String url,
                 String origin = "") async;
@@ -42,7 +42,7 @@ static Stream ws.connect(String url,
 * 返回连接成功的 Stream 对象，可能为 Socket 或者 SslSocket
 
 ### upgrade
-创建一个 websocket 协议处理器，从 [http](/docs/manual/module/ifs/http.md.html) 接收 upgrade 请求并握手，生成 [WebSocket](/docs/manual/object/ifs/websocket.md.html) 对象
+创建一个 websocket 协议处理器，从 [http](http.md) 接收 upgrade 请求并握手，生成 [WebSocket](../../object/ifs/WebSocket.md) 对象
 ```JavaScript
 static Handler ws.upgrade(Function accept);
 ```

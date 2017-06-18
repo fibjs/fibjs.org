@@ -1,14 +1,14 @@
 # 对象 PKey
 不对称加密算法对象
 
-[PKey](/docs/manual/object/ifs/pkey.md.html) 对象属于 [crypto](/docs/manual/module/ifs/crypto.md.html) 模块，创建：
+PKey 对象属于 [crypto](../../module/ifs/crypto.md) 模块，创建：
 ```JavaScript
 var k = new crypto.PKey();
 ```
 ## 构造函数
         
 ### PKey
-[PKey](/docs/manual/object/ifs/pkey.md.html) 构造函数
+PKey 构造函数
 ```JavaScript
  new PKey();
 ```

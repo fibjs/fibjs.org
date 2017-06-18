@@ -1,7 +1,7 @@
 # 对象 RedisHash
-[Redis](/docs/manual/object/ifs/redis.md.html) 数据库客户端 Hash 对象，此对象为包含指定 key 的客户端，只有调用其方法才会操作数据库
+[Redis](Redis.md) 数据库客户端 Hash 对象，此对象为包含指定 key 的客户端，只有调用其方法才会操作数据库
 
-用以操作 [Redis](/docs/manual/object/ifs/redis.md.html) 的 Hash 对象，创建方法：
+用以操作 [Redis](Redis.md) 的 Hash 对象，创建方法：
 ```JavaScript
 var db = require("db");
 var rdb = new db.openRedis("redis-server");

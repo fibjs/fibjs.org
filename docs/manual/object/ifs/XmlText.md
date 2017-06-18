@@ -1,15 +1,15 @@
 # 对象 XmlText
-[XmlText](/docs/manual/object/ifs/xmltext.md.html) 对象表示元素或属性的文本内容
+XmlText 对象表示元素或属性的文本内容
 
-[XmlText](/docs/manual/object/ifs/xmltext.md.html) 节点表示 XML 文档中的一系列纯文本。因为纯文本出现在 XML 的元素和属性中，所以 [XmlText](/docs/manual/object/ifs/xmltext.md.html) 节点通常作为 [XmlElement](/docs/manual/object/ifs/xmlelement.md.html) 节点和 [XmlAttr](/docs/manual/object/ifs/xmlattr.md.html) 节点的子节点出现。
+XmlText 节点表示 XML 文档中的一系列纯文本。因为纯文本出现在 XML 的元素和属性中，所以 XmlText 节点通常作为 [XmlElement](XmlElement.md) 节点和 [XmlAttr](XmlAttr.md) 节点的子节点出现。
 
-[XmlText](/docs/manual/object/ifs/xmltext.md.html) 节点继承了 [XmlCharacterData](/docs/manual/object/ifs/xmlcharacterdata.md.html) 接口，通过从 [XmlCharacterData](/docs/manual/object/ifs/xmlcharacterdata.md.html) 接口继承的 data 属性或从 [XmlNode](/docs/manual/object/ifs/xmlnode.md.html) 接口继承的 nadevalue 属性，可以访问 [XmlText](/docs/manual/object/ifs/xmltext.md.html) 节点的文本内容。
+XmlText 节点继承了 [XmlCharacterData](XmlCharacterData.md) 接口，通过从 [XmlCharacterData](XmlCharacterData.md) 接口继承的 data 属性或从 [XmlNode](XmlNode.md) 接口继承的 nadevalue 属性，可以访问 XmlText 节点的文本内容。
 
-用从 [XmlCharacterData](/docs/manual/object/ifs/xmlcharacterdata.md.html) 继承的方法或 [XmlText](/docs/manual/object/ifs/xmltext.md.html) 接口自身定义的 splitText() 方法可以操作 [XmlText](/docs/manual/object/ifs/xmltext.md.html) 节点。使用 [XmlDocument](/docs/manual/object/ifs/xmldocument.md.html) 的 createTextNode 来创建一个新的 [XmlText](/docs/manual/object/ifs/xmltext.md.html) 节点。
+用从 [XmlCharacterData](XmlCharacterData.md) 继承的方法或 XmlText 接口自身定义的 splitText() 方法可以操作 XmlText 节点。使用 [XmlDocument](XmlDocument.md) 的 createTextNode 来创建一个新的 XmlText 节点。
 
-[XmlText](/docs/manual/object/ifs/xmltext.md.html) 节点没有子节点。
+XmlText 节点没有子节点。
 
-关于从文档的子树中删除空 [XmlText](/docs/manual/object/ifs/xmltext.md.html) 节点与合并相邻的 [XmlText](/docs/manual/object/ifs/xmltext.md.html) 节点的方法，请参阅 [XmlNode](/docs/manual/object/ifs/xmlnode.md.html).normalize 方法。
+关于从文档的子树中删除空 XmlText 节点与合并相邻的 XmlText 节点的方法，请参阅 [XmlNode](XmlNode.md).normalize 方法。
 ## 函数
         
 ### splitText
@@ -23,9 +23,9 @@ XmlText XmlText.splitText(Integer offset);
 返回结果:
 * 从当前节点分割出的 Text 节点
 
-该方法将在指定的 offset 处把 [XmlText](/docs/manual/object/ifs/xmltext.md.html) 节点分割成两个节点。原始的 [XmlText](/docs/manual/object/ifs/xmltext.md.html) 节点将被修改，使它包含 offset 指定的位置之前的文本内容（但不包括文本内容）。新的 [XmlText](/docs/manual/object/ifs/xmltext.md.html) 节点将被创建，用于存放从 offset 位置（包括该位置上的字符）到原字符结尾的所有字符。新的 [XmlText](/docs/manual/object/ifs/xmltext.md.html) 节点是该方法的返回值。此外，如果原始的 [XmlText](/docs/manual/object/ifs/xmltext.md.html) 节点具有 parentNode，新的 [XmlText](/docs/manual/object/ifs/xmltext.md.html) 节点将插入这个父节点，紧邻在原始节点之后。
+该方法将在指定的 offset 处把 XmlText 节点分割成两个节点。原始的 XmlText 节点将被修改，使它包含 offset 指定的位置之前的文本内容（但不包括文本内容）。新的 XmlText 节点将被创建，用于存放从 offset 位置（包括该位置上的字符）到原字符结尾的所有字符。新的 XmlText 节点是该方法的返回值。此外，如果原始的 XmlText 节点具有 parentNode，新的 XmlText 节点将插入这个父节点，紧邻在原始节点之后。
 
-[XmlCDATASection](/docs/manual/object/ifs/xmlcdatasection.md.html) 接口继承了 [XmlText](/docs/manual/object/ifs/xmltext.md.html) 接口， [XmlCDATASection](/docs/manual/object/ifs/xmlcdatasection.md.html) 节点也可以使用该方法 ，只是新创建的节点是 [XmlCDATASection](/docs/manual/object/ifs/xmlcdatasection.md.html) 节点，而不是 [XmlText](/docs/manual/object/ifs/xmltext.md.html) 节点。    @param offset 规定在何处分割文本节点。开始值以 0 开始
+[XmlCDATASection](XmlCDATASection.md) 接口继承了 XmlText 接口， [XmlCDATASection](XmlCDATASection.md) 节点也可以使用该方法 ，只是新创建的节点是 [XmlCDATASection](XmlCDATASection.md) 节点，而不是 XmlText 节点。    @param offset 规定在何处分割文本节点。开始值以 0 开始
 
 ### substringData
 从节点中提取子串
@@ -280,14 +280,14 @@ readonly Integer XmlText.nodeType;
 ```
 
 不同对象的 nodeType 会返回不同的值：
-- [XmlElement](/docs/manual/object/ifs/xmlelement.md.html): ELEMENT_NODE(1)
-- [XmlAttr](/docs/manual/object/ifs/xmlattr.md.html): ATTRIBUTE_NODE(2)
-- [XmlText](/docs/manual/object/ifs/xmltext.md.html): TEXT_NODE(3)
-- [XmlCDATASection](/docs/manual/object/ifs/xmlcdatasection.md.html): CDATA_SECTION_NODE(4)
-- [XmlProcessingInstruction](/docs/manual/object/ifs/xmlprocessinginstruction.md.html): PROCESSING_INSTRUCTION_NODE(7)
-- [XmlComment](/docs/manual/object/ifs/xmlcomment.md.html): COMMENT_NODE(8)
-- [XmlDocument](/docs/manual/object/ifs/xmldocument.md.html): DOCUMENT_NODE(9)
-- [XmlDocumentType](/docs/manual/object/ifs/xmldocumenttype.md.html): DOCUMENT_TYPE_NODE(10)
+- [XmlElement](XmlElement.md): ELEMENT_NODE(1)
+- [XmlAttr](XmlAttr.md): ATTRIBUTE_NODE(2)
+- [XmlText](XmlText.md): TEXT_NODE(3)
+- [XmlCDATASection](XmlCDATASection.md): CDATA_SECTION_NODE(4)
+- [XmlProcessingInstruction](XmlProcessingInstruction.md): PROCESSING_INSTRUCTION_NODE(7)
+- [XmlComment](XmlComment.md): COMMENT_NODE(8)
+- [XmlDocument](XmlDocument.md): DOCUMENT_NODE(9)
+- [XmlDocumentType](XmlDocumentType.md): DOCUMENT_TYPE_NODE(10)
 
 ### nodeName
 返回节点的名称，根据其类型
@@ -296,14 +296,14 @@ readonly String XmlText.nodeName;
 ```
 
 不同对象的 nodeName 会返回不同的值：
-- [XmlElement](/docs/manual/object/ifs/xmlelement.md.html): element name
-- [XmlAttr](/docs/manual/object/ifs/xmlattr.md.html): 属性名称
-- [XmlText](/docs/manual/object/ifs/xmltext.md.html): \#text
-- [XmlCDATASection](/docs/manual/object/ifs/xmlcdatasection.md.html): \#cdata-section
-- [XmlProcessingInstruction](/docs/manual/object/ifs/xmlprocessinginstruction.md.html): 返回指定目标 target
-- [XmlComment](/docs/manual/object/ifs/xmlcomment.md.html): \#comment
-- [XmlDocument](/docs/manual/object/ifs/xmldocument.md.html): \#document
-- [XmlDocumentType](/docs/manual/object/ifs/xmldocumenttype.md.html): doctype 名称
+- [XmlElement](XmlElement.md): element name
+- [XmlAttr](XmlAttr.md): 属性名称
+- [XmlText](XmlText.md): \#text
+- [XmlCDATASection](XmlCDATASection.md): \#cdata-section
+- [XmlProcessingInstruction](XmlProcessingInstruction.md): 返回指定目标 target
+- [XmlComment](XmlComment.md): \#comment
+- [XmlDocument](XmlDocument.md): \#document
+- [XmlDocumentType](XmlDocumentType.md): doctype 名称
 
 ### nodeValue
 返回节点的名称，根据其类型
@@ -312,17 +312,17 @@ String XmlText.nodeValue;
 ```
 
 不同对象的 nodeName 会返回不同的值：
-- [XmlElement](/docs/manual/object/ifs/xmlelement.md.html): null
-- [XmlAttr](/docs/manual/object/ifs/xmlattr.md.html): 属性的值
-- [XmlText](/docs/manual/object/ifs/xmltext.md.html): 节点的内容
-- [XmlCDATASection](/docs/manual/object/ifs/xmlcdatasection.md.html): 节点的内容
-- [XmlProcessingInstruction](/docs/manual/object/ifs/xmlprocessinginstruction.md.html): 返回指定内容 data
-- [XmlComment](/docs/manual/object/ifs/xmlcomment.md.html): 注释文本
-- [XmlDocument](/docs/manual/object/ifs/xmldocument.md.html): null
-- [XmlDocumentType](/docs/manual/object/ifs/xmldocumenttype.md.html): null
+- [XmlElement](XmlElement.md): null
+- [XmlAttr](XmlAttr.md): 属性的值
+- [XmlText](XmlText.md): 节点的内容
+- [XmlCDATASection](XmlCDATASection.md): 节点的内容
+- [XmlProcessingInstruction](XmlProcessingInstruction.md): 返回指定内容 data
+- [XmlComment](XmlComment.md): 注释文本
+- [XmlDocument](XmlDocument.md): null
+- [XmlDocumentType](XmlDocumentType.md): null
 
 ### ownerDocument
-返回节点的根元素（[XmlDocument](/docs/manual/object/ifs/xmldocument.md.html) 对象）
+返回节点的根元素（[XmlDocument](XmlDocument.md) 对象）
 ```JavaScript
 readonly XmlDocument XmlText.ownerDocument;
 ```

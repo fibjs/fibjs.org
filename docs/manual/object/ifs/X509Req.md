@@ -1,20 +1,20 @@
 # 对象 X509Req
 x509 证书请求对象
 
-[X509Req](/docs/manual/object/ifs/x509req.md.html) 对象属于 [crypto](/docs/manual/module/ifs/crypto.md.html) 模块，创建：
+X509Req 对象属于 [crypto](../../module/ifs/crypto.md) 模块，创建：
 ```JavaScript
 var k = new crypto.X509Req();
 ```
 ## 构造函数
         
 ### X509Req
-[X509Req](/docs/manual/object/ifs/x509req.md.html) 构造函数
+X509Req 构造函数
 ```JavaScript
  new X509Req();
 ```
 
 --------------------------
-[X509Req](/docs/manual/object/ifs/x509req.md.html) 构造函数，根据给定的信息创建一个证书请求
+X509Req 构造函数，根据给定的信息创建一个证书请求
 ```JavaScript
  new X509Req(String subject,
                 PKey key,

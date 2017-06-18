@@ -1,5 +1,5 @@
 # 对象 HeapGraphNode
-[HeapGraphNode](/docs/manual/object/ifs/heapgraphnode.md.html)表示堆视图中的一个节点
+HeapGraphNode表示堆视图中的一个节点
 
 ## 函数
         
@@ -59,20 +59,20 @@ Value HeapGraphNode.valueOf();
 readonly Integer HeapGraphNode.type;
 ```
 
-- [profiler](/docs/manual/module/ifs/profiler.md.html).Node_Hidden,         隐藏节点，当显示给用户时可以被过滤掉
-- [profiler](/docs/manual/module/ifs/profiler.md.html).Node_Array,          数组
-- [profiler](/docs/manual/module/ifs/profiler.md.html).Node_String,         字符串
-- [profiler](/docs/manual/module/ifs/profiler.md.html).Node_Object,         JS对象（字符串和数组除外）
-- [profiler](/docs/manual/module/ifs/profiler.md.html).Node_Code,           编译后的代码
-- [profiler](/docs/manual/module/ifs/profiler.md.html).Node_Closure,        函数闭包
-- [profiler](/docs/manual/module/ifs/profiler.md.html).Node_RegExp,         正则表达式
-- [profiler](/docs/manual/module/ifs/profiler.md.html).Node_HeapNumber,     堆中排好序的数字
-- [profiler](/docs/manual/module/ifs/profiler.md.html).Node_Native,         Native对象（非v8堆上的）
-- [profiler](/docs/manual/module/ifs/profiler.md.html).Node_Synthetic,      Synthetic对象
-- [profiler](/docs/manual/module/ifs/profiler.md.html).Node_ConsString,     拼接的字符串
-- [profiler](/docs/manual/module/ifs/profiler.md.html).Node_SlicedString,   分割的字符串
-- [profiler](/docs/manual/module/ifs/profiler.md.html).Node_Symbol,         符号（ES6）
-- [profiler](/docs/manual/module/ifs/profiler.md.html).Node_SimdValue,      堆中排好序的SIMD值(ES7)
+- [profiler](../../module/ifs/profiler.md).Node_Hidden,         隐藏节点，当显示给用户时可以被过滤掉
+- [profiler](../../module/ifs/profiler.md).Node_Array,          数组
+- [profiler](../../module/ifs/profiler.md).Node_String,         字符串
+- [profiler](../../module/ifs/profiler.md).Node_Object,         JS对象（字符串和数组除外）
+- [profiler](../../module/ifs/profiler.md).Node_Code,           编译后的代码
+- [profiler](../../module/ifs/profiler.md).Node_Closure,        函数闭包
+- [profiler](../../module/ifs/profiler.md).Node_RegExp,         正则表达式
+- [profiler](../../module/ifs/profiler.md).Node_HeapNumber,     堆中排好序的数字
+- [profiler](../../module/ifs/profiler.md).Node_Native,         Native对象（非v8堆上的）
+- [profiler](../../module/ifs/profiler.md).Node_Synthetic,      Synthetic对象
+- [profiler](../../module/ifs/profiler.md).Node_ConsString,     拼接的字符串
+- [profiler](../../module/ifs/profiler.md).Node_SlicedString,   分割的字符串
+- [profiler](../../module/ifs/profiler.md).Node_Symbol,         符号（ES6）
+- [profiler](../../module/ifs/profiler.md).Node_SimdValue,      堆中排好序的SIMD值(ES7)
 
 ### name
 节点名称
@@ -99,7 +99,7 @@ readonly Integer HeapGraphNode.shallowSize;
 ```
 
 ### childs
-子节点列表，由[HeapGraphEdge](/docs/manual/object/ifs/heapgraphedge.md.html)类型对象组成
+子节点列表，由[HeapGraphEdge](HeapGraphEdge.md)类型对象组成
 ```JavaScript
 readonly List HeapGraphNode.childs;
 ```

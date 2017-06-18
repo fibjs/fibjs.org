@@ -1,14 +1,14 @@
 # 对象 Socket
 网络套接口对象
 
-[Socket](/docs/manual/object/ifs/socket.md.html) 属于 [net](/docs/manual/module/ifs/net.md.html) 模块，创建方法
+Socket 属于 [net](../../module/ifs/net.md) 模块，创建方法
 ```JavaScript
 var s = new net.Socket();
 ```
 ## 构造函数
         
 ### Socket
-[Socket](/docs/manual/object/ifs/socket.md.html) 构造函数，创建一个新的 [Socket](/docs/manual/object/ifs/socket.md.html) 对象
+Socket 构造函数，创建一个新的 Socket 对象
 ```JavaScript
  new Socket(Integer family = net.AF_INET,
                 Integer type = net.SOCK_STREAM);
@@ -32,7 +32,7 @@ Socket.connect(String host,
 * port - 指定对方端口
 
 ### bind
-将当前 [Socket](/docs/manual/object/ifs/socket.md.html) 绑定至本地所有地址的指定端口
+将当前 Socket 绑定至本地所有地址的指定端口
 ```JavaScript
 Socket.bind(Integer port,
                 Boolean allowIPv4 = true) async;
@@ -43,7 +43,7 @@ Socket.bind(Integer port,
 * allowIPv4 - 指定是否接受 ipv4 连接，缺省为 true。本参数在 ipv6 时有效，并依赖于操作系统
 
 --------------------------
-将当前 [Socket](/docs/manual/object/ifs/socket.md.html) 绑定至指定地址的指定端口
+将当前 Socket 绑定至指定地址的指定端口
 ```JavaScript
 Socket.bind(String addr,
                 Integer port,
@@ -204,13 +204,13 @@ Value Socket.valueOf();
 ## 属性
         
 ### family
-查询当前 [Socket](/docs/manual/object/ifs/socket.md.html) 对象的地址集
+查询当前 Socket 对象的地址集
 ```JavaScript
 readonly Integer Socket.family;
 ```
 
 ### type
-查询当前 [Socket](/docs/manual/object/ifs/socket.md.html) 对象的协议族
+查询当前 Socket 对象的协议族
 ```JavaScript
 readonly Integer Socket.type;
 ```

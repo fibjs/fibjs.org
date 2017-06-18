@@ -1,5 +1,5 @@
 # 对象 XmlNodeList
-[XmlNodeList](/docs/manual/object/ifs/xmlnodelist.md.html) 对象代表一个有顺序的节点列表
+XmlNodeList 对象代表一个有顺序的节点列表
 
 ## 函数
         

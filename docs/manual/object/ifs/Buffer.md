@@ -1,7 +1,7 @@
 # 对象 Buffer
-二进制数据缓存对象，用于 [io](/docs/manual/module/ifs/io.md.html) 读写的数据处理
+二进制数据缓存对象，用于 [io](../../module/ifs/io.md) 读写的数据处理
 
-[Buffer](/docs/manual/object/ifs/buffer.md.html) 对象为全局基础类，在任何时候都可以直接以 new [Buffer](/docs/manual/object/ifs/buffer.md.html)(...) 创建：
+Buffer 对象为全局基础类，在任何时候都可以直接以 new Buffer(...) 创建：
 ```JavaScript
 var buf = new Buffer();
 ```
@@ -66,7 +66,7 @@ var buf = new Buffer();
 ## 函数
         
 ### isBuffer
-检测给定的变量是否是 [Buffer](/docs/manual/object/ifs/buffer.md.html) 对象
+检测给定的变量是否是 Buffer 对象
 ```JavaScript
 static Boolean Buffer.isBuffer(Value v);
 ```
@@ -196,7 +196,7 @@ Integer Buffer.write(String str,
 * 写入的数据字节长度
 
 ### fill
-为[Buffer](/docs/manual/object/ifs/buffer.md.html)对象填充指定内容数据
+为Buffer对象填充指定内容数据
 ```JavaScript
 Buffer Buffer.fill(Integer v,
                 Integer offset = 0,
@@ -212,7 +212,7 @@ Buffer Buffer.fill(Integer v,
 * 返回当前 Buffer 对象
 
 --------------------------
-为[Buffer](/docs/manual/object/ifs/buffer.md.html)对象填充指定内容数据
+为Buffer对象填充指定内容数据
 ```JavaScript
 Buffer Buffer.fill(Buffer v,
                 Integer offset = 0,
@@ -228,7 +228,7 @@ Buffer Buffer.fill(Buffer v,
 * 返回当前 Buffer 对象
 
 --------------------------
-为[Buffer](/docs/manual/object/ifs/buffer.md.html)对象填充指定内容数据
+为Buffer对象填充指定内容数据
 ```JavaScript
 Buffer Buffer.fill(String v,
                 Integer offset = 0,
@@ -244,7 +244,7 @@ Buffer Buffer.fill(String v,
 * 返回当前 Buffer 对象
 
 ### indexOf
-返回某个指定数据在[Buffer](/docs/manual/object/ifs/buffer.md.html)中首次出现的位置
+返回某个指定数据在Buffer中首次出现的位置
 ```JavaScript
 Integer Buffer.indexOf(Integer v,
                 Integer offset = 0);
@@ -255,7 +255,7 @@ Integer Buffer.indexOf(Integer v,
 * offset - 起始查找位置
 
 --------------------------
-返回某个指定数据在[Buffer](/docs/manual/object/ifs/buffer.md.html)中首次出现的位置
+返回某个指定数据在Buffer中首次出现的位置
 ```JavaScript
 Integer Buffer.indexOf(Buffer v,
                 Integer offset = 0);
@@ -266,7 +266,7 @@ Integer Buffer.indexOf(Buffer v,
 * offset - 起始查找位置
 
 --------------------------
-返回某个指定数据在[Buffer](/docs/manual/object/ifs/buffer.md.html)中首次出现的位置
+返回某个指定数据在Buffer中首次出现的位置
 ```JavaScript
 Integer Buffer.indexOf(String v,
                 Integer offset = 0);
@@ -882,7 +882,7 @@ String Buffer.hex();
 * 返回编码字符串
 
 ### base64
-使用 [base64](/docs/manual/module/ifs/base64.md.html) 编码缓存对象内容
+使用 [base64](../../module/ifs/base64.md) 编码缓存对象内容
 ```JavaScript
 String Buffer.base64();
 ```

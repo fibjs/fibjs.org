@@ -8,7 +8,7 @@ var reader = new io.BufferedStream(stream);
 ## 构造函数
         
 ### BufferedStream
-[BufferedStream](/docs/manual/object/ifs/bufferedstream.md.html) 构造函数
+BufferedStream 构造函数
 ```JavaScript
  new BufferedStream(Stream stm);
 ```

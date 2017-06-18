@@ -1,12 +1,12 @@
 # 对象 XmlDocument
-[XmlDocument](/docs/manual/object/ifs/xmldocument.md.html) 对象代表整个 XML 文档
+XmlDocument 对象代表整个 XML 文档
 
-[XmlDocument](/docs/manual/object/ifs/xmldocument.md.html) 对象是一棵文档树的根，可为我们提供对文档数据的最初（或最顶层）的访问入口。
-用于元素节点、文本节点、注释、处理指令等均无法存在于 [XmlDocument](/docs/manual/object/ifs/xmldocument.md.html) 之外， [XmlDocument](/docs/manual/object/ifs/xmldocument.md.html) 对象同样提供了创建这些对象的方法。 [XmlNode](/docs/manual/object/ifs/xmlnode.md.html) 对象提供了一个 ownerDocument 属性，此属性可把它们与在其中创建它们的 [XmlDocument](/docs/manual/object/ifs/xmldocument.md.html) 关联起来。
+XmlDocument 对象是一棵文档树的根，可为我们提供对文档数据的最初（或最顶层）的访问入口。
+用于元素节点、文本节点、注释、处理指令等均无法存在于 XmlDocument 之外， XmlDocument 对象同样提供了创建这些对象的方法。 [XmlNode](XmlNode.md) 对象提供了一个 ownerDocument 属性，此属性可把它们与在其中创建它们的 XmlDocument 关联起来。
 ## 构造函数
         
 ### XmlDocument
-构造一个 [XmlDocument](/docs/manual/object/ifs/xmldocument.md.html) 对象
+构造一个 XmlDocument 对象
 ```JavaScript
  new XmlDocument(String type = "text/xml");
 ```
@@ -46,7 +46,7 @@ XmlNodeList XmlDocument.getElementsByTagName(String tagName);
 返回结果:
 * 文档树中具有指定标记的 XmlElement 节点的 XmlNodeList 集合。返回的元素节点的顺序就是它们在源文档中出现的顺序。
 
-该方法将返回一个 [XmlNodeList](/docs/manual/object/ifs/xmlnodelist.md.html) 对象（可以作为只读数组处理），该对象存放文档中具有指定标签名的所有 [XmlElement](/docs/manual/object/ifs/xmlelement.md.html) 节点，它们存放的顺序就是在源文档中出现的顺序。 [XmlNodeList](/docs/manual/object/ifs/xmlnodelist.md.html) 对象是“活”的，即如果在文档中添加或删除了指定标签名的元素，它的内容会自动进行必要的更新。
+该方法将返回一个 [XmlNodeList](XmlNodeList.md) 对象（可以作为只读数组处理），该对象存放文档中具有指定标签名的所有 [XmlElement](XmlElement.md) 节点，它们存放的顺序就是在源文档中出现的顺序。 [XmlNodeList](XmlNodeList.md) 对象是“活”的，即如果在文档中添加或删除了指定标签名的元素，它的内容会自动进行必要的更新。
 
 ### getElementsByTagNameNS
 返回带有指定命名空间和名称的所有元素的一个节点列表
@@ -115,7 +115,7 @@ XmlComment XmlDocument.createComment(String data);
 * 返回新创建的 XmlComment 节点，注释文本为指定的 data
 
 ### createCDATASection
-创建 [XmlCDATASection](/docs/manual/object/ifs/xmlcdatasection.md.html) 节点
+创建 [XmlCDATASection](XmlCDATASection.md) 节点
 ```JavaScript
 XmlCDATASection XmlDocument.createCDATASection(String data);
 ```
@@ -127,7 +127,7 @@ XmlCDATASection XmlDocument.createCDATASection(String data);
 * 返回新创建的 XmlCDATASection 节点，内容为指定的 data
 
 ### createProcessingInstruction
-创建 [XmlProcessingInstruction](/docs/manual/object/ifs/xmlprocessinginstruction.md.html) 节点
+创建 [XmlProcessingInstruction](XmlProcessingInstruction.md) 节点
 ```JavaScript
 XmlProcessingInstruction XmlDocument.createProcessingInstruction(String target,
                 String data);
@@ -343,7 +343,7 @@ String XmlDocument.xmlVersion;
 readonly XmlDocumentType XmlDocument.doctype;
 ```
 
-对于没有 DTD 的 XML 文档，则返回 null。此属性可提供对 [XmlDocumentType](/docs/manual/object/ifs/xmldocumenttype.md.html) 对象（ [XmlDocument](/docs/manual/object/ifs/xmldocument.md.html) 的一个子节点）的直接访问。
+对于没有 DTD 的 XML 文档，则返回 null。此属性可提供对 [XmlDocumentType](XmlDocumentType.md) 对象（ XmlDocument 的一个子节点）的直接访问。
 
 ### documentElement
 返回文档的根节点
@@ -376,14 +376,14 @@ readonly Integer XmlDocument.nodeType;
 ```
 
 不同对象的 nodeType 会返回不同的值：
-- [XmlElement](/docs/manual/object/ifs/xmlelement.md.html): ELEMENT_NODE(1)
-- [XmlAttr](/docs/manual/object/ifs/xmlattr.md.html): ATTRIBUTE_NODE(2)
-- [XmlText](/docs/manual/object/ifs/xmltext.md.html): TEXT_NODE(3)
-- [XmlCDATASection](/docs/manual/object/ifs/xmlcdatasection.md.html): CDATA_SECTION_NODE(4)
-- [XmlProcessingInstruction](/docs/manual/object/ifs/xmlprocessinginstruction.md.html): PROCESSING_INSTRUCTION_NODE(7)
-- [XmlComment](/docs/manual/object/ifs/xmlcomment.md.html): COMMENT_NODE(8)
-- [XmlDocument](/docs/manual/object/ifs/xmldocument.md.html): DOCUMENT_NODE(9)
-- [XmlDocumentType](/docs/manual/object/ifs/xmldocumenttype.md.html): DOCUMENT_TYPE_NODE(10)
+- [XmlElement](XmlElement.md): ELEMENT_NODE(1)
+- [XmlAttr](XmlAttr.md): ATTRIBUTE_NODE(2)
+- [XmlText](XmlText.md): TEXT_NODE(3)
+- [XmlCDATASection](XmlCDATASection.md): CDATA_SECTION_NODE(4)
+- [XmlProcessingInstruction](XmlProcessingInstruction.md): PROCESSING_INSTRUCTION_NODE(7)
+- [XmlComment](XmlComment.md): COMMENT_NODE(8)
+- [XmlDocument](XmlDocument.md): DOCUMENT_NODE(9)
+- [XmlDocumentType](XmlDocumentType.md): DOCUMENT_TYPE_NODE(10)
 
 ### nodeName
 返回节点的名称，根据其类型
@@ -392,14 +392,14 @@ readonly String XmlDocument.nodeName;
 ```
 
 不同对象的 nodeName 会返回不同的值：
-- [XmlElement](/docs/manual/object/ifs/xmlelement.md.html): element name
-- [XmlAttr](/docs/manual/object/ifs/xmlattr.md.html): 属性名称
-- [XmlText](/docs/manual/object/ifs/xmltext.md.html): \#text
-- [XmlCDATASection](/docs/manual/object/ifs/xmlcdatasection.md.html): \#cdata-section
-- [XmlProcessingInstruction](/docs/manual/object/ifs/xmlprocessinginstruction.md.html): 返回指定目标 target
-- [XmlComment](/docs/manual/object/ifs/xmlcomment.md.html): \#comment
-- [XmlDocument](/docs/manual/object/ifs/xmldocument.md.html): \#document
-- [XmlDocumentType](/docs/manual/object/ifs/xmldocumenttype.md.html): doctype 名称
+- [XmlElement](XmlElement.md): element name
+- [XmlAttr](XmlAttr.md): 属性名称
+- [XmlText](XmlText.md): \#text
+- [XmlCDATASection](XmlCDATASection.md): \#cdata-section
+- [XmlProcessingInstruction](XmlProcessingInstruction.md): 返回指定目标 target
+- [XmlComment](XmlComment.md): \#comment
+- [XmlDocument](XmlDocument.md): \#document
+- [XmlDocumentType](XmlDocumentType.md): doctype 名称
 
 ### nodeValue
 返回节点的名称，根据其类型
@@ -408,17 +408,17 @@ String XmlDocument.nodeValue;
 ```
 
 不同对象的 nodeName 会返回不同的值：
-- [XmlElement](/docs/manual/object/ifs/xmlelement.md.html): null
-- [XmlAttr](/docs/manual/object/ifs/xmlattr.md.html): 属性的值
-- [XmlText](/docs/manual/object/ifs/xmltext.md.html): 节点的内容
-- [XmlCDATASection](/docs/manual/object/ifs/xmlcdatasection.md.html): 节点的内容
-- [XmlProcessingInstruction](/docs/manual/object/ifs/xmlprocessinginstruction.md.html): 返回指定内容 data
-- [XmlComment](/docs/manual/object/ifs/xmlcomment.md.html): 注释文本
-- [XmlDocument](/docs/manual/object/ifs/xmldocument.md.html): null
-- [XmlDocumentType](/docs/manual/object/ifs/xmldocumenttype.md.html): null
+- [XmlElement](XmlElement.md): null
+- [XmlAttr](XmlAttr.md): 属性的值
+- [XmlText](XmlText.md): 节点的内容
+- [XmlCDATASection](XmlCDATASection.md): 节点的内容
+- [XmlProcessingInstruction](XmlProcessingInstruction.md): 返回指定内容 data
+- [XmlComment](XmlComment.md): 注释文本
+- [XmlDocument](XmlDocument.md): null
+- [XmlDocumentType](XmlDocumentType.md): null
 
 ### ownerDocument
-返回节点的根元素（[XmlDocument](/docs/manual/object/ifs/xmldocument.md.html) 对象）
+返回节点的根元素（[XmlDocument](XmlDocument.md) 对象）
 ```JavaScript
 readonly XmlDocument XmlDocument.ownerDocument;
 ```

@@ -1,5 +1,5 @@
 # 对象 XmlAttr
-[XmlAttr](/docs/manual/object/ifs/xmlattr.md.html) 对象表示 [XmlElement](/docs/manual/object/ifs/xmlelement.md.html) 对象的属性
+XmlAttr 对象表示 [XmlElement](XmlElement.md) 对象的属性
 
 ## 函数
         

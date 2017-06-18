@@ -1,7 +1,7 @@
 # 对象 HttpsServer
 https 服务器对象
 
-https 服务器对象是将 [SslServer](/docs/manual/object/ifs/sslserver.md.html) 和 [HttpHandler](/docs/manual/object/ifs/httphandler.md.html) 组合封装的对象，方便快速搭建服务器，逻辑上相当于：
+https 服务器对象是将 [SslServer](SslServer.md) 和 [HttpHandler](HttpHandler.md) 组合封装的对象，方便快速搭建服务器，逻辑上相当于：
 ```JavaScript
 var svr = new net.SslServer(crt, key, addr, port, new http.Handler(function(req){
    ...
@@ -18,7 +18,7 @@ var svr = new http.HttpsServer(crt, key, 443, function(req){
 ## 构造函数
         
 ### HttpsServer
-[HttpsServer](/docs/manual/object/ifs/httpsserver.md.html) 构造函数，在所有本机地址侦听
+HttpsServer 构造函数，在所有本机地址侦听
 ```JavaScript
  new HttpsServer(Array certs,
                 Integer port,
@@ -45,7 +45,7 @@ certs 格式为：
 ```
 
 --------------------------
-[HttpsServer](/docs/manual/object/ifs/httpsserver.md.html) 构造函数
+HttpsServer 构造函数
 ```JavaScript
  new HttpsServer(Array certs,
                 String addr,
@@ -74,7 +74,7 @@ certs 格式为：
 ```
 
 --------------------------
-[HttpsServer](/docs/manual/object/ifs/httpsserver.md.html) 构造函数，在所有本机地址侦听
+HttpsServer 构造函数，在所有本机地址侦听
 ```JavaScript
  new HttpsServer(X509Cert crt,
                 PKey key,
@@ -89,7 +89,7 @@ certs 格式为：
 * hdlr - http 内置消息处理器，处理函数，链式处理数组，路由对象，详见
 
 --------------------------
-[HttpsServer](/docs/manual/object/ifs/httpsserver.md.html) 构造函数
+HttpsServer 构造函数
 ```JavaScript
  new HttpsServer(X509Cert crt,
                 PKey key,
@@ -232,12 +232,12 @@ Integer HttpsServer.maxUploadSize;
 ```
 
 ### httpStats
-查询 [http](/docs/manual/module/ifs/http.md.html) 协议转换处理器的工作状态
+查询 [http](../../module/ifs/http.md) 协议转换处理器的工作状态
 ```JavaScript
 readonly Stats HttpsServer.httpStats;
 ```
 
-返回的结果为一个 [Stats](/docs/manual/object/ifs/stats.md.html) 对象，结构如下：
+返回的结果为一个 [Stats](Stats.md) 对象，结构如下：
 ```JavaScript
 {
     total : 1000,    // 总计处理的请求
@@ -252,7 +252,7 @@ readonly Stats HttpsServer.httpStats;
 ```
 
 ### socket
-服务器当前侦听的 [Socket](/docs/manual/object/ifs/socket.md.html) 对象
+服务器当前侦听的 [Socket](Socket.md) 对象
 ```JavaScript
 readonly Socket HttpsServer.socket;
 ```
@@ -269,7 +269,7 @@ Handler HttpsServer.handler;
 readonly Stats HttpsServer.stats;
 ```
 
-返回的结果为一个 [Stats](/docs/manual/object/ifs/stats.md.html) 对象，初始化计数器如下：
+返回的结果为一个 [Stats](Stats.md) 对象，初始化计数器如下：
 ```JavaScript
 {
     total : 1000,      // 总计处理的连接

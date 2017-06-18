@@ -117,7 +117,7 @@ Routing.append(String method,
 * hdlr - 内置消息处理器，处理函数，链式处理数组，路由对象，详见 mq.Handler
 
 ### all
-添加一组接受所有 [http](/docs/manual/module/ifs/http.md.html) 方法路由规则
+添加一组接受所有 [http](../../module/ifs/http.md) 方法路由规则
 ```JavaScript
 Routing.all(Object map);
 ```
@@ -126,7 +126,7 @@ Routing.all(Object map);
 * map - 路由参数
 
 --------------------------
-添加一条接受所有 [http](/docs/manual/module/ifs/http.md.html) 方法路由规则
+添加一条接受所有 [http](../../module/ifs/http.md) 方法路由规则
 ```JavaScript
 Routing.all(String pattern,
                 Handler hdlr);
@@ -146,7 +146,7 @@ Routing.get(Object map);
 * map - 路由参数
 
 --------------------------
-添加一条接受 [http](/docs/manual/module/ifs/http.md.html) GET 方法路由规则
+添加一条接受 [http](../../module/ifs/http.md) GET 方法路由规则
 ```JavaScript
 Routing.get(String pattern,
                 Handler hdlr);
@@ -157,7 +157,7 @@ Routing.get(String pattern,
 * hdlr - 内置消息处理器，处理函数，链式处理数组，路由对象，详见 mq.Handler
 
 ### post
-添加一组接受 [http](/docs/manual/module/ifs/http.md.html) POST 方法路由规则
+添加一组接受 [http](../../module/ifs/http.md) POST 方法路由规则
 ```JavaScript
 Routing.post(Object map);
 ```
@@ -166,7 +166,7 @@ Routing.post(Object map);
 * map - 路由参数
 
 --------------------------
-添加一条接受 [http](/docs/manual/module/ifs/http.md.html) POST 方法路由规则
+添加一条接受 [http](../../module/ifs/http.md) POST 方法路由规则
 ```JavaScript
 Routing.post(String pattern,
                 Handler hdlr);
@@ -177,7 +177,7 @@ Routing.post(String pattern,
 * hdlr - 内置消息处理器，处理函数，链式处理数组，路由对象，详见 mq.Handler
 
 ### del
-添加一组接受 [http](/docs/manual/module/ifs/http.md.html) DELETE 方法路由规则
+添加一组接受 [http](../../module/ifs/http.md) DELETE 方法路由规则
 ```JavaScript
 Routing.del(Object map);
 ```
@@ -186,7 +186,7 @@ Routing.del(Object map);
 * map - 路由参数
 
 --------------------------
-添加一条接受 [http](/docs/manual/module/ifs/http.md.html) DELETE 方法路由规则
+添加一条接受 [http](../../module/ifs/http.md) DELETE 方法路由规则
 ```JavaScript
 Routing.del(String pattern,
                 Handler hdlr);
@@ -206,7 +206,7 @@ Routing.put(Object map);
 * map - 路由参数
 
 --------------------------
-添加一条接受 [http](/docs/manual/module/ifs/http.md.html) PUT 方法路由规则
+添加一条接受 [http](../../module/ifs/http.md) PUT 方法路由规则
 ```JavaScript
 Routing.put(String pattern,
                 Handler hdlr);
@@ -226,7 +226,7 @@ Routing.patch(Object map);
 * map - 路由参数
 
 --------------------------
-添加一条接受 [http](/docs/manual/module/ifs/http.md.html) PATCH 方法路由规则
+添加一条接受 [http](../../module/ifs/http.md) PATCH 方法路由规则
 ```JavaScript
 Routing.patch(String pattern,
                 Handler hdlr);

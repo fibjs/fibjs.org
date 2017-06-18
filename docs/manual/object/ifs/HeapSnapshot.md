@@ -28,7 +28,7 @@ HeapGraphNode HeapSnapshot.getNodeById(Integer id);
 * 返回获取到的堆视图节点
 
 ### save
-根据指定名称保存[HeapSnapshot](/docs/manual/object/ifs/heapsnapshot.md.html)
+根据指定名称保存HeapSnapshot
 ```JavaScript
 HeapSnapshot.save(String fname) async;
 ```

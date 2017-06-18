@@ -1,7 +1,7 @@
 # 对象 TcpServer
 tcp 服务器对象，可方便创建一个标准多纤程 tcp 服务器
 
-使用 [TcpServer](/docs/manual/object/ifs/tcpserver.md.html) 对象可以迅速创建一个多纤程并发处理的 tcp 服务器。
+使用 TcpServer 对象可以迅速创建一个多纤程并发处理的 tcp 服务器。
 ```JavaScript
 function func(conn)
 {
@@ -18,7 +18,7 @@ new net.TcpServer(8080, func).run();
 ## 构造函数
         
 ### TcpServer
-[TcpServer](/docs/manual/object/ifs/tcpserver.md.html) 构造函数，在所有本机地址侦听
+TcpServer 构造函数，在所有本机地址侦听
 ```JavaScript
  new TcpServer(Integer port,
                 Handler listener);
@@ -29,7 +29,7 @@ new net.TcpServer(8080, func).run();
 * listener - 指定 tcp 接收到的内置消息处理器，处理函数，链式处理数组，路由对象，详见 mq.Handler
 
 --------------------------
-[TcpServer](/docs/manual/object/ifs/tcpserver.md.html) 构造函数
+TcpServer 构造函数
 ```JavaScript
  new TcpServer(String addr,
                 Integer port,
@@ -112,7 +112,7 @@ Value TcpServer.valueOf();
 ## 属性
         
 ### socket
-服务器当前侦听的 [Socket](/docs/manual/object/ifs/socket.md.html) 对象
+服务器当前侦听的 [Socket](Socket.md) 对象
 ```JavaScript
 readonly Socket TcpServer.socket;
 ```
@@ -129,7 +129,7 @@ Handler TcpServer.handler;
 readonly Stats TcpServer.stats;
 ```
 
-返回的结果为一个 [Stats](/docs/manual/object/ifs/stats.md.html) 对象，初始化计数器如下：
+返回的结果为一个 [Stats](Stats.md) 对象，初始化计数器如下：
 ```JavaScript
 {
     total : 1000,      // 总计处理的连接

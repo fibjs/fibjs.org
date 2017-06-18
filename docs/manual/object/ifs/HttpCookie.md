@@ -1,10 +1,10 @@
 # 对象 HttpCookie
-[http](/docs/manual/module/ifs/http.md.html) Cookie 对象，用于添加和处理 cookie
+[http](../../module/ifs/http.md) Cookie 对象，用于添加和处理 cookie
 
 ## 构造函数
         
 ### HttpCookie
-[HttpCookie](/docs/manual/object/ifs/httpcookie.md.html) 构造函数，创建一个新的 [HttpCookie](/docs/manual/object/ifs/httpcookie.md.html) 对象
+HttpCookie 构造函数，创建一个新的 HttpCookie 对象
 ```JavaScript
  new HttpCookie(Object opts = {});
 ```
@@ -13,7 +13,7 @@
 * opts - 指定创建的 cookie 的属性
 
 --------------------------
-[HttpCookie](/docs/manual/object/ifs/httpcookie.md.html) 构造函数，创建一个新的 [HttpCookie](/docs/manual/object/ifs/httpcookie.md.html) 对象
+HttpCookie 构造函数，创建一个新的 HttpCookie 对象
 ```JavaScript
  new HttpCookie(String name,
                 String value,
@@ -37,7 +37,7 @@ HttpCookie.parse(String header);
 * header - 指定需要解析的 header 字符串
 
 ### match
-检测给定的 [url](/docs/manual/module/ifs/url.md.html) 是否匹配当前设置
+检测给定的 [url](../../module/ifs/url.md) 是否匹配当前设置
 ```JavaScript
 Boolean HttpCookie.match(String url);
 ```
@@ -126,7 +126,7 @@ Date HttpCookie.expires;
 ```
 
 ### httpOnly
-查询和设置 cookie 是否仅允许 [http](/docs/manual/module/ifs/http.md.html) 请求，缺省 false
+查询和设置 cookie 是否仅允许 [http](../../module/ifs/http.md) 请求，缺省 false
 ```JavaScript
 Boolean HttpCookie.httpOnly;
 ```

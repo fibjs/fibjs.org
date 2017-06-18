@@ -1,7 +1,7 @@
 # 对象 Message
 基础消息对象
 
-[Message](/docs/manual/object/ifs/message.md.html) 对象兼容于 [mq](/docs/manual/module/ifs/mq.md.html) 各个模块，可用于构建自定义消息处理系统，创建方法：
+Message 对象兼容于 [mq](../../module/ifs/mq.md) 各个模块，可用于构建自定义消息处理系统，创建方法：
 ```JavaScript
 var mq = require("mq");
 var m = new mq.Message();
@@ -47,7 +47,7 @@ Message.write(Buffer data) async;
 * data - 给定要写入的数据
 
 ### end
-设置当前消息处理结束，[Chain](/docs/manual/object/ifs/chain.md.html) 处理器不再继续后面的事务
+设置当前消息处理结束，[Chain](Chain.md) 处理器不再继续后面的事务
 ```JavaScript
 Message.end();
 ```

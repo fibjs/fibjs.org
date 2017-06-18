@@ -1,5 +1,5 @@
 # 对象 LevelDB
-[LevelDB](/docs/manual/object/ifs/leveldb.md.html) 数据库对象
+LevelDB 数据库对象
 
 用以创建和管理字典对象，创建方法：
 ```JavaScript

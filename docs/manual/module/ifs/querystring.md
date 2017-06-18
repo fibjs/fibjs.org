@@ -1,5 +1,5 @@
 # 模块 querystring
-[http](/docs/manual/module/ifs/http.md.html) query 处理模块
+[http](http.md) query 处理模块
 
 引用方法：
 ```JavaScript
@@ -8,7 +8,7 @@ var querystring = require('querystring');
 ## 函数
         
 ### escape
-[url](/docs/manual/module/ifs/url.md.html) 部件字符串安全编码
+[url](url.md) 部件字符串安全编码
 ```JavaScript
 static String querystring.escape(String str);
 ```
@@ -20,7 +20,7 @@ static String querystring.escape(String str);
 * 返回编码的字符串
 
 ### unescape
-[url](/docs/manual/module/ifs/url.md.html) 安全字符串解码
+[url](url.md) 安全字符串解码
 ```JavaScript
 static String querystring.unescape(String str);
 ```

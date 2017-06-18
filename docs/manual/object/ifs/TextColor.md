@@ -54,19 +54,19 @@ Value TextColor.valueOf();
 ## 属性
         
 ### notice
-指定 [console](/docs/manual/module/ifs/console.md.html).notice 颜色
+指定 [console](../../module/ifs/console.md).notice 颜色
 ```JavaScript
 String TextColor.notice;
 ```
 
 ### warn
-指定 [console](/docs/manual/module/ifs/console.md.html).warn 颜色
+指定 [console](../../module/ifs/console.md).warn 颜色
 ```JavaScript
 String TextColor.warn;
 ```
 
 ### error
-指定 [console](/docs/manual/module/ifs/console.md.html).error 颜色
+指定 [console](../../module/ifs/console.md).error 颜色
 ```JavaScript
 String TextColor.error;
 ```

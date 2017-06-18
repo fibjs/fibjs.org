@@ -1,7 +1,7 @@
 # 对象 Stream
 流操作对象，用于二进制数据流读写
 
-[Stream](/docs/manual/object/ifs/stream.md.html) 为基础对象，用于为流处理定义标准借口，不能独立创建
+Stream 为基础对象，用于为流处理定义标准借口，不能独立创建
 ## 函数
         
 ### read

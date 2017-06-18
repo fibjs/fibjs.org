@@ -1,7 +1,7 @@
 # 对象 SslHandler
-[ssl](/docs/manual/module/ifs/ssl.md.html) 协议转换处理器
+[ssl](../../module/ifs/ssl.md) 协议转换处理器
 
-用以将数据流转换为 [ssl](/docs/manual/module/ifs/ssl.md.html) 流协议。[SslHandler](/docs/manual/object/ifs/sslhandler.md.html) 是对 [SslSocket](/docs/manual/object/ifs/sslsocket.md.html) 的封装，用于构建服务器，逻辑上相当于：
+用以将数据流转换为 [ssl](../../module/ifs/ssl.md) 流协议。SslHandler 是对 [SslSocket](SslSocket.md) 的封装，用于构建服务器，逻辑上相当于：
 ```JavaScript
 var ss = new ssl.Socket(crt, key);
 
@@ -14,7 +14,7 @@ function(s){
 ## 构造函数
         
 ### SslHandler
-[SslHandler](/docs/manual/object/ifs/sslhandler.md.html) 构造函数，创建一个新的 [SslHandler](/docs/manual/object/ifs/sslhandler.md.html) 对象
+SslHandler 构造函数，创建一个新的 SslHandler 对象
 ```JavaScript
  new SslHandler(Array certs,
                 Handler hdlr);
@@ -39,7 +39,7 @@ certs 格式为：
 ```
 
 --------------------------
-[SslHandler](/docs/manual/object/ifs/sslhandler.md.html) 构造函数，创建一个新的 [SslHandler](/docs/manual/object/ifs/sslhandler.md.html) 对象
+SslHandler 构造函数，创建一个新的 SslHandler 对象
 ```JavaScript
  new SslHandler(X509Cert crt,
                 PKey key,
@@ -128,7 +128,7 @@ readonly X509Cert SslHandler.ca;
 ```
 
 ### handler
-[ssl](/docs/manual/module/ifs/ssl.md.html) 协议转换处理器当前事件处理接口对象
+[ssl](../../module/ifs/ssl.md) 协议转换处理器当前事件处理接口对象
 ```JavaScript
 Handler SslHandler.handler;
 ```

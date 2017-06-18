@@ -8,7 +8,7 @@ var n = new Int64(123);
 ## 构造函数
         
 ### Int64
-[Int64](/docs/manual/object/ifs/int64.md.html) 构造函数
+Int64 构造函数
 ```JavaScript
  new Int64(Long num = 0);
 ```
@@ -17,7 +17,7 @@ var n = new Int64(123);
 * num - 初始化的值
 
 --------------------------
-[Int64](/docs/manual/object/ifs/int64.md.html) 构造函数
+Int64 构造函数
 ```JavaScript
  new Int64(Long hi,
                 Long lo);
@@ -28,7 +28,7 @@ var n = new Int64(123);
 * lo - 低32位数
 
 --------------------------
-[Int64](/docs/manual/object/ifs/int64.md.html) 构造函数
+Int64 构造函数
 ```JavaScript
  new Int64(Int64 num);
 ```
@@ -37,7 +37,7 @@ var n = new Int64(123);
 * num - 初始化的值
 
 --------------------------
-[Int64](/docs/manual/object/ifs/int64.md.html) 构造函数
+Int64 构造函数
 ```JavaScript
  new Int64(String num,
                 Integer base = 10);
@@ -50,7 +50,7 @@ var n = new Int64(123);
 ## 函数
         
 ### compare
-将 [Int64](/docs/manual/object/ifs/int64.md.html) 内的数值与给定数值比较大小
+将 Int64 内的数值与给定数值比较大小
 ```JavaScript
 Integer Int64.compare(Int64 num);
 ```
@@ -62,7 +62,7 @@ Integer Int64.compare(Int64 num);
 * 返回 1 表示 Int64 内的数值比指定数值更大，0 表示相等，-1 表示更小
 
 ### shiftLeft
-将 [Int64](/docs/manual/object/ifs/int64.md.html) 内的数值左移相应的位数，此操作不影响 [Int64](/docs/manual/object/ifs/int64.md.html) 原有数值
+将 Int64 内的数值左移相应的位数，此操作不影响 Int64 原有数值
 ```JavaScript
 Int64 Int64.shiftLeft(Integer bits);
 ```
@@ -74,7 +74,7 @@ Int64 Int64.shiftLeft(Integer bits);
 * 返回包含移位以后数值的对象
 
 ### shiftRight
-将 [Int64](/docs/manual/object/ifs/int64.md.html) 内的数值右移相应的位数，此操作不影响 [Int64](/docs/manual/object/ifs/int64.md.html) 原有数值
+将 Int64 内的数值右移相应的位数，此操作不影响 Int64 原有数值
 ```JavaScript
 Int64 Int64.shiftRight(Integer bits);
 ```
@@ -86,7 +86,7 @@ Int64 Int64.shiftRight(Integer bits);
 * 返回包含移位以后数值的对象
 
 ### and
-将 [Int64](/docs/manual/object/ifs/int64.md.html) 内的数值与给定的数值进行按位 and 操作，此操作不影响 [Int64](/docs/manual/object/ifs/int64.md.html) 原有数值
+将 Int64 内的数值与给定的数值进行按位 and 操作，此操作不影响 Int64 原有数值
 ```JavaScript
 Int64 Int64.and(Int64 num);
 ```
@@ -98,7 +98,7 @@ Int64 Int64.and(Int64 num);
 * 返回包含预算以后数值的对象
 
 ### or
-将 [Int64](/docs/manual/object/ifs/int64.md.html) 内的数值与给定的数值进行按位 or 操作，此操作不影响 [Int64](/docs/manual/object/ifs/int64.md.html) 原有数值
+将 Int64 内的数值与给定的数值进行按位 or 操作，此操作不影响 Int64 原有数值
 ```JavaScript
 Int64 Int64.or(Int64 num);
 ```
@@ -110,7 +110,7 @@ Int64 Int64.or(Int64 num);
 * 返回包含预算以后数值的对象
 
 ### xor
-将 [Int64](/docs/manual/object/ifs/int64.md.html) 内的数值与给定的数值进行按位 xor 操作，此操作不影响 [Int64](/docs/manual/object/ifs/int64.md.html) 原有数值
+将 Int64 内的数值与给定的数值进行按位 xor 操作，此操作不影响 Int64 原有数值
 ```JavaScript
 Int64 Int64.xor(Int64 num);
 ```
@@ -122,7 +122,7 @@ Int64 Int64.xor(Int64 num);
 * 返回包含预算以后数值的对象
 
 ### add
-将 [Int64](/docs/manual/object/ifs/int64.md.html) 内的数值与给定的数值进行加操作，此操作不影响 [Int64](/docs/manual/object/ifs/int64.md.html) 原有数值
+将 Int64 内的数值与给定的数值进行加操作，此操作不影响 Int64 原有数值
 ```JavaScript
 Int64 Int64.add(Int64 num);
 ```
@@ -134,7 +134,7 @@ Int64 Int64.add(Int64 num);
 * 返回包含预算以后数值的对象
 
 ### sub
-将 [Int64](/docs/manual/object/ifs/int64.md.html) 内的数值与给定的数值进行减操作，此操作不影响 [Int64](/docs/manual/object/ifs/int64.md.html) 原有数值
+将 Int64 内的数值与给定的数值进行减操作，此操作不影响 Int64 原有数值
 ```JavaScript
 Int64 Int64.sub(Int64 num);
 ```

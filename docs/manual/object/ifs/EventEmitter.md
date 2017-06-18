@@ -1,7 +1,7 @@
 # 对象 EventEmitter
 事件触发对象，可用于建立观察者模式，支持事件触发的对象均继承于此，同一事件的同一函数只会产生一次回调
 
-[Event](/docs/manual/object/ifs/event.md.html) 对象可独立创建，以用于组建自定义的事件系统：
+[Event](Event.md) 对象可独立创建，以用于组建自定义的事件系统：
 ```JavaScript
 var EventEmitter = require('events');
 

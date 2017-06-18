@@ -1,9 +1,9 @@
 # 基础模块
 * [assert](ifs/assert.md) - 断言测试模块，如果测试值为假，则报错，报错行为可设定继续运行或者错误抛出
-* [base32](ifs/base32.md) - [base32](/docs/manual/module/ifs/base32.md.html) 编码与解码模块
-* [base64](ifs/base64.md) - [base64](/docs/manual/module/ifs/base64.md.html) 编码与解码模块
-* [base64vlq](ifs/base64vlq.md) - [base64vlq](/docs/manual/module/ifs/base64vlq.md.html) 编码与解码模块
-* [bson](ifs/bson.md) - [bson](/docs/manual/module/ifs/bson.md.html) 编码与解码模块
+* [base32](ifs/base32.md) - base32 编码与解码模块
+* [base64](ifs/base64.md) - base64 编码与解码模块
+* [base64vlq](ifs/base64vlq.md) - base64vlq 编码与解码模块
+* [bson](ifs/bson.md) - bson 编码与解码模块
 * [collection](ifs/collection.md) - 基础容器模块
 * [console](ifs/console.md) - 控制台访问对象
 * [coroutine](ifs/coroutine.md) - 并发控制模块
@@ -15,11 +15,11 @@
 * [global](ifs/global.md) - 全局对象，所有脚本均可以访问的基础对象
 * [gui](ifs/gui.md) - 输入输出处理模块
 * [hash](ifs/hash.md) - 信息摘要计算模块，可用于计算信息摘要和摘要签名
-* [hex](ifs/hex.md) - [hex](/docs/manual/module/ifs/hex.md.html) 编码与解码模块
-* [http](ifs/http.md) - 超文本传输协议模块，用以支持 [http](/docs/manual/module/ifs/http.md.html) 协议处理
-* [iconv](ifs/iconv.md) - [iconv](/docs/manual/module/ifs/iconv.md.html) 编码与解码模块
+* [hex](ifs/hex.md) - hex 编码与解码模块
+* [http](ifs/http.md) - 超文本传输协议模块，用以支持 http 协议处理
+* [iconv](ifs/iconv.md) - iconv 编码与解码模块
 * [io](ifs/io.md) - 输入输出处理模块
-* [json](ifs/json.md) - [json](/docs/manual/module/ifs/json.md.html) 编码与解码模块
+* [json](ifs/json.md) - json 编码与解码模块
 * [mq](ifs/mq.md) - 消息队列模块
 * [net](ifs/net.md) - 网络访问模块
 * [os](ifs/os.md) - 操作系统与文件系统处理模块
@@ -27,19 +27,19 @@
 * [path_posix](ifs/path_posix.md) - 文件路径处理模块
 * [path_win32](ifs/path_win32.md) - 文件路径处理模块
 * [process](ifs/process.md) - 进程处理模块，用以管理当前进程的资源
-* [profiler](ifs/profiler.md) - 内存 [profiler](/docs/manual/module/ifs/profiler.md.html) 模块
-* [querystring](ifs/querystring.md) - [http](/docs/manual/module/ifs/http.md.html) query 处理模块
+* [profiler](ifs/profiler.md) - 内存 profiler 模块
+* [querystring](ifs/querystring.md) - http query 处理模块
 * [re](ifs/re.md) - 正则表达式处理模块
 * [registry](ifs/registry.md) - Windows 注册表访问模块
-* [ssl](ifs/ssl.md) - [ssl](/docs/manual/module/ifs/ssl.md.html)/tls 模块
+* [ssl](ifs/ssl.md) - ssl/tls 模块
 * [test](ifs/test.md) - 测试套件模块，用以定义管理测试套件
-* [timers](ifs/timers.md) - [timers](/docs/manual/module/ifs/timers.md.html) 模块
-* [url](ifs/url.md) - [url](/docs/manual/module/ifs/url.md.html) 处理模块
+* [timers](ifs/timers.md) - timers 模块
+* [url](ifs/url.md) - url 处理模块
 * [util](ifs/util.md) - 常用工具模块
-* [uuid](ifs/uuid.md) - [uuid](/docs/manual/module/ifs/uuid.md.html) 唯一 id 模块
+* [uuid](ifs/uuid.md) - uuid 唯一 id 模块
 * [vm](ifs/vm.md) - 安全沙箱模块，用于隔离不同安全等级的运行环境
 * [ws](ifs/ws.md) - websocket 支持模块
-* [xml](ifs/xml.md) - [xml](/docs/manual/module/ifs/xml.md.html) 处理模块
-* [zip](ifs/zip.md) - [zip](/docs/manual/module/ifs/zip.md.html) 格式文件压缩解压模块
-* [zlib](ifs/zlib.md) - [zlib](/docs/manual/module/ifs/zlib.md.html) 压缩解压模块
+* [xml](ifs/xml.md) - xml 处理模块
+* [zip](ifs/zip.md) - zip 格式文件压缩解压模块
+* [zlib](ifs/zlib.md) - zlib 压缩解压模块
 * [zmq](ifs/zmq.md) - zeroMQ 消息队列模块

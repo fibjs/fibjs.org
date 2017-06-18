@@ -1,22 +1,22 @@
 # 模块 ssl
-[ssl](/docs/manual/module/ifs/ssl.md.html)/tls 模块
+ssl/tls 模块
 
 ## 对象
         
 ### Socket
-创建一个 [SslSocket](/docs/manual/object/ifs/sslsocket.md.html) 对象，参见 [SslSocket](/docs/manual/object/ifs/sslsocket.md.html)
+创建一个 [SslSocket](../../object/ifs/SslSocket.md) 对象，参见 [SslSocket](../../object/ifs/SslSocket.md)
 ```JavaScript
 SslSocket ssl.Socket;
 ```
 
 ### Handler
-创建一个 [SslHandler](/docs/manual/object/ifs/sslhandler.md.html) 对象，参见 [SslHandler](/docs/manual/object/ifs/sslhandler.md.html)
+创建一个 [SslHandler](../../object/ifs/SslHandler.md) 对象，参见 [SslHandler](../../object/ifs/SslHandler.md)
 ```JavaScript
 SslHandler ssl.Handler;
 ```
 
 ### Server
-创建一个 [SslServer](/docs/manual/object/ifs/sslserver.md.html) 对象，参见 [SslServer](/docs/manual/object/ifs/sslserver.md.html)
+创建一个 [SslServer](../../object/ifs/SslServer.md) 对象，参见 [SslServer](../../object/ifs/SslServer.md)
 ```JavaScript
 SslServer ssl.Server;
 ```
@@ -24,7 +24,7 @@ SslServer ssl.Server;
 ## 函数
         
 ### connect
-创建一个 [SslSocket](/docs/manual/object/ifs/sslsocket.md.html) 对象并建立连接
+创建一个 [SslSocket](../../object/ifs/SslSocket.md) 对象并建立连接
 ```JavaScript
 static Stream ssl.connect(String url,
                 Integer timeout = 0) async;
@@ -64,7 +64,7 @@ static ssl.loadClientCertFile(String crtFile,
 ## 属性
         
 ### ca
-全局证书，用于 [ssl](/docs/manual/module/ifs/ssl.md.html) 客户端模式验证服务器证书
+全局证书，用于 ssl 客户端模式验证服务器证书
 ```JavaScript
 static readonly X509Cert ssl.ca;
 ```
@@ -132,25 +132,25 @@ const ssl.BADCERT_NOT_TRUSTED = 8;
 ```
 
 ### ssl3
-[ssl](/docs/manual/module/ifs/ssl.md.html) 协议版本 [ssl](/docs/manual/module/ifs/ssl.md.html) 3.0
+ssl 协议版本 ssl 3.0
 ```JavaScript
 const ssl.ssl3 = 0;
 ```
 
 ### tls1
-[ssl](/docs/manual/module/ifs/ssl.md.html) 协议版本 tls 1.0
+ssl 协议版本 tls 1.0
 ```JavaScript
 const ssl.tls1 = 1;
 ```
 
 ### tls1_1
-[ssl](/docs/manual/module/ifs/ssl.md.html) 协议版本 tls 1.1
+ssl 协议版本 tls 1.1
 ```JavaScript
 const ssl.tls1_1 = 2;
 ```
 
 ### tls1_2
-[ssl](/docs/manual/module/ifs/ssl.md.html) 协议版本 tls 1.2
+ssl 协议版本 tls 1.2
 ```JavaScript
 const ssl.tls1_2 = 3;
 ```

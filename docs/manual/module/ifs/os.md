@@ -8,7 +8,7 @@ var os = require('os');
 ## 对象
         
 ### Service
-[Service](/docs/manual/object/ifs/service.md.html) 构造函数，参见 [Service](/docs/manual/object/ifs/service.md.html)
+[Service](../../object/ifs/Service.md) 构造函数，参见 [Service](../../object/ifs/Service.md)
 ```JavaScript
 Service os.Service;
 ```

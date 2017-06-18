@@ -86,18 +86,18 @@ Value HandlerEx.valueOf();
 ## 属性
         
 ### handler
-[WebSocket](/docs/manual/object/ifs/websocket.md.html) 协议转换处理器当前事件处理接口对象
+[WebSocket](WebSocket.md) 协议转换处理器当前事件处理接口对象
 ```JavaScript
 Handler HandlerEx.handler;
 ```
 
 ### stats
-查询 [WebSocket](/docs/manual/object/ifs/websocket.md.html) 包协议转换处理器的工作状态
+查询 [WebSocket](WebSocket.md) 包协议转换处理器的工作状态
 ```JavaScript
 readonly Stats HandlerEx.stats;
 ```
 
-返回的结果为一个 [Stats](/docs/manual/object/ifs/stats.md.html) 对象，结构如下：
+返回的结果为一个 [Stats](Stats.md) 对象，结构如下：
 ```JavaScript
 {
     total : 1000,    // 总计处理的请求

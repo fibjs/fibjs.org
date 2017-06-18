@@ -1,7 +1,7 @@
 # 对象 Redis
-[Redis](/docs/manual/object/ifs/redis.md.html) 数据库客户端对象
+Redis 数据库客户端对象
 
-用以创建和管理 [Redis](/docs/manual/object/ifs/redis.md.html) 数据库，创建方法：
+用以创建和管理 Redis 数据库，创建方法：
 ```JavaScript
 var db = require("db");
 var test = new db.openRedis("redis-server");
@@ -542,7 +542,7 @@ RedisHash Redis.getHash(Buffer key);
 * 返回包含指定 key 的 Hash 对象
 
 ### getList
-获取指定 key 的 [List](/docs/manual/object/ifs/list.md.html) 对象，此对象为包含指定 key 的客户端，只有调用其方法才会操作数据库
+获取指定 key 的 [List](List.md) 对象，此对象为包含指定 key 的客户端，只有调用其方法才会操作数据库
 ```JavaScript
 RedisList Redis.getList(Buffer key);
 ```
@@ -578,7 +578,7 @@ RedisSortedSet Redis.getSortedSet(Buffer key);
 * 返回包含指定 key 的 SortedSet 对象
 
 ### dump
-序列化给定 key ，并返回被序列化的值，使用 restore 命令可以将这个值反序列化为 [Redis](/docs/manual/object/ifs/redis.md.html) 键
+序列化给定 key ，并返回被序列化的值，使用 restore 命令可以将这个值反序列化为 Redis 键
 ```JavaScript
 Buffer Redis.dump(Buffer key);
 ```

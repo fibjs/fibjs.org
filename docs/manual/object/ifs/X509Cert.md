@@ -1,14 +1,14 @@
 # 对象 X509Cert
 x509 证书对象
 
-[X509Cert](/docs/manual/object/ifs/x509cert.md.html) 对象属于 [crypto](/docs/manual/module/ifs/crypto.md.html) 模块，创建：
+X509Cert 对象属于 [crypto](../../module/ifs/crypto.md) 模块，创建：
 ```JavaScript
 var k = new crypto.X509Cert();
 ```
 ## 构造函数
         
 ### X509Cert
-[X509Cert](/docs/manual/object/ifs/x509cert.md.html) 构造函数
+X509Cert 构造函数
 ```JavaScript
  new X509Cert();
 ```
@@ -33,7 +33,7 @@ X509Cert.load(String txtCert);
 调用参数:
 * txtCert - PEM 格式的证书
 
-load 加载 mozilla 的 certdata,txt， 可于 [http](/docs/manual/module/ifs/http.md.html)://hg.mozilla.org/releases/mozilla-release/raw-file/default/security/nss/lib/ckfw/builtins/certdata.txt 下载使用
+load 加载 mozilla 的 certdata,txt， 可于 [http](../../module/ifs/http.md)://hg.mozilla.org/releases/mozilla-release/raw-file/default/security/nss/lib/ckfw/builtins/certdata.txt 下载使用
 
 ### loadFile
 加载一个 CRT/PEM/DER/TXT 格式的证书，可多次调用
@@ -44,10 +44,10 @@ X509Cert.loadFile(String filename);
 调用参数:
 * filename - 证书文件名
 
-loadFile 加载 mozilla 的 certdata,txt， 可于 [http](/docs/manual/module/ifs/http.md.html)://hg.mozilla.org/releases/mozilla-release/raw-file/default/security/nss/lib/ckfw/builtins/certdata.txt 下载使用
+loadFile 加载 mozilla 的 certdata,txt， 可于 [http](../../module/ifs/http.md)://hg.mozilla.org/releases/mozilla-release/raw-file/default/security/nss/lib/ckfw/builtins/certdata.txt 下载使用
 
 ### loadRootCerts
-加载自带的缺省根证书，此证书内容源自：[http](/docs/manual/module/ifs/http.md.html)://hg.mozilla.org/releases/mozilla-release/raw-file/default/security/nss/lib/ckfw/builtins/certdata.txt
+加载自带的缺省根证书，此证书内容源自：[http](../../module/ifs/http.md)://hg.mozilla.org/releases/mozilla-release/raw-file/default/security/nss/lib/ckfw/builtins/certdata.txt
 ```JavaScript
 X509Cert.loadRootCerts();
 ```

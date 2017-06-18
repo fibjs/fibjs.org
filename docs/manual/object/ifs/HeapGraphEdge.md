@@ -1,10 +1,10 @@
 # 对象 HeapGraphEdge
-[HeapGraphEdge](/docs/manual/object/ifs/heapgraphedge.md.html)表示两个[HeapGraphNode](/docs/manual/object/ifs/heapgraphnode.md.html)节点间的关联，从上游节点到下游节点
+HeapGraphEdge表示两个[HeapGraphNode](HeapGraphNode.md)节点间的关联，从上游节点到下游节点
 
 ## 函数
         
 ### getFromNode
-获取[HeapGraphEdge](/docs/manual/object/ifs/heapgraphedge.md.html)的上游[HeapGraphNode](/docs/manual/object/ifs/heapgraphnode.md.html)节点
+获取HeapGraphEdge的上游[HeapGraphNode](HeapGraphNode.md)节点
 ```JavaScript
 HeapGraphNode HeapGraphEdge.getFromNode();
 ```
@@ -13,7 +13,7 @@ HeapGraphNode HeapGraphEdge.getFromNode();
 * 返回源HeapGraphNode节点
 
 ### getToNode
-获取[HeapGraphEdge](/docs/manual/object/ifs/heapgraphedge.md.html)的下游[HeapGraphNode](/docs/manual/object/ifs/heapgraphnode.md.html)节点
+获取HeapGraphEdge的下游[HeapGraphNode](HeapGraphNode.md)节点
 ```JavaScript
 HeapGraphNode HeapGraphEdge.getToNode();
 ```
@@ -77,13 +77,13 @@ Value HeapGraphEdge.valueOf();
 readonly Integer HeapGraphEdge.type;
 ```
 
-- [profiler](/docs/manual/module/ifs/profiler.md.html).Edge_ContextVariable,  函数中的变量
-- [profiler](/docs/manual/module/ifs/profiler.md.html).Edge_Element,          数组中的元素
-- [profiler](/docs/manual/module/ifs/profiler.md.html).Edge_Property,         有名对象的属性
-- [profiler](/docs/manual/module/ifs/profiler.md.html).Edge_Internal,         JS无法进入的链接
-- [profiler](/docs/manual/module/ifs/profiler.md.html).Edge_Hidden,           指向需要事先计算出空间大小的节点
-- [profiler](/docs/manual/module/ifs/profiler.md.html).Edge_Shortcut,         指向无法事先计算出空间大小的节点
-- [profiler](/docs/manual/module/ifs/profiler.md.html).Edge_Weak,             一个弱引用（被GC忽视）
+- [profiler](../../module/ifs/profiler.md).Edge_ContextVariable,  函数中的变量
+- [profiler](../../module/ifs/profiler.md).Edge_Element,          数组中的元素
+- [profiler](../../module/ifs/profiler.md).Edge_Property,         有名对象的属性
+- [profiler](../../module/ifs/profiler.md).Edge_Internal,         JS无法进入的链接
+- [profiler](../../module/ifs/profiler.md).Edge_Hidden,           指向需要事先计算出空间大小的节点
+- [profiler](../../module/ifs/profiler.md).Edge_Shortcut,         指向无法事先计算出空间大小的节点
+- [profiler](../../module/ifs/profiler.md).Edge_Weak,             一个弱引用（被GC忽视）
 
 ### name
 链接名称

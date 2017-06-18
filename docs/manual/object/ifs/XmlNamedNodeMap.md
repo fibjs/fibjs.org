@@ -1,5 +1,5 @@
 # 对象 XmlNamedNodeMap
-[XmlNamedNodeMap](/docs/manual/object/ifs/xmlnamednodemap.md.html) 对象表示一个无顺序的属性列表
+XmlNamedNodeMap 对象表示一个无顺序的属性列表
 
 ## 函数
         

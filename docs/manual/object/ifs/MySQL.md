@@ -1,7 +1,7 @@
 # 对象 MySQL
 mysql 数据库连接对象
 
-使用 [db](/docs/manual/module/ifs/db.md.html).open 或 [db](/docs/manual/module/ifs/db.md.html).openMySQL 创建，创建方式：
+使用 [db](../../module/ifs/db.md).open 或 [db](../../module/ifs/db.md).openMySQL 创建，创建方式：
 ```JavaScript
 var msql = db.openMySQL("mysql://user:pass@host/db");
 ```

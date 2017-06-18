@@ -8,37 +8,37 @@ var coroutine = require('coroutine');
 ## 对象
         
 ### Lock
-锁对象，参见 [Lock](/docs/manual/object/ifs/lock.md.html)
+锁对象，参见 [Lock](../../object/ifs/Lock.md)
 ```JavaScript
 Lock coroutine.Lock;
 ```
 
 ### Semaphore
-信号量对象，参见 [Semaphore](/docs/manual/object/ifs/semaphore.md.html)
+信号量对象，参见 [Semaphore](../../object/ifs/Semaphore.md)
 ```JavaScript
 Semaphore coroutine.Semaphore;
 ```
 
 ### Condition
-条件变量对象，参见 [Condition](/docs/manual/object/ifs/condition.md.html)
+条件变量对象，参见 [Condition](../../object/ifs/Condition.md)
 ```JavaScript
 Condition coroutine.Condition;
 ```
 
 ### Event
-事件对象，参见 [Event](/docs/manual/object/ifs/event.md.html)
+事件对象，参见 [Event](../../object/ifs/Event.md)
 ```JavaScript
 Event coroutine.Event;
 ```
 
 ### BlockQueue
-阻塞队列对象，参见 [BlockQueue](/docs/manual/object/ifs/blockqueue.md.html)
+阻塞队列对象，参见 [BlockQueue](../../object/ifs/BlockQueue.md)
 ```JavaScript
 BlockQueue coroutine.BlockQueue;
 ```
 
 ### Worker
-独立线程工作对象，参见 [Worker](/docs/manual/object/ifs/worker.md.html)
+独立线程工作对象，参见 [Worker](../../object/ifs/Worker.md)
 ```JavaScript
 Worker coroutine.Worker;
 ```
@@ -144,19 +144,19 @@ static readonly Array coroutine.fibers;
 ```
 
 ### spareFibers
-查询和设置空闲 [Fiber](/docs/manual/object/ifs/fiber.md.html) 数量，服务器抖动较大时可适度增加空闲 [Fiber](/docs/manual/object/ifs/fiber.md.html) 数量。缺省为 256
+查询和设置空闲 [Fiber](../../object/ifs/Fiber.md) 数量，服务器抖动较大时可适度增加空闲 [Fiber](../../object/ifs/Fiber.md) 数量。缺省为 256
 ```JavaScript
 static Integer coroutine.spareFibers;
 ```
 
 ### vmid
-查询当前 [vm](/docs/manual/module/ifs/vm.md.html) 编号
+查询当前 [vm](vm.md) 编号
 ```JavaScript
 static readonly Integer coroutine.vmid;
 ```
 
 ### loglevel
-修改和查询本 [vm](/docs/manual/module/ifs/vm.md.html) 的输出级别，用以过滤输出信息，缺省为 [console](/docs/manual/module/ifs/console.md.html).NOTSET，全部输出
+修改和查询本 [vm](vm.md) 的输出级别，用以过滤输出信息，缺省为 [console](console.md).NOTSET，全部输出
 ```JavaScript
 static Integer coroutine.loglevel;
 ```

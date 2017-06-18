@@ -1,5 +1,5 @@
 # 模块 profiler
-内存 [profiler](/docs/manual/module/ifs/profiler.md.html) 模块
+内存 profiler 模块
 
 使用方法：
 ```JavaScript
