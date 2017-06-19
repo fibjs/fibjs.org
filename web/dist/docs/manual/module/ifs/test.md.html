@@ -154,8 +154,61 @@
 </ul>
  </div></div></div>  </div></div><div class="content col-xs-12 col-sm-9 col-md-6"> <h1 id="-test">模块 test</h1>
 <p>测试套件模块，用以定义管理测试套件</p>
-<p>引用方法：</p>
+<p>使用方法 ：</p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">var</span> test = <span class="hljs-built_in">require</span>(<span class="hljs-string">'test'</span>);
+test.setup();
+
+describe(<span class="hljs-string">'test'</span>, () =&gt; {
+  before(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+      <span class="hljs-comment">// setup before the whole test</span>
+  });
+
+  beforeEach(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+      <span class="hljs-comment">// setup before each test</span>
+  });
+
+  after(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+      <span class="hljs-comment">// cleanup after the whole test</span>
+  });
+
+  afterEach(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+      <span class="hljs-comment">// cleanup after each test</span>
+  });
+
+  it(<span class="hljs-string">'case'</span>, () =&gt; {
+      assert.ok(<span class="hljs-literal">true</span>);
+  });
+
+  <span class="hljs-comment">// ignored test case</span>
+  xit(<span class="hljs-string">'case'</span>, () =&gt; {
+      assert.ok(<span class="hljs-literal">true</span>);
+  });
+});
+
+process.exit(-test.run(<span class="hljs-built_in">console</span>.DEBUG));
+</code></pre>
+<p>如果需要测试异步逻辑，可以像这样编写测试代码：</p>
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">var</span> test = <span class="hljs-built_in">require</span>(<span class="hljs-string">'test'</span>);
+<span class="hljs-keyword">var</span> sync = <span class="hljs-built_in">require</span>(<span class="hljs-string">'util'</span>).sync;
+
+test.setup();
+
+describe(<span class="hljs-string">'test'</span>, () =&gt; {
+it(<span class="hljs-string">'pass case'</span>, sync(<span class="hljs-function"><span class="hljs-params">done</span> =&gt;</span> {
+  setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+    assert.ok(<span class="hljs-literal">true</span>);
+    done();
+  }, <span class="hljs-number">0</span>);
+}));
+
+it(<span class="hljs-string">'error case'</span>, sync(<span class="hljs-function"><span class="hljs-params">done</span> =&gt;</span> {
+  setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+    done(<span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">'some thing wrong!'</span>));
+  }, <span class="hljs-number">0</span>);
+}));
+});
+
+process.exit(-test.run(<span class="hljs-built_in">console</span>.DEBUG));
 </code></pre>
 <h2 id="-">对象</h2>
 <h3 id="assert">assert</h3>
@@ -271,12 +324,21 @@
 </code></pre>
 <h2 id="-">常量</h2>
 <h3 id="bdd">BDD</h3>
-<p>定义 BDD(Behavior Drive Development) 测试环境，支持 describe, xdescribe, it, xit, before, after, beforeEach 和 afterEach，同时初始化 <a href=assert.md.html>assert</a> 和expect</p>
+<p>定义 BDD(Behavior Drive Development) 测试环境，支持 describe, xdescribe, it, xit, before, after, beforeEach 和 afterEach，同时初始化 <a href=assert.md.html>assert</a></p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">const</span> test.BDD = <span class="hljs-number">0</span>;
 </code></pre>
 <hr>
 <h3 id="tdd">TDD</h3>
-<p>定义 TDD(Test Drive Development) 测试环境，支持 suite, xsuite, test, xtest, setup, teardown, suiteSetup 和 suiteTeardown，同时初始化 <a href=assert.md.html>assert</a> 和expect</p>
+<p>定义 TDD(Test Drive Development) 测试环境，支持 suite, xsuite, test, xtest, setup, teardown, suiteSetup 和 suiteTeardown，同时初始化 <a href=assert.md.html>assert</a></p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">const</span> test.TDD = <span class="hljs-number">1</span>;
 </code></pre>
- </div><div class="hidden-sm col-xs-3"><div id=toc></div></div></div><div class=container><div class=footer><p>&copy; 2017 fibjs.org</p></div></div><a id=back-to-top href=# class="btn btn-primary btn-lg back-to-top" role=button title="Click to return on the top page" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=../../../../js/common.js></script><script type=text/javascript src=../../../../js/docs.js></script></body></html>
+<p>同 BDD 的映射关系：</p>
+<pre><code><span class="hljs-function"><span class="hljs-title">suite</span> -&gt;</span> describe
+<span class="hljs-function"><span class="hljs-title">xsuite</span> -&gt;</span> xdescribe
+<span class="hljs-function"><span class="hljs-title">test</span> -&gt;</span> it
+<span class="hljs-function"><span class="hljs-title">xtest</span> -&gt;</span> xit
+<span class="hljs-function"><span class="hljs-title">suiteSetup</span> -&gt;</span> before
+<span class="hljs-function"><span class="hljs-title">suiteTeardown</span> -&gt;</span> after
+<span class="hljs-function"><span class="hljs-title">setup</span> -&gt;</span> beforeEach
+<span class="hljs-function"><span class="hljs-title">teardown</span> -&gt;</span> afterEach
+</code></pre> </div><div class="hidden-sm col-xs-3"><div id=toc></div></div></div><div class=container><div class=footer><p>&copy; 2017 fibjs.org</p></div></div><a id=back-to-top href=# class="btn btn-primary btn-lg back-to-top" role=button title="Click to return on the top page" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=../../../../js/common.js></script><script type=text/javascript src=../../../../js/docs.js></script></body></html>
