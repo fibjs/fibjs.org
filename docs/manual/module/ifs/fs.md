@@ -463,10 +463,10 @@ static List fs.readdirSync(String path);
 * 返回目录的文件信息数组
 
 --------------------------
-### open
+### openFile
 打开文件，用于读取，写入，或者同时读写
 ```JavaScript
-static SeekableStream fs.open(String fname,
+static SeekableStream fs.openFile(String fname,
                 String flags = "r") async;
 ```
 

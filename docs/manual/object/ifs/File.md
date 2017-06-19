@@ -208,3 +208,10 @@ Value File.valueOf();
 readonly String File.name;
 ```
 
+--------------------------
+### fd
+查询当前文件描述符
+```JavaScript
+readonly Integer File.fd;
+```
+
