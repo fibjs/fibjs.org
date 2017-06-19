@@ -279,22 +279,26 @@ recursiveReadSync(pages).forEach(function (file) {
     file = path.relative(pages, file);
     var basename = path.basename(file);
 
-    if (/\.(html|htm|shtml)$/.test(file)) {
-        webpack_config.plugins.push(new HtmlWebpackPlugin({
-            filename: file,
-            template: path.resolve(pages, file),
-            inject: true,
-            minify: {
-                removeComments: true,
-                collapseWhitespace: true,
-                removeAttributeQuotes: true
-                // more options:
-                // https://github.com/kangax/html-minifier#options-quick-reference
-            },
-            // necessary to consistently work with multiple chunks via CommonsChunkPlugin
-            chunksSortMode: 'dependency',
-            chunks: ['common', file.replace(/\.(html|htm|shtml)$/, '')]
-        }));
+    if (basename.charAt(0) !== '.') {
+        if (/\.(html|htm|shtml)$/.test(file)) {
+            webpack_config.plugins.push(new HtmlWebpackPlugin({
+                filename: file,
+                template: path.resolve(pages, file),
+                inject: true,
+                minify: {
+                    removeComments: true,
+                    collapseWhitespace: true,
+                    removeAttributeQuotes: true
+                    // more options:
+                    // https://github.com/kangax/html-minifier#options-quick-reference
+                },
+                // necessary to consistently work with multiple chunks via CommonsChunkPlugin
+                chunksSortMode: 'dependency',
+                chunks: ['common', file.replace(/\.(html|htm|shtml)$/, '')]
+            }));
+        } else if (/.jsx?$/.test(file)) {
+            webpack_config.entry[file.replace(/.jsx?$/, '')] = path.resolve(pages, file);
+        }
     }
 });
 
