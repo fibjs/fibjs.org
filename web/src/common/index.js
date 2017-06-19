@@ -11,6 +11,9 @@ import 'jquery';
 import 'bootstrap';
 import './ie10-viewport';
 
+if (self != top)
+    top.location = location.href;
+
 $(document).ready(function () {
     $(window).scroll(function () {
         if ($(this).scrollTop() > 50) {
