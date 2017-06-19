@@ -1,7 +1,7 @@
 # 对象 ZipFile
 [zip](../../module/ifs/zip.md) 文件访问对象
 
-## 函数
+## 成员函数
         
 ### namelist
 获取文件名列表

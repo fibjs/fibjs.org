@@ -18,7 +18,7 @@ var chain = new mq.Chain([
 调用参数:
 * hdlrs - 处理器数组
 
-## 函数
+## 成员函数
         
 ### append
 添加处理器数组

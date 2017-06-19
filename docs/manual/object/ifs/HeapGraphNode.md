@@ -1,7 +1,7 @@
 # 对象 HeapGraphNode
 HeapGraphNode表示堆视图中的一个节点
 
-## 函数
+## 成员函数
         
 ### dispose
 强制回收对象，调用此方法后，对象资源将立即释放

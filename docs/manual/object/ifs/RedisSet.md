@@ -7,7 +7,7 @@ var db = require("db");
 var rdb = new db.openRedis("redis-server");
 var set = rdb.getSet("test");
 ```
-## 函数
+## 成员函数
         
 ### add
 将一个或多个 member 元素加入到集合 key 当中，已经存在于集合的 member 元素将被忽略

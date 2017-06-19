@@ -16,7 +16,7 @@ BufferedStream 构造函数
 调用参数:
 * stm - BufferedStream 的二进制基础流对象
 
-## 函数
+## 成员函数
         
 ### readText
 读取指定字符的文本

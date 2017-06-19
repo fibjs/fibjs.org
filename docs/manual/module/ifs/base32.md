@@ -10,7 +10,7 @@ var base32 = encoding.base32;
 ```JavaScript
 var base32 = require('base32');
 ```
-## 函数
+## 静态函数
         
 ### encode
 以 base32 方式编码数据

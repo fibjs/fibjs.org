@@ -1,7 +1,7 @@
 # 对象 XmlNode
 XmlNode 对象是整个 DOM 的基础数据类型
 
-## 函数
+## 成员函数
         
 ### hasChildNodes
 查询是否存在子节点

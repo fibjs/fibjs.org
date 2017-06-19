@@ -10,7 +10,7 @@ var iconv = encoding.iconv;
 ```JavaScript
 var iconv = require('iconv');
 ```
-## 函数
+## 静态函数
         
 ### encode
 用 iconv 将文本转换为二进制数据

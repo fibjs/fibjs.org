@@ -5,7 +5,7 @@ uuid 唯一 id 模块
 ```JavaScript
 var uuid = require('uuid');
 ```
-## 函数
+## 静态函数
         
 ### node
 使用时间和主机名创建 uuid

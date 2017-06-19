@@ -5,7 +5,7 @@
 ```JavaScript
 var f = fs.open('test.txt');
 ```
-## 函数
+## 成员函数
         
 ### chmod
 查询当前文件的访问权限，Windows 不支持此方法

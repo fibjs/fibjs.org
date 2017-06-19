@@ -32,7 +32,7 @@ l.release();
 调用参数:
 * value - 计数器初始数值
 
-## 函数
+## 成员函数
         
 ### wait
 等待一个信号量，等同于 acquire(true)

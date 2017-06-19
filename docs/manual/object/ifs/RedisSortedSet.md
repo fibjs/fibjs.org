@@ -7,7 +7,7 @@ var db = require("db");
 var rdb = new db.openRedis("redis-server");
 var set = rdb.getSortedSet("test");
 ```
-## 函数
+## 成员函数
         
 ### add
 将一个或多个 member 元素及其 score 值加入到有序集当中

@@ -10,7 +10,7 @@ var hex = encoding.hex;
 ```JavaScript
 var hex = require('hex');
 ```
-## 函数
+## 静态函数
         
 ### encode
 以 hex 方式编码数据

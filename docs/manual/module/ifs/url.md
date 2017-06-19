@@ -1,7 +1,7 @@
 # 模块 url
 url 处理模块
 
-## 函数
+## 静态函数
         
 ### format
 参数构造 [UrlObject](../../object/ifs/UrlObject.md) 对象

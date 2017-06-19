@@ -17,7 +17,7 @@ var q = new collection.Queue(100);
 调用参数:
 * size - 指定队列尺寸
 
-## 函数
+## 成员函数
         
 ### add
 插入一个新的元素到队列，成功返回 True，队列满则抛出错误

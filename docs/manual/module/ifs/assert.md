@@ -14,7 +14,7 @@ var assert = test.assert;
 ```JavaScript
 require("test").setup();
 ```
-## 函数
+## 静态函数
         
 ### Function
 测试数值为真，为假则断言失败

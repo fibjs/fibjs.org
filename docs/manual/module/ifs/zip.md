@@ -5,7 +5,7 @@ zip 格式文件压缩解压模块
 ```JavaScript
 var zip = require('zip');
 ```
-## 函数
+## 静态函数
         
 ### isZipFile
 判断文件是否是zip格式

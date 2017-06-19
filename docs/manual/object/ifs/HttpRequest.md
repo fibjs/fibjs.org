@@ -9,7 +9,7 @@ HttpRequest 构造函数，创建一个新的 HttpRequest 对象
  new HttpRequest();
 ```
 
-## 函数
+## 成员函数
         
 ### hasHeader
 检查是否存在指定键值的消息头

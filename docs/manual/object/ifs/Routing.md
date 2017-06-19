@@ -61,7 +61,7 @@ var routing = new mq.Routing({
 * method - 指定 http 请求方法，"*" 接受所有方法
 * map - 初始化路由参数
 
-## 函数
+## 成员函数
         
 ### append
 从已有路由对象中添加规则，添加后原路由将被清空

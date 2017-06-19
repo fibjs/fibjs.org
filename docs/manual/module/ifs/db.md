@@ -5,7 +5,7 @@
 ```JavaScript
 var db = require('db');
 ```
-## 函数
+## 静态函数
         
 ### open
 打开一个数据库，此方法为通用入口，根据提供的 connString 不同调用不同的引擎

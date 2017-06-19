@@ -13,7 +13,7 @@ var test = require('test');
 assert test.assert;
 ```
 
-## 函数
+## 静态函数
         
 ### describe
 定义一个测试模块，可嵌套定义

@@ -1,7 +1,7 @@
 # 对象 WebView
 浏览器窗口对象
 
-## 函数
+## 成员函数
         
 ### setHtml
 设置 webview 的页面 html

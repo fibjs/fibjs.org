@@ -51,7 +51,7 @@ HttpsServer http.HttpsServer;
 HttpHandler http.Handler;
 ```
 
-## 函数
+## 静态函数
         
 ### fileHandler
 创建一个 http 静态文件处理器，用以用静态文件响应 http 消息

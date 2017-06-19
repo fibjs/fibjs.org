@@ -22,7 +22,7 @@ var msg = new ws.Message();
 * masked - websocket 消息掩码，缺省为 true
 * maxSize - 最大包尺寸，以 MB 为单位，缺省为 67108864(64M)
 
-## 函数
+## 成员函数
         
 ### read
 从流内读取指定大小的数据，此方法为 body 相应方法的别名

@@ -5,7 +5,7 @@
 var process = require("process");
 var sub = process.open("ls");
 ```
-## 函数
+## 成员函数
         
 ### kill
 杀掉当前对象指向的进程，并传递信号

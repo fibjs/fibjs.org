@@ -10,7 +10,7 @@ XmlText 节点继承了 [XmlCharacterData](XmlCharacterData.md) 接口，通过�
 XmlText 节点没有子节点。
 
 关于从文档的子树中删除空 XmlText 节点与合并相邻的 XmlText 节点的方法，请参阅 [XmlNode](XmlNode.md).normalize 方法。
-## 函数
+## 成员函数
         
 ### splitText
 按照指定的 offset 把文本节点分割为两个节点

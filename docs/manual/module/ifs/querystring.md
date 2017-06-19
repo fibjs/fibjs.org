@@ -5,7 +5,7 @@
 ```JavaScript
 var querystring = require('querystring');
 ```
-## 函数
+## 静态函数
         
 ### escape
 [url](url.md) 部件字符串安全编码

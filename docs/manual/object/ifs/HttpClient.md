@@ -17,7 +17,7 @@ HttpClient 构造函数，创建一个新的HttpClient对象
  new HttpClient();
 ```
 
-## 函数
+## 成员函数
         
 ### request
 发送 [http](../../module/ifs/http.md) 请求到指定的流对象，并返回结果

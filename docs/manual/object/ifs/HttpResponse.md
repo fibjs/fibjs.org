@@ -9,7 +9,7 @@ HttpResponse 构造函数，创建一个新的 HttpResponse 对象
  new HttpResponse();
 ```
 
-## 函数
+## 成员函数
         
 ### addCookie
 向 cookies 添加一个 [HttpCookie](HttpCookie.md) 对象

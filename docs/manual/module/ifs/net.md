@@ -34,7 +34,7 @@ TcpServer net.TcpServer;
 UrlObject net.Url;
 ```
 
-## 函数
+## 静态函数
         
 ### info
 查询当前运行环境网络信息

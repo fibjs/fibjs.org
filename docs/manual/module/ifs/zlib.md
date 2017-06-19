@@ -5,7 +5,7 @@ zlib 压缩解压模块
 ```JavaScript
 var zlib = require('zlib');
 ```
-## 函数
+## 静态函数
         
 ### deflate
 使用 deflate 算法压缩数据(zlib格式)

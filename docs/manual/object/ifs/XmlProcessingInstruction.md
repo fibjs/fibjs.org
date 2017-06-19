@@ -1,7 +1,7 @@
 # 对象 XmlProcessingInstruction
 XmlProcessingInstruction 对象表示 [xml](../../module/ifs/xml.md) 处理指令
 
-## 函数
+## 成员函数
         
 ### hasChildNodes
 查询是否存在子节点

@@ -8,7 +8,7 @@ XmlNodeList 对象代表一个有顺序的节点列表
 readonly XmlNode XmlNodeList[];
 ```
 
-## 函数
+## 成员函数
         
 ### item
 返回节点列表中处于指定的索引号的节点

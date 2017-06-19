@@ -5,7 +5,7 @@ XmlComment 节点表示 XML 文档中的注释。
 使用由 [XmlCharacterData](XmlCharacterData.md) 接口继承的 data 属性，或使用由 [XmlNode](XmlNode.md) 接口继承的 nodeValue 属性，可以访问注释的内容。（即 <!-- 和 --> 之间的文本）。使用由 [XmlCharacterData](XmlCharacterData.md) 接口继承的各种方法可以操作注释的内容。
 
 使用 [XmlDocument](XmlDocument.md).createComment() 来创建一个注释对象。
-## 函数
+## 成员函数
         
 ### substringData
 从节点中提取子串

@@ -48,7 +48,7 @@ BlockQueue coroutine.BlockQueue;
 Worker coroutine.Worker;
 ```
 
-## 函数
+## 静态函数
         
 ### start
 启动一个纤程并返回纤程对象

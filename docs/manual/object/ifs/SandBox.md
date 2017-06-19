@@ -58,7 +58,7 @@ var mod_in_sbox = sbox.require('./path/to/mod');
 * require - 自定义 require 函数，当模块不存在时，先调用自定义函数，无返回再从文件中加载
 * global - 指定初始化的 Global 属性
 
-## 函数
+## 成员函数
         
 ### add
 向沙箱中添加一个基础模块

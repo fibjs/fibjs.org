@@ -41,7 +41,7 @@ HttpServer 构造函数
 * port - 指定 http 服务器侦听端口
 * hdlr - http 内置消息处理器，处理函数，链式处理数组，路由对象，详见 mq.Handler
 
-## 函数
+## 成员函数
         
 ### onerror
 设置错误处理器

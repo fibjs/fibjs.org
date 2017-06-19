@@ -16,7 +16,7 @@ LRU(least recently used) 缓存对象，参见 [LruCache](../../object/ifs/LruCa
 LruCache util.LruCache;
 ```
 
-## 函数
+## 静态函数
         
 ### format
 按照指定的格式格式化变量

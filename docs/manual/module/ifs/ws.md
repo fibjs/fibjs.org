@@ -27,7 +27,7 @@ WebSocketHandler ws.Handler;
 WebSocket ws.Socket;
 ```
 
-## 函数
+## 静态函数
         
 ### connect
 创建一个 websocket 连接，并返回握手成功的 [Stream](../../object/ifs/Stream.md) 对象

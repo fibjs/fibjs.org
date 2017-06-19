@@ -1,7 +1,7 @@
 # 模块 timers
 timers 模块
 
-## 函数
+## 静态函数
         
 ### clearInterval
 清除指定的定时器

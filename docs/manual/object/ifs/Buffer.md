@@ -70,7 +70,7 @@ var buf = new Buffer();
 Integer Buffer[];
 ```
 
-## 函数
+## 静态函数
         
 ### isBuffer
 检测给定的变量是否是 Buffer 对象
@@ -99,7 +99,8 @@ static Buffer Buffer.concat(Array buflist,
 返回结果:
 * 拼接后产生的新 Buffer 对象
 
---------------------------
+## 成员函数
+        
 ### resize
 修改缓存对象尺寸
 ```JavaScript

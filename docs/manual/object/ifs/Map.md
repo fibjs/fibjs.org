@@ -30,7 +30,7 @@ Map 构造函数
 Variant Map[String];
 ```
 
-## 函数
+## 成员函数
         
 ### clear
 清除容器数据

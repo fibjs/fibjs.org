@@ -25,7 +25,7 @@ HttpCookie 构造函数，创建一个新的 HttpCookie 对象
 * value - 指定创建的 cookie 值
 * opts - 指定创建的 cookie 的其它属性
 
-## 函数
+## 成员函数
         
 ### parse
 解析给定的字符串，填充 cookie 对象

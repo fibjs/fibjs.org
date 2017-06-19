@@ -41,7 +41,7 @@ SslSocket 构造函数，创建一个新的 SslSocket 对象
 * crt - X509Cert 证书，用于客户端验证服务器
 * key - PKey 私钥，用于与客户端会话
 
-## 函数
+## 成员函数
         
 ### connect
 在给定的连接上连接 [ssl](../../module/ifs/ssl.md) 连接，客户端模式

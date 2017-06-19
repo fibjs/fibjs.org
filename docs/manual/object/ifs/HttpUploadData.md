@@ -1,7 +1,7 @@
 # 对象 HttpUploadData
 包含 multipart 的一个条目数据
 
-## 函数
+## 成员函数
         
 ### dispose
 强制回收对象，调用此方法后，对象资源将立即释放

@@ -55,7 +55,7 @@ json encoding.json;
 bson encoding.bson;
 ```
 
-## 函数
+## 静态函数
         
 ### jsstr
 将字符串编码为 javascript 转义字符串，用以在 javascript 代码中包含文本

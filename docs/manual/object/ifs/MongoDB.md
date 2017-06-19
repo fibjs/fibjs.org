@@ -17,7 +17,7 @@ readonly MongoCollection MongoDB[String];
 var test = mdb.test;
 ```
 
-## 函数
+## 成员函数
         
 ### getCollection
 获取指定集合访问对象

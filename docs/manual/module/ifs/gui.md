@@ -5,7 +5,7 @@
 ```JavaScript
 var gui = require('gui');
 ```
-## 函数
+## 静态函数
         
 ### setVersion
 设置 [WebView](../../object/ifs/WebView.md) 内 ie 模拟版本

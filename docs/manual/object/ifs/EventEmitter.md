@@ -15,7 +15,7 @@ var e = new EventEmitter();
  new EventEmitter();
 ```
 
-## 函数
+## 成员函数
         
 ### on
 绑定一个事件处理函数到对象

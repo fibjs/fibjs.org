@@ -12,7 +12,7 @@ ZmqSocket 对象构造函数
 调用参数:
 * type - 指定 socket 类型，缺省为 zmq.PAIR
 
-## 函数
+## 成员函数
         
 ### bind
 绑定指定地址和端口

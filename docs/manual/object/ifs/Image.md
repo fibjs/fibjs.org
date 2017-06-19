@@ -6,7 +6,7 @@ Image 对象属于 [gd](../../module/ifs/gd.md) 模块，创建：
 var img = gd.create(640, 480);
 var img1 = gd.load(data);
 ```
-## 函数
+## 成员函数
         
 ### getData
 按照指定的格式返回图像数据

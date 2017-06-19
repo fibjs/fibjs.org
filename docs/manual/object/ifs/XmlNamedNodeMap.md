@@ -8,7 +8,7 @@ XmlNamedNodeMap 对象表示一个无顺序的属性列表
 readonly XmlAttr XmlNamedNodeMap[];
 ```
 
-## 函数
+## 成员函数
         
 ### item
 返回属性列表中处于指定的索引号的属性

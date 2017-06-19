@@ -7,7 +7,7 @@ var db = require("db");
 var rdb = new db.openRedis("redis-server");
 var hash = rdb.getHash("test");
 ```
-## 函数
+## 成员函数
         
 ### set
 将哈希表中的域 field 的值设为 value，如果域 field 已经存在于哈希表中，旧值将被覆盖

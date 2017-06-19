@@ -23,7 +23,7 @@ SslHandler ssl.Handler;
 SslServer ssl.Server;
 ```
 
-## 函数
+## 静态函数
         
 ### connect
 创建一个 [SslSocket](../../object/ifs/SslSocket.md) 对象并建立连接

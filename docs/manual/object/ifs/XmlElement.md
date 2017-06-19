@@ -1,7 +1,7 @@
 # 对象 XmlElement
 XmlElement 对象表示 XML 文档中的元素
 
-## 函数
+## 成员函数
         
 ### getAttribute
 通过名称查询属性的值

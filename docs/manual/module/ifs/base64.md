@@ -10,7 +10,7 @@ var base64 = encoding.base64;
 ```JavaScript
 var base64 = require('base64');
 ```
-## 函数
+## 静态函数
         
 ### encode
 以 base64 方式编码数据

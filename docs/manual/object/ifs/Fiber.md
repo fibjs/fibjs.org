@@ -45,7 +45,7 @@ coroutine.current().v = 200;
 
 fb.join();
 ```
-## 函数
+## 成员函数
         
 ### join
 等待纤程结束

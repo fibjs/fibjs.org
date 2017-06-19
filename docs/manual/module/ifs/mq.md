@@ -59,7 +59,7 @@ Chain mq.Chain;
 Routing mq.Routing;
 ```
 
-## 函数
+## 静态函数
         
 ### await
 创建一个异步等待处理器

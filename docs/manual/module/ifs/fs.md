@@ -5,7 +5,7 @@
 ```JavaScript
 var fs = require('fs');
 ```
-## 函数
+## 静态函数
         
 ### exists
 查询指定的文件或目录是否存在

@@ -5,7 +5,7 @@ mysql 数据库连接对象
 ```JavaScript
 var msql = db.openMySQL("mysql://user:pass@host/db");
 ```
-## 函数
+## 成员函数
         
 ### use
 选择当前数据库连接的缺省数据库

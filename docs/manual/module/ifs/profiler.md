@@ -5,7 +5,7 @@
 ```JavaScript
 var profiler = require('profiler');
 ```
-## 函数
+## 静态函数
         
 ### saveSnapshot
 根据指定名称保存一个堆快照

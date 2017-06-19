@@ -18,7 +18,7 @@ Socket 构造函数，创建一个新的 Socket 对象
 * family - 指定地址集，缺省为 AF_INET，ipv4
 * type - 指定协议族，缺省为 SOCK_STREAM，tcp
 
-## 函数
+## 成员函数
         
 ### connect
 建立一个 tcp 连接

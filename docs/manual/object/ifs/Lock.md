@@ -16,7 +16,7 @@ l.release();
  new Lock();
 ```
 
-## 函数
+## 成员函数
         
 ### acquire
 获取锁的拥有权

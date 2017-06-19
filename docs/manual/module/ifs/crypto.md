@@ -41,7 +41,7 @@ X509Crl crypto.X509Crl;
 X509Req crypto.X509Req;
 ```
 
-## 函数
+## 静态函数
         
 ### loadPKey
 加载一个 PEM/DER 格式的密钥文件

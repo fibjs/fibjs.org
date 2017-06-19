@@ -30,7 +30,7 @@ console global.console;
 process global.process;
 ```
 
-## 函数
+## 静态函数
         
 ### run
 运行一个脚本

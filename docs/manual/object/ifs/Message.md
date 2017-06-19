@@ -14,7 +14,7 @@ var m = new mq.Message();
  new Message();
 ```
 
-## 函数
+## 成员函数
         
 ### read
 从流内读取指定大小的数据，此方法为 body 相应方法的别名

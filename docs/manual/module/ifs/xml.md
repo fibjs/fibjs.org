@@ -9,7 +9,7 @@ xml 文档对象，参见 [XmlDocument](../../object/ifs/XmlDocument.md) 对象
 XmlDocument xml.Document;
 ```
 
-## 函数
+## 静态函数
         
 ### parse
 解析 xml/html 文本，并创建 [XmlDocument](../../object/ifs/XmlDocument.md) 对象，不支持多语种

@@ -10,7 +10,7 @@ var bson = encoding.bson;
 ```JavaScript
 var bson = require('bson');
 ```
-## 函数
+## 静态函数
         
 ### encode
 以 bson 格式编码变量

@@ -1,7 +1,7 @@
 # 对象 HeapSnapshot
 HeapSnapshots记录JS堆在某个时刻的状态
 
-## 函数
+## 成员函数
         
 ### diff
 和指定的堆快照进行比较

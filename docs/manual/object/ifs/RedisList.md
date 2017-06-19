@@ -7,7 +7,7 @@ var db = require("db");
 var rdb = new db.openRedis("redis-server");
 var list = rdb.getList("test");
 ```
-## 函数
+## 成员函数
         
 ### push
 将一个或多个值 value 插入到列表的表头

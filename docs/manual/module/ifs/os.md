@@ -13,7 +13,7 @@ var os = require('os');
 Service os.Service;
 ```
 
-## 函数
+## 静态函数
         
 ### hostname
 查询当前运行环境主机名

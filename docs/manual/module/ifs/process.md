@@ -5,7 +5,7 @@
 ```JavaScript
 var process = require('process');
 ```
-## 函数
+## 静态函数
         
 ### umask
 改变当前的 umask，Windows 不支持此方法

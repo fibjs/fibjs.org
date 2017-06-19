@@ -5,7 +5,7 @@
 ```JavaScript
 var gfs = mdb.fs;
 ```
-## 函数
+## 成员函数
         
 ### retrieve
 获取一个文件

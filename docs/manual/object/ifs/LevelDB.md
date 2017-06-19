@@ -6,7 +6,7 @@ LevelDB 数据库对象
 var db = require("db");
 var test = new db.openLevelDB("test.db");
 ```
-## 函数
+## 成员函数
         
 ### has
 检查数据库内是否存在指定键值的数据

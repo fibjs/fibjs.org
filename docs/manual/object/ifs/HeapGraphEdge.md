@@ -1,7 +1,7 @@
 # 对象 HeapGraphEdge
 HeapGraphEdge表示两个[HeapGraphNode](HeapGraphNode.md)节点间的关联，从上游节点到下游节点
 
-## 函数
+## 成员函数
         
 ### getFromNode
 获取HeapGraphEdge的上游[HeapGraphNode](HeapGraphNode.md)节点

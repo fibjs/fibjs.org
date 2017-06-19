@@ -20,7 +20,7 @@ MemoryStream io.MemoryStream;
 BufferedStream io.BufferedStream;
 ```
 
-## 函数
+## 静态函数
         
 ### copyStream
 复制流数据到目标流中

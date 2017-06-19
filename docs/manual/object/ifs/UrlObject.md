@@ -28,7 +28,7 @@ UrlObject 对象构造函数，使用 [url](../../module/ifs/url.md) 字符串�
 * url - 指定构造 url 字符串
 * parseQueryString - 指定是否解析 query
 
-## 函数
+## 成员函数
         
 ### parse
 解析一个 [url](../../module/ifs/url.md) 字符串

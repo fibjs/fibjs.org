@@ -1,7 +1,7 @@
 # 对象 XmlDocumentType
 XmlDocumentType 对象用于访问 XML 所定义的实体
 
-## 函数
+## 成员函数
         
 ### hasChildNodes
 查询是否存在子节点

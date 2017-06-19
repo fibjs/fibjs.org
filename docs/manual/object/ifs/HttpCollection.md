@@ -8,7 +8,7 @@
 Variant HttpCollection[String];
 ```
 
-## 函数
+## 成员函数
         
 ### clear
 清除容器数据

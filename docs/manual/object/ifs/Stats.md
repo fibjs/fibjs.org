@@ -36,7 +36,7 @@ var stats = new util.Stats(["begin", "end", "error"]);
 readonly Integer Stats[String];
 ```
 
-## 函数
+## 成员函数
         
 ### inc
 指定的计数器增一

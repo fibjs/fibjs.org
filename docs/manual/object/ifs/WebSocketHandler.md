@@ -18,7 +18,7 @@ var pkghdlr = new ws.WebSocketHandler(...);
 调用参数:
 * hdlr - 内置消息处理器，处理函数，链式处理数组，路由对象，详见 mq.Handler
 
-## 函数
+## 成员函数
         
 ### onerror
 设置错误处理器

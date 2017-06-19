@@ -13,7 +13,7 @@ MemoryStream 构造函数
  new MemoryStream();
 ```
 
-## 函数
+## 成员函数
         
 ### setTime
 强制设定内存流对象的最后更新时间

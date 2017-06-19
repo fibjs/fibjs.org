@@ -5,7 +5,7 @@
 ```JavaScript
 var gd = require('gd');
 ```
-## 函数
+## 静态函数
         
 ### create
 创建一个新图像

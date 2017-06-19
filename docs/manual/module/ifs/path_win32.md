@@ -5,7 +5,7 @@
 ```JavaScript
 var path = require('path').win32;
 ```
-## 函数
+## 静态函数
         
 ### normalize
 标准化路径，处理路径中父目录等信息

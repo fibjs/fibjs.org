@@ -51,7 +51,7 @@ SslHandler 构造函数，创建一个新的 SslHandler 对象
 * key - PKey 私钥，用于与客户端会话
 * hdlr - 内置消息处理器，处理函数，链式处理数组，路由对象，详见 mq.Handler
 
-## 函数
+## 成员函数
         
 ### invoke
 处理一个消息或对象

@@ -19,7 +19,7 @@ var sock = new ws.WebSocket(...);
 
 调用参数:
 
-## 函数
+## 成员函数
         
 ### close
 

@@ -16,7 +16,7 @@ readonly MongoCollection MongoCollection[String];
 返回结果:
 * 返回新集合对象
 
-## 函数
+## 成员函数
         
 ### find
 根据给定的查询条件和返回字段设定，建立游标对象

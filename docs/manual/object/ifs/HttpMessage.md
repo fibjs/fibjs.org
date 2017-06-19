@@ -1,7 +1,7 @@
 # 对象 HttpMessage
 [http](../../module/ifs/http.md) 基础消息对象
 
-## 函数
+## 成员函数
         
 ### hasHeader
 检查是否存在指定键值的消息头

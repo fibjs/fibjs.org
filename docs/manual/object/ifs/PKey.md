@@ -13,7 +13,7 @@ PKey 构造函数
  new PKey();
 ```
 
-## 函数
+## 成员函数
         
 ### genRsaKey
 生成一个 RSA 私钥
