@@ -180,7 +180,7 @@ Value SslServer.valueOf();
 返回结果:
 * 返回对象本身的数值
 
-## 属性
+## 成员属性
         
 ### verification
 设定证书验证模式，缺省为 VERIFY_NONE

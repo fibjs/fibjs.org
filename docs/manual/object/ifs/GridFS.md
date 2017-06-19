@@ -118,7 +118,7 @@ Value GridFS.valueOf();
 返回结果:
 * 返回对象本身的数值
 
-## 属性
+## 成员属性
         
 ### files
 查询 GridFS 的元数据表

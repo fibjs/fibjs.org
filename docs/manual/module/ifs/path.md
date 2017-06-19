@@ -112,7 +112,7 @@ static String path.resolve(...);
 返回结果:
 * 返回得到的新路径
 
-## 属性
+## 静态属性
         
 ### sep
 查询当前操作系统的路径分割字符，posix 返回 '/', windows 返回  '\\'

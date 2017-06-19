@@ -75,7 +75,7 @@ Value HeapGraphEdge.valueOf();
 返回结果:
 * 返回对象本身的数值
 
-## 属性
+## 成员属性
         
 ### type
 下游节点的链接方式，可能的值：

@@ -1,6 +1,14 @@
 # 对象 WebView
 浏览器窗口对象
 
+## 静态属性
+        
+### defaultMaxListeners
+默认全局最大监听器数
+```JavaScript
+static Integer WebView.defaultMaxListeners;
+```
+
 ## 成员函数
         
 ### setHtml
@@ -412,7 +420,7 @@ Value WebView.valueOf();
 返回结果:
 * 返回对象本身的数值
 
-## 属性
+## 成员属性
         
 ### visible
 查询和设置窗口是否显示
@@ -495,12 +503,5 @@ var webview = gui.open('fs:index.html');
 webview.onmessage = function(msg) {
 	console.log(msg); // 将会打印 'hello from html'
 }
-```
-
---------------------------
-### defaultMaxListeners
-默认全局最大监听器数
-```JavaScript
-static Integer WebView.defaultMaxListeners;
 ```
 

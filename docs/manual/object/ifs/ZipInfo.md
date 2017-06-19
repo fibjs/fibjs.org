@@ -55,7 +55,7 @@ Value ZipInfo.valueOf();
 返回结果:
 * 返回对象本身的数值
 
-## 属性
+## 成员属性
         
 ### filename
 只读属性成员, 文件名

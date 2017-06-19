@@ -137,7 +137,7 @@ Value HttpServer.valueOf();
 返回结果:
 * 返回对象本身的数值
 
-## 属性
+## 成员属性
         
 ### crossDomain
 查询和设置是否允许跨域请求，缺省为 false

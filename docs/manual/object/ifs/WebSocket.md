@@ -19,6 +19,14 @@ var sock = new ws.WebSocket(...);
 
 调用参数:
 
+## 静态属性
+        
+### defaultMaxListeners
+默认全局最大监听器数
+```JavaScript
+static Integer WebSocket.defaultMaxListeners;
+```
+
 ## 成员函数
         
 ### close
@@ -396,7 +404,7 @@ Value WebSocket.valueOf();
 返回结果:
 * 返回对象本身的数值
 
-## 属性
+## 成员属性
         
 ### url
 
@@ -451,12 +459,5 @@ Function WebSocket.onclose;
 
 ```JavaScript
 Function WebSocket.onerror;
-```
-
---------------------------
-### defaultMaxListeners
-默认全局最大监听器数
-```JavaScript
-static Integer WebSocket.defaultMaxListeners;
 ```
 

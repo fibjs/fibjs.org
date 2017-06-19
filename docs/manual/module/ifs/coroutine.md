@@ -143,7 +143,7 @@ static coroutine.sleep(Integer ms = 0) async;
 调用参数:
 * ms - 指定要暂停的时间，以毫秒为单位，缺省为 0，即有空闲立即回恢复运行
 
-## 属性
+## 静态属性
         
 ### fibers
 返回当前正在运行的全部 fiber 数组

@@ -15,6 +15,14 @@ var e = new EventEmitter();
  new EventEmitter();
 ```
 
+## 静态属性
+        
+### defaultMaxListeners
+默认全局最大监听器数
+```JavaScript
+static Integer EventEmitter.defaultMaxListeners;
+```
+
 ## 成员函数
         
 ### on
@@ -364,12 +372,4 @@ Value EventEmitter.valueOf();
 
 返回结果:
 * 返回对象本身的数值
-
-## 属性
-        
-### defaultMaxListeners
-默认全局最大监听器数
-```JavaScript
-static Integer EventEmitter.defaultMaxListeners;
-```
 

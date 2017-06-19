@@ -209,7 +209,7 @@ static global.repl(Stream out,
 ]
 ```
 
-## 属性
+## 静态属性
         
 ### Master
 [Worker](../../object/ifs/Worker.md) 宿主对象，仅在 [Worker](../../object/ifs/Worker.md) 入口脚本有效

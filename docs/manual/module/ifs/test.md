@@ -125,7 +125,7 @@ static test.setup(Integer mode = BDD);
 调用参数:
 * mode - 指定初始化的模式，缺省为 BDD
 
-## 属性
+## 静态属性
         
 ### slow
 设置和查询慢速测试警告阀值，以 ms 为单位，缺省为 75

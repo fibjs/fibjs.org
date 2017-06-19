@@ -561,7 +561,7 @@ static String console.readLine(String msg = "") async;
 返回结果:
 * 返回用户输入的信息
 
-## 属性
+## 静态属性
         
 ### loglevel
 输出级别，用以过滤输出信息，缺省为 NOTSET，全部输出。信息过滤之后才会输出给 add 设定的各个设备。

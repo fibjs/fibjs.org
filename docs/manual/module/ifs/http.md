@@ -326,7 +326,7 @@ static HttpResponse http.patch(String url,
 返回结果:
 * 返回服务器响应
 
-## 属性
+## 静态属性
         
 ### cookies
 返回http客户端的 [HttpCookie](../../object/ifs/HttpCookie.md) 对象列表

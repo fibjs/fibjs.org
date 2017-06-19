@@ -66,7 +66,7 @@ static Buffer uuid.snowflake();
 返回结果:
 * 返回一个生成的二进制 id
 
-## 属性
+## 静态属性
         
 ### hostID
 查询和修改 Snowflake 算法的主机 id

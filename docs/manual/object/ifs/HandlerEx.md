@@ -89,7 +89,7 @@ Value HandlerEx.valueOf();
 返回结果:
 * 返回对象本身的数值
 
-## 属性
+## 成员属性
         
 ### handler
 [WebSocket](WebSocket.md) 协议转换处理器当前事件处理接口对象

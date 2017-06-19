@@ -231,7 +231,7 @@ Value HttpRequest.valueOf();
 返回结果:
 * 返回对象本身的数值
 
-## 属性
+## 成员属性
         
 ### method
 查询和设置请求方法

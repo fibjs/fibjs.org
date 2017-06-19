@@ -645,7 +645,7 @@ static fs.appendFileSync(String fname,
 * fname - 指定文件名
 * data - 指定要写入的二进制数据
 
-## 属性
+## 静态属性
         
 ### constants
 fs模块的常量对象

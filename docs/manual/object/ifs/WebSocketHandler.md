@@ -106,7 +106,7 @@ Value WebSocketHandler.valueOf();
 返回结果:
 * 返回对象本身的数值
 
-## 属性
+## 成员属性
         
 ### maxSize
 查询和设置最大包尺寸，以 MB 为单位，缺省为 64

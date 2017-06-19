@@ -189,7 +189,7 @@ Value BufferedStream.valueOf();
 返回结果:
 * 返回对象本身的数值
 
-## 属性
+## 成员属性
         
 ### stream
 查询创建缓存对象时的流对象

@@ -55,7 +55,7 @@ Value TextColor.valueOf();
 返回结果:
 * 返回对象本身的数值
 
-## 属性
+## 成员属性
         
 ### notice
 指定 [console](../../module/ifs/console.md).notice 颜色

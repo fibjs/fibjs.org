@@ -304,7 +304,7 @@ Value DBResult.valueOf();
 返回结果:
 * 返回对象本身的数值
 
-## 属性
+## 成员属性
         
 ### insertId
 查询当前操作插入数据库的 rowid

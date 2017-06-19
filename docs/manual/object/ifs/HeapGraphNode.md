@@ -55,7 +55,7 @@ Value HeapGraphNode.valueOf();
 返回结果:
 * 返回对象本身的数值
 
-## 属性
+## 成员属性
         
 ### type
 节点类型，可能的值：

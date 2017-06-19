@@ -12,6 +12,14 @@
 
 调用参数:
 
+## 静态属性
+        
+### defaultMaxListeners
+默认全局最大监听器数
+```JavaScript
+static Integer Worker.defaultMaxListeners;
+```
+
 ## 成员函数
         
 ### postMessage
@@ -371,18 +379,11 @@ Value Worker.valueOf();
 返回结果:
 * 返回对象本身的数值
 
-## 属性
+## 成员属性
         
 ### onmessage
 
 ```JavaScript
 Function Worker.onmessage;
-```
-
---------------------------
-### defaultMaxListeners
-默认全局最大监听器数
-```JavaScript
-static Integer Worker.defaultMaxListeners;
 ```
 

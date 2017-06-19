@@ -223,7 +223,7 @@ Value HttpMessage.valueOf();
 返回结果:
 * 返回对象本身的数值
 
-## 属性
+## 成员属性
         
 ### protocol
 协议版本信息，允许的格式为：HTTP/#.#

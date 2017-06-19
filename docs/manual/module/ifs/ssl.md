@@ -65,7 +65,7 @@ static ssl.loadClientCertFile(String crtFile,
 * keyFile - PKey 私钥文件，用于与客户端会话
 * password - 解密密码
 
-## 属性
+## 静态属性
         
 ### ca
 全局证书，用于 ssl 客户端模式验证服务器证书

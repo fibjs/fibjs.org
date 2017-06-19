@@ -261,7 +261,7 @@ Value HttpResponse.valueOf();
 返回结果:
 * 返回对象本身的数值
 
-## 属性
+## 成员属性
         
 ### status
 查询和设置响应消息的返回状态

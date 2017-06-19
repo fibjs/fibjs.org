@@ -99,7 +99,7 @@ Value HttpCookie.valueOf();
 返回结果:
 * 返回对象本身的数值
 
-## 属性
+## 成员属性
         
 ### name
 查询和设置 cookie 名称

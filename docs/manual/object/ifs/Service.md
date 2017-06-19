@@ -16,6 +16,14 @@
 * worker - 服务运行函数
 * event - 服务事件处理
 
+## 静态属性
+        
+### defaultMaxListeners
+默认全局最大监听器数
+```JavaScript
+static Integer Service.defaultMaxListeners;
+```
+
 ## 成员函数
         
 ### install
@@ -435,7 +443,7 @@ Value Service.valueOf();
 返回结果:
 * 返回对象本身的数值
 
-## 属性
+## 成员属性
         
 ### name
 查询和设置服务名称
@@ -462,12 +470,5 @@ Function Service.onpause;
 查询和绑定服务恢复事件，相当于 on("continue", func);
 ```JavaScript
 Function Service.oncontinue;
-```
-
---------------------------
-### defaultMaxListeners
-默认全局最大监听器数
-```JavaScript
-static Integer Service.defaultMaxListeners;
 ```
 

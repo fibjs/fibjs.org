@@ -55,7 +55,7 @@ Value HttpUploadData.valueOf();
 返回结果:
 * 返回对象本身的数值
 
-## 属性
+## 成员属性
         
 ### fileName
 包含本条目数据的文件名

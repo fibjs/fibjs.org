@@ -194,7 +194,7 @@ Value XmlNode.valueOf();
 返回结果:
 * 返回对象本身的数值
 
-## 属性
+## 成员属性
         
 ### nodeType
 返回节点的节点类型

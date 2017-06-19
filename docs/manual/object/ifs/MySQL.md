@@ -139,7 +139,7 @@ Value MySQL.valueOf();
 返回结果:
 * 返回对象本身的数值
 
-## 属性
+## 成员属性
         
 ### rxBufferSize
 数据库连接接收缓存尺寸

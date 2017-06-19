@@ -336,7 +336,7 @@ Value XmlElement.valueOf();
 返回结果:
 * 返回对象本身的数值
 
-## 属性
+## 成员属性
         
 ### namespaceURI
 查询元素的命名空间的 URI。如果选定的节点无命名空间，则该属性返回 NULL

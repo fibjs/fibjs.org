@@ -113,7 +113,7 @@ Value ZmqSocket.valueOf();
 返回结果:
 * 返回对象本身的数值
 
-## 属性
+## 成员属性
         
 ### type
 查询当前 socket 类型
