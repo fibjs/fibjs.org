@@ -122,5 +122,5 @@ function sync_releases() {
 
 while (true) {
     coroutine.start(sync_releases).join();
-    coroutine.sleep(600000);
+    coroutine.sleep(100000);
 }
