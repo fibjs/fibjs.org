@@ -31,6 +31,10 @@ var baseFolder = path.join(__dirname, '../web/dist/download');
 var distFolder = path.join(__dirname, '../web/dist/dist');
 
 function sync_releases() {
+    process.chdir('..');
+    process.run('git', ['pull']);
+    process.chdir('tools');
+
     var _tmpl = ejs.compile(fs.readTextFile(path.join(baseFolder, 'tmpl.html')));
 
     var d = wget('https://api.github.com/repos/fibjs/fibjs/releases');
