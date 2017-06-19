@@ -229,7 +229,9 @@ var webpack_config = {
         }),
         new webpack.ProvidePlugin({
             $: "jquery",
-            jQuery: "jquery"
+            jQuery: "jquery",
+            "window.$": "jquery",
+            "window.jQuery": "jquery"
         }),
         new webpack.DefinePlugin({
             "process.env": {
