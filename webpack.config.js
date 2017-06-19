@@ -243,10 +243,6 @@ var webpack_config = {
             from: path.resolve('./web/src/imgs'),
             to: path.resolve('./web/dist/imgs')
         }]),
-        new CopyWebpackPlugin([{
-            from: path.resolve('./web/src/favicon.ico'),
-            to: path.resolve('./web/dist/favicon.ico')
-        }]),
         new WebpackOnBuildPlugin(() => {
             build_docs();
             relative();
