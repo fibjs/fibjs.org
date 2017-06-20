@@ -5,6 +5,7 @@ mongodb 数据库连接对象
 ```JavaScript
 var mdb = db.openMongoDB("mongodb://host/db");
 ```
+
 ## 下标操作
         
 快速获取指定集合访问对象

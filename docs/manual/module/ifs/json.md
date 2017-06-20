@@ -10,6 +10,7 @@ var json = encoding.json;
 ```JavaScript
 var json = require('json');
 ```
+
 ## 静态函数
         
 ### encode

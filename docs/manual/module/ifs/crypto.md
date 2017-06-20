@@ -5,6 +5,7 @@
 ```JavaScript
 var crypto = require('crypto');
 ```
+
 ## 对象
         
 ### Cipher

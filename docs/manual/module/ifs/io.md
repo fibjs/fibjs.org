@@ -5,6 +5,7 @@
 ```JavaScript
 var io = require('io');
 ```
+
 ## 对象
         
 ### MemoryStream

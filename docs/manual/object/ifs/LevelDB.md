@@ -6,6 +6,7 @@ LevelDB 数据库对象
 var db = require("db");
 var test = new db.openLevelDB("test.db");
 ```
+
 ## 成员函数
         
 ### has

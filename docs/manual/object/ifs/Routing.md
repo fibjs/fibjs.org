@@ -39,6 +39,7 @@ var routing = new mq.Routing({
 });
 ```
 匹配消息 "/func1/123/456.html" 后，value == "123"，params == ["123"];
+
 ## 构造函数
         
 ### Routing

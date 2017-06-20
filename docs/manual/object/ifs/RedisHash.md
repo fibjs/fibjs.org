@@ -7,6 +7,7 @@ var db = require("db");
 var rdb = new db.openRedis("redis-server");
 var hash = rdb.getHash("test");
 ```
+
 ## 成员函数
         
 ### set

@@ -5,6 +5,7 @@
 ```JavaScript
 var encoding = require('encoding');
 ```
+
 ## 对象
         
 ### base32

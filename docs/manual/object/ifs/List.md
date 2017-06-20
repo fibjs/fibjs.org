@@ -6,6 +6,7 @@ Variant 数组对象，一般用以返回一组 Variant 数据
 var collection = require("collection");
 var a = new collection.List();
 ```
+
 ## 构造函数
         
 ### List

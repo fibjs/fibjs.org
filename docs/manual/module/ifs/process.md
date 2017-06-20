@@ -5,6 +5,7 @@
 ```JavaScript
 var process = require('process');
 ```
+
 ## 静态函数
         
 ### umask

@@ -5,6 +5,7 @@
 ```JavaScript
 var coroutine = require('coroutine');
 ```
+
 ## 对象
         
 ### Lock

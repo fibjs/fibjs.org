@@ -5,6 +5,7 @@
 ```JavaScript
 var n = new Int64(123);
 ```
+
 ## 构造函数
         
 ### Int64

@@ -12,6 +12,7 @@ var sbox = new vm.SandBox({
 
 var mod_in_sbox = sbox.require('./path/to/mod');
 ```
+
 ## 构造函数
         
 ### SandBox

@@ -14,6 +14,7 @@ var assert = test.assert;
 ```JavaScript
 require("test").setup();
 ```
+
 ## 静态函数
         
 ### Function

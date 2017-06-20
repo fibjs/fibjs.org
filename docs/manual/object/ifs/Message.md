@@ -6,6 +6,7 @@ Message 对象兼容于 [mq](../../module/ifs/mq.md) 各个模块，可用于构
 var mq = require("mq");
 var m = new mq.Message();
 ```
+
 ## 构造函数
         
 ### Message

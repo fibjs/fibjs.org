@@ -5,6 +5,7 @@ websocket 支持模块
 ```JavaScript
 var ws = require('ws');
 ```
+
 ## 对象
         
 ### Message

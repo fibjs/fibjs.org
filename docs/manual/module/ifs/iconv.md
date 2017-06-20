@@ -10,6 +10,7 @@ var iconv = encoding.iconv;
 ```JavaScript
 var iconv = require('iconv');
 ```
+
 ## 静态函数
         
 ### encode

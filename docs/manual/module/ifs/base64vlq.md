@@ -10,6 +10,7 @@ var base64vlq = encoding.base64vlq;
 ```JavaScript
 var base64vlq = require('base64vlq');
 ```
+
 ## 静态函数
         
 ### encode

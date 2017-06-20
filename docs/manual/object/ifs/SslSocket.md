@@ -5,6 +5,7 @@ SslSocket 属于 [ssl](../../module/ifs/ssl.md) 模块，创建方法
 ```JavaScript
 var s = new ssl.Socket();
 ```
+
 ## 构造函数
         
 ### SslSocket

@@ -5,6 +5,7 @@
 ```JavaScript
 var collection = require("collection");
 ```
+
 ## 对象
         
 ### Map

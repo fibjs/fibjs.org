@@ -5,6 +5,7 @@
 ```JavaScript
 var querystring = require('querystring');
 ```
+
 ## 静态函数
         
 ### escape

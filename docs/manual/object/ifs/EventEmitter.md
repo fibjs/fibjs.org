@@ -7,6 +7,7 @@ var EventEmitter = require('events');
 
 var e = new EventEmitter();
 ```
+
 ## 构造函数
         
 ### EventEmitter

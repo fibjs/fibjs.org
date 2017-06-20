@@ -7,6 +7,7 @@ var ws = require("ws");
 
 var pkghdlr = new ws.WebSocketHandler(...);
 ```
+
 ## 构造函数
         
 ### WebSocketHandler

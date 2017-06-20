@@ -6,6 +6,7 @@ FIFO（先进先出）队列对象
 var collection = require("collection");
 var q = new collection.Queue(100);
 ```
+
 ## 构造函数
         
 ### Queue

@@ -2,6 +2,7 @@
 文件的基础信息对象
 
 Stat 对象通过 [fs](../../module/ifs/fs.md).stat, [File](File.md).stat, [fs](../../module/ifs/fs.md).readdir 查询，不可独立创建
+
 ## 成员函数
         
 ### isWritable

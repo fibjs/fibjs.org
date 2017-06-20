@@ -6,6 +6,7 @@ Url 处理对象
 var url = new net.Url('http://www.xici.net/');
 var url = new net.Url({protocol: 'http:', hostname:'www.xici.net', pathname:'/'});
 ```
+
 ## 构造函数
         
 ### UrlObject

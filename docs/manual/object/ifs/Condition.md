@@ -38,6 +38,7 @@ will output:
 ready
 go
 ```
+
 ## 构造函数
         
 ### Condition

@@ -5,6 +5,7 @@ mysql 数据库连接对象
 ```JavaScript
 var msql = db.openMySQL("mysql://user:pass@host/db");
 ```
+
 ## 成员函数
         
 ### use

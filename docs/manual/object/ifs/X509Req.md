@@ -5,6 +5,7 @@ X509Req 对象属于 [crypto](../../module/ifs/crypto.md) 模块，创建：
 ```JavaScript
 var k = new crypto.X509Req();
 ```
+
 ## 构造函数
         
 ### X509Req

@@ -10,6 +10,7 @@ XmlCDATASection 接口是 [XmlText](XmlText.md) 接口的子接口，没有定�
 CDATA 区段包含了不会被解析器解析的文本。CDATA 区段中的标签不会被视为标记，同时实体也不会被展开。主要的目的是为了包含诸如 XML 片段之类的材料，而无需转义所有的分隔符。
 
 在一个 CDATA 中唯一被识别的分隔符是 "]]>"，它可标示 CDATA 区段的结束。CDATA 区段不能进行嵌套。
+
 ## 成员函数
         
 ### splitText

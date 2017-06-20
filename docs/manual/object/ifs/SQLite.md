@@ -5,6 +5,7 @@ sqlite 数据库连接对象
 ```JavaScript
 var slite = db.openSQLite("sqlite:/path/to/db");
 ```
+
 ## 成员函数
         
 ### backup

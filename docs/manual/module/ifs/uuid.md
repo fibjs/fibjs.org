@@ -5,6 +5,7 @@ uuid 唯一 id 模块
 ```JavaScript
 var uuid = require('uuid');
 ```
+
 ## 静态函数
         
 ### node

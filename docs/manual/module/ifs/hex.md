@@ -10,6 +10,7 @@ var hex = encoding.hex;
 ```JavaScript
 var hex = require('hex');
 ```
+
 ## 静态函数
         
 ### encode

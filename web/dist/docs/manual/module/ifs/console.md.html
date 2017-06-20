@@ -162,36 +162,37 @@
 <li>%s - 字符串</li>
 <li>%d - 数字，包括整数和数字</li>
 <li>%j - 以 JSON 格式输出对象</li>
-<li>%% - 输出字符 &#39;%&#39; 本身<h2 id="-">静态函数</h2>
-</li>
+<li>%% - 输出字符 &#39;%&#39; 本身</li>
 </ul>
+<h2 id="-">静态函数</h2>
 <h3 id="add">add</h3>
-<p>批量添加 console 输出系统，支持的设备为 console, syslog 和 file，最多可以添加 10 个输出</p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> <span class="hljs-built_in">console</span>.add(<span class="hljs-built_in">Array</span> cfg);
+<p>添加 console 输出系统，支持的设备为 console, syslog, event，最多可以添加 10 个输出</p>
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> <span class="hljs-built_in">console</span>.add(<span class="hljs-built_in">String</span> type);
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>cfg: Array, 输出配置数组</li>
+<li>type: String, 输出设备</li>
 </ul>
 <p>通过配置 console，可以将程序输出和系统错误发往不同设备，用于运行环境信息收集。</p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">console</span>.add([<span class="hljs-string">"console"</span>, {
-   <span class="hljs-attr">type</span>: <span class="hljs-string">"syslog"</span>,
-   <span class="hljs-attr">levels</span>: [<span class="hljs-built_in">console</span>.INFO, <span class="hljs-built_in">console</span>.ERROR]
-}]);
-</code></pre>
-<hr>
-<p>添加 console 输出系统，支持的设备为 console, syslog 和 file，最多可以添加 10 个输出</p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> <span class="hljs-built_in">console</span>.add(Value cfg);
-</code></pre>
-<p>调用参数:</p>
-<ul>
-<li>cfg: Value, 输出配置</li>
-</ul>
-<p>通过配置 console，可以将程序输出和系统错误发往不同设备，用于运行环境信息收集。</p>
-<p>cfg 为配置，可以为设备名称字符串：</p>
+<p>type 为配置，为设备名称字符串：</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">console</span>.add(<span class="hljs-string">"console"</span>);
 </code></pre>
-<p>也可以为一个设备配置对象：</p>
+<p>syslog 仅在 posix 平台有效：</p>
+<pre><code class="lang-JavaScript"><span class="hljs-built_in">console</span>.add(<span class="hljs-string">"syslog"</span>);
+</code></pre>
+<p>event 仅在 windows 平台有效：</p>
+<pre><code class="lang-JavaScript"><span class="hljs-built_in">console</span>.add(<span class="hljs-string">"event"</span>);
+</code></pre>
+<hr>
+<p>添加 console 输出系统，支持的设备为 console, syslog, event 和 file，最多可以添加 10 个输出</p>
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> <span class="hljs-built_in">console</span>.add(<span class="hljs-built_in">Object</span> cfg);
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li>cfg: Object, 输出配置</li>
+</ul>
+<p>通过配置 console，可以将程序输出和系统错误发往不同设备，用于运行环境信息收集。</p>
+<p>cfg 可以为一个设备配置对象：</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">console</span>.add({
    <span class="hljs-attr">type</span>: <span class="hljs-string">"console"</span>,
    <span class="hljs-attr">levels</span>: [<span class="hljs-built_in">console</span>.INFO, <span class="hljs-built_in">console</span>.ERROR]  <span class="hljs-comment">// 选项，省略则输出全部级别日志</span>
@@ -203,14 +204,37 @@
    <span class="hljs-attr">levels</span>: [<span class="hljs-built_in">console</span>.INFO, <span class="hljs-built_in">console</span>.ERROR]
 });
 </code></pre>
-<p>file 日志不支持简单调用：</p>
+<p>event 仅在 windows 平台有效：</p>
+<pre><code class="lang-JavaScript"><span class="hljs-built_in">console</span>.add({
+   <span class="hljs-attr">type</span>: <span class="hljs-string">"event"</span>,
+   <span class="hljs-attr">levels</span>: [<span class="hljs-built_in">console</span>.INFO, <span class="hljs-built_in">console</span>.ERROR]
+});
+</code></pre>
+<p>file 日志：</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">console</span>.add({
    <span class="hljs-attr">type</span>: <span class="hljs-string">"file"</span>,
    <span class="hljs-attr">levels</span>: [<span class="hljs-built_in">console</span>.INFO, <span class="hljs-built_in">console</span>.ERROR],
-   <span class="hljs-attr">path</span>: <span class="hljs-string">"path/to/file"</span>,  <span class="hljs-comment">// 必选项</span>
-   split: <span class="hljs-string">"30m"</span>,  <span class="hljs-comment">// 选项，可选值为 "day", "hour", "minute", "###k", "###m", "###g"</span>
-   count: <span class="hljs-number">10</span> <span class="hljs-comment">// 选项，可选范围为 2-128，指定此项时必须提供 split</span>
+   <span class="hljs-comment">// 必选项，指定日志输出文件，可使用 s% 指定插入日期位置，不指定则添加在结尾</span>
+   path: <span class="hljs-string">"path/to/file_%s.log"</span>,
+   <span class="hljs-comment">// 选项，可选值为 "day", "hour", "minute", "###k", "###m", "###g"，缺省为 "1m"</span>
+   split: <span class="hljs-string">"30m"</span>,
+   <span class="hljs-comment">// 选项，可选范围为 2-128，缺省为 128</span>
+   count: <span class="hljs-number">10</span>
 });
+</code></pre>
+<hr>
+<p>批量添加 console 输出系统，支持的设备为 console, syslog, event 和 file，最多可以添加 10 个输出</p>
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> <span class="hljs-built_in">console</span>.add(<span class="hljs-built_in">Array</span> cfg);
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li>cfg: Array, 输出配置数组</li>
+</ul>
+<p>通过配置 console，可以将程序输出和系统错误发往不同设备，用于运行环境信息收集。</p>
+<pre><code class="lang-JavaScript"><span class="hljs-built_in">console</span>.add([<span class="hljs-string">"console"</span>, {
+   <span class="hljs-attr">type</span>: <span class="hljs-string">"syslog"</span>,
+   <span class="hljs-attr">levels</span>: [<span class="hljs-built_in">console</span>.INFO, <span class="hljs-built_in">console</span>.ERROR]
+}]);
 </code></pre>
 <hr>
 <h3 id="reset">reset</h3>

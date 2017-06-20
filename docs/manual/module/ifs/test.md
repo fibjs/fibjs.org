@@ -62,6 +62,7 @@ it('error case', sync(done => {
 
 process.exit(-test.run(console.DEBUG));
 ```
+
 ## 对象
         
 ### assert

@@ -7,6 +7,7 @@ var ws = require("ws");
 
 var msg = new ws.Message();
 ```
+
 ## 构造函数
         
 ### WebSocketMessage

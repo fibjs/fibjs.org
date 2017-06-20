@@ -6,6 +6,7 @@ Windows 注册表访问模块
 var registry = require('registry');
 var value = registry.get(registry.CLASSES_ROOT, "\node1\node2\value");
 ```
+
 ## 静态函数
         
 ### listSubKey

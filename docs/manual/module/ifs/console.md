@@ -10,44 +10,48 @@ console.log("%d + %d = %d", 100, 200, 100 + 200);
 - %d - 数字，包括整数和数字
 - %j - 以 JSON 格式输出对象
 - %% - 输出字符 '%' 本身
+
 ## 静态函数
         
 ### add
-批量添加 console 输出系统，支持的设备为 console, syslog 和 file，最多可以添加 10 个输出
+添加 console 输出系统，支持的设备为 console, syslog, event，最多可以添加 10 个输出
 ```JavaScript
-static console.add(Array cfg);
+static console.add(String type);
 ```
 
 调用参数:
-* cfg: Array, 输出配置数组
+* type: String, 输出设备
 
 通过配置 console，可以将程序输出和系统错误发往不同设备，用于运行环境信息收集。
 
-```JavaScript
-console.add(["console", {
-   type: "syslog",
-   levels: [console.INFO, console.ERROR]
-}]);
-```
-
---------------------------
-添加 console 输出系统，支持的设备为 console, syslog 和 file，最多可以添加 10 个输出
-```JavaScript
-static console.add(Value cfg);
-```
-
-调用参数:
-* cfg: Value, 输出配置
-
-通过配置 console，可以将程序输出和系统错误发往不同设备，用于运行环境信息收集。
-
-cfg 为配置，可以为设备名称字符串：
+type 为配置，为设备名称字符串：
 
 ```JavaScript
 console.add("console");
 ```
 
-也可以为一个设备配置对象：
+syslog 仅在 posix 平台有效：
+```JavaScript
+console.add("syslog");
+```
+
+event 仅在 windows 平台有效：
+```JavaScript
+console.add("event");
+```
+
+--------------------------
+添加 console 输出系统，支持的设备为 console, syslog, event 和 file，最多可以添加 10 个输出
+```JavaScript
+static console.add(Object cfg);
+```
+
+调用参数:
+* cfg: Object, 输出配置
+
+通过配置 console，可以将程序输出和系统错误发往不同设备，用于运行环境信息收集。
+
+cfg 可以为一个设备配置对象：
 ```JavaScript
 console.add({
    type: "console",
@@ -63,15 +67,44 @@ console.add({
 });
 ```
 
-file 日志不支持简单调用：
+event 仅在 windows 平台有效：
+```JavaScript
+console.add({
+   type: "event",
+   levels: [console.INFO, console.ERROR]
+});
+```
+
+file 日志：
 ```JavaScript
 console.add({
    type: "file",
    levels: [console.INFO, console.ERROR],
-   path: "path/to/file",  // 必选项
-   split: "30m",  // 选项，可选值为 "day", "hour", "minute", "###k", "###m", "###g"
-   count: 10 // 选项，可选范围为 2-128，指定此项时必须提供 split
+   // 必选项，指定日志输出文件，可使用 s% 指定插入日期位置，不指定则添加在结尾
+   path: "path/to/file_%s.log",
+   // 选项，可选值为 "day", "hour", "minute", "###k", "###m", "###g"，缺省为 "1m"
+   split: "30m",
+   // 选项，可选范围为 2-128，缺省为 128
+   count: 10
 });
+```
+
+--------------------------
+批量添加 console 输出系统，支持的设备为 console, syslog, event 和 file，最多可以添加 10 个输出
+```JavaScript
+static console.add(Array cfg);
+```
+
+调用参数:
+* cfg: Array, 输出配置数组
+
+通过配置 console，可以将程序输出和系统错误发往不同设备，用于运行环境信息收集。
+
+```JavaScript
+console.add(["console", {
+   type: "syslog",
+   levels: [console.INFO, console.ERROR]
+}]);
 ```
 
 --------------------------

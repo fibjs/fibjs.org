@@ -2,6 +2,7 @@
 XmlCharacterData 接口提供了 [XmlText](XmlText.md) 和 [XmlComment](XmlComment.md) 节点的常用功能
 
 XmlCharacterData 是 [XmlText](XmlText.md) 和 [XmlComment](XmlComment.md) 节点的超接口。文档从不包含 XmlCharacterData 节点，它们只包含 [XmlText](XmlText.md) 节点和 [XmlComment](XmlComment.md) 节点。但由于这两种节点具有相似的功能，因此此处定义了这些函数，以便 [XmlText](XmlText.md) 和 [XmlComment](XmlComment.md) 可以继承它。
+
 ## 成员函数
         
 ### substringData

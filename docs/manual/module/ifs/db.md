@@ -5,6 +5,7 @@
 ```JavaScript
 var db = require('db');
 ```
+
 ## 静态函数
         
 ### open

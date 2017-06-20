@@ -5,6 +5,7 @@ SQL Server 数据库连接对象
 ```JavaScript
 var sql = db.openMSSQL("mssql://user:pass@host/db");
 ```
+
 ## 成员函数
         
 ### use

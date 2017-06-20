@@ -7,6 +7,7 @@ var ws = require("ws");
 
 var sock = new ws.WebSocket(...);
 ```
+
 ## 构造函数
         
 ### WebSocket

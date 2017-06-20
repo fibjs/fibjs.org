@@ -7,6 +7,7 @@ var chain = new mq.Chain([
   func1, func2
 ]);
 ```
+
 ## 构造函数
         
 ### Chain

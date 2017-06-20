@@ -5,6 +5,7 @@ Cipher 对象属于 [crypto](../../module/ifs/crypto.md) 模块，创建：
 ```JavaScript
 var c = new crypto.Cipher(crypto.AES, crypto.ECB, ...);
 ```
+
 ## 构造函数
         
 ### Cipher

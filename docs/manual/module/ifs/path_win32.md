@@ -5,6 +5,7 @@
 ```JavaScript
 var path = require('path').win32;
 ```
+
 ## 静态函数
         
 ### normalize

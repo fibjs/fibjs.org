@@ -6,6 +6,7 @@ Redis 数据库客户端对象
 var db = require("db");
 var test = new db.openRedis("redis-server");
 ```
+
 ## 成员函数
         
 ### command

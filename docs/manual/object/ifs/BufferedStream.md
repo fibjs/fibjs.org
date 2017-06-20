@@ -5,6 +5,7 @@ BufferedReader 对象用于对二进制流对象数据进行缓存，并提供�
 ```JavaScript
 var reader = new io.BufferedStream(stream);
 ```
+
 ## 构造函数
         
 ### BufferedStream

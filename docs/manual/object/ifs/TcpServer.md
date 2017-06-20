@@ -15,6 +15,7 @@ function func(conn)
 
 new net.TcpServer(8080, func).run();
 ```
+
 ## 构造函数
         
 ### TcpServer

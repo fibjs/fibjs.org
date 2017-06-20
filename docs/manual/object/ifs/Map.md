@@ -6,6 +6,7 @@
 var collection = require("collection");
 var m = new collection.Map();
 ```
+
 ## 构造函数
         
 ### Map

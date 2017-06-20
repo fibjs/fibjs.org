@@ -5,6 +5,7 @@
 var process = require("process");
 var sub = process.open("ls");
 ```
+
 ## 成员函数
         
 ### kill

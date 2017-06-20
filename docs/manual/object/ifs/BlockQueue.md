@@ -6,6 +6,7 @@
 var coroutine = require("coroutine");
 var q = new coroutine.BlockQueue(100);
 ```
+
 ## 构造函数
         
 ### BlockQueue

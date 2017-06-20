@@ -10,6 +10,7 @@ var base32 = encoding.base32;
 ```JavaScript
 var base32 = require('base32');
 ```
+
 ## 静态函数
         
 ### encode

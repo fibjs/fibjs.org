@@ -5,6 +5,7 @@
 ```JavaScript
 var profiler = require('profiler');
 ```
+
 ## 静态函数
         
 ### saveSnapshot

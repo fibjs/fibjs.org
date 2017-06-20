@@ -7,6 +7,7 @@ var util = require("util");
 var stats = new util.Stats(["begin", "end", "error"]);
 ```
 一些内部对象会提供预先定义的的统计对象
+
 ## 构造函数
         
 ### Stats

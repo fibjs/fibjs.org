@@ -5,6 +5,7 @@
 ```JavaScript
 var gfs = mdb.fs;
 ```
+
 ## 成员函数
         
 ### retrieve

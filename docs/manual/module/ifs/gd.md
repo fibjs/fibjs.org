@@ -5,6 +5,7 @@
 ```JavaScript
 var gd = require('gd');
 ```
+
 ## 静态函数
         
 ### create

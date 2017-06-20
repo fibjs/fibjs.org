@@ -5,6 +5,7 @@
 ```JavaScript
 var f = fs.openFile('test.txt');
 ```
+
 ## 成员函数
         
 ### chmod

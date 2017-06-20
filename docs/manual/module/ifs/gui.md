@@ -5,6 +5,7 @@
 ```JavaScript
 var gui = require('gui');
 ```
+
 ## 静态函数
         
 ### setVersion

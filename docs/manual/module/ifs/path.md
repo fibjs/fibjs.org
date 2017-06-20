@@ -5,6 +5,7 @@
 ```JavaScript
 var path = require('path');
 ```
+
 ## 静态函数
         
 ### normalize

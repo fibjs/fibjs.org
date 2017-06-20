@@ -9,6 +9,7 @@ var hdlr = new mq.HttpHandler(...);
 ```JavaScript
 var hdlr = new http.Handler(...);
 ```
+
 ## 构造函数
         
 ### HttpHandler

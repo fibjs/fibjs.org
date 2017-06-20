@@ -5,6 +5,7 @@ X509Cert 对象属于 [crypto](../../module/ifs/crypto.md) 模块，创建：
 ```JavaScript
 var k = new crypto.X509Cert();
 ```
+
 ## 构造函数
         
 ### X509Cert

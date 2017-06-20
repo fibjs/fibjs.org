@@ -5,6 +5,7 @@ Buffer 对象为全局基础类，在任何时候都可以直接以 new Buffer(.
 ```JavaScript
 var buf = new Buffer();
 ```
+
 ## 构造函数
         
 ### Buffer

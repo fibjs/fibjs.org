@@ -6,6 +6,7 @@ mongodb 数据库数据集对象
 var col1 = mdb.getCollection('test');
 var col = mdb.test;
 ```
+
 ## 下标操作
         
 以属性方式快速获取当前集合子命名空间的集合对象

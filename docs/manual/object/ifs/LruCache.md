@@ -6,6 +6,7 @@ LruCache 用以维护一个 LRU 缓存，创建方法：
 var util = require("util");
 var c = new util.LruCache(10, 100);
 ```
+
 ## 构造函数
         
 ### LruCache

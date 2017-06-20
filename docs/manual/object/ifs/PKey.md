@@ -5,6 +5,7 @@ PKey 对象属于 [crypto](../../module/ifs/crypto.md) 模块，创建：
 ```JavaScript
 var k = new crypto.PKey();
 ```
+
 ## 构造函数
         
 ### PKey

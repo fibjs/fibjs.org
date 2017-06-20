@@ -5,6 +5,7 @@
 ```JavaScript
 var fs = require('fs');
 ```
+
 ## 静态函数
         
 ### exists

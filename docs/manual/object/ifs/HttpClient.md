@@ -9,6 +9,7 @@ var http = require('http');
 var httpClient = new http.Client();
 httpClient.request('GET', 'http://fibjs.org');
 ```
+
 ## 构造函数
         
 ### HttpClient

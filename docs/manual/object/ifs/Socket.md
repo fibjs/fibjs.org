@@ -5,6 +5,7 @@ Socket 属于 [net](../../module/ifs/net.md) 模块，创建方法
 ```JavaScript
 var s = new net.Socket();
 ```
+
 ## 构造函数
         
 ### Socket
