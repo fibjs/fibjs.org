@@ -174,12 +174,12 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>query - 指定查询条件的对象</li>
-<li>projection - 指定返回字段的对象</li>
+<li>query: Object, 指定查询条件的对象</li>
+<li>projection: Object, 指定返回字段的对象</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回游标对象</li>
+<li><a href=mongocursor.md.html>MongoCursor</a>, 返回游标对象</li>
 </ul>
 <hr>
 <h3 id="findone">findOne</h3>
@@ -189,12 +189,12 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>query - 指定查询条件的对象</li>
-<li>projection - 指定返回字段的对象</li>
+<li>query: Object, 指定查询条件的对象</li>
+<li>projection: Object, 指定返回字段的对象</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回第一条结果</li>
+<li>Object, 返回第一条结果</li>
 </ul>
 <hr>
 <h3 id="findandmodify">findAndModify</h3>
@@ -203,11 +203,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>query - 指定查询条件，修改数据</li>
+<li>query: Object, 指定查询条件，修改数据</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回修改前的结果及其他信息</li>
+<li>Object, 返回修改前的结果及其他信息</li>
 </ul>
 <hr>
 <h3 id="insert">insert</h3>
@@ -216,7 +216,7 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>documents - 指定要插入的数据数组</li>
+<li>documents: Array, 指定要插入的数据数组</li>
 </ul>
 <hr>
 <p>插入一条数据</p>
@@ -224,7 +224,7 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>document - 指定要插入的数据</li>
+<li>document: Object, 指定要插入的数据</li>
 </ul>
 <hr>
 <h3 id="save">save</h3>
@@ -233,7 +233,7 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>document - 指定要保存的数据</li>
+<li>document: Object, 指定要保存的数据</li>
 </ul>
 <hr>
 <h3 id="update">update</h3>
@@ -245,10 +245,10 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>query - 指定查询条件的对象</li>
-<li>document - 指定要更新的数据</li>
-<li>upsert - 数据不存在时，插入一条新数据，缺省为 false，不插入</li>
-<li>multi - 当符合条件的数据多于一条时，更新所有数据，缺省为 false，只更新第一条</li>
+<li>query: Object, 指定查询条件的对象</li>
+<li>document: Object, 指定要更新的数据</li>
+<li>upsert: Boolean, 数据不存在时，插入一条新数据，缺省为 false，不插入</li>
+<li>multi: Boolean, 当符合条件的数据多于一条时，更新所有数据，缺省为 false，只更新第一条</li>
 </ul>
 <hr>
 <p>根据给定的查询条件更新数据</p>
@@ -258,9 +258,9 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>query - 指定查询条件的对象</li>
-<li>document - 指定要更新的数据</li>
-<li>options - 以对象字段传递的 upsert 和 multi 选项</li>
+<li>query: Object, 指定查询条件的对象</li>
+<li>document: Object, 指定要更新的数据</li>
+<li>options: Object, 以对象字段传递的 upsert 和 multi 选项</li>
 </ul>
 <hr>
 <h3 id="remove">remove</h3>
@@ -269,7 +269,7 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>query - 指定查询条件的对象</li>
+<li>query: Object, 指定查询条件的对象</li>
 </ul>
 <hr>
 <h3 id="runcommand">runCommand</h3>
@@ -278,7 +278,7 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>cmd - 给定命令对象</li>
+<li>cmd: Object, 给定命令对象</li>
 </ul>
 <hr>
 <p>执行数据库命令</p>
@@ -287,8 +287,8 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>cmd - 给定命令名称</li>
-<li>arg - 给定命令参数选项</li>
+<li>cmd: String, 给定命令名称</li>
+<li>arg: Object, 给定命令参数选项</li>
 </ul>
 <hr>
 <h3 id="drop">drop</h3>
@@ -303,8 +303,8 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>keys - 给定索引字段、顺序和方向</li>
-<li>options - 给定索引的选项，唯一索引等</li>
+<li>keys: Object, 给定索引字段、顺序和方向</li>
+<li>options: Object, 给定索引的选项，唯一索引等</li>
 </ul>
 <hr>
 <h3 id="reindex">reIndex</h3>
@@ -313,7 +313,7 @@
 </code></pre>
 <p>返回结果:</p>
 <ul>
-<li>返回命令执行结果</li>
+<li>Object, 返回命令执行结果</li>
 </ul>
 <hr>
 <h3 id="dropindex">dropIndex</h3>
@@ -322,11 +322,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>name - 给定要删除的索引名称</li>
+<li>name: String, 给定要删除的索引名称</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回命令执行结果</li>
+<li>Object, 返回命令执行结果</li>
 </ul>
 <hr>
 <h3 id="dropindexes">dropIndexes</h3>
@@ -335,7 +335,7 @@
 </code></pre>
 <p>返回结果:</p>
 <ul>
-<li>返回命令执行结果</li>
+<li>Object, 返回命令执行结果</li>
 </ul>
 <hr>
 <h3 id="getindexes">getIndexes</h3>
@@ -344,7 +344,7 @@
 </code></pre>
 <p>返回结果:</p>
 <ul>
-<li>返回包含索引的结果集</li>
+<li><a href=mongocursor.md.html>MongoCursor</a>, 返回包含索引的结果集</li>
 </ul>
 <hr>
 <h3 id="getcollection">getCollection</h3>
@@ -353,11 +353,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>name - 子命名空间名称</li>
+<li>name: String, 子命名空间名称</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回新集合对象</li>
+<li>MongoCollection, 返回新集合对象</li>
 </ul>
 <hr>
 <h3 id="dispose">dispose</h3>
@@ -371,11 +371,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>expected - 制定比较的目标对象</li>
+<li>expected: object, 制定比较的目标对象</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回对象比较的结果</li>
+<li>Boolean, 返回对象比较的结果</li>
 </ul>
 <hr>
 <h3 id="tostring">toString</h3>
@@ -384,7 +384,7 @@
 </code></pre>
 <p>返回结果:</p>
 <ul>
-<li>返回对象的字符串表示</li>
+<li>String, 返回对象的字符串表示</li>
 </ul>
 <hr>
 <h3 id="tojson">toJSON</h3>
@@ -393,11 +393,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>key - 未使用</li>
+<li>key: String, 未使用</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回包含可 JSON 序列化的值</li>
+<li>Value, 返回包含可 JSON 序列化的值</li>
 </ul>
 <hr>
 <h3 id="valueof">valueOf</h3>
@@ -406,6 +406,6 @@
 </code></pre>
 <p>返回结果:</p>
 <ul>
-<li>返回对象本身的数值</li>
+<li>Value, 返回对象本身的数值</li>
 </ul>
  </div><div class="hidden-sm hidden-xs col-xs-3"><div id=toc></div></div></div><div class=container><div class=footer><p>&copy; 2017 fibjs.org</p></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="Click to return on the top page" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=../../../../js/common.js></script><script type=text/javascript src=../../../../js/docs.js></script></body></html>

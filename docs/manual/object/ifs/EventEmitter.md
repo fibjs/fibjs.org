@@ -18,7 +18,7 @@ var e = new EventEmitter();
 ## 静态属性
         
 ### defaultMaxListeners
-默认全局最大监听器数
+Integer, 默认全局最大监听器数
 ```JavaScript
 static Integer EventEmitter.defaultMaxListeners;
 ```
@@ -33,11 +33,11 @@ Object EventEmitter.on(String ev,
 ```
 
 调用参数:
-* ev - 指定事件的名称
-* func - 指定事件处理函数
+* ev: String, 指定事件的名称
+* func: Function, 指定事件处理函数
 
 返回结果:
-* 返回成功绑定的数量，如果函数已绑定则返回 0
+* Object, 返回成功绑定的数量，如果函数已绑定则返回 0
 
 --------------------------
 绑定一个事件处理函数到对象
@@ -46,10 +46,10 @@ Object EventEmitter.on(Object map);
 ```
 
 调用参数:
-* map - 指定事件映射关系，对象属性名称将作为事件名称，属性的值将作为事件处理函数
+* map: Object, 指定事件映射关系，对象属性名称将作为事件名称，属性的值将作为事件处理函数
 
 返回结果:
-* 返回事件对象本身，便于链式调用
+* Object, 返回事件对象本身，便于链式调用
 
 --------------------------
 ### addListener
@@ -60,11 +60,11 @@ Object EventEmitter.addListener(String ev,
 ```
 
 调用参数:
-* ev - 指定事件的名称
-* func - 指定事件处理函数
+* ev: String, 指定事件的名称
+* func: Function, 指定事件处理函数
 
 返回结果:
-* 返回事件对象本身，便于链式调用
+* Object, 返回事件对象本身，便于链式调用
 
 --------------------------
 绑定一个事件处理函数到对象
@@ -73,10 +73,10 @@ Object EventEmitter.addListener(Object map);
 ```
 
 调用参数:
-* map - 指定事件映射关系，对象属性名称将作为事件名称，属性的值将作为事件处理函数
+* map: Object, 指定事件映射关系，对象属性名称将作为事件名称，属性的值将作为事件处理函数
 
 返回结果:
-* 返回事件对象本身，便于链式调用
+* Object, 返回事件对象本身，便于链式调用
 
 --------------------------
 ### prependListener
@@ -87,11 +87,11 @@ Object EventEmitter.prependListener(String ev,
 ```
 
 调用参数:
-* ev - 指定事件的名称
-* func - 指定事件处理函数
+* ev: String, 指定事件的名称
+* func: Function, 指定事件处理函数
 
 返回结果:
-* 返回成功绑定的数量，如果函数已绑定则返回 0
+* Object, 返回成功绑定的数量，如果函数已绑定则返回 0
 
 --------------------------
 绑定一个事件处理函数到对象起始
@@ -100,11 +100,11 @@ Object EventEmitter.prependListener(Object map);
 ```
 
 调用参数:
-* ev - 指定事件的名称
-* func - 指定事件处理函数
+* ev: 指定事件的名称
+* func: 指定事件处理函数
 
 返回结果:
-* 返回成功绑定的数量，如果函数已绑定则返回 0
+* Object, 返回成功绑定的数量，如果函数已绑定则返回 0
 
 --------------------------
 ### once
@@ -115,11 +115,11 @@ Object EventEmitter.once(String ev,
 ```
 
 调用参数:
-* ev - 指定事件的名称
-* func - 指定事件处理函数
+* ev: String, 指定事件的名称
+* func: Function, 指定事件处理函数
 
 返回结果:
-* 返回事件对象本身，便于链式调用
+* Object, 返回事件对象本身，便于链式调用
 
 --------------------------
 绑定一个一次性事件处理函数到对象，一次性处理函数只会触发一次
@@ -128,10 +128,10 @@ Object EventEmitter.once(Object map);
 ```
 
 调用参数:
-* map - 指定事件映射关系，对象属性名称将作为事件名称，属性的值将作为事件处理函数
+* map: Object, 指定事件映射关系，对象属性名称将作为事件名称，属性的值将作为事件处理函数
 
 返回结果:
-* 返回事件对象本身，便于链式调用
+* Object, 返回事件对象本身，便于链式调用
 
 --------------------------
 ### prependOnceListener
@@ -142,11 +142,11 @@ Object EventEmitter.prependOnceListener(String ev,
 ```
 
 调用参数:
-* ev - 指定事件的名称
-* func - 指定事件处理函数
+* ev: String, 指定事件的名称
+* func: Function, 指定事件处理函数
 
 返回结果:
-* 返回成功绑定的数量，如果函数已绑定则返回 0
+* Object, 返回成功绑定的数量，如果函数已绑定则返回 0
 
 --------------------------
 绑定一个事件处理函数到对象起始
@@ -155,11 +155,11 @@ Object EventEmitter.prependOnceListener(Object map);
 ```
 
 调用参数:
-* ev - 指定事件的名称
-* func - 指定事件处理函数
+* ev: 指定事件的名称
+* func: 指定事件处理函数
 
 返回结果:
-* 返回成功绑定的数量，如果函数已绑定则返回 0
+* Object, 返回成功绑定的数量，如果函数已绑定则返回 0
 
 --------------------------
 ### off
@@ -170,11 +170,11 @@ Object EventEmitter.off(String ev,
 ```
 
 调用参数:
-* ev - 指定事件的名称
-* func - 指定事件处理函数
+* ev: String, 指定事件的名称
+* func: Function, 指定事件处理函数
 
 返回结果:
-* 返回事件对象本身，便于链式调用
+* Object, 返回事件对象本身，便于链式调用
 
 --------------------------
 取消对象处理队列中的全部函数
@@ -183,10 +183,10 @@ Object EventEmitter.off(String ev);
 ```
 
 调用参数:
-* ev - 指定事件的名称
+* ev: String, 指定事件的名称
 
 返回结果:
-* 返回事件对象本身，便于链式调用
+* Object, 返回事件对象本身，便于链式调用
 
 --------------------------
 从对象处理队列中取消指定函数
@@ -195,10 +195,10 @@ Object EventEmitter.off(Object map);
 ```
 
 调用参数:
-* map - 指定事件映射关系，对象属性名称作为事件名称，属性的值作为事件处理函数
+* map: Object, 指定事件映射关系，对象属性名称作为事件名称，属性的值作为事件处理函数
 
 返回结果:
-* 返回事件对象本身，便于链式调用
+* Object, 返回事件对象本身，便于链式调用
 
 --------------------------
 ### removeListener
@@ -209,11 +209,11 @@ Object EventEmitter.removeListener(String ev,
 ```
 
 调用参数:
-* ev - 指定事件的名称
-* func - 指定事件处理函数
+* ev: String, 指定事件的名称
+* func: Function, 指定事件处理函数
 
 返回结果:
-* 返回事件对象本身，便于链式调用
+* Object, 返回事件对象本身，便于链式调用
 
 --------------------------
 取消对象处理队列中的全部函数
@@ -222,10 +222,10 @@ Object EventEmitter.removeListener(String ev);
 ```
 
 调用参数:
-* ev - 指定事件的名称
+* ev: String, 指定事件的名称
 
 返回结果:
-* 返回事件对象本身，便于链式调用
+* Object, 返回事件对象本身，便于链式调用
 
 --------------------------
 从对象处理队列中取消指定函数
@@ -234,10 +234,10 @@ Object EventEmitter.removeListener(Object map);
 ```
 
 调用参数:
-* map - 指定事件映射关系，对象属性名称作为事件名称，属性的值作为事件处理函数
+* map: Object, 指定事件映射关系，对象属性名称作为事件名称，属性的值作为事件处理函数
 
 返回结果:
-* 返回事件对象本身，便于链式调用
+* Object, 返回事件对象本身，便于链式调用
 
 --------------------------
 ### removeAllListeners
@@ -247,10 +247,10 @@ Object EventEmitter.removeAllListeners(Array evs = []);
 ```
 
 调用参数:
-* evs - 指定事件的名称
+* evs: Array, 指定事件的名称
 
 返回结果:
-* 返回事件对象本身，便于链式调用
+* Object, 返回事件对象本身，便于链式调用
 
 --------------------------
 ### setMaxListeners
@@ -260,7 +260,7 @@ EventEmitter.setMaxListeners(Integer n);
 ```
 
 调用参数:
-* n - 指定事件的数量
+* n: Integer, 指定事件的数量
 
 --------------------------
 ### getMaxListeners
@@ -277,10 +277,10 @@ Array EventEmitter.listeners(String ev);
 ```
 
 调用参数:
-* ev - 指定事件的名称
+* ev: String, 指定事件的名称
 
 返回结果:
-* 返回指定事件的监听器数组
+* Array, 返回指定事件的监听器数组
 
 --------------------------
 ### listenerCount
@@ -290,10 +290,10 @@ Integer EventEmitter.listenerCount(String ev);
 ```
 
 调用参数:
-* ev - 指定事件的名称
+* ev: String, 指定事件的名称
 
 返回结果:
-* 返回指定事件的监听器数量
+* Integer, 返回指定事件的监听器数量
 
 --------------------------
 ### eventNames
@@ -303,7 +303,7 @@ Array EventEmitter.eventNames();
 ```
 
 返回结果:
-* 返回事件名称数组
+* Array, 返回事件名称数组
 
 --------------------------
 ### emit
@@ -314,11 +314,11 @@ Boolean EventEmitter.emit(String ev,
 ```
 
 调用参数:
-* ev - 事件名称
-* ... - 事件参数，将会传递给事件处理函数
+* ev: String, 事件名称
+* ...: 事件参数，将会传递给事件处理函数
 
 返回结果:
-* 返回事件触发状态，有响应事件返回 true，否则返回 false
+* Boolean, 返回事件触发状态，有响应事件返回 true，否则返回 false
 
 --------------------------
 ### dispose
@@ -335,10 +335,10 @@ Boolean EventEmitter.equals(object expected);
 ```
 
 调用参数:
-* expected - 制定比较的目标对象
+* expected: object, 制定比较的目标对象
 
 返回结果:
-* 返回对象比较的结果
+* Boolean, 返回对象比较的结果
 
 --------------------------
 ### toString
@@ -348,7 +348,7 @@ String EventEmitter.toString();
 ```
 
 返回结果:
-* 返回对象的字符串表示
+* String, 返回对象的字符串表示
 
 --------------------------
 ### toJSON
@@ -358,10 +358,10 @@ Value EventEmitter.toJSON(String key = "");
 ```
 
 调用参数:
-* key - 未使用
+* key: String, 未使用
 
 返回结果:
-* 返回包含可 JSON 序列化的值
+* Value, 返回包含可 JSON 序列化的值
 
 --------------------------
 ### valueOf
@@ -371,5 +371,5 @@ Value EventEmitter.valueOf();
 ```
 
 返回结果:
-* 返回对象本身的数值
+* Value, 返回对象本身的数值
 

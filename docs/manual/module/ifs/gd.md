@@ -16,12 +16,12 @@ static Image gd.create(Integer width,
 ```
 
 调用参数:
-* width - 指定图像宽度
-* height - 指定图像高度
-* color - 指定图像类型，允许值为 gd.TRUECOLOR 或 gd.PALETTE
+* width: Integer, 指定图像宽度
+* height: Integer, 指定图像高度
+* color: Integer, 指定图像类型，允许值为 gd.TRUECOLOR 或 gd.PALETTE
 
 返回结果:
-* 返回创建成功的图像对象
+* [Image](../../object/ifs/Image.md), 返回创建成功的图像对象
 
 --------------------------
 ### load
@@ -31,10 +31,10 @@ static Image gd.load(Buffer data) async;
 ```
 
 调用参数:
-* data - 给定解码的图像数据
+* data: [Buffer](../../object/ifs/Buffer.md), 给定解码的图像数据
 
 返回结果:
-* 返回解码成功的图像对象
+* [Image](../../object/ifs/Image.md), 返回解码成功的图像对象
 
 --------------------------
 从流对象中解码图像
@@ -43,10 +43,10 @@ static Image gd.load(SeekableStream stm) async;
 ```
 
 调用参数:
-* stm - 给定图像数据所在的流对象
+* stm: [SeekableStream](../../object/ifs/SeekableStream.md), 给定图像数据所在的流对象
 
 返回结果:
-* 返回解码成功的图像对象
+* [Image](../../object/ifs/Image.md), 返回解码成功的图像对象
 
 --------------------------
 从指定文件中解码图像
@@ -55,10 +55,10 @@ static Image gd.load(String fname) async;
 ```
 
 调用参数:
-* fname - 指定文件名
+* fname: String, 指定文件名
 
 返回结果:
-* 返回解码成功的图像对象
+* [Image](../../object/ifs/Image.md), 返回解码成功的图像对象
 
 --------------------------
 ### rgb
@@ -70,12 +70,12 @@ static Integer gd.rgb(Integer red,
 ```
 
 调用参数:
-* red - 红色分量，范围为 0-255
-* green - 绿色分量，范围为 0-255
-* blue - 蓝色分量，范围为 0-255
+* red: Integer, 红色分量，范围为 0-255
+* green: Integer, 绿色分量，范围为 0-255
+* blue: Integer, 蓝色分量，范围为 0-255
 
 返回结果:
-* 返回组合颜色
+* Integer, 返回组合颜色
 
 --------------------------
 ### rgba
@@ -88,13 +88,13 @@ static Integer gd.rgba(Integer red,
 ```
 
 调用参数:
-* red - 红色分量，范围为 0-255
-* green - 绿色分量，范围为 0-255
-* blue - 蓝色分量，范围为 0-255
-* alpha - 透明分量，范围为 0.0-1.0
+* red: Integer, 红色分量，范围为 0-255
+* green: Integer, 绿色分量，范围为 0-255
+* blue: Integer, 蓝色分量，范围为 0-255
+* alpha: Number, 透明分量，范围为 0.0-1.0
 
 返回结果:
-* 返回组合颜色
+* Integer, 返回组合颜色
 
 --------------------------
 ### hsl
@@ -106,12 +106,12 @@ static Integer gd.hsl(Number hue,
 ```
 
 调用参数:
-* hue - 色相分量，范围为 0-360
-* saturation - 饱和度分量，范围为 0.0-1.0
-* lightness - 亮度分量，范围为 0.0-1.0
+* hue: Number, 色相分量，范围为 0-360
+* saturation: Number, 饱和度分量，范围为 0.0-1.0
+* lightness: Number, 亮度分量，范围为 0.0-1.0
 
 返回结果:
-* 返回组合颜色
+* Integer, 返回组合颜色
 
 --------------------------
 ### hsla
@@ -124,13 +124,13 @@ static Integer gd.hsla(Number hue,
 ```
 
 调用参数:
-* hue - 色相分量，范围为 0-360
-* saturation - 饱和度分量，范围为 0.0-1.0
-* lightness - 亮度分量，范围为 0.0-1.0
-* alpha - 透明分量，范围为 0.0-1.0
+* hue: Number, 色相分量，范围为 0-360
+* saturation: Number, 饱和度分量，范围为 0.0-1.0
+* lightness: Number, 亮度分量，范围为 0.0-1.0
+* alpha: Number, 透明分量，范围为 0.0-1.0
 
 返回结果:
-* 返回组合颜色
+* Integer, 返回组合颜色
 
 --------------------------
 ### hsb
@@ -142,12 +142,12 @@ static Integer gd.hsb(Number hue,
 ```
 
 调用参数:
-* hue - 色相分量，范围为 0-360
-* saturation - 饱和度分量，范围为 0.0-1.0
-* brightness - 明亮程度分量，范围为 0.0-1.0
+* hue: Number, 色相分量，范围为 0-360
+* saturation: Number, 饱和度分量，范围为 0.0-1.0
+* brightness: Number, 明亮程度分量，范围为 0.0-1.0
 
 返回结果:
-* 返回组合颜色
+* Integer, 返回组合颜色
 
 --------------------------
 ### hsba
@@ -160,13 +160,13 @@ static Integer gd.hsba(Number hue,
 ```
 
 调用参数:
-* hue - 色相分量，范围为 0-360
-* saturation - 饱和度分量，范围为 0.0-1.0
-* brightness - 明亮程度分量，范围为 0.0-1.0
-* alpha - 透明分量，范围为 0.0-1.0
+* hue: Number, 色相分量，范围为 0-360
+* saturation: Number, 饱和度分量，范围为 0.0-1.0
+* brightness: Number, 明亮程度分量，范围为 0.0-1.0
+* alpha: Number, 透明分量，范围为 0.0-1.0
 
 返回结果:
-* 返回组合颜色
+* Integer, 返回组合颜色
 
 --------------------------
 ### color
@@ -176,10 +176,10 @@ static Integer gd.color(String color);
 ```
 
 调用参数:
-* color - 指定颜色的字符串，如："#ff0000", "ff0000", "#f00", "f00"
+* color: String, 指定颜色的字符串，如："#ff0000", "ff0000", "#f00", "f00"
 
 返回结果:
-* 返回组合颜色
+* Integer, 返回组合颜色
 
 ## 常量
         

@@ -14,7 +14,7 @@ var buf = new Buffer();
 ```
 
 调用参数:
-* datas - 初始化数据数组
+* datas: Array, 初始化数据数组
 
 --------------------------
 缓存对象构造函数
@@ -23,7 +23,7 @@ var buf = new Buffer();
 ```
 
 调用参数:
-* datas - 初始化数据数组
+* datas: ArrayBuffer, 初始化数据数组
 
 --------------------------
 缓存对象构造函数
@@ -32,7 +32,7 @@ var buf = new Buffer();
 ```
 
 调用参数:
-* datas - 初始化数据数组
+* datas: TypedArray, 初始化数据数组
 
 --------------------------
 缓存对象构造函数
@@ -41,7 +41,7 @@ var buf = new Buffer();
 ```
 
 调用参数:
-* buffer - 初始化Buffer对象
+* buffer: Buffer, 初始化Buffer对象
 
 --------------------------
 缓存对象构造函数
@@ -51,8 +51,8 @@ var buf = new Buffer();
 ```
 
 调用参数:
-* str - 初始化字符串，字符串将以 utf-8 格式写入，缺省则创建一个空对象
-* codec - 指定编码格式，允许值为："hex", "base64", "utf8", 或者系统支持的字符集
+* str: String, 初始化字符串，字符串将以 utf-8 格式写入，缺省则创建一个空对象
+* codec: String, 指定编码格式，允许值为："[hex](../../module/ifs/hex.md)", "[base64](../../module/ifs/base64.md)", "utf8", 或者系统支持的字符集
 
 --------------------------
 缓存对象构造函数
@@ -61,7 +61,7 @@ var buf = new Buffer();
 ```
 
 调用参数:
-* size - 初始化缓冲区大小
+* size: Integer, 初始化缓冲区大小
 
 ## 下标操作
         
@@ -79,10 +79,10 @@ static Boolean Buffer.isBuffer(Value v);
 ```
 
 调用参数:
-* v - 给定需要检测的变量
+* v: Value, 给定需要检测的变量
 
 返回结果:
-* 传入对象是否 Buffer 对象
+* Boolean, 传入对象是否 Buffer 对象
 
 --------------------------
 ### concat
@@ -93,11 +93,11 @@ static Buffer Buffer.concat(Array buflist,
 ```
 
 调用参数:
-* buflist - 待拼接的Buffer数组
-* cutLength - 截取多少个Buffer对象
+* buflist: Array, 待拼接的Buffer数组
+* cutLength: Integer, 截取多少个Buffer对象
 
 返回结果:
-* 拼接后产生的新 Buffer 对象
+* Buffer, 拼接后产生的新 Buffer 对象
 
 ## 成员函数
         
@@ -108,7 +108,7 @@ Buffer.resize(Integer sz);
 ```
 
 调用参数:
-* sz - 指定新尺寸
+* sz: Integer, 指定新尺寸
 
 --------------------------
 ### append
@@ -118,7 +118,7 @@ Buffer.append(Array datas);
 ```
 
 调用参数:
-* datas - 初始化数据数组
+* datas: Array, 初始化数据数组
 
 --------------------------
 在缓存对象尾部写入一组数据
@@ -127,7 +127,7 @@ Buffer.append(TypedArray datas);
 ```
 
 调用参数:
-* datas - 初始化数据数组
+* datas: TypedArray, 初始化数据数组
 
 --------------------------
 在缓存对象尾部写入一组数据
@@ -136,7 +136,7 @@ Buffer.append(ArrayBuffer datas);
 ```
 
 调用参数:
-* datas - 初始化数据数组
+* datas: ArrayBuffer, 初始化数据数组
 
 --------------------------
 在缓存对象尾部写入一组二进制数据
@@ -145,7 +145,7 @@ Buffer.append(Buffer data);
 ```
 
 调用参数:
-* data - 初始化二进制数据
+* data: Buffer, 初始化二进制数据
 
 --------------------------
 在缓存对象尾部写入字符串，字符串将以 utf-8 格式写入
@@ -155,8 +155,8 @@ Buffer.append(String str,
 ```
 
 调用参数:
-* str - 要写入的字符串
-* codec - 指定编码格式，允许值为："hex", "base64", "utf8", 或者系统支持的字符集
+* str: String, 要写入的字符串
+* codec: String, 指定编码格式，允许值为："[hex](../../module/ifs/hex.md)", "[base64](../../module/ifs/base64.md)", "utf8", 或者系统支持的字符集
 
 --------------------------
 ### write
@@ -169,13 +169,13 @@ Integer Buffer.write(String str,
 ```
 
 调用参数:
-* str - 待写入的字符串
-* offset - 写入起始位置
-* length - 写入长度（单位字节，默认值-1），未指定时为待写入字符串的长度
-* codec - 指定编码格式，允许值为："hex", "base64", "utf8", 或者系统支持的字符集
+* str: String, 待写入的字符串
+* offset: Integer, 写入起始位置
+* length: Integer, 写入长度（单位字节，默认值-1），未指定时为待写入字符串的长度
+* codec: String, 指定编码格式，允许值为："[hex](../../module/ifs/hex.md)", "[base64](../../module/ifs/base64.md)", "utf8", 或者系统支持的字符集
 
 返回结果:
-* 写入的数据字节长度
+* Integer, 写入的数据字节长度
 
 --------------------------
 向缓存对象写入指定字符串，字符串默认为utf-8，越界时只写入部分数据
@@ -186,12 +186,12 @@ Integer Buffer.write(String str,
 ```
 
 调用参数:
-* str - 待写入的字符串
-* offset - 写入起始位置
-* codec - 指定编码格式，允许值为："hex", "base64", "utf8", 或者系统支持的字符集
+* str: String, 待写入的字符串
+* offset: Integer, 写入起始位置
+* codec: String, 指定编码格式，允许值为："[hex](../../module/ifs/hex.md)", "[base64](../../module/ifs/base64.md)", "utf8", 或者系统支持的字符集
 
 返回结果:
-* 写入的数据字节长度
+* Integer, 写入的数据字节长度
 
 --------------------------
 向缓存对象写入指定字符串，字符串默认为utf-8，越界时只写入部分数据
@@ -201,11 +201,11 @@ Integer Buffer.write(String str,
 ```
 
 调用参数:
-* str - 待写入的字符串
-* codec - 指定编码格式，允许值为："hex", "base64", "utf8", 或者系统支持的字符集
+* str: String, 待写入的字符串
+* codec: String, 指定编码格式，允许值为："[hex](../../module/ifs/hex.md)", "[base64](../../module/ifs/base64.md)", "utf8", 或者系统支持的字符集
 
 返回结果:
-* 写入的数据字节长度
+* Integer, 写入的数据字节长度
 
 --------------------------
 ### fill
@@ -217,12 +217,12 @@ Buffer Buffer.fill(Integer v,
 ```
 
 调用参数:
-* v - 需要填充的数据，如果未指定offset和end，将填充满整个buffer
-* offset - 填充起始位置
-* end - 填充终止位置
+* v: Integer, 需要填充的数据，如果未指定offset和end，将填充满整个buffer
+* offset: Integer, 填充起始位置
+* end: Integer, 填充终止位置
 
 返回结果:
-* 返回当前 Buffer 对象
+* Buffer, 返回当前 Buffer 对象
 
 --------------------------
 为Buffer对象填充指定内容数据
@@ -233,12 +233,12 @@ Buffer Buffer.fill(Buffer v,
 ```
 
 调用参数:
-* v - 需要填充的数据，如果未指定offset和end，将填充满整个buffer
-* offset - 填充起始位置
-* end - 填充终止位置
+* v: Buffer, 需要填充的数据，如果未指定offset和end，将填充满整个buffer
+* offset: Integer, 填充起始位置
+* end: Integer, 填充终止位置
 
 返回结果:
-* 返回当前 Buffer 对象
+* Buffer, 返回当前 Buffer 对象
 
 --------------------------
 为Buffer对象填充指定内容数据
@@ -249,12 +249,12 @@ Buffer Buffer.fill(String v,
 ```
 
 调用参数:
-* v - 需要填充的数据，如果未指定offset和end，将填充满整个buffer
-* offset - 填充起始位置
-* end - 填充终止位置
+* v: String, 需要填充的数据，如果未指定offset和end，将填充满整个buffer
+* offset: Integer, 填充起始位置
+* end: Integer, 填充终止位置
 
 返回结果:
-* 返回当前 Buffer 对象
+* Buffer, 返回当前 Buffer 对象
 
 --------------------------
 ### indexOf
@@ -265,8 +265,8 @@ Integer Buffer.indexOf(Integer v,
 ```
 
 调用参数:
-* v - 待查找数据，如果未指定offset，默认从起始位开始
-* offset - 起始查找位置
+* v: Integer, 待查找数据，如果未指定offset，默认从起始位开始
+* offset: Integer, 起始查找位置
 
 --------------------------
 返回某个指定数据在Buffer中首次出现的位置
@@ -276,8 +276,8 @@ Integer Buffer.indexOf(Buffer v,
 ```
 
 调用参数:
-* v - 待查找数据，如果未指定offset，默认从起始位开始
-* offset - 起始查找位置
+* v: Buffer, 待查找数据，如果未指定offset，默认从起始位开始
+* offset: Integer, 起始查找位置
 
 --------------------------
 返回某个指定数据在Buffer中首次出现的位置
@@ -287,8 +287,8 @@ Integer Buffer.indexOf(String v,
 ```
 
 调用参数:
-* v - 待查找数据，如果未指定offset，默认从起始位开始
-* offset - 起始查找位置
+* v: String, 待查找数据，如果未指定offset，默认从起始位开始
+* offset: Integer, 起始查找位置
 
 --------------------------
 ### compare
@@ -298,10 +298,10 @@ Integer Buffer.compare(Buffer buf);
 ```
 
 调用参数:
-* buf - 待比较缓存对象
+* buf: Buffer, 待比较缓存对象
 
 返回结果:
-* 内容比较结果
+* Integer, 内容比较结果
 
 --------------------------
 ### copy
@@ -314,13 +314,13 @@ Integer Buffer.copy(Buffer targetBuffer,
 ```
 
 调用参数:
-* targetBuffer - 目标缓存对象
-* targetStart - 目标缓存对象开始拷贝字节位置，缺省为 0
-* sourceStart - 源缓存对象开始字节位置, 缺省为 0
-* sourceEnd - 源缓存对象结束字节位置, 缺省为 -1,表示源数据长度
+* targetBuffer: Buffer, 目标缓存对象
+* targetStart: Integer, 目标缓存对象开始拷贝字节位置，缺省为 0
+* sourceStart: Integer, 源缓存对象开始字节位置, 缺省为 0
+* sourceEnd: Integer, 源缓存对象结束字节位置, 缺省为 -1,表示源数据长度
 
 返回结果:
-* 拷贝的数据字节长度
+* Integer, 拷贝的数据字节长度
 
 --------------------------
 ### readUInt8
@@ -331,11 +331,11 @@ Integer Buffer.readUInt8(Integer offset = 0,
 ```
 
 调用参数:
-* offset - 指定读取的起始位置，缺省为 0
-* noAssert - 指定读取越界时不抛出错误，缺省为 flase，抛出
+* offset: Integer, 指定读取的起始位置，缺省为 0
+* noAssert: Boolean, 指定读取越界时不抛出错误，缺省为 flase，抛出
 
 返回结果:
-* 返回读取的整型数值
+* Integer, 返回读取的整型数值
 
 --------------------------
 ### readUInt16LE
@@ -346,11 +346,11 @@ Integer Buffer.readUInt16LE(Integer offset = 0,
 ```
 
 调用参数:
-* offset - 指定读取的起始位置，缺省为 0
-* noAssert - 指定读取越界时不抛出错误，缺省为 flase，抛出
+* offset: Integer, 指定读取的起始位置，缺省为 0
+* noAssert: Boolean, 指定读取越界时不抛出错误，缺省为 flase，抛出
 
 返回结果:
-* 返回读取的整型数值
+* Integer, 返回读取的整型数值
 
 --------------------------
 ### readUInt16BE
@@ -361,11 +361,11 @@ Integer Buffer.readUInt16BE(Integer offset = 0,
 ```
 
 调用参数:
-* offset - 指定读取的起始位置，缺省为 0
-* noAssert - 指定读取越界时不抛出错误，缺省为 flase，抛出
+* offset: Integer, 指定读取的起始位置，缺省为 0
+* noAssert: Boolean, 指定读取越界时不抛出错误，缺省为 flase，抛出
 
 返回结果:
-* 返回读取的整型数值
+* Integer, 返回读取的整型数值
 
 --------------------------
 ### readUInt32LE
@@ -376,11 +376,11 @@ Long Buffer.readUInt32LE(Integer offset = 0,
 ```
 
 调用参数:
-* offset - 指定读取的起始位置，缺省为 0
-* noAssert - 指定读取越界时不抛出错误，缺省为 flase，抛出
+* offset: Integer, 指定读取的起始位置，缺省为 0
+* noAssert: Boolean, 指定读取越界时不抛出错误，缺省为 flase，抛出
 
 返回结果:
-* 返回读取的整型数值
+* Long, 返回读取的整型数值
 
 --------------------------
 ### readUInt32BE
@@ -391,11 +391,11 @@ Long Buffer.readUInt32BE(Integer offset = 0,
 ```
 
 调用参数:
-* offset - 指定读取的起始位置，缺省为 0
-* noAssert - 指定读取越界时不抛出错误，缺省为 flase，抛出
+* offset: Integer, 指定读取的起始位置，缺省为 0
+* noAssert: Boolean, 指定读取越界时不抛出错误，缺省为 flase，抛出
 
 返回结果:
-* 返回读取的整型数值
+* Long, 返回读取的整型数值
 
 --------------------------
 ### readUIntLE
@@ -406,11 +406,11 @@ Long Buffer.readUIntLE(Integer offset = 0,
 ```
 
 调用参数:
-* offset - 指定读取的起始位置，缺省为 0
-* noAssert - 指定读取越界时不抛出错误，缺省为 flase，抛出
+* offset: Integer, 指定读取的起始位置，缺省为 0
+* noAssert: Boolean, 指定读取越界时不抛出错误，缺省为 flase，抛出
 
 返回结果:
-* 返回读取的整型数值
+* Long, 返回读取的整型数值
 
 --------------------------
 ### readUIntBE
@@ -421,11 +421,11 @@ Long Buffer.readUIntBE(Integer offset = 0,
 ```
 
 调用参数:
-* offset - 指定读取的起始位置，缺省为 0
-* noAssert - 指定读取越界时不抛出错误，缺省为 flase，抛出
+* offset: Integer, 指定读取的起始位置，缺省为 0
+* noAssert: Boolean, 指定读取越界时不抛出错误，缺省为 flase，抛出
 
 返回结果:
-* 返回读取的整型数值
+* Long, 返回读取的整型数值
 
 --------------------------
 ### readInt8
@@ -436,11 +436,11 @@ Integer Buffer.readInt8(Integer offset = 0,
 ```
 
 调用参数:
-* offset - 指定读取的起始位置，缺省为 0
-* noAssert - 指定读取越界时不抛出错误，缺省为 flase，抛出
+* offset: Integer, 指定读取的起始位置，缺省为 0
+* noAssert: Boolean, 指定读取越界时不抛出错误，缺省为 flase，抛出
 
 返回结果:
-* 返回读取的整型数值
+* Integer, 返回读取的整型数值
 
 --------------------------
 ### readInt16LE
@@ -451,11 +451,11 @@ Integer Buffer.readInt16LE(Integer offset = 0,
 ```
 
 调用参数:
-* offset - 指定读取的起始位置，缺省为 0
-* noAssert - 指定读取越界时不抛出错误，缺省为 flase，抛出
+* offset: Integer, 指定读取的起始位置，缺省为 0
+* noAssert: Boolean, 指定读取越界时不抛出错误，缺省为 flase，抛出
 
 返回结果:
-* 返回读取的整型数值
+* Integer, 返回读取的整型数值
 
 --------------------------
 ### readInt16BE
@@ -466,11 +466,11 @@ Integer Buffer.readInt16BE(Integer offset = 0,
 ```
 
 调用参数:
-* offset - 指定读取的起始位置，缺省为 0
-* noAssert - 指定读取越界时不抛出错误，缺省为 flase，抛出
+* offset: Integer, 指定读取的起始位置，缺省为 0
+* noAssert: Boolean, 指定读取越界时不抛出错误，缺省为 flase，抛出
 
 返回结果:
-* 返回读取的整型数值
+* Integer, 返回读取的整型数值
 
 --------------------------
 ### readInt32LE
@@ -481,11 +481,11 @@ Integer Buffer.readInt32LE(Integer offset = 0,
 ```
 
 调用参数:
-* offset - 指定读取的起始位置，缺省为 0
-* noAssert - 指定读取越界时不抛出错误，缺省为 flase，抛出
+* offset: Integer, 指定读取的起始位置，缺省为 0
+* noAssert: Boolean, 指定读取越界时不抛出错误，缺省为 flase，抛出
 
 返回结果:
-* 返回读取的整型数值
+* Integer, 返回读取的整型数值
 
 --------------------------
 ### readInt32BE
@@ -496,11 +496,11 @@ Integer Buffer.readInt32BE(Integer offset = 0,
 ```
 
 调用参数:
-* offset - 指定读取的起始位置，缺省为 0
-* noAssert - 指定读取越界时不抛出错误，缺省为 flase，抛出
+* offset: Integer, 指定读取的起始位置，缺省为 0
+* noAssert: Boolean, 指定读取越界时不抛出错误，缺省为 flase，抛出
 
 返回结果:
-* 返回读取的整型数值
+* Integer, 返回读取的整型数值
 
 --------------------------
 ### readIntLE
@@ -511,11 +511,11 @@ Long Buffer.readIntLE(Integer offset = 0,
 ```
 
 调用参数:
-* offset - 指定读取的起始位置，缺省为 0
-* noAssert - 指定读取越界时不抛出错误，缺省为 flase，抛出
+* offset: Integer, 指定读取的起始位置，缺省为 0
+* noAssert: Boolean, 指定读取越界时不抛出错误，缺省为 flase，抛出
 
 返回结果:
-* 返回读取的整型数值
+* Long, 返回读取的整型数值
 
 --------------------------
 ### readIntBE
@@ -526,11 +526,11 @@ Long Buffer.readIntBE(Integer offset = 0,
 ```
 
 调用参数:
-* offset - 指定读取的起始位置，缺省为 0
-* noAssert - 指定读取越界时不抛出错误，缺省为 flase，抛出
+* offset: Integer, 指定读取的起始位置，缺省为 0
+* noAssert: Boolean, 指定读取越界时不抛出错误，缺省为 flase，抛出
 
 返回结果:
-* 返回读取的整型数值
+* Long, 返回读取的整型数值
 
 --------------------------
 ### readInt64LE
@@ -541,11 +541,11 @@ Int64 Buffer.readInt64LE(Integer offset = 0,
 ```
 
 调用参数:
-* offset - 指定读取的起始位置，缺省为 0
-* noAssert - 指定读取越界时不抛出错误，缺省为 flase，抛出
+* offset: Integer, 指定读取的起始位置，缺省为 0
+* noAssert: Boolean, 指定读取越界时不抛出错误，缺省为 flase，抛出
 
 返回结果:
-* 返回读取的整型数值
+* [Int64](Int64.md), 返回读取的整型数值
 
 --------------------------
 ### readInt64BE
@@ -556,11 +556,11 @@ Int64 Buffer.readInt64BE(Integer offset = 0,
 ```
 
 调用参数:
-* offset - 指定读取的起始位置，缺省为 0
-* noAssert - 指定读取越界时不抛出错误，缺省为 flase，抛出
+* offset: Integer, 指定读取的起始位置，缺省为 0
+* noAssert: Boolean, 指定读取越界时不抛出错误，缺省为 flase，抛出
 
 返回结果:
-* 返回读取的整型数值
+* [Int64](Int64.md), 返回读取的整型数值
 
 --------------------------
 ### readFloatLE
@@ -571,11 +571,11 @@ Number Buffer.readFloatLE(Integer offset = 0,
 ```
 
 调用参数:
-* offset - 指定读取的起始位置，缺省为 0
-* noAssert - 指定读取越界时不抛出错误，缺省为 flase，抛出
+* offset: Integer, 指定读取的起始位置，缺省为 0
+* noAssert: Boolean, 指定读取越界时不抛出错误，缺省为 flase，抛出
 
 返回结果:
-* 返回读取的浮点数
+* Number, 返回读取的浮点数
 
 --------------------------
 ### readFloatBE
@@ -586,11 +586,11 @@ Number Buffer.readFloatBE(Integer offset = 0,
 ```
 
 调用参数:
-* offset - 指定读取的起始位置，缺省为 0
-* noAssert - 指定读取越界时不抛出错误，缺省为 flase，抛出
+* offset: Integer, 指定读取的起始位置，缺省为 0
+* noAssert: Boolean, 指定读取越界时不抛出错误，缺省为 flase，抛出
 
 返回结果:
-* 返回读取的浮点数
+* Number, 返回读取的浮点数
 
 --------------------------
 ### readDoubleLE
@@ -601,11 +601,11 @@ Number Buffer.readDoubleLE(Integer offset = 0,
 ```
 
 调用参数:
-* offset - 指定读取的起始位置，缺省为 0
-* noAssert - 指定读取越界时不抛出错误，缺省为 flase，抛出
+* offset: Integer, 指定读取的起始位置，缺省为 0
+* noAssert: Boolean, 指定读取越界时不抛出错误，缺省为 flase，抛出
 
 返回结果:
-* 返回读取的双精度浮点数
+* Number, 返回读取的双精度浮点数
 
 --------------------------
 ### readDoubleBE
@@ -616,11 +616,11 @@ Number Buffer.readDoubleBE(Integer offset = 0,
 ```
 
 调用参数:
-* offset - 指定读取的起始位置，缺省为 0
-* noAssert - 指定读取越界时不抛出错误，缺省为 flase，抛出
+* offset: Integer, 指定读取的起始位置，缺省为 0
+* noAssert: Boolean, 指定读取越界时不抛出错误，缺省为 flase，抛出
 
 返回结果:
-* 返回读取的双精度浮点数
+* Number, 返回读取的双精度浮点数
 
 --------------------------
 ### writeUInt8
@@ -632,9 +632,9 @@ Buffer.writeUInt8(Integer value,
 ```
 
 调用参数:
-* value - 指定写入的数值
-* offset - 指定写入的起始位置
-* noAssert - 指定写入越界时不抛出错误，缺省为 flase，抛出
+* value: Integer, 指定写入的数值
+* offset: Integer, 指定写入的起始位置
+* noAssert: Boolean, 指定写入越界时不抛出错误，缺省为 flase，抛出
 
 --------------------------
 ### writeUInt16LE
@@ -646,9 +646,9 @@ Buffer.writeUInt16LE(Integer value,
 ```
 
 调用参数:
-* value - 指定写入的数值
-* offset - 指定写入的起始位置
-* noAssert - 指定写入越界时不抛出错误，缺省为 flase，抛出
+* value: Integer, 指定写入的数值
+* offset: Integer, 指定写入的起始位置
+* noAssert: Boolean, 指定写入越界时不抛出错误，缺省为 flase，抛出
 
 --------------------------
 ### writeUInt16BE
@@ -660,9 +660,9 @@ Buffer.writeUInt16BE(Integer value,
 ```
 
 调用参数:
-* value - 指定写入的数值
-* offset - 指定写入的起始位置
-* noAssert - 指定写入越界时不抛出错误，缺省为 flase，抛出
+* value: Integer, 指定写入的数值
+* offset: Integer, 指定写入的起始位置
+* noAssert: Boolean, 指定写入越界时不抛出错误，缺省为 flase，抛出
 
 --------------------------
 ### writeUInt32LE
@@ -674,9 +674,9 @@ Buffer.writeUInt32LE(Long value,
 ```
 
 调用参数:
-* value - 指定写入的数值
-* offset - 指定写入的起始位置
-* noAssert - 指定写入越界时不抛出错误，缺省为 flase，抛出
+* value: Long, 指定写入的数值
+* offset: Integer, 指定写入的起始位置
+* noAssert: Boolean, 指定写入越界时不抛出错误，缺省为 flase，抛出
 
 --------------------------
 ### writeUInt32BE
@@ -688,9 +688,9 @@ Buffer.writeUInt32BE(Long value,
 ```
 
 调用参数:
-* value - 指定写入的数值
-* offset - 指定写入的起始位置
-* noAssert - 指定写入越界时不抛出错误，缺省为 flase，抛出
+* value: Long, 指定写入的数值
+* offset: Integer, 指定写入的起始位置
+* noAssert: Boolean, 指定写入越界时不抛出错误，缺省为 flase，抛出
 
 --------------------------
 ### writeUIntLE
@@ -702,9 +702,9 @@ Buffer.writeUIntLE(Long value,
 ```
 
 调用参数:
-* value - 指定写入的数值
-* offset - 指定写入的起始位置
-* noAssert - 指定写入越界时不抛出错误，缺省为 flase，抛出
+* value: Long, 指定写入的数值
+* offset: Integer, 指定写入的起始位置
+* noAssert: Boolean, 指定写入越界时不抛出错误，缺省为 flase，抛出
 
 --------------------------
 ### writeUIntBE
@@ -716,9 +716,9 @@ Buffer.writeUIntBE(Long value,
 ```
 
 调用参数:
-* value - 指定写入的数值
-* offset - 指定写入的起始位置
-* noAssert - 指定写入越界时不抛出错误，缺省为 flase，抛出
+* value: Long, 指定写入的数值
+* offset: Integer, 指定写入的起始位置
+* noAssert: Boolean, 指定写入越界时不抛出错误，缺省为 flase，抛出
 
 --------------------------
 ### writeInt8
@@ -730,9 +730,9 @@ Buffer.writeInt8(Integer value,
 ```
 
 调用参数:
-* value - 指定写入的数值
-* offset - 指定写入的起始位置
-* noAssert - 指定写入越界时不抛出错误，缺省为 flase，抛出
+* value: Integer, 指定写入的数值
+* offset: Integer, 指定写入的起始位置
+* noAssert: Boolean, 指定写入越界时不抛出错误，缺省为 flase，抛出
 
 --------------------------
 ### writeInt16LE
@@ -744,9 +744,9 @@ Buffer.writeInt16LE(Integer value,
 ```
 
 调用参数:
-* value - 指定写入的数值
-* offset - 指定写入的起始位置
-* noAssert - 指定写入越界时不抛出错误，缺省为 flase，抛出
+* value: Integer, 指定写入的数值
+* offset: Integer, 指定写入的起始位置
+* noAssert: Boolean, 指定写入越界时不抛出错误，缺省为 flase，抛出
 
 --------------------------
 ### writeInt16BE
@@ -758,9 +758,9 @@ Buffer.writeInt16BE(Integer value,
 ```
 
 调用参数:
-* value - 指定写入的数值
-* offset - 指定写入的起始位置
-* noAssert - 指定写入越界时不抛出错误，缺省为 flase，抛出
+* value: Integer, 指定写入的数值
+* offset: Integer, 指定写入的起始位置
+* noAssert: Boolean, 指定写入越界时不抛出错误，缺省为 flase，抛出
 
 --------------------------
 ### writeInt32LE
@@ -772,9 +772,9 @@ Buffer.writeInt32LE(Integer value,
 ```
 
 调用参数:
-* value - 指定写入的数值
-* offset - 指定写入的起始位置
-* noAssert - 指定写入越界时不抛出错误，缺省为 flase，抛出
+* value: Integer, 指定写入的数值
+* offset: Integer, 指定写入的起始位置
+* noAssert: Boolean, 指定写入越界时不抛出错误，缺省为 flase，抛出
 
 --------------------------
 ### writeInt32BE
@@ -786,9 +786,9 @@ Buffer.writeInt32BE(Integer value,
 ```
 
 调用参数:
-* value - 指定写入的数值
-* offset - 指定写入的起始位置
-* noAssert - 指定写入越界时不抛出错误，缺省为 flase，抛出
+* value: Integer, 指定写入的数值
+* offset: Integer, 指定写入的起始位置
+* noAssert: Boolean, 指定写入越界时不抛出错误，缺省为 flase，抛出
 
 --------------------------
 ### writeIntLE
@@ -800,9 +800,9 @@ Buffer.writeIntLE(Long value,
 ```
 
 调用参数:
-* value - 指定写入的数值
-* offset - 指定写入的起始位置
-* noAssert - 指定写入越界时不抛出错误，缺省为 flase，抛出
+* value: Long, 指定写入的数值
+* offset: Integer, 指定写入的起始位置
+* noAssert: Boolean, 指定写入越界时不抛出错误，缺省为 flase，抛出
 
 --------------------------
 ### writeIntBE
@@ -814,9 +814,9 @@ Buffer.writeIntBE(Long value,
 ```
 
 调用参数:
-* value - 指定写入的数值
-* offset - 指定写入的起始位置
-* noAssert - 指定写入越界时不抛出错误，缺省为 flase，抛出
+* value: Long, 指定写入的数值
+* offset: Integer, 指定写入的起始位置
+* noAssert: Boolean, 指定写入越界时不抛出错误，缺省为 flase，抛出
 
 --------------------------
 ### writeInt64LE
@@ -828,9 +828,9 @@ Buffer.writeInt64LE(Int64 value,
 ```
 
 调用参数:
-* value - 指定写入的数值
-* offset - 指定写入的起始位置
-* noAssert - 指定写入越界时不抛出错误，缺省为 flase，抛出
+* value: [Int64](Int64.md), 指定写入的数值
+* offset: Integer, 指定写入的起始位置
+* noAssert: Boolean, 指定写入越界时不抛出错误，缺省为 flase，抛出
 
 --------------------------
 ### writeInt64BE
@@ -842,9 +842,9 @@ Buffer.writeInt64BE(Int64 value,
 ```
 
 调用参数:
-* value - 指定写入的数值
-* offset - 指定写入的起始位置
-* noAssert - 指定写入越界时不抛出错误，缺省为 flase，抛出
+* value: [Int64](Int64.md), 指定写入的数值
+* offset: Integer, 指定写入的起始位置
+* noAssert: Boolean, 指定写入越界时不抛出错误，缺省为 flase，抛出
 
 --------------------------
 ### writeFloatLE
@@ -856,9 +856,9 @@ Buffer.writeFloatLE(Number value,
 ```
 
 调用参数:
-* value - 指定写入的数值
-* offset - 指定写入的起始位置
-* noAssert - 指定写入越界时不抛出错误，缺省为 flase，抛出
+* value: Number, 指定写入的数值
+* offset: Integer, 指定写入的起始位置
+* noAssert: Boolean, 指定写入越界时不抛出错误，缺省为 flase，抛出
 
 --------------------------
 ### writeFloatBE
@@ -870,9 +870,9 @@ Buffer.writeFloatBE(Number value,
 ```
 
 调用参数:
-* value - 指定写入的数值
-* offset - 指定写入的起始位置
-* noAssert - 指定写入越界时不抛出错误，缺省为 flase，抛出
+* value: Number, 指定写入的数值
+* offset: Integer, 指定写入的起始位置
+* noAssert: Boolean, 指定写入越界时不抛出错误，缺省为 flase，抛出
 
 --------------------------
 ### writeDoubleLE
@@ -884,9 +884,9 @@ Buffer.writeDoubleLE(Number value,
 ```
 
 调用参数:
-* value - 指定写入的数值
-* offset - 指定写入的起始位置
-* noAssert - 指定写入越界时不抛出错误，缺省为 flase，抛出
+* value: Number, 指定写入的数值
+* offset: Integer, 指定写入的起始位置
+* noAssert: Boolean, 指定写入越界时不抛出错误，缺省为 flase，抛出
 
 --------------------------
 ### writeDoubleBE
@@ -898,9 +898,9 @@ Buffer.writeDoubleBE(Number value,
 ```
 
 调用参数:
-* value - 指定写入的数值
-* offset - 指定写入的起始位置
-* noAssert - 指定写入越界时不抛出错误，缺省为 flase，抛出
+* value: Number, 指定写入的数值
+* offset: Integer, 指定写入的起始位置
+* noAssert: Boolean, 指定写入越界时不抛出错误，缺省为 flase，抛出
 
 --------------------------
 ### slice
@@ -910,10 +910,10 @@ Buffer Buffer.slice(Integer start = 0);
 ```
 
 调用参数:
-* start - 指定范围的起始，缺省从头开始
+* start: Integer, 指定范围的起始，缺省从头开始
 
 返回结果:
-* 返回新的缓存对象
+* Buffer, 返回新的缓存对象
 
 --------------------------
 返回一个新缓存对象，包含指定范围的数据，若范围超出缓存，则只返回有效部分数据
@@ -923,11 +923,11 @@ Buffer Buffer.slice(Integer start,
 ```
 
 调用参数:
-* start - 指定范围的起始
-* end - 指定范围的结束
+* start: Integer, 指定范围的起始
+* end: Integer, 指定范围的结束
 
 返回结果:
-* 返回新的缓存对象
+* Buffer, 返回新的缓存对象
 
 --------------------------
 ### hex
@@ -937,7 +937,7 @@ String Buffer.hex();
 ```
 
 返回结果:
-* 返回编码字符串
+* String, 返回编码字符串
 
 --------------------------
 ### base64
@@ -947,7 +947,7 @@ String Buffer.base64();
 ```
 
 返回结果:
-* 返回编码字符串
+* String, 返回编码字符串
 
 --------------------------
 ### toArray
@@ -957,7 +957,7 @@ Array Buffer.toArray();
 ```
 
 返回结果:
-* 返回包含对象数据的数组
+* Array, 返回包含对象数据的数组
 
 --------------------------
 ### toString
@@ -969,12 +969,12 @@ String Buffer.toString(String codec,
 ```
 
 调用参数:
-* codec - 指定编码格式，允许值为："hex", "base64", "utf8", 或者系统支持的字符集
-* offset - 读取起始位置
-* end - 读取终止位置
+* codec: String, 指定编码格式，允许值为："[hex](../../module/ifs/hex.md)", "[base64](../../module/ifs/base64.md)", "utf8", 或者系统支持的字符集
+* offset: Integer, 读取起始位置
+* end: Integer, 读取终止位置
 
 返回结果:
-* 返回对象的字符串表示
+* String, 返回对象的字符串表示
 
 --------------------------
 返回二进制数据的 utf8 编码字符串
@@ -983,7 +983,7 @@ String Buffer.toString();
 ```
 
 返回结果:
-* 返回对象的字符串表示
+* String, 返回对象的字符串表示
 
 --------------------------
 ### dispose
@@ -1000,10 +1000,10 @@ Boolean Buffer.equals(object expected);
 ```
 
 调用参数:
-* expected - 制定比较的目标对象
+* expected: object, 制定比较的目标对象
 
 返回结果:
-* 返回对象比较的结果
+* Boolean, 返回对象比较的结果
 
 --------------------------
 ### toString
@@ -1013,7 +1013,7 @@ String Buffer.toString();
 ```
 
 返回结果:
-* 返回对象的字符串表示
+* String, 返回对象的字符串表示
 
 --------------------------
 ### toJSON
@@ -1023,10 +1023,10 @@ Value Buffer.toJSON(String key = "");
 ```
 
 调用参数:
-* key - 未使用
+* key: String, 未使用
 
 返回结果:
-* 返回包含可 JSON 序列化的值
+* Value, 返回包含可 JSON 序列化的值
 
 --------------------------
 ### valueOf
@@ -1036,12 +1036,12 @@ Value Buffer.valueOf();
 ```
 
 返回结果:
-* 返回对象本身的数值
+* Value, 返回对象本身的数值
 
 ## 成员属性
         
 ### length
-获取缓存对象的尺寸
+Integer, 获取缓存对象的尺寸
 ```JavaScript
 readonly Integer Buffer.length;
 ```

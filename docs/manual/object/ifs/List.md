@@ -21,7 +21,7 @@ List 对象构造函数
 ```
 
 调用参数:
-* data - 初始化的一组元素
+* data: Array, 初始化的一组元素
 
 ## 下标操作
         
@@ -46,7 +46,7 @@ List.resize(Integer sz);
 ```
 
 调用参数:
-* sz - 指定新尺寸
+* sz: Integer, 指定新尺寸
 
 --------------------------
 ### push
@@ -56,10 +56,10 @@ Integer List.push(Variant v);
 ```
 
 调用参数:
-* v - 指定添加的元素
+* v: Variant, 指定添加的元素
 
 返回结果:
-* 添加元素之后数组的长度
+* Integer, 添加元素之后数组的长度
 
 --------------------------
 ### indexOf
@@ -70,11 +70,11 @@ Integer List.indexOf(Variant searchElement,
 ```
 
 调用参数:
-* searchElement - 要查找的元素
-* fromIndex - 开始查找的位置。如果该索引值大于或等于数组长度，意味着不会在数组里查找，返回-1。
+* searchElement: Variant, 要查找的元素
+* fromIndex: Integer, 开始查找的位置。如果该索引值大于或等于数组长度，意味着不会在数组里查找，返回-1。
 
 返回结果:
-* 首个被找到的元素在数组中的索引位置; 若没有找到则返回 -1
+* Integer, 首个被找到的元素在数组中的索引位置; 若没有找到则返回 -1
 
 如果参数 fromIndex 中提供的索引值是一个负值，则将其作为数组末尾的一个抵消，即-1表示从最后一个元素开始查找，
 -2表示从倒数第二个元素开始查找 ，以此类推。
@@ -90,11 +90,11 @@ Integer List.lastIndexOf(Variant searchElement,
 ```
 
 调用参数:
-* searchElement - 要查找的元素
-* fromIndex - 从此位置开始逆向查找。默认为数组的长度减 1，即整个数组都被查找。
+* searchElement: Variant, 要查找的元素
+* fromIndex: Integer, 从此位置开始逆向查找。默认为数组的长度减 1，即整个数组都被查找。
 
 返回结果:
-* 给定元素在数组中最后一次出现的索引位置; 若没有找到则返回 -1
+* Integer, 给定元素在数组中最后一次出现的索引位置; 若没有找到则返回 -1
 
 如果参数 searchElement 大于或等于数组的长度，则整个数组会被查找。
 如果为负值，将其视为从数组末尾向前的偏移。即使该值为负，数组仍然会被从后向前查找。
@@ -108,10 +108,10 @@ Integer List.push(...);
 ```
 
 调用参数:
-* ... - 指定添加的多个元素
+* ...: 指定添加的多个元素
 
 返回结果:
-* 添加元素之后数组的长度
+* Integer, 添加元素之后数组的长度
 
 --------------------------
 ### pushArray
@@ -121,7 +121,7 @@ List.pushArray(Array data);
 ```
 
 调用参数:
-* data - 添加的一组元素
+* data: Array, 添加的一组元素
 
 --------------------------
 ### pop
@@ -131,7 +131,7 @@ Variant List.pop();
 ```
 
 返回结果:
-* 结尾的元素
+* Variant, 结尾的元素
 
 --------------------------
 ### slice
@@ -142,11 +142,11 @@ List List.slice(Integer start = 0,
 ```
 
 调用参数:
-* start - 指定范围的起始，缺省从头开始
-* end - 指定范围的结束，缺省到缓存结尾
+* start: Integer, 指定范围的起始，缺省从头开始
+* end: Integer, 指定范围的结束，缺省到缓存结尾
 
 返回结果:
-* 返回新的数组
+* List, 返回新的数组
 
 --------------------------
 ### concat
@@ -156,10 +156,10 @@ List List.concat(...);
 ```
 
 调用参数:
-* ... - 给定的一个或多个数组
+* ...: 给定的一个或多个数组
 
 返回结果:
-* 返回合并的数组
+* List, 返回合并的数组
 
 --------------------------
 ### every
@@ -170,11 +170,11 @@ Boolean List.every(Function func,
 ```
 
 调用参数:
-* func - 测试函数
-* thisArg - 调用测试函数的参数，可省略
+* func: Function, 测试函数
+* thisArg: Value, 调用测试函数的参数，可省略
 
 返回结果:
-* 全部通过测试则返回 true
+* Boolean, 全部通过测试则返回 true
 
 --------------------------
 ### some
@@ -185,11 +185,11 @@ Boolean List.some(Function func,
 ```
 
 调用参数:
-* func - 测试函数
-* thisArg - 调用测试函数的参数，可省略
+* func: Function, 测试函数
+* thisArg: Value, 调用测试函数的参数，可省略
 
 返回结果:
-* 全部不通过测试则返回 false，否则返回true
+* Boolean, 全部不通过测试则返回 false，否则返回true
 
 --------------------------
 ### filter
@@ -200,11 +200,11 @@ List List.filter(Function func,
 ```
 
 调用参数:
-* func - 测试函数
-* thisArg - 调用过滤函数的参数，可省略
+* func: Function, 测试函数
+* thisArg: Value, 调用过滤函数的参数，可省略
 
 返回结果:
-* 经过过滤的新数组
+* List, 经过过滤的新数组
 
 --------------------------
 ### forEach
@@ -215,8 +215,8 @@ List.forEach(Function func,
 ```
 
 调用参数:
-* func - 处理函数
-* thisArg - 调用处理函数的参数，可省略
+* func: Function, 处理函数
+* thisArg: Value, 调用处理函数的参数，可省略
 
 --------------------------
 ### map
@@ -227,11 +227,11 @@ List List.map(Function func,
 ```
 
 调用参数:
-* func - 处理函数
-* thisArg - 调用处理函数的参数，可省略
+* func: Function, 处理函数
+* thisArg: Value, 调用处理函数的参数，可省略
 
 返回结果:
-* 处理结果数组
+* List, 处理结果数组
 
 --------------------------
 ### reduce
@@ -242,11 +242,11 @@ Value List.reduce(Function func,
 ```
 
 调用参数:
-* func - 处理函数
-* initVal - 初始值，可省略
+* func: Function, 处理函数
+* initVal: Value, 初始值，可省略
 
 返回结果:
-* 处理结果数组
+* Value, 处理结果数组
 
 --------------------------
 ### sort
@@ -256,10 +256,10 @@ List List.sort(Function func);
 ```
 
 调用参数:
-* func - 比较处理函数
+* func: Function, 比较处理函数
 
 返回结果:
-* 列表本身
+* List, 列表本身
 
 --------------------------
 排序全部数据并返回列表本身
@@ -268,7 +268,7 @@ List List.sort();
 ```
 
 返回结果:
-* 列表本身
+* List, 列表本身
 
 --------------------------
 ### toArray
@@ -278,7 +278,7 @@ Array List.toArray();
 ```
 
 返回结果:
-* 包含数据的 js 数组
+* Array, 包含数据的 js 数组
 
 --------------------------
 ### dispose
@@ -295,10 +295,10 @@ Boolean List.equals(object expected);
 ```
 
 调用参数:
-* expected - 制定比较的目标对象
+* expected: object, 制定比较的目标对象
 
 返回结果:
-* 返回对象比较的结果
+* Boolean, 返回对象比较的结果
 
 --------------------------
 ### toString
@@ -308,7 +308,7 @@ String List.toString();
 ```
 
 返回结果:
-* 返回对象的字符串表示
+* String, 返回对象的字符串表示
 
 --------------------------
 ### toJSON
@@ -318,10 +318,10 @@ Value List.toJSON(String key = "");
 ```
 
 调用参数:
-* key - 未使用
+* key: String, 未使用
 
 返回结果:
-* 返回包含可 JSON 序列化的值
+* Value, 返回包含可 JSON 序列化的值
 
 --------------------------
 ### valueOf
@@ -331,12 +331,12 @@ Value List.valueOf();
 ```
 
 返回结果:
-* 返回对象本身的数值
+* Value, 返回对象本身的数值
 
 ## 成员属性
         
 ### length
-获取数组的尺寸
+Integer, 获取数组的尺寸
 ```JavaScript
 readonly Integer List.length;
 ```

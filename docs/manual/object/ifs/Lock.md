@@ -25,10 +25,10 @@ Boolean Lock.acquire(Boolean blocking = true);
 ```
 
 调用参数:
-* blocking - 指定是否等待，为 true 时等待，缺省为真
+* blocking: Boolean, 指定是否等待，为 true 时等待，缺省为真
 
 返回结果:
-* 返回是否成功获取锁，为 true 表示成功获取
+* Boolean, 返回是否成功获取锁，为 true 表示成功获取
 
 acquire 方法用于获取锁的拥有权，当锁处于可获取状态时，此方法立即返回 true。
 
@@ -53,7 +53,7 @@ Integer Lock.count();
 ```
 
 返回结果:
-* 返回任务数
+* Integer, 返回任务数
 
 --------------------------
 ### dispose
@@ -70,10 +70,10 @@ Boolean Lock.equals(object expected);
 ```
 
 调用参数:
-* expected - 制定比较的目标对象
+* expected: object, 制定比较的目标对象
 
 返回结果:
-* 返回对象比较的结果
+* Boolean, 返回对象比较的结果
 
 --------------------------
 ### toString
@@ -83,7 +83,7 @@ String Lock.toString();
 ```
 
 返回结果:
-* 返回对象的字符串表示
+* String, 返回对象的字符串表示
 
 --------------------------
 ### toJSON
@@ -93,10 +93,10 @@ Value Lock.toJSON(String key = "");
 ```
 
 调用参数:
-* key - 未使用
+* key: String, 未使用
 
 返回结果:
-* 返回包含可 JSON 序列化的值
+* Value, 返回包含可 JSON 序列化的值
 
 --------------------------
 ### valueOf
@@ -106,5 +106,5 @@ Value Lock.valueOf();
 ```
 
 返回结果:
-* 返回对象本身的数值
+* Value, 返回对象本身的数值
 

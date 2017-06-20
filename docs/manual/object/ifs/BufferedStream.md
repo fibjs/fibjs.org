@@ -14,7 +14,7 @@ BufferedStream 构造函数
 ```
 
 调用参数:
-* stm - BufferedStream 的二进制基础流对象
+* stm: [Stream](Stream.md), BufferedStream 的二进制基础流对象
 
 ## 成员函数
         
@@ -25,10 +25,10 @@ String BufferedStream.readText(Integer size) async;
 ```
 
 调用参数:
-* size - 指定读取的文本字符个数，以 utf8 或者指定的编码字节数为准
+* size: Integer, 指定读取的文本字符个数，以 utf8 或者指定的编码字节数为准
 
 返回结果:
-* 返回读取的文本字符串，若无数据可读，或者连接中断，则返回 null
+* String, 返回读取的文本字符串，若无数据可读，或者连接中断，则返回 null
 
 --------------------------
 ### readLine
@@ -38,10 +38,10 @@ String BufferedStream.readLine(Integer maxlen = -1) async;
 ```
 
 调用参数:
-* maxlen - 指定此次读取的最大字符串，以 utf8 编码字节数为准，缺省不限制字符数
+* maxlen: Integer, 指定此次读取的最大字符串，以 utf8 编码字节数为准，缺省不限制字符数
 
 返回结果:
-* 返回读取的文本字符串，若无数据可读，或者连接中断，则返回 null
+* String, 返回读取的文本字符串，若无数据可读，或者连接中断，则返回 null
 
 --------------------------
 ### readLines
@@ -51,10 +51,10 @@ Array BufferedStream.readLines(Integer maxlines = -1);
 ```
 
 调用参数:
-* maxlines - 指定此次读取的最大行数，缺省读取全部文本行
+* maxlines: Integer, 指定此次读取的最大行数，缺省读取全部文本行
 
 返回结果:
-* 返回读取的文本行数组，若无数据可读，或者连接中断，空数组
+* Array, 返回读取的文本行数组，若无数据可读，或者连接中断，空数组
 
 --------------------------
 ### readUntil
@@ -65,11 +65,11 @@ String BufferedStream.readUntil(String mk,
 ```
 
 调用参数:
-* mk - 指定结尾的字符串
-* maxlen - 指定此次读取的最大字符串，以 utf8 编码字节数为准，缺省不限制字符数
+* mk: String, 指定结尾的字符串
+* maxlen: Integer, 指定此次读取的最大字符串，以 utf8 编码字节数为准，缺省不限制字符数
 
 返回结果:
-* 返回读取的文本字符串，若无数据可读，或者连接中断，则返回 null
+* String, 返回读取的文本字符串，若无数据可读，或者连接中断，则返回 null
 
 --------------------------
 ### writeText
@@ -79,7 +79,7 @@ BufferedStream.writeText(String txt) async;
 ```
 
 调用参数:
-* txt - 指定写入的字符串
+* txt: String, 指定写入的字符串
 
 --------------------------
 ### writeLine
@@ -89,7 +89,7 @@ BufferedStream.writeLine(String txt) async;
 ```
 
 调用参数:
-* txt - 指定写入的字符串
+* txt: String, 指定写入的字符串
 
 --------------------------
 ### read
@@ -99,10 +99,10 @@ Buffer BufferedStream.read(Integer bytes = -1) async;
 ```
 
 调用参数:
-* bytes - 指定要读取的数据量，缺省为读取随机大小的数据块，读出的数据尺寸取决于设备
+* bytes: Integer, 指定要读取的数据量，缺省为读取随机大小的数据块，读出的数据尺寸取决于设备
 
 返回结果:
-* 返回从流内读取的数据，若无数据可读，或者连接中断，则返回 null
+* [Buffer](Buffer.md), 返回从流内读取的数据，若无数据可读，或者连接中断，则返回 null
 
 --------------------------
 ### write
@@ -112,7 +112,7 @@ BufferedStream.write(Buffer data) async;
 ```
 
 调用参数:
-* data - 给定要写入的数据
+* data: [Buffer](Buffer.md), 给定要写入的数据
 
 --------------------------
 ### close
@@ -130,11 +130,11 @@ Long BufferedStream.copyTo(Stream stm,
 ```
 
 调用参数:
-* stm - 目标流对象
-* bytes - 复制的字节数
+* stm: Stream, 目标流对象
+* bytes: Long, 复制的字节数
 
 返回结果:
-* 返回复制的字节数
+* Long, 返回复制的字节数
 
 --------------------------
 ### dispose
@@ -151,10 +151,10 @@ Boolean BufferedStream.equals(object expected);
 ```
 
 调用参数:
-* expected - 制定比较的目标对象
+* expected: object, 制定比较的目标对象
 
 返回结果:
-* 返回对象比较的结果
+* Boolean, 返回对象比较的结果
 
 --------------------------
 ### toString
@@ -164,7 +164,7 @@ String BufferedStream.toString();
 ```
 
 返回结果:
-* 返回对象的字符串表示
+* String, 返回对象的字符串表示
 
 --------------------------
 ### toJSON
@@ -174,10 +174,10 @@ Value BufferedStream.toJSON(String key = "");
 ```
 
 调用参数:
-* key - 未使用
+* key: String, 未使用
 
 返回结果:
-* 返回包含可 JSON 序列化的值
+* Value, 返回包含可 JSON 序列化的值
 
 --------------------------
 ### valueOf
@@ -187,26 +187,26 @@ Value BufferedStream.valueOf();
 ```
 
 返回结果:
-* 返回对象本身的数值
+* Value, 返回对象本身的数值
 
 ## 成员属性
         
 ### stream
-查询创建缓存对象时的流对象
+[Stream](Stream.md), 查询创建缓存对象时的流对象
 ```JavaScript
 readonly Stream BufferedStream.stream;
 ```
 
 --------------------------
 ### charset
-查询和设置当前对象处理文本时的字符集，缺省为 utf-8
+String, 查询和设置当前对象处理文本时的字符集，缺省为 utf-8
 ```JavaScript
 String BufferedStream.charset;
 ```
 
 --------------------------
 ### EOL
-查询和设置行结尾标识，缺省时，posix:\"\\n\"；windows:\"\\r\\n\"
+String, 查询和设置行结尾标识，缺省时，posix:\"\\n\"；windows:\"\\r\\n\"
 ```JavaScript
 String BufferedStream.EOL;
 ```

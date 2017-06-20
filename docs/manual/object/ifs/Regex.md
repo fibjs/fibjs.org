@@ -10,10 +10,10 @@ Array Regex.exec(String str);
 ```
 
 调用参数:
-* str - 要检索的字符串
+* str: String, 要检索的字符串
 
 返回结果:
-* 返回一个数组，其中存放匹配的结果。如果未找到匹配，则返回值为 null
+* Array, 返回一个数组，其中存放匹配的结果。如果未找到匹配，则返回值为 null
 
 --------------------------
 ### test
@@ -23,10 +23,10 @@ Boolean Regex.test(String str);
 ```
 
 调用参数:
-* str - 要检索的字符串
+* str: String, 要检索的字符串
 
 返回结果:
-* 如果字符串 str 中含有匹配的文本，则返回 true，否则返回 false
+* Boolean, 如果字符串 str 中含有匹配的文本，则返回 true，否则返回 false
 
 --------------------------
 ### dispose
@@ -43,10 +43,10 @@ Boolean Regex.equals(object expected);
 ```
 
 调用参数:
-* expected - 制定比较的目标对象
+* expected: object, 制定比较的目标对象
 
 返回结果:
-* 返回对象比较的结果
+* Boolean, 返回对象比较的结果
 
 --------------------------
 ### toString
@@ -56,7 +56,7 @@ String Regex.toString();
 ```
 
 返回结果:
-* 返回对象的字符串表示
+* String, 返回对象的字符串表示
 
 --------------------------
 ### toJSON
@@ -66,10 +66,10 @@ Value Regex.toJSON(String key = "");
 ```
 
 调用参数:
-* key - 未使用
+* key: String, 未使用
 
 返回结果:
-* 返回包含可 JSON 序列化的值
+* Value, 返回包含可 JSON 序列化的值
 
 --------------------------
 ### valueOf
@@ -79,33 +79,33 @@ Value Regex.valueOf();
 ```
 
 返回结果:
-* 返回对象本身的数值
+* Value, 返回对象本身的数值
 
 ## 成员属性
         
 ### lastIndex
-查询和设置下次匹配的起始位置
+Integer, 查询和设置下次匹配的起始位置
 ```JavaScript
 Integer Regex.lastIndex;
 ```
 
 --------------------------
 ### global
-查询正则表达式是否具有标志 "g"。它声明了给定的正则表达式是否执行全局匹配。如果 g 标志被设置，则该属性为 true，否则为 false
+Boolean, 查询正则表达式是否具有标志 "g"。它声明了给定的正则表达式是否执行全局匹配。如果 g 标志被设置，则该属性为 true，否则为 false
 ```JavaScript
 readonly Boolean Regex.global;
 ```
 
 --------------------------
 ### ignoreCase
-查询正则表达式是否设置 "i" 标志。如果设置了 "i" 标志，则返回 true，否则返回 false
+Boolean, 查询正则表达式是否设置 "i" 标志。如果设置了 "i" 标志，则返回 true，否则返回 false
 ```JavaScript
 readonly Boolean Regex.ignoreCase;
 ```
 
 --------------------------
 ### multiline
-查询正则表达式正则表达式是否具有标志 m。它声明了给定的正则表达式是否以多行模式执行模式匹配。在这种模式中，如果要检索的字符串中含有换行符，^ 和 $ 锚除了匹配字符串的开头和结尾外还匹配每行的开头和结尾
+Boolean, 查询正则表达式正则表达式是否具有标志 m。它声明了给定的正则表达式是否以多行模式执行模式匹配。在这种模式中，如果要检索的字符串中含有换行符，^ 和 $ 锚除了匹配字符串的开头和结尾外还匹配每行的开头和结尾
 ```JavaScript
 readonly Boolean Regex.multiline;
 ```

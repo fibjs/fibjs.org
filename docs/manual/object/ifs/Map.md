@@ -21,7 +21,7 @@ Map 构造函数
 ```
 
 调用参数:
-* map - 用于初始化的 js 字典对象
+* map: Object, 用于初始化的 js 字典对象
 
 ## 下标操作
         
@@ -46,10 +46,10 @@ Boolean Map.has(String name);
 ```
 
 调用参数:
-* name - 指定要检查的键值
+* name: String, 指定要检查的键值
 
 返回结果:
-* 返回键值是否存在
+* Boolean, 返回键值是否存在
 
 --------------------------
 ### get
@@ -59,10 +59,10 @@ Variant Map.get(String name);
 ```
 
 调用参数:
-* name - 指定要查询的键值
+* name: String, 指定要查询的键值
 
 返回结果:
-* 返回键值所对应的值，若不存在，则返回 null
+* Variant, 返回键值所对应的值，若不存在，则返回 null
 
 --------------------------
 ### put
@@ -72,7 +72,7 @@ Map.put(Object map);
 ```
 
 调用参数:
-* map - 指定要设定的键值数据字典
+* map: Object, 指定要设定的键值数据字典
 
 --------------------------
 添加一个键值数据
@@ -82,8 +82,8 @@ Map.put(String name,
 ```
 
 调用参数:
-* name - 指定要设定的键值
-* value - 指定要设定的数据
+* name: String, 指定要设定的键值
+* value: Variant, 指定要设定的数据
 
 --------------------------
 ### set
@@ -93,7 +93,7 @@ Map.set(Object map);
 ```
 
 调用参数:
-* map - 指定要设定的键值数据字典
+* map: Object, 指定要设定的键值数据字典
 
 --------------------------
 设定一个键值数据，键值不存在则插入新数据
@@ -103,8 +103,8 @@ Map.set(String name,
 ```
 
 调用参数:
-* name - 指定要设定的键值
-* value - 指定要设定的数据
+* name: String, 指定要设定的键值
+* value: Variant, 指定要设定的数据
 
 --------------------------
 ### remove
@@ -114,7 +114,7 @@ Map.remove(String name);
 ```
 
 调用参数:
-* name - 指定要删除的键值
+* name: String, 指定要删除的键值
 
 --------------------------
 ### isEmpty
@@ -124,7 +124,7 @@ Boolean Map.isEmpty();
 ```
 
 返回结果:
-* 容器内无数值则返回 true
+* Boolean, 容器内无数值则返回 true
 
 --------------------------
 ### dispose
@@ -141,10 +141,10 @@ Boolean Map.equals(object expected);
 ```
 
 调用参数:
-* expected - 制定比较的目标对象
+* expected: object, 制定比较的目标对象
 
 返回结果:
-* 返回对象比较的结果
+* Boolean, 返回对象比较的结果
 
 --------------------------
 ### toString
@@ -154,7 +154,7 @@ String Map.toString();
 ```
 
 返回结果:
-* 返回对象的字符串表示
+* String, 返回对象的字符串表示
 
 --------------------------
 ### toJSON
@@ -164,10 +164,10 @@ Value Map.toJSON(String key = "");
 ```
 
 调用参数:
-* key - 未使用
+* key: String, 未使用
 
 返回结果:
-* 返回包含可 JSON 序列化的值
+* Value, 返回包含可 JSON 序列化的值
 
 --------------------------
 ### valueOf
@@ -177,12 +177,12 @@ Value Map.valueOf();
 ```
 
 返回结果:
-* 返回对象本身的数值
+* Value, 返回对象本身的数值
 
 ## 成员属性
         
 ### size
-查询容器内数值个数
+Integer, 查询容器内数值个数
 ```JavaScript
 readonly Integer Map.size;
 ```

@@ -16,11 +16,11 @@ Buffer Image.getData(Integer format = gd.PNG,
 ```
 
 调用参数:
-* format - 指定返回数据的格式，允许值为 gd.PNG, gd.JPEG, gd.GIF, gd.BMP, gd.WEBP, 缺省为 gd.PNG
-* quality - 当格式为 gd.JPEG 或 gd.WEBP 时用于指定压缩质量，缺省为 85，其他格式忽略此参数
+* format: Integer, 指定返回数据的格式，允许值为 [gd](../../module/ifs/gd.md).PNG, [gd](../../module/ifs/gd.md).JPEG, [gd](../../module/ifs/gd.md).GIF, [gd](../../module/ifs/gd.md).BMP, [gd](../../module/ifs/gd.md).WEBP, 缺省为 [gd](../../module/ifs/gd.md).PNG
+* quality: Integer, 当格式为 [gd](../../module/ifs/gd.md).JPEG 或 [gd](../../module/ifs/gd.md).WEBP 时用于指定压缩质量，缺省为 85，其他格式忽略此参数
 
 返回结果:
-* 返回格式化的数据
+* [Buffer](Buffer.md), 返回格式化的数据
 
 --------------------------
 ### save
@@ -32,9 +32,9 @@ Image.save(Stream stm,
 ```
 
 调用参数:
-* stm - 指定要存入的流对象
-* format - 指定返回数据的格式，允许值为 gd.PNG, gd.JPEG, gd.GIF, gd.BMP, gd.WEBP, 缺省为 gd.PNG
-* quality - 当格式为 gd.JPEG 或 gd.WEBP 时用于指定压缩质量，缺省为 85，其他格式忽略此参数
+* stm: [Stream](Stream.md), 指定要存入的流对象
+* format: Integer, 指定返回数据的格式，允许值为 [gd](../../module/ifs/gd.md).PNG, [gd](../../module/ifs/gd.md).JPEG, [gd](../../module/ifs/gd.md).GIF, [gd](../../module/ifs/gd.md).BMP, [gd](../../module/ifs/gd.md).WEBP, 缺省为 [gd](../../module/ifs/gd.md).PNG
+* quality: Integer, 当格式为 [gd](../../module/ifs/gd.md).JPEG 或 [gd](../../module/ifs/gd.md).WEBP 时用于指定压缩质量，缺省为 85，其他格式忽略此参数
 
 --------------------------
 按照指定的格式将图像数据存入指定文件，文件将被强制覆盖
@@ -45,9 +45,9 @@ Image.save(String fname,
 ```
 
 调用参数:
-* fname - 指定文件名
-* format - 指定返回数据的格式，允许值为 gd.PNG, gd.JPEG, gd.GIF, gd.BMP, gd.WEBP, 缺省为 gd.PNG
-* quality - 当格式为 gd.JPEG 时用于指定压缩质量，缺省为 85，其他格式忽略此参数
+* fname: String, 指定文件名
+* format: Integer, 指定返回数据的格式，允许值为 [gd](../../module/ifs/gd.md).PNG, [gd](../../module/ifs/gd.md).JPEG, [gd](../../module/ifs/gd.md).GIF, [gd](../../module/ifs/gd.md).BMP, [gd](../../module/ifs/gd.md).WEBP, 缺省为 [gd](../../module/ifs/gd.md).PNG
+* quality: Integer, 当格式为 [gd](../../module/ifs/gd.md).JPEG 时用于指定压缩质量，缺省为 85，其他格式忽略此参数
 
 --------------------------
 ### colorAllocate
@@ -59,12 +59,12 @@ Integer Image.colorAllocate(Integer red,
 ```
 
 调用参数:
-* red - 红色分量，范围为 0-255
-* green - 绿色分量，范围为 0-255
-* blue - 蓝色分量，范围为 0-255
+* red: Integer, 红色分量，范围为 0-255
+* green: Integer, 绿色分量，范围为 0-255
+* blue: Integer, 蓝色分量，范围为 0-255
 
 返回结果:
-* 返回颜色号，不成功返回 -1
+* Integer, 返回颜色号，不成功返回 -1
 
 --------------------------
 为指定的颜色申请一个颜色号，对于 [gd](../../module/ifs/gd.md).PALETTE 图像，颜色号为调色板索引，对于 [gd](../../module/ifs/gd.md).TRUECOLOR 图像，颜色号为 rgb 编码数值
@@ -73,10 +73,10 @@ Integer Image.colorAllocate(Integer color);
 ```
 
 调用参数:
-* color - 组合颜色值，可由 gd.color, gb.rgb, gd.rgba 等函数生成
+* color: Integer, 组合颜色值，可由 [gd](../../module/ifs/gd.md).color, gb.rgb, [gd](../../module/ifs/gd.md).rgba 等函数生成
 
 返回结果:
-* 返回颜色号，不成功返回 -1
+* Integer, 返回颜色号，不成功返回 -1
 
 --------------------------
 ### colorAllocateAlpha
@@ -89,13 +89,13 @@ Integer Image.colorAllocateAlpha(Integer red,
 ```
 
 调用参数:
-* red - 红色分量，范围为 0-255
-* green - 绿色分量，范围为 0-255
-* blue - 蓝色分量，范围为 0-255
-* alpha - 透明分量，范围为 0-1.0
+* red: Integer, 红色分量，范围为 0-255
+* green: Integer, 绿色分量，范围为 0-255
+* blue: Integer, 蓝色分量，范围为 0-255
+* alpha: Number, 透明分量，范围为 0-1.0
 
 返回结果:
-* 返回颜色号，不成功返回 -1
+* Integer, 返回颜色号，不成功返回 -1
 
 --------------------------
 为指定的颜色及透明申请一个颜色号，对于 [gd](../../module/ifs/gd.md).PALETTE 图像，颜色号为调色板索引，对于 [gd](../../module/ifs/gd.md).TRUECOLOR 图像，颜色号为 rgba 编码数值
@@ -104,10 +104,10 @@ Integer Image.colorAllocateAlpha(Integer color);
 ```
 
 调用参数:
-* color - 组合颜色值，可由 gd.color, gb.rgb, gd.rgba 等函数生成
+* color: Integer, 组合颜色值，可由 [gd](../../module/ifs/gd.md).color, gb.rgb, [gd](../../module/ifs/gd.md).rgba 等函数生成
 
 返回结果:
-* 返回颜色号，不成功返回 -1
+* Integer, 返回颜色号，不成功返回 -1
 
 --------------------------
 ### colorClosest
@@ -119,12 +119,12 @@ Integer Image.colorClosest(Integer red,
 ```
 
 调用参数:
-* red - 红色分量，范围为 0-255
-* green - 绿色分量，范围为 0-255
-* blue - 蓝色分量，范围为 0-255
+* red: Integer, 红色分量，范围为 0-255
+* green: Integer, 绿色分量，范围为 0-255
+* blue: Integer, 蓝色分量，范围为 0-255
 
 返回结果:
-* 返回颜色号，不成功返回 -1
+* Integer, 返回颜色号，不成功返回 -1
 
 --------------------------
 为指定的颜色查找一个最接近的颜色号，对于 [gd](../../module/ifs/gd.md).PALETTE 图像，颜色号为调色板索引，对于 [gd](../../module/ifs/gd.md).TRUECOLOR 图像，颜色号为 rgb 编码数值
@@ -133,10 +133,10 @@ Integer Image.colorClosest(Integer color);
 ```
 
 调用参数:
-* color - 组合颜色值，可由 gd.color, gb.rgb, gd.rgba 等函数生成
+* color: Integer, 组合颜色值，可由 [gd](../../module/ifs/gd.md).color, gb.rgb, [gd](../../module/ifs/gd.md).rgba 等函数生成
 
 返回结果:
-* 返回颜色号，不成功返回 -1
+* Integer, 返回颜色号，不成功返回 -1
 
 --------------------------
 ### colorClosestHWB
@@ -148,12 +148,12 @@ Integer Image.colorClosestHWB(Integer red,
 ```
 
 调用参数:
-* red - 红色分量，范围为 0-255
-* green - 绿色分量，范围为 0-255
-* blue - 蓝色分量，范围为 0-255
+* red: Integer, 红色分量，范围为 0-255
+* green: Integer, 绿色分量，范围为 0-255
+* blue: Integer, 蓝色分量，范围为 0-255
 
 返回结果:
-* 返回颜色号，不成功返回 -1
+* Integer, 返回颜色号，不成功返回 -1
 
 --------------------------
 为指定的颜色查找一个最接近的颜色号，此方法使用 Hue/White/Black 计算查找最接近颜色，对于 [gd](../../module/ifs/gd.md).PALETTE 图像，颜色号为调色板索引，对于 [gd](../../module/ifs/gd.md).TRUECOLOR 图像，颜色号为 rgb 编码数值
@@ -162,10 +162,10 @@ Integer Image.colorClosestHWB(Integer color);
 ```
 
 调用参数:
-* color - 组合颜色值，可由 gd.color, gb.rgb, gd.rgba 等函数生成
+* color: Integer, 组合颜色值，可由 [gd](../../module/ifs/gd.md).color, gb.rgb, [gd](../../module/ifs/gd.md).rgba 等函数生成
 
 返回结果:
-* 返回颜色号，不成功返回 -1
+* Integer, 返回颜色号，不成功返回 -1
 
 --------------------------
 ### colorClosestAlpha
@@ -178,13 +178,13 @@ Integer Image.colorClosestAlpha(Integer red,
 ```
 
 调用参数:
-* red - 红色分量，范围为 0-255
-* green - 绿色分量，范围为 0-255
-* blue - 蓝色分量，范围为 0-255
-* alpha - 透明分量，范围为 0-1.0
+* red: Integer, 红色分量，范围为 0-255
+* green: Integer, 绿色分量，范围为 0-255
+* blue: Integer, 蓝色分量，范围为 0-255
+* alpha: Number, 透明分量，范围为 0-1.0
 
 返回结果:
-* 返回颜色号，不成功返回 -1
+* Integer, 返回颜色号，不成功返回 -1
 
 --------------------------
 为指定的颜色及透明查找一个最接近的颜色号，对于 [gd](../../module/ifs/gd.md).PALETTE 图像，颜色号为调色板索引，对于 [gd](../../module/ifs/gd.md).TRUECOLOR 图像，颜色号为 rgba 编码数值
@@ -193,10 +193,10 @@ Integer Image.colorClosestAlpha(Integer color);
 ```
 
 调用参数:
-* color - 组合颜色值，可由 gd.color, gb.rgb, gd.rgba 等函数生成
+* color: Integer, 组合颜色值，可由 [gd](../../module/ifs/gd.md).color, gb.rgb, [gd](../../module/ifs/gd.md).rgba 等函数生成
 
 返回结果:
-* 返回颜色号，不成功返回 -1
+* Integer, 返回颜色号，不成功返回 -1
 
 --------------------------
 ### colorExact
@@ -208,12 +208,12 @@ Integer Image.colorExact(Integer red,
 ```
 
 调用参数:
-* red - 红色分量，范围为 0-255
-* green - 绿色分量，范围为 0-255
-* blue - 蓝色分量，范围为 0-255
+* red: Integer, 红色分量，范围为 0-255
+* green: Integer, 绿色分量，范围为 0-255
+* blue: Integer, 蓝色分量，范围为 0-255
 
 返回结果:
-* 返回颜色号，不成功返回 -1
+* Integer, 返回颜色号，不成功返回 -1
 
 --------------------------
 查找指定的颜色对应的颜色号，对于 [gd](../../module/ifs/gd.md).PALETTE 图像，颜色号为调色板索引，对于 [gd](../../module/ifs/gd.md).TRUECOLOR 图像，颜色号为 rgb 编码数值
@@ -222,10 +222,10 @@ Integer Image.colorExact(Integer color);
 ```
 
 调用参数:
-* color - 组合颜色值，可由 gd.color, gb.rgb, gd.rgba 等函数生成
+* color: Integer, 组合颜色值，可由 [gd](../../module/ifs/gd.md).color, gb.rgb, [gd](../../module/ifs/gd.md).rgba 等函数生成
 
 返回结果:
-* 返回颜色号，不成功返回 -1
+* Integer, 返回颜色号，不成功返回 -1
 
 --------------------------
 ### colorExactAlpha
@@ -238,13 +238,13 @@ Integer Image.colorExactAlpha(Integer red,
 ```
 
 调用参数:
-* red - 红色分量，范围为 0-255
-* green - 绿色分量，范围为 0-255
-* blue - 蓝色分量，范围为 0-255
-* alpha - 透明分量，范围为 0-1.0
+* red: Integer, 红色分量，范围为 0-255
+* green: Integer, 绿色分量，范围为 0-255
+* blue: Integer, 蓝色分量，范围为 0-255
+* alpha: Number, 透明分量，范围为 0-1.0
 
 返回结果:
-* 返回颜色号，不成功返回 -1
+* Integer, 返回颜色号，不成功返回 -1
 
 --------------------------
 查找指定的颜色及透明对应的颜色号，对于 [gd](../../module/ifs/gd.md).PALETTE 图像，颜色号为调色板索引，对于 [gd](../../module/ifs/gd.md).TRUECOLOR 图像，颜色号为 rgba 编码数值
@@ -253,10 +253,10 @@ Integer Image.colorExactAlpha(Integer color);
 ```
 
 调用参数:
-* color - 组合颜色值，可由 gd.color, gb.rgb, gd.rgba 等函数生成
+* color: Integer, 组合颜色值，可由 [gd](../../module/ifs/gd.md).color, gb.rgb, [gd](../../module/ifs/gd.md).rgba 等函数生成
 
 返回结果:
-* 返回颜色号，不成功返回 -1
+* Integer, 返回颜色号，不成功返回 -1
 
 --------------------------
 ### colorResolve
@@ -268,12 +268,12 @@ Integer Image.colorResolve(Integer red,
 ```
 
 调用参数:
-* red - 红色分量，范围为 0-255
-* green - 绿色分量，范围为 0-255
-* blue - 蓝色分量，范围为 0-255
+* red: Integer, 红色分量，范围为 0-255
+* green: Integer, 绿色分量，范围为 0-255
+* blue: Integer, 蓝色分量，范围为 0-255
 
 返回结果:
-* 返回颜色号，不成功返回 -1
+* Integer, 返回颜色号，不成功返回 -1
 
 --------------------------
 查找指定的颜色对应的颜色号，如果颜色不存在，则为其申请一个新颜色号，对于 [gd](../../module/ifs/gd.md).PALETTE 图像，颜色号为调色板索引，对于 [gd](../../module/ifs/gd.md).TRUECOLOR 图像，颜色号为 rgb 编码数值
@@ -282,10 +282,10 @@ Integer Image.colorResolve(Integer color);
 ```
 
 调用参数:
-* color - 组合颜色值，可由 gd.color, gb.rgb, gd.rgba 等函数生成
+* color: Integer, 组合颜色值，可由 [gd](../../module/ifs/gd.md).color, gb.rgb, [gd](../../module/ifs/gd.md).rgba 等函数生成
 
 返回结果:
-* 返回颜色号，不成功返回 -1
+* Integer, 返回颜色号，不成功返回 -1
 
 --------------------------
 ### colorResolveAlpha
@@ -298,13 +298,13 @@ Integer Image.colorResolveAlpha(Integer red,
 ```
 
 调用参数:
-* red - 红色分量，范围为 0-255
-* green - 绿色分量，范围为 0-255
-* blue - 蓝色分量，范围为 0-255
-* alpha - 透明分量，范围为 0-1.0
+* red: Integer, 红色分量，范围为 0-255
+* green: Integer, 绿色分量，范围为 0-255
+* blue: Integer, 蓝色分量，范围为 0-255
+* alpha: Number, 透明分量，范围为 0-1.0
 
 返回结果:
-* 返回颜色号，不成功返回 -1
+* Integer, 返回颜色号，不成功返回 -1
 
 --------------------------
 查找指定的颜色及透明对应的颜色号，如果颜色不存在，则为其申请一个新颜色号，对于 [gd](../../module/ifs/gd.md).PALETTE 图像，颜色号为调色板索引，对于 [gd](../../module/ifs/gd.md).TRUECOLOR 图像，颜色号为 rgba 编码数值
@@ -313,10 +313,10 @@ Integer Image.colorResolveAlpha(Integer color);
 ```
 
 调用参数:
-* color - 组合颜色值，可由 gd.color, gb.rgb, gd.rgba 等函数生成
+* color: Integer, 组合颜色值，可由 [gd](../../module/ifs/gd.md).color, gb.rgb, [gd](../../module/ifs/gd.md).rgba 等函数生成
 
 返回结果:
-* 返回颜色号，不成功返回 -1
+* Integer, 返回颜色号，不成功返回 -1
 
 --------------------------
 ### colorDeallocate
@@ -326,7 +326,7 @@ Image.colorDeallocate(Integer color);
 ```
 
 调用参数:
-* color - 指定要释放的颜色号
+* color: Integer, 指定要释放的颜色号
 
 --------------------------
 ### clip
@@ -339,10 +339,10 @@ Image.clip(Integer x1,
 ```
 
 调用参数:
-* x1 - 剪切窗口的左上 x 坐标
-* y1 - 剪切窗口的左上 y 坐标
-* x2 - 剪切窗口的右下 x 坐标
-* y2 - 剪切窗口的右下 y 坐标
+* x1: Integer, 剪切窗口的左上 x 坐标
+* y1: Integer, 剪切窗口的左上 y 坐标
+* x2: Integer, 剪切窗口的右下 x 坐标
+* y2: Integer, 剪切窗口的右下 y 坐标
 
 --------------------------
 ### getPixel
@@ -353,11 +353,11 @@ Integer Image.getPixel(Integer x,
 ```
 
 调用参数:
-* x - 指定查询的 x 坐标
-* y - 指定查询的 y 坐标
+* x: Integer, 指定查询的 x 坐标
+* y: Integer, 指定查询的 y 坐标
 
 返回结果:
-* 返回指定点的颜色号
+* Integer, 返回指定点的颜色号
 
 --------------------------
 ### getTrueColorPixel
@@ -368,11 +368,11 @@ Integer Image.getTrueColorPixel(Integer x,
 ```
 
 调用参数:
-* x - 指定查询的 x 坐标
-* y - 指定查询的 y 坐标
+* x: Integer, 指定查询的 x 坐标
+* y: Integer, 指定查询的 y 坐标
 
 返回结果:
-* 返回指定点的颜色号
+* Integer, 返回指定点的颜色号
 
 --------------------------
 ### setPixel
@@ -384,9 +384,9 @@ Image.setPixel(Integer x,
 ```
 
 调用参数:
-* x - 指定画点的 x 坐标
-* y - 指定画点的 y 坐标
-* color - 指定画点的颜色号
+* x: Integer, 指定画点的 x 坐标
+* y: Integer, 指定画点的 y 坐标
+* color: Integer, 指定画点的颜色号
 
 --------------------------
 ### setThickness
@@ -396,7 +396,7 @@ Image.setThickness(Integer thickness);
 ```
 
 调用参数:
-* thickness - 画线的宽度
+* thickness: Integer, 画线的宽度
 
 --------------------------
 ### line
@@ -410,11 +410,11 @@ Image.line(Integer x1,
 ```
 
 调用参数:
-* x1 - 指定画线的起始 x 坐标
-* y1 - 指定画线的起始 y 坐标
-* x2 - 指定画线的结束 x 坐标
-* y2 - 指定画线的结束 y 坐标
-* color - 指定画线的颜色号
+* x1: Integer, 指定画线的起始 x 坐标
+* y1: Integer, 指定画线的起始 y 坐标
+* x2: Integer, 指定画线的结束 x 坐标
+* y2: Integer, 指定画线的结束 y 坐标
+* color: Integer, 指定画线的颜色号
 
 --------------------------
 ### rectangle
@@ -428,11 +428,11 @@ Image.rectangle(Integer x1,
 ```
 
 调用参数:
-* x1 - 指定左上角 x 坐标
-* y1 - 指定左上角 y 坐标
-* x2 - 指定右下角 x 坐标
-* y2 - 指定右下角 y 坐标
-* color - 指定矩形的颜色号
+* x1: Integer, 指定左上角 x 坐标
+* y1: Integer, 指定左上角 y 坐标
+* x2: Integer, 指定右下角 x 坐标
+* y2: Integer, 指定右下角 y 坐标
+* color: Integer, 指定矩形的颜色号
 
 --------------------------
 ### filledRectangle
@@ -446,11 +446,11 @@ Image.filledRectangle(Integer x1,
 ```
 
 调用参数:
-* x1 - 指定左上角 x 坐标
-* y1 - 指定左上角 y 坐标
-* x2 - 指定右下角 x 坐标
-* y2 - 指定右下角 y 坐标
-* color - 指定矩形的颜色号
+* x1: Integer, 指定左上角 x 坐标
+* y1: Integer, 指定左上角 y 坐标
+* x2: Integer, 指定右下角 x 坐标
+* y2: Integer, 指定右下角 y 坐标
+* color: Integer, 指定矩形的颜色号
 
 --------------------------
 ### polygon
@@ -461,8 +461,8 @@ Image.polygon(Array points,
 ```
 
 调用参数:
-* points - 包含多边形点的数组，如 [[1, 1], [1, 10], [10, 15], [10, 20]]
-* color - 指定矩形的颜色号
+* points: Array, 包含多边形点的数组，如 [[1, 1], [1, 10], [10, 15], [10, 20]]
+* color: Integer, 指定矩形的颜色号
 
 --------------------------
 ### openPolygon
@@ -473,8 +473,8 @@ Image.openPolygon(Array points,
 ```
 
 调用参数:
-* points - 包含多边形点的数组，如 [[1, 1], [1, 10], [10, 15], [10, 20]]
-* color - 指定矩形的颜色号
+* points: Array, 包含多边形点的数组，如 [[1, 1], [1, 10], [10, 15], [10, 20]]
+* color: Integer, 指定矩形的颜色号
 
 --------------------------
 ### filledPolygon
@@ -485,8 +485,8 @@ Image.filledPolygon(Array points,
 ```
 
 调用参数:
-* points - 包含多边形点的数组，如 [[1, 1], [1, 10], [10, 15], [10, 20]]
-* color - 指定矩形的颜色号
+* points: Array, 包含多边形点的数组，如 [[1, 1], [1, 10], [10, 15], [10, 20]]
+* color: Integer, 指定矩形的颜色号
 
 --------------------------
 ### ellipse
@@ -500,11 +500,11 @@ Image.ellipse(Integer x,
 ```
 
 调用参数:
-* x - 椭圆中心的 x 坐标
-* y - 椭圆中心的 y 坐标
-* width - 椭圆的宽度
-* height - 椭圆的高度
-* color - 指定矩形的颜色号
+* x: Integer, 椭圆中心的 x 坐标
+* y: Integer, 椭圆中心的 y 坐标
+* width: Integer, 椭圆的宽度
+* height: Integer, 椭圆的高度
+* color: Integer, 指定矩形的颜色号
 
 --------------------------
 ### filledEllipse
@@ -518,11 +518,11 @@ Image.filledEllipse(Integer x,
 ```
 
 调用参数:
-* x - 椭圆中心的 x 坐标
-* y - 椭圆中心的 y 坐标
-* width - 椭圆的宽度
-* height - 椭圆的高度
-* color - 指定矩形的颜色号
+* x: Integer, 椭圆中心的 x 坐标
+* y: Integer, 椭圆中心的 y 坐标
+* width: Integer, 椭圆的宽度
+* height: Integer, 椭圆的高度
+* color: Integer, 指定矩形的颜色号
 
 --------------------------
 ### arc
@@ -538,13 +538,13 @@ Image.arc(Integer x,
 ```
 
 调用参数:
-* x - 扇形中心的 x 坐标
-* y - 扇形中心的 y 坐标
-* width - 扇形所在椭圆的宽度
-* height - 扇形所在椭圆的高度
-* start - 扇形开始的角度，范围为 0-360
-* end - 扇形结束的角度，范围为 0-360
-* color - 指定矩形的颜色号
+* x: Integer, 扇形中心的 x 坐标
+* y: Integer, 扇形中心的 y 坐标
+* width: Integer, 扇形所在椭圆的宽度
+* height: Integer, 扇形所在椭圆的高度
+* start: Integer, 扇形开始的角度，范围为 0-360
+* end: Integer, 扇形结束的角度，范围为 0-360
+* color: Integer, 指定矩形的颜色号
 
 --------------------------
 ### filledArc
@@ -561,14 +561,14 @@ Image.filledArc(Integer x,
 ```
 
 调用参数:
-* x - 扇形中心的 x 坐标
-* y - 扇形中心的 y 坐标
-* width - 扇形所在椭圆的宽度
-* height - 扇形所在椭圆的高度
-* start - 扇形开始的角度，范围为 0-360
-* end - 扇形结束的角度，范围为 0-360
-* color - 指定矩形的颜色号
-* style - 指定扇形的样式，允许的值有 gd.ARC, gd.CHORD, gd.NOFILL, gd.EDGED 及其组合
+* x: Integer, 扇形中心的 x 坐标
+* y: Integer, 扇形中心的 y 坐标
+* width: Integer, 扇形所在椭圆的宽度
+* height: Integer, 扇形所在椭圆的高度
+* start: Integer, 扇形开始的角度，范围为 0-360
+* end: Integer, 扇形结束的角度，范围为 0-360
+* color: Integer, 指定矩形的颜色号
+* style: Integer, 指定扇形的样式，允许的值有 [gd](../../module/ifs/gd.md).ARC, [gd](../../module/ifs/gd.md).CHORD, [gd](../../module/ifs/gd.md).NOFILL, [gd](../../module/ifs/gd.md).EDGED 及其组合
 
 --------------------------
 ### fill
@@ -580,9 +580,9 @@ Image.fill(Integer x,
 ```
 
 调用参数:
-* x - 开始填充的 x 坐标
-* y - 开始填充的 y 坐标
-* color - 指定填充的颜色号
+* x: Integer, 开始填充的 x 坐标
+* y: Integer, 开始填充的 y 坐标
+* color: Integer, 指定填充的颜色号
 
 --------------------------
 ### fillToBorder
@@ -595,10 +595,10 @@ Image.fillToBorder(Integer x,
 ```
 
 调用参数:
-* x - 开始填充的 x 坐标
-* y - 开始填充的 y 坐标
-* borderColor - 指定边框的颜色号
-* color - 指定填充的颜色号
+* x: Integer, 开始填充的 x 坐标
+* y: Integer, 开始填充的 y 坐标
+* borderColor: Integer, 指定边框的颜色号
+* color: Integer, 指定填充的颜色号
 
 --------------------------
 ### colorReplace
@@ -609,8 +609,8 @@ Image.colorReplace(Integer src,
 ```
 
 调用参数:
-* src - 指定要替换的颜色
-* dst - 指定新颜色
+* src: Integer, 指定要替换的颜色
+* dst: Integer, 指定新颜色
 
 --------------------------
 ### clone
@@ -620,7 +620,7 @@ Image Image.clone() async;
 ```
 
 返回结果:
-* 返回复制的新图像对象
+* Image, 返回复制的新图像对象
 
 --------------------------
 ### resample
@@ -631,11 +631,11 @@ Image Image.resample(Integer width,
 ```
 
 调用参数:
-* width - 指定拉伸的宽度
-* height - 指定拉伸的高度
+* width: Integer, 指定拉伸的宽度
+* height: Integer, 指定拉伸的高度
 
 返回结果:
-* 返回新图像对象
+* Image, 返回新图像对象
 
 --------------------------
 ### crop
@@ -648,13 +648,13 @@ Image Image.crop(Integer x,
 ```
 
 调用参数:
-* x - 剪切窗口的左上 x 坐标
-* y - 剪切窗口的左上 y 坐标
-* width - 剪切窗口的宽度
-* height - 剪切窗口的高度
+* x: Integer, 剪切窗口的左上 x 坐标
+* y: Integer, 剪切窗口的左上 y 坐标
+* width: Integer, 剪切窗口的宽度
+* height: Integer, 剪切窗口的高度
 
 返回结果:
-* 返回剪切出的图像
+* Image, 返回剪切出的图像
 
 --------------------------
 ### flip
@@ -664,7 +664,7 @@ Image.flip(Integer dir = gd.HORIZONTAL) async;
 ```
 
 调用参数:
-* dir - 镜像方向，允许值为 gd.BOTH,gd.HORIZONTAL, gd.VERTICAL, 缺省为 gd.HORIZONTAL
+* dir: Integer, 镜像方向，允许值为 [gd](../../module/ifs/gd.md).BOTH,[gd](../../module/ifs/gd.md).HORIZONTAL, [gd](../../module/ifs/gd.md).VERTICAL, 缺省为 [gd](../../module/ifs/gd.md).HORIZONTAL
 
 --------------------------
 ### rotate
@@ -674,7 +674,7 @@ Image.rotate(Integer dir) async;
 ```
 
 调用参数:
-* dir - 旋转方向，允许值为 gd.LEFT, gd.RIGHT
+* dir: Integer, 旋转方向，允许值为 [gd](../../module/ifs/gd.md).LEFT, [gd](../../module/ifs/gd.md).RIGHT
 
 --------------------------
 ### convert
@@ -684,7 +684,7 @@ Image.convert(Integer color = gd.TRUECOLOR) async;
 ```
 
 调用参数:
-* color - 指定图像类型，允许值为 gd.TRUECOLOR 或 gd.PALETTE
+* color: Integer, 指定图像类型，允许值为 [gd](../../module/ifs/gd.md).TRUECOLOR 或 [gd](../../module/ifs/gd.md).PALETTE
 
 --------------------------
 ### copy
@@ -700,13 +700,13 @@ Image.copy(Image source,
 ```
 
 调用参数:
-* source - 源图像对象
-* dstX - 指定复制目标的 x 坐标
-* dstY - 指定复制目标的 y 坐标
-* srcX - 指定复制源左上角的 x 坐标
-* srcY - 指定复制源左上角的 y 坐标
-* width - 指定复制的宽度
-* height - 指定复制的高度
+* source: Image, 源图像对象
+* dstX: Integer, 指定复制目标的 x 坐标
+* dstY: Integer, 指定复制目标的 y 坐标
+* srcX: Integer, 指定复制源左上角的 x 坐标
+* srcY: Integer, 指定复制源左上角的 y 坐标
+* width: Integer, 指定复制的宽度
+* height: Integer, 指定复制的高度
 
 --------------------------
 ### copyMerge
@@ -723,14 +723,14 @@ Image.copyMerge(Image source,
 ```
 
 调用参数:
-* source - 源图像对象
-* dstX - 指定复制目标的 x 坐标
-* dstY - 指定复制目标的 y 坐标
-* srcX - 指定复制源左上角的 x 坐标
-* srcY - 指定复制源左上角的 y 坐标
-* width - 指定复制的宽度
-* height - 指定复制的高度
-* percent - 指定覆盖的透明度
+* source: Image, 源图像对象
+* dstX: Integer, 指定复制目标的 x 坐标
+* dstY: Integer, 指定复制目标的 y 坐标
+* srcX: Integer, 指定复制源左上角的 x 坐标
+* srcY: Integer, 指定复制源左上角的 y 坐标
+* width: Integer, 指定复制的宽度
+* height: Integer, 指定复制的高度
+* percent: Integer, 指定覆盖的透明度
 
 --------------------------
 ### copyMergeGray
@@ -747,14 +747,14 @@ Image.copyMergeGray(Image source,
 ```
 
 调用参数:
-* source - 源图像对象
-* dstX - 指定复制目标的 x 坐标
-* dstY - 指定复制目标的 y 坐标
-* srcX - 指定复制源左上角的 x 坐标
-* srcY - 指定复制源左上角的 y 坐标
-* width - 指定复制的宽度
-* height - 指定复制的高度
-* percent - 指定覆盖的透明度
+* source: Image, 源图像对象
+* dstX: Integer, 指定复制目标的 x 坐标
+* dstY: Integer, 指定复制目标的 y 坐标
+* srcX: Integer, 指定复制源左上角的 x 坐标
+* srcY: Integer, 指定复制源左上角的 y 坐标
+* width: Integer, 指定复制的宽度
+* height: Integer, 指定复制的高度
+* percent: Integer, 指定覆盖的透明度
 
 --------------------------
 ### copyResized
@@ -772,15 +772,15 @@ Image.copyResized(Image source,
 ```
 
 调用参数:
-* source - 源图像对象
-* dstX - 指定复制目标的 x 坐标
-* dstY - 指定复制目标的 y 坐标
-* srcX - 指定复制源左上角的 x 坐标
-* srcY - 指定复制源左上角的 y 坐标
-* dstW - 指定复制的拉伸宽度
-* dstH - 指定复制的拉伸高度
-* srcW - 指定复制的源宽度
-* srcH - 指定复制的源高度
+* source: Image, 源图像对象
+* dstX: Integer, 指定复制目标的 x 坐标
+* dstY: Integer, 指定复制目标的 y 坐标
+* srcX: Integer, 指定复制源左上角的 x 坐标
+* srcY: Integer, 指定复制源左上角的 y 坐标
+* dstW: Integer, 指定复制的拉伸宽度
+* dstH: Integer, 指定复制的拉伸高度
+* srcW: Integer, 指定复制的源宽度
+* srcH: Integer, 指定复制的源高度
 
 --------------------------
 ### copyResampled
@@ -798,15 +798,15 @@ Image.copyResampled(Image source,
 ```
 
 调用参数:
-* source - 源图像对象
-* dstX - 指定复制目标的 x 坐标
-* dstY - 指定复制目标的 y 坐标
-* srcX - 指定复制源左上角的 x 坐标
-* srcY - 指定复制源左上角的 y 坐标
-* dstW - 指定复制的拉伸宽度
-* dstH - 指定复制的拉伸高度
-* srcW - 指定复制的源宽度
-* srcH - 指定复制的源高度
+* source: Image, 源图像对象
+* dstX: Integer, 指定复制目标的 x 坐标
+* dstY: Integer, 指定复制目标的 y 坐标
+* srcX: Integer, 指定复制源左上角的 x 坐标
+* srcY: Integer, 指定复制源左上角的 y 坐标
+* dstW: Integer, 指定复制的拉伸宽度
+* dstH: Integer, 指定复制的拉伸高度
+* srcW: Integer, 指定复制的源宽度
+* srcH: Integer, 指定复制的源高度
 
 --------------------------
 ### copyRotated
@@ -823,14 +823,14 @@ Image.copyRotated(Image source,
 ```
 
 调用参数:
-* source - 源图像对象
-* dstX - 指定复制目标的 x 坐标
-* dstY - 指定复制目标的 y 坐标
-* srcX - 指定复制源左上角的 x 坐标
-* srcY - 指定复制源左上角的 y 坐标
-* width - 指定复制的宽度
-* height - 指定复制的高度
-* angle - 指定旋转的角度
+* source: Image, 源图像对象
+* dstX: Number, 指定复制目标的 x 坐标
+* dstY: Number, 指定复制目标的 y 坐标
+* srcX: Integer, 指定复制源左上角的 x 坐标
+* srcY: Integer, 指定复制源左上角的 y 坐标
+* width: Integer, 指定复制的宽度
+* height: Integer, 指定复制的高度
+* angle: Number, 指定旋转的角度
 
 --------------------------
 ### filter
@@ -844,11 +844,11 @@ Image.filter(Integer filterType,
 ```
 
 调用参数:
-* filterType - 过滤器类型
-* arg1 - 过滤器所需参数: SMOOTH 的平滑级别、BRIGHTNESS 的亮度级别、CONTRAST 的对比度级别、COLORIZE 的 red 分值
-* arg2 - 过滤器所需参数: COLORIZE 的 green 分值
-* arg3 - 过滤器所需参数: COLORIZE 的 blue 分值
-* arg4 - 过滤器所需参数: COLORIZE 的透明度 alpha 分值
+* filterType: Integer, 过滤器类型
+* arg1: Number, 过滤器所需参数: SMOOTH 的平滑级别、BRIGHTNESS 的亮度级别、CONTRAST 的对比度级别、COLORIZE 的 red 分值
+* arg2: Number, 过滤器所需参数: COLORIZE 的 green 分值
+* arg3: Number, 过滤器所需参数: COLORIZE 的 blue 分值
+* arg4: Number, 过滤器所需参数: COLORIZE 的透明度 alpha 分值
 
 参数 filterType 可以为以下数值：
 - MEAN_REMOVAL,    用平均移除法来达到轮廓效果
@@ -875,14 +875,14 @@ Image Image.affine(Array affine,
 ```
 
 调用参数:
-* affine - 仿射矩阵，由  6 个 double 类型的数字组成
-* x - 可选剪切区域的原点 x 坐标
-* y - 可选剪切区域的原点 y 坐标
-* width - 可选剪切区域的的宽度
-* height - 可选剪切区域的的高度
+* affine: Array, 仿射矩阵，由  6 个 double 类型的数字组成
+* x: Integer, 可选剪切区域的原点 x 坐标
+* y: Integer, 可选剪切区域的原点 y 坐标
+* width: Integer, 可选剪切区域的的宽度
+* height: Integer, 可选剪切区域的的高度
 
 返回结果:
-* 返回仿射后的图像
+* Image, 返回仿射后的图像
 
 参数 affine 是一个数组：
 ```JavaScript
@@ -899,7 +899,7 @@ Image.gaussianBlur(Integer radius) async;
 ```
 
 调用参数:
-* radius - 模糊半径
+* radius: Integer, 模糊半径
 
 --------------------------
 ### dispose
@@ -916,10 +916,10 @@ Boolean Image.equals(object expected);
 ```
 
 调用参数:
-* expected - 制定比较的目标对象
+* expected: object, 制定比较的目标对象
 
 返回结果:
-* 返回对象比较的结果
+* Boolean, 返回对象比较的结果
 
 --------------------------
 ### toString
@@ -929,7 +929,7 @@ String Image.toString();
 ```
 
 返回结果:
-* 返回对象的字符串表示
+* String, 返回对象的字符串表示
 
 --------------------------
 ### toJSON
@@ -939,10 +939,10 @@ Value Image.toJSON(String key = "");
 ```
 
 调用参数:
-* key - 未使用
+* key: String, 未使用
 
 返回结果:
-* 返回包含可 JSON 序列化的值
+* Value, 返回包含可 JSON 序列化的值
 
 --------------------------
 ### valueOf
@@ -952,61 +952,61 @@ Value Image.valueOf();
 ```
 
 返回结果:
-* 返回对象本身的数值
+* Value, 返回对象本身的数值
 
 ## 成员属性
         
 ### width
-查询图像宽度
+Integer, 查询图像宽度
 ```JavaScript
 readonly Integer Image.width;
 ```
 
 --------------------------
 ### height
-查询图像高度
+Integer, 查询图像高度
 ```JavaScript
 readonly Integer Image.height;
 ```
 
 --------------------------
 ### format
-查询图像来源格式，结果为 [gd](../../module/ifs/gd.md).PNG, [gd](../../module/ifs/gd.md).JPEG, [gd](../../module/ifs/gd.md).GIF, [gd](../../module/ifs/gd.md).BMP, [gd](../../module/ifs/gd.md).WEBP
+Integer, 查询图像来源格式，结果为 [gd](../../module/ifs/gd.md).PNG, [gd](../../module/ifs/gd.md).JPEG, [gd](../../module/ifs/gd.md).GIF, [gd](../../module/ifs/gd.md).BMP, [gd](../../module/ifs/gd.md).WEBP
 ```JavaScript
 readonly Integer Image.format;
 ```
 
 --------------------------
 ### type
-查询图像类型，结果为 [gd](../../module/ifs/gd.md).TRUECOLOR, [gd](../../module/ifs/gd.md).PALETTE
+Integer, 查询图像类型，结果为 [gd](../../module/ifs/gd.md).TRUECOLOR, [gd](../../module/ifs/gd.md).PALETTE
 ```JavaScript
 readonly Integer Image.type;
 ```
 
 --------------------------
 ### colorsTotal
-查询图像颜色表内的颜色总数
+Integer, 查询图像颜色表内的颜色总数
 ```JavaScript
 readonly Integer Image.colorsTotal;
 ```
 
 --------------------------
 ### transparent
-查询和设定指定的颜色为透明色
+Integer, 查询和设定指定的颜色为透明色
 ```JavaScript
 Integer Image.transparent;
 ```
 
 --------------------------
 ### progressive
-查询和设定图像是否渐进式，仅支持 jpeg 格式时
+Boolean, 查询和设定图像是否渐进式，仅支持 jpeg 格式时
 ```JavaScript
 Boolean Image.progressive;
 ```
 
 --------------------------
 ### alphaBlending
-查询和设定绘图时是否计算 alpha 层，缺省为 true
+Boolean, 查询和设定绘图时是否计算 alpha 层，缺省为 true
 ```JavaScript
 Boolean Image.alphaBlending;
 ```

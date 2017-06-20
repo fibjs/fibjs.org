@@ -38,10 +38,10 @@ DBResult DbConnection.execute(String sql) async;
 ```
 
 调用参数:
-* sql - 格式化字符串，可选参数用 ? 指定。例如：'SELECT FROM TEST WHERE [id]=?'
+* sql: String, 格式化字符串，可选参数用 ? 指定。例如：'SELECT FROM TEST WHERE [id]=?'
 
 返回结果:
-* 返回 sql 命令执行结果
+* [DBResult](DBResult.md), 返回 sql 命令执行结果
 
 --------------------------
 执行一个 sql 命令，并返回执行结果，可根据参数格式化字符串
@@ -51,11 +51,11 @@ DBResult DbConnection.execute(String sql,
 ```
 
 调用参数:
-* sql - 格式化字符串，可选参数用 ? 指定。例如：'SELECT FROM TEST WHERE [id]=?'
-* ... - 可选参数列表
+* sql: String, 格式化字符串，可选参数用 ? 指定。例如：'SELECT FROM TEST WHERE [id]=?'
+* ...: 可选参数列表
 
 返回结果:
-* 返回 sql 命令执行结果
+* [DBResult](DBResult.md), 返回 sql 命令执行结果
 
 --------------------------
 ### format
@@ -66,11 +66,11 @@ String DbConnection.format(String sql,
 ```
 
 调用参数:
-* sql - 格式化字符串，可选参数用 ? 指定。例如：'SELECT FROM TEST WHERE [id]=?'
-* ... - 可选参数列表
+* sql: String, 格式化字符串，可选参数用 ? 指定。例如：'SELECT FROM TEST WHERE [id]=?'
+* ...: 可选参数列表
 
 返回结果:
-* 返回格式化之后的 sql 命令
+* String, 返回格式化之后的 sql 命令
 
 --------------------------
 ### dispose
@@ -87,10 +87,10 @@ Boolean DbConnection.equals(object expected);
 ```
 
 调用参数:
-* expected - 制定比较的目标对象
+* expected: object, 制定比较的目标对象
 
 返回结果:
-* 返回对象比较的结果
+* Boolean, 返回对象比较的结果
 
 --------------------------
 ### toString
@@ -100,7 +100,7 @@ String DbConnection.toString();
 ```
 
 返回结果:
-* 返回对象的字符串表示
+* String, 返回对象的字符串表示
 
 --------------------------
 ### toJSON
@@ -110,10 +110,10 @@ Value DbConnection.toJSON(String key = "");
 ```
 
 调用参数:
-* key - 未使用
+* key: String, 未使用
 
 返回结果:
-* 返回包含可 JSON 序列化的值
+* Value, 返回包含可 JSON 序列化的值
 
 --------------------------
 ### valueOf
@@ -123,12 +123,12 @@ Value DbConnection.valueOf();
 ```
 
 返回结果:
-* 返回对象本身的数值
+* Value, 返回对象本身的数值
 
 ## 成员属性
         
 ### type
-查询当前连接数据库类型
+String, 查询当前连接数据库类型
 ```JavaScript
 readonly String DbConnection.type;
 ```

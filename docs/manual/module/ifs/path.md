@@ -14,10 +14,10 @@ static String path.normalize(String path);
 ```
 
 调用参数:
-* path - 给定的未处理的路径
+* path: String, 给定的未处理的路径
 
 返回结果:
-* 返回经过处理的路径
+* String, 返回经过处理的路径
 
 --------------------------
 ### basename
@@ -28,11 +28,11 @@ static String path.basename(String path,
 ```
 
 调用参数:
-* path - 给定查询的路径
-* ext - 指定扩展名，若文件名中有符合条件的扩展名，将自动取消
+* path: String, 给定查询的路径
+* ext: String, 指定扩展名，若文件名中有符合条件的扩展名，将自动取消
 
 返回结果:
-* 返回文件名称
+* String, 返回文件名称
 
 --------------------------
 ### extname
@@ -42,10 +42,10 @@ static String path.extname(String path);
 ```
 
 调用参数:
-* path - 给定查询的路径
+* path: String, 给定查询的路径
 
 返回结果:
-* 返回得到的扩展名
+* String, 返回得到的扩展名
 
 --------------------------
 ### dirname
@@ -55,10 +55,10 @@ static String path.dirname(String path);
 ```
 
 调用参数:
-* path - 给定查询的路径
+* path: String, 给定查询的路径
 
 返回结果:
-* 返回得到的目录的路径
+* String, 返回得到的目录的路径
 
 --------------------------
 ### fullpath
@@ -68,10 +68,10 @@ static String path.fullpath(String path);
 ```
 
 调用参数:
-* path - 给定转换的路径
+* path: String, 给定转换的路径
 
 返回结果:
-* 返回转换的全路径
+* String, 返回转换的全路径
 
 --------------------------
 ### isAbsolute
@@ -81,10 +81,10 @@ static Boolean path.isAbsolute(String path);
 ```
 
 调用参数:
-* path - 给定需要识别的路径
+* path: String, 给定需要识别的路径
 
 返回结果:
-* 是绝对路径则返回 true
+* Boolean, 是绝对路径则返回 true
 
 --------------------------
 ### join
@@ -94,10 +94,10 @@ static String path.join(...);
 ```
 
 调用参数:
-* ... - 一个或多个相关的路径
+* ...: 一个或多个相关的路径
 
 返回结果:
-* 返回得到的新路径
+* String, 返回得到的新路径
 
 --------------------------
 ### resolve
@@ -107,36 +107,36 @@ static String path.resolve(...);
 ```
 
 调用参数:
-* ... - 一个或多个相关的路径
+* ...: 一个或多个相关的路径
 
 返回结果:
-* 返回得到的新路径
+* String, 返回得到的新路径
 
 ## 静态属性
         
 ### sep
-查询当前操作系统的路径分割字符，posix 返回 '/', windows 返回  '\\'
+String, 查询当前操作系统的路径分割字符，posix 返回 '/', windows 返回  '\\'
 ```JavaScript
 static readonly String path.sep;
 ```
 
 --------------------------
 ### delimiter
-查询当前操作系统的多路径组合字符，posix 返回 ':', windows 返回  ';'
+String, 查询当前操作系统的多路径组合字符，posix 返回 ':', windows 返回  ';'
 ```JavaScript
 static readonly String path.delimiter;
 ```
 
 --------------------------
 ### posix
-posix 实现，参见 [path_posix](path_posix.md)
+Object, posix 实现，参见 [path_posix](path_posix.md)
 ```JavaScript
 static readonly Object path.posix;
 ```
 
 --------------------------
 ### win32
-windows 实现，参见 [path_win32](path_win32.md)
+Object, windows 实现，参见 [path_win32](path_win32.md)
 ```JavaScript
 static readonly Object path.win32;
 ```

@@ -51,8 +51,8 @@ static PKey crypto.loadPKey(String filename,
 ```
 
 调用参数:
-* filename - 密钥文件名
-* password - 解密密码
+* filename: String, 密钥文件名
+* password: String, 解密密码
 
 --------------------------
 ### loadCert
@@ -62,7 +62,7 @@ static X509Cert crypto.loadCert(String filename);
 ```
 
 调用参数:
-* filename - 证书文件名
+* filename: String, 证书文件名
 
 loadFile 加载 mozilla 的 certdata,txt， 可于 [http](http.md)://hg.mozilla.org/releases/mozilla-release/raw-file/default/security/nss/lib/ckfw/builtins/certdata.txt 下载使用
 
@@ -74,7 +74,7 @@ static X509Crl crypto.loadCrl(String filename);
 ```
 
 调用参数:
-* filename - 撤销证书文件名
+* filename: String, 撤销证书文件名
 
 --------------------------
 ### loadReq
@@ -84,7 +84,7 @@ static X509Req crypto.loadReq(String filename);
 ```
 
 调用参数:
-* filename - 证书请求文件名
+* filename: String, 证书请求文件名
 
 --------------------------
 ### randomBytes
@@ -94,10 +94,10 @@ static Buffer crypto.randomBytes(Integer size) async;
 ```
 
 调用参数:
-* size - 指定生成的随机数尺寸
+* size: Integer, 指定生成的随机数尺寸
 
 返回结果:
-* 返回生成的随机数
+* [Buffer](../../object/ifs/Buffer.md), 返回生成的随机数
 
 --------------------------
 ### simpleRandomBytes
@@ -107,10 +107,10 @@ static Buffer crypto.simpleRandomBytes(Integer size) async;
 ```
 
 调用参数:
-* size - 指定生成的随机数尺寸
+* size: Integer, 指定生成的随机数尺寸
 
 返回结果:
-* 返回生成的随机数
+* [Buffer](../../object/ifs/Buffer.md), 返回生成的随机数
 
 --------------------------
 ### pseudoRandomBytes
@@ -120,10 +120,10 @@ static Buffer crypto.pseudoRandomBytes(Integer size) async;
 ```
 
 调用参数:
-* size - 指定生成的随机数尺寸
+* size: Integer, 指定生成的随机数尺寸
 
 返回结果:
-* 返回生成的随机数
+* [Buffer](../../object/ifs/Buffer.md), 返回生成的随机数
 
 --------------------------
 ### randomArt
@@ -135,12 +135,12 @@ static String crypto.randomArt(Buffer data,
 ```
 
 调用参数:
-* data - 指定要展示的数据
-* title - 指定字符图像的标题，多字节字符会导致宽度错误
-* size - 字符图像尺寸
+* data: [Buffer](../../object/ifs/Buffer.md), 指定要展示的数据
+* title: String, 指定字符图像的标题，多字节字符会导致宽度错误
+* size: Integer, 字符图像尺寸
 
 返回结果:
-* 返回生成的可视化字符串图像
+* String, 返回生成的可视化字符串图像
 
 --------------------------
 ### pbkdf1
@@ -154,14 +154,14 @@ static Buffer crypto.pbkdf1(Buffer password,
 ```
 
 调用参数:
-* password - 指定使用的密码
-* salt - 指定 hmac 使用的 salt
-* iterations - 指定迭代次数
-* size - 指定钥匙尺寸
-* algo - 指定要使用的 hash 算法，详见 hash 模块
+* password: [Buffer](../../object/ifs/Buffer.md), 指定使用的密码
+* salt: [Buffer](../../object/ifs/Buffer.md), 指定 hmac 使用的 salt
+* iterations: Integer, 指定迭代次数
+* size: Integer, 指定钥匙尺寸
+* algo: Integer, 指定要使用的 [hash](hash.md) 算法，详见 [hash](hash.md) 模块
 
 返回结果:
-* 返回生成的二进制钥匙
+* [Buffer](../../object/ifs/Buffer.md), 返回生成的二进制钥匙
 
 --------------------------
 依据 pbkdf1 根据明文 password 生成要求的二进制钥匙
@@ -174,14 +174,14 @@ static Buffer crypto.pbkdf1(Buffer password,
 ```
 
 调用参数:
-* password - 指定使用的密码
-* salt - 指定 hmac 使用的 salt
-* iterations - 指定迭代次数
-* size - 指定钥匙尺寸
-* algoName - 指定要使用的 hash 算法，详见 hash 模块
+* password: [Buffer](../../object/ifs/Buffer.md), 指定使用的密码
+* salt: [Buffer](../../object/ifs/Buffer.md), 指定 hmac 使用的 salt
+* iterations: Integer, 指定迭代次数
+* size: Integer, 指定钥匙尺寸
+* algoName: String, 指定要使用的 [hash](hash.md) 算法，详见 [hash](hash.md) 模块
 
 返回结果:
-* 返回生成的二进制钥匙
+* [Buffer](../../object/ifs/Buffer.md), 返回生成的二进制钥匙
 
 --------------------------
 ### pbkdf2
@@ -195,14 +195,14 @@ static Buffer crypto.pbkdf2(Buffer password,
 ```
 
 调用参数:
-* password - 指定使用的密码
-* salt - 指定 hmac 使用的 salt
-* iterations - 指定迭代次数
-* size - 指定钥匙尺寸
-* algo - 指定要使用的 hash 算法，详见 hash 模块
+* password: [Buffer](../../object/ifs/Buffer.md), 指定使用的密码
+* salt: [Buffer](../../object/ifs/Buffer.md), 指定 hmac 使用的 salt
+* iterations: Integer, 指定迭代次数
+* size: Integer, 指定钥匙尺寸
+* algo: Integer, 指定要使用的 [hash](hash.md) 算法，详见 [hash](hash.md) 模块
 
 返回结果:
-* 返回生成的二进制钥匙
+* [Buffer](../../object/ifs/Buffer.md), 返回生成的二进制钥匙
 
 --------------------------
 依据 rfc2898 根据明文 password 生成要求的二进制钥匙
@@ -215,14 +215,14 @@ static Buffer crypto.pbkdf2(Buffer password,
 ```
 
 调用参数:
-* password - 指定使用的密码
-* salt - 指定 hmac 使用的 salt
-* iterations - 指定迭代次数
-* size - 指定钥匙尺寸
-* algoName - 指定要使用的 hash 算法，详见 hash 模块
+* password: [Buffer](../../object/ifs/Buffer.md), 指定使用的密码
+* salt: [Buffer](../../object/ifs/Buffer.md), 指定 hmac 使用的 salt
+* iterations: Integer, 指定迭代次数
+* size: Integer, 指定钥匙尺寸
+* algoName: String, 指定要使用的 [hash](hash.md) 算法，详见 [hash](hash.md) 模块
 
 返回结果:
-* 返回生成的二进制钥匙
+* [Buffer](../../object/ifs/Buffer.md), 返回生成的二进制钥匙
 
 --------------------------
 ### pbkdf2Sync
@@ -236,14 +236,14 @@ static Buffer crypto.pbkdf2Sync(Buffer password,
 ```
 
 调用参数:
-* password - 指定使用的密码
-* salt - 指定 hmac 使用的 salt
-* iterations - 指定迭代次数
-* size - 指定钥匙尺寸
-* algoName - 指定要使用的 hash 算法，详见 hash 模块
+* password: [Buffer](../../object/ifs/Buffer.md), 指定使用的密码
+* salt: [Buffer](../../object/ifs/Buffer.md), 指定 hmac 使用的 salt
+* iterations: Integer, 指定迭代次数
+* size: Integer, 指定钥匙尺寸
+* algoName: String, 指定要使用的 [hash](hash.md) 算法，详见 [hash](hash.md) 模块
 
 返回结果:
-* 返回生成的二进制钥匙
+* [Buffer](../../object/ifs/Buffer.md), 返回生成的二进制钥匙
 
 ## 常量
         

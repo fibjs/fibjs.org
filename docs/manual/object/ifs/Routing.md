@@ -48,7 +48,7 @@ var routing = new mq.Routing({
 ```
 
 调用参数:
-* map - 初始化路由参数
+* map: Object, 初始化路由参数
 
 --------------------------
 创建一个消息处理器路由对象
@@ -58,8 +58,8 @@ var routing = new mq.Routing({
 ```
 
 调用参数:
-* method - 指定 http 请求方法，"*" 接受所有方法
-* map - 初始化路由参数
+* method: String, 指定 [http](../../module/ifs/http.md) 请求方法，"*" 接受所有方法
+* map: Object, 初始化路由参数
 
 ## 成员函数
         
@@ -70,7 +70,7 @@ Routing.append(Routing route);
 ```
 
 调用参数:
-* route - 已经初始化的路由对象
+* route: Routing, 已经初始化的路由对象
 
 --------------------------
 添加一组路由规则
@@ -79,7 +79,7 @@ Routing.append(Object map);
 ```
 
 调用参数:
-* map - 路由参数
+* map: Object, 路由参数
 
 --------------------------
 添加一条路由规则
@@ -89,8 +89,8 @@ Routing.append(String pattern,
 ```
 
 调用参数:
-* pattern - 消息匹配格式
-* hdlr - 内置消息处理器，处理函数，链式处理数组，路由对象，详见 mq.Handler
+* pattern: String, 消息匹配格式
+* hdlr: [Handler](Handler.md), 内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq](../../module/ifs/mq.md).[Handler](Handler.md)
 
 --------------------------
 添加一组路由规则
@@ -100,8 +100,8 @@ Routing.append(String method,
 ```
 
 调用参数:
-* method - 指定 http 请求方法，"*" 接受所有方法
-* map - 路由参数
+* method: String, 指定 [http](../../module/ifs/http.md) 请求方法，"*" 接受所有方法
+* map: Object, 路由参数
 
 --------------------------
 添加一条路由规则
@@ -112,9 +112,9 @@ Routing.append(String method,
 ```
 
 调用参数:
-* method - 指定 http 请求方法，"*" 接受所有方法
-* pattern - 消息匹配格式
-* hdlr - 内置消息处理器，处理函数，链式处理数组，路由对象，详见 mq.Handler
+* method: String, 指定 [http](../../module/ifs/http.md) 请求方法，"*" 接受所有方法
+* pattern: String, 消息匹配格式
+* hdlr: [Handler](Handler.md), 内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq](../../module/ifs/mq.md).[Handler](Handler.md)
 
 --------------------------
 ### all
@@ -124,7 +124,7 @@ Routing.all(Object map);
 ```
 
 调用参数:
-* map - 路由参数
+* map: Object, 路由参数
 
 --------------------------
 添加一条接受所有 [http](../../module/ifs/http.md) 方法路由规则
@@ -134,8 +134,8 @@ Routing.all(String pattern,
 ```
 
 调用参数:
-* pattern - 消息匹配格式
-* hdlr - 内置消息处理器，处理函数，链式处理数组，路由对象，详见 mq.Handler
+* pattern: String, 消息匹配格式
+* hdlr: [Handler](Handler.md), 内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq](../../module/ifs/mq.md).[Handler](Handler.md)
 
 --------------------------
 ### get
@@ -145,7 +145,7 @@ Routing.get(Object map);
 ```
 
 调用参数:
-* map - 路由参数
+* map: Object, 路由参数
 
 --------------------------
 添加一条接受 [http](../../module/ifs/http.md) GET 方法路由规则
@@ -155,8 +155,8 @@ Routing.get(String pattern,
 ```
 
 调用参数:
-* pattern - 消息匹配格式
-* hdlr - 内置消息处理器，处理函数，链式处理数组，路由对象，详见 mq.Handler
+* pattern: String, 消息匹配格式
+* hdlr: [Handler](Handler.md), 内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq](../../module/ifs/mq.md).[Handler](Handler.md)
 
 --------------------------
 ### post
@@ -166,7 +166,7 @@ Routing.post(Object map);
 ```
 
 调用参数:
-* map - 路由参数
+* map: Object, 路由参数
 
 --------------------------
 添加一条接受 [http](../../module/ifs/http.md) POST 方法路由规则
@@ -176,8 +176,8 @@ Routing.post(String pattern,
 ```
 
 调用参数:
-* pattern - 消息匹配格式
-* hdlr - 内置消息处理器，处理函数，链式处理数组，路由对象，详见 mq.Handler
+* pattern: String, 消息匹配格式
+* hdlr: [Handler](Handler.md), 内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq](../../module/ifs/mq.md).[Handler](Handler.md)
 
 --------------------------
 ### del
@@ -187,7 +187,7 @@ Routing.del(Object map);
 ```
 
 调用参数:
-* map - 路由参数
+* map: Object, 路由参数
 
 --------------------------
 添加一条接受 [http](../../module/ifs/http.md) DELETE 方法路由规则
@@ -197,8 +197,8 @@ Routing.del(String pattern,
 ```
 
 调用参数:
-* pattern - 消息匹配格式
-* hdlr - 内置消息处理器，处理函数，链式处理数组，路由对象，详见 mq.Handler
+* pattern: String, 消息匹配格式
+* hdlr: [Handler](Handler.md), 内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq](../../module/ifs/mq.md).[Handler](Handler.md)
 
 --------------------------
 ### put
@@ -208,7 +208,7 @@ Routing.put(Object map);
 ```
 
 调用参数:
-* map - 路由参数
+* map: Object, 路由参数
 
 --------------------------
 添加一条接受 [http](../../module/ifs/http.md) PUT 方法路由规则
@@ -218,8 +218,8 @@ Routing.put(String pattern,
 ```
 
 调用参数:
-* pattern - 消息匹配格式
-* hdlr - 内置消息处理器，处理函数，链式处理数组，路由对象，详见 mq.Handler
+* pattern: String, 消息匹配格式
+* hdlr: [Handler](Handler.md), 内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq](../../module/ifs/mq.md).[Handler](Handler.md)
 
 --------------------------
 ### patch
@@ -229,7 +229,7 @@ Routing.patch(Object map);
 ```
 
 调用参数:
-* map - 路由参数
+* map: Object, 路由参数
 
 --------------------------
 添加一条接受 [http](../../module/ifs/http.md) PATCH 方法路由规则
@@ -239,8 +239,8 @@ Routing.patch(String pattern,
 ```
 
 调用参数:
-* pattern - 消息匹配格式
-* hdlr - 内置消息处理器，处理函数，链式处理数组，路由对象，详见 mq.Handler
+* pattern: String, 消息匹配格式
+* hdlr: [Handler](Handler.md), 内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq](../../module/ifs/mq.md).[Handler](Handler.md)
 
 --------------------------
 ### invoke
@@ -250,10 +250,10 @@ Handler Routing.invoke(object v) async;
 ```
 
 调用参数:
-* v - 指定处理的消息或对象
+* v: [object](object.md), 指定处理的消息或对象
 
 返回结果:
-* 返回下一步的处理器
+* Handler, 返回下一步的处理器
 
 --------------------------
 ### dispose
@@ -270,10 +270,10 @@ Boolean Routing.equals(object expected);
 ```
 
 调用参数:
-* expected - 制定比较的目标对象
+* expected: object, 制定比较的目标对象
 
 返回结果:
-* 返回对象比较的结果
+* Boolean, 返回对象比较的结果
 
 --------------------------
 ### toString
@@ -283,7 +283,7 @@ String Routing.toString();
 ```
 
 返回结果:
-* 返回对象的字符串表示
+* String, 返回对象的字符串表示
 
 --------------------------
 ### toJSON
@@ -293,10 +293,10 @@ Value Routing.toJSON(String key = "");
 ```
 
 调用参数:
-* key - 未使用
+* key: String, 未使用
 
 返回结果:
-* 返回包含可 JSON 序列化的值
+* Value, 返回包含可 JSON 序列化的值
 
 --------------------------
 ### valueOf
@@ -306,5 +306,5 @@ Value Routing.valueOf();
 ```
 
 返回结果:
-* 返回对象本身的数值
+* Value, 返回对象本身的数值
 

@@ -4,7 +4,7 @@
 ## 静态属性
         
 ### defaultMaxListeners
-默认全局最大监听器数
+Integer, 默认全局最大监听器数
 ```JavaScript
 static Integer WebView.defaultMaxListeners;
 ```
@@ -18,7 +18,7 @@ WebView.setHtml(String html) async;
 ```
 
 调用参数:
-* html - 设置的 html
+* html: String, 设置的 html
 
 --------------------------
 ### print
@@ -28,7 +28,7 @@ WebView.print(Integer mode = 1) async;
 ```
 
 调用参数:
-* mode - 打印参数，0: 快速打印; 1: 标准打印; 2: 打印预览。缺省为 1
+* mode: Integer, 打印参数，0: 快速打印; 1: 标准打印; 2: 打印预览。缺省为 1
 
 --------------------------
 ### close
@@ -52,7 +52,7 @@ WebView.postMessage(String msg) async;
 ```
 
 调用参数:
-* msg - 要发送的消息
+* msg: String, 要发送的消息
 
 ```JavaScript
 // index.js
@@ -80,11 +80,11 @@ Object WebView.on(String ev,
 ```
 
 调用参数:
-* ev - 指定事件的名称
-* func - 指定事件处理函数
+* ev: String, 指定事件的名称
+* func: Function, 指定事件处理函数
 
 返回结果:
-* 返回成功绑定的数量，如果函数已绑定则返回 0
+* Object, 返回成功绑定的数量，如果函数已绑定则返回 0
 
 --------------------------
 绑定一个事件处理函数到对象
@@ -93,10 +93,10 @@ Object WebView.on(Object map);
 ```
 
 调用参数:
-* map - 指定事件映射关系，对象属性名称将作为事件名称，属性的值将作为事件处理函数
+* map: Object, 指定事件映射关系，对象属性名称将作为事件名称，属性的值将作为事件处理函数
 
 返回结果:
-* 返回事件对象本身，便于链式调用
+* Object, 返回事件对象本身，便于链式调用
 
 --------------------------
 ### addListener
@@ -107,11 +107,11 @@ Object WebView.addListener(String ev,
 ```
 
 调用参数:
-* ev - 指定事件的名称
-* func - 指定事件处理函数
+* ev: String, 指定事件的名称
+* func: Function, 指定事件处理函数
 
 返回结果:
-* 返回事件对象本身，便于链式调用
+* Object, 返回事件对象本身，便于链式调用
 
 --------------------------
 绑定一个事件处理函数到对象
@@ -120,10 +120,10 @@ Object WebView.addListener(Object map);
 ```
 
 调用参数:
-* map - 指定事件映射关系，对象属性名称将作为事件名称，属性的值将作为事件处理函数
+* map: Object, 指定事件映射关系，对象属性名称将作为事件名称，属性的值将作为事件处理函数
 
 返回结果:
-* 返回事件对象本身，便于链式调用
+* Object, 返回事件对象本身，便于链式调用
 
 --------------------------
 ### prependListener
@@ -134,11 +134,11 @@ Object WebView.prependListener(String ev,
 ```
 
 调用参数:
-* ev - 指定事件的名称
-* func - 指定事件处理函数
+* ev: String, 指定事件的名称
+* func: Function, 指定事件处理函数
 
 返回结果:
-* 返回成功绑定的数量，如果函数已绑定则返回 0
+* Object, 返回成功绑定的数量，如果函数已绑定则返回 0
 
 --------------------------
 绑定一个事件处理函数到对象起始
@@ -147,11 +147,11 @@ Object WebView.prependListener(Object map);
 ```
 
 调用参数:
-* ev - 指定事件的名称
-* func - 指定事件处理函数
+* ev: 指定事件的名称
+* func: 指定事件处理函数
 
 返回结果:
-* 返回成功绑定的数量，如果函数已绑定则返回 0
+* Object, 返回成功绑定的数量，如果函数已绑定则返回 0
 
 --------------------------
 ### once
@@ -162,11 +162,11 @@ Object WebView.once(String ev,
 ```
 
 调用参数:
-* ev - 指定事件的名称
-* func - 指定事件处理函数
+* ev: String, 指定事件的名称
+* func: Function, 指定事件处理函数
 
 返回结果:
-* 返回事件对象本身，便于链式调用
+* Object, 返回事件对象本身，便于链式调用
 
 --------------------------
 绑定一个一次性事件处理函数到对象，一次性处理函数只会触发一次
@@ -175,10 +175,10 @@ Object WebView.once(Object map);
 ```
 
 调用参数:
-* map - 指定事件映射关系，对象属性名称将作为事件名称，属性的值将作为事件处理函数
+* map: Object, 指定事件映射关系，对象属性名称将作为事件名称，属性的值将作为事件处理函数
 
 返回结果:
-* 返回事件对象本身，便于链式调用
+* Object, 返回事件对象本身，便于链式调用
 
 --------------------------
 ### prependOnceListener
@@ -189,11 +189,11 @@ Object WebView.prependOnceListener(String ev,
 ```
 
 调用参数:
-* ev - 指定事件的名称
-* func - 指定事件处理函数
+* ev: String, 指定事件的名称
+* func: Function, 指定事件处理函数
 
 返回结果:
-* 返回成功绑定的数量，如果函数已绑定则返回 0
+* Object, 返回成功绑定的数量，如果函数已绑定则返回 0
 
 --------------------------
 绑定一个事件处理函数到对象起始
@@ -202,11 +202,11 @@ Object WebView.prependOnceListener(Object map);
 ```
 
 调用参数:
-* ev - 指定事件的名称
-* func - 指定事件处理函数
+* ev: 指定事件的名称
+* func: 指定事件处理函数
 
 返回结果:
-* 返回成功绑定的数量，如果函数已绑定则返回 0
+* Object, 返回成功绑定的数量，如果函数已绑定则返回 0
 
 --------------------------
 ### off
@@ -217,11 +217,11 @@ Object WebView.off(String ev,
 ```
 
 调用参数:
-* ev - 指定事件的名称
-* func - 指定事件处理函数
+* ev: String, 指定事件的名称
+* func: Function, 指定事件处理函数
 
 返回结果:
-* 返回事件对象本身，便于链式调用
+* Object, 返回事件对象本身，便于链式调用
 
 --------------------------
 取消对象处理队列中的全部函数
@@ -230,10 +230,10 @@ Object WebView.off(String ev);
 ```
 
 调用参数:
-* ev - 指定事件的名称
+* ev: String, 指定事件的名称
 
 返回结果:
-* 返回事件对象本身，便于链式调用
+* Object, 返回事件对象本身，便于链式调用
 
 --------------------------
 从对象处理队列中取消指定函数
@@ -242,10 +242,10 @@ Object WebView.off(Object map);
 ```
 
 调用参数:
-* map - 指定事件映射关系，对象属性名称作为事件名称，属性的值作为事件处理函数
+* map: Object, 指定事件映射关系，对象属性名称作为事件名称，属性的值作为事件处理函数
 
 返回结果:
-* 返回事件对象本身，便于链式调用
+* Object, 返回事件对象本身，便于链式调用
 
 --------------------------
 ### removeListener
@@ -256,11 +256,11 @@ Object WebView.removeListener(String ev,
 ```
 
 调用参数:
-* ev - 指定事件的名称
-* func - 指定事件处理函数
+* ev: String, 指定事件的名称
+* func: Function, 指定事件处理函数
 
 返回结果:
-* 返回事件对象本身，便于链式调用
+* Object, 返回事件对象本身，便于链式调用
 
 --------------------------
 取消对象处理队列中的全部函数
@@ -269,10 +269,10 @@ Object WebView.removeListener(String ev);
 ```
 
 调用参数:
-* ev - 指定事件的名称
+* ev: String, 指定事件的名称
 
 返回结果:
-* 返回事件对象本身，便于链式调用
+* Object, 返回事件对象本身，便于链式调用
 
 --------------------------
 从对象处理队列中取消指定函数
@@ -281,10 +281,10 @@ Object WebView.removeListener(Object map);
 ```
 
 调用参数:
-* map - 指定事件映射关系，对象属性名称作为事件名称，属性的值作为事件处理函数
+* map: Object, 指定事件映射关系，对象属性名称作为事件名称，属性的值作为事件处理函数
 
 返回结果:
-* 返回事件对象本身，便于链式调用
+* Object, 返回事件对象本身，便于链式调用
 
 --------------------------
 ### removeAllListeners
@@ -294,10 +294,10 @@ Object WebView.removeAllListeners(Array evs = []);
 ```
 
 调用参数:
-* evs - 指定事件的名称
+* evs: Array, 指定事件的名称
 
 返回结果:
-* 返回事件对象本身，便于链式调用
+* Object, 返回事件对象本身，便于链式调用
 
 --------------------------
 ### setMaxListeners
@@ -307,7 +307,7 @@ WebView.setMaxListeners(Integer n);
 ```
 
 调用参数:
-* n - 指定事件的数量
+* n: Integer, 指定事件的数量
 
 --------------------------
 ### getMaxListeners
@@ -324,10 +324,10 @@ Array WebView.listeners(String ev);
 ```
 
 调用参数:
-* ev - 指定事件的名称
+* ev: String, 指定事件的名称
 
 返回结果:
-* 返回指定事件的监听器数组
+* Array, 返回指定事件的监听器数组
 
 --------------------------
 ### listenerCount
@@ -337,10 +337,10 @@ Integer WebView.listenerCount(String ev);
 ```
 
 调用参数:
-* ev - 指定事件的名称
+* ev: String, 指定事件的名称
 
 返回结果:
-* 返回指定事件的监听器数量
+* Integer, 返回指定事件的监听器数量
 
 --------------------------
 ### eventNames
@@ -350,7 +350,7 @@ Array WebView.eventNames();
 ```
 
 返回结果:
-* 返回事件名称数组
+* Array, 返回事件名称数组
 
 --------------------------
 ### emit
@@ -361,11 +361,11 @@ Boolean WebView.emit(String ev,
 ```
 
 调用参数:
-* ev - 事件名称
-* ... - 事件参数，将会传递给事件处理函数
+* ev: String, 事件名称
+* ...: 事件参数，将会传递给事件处理函数
 
 返回结果:
-* 返回事件触发状态，有响应事件返回 true，否则返回 false
+* Boolean, 返回事件触发状态，有响应事件返回 true，否则返回 false
 
 --------------------------
 ### dispose
@@ -382,10 +382,10 @@ Boolean WebView.equals(object expected);
 ```
 
 调用参数:
-* expected - 制定比较的目标对象
+* expected: object, 制定比较的目标对象
 
 返回结果:
-* 返回对象比较的结果
+* Boolean, 返回对象比较的结果
 
 --------------------------
 ### toString
@@ -395,7 +395,7 @@ String WebView.toString();
 ```
 
 返回结果:
-* 返回对象的字符串表示
+* String, 返回对象的字符串表示
 
 --------------------------
 ### toJSON
@@ -405,10 +405,10 @@ Value WebView.toJSON(String key = "");
 ```
 
 调用参数:
-* key - 未使用
+* key: String, 未使用
 
 返回结果:
-* 返回包含可 JSON 序列化的值
+* Value, 返回包含可 JSON 序列化的值
 
 --------------------------
 ### valueOf
@@ -418,26 +418,26 @@ Value WebView.valueOf();
 ```
 
 返回结果:
-* 返回对象本身的数值
+* Value, 返回对象本身的数值
 
 ## 成员属性
         
 ### visible
-查询和设置窗口是否显示
+Boolean, 查询和设置窗口是否显示
 ```JavaScript
 Boolean WebView.visible;
 ```
 
 --------------------------
 ### onload
-查询和绑定加载成功事件，相当于 on("load", func);
+Function, 查询和绑定加载成功事件，相当于 on("load", func);
 ```JavaScript
 Function WebView.onload;
 ```
 
 --------------------------
 ### onmove
-查询和绑定窗口移动事件，相当于 on("move", func);
+Function, 查询和绑定窗口移动事件，相当于 on("move", func);
 ```JavaScript
 Function WebView.onmove;
 ```
@@ -453,7 +453,7 @@ webview.onmove = function(evt) {
 
 --------------------------
 ### onresize
-查询和绑定窗口尺寸改变事件，相当于 on("size", func);
+Function, 查询和绑定窗口尺寸改变事件，相当于 on("size", func);
 ```JavaScript
 Function WebView.onresize;
 ```
@@ -469,7 +469,7 @@ webview.onresize = function(evt) {
 
 --------------------------
 ### onclose
-查询和绑定窗口关闭事件，相当于 on("close", func);
+Function, 查询和绑定窗口关闭事件，相当于 on("close", func);
 ```JavaScript
 Function WebView.onclose;
 ```
@@ -483,7 +483,7 @@ webview.onclose = function() {}
 
 --------------------------
 ### onmessage
-查询和绑定接受 webview 内 postMessage 消息事件，相当于 on("message", func);
+Function, 查询和绑定接受 webview 内 postMessage 消息事件，相当于 on("message", func);
 ```JavaScript
 Function WebView.onmessage;
 ```

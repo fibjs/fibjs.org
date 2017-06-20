@@ -19,11 +19,11 @@ static XmlDocument xml.parse(String source,
 ```
 
 调用参数:
-* source - 指定需要解析的 xml/html 文本
-* type - 指定文本类型，缺省为 text/xml，也可指定为 text/html
+* source: String, 指定需要解析的 xml/html 文本
+* type: String, 指定文本类型，缺省为 text/xml，也可指定为 text/html
 
 返回结果:
-* 返回创建的 XmlDocument 对象
+* [XmlDocument](../../object/ifs/XmlDocument.md), 返回创建的 [XmlDocument](../../object/ifs/XmlDocument.md) 对象
 
 --------------------------
 解析 xml/html，并创建 [XmlDocument](../../object/ifs/XmlDocument.md) 对象，解析时会根据指定的语种转换
@@ -33,11 +33,11 @@ static XmlDocument xml.parse(Buffer source,
 ```
 
 调用参数:
-* source - 指定需要解析的 xml/html 二进制数据
-* type - 指定文本类型，缺省为 text/xml，也可指定为 text/html
+* source: [Buffer](../../object/ifs/Buffer.md), 指定需要解析的 xml/html 二进制数据
+* type: String, 指定文本类型，缺省为 text/xml，也可指定为 text/html
 
 返回结果:
-* 返回创建的 XmlDocument 对象
+* [XmlDocument](../../object/ifs/XmlDocument.md), 返回创建的 [XmlDocument](../../object/ifs/XmlDocument.md) 对象
 
 --------------------------
 ### serialize
@@ -47,10 +47,10 @@ static String xml.serialize(XmlNode node);
 ```
 
 调用参数:
-* node - 指定需要序列化的 XmlNode
+* node: [XmlNode](../../object/ifs/XmlNode.md), 指定需要序列化的 [XmlNode](../../object/ifs/XmlNode.md)
 
 返回结果:
-* 返回序列化的字符串
+* String, 返回序列化的字符串
 
 ## 常量
         

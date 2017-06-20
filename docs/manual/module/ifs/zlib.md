@@ -15,11 +15,11 @@ static Buffer zlib.deflate(Buffer data,
 ```
 
 调用参数:
-* data - 给定要压缩的数据
-* level - 指定压缩级别，缺省为 DEFAULT_COMPRESSION
+* data: [Buffer](../../object/ifs/Buffer.md), 给定要压缩的数据
+* level: Integer, 指定压缩级别，缺省为 DEFAULT_COMPRESSION
 
 返回结果:
-* 返回压缩后的二进制数据
+* [Buffer](../../object/ifs/Buffer.md), 返回压缩后的二进制数据
 
 --------------------------
 ### deflateTo
@@ -31,9 +31,9 @@ static zlib.deflateTo(Buffer data,
 ```
 
 调用参数:
-* data - 给定要压缩的数据
-* stm - 指定存储压缩数据的流
-* level - 指定压缩级别，缺省为 DEFAULT_COMPRESSION
+* data: [Buffer](../../object/ifs/Buffer.md), 给定要压缩的数据
+* stm: [Stream](../../object/ifs/Stream.md), 指定存储压缩数据的流
+* level: Integer, 指定压缩级别，缺省为 DEFAULT_COMPRESSION
 
 --------------------------
 使用 deflate 算法压缩源流中的数据到流对象中(zlib格式)
@@ -44,9 +44,9 @@ static zlib.deflateTo(Stream src,
 ```
 
 调用参数:
-* src - 给定要压缩的数据所在的流
-* stm - 指定存储压缩数据的流
-* level - 指定压缩级别，缺省为 DEFAULT_COMPRESSION
+* src: [Stream](../../object/ifs/Stream.md), 给定要压缩的数据所在的流
+* stm: [Stream](../../object/ifs/Stream.md), 指定存储压缩数据的流
+* level: Integer, 指定压缩级别，缺省为 DEFAULT_COMPRESSION
 
 --------------------------
 ### inflate
@@ -56,10 +56,10 @@ static Buffer zlib.inflate(Buffer data) async;
 ```
 
 调用参数:
-* data - 给定压缩后的数据
+* data: [Buffer](../../object/ifs/Buffer.md), 给定压缩后的数据
 
 返回结果:
-* 返回解压缩后的二进制数据
+* [Buffer](../../object/ifs/Buffer.md), 返回解压缩后的二进制数据
 
 --------------------------
 ### inflateTo
@@ -70,8 +70,8 @@ static zlib.inflateTo(Buffer data,
 ```
 
 调用参数:
-* data - 给定要解压缩的数据
-* stm - 指定存储解压缩数据的流
+* data: [Buffer](../../object/ifs/Buffer.md), 给定要解压缩的数据
+* stm: [Stream](../../object/ifs/Stream.md), 指定存储解压缩数据的流
 
 --------------------------
 解压缩源流中 deflate 算法压缩的数据到流对象中(zlib格式)
@@ -81,8 +81,8 @@ static zlib.inflateTo(Stream src,
 ```
 
 调用参数:
-* src - 给定要解压缩的数据所在的流
-* stm - 指定存储解压缩数据的流
+* src: [Stream](../../object/ifs/Stream.md), 给定要解压缩的数据所在的流
+* stm: [Stream](../../object/ifs/Stream.md), 指定存储解压缩数据的流
 
 --------------------------
 ### gzip
@@ -92,10 +92,10 @@ static Buffer zlib.gzip(Buffer data) async;
 ```
 
 调用参数:
-* data - 给定要压缩的数据
+* data: [Buffer](../../object/ifs/Buffer.md), 给定要压缩的数据
 
 返回结果:
-* 返回压缩后的二进制数据
+* [Buffer](../../object/ifs/Buffer.md), 返回压缩后的二进制数据
 
 --------------------------
 ### gzipTo
@@ -106,8 +106,8 @@ static zlib.gzipTo(Buffer data,
 ```
 
 调用参数:
-* data - 给定要压缩的数据
-* stm - 指定存储压缩数据的流
+* data: [Buffer](../../object/ifs/Buffer.md), 给定要压缩的数据
+* stm: [Stream](../../object/ifs/Stream.md), 指定存储压缩数据的流
 
 --------------------------
 使用 gzip 算法压缩源流中的数据到流对象中
@@ -117,8 +117,8 @@ static zlib.gzipTo(Stream src,
 ```
 
 调用参数:
-* src - 给定要压缩的数据所在的流
-* stm - 指定存储压缩数据的流
+* src: [Stream](../../object/ifs/Stream.md), 给定要压缩的数据所在的流
+* stm: [Stream](../../object/ifs/Stream.md), 指定存储压缩数据的流
 
 --------------------------
 ### gunzip
@@ -128,10 +128,10 @@ static Buffer zlib.gunzip(Buffer data) async;
 ```
 
 调用参数:
-* data - 给定压缩后的数据
+* data: [Buffer](../../object/ifs/Buffer.md), 给定压缩后的数据
 
 返回结果:
-* 返回解压缩后的二进制数据
+* [Buffer](../../object/ifs/Buffer.md), 返回解压缩后的二进制数据
 
 --------------------------
 ### gunzipTo
@@ -142,8 +142,8 @@ static zlib.gunzipTo(Buffer data,
 ```
 
 调用参数:
-* data - 给定要解压缩的数据
-* stm - 指定存储解压缩数据的流
+* data: [Buffer](../../object/ifs/Buffer.md), 给定要解压缩的数据
+* stm: [Stream](../../object/ifs/Stream.md), 指定存储解压缩数据的流
 
 --------------------------
 解压缩源流中 gzip 算法压缩的数据到流对象中
@@ -153,8 +153,8 @@ static zlib.gunzipTo(Stream src,
 ```
 
 调用参数:
-* src - 给定要解压缩的数据所在的流
-* stm - 指定存储解压缩数据的流
+* src: [Stream](../../object/ifs/Stream.md), 给定要解压缩的数据所在的流
+* stm: [Stream](../../object/ifs/Stream.md), 指定存储解压缩数据的流
 
 --------------------------
 ### deflateRaw
@@ -165,11 +165,11 @@ static Buffer zlib.deflateRaw(Buffer data,
 ```
 
 调用参数:
-* data - 给定要压缩的数据
-* level - 指定压缩级别，缺省为 DEFAULT_COMPRESSION
+* data: [Buffer](../../object/ifs/Buffer.md), 给定要压缩的数据
+* level: Integer, 指定压缩级别，缺省为 DEFAULT_COMPRESSION
 
 返回结果:
-* 返回压缩后的二进制数据
+* [Buffer](../../object/ifs/Buffer.md), 返回压缩后的二进制数据
 
 --------------------------
 ### deflateRawTo
@@ -181,9 +181,9 @@ static zlib.deflateRawTo(Buffer data,
 ```
 
 调用参数:
-* data - 给定要压缩的数据
-* stm - 指定存储压缩数据的流
-* level - 指定压缩级别，缺省为 DEFAULT_COMPRESSION
+* data: [Buffer](../../object/ifs/Buffer.md), 给定要压缩的数据
+* stm: [Stream](../../object/ifs/Stream.md), 指定存储压缩数据的流
+* level: Integer, 指定压缩级别，缺省为 DEFAULT_COMPRESSION
 
 --------------------------
 使用 deflate 算法压缩源流中的数据到流对象中(deflateRaw)
@@ -194,9 +194,9 @@ static zlib.deflateRawTo(Stream src,
 ```
 
 调用参数:
-* src - 给定要压缩的数据所在的流
-* stm - 指定存储压缩数据的流
-* level - 指定压缩级别，缺省为 DEFAULT_COMPRESSION
+* src: [Stream](../../object/ifs/Stream.md), 给定要压缩的数据所在的流
+* stm: [Stream](../../object/ifs/Stream.md), 指定存储压缩数据的流
+* level: Integer, 指定压缩级别，缺省为 DEFAULT_COMPRESSION
 
 --------------------------
 ### inflateRaw
@@ -206,10 +206,10 @@ static Buffer zlib.inflateRaw(Buffer data) async;
 ```
 
 调用参数:
-* data - 给定压缩后的数据
+* data: [Buffer](../../object/ifs/Buffer.md), 给定压缩后的数据
 
 返回结果:
-* 返回解压缩后的二进制数据
+* [Buffer](../../object/ifs/Buffer.md), 返回解压缩后的二进制数据
 
 --------------------------
 ### inflateRawTo
@@ -220,8 +220,8 @@ static zlib.inflateRawTo(Buffer data,
 ```
 
 调用参数:
-* data - 给定要解压缩的数据
-* stm - 指定存储解压缩数据的流
+* data: [Buffer](../../object/ifs/Buffer.md), 给定要解压缩的数据
+* stm: [Stream](../../object/ifs/Stream.md), 指定存储解压缩数据的流
 
 --------------------------
 解压缩源流中 deflate 算法压缩的数据到流对象中(inflateRaw)
@@ -231,8 +231,8 @@ static zlib.inflateRawTo(Stream src,
 ```
 
 调用参数:
-* src - 给定要解压缩的数据所在的流
-* stm - 指定存储解压缩数据的流
+* src: [Stream](../../object/ifs/Stream.md), 给定要解压缩的数据所在的流
+* stm: [Stream](../../object/ifs/Stream.md), 指定存储解压缩数据的流
 
 ## 常量
         

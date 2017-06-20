@@ -68,10 +68,10 @@ Boolean Fiber.equals(object expected);
 ```
 
 调用参数:
-* expected - 制定比较的目标对象
+* expected: object, 制定比较的目标对象
 
 返回结果:
-* 返回对象比较的结果
+* Boolean, 返回对象比较的结果
 
 --------------------------
 ### toString
@@ -81,7 +81,7 @@ String Fiber.toString();
 ```
 
 返回结果:
-* 返回对象的字符串表示
+* String, 返回对象的字符串表示
 
 --------------------------
 ### toJSON
@@ -91,10 +91,10 @@ Value Fiber.toJSON(String key = "");
 ```
 
 调用参数:
-* key - 未使用
+* key: String, 未使用
 
 返回结果:
-* 返回包含可 JSON 序列化的值
+* Value, 返回包含可 JSON 序列化的值
 
 --------------------------
 ### valueOf
@@ -104,19 +104,19 @@ Value Fiber.valueOf();
 ```
 
 返回结果:
-* 返回对象本身的数值
+* Value, 返回对象本身的数值
 
 ## 成员属性
         
 ### caller
-查询纤程的调用纤程
+Fiber, 查询纤程的调用纤程
 ```JavaScript
 readonly Fiber Fiber.caller;
 ```
 
 --------------------------
 ### traceInfo
-查询纤程的调用堆栈，查询非当前纤程的堆栈需要在执行时指定参数：--trace_fiber
+String, 查询纤程的调用堆栈，查询非当前纤程的堆栈需要在执行时指定参数：--trace_fiber
 ```JavaScript
 readonly String Fiber.traceInfo;
 ```

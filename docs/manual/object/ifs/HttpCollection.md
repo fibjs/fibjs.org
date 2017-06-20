@@ -24,10 +24,10 @@ Boolean HttpCollection.has(String name);
 ```
 
 调用参数:
-* name - 指定要检查的键值
+* name: String, 指定要检查的键值
 
 返回结果:
-* 返回键值是否存在
+* Boolean, 返回键值是否存在
 
 --------------------------
 ### first
@@ -37,10 +37,10 @@ Variant HttpCollection.first(String name);
 ```
 
 调用参数:
-* name - 指定要查询的键值
+* name: String, 指定要查询的键值
 
 返回结果:
-* 返回键值所对应的值，若不存在，则返回 undefined
+* Variant, 返回键值所对应的值，若不存在，则返回 undefined
 
 --------------------------
 ### all
@@ -50,10 +50,10 @@ List HttpCollection.all(String name);
 ```
 
 调用参数:
-* name - 指定要查询的键值
+* name: String, 指定要查询的键值
 
 返回结果:
-* 返回键值所对应全部值的数组，若数据不存在，则返回 null
+* [List](List.md), 返回键值所对应全部值的数组，若数据不存在，则返回 null
 
 --------------------------
 ### add
@@ -63,7 +63,7 @@ HttpCollection.add(Map map);
 ```
 
 调用参数:
-* map - 指定要添加的键值数据字典
+* map: [Map](Map.md), 指定要添加的键值数据字典
 
 --------------------------
 添加一个键值数据，添加数据并不修改已存在的键值的数据
@@ -73,8 +73,8 @@ HttpCollection.add(String name,
 ```
 
 调用参数:
-* name - 指定要添加的键值
-* value - 指定要添加的数据
+* name: String, 指定要添加的键值
+* value: Variant, 指定要添加的数据
 
 --------------------------
 ### set
@@ -84,7 +84,7 @@ HttpCollection.set(Map map);
 ```
 
 调用参数:
-* map - 指定要设定的键值数据字典
+* map: [Map](Map.md), 指定要设定的键值数据字典
 
 --------------------------
 设定一个键值数据，设定数据将修改键值所对应的第一个数值，并清除相同键值的其余数据
@@ -94,8 +94,8 @@ HttpCollection.set(String name,
 ```
 
 调用参数:
-* name - 指定要设定的键值
-* value - 指定要设定的数据
+* name: String, 指定要设定的键值
+* value: Variant, 指定要设定的数据
 
 --------------------------
 ### remove
@@ -105,7 +105,7 @@ HttpCollection.remove(String name);
 ```
 
 调用参数:
-* name - 指定要删除的键值
+* name: String, 指定要删除的键值
 
 --------------------------
 ### dispose
@@ -122,10 +122,10 @@ Boolean HttpCollection.equals(object expected);
 ```
 
 调用参数:
-* expected - 制定比较的目标对象
+* expected: object, 制定比较的目标对象
 
 返回结果:
-* 返回对象比较的结果
+* Boolean, 返回对象比较的结果
 
 --------------------------
 ### toString
@@ -135,7 +135,7 @@ String HttpCollection.toString();
 ```
 
 返回结果:
-* 返回对象的字符串表示
+* String, 返回对象的字符串表示
 
 --------------------------
 ### toJSON
@@ -145,10 +145,10 @@ Value HttpCollection.toJSON(String key = "");
 ```
 
 调用参数:
-* key - 未使用
+* key: String, 未使用
 
 返回结果:
-* 返回包含可 JSON 序列化的值
+* Value, 返回包含可 JSON 序列化的值
 
 --------------------------
 ### valueOf
@@ -158,5 +158,5 @@ Value HttpCollection.valueOf();
 ```
 
 返回结果:
-* 返回对象本身的数值
+* Value, 返回对象本身的数值
 

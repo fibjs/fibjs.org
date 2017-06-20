@@ -167,8 +167,8 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>field - 指定要修改的 field</li>
-<li>value - 指定要修改的数据</li>
+<li>field: <a href=buffer.md.html>Buffer</a>, 指定要修改的 field</li>
+<li>value: <a href=buffer.md.html>Buffer</a>, 指定要修改的数据</li>
 </ul>
 <hr>
 <h3 id="setnx">setNX</h3>
@@ -178,8 +178,8 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>field - 指定要修改的 field</li>
-<li>value - 指定要修改的数据</li>
+<li>field: <a href=buffer.md.html>Buffer</a>, 指定要修改的 field</li>
+<li>value: <a href=buffer.md.html>Buffer</a>, 指定要修改的数据</li>
 </ul>
 <hr>
 <h3 id="mset">mset</h3>
@@ -188,7 +188,7 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>kvs - 指定要设置的 field/value 对象</li>
+<li>kvs: Object, 指定要设置的 field/value 对象</li>
 </ul>
 <hr>
 <p>同时将多个 field-value (域-值)对设置到哈希表中，此命令会覆盖哈希表中已存在的域</p>
@@ -196,7 +196,7 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>... - 指定要设置的 field/value 列表</li>
+<li>...: 指定要设置的 field/value 列表</li>
 </ul>
 <hr>
 <h3 id="get">get</h3>
@@ -205,11 +205,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>field - 指定要查询的 field</li>
+<li>field: <a href=buffer.md.html>Buffer</a>, 指定要查询的 field</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>给定域的值，当给定域不存在或是给定 key 不存在时，返回 null</li>
+<li><a href=buffer.md.html>Buffer</a>, 给定域的值，当给定域不存在或是给定 key 不存在时，返回 null</li>
 </ul>
 <hr>
 <h3 id="mget">mget</h3>
@@ -218,11 +218,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>fields - 指定要查询的域数组</li>
+<li>fields: Array, 指定要查询的域数组</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>一个包含所有给定域的值的列表</li>
+<li><a href=list.md.html>List</a>, 一个包含所有给定域的值的列表</li>
 </ul>
 <hr>
 <p>返回哈希表中，一个或多个给定域的值</p>
@@ -230,11 +230,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>... - 指定要查询的域列表</li>
+<li>...: 指定要查询的域列表</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>一个包含所有给定域的值的列表</li>
+<li><a href=list.md.html>List</a>, 一个包含所有给定域的值的列表</li>
 </ul>
 <hr>
 <h3 id="incr">incr</h3>
@@ -244,12 +244,12 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>field - 指定要修改的域</li>
-<li>num - 指定要加上的数值</li>
+<li>field: <a href=buffer.md.html>Buffer</a>, 指定要修改的域</li>
+<li>num: Long, 指定要加上的数值</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>加上 num 之后，域的值</li>
+<li>Long, 加上 num 之后，域的值</li>
 </ul>
 <hr>
 <h3 id="getall">getAll</h3>
@@ -258,7 +258,7 @@
 </code></pre>
 <p>返回结果:</p>
 <ul>
-<li>返回一个包含哈希表中所有域的列表</li>
+<li><a href=list.md.html>List</a>, 返回一个包含哈希表中所有域的列表</li>
 </ul>
 <hr>
 <h3 id="keys">keys</h3>
@@ -267,7 +267,7 @@
 </code></pre>
 <p>返回结果:</p>
 <ul>
-<li>返回值里，紧跟每个域名(field name)之后是域的值(value)，所以返回值的长度是哈希表大小的两倍</li>
+<li><a href=list.md.html>List</a>, 返回值里，紧跟每个域名(field name)之后是域的值(value)，所以返回值的长度是哈希表大小的两倍</li>
 </ul>
 <hr>
 <h3 id="len">len</h3>
@@ -276,7 +276,7 @@
 </code></pre>
 <p>返回结果:</p>
 <ul>
-<li>返回哈希表中域的数量</li>
+<li>Integer, 返回哈希表中域的数量</li>
 </ul>
 <hr>
 <h3 id="exists">exists</h3>
@@ -285,11 +285,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>field - 指定要查询的 field</li>
+<li>field: <a href=buffer.md.html>Buffer</a>, 指定要查询的 field</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>如果哈希表含有给定域，返回 true，如果哈希表不含有给定域，或 key 不存在，返回 false</li>
+<li>Boolean, 如果哈希表含有给定域，返回 true，如果哈希表不含有给定域，或 key 不存在，返回 false</li>
 </ul>
 <hr>
 <h3 id="del">del</h3>
@@ -298,11 +298,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>fields - 指定要删除的域数组</li>
+<li>fields: Array, 指定要删除的域数组</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>被删除域的数量</li>
+<li>Integer, 被删除域的数量</li>
 </ul>
 <hr>
 <p>删除哈希表中的一个或多个指定域，不存在的域将被忽略</p>
@@ -310,11 +310,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>... - 指定要删除的域列表</li>
+<li>...: 指定要删除的域列表</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>被删除域的数量</li>
+<li>Integer, 被删除域的数量</li>
 </ul>
 <hr>
 <h3 id="dispose">dispose</h3>
@@ -328,11 +328,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>expected - 制定比较的目标对象</li>
+<li>expected: object, 制定比较的目标对象</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回对象比较的结果</li>
+<li>Boolean, 返回对象比较的结果</li>
 </ul>
 <hr>
 <h3 id="tostring">toString</h3>
@@ -341,7 +341,7 @@
 </code></pre>
 <p>返回结果:</p>
 <ul>
-<li>返回对象的字符串表示</li>
+<li>String, 返回对象的字符串表示</li>
 </ul>
 <hr>
 <h3 id="tojson">toJSON</h3>
@@ -350,11 +350,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>key - 未使用</li>
+<li>key: String, 未使用</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回包含可 JSON 序列化的值</li>
+<li>Value, 返回包含可 JSON 序列化的值</li>
 </ul>
 <hr>
 <h3 id="valueof">valueOf</h3>
@@ -363,6 +363,6 @@
 </code></pre>
 <p>返回结果:</p>
 <ul>
-<li>返回对象本身的数值</li>
+<li>Value, 返回对象本身的数值</li>
 </ul>
  </div><div class="hidden-sm hidden-xs col-xs-3"><div id=toc></div></div></div><div class=container><div class=footer><p>&copy; 2017 fibjs.org</p></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="Click to return on the top page" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=../../../../js/common.js></script><script type=text/javascript src=../../../../js/docs.js></script></body></html>

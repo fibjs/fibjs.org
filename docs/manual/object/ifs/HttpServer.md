@@ -25,8 +25,8 @@ HttpServer 构造函数，在所有本机地址侦听
 ```
 
 调用参数:
-* port - 指定 http 服务器侦听端口
-* hdlr - http 内置消息处理器，处理函数，链式处理数组，路由对象，详见 mq.Handler
+* port: Integer, 指定 [http](../../module/ifs/http.md) 服务器侦听端口
+* hdlr: [Handler](Handler.md), [http](../../module/ifs/http.md) 内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq](../../module/ifs/mq.md).[Handler](Handler.md)
 
 --------------------------
 HttpServer 构造函数
@@ -37,9 +37,9 @@ HttpServer 构造函数
 ```
 
 调用参数:
-* addr - 指定 http 服务器侦听地址，为 "" 则在本机所有地址侦听
-* port - 指定 http 服务器侦听端口
-* hdlr - http 内置消息处理器，处理函数，链式处理数组，路由对象，详见 mq.Handler
+* addr: String, 指定 [http](../../module/ifs/http.md) 服务器侦听地址，为 "" 则在本机所有地址侦听
+* port: Integer, 指定 [http](../../module/ifs/http.md) 服务器侦听端口
+* hdlr: [Handler](Handler.md), [http](../../module/ifs/http.md) 内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq](../../module/ifs/mq.md).[Handler](Handler.md)
 
 ## 成员函数
         
@@ -50,7 +50,7 @@ HttpServer.onerror(Object hdlrs);
 ```
 
 调用参数:
-* hdlrs - 指定不同的错误的处理器，key 是错误号，value 是处理器，可以是内置消息处理器，处理函数，链式处理数组，路由对象，详见 mq.Handler
+* hdlrs: Object, 指定不同的错误的处理器，key 是错误号，value 是处理器，可以是内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq](../../module/ifs/mq.md).[Handler](Handler.md)
 
 使用方式：
 ```JavaScript
@@ -99,10 +99,10 @@ Boolean HttpServer.equals(object expected);
 ```
 
 调用参数:
-* expected - 制定比较的目标对象
+* expected: object, 制定比较的目标对象
 
 返回结果:
-* 返回对象比较的结果
+* Boolean, 返回对象比较的结果
 
 --------------------------
 ### toString
@@ -112,7 +112,7 @@ String HttpServer.toString();
 ```
 
 返回结果:
-* 返回对象的字符串表示
+* String, 返回对象的字符串表示
 
 --------------------------
 ### toJSON
@@ -122,10 +122,10 @@ Value HttpServer.toJSON(String key = "");
 ```
 
 调用参数:
-* key - 未使用
+* key: String, 未使用
 
 返回结果:
-* 返回包含可 JSON 序列化的值
+* Value, 返回包含可 JSON 序列化的值
 
 --------------------------
 ### valueOf
@@ -135,40 +135,40 @@ Value HttpServer.valueOf();
 ```
 
 返回结果:
-* 返回对象本身的数值
+* Value, 返回对象本身的数值
 
 ## 成员属性
         
 ### crossDomain
-查询和设置是否允许跨域请求，缺省为 false
+Boolean, 查询和设置是否允许跨域请求，缺省为 false
 ```JavaScript
 Boolean HttpServer.crossDomain;
 ```
 
 --------------------------
 ### forceGZIP
-查询和设置是否允强制使用 gzip 压缩输出，缺省为 false
+Boolean, 查询和设置是否允强制使用 gzip 压缩输出，缺省为 false
 ```JavaScript
 Boolean HttpServer.forceGZIP;
 ```
 
 --------------------------
 ### maxHeadersCount
-查询和设置最大请求头个数，缺省为 128
+Integer, 查询和设置最大请求头个数，缺省为 128
 ```JavaScript
 Integer HttpServer.maxHeadersCount;
 ```
 
 --------------------------
 ### maxUploadSize
-查询和设置最大上传尺寸，以 MB 为单位，缺省为 64
+Integer, 查询和设置最大上传尺寸，以 MB 为单位，缺省为 64
 ```JavaScript
 Integer HttpServer.maxUploadSize;
 ```
 
 --------------------------
 ### httpStats
-查询 [http](../../module/ifs/http.md) 协议转换处理器的工作状态
+[Stats](Stats.md), 查询 [http](../../module/ifs/http.md) 协议转换处理器的工作状态
 ```JavaScript
 readonly Stats HttpServer.httpStats;
 ```
@@ -189,21 +189,21 @@ readonly Stats HttpServer.httpStats;
 
 --------------------------
 ### socket
-服务器当前侦听的 [Socket](Socket.md) 对象
+[Socket](Socket.md), 服务器当前侦听的 [Socket](Socket.md) 对象
 ```JavaScript
 readonly Socket HttpServer.socket;
 ```
 
 --------------------------
 ### handler
-服务器当前事件处理接口对象
+[Handler](Handler.md), 服务器当前事件处理接口对象
 ```JavaScript
 Handler HttpServer.handler;
 ```
 
 --------------------------
 ### stats
-查询当前服务器运行状态
+[Stats](Stats.md), 查询当前服务器运行状态
 ```JavaScript
 readonly Stats HttpServer.stats;
 ```

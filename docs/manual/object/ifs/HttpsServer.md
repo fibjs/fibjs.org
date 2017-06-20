@@ -26,9 +26,9 @@ HttpsServer 构造函数，在所有本机地址侦听
 ```
 
 调用参数:
-* certs - 服务器证书列表
-* port - 指定 http 服务器侦听端口
-* hdlr - http 内置消息处理器，处理函数，链式处理数组，路由对象，详见
+* certs: Array, 服务器证书列表
+* port: Integer, 指定 [http](../../module/ifs/http.md) 服务器侦听端口
+* hdlr: [Handler](Handler.md), [http](../../module/ifs/http.md) 内置消息处理器，处理函数，链式处理数组，路由对象，详见
 
 certs 格式为：
 ```JavaScript
@@ -54,10 +54,10 @@ HttpsServer 构造函数
 ```
 
 调用参数:
-* certs - 服务器证书列表
-* addr - 指定 http 服务器侦听地址，为 "" 则在本机所有地址侦听
-* port - 指定 http 服务器侦听端口
-* hdlr - http 内置消息处理器，处理函数，链式处理数组，路由对象，详见
+* certs: Array, 服务器证书列表
+* addr: String, 指定 [http](../../module/ifs/http.md) 服务器侦听地址，为 "" 则在本机所有地址侦听
+* port: Integer, 指定 [http](../../module/ifs/http.md) 服务器侦听端口
+* hdlr: [Handler](Handler.md), [http](../../module/ifs/http.md) 内置消息处理器，处理函数，链式处理数组，路由对象，详见
 
 certs 格式为：
 ```JavaScript
@@ -83,10 +83,10 @@ HttpsServer 构造函数，在所有本机地址侦听
 ```
 
 调用参数:
-* crt - X509Cert 证书，用于客户端验证服务器
-* key - PKey 私钥，用于与客户端会话
-* port - 指定 http 服务器侦听端口
-* hdlr - http 内置消息处理器，处理函数，链式处理数组，路由对象，详见
+* crt: [X509Cert](X509Cert.md), [X509Cert](X509Cert.md) 证书，用于客户端验证服务器
+* key: [PKey](PKey.md), [PKey](PKey.md) 私钥，用于与客户端会话
+* port: Integer, 指定 [http](../../module/ifs/http.md) 服务器侦听端口
+* hdlr: [Handler](Handler.md), [http](../../module/ifs/http.md) 内置消息处理器，处理函数，链式处理数组，路由对象，详见
 
 --------------------------
 HttpsServer 构造函数
@@ -99,11 +99,11 @@ HttpsServer 构造函数
 ```
 
 调用参数:
-* crt - X509Cert 证书，用于客户端验证服务器
-* key - PKey 私钥，用于与客户端会话
-* addr - 指定 http 服务器侦听地址，为 "" 则在本机所有地址侦听
-* port - 指定 http 服务器侦听端口
-* hdlr - http 内置消息处理器，处理函数，链式处理数组，路由对象，详见
+* crt: [X509Cert](X509Cert.md), [X509Cert](X509Cert.md) 证书，用于客户端验证服务器
+* key: [PKey](PKey.md), [PKey](PKey.md) 私钥，用于与客户端会话
+* addr: String, 指定 [http](../../module/ifs/http.md) 服务器侦听地址，为 "" 则在本机所有地址侦听
+* port: Integer, 指定 [http](../../module/ifs/http.md) 服务器侦听端口
+* hdlr: [Handler](Handler.md), [http](../../module/ifs/http.md) 内置消息处理器，处理函数，链式处理数组，路由对象，详见
 
 ## 成员函数
         
@@ -114,7 +114,7 @@ HttpsServer.onerror(Object hdlrs);
 ```
 
 调用参数:
-* hdlrs - 指定不同的错误的处理器，key 是错误号，value 是处理器，可以是内置消息处理器，处理函数，链式处理数组，路由对象，详见 mq.Handler
+* hdlrs: Object, 指定不同的错误的处理器，key 是错误号，value 是处理器，可以是内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq](../../module/ifs/mq.md).[Handler](Handler.md)
 
 使用方式：
 ```JavaScript
@@ -163,10 +163,10 @@ Boolean HttpsServer.equals(object expected);
 ```
 
 调用参数:
-* expected - 制定比较的目标对象
+* expected: object, 制定比较的目标对象
 
 返回结果:
-* 返回对象比较的结果
+* Boolean, 返回对象比较的结果
 
 --------------------------
 ### toString
@@ -176,7 +176,7 @@ String HttpsServer.toString();
 ```
 
 返回结果:
-* 返回对象的字符串表示
+* String, 返回对象的字符串表示
 
 --------------------------
 ### toJSON
@@ -186,10 +186,10 @@ Value HttpsServer.toJSON(String key = "");
 ```
 
 调用参数:
-* key - 未使用
+* key: String, 未使用
 
 返回结果:
-* 返回包含可 JSON 序列化的值
+* Value, 返回包含可 JSON 序列化的值
 
 --------------------------
 ### valueOf
@@ -199,54 +199,54 @@ Value HttpsServer.valueOf();
 ```
 
 返回结果:
-* 返回对象本身的数值
+* Value, 返回对象本身的数值
 
 ## 成员属性
         
 ### verification
-设定证书验证模式，缺省为 VERIFY_NONE
+Integer, 设定证书验证模式，缺省为 VERIFY_NONE
 ```JavaScript
 Integer HttpsServer.verification;
 ```
 
 --------------------------
 ### ca
-客户端证书验证 ca
+[X509Cert](X509Cert.md), 客户端证书验证 ca
 ```JavaScript
 readonly X509Cert HttpsServer.ca;
 ```
 
 --------------------------
 ### crossDomain
-查询和设置是否允许跨域请求，缺省为 false
+Boolean, 查询和设置是否允许跨域请求，缺省为 false
 ```JavaScript
 Boolean HttpsServer.crossDomain;
 ```
 
 --------------------------
 ### forceGZIP
-查询和设置是否允强制使用 gzip 压缩输出，缺省为 false
+Boolean, 查询和设置是否允强制使用 gzip 压缩输出，缺省为 false
 ```JavaScript
 Boolean HttpsServer.forceGZIP;
 ```
 
 --------------------------
 ### maxHeadersCount
-查询和设置最大请求头个数，缺省为 128
+Integer, 查询和设置最大请求头个数，缺省为 128
 ```JavaScript
 Integer HttpsServer.maxHeadersCount;
 ```
 
 --------------------------
 ### maxUploadSize
-查询和设置最大上传尺寸，以 MB 为单位，缺省为 64
+Integer, 查询和设置最大上传尺寸，以 MB 为单位，缺省为 64
 ```JavaScript
 Integer HttpsServer.maxUploadSize;
 ```
 
 --------------------------
 ### httpStats
-查询 [http](../../module/ifs/http.md) 协议转换处理器的工作状态
+[Stats](Stats.md), 查询 [http](../../module/ifs/http.md) 协议转换处理器的工作状态
 ```JavaScript
 readonly Stats HttpsServer.httpStats;
 ```
@@ -267,21 +267,21 @@ readonly Stats HttpsServer.httpStats;
 
 --------------------------
 ### socket
-服务器当前侦听的 [Socket](Socket.md) 对象
+[Socket](Socket.md), 服务器当前侦听的 [Socket](Socket.md) 对象
 ```JavaScript
 readonly Socket HttpsServer.socket;
 ```
 
 --------------------------
 ### handler
-服务器当前事件处理接口对象
+[Handler](Handler.md), 服务器当前事件处理接口对象
 ```JavaScript
 Handler HttpsServer.handler;
 ```
 
 --------------------------
 ### stats
-查询当前服务器运行状态
+[Stats](Stats.md), 查询当前服务器运行状态
 ```JavaScript
 readonly Stats HttpsServer.stats;
 ```

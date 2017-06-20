@@ -164,7 +164,7 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>signal - 传递的信号</li>
+<li>signal: Integer, 传递的信号</li>
 </ul>
 <hr>
 <h3 id="wait">wait</h3>
@@ -173,7 +173,7 @@
 </code></pre>
 <p>返回结果:</p>
 <ul>
-<li>进程的结束代码</li>
+<li>Integer, 进程的结束代码</li>
 </ul>
 <hr>
 <h3 id="findwindow">findWindow</h3>
@@ -182,11 +182,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>name - 窗口名称</li>
+<li>name: String, 窗口名称</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>窗口存在则返回窗口的 rect，否则返回 undefined</li>
+<li>Value, 窗口存在则返回窗口的 rect，否则返回 undefined</li>
 </ul>
 <hr>
 <h3 id="readtext">readText</h3>
@@ -195,11 +195,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>size - 指定读取的文本字符个数，以 utf8 或者指定的编码字节数为准</li>
+<li>size: Integer, 指定读取的文本字符个数，以 utf8 或者指定的编码字节数为准</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回读取的文本字符串，若无数据可读，或者连接中断，则返回 null</li>
+<li>String, 返回读取的文本字符串，若无数据可读，或者连接中断，则返回 null</li>
 </ul>
 <hr>
 <h3 id="readline">readLine</h3>
@@ -208,11 +208,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>maxlen - 指定此次读取的最大字符串，以 utf8 编码字节数为准，缺省不限制字符数</li>
+<li>maxlen: Integer, 指定此次读取的最大字符串，以 utf8 编码字节数为准，缺省不限制字符数</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回读取的文本字符串，若无数据可读，或者连接中断，则返回 null</li>
+<li>String, 返回读取的文本字符串，若无数据可读，或者连接中断，则返回 null</li>
 </ul>
 <hr>
 <h3 id="readlines">readLines</h3>
@@ -221,11 +221,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>maxlines - 指定此次读取的最大行数，缺省读取全部文本行</li>
+<li>maxlines: Integer, 指定此次读取的最大行数，缺省读取全部文本行</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回读取的文本行数组，若无数据可读，或者连接中断，空数组</li>
+<li>Array, 返回读取的文本行数组，若无数据可读，或者连接中断，空数组</li>
 </ul>
 <hr>
 <h3 id="readuntil">readUntil</h3>
@@ -235,12 +235,12 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>mk - 指定结尾的字符串</li>
-<li>maxlen - 指定此次读取的最大字符串，以 utf8 编码字节数为准，缺省不限制字符数</li>
+<li>mk: String, 指定结尾的字符串</li>
+<li>maxlen: Integer, 指定此次读取的最大字符串，以 utf8 编码字节数为准，缺省不限制字符数</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回读取的文本字符串，若无数据可读，或者连接中断，则返回 null</li>
+<li>String, 返回读取的文本字符串，若无数据可读，或者连接中断，则返回 null</li>
 </ul>
 <hr>
 <h3 id="writetext">writeText</h3>
@@ -249,7 +249,7 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>txt - 指定写入的字符串</li>
+<li>txt: String, 指定写入的字符串</li>
 </ul>
 <hr>
 <h3 id="writeline">writeLine</h3>
@@ -258,7 +258,7 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>txt - 指定写入的字符串</li>
+<li>txt: String, 指定写入的字符串</li>
 </ul>
 <hr>
 <h3 id="read">read</h3>
@@ -267,11 +267,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>bytes - 指定要读取的数据量，缺省为读取随机大小的数据块，读出的数据尺寸取决于设备</li>
+<li>bytes: Integer, 指定要读取的数据量，缺省为读取随机大小的数据块，读出的数据尺寸取决于设备</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回从流内读取的数据，若无数据可读，或者连接中断，则返回 null</li>
+<li><a href=buffer.md.html>Buffer</a>, 返回从流内读取的数据，若无数据可读，或者连接中断，则返回 null</li>
 </ul>
 <hr>
 <h3 id="write">write</h3>
@@ -280,7 +280,7 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>data - 给定要写入的数据</li>
+<li>data: <a href=buffer.md.html>Buffer</a>, 给定要写入的数据</li>
 </ul>
 <hr>
 <h3 id="close">close</h3>
@@ -295,12 +295,12 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>stm - 目标流对象</li>
-<li>bytes - 复制的字节数</li>
+<li>stm: Stream, 目标流对象</li>
+<li>bytes: Long, 复制的字节数</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回复制的字节数</li>
+<li>Long, 返回复制的字节数</li>
 </ul>
 <hr>
 <h3 id="dispose">dispose</h3>
@@ -314,11 +314,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>expected - 制定比较的目标对象</li>
+<li>expected: object, 制定比较的目标对象</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回对象比较的结果</li>
+<li>Boolean, 返回对象比较的结果</li>
 </ul>
 <hr>
 <h3 id="tostring">toString</h3>
@@ -327,7 +327,7 @@
 </code></pre>
 <p>返回结果:</p>
 <ul>
-<li>返回对象的字符串表示</li>
+<li>String, 返回对象的字符串表示</li>
 </ul>
 <hr>
 <h3 id="tojson">toJSON</h3>
@@ -336,11 +336,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>key - 未使用</li>
+<li>key: String, 未使用</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回包含可 JSON 序列化的值</li>
+<li>Value, 返回包含可 JSON 序列化的值</li>
 </ul>
 <hr>
 <h3 id="valueof">valueOf</h3>
@@ -349,36 +349,36 @@
 </code></pre>
 <p>返回结果:</p>
 <ul>
-<li>返回对象本身的数值</li>
+<li>Value, 返回对象本身的数值</li>
 </ul>
 <h2 id="-">成员属性</h2>
 <h3 id="pid">pid</h3>
-<p>读取当前对象指向的进程的 id</p>
+<p>Integer, 读取当前对象指向的进程的 id</p>
 <pre><code class="lang-JavaScript">readonly Integer SubProcess.pid;
 </code></pre>
 <hr>
 <h3 id="stdin">stdin</h3>
-<p>读取当前对象指向的进程的标准输入对象</p>
+<p><a href=bufferedstream.md.html>BufferedStream</a>, 读取当前对象指向的进程的标准输入对象</p>
 <pre><code class="lang-JavaScript">readonly BufferedStream SubProcess.stdin;
 </code></pre>
 <hr>
 <h3 id="stdout">stdout</h3>
-<p>读取当前对象指向的进程的标准输出对象</p>
+<p><a href=bufferedstream.md.html>BufferedStream</a>, 读取当前对象指向的进程的标准输出对象</p>
 <pre><code class="lang-JavaScript">readonly BufferedStream SubProcess.stdout;
 </code></pre>
 <hr>
 <h3 id="stream">stream</h3>
-<p>查询创建缓存对象时的流对象</p>
+<p><a href=stream.md.html>Stream</a>, 查询创建缓存对象时的流对象</p>
 <pre><code class="lang-JavaScript">readonly Stream SubProcess.stream;
 </code></pre>
 <hr>
 <h3 id="charset">charset</h3>
-<p>查询和设置当前对象处理文本时的字符集，缺省为 utf-8</p>
+<p>String, 查询和设置当前对象处理文本时的字符集，缺省为 utf-8</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> SubProcess.charset;
 </code></pre>
 <hr>
 <h3 id="eol">EOL</h3>
-<p>查询和设置行结尾标识，缺省时，posix:\&quot;\n\&quot;；windows:\&quot;\r\n\&quot;</p>
+<p>String, 查询和设置行结尾标识，缺省时，posix:\&quot;\n\&quot;；windows:\&quot;\r\n\&quot;</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> SubProcess.EOL;
 </code></pre>
  </div><div class="hidden-sm hidden-xs col-xs-3"><div id=toc></div></div></div><div class=container><div class=footer><p>&copy; 2017 fibjs.org</p></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="Click to return on the top page" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=../../../../js/common.js></script><script type=text/javascript src=../../../../js/docs.js></script></body></html>

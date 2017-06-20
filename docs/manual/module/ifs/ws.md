@@ -37,11 +37,11 @@ static Stream ws.connect(String url,
 ```
 
 调用参数:
-* url - 指定连接的 url，支持 ws:// 和 wss:// 协议
-* origin - 指定连接的授权域名
+* url: String, 指定连接的 [url](url.md)，支持 ws:// 和 wss:// 协议
+* origin: String, 指定连接的授权域名
 
 返回结果:
-* 返回连接成功的 Stream 对象，可能为 Socket 或者 SslSocket
+* [Stream](../../object/ifs/Stream.md), 返回连接成功的 [Stream](../../object/ifs/Stream.md) 对象，可能为 [Socket](../../object/ifs/Socket.md) 或者 [SslSocket](../../object/ifs/SslSocket.md)
 
 --------------------------
 ### upgrade
@@ -51,10 +51,10 @@ static Handler ws.upgrade(Function accept);
 ```
 
 调用参数:
-* accept - 连接成功处理函数，参数为 WebSocket 对象
+* accept: Function, 连接成功处理函数，参数为 [WebSocket](../../object/ifs/WebSocket.md) 对象
 
 返回结果:
-* 返回协议处理器，可与 HttpServer, Chain, Routing 等对接
+* [Handler](../../object/ifs/Handler.md), 返回协议处理器，可与 [HttpServer](../../object/ifs/HttpServer.md), [Chain](../../object/ifs/Chain.md), [Routing](../../object/ifs/Routing.md) 等对接
 
 ## 常量
         

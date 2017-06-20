@@ -24,7 +24,7 @@ ZipInfo ZipFile.getinfo(String member) async;
 ```
 
 调用参数:
-* member - 指定要获取信息的文件名
+* member: String, 指定要获取信息的文件名
 
 --------------------------
 ### read
@@ -35,11 +35,11 @@ Buffer ZipFile.read(String member,
 ```
 
 调用参数:
-* member - 指定要读取的文件名
-* password - 解压密码, 默认没有密码
+* member: String, 指定要读取的文件名
+* password: String, 解压密码, 默认没有密码
 
 返回结果:
-* 返回文件的所有数据
+* [Buffer](Buffer.md), 返回文件的所有数据
 
 --------------------------
 ### readAll
@@ -49,10 +49,10 @@ List ZipFile.readAll(String password = "") async;
 ```
 
 调用参数:
-* password - 解压密码, 默认没有密码
+* password: String, 解压密码, 默认没有密码
 
 返回结果:
-* 包含所有文件数据及信息的列表
+* [List](List.md), 包含所有文件数据及信息的列表
 
 --------------------------
 ### extract
@@ -64,9 +64,9 @@ ZipFile.extract(String member,
 ```
 
 调用参数:
-* member - 指定要解压的文件名
-* path - 指定要解压到的路径
-* password - 解压密码, 默认没有密码
+* member: String, 指定要解压的文件名
+* path: String, 指定要解压到的路径
+* password: String, 解压密码, 默认没有密码
 
 --------------------------
 解压指定文件到流
@@ -77,9 +77,9 @@ ZipFile.extract(String member,
 ```
 
 调用参数:
-* member - 指定要解压的文件名
-* strm - 指定要解压到的流
-* password - 解压密码, 默认没有密码
+* member: String, 指定要解压的文件名
+* strm: [SeekableStream](SeekableStream.md), 指定要解压到的流
+* password: String, 解压密码, 默认没有密码
 
 --------------------------
 ### extractAll
@@ -90,8 +90,8 @@ ZipFile.extractAll(String path,
 ```
 
 调用参数:
-* path - 指定要解压到的路径
-* password - 解压密码, 默认没有密码
+* path: String, 指定要解压到的路径
+* password: String, 解压密码, 默认没有密码
 
 --------------------------
 ### write
@@ -103,9 +103,9 @@ ZipFile.write(String filename,
 ```
 
 调用参数:
-* filename - 指定要写入的文件
-* inZipName - 压缩在zip文件内的文件名
-* password - 解压密码, 默认没有密码
+* filename: String, 指定要写入的文件
+* inZipName: String, 压缩在[zip](../../module/ifs/zip.md)文件内的文件名
+* password: String, 解压密码, 默认没有密码
 
 --------------------------
 写入指定文件到压缩文件
@@ -116,9 +116,9 @@ ZipFile.write(Buffer data,
 ```
 
 调用参数:
-* data - 指定要写入的文件数据
-* inZipName - 压缩在zip文件内的文件名
-* password - 解压密码, 默认没有密码
+* data: [Buffer](Buffer.md), 指定要写入的文件数据
+* inZipName: String, 压缩在[zip](../../module/ifs/zip.md)文件内的文件名
+* password: String, 解压密码, 默认没有密码
 
 --------------------------
 写入指定文件到压缩文件
@@ -129,9 +129,9 @@ ZipFile.write(SeekableStream strm,
 ```
 
 调用参数:
-* strm - 指定要写入文件数据流
-* inZipName - 压缩在zip文件内的文件名
-* password - 解压密码, 默认没有密码
+* strm: [SeekableStream](SeekableStream.md), 指定要写入文件数据流
+* inZipName: String, 压缩在[zip](../../module/ifs/zip.md)文件内的文件名
+* password: String, 解压密码, 默认没有密码
 
 --------------------------
 ### close
@@ -155,10 +155,10 @@ Boolean ZipFile.equals(object expected);
 ```
 
 调用参数:
-* expected - 制定比较的目标对象
+* expected: object, 制定比较的目标对象
 
 返回结果:
-* 返回对象比较的结果
+* Boolean, 返回对象比较的结果
 
 --------------------------
 ### toString
@@ -168,7 +168,7 @@ String ZipFile.toString();
 ```
 
 返回结果:
-* 返回对象的字符串表示
+* String, 返回对象的字符串表示
 
 --------------------------
 ### toJSON
@@ -178,10 +178,10 @@ Value ZipFile.toJSON(String key = "");
 ```
 
 调用参数:
-* key - 未使用
+* key: String, 未使用
 
 返回结果:
-* 返回包含可 JSON 序列化的值
+* Value, 返回包含可 JSON 序列化的值
 
 --------------------------
 ### valueOf
@@ -191,5 +191,5 @@ Value ZipFile.valueOf();
 ```
 
 返回结果:
-* 返回对象本身的数值
+* Value, 返回对象本身的数值
 

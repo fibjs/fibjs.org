@@ -169,7 +169,7 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>d - 指定要设定的时间</li>
+<li>d: Date, 指定要设定的时间</li>
 </ul>
 <hr>
 <h3 id="clone">clone</h3>
@@ -178,7 +178,7 @@
 </code></pre>
 <p>返回结果:</p>
 <ul>
-<li>返回只读的内存流对象</li>
+<li>MemoryStream, 返回只读的内存流对象</li>
 </ul>
 <hr>
 <h3 id="clear">clear</h3>
@@ -193,8 +193,8 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>offset - 指定新的位置</li>
-<li>whence - 指定位置基准，允许的值为：SEEK_SET, SEEK_CUR, SEEK_END</li>
+<li>offset: Long, 指定新的位置</li>
+<li>whence: Integer, 指定位置基准，允许的值为：SEEK_SET, SEEK_CUR, SEEK_END</li>
 </ul>
 <hr>
 <h3 id="tell">tell</h3>
@@ -203,7 +203,7 @@
 </code></pre>
 <p>返回结果:</p>
 <ul>
-<li>返回流当前位置</li>
+<li>Long, 返回流当前位置</li>
 </ul>
 <hr>
 <h3 id="rewind">rewind</h3>
@@ -217,7 +217,7 @@
 </code></pre>
 <p>返回结果:</p>
 <ul>
-<li>返回流尺寸</li>
+<li>Long, 返回流尺寸</li>
 </ul>
 <hr>
 <h3 id="readall">readAll</h3>
@@ -226,7 +226,7 @@
 </code></pre>
 <p>返回结果:</p>
 <ul>
-<li>返回从流内读取的数据，若无数据可读，或者连接中断，则返回 null</li>
+<li><a href=buffer.md.html>Buffer</a>, 返回从流内读取的数据，若无数据可读，或者连接中断，则返回 null</li>
 </ul>
 <hr>
 <h3 id="truncate">truncate</h3>
@@ -235,7 +235,7 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>bytes - 新的文件尺寸</li>
+<li>bytes: Long, 新的文件尺寸</li>
 </ul>
 <hr>
 <h3 id="eof">eof</h3>
@@ -244,7 +244,7 @@
 </code></pre>
 <p>返回结果:</p>
 <ul>
-<li>返回 True 表示结尾</li>
+<li>Boolean, 返回 True 表示结尾</li>
 </ul>
 <hr>
 <h3 id="flush">flush</h3>
@@ -258,7 +258,7 @@
 </code></pre>
 <p>返回结果:</p>
 <ul>
-<li>返回 Stat 对象描述文件信息</li>
+<li><a href=stat.md.html>Stat</a>, 返回 <a href=stat.md.html>Stat</a> 对象描述文件信息</li>
 </ul>
 <hr>
 <h3 id="read">read</h3>
@@ -267,11 +267,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>bytes - 指定要读取的数据量，缺省为读取随机大小的数据块，读出的数据尺寸取决于设备</li>
+<li>bytes: Integer, 指定要读取的数据量，缺省为读取随机大小的数据块，读出的数据尺寸取决于设备</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回从流内读取的数据，若无数据可读，或者连接中断，则返回 null</li>
+<li><a href=buffer.md.html>Buffer</a>, 返回从流内读取的数据，若无数据可读，或者连接中断，则返回 null</li>
 </ul>
 <hr>
 <h3 id="write">write</h3>
@@ -280,7 +280,7 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>data - 给定要写入的数据</li>
+<li>data: <a href=buffer.md.html>Buffer</a>, 给定要写入的数据</li>
 </ul>
 <hr>
 <h3 id="close">close</h3>
@@ -295,12 +295,12 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>stm - 目标流对象</li>
-<li>bytes - 复制的字节数</li>
+<li>stm: Stream, 目标流对象</li>
+<li>bytes: Long, 复制的字节数</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回复制的字节数</li>
+<li>Long, 返回复制的字节数</li>
 </ul>
 <hr>
 <h3 id="dispose">dispose</h3>
@@ -314,11 +314,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>expected - 制定比较的目标对象</li>
+<li>expected: object, 制定比较的目标对象</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回对象比较的结果</li>
+<li>Boolean, 返回对象比较的结果</li>
 </ul>
 <hr>
 <h3 id="tostring">toString</h3>
@@ -327,7 +327,7 @@
 </code></pre>
 <p>返回结果:</p>
 <ul>
-<li>返回对象的字符串表示</li>
+<li>String, 返回对象的字符串表示</li>
 </ul>
 <hr>
 <h3 id="tojson">toJSON</h3>
@@ -336,11 +336,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>key - 未使用</li>
+<li>key: String, 未使用</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回包含可 JSON 序列化的值</li>
+<li>Value, 返回包含可 JSON 序列化的值</li>
 </ul>
 <hr>
 <h3 id="valueof">valueOf</h3>
@@ -349,6 +349,6 @@
 </code></pre>
 <p>返回结果:</p>
 <ul>
-<li>返回对象本身的数值</li>
+<li>Value, 返回对象本身的数值</li>
 </ul>
  </div><div class="hidden-sm hidden-xs col-xs-3"><div id=toc></div></div></div><div class=container><div class=footer><p>&copy; 2017 fibjs.org</p></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="Click to return on the top page" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=../../../../js/common.js></script><script type=text/javascript src=../../../../js/docs.js></script></body></html>

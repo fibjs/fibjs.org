@@ -169,7 +169,7 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>derCert - DER 格式的证书</li>
+<li>derCert: <a href=buffer.md.html>Buffer</a>, DER 格式的证书</li>
 </ul>
 <hr>
 <p>加载一个 CRT/PEM/TXT 格式的证书，可多次调用</p>
@@ -177,7 +177,7 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>txtCert - PEM 格式的证书</li>
+<li>txtCert: String, PEM 格式的证书</li>
 </ul>
 <p>load 加载 mozilla 的 certdata,txt， 可于 <a href=../../module/ifs/http.md.html>http</a>://hg.mozilla.org/releases/mozilla-release/raw-file/default/security/nss/lib/ckfw/builtins/certdata.txt 下载使用</p>
 <hr>
@@ -187,14 +187,15 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>filename - 证书文件名</li>
+<li>filename: String, 证书文件名</li>
 </ul>
 <p>loadFile 加载 mozilla 的 certdata,txt， 可于 <a href=../../module/ifs/http.md.html>http</a>://hg.mozilla.org/releases/mozilla-release/raw-file/default/security/nss/lib/ckfw/builtins/certdata.txt 下载使用</p>
 <hr>
 <h3 id="loadrootcerts">loadRootCerts</h3>
-<p>加载自带的缺省根证书，此证书内容源自：<a href=../../module/ifs/http.md.html>http</a>://hg.mozilla.org/releases/mozilla-release/raw-file/default/security/nss/lib/ckfw/builtins/certdata.txt</p>
+<p>加载自带的缺省根证书</p>
 <pre><code class="lang-JavaScript">X509Cert.loadRootCerts();
 </code></pre>
+<p>此证书内容源自：<a href=../../module/ifs/http.md.html>http</a>://hg.mozilla.org/releases/mozilla-release/raw-file/default/security/nss/lib/ckfw/builtins/certdata.txt</p>
 <hr>
 <h3 id="verify">verify</h3>
 <p>使用当前证书链验证给定的证书</p>
@@ -202,11 +203,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>cert - 给定需要验证的证书</li>
+<li>cert: X509Cert, 给定需要验证的证书</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>如果验证成功则返回 True</li>
+<li>Boolean, 如果验证成功则返回 True</li>
 </ul>
 <hr>
 <h3 id="dump">dump</h3>
@@ -215,7 +216,7 @@
 </code></pre>
 <p>返回结果:</p>
 <ul>
-<li>以数组方式导出证书链</li>
+<li>Array, 以数组方式导出证书链</li>
 </ul>
 <hr>
 <h3 id="clear">clear</h3>
@@ -234,11 +235,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>expected - 制定比较的目标对象</li>
+<li>expected: object, 制定比较的目标对象</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回对象比较的结果</li>
+<li>Boolean, 返回对象比较的结果</li>
 </ul>
 <hr>
 <h3 id="tostring">toString</h3>
@@ -247,7 +248,7 @@
 </code></pre>
 <p>返回结果:</p>
 <ul>
-<li>返回对象的字符串表示</li>
+<li>String, 返回对象的字符串表示</li>
 </ul>
 <hr>
 <h3 id="tojson">toJSON</h3>
@@ -256,11 +257,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>key - 未使用</li>
+<li>key: String, 未使用</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回包含可 JSON 序列化的值</li>
+<li>Value, 返回包含可 JSON 序列化的值</li>
 </ul>
 <hr>
 <h3 id="valueof">valueOf</h3>
@@ -269,68 +270,68 @@
 </code></pre>
 <p>返回结果:</p>
 <ul>
-<li>返回对象本身的数值</li>
+<li>Value, 返回对象本身的数值</li>
 </ul>
 <h2 id="-">成员属性</h2>
 <h3 id="version">version</h3>
-<p>获取证书的版本</p>
+<p>Integer, 获取证书的版本</p>
 <pre><code class="lang-JavaScript">readonly Integer X509Cert.version;
 </code></pre>
 <hr>
 <h3 id="serial">serial</h3>
-<p>获取证书的序列号</p>
+<p>String, 获取证书的序列号</p>
 <pre><code class="lang-JavaScript">readonly <span class="hljs-built_in">String</span> X509Cert.serial;
 </code></pre>
 <hr>
 <h3 id="issuer">issuer</h3>
-<p>获取证书颁发者的可分辨名称</p>
+<p>String, 获取证书颁发者的可分辨名称</p>
 <pre><code class="lang-JavaScript">readonly <span class="hljs-built_in">String</span> X509Cert.issuer;
 </code></pre>
 <hr>
 <h3 id="subject">subject</h3>
-<p>获取证书的主题可分辨名称</p>
+<p>String, 获取证书的主题可分辨名称</p>
 <pre><code class="lang-JavaScript">readonly <span class="hljs-built_in">String</span> X509Cert.subject;
 </code></pre>
 <hr>
 <h3 id="notbefore">notBefore</h3>
-<p>获取证书的生效时间</p>
+<p>Date, 获取证书的生效时间</p>
 <pre><code class="lang-JavaScript">readonly <span class="hljs-built_in">Date</span> X509Cert.notBefore;
 </code></pre>
 <hr>
 <h3 id="notafter">notAfter</h3>
-<p>获取证书的到期时间</p>
+<p>Date, 获取证书的到期时间</p>
 <pre><code class="lang-JavaScript">readonly <span class="hljs-built_in">Date</span> X509Cert.notAfter;
 </code></pre>
 <hr>
 <h3 id="ca">ca</h3>
-<p>获取证书是否是 ca 证书</p>
+<p>Boolean, 获取证书是否是 ca 证书</p>
 <pre><code class="lang-JavaScript">readonly <span class="hljs-built_in">Boolean</span> X509Cert.ca;
 </code></pre>
 <hr>
 <h3 id="pathlen">pathlen</h3>
-<p>获取证书的 pathlen</p>
+<p>Integer, 获取证书的 pathlen</p>
 <pre><code class="lang-JavaScript">readonly Integer X509Cert.pathlen;
 </code></pre>
 <hr>
 <h3 id="usage">usage</h3>
-<p>获取证书的使用范围</p>
+<p>String, 获取证书的使用范围</p>
 <pre><code class="lang-JavaScript">readonly <span class="hljs-built_in">String</span> X509Cert.usage;
 </code></pre>
 <p>结果为全部或部分以下内容：digitalSignature, nonRepudiation, keyEncipherment, dataEncipherment, keyAgreement, keyCertSign, cRLSign</p>
 <hr>
 <h3 id="type">type</h3>
-<p>获取证书的 Netscape 证书类型</p>
+<p>String, 获取证书的 Netscape 证书类型</p>
 <pre><code class="lang-JavaScript">readonly <span class="hljs-built_in">String</span> X509Cert.type;
 </code></pre>
 <p>结果为全部或部分以下内容：client, server, email, objsign, reserved, sslCA, emailCA, objCA</p>
 <hr>
 <h3 id="publickey">publicKey</h3>
-<p>获取证书的公钥</p>
+<p><a href=pkey.md.html>PKey</a>, 获取证书的公钥</p>
 <pre><code class="lang-JavaScript">readonly PKey X509Cert.publicKey;
 </code></pre>
 <hr>
 <h3 id="next">next</h3>
-<p>获取证书链中得下一个证书</p>
+<p>X509Cert, 获取证书链中得下一个证书</p>
 <pre><code class="lang-JavaScript">readonly X509Cert X509Cert.next;
 </code></pre>
  </div><div class="hidden-sm hidden-xs col-xs-3"><div id=toc></div></div></div><div class=container><div class=footer><p>&copy; 2017 fibjs.org</p></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="Click to return on the top page" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=../../../../js/common.js></script><script type=text/javascript src=../../../../js/docs.js></script></body></html>

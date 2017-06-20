@@ -166,11 +166,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>sms - 指定要添加的 member/score 对象</li>
+<li>sms: Object, 指定要添加的 member/score 对象</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>被成功添加的新成员的数量，不包括那些被更新的、已经存在的成员</li>
+<li>Integer, 被成功添加的新成员的数量，不包括那些被更新的、已经存在的成员</li>
 </ul>
 <hr>
 <p>将一个或多个 member 元素及其 score 值加入到有序集当中</p>
@@ -178,11 +178,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>... - 指定要添加的 member/score 列表</li>
+<li>...: 指定要添加的 member/score 列表</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>被成功添加的新成员的数量，不包括那些被更新的、已经存在的成员</li>
+<li>Integer, 被成功添加的新成员的数量，不包括那些被更新的、已经存在的成员</li>
 </ul>
 <hr>
 <h3 id="score">score</h3>
@@ -191,11 +191,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>member - 指定要查询的 member</li>
+<li>member: <a href=buffer.md.html>Buffer</a>, 指定要查询的 member</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>member 成员的 score 值，以字符串形式表示</li>
+<li><a href=buffer.md.html>Buffer</a>, member 成员的 score 值，以字符串形式表示</li>
 </ul>
 <hr>
 <h3 id="incr">incr</h3>
@@ -205,12 +205,12 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>member - 指定要修改的 member</li>
-<li>num - 指定要加上的数值</li>
+<li>member: <a href=buffer.md.html>Buffer</a>, 指定要修改的 member</li>
+<li>num: Long, 指定要加上的数值</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>member 成员的新 score 值，以字符串形式表示</li>
+<li><a href=buffer.md.html>Buffer</a>, member 成员的新 score 值，以字符串形式表示</li>
 </ul>
 <hr>
 <h3 id="remove">remove</h3>
@@ -219,11 +219,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>members - 指定要移除的元素数组</li>
+<li>members: Array, 指定要移除的元素数组</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>被成功移除的元素的数量，不包括被忽略的元素</li>
+<li>Integer, 被成功移除的元素的数量，不包括被忽略的元素</li>
 </ul>
 <hr>
 <p>移除有序集中的一个或多个 member 元素</p>
@@ -231,11 +231,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>... - 指定要移除的元素列表</li>
+<li>...: 指定要移除的元素列表</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>被成功移除的元素的数量，不包括被忽略的元素</li>
+<li>Integer, 被成功移除的元素的数量，不包括被忽略的元素</li>
 </ul>
 <hr>
 <h3 id="len">len</h3>
@@ -244,7 +244,7 @@
 </code></pre>
 <p>返回结果:</p>
 <ul>
-<li>返回有序集的长度</li>
+<li>Integer, 返回有序集的长度</li>
 </ul>
 <hr>
 <h3 id="count">count</h3>
@@ -254,12 +254,12 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>min - 指定统计的最小 score</li>
-<li>max - 指定统计的最大 score</li>
+<li>min: Integer, 指定统计的最小 score</li>
+<li>max: Integer, 指定统计的最大 score</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>score 值在 min 和 max 之间的成员的数量</li>
+<li>Integer, score 值在 min 和 max 之间的成员的数量</li>
 </ul>
 <hr>
 <h3 id="range">range</h3>
@@ -270,13 +270,13 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>start - 指定查询的起始下标，0 表示第一个元素，-1 表示最后一个元素</li>
-<li>stop - 指定查询的结束下标，0 表示第一个元素，-1 表示最后一个元素</li>
-<li>withScores - 指定是否在结果中包含 score</li>
+<li>start: Integer, 指定查询的起始下标，0 表示第一个元素，-1 表示最后一个元素</li>
+<li>stop: Integer, 指定查询的结束下标，0 表示第一个元素，-1 表示最后一个元素</li>
+<li>withScores: Boolean, 指定是否在结果中包含 score</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>指定区间内，带有 score 值(可选)的有序集成员的列表</li>
+<li><a href=list.md.html>List</a>, 指定区间内，带有 score 值(可选)的有序集成员的列表</li>
 </ul>
 <hr>
 <h3 id="rangerev">rangeRev</h3>
@@ -287,13 +287,13 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>start - 指定查询的起始下标，0 表示第一个元素，-1 表示最后一个元素</li>
-<li>stop - 指定查询的结束下标，0 表示第一个元素，-1 表示最后一个元素</li>
-<li>withScores - 指定是否在结果中包含 score</li>
+<li>start: Integer, 指定查询的起始下标，0 表示第一个元素，-1 表示最后一个元素</li>
+<li>stop: Integer, 指定查询的结束下标，0 表示第一个元素，-1 表示最后一个元素</li>
+<li>withScores: Boolean, 指定是否在结果中包含 score</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>指定区间内，带有 score 值(可选)的有序集成员的列表</li>
+<li><a href=list.md.html>List</a>, 指定区间内，带有 score 值(可选)的有序集成员的列表</li>
 </ul>
 <hr>
 <h3 id="rank">rank</h3>
@@ -302,11 +302,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>member - 指定要查询的 member</li>
+<li>member: <a href=buffer.md.html>Buffer</a>, 指定要查询的 member</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>member 如果 member 是有序集 key 的成员，返回 member 的排名。如果 member 不是有序集 key 的成员，返回 nil</li>
+<li>Integer, member 如果 member 是有序集 key 的成员，返回 member 的排名。如果 member 不是有序集 key 的成员，返回 nil</li>
 </ul>
 <hr>
 <h3 id="rankrev">rankRev</h3>
@@ -315,11 +315,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>member - 指定要查询的 member</li>
+<li>member: <a href=buffer.md.html>Buffer</a>, 指定要查询的 member</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>member 如果 member 是有序集 key 的成员，返回 member 的排名。如果 member 不是有序集 key 的成员，返回 nil</li>
+<li>Integer, member 如果 member 是有序集 key 的成员，返回 member 的排名。如果 member 不是有序集 key 的成员，返回 nil</li>
 </ul>
 <hr>
 <h3 id="dispose">dispose</h3>
@@ -333,11 +333,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>expected - 制定比较的目标对象</li>
+<li>expected: object, 制定比较的目标对象</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回对象比较的结果</li>
+<li>Boolean, 返回对象比较的结果</li>
 </ul>
 <hr>
 <h3 id="tostring">toString</h3>
@@ -346,7 +346,7 @@
 </code></pre>
 <p>返回结果:</p>
 <ul>
-<li>返回对象的字符串表示</li>
+<li>String, 返回对象的字符串表示</li>
 </ul>
 <hr>
 <h3 id="tojson">toJSON</h3>
@@ -355,11 +355,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>key - 未使用</li>
+<li>key: String, 未使用</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回包含可 JSON 序列化的值</li>
+<li>Value, 返回包含可 JSON 序列化的值</li>
 </ul>
 <hr>
 <h3 id="valueof">valueOf</h3>
@@ -368,6 +368,6 @@
 </code></pre>
 <p>返回结果:</p>
 <ul>
-<li>返回对象本身的数值</li>
+<li>Value, 返回对象本身的数值</li>
 </ul>
  </div><div class="hidden-sm hidden-xs col-xs-3"><div id=toc></div></div></div><div class=container><div class=footer><p>&copy; 2017 fibjs.org</p></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="Click to return on the top page" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=../../../../js/common.js></script><script type=text/javascript src=../../../../js/docs.js></script></body></html>

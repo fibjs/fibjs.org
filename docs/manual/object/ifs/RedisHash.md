@@ -17,8 +17,8 @@ RedisHash.set(Buffer field,
 ```
 
 调用参数:
-* field - 指定要修改的 field
-* value - 指定要修改的数据
+* field: [Buffer](Buffer.md), 指定要修改的 field
+* value: [Buffer](Buffer.md), 指定要修改的数据
 
 --------------------------
 ### setNX
@@ -29,8 +29,8 @@ RedisHash.setNX(Buffer field,
 ```
 
 调用参数:
-* field - 指定要修改的 field
-* value - 指定要修改的数据
+* field: [Buffer](Buffer.md), 指定要修改的 field
+* value: [Buffer](Buffer.md), 指定要修改的数据
 
 --------------------------
 ### mset
@@ -40,7 +40,7 @@ RedisHash.mset(Object kvs);
 ```
 
 调用参数:
-* kvs - 指定要设置的 field/value 对象
+* kvs: Object, 指定要设置的 field/value 对象
 
 --------------------------
 同时将多个 field-value (域-值)对设置到哈希表中，此命令会覆盖哈希表中已存在的域
@@ -49,7 +49,7 @@ RedisHash.mset(...);
 ```
 
 调用参数:
-* ... - 指定要设置的 field/value 列表
+* ...: 指定要设置的 field/value 列表
 
 --------------------------
 ### get
@@ -59,10 +59,10 @@ Buffer RedisHash.get(Buffer field);
 ```
 
 调用参数:
-* field - 指定要查询的 field
+* field: [Buffer](Buffer.md), 指定要查询的 field
 
 返回结果:
-* 给定域的值，当给定域不存在或是给定 key 不存在时，返回 null
+* [Buffer](Buffer.md), 给定域的值，当给定域不存在或是给定 key 不存在时，返回 null
 
 --------------------------
 ### mget
@@ -72,10 +72,10 @@ List RedisHash.mget(Array fields);
 ```
 
 调用参数:
-* fields - 指定要查询的域数组
+* fields: Array, 指定要查询的域数组
 
 返回结果:
-* 一个包含所有给定域的值的列表
+* [List](List.md), 一个包含所有给定域的值的列表
 
 --------------------------
 返回哈希表中，一个或多个给定域的值
@@ -84,10 +84,10 @@ List RedisHash.mget(...);
 ```
 
 调用参数:
-* ... - 指定要查询的域列表
+* ...: 指定要查询的域列表
 
 返回结果:
-* 一个包含所有给定域的值的列表
+* [List](List.md), 一个包含所有给定域的值的列表
 
 --------------------------
 ### incr
@@ -98,11 +98,11 @@ Long RedisHash.incr(Buffer field,
 ```
 
 调用参数:
-* field - 指定要修改的域
-* num - 指定要加上的数值
+* field: [Buffer](Buffer.md), 指定要修改的域
+* num: Long, 指定要加上的数值
 
 返回结果:
-* 加上 num 之后，域的值
+* Long, 加上 num 之后，域的值
 
 --------------------------
 ### getAll
@@ -112,7 +112,7 @@ List RedisHash.getAll();
 ```
 
 返回结果:
-* 返回一个包含哈希表中所有域的列表
+* [List](List.md), 返回一个包含哈希表中所有域的列表
 
 --------------------------
 ### keys
@@ -122,7 +122,7 @@ List RedisHash.keys();
 ```
 
 返回结果:
-* 返回值里，紧跟每个域名(field name)之后是域的值(value)，所以返回值的长度是哈希表大小的两倍
+* [List](List.md), 返回值里，紧跟每个域名(field name)之后是域的值(value)，所以返回值的长度是哈希表大小的两倍
 
 --------------------------
 ### len
@@ -132,7 +132,7 @@ Integer RedisHash.len();
 ```
 
 返回结果:
-* 返回哈希表中域的数量
+* Integer, 返回哈希表中域的数量
 
 --------------------------
 ### exists
@@ -142,10 +142,10 @@ Boolean RedisHash.exists(Buffer field);
 ```
 
 调用参数:
-* field - 指定要查询的 field
+* field: [Buffer](Buffer.md), 指定要查询的 field
 
 返回结果:
-* 如果哈希表含有给定域，返回 true，如果哈希表不含有给定域，或 key 不存在，返回 false
+* Boolean, 如果哈希表含有给定域，返回 true，如果哈希表不含有给定域，或 key 不存在，返回 false
 
 --------------------------
 ### del
@@ -155,10 +155,10 @@ Integer RedisHash.del(Array fields);
 ```
 
 调用参数:
-* fields - 指定要删除的域数组
+* fields: Array, 指定要删除的域数组
 
 返回结果:
-* 被删除域的数量
+* Integer, 被删除域的数量
 
 --------------------------
 删除哈希表中的一个或多个指定域，不存在的域将被忽略
@@ -167,10 +167,10 @@ Integer RedisHash.del(...);
 ```
 
 调用参数:
-* ... - 指定要删除的域列表
+* ...: 指定要删除的域列表
 
 返回结果:
-* 被删除域的数量
+* Integer, 被删除域的数量
 
 --------------------------
 ### dispose
@@ -187,10 +187,10 @@ Boolean RedisHash.equals(object expected);
 ```
 
 调用参数:
-* expected - 制定比较的目标对象
+* expected: object, 制定比较的目标对象
 
 返回结果:
-* 返回对象比较的结果
+* Boolean, 返回对象比较的结果
 
 --------------------------
 ### toString
@@ -200,7 +200,7 @@ String RedisHash.toString();
 ```
 
 返回结果:
-* 返回对象的字符串表示
+* String, 返回对象的字符串表示
 
 --------------------------
 ### toJSON
@@ -210,10 +210,10 @@ Value RedisHash.toJSON(String key = "");
 ```
 
 调用参数:
-* key - 未使用
+* key: String, 未使用
 
 返回结果:
-* 返回包含可 JSON 序列化的值
+* Value, 返回包含可 JSON 序列化的值
 
 --------------------------
 ### valueOf
@@ -223,5 +223,5 @@ Value RedisHash.valueOf();
 ```
 
 返回结果:
-* 返回对象本身的数值
+* Value, 返回对象本身的数值
 

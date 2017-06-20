@@ -170,11 +170,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>bytes - 指定要读取的数据量，缺省为读取随机大小的数据块，读出的数据尺寸取决于设备</li>
+<li>bytes: Integer, 指定要读取的数据量，缺省为读取随机大小的数据块，读出的数据尺寸取决于设备</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回从流内读取的数据，若无数据可读，或者连接中断，则返回 null</li>
+<li><a href=buffer.md.html>Buffer</a>, 返回从流内读取的数据，若无数据可读，或者连接中断，则返回 null</li>
 </ul>
 <hr>
 <h3 id="readall">readAll</h3>
@@ -183,7 +183,7 @@
 </code></pre>
 <p>返回结果:</p>
 <ul>
-<li>返回从流内读取的数据，若无数据可读，或者连接中断，则返回 null</li>
+<li><a href=buffer.md.html>Buffer</a>, 返回从流内读取的数据，若无数据可读，或者连接中断，则返回 null</li>
 </ul>
 <hr>
 <h3 id="write">write</h3>
@@ -192,7 +192,7 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>data - 给定要写入的数据</li>
+<li>data: <a href=buffer.md.html>Buffer</a>, 给定要写入的数据</li>
 </ul>
 <hr>
 <h3 id="end">end</h3>
@@ -206,7 +206,7 @@
 </code></pre>
 <p>返回结果:</p>
 <ul>
-<li>结束则返回 true</li>
+<li>Boolean, 结束则返回 true</li>
 </ul>
 <hr>
 <h3 id="clear">clear</h3>
@@ -220,7 +220,7 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>stm - 指定接收格式化消息的流对象</li>
+<li>stm: <a href=stream.md.html>Stream</a>, 指定接收格式化消息的流对象</li>
 </ul>
 <hr>
 <h3 id="readfrom">readFrom</h3>
@@ -229,7 +229,7 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>stm - 指定读取格式化消息的流对象</li>
+<li>stm: <a href=stream.md.html>Stream</a>, 指定读取格式化消息的流对象</li>
 </ul>
 <hr>
 <h3 id="dispose">dispose</h3>
@@ -243,11 +243,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>expected - 制定比较的目标对象</li>
+<li>expected: object, 制定比较的目标对象</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回对象比较的结果</li>
+<li>Boolean, 返回对象比较的结果</li>
 </ul>
 <hr>
 <h3 id="tostring">toString</h3>
@@ -256,7 +256,7 @@
 </code></pre>
 <p>返回结果:</p>
 <ul>
-<li>返回对象的字符串表示</li>
+<li>String, 返回对象的字符串表示</li>
 </ul>
 <hr>
 <h3 id="tojson">toJSON</h3>
@@ -265,11 +265,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>key - 未使用</li>
+<li>key: String, 未使用</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回包含可 JSON 序列化的值</li>
+<li>Value, 返回包含可 JSON 序列化的值</li>
 </ul>
 <hr>
 <h3 id="valueof">valueOf</h3>
@@ -278,51 +278,51 @@
 </code></pre>
 <p>返回结果:</p>
 <ul>
-<li>返回对象本身的数值</li>
+<li>Value, 返回对象本身的数值</li>
 </ul>
 <h2 id="-">成员属性</h2>
 <h3 id="value">value</h3>
-<p>消息的基本内容</p>
+<p>String, 消息的基本内容</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> Message.value;
 </code></pre>
 <hr>
 <h3 id="params">params</h3>
-<p>消息的基本参数</p>
+<p><a href=list.md.html>List</a>, 消息的基本参数</p>
 <pre><code class="lang-JavaScript">List Message.params;
 </code></pre>
 <hr>
 <h3 id="type">type</h3>
-<p>消息类型</p>
+<p>Integer, 消息类型</p>
 <pre><code class="lang-JavaScript">Integer Message.type;
 </code></pre>
 <hr>
 <h3 id="data">data</h3>
-<p>查询消息的数据</p>
+<p>Value, 查询消息的数据</p>
 <pre><code class="lang-JavaScript">readonly Value Message.data;
 </code></pre>
 <hr>
 <h3 id="body">body</h3>
-<p>包含消息数据部分的流对象</p>
+<p><a href=seekablestream.md.html>SeekableStream</a>, 包含消息数据部分的流对象</p>
 <pre><code class="lang-JavaScript">SeekableStream Message.body;
 </code></pre>
 <hr>
 <h3 id="length">length</h3>
-<p>消息数据部分的长度</p>
+<p>Long, 消息数据部分的长度</p>
 <pre><code class="lang-JavaScript">readonly Long Message.length;
 </code></pre>
 <hr>
 <h3 id="stream">stream</h3>
-<p>查询消息 readFrom 时的流对象</p>
+<p><a href=stream.md.html>Stream</a>, 查询消息 readFrom 时的流对象</p>
 <pre><code class="lang-JavaScript">readonly Stream Message.stream;
 </code></pre>
 <hr>
 <h3 id="response">response</h3>
-<p>获取响应消息对象</p>
+<p>Message, 获取响应消息对象</p>
 <pre><code class="lang-JavaScript">readonly Message Message.response;
 </code></pre>
 <hr>
 <h3 id="lasterror">lastError</h3>
-<p>查询和设置消息处理的最后错误</p>
+<p>String, 查询和设置消息处理的最后错误</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> Message.lastError;
 </code></pre>
 <h2 id="-">常量</h2>

@@ -164,7 +164,7 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>certs - 服务器证书列表</li>
+<li>certs: Array, 服务器证书列表</li>
 </ul>
 <p>certs 格式为：</p>
 <pre><code class="lang-JavaScript">[
@@ -185,8 +185,8 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>crt - X509Cert 证书，用于客户端验证服务器</li>
-<li>key - PKey 私钥，用于与客户端会话</li>
+<li>crt: <a href=x509cert.md.html>X509Cert</a>, <a href=x509cert.md.html>X509Cert</a> 证书，用于客户端验证服务器</li>
+<li>key: <a href=pkey.md.html>PKey</a>, <a href=pkey.md.html>PKey</a> 私钥，用于与客户端会话</li>
 </ul>
 <h2 id="-">成员函数</h2>
 <h3 id="connect">connect</h3>
@@ -196,12 +196,12 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>s - 给定的底层连接</li>
-<li>server_name - 指定服务器名称，可缺省</li>
+<li>s: <a href=stream.md.html>Stream</a>, 给定的底层连接</li>
+<li>server_name: String, 指定服务器名称，可缺省</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>连接成功返回 0，证书可选验证时，验证不成功则返回非 0，详细错误见 ssl 模块</li>
+<li>Integer, 连接成功返回 0，证书可选验证时，验证不成功则返回非 0，详细错误见 <a href=../../module/ifs/ssl.md.html>ssl</a> 模块</li>
 </ul>
 <hr>
 <h3 id="accept">accept</h3>
@@ -210,11 +210,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>s - 给定的底层连接</li>
+<li>s: <a href=stream.md.html>Stream</a>, 给定的底层连接</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回新建立的 SslSocket 对象</li>
+<li>SslSocket, 返回新建立的 SslSocket 对象</li>
 </ul>
 <hr>
 <h3 id="read">read</h3>
@@ -223,11 +223,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>bytes - 指定要读取的数据量，缺省为读取随机大小的数据块，读出的数据尺寸取决于设备</li>
+<li>bytes: Integer, 指定要读取的数据量，缺省为读取随机大小的数据块，读出的数据尺寸取决于设备</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回从流内读取的数据，若无数据可读，或者连接中断，则返回 null</li>
+<li><a href=buffer.md.html>Buffer</a>, 返回从流内读取的数据，若无数据可读，或者连接中断，则返回 null</li>
 </ul>
 <hr>
 <h3 id="write">write</h3>
@@ -236,7 +236,7 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>data - 给定要写入的数据</li>
+<li>data: <a href=buffer.md.html>Buffer</a>, 给定要写入的数据</li>
 </ul>
 <hr>
 <h3 id="close">close</h3>
@@ -251,12 +251,12 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>stm - 目标流对象</li>
-<li>bytes - 复制的字节数</li>
+<li>stm: Stream, 目标流对象</li>
+<li>bytes: Long, 复制的字节数</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回复制的字节数</li>
+<li>Long, 返回复制的字节数</li>
 </ul>
 <hr>
 <h3 id="dispose">dispose</h3>
@@ -270,11 +270,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>expected - 制定比较的目标对象</li>
+<li>expected: object, 制定比较的目标对象</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回对象比较的结果</li>
+<li>Boolean, 返回对象比较的结果</li>
 </ul>
 <hr>
 <h3 id="tostring">toString</h3>
@@ -283,7 +283,7 @@
 </code></pre>
 <p>返回结果:</p>
 <ul>
-<li>返回对象的字符串表示</li>
+<li>String, 返回对象的字符串表示</li>
 </ul>
 <hr>
 <h3 id="tojson">toJSON</h3>
@@ -292,11 +292,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>key - 未使用</li>
+<li>key: String, 未使用</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回包含可 JSON 序列化的值</li>
+<li>Value, 返回包含可 JSON 序列化的值</li>
 </ul>
 <hr>
 <h3 id="valueof">valueOf</h3>
@@ -305,26 +305,26 @@
 </code></pre>
 <p>返回结果:</p>
 <ul>
-<li>返回对象本身的数值</li>
+<li>Value, 返回对象本身的数值</li>
 </ul>
 <h2 id="-">成员属性</h2>
 <h3 id="verification">verification</h3>
-<p>设定证书验证模式，缺省为 VERIFY_REQUIRED</p>
+<p>Integer, 设定证书验证模式，缺省为 VERIFY_REQUIRED</p>
 <pre><code class="lang-JavaScript">Integer SslSocket.verification;
 </code></pre>
 <hr>
 <h3 id="ca">ca</h3>
-<p>证书链，客户端模式 connect 时自动引用 <a href=../../module/ifs/ssl.md.html>ssl</a>.ca，服务器模式 accept 生成 SslSocket 自动引用当前 SslSocket 的 ca</p>
+<p><a href=x509cert.md.html>X509Cert</a>, 证书链，客户端模式 connect 时自动引用 <a href=../../module/ifs/ssl.md.html>ssl</a>.ca，服务器模式 accept 生成 SslSocket 自动引用当前 SslSocket 的 ca</p>
 <pre><code class="lang-JavaScript">readonly X509Cert SslSocket.ca;
 </code></pre>
 <hr>
 <h3 id="peercert">peerCert</h3>
-<p>连接对方的证书</p>
+<p><a href=x509cert.md.html>X509Cert</a>, 连接对方的证书</p>
 <pre><code class="lang-JavaScript">readonly X509Cert SslSocket.peerCert;
 </code></pre>
 <hr>
 <h3 id="stream">stream</h3>
-<p>查询消息 <a href=../../module/ifs/ssl.md.html>ssl</a> 建立时的下层流对象</p>
+<p><a href=stream.md.html>Stream</a>, 查询消息 <a href=../../module/ifs/ssl.md.html>ssl</a> 建立时的下层流对象</p>
 <pre><code class="lang-JavaScript">readonly Stream SslSocket.stream;
 </code></pre>
  </div><div class="hidden-sm hidden-xs col-xs-3"><div id=toc></div></div></div><div class=container><div class=footer><p>&copy; 2017 fibjs.org</p></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="Click to return on the top page" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=../../../../js/common.js></script><script type=text/javascript src=../../../../js/docs.js></script></body></html>

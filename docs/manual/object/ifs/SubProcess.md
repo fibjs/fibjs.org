@@ -14,7 +14,7 @@ SubProcess.kill(Integer signal);
 ```
 
 调用参数:
-* signal - 传递的信号
+* signal: Integer, 传递的信号
 
 --------------------------
 ### wait
@@ -24,7 +24,7 @@ Integer SubProcess.wait() async;
 ```
 
 返回结果:
-* 进程的结束代码
+* Integer, 进程的结束代码
 
 --------------------------
 ### findWindow
@@ -34,10 +34,10 @@ Value SubProcess.findWindow(String name);
 ```
 
 调用参数:
-* name - 窗口名称
+* name: String, 窗口名称
 
 返回结果:
-* 窗口存在则返回窗口的 rect，否则返回 undefined
+* Value, 窗口存在则返回窗口的 rect，否则返回 undefined
 
 --------------------------
 ### readText
@@ -47,10 +47,10 @@ String SubProcess.readText(Integer size) async;
 ```
 
 调用参数:
-* size - 指定读取的文本字符个数，以 utf8 或者指定的编码字节数为准
+* size: Integer, 指定读取的文本字符个数，以 utf8 或者指定的编码字节数为准
 
 返回结果:
-* 返回读取的文本字符串，若无数据可读，或者连接中断，则返回 null
+* String, 返回读取的文本字符串，若无数据可读，或者连接中断，则返回 null
 
 --------------------------
 ### readLine
@@ -60,10 +60,10 @@ String SubProcess.readLine(Integer maxlen = -1) async;
 ```
 
 调用参数:
-* maxlen - 指定此次读取的最大字符串，以 utf8 编码字节数为准，缺省不限制字符数
+* maxlen: Integer, 指定此次读取的最大字符串，以 utf8 编码字节数为准，缺省不限制字符数
 
 返回结果:
-* 返回读取的文本字符串，若无数据可读，或者连接中断，则返回 null
+* String, 返回读取的文本字符串，若无数据可读，或者连接中断，则返回 null
 
 --------------------------
 ### readLines
@@ -73,10 +73,10 @@ Array SubProcess.readLines(Integer maxlines = -1);
 ```
 
 调用参数:
-* maxlines - 指定此次读取的最大行数，缺省读取全部文本行
+* maxlines: Integer, 指定此次读取的最大行数，缺省读取全部文本行
 
 返回结果:
-* 返回读取的文本行数组，若无数据可读，或者连接中断，空数组
+* Array, 返回读取的文本行数组，若无数据可读，或者连接中断，空数组
 
 --------------------------
 ### readUntil
@@ -87,11 +87,11 @@ String SubProcess.readUntil(String mk,
 ```
 
 调用参数:
-* mk - 指定结尾的字符串
-* maxlen - 指定此次读取的最大字符串，以 utf8 编码字节数为准，缺省不限制字符数
+* mk: String, 指定结尾的字符串
+* maxlen: Integer, 指定此次读取的最大字符串，以 utf8 编码字节数为准，缺省不限制字符数
 
 返回结果:
-* 返回读取的文本字符串，若无数据可读，或者连接中断，则返回 null
+* String, 返回读取的文本字符串，若无数据可读，或者连接中断，则返回 null
 
 --------------------------
 ### writeText
@@ -101,7 +101,7 @@ SubProcess.writeText(String txt) async;
 ```
 
 调用参数:
-* txt - 指定写入的字符串
+* txt: String, 指定写入的字符串
 
 --------------------------
 ### writeLine
@@ -111,7 +111,7 @@ SubProcess.writeLine(String txt) async;
 ```
 
 调用参数:
-* txt - 指定写入的字符串
+* txt: String, 指定写入的字符串
 
 --------------------------
 ### read
@@ -121,10 +121,10 @@ Buffer SubProcess.read(Integer bytes = -1) async;
 ```
 
 调用参数:
-* bytes - 指定要读取的数据量，缺省为读取随机大小的数据块，读出的数据尺寸取决于设备
+* bytes: Integer, 指定要读取的数据量，缺省为读取随机大小的数据块，读出的数据尺寸取决于设备
 
 返回结果:
-* 返回从流内读取的数据，若无数据可读，或者连接中断，则返回 null
+* [Buffer](Buffer.md), 返回从流内读取的数据，若无数据可读，或者连接中断，则返回 null
 
 --------------------------
 ### write
@@ -134,7 +134,7 @@ SubProcess.write(Buffer data) async;
 ```
 
 调用参数:
-* data - 给定要写入的数据
+* data: [Buffer](Buffer.md), 给定要写入的数据
 
 --------------------------
 ### close
@@ -152,11 +152,11 @@ Long SubProcess.copyTo(Stream stm,
 ```
 
 调用参数:
-* stm - 目标流对象
-* bytes - 复制的字节数
+* stm: Stream, 目标流对象
+* bytes: Long, 复制的字节数
 
 返回结果:
-* 返回复制的字节数
+* Long, 返回复制的字节数
 
 --------------------------
 ### dispose
@@ -173,10 +173,10 @@ Boolean SubProcess.equals(object expected);
 ```
 
 调用参数:
-* expected - 制定比较的目标对象
+* expected: object, 制定比较的目标对象
 
 返回结果:
-* 返回对象比较的结果
+* Boolean, 返回对象比较的结果
 
 --------------------------
 ### toString
@@ -186,7 +186,7 @@ String SubProcess.toString();
 ```
 
 返回结果:
-* 返回对象的字符串表示
+* String, 返回对象的字符串表示
 
 --------------------------
 ### toJSON
@@ -196,10 +196,10 @@ Value SubProcess.toJSON(String key = "");
 ```
 
 调用参数:
-* key - 未使用
+* key: String, 未使用
 
 返回结果:
-* 返回包含可 JSON 序列化的值
+* Value, 返回包含可 JSON 序列化的值
 
 --------------------------
 ### valueOf
@@ -209,47 +209,47 @@ Value SubProcess.valueOf();
 ```
 
 返回结果:
-* 返回对象本身的数值
+* Value, 返回对象本身的数值
 
 ## 成员属性
         
 ### pid
-读取当前对象指向的进程的 id
+Integer, 读取当前对象指向的进程的 id
 ```JavaScript
 readonly Integer SubProcess.pid;
 ```
 
 --------------------------
 ### stdin
-读取当前对象指向的进程的标准输入对象
+[BufferedStream](BufferedStream.md), 读取当前对象指向的进程的标准输入对象
 ```JavaScript
 readonly BufferedStream SubProcess.stdin;
 ```
 
 --------------------------
 ### stdout
-读取当前对象指向的进程的标准输出对象
+[BufferedStream](BufferedStream.md), 读取当前对象指向的进程的标准输出对象
 ```JavaScript
 readonly BufferedStream SubProcess.stdout;
 ```
 
 --------------------------
 ### stream
-查询创建缓存对象时的流对象
+[Stream](Stream.md), 查询创建缓存对象时的流对象
 ```JavaScript
 readonly Stream SubProcess.stream;
 ```
 
 --------------------------
 ### charset
-查询和设置当前对象处理文本时的字符集，缺省为 utf-8
+String, 查询和设置当前对象处理文本时的字符集，缺省为 utf-8
 ```JavaScript
 String SubProcess.charset;
 ```
 
 --------------------------
 ### EOL
-查询和设置行结尾标识，缺省时，posix:\"\\n\"；windows:\"\\r\\n\"
+String, 查询和设置行结尾标识，缺省时，posix:\"\\n\"；windows:\"\\r\\n\"
 ```JavaScript
 String SubProcess.EOL;
 ```

@@ -14,7 +14,7 @@ SslSocket 构造函数，创建一个新的 SslSocket 对象
 ```
 
 调用参数:
-* certs - 服务器证书列表
+* certs: Array, 服务器证书列表
 
 certs 格式为：
 ```JavaScript
@@ -38,8 +38,8 @@ SslSocket 构造函数，创建一个新的 SslSocket 对象
 ```
 
 调用参数:
-* crt - X509Cert 证书，用于客户端验证服务器
-* key - PKey 私钥，用于与客户端会话
+* crt: [X509Cert](X509Cert.md), [X509Cert](X509Cert.md) 证书，用于客户端验证服务器
+* key: [PKey](PKey.md), [PKey](PKey.md) 私钥，用于与客户端会话
 
 ## 成员函数
         
@@ -51,11 +51,11 @@ Integer SslSocket.connect(Stream s,
 ```
 
 调用参数:
-* s - 给定的底层连接
-* server_name - 指定服务器名称，可缺省
+* s: [Stream](Stream.md), 给定的底层连接
+* server_name: String, 指定服务器名称，可缺省
 
 返回结果:
-* 连接成功返回 0，证书可选验证时，验证不成功则返回非 0，详细错误见 ssl 模块
+* Integer, 连接成功返回 0，证书可选验证时，验证不成功则返回非 0，详细错误见 [ssl](../../module/ifs/ssl.md) 模块
 
 --------------------------
 ### accept
@@ -65,10 +65,10 @@ SslSocket SslSocket.accept(Stream s) async;
 ```
 
 调用参数:
-* s - 给定的底层连接
+* s: [Stream](Stream.md), 给定的底层连接
 
 返回结果:
-* 返回新建立的 SslSocket 对象
+* SslSocket, 返回新建立的 SslSocket 对象
 
 --------------------------
 ### read
@@ -78,10 +78,10 @@ Buffer SslSocket.read(Integer bytes = -1) async;
 ```
 
 调用参数:
-* bytes - 指定要读取的数据量，缺省为读取随机大小的数据块，读出的数据尺寸取决于设备
+* bytes: Integer, 指定要读取的数据量，缺省为读取随机大小的数据块，读出的数据尺寸取决于设备
 
 返回结果:
-* 返回从流内读取的数据，若无数据可读，或者连接中断，则返回 null
+* [Buffer](Buffer.md), 返回从流内读取的数据，若无数据可读，或者连接中断，则返回 null
 
 --------------------------
 ### write
@@ -91,7 +91,7 @@ SslSocket.write(Buffer data) async;
 ```
 
 调用参数:
-* data - 给定要写入的数据
+* data: [Buffer](Buffer.md), 给定要写入的数据
 
 --------------------------
 ### close
@@ -109,11 +109,11 @@ Long SslSocket.copyTo(Stream stm,
 ```
 
 调用参数:
-* stm - 目标流对象
-* bytes - 复制的字节数
+* stm: Stream, 目标流对象
+* bytes: Long, 复制的字节数
 
 返回结果:
-* 返回复制的字节数
+* Long, 返回复制的字节数
 
 --------------------------
 ### dispose
@@ -130,10 +130,10 @@ Boolean SslSocket.equals(object expected);
 ```
 
 调用参数:
-* expected - 制定比较的目标对象
+* expected: object, 制定比较的目标对象
 
 返回结果:
-* 返回对象比较的结果
+* Boolean, 返回对象比较的结果
 
 --------------------------
 ### toString
@@ -143,7 +143,7 @@ String SslSocket.toString();
 ```
 
 返回结果:
-* 返回对象的字符串表示
+* String, 返回对象的字符串表示
 
 --------------------------
 ### toJSON
@@ -153,10 +153,10 @@ Value SslSocket.toJSON(String key = "");
 ```
 
 调用参数:
-* key - 未使用
+* key: String, 未使用
 
 返回结果:
-* 返回包含可 JSON 序列化的值
+* Value, 返回包含可 JSON 序列化的值
 
 --------------------------
 ### valueOf
@@ -166,33 +166,33 @@ Value SslSocket.valueOf();
 ```
 
 返回结果:
-* 返回对象本身的数值
+* Value, 返回对象本身的数值
 
 ## 成员属性
         
 ### verification
-设定证书验证模式，缺省为 VERIFY_REQUIRED
+Integer, 设定证书验证模式，缺省为 VERIFY_REQUIRED
 ```JavaScript
 Integer SslSocket.verification;
 ```
 
 --------------------------
 ### ca
-证书链，客户端模式 connect 时自动引用 [ssl](../../module/ifs/ssl.md).ca，服务器模式 accept 生成 SslSocket 自动引用当前 SslSocket 的 ca
+[X509Cert](X509Cert.md), 证书链，客户端模式 connect 时自动引用 [ssl](../../module/ifs/ssl.md).ca，服务器模式 accept 生成 SslSocket 自动引用当前 SslSocket 的 ca
 ```JavaScript
 readonly X509Cert SslSocket.ca;
 ```
 
 --------------------------
 ### peerCert
-连接对方的证书
+[X509Cert](X509Cert.md), 连接对方的证书
 ```JavaScript
 readonly X509Cert SslSocket.peerCert;
 ```
 
 --------------------------
 ### stream
-查询消息 [ssl](../../module/ifs/ssl.md) 建立时的下层流对象
+[Stream](Stream.md), 查询消息 [ssl](../../module/ifs/ssl.md) 建立时的下层流对象
 ```JavaScript
 readonly Stream SslSocket.stream;
 ```

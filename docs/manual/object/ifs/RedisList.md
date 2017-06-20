@@ -16,10 +16,10 @@ Integer RedisList.push(Array values);
 ```
 
 调用参数:
-* values - 指定要插入的数据
+* values: Array, 指定要插入的数据
 
 返回结果:
-* 插入后，列表的长度
+* Integer, 插入后，列表的长度
 
 --------------------------
 将一个或多个值 value 插入到列表的表头
@@ -28,10 +28,10 @@ Integer RedisList.push(...);
 ```
 
 调用参数:
-* ... - 指定要插入的数据
+* ...: 指定要插入的数据
 
 返回结果:
-* 插入后，列表的长度
+* Integer, 插入后，列表的长度
 
 --------------------------
 ### pop
@@ -41,7 +41,7 @@ Buffer RedisList.pop();
 ```
 
 返回结果:
-* 列表的头元素，如果列表为空则返回 null
+* [Buffer](Buffer.md), 列表的头元素，如果列表为空则返回 null
 
 --------------------------
 ### rpush
@@ -51,10 +51,10 @@ Integer RedisList.rpush(Array values);
 ```
 
 调用参数:
-* values - 指定要插入的数据
+* values: Array, 指定要插入的数据
 
 返回结果:
-* 插入后，列表的长度
+* Integer, 插入后，列表的长度
 
 --------------------------
 将一个或多个值 value 插入到列表的表尾(最右边)
@@ -63,10 +63,10 @@ Integer RedisList.rpush(...);
 ```
 
 调用参数:
-* ... - 指定要插入的数据
+* ...: 指定要插入的数据
 
 返回结果:
-* 插入后，列表的长度
+* Integer, 插入后，列表的长度
 
 --------------------------
 ### rpop
@@ -76,7 +76,7 @@ Buffer RedisList.rpop();
 ```
 
 返回结果:
-* 列表的头元素，如果列表为空则返回 null
+* [Buffer](Buffer.md), 列表的头元素，如果列表为空则返回 null
 
 --------------------------
 ### set
@@ -87,8 +87,8 @@ RedisList.set(Integer index,
 ```
 
 调用参数:
-* index - 指定要修改的下标
-* value - 指定要修改的数据
+* index: Integer, 指定要修改的下标
+* value: [Buffer](Buffer.md), 指定要修改的数据
 
 --------------------------
 ### get
@@ -98,10 +98,10 @@ Buffer RedisList.get(Integer index);
 ```
 
 调用参数:
-* index - 指定要查询的下标
+* index: Integer, 指定要查询的下标
 
 返回结果:
-* 列表中下标为 index 的元素
+* [Buffer](Buffer.md), 列表中下标为 index 的元素
 
 --------------------------
 ### insertBefore
@@ -112,11 +112,11 @@ Integer RedisList.insertBefore(Buffer pivot,
 ```
 
 调用参数:
-* pivot - 指定插入时查找的数据
-* value - 指定要插入的数据
+* pivot: [Buffer](Buffer.md), 指定插入时查找的数据
+* value: [Buffer](Buffer.md), 指定要插入的数据
 
 返回结果:
-* 插入后，列表的长度
+* Integer, 插入后，列表的长度
 
 --------------------------
 ### insertAfter
@@ -127,11 +127,11 @@ Integer RedisList.insertAfter(Buffer pivot,
 ```
 
 调用参数:
-* pivot - 指定插入时查找的数据
-* value - 指定要插入的数据
+* pivot: [Buffer](Buffer.md), 指定插入时查找的数据
+* value: [Buffer](Buffer.md), 指定要插入的数据
 
 返回结果:
-* 插入后，列表的长度
+* Integer, 插入后，列表的长度
 
 --------------------------
 ### remove
@@ -142,11 +142,11 @@ Integer RedisList.remove(Integer count,
 ```
 
 调用参数:
-* count - 指定删除的元素数量
-* value - 指定要删除的数值
+* count: Integer, 指定删除的元素数量
+* value: [Buffer](Buffer.md), 指定要删除的数值
 
 返回结果:
-* 被移除元素的数量
+* Integer, 被移除元素的数量
 
 --------------------------
 ### trim
@@ -157,8 +157,8 @@ RedisList.trim(Integer start,
 ```
 
 调用参数:
-* start - 指定修剪的起始下标，0 表示第一个元素，-1 表示最后一个元素
-* stop - 指定修剪的结束下标，0 表示第一个元素，-1 表示最后一个元素
+* start: Integer, 指定修剪的起始下标，0 表示第一个元素，-1 表示最后一个元素
+* stop: Integer, 指定修剪的结束下标，0 表示第一个元素，-1 表示最后一个元素
 
 --------------------------
 ### len
@@ -168,7 +168,7 @@ Integer RedisList.len();
 ```
 
 返回结果:
-* 返回列表的长度
+* Integer, 返回列表的长度
 
 --------------------------
 ### range
@@ -179,11 +179,11 @@ List RedisList.range(Integer start,
 ```
 
 调用参数:
-* start - 指定查询的起始下标，0 表示第一个元素，-1 表示最后一个元素
-* stop - 指定查询的结束下标，0 表示第一个元素，-1 表示最后一个元素
+* start: Integer, 指定查询的起始下标，0 表示第一个元素，-1 表示最后一个元素
+* stop: Integer, 指定查询的结束下标，0 表示第一个元素，-1 表示最后一个元素
 
 返回结果:
-* 包含指定区间内的元素的数组
+* [List](List.md), 包含指定区间内的元素的数组
 
 --------------------------
 ### dispose
@@ -200,10 +200,10 @@ Boolean RedisList.equals(object expected);
 ```
 
 调用参数:
-* expected - 制定比较的目标对象
+* expected: object, 制定比较的目标对象
 
 返回结果:
-* 返回对象比较的结果
+* Boolean, 返回对象比较的结果
 
 --------------------------
 ### toString
@@ -213,7 +213,7 @@ String RedisList.toString();
 ```
 
 返回结果:
-* 返回对象的字符串表示
+* String, 返回对象的字符串表示
 
 --------------------------
 ### toJSON
@@ -223,10 +223,10 @@ Value RedisList.toJSON(String key = "");
 ```
 
 调用参数:
-* key - 未使用
+* key: String, 未使用
 
 返回结果:
-* 返回包含可 JSON 序列化的值
+* Value, 返回包含可 JSON 序列化的值
 
 --------------------------
 ### valueOf
@@ -236,5 +236,5 @@ Value RedisList.valueOf();
 ```
 
 返回结果:
-* 返回对象本身的数值
+* Value, 返回对象本身的数值
 

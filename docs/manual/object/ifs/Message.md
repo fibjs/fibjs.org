@@ -23,10 +23,10 @@ Buffer Message.read(Integer bytes = -1) async;
 ```
 
 调用参数:
-* bytes - 指定要读取的数据量，缺省为读取随机大小的数据块，读出的数据尺寸取决于设备
+* bytes: Integer, 指定要读取的数据量，缺省为读取随机大小的数据块，读出的数据尺寸取决于设备
 
 返回结果:
-* 返回从流内读取的数据，若无数据可读，或者连接中断，则返回 null
+* [Buffer](Buffer.md), 返回从流内读取的数据，若无数据可读，或者连接中断，则返回 null
 
 --------------------------
 ### readAll
@@ -36,7 +36,7 @@ Buffer Message.readAll() async;
 ```
 
 返回结果:
-* 返回从流内读取的数据，若无数据可读，或者连接中断，则返回 null
+* [Buffer](Buffer.md), 返回从流内读取的数据，若无数据可读，或者连接中断，则返回 null
 
 --------------------------
 ### write
@@ -46,7 +46,7 @@ Message.write(Buffer data) async;
 ```
 
 调用参数:
-* data - 给定要写入的数据
+* data: [Buffer](Buffer.md), 给定要写入的数据
 
 --------------------------
 ### end
@@ -63,7 +63,7 @@ Boolean Message.isEnded();
 ```
 
 返回结果:
-* 结束则返回 true
+* Boolean, 结束则返回 true
 
 --------------------------
 ### clear
@@ -80,7 +80,7 @@ Message.sendTo(Stream stm) async;
 ```
 
 调用参数:
-* stm - 指定接收格式化消息的流对象
+* stm: [Stream](Stream.md), 指定接收格式化消息的流对象
 
 --------------------------
 ### readFrom
@@ -90,7 +90,7 @@ Message.readFrom(Stream stm) async;
 ```
 
 调用参数:
-* stm - 指定读取格式化消息的流对象
+* stm: [Stream](Stream.md), 指定读取格式化消息的流对象
 
 --------------------------
 ### dispose
@@ -107,10 +107,10 @@ Boolean Message.equals(object expected);
 ```
 
 调用参数:
-* expected - 制定比较的目标对象
+* expected: object, 制定比较的目标对象
 
 返回结果:
-* 返回对象比较的结果
+* Boolean, 返回对象比较的结果
 
 --------------------------
 ### toString
@@ -120,7 +120,7 @@ String Message.toString();
 ```
 
 返回结果:
-* 返回对象的字符串表示
+* String, 返回对象的字符串表示
 
 --------------------------
 ### toJSON
@@ -130,10 +130,10 @@ Value Message.toJSON(String key = "");
 ```
 
 调用参数:
-* key - 未使用
+* key: String, 未使用
 
 返回结果:
-* 返回包含可 JSON 序列化的值
+* Value, 返回包含可 JSON 序列化的值
 
 --------------------------
 ### valueOf
@@ -143,68 +143,68 @@ Value Message.valueOf();
 ```
 
 返回结果:
-* 返回对象本身的数值
+* Value, 返回对象本身的数值
 
 ## 成员属性
         
 ### value
-消息的基本内容
+String, 消息的基本内容
 ```JavaScript
 String Message.value;
 ```
 
 --------------------------
 ### params
-消息的基本参数
+[List](List.md), 消息的基本参数
 ```JavaScript
 List Message.params;
 ```
 
 --------------------------
 ### type
-消息类型
+Integer, 消息类型
 ```JavaScript
 Integer Message.type;
 ```
 
 --------------------------
 ### data
-查询消息的数据
+Value, 查询消息的数据
 ```JavaScript
 readonly Value Message.data;
 ```
 
 --------------------------
 ### body
-包含消息数据部分的流对象
+[SeekableStream](SeekableStream.md), 包含消息数据部分的流对象
 ```JavaScript
 SeekableStream Message.body;
 ```
 
 --------------------------
 ### length
-消息数据部分的长度
+Long, 消息数据部分的长度
 ```JavaScript
 readonly Long Message.length;
 ```
 
 --------------------------
 ### stream
-查询消息 readFrom 时的流对象
+[Stream](Stream.md), 查询消息 readFrom 时的流对象
 ```JavaScript
 readonly Stream Message.stream;
 ```
 
 --------------------------
 ### response
-获取响应消息对象
+Message, 获取响应消息对象
 ```JavaScript
 readonly Message Message.response;
 ```
 
 --------------------------
 ### lastError
-查询和设置消息处理的最后错误
+String, 查询和设置消息处理的最后错误
 ```JavaScript
 String Message.lastError;
 ```

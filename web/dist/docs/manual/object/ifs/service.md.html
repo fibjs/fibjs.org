@@ -163,13 +163,13 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>name - 服务名称</li>
-<li>worker - 服务运行函数</li>
-<li>event - 服务事件处理</li>
+<li>name: String, 服务名称</li>
+<li>worker: Function, 服务运行函数</li>
+<li>event: Object, 服务事件处理</li>
 </ul>
 <h2 id="-">静态属性</h2>
 <h3 id="defaultmaxlisteners">defaultMaxListeners</h3>
-<p>默认全局最大监听器数</p>
+<p>Integer, 默认全局最大监听器数</p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> Integer Service.defaultMaxListeners;
 </code></pre>
 <h2 id="-">成员函数</h2>
@@ -181,9 +181,9 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>cmd - 服务命令行</li>
-<li>displayName - 服务显示名称</li>
-<li>description - 服务描述信息</li>
+<li>cmd: String, 服务命令行</li>
+<li>displayName: String, 服务显示名称</li>
+<li>description: String, 服务描述信息</li>
 </ul>
 <hr>
 <h3 id="remove">remove</h3>
@@ -217,7 +217,7 @@
 </code></pre>
 <p>返回结果:</p>
 <ul>
-<li>服务安装返回 True</li>
+<li>Boolean, 服务安装返回 True</li>
 </ul>
 <hr>
 <h3 id="isrunning">isRunning</h3>
@@ -226,7 +226,7 @@
 </code></pre>
 <p>返回结果:</p>
 <ul>
-<li>服务运行返回 True</li>
+<li>Boolean, 服务运行返回 True</li>
 </ul>
 <hr>
 <h3 id="on">on</h3>
@@ -236,12 +236,12 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>ev - 指定事件的名称</li>
-<li>func - 指定事件处理函数</li>
+<li>ev: String, 指定事件的名称</li>
+<li>func: Function, 指定事件处理函数</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回成功绑定的数量，如果函数已绑定则返回 0</li>
+<li>Object, 返回成功绑定的数量，如果函数已绑定则返回 0</li>
 </ul>
 <hr>
 <p>绑定一个事件处理函数到对象</p>
@@ -249,11 +249,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>map - 指定事件映射关系，对象属性名称将作为事件名称，属性的值将作为事件处理函数</li>
+<li>map: Object, 指定事件映射关系，对象属性名称将作为事件名称，属性的值将作为事件处理函数</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回事件对象本身，便于链式调用</li>
+<li>Object, 返回事件对象本身，便于链式调用</li>
 </ul>
 <hr>
 <h3 id="addlistener">addListener</h3>
@@ -263,12 +263,12 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>ev - 指定事件的名称</li>
-<li>func - 指定事件处理函数</li>
+<li>ev: String, 指定事件的名称</li>
+<li>func: Function, 指定事件处理函数</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回事件对象本身，便于链式调用</li>
+<li>Object, 返回事件对象本身，便于链式调用</li>
 </ul>
 <hr>
 <p>绑定一个事件处理函数到对象</p>
@@ -276,11 +276,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>map - 指定事件映射关系，对象属性名称将作为事件名称，属性的值将作为事件处理函数</li>
+<li>map: Object, 指定事件映射关系，对象属性名称将作为事件名称，属性的值将作为事件处理函数</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回事件对象本身，便于链式调用</li>
+<li>Object, 返回事件对象本身，便于链式调用</li>
 </ul>
 <hr>
 <h3 id="prependlistener">prependListener</h3>
@@ -290,12 +290,12 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>ev - 指定事件的名称</li>
-<li>func - 指定事件处理函数</li>
+<li>ev: String, 指定事件的名称</li>
+<li>func: Function, 指定事件处理函数</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回成功绑定的数量，如果函数已绑定则返回 0</li>
+<li>Object, 返回成功绑定的数量，如果函数已绑定则返回 0</li>
 </ul>
 <hr>
 <p>绑定一个事件处理函数到对象起始</p>
@@ -303,12 +303,12 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>ev - 指定事件的名称</li>
-<li>func - 指定事件处理函数</li>
+<li>ev: 指定事件的名称</li>
+<li>func: 指定事件处理函数</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回成功绑定的数量，如果函数已绑定则返回 0</li>
+<li>Object, 返回成功绑定的数量，如果函数已绑定则返回 0</li>
 </ul>
 <hr>
 <h3 id="once">once</h3>
@@ -318,12 +318,12 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>ev - 指定事件的名称</li>
-<li>func - 指定事件处理函数</li>
+<li>ev: String, 指定事件的名称</li>
+<li>func: Function, 指定事件处理函数</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回事件对象本身，便于链式调用</li>
+<li>Object, 返回事件对象本身，便于链式调用</li>
 </ul>
 <hr>
 <p>绑定一个一次性事件处理函数到对象，一次性处理函数只会触发一次</p>
@@ -331,11 +331,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>map - 指定事件映射关系，对象属性名称将作为事件名称，属性的值将作为事件处理函数</li>
+<li>map: Object, 指定事件映射关系，对象属性名称将作为事件名称，属性的值将作为事件处理函数</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回事件对象本身，便于链式调用</li>
+<li>Object, 返回事件对象本身，便于链式调用</li>
 </ul>
 <hr>
 <h3 id="prependoncelistener">prependOnceListener</h3>
@@ -345,12 +345,12 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>ev - 指定事件的名称</li>
-<li>func - 指定事件处理函数</li>
+<li>ev: String, 指定事件的名称</li>
+<li>func: Function, 指定事件处理函数</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回成功绑定的数量，如果函数已绑定则返回 0</li>
+<li>Object, 返回成功绑定的数量，如果函数已绑定则返回 0</li>
 </ul>
 <hr>
 <p>绑定一个事件处理函数到对象起始</p>
@@ -358,12 +358,12 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>ev - 指定事件的名称</li>
-<li>func - 指定事件处理函数</li>
+<li>ev: 指定事件的名称</li>
+<li>func: 指定事件处理函数</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回成功绑定的数量，如果函数已绑定则返回 0</li>
+<li>Object, 返回成功绑定的数量，如果函数已绑定则返回 0</li>
 </ul>
 <hr>
 <h3 id="off">off</h3>
@@ -373,12 +373,12 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>ev - 指定事件的名称</li>
-<li>func - 指定事件处理函数</li>
+<li>ev: String, 指定事件的名称</li>
+<li>func: Function, 指定事件处理函数</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回事件对象本身，便于链式调用</li>
+<li>Object, 返回事件对象本身，便于链式调用</li>
 </ul>
 <hr>
 <p>取消对象处理队列中的全部函数</p>
@@ -386,11 +386,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>ev - 指定事件的名称</li>
+<li>ev: String, 指定事件的名称</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回事件对象本身，便于链式调用</li>
+<li>Object, 返回事件对象本身，便于链式调用</li>
 </ul>
 <hr>
 <p>从对象处理队列中取消指定函数</p>
@@ -398,11 +398,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>map - 指定事件映射关系，对象属性名称作为事件名称，属性的值作为事件处理函数</li>
+<li>map: Object, 指定事件映射关系，对象属性名称作为事件名称，属性的值作为事件处理函数</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回事件对象本身，便于链式调用</li>
+<li>Object, 返回事件对象本身，便于链式调用</li>
 </ul>
 <hr>
 <h3 id="removelistener">removeListener</h3>
@@ -412,12 +412,12 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>ev - 指定事件的名称</li>
-<li>func - 指定事件处理函数</li>
+<li>ev: String, 指定事件的名称</li>
+<li>func: Function, 指定事件处理函数</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回事件对象本身，便于链式调用</li>
+<li>Object, 返回事件对象本身，便于链式调用</li>
 </ul>
 <hr>
 <p>取消对象处理队列中的全部函数</p>
@@ -425,11 +425,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>ev - 指定事件的名称</li>
+<li>ev: String, 指定事件的名称</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回事件对象本身，便于链式调用</li>
+<li>Object, 返回事件对象本身，便于链式调用</li>
 </ul>
 <hr>
 <p>从对象处理队列中取消指定函数</p>
@@ -437,11 +437,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>map - 指定事件映射关系，对象属性名称作为事件名称，属性的值作为事件处理函数</li>
+<li>map: Object, 指定事件映射关系，对象属性名称作为事件名称，属性的值作为事件处理函数</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回事件对象本身，便于链式调用</li>
+<li>Object, 返回事件对象本身，便于链式调用</li>
 </ul>
 <hr>
 <h3 id="removealllisteners">removeAllListeners</h3>
@@ -450,11 +450,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>evs - 指定事件的名称</li>
+<li>evs: Array, 指定事件的名称</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回事件对象本身，便于链式调用</li>
+<li>Object, 返回事件对象本身，便于链式调用</li>
 </ul>
 <hr>
 <h3 id="setmaxlisteners">setMaxListeners</h3>
@@ -463,7 +463,7 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>n - 指定事件的数量</li>
+<li>n: Integer, 指定事件的数量</li>
 </ul>
 <hr>
 <h3 id="getmaxlisteners">getMaxListeners</h3>
@@ -477,11 +477,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>ev - 指定事件的名称</li>
+<li>ev: String, 指定事件的名称</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回指定事件的监听器数组</li>
+<li>Array, 返回指定事件的监听器数组</li>
 </ul>
 <hr>
 <h3 id="listenercount">listenerCount</h3>
@@ -490,11 +490,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>ev - 指定事件的名称</li>
+<li>ev: String, 指定事件的名称</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回指定事件的监听器数量</li>
+<li>Integer, 返回指定事件的监听器数量</li>
 </ul>
 <hr>
 <h3 id="eventnames">eventNames</h3>
@@ -503,7 +503,7 @@
 </code></pre>
 <p>返回结果:</p>
 <ul>
-<li>返回事件名称数组</li>
+<li>Array, 返回事件名称数组</li>
 </ul>
 <hr>
 <h3 id="emit">emit</h3>
@@ -513,12 +513,12 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>ev - 事件名称</li>
-<li>... - 事件参数，将会传递给事件处理函数</li>
+<li>ev: String, 事件名称</li>
+<li>...: 事件参数，将会传递给事件处理函数</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回事件触发状态，有响应事件返回 true，否则返回 false</li>
+<li>Boolean, 返回事件触发状态，有响应事件返回 true，否则返回 false</li>
 </ul>
 <hr>
 <h3 id="dispose">dispose</h3>
@@ -532,11 +532,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>expected - 制定比较的目标对象</li>
+<li>expected: object, 制定比较的目标对象</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回对象比较的结果</li>
+<li>Boolean, 返回对象比较的结果</li>
 </ul>
 <hr>
 <h3 id="tostring">toString</h3>
@@ -545,7 +545,7 @@
 </code></pre>
 <p>返回结果:</p>
 <ul>
-<li>返回对象的字符串表示</li>
+<li>String, 返回对象的字符串表示</li>
 </ul>
 <hr>
 <h3 id="tojson">toJSON</h3>
@@ -554,11 +554,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>key - 未使用</li>
+<li>key: String, 未使用</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回包含可 JSON 序列化的值</li>
+<li>Value, 返回包含可 JSON 序列化的值</li>
 </ul>
 <hr>
 <h3 id="valueof">valueOf</h3>
@@ -567,26 +567,26 @@
 </code></pre>
 <p>返回结果:</p>
 <ul>
-<li>返回对象本身的数值</li>
+<li>Value, 返回对象本身的数值</li>
 </ul>
 <h2 id="-">成员属性</h2>
 <h3 id="name">name</h3>
-<p>查询和设置服务名称</p>
+<p>String, 查询和设置服务名称</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> Service.name;
 </code></pre>
 <hr>
 <h3 id="onstop">onstop</h3>
-<p>查询和绑定服务停止事件，相当于 on(&quot;stop&quot;, func);</p>
+<p>Function, 查询和绑定服务停止事件，相当于 on(&quot;stop&quot;, func);</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">Function</span> Service.onstop;
 </code></pre>
 <hr>
 <h3 id="onpause">onpause</h3>
-<p>查询和绑定服务暂停事件，相当于 on(&quot;pause&quot;, func);</p>
+<p>Function, 查询和绑定服务暂停事件，相当于 on(&quot;pause&quot;, func);</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">Function</span> Service.onpause;
 </code></pre>
 <hr>
 <h3 id="oncontinue">oncontinue</h3>
-<p>查询和绑定服务恢复事件，相当于 on(&quot;continue&quot;, func);</p>
+<p>Function, 查询和绑定服务恢复事件，相当于 on(&quot;continue&quot;, func);</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">Function</span> Service.oncontinue;
 </code></pre>
  </div><div class="hidden-sm hidden-xs col-xs-3"><div id=toc></div></div></div><div class=container><div class=footer><p>&copy; 2017 fibjs.org</p></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="Click to return on the top page" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=../../../../js/common.js></script><script type=text/javascript src=../../../../js/docs.js></script></body></html>

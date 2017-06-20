@@ -190,8 +190,8 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>filename - 密钥文件名</li>
-<li>password - 解密密码</li>
+<li>filename: String, 密钥文件名</li>
+<li>password: String, 解密密码</li>
 </ul>
 <hr>
 <h3 id="loadcert">loadCert</h3>
@@ -200,7 +200,7 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>filename - 证书文件名</li>
+<li>filename: String, 证书文件名</li>
 </ul>
 <p>loadFile 加载 mozilla 的 certdata,txt， 可于 <a href="http.md">http</a>://hg.mozilla.org/releases/mozilla-release/raw-file/default/security/nss/lib/ckfw/builtins/certdata.txt 下载使用</p>
 <hr>
@@ -210,7 +210,7 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>filename - 撤销证书文件名</li>
+<li>filename: String, 撤销证书文件名</li>
 </ul>
 <hr>
 <h3 id="loadreq">loadReq</h3>
@@ -219,7 +219,7 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>filename - 证书请求文件名</li>
+<li>filename: String, 证书请求文件名</li>
 </ul>
 <hr>
 <h3 id="randombytes">randomBytes</h3>
@@ -228,11 +228,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>size - 指定生成的随机数尺寸</li>
+<li>size: Integer, 指定生成的随机数尺寸</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回生成的随机数</li>
+<li><a href=../../object/ifs/buffer.md.html>Buffer</a>, 返回生成的随机数</li>
 </ul>
 <hr>
 <h3 id="simplerandombytes">simpleRandomBytes</h3>
@@ -241,11 +241,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>size - 指定生成的随机数尺寸</li>
+<li>size: Integer, 指定生成的随机数尺寸</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回生成的随机数</li>
+<li><a href=../../object/ifs/buffer.md.html>Buffer</a>, 返回生成的随机数</li>
 </ul>
 <hr>
 <h3 id="pseudorandombytes">pseudoRandomBytes</h3>
@@ -254,11 +254,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>size - 指定生成的随机数尺寸</li>
+<li>size: Integer, 指定生成的随机数尺寸</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回生成的随机数</li>
+<li><a href=../../object/ifs/buffer.md.html>Buffer</a>, 返回生成的随机数</li>
 </ul>
 <hr>
 <h3 id="randomart">randomArt</h3>
@@ -269,13 +269,13 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>data - 指定要展示的数据</li>
-<li>title - 指定字符图像的标题，多字节字符会导致宽度错误</li>
-<li>size - 字符图像尺寸</li>
+<li>data: <a href=../../object/ifs/buffer.md.html>Buffer</a>, 指定要展示的数据</li>
+<li>title: String, 指定字符图像的标题，多字节字符会导致宽度错误</li>
+<li>size: Integer, 字符图像尺寸</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回生成的可视化字符串图像</li>
+<li>String, 返回生成的可视化字符串图像</li>
 </ul>
 <hr>
 <h3 id="pbkdf1">pbkdf1</h3>
@@ -288,15 +288,15 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>password - 指定使用的密码</li>
-<li>salt - 指定 hmac 使用的 salt</li>
-<li>iterations - 指定迭代次数</li>
-<li>size - 指定钥匙尺寸</li>
-<li>algo - 指定要使用的 hash 算法，详见 hash 模块</li>
+<li>password: <a href=../../object/ifs/buffer.md.html>Buffer</a>, 指定使用的密码</li>
+<li>salt: <a href=../../object/ifs/buffer.md.html>Buffer</a>, 指定 hmac 使用的 salt</li>
+<li>iterations: Integer, 指定迭代次数</li>
+<li>size: Integer, 指定钥匙尺寸</li>
+<li>algo: Integer, 指定要使用的 <a href=hash.md.html>hash</a> 算法，详见 <a href=hash.md.html>hash</a> 模块</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回生成的二进制钥匙</li>
+<li><a href=../../object/ifs/buffer.md.html>Buffer</a>, 返回生成的二进制钥匙</li>
 </ul>
 <hr>
 <p>依据 pbkdf1 根据明文 password 生成要求的二进制钥匙</p>
@@ -308,15 +308,15 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>password - 指定使用的密码</li>
-<li>salt - 指定 hmac 使用的 salt</li>
-<li>iterations - 指定迭代次数</li>
-<li>size - 指定钥匙尺寸</li>
-<li>algoName - 指定要使用的 hash 算法，详见 hash 模块</li>
+<li>password: <a href=../../object/ifs/buffer.md.html>Buffer</a>, 指定使用的密码</li>
+<li>salt: <a href=../../object/ifs/buffer.md.html>Buffer</a>, 指定 hmac 使用的 salt</li>
+<li>iterations: Integer, 指定迭代次数</li>
+<li>size: Integer, 指定钥匙尺寸</li>
+<li>algoName: String, 指定要使用的 <a href=hash.md.html>hash</a> 算法，详见 <a href=hash.md.html>hash</a> 模块</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回生成的二进制钥匙</li>
+<li><a href=../../object/ifs/buffer.md.html>Buffer</a>, 返回生成的二进制钥匙</li>
 </ul>
 <hr>
 <h3 id="pbkdf2">pbkdf2</h3>
@@ -329,15 +329,15 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>password - 指定使用的密码</li>
-<li>salt - 指定 hmac 使用的 salt</li>
-<li>iterations - 指定迭代次数</li>
-<li>size - 指定钥匙尺寸</li>
-<li>algo - 指定要使用的 hash 算法，详见 hash 模块</li>
+<li>password: <a href=../../object/ifs/buffer.md.html>Buffer</a>, 指定使用的密码</li>
+<li>salt: <a href=../../object/ifs/buffer.md.html>Buffer</a>, 指定 hmac 使用的 salt</li>
+<li>iterations: Integer, 指定迭代次数</li>
+<li>size: Integer, 指定钥匙尺寸</li>
+<li>algo: Integer, 指定要使用的 <a href=hash.md.html>hash</a> 算法，详见 <a href=hash.md.html>hash</a> 模块</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回生成的二进制钥匙</li>
+<li><a href=../../object/ifs/buffer.md.html>Buffer</a>, 返回生成的二进制钥匙</li>
 </ul>
 <hr>
 <p>依据 rfc2898 根据明文 password 生成要求的二进制钥匙</p>
@@ -349,15 +349,15 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>password - 指定使用的密码</li>
-<li>salt - 指定 hmac 使用的 salt</li>
-<li>iterations - 指定迭代次数</li>
-<li>size - 指定钥匙尺寸</li>
-<li>algoName - 指定要使用的 hash 算法，详见 hash 模块</li>
+<li>password: <a href=../../object/ifs/buffer.md.html>Buffer</a>, 指定使用的密码</li>
+<li>salt: <a href=../../object/ifs/buffer.md.html>Buffer</a>, 指定 hmac 使用的 salt</li>
+<li>iterations: Integer, 指定迭代次数</li>
+<li>size: Integer, 指定钥匙尺寸</li>
+<li>algoName: String, 指定要使用的 <a href=hash.md.html>hash</a> 算法，详见 <a href=hash.md.html>hash</a> 模块</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回生成的二进制钥匙</li>
+<li><a href=../../object/ifs/buffer.md.html>Buffer</a>, 返回生成的二进制钥匙</li>
 </ul>
 <hr>
 <h3 id="pbkdf2sync">pbkdf2Sync</h3>
@@ -370,15 +370,15 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>password - 指定使用的密码</li>
-<li>salt - 指定 hmac 使用的 salt</li>
-<li>iterations - 指定迭代次数</li>
-<li>size - 指定钥匙尺寸</li>
-<li>algoName - 指定要使用的 hash 算法，详见 hash 模块</li>
+<li>password: <a href=../../object/ifs/buffer.md.html>Buffer</a>, 指定使用的密码</li>
+<li>salt: <a href=../../object/ifs/buffer.md.html>Buffer</a>, 指定 hmac 使用的 salt</li>
+<li>iterations: Integer, 指定迭代次数</li>
+<li>size: Integer, 指定钥匙尺寸</li>
+<li>algoName: String, 指定要使用的 <a href=hash.md.html>hash</a> 算法，详见 <a href=hash.md.html>hash</a> 模块</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回生成的二进制钥匙</li>
+<li><a href=../../object/ifs/buffer.md.html>Buffer</a>, 返回生成的二进制钥匙</li>
 </ul>
 <h2 id="-">常量</h2>
 <h3 id="aes">AES</h3>

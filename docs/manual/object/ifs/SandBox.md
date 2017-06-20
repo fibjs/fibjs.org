@@ -21,7 +21,7 @@ var mod_in_sbox = sbox.require('./path/to/mod');
 ```
 
 调用参数:
-* mods - 指定要添加的模块对象字典
+* mods: Object, 指定要添加的模块对象字典
 
 --------------------------
 构造一个新的安全沙箱对象，并初始化基础模块
@@ -31,8 +31,8 @@ var mod_in_sbox = sbox.require('./path/to/mod');
 ```
 
 调用参数:
-* mods - 指定要添加的模块对象字典
-* require - 自定义 require 函数，当模块不存在时，先调用自定义函数，无返回再从文件中加载
+* mods: Object, 指定要添加的模块对象字典
+* require: Function, 自定义 require 函数，当模块不存在时，先调用自定义函数，无返回再从文件中加载
 
 --------------------------
 构造一个独立 Global 新的安全沙箱对象，并初始化基础模块
@@ -42,8 +42,8 @@ var mod_in_sbox = sbox.require('./path/to/mod');
 ```
 
 调用参数:
-* mods - 指定要添加的模块对象字典
-* global - 指定初始化的 Global 属性
+* mods: Object, 指定要添加的模块对象字典
+* global: Object, 指定初始化的 Global 属性
 
 --------------------------
 构造一个独立 Global 新的安全沙箱对象，并初始化基础模块
@@ -54,9 +54,9 @@ var mod_in_sbox = sbox.require('./path/to/mod');
 ```
 
 调用参数:
-* mods - 指定要添加的模块对象字典
-* require - 自定义 require 函数，当模块不存在时，先调用自定义函数，无返回再从文件中加载
-* global - 指定初始化的 Global 属性
+* mods: Object, 指定要添加的模块对象字典
+* require: Function, 自定义 require 函数，当模块不存在时，先调用自定义函数，无返回再从文件中加载
+* global: Object, 指定初始化的 Global 属性
 
 ## 成员函数
         
@@ -68,8 +68,8 @@ SandBox.add(String id,
 ```
 
 调用参数:
-* id - 指定要添加的模块名称，此路径与当前运行脚本无关，必须为绝对路径或者模块名
-* mod - 指定要添加的模块对象
+* id: String, 指定要添加的模块名称，此路径与当前运行脚本无关，必须为绝对路径或者模块名
+* mod: Value, 指定要添加的模块对象
 
 --------------------------
 向沙箱中添加一组基础模块
@@ -78,7 +78,7 @@ SandBox.add(Object mods);
 ```
 
 调用参数:
-* mods - 指定要添加的模块对象字典，添加的 javascript 模块将会生成一份复制，以避免沙箱修改对象产生互相干扰
+* mods: Object, 指定要添加的模块对象字典，添加的 javascript 模块将会生成一份复制，以避免沙箱修改对象产生互相干扰
 
 --------------------------
 ### addScript
@@ -89,11 +89,11 @@ Value SandBox.addScript(String srcname,
 ```
 
 调用参数:
-* srcname - 指定要添加的脚本名称，srcname 必须包含扩展名，比如 json 或者 js, jsc
-* script - 指定要添加的二进制代码
+* srcname: String, 指定要添加的脚本名称，srcname 必须包含扩展名，比如 [json](../../module/ifs/json.md) 或者 js, jsc
+* script: [Buffer](Buffer.md), 指定要添加的二进制代码
 
 返回结果:
-* 返回加载的模块对象
+* Value, 返回加载的模块对象
 
 --------------------------
 ### remove
@@ -103,7 +103,7 @@ SandBox.remove(String id);
 ```
 
 调用参数:
-* id - 指定要删除的模块名称，此路径与当前运行脚本无关，必须为绝对路径或者模块名
+* id: String, 指定要删除的模块名称，此路径与当前运行脚本无关，必须为绝对路径或者模块名
 
 --------------------------
 ### clone
@@ -113,7 +113,7 @@ SandBox SandBox.clone();
 ```
 
 返回结果:
-* 复制的新沙箱
+* SandBox, 复制的新沙箱
 
 --------------------------
 ### run
@@ -124,8 +124,8 @@ SandBox.run(String fname,
 ```
 
 调用参数:
-* fname - 指定要运行的脚本路径，此路径与当前运行脚本无关，必须为绝对路径
-* argv - 指定要运行的参数，此参数可在脚本内使用 argv 获取
+* fname: String, 指定要运行的脚本路径，此路径与当前运行脚本无关，必须为绝对路径
+* argv: Array, 指定要运行的参数，此参数可在脚本内使用 argv 获取
 
 --------------------------
 ### resovle
@@ -136,11 +136,11 @@ String SandBox.resovle(String id,
 ```
 
 调用参数:
-* id - 指定要加载的模块名称
-* base - 指定查找路径
+* id: String, 指定要加载的模块名称
+* base: String, 指定查找路径
 
 返回结果:
-* 返回加载的模块完整文件名
+* String, 返回加载的模块完整文件名
 
 --------------------------
 ### require
@@ -151,11 +151,11 @@ Value SandBox.require(String id,
 ```
 
 调用参数:
-* id - 指定要加载的模块名称
-* base - 指定查找路径
+* id: String, 指定要加载的模块名称
+* base: String, 指定查找路径
 
 返回结果:
-* 返回加载的模块对象
+* Value, 返回加载的模块对象
 
 --------------------------
 ### dispose
@@ -172,10 +172,10 @@ Boolean SandBox.equals(object expected);
 ```
 
 调用参数:
-* expected - 制定比较的目标对象
+* expected: object, 制定比较的目标对象
 
 返回结果:
-* 返回对象比较的结果
+* Boolean, 返回对象比较的结果
 
 --------------------------
 ### toString
@@ -185,7 +185,7 @@ String SandBox.toString();
 ```
 
 返回结果:
-* 返回对象的字符串表示
+* String, 返回对象的字符串表示
 
 --------------------------
 ### toJSON
@@ -195,10 +195,10 @@ Value SandBox.toJSON(String key = "");
 ```
 
 调用参数:
-* key - 未使用
+* key: String, 未使用
 
 返回结果:
-* 返回包含可 JSON 序列化的值
+* Value, 返回包含可 JSON 序列化的值
 
 --------------------------
 ### valueOf
@@ -208,12 +208,12 @@ Value SandBox.valueOf();
 ```
 
 返回结果:
-* 返回对象本身的数值
+* Value, 返回对象本身的数值
 
 ## 成员属性
         
 ### global
-查询沙箱的 [global](../../module/ifs/global.md) 对象
+Object, 查询沙箱的 [global](../../module/ifs/global.md) 对象
 ```JavaScript
 readonly Object SandBox.global;
 ```

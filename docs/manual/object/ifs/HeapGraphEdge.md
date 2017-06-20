@@ -10,7 +10,7 @@ HeapGraphNode HeapGraphEdge.getFromNode();
 ```
 
 返回结果:
-* 返回源HeapGraphNode节点
+* [HeapGraphNode](HeapGraphNode.md), 返回源[HeapGraphNode](HeapGraphNode.md)节点
 
 --------------------------
 ### getToNode
@@ -20,7 +20,7 @@ HeapGraphNode HeapGraphEdge.getToNode();
 ```
 
 返回结果:
-* 返回目的HeapGraphNode节点
+* [HeapGraphNode](HeapGraphNode.md), 返回目的[HeapGraphNode](HeapGraphNode.md)节点
 
 --------------------------
 ### dispose
@@ -37,10 +37,10 @@ Boolean HeapGraphEdge.equals(object expected);
 ```
 
 调用参数:
-* expected - 制定比较的目标对象
+* expected: object, 制定比较的目标对象
 
 返回结果:
-* 返回对象比较的结果
+* Boolean, 返回对象比较的结果
 
 --------------------------
 ### toString
@@ -50,7 +50,7 @@ String HeapGraphEdge.toString();
 ```
 
 返回结果:
-* 返回对象的字符串表示
+* String, 返回对象的字符串表示
 
 --------------------------
 ### toJSON
@@ -60,10 +60,10 @@ Value HeapGraphEdge.toJSON(String key = "");
 ```
 
 调用参数:
-* key - 未使用
+* key: String, 未使用
 
 返回结果:
-* 返回包含可 JSON 序列化的值
+* Value, 返回包含可 JSON 序列化的值
 
 --------------------------
 ### valueOf
@@ -73,12 +73,12 @@ Value HeapGraphEdge.valueOf();
 ```
 
 返回结果:
-* 返回对象本身的数值
+* Value, 返回对象本身的数值
 
 ## 成员属性
         
 ### type
-下游节点的链接方式，可能的值：
+Integer, 下游节点的链接方式，可能的值：
 ```JavaScript
 readonly Integer HeapGraphEdge.type;
 ```
@@ -93,14 +93,14 @@ readonly Integer HeapGraphEdge.type;
 
 --------------------------
 ### name
-链接名称
+String, 链接名称
 ```JavaScript
 readonly String HeapGraphEdge.name;
 ```
 
 --------------------------
 ### description
-链接的描述
+String, 链接的描述
 ```JavaScript
 readonly String HeapGraphEdge.description;
 ```

@@ -65,11 +65,11 @@ static String encoding.jsstr(String str,
 ```
 
 调用参数:
-* str - 要编码的字符串
-* json - 是否生成json兼容字符串
+* str: String, 要编码的字符串
+* json: Boolean, 是否生成[json](json.md)兼容字符串
 
 返回结果:
-* 返回编码的字符串
+* String, 返回编码的字符串
 
 --------------------------
 ### encodeURI
@@ -79,10 +79,10 @@ static String encoding.encodeURI(String url);
 ```
 
 调用参数:
-* url - 要编码的 url
+* url: String, 要编码的 [url](url.md)
 
 返回结果:
-* 返回编码的字符串
+* String, 返回编码的字符串
 
 --------------------------
 ### encodeURIComponent
@@ -92,10 +92,10 @@ static String encoding.encodeURIComponent(String url);
 ```
 
 调用参数:
-* url - 要编码的 url
+* url: String, 要编码的 [url](url.md)
 
 返回结果:
-* 返回编码的字符串
+* String, 返回编码的字符串
 
 --------------------------
 ### decodeURI
@@ -105,8 +105,8 @@ static String encoding.decodeURI(String url);
 ```
 
 调用参数:
-* url - 要解码的 url
+* url: String, 要解码的 [url](url.md)
 
 返回结果:
-* 返回解码的字符串
+* String, 返回解码的字符串
 

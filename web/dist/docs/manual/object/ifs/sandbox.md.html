@@ -171,7 +171,7 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>mods - 指定要添加的模块对象字典</li>
+<li>mods: Object, 指定要添加的模块对象字典</li>
 </ul>
 <hr>
 <p>构造一个新的安全沙箱对象，并初始化基础模块</p>
@@ -180,8 +180,8 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>mods - 指定要添加的模块对象字典</li>
-<li>require - 自定义 require 函数，当模块不存在时，先调用自定义函数，无返回再从文件中加载</li>
+<li>mods: Object, 指定要添加的模块对象字典</li>
+<li>require: Function, 自定义 require 函数，当模块不存在时，先调用自定义函数，无返回再从文件中加载</li>
 </ul>
 <hr>
 <p>构造一个独立 Global 新的安全沙箱对象，并初始化基础模块</p>
@@ -190,8 +190,8 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>mods - 指定要添加的模块对象字典</li>
-<li>global - 指定初始化的 Global 属性</li>
+<li>mods: Object, 指定要添加的模块对象字典</li>
+<li>global: Object, 指定初始化的 Global 属性</li>
 </ul>
 <hr>
 <p>构造一个独立 Global 新的安全沙箱对象，并初始化基础模块</p>
@@ -201,9 +201,9 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>mods - 指定要添加的模块对象字典</li>
-<li>require - 自定义 require 函数，当模块不存在时，先调用自定义函数，无返回再从文件中加载</li>
-<li>global - 指定初始化的 Global 属性</li>
+<li>mods: Object, 指定要添加的模块对象字典</li>
+<li>require: Function, 自定义 require 函数，当模块不存在时，先调用自定义函数，无返回再从文件中加载</li>
+<li>global: Object, 指定初始化的 Global 属性</li>
 </ul>
 <h2 id="-">成员函数</h2>
 <h3 id="add">add</h3>
@@ -213,8 +213,8 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>id - 指定要添加的模块名称，此路径与当前运行脚本无关，必须为绝对路径或者模块名</li>
-<li>mod - 指定要添加的模块对象</li>
+<li>id: String, 指定要添加的模块名称，此路径与当前运行脚本无关，必须为绝对路径或者模块名</li>
+<li>mod: Value, 指定要添加的模块对象</li>
 </ul>
 <hr>
 <p>向沙箱中添加一组基础模块</p>
@@ -222,7 +222,7 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>mods - 指定要添加的模块对象字典，添加的 javascript 模块将会生成一份复制，以避免沙箱修改对象产生互相干扰</li>
+<li>mods: Object, 指定要添加的模块对象字典，添加的 javascript 模块将会生成一份复制，以避免沙箱修改对象产生互相干扰</li>
 </ul>
 <hr>
 <h3 id="addscript">addScript</h3>
@@ -232,12 +232,12 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>srcname - 指定要添加的脚本名称，srcname 必须包含扩展名，比如 json 或者 js, jsc</li>
-<li>script - 指定要添加的二进制代码</li>
+<li>srcname: String, 指定要添加的脚本名称，srcname 必须包含扩展名，比如 <a href=../../module/ifs/json.md.html>json</a> 或者 js, jsc</li>
+<li>script: <a href=buffer.md.html>Buffer</a>, 指定要添加的二进制代码</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回加载的模块对象</li>
+<li>Value, 返回加载的模块对象</li>
 </ul>
 <hr>
 <h3 id="remove">remove</h3>
@@ -246,7 +246,7 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>id - 指定要删除的模块名称，此路径与当前运行脚本无关，必须为绝对路径或者模块名</li>
+<li>id: String, 指定要删除的模块名称，此路径与当前运行脚本无关，必须为绝对路径或者模块名</li>
 </ul>
 <hr>
 <h3 id="clone">clone</h3>
@@ -255,7 +255,7 @@
 </code></pre>
 <p>返回结果:</p>
 <ul>
-<li>复制的新沙箱</li>
+<li>SandBox, 复制的新沙箱</li>
 </ul>
 <hr>
 <h3 id="run">run</h3>
@@ -265,8 +265,8 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>fname - 指定要运行的脚本路径，此路径与当前运行脚本无关，必须为绝对路径</li>
-<li>argv - 指定要运行的参数，此参数可在脚本内使用 argv 获取</li>
+<li>fname: String, 指定要运行的脚本路径，此路径与当前运行脚本无关，必须为绝对路径</li>
+<li>argv: Array, 指定要运行的参数，此参数可在脚本内使用 argv 获取</li>
 </ul>
 <hr>
 <h3 id="resovle">resovle</h3>
@@ -276,12 +276,12 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>id - 指定要加载的模块名称</li>
-<li>base - 指定查找路径</li>
+<li>id: String, 指定要加载的模块名称</li>
+<li>base: String, 指定查找路径</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回加载的模块完整文件名</li>
+<li>String, 返回加载的模块完整文件名</li>
 </ul>
 <hr>
 <h3 id="require">require</h3>
@@ -291,12 +291,12 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>id - 指定要加载的模块名称</li>
-<li>base - 指定查找路径</li>
+<li>id: String, 指定要加载的模块名称</li>
+<li>base: String, 指定查找路径</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回加载的模块对象</li>
+<li>Value, 返回加载的模块对象</li>
 </ul>
 <hr>
 <h3 id="dispose">dispose</h3>
@@ -310,11 +310,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>expected - 制定比较的目标对象</li>
+<li>expected: object, 制定比较的目标对象</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回对象比较的结果</li>
+<li>Boolean, 返回对象比较的结果</li>
 </ul>
 <hr>
 <h3 id="tostring">toString</h3>
@@ -323,7 +323,7 @@
 </code></pre>
 <p>返回结果:</p>
 <ul>
-<li>返回对象的字符串表示</li>
+<li>String, 返回对象的字符串表示</li>
 </ul>
 <hr>
 <h3 id="tojson">toJSON</h3>
@@ -332,11 +332,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>key - 未使用</li>
+<li>key: String, 未使用</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回包含可 JSON 序列化的值</li>
+<li>Value, 返回包含可 JSON 序列化的值</li>
 </ul>
 <hr>
 <h3 id="valueof">valueOf</h3>
@@ -345,11 +345,11 @@
 </code></pre>
 <p>返回结果:</p>
 <ul>
-<li>返回对象本身的数值</li>
+<li>Value, 返回对象本身的数值</li>
 </ul>
 <h2 id="-">成员属性</h2>
 <h3 id="global">global</h3>
-<p>查询沙箱的 <a href=../../module/ifs/global.md.html>global</a> 对象</p>
+<p>Object, 查询沙箱的 <a href=../../module/ifs/global.md.html>global</a> 对象</p>
 <pre><code class="lang-JavaScript">readonly <span class="hljs-built_in">Object</span> SandBox.global;
 </code></pre>
  </div><div class="hidden-sm hidden-xs col-xs-3"><div id=toc></div></div></div><div class=container><div class=footer><p>&copy; 2017 fibjs.org</p></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="Click to return on the top page" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=../../../../js/common.js></script><script type=text/javascript src=../../../../js/docs.js></script></body></html>

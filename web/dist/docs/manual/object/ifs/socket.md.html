@@ -165,8 +165,8 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>family - 指定地址集，缺省为 AF_INET，ipv4</li>
-<li>type - 指定协议族，缺省为 SOCK_STREAM，tcp</li>
+<li>family: Integer, 指定地址集，缺省为 AF_INET，ipv4</li>
+<li>type: Integer, 指定协议族，缺省为 SOCK_STREAM，tcp</li>
 </ul>
 <h2 id="-">成员函数</h2>
 <h3 id="connect">connect</h3>
@@ -176,8 +176,8 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>host - 指定对方地址或主机名</li>
-<li>port - 指定对方端口</li>
+<li>host: String, 指定对方地址或主机名</li>
+<li>port: Integer, 指定对方端口</li>
 </ul>
 <hr>
 <h3 id="bind">bind</h3>
@@ -187,8 +187,8 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>port - 指定绑定的端口</li>
-<li>allowIPv4 - 指定是否接受 ipv4 连接，缺省为 true。本参数在 ipv6 时有效，并依赖于操作系统</li>
+<li>port: Integer, 指定绑定的端口</li>
+<li>allowIPv4: Boolean, 指定是否接受 ipv4 连接，缺省为 true。本参数在 ipv6 时有效，并依赖于操作系统</li>
 </ul>
 <hr>
 <p>将当前 Socket 绑定至指定地址的指定端口</p>
@@ -198,9 +198,9 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>addr - 指定绑定的地址</li>
-<li>port - 指定绑定的端口</li>
-<li>allowIPv4 - 指定是否接受 ipv4 连接，缺省为 true。本参数在 ipv6 时有效，并依赖于操作系统</li>
+<li>addr: String, 指定绑定的地址</li>
+<li>port: Integer, 指定绑定的端口</li>
+<li>allowIPv4: Boolean, 指定是否接受 ipv4 连接，缺省为 true。本参数在 ipv6 时有效，并依赖于操作系统</li>
 </ul>
 <hr>
 <h3 id="listen">listen</h3>
@@ -209,7 +209,7 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>backlog - 指定请求队列长度，超出的请求将被拒绝，缺省为 120</li>
+<li>backlog: Integer, 指定请求队列长度，超出的请求将被拒绝，缺省为 120</li>
 </ul>
 <hr>
 <h3 id="accept">accept</h3>
@@ -218,7 +218,7 @@
 </code></pre>
 <p>返回结果:</p>
 <ul>
-<li>返回接收到得连接对象</li>
+<li>Socket, 返回接收到得连接对象</li>
 </ul>
 <hr>
 <h3 id="recv">recv</h3>
@@ -227,11 +227,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>bytes - 指定要读取的数据量，缺省读取任意尺寸的数据</li>
+<li>bytes: Integer, 指定要读取的数据量，缺省读取任意尺寸的数据</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回从连接读取的数据</li>
+<li><a href=buffer.md.html>Buffer</a>, 返回从连接读取的数据</li>
 </ul>
 <hr>
 <h3 id="recvfrom">recvfrom</h3>
@@ -245,7 +245,7 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>data - 给定要写入的数据</li>
+<li>data: <a href=buffer.md.html>Buffer</a>, 给定要写入的数据</li>
 </ul>
 <hr>
 <h3 id="sendto">sendto</h3>
@@ -261,11 +261,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>bytes - 指定要读取的数据量，缺省为读取随机大小的数据块，读出的数据尺寸取决于设备</li>
+<li>bytes: Integer, 指定要读取的数据量，缺省为读取随机大小的数据块，读出的数据尺寸取决于设备</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回从流内读取的数据，若无数据可读，或者连接中断，则返回 null</li>
+<li><a href=buffer.md.html>Buffer</a>, 返回从流内读取的数据，若无数据可读，或者连接中断，则返回 null</li>
 </ul>
 <hr>
 <h3 id="write">write</h3>
@@ -274,7 +274,7 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>data - 给定要写入的数据</li>
+<li>data: <a href=buffer.md.html>Buffer</a>, 给定要写入的数据</li>
 </ul>
 <hr>
 <h3 id="close">close</h3>
@@ -289,12 +289,12 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>stm - 目标流对象</li>
-<li>bytes - 复制的字节数</li>
+<li>stm: Stream, 目标流对象</li>
+<li>bytes: Long, 复制的字节数</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回复制的字节数</li>
+<li>Long, 返回复制的字节数</li>
 </ul>
 <hr>
 <h3 id="dispose">dispose</h3>
@@ -308,11 +308,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>expected - 制定比较的目标对象</li>
+<li>expected: object, 制定比较的目标对象</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回对象比较的结果</li>
+<li>Boolean, 返回对象比较的结果</li>
 </ul>
 <hr>
 <h3 id="tostring">toString</h3>
@@ -321,7 +321,7 @@
 </code></pre>
 <p>返回结果:</p>
 <ul>
-<li>返回对象的字符串表示</li>
+<li>String, 返回对象的字符串表示</li>
 </ul>
 <hr>
 <h3 id="tojson">toJSON</h3>
@@ -330,11 +330,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>key - 未使用</li>
+<li>key: String, 未使用</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回包含可 JSON 序列化的值</li>
+<li>Value, 返回包含可 JSON 序列化的值</li>
 </ul>
 <hr>
 <h3 id="valueof">valueOf</h3>
@@ -343,41 +343,41 @@
 </code></pre>
 <p>返回结果:</p>
 <ul>
-<li>返回对象本身的数值</li>
+<li>Value, 返回对象本身的数值</li>
 </ul>
 <h2 id="-">成员属性</h2>
 <h3 id="family">family</h3>
-<p>查询当前 Socket 对象的地址集</p>
+<p>Integer, 查询当前 Socket 对象的地址集</p>
 <pre><code class="lang-JavaScript">readonly Integer Socket.family;
 </code></pre>
 <hr>
 <h3 id="type">type</h3>
-<p>查询当前 Socket 对象的协议族</p>
+<p>Integer, 查询当前 Socket 对象的协议族</p>
 <pre><code class="lang-JavaScript">readonly Integer Socket.type;
 </code></pre>
 <hr>
 <h3 id="remoteaddress">remoteAddress</h3>
-<p>查询当前连接的对方地址</p>
+<p>String, 查询当前连接的对方地址</p>
 <pre><code class="lang-JavaScript">readonly <span class="hljs-built_in">String</span> Socket.remoteAddress;
 </code></pre>
 <hr>
 <h3 id="remoteport">remotePort</h3>
-<p>查询当前连接的对方端口</p>
+<p>Integer, 查询当前连接的对方端口</p>
 <pre><code class="lang-JavaScript">readonly Integer Socket.remotePort;
 </code></pre>
 <hr>
 <h3 id="localaddress">localAddress</h3>
-<p>查询当前连接的本地地址</p>
+<p>String, 查询当前连接的本地地址</p>
 <pre><code class="lang-JavaScript">readonly <span class="hljs-built_in">String</span> Socket.localAddress;
 </code></pre>
 <hr>
 <h3 id="localport">localPort</h3>
-<p>查询当前连接的本地端口</p>
+<p>Integer, 查询当前连接的本地端口</p>
 <pre><code class="lang-JavaScript">readonly Integer Socket.localPort;
 </code></pre>
 <hr>
 <h3 id="timeout">timeout</h3>
-<p>查询和设置超时时间 单位毫秒</p>
+<p>Integer, 查询和设置超时时间 单位毫秒</p>
 <pre><code class="lang-JavaScript">Integer Socket.timeout;
 </code></pre>
  </div><div class="hidden-sm hidden-xs col-xs-3"><div id=toc></div></div></div><div class=container><div class=footer><p>&copy; 2017 fibjs.org</p></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="Click to return on the top page" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=../../../../js/common.js></script><script type=text/javascript src=../../../../js/docs.js></script></body></html>

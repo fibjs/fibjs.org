@@ -58,11 +58,11 @@ static Fiber coroutine.start(Function func,
 ```
 
 调用参数:
-* func - 制定纤程执行的函数
-* ... - 可变参数序列，此序列会在纤程内传递给函数
+* func: Function, 制定纤程执行的函数
+* ...: 可变参数序列，此序列会在纤程内传递给函数
 
 返回结果:
-* 返回纤程对象
+* [Fiber](../../object/ifs/Fiber.md), 返回纤程对象
 
 --------------------------
 ### parallel
@@ -73,11 +73,11 @@ static Array coroutine.parallel(Array funcs,
 ```
 
 调用参数:
-* funcs - 并行执行的函数数组
-* fibers - 限制并发 fiber 数量，缺省为 -1，启用与 funcs 数量相同 fiber
+* funcs: Array, 并行执行的函数数组
+* fibers: Integer, 限制并发 fiber 数量，缺省为 -1，启用与 funcs 数量相同 fiber
 
 返回结果:
-* 返回函数执行结果的数组
+* Array, 返回函数执行结果的数组
 
 --------------------------
 并行执行一个函数处理一组数据，并等待返回
@@ -88,12 +88,12 @@ static Array coroutine.parallel(Array datas,
 ```
 
 调用参数:
-* datas - 并行执行的数据数组
-* func - 并行执行的函数
-* fibers - 限制并发 fiber 数量，缺省为 -1，启用与 datas 数量相同 fiber
+* datas: Array, 并行执行的数据数组
+* func: Function, 并行执行的函数
+* fibers: Integer, 限制并发 fiber 数量，缺省为 -1，启用与 datas 数量相同 fiber
 
 返回结果:
-* 返回函数执行结果的数组
+* Array, 返回函数执行结果的数组
 
 --------------------------
 并行执行一个函数多次，并等待返回
@@ -104,12 +104,12 @@ static Array coroutine.parallel(Function func,
 ```
 
 调用参数:
-* func - 并行执行的函数数
-* num - 重复任务数量
-* fibers - 限制并发 fiber 数量，缺省为 -1，启用与 funcs 数量相同 fiber
+* func: Function, 并行执行的函数数
+* num: Integer, 重复任务数量
+* fibers: Integer, 限制并发 fiber 数量，缺省为 -1，启用与 funcs 数量相同 fiber
 
 返回结果:
-* 返回函数执行结果的数组
+* Array, 返回函数执行结果的数组
 
 --------------------------
 并行执行一组函数，并等待返回
@@ -118,10 +118,10 @@ static Array coroutine.parallel(...);
 ```
 
 调用参数:
-* ... - 一组并行执行的函数
+* ...: 一组并行执行的函数
 
 返回结果:
-* 返回函数执行结果的数组
+* Array, 返回函数执行结果的数组
 
 --------------------------
 ### current
@@ -131,7 +131,7 @@ static Fiber coroutine.current();
 ```
 
 返回结果:
-* 当前纤程对象
+* [Fiber](../../object/ifs/Fiber.md), 当前纤程对象
 
 --------------------------
 ### sleep
@@ -141,33 +141,33 @@ static coroutine.sleep(Integer ms = 0) async;
 ```
 
 调用参数:
-* ms - 指定要暂停的时间，以毫秒为单位，缺省为 0，即有空闲立即回恢复运行
+* ms: Integer, 指定要暂停的时间，以毫秒为单位，缺省为 0，即有空闲立即回恢复运行
 
 ## 静态属性
         
 ### fibers
-返回当前正在运行的全部 fiber 数组
+Array, 返回当前正在运行的全部 fiber 数组
 ```JavaScript
 static readonly Array coroutine.fibers;
 ```
 
 --------------------------
 ### spareFibers
-查询和设置空闲 [Fiber](../../object/ifs/Fiber.md) 数量，服务器抖动较大时可适度增加空闲 [Fiber](../../object/ifs/Fiber.md) 数量。缺省为 256
+Integer, 查询和设置空闲 [Fiber](../../object/ifs/Fiber.md) 数量，服务器抖动较大时可适度增加空闲 [Fiber](../../object/ifs/Fiber.md) 数量。缺省为 256
 ```JavaScript
 static Integer coroutine.spareFibers;
 ```
 
 --------------------------
 ### vmid
-查询当前 [vm](vm.md) 编号
+Integer, 查询当前 [vm](vm.md) 编号
 ```JavaScript
 static readonly Integer coroutine.vmid;
 ```
 
 --------------------------
 ### loglevel
-修改和查询本 [vm](vm.md) 的输出级别，用以过滤输出信息，缺省为 [console](console.md).NOTSET，全部输出
+Integer, 修改和查询本 [vm](vm.md) 的输出级别，用以过滤输出信息，缺省为 [console](console.md).NOTSET，全部输出
 ```JavaScript
 static Integer coroutine.loglevel;
 ```

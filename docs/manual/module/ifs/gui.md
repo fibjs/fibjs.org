@@ -23,10 +23,10 @@ static WebView gui.open(String url) async;
 ```
 
 调用参数:
-* url - 指定的网址，，可以使用 fs:path 访问本地文件系统
+* url: String, 指定的网址，，可以使用 [fs](fs.md):[path](path.md) 访问本地文件系统
 
 返回结果:
-* 返回打开的窗口对象
+* [WebView](../../object/ifs/WebView.md), 返回打开的窗口对象
 
 --------------------------
 打开一个窗口并访问指定网址
@@ -36,11 +36,11 @@ static WebView gui.open(String url,
 ```
 
 调用参数:
-* url - 指定的网址，，可以使用 fs:path 访问本地文件系统
-* opt - 打开窗口参数
+* url: String, 指定的网址，，可以使用 [fs](fs.md):[path](path.md) 访问本地文件系统
+* opt: [Map](../../object/ifs/Map.md), 打开窗口参数
 
 返回结果:
-* 返回打开的窗口对象
+* [WebView](../../object/ifs/WebView.md), 返回打开的窗口对象
 
 支持以下参数:
 ```JavaScript

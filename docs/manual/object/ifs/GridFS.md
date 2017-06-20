@@ -14,10 +14,10 @@ MemoryStream GridFS.retrieve(String name);
 ```
 
 调用参数:
-* name - 指定获取的文件名
+* name: String, 指定获取的文件名
 
 返回结果:
-* 返回获取的文件
+* [MemoryStream](MemoryStream.md), 返回获取的文件
 
 --------------------------
 ### store
@@ -28,8 +28,8 @@ GridFS.store(String name,
 ```
 
 调用参数:
-* name - 指定保存的文件名
-* src - 存放源数据的流对象
+* name: String, 指定保存的文件名
+* src: [Stream](Stream.md), 存放源数据的流对象
 
 --------------------------
 保存一个二进制数据块到文件系统
@@ -39,8 +39,8 @@ GridFS.store(String name,
 ```
 
 调用参数:
-* name - 指定保存的文件名
-* data - 指定要保存的数据块
+* name: String, 指定保存的文件名
+* data: [Buffer](Buffer.md), 指定要保存的数据块
 
 --------------------------
 ### exists
@@ -50,10 +50,10 @@ Boolean GridFS.exists(String name);
 ```
 
 调用参数:
-* name - 指定要检测的文件名
+* name: String, 指定要检测的文件名
 
 返回结果:
-* 存在则返回 true
+* Boolean, 存在则返回 true
 
 --------------------------
 ### remove
@@ -63,7 +63,7 @@ GridFS.remove(String name);
 ```
 
 调用参数:
-* name - 指定要删除的文件名
+* name: String, 指定要删除的文件名
 
 --------------------------
 ### dispose
@@ -80,10 +80,10 @@ Boolean GridFS.equals(object expected);
 ```
 
 调用参数:
-* expected - 制定比较的目标对象
+* expected: object, 制定比较的目标对象
 
 返回结果:
-* 返回对象比较的结果
+* Boolean, 返回对象比较的结果
 
 --------------------------
 ### toString
@@ -93,7 +93,7 @@ String GridFS.toString();
 ```
 
 返回结果:
-* 返回对象的字符串表示
+* String, 返回对象的字符串表示
 
 --------------------------
 ### toJSON
@@ -103,10 +103,10 @@ Value GridFS.toJSON(String key = "");
 ```
 
 调用参数:
-* key - 未使用
+* key: String, 未使用
 
 返回结果:
-* 返回包含可 JSON 序列化的值
+* Value, 返回包含可 JSON 序列化的值
 
 --------------------------
 ### valueOf
@@ -116,19 +116,19 @@ Value GridFS.valueOf();
 ```
 
 返回结果:
-* 返回对象本身的数值
+* Value, 返回对象本身的数值
 
 ## 成员属性
         
 ### files
-查询 GridFS 的元数据表
+[MongoCollection](MongoCollection.md), 查询 GridFS 的元数据表
 ```JavaScript
 readonly MongoCollection GridFS.files;
 ```
 
 --------------------------
 ### chunks
-查询 GridFS 的分块数据表
+[MongoCollection](MongoCollection.md), 查询 GridFS 的分块数据表
 ```JavaScript
 readonly MongoCollection GridFS.chunks;
 ```

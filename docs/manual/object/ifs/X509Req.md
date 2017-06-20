@@ -22,9 +22,9 @@ X509Req 构造函数，根据给定的信息创建一个证书请求
 ```
 
 调用参数:
-* subject - 证书的主题可分辨名称
-* key - 证书的公钥
-* hash - 证书摘要算法，缺省为 hash.SHA1
+* subject: String, 证书的主题可分辨名称
+* key: [PKey](PKey.md), 证书的公钥
+* hash: Integer, 证书摘要算法，缺省为 [hash](../../module/ifs/hash.md).SHA1
 
 ## 成员函数
         
@@ -35,7 +35,7 @@ X509Req.load(Buffer derReq);
 ```
 
 调用参数:
-* derReq - DER 格式的证书请求
+* derReq: [Buffer](Buffer.md), DER 格式的证书请求
 
 --------------------------
 加载一个 PEM 格式的证书请求
@@ -44,7 +44,7 @@ X509Req.load(String pemReq);
 ```
 
 调用参数:
-* pemReq - PEM 格式的证书请求
+* pemReq: String, PEM 格式的证书请求
 
 --------------------------
 ### loadFile
@@ -54,7 +54,7 @@ X509Req.loadFile(String filename);
 ```
 
 调用参数:
-* filename - 证书请求文件名
+* filename: String, 证书请求文件名
 
 --------------------------
 ### exportPem
@@ -64,7 +64,7 @@ String X509Req.exportPem();
 ```
 
 返回结果:
-* 当前证书请求的 PEM 格式编码
+* String, 当前证书请求的 PEM 格式编码
 
 --------------------------
 ### exportDer
@@ -74,7 +74,7 @@ Buffer X509Req.exportDer();
 ```
 
 返回结果:
-* 当前证书请求的 DER 格式编码
+* [Buffer](Buffer.md), 当前证书请求的 DER 格式编码
 
 --------------------------
 ### sign
@@ -86,12 +86,12 @@ X509Cert X509Req.sign(String issuer,
 ```
 
 调用参数:
-* issuer - 签名机构的可分辨名称
-* key - 签名机构的私钥
-* opts - 其他可选参数
+* issuer: String, 签名机构的可分辨名称
+* key: [PKey](PKey.md), 签名机构的私钥
+* opts: Object, 其他可选参数
 
 返回结果:
-* 返回签名后的正式证书
+* [X509Cert](X509Cert.md), 返回签名后的正式证书
 
 opts 接收的字段如下：
 ```JavaScript
@@ -120,10 +120,10 @@ Boolean X509Req.equals(object expected);
 ```
 
 调用参数:
-* expected - 制定比较的目标对象
+* expected: object, 制定比较的目标对象
 
 返回结果:
-* 返回对象比较的结果
+* Boolean, 返回对象比较的结果
 
 --------------------------
 ### toString
@@ -133,7 +133,7 @@ String X509Req.toString();
 ```
 
 返回结果:
-* 返回对象的字符串表示
+* String, 返回对象的字符串表示
 
 --------------------------
 ### toJSON
@@ -143,10 +143,10 @@ Value X509Req.toJSON(String key = "");
 ```
 
 调用参数:
-* key - 未使用
+* key: String, 未使用
 
 返回结果:
-* 返回包含可 JSON 序列化的值
+* Value, 返回包含可 JSON 序列化的值
 
 --------------------------
 ### valueOf
@@ -156,19 +156,19 @@ Value X509Req.valueOf();
 ```
 
 返回结果:
-* 返回对象本身的数值
+* Value, 返回对象本身的数值
 
 ## 成员属性
         
 ### subject
-获取证书的主题可分辨名称
+String, 获取证书的主题可分辨名称
 ```JavaScript
 readonly String X509Req.subject;
 ```
 
 --------------------------
 ### publicKey
-获取证书的公钥
+[PKey](PKey.md), 获取证书的公钥
 ```JavaScript
 readonly PKey X509Req.publicKey;
 ```

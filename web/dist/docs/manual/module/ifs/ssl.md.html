@@ -177,12 +177,12 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>url - 指定连接的协议，可以是：ssl://host:port</li>
-<li>timeout - 指定超时时间，单位是毫秒，默认为0</li>
+<li>url: String, 指定连接的协议，可以是：ssl://host:port</li>
+<li>timeout: Integer, 指定超时时间，单位是毫秒，默认为0</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回连接成功的 SslSocket 对象</li>
+<li><a href=../../object/ifs/stream.md.html>Stream</a>, 返回连接成功的 <a href=../../object/ifs/sslsocket.md.html>SslSocket</a> 对象</li>
 </ul>
 <hr>
 <h3 id="setclientcert">setClientCert</h3>
@@ -192,8 +192,8 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>crt - X509Cert 证书，用于客户端验证服务器</li>
-<li>key - PKey 私钥，用于与客户端会话</li>
+<li>crt: <a href=../../object/ifs/x509cert.md.html>X509Cert</a>, <a href=../../object/ifs/x509cert.md.html>X509Cert</a> 证书，用于客户端验证服务器</li>
+<li>key: <a href=../../object/ifs/pkey.md.html>PKey</a>, <a href=../../object/ifs/pkey.md.html>PKey</a> 私钥，用于与客户端会话</li>
 </ul>
 <hr>
 <h3 id="loadclientcertfile">loadClientCertFile</h3>
@@ -204,28 +204,34 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>crtFile - X509Cert 证书文件，用于客户端验证服务器</li>
-<li>keyFile - PKey 私钥文件，用于与客户端会话</li>
-<li>password - 解密密码</li>
+<li>crtFile: String, <a href=../../object/ifs/x509cert.md.html>X509Cert</a> 证书文件，用于客户端验证服务器</li>
+<li>keyFile: String, <a href=../../object/ifs/pkey.md.html>PKey</a> 私钥文件，用于与客户端会话</li>
+<li>password: String, 解密密码</li>
 </ul>
+<hr>
+<h3 id="loadrootcerts">loadRootCerts</h3>
+<p>加载自带的缺省根证书，等同于 ssl.ca.loadRootCerts</p>
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> ssl.loadRootCerts();
+</code></pre>
+<p>此证书内容源自：<a href="http.md">http</a>://hg.mozilla.org/releases/mozilla-release/raw-file/default/security/nss/lib/ckfw/builtins/certdata.txt</p>
 <h2 id="-">静态属性</h2>
 <h3 id="ca">ca</h3>
-<p>全局证书，用于 ssl 客户端模式验证服务器证书</p>
+<p><a href=../../object/ifs/x509cert.md.html>X509Cert</a>, 全局证书，用于 ssl 客户端模式验证服务器证书</p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> readonly X509Cert ssl.ca;
 </code></pre>
 <hr>
 <h3 id="verification">verification</h3>
-<p>设定证书验证模式，缺省为 VERIFY_REQUIRED</p>
+<p>Integer, 设定证书验证模式，缺省为 VERIFY_REQUIRED</p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> Integer ssl.verification;
 </code></pre>
 <hr>
 <h3 id="min_version">min_version</h3>
-<p>设定最低版本支持，缺省 ssl3</p>
+<p>Integer, 设定最低版本支持，缺省 ssl3</p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> Integer ssl.min_version;
 </code></pre>
 <hr>
 <h3 id="max_version">max_version</h3>
-<p>设定最高版本支持，缺省 tls1_1</p>
+<p>Integer, 设定最高版本支持，缺省 tls1_1</p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> Integer ssl.max_version;
 </code></pre>
 <h2 id="-">常量</h2>

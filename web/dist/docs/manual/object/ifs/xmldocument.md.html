@@ -163,7 +163,7 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>type - 指定文档对象的类型，缺省为 &quot;text/xml&quot;，若需要处理 html 则需要指定 &quot;text/html&quot;</li>
+<li>type: String, 指定文档对象的类型，缺省为 &quot;text/<a href=../../module/ifs/xml.md.html>xml</a>&quot;，若需要处理 html 则需要指定 &quot;text/html&quot;</li>
 </ul>
 <h2 id="-">成员函数</h2>
 <h3 id="load">load</h3>
@@ -172,7 +172,7 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>source - 要解析的 XML/HTML 文本，取决于文档创建时的类型</li>
+<li>source: String, 要解析的 XML/HTML 文本，取决于文档创建时的类型</li>
 </ul>
 <hr>
 <p>通过解析一个二进制 XML/HTML 字符串来组成该文档，并根据语种自动转换</p>
@@ -180,7 +180,7 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>source - 要解析的 XML/HTML 文本，取决于文档创建时的类型</li>
+<li>source: <a href=buffer.md.html>Buffer</a>, 要解析的 XML/HTML 文本，取决于文档创建时的类型</li>
 </ul>
 <hr>
 <h3 id="getelementsbytagname">getElementsByTagName</h3>
@@ -189,11 +189,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>tagName - 需检索的标签名。值 &quot;*&quot; 匹配所有的标签</li>
+<li>tagName: String, 需检索的标签名。值 &quot;*&quot; 匹配所有的标签</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>文档树中具有指定标记的 XmlElement 节点的 XmlNodeList 集合。返回的元素节点的顺序就是它们在源文档中出现的顺序。</li>
+<li><a href=xmlnodelist.md.html>XmlNodeList</a>, 文档树中具有指定标记的 <a href=xmlelement.md.html>XmlElement</a> 节点的 <a href=xmlnodelist.md.html>XmlNodeList</a> 集合。返回的元素节点的顺序就是它们在源文档中出现的顺序。</li>
 </ul>
 <p>该方法将返回一个 <a href=xmlnodelist.md.html>XmlNodeList</a> 对象（可以作为只读数组处理），该对象存放文档中具有指定标签名的所有 <a href=xmlelement.md.html>XmlElement</a> 节点，它们存放的顺序就是在源文档中出现的顺序。 <a href=xmlnodelist.md.html>XmlNodeList</a> 对象是“活”的，即如果在文档中添加或删除了指定标签名的元素，它的内容会自动进行必要的更新。</p>
 <hr>
@@ -204,12 +204,12 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>namespaceURI - 指定检索的命名空间 URI。值 &quot;*&quot; 可匹配所有的标签</li>
-<li>localName - 需检索的标签名。值 &quot;*&quot; 匹配所有的标签</li>
+<li>namespaceURI: String, 指定检索的命名空间 URI。值 &quot;*&quot; 可匹配所有的标签</li>
+<li>localName: String, 需检索的标签名。值 &quot;*&quot; 匹配所有的标签</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>文档树中具有指定标记的 XmlElement 节点的 XmlNodeList 集合。返回的元素节点的顺序就是它们在源文档中出现的顺序。</li>
+<li><a href=xmlnodelist.md.html>XmlNodeList</a>, 文档树中具有指定标记的 <a href=xmlelement.md.html>XmlElement</a> 节点的 <a href=xmlnodelist.md.html>XmlNodeList</a> 集合。返回的元素节点的顺序就是它们在源文档中出现的顺序。</li>
 </ul>
 <p>该方法与 getElementsByTagName() 方法相似，只是它根据命名空间和名称来检索元素。</p>
 <hr>
@@ -219,11 +219,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>tagName - 指定元素节点规定名称</li>
+<li>tagName: String, 指定元素节点规定名称</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回新创建的 XmlElement 节点，具有指定的标签名</li>
+<li><a href=xmlelement.md.html>XmlElement</a>, 返回新创建的 <a href=xmlelement.md.html>XmlElement</a> 节点，具有指定的标签名</li>
 </ul>
 <hr>
 <h3 id="createelementns">createElementNS</h3>
@@ -233,12 +233,12 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>namespaceURI - 指定元素节点命名空间 URI</li>
-<li>qualifiedName - 指定元素节点规定名称</li>
+<li>namespaceURI: String, 指定元素节点命名空间 URI</li>
+<li>qualifiedName: String, 指定元素节点规定名称</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回新创建的 XmlElement 节点，具有指定的标签名</li>
+<li><a href=xmlelement.md.html>XmlElement</a>, 返回新创建的 <a href=xmlelement.md.html>XmlElement</a> 节点，具有指定的标签名</li>
 </ul>
 <hr>
 <h3 id="createtextnode">createTextNode</h3>
@@ -247,11 +247,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>data - 指定此节点的文本</li>
+<li>data: String, 指定此节点的文本</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回新创建的 XmlText 节点，表示指定的 data 字符串</li>
+<li><a href=xmltext.md.html>XmlText</a>, 返回新创建的 <a href=xmltext.md.html>XmlText</a> 节点，表示指定的 data 字符串</li>
 </ul>
 <hr>
 <h3 id="createcomment">createComment</h3>
@@ -260,11 +260,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>data - 指定此节点的注释文本</li>
+<li>data: String, 指定此节点的注释文本</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回新创建的 XmlComment 节点，注释文本为指定的 data</li>
+<li><a href=xmlcomment.md.html>XmlComment</a>, 返回新创建的 <a href=xmlcomment.md.html>XmlComment</a> 节点，注释文本为指定的 data</li>
 </ul>
 <hr>
 <h3 id="createcdatasection">createCDATASection</h3>
@@ -273,11 +273,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>data - 指定此节点规定 CDATA 数据</li>
+<li>data: String, 指定此节点规定 CDATA 数据</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回新创建的 XmlCDATASection 节点，内容为指定的 data</li>
+<li><a href=xmlcdatasection.md.html>XmlCDATASection</a>, 返回新创建的 <a href=xmlcdatasection.md.html>XmlCDATASection</a> 节点，内容为指定的 data</li>
 </ul>
 <hr>
 <h3 id="createprocessinginstruction">createProcessingInstruction</h3>
@@ -287,12 +287,12 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>target - 指定处理指令的目标</li>
-<li>data - 指定处理指令的内容文本</li>
+<li>target: String, 指定处理指令的目标</li>
+<li>data: String, 指定处理指令的内容文本</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>新创建的 ProcessingInstruction 节点</li>
+<li><a href=xmlprocessinginstruction.md.html>XmlProcessingInstruction</a>, 新创建的 ProcessingInstruction 节点</li>
 </ul>
 <hr>
 <h3 id="haschildnodes">hasChildNodes</h3>
@@ -301,7 +301,7 @@
 </code></pre>
 <p>返回结果:</p>
 <ul>
-<li>存在任何子节点时返回 true，否则返回 false</li>
+<li>Boolean, 存在任何子节点时返回 true，否则返回 false</li>
 </ul>
 <hr>
 <h3 id="normalize">normalize</h3>
@@ -316,11 +316,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>deep - 是否深度拷贝，为 true 时，被克隆的节点会克隆原节点的所有子节点</li>
+<li>deep: Boolean, 是否深度拷贝，为 true 时，被克隆的节点会克隆原节点的所有子节点</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回所复制的节点</li>
+<li>XmlNode, 返回所复制的节点</li>
 </ul>
 <p>该方法将复制并返回调用它的节点的副本。如果传递给它的参数是 true，它还将递归复制当前节点的所有子孙节点。 否则，它只复制当前节点。返回的节点不属于文档树，它的 parentNode 属性为 null。当复制的是 Element 节点时，它的所有属性都将被复制。</p>
 <hr>
@@ -330,11 +330,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>namespaceURI - 指定匹配的命名空间 URI</li>
+<li>namespaceURI: String, 指定匹配的命名空间 URI</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回匹配的前缀，未匹配到返回 null</li>
+<li>String, 返回匹配的前缀，未匹配到返回 null</li>
 </ul>
 <hr>
 <h3 id="lookupnamespaceuri">lookupNamespaceURI</h3>
@@ -343,11 +343,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>prefix - 指定匹配的前缀</li>
+<li>prefix: String, 指定匹配的前缀</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回匹配的命名空间 URI，未匹配到返回 null</li>
+<li>String, 返回匹配的命名空间 URI，未匹配到返回 null</li>
 </ul>
 <hr>
 <h3 id="insertbefore">insertBefore</h3>
@@ -357,12 +357,12 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>newChild - 插入新的节点</li>
-<li>refChild - 在此节点前插入新节点</li>
+<li>newChild: XmlNode, 插入新的节点</li>
+<li>refChild: XmlNode, 在此节点前插入新节点</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回新的子节点</li>
+<li>XmlNode, 返回新的子节点</li>
 </ul>
 <p>如果文档树中已经存在了 newChild，它将从文档树中删除，然后重新插入它的新位置。来自一个文档的节点（或由一个文档创建的节点）不能插入另一个文档。也就是说，newChild 的 ownerDocument 属性必须与当前节点的 ownerDocument 属性相同。</p>
 <hr>
@@ -373,12 +373,12 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>newChild - 插入新的节点</li>
-<li>refChild - 在此节点后插入新节点</li>
+<li>newChild: XmlNode, 插入新的节点</li>
+<li>refChild: XmlNode, 在此节点后插入新节点</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回新的子节点</li>
+<li>XmlNode, 返回新的子节点</li>
 </ul>
 <p>如果文档树中已经存在了 newChild，它将从文档树中删除，然后重新插入它的新位置。来自一个文档的节点（或由一个文档创建的节点）不能插入另一个文档。也就是说，newChild 的 ownerDocument 属性必须与当前节点的 ownerDocument 属性相同。</p>
 <hr>
@@ -388,11 +388,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>newChild - 指定添加的节点</li>
+<li>newChild: XmlNode, 指定添加的节点</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回这个新的子节点</li>
+<li>XmlNode, 返回这个新的子节点</li>
 </ul>
 <p>如果文档树中已经存在了 newChild，它将从文档树中删除，然后重新插入它的新位置。来自一个文档的节点（或由一个文档创建的节点）不能插入另一个文档。也就是说，newChild 的 ownerDocument 属性必须与当前节点的 ownerDocument 属性相同。</p>
 <hr>
@@ -403,12 +403,12 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>newChild - 指定新的节点</li>
-<li>oldChild - 指定被替换的节点</li>
+<li>newChild: XmlNode, 指定新的节点</li>
+<li>oldChild: XmlNode, 指定被替换的节点</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>如替换成功，此方法可返回被替换的节点，如替换失败，则返回 null</li>
+<li>XmlNode, 如替换成功，此方法可返回被替换的节点，如替换失败，则返回 null</li>
 </ul>
 <p>如果文档树中已经存在了 newChild，它将从文档树中删除，然后重新插入它的新位置。来自一个文档的节点（或由一个文档创建的节点）不能插入另一个文档。也就是说，newChild 的 ownerDocument 属性必须与当前节点的 ownerDocument 属性相同。</p>
 <hr>
@@ -418,11 +418,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>oldChild - 指定被删除的节点</li>
+<li>oldChild: XmlNode, 指定被删除的节点</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>如删除成功，此方法可返回被删除的节点，如失败，则返回 null</li>
+<li>XmlNode, 如删除成功，此方法可返回被删除的节点，如失败，则返回 null</li>
 </ul>
 <hr>
 <h3 id="dispose">dispose</h3>
@@ -436,11 +436,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>expected - 制定比较的目标对象</li>
+<li>expected: object, 制定比较的目标对象</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回对象比较的结果</li>
+<li>Boolean, 返回对象比较的结果</li>
 </ul>
 <hr>
 <h3 id="tostring">toString</h3>
@@ -449,7 +449,7 @@
 </code></pre>
 <p>返回结果:</p>
 <ul>
-<li>返回对象的字符串表示</li>
+<li>String, 返回对象的字符串表示</li>
 </ul>
 <hr>
 <h3 id="tojson">toJSON</h3>
@@ -458,11 +458,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>key - 未使用</li>
+<li>key: String, 未使用</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回包含可 JSON 序列化的值</li>
+<li>Value, 返回包含可 JSON 序列化的值</li>
 </ul>
 <hr>
 <h3 id="valueof">valueOf</h3>
@@ -471,52 +471,52 @@
 </code></pre>
 <p>返回结果:</p>
 <ul>
-<li>返回对象本身的数值</li>
+<li>Value, 返回对象本身的数值</li>
 </ul>
 <h2 id="-">成员属性</h2>
 <h3 id="inputencoding">inputEncoding</h3>
-<p>返回用于文档的编码（在解析时）</p>
+<p>String, 返回用于文档的编码（在解析时）</p>
 <pre><code class="lang-JavaScript">readonly <span class="hljs-built_in">String</span> XmlDocument.inputEncoding;
 </code></pre>
 <hr>
 <h3 id="xmlstandalone">xmlStandalone</h3>
-<p>设置或返回文档是否为 standalone</p>
+<p>Boolean, 设置或返回文档是否为 standalone</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">Boolean</span> XmlDocument.xmlStandalone;
 </code></pre>
 <hr>
 <h3 id="xmlversion">xmlVersion</h3>
-<p>设置或返回文档的 XML 版本</p>
+<p>String, 设置或返回文档的 XML 版本</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> XmlDocument.xmlVersion;
 </code></pre>
 <hr>
 <h3 id="doctype">doctype</h3>
-<p>返回与文档相关的文档类型声明（Document Type Declaration）</p>
+<p><a href=xmldocumenttype.md.html>XmlDocumentType</a>, 返回与文档相关的文档类型声明（Document Type Declaration）</p>
 <pre><code class="lang-JavaScript">readonly XmlDocumentType XmlDocument.doctype;
 </code></pre>
 <p>对于没有 DTD 的 XML 文档，则返回 null。此属性可提供对 <a href=xmldocumenttype.md.html>XmlDocumentType</a> 对象（ XmlDocument 的一个子节点）的直接访问。</p>
 <hr>
 <h3 id="documentelement">documentElement</h3>
-<p>返回文档的根节点</p>
+<p><a href=xmlelement.md.html>XmlElement</a>, 返回文档的根节点</p>
 <pre><code class="lang-JavaScript">readonly XmlElement XmlDocument.documentElement;
 </code></pre>
 <hr>
 <h3 id="head">head</h3>
-<p>返回 HTML 文档的 head 节点，仅在 html 模式有效</p>
+<p><a href=xmlelement.md.html>XmlElement</a>, 返回 HTML 文档的 head 节点，仅在 html 模式有效</p>
 <pre><code class="lang-JavaScript">readonly XmlElement XmlDocument.head;
 </code></pre>
 <hr>
 <h3 id="title">title</h3>
-<p>返回 HTML 文档的 title 节点的内容，仅在 html 模式有效</p>
+<p>String, 返回 HTML 文档的 title 节点的内容，仅在 html 模式有效</p>
 <pre><code class="lang-JavaScript">readonly <span class="hljs-built_in">String</span> XmlDocument.title;
 </code></pre>
 <hr>
 <h3 id="body">body</h3>
-<p>返回 HTML 文档的 body 节点，仅在 html 模式有效</p>
+<p><a href=xmlelement.md.html>XmlElement</a>, 返回 HTML 文档的 body 节点，仅在 html 模式有效</p>
 <pre><code class="lang-JavaScript">readonly XmlElement XmlDocument.body;
 </code></pre>
 <hr>
 <h3 id="nodetype">nodeType</h3>
-<p>返回节点的节点类型</p>
+<p>Integer, 返回节点的节点类型</p>
 <pre><code class="lang-JavaScript">readonly Integer XmlDocument.nodeType;
 </code></pre>
 <p>不同对象的 nodeType 会返回不同的值：</p>
@@ -532,7 +532,7 @@
 </ul>
 <hr>
 <h3 id="nodename">nodeName</h3>
-<p>返回节点的名称，根据其类型</p>
+<p>String, 返回节点的名称，根据其类型</p>
 <pre><code class="lang-JavaScript">readonly <span class="hljs-built_in">String</span> XmlDocument.nodeName;
 </code></pre>
 <p>不同对象的 nodeName 会返回不同的值：</p>
@@ -548,7 +548,7 @@
 </ul>
 <hr>
 <h3 id="nodevalue">nodeValue</h3>
-<p>返回节点的名称，根据其类型</p>
+<p>String, 返回节点的名称，根据其类型</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> XmlDocument.nodeValue;
 </code></pre>
 <p>不同对象的 nodeName 会返回不同的值：</p>
@@ -564,37 +564,37 @@
 </ul>
 <hr>
 <h3 id="ownerdocument">ownerDocument</h3>
-<p>返回节点的根元素（<a href=xmldocument.md.html>XmlDocument</a> 对象）</p>
+<p><a href=xmldocument.md.html>XmlDocument</a>, 返回节点的根元素（<a href=xmldocument.md.html>XmlDocument</a> 对象）</p>
 <pre><code class="lang-JavaScript">readonly XmlDocument XmlDocument.ownerDocument;
 </code></pre>
 <hr>
 <h3 id="parentnode">parentNode</h3>
-<p>可返回某节点的父节点</p>
+<p>XmlNode, 可返回某节点的父节点</p>
 <pre><code class="lang-JavaScript">readonly XmlNode XmlDocument.parentNode;
 </code></pre>
 <hr>
 <h3 id="childnodes">childNodes</h3>
-<p>返回指定节点的子节点的节点列表</p>
+<p><a href=xmlnodelist.md.html>XmlNodeList</a>, 返回指定节点的子节点的节点列表</p>
 <pre><code class="lang-JavaScript">readonly XmlNodeList XmlDocument.childNodes;
 </code></pre>
 <hr>
 <h3 id="firstchild">firstChild</h3>
-<p>返回节点的首个子节点</p>
+<p>XmlNode, 返回节点的首个子节点</p>
 <pre><code class="lang-JavaScript">readonly XmlNode XmlDocument.firstChild;
 </code></pre>
 <hr>
 <h3 id="lastchild">lastChild</h3>
-<p>返回节点的最后一个子节点</p>
+<p>XmlNode, 返回节点的最后一个子节点</p>
 <pre><code class="lang-JavaScript">readonly XmlNode XmlDocument.lastChild;
 </code></pre>
 <hr>
 <h3 id="previoussibling">previousSibling</h3>
-<p>返回某节点之前紧跟的节点（处于同一树层级），如果没有此节点，那么该属性返回 null</p>
+<p>XmlNode, 返回某节点之前紧跟的节点（处于同一树层级），如果没有此节点，那么该属性返回 null</p>
 <pre><code class="lang-JavaScript">readonly XmlNode XmlDocument.previousSibling;
 </code></pre>
 <hr>
 <h3 id="nextsibling">nextSibling</h3>
-<p>返回某个元素之后紧跟的节点（处于同一树层级中），如果无此节点，则属性返回 null</p>
+<p>XmlNode, 返回某个元素之后紧跟的节点（处于同一树层级中），如果无此节点，则属性返回 null</p>
 <pre><code class="lang-JavaScript">readonly XmlNode XmlDocument.nextSibling;
 </code></pre>
  </div><div class="hidden-sm hidden-xs col-xs-3"><div id=toc></div></div></div><div class=container><div class=footer><p>&copy; 2017 fibjs.org</p></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="Click to return on the top page" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=../../../../js/common.js></script><script type=text/javascript src=../../../../js/docs.js></script></body></html>

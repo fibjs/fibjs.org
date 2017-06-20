@@ -16,7 +16,7 @@ var stats = new util.Stats(["begin", "end", "error"]);
 ```
 
 调用参数:
-* keys - 指定计数器的名称
+* keys: Array, 指定计数器的名称
 
 --------------------------
 数据统计对象构造方法
@@ -26,8 +26,8 @@ var stats = new util.Stats(["begin", "end", "error"]);
 ```
 
 调用参数:
-* staticKeys - 指定静态计数器的名称，静态计数器不会被 reset
-* keys - 指定计数器的名称
+* staticKeys: Array, 指定静态计数器的名称，静态计数器不会被 reset
+* keys: Array, 指定计数器的名称
 
 ## 下标操作
         
@@ -45,7 +45,7 @@ Stats.inc(String key);
 ```
 
 调用参数:
-* key - 指定计数器名称
+* key: String, 指定计数器名称
 
 --------------------------
 ### dec
@@ -55,7 +55,7 @@ Stats.dec(String key);
 ```
 
 调用参数:
-* key - 指定计数器名称
+* key: String, 指定计数器名称
 
 --------------------------
 ### add
@@ -66,8 +66,8 @@ Stats.add(String key,
 ```
 
 调用参数:
-* key - 指定计数器名称
-* value - 指定数值
+* key: String, 指定计数器名称
+* value: Integer, 指定数值
 
 --------------------------
 ### reset
@@ -84,7 +84,7 @@ Integer Stats.uptime();
 ```
 
 返回结果:
-* 返回上次 reset 到现在的运行时间
+* Integer, 返回上次 reset 到现在的运行时间
 
 --------------------------
 ### dispose
@@ -101,10 +101,10 @@ Boolean Stats.equals(object expected);
 ```
 
 调用参数:
-* expected - 制定比较的目标对象
+* expected: object, 制定比较的目标对象
 
 返回结果:
-* 返回对象比较的结果
+* Boolean, 返回对象比较的结果
 
 --------------------------
 ### toString
@@ -114,7 +114,7 @@ String Stats.toString();
 ```
 
 返回结果:
-* 返回对象的字符串表示
+* String, 返回对象的字符串表示
 
 --------------------------
 ### toJSON
@@ -124,10 +124,10 @@ Value Stats.toJSON(String key = "");
 ```
 
 调用参数:
-* key - 未使用
+* key: String, 未使用
 
 返回结果:
-* 返回包含可 JSON 序列化的值
+* Value, 返回包含可 JSON 序列化的值
 
 --------------------------
 ### valueOf
@@ -137,5 +137,5 @@ Value Stats.valueOf();
 ```
 
 返回结果:
-* 返回对象本身的数值
+* Value, 返回对象本身的数值
 

@@ -14,7 +14,7 @@ static Buffer uuid.node();
 ```
 
 返回结果:
-* 返回一个生成的二进制 id
+* [Buffer](../../object/ifs/Buffer.md), 返回一个生成的二进制 id
 
 --------------------------
 ### md5
@@ -25,11 +25,11 @@ static Buffer uuid.md5(Integer ns,
 ```
 
 调用参数:
-* ns - 指定命名空间，可以为 uuid.DNS, uuid.URL, uuid.OID, uuid.X509
-* name - 指定名称
+* ns: Integer, 指定命名空间，可以为 uuid.DNS, uuid.URL, uuid.OID, uuid.X509
+* name: String, 指定名称
 
 返回结果:
-* 返回一个生成的二进制 id
+* [Buffer](../../object/ifs/Buffer.md), 返回一个生成的二进制 id
 
 --------------------------
 ### random
@@ -39,7 +39,7 @@ static Buffer uuid.random();
 ```
 
 返回结果:
-* 返回一个生成的二进制 id
+* [Buffer](../../object/ifs/Buffer.md), 返回一个生成的二进制 id
 
 --------------------------
 ### sha1
@@ -50,11 +50,11 @@ static Buffer uuid.sha1(Integer ns,
 ```
 
 调用参数:
-* ns - 指定命名空间，可以为 uuid.DNS, uuid.URL, uuid.OID, uuid.X509
-* name - 指定名称
+* ns: Integer, 指定命名空间，可以为 uuid.DNS, uuid.URL, uuid.OID, uuid.X509
+* name: String, 指定名称
 
 返回结果:
-* 返回一个生成的二进制 id
+* [Buffer](../../object/ifs/Buffer.md), 返回一个生成的二进制 id
 
 --------------------------
 ### snowflake
@@ -64,12 +64,12 @@ static Buffer uuid.snowflake();
 ```
 
 返回结果:
-* 返回一个生成的二进制 id
+* [Buffer](../../object/ifs/Buffer.md), 返回一个生成的二进制 id
 
 ## 静态属性
         
 ### hostID
-查询和修改 Snowflake 算法的主机 id
+Integer, 查询和修改 Snowflake 算法的主机 id
 ```JavaScript
 static Integer uuid.hostID;
 ```

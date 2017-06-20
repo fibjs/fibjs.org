@@ -18,9 +18,9 @@ var msg = new ws.Message();
 ```
 
 调用参数:
-* type - websocket 消息类型，缺省为 websocket.BINARY
-* masked - websocket 消息掩码，缺省为 true
-* maxSize - 最大包尺寸，以 MB 为单位，缺省为 67108864(64M)
+* type: Integer, websocket 消息类型，缺省为 websocket.BINARY
+* masked: Boolean, websocket 消息掩码，缺省为 true
+* maxSize: Integer, 最大包尺寸，以 MB 为单位，缺省为 67108864(64M)
 
 ## 成员函数
         
@@ -31,10 +31,10 @@ Buffer WebSocketMessage.read(Integer bytes = -1) async;
 ```
 
 调用参数:
-* bytes - 指定要读取的数据量，缺省为读取随机大小的数据块，读出的数据尺寸取决于设备
+* bytes: Integer, 指定要读取的数据量，缺省为读取随机大小的数据块，读出的数据尺寸取决于设备
 
 返回结果:
-* 返回从流内读取的数据，若无数据可读，或者连接中断，则返回 null
+* [Buffer](Buffer.md), 返回从流内读取的数据，若无数据可读，或者连接中断，则返回 null
 
 --------------------------
 ### readAll
@@ -44,7 +44,7 @@ Buffer WebSocketMessage.readAll() async;
 ```
 
 返回结果:
-* 返回从流内读取的数据，若无数据可读，或者连接中断，则返回 null
+* [Buffer](Buffer.md), 返回从流内读取的数据，若无数据可读，或者连接中断，则返回 null
 
 --------------------------
 ### write
@@ -54,7 +54,7 @@ WebSocketMessage.write(Buffer data) async;
 ```
 
 调用参数:
-* data - 给定要写入的数据
+* data: [Buffer](Buffer.md), 给定要写入的数据
 
 --------------------------
 ### end
@@ -71,7 +71,7 @@ Boolean WebSocketMessage.isEnded();
 ```
 
 返回结果:
-* 结束则返回 true
+* Boolean, 结束则返回 true
 
 --------------------------
 ### clear
@@ -88,7 +88,7 @@ WebSocketMessage.sendTo(Stream stm) async;
 ```
 
 调用参数:
-* stm - 指定接收格式化消息的流对象
+* stm: [Stream](Stream.md), 指定接收格式化消息的流对象
 
 --------------------------
 ### readFrom
@@ -98,7 +98,7 @@ WebSocketMessage.readFrom(Stream stm) async;
 ```
 
 调用参数:
-* stm - 指定读取格式化消息的流对象
+* stm: [Stream](Stream.md), 指定读取格式化消息的流对象
 
 --------------------------
 ### dispose
@@ -115,10 +115,10 @@ Boolean WebSocketMessage.equals(object expected);
 ```
 
 调用参数:
-* expected - 制定比较的目标对象
+* expected: object, 制定比较的目标对象
 
 返回结果:
-* 返回对象比较的结果
+* Boolean, 返回对象比较的结果
 
 --------------------------
 ### toString
@@ -128,7 +128,7 @@ String WebSocketMessage.toString();
 ```
 
 返回结果:
-* 返回对象的字符串表示
+* String, 返回对象的字符串表示
 
 --------------------------
 ### toJSON
@@ -138,10 +138,10 @@ Value WebSocketMessage.toJSON(String key = "");
 ```
 
 调用参数:
-* key - 未使用
+* key: String, 未使用
 
 返回结果:
-* 返回包含可 JSON 序列化的值
+* Value, 返回包含可 JSON 序列化的值
 
 --------------------------
 ### valueOf
@@ -151,82 +151,82 @@ Value WebSocketMessage.valueOf();
 ```
 
 返回结果:
-* 返回对象本身的数值
+* Value, 返回对象本身的数值
 
 ## 成员属性
         
 ### masked
-查询和读取 websocket 掩码标记，缺省为 true
+Boolean, 查询和读取 websocket 掩码标记，缺省为 true
 ```JavaScript
 Boolean WebSocketMessage.masked;
 ```
 
 --------------------------
 ### maxSize
-查询和设置最大包尺寸，以字节为单位，缺省为 67108864(64M)
+Integer, 查询和设置最大包尺寸，以字节为单位，缺省为 67108864(64M)
 ```JavaScript
 Integer WebSocketMessage.maxSize;
 ```
 
 --------------------------
 ### value
-消息的基本内容
+String, 消息的基本内容
 ```JavaScript
 String WebSocketMessage.value;
 ```
 
 --------------------------
 ### params
-消息的基本参数
+[List](List.md), 消息的基本参数
 ```JavaScript
 List WebSocketMessage.params;
 ```
 
 --------------------------
 ### type
-消息类型
+Integer, 消息类型
 ```JavaScript
 Integer WebSocketMessage.type;
 ```
 
 --------------------------
 ### data
-查询消息的数据
+Value, 查询消息的数据
 ```JavaScript
 readonly Value WebSocketMessage.data;
 ```
 
 --------------------------
 ### body
-包含消息数据部分的流对象
+[SeekableStream](SeekableStream.md), 包含消息数据部分的流对象
 ```JavaScript
 SeekableStream WebSocketMessage.body;
 ```
 
 --------------------------
 ### length
-消息数据部分的长度
+Long, 消息数据部分的长度
 ```JavaScript
 readonly Long WebSocketMessage.length;
 ```
 
 --------------------------
 ### stream
-查询消息 readFrom 时的流对象
+[Stream](Stream.md), 查询消息 readFrom 时的流对象
 ```JavaScript
 readonly Stream WebSocketMessage.stream;
 ```
 
 --------------------------
 ### response
-获取响应消息对象
+Message, 获取响应消息对象
 ```JavaScript
 readonly Message WebSocketMessage.response;
 ```
 
 --------------------------
 ### lastError
-查询和设置消息处理的最后错误
+String, 查询和设置消息处理的最后错误
 ```JavaScript
 String WebSocketMessage.lastError;
 ```

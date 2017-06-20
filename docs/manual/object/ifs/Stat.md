@@ -11,7 +11,7 @@ Boolean Stat.isWritable();
 ```
 
 返回结果:
-* 为 true 则有写入权限
+* Boolean, 为 true 则有写入权限
 
 --------------------------
 ### isReadable
@@ -21,7 +21,7 @@ Boolean Stat.isReadable();
 ```
 
 返回结果:
-* 为 true 则有读权限
+* Boolean, 为 true 则有读权限
 
 --------------------------
 ### isExecutable
@@ -31,7 +31,7 @@ Boolean Stat.isExecutable();
 ```
 
 返回结果:
-* 为 true 则有执行权限
+* Boolean, 为 true 则有执行权限
 
 --------------------------
 ### isHidden
@@ -41,7 +41,7 @@ Boolean Stat.isHidden();
 ```
 
 返回结果:
-* 为 true 则隐藏
+* Boolean, 为 true 则隐藏
 
 --------------------------
 ### isDirectory
@@ -51,7 +51,7 @@ Boolean Stat.isDirectory();
 ```
 
 返回结果:
-* 为 true 则是目录
+* Boolean, 为 true 则是目录
 
 --------------------------
 ### isFile
@@ -61,7 +61,7 @@ Boolean Stat.isFile();
 ```
 
 返回结果:
-* 为 true 则是文件
+* Boolean, 为 true 则是文件
 
 --------------------------
 ### isSymbolicLink
@@ -71,7 +71,7 @@ Boolean Stat.isSymbolicLink();
 ```
 
 返回结果:
-* 为 true 则是符号链接
+* Boolean, 为 true 则是符号链接
 
 --------------------------
 ### isMemory
@@ -81,7 +81,7 @@ Boolean Stat.isMemory();
 ```
 
 返回结果:
-* 为 true 则是内存文件
+* Boolean, 为 true 则是内存文件
 
 --------------------------
 ### isSocket
@@ -91,7 +91,7 @@ Boolean Stat.isSocket();
 ```
 
 返回结果:
-* 为 true 则是 Socket
+* Boolean, 为 true 则是 [Socket](Socket.md)
 
 --------------------------
 ### dispose
@@ -108,10 +108,10 @@ Boolean Stat.equals(object expected);
 ```
 
 调用参数:
-* expected - 制定比较的目标对象
+* expected: object, 制定比较的目标对象
 
 返回结果:
-* 返回对象比较的结果
+* Boolean, 返回对象比较的结果
 
 --------------------------
 ### toString
@@ -121,7 +121,7 @@ String Stat.toString();
 ```
 
 返回结果:
-* 返回对象的字符串表示
+* String, 返回对象的字符串表示
 
 --------------------------
 ### toJSON
@@ -131,10 +131,10 @@ Value Stat.toJSON(String key = "");
 ```
 
 调用参数:
-* key - 未使用
+* key: String, 未使用
 
 返回结果:
-* 返回包含可 JSON 序列化的值
+* Value, 返回包含可 JSON 序列化的值
 
 --------------------------
 ### valueOf
@@ -144,47 +144,47 @@ Value Stat.valueOf();
 ```
 
 返回结果:
-* 返回对象本身的数值
+* Value, 返回对象本身的数值
 
 ## 成员属性
         
 ### name
-文件名称
+String, 文件名称
 ```JavaScript
 readonly String Stat.name;
 ```
 
 --------------------------
 ### size
-文件尺寸
+Long, 文件尺寸
 ```JavaScript
 readonly Long Stat.size;
 ```
 
 --------------------------
 ### mode
-文件权限，Windows 不支持此属性
+Integer, 文件权限，Windows 不支持此属性
 ```JavaScript
 readonly Integer Stat.mode;
 ```
 
 --------------------------
 ### mtime
-文件最后修改时间
+Date, 文件最后修改时间
 ```JavaScript
 readonly Date Stat.mtime;
 ```
 
 --------------------------
 ### atime
-文件最后访问时间
+Date, 文件最后访问时间
 ```JavaScript
 readonly Date Stat.atime;
 ```
 
 --------------------------
 ### ctime
-文件创建时间
+Date, 文件创建时间
 ```JavaScript
 readonly Date Stat.ctime;
 ```

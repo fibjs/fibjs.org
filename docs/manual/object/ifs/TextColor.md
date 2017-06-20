@@ -17,10 +17,10 @@ Boolean TextColor.equals(object expected);
 ```
 
 调用参数:
-* expected - 制定比较的目标对象
+* expected: object, 制定比较的目标对象
 
 返回结果:
-* 返回对象比较的结果
+* Boolean, 返回对象比较的结果
 
 --------------------------
 ### toString
@@ -30,7 +30,7 @@ String TextColor.toString();
 ```
 
 返回结果:
-* 返回对象的字符串表示
+* String, 返回对象的字符串表示
 
 --------------------------
 ### toJSON
@@ -40,10 +40,10 @@ Value TextColor.toJSON(String key = "");
 ```
 
 调用参数:
-* key - 未使用
+* key: String, 未使用
 
 返回结果:
-* 返回包含可 JSON 序列化的值
+* Value, 返回包含可 JSON 序列化的值
 
 --------------------------
 ### valueOf
@@ -53,33 +53,33 @@ Value TextColor.valueOf();
 ```
 
 返回结果:
-* 返回对象本身的数值
+* Value, 返回对象本身的数值
 
 ## 成员属性
         
 ### notice
-指定 [console](../../module/ifs/console.md).notice 颜色
+String, 指定 [console](../../module/ifs/console.md).notice 颜色
 ```JavaScript
 String TextColor.notice;
 ```
 
 --------------------------
 ### warn
-指定 [console](../../module/ifs/console.md).warn 颜色
+String, 指定 [console](../../module/ifs/console.md).warn 颜色
 ```JavaScript
 String TextColor.warn;
 ```
 
 --------------------------
 ### error
-指定 [console](../../module/ifs/console.md).error 颜色
+String, 指定 [console](../../module/ifs/console.md).error 颜色
 ```JavaScript
 String TextColor.error;
 ```
 
 --------------------------
 ### highLight
-指定 highLight 颜色
+String, 指定 highLight 颜色
 ```JavaScript
 String TextColor.highLight;
 ```

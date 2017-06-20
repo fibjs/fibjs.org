@@ -26,9 +26,9 @@ SslServer 构造函数，在所有本机地址侦听
 ```
 
 调用参数:
-* certs - 服务器证书列表
-* port - 指定 ssl 服务器侦听端口
-* listener - 指定 ssl 接收到的内置消息处理器，处理函数，链式处理数组，路由对象，详见 mq.Handler
+* certs: Array, 服务器证书列表
+* port: Integer, 指定 [ssl](../../module/ifs/ssl.md) 服务器侦听端口
+* listener: [Handler](Handler.md), 指定 [ssl](../../module/ifs/ssl.md) 接收到的内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq](../../module/ifs/mq.md).[Handler](Handler.md)
 
 certs 格式为：
 ```JavaScript
@@ -54,10 +54,10 @@ SslServer 构造函数
 ```
 
 调用参数:
-* certs - 服务器证书列表
-* addr - 指定 ssl 服务器侦听地址，为 "" 则在本机所有地址侦听
-* port - 指定 ssl 服务器侦听端口
-* listener - 指定 ssl 接收到的连接的内置消息处理器，处理函数，链式处理数组，路由对象，详见 mq.Handler
+* certs: Array, 服务器证书列表
+* addr: String, 指定 [ssl](../../module/ifs/ssl.md) 服务器侦听地址，为 "" 则在本机所有地址侦听
+* port: Integer, 指定 [ssl](../../module/ifs/ssl.md) 服务器侦听端口
+* listener: [Handler](Handler.md), 指定 [ssl](../../module/ifs/ssl.md) 接收到的连接的内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq](../../module/ifs/mq.md).[Handler](Handler.md)
 
 certs 格式为：
 ```JavaScript
@@ -83,10 +83,10 @@ SslServer 构造函数，在所有本机地址侦听
 ```
 
 调用参数:
-* crt - X509Cert 证书，用于客户端验证服务器
-* key - PKey 私钥，用于与客户端会话
-* port - 指定 ssl 服务器侦听端口
-* listener - 指定 ssl 接收到的内置消息处理器，处理函数，链式处理数组，路由对象，详见 mq.Handler
+* crt: [X509Cert](X509Cert.md), [X509Cert](X509Cert.md) 证书，用于客户端验证服务器
+* key: [PKey](PKey.md), [PKey](PKey.md) 私钥，用于与客户端会话
+* port: Integer, 指定 [ssl](../../module/ifs/ssl.md) 服务器侦听端口
+* listener: [Handler](Handler.md), 指定 [ssl](../../module/ifs/ssl.md) 接收到的内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq](../../module/ifs/mq.md).[Handler](Handler.md)
 
 --------------------------
 SslServer 构造函数
@@ -99,11 +99,11 @@ SslServer 构造函数
 ```
 
 调用参数:
-* crt - X509Cert 证书，用于客户端验证服务器
-* key - PKey 私钥，用于与客户端会话
-* addr - 指定 ssl 服务器侦听地址，为 "" 则在本机所有地址侦听
-* port - 指定 ssl 服务器侦听端口
-* listener - 指定 ssl 接收到的连接的内置消息处理器，处理函数，链式处理数组，路由对象，详见 mq.Handler
+* crt: [X509Cert](X509Cert.md), [X509Cert](X509Cert.md) 证书，用于客户端验证服务器
+* key: [PKey](PKey.md), [PKey](PKey.md) 私钥，用于与客户端会话
+* addr: String, 指定 [ssl](../../module/ifs/ssl.md) 服务器侦听地址，为 "" 则在本机所有地址侦听
+* port: Integer, 指定 [ssl](../../module/ifs/ssl.md) 服务器侦听端口
+* listener: [Handler](Handler.md), 指定 [ssl](../../module/ifs/ssl.md) 接收到的连接的内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq](../../module/ifs/mq.md).[Handler](Handler.md)
 
 ## 成员函数
         
@@ -142,10 +142,10 @@ Boolean SslServer.equals(object expected);
 ```
 
 调用参数:
-* expected - 制定比较的目标对象
+* expected: object, 制定比较的目标对象
 
 返回结果:
-* 返回对象比较的结果
+* Boolean, 返回对象比较的结果
 
 --------------------------
 ### toString
@@ -155,7 +155,7 @@ String SslServer.toString();
 ```
 
 返回结果:
-* 返回对象的字符串表示
+* String, 返回对象的字符串表示
 
 --------------------------
 ### toJSON
@@ -165,10 +165,10 @@ Value SslServer.toJSON(String key = "");
 ```
 
 调用参数:
-* key - 未使用
+* key: String, 未使用
 
 返回结果:
-* 返回包含可 JSON 序列化的值
+* Value, 返回包含可 JSON 序列化的值
 
 --------------------------
 ### valueOf
@@ -178,40 +178,40 @@ Value SslServer.valueOf();
 ```
 
 返回结果:
-* 返回对象本身的数值
+* Value, 返回对象本身的数值
 
 ## 成员属性
         
 ### verification
-设定证书验证模式，缺省为 VERIFY_NONE
+Integer, 设定证书验证模式，缺省为 VERIFY_NONE
 ```JavaScript
 Integer SslServer.verification;
 ```
 
 --------------------------
 ### ca
-客户端证书验证证书链
+[X509Cert](X509Cert.md), 客户端证书验证证书链
 ```JavaScript
 readonly X509Cert SslServer.ca;
 ```
 
 --------------------------
 ### socket
-服务器当前侦听的 [Socket](Socket.md) 对象
+[Socket](Socket.md), 服务器当前侦听的 [Socket](Socket.md) 对象
 ```JavaScript
 readonly Socket SslServer.socket;
 ```
 
 --------------------------
 ### handler
-服务器当前事件处理接口对象
+[Handler](Handler.md), 服务器当前事件处理接口对象
 ```JavaScript
 Handler SslServer.handler;
 ```
 
 --------------------------
 ### stats
-查询当前服务器运行状态
+[Stats](Stats.md), 查询当前服务器运行状态
 ```JavaScript
 readonly Stats SslServer.stats;
 ```

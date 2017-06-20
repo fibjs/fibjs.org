@@ -22,7 +22,7 @@ X509Crl.load(Buffer derCrl);
 ```
 
 调用参数:
-* derCrl - DER 格式的撤销证书
+* derCrl: [Buffer](Buffer.md), DER 格式的撤销证书
 
 --------------------------
 加载一个 PEM 格式的撤销证书，可多次调用
@@ -31,7 +31,7 @@ X509Crl.load(String pemCrl);
 ```
 
 调用参数:
-* pemCrl - PEM 格式的撤销证书
+* pemCrl: String, PEM 格式的撤销证书
 
 --------------------------
 ### loadFile
@@ -41,7 +41,7 @@ X509Crl.loadFile(String filename);
 ```
 
 调用参数:
-* filename - 撤销证书文件名
+* filename: String, 撤销证书文件名
 
 --------------------------
 ### dump
@@ -51,7 +51,7 @@ Array X509Crl.dump();
 ```
 
 返回结果:
-* 以数组方式导出撤销证书链
+* Array, 以数组方式导出撤销证书链
 
 --------------------------
 ### clear
@@ -75,10 +75,10 @@ Boolean X509Crl.equals(object expected);
 ```
 
 调用参数:
-* expected - 制定比较的目标对象
+* expected: object, 制定比较的目标对象
 
 返回结果:
-* 返回对象比较的结果
+* Boolean, 返回对象比较的结果
 
 --------------------------
 ### toString
@@ -88,7 +88,7 @@ String X509Crl.toString();
 ```
 
 返回结果:
-* 返回对象的字符串表示
+* String, 返回对象的字符串表示
 
 --------------------------
 ### toJSON
@@ -98,10 +98,10 @@ Value X509Crl.toJSON(String key = "");
 ```
 
 调用参数:
-* key - 未使用
+* key: String, 未使用
 
 返回结果:
-* 返回包含可 JSON 序列化的值
+* Value, 返回包含可 JSON 序列化的值
 
 --------------------------
 ### valueOf
@@ -111,5 +111,5 @@ Value X509Crl.valueOf();
 ```
 
 返回结果:
-* 返回对象本身的数值
+* Value, 返回对象本身的数值
 

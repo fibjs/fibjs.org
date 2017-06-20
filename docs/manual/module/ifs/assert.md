@@ -24,8 +24,8 @@ static assert.Function(Value actual,
 ```
 
 调用参数:
-* actual - 要测试的数值
-* msg - 断言失败时的提示信息
+* actual: Value, 要测试的数值
+* msg: String, 断言失败时的提示信息
 
 --------------------------
 ### ok
@@ -36,8 +36,8 @@ static assert.ok(Value actual,
 ```
 
 调用参数:
-* actual - 要测试的数值
-* msg - 断言失败时的提示信息
+* actual: Value, 要测试的数值
+* msg: String, 断言失败时的提示信息
 
 --------------------------
 ### notOk
@@ -48,8 +48,8 @@ static assert.notOk(Value actual,
 ```
 
 调用参数:
-* actual - 要测试的数值
-* msg - 断言失败时的提示信息
+* actual: Value, 要测试的数值
+* msg: String, 断言失败时的提示信息
 
 --------------------------
 ### equal
@@ -61,9 +61,9 @@ static assert.equal(Value actual,
 ```
 
 调用参数:
-* actual - 要测试的数值
-* expected - 预期的数值
-* msg - 断言失败时的提示信息
+* actual: Value, 要测试的数值
+* expected: Value, 预期的数值
+* msg: String, 断言失败时的提示信息
 
 --------------------------
 ### notEqual
@@ -75,9 +75,9 @@ static assert.notEqual(Value actual,
 ```
 
 调用参数:
-* actual - 要测试的数值
-* expected - 预期的数值
-* msg - 断言失败时的提示信息
+* actual: Value, 要测试的数值
+* expected: Value, 预期的数值
+* msg: String, 断言失败时的提示信息
 
 --------------------------
 ### strictEqual
@@ -89,9 +89,9 @@ static assert.strictEqual(Value actual,
 ```
 
 调用参数:
-* actual - 要测试的数值
-* expected - 预期的数值
-* msg - 断言失败时的提示信息
+* actual: Value, 要测试的数值
+* expected: Value, 预期的数值
+* msg: String, 断言失败时的提示信息
 
 --------------------------
 ### notStrictEqual
@@ -103,9 +103,9 @@ static assert.notStrictEqual(Value actual,
 ```
 
 调用参数:
-* actual - 要测试的数值
-* expected - 预期的数值
-* msg - 断言失败时的提示信息
+* actual: Value, 要测试的数值
+* expected: Value, 预期的数值
+* msg: String, 断言失败时的提示信息
 
 --------------------------
 ### deepEqual
@@ -117,9 +117,9 @@ static assert.deepEqual(Value actual,
 ```
 
 调用参数:
-* actual - 要测试的数值
-* expected - 预期的数值
-* msg - 断言失败时的提示信息
+* actual: Value, 要测试的数值
+* expected: Value, 预期的数值
+* msg: String, 断言失败时的提示信息
 
 --------------------------
 ### notDeepEqual
@@ -131,9 +131,9 @@ static assert.notDeepEqual(Value actual,
 ```
 
 调用参数:
-* actual - 要测试的数值
-* expected - 预期的数值
-* msg - 断言失败时的提示信息
+* actual: Value, 要测试的数值
+* expected: Value, 预期的数值
+* msg: String, 断言失败时的提示信息
 
 --------------------------
 ### closeTo
@@ -146,10 +146,10 @@ static assert.closeTo(Value actual,
 ```
 
 调用参数:
-* actual - 要测试的数值
-* expected - 预期的数值
-* delta - 近似的小数精度
-* msg - 断言失败时的提示信息
+* actual: Value, 要测试的数值
+* expected: Value, 预期的数值
+* delta: Value, 近似的小数精度
+* msg: String, 断言失败时的提示信息
 
 --------------------------
 ### notCloseTo
@@ -162,10 +162,10 @@ static assert.notCloseTo(Value actual,
 ```
 
 调用参数:
-* actual - 要测试的数值
-* expected - 预期的数值
-* delta - 近似的小数精度
-* msg - 断言失败时的提示信息
+* actual: Value, 要测试的数值
+* expected: Value, 预期的数值
+* delta: Value, 近似的小数精度
+* msg: String, 断言失败时的提示信息
 
 --------------------------
 ### lessThan
@@ -177,9 +177,9 @@ static assert.lessThan(Value actual,
 ```
 
 调用参数:
-* actual - 要测试的数值
-* expected - 预期的数值
-* msg - 断言失败时的提示信息
+* actual: Value, 要测试的数值
+* expected: Value, 预期的数值
+* msg: String, 断言失败时的提示信息
 
 --------------------------
 ### notLessThan
@@ -191,9 +191,9 @@ static assert.notLessThan(Value actual,
 ```
 
 调用参数:
-* actual - 要测试的数值
-* expected - 预期的数值
-* msg - 断言失败时的提示信息
+* actual: Value, 要测试的数值
+* expected: Value, 预期的数值
+* msg: String, 断言失败时的提示信息
 
 --------------------------
 ### greaterThan
@@ -205,9 +205,9 @@ static assert.greaterThan(Value actual,
 ```
 
 调用参数:
-* actual - 要测试的数值
-* expected - 预期的数值
-* msg - 断言失败时的提示信息
+* actual: Value, 要测试的数值
+* expected: Value, 预期的数值
+* msg: String, 断言失败时的提示信息
 
 --------------------------
 ### notGreaterThan
@@ -219,9 +219,9 @@ static assert.notGreaterThan(Value actual,
 ```
 
 调用参数:
-* actual - 要测试的数值
-* expected - 预期的数值
-* msg - 断言失败时的提示信息
+* actual: Value, 要测试的数值
+* expected: Value, 预期的数值
+* msg: String, 断言失败时的提示信息
 
 --------------------------
 ### exist
@@ -232,8 +232,8 @@ static assert.exist(Value actual,
 ```
 
 调用参数:
-* actual - 要测试的数值
-* msg - 断言失败时的提示信息
+* actual: Value, 要测试的数值
+* msg: String, 断言失败时的提示信息
 
 --------------------------
 ### notExist
@@ -244,8 +244,8 @@ static assert.notExist(Value actual,
 ```
 
 调用参数:
-* actual - 要测试的数值
-* msg - 断言失败时的提示信息
+* actual: Value, 要测试的数值
+* msg: String, 断言失败时的提示信息
 
 --------------------------
 ### isTrue
@@ -256,8 +256,8 @@ static assert.isTrue(Value actual,
 ```
 
 调用参数:
-* actual - 要测试的数值
-* msg - 断言失败时的提示信息
+* actual: Value, 要测试的数值
+* msg: String, 断言失败时的提示信息
 
 --------------------------
 ### isNotTrue
@@ -268,8 +268,8 @@ static assert.isNotTrue(Value actual,
 ```
 
 调用参数:
-* actual - 要测试的数值
-* msg - 断言失败时的提示信息
+* actual: Value, 要测试的数值
+* msg: String, 断言失败时的提示信息
 
 --------------------------
 ### isFalse
@@ -280,8 +280,8 @@ static assert.isFalse(Value actual,
 ```
 
 调用参数:
-* actual - 要测试的数值
-* msg - 断言失败时的提示信息
+* actual: Value, 要测试的数值
+* msg: String, 断言失败时的提示信息
 
 --------------------------
 ### isNotFalse
@@ -292,8 +292,8 @@ static assert.isNotFalse(Value actual,
 ```
 
 调用参数:
-* actual - 要测试的数值
-* msg - 断言失败时的提示信息
+* actual: Value, 要测试的数值
+* msg: String, 断言失败时的提示信息
 
 --------------------------
 ### isNull
@@ -304,8 +304,8 @@ static assert.isNull(Value actual,
 ```
 
 调用参数:
-* actual - 要测试的数值
-* msg - 断言失败时的提示信息
+* actual: Value, 要测试的数值
+* msg: String, 断言失败时的提示信息
 
 --------------------------
 ### isNotNull
@@ -316,8 +316,8 @@ static assert.isNotNull(Value actual,
 ```
 
 调用参数:
-* actual - 要测试的数值
-* msg - 断言失败时的提示信息
+* actual: Value, 要测试的数值
+* msg: String, 断言失败时的提示信息
 
 --------------------------
 ### isUndefined
@@ -328,8 +328,8 @@ static assert.isUndefined(Value actual,
 ```
 
 调用参数:
-* actual - 要测试的数值
-* msg - 断言失败时的提示信息
+* actual: Value, 要测试的数值
+* msg: String, 断言失败时的提示信息
 
 --------------------------
 ### isDefined
@@ -340,8 +340,8 @@ static assert.isDefined(Value actual,
 ```
 
 调用参数:
-* actual - 要测试的数值
-* msg - 断言失败时的提示信息
+* actual: Value, 要测试的数值
+* msg: String, 断言失败时的提示信息
 
 --------------------------
 ### isFunction
@@ -352,8 +352,8 @@ static assert.isFunction(Value actual,
 ```
 
 调用参数:
-* actual - 要测试的数值
-* msg - 断言失败时的提示信息
+* actual: Value, 要测试的数值
+* msg: String, 断言失败时的提示信息
 
 --------------------------
 ### isNotFunction
@@ -364,8 +364,8 @@ static assert.isNotFunction(Value actual,
 ```
 
 调用参数:
-* actual - 要测试的数值
-* msg - 断言失败时的提示信息
+* actual: Value, 要测试的数值
+* msg: String, 断言失败时的提示信息
 
 --------------------------
 ### isObject
@@ -376,8 +376,8 @@ static assert.isObject(Value actual,
 ```
 
 调用参数:
-* actual - 要测试的数值
-* msg - 断言失败时的提示信息
+* actual: Value, 要测试的数值
+* msg: String, 断言失败时的提示信息
 
 --------------------------
 ### isNotObject
@@ -388,8 +388,8 @@ static assert.isNotObject(Value actual,
 ```
 
 调用参数:
-* actual - 要测试的数值
-* msg - 断言失败时的提示信息
+* actual: Value, 要测试的数值
+* msg: String, 断言失败时的提示信息
 
 --------------------------
 ### isArray
@@ -400,8 +400,8 @@ static assert.isArray(Value actual,
 ```
 
 调用参数:
-* actual - 要测试的数值
-* msg - 断言失败时的提示信息
+* actual: Value, 要测试的数值
+* msg: String, 断言失败时的提示信息
 
 --------------------------
 ### isNotArray
@@ -412,8 +412,8 @@ static assert.isNotArray(Value actual,
 ```
 
 调用参数:
-* actual - 要测试的数值
-* msg - 断言失败时的提示信息
+* actual: Value, 要测试的数值
+* msg: String, 断言失败时的提示信息
 
 --------------------------
 ### isString
@@ -424,8 +424,8 @@ static assert.isString(Value actual,
 ```
 
 调用参数:
-* actual - 要测试的数值
-* msg - 断言失败时的提示信息
+* actual: Value, 要测试的数值
+* msg: String, 断言失败时的提示信息
 
 --------------------------
 ### isNotString
@@ -436,8 +436,8 @@ static assert.isNotString(Value actual,
 ```
 
 调用参数:
-* actual - 要测试的数值
-* msg - 断言失败时的提示信息
+* actual: Value, 要测试的数值
+* msg: String, 断言失败时的提示信息
 
 --------------------------
 ### isNumber
@@ -448,8 +448,8 @@ static assert.isNumber(Value actual,
 ```
 
 调用参数:
-* actual - 要测试的数值
-* msg - 断言失败时的提示信息
+* actual: Value, 要测试的数值
+* msg: String, 断言失败时的提示信息
 
 --------------------------
 ### isNotNumber
@@ -460,8 +460,8 @@ static assert.isNotNumber(Value actual,
 ```
 
 调用参数:
-* actual - 要测试的数值
-* msg - 断言失败时的提示信息
+* actual: Value, 要测试的数值
+* msg: String, 断言失败时的提示信息
 
 --------------------------
 ### isBoolean
@@ -472,8 +472,8 @@ static assert.isBoolean(Value actual,
 ```
 
 调用参数:
-* actual - 要测试的数值
-* msg - 断言失败时的提示信息
+* actual: Value, 要测试的数值
+* msg: String, 断言失败时的提示信息
 
 --------------------------
 ### isNotBoolean
@@ -484,8 +484,8 @@ static assert.isNotBoolean(Value actual,
 ```
 
 调用参数:
-* actual - 要测试的数值
-* msg - 断言失败时的提示信息
+* actual: Value, 要测试的数值
+* msg: String, 断言失败时的提示信息
 
 --------------------------
 ### typeOf
@@ -497,9 +497,9 @@ static assert.typeOf(Value actual,
 ```
 
 调用参数:
-* actual - 要测试的数值
-* type - 指定的类型
-* msg - 断言失败时的提示信息
+* actual: Value, 要测试的数值
+* type: String, 指定的类型
+* msg: String, 断言失败时的提示信息
 
 --------------------------
 ### notTypeOf
@@ -511,9 +511,9 @@ static assert.notTypeOf(Value actual,
 ```
 
 调用参数:
-* actual - 要测试的数值
-* type - 指定的类型
-* msg - 断言失败时的提示信息
+* actual: Value, 要测试的数值
+* type: String, 指定的类型
+* msg: String, 断言失败时的提示信息
 
 --------------------------
 ### property
@@ -525,9 +525,9 @@ static assert.property(Value object,
 ```
 
 调用参数:
-* object - 要测试的对象
-* prop - 要测试的属性
-* msg - 断言失败时的提示信息
+* object: Value, 要测试的对象
+* prop: Value, 要测试的属性
+* msg: String, 断言失败时的提示信息
 
 --------------------------
 ### notProperty
@@ -539,9 +539,9 @@ static assert.notProperty(Value object,
 ```
 
 调用参数:
-* object - 要测试的对象
-* prop - 要测试的属性
-* msg - 断言失败时的提示信息
+* object: Value, 要测试的对象
+* prop: Value, 要测试的属性
+* msg: String, 断言失败时的提示信息
 
 --------------------------
 ### deepProperty
@@ -553,9 +553,9 @@ static assert.deepProperty(Value object,
 ```
 
 调用参数:
-* object - 要测试的对象
-* prop - 要测试的属性，以“.”分割
-* msg - 断言失败时的提示信息
+* object: Value, 要测试的对象
+* prop: Value, 要测试的属性，以“.”分割
+* msg: String, 断言失败时的提示信息
 
 --------------------------
 ### notDeepProperty
@@ -567,9 +567,9 @@ static assert.notDeepProperty(Value object,
 ```
 
 调用参数:
-* object - 要测试的对象
-* prop - 要测试的属性，以“.”分割
-* msg - 断言失败时的提示信息
+* object: Value, 要测试的对象
+* prop: Value, 要测试的属性，以“.”分割
+* msg: String, 断言失败时的提示信息
 
 --------------------------
 ### propertyVal
@@ -582,10 +582,10 @@ static assert.propertyVal(Value object,
 ```
 
 调用参数:
-* object - 要测试的对象
-* prop - 要测试的属性
-* value - 给定的值
-* msg - 断言失败时的提示信息
+* object: Value, 要测试的对象
+* prop: Value, 要测试的属性
+* value: Value, 给定的值
+* msg: String, 断言失败时的提示信息
 
 --------------------------
 ### propertyNotVal
@@ -598,10 +598,10 @@ static assert.propertyNotVal(Value object,
 ```
 
 调用参数:
-* object - 要测试的对象
-* prop - 要测试的属性
-* value - 给定的值
-* msg - 断言失败时的提示信息
+* object: Value, 要测试的对象
+* prop: Value, 要测试的属性
+* value: Value, 给定的值
+* msg: String, 断言失败时的提示信息
 
 --------------------------
 ### deepPropertyVal
@@ -614,10 +614,10 @@ static assert.deepPropertyVal(Value object,
 ```
 
 调用参数:
-* object - 要测试的对象
-* prop - 要测试的属性，以“.”分割
-* value - 给定的值
-* msg - 断言失败时的提示信息
+* object: Value, 要测试的对象
+* prop: Value, 要测试的属性，以“.”分割
+* value: Value, 给定的值
+* msg: String, 断言失败时的提示信息
 
 --------------------------
 ### deepPropertyNotVal
@@ -630,10 +630,10 @@ static assert.deepPropertyNotVal(Value object,
 ```
 
 调用参数:
-* object - 要测试的对象
-* prop - 要测试的属性，以“.”分割
-* value - 给定的值
-* msg - 断言失败时的提示信息
+* object: Value, 要测试的对象
+* prop: Value, 要测试的属性，以“.”分割
+* value: Value, 给定的值
+* msg: String, 断言失败时的提示信息
 
 --------------------------
 ### throws
@@ -644,8 +644,8 @@ static assert.throws(Function block,
 ```
 
 调用参数:
-* block - 指定测试的代码，以函数形式给出
-* msg - 断言失败时的提示信息
+* block: Function, 指定测试的代码，以函数形式给出
+* msg: String, 断言失败时的提示信息
 
 --------------------------
 ### doesNotThrow
@@ -656,6 +656,6 @@ static assert.doesNotThrow(Function block,
 ```
 
 调用参数:
-* block - 指定测试的代码，以函数形式给出
-* msg - 断言失败时的提示信息
+* block: Function, 指定测试的代码，以函数形式给出
+* msg: String, 断言失败时的提示信息
 

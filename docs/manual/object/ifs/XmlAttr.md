@@ -17,10 +17,10 @@ Boolean XmlAttr.equals(object expected);
 ```
 
 调用参数:
-* expected - 制定比较的目标对象
+* expected: object, 制定比较的目标对象
 
 返回结果:
-* 返回对象比较的结果
+* Boolean, 返回对象比较的结果
 
 --------------------------
 ### toString
@@ -30,7 +30,7 @@ String XmlAttr.toString();
 ```
 
 返回结果:
-* 返回对象的字符串表示
+* String, 返回对象的字符串表示
 
 --------------------------
 ### toJSON
@@ -40,10 +40,10 @@ Value XmlAttr.toJSON(String key = "");
 ```
 
 调用参数:
-* key - 未使用
+* key: String, 未使用
 
 返回结果:
-* 返回包含可 JSON 序列化的值
+* Value, 返回包含可 JSON 序列化的值
 
 --------------------------
 ### valueOf
@@ -53,54 +53,54 @@ Value XmlAttr.valueOf();
 ```
 
 返回结果:
-* 返回对象本身的数值
+* Value, 返回对象本身的数值
 
 ## 成员属性
         
 ### localName
-查询元素的本地名称。如果选定的节点无命名空间，则该属性等同于 nodeName
+String, 查询元素的本地名称。如果选定的节点无命名空间，则该属性等同于 nodeName
 ```JavaScript
 readonly String XmlAttr.localName;
 ```
 
 --------------------------
 ### value
-属性的值
+String, 属性的值
 ```JavaScript
 String XmlAttr.value;
 ```
 
 --------------------------
 ### name
-属性的名称
+String, 属性的名称
 ```JavaScript
 readonly String XmlAttr.name;
 ```
 
 --------------------------
 ### namespaceURI
-查询元素的命名空间的 URI。如果选定的节点无命名空间，则该属性返回 NULL
+String, 查询元素的命名空间的 URI。如果选定的节点无命名空间，则该属性返回 NULL
 ```JavaScript
 readonly String XmlAttr.namespaceURI;
 ```
 
 --------------------------
 ### prefix
-查询和设置元素的命名空间前缀。如果选定的节点无命名空间，则该属性返回 NULL
+String, 查询和设置元素的命名空间前缀。如果选定的节点无命名空间，则该属性返回 NULL
 ```JavaScript
 String XmlAttr.prefix;
 ```
 
 --------------------------
 ### nodeName
-属性的名称，为兼容的目的
+String, 属性的名称，为兼容的目的
 ```JavaScript
 readonly String XmlAttr.nodeName;
 ```
 
 --------------------------
 ### nodeValue
-属性的值，为兼容的目的
+String, 属性的值，为兼容的目的
 ```JavaScript
 String XmlAttr.nodeValue;
 ```

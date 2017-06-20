@@ -10,10 +10,10 @@ MongoCursor MongoCursor.skip(Integer num) async;
 ```
 
 调用参数:
-* num - 记录数
+* num: Integer, 记录数
 
 返回结果:
-* 返回游标对象本身便于链式调用
+* MongoCursor, 返回游标对象本身便于链式调用
 
 --------------------------
 ### limit
@@ -23,10 +23,10 @@ MongoCursor MongoCursor.limit(Integer size) async;
 ```
 
 调用参数:
-* size - 记录数
+* size: Integer, 记录数
 
 返回结果:
-* 返回游标对象本身便于链式调用
+* MongoCursor, 返回游标对象本身便于链式调用
 
 --------------------------
 ### sort
@@ -36,10 +36,10 @@ MongoCursor MongoCursor.sort(Object opts);
 ```
 
 调用参数:
-* opts - 指定排序条件
+* opts: Object, 指定排序条件
 
 返回结果:
-* 返回游标对象本身便于链式调用
+* MongoCursor, 返回游标对象本身便于链式调用
 
 --------------------------
 ### hasNext
@@ -49,7 +49,7 @@ Boolean MongoCursor.hasNext();
 ```
 
 返回结果:
-* 有记录则返回 true
+* Boolean, 有记录则返回 true
 
 --------------------------
 ### next
@@ -59,7 +59,7 @@ Object MongoCursor.next();
 ```
 
 返回结果:
-* 记录对象，无记录则返回 null
+* Object, 记录对象，无记录则返回 null
 
 --------------------------
 ### count
@@ -69,10 +69,10 @@ Integer MongoCursor.count(Boolean applySkipLimit = false);
 ```
 
 调用参数:
-* applySkipLimit - 指定是否查询 skip 和 limit 后的记录数，缺省为 false，查询全部记录数
+* applySkipLimit: Boolean, 指定是否查询 skip 和 limit 后的记录数，缺省为 false，查询全部记录数
 
 返回结果:
-* 返回记录总数
+* Integer, 返回记录总数
 
 --------------------------
 ### size
@@ -82,7 +82,7 @@ Integer MongoCursor.size();
 ```
 
 返回结果:
-* 返回记录总数
+* Integer, 返回记录总数
 
 --------------------------
 ### forEach
@@ -92,7 +92,7 @@ MongoCursor.forEach(Function func);
 ```
 
 调用参数:
-* func - 指定处理函数
+* func: Function, 指定处理函数
 
 --------------------------
 ### map
@@ -102,10 +102,10 @@ Array MongoCursor.map(Function func);
 ```
 
 调用参数:
-* func - 指定处理函数
+* func: Function, 指定处理函数
 
 返回结果:
-* 返回处理结果数组
+* Array, 返回处理结果数组
 
 --------------------------
 ### toArray
@@ -115,7 +115,7 @@ Array MongoCursor.toArray();
 ```
 
 返回结果:
-* 返回包含全部数据的 Javascript 数组
+* Array, 返回包含全部数据的 Javascript 数组
 
 --------------------------
 ### hint
@@ -125,10 +125,10 @@ MongoCursor MongoCursor.hint(Object opts);
 ```
 
 调用参数:
-* opts - 指定强制使用的索引
+* opts: Object, 指定强制使用的索引
 
 返回结果:
-* 返回游标对象本身便于链式调用
+* MongoCursor, 返回游标对象本身便于链式调用
 
 --------------------------
 ### dispose
@@ -145,10 +145,10 @@ Boolean MongoCursor.equals(object expected);
 ```
 
 调用参数:
-* expected - 制定比较的目标对象
+* expected: object, 制定比较的目标对象
 
 返回结果:
-* 返回对象比较的结果
+* Boolean, 返回对象比较的结果
 
 --------------------------
 ### toString
@@ -158,7 +158,7 @@ String MongoCursor.toString();
 ```
 
 返回结果:
-* 返回对象的字符串表示
+* String, 返回对象的字符串表示
 
 --------------------------
 ### toJSON
@@ -168,10 +168,10 @@ Value MongoCursor.toJSON(String key = "");
 ```
 
 调用参数:
-* key - 未使用
+* key: String, 未使用
 
 返回结果:
-* 返回包含可 JSON 序列化的值
+* Value, 返回包含可 JSON 序列化的值
 
 --------------------------
 ### valueOf
@@ -181,5 +181,5 @@ Value MongoCursor.valueOf();
 ```
 
 返回结果:
-* 返回对象本身的数值
+* Value, 返回对象本身的数值
 

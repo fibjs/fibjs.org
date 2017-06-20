@@ -10,7 +10,7 @@ static timers.clearInterval(Timer t);
 ```
 
 调用参数:
-* t - 指定要清除的定时器
+* t: [Timer](../../object/ifs/Timer.md), 指定要清除的定时器
 
 --------------------------
 ### clearTimeout
@@ -20,7 +20,7 @@ static timers.clearTimeout(Timer t);
 ```
 
 调用参数:
-* t - 指定要清除的定时器
+* t: [Timer](../../object/ifs/Timer.md), 指定要清除的定时器
 
 --------------------------
 ### clearImmediate
@@ -30,7 +30,7 @@ static timers.clearImmediate(Timer t);
 ```
 
 调用参数:
-* t - 指定要清除的定时器
+* t: [Timer](../../object/ifs/Timer.md), 指定要清除的定时器
 
 --------------------------
 ### setInterval
@@ -41,11 +41,11 @@ static Timer timers.setInterval(Function callback,
 ```
 
 调用参数:
-* callback - 指定回调函数
-* timeout - 指定间隔的时间，以毫秒为单位
+* callback: Function, 指定回调函数
+* timeout: Integer, 指定间隔的时间，以毫秒为单位
 
 返回结果:
-* 返回定时器对象
+* [Timer](../../object/ifs/Timer.md), 返回定时器对象
 
 --------------------------
 ### setTimeout
@@ -56,11 +56,11 @@ static Timer timers.setTimeout(Function callback,
 ```
 
 调用参数:
-* callback - 指定回调函数
-* timeout - 指定延时的时间，以毫秒为单位
+* callback: Function, 指定回调函数
+* timeout: Integer, 指定延时的时间，以毫秒为单位
 
 返回结果:
-* 返回定时器对象
+* [Timer](../../object/ifs/Timer.md), 返回定时器对象
 
 --------------------------
 ### setImmediate
@@ -70,8 +70,8 @@ static Timer timers.setImmediate(Function callback);
 ```
 
 调用参数:
-* callback - 指定回调函数
+* callback: Function, 指定回调函数
 
 返回结果:
-* 返回定时器对象
+* [Timer](../../object/ifs/Timer.md), 返回定时器对象
 

@@ -19,10 +19,10 @@ static String json.encode(Value data);
 ```
 
 调用参数:
-* data - 要编码的变量
+* data: Value, 要编码的变量
 
 返回结果:
-* 返回编码的字符串
+* String, 返回编码的字符串
 
 --------------------------
 ### decode
@@ -32,8 +32,8 @@ static Value json.decode(String data);
 ```
 
 调用参数:
-* data - 要解码的字符串
+* data: String, 要解码的字符串
 
 返回结果:
-* 返回解码的变量
+* Value, 返回解码的变量
 

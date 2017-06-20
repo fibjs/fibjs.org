@@ -33,11 +33,11 @@ static Stream ssl.connect(String url,
 ```
 
 调用参数:
-* url - 指定连接的协议，可以是：ssl://host:port
-* timeout - 指定超时时间，单位是毫秒，默认为0
+* url: String, 指定连接的协议，可以是：ssl://host:port
+* timeout: Integer, 指定超时时间，单位是毫秒，默认为0
 
 返回结果:
-* 返回连接成功的 SslSocket 对象
+* [Stream](../../object/ifs/Stream.md), 返回连接成功的 [SslSocket](../../object/ifs/SslSocket.md) 对象
 
 --------------------------
 ### setClientCert
@@ -48,8 +48,8 @@ static ssl.setClientCert(X509Cert crt,
 ```
 
 调用参数:
-* crt - X509Cert 证书，用于客户端验证服务器
-* key - PKey 私钥，用于与客户端会话
+* crt: [X509Cert](../../object/ifs/X509Cert.md), [X509Cert](../../object/ifs/X509Cert.md) 证书，用于客户端验证服务器
+* key: [PKey](../../object/ifs/PKey.md), [PKey](../../object/ifs/PKey.md) 私钥，用于与客户端会话
 
 --------------------------
 ### loadClientCertFile
@@ -61,35 +61,44 @@ static ssl.loadClientCertFile(String crtFile,
 ```
 
 调用参数:
-* crtFile - X509Cert 证书文件，用于客户端验证服务器
-* keyFile - PKey 私钥文件，用于与客户端会话
-* password - 解密密码
+* crtFile: String, [X509Cert](../../object/ifs/X509Cert.md) 证书文件，用于客户端验证服务器
+* keyFile: String, [PKey](../../object/ifs/PKey.md) 私钥文件，用于与客户端会话
+* password: String, 解密密码
+
+--------------------------
+### loadRootCerts
+加载自带的缺省根证书，等同于 ssl.ca.loadRootCerts
+```JavaScript
+static ssl.loadRootCerts();
+```
+
+此证书内容源自：[http](http.md)://hg.mozilla.org/releases/mozilla-release/raw-file/default/security/nss/lib/ckfw/builtins/certdata.txt
 
 ## 静态属性
         
 ### ca
-全局证书，用于 ssl 客户端模式验证服务器证书
+[X509Cert](../../object/ifs/X509Cert.md), 全局证书，用于 ssl 客户端模式验证服务器证书
 ```JavaScript
 static readonly X509Cert ssl.ca;
 ```
 
 --------------------------
 ### verification
-设定证书验证模式，缺省为 VERIFY_REQUIRED
+Integer, 设定证书验证模式，缺省为 VERIFY_REQUIRED
 ```JavaScript
 static Integer ssl.verification;
 ```
 
 --------------------------
 ### min_version
-设定最低版本支持，缺省 ssl3
+Integer, 设定最低版本支持，缺省 ssl3
 ```JavaScript
 static Integer ssl.min_version;
 ```
 
 --------------------------
 ### max_version
-设定最高版本支持，缺省 tls1_1
+Integer, 设定最高版本支持，缺省 tls1_1
 ```JavaScript
 static Integer ssl.max_version;
 ```

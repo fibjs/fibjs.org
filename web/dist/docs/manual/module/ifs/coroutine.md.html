@@ -195,12 +195,12 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>func - 制定纤程执行的函数</li>
-<li>... - 可变参数序列，此序列会在纤程内传递给函数</li>
+<li>func: Function, 制定纤程执行的函数</li>
+<li>...: 可变参数序列，此序列会在纤程内传递给函数</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回纤程对象</li>
+<li><a href=../../object/ifs/fiber.md.html>Fiber</a>, 返回纤程对象</li>
 </ul>
 <hr>
 <h3 id="parallel">parallel</h3>
@@ -210,12 +210,12 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>funcs - 并行执行的函数数组</li>
-<li>fibers - 限制并发 fiber 数量，缺省为 -1，启用与 funcs 数量相同 fiber</li>
+<li>funcs: Array, 并行执行的函数数组</li>
+<li>fibers: Integer, 限制并发 fiber 数量，缺省为 -1，启用与 funcs 数量相同 fiber</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回函数执行结果的数组</li>
+<li>Array, 返回函数执行结果的数组</li>
 </ul>
 <hr>
 <p>并行执行一个函数处理一组数据，并等待返回</p>
@@ -225,13 +225,13 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>datas - 并行执行的数据数组</li>
-<li>func - 并行执行的函数</li>
-<li>fibers - 限制并发 fiber 数量，缺省为 -1，启用与 datas 数量相同 fiber</li>
+<li>datas: Array, 并行执行的数据数组</li>
+<li>func: Function, 并行执行的函数</li>
+<li>fibers: Integer, 限制并发 fiber 数量，缺省为 -1，启用与 datas 数量相同 fiber</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回函数执行结果的数组</li>
+<li>Array, 返回函数执行结果的数组</li>
 </ul>
 <hr>
 <p>并行执行一个函数多次，并等待返回</p>
@@ -241,13 +241,13 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>func - 并行执行的函数数</li>
-<li>num - 重复任务数量</li>
-<li>fibers - 限制并发 fiber 数量，缺省为 -1，启用与 funcs 数量相同 fiber</li>
+<li>func: Function, 并行执行的函数数</li>
+<li>num: Integer, 重复任务数量</li>
+<li>fibers: Integer, 限制并发 fiber 数量，缺省为 -1，启用与 funcs 数量相同 fiber</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回函数执行结果的数组</li>
+<li>Array, 返回函数执行结果的数组</li>
 </ul>
 <hr>
 <p>并行执行一组函数，并等待返回</p>
@@ -255,11 +255,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>... - 一组并行执行的函数</li>
+<li>...: 一组并行执行的函数</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回函数执行结果的数组</li>
+<li>Array, 返回函数执行结果的数组</li>
 </ul>
 <hr>
 <h3 id="current">current</h3>
@@ -268,7 +268,7 @@
 </code></pre>
 <p>返回结果:</p>
 <ul>
-<li>当前纤程对象</li>
+<li><a href=../../object/ifs/fiber.md.html>Fiber</a>, 当前纤程对象</li>
 </ul>
 <hr>
 <h3 id="sleep">sleep</h3>
@@ -277,26 +277,26 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>ms - 指定要暂停的时间，以毫秒为单位，缺省为 0，即有空闲立即回恢复运行</li>
+<li>ms: Integer, 指定要暂停的时间，以毫秒为单位，缺省为 0，即有空闲立即回恢复运行</li>
 </ul>
 <h2 id="-">静态属性</h2>
 <h3 id="fibers">fibers</h3>
-<p>返回当前正在运行的全部 fiber 数组</p>
+<p>Array, 返回当前正在运行的全部 fiber 数组</p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> readonly <span class="hljs-built_in">Array</span> coroutine.fibers;
 </code></pre>
 <hr>
 <h3 id="sparefibers">spareFibers</h3>
-<p>查询和设置空闲 <a href=../../object/ifs/fiber.md.html>Fiber</a> 数量，服务器抖动较大时可适度增加空闲 <a href=../../object/ifs/fiber.md.html>Fiber</a> 数量。缺省为 256</p>
+<p>Integer, 查询和设置空闲 <a href=../../object/ifs/fiber.md.html>Fiber</a> 数量，服务器抖动较大时可适度增加空闲 <a href=../../object/ifs/fiber.md.html>Fiber</a> 数量。缺省为 256</p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> Integer coroutine.spareFibers;
 </code></pre>
 <hr>
 <h3 id="vmid">vmid</h3>
-<p>查询当前 <a href=vm.md.html>vm</a> 编号</p>
+<p>Integer, 查询当前 <a href=vm.md.html>vm</a> 编号</p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> readonly Integer coroutine.vmid;
 </code></pre>
 <hr>
 <h3 id="loglevel">loglevel</h3>
-<p>修改和查询本 <a href=vm.md.html>vm</a> 的输出级别，用以过滤输出信息，缺省为 <a href=console.md.html>console</a>.NOTSET，全部输出</p>
+<p>Integer, 修改和查询本 <a href=vm.md.html>vm</a> 的输出级别，用以过滤输出信息，缺省为 <a href=console.md.html>console</a>.NOTSET，全部输出</p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> Integer coroutine.loglevel;
 </code></pre>
  </div><div class="hidden-sm hidden-xs col-xs-3"><div id=toc></div></div></div><div class=container><div class=footer><p>&copy; 2017 fibjs.org</p></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="Click to return on the top page" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=../../../../js/common.js></script><script type=text/javascript src=../../../../js/docs.js></script></body></html>

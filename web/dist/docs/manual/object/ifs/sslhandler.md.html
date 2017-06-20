@@ -171,8 +171,8 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>certs - 服务器证书列表</li>
-<li>hdlr - 内置消息处理器，处理函数，链式处理数组，路由对象，详见 mq.Handler</li>
+<li>certs: Array, 服务器证书列表</li>
+<li>hdlr: <a href=handler.md.html>Handler</a>, 内置消息处理器，处理函数，链式处理数组，路由对象，详见 <a href=../../module/ifs/mq.md.html>mq</a>.<a href=handler.md.html>Handler</a></li>
 </ul>
 <p>certs 格式为：</p>
 <pre><code class="lang-JavaScript">[
@@ -194,9 +194,9 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>crt - X509Cert 证书，用于客户端验证服务器</li>
-<li>key - PKey 私钥，用于与客户端会话</li>
-<li>hdlr - 内置消息处理器，处理函数，链式处理数组，路由对象，详见 mq.Handler</li>
+<li>crt: <a href=x509cert.md.html>X509Cert</a>, <a href=x509cert.md.html>X509Cert</a> 证书，用于客户端验证服务器</li>
+<li>key: <a href=pkey.md.html>PKey</a>, <a href=pkey.md.html>PKey</a> 私钥，用于与客户端会话</li>
+<li>hdlr: <a href=handler.md.html>Handler</a>, 内置消息处理器，处理函数，链式处理数组，路由对象，详见 <a href=../../module/ifs/mq.md.html>mq</a>.<a href=handler.md.html>Handler</a></li>
 </ul>
 <h2 id="-">成员函数</h2>
 <h3 id="invoke">invoke</h3>
@@ -205,11 +205,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>v - 指定处理的消息或对象</li>
+<li>v: <a href=object.md.html>object</a>, 指定处理的消息或对象</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回下一步的处理器</li>
+<li>Handler, 返回下一步的处理器</li>
 </ul>
 <hr>
 <h3 id="dispose">dispose</h3>
@@ -223,11 +223,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>expected - 制定比较的目标对象</li>
+<li>expected: object, 制定比较的目标对象</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回对象比较的结果</li>
+<li>Boolean, 返回对象比较的结果</li>
 </ul>
 <hr>
 <h3 id="tostring">toString</h3>
@@ -236,7 +236,7 @@
 </code></pre>
 <p>返回结果:</p>
 <ul>
-<li>返回对象的字符串表示</li>
+<li>String, 返回对象的字符串表示</li>
 </ul>
 <hr>
 <h3 id="tojson">toJSON</h3>
@@ -245,11 +245,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>key - 未使用</li>
+<li>key: String, 未使用</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回包含可 JSON 序列化的值</li>
+<li>Value, 返回包含可 JSON 序列化的值</li>
 </ul>
 <hr>
 <h3 id="valueof">valueOf</h3>
@@ -258,21 +258,21 @@
 </code></pre>
 <p>返回结果:</p>
 <ul>
-<li>返回对象本身的数值</li>
+<li>Value, 返回对象本身的数值</li>
 </ul>
 <h2 id="-">成员属性</h2>
 <h3 id="verification">verification</h3>
-<p>设定证书验证模式，缺省为 VERIFY_NONE</p>
+<p>Integer, 设定证书验证模式，缺省为 VERIFY_NONE</p>
 <pre><code class="lang-JavaScript">Integer SslHandler.verification;
 </code></pre>
 <hr>
 <h3 id="ca">ca</h3>
-<p>客户端证书验证证书链</p>
+<p><a href=x509cert.md.html>X509Cert</a>, 客户端证书验证证书链</p>
 <pre><code class="lang-JavaScript">readonly X509Cert SslHandler.ca;
 </code></pre>
 <hr>
 <h3 id="handler">handler</h3>
-<p><a href=../../module/ifs/ssl.md.html>ssl</a> 协议转换处理器当前事件处理接口对象</p>
+<p><a href=handler.md.html>Handler</a>, <a href=../../module/ifs/ssl.md.html>ssl</a> 协议转换处理器当前事件处理接口对象</p>
 <pre><code class="lang-JavaScript">Handler SslHandler.handler;
 </code></pre>
  </div><div class="hidden-sm hidden-xs col-xs-3"><div id=toc></div></div></div><div class=container><div class=footer><p>&copy; 2017 fibjs.org</p></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="Click to return on the top page" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=../../../../js/common.js></script><script type=text/javascript src=../../../../js/docs.js></script></body></html>

@@ -15,10 +15,10 @@ Boolean LevelDB.has(Buffer key) async;
 ```
 
 调用参数:
-* key - 指定要检查的键值
+* key: [Buffer](Buffer.md), 指定要检查的键值
 
 返回结果:
-* 返回键值是否存在
+* Boolean, 返回键值是否存在
 
 --------------------------
 ### get
@@ -28,10 +28,10 @@ Buffer LevelDB.get(Buffer key) async;
 ```
 
 调用参数:
-* key - 指定要查询的键值
+* key: [Buffer](Buffer.md), 指定要查询的键值
 
 返回结果:
-* 返回键值所对应的值，若不存在，则返回 null
+* [Buffer](Buffer.md), 返回键值所对应的值，若不存在，则返回 null
 
 --------------------------
 ### mget
@@ -41,7 +41,7 @@ List LevelDB.mget(Array keys);
 ```
 
 调用参数:
-* keys - 指定要查询的键值数组
+* keys: Array, 指定要查询的键值数组
 
 --------------------------
 ### set
@@ -52,8 +52,8 @@ LevelDB.set(Buffer key,
 ```
 
 调用参数:
-* key - 指定要设定的键值
-* value - 指定要设定的数据
+* key: [Buffer](Buffer.md), 指定要设定的键值
+* value: [Buffer](Buffer.md), 指定要设定的数据
 
 --------------------------
 ### mset
@@ -63,7 +63,7 @@ LevelDB.mset(Object map);
 ```
 
 调用参数:
-* map - 指定要设定的键值数据字典
+* map: Object, 指定要设定的键值数据字典
 
 --------------------------
 ### mremove
@@ -73,7 +73,7 @@ LevelDB.mremove(Array keys);
 ```
 
 调用参数:
-* keys - 指定要删除的键值数组
+* keys: Array, 指定要删除的键值数组
 
 --------------------------
 ### remove
@@ -83,7 +83,7 @@ LevelDB.remove(Buffer key) async;
 ```
 
 调用参数:
-* key - 指定要删除的键值
+* key: [Buffer](Buffer.md), 指定要删除的键值
 
 --------------------------
 ### forEach
@@ -93,7 +93,7 @@ LevelDB.forEach(Function func);
 ```
 
 调用参数:
-* func - 枚举回调函数
+* func: Function, 枚举回调函数
 
 回调函数有两个参数，(value, key)
 
@@ -116,9 +116,9 @@ LevelDB.between(Buffer from,
 ```
 
 调用参数:
-* from - 枚举的最小键值，枚举时包含此键值
-* to - 枚举的最大键值，枚举时不包含此键值
-* func - 枚举回调函数
+* from: [Buffer](Buffer.md), 枚举的最小键值，枚举时包含此键值
+* to: [Buffer](Buffer.md), 枚举的最大键值，枚举时不包含此键值
+* func: Function, 枚举回调函数
 
 回调函数有两个参数，(value, key)
 
@@ -139,7 +139,7 @@ LevelDB LevelDB.begin();
 ```
 
 返回结果:
-* 返回一个开启的事务对象
+* LevelDB, 返回一个开启的事务对象
 
 --------------------------
 ### commit
@@ -170,10 +170,10 @@ Boolean LevelDB.equals(object expected);
 ```
 
 调用参数:
-* expected - 制定比较的目标对象
+* expected: object, 制定比较的目标对象
 
 返回结果:
-* 返回对象比较的结果
+* Boolean, 返回对象比较的结果
 
 --------------------------
 ### toString
@@ -183,7 +183,7 @@ String LevelDB.toString();
 ```
 
 返回结果:
-* 返回对象的字符串表示
+* String, 返回对象的字符串表示
 
 --------------------------
 ### toJSON
@@ -193,10 +193,10 @@ Value LevelDB.toJSON(String key = "");
 ```
 
 调用参数:
-* key - 未使用
+* key: String, 未使用
 
 返回结果:
-* 返回包含可 JSON 序列化的值
+* Value, 返回包含可 JSON 序列化的值
 
 --------------------------
 ### valueOf
@@ -206,5 +206,5 @@ Value LevelDB.valueOf();
 ```
 
 返回结果:
-* 返回对象本身的数值
+* Value, 返回对象本身的数值
 

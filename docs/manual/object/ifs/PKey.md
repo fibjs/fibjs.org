@@ -22,7 +22,7 @@ PKey.genRsaKey(Integer size) async;
 ```
 
 调用参数:
-* size - 指定 RSA 密钥长度，bit 为单位
+* size: Integer, 指定 RSA 密钥长度，bit 为单位
 
 --------------------------
 ### genEcKey
@@ -32,7 +32,7 @@ PKey.genEcKey(String curve = "secp521r1") async;
 ```
 
 调用参数:
-* curve - 指定预置椭圆曲线，可选值为："secp521r1", "brainpoolP512r1", "secp384r1", "brainpoolP384r1", "secp256r1", "secp256k1", "brainpoolP256r1", "secp224r1", "secp224k1", "secp192r1", "secp192k1"
+* curve: String, 指定预置椭圆曲线，可选值为："secp521r1", "brainpoolP512r1", "secp384r1", "brainpoolP384r1", "secp256r1", "secp256k1", "brainpoolP256r1", "secp224r1", "secp224k1", "secp192r1", "secp192k1"
 
 --------------------------
 ### isPrivate
@@ -42,7 +42,7 @@ Boolean PKey.isPrivate();
 ```
 
 返回结果:
-* 为 True 表示为私钥
+* Boolean, 为 True 表示为私钥
 
 --------------------------
 ### clone
@@ -52,7 +52,7 @@ PKey PKey.clone();
 ```
 
 返回结果:
-* 当前密钥的复制对象
+* PKey, 当前密钥的复制对象
 
 --------------------------
 ### importKey
@@ -63,8 +63,8 @@ PKey.importKey(Buffer DerKey,
 ```
 
 调用参数:
-* DerKey - DER 格式的密钥
-* password - 解密密码
+* DerKey: [Buffer](Buffer.md), DER 格式的密钥
+* password: String, 解密密码
 
 --------------------------
 加载一个 PEM 格式的密钥
@@ -74,8 +74,8 @@ PKey.importKey(String pemKey,
 ```
 
 调用参数:
-* pemKey - PEM 格式的密钥
-* password - 解密密码
+* pemKey: String, PEM 格式的密钥
+* password: String, 解密密码
 
 --------------------------
 ### importFile
@@ -86,8 +86,8 @@ PKey.importFile(String filename,
 ```
 
 调用参数:
-* filename - 密钥文件名
-* password - 解密密码
+* filename: String, 密钥文件名
+* password: String, 解密密码
 
 --------------------------
 ### exportPem
@@ -97,7 +97,7 @@ String PKey.exportPem();
 ```
 
 返回结果:
-* 当前 key 的 PEM 格式编码
+* String, 当前 key 的 PEM 格式编码
 
 --------------------------
 ### exportDer
@@ -107,7 +107,7 @@ Buffer PKey.exportDer();
 ```
 
 返回结果:
-* 当前 key 的 DER 格式编码
+* [Buffer](Buffer.md), 当前 key 的 DER 格式编码
 
 --------------------------
 ### encrypt
@@ -117,10 +117,10 @@ Buffer PKey.encrypt(Buffer data) async;
 ```
 
 调用参数:
-* data - 指定要加密的数据
+* data: [Buffer](Buffer.md), 指定要加密的数据
 
 返回结果:
-* 返回加密后的数据
+* [Buffer](Buffer.md), 返回加密后的数据
 
 --------------------------
 ### decrypt
@@ -130,10 +130,10 @@ Buffer PKey.decrypt(Buffer data) async;
 ```
 
 调用参数:
-* data - 指定要解密的数据
+* data: [Buffer](Buffer.md), 指定要解密的数据
 
 返回结果:
-* 返回解密后的数据
+* [Buffer](Buffer.md), 返回解密后的数据
 
 --------------------------
 ### sign
@@ -144,11 +144,11 @@ Buffer PKey.sign(Buffer data,
 ```
 
 调用参数:
-* data - 指定要签名的数据
-* alg - 指定要签名的算法, 默认0. 支持算法: 0=NONE,1=MD2,2=MD4,3=MD5,4=SHA1,5=SHA224,6=SHA256,7=SHA384,8=SHA512,9=RIPEMD160
+* data: [Buffer](Buffer.md), 指定要签名的数据
+* alg: Integer, 指定要签名的算法, 默认0. 支持算法: 0=NONE,1=MD2,2=MD4,3=MD5,4=SHA1,5=SHA224,6=SHA256,7=SHA384,8=SHA512,9=RIPEMD160
 
 返回结果:
-* 返回签名后的数据
+* [Buffer](Buffer.md), 返回签名后的数据
 
 --------------------------
 ### verify
@@ -159,11 +159,11 @@ Boolean PKey.verify(Buffer sign,
 ```
 
 调用参数:
-* sign - 指定要验证的签名
-* data - 指定要验证的数据
+* sign: [Buffer](Buffer.md), 指定要验证的签名
+* data: [Buffer](Buffer.md), 指定要验证的数据
 
 返回结果:
-* 返回验证后的结果
+* Boolean, 返回验证后的结果
 
 --------------------------
 ### dispose
@@ -180,10 +180,10 @@ Boolean PKey.equals(object expected);
 ```
 
 调用参数:
-* expected - 制定比较的目标对象
+* expected: object, 制定比较的目标对象
 
 返回结果:
-* 返回对象比较的结果
+* Boolean, 返回对象比较的结果
 
 --------------------------
 ### toString
@@ -193,7 +193,7 @@ String PKey.toString();
 ```
 
 返回结果:
-* 返回对象的字符串表示
+* String, 返回对象的字符串表示
 
 --------------------------
 ### toJSON
@@ -203,10 +203,10 @@ Value PKey.toJSON(String key = "");
 ```
 
 调用参数:
-* key - 未使用
+* key: String, 未使用
 
 返回结果:
-* 返回包含可 JSON 序列化的值
+* Value, 返回包含可 JSON 序列化的值
 
 --------------------------
 ### valueOf
@@ -216,26 +216,26 @@ Value PKey.valueOf();
 ```
 
 返回结果:
-* 返回对象本身的数值
+* Value, 返回对象本身的数值
 
 ## 成员属性
         
 ### name
-返回当前算法名称
+String, 返回当前算法名称
 ```JavaScript
 readonly String PKey.name;
 ```
 
 --------------------------
 ### keySize
-返回当前算法密码长度，以位为单位
+Integer, 返回当前算法密码长度，以位为单位
 ```JavaScript
 readonly Integer PKey.keySize;
 ```
 
 --------------------------
 ### publicKey
-返回当前密钥的公钥
+PKey, 返回当前密钥的公钥
 ```JavaScript
 readonly PKey PKey.publicKey;
 ```

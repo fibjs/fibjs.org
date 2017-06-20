@@ -17,10 +17,10 @@ Boolean HeapGraphNode.equals(object expected);
 ```
 
 调用参数:
-* expected - 制定比较的目标对象
+* expected: object, 制定比较的目标对象
 
 返回结果:
-* 返回对象比较的结果
+* Boolean, 返回对象比较的结果
 
 --------------------------
 ### toString
@@ -30,7 +30,7 @@ String HeapGraphNode.toString();
 ```
 
 返回结果:
-* 返回对象的字符串表示
+* String, 返回对象的字符串表示
 
 --------------------------
 ### toJSON
@@ -40,10 +40,10 @@ Value HeapGraphNode.toJSON(String key = "");
 ```
 
 调用参数:
-* key - 未使用
+* key: String, 未使用
 
 返回结果:
-* 返回包含可 JSON 序列化的值
+* Value, 返回包含可 JSON 序列化的值
 
 --------------------------
 ### valueOf
@@ -53,12 +53,12 @@ Value HeapGraphNode.valueOf();
 ```
 
 返回结果:
-* 返回对象本身的数值
+* Value, 返回对象本身的数值
 
 ## 成员属性
         
 ### type
-节点类型，可能的值：
+Integer, 节点类型，可能的值：
 ```JavaScript
 readonly Integer HeapGraphNode.type;
 ```
@@ -80,35 +80,35 @@ readonly Integer HeapGraphNode.type;
 
 --------------------------
 ### name
-节点名称
+String, 节点名称
 ```JavaScript
 readonly String HeapGraphNode.name;
 ```
 
 --------------------------
 ### description
-节点的描述
+String, 节点的描述
 ```JavaScript
 readonly String HeapGraphNode.description;
 ```
 
 --------------------------
 ### id
-节点ID
+Integer, 节点ID
 ```JavaScript
 readonly Integer HeapGraphNode.id;
 ```
 
 --------------------------
 ### shallowSize
-节点大小，单位为字节
+Integer, 节点大小，单位为字节
 ```JavaScript
 readonly Integer HeapGraphNode.shallowSize;
 ```
 
 --------------------------
 ### childs
-子节点列表，由[HeapGraphEdge](HeapGraphEdge.md)类型对象组成
+[List](List.md), 子节点列表，由[HeapGraphEdge](HeapGraphEdge.md)类型对象组成
 ```JavaScript
 readonly List HeapGraphNode.childs;
 ```

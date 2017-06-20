@@ -18,7 +18,7 @@ Smtp.connect(String url) async;
 ```
 
 调用参数:
-* url - 指定连接的协议，可以是：tcp://host:port 或者 ssl://host:port
+* url: String, 指定连接的协议，可以是：tcp://host:port 或者 [ssl](../../module/ifs/ssl.md)://host:port
 
 --------------------------
 ### command
@@ -29,11 +29,11 @@ String Smtp.command(String cmd,
 ```
 
 调用参数:
-* cmd - 命令名
-* arg - 参数
+* cmd: String, 命令名
+* arg: String, 参数
 
 返回结果:
-* 如果成功，返回服务器响应
+* String, 如果成功，返回服务器响应
 
 --------------------------
 ### hello
@@ -43,7 +43,7 @@ Smtp.hello(String hostname = "localhost") async;
 ```
 
 调用参数:
-* hostname - 主机名，缺省为“localhost”
+* hostname: String, 主机名，缺省为“localhost”
 
 --------------------------
 ### login
@@ -54,8 +54,8 @@ Smtp.login(String username,
 ```
 
 调用参数:
-* username - 用户名
-* password - 密码
+* username: String, 用户名
+* password: String, 密码
 
 --------------------------
 ### from
@@ -65,7 +65,7 @@ Smtp.from(String address) async;
 ```
 
 调用参数:
-* address - 发件人信箱
+* address: String, 发件人信箱
 
 --------------------------
 ### to
@@ -75,7 +75,7 @@ Smtp.to(String address) async;
 ```
 
 调用参数:
-* address - 收件人信箱
+* address: String, 收件人信箱
 
 --------------------------
 ### data
@@ -85,7 +85,7 @@ Smtp.data(String txt) async;
 ```
 
 调用参数:
-* txt - 要发送的文本
+* txt: String, 要发送的文本
 
 --------------------------
 ### quit
@@ -109,10 +109,10 @@ Boolean Smtp.equals(object expected);
 ```
 
 调用参数:
-* expected - 制定比较的目标对象
+* expected: object, 制定比较的目标对象
 
 返回结果:
-* 返回对象比较的结果
+* Boolean, 返回对象比较的结果
 
 --------------------------
 ### toString
@@ -122,7 +122,7 @@ String Smtp.toString();
 ```
 
 返回结果:
-* 返回对象的字符串表示
+* String, 返回对象的字符串表示
 
 --------------------------
 ### toJSON
@@ -132,10 +132,10 @@ Value Smtp.toJSON(String key = "");
 ```
 
 调用参数:
-* key - 未使用
+* key: String, 未使用
 
 返回结果:
-* 返回包含可 JSON 序列化的值
+* Value, 返回包含可 JSON 序列化的值
 
 --------------------------
 ### valueOf
@@ -145,19 +145,19 @@ Value Smtp.valueOf();
 ```
 
 返回结果:
-* 返回对象本身的数值
+* Value, 返回对象本身的数值
 
 ## 成员属性
         
 ### timeout
-查询和设置超时时间 单位毫秒
+Integer, 查询和设置超时时间 单位毫秒
 ```JavaScript
 Integer Smtp.timeout;
 ```
 
 --------------------------
 ### socket
-查询 Smtp 对象当前连接的 [Socket](Socket.md)
+[Stream](Stream.md), 查询 Smtp 对象当前连接的 [Socket](Socket.md)
 ```JavaScript
 readonly Stream Smtp.socket;
 ```

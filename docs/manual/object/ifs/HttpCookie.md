@@ -10,7 +10,7 @@ HttpCookie 构造函数，创建一个新的 HttpCookie 对象
 ```
 
 调用参数:
-* opts - 指定创建的 cookie 的属性
+* opts: Object, 指定创建的 cookie 的属性
 
 --------------------------
 HttpCookie 构造函数，创建一个新的 HttpCookie 对象
@@ -21,9 +21,9 @@ HttpCookie 构造函数，创建一个新的 HttpCookie 对象
 ```
 
 调用参数:
-* name - 指定创建的 cookie 名称
-* value - 指定创建的 cookie 值
-* opts - 指定创建的 cookie 的其它属性
+* name: String, 指定创建的 cookie 名称
+* value: String, 指定创建的 cookie 值
+* opts: Object, 指定创建的 cookie 的其它属性
 
 ## 成员函数
         
@@ -34,7 +34,7 @@ HttpCookie.parse(String header);
 ```
 
 调用参数:
-* header - 指定需要解析的 header 字符串
+* header: String, 指定需要解析的 header 字符串
 
 --------------------------
 ### match
@@ -44,7 +44,7 @@ Boolean HttpCookie.match(String url);
 ```
 
 调用参数:
-* url - 指定测试的 url
+* url: String, 指定测试的 [url](../../module/ifs/url.md)
 
 --------------------------
 ### dispose
@@ -61,10 +61,10 @@ Boolean HttpCookie.equals(object expected);
 ```
 
 调用参数:
-* expected - 制定比较的目标对象
+* expected: object, 制定比较的目标对象
 
 返回结果:
-* 返回对象比较的结果
+* Boolean, 返回对象比较的结果
 
 --------------------------
 ### toString
@@ -74,7 +74,7 @@ String HttpCookie.toString();
 ```
 
 返回结果:
-* 返回对象的字符串表示
+* String, 返回对象的字符串表示
 
 --------------------------
 ### toJSON
@@ -84,10 +84,10 @@ Value HttpCookie.toJSON(String key = "");
 ```
 
 调用参数:
-* key - 未使用
+* key: String, 未使用
 
 返回结果:
-* 返回包含可 JSON 序列化的值
+* Value, 返回包含可 JSON 序列化的值
 
 --------------------------
 ### valueOf
@@ -97,54 +97,54 @@ Value HttpCookie.valueOf();
 ```
 
 返回结果:
-* 返回对象本身的数值
+* Value, 返回对象本身的数值
 
 ## 成员属性
         
 ### name
-查询和设置 cookie 名称
+String, 查询和设置 cookie 名称
 ```JavaScript
 String HttpCookie.name;
 ```
 
 --------------------------
 ### value
-查询和设置 cookie 的值
+String, 查询和设置 cookie 的值
 ```JavaScript
 String HttpCookie.value;
 ```
 
 --------------------------
 ### domain
-查询和设置 cookie 的域名范围
+String, 查询和设置 cookie 的域名范围
 ```JavaScript
 String HttpCookie.domain;
 ```
 
 --------------------------
 ### path
-查询和设置 cookie 的路径范围
+String, 查询和设置 cookie 的路径范围
 ```JavaScript
 String HttpCookie.path;
 ```
 
 --------------------------
 ### expires
-查询和设置 cookie 的过期时间
+Date, 查询和设置 cookie 的过期时间
 ```JavaScript
 Date HttpCookie.expires;
 ```
 
 --------------------------
 ### httpOnly
-查询和设置 cookie 是否仅允许 [http](../../module/ifs/http.md) 请求，缺省 false
+Boolean, 查询和设置 cookie 是否仅允许 [http](../../module/ifs/http.md) 请求，缺省 false
 ```JavaScript
 Boolean HttpCookie.httpOnly;
 ```
 
 --------------------------
 ### secure
-查询和设置 cookie 是否仅通过 https 传递，缺省 false
+Boolean, 查询和设置 cookie 是否仅通过 https 传递，缺省 false
 ```JavaScript
 Boolean HttpCookie.secure;
 ```

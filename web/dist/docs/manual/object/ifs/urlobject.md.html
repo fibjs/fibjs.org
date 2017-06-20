@@ -165,7 +165,7 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>args - 指定构造参数的字典对象，支持的字段有：protocol, slashes, username, password, hostname, port, pathname, query, hash</li>
+<li>args: Object, 指定构造参数的字典对象，支持的字段有：protocol, slashes, username, password, hostname, port, pathname, query, <a href=../../module/ifs/hash.md.html>hash</a></li>
 </ul>
 <hr>
 <p>UrlObject 对象构造函数，使用 <a href=../../module/ifs/url.md.html>url</a> 字符串构造</p>
@@ -174,8 +174,8 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>url - 指定构造 url 字符串</li>
-<li>parseQueryString - 指定是否解析 query</li>
+<li>url: String, 指定构造 <a href=../../module/ifs/url.md.html>url</a> 字符串</li>
+<li>parseQueryString: Boolean, 指定是否解析 query</li>
 </ul>
 <h2 id="-">成员函数</h2>
 <h3 id="parse">parse</h3>
@@ -185,8 +185,8 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>url - 指定需要解析的 url 字符串</li>
-<li>parseQueryString - 指定是否解析 query</li>
+<li>url: String, 指定需要解析的 <a href=../../module/ifs/url.md.html>url</a> 字符串</li>
+<li>parseQueryString: Boolean, 指定是否解析 query</li>
 </ul>
 <hr>
 <h3 id="format">format</h3>
@@ -195,7 +195,7 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>args - 指定构造参数的字典对象，支持的字段有：protocol, slashes, username, password, hostname, port, pathname, query, hash</li>
+<li>args: Object, 指定构造参数的字典对象，支持的字段有：protocol, slashes, username, password, hostname, port, pathname, query, <a href=../../module/ifs/hash.md.html>hash</a></li>
 </ul>
 <hr>
 <h3 id="resolve">resolve</h3>
@@ -204,7 +204,7 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>url - 指定新的路径</li>
+<li>url: String, 指定新的路径</li>
 </ul>
 <hr>
 <h3 id="normalize">normalize</h3>
@@ -223,11 +223,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>expected - 制定比较的目标对象</li>
+<li>expected: object, 制定比较的目标对象</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回对象比较的结果</li>
+<li>Boolean, 返回对象比较的结果</li>
 </ul>
 <hr>
 <h3 id="tostring">toString</h3>
@@ -236,7 +236,7 @@
 </code></pre>
 <p>返回结果:</p>
 <ul>
-<li>返回对象的字符串表示</li>
+<li>String, 返回对象的字符串表示</li>
 </ul>
 <hr>
 <h3 id="tojson">toJSON</h3>
@@ -245,11 +245,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>key - 未使用</li>
+<li>key: String, 未使用</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回包含可 JSON 序列化的值</li>
+<li>Value, 返回包含可 JSON 序列化的值</li>
 </ul>
 <hr>
 <h3 id="valueof">valueOf</h3>
@@ -258,76 +258,76 @@
 </code></pre>
 <p>返回结果:</p>
 <ul>
-<li>返回对象本身的数值</li>
+<li>Value, 返回对象本身的数值</li>
 </ul>
 <h2 id="-">成员属性</h2>
 <h3 id="href">href</h3>
-<p>查询和设置当前 UrlObject 对象中的完整 <a href=../../module/ifs/url.md.html>url</a> 地址描述，此描述由其他所有属性组装而成</p>
+<p>String, 查询和设置当前 UrlObject 对象中的完整 <a href=../../module/ifs/url.md.html>url</a> 地址描述，此描述由其他所有属性组装而成</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> UrlObject.href;
 </code></pre>
 <hr>
 <h3 id="protocol">protocol</h3>
-<p>查询和设置当前 UrlObject 对象中的协议名称</p>
+<p>String, 查询和设置当前 UrlObject 对象中的协议名称</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> UrlObject.protocol;
 </code></pre>
 <hr>
 <h3 id="slashes">slashes</h3>
-<p>查询和设置当前 UrlObject 对象是否包含双斜杠</p>
+<p>Boolean, 查询和设置当前 UrlObject 对象是否包含双斜杠</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">Boolean</span> UrlObject.slashes;
 </code></pre>
 <hr>
 <h3 id="auth">auth</h3>
-<p>查询和设置当前 UrlObject 对象中的完整验证字符串，由 username 和 password 属性组装而成</p>
+<p>String, 查询和设置当前 UrlObject 对象中的完整验证字符串，由 username 和 password 属性组装而成</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> UrlObject.auth;
 </code></pre>
 <hr>
 <h3 id="username">username</h3>
-<p>查询和设置当前 UrlObject 对象中的验证用户</p>
+<p>String, 查询和设置当前 UrlObject 对象中的验证用户</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> UrlObject.username;
 </code></pre>
 <hr>
 <h3 id="password">password</h3>
-<p>查询和设置当前 UrlObject 对象中的验证密码</p>
+<p>String, 查询和设置当前 UrlObject 对象中的验证密码</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> UrlObject.password;
 </code></pre>
 <hr>
 <h3 id="host">host</h3>
-<p>查询和设置当前 UrlObject 对象中的完整主机描述，由 hastname 和 port 组装而成</p>
+<p>String, 查询和设置当前 UrlObject 对象中的完整主机描述，由 hastname 和 port 组装而成</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> UrlObject.host;
 </code></pre>
 <hr>
 <h3 id="hostname">hostname</h3>
-<p>查询和设置当前 UrlObject 对象中的主机名</p>
+<p>String, 查询和设置当前 UrlObject 对象中的主机名</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> UrlObject.hostname;
 </code></pre>
 <hr>
 <h3 id="port">port</h3>
-<p>查询和设置当前 UrlObject 对象中的端口号</p>
+<p>String, 查询和设置当前 UrlObject 对象中的端口号</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> UrlObject.port;
 </code></pre>
 <hr>
 <h3 id="path">path</h3>
-<p>查询和设置当前 UrlObject 对象中的请求完整路径（含请求），由 pathname 和 query 组装而成</p>
+<p>String, 查询和设置当前 UrlObject 对象中的请求完整路径（含请求），由 pathname 和 query 组装而成</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> UrlObject.path;
 </code></pre>
 <hr>
 <h3 id="pathname">pathname</h3>
-<p>查询和设置当前 UrlObject 对象中的路径</p>
+<p>String, 查询和设置当前 UrlObject 对象中的路径</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> UrlObject.pathname;
 </code></pre>
 <hr>
 <h3 id="search">search</h3>
-<p>查询和设置当前 UrlObject 对象中的请求字符串（含“?”），等效于“?”+query</p>
+<p>String, 查询和设置当前 UrlObject 对象中的请求字符串（含“?”），等效于“?”+query</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> UrlObject.search;
 </code></pre>
 <hr>
 <h3 id="query">query</h3>
-<p>查询和设置当前 UrlObject 对象中的请求字符串（ 不含“?”）</p>
+<p>Value, 查询和设置当前 UrlObject 对象中的请求字符串（ 不含“?”）</p>
 <pre><code class="lang-JavaScript">Value UrlObject.query;
 </code></pre>
 <hr>
 <h3 id="hash">hash</h3>
-<p>查询和设置当前 UrlObject 对象中的请求锚点（含“#”）</p>
+<p>String, 查询和设置当前 UrlObject 对象中的请求锚点（含“#”）</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> UrlObject.hash;
 </code></pre>
  </div><div class="hidden-sm hidden-xs col-xs-3"><div id=toc></div></div></div><div class=container><div class=footer><p>&copy; 2017 fibjs.org</p></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="Click to return on the top page" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=../../../../js/common.js></script><script type=text/javascript src=../../../../js/docs.js></script></body></html>

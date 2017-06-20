@@ -27,11 +27,11 @@ HttpResponse HttpClient.request(Stream conn,
 ```
 
 调用参数:
-* conn - 指定处理请求的流对象
-* req - 要发送的 HttpRequest 对象
+* conn: [Stream](Stream.md), 指定处理请求的流对象
+* req: [HttpRequest](HttpRequest.md), 要发送的 [HttpRequest](HttpRequest.md) 对象
 
 返回结果:
-* 返回服务器响应
+* [HttpResponse](HttpResponse.md), 返回服务器响应
 
 --------------------------
 请求指定的 [url](../../module/ifs/url.md)，并返回结果
@@ -42,12 +42,12 @@ HttpResponse HttpClient.request(String method,
 ```
 
 调用参数:
-* method - 指定 http 请求方法：GET, POST 等
-* url - 指定 url，必须是包含主机的完整 url
-* headers - 指定附加的 http 头，缺省无附加头
+* method: String, 指定 [http](../../module/ifs/http.md) 请求方法：GET, POST 等
+* url: String, 指定 [url](../../module/ifs/url.md)，必须是包含主机的完整 [url](../../module/ifs/url.md)
+* headers: Object, 指定附加的 [http](../../module/ifs/http.md) 头，缺省无附加头
 
 返回结果:
-* 返回服务器响应
+* [HttpResponse](HttpResponse.md), 返回服务器响应
 
 --------------------------
 请求指定的 [url](../../module/ifs/url.md)，并返回结果
@@ -59,13 +59,13 @@ HttpResponse HttpClient.request(String method,
 ```
 
 调用参数:
-* method - 指定 http 请求方法：GET, POST 等
-* url - 指定 url，必须是包含主机的完整 url
-* body - 指定发送的 body 内容
-* headers - 指定附加的 http 头
+* method: String, 指定 [http](../../module/ifs/http.md) 请求方法：GET, POST 等
+* url: String, 指定 [url](../../module/ifs/url.md)，必须是包含主机的完整 [url](../../module/ifs/url.md)
+* body: [SeekableStream](SeekableStream.md), 指定发送的 body 内容
+* headers: [Map](Map.md), 指定附加的 [http](../../module/ifs/http.md) 头
 
 返回结果:
-* 返回服务器响应
+* [HttpResponse](HttpResponse.md), 返回服务器响应
 
 --------------------------
 请求指定的 [url](../../module/ifs/url.md)，并返回结果
@@ -77,13 +77,13 @@ HttpResponse HttpClient.request(String method,
 ```
 
 调用参数:
-* method - 指定 http 请求方法：GET, POST 等
-* url - 指定 url，必须是包含主机的完整 url
-* body - 指定发送的 body 内容
-* headers - 指定附加的 http 头，缺省无附加头
+* method: String, 指定 [http](../../module/ifs/http.md) 请求方法：GET, POST 等
+* url: String, 指定 [url](../../module/ifs/url.md)，必须是包含主机的完整 [url](../../module/ifs/url.md)
+* body: [SeekableStream](SeekableStream.md), 指定发送的 body 内容
+* headers: Object, 指定附加的 [http](../../module/ifs/http.md) 头，缺省无附加头
 
 返回结果:
-* 返回服务器响应
+* [HttpResponse](HttpResponse.md), 返回服务器响应
 
 --------------------------
 请求指定的 [url](../../module/ifs/url.md)，并返回结果
@@ -95,13 +95,13 @@ HttpResponse HttpClient.request(String method,
 ```
 
 调用参数:
-* method - 指定 http 请求方法：GET, POST 等
-* url - 指定 url，必须是包含主机的完整 url
-* body - 指定发送的 body 内容
-* headers - 指定附加的 http 头，缺省无附加头
+* method: String, 指定 [http](../../module/ifs/http.md) 请求方法：GET, POST 等
+* url: String, 指定 [url](../../module/ifs/url.md)，必须是包含主机的完整 [url](../../module/ifs/url.md)
+* body: [Buffer](Buffer.md), 指定发送的 body 内容
+* headers: Object, 指定附加的 [http](../../module/ifs/http.md) 头，缺省无附加头
 
 返回结果:
-* 返回服务器响应
+* [HttpResponse](HttpResponse.md), 返回服务器响应
 
 --------------------------
 ### get
@@ -112,11 +112,11 @@ HttpResponse HttpClient.get(String url,
 ```
 
 调用参数:
-* url - 指定 url，必须是包含主机的完整 url
-* headers - 指定附加的 http 头，缺省无附加头
+* url: String, 指定 [url](../../module/ifs/url.md)，必须是包含主机的完整 [url](../../module/ifs/url.md)
+* headers: Object, 指定附加的 [http](../../module/ifs/http.md) 头，缺省无附加头
 
 返回结果:
-* 返回服务器响应
+* [HttpResponse](HttpResponse.md), 返回服务器响应
 
 --------------------------
 ### post
@@ -128,12 +128,12 @@ HttpResponse HttpClient.post(String url,
 ```
 
 调用参数:
-* url - 指定 url，必须是包含主机的完整 url
-* body - 指定发送的 body 内容
-* headers - 指定附加的 http 头，缺省无附加头
+* url: String, 指定 [url](../../module/ifs/url.md)，必须是包含主机的完整 [url](../../module/ifs/url.md)
+* body: [SeekableStream](SeekableStream.md), 指定发送的 body 内容
+* headers: Object, 指定附加的 [http](../../module/ifs/http.md) 头，缺省无附加头
 
 返回结果:
-* 返回服务器响应
+* [HttpResponse](HttpResponse.md), 返回服务器响应
 
 --------------------------
 用 POST 方法请求指定的 [url](../../module/ifs/url.md)，并返回结果，等同于 request("POST", ...)
@@ -144,12 +144,12 @@ HttpResponse HttpClient.post(String url,
 ```
 
 调用参数:
-* url - 指定 url，必须是包含主机的完整 url
-* body - 指定发送的 body 内容
-* headers - 指定附加的 http 头，缺省无附加头
+* url: String, 指定 [url](../../module/ifs/url.md)，必须是包含主机的完整 [url](../../module/ifs/url.md)
+* body: [Buffer](Buffer.md), 指定发送的 body 内容
+* headers: Object, 指定附加的 [http](../../module/ifs/http.md) 头，缺省无附加头
 
 返回结果:
-* 返回服务器响应
+* [HttpResponse](HttpResponse.md), 返回服务器响应
 
 --------------------------
 用 POST 方法请求指定的 [url](../../module/ifs/url.md)，并返回结果，等同于 request("POST", ...)
@@ -159,11 +159,11 @@ HttpResponse HttpClient.post(String url,
 ```
 
 调用参数:
-* url - 指定 url，必须是包含主机的完整 url
-* headers - 指定附加的 http 头，缺省无附加头
+* url: String, 指定 [url](../../module/ifs/url.md)，必须是包含主机的完整 [url](../../module/ifs/url.md)
+* headers: Object, 指定附加的 [http](../../module/ifs/http.md) 头，缺省无附加头
 
 返回结果:
-* 返回服务器响应
+* [HttpResponse](HttpResponse.md), 返回服务器响应
 
 --------------------------
 ### del
@@ -174,11 +174,11 @@ HttpResponse HttpClient.del(String url,
 ```
 
 调用参数:
-* url - 指定 url，必须是包含主机的完整 url
-* headers - 指定附加的 http 头，缺省无附加头
+* url: String, 指定 [url](../../module/ifs/url.md)，必须是包含主机的完整 [url](../../module/ifs/url.md)
+* headers: Object, 指定附加的 [http](../../module/ifs/http.md) 头，缺省无附加头
 
 返回结果:
-* 返回服务器响应
+* [HttpResponse](HttpResponse.md), 返回服务器响应
 
 --------------------------
 ### put
@@ -190,12 +190,12 @@ HttpResponse HttpClient.put(String url,
 ```
 
 调用参数:
-* url - 指定 url，必须是包含主机的完整 url
-* body - 指定发送的 body 内容
-* headers - 指定附加的 http 头，缺省无附加头
+* url: String, 指定 [url](../../module/ifs/url.md)，必须是包含主机的完整 [url](../../module/ifs/url.md)
+* body: [SeekableStream](SeekableStream.md), 指定发送的 body 内容
+* headers: Object, 指定附加的 [http](../../module/ifs/http.md) 头，缺省无附加头
 
 返回结果:
-* 返回服务器响应
+* [HttpResponse](HttpResponse.md), 返回服务器响应
 
 --------------------------
 用 PUT 方法请求指定的 [url](../../module/ifs/url.md)，并返回结果，等同于 request("PUT", ...)
@@ -206,12 +206,12 @@ HttpResponse HttpClient.put(String url,
 ```
 
 调用参数:
-* url - 指定 url，必须是包含主机的完整 url
-* body - 指定发送的 body 内容
-* headers - 指定附加的 http 头，缺省无附加头
+* url: String, 指定 [url](../../module/ifs/url.md)，必须是包含主机的完整 [url](../../module/ifs/url.md)
+* body: [Buffer](Buffer.md), 指定发送的 body 内容
+* headers: Object, 指定附加的 [http](../../module/ifs/http.md) 头，缺省无附加头
 
 返回结果:
-* 返回服务器响应
+* [HttpResponse](HttpResponse.md), 返回服务器响应
 
 --------------------------
 用 PUT 方法请求指定的 [url](../../module/ifs/url.md)，并返回结果，等同于 request("PUT", ...)
@@ -221,11 +221,11 @@ HttpResponse HttpClient.put(String url,
 ```
 
 调用参数:
-* url - 指定 url，必须是包含主机的完整 url
-* headers - 指定附加的 http 头，缺省无附加头
+* url: String, 指定 [url](../../module/ifs/url.md)，必须是包含主机的完整 [url](../../module/ifs/url.md)
+* headers: Object, 指定附加的 [http](../../module/ifs/http.md) 头，缺省无附加头
 
 返回结果:
-* 返回服务器响应
+* [HttpResponse](HttpResponse.md), 返回服务器响应
 
 --------------------------
 ### patch
@@ -237,12 +237,12 @@ HttpResponse HttpClient.patch(String url,
 ```
 
 调用参数:
-* url - 指定 url，必须是包含主机的完整 url
-* body - 指定发送的 body 内容
-* headers - 指定附加的 http 头，缺省无附加头
+* url: String, 指定 [url](../../module/ifs/url.md)，必须是包含主机的完整 [url](../../module/ifs/url.md)
+* body: [SeekableStream](SeekableStream.md), 指定发送的 body 内容
+* headers: Object, 指定附加的 [http](../../module/ifs/http.md) 头，缺省无附加头
 
 返回结果:
-* 返回服务器响应
+* [HttpResponse](HttpResponse.md), 返回服务器响应
 
 --------------------------
 用 PATCH 方法请求指定的 [url](../../module/ifs/url.md)，并返回结果，等同于 request("PATCH", ...)
@@ -253,12 +253,12 @@ HttpResponse HttpClient.patch(String url,
 ```
 
 调用参数:
-* url - 指定 url，必须是包含主机的完整 url
-* body - 指定发送的 body 内容
-* headers - 指定附加的 http 头，缺省无附加头
+* url: String, 指定 [url](../../module/ifs/url.md)，必须是包含主机的完整 [url](../../module/ifs/url.md)
+* body: [Buffer](Buffer.md), 指定发送的 body 内容
+* headers: Object, 指定附加的 [http](../../module/ifs/http.md) 头，缺省无附加头
 
 返回结果:
-* 返回服务器响应
+* [HttpResponse](HttpResponse.md), 返回服务器响应
 
 --------------------------
 用 PATCH 方法请求指定的 [url](../../module/ifs/url.md)，并返回结果，等同于 request("PATCH", ...)
@@ -268,11 +268,11 @@ HttpResponse HttpClient.patch(String url,
 ```
 
 调用参数:
-* url - 指定 url，必须是包含主机的完整 url
-* headers - 指定附加的 http 头，缺省无附加头
+* url: String, 指定 [url](../../module/ifs/url.md)，必须是包含主机的完整 [url](../../module/ifs/url.md)
+* headers: Object, 指定附加的 [http](../../module/ifs/http.md) 头，缺省无附加头
 
 返回结果:
-* 返回服务器响应
+* [HttpResponse](HttpResponse.md), 返回服务器响应
 
 --------------------------
 ### dispose
@@ -289,10 +289,10 @@ Boolean HttpClient.equals(object expected);
 ```
 
 调用参数:
-* expected - 制定比较的目标对象
+* expected: object, 制定比较的目标对象
 
 返回结果:
-* 返回对象比较的结果
+* Boolean, 返回对象比较的结果
 
 --------------------------
 ### toString
@@ -302,7 +302,7 @@ String HttpClient.toString();
 ```
 
 返回结果:
-* 返回对象的字符串表示
+* String, 返回对象的字符串表示
 
 --------------------------
 ### toJSON
@@ -312,10 +312,10 @@ Value HttpClient.toJSON(String key = "");
 ```
 
 调用参数:
-* key - 未使用
+* key: String, 未使用
 
 返回结果:
-* 返回包含可 JSON 序列化的值
+* Value, 返回包含可 JSON 序列化的值
 
 --------------------------
 ### valueOf
@@ -325,40 +325,40 @@ Value HttpClient.valueOf();
 ```
 
 返回结果:
-* 返回对象本身的数值
+* Value, 返回对象本身的数值
 
 ## 成员属性
         
 ### cookies
-返回[http](../../module/ifs/http.md)客户端的 [HttpCookie](HttpCookie.md) 对象列表
+[List](List.md), 返回[http](../../module/ifs/http.md)客户端的 [HttpCookie](HttpCookie.md) 对象列表
 ```JavaScript
 readonly List HttpClient.cookies;
 ```
 
 --------------------------
 ### timeout
-查询和设置超时时间 单位毫秒
+Integer, 查询和设置超时时间 单位毫秒
 ```JavaScript
 Integer HttpClient.timeout;
 ```
 
 --------------------------
 ### enableCookie
-cookie功能开关，默认开启
+Boolean, cookie功能开关，默认开启
 ```JavaScript
 Boolean HttpClient.enableCookie;
 ```
 
 --------------------------
 ### autoRedirect
-自动redirect功能开关，默认开启
+Boolean, 自动redirect功能开关，默认开启
 ```JavaScript
 Boolean HttpClient.autoRedirect;
 ```
 
 --------------------------
 ### userAgent
-查询和设置 [http](../../module/ifs/http.md) 请求中的浏览器标识
+String, 查询和设置 [http](../../module/ifs/http.md) 请求中的浏览器标识
 ```JavaScript
 String HttpClient.userAgent;
 ```

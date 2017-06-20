@@ -12,7 +12,7 @@ XmlDocument 对象是一棵文档树的根，可为我们提供对文档数据�
 ```
 
 调用参数:
-* type - 指定文档对象的类型，缺省为 "text/xml"，若需要处理 html 则需要指定 "text/html"
+* type: String, 指定文档对象的类型，缺省为 "text/[xml](../../module/ifs/xml.md)"，若需要处理 html 则需要指定 "text/html"
 
 ## 成员函数
         
@@ -23,7 +23,7 @@ XmlDocument.load(String source);
 ```
 
 调用参数:
-* source - 要解析的 XML/HTML 文本，取决于文档创建时的类型
+* source: String, 要解析的 XML/HTML 文本，取决于文档创建时的类型
 
 --------------------------
 通过解析一个二进制 XML/HTML 字符串来组成该文档，并根据语种自动转换
@@ -32,7 +32,7 @@ XmlDocument.load(Buffer source);
 ```
 
 调用参数:
-* source - 要解析的 XML/HTML 文本，取决于文档创建时的类型
+* source: [Buffer](Buffer.md), 要解析的 XML/HTML 文本，取决于文档创建时的类型
 
 --------------------------
 ### getElementsByTagName
@@ -42,10 +42,10 @@ XmlNodeList XmlDocument.getElementsByTagName(String tagName);
 ```
 
 调用参数:
-* tagName - 需检索的标签名。值 "*" 匹配所有的标签
+* tagName: String, 需检索的标签名。值 "*" 匹配所有的标签
 
 返回结果:
-* 文档树中具有指定标记的 XmlElement 节点的 XmlNodeList 集合。返回的元素节点的顺序就是它们在源文档中出现的顺序。
+* [XmlNodeList](XmlNodeList.md), 文档树中具有指定标记的 [XmlElement](XmlElement.md) 节点的 [XmlNodeList](XmlNodeList.md) 集合。返回的元素节点的顺序就是它们在源文档中出现的顺序。
 
 该方法将返回一个 [XmlNodeList](XmlNodeList.md) 对象（可以作为只读数组处理），该对象存放文档中具有指定标签名的所有 [XmlElement](XmlElement.md) 节点，它们存放的顺序就是在源文档中出现的顺序。 [XmlNodeList](XmlNodeList.md) 对象是“活”的，即如果在文档中添加或删除了指定标签名的元素，它的内容会自动进行必要的更新。
 
@@ -58,11 +58,11 @@ XmlNodeList XmlDocument.getElementsByTagNameNS(String namespaceURI,
 ```
 
 调用参数:
-* namespaceURI - 指定检索的命名空间 URI。值 "*" 可匹配所有的标签
-* localName - 需检索的标签名。值 "*" 匹配所有的标签
+* namespaceURI: String, 指定检索的命名空间 URI。值 "*" 可匹配所有的标签
+* localName: String, 需检索的标签名。值 "*" 匹配所有的标签
 
 返回结果:
-* 文档树中具有指定标记的 XmlElement 节点的 XmlNodeList 集合。返回的元素节点的顺序就是它们在源文档中出现的顺序。
+* [XmlNodeList](XmlNodeList.md), 文档树中具有指定标记的 [XmlElement](XmlElement.md) 节点的 [XmlNodeList](XmlNodeList.md) 集合。返回的元素节点的顺序就是它们在源文档中出现的顺序。
 
 该方法与 getElementsByTagName() 方法相似，只是它根据命名空间和名称来检索元素。
 
@@ -74,10 +74,10 @@ XmlElement XmlDocument.createElement(String tagName);
 ```
 
 调用参数:
-* tagName - 指定元素节点规定名称
+* tagName: String, 指定元素节点规定名称
 
 返回结果:
-* 返回新创建的 XmlElement 节点，具有指定的标签名
+* [XmlElement](XmlElement.md), 返回新创建的 [XmlElement](XmlElement.md) 节点，具有指定的标签名
 
 --------------------------
 ### createElementNS
@@ -88,11 +88,11 @@ XmlElement XmlDocument.createElementNS(String namespaceURI,
 ```
 
 调用参数:
-* namespaceURI - 指定元素节点命名空间 URI
-* qualifiedName - 指定元素节点规定名称
+* namespaceURI: String, 指定元素节点命名空间 URI
+* qualifiedName: String, 指定元素节点规定名称
 
 返回结果:
-* 返回新创建的 XmlElement 节点，具有指定的标签名
+* [XmlElement](XmlElement.md), 返回新创建的 [XmlElement](XmlElement.md) 节点，具有指定的标签名
 
 --------------------------
 ### createTextNode
@@ -102,10 +102,10 @@ XmlText XmlDocument.createTextNode(String data);
 ```
 
 调用参数:
-* data - 指定此节点的文本
+* data: String, 指定此节点的文本
 
 返回结果:
-* 返回新创建的 XmlText 节点，表示指定的 data 字符串
+* [XmlText](XmlText.md), 返回新创建的 [XmlText](XmlText.md) 节点，表示指定的 data 字符串
 
 --------------------------
 ### createComment
@@ -115,10 +115,10 @@ XmlComment XmlDocument.createComment(String data);
 ```
 
 调用参数:
-* data - 指定此节点的注释文本
+* data: String, 指定此节点的注释文本
 
 返回结果:
-* 返回新创建的 XmlComment 节点，注释文本为指定的 data
+* [XmlComment](XmlComment.md), 返回新创建的 [XmlComment](XmlComment.md) 节点，注释文本为指定的 data
 
 --------------------------
 ### createCDATASection
@@ -128,10 +128,10 @@ XmlCDATASection XmlDocument.createCDATASection(String data);
 ```
 
 调用参数:
-* data - 指定此节点规定 CDATA 数据
+* data: String, 指定此节点规定 CDATA 数据
 
 返回结果:
-* 返回新创建的 XmlCDATASection 节点，内容为指定的 data
+* [XmlCDATASection](XmlCDATASection.md), 返回新创建的 [XmlCDATASection](XmlCDATASection.md) 节点，内容为指定的 data
 
 --------------------------
 ### createProcessingInstruction
@@ -142,11 +142,11 @@ XmlProcessingInstruction XmlDocument.createProcessingInstruction(String target,
 ```
 
 调用参数:
-* target - 指定处理指令的目标
-* data - 指定处理指令的内容文本
+* target: String, 指定处理指令的目标
+* data: String, 指定处理指令的内容文本
 
 返回结果:
-* 新创建的 ProcessingInstruction 节点
+* [XmlProcessingInstruction](XmlProcessingInstruction.md), 新创建的 ProcessingInstruction 节点
 
 --------------------------
 ### hasChildNodes
@@ -156,7 +156,7 @@ Boolean XmlDocument.hasChildNodes();
 ```
 
 返回结果:
-* 存在任何子节点时返回 true，否则返回 false
+* Boolean, 存在任何子节点时返回 true，否则返回 false
 
 --------------------------
 ### normalize
@@ -175,10 +175,10 @@ XmlNode XmlDocument.cloneNode(Boolean deep = true);
 ```
 
 调用参数:
-* deep - 是否深度拷贝，为 true 时，被克隆的节点会克隆原节点的所有子节点
+* deep: Boolean, 是否深度拷贝，为 true 时，被克隆的节点会克隆原节点的所有子节点
 
 返回结果:
-* 返回所复制的节点
+* XmlNode, 返回所复制的节点
 
 该方法将复制并返回调用它的节点的副本。如果传递给它的参数是 true，它还将递归复制当前节点的所有子孙节点。 否则，它只复制当前节点。返回的节点不属于文档树，它的 parentNode 属性为 null。当复制的是 Element 节点时，它的所有属性都将被复制。
 
@@ -190,10 +190,10 @@ String XmlDocument.lookupPrefix(String namespaceURI);
 ```
 
 调用参数:
-* namespaceURI - 指定匹配的命名空间 URI
+* namespaceURI: String, 指定匹配的命名空间 URI
 
 返回结果:
-* 返回匹配的前缀，未匹配到返回 null
+* String, 返回匹配的前缀，未匹配到返回 null
 
 --------------------------
 ### lookupNamespaceURI
@@ -203,10 +203,10 @@ String XmlDocument.lookupNamespaceURI(String prefix);
 ```
 
 调用参数:
-* prefix - 指定匹配的前缀
+* prefix: String, 指定匹配的前缀
 
 返回结果:
-* 返回匹配的命名空间 URI，未匹配到返回 null
+* String, 返回匹配的命名空间 URI，未匹配到返回 null
 
 --------------------------
 ### insertBefore
@@ -217,11 +217,11 @@ XmlNode XmlDocument.insertBefore(XmlNode newChild,
 ```
 
 调用参数:
-* newChild - 插入新的节点
-* refChild - 在此节点前插入新节点
+* newChild: XmlNode, 插入新的节点
+* refChild: XmlNode, 在此节点前插入新节点
 
 返回结果:
-* 返回新的子节点
+* XmlNode, 返回新的子节点
 
 如果文档树中已经存在了 newChild，它将从文档树中删除，然后重新插入它的新位置。来自一个文档的节点（或由一个文档创建的节点）不能插入另一个文档。也就是说，newChild 的 ownerDocument 属性必须与当前节点的 ownerDocument 属性相同。
 
@@ -234,11 +234,11 @@ XmlNode XmlDocument.insertAfter(XmlNode newChild,
 ```
 
 调用参数:
-* newChild - 插入新的节点
-* refChild - 在此节点后插入新节点
+* newChild: XmlNode, 插入新的节点
+* refChild: XmlNode, 在此节点后插入新节点
 
 返回结果:
-* 返回新的子节点
+* XmlNode, 返回新的子节点
 
 如果文档树中已经存在了 newChild，它将从文档树中删除，然后重新插入它的新位置。来自一个文档的节点（或由一个文档创建的节点）不能插入另一个文档。也就是说，newChild 的 ownerDocument 属性必须与当前节点的 ownerDocument 属性相同。
 
@@ -250,10 +250,10 @@ XmlNode XmlDocument.appendChild(XmlNode newChild);
 ```
 
 调用参数:
-* newChild - 指定添加的节点
+* newChild: XmlNode, 指定添加的节点
 
 返回结果:
-* 返回这个新的子节点
+* XmlNode, 返回这个新的子节点
 
 如果文档树中已经存在了 newChild，它将从文档树中删除，然后重新插入它的新位置。来自一个文档的节点（或由一个文档创建的节点）不能插入另一个文档。也就是说，newChild 的 ownerDocument 属性必须与当前节点的 ownerDocument 属性相同。
 
@@ -266,11 +266,11 @@ XmlNode XmlDocument.replaceChild(XmlNode newChild,
 ```
 
 调用参数:
-* newChild - 指定新的节点
-* oldChild - 指定被替换的节点
+* newChild: XmlNode, 指定新的节点
+* oldChild: XmlNode, 指定被替换的节点
 
 返回结果:
-* 如替换成功，此方法可返回被替换的节点，如替换失败，则返回 null
+* XmlNode, 如替换成功，此方法可返回被替换的节点，如替换失败，则返回 null
 
 如果文档树中已经存在了 newChild，它将从文档树中删除，然后重新插入它的新位置。来自一个文档的节点（或由一个文档创建的节点）不能插入另一个文档。也就是说，newChild 的 ownerDocument 属性必须与当前节点的 ownerDocument 属性相同。
 
@@ -282,10 +282,10 @@ XmlNode XmlDocument.removeChild(XmlNode oldChild);
 ```
 
 调用参数:
-* oldChild - 指定被删除的节点
+* oldChild: XmlNode, 指定被删除的节点
 
 返回结果:
-* 如删除成功，此方法可返回被删除的节点，如失败，则返回 null
+* XmlNode, 如删除成功，此方法可返回被删除的节点，如失败，则返回 null
 
 --------------------------
 ### dispose
@@ -302,10 +302,10 @@ Boolean XmlDocument.equals(object expected);
 ```
 
 调用参数:
-* expected - 制定比较的目标对象
+* expected: object, 制定比较的目标对象
 
 返回结果:
-* 返回对象比较的结果
+* Boolean, 返回对象比较的结果
 
 --------------------------
 ### toString
@@ -315,7 +315,7 @@ String XmlDocument.toString();
 ```
 
 返回结果:
-* 返回对象的字符串表示
+* String, 返回对象的字符串表示
 
 --------------------------
 ### toJSON
@@ -325,10 +325,10 @@ Value XmlDocument.toJSON(String key = "");
 ```
 
 调用参数:
-* key - 未使用
+* key: String, 未使用
 
 返回结果:
-* 返回包含可 JSON 序列化的值
+* Value, 返回包含可 JSON 序列化的值
 
 --------------------------
 ### valueOf
@@ -338,33 +338,33 @@ Value XmlDocument.valueOf();
 ```
 
 返回结果:
-* 返回对象本身的数值
+* Value, 返回对象本身的数值
 
 ## 成员属性
         
 ### inputEncoding
-返回用于文档的编码（在解析时）
+String, 返回用于文档的编码（在解析时）
 ```JavaScript
 readonly String XmlDocument.inputEncoding;
 ```
 
 --------------------------
 ### xmlStandalone
-设置或返回文档是否为 standalone
+Boolean, 设置或返回文档是否为 standalone
 ```JavaScript
 Boolean XmlDocument.xmlStandalone;
 ```
 
 --------------------------
 ### xmlVersion
-设置或返回文档的 XML 版本
+String, 设置或返回文档的 XML 版本
 ```JavaScript
 String XmlDocument.xmlVersion;
 ```
 
 --------------------------
 ### doctype
-返回与文档相关的文档类型声明（Document Type Declaration）
+[XmlDocumentType](XmlDocumentType.md), 返回与文档相关的文档类型声明（Document Type Declaration）
 ```JavaScript
 readonly XmlDocumentType XmlDocument.doctype;
 ```
@@ -373,35 +373,35 @@ readonly XmlDocumentType XmlDocument.doctype;
 
 --------------------------
 ### documentElement
-返回文档的根节点
+[XmlElement](XmlElement.md), 返回文档的根节点
 ```JavaScript
 readonly XmlElement XmlDocument.documentElement;
 ```
 
 --------------------------
 ### head
-返回 HTML 文档的 head 节点，仅在 html 模式有效
+[XmlElement](XmlElement.md), 返回 HTML 文档的 head 节点，仅在 html 模式有效
 ```JavaScript
 readonly XmlElement XmlDocument.head;
 ```
 
 --------------------------
 ### title
-返回 HTML 文档的 title 节点的内容，仅在 html 模式有效
+String, 返回 HTML 文档的 title 节点的内容，仅在 html 模式有效
 ```JavaScript
 readonly String XmlDocument.title;
 ```
 
 --------------------------
 ### body
-返回 HTML 文档的 body 节点，仅在 html 模式有效
+[XmlElement](XmlElement.md), 返回 HTML 文档的 body 节点，仅在 html 模式有效
 ```JavaScript
 readonly XmlElement XmlDocument.body;
 ```
 
 --------------------------
 ### nodeType
-返回节点的节点类型
+Integer, 返回节点的节点类型
 ```JavaScript
 readonly Integer XmlDocument.nodeType;
 ```
@@ -418,7 +418,7 @@ readonly Integer XmlDocument.nodeType;
 
 --------------------------
 ### nodeName
-返回节点的名称，根据其类型
+String, 返回节点的名称，根据其类型
 ```JavaScript
 readonly String XmlDocument.nodeName;
 ```
@@ -435,7 +435,7 @@ readonly String XmlDocument.nodeName;
 
 --------------------------
 ### nodeValue
-返回节点的名称，根据其类型
+String, 返回节点的名称，根据其类型
 ```JavaScript
 String XmlDocument.nodeValue;
 ```
@@ -452,49 +452,49 @@ String XmlDocument.nodeValue;
 
 --------------------------
 ### ownerDocument
-返回节点的根元素（[XmlDocument](XmlDocument.md) 对象）
+[XmlDocument](XmlDocument.md), 返回节点的根元素（[XmlDocument](XmlDocument.md) 对象）
 ```JavaScript
 readonly XmlDocument XmlDocument.ownerDocument;
 ```
 
 --------------------------
 ### parentNode
-可返回某节点的父节点
+XmlNode, 可返回某节点的父节点
 ```JavaScript
 readonly XmlNode XmlDocument.parentNode;
 ```
 
 --------------------------
 ### childNodes
-返回指定节点的子节点的节点列表
+[XmlNodeList](XmlNodeList.md), 返回指定节点的子节点的节点列表
 ```JavaScript
 readonly XmlNodeList XmlDocument.childNodes;
 ```
 
 --------------------------
 ### firstChild
-返回节点的首个子节点
+XmlNode, 返回节点的首个子节点
 ```JavaScript
 readonly XmlNode XmlDocument.firstChild;
 ```
 
 --------------------------
 ### lastChild
-返回节点的最后一个子节点
+XmlNode, 返回节点的最后一个子节点
 ```JavaScript
 readonly XmlNode XmlDocument.lastChild;
 ```
 
 --------------------------
 ### previousSibling
-返回某节点之前紧跟的节点（处于同一树层级），如果没有此节点，那么该属性返回 null
+XmlNode, 返回某节点之前紧跟的节点（处于同一树层级），如果没有此节点，那么该属性返回 null
 ```JavaScript
 readonly XmlNode XmlDocument.previousSibling;
 ```
 
 --------------------------
 ### nextSibling
-返回某个元素之后紧跟的节点（处于同一树层级中），如果无此节点，则属性返回 null
+XmlNode, 返回某个元素之后紧跟的节点（处于同一树层级中），如果无此节点，则属性返回 null
 ```JavaScript
 readonly XmlNode XmlDocument.nextSibling;
 ```

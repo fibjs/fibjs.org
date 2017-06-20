@@ -166,11 +166,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>name - 指定要检查的键值</li>
+<li>name: String, 指定要检查的键值</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回键值是否存在</li>
+<li>Boolean, 返回键值是否存在</li>
 </ul>
 <hr>
 <h3 id="firstheader">firstHeader</h3>
@@ -179,11 +179,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>name - 指定要查询的键值</li>
+<li>name: String, 指定要查询的键值</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回键值所对应的值，若不存在，则返回 undefined</li>
+<li>Variant, 返回键值所对应的值，若不存在，则返回 undefined</li>
 </ul>
 <hr>
 <h3 id="allheader">allHeader</h3>
@@ -192,11 +192,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>name - 指定要查询的键值</li>
+<li>name: String, 指定要查询的键值</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回键值所对应全部值的数组，若数据不存在，则返回 null</li>
+<li><a href=list.md.html>List</a>, 返回键值所对应全部值的数组，若数据不存在，则返回 null</li>
 </ul>
 <hr>
 <h3 id="addheader">addHeader</h3>
@@ -205,7 +205,7 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>map - 指定要添加的键值数据字典</li>
+<li>map: <a href=map.md.html>Map</a>, 指定要添加的键值数据字典</li>
 </ul>
 <hr>
 <p>添加一个消息头，添加数据并不修改已存在的键值的消息头</p>
@@ -214,8 +214,8 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>name - 指定要添加的键值</li>
-<li>value - 指定要添加的数据</li>
+<li>name: String, 指定要添加的键值</li>
+<li>value: Variant, 指定要添加的数据</li>
 </ul>
 <hr>
 <h3 id="setheader">setHeader</h3>
@@ -224,7 +224,7 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>map - 指定要设定的键值数据字典</li>
+<li>map: <a href=map.md.html>Map</a>, 指定要设定的键值数据字典</li>
 </ul>
 <hr>
 <p>设定一个消息头，设定数据将修改键值所对应的第一个数值，并清除相同键值的其余消息头</p>
@@ -233,8 +233,8 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>name - 指定要设定的键值</li>
-<li>value - 指定要设定的数据</li>
+<li>name: String, 指定要设定的键值</li>
+<li>value: Variant, 指定要设定的数据</li>
 </ul>
 <hr>
 <h3 id="removeheader">removeHeader</h3>
@@ -243,7 +243,7 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>name - 指定要删除的键值</li>
+<li>name: String, 指定要删除的键值</li>
 </ul>
 <hr>
 <h3 id="read">read</h3>
@@ -252,11 +252,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>bytes - 指定要读取的数据量，缺省为读取随机大小的数据块，读出的数据尺寸取决于设备</li>
+<li>bytes: Integer, 指定要读取的数据量，缺省为读取随机大小的数据块，读出的数据尺寸取决于设备</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回从流内读取的数据，若无数据可读，或者连接中断，则返回 null</li>
+<li><a href=buffer.md.html>Buffer</a>, 返回从流内读取的数据，若无数据可读，或者连接中断，则返回 null</li>
 </ul>
 <hr>
 <h3 id="readall">readAll</h3>
@@ -265,7 +265,7 @@
 </code></pre>
 <p>返回结果:</p>
 <ul>
-<li>返回从流内读取的数据，若无数据可读，或者连接中断，则返回 null</li>
+<li><a href=buffer.md.html>Buffer</a>, 返回从流内读取的数据，若无数据可读，或者连接中断，则返回 null</li>
 </ul>
 <hr>
 <h3 id="write">write</h3>
@@ -274,7 +274,7 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>data - 给定要写入的数据</li>
+<li>data: <a href=buffer.md.html>Buffer</a>, 给定要写入的数据</li>
 </ul>
 <hr>
 <h3 id="end">end</h3>
@@ -288,7 +288,7 @@
 </code></pre>
 <p>返回结果:</p>
 <ul>
-<li>结束则返回 true</li>
+<li>Boolean, 结束则返回 true</li>
 </ul>
 <hr>
 <h3 id="clear">clear</h3>
@@ -302,7 +302,7 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>stm - 指定接收格式化消息的流对象</li>
+<li>stm: <a href=stream.md.html>Stream</a>, 指定接收格式化消息的流对象</li>
 </ul>
 <hr>
 <h3 id="readfrom">readFrom</h3>
@@ -311,7 +311,7 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>stm - 指定读取格式化消息的流对象</li>
+<li>stm: <a href=stream.md.html>Stream</a>, 指定读取格式化消息的流对象</li>
 </ul>
 <hr>
 <h3 id="dispose">dispose</h3>
@@ -325,11 +325,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>expected - 制定比较的目标对象</li>
+<li>expected: object, 制定比较的目标对象</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回对象比较的结果</li>
+<li>Boolean, 返回对象比较的结果</li>
 </ul>
 <hr>
 <h3 id="tostring">toString</h3>
@@ -338,7 +338,7 @@
 </code></pre>
 <p>返回结果:</p>
 <ul>
-<li>返回对象的字符串表示</li>
+<li>String, 返回对象的字符串表示</li>
 </ul>
 <hr>
 <h3 id="tojson">toJSON</h3>
@@ -347,11 +347,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>key - 未使用</li>
+<li>key: String, 未使用</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回包含可 JSON 序列化的值</li>
+<li>Value, 返回包含可 JSON 序列化的值</li>
 </ul>
 <hr>
 <h3 id="valueof">valueOf</h3>
@@ -360,116 +360,116 @@
 </code></pre>
 <p>返回结果:</p>
 <ul>
-<li>返回对象本身的数值</li>
+<li>Value, 返回对象本身的数值</li>
 </ul>
 <h2 id="-">成员属性</h2>
 <h3 id="method">method</h3>
-<p>查询和设置请求方法</p>
+<p>String, 查询和设置请求方法</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> HttpRequest.method;
 </code></pre>
 <hr>
 <h3 id="address">address</h3>
-<p>查询和设置请求地址</p>
+<p>String, 查询和设置请求地址</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> HttpRequest.address;
 </code></pre>
 <hr>
 <h3 id="querystring">queryString</h3>
-<p>查询和设置请求查询字符串</p>
+<p>String, 查询和设置请求查询字符串</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> HttpRequest.queryString;
 </code></pre>
 <hr>
 <h3 id="cookies">cookies</h3>
-<p>获取包含消息 cookies 的容器</p>
+<p><a href=httpcollection.md.html>HttpCollection</a>, 获取包含消息 cookies 的容器</p>
 <pre><code class="lang-JavaScript">readonly HttpCollection HttpRequest.cookies;
 </code></pre>
 <hr>
 <h3 id="form">form</h3>
-<p>获取包含消息 form 的容器</p>
+<p><a href=httpcollection.md.html>HttpCollection</a>, 获取包含消息 form 的容器</p>
 <pre><code class="lang-JavaScript">readonly HttpCollection HttpRequest.form;
 </code></pre>
 <hr>
 <h3 id="query">query</h3>
-<p>获取包含消息 query 的容器</p>
+<p><a href=httpcollection.md.html>HttpCollection</a>, 获取包含消息 query 的容器</p>
 <pre><code class="lang-JavaScript">readonly HttpCollection HttpRequest.query;
 </code></pre>
 <hr>
 <h3 id="protocol">protocol</h3>
-<p>协议版本信息，允许的格式为：HTTP/#.#</p>
+<p>String, 协议版本信息，允许的格式为：HTTP/#.#</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> HttpRequest.protocol;
 </code></pre>
 <hr>
 <h3 id="headers">headers</h3>
-<p>包含消息中 <a href=../../module/ifs/http.md.html>http</a> 消息头的容器，只读属性</p>
+<p><a href=httpcollection.md.html>HttpCollection</a>, 包含消息中 <a href=../../module/ifs/http.md.html>http</a> 消息头的容器，只读属性</p>
 <pre><code class="lang-JavaScript">readonly HttpCollection HttpRequest.headers;
 </code></pre>
 <hr>
 <h3 id="keepalive">keepAlive</h3>
-<p>查询和设定是否保持连接</p>
+<p>Boolean, 查询和设定是否保持连接</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">Boolean</span> HttpRequest.keepAlive;
 </code></pre>
 <hr>
 <h3 id="upgrade">upgrade</h3>
-<p>查询和设定是否是升级协议</p>
+<p>Boolean, 查询和设定是否是升级协议</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">Boolean</span> HttpRequest.upgrade;
 </code></pre>
 <hr>
 <h3 id="maxheaderscount">maxHeadersCount</h3>
-<p>查询和设置最大请求头个数，缺省为 128</p>
+<p>Integer, 查询和设置最大请求头个数，缺省为 128</p>
 <pre><code class="lang-JavaScript">Integer HttpRequest.maxHeadersCount;
 </code></pre>
 <hr>
 <h3 id="maxuploadsize">maxUploadSize</h3>
-<p>查询和设置最大上传尺寸，以字节为单位，缺省为 67108864(64M)</p>
+<p>Integer, 查询和设置最大上传尺寸，以字节为单位，缺省为 67108864(64M)</p>
 <pre><code class="lang-JavaScript">Integer HttpRequest.maxUploadSize;
 </code></pre>
 <hr>
 <h3 id="socket">socket</h3>
-<p>查询当前对象的来源 socket</p>
+<p><a href=stream.md.html>Stream</a>, 查询当前对象的来源 socket</p>
 <pre><code class="lang-JavaScript">readonly Stream HttpRequest.socket;
 </code></pre>
 <hr>
 <h3 id="value">value</h3>
-<p>消息的基本内容</p>
+<p>String, 消息的基本内容</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> HttpRequest.value;
 </code></pre>
 <hr>
 <h3 id="params">params</h3>
-<p>消息的基本参数</p>
+<p><a href=list.md.html>List</a>, 消息的基本参数</p>
 <pre><code class="lang-JavaScript">List HttpRequest.params;
 </code></pre>
 <hr>
 <h3 id="type">type</h3>
-<p>消息类型</p>
+<p>Integer, 消息类型</p>
 <pre><code class="lang-JavaScript">Integer HttpRequest.type;
 </code></pre>
 <hr>
 <h3 id="data">data</h3>
-<p>查询消息的数据</p>
+<p>Value, 查询消息的数据</p>
 <pre><code class="lang-JavaScript">readonly Value HttpRequest.data;
 </code></pre>
 <hr>
 <h3 id="body">body</h3>
-<p>包含消息数据部分的流对象</p>
+<p><a href=seekablestream.md.html>SeekableStream</a>, 包含消息数据部分的流对象</p>
 <pre><code class="lang-JavaScript">SeekableStream HttpRequest.body;
 </code></pre>
 <hr>
 <h3 id="length">length</h3>
-<p>消息数据部分的长度</p>
+<p>Long, 消息数据部分的长度</p>
 <pre><code class="lang-JavaScript">readonly Long HttpRequest.length;
 </code></pre>
 <hr>
 <h3 id="stream">stream</h3>
-<p>查询消息 readFrom 时的流对象</p>
+<p><a href=stream.md.html>Stream</a>, 查询消息 readFrom 时的流对象</p>
 <pre><code class="lang-JavaScript">readonly Stream HttpRequest.stream;
 </code></pre>
 <hr>
 <h3 id="response">response</h3>
-<p>获取响应消息对象</p>
+<p>Message, 获取响应消息对象</p>
 <pre><code class="lang-JavaScript">readonly Message HttpRequest.response;
 </code></pre>
 <hr>
 <h3 id="lasterror">lastError</h3>
-<p>查询和设置消息处理的最后错误</p>
+<p>String, 查询和设置消息处理的最后错误</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> HttpRequest.lastError;
 </code></pre>
 <h2 id="-">常量</h2>

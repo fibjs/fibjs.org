@@ -19,10 +19,10 @@ static String hex.encode(Buffer data);
 ```
 
 调用参数:
-* data - 要编码的数据
+* data: [Buffer](../../object/ifs/Buffer.md), 要编码的数据
 
 返回结果:
-* 返回编码的字符串
+* String, 返回编码的字符串
 
 --------------------------
 ### decode
@@ -32,8 +32,8 @@ static Buffer hex.decode(String data);
 ```
 
 调用参数:
-* data - 要解码的字符串
+* data: String, 要解码的字符串
 
 返回结果:
-* 返回解码的二进制数据
+* [Buffer](../../object/ifs/Buffer.md), 返回解码的二进制数据
 

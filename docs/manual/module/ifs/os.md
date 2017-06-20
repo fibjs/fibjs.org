@@ -64,7 +64,7 @@ static Number os.uptime();
 ```
 
 返回结果:
-* 返回表示时间的数值
+* Number, 返回表示时间的数值
 
 --------------------------
 ### loadavg
@@ -74,7 +74,7 @@ static Array os.loadavg();
 ```
 
 返回结果:
-* 返回包含三个负载数据的数组
+* Array, 返回包含三个负载数据的数组
 
 --------------------------
 ### totalmem
@@ -84,7 +84,7 @@ static Long os.totalmem();
 ```
 
 返回结果:
-* 返回内存数据
+* Long, 返回内存数据
 
 --------------------------
 ### freemem
@@ -94,7 +94,7 @@ static Long os.freemem();
 ```
 
 返回结果:
-* 返回内存数据
+* Long, 返回内存数据
 
 --------------------------
 ### cpus
@@ -104,7 +104,7 @@ static Array os.cpus();
 ```
 
 返回结果:
-* 返回包含 cpu 参数的数组，每一项对应一个 cpu
+* Array, 返回包含 cpu 参数的数组，每一项对应一个 cpu
 
 --------------------------
 ### cpuNumbers
@@ -114,7 +114,7 @@ static Integer os.cpuNumbers();
 ```
 
 返回结果:
-* 返回 cpu 个数
+* Integer, 返回 cpu 个数
 
 --------------------------
 ### tmpdir
@@ -124,7 +124,7 @@ static String os.tmpdir();
 ```
 
 返回结果:
-* 返回临时文件目录
+* String, 返回临时文件目录
 
 --------------------------
 ### userInfo
@@ -136,7 +136,7 @@ static Object os.userInfo(Object options = {});
 调用参数:
 
 返回结果:
-* 当前有效执行用户信息
+* Object, 当前有效执行用户信息
 
 --------------------------
 ### networkInterfaces
@@ -146,7 +146,7 @@ static Object os.networkInterfaces();
 ```
 
 返回结果:
-* 返回网卡信息
+* Object, 返回网卡信息
 
 --------------------------
 ### printerInfo
@@ -156,7 +156,7 @@ static Array os.printerInfo();
 ```
 
 返回结果:
-* 返回打印机信息
+* Array, 返回打印机信息
 
 --------------------------
 ### openPrinter
@@ -166,10 +166,10 @@ static BufferedStream os.openPrinter(String name) async;
 ```
 
 调用参数:
-* name - 打印机名称
+* name: String, 打印机名称
 
 返回结果:
-* 返回打印机输出对象
+* [BufferedStream](../../object/ifs/BufferedStream.md), 返回打印机输出对象
 
 --------------------------
 ### platform
@@ -186,10 +186,10 @@ static Date os.time(String tmString = "");
 ```
 
 调用参数:
-* tmString - 时间字符串，缺省则查询当前时间
+* tmString: String, 时间字符串，缺省则查询当前时间
 
 返回结果:
-* 返回 javascript Date 对象
+* Date, 返回 javascript Date 对象
 
 --------------------------
 ### dateAdd
@@ -201,12 +201,12 @@ static Date os.dateAdd(Date d,
 ```
 
 调用参数:
-* d - 指定用于计算 Date 对象
-* num - 指定运算的数值
-* part - 指定运算的时间部位，接收值为："year", "month", "day", "hour", "minute", "second"
+* d: Date, 指定用于计算 Date 对象
+* num: Integer, 指定运算的数值
+* part: String, 指定运算的时间部位，接收值为："year", "month", "day", "hour", "minute", "second"
 
 返回结果:
-* 返回 javascript Date 对象
+* Date, 返回 javascript Date 对象
 
 --------------------------
 ### memoryUsage
@@ -216,7 +216,7 @@ static Object os.memoryUsage();
 ```
 
 返回结果:
-* 返回包含内存报告
+* Object, 返回包含内存报告
 
 内存报告生成类似以下结果：
 ```JavaScript
@@ -236,21 +236,21 @@ static Object os.memoryUsage();
 ## 静态属性
         
 ### timezone
-查询运行环境当前时区
+Integer, 查询运行环境当前时区
 ```JavaScript
 static readonly Integer os.timezone;
 ```
 
 --------------------------
 ### EOL
-查询当前运行环境行结尾标识，posix:\"\\n\"；windows:\"\\r\\n\"
+String, 查询当前运行环境行结尾标识，posix:\"\\n\"；windows:\"\\r\\n\"
 ```JavaScript
 static readonly String os.EOL;
 ```
 
 --------------------------
 ### execPath
-查询当前运行执行文件完整路径
+String, 查询当前运行执行文件完整路径
 ```JavaScript
 static readonly String os.execPath;
 ```

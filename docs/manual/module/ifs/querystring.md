@@ -14,10 +14,10 @@ static String querystring.escape(String str);
 ```
 
 调用参数:
-* url - 要编码的 url
+* url: 要编码的 [url](url.md)
 
 返回结果:
-* 返回编码的字符串
+* String, 返回编码的字符串
 
 --------------------------
 ### unescape
@@ -27,10 +27,10 @@ static String querystring.unescape(String str);
 ```
 
 调用参数:
-* url - 要解码的 url
+* url: 要解码的 [url](url.md)
 
 返回结果:
-* 返回解码的字符串
+* String, 返回解码的字符串
 
 --------------------------
 ### parse
@@ -43,12 +43,12 @@ static HttpCollection querystring.parse(String str,
 ```
 
 调用参数:
-* str - 要解析的字符串
-* sep - 解析时使用的分割字符串，缺省为 &
-* eq - 解析时使用的赋值字符串，缺省为 =
+* str: String, 要解析的字符串
+* sep: String, 解析时使用的分割字符串，缺省为 &
+* eq: String, 解析时使用的赋值字符串，缺省为 =
 
 返回结果:
-* 返回解码的对象
+* [HttpCollection](../../object/ifs/HttpCollection.md), 返回解码的对象
 
 --------------------------
 ### stringify
@@ -61,10 +61,10 @@ static String querystring.stringify(Object obj,
 ```
 
 调用参数:
-* obj - 要序列化的对象
-* sep - 序列化时使用的分割字符串，缺省为 &
-* eq - 序列化时使用的赋值字符串，缺省为 =
+* obj: Object, 要序列化的对象
+* sep: String, 序列化时使用的分割字符串，缺省为 &
+* eq: String, 序列化时使用的赋值字符串，缺省为 =
 
 返回结果:
-* 返回序列化后的字符串
+* String, 返回序列化后的字符串
 

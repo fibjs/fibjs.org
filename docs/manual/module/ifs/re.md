@@ -11,9 +11,9 @@ static Regex re.compile(String pattern,
 ```
 
 调用参数:
-* pattern - 正则表达式
-* opt - 规定匹配的类型。"g" 用于全局匹配，"i" 用于区分大小写，"gi" 用于全局区分大小写的匹配
+* pattern: String, 正则表达式
+* opt: String, 规定匹配的类型。"g" 用于全局匹配，"i" 用于区分大小写，"gi" 用于全局区分大小写的匹配
 
 返回结果:
-* 返回正则表达式对象
+* [Regex](../../object/ifs/Regex.md), 返回正则表达式对象
 

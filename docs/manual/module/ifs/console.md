@@ -19,7 +19,7 @@ static console.add(Array cfg);
 ```
 
 调用参数:
-* cfg - 输出配置数组
+* cfg: Array, 输出配置数组
 
 通过配置 console，可以将程序输出和系统错误发往不同设备，用于运行环境信息收集。
 
@@ -37,7 +37,7 @@ static console.add(Value cfg);
 ```
 
 调用参数:
-* cfg - 输出配置
+* cfg: Value, 输出配置
 
 通过配置 console，可以将程序输出和系统错误发往不同设备，用于运行环境信息收集。
 
@@ -90,8 +90,8 @@ static console.log(String fmt,
 ```
 
 调用参数:
-* fmt - 格式化字符串
-* ... - 可选参数列表
+* fmt: String, 格式化字符串
+* ...: 可选参数列表
 
 记录一般等级的日志信息。通常用于输出非错误性提示信息。
 
@@ -102,7 +102,7 @@ static console.log(...);
 ```
 
 调用参数:
-* ... - 可选参数列表
+* ...: 可选参数列表
 
 记录一般等级的日志信息。通常用于输出非错误性提示信息。
 
@@ -115,8 +115,8 @@ static console.debug(String fmt,
 ```
 
 调用参数:
-* fmt - 格式化字符串
-* ... - 可选参数列表
+* fmt: String, 格式化字符串
+* ...: 可选参数列表
 
 记录调试日志信息。通常用于输出调试信息。不重要。
 
@@ -127,7 +127,7 @@ static console.debug(...);
 ```
 
 调用参数:
-* ... - 可选参数列表
+* ...: 可选参数列表
 
 记录调试日志信息。通常用于输出调试信息。不重要。
 
@@ -140,8 +140,8 @@ static console.info(String fmt,
 ```
 
 调用参数:
-* fmt - 格式化字符串
-* ... - 可选参数列表
+* fmt: String, 格式化字符串
+* ...: 可选参数列表
 
 记录一般等级的日志信息。通常用于输出非错误性提示信息。
 
@@ -152,7 +152,7 @@ static console.info(...);
 ```
 
 调用参数:
-* ... - 可选参数列表
+* ...: 可选参数列表
 
 记录一般等级的日志信息。通常用于输出非错误性提示信息。
 
@@ -165,8 +165,8 @@ static console.notice(String fmt,
 ```
 
 调用参数:
-* fmt - 格式化字符串
-* ... - 可选参数列表
+* fmt: String, 格式化字符串
+* ...: 可选参数列表
 
 记录警告日志信息。通常用于输出提示性调试信息。一般重要。
 
@@ -177,7 +177,7 @@ static console.notice(...);
 ```
 
 调用参数:
-* ... - 可选参数列表
+* ...: 可选参数列表
 
 记录警告日志信息。通常用于输出提示性调试信息。一般重要。
 
@@ -190,8 +190,8 @@ static console.warn(String fmt,
 ```
 
 调用参数:
-* fmt - 格式化字符串
-* ... - 可选参数列表
+* fmt: String, 格式化字符串
+* ...: 可选参数列表
 
 记录警告日志信息。通常用于输出警告性调试信息。重要。
 
@@ -202,7 +202,7 @@ static console.warn(...);
 ```
 
 调用参数:
-* ... - 可选参数列表
+* ...: 可选参数列表
 
 记录警告日志信息。通常用于输出警告性调试信息。重要。
 
@@ -215,8 +215,8 @@ static console.error(String fmt,
 ```
 
 调用参数:
-* fmt - 格式化字符串
-* ... - 可选参数列表
+* fmt: String, 格式化字符串
+* ...: 可选参数列表
 
 记录用于错误日志信息。通常用于输出错误信息。非常重要。系统的出错信息也会以此等级记录。
 
@@ -227,7 +227,7 @@ static console.error(...);
 ```
 
 调用参数:
-* ... - 可选参数列表
+* ...: 可选参数列表
 
 记录用于错误日志信息。通常用于输出错误信息。非常重要。系统的出错信息也会以此等级记录。
 
@@ -240,8 +240,8 @@ static console.crit(String fmt,
 ```
 
 调用参数:
-* fmt - 格式化字符串
-* ... - 可选参数列表
+* fmt: String, 格式化字符串
+* ...: 可选参数列表
 
 记录用于关键错误日志信息。通常用于输出关键错误信息。非常重要。
 
@@ -252,7 +252,7 @@ static console.crit(...);
 ```
 
 调用参数:
-* ... - 可选参数列表
+* ...: 可选参数列表
 
 记录用于关键错误日志信息。通常用于输出关键错误信息。非常重要。
 
@@ -265,8 +265,8 @@ static console.alert(String fmt,
 ```
 
 调用参数:
-* fmt - 格式化字符串
-* ... - 可选参数列表
+* fmt: String, 格式化字符串
+* ...: 可选参数列表
 
 记录用于警报错误日志信息。通常用于输出警报错误信息。非常重要。为最高级别信息。
 
@@ -277,7 +277,7 @@ static console.alert(...);
 ```
 
 调用参数:
-* ... - 可选参数列表
+* ...: 可选参数列表
 
 记录用于警报错误日志信息。通常用于输出警报错误信息。非常重要。为最高级别信息。
 
@@ -289,7 +289,7 @@ static console.dir(Value obj);
 ```
 
 调用参数:
-* obj - 给定要显示的对象
+* obj: Value, 给定要显示的对象
 
 --------------------------
 ### time
@@ -299,7 +299,7 @@ static console.time(String label = "time");
 ```
 
 调用参数:
-* label - 标题，缺省为空字符串。
+* label: String, 标题，缺省为空字符串。
 
 --------------------------
 ### timeEnd
@@ -309,7 +309,7 @@ static console.timeEnd(String label = "time");
 ```
 
 调用参数:
-* label - 标题，缺省为空字符串。
+* label: String, 标题，缺省为空字符串。
 
 --------------------------
 ### trace
@@ -319,7 +319,7 @@ static console.trace(String label = "trace");
 ```
 
 调用参数:
-* label - 标题，缺省为空字符串。
+* label: String, 标题，缺省为空字符串。
 
 通过日志输出当前调用堆栈。
 
@@ -332,8 +332,8 @@ static console.assert(Value value,
 ```
 
 调用参数:
-* value - 测试的数值
-* msg - 报错信息
+* value: Value, 测试的数值
+* msg: String, 报错信息
 
 --------------------------
 ### print
@@ -344,8 +344,8 @@ static console.print(String fmt,
 ```
 
 调用参数:
-* fmt - 格式化字符串
-* ... - 可选参数列表
+* fmt: String, 格式化字符串
+* ...: 可选参数列表
 
 --------------------------
 向控制台输出格式化文本，输出内容不会记入日志系统，输出文本后不会自动换行，可连续输出
@@ -354,7 +354,7 @@ static console.print(...);
 ```
 
 调用参数:
-* ... - 可选参数列表
+* ...: 可选参数列表
 
 --------------------------
 ### moveTo
@@ -365,8 +365,8 @@ static console.moveTo(Integer row,
 ```
 
 调用参数:
-* row - 指定新光标的行坐标
-* column - 指定新光标的列坐标
+* row: Integer, 指定新光标的行坐标
+* column: Integer, 指定新光标的列坐标
 
 --------------------------
 ### hideCursor
@@ -398,8 +398,8 @@ static console.keyDown(String key,
 ```
 
 调用参数:
-* key - 指定按键，单字符直接传入，功能键传入名称
-* modifier - 指定控制键，可以为：control, alt, shift, command
+* key: String, 指定按键，单字符直接传入，功能键传入名称
+* modifier: String, 指定控制键，可以为：control, alt, shift, command
 
 参数 key 可以使用字符串传入功能键：
 - 功能键：f1 - f12
@@ -415,8 +415,8 @@ static console.keyDown(String key,
 ```
 
 调用参数:
-* key - 指定按键，单字符直接传入，功能键传入名称
-* modifier - 指定控制键数组，可以为：control, alt, shift, command
+* key: String, 指定按键，单字符直接传入，功能键传入名称
+* modifier: Array, 指定控制键数组，可以为：control, alt, shift, command
 
 参数 key 可以使用字符串传入功能键：
 - 功能键：f1 - f12
@@ -433,8 +433,8 @@ static console.keyUp(String key,
 ```
 
 调用参数:
-* key - 指定按键，单字符直接传入，功能键传入名称
-* modifier - 指定控制键，可以为：control, alt, shift, command
+* key: String, 指定按键，单字符直接传入，功能键传入名称
+* modifier: String, 指定控制键，可以为：control, alt, shift, command
 
 参数 key 可以使用字符串传入功能键：
 - 功能键：f1 - f12
@@ -450,8 +450,8 @@ static console.keyUp(String key,
 ```
 
 调用参数:
-* key - 指定按键，单字符直接传入，功能键传入名称
-* modifier - 指定控制键数组，可以为：control, alt, shift, command
+* key: String, 指定按键，单字符直接传入，功能键传入名称
+* modifier: Array, 指定控制键数组，可以为：control, alt, shift, command
 
 参数 key 可以使用字符串传入功能键：
 - 功能键：f1 - f12
@@ -468,8 +468,8 @@ static console.keyTap(String key,
 ```
 
 调用参数:
-* key - 指定按键，单字符直接传入，功能键传入名称
-* modifier - 指定控制键，可以为：control, alt, shift, command
+* key: String, 指定按键，单字符直接传入，功能键传入名称
+* modifier: String, 指定控制键，可以为：control, alt, shift, command
 
 参数 key 可以使用字符串传入功能键：
 - 功能键：f1 - f12
@@ -485,8 +485,8 @@ static console.keyTap(String key,
 ```
 
 调用参数:
-* key - 指定按键，单字符直接传入，功能键传入名称
-* modifier - 指定控制键数组，可以为：control, alt, shift, command
+* key: String, 指定按键，单字符直接传入，功能键传入名称
+* modifier: Array, 指定控制键数组，可以为：control, alt, shift, command
 
 参数 key 可以使用字符串传入功能键：
 - 功能键：f1 - f12
@@ -502,7 +502,7 @@ static console.typeString(String text);
 ```
 
 调用参数:
-* text - 指定输入的字符串
+* text: String, 指定输入的字符串
 
 --------------------------
 ### moveMouse
@@ -513,8 +513,8 @@ static console.moveMouse(Integer x,
 ```
 
 调用参数:
-* x - 指定 x 坐标
-* y - 指定 y 坐标
+* x: Integer, 指定 x 坐标
+* y: Integer, 指定 y 坐标
 
 --------------------------
 ### mouseUp
@@ -524,7 +524,7 @@ static console.mouseUp(String button);
 ```
 
 调用参数:
-* button - 指定鼠标键名称，允许值为: left, right, moddle
+* button: String, 指定鼠标键名称，允许值为: left, right, moddle
 
 --------------------------
 ### mouseDown
@@ -534,7 +534,7 @@ static console.mouseDown(String button);
 ```
 
 调用参数:
-* button - 指定鼠标键名称，允许值为: left, right, moddle
+* button: String, 指定鼠标键名称，允许值为: left, right, moddle
 
 --------------------------
 ### clickMouse
@@ -545,8 +545,8 @@ static console.clickMouse(String button,
 ```
 
 调用参数:
-* button - 指定鼠标键名称，允许值为: left, right, moddle
-* dbclick - 指定是否双击，缺省为 false
+* button: String, 指定鼠标键名称，允许值为: left, right, moddle
+* dbclick: Boolean, 指定是否双击，缺省为 false
 
 --------------------------
 ### readLine
@@ -556,36 +556,36 @@ static String console.readLine(String msg = "") async;
 ```
 
 调用参数:
-* msg - 提示信息
+* msg: String, 提示信息
 
 返回结果:
-* 返回用户输入的信息
+* String, 返回用户输入的信息
 
 ## 静态属性
         
 ### loglevel
-输出级别，用以过滤输出信息，缺省为 NOTSET，全部输出。信息过滤之后才会输出给 add 设定的各个设备。
+Integer, 输出级别，用以过滤输出信息，缺省为 NOTSET，全部输出。信息过滤之后才会输出给 add 设定的各个设备。
 ```JavaScript
 static Integer console.loglevel;
 ```
 
 --------------------------
 ### colors
-终端输出颜色配置对象，详见 [TextColor](../../object/ifs/TextColor.md)
+[TextColor](../../object/ifs/TextColor.md), 终端输出颜色配置对象，详见 [TextColor](../../object/ifs/TextColor.md)
 ```JavaScript
 static readonly TextColor console.colors;
 ```
 
 --------------------------
 ### width
-查询终端每行字符数
+Integer, 查询终端每行字符数
 ```JavaScript
 static readonly Integer console.width;
 ```
 
 --------------------------
 ### height
-查询终端行数
+Integer, 查询终端行数
 ```JavaScript
 static readonly Integer console.height;
 ```

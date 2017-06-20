@@ -21,8 +21,8 @@ SslHandler 构造函数，创建一个新的 SslHandler 对象
 ```
 
 调用参数:
-* certs - 服务器证书列表
-* hdlr - 内置消息处理器，处理函数，链式处理数组，路由对象，详见 mq.Handler
+* certs: Array, 服务器证书列表
+* hdlr: [Handler](Handler.md), 内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq](../../module/ifs/mq.md).[Handler](Handler.md)
 
 certs 格式为：
 ```JavaScript
@@ -47,9 +47,9 @@ SslHandler 构造函数，创建一个新的 SslHandler 对象
 ```
 
 调用参数:
-* crt - X509Cert 证书，用于客户端验证服务器
-* key - PKey 私钥，用于与客户端会话
-* hdlr - 内置消息处理器，处理函数，链式处理数组，路由对象，详见 mq.Handler
+* crt: [X509Cert](X509Cert.md), [X509Cert](X509Cert.md) 证书，用于客户端验证服务器
+* key: [PKey](PKey.md), [PKey](PKey.md) 私钥，用于与客户端会话
+* hdlr: [Handler](Handler.md), 内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq](../../module/ifs/mq.md).[Handler](Handler.md)
 
 ## 成员函数
         
@@ -60,10 +60,10 @@ Handler SslHandler.invoke(object v) async;
 ```
 
 调用参数:
-* v - 指定处理的消息或对象
+* v: [object](object.md), 指定处理的消息或对象
 
 返回结果:
-* 返回下一步的处理器
+* Handler, 返回下一步的处理器
 
 --------------------------
 ### dispose
@@ -80,10 +80,10 @@ Boolean SslHandler.equals(object expected);
 ```
 
 调用参数:
-* expected - 制定比较的目标对象
+* expected: object, 制定比较的目标对象
 
 返回结果:
-* 返回对象比较的结果
+* Boolean, 返回对象比较的结果
 
 --------------------------
 ### toString
@@ -93,7 +93,7 @@ String SslHandler.toString();
 ```
 
 返回结果:
-* 返回对象的字符串表示
+* String, 返回对象的字符串表示
 
 --------------------------
 ### toJSON
@@ -103,10 +103,10 @@ Value SslHandler.toJSON(String key = "");
 ```
 
 调用参数:
-* key - 未使用
+* key: String, 未使用
 
 返回结果:
-* 返回包含可 JSON 序列化的值
+* Value, 返回包含可 JSON 序列化的值
 
 --------------------------
 ### valueOf
@@ -116,26 +116,26 @@ Value SslHandler.valueOf();
 ```
 
 返回结果:
-* 返回对象本身的数值
+* Value, 返回对象本身的数值
 
 ## 成员属性
         
 ### verification
-设定证书验证模式，缺省为 VERIFY_NONE
+Integer, 设定证书验证模式，缺省为 VERIFY_NONE
 ```JavaScript
 Integer SslHandler.verification;
 ```
 
 --------------------------
 ### ca
-客户端证书验证证书链
+[X509Cert](X509Cert.md), 客户端证书验证证书链
 ```JavaScript
 readonly X509Cert SslHandler.ca;
 ```
 
 --------------------------
 ### handler
-[ssl](../../module/ifs/ssl.md) 协议转换处理器当前事件处理接口对象
+[Handler](Handler.md), [ssl](../../module/ifs/ssl.md) 协议转换处理器当前事件处理接口对象
 ```JavaScript
 Handler SslHandler.handler;
 ```

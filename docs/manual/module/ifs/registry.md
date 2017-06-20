@@ -16,11 +16,11 @@ static List registry.listSubKey(Integer root,
 ```
 
 调用参数:
-* root - 指定注册表根
-* key - 指定键值
+* root: Integer, 指定注册表根
+* key: String, 指定键值
 
 返回结果:
-* 返回该键值下所有子健
+* [List](../../object/ifs/List.md), 返回该键值下所有子健
 
 --------------------------
 ### listValue
@@ -31,11 +31,11 @@ static List registry.listValue(Integer root,
 ```
 
 调用参数:
-* root - 指定注册表根
-* key - 指定键值
+* root: Integer, 指定注册表根
+* key: String, 指定键值
 
 返回结果:
-* 返回该键值下所有数据的健
+* [List](../../object/ifs/List.md), 返回该键值下所有数据的健
 
 --------------------------
 ### get
@@ -46,11 +46,11 @@ static Value registry.get(Integer root,
 ```
 
 调用参数:
-* root - 指定注册表根
-* key - 指定键值
+* root: Integer, 指定注册表根
+* key: String, 指定键值
 
 返回结果:
-* 返回指定键值的数值
+* Value, 返回指定键值的数值
 
 --------------------------
 ### set
@@ -63,10 +63,10 @@ static registry.set(Integer root,
 ```
 
 调用参数:
-* root - 指定注册表根
-* key - 指定键值
-* value - 指定数字
-* type - 指定类型，允许的类型为 DWORD 和 QWORD，缺省为 DWORD
+* root: Integer, 指定注册表根
+* key: String, 指定键值
+* value: Number, 指定数字
+* type: Integer, 指定类型，允许的类型为 DWORD 和 QWORD，缺省为 DWORD
 
 --------------------------
 设置指定键值为字符串
@@ -78,10 +78,10 @@ static registry.set(Integer root,
 ```
 
 调用参数:
-* root - 指定注册表根
-* key - 指定键值
-* value - 指定字符串
-* type - 指定类型，允许的类型为 SZ 和 EXPAND_SZ，缺省为 SZ
+* root: Integer, 指定注册表根
+* key: String, 指定键值
+* value: String, 指定字符串
+* type: Integer, 指定类型，允许的类型为 SZ 和 EXPAND_SZ，缺省为 SZ
 
 --------------------------
 设置指定键值为多字符串
@@ -92,9 +92,9 @@ static registry.set(Integer root,
 ```
 
 调用参数:
-* root - 指定注册表根
-* key - 指定键值
-* value - 指定多字符串数组
+* root: Integer, 指定注册表根
+* key: String, 指定键值
+* value: Array, 指定多字符串数组
 
 --------------------------
 设置指定键值为二进制
@@ -105,9 +105,9 @@ static registry.set(Integer root,
 ```
 
 调用参数:
-* root - 指定注册表根
-* key - 指定键值
-* value - 指定二进制数据
+* root: Integer, 指定注册表根
+* key: String, 指定键值
+* value: [Buffer](../../object/ifs/Buffer.md), 指定二进制数据
 
 --------------------------
 ### del
@@ -118,8 +118,8 @@ static registry.del(Integer root,
 ```
 
 调用参数:
-* root - 指定注册表根
-* key - 指定键值
+* root: Integer, 指定注册表根
+* key: String, 指定键值
 
 ## 常量
         

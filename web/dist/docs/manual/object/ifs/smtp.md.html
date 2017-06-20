@@ -166,7 +166,7 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>url - 指定连接的协议，可以是：tcp://host:port 或者 ssl://host:port</li>
+<li>url: String, 指定连接的协议，可以是：tcp://host:port 或者 <a href=../../module/ifs/ssl.md.html>ssl</a>://host:port</li>
 </ul>
 <hr>
 <h3 id="command">command</h3>
@@ -176,12 +176,12 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>cmd - 命令名</li>
-<li>arg - 参数</li>
+<li>cmd: String, 命令名</li>
+<li>arg: String, 参数</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>如果成功，返回服务器响应</li>
+<li>String, 如果成功，返回服务器响应</li>
 </ul>
 <hr>
 <h3 id="hello">hello</h3>
@@ -190,7 +190,7 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>hostname - 主机名，缺省为“localhost”</li>
+<li>hostname: String, 主机名，缺省为“localhost”</li>
 </ul>
 <hr>
 <h3 id="login">login</h3>
@@ -200,8 +200,8 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>username - 用户名</li>
-<li>password - 密码</li>
+<li>username: String, 用户名</li>
+<li>password: String, 密码</li>
 </ul>
 <hr>
 <h3 id="from">from</h3>
@@ -210,7 +210,7 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>address - 发件人信箱</li>
+<li>address: String, 发件人信箱</li>
 </ul>
 <hr>
 <h3 id="to">to</h3>
@@ -219,7 +219,7 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>address - 收件人信箱</li>
+<li>address: String, 收件人信箱</li>
 </ul>
 <hr>
 <h3 id="data">data</h3>
@@ -228,7 +228,7 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>txt - 要发送的文本</li>
+<li>txt: String, 要发送的文本</li>
 </ul>
 <hr>
 <h3 id="quit">quit</h3>
@@ -247,11 +247,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>expected - 制定比较的目标对象</li>
+<li>expected: object, 制定比较的目标对象</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回对象比较的结果</li>
+<li>Boolean, 返回对象比较的结果</li>
 </ul>
 <hr>
 <h3 id="tostring">toString</h3>
@@ -260,7 +260,7 @@
 </code></pre>
 <p>返回结果:</p>
 <ul>
-<li>返回对象的字符串表示</li>
+<li>String, 返回对象的字符串表示</li>
 </ul>
 <hr>
 <h3 id="tojson">toJSON</h3>
@@ -269,11 +269,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>key - 未使用</li>
+<li>key: String, 未使用</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回包含可 JSON 序列化的值</li>
+<li>Value, 返回包含可 JSON 序列化的值</li>
 </ul>
 <hr>
 <h3 id="valueof">valueOf</h3>
@@ -282,16 +282,16 @@
 </code></pre>
 <p>返回结果:</p>
 <ul>
-<li>返回对象本身的数值</li>
+<li>Value, 返回对象本身的数值</li>
 </ul>
 <h2 id="-">成员属性</h2>
 <h3 id="timeout">timeout</h3>
-<p>查询和设置超时时间 单位毫秒</p>
+<p>Integer, 查询和设置超时时间 单位毫秒</p>
 <pre><code class="lang-JavaScript">Integer Smtp.timeout;
 </code></pre>
 <hr>
 <h3 id="socket">socket</h3>
-<p>查询 Smtp 对象当前连接的 <a href=socket.md.html>Socket</a></p>
+<p><a href=stream.md.html>Stream</a>, 查询 Smtp 对象当前连接的 <a href=socket.md.html>Socket</a></p>
 <pre><code class="lang-JavaScript">readonly Stream Smtp.socket;
 </code></pre>
  </div><div class="hidden-sm hidden-xs col-xs-3"><div id=toc></div></div></div><div class=container><div class=footer><p>&copy; 2017 fibjs.org</p></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="Click to return on the top page" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=../../../../js/common.js></script><script type=text/javascript src=../../../../js/docs.js></script></body></html>

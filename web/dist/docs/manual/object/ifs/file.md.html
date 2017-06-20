@@ -155,7 +155,7 @@
  </div></div></div>  </div></div><div class="content col-xs-12 col-sm-9 col-md-6"> <h1 id="-file">对象 File</h1>
 <p>文件操作对象，用于二进制文件读写</p>
 <p>文件操作对象用于对二进制文件进行操作，可使用 <a href=../../module/ifs/fs.md.html>fs</a> 模块打开和创建文件：</p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">var</span> f = fs.open(<span class="hljs-string">'test.txt'</span>);
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">var</span> f = fs.openFile(<span class="hljs-string">'test.txt'</span>);
 </code></pre>
 <h2 id="-">成员函数</h2>
 <h3 id="chmod">chmod</h3>
@@ -164,7 +164,7 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>mode - 指定设定的访问权限</li>
+<li>mode: Integer, 指定设定的访问权限</li>
 </ul>
 <hr>
 <h3 id="seek">seek</h3>
@@ -174,8 +174,8 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>offset - 指定新的位置</li>
-<li>whence - 指定位置基准，允许的值为：SEEK_SET, SEEK_CUR, SEEK_END</li>
+<li>offset: Long, 指定新的位置</li>
+<li>whence: Integer, 指定位置基准，允许的值为：SEEK_SET, SEEK_CUR, SEEK_END</li>
 </ul>
 <hr>
 <h3 id="tell">tell</h3>
@@ -184,7 +184,7 @@
 </code></pre>
 <p>返回结果:</p>
 <ul>
-<li>返回流当前位置</li>
+<li>Long, 返回流当前位置</li>
 </ul>
 <hr>
 <h3 id="rewind">rewind</h3>
@@ -198,7 +198,7 @@
 </code></pre>
 <p>返回结果:</p>
 <ul>
-<li>返回流尺寸</li>
+<li>Long, 返回流尺寸</li>
 </ul>
 <hr>
 <h3 id="readall">readAll</h3>
@@ -207,7 +207,7 @@
 </code></pre>
 <p>返回结果:</p>
 <ul>
-<li>返回从流内读取的数据，若无数据可读，或者连接中断，则返回 null</li>
+<li><a href=buffer.md.html>Buffer</a>, 返回从流内读取的数据，若无数据可读，或者连接中断，则返回 null</li>
 </ul>
 <hr>
 <h3 id="truncate">truncate</h3>
@@ -216,7 +216,7 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>bytes - 新的文件尺寸</li>
+<li>bytes: Long, 新的文件尺寸</li>
 </ul>
 <hr>
 <h3 id="eof">eof</h3>
@@ -225,7 +225,7 @@
 </code></pre>
 <p>返回结果:</p>
 <ul>
-<li>返回 True 表示结尾</li>
+<li>Boolean, 返回 True 表示结尾</li>
 </ul>
 <hr>
 <h3 id="flush">flush</h3>
@@ -239,7 +239,7 @@
 </code></pre>
 <p>返回结果:</p>
 <ul>
-<li>返回 Stat 对象描述文件信息</li>
+<li><a href=stat.md.html>Stat</a>, 返回 <a href=stat.md.html>Stat</a> 对象描述文件信息</li>
 </ul>
 <hr>
 <h3 id="read">read</h3>
@@ -248,11 +248,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>bytes - 指定要读取的数据量，缺省为读取随机大小的数据块，读出的数据尺寸取决于设备</li>
+<li>bytes: Integer, 指定要读取的数据量，缺省为读取随机大小的数据块，读出的数据尺寸取决于设备</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回从流内读取的数据，若无数据可读，或者连接中断，则返回 null</li>
+<li><a href=buffer.md.html>Buffer</a>, 返回从流内读取的数据，若无数据可读，或者连接中断，则返回 null</li>
 </ul>
 <hr>
 <h3 id="write">write</h3>
@@ -261,7 +261,7 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>data - 给定要写入的数据</li>
+<li>data: <a href=buffer.md.html>Buffer</a>, 给定要写入的数据</li>
 </ul>
 <hr>
 <h3 id="close">close</h3>
@@ -276,12 +276,12 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>stm - 目标流对象</li>
-<li>bytes - 复制的字节数</li>
+<li>stm: Stream, 目标流对象</li>
+<li>bytes: Long, 复制的字节数</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回复制的字节数</li>
+<li>Long, 返回复制的字节数</li>
 </ul>
 <hr>
 <h3 id="dispose">dispose</h3>
@@ -295,11 +295,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>expected - 制定比较的目标对象</li>
+<li>expected: object, 制定比较的目标对象</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回对象比较的结果</li>
+<li>Boolean, 返回对象比较的结果</li>
 </ul>
 <hr>
 <h3 id="tostring">toString</h3>
@@ -308,7 +308,7 @@
 </code></pre>
 <p>返回结果:</p>
 <ul>
-<li>返回对象的字符串表示</li>
+<li>String, 返回对象的字符串表示</li>
 </ul>
 <hr>
 <h3 id="tojson">toJSON</h3>
@@ -317,11 +317,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>key - 未使用</li>
+<li>key: String, 未使用</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回包含可 JSON 序列化的值</li>
+<li>Value, 返回包含可 JSON 序列化的值</li>
 </ul>
 <hr>
 <h3 id="valueof">valueOf</h3>
@@ -330,16 +330,16 @@
 </code></pre>
 <p>返回结果:</p>
 <ul>
-<li>返回对象本身的数值</li>
+<li>Value, 返回对象本身的数值</li>
 </ul>
 <h2 id="-">成员属性</h2>
 <h3 id="name">name</h3>
-<p>查询当前文件名</p>
+<p>String, 查询当前文件名</p>
 <pre><code class="lang-JavaScript">readonly <span class="hljs-built_in">String</span> File.name;
 </code></pre>
 <hr>
 <h3 id="fd">fd</h3>
-<p>查询当前文件描述符</p>
+<p>Integer, 查询当前文件描述符</p>
 <pre><code class="lang-JavaScript">readonly Integer File.fd;
 </code></pre>
  </div><div class="hidden-sm hidden-xs col-xs-3"><div id=toc></div></div></div><div class=container><div class=footer><p>&copy; 2017 fibjs.org</p></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="Click to return on the top page" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=../../../../js/common.js></script><script type=text/javascript src=../../../../js/docs.js></script></body></html>

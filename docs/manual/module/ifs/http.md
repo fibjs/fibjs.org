@@ -61,11 +61,11 @@ static Handler http.fileHandler(String root,
 ```
 
 调用参数:
-* root - 文件根路径
-* mimes - 扩展 mime 设置
+* root: String, 文件根路径
+* mimes: Object, 扩展 mime 设置
 
 返回结果:
-* 返回一个静态文件处理器用于处理 http 消息
+* [Handler](../../object/ifs/Handler.md), 返回一个静态文件处理器用于处理 http 消息
 
 fileHandler 支持 gzip 预压缩，当请求接受 gzip 编码，且相同路径下 filename.ext.gz 文件存在时，将直接返回此文件，
 从而避免重复压缩带来服务器负载。
@@ -79,11 +79,11 @@ static HttpResponse http.request(Stream conn,
 ```
 
 调用参数:
-* conn - 指定处理请求的流对象
-* req - 要发送的 HttpRequest 对象
+* conn: [Stream](../../object/ifs/Stream.md), 指定处理请求的流对象
+* req: [HttpRequest](../../object/ifs/HttpRequest.md), 要发送的 [HttpRequest](../../object/ifs/HttpRequest.md) 对象
 
 返回结果:
-* 返回服务器响应
+* [HttpResponse](../../object/ifs/HttpResponse.md), 返回服务器响应
 
 --------------------------
 请求指定的 [url](url.md)，并返回结果
@@ -94,12 +94,12 @@ static HttpResponse http.request(String method,
 ```
 
 调用参数:
-* method - 指定 http 请求方法：GET, POST 等
-* url - 指定 url，必须是包含主机的完整 url
-* headers - 指定附加的 http 头，缺省无附加头
+* method: String, 指定 http 请求方法：GET, POST 等
+* url: String, 指定 [url](url.md)，必须是包含主机的完整 [url](url.md)
+* headers: Object, 指定附加的 http 头，缺省无附加头
 
 返回结果:
-* 返回服务器响应
+* [HttpResponse](../../object/ifs/HttpResponse.md), 返回服务器响应
 
 --------------------------
 请求指定的 [url](url.md)，并返回结果
@@ -111,13 +111,13 @@ static HttpResponse http.request(String method,
 ```
 
 调用参数:
-* method - 指定 http 请求方法：GET, POST 等
-* url - 指定 url，必须是包含主机的完整 url
-* body - 指定发送的 body 内容
-* headers - 指定附加的 http 头
+* method: String, 指定 http 请求方法：GET, POST 等
+* url: String, 指定 [url](url.md)，必须是包含主机的完整 [url](url.md)
+* body: [SeekableStream](../../object/ifs/SeekableStream.md), 指定发送的 body 内容
+* headers: [Map](../../object/ifs/Map.md), 指定附加的 http 头
 
 返回结果:
-* 返回服务器响应
+* [HttpResponse](../../object/ifs/HttpResponse.md), 返回服务器响应
 
 --------------------------
 请求指定的 [url](url.md)，并返回结果
@@ -129,13 +129,13 @@ static HttpResponse http.request(String method,
 ```
 
 调用参数:
-* method - 指定 http 请求方法：GET, POST 等
-* url - 指定 url，必须是包含主机的完整 url
-* body - 指定发送的 body 内容
-* headers - 指定附加的 http 头，缺省无附加头
+* method: String, 指定 http 请求方法：GET, POST 等
+* url: String, 指定 [url](url.md)，必须是包含主机的完整 [url](url.md)
+* body: [SeekableStream](../../object/ifs/SeekableStream.md), 指定发送的 body 内容
+* headers: Object, 指定附加的 http 头，缺省无附加头
 
 返回结果:
-* 返回服务器响应
+* [HttpResponse](../../object/ifs/HttpResponse.md), 返回服务器响应
 
 --------------------------
 请求指定的 [url](url.md)，并返回结果
@@ -147,13 +147,13 @@ static HttpResponse http.request(String method,
 ```
 
 调用参数:
-* method - 指定 http 请求方法：GET, POST 等
-* url - 指定 url，必须是包含主机的完整 url
-* body - 指定发送的 body 内容
-* headers - 指定附加的 http 头，缺省无附加头
+* method: String, 指定 http 请求方法：GET, POST 等
+* url: String, 指定 [url](url.md)，必须是包含主机的完整 [url](url.md)
+* body: [Buffer](../../object/ifs/Buffer.md), 指定发送的 body 内容
+* headers: Object, 指定附加的 http 头，缺省无附加头
 
 返回结果:
-* 返回服务器响应
+* [HttpResponse](../../object/ifs/HttpResponse.md), 返回服务器响应
 
 --------------------------
 ### get
@@ -164,11 +164,11 @@ static HttpResponse http.get(String url,
 ```
 
 调用参数:
-* url - 指定 url，必须是包含主机的完整 url
-* headers - 指定附加的 http 头，缺省无附加头
+* url: String, 指定 [url](url.md)，必须是包含主机的完整 [url](url.md)
+* headers: Object, 指定附加的 http 头，缺省无附加头
 
 返回结果:
-* 返回服务器响应
+* [HttpResponse](../../object/ifs/HttpResponse.md), 返回服务器响应
 
 --------------------------
 ### post
@@ -180,12 +180,12 @@ static HttpResponse http.post(String url,
 ```
 
 调用参数:
-* url - 指定 url，必须是包含主机的完整 url
-* body - 指定发送的 body 内容
-* headers - 指定附加的 http 头，缺省无附加头
+* url: String, 指定 [url](url.md)，必须是包含主机的完整 [url](url.md)
+* body: [SeekableStream](../../object/ifs/SeekableStream.md), 指定发送的 body 内容
+* headers: Object, 指定附加的 http 头，缺省无附加头
 
 返回结果:
-* 返回服务器响应
+* [HttpResponse](../../object/ifs/HttpResponse.md), 返回服务器响应
 
 --------------------------
 用 POST 方法请求指定的 [url](url.md)，并返回结果，等同于 request("POST", ...)
@@ -196,12 +196,12 @@ static HttpResponse http.post(String url,
 ```
 
 调用参数:
-* url - 指定 url，必须是包含主机的完整 url
-* body - 指定发送的 body 内容
-* headers - 指定附加的 http 头，缺省无附加头
+* url: String, 指定 [url](url.md)，必须是包含主机的完整 [url](url.md)
+* body: [Buffer](../../object/ifs/Buffer.md), 指定发送的 body 内容
+* headers: Object, 指定附加的 http 头，缺省无附加头
 
 返回结果:
-* 返回服务器响应
+* [HttpResponse](../../object/ifs/HttpResponse.md), 返回服务器响应
 
 --------------------------
 用 POST 方法请求指定的 [url](url.md)，并返回结果，等同于 request("POST", ...)
@@ -211,11 +211,11 @@ static HttpResponse http.post(String url,
 ```
 
 调用参数:
-* url - 指定 url，必须是包含主机的完整 url
-* headers - 指定附加的 http 头，缺省无附加头
+* url: String, 指定 [url](url.md)，必须是包含主机的完整 [url](url.md)
+* headers: Object, 指定附加的 http 头，缺省无附加头
 
 返回结果:
-* 返回服务器响应
+* [HttpResponse](../../object/ifs/HttpResponse.md), 返回服务器响应
 
 --------------------------
 ### del
@@ -226,11 +226,11 @@ static HttpResponse http.del(String url,
 ```
 
 调用参数:
-* url - 指定 url，必须是包含主机的完整 url
-* headers - 指定附加的 http 头，缺省无附加头
+* url: String, 指定 [url](url.md)，必须是包含主机的完整 [url](url.md)
+* headers: Object, 指定附加的 http 头，缺省无附加头
 
 返回结果:
-* 返回服务器响应
+* [HttpResponse](../../object/ifs/HttpResponse.md), 返回服务器响应
 
 --------------------------
 ### put
@@ -242,12 +242,12 @@ static HttpResponse http.put(String url,
 ```
 
 调用参数:
-* url - 指定 url，必须是包含主机的完整 url
-* body - 指定发送的 body 内容
-* headers - 指定附加的 http 头，缺省无附加头
+* url: String, 指定 [url](url.md)，必须是包含主机的完整 [url](url.md)
+* body: [SeekableStream](../../object/ifs/SeekableStream.md), 指定发送的 body 内容
+* headers: Object, 指定附加的 http 头，缺省无附加头
 
 返回结果:
-* 返回服务器响应
+* [HttpResponse](../../object/ifs/HttpResponse.md), 返回服务器响应
 
 --------------------------
 用 PUT 方法请求指定的 [url](url.md)，并返回结果，等同于 request("PUT", ...)
@@ -258,12 +258,12 @@ static HttpResponse http.put(String url,
 ```
 
 调用参数:
-* url - 指定 url，必须是包含主机的完整 url
-* body - 指定发送的 body 内容
-* headers - 指定附加的 http 头，缺省无附加头
+* url: String, 指定 [url](url.md)，必须是包含主机的完整 [url](url.md)
+* body: [Buffer](../../object/ifs/Buffer.md), 指定发送的 body 内容
+* headers: Object, 指定附加的 http 头，缺省无附加头
 
 返回结果:
-* 返回服务器响应
+* [HttpResponse](../../object/ifs/HttpResponse.md), 返回服务器响应
 
 --------------------------
 用 PUT 方法请求指定的 [url](url.md)，并返回结果，等同于 request("PUT", ...)
@@ -273,11 +273,11 @@ static HttpResponse http.put(String url,
 ```
 
 调用参数:
-* url - 指定 url，必须是包含主机的完整 url
-* headers - 指定附加的 http 头，缺省无附加头
+* url: String, 指定 [url](url.md)，必须是包含主机的完整 [url](url.md)
+* headers: Object, 指定附加的 http 头，缺省无附加头
 
 返回结果:
-* 返回服务器响应
+* [HttpResponse](../../object/ifs/HttpResponse.md), 返回服务器响应
 
 --------------------------
 ### patch
@@ -289,12 +289,12 @@ static HttpResponse http.patch(String url,
 ```
 
 调用参数:
-* url - 指定 url，必须是包含主机的完整 url
-* body - 指定发送的 body 内容
-* headers - 指定附加的 http 头，缺省无附加头
+* url: String, 指定 [url](url.md)，必须是包含主机的完整 [url](url.md)
+* body: [SeekableStream](../../object/ifs/SeekableStream.md), 指定发送的 body 内容
+* headers: Object, 指定附加的 http 头，缺省无附加头
 
 返回结果:
-* 返回服务器响应
+* [HttpResponse](../../object/ifs/HttpResponse.md), 返回服务器响应
 
 --------------------------
 用 PATCH 方法请求指定的 [url](url.md)，并返回结果，等同于 request("PATCH", ...)
@@ -305,12 +305,12 @@ static HttpResponse http.patch(String url,
 ```
 
 调用参数:
-* url - 指定 url，必须是包含主机的完整 url
-* body - 指定发送的 body 内容
-* headers - 指定附加的 http 头，缺省无附加头
+* url: String, 指定 [url](url.md)，必须是包含主机的完整 [url](url.md)
+* body: [Buffer](../../object/ifs/Buffer.md), 指定发送的 body 内容
+* headers: Object, 指定附加的 http 头，缺省无附加头
 
 返回结果:
-* 返回服务器响应
+* [HttpResponse](../../object/ifs/HttpResponse.md), 返回服务器响应
 
 --------------------------
 用 PATCH 方法请求指定的 [url](url.md)，并返回结果，等同于 request("PATCH", ...)
@@ -320,44 +320,44 @@ static HttpResponse http.patch(String url,
 ```
 
 调用参数:
-* url - 指定 url，必须是包含主机的完整 url
-* headers - 指定附加的 http 头，缺省无附加头
+* url: String, 指定 [url](url.md)，必须是包含主机的完整 [url](url.md)
+* headers: Object, 指定附加的 http 头，缺省无附加头
 
 返回结果:
-* 返回服务器响应
+* [HttpResponse](../../object/ifs/HttpResponse.md), 返回服务器响应
 
 ## 静态属性
         
 ### cookies
-返回http客户端的 [HttpCookie](../../object/ifs/HttpCookie.md) 对象列表
+[List](../../object/ifs/List.md), 返回http客户端的 [HttpCookie](../../object/ifs/HttpCookie.md) 对象列表
 ```JavaScript
 static readonly List http.cookies;
 ```
 
 --------------------------
 ### timeout
-查询和设置超时时间
+Integer, 查询和设置超时时间
 ```JavaScript
 static Integer http.timeout;
 ```
 
 --------------------------
 ### enableCookie
-cookie功能开关，默认开启
+Boolean, cookie功能开关，默认开启
 ```JavaScript
 static Boolean http.enableCookie;
 ```
 
 --------------------------
 ### autoRedirect
-自动redirect功能开关，默认开启
+Boolean, 自动redirect功能开关，默认开启
 ```JavaScript
 static Boolean http.autoRedirect;
 ```
 
 --------------------------
 ### userAgent
-查询和设置 http 请求中的浏览器标识
+String, 查询和设置 http 请求中的浏览器标识
 ```JavaScript
 static String http.userAgent;
 ```

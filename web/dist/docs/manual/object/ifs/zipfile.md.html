@@ -171,7 +171,7 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>member - 指定要获取信息的文件名</li>
+<li>member: String, 指定要获取信息的文件名</li>
 </ul>
 <hr>
 <h3 id="read">read</h3>
@@ -181,12 +181,12 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>member - 指定要读取的文件名</li>
-<li>password - 解压密码, 默认没有密码</li>
+<li>member: String, 指定要读取的文件名</li>
+<li>password: String, 解压密码, 默认没有密码</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回文件的所有数据</li>
+<li><a href=buffer.md.html>Buffer</a>, 返回文件的所有数据</li>
 </ul>
 <hr>
 <h3 id="readall">readAll</h3>
@@ -195,11 +195,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>password - 解压密码, 默认没有密码</li>
+<li>password: String, 解压密码, 默认没有密码</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>包含所有文件数据及信息的列表</li>
+<li><a href=list.md.html>List</a>, 包含所有文件数据及信息的列表</li>
 </ul>
 <hr>
 <h3 id="extract">extract</h3>
@@ -210,9 +210,9 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>member - 指定要解压的文件名</li>
-<li>path - 指定要解压到的路径</li>
-<li>password - 解压密码, 默认没有密码</li>
+<li>member: String, 指定要解压的文件名</li>
+<li>path: String, 指定要解压到的路径</li>
+<li>password: String, 解压密码, 默认没有密码</li>
 </ul>
 <hr>
 <p>解压指定文件到流</p>
@@ -222,9 +222,9 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>member - 指定要解压的文件名</li>
-<li>strm - 指定要解压到的流</li>
-<li>password - 解压密码, 默认没有密码</li>
+<li>member: String, 指定要解压的文件名</li>
+<li>strm: <a href=seekablestream.md.html>SeekableStream</a>, 指定要解压到的流</li>
+<li>password: String, 解压密码, 默认没有密码</li>
 </ul>
 <hr>
 <h3 id="extractall">extractAll</h3>
@@ -234,8 +234,8 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>path - 指定要解压到的路径</li>
-<li>password - 解压密码, 默认没有密码</li>
+<li>path: String, 指定要解压到的路径</li>
+<li>password: String, 解压密码, 默认没有密码</li>
 </ul>
 <hr>
 <h3 id="write">write</h3>
@@ -246,9 +246,9 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>filename - 指定要写入的文件</li>
-<li>inZipName - 压缩在zip文件内的文件名</li>
-<li>password - 解压密码, 默认没有密码</li>
+<li>filename: String, 指定要写入的文件</li>
+<li>inZipName: String, 压缩在<a href=../../module/ifs/zip.md.html>zip</a>文件内的文件名</li>
+<li>password: String, 解压密码, 默认没有密码</li>
 </ul>
 <hr>
 <p>写入指定文件到压缩文件</p>
@@ -258,9 +258,9 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>data - 指定要写入的文件数据</li>
-<li>inZipName - 压缩在zip文件内的文件名</li>
-<li>password - 解压密码, 默认没有密码</li>
+<li>data: <a href=buffer.md.html>Buffer</a>, 指定要写入的文件数据</li>
+<li>inZipName: String, 压缩在<a href=../../module/ifs/zip.md.html>zip</a>文件内的文件名</li>
+<li>password: String, 解压密码, 默认没有密码</li>
 </ul>
 <hr>
 <p>写入指定文件到压缩文件</p>
@@ -270,9 +270,9 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>strm - 指定要写入文件数据流</li>
-<li>inZipName - 压缩在zip文件内的文件名</li>
-<li>password - 解压密码, 默认没有密码</li>
+<li>strm: <a href=seekablestream.md.html>SeekableStream</a>, 指定要写入文件数据流</li>
+<li>inZipName: String, 压缩在<a href=../../module/ifs/zip.md.html>zip</a>文件内的文件名</li>
+<li>password: String, 解压密码, 默认没有密码</li>
 </ul>
 <hr>
 <h3 id="close">close</h3>
@@ -291,11 +291,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>expected - 制定比较的目标对象</li>
+<li>expected: object, 制定比较的目标对象</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回对象比较的结果</li>
+<li>Boolean, 返回对象比较的结果</li>
 </ul>
 <hr>
 <h3 id="tostring">toString</h3>
@@ -304,7 +304,7 @@
 </code></pre>
 <p>返回结果:</p>
 <ul>
-<li>返回对象的字符串表示</li>
+<li>String, 返回对象的字符串表示</li>
 </ul>
 <hr>
 <h3 id="tojson">toJSON</h3>
@@ -313,11 +313,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>key - 未使用</li>
+<li>key: String, 未使用</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回包含可 JSON 序列化的值</li>
+<li>Value, 返回包含可 JSON 序列化的值</li>
 </ul>
 <hr>
 <h3 id="valueof">valueOf</h3>
@@ -326,6 +326,6 @@
 </code></pre>
 <p>返回结果:</p>
 <ul>
-<li>返回对象本身的数值</li>
+<li>Value, 返回对象本身的数值</li>
 </ul>
  </div><div class="hidden-sm hidden-xs col-xs-3"><div id=toc></div></div></div><div class=container><div class=footer><p>&copy; 2017 fibjs.org</p></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="Click to return on the top page" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=../../../../js/common.js></script><script type=text/javascript src=../../../../js/docs.js></script></body></html>

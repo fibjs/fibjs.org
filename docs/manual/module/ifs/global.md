@@ -40,8 +40,8 @@ static global.run(String fname,
 ```
 
 调用参数:
-* fname - 指定要运行的脚本路径
-* argv - 指定要运行的参数，此参数可在脚本内使用 argv 获取
+* fname: String, 指定要运行的脚本路径
+* argv: Array, 指定要运行的参数，此参数可在脚本内使用 argv 获取
 
 --------------------------
 ### clearInterval
@@ -51,7 +51,7 @@ static global.clearInterval(Timer t);
 ```
 
 调用参数:
-* t - 指定要清除的定时器
+* t: [Timer](../../object/ifs/Timer.md), 指定要清除的定时器
 
 --------------------------
 ### clearTimeout
@@ -61,7 +61,7 @@ static global.clearTimeout(Timer t);
 ```
 
 调用参数:
-* t - 指定要清除的定时器
+* t: [Timer](../../object/ifs/Timer.md), 指定要清除的定时器
 
 --------------------------
 ### clearImmediate
@@ -71,7 +71,7 @@ static global.clearImmediate(Timer t);
 ```
 
 调用参数:
-* t - 指定要清除的定时器
+* t: [Timer](../../object/ifs/Timer.md), 指定要清除的定时器
 
 --------------------------
 ### setInterval
@@ -82,11 +82,11 @@ static Timer global.setInterval(Function callback,
 ```
 
 调用参数:
-* callback - 指定回调函数
-* timeout - 指定间隔的时间，以毫秒为单位
+* callback: Function, 指定回调函数
+* timeout: Integer, 指定间隔的时间，以毫秒为单位
 
 返回结果:
-* 返回定时器对象
+* [Timer](../../object/ifs/Timer.md), 返回定时器对象
 
 --------------------------
 ### setTimeout
@@ -97,11 +97,11 @@ static Timer global.setTimeout(Function callback,
 ```
 
 调用参数:
-* callback - 指定回调函数
-* timeout - 指定延时的时间，以毫秒为单位
+* callback: Function, 指定回调函数
+* timeout: Integer, 指定延时的时间，以毫秒为单位
 
 返回结果:
-* 返回定时器对象
+* [Timer](../../object/ifs/Timer.md), 返回定时器对象
 
 --------------------------
 ### setImmediate
@@ -111,10 +111,10 @@ static Timer global.setImmediate(Function callback);
 ```
 
 调用参数:
-* callback - 指定回调函数
+* callback: Function, 指定回调函数
 
 返回结果:
-* 返回定时器对象
+* [Timer](../../object/ifs/Timer.md), 返回定时器对象
 
 --------------------------
 ### require
@@ -124,10 +124,10 @@ static Value global.require(String id);
 ```
 
 调用参数:
-* id - 指定要加载的模块名称
+* id: String, 指定要加载的模块名称
 
 返回结果:
-* 返回加载模块的引出对象
+* Value, 返回加载模块的引出对象
 
 require 可用于加载基础模块，文件模块。
 
@@ -154,7 +154,7 @@ static global.repl(Array cmds = []);
 ```
 
 调用参数:
-* cmds - 补充命令
+* cmds: Array, 补充命令
 
 参数 cmd 格式如下：
 ```JavaScript
@@ -184,8 +184,8 @@ static global.repl(Stream out,
 ```
 
 调用参数:
-* out - 输入输出流对象，通常为网络连接
-* cmds - 补充命令
+* out: [Stream](../../object/ifs/Stream.md), 输入输出流对象，通常为网络连接
+* cmds: Array, 补充命令
 
 同一时刻只允许一个 [Stream](../../object/ifs/Stream.md) repl，新建一个 [Stream](../../object/ifs/Stream.md) repl 时，前一个 repl 将被关闭。
 
@@ -212,35 +212,35 @@ static global.repl(Stream out,
 ## 静态属性
         
 ### Master
-[Worker](../../object/ifs/Worker.md) 宿主对象，仅在 [Worker](../../object/ifs/Worker.md) 入口脚本有效
+[Worker](../../object/ifs/Worker.md), [Worker](../../object/ifs/Worker.md) 宿主对象，仅在 [Worker](../../object/ifs/Worker.md) 入口脚本有效
 ```JavaScript
 static readonly Worker global.Master;
 ```
 
 --------------------------
 ### global
-全局对象
+Object, 全局对象
 ```JavaScript
 static readonly Object  new global;
 ```
 
 --------------------------
 ### argv
-获取当前脚本的运行参数，启动 js 获取进程启动参数，run 执行的脚本获取传递的参数
+Array, 获取当前脚本的运行参数，启动 js 获取进程启动参数，run 执行的脚本获取传递的参数
 ```JavaScript
 static readonly Array global.argv;
 ```
 
 --------------------------
 ### __filename
-当前脚本文件名
+String, 当前脚本文件名
 ```JavaScript
 static readonly String global.__filename;
 ```
 
 --------------------------
 ### __dirname
-当前脚本所在目录
+String, 当前脚本所在目录
 ```JavaScript
 static readonly String global.__dirname;
 ```

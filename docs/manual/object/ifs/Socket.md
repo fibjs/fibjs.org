@@ -15,8 +15,8 @@ Socket 构造函数，创建一个新的 Socket 对象
 ```
 
 调用参数:
-* family - 指定地址集，缺省为 AF_INET，ipv4
-* type - 指定协议族，缺省为 SOCK_STREAM，tcp
+* family: Integer, 指定地址集，缺省为 AF_INET，ipv4
+* type: Integer, 指定协议族，缺省为 SOCK_STREAM，tcp
 
 ## 成员函数
         
@@ -28,8 +28,8 @@ Socket.connect(String host,
 ```
 
 调用参数:
-* host - 指定对方地址或主机名
-* port - 指定对方端口
+* host: String, 指定对方地址或主机名
+* port: Integer, 指定对方端口
 
 --------------------------
 ### bind
@@ -40,8 +40,8 @@ Socket.bind(Integer port,
 ```
 
 调用参数:
-* port - 指定绑定的端口
-* allowIPv4 - 指定是否接受 ipv4 连接，缺省为 true。本参数在 ipv6 时有效，并依赖于操作系统
+* port: Integer, 指定绑定的端口
+* allowIPv4: Boolean, 指定是否接受 ipv4 连接，缺省为 true。本参数在 ipv6 时有效，并依赖于操作系统
 
 --------------------------
 将当前 Socket 绑定至指定地址的指定端口
@@ -52,9 +52,9 @@ Socket.bind(String addr,
 ```
 
 调用参数:
-* addr - 指定绑定的地址
-* port - 指定绑定的端口
-* allowIPv4 - 指定是否接受 ipv4 连接，缺省为 true。本参数在 ipv6 时有效，并依赖于操作系统
+* addr: String, 指定绑定的地址
+* port: Integer, 指定绑定的端口
+* allowIPv4: Boolean, 指定是否接受 ipv4 连接，缺省为 true。本参数在 ipv6 时有效，并依赖于操作系统
 
 --------------------------
 ### listen
@@ -64,7 +64,7 @@ Socket.listen(Integer backlog = 120) async;
 ```
 
 调用参数:
-* backlog - 指定请求队列长度，超出的请求将被拒绝，缺省为 120
+* backlog: Integer, 指定请求队列长度，超出的请求将被拒绝，缺省为 120
 
 --------------------------
 ### accept
@@ -74,7 +74,7 @@ Socket Socket.accept() async;
 ```
 
 返回结果:
-* 返回接收到得连接对象
+* Socket, 返回接收到得连接对象
 
 --------------------------
 ### recv
@@ -84,10 +84,10 @@ Buffer Socket.recv(Integer bytes = -1) async;
 ```
 
 调用参数:
-* bytes - 指定要读取的数据量，缺省读取任意尺寸的数据
+* bytes: Integer, 指定要读取的数据量，缺省读取任意尺寸的数据
 
 返回结果:
-* 返回从连接读取的数据
+* [Buffer](Buffer.md), 返回从连接读取的数据
 
 --------------------------
 ### recvfrom
@@ -106,7 +106,7 @@ Socket.send(Buffer data) async;
 ```
 
 调用参数:
-* data - 给定要写入的数据
+* data: [Buffer](Buffer.md), 给定要写入的数据
 
 --------------------------
 ### sendto
@@ -127,10 +127,10 @@ Buffer Socket.read(Integer bytes = -1) async;
 ```
 
 调用参数:
-* bytes - 指定要读取的数据量，缺省为读取随机大小的数据块，读出的数据尺寸取决于设备
+* bytes: Integer, 指定要读取的数据量，缺省为读取随机大小的数据块，读出的数据尺寸取决于设备
 
 返回结果:
-* 返回从流内读取的数据，若无数据可读，或者连接中断，则返回 null
+* [Buffer](Buffer.md), 返回从流内读取的数据，若无数据可读，或者连接中断，则返回 null
 
 --------------------------
 ### write
@@ -140,7 +140,7 @@ Socket.write(Buffer data) async;
 ```
 
 调用参数:
-* data - 给定要写入的数据
+* data: [Buffer](Buffer.md), 给定要写入的数据
 
 --------------------------
 ### close
@@ -158,11 +158,11 @@ Long Socket.copyTo(Stream stm,
 ```
 
 调用参数:
-* stm - 目标流对象
-* bytes - 复制的字节数
+* stm: Stream, 目标流对象
+* bytes: Long, 复制的字节数
 
 返回结果:
-* 返回复制的字节数
+* Long, 返回复制的字节数
 
 --------------------------
 ### dispose
@@ -179,10 +179,10 @@ Boolean Socket.equals(object expected);
 ```
 
 调用参数:
-* expected - 制定比较的目标对象
+* expected: object, 制定比较的目标对象
 
 返回结果:
-* 返回对象比较的结果
+* Boolean, 返回对象比较的结果
 
 --------------------------
 ### toString
@@ -192,7 +192,7 @@ String Socket.toString();
 ```
 
 返回结果:
-* 返回对象的字符串表示
+* String, 返回对象的字符串表示
 
 --------------------------
 ### toJSON
@@ -202,10 +202,10 @@ Value Socket.toJSON(String key = "");
 ```
 
 调用参数:
-* key - 未使用
+* key: String, 未使用
 
 返回结果:
-* 返回包含可 JSON 序列化的值
+* Value, 返回包含可 JSON 序列化的值
 
 --------------------------
 ### valueOf
@@ -215,54 +215,54 @@ Value Socket.valueOf();
 ```
 
 返回结果:
-* 返回对象本身的数值
+* Value, 返回对象本身的数值
 
 ## 成员属性
         
 ### family
-查询当前 Socket 对象的地址集
+Integer, 查询当前 Socket 对象的地址集
 ```JavaScript
 readonly Integer Socket.family;
 ```
 
 --------------------------
 ### type
-查询当前 Socket 对象的协议族
+Integer, 查询当前 Socket 对象的协议族
 ```JavaScript
 readonly Integer Socket.type;
 ```
 
 --------------------------
 ### remoteAddress
-查询当前连接的对方地址
+String, 查询当前连接的对方地址
 ```JavaScript
 readonly String Socket.remoteAddress;
 ```
 
 --------------------------
 ### remotePort
-查询当前连接的对方端口
+Integer, 查询当前连接的对方端口
 ```JavaScript
 readonly Integer Socket.remotePort;
 ```
 
 --------------------------
 ### localAddress
-查询当前连接的本地地址
+String, 查询当前连接的本地地址
 ```JavaScript
 readonly String Socket.localAddress;
 ```
 
 --------------------------
 ### localPort
-查询当前连接的本地端口
+Integer, 查询当前连接的本地端口
 ```JavaScript
 readonly Integer Socket.localPort;
 ```
 
 --------------------------
 ### timeout
-查询和设置超时时间 单位毫秒
+Integer, 查询和设置超时时间 单位毫秒
 ```JavaScript
 Integer Socket.timeout;
 ```

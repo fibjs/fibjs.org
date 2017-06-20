@@ -182,8 +182,8 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>fname - 指定要运行的脚本路径</li>
-<li>argv - 指定要运行的参数，此参数可在脚本内使用 argv 获取</li>
+<li>fname: String, 指定要运行的脚本路径</li>
+<li>argv: Array, 指定要运行的参数，此参数可在脚本内使用 argv 获取</li>
 </ul>
 <hr>
 <h3 id="clearinterval">clearInterval</h3>
@@ -192,7 +192,7 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>t - 指定要清除的定时器</li>
+<li>t: <a href=../../object/ifs/timer.md.html>Timer</a>, 指定要清除的定时器</li>
 </ul>
 <hr>
 <h3 id="cleartimeout">clearTimeout</h3>
@@ -201,7 +201,7 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>t - 指定要清除的定时器</li>
+<li>t: <a href=../../object/ifs/timer.md.html>Timer</a>, 指定要清除的定时器</li>
 </ul>
 <hr>
 <h3 id="clearimmediate">clearImmediate</h3>
@@ -210,7 +210,7 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>t - 指定要清除的定时器</li>
+<li>t: <a href=../../object/ifs/timer.md.html>Timer</a>, 指定要清除的定时器</li>
 </ul>
 <hr>
 <h3 id="setinterval">setInterval</h3>
@@ -220,12 +220,12 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>callback - 指定回调函数</li>
-<li>timeout - 指定间隔的时间，以毫秒为单位</li>
+<li>callback: Function, 指定回调函数</li>
+<li>timeout: Integer, 指定间隔的时间，以毫秒为单位</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回定时器对象</li>
+<li><a href=../../object/ifs/timer.md.html>Timer</a>, 返回定时器对象</li>
 </ul>
 <hr>
 <h3 id="settimeout">setTimeout</h3>
@@ -235,12 +235,12 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>callback - 指定回调函数</li>
-<li>timeout - 指定延时的时间，以毫秒为单位</li>
+<li>callback: Function, 指定回调函数</li>
+<li>timeout: Integer, 指定延时的时间，以毫秒为单位</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回定时器对象</li>
+<li><a href=../../object/ifs/timer.md.html>Timer</a>, 返回定时器对象</li>
 </ul>
 <hr>
 <h3 id="setimmediate">setImmediate</h3>
@@ -249,11 +249,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>callback - 指定回调函数</li>
+<li>callback: Function, 指定回调函数</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回定时器对象</li>
+<li><a href=../../object/ifs/timer.md.html>Timer</a>, 返回定时器对象</li>
 </ul>
 <hr>
 <h3 id="require">require</h3>
@@ -262,11 +262,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>id - 指定要加载的模块名称</li>
+<li>id: String, 指定要加载的模块名称</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回加载模块的引出对象</li>
+<li>Value, 返回加载模块的引出对象</li>
 </ul>
 <p>require 可用于加载基础模块，文件模块。</p>
 <p>基础模块是沙箱创建时初始化的模块，引用时只需传递相应的 id，比如 require(&quot;<a href=net.md.html>net</a>&quot;)。</p>
@@ -285,7 +285,7 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>cmds - 补充命令</li>
+<li>cmds: Array, 补充命令</li>
 </ul>
 <p>参数 cmd 格式如下：</p>
 <pre><code class="lang-JavaScript">[
@@ -312,8 +312,8 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>out - 输入输出流对象，通常为网络连接</li>
-<li>cmds - 补充命令</li>
+<li>out: <a href=../../object/ifs/stream.md.html>Stream</a>, 输入输出流对象，通常为网络连接</li>
+<li>cmds: Array, 补充命令</li>
 </ul>
 <p>同一时刻只允许一个 <a href=../../object/ifs/stream.md.html>Stream</a> repl，新建一个 <a href=../../object/ifs/stream.md.html>Stream</a> repl 时，前一个 repl 将被关闭。</p>
 <p>参数 cmd 格式如下：</p>
@@ -336,27 +336,27 @@
 </code></pre>
 <h2 id="-">静态属性</h2>
 <h3 id="master">Master</h3>
-<p><a href=../../object/ifs/worker.md.html>Worker</a> 宿主对象，仅在 <a href=../../object/ifs/worker.md.html>Worker</a> 入口脚本有效</p>
+<p><a href=../../object/ifs/worker.md.html>Worker</a>, <a href=../../object/ifs/worker.md.html>Worker</a> 宿主对象，仅在 <a href=../../object/ifs/worker.md.html>Worker</a> 入口脚本有效</p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> readonly Worker global.Master;
 </code></pre>
 <hr>
 <h3 id="global">global</h3>
-<p>全局对象</p>
+<p>Object, 全局对象</p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> readonly <span class="hljs-built_in">Object</span>  <span class="hljs-keyword">new</span> global;
 </code></pre>
 <hr>
 <h3 id="argv">argv</h3>
-<p>获取当前脚本的运行参数，启动 js 获取进程启动参数，run 执行的脚本获取传递的参数</p>
+<p>Array, 获取当前脚本的运行参数，启动 js 获取进程启动参数，run 执行的脚本获取传递的参数</p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> readonly <span class="hljs-built_in">Array</span> global.argv;
 </code></pre>
 <hr>
 <h3 id="__filename">__filename</h3>
-<p>当前脚本文件名</p>
+<p>String, 当前脚本文件名</p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> readonly <span class="hljs-built_in">String</span> global.__filename;
 </code></pre>
 <hr>
 <h3 id="__dirname">__dirname</h3>
-<p>当前脚本所在目录</p>
+<p>String, 当前脚本所在目录</p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> readonly <span class="hljs-built_in">String</span> global.__dirname;
 </code></pre>
  </div><div class="hidden-sm hidden-xs col-xs-3"><div id=toc></div></div></div><div class=container><div class=footer><p>&copy; 2017 fibjs.org</p></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="Click to return on the top page" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=../../../../js/common.js></script><script type=text/javascript src=../../../../js/docs.js></script></body></html>

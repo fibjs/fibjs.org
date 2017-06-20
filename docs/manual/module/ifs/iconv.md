@@ -20,11 +20,11 @@ static Buffer iconv.encode(String charset,
 ```
 
 调用参数:
-* charset - 指定字符集
-* data - 要转换的文本
+* charset: String, 指定字符集
+* data: String, 要转换的文本
 
 返回结果:
-* 返回解码的二进制数据
+* [Buffer](../../object/ifs/Buffer.md), 返回解码的二进制数据
 
 --------------------------
 ### decode
@@ -35,9 +35,9 @@ static String iconv.decode(String charset,
 ```
 
 调用参数:
-* charset - 指定字符集
-* data - 要转换的二进制数据
+* charset: String, 指定字符集
+* data: [Buffer](../../object/ifs/Buffer.md), 要转换的二进制数据
 
 返回结果:
-* 返回编码的字符串
+* String, 返回编码的字符串
 

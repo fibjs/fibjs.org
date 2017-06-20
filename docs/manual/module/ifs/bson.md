@@ -19,10 +19,10 @@ static Buffer bson.encode(Object data);
 ```
 
 调用参数:
-* data - 要编码的变量
+* data: Object, 要编码的变量
 
 返回结果:
-* 返回编码的二进制数据
+* [Buffer](../../object/ifs/Buffer.md), 返回编码的二进制数据
 
 --------------------------
 ### decode
@@ -32,8 +32,8 @@ static Object bson.decode(Buffer data);
 ```
 
 调用参数:
-* data - 要解码的二进制数据
+* data: [Buffer](../../object/ifs/Buffer.md), 要解码的二进制数据
 
 返回结果:
-* 返回解码的变量
+* Object, 返回解码的变量
 

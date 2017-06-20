@@ -18,7 +18,7 @@ HttpResponse.addCookie(HttpCookie cookie);
 ```
 
 调用参数:
-* cookie - 指定要添加的 HttpCookie 对象
+* cookie: [HttpCookie](HttpCookie.md), 指定要添加的 [HttpCookie](HttpCookie.md) 对象
 
 --------------------------
 ### redirect
@@ -28,7 +28,7 @@ HttpResponse.redirect(String url);
 ```
 
 调用参数:
-* url - 重定向的地址
+* url: String, 重定向的地址
 
 --------------------------
 ### sendHeader
@@ -38,7 +38,7 @@ HttpResponse.sendHeader(Stream stm) async;
 ```
 
 调用参数:
-* stm - 指定接收格式化消息的流对象
+* stm: [Stream](Stream.md), 指定接收格式化消息的流对象
 
 --------------------------
 ### hasHeader
@@ -48,10 +48,10 @@ Boolean HttpResponse.hasHeader(String name);
 ```
 
 调用参数:
-* name - 指定要检查的键值
+* name: String, 指定要检查的键值
 
 返回结果:
-* 返回键值是否存在
+* Boolean, 返回键值是否存在
 
 --------------------------
 ### firstHeader
@@ -61,10 +61,10 @@ Variant HttpResponse.firstHeader(String name);
 ```
 
 调用参数:
-* name - 指定要查询的键值
+* name: String, 指定要查询的键值
 
 返回结果:
-* 返回键值所对应的值，若不存在，则返回 undefined
+* Variant, 返回键值所对应的值，若不存在，则返回 undefined
 
 --------------------------
 ### allHeader
@@ -74,10 +74,10 @@ List HttpResponse.allHeader(String name);
 ```
 
 调用参数:
-* name - 指定要查询的键值
+* name: String, 指定要查询的键值
 
 返回结果:
-* 返回键值所对应全部值的数组，若数据不存在，则返回 null
+* [List](List.md), 返回键值所对应全部值的数组，若数据不存在，则返回 null
 
 --------------------------
 ### addHeader
@@ -87,7 +87,7 @@ HttpResponse.addHeader(Map map);
 ```
 
 调用参数:
-* map - 指定要添加的键值数据字典
+* map: [Map](Map.md), 指定要添加的键值数据字典
 
 --------------------------
 添加一个消息头，添加数据并不修改已存在的键值的消息头
@@ -97,8 +97,8 @@ HttpResponse.addHeader(String name,
 ```
 
 调用参数:
-* name - 指定要添加的键值
-* value - 指定要添加的数据
+* name: String, 指定要添加的键值
+* value: Variant, 指定要添加的数据
 
 --------------------------
 ### setHeader
@@ -108,7 +108,7 @@ HttpResponse.setHeader(Map map);
 ```
 
 调用参数:
-* map - 指定要设定的键值数据字典
+* map: [Map](Map.md), 指定要设定的键值数据字典
 
 --------------------------
 设定一个消息头，设定数据将修改键值所对应的第一个数值，并清除相同键值的其余消息头
@@ -118,8 +118,8 @@ HttpResponse.setHeader(String name,
 ```
 
 调用参数:
-* name - 指定要设定的键值
-* value - 指定要设定的数据
+* name: String, 指定要设定的键值
+* value: Variant, 指定要设定的数据
 
 --------------------------
 ### removeHeader
@@ -129,7 +129,7 @@ HttpResponse.removeHeader(String name);
 ```
 
 调用参数:
-* name - 指定要删除的键值
+* name: String, 指定要删除的键值
 
 --------------------------
 ### read
@@ -139,10 +139,10 @@ Buffer HttpResponse.read(Integer bytes = -1) async;
 ```
 
 调用参数:
-* bytes - 指定要读取的数据量，缺省为读取随机大小的数据块，读出的数据尺寸取决于设备
+* bytes: Integer, 指定要读取的数据量，缺省为读取随机大小的数据块，读出的数据尺寸取决于设备
 
 返回结果:
-* 返回从流内读取的数据，若无数据可读，或者连接中断，则返回 null
+* [Buffer](Buffer.md), 返回从流内读取的数据，若无数据可读，或者连接中断，则返回 null
 
 --------------------------
 ### readAll
@@ -152,7 +152,7 @@ Buffer HttpResponse.readAll() async;
 ```
 
 返回结果:
-* 返回从流内读取的数据，若无数据可读，或者连接中断，则返回 null
+* [Buffer](Buffer.md), 返回从流内读取的数据，若无数据可读，或者连接中断，则返回 null
 
 --------------------------
 ### write
@@ -162,7 +162,7 @@ HttpResponse.write(Buffer data) async;
 ```
 
 调用参数:
-* data - 给定要写入的数据
+* data: [Buffer](Buffer.md), 给定要写入的数据
 
 --------------------------
 ### end
@@ -179,7 +179,7 @@ Boolean HttpResponse.isEnded();
 ```
 
 返回结果:
-* 结束则返回 true
+* Boolean, 结束则返回 true
 
 --------------------------
 ### clear
@@ -196,7 +196,7 @@ HttpResponse.sendTo(Stream stm) async;
 ```
 
 调用参数:
-* stm - 指定接收格式化消息的流对象
+* stm: [Stream](Stream.md), 指定接收格式化消息的流对象
 
 --------------------------
 ### readFrom
@@ -206,7 +206,7 @@ HttpResponse.readFrom(Stream stm) async;
 ```
 
 调用参数:
-* stm - 指定读取格式化消息的流对象
+* stm: [Stream](Stream.md), 指定读取格式化消息的流对象
 
 --------------------------
 ### dispose
@@ -223,10 +223,10 @@ Boolean HttpResponse.equals(object expected);
 ```
 
 调用参数:
-* expected - 制定比较的目标对象
+* expected: object, 制定比较的目标对象
 
 返回结果:
-* 返回对象比较的结果
+* Boolean, 返回对象比较的结果
 
 --------------------------
 ### toString
@@ -236,7 +236,7 @@ String HttpResponse.toString();
 ```
 
 返回结果:
-* 返回对象的字符串表示
+* String, 返回对象的字符串表示
 
 --------------------------
 ### toJSON
@@ -246,10 +246,10 @@ Value HttpResponse.toJSON(String key = "");
 ```
 
 调用参数:
-* key - 未使用
+* key: String, 未使用
 
 返回结果:
-* 返回包含可 JSON 序列化的值
+* Value, 返回包含可 JSON 序列化的值
 
 --------------------------
 ### valueOf
@@ -259,131 +259,131 @@ Value HttpResponse.valueOf();
 ```
 
 返回结果:
-* 返回对象本身的数值
+* Value, 返回对象本身的数值
 
 ## 成员属性
         
 ### status
-查询和设置响应消息的返回状态
+Integer, 查询和设置响应消息的返回状态
 ```JavaScript
 Integer HttpResponse.status;
 ```
 
 --------------------------
 ### cookies
-返回当前消息的 [HttpCookie](HttpCookie.md) 对象列表
+[List](List.md), 返回当前消息的 [HttpCookie](HttpCookie.md) 对象列表
 ```JavaScript
 readonly List HttpResponse.cookies;
 ```
 
 --------------------------
 ### protocol
-协议版本信息，允许的格式为：HTTP/#.#
+String, 协议版本信息，允许的格式为：HTTP/#.#
 ```JavaScript
 String HttpResponse.protocol;
 ```
 
 --------------------------
 ### headers
-包含消息中 [http](../../module/ifs/http.md) 消息头的容器，只读属性
+[HttpCollection](HttpCollection.md), 包含消息中 [http](../../module/ifs/http.md) 消息头的容器，只读属性
 ```JavaScript
 readonly HttpCollection HttpResponse.headers;
 ```
 
 --------------------------
 ### keepAlive
-查询和设定是否保持连接
+Boolean, 查询和设定是否保持连接
 ```JavaScript
 Boolean HttpResponse.keepAlive;
 ```
 
 --------------------------
 ### upgrade
-查询和设定是否是升级协议
+Boolean, 查询和设定是否是升级协议
 ```JavaScript
 Boolean HttpResponse.upgrade;
 ```
 
 --------------------------
 ### maxHeadersCount
-查询和设置最大请求头个数，缺省为 128
+Integer, 查询和设置最大请求头个数，缺省为 128
 ```JavaScript
 Integer HttpResponse.maxHeadersCount;
 ```
 
 --------------------------
 ### maxUploadSize
-查询和设置最大上传尺寸，以字节为单位，缺省为 67108864(64M)
+Integer, 查询和设置最大上传尺寸，以字节为单位，缺省为 67108864(64M)
 ```JavaScript
 Integer HttpResponse.maxUploadSize;
 ```
 
 --------------------------
 ### socket
-查询当前对象的来源 socket
+[Stream](Stream.md), 查询当前对象的来源 socket
 ```JavaScript
 readonly Stream HttpResponse.socket;
 ```
 
 --------------------------
 ### value
-消息的基本内容
+String, 消息的基本内容
 ```JavaScript
 String HttpResponse.value;
 ```
 
 --------------------------
 ### params
-消息的基本参数
+[List](List.md), 消息的基本参数
 ```JavaScript
 List HttpResponse.params;
 ```
 
 --------------------------
 ### type
-消息类型
+Integer, 消息类型
 ```JavaScript
 Integer HttpResponse.type;
 ```
 
 --------------------------
 ### data
-查询消息的数据
+Value, 查询消息的数据
 ```JavaScript
 readonly Value HttpResponse.data;
 ```
 
 --------------------------
 ### body
-包含消息数据部分的流对象
+[SeekableStream](SeekableStream.md), 包含消息数据部分的流对象
 ```JavaScript
 SeekableStream HttpResponse.body;
 ```
 
 --------------------------
 ### length
-消息数据部分的长度
+Long, 消息数据部分的长度
 ```JavaScript
 readonly Long HttpResponse.length;
 ```
 
 --------------------------
 ### stream
-查询消息 readFrom 时的流对象
+[Stream](Stream.md), 查询消息 readFrom 时的流对象
 ```JavaScript
 readonly Stream HttpResponse.stream;
 ```
 
 --------------------------
 ### response
-获取响应消息对象
+Message, 获取响应消息对象
 ```JavaScript
 readonly Message HttpResponse.response;
 ```
 
 --------------------------
 ### lastError
-查询和设置消息处理的最后错误
+String, 查询和设置消息处理的最后错误
 ```JavaScript
 String HttpResponse.lastError;
 ```

@@ -43,7 +43,7 @@ static Object net.info();
 ```
 
 返回结果:
-* 返回网卡信息
+* Object, 返回网卡信息
 
 --------------------------
 ### resolve
@@ -54,11 +54,11 @@ static String net.resolve(String name,
 ```
 
 调用参数:
-* name - 指定主机名
-* family - 指定查询返回类型，缺省为 AF_INET
+* name: String, 指定主机名
+* family: Integer, 指定查询返回类型，缺省为 AF_INET
 
 返回结果:
-* 返回查询的 ip 字符串
+* String, 返回查询的 ip 字符串
 
 --------------------------
 ### ip
@@ -68,10 +68,10 @@ static String net.ip(String name) async;
 ```
 
 调用参数:
-* name - 指定主机名
+* name: String, 指定主机名
 
 返回结果:
-* 返回查询的 ip 字符串
+* String, 返回查询的 ip 字符串
 
 --------------------------
 ### ipv6
@@ -81,10 +81,10 @@ static String net.ipv6(String name) async;
 ```
 
 调用参数:
-* name - 指定主机名
+* name: String, 指定主机名
 
 返回结果:
-* 返回查询的 ipv6 字符串
+* String, 返回查询的 ipv6 字符串
 
 --------------------------
 ### connect
@@ -97,13 +97,13 @@ static Stream net.connect(String host,
 ```
 
 调用参数:
-* host - 指定对方地址或主机名
-* port - 指定对方端口
-* timeout - 指定超时时间，单位是毫秒，默认为0
-* family - 指定地址集，缺省为 AF_INET，ipv4
+* host: String, 指定对方地址或主机名
+* port: Integer, 指定对方端口
+* timeout: Integer, 指定超时时间，单位是毫秒，默认为0
+* family: Integer, 指定地址集，缺省为 AF_INET，ipv4
 
 返回结果:
-* 返回连接成功的 Socket 对象
+* [Stream](../../object/ifs/Stream.md), 返回连接成功的 [Socket](../../object/ifs/Socket.md) 对象
 
 --------------------------
 创建一个 [Socket](../../object/ifs/Socket.md) 或 [SslSocket](../../object/ifs/SslSocket.md) 对象并建立连接
@@ -113,11 +113,11 @@ static Stream net.connect(String url,
 ```
 
 调用参数:
-* url - 指定连接的协议，可以是：tcp://host:port 或者 ssl://host:port
-* timeout - 指定超时时间，单位是毫秒，默认为0
+* url: String, 指定连接的协议，可以是：tcp://host:port 或者 [ssl](ssl.md)://host:port
+* timeout: Integer, 指定超时时间，单位是毫秒，默认为0
 
 返回结果:
-* 返回连接成功的 Socket 或者 SslSocket 对象
+* [Stream](../../object/ifs/Stream.md), 返回连接成功的 [Socket](../../object/ifs/Socket.md) 或者 [SslSocket](../../object/ifs/SslSocket.md) 对象
 
 --------------------------
 ### openSmtp
@@ -128,11 +128,11 @@ static Smtp net.openSmtp(String url,
 ```
 
 调用参数:
-* url - 指定连接的协议，可以是：tcp://host:port 或者 ssl://host:port
-* timeout - 指定超时时间，单位是毫秒，默认为0
+* url: String, 指定连接的协议，可以是：tcp://host:port 或者 [ssl](ssl.md)://host:port
+* timeout: Integer, 指定超时时间，单位是毫秒，默认为0
 
 返回结果:
-* 返回连接成功的 Smtp 对象
+* [Smtp](../../object/ifs/Smtp.md), 返回连接成功的 [Smtp](../../object/ifs/Smtp.md) 对象
 
 --------------------------
 ### backend
@@ -142,7 +142,7 @@ static String net.backend();
 ```
 
 返回结果:
-* 返回网络引擎名称
+* String, 返回网络引擎名称
 
 ## 常量
         

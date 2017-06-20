@@ -15,7 +15,7 @@ var q = new collection.Queue(100);
 ```
 
 调用参数:
-* size - 指定队列尺寸
+* size: Integer, 指定队列尺寸
 
 ## 成员函数
         
@@ -26,10 +26,10 @@ Boolean Queue.add(Value e);
 ```
 
 调用参数:
-* e - 要插入的元素
+* e: Value, 要插入的元素
 
 返回结果:
-* 成功返回 True
+* Boolean, 成功返回 True
 
 --------------------------
 ### offer
@@ -39,10 +39,10 @@ Boolean Queue.offer(Value e);
 ```
 
 调用参数:
-* e - 要插入的元素
+* e: Value, 要插入的元素
 
 返回结果:
-* 成功返回 True
+* Boolean, 成功返回 True
 
 --------------------------
 ### remove
@@ -52,7 +52,7 @@ Value Queue.remove();
 ```
 
 返回结果:
-* 返回取出的元素
+* Value, 返回取出的元素
 
 --------------------------
 ### poll
@@ -62,7 +62,7 @@ Value Queue.poll();
 ```
 
 返回结果:
-* 返回取出的元素，队列为空则返回 Null
+* Value, 返回取出的元素，队列为空则返回 Null
 
 --------------------------
 ### element
@@ -72,7 +72,7 @@ Value Queue.element();
 ```
 
 返回结果:
-* 返回取出的元素
+* Value, 返回取出的元素
 
 --------------------------
 ### peek
@@ -82,7 +82,7 @@ Value Queue.peek();
 ```
 
 返回结果:
-* 返回取出的元素，队列为空则返回 Null
+* Value, 返回取出的元素，队列为空则返回 Null
 
 --------------------------
 ### clear
@@ -99,7 +99,7 @@ Array Queue.toArray();
 ```
 
 返回结果:
-* 包含数据的 js 数组
+* Array, 包含数据的 js 数组
 
 --------------------------
 ### dispose
@@ -116,10 +116,10 @@ Boolean Queue.equals(object expected);
 ```
 
 调用参数:
-* expected - 制定比较的目标对象
+* expected: object, 制定比较的目标对象
 
 返回结果:
-* 返回对象比较的结果
+* Boolean, 返回对象比较的结果
 
 --------------------------
 ### toString
@@ -129,7 +129,7 @@ String Queue.toString();
 ```
 
 返回结果:
-* 返回对象的字符串表示
+* String, 返回对象的字符串表示
 
 --------------------------
 ### toJSON
@@ -139,10 +139,10 @@ Value Queue.toJSON(String key = "");
 ```
 
 调用参数:
-* key - 未使用
+* key: String, 未使用
 
 返回结果:
-* 返回包含可 JSON 序列化的值
+* Value, 返回包含可 JSON 序列化的值
 
 --------------------------
 ### valueOf
@@ -152,12 +152,12 @@ Value Queue.valueOf();
 ```
 
 返回结果:
-* 返回对象本身的数值
+* Value, 返回对象本身的数值
 
 ## 成员属性
         
 ### length
-返回当前队列尺寸
+Integer, 返回当前队列尺寸
 ```JavaScript
 readonly Integer Queue.length;
 ```

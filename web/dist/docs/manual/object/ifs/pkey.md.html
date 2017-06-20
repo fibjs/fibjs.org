@@ -169,7 +169,7 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>size - 指定 RSA 密钥长度，bit 为单位</li>
+<li>size: Integer, 指定 RSA 密钥长度，bit 为单位</li>
 </ul>
 <hr>
 <h3 id="geneckey">genEcKey</h3>
@@ -178,7 +178,7 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>curve - 指定预置椭圆曲线，可选值为：&quot;secp521r1&quot;, &quot;brainpoolP512r1&quot;, &quot;secp384r1&quot;, &quot;brainpoolP384r1&quot;, &quot;secp256r1&quot;, &quot;secp256k1&quot;, &quot;brainpoolP256r1&quot;, &quot;secp224r1&quot;, &quot;secp224k1&quot;, &quot;secp192r1&quot;, &quot;secp192k1&quot;</li>
+<li>curve: String, 指定预置椭圆曲线，可选值为：&quot;secp521r1&quot;, &quot;brainpoolP512r1&quot;, &quot;secp384r1&quot;, &quot;brainpoolP384r1&quot;, &quot;secp256r1&quot;, &quot;secp256k1&quot;, &quot;brainpoolP256r1&quot;, &quot;secp224r1&quot;, &quot;secp224k1&quot;, &quot;secp192r1&quot;, &quot;secp192k1&quot;</li>
 </ul>
 <hr>
 <h3 id="isprivate">isPrivate</h3>
@@ -187,7 +187,7 @@
 </code></pre>
 <p>返回结果:</p>
 <ul>
-<li>为 True 表示为私钥</li>
+<li>Boolean, 为 True 表示为私钥</li>
 </ul>
 <hr>
 <h3 id="clone">clone</h3>
@@ -196,7 +196,7 @@
 </code></pre>
 <p>返回结果:</p>
 <ul>
-<li>当前密钥的复制对象</li>
+<li>PKey, 当前密钥的复制对象</li>
 </ul>
 <hr>
 <h3 id="importkey">importKey</h3>
@@ -206,8 +206,8 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>DerKey - DER 格式的密钥</li>
-<li>password - 解密密码</li>
+<li>DerKey: <a href=buffer.md.html>Buffer</a>, DER 格式的密钥</li>
+<li>password: String, 解密密码</li>
 </ul>
 <hr>
 <p>加载一个 PEM 格式的密钥</p>
@@ -216,8 +216,8 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>pemKey - PEM 格式的密钥</li>
-<li>password - 解密密码</li>
+<li>pemKey: String, PEM 格式的密钥</li>
+<li>password: String, 解密密码</li>
 </ul>
 <hr>
 <h3 id="importfile">importFile</h3>
@@ -227,8 +227,8 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>filename - 密钥文件名</li>
-<li>password - 解密密码</li>
+<li>filename: String, 密钥文件名</li>
+<li>password: String, 解密密码</li>
 </ul>
 <hr>
 <h3 id="exportpem">exportPem</h3>
@@ -237,7 +237,7 @@
 </code></pre>
 <p>返回结果:</p>
 <ul>
-<li>当前 key 的 PEM 格式编码</li>
+<li>String, 当前 key 的 PEM 格式编码</li>
 </ul>
 <hr>
 <h3 id="exportder">exportDer</h3>
@@ -246,7 +246,7 @@
 </code></pre>
 <p>返回结果:</p>
 <ul>
-<li>当前 key 的 DER 格式编码</li>
+<li><a href=buffer.md.html>Buffer</a>, 当前 key 的 DER 格式编码</li>
 </ul>
 <hr>
 <h3 id="encrypt">encrypt</h3>
@@ -255,11 +255,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>data - 指定要加密的数据</li>
+<li>data: <a href=buffer.md.html>Buffer</a>, 指定要加密的数据</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回加密后的数据</li>
+<li><a href=buffer.md.html>Buffer</a>, 返回加密后的数据</li>
 </ul>
 <hr>
 <h3 id="decrypt">decrypt</h3>
@@ -268,11 +268,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>data - 指定要解密的数据</li>
+<li>data: <a href=buffer.md.html>Buffer</a>, 指定要解密的数据</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回解密后的数据</li>
+<li><a href=buffer.md.html>Buffer</a>, 返回解密后的数据</li>
 </ul>
 <hr>
 <h3 id="sign">sign</h3>
@@ -282,12 +282,12 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>data - 指定要签名的数据</li>
-<li>alg - 指定要签名的算法, 默认0. 支持算法: 0=NONE,1=MD2,2=MD4,3=MD5,4=SHA1,5=SHA224,6=SHA256,7=SHA384,8=SHA512,9=RIPEMD160</li>
+<li>data: <a href=buffer.md.html>Buffer</a>, 指定要签名的数据</li>
+<li>alg: Integer, 指定要签名的算法, 默认0. 支持算法: 0=NONE,1=MD2,2=MD4,3=MD5,4=SHA1,5=SHA224,6=SHA256,7=SHA384,8=SHA512,9=RIPEMD160</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回签名后的数据</li>
+<li><a href=buffer.md.html>Buffer</a>, 返回签名后的数据</li>
 </ul>
 <hr>
 <h3 id="verify">verify</h3>
@@ -297,12 +297,12 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>sign - 指定要验证的签名</li>
-<li>data - 指定要验证的数据</li>
+<li>sign: <a href=buffer.md.html>Buffer</a>, 指定要验证的签名</li>
+<li>data: <a href=buffer.md.html>Buffer</a>, 指定要验证的数据</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回验证后的结果</li>
+<li>Boolean, 返回验证后的结果</li>
 </ul>
 <hr>
 <h3 id="dispose">dispose</h3>
@@ -316,11 +316,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>expected - 制定比较的目标对象</li>
+<li>expected: object, 制定比较的目标对象</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回对象比较的结果</li>
+<li>Boolean, 返回对象比较的结果</li>
 </ul>
 <hr>
 <h3 id="tostring">toString</h3>
@@ -329,7 +329,7 @@
 </code></pre>
 <p>返回结果:</p>
 <ul>
-<li>返回对象的字符串表示</li>
+<li>String, 返回对象的字符串表示</li>
 </ul>
 <hr>
 <h3 id="tojson">toJSON</h3>
@@ -338,11 +338,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>key - 未使用</li>
+<li>key: String, 未使用</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回包含可 JSON 序列化的值</li>
+<li>Value, 返回包含可 JSON 序列化的值</li>
 </ul>
 <hr>
 <h3 id="valueof">valueOf</h3>
@@ -351,21 +351,21 @@
 </code></pre>
 <p>返回结果:</p>
 <ul>
-<li>返回对象本身的数值</li>
+<li>Value, 返回对象本身的数值</li>
 </ul>
 <h2 id="-">成员属性</h2>
 <h3 id="name">name</h3>
-<p>返回当前算法名称</p>
+<p>String, 返回当前算法名称</p>
 <pre><code class="lang-JavaScript">readonly <span class="hljs-built_in">String</span> PKey.name;
 </code></pre>
 <hr>
 <h3 id="keysize">keySize</h3>
-<p>返回当前算法密码长度，以位为单位</p>
+<p>Integer, 返回当前算法密码长度，以位为单位</p>
 <pre><code class="lang-JavaScript">readonly Integer PKey.keySize;
 </code></pre>
 <hr>
 <h3 id="publickey">publicKey</h3>
-<p>返回当前密钥的公钥</p>
+<p>PKey, 返回当前密钥的公钥</p>
 <pre><code class="lang-JavaScript">readonly PKey PKey.publicKey;
 </code></pre>
 <p>返回结果:</p>

@@ -14,10 +14,10 @@ static object db.open(String connString) async;
 ```
 
 调用参数:
-* connString - 数据库描述，如：mysql://user:pass\@host/db
+* connString: String, 数据库描述，如：mysql://user:pass\@host/db
 
 返回结果:
-* 返回数据库连接对象
+* [object](../../object/ifs/object.md), 返回数据库连接对象
 
 --------------------------
 ### openMySQL
@@ -27,10 +27,10 @@ static MySQL db.openMySQL(String connString) async;
 ```
 
 调用参数:
-* connString - 数据库描述，如：mysql://user:pass\@host/db
+* connString: String, 数据库描述，如：mysql://user:pass\@host/db
 
 返回结果:
-* 返回数据库连接对象
+* [MySQL](../../object/ifs/MySQL.md), 返回数据库连接对象
 
 --------------------------
 ### openMSSQL
@@ -40,10 +40,10 @@ static MSSQL db.openMSSQL(String connString) async;
 ```
 
 调用参数:
-* connString - 数据库描述，如：mssql://user:pass\@host/db
+* connString: String, 数据库描述，如：mssql://user:pass\@host/db
 
 返回结果:
-* 返回数据库连接对象
+* [MSSQL](../../object/ifs/MSSQL.md), 返回数据库连接对象
 
 --------------------------
 ### openSQLite
@@ -53,10 +53,10 @@ static SQLite db.openSQLite(String connString) async;
 ```
 
 调用参数:
-* connString - 数据库描述，如：sqlite:test.db 或者 test.db
+* connString: String, 数据库描述，如：sqlite:[test](test.md).db 或者 [test](test.md).db
 
 返回结果:
-* 返回数据库连接对象
+* [SQLite](../../object/ifs/SQLite.md), 返回数据库连接对象
 
 --------------------------
 ### openMongoDB
@@ -66,10 +66,10 @@ static MongoDB db.openMongoDB(String connString) async;
 ```
 
 调用参数:
-* connString - 数据库描述
+* connString: String, 数据库描述
 
 返回结果:
-* 返回数据库连接对象
+* [MongoDB](../../object/ifs/MongoDB.md), 返回数据库连接对象
 
 --------------------------
 ### openLevelDB
@@ -79,10 +79,10 @@ static LevelDB db.openLevelDB(String connString) async;
 ```
 
 调用参数:
-* connString - 数据库描述，如：level:test.db 或者 test.db
+* connString: String, 数据库描述，如：level:[test](test.md).db 或者 [test](test.md).db
 
 返回结果:
-* 返回数据库对象
+* [LevelDB](../../object/ifs/LevelDB.md), 返回数据库对象
 
 --------------------------
 ### openRedis
@@ -92,10 +92,10 @@ static Redis db.openRedis(String connString) async;
 ```
 
 调用参数:
-* connString - 数据库描述，如：redis://server:port 或者 "server"
+* connString: String, 数据库描述，如：redis://server:port 或者 "server"
 
 返回结果:
-* 返回数据库连接对象
+* [Redis](../../object/ifs/Redis.md), 返回数据库连接对象
 
 --------------------------
 ### format
@@ -106,11 +106,11 @@ static String db.format(String sql,
 ```
 
 调用参数:
-* sql - 格式化字符串，可选参数用 ? 指定。例如：'SELECT FROM TEST WHERE [id]=?'
-* ... - 可选参数列表
+* sql: String, 格式化字符串，可选参数用 ? 指定。例如：'SELECT FROM TEST WHERE [id]=?'
+* ...: 可选参数列表
 
 返回结果:
-* 返回格式化之后的 sql 命令
+* String, 返回格式化之后的 sql 命令
 
 --------------------------
 ### formatMySQL
@@ -121,11 +121,11 @@ static String db.formatMySQL(String sql,
 ```
 
 调用参数:
-* sql - 格式化字符串，可选参数用 ? 指定。例如：'SELECT FROM TEST WHERE [id]=?'
-* ... - 可选参数列表
+* sql: String, 格式化字符串，可选参数用 ? 指定。例如：'SELECT FROM TEST WHERE [id]=?'
+* ...: 可选参数列表
 
 返回结果:
-* 返回格式化之后的 sql 命令
+* String, 返回格式化之后的 sql 命令
 
 --------------------------
 ### formatMSSQL
@@ -136,11 +136,11 @@ static String db.formatMSSQL(String sql,
 ```
 
 调用参数:
-* sql - 格式化字符串，可选参数用 ? 指定。例如：'SELECT FROM TEST WHERE [id]=?'
-* ... - 可选参数列表
+* sql: String, 格式化字符串，可选参数用 ? 指定。例如：'SELECT FROM TEST WHERE [id]=?'
+* ...: 可选参数列表
 
 返回结果:
-* 返回格式化之后的 sql 命令
+* String, 返回格式化之后的 sql 命令
 
 --------------------------
 ### escape
@@ -151,9 +151,9 @@ static String db.escape(String str,
 ```
 
 调用参数:
-* str - 要编码的字符串
-* mysql - 指定 mysql 编码，缺省为 false
+* str: String, 要编码的字符串
+* mysql: Boolean, 指定 mysql 编码，缺省为 false
 
 返回结果:
-* 返回编码后的字符串
+* String, 返回编码后的字符串
 

@@ -15,8 +15,8 @@ Cipher 构造函数，仅用于 ARC4 初始化
 ```
 
 调用参数:
-* provider - 指定加密算法
-* key - 指定加密解密密码
+* provider: Integer, 指定加密算法
+* key: [Buffer](Buffer.md), 指定加密解密密码
 
 --------------------------
 Cipher 构造函数
@@ -27,9 +27,9 @@ Cipher 构造函数
 ```
 
 调用参数:
-* provider - 指定加密算法
-* mode - 指定分组密码工作模式
-* key - 指定加密解密密码
+* provider: Integer, 指定加密算法
+* mode: Integer, 指定分组密码工作模式
+* key: [Buffer](Buffer.md), 指定加密解密密码
 
 --------------------------
 Cipher 构造函数
@@ -41,10 +41,10 @@ Cipher 构造函数
 ```
 
 调用参数:
-* provider - 指定加密算法
-* mode - 指定分组密码工作模式
-* key - 指定加密解密密码
-* iv - 指定初始向量
+* provider: Integer, 指定加密算法
+* mode: Integer, 指定分组密码工作模式
+* key: [Buffer](Buffer.md), 指定加密解密密码
+* iv: [Buffer](Buffer.md), 指定初始向量
 
 ## 成员函数
         
@@ -55,7 +55,7 @@ Cipher.paddingMode(Integer mode);
 ```
 
 调用参数:
-* mode - 指定填充模式，缺省为 PADDING_PKCS7
+* mode: Integer, 指定填充模式，缺省为 PADDING_PKCS7
 
 --------------------------
 ### encrypt
@@ -65,10 +65,10 @@ Buffer Cipher.encrypt(Buffer data) async;
 ```
 
 调用参数:
-* data - 指定要加密的数据
+* data: [Buffer](Buffer.md), 指定要加密的数据
 
 返回结果:
-* 返回加密后的数据
+* [Buffer](Buffer.md), 返回加密后的数据
 
 --------------------------
 ### decrypt
@@ -78,10 +78,10 @@ Buffer Cipher.decrypt(Buffer data) async;
 ```
 
 调用参数:
-* data - 指定要解密的数据
+* data: [Buffer](Buffer.md), 指定要解密的数据
 
 返回结果:
-* 返回解密后的数据
+* [Buffer](Buffer.md), 返回解密后的数据
 
 --------------------------
 ### dispose
@@ -98,10 +98,10 @@ Boolean Cipher.equals(object expected);
 ```
 
 调用参数:
-* expected - 制定比较的目标对象
+* expected: object, 制定比较的目标对象
 
 返回结果:
-* 返回对象比较的结果
+* Boolean, 返回对象比较的结果
 
 --------------------------
 ### toString
@@ -111,7 +111,7 @@ String Cipher.toString();
 ```
 
 返回结果:
-* 返回对象的字符串表示
+* String, 返回对象的字符串表示
 
 --------------------------
 ### toJSON
@@ -121,10 +121,10 @@ Value Cipher.toJSON(String key = "");
 ```
 
 调用参数:
-* key - 未使用
+* key: String, 未使用
 
 返回结果:
-* 返回包含可 JSON 序列化的值
+* Value, 返回包含可 JSON 序列化的值
 
 --------------------------
 ### valueOf
@@ -134,33 +134,33 @@ Value Cipher.valueOf();
 ```
 
 返回结果:
-* 返回对象本身的数值
+* Value, 返回对象本身的数值
 
 ## 成员属性
         
 ### name
-返回当前算法名称
+String, 返回当前算法名称
 ```JavaScript
 readonly String Cipher.name;
 ```
 
 --------------------------
 ### keySize
-返回当前算法密码长度，以位为单位
+Integer, 返回当前算法密码长度，以位为单位
 ```JavaScript
 readonly Integer Cipher.keySize;
 ```
 
 --------------------------
 ### ivSize
-返回当前算法初始向量长度，以字节为单位
+Integer, 返回当前算法初始向量长度，以字节为单位
 ```JavaScript
 readonly Integer Cipher.ivSize;
 ```
 
 --------------------------
 ### blockSize
-返回当前算法数据块长度，以字节为单位
+Integer, 返回当前算法数据块长度，以字节为单位
 ```JavaScript
 readonly Integer Cipher.blockSize;
 ```

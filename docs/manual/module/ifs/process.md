@@ -14,10 +14,10 @@ static Integer process.umask(Integer mask);
 ```
 
 调用参数:
-* mask - 指定新的掩码
+* mask: Integer, 指定新的掩码
 
 返回结果:
-* 返回之前的 mask
+* Integer, 返回之前的 mask
 
 --------------------------
 改变当前的 umask，Windows 不支持此方法
@@ -26,10 +26,10 @@ static Integer process.umask(String mask);
 ```
 
 调用参数:
-* mask - 指定新的掩码， 字符串类型八进制(e.g: "0664")
+* mask: String, 指定新的掩码， 字符串类型八进制(e.g: "0664")
 
 返回结果:
-* 返回之前的 mask
+* Integer, 返回之前的 mask
 
 --------------------------
 返回当前的 umask，Windows 不支持此方法
@@ -38,7 +38,7 @@ static Integer process.umask();
 ```
 
 返回结果:
-* 返回当前的 mask 值
+* Integer, 返回当前的 mask 值
 
 --------------------------
 ### exit
@@ -48,7 +48,7 @@ static process.exit(Integer code);
 ```
 
 调用参数:
-* code - 返回进程结果
+* code: Integer, 返回进程结果
 
 --------------------------
 ### cwd
@@ -58,7 +58,7 @@ static String process.cwd();
 ```
 
 返回结果:
-* 返回当前系统路径
+* String, 返回当前系统路径
 
 --------------------------
 ### chdir
@@ -68,7 +68,7 @@ static process.chdir(String directory);
 ```
 
 调用参数:
-* directory - 指定设定的新路径
+* directory: String, 指定设定的新路径
 
 --------------------------
 ### uptime
@@ -78,7 +78,7 @@ static Number process.uptime();
 ```
 
 返回结果:
-* 返回表示时间的数值
+* Number, 返回表示时间的数值
 
 --------------------------
 ### memoryUsage
@@ -88,7 +88,7 @@ static Object process.memoryUsage();
 ```
 
 返回结果:
-* 返回包含内存报告
+* Object, 返回包含内存报告
 
 内存报告生成类似以下结果：
 ```JavaScript
@@ -112,8 +112,8 @@ static process.nextTick(Function func,
 ```
 
 调用参数:
-* func - 制定纤程执行的函数
-* ... - 可变参数序列，此序列会在纤程内传递给函数
+* func: Function, 制定纤程执行的函数
+* ...: 可变参数序列，此序列会在纤程内传递给函数
 
 --------------------------
 ### open
@@ -125,12 +125,12 @@ static SubProcess process.open(String command,
 ```
 
 调用参数:
-* command - 指定运行的命令行
-* args - 指定运行的参数列表
-* opts - 指定运行的选项
+* command: String, 指定运行的命令行
+* args: Array, 指定运行的参数列表
+* opts: Object, 指定运行的选项
 
 返回结果:
-* 返回包含运行结果的进程对象
+* [SubProcess](../../object/ifs/SubProcess.md), 返回包含运行结果的进程对象
 
 opts 支持的选项如下：
 ```JavaScript
@@ -148,11 +148,11 @@ static SubProcess process.open(String command,
 ```
 
 调用参数:
-* command - 指定运行的命令行
-* opts - 指定运行的选项
+* command: String, 指定运行的命令行
+* opts: Object, 指定运行的选项
 
 返回结果:
-* 返回包含运行结果的进程对象
+* [SubProcess](../../object/ifs/SubProcess.md), 返回包含运行结果的进程对象
 
 opts 支持的选项如下：
 ```JavaScript
@@ -172,12 +172,12 @@ static SubProcess process.start(String command,
 ```
 
 调用参数:
-* command - 指定运行的命令行
-* args - 指定运行的参数列表
-* opts - 指定运行的选项
+* command: String, 指定运行的命令行
+* args: Array, 指定运行的参数列表
+* opts: Object, 指定运行的选项
 
 返回结果:
-* 返回包含运行结果的进程对象
+* [SubProcess](../../object/ifs/SubProcess.md), 返回包含运行结果的进程对象
 
 opts 支持的选项如下：
 ```JavaScript
@@ -195,11 +195,11 @@ static SubProcess process.start(String command,
 ```
 
 调用参数:
-* command - 指定运行的命令行
-* opts - 指定运行的选项
+* command: String, 指定运行的命令行
+* opts: Object, 指定运行的选项
 
 返回结果:
-* 返回包含运行结果的进程对象
+* [SubProcess](../../object/ifs/SubProcess.md), 返回包含运行结果的进程对象
 
 opts 支持的选项如下：
 ```JavaScript
@@ -219,12 +219,12 @@ static Integer process.run(String command,
 ```
 
 调用参数:
-* command - 指定运行的命令行
-* args - 指定运行的参数列表
-* opts - 指定运行的选项
+* command: String, 指定运行的命令行
+* args: Array, 指定运行的参数列表
+* opts: Object, 指定运行的选项
 
 返回结果:
-* 返回命令的运行结果
+* Integer, 返回命令的运行结果
 
 opts 支持的选项如下：
 ```JavaScript
@@ -242,11 +242,11 @@ static Integer process.run(String command,
 ```
 
 调用参数:
-* command - 指定运行的命令行
-* opts - 指定运行的选项
+* command: String, 指定运行的命令行
+* opts: Object, 指定运行的选项
 
 返回结果:
-* 返回命令的运行结果
+* Integer, 返回命令的运行结果
 
 opts 支持的选项如下：
 ```JavaScript
@@ -259,49 +259,49 @@ opts 支持的选项如下：
 ## 静态属性
         
 ### argv
-返回当前进程的命令行参数
+Array, 返回当前进程的命令行参数
 ```JavaScript
 static readonly Array process.argv;
 ```
 
 --------------------------
 ### execArgv
-返回当前进程的特殊命令行参数，这些参数被 fibjs 用于设置运行环境
+Array, 返回当前进程的特殊命令行参数，这些参数被 fibjs 用于设置运行环境
 ```JavaScript
 static readonly Array process.execArgv;
 ```
 
 --------------------------
 ### version
-返回fibjs版本字符串
+String, 返回fibjs版本字符串
 ```JavaScript
 static readonly String process.version;
 ```
 
 --------------------------
 ### execPath
-查询当前运行执行文件完整路径
+String, 查询当前运行执行文件完整路径
 ```JavaScript
 static readonly String process.execPath;
 ```
 
 --------------------------
 ### env
-查询当前进程的环境变量
+Object, 查询当前进程的环境变量
 ```JavaScript
 static readonly Object process.env;
 ```
 
 --------------------------
 ### arch
-查询当前 cpu 环境，可能的结果为 'amd64', 'arm', 'arm64', 'ia32'
+String, 查询当前 cpu 环境，可能的结果为 'amd64', 'arm', 'arm64', 'ia32'
 ```JavaScript
 static readonly String process.arch;
 ```
 
 --------------------------
 ### platform
-查询当前平台名称，可能的结果为 'darwin', 'freebsd', 'linux', 或 'win32'
+String, 查询当前平台名称，可能的结果为 'darwin', 'freebsd', 'linux', 或 'win32'
 ```JavaScript
 static readonly String process.platform;
 ```

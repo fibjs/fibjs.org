@@ -68,7 +68,7 @@ static Handler mq.await();
 ```
 
 返回结果:
-* 返回创建的处理器
+* [Handler](../../object/ifs/Handler.md), 返回创建的处理器
 
 异步等待处理器用于需要异步处理的消息处理模式，示例如下：
 ```JavaScript
@@ -92,7 +92,7 @@ static Handler mq.nullHandler();
 ```
 
 返回结果:
-* 返回空处理函数
+* [Handler](../../object/ifs/Handler.md), 返回空处理函数
 
 --------------------------
 ### invoke
@@ -103,8 +103,8 @@ static mq.invoke(Handler hdlr,
 ```
 
 调用参数:
-* hdlr - 指定使用的处理器
-* v - 指定要处理的消息或对象
+* hdlr: [Handler](../../object/ifs/Handler.md), 指定使用的处理器
+* v: [object](../../object/ifs/object.md), 指定要处理的消息或对象
 
 不同于处理器的 invoke 方法，此方法将循环调用每个处理器的返回处理器，直到处理器返回 null 为止。
 

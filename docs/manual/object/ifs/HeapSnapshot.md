@@ -10,10 +10,10 @@ Object HeapSnapshot.diff(HeapSnapshot before);
 ```
 
 调用参数:
-* before - 待比较的堆快照
+* before: HeapSnapshot, 待比较的堆快照
 
 返回结果:
-* 返回堆快照的比较结果
+* Object, 返回堆快照的比较结果
 
 --------------------------
 ### getNodeById
@@ -23,10 +23,10 @@ HeapGraphNode HeapSnapshot.getNodeById(Integer id);
 ```
 
 调用参数:
-* id - 数字类型的节点ID
+* id: Integer, 数字类型的节点ID
 
 返回结果:
-* 返回获取到的堆视图节点
+* [HeapGraphNode](HeapGraphNode.md), 返回获取到的堆视图节点
 
 --------------------------
 ### save
@@ -36,7 +36,7 @@ HeapSnapshot.save(String fname) async;
 ```
 
 调用参数:
-* fname - 快照名称
+* fname: String, 快照名称
 
 --------------------------
 ### dispose
@@ -53,10 +53,10 @@ Boolean HeapSnapshot.equals(object expected);
 ```
 
 调用参数:
-* expected - 制定比较的目标对象
+* expected: object, 制定比较的目标对象
 
 返回结果:
-* 返回对象比较的结果
+* Boolean, 返回对象比较的结果
 
 --------------------------
 ### toString
@@ -66,7 +66,7 @@ String HeapSnapshot.toString();
 ```
 
 返回结果:
-* 返回对象的字符串表示
+* String, 返回对象的字符串表示
 
 --------------------------
 ### toJSON
@@ -76,10 +76,10 @@ Value HeapSnapshot.toJSON(String key = "");
 ```
 
 调用参数:
-* key - 未使用
+* key: String, 未使用
 
 返回结果:
-* 返回包含可 JSON 序列化的值
+* Value, 返回包含可 JSON 序列化的值
 
 --------------------------
 ### valueOf
@@ -89,26 +89,26 @@ Value HeapSnapshot.valueOf();
 ```
 
 返回结果:
-* 返回对象本身的数值
+* Value, 返回对象本身的数值
 
 ## 成员属性
         
 ### time
-时间信息
+Date, 时间信息
 ```JavaScript
 readonly Date HeapSnapshot.time;
 ```
 
 --------------------------
 ### root
-堆视图的根节点
+[HeapGraphNode](HeapGraphNode.md), 堆视图的根节点
 ```JavaScript
 readonly HeapGraphNode HeapSnapshot.root;
 ```
 
 --------------------------
 ### nodes
-堆视图节点组成的列表
+[List](List.md), 堆视图节点组成的列表
 ```JavaScript
 readonly List HeapSnapshot.nodes;
 ```

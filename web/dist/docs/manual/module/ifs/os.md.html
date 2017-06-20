@@ -199,7 +199,7 @@
 </code></pre>
 <p>返回结果:</p>
 <ul>
-<li>返回表示时间的数值</li>
+<li>Number, 返回表示时间的数值</li>
 </ul>
 <hr>
 <h3 id="loadavg">loadavg</h3>
@@ -208,7 +208,7 @@
 </code></pre>
 <p>返回结果:</p>
 <ul>
-<li>返回包含三个负载数据的数组</li>
+<li>Array, 返回包含三个负载数据的数组</li>
 </ul>
 <hr>
 <h3 id="totalmem">totalmem</h3>
@@ -217,7 +217,7 @@
 </code></pre>
 <p>返回结果:</p>
 <ul>
-<li>返回内存数据</li>
+<li>Long, 返回内存数据</li>
 </ul>
 <hr>
 <h3 id="freemem">freemem</h3>
@@ -226,7 +226,7 @@
 </code></pre>
 <p>返回结果:</p>
 <ul>
-<li>返回内存数据</li>
+<li>Long, 返回内存数据</li>
 </ul>
 <hr>
 <h3 id="cpus">cpus</h3>
@@ -235,7 +235,7 @@
 </code></pre>
 <p>返回结果:</p>
 <ul>
-<li>返回包含 cpu 参数的数组，每一项对应一个 cpu</li>
+<li>Array, 返回包含 cpu 参数的数组，每一项对应一个 cpu</li>
 </ul>
 <hr>
 <h3 id="cpunumbers">cpuNumbers</h3>
@@ -244,7 +244,7 @@
 </code></pre>
 <p>返回结果:</p>
 <ul>
-<li>返回 cpu 个数</li>
+<li>Integer, 返回 cpu 个数</li>
 </ul>
 <hr>
 <h3 id="tmpdir">tmpdir</h3>
@@ -253,7 +253,7 @@
 </code></pre>
 <p>返回结果:</p>
 <ul>
-<li>返回临时文件目录</li>
+<li>String, 返回临时文件目录</li>
 </ul>
 <hr>
 <h3 id="userinfo">userInfo</h3>
@@ -263,7 +263,7 @@
 <p>调用参数:</p>
 <p>返回结果:</p>
 <ul>
-<li>当前有效执行用户信息</li>
+<li>Object, 当前有效执行用户信息</li>
 </ul>
 <hr>
 <h3 id="networkinterfaces">networkInterfaces</h3>
@@ -272,7 +272,7 @@
 </code></pre>
 <p>返回结果:</p>
 <ul>
-<li>返回网卡信息</li>
+<li>Object, 返回网卡信息</li>
 </ul>
 <hr>
 <h3 id="printerinfo">printerInfo</h3>
@@ -281,7 +281,7 @@
 </code></pre>
 <p>返回结果:</p>
 <ul>
-<li>返回打印机信息</li>
+<li>Array, 返回打印机信息</li>
 </ul>
 <hr>
 <h3 id="openprinter">openPrinter</h3>
@@ -290,11 +290,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>name - 打印机名称</li>
+<li>name: String, 打印机名称</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回打印机输出对象</li>
+<li><a href=../../object/ifs/bufferedstream.md.html>BufferedStream</a>, 返回打印机输出对象</li>
 </ul>
 <hr>
 <h3 id="platform">platform</h3>
@@ -308,11 +308,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>tmString - 时间字符串，缺省则查询当前时间</li>
+<li>tmString: String, 时间字符串，缺省则查询当前时间</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回 javascript Date 对象</li>
+<li>Date, 返回 javascript Date 对象</li>
 </ul>
 <hr>
 <h3 id="dateadd">dateAdd</h3>
@@ -323,13 +323,13 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>d - 指定用于计算 Date 对象</li>
-<li>num - 指定运算的数值</li>
-<li>part - 指定运算的时间部位，接收值为：&quot;year&quot;, &quot;month&quot;, &quot;day&quot;, &quot;hour&quot;, &quot;minute&quot;, &quot;second&quot;</li>
+<li>d: Date, 指定用于计算 Date 对象</li>
+<li>num: Integer, 指定运算的数值</li>
+<li>part: String, 指定运算的时间部位，接收值为：&quot;year&quot;, &quot;month&quot;, &quot;day&quot;, &quot;hour&quot;, &quot;minute&quot;, &quot;second&quot;</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>返回 javascript Date 对象</li>
+<li>Date, 返回 javascript Date 对象</li>
 </ul>
 <hr>
 <h3 id="memoryusage">memoryUsage</h3>
@@ -338,7 +338,7 @@
 </code></pre>
 <p>返回结果:</p>
 <ul>
-<li>返回包含内存报告</li>
+<li>Object, 返回包含内存报告</li>
 </ul>
 <p>内存报告生成类似以下结果：</p>
 <pre><code class="lang-JavaScript">{
@@ -357,17 +357,17 @@
 </ul>
 <h2 id="-">静态属性</h2>
 <h3 id="timezone">timezone</h3>
-<p>查询运行环境当前时区</p>
+<p>Integer, 查询运行环境当前时区</p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> readonly Integer os.timezone;
 </code></pre>
 <hr>
 <h3 id="eol">EOL</h3>
-<p>查询当前运行环境行结尾标识，posix:\&quot;\n\&quot;；windows:\&quot;\r\n\&quot;</p>
+<p>String, 查询当前运行环境行结尾标识，posix:\&quot;\n\&quot;；windows:\&quot;\r\n\&quot;</p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> readonly <span class="hljs-built_in">String</span> os.EOL;
 </code></pre>
 <hr>
 <h3 id="execpath">execPath</h3>
-<p>查询当前运行执行文件完整路径</p>
+<p>String, 查询当前运行执行文件完整路径</p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> readonly <span class="hljs-built_in">String</span> os.execPath;
 </code></pre>
  </div><div class="hidden-sm hidden-xs col-xs-3"><div id=toc></div></div></div><div class=container><div class=footer><p>&copy; 2017 fibjs.org</p></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="Click to return on the top page" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=../../../../js/common.js></script><script type=text/javascript src=../../../../js/docs.js></script></body></html>

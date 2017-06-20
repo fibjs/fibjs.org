@@ -80,8 +80,8 @@ static test.describe(String name,
 ```
 
 调用参数:
-* name - 定义模块名称
-* block - 模块初始化代码
+* name: String, 定义模块名称
+* block: Function, 模块初始化代码
 
 --------------------------
 ### xdescribe
@@ -92,8 +92,8 @@ static test.xdescribe(String name,
 ```
 
 调用参数:
-* name - 定义模块名称
-* block - 模块初始化代码
+* name: String, 定义模块名称
+* block: Function, 模块初始化代码
 
 --------------------------
 ### it
@@ -104,8 +104,8 @@ static test.it(String name,
 ```
 
 调用参数:
-* name - 定义项目名称
-* block - 测试内容
+* name: String, 定义项目名称
+* block: Function, 测试内容
 
 --------------------------
 ### xit
@@ -116,8 +116,8 @@ static test.xit(String name,
 ```
 
 调用参数:
-* name - 定义项目名称
-* block - 测试内容
+* name: String, 定义项目名称
+* block: Function, 测试内容
 
 --------------------------
 ### before
@@ -127,7 +127,7 @@ static test.before(Function func);
 ```
 
 调用参数:
-* func - 事件函数
+* func: Function, 事件函数
 
 --------------------------
 ### after
@@ -137,7 +137,7 @@ static test.after(Function func);
 ```
 
 调用参数:
-* func - 事件函数
+* func: Function, 事件函数
 
 --------------------------
 ### beforeEach
@@ -147,7 +147,7 @@ static test.beforeEach(Function func);
 ```
 
 调用参数:
-* func - 事件函数
+* func: Function, 事件函数
 
 --------------------------
 ### afterEach
@@ -157,7 +157,7 @@ static test.afterEach(Function func);
 ```
 
 调用参数:
-* func - 事件函数
+* func: Function, 事件函数
 
 --------------------------
 ### run
@@ -167,10 +167,10 @@ static Integer test.run(Integer loglevel = console.ERROR);
 ```
 
 调用参数:
-* loglevel - 指定进行测试时的日志输出级别，ERROR 时，项目报错信息集中在报告后显示，低于 ERROR 时，输出信息随时显示，高于 ERROR 时，只显示报告
+* loglevel: Integer, 指定进行测试时的日志输出级别，ERROR 时，项目报错信息集中在报告后显示，低于 ERROR 时，输出信息随时显示，高于 ERROR 时，只显示报告
 
 返回结果:
-* 返回测试用例统计结果，正确则返回 0，错误则返回错误个数
+* Integer, 返回测试用例统计结果，正确则返回 0，错误则返回错误个数
 
 --------------------------
 ### setup
@@ -180,12 +180,12 @@ static test.setup(Integer mode = BDD);
 ```
 
 调用参数:
-* mode - 指定初始化的模式，缺省为 BDD
+* mode: Integer, 指定初始化的模式，缺省为 BDD
 
 ## 静态属性
         
 ### slow
-设置和查询慢速测试警告阀值，以 ms 为单位，缺省为 75
+Integer, 设置和查询慢速测试警告阀值，以 ms 为单位，缺省为 75
 ```JavaScript
 static Integer test.slow;
 ```

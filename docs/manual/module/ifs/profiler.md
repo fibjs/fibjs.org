@@ -14,7 +14,7 @@ static profiler.saveSnapshot(String fname);
 ```
 
 调用参数:
-* fname - 堆快照名称
+* fname: String, 堆快照名称
 
 --------------------------
 ### loadSnapshot
@@ -24,10 +24,10 @@ static HeapSnapshot profiler.loadSnapshot(String fname);
 ```
 
 调用参数:
-* fname - 堆快照名称
+* fname: String, 堆快照名称
 
 返回结果:
-* 返回读取到的堆快照
+* [HeapSnapshot](../../object/ifs/HeapSnapshot.md), 返回读取到的堆快照
 
 --------------------------
 ### takeSnapshot
@@ -37,7 +37,7 @@ static HeapSnapshot profiler.takeSnapshot();
 ```
 
 返回结果:
-* 返回获取到的堆信息快照
+* [HeapSnapshot](../../object/ifs/HeapSnapshot.md), 返回获取到的堆信息快照
 
 --------------------------
 ### diff
@@ -47,10 +47,10 @@ static Object profiler.diff(Function test);
 ```
 
 调用参数:
-* test - 给定要测试的函数
+* test: Function, 给定要测试的函数
 
 返回结果:
-* 返回对比的结果
+* Object, 返回对比的结果
 
 ## 常量
         

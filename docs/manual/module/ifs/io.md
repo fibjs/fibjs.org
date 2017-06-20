@@ -31,12 +31,12 @@ static Long io.copyStream(Stream from,
 ```
 
 调用参数:
-* from - 源流对象
-* to - 目标流对象
-* bytes - 复制的字节数
+* from: [Stream](../../object/ifs/Stream.md), 源流对象
+* to: [Stream](../../object/ifs/Stream.md), 目标流对象
+* bytes: Long, 复制的字节数
 
 返回结果:
-* 返回复制的字节数
+* Long, 返回复制的字节数
 
 --------------------------
 ### bridge
@@ -47,6 +47,6 @@ static io.bridge(Stream stm1,
 ```
 
 调用参数:
-* stm1 - 流对象一
-* stm2 - 流对象二
+* stm1: [Stream](../../object/ifs/Stream.md), 流对象一
+* stm2: [Stream](../../object/ifs/Stream.md), 流对象二
 
