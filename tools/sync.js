@@ -83,40 +83,42 @@ function sync_releases() {
     } catch (e) {}
 
     info.forEach(r => {
-        var new_file = false;
+        if (!r.prerelease) {
+            var new_file = false;
 
-        try {
-            fs.mkdir(path.join(distFolder, r.tag_name));
-        } catch (e) {}
+            try {
+                fs.mkdir(path.join(distFolder, r.tag_name));
+            } catch (e) {}
 
-        function download(f, u, sz) {
-            f = path.join(distFolder, r.tag_name, f);
-            if (fs.exists(f))
-                if (sz === -1 || fs.stat(f).size == sz)
-                    return;
+            function download(f, u, sz) {
+                f = path.join(distFolder, r.tag_name, f);
+                if (fs.exists(f))
+                    if (sz === -1 || fs.stat(f).size == sz)
+                        return;
 
-            if (!new_file) {
-                new_file = true;
-                console.log('----------', r.tag_name, '--------------');
+                if (!new_file) {
+                    new_file = true;
+                    console.log('----------', r.tag_name, '--------------');
+                }
+
+                console.log(u);
+                var d = wget(u);
+
+                if (sz !== -1 && d.length != sz)
+                    throw 'size error: ' + u;
+
+                fs.writeFile(f, d);
+
+                gen_page();
             }
 
-            console.log(u);
-            var d = wget(u);
+            r.assets.forEach(f => {
+                download(f.name, f.browser_download_url, f.size);
+            });
 
-            if (sz !== -1 && d.length != sz)
-                throw 'size error: ' + u;
-
-            fs.writeFile(f, d);
-
-            gen_page();
+            download('src-' + r.tag_name + '.tar.gz', r.tarball_url, -1);
+            download('src-' + r.tag_name + '.zip', r.zipball_url, -1);
         }
-
-        r.assets.forEach(f => {
-            download(f.name, f.browser_download_url, f.size);
-        });
-
-        download('src-' + r.tag_name + '.tar.gz', r.tarball_url, -1);
-        download('src-' + r.tag_name + '.zip', r.zipball_url, -1);
     });
 }
 

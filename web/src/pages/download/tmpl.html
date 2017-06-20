@@ -16,6 +16,7 @@
             <p class="lead"></p>
         </div>
         <%info.forEach(r => {
+            if (!r.prerelease) {
             var d = r.published_at.substr(0,  10);%>
             <h2>
                 <%=d + ', Version ' + r.tag_name%>
@@ -55,7 +56,7 @@
 
             </div>
             <!-- /.row -->
-            <%});%>
+            <%}});%>
 
     </div>
     <!-- /.container -->
