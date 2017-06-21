@@ -1,1 +1,1 @@
-webpackJsonp([1],{0:function(n,c,t){"use strict";t(2),t(34)},34:function(n,c){}});
+webpackJsonp([1],[function(c,n,s){"use strict";s(2)}]);
