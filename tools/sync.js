@@ -43,6 +43,13 @@ function sync_releases() {
 
     info.forEach(e => {
         e.html = marked(e.body);
+        e.assets.sort((a1, a2) => {
+            if (a1.name < a2.name)
+                return -1;
+            if (a1.name > a2.name)
+                return 1;
+            return 0;
+        });
     });
 
     function gen_page() {
