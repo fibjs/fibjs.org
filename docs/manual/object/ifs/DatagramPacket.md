@@ -4,14 +4,14 @@ UDP 数据包
 ## 成员函数
         
 ### dispose
-强制回收对象，调用此方法后，对象资源将立即释放
+** 强制回收对象，调用此方法后，对象资源将立即释放 **
 ```JavaScript
 DatagramPacket.dispose();
 ```
 
 --------------------------
 ### equals
-比较当前对象与给定的对象是否相等
+** 比较当前对象与给定的对象是否相等 **
 ```JavaScript
 Boolean DatagramPacket.equals(object expected);
 ```
@@ -24,7 +24,7 @@ Boolean DatagramPacket.equals(object expected);
 
 --------------------------
 ### toString
-返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现
+** 返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现 **
 ```JavaScript
 String DatagramPacket.toString();
 ```
@@ -34,7 +34,7 @@ String DatagramPacket.toString();
 
 --------------------------
 ### toJSON
-返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合
+** 返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合 **
 ```JavaScript
 Value DatagramPacket.toJSON(String key = "");
 ```
@@ -47,7 +47,7 @@ Value DatagramPacket.toJSON(String key = "");
 
 --------------------------
 ### valueOf
-返回对象本身的数值
+** 返回对象本身的数值 **
 ```JavaScript
 Value DatagramPacket.valueOf();
 ```
@@ -58,21 +58,21 @@ Value DatagramPacket.valueOf();
 ## 成员属性
         
 ### data
-[Buffer](Buffer.md), 查询返回的数据
+** [Buffer](Buffer.md), 查询返回的数据 **
 ```JavaScript
 readonly Buffer DatagramPacket.data;
 ```
 
 --------------------------
 ### address
-String, 查询数据包来源地址
+** String, 查询数据包来源地址 **
 ```JavaScript
 readonly String DatagramPacket.address;
 ```
 
 --------------------------
 ### port
-Integer, 查询数据包来源端口
+** Integer, 查询数据包来源端口 **
 ```JavaScript
 readonly Integer DatagramPacket.port;
 ```

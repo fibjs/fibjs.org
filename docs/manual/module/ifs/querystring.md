@@ -9,7 +9,7 @@ var querystring = require('querystring');
 ## 静态函数
         
 ### escape
-[url](url.md) 部件字符串安全编码
+** [url](url.md) 部件字符串安全编码 **
 ```JavaScript
 static String querystring.escape(String str);
 ```
@@ -22,7 +22,7 @@ static String querystring.escape(String str);
 
 --------------------------
 ### unescape
-[url](url.md) 安全字符串解码
+** [url](url.md) 安全字符串解码 **
 ```JavaScript
 static String querystring.unescape(String str);
 ```
@@ -35,7 +35,7 @@ static String querystring.unescape(String str);
 
 --------------------------
 ### parse
-解析 query 字符串
+** 解析 query 字符串 **
 ```JavaScript
 static HttpCollection querystring.parse(String str,
                 String sep = "&",
@@ -53,7 +53,7 @@ static HttpCollection querystring.parse(String str,
 
 --------------------------
 ### stringify
-序列化一个对象为 query 字符串
+** 序列化一个对象为 query 字符串 **
 ```JavaScript
 static String querystring.stringify(Object obj,
                 String sep = "&",

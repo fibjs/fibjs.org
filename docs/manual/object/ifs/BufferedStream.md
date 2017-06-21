@@ -9,7 +9,7 @@ var reader = new io.BufferedStream(stream);
 ## 构造函数
         
 ### BufferedStream
-BufferedStream 构造函数
+** BufferedStream 构造函数 **
 ```JavaScript
  new BufferedStream(Stream stm);
 ```
@@ -20,7 +20,7 @@ BufferedStream 构造函数
 ## 成员函数
         
 ### readText
-读取指定字符的文本
+** 读取指定字符的文本 **
 ```JavaScript
 String BufferedStream.readText(Integer size) async;
 ```
@@ -33,7 +33,7 @@ String BufferedStream.readText(Integer size) async;
 
 --------------------------
 ### readLine
-读取一行文本，行结尾标识基于 EOL 属性的设置，缺省时，posix:\"\\n\"；windows:\"\\r\\n\"
+** 读取一行文本，行结尾标识基于 EOL 属性的设置，缺省时，posix:\"\\n\"；windows:\"\\r\\n\" **
 ```JavaScript
 String BufferedStream.readLine(Integer maxlen = -1) async;
 ```
@@ -46,7 +46,7 @@ String BufferedStream.readLine(Integer maxlen = -1) async;
 
 --------------------------
 ### readLines
-以数组方式读取一组文本行，行结尾标识基于 EOL 属性的设置，缺省时，posix:\"\\n\"；windows:\"\\r\\n\"
+** 以数组方式读取一组文本行，行结尾标识基于 EOL 属性的设置，缺省时，posix:\"\\n\"；windows:\"\\r\\n\" **
 ```JavaScript
 Array BufferedStream.readLines(Integer maxlines = -1);
 ```
@@ -59,7 +59,7 @@ Array BufferedStream.readLines(Integer maxlines = -1);
 
 --------------------------
 ### readUntil
-读取一个文本字符串，以指定的字节为结尾
+** 读取一个文本字符串，以指定的字节为结尾 **
 ```JavaScript
 String BufferedStream.readUntil(String mk,
                 Integer maxlen = -1) async;
@@ -74,7 +74,7 @@ String BufferedStream.readUntil(String mk,
 
 --------------------------
 ### writeText
-写入一个字符串
+** 写入一个字符串 **
 ```JavaScript
 BufferedStream.writeText(String txt) async;
 ```
@@ -84,7 +84,7 @@ BufferedStream.writeText(String txt) async;
 
 --------------------------
 ### writeLine
-写入一个字符串，并写入换行符
+** 写入一个字符串，并写入换行符 **
 ```JavaScript
 BufferedStream.writeLine(String txt) async;
 ```
@@ -94,7 +94,7 @@ BufferedStream.writeLine(String txt) async;
 
 --------------------------
 ### read
-从流内读取指定大小的数据
+** 从流内读取指定大小的数据 **
 ```JavaScript
 Buffer BufferedStream.read(Integer bytes = -1) async;
 ```
@@ -107,7 +107,7 @@ Buffer BufferedStream.read(Integer bytes = -1) async;
 
 --------------------------
 ### write
-将给定的数据写入流
+** 将给定的数据写入流 **
 ```JavaScript
 BufferedStream.write(Buffer data) async;
 ```
@@ -117,14 +117,14 @@ BufferedStream.write(Buffer data) async;
 
 --------------------------
 ### close
-关闭当前流对象
+** 关闭当前流对象 **
 ```JavaScript
 BufferedStream.close() async;
 ```
 
 --------------------------
 ### copyTo
-复制流数据到目标流中
+** 复制流数据到目标流中 **
 ```JavaScript
 Long BufferedStream.copyTo(Stream stm,
                 Long bytes = -1) async;
@@ -139,14 +139,14 @@ Long BufferedStream.copyTo(Stream stm,
 
 --------------------------
 ### dispose
-强制回收对象，调用此方法后，对象资源将立即释放
+** 强制回收对象，调用此方法后，对象资源将立即释放 **
 ```JavaScript
 BufferedStream.dispose();
 ```
 
 --------------------------
 ### equals
-比较当前对象与给定的对象是否相等
+** 比较当前对象与给定的对象是否相等 **
 ```JavaScript
 Boolean BufferedStream.equals(object expected);
 ```
@@ -159,7 +159,7 @@ Boolean BufferedStream.equals(object expected);
 
 --------------------------
 ### toString
-返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现
+** 返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现 **
 ```JavaScript
 String BufferedStream.toString();
 ```
@@ -169,7 +169,7 @@ String BufferedStream.toString();
 
 --------------------------
 ### toJSON
-返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合
+** 返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合 **
 ```JavaScript
 Value BufferedStream.toJSON(String key = "");
 ```
@@ -182,7 +182,7 @@ Value BufferedStream.toJSON(String key = "");
 
 --------------------------
 ### valueOf
-返回对象本身的数值
+** 返回对象本身的数值 **
 ```JavaScript
 Value BufferedStream.valueOf();
 ```
@@ -193,21 +193,21 @@ Value BufferedStream.valueOf();
 ## 成员属性
         
 ### stream
-[Stream](Stream.md), 查询创建缓存对象时的流对象
+** [Stream](Stream.md), 查询创建缓存对象时的流对象 **
 ```JavaScript
 readonly Stream BufferedStream.stream;
 ```
 
 --------------------------
 ### charset
-String, 查询和设置当前对象处理文本时的字符集，缺省为 utf-8
+** String, 查询和设置当前对象处理文本时的字符集，缺省为 utf-8 **
 ```JavaScript
 String BufferedStream.charset;
 ```
 
 --------------------------
 ### EOL
-String, 查询和设置行结尾标识，缺省时，posix:\"\\n\"；windows:\"\\r\\n\"
+** String, 查询和设置行结尾标识，缺省时，posix:\"\\n\"；windows:\"\\r\\n\" **
 ```JavaScript
 String BufferedStream.EOL;
 ```

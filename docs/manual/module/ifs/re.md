@@ -4,7 +4,7 @@
 ## 静态函数
         
 ### compile
-编译一个正则表达式模版，并返回正则表达式处理对象
+** 编译一个正则表达式模版，并返回正则表达式处理对象 **
 ```JavaScript
 static Regex re.compile(String pattern,
                 String opt = "");

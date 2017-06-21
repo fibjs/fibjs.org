@@ -9,7 +9,7 @@ var k = new crypto.PKey();
 ## 构造函数
         
 ### PKey
-PKey 构造函数
+** PKey 构造函数 **
 ```JavaScript
  new PKey();
 ```
@@ -17,7 +17,7 @@ PKey 构造函数
 ## 成员函数
         
 ### genRsaKey
-生成一个 RSA 私钥
+** 生成一个 RSA 私钥 **
 ```JavaScript
 PKey.genRsaKey(Integer size) async;
 ```
@@ -27,7 +27,7 @@ PKey.genRsaKey(Integer size) async;
 
 --------------------------
 ### genEcKey
-生成一个 EC 私钥
+** 生成一个 EC 私钥 **
 ```JavaScript
 PKey.genEcKey(String curve = "secp521r1") async;
 ```
@@ -37,7 +37,7 @@ PKey.genEcKey(String curve = "secp521r1") async;
 
 --------------------------
 ### isPrivate
-查询当前密钥是否为私钥
+** 查询当前密钥是否为私钥 **
 ```JavaScript
 Boolean PKey.isPrivate();
 ```
@@ -47,7 +47,7 @@ Boolean PKey.isPrivate();
 
 --------------------------
 ### clone
-复制当前密钥
+** 复制当前密钥 **
 ```JavaScript
 PKey PKey.clone();
 ```
@@ -57,7 +57,7 @@ PKey PKey.clone();
 
 --------------------------
 ### importKey
-加载一个 DER 格式的密钥
+** 加载一个 DER 格式的密钥 **
 ```JavaScript
 PKey.importKey(Buffer DerKey,
                 String password = "");
@@ -68,7 +68,7 @@ PKey.importKey(Buffer DerKey,
 * password: String, 解密密码
 
 --------------------------
-加载一个 PEM 格式的密钥
+** 加载一个 PEM 格式的密钥 **
 ```JavaScript
 PKey.importKey(String pemKey,
                 String password = "");
@@ -80,7 +80,7 @@ PKey.importKey(String pemKey,
 
 --------------------------
 ### importFile
-加载一个 PEM/DER 格式的密钥文件
+** 加载一个 PEM/DER 格式的密钥文件 **
 ```JavaScript
 PKey.importFile(String filename,
                 String password = "");
@@ -92,7 +92,7 @@ PKey.importFile(String filename,
 
 --------------------------
 ### exportPem
-返回当前 key 的 PEM 格式编码
+** 返回当前 key 的 PEM 格式编码 **
 ```JavaScript
 String PKey.exportPem();
 ```
@@ -102,7 +102,7 @@ String PKey.exportPem();
 
 --------------------------
 ### exportDer
-返回当前 key 的 DER 格式编码
+** 返回当前 key 的 DER 格式编码 **
 ```JavaScript
 Buffer PKey.exportDer();
 ```
@@ -112,7 +112,7 @@ Buffer PKey.exportDer();
 
 --------------------------
 ### encrypt
-使用当前算法密码公钥加密数据
+** 使用当前算法密码公钥加密数据 **
 ```JavaScript
 Buffer PKey.encrypt(Buffer data) async;
 ```
@@ -125,7 +125,7 @@ Buffer PKey.encrypt(Buffer data) async;
 
 --------------------------
 ### decrypt
-使用当前算法密码私钥解密数据
+** 使用当前算法密码私钥解密数据 **
 ```JavaScript
 Buffer PKey.decrypt(Buffer data) async;
 ```
@@ -138,7 +138,7 @@ Buffer PKey.decrypt(Buffer data) async;
 
 --------------------------
 ### sign
-使用当前算法密码私钥签名数据
+** 使用当前算法密码私钥签名数据 **
 ```JavaScript
 Buffer PKey.sign(Buffer data,
                 Integer alg = 0) async;
@@ -153,7 +153,7 @@ Buffer PKey.sign(Buffer data,
 
 --------------------------
 ### verify
-使用当前算法密码公钥验证数据
+** 使用当前算法密码公钥验证数据 **
 ```JavaScript
 Boolean PKey.verify(Buffer sign,
                 Buffer data) async;
@@ -168,14 +168,14 @@ Boolean PKey.verify(Buffer sign,
 
 --------------------------
 ### dispose
-强制回收对象，调用此方法后，对象资源将立即释放
+** 强制回收对象，调用此方法后，对象资源将立即释放 **
 ```JavaScript
 PKey.dispose();
 ```
 
 --------------------------
 ### equals
-比较当前对象与给定的对象是否相等
+** 比较当前对象与给定的对象是否相等 **
 ```JavaScript
 Boolean PKey.equals(object expected);
 ```
@@ -188,7 +188,7 @@ Boolean PKey.equals(object expected);
 
 --------------------------
 ### toString
-返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现
+** 返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现 **
 ```JavaScript
 String PKey.toString();
 ```
@@ -198,7 +198,7 @@ String PKey.toString();
 
 --------------------------
 ### toJSON
-返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合
+** 返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合 **
 ```JavaScript
 Value PKey.toJSON(String key = "");
 ```
@@ -211,7 +211,7 @@ Value PKey.toJSON(String key = "");
 
 --------------------------
 ### valueOf
-返回对象本身的数值
+** 返回对象本身的数值 **
 ```JavaScript
 Value PKey.valueOf();
 ```
@@ -222,21 +222,21 @@ Value PKey.valueOf();
 ## 成员属性
         
 ### name
-String, 返回当前算法名称
+** String, 返回当前算法名称 **
 ```JavaScript
 readonly String PKey.name;
 ```
 
 --------------------------
 ### keySize
-Integer, 返回当前算法密码长度，以位为单位
+** Integer, 返回当前算法密码长度，以位为单位 **
 ```JavaScript
 readonly Integer PKey.keySize;
 ```
 
 --------------------------
 ### publicKey
-PKey, 返回当前密钥的公钥
+** PKey, 返回当前密钥的公钥 **
 ```JavaScript
 readonly PKey PKey.publicKey;
 ```

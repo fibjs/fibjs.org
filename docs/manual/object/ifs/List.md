@@ -10,13 +10,13 @@ var a = new collection.List();
 ## 构造函数
         
 ### List
-List 对象构造函数
+** List 对象构造函数 **
 ```JavaScript
  new List();
 ```
 
 --------------------------
-List 对象构造函数
+** List 对象构造函数 **
 ```JavaScript
  new List(Array data);
 ```
@@ -26,7 +26,7 @@ List 对象构造函数
 
 ## 下标操作
         
-数组可使用下标直接访问 Variant 数据
+** 数组可使用下标直接访问 Variant 数据 **
 ```JavaScript
 Variant List[];
 ```
@@ -34,14 +34,14 @@ Variant List[];
 ## 成员函数
         
 ### freeze
-冻结数组内容，禁止一些修改操作
+** 冻结数组内容，禁止一些修改操作 **
 ```JavaScript
 List.freeze();
 ```
 
 --------------------------
 ### resize
-修改数组尺寸
+** 修改数组尺寸 **
 ```JavaScript
 List.resize(Integer sz);
 ```
@@ -51,7 +51,7 @@ List.resize(Integer sz);
 
 --------------------------
 ### push
-在数组结尾添加一个元素
+** 在数组结尾添加一个元素 **
 ```JavaScript
 Integer List.push(Variant v);
 ```
@@ -64,7 +64,7 @@ Integer List.push(Variant v);
 
 --------------------------
 ### indexOf
-返回在list中可以找到给定元素的第一个索引，如果不存在，则返回-1
+** 返回在list中可以找到给定元素的第一个索引，如果不存在，则返回-1 **
 ```JavaScript
 Integer List.indexOf(Variant searchElement,
                 Integer fromIndex = 0);
@@ -84,7 +84,7 @@ Integer List.indexOf(Variant searchElement,
 
 --------------------------
 ### lastIndexOf
-lastIndexOf() 方法返回指定元素在数组中的最后一个的索引，如果不存在则返回 -1。从数组的后面向前查找，从 fromIndex 处开始。
+** lastIndexOf() 方法返回指定元素在数组中的最后一个的索引，如果不存在则返回 -1。从数组的后面向前查找，从 fromIndex 处开始。 **
 ```JavaScript
 Integer List.lastIndexOf(Variant searchElement,
                 Integer fromIndex = 0);
@@ -103,7 +103,7 @@ Integer List.lastIndexOf(Variant searchElement,
 
 --------------------------
 ### push
-在数组结尾添加一个元素
+** 在数组结尾添加一个元素 **
 ```JavaScript
 Integer List.push(...);
 ```
@@ -116,7 +116,7 @@ Integer List.push(...);
 
 --------------------------
 ### pushArray
-在数组结尾添加一组元素
+** 在数组结尾添加一组元素 **
 ```JavaScript
 List.pushArray(Array data);
 ```
@@ -126,7 +126,7 @@ List.pushArray(Array data);
 
 --------------------------
 ### pop
-返回数组结尾的一个元素
+** 返回数组结尾的一个元素 **
 ```JavaScript
 Variant List.pop();
 ```
@@ -136,7 +136,7 @@ Variant List.pop();
 
 --------------------------
 ### slice
-返回一个新数组，包含指定范围的数据，若范围超出缓存，则只返回有效部分数据
+** 返回一个新数组，包含指定范围的数据，若范围超出缓存，则只返回有效部分数据 **
 ```JavaScript
 List List.slice(Integer start = 0,
                 Integer end = -1);
@@ -151,7 +151,7 @@ List List.slice(Integer start = 0,
 
 --------------------------
 ### concat
-将当前数组与给定的一个或者多个数组合并
+** 将当前数组与给定的一个或者多个数组合并 **
 ```JavaScript
 List List.concat(...);
 ```
@@ -164,7 +164,7 @@ List List.concat(...);
 
 --------------------------
 ### every
-检测全部数据是否通过测试函数
+** 检测全部数据是否通过测试函数 **
 ```JavaScript
 Boolean List.every(Function func,
                 Value thisArg = undefined);
@@ -179,7 +179,7 @@ Boolean List.every(Function func,
 
 --------------------------
 ### some
-检测一些数据是否通过测试函数
+** 检测一些数据是否通过测试函数 **
 ```JavaScript
 Boolean List.some(Function func,
                 Value thisArg = undefined);
@@ -194,7 +194,7 @@ Boolean List.some(Function func,
 
 --------------------------
 ### filter
-过滤通过测试的数据成为一个新的数组
+** 过滤通过测试的数据成为一个新的数组 **
 ```JavaScript
 List List.filter(Function func,
                 Value thisArg = undefined);
@@ -209,7 +209,7 @@ List List.filter(Function func,
 
 --------------------------
 ### forEach
-遍历处理全部数据
+** 遍历处理全部数据 **
 ```JavaScript
 List.forEach(Function func,
                 Value thisArg = undefined);
@@ -221,7 +221,7 @@ List.forEach(Function func,
 
 --------------------------
 ### map
-遍历处理全部数据并返回结果
+** 遍历处理全部数据并返回结果 **
 ```JavaScript
 List List.map(Function func,
                 Value thisArg = undefined);
@@ -236,7 +236,7 @@ List List.map(Function func,
 
 --------------------------
 ### reduce
-遍历处理全部数据并返回累积结果
+** 遍历处理全部数据并返回累积结果 **
 ```JavaScript
 Value List.reduce(Function func,
                 Value initVal = undefined);
@@ -251,7 +251,7 @@ Value List.reduce(Function func,
 
 --------------------------
 ### sort
-排序全部数据并返回列表本身
+** 排序全部数据并返回列表本身 **
 ```JavaScript
 List List.sort(Function func);
 ```
@@ -263,7 +263,7 @@ List List.sort(Function func);
 * List, 列表本身
 
 --------------------------
-排序全部数据并返回列表本身
+** 排序全部数据并返回列表本身 **
 ```JavaScript
 List List.sort();
 ```
@@ -273,7 +273,7 @@ List List.sort();
 
 --------------------------
 ### toArray
-返回列表的 js 数组
+** 返回列表的 js 数组 **
 ```JavaScript
 Array List.toArray();
 ```
@@ -283,14 +283,14 @@ Array List.toArray();
 
 --------------------------
 ### dispose
-强制回收对象，调用此方法后，对象资源将立即释放
+** 强制回收对象，调用此方法后，对象资源将立即释放 **
 ```JavaScript
 List.dispose();
 ```
 
 --------------------------
 ### equals
-比较当前对象与给定的对象是否相等
+** 比较当前对象与给定的对象是否相等 **
 ```JavaScript
 Boolean List.equals(object expected);
 ```
@@ -303,7 +303,7 @@ Boolean List.equals(object expected);
 
 --------------------------
 ### toString
-返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现
+** 返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现 **
 ```JavaScript
 String List.toString();
 ```
@@ -313,7 +313,7 @@ String List.toString();
 
 --------------------------
 ### toJSON
-返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合
+** 返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合 **
 ```JavaScript
 Value List.toJSON(String key = "");
 ```
@@ -326,7 +326,7 @@ Value List.toJSON(String key = "");
 
 --------------------------
 ### valueOf
-返回对象本身的数值
+** 返回对象本身的数值 **
 ```JavaScript
 Value List.valueOf();
 ```
@@ -337,7 +337,7 @@ Value List.valueOf();
 ## 成员属性
         
 ### length
-Integer, 获取数组的尺寸
+** Integer, 获取数组的尺寸 **
 ```JavaScript
 readonly Integer List.length;
 ```

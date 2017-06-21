@@ -4,14 +4,14 @@
 ## 成员函数
         
 ### freeze
-冻结数组内容，禁止一些修改操作
+** 冻结数组内容，禁止一些修改操作 **
 ```JavaScript
 DBResult.freeze();
 ```
 
 --------------------------
 ### resize
-修改数组尺寸
+** 修改数组尺寸 **
 ```JavaScript
 DBResult.resize(Integer sz);
 ```
@@ -21,7 +21,7 @@ DBResult.resize(Integer sz);
 
 --------------------------
 ### push
-在数组结尾添加一个元素
+** 在数组结尾添加一个元素 **
 ```JavaScript
 Integer DBResult.push(Variant v);
 ```
@@ -34,7 +34,7 @@ Integer DBResult.push(Variant v);
 
 --------------------------
 ### indexOf
-返回在list中可以找到给定元素的第一个索引，如果不存在，则返回-1
+** 返回在list中可以找到给定元素的第一个索引，如果不存在，则返回-1 **
 ```JavaScript
 Integer DBResult.indexOf(Variant searchElement,
                 Integer fromIndex = 0);
@@ -54,7 +54,7 @@ Integer DBResult.indexOf(Variant searchElement,
 
 --------------------------
 ### lastIndexOf
-lastIndexOf() 方法返回指定元素在数组中的最后一个的索引，如果不存在则返回 -1。从数组的后面向前查找，从 fromIndex 处开始。
+** lastIndexOf() 方法返回指定元素在数组中的最后一个的索引，如果不存在则返回 -1。从数组的后面向前查找，从 fromIndex 处开始。 **
 ```JavaScript
 Integer DBResult.lastIndexOf(Variant searchElement,
                 Integer fromIndex = 0);
@@ -73,7 +73,7 @@ Integer DBResult.lastIndexOf(Variant searchElement,
 
 --------------------------
 ### push
-在数组结尾添加一个元素
+** 在数组结尾添加一个元素 **
 ```JavaScript
 Integer DBResult.push(...);
 ```
@@ -86,7 +86,7 @@ Integer DBResult.push(...);
 
 --------------------------
 ### pushArray
-在数组结尾添加一组元素
+** 在数组结尾添加一组元素 **
 ```JavaScript
 DBResult.pushArray(Array data);
 ```
@@ -96,7 +96,7 @@ DBResult.pushArray(Array data);
 
 --------------------------
 ### pop
-返回数组结尾的一个元素
+** 返回数组结尾的一个元素 **
 ```JavaScript
 Variant DBResult.pop();
 ```
@@ -106,7 +106,7 @@ Variant DBResult.pop();
 
 --------------------------
 ### slice
-返回一个新数组，包含指定范围的数据，若范围超出缓存，则只返回有效部分数据
+** 返回一个新数组，包含指定范围的数据，若范围超出缓存，则只返回有效部分数据 **
 ```JavaScript
 List DBResult.slice(Integer start = 0,
                 Integer end = -1);
@@ -121,7 +121,7 @@ List DBResult.slice(Integer start = 0,
 
 --------------------------
 ### concat
-将当前数组与给定的一个或者多个数组合并
+** 将当前数组与给定的一个或者多个数组合并 **
 ```JavaScript
 List DBResult.concat(...);
 ```
@@ -134,7 +134,7 @@ List DBResult.concat(...);
 
 --------------------------
 ### every
-检测全部数据是否通过测试函数
+** 检测全部数据是否通过测试函数 **
 ```JavaScript
 Boolean DBResult.every(Function func,
                 Value thisArg = undefined);
@@ -149,7 +149,7 @@ Boolean DBResult.every(Function func,
 
 --------------------------
 ### some
-检测一些数据是否通过测试函数
+** 检测一些数据是否通过测试函数 **
 ```JavaScript
 Boolean DBResult.some(Function func,
                 Value thisArg = undefined);
@@ -164,7 +164,7 @@ Boolean DBResult.some(Function func,
 
 --------------------------
 ### filter
-过滤通过测试的数据成为一个新的数组
+** 过滤通过测试的数据成为一个新的数组 **
 ```JavaScript
 List DBResult.filter(Function func,
                 Value thisArg = undefined);
@@ -179,7 +179,7 @@ List DBResult.filter(Function func,
 
 --------------------------
 ### forEach
-遍历处理全部数据
+** 遍历处理全部数据 **
 ```JavaScript
 DBResult.forEach(Function func,
                 Value thisArg = undefined);
@@ -191,7 +191,7 @@ DBResult.forEach(Function func,
 
 --------------------------
 ### map
-遍历处理全部数据并返回结果
+** 遍历处理全部数据并返回结果 **
 ```JavaScript
 List DBResult.map(Function func,
                 Value thisArg = undefined);
@@ -206,7 +206,7 @@ List DBResult.map(Function func,
 
 --------------------------
 ### reduce
-遍历处理全部数据并返回累积结果
+** 遍历处理全部数据并返回累积结果 **
 ```JavaScript
 Value DBResult.reduce(Function func,
                 Value initVal = undefined);
@@ -221,7 +221,7 @@ Value DBResult.reduce(Function func,
 
 --------------------------
 ### sort
-排序全部数据并返回列表本身
+** 排序全部数据并返回列表本身 **
 ```JavaScript
 List DBResult.sort(Function func);
 ```
@@ -233,7 +233,7 @@ List DBResult.sort(Function func);
 * List, 列表本身
 
 --------------------------
-排序全部数据并返回列表本身
+** 排序全部数据并返回列表本身 **
 ```JavaScript
 List DBResult.sort();
 ```
@@ -243,7 +243,7 @@ List DBResult.sort();
 
 --------------------------
 ### toArray
-返回列表的 js 数组
+** 返回列表的 js 数组 **
 ```JavaScript
 Array DBResult.toArray();
 ```
@@ -253,14 +253,14 @@ Array DBResult.toArray();
 
 --------------------------
 ### dispose
-强制回收对象，调用此方法后，对象资源将立即释放
+** 强制回收对象，调用此方法后，对象资源将立即释放 **
 ```JavaScript
 DBResult.dispose();
 ```
 
 --------------------------
 ### equals
-比较当前对象与给定的对象是否相等
+** 比较当前对象与给定的对象是否相等 **
 ```JavaScript
 Boolean DBResult.equals(object expected);
 ```
@@ -273,7 +273,7 @@ Boolean DBResult.equals(object expected);
 
 --------------------------
 ### toString
-返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现
+** 返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现 **
 ```JavaScript
 String DBResult.toString();
 ```
@@ -283,7 +283,7 @@ String DBResult.toString();
 
 --------------------------
 ### toJSON
-返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合
+** 返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合 **
 ```JavaScript
 Value DBResult.toJSON(String key = "");
 ```
@@ -296,7 +296,7 @@ Value DBResult.toJSON(String key = "");
 
 --------------------------
 ### valueOf
-返回对象本身的数值
+** 返回对象本身的数值 **
 ```JavaScript
 Value DBResult.valueOf();
 ```
@@ -307,28 +307,28 @@ Value DBResult.valueOf();
 ## 成员属性
         
 ### insertId
-Long, 查询当前操作插入数据库的 rowid
+** Long, 查询当前操作插入数据库的 rowid **
 ```JavaScript
 readonly Long DBResult.insertId;
 ```
 
 --------------------------
 ### affected
-Long, 查询当前操作影响的数据库条目数
+** Long, 查询当前操作影响的数据库条目数 **
 ```JavaScript
 readonly Long DBResult.affected;
 ```
 
 --------------------------
 ### fields
-Array, 查询当前结果的字段名数组
+** Array, 查询当前结果的字段名数组 **
 ```JavaScript
 readonly Array DBResult.fields;
 ```
 
 --------------------------
 ### length
-Integer, 获取数组的尺寸
+** Integer, 获取数组的尺寸 **
 ```JavaScript
 readonly Integer DBResult.length;
 ```

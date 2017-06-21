@@ -8,7 +8,7 @@ var mdb = db.openMongoDB("mongodb://host/db");
 
 ## 下标操作
         
-快速获取指定集合访问对象
+** 快速获取指定集合访问对象 **
 ```JavaScript
 readonly MongoCollection MongoDB[String];
 ```
@@ -21,7 +21,7 @@ var test = mdb.test;
 ## 成员函数
         
 ### getCollection
-获取指定集合访问对象
+** 获取指定集合访问对象 **
 ```JavaScript
 MongoCollection MongoDB.getCollection(String name);
 ```
@@ -34,7 +34,7 @@ MongoCollection MongoDB.getCollection(String name);
 
 --------------------------
 ### runCommand
-指定一个 MongoDB 数据库命令
+** 指定一个 MongoDB 数据库命令 **
 ```JavaScript
 Object MongoDB.runCommand(Object cmd);
 ```
@@ -46,7 +46,7 @@ Object MongoDB.runCommand(Object cmd);
 * Object, 返回命令执行结果
 
 --------------------------
-指定一个简单的 MongoDB 数据库命令
+** 指定一个简单的 MongoDB 数据库命令 **
 ```JavaScript
 Object MongoDB.runCommand(String cmd,
                 Value arg);
@@ -61,7 +61,7 @@ Object MongoDB.runCommand(String cmd,
 
 --------------------------
 ### oid
-生成一个 mongodb _objectid 对象
+** 生成一个 mongodb _objectid 对象 **
 ```JavaScript
 MongoID MongoDB.oid(String hexStr = "");
 ```
@@ -74,21 +74,21 @@ MongoID MongoDB.oid(String hexStr = "");
 
 --------------------------
 ### close
-关闭当前数据库连接
+** 关闭当前数据库连接 **
 ```JavaScript
 MongoDB.close() async;
 ```
 
 --------------------------
 ### dispose
-强制回收对象，调用此方法后，对象资源将立即释放
+** 强制回收对象，调用此方法后，对象资源将立即释放 **
 ```JavaScript
 MongoDB.dispose();
 ```
 
 --------------------------
 ### equals
-比较当前对象与给定的对象是否相等
+** 比较当前对象与给定的对象是否相等 **
 ```JavaScript
 Boolean MongoDB.equals(object expected);
 ```
@@ -101,7 +101,7 @@ Boolean MongoDB.equals(object expected);
 
 --------------------------
 ### toString
-返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现
+** 返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现 **
 ```JavaScript
 String MongoDB.toString();
 ```
@@ -111,7 +111,7 @@ String MongoDB.toString();
 
 --------------------------
 ### toJSON
-返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合
+** 返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合 **
 ```JavaScript
 Value MongoDB.toJSON(String key = "");
 ```
@@ -124,7 +124,7 @@ Value MongoDB.toJSON(String key = "");
 
 --------------------------
 ### valueOf
-返回对象本身的数值
+** 返回对象本身的数值 **
 ```JavaScript
 Value MongoDB.valueOf();
 ```
@@ -135,7 +135,7 @@ Value MongoDB.valueOf();
 ## 成员属性
         
 ### fs
-[GridFS](GridFS.md), 获取 [GridFS](GridFS.md) 访问对象
+** [GridFS](GridFS.md), 获取 [GridFS](GridFS.md) 访问对象 **
 ```JavaScript
 readonly GridFS MongoDB.fs;
 ```

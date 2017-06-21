@@ -4,7 +4,7 @@ mongodb 数据库数据游标对象
 ## 成员函数
         
 ### skip
-指定返回结果时跳过的记录数
+** 指定返回结果时跳过的记录数 **
 ```JavaScript
 MongoCursor MongoCursor.skip(Integer num) async;
 ```
@@ -17,7 +17,7 @@ MongoCursor MongoCursor.skip(Integer num) async;
 
 --------------------------
 ### limit
-指定返回结果的最大记录数
+** 指定返回结果的最大记录数 **
 ```JavaScript
 MongoCursor MongoCursor.limit(Integer size) async;
 ```
@@ -30,7 +30,7 @@ MongoCursor MongoCursor.limit(Integer size) async;
 
 --------------------------
 ### sort
-设定返回结果的排序
+** 设定返回结果的排序 **
 ```JavaScript
 MongoCursor MongoCursor.sort(Object opts);
 ```
@@ -43,7 +43,7 @@ MongoCursor MongoCursor.sort(Object opts);
 
 --------------------------
 ### hasNext
-查询当前游标是否有下一条记录
+** 查询当前游标是否有下一条记录 **
 ```JavaScript
 Boolean MongoCursor.hasNext();
 ```
@@ -53,7 +53,7 @@ Boolean MongoCursor.hasNext();
 
 --------------------------
 ### next
-返回当前游标的下一条记录
+** 返回当前游标的下一条记录 **
 ```JavaScript
 Object MongoCursor.next();
 ```
@@ -63,7 +63,7 @@ Object MongoCursor.next();
 
 --------------------------
 ### count
-查询游标的记录总数
+** 查询游标的记录总数 **
 ```JavaScript
 Integer MongoCursor.count(Boolean applySkipLimit = false);
 ```
@@ -76,7 +76,7 @@ Integer MongoCursor.count(Boolean applySkipLimit = false);
 
 --------------------------
 ### size
-查询游标的记录总数，相当于 count(true)
+** 查询游标的记录总数，相当于 count(true) **
 ```JavaScript
 Integer MongoCursor.size();
 ```
@@ -86,7 +86,7 @@ Integer MongoCursor.size();
 
 --------------------------
 ### forEach
-遍历全部记录并回调处理函数
+** 遍历全部记录并回调处理函数 **
 ```JavaScript
 MongoCursor.forEach(Function func);
 ```
@@ -96,7 +96,7 @@ MongoCursor.forEach(Function func);
 
 --------------------------
 ### map
-遍历处理全部记录，并返回处理结果
+** 遍历处理全部记录，并返回处理结果 **
 ```JavaScript
 Array MongoCursor.map(Function func);
 ```
@@ -109,7 +109,7 @@ Array MongoCursor.map(Function func);
 
 --------------------------
 ### toArray
-返回当前游标全部记录的数组
+** 返回当前游标全部记录的数组 **
 ```JavaScript
 Array MongoCursor.toArray();
 ```
@@ -119,7 +119,7 @@ Array MongoCursor.toArray();
 
 --------------------------
 ### hint
-修改 mongodb 服务器缺省索引策略，使用指定的索引进行查询
+** 修改 mongodb 服务器缺省索引策略，使用指定的索引进行查询 **
 ```JavaScript
 MongoCursor MongoCursor.hint(Object opts);
 ```
@@ -132,14 +132,14 @@ MongoCursor MongoCursor.hint(Object opts);
 
 --------------------------
 ### dispose
-强制回收对象，调用此方法后，对象资源将立即释放
+** 强制回收对象，调用此方法后，对象资源将立即释放 **
 ```JavaScript
 MongoCursor.dispose();
 ```
 
 --------------------------
 ### equals
-比较当前对象与给定的对象是否相等
+** 比较当前对象与给定的对象是否相等 **
 ```JavaScript
 Boolean MongoCursor.equals(object expected);
 ```
@@ -152,7 +152,7 @@ Boolean MongoCursor.equals(object expected);
 
 --------------------------
 ### toString
-返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现
+** 返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现 **
 ```JavaScript
 String MongoCursor.toString();
 ```
@@ -162,7 +162,7 @@ String MongoCursor.toString();
 
 --------------------------
 ### toJSON
-返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合
+** 返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合 **
 ```JavaScript
 Value MongoCursor.toJSON(String key = "");
 ```
@@ -175,7 +175,7 @@ Value MongoCursor.toJSON(String key = "");
 
 --------------------------
 ### valueOf
-返回对象本身的数值
+** 返回对象本身的数值 **
 ```JavaScript
 Value MongoCursor.valueOf();
 ```

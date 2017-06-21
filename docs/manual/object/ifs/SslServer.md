@@ -19,7 +19,7 @@ var svr = new http.Server(crt, key, function(req){
 ## 构造函数
         
 ### SslServer
-SslServer 构造函数，在所有本机地址侦听
+** SslServer 构造函数，在所有本机地址侦听 **
 ```JavaScript
  new SslServer(Array certs,
                 Integer port,
@@ -46,7 +46,7 @@ certs 格式为：
 ```
 
 --------------------------
-SslServer 构造函数
+** SslServer 构造函数 **
 ```JavaScript
  new SslServer(Array certs,
                 String addr,
@@ -75,7 +75,7 @@ certs 格式为：
 ```
 
 --------------------------
-SslServer 构造函数，在所有本机地址侦听
+** SslServer 构造函数，在所有本机地址侦听 **
 ```JavaScript
  new SslServer(X509Cert crt,
                 PKey key,
@@ -90,7 +90,7 @@ SslServer 构造函数，在所有本机地址侦听
 * listener: [Handler](Handler.md), 指定 [ssl](../../module/ifs/ssl.md) 接收到的内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq](../../module/ifs/mq.md).[Handler](Handler.md)
 
 --------------------------
-SslServer 构造函数
+** SslServer 构造函数 **
 ```JavaScript
  new SslServer(X509Cert crt,
                 PKey key,
@@ -109,35 +109,35 @@ SslServer 构造函数
 ## 成员函数
         
 ### run
-运行服务器并开始接收和分发连接，此函数不会返回
+** 运行服务器并开始接收和分发连接，此函数不会返回 **
 ```JavaScript
 SslServer.run() async;
 ```
 
 --------------------------
 ### asyncRun
-异步运行服务器并开始接收和分发连接，调用后立即返回，服务器在后台运行
+** 异步运行服务器并开始接收和分发连接，调用后立即返回，服务器在后台运行 **
 ```JavaScript
 SslServer.asyncRun();
 ```
 
 --------------------------
 ### stop
-关闭 socket中止正在运行的服务器
+** 关闭 socket中止正在运行的服务器 **
 ```JavaScript
 SslServer.stop() async;
 ```
 
 --------------------------
 ### dispose
-强制回收对象，调用此方法后，对象资源将立即释放
+** 强制回收对象，调用此方法后，对象资源将立即释放 **
 ```JavaScript
 SslServer.dispose();
 ```
 
 --------------------------
 ### equals
-比较当前对象与给定的对象是否相等
+** 比较当前对象与给定的对象是否相等 **
 ```JavaScript
 Boolean SslServer.equals(object expected);
 ```
@@ -150,7 +150,7 @@ Boolean SslServer.equals(object expected);
 
 --------------------------
 ### toString
-返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现
+** 返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现 **
 ```JavaScript
 String SslServer.toString();
 ```
@@ -160,7 +160,7 @@ String SslServer.toString();
 
 --------------------------
 ### toJSON
-返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合
+** 返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合 **
 ```JavaScript
 Value SslServer.toJSON(String key = "");
 ```
@@ -173,7 +173,7 @@ Value SslServer.toJSON(String key = "");
 
 --------------------------
 ### valueOf
-返回对象本身的数值
+** 返回对象本身的数值 **
 ```JavaScript
 Value SslServer.valueOf();
 ```
@@ -184,35 +184,35 @@ Value SslServer.valueOf();
 ## 成员属性
         
 ### verification
-Integer, 设定证书验证模式，缺省为 VERIFY_NONE
+** Integer, 设定证书验证模式，缺省为 VERIFY_NONE **
 ```JavaScript
 Integer SslServer.verification;
 ```
 
 --------------------------
 ### ca
-[X509Cert](X509Cert.md), 客户端证书验证证书链
+** [X509Cert](X509Cert.md), 客户端证书验证证书链 **
 ```JavaScript
 readonly X509Cert SslServer.ca;
 ```
 
 --------------------------
 ### socket
-[Socket](Socket.md), 服务器当前侦听的 [Socket](Socket.md) 对象
+** [Socket](Socket.md), 服务器当前侦听的 [Socket](Socket.md) 对象 **
 ```JavaScript
 readonly Socket SslServer.socket;
 ```
 
 --------------------------
 ### handler
-[Handler](Handler.md), 服务器当前事件处理接口对象
+** [Handler](Handler.md), 服务器当前事件处理接口对象 **
 ```JavaScript
 Handler SslServer.handler;
 ```
 
 --------------------------
 ### stats
-[Stats](Stats.md), 查询当前服务器运行状态
+** [Stats](Stats.md), 查询当前服务器运行状态 **
 ```JavaScript
 readonly Stats SslServer.stats;
 ```

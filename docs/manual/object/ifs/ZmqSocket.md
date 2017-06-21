@@ -4,7 +4,7 @@ ZeroMQ 套接口对象
 ## 构造函数
         
 ### ZmqSocket
-ZmqSocket 对象构造函数
+** ZmqSocket 对象构造函数 **
 ```JavaScript
  new ZmqSocket(Integer type = zmq.PAIR);
 ```
@@ -15,7 +15,7 @@ ZmqSocket 对象构造函数
 ## 成员函数
         
 ### bind
-绑定指定地址和端口
+** 绑定指定地址和端口 **
 ```JavaScript
 ZmqSocket.bind(String addr);
 ```
@@ -25,7 +25,7 @@ ZmqSocket.bind(String addr);
 
 --------------------------
 ### connect
-连接到指定地址的服务器
+** 连接到指定地址的服务器 **
 ```JavaScript
 ZmqSocket.connect(String addr);
 ```
@@ -35,7 +35,7 @@ ZmqSocket.connect(String addr);
 
 --------------------------
 ### recv
-接收一个数据包
+** 接收一个数据包 **
 ```JavaScript
 Buffer ZmqSocket.recv() async;
 ```
@@ -45,7 +45,7 @@ Buffer ZmqSocket.recv() async;
 
 --------------------------
 ### send
-发送一个数据包
+** 发送一个数据包 **
 ```JavaScript
 ZmqSocket.send(Buffer data);
 ```
@@ -55,21 +55,21 @@ ZmqSocket.send(Buffer data);
 
 --------------------------
 ### close
-关闭当前 socket
+** 关闭当前 socket **
 ```JavaScript
 ZmqSocket.close();
 ```
 
 --------------------------
 ### dispose
-强制回收对象，调用此方法后，对象资源将立即释放
+** 强制回收对象，调用此方法后，对象资源将立即释放 **
 ```JavaScript
 ZmqSocket.dispose();
 ```
 
 --------------------------
 ### equals
-比较当前对象与给定的对象是否相等
+** 比较当前对象与给定的对象是否相等 **
 ```JavaScript
 Boolean ZmqSocket.equals(object expected);
 ```
@@ -82,7 +82,7 @@ Boolean ZmqSocket.equals(object expected);
 
 --------------------------
 ### toString
-返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现
+** 返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现 **
 ```JavaScript
 String ZmqSocket.toString();
 ```
@@ -92,7 +92,7 @@ String ZmqSocket.toString();
 
 --------------------------
 ### toJSON
-返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合
+** 返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合 **
 ```JavaScript
 Value ZmqSocket.toJSON(String key = "");
 ```
@@ -105,7 +105,7 @@ Value ZmqSocket.toJSON(String key = "");
 
 --------------------------
 ### valueOf
-返回对象本身的数值
+** 返回对象本身的数值 **
 ```JavaScript
 Value ZmqSocket.valueOf();
 ```
@@ -116,7 +116,7 @@ Value ZmqSocket.valueOf();
 ## 成员属性
         
 ### type
-Integer, 查询当前 socket 类型
+** Integer, 查询当前 socket 类型 **
 ```JavaScript
 readonly Integer ZmqSocket.type;
 ```

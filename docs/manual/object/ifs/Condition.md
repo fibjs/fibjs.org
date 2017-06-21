@@ -42,13 +42,13 @@ go
 ## 构造函数
         
 ### Condition
-条件变量构造函数（条件变量所需的锁由fibjs内部构造）
+** 条件变量构造函数（条件变量所需的锁由fibjs内部构造） **
 ```JavaScript
  new Condition();
 ```
 
 --------------------------
-条件变量构造函数
+** 条件变量构造函数 **
 ```JavaScript
  new Condition(Lock lock);
 ```
@@ -59,28 +59,28 @@ go
 ## 成员函数
         
 ### wait
-使纤程进入阻塞状态
+** 使纤程进入阻塞状态 **
 ```JavaScript
 Condition.wait();
 ```
 
 --------------------------
 ### notify
-通知一个被阻塞的纤程（最后加入纤程池的）向下继续执行
+** 通知一个被阻塞的纤程（最后加入纤程池的）向下继续执行 **
 ```JavaScript
 Condition.notify();
 ```
 
 --------------------------
 ### notifyAll
-通知所有被阻塞的纤程向下继续执行
+** 通知所有被阻塞的纤程向下继续执行 **
 ```JavaScript
 Condition.notifyAll();
 ```
 
 --------------------------
 ### acquire
-获取锁的拥有权
+** 获取锁的拥有权 **
 ```JavaScript
 Boolean Condition.acquire(Boolean blocking = true);
 ```
@@ -99,7 +99,7 @@ acquire 方法用于获取锁的拥有权，当锁处于可获取状态时，此
 
 --------------------------
 ### release
-释放锁的拥有权
+** 释放锁的拥有权 **
 ```JavaScript
 Condition.release();
 ```
@@ -108,7 +108,7 @@ Condition.release();
 
 --------------------------
 ### count
-查询当前等待任务数
+** 查询当前等待任务数 **
 ```JavaScript
 Integer Condition.count();
 ```
@@ -118,14 +118,14 @@ Integer Condition.count();
 
 --------------------------
 ### dispose
-强制回收对象，调用此方法后，对象资源将立即释放
+** 强制回收对象，调用此方法后，对象资源将立即释放 **
 ```JavaScript
 Condition.dispose();
 ```
 
 --------------------------
 ### equals
-比较当前对象与给定的对象是否相等
+** 比较当前对象与给定的对象是否相等 **
 ```JavaScript
 Boolean Condition.equals(object expected);
 ```
@@ -138,7 +138,7 @@ Boolean Condition.equals(object expected);
 
 --------------------------
 ### toString
-返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现
+** 返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现 **
 ```JavaScript
 String Condition.toString();
 ```
@@ -148,7 +148,7 @@ String Condition.toString();
 
 --------------------------
 ### toJSON
-返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合
+** 返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合 **
 ```JavaScript
 Value Condition.toJSON(String key = "");
 ```
@@ -161,7 +161,7 @@ Value Condition.toJSON(String key = "");
 
 --------------------------
 ### valueOf
-返回对象本身的数值
+** 返回对象本身的数值 **
 ```JavaScript
 Value Condition.valueOf();
 ```

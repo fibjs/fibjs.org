@@ -7,7 +7,7 @@ XmlDocument 对象是一棵文档树的根，可为我们提供对文档数据�
 ## 构造函数
         
 ### XmlDocument
-构造一个 XmlDocument 对象
+** 构造一个 XmlDocument 对象 **
 ```JavaScript
  new XmlDocument(String type = "text/xml");
 ```
@@ -18,7 +18,7 @@ XmlDocument 对象是一棵文档树的根，可为我们提供对文档数据�
 ## 成员函数
         
 ### load
-通过解析一个 XML/HTML 字符串来组成该文档，不支持多语种
+** 通过解析一个 XML/HTML 字符串来组成该文档，不支持多语种 **
 ```JavaScript
 XmlDocument.load(String source);
 ```
@@ -27,7 +27,7 @@ XmlDocument.load(String source);
 * source: String, 要解析的 XML/HTML 文本，取决于文档创建时的类型
 
 --------------------------
-通过解析一个二进制 XML/HTML 字符串来组成该文档，并根据语种自动转换
+** 通过解析一个二进制 XML/HTML 字符串来组成该文档，并根据语种自动转换 **
 ```JavaScript
 XmlDocument.load(Buffer source);
 ```
@@ -37,7 +37,7 @@ XmlDocument.load(Buffer source);
 
 --------------------------
 ### getElementsByTagName
-返回带有指定名称的所有元素的一个节点列表
+** 返回带有指定名称的所有元素的一个节点列表 **
 ```JavaScript
 XmlNodeList XmlDocument.getElementsByTagName(String tagName);
 ```
@@ -52,7 +52,7 @@ XmlNodeList XmlDocument.getElementsByTagName(String tagName);
 
 --------------------------
 ### getElementsByTagNameNS
-返回带有指定命名空间和名称的所有元素的一个节点列表
+** 返回带有指定命名空间和名称的所有元素的一个节点列表 **
 ```JavaScript
 XmlNodeList XmlDocument.getElementsByTagNameNS(String namespaceURI,
                 String localName);
@@ -69,7 +69,7 @@ XmlNodeList XmlDocument.getElementsByTagNameNS(String namespaceURI,
 
 --------------------------
 ### createElement
-创建元素节点
+** 创建元素节点 **
 ```JavaScript
 XmlElement XmlDocument.createElement(String tagName);
 ```
@@ -82,7 +82,7 @@ XmlElement XmlDocument.createElement(String tagName);
 
 --------------------------
 ### createElementNS
-创建带有指定命名空间的元素节点
+** 创建带有指定命名空间的元素节点 **
 ```JavaScript
 XmlElement XmlDocument.createElementNS(String namespaceURI,
                 String qualifiedName);
@@ -97,7 +97,7 @@ XmlElement XmlDocument.createElementNS(String namespaceURI,
 
 --------------------------
 ### createTextNode
-创建文本节点
+** 创建文本节点 **
 ```JavaScript
 XmlText XmlDocument.createTextNode(String data);
 ```
@@ -110,7 +110,7 @@ XmlText XmlDocument.createTextNode(String data);
 
 --------------------------
 ### createComment
-创建注释节点
+** 创建注释节点 **
 ```JavaScript
 XmlComment XmlDocument.createComment(String data);
 ```
@@ -123,7 +123,7 @@ XmlComment XmlDocument.createComment(String data);
 
 --------------------------
 ### createCDATASection
-创建 [XmlCDATASection](XmlCDATASection.md) 节点
+** 创建 [XmlCDATASection](XmlCDATASection.md) 节点 **
 ```JavaScript
 XmlCDATASection XmlDocument.createCDATASection(String data);
 ```
@@ -136,7 +136,7 @@ XmlCDATASection XmlDocument.createCDATASection(String data);
 
 --------------------------
 ### createProcessingInstruction
-创建 [XmlProcessingInstruction](XmlProcessingInstruction.md) 节点
+** 创建 [XmlProcessingInstruction](XmlProcessingInstruction.md) 节点 **
 ```JavaScript
 XmlProcessingInstruction XmlDocument.createProcessingInstruction(String target,
                 String data);
@@ -151,7 +151,7 @@ XmlProcessingInstruction XmlDocument.createProcessingInstruction(String target,
 
 --------------------------
 ### hasChildNodes
-查询是否存在子节点
+** 查询是否存在子节点 **
 ```JavaScript
 Boolean XmlDocument.hasChildNodes();
 ```
@@ -161,7 +161,7 @@ Boolean XmlDocument.hasChildNodes();
 
 --------------------------
 ### normalize
-合并相邻的 Text 节点并删除空的 Text 节点
+** 合并相邻的 Text 节点并删除空的 Text 节点 **
 ```JavaScript
 XmlDocument.normalize();
 ```
@@ -170,7 +170,7 @@ XmlDocument.normalize();
 
 --------------------------
 ### cloneNode
-创建指定的节点的精确拷贝
+** 创建指定的节点的精确拷贝 **
 ```JavaScript
 XmlNode XmlDocument.cloneNode(Boolean deep = true);
 ```
@@ -185,7 +185,7 @@ XmlNode XmlDocument.cloneNode(Boolean deep = true);
 
 --------------------------
 ### lookupPrefix
-返回在当前节点上匹配指定的命名空间 URI 的前缀
+** 返回在当前节点上匹配指定的命名空间 URI 的前缀 **
 ```JavaScript
 String XmlDocument.lookupPrefix(String namespaceURI);
 ```
@@ -198,7 +198,7 @@ String XmlDocument.lookupPrefix(String namespaceURI);
 
 --------------------------
 ### lookupNamespaceURI
-返回在当前节点上匹配指定的前缀的命名空间 URI
+** 返回在当前节点上匹配指定的前缀的命名空间 URI **
 ```JavaScript
 String XmlDocument.lookupNamespaceURI(String prefix);
 ```
@@ -211,7 +211,7 @@ String XmlDocument.lookupNamespaceURI(String prefix);
 
 --------------------------
 ### insertBefore
-在已有的子节点前插入一个新的子节点
+** 在已有的子节点前插入一个新的子节点 **
 ```JavaScript
 XmlNode XmlDocument.insertBefore(XmlNode newChild,
                 XmlNode refChild);
@@ -228,7 +228,7 @@ XmlNode XmlDocument.insertBefore(XmlNode newChild,
 
 --------------------------
 ### insertAfter
-在已有的子节点后插入一个新的子节点
+** 在已有的子节点后插入一个新的子节点 **
 ```JavaScript
 XmlNode XmlDocument.insertAfter(XmlNode newChild,
                 XmlNode refChild);
@@ -245,7 +245,7 @@ XmlNode XmlDocument.insertAfter(XmlNode newChild,
 
 --------------------------
 ### appendChild
-向节点的子节点列表的末尾添加新的子节点
+** 向节点的子节点列表的末尾添加新的子节点 **
 ```JavaScript
 XmlNode XmlDocument.appendChild(XmlNode newChild);
 ```
@@ -260,7 +260,7 @@ XmlNode XmlDocument.appendChild(XmlNode newChild);
 
 --------------------------
 ### replaceChild
-将某个子节点替换为另一个
+** 将某个子节点替换为另一个 **
 ```JavaScript
 XmlNode XmlDocument.replaceChild(XmlNode newChild,
                 XmlNode oldChild);
@@ -277,7 +277,7 @@ XmlNode XmlDocument.replaceChild(XmlNode newChild,
 
 --------------------------
 ### removeChild
-从子节点列表中删除某个节点
+** 从子节点列表中删除某个节点 **
 ```JavaScript
 XmlNode XmlDocument.removeChild(XmlNode oldChild);
 ```
@@ -290,14 +290,14 @@ XmlNode XmlDocument.removeChild(XmlNode oldChild);
 
 --------------------------
 ### dispose
-强制回收对象，调用此方法后，对象资源将立即释放
+** 强制回收对象，调用此方法后，对象资源将立即释放 **
 ```JavaScript
 XmlDocument.dispose();
 ```
 
 --------------------------
 ### equals
-比较当前对象与给定的对象是否相等
+** 比较当前对象与给定的对象是否相等 **
 ```JavaScript
 Boolean XmlDocument.equals(object expected);
 ```
@@ -310,7 +310,7 @@ Boolean XmlDocument.equals(object expected);
 
 --------------------------
 ### toString
-返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现
+** 返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现 **
 ```JavaScript
 String XmlDocument.toString();
 ```
@@ -320,7 +320,7 @@ String XmlDocument.toString();
 
 --------------------------
 ### toJSON
-返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合
+** 返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合 **
 ```JavaScript
 Value XmlDocument.toJSON(String key = "");
 ```
@@ -333,7 +333,7 @@ Value XmlDocument.toJSON(String key = "");
 
 --------------------------
 ### valueOf
-返回对象本身的数值
+** 返回对象本身的数值 **
 ```JavaScript
 Value XmlDocument.valueOf();
 ```
@@ -344,28 +344,28 @@ Value XmlDocument.valueOf();
 ## 成员属性
         
 ### inputEncoding
-String, 返回用于文档的编码（在解析时）
+** String, 返回用于文档的编码（在解析时） **
 ```JavaScript
 readonly String XmlDocument.inputEncoding;
 ```
 
 --------------------------
 ### xmlStandalone
-Boolean, 设置或返回文档是否为 standalone
+** Boolean, 设置或返回文档是否为 standalone **
 ```JavaScript
 Boolean XmlDocument.xmlStandalone;
 ```
 
 --------------------------
 ### xmlVersion
-String, 设置或返回文档的 XML 版本
+** String, 设置或返回文档的 XML 版本 **
 ```JavaScript
 String XmlDocument.xmlVersion;
 ```
 
 --------------------------
 ### doctype
-[XmlDocumentType](XmlDocumentType.md), 返回与文档相关的文档类型声明（Document Type Declaration）
+** [XmlDocumentType](XmlDocumentType.md), 返回与文档相关的文档类型声明（Document Type Declaration） **
 ```JavaScript
 readonly XmlDocumentType XmlDocument.doctype;
 ```
@@ -374,35 +374,35 @@ readonly XmlDocumentType XmlDocument.doctype;
 
 --------------------------
 ### documentElement
-[XmlElement](XmlElement.md), 返回文档的根节点
+** [XmlElement](XmlElement.md), 返回文档的根节点 **
 ```JavaScript
 readonly XmlElement XmlDocument.documentElement;
 ```
 
 --------------------------
 ### head
-[XmlElement](XmlElement.md), 返回 HTML 文档的 head 节点，仅在 html 模式有效
+** [XmlElement](XmlElement.md), 返回 HTML 文档的 head 节点，仅在 html 模式有效 **
 ```JavaScript
 readonly XmlElement XmlDocument.head;
 ```
 
 --------------------------
 ### title
-String, 返回 HTML 文档的 title 节点的内容，仅在 html 模式有效
+** String, 返回 HTML 文档的 title 节点的内容，仅在 html 模式有效 **
 ```JavaScript
 readonly String XmlDocument.title;
 ```
 
 --------------------------
 ### body
-[XmlElement](XmlElement.md), 返回 HTML 文档的 body 节点，仅在 html 模式有效
+** [XmlElement](XmlElement.md), 返回 HTML 文档的 body 节点，仅在 html 模式有效 **
 ```JavaScript
 readonly XmlElement XmlDocument.body;
 ```
 
 --------------------------
 ### nodeType
-Integer, 返回节点的节点类型
+** Integer, 返回节点的节点类型 **
 ```JavaScript
 readonly Integer XmlDocument.nodeType;
 ```
@@ -419,7 +419,7 @@ readonly Integer XmlDocument.nodeType;
 
 --------------------------
 ### nodeName
-String, 返回节点的名称，根据其类型
+** String, 返回节点的名称，根据其类型 **
 ```JavaScript
 readonly String XmlDocument.nodeName;
 ```
@@ -436,7 +436,7 @@ readonly String XmlDocument.nodeName;
 
 --------------------------
 ### nodeValue
-String, 返回节点的名称，根据其类型
+** String, 返回节点的名称，根据其类型 **
 ```JavaScript
 String XmlDocument.nodeValue;
 ```
@@ -453,49 +453,49 @@ String XmlDocument.nodeValue;
 
 --------------------------
 ### ownerDocument
-[XmlDocument](XmlDocument.md), 返回节点的根元素（[XmlDocument](XmlDocument.md) 对象）
+** [XmlDocument](XmlDocument.md), 返回节点的根元素（[XmlDocument](XmlDocument.md) 对象） **
 ```JavaScript
 readonly XmlDocument XmlDocument.ownerDocument;
 ```
 
 --------------------------
 ### parentNode
-XmlNode, 可返回某节点的父节点
+** XmlNode, 可返回某节点的父节点 **
 ```JavaScript
 readonly XmlNode XmlDocument.parentNode;
 ```
 
 --------------------------
 ### childNodes
-[XmlNodeList](XmlNodeList.md), 返回指定节点的子节点的节点列表
+** [XmlNodeList](XmlNodeList.md), 返回指定节点的子节点的节点列表 **
 ```JavaScript
 readonly XmlNodeList XmlDocument.childNodes;
 ```
 
 --------------------------
 ### firstChild
-XmlNode, 返回节点的首个子节点
+** XmlNode, 返回节点的首个子节点 **
 ```JavaScript
 readonly XmlNode XmlDocument.firstChild;
 ```
 
 --------------------------
 ### lastChild
-XmlNode, 返回节点的最后一个子节点
+** XmlNode, 返回节点的最后一个子节点 **
 ```JavaScript
 readonly XmlNode XmlDocument.lastChild;
 ```
 
 --------------------------
 ### previousSibling
-XmlNode, 返回某节点之前紧跟的节点（处于同一树层级），如果没有此节点，那么该属性返回 null
+** XmlNode, 返回某节点之前紧跟的节点（处于同一树层级），如果没有此节点，那么该属性返回 null **
 ```JavaScript
 readonly XmlNode XmlDocument.previousSibling;
 ```
 
 --------------------------
 ### nextSibling
-XmlNode, 返回某个元素之后紧跟的节点（处于同一树层级中），如果无此节点，则属性返回 null
+** XmlNode, 返回某个元素之后紧跟的节点（处于同一树层级中），如果无此节点，则属性返回 null **
 ```JavaScript
 readonly XmlNode XmlDocument.nextSibling;
 ```

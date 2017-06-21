@@ -10,7 +10,7 @@ var img1 = gd.load(data);
 ## 成员函数
         
 ### getData
-按照指定的格式返回图像数据
+** 按照指定的格式返回图像数据 **
 ```JavaScript
 Buffer Image.getData(Integer format = gd.PNG,
                 Integer quality = 85) async;
@@ -25,7 +25,7 @@ Buffer Image.getData(Integer format = gd.PNG,
 
 --------------------------
 ### save
-按照指定的格式将图像数据存入流对象
+** 按照指定的格式将图像数据存入流对象 **
 ```JavaScript
 Image.save(Stream stm,
                 Integer format = gd.PNG,
@@ -38,7 +38,7 @@ Image.save(Stream stm,
 * quality: Integer, 当格式为 [gd](../../module/ifs/gd.md).JPEG 或 [gd](../../module/ifs/gd.md).WEBP 时用于指定压缩质量，缺省为 85，其他格式忽略此参数
 
 --------------------------
-按照指定的格式将图像数据存入指定文件，文件将被强制覆盖
+** 按照指定的格式将图像数据存入指定文件，文件将被强制覆盖 **
 ```JavaScript
 Image.save(String fname,
                 Integer format = gd.PNG,
@@ -52,7 +52,7 @@ Image.save(String fname,
 
 --------------------------
 ### colorAllocate
-为指定的颜色申请一个颜色号，对于 [gd](../../module/ifs/gd.md).PALETTE 图像，颜色号为调色板索引，对于 [gd](../../module/ifs/gd.md).TRUECOLOR 图像，颜色号为 rgb 编码数值
+** 为指定的颜色申请一个颜色号，对于 [gd](../../module/ifs/gd.md).PALETTE 图像，颜色号为调色板索引，对于 [gd](../../module/ifs/gd.md).TRUECOLOR 图像，颜色号为 rgb 编码数值 **
 ```JavaScript
 Integer Image.colorAllocate(Integer red,
                 Integer green,
@@ -68,7 +68,7 @@ Integer Image.colorAllocate(Integer red,
 * Integer, 返回颜色号，不成功返回 -1
 
 --------------------------
-为指定的颜色申请一个颜色号，对于 [gd](../../module/ifs/gd.md).PALETTE 图像，颜色号为调色板索引，对于 [gd](../../module/ifs/gd.md).TRUECOLOR 图像，颜色号为 rgb 编码数值
+** 为指定的颜色申请一个颜色号，对于 [gd](../../module/ifs/gd.md).PALETTE 图像，颜色号为调色板索引，对于 [gd](../../module/ifs/gd.md).TRUECOLOR 图像，颜色号为 rgb 编码数值 **
 ```JavaScript
 Integer Image.colorAllocate(Integer color);
 ```
@@ -81,7 +81,7 @@ Integer Image.colorAllocate(Integer color);
 
 --------------------------
 ### colorAllocateAlpha
-为指定的颜色及透明申请一个颜色号，对于 [gd](../../module/ifs/gd.md).PALETTE 图像，颜色号为调色板索引，对于 [gd](../../module/ifs/gd.md).TRUECOLOR 图像，颜色号为 rgba 编码数值
+** 为指定的颜色及透明申请一个颜色号，对于 [gd](../../module/ifs/gd.md).PALETTE 图像，颜色号为调色板索引，对于 [gd](../../module/ifs/gd.md).TRUECOLOR 图像，颜色号为 rgba 编码数值 **
 ```JavaScript
 Integer Image.colorAllocateAlpha(Integer red,
                 Integer green,
@@ -99,7 +99,7 @@ Integer Image.colorAllocateAlpha(Integer red,
 * Integer, 返回颜色号，不成功返回 -1
 
 --------------------------
-为指定的颜色及透明申请一个颜色号，对于 [gd](../../module/ifs/gd.md).PALETTE 图像，颜色号为调色板索引，对于 [gd](../../module/ifs/gd.md).TRUECOLOR 图像，颜色号为 rgba 编码数值
+** 为指定的颜色及透明申请一个颜色号，对于 [gd](../../module/ifs/gd.md).PALETTE 图像，颜色号为调色板索引，对于 [gd](../../module/ifs/gd.md).TRUECOLOR 图像，颜色号为 rgba 编码数值 **
 ```JavaScript
 Integer Image.colorAllocateAlpha(Integer color);
 ```
@@ -112,7 +112,7 @@ Integer Image.colorAllocateAlpha(Integer color);
 
 --------------------------
 ### colorClosest
-为指定的颜色查找一个最接近的颜色号，对于 [gd](../../module/ifs/gd.md).PALETTE 图像，颜色号为调色板索引，对于 [gd](../../module/ifs/gd.md).TRUECOLOR 图像，颜色号为 rgb 编码数值
+** 为指定的颜色查找一个最接近的颜色号，对于 [gd](../../module/ifs/gd.md).PALETTE 图像，颜色号为调色板索引，对于 [gd](../../module/ifs/gd.md).TRUECOLOR 图像，颜色号为 rgb 编码数值 **
 ```JavaScript
 Integer Image.colorClosest(Integer red,
                 Integer green,
@@ -128,7 +128,7 @@ Integer Image.colorClosest(Integer red,
 * Integer, 返回颜色号，不成功返回 -1
 
 --------------------------
-为指定的颜色查找一个最接近的颜色号，对于 [gd](../../module/ifs/gd.md).PALETTE 图像，颜色号为调色板索引，对于 [gd](../../module/ifs/gd.md).TRUECOLOR 图像，颜色号为 rgb 编码数值
+** 为指定的颜色查找一个最接近的颜色号，对于 [gd](../../module/ifs/gd.md).PALETTE 图像，颜色号为调色板索引，对于 [gd](../../module/ifs/gd.md).TRUECOLOR 图像，颜色号为 rgb 编码数值 **
 ```JavaScript
 Integer Image.colorClosest(Integer color);
 ```
@@ -141,7 +141,7 @@ Integer Image.colorClosest(Integer color);
 
 --------------------------
 ### colorClosestHWB
-为指定的颜色查找一个最接近的颜色号，此方法使用 Hue/White/Black 计算查找最接近颜色，对于 [gd](../../module/ifs/gd.md).PALETTE 图像，颜色号为调色板索引，对于 [gd](../../module/ifs/gd.md).TRUECOLOR 图像，颜色号为 rgb 编码数值
+** 为指定的颜色查找一个最接近的颜色号，此方法使用 Hue/White/Black 计算查找最接近颜色，对于 [gd](../../module/ifs/gd.md).PALETTE 图像，颜色号为调色板索引，对于 [gd](../../module/ifs/gd.md).TRUECOLOR 图像，颜色号为 rgb 编码数值 **
 ```JavaScript
 Integer Image.colorClosestHWB(Integer red,
                 Integer green,
@@ -157,7 +157,7 @@ Integer Image.colorClosestHWB(Integer red,
 * Integer, 返回颜色号，不成功返回 -1
 
 --------------------------
-为指定的颜色查找一个最接近的颜色号，此方法使用 Hue/White/Black 计算查找最接近颜色，对于 [gd](../../module/ifs/gd.md).PALETTE 图像，颜色号为调色板索引，对于 [gd](../../module/ifs/gd.md).TRUECOLOR 图像，颜色号为 rgb 编码数值
+** 为指定的颜色查找一个最接近的颜色号，此方法使用 Hue/White/Black 计算查找最接近颜色，对于 [gd](../../module/ifs/gd.md).PALETTE 图像，颜色号为调色板索引，对于 [gd](../../module/ifs/gd.md).TRUECOLOR 图像，颜色号为 rgb 编码数值 **
 ```JavaScript
 Integer Image.colorClosestHWB(Integer color);
 ```
@@ -170,7 +170,7 @@ Integer Image.colorClosestHWB(Integer color);
 
 --------------------------
 ### colorClosestAlpha
-为指定的颜色及透明查找一个最接近的颜色号，对于 [gd](../../module/ifs/gd.md).PALETTE 图像，颜色号为调色板索引，对于 [gd](../../module/ifs/gd.md).TRUECOLOR 图像，颜色号为 rgba 编码数值
+** 为指定的颜色及透明查找一个最接近的颜色号，对于 [gd](../../module/ifs/gd.md).PALETTE 图像，颜色号为调色板索引，对于 [gd](../../module/ifs/gd.md).TRUECOLOR 图像，颜色号为 rgba 编码数值 **
 ```JavaScript
 Integer Image.colorClosestAlpha(Integer red,
                 Integer green,
@@ -188,7 +188,7 @@ Integer Image.colorClosestAlpha(Integer red,
 * Integer, 返回颜色号，不成功返回 -1
 
 --------------------------
-为指定的颜色及透明查找一个最接近的颜色号，对于 [gd](../../module/ifs/gd.md).PALETTE 图像，颜色号为调色板索引，对于 [gd](../../module/ifs/gd.md).TRUECOLOR 图像，颜色号为 rgba 编码数值
+** 为指定的颜色及透明查找一个最接近的颜色号，对于 [gd](../../module/ifs/gd.md).PALETTE 图像，颜色号为调色板索引，对于 [gd](../../module/ifs/gd.md).TRUECOLOR 图像，颜色号为 rgba 编码数值 **
 ```JavaScript
 Integer Image.colorClosestAlpha(Integer color);
 ```
@@ -201,7 +201,7 @@ Integer Image.colorClosestAlpha(Integer color);
 
 --------------------------
 ### colorExact
-查找指定的颜色对应的颜色号，对于 [gd](../../module/ifs/gd.md).PALETTE 图像，颜色号为调色板索引，对于 [gd](../../module/ifs/gd.md).TRUECOLOR 图像，颜色号为 rgb 编码数值
+** 查找指定的颜色对应的颜色号，对于 [gd](../../module/ifs/gd.md).PALETTE 图像，颜色号为调色板索引，对于 [gd](../../module/ifs/gd.md).TRUECOLOR 图像，颜色号为 rgb 编码数值 **
 ```JavaScript
 Integer Image.colorExact(Integer red,
                 Integer green,
@@ -217,7 +217,7 @@ Integer Image.colorExact(Integer red,
 * Integer, 返回颜色号，不成功返回 -1
 
 --------------------------
-查找指定的颜色对应的颜色号，对于 [gd](../../module/ifs/gd.md).PALETTE 图像，颜色号为调色板索引，对于 [gd](../../module/ifs/gd.md).TRUECOLOR 图像，颜色号为 rgb 编码数值
+** 查找指定的颜色对应的颜色号，对于 [gd](../../module/ifs/gd.md).PALETTE 图像，颜色号为调色板索引，对于 [gd](../../module/ifs/gd.md).TRUECOLOR 图像，颜色号为 rgb 编码数值 **
 ```JavaScript
 Integer Image.colorExact(Integer color);
 ```
@@ -230,7 +230,7 @@ Integer Image.colorExact(Integer color);
 
 --------------------------
 ### colorExactAlpha
-查找指定的颜色及透明对应的颜色号，对于 [gd](../../module/ifs/gd.md).PALETTE 图像，颜色号为调色板索引，对于 [gd](../../module/ifs/gd.md).TRUECOLOR 图像，颜色号为 rgba 编码数值
+** 查找指定的颜色及透明对应的颜色号，对于 [gd](../../module/ifs/gd.md).PALETTE 图像，颜色号为调色板索引，对于 [gd](../../module/ifs/gd.md).TRUECOLOR 图像，颜色号为 rgba 编码数值 **
 ```JavaScript
 Integer Image.colorExactAlpha(Integer red,
                 Integer green,
@@ -248,7 +248,7 @@ Integer Image.colorExactAlpha(Integer red,
 * Integer, 返回颜色号，不成功返回 -1
 
 --------------------------
-查找指定的颜色及透明对应的颜色号，对于 [gd](../../module/ifs/gd.md).PALETTE 图像，颜色号为调色板索引，对于 [gd](../../module/ifs/gd.md).TRUECOLOR 图像，颜色号为 rgba 编码数值
+** 查找指定的颜色及透明对应的颜色号，对于 [gd](../../module/ifs/gd.md).PALETTE 图像，颜色号为调色板索引，对于 [gd](../../module/ifs/gd.md).TRUECOLOR 图像，颜色号为 rgba 编码数值 **
 ```JavaScript
 Integer Image.colorExactAlpha(Integer color);
 ```
@@ -261,7 +261,7 @@ Integer Image.colorExactAlpha(Integer color);
 
 --------------------------
 ### colorResolve
-查找指定的颜色对应的颜色号，如果颜色不存在，则为其申请一个新颜色号，对于 [gd](../../module/ifs/gd.md).PALETTE 图像，颜色号为调色板索引，对于 [gd](../../module/ifs/gd.md).TRUECOLOR 图像，颜色号为 rgb 编码数值
+** 查找指定的颜色对应的颜色号，如果颜色不存在，则为其申请一个新颜色号，对于 [gd](../../module/ifs/gd.md).PALETTE 图像，颜色号为调色板索引，对于 [gd](../../module/ifs/gd.md).TRUECOLOR 图像，颜色号为 rgb 编码数值 **
 ```JavaScript
 Integer Image.colorResolve(Integer red,
                 Integer green,
@@ -277,7 +277,7 @@ Integer Image.colorResolve(Integer red,
 * Integer, 返回颜色号，不成功返回 -1
 
 --------------------------
-查找指定的颜色对应的颜色号，如果颜色不存在，则为其申请一个新颜色号，对于 [gd](../../module/ifs/gd.md).PALETTE 图像，颜色号为调色板索引，对于 [gd](../../module/ifs/gd.md).TRUECOLOR 图像，颜色号为 rgb 编码数值
+** 查找指定的颜色对应的颜色号，如果颜色不存在，则为其申请一个新颜色号，对于 [gd](../../module/ifs/gd.md).PALETTE 图像，颜色号为调色板索引，对于 [gd](../../module/ifs/gd.md).TRUECOLOR 图像，颜色号为 rgb 编码数值 **
 ```JavaScript
 Integer Image.colorResolve(Integer color);
 ```
@@ -290,7 +290,7 @@ Integer Image.colorResolve(Integer color);
 
 --------------------------
 ### colorResolveAlpha
-查找指定的颜色及透明对应的颜色号，如果颜色不存在，则为其申请一个新颜色号，对于 [gd](../../module/ifs/gd.md).PALETTE 图像，颜色号为调色板索引，对于 [gd](../../module/ifs/gd.md).TRUECOLOR 图像，颜色号为 rgba 编码数值
+** 查找指定的颜色及透明对应的颜色号，如果颜色不存在，则为其申请一个新颜色号，对于 [gd](../../module/ifs/gd.md).PALETTE 图像，颜色号为调色板索引，对于 [gd](../../module/ifs/gd.md).TRUECOLOR 图像，颜色号为 rgba 编码数值 **
 ```JavaScript
 Integer Image.colorResolveAlpha(Integer red,
                 Integer green,
@@ -308,7 +308,7 @@ Integer Image.colorResolveAlpha(Integer red,
 * Integer, 返回颜色号，不成功返回 -1
 
 --------------------------
-查找指定的颜色及透明对应的颜色号，如果颜色不存在，则为其申请一个新颜色号，对于 [gd](../../module/ifs/gd.md).PALETTE 图像，颜色号为调色板索引，对于 [gd](../../module/ifs/gd.md).TRUECOLOR 图像，颜色号为 rgba 编码数值
+** 查找指定的颜色及透明对应的颜色号，如果颜色不存在，则为其申请一个新颜色号，对于 [gd](../../module/ifs/gd.md).PALETTE 图像，颜色号为调色板索引，对于 [gd](../../module/ifs/gd.md).TRUECOLOR 图像，颜色号为 rgba 编码数值 **
 ```JavaScript
 Integer Image.colorResolveAlpha(Integer color);
 ```
@@ -321,7 +321,7 @@ Integer Image.colorResolveAlpha(Integer color);
 
 --------------------------
 ### colorDeallocate
-释放指定的颜色号，释放的颜色号将会被再次申请后替换
+** 释放指定的颜色号，释放的颜色号将会被再次申请后替换 **
 ```JavaScript
 Image.colorDeallocate(Integer color);
 ```
@@ -331,7 +331,7 @@ Image.colorDeallocate(Integer color);
 
 --------------------------
 ### clip
-设定绘图的剪切窗口，设定后，所有的绘制将被剪切在窗口内部
+** 设定绘图的剪切窗口，设定后，所有的绘制将被剪切在窗口内部 **
 ```JavaScript
 Image.clip(Integer x1,
                 Integer y1,
@@ -347,7 +347,7 @@ Image.clip(Integer x1,
 
 --------------------------
 ### getPixel
-查询指定位置点的颜色
+** 查询指定位置点的颜色 **
 ```JavaScript
 Integer Image.getPixel(Integer x,
                 Integer y);
@@ -362,7 +362,7 @@ Integer Image.getPixel(Integer x,
 
 --------------------------
 ### getTrueColorPixel
-查询指定位置点的真彩色颜色
+** 查询指定位置点的真彩色颜色 **
 ```JavaScript
 Integer Image.getTrueColorPixel(Integer x,
                 Integer y);
@@ -377,7 +377,7 @@ Integer Image.getTrueColorPixel(Integer x,
 
 --------------------------
 ### setPixel
-在指定位置画一个点
+** 在指定位置画一个点 **
 ```JavaScript
 Image.setPixel(Integer x,
                 Integer y,
@@ -391,7 +391,7 @@ Image.setPixel(Integer x,
 
 --------------------------
 ### setThickness
-设定画线的宽度，line, rectangle, arc 等方法画线时缺省宽度为一个像素，可使用此方法改变线的宽度
+** 设定画线的宽度，line, rectangle, arc 等方法画线时缺省宽度为一个像素，可使用此方法改变线的宽度 **
 ```JavaScript
 Image.setThickness(Integer thickness);
 ```
@@ -401,7 +401,7 @@ Image.setThickness(Integer thickness);
 
 --------------------------
 ### line
-在指定的位置画一条线
+** 在指定的位置画一条线 **
 ```JavaScript
 Image.line(Integer x1,
                 Integer y1,
@@ -419,7 +419,7 @@ Image.line(Integer x1,
 
 --------------------------
 ### rectangle
-在指定的位置画一个矩形
+** 在指定的位置画一个矩形 **
 ```JavaScript
 Image.rectangle(Integer x1,
                 Integer y1,
@@ -437,7 +437,7 @@ Image.rectangle(Integer x1,
 
 --------------------------
 ### filledRectangle
-在指定的位置画一个填充的矩形
+** 在指定的位置画一个填充的矩形 **
 ```JavaScript
 Image.filledRectangle(Integer x1,
                 Integer y1,
@@ -455,7 +455,7 @@ Image.filledRectangle(Integer x1,
 
 --------------------------
 ### polygon
-根据给定的点绘制一个多边形
+** 根据给定的点绘制一个多边形 **
 ```JavaScript
 Image.polygon(Array points,
                 Integer color);
@@ -467,7 +467,7 @@ Image.polygon(Array points,
 
 --------------------------
 ### openPolygon
-根据给定的点绘制一个开放多边形
+** 根据给定的点绘制一个开放多边形 **
 ```JavaScript
 Image.openPolygon(Array points,
                 Integer color);
@@ -479,7 +479,7 @@ Image.openPolygon(Array points,
 
 --------------------------
 ### filledPolygon
-根据给定的点绘制一个填充多边形
+** 根据给定的点绘制一个填充多边形 **
 ```JavaScript
 Image.filledPolygon(Array points,
                 Integer color);
@@ -491,7 +491,7 @@ Image.filledPolygon(Array points,
 
 --------------------------
 ### ellipse
-画一个椭圆
+** 画一个椭圆 **
 ```JavaScript
 Image.ellipse(Integer x,
                 Integer y,
@@ -509,7 +509,7 @@ Image.ellipse(Integer x,
 
 --------------------------
 ### filledEllipse
-画一个填充的椭圆
+** 画一个填充的椭圆 **
 ```JavaScript
 Image.filledEllipse(Integer x,
                 Integer y,
@@ -527,7 +527,7 @@ Image.filledEllipse(Integer x,
 
 --------------------------
 ### arc
-画一个扇形
+** 画一个扇形 **
 ```JavaScript
 Image.arc(Integer x,
                 Integer y,
@@ -549,7 +549,7 @@ Image.arc(Integer x,
 
 --------------------------
 ### filledArc
-画一个填充扇形
+** 画一个填充扇形 **
 ```JavaScript
 Image.filledArc(Integer x,
                 Integer y,
@@ -573,7 +573,7 @@ Image.filledArc(Integer x,
 
 --------------------------
 ### fill
-从指定的点开始填充封闭区域
+** 从指定的点开始填充封闭区域 **
 ```JavaScript
 Image.fill(Integer x,
                 Integer y,
@@ -587,7 +587,7 @@ Image.fill(Integer x,
 
 --------------------------
 ### fillToBorder
-从指定的点开始在指定颜色的边框内填充封闭区域
+** 从指定的点开始在指定颜色的边框内填充封闭区域 **
 ```JavaScript
 Image.fillToBorder(Integer x,
                 Integer y,
@@ -603,7 +603,7 @@ Image.fillToBorder(Integer x,
 
 --------------------------
 ### colorReplace
-替换图像中指定的颜色为新颜色
+** 替换图像中指定的颜色为新颜色 **
 ```JavaScript
 Image.colorReplace(Integer src,
                 Integer dst) async;
@@ -615,7 +615,7 @@ Image.colorReplace(Integer src,
 
 --------------------------
 ### clone
-复制当前图像为一个新图像
+** 复制当前图像为一个新图像 **
 ```JavaScript
 Image Image.clone() async;
 ```
@@ -625,7 +625,7 @@ Image Image.clone() async;
 
 --------------------------
 ### resample
-根据图像拉伸生成一个新尺寸的图像
+** 根据图像拉伸生成一个新尺寸的图像 **
 ```JavaScript
 Image Image.resample(Integer width,
                 Integer height) async;
@@ -640,7 +640,7 @@ Image Image.resample(Integer width,
 
 --------------------------
 ### crop
-剪切图像的一部分为一个新的图像
+** 剪切图像的一部分为一个新的图像 **
 ```JavaScript
 Image Image.crop(Integer x,
                 Integer y,
@@ -659,7 +659,7 @@ Image Image.crop(Integer x,
 
 --------------------------
 ### flip
-镜像当前图像
+** 镜像当前图像 **
 ```JavaScript
 Image.flip(Integer dir = gd.HORIZONTAL) async;
 ```
@@ -669,7 +669,7 @@ Image.flip(Integer dir = gd.HORIZONTAL) async;
 
 --------------------------
 ### rotate
-旋转当前图像
+** 旋转当前图像 **
 ```JavaScript
 Image.rotate(Integer dir) async;
 ```
@@ -679,7 +679,7 @@ Image.rotate(Integer dir) async;
 
 --------------------------
 ### convert
-转换当前图像类型
+** 转换当前图像类型 **
 ```JavaScript
 Image.convert(Integer color = gd.TRUECOLOR) async;
 ```
@@ -689,7 +689,7 @@ Image.convert(Integer color = gd.TRUECOLOR) async;
 
 --------------------------
 ### copy
-从一个图像中复制一个区域到指定的位置
+** 从一个图像中复制一个区域到指定的位置 **
 ```JavaScript
 Image.copy(Image source,
                 Integer dstX,
@@ -711,7 +711,7 @@ Image.copy(Image source,
 
 --------------------------
 ### copyMerge
-从一个图像中复制一个区域覆盖到指定的位置
+** 从一个图像中复制一个区域覆盖到指定的位置 **
 ```JavaScript
 Image.copyMerge(Image source,
                 Integer dstX,
@@ -735,7 +735,7 @@ Image.copyMerge(Image source,
 
 --------------------------
 ### copyMergeGray
-从一个图像中复制一个区域的灰度覆盖到指定的位置
+** 从一个图像中复制一个区域的灰度覆盖到指定的位置 **
 ```JavaScript
 Image.copyMergeGray(Image source,
                 Integer dstX,
@@ -759,7 +759,7 @@ Image.copyMergeGray(Image source,
 
 --------------------------
 ### copyResized
-将一个图像中的一个区域拉伸后复制到指定的位置
+** 将一个图像中的一个区域拉伸后复制到指定的位置 **
 ```JavaScript
 Image.copyResized(Image source,
                 Integer dstX,
@@ -785,7 +785,7 @@ Image.copyResized(Image source,
 
 --------------------------
 ### copyResampled
-将一个图像中的一个区域拉伸后复制到指定的位置，不同与 copyResized，此方法拉伸时会对图像进行抖动
+** 将一个图像中的一个区域拉伸后复制到指定的位置，不同与 copyResized，此方法拉伸时会对图像进行抖动 **
 ```JavaScript
 Image.copyResampled(Image source,
                 Integer dstX,
@@ -811,7 +811,7 @@ Image.copyResampled(Image source,
 
 --------------------------
 ### copyRotated
-将一个图像中的一个区域旋转后复制到指定的位置
+** 将一个图像中的一个区域旋转后复制到指定的位置 **
 ```JavaScript
 Image.copyRotated(Image source,
                 Number dstX,
@@ -835,7 +835,7 @@ Image.copyRotated(Image source,
 
 --------------------------
 ### filter
-把过滤器 filterType应用到图像上，根据过滤器类型传入所需参数
+** 把过滤器 filterType应用到图像上，根据过滤器类型传入所需参数 **
 ```JavaScript
 Image.filter(Integer filterType,
                 Number arg1 = 0,
@@ -866,7 +866,7 @@ Image.filter(Integer filterType,
 
 --------------------------
 ### affine
-根据给定的矩阵，对当前图像进行仿射
+** 根据给定的矩阵，对当前图像进行仿射 **
 ```JavaScript
 Image Image.affine(Array affine,
                 Integer x = -1,
@@ -894,7 +894,7 @@ Image Image.affine(Array affine,
 
 --------------------------
 ### gaussianBlur
-对当前图像进行高斯模糊处理
+** 对当前图像进行高斯模糊处理 **
 ```JavaScript
 Image.gaussianBlur(Integer radius) async;
 ```
@@ -904,14 +904,14 @@ Image.gaussianBlur(Integer radius) async;
 
 --------------------------
 ### dispose
-强制回收对象，调用此方法后，对象资源将立即释放
+** 强制回收对象，调用此方法后，对象资源将立即释放 **
 ```JavaScript
 Image.dispose();
 ```
 
 --------------------------
 ### equals
-比较当前对象与给定的对象是否相等
+** 比较当前对象与给定的对象是否相等 **
 ```JavaScript
 Boolean Image.equals(object expected);
 ```
@@ -924,7 +924,7 @@ Boolean Image.equals(object expected);
 
 --------------------------
 ### toString
-返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现
+** 返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现 **
 ```JavaScript
 String Image.toString();
 ```
@@ -934,7 +934,7 @@ String Image.toString();
 
 --------------------------
 ### toJSON
-返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合
+** 返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合 **
 ```JavaScript
 Value Image.toJSON(String key = "");
 ```
@@ -947,7 +947,7 @@ Value Image.toJSON(String key = "");
 
 --------------------------
 ### valueOf
-返回对象本身的数值
+** 返回对象本身的数值 **
 ```JavaScript
 Value Image.valueOf();
 ```
@@ -958,56 +958,56 @@ Value Image.valueOf();
 ## 成员属性
         
 ### width
-Integer, 查询图像宽度
+** Integer, 查询图像宽度 **
 ```JavaScript
 readonly Integer Image.width;
 ```
 
 --------------------------
 ### height
-Integer, 查询图像高度
+** Integer, 查询图像高度 **
 ```JavaScript
 readonly Integer Image.height;
 ```
 
 --------------------------
 ### format
-Integer, 查询图像来源格式，结果为 [gd](../../module/ifs/gd.md).PNG, [gd](../../module/ifs/gd.md).JPEG, [gd](../../module/ifs/gd.md).GIF, [gd](../../module/ifs/gd.md).BMP, [gd](../../module/ifs/gd.md).WEBP
+** Integer, 查询图像来源格式，结果为 [gd](../../module/ifs/gd.md).PNG, [gd](../../module/ifs/gd.md).JPEG, [gd](../../module/ifs/gd.md).GIF, [gd](../../module/ifs/gd.md).BMP, [gd](../../module/ifs/gd.md).WEBP **
 ```JavaScript
 readonly Integer Image.format;
 ```
 
 --------------------------
 ### type
-Integer, 查询图像类型，结果为 [gd](../../module/ifs/gd.md).TRUECOLOR, [gd](../../module/ifs/gd.md).PALETTE
+** Integer, 查询图像类型，结果为 [gd](../../module/ifs/gd.md).TRUECOLOR, [gd](../../module/ifs/gd.md).PALETTE **
 ```JavaScript
 readonly Integer Image.type;
 ```
 
 --------------------------
 ### colorsTotal
-Integer, 查询图像颜色表内的颜色总数
+** Integer, 查询图像颜色表内的颜色总数 **
 ```JavaScript
 readonly Integer Image.colorsTotal;
 ```
 
 --------------------------
 ### transparent
-Integer, 查询和设定指定的颜色为透明色
+** Integer, 查询和设定指定的颜色为透明色 **
 ```JavaScript
 Integer Image.transparent;
 ```
 
 --------------------------
 ### progressive
-Boolean, 查询和设定图像是否渐进式，仅支持 jpeg 格式时
+** Boolean, 查询和设定图像是否渐进式，仅支持 jpeg 格式时 **
 ```JavaScript
 Boolean Image.progressive;
 ```
 
 --------------------------
 ### alphaBlending
-Boolean, 查询和设定绘图时是否计算 alpha 层，缺省为 true
+** Boolean, 查询和设定绘图时是否计算 alpha 层，缺省为 true **
 ```JavaScript
 Boolean Image.alphaBlending;
 ```

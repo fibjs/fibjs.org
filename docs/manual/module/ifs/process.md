@@ -9,7 +9,7 @@ var process = require('process');
 ## 静态函数
         
 ### umask
-改变当前的 umask，Windows 不支持此方法
+** 改变当前的 umask，Windows 不支持此方法 **
 ```JavaScript
 static Integer process.umask(Integer mask);
 ```
@@ -21,7 +21,7 @@ static Integer process.umask(Integer mask);
 * Integer, 返回之前的 mask
 
 --------------------------
-改变当前的 umask，Windows 不支持此方法
+** 改变当前的 umask，Windows 不支持此方法 **
 ```JavaScript
 static Integer process.umask(String mask);
 ```
@@ -33,7 +33,7 @@ static Integer process.umask(String mask);
 * Integer, 返回之前的 mask
 
 --------------------------
-返回当前的 umask，Windows 不支持此方法
+** 返回当前的 umask，Windows 不支持此方法 **
 ```JavaScript
 static Integer process.umask();
 ```
@@ -43,7 +43,7 @@ static Integer process.umask();
 
 --------------------------
 ### exit
-退出当前进程，并返回结果
+** 退出当前进程，并返回结果 **
 ```JavaScript
 static process.exit(Integer code);
 ```
@@ -53,7 +53,7 @@ static process.exit(Integer code);
 
 --------------------------
 ### cwd
-返回操作系统当前工作路径
+** 返回操作系统当前工作路径 **
 ```JavaScript
 static String process.cwd();
 ```
@@ -63,7 +63,7 @@ static String process.cwd();
 
 --------------------------
 ### chdir
-修改操作系统当前工作路径
+** 修改操作系统当前工作路径 **
 ```JavaScript
 static process.chdir(String directory);
 ```
@@ -73,7 +73,7 @@ static process.chdir(String directory);
 
 --------------------------
 ### uptime
-查询运行环境运行时间，以秒为单位
+** 查询运行环境运行时间，以秒为单位 **
 ```JavaScript
 static Number process.uptime();
 ```
@@ -83,7 +83,7 @@ static Number process.uptime();
 
 --------------------------
 ### memoryUsage
-查询当前进程内存使用报告
+** 查询当前进程内存使用报告 **
 ```JavaScript
 static Object process.memoryUsage();
 ```
@@ -106,7 +106,7 @@ static Object process.memoryUsage();
 
 --------------------------
 ### nextTick
-启动一个纤程
+** 启动一个纤程 **
 ```JavaScript
 static process.nextTick(Function func,
                 ...);
@@ -118,7 +118,7 @@ static process.nextTick(Function func,
 
 --------------------------
 ### open
-运行指定的命令行，接管进程输入输出流，并返回进程对象
+** 运行指定的命令行，接管进程输入输出流，并返回进程对象 **
 ```JavaScript
 static SubProcess process.open(String command,
                 Array args,
@@ -142,7 +142,7 @@ opts 支持的选项如下：
 ```
 
 --------------------------
-运行指定的命令行，接管进程输入输出流，并返回进程对象
+** 运行指定的命令行，接管进程输入输出流，并返回进程对象 **
 ```JavaScript
 static SubProcess process.open(String command,
                 Object opts = {});
@@ -165,7 +165,7 @@ opts 支持的选项如下：
 
 --------------------------
 ### start
-运行指定的命令行，并返回进程对象
+** 运行指定的命令行，并返回进程对象 **
 ```JavaScript
 static SubProcess process.start(String command,
                 Array args,
@@ -189,7 +189,7 @@ opts 支持的选项如下：
 ```
 
 --------------------------
-运行指定的命令行，并返回进程对象
+** 运行指定的命令行，并返回进程对象 **
 ```JavaScript
 static SubProcess process.start(String command,
                 Object opts = {});
@@ -212,7 +212,7 @@ opts 支持的选项如下：
 
 --------------------------
 ### run
-运行指定的命令行，并返回进程的结束代码
+** 运行指定的命令行，并返回进程的结束代码 **
 ```JavaScript
 static Integer process.run(String command,
                 Array args,
@@ -236,7 +236,7 @@ opts 支持的选项如下：
 ```
 
 --------------------------
-运行指定的命令行，并返回进程的结束代码
+** 运行指定的命令行，并返回进程的结束代码 **
 ```JavaScript
 static Integer process.run(String command,
                 Object opts = {});
@@ -260,49 +260,49 @@ opts 支持的选项如下：
 ## 静态属性
         
 ### argv
-Array, 返回当前进程的命令行参数
+** Array, 返回当前进程的命令行参数 **
 ```JavaScript
 static readonly Array process.argv;
 ```
 
 --------------------------
 ### execArgv
-Array, 返回当前进程的特殊命令行参数，这些参数被 fibjs 用于设置运行环境
+** Array, 返回当前进程的特殊命令行参数，这些参数被 fibjs 用于设置运行环境 **
 ```JavaScript
 static readonly Array process.execArgv;
 ```
 
 --------------------------
 ### version
-String, 返回fibjs版本字符串
+** String, 返回fibjs版本字符串 **
 ```JavaScript
 static readonly String process.version;
 ```
 
 --------------------------
 ### execPath
-String, 查询当前运行执行文件完整路径
+** String, 查询当前运行执行文件完整路径 **
 ```JavaScript
 static readonly String process.execPath;
 ```
 
 --------------------------
 ### env
-Object, 查询当前进程的环境变量
+** Object, 查询当前进程的环境变量 **
 ```JavaScript
 static readonly Object process.env;
 ```
 
 --------------------------
 ### arch
-String, 查询当前 cpu 环境，可能的结果为 'amd64', 'arm', 'arm64', 'ia32'
+** String, 查询当前 cpu 环境，可能的结果为 'amd64', 'arm', 'arm64', 'ia32' **
 ```JavaScript
 static readonly String process.arch;
 ```
 
 --------------------------
 ### platform
-String, 查询当前平台名称，可能的结果为 'darwin', 'freebsd', 'linux', 或 'win32'
+** String, 查询当前平台名称，可能的结果为 'darwin', 'freebsd', 'linux', 或 'win32' **
 ```JavaScript
 static readonly String process.platform;
 ```

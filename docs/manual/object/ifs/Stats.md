@@ -11,7 +11,7 @@ var stats = new util.Stats(["begin", "end", "error"]);
 ## 构造函数
         
 ### Stats
-数据统计对象构造方法
+** 数据统计对象构造方法 **
 ```JavaScript
  new Stats(Array keys);
 ```
@@ -20,7 +20,7 @@ var stats = new util.Stats(["begin", "end", "error"]);
 * keys: Array, 指定计数器的名称
 
 --------------------------
-数据统计对象构造方法
+** 数据统计对象构造方法 **
 ```JavaScript
  new Stats(Array staticKeys,
                 Array keys);
@@ -32,7 +32,7 @@ var stats = new util.Stats(["begin", "end", "error"]);
 
 ## 下标操作
         
-允许使用键值下标直接访问数值
+** 允许使用键值下标直接访问数值 **
 ```JavaScript
 readonly Integer Stats[String];
 ```
@@ -40,7 +40,7 @@ readonly Integer Stats[String];
 ## 成员函数
         
 ### inc
-指定的计数器增一
+** 指定的计数器增一 **
 ```JavaScript
 Stats.inc(String key);
 ```
@@ -50,7 +50,7 @@ Stats.inc(String key);
 
 --------------------------
 ### dec
-指定的计数器减一
+** 指定的计数器减一 **
 ```JavaScript
 Stats.dec(String key);
 ```
@@ -60,7 +60,7 @@ Stats.dec(String key);
 
 --------------------------
 ### add
-指定的计数器加指定值
+** 指定的计数器加指定值 **
 ```JavaScript
 Stats.add(String key,
                 Integer value);
@@ -72,14 +72,14 @@ Stats.add(String key,
 
 --------------------------
 ### reset
-初始化计数器，除 staticKeys 指定的计数器全部清零
+** 初始化计数器，除 staticKeys 指定的计数器全部清零 **
 ```JavaScript
 Stats.reset();
 ```
 
 --------------------------
 ### uptime
-查询上次 reset 到现在的运行时间
+** 查询上次 reset 到现在的运行时间 **
 ```JavaScript
 Integer Stats.uptime();
 ```
@@ -89,14 +89,14 @@ Integer Stats.uptime();
 
 --------------------------
 ### dispose
-强制回收对象，调用此方法后，对象资源将立即释放
+** 强制回收对象，调用此方法后，对象资源将立即释放 **
 ```JavaScript
 Stats.dispose();
 ```
 
 --------------------------
 ### equals
-比较当前对象与给定的对象是否相等
+** 比较当前对象与给定的对象是否相等 **
 ```JavaScript
 Boolean Stats.equals(object expected);
 ```
@@ -109,7 +109,7 @@ Boolean Stats.equals(object expected);
 
 --------------------------
 ### toString
-返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现
+** 返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现 **
 ```JavaScript
 String Stats.toString();
 ```
@@ -119,7 +119,7 @@ String Stats.toString();
 
 --------------------------
 ### toJSON
-返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合
+** 返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合 **
 ```JavaScript
 Value Stats.toJSON(String key = "");
 ```
@@ -132,7 +132,7 @@ Value Stats.toJSON(String key = "");
 
 --------------------------
 ### valueOf
-返回对象本身的数值
+** 返回对象本身的数值 **
 ```JavaScript
 Value Stats.valueOf();
 ```

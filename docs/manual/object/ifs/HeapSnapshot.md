@@ -4,7 +4,7 @@ HeapSnapshots记录JS堆在某个时刻的状态
 ## 成员函数
         
 ### diff
-和指定的堆快照进行比较
+** 和指定的堆快照进行比较 **
 ```JavaScript
 Object HeapSnapshot.diff(HeapSnapshot before);
 ```
@@ -17,7 +17,7 @@ Object HeapSnapshot.diff(HeapSnapshot before);
 
 --------------------------
 ### getNodeById
-根据ID获取堆视图节点
+** 根据ID获取堆视图节点 **
 ```JavaScript
 HeapGraphNode HeapSnapshot.getNodeById(Integer id);
 ```
@@ -30,7 +30,7 @@ HeapGraphNode HeapSnapshot.getNodeById(Integer id);
 
 --------------------------
 ### save
-根据指定名称保存HeapSnapshot
+** 根据指定名称保存HeapSnapshot **
 ```JavaScript
 HeapSnapshot.save(String fname) async;
 ```
@@ -40,14 +40,14 @@ HeapSnapshot.save(String fname) async;
 
 --------------------------
 ### dispose
-强制回收对象，调用此方法后，对象资源将立即释放
+** 强制回收对象，调用此方法后，对象资源将立即释放 **
 ```JavaScript
 HeapSnapshot.dispose();
 ```
 
 --------------------------
 ### equals
-比较当前对象与给定的对象是否相等
+** 比较当前对象与给定的对象是否相等 **
 ```JavaScript
 Boolean HeapSnapshot.equals(object expected);
 ```
@@ -60,7 +60,7 @@ Boolean HeapSnapshot.equals(object expected);
 
 --------------------------
 ### toString
-返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现
+** 返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现 **
 ```JavaScript
 String HeapSnapshot.toString();
 ```
@@ -70,7 +70,7 @@ String HeapSnapshot.toString();
 
 --------------------------
 ### toJSON
-返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合
+** 返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合 **
 ```JavaScript
 Value HeapSnapshot.toJSON(String key = "");
 ```
@@ -83,7 +83,7 @@ Value HeapSnapshot.toJSON(String key = "");
 
 --------------------------
 ### valueOf
-返回对象本身的数值
+** 返回对象本身的数值 **
 ```JavaScript
 Value HeapSnapshot.valueOf();
 ```
@@ -94,21 +94,21 @@ Value HeapSnapshot.valueOf();
 ## 成员属性
         
 ### time
-Date, 时间信息
+** Date, 时间信息 **
 ```JavaScript
 readonly Date HeapSnapshot.time;
 ```
 
 --------------------------
 ### root
-[HeapGraphNode](HeapGraphNode.md), 堆视图的根节点
+** [HeapGraphNode](HeapGraphNode.md), 堆视图的根节点 **
 ```JavaScript
 readonly HeapGraphNode HeapSnapshot.root;
 ```
 
 --------------------------
 ### nodes
-[List](List.md), 堆视图节点组成的列表
+** [List](List.md), 堆视图节点组成的列表 **
 ```JavaScript
 readonly List HeapSnapshot.nodes;
 ```

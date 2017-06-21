@@ -19,7 +19,7 @@ var svr = new http.HttpsServer(crt, key, 443, function(req){
 ## 构造函数
         
 ### HttpsServer
-HttpsServer 构造函数，在所有本机地址侦听
+** HttpsServer 构造函数，在所有本机地址侦听 **
 ```JavaScript
  new HttpsServer(Array certs,
                 Integer port,
@@ -46,7 +46,7 @@ certs 格式为：
 ```
 
 --------------------------
-HttpsServer 构造函数
+** HttpsServer 构造函数 **
 ```JavaScript
  new HttpsServer(Array certs,
                 String addr,
@@ -75,7 +75,7 @@ certs 格式为：
 ```
 
 --------------------------
-HttpsServer 构造函数，在所有本机地址侦听
+** HttpsServer 构造函数，在所有本机地址侦听 **
 ```JavaScript
  new HttpsServer(X509Cert crt,
                 PKey key,
@@ -90,7 +90,7 @@ HttpsServer 构造函数，在所有本机地址侦听
 * hdlr: [Handler](Handler.md), [http](../../module/ifs/http.md) 内置消息处理器，处理函数，链式处理数组，路由对象，详见
 
 --------------------------
-HttpsServer 构造函数
+** HttpsServer 构造函数 **
 ```JavaScript
  new HttpsServer(X509Cert crt,
                 PKey key,
@@ -109,7 +109,7 @@ HttpsServer 构造函数
 ## 成员函数
         
 ### onerror
-设置错误处理器
+** 设置错误处理器 **
 ```JavaScript
 HttpsServer.onerror(Object hdlrs);
 ```
@@ -130,35 +130,35 @@ HttpsServer.onerror(Object hdlrs);
 
 --------------------------
 ### run
-运行服务器并开始接收和分发连接，此函数不会返回
+** 运行服务器并开始接收和分发连接，此函数不会返回 **
 ```JavaScript
 HttpsServer.run() async;
 ```
 
 --------------------------
 ### asyncRun
-异步运行服务器并开始接收和分发连接，调用后立即返回，服务器在后台运行
+** 异步运行服务器并开始接收和分发连接，调用后立即返回，服务器在后台运行 **
 ```JavaScript
 HttpsServer.asyncRun();
 ```
 
 --------------------------
 ### stop
-关闭 socket中止正在运行的服务器
+** 关闭 socket中止正在运行的服务器 **
 ```JavaScript
 HttpsServer.stop() async;
 ```
 
 --------------------------
 ### dispose
-强制回收对象，调用此方法后，对象资源将立即释放
+** 强制回收对象，调用此方法后，对象资源将立即释放 **
 ```JavaScript
 HttpsServer.dispose();
 ```
 
 --------------------------
 ### equals
-比较当前对象与给定的对象是否相等
+** 比较当前对象与给定的对象是否相等 **
 ```JavaScript
 Boolean HttpsServer.equals(object expected);
 ```
@@ -171,7 +171,7 @@ Boolean HttpsServer.equals(object expected);
 
 --------------------------
 ### toString
-返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现
+** 返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现 **
 ```JavaScript
 String HttpsServer.toString();
 ```
@@ -181,7 +181,7 @@ String HttpsServer.toString();
 
 --------------------------
 ### toJSON
-返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合
+** 返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合 **
 ```JavaScript
 Value HttpsServer.toJSON(String key = "");
 ```
@@ -194,7 +194,7 @@ Value HttpsServer.toJSON(String key = "");
 
 --------------------------
 ### valueOf
-返回对象本身的数值
+** 返回对象本身的数值 **
 ```JavaScript
 Value HttpsServer.valueOf();
 ```
@@ -205,49 +205,49 @@ Value HttpsServer.valueOf();
 ## 成员属性
         
 ### verification
-Integer, 设定证书验证模式，缺省为 VERIFY_NONE
+** Integer, 设定证书验证模式，缺省为 VERIFY_NONE **
 ```JavaScript
 Integer HttpsServer.verification;
 ```
 
 --------------------------
 ### ca
-[X509Cert](X509Cert.md), 客户端证书验证 ca
+** [X509Cert](X509Cert.md), 客户端证书验证 ca **
 ```JavaScript
 readonly X509Cert HttpsServer.ca;
 ```
 
 --------------------------
 ### crossDomain
-Boolean, 查询和设置是否允许跨域请求，缺省为 false
+** Boolean, 查询和设置是否允许跨域请求，缺省为 false **
 ```JavaScript
 Boolean HttpsServer.crossDomain;
 ```
 
 --------------------------
 ### forceGZIP
-Boolean, 查询和设置是否允强制使用 gzip 压缩输出，缺省为 false
+** Boolean, 查询和设置是否允强制使用 gzip 压缩输出，缺省为 false **
 ```JavaScript
 Boolean HttpsServer.forceGZIP;
 ```
 
 --------------------------
 ### maxHeadersCount
-Integer, 查询和设置最大请求头个数，缺省为 128
+** Integer, 查询和设置最大请求头个数，缺省为 128 **
 ```JavaScript
 Integer HttpsServer.maxHeadersCount;
 ```
 
 --------------------------
 ### maxUploadSize
-Integer, 查询和设置最大上传尺寸，以 MB 为单位，缺省为 64
+** Integer, 查询和设置最大上传尺寸，以 MB 为单位，缺省为 64 **
 ```JavaScript
 Integer HttpsServer.maxUploadSize;
 ```
 
 --------------------------
 ### httpStats
-[Stats](Stats.md), 查询 [http](../../module/ifs/http.md) 协议转换处理器的工作状态
+** [Stats](Stats.md), 查询 [http](../../module/ifs/http.md) 协议转换处理器的工作状态 **
 ```JavaScript
 readonly Stats HttpsServer.httpStats;
 ```
@@ -268,21 +268,21 @@ readonly Stats HttpsServer.httpStats;
 
 --------------------------
 ### socket
-[Socket](Socket.md), 服务器当前侦听的 [Socket](Socket.md) 对象
+** [Socket](Socket.md), 服务器当前侦听的 [Socket](Socket.md) 对象 **
 ```JavaScript
 readonly Socket HttpsServer.socket;
 ```
 
 --------------------------
 ### handler
-[Handler](Handler.md), 服务器当前事件处理接口对象
+** [Handler](Handler.md), 服务器当前事件处理接口对象 **
 ```JavaScript
 Handler HttpsServer.handler;
 ```
 
 --------------------------
 ### stats
-[Stats](Stats.md), 查询当前服务器运行状态
+** [Stats](Stats.md), 查询当前服务器运行状态 **
 ```JavaScript
 readonly Stats HttpsServer.stats;
 ```

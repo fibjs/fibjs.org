@@ -3,7 +3,7 @@
 
 ## 下标操作
         
-根据事件类型返回的详细信息
+** 根据事件类型返回的详细信息 **
 ```JavaScript
 readonly Integer EventInfo[String];
 ```
@@ -11,14 +11,14 @@ readonly Integer EventInfo[String];
 ## 成员函数
         
 ### dispose
-强制回收对象，调用此方法后，对象资源将立即释放
+** 强制回收对象，调用此方法后，对象资源将立即释放 **
 ```JavaScript
 EventInfo.dispose();
 ```
 
 --------------------------
 ### equals
-比较当前对象与给定的对象是否相等
+** 比较当前对象与给定的对象是否相等 **
 ```JavaScript
 Boolean EventInfo.equals(object expected);
 ```
@@ -31,7 +31,7 @@ Boolean EventInfo.equals(object expected);
 
 --------------------------
 ### toString
-返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现
+** 返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现 **
 ```JavaScript
 String EventInfo.toString();
 ```
@@ -41,7 +41,7 @@ String EventInfo.toString();
 
 --------------------------
 ### toJSON
-返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合
+** 返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合 **
 ```JavaScript
 Value EventInfo.toJSON(String key = "");
 ```
@@ -54,7 +54,7 @@ Value EventInfo.toJSON(String key = "");
 
 --------------------------
 ### valueOf
-返回对象本身的数值
+** 返回对象本身的数值 **
 ```JavaScript
 Value EventInfo.valueOf();
 ```
@@ -65,28 +65,28 @@ Value EventInfo.valueOf();
 ## 成员属性
         
 ### code
-Integer, 查询事件错误编码
+** Integer, 查询事件错误编码 **
 ```JavaScript
 readonly Integer EventInfo.code;
 ```
 
 --------------------------
 ### reason
-String, 查询事件错误信息
+** String, 查询事件错误信息 **
 ```JavaScript
 readonly String EventInfo.reason;
 ```
 
 --------------------------
 ### type
-String, 查询事件类型
+** String, 查询事件类型 **
 ```JavaScript
 readonly String EventInfo.type;
 ```
 
 --------------------------
 ### target
-Object, 查询触发事件的对象
+** Object, 查询触发事件的对象 **
 ```JavaScript
 readonly Object EventInfo.target;
 ```

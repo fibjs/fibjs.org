@@ -66,7 +66,7 @@ process.exit(-test.run(console.DEBUG));
 ## 对象
         
 ### assert
-断言测试模块，如果测试值为假，则报错，报错行为可设定继续运行或者错误抛出
+** 断言测试模块，如果测试值为假，则报错，报错行为可设定继续运行或者错误抛出 **
 ```JavaScript
 assert test.assert;
 ```
@@ -74,7 +74,7 @@ assert test.assert;
 ## 静态函数
         
 ### describe
-定义一个测试模块，可嵌套定义
+** 定义一个测试模块，可嵌套定义 **
 ```JavaScript
 static test.describe(String name,
                 Function block);
@@ -86,7 +86,7 @@ static test.describe(String name,
 
 --------------------------
 ### xdescribe
-停止测试的模块定义
+** 停止测试的模块定义 **
 ```JavaScript
 static test.xdescribe(String name,
                 Function block);
@@ -98,7 +98,7 @@ static test.xdescribe(String name,
 
 --------------------------
 ### it
-定义一个测试项目
+** 定义一个测试项目 **
 ```JavaScript
 static test.it(String name,
                 Function block);
@@ -110,7 +110,7 @@ static test.it(String name,
 
 --------------------------
 ### xit
-禁止测试的项目定义
+** 禁止测试的项目定义 **
 ```JavaScript
 static test.xit(String name,
                 Function block);
@@ -122,7 +122,7 @@ static test.xit(String name,
 
 --------------------------
 ### before
-定义当前测试模块进入事件
+** 定义当前测试模块进入事件 **
 ```JavaScript
 static test.before(Function func);
 ```
@@ -132,7 +132,7 @@ static test.before(Function func);
 
 --------------------------
 ### after
-定义当前测试模块退出事件
+** 定义当前测试模块退出事件 **
 ```JavaScript
 static test.after(Function func);
 ```
@@ -142,7 +142,7 @@ static test.after(Function func);
 
 --------------------------
 ### beforeEach
-定义当前测试模块测试项目进入事件
+** 定义当前测试模块测试项目进入事件 **
 ```JavaScript
 static test.beforeEach(Function func);
 ```
@@ -152,7 +152,7 @@ static test.beforeEach(Function func);
 
 --------------------------
 ### afterEach
-定义当前测试模块测试项目退出事件
+** 定义当前测试模块测试项目退出事件 **
 ```JavaScript
 static test.afterEach(Function func);
 ```
@@ -162,7 +162,7 @@ static test.afterEach(Function func);
 
 --------------------------
 ### run
-开始执行定义的测试模块
+** 开始执行定义的测试模块 **
 ```JavaScript
 static Integer test.run(Integer loglevel = console.ERROR);
 ```
@@ -175,7 +175,7 @@ static Integer test.run(Integer loglevel = console.ERROR);
 
 --------------------------
 ### setup
-初始化当前脚本的测试环境，将 test 模块方法复制为当前脚本全局变量
+** 初始化当前脚本的测试环境，将 test 模块方法复制为当前脚本全局变量 **
 ```JavaScript
 static test.setup(Integer mode = BDD);
 ```
@@ -186,7 +186,7 @@ static test.setup(Integer mode = BDD);
 ## 静态属性
         
 ### slow
-Integer, 设置和查询慢速测试警告阀值，以 ms 为单位，缺省为 75
+** Integer, 设置和查询慢速测试警告阀值，以 ms 为单位，缺省为 75 **
 ```JavaScript
 static Integer test.slow;
 ```
@@ -194,14 +194,14 @@ static Integer test.slow;
 ## 常量
         
 ### BDD
-定义 BDD(Behavior Drive Development) 测试环境，支持 describe, xdescribe, it, xit, before, after, beforeEach 和 afterEach，同时初始化 [assert](assert.md)
+** 定义 BDD(Behavior Drive Development) 测试环境，支持 describe, xdescribe, it, xit, before, after, beforeEach 和 afterEach，同时初始化 [assert](assert.md) **
 ```JavaScript
 const test.BDD = 0;
 ```
 
 --------------------------
 ### TDD
-定义 TDD(Test Drive Development) 测试环境，支持 suite, xsuite, test, xtest, setup, teardown, suiteSetup 和 suiteTeardown，同时初始化 [assert](assert.md)
+** 定义 TDD(Test Drive Development) 测试环境，支持 suite, xsuite, test, xtest, setup, teardown, suiteSetup 和 suiteTeardown，同时初始化 [assert](assert.md) **
 ```JavaScript
 const test.TDD = 1;
 ```

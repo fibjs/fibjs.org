@@ -4,7 +4,7 @@
 ## 构造函数
         
 ### Service
-系统服务管理对象构造函数
+** 系统服务管理对象构造函数 **
 ```JavaScript
  new Service(String name,
                 Function worker,
@@ -19,7 +19,7 @@
 ## 静态属性
         
 ### defaultMaxListeners
-Integer, 默认全局最大监听器数
+** Integer, 默认全局最大监听器数 **
 ```JavaScript
 static Integer Service.defaultMaxListeners;
 ```
@@ -27,7 +27,7 @@ static Integer Service.defaultMaxListeners;
 ## 成员函数
         
 ### install
-安装服务到系统
+** 安装服务到系统 **
 ```JavaScript
 Service.install(String cmd,
                 String displayName = "",
@@ -41,42 +41,42 @@ Service.install(String cmd,
 
 --------------------------
 ### remove
-从系统中卸载服务
+** 从系统中卸载服务 **
 ```JavaScript
 Service.remove();
 ```
 
 --------------------------
 ### start
-启动服务
+** 启动服务 **
 ```JavaScript
 Service.start();
 ```
 
 --------------------------
 ### stop
-停止服务
+** 停止服务 **
 ```JavaScript
 Service.stop();
 ```
 
 --------------------------
 ### restart
-重启服务
+** 重启服务 **
 ```JavaScript
 Service.restart();
 ```
 
 --------------------------
 ### run
-开始运行服务实体
+** 开始运行服务实体 **
 ```JavaScript
 Service.run() async;
 ```
 
 --------------------------
 ### isInstalled
-检测服务是否安装
+** 检测服务是否安装 **
 ```JavaScript
 Boolean Service.isInstalled();
 ```
@@ -86,7 +86,7 @@ Boolean Service.isInstalled();
 
 --------------------------
 ### isRunning
-检测服务是否运行
+** 检测服务是否运行 **
 ```JavaScript
 Boolean Service.isRunning();
 ```
@@ -96,7 +96,7 @@ Boolean Service.isRunning();
 
 --------------------------
 ### on
-绑定一个事件处理函数到对象
+** 绑定一个事件处理函数到对象 **
 ```JavaScript
 Object Service.on(String ev,
                 Function func);
@@ -110,7 +110,7 @@ Object Service.on(String ev,
 * Object, 返回成功绑定的数量，如果函数已绑定则返回 0
 
 --------------------------
-绑定一个事件处理函数到对象
+** 绑定一个事件处理函数到对象 **
 ```JavaScript
 Object Service.on(Object map);
 ```
@@ -123,7 +123,7 @@ Object Service.on(Object map);
 
 --------------------------
 ### addListener
-绑定一个事件处理函数到对象
+** 绑定一个事件处理函数到对象 **
 ```JavaScript
 Object Service.addListener(String ev,
                 Function func);
@@ -137,7 +137,7 @@ Object Service.addListener(String ev,
 * Object, 返回事件对象本身，便于链式调用
 
 --------------------------
-绑定一个事件处理函数到对象
+** 绑定一个事件处理函数到对象 **
 ```JavaScript
 Object Service.addListener(Object map);
 ```
@@ -150,7 +150,7 @@ Object Service.addListener(Object map);
 
 --------------------------
 ### prependListener
-绑定一个事件处理函数到对象起始
+** 绑定一个事件处理函数到对象起始 **
 ```JavaScript
 Object Service.prependListener(String ev,
                 Function func);
@@ -164,7 +164,7 @@ Object Service.prependListener(String ev,
 * Object, 返回成功绑定的数量，如果函数已绑定则返回 0
 
 --------------------------
-绑定一个事件处理函数到对象起始
+** 绑定一个事件处理函数到对象起始 **
 ```JavaScript
 Object Service.prependListener(Object map);
 ```
@@ -178,7 +178,7 @@ Object Service.prependListener(Object map);
 
 --------------------------
 ### once
-绑定一个一次性事件处理函数到对象，一次性处理函数只会触发一次
+** 绑定一个一次性事件处理函数到对象，一次性处理函数只会触发一次 **
 ```JavaScript
 Object Service.once(String ev,
                 Function func);
@@ -192,7 +192,7 @@ Object Service.once(String ev,
 * Object, 返回事件对象本身，便于链式调用
 
 --------------------------
-绑定一个一次性事件处理函数到对象，一次性处理函数只会触发一次
+** 绑定一个一次性事件处理函数到对象，一次性处理函数只会触发一次 **
 ```JavaScript
 Object Service.once(Object map);
 ```
@@ -205,7 +205,7 @@ Object Service.once(Object map);
 
 --------------------------
 ### prependOnceListener
-绑定一个事件处理函数到对象起始
+** 绑定一个事件处理函数到对象起始 **
 ```JavaScript
 Object Service.prependOnceListener(String ev,
                 Function func);
@@ -219,7 +219,7 @@ Object Service.prependOnceListener(String ev,
 * Object, 返回成功绑定的数量，如果函数已绑定则返回 0
 
 --------------------------
-绑定一个事件处理函数到对象起始
+** 绑定一个事件处理函数到对象起始 **
 ```JavaScript
 Object Service.prependOnceListener(Object map);
 ```
@@ -233,7 +233,7 @@ Object Service.prependOnceListener(Object map);
 
 --------------------------
 ### off
-从对象处理队列中取消指定函数
+** 从对象处理队列中取消指定函数 **
 ```JavaScript
 Object Service.off(String ev,
                 Function func);
@@ -247,7 +247,7 @@ Object Service.off(String ev,
 * Object, 返回事件对象本身，便于链式调用
 
 --------------------------
-取消对象处理队列中的全部函数
+** 取消对象处理队列中的全部函数 **
 ```JavaScript
 Object Service.off(String ev);
 ```
@@ -259,7 +259,7 @@ Object Service.off(String ev);
 * Object, 返回事件对象本身，便于链式调用
 
 --------------------------
-从对象处理队列中取消指定函数
+** 从对象处理队列中取消指定函数 **
 ```JavaScript
 Object Service.off(Object map);
 ```
@@ -272,7 +272,7 @@ Object Service.off(Object map);
 
 --------------------------
 ### removeListener
-从对象处理队列中取消指定函数
+** 从对象处理队列中取消指定函数 **
 ```JavaScript
 Object Service.removeListener(String ev,
                 Function func);
@@ -286,7 +286,7 @@ Object Service.removeListener(String ev,
 * Object, 返回事件对象本身，便于链式调用
 
 --------------------------
-取消对象处理队列中的全部函数
+** 取消对象处理队列中的全部函数 **
 ```JavaScript
 Object Service.removeListener(String ev);
 ```
@@ -298,7 +298,7 @@ Object Service.removeListener(String ev);
 * Object, 返回事件对象本身，便于链式调用
 
 --------------------------
-从对象处理队列中取消指定函数
+** 从对象处理队列中取消指定函数 **
 ```JavaScript
 Object Service.removeListener(Object map);
 ```
@@ -311,7 +311,7 @@ Object Service.removeListener(Object map);
 
 --------------------------
 ### removeAllListeners
-从对象处理队列中取消所有事件的所有监听器， 如果指定事件，则移除指定事件的所有监听器。
+** 从对象处理队列中取消所有事件的所有监听器， 如果指定事件，则移除指定事件的所有监听器。 **
 ```JavaScript
 Object Service.removeAllListeners(Array evs = []);
 ```
@@ -324,7 +324,7 @@ Object Service.removeAllListeners(Array evs = []);
 
 --------------------------
 ### setMaxListeners
-监听器的默认限制的数量，仅用于兼容
+** 监听器的默认限制的数量，仅用于兼容 **
 ```JavaScript
 Service.setMaxListeners(Integer n);
 ```
@@ -334,14 +334,14 @@ Service.setMaxListeners(Integer n);
 
 --------------------------
 ### getMaxListeners
-获取监听器的默认限制的数量，仅用于兼容
+** 获取监听器的默认限制的数量，仅用于兼容 **
 ```JavaScript
 Integer Service.getMaxListeners();
 ```
 
 --------------------------
 ### listeners
-查询对象指定事件的监听器数组
+** 查询对象指定事件的监听器数组 **
 ```JavaScript
 Array Service.listeners(String ev);
 ```
@@ -354,7 +354,7 @@ Array Service.listeners(String ev);
 
 --------------------------
 ### listenerCount
-查询对象指定事件的监听器数量
+** 查询对象指定事件的监听器数量 **
 ```JavaScript
 Integer Service.listenerCount(String ev);
 ```
@@ -367,7 +367,7 @@ Integer Service.listenerCount(String ev);
 
 --------------------------
 ### eventNames
-查询监听器事件名称
+** 查询监听器事件名称 **
 ```JavaScript
 Array Service.eventNames();
 ```
@@ -377,7 +377,7 @@ Array Service.eventNames();
 
 --------------------------
 ### emit
-主动触发一个事件
+** 主动触发一个事件 **
 ```JavaScript
 Boolean Service.emit(String ev,
                 ...);
@@ -392,14 +392,14 @@ Boolean Service.emit(String ev,
 
 --------------------------
 ### dispose
-强制回收对象，调用此方法后，对象资源将立即释放
+** 强制回收对象，调用此方法后，对象资源将立即释放 **
 ```JavaScript
 Service.dispose();
 ```
 
 --------------------------
 ### equals
-比较当前对象与给定的对象是否相等
+** 比较当前对象与给定的对象是否相等 **
 ```JavaScript
 Boolean Service.equals(object expected);
 ```
@@ -412,7 +412,7 @@ Boolean Service.equals(object expected);
 
 --------------------------
 ### toString
-返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现
+** 返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现 **
 ```JavaScript
 String Service.toString();
 ```
@@ -422,7 +422,7 @@ String Service.toString();
 
 --------------------------
 ### toJSON
-返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合
+** 返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合 **
 ```JavaScript
 Value Service.toJSON(String key = "");
 ```
@@ -435,7 +435,7 @@ Value Service.toJSON(String key = "");
 
 --------------------------
 ### valueOf
-返回对象本身的数值
+** 返回对象本身的数值 **
 ```JavaScript
 Value Service.valueOf();
 ```
@@ -446,28 +446,28 @@ Value Service.valueOf();
 ## 成员属性
         
 ### name
-String, 查询和设置服务名称
+** String, 查询和设置服务名称 **
 ```JavaScript
 String Service.name;
 ```
 
 --------------------------
 ### onstop
-Function, 查询和绑定服务停止事件，相当于 on("stop", func);
+** Function, 查询和绑定服务停止事件，相当于 on("stop", func); **
 ```JavaScript
 Function Service.onstop;
 ```
 
 --------------------------
 ### onpause
-Function, 查询和绑定服务暂停事件，相当于 on("pause", func);
+** Function, 查询和绑定服务暂停事件，相当于 on("pause", func); **
 ```JavaScript
 Function Service.onpause;
 ```
 
 --------------------------
 ### oncontinue
-Function, 查询和绑定服务恢复事件，相当于 on("continue", func);
+** Function, 查询和绑定服务恢复事件，相当于 on("continue", func); **
 ```JavaScript
 Function Service.oncontinue;
 ```

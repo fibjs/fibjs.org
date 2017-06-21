@@ -19,7 +19,7 @@ new net.TcpServer(8080, func).run();
 ## 构造函数
         
 ### TcpServer
-TcpServer 构造函数，在所有本机地址侦听
+** TcpServer 构造函数，在所有本机地址侦听 **
 ```JavaScript
  new TcpServer(Integer port,
                 Handler listener);
@@ -30,7 +30,7 @@ TcpServer 构造函数，在所有本机地址侦听
 * listener: [Handler](Handler.md), 指定 tcp 接收到的内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq](../../module/ifs/mq.md).[Handler](Handler.md)
 
 --------------------------
-TcpServer 构造函数
+** TcpServer 构造函数 **
 ```JavaScript
  new TcpServer(String addr,
                 Integer port,
@@ -45,35 +45,35 @@ TcpServer 构造函数
 ## 成员函数
         
 ### run
-运行服务器并开始接收和分发连接，此函数不会返回
+** 运行服务器并开始接收和分发连接，此函数不会返回 **
 ```JavaScript
 TcpServer.run() async;
 ```
 
 --------------------------
 ### asyncRun
-异步运行服务器并开始接收和分发连接，调用后立即返回，服务器在后台运行
+** 异步运行服务器并开始接收和分发连接，调用后立即返回，服务器在后台运行 **
 ```JavaScript
 TcpServer.asyncRun();
 ```
 
 --------------------------
 ### stop
-关闭 socket中止正在运行的服务器
+** 关闭 socket中止正在运行的服务器 **
 ```JavaScript
 TcpServer.stop() async;
 ```
 
 --------------------------
 ### dispose
-强制回收对象，调用此方法后，对象资源将立即释放
+** 强制回收对象，调用此方法后，对象资源将立即释放 **
 ```JavaScript
 TcpServer.dispose();
 ```
 
 --------------------------
 ### equals
-比较当前对象与给定的对象是否相等
+** 比较当前对象与给定的对象是否相等 **
 ```JavaScript
 Boolean TcpServer.equals(object expected);
 ```
@@ -86,7 +86,7 @@ Boolean TcpServer.equals(object expected);
 
 --------------------------
 ### toString
-返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现
+** 返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现 **
 ```JavaScript
 String TcpServer.toString();
 ```
@@ -96,7 +96,7 @@ String TcpServer.toString();
 
 --------------------------
 ### toJSON
-返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合
+** 返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合 **
 ```JavaScript
 Value TcpServer.toJSON(String key = "");
 ```
@@ -109,7 +109,7 @@ Value TcpServer.toJSON(String key = "");
 
 --------------------------
 ### valueOf
-返回对象本身的数值
+** 返回对象本身的数值 **
 ```JavaScript
 Value TcpServer.valueOf();
 ```
@@ -120,21 +120,21 @@ Value TcpServer.valueOf();
 ## 成员属性
         
 ### socket
-[Socket](Socket.md), 服务器当前侦听的 [Socket](Socket.md) 对象
+** [Socket](Socket.md), 服务器当前侦听的 [Socket](Socket.md) 对象 **
 ```JavaScript
 readonly Socket TcpServer.socket;
 ```
 
 --------------------------
 ### handler
-[Handler](Handler.md), 服务器当前事件处理接口对象
+** [Handler](Handler.md), 服务器当前事件处理接口对象 **
 ```JavaScript
 Handler TcpServer.handler;
 ```
 
 --------------------------
 ### stats
-[Stats](Stats.md), 查询当前服务器运行状态
+** [Stats](Stats.md), 查询当前服务器运行状态 **
 ```JavaScript
 readonly Stats TcpServer.stats;
 ```

@@ -12,7 +12,7 @@ l.release();
 ## 构造函数
         
 ### Lock
-构造函数
+** 构造函数 **
 ```JavaScript
  new Lock();
 ```
@@ -20,7 +20,7 @@ l.release();
 ## 成员函数
         
 ### acquire
-获取锁的拥有权
+** 获取锁的拥有权 **
 ```JavaScript
 Boolean Lock.acquire(Boolean blocking = true);
 ```
@@ -39,7 +39,7 @@ acquire 方法用于获取锁的拥有权，当锁处于可获取状态时，此
 
 --------------------------
 ### release
-释放锁的拥有权
+** 释放锁的拥有权 **
 ```JavaScript
 Lock.release();
 ```
@@ -48,7 +48,7 @@ Lock.release();
 
 --------------------------
 ### count
-查询当前等待任务数
+** 查询当前等待任务数 **
 ```JavaScript
 Integer Lock.count();
 ```
@@ -58,14 +58,14 @@ Integer Lock.count();
 
 --------------------------
 ### dispose
-强制回收对象，调用此方法后，对象资源将立即释放
+** 强制回收对象，调用此方法后，对象资源将立即释放 **
 ```JavaScript
 Lock.dispose();
 ```
 
 --------------------------
 ### equals
-比较当前对象与给定的对象是否相等
+** 比较当前对象与给定的对象是否相等 **
 ```JavaScript
 Boolean Lock.equals(object expected);
 ```
@@ -78,7 +78,7 @@ Boolean Lock.equals(object expected);
 
 --------------------------
 ### toString
-返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现
+** 返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现 **
 ```JavaScript
 String Lock.toString();
 ```
@@ -88,7 +88,7 @@ String Lock.toString();
 
 --------------------------
 ### toJSON
-返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合
+** 返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合 **
 ```JavaScript
 Value Lock.toJSON(String key = "");
 ```
@@ -101,7 +101,7 @@ Value Lock.toJSON(String key = "");
 
 --------------------------
 ### valueOf
-返回对象本身的数值
+** 返回对象本身的数值 **
 ```JavaScript
 Value Lock.valueOf();
 ```

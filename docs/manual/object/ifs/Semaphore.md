@@ -25,7 +25,7 @@ l.release();
 ## 构造函数
         
 ### Semaphore
-信号量构造函数
+** 信号量构造函数 **
 ```JavaScript
  new Semaphore(Integer value = 1);
 ```
@@ -36,21 +36,21 @@ l.release();
 ## 成员函数
         
 ### wait
-等待一个信号量，等同于 acquire(true)
+** 等待一个信号量，等同于 acquire(true) **
 ```JavaScript
 Semaphore.wait();
 ```
 
 --------------------------
 ### post
-释放一个信号量，等同于 release()
+** 释放一个信号量，等同于 release() **
 ```JavaScript
 Semaphore.post();
 ```
 
 --------------------------
 ### trywait
-尝试获取一个信号，如不能获取，则立即返回并返回 false，等同于 acquire(false)
+** 尝试获取一个信号，如不能获取，则立即返回并返回 false，等同于 acquire(false) **
 ```JavaScript
 Boolean Semaphore.trywait();
 ```
@@ -60,7 +60,7 @@ Boolean Semaphore.trywait();
 
 --------------------------
 ### acquire
-获取锁的拥有权
+** 获取锁的拥有权 **
 ```JavaScript
 Boolean Semaphore.acquire(Boolean blocking = true);
 ```
@@ -79,7 +79,7 @@ acquire 方法用于获取锁的拥有权，当锁处于可获取状态时，此
 
 --------------------------
 ### release
-释放锁的拥有权
+** 释放锁的拥有权 **
 ```JavaScript
 Semaphore.release();
 ```
@@ -88,7 +88,7 @@ Semaphore.release();
 
 --------------------------
 ### count
-查询当前等待任务数
+** 查询当前等待任务数 **
 ```JavaScript
 Integer Semaphore.count();
 ```
@@ -98,14 +98,14 @@ Integer Semaphore.count();
 
 --------------------------
 ### dispose
-强制回收对象，调用此方法后，对象资源将立即释放
+** 强制回收对象，调用此方法后，对象资源将立即释放 **
 ```JavaScript
 Semaphore.dispose();
 ```
 
 --------------------------
 ### equals
-比较当前对象与给定的对象是否相等
+** 比较当前对象与给定的对象是否相等 **
 ```JavaScript
 Boolean Semaphore.equals(object expected);
 ```
@@ -118,7 +118,7 @@ Boolean Semaphore.equals(object expected);
 
 --------------------------
 ### toString
-返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现
+** 返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现 **
 ```JavaScript
 String Semaphore.toString();
 ```
@@ -128,7 +128,7 @@ String Semaphore.toString();
 
 --------------------------
 ### toJSON
-返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合
+** 返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合 **
 ```JavaScript
 Value Semaphore.toJSON(String key = "");
 ```
@@ -141,7 +141,7 @@ Value Semaphore.toJSON(String key = "");
 
 --------------------------
 ### valueOf
-返回对象本身的数值
+** 返回对象本身的数值 **
 ```JavaScript
 Value Semaphore.valueOf();
 ```

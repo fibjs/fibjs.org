@@ -9,7 +9,7 @@ var n = new Int64(123);
 ## 构造函数
         
 ### Int64
-Int64 构造函数
+** Int64 构造函数 **
 ```JavaScript
  new Int64(Long num = 0);
 ```
@@ -18,7 +18,7 @@ Int64 构造函数
 * num: Long, 初始化的值
 
 --------------------------
-Int64 构造函数
+** Int64 构造函数 **
 ```JavaScript
  new Int64(Long hi,
                 Long lo);
@@ -29,7 +29,7 @@ Int64 构造函数
 * lo: Long, 低32位数
 
 --------------------------
-Int64 构造函数
+** Int64 构造函数 **
 ```JavaScript
  new Int64(Int64 num);
 ```
@@ -38,7 +38,7 @@ Int64 构造函数
 * num: Int64, 初始化的值
 
 --------------------------
-Int64 构造函数
+** Int64 构造函数 **
 ```JavaScript
  new Int64(String num,
                 Integer base = 10);
@@ -51,7 +51,7 @@ Int64 构造函数
 ## 成员函数
         
 ### compare
-将 Int64 内的数值与给定数值比较大小
+** 将 Int64 内的数值与给定数值比较大小 **
 ```JavaScript
 Integer Int64.compare(Int64 num);
 ```
@@ -64,7 +64,7 @@ Integer Int64.compare(Int64 num);
 
 --------------------------
 ### shiftLeft
-将 Int64 内的数值左移相应的位数，此操作不影响 Int64 原有数值
+** 将 Int64 内的数值左移相应的位数，此操作不影响 Int64 原有数值 **
 ```JavaScript
 Int64 Int64.shiftLeft(Integer bits);
 ```
@@ -77,7 +77,7 @@ Int64 Int64.shiftLeft(Integer bits);
 
 --------------------------
 ### shiftRight
-将 Int64 内的数值右移相应的位数，此操作不影响 Int64 原有数值
+** 将 Int64 内的数值右移相应的位数，此操作不影响 Int64 原有数值 **
 ```JavaScript
 Int64 Int64.shiftRight(Integer bits);
 ```
@@ -90,7 +90,7 @@ Int64 Int64.shiftRight(Integer bits);
 
 --------------------------
 ### and
-将 Int64 内的数值与给定的数值进行按位 and 操作，此操作不影响 Int64 原有数值
+** 将 Int64 内的数值与给定的数值进行按位 and 操作，此操作不影响 Int64 原有数值 **
 ```JavaScript
 Int64 Int64.and(Int64 num);
 ```
@@ -103,7 +103,7 @@ Int64 Int64.and(Int64 num);
 
 --------------------------
 ### or
-将 Int64 内的数值与给定的数值进行按位 or 操作，此操作不影响 Int64 原有数值
+** 将 Int64 内的数值与给定的数值进行按位 or 操作，此操作不影响 Int64 原有数值 **
 ```JavaScript
 Int64 Int64.or(Int64 num);
 ```
@@ -116,7 +116,7 @@ Int64 Int64.or(Int64 num);
 
 --------------------------
 ### xor
-将 Int64 内的数值与给定的数值进行按位 xor 操作，此操作不影响 Int64 原有数值
+** 将 Int64 内的数值与给定的数值进行按位 xor 操作，此操作不影响 Int64 原有数值 **
 ```JavaScript
 Int64 Int64.xor(Int64 num);
 ```
@@ -129,7 +129,7 @@ Int64 Int64.xor(Int64 num);
 
 --------------------------
 ### add
-将 Int64 内的数值与给定的数值进行加操作，此操作不影响 Int64 原有数值
+** 将 Int64 内的数值与给定的数值进行加操作，此操作不影响 Int64 原有数值 **
 ```JavaScript
 Int64 Int64.add(Int64 num);
 ```
@@ -142,7 +142,7 @@ Int64 Int64.add(Int64 num);
 
 --------------------------
 ### sub
-将 Int64 内的数值与给定的数值进行减操作，此操作不影响 Int64 原有数值
+** 将 Int64 内的数值与给定的数值进行减操作，此操作不影响 Int64 原有数值 **
 ```JavaScript
 Int64 Int64.sub(Int64 num);
 ```
@@ -155,7 +155,7 @@ Int64 Int64.sub(Int64 num);
 
 --------------------------
 ### toNumber
-转换成数字类型
+** 转换成数字类型 **
 ```JavaScript
 Number Int64.toNumber();
 ```
@@ -165,7 +165,7 @@ Number Int64.toNumber();
 
 --------------------------
 ### toString
-转换成字符串类型
+** 转换成字符串类型 **
 ```JavaScript
 String Int64.toString(Integer base = 10);
 ```
@@ -178,14 +178,14 @@ String Int64.toString(Integer base = 10);
 
 --------------------------
 ### dispose
-强制回收对象，调用此方法后，对象资源将立即释放
+** 强制回收对象，调用此方法后，对象资源将立即释放 **
 ```JavaScript
 Int64.dispose();
 ```
 
 --------------------------
 ### equals
-比较当前对象与给定的对象是否相等
+** 比较当前对象与给定的对象是否相等 **
 ```JavaScript
 Boolean Int64.equals(object expected);
 ```
@@ -198,7 +198,7 @@ Boolean Int64.equals(object expected);
 
 --------------------------
 ### toString
-返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现
+** 返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现 **
 ```JavaScript
 String Int64.toString();
 ```
@@ -208,7 +208,7 @@ String Int64.toString();
 
 --------------------------
 ### toJSON
-返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合
+** 返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合 **
 ```JavaScript
 Value Int64.toJSON(String key = "");
 ```
@@ -221,7 +221,7 @@ Value Int64.toJSON(String key = "");
 
 --------------------------
 ### valueOf
-返回对象本身的数值
+** 返回对象本身的数值 **
 ```JavaScript
 Value Int64.valueOf();
 ```
@@ -232,14 +232,14 @@ Value Int64.valueOf();
 ## 成员属性
         
 ### hi
-Long, 高 32 位数值
+** Long, 高 32 位数值 **
 ```JavaScript
 Long Int64.hi;
 ```
 
 --------------------------
 ### lo
-Long, 低 32 位数值
+** Long, 低 32 位数值 **
 ```JavaScript
 Long Int64.lo;
 ```

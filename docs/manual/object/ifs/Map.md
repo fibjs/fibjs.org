@@ -10,13 +10,13 @@ var m = new collection.Map();
 ## 构造函数
         
 ### Map
-Map 构造函数
+** Map 构造函数 **
 ```JavaScript
  new Map();
 ```
 
 --------------------------
-Map 构造函数
+** Map 构造函数 **
 ```JavaScript
  new Map(Object map);
 ```
@@ -26,7 +26,7 @@ Map 构造函数
 
 ## 下标操作
         
-允许使用键值下标直接访问数值
+** 允许使用键值下标直接访问数值 **
 ```JavaScript
 Variant Map[String];
 ```
@@ -34,14 +34,14 @@ Variant Map[String];
 ## 成员函数
         
 ### clear
-清除容器数据
+** 清除容器数据 **
 ```JavaScript
 Map.clear();
 ```
 
 --------------------------
 ### has
-检查容器内是否存在指定键值的数据
+** 检查容器内是否存在指定键值的数据 **
 ```JavaScript
 Boolean Map.has(String name);
 ```
@@ -54,7 +54,7 @@ Boolean Map.has(String name);
 
 --------------------------
 ### get
-查询指定键值的值
+** 查询指定键值的值 **
 ```JavaScript
 Variant Map.get(String name);
 ```
@@ -67,7 +67,7 @@ Variant Map.get(String name);
 
 --------------------------
 ### put
-添加一组键值数据
+** 添加一组键值数据 **
 ```JavaScript
 Map.put(Object map);
 ```
@@ -76,7 +76,7 @@ Map.put(Object map);
 * map: Object, 指定要设定的键值数据字典
 
 --------------------------
-添加一个键值数据
+** 添加一个键值数据 **
 ```JavaScript
 Map.put(String name,
                 Variant value);
@@ -88,7 +88,7 @@ Map.put(String name,
 
 --------------------------
 ### set
-设定一组键值数据，键值不存在则插入一条新数据
+** 设定一组键值数据，键值不存在则插入一条新数据 **
 ```JavaScript
 Map.set(Object map);
 ```
@@ -97,7 +97,7 @@ Map.set(Object map);
 * map: Object, 指定要设定的键值数据字典
 
 --------------------------
-设定一个键值数据，键值不存在则插入新数据
+** 设定一个键值数据，键值不存在则插入新数据 **
 ```JavaScript
 Map.set(String name,
                 Variant value);
@@ -109,7 +109,7 @@ Map.set(String name,
 
 --------------------------
 ### remove
-删除指定键值的全部值
+** 删除指定键值的全部值 **
 ```JavaScript
 Map.remove(String name);
 ```
@@ -119,7 +119,7 @@ Map.remove(String name);
 
 --------------------------
 ### isEmpty
-检查容器是否为空
+** 检查容器是否为空 **
 ```JavaScript
 Boolean Map.isEmpty();
 ```
@@ -129,14 +129,14 @@ Boolean Map.isEmpty();
 
 --------------------------
 ### dispose
-强制回收对象，调用此方法后，对象资源将立即释放
+** 强制回收对象，调用此方法后，对象资源将立即释放 **
 ```JavaScript
 Map.dispose();
 ```
 
 --------------------------
 ### equals
-比较当前对象与给定的对象是否相等
+** 比较当前对象与给定的对象是否相等 **
 ```JavaScript
 Boolean Map.equals(object expected);
 ```
@@ -149,7 +149,7 @@ Boolean Map.equals(object expected);
 
 --------------------------
 ### toString
-返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现
+** 返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现 **
 ```JavaScript
 String Map.toString();
 ```
@@ -159,7 +159,7 @@ String Map.toString();
 
 --------------------------
 ### toJSON
-返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合
+** 返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合 **
 ```JavaScript
 Value Map.toJSON(String key = "");
 ```
@@ -172,7 +172,7 @@ Value Map.toJSON(String key = "");
 
 --------------------------
 ### valueOf
-返回对象本身的数值
+** 返回对象本身的数值 **
 ```JavaScript
 Value Map.valueOf();
 ```
@@ -183,7 +183,7 @@ Value Map.valueOf();
 ## 成员属性
         
 ### size
-Integer, 查询容器内数值个数
+** Integer, 查询容器内数值个数 **
 ```JavaScript
 readonly Integer Map.size;
 ```
