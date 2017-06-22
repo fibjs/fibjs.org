@@ -2,7 +2,7 @@
 [zip](../../module/ifs/zip.md) 文件访问对象
 
 ## 继承关系
-<div style="text-align: center;"><svg width="71pt" height="276pt" viewBox="0.00 0.00 71.00 276.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<div class="inherits"><svg width="71pt" height="276pt" viewBox="0.00 0.00 71.00 276.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 272)">
 <title>%0</title>
 <polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-272 67,-272 67,4 -4,4"/>

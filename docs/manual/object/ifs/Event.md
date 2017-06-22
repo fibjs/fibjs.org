@@ -4,7 +4,7 @@
 通过一个事件达到对一组纤程进行控制的目的（事件对象的状态为bool类型）
 
 ## 继承关系
-<div style="text-align: center;"><svg width="80pt" height="376pt" viewBox="0.00 0.00 80.00 376.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<div class="inherits"><svg width="80pt" height="376pt" viewBox="0.00 0.00 80.00 376.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 372)">
 <title>%0</title>
 <polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-372 76,-372 76,4 -4,4"/>

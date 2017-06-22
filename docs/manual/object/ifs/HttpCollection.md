@@ -2,7 +2,7 @@
 [http](../../module/ifs/http.md) 容器对象，用于 [http](../../module/ifs/http.md) header，cookie，query，form，等数据的存储与组织
 
 ## 继承关系
-<div style="text-align: center;"><svg width="93pt" height="274pt" viewBox="0.00 0.00 93.00 274.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<div class="inherits"><svg width="93pt" height="274pt" viewBox="0.00 0.00 93.00 274.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 270)">
 <title>%0</title>
 <polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-270 89,-270 89,4 -4,4"/>

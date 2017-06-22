@@ -2,7 +2,7 @@
 mongodb 数据库数据唯一标识对象，用于存储传递 oid
 
 ## 继承关系
-<div style="text-align: center;"><svg width="65pt" height="172pt" viewBox="0.00 0.00 65.00 172.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<div class="inherits"><svg width="65pt" height="172pt" viewBox="0.00 0.00 65.00 172.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 168)">
 <title>%0</title>
 <polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-168 61,-168 61,4 -4,4"/>

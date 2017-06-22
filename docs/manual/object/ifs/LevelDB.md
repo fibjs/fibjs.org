@@ -8,7 +8,7 @@ var test = new db.openLevelDB("test.db");
 ```
 
 ## 继承关系
-<div style="text-align: center;"><svg width="72pt" height="312pt" viewBox="0.00 0.00 72.00 312.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<div class="inherits"><svg width="72pt" height="312pt" viewBox="0.00 0.00 72.00 312.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 308)">
 <title>%0</title>
 <polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-308 68,-308 68,4 -4,4"/>

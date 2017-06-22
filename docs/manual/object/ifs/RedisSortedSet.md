@@ -9,7 +9,7 @@ var set = rdb.getSortedSet("test");
 ```
 
 ## 继承关系
-<div style="text-align: center;"><svg width="88pt" height="288pt" viewBox="0.00 0.00 88.00 288.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<div class="inherits"><svg width="88pt" height="288pt" viewBox="0.00 0.00 88.00 288.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 284)">
 <title>%0</title>
 <polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-284 84,-284 84,4 -4,4"/>

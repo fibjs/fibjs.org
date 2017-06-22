@@ -41,7 +41,7 @@ var routing = new mq.Routing({
 匹配消息 "/func1/123/456.html" 后，value == "123"，params == ["123"];
 
 ## 继承关系
-<div style="text-align: center;"><svg width="89pt" height="376pt" viewBox="0.00 0.00 89.00 376.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<div class="inherits"><svg width="89pt" height="376pt" viewBox="0.00 0.00 89.00 376.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 372)">
 <title>%0</title>
 <polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-372 85,-372 85,4 -4,4"/>

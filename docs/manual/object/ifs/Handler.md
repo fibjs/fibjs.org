@@ -2,7 +2,7 @@
 消息处理器接口
 
 ## 继承关系
-<div style="text-align: center;"><svg width="442pt" height="514pt" viewBox="0.00 0.00 442.00 514.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<div class="inherits"><svg width="442pt" height="514pt" viewBox="0.00 0.00 442.00 514.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 510)">
 <title>%0</title>
 <polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-510 438,-510 438,4 -4,4"/>

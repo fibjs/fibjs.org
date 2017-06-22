@@ -7,7 +7,7 @@ var k = new crypto.X509Req();
 ```
 
 ## 继承关系
-<div style="text-align: center;"><svg width="96pt" height="284pt" viewBox="0.00 0.00 96.00 284.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<div class="inherits"><svg width="96pt" height="284pt" viewBox="0.00 0.00 96.00 284.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 280)">
 <title>%0</title>
 <polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-280 92,-280 92,4 -4,4"/>

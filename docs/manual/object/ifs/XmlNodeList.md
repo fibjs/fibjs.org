@@ -2,7 +2,7 @@
 XmlNodeList 对象代表一个有顺序的节点列表
 
 ## 继承关系
-<div style="text-align: center;"><svg width="74pt" height="224pt" viewBox="0.00 0.00 74.00 224.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<div class="inherits"><svg width="74pt" height="224pt" viewBox="0.00 0.00 74.00 224.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 220)">
 <title>%0</title>
 <polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-220 70,-220 70,4 -4,4"/>

@@ -2,7 +2,7 @@
 可移动当前指针的流对象接口
 
 ## 继承关系
-<div style="text-align: center;"><svg width="194pt" height="518pt" viewBox="0.00 0.00 194.00 518.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<div class="inherits"><svg width="194pt" height="518pt" viewBox="0.00 0.00 194.00 518.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 514)">
 <title>%0</title>
 <polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-514 190,-514 190,4 -4,4"/>

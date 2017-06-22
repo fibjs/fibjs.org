@@ -7,7 +7,7 @@ XmlComment 节点表示 XML 文档中的注释。
 使用 [XmlDocument](XmlDocument.md).createComment() 来创建一个注释对象。
 
 ## 继承关系
-<div style="text-align: center;"><svg width="130pt" height="652pt" viewBox="0.00 0.00 130.00 652.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<div class="inherits"><svg width="130pt" height="652pt" viewBox="0.00 0.00 130.00 652.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 648)">
 <title>%0</title>
 <polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-648 126,-648 126,4 -4,4"/>

@@ -2,7 +2,7 @@
 ZeroMQ 套接口对象
 
 ## 继承关系
-<div style="text-align: center;"><svg width="105pt" height="272pt" viewBox="0.00 0.00 105.00 272.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<div class="inherits"><svg width="105pt" height="272pt" viewBox="0.00 0.00 105.00 272.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 268)">
 <title>%0</title>
 <polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-268 101,-268 101,4 -4,4"/>

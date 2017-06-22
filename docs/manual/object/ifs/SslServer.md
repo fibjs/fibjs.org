@@ -17,7 +17,7 @@ var svr = new http.Server(crt, key, function(req){
 ```
 
 ## 继承关系
-<div style="text-align: center;"><svg width="100pt" height="386pt" viewBox="0.00 0.00 100.00 386.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<div class="inherits"><svg width="100pt" height="386pt" viewBox="0.00 0.00 100.00 386.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 382)">
 <title>%0</title>
 <polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-382 96,-382 96,4 -4,4"/>

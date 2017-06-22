@@ -2,7 +2,7 @@
 HeapGraphEdge表示两个[HeapGraphNode](HeapGraphNode.md)节点间的关联，从上游节点到下游节点
 
 ## 继承关系
-<div style="text-align: center;"><svg width="93pt" height="238pt" viewBox="0.00 0.00 93.00 238.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<div class="inherits"><svg width="93pt" height="238pt" viewBox="0.00 0.00 93.00 238.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 234)">
 <title>%0</title>
 <polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-234 89,-234 89,4 -4,4"/>

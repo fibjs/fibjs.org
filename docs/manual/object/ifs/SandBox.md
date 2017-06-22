@@ -14,7 +14,7 @@ var mod_in_sbox = sbox.require('./path/to/mod');
 ```
 
 ## 继承关系
-<div style="text-align: center;"><svg width="95pt" height="296pt" viewBox="0.00 0.00 95.00 296.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<div class="inherits"><svg width="95pt" height="296pt" viewBox="0.00 0.00 95.00 296.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 292)">
 <title>%0</title>
 <polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-292 91,-292 91,4 -4,4"/>

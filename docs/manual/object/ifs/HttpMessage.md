@@ -2,7 +2,7 @@
 [http](../../module/ifs/http.md) 基础消息对象
 
 ## 继承关系
-<div style="text-align: center;"><svg width="238pt" height="834pt" viewBox="0.00 0.00 238.00 834.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<div class="inherits"><svg width="238pt" height="834pt" viewBox="0.00 0.00 238.00 834.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 830)">
 <title>%0</title>
 <polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-830 234,-830 234,4 -4,4"/>
