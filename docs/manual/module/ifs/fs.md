@@ -207,7 +207,7 @@ static fs.chmodSync(String path,
 
 --------------------------
 ### lchmod
-** 设置指定文件的访问权限，若文件是软连接则不改变指向文件的权限，Windows 不支持此方法 **
+** 设置指定文件的访问权限，若文件是软连接则不改变指向文件的权限，只在macOS、BSD 系列平台上可用 **
 ```JavaScript
 static fs.lchmod(String path,
                 Integer mode) async;

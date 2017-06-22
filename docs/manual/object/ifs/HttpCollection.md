@@ -1,6 +1,56 @@
 # 对象 HttpCollection
 [http](../../module/ifs/http.md) 容器对象，用于 [http](../../module/ifs/http.md) header，cookie，query，form，等数据的存储与组织
 
+## 继承关系
+<div style="text-align: center;"><svg width="93pt" height="274pt" viewBox="0.00 0.00 93.00 274.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 270)">
+<title>%0</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-270 89,-270 89,4 -4,4"/>
+<!-- object -->
+<g id="node1" class="node">
+<title>object</title>
+<g id="a_node1"><a xlink:href="object.md" xlink:title="object">
+<polygon fill="#ffffff" stroke="transparent" points="14,-174 14,-266 71,-266 71,-174 14,-174"/>
+<polygon fill="none" stroke="#000000" points="14.5,-244 14.5,-266 71.5,-266 71.5,-244 14.5,-244"/>
+<text text-anchor="start" x="29.6625" y="-252" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
+<polygon fill="none" stroke="#000000" points="14.5,-174 14.5,-244 71.5,-244 71.5,-174 14.5,-174"/>
+<text text-anchor="start" x="19.5" y="-230" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> dispose()</text>
+<text text-anchor="start" x="19.5" y="-218" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> equals()</text>
+<text text-anchor="start" x="19.5" y="-206" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> toString()</text>
+<text text-anchor="start" x="19.5" y="-194" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> toJSON()</text>
+<text text-anchor="start" x="19.5" y="-182" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> valueOf()</text>
+</a>
+</g>
+</g>
+<!-- HttpCollection -->
+<g id="node2" class="node">
+<title>HttpCollection</title>
+<g id="a_node2"><a xlink:title="HttpCollection">
+<polygon fill="#d3d3d3" stroke="transparent" points="0,0 0,-138 85,-138 85,0 0,0"/>
+<polygon fill="none" stroke="#000000" points=".5,-116 .5,-138 85.5,-138 85.5,-116 .5,-116"/>
+<text text-anchor="start" x="11.8865" y="-124" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">HttpCollection</text>
+<polygon fill="none" stroke="#000000" points=".5,-94 .5,-116 85.5,-116 85.5,-94 .5,-94"/>
+<text text-anchor="start" x="5.5" y="-102" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> operator[String]</text>
+<polygon fill="none" stroke="#000000" points=".5,0 .5,-94 85.5,-94 85.5,0 .5,0"/>
+<text text-anchor="start" x="5.5" y="-80" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> clear()</text>
+<text text-anchor="start" x="5.5" y="-68" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> has()</text>
+<text text-anchor="start" x="5.5" y="-56" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> first()</text>
+<text text-anchor="start" x="5.5" y="-44" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> all()</text>
+<text text-anchor="start" x="5.5" y="-32" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> add()</text>
+<text text-anchor="start" x="5.5" y="-20" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> set()</text>
+<text text-anchor="start" x="5.5" y="-8" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> remove()</text>
+</a>
+</g>
+</g>
+<!-- object&#45;&gt;HttpCollection -->
+<g id="edge1" class="edge">
+<title>object-&gt;HttpCollection</title>
+<path fill="none" stroke="#000000" d="M42.5,-163.8676C42.5,-155.5006 42.5,-146.7932 42.5,-138.1957"/>
+<polygon fill="#000000" stroke="#000000" points="39.0001,-163.8745 42.5,-173.8745 46.0001,-163.8746 39.0001,-163.8745"/>
+</g>
+</g>
+</svg></div>
+
 ## 下标操作
         
 ** 允许使用键值下标直接访问数值 **

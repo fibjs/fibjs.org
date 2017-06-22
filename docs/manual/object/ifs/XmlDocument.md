@@ -4,6 +4,105 @@ XmlDocument 对象代表整个 XML 文档
 XmlDocument 对象是一棵文档树的根，可为我们提供对文档数据的最初（或最顶层）的访问入口。
 用于元素节点、文本节点、注释、处理指令等均无法存在于 XmlDocument 之外， XmlDocument 对象同样提供了创建这些对象的方法。 [XmlNode](XmlNode.md) 对象提供了一个 ownerDocument 属性，此属性可把它们与在其中创建它们的 XmlDocument 关联起来。
 
+## 继承关系
+<div style="text-align: center;"><svg width="155pt" height="722pt" viewBox="0.00 0.00 155.00 722.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 718)">
+<title>%0</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-718 151,-718 151,4 -4,4"/>
+<!-- object -->
+<g id="node1" class="node">
+<title>object</title>
+<g id="a_node1"><a xlink:href="object.md" xlink:title="object">
+<polygon fill="#ffffff" stroke="transparent" points="45,-622 45,-714 102,-714 102,-622 45,-622"/>
+<polygon fill="none" stroke="#000000" points="45.5,-692 45.5,-714 102.5,-714 102.5,-692 45.5,-692"/>
+<text text-anchor="start" x="60.6625" y="-700" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
+<polygon fill="none" stroke="#000000" points="45.5,-622 45.5,-692 102.5,-692 102.5,-622 45.5,-622"/>
+<text text-anchor="start" x="50.5" y="-678" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> dispose()</text>
+<text text-anchor="start" x="50.5" y="-666" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> equals()</text>
+<text text-anchor="start" x="50.5" y="-654" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> toString()</text>
+<text text-anchor="start" x="50.5" y="-642" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> toJSON()</text>
+<text text-anchor="start" x="50.5" y="-630" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> valueOf()</text>
+</a>
+</g>
+</g>
+<!-- XmlNode -->
+<g id="node2" class="node">
+<title>XmlNode</title>
+<g id="a_node2"><a xlink:href="XmlNode.md" xlink:title="XmlNode">
+<polygon fill="#ffffff" stroke="transparent" points="12.5,-304 12.5,-586 134.5,-586 134.5,-304 12.5,-304"/>
+<polygon fill="none" stroke="#000000" points="12.5,-564 12.5,-586 134.5,-586 134.5,-564 12.5,-564"/>
+<text text-anchor="start" x="52.9435" y="-572" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">XmlNode</text>
+<polygon fill="none" stroke="#000000" points="12.5,-434 12.5,-564 134.5,-564 134.5,-434 12.5,-434"/>
+<text text-anchor="start" x="17.5" y="-550" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> nodeType</text>
+<text text-anchor="start" x="17.5" y="-538" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> nodeName</text>
+<text text-anchor="start" x="17.5" y="-526" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> nodeValue</text>
+<text text-anchor="start" x="17.5" y="-514" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> ownerDocument</text>
+<text text-anchor="start" x="17.5" y="-502" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> parentNode</text>
+<text text-anchor="start" x="17.5" y="-490" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> childNodes</text>
+<text text-anchor="start" x="17.5" y="-478" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> firstChild</text>
+<text text-anchor="start" x="17.5" y="-466" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> lastChild</text>
+<text text-anchor="start" x="17.5" y="-454" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> previousSibling</text>
+<text text-anchor="start" x="17.5" y="-442" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> nextSibling</text>
+<polygon fill="none" stroke="#000000" points="12.5,-304 12.5,-434 134.5,-434 134.5,-304 12.5,-304"/>
+<text text-anchor="start" x="17.5" y="-420" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> hasChildNodes()</text>
+<text text-anchor="start" x="17.5" y="-408" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> normalize()</text>
+<text text-anchor="start" x="17.5" y="-396" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> cloneNode()</text>
+<text text-anchor="start" x="17.5" y="-384" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> lookupPrefix()</text>
+<text text-anchor="start" x="17.5" y="-372" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> lookupNamespaceURI()</text>
+<text text-anchor="start" x="17.5" y="-360" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> insertBefore()</text>
+<text text-anchor="start" x="17.5" y="-348" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> insertAfter()</text>
+<text text-anchor="start" x="17.5" y="-336" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> appendChild()</text>
+<text text-anchor="start" x="17.5" y="-324" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> replaceChild()</text>
+<text text-anchor="start" x="17.5" y="-312" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> removeChild()</text>
+</a>
+</g>
+</g>
+<!-- object&#45;&gt;XmlNode -->
+<g id="edge1" class="edge">
+<title>object-&gt;XmlNode</title>
+<path fill="none" stroke="#000000" d="M73.5,-611.5484C73.5,-603.5161 73.5,-594.975 73.5,-586.1675"/>
+<polygon fill="#000000" stroke="#000000" points="70.0001,-611.7942 73.5,-621.7943 77.0001,-611.7943 70.0001,-611.7942"/>
+</g>
+<!-- XmlDocument -->
+<g id="node3" class="node">
+<title>XmlDocument</title>
+<g id="a_node3"><a xlink:title="XmlDocument">
+<polygon fill="#d3d3d3" stroke="transparent" points="0,0 0,-268 147,-268 147,0 0,0"/>
+<polygon fill="none" stroke="#000000" points=".5,-246 .5,-268 147.5,-268 147.5,-246 .5,-246"/>
+<text text-anchor="start" x="42.61" y="-254" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">XmlDocument</text>
+<polygon fill="none" stroke="#000000" points=".5,-224 .5,-246 147.5,-246 147.5,-224 .5,-224"/>
+<text text-anchor="start" x="5.5" y="-232" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">  new XmlDocument()</text>
+<polygon fill="none" stroke="#000000" points=".5,-118 .5,-224 147.5,-224 147.5,-118 .5,-118"/>
+<text text-anchor="start" x="5.5" y="-210" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> inputEncoding</text>
+<text text-anchor="start" x="5.5" y="-198" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> xmlStandalone</text>
+<text text-anchor="start" x="5.5" y="-186" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> xmlVersion</text>
+<text text-anchor="start" x="5.5" y="-174" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> doctype</text>
+<text text-anchor="start" x="5.5" y="-162" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> documentElement</text>
+<text text-anchor="start" x="5.5" y="-150" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> head</text>
+<text text-anchor="start" x="5.5" y="-138" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> title</text>
+<text text-anchor="start" x="5.5" y="-126" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> body</text>
+<polygon fill="none" stroke="#000000" points=".5,0 .5,-118 147.5,-118 147.5,0 .5,0"/>
+<text text-anchor="start" x="5.5" y="-104" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> load()</text>
+<text text-anchor="start" x="5.5" y="-92" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> getElementsByTagName()</text>
+<text text-anchor="start" x="5.5" y="-80" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> getElementsByTagNameNS()</text>
+<text text-anchor="start" x="5.5" y="-68" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> createElement()</text>
+<text text-anchor="start" x="5.5" y="-56" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> createElementNS()</text>
+<text text-anchor="start" x="5.5" y="-44" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> createTextNode()</text>
+<text text-anchor="start" x="5.5" y="-32" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> createComment()</text>
+<text text-anchor="start" x="5.5" y="-20" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> createCDATASection()</text>
+<text text-anchor="start" x="5.5" y="-8" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> createProcessingInstruction()</text>
+</a>
+</g>
+</g>
+<!-- XmlNode&#45;&gt;XmlDocument -->
+<g id="edge2" class="edge">
+<title>XmlNode-&gt;XmlDocument</title>
+<path fill="none" stroke="#000000" d="M73.5,-293.427C73.5,-285.0711 73.5,-276.7001 73.5,-268.4106"/>
+<polygon fill="#000000" stroke="#000000" points="70.0001,-293.6053 73.5,-303.6053 77.0001,-293.6053 70.0001,-293.6053"/>
+</g>
+</g>
+</svg></div>
+
 ## 构造函数
         
 ### XmlDocument
@@ -14,6 +113,165 @@ XmlDocument 对象是一棵文档树的根，可为我们提供对文档数据�
 
 调用参数:
 * type: String, 指定文档对象的类型，缺省为 "text/[xml](../../module/ifs/xml.md)"，若需要处理 html 则需要指定 "text/html"
+
+## 成员属性
+        
+### inputEncoding
+** String, 返回用于文档的编码（在解析时） **
+```JavaScript
+readonly String XmlDocument.inputEncoding;
+```
+
+--------------------------
+### xmlStandalone
+** Boolean, 设置或返回文档是否为 standalone **
+```JavaScript
+Boolean XmlDocument.xmlStandalone;
+```
+
+--------------------------
+### xmlVersion
+** String, 设置或返回文档的 XML 版本 **
+```JavaScript
+String XmlDocument.xmlVersion;
+```
+
+--------------------------
+### doctype
+** [XmlDocumentType](XmlDocumentType.md), 返回与文档相关的文档类型声明（Document Type Declaration） **
+```JavaScript
+readonly XmlDocumentType XmlDocument.doctype;
+```
+
+对于没有 DTD 的 XML 文档，则返回 null。此属性可提供对 [XmlDocumentType](XmlDocumentType.md) 对象（ XmlDocument 的一个子节点）的直接访问。
+
+--------------------------
+### documentElement
+** [XmlElement](XmlElement.md), 返回文档的根节点 **
+```JavaScript
+readonly XmlElement XmlDocument.documentElement;
+```
+
+--------------------------
+### head
+** [XmlElement](XmlElement.md), 返回 HTML 文档的 head 节点，仅在 html 模式有效 **
+```JavaScript
+readonly XmlElement XmlDocument.head;
+```
+
+--------------------------
+### title
+** String, 返回 HTML 文档的 title 节点的内容，仅在 html 模式有效 **
+```JavaScript
+readonly String XmlDocument.title;
+```
+
+--------------------------
+### body
+** [XmlElement](XmlElement.md), 返回 HTML 文档的 body 节点，仅在 html 模式有效 **
+```JavaScript
+readonly XmlElement XmlDocument.body;
+```
+
+--------------------------
+### nodeType
+** Integer, 返回节点的节点类型 **
+```JavaScript
+readonly Integer XmlDocument.nodeType;
+```
+
+不同对象的 nodeType 会返回不同的值：
+- [XmlElement](XmlElement.md): ELEMENT_NODE(1)
+- [XmlAttr](XmlAttr.md): ATTRIBUTE_NODE(2)
+- [XmlText](XmlText.md): TEXT_NODE(3)
+- [XmlCDATASection](XmlCDATASection.md): CDATA_SECTION_NODE(4)
+- [XmlProcessingInstruction](XmlProcessingInstruction.md): PROCESSING_INSTRUCTION_NODE(7)
+- [XmlComment](XmlComment.md): COMMENT_NODE(8)
+- [XmlDocument](XmlDocument.md): DOCUMENT_NODE(9)
+- [XmlDocumentType](XmlDocumentType.md): DOCUMENT_TYPE_NODE(10)
+
+--------------------------
+### nodeName
+** String, 返回节点的名称，根据其类型 **
+```JavaScript
+readonly String XmlDocument.nodeName;
+```
+
+不同对象的 nodeName 会返回不同的值：
+- [XmlElement](XmlElement.md): element name
+- [XmlAttr](XmlAttr.md): 属性名称
+- [XmlText](XmlText.md): \#text
+- [XmlCDATASection](XmlCDATASection.md): \#cdata-section
+- [XmlProcessingInstruction](XmlProcessingInstruction.md): 返回指定目标 target
+- [XmlComment](XmlComment.md): \#comment
+- [XmlDocument](XmlDocument.md): \#document
+- [XmlDocumentType](XmlDocumentType.md): doctype 名称
+
+--------------------------
+### nodeValue
+** String, 返回节点的名称，根据其类型 **
+```JavaScript
+String XmlDocument.nodeValue;
+```
+
+不同对象的 nodeName 会返回不同的值：
+- [XmlElement](XmlElement.md): null
+- [XmlAttr](XmlAttr.md): 属性的值
+- [XmlText](XmlText.md): 节点的内容
+- [XmlCDATASection](XmlCDATASection.md): 节点的内容
+- [XmlProcessingInstruction](XmlProcessingInstruction.md): 返回指定内容 data
+- [XmlComment](XmlComment.md): 注释文本
+- [XmlDocument](XmlDocument.md): null
+- [XmlDocumentType](XmlDocumentType.md): null
+
+--------------------------
+### ownerDocument
+** [XmlDocument](XmlDocument.md), 返回节点的根元素（[XmlDocument](XmlDocument.md) 对象） **
+```JavaScript
+readonly XmlDocument XmlDocument.ownerDocument;
+```
+
+--------------------------
+### parentNode
+** XmlNode, 可返回某节点的父节点 **
+```JavaScript
+readonly XmlNode XmlDocument.parentNode;
+```
+
+--------------------------
+### childNodes
+** [XmlNodeList](XmlNodeList.md), 返回指定节点的子节点的节点列表 **
+```JavaScript
+readonly XmlNodeList XmlDocument.childNodes;
+```
+
+--------------------------
+### firstChild
+** XmlNode, 返回节点的首个子节点 **
+```JavaScript
+readonly XmlNode XmlDocument.firstChild;
+```
+
+--------------------------
+### lastChild
+** XmlNode, 返回节点的最后一个子节点 **
+```JavaScript
+readonly XmlNode XmlDocument.lastChild;
+```
+
+--------------------------
+### previousSibling
+** XmlNode, 返回某节点之前紧跟的节点（处于同一树层级），如果没有此节点，那么该属性返回 null **
+```JavaScript
+readonly XmlNode XmlDocument.previousSibling;
+```
+
+--------------------------
+### nextSibling
+** XmlNode, 返回某个元素之后紧跟的节点（处于同一树层级中），如果无此节点，则属性返回 null **
+```JavaScript
+readonly XmlNode XmlDocument.nextSibling;
+```
 
 ## 成员函数
         
@@ -340,163 +598,4 @@ Value XmlDocument.valueOf();
 
 返回结果:
 * Value, 返回对象本身的数值
-
-## 成员属性
-        
-### inputEncoding
-** String, 返回用于文档的编码（在解析时） **
-```JavaScript
-readonly String XmlDocument.inputEncoding;
-```
-
---------------------------
-### xmlStandalone
-** Boolean, 设置或返回文档是否为 standalone **
-```JavaScript
-Boolean XmlDocument.xmlStandalone;
-```
-
---------------------------
-### xmlVersion
-** String, 设置或返回文档的 XML 版本 **
-```JavaScript
-String XmlDocument.xmlVersion;
-```
-
---------------------------
-### doctype
-** [XmlDocumentType](XmlDocumentType.md), 返回与文档相关的文档类型声明（Document Type Declaration） **
-```JavaScript
-readonly XmlDocumentType XmlDocument.doctype;
-```
-
-对于没有 DTD 的 XML 文档，则返回 null。此属性可提供对 [XmlDocumentType](XmlDocumentType.md) 对象（ XmlDocument 的一个子节点）的直接访问。
-
---------------------------
-### documentElement
-** [XmlElement](XmlElement.md), 返回文档的根节点 **
-```JavaScript
-readonly XmlElement XmlDocument.documentElement;
-```
-
---------------------------
-### head
-** [XmlElement](XmlElement.md), 返回 HTML 文档的 head 节点，仅在 html 模式有效 **
-```JavaScript
-readonly XmlElement XmlDocument.head;
-```
-
---------------------------
-### title
-** String, 返回 HTML 文档的 title 节点的内容，仅在 html 模式有效 **
-```JavaScript
-readonly String XmlDocument.title;
-```
-
---------------------------
-### body
-** [XmlElement](XmlElement.md), 返回 HTML 文档的 body 节点，仅在 html 模式有效 **
-```JavaScript
-readonly XmlElement XmlDocument.body;
-```
-
---------------------------
-### nodeType
-** Integer, 返回节点的节点类型 **
-```JavaScript
-readonly Integer XmlDocument.nodeType;
-```
-
-不同对象的 nodeType 会返回不同的值：
-- [XmlElement](XmlElement.md): ELEMENT_NODE(1)
-- [XmlAttr](XmlAttr.md): ATTRIBUTE_NODE(2)
-- [XmlText](XmlText.md): TEXT_NODE(3)
-- [XmlCDATASection](XmlCDATASection.md): CDATA_SECTION_NODE(4)
-- [XmlProcessingInstruction](XmlProcessingInstruction.md): PROCESSING_INSTRUCTION_NODE(7)
-- [XmlComment](XmlComment.md): COMMENT_NODE(8)
-- [XmlDocument](XmlDocument.md): DOCUMENT_NODE(9)
-- [XmlDocumentType](XmlDocumentType.md): DOCUMENT_TYPE_NODE(10)
-
---------------------------
-### nodeName
-** String, 返回节点的名称，根据其类型 **
-```JavaScript
-readonly String XmlDocument.nodeName;
-```
-
-不同对象的 nodeName 会返回不同的值：
-- [XmlElement](XmlElement.md): element name
-- [XmlAttr](XmlAttr.md): 属性名称
-- [XmlText](XmlText.md): \#text
-- [XmlCDATASection](XmlCDATASection.md): \#cdata-section
-- [XmlProcessingInstruction](XmlProcessingInstruction.md): 返回指定目标 target
-- [XmlComment](XmlComment.md): \#comment
-- [XmlDocument](XmlDocument.md): \#document
-- [XmlDocumentType](XmlDocumentType.md): doctype 名称
-
---------------------------
-### nodeValue
-** String, 返回节点的名称，根据其类型 **
-```JavaScript
-String XmlDocument.nodeValue;
-```
-
-不同对象的 nodeName 会返回不同的值：
-- [XmlElement](XmlElement.md): null
-- [XmlAttr](XmlAttr.md): 属性的值
-- [XmlText](XmlText.md): 节点的内容
-- [XmlCDATASection](XmlCDATASection.md): 节点的内容
-- [XmlProcessingInstruction](XmlProcessingInstruction.md): 返回指定内容 data
-- [XmlComment](XmlComment.md): 注释文本
-- [XmlDocument](XmlDocument.md): null
-- [XmlDocumentType](XmlDocumentType.md): null
-
---------------------------
-### ownerDocument
-** [XmlDocument](XmlDocument.md), 返回节点的根元素（[XmlDocument](XmlDocument.md) 对象） **
-```JavaScript
-readonly XmlDocument XmlDocument.ownerDocument;
-```
-
---------------------------
-### parentNode
-** XmlNode, 可返回某节点的父节点 **
-```JavaScript
-readonly XmlNode XmlDocument.parentNode;
-```
-
---------------------------
-### childNodes
-** [XmlNodeList](XmlNodeList.md), 返回指定节点的子节点的节点列表 **
-```JavaScript
-readonly XmlNodeList XmlDocument.childNodes;
-```
-
---------------------------
-### firstChild
-** XmlNode, 返回节点的首个子节点 **
-```JavaScript
-readonly XmlNode XmlDocument.firstChild;
-```
-
---------------------------
-### lastChild
-** XmlNode, 返回节点的最后一个子节点 **
-```JavaScript
-readonly XmlNode XmlDocument.lastChild;
-```
-
---------------------------
-### previousSibling
-** XmlNode, 返回某节点之前紧跟的节点（处于同一树层级），如果没有此节点，那么该属性返回 null **
-```JavaScript
-readonly XmlNode XmlDocument.previousSibling;
-```
-
---------------------------
-### nextSibling
-** XmlNode, 返回某个元素之后紧跟的节点（处于同一树层级中），如果无此节点，则属性返回 null **
-```JavaScript
-readonly XmlNode XmlDocument.nextSibling;
-```
 

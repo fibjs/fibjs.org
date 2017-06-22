@@ -154,6 +154,99 @@
 </ul>
  </div></div></div>  </div></div><div class=content> <h1 id="-heapgraphnode">对象 HeapGraphNode</h1>
 <p>HeapGraphNode表示堆视图中的一个节点</p>
+<h2 id="-">继承关系</h2>
+<div style="text-align: center;"><svg width="93pt" height="240pt" viewBox="0.00 0.00 93.00 240.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 236)">
+<title>%0</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-236 89,-236 89,4 -4,4"/>
+<!-- object -->
+<g id="node1" class="node">
+<title>object</title>
+<g id="a_node1"><a xlink:href=object.md.html xlink:title="object">
+<polygon fill="#ffffff" stroke="transparent" points="14,-140 14,-232 71,-232 71,-140 14,-140"/>
+<polygon fill="none" stroke="#000000" points="14.5,-210 14.5,-232 71.5,-232 71.5,-210 14.5,-210"/>
+<text text-anchor="start" x="29.6625" y="-218" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
+<polygon fill="none" stroke="#000000" points="14.5,-140 14.5,-210 71.5,-210 71.5,-140 14.5,-140"/>
+<text text-anchor="start" x="19.5" y="-196" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> dispose()</text>
+<text text-anchor="start" x="19.5" y="-184" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> equals()</text>
+<text text-anchor="start" x="19.5" y="-172" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> toString()</text>
+<text text-anchor="start" x="19.5" y="-160" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> toJSON()</text>
+<text text-anchor="start" x="19.5" y="-148" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> valueOf()</text>
+</a>
+</g>
+</g>
+<!-- HeapGraphNode -->
+<g id="node2" class="node">
+<title>HeapGraphNode</title>
+<g id="a_node2"><a xlink:title="HeapGraphNode">
+<polygon fill="#d3d3d3" stroke="transparent" points="0,0 0,-104 85,-104 85,0 0,0"/>
+<polygon fill="none" stroke="#000000" points=".5,-82 .5,-104 85.5,-104 85.5,-82 .5,-82"/>
+<text text-anchor="start" x="5.2115" y="-90" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">HeapGraphNode</text>
+<polygon fill="none" stroke="#000000" points=".5,0 .5,-82 85.5,-82 85.5,0 .5,0"/>
+<text text-anchor="start" x="5.5" y="-68" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> type</text>
+<text text-anchor="start" x="5.5" y="-56" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> name</text>
+<text text-anchor="start" x="5.5" y="-44" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> description</text>
+<text text-anchor="start" x="5.5" y="-32" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> id</text>
+<text text-anchor="start" x="5.5" y="-20" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> shallowSize</text>
+<text text-anchor="start" x="5.5" y="-8" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> childs</text>
+</a>
+</g>
+</g>
+<!-- object&#45;&gt;HeapGraphNode -->
+<g id="edge1" class="edge">
+<title>object-&gt;HeapGraphNode</title>
+<path fill="none" stroke="#000000" d="M42.5,-129.7145C42.5,-121.2506 42.5,-112.5526 42.5,-104.1796"/>
+<polygon fill="#000000" stroke="#000000" points="39.0001,-129.8848 42.5,-139.8848 46.0001,-129.8848 39.0001,-129.8848"/>
+</g>
+</g>
+</svg></div>
+
+<h2 id="-">成员属性</h2>
+<h3 id="type">type</h3>
+<p><strong> Integer, 节点类型，可能的值： </strong></p>
+<pre><code class="lang-JavaScript">readonly Integer HeapGraphNode.type;
+</code></pre>
+<ul>
+<li><a href=../../module/ifs/profiler.md.html>profiler</a>.Node_Hidden,         隐藏节点，当显示给用户时可以被过滤掉</li>
+<li><a href=../../module/ifs/profiler.md.html>profiler</a>.Node_Array,          数组</li>
+<li><a href=../../module/ifs/profiler.md.html>profiler</a>.Node_String,         字符串</li>
+<li><a href=../../module/ifs/profiler.md.html>profiler</a>.Node_Object,         JS对象（字符串和数组除外）</li>
+<li><a href=../../module/ifs/profiler.md.html>profiler</a>.Node_Code,           编译后的代码</li>
+<li><a href=../../module/ifs/profiler.md.html>profiler</a>.Node_Closure,        函数闭包</li>
+<li><a href=../../module/ifs/profiler.md.html>profiler</a>.Node_RegExp,         正则表达式</li>
+<li><a href=../../module/ifs/profiler.md.html>profiler</a>.Node_HeapNumber,     堆中排好序的数字</li>
+<li><a href=../../module/ifs/profiler.md.html>profiler</a>.Node_Native,         Native对象（非v8堆上的）</li>
+<li><a href=../../module/ifs/profiler.md.html>profiler</a>.Node_Synthetic,      Synthetic对象</li>
+<li><a href=../../module/ifs/profiler.md.html>profiler</a>.Node_ConsString,     拼接的字符串</li>
+<li><a href=../../module/ifs/profiler.md.html>profiler</a>.Node_SlicedString,   分割的字符串</li>
+<li><a href=../../module/ifs/profiler.md.html>profiler</a>.Node_Symbol,         符号（ES6）</li>
+<li><a href=../../module/ifs/profiler.md.html>profiler</a>.Node_SimdValue,      堆中排好序的SIMD值(ES7)</li>
+</ul>
+<hr>
+<h3 id="name">name</h3>
+<p><strong> String, 节点名称 </strong></p>
+<pre><code class="lang-JavaScript">readonly <span class="hljs-built_in">String</span> HeapGraphNode.name;
+</code></pre>
+<hr>
+<h3 id="description">description</h3>
+<p><strong> String, 节点的描述 </strong></p>
+<pre><code class="lang-JavaScript">readonly <span class="hljs-built_in">String</span> HeapGraphNode.description;
+</code></pre>
+<hr>
+<h3 id="id">id</h3>
+<p><strong> Integer, 节点ID </strong></p>
+<pre><code class="lang-JavaScript">readonly Integer HeapGraphNode.id;
+</code></pre>
+<hr>
+<h3 id="shallowsize">shallowSize</h3>
+<p><strong> Integer, 节点大小，单位为字节 </strong></p>
+<pre><code class="lang-JavaScript">readonly Integer HeapGraphNode.shallowSize;
+</code></pre>
+<hr>
+<h3 id="childs">childs</h3>
+<p><strong> <a href=list.md.html>List</a>, 子节点列表，由<a href=heapgraphedge.md.html>HeapGraphEdge</a>类型对象组成 </strong></p>
+<pre><code class="lang-JavaScript">readonly List HeapGraphNode.childs;
+</code></pre>
 <h2 id="-">成员函数</h2>
 <h3 id="dispose">dispose</h3>
 <p><strong> 强制回收对象，调用此方法后，对象资源将立即释放 </strong></p>
@@ -203,50 +296,4 @@
 <ul>
 <li>Value, 返回对象本身的数值</li>
 </ul>
-<h2 id="-">成员属性</h2>
-<h3 id="type">type</h3>
-<p><strong> Integer, 节点类型，可能的值： </strong></p>
-<pre><code class="lang-JavaScript">readonly Integer HeapGraphNode.type;
-</code></pre>
-<ul>
-<li><a href=../../module/ifs/profiler.md.html>profiler</a>.Node_Hidden,         隐藏节点，当显示给用户时可以被过滤掉</li>
-<li><a href=../../module/ifs/profiler.md.html>profiler</a>.Node_Array,          数组</li>
-<li><a href=../../module/ifs/profiler.md.html>profiler</a>.Node_String,         字符串</li>
-<li><a href=../../module/ifs/profiler.md.html>profiler</a>.Node_Object,         JS对象（字符串和数组除外）</li>
-<li><a href=../../module/ifs/profiler.md.html>profiler</a>.Node_Code,           编译后的代码</li>
-<li><a href=../../module/ifs/profiler.md.html>profiler</a>.Node_Closure,        函数闭包</li>
-<li><a href=../../module/ifs/profiler.md.html>profiler</a>.Node_RegExp,         正则表达式</li>
-<li><a href=../../module/ifs/profiler.md.html>profiler</a>.Node_HeapNumber,     堆中排好序的数字</li>
-<li><a href=../../module/ifs/profiler.md.html>profiler</a>.Node_Native,         Native对象（非v8堆上的）</li>
-<li><a href=../../module/ifs/profiler.md.html>profiler</a>.Node_Synthetic,      Synthetic对象</li>
-<li><a href=../../module/ifs/profiler.md.html>profiler</a>.Node_ConsString,     拼接的字符串</li>
-<li><a href=../../module/ifs/profiler.md.html>profiler</a>.Node_SlicedString,   分割的字符串</li>
-<li><a href=../../module/ifs/profiler.md.html>profiler</a>.Node_Symbol,         符号（ES6）</li>
-<li><a href=../../module/ifs/profiler.md.html>profiler</a>.Node_SimdValue,      堆中排好序的SIMD值(ES7)</li>
-</ul>
-<hr>
-<h3 id="name">name</h3>
-<p><strong> String, 节点名称 </strong></p>
-<pre><code class="lang-JavaScript">readonly <span class="hljs-built_in">String</span> HeapGraphNode.name;
-</code></pre>
-<hr>
-<h3 id="description">description</h3>
-<p><strong> String, 节点的描述 </strong></p>
-<pre><code class="lang-JavaScript">readonly <span class="hljs-built_in">String</span> HeapGraphNode.description;
-</code></pre>
-<hr>
-<h3 id="id">id</h3>
-<p><strong> Integer, 节点ID </strong></p>
-<pre><code class="lang-JavaScript">readonly Integer HeapGraphNode.id;
-</code></pre>
-<hr>
-<h3 id="shallowsize">shallowSize</h3>
-<p><strong> Integer, 节点大小，单位为字节 </strong></p>
-<pre><code class="lang-JavaScript">readonly Integer HeapGraphNode.shallowSize;
-</code></pre>
-<hr>
-<h3 id="childs">childs</h3>
-<p><strong> <a href=list.md.html>List</a>, 子节点列表，由<a href=heapgraphedge.md.html>HeapGraphEdge</a>类型对象组成 </strong></p>
-<pre><code class="lang-JavaScript">readonly List HeapGraphNode.childs;
-</code></pre>
  </div><div class="sidebar hidden-sm hidden-xs"><div id=toc></div></div></div><div class=container><div class=footer><p>&copy; 2017 fibjs.org</p></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="Click to return on the top page" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=../../../../js/common.js></script><script type=text/javascript src=../../../../js/docs.js></script></body></html>

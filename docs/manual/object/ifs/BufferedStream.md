@@ -6,6 +6,104 @@ BufferedReader 对象用于对二进制流对象数据进行缓存，并提供�
 var reader = new io.BufferedStream(stream);
 ```
 
+## 继承关系
+<div style="text-align: center;"><svg width="124pt" height="574pt" viewBox="0.00 0.00 124.00 574.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 570)">
+<title>%0</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-570 120,-570 120,4 -4,4"/>
+<!-- object -->
+<g id="node1" class="node">
+<title>object</title>
+<g id="a_node1"><a xlink:href="object.md" xlink:title="object">
+<polygon fill="#ffffff" stroke="transparent" points="29.5,-474 29.5,-566 86.5,-566 86.5,-474 29.5,-474"/>
+<polygon fill="none" stroke="#000000" points="30,-544 30,-566 87,-566 87,-544 30,-544"/>
+<text text-anchor="start" x="45.1625" y="-552" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
+<polygon fill="none" stroke="#000000" points="30,-474 30,-544 87,-544 87,-474 30,-474"/>
+<text text-anchor="start" x="35" y="-530" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> dispose()</text>
+<text text-anchor="start" x="35" y="-518" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> equals()</text>
+<text text-anchor="start" x="35" y="-506" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> toString()</text>
+<text text-anchor="start" x="35" y="-494" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> toJSON()</text>
+<text text-anchor="start" x="35" y="-482" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> valueOf()</text>
+</a>
+</g>
+</g>
+<!-- Stream -->
+<g id="node2" class="node">
+<title>Stream</title>
+<g id="a_node2"><a xlink:href="Stream.md" xlink:title="Stream">
+<polygon fill="#ffffff" stroke="transparent" points="30.5,-358 30.5,-438 85.5,-438 85.5,-358 30.5,-358"/>
+<polygon fill="none" stroke="#000000" points="31,-416 31,-438 86,-438 86,-416 31,-416"/>
+<text text-anchor="start" x="42.388" y="-424" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Stream</text>
+<polygon fill="none" stroke="#000000" points="31,-358 31,-416 86,-416 86,-358 31,-358"/>
+<text text-anchor="start" x="36" y="-402" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> read()</text>
+<text text-anchor="start" x="36" y="-390" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> write()</text>
+<text text-anchor="start" x="36" y="-378" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> close()</text>
+<text text-anchor="start" x="36" y="-366" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> copyTo()</text>
+</a>
+</g>
+</g>
+<!-- object&#45;&gt;Stream -->
+<g id="edge1" class="edge">
+<title>object-&gt;Stream</title>
+<path fill="none" stroke="#000000" d="M58,-463.8267C58,-455.1786 58,-446.4003 58,-438.193"/>
+<polygon fill="#000000" stroke="#000000" points="54.5001,-463.877 58,-473.877 61.5001,-463.8771 54.5001,-463.877"/>
+</g>
+<!-- BufferedStream -->
+<g id="node3" class="node">
+<title>BufferedStream</title>
+<g id="a_node3"><a xlink:title="BufferedStream">
+<polygon fill="#d3d3d3" stroke="transparent" points="0,-150 0,-322 116,-322 116,-150 0,-150"/>
+<polygon fill="none" stroke="#000000" points="0,-300 0,-322 116,-322 116,-300 0,-300"/>
+<text text-anchor="start" x="22.992" y="-308" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">BufferedStream</text>
+<polygon fill="none" stroke="#000000" points="0,-278 0,-300 116,-300 116,-278 0,-278"/>
+<text text-anchor="start" x="5" y="-286" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">  new BufferedStream()</text>
+<polygon fill="none" stroke="#000000" points="0,-232 0,-278 116,-278 116,-232 0,-232"/>
+<text text-anchor="start" x="5" y="-264" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> stream</text>
+<text text-anchor="start" x="5" y="-252" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> charset</text>
+<text text-anchor="start" x="5" y="-240" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> EOL</text>
+<polygon fill="none" stroke="#000000" points="0,-150 0,-232 116,-232 116,-150 0,-150"/>
+<text text-anchor="start" x="5" y="-218" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> readText()</text>
+<text text-anchor="start" x="5" y="-206" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> readLine()</text>
+<text text-anchor="start" x="5" y="-194" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> readLines()</text>
+<text text-anchor="start" x="5" y="-182" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> readUntil()</text>
+<text text-anchor="start" x="5" y="-170" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> writeText()</text>
+<text text-anchor="start" x="5" y="-158" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> writeLine()</text>
+</a>
+</g>
+</g>
+<!-- Stream&#45;&gt;BufferedStream -->
+<g id="edge2" class="edge">
+<title>Stream-&gt;BufferedStream</title>
+<path fill="none" stroke="#000000" d="M58,-347.8636C58,-339.6625 58,-330.9651 58,-322.186"/>
+<polygon fill="#000000" stroke="#000000" points="54.5001,-347.955 58,-357.955 61.5001,-347.9551 54.5001,-347.955"/>
+</g>
+<!-- SubProcess -->
+<g id="node4" class="node">
+<title>SubProcess</title>
+<g id="a_node4"><a xlink:href="SubProcess.md" xlink:title="SubProcess">
+<polygon fill="#ffffff" stroke="transparent" points="21,0 21,-114 95,-114 95,0 21,0"/>
+<polygon fill="none" stroke="#000000" points="21,-92 21,-114 95,-114 95,-92 21,-92"/>
+<text text-anchor="start" x="31.0485" y="-100" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">SubProcess</text>
+<polygon fill="none" stroke="#000000" points="21,-46 21,-92 95,-92 95,-46 21,-46"/>
+<text text-anchor="start" x="26" y="-78" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> pid</text>
+<text text-anchor="start" x="26" y="-66" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> stdin</text>
+<text text-anchor="start" x="26" y="-54" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> stdout</text>
+<polygon fill="none" stroke="#000000" points="21,0 21,-46 95,-46 95,0 21,0"/>
+<text text-anchor="start" x="26" y="-32" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> kill()</text>
+<text text-anchor="start" x="26" y="-20" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> wait()</text>
+<text text-anchor="start" x="26" y="-8" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> findWindow()</text>
+</a>
+</g>
+</g>
+<!-- BufferedStream&#45;&gt;SubProcess -->
+<g id="edge3" class="edge">
+<title>BufferedStream-&gt;SubProcess</title>
+<path fill="none" stroke="#000000" d="M58,-139.6306C58,-130.8931 58,-122.2434 58,-114.0173"/>
+<polygon fill="#000000" stroke="#000000" points="54.5001,-139.9079 58,-149.908 61.5001,-139.908 54.5001,-139.9079"/>
+</g>
+</g>
+</svg></div>
+
 ## 构造函数
         
 ### BufferedStream
@@ -16,6 +114,28 @@ var reader = new io.BufferedStream(stream);
 
 调用参数:
 * stm: [Stream](Stream.md), BufferedStream 的二进制基础流对象
+
+## 成员属性
+        
+### stream
+** [Stream](Stream.md), 查询创建缓存对象时的流对象 **
+```JavaScript
+readonly Stream BufferedStream.stream;
+```
+
+--------------------------
+### charset
+** String, 查询和设置当前对象处理文本时的字符集，缺省为 utf-8 **
+```JavaScript
+String BufferedStream.charset;
+```
+
+--------------------------
+### EOL
+** String, 查询和设置行结尾标识，缺省时，posix:\"\\n\"；windows:\"\\r\\n\" **
+```JavaScript
+String BufferedStream.EOL;
+```
 
 ## 成员函数
         
@@ -189,26 +309,4 @@ Value BufferedStream.valueOf();
 
 返回结果:
 * Value, 返回对象本身的数值
-
-## 成员属性
-        
-### stream
-** [Stream](Stream.md), 查询创建缓存对象时的流对象 **
-```JavaScript
-readonly Stream BufferedStream.stream;
-```
-
---------------------------
-### charset
-** String, 查询和设置当前对象处理文本时的字符集，缺省为 utf-8 **
-```JavaScript
-String BufferedStream.charset;
-```
-
---------------------------
-### EOL
-** String, 查询和设置行结尾标识，缺省时，posix:\"\\n\"；windows:\"\\r\\n\" **
-```JavaScript
-String BufferedStream.EOL;
-```
 

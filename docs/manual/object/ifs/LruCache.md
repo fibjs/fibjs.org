@@ -7,6 +7,58 @@ var util = require("util");
 var c = new util.LruCache(10, 100);
 ```
 
+## 继承关系
+<div style="text-align: center;"><svg width="98pt" height="296pt" viewBox="0.00 0.00 98.00 296.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 292)">
+<title>%0</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-292 94,-292 94,4 -4,4"/>
+<!-- object -->
+<g id="node1" class="node">
+<title>object</title>
+<g id="a_node1"><a xlink:href="object.md" xlink:title="object">
+<polygon fill="#ffffff" stroke="transparent" points="16.5,-196 16.5,-288 73.5,-288 73.5,-196 16.5,-196"/>
+<polygon fill="none" stroke="#000000" points="17,-266 17,-288 74,-288 74,-266 17,-266"/>
+<text text-anchor="start" x="32.1625" y="-274" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
+<polygon fill="none" stroke="#000000" points="17,-196 17,-266 74,-266 74,-196 17,-196"/>
+<text text-anchor="start" x="22" y="-252" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> dispose()</text>
+<text text-anchor="start" x="22" y="-240" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> equals()</text>
+<text text-anchor="start" x="22" y="-228" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> toString()</text>
+<text text-anchor="start" x="22" y="-216" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> toJSON()</text>
+<text text-anchor="start" x="22" y="-204" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> valueOf()</text>
+</a>
+</g>
+</g>
+<!-- LruCache -->
+<g id="node2" class="node">
+<title>LruCache</title>
+<g id="a_node2"><a xlink:title="LruCache">
+<polygon fill="#d3d3d3" stroke="transparent" points="0,0 0,-160 90,-160 90,0 0,0"/>
+<polygon fill="none" stroke="#000000" points="0,-138 0,-160 90,-160 90,-138 0,-138"/>
+<text text-anchor="start" x="23.3285" y="-146" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">LruCache</text>
+<polygon fill="none" stroke="#000000" points="0,-116 0,-138 90,-138 90,-116 0,-116"/>
+<text text-anchor="start" x="5" y="-124" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">  new LruCache()</text>
+<polygon fill="none" stroke="#000000" points="0,-82 0,-116 90,-116 90,-82 0,-82"/>
+<text text-anchor="start" x="5" y="-102" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> size</text>
+<text text-anchor="start" x="5" y="-90" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> timeout</text>
+<polygon fill="none" stroke="#000000" points="0,0 0,-82 90,-82 90,0 0,0"/>
+<text text-anchor="start" x="5" y="-68" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> clear()</text>
+<text text-anchor="start" x="5" y="-56" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> has()</text>
+<text text-anchor="start" x="5" y="-44" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> get()</text>
+<text text-anchor="start" x="5" y="-32" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> set()</text>
+<text text-anchor="start" x="5" y="-20" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> remove()</text>
+<text text-anchor="start" x="5" y="-8" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> isEmpty()</text>
+</a>
+</g>
+</g>
+<!-- object&#45;&gt;LruCache -->
+<g id="edge1" class="edge">
+<title>object-&gt;LruCache</title>
+<path fill="none" stroke="#000000" d="M45,-185.4135C45,-177.2111 45,-168.6404 45,-160.0832"/>
+<polygon fill="#000000" stroke="#000000" points="41.5001,-185.5773 45,-195.5773 48.5001,-185.5773 41.5001,-185.5773"/>
+</g>
+</g>
+</svg></div>
+
 ## 构造函数
         
 ### LruCache
@@ -19,6 +71,21 @@ var c = new util.LruCache(10, 100);
 调用参数:
 * size: Integer, 缓存最大尺寸
 * timeout: Integer, 元素失效时间，单位是 ms，小于等于 0 不失效，缺省为 0
+
+## 成员属性
+        
+### size
+** Integer, 查询容器内数值个数 **
+```JavaScript
+readonly Integer LruCache.size;
+```
+
+--------------------------
+### timeout
+** Integer, 查询和设置容器内元素失效时间，单位是 ms，小于等于 0 不失效 **
+```JavaScript
+Integer LruCache.timeout;
+```
 
 ## 成员函数
         
@@ -161,19 +228,4 @@ Value LruCache.valueOf();
 
 返回结果:
 * Value, 返回对象本身的数值
-
-## 成员属性
-        
-### size
-** Integer, 查询容器内数值个数 **
-```JavaScript
-readonly Integer LruCache.size;
-```
-
---------------------------
-### timeout
-** Integer, 查询和设置容器内元素失效时间，单位是 ms，小于等于 0 不失效 **
-```JavaScript
-Integer LruCache.timeout;
-```
 

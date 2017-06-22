@@ -3,6 +3,122 @@
 
 Stat 对象通过 [fs](../../module/ifs/fs.md).stat, [File](File.md).stat, [fs](../../module/ifs/fs.md).readdir 查询，不可独立创建
 
+## 继承关系
+<div style="text-align: center;"><svg width="96pt" height="382pt" viewBox="0.00 0.00 96.00 382.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 378)">
+<title>%0</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-378 92,-378 92,4 -4,4"/>
+<!-- object -->
+<g id="node1" class="node">
+<title>object</title>
+<g id="a_node1"><a xlink:href="object.md" xlink:title="object">
+<polygon fill="#ffffff" stroke="transparent" points="15.5,-282 15.5,-374 72.5,-374 72.5,-282 15.5,-282"/>
+<polygon fill="none" stroke="#000000" points="16,-352 16,-374 73,-374 73,-352 16,-352"/>
+<text text-anchor="start" x="31.1625" y="-360" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
+<polygon fill="none" stroke="#000000" points="16,-282 16,-352 73,-352 73,-282 16,-282"/>
+<text text-anchor="start" x="21" y="-338" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> dispose()</text>
+<text text-anchor="start" x="21" y="-326" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> equals()</text>
+<text text-anchor="start" x="21" y="-314" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> toString()</text>
+<text text-anchor="start" x="21" y="-302" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> toJSON()</text>
+<text text-anchor="start" x="21" y="-290" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> valueOf()</text>
+</a>
+</g>
+</g>
+<!-- Stat -->
+<g id="node2" class="node">
+<title>Stat</title>
+<g id="a_node2"><a xlink:title="Stat">
+<polygon fill="#d3d3d3" stroke="transparent" points="0,0 0,-246 88,-246 88,0 0,0"/>
+<polygon fill="none" stroke="#000000" points="0,-224 0,-246 88,-246 88,-224 0,-224"/>
+<text text-anchor="start" x="35.107" y="-232" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Stat</text>
+<polygon fill="none" stroke="#000000" points="0,-118 0,-224 88,-224 88,-118 0,-118"/>
+<text text-anchor="start" x="5" y="-210" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> name</text>
+<text text-anchor="start" x="5" y="-198" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> size</text>
+<text text-anchor="start" x="5" y="-186" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> mode</text>
+<text text-anchor="start" x="5" y="-174" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> mtime</text>
+<text text-anchor="start" x="5" y="-162" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> atime</text>
+<text text-anchor="start" x="5" y="-150" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> ctime</text>
+<text text-anchor="start" x="5" y="-138" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> uid</text>
+<text text-anchor="start" x="5" y="-126" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> gid</text>
+<polygon fill="none" stroke="#000000" points="0,0 0,-118 88,-118 88,0 0,0"/>
+<text text-anchor="start" x="5" y="-104" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> isWritable()</text>
+<text text-anchor="start" x="5" y="-92" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> isReadable()</text>
+<text text-anchor="start" x="5" y="-80" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> isExecutable()</text>
+<text text-anchor="start" x="5" y="-68" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> isHidden()</text>
+<text text-anchor="start" x="5" y="-56" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> isDirectory()</text>
+<text text-anchor="start" x="5" y="-44" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> isFile()</text>
+<text text-anchor="start" x="5" y="-32" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> isSymbolicLink()</text>
+<text text-anchor="start" x="5" y="-20" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> isMemory()</text>
+<text text-anchor="start" x="5" y="-8" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> isSocket()</text>
+</a>
+</g>
+</g>
+<!-- object&#45;&gt;Stat -->
+<g id="edge1" class="edge">
+<title>object-&gt;Stat</title>
+<path fill="none" stroke="#000000" d="M44,-271.9052C44,-263.7117 44,-255.0168 44,-246.1051"/>
+<polygon fill="#000000" stroke="#000000" points="40.5001,-271.994 44,-281.994 47.5001,-271.994 40.5001,-271.994"/>
+</g>
+</g>
+</svg></div>
+
+## 成员属性
+        
+### name
+** String, 文件名称 **
+```JavaScript
+readonly String Stat.name;
+```
+
+--------------------------
+### size
+** Long, 文件尺寸 **
+```JavaScript
+readonly Long Stat.size;
+```
+
+--------------------------
+### mode
+** Integer, 文件权限，Windows 不支持此属性 **
+```JavaScript
+readonly Integer Stat.mode;
+```
+
+--------------------------
+### mtime
+** Date, 文件最后修改时间 **
+```JavaScript
+readonly Date Stat.mtime;
+```
+
+--------------------------
+### atime
+** Date, 文件最后访问时间 **
+```JavaScript
+readonly Date Stat.atime;
+```
+
+--------------------------
+### ctime
+** Date, 文件创建时间 **
+```JavaScript
+readonly Date Stat.ctime;
+```
+
+--------------------------
+### uid
+** Integer, 文件拥有者的id **
+```JavaScript
+readonly Integer Stat.uid;
+```
+
+--------------------------
+### gid
+** Integer, 文件所属的组id **
+```JavaScript
+readonly Integer Stat.gid;
+```
+
 ## 成员函数
         
 ### isWritable
@@ -146,47 +262,4 @@ Value Stat.valueOf();
 
 返回结果:
 * Value, 返回对象本身的数值
-
-## 成员属性
-        
-### name
-** String, 文件名称 **
-```JavaScript
-readonly String Stat.name;
-```
-
---------------------------
-### size
-** Long, 文件尺寸 **
-```JavaScript
-readonly Long Stat.size;
-```
-
---------------------------
-### mode
-** Integer, 文件权限，Windows 不支持此属性 **
-```JavaScript
-readonly Integer Stat.mode;
-```
-
---------------------------
-### mtime
-** Date, 文件最后修改时间 **
-```JavaScript
-readonly Date Stat.mtime;
-```
-
---------------------------
-### atime
-** Date, 文件最后访问时间 **
-```JavaScript
-readonly Date Stat.atime;
-```
-
---------------------------
-### ctime
-** Date, 文件创建时间 **
-```JavaScript
-readonly Date Stat.ctime;
-```
 

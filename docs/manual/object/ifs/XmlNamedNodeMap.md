@@ -1,11 +1,66 @@
 # 对象 XmlNamedNodeMap
 XmlNamedNodeMap 对象表示一个无顺序的属性列表
 
+## 继承关系
+<div style="text-align: center;"><svg width="110pt" height="236pt" viewBox="0.00 0.00 110.00 236.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 232)">
+<title>%0</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-232 106,-232 106,4 -4,4"/>
+<!-- object -->
+<g id="node1" class="node">
+<title>object</title>
+<g id="a_node1"><a xlink:href="object.md" xlink:title="object">
+<polygon fill="#ffffff" stroke="transparent" points="22.5,-136 22.5,-228 79.5,-228 79.5,-136 22.5,-136"/>
+<polygon fill="none" stroke="#000000" points="23,-206 23,-228 80,-228 80,-206 23,-206"/>
+<text text-anchor="start" x="38.1625" y="-214" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
+<polygon fill="none" stroke="#000000" points="23,-136 23,-206 80,-206 80,-136 23,-136"/>
+<text text-anchor="start" x="28" y="-192" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> dispose()</text>
+<text text-anchor="start" x="28" y="-180" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> equals()</text>
+<text text-anchor="start" x="28" y="-168" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> toString()</text>
+<text text-anchor="start" x="28" y="-156" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> toJSON()</text>
+<text text-anchor="start" x="28" y="-144" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> valueOf()</text>
+</a>
+</g>
+</g>
+<!-- XmlNamedNodeMap -->
+<g id="node2" class="node">
+<title>XmlNamedNodeMap</title>
+<g id="a_node2"><a xlink:title="XmlNamedNodeMap">
+<polygon fill="#d3d3d3" stroke="transparent" points="0,0 0,-100 102,-100 102,0 0,0"/>
+<polygon fill="none" stroke="#000000" points="0,-78 0,-100 102,-100 102,-78 0,-78"/>
+<text text-anchor="start" x="4.6075" y="-86" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">XmlNamedNodeMap</text>
+<polygon fill="none" stroke="#000000" points="0,-56 0,-78 102,-78 102,-56 0,-56"/>
+<text text-anchor="start" x="5" y="-64" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> operator[]</text>
+<polygon fill="none" stroke="#000000" points="0,-34 0,-56 102,-56 102,-34 0,-34"/>
+<text text-anchor="start" x="5" y="-42" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> length</text>
+<polygon fill="none" stroke="#000000" points="0,0 0,-34 102,-34 102,0 0,0"/>
+<text text-anchor="start" x="5" y="-20" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> item()</text>
+<text text-anchor="start" x="5" y="-8" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> getNamedItem()</text>
+</a>
+</g>
+</g>
+<!-- object&#45;&gt;XmlNamedNodeMap -->
+<g id="edge1" class="edge">
+<title>object-&gt;XmlNamedNodeMap</title>
+<path fill="none" stroke="#000000" d="M51,-125.7219C51,-117.3143 51,-108.6916 51,-100.4155"/>
+<polygon fill="#000000" stroke="#000000" points="47.5001,-125.8328 51,-135.8328 54.5001,-125.8328 47.5001,-125.8328"/>
+</g>
+</g>
+</svg></div>
+
 ## 下标操作
         
 ** 可使用下标直接访问数据 **
 ```JavaScript
 readonly XmlAttr XmlNamedNodeMap[];
+```
+
+## 成员属性
+        
+### length
+** Integer, 返回属性列表中的属性数目 **
+```JavaScript
+readonly Integer XmlNamedNodeMap.length;
 ```
 
 ## 成员函数
@@ -87,12 +142,4 @@ Value XmlNamedNodeMap.valueOf();
 
 返回结果:
 * Value, 返回对象本身的数值
-
-## 成员属性
-        
-### length
-** Integer, 返回属性列表中的属性数目 **
-```JavaScript
-readonly Integer XmlNamedNodeMap.length;
-```
 

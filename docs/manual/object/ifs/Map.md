@@ -7,6 +7,60 @@ var collection = require("collection");
 var m = new collection.Map();
 ```
 
+## 继承关系
+<div style="text-align: center;"><svg width="93pt" height="318pt" viewBox="0.00 0.00 93.00 318.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 314)">
+<title>%0</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-314 89,-314 89,4 -4,4"/>
+<!-- object -->
+<g id="node1" class="node">
+<title>object</title>
+<g id="a_node1"><a xlink:href="object.md" xlink:title="object">
+<polygon fill="#ffffff" stroke="transparent" points="14,-218 14,-310 71,-310 71,-218 14,-218"/>
+<polygon fill="none" stroke="#000000" points="14.5,-288 14.5,-310 71.5,-310 71.5,-288 14.5,-288"/>
+<text text-anchor="start" x="29.6625" y="-296" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
+<polygon fill="none" stroke="#000000" points="14.5,-218 14.5,-288 71.5,-288 71.5,-218 14.5,-218"/>
+<text text-anchor="start" x="19.5" y="-274" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> dispose()</text>
+<text text-anchor="start" x="19.5" y="-262" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> equals()</text>
+<text text-anchor="start" x="19.5" y="-250" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> toString()</text>
+<text text-anchor="start" x="19.5" y="-238" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> toJSON()</text>
+<text text-anchor="start" x="19.5" y="-226" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> valueOf()</text>
+</a>
+</g>
+</g>
+<!-- Map -->
+<g id="node2" class="node">
+<title>Map</title>
+<g id="a_node2"><a xlink:title="Map">
+<polygon fill="#d3d3d3" stroke="transparent" points="0,0 0,-182 85,-182 85,0 0,0"/>
+<polygon fill="none" stroke="#000000" points=".5,-160 .5,-182 85.5,-182 85.5,-160 .5,-160"/>
+<text text-anchor="start" x="33.2765" y="-168" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Map</text>
+<polygon fill="none" stroke="#000000" points=".5,-138 .5,-160 85.5,-160 85.5,-138 .5,-138"/>
+<text text-anchor="start" x="5.5" y="-146" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">  new Map()</text>
+<polygon fill="none" stroke="#000000" points=".5,-116 .5,-138 85.5,-138 85.5,-116 .5,-116"/>
+<text text-anchor="start" x="5.5" y="-124" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> operator[String]</text>
+<polygon fill="none" stroke="#000000" points=".5,-94 .5,-116 85.5,-116 85.5,-94 .5,-94"/>
+<text text-anchor="start" x="5.5" y="-102" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> size</text>
+<polygon fill="none" stroke="#000000" points=".5,0 .5,-94 85.5,-94 85.5,0 .5,0"/>
+<text text-anchor="start" x="5.5" y="-80" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> clear()</text>
+<text text-anchor="start" x="5.5" y="-68" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> has()</text>
+<text text-anchor="start" x="5.5" y="-56" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> get()</text>
+<text text-anchor="start" x="5.5" y="-44" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> put()</text>
+<text text-anchor="start" x="5.5" y="-32" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> set()</text>
+<text text-anchor="start" x="5.5" y="-20" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> remove()</text>
+<text text-anchor="start" x="5.5" y="-8" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> isEmpty()</text>
+</a>
+</g>
+</g>
+<!-- object&#45;&gt;Map -->
+<g id="edge1" class="edge">
+<title>object-&gt;Map</title>
+<path fill="none" stroke="#000000" d="M42.5,-207.5648C42.5,-199.4195 42.5,-190.868 42.5,-182.2534"/>
+<polygon fill="#000000" stroke="#000000" points="39.0001,-207.6391 42.5,-217.6392 46.0001,-207.6392 39.0001,-207.6391"/>
+</g>
+</g>
+</svg></div>
+
 ## 构造函数
         
 ### Map
@@ -29,6 +83,14 @@ var m = new collection.Map();
 ** 允许使用键值下标直接访问数值 **
 ```JavaScript
 Variant Map[String];
+```
+
+## 成员属性
+        
+### size
+** Integer, 查询容器内数值个数 **
+```JavaScript
+readonly Integer Map.size;
 ```
 
 ## 成员函数
@@ -179,12 +241,4 @@ Value Map.valueOf();
 
 返回结果:
 * Value, 返回对象本身的数值
-
-## 成员属性
-        
-### size
-** Integer, 查询容器内数值个数 **
-```JavaScript
-readonly Integer Map.size;
-```
 

@@ -8,6 +8,91 @@ var ws = require("ws");
 var msg = new ws.Message();
 ```
 
+## 继承关系
+<div style="text-align: center;"><svg width="146pt" height="552pt" viewBox="0.00 0.00 146.00 552.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 548)">
+<title>%0</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-548 142,-548 142,4 -4,4"/>
+<!-- object -->
+<g id="node1" class="node">
+<title>object</title>
+<g id="a_node1"><a xlink:href="object.md" xlink:title="object">
+<polygon fill="#ffffff" stroke="transparent" points="40.5,-452 40.5,-544 97.5,-544 97.5,-452 40.5,-452"/>
+<polygon fill="none" stroke="#000000" points="41,-522 41,-544 98,-544 98,-522 41,-522"/>
+<text text-anchor="start" x="56.1625" y="-530" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
+<polygon fill="none" stroke="#000000" points="41,-452 41,-522 98,-522 98,-452 41,-452"/>
+<text text-anchor="start" x="46" y="-508" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> dispose()</text>
+<text text-anchor="start" x="46" y="-496" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> equals()</text>
+<text text-anchor="start" x="46" y="-484" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> toString()</text>
+<text text-anchor="start" x="46" y="-472" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> toJSON()</text>
+<text text-anchor="start" x="46" y="-460" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> valueOf()</text>
+</a>
+</g>
+</g>
+<!-- Message -->
+<g id="node2" class="node">
+<title>Message</title>
+<g id="a_node2"><a xlink:href="Message.md" xlink:title="Message">
+<polygon fill="#ffffff" stroke="transparent" points="25.5,-114 25.5,-416 112.5,-416 112.5,-114 25.5,-114"/>
+<polygon fill="none" stroke="#000000" points="26,-394 26,-416 113,-416 113,-394 26,-394"/>
+<text text-anchor="start" x="49.2175" y="-402" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Message</text>
+<polygon fill="none" stroke="#000000" points="26,-372 26,-394 113,-394 113,-372 26,-372"/>
+<text text-anchor="start" x="31" y="-380" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">  new Message()</text>
+<polygon fill="none" stroke="#000000" points="26,-338 26,-372 113,-372 113,-338 26,-338"/>
+<text text-anchor="start" x="31" y="-358" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> TEXT</text>
+<text text-anchor="start" x="31" y="-346" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> BINARY</text>
+<polygon fill="none" stroke="#000000" points="26,-220 26,-338 113,-338 113,-220 26,-220"/>
+<text text-anchor="start" x="31" y="-324" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> value</text>
+<text text-anchor="start" x="31" y="-312" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> params</text>
+<text text-anchor="start" x="31" y="-300" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> type</text>
+<text text-anchor="start" x="31" y="-288" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> data</text>
+<text text-anchor="start" x="31" y="-276" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> body</text>
+<text text-anchor="start" x="31" y="-264" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> length</text>
+<text text-anchor="start" x="31" y="-252" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> stream</text>
+<text text-anchor="start" x="31" y="-240" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> response</text>
+<text text-anchor="start" x="31" y="-228" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> lastError</text>
+<polygon fill="none" stroke="#000000" points="26,-114 26,-220 113,-220 113,-114 26,-114"/>
+<text text-anchor="start" x="31" y="-206" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> read()</text>
+<text text-anchor="start" x="31" y="-194" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> readAll()</text>
+<text text-anchor="start" x="31" y="-182" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> write()</text>
+<text text-anchor="start" x="31" y="-170" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> end()</text>
+<text text-anchor="start" x="31" y="-158" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> isEnded()</text>
+<text text-anchor="start" x="31" y="-146" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> clear()</text>
+<text text-anchor="start" x="31" y="-134" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> sendTo()</text>
+<text text-anchor="start" x="31" y="-122" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> readFrom()</text>
+</a>
+</g>
+</g>
+<!-- object&#45;&gt;Message -->
+<g id="edge1" class="edge">
+<title>object-&gt;Message</title>
+<path fill="none" stroke="#000000" d="M69,-441.9524C69,-433.8013 69,-425.104 69,-416.1038"/>
+<polygon fill="#000000" stroke="#000000" points="65.5001,-441.9667 69,-451.9667 72.5001,-441.9667 65.5001,-441.9667"/>
+</g>
+<!-- WebSocketMessage -->
+<g id="node3" class="node">
+<title>WebSocketMessage</title>
+<g id="a_node3"><a xlink:title="WebSocketMessage">
+<polygon fill="#d3d3d3" stroke="transparent" points="0,0 0,-78 138,-78 138,0 0,0"/>
+<polygon fill="none" stroke="#000000" points="0,-56 0,-78 138,-78 138,-56 0,-56"/>
+<text text-anchor="start" x="23.156" y="-64" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">WebSocketMessage</text>
+<polygon fill="none" stroke="#000000" points="0,-34 0,-56 138,-56 138,-34 0,-34"/>
+<text text-anchor="start" x="5" y="-42" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">  new WebSocketMessage()</text>
+<polygon fill="none" stroke="#000000" points="0,0 0,-34 138,-34 138,0 0,0"/>
+<text text-anchor="start" x="5" y="-20" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> masked</text>
+<text text-anchor="start" x="5" y="-8" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> maxSize</text>
+</a>
+</g>
+</g>
+<!-- Message&#45;&gt;WebSocketMessage -->
+<g id="edge2" class="edge">
+<title>Message-&gt;WebSocketMessage</title>
+<path fill="none" stroke="#000000" d="M69,-103.8267C69,-94.6795 69,-86.0505 69,-78.2532"/>
+<polygon fill="#000000" stroke="#000000" points="65.5001,-103.9408 69,-113.9408 72.5001,-103.9408 65.5001,-103.9408"/>
+</g>
+</g>
+</svg></div>
+
 ## 构造函数
         
 ### WebSocketMessage
@@ -22,6 +107,99 @@ var msg = new ws.Message();
 * type: Integer, websocket 消息类型，缺省为 websocket.BINARY
 * masked: Boolean, websocket 消息掩码，缺省为 true
 * maxSize: Integer, 最大包尺寸，以 MB 为单位，缺省为 67108864(64M)
+
+## 常量
+        
+### TEXT
+** 指定消息类型 1，代表一个文本类型 **
+```JavaScript
+const WebSocketMessage.TEXT = 1;
+```
+
+--------------------------
+### BINARY
+** 指定消息类型 2，代表一个二进制类型 **
+```JavaScript
+const WebSocketMessage.BINARY = 2;
+```
+
+## 成员属性
+        
+### masked
+** Boolean, 查询和读取 websocket 掩码标记，缺省为 true **
+```JavaScript
+Boolean WebSocketMessage.masked;
+```
+
+--------------------------
+### maxSize
+** Integer, 查询和设置最大包尺寸，以字节为单位，缺省为 67108864(64M) **
+```JavaScript
+Integer WebSocketMessage.maxSize;
+```
+
+--------------------------
+### value
+** String, 消息的基本内容 **
+```JavaScript
+String WebSocketMessage.value;
+```
+
+--------------------------
+### params
+** [List](List.md), 消息的基本参数 **
+```JavaScript
+List WebSocketMessage.params;
+```
+
+--------------------------
+### type
+** Integer, 消息类型 **
+```JavaScript
+Integer WebSocketMessage.type;
+```
+
+--------------------------
+### data
+** Value, 查询消息的数据 **
+```JavaScript
+readonly Value WebSocketMessage.data;
+```
+
+--------------------------
+### body
+** [SeekableStream](SeekableStream.md), 包含消息数据部分的流对象 **
+```JavaScript
+SeekableStream WebSocketMessage.body;
+```
+
+--------------------------
+### length
+** Long, 消息数据部分的长度 **
+```JavaScript
+readonly Long WebSocketMessage.length;
+```
+
+--------------------------
+### stream
+** [Stream](Stream.md), 查询消息 readFrom 时的流对象 **
+```JavaScript
+readonly Stream WebSocketMessage.stream;
+```
+
+--------------------------
+### response
+** Message, 获取响应消息对象 **
+```JavaScript
+readonly Message WebSocketMessage.response;
+```
+
+--------------------------
+### lastError
+** String, 查询和设置消息处理的最后错误 **
+```JavaScript
+String WebSocketMessage.lastError;
+```
 
 ## 成员函数
         
@@ -153,97 +331,4 @@ Value WebSocketMessage.valueOf();
 
 返回结果:
 * Value, 返回对象本身的数值
-
-## 成员属性
-        
-### masked
-** Boolean, 查询和读取 websocket 掩码标记，缺省为 true **
-```JavaScript
-Boolean WebSocketMessage.masked;
-```
-
---------------------------
-### maxSize
-** Integer, 查询和设置最大包尺寸，以字节为单位，缺省为 67108864(64M) **
-```JavaScript
-Integer WebSocketMessage.maxSize;
-```
-
---------------------------
-### value
-** String, 消息的基本内容 **
-```JavaScript
-String WebSocketMessage.value;
-```
-
---------------------------
-### params
-** [List](List.md), 消息的基本参数 **
-```JavaScript
-List WebSocketMessage.params;
-```
-
---------------------------
-### type
-** Integer, 消息类型 **
-```JavaScript
-Integer WebSocketMessage.type;
-```
-
---------------------------
-### data
-** Value, 查询消息的数据 **
-```JavaScript
-readonly Value WebSocketMessage.data;
-```
-
---------------------------
-### body
-** [SeekableStream](SeekableStream.md), 包含消息数据部分的流对象 **
-```JavaScript
-SeekableStream WebSocketMessage.body;
-```
-
---------------------------
-### length
-** Long, 消息数据部分的长度 **
-```JavaScript
-readonly Long WebSocketMessage.length;
-```
-
---------------------------
-### stream
-** [Stream](Stream.md), 查询消息 readFrom 时的流对象 **
-```JavaScript
-readonly Stream WebSocketMessage.stream;
-```
-
---------------------------
-### response
-** Message, 获取响应消息对象 **
-```JavaScript
-readonly Message WebSocketMessage.response;
-```
-
---------------------------
-### lastError
-** String, 查询和设置消息处理的最后错误 **
-```JavaScript
-String WebSocketMessage.lastError;
-```
-
-## 常量
-        
-### TEXT
-** 指定消息类型 1，代表一个文本类型 **
-```JavaScript
-const WebSocketMessage.TEXT = 1;
-```
-
---------------------------
-### BINARY
-** 指定消息类型 2，代表一个二进制类型 **
-```JavaScript
-const WebSocketMessage.BINARY = 2;
-```
 
