@@ -132,29 +132,34 @@ function build_docs() {
         if (basename.charAt(0) !== '.') {
 
             var p = path.relative(config.from, file.toLowerCase());
-            p = path.join(config.to, p) + '.html';
+            p = path.join(config.to, p);
             var file1 = path.join(config.dist, p);
 
-            mkdir.mkdirsSync(path.dirname(file1));
-            var doc = read_doc(file);
-            var r = /<h[1-9]?.*>(.*)<\/h[1-9]?>/.exec(doc);
-            var title = r ? r[1] : '';
+            if (path.extname(file) == '.md') {
+                file1 += '.html';
 
-            var html = _tmpl({
-                title: title,
-                group: test_group(p),
-                groups: groups,
-                doc: doc
-            });
+                mkdir.mkdirsSync(path.dirname(file1));
+                var doc = read_doc(file);
+                var r = /<h[1-9]?.*>(.*)<\/h[1-9]?>/.exec(doc);
+                var title = r ? r[1] : '';
 
-            var re = new RegExp('href=\"\/' + config.from + '/([^"> ]*)\"', 'g');
+                var html = _tmpl({
+                    title: title,
+                    group: test_group(p),
+                    groups: groups,
+                    doc: doc
+                });
 
-            html = html.replace(re, (s, u) => {
-                u = path.join('/', config.to, u);
-                return 'href="' + u + '"';
-            });
+                var re = new RegExp('href=\"\/' + config.from + '/([^"> ]*)\"', 'g');
 
-            fs.writeFileSync(file1, html);
+                html = html.replace(re, (s, u) => {
+                    u = path.join('/', config.to, u);
+                    return 'href="' + u + '"';
+                });
+
+                fs.writeFileSync(file1, html);
+            } else
+                fs.writeFileSync(file1, fs.readFileSync(file));
         }
     });
 }
