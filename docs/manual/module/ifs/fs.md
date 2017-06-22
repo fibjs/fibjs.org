@@ -528,27 +528,31 @@ static String fs.readTextFile(String fname) async;
 ### readFile
 ** 打开二进制文件，并读取内容 **
 ```JavaScript
-static Buffer fs.readFile(String fname) async;
+static Variant fs.readFile(String fname,
+                String encoding = "") async;
 ```
 
 调用参数:
 * fname: String, 指定文件名
+* encoding: String, 指定解码方式，缺省不解码
 
 返回结果:
-* [Buffer](../../object/ifs/Buffer.md), 返回文件文本内容
+* Variant, 返回文件文本内容
 
 --------------------------
 ### readFileSync
 ** 打开二进制文件，并读取内容，是 readFile 的同步版兼容接口 **
 ```JavaScript
-static Buffer fs.readFileSync(String fname);
+static Variant fs.readFileSync(String fname,
+                String encoding = "");
 ```
 
 调用参数:
 * fname: String, 指定文件名
+* encoding: String, 指定解码方式，缺省不解码
 
 返回结果:
-* [Buffer](../../object/ifs/Buffer.md), 返回文件文本内容
+* Variant, 返回文件文本内容
 
 --------------------------
 ### readLines

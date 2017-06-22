@@ -51,7 +51,7 @@ var mod_in_sbox = sbox.require('./path/to/mod');
 <text text-anchor="start" x="5.5" y="-56" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> remove()</text>
 <text text-anchor="start" x="5.5" y="-44" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> clone()</text>
 <text text-anchor="start" x="5.5" y="-32" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> run()</text>
-<text text-anchor="start" x="5.5" y="-20" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> resovle()</text>
+<text text-anchor="start" x="5.5" y="-20" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> resolve()</text>
 <text text-anchor="start" x="5.5" y="-8" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> require()</text>
 </a>
 </g>
@@ -189,10 +189,10 @@ SandBox.run(String fname,
 * argv: Array, 指定要运行的参数，此参数可在脚本内使用 argv 获取
 
 --------------------------
-### resovle
+### resolve
 ** 查询一个模块并返回模块完整文件名 **
 ```JavaScript
-String SandBox.resovle(String id,
+String SandBox.resolve(String id,
                 String base);
 ```
 
