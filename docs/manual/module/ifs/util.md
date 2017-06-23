@@ -758,7 +758,7 @@ static Buffer util.compile(String script,
 
 --------------------------
 ### sync
-** 包裹 callback 方法为同步调用 **
+** 包裹 callback 或 async 方法为同步调用 **
 
 ```JavaScript
 static Function util.sync(Function func);
@@ -769,6 +769,38 @@ static Function util.sync(Function func);
 
 返回结果:
 * Function, 返回同步运行的方法
+
+util.sync 将 callback 方法或者 async 方法处理为 sync 方法，以方便调用。
+
+callback 示例如下：
+
+```JavaScript
+// callback
+var util = require('util');
+
+function cb_test(a, b, cb) {
+    setTimeout(() => {
+        cb(null, a + b);
+    }, 100);
+}
+
+var fn_sync = util.sync(cb_test);
+console.log(fn_sync(100, 200));
+```
+
+async 示例如下：
+
+```JavaScript
+// async/await
+var util = require('util');
+
+async function cb_test(a, b) {
+    return a + b;
+}
+
+var fn_sync = util.sync(cb_test);
+console.log(fn_sync(100, 200));
+```
 
 --------------------------
 ### buildInfo

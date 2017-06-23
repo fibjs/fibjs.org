@@ -852,7 +852,7 @@
 </ul>
 <hr>
 <h3 id="sync">sync</h3>
-<p><strong> 包裹 callback 方法为同步调用 </strong></p>
+<p><strong> 包裹 callback 或 async 方法为同步调用 </strong></p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> <span class="hljs-built_in">Function</span> util.sync(<span class="hljs-built_in">Function</span> func);
 </code></pre>
 <p>调用参数:</p>
@@ -863,6 +863,31 @@
 <ul>
 <li>Function, 返回同步运行的方法</li>
 </ul>
+<p>util.sync 将 callback 方法或者 async 方法处理为 sync 方法，以方便调用。</p>
+<p>callback 示例如下：</p>
+<pre><code class="lang-JavaScript"><span class="hljs-comment">// callback</span>
+<span class="hljs-keyword">var</span> util = <span class="hljs-built_in">require</span>(<span class="hljs-string">'util'</span>);
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">cb_test</span>(<span class="hljs-params">a, b, cb</span>) </span>{
+    setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+        cb(<span class="hljs-literal">null</span>, a + b);
+    }, <span class="hljs-number">100</span>);
+}
+
+<span class="hljs-keyword">var</span> fn_sync = util.sync(cb_test);
+<span class="hljs-built_in">console</span>.log(fn_sync(<span class="hljs-number">100</span>, <span class="hljs-number">200</span>));
+</code></pre>
+<p>async 示例如下：</p>
+<pre><code class="lang-JavaScript"><span class="hljs-comment">// async/await</span>
+<span class="hljs-keyword">var</span> util = <span class="hljs-built_in">require</span>(<span class="hljs-string">'util'</span>);
+
+<span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">cb_test</span>(<span class="hljs-params">a, b</span>) </span>{
+    <span class="hljs-keyword">return</span> a + b;
+}
+
+<span class="hljs-keyword">var</span> fn_sync = util.sync(cb_test);
+<span class="hljs-built_in">console</span>.log(fn_sync(<span class="hljs-number">100</span>, <span class="hljs-number">200</span>));
+</code></pre>
 <hr>
 <h3 id="buildinfo">buildInfo</h3>
 <p><strong> 查询当前引擎及各组件版本信息 </strong></p>
