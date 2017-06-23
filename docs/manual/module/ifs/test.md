@@ -188,11 +188,8 @@ static Integer test.run(Integer loglevel = console.ERROR);
 ** 初始化当前脚本的测试环境，将 test 模块方法复制为当前脚本全局变量 **
 
 ```JavaScript
-static test.setup(Integer mode = BDD);
+static test.setup();
 ```
-
-调用参数:
-* mode: Integer, 指定初始化的模式，缺省为 BDD
 
 ## 静态属性
         
@@ -201,34 +198,5 @@ static test.setup(Integer mode = BDD);
 
 ```JavaScript
 static Integer test.slow;
-```
-
-## 常量
-        
-### BDD
-** 定义 BDD(Behavior Drive Development) 测试环境，支持 describe, xdescribe, it, xit, before, after, beforeEach 和 afterEach，同时初始化 [assert](assert.md) **
-
-```JavaScript
-const test.BDD = 0;
-```
-
---------------------------
-### TDD
-** 定义 TDD(Test Drive Development) 测试环境，支持 suite, xsuite, test, xtest, setup, teardown, suiteSetup 和 suiteTeardown，同时初始化 [assert](assert.md) **
-
-```JavaScript
-const test.TDD = 1;
-```
-
-同 BDD 的映射关系：
-```
-suite -> describe
-xsuite -> xdescribe
-test -> it
-xtest -> xit
-suiteSetup -> before
-suiteTeardown -> after
-setup -> beforeEach
-teardown -> afterEach
 ```
 
