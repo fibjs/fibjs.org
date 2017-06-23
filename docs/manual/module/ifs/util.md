@@ -736,7 +736,7 @@ static Buffer util.compile(String srcname,
 调用参数:
 * srcname: String, 指定要添加的脚本名称
 * script: String, 指定要编译的脚本代码
-* mode: Integer, 编译模式，0: module, 1: main, 2: script, 3: worker，缺省为 0
+* mode: Integer, 编译模式，0: module, 1: script, 2: worker，缺省为 0
 
 返回结果:
 * [Buffer](../../object/ifs/Buffer.md), 返回编译出的二进制代码
