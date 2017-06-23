@@ -250,12 +250,17 @@
 
 <h2 id="-">构造函数</h2>
 <h3 id="websocket">WebSocket</h3>
-<hr>
+<p><strong> WebSocket 构造函数 </strong></p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">new</span> WebSocket(<span class="hljs-built_in">String</span> url,
     <span class="hljs-built_in">String</span> protocol = <span class="hljs-string">""</span>,
     <span class="hljs-built_in">String</span> origin = <span class="hljs-string">""</span>);
 </code></pre>
 <p>调用参数:</p>
+<ul>
+<li>url: String, 指定连接的服务器</li>
+<li>protocol: String, 指定握手协议，缺省为 &quot;&quot;</li>
+<li>origin: String, 指定握手时模拟的源</li>
+</ul>
 <h2 id="-">静态属性</h2>
 <h3 id="defaultmaxlisteners">defaultMaxListeners</h3>
 <p><strong> Integer, 默认全局最大监听器数 </strong></p>
@@ -263,62 +268,72 @@
 </code></pre>
 <h2 id="-">成员属性</h2>
 <h3 id="url">url</h3>
-<hr>
+<p><strong> String, 查询当前对象连接的服务器 </strong></p>
 <pre><code class="lang-JavaScript">readonly <span class="hljs-built_in">String</span> WebSocket.url;
 </code></pre>
 <hr>
 <h3 id="protocol">protocol</h3>
-<hr>
+<p><strong> String, 查询当前对象连接时的协议 </strong></p>
 <pre><code class="lang-JavaScript">readonly <span class="hljs-built_in">String</span> WebSocket.protocol;
 </code></pre>
 <hr>
 <h3 id="origin">origin</h3>
-<hr>
+<p><strong> String, 查询当前对象连接的源 </strong></p>
 <pre><code class="lang-JavaScript">readonly <span class="hljs-built_in">String</span> WebSocket.origin;
 </code></pre>
 <hr>
 <h3 id="readystate">readyState</h3>
-<hr>
+<p><strong> Integer, 查询当前对象的连接状态，参见 <a href=../../module/ifs/ws.md.html>ws</a> </strong></p>
 <pre><code class="lang-JavaScript">readonly Integer WebSocket.readyState;
 </code></pre>
 <hr>
 <h3 id="onopen">onopen</h3>
-<hr>
+<p><strong> Function, 查询和绑定连接成功事件，相当于 on(&quot;open&quot;, func); </strong></p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">Function</span> WebSocket.onopen;
 </code></pre>
 <hr>
 <h3 id="onmessage">onmessage</h3>
-<hr>
+<p><strong> Function, 查询和绑定接受到对方消息的事件，相当于 on(&quot;message&quot;, func); </strong></p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">Function</span> WebSocket.onmessage;
 </code></pre>
 <hr>
 <h3 id="onclose">onclose</h3>
-<hr>
+<p><strong> Function, 查询和绑定连接关闭的事件，相当于 on(&quot;close&quot;, func); </strong></p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">Function</span> WebSocket.onclose;
 </code></pre>
 <hr>
 <h3 id="onerror">onerror</h3>
-<hr>
+<p><strong> Function, 查询和绑定错误发生的事件，相当于 on(&quot;error&quot;, func); </strong></p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">Function</span> WebSocket.onerror;
 </code></pre>
 <h2 id="-">成员函数</h2>
 <h3 id="close">close</h3>
-<hr>
+<p><strong> 关闭当前连接，此操作会向对方发送 CLOSE 数据包，并等待对方响应 </strong></p>
 <pre><code class="lang-JavaScript">WebSocket.close(Integer code = <span class="hljs-number">1000</span>,
     <span class="hljs-built_in">String</span> reason = <span class="hljs-string">""</span>);
 </code></pre>
 <p>调用参数:</p>
+<ul>
+<li>code: Integer, 指定关闭的代码，允许值为 3000-4999 或者 1000，缺省为 1000</li>
+<li>reason: String, 指定关闭的原因，缺省为 &quot;&quot;</li>
+</ul>
 <hr>
 <h3 id="send">send</h3>
-<hr>
+<p><strong> 向对方发送一段文本 </strong></p>
 <pre><code class="lang-JavaScript">WebSocket.send(<span class="hljs-built_in">String</span> data);
 </code></pre>
 <p>调用参数:</p>
+<ul>
+<li>data: String, 指定发送的文本</li>
+</ul>
 <hr>
-<hr>
+<p><strong> 向对方发送一段二进制数据 </strong></p>
 <pre><code class="lang-JavaScript">WebSocket.send(Buffer data);
 </code></pre>
 <p>调用参数:</p>
+<ul>
+<li>data: <a href=buffer.md.html>Buffer</a>, 指定发送的二进制数据</li>
+</ul>
 <hr>
 <h3 id="on">on</h3>
 <p><strong> 绑定一个事件处理函数到对象 </strong></p>

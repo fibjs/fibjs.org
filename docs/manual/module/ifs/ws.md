@@ -26,7 +26,7 @@ WebSocketHandler ws.Handler;
 
 --------------------------
 ### Socket
-**  **
+** [WebSocket](../../object/ifs/WebSocket.md) 对象，参见 [WebSocket](../../object/ifs/WebSocket.md) **
 
 ```JavaScript
 WebSocket ws.Socket;
@@ -114,7 +114,7 @@ const ws.PONG = 10;
 
 --------------------------
 ### CONNECTING
-**  **
+** 指定 [WebSocket](../../object/ifs/WebSocket.md) 状态，表示正在连接中 **
 
 ```JavaScript
 const ws.CONNECTING = 0;
@@ -122,7 +122,7 @@ const ws.CONNECTING = 0;
 
 --------------------------
 ### OPEN
-**  **
+** 指定 [WebSocket](../../object/ifs/WebSocket.md) 状态，表示打开状态 **
 
 ```JavaScript
 const ws.OPEN = 1;
@@ -130,7 +130,7 @@ const ws.OPEN = 1;
 
 --------------------------
 ### CLOSING
-**  **
+** 指定 [WebSocket](../../object/ifs/WebSocket.md) 状态，表示已发送 CLOSE 消息，等待关闭中 **
 
 ```JavaScript
 const ws.CLOSING = 2;
@@ -138,7 +138,7 @@ const ws.CLOSING = 2;
 
 --------------------------
 ### CLOSED
-**  **
+** 指定 [WebSocket](../../object/ifs/WebSocket.md) 状态，表示已经关闭 **
 
 ```JavaScript
 const ws.CLOSED = 3;

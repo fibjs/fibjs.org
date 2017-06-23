@@ -10,7 +10,7 @@ var zmq = require('zmq');
 ## 对象
         
 ### Socket
-**  **
+** [ZmqSocket](../../object/ifs/ZmqSocket.md) 对象，参见 [ZmqSocket](../../object/ifs/ZmqSocket.md) **
 
 ```JavaScript
 ZmqSocket zmq.Socket;
