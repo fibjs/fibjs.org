@@ -697,6 +697,9 @@ Integer Redis.pub(Buffer channel,
 * channel: [Buffer](Buffer.md), 指定发布的频道
 * message: [Buffer](Buffer.md), 指定发布的消息
 
+返回结果:
+* Integer, 接收此消息的客户端数量
+
 --------------------------
 ### getHash
 ** 获取指定 key 的 Hash 对象，此对象为包含指定 key 的客户端，只有调用其方法才会操作数据库 **

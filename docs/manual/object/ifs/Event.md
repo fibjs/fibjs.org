@@ -88,11 +88,14 @@ new Event(Boolean value = false);
 ## 成员函数
         
 ### isSet
-** 判断事件对象是否为true **
+** 判断事件对象是否为真 **
 
 ```JavaScript
 Boolean Event.isSet();
 ```
+
+返回结果:
+* Boolean, 如果事件为真，返回 true
 
 --------------------------
 ### set

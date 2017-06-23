@@ -526,6 +526,80 @@ static SeekableStream fs.openFile(String fname,
 - 'a+' 读写添加方式，文件不存在则自动创建。
 
 --------------------------
+### open
+** 打开文件描述符 **
+
+```JavaScript
+static Integer fs.open(String fname,
+    String flags = "r",
+    Integer mode = 0666) async;
+```
+
+调用参数:
+* fname: String, 指定文件名
+* flags: String, 指定文件打开方式，缺省为 "r"，只读方式
+* mode: Integer, 当创建文件的时候，指定文件的模式，默认 0666
+
+返回结果:
+* Integer, 返回打开的文件描述符
+
+参数 flags 支持的方式如下：
+- 'r' 只读方式，文件不存在则抛出错误。
+- 'r+' 读写方式，文件不存在则抛出错误。
+- 'w' 只写方式，文件不存在则自动创建，存在则将被清空。
+- 'w+' 读写方式，文件不存在则自动创建。
+- 'a' 只写添加方式，文件不存在则自动创建。
+- 'a+' 读写添加方式，文件不存在则自动创建。
+
+--------------------------
+### openSync
+** fs.open() 的阻塞版本 **
+
+```JavaScript
+static Integer fs.openSync(String fname,
+    String flags = "r",
+    Integer mode = 0666);
+```
+
+调用参数:
+* fname: String, 指定文件名
+* flags: String, 指定文件打开方式，缺省为 "r"，只读方式
+* mode: Integer, 当创建文件的时候，指定文件的模式，默认 0666
+
+返回结果:
+* Integer, 返回打开的文件描述符
+
+参数 flags 支持的方式如下：
+- 'r' 只读方式，文件不存在则抛出错误。
+- 'r+' 读写方式，文件不存在则抛出错误。
+- 'w' 只写方式，文件不存在则自动创建，存在则将被清空。
+- 'w+' 读写方式，文件不存在则自动创建。
+- 'a' 只写添加方式，文件不存在则自动创建。
+- 'a+' 读写添加方式，文件不存在则自动创建。
+
+--------------------------
+### close
+** 关闭文件描述符 **
+
+```JavaScript
+static fs.close(Integer fd) async;
+```
+
+调用参数:
+* fd: Integer, 文件描述符
+
+--------------------------
+### closeSync
+** fs.close() 的阻塞版本 **
+
+```JavaScript
+static fs.closeSync(Integer fd);
+```
+
+调用参数:
+* fd: Integer, 文件描述符
+
+--------------------------
 ### openTextStream
 ** 打开文件，用于读取，写入，或者同时读写，是 open 的同步版兼容接口 **
 

@@ -281,6 +281,9 @@ String XmlCharacterData.substringData(Integer offset,
 * offset: Integer, 要返回的第一个字符的位置
 * count: Integer, 要返回的子串中的字符数
 
+返回结果:
+* String, 返回提取的字符串
+
 --------------------------
 ### appendData
 ** 把字符串附加到节点上 **

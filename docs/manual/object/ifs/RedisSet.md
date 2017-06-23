@@ -132,6 +132,7 @@ Boolean RedisSet.exists(Buffer member);
 ```
 
 调用参数:
+* member: [Buffer](Buffer.md), 指定检查的 member
 
 返回结果:
 * Boolean, 如果 member 元素是集合的成员，返回 true

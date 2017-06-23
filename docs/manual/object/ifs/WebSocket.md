@@ -298,8 +298,7 @@ Object WebSocket.prependListener(Object map);
 ```
 
 调用参数:
-* ev: 指定事件的名称
-* func: 指定事件处理函数
+* map: Object, 指定事件映射关系，对象属性名称将作为事件名称，属性的值将作为事件处理函数
 
 返回结果:
 * Object, 返回成功绑定的数量，如果函数已绑定则返回 0
@@ -357,8 +356,7 @@ Object WebSocket.prependOnceListener(Object map);
 ```
 
 调用参数:
-* ev: 指定事件的名称
-* func: 指定事件处理函数
+* map: Object, 指定事件映射关系，对象属性名称将作为事件名称，属性的值将作为事件处理函数
 
 返回结果:
 * Object, 返回成功绑定的数量，如果函数已绑定则返回 0
@@ -479,6 +477,9 @@ WebSocket.setMaxListeners(Integer n);
 ```JavaScript
 Integer WebSocket.getMaxListeners();
 ```
+
+返回结果:
+* Integer, 返回默认限制数量
 
 --------------------------
 ### listeners

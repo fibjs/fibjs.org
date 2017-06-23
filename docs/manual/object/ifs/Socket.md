@@ -237,13 +237,17 @@ Buffer Socket.recv(Integer bytes = -1) async;
 
 --------------------------
 ### recvfrom
-**  **
+** 读取一个 UDP 包 **
 
 ```JavaScript
 DatagramPacket Socket.recvfrom(Integer bytes = -1) async;
 ```
 
 调用参数:
+* bytes: Integer, 指定要读取的数据量，缺省读取任意尺寸的数据
+
+返回结果:
+* [DatagramPacket](DatagramPacket.md), 返回从连接读取的数据包
 
 --------------------------
 ### send
@@ -258,7 +262,7 @@ Socket.send(Buffer data) async;
 
 --------------------------
 ### sendto
-**  **
+** 向给定 ip:port 发送一个 UDP 包 **
 
 ```JavaScript
 Socket.sendto(Buffer data,
@@ -267,6 +271,9 @@ Socket.sendto(Buffer data,
 ```
 
 调用参数:
+* data: [Buffer](Buffer.md), 给定要写入的数据
+* host: String, 指定目标 ip 或主机名
+* port: Integer, 指定目标端口
 
 --------------------------
 ### read

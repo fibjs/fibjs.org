@@ -247,6 +247,9 @@ UrlObject UrlObject.resolve(String url);
 调用参数:
 * url: String, 指定新的路径
 
+返回结果:
+* UrlObject, 返回包含重定位数据的对象
+
 --------------------------
 ### normalize
 ** 标准化路径 **

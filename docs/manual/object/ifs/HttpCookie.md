@@ -160,6 +160,9 @@ Boolean HttpCookie.match(String url);
 调用参数:
 * url: String, 指定测试的 [url](../../module/ifs/url.md)
 
+返回结果:
+* Boolean, 匹配成功返回 true
+
 --------------------------
 ### dispose
 ** 强制回收对象，调用此方法后，对象资源将立即释放 **

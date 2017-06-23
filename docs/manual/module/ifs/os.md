@@ -25,13 +25,19 @@ Service os.Service;
 static String os.hostname();
 ```
 
+返回结果:
+* String, 返回主机名
+
 --------------------------
 ### endianness
-** the endianness of the CPU for which the fibjs binary was compiled. **
+** 查询当前 CPU 的字节顺序 **
 
 ```JavaScript
 static String os.endianness();
 ```
+
+返回结果:
+* String, 返回字节顺序
 
 --------------------------
 ### type
@@ -41,6 +47,9 @@ static String os.endianness();
 static String os.type();
 ```
 
+返回结果:
+* String, 返回系统名称
+
 --------------------------
 ### release
 ** 查询当前运行环境操作系统版本 **
@@ -48,6 +57,9 @@ static String os.type();
 ```JavaScript
 static String os.release();
 ```
+
+返回结果:
+* String, 返回版本信息
 
 --------------------------
 ### homedir
@@ -57,13 +69,19 @@ static String os.release();
 static String os.homedir();
 ```
 
+返回结果:
+* String, 返回目录字符串
+
 --------------------------
 ### arch
-** 查询当前 cpu 环境，可能的结果为 'amd64', 'arm', 'arm64', 'ia32' **
+** 查询当前 cpu 环境 **
 
 ```JavaScript
 static String os.arch();
 ```
+
+返回结果:
+* String, 返回 cpu 类型，可能的结果为 'amd64', 'arm', 'arm64', 'ia32'
 
 --------------------------
 ### uptime
@@ -151,6 +169,7 @@ static Object os.userInfo(Object options = {});
 ```
 
 调用参数:
+* options: Object, 用于解释结果字符串的字符编码
 
 返回结果:
 * Object, 当前有效执行用户信息
@@ -193,11 +212,14 @@ static BufferedStream os.openPrinter(String name) async;
 
 --------------------------
 ### platform
-** 查询当前平台名称，可能的结果为 'darwin', 'freebsd', 'linux', 或 'win32' **
+** 查询当前平台名称 **
 
 ```JavaScript
 static String os.platform();
 ```
+
+返回结果:
+* String, 返回平台名称，可能的结果为 'darwin', 'freebsd', 'linux', 或 'win32'
 
 --------------------------
 ### time

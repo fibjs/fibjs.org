@@ -340,7 +340,7 @@ Integer Buffer.write(String str,
 
 --------------------------
 ### fill
-** 为Buffer对象填充指定内容数据 **
+** 为 Buffer 对象填充指定内容数据 **
 
 ```JavaScript
 Buffer Buffer.fill(Integer v,
@@ -349,7 +349,7 @@ Buffer Buffer.fill(Integer v,
 ```
 
 调用参数:
-* v: Integer, 需要填充的数据，如果未指定offset和end，将填充满整个buffer
+* v: Integer, 需要填充的数据，如果未指定 offset 和 end，将填充满整个 buffer
 * offset: Integer, 填充起始位置
 * end: Integer, 填充终止位置
 
@@ -357,7 +357,7 @@ Buffer Buffer.fill(Integer v,
 * Buffer, 返回当前 Buffer 对象
 
 --------------------------
-** 为Buffer对象填充指定内容数据 **
+** 为 Buffer 对象填充指定内容数据 **
 
 ```JavaScript
 Buffer Buffer.fill(Buffer v,
@@ -366,7 +366,7 @@ Buffer Buffer.fill(Buffer v,
 ```
 
 调用参数:
-* v: Buffer, 需要填充的数据，如果未指定offset和end，将填充满整个buffer
+* v: Buffer, 需要填充的数据，如果未指定 offset 和 end，将填充满整个 buffer
 * offset: Integer, 填充起始位置
 * end: Integer, 填充终止位置
 
@@ -374,7 +374,7 @@ Buffer Buffer.fill(Buffer v,
 * Buffer, 返回当前 Buffer 对象
 
 --------------------------
-** 为Buffer对象填充指定内容数据 **
+** 为 Buffer 对象填充指定内容数据 **
 
 ```JavaScript
 Buffer Buffer.fill(String v,
@@ -383,7 +383,7 @@ Buffer Buffer.fill(String v,
 ```
 
 调用参数:
-* v: String, 需要填充的数据，如果未指定offset和end，将填充满整个buffer
+* v: String, 需要填充的数据，如果未指定 offset 和 end，将填充满整个 buffer
 * offset: Integer, 填充起始位置
 * end: Integer, 填充终止位置
 
@@ -392,7 +392,7 @@ Buffer Buffer.fill(String v,
 
 --------------------------
 ### indexOf
-** 返回某个指定数据在Buffer中首次出现的位置 **
+** 返回某个指定数据在 Buffer 中首次出现的位置 **
 
 ```JavaScript
 Integer Buffer.indexOf(Integer v,
@@ -400,11 +400,14 @@ Integer Buffer.indexOf(Integer v,
 ```
 
 调用参数:
-* v: Integer, 待查找数据，如果未指定offset，默认从起始位开始
+* v: Integer, 待查找数据，如果未指定 offset，默认从起始位开始
 * offset: Integer, 起始查找位置
 
+返回结果:
+* Integer, 返回查找到的位置，未找到返回 -1
+
 --------------------------
-** 返回某个指定数据在Buffer中首次出现的位置 **
+** 返回某个指定数据在 Buffer 中首次出现的位置 **
 
 ```JavaScript
 Integer Buffer.indexOf(Buffer v,
@@ -412,11 +415,14 @@ Integer Buffer.indexOf(Buffer v,
 ```
 
 调用参数:
-* v: Buffer, 待查找数据，如果未指定offset，默认从起始位开始
+* v: Buffer, 待查找数据，如果未指定 offset，默认从起始位开始
 * offset: Integer, 起始查找位置
 
+返回结果:
+* Integer, 返回查找到的位置，未找到返回 -1
+
 --------------------------
-** 返回某个指定数据在Buffer中首次出现的位置 **
+** 返回某个指定数据在 Buffer 中首次出现的位置 **
 
 ```JavaScript
 Integer Buffer.indexOf(String v,
@@ -424,8 +430,11 @@ Integer Buffer.indexOf(String v,
 ```
 
 调用参数:
-* v: String, 待查找数据，如果未指定offset，默认从起始位开始
+* v: String, 待查找数据，如果未指定 offset，默认从起始位开始
 * offset: Integer, 起始查找位置
+
+返回结果:
+* Integer, 返回查找到的位置，未找到返回 -1
 
 --------------------------
 ### compare

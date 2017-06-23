@@ -85,7 +85,7 @@
 ## 构造函数
         
 ### Worker
-**  **
+** Worker 对象构造函数 **
 
 ```JavaScript
 new Worker(String path,
@@ -93,6 +93,8 @@ new Worker(String path,
 ```
 
 调用参数:
+* path: String, 指定 Worker 入口脚本，只接受绝对路径
+* opts: Object, 构造选项，暂未支持
 
 ## 静态属性
         
@@ -106,7 +108,7 @@ static Integer Worker.defaultMaxListeners;
 ## 成员属性
         
 ### onmessage
-**  **
+** Function, 查询和绑定接受 postMessage 消息事件，相当于 on("message", func); **
 
 ```JavaScript
 Function Worker.onmessage;
@@ -115,13 +117,14 @@ Function Worker.onmessage;
 ## 成员函数
         
 ### postMessage
-**  **
+** 向 Master 或 Worker 发送消息， **
 
 ```JavaScript
 Worker.postMessage(Value data);
 ```
 
 调用参数:
+* data: Value, 指定发送的消息内容
 
 --------------------------
 ### on
@@ -205,8 +208,7 @@ Object Worker.prependListener(Object map);
 ```
 
 调用参数:
-* ev: 指定事件的名称
-* func: 指定事件处理函数
+* map: Object, 指定事件映射关系，对象属性名称将作为事件名称，属性的值将作为事件处理函数
 
 返回结果:
 * Object, 返回成功绑定的数量，如果函数已绑定则返回 0
@@ -264,8 +266,7 @@ Object Worker.prependOnceListener(Object map);
 ```
 
 调用参数:
-* ev: 指定事件的名称
-* func: 指定事件处理函数
+* map: Object, 指定事件映射关系，对象属性名称将作为事件名称，属性的值将作为事件处理函数
 
 返回结果:
 * Object, 返回成功绑定的数量，如果函数已绑定则返回 0
@@ -386,6 +387,9 @@ Worker.setMaxListeners(Integer n);
 ```JavaScript
 Integer Worker.getMaxListeners();
 ```
+
+返回结果:
+* Integer, 返回默认限制数量
 
 --------------------------
 ### listeners

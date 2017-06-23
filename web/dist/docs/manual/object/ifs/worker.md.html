@@ -237,11 +237,15 @@
 
 <h2 id="-">构造函数</h2>
 <h3 id="worker">Worker</h3>
-<hr>
+<p><strong> Worker 对象构造函数 </strong></p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">new</span> Worker(<span class="hljs-built_in">String</span> path,
     <span class="hljs-built_in">Object</span> opts = {});
 </code></pre>
 <p>调用参数:</p>
+<ul>
+<li>path: String, 指定 Worker 入口脚本，只接受绝对路径</li>
+<li>opts: Object, 构造选项，暂未支持</li>
+</ul>
 <h2 id="-">静态属性</h2>
 <h3 id="defaultmaxlisteners">defaultMaxListeners</h3>
 <p><strong> Integer, 默认全局最大监听器数 </strong></p>
@@ -249,15 +253,18 @@
 </code></pre>
 <h2 id="-">成员属性</h2>
 <h3 id="onmessage">onmessage</h3>
-<hr>
+<p><strong> Function, 查询和绑定接受 postMessage 消息事件，相当于 on(&quot;message&quot;, func); </strong></p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">Function</span> Worker.onmessage;
 </code></pre>
 <h2 id="-">成员函数</h2>
 <h3 id="postmessage">postMessage</h3>
-<hr>
+<p><strong> 向 Master 或 Worker 发送消息， </strong></p>
 <pre><code class="lang-JavaScript">Worker.postMessage(Value data);
 </code></pre>
 <p>调用参数:</p>
+<ul>
+<li>data: Value, 指定发送的消息内容</li>
+</ul>
 <hr>
 <h3 id="on">on</h3>
 <p><strong> 绑定一个事件处理函数到对象 </strong></p>
@@ -333,8 +340,7 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>ev: 指定事件的名称</li>
-<li>func: 指定事件处理函数</li>
+<li>map: Object, 指定事件映射关系，对象属性名称将作为事件名称，属性的值将作为事件处理函数</li>
 </ul>
 <p>返回结果:</p>
 <ul>
@@ -388,8 +394,7 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>ev: 指定事件的名称</li>
-<li>func: 指定事件处理函数</li>
+<li>map: Object, 指定事件映射关系，对象属性名称将作为事件名称，属性的值将作为事件处理函数</li>
 </ul>
 <p>返回结果:</p>
 <ul>
@@ -500,6 +505,10 @@
 <p><strong> 获取监听器的默认限制的数量，仅用于兼容 </strong></p>
 <pre><code class="lang-JavaScript">Integer Worker.getMaxListeners();
 </code></pre>
+<p>返回结果:</p>
+<ul>
+<li>Integer, 返回默认限制数量</li>
+</ul>
 <hr>
 <h3 id="listeners">listeners</h3>
 <p><strong> 查询对象指定事件的监听器数组 </strong></p>

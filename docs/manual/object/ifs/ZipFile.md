@@ -60,6 +60,9 @@
 List ZipFile.namelist() async;
 ```
 
+返回结果:
+* [List](List.md), 返回包含文件名的列表对象
+
 --------------------------
 ### infolist
 ** 获取文件信息列表 **
@@ -67,6 +70,9 @@ List ZipFile.namelist() async;
 ```JavaScript
 List ZipFile.infolist() async;
 ```
+
+返回结果:
+* [List](List.md), 返回包含文件信息的列表对象
 
 --------------------------
 ### getinfo
@@ -78,6 +84,9 @@ ZipInfo ZipFile.getinfo(String member) async;
 
 调用参数:
 * member: String, 指定要获取信息的文件名
+
+返回结果:
+* [ZipInfo](ZipInfo.md), 返回文件信息对象
 
 --------------------------
 ### read

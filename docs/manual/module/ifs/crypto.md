@@ -62,6 +62,9 @@ static PKey crypto.loadPKey(String filename,
 * filename: String, 密钥文件名
 * password: String, 解密密码
 
+返回结果:
+* [PKey](../../object/ifs/PKey.md), 返回包含密钥的对象
+
 --------------------------
 ### loadCert
 ** 加载一个 CRT/PEM/DER/TXT 格式的证书，可多次调用 **
@@ -72,6 +75,9 @@ static X509Cert crypto.loadCert(String filename);
 
 调用参数:
 * filename: String, 证书文件名
+
+返回结果:
+* [X509Cert](../../object/ifs/X509Cert.md), 返回包含证书的对象
 
 loadFile 加载 mozilla 的 certdata,txt， 可于 [http](http.md)://hg.mozilla.org/releases/mozilla-release/raw-file/default/security/nss/lib/ckfw/builtins/certdata.txt 下载使用
 
@@ -86,6 +92,9 @@ static X509Crl crypto.loadCrl(String filename);
 调用参数:
 * filename: String, 撤销证书文件名
 
+返回结果:
+* [X509Crl](../../object/ifs/X509Crl.md), 返回包含撤销证书的对象
+
 --------------------------
 ### loadReq
 ** 加载一个 PEM/DER 格式的证书请求，可多次调用 **
@@ -96,6 +105,9 @@ static X509Req crypto.loadReq(String filename);
 
 调用参数:
 * filename: String, 证书请求文件名
+
+返回结果:
+* [X509Req](../../object/ifs/X509Req.md), 返回包含请求证书的对象
 
 --------------------------
 ### randomBytes

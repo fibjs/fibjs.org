@@ -17,6 +17,7 @@ static gui.setVersion(Integer ver);
 ```
 
 调用参数:
+* ver: Integer, 指定 ie 模拟版本
 
 --------------------------
 ### open

@@ -209,6 +209,9 @@ Object MongoCollection.runCommand(Object cmd);
 调用参数:
 * cmd: Object, 给定命令对象
 
+返回结果:
+* Object, 返回命令返回结果
+
 --------------------------
 ** 执行数据库命令 **
 
@@ -220,6 +223,9 @@ Object MongoCollection.runCommand(String cmd,
 调用参数:
 * cmd: String, 给定命令名称
 * arg: Object, 给定命令参数选项
+
+返回结果:
+* Object, 返回命令返回结果
 
 --------------------------
 ### drop
