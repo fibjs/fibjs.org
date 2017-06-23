@@ -2,6 +2,7 @@
 zlib 压缩解压模块
 
 使用方法：
+
 ```JavaScript
 var zlib = require('zlib');
 ```
@@ -10,9 +11,10 @@ var zlib = require('zlib');
         
 ### deflate
 ** 使用 deflate 算法压缩数据(zlib格式) **
+
 ```JavaScript
 static Buffer zlib.deflate(Buffer data,
-                Integer level = DEFAULT_COMPRESSION) async;
+    Integer level = DEFAULT_COMPRESSION) async;
 ```
 
 调用参数:
@@ -25,10 +27,11 @@ static Buffer zlib.deflate(Buffer data,
 --------------------------
 ### deflateTo
 ** 使用 deflate 算法压缩数据到流对象中(zlib格式) **
+
 ```JavaScript
 static zlib.deflateTo(Buffer data,
-                Stream stm,
-                Integer level = DEFAULT_COMPRESSION) async;
+    Stream stm,
+    Integer level = DEFAULT_COMPRESSION) async;
 ```
 
 调用参数:
@@ -38,10 +41,11 @@ static zlib.deflateTo(Buffer data,
 
 --------------------------
 ** 使用 deflate 算法压缩源流中的数据到流对象中(zlib格式) **
+
 ```JavaScript
 static zlib.deflateTo(Stream src,
-                Stream stm,
-                Integer level = DEFAULT_COMPRESSION) async;
+    Stream stm,
+    Integer level = DEFAULT_COMPRESSION) async;
 ```
 
 调用参数:
@@ -52,6 +56,7 @@ static zlib.deflateTo(Stream src,
 --------------------------
 ### inflate
 ** 解压缩 deflate 算法压缩的数据(zlib格式) **
+
 ```JavaScript
 static Buffer zlib.inflate(Buffer data) async;
 ```
@@ -65,9 +70,10 @@ static Buffer zlib.inflate(Buffer data) async;
 --------------------------
 ### inflateTo
 ** 解压缩 deflate 算法压缩的数据到流对象中(zlib格式) **
+
 ```JavaScript
 static zlib.inflateTo(Buffer data,
-                Stream stm) async;
+    Stream stm) async;
 ```
 
 调用参数:
@@ -76,9 +82,10 @@ static zlib.inflateTo(Buffer data,
 
 --------------------------
 ** 解压缩源流中 deflate 算法压缩的数据到流对象中(zlib格式) **
+
 ```JavaScript
 static zlib.inflateTo(Stream src,
-                Stream stm) async;
+    Stream stm) async;
 ```
 
 调用参数:
@@ -88,6 +95,7 @@ static zlib.inflateTo(Stream src,
 --------------------------
 ### gzip
 ** 使用 gzip 算法压缩数据 **
+
 ```JavaScript
 static Buffer zlib.gzip(Buffer data) async;
 ```
@@ -101,9 +109,10 @@ static Buffer zlib.gzip(Buffer data) async;
 --------------------------
 ### gzipTo
 ** 使用 gzip 算法压缩数据到流对象中 **
+
 ```JavaScript
 static zlib.gzipTo(Buffer data,
-                Stream stm) async;
+    Stream stm) async;
 ```
 
 调用参数:
@@ -112,9 +121,10 @@ static zlib.gzipTo(Buffer data,
 
 --------------------------
 ** 使用 gzip 算法压缩源流中的数据到流对象中 **
+
 ```JavaScript
 static zlib.gzipTo(Stream src,
-                Stream stm) async;
+    Stream stm) async;
 ```
 
 调用参数:
@@ -124,6 +134,7 @@ static zlib.gzipTo(Stream src,
 --------------------------
 ### gunzip
 ** 解压缩 gzip 算法压缩的数据 **
+
 ```JavaScript
 static Buffer zlib.gunzip(Buffer data) async;
 ```
@@ -137,9 +148,10 @@ static Buffer zlib.gunzip(Buffer data) async;
 --------------------------
 ### gunzipTo
 ** 解压缩 gzip 算法压缩的数据到流对象中 **
+
 ```JavaScript
 static zlib.gunzipTo(Buffer data,
-                Stream stm) async;
+    Stream stm) async;
 ```
 
 调用参数:
@@ -148,9 +160,10 @@ static zlib.gunzipTo(Buffer data,
 
 --------------------------
 ** 解压缩源流中 gzip 算法压缩的数据到流对象中 **
+
 ```JavaScript
 static zlib.gunzipTo(Stream src,
-                Stream stm) async;
+    Stream stm) async;
 ```
 
 调用参数:
@@ -160,9 +173,10 @@ static zlib.gunzipTo(Stream src,
 --------------------------
 ### deflateRaw
 ** 使用 deflate 算法压缩数据(deflateRaw) **
+
 ```JavaScript
 static Buffer zlib.deflateRaw(Buffer data,
-                Integer level = DEFAULT_COMPRESSION) async;
+    Integer level = DEFAULT_COMPRESSION) async;
 ```
 
 调用参数:
@@ -175,10 +189,11 @@ static Buffer zlib.deflateRaw(Buffer data,
 --------------------------
 ### deflateRawTo
 ** 使用 deflate 算法压缩数据到流对象中(deflateRaw) **
+
 ```JavaScript
 static zlib.deflateRawTo(Buffer data,
-                Stream stm,
-                Integer level = DEFAULT_COMPRESSION) async;
+    Stream stm,
+    Integer level = DEFAULT_COMPRESSION) async;
 ```
 
 调用参数:
@@ -188,10 +203,11 @@ static zlib.deflateRawTo(Buffer data,
 
 --------------------------
 ** 使用 deflate 算法压缩源流中的数据到流对象中(deflateRaw) **
+
 ```JavaScript
 static zlib.deflateRawTo(Stream src,
-                Stream stm,
-                Integer level = DEFAULT_COMPRESSION) async;
+    Stream stm,
+    Integer level = DEFAULT_COMPRESSION) async;
 ```
 
 调用参数:
@@ -202,6 +218,7 @@ static zlib.deflateRawTo(Stream src,
 --------------------------
 ### inflateRaw
 ** 解压缩 deflate 算法压缩的数据(inflateRaw) **
+
 ```JavaScript
 static Buffer zlib.inflateRaw(Buffer data) async;
 ```
@@ -215,9 +232,10 @@ static Buffer zlib.inflateRaw(Buffer data) async;
 --------------------------
 ### inflateRawTo
 ** 解压缩 deflate 算法压缩的数据到流对象中(inflateRaw) **
+
 ```JavaScript
 static zlib.inflateRawTo(Buffer data,
-                Stream stm) async;
+    Stream stm) async;
 ```
 
 调用参数:
@@ -226,9 +244,10 @@ static zlib.inflateRawTo(Buffer data,
 
 --------------------------
 ** 解压缩源流中 deflate 算法压缩的数据到流对象中(inflateRaw) **
+
 ```JavaScript
 static zlib.inflateRawTo(Stream src,
-                Stream stm) async;
+    Stream stm) async;
 ```
 
 调用参数:
@@ -239,6 +258,7 @@ static zlib.inflateRawTo(Stream src,
         
 ### NO_COMPRESSION
 ** deflate 压缩级别，设定不压缩 **
+
 ```JavaScript
 const zlib.NO_COMPRESSION = 0;
 ```
@@ -246,6 +266,7 @@ const zlib.NO_COMPRESSION = 0;
 --------------------------
 ### BEST_SPEED
 ** deflate 压缩级别，设定最快压缩 **
+
 ```JavaScript
 const zlib.BEST_SPEED = 1;
 ```
@@ -253,6 +274,7 @@ const zlib.BEST_SPEED = 1;
 --------------------------
 ### BEST_COMPRESSION
 ** deflate 压缩级别，设定最高压缩 **
+
 ```JavaScript
 const zlib.BEST_COMPRESSION = 9;
 ```
@@ -260,6 +282,7 @@ const zlib.BEST_COMPRESSION = 9;
 --------------------------
 ### DEFAULT_COMPRESSION
 ** deflate 压缩级别，设定缺省设置 **
+
 ```JavaScript
 const zlib.DEFAULT_COMPRESSION = -1;
 ```

@@ -2,9 +2,11 @@
 控制台访问对象
 
 全局对象。可用于提示信息，警告和错误记录。通过启动配置文件，可将日志定位到不同的设备，以便于跟踪。日志支持格式化输出，例如：
+
 ```JavaScript
 console.log("%d + %d = %d", 100, 200, 100 + 200);
 ```
+
 可以使用的格式化参数如下：
 - %s - 字符串
 - %d - 数字，包括整数和数字
@@ -15,6 +17,7 @@ console.log("%d + %d = %d", 100, 200, 100 + 200);
         
 ### add
 ** 添加 console 输出系统，支持的设备为 console, syslog, event，最多可以添加 10 个输出 **
+
 ```JavaScript
 static console.add(String type);
 ```
@@ -31,17 +34,20 @@ console.add("console");
 ```
 
 syslog 仅在 posix 平台有效：
+
 ```JavaScript
 console.add("syslog");
 ```
 
 event 仅在 windows 平台有效：
+
 ```JavaScript
 console.add("event");
 ```
 
 --------------------------
 ** 添加 console 输出系统，支持的设备为 console, syslog, event 和 file，最多可以添加 10 个输出 **
+
 ```JavaScript
 static console.add(Object cfg);
 ```
@@ -52,45 +58,50 @@ static console.add(Object cfg);
 通过配置 console，可以将程序输出和系统错误发往不同设备，用于运行环境信息收集。
 
 cfg 可以为一个设备配置对象：
+
 ```JavaScript
 console.add({
-   type: "console",
-   levels: [console.INFO, console.ERROR]  // 选项，省略则输出全部级别日志
+    type: "console",
+    levels: [console.INFO, console.ERROR] // 选项，省略则输出全部级别日志
 });
 ```
 
 syslog 仅在 posix 平台有效：
+
 ```JavaScript
 console.add({
-   type: "syslog",
-   levels: [console.INFO, console.ERROR]
+    type: "syslog",
+    levels: [console.INFO, console.ERROR]
 });
 ```
 
 event 仅在 windows 平台有效：
+
 ```JavaScript
 console.add({
-   type: "event",
-   levels: [console.INFO, console.ERROR]
+    type: "event",
+    levels: [console.INFO, console.ERROR]
 });
 ```
 
 file 日志：
+
 ```JavaScript
 console.add({
-   type: "file",
-   levels: [console.INFO, console.ERROR],
-   // 必选项，指定日志输出文件，可使用 s% 指定插入日期位置，不指定则添加在结尾
-   path: "path/to/file_%s.log",
-   // 选项，可选值为 "day", "hour", "minute", "###k", "###m", "###g"，缺省为 "1m"
-   split: "30m",
-   // 选项，可选范围为 2-128，缺省为 128
-   count: 10
+    type: "file",
+    levels: [console.INFO, console.ERROR],
+    // 必选项，指定日志输出文件，可使用 s% 指定插入日期位置，不指定则添加在结尾
+    path: "path/to/file_%s.log",
+    // 选项，可选值为 "day", "hour", "minute", "###k", "###m", "###g"，缺省为 "1m"
+    split: "30m",
+    // 选项，可选范围为 2-128，缺省为 128
+    count: 10
 });
 ```
 
 --------------------------
 ** 批量添加 console 输出系统，支持的设备为 console, syslog, event 和 file，最多可以添加 10 个输出 **
+
 ```JavaScript
 static console.add(Array cfg);
 ```
@@ -102,14 +113,15 @@ static console.add(Array cfg);
 
 ```JavaScript
 console.add(["console", {
-   type: "syslog",
-   levels: [console.INFO, console.ERROR]
+    type: "syslog",
+    levels: [console.INFO, console.ERROR]
 }]);
 ```
 
 --------------------------
 ### reset
 ** 初始化到缺省设置，只在 console 输出信息 **
+
 ```JavaScript
 static console.reset();
 ```
@@ -117,9 +129,10 @@ static console.reset();
 --------------------------
 ### log
 ** 记录普通日志信息，与 info 等同 **
+
 ```JavaScript
 static console.log(String fmt,
-                ...);
+    ...);
 ```
 
 调用参数:
@@ -130,6 +143,7 @@ static console.log(String fmt,
 
 --------------------------
 ** 记录普通日志信息，与 info 等同 **
+
 ```JavaScript
 static console.log(...);
 ```
@@ -142,9 +156,10 @@ static console.log(...);
 --------------------------
 ### debug
 ** 记录调试日志信息 **
+
 ```JavaScript
 static console.debug(String fmt,
-                ...);
+    ...);
 ```
 
 调用参数:
@@ -155,6 +170,7 @@ static console.debug(String fmt,
 
 --------------------------
 ** 记录调试日志信息 **
+
 ```JavaScript
 static console.debug(...);
 ```
@@ -167,9 +183,10 @@ static console.debug(...);
 --------------------------
 ### info
 ** 记录普通日志信息，与 log 等同 **
+
 ```JavaScript
 static console.info(String fmt,
-                ...);
+    ...);
 ```
 
 调用参数:
@@ -180,6 +197,7 @@ static console.info(String fmt,
 
 --------------------------
 ** 记录普通日志信息，与 log 等同 **
+
 ```JavaScript
 static console.info(...);
 ```
@@ -192,9 +210,10 @@ static console.info(...);
 --------------------------
 ### notice
 ** 记录警告日志信息 **
+
 ```JavaScript
 static console.notice(String fmt,
-                ...);
+    ...);
 ```
 
 调用参数:
@@ -205,6 +224,7 @@ static console.notice(String fmt,
 
 --------------------------
 ** 记录警告日志信息 **
+
 ```JavaScript
 static console.notice(...);
 ```
@@ -217,9 +237,10 @@ static console.notice(...);
 --------------------------
 ### warn
 ** 记录警告日志信息 **
+
 ```JavaScript
 static console.warn(String fmt,
-                ...);
+    ...);
 ```
 
 调用参数:
@@ -230,6 +251,7 @@ static console.warn(String fmt,
 
 --------------------------
 ** 记录警告日志信息 **
+
 ```JavaScript
 static console.warn(...);
 ```
@@ -242,9 +264,10 @@ static console.warn(...);
 --------------------------
 ### error
 ** 记录错误日志信息 **
+
 ```JavaScript
 static console.error(String fmt,
-                ...);
+    ...);
 ```
 
 调用参数:
@@ -255,6 +278,7 @@ static console.error(String fmt,
 
 --------------------------
 ** 记录错误日志信息 **
+
 ```JavaScript
 static console.error(...);
 ```
@@ -267,9 +291,10 @@ static console.error(...);
 --------------------------
 ### crit
 ** 记录关键错误日志信息 **
+
 ```JavaScript
 static console.crit(String fmt,
-                ...);
+    ...);
 ```
 
 调用参数:
@@ -280,6 +305,7 @@ static console.crit(String fmt,
 
 --------------------------
 ** 记录关键错误日志信息 **
+
 ```JavaScript
 static console.crit(...);
 ```
@@ -292,9 +318,10 @@ static console.crit(...);
 --------------------------
 ### alert
 ** 记录警报错误日志信息 **
+
 ```JavaScript
 static console.alert(String fmt,
-                ...);
+    ...);
 ```
 
 调用参数:
@@ -305,6 +332,7 @@ static console.alert(String fmt,
 
 --------------------------
 ** 记录警报错误日志信息 **
+
 ```JavaScript
 static console.alert(...);
 ```
@@ -317,6 +345,7 @@ static console.alert(...);
 --------------------------
 ### dir
 ** 用 JSON 格式输出对象 **
+
 ```JavaScript
 static console.dir(Value obj);
 ```
@@ -327,6 +356,7 @@ static console.dir(Value obj);
 --------------------------
 ### time
 ** 启动一个计时器 **
+
 ```JavaScript
 static console.time(String label = "time");
 ```
@@ -337,6 +367,7 @@ static console.time(String label = "time");
 --------------------------
 ### timeEnd
 ** 统计指定计时器的数值 **
+
 ```JavaScript
 static console.timeEnd(String label = "time");
 ```
@@ -347,6 +378,7 @@ static console.timeEnd(String label = "time");
 --------------------------
 ### trace
 ** 输出当前调用堆栈 **
+
 ```JavaScript
 static console.trace(String label = "trace");
 ```
@@ -359,9 +391,10 @@ static console.trace(String label = "trace");
 --------------------------
 ### assert
 ** 断言测试，如果测试值为假，则报错 **
+
 ```JavaScript
 static console.assert(Value value,
-                String msg = "");
+    String msg = "");
 ```
 
 调用参数:
@@ -371,9 +404,10 @@ static console.assert(Value value,
 --------------------------
 ### print
 ** 向控制台输出格式化文本，输出内容不会记入日志系统，输出文本后不会自动换行，可连续输出 **
+
 ```JavaScript
 static console.print(String fmt,
-                ...);
+    ...);
 ```
 
 调用参数:
@@ -382,6 +416,7 @@ static console.print(String fmt,
 
 --------------------------
 ** 向控制台输出格式化文本，输出内容不会记入日志系统，输出文本后不会自动换行，可连续输出 **
+
 ```JavaScript
 static console.print(...);
 ```
@@ -392,9 +427,10 @@ static console.print(...);
 --------------------------
 ### moveTo
 ** 移动控制台光标到指定位置 **
+
 ```JavaScript
 static console.moveTo(Integer row,
-                Integer column);
+    Integer column);
 ```
 
 调用参数:
@@ -404,6 +440,7 @@ static console.moveTo(Integer row,
 --------------------------
 ### hideCursor
 ** 隐藏控制台光标 **
+
 ```JavaScript
 static console.hideCursor();
 ```
@@ -411,6 +448,7 @@ static console.hideCursor();
 --------------------------
 ### showCursor
 ** 显示控制台光标 **
+
 ```JavaScript
 static console.showCursor();
 ```
@@ -418,6 +456,7 @@ static console.showCursor();
 --------------------------
 ### clear
 ** 清除控制台 **
+
 ```JavaScript
 static console.clear();
 ```
@@ -425,9 +464,10 @@ static console.clear();
 --------------------------
 ### keyDown
 ** 按下一个按键 **
+
 ```JavaScript
 static console.keyDown(String key,
-                String modifier = "");
+    String modifier = "");
 ```
 
 调用参数:
@@ -442,9 +482,10 @@ static console.keyDown(String key,
 
 --------------------------
 ** 按下一个按键 **
+
 ```JavaScript
 static console.keyDown(String key,
-                Array modifier);
+    Array modifier);
 ```
 
 调用参数:
@@ -460,9 +501,10 @@ static console.keyDown(String key,
 --------------------------
 ### keyUp
 ** 松开一个按键 **
+
 ```JavaScript
 static console.keyUp(String key,
-                String modifier = "");
+    String modifier = "");
 ```
 
 调用参数:
@@ -477,9 +519,10 @@ static console.keyUp(String key,
 
 --------------------------
 ** 松开一个按键 **
+
 ```JavaScript
 static console.keyUp(String key,
-                Array modifier);
+    Array modifier);
 ```
 
 调用参数:
@@ -495,9 +538,10 @@ static console.keyUp(String key,
 --------------------------
 ### keyTap
 ** 点击并松开一个按键 **
+
 ```JavaScript
 static console.keyTap(String key,
-                String modifier = "");
+    String modifier = "");
 ```
 
 调用参数:
@@ -512,9 +556,10 @@ static console.keyTap(String key,
 
 --------------------------
 ** 点击并松开一个按键 **
+
 ```JavaScript
 static console.keyTap(String key,
-                Array modifier);
+    Array modifier);
 ```
 
 调用参数:
@@ -530,6 +575,7 @@ static console.keyTap(String key,
 --------------------------
 ### typeString
 ** 输入一个字符串 **
+
 ```JavaScript
 static console.typeString(String text);
 ```
@@ -540,9 +586,10 @@ static console.typeString(String text);
 --------------------------
 ### moveMouse
 ** 移动鼠标到指定的位置 **
+
 ```JavaScript
 static console.moveMouse(Integer x,
-                Integer y);
+    Integer y);
 ```
 
 调用参数:
@@ -552,6 +599,7 @@ static console.moveMouse(Integer x,
 --------------------------
 ### mouseUp
 ** 按下一个鼠标键 **
+
 ```JavaScript
 static console.mouseUp(String button);
 ```
@@ -562,6 +610,7 @@ static console.mouseUp(String button);
 --------------------------
 ### mouseDown
 ** 放开一个鼠标键 **
+
 ```JavaScript
 static console.mouseDown(String button);
 ```
@@ -572,9 +621,10 @@ static console.mouseDown(String button);
 --------------------------
 ### clickMouse
 ** 点击一个鼠标键 **
+
 ```JavaScript
 static console.clickMouse(String button,
-                Boolean dbclick = false);
+    Boolean dbclick = false);
 ```
 
 调用参数:
@@ -584,6 +634,7 @@ static console.clickMouse(String button,
 --------------------------
 ### readLine
 ** 从控制台读取用户输入 **
+
 ```JavaScript
 static String console.readLine(String msg = "") async;
 ```
@@ -598,6 +649,7 @@ static String console.readLine(String msg = "") async;
         
 ### loglevel
 ** Integer, 输出级别，用以过滤输出信息，缺省为 NOTSET，全部输出。信息过滤之后才会输出给 add 设定的各个设备。 **
+
 ```JavaScript
 static Integer console.loglevel;
 ```
@@ -605,6 +657,7 @@ static Integer console.loglevel;
 --------------------------
 ### colors
 ** [TextColor](../../object/ifs/TextColor.md), 终端输出颜色配置对象，详见 [TextColor](../../object/ifs/TextColor.md) **
+
 ```JavaScript
 static readonly TextColor console.colors;
 ```
@@ -612,6 +665,7 @@ static readonly TextColor console.colors;
 --------------------------
 ### width
 ** Integer, 查询终端每行字符数 **
+
 ```JavaScript
 static readonly Integer console.width;
 ```
@@ -619,6 +673,7 @@ static readonly Integer console.width;
 --------------------------
 ### height
 ** Integer, 查询终端行数 **
+
 ```JavaScript
 static readonly Integer console.height;
 ```
@@ -627,6 +682,7 @@ static readonly Integer console.height;
         
 ### FATAL
 ** loglevel 级别常量 **
+
 ```JavaScript
 const console.FATAL = 0;
 ```
@@ -634,6 +690,7 @@ const console.FATAL = 0;
 --------------------------
 ### ALERT
 ** loglevel 级别常量 **
+
 ```JavaScript
 const console.ALERT = 1;
 ```
@@ -641,6 +698,7 @@ const console.ALERT = 1;
 --------------------------
 ### CRIT
 ** loglevel 级别常量 **
+
 ```JavaScript
 const console.CRIT = 2;
 ```
@@ -648,6 +706,7 @@ const console.CRIT = 2;
 --------------------------
 ### ERROR
 ** loglevel 级别常量 **
+
 ```JavaScript
 const console.ERROR = 3;
 ```
@@ -655,6 +714,7 @@ const console.ERROR = 3;
 --------------------------
 ### WARN
 ** loglevel 级别常量 **
+
 ```JavaScript
 const console.WARN = 4;
 ```
@@ -662,6 +722,7 @@ const console.WARN = 4;
 --------------------------
 ### NOTICE
 ** loglevel 级别常量 **
+
 ```JavaScript
 const console.NOTICE = 5;
 ```
@@ -669,6 +730,7 @@ const console.NOTICE = 5;
 --------------------------
 ### INFO
 ** loglevel 级别常量 **
+
 ```JavaScript
 const console.INFO = 6;
 ```
@@ -676,6 +738,7 @@ const console.INFO = 6;
 --------------------------
 ### DEBUG
 ** loglevel 级别常量 **
+
 ```JavaScript
 const console.DEBUG = 7;
 ```
@@ -683,6 +746,7 @@ const console.DEBUG = 7;
 --------------------------
 ### PRINT
 ** loglevel 仅用于输出，信息输出后不换行，file 和 syslog 不保存此级别信息 **
+
 ```JavaScript
 const console.PRINT = 9;
 ```
@@ -690,6 +754,7 @@ const console.PRINT = 9;
 --------------------------
 ### NOTSET
 ** loglevel 级别常量 **
+
 ```JavaScript
 const console.NOTSET = 10;
 ```

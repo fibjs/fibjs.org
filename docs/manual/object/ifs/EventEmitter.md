@@ -2,6 +2,7 @@
 事件触发对象，可用于建立观察者模式，支持事件触发的对象均继承于此，同一事件的同一函数只会产生一次回调
 
 [Event](Event.md) 对象可独立创建，以用于组建自定义的事件系统：
+
 ```JavaScript
 var EventEmitter = require('events');
 
@@ -184,14 +185,16 @@ var e = new EventEmitter();
         
 ### EventEmitter
 ** 构造函数 **
+
 ```JavaScript
- new EventEmitter();
+new EventEmitter();
 ```
 
 ## 静态属性
         
 ### defaultMaxListeners
 ** Integer, 默认全局最大监听器数 **
+
 ```JavaScript
 static Integer EventEmitter.defaultMaxListeners;
 ```
@@ -200,9 +203,10 @@ static Integer EventEmitter.defaultMaxListeners;
         
 ### on
 ** 绑定一个事件处理函数到对象 **
+
 ```JavaScript
 Object EventEmitter.on(String ev,
-                Function func);
+    Function func);
 ```
 
 调用参数:
@@ -214,6 +218,7 @@ Object EventEmitter.on(String ev,
 
 --------------------------
 ** 绑定一个事件处理函数到对象 **
+
 ```JavaScript
 Object EventEmitter.on(Object map);
 ```
@@ -227,9 +232,10 @@ Object EventEmitter.on(Object map);
 --------------------------
 ### addListener
 ** 绑定一个事件处理函数到对象 **
+
 ```JavaScript
 Object EventEmitter.addListener(String ev,
-                Function func);
+    Function func);
 ```
 
 调用参数:
@@ -241,6 +247,7 @@ Object EventEmitter.addListener(String ev,
 
 --------------------------
 ** 绑定一个事件处理函数到对象 **
+
 ```JavaScript
 Object EventEmitter.addListener(Object map);
 ```
@@ -254,9 +261,10 @@ Object EventEmitter.addListener(Object map);
 --------------------------
 ### prependListener
 ** 绑定一个事件处理函数到对象起始 **
+
 ```JavaScript
 Object EventEmitter.prependListener(String ev,
-                Function func);
+    Function func);
 ```
 
 调用参数:
@@ -268,6 +276,7 @@ Object EventEmitter.prependListener(String ev,
 
 --------------------------
 ** 绑定一个事件处理函数到对象起始 **
+
 ```JavaScript
 Object EventEmitter.prependListener(Object map);
 ```
@@ -282,9 +291,10 @@ Object EventEmitter.prependListener(Object map);
 --------------------------
 ### once
 ** 绑定一个一次性事件处理函数到对象，一次性处理函数只会触发一次 **
+
 ```JavaScript
 Object EventEmitter.once(String ev,
-                Function func);
+    Function func);
 ```
 
 调用参数:
@@ -296,6 +306,7 @@ Object EventEmitter.once(String ev,
 
 --------------------------
 ** 绑定一个一次性事件处理函数到对象，一次性处理函数只会触发一次 **
+
 ```JavaScript
 Object EventEmitter.once(Object map);
 ```
@@ -309,9 +320,10 @@ Object EventEmitter.once(Object map);
 --------------------------
 ### prependOnceListener
 ** 绑定一个事件处理函数到对象起始 **
+
 ```JavaScript
 Object EventEmitter.prependOnceListener(String ev,
-                Function func);
+    Function func);
 ```
 
 调用参数:
@@ -323,6 +335,7 @@ Object EventEmitter.prependOnceListener(String ev,
 
 --------------------------
 ** 绑定一个事件处理函数到对象起始 **
+
 ```JavaScript
 Object EventEmitter.prependOnceListener(Object map);
 ```
@@ -337,9 +350,10 @@ Object EventEmitter.prependOnceListener(Object map);
 --------------------------
 ### off
 ** 从对象处理队列中取消指定函数 **
+
 ```JavaScript
 Object EventEmitter.off(String ev,
-                Function func);
+    Function func);
 ```
 
 调用参数:
@@ -351,6 +365,7 @@ Object EventEmitter.off(String ev,
 
 --------------------------
 ** 取消对象处理队列中的全部函数 **
+
 ```JavaScript
 Object EventEmitter.off(String ev);
 ```
@@ -363,6 +378,7 @@ Object EventEmitter.off(String ev);
 
 --------------------------
 ** 从对象处理队列中取消指定函数 **
+
 ```JavaScript
 Object EventEmitter.off(Object map);
 ```
@@ -376,9 +392,10 @@ Object EventEmitter.off(Object map);
 --------------------------
 ### removeListener
 ** 从对象处理队列中取消指定函数 **
+
 ```JavaScript
 Object EventEmitter.removeListener(String ev,
-                Function func);
+    Function func);
 ```
 
 调用参数:
@@ -390,6 +407,7 @@ Object EventEmitter.removeListener(String ev,
 
 --------------------------
 ** 取消对象处理队列中的全部函数 **
+
 ```JavaScript
 Object EventEmitter.removeListener(String ev);
 ```
@@ -402,6 +420,7 @@ Object EventEmitter.removeListener(String ev);
 
 --------------------------
 ** 从对象处理队列中取消指定函数 **
+
 ```JavaScript
 Object EventEmitter.removeListener(Object map);
 ```
@@ -415,6 +434,7 @@ Object EventEmitter.removeListener(Object map);
 --------------------------
 ### removeAllListeners
 ** 从对象处理队列中取消所有事件的所有监听器， 如果指定事件，则移除指定事件的所有监听器。 **
+
 ```JavaScript
 Object EventEmitter.removeAllListeners(Array evs = []);
 ```
@@ -428,6 +448,7 @@ Object EventEmitter.removeAllListeners(Array evs = []);
 --------------------------
 ### setMaxListeners
 ** 监听器的默认限制的数量，仅用于兼容 **
+
 ```JavaScript
 EventEmitter.setMaxListeners(Integer n);
 ```
@@ -438,6 +459,7 @@ EventEmitter.setMaxListeners(Integer n);
 --------------------------
 ### getMaxListeners
 ** 获取监听器的默认限制的数量，仅用于兼容 **
+
 ```JavaScript
 Integer EventEmitter.getMaxListeners();
 ```
@@ -445,6 +467,7 @@ Integer EventEmitter.getMaxListeners();
 --------------------------
 ### listeners
 ** 查询对象指定事件的监听器数组 **
+
 ```JavaScript
 Array EventEmitter.listeners(String ev);
 ```
@@ -458,6 +481,7 @@ Array EventEmitter.listeners(String ev);
 --------------------------
 ### listenerCount
 ** 查询对象指定事件的监听器数量 **
+
 ```JavaScript
 Integer EventEmitter.listenerCount(String ev);
 ```
@@ -471,6 +495,7 @@ Integer EventEmitter.listenerCount(String ev);
 --------------------------
 ### eventNames
 ** 查询监听器事件名称 **
+
 ```JavaScript
 Array EventEmitter.eventNames();
 ```
@@ -481,9 +506,10 @@ Array EventEmitter.eventNames();
 --------------------------
 ### emit
 ** 主动触发一个事件 **
+
 ```JavaScript
 Boolean EventEmitter.emit(String ev,
-                ...);
+    ...);
 ```
 
 调用参数:
@@ -496,6 +522,7 @@ Boolean EventEmitter.emit(String ev,
 --------------------------
 ### dispose
 ** 强制回收对象，调用此方法后，对象资源将立即释放 **
+
 ```JavaScript
 EventEmitter.dispose();
 ```
@@ -503,6 +530,7 @@ EventEmitter.dispose();
 --------------------------
 ### equals
 ** 比较当前对象与给定的对象是否相等 **
+
 ```JavaScript
 Boolean EventEmitter.equals(object expected);
 ```
@@ -516,6 +544,7 @@ Boolean EventEmitter.equals(object expected);
 --------------------------
 ### toString
 ** 返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现 **
+
 ```JavaScript
 String EventEmitter.toString();
 ```
@@ -526,6 +555,7 @@ String EventEmitter.toString();
 --------------------------
 ### toJSON
 ** 返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合 **
+
 ```JavaScript
 Value EventEmitter.toJSON(String key = "");
 ```
@@ -539,6 +569,7 @@ Value EventEmitter.toJSON(String key = "");
 --------------------------
 ### valueOf
 ** 返回对象本身的数值 **
+
 ```JavaScript
 Value EventEmitter.valueOf();
 ```

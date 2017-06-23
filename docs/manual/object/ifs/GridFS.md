@@ -2,6 +2,7 @@
 [MongoDB](MongoDB.md) GridFS 分布式文件系统访问对象
 
 使用 [MongoDB](MongoDB.md).[fs](../../module/ifs/fs.md) 获取，创建方式：
+
 ```JavaScript
 var gfs = mdb.fs;
 ```
@@ -58,6 +59,7 @@ var gfs = mdb.fs;
         
 ### files
 ** [MongoCollection](MongoCollection.md), 查询 GridFS 的元数据表 **
+
 ```JavaScript
 readonly MongoCollection GridFS.files;
 ```
@@ -65,6 +67,7 @@ readonly MongoCollection GridFS.files;
 --------------------------
 ### chunks
 ** [MongoCollection](MongoCollection.md), 查询 GridFS 的分块数据表 **
+
 ```JavaScript
 readonly MongoCollection GridFS.chunks;
 ```
@@ -73,6 +76,7 @@ readonly MongoCollection GridFS.chunks;
         
 ### retrieve
 ** 获取一个文件 **
+
 ```JavaScript
 MemoryStream GridFS.retrieve(String name);
 ```
@@ -86,9 +90,10 @@ MemoryStream GridFS.retrieve(String name);
 --------------------------
 ### store
 ** 保存一个流到文件系统 **
+
 ```JavaScript
 GridFS.store(String name,
-                Stream src);
+    Stream src);
 ```
 
 调用参数:
@@ -97,9 +102,10 @@ GridFS.store(String name,
 
 --------------------------
 ** 保存一个二进制数据块到文件系统 **
+
 ```JavaScript
 GridFS.store(String name,
-                Buffer data);
+    Buffer data);
 ```
 
 调用参数:
@@ -109,6 +115,7 @@ GridFS.store(String name,
 --------------------------
 ### exists
 ** 检测指定的文件是否存在 **
+
 ```JavaScript
 Boolean GridFS.exists(String name);
 ```
@@ -122,6 +129,7 @@ Boolean GridFS.exists(String name);
 --------------------------
 ### remove
 ** 删除指定的文件 **
+
 ```JavaScript
 GridFS.remove(String name);
 ```
@@ -132,6 +140,7 @@ GridFS.remove(String name);
 --------------------------
 ### dispose
 ** 强制回收对象，调用此方法后，对象资源将立即释放 **
+
 ```JavaScript
 GridFS.dispose();
 ```
@@ -139,6 +148,7 @@ GridFS.dispose();
 --------------------------
 ### equals
 ** 比较当前对象与给定的对象是否相等 **
+
 ```JavaScript
 Boolean GridFS.equals(object expected);
 ```
@@ -152,6 +162,7 @@ Boolean GridFS.equals(object expected);
 --------------------------
 ### toString
 ** 返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现 **
+
 ```JavaScript
 String GridFS.toString();
 ```
@@ -162,6 +173,7 @@ String GridFS.toString();
 --------------------------
 ### toJSON
 ** 返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合 **
+
 ```JavaScript
 Value GridFS.toJSON(String key = "");
 ```
@@ -175,6 +187,7 @@ Value GridFS.toJSON(String key = "");
 --------------------------
 ### valueOf
 ** 返回对象本身的数值 **
+
 ```JavaScript
 Value GridFS.valueOf();
 ```

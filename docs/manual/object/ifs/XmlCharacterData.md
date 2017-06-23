@@ -144,6 +144,7 @@ XmlCharacterData 是 [XmlText](XmlText.md) 和 [XmlComment](XmlComment.md) 节�
         
 ### data
 ** String, 该节点包含的文本 **
+
 ```JavaScript
 String XmlCharacterData.data;
 ```
@@ -151,6 +152,7 @@ String XmlCharacterData.data;
 --------------------------
 ### length
 ** Integer, 该节点包含的字符数 **
+
 ```JavaScript
 readonly Integer XmlCharacterData.length;
 ```
@@ -158,6 +160,7 @@ readonly Integer XmlCharacterData.length;
 --------------------------
 ### nodeType
 ** Integer, 返回节点的节点类型 **
+
 ```JavaScript
 readonly Integer XmlCharacterData.nodeType;
 ```
@@ -175,6 +178,7 @@ readonly Integer XmlCharacterData.nodeType;
 --------------------------
 ### nodeName
 ** String, 返回节点的名称，根据其类型 **
+
 ```JavaScript
 readonly String XmlCharacterData.nodeName;
 ```
@@ -192,6 +196,7 @@ readonly String XmlCharacterData.nodeName;
 --------------------------
 ### nodeValue
 ** String, 返回节点的名称，根据其类型 **
+
 ```JavaScript
 String XmlCharacterData.nodeValue;
 ```
@@ -209,6 +214,7 @@ String XmlCharacterData.nodeValue;
 --------------------------
 ### ownerDocument
 ** [XmlDocument](XmlDocument.md), 返回节点的根元素（[XmlDocument](XmlDocument.md) 对象） **
+
 ```JavaScript
 readonly XmlDocument XmlCharacterData.ownerDocument;
 ```
@@ -216,6 +222,7 @@ readonly XmlDocument XmlCharacterData.ownerDocument;
 --------------------------
 ### parentNode
 ** XmlNode, 可返回某节点的父节点 **
+
 ```JavaScript
 readonly XmlNode XmlCharacterData.parentNode;
 ```
@@ -223,6 +230,7 @@ readonly XmlNode XmlCharacterData.parentNode;
 --------------------------
 ### childNodes
 ** [XmlNodeList](XmlNodeList.md), 返回指定节点的子节点的节点列表 **
+
 ```JavaScript
 readonly XmlNodeList XmlCharacterData.childNodes;
 ```
@@ -230,6 +238,7 @@ readonly XmlNodeList XmlCharacterData.childNodes;
 --------------------------
 ### firstChild
 ** XmlNode, 返回节点的首个子节点 **
+
 ```JavaScript
 readonly XmlNode XmlCharacterData.firstChild;
 ```
@@ -237,6 +246,7 @@ readonly XmlNode XmlCharacterData.firstChild;
 --------------------------
 ### lastChild
 ** XmlNode, 返回节点的最后一个子节点 **
+
 ```JavaScript
 readonly XmlNode XmlCharacterData.lastChild;
 ```
@@ -244,6 +254,7 @@ readonly XmlNode XmlCharacterData.lastChild;
 --------------------------
 ### previousSibling
 ** XmlNode, 返回某节点之前紧跟的节点（处于同一树层级），如果没有此节点，那么该属性返回 null **
+
 ```JavaScript
 readonly XmlNode XmlCharacterData.previousSibling;
 ```
@@ -251,6 +262,7 @@ readonly XmlNode XmlCharacterData.previousSibling;
 --------------------------
 ### nextSibling
 ** XmlNode, 返回某个元素之后紧跟的节点（处于同一树层级中），如果无此节点，则属性返回 null **
+
 ```JavaScript
 readonly XmlNode XmlCharacterData.nextSibling;
 ```
@@ -259,9 +271,10 @@ readonly XmlNode XmlCharacterData.nextSibling;
         
 ### substringData
 ** 从节点中提取子串 **
+
 ```JavaScript
 String XmlCharacterData.substringData(Integer offset,
-                Integer count);
+    Integer count);
 ```
 
 调用参数:
@@ -271,6 +284,7 @@ String XmlCharacterData.substringData(Integer offset,
 --------------------------
 ### appendData
 ** 把字符串附加到节点上 **
+
 ```JavaScript
 XmlCharacterData.appendData(String arg);
 ```
@@ -281,9 +295,10 @@ XmlCharacterData.appendData(String arg);
 --------------------------
 ### insertData
 ** 把字符串插入节点 **
+
 ```JavaScript
 XmlCharacterData.insertData(Integer offset,
-                String arg);
+    String arg);
 ```
 
 调用参数:
@@ -293,9 +308,10 @@ XmlCharacterData.insertData(Integer offset,
 --------------------------
 ### deleteData
 ** 从节点删除文本 **
+
 ```JavaScript
 XmlCharacterData.deleteData(Integer offset,
-                Integer count);
+    Integer count);
 ```
 
 调用参数:
@@ -305,10 +321,11 @@ XmlCharacterData.deleteData(Integer offset,
 --------------------------
 ### replaceData
 ** 用指定的字符串替换节点的字符 **
+
 ```JavaScript
 XmlCharacterData.replaceData(Integer offset,
-                Integer count,
-                String arg);
+    Integer count,
+    String arg);
 ```
 
 调用参数:
@@ -319,6 +336,7 @@ XmlCharacterData.replaceData(Integer offset,
 --------------------------
 ### hasChildNodes
 ** 查询是否存在子节点 **
+
 ```JavaScript
 Boolean XmlCharacterData.hasChildNodes();
 ```
@@ -329,6 +347,7 @@ Boolean XmlCharacterData.hasChildNodes();
 --------------------------
 ### normalize
 ** 合并相邻的 Text 节点并删除空的 Text 节点 **
+
 ```JavaScript
 XmlCharacterData.normalize();
 ```
@@ -338,6 +357,7 @@ XmlCharacterData.normalize();
 --------------------------
 ### cloneNode
 ** 创建指定的节点的精确拷贝 **
+
 ```JavaScript
 XmlNode XmlCharacterData.cloneNode(Boolean deep = true);
 ```
@@ -353,6 +373,7 @@ XmlNode XmlCharacterData.cloneNode(Boolean deep = true);
 --------------------------
 ### lookupPrefix
 ** 返回在当前节点上匹配指定的命名空间 URI 的前缀 **
+
 ```JavaScript
 String XmlCharacterData.lookupPrefix(String namespaceURI);
 ```
@@ -366,6 +387,7 @@ String XmlCharacterData.lookupPrefix(String namespaceURI);
 --------------------------
 ### lookupNamespaceURI
 ** 返回在当前节点上匹配指定的前缀的命名空间 URI **
+
 ```JavaScript
 String XmlCharacterData.lookupNamespaceURI(String prefix);
 ```
@@ -379,9 +401,10 @@ String XmlCharacterData.lookupNamespaceURI(String prefix);
 --------------------------
 ### insertBefore
 ** 在已有的子节点前插入一个新的子节点 **
+
 ```JavaScript
 XmlNode XmlCharacterData.insertBefore(XmlNode newChild,
-                XmlNode refChild);
+    XmlNode refChild);
 ```
 
 调用参数:
@@ -396,9 +419,10 @@ XmlNode XmlCharacterData.insertBefore(XmlNode newChild,
 --------------------------
 ### insertAfter
 ** 在已有的子节点后插入一个新的子节点 **
+
 ```JavaScript
 XmlNode XmlCharacterData.insertAfter(XmlNode newChild,
-                XmlNode refChild);
+    XmlNode refChild);
 ```
 
 调用参数:
@@ -413,6 +437,7 @@ XmlNode XmlCharacterData.insertAfter(XmlNode newChild,
 --------------------------
 ### appendChild
 ** 向节点的子节点列表的末尾添加新的子节点 **
+
 ```JavaScript
 XmlNode XmlCharacterData.appendChild(XmlNode newChild);
 ```
@@ -428,9 +453,10 @@ XmlNode XmlCharacterData.appendChild(XmlNode newChild);
 --------------------------
 ### replaceChild
 ** 将某个子节点替换为另一个 **
+
 ```JavaScript
 XmlNode XmlCharacterData.replaceChild(XmlNode newChild,
-                XmlNode oldChild);
+    XmlNode oldChild);
 ```
 
 调用参数:
@@ -445,6 +471,7 @@ XmlNode XmlCharacterData.replaceChild(XmlNode newChild,
 --------------------------
 ### removeChild
 ** 从子节点列表中删除某个节点 **
+
 ```JavaScript
 XmlNode XmlCharacterData.removeChild(XmlNode oldChild);
 ```
@@ -458,6 +485,7 @@ XmlNode XmlCharacterData.removeChild(XmlNode oldChild);
 --------------------------
 ### dispose
 ** 强制回收对象，调用此方法后，对象资源将立即释放 **
+
 ```JavaScript
 XmlCharacterData.dispose();
 ```
@@ -465,6 +493,7 @@ XmlCharacterData.dispose();
 --------------------------
 ### equals
 ** 比较当前对象与给定的对象是否相等 **
+
 ```JavaScript
 Boolean XmlCharacterData.equals(object expected);
 ```
@@ -478,6 +507,7 @@ Boolean XmlCharacterData.equals(object expected);
 --------------------------
 ### toString
 ** 返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现 **
+
 ```JavaScript
 String XmlCharacterData.toString();
 ```
@@ -488,6 +518,7 @@ String XmlCharacterData.toString();
 --------------------------
 ### toJSON
 ** 返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合 **
+
 ```JavaScript
 Value XmlCharacterData.toJSON(String key = "");
 ```
@@ -501,6 +532,7 @@ Value XmlCharacterData.toJSON(String key = "");
 --------------------------
 ### valueOf
 ** 返回对象本身的数值 **
+
 ```JavaScript
 Value XmlCharacterData.valueOf();
 ```

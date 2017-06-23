@@ -2,6 +2,7 @@
 网络访问模块
 
 基础模块。可用于创建和操作网络资源，引用方式：
+
 ```JavaScript
 var net = require('net');
 ```
@@ -10,6 +11,7 @@ var net = require('net');
         
 ### Socket
 ** 创建一个 [Socket](../../object/ifs/Socket.md) 对象，参见 [Socket](../../object/ifs/Socket.md) **
+
 ```JavaScript
 Socket net.Socket;
 ```
@@ -17,6 +19,7 @@ Socket net.Socket;
 --------------------------
 ### Smtp
 ** 创建一个 [Smtp](../../object/ifs/Smtp.md) 对象，参见 [Smtp](../../object/ifs/Smtp.md) **
+
 ```JavaScript
 Smtp net.Smtp;
 ```
@@ -24,6 +27,7 @@ Smtp net.Smtp;
 --------------------------
 ### TcpServer
 ** 创建一个 [TcpServer](../../object/ifs/TcpServer.md) 对象，参见 [TcpServer](../../object/ifs/TcpServer.md) **
+
 ```JavaScript
 TcpServer net.TcpServer;
 ```
@@ -31,6 +35,7 @@ TcpServer net.TcpServer;
 --------------------------
 ### Url
 ** 创建一个 [UrlObject](../../object/ifs/UrlObject.md) 对象，参见 [UrlObject](../../object/ifs/UrlObject.md) **
+
 ```JavaScript
 UrlObject net.Url;
 ```
@@ -39,6 +44,7 @@ UrlObject net.Url;
         
 ### info
 ** 查询当前运行环境网络信息 **
+
 ```JavaScript
 static Object net.info();
 ```
@@ -49,9 +55,10 @@ static Object net.info();
 --------------------------
 ### resolve
 ** 查询给定的主机名的地址 **
+
 ```JavaScript
 static String net.resolve(String name,
-                Integer family = AF_INET) async;
+    Integer family = AF_INET) async;
 ```
 
 调用参数:
@@ -64,6 +71,7 @@ static String net.resolve(String name,
 --------------------------
 ### ip
 ** 快速查询的主机地址，等效与 resolve(name) **
+
 ```JavaScript
 static String net.ip(String name) async;
 ```
@@ -77,6 +85,7 @@ static String net.ip(String name) async;
 --------------------------
 ### ipv6
 ** 快速查询的主机 ipv6 地址，等效与 resolve(name, net.AF_INET6) **
+
 ```JavaScript
 static String net.ipv6(String name) async;
 ```
@@ -90,11 +99,12 @@ static String net.ipv6(String name) async;
 --------------------------
 ### connect
 ** 创建一个 [Socket](../../object/ifs/Socket.md) 对象并建立连接，参见 [Socket](../../object/ifs/Socket.md) **
+
 ```JavaScript
 static Stream net.connect(String host,
-                Integer port,
-                Integer timeout = 0,
-                Integer family = net.AF_INET) async;
+    Integer port,
+    Integer timeout = 0,
+    Integer family = net.AF_INET) async;
 ```
 
 调用参数:
@@ -108,9 +118,10 @@ static Stream net.connect(String host,
 
 --------------------------
 ** 创建一个 [Socket](../../object/ifs/Socket.md) 或 [SslSocket](../../object/ifs/SslSocket.md) 对象并建立连接 **
+
 ```JavaScript
 static Stream net.connect(String url,
-                Integer timeout = 0) async;
+    Integer timeout = 0) async;
 ```
 
 调用参数:
@@ -123,9 +134,10 @@ static Stream net.connect(String url,
 --------------------------
 ### openSmtp
 ** 创建一个 [Smtp](../../object/ifs/Smtp.md) 对象并建立连接，参见 [Smtp](../../object/ifs/Smtp.md) **
+
 ```JavaScript
 static Smtp net.openSmtp(String url,
-                Integer timeout = 0) async;
+    Integer timeout = 0) async;
 ```
 
 调用参数:
@@ -138,6 +150,7 @@ static Smtp net.openSmtp(String url,
 --------------------------
 ### backend
 ** 查询当前系统异步网络引擎 **
+
 ```JavaScript
 static String net.backend();
 ```
@@ -149,6 +162,7 @@ static String net.backend();
         
 ### AF_INET
 ** 地址集常量，指定 ipv4 **
+
 ```JavaScript
 const net.AF_INET = 2;
 ```
@@ -156,6 +170,7 @@ const net.AF_INET = 2;
 --------------------------
 ### AF_INET6
 ** 地址集常量，指定 ipv6 **
+
 ```JavaScript
 const net.AF_INET6 = 10;
 ```
@@ -163,6 +178,7 @@ const net.AF_INET6 = 10;
 --------------------------
 ### SOCK_STREAM
 ** 协议族常量，指定 tcp **
+
 ```JavaScript
 const net.SOCK_STREAM = 1;
 ```
@@ -170,6 +186,7 @@ const net.SOCK_STREAM = 1;
 --------------------------
 ### SOCK_DGRAM
 ** 协议族常量，指定 udp **
+
 ```JavaScript
 const net.SOCK_DGRAM = 2;
 ```

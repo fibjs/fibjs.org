@@ -54,6 +54,7 @@
 ## 下标操作
         
 ** 允许使用键值下标直接访问数值 **
+
 ```JavaScript
 Variant HttpCollection[String];
 ```
@@ -62,6 +63,7 @@ Variant HttpCollection[String];
         
 ### clear
 ** 清除容器数据 **
+
 ```JavaScript
 HttpCollection.clear();
 ```
@@ -69,6 +71,7 @@ HttpCollection.clear();
 --------------------------
 ### has
 ** 检查容器内是否存在指定键值的数据 **
+
 ```JavaScript
 Boolean HttpCollection.has(String name);
 ```
@@ -82,6 +85,7 @@ Boolean HttpCollection.has(String name);
 --------------------------
 ### first
 ** 查询指定键值的第一个值 **
+
 ```JavaScript
 Variant HttpCollection.first(String name);
 ```
@@ -95,6 +99,7 @@ Variant HttpCollection.first(String name);
 --------------------------
 ### all
 ** 查询指定键值的全部值 **
+
 ```JavaScript
 List HttpCollection.all(String name);
 ```
@@ -108,6 +113,7 @@ List HttpCollection.all(String name);
 --------------------------
 ### add
 ** 添加一个键值数据，添加数据并不修改已存在的键值的数据 **
+
 ```JavaScript
 HttpCollection.add(Map map);
 ```
@@ -117,9 +123,10 @@ HttpCollection.add(Map map);
 
 --------------------------
 ** 添加一个键值数据，添加数据并不修改已存在的键值的数据 **
+
 ```JavaScript
 HttpCollection.add(String name,
-                Variant value);
+    Variant value);
 ```
 
 调用参数:
@@ -129,6 +136,7 @@ HttpCollection.add(String name,
 --------------------------
 ### set
 ** 设定一个键值数据，设定数据将修改键值所对应的第一个数值，并清除相同键值的其余数据 **
+
 ```JavaScript
 HttpCollection.set(Map map);
 ```
@@ -138,9 +146,10 @@ HttpCollection.set(Map map);
 
 --------------------------
 ** 设定一个键值数据，设定数据将修改键值所对应的第一个数值，并清除相同键值的其余数据 **
+
 ```JavaScript
 HttpCollection.set(String name,
-                Variant value);
+    Variant value);
 ```
 
 调用参数:
@@ -150,6 +159,7 @@ HttpCollection.set(String name,
 --------------------------
 ### remove
 ** 删除指定键值的全部值 **
+
 ```JavaScript
 HttpCollection.remove(String name);
 ```
@@ -160,6 +170,7 @@ HttpCollection.remove(String name);
 --------------------------
 ### dispose
 ** 强制回收对象，调用此方法后，对象资源将立即释放 **
+
 ```JavaScript
 HttpCollection.dispose();
 ```
@@ -167,6 +178,7 @@ HttpCollection.dispose();
 --------------------------
 ### equals
 ** 比较当前对象与给定的对象是否相等 **
+
 ```JavaScript
 Boolean HttpCollection.equals(object expected);
 ```
@@ -180,6 +192,7 @@ Boolean HttpCollection.equals(object expected);
 --------------------------
 ### toString
 ** 返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现 **
+
 ```JavaScript
 String HttpCollection.toString();
 ```
@@ -190,6 +203,7 @@ String HttpCollection.toString();
 --------------------------
 ### toJSON
 ** 返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合 **
+
 ```JavaScript
 Value HttpCollection.toJSON(String key = "");
 ```
@@ -203,6 +217,7 @@ Value HttpCollection.toJSON(String key = "");
 --------------------------
 ### valueOf
 ** 返回对象本身的数值 **
+
 ```JavaScript
 Value HttpCollection.valueOf();
 ```

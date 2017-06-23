@@ -2,11 +2,14 @@
 base64vlq 编码与解码模块
 
 引用方式：
+
 ```JavaScript
 var encoding = require('encoding');
 var base64vlq = encoding.base64vlq;
 ```
+
 或者
+
 ```JavaScript
 var base64vlq = require('base64vlq');
 ```
@@ -15,6 +18,7 @@ var base64vlq = require('base64vlq');
         
 ### encode
 ** 以 base64vlq 方式编码数据 **
+
 ```JavaScript
 static String base64vlq.encode(Integer data);
 ```
@@ -27,6 +31,7 @@ static String base64vlq.encode(Integer data);
 
 --------------------------
 ** 以 base64vlq 方式编码数据 **
+
 ```JavaScript
 static String base64vlq.encode(Array data);
 ```
@@ -40,6 +45,7 @@ static String base64vlq.encode(Array data);
 --------------------------
 ### decode
 ** 以 base64vlq 方式解码字符串为二进制数据 **
+
 ```JavaScript
 static Array base64vlq.decode(String data);
 ```

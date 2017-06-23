@@ -155,13 +155,13 @@
  </div></div></div>  </div></div><div class=content> <h1 id="-httpserver">对象 HttpServer</h1>
 <p><a href=../../module/ifs/http.md.html>http</a> 服务器对象</p>
 <p><a href=../../module/ifs/http.md.html>http</a> 服务器对象是将 <a href=tcpserver.md.html>TcpServer</a> 和 <a href=httphandler.md.html>HttpHandler</a> 组合封装的对象，方便快速搭建服务器，逻辑上相当于：</p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">var</span> svr = <span class="hljs-keyword">new</span> net.TcpServer(addr, port, <span class="hljs-keyword">new</span> http.Handler(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">req</span>)</span>{
-   ...
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">var</span> svr = <span class="hljs-keyword">new</span> net.TcpServer(addr, port, <span class="hljs-keyword">new</span> http.Handler(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">req</span>) </span>{
+    ...
 }));
 </code></pre>
 <p>创建方法：</p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">var</span> http = <span class="hljs-built_in">require</span>(<span class="hljs-string">"http"</span>);
-<span class="hljs-keyword">var</span> svr = <span class="hljs-keyword">new</span> http.Server(<span class="hljs-number">80</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">req</span>)</span>{
+<span class="hljs-keyword">var</span> svr = <span class="hljs-keyword">new</span> http.Server(<span class="hljs-number">80</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">req</span>) </span>{
     ...
 });
 </code></pre>
@@ -265,8 +265,8 @@
 <h2 id="-">构造函数</h2>
 <h3 id="httpserver">HttpServer</h3>
 <p><strong> HttpServer 构造函数，在所有本机地址侦听 </strong></p>
-<pre><code class="lang-JavaScript"> <span class="hljs-keyword">new</span> HttpServer(Integer port,
-                Handler hdlr);
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">new</span> HttpServer(Integer port,
+    Handler hdlr);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -275,9 +275,9 @@
 </ul>
 <hr>
 <p><strong> HttpServer 构造函数 </strong></p>
-<pre><code class="lang-JavaScript"> <span class="hljs-keyword">new</span> HttpServer(<span class="hljs-built_in">String</span> addr,
-                Integer port,
-                Handler hdlr);
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">new</span> HttpServer(<span class="hljs-built_in">String</span> addr,
+    Integer port,
+    Handler hdlr);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -312,14 +312,14 @@
 </code></pre>
 <p>返回的结果为一个 <a href=stats.md.html>Stats</a> 对象，结构如下：</p>
 <pre><code class="lang-JavaScript">{
-    <span class="hljs-attr">total</span> : <span class="hljs-number">1000</span>,    <span class="hljs-comment">// 总计处理的请求</span>
-    pendding : <span class="hljs-number">100</span>,  <span class="hljs-comment">// 当前正在处理的请求</span>
-    request : <span class="hljs-number">10</span>,    <span class="hljs-comment">// 新建的请求</span>
-    response : <span class="hljs-number">10</span>,   <span class="hljs-comment">// 发送的响应</span>
-    error : <span class="hljs-number">100</span>,     <span class="hljs-comment">// 发生的错误（不计入 404）</span>
-    error_400 : <span class="hljs-number">10</span>,  <span class="hljs-comment">// 发生的请求错误</span>
-    error_404 : <span class="hljs-number">12</span>,  <span class="hljs-comment">// 文件未找到的数量</span>
-    error_500 : <span class="hljs-number">2</span>    <span class="hljs-comment">// 内部处理错误</span>
+    <span class="hljs-attr">total</span>: <span class="hljs-number">1000</span>, <span class="hljs-comment">// 总计处理的请求</span>
+    pendding: <span class="hljs-number">100</span>, <span class="hljs-comment">// 当前正在处理的请求</span>
+    request: <span class="hljs-number">10</span>, <span class="hljs-comment">// 新建的请求</span>
+    response: <span class="hljs-number">10</span>, <span class="hljs-comment">// 发送的响应</span>
+    error: <span class="hljs-number">100</span>, <span class="hljs-comment">// 发生的错误（不计入 404）</span>
+    error_400: <span class="hljs-number">10</span>, <span class="hljs-comment">// 发生的请求错误</span>
+    error_404: <span class="hljs-number">12</span>, <span class="hljs-comment">// 文件未找到的数量</span>
+    error_500: <span class="hljs-number">2</span> <span class="hljs-comment">// 内部处理错误</span>
 }
 </code></pre>
 <hr>
@@ -339,10 +339,10 @@
 </code></pre>
 <p>返回的结果为一个 <a href=stats.md.html>Stats</a> 对象，初始化计数器如下：</p>
 <pre><code class="lang-JavaScript">{
-    <span class="hljs-attr">total</span> : <span class="hljs-number">1000</span>,      <span class="hljs-comment">// 总计处理的连接</span>
-    connections : <span class="hljs-number">100</span>, <span class="hljs-comment">// 当前正在处理的连接</span>
-    accept : <span class="hljs-number">10</span>,       <span class="hljs-comment">// 上次查询后新建的连接</span>
-    close : <span class="hljs-number">10</span>         <span class="hljs-comment">// 上次查询后关闭的连接</span>
+    <span class="hljs-attr">total</span>: <span class="hljs-number">1000</span>, <span class="hljs-comment">// 总计处理的连接</span>
+    connections: <span class="hljs-number">100</span>, <span class="hljs-comment">// 当前正在处理的连接</span>
+    accept: <span class="hljs-number">10</span>, <span class="hljs-comment">// 上次查询后新建的连接</span>
+    close: <span class="hljs-number">10</span> <span class="hljs-comment">// 上次查询后关闭的连接</span>
 }
 </code></pre>
 <h2 id="-">成员函数</h2>
@@ -355,13 +355,12 @@
 <li>hdlrs: Object, 指定不同的错误的处理器，key 是错误号，value 是处理器，可以是内置消息处理器，处理函数，链式处理数组，路由对象，详见 <a href=../../module/ifs/mq.md.html>mq</a>.<a href=handler.md.html>Handler</a></li>
 </ul>
 <p>使用方式：</p>
-<pre><code class="lang-JavaScript">  hdlr.onerror({
-      <span class="hljs-string">"404"</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">v</span>)
-              </span>{
-                  ...
-              },
-      <span class="hljs-string">"500"</span>: <span class="hljs-keyword">new</span> mq.Routing(...)
-  })
+<pre><code class="lang-JavaScript">hdlr.onerror({
+    <span class="hljs-string">"404"</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">v</span>) </span>{
+        ...
+    },
+    <span class="hljs-string">"500"</span>: <span class="hljs-keyword">new</span> mq.Routing(...)
+})
 </code></pre>
 <hr>
 <h3 id="run">run</h3>

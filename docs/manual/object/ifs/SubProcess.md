@@ -108,6 +108,7 @@ var sub = process.open("ls");
         
 ### pid
 ** Integer, 读取当前对象指向的进程的 id **
+
 ```JavaScript
 readonly Integer SubProcess.pid;
 ```
@@ -115,6 +116,7 @@ readonly Integer SubProcess.pid;
 --------------------------
 ### stdin
 ** [BufferedStream](BufferedStream.md), 读取当前对象指向的进程的标准输入对象 **
+
 ```JavaScript
 readonly BufferedStream SubProcess.stdin;
 ```
@@ -122,6 +124,7 @@ readonly BufferedStream SubProcess.stdin;
 --------------------------
 ### stdout
 ** [BufferedStream](BufferedStream.md), 读取当前对象指向的进程的标准输出对象 **
+
 ```JavaScript
 readonly BufferedStream SubProcess.stdout;
 ```
@@ -129,6 +132,7 @@ readonly BufferedStream SubProcess.stdout;
 --------------------------
 ### stream
 ** [Stream](Stream.md), 查询创建缓存对象时的流对象 **
+
 ```JavaScript
 readonly Stream SubProcess.stream;
 ```
@@ -136,6 +140,7 @@ readonly Stream SubProcess.stream;
 --------------------------
 ### charset
 ** String, 查询和设置当前对象处理文本时的字符集，缺省为 utf-8 **
+
 ```JavaScript
 String SubProcess.charset;
 ```
@@ -143,6 +148,7 @@ String SubProcess.charset;
 --------------------------
 ### EOL
 ** String, 查询和设置行结尾标识，缺省时，posix:\"\\n\"；windows:\"\\r\\n\" **
+
 ```JavaScript
 String SubProcess.EOL;
 ```
@@ -151,6 +157,7 @@ String SubProcess.EOL;
         
 ### kill
 ** 杀掉当前对象指向的进程，并传递信号 **
+
 ```JavaScript
 SubProcess.kill(Integer signal);
 ```
@@ -161,6 +168,7 @@ SubProcess.kill(Integer signal);
 --------------------------
 ### wait
 ** 等待当前对象指向的进程结束，并返回进程结束代码 **
+
 ```JavaScript
 Integer SubProcess.wait() async;
 ```
@@ -171,6 +179,7 @@ Integer SubProcess.wait() async;
 --------------------------
 ### findWindow
 ** 查询当前对象所指向的进程是否存在指定名称的窗口，仅限 windows **
+
 ```JavaScript
 Value SubProcess.findWindow(String name);
 ```
@@ -184,6 +193,7 @@ Value SubProcess.findWindow(String name);
 --------------------------
 ### readText
 ** 读取指定字符的文本 **
+
 ```JavaScript
 String SubProcess.readText(Integer size) async;
 ```
@@ -197,6 +207,7 @@ String SubProcess.readText(Integer size) async;
 --------------------------
 ### readLine
 ** 读取一行文本，行结尾标识基于 EOL 属性的设置，缺省时，posix:\"\\n\"；windows:\"\\r\\n\" **
+
 ```JavaScript
 String SubProcess.readLine(Integer maxlen = -1) async;
 ```
@@ -210,6 +221,7 @@ String SubProcess.readLine(Integer maxlen = -1) async;
 --------------------------
 ### readLines
 ** 以数组方式读取一组文本行，行结尾标识基于 EOL 属性的设置，缺省时，posix:\"\\n\"；windows:\"\\r\\n\" **
+
 ```JavaScript
 Array SubProcess.readLines(Integer maxlines = -1);
 ```
@@ -223,9 +235,10 @@ Array SubProcess.readLines(Integer maxlines = -1);
 --------------------------
 ### readUntil
 ** 读取一个文本字符串，以指定的字节为结尾 **
+
 ```JavaScript
 String SubProcess.readUntil(String mk,
-                Integer maxlen = -1) async;
+    Integer maxlen = -1) async;
 ```
 
 调用参数:
@@ -238,6 +251,7 @@ String SubProcess.readUntil(String mk,
 --------------------------
 ### writeText
 ** 写入一个字符串 **
+
 ```JavaScript
 SubProcess.writeText(String txt) async;
 ```
@@ -248,6 +262,7 @@ SubProcess.writeText(String txt) async;
 --------------------------
 ### writeLine
 ** 写入一个字符串，并写入换行符 **
+
 ```JavaScript
 SubProcess.writeLine(String txt) async;
 ```
@@ -258,6 +273,7 @@ SubProcess.writeLine(String txt) async;
 --------------------------
 ### read
 ** 从流内读取指定大小的数据 **
+
 ```JavaScript
 Buffer SubProcess.read(Integer bytes = -1) async;
 ```
@@ -271,6 +287,7 @@ Buffer SubProcess.read(Integer bytes = -1) async;
 --------------------------
 ### write
 ** 将给定的数据写入流 **
+
 ```JavaScript
 SubProcess.write(Buffer data) async;
 ```
@@ -281,6 +298,7 @@ SubProcess.write(Buffer data) async;
 --------------------------
 ### close
 ** 关闭当前流对象 **
+
 ```JavaScript
 SubProcess.close() async;
 ```
@@ -288,9 +306,10 @@ SubProcess.close() async;
 --------------------------
 ### copyTo
 ** 复制流数据到目标流中 **
+
 ```JavaScript
 Long SubProcess.copyTo(Stream stm,
-                Long bytes = -1) async;
+    Long bytes = -1) async;
 ```
 
 调用参数:
@@ -303,6 +322,7 @@ Long SubProcess.copyTo(Stream stm,
 --------------------------
 ### dispose
 ** 强制回收对象，调用此方法后，对象资源将立即释放 **
+
 ```JavaScript
 SubProcess.dispose();
 ```
@@ -310,6 +330,7 @@ SubProcess.dispose();
 --------------------------
 ### equals
 ** 比较当前对象与给定的对象是否相等 **
+
 ```JavaScript
 Boolean SubProcess.equals(object expected);
 ```
@@ -323,6 +344,7 @@ Boolean SubProcess.equals(object expected);
 --------------------------
 ### toString
 ** 返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现 **
+
 ```JavaScript
 String SubProcess.toString();
 ```
@@ -333,6 +355,7 @@ String SubProcess.toString();
 --------------------------
 ### toJSON
 ** 返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合 **
+
 ```JavaScript
 Value SubProcess.toJSON(String key = "");
 ```
@@ -346,6 +369,7 @@ Value SubProcess.toJSON(String key = "");
 --------------------------
 ### valueOf
 ** 返回对象本身的数值 **
+
 ```JavaScript
 Value SubProcess.valueOf();
 ```

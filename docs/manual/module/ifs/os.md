@@ -2,6 +2,7 @@
 操作系统与文件系统处理模块
 
 使用方法：
+
 ```JavaScript
 var os = require('os');
 ```
@@ -10,6 +11,7 @@ var os = require('os');
         
 ### Service
 ** [Service](../../object/ifs/Service.md) 构造函数，参见 [Service](../../object/ifs/Service.md) **
+
 ```JavaScript
 Service os.Service;
 ```
@@ -18,6 +20,7 @@ Service os.Service;
         
 ### hostname
 ** 查询当前运行环境主机名 **
+
 ```JavaScript
 static String os.hostname();
 ```
@@ -25,6 +28,7 @@ static String os.hostname();
 --------------------------
 ### endianness
 ** the endianness of the CPU for which the fibjs binary was compiled. **
+
 ```JavaScript
 static String os.endianness();
 ```
@@ -32,6 +36,7 @@ static String os.endianness();
 --------------------------
 ### type
 ** 查询当前运行环境操作系统名称 **
+
 ```JavaScript
 static String os.type();
 ```
@@ -39,6 +44,7 @@ static String os.type();
 --------------------------
 ### release
 ** 查询当前运行环境操作系统版本 **
+
 ```JavaScript
 static String os.release();
 ```
@@ -46,6 +52,7 @@ static String os.release();
 --------------------------
 ### homedir
 ** 查询当前用户目录 **
+
 ```JavaScript
 static String os.homedir();
 ```
@@ -53,6 +60,7 @@ static String os.homedir();
 --------------------------
 ### arch
 ** 查询当前 cpu 环境，可能的结果为 'amd64', 'arm', 'arm64', 'ia32' **
+
 ```JavaScript
 static String os.arch();
 ```
@@ -60,6 +68,7 @@ static String os.arch();
 --------------------------
 ### uptime
 ** 查询运行环境运行时间，以秒为单位 **
+
 ```JavaScript
 static Number os.uptime();
 ```
@@ -70,6 +79,7 @@ static Number os.uptime();
 --------------------------
 ### loadavg
 ** 查询运行环境 1分钟，5分钟，15分钟平均负载 **
+
 ```JavaScript
 static Array os.loadavg();
 ```
@@ -80,6 +90,7 @@ static Array os.loadavg();
 --------------------------
 ### totalmem
 ** 查询运行环境总内存，以字节为单位 **
+
 ```JavaScript
 static Long os.totalmem();
 ```
@@ -90,6 +101,7 @@ static Long os.totalmem();
 --------------------------
 ### freemem
 ** 查询运行环境可用内存，以字节为单位 **
+
 ```JavaScript
 static Long os.freemem();
 ```
@@ -100,6 +112,7 @@ static Long os.freemem();
 --------------------------
 ### cpus
 ** 查询当前运行环境 cpu 个数和参数 **
+
 ```JavaScript
 static Array os.cpus();
 ```
@@ -110,6 +123,7 @@ static Array os.cpus();
 --------------------------
 ### cpuNumbers
 ** 查询当前运行环境 cpu 个数 **
+
 ```JavaScript
 static Integer os.cpuNumbers();
 ```
@@ -120,6 +134,7 @@ static Integer os.cpuNumbers();
 --------------------------
 ### tmpdir
 ** 查询当前运行环境临时文件目录 **
+
 ```JavaScript
 static String os.tmpdir();
 ```
@@ -130,6 +145,7 @@ static String os.tmpdir();
 --------------------------
 ### userInfo
 ** 返回当前有效执行用户信息 **
+
 ```JavaScript
 static Object os.userInfo(Object options = {});
 ```
@@ -142,6 +158,7 @@ static Object os.userInfo(Object options = {});
 --------------------------
 ### networkInterfaces
 ** 查询当前运行环境网络信息 **
+
 ```JavaScript
 static Object os.networkInterfaces();
 ```
@@ -152,6 +169,7 @@ static Object os.networkInterfaces();
 --------------------------
 ### printerInfo
 ** 查询当前主机的打印机信息 **
+
 ```JavaScript
 static Array os.printerInfo();
 ```
@@ -162,6 +180,7 @@ static Array os.printerInfo();
 --------------------------
 ### openPrinter
 ** 创建一个打印机输出对象 **
+
 ```JavaScript
 static BufferedStream os.openPrinter(String name) async;
 ```
@@ -175,6 +194,7 @@ static BufferedStream os.openPrinter(String name) async;
 --------------------------
 ### platform
 ** 查询当前平台名称，可能的结果为 'darwin', 'freebsd', 'linux', 或 'win32' **
+
 ```JavaScript
 static String os.platform();
 ```
@@ -182,6 +202,7 @@ static String os.platform();
 --------------------------
 ### time
 ** 解析时间字符串或查询运行环境当前时间 **
+
 ```JavaScript
 static Date os.time(String tmString = "");
 ```
@@ -195,10 +216,11 @@ static Date os.time(String tmString = "");
 --------------------------
 ### dateAdd
 ** 时间计算函数，根据 part 指定计算时间 **
+
 ```JavaScript
 static Date os.dateAdd(Date d,
-                Integer num,
-                String part);
+    Integer num,
+    String part);
 ```
 
 调用参数:
@@ -212,6 +234,7 @@ static Date os.dateAdd(Date d,
 --------------------------
 ### memoryUsage
 ** 查询当前进程内存使用报告 **
+
 ```JavaScript
 static Object os.memoryUsage();
 ```
@@ -220,14 +243,16 @@ static Object os.memoryUsage();
 * Object, 返回包含内存报告
 
 内存报告生成类似以下结果：
+
 ```JavaScript
 {
-  "rss": 8622080,
-  "heapTotal": 4083456,
-  "heapUsed": 1621800,
-  "nativeObjects": 122
+    "rss": 8622080,
+    "heapTotal": 4083456,
+    "heapUsed": 1621800,
+    "nativeObjects": 122
 }
 ```
+
 其中：
 - rss 返回进程当前占用物理内存大小
 - heapTotal 返回 v8 引擎堆内存大小
@@ -238,6 +263,7 @@ static Object os.memoryUsage();
         
 ### timezone
 ** Integer, 查询运行环境当前时区 **
+
 ```JavaScript
 static readonly Integer os.timezone;
 ```
@@ -245,6 +271,7 @@ static readonly Integer os.timezone;
 --------------------------
 ### EOL
 ** String, 查询当前运行环境行结尾标识，posix:\"\\n\"；windows:\"\\r\\n\" **
+
 ```JavaScript
 static readonly String os.EOL;
 ```
@@ -252,6 +279,7 @@ static readonly String os.EOL;
 --------------------------
 ### execPath
 ** String, 查询当前运行执行文件完整路径 **
+
 ```JavaScript
 static readonly String os.execPath;
 ```

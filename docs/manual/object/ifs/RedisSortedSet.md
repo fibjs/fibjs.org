@@ -2,6 +2,7 @@
 [Redis](Redis.md) 数据库客户端 SortedSet 对象，此对象为包含指定 key 的客户端，只有调用其方法才会操作数据库
 
 用以操作 [Redis](Redis.md) 的 SortedSet 对象，创建方法：
+
 ```JavaScript
 var db = require("db");
 var rdb = new db.openRedis("redis-server");
@@ -63,6 +64,7 @@ var set = rdb.getSortedSet("test");
         
 ### add
 ** 将一个或多个 member 元素及其 score 值加入到有序集当中 **
+
 ```JavaScript
 Integer RedisSortedSet.add(Object sms);
 ```
@@ -75,6 +77,7 @@ Integer RedisSortedSet.add(Object sms);
 
 --------------------------
 ** 将一个或多个 member 元素及其 score 值加入到有序集当中 **
+
 ```JavaScript
 Integer RedisSortedSet.add(...);
 ```
@@ -88,6 +91,7 @@ Integer RedisSortedSet.add(...);
 --------------------------
 ### score
 ** 返回有序集中，成员 member 的 score 值 **
+
 ```JavaScript
 Buffer RedisSortedSet.score(Buffer member);
 ```
@@ -101,9 +105,10 @@ Buffer RedisSortedSet.score(Buffer member);
 --------------------------
 ### incr
 ** 为有序集的成员 member 的 score 值加上增量 num **
+
 ```JavaScript
 Buffer RedisSortedSet.incr(Buffer member,
-                Long num = 1);
+    Long num = 1);
 ```
 
 调用参数:
@@ -116,6 +121,7 @@ Buffer RedisSortedSet.incr(Buffer member,
 --------------------------
 ### remove
 ** 移除有序集中的一个或多个 member 元素 **
+
 ```JavaScript
 Integer RedisSortedSet.remove(Array members);
 ```
@@ -128,6 +134,7 @@ Integer RedisSortedSet.remove(Array members);
 
 --------------------------
 ** 移除有序集中的一个或多个 member 元素 **
+
 ```JavaScript
 Integer RedisSortedSet.remove(...);
 ```
@@ -141,6 +148,7 @@ Integer RedisSortedSet.remove(...);
 --------------------------
 ### len
 ** 返回有序集中元素的数量 **
+
 ```JavaScript
 Integer RedisSortedSet.len();
 ```
@@ -151,9 +159,10 @@ Integer RedisSortedSet.len();
 --------------------------
 ### count
 ** 返回有序集中， score 值在 min 和 max 之间(默认包括 score 值等于 min 或 max )的成员的数量 **
+
 ```JavaScript
 Integer RedisSortedSet.count(Integer min,
-                Integer max);
+    Integer max);
 ```
 
 调用参数:
@@ -166,10 +175,11 @@ Integer RedisSortedSet.count(Integer min,
 --------------------------
 ### range
 ** 返回有序集中，指定区间内的成员，成员的位置按 score 值递增(从小到大)来排序 **
+
 ```JavaScript
 List RedisSortedSet.range(Integer start,
-                Integer stop,
-                Boolean withScores = false);
+    Integer stop,
+    Boolean withScores = false);
 ```
 
 调用参数:
@@ -183,10 +193,11 @@ List RedisSortedSet.range(Integer start,
 --------------------------
 ### rangeRev
 ** 返回有序集中，指定区间内的成员，成员的位置按 score 值递减(从大到小)来排序 **
+
 ```JavaScript
 List RedisSortedSet.rangeRev(Integer start,
-                Integer stop,
-                Boolean withScores = false);
+    Integer stop,
+    Boolean withScores = false);
 ```
 
 调用参数:
@@ -200,6 +211,7 @@ List RedisSortedSet.rangeRev(Integer start,
 --------------------------
 ### rank
 ** 有序集中成员 member 的排名。其中有序集成员按 score 值递增(从小到大)顺序排列 **
+
 ```JavaScript
 Integer RedisSortedSet.rank(Buffer member);
 ```
@@ -213,6 +225,7 @@ Integer RedisSortedSet.rank(Buffer member);
 --------------------------
 ### rankRev
 ** 有序集中成员 member 的排名。其中有序集成员按 score 值递减(从大到小)顺序排列 **
+
 ```JavaScript
 Integer RedisSortedSet.rankRev(Buffer member);
 ```
@@ -226,6 +239,7 @@ Integer RedisSortedSet.rankRev(Buffer member);
 --------------------------
 ### dispose
 ** 强制回收对象，调用此方法后，对象资源将立即释放 **
+
 ```JavaScript
 RedisSortedSet.dispose();
 ```
@@ -233,6 +247,7 @@ RedisSortedSet.dispose();
 --------------------------
 ### equals
 ** 比较当前对象与给定的对象是否相等 **
+
 ```JavaScript
 Boolean RedisSortedSet.equals(object expected);
 ```
@@ -246,6 +261,7 @@ Boolean RedisSortedSet.equals(object expected);
 --------------------------
 ### toString
 ** 返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现 **
+
 ```JavaScript
 String RedisSortedSet.toString();
 ```
@@ -256,6 +272,7 @@ String RedisSortedSet.toString();
 --------------------------
 ### toJSON
 ** 返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合 **
+
 ```JavaScript
 Value RedisSortedSet.toJSON(String key = "");
 ```
@@ -269,6 +286,7 @@ Value RedisSortedSet.toJSON(String key = "");
 --------------------------
 ### valueOf
 ** 返回对象本身的数值 **
+
 ```JavaScript
 Value RedisSortedSet.valueOf();
 ```

@@ -2,13 +2,14 @@
 [ssl](../../module/ifs/ssl.md) 协议转换处理器
 
 用以将数据流转换为 [ssl](../../module/ifs/ssl.md) 流协议。SslHandler 是对 [SslSocket](SslSocket.md) 的封装，用于构建服务器，逻辑上相当于：
+
 ```JavaScript
 var ss = new ssl.Socket(crt, key);
 
-function(s){
-   var s1 = ss.accept(s);
-   hdlr.invoke(s1);
-   s1.close();
+function(s) {
+    var s1 = ss.accept(s);
+    hdlr.invoke(s1);
+    s1.close();
 }
 ```
 
@@ -82,9 +83,10 @@ function(s){
         
 ### SslHandler
 ** SslHandler 构造函数，创建一个新的 SslHandler 对象 **
+
 ```JavaScript
- new SslHandler(Array certs,
-                Handler hdlr);
+new SslHandler(Array certs,
+    Handler hdlr);
 ```
 
 调用参数:
@@ -92,9 +94,9 @@ function(s){
 * hdlr: [Handler](Handler.md), 内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq](../../module/ifs/mq.md).[Handler](Handler.md)
 
 certs 格式为：
+
 ```JavaScript
-[
-    {
+[{
         crt: [X509Cert object],
         key: [PKey object]
     },
@@ -107,10 +109,11 @@ certs 格式为：
 
 --------------------------
 ** SslHandler 构造函数，创建一个新的 SslHandler 对象 **
+
 ```JavaScript
- new SslHandler(X509Cert crt,
-                PKey key,
-                Handler hdlr);
+new SslHandler(X509Cert crt,
+    PKey key,
+    Handler hdlr);
 ```
 
 调用参数:
@@ -122,6 +125,7 @@ certs 格式为：
         
 ### verification
 ** Integer, 设定证书验证模式，缺省为 VERIFY_NONE **
+
 ```JavaScript
 Integer SslHandler.verification;
 ```
@@ -129,6 +133,7 @@ Integer SslHandler.verification;
 --------------------------
 ### ca
 ** [X509Cert](X509Cert.md), 客户端证书验证证书链 **
+
 ```JavaScript
 readonly X509Cert SslHandler.ca;
 ```
@@ -136,6 +141,7 @@ readonly X509Cert SslHandler.ca;
 --------------------------
 ### handler
 ** [Handler](Handler.md), [ssl](../../module/ifs/ssl.md) 协议转换处理器当前事件处理接口对象 **
+
 ```JavaScript
 Handler SslHandler.handler;
 ```
@@ -144,6 +150,7 @@ Handler SslHandler.handler;
         
 ### invoke
 ** 处理一个消息或对象 **
+
 ```JavaScript
 Handler SslHandler.invoke(object v) async;
 ```
@@ -157,6 +164,7 @@ Handler SslHandler.invoke(object v) async;
 --------------------------
 ### dispose
 ** 强制回收对象，调用此方法后，对象资源将立即释放 **
+
 ```JavaScript
 SslHandler.dispose();
 ```
@@ -164,6 +172,7 @@ SslHandler.dispose();
 --------------------------
 ### equals
 ** 比较当前对象与给定的对象是否相等 **
+
 ```JavaScript
 Boolean SslHandler.equals(object expected);
 ```
@@ -177,6 +186,7 @@ Boolean SslHandler.equals(object expected);
 --------------------------
 ### toString
 ** 返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现 **
+
 ```JavaScript
 String SslHandler.toString();
 ```
@@ -187,6 +197,7 @@ String SslHandler.toString();
 --------------------------
 ### toJSON
 ** 返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合 **
+
 ```JavaScript
 Value SslHandler.toJSON(String key = "");
 ```
@@ -200,6 +211,7 @@ Value SslHandler.toJSON(String key = "");
 --------------------------
 ### valueOf
 ** 返回对象本身的数值 **
+
 ```JavaScript
 Value SslHandler.valueOf();
 ```

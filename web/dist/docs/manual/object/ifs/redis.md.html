@@ -249,7 +249,7 @@
 <h3 id="command">command</h3>
 <p><strong> redis 基础命令方法 </strong></p>
 <pre><code class="lang-JavaScript">Value Redis.command(<span class="hljs-built_in">String</span> cmd,
-                ...);
+    ...);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -264,8 +264,8 @@
 <h3 id="set">set</h3>
 <p><strong> 将字符串值 value 关联到 key，如果 key 已经持有其他值， SET 就覆写旧值，无视类型 </strong></p>
 <pre><code class="lang-JavaScript">Redis.set(Buffer key,
-                Buffer value,
-                Long ttl = <span class="hljs-number">0</span>);
+    Buffer value,
+    Long ttl = <span class="hljs-number">0</span>);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -277,8 +277,8 @@
 <h3 id="setnx">setNX</h3>
 <p><strong> 将 key 的值设为 value ，当且仅当 key 不存在。若给定的 key 已经存在，则 SETNX 不做任何动作。 </strong></p>
 <pre><code class="lang-JavaScript">Redis.setNX(Buffer key,
-                Buffer value,
-                Long ttl = <span class="hljs-number">0</span>);
+    Buffer value,
+    Long ttl = <span class="hljs-number">0</span>);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -290,8 +290,8 @@
 <h3 id="setxx">setXX</h3>
 <p><strong> 将 key 的值设为 value，只在键已经存在时，才对键进行设置操作。 </strong></p>
 <pre><code class="lang-JavaScript">Redis.setXX(Buffer key,
-                Buffer value,
-                Long ttl = <span class="hljs-number">0</span>);
+    Buffer value,
+    Long ttl = <span class="hljs-number">0</span>);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -337,7 +337,7 @@
 <h3 id="append">append</h3>
 <p><strong> 如果 key 已经存在并且是一个字符串，append 命令将 value 追加到 key 原来的值的末尾。如果 key 不存在，append 就简单地将给定 key 设为 value </strong></p>
 <pre><code class="lang-JavaScript">Integer Redis.append(Buffer key,
-                Buffer value);
+    Buffer value);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -352,8 +352,8 @@
 <h3 id="setrange">setRange</h3>
 <p><strong> 用 value 参数覆写给定 key 所储存的字符串值，从偏移量 offset 开始 </strong></p>
 <pre><code class="lang-JavaScript">Integer Redis.setRange(Buffer key,
-                Integer offset,
-                Buffer value);
+    Integer offset,
+    Buffer value);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -369,8 +369,8 @@
 <h3 id="getrange">getRange</h3>
 <p><strong> 返回 key 中字符串值的子字符串，字符串的截取范围由 start 和 end 两个偏移量决定(包括 start 和 end 在内) </strong></p>
 <pre><code class="lang-JavaScript">Buffer Redis.getRange(Buffer key,
-                Integer start,
-                Integer end);
+    Integer start,
+    Integer end);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -399,8 +399,8 @@
 <h3 id="bitcount">bitcount</h3>
 <p><strong> 计算给定字符串中，被设置为 1 的比特位的数量 </strong></p>
 <pre><code class="lang-JavaScript">Integer Redis.bitcount(Buffer key,
-                Integer start = <span class="hljs-number">0</span>,
-                Integer end = <span class="hljs-number">-1</span>);
+    Integer start = <span class="hljs-number">0</span>,
+    Integer end = <span class="hljs-number">-1</span>);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -454,7 +454,7 @@
 <h3 id="getset">getset</h3>
 <p><strong> 将给定 key 的值设为 value ，并返回 key 的旧值(old value) </strong></p>
 <pre><code class="lang-JavaScript">Buffer Redis.getset(Buffer key,
-                Buffer value);
+    Buffer value);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -469,7 +469,7 @@
 <h3 id="decr">decr</h3>
 <p><strong> 将 key 所储存的值减去减量 </strong></p>
 <pre><code class="lang-JavaScript">Long Redis.decr(Buffer key,
-                Long num = <span class="hljs-number">1</span>);
+    Long num = <span class="hljs-number">1</span>);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -484,7 +484,7 @@
 <h3 id="incr">incr</h3>
 <p><strong> 将 key 所储存的值加上增量 </strong></p>
 <pre><code class="lang-JavaScript">Long Redis.incr(Buffer key,
-                Long num = <span class="hljs-number">1</span>);
+    Long num = <span class="hljs-number">1</span>);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -499,8 +499,8 @@
 <h3 id="setbit">setBit</h3>
 <p><strong> 对 key 所储存的字符串值，设置或清除指定偏移量上的位(bit) </strong></p>
 <pre><code class="lang-JavaScript">Integer Redis.setBit(Buffer key,
-                Integer offset,
-                Integer value);
+    Integer offset,
+    Integer value);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -516,7 +516,7 @@
 <h3 id="getbit">getBit</h3>
 <p><strong> 对 key 所储存的字符串值，获取指定偏移量上的位(bit) </strong></p>
 <pre><code class="lang-JavaScript">Integer Redis.getBit(Buffer key,
-                Integer offset);
+    Integer offset);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -595,7 +595,7 @@
 <h3 id="expire">expire</h3>
 <p><strong> 为给定 key 设置生存时间，当 key 过期时，它会被自动删除 </strong></p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">Boolean</span> Redis.expire(Buffer key,
-                Long ttl);
+    Long ttl);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -636,7 +636,7 @@
 <h3 id="rename">rename</h3>
 <p><strong> 将 key 改名为 newkey，当 key 和 newkey 相同，或者 key 不存在时，返回一个错误 </strong></p>
 <pre><code class="lang-JavaScript">Redis.rename(Buffer key,
-                Buffer newkey);
+    Buffer newkey);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -647,7 +647,7 @@
 <h3 id="renamenx">renameNX</h3>
 <p><strong> 当且仅当 newkey 不存在时，将 key 改名为 newkey，当 key 不存在时，返回一个错误 </strong></p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">Boolean</span> Redis.renameNX(Buffer key,
-                Buffer newkey);
+    Buffer newkey);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -662,7 +662,7 @@
 <h3 id="sub">sub</h3>
 <p><strong> 订阅给定的一个频道的信息，当消息发生时自动调用 func，func 包含两个参数，依次为 channel 和 message，同一频道同一函数只会回调一次 </strong></p>
 <pre><code class="lang-JavaScript">Redis.sub(Buffer channel,
-                <span class="hljs-built_in">Function</span> func);
+    <span class="hljs-built_in">Function</span> func);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -689,7 +689,7 @@
 <hr>
 <p><strong> 退订给定的频道的指定回调函数 </strong></p>
 <pre><code class="lang-JavaScript">Redis.unsub(Buffer channel,
-                <span class="hljs-built_in">Function</span> func);
+    <span class="hljs-built_in">Function</span> func);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -716,7 +716,7 @@
 <h3 id="psub">psub</h3>
 <p><strong> 按照模板订阅一组频道的信息，当消息发生时自动调用 func，func 包含三个参数，依次为 channel，message 和 pattern，同一模板同一函数只会回调一次 </strong></p>
 <pre><code class="lang-JavaScript">Redis.psub(<span class="hljs-built_in">String</span> pattern,
-                <span class="hljs-built_in">Function</span> func);
+    <span class="hljs-built_in">Function</span> func);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -743,7 +743,7 @@
 <hr>
 <p><strong> 退订给定模板的频道的指定回调函数 </strong></p>
 <pre><code class="lang-JavaScript">Redis.unpsub(<span class="hljs-built_in">String</span> pattern,
-                <span class="hljs-built_in">Function</span> func);
+    <span class="hljs-built_in">Function</span> func);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -770,7 +770,7 @@
 <h3 id="pub">pub</h3>
 <p><strong> 将信息 message 发送到指定的频道 channel </strong></p>
 <pre><code class="lang-JavaScript">Integer Redis.pub(Buffer channel,
-                Buffer message);
+    Buffer message);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -846,8 +846,8 @@
 <h3 id="restore">restore</h3>
 <p><strong> 反序列化给定的序列化值，并将它和给定的 key 关联 </strong></p>
 <pre><code class="lang-JavaScript">Redis.restore(Buffer key,
-                Buffer data,
-                Long ttl = <span class="hljs-number">0</span>);
+    Buffer data,
+    Long ttl = <span class="hljs-number">0</span>);
 </code></pre>
 <p>调用参数:</p>
 <ul>

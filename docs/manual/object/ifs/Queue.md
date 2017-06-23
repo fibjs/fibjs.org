@@ -2,6 +2,7 @@
 FIFO（先进先出）队列对象
 
 用以创建和管理先进先出数据队列，创建方法：
+
 ```JavaScript
 var collection = require("collection");
 var q = new collection.Queue(100);
@@ -85,8 +86,9 @@ var q = new collection.Queue(100);
         
 ### Queue
 ** 队列对象构造函数 **
+
 ```JavaScript
- new Queue(Integer size);
+new Queue(Integer size);
 ```
 
 调用参数:
@@ -96,6 +98,7 @@ var q = new collection.Queue(100);
         
 ### length
 ** Integer, 返回当前队列尺寸 **
+
 ```JavaScript
 readonly Integer Queue.length;
 ```
@@ -104,6 +107,7 @@ readonly Integer Queue.length;
         
 ### add
 ** 插入一个新的元素到队列，成功返回 True，队列满则抛出错误 **
+
 ```JavaScript
 Boolean Queue.add(Value e);
 ```
@@ -117,6 +121,7 @@ Boolean Queue.add(Value e);
 --------------------------
 ### offer
 ** 插入一个新的元素到队列，成功返回 True，队列满则返回 False **
+
 ```JavaScript
 Boolean Queue.offer(Value e);
 ```
@@ -130,6 +135,7 @@ Boolean Queue.offer(Value e);
 --------------------------
 ### remove
 ** 从队列中移除一个元素并返回，如果队列为空则抛出错误 **
+
 ```JavaScript
 Value Queue.remove();
 ```
@@ -140,6 +146,7 @@ Value Queue.remove();
 --------------------------
 ### poll
 ** 从队列中移除一个元素并返回 **
+
 ```JavaScript
 Value Queue.poll();
 ```
@@ -150,6 +157,7 @@ Value Queue.poll();
 --------------------------
 ### element
 ** 从队列中返回一个元素，但不移除，队列为空则抛出错误 **
+
 ```JavaScript
 Value Queue.element();
 ```
@@ -160,6 +168,7 @@ Value Queue.element();
 --------------------------
 ### peek
 ** 从队列中返回一个元素，但不移除 **
+
 ```JavaScript
 Value Queue.peek();
 ```
@@ -170,6 +179,7 @@ Value Queue.peek();
 --------------------------
 ### clear
 ** 清除当前队列 **
+
 ```JavaScript
 Queue.clear();
 ```
@@ -177,6 +187,7 @@ Queue.clear();
 --------------------------
 ### toArray
 ** 返回队列的 js 数组 **
+
 ```JavaScript
 Array Queue.toArray();
 ```
@@ -187,6 +198,7 @@ Array Queue.toArray();
 --------------------------
 ### dispose
 ** 强制回收对象，调用此方法后，对象资源将立即释放 **
+
 ```JavaScript
 Queue.dispose();
 ```
@@ -194,6 +206,7 @@ Queue.dispose();
 --------------------------
 ### equals
 ** 比较当前对象与给定的对象是否相等 **
+
 ```JavaScript
 Boolean Queue.equals(object expected);
 ```
@@ -207,6 +220,7 @@ Boolean Queue.equals(object expected);
 --------------------------
 ### toString
 ** 返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现 **
+
 ```JavaScript
 String Queue.toString();
 ```
@@ -217,6 +231,7 @@ String Queue.toString();
 --------------------------
 ### toJSON
 ** 返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合 **
+
 ```JavaScript
 Value Queue.toJSON(String key = "");
 ```
@@ -230,6 +245,7 @@ Value Queue.toJSON(String key = "");
 --------------------------
 ### valueOf
 ** 返回对象本身的数值 **
+
 ```JavaScript
 Value Queue.valueOf();
 ```

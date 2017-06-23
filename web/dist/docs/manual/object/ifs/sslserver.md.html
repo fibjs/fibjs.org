@@ -155,13 +155,13 @@
  </div></div></div>  </div></div><div class=content> <h1 id="-sslserver">对象 SslServer</h1>
 <p><a href=../../module/ifs/ssl.md.html>ssl</a> 服务器对象，可方便创建一个标准多纤程 <a href=../../module/ifs/ssl.md.html>ssl</a> 服务器</p>
 <p>SslServer 对象是将 <a href=tcpserver.md.html>TcpServer</a> 和 <a href=sslhandler.md.html>SslHandler</a> 组合封装的对象，方便快速搭建服务器，逻辑上相当于：</p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">var</span> svr = <span class="hljs-keyword">new</span> net.SslServer(addr, port, <span class="hljs-keyword">new</span> ssl.Handler(crt, key, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">req</span>)</span>{
-   ...
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">var</span> svr = <span class="hljs-keyword">new</span> net.SslServer(addr, port, <span class="hljs-keyword">new</span> ssl.Handler(crt, key, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">req</span>) </span>{
+    ...
 }));
 </code></pre>
 <p>创建方法：</p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">var</span> ssl = <span class="hljs-built_in">require</span>(<span class="hljs-string">"ssl"</span>);
-<span class="hljs-keyword">var</span> svr = <span class="hljs-keyword">new</span> http.Server(crt, key, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">req</span>)</span>{
+<span class="hljs-keyword">var</span> svr = <span class="hljs-keyword">new</span> http.Server(crt, key, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">req</span>) </span>{
     ...
 });
 </code></pre>
@@ -239,9 +239,9 @@
 <h2 id="-">构造函数</h2>
 <h3 id="sslserver">SslServer</h3>
 <p><strong> SslServer 构造函数，在所有本机地址侦听 </strong></p>
-<pre><code class="lang-JavaScript"> <span class="hljs-keyword">new</span> SslServer(<span class="hljs-built_in">Array</span> certs,
-                Integer port,
-                Handler listener);
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">new</span> SslServer(<span class="hljs-built_in">Array</span> certs,
+    Integer port,
+    Handler listener);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -250,8 +250,7 @@
 <li>listener: <a href=handler.md.html>Handler</a>, 指定 <a href=../../module/ifs/ssl.md.html>ssl</a> 接收到的内置消息处理器，处理函数，链式处理数组，路由对象，详见 <a href=../../module/ifs/mq.md.html>mq</a>.<a href=handler.md.html>Handler</a></li>
 </ul>
 <p>certs 格式为：</p>
-<pre><code class="lang-JavaScript">[
-    {
+<pre><code class="lang-JavaScript">[{
         <span class="hljs-attr">crt</span>: [X509Cert object],
         <span class="hljs-attr">key</span>: [PKey object]
     },
@@ -263,10 +262,10 @@
 </code></pre>
 <hr>
 <p><strong> SslServer 构造函数 </strong></p>
-<pre><code class="lang-JavaScript"> <span class="hljs-keyword">new</span> SslServer(<span class="hljs-built_in">Array</span> certs,
-                <span class="hljs-built_in">String</span> addr,
-                Integer port,
-                Handler listener);
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">new</span> SslServer(<span class="hljs-built_in">Array</span> certs,
+    <span class="hljs-built_in">String</span> addr,
+    Integer port,
+    Handler listener);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -276,8 +275,7 @@
 <li>listener: <a href=handler.md.html>Handler</a>, 指定 <a href=../../module/ifs/ssl.md.html>ssl</a> 接收到的连接的内置消息处理器，处理函数，链式处理数组，路由对象，详见 <a href=../../module/ifs/mq.md.html>mq</a>.<a href=handler.md.html>Handler</a></li>
 </ul>
 <p>certs 格式为：</p>
-<pre><code class="lang-JavaScript">[
-    {
+<pre><code class="lang-JavaScript">[{
         <span class="hljs-attr">crt</span>: [X509Cert object],
         <span class="hljs-attr">key</span>: [PKey object]
     },
@@ -289,10 +287,10 @@
 </code></pre>
 <hr>
 <p><strong> SslServer 构造函数，在所有本机地址侦听 </strong></p>
-<pre><code class="lang-JavaScript"> <span class="hljs-keyword">new</span> SslServer(X509Cert crt,
-                PKey key,
-                Integer port,
-                Handler listener);
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">new</span> SslServer(X509Cert crt,
+    PKey key,
+    Integer port,
+    Handler listener);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -303,11 +301,11 @@
 </ul>
 <hr>
 <p><strong> SslServer 构造函数 </strong></p>
-<pre><code class="lang-JavaScript"> <span class="hljs-keyword">new</span> SslServer(X509Cert crt,
-                PKey key,
-                <span class="hljs-built_in">String</span> addr,
-                Integer port,
-                Handler listener);
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">new</span> SslServer(X509Cert crt,
+    PKey key,
+    <span class="hljs-built_in">String</span> addr,
+    Integer port,
+    Handler listener);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -344,10 +342,10 @@
 </code></pre>
 <p>返回的结果为一个 <a href=stats.md.html>Stats</a> 对象，初始化计数器如下：</p>
 <pre><code class="lang-JavaScript">{
-    <span class="hljs-attr">total</span> : <span class="hljs-number">1000</span>,      <span class="hljs-comment">// 总计处理的连接</span>
-    connections : <span class="hljs-number">100</span>, <span class="hljs-comment">// 当前正在处理的连接</span>
-    accept : <span class="hljs-number">10</span>,       <span class="hljs-comment">// 上次查询后新建的连接</span>
-    close : <span class="hljs-number">10</span>         <span class="hljs-comment">// 上次查询后关闭的连接</span>
+    <span class="hljs-attr">total</span>: <span class="hljs-number">1000</span>, <span class="hljs-comment">// 总计处理的连接</span>
+    connections: <span class="hljs-number">100</span>, <span class="hljs-comment">// 当前正在处理的连接</span>
+    accept: <span class="hljs-number">10</span>, <span class="hljs-comment">// 上次查询后新建的连接</span>
+    close: <span class="hljs-number">10</span> <span class="hljs-comment">// 上次查询后关闭的连接</span>
 }
 </code></pre>
 <h2 id="-">成员函数</h2>

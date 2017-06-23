@@ -2,11 +2,14 @@
 bson 编码与解码模块
 
 引用方式：
+
 ```JavaScript
 var encoding = require('encoding');
 var bson = encoding.bson;
 ```
+
 或者
+
 ```JavaScript
 var bson = require('bson');
 ```
@@ -15,6 +18,7 @@ var bson = require('bson');
         
 ### encode
 ** 以 bson 格式编码变量 **
+
 ```JavaScript
 static Buffer bson.encode(Object data);
 ```
@@ -28,6 +32,7 @@ static Buffer bson.encode(Object data);
 --------------------------
 ### decode
 ** 以 bson 方式解码字符串为一个变量 **
+
 ```JavaScript
 static Object bson.decode(Buffer data);
 ```

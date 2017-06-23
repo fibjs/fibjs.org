@@ -155,11 +155,10 @@
  </div></div></div>  </div></div><div class=content> <h1 id="-tcpserver">对象 TcpServer</h1>
 <p>tcp 服务器对象，可方便创建一个标准多纤程 tcp 服务器</p>
 <p>使用 TcpServer 对象可以迅速创建一个多纤程并发处理的 tcp 服务器。</p>
-<pre><code class="lang-JavaScript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">func</span>(<span class="hljs-params">conn</span>)
-</span>{
+<pre><code class="lang-JavaScript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">func</span>(<span class="hljs-params">conn</span>) </span>{
     <span class="hljs-keyword">var</span> data;
 
-    <span class="hljs-keyword">while</span>(data = conn.read())
+    <span class="hljs-keyword">while</span> (data = conn.read())
         conn.write(data);
 
     conn.close();
@@ -288,8 +287,8 @@
 <h2 id="-">构造函数</h2>
 <h3 id="tcpserver">TcpServer</h3>
 <p><strong> TcpServer 构造函数，在所有本机地址侦听 </strong></p>
-<pre><code class="lang-JavaScript"> <span class="hljs-keyword">new</span> TcpServer(Integer port,
-                Handler listener);
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">new</span> TcpServer(Integer port,
+    Handler listener);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -298,9 +297,9 @@
 </ul>
 <hr>
 <p><strong> TcpServer 构造函数 </strong></p>
-<pre><code class="lang-JavaScript"> <span class="hljs-keyword">new</span> TcpServer(<span class="hljs-built_in">String</span> addr,
-                Integer port,
-                Handler listener);
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">new</span> TcpServer(<span class="hljs-built_in">String</span> addr,
+    Integer port,
+    Handler listener);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -325,10 +324,10 @@
 </code></pre>
 <p>返回的结果为一个 <a href=stats.md.html>Stats</a> 对象，初始化计数器如下：</p>
 <pre><code class="lang-JavaScript">{
-    <span class="hljs-attr">total</span> : <span class="hljs-number">1000</span>,      <span class="hljs-comment">// 总计处理的连接</span>
-    connections : <span class="hljs-number">100</span>, <span class="hljs-comment">// 当前正在处理的连接</span>
-    accept : <span class="hljs-number">10</span>,       <span class="hljs-comment">// 上次查询后新建的连接</span>
-    close : <span class="hljs-number">10</span>         <span class="hljs-comment">// 上次查询后关闭的连接</span>
+    <span class="hljs-attr">total</span>: <span class="hljs-number">1000</span>, <span class="hljs-comment">// 总计处理的连接</span>
+    connections: <span class="hljs-number">100</span>, <span class="hljs-comment">// 当前正在处理的连接</span>
+    accept: <span class="hljs-number">10</span>, <span class="hljs-comment">// 上次查询后新建的连接</span>
+    close: <span class="hljs-number">10</span> <span class="hljs-comment">// 上次查询后关闭的连接</span>
 }
 </code></pre>
 <h2 id="-">成员函数</h2>

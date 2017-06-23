@@ -2,6 +2,7 @@
 x509 撤销证书对象
 
 X509Crl 对象属于 [crypto](../../module/ifs/crypto.md) 模块，创建：
+
 ```JavaScript
 var k = new crypto.X509Crl();
 ```
@@ -57,14 +58,16 @@ var k = new crypto.X509Crl();
         
 ### X509Crl
 ** X509Crl 构造函数 **
+
 ```JavaScript
- new X509Crl();
+new X509Crl();
 ```
 
 ## 成员函数
         
 ### load
 ** 加载一个 DER 格式的撤销证书，可多次调用 **
+
 ```JavaScript
 X509Crl.load(Buffer derCrl);
 ```
@@ -74,6 +77,7 @@ X509Crl.load(Buffer derCrl);
 
 --------------------------
 ** 加载一个 PEM 格式的撤销证书，可多次调用 **
+
 ```JavaScript
 X509Crl.load(String pemCrl);
 ```
@@ -84,6 +88,7 @@ X509Crl.load(String pemCrl);
 --------------------------
 ### loadFile
 ** 加载一个 PEM/DER 格式的撤销证书，可多次调用 **
+
 ```JavaScript
 X509Crl.loadFile(String filename);
 ```
@@ -94,6 +99,7 @@ X509Crl.loadFile(String filename);
 --------------------------
 ### dump
 ** 导出已经加载的撤销证书 **
+
 ```JavaScript
 Array X509Crl.dump();
 ```
@@ -104,6 +110,7 @@ Array X509Crl.dump();
 --------------------------
 ### clear
 ** 清空已经加载的撤销证书 **
+
 ```JavaScript
 X509Crl.clear();
 ```
@@ -111,6 +118,7 @@ X509Crl.clear();
 --------------------------
 ### dispose
 ** 强制回收对象，调用此方法后，对象资源将立即释放 **
+
 ```JavaScript
 X509Crl.dispose();
 ```
@@ -118,6 +126,7 @@ X509Crl.dispose();
 --------------------------
 ### equals
 ** 比较当前对象与给定的对象是否相等 **
+
 ```JavaScript
 Boolean X509Crl.equals(object expected);
 ```
@@ -131,6 +140,7 @@ Boolean X509Crl.equals(object expected);
 --------------------------
 ### toString
 ** 返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现 **
+
 ```JavaScript
 String X509Crl.toString();
 ```
@@ -141,6 +151,7 @@ String X509Crl.toString();
 --------------------------
 ### toJSON
 ** 返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合 **
+
 ```JavaScript
 Value X509Crl.toJSON(String key = "");
 ```
@@ -154,6 +165,7 @@ Value X509Crl.toJSON(String key = "");
 --------------------------
 ### valueOf
 ** 返回对象本身的数值 **
+
 ```JavaScript
 Value X509Crl.valueOf();
 ```

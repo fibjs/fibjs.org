@@ -194,32 +194,32 @@
 <p>通过配置 console，可以将程序输出和系统错误发往不同设备，用于运行环境信息收集。</p>
 <p>cfg 可以为一个设备配置对象：</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">console</span>.add({
-   <span class="hljs-attr">type</span>: <span class="hljs-string">"console"</span>,
-   <span class="hljs-attr">levels</span>: [<span class="hljs-built_in">console</span>.INFO, <span class="hljs-built_in">console</span>.ERROR]  <span class="hljs-comment">// 选项，省略则输出全部级别日志</span>
+    <span class="hljs-attr">type</span>: <span class="hljs-string">"console"</span>,
+    <span class="hljs-attr">levels</span>: [<span class="hljs-built_in">console</span>.INFO, <span class="hljs-built_in">console</span>.ERROR] <span class="hljs-comment">// 选项，省略则输出全部级别日志</span>
 });
 </code></pre>
 <p>syslog 仅在 posix 平台有效：</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">console</span>.add({
-   <span class="hljs-attr">type</span>: <span class="hljs-string">"syslog"</span>,
-   <span class="hljs-attr">levels</span>: [<span class="hljs-built_in">console</span>.INFO, <span class="hljs-built_in">console</span>.ERROR]
+    <span class="hljs-attr">type</span>: <span class="hljs-string">"syslog"</span>,
+    <span class="hljs-attr">levels</span>: [<span class="hljs-built_in">console</span>.INFO, <span class="hljs-built_in">console</span>.ERROR]
 });
 </code></pre>
 <p>event 仅在 windows 平台有效：</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">console</span>.add({
-   <span class="hljs-attr">type</span>: <span class="hljs-string">"event"</span>,
-   <span class="hljs-attr">levels</span>: [<span class="hljs-built_in">console</span>.INFO, <span class="hljs-built_in">console</span>.ERROR]
+    <span class="hljs-attr">type</span>: <span class="hljs-string">"event"</span>,
+    <span class="hljs-attr">levels</span>: [<span class="hljs-built_in">console</span>.INFO, <span class="hljs-built_in">console</span>.ERROR]
 });
 </code></pre>
 <p>file 日志：</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">console</span>.add({
-   <span class="hljs-attr">type</span>: <span class="hljs-string">"file"</span>,
-   <span class="hljs-attr">levels</span>: [<span class="hljs-built_in">console</span>.INFO, <span class="hljs-built_in">console</span>.ERROR],
-   <span class="hljs-comment">// 必选项，指定日志输出文件，可使用 s% 指定插入日期位置，不指定则添加在结尾</span>
-   path: <span class="hljs-string">"path/to/file_%s.log"</span>,
-   <span class="hljs-comment">// 选项，可选值为 "day", "hour", "minute", "###k", "###m", "###g"，缺省为 "1m"</span>
-   split: <span class="hljs-string">"30m"</span>,
-   <span class="hljs-comment">// 选项，可选范围为 2-128，缺省为 128</span>
-   count: <span class="hljs-number">10</span>
+    <span class="hljs-attr">type</span>: <span class="hljs-string">"file"</span>,
+    <span class="hljs-attr">levels</span>: [<span class="hljs-built_in">console</span>.INFO, <span class="hljs-built_in">console</span>.ERROR],
+    <span class="hljs-comment">// 必选项，指定日志输出文件，可使用 s% 指定插入日期位置，不指定则添加在结尾</span>
+    path: <span class="hljs-string">"path/to/file_%s.log"</span>,
+    <span class="hljs-comment">// 选项，可选值为 "day", "hour", "minute", "###k", "###m", "###g"，缺省为 "1m"</span>
+    split: <span class="hljs-string">"30m"</span>,
+    <span class="hljs-comment">// 选项，可选范围为 2-128，缺省为 128</span>
+    count: <span class="hljs-number">10</span>
 });
 </code></pre>
 <hr>
@@ -232,8 +232,8 @@
 </ul>
 <p>通过配置 console，可以将程序输出和系统错误发往不同设备，用于运行环境信息收集。</p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">console</span>.add([<span class="hljs-string">"console"</span>, {
-   <span class="hljs-attr">type</span>: <span class="hljs-string">"syslog"</span>,
-   <span class="hljs-attr">levels</span>: [<span class="hljs-built_in">console</span>.INFO, <span class="hljs-built_in">console</span>.ERROR]
+    <span class="hljs-attr">type</span>: <span class="hljs-string">"syslog"</span>,
+    <span class="hljs-attr">levels</span>: [<span class="hljs-built_in">console</span>.INFO, <span class="hljs-built_in">console</span>.ERROR]
 }]);
 </code></pre>
 <hr>
@@ -245,7 +245,7 @@
 <h3 id="log">log</h3>
 <p><strong> 记录普通日志信息，与 info 等同 </strong></p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">String</span> fmt,
-                ...);
+    ...);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -266,7 +266,7 @@
 <h3 id="debug">debug</h3>
 <p><strong> 记录调试日志信息 </strong></p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> <span class="hljs-built_in">console</span>.debug(<span class="hljs-built_in">String</span> fmt,
-                ...);
+    ...);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -287,7 +287,7 @@
 <h3 id="info">info</h3>
 <p><strong> 记录普通日志信息，与 log 等同 </strong></p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> <span class="hljs-built_in">console</span>.info(<span class="hljs-built_in">String</span> fmt,
-                ...);
+    ...);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -308,7 +308,7 @@
 <h3 id="notice">notice</h3>
 <p><strong> 记录警告日志信息 </strong></p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> <span class="hljs-built_in">console</span>.notice(<span class="hljs-built_in">String</span> fmt,
-                ...);
+    ...);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -329,7 +329,7 @@
 <h3 id="warn">warn</h3>
 <p><strong> 记录警告日志信息 </strong></p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> <span class="hljs-built_in">console</span>.warn(<span class="hljs-built_in">String</span> fmt,
-                ...);
+    ...);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -350,7 +350,7 @@
 <h3 id="error">error</h3>
 <p><strong> 记录错误日志信息 </strong></p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> <span class="hljs-built_in">console</span>.error(<span class="hljs-built_in">String</span> fmt,
-                ...);
+    ...);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -371,7 +371,7 @@
 <h3 id="crit">crit</h3>
 <p><strong> 记录关键错误日志信息 </strong></p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> <span class="hljs-built_in">console</span>.crit(<span class="hljs-built_in">String</span> fmt,
-                ...);
+    ...);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -392,7 +392,7 @@
 <h3 id="alert">alert</h3>
 <p><strong> 记录警报错误日志信息 </strong></p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> <span class="hljs-built_in">console</span>.alert(<span class="hljs-built_in">String</span> fmt,
-                ...);
+    ...);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -450,7 +450,7 @@
 <h3 id="assert">assert</h3>
 <p><strong> 断言测试，如果测试值为假，则报错 </strong></p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> <span class="hljs-built_in">console</span>.assert(Value value,
-                <span class="hljs-built_in">String</span> msg = <span class="hljs-string">""</span>);
+    <span class="hljs-built_in">String</span> msg = <span class="hljs-string">""</span>);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -461,7 +461,7 @@
 <h3 id="print">print</h3>
 <p><strong> 向控制台输出格式化文本，输出内容不会记入日志系统，输出文本后不会自动换行，可连续输出 </strong></p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> <span class="hljs-built_in">console</span>.print(<span class="hljs-built_in">String</span> fmt,
-                ...);
+    ...);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -480,7 +480,7 @@
 <h3 id="moveto">moveTo</h3>
 <p><strong> 移动控制台光标到指定位置 </strong></p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> <span class="hljs-built_in">console</span>.moveTo(Integer row,
-                Integer column);
+    Integer column);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -506,7 +506,7 @@
 <h3 id="keydown">keyDown</h3>
 <p><strong> 按下一个按键 </strong></p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> <span class="hljs-built_in">console</span>.keyDown(<span class="hljs-built_in">String</span> key,
-                <span class="hljs-built_in">String</span> modifier = <span class="hljs-string">""</span>);
+    <span class="hljs-built_in">String</span> modifier = <span class="hljs-string">""</span>);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -523,7 +523,7 @@
 <hr>
 <p><strong> 按下一个按键 </strong></p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> <span class="hljs-built_in">console</span>.keyDown(<span class="hljs-built_in">String</span> key,
-                <span class="hljs-built_in">Array</span> modifier);
+    <span class="hljs-built_in">Array</span> modifier);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -541,7 +541,7 @@
 <h3 id="keyup">keyUp</h3>
 <p><strong> 松开一个按键 </strong></p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> <span class="hljs-built_in">console</span>.keyUp(<span class="hljs-built_in">String</span> key,
-                <span class="hljs-built_in">String</span> modifier = <span class="hljs-string">""</span>);
+    <span class="hljs-built_in">String</span> modifier = <span class="hljs-string">""</span>);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -558,7 +558,7 @@
 <hr>
 <p><strong> 松开一个按键 </strong></p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> <span class="hljs-built_in">console</span>.keyUp(<span class="hljs-built_in">String</span> key,
-                <span class="hljs-built_in">Array</span> modifier);
+    <span class="hljs-built_in">Array</span> modifier);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -576,7 +576,7 @@
 <h3 id="keytap">keyTap</h3>
 <p><strong> 点击并松开一个按键 </strong></p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> <span class="hljs-built_in">console</span>.keyTap(<span class="hljs-built_in">String</span> key,
-                <span class="hljs-built_in">String</span> modifier = <span class="hljs-string">""</span>);
+    <span class="hljs-built_in">String</span> modifier = <span class="hljs-string">""</span>);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -593,7 +593,7 @@
 <hr>
 <p><strong> 点击并松开一个按键 </strong></p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> <span class="hljs-built_in">console</span>.keyTap(<span class="hljs-built_in">String</span> key,
-                <span class="hljs-built_in">Array</span> modifier);
+    <span class="hljs-built_in">Array</span> modifier);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -620,7 +620,7 @@
 <h3 id="movemouse">moveMouse</h3>
 <p><strong> 移动鼠标到指定的位置 </strong></p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> <span class="hljs-built_in">console</span>.moveMouse(Integer x,
-                Integer y);
+    Integer y);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -649,7 +649,7 @@
 <h3 id="clickmouse">clickMouse</h3>
 <p><strong> 点击一个鼠标键 </strong></p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> <span class="hljs-built_in">console</span>.clickMouse(<span class="hljs-built_in">String</span> button,
-                <span class="hljs-built_in">Boolean</span> dbclick = <span class="hljs-literal">false</span>);
+    <span class="hljs-built_in">Boolean</span> dbclick = <span class="hljs-literal">false</span>);
 </code></pre>
 <p>调用参数:</p>
 <ul>

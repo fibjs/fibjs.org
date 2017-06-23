@@ -2,6 +2,7 @@
 mysql 数据库连接对象
 
 使用 [db](../../module/ifs/db.md).open 或 [db](../../module/ifs/db.md).openMySQL 创建，创建方式：
+
 ```JavaScript
 var msql = db.openMySQL("mysql://user:pass@host/db");
 ```
@@ -80,6 +81,7 @@ var msql = db.openMySQL("mysql://user:pass@host/db");
         
 ### rxBufferSize
 ** Integer, 数据库连接接收缓存尺寸 **
+
 ```JavaScript
 Integer MySQL.rxBufferSize;
 ```
@@ -87,6 +89,7 @@ Integer MySQL.rxBufferSize;
 --------------------------
 ### txBufferSize
 ** Integer, 数据库连接发送缓存尺寸 **
+
 ```JavaScript
 Integer MySQL.txBufferSize;
 ```
@@ -94,6 +97,7 @@ Integer MySQL.txBufferSize;
 --------------------------
 ### type
 ** String, 查询当前连接数据库类型 **
+
 ```JavaScript
 readonly String MySQL.type;
 ```
@@ -102,6 +106,7 @@ readonly String MySQL.type;
         
 ### use
 ** 选择当前数据库连接的缺省数据库 **
+
 ```JavaScript
 MySQL.use(String dbName) async;
 ```
@@ -112,6 +117,7 @@ MySQL.use(String dbName) async;
 --------------------------
 ### close
 ** 关闭当前数据库连接 **
+
 ```JavaScript
 MySQL.close() async;
 ```
@@ -119,6 +125,7 @@ MySQL.close() async;
 --------------------------
 ### begin
 ** 在当前数据库连接上启动一个事务 **
+
 ```JavaScript
 MySQL.begin() async;
 ```
@@ -126,6 +133,7 @@ MySQL.begin() async;
 --------------------------
 ### commit
 ** 提交当前数据库连接上的事务 **
+
 ```JavaScript
 MySQL.commit() async;
 ```
@@ -133,6 +141,7 @@ MySQL.commit() async;
 --------------------------
 ### rollback
 ** 回滚当前数据库连接上的事务 **
+
 ```JavaScript
 MySQL.rollback() async;
 ```
@@ -140,6 +149,7 @@ MySQL.rollback() async;
 --------------------------
 ### execute
 ** 执行一个 sql 命令，并返回执行结果 **
+
 ```JavaScript
 DBResult MySQL.execute(String sql) async;
 ```
@@ -152,9 +162,10 @@ DBResult MySQL.execute(String sql) async;
 
 --------------------------
 ** 执行一个 sql 命令，并返回执行结果，可根据参数格式化字符串 **
+
 ```JavaScript
 DBResult MySQL.execute(String sql,
-                ...);
+    ...);
 ```
 
 调用参数:
@@ -167,9 +178,10 @@ DBResult MySQL.execute(String sql,
 --------------------------
 ### format
 ** 格式化一个 sql 命令，并返回格式化结果 **
+
 ```JavaScript
 String MySQL.format(String sql,
-                ...);
+    ...);
 ```
 
 调用参数:
@@ -182,6 +194,7 @@ String MySQL.format(String sql,
 --------------------------
 ### dispose
 ** 强制回收对象，调用此方法后，对象资源将立即释放 **
+
 ```JavaScript
 MySQL.dispose();
 ```
@@ -189,6 +202,7 @@ MySQL.dispose();
 --------------------------
 ### equals
 ** 比较当前对象与给定的对象是否相等 **
+
 ```JavaScript
 Boolean MySQL.equals(object expected);
 ```
@@ -202,6 +216,7 @@ Boolean MySQL.equals(object expected);
 --------------------------
 ### toString
 ** 返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现 **
+
 ```JavaScript
 String MySQL.toString();
 ```
@@ -212,6 +227,7 @@ String MySQL.toString();
 --------------------------
 ### toJSON
 ** 返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合 **
+
 ```JavaScript
 Value MySQL.toJSON(String key = "");
 ```
@@ -225,6 +241,7 @@ Value MySQL.toJSON(String key = "");
 --------------------------
 ### valueOf
 ** 返回对象本身的数值 **
+
 ```JavaScript
 Value MySQL.valueOf();
 ```

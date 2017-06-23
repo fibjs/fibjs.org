@@ -157,9 +157,9 @@
 <p> 所有的代码都运行在自己的沙箱中，全局的 require 会调用当前沙箱加载模块，沙箱会通过 require 传递给加载的沙箱。下面的示例创建一个沙箱，限制只允许访问全局基础模块中的 <a href=../../module/ifs/assert.md.html>assert</a> 模块，并添加 a 和 b 两个定制模块：</p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">var</span> vm = <span class="hljs-built_in">require</span>(<span class="hljs-string">'vm'</span>);
 <span class="hljs-keyword">var</span> sbox = <span class="hljs-keyword">new</span> vm.SandBox({
-  <span class="hljs-attr">a</span>: <span class="hljs-number">100</span>,
-  <span class="hljs-attr">b</span>: <span class="hljs-number">200</span>,
-  <span class="hljs-attr">assert</span>: <span class="hljs-built_in">require</span>(<span class="hljs-string">'assert'</span>)
+    <span class="hljs-attr">a</span>: <span class="hljs-number">100</span>,
+    <span class="hljs-attr">b</span>: <span class="hljs-number">200</span>,
+    <span class="hljs-attr">assert</span>: <span class="hljs-built_in">require</span>(<span class="hljs-string">'assert'</span>)
 });
 
 <span class="hljs-keyword">var</span> mod_in_sbox = sbox.require(<span class="hljs-string">'./path/to/mod'</span>);
@@ -219,7 +219,7 @@
 <h2 id="-">构造函数</h2>
 <h3 id="sandbox">SandBox</h3>
 <p><strong> 构造一个新的安全沙箱对象，并初始化基础模块 </strong></p>
-<pre><code class="lang-JavaScript"> <span class="hljs-keyword">new</span> SandBox(<span class="hljs-built_in">Object</span> mods);
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">new</span> SandBox(<span class="hljs-built_in">Object</span> mods);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -227,8 +227,8 @@
 </ul>
 <hr>
 <p><strong> 构造一个新的安全沙箱对象，并初始化基础模块 </strong></p>
-<pre><code class="lang-JavaScript"> <span class="hljs-keyword">new</span> SandBox(<span class="hljs-built_in">Object</span> mods,
-                <span class="hljs-built_in">Function</span> <span class="hljs-built_in">require</span>);
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">new</span> SandBox(<span class="hljs-built_in">Object</span> mods,
+    <span class="hljs-built_in">Function</span> <span class="hljs-built_in">require</span>);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -237,8 +237,8 @@
 </ul>
 <hr>
 <p><strong> 构造一个独立 Global 新的安全沙箱对象，并初始化基础模块 </strong></p>
-<pre><code class="lang-JavaScript"> <span class="hljs-keyword">new</span> SandBox(<span class="hljs-built_in">Object</span> mods,
-                <span class="hljs-built_in">Object</span> global);
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">new</span> SandBox(<span class="hljs-built_in">Object</span> mods,
+    <span class="hljs-built_in">Object</span> global);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -247,9 +247,9 @@
 </ul>
 <hr>
 <p><strong> 构造一个独立 Global 新的安全沙箱对象，并初始化基础模块 </strong></p>
-<pre><code class="lang-JavaScript"> <span class="hljs-keyword">new</span> SandBox(<span class="hljs-built_in">Object</span> mods,
-                <span class="hljs-built_in">Function</span> <span class="hljs-built_in">require</span>,
-                <span class="hljs-built_in">Object</span> global);
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">new</span> SandBox(<span class="hljs-built_in">Object</span> mods,
+    <span class="hljs-built_in">Function</span> <span class="hljs-built_in">require</span>,
+    <span class="hljs-built_in">Object</span> global);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -266,7 +266,7 @@
 <h3 id="add">add</h3>
 <p><strong> 向沙箱中添加一个基础模块 </strong></p>
 <pre><code class="lang-JavaScript">SandBox.add(<span class="hljs-built_in">String</span> id,
-                Value mod);
+    Value mod);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -285,7 +285,7 @@
 <h3 id="addscript">addScript</h3>
 <p><strong> 向沙箱中添加一个脚本模块 </strong></p>
 <pre><code class="lang-JavaScript">Value SandBox.addScript(<span class="hljs-built_in">String</span> srcname,
-                Buffer script);
+    Buffer script);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -318,7 +318,7 @@
 <h3 id="run">run</h3>
 <p><strong> 运行一个脚本 </strong></p>
 <pre><code class="lang-JavaScript">SandBox.run(<span class="hljs-built_in">String</span> fname,
-                <span class="hljs-built_in">Array</span> argv = []);
+    <span class="hljs-built_in">Array</span> argv = []);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -329,7 +329,7 @@
 <h3 id="resolve">resolve</h3>
 <p><strong> 查询一个模块并返回模块完整文件名 </strong></p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> SandBox.resolve(<span class="hljs-built_in">String</span> id,
-                <span class="hljs-built_in">String</span> base);
+    <span class="hljs-built_in">String</span> base);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -344,7 +344,7 @@
 <h3 id="require">require</h3>
 <p><strong> 加载一个模块并返回模块对象 </strong></p>
 <pre><code class="lang-JavaScript">Value SandBox.require(<span class="hljs-built_in">String</span> id,
-                <span class="hljs-built_in">String</span> base);
+    <span class="hljs-built_in">String</span> base);
 </code></pre>
 <p>调用参数:</p>
 <ul>

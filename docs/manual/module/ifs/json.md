@@ -2,11 +2,14 @@
 json 编码与解码模块
 
 引用方式：
+
 ```JavaScript
 var encoding = require('encoding');
 var json = encoding.json;
 ```
+
 或者
+
 ```JavaScript
 var json = require('json');
 ```
@@ -15,6 +18,7 @@ var json = require('json');
         
 ### encode
 ** 以 json 格式编码变量 **
+
 ```JavaScript
 static String json.encode(Value data);
 ```
@@ -28,6 +32,7 @@ static String json.encode(Value data);
 --------------------------
 ### decode
 ** 以 json 方式解码字符串为一个变量 **
+
 ```JavaScript
 static Value json.decode(String data);
 ```

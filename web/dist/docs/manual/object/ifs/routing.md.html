@@ -156,31 +156,31 @@
 <p>消息处理器路由对象</p>
 <p>路由对象根据设定的规则匹配消息，将消息传递给符合规则的第一个处理器。后加入的路由规则优先匹配。创建方法：</p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">var</span> routing = <span class="hljs-keyword">new</span> mq.Routing({
-  <span class="hljs-string">"^/func1(/.*)$"</span>: func1,
-  <span class="hljs-string">"^/func2(/.*)$"</span>: func2
+    <span class="hljs-string">"^/func1(/.*)$"</span>: func1,
+    <span class="hljs-string">"^/func2(/.*)$"</span>: func2
 });
 </code></pre>
 <p>正则表达式匹配的项目修改消息的 value 属性，子项目存入消息的 params 属性。例如：</p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">var</span> routing = <span class="hljs-keyword">new</span> mq.Routing({
-  <span class="hljs-string">"^/func1(/([0-9]+)/([0-9]+)\.html)$"</span>: func1,
+    <span class="hljs-string">"^/func1(/([0-9]+)/([0-9]+)\.html)$"</span>: func1,
 });
 </code></pre>
 <p>匹配消息 &quot;/func1/123/456.html&quot; 后，value == &quot;/123/456.html&quot;，params == [&quot;123&quot;, &quot;456&quot;];</p>
 <p>如果匹配的结果没有子项，则 value 为空，params 为空。例如：</p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">var</span> routing = <span class="hljs-keyword">new</span> mq.Routing({
-  <span class="hljs-string">"^/func1/[0-9]+/[0-9]+\.html$"</span>: func1,
+    <span class="hljs-string">"^/func1/[0-9]+/[0-9]+\.html$"</span>: func1,
 });
 </code></pre>
 <p>匹配消息 &quot;/func1/123/456.html&quot; 后，value == &quot;&quot;，params == [];</p>
 <p>如果匹配的结果第一级有多个子项，则 value 为空，params 为第一级子项。例如：</p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">var</span> routing = <span class="hljs-keyword">new</span> mq.Routing({
-  <span class="hljs-string">"^/func1/([0-9]+)/([0-9]+)\.html$"</span>: func1,
+    <span class="hljs-string">"^/func1/([0-9]+)/([0-9]+)\.html$"</span>: func1,
 });
 </code></pre>
 <p>匹配消息 &quot;/func1/123/456.html&quot; 后，value == &quot;&quot;，params == [&quot;123&quot;, &quot;456&quot;];</p>
 <p>如果匹配的结果只有一个子项，并且无下级子项，则 value 和 params 均为此子项。例如：</p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">var</span> routing = <span class="hljs-keyword">new</span> mq.Routing({
-  <span class="hljs-string">"^/func1/([0-9]+)/[0-9]+\.html$"</span>: func1,
+    <span class="hljs-string">"^/func1/([0-9]+)/[0-9]+\.html$"</span>: func1,
 });
 </code></pre>
 <p>匹配消息 &quot;/func1/123/456.html&quot; 后，value == &quot;123&quot;，params == [&quot;123&quot;];</p>
@@ -257,7 +257,7 @@
 <h2 id="-">构造函数</h2>
 <h3 id="routing">Routing</h3>
 <p><strong> 创建一个消息处理器路由对象 </strong></p>
-<pre><code class="lang-JavaScript"> <span class="hljs-keyword">new</span> Routing(<span class="hljs-built_in">Object</span> map = {});
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">new</span> Routing(<span class="hljs-built_in">Object</span> map = {});
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -265,8 +265,8 @@
 </ul>
 <hr>
 <p><strong> 创建一个消息处理器路由对象 </strong></p>
-<pre><code class="lang-JavaScript"> <span class="hljs-keyword">new</span> Routing(<span class="hljs-built_in">String</span> method,
-                <span class="hljs-built_in">Object</span> map);
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">new</span> Routing(<span class="hljs-built_in">String</span> method,
+    <span class="hljs-built_in">Object</span> map);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -293,7 +293,7 @@
 <hr>
 <p><strong> 添加一条路由规则 </strong></p>
 <pre><code class="lang-JavaScript">Routing.append(<span class="hljs-built_in">String</span> pattern,
-                Handler hdlr);
+    Handler hdlr);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -303,7 +303,7 @@
 <hr>
 <p><strong> 添加一组路由规则 </strong></p>
 <pre><code class="lang-JavaScript">Routing.append(<span class="hljs-built_in">String</span> method,
-                <span class="hljs-built_in">Object</span> map);
+    <span class="hljs-built_in">Object</span> map);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -313,8 +313,8 @@
 <hr>
 <p><strong> 添加一条路由规则 </strong></p>
 <pre><code class="lang-JavaScript">Routing.append(<span class="hljs-built_in">String</span> method,
-                <span class="hljs-built_in">String</span> pattern,
-                Handler hdlr);
+    <span class="hljs-built_in">String</span> pattern,
+    Handler hdlr);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -334,7 +334,7 @@
 <hr>
 <p><strong> 添加一条接受所有 <a href=../../module/ifs/http.md.html>http</a> 方法路由规则 </strong></p>
 <pre><code class="lang-JavaScript">Routing.all(<span class="hljs-built_in">String</span> pattern,
-                Handler hdlr);
+    Handler hdlr);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -353,7 +353,7 @@
 <hr>
 <p><strong> 添加一条接受 <a href=../../module/ifs/http.md.html>http</a> GET 方法路由规则 </strong></p>
 <pre><code class="lang-JavaScript">Routing.get(<span class="hljs-built_in">String</span> pattern,
-                Handler hdlr);
+    Handler hdlr);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -372,7 +372,7 @@
 <hr>
 <p><strong> 添加一条接受 <a href=../../module/ifs/http.md.html>http</a> POST 方法路由规则 </strong></p>
 <pre><code class="lang-JavaScript">Routing.post(<span class="hljs-built_in">String</span> pattern,
-                Handler hdlr);
+    Handler hdlr);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -391,7 +391,7 @@
 <hr>
 <p><strong> 添加一条接受 <a href=../../module/ifs/http.md.html>http</a> DELETE 方法路由规则 </strong></p>
 <pre><code class="lang-JavaScript">Routing.del(<span class="hljs-built_in">String</span> pattern,
-                Handler hdlr);
+    Handler hdlr);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -410,7 +410,7 @@
 <hr>
 <p><strong> 添加一条接受 <a href=../../module/ifs/http.md.html>http</a> PUT 方法路由规则 </strong></p>
 <pre><code class="lang-JavaScript">Routing.put(<span class="hljs-built_in">String</span> pattern,
-                Handler hdlr);
+    Handler hdlr);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -429,7 +429,7 @@
 <hr>
 <p><strong> 添加一条接受 <a href=../../module/ifs/http.md.html>http</a> PATCH 方法路由规则 </strong></p>
 <pre><code class="lang-JavaScript">Routing.patch(<span class="hljs-built_in">String</span> pattern,
-                Handler hdlr);
+    Handler hdlr);
 </code></pre>
 <p>调用参数:</p>
 <ul>

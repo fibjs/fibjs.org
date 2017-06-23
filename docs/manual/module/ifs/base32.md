@@ -2,11 +2,14 @@
 base32 编码与解码模块
 
 引用方式：
+
 ```JavaScript
 var encoding = require('encoding');
 var base32 = encoding.base32;
 ```
+
 或者
+
 ```JavaScript
 var base32 = require('base32');
 ```
@@ -15,6 +18,7 @@ var base32 = require('base32');
         
 ### encode
 ** 以 base32 方式编码数据 **
+
 ```JavaScript
 static String base32.encode(Buffer data);
 ```
@@ -28,6 +32,7 @@ static String base32.encode(Buffer data);
 --------------------------
 ### decode
 ** 以 base32 方式解码字符串为二进制数据 **
+
 ```JavaScript
 static Buffer base32.decode(String data);
 ```

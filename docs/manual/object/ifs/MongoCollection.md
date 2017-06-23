@@ -2,6 +2,7 @@
 mongodb 数据库数据集对象
 
 使用 [MongoDB](MongoDB.md).getCollection 创建：
+
 ```JavaScript
 var col1 = mdb.getCollection('test');
 var col = mdb.test;
@@ -68,6 +69,7 @@ var col = mdb.test;
 ## 下标操作
         
 ** 以属性方式快速获取当前集合子命名空间的集合对象 **
+
 ```JavaScript
 readonly MongoCollection MongoCollection[String];
 ```
@@ -79,9 +81,10 @@ readonly MongoCollection MongoCollection[String];
         
 ### find
 ** 根据给定的查询条件和返回字段设定，建立游标对象 **
+
 ```JavaScript
 MongoCursor MongoCollection.find(Object query = {},
-                Object projection = {});
+    Object projection = {});
 ```
 
 调用参数:
@@ -94,9 +97,10 @@ MongoCursor MongoCollection.find(Object query = {},
 --------------------------
 ### findOne
 ** 根据给定的查询条件和返回字段设定，查询一条结果 **
+
 ```JavaScript
 Object MongoCollection.findOne(Object query = {},
-                Object projection = {});
+    Object projection = {});
 ```
 
 调用参数:
@@ -109,6 +113,7 @@ Object MongoCollection.findOne(Object query = {},
 --------------------------
 ### findAndModify
 ** 查询并修改 **
+
 ```JavaScript
 Object MongoCollection.findAndModify(Object query);
 ```
@@ -122,6 +127,7 @@ Object MongoCollection.findAndModify(Object query);
 --------------------------
 ### insert
 ** 插入一组数据 **
+
 ```JavaScript
 MongoCollection.insert(Array documents);
 ```
@@ -131,6 +137,7 @@ MongoCollection.insert(Array documents);
 
 --------------------------
 ** 插入一条数据 **
+
 ```JavaScript
 MongoCollection.insert(Object document);
 ```
@@ -141,6 +148,7 @@ MongoCollection.insert(Object document);
 --------------------------
 ### save
 ** 保存一条数据，若数据包含 _id 字段，则为更新，否则为插入 **
+
 ```JavaScript
 MongoCollection.save(Object document);
 ```
@@ -151,11 +159,12 @@ MongoCollection.save(Object document);
 --------------------------
 ### update
 ** 根据给定的查询条件更新数据 **
+
 ```JavaScript
 MongoCollection.update(Object query,
-                Object document,
-                Boolean upsert = false,
-                Boolean multi = false);
+    Object document,
+    Boolean upsert = false,
+    Boolean multi = false);
 ```
 
 调用参数:
@@ -166,10 +175,11 @@ MongoCollection.update(Object query,
 
 --------------------------
 ** 根据给定的查询条件更新数据 **
+
 ```JavaScript
 MongoCollection.update(Object query,
-                Object document,
-                Object options);
+    Object document,
+    Object options);
 ```
 
 调用参数:
@@ -180,6 +190,7 @@ MongoCollection.update(Object query,
 --------------------------
 ### remove
 ** 根据给定的查询条件删除数据 **
+
 ```JavaScript
 MongoCollection.remove(Object query);
 ```
@@ -190,6 +201,7 @@ MongoCollection.remove(Object query);
 --------------------------
 ### runCommand
 ** 执行数据库命令 **
+
 ```JavaScript
 Object MongoCollection.runCommand(Object cmd);
 ```
@@ -199,9 +211,10 @@ Object MongoCollection.runCommand(Object cmd);
 
 --------------------------
 ** 执行数据库命令 **
+
 ```JavaScript
 Object MongoCollection.runCommand(String cmd,
-                Object arg = {});
+    Object arg = {});
 ```
 
 调用参数:
@@ -211,6 +224,7 @@ Object MongoCollection.runCommand(String cmd,
 --------------------------
 ### drop
 ** 删除当前集合 **
+
 ```JavaScript
 MongoCollection.drop();
 ```
@@ -218,9 +232,10 @@ MongoCollection.drop();
 --------------------------
 ### ensureIndex
 ** 在当前集合上创建索引 **
+
 ```JavaScript
 MongoCollection.ensureIndex(Object keys,
-                Object options = {});
+    Object options = {});
 ```
 
 调用参数:
@@ -230,6 +245,7 @@ MongoCollection.ensureIndex(Object keys,
 --------------------------
 ### reIndex
 ** 重建当前集合的索引 **
+
 ```JavaScript
 Object MongoCollection.reIndex();
 ```
@@ -240,6 +256,7 @@ Object MongoCollection.reIndex();
 --------------------------
 ### dropIndex
 ** 删除当前集合指定名称的索引 **
+
 ```JavaScript
 Object MongoCollection.dropIndex(String name);
 ```
@@ -253,6 +270,7 @@ Object MongoCollection.dropIndex(String name);
 --------------------------
 ### dropIndexes
 ** 删除当前集合全部索引 **
+
 ```JavaScript
 Object MongoCollection.dropIndexes();
 ```
@@ -263,6 +281,7 @@ Object MongoCollection.dropIndexes();
 --------------------------
 ### getIndexes
 ** 查询当前集合全部索引 **
+
 ```JavaScript
 MongoCursor MongoCollection.getIndexes();
 ```
@@ -273,6 +292,7 @@ MongoCursor MongoCollection.getIndexes();
 --------------------------
 ### getCollection
 ** 获取当前集合子命名空间的集合对象 **
+
 ```JavaScript
 MongoCollection MongoCollection.getCollection(String name);
 ```
@@ -286,6 +306,7 @@ MongoCollection MongoCollection.getCollection(String name);
 --------------------------
 ### dispose
 ** 强制回收对象，调用此方法后，对象资源将立即释放 **
+
 ```JavaScript
 MongoCollection.dispose();
 ```
@@ -293,6 +314,7 @@ MongoCollection.dispose();
 --------------------------
 ### equals
 ** 比较当前对象与给定的对象是否相等 **
+
 ```JavaScript
 Boolean MongoCollection.equals(object expected);
 ```
@@ -306,6 +328,7 @@ Boolean MongoCollection.equals(object expected);
 --------------------------
 ### toString
 ** 返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现 **
+
 ```JavaScript
 String MongoCollection.toString();
 ```
@@ -316,6 +339,7 @@ String MongoCollection.toString();
 --------------------------
 ### toJSON
 ** 返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合 **
+
 ```JavaScript
 Value MongoCollection.toJSON(String key = "");
 ```
@@ -329,6 +353,7 @@ Value MongoCollection.toJSON(String key = "");
 --------------------------
 ### valueOf
 ** 返回对象本身的数值 **
+
 ```JavaScript
 Value MongoCollection.valueOf();
 ```

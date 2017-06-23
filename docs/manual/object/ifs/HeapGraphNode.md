@@ -52,6 +52,7 @@ HeapGraphNode表示堆视图中的一个节点
         
 ### type
 ** Integer, 节点类型，可能的值： **
+
 ```JavaScript
 readonly Integer HeapGraphNode.type;
 ```
@@ -74,6 +75,7 @@ readonly Integer HeapGraphNode.type;
 --------------------------
 ### name
 ** String, 节点名称 **
+
 ```JavaScript
 readonly String HeapGraphNode.name;
 ```
@@ -81,6 +83,7 @@ readonly String HeapGraphNode.name;
 --------------------------
 ### description
 ** String, 节点的描述 **
+
 ```JavaScript
 readonly String HeapGraphNode.description;
 ```
@@ -88,6 +91,7 @@ readonly String HeapGraphNode.description;
 --------------------------
 ### id
 ** Integer, 节点ID **
+
 ```JavaScript
 readonly Integer HeapGraphNode.id;
 ```
@@ -95,6 +99,7 @@ readonly Integer HeapGraphNode.id;
 --------------------------
 ### shallowSize
 ** Integer, 节点大小，单位为字节 **
+
 ```JavaScript
 readonly Integer HeapGraphNode.shallowSize;
 ```
@@ -102,6 +107,7 @@ readonly Integer HeapGraphNode.shallowSize;
 --------------------------
 ### childs
 ** [List](List.md), 子节点列表，由[HeapGraphEdge](HeapGraphEdge.md)类型对象组成 **
+
 ```JavaScript
 readonly List HeapGraphNode.childs;
 ```
@@ -110,6 +116,7 @@ readonly List HeapGraphNode.childs;
         
 ### dispose
 ** 强制回收对象，调用此方法后，对象资源将立即释放 **
+
 ```JavaScript
 HeapGraphNode.dispose();
 ```
@@ -117,6 +124,7 @@ HeapGraphNode.dispose();
 --------------------------
 ### equals
 ** 比较当前对象与给定的对象是否相等 **
+
 ```JavaScript
 Boolean HeapGraphNode.equals(object expected);
 ```
@@ -130,6 +138,7 @@ Boolean HeapGraphNode.equals(object expected);
 --------------------------
 ### toString
 ** 返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现 **
+
 ```JavaScript
 String HeapGraphNode.toString();
 ```
@@ -140,6 +149,7 @@ String HeapGraphNode.toString();
 --------------------------
 ### toJSON
 ** 返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合 **
+
 ```JavaScript
 Value HeapGraphNode.toJSON(String key = "");
 ```
@@ -153,6 +163,7 @@ Value HeapGraphNode.toJSON(String key = "");
 --------------------------
 ### valueOf
 ** 返回对象本身的数值 **
+
 ```JavaScript
 Value HeapGraphNode.valueOf();
 ```

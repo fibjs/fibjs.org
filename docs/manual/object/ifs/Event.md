@@ -77,8 +77,9 @@
         
 ### Event
 ** 事件对象构造函数 **
+
 ```JavaScript
- new Event(Boolean value = false);
+new Event(Boolean value = false);
 ```
 
 调用参数:
@@ -88,6 +89,7 @@
         
 ### isSet
 ** 判断事件对象是否为true **
+
 ```JavaScript
 Boolean Event.isSet();
 ```
@@ -95,6 +97,7 @@ Boolean Event.isSet();
 --------------------------
 ### set
 ** 激活事件（将事件状态改为true），并调用pulse() **
+
 ```JavaScript
 Event.set();
 ```
@@ -102,6 +105,7 @@ Event.set();
 --------------------------
 ### pulse
 ** 激活等待该事件的所有纤程 **
+
 ```JavaScript
 Event.pulse();
 ```
@@ -109,6 +113,7 @@ Event.pulse();
 --------------------------
 ### clear
 ** 重置事件（将事件状态改为false） **
+
 ```JavaScript
 Event.clear();
 ```
@@ -116,6 +121,7 @@ Event.clear();
 --------------------------
 ### wait
 ** 等待一个事件 **
+
 ```JavaScript
 Event.wait();
 ```
@@ -123,6 +129,7 @@ Event.wait();
 --------------------------
 ### acquire
 ** 获取锁的拥有权 **
+
 ```JavaScript
 Boolean Event.acquire(Boolean blocking = true);
 ```
@@ -142,6 +149,7 @@ acquire 方法用于获取锁的拥有权，当锁处于可获取状态时，此
 --------------------------
 ### release
 ** 释放锁的拥有权 **
+
 ```JavaScript
 Event.release();
 ```
@@ -151,6 +159,7 @@ Event.release();
 --------------------------
 ### count
 ** 查询当前等待任务数 **
+
 ```JavaScript
 Integer Event.count();
 ```
@@ -161,6 +170,7 @@ Integer Event.count();
 --------------------------
 ### dispose
 ** 强制回收对象，调用此方法后，对象资源将立即释放 **
+
 ```JavaScript
 Event.dispose();
 ```
@@ -168,6 +178,7 @@ Event.dispose();
 --------------------------
 ### equals
 ** 比较当前对象与给定的对象是否相等 **
+
 ```JavaScript
 Boolean Event.equals(object expected);
 ```
@@ -181,6 +192,7 @@ Boolean Event.equals(object expected);
 --------------------------
 ### toString
 ** 返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现 **
+
 ```JavaScript
 String Event.toString();
 ```
@@ -191,6 +203,7 @@ String Event.toString();
 --------------------------
 ### toJSON
 ** 返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合 **
+
 ```JavaScript
 Value Event.toJSON(String key = "");
 ```
@@ -204,6 +217,7 @@ Value Event.toJSON(String key = "");
 --------------------------
 ### valueOf
 ** 返回对象本身的数值 **
+
 ```JavaScript
 Value Event.valueOf();
 ```

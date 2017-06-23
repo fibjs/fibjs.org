@@ -2,42 +2,52 @@
 消息处理器路由对象
 
 路由对象根据设定的规则匹配消息，将消息传递给符合规则的第一个处理器。后加入的路由规则优先匹配。创建方法：
+
 ```JavaScript
 var routing = new mq.Routing({
-  "^/func1(/.*)$": func1,
-  "^/func2(/.*)$": func2
+    "^/func1(/.*)$": func1,
+    "^/func2(/.*)$": func2
 });
 ```
+
 正则表达式匹配的项目修改消息的 value 属性，子项目存入消息的 params 属性。例如：
+
 ```JavaScript
 var routing = new mq.Routing({
-  "^/func1(/([0-9]+)/([0-9]+)\.html)$": func1,
+    "^/func1(/([0-9]+)/([0-9]+)\.html)$": func1,
 });
 ```
+
 匹配消息 "/func1/123/456.html" 后，value == "/123/456.html"，params == ["123", "456"];
 
 如果匹配的结果没有子项，则 value 为空，params 为空。例如：
+
 ```JavaScript
 var routing = new mq.Routing({
-  "^/func1/[0-9]+/[0-9]+\.html$": func1,
+    "^/func1/[0-9]+/[0-9]+\.html$": func1,
 });
 ```
+
 匹配消息 "/func1/123/456.html" 后，value == ""，params == [];
 
 如果匹配的结果第一级有多个子项，则 value 为空，params 为第一级子项。例如：
+
 ```JavaScript
 var routing = new mq.Routing({
-  "^/func1/([0-9]+)/([0-9]+)\.html$": func1,
+    "^/func1/([0-9]+)/([0-9]+)\.html$": func1,
 });
 ```
+
 匹配消息 "/func1/123/456.html" 后，value == ""，params == ["123", "456"];
 
 如果匹配的结果只有一个子项，并且无下级子项，则 value 和 params 均为此子项。例如：
+
 ```JavaScript
 var routing = new mq.Routing({
-  "^/func1/([0-9]+)/[0-9]+\.html$": func1,
+    "^/func1/([0-9]+)/[0-9]+\.html$": func1,
 });
 ```
+
 匹配消息 "/func1/123/456.html" 后，value == "123"，params == ["123"];
 
 ## 继承关系
@@ -114,8 +124,9 @@ var routing = new mq.Routing({
         
 ### Routing
 ** 创建一个消息处理器路由对象 **
+
 ```JavaScript
- new Routing(Object map = {});
+new Routing(Object map = {});
 ```
 
 调用参数:
@@ -123,9 +134,10 @@ var routing = new mq.Routing({
 
 --------------------------
 ** 创建一个消息处理器路由对象 **
+
 ```JavaScript
- new Routing(String method,
-                Object map);
+new Routing(String method,
+    Object map);
 ```
 
 调用参数:
@@ -136,6 +148,7 @@ var routing = new mq.Routing({
         
 ### append
 ** 从已有路由对象中添加规则，添加后原路由将被清空 **
+
 ```JavaScript
 Routing.append(Routing route);
 ```
@@ -145,6 +158,7 @@ Routing.append(Routing route);
 
 --------------------------
 ** 添加一组路由规则 **
+
 ```JavaScript
 Routing.append(Object map);
 ```
@@ -154,9 +168,10 @@ Routing.append(Object map);
 
 --------------------------
 ** 添加一条路由规则 **
+
 ```JavaScript
 Routing.append(String pattern,
-                Handler hdlr);
+    Handler hdlr);
 ```
 
 调用参数:
@@ -165,9 +180,10 @@ Routing.append(String pattern,
 
 --------------------------
 ** 添加一组路由规则 **
+
 ```JavaScript
 Routing.append(String method,
-                Object map);
+    Object map);
 ```
 
 调用参数:
@@ -176,10 +192,11 @@ Routing.append(String method,
 
 --------------------------
 ** 添加一条路由规则 **
+
 ```JavaScript
 Routing.append(String method,
-                String pattern,
-                Handler hdlr);
+    String pattern,
+    Handler hdlr);
 ```
 
 调用参数:
@@ -190,6 +207,7 @@ Routing.append(String method,
 --------------------------
 ### all
 ** 添加一组接受所有 [http](../../module/ifs/http.md) 方法路由规则 **
+
 ```JavaScript
 Routing.all(Object map);
 ```
@@ -199,9 +217,10 @@ Routing.all(Object map);
 
 --------------------------
 ** 添加一条接受所有 [http](../../module/ifs/http.md) 方法路由规则 **
+
 ```JavaScript
 Routing.all(String pattern,
-                Handler hdlr);
+    Handler hdlr);
 ```
 
 调用参数:
@@ -211,6 +230,7 @@ Routing.all(String pattern,
 --------------------------
 ### get
 ** 添加一组 GET 方法路由规则 **
+
 ```JavaScript
 Routing.get(Object map);
 ```
@@ -220,9 +240,10 @@ Routing.get(Object map);
 
 --------------------------
 ** 添加一条接受 [http](../../module/ifs/http.md) GET 方法路由规则 **
+
 ```JavaScript
 Routing.get(String pattern,
-                Handler hdlr);
+    Handler hdlr);
 ```
 
 调用参数:
@@ -232,6 +253,7 @@ Routing.get(String pattern,
 --------------------------
 ### post
 ** 添加一组接受 [http](../../module/ifs/http.md) POST 方法路由规则 **
+
 ```JavaScript
 Routing.post(Object map);
 ```
@@ -241,9 +263,10 @@ Routing.post(Object map);
 
 --------------------------
 ** 添加一条接受 [http](../../module/ifs/http.md) POST 方法路由规则 **
+
 ```JavaScript
 Routing.post(String pattern,
-                Handler hdlr);
+    Handler hdlr);
 ```
 
 调用参数:
@@ -253,6 +276,7 @@ Routing.post(String pattern,
 --------------------------
 ### del
 ** 添加一组接受 [http](../../module/ifs/http.md) DELETE 方法路由规则 **
+
 ```JavaScript
 Routing.del(Object map);
 ```
@@ -262,9 +286,10 @@ Routing.del(Object map);
 
 --------------------------
 ** 添加一条接受 [http](../../module/ifs/http.md) DELETE 方法路由规则 **
+
 ```JavaScript
 Routing.del(String pattern,
-                Handler hdlr);
+    Handler hdlr);
 ```
 
 调用参数:
@@ -274,6 +299,7 @@ Routing.del(String pattern,
 --------------------------
 ### put
 ** 添加一组 PUT 方法路由规则 **
+
 ```JavaScript
 Routing.put(Object map);
 ```
@@ -283,9 +309,10 @@ Routing.put(Object map);
 
 --------------------------
 ** 添加一条接受 [http](../../module/ifs/http.md) PUT 方法路由规则 **
+
 ```JavaScript
 Routing.put(String pattern,
-                Handler hdlr);
+    Handler hdlr);
 ```
 
 调用参数:
@@ -295,6 +322,7 @@ Routing.put(String pattern,
 --------------------------
 ### patch
 ** 添加一组 PATCH 方法路由规则 **
+
 ```JavaScript
 Routing.patch(Object map);
 ```
@@ -304,9 +332,10 @@ Routing.patch(Object map);
 
 --------------------------
 ** 添加一条接受 [http](../../module/ifs/http.md) PATCH 方法路由规则 **
+
 ```JavaScript
 Routing.patch(String pattern,
-                Handler hdlr);
+    Handler hdlr);
 ```
 
 调用参数:
@@ -316,6 +345,7 @@ Routing.patch(String pattern,
 --------------------------
 ### invoke
 ** 处理一个消息或对象 **
+
 ```JavaScript
 Handler Routing.invoke(object v) async;
 ```
@@ -329,6 +359,7 @@ Handler Routing.invoke(object v) async;
 --------------------------
 ### dispose
 ** 强制回收对象，调用此方法后，对象资源将立即释放 **
+
 ```JavaScript
 Routing.dispose();
 ```
@@ -336,6 +367,7 @@ Routing.dispose();
 --------------------------
 ### equals
 ** 比较当前对象与给定的对象是否相等 **
+
 ```JavaScript
 Boolean Routing.equals(object expected);
 ```
@@ -349,6 +381,7 @@ Boolean Routing.equals(object expected);
 --------------------------
 ### toString
 ** 返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现 **
+
 ```JavaScript
 String Routing.toString();
 ```
@@ -359,6 +392,7 @@ String Routing.toString();
 --------------------------
 ### toJSON
 ** 返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合 **
+
 ```JavaScript
 Value Routing.toJSON(String key = "");
 ```
@@ -372,6 +406,7 @@ Value Routing.toJSON(String key = "");
 --------------------------
 ### valueOf
 ** 返回对象本身的数值 **
+
 ```JavaScript
 Value Routing.valueOf();
 ```

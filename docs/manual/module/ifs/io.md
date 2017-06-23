@@ -2,6 +2,7 @@
 输入输出处理模块
 
 使用方法：
+
 ```JavaScript
 var io = require('io');
 ```
@@ -10,6 +11,7 @@ var io = require('io');
         
 ### MemoryStream
 ** 创建一个内存流对象，参见 [MemoryStream](../../object/ifs/MemoryStream.md) **
+
 ```JavaScript
 MemoryStream io.MemoryStream;
 ```
@@ -17,6 +19,7 @@ MemoryStream io.MemoryStream;
 --------------------------
 ### BufferedStream
 ** 创建一个缓存流读取对象，参见 [BufferedStream](../../object/ifs/BufferedStream.md) **
+
 ```JavaScript
 BufferedStream io.BufferedStream;
 ```
@@ -25,10 +28,11 @@ BufferedStream io.BufferedStream;
         
 ### copyStream
 ** 复制流数据到目标流中 **
+
 ```JavaScript
 static Long io.copyStream(Stream from,
-                Stream to,
-                Long bytes = -1) async;
+    Stream to,
+    Long bytes = -1) async;
 ```
 
 调用参数:
@@ -42,9 +46,10 @@ static Long io.copyStream(Stream from,
 --------------------------
 ### bridge
 ** 双向复制流数据，直到流中无数据，或者流被关闭 **
+
 ```JavaScript
 static io.bridge(Stream stm1,
-                Stream stm2) async;
+    Stream stm2) async;
 ```
 
 调用参数:

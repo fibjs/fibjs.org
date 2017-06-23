@@ -2,6 +2,7 @@
 内存流对象
 
 MemoryStream 对象创建一个基于内存的流对象，创建方法：
+
 ```JavaScript
 var ms = new io.MemoryStream();
 ```
@@ -103,14 +104,16 @@ var ms = new io.MemoryStream();
         
 ### MemoryStream
 ** MemoryStream 构造函数 **
+
 ```JavaScript
- new MemoryStream();
+new MemoryStream();
 ```
 
 ## 成员函数
         
 ### setTime
 ** 强制设定内存流对象的最后更新时间 **
+
 ```JavaScript
 MemoryStream.setTime(Date d);
 ```
@@ -121,6 +124,7 @@ MemoryStream.setTime(Date d);
 --------------------------
 ### clone
 ** 创建当前内存流的一个只读副本 **
+
 ```JavaScript
 MemoryStream MemoryStream.clone();
 ```
@@ -131,6 +135,7 @@ MemoryStream MemoryStream.clone();
 --------------------------
 ### clear
 ** 清空内存文件数据，复位指针 **
+
 ```JavaScript
 MemoryStream.clear();
 ```
@@ -138,9 +143,10 @@ MemoryStream.clear();
 --------------------------
 ### seek
 ** 移动文件当前操作位置 **
+
 ```JavaScript
 MemoryStream.seek(Long offset,
-                Integer whence);
+    Integer whence);
 ```
 
 调用参数:
@@ -150,6 +156,7 @@ MemoryStream.seek(Long offset,
 --------------------------
 ### tell
 ** 查询流当前位置 **
+
 ```JavaScript
 Long MemoryStream.tell();
 ```
@@ -160,6 +167,7 @@ Long MemoryStream.tell();
 --------------------------
 ### rewind
 ** 移动当前位置到流开头 **
+
 ```JavaScript
 MemoryStream.rewind();
 ```
@@ -167,6 +175,7 @@ MemoryStream.rewind();
 --------------------------
 ### size
 ** 查询流尺寸 **
+
 ```JavaScript
 Long MemoryStream.size();
 ```
@@ -177,6 +186,7 @@ Long MemoryStream.size();
 --------------------------
 ### readAll
 ** 从流内读取剩余的全部数据 **
+
 ```JavaScript
 Buffer MemoryStream.readAll() async;
 ```
@@ -187,6 +197,7 @@ Buffer MemoryStream.readAll() async;
 --------------------------
 ### truncate
 ** 修改文件尺寸，如果新尺寸小于原尺寸，则文件被截断 **
+
 ```JavaScript
 MemoryStream.truncate(Long bytes) async;
 ```
@@ -197,6 +208,7 @@ MemoryStream.truncate(Long bytes) async;
 --------------------------
 ### eof
 ** 查询文件是否到结尾 **
+
 ```JavaScript
 Boolean MemoryStream.eof();
 ```
@@ -207,6 +219,7 @@ Boolean MemoryStream.eof();
 --------------------------
 ### flush
 ** 将文件缓冲区内容写入物理设备 **
+
 ```JavaScript
 MemoryStream.flush() async;
 ```
@@ -214,6 +227,7 @@ MemoryStream.flush() async;
 --------------------------
 ### stat
 ** 查询当前文件的基础信息 **
+
 ```JavaScript
 Stat MemoryStream.stat() async;
 ```
@@ -224,6 +238,7 @@ Stat MemoryStream.stat() async;
 --------------------------
 ### read
 ** 从流内读取指定大小的数据 **
+
 ```JavaScript
 Buffer MemoryStream.read(Integer bytes = -1) async;
 ```
@@ -237,6 +252,7 @@ Buffer MemoryStream.read(Integer bytes = -1) async;
 --------------------------
 ### write
 ** 将给定的数据写入流 **
+
 ```JavaScript
 MemoryStream.write(Buffer data) async;
 ```
@@ -247,6 +263,7 @@ MemoryStream.write(Buffer data) async;
 --------------------------
 ### close
 ** 关闭当前流对象 **
+
 ```JavaScript
 MemoryStream.close() async;
 ```
@@ -254,9 +271,10 @@ MemoryStream.close() async;
 --------------------------
 ### copyTo
 ** 复制流数据到目标流中 **
+
 ```JavaScript
 Long MemoryStream.copyTo(Stream stm,
-                Long bytes = -1) async;
+    Long bytes = -1) async;
 ```
 
 调用参数:
@@ -269,6 +287,7 @@ Long MemoryStream.copyTo(Stream stm,
 --------------------------
 ### dispose
 ** 强制回收对象，调用此方法后，对象资源将立即释放 **
+
 ```JavaScript
 MemoryStream.dispose();
 ```
@@ -276,6 +295,7 @@ MemoryStream.dispose();
 --------------------------
 ### equals
 ** 比较当前对象与给定的对象是否相等 **
+
 ```JavaScript
 Boolean MemoryStream.equals(object expected);
 ```
@@ -289,6 +309,7 @@ Boolean MemoryStream.equals(object expected);
 --------------------------
 ### toString
 ** 返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现 **
+
 ```JavaScript
 String MemoryStream.toString();
 ```
@@ -299,6 +320,7 @@ String MemoryStream.toString();
 --------------------------
 ### toJSON
 ** 返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合 **
+
 ```JavaScript
 Value MemoryStream.toJSON(String key = "");
 ```
@@ -312,6 +334,7 @@ Value MemoryStream.toJSON(String key = "");
 --------------------------
 ### valueOf
 ** 返回对象本身的数值 **
+
 ```JavaScript
 Value MemoryStream.valueOf();
 ```

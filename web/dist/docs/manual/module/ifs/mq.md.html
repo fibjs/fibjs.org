@@ -181,8 +181,7 @@
 <li>路由对象，等同于返回 new mq.<a href=../../object/ifs/routing.md.html>Routing</a>(hdlr)，参见 <a href=../../object/ifs/routing.md.html>Routing</a></li>
 </ul>
 <p>消息处理函数语法如下：</p>
-<pre><code class="lang-JavaScript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">func</span>(<span class="hljs-params">v</span>)</span>{
-}
+<pre><code class="lang-JavaScript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">func</span>(<span class="hljs-params">v</span>) </span>{}
 </code></pre>
 <p>参数 v 为正在处理的消息，返回结果允许有四种:</p>
 <ul>
@@ -212,12 +211,12 @@
 <li><a href=../../object/ifs/handler.md.html>Handler</a>, 返回创建的处理器</li>
 </ul>
 <p>异步等待处理器用于需要异步处理的消息处理模式，示例如下：</p>
-<pre><code class="lang-JavaScript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">func</span>(<span class="hljs-params">v</span>)</span>{
+<pre><code class="lang-JavaScript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">func</span>(<span class="hljs-params">v</span>) </span>{
     <span class="hljs-keyword">var</span> <span class="hljs-keyword">await</span> = mq.await();
 
     call_some_async_func(v1, v2, v3, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
-            <span class="hljs-keyword">await</span>.end();
-        });
+        <span class="hljs-keyword">await</span>.end();
+    });
 
     <span class="hljs-keyword">return</span> <span class="hljs-keyword">await</span>;
 }
@@ -236,7 +235,7 @@
 <h3 id="invoke">invoke</h3>
 <p><strong> 使用给定的处理器处理一个消息或对象 </strong></p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> mq.invoke(Handler hdlr,
-                object v) <span class="hljs-keyword">async</span>;
+    object v) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>

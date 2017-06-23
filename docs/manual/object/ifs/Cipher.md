@@ -2,6 +2,7 @@
 对称加密算法对象
 
 Cipher 对象属于 [crypto](../../module/ifs/crypto.md) 模块，创建：
+
 ```JavaScript
 var c = new crypto.Cipher(crypto.AES, crypto.ECB, ...);
 ```
@@ -61,9 +62,10 @@ var c = new crypto.Cipher(crypto.AES, crypto.ECB, ...);
         
 ### Cipher
 ** Cipher 构造函数，仅用于 ARC4 初始化 **
+
 ```JavaScript
- new Cipher(Integer provider,
-                Buffer key);
+new Cipher(Integer provider,
+    Buffer key);
 ```
 
 调用参数:
@@ -72,10 +74,11 @@ var c = new crypto.Cipher(crypto.AES, crypto.ECB, ...);
 
 --------------------------
 ** Cipher 构造函数 **
+
 ```JavaScript
- new Cipher(Integer provider,
-                Integer mode,
-                Buffer key);
+new Cipher(Integer provider,
+    Integer mode,
+    Buffer key);
 ```
 
 调用参数:
@@ -85,11 +88,12 @@ var c = new crypto.Cipher(crypto.AES, crypto.ECB, ...);
 
 --------------------------
 ** Cipher 构造函数 **
+
 ```JavaScript
- new Cipher(Integer provider,
-                Integer mode,
-                Buffer key,
-                Buffer iv);
+new Cipher(Integer provider,
+    Integer mode,
+    Buffer key,
+    Buffer iv);
 ```
 
 调用参数:
@@ -102,6 +106,7 @@ var c = new crypto.Cipher(crypto.AES, crypto.ECB, ...);
         
 ### name
 ** String, 返回当前算法名称 **
+
 ```JavaScript
 readonly String Cipher.name;
 ```
@@ -109,6 +114,7 @@ readonly String Cipher.name;
 --------------------------
 ### keySize
 ** Integer, 返回当前算法密码长度，以位为单位 **
+
 ```JavaScript
 readonly Integer Cipher.keySize;
 ```
@@ -116,6 +122,7 @@ readonly Integer Cipher.keySize;
 --------------------------
 ### ivSize
 ** Integer, 返回当前算法初始向量长度，以字节为单位 **
+
 ```JavaScript
 readonly Integer Cipher.ivSize;
 ```
@@ -123,6 +130,7 @@ readonly Integer Cipher.ivSize;
 --------------------------
 ### blockSize
 ** Integer, 返回当前算法数据块长度，以字节为单位 **
+
 ```JavaScript
 readonly Integer Cipher.blockSize;
 ```
@@ -131,6 +139,7 @@ readonly Integer Cipher.blockSize;
         
 ### paddingMode
 ** 使用填充模式 **
+
 ```JavaScript
 Cipher.paddingMode(Integer mode);
 ```
@@ -141,6 +150,7 @@ Cipher.paddingMode(Integer mode);
 --------------------------
 ### encrypt
 ** 使用当前算法密码加密数据 **
+
 ```JavaScript
 Buffer Cipher.encrypt(Buffer data) async;
 ```
@@ -154,6 +164,7 @@ Buffer Cipher.encrypt(Buffer data) async;
 --------------------------
 ### decrypt
 ** 使用当前算法密码解密数据 **
+
 ```JavaScript
 Buffer Cipher.decrypt(Buffer data) async;
 ```
@@ -167,6 +178,7 @@ Buffer Cipher.decrypt(Buffer data) async;
 --------------------------
 ### dispose
 ** 强制回收对象，调用此方法后，对象资源将立即释放 **
+
 ```JavaScript
 Cipher.dispose();
 ```
@@ -174,6 +186,7 @@ Cipher.dispose();
 --------------------------
 ### equals
 ** 比较当前对象与给定的对象是否相等 **
+
 ```JavaScript
 Boolean Cipher.equals(object expected);
 ```
@@ -187,6 +200,7 @@ Boolean Cipher.equals(object expected);
 --------------------------
 ### toString
 ** 返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现 **
+
 ```JavaScript
 String Cipher.toString();
 ```
@@ -197,6 +211,7 @@ String Cipher.toString();
 --------------------------
 ### toJSON
 ** 返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合 **
+
 ```JavaScript
 Value Cipher.toJSON(String key = "");
 ```
@@ -210,6 +225,7 @@ Value Cipher.toJSON(String key = "");
 --------------------------
 ### valueOf
 ** 返回对象本身的数值 **
+
 ```JavaScript
 Value Cipher.valueOf();
 ```

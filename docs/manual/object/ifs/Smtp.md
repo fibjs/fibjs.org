@@ -59,14 +59,16 @@ Smtp对象
         
 ### Smtp
 ** Smtp 对象构造函数 **
+
 ```JavaScript
- new Smtp();
+new Smtp();
 ```
 
 ## 成员属性
         
 ### timeout
 ** Integer, 查询和设置超时时间 单位毫秒 **
+
 ```JavaScript
 Integer Smtp.timeout;
 ```
@@ -74,6 +76,7 @@ Integer Smtp.timeout;
 --------------------------
 ### socket
 ** [Stream](Stream.md), 查询 Smtp 对象当前连接的 [Socket](Socket.md) **
+
 ```JavaScript
 readonly Stream Smtp.socket;
 ```
@@ -82,6 +85,7 @@ readonly Stream Smtp.socket;
         
 ### connect
 ** 建立到指定的服务器 **
+
 ```JavaScript
 Smtp.connect(String url) async;
 ```
@@ -92,9 +96,10 @@ Smtp.connect(String url) async;
 --------------------------
 ### command
 ** 发送指定命令，并返回响应，服务器报错则抛出错误 **
+
 ```JavaScript
 String Smtp.command(String cmd,
-                String arg) async;
+    String arg) async;
 ```
 
 调用参数:
@@ -107,6 +112,7 @@ String Smtp.command(String cmd,
 --------------------------
 ### hello
 ** 发送 HELO 命令，服务器报错则抛出错误 **
+
 ```JavaScript
 Smtp.hello(String hostname = "localhost") async;
 ```
@@ -117,9 +123,10 @@ Smtp.hello(String hostname = "localhost") async;
 --------------------------
 ### login
 ** 用指定的用户及密码登录服务器，服务器报错则抛出错误 **
+
 ```JavaScript
 Smtp.login(String username,
-                String password) async;
+    String password) async;
 ```
 
 调用参数:
@@ -129,6 +136,7 @@ Smtp.login(String username,
 --------------------------
 ### from
 ** 指定发件人信箱，服务器报错则抛出错误 **
+
 ```JavaScript
 Smtp.from(String address) async;
 ```
@@ -139,6 +147,7 @@ Smtp.from(String address) async;
 --------------------------
 ### to
 ** 指定收件人信箱，服务器报错则抛出错误 **
+
 ```JavaScript
 Smtp.to(String address) async;
 ```
@@ -149,6 +158,7 @@ Smtp.to(String address) async;
 --------------------------
 ### data
 ** 发送文本到收件人，服务器报错则抛出错误 **
+
 ```JavaScript
 Smtp.data(String txt) async;
 ```
@@ -159,6 +169,7 @@ Smtp.data(String txt) async;
 --------------------------
 ### quit
 ** 退出并关闭连接，服务器报错则抛出错误 **
+
 ```JavaScript
 Smtp.quit() async;
 ```
@@ -166,6 +177,7 @@ Smtp.quit() async;
 --------------------------
 ### dispose
 ** 强制回收对象，调用此方法后，对象资源将立即释放 **
+
 ```JavaScript
 Smtp.dispose();
 ```
@@ -173,6 +185,7 @@ Smtp.dispose();
 --------------------------
 ### equals
 ** 比较当前对象与给定的对象是否相等 **
+
 ```JavaScript
 Boolean Smtp.equals(object expected);
 ```
@@ -186,6 +199,7 @@ Boolean Smtp.equals(object expected);
 --------------------------
 ### toString
 ** 返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现 **
+
 ```JavaScript
 String Smtp.toString();
 ```
@@ -196,6 +210,7 @@ String Smtp.toString();
 --------------------------
 ### toJSON
 ** 返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合 **
+
 ```JavaScript
 Value Smtp.toJSON(String key = "");
 ```
@@ -209,6 +224,7 @@ Value Smtp.toJSON(String key = "");
 --------------------------
 ### valueOf
 ** 返回对象本身的数值 **
+
 ```JavaScript
 Value Smtp.valueOf();
 ```

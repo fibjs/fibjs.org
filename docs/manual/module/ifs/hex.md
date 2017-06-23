@@ -2,11 +2,14 @@
 hex 编码与解码模块
 
 引用方式：
+
 ```JavaScript
 var encoding = require('encoding');
 var hex = encoding.hex;
 ```
+
 或者
+
 ```JavaScript
 var hex = require('hex');
 ```
@@ -15,6 +18,7 @@ var hex = require('hex');
         
 ### encode
 ** 以 hex 方式编码数据 **
+
 ```JavaScript
 static String hex.encode(Buffer data);
 ```
@@ -28,6 +32,7 @@ static String hex.encode(Buffer data);
 --------------------------
 ### decode
 ** 以 hex 方式解码字符串为二进制数据 **
+
 ```JavaScript
 static Buffer hex.decode(String data);
 ```

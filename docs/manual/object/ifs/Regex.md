@@ -53,6 +53,7 @@
         
 ### lastIndex
 ** Integer, 查询和设置下次匹配的起始位置 **
+
 ```JavaScript
 Integer Regex.lastIndex;
 ```
@@ -60,6 +61,7 @@ Integer Regex.lastIndex;
 --------------------------
 ### global
 ** Boolean, 查询正则表达式是否具有标志 "g"。它声明了给定的正则表达式是否执行全局匹配。如果 g 标志被设置，则该属性为 true，否则为 false **
+
 ```JavaScript
 readonly Boolean Regex.global;
 ```
@@ -67,6 +69,7 @@ readonly Boolean Regex.global;
 --------------------------
 ### ignoreCase
 ** Boolean, 查询正则表达式是否设置 "i" 标志。如果设置了 "i" 标志，则返回 true，否则返回 false **
+
 ```JavaScript
 readonly Boolean Regex.ignoreCase;
 ```
@@ -74,6 +77,7 @@ readonly Boolean Regex.ignoreCase;
 --------------------------
 ### multiline
 ** Boolean, 查询正则表达式正则表达式是否具有标志 m。它声明了给定的正则表达式是否以多行模式执行模式匹配。在这种模式中，如果要检索的字符串中含有换行符，^ 和 $ 锚除了匹配字符串的开头和结尾外还匹配每行的开头和结尾 **
+
 ```JavaScript
 readonly Boolean Regex.multiline;
 ```
@@ -82,6 +86,7 @@ readonly Boolean Regex.multiline;
         
 ### exec
 ** 检索字符串中的正则表达式的匹配 **
+
 ```JavaScript
 Array Regex.exec(String str);
 ```
@@ -95,6 +100,7 @@ Array Regex.exec(String str);
 --------------------------
 ### test
 ** 检测一个字符串是否匹配某个模式 **
+
 ```JavaScript
 Boolean Regex.test(String str);
 ```
@@ -108,6 +114,7 @@ Boolean Regex.test(String str);
 --------------------------
 ### dispose
 ** 强制回收对象，调用此方法后，对象资源将立即释放 **
+
 ```JavaScript
 Regex.dispose();
 ```
@@ -115,6 +122,7 @@ Regex.dispose();
 --------------------------
 ### equals
 ** 比较当前对象与给定的对象是否相等 **
+
 ```JavaScript
 Boolean Regex.equals(object expected);
 ```
@@ -128,6 +136,7 @@ Boolean Regex.equals(object expected);
 --------------------------
 ### toString
 ** 返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现 **
+
 ```JavaScript
 String Regex.toString();
 ```
@@ -138,6 +147,7 @@ String Regex.toString();
 --------------------------
 ### toJSON
 ** 返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合 **
+
 ```JavaScript
 Value Regex.toJSON(String key = "");
 ```
@@ -151,6 +161,7 @@ Value Regex.toJSON(String key = "");
 --------------------------
 ### valueOf
 ** 返回对象本身的数值 **
+
 ```JavaScript
 Value Regex.valueOf();
 ```

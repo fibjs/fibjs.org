@@ -53,6 +53,7 @@ XmlAttr 对象表示 [XmlElement](XmlElement.md) 对象的属性
         
 ### localName
 ** String, 查询元素的本地名称。如果选定的节点无命名空间，则该属性等同于 nodeName **
+
 ```JavaScript
 readonly String XmlAttr.localName;
 ```
@@ -60,6 +61,7 @@ readonly String XmlAttr.localName;
 --------------------------
 ### value
 ** String, 属性的值 **
+
 ```JavaScript
 String XmlAttr.value;
 ```
@@ -67,6 +69,7 @@ String XmlAttr.value;
 --------------------------
 ### name
 ** String, 属性的名称 **
+
 ```JavaScript
 readonly String XmlAttr.name;
 ```
@@ -74,6 +77,7 @@ readonly String XmlAttr.name;
 --------------------------
 ### namespaceURI
 ** String, 查询元素的命名空间的 URI。如果选定的节点无命名空间，则该属性返回 NULL **
+
 ```JavaScript
 readonly String XmlAttr.namespaceURI;
 ```
@@ -81,6 +85,7 @@ readonly String XmlAttr.namespaceURI;
 --------------------------
 ### prefix
 ** String, 查询和设置元素的命名空间前缀。如果选定的节点无命名空间，则该属性返回 NULL **
+
 ```JavaScript
 String XmlAttr.prefix;
 ```
@@ -88,6 +93,7 @@ String XmlAttr.prefix;
 --------------------------
 ### nodeName
 ** String, 属性的名称，为兼容的目的 **
+
 ```JavaScript
 readonly String XmlAttr.nodeName;
 ```
@@ -95,6 +101,7 @@ readonly String XmlAttr.nodeName;
 --------------------------
 ### nodeValue
 ** String, 属性的值，为兼容的目的 **
+
 ```JavaScript
 String XmlAttr.nodeValue;
 ```
@@ -103,6 +110,7 @@ String XmlAttr.nodeValue;
         
 ### dispose
 ** 强制回收对象，调用此方法后，对象资源将立即释放 **
+
 ```JavaScript
 XmlAttr.dispose();
 ```
@@ -110,6 +118,7 @@ XmlAttr.dispose();
 --------------------------
 ### equals
 ** 比较当前对象与给定的对象是否相等 **
+
 ```JavaScript
 Boolean XmlAttr.equals(object expected);
 ```
@@ -123,6 +132,7 @@ Boolean XmlAttr.equals(object expected);
 --------------------------
 ### toString
 ** 返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现 **
+
 ```JavaScript
 String XmlAttr.toString();
 ```
@@ -133,6 +143,7 @@ String XmlAttr.toString();
 --------------------------
 ### toJSON
 ** 返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合 **
+
 ```JavaScript
 Value XmlAttr.toJSON(String key = "");
 ```
@@ -146,6 +157,7 @@ Value XmlAttr.toJSON(String key = "");
 --------------------------
 ### valueOf
 ** 返回对象本身的数值 **
+
 ```JavaScript
 Value XmlAttr.valueOf();
 ```

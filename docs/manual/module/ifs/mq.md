@@ -5,6 +5,7 @@
         
 ### Message
 ** 创建一个消息对象，参见 [Message](../../object/ifs/Message.md) **
+
 ```JavaScript
 Message mq.Message;
 ```
@@ -12,6 +13,7 @@ Message mq.Message;
 --------------------------
 ### HttpHandler
 ** 创建一个 [http](http.md) 协议处理器对象，参见 [HttpHandler](../../object/ifs/HttpHandler.md) **
+
 ```JavaScript
 HttpHandler mq.HttpHandler;
 ```
@@ -19,6 +21,7 @@ HttpHandler mq.HttpHandler;
 --------------------------
 ### Handler
 ** 创建一个消息处理器对象，传递值内置处理器则直接返回 **
+
 ```JavaScript
 Handler mq.Handler;
 ```
@@ -33,10 +36,11 @@ hdlr 接受内置消息处理器，处理函数，链式处理数组，路由对
 - 路由对象，等同于返回 new mq.[Routing](../../object/ifs/Routing.md)(hdlr)，参见 [Routing](../../object/ifs/Routing.md)
 
 消息处理函数语法如下：
+
 ```JavaScript
-function func(v){
-}
+function func(v) {}
 ```
+
 参数 v 为正在处理的消息，返回结果允许有四种:
 - Function javascript 函数，将使用此函数进行下一阶段处理
 - [Handler](../../object/ifs/Handler.md) 内置处理器，将使用此处理器进行下一阶段处理
@@ -48,6 +52,7 @@ function func(v){
 --------------------------
 ### Chain
 ** 创建一个消息处理器链处理对象，参见 [Chain](../../object/ifs/Chain.md) **
+
 ```JavaScript
 Chain mq.Chain;
 ```
@@ -55,6 +60,7 @@ Chain mq.Chain;
 --------------------------
 ### Routing
 ** 创建一个消息处理器路由对象，参见 [Routing](../../object/ifs/Routing.md) **
+
 ```JavaScript
 Routing mq.Routing;
 ```
@@ -63,6 +69,7 @@ Routing mq.Routing;
         
 ### await
 ** 创建一个异步等待处理器 **
+
 ```JavaScript
 static Handler mq.await();
 ```
@@ -71,22 +78,25 @@ static Handler mq.await();
 * [Handler](../../object/ifs/Handler.md), 返回创建的处理器
 
 异步等待处理器用于需要异步处理的消息处理模式，示例如下：
+
 ```JavaScript
-function func(v){
+function func(v) {
     var await = mq.await();
 
     call_some_async_func(v1, v2, v3, function() {
-            await.end();
-        });
+        await.end();
+    });
 
     return await;
 }
 ```
+
 示例是一个 javascript 消息处理函数，当函数返回时，消息处理引擎将等待 await，直到 await.end 被调用，才继续下一阶段的处理。
 
 --------------------------
 ### nullHandler
 ** 创建一个空处理器对象，次处理对象不做任何处理直接返回 **
+
 ```JavaScript
 static Handler mq.nullHandler();
 ```
@@ -97,9 +107,10 @@ static Handler mq.nullHandler();
 --------------------------
 ### invoke
 ** 使用给定的处理器处理一个消息或对象 **
+
 ```JavaScript
 static mq.invoke(Handler hdlr,
-                object v) async;
+    object v) async;
 ```
 
 调用参数:

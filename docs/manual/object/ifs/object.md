@@ -2656,6 +2656,7 @@
         
 ### dispose
 ** 强制回收对象，调用此方法后，对象资源将立即释放 **
+
 ```JavaScript
 object.dispose();
 ```
@@ -2663,6 +2664,7 @@ object.dispose();
 --------------------------
 ### equals
 ** 比较当前对象与给定的对象是否相等 **
+
 ```JavaScript
 Boolean object.equals(object expected);
 ```
@@ -2676,6 +2678,7 @@ Boolean object.equals(object expected);
 --------------------------
 ### toString
 ** 返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现 **
+
 ```JavaScript
 String object.toString();
 ```
@@ -2686,6 +2689,7 @@ String object.toString();
 --------------------------
 ### toJSON
 ** 返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合 **
+
 ```JavaScript
 Value object.toJSON(String key = "");
 ```
@@ -2699,6 +2703,7 @@ Value object.toJSON(String key = "");
 --------------------------
 ### valueOf
 ** 返回对象本身的数值 **
+
 ```JavaScript
 Value object.valueOf();
 ```

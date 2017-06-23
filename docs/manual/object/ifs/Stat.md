@@ -66,6 +66,7 @@ Stat 对象通过 [fs](../../module/ifs/fs.md).stat, [File](File.md).stat, [fs](
         
 ### name
 ** String, 文件名称 **
+
 ```JavaScript
 readonly String Stat.name;
 ```
@@ -73,6 +74,7 @@ readonly String Stat.name;
 --------------------------
 ### size
 ** Long, 文件尺寸 **
+
 ```JavaScript
 readonly Long Stat.size;
 ```
@@ -80,6 +82,7 @@ readonly Long Stat.size;
 --------------------------
 ### mode
 ** Integer, 文件权限，Windows 不支持此属性 **
+
 ```JavaScript
 readonly Integer Stat.mode;
 ```
@@ -87,6 +90,7 @@ readonly Integer Stat.mode;
 --------------------------
 ### mtime
 ** Date, 文件最后修改时间 **
+
 ```JavaScript
 readonly Date Stat.mtime;
 ```
@@ -94,6 +98,7 @@ readonly Date Stat.mtime;
 --------------------------
 ### atime
 ** Date, 文件最后访问时间 **
+
 ```JavaScript
 readonly Date Stat.atime;
 ```
@@ -101,6 +106,7 @@ readonly Date Stat.atime;
 --------------------------
 ### ctime
 ** Date, 文件创建时间 **
+
 ```JavaScript
 readonly Date Stat.ctime;
 ```
@@ -108,6 +114,7 @@ readonly Date Stat.ctime;
 --------------------------
 ### uid
 ** Integer, 文件拥有者的id **
+
 ```JavaScript
 readonly Integer Stat.uid;
 ```
@@ -115,6 +122,7 @@ readonly Integer Stat.uid;
 --------------------------
 ### gid
 ** Integer, 文件所属的组id **
+
 ```JavaScript
 readonly Integer Stat.gid;
 ```
@@ -123,6 +131,7 @@ readonly Integer Stat.gid;
         
 ### isWritable
 ** 查询文件是否有写入权限 **
+
 ```JavaScript
 Boolean Stat.isWritable();
 ```
@@ -133,6 +142,7 @@ Boolean Stat.isWritable();
 --------------------------
 ### isReadable
 ** 查询文件是否有读权限 **
+
 ```JavaScript
 Boolean Stat.isReadable();
 ```
@@ -143,6 +153,7 @@ Boolean Stat.isReadable();
 --------------------------
 ### isExecutable
 ** 查询文件是否有执行权限 **
+
 ```JavaScript
 Boolean Stat.isExecutable();
 ```
@@ -153,6 +164,7 @@ Boolean Stat.isExecutable();
 --------------------------
 ### isHidden
 ** 查询文件是否隐藏 **
+
 ```JavaScript
 Boolean Stat.isHidden();
 ```
@@ -163,6 +175,7 @@ Boolean Stat.isHidden();
 --------------------------
 ### isDirectory
 ** 查询文件是否是目录 **
+
 ```JavaScript
 Boolean Stat.isDirectory();
 ```
@@ -173,6 +186,7 @@ Boolean Stat.isDirectory();
 --------------------------
 ### isFile
 ** 查询文件是否是文件 **
+
 ```JavaScript
 Boolean Stat.isFile();
 ```
@@ -183,6 +197,7 @@ Boolean Stat.isFile();
 --------------------------
 ### isSymbolicLink
 ** 查询文件是否是符号链接 **
+
 ```JavaScript
 Boolean Stat.isSymbolicLink();
 ```
@@ -193,6 +208,7 @@ Boolean Stat.isSymbolicLink();
 --------------------------
 ### isMemory
 ** 查询文件是否是内存文件 **
+
 ```JavaScript
 Boolean Stat.isMemory();
 ```
@@ -203,6 +219,7 @@ Boolean Stat.isMemory();
 --------------------------
 ### isSocket
 ** 查询文件是否是 [Socket](Socket.md) **
+
 ```JavaScript
 Boolean Stat.isSocket();
 ```
@@ -213,6 +230,7 @@ Boolean Stat.isSocket();
 --------------------------
 ### dispose
 ** 强制回收对象，调用此方法后，对象资源将立即释放 **
+
 ```JavaScript
 Stat.dispose();
 ```
@@ -220,6 +238,7 @@ Stat.dispose();
 --------------------------
 ### equals
 ** 比较当前对象与给定的对象是否相等 **
+
 ```JavaScript
 Boolean Stat.equals(object expected);
 ```
@@ -233,6 +252,7 @@ Boolean Stat.equals(object expected);
 --------------------------
 ### toString
 ** 返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现 **
+
 ```JavaScript
 String Stat.toString();
 ```
@@ -243,6 +263,7 @@ String Stat.toString();
 --------------------------
 ### toJSON
 ** 返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合 **
+
 ```JavaScript
 Value Stat.toJSON(String key = "");
 ```
@@ -256,6 +277,7 @@ Value Stat.toJSON(String key = "");
 --------------------------
 ### valueOf
 ** 返回对象本身的数值 **
+
 ```JavaScript
 Value Stat.valueOf();
 ```

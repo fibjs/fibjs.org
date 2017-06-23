@@ -58,8 +58,9 @@
         
 ### HttpCookie
 ** HttpCookie 构造函数，创建一个新的 HttpCookie 对象 **
+
 ```JavaScript
- new HttpCookie(Object opts = {});
+new HttpCookie(Object opts = {});
 ```
 
 调用参数:
@@ -67,10 +68,11 @@
 
 --------------------------
 ** HttpCookie 构造函数，创建一个新的 HttpCookie 对象 **
+
 ```JavaScript
- new HttpCookie(String name,
-                String value,
-                Object opts = {});
+new HttpCookie(String name,
+    String value,
+    Object opts = {});
 ```
 
 调用参数:
@@ -82,6 +84,7 @@
         
 ### name
 ** String, 查询和设置 cookie 名称 **
+
 ```JavaScript
 String HttpCookie.name;
 ```
@@ -89,6 +92,7 @@ String HttpCookie.name;
 --------------------------
 ### value
 ** String, 查询和设置 cookie 的值 **
+
 ```JavaScript
 String HttpCookie.value;
 ```
@@ -96,6 +100,7 @@ String HttpCookie.value;
 --------------------------
 ### domain
 ** String, 查询和设置 cookie 的域名范围 **
+
 ```JavaScript
 String HttpCookie.domain;
 ```
@@ -103,6 +108,7 @@ String HttpCookie.domain;
 --------------------------
 ### path
 ** String, 查询和设置 cookie 的路径范围 **
+
 ```JavaScript
 String HttpCookie.path;
 ```
@@ -110,6 +116,7 @@ String HttpCookie.path;
 --------------------------
 ### expires
 ** Date, 查询和设置 cookie 的过期时间 **
+
 ```JavaScript
 Date HttpCookie.expires;
 ```
@@ -117,6 +124,7 @@ Date HttpCookie.expires;
 --------------------------
 ### httpOnly
 ** Boolean, 查询和设置 cookie 是否仅允许 [http](../../module/ifs/http.md) 请求，缺省 false **
+
 ```JavaScript
 Boolean HttpCookie.httpOnly;
 ```
@@ -124,6 +132,7 @@ Boolean HttpCookie.httpOnly;
 --------------------------
 ### secure
 ** Boolean, 查询和设置 cookie 是否仅通过 https 传递，缺省 false **
+
 ```JavaScript
 Boolean HttpCookie.secure;
 ```
@@ -132,6 +141,7 @@ Boolean HttpCookie.secure;
         
 ### parse
 ** 解析给定的字符串，填充 cookie 对象 **
+
 ```JavaScript
 HttpCookie.parse(String header);
 ```
@@ -142,6 +152,7 @@ HttpCookie.parse(String header);
 --------------------------
 ### match
 ** 检测给定的 [url](../../module/ifs/url.md) 是否匹配当前设置 **
+
 ```JavaScript
 Boolean HttpCookie.match(String url);
 ```
@@ -152,6 +163,7 @@ Boolean HttpCookie.match(String url);
 --------------------------
 ### dispose
 ** 强制回收对象，调用此方法后，对象资源将立即释放 **
+
 ```JavaScript
 HttpCookie.dispose();
 ```
@@ -159,6 +171,7 @@ HttpCookie.dispose();
 --------------------------
 ### equals
 ** 比较当前对象与给定的对象是否相等 **
+
 ```JavaScript
 Boolean HttpCookie.equals(object expected);
 ```
@@ -172,6 +185,7 @@ Boolean HttpCookie.equals(object expected);
 --------------------------
 ### toString
 ** 返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现 **
+
 ```JavaScript
 String HttpCookie.toString();
 ```
@@ -182,6 +196,7 @@ String HttpCookie.toString();
 --------------------------
 ### toJSON
 ** 返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合 **
+
 ```JavaScript
 Value HttpCookie.toJSON(String key = "");
 ```
@@ -195,6 +210,7 @@ Value HttpCookie.toJSON(String key = "");
 --------------------------
 ### valueOf
 ** 返回对象本身的数值 **
+
 ```JavaScript
 Value HttpCookie.valueOf();
 ```

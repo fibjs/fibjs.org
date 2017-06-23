@@ -157,10 +157,10 @@
 <p>用以将数据流转换为 <a href=../../module/ifs/ssl.md.html>ssl</a> 流协议。SslHandler 是对 <a href=sslsocket.md.html>SslSocket</a> 的封装，用于构建服务器，逻辑上相当于：</p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">var</span> ss = <span class="hljs-keyword">new</span> ssl.Socket(crt, key);
 
-<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">s</span>)</span>{
-   <span class="hljs-keyword">var</span> s1 = ss.accept(s);
-   hdlr.invoke(s1);
-   s1.close();
+<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">s</span>) </span>{
+    <span class="hljs-keyword">var</span> s1 = ss.accept(s);
+    hdlr.invoke(s1);
+    s1.close();
 }
 </code></pre>
 <h2 id="-">继承关系</h2>
@@ -232,8 +232,8 @@
 <h2 id="-">构造函数</h2>
 <h3 id="sslhandler">SslHandler</h3>
 <p><strong> SslHandler 构造函数，创建一个新的 SslHandler 对象 </strong></p>
-<pre><code class="lang-JavaScript"> <span class="hljs-keyword">new</span> SslHandler(<span class="hljs-built_in">Array</span> certs,
-                Handler hdlr);
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">new</span> SslHandler(<span class="hljs-built_in">Array</span> certs,
+    Handler hdlr);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -241,8 +241,7 @@
 <li>hdlr: <a href=handler.md.html>Handler</a>, 内置消息处理器，处理函数，链式处理数组，路由对象，详见 <a href=../../module/ifs/mq.md.html>mq</a>.<a href=handler.md.html>Handler</a></li>
 </ul>
 <p>certs 格式为：</p>
-<pre><code class="lang-JavaScript">[
-    {
+<pre><code class="lang-JavaScript">[{
         <span class="hljs-attr">crt</span>: [X509Cert object],
         <span class="hljs-attr">key</span>: [PKey object]
     },
@@ -254,9 +253,9 @@
 </code></pre>
 <hr>
 <p><strong> SslHandler 构造函数，创建一个新的 SslHandler 对象 </strong></p>
-<pre><code class="lang-JavaScript"> <span class="hljs-keyword">new</span> SslHandler(X509Cert crt,
-                PKey key,
-                Handler hdlr);
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">new</span> SslHandler(X509Cert crt,
+    PKey key,
+    Handler hdlr);
 </code></pre>
 <p>调用参数:</p>
 <ul>

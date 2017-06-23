@@ -67,6 +67,7 @@
         
 ### end
 ** 结束等待，继续处理消息 **
+
 ```JavaScript
 AsyncWait.end();
 ```
@@ -74,6 +75,7 @@ AsyncWait.end();
 --------------------------
 ### invoke
 ** 处理一个消息或对象 **
+
 ```JavaScript
 Handler AsyncWait.invoke(object v) async;
 ```
@@ -87,6 +89,7 @@ Handler AsyncWait.invoke(object v) async;
 --------------------------
 ### dispose
 ** 强制回收对象，调用此方法后，对象资源将立即释放 **
+
 ```JavaScript
 AsyncWait.dispose();
 ```
@@ -94,6 +97,7 @@ AsyncWait.dispose();
 --------------------------
 ### equals
 ** 比较当前对象与给定的对象是否相等 **
+
 ```JavaScript
 Boolean AsyncWait.equals(object expected);
 ```
@@ -107,6 +111,7 @@ Boolean AsyncWait.equals(object expected);
 --------------------------
 ### toString
 ** 返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现 **
+
 ```JavaScript
 String AsyncWait.toString();
 ```
@@ -117,6 +122,7 @@ String AsyncWait.toString();
 --------------------------
 ### toJSON
 ** 返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合 **
+
 ```JavaScript
 Value AsyncWait.toJSON(String key = "");
 ```
@@ -130,6 +136,7 @@ Value AsyncWait.toJSON(String key = "");
 --------------------------
 ### valueOf
 ** 返回对象本身的数值 **
+
 ```JavaScript
 Value AsyncWait.valueOf();
 ```

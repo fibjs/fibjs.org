@@ -2,6 +2,7 @@
 [http](http.md) query 处理模块
 
 引用方法：
+
 ```JavaScript
 var querystring = require('querystring');
 ```
@@ -10,6 +11,7 @@ var querystring = require('querystring');
         
 ### escape
 ** [url](url.md) 部件字符串安全编码 **
+
 ```JavaScript
 static String querystring.escape(String str);
 ```
@@ -23,6 +25,7 @@ static String querystring.escape(String str);
 --------------------------
 ### unescape
 ** [url](url.md) 安全字符串解码 **
+
 ```JavaScript
 static String querystring.unescape(String str);
 ```
@@ -36,11 +39,12 @@ static String querystring.unescape(String str);
 --------------------------
 ### parse
 ** 解析 query 字符串 **
+
 ```JavaScript
 static HttpCollection querystring.parse(String str,
-                String sep = "&",
-                String eq = "=",
-                Object opt = {});
+    String sep = "&",
+    String eq = "=",
+    Object opt = {});
 ```
 
 调用参数:
@@ -54,11 +58,12 @@ static HttpCollection querystring.parse(String str,
 --------------------------
 ### stringify
 ** 序列化一个对象为 query 字符串 **
+
 ```JavaScript
 static String querystring.stringify(Object obj,
-                String sep = "&",
-                String eq = "=",
-                Object opt = {});
+    String sep = "&",
+    String eq = "=",
+    Object opt = {});
 ```
 
 调用参数:

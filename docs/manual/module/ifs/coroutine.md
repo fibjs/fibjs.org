@@ -2,6 +2,7 @@
 并发控制模块
 
 引用方法：
+
 ```JavaScript
 var coroutine = require('coroutine');
 ```
@@ -10,6 +11,7 @@ var coroutine = require('coroutine');
         
 ### Lock
 ** 锁对象，参见 [Lock](../../object/ifs/Lock.md) **
+
 ```JavaScript
 Lock coroutine.Lock;
 ```
@@ -17,6 +19,7 @@ Lock coroutine.Lock;
 --------------------------
 ### Semaphore
 ** 信号量对象，参见 [Semaphore](../../object/ifs/Semaphore.md) **
+
 ```JavaScript
 Semaphore coroutine.Semaphore;
 ```
@@ -24,6 +27,7 @@ Semaphore coroutine.Semaphore;
 --------------------------
 ### Condition
 ** 条件变量对象，参见 [Condition](../../object/ifs/Condition.md) **
+
 ```JavaScript
 Condition coroutine.Condition;
 ```
@@ -31,6 +35,7 @@ Condition coroutine.Condition;
 --------------------------
 ### Event
 ** 事件对象，参见 [Event](../../object/ifs/Event.md) **
+
 ```JavaScript
 Event coroutine.Event;
 ```
@@ -38,6 +43,7 @@ Event coroutine.Event;
 --------------------------
 ### BlockQueue
 ** 阻塞队列对象，参见 [BlockQueue](../../object/ifs/BlockQueue.md) **
+
 ```JavaScript
 BlockQueue coroutine.BlockQueue;
 ```
@@ -45,6 +51,7 @@ BlockQueue coroutine.BlockQueue;
 --------------------------
 ### Worker
 ** 独立线程工作对象，参见 [Worker](../../object/ifs/Worker.md) **
+
 ```JavaScript
 Worker coroutine.Worker;
 ```
@@ -53,9 +60,10 @@ Worker coroutine.Worker;
         
 ### start
 ** 启动一个纤程并返回纤程对象 **
+
 ```JavaScript
 static Fiber coroutine.start(Function func,
-                ...);
+    ...);
 ```
 
 调用参数:
@@ -68,9 +76,10 @@ static Fiber coroutine.start(Function func,
 --------------------------
 ### parallel
 ** 并行执行一组函数，并等待返回 **
+
 ```JavaScript
 static Array coroutine.parallel(Array funcs,
-                Integer fibers = -1);
+    Integer fibers = -1);
 ```
 
 调用参数:
@@ -82,10 +91,11 @@ static Array coroutine.parallel(Array funcs,
 
 --------------------------
 ** 并行执行一个函数处理一组数据，并等待返回 **
+
 ```JavaScript
 static Array coroutine.parallel(Array datas,
-                Function func,
-                Integer fibers = -1);
+    Function func,
+    Integer fibers = -1);
 ```
 
 调用参数:
@@ -98,10 +108,11 @@ static Array coroutine.parallel(Array datas,
 
 --------------------------
 ** 并行执行一个函数多次，并等待返回 **
+
 ```JavaScript
 static Array coroutine.parallel(Function func,
-                Integer num,
-                Integer fibers = -1);
+    Integer num,
+    Integer fibers = -1);
 ```
 
 调用参数:
@@ -114,6 +125,7 @@ static Array coroutine.parallel(Function func,
 
 --------------------------
 ** 并行执行一组函数，并等待返回 **
+
 ```JavaScript
 static Array coroutine.parallel(...);
 ```
@@ -127,6 +139,7 @@ static Array coroutine.parallel(...);
 --------------------------
 ### current
 ** 返回当前纤程 **
+
 ```JavaScript
 static Fiber coroutine.current();
 ```
@@ -137,6 +150,7 @@ static Fiber coroutine.current();
 --------------------------
 ### sleep
 ** 暂停当前纤程指定的时间 **
+
 ```JavaScript
 static coroutine.sleep(Integer ms = 0) async;
 ```
@@ -148,6 +162,7 @@ static coroutine.sleep(Integer ms = 0) async;
         
 ### fibers
 ** Array, 返回当前正在运行的全部 fiber 数组 **
+
 ```JavaScript
 static readonly Array coroutine.fibers;
 ```
@@ -155,6 +170,7 @@ static readonly Array coroutine.fibers;
 --------------------------
 ### spareFibers
 ** Integer, 查询和设置空闲 [Fiber](../../object/ifs/Fiber.md) 数量，服务器抖动较大时可适度增加空闲 [Fiber](../../object/ifs/Fiber.md) 数量。缺省为 256 **
+
 ```JavaScript
 static Integer coroutine.spareFibers;
 ```
@@ -162,6 +178,7 @@ static Integer coroutine.spareFibers;
 --------------------------
 ### vmid
 ** Integer, 查询当前 [vm](vm.md) 编号 **
+
 ```JavaScript
 static readonly Integer coroutine.vmid;
 ```
@@ -169,6 +186,7 @@ static readonly Integer coroutine.vmid;
 --------------------------
 ### loglevel
 ** Integer, 修改和查询本 [vm](vm.md) 的输出级别，用以过滤输出信息，缺省为 [console](console.md).NOTSET，全部输出 **
+
 ```JavaScript
 static Integer coroutine.loglevel;
 ```

@@ -2,12 +2,12 @@
 tcp 服务器对象，可方便创建一个标准多纤程 tcp 服务器
 
 使用 TcpServer 对象可以迅速创建一个多纤程并发处理的 tcp 服务器。
+
 ```JavaScript
-function func(conn)
-{
+function func(conn) {
     var data;
 
-    while(data = conn.read())
+    while (data = conn.read())
         conn.write(data);
 
     conn.close();
@@ -138,9 +138,10 @@ new net.TcpServer(8080, func).run();
         
 ### TcpServer
 ** TcpServer 构造函数，在所有本机地址侦听 **
+
 ```JavaScript
- new TcpServer(Integer port,
-                Handler listener);
+new TcpServer(Integer port,
+    Handler listener);
 ```
 
 调用参数:
@@ -149,10 +150,11 @@ new net.TcpServer(8080, func).run();
 
 --------------------------
 ** TcpServer 构造函数 **
+
 ```JavaScript
- new TcpServer(String addr,
-                Integer port,
-                Handler listener);
+new TcpServer(String addr,
+    Integer port,
+    Handler listener);
 ```
 
 调用参数:
@@ -164,6 +166,7 @@ new net.TcpServer(8080, func).run();
         
 ### socket
 ** [Socket](Socket.md), 服务器当前侦听的 [Socket](Socket.md) 对象 **
+
 ```JavaScript
 readonly Socket TcpServer.socket;
 ```
@@ -171,6 +174,7 @@ readonly Socket TcpServer.socket;
 --------------------------
 ### handler
 ** [Handler](Handler.md), 服务器当前事件处理接口对象 **
+
 ```JavaScript
 Handler TcpServer.handler;
 ```
@@ -178,17 +182,19 @@ Handler TcpServer.handler;
 --------------------------
 ### stats
 ** [Stats](Stats.md), 查询当前服务器运行状态 **
+
 ```JavaScript
 readonly Stats TcpServer.stats;
 ```
 
 返回的结果为一个 [Stats](Stats.md) 对象，初始化计数器如下：
+
 ```JavaScript
 {
-    total : 1000,      // 总计处理的连接
-    connections : 100, // 当前正在处理的连接
-    accept : 10,       // 上次查询后新建的连接
-    close : 10         // 上次查询后关闭的连接
+    total: 1000, // 总计处理的连接
+    connections: 100, // 当前正在处理的连接
+    accept: 10, // 上次查询后新建的连接
+    close: 10 // 上次查询后关闭的连接
 }
 ```
 
@@ -196,6 +202,7 @@ readonly Stats TcpServer.stats;
         
 ### run
 ** 运行服务器并开始接收和分发连接，此函数不会返回 **
+
 ```JavaScript
 TcpServer.run() async;
 ```
@@ -203,6 +210,7 @@ TcpServer.run() async;
 --------------------------
 ### asyncRun
 ** 异步运行服务器并开始接收和分发连接，调用后立即返回，服务器在后台运行 **
+
 ```JavaScript
 TcpServer.asyncRun();
 ```
@@ -210,6 +218,7 @@ TcpServer.asyncRun();
 --------------------------
 ### stop
 ** 关闭 socket中止正在运行的服务器 **
+
 ```JavaScript
 TcpServer.stop() async;
 ```
@@ -217,6 +226,7 @@ TcpServer.stop() async;
 --------------------------
 ### dispose
 ** 强制回收对象，调用此方法后，对象资源将立即释放 **
+
 ```JavaScript
 TcpServer.dispose();
 ```
@@ -224,6 +234,7 @@ TcpServer.dispose();
 --------------------------
 ### equals
 ** 比较当前对象与给定的对象是否相等 **
+
 ```JavaScript
 Boolean TcpServer.equals(object expected);
 ```
@@ -237,6 +248,7 @@ Boolean TcpServer.equals(object expected);
 --------------------------
 ### toString
 ** 返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现 **
+
 ```JavaScript
 String TcpServer.toString();
 ```
@@ -247,6 +259,7 @@ String TcpServer.toString();
 --------------------------
 ### toJSON
 ** 返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合 **
+
 ```JavaScript
 Value TcpServer.toJSON(String key = "");
 ```
@@ -260,6 +273,7 @@ Value TcpServer.toJSON(String key = "");
 --------------------------
 ### valueOf
 ** 返回对象本身的数值 **
+
 ```JavaScript
 Value TcpServer.valueOf();
 ```

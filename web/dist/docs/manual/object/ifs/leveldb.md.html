@@ -250,7 +250,7 @@
 <h3 id="set">set</h3>
 <p><strong> 设定一个键值数据，键值不存在则插入新数据 </strong></p>
 <pre><code class="lang-JavaScript">LevelDB.set(Buffer key,
-                Buffer value) <span class="hljs-keyword">async</span>;
+    Buffer value) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -297,16 +297,16 @@
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">var</span> db = <span class="hljs-built_in">require</span>(<span class="hljs-string">"db"</span>);
 <span class="hljs-keyword">var</span> test = <span class="hljs-keyword">new</span> db.openLevelDB(<span class="hljs-string">"test.db"</span>);
 
-test.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">value, key</span>)</span>{
-   ...
+test.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">value, key</span>) </span>{
+    ...
 });
 </code></pre>
 <hr>
 <h3 id="between">between</h3>
 <p><strong> 枚举数据库中键值在 from 和 to 之间的键值对 </strong></p>
 <pre><code class="lang-JavaScript">LevelDB.between(Buffer <span class="hljs-keyword">from</span>,
-                Buffer to,
-                <span class="hljs-built_in">Function</span> func);
+    Buffer to,
+    <span class="hljs-built_in">Function</span> func);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -318,8 +318,8 @@ test.forEach(<span class="hljs-function"><span class="hljs-keyword">function</sp
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">var</span> db = <span class="hljs-built_in">require</span>(<span class="hljs-string">"db"</span>);
 <span class="hljs-keyword">var</span> test = <span class="hljs-keyword">new</span> db.openLevelDB(<span class="hljs-string">"test.db"</span>);
 
-test.between(<span class="hljs-string">"aaa"</span>, <span class="hljs-string">"bbb"</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">value, key</span>)</span>{
-   ...
+test.between(<span class="hljs-string">"aaa"</span>, <span class="hljs-string">"bbb"</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">value, key</span>) </span>{
+    ...
 });
 </code></pre>
 <hr>

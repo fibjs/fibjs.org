@@ -2,9 +2,10 @@
 消息处理器链处理对象
 
 消息处理器链处理对象用于链接一系列消息处理器，按照指定的顺序链式处理。创建方法：
+
 ```JavaScript
 var chain = new mq.Chain([
-  func1, func2
+    func1, func2
 ]);
 ```
 
@@ -76,8 +77,9 @@ var chain = new mq.Chain([
         
 ### Chain
 ** 构造一个消息处理器链处理对象 **
+
 ```JavaScript
- new Chain(Array hdlrs);
+new Chain(Array hdlrs);
 ```
 
 调用参数:
@@ -87,6 +89,7 @@ var chain = new mq.Chain([
         
 ### append
 ** 添加处理器数组 **
+
 ```JavaScript
 Chain.append(Array hdlrs);
 ```
@@ -96,6 +99,7 @@ Chain.append(Array hdlrs);
 
 --------------------------
 ** 添加处理器 **
+
 ```JavaScript
 Chain.append(Handler hdlr);
 ```
@@ -106,6 +110,7 @@ Chain.append(Handler hdlr);
 --------------------------
 ### invoke
 ** 处理一个消息或对象 **
+
 ```JavaScript
 Handler Chain.invoke(object v) async;
 ```
@@ -119,6 +124,7 @@ Handler Chain.invoke(object v) async;
 --------------------------
 ### dispose
 ** 强制回收对象，调用此方法后，对象资源将立即释放 **
+
 ```JavaScript
 Chain.dispose();
 ```
@@ -126,6 +132,7 @@ Chain.dispose();
 --------------------------
 ### equals
 ** 比较当前对象与给定的对象是否相等 **
+
 ```JavaScript
 Boolean Chain.equals(object expected);
 ```
@@ -139,6 +146,7 @@ Boolean Chain.equals(object expected);
 --------------------------
 ### toString
 ** 返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现 **
+
 ```JavaScript
 String Chain.toString();
 ```
@@ -149,6 +157,7 @@ String Chain.toString();
 --------------------------
 ### toJSON
 ** 返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合 **
+
 ```JavaScript
 Value Chain.toJSON(String key = "");
 ```
@@ -162,6 +171,7 @@ Value Chain.toJSON(String key = "");
 --------------------------
 ### valueOf
 ** 返回对象本身的数值 **
+
 ```JavaScript
 Value Chain.valueOf();
 ```

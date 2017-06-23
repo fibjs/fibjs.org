@@ -211,13 +211,13 @@
 <h2 id="-">构造函数</h2>
 <h3 id="x509req">X509Req</h3>
 <p><strong> X509Req 构造函数 </strong></p>
-<pre><code class="lang-JavaScript"> <span class="hljs-keyword">new</span> X509Req();
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">new</span> X509Req();
 </code></pre>
 <hr>
 <p><strong> X509Req 构造函数，根据给定的信息创建一个证书请求 </strong></p>
-<pre><code class="lang-JavaScript"> <span class="hljs-keyword">new</span> X509Req(<span class="hljs-built_in">String</span> subject,
-                PKey key,
-                Integer hash = hash.SHA1);
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">new</span> X509Req(<span class="hljs-built_in">String</span> subject,
+    PKey key,
+    Integer hash = hash.SHA1);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -283,8 +283,8 @@
 <h3 id="sign">sign</h3>
 <p><strong> 签名当前证书请求为正式证书 </strong></p>
 <pre><code class="lang-JavaScript">X509Cert X509Req.sign(<span class="hljs-built_in">String</span> issuer,
-                PKey key,
-                <span class="hljs-built_in">Object</span> opts = {}) <span class="hljs-keyword">async</span>;
+    PKey key,
+    <span class="hljs-built_in">Object</span> opts = {}) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -298,12 +298,12 @@
 </ul>
 <p>opts 接收的字段如下：</p>
 <pre><code class="lang-JavaScript">{
-    <span class="hljs-attr">ca</span>: <span class="hljs-literal">false</span>,      <span class="hljs-comment">// 证书为 ca，缺省为 false</span>
-    pathlen: <span class="hljs-number">-1</span>,    <span class="hljs-comment">// 证书深度，缺省为 -1</span>
-    notBefore: <span class="hljs-string">""</span>,  <span class="hljs-comment">// 证书生效时间，缺省为当前时间</span>
-    notAfter: <span class="hljs-string">""</span>,   <span class="hljs-comment">// 证书失效时间，缺省为 notBefore 后一年</span>
-    usage: <span class="hljs-string">""</span>,      <span class="hljs-comment">// 证书使用范围，接收：digitalSignature, nonRepudiation, keyEncipherment, dataEncipherment, keyAgreement, keyCertSign, cRLSign</span>
-    type: <span class="hljs-string">""</span>        <span class="hljs-comment">// 证书 Netscape 证书类型，接收：client, server, email, objsign, reserved, sslCA, emailCA, objCA</span>
+    <span class="hljs-attr">ca</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// 证书为 ca，缺省为 false</span>
+    pathlen: <span class="hljs-number">-1</span>, <span class="hljs-comment">// 证书深度，缺省为 -1</span>
+    notBefore: <span class="hljs-string">""</span>, <span class="hljs-comment">// 证书生效时间，缺省为当前时间</span>
+    notAfter: <span class="hljs-string">""</span>, <span class="hljs-comment">// 证书失效时间，缺省为 notBefore 后一年</span>
+    usage: <span class="hljs-string">""</span>, <span class="hljs-comment">// 证书使用范围，接收：digitalSignature, nonRepudiation, keyEncipherment, dataEncipherment, keyAgreement, keyCertSign, cRLSign</span>
+    type: <span class="hljs-string">""</span> <span class="hljs-comment">// 证书 Netscape 证书类型，接收：client, server, email, objsign, reserved, sslCA, emailCA, objCA</span>
 }
 </code></pre>
 <hr>

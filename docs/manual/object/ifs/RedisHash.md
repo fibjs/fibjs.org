@@ -2,6 +2,7 @@
 [Redis](Redis.md) 数据库客户端 Hash 对象，此对象为包含指定 key 的客户端，只有调用其方法才会操作数据库
 
 用以操作 [Redis](Redis.md) 的 Hash 对象，创建方法：
+
 ```JavaScript
 var db = require("db");
 var rdb = new db.openRedis("redis-server");
@@ -64,9 +65,10 @@ var hash = rdb.getHash("test");
         
 ### set
 ** 将哈希表中的域 field 的值设为 value，如果域 field 已经存在于哈希表中，旧值将被覆盖 **
+
 ```JavaScript
 RedisHash.set(Buffer field,
-                Buffer value);
+    Buffer value);
 ```
 
 调用参数:
@@ -76,9 +78,10 @@ RedisHash.set(Buffer field,
 --------------------------
 ### setNX
 ** 将哈希表中的域 field 的值设置为 value ，当且仅当域 field 不存在。若域 field 已经存在，该操作无效 **
+
 ```JavaScript
 RedisHash.setNX(Buffer field,
-                Buffer value);
+    Buffer value);
 ```
 
 调用参数:
@@ -88,6 +91,7 @@ RedisHash.setNX(Buffer field,
 --------------------------
 ### mset
 ** 同时将多个 field-value (域-值)对设置到哈希表中，此命令会覆盖哈希表中已存在的域 **
+
 ```JavaScript
 RedisHash.mset(Object kvs);
 ```
@@ -97,6 +101,7 @@ RedisHash.mset(Object kvs);
 
 --------------------------
 ** 同时将多个 field-value (域-值)对设置到哈希表中，此命令会覆盖哈希表中已存在的域 **
+
 ```JavaScript
 RedisHash.mset(...);
 ```
@@ -107,6 +112,7 @@ RedisHash.mset(...);
 --------------------------
 ### get
 ** 返回哈希表中给定域 field 的值 **
+
 ```JavaScript
 Buffer RedisHash.get(Buffer field);
 ```
@@ -120,6 +126,7 @@ Buffer RedisHash.get(Buffer field);
 --------------------------
 ### mget
 ** 返回哈希表中，一个或多个给定域的值 **
+
 ```JavaScript
 List RedisHash.mget(Array fields);
 ```
@@ -132,6 +139,7 @@ List RedisHash.mget(Array fields);
 
 --------------------------
 ** 返回哈希表中，一个或多个给定域的值 **
+
 ```JavaScript
 List RedisHash.mget(...);
 ```
@@ -145,9 +153,10 @@ List RedisHash.mget(...);
 --------------------------
 ### incr
 ** 将域所储存的值加上增量 **
+
 ```JavaScript
 Long RedisHash.incr(Buffer field,
-                Long num = 1);
+    Long num = 1);
 ```
 
 调用参数:
@@ -160,6 +169,7 @@ Long RedisHash.incr(Buffer field,
 --------------------------
 ### getAll
 ** 返回哈希表中，所有的域和值 **
+
 ```JavaScript
 List RedisHash.getAll();
 ```
@@ -170,6 +180,7 @@ List RedisHash.getAll();
 --------------------------
 ### keys
 ** 返回哈希表中的所有域 **
+
 ```JavaScript
 List RedisHash.keys();
 ```
@@ -180,6 +191,7 @@ List RedisHash.keys();
 --------------------------
 ### len
 ** 返回哈希表中域的数量 **
+
 ```JavaScript
 Integer RedisHash.len();
 ```
@@ -190,6 +202,7 @@ Integer RedisHash.len();
 --------------------------
 ### exists
 ** 查看哈希表中，给定域 field 是否存在 **
+
 ```JavaScript
 Boolean RedisHash.exists(Buffer field);
 ```
@@ -203,6 +216,7 @@ Boolean RedisHash.exists(Buffer field);
 --------------------------
 ### del
 ** 删除哈希表中的一个或多个指定域，不存在的域将被忽略 **
+
 ```JavaScript
 Integer RedisHash.del(Array fields);
 ```
@@ -215,6 +229,7 @@ Integer RedisHash.del(Array fields);
 
 --------------------------
 ** 删除哈希表中的一个或多个指定域，不存在的域将被忽略 **
+
 ```JavaScript
 Integer RedisHash.del(...);
 ```
@@ -228,6 +243,7 @@ Integer RedisHash.del(...);
 --------------------------
 ### dispose
 ** 强制回收对象，调用此方法后，对象资源将立即释放 **
+
 ```JavaScript
 RedisHash.dispose();
 ```
@@ -235,6 +251,7 @@ RedisHash.dispose();
 --------------------------
 ### equals
 ** 比较当前对象与给定的对象是否相等 **
+
 ```JavaScript
 Boolean RedisHash.equals(object expected);
 ```
@@ -248,6 +265,7 @@ Boolean RedisHash.equals(object expected);
 --------------------------
 ### toString
 ** 返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现 **
+
 ```JavaScript
 String RedisHash.toString();
 ```
@@ -258,6 +276,7 @@ String RedisHash.toString();
 --------------------------
 ### toJSON
 ** 返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合 **
+
 ```JavaScript
 Value RedisHash.toJSON(String key = "");
 ```
@@ -271,6 +290,7 @@ Value RedisHash.toJSON(String key = "");
 --------------------------
 ### valueOf
 ** 返回对象本身的数值 **
+
 ```JavaScript
 Value RedisHash.valueOf();
 ```

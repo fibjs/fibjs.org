@@ -166,11 +166,11 @@
 <span class="hljs-keyword">var</span> state = <span class="hljs-string">"ready"</span>;
 
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">funcwait</span>(<span class="hljs-params"></span>) </span>{
-   cond.acquire();
-   <span class="hljs-keyword">while</span> (!ready)
-       cond.wait();
-   state = <span class="hljs-string">"go"</span>
-   cond.release();
+    cond.acquire();
+    <span class="hljs-keyword">while</span> (!ready)
+        cond.wait();
+    state = <span class="hljs-string">"go"</span>
+    cond.release();
 }
 
 coroutine.start(funcwait);
@@ -257,11 +257,11 @@ go
 <h2 id="-">构造函数</h2>
 <h3 id="condition">Condition</h3>
 <p><strong> 条件变量构造函数（条件变量所需的锁由fibjs内部构造） </strong></p>
-<pre><code class="lang-JavaScript"> <span class="hljs-keyword">new</span> Condition();
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">new</span> Condition();
 </code></pre>
 <hr>
 <p><strong> 条件变量构造函数 </strong></p>
-<pre><code class="lang-JavaScript"> <span class="hljs-keyword">new</span> Condition(Lock lock);
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">new</span> Condition(Lock lock);
 </code></pre>
 <p>调用参数:</p>
 <ul>

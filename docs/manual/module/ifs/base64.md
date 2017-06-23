@@ -2,11 +2,14 @@
 base64 编码与解码模块
 
 引用方式：
+
 ```JavaScript
 var encoding = require('encoding');
 var base64 = encoding.base64;
 ```
+
 或者
+
 ```JavaScript
 var base64 = require('base64');
 ```
@@ -15,6 +18,7 @@ var base64 = require('base64');
         
 ### encode
 ** 以 base64 方式编码数据 **
+
 ```JavaScript
 static String base64.encode(Buffer data);
 ```
@@ -28,6 +32,7 @@ static String base64.encode(Buffer data);
 --------------------------
 ### decode
 ** 以 base64 方式解码字符串为二进制数据 **
+
 ```JavaScript
 static Buffer base64.decode(String data);
 ```

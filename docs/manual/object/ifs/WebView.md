@@ -93,6 +93,7 @@
         
 ### defaultMaxListeners
 ** Integer, 默认全局最大监听器数 **
+
 ```JavaScript
 static Integer WebView.defaultMaxListeners;
 ```
@@ -101,6 +102,7 @@ static Integer WebView.defaultMaxListeners;
         
 ### visible
 ** Boolean, 查询和设置窗口是否显示 **
+
 ```JavaScript
 Boolean WebView.visible;
 ```
@@ -108,6 +110,7 @@ Boolean WebView.visible;
 --------------------------
 ### onload
 ** Function, 查询和绑定加载成功事件，相当于 on("load", func); **
+
 ```JavaScript
 Function WebView.onload;
 ```
@@ -115,6 +118,7 @@ Function WebView.onload;
 --------------------------
 ### onmove
 ** Function, 查询和绑定窗口移动事件，相当于 on("move", func); **
+
 ```JavaScript
 Function WebView.onmove;
 ```
@@ -126,11 +130,12 @@ var webview = gui.open('fs:index.html');
 webview.onmove = function(evt) {
 	console.log(evt.left, evt.top);
 }
-	 	```
+```
 
 --------------------------
 ### onresize
 ** Function, 查询和绑定窗口尺寸改变事件，相当于 on("size", func); **
+
 ```JavaScript
 Function WebView.onresize;
 ```
@@ -147,6 +152,7 @@ webview.onresize = function(evt) {
 --------------------------
 ### onclose
 ** Function, 查询和绑定窗口关闭事件，相当于 on("close", func); **
+
 ```JavaScript
 Function WebView.onclose;
 ```
@@ -156,11 +162,12 @@ var gui = require('gui');
 var webview = gui.open('fs:index.html');
 
 webview.onclose = function() {}
-	 	```
+```
 
 --------------------------
 ### onmessage
 ** Function, 查询和绑定接受 webview 内 postMessage 消息事件，相当于 on("message", func); **
+
 ```JavaScript
 Function WebView.onmessage;
 ```
@@ -178,7 +185,7 @@ var gui = require('gui');
 var webview = gui.open('fs:index.html');
 
 webview.onmessage = function(msg) {
-	console.log(msg); // 将会打印 'hello from html'
+    console.log(msg); // 将会打印 'hello from html'
 }
 ```
 
@@ -186,6 +193,7 @@ webview.onmessage = function(msg) {
         
 ### setHtml
 ** 设置 webview 的页面 html **
+
 ```JavaScript
 WebView.setHtml(String html) async;
 ```
@@ -196,6 +204,7 @@ WebView.setHtml(String html) async;
 --------------------------
 ### print
 ** 打印当前窗口文档 **
+
 ```JavaScript
 WebView.print(Integer mode = 1) async;
 ```
@@ -206,6 +215,7 @@ WebView.print(Integer mode = 1) async;
 --------------------------
 ### close
 ** 关闭当前窗口 **
+
 ```JavaScript
 WebView.close() async;
 ```
@@ -213,6 +223,7 @@ WebView.close() async;
 --------------------------
 ### wait
 ** 等待当前窗口关闭 **
+
 ```JavaScript
 WebView.wait() async;
 ```
@@ -220,6 +231,7 @@ WebView.wait() async;
 --------------------------
 ### postMessage
 ** 向 webview 内发送消息 **
+
 ```JavaScript
 WebView.postMessage(String msg) async;
 ```
@@ -235,7 +247,7 @@ var webview = gui.open('fs:index.html');
 webview.postMessage("hello from fibjs");
 ```
 
-```JavaScript
+```html
 // index.html
 <script>
 window.external.onmessage = function(msg){
@@ -247,9 +259,10 @@ window.external.onmessage = function(msg){
 --------------------------
 ### on
 ** 绑定一个事件处理函数到对象 **
+
 ```JavaScript
 Object WebView.on(String ev,
-                Function func);
+    Function func);
 ```
 
 调用参数:
@@ -261,6 +274,7 @@ Object WebView.on(String ev,
 
 --------------------------
 ** 绑定一个事件处理函数到对象 **
+
 ```JavaScript
 Object WebView.on(Object map);
 ```
@@ -274,9 +288,10 @@ Object WebView.on(Object map);
 --------------------------
 ### addListener
 ** 绑定一个事件处理函数到对象 **
+
 ```JavaScript
 Object WebView.addListener(String ev,
-                Function func);
+    Function func);
 ```
 
 调用参数:
@@ -288,6 +303,7 @@ Object WebView.addListener(String ev,
 
 --------------------------
 ** 绑定一个事件处理函数到对象 **
+
 ```JavaScript
 Object WebView.addListener(Object map);
 ```
@@ -301,9 +317,10 @@ Object WebView.addListener(Object map);
 --------------------------
 ### prependListener
 ** 绑定一个事件处理函数到对象起始 **
+
 ```JavaScript
 Object WebView.prependListener(String ev,
-                Function func);
+    Function func);
 ```
 
 调用参数:
@@ -315,6 +332,7 @@ Object WebView.prependListener(String ev,
 
 --------------------------
 ** 绑定一个事件处理函数到对象起始 **
+
 ```JavaScript
 Object WebView.prependListener(Object map);
 ```
@@ -329,9 +347,10 @@ Object WebView.prependListener(Object map);
 --------------------------
 ### once
 ** 绑定一个一次性事件处理函数到对象，一次性处理函数只会触发一次 **
+
 ```JavaScript
 Object WebView.once(String ev,
-                Function func);
+    Function func);
 ```
 
 调用参数:
@@ -343,6 +362,7 @@ Object WebView.once(String ev,
 
 --------------------------
 ** 绑定一个一次性事件处理函数到对象，一次性处理函数只会触发一次 **
+
 ```JavaScript
 Object WebView.once(Object map);
 ```
@@ -356,9 +376,10 @@ Object WebView.once(Object map);
 --------------------------
 ### prependOnceListener
 ** 绑定一个事件处理函数到对象起始 **
+
 ```JavaScript
 Object WebView.prependOnceListener(String ev,
-                Function func);
+    Function func);
 ```
 
 调用参数:
@@ -370,6 +391,7 @@ Object WebView.prependOnceListener(String ev,
 
 --------------------------
 ** 绑定一个事件处理函数到对象起始 **
+
 ```JavaScript
 Object WebView.prependOnceListener(Object map);
 ```
@@ -384,9 +406,10 @@ Object WebView.prependOnceListener(Object map);
 --------------------------
 ### off
 ** 从对象处理队列中取消指定函数 **
+
 ```JavaScript
 Object WebView.off(String ev,
-                Function func);
+    Function func);
 ```
 
 调用参数:
@@ -398,6 +421,7 @@ Object WebView.off(String ev,
 
 --------------------------
 ** 取消对象处理队列中的全部函数 **
+
 ```JavaScript
 Object WebView.off(String ev);
 ```
@@ -410,6 +434,7 @@ Object WebView.off(String ev);
 
 --------------------------
 ** 从对象处理队列中取消指定函数 **
+
 ```JavaScript
 Object WebView.off(Object map);
 ```
@@ -423,9 +448,10 @@ Object WebView.off(Object map);
 --------------------------
 ### removeListener
 ** 从对象处理队列中取消指定函数 **
+
 ```JavaScript
 Object WebView.removeListener(String ev,
-                Function func);
+    Function func);
 ```
 
 调用参数:
@@ -437,6 +463,7 @@ Object WebView.removeListener(String ev,
 
 --------------------------
 ** 取消对象处理队列中的全部函数 **
+
 ```JavaScript
 Object WebView.removeListener(String ev);
 ```
@@ -449,6 +476,7 @@ Object WebView.removeListener(String ev);
 
 --------------------------
 ** 从对象处理队列中取消指定函数 **
+
 ```JavaScript
 Object WebView.removeListener(Object map);
 ```
@@ -462,6 +490,7 @@ Object WebView.removeListener(Object map);
 --------------------------
 ### removeAllListeners
 ** 从对象处理队列中取消所有事件的所有监听器， 如果指定事件，则移除指定事件的所有监听器。 **
+
 ```JavaScript
 Object WebView.removeAllListeners(Array evs = []);
 ```
@@ -475,6 +504,7 @@ Object WebView.removeAllListeners(Array evs = []);
 --------------------------
 ### setMaxListeners
 ** 监听器的默认限制的数量，仅用于兼容 **
+
 ```JavaScript
 WebView.setMaxListeners(Integer n);
 ```
@@ -485,6 +515,7 @@ WebView.setMaxListeners(Integer n);
 --------------------------
 ### getMaxListeners
 ** 获取监听器的默认限制的数量，仅用于兼容 **
+
 ```JavaScript
 Integer WebView.getMaxListeners();
 ```
@@ -492,6 +523,7 @@ Integer WebView.getMaxListeners();
 --------------------------
 ### listeners
 ** 查询对象指定事件的监听器数组 **
+
 ```JavaScript
 Array WebView.listeners(String ev);
 ```
@@ -505,6 +537,7 @@ Array WebView.listeners(String ev);
 --------------------------
 ### listenerCount
 ** 查询对象指定事件的监听器数量 **
+
 ```JavaScript
 Integer WebView.listenerCount(String ev);
 ```
@@ -518,6 +551,7 @@ Integer WebView.listenerCount(String ev);
 --------------------------
 ### eventNames
 ** 查询监听器事件名称 **
+
 ```JavaScript
 Array WebView.eventNames();
 ```
@@ -528,9 +562,10 @@ Array WebView.eventNames();
 --------------------------
 ### emit
 ** 主动触发一个事件 **
+
 ```JavaScript
 Boolean WebView.emit(String ev,
-                ...);
+    ...);
 ```
 
 调用参数:
@@ -543,6 +578,7 @@ Boolean WebView.emit(String ev,
 --------------------------
 ### dispose
 ** 强制回收对象，调用此方法后，对象资源将立即释放 **
+
 ```JavaScript
 WebView.dispose();
 ```
@@ -550,6 +586,7 @@ WebView.dispose();
 --------------------------
 ### equals
 ** 比较当前对象与给定的对象是否相等 **
+
 ```JavaScript
 Boolean WebView.equals(object expected);
 ```
@@ -563,6 +600,7 @@ Boolean WebView.equals(object expected);
 --------------------------
 ### toString
 ** 返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现 **
+
 ```JavaScript
 String WebView.toString();
 ```
@@ -573,6 +611,7 @@ String WebView.toString();
 --------------------------
 ### toJSON
 ** 返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合 **
+
 ```JavaScript
 Value WebView.toJSON(String key = "");
 ```
@@ -586,6 +625,7 @@ Value WebView.toJSON(String key = "");
 --------------------------
 ### valueOf
 ** 返回对象本身的数值 **
+
 ```JavaScript
 Value WebView.valueOf();
 ```

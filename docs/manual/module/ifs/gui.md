@@ -2,6 +2,7 @@
 输入输出处理模块
 
 使用方法：
+
 ```JavaScript
 var gui = require('gui');
 ```
@@ -10,6 +11,7 @@ var gui = require('gui');
         
 ### setVersion
 ** 设置 [WebView](../../object/ifs/WebView.md) 内 ie 模拟版本 **
+
 ```JavaScript
 static gui.setVersion(Integer ver);
 ```
@@ -19,6 +21,7 @@ static gui.setVersion(Integer ver);
 --------------------------
 ### open
 ** 打开一个窗口并访问指定网址 **
+
 ```JavaScript
 static WebView gui.open(String url) async;
 ```
@@ -31,9 +34,10 @@ static WebView gui.open(String url) async;
 
 --------------------------
 ** 打开一个窗口并访问指定网址 **
+
 ```JavaScript
 static WebView gui.open(String url,
-                Map opt) async;
+    Map opt) async;
 ```
 
 调用参数:
@@ -44,6 +48,7 @@ static WebView gui.open(String url,
 * [WebView](../../object/ifs/WebView.md), 返回打开的窗口对象
 
 支持以下参数:
+
 ```JavaScript
 {
     "left": 100, // 窗口左上角 x，缺省系统自动设定
@@ -58,12 +63,14 @@ static WebView gui.open(String url,
     "debug": false // 是否提示页面错误，缺省不提示
 }
 ```
+
 当设定 width 和 height，而未设定 left 或 right 时，窗口将自动居中
 
 ## 常量
         
 ### IE7
 ** [WebView](../../object/ifs/WebView.md) ie 模拟版本，指定 ie7 **
+
 ```JavaScript
 const gui.IE7 = 7000;
 ```
@@ -71,6 +78,7 @@ const gui.IE7 = 7000;
 --------------------------
 ### IE8
 ** [WebView](../../object/ifs/WebView.md) ie 模拟版本，指定 ie8 **
+
 ```JavaScript
 const gui.IE8 = 8000;
 ```
@@ -78,6 +86,7 @@ const gui.IE8 = 8000;
 --------------------------
 ### IE9
 ** [WebView](../../object/ifs/WebView.md) ie 模拟版本，指定 ie9 **
+
 ```JavaScript
 const gui.IE9 = 9000;
 ```
@@ -85,6 +94,7 @@ const gui.IE9 = 9000;
 --------------------------
 ### IE10
 ** [WebView](../../object/ifs/WebView.md) ie 模拟版本，指定 ie10 **
+
 ```JavaScript
 const gui.IE10 = 10000;
 ```
@@ -92,6 +102,7 @@ const gui.IE10 = 10000;
 --------------------------
 ### IE11
 ** [WebView](../../object/ifs/WebView.md) ie 模拟版本，指定 ie11 **
+
 ```JavaScript
 const gui.IE11 = 11000;
 ```
@@ -99,6 +110,7 @@ const gui.IE11 = 11000;
 --------------------------
 ### EDGE
 ** [WebView](../../object/ifs/WebView.md) ie 模拟版本，指定 edge **
+
 ```JavaScript
 const gui.EDGE = 11001;
 ```

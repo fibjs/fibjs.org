@@ -3,13 +3,13 @@
 
 使用 [coroutine](../../module/ifs/coroutine.md).start 创建纤程后，将返回此对象，用于纤程处理和纤程间通信。
 纤程主函数可以通过 this 访问本纤程对象，也可通过 [coroutine](../../module/ifs/coroutine.md).current 获取当前纤程。
+
 ```JavaScript
-function func(v1)
-{
-  console.log(v1 + this.v);
+function func(v1) {
+    console.log(v1 + this.v);
 }
 
-var fb = coroutine.start(func,100);
+var fb = coroutine.start(func, 100);
 
 fb.v = 123;
 
@@ -19,9 +19,8 @@ fb.join();
 纤程局部存储通过共享的 Fiber 对象完成，通过 [coroutine](../../module/ifs/coroutine.md).current 获取当前纤程，通过修改和查询其变量达到共享数据的目的。
 
 ```JavaScript
-function func()
-{
-  console.log(coroutine.current().v);
+function func() {
+    console.log(coroutine.current().v);
 }
 
 coroutine.current().v = 100;
@@ -32,9 +31,8 @@ func();
 纤程在创建时，会自动复制当前纤程的局部变量到新的纤程，之后，各自的局部变量的修改不会相互影响，除非变量本身为对象引用。
 
 ```JavaScript
-function func()
-{
-  console.log(coroutine.current().v);
+function func() {
+    console.log(coroutine.current().v);
 }
 
 coroutine.current().v = 100;
@@ -95,6 +93,7 @@ fb.join();
         
 ### caller
 ** Fiber, 查询纤程的调用纤程 **
+
 ```JavaScript
 readonly Fiber Fiber.caller;
 ```
@@ -102,6 +101,7 @@ readonly Fiber Fiber.caller;
 --------------------------
 ### traceInfo
 ** String, 查询纤程的调用堆栈，查询非当前纤程的堆栈需要在执行时指定参数：--trace_fiber **
+
 ```JavaScript
 readonly String Fiber.traceInfo;
 ```
@@ -110,6 +110,7 @@ readonly String Fiber.traceInfo;
         
 ### join
 ** 等待纤程结束 **
+
 ```JavaScript
 Fiber.join();
 ```
@@ -117,6 +118,7 @@ Fiber.join();
 --------------------------
 ### dispose
 ** 强制回收对象，调用此方法后，对象资源将立即释放 **
+
 ```JavaScript
 Fiber.dispose();
 ```
@@ -124,6 +126,7 @@ Fiber.dispose();
 --------------------------
 ### equals
 ** 比较当前对象与给定的对象是否相等 **
+
 ```JavaScript
 Boolean Fiber.equals(object expected);
 ```
@@ -137,6 +140,7 @@ Boolean Fiber.equals(object expected);
 --------------------------
 ### toString
 ** 返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现 **
+
 ```JavaScript
 String Fiber.toString();
 ```
@@ -147,6 +151,7 @@ String Fiber.toString();
 --------------------------
 ### toJSON
 ** 返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合 **
+
 ```JavaScript
 Value Fiber.toJSON(String key = "");
 ```
@@ -160,6 +165,7 @@ Value Fiber.toJSON(String key = "");
 --------------------------
 ### valueOf
 ** 返回对象本身的数值 **
+
 ```JavaScript
 Value Fiber.valueOf();
 ```

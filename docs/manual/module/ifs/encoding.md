@@ -2,6 +2,7 @@
 编码与解码模块，用于处理不同的数据编码格式与二进制之间的转换
 
 引用方式：
+
 ```JavaScript
 var encoding = require('encoding');
 ```
@@ -10,6 +11,7 @@ var encoding = require('encoding');
         
 ### base32
 ** [base32](base32.md) 编码与解码模块 **
+
 ```JavaScript
 base32 encoding.base32;
 ```
@@ -17,6 +19,7 @@ base32 encoding.base32;
 --------------------------
 ### base64
 ** [base64](base64.md) 编码与解码模块 **
+
 ```JavaScript
 base64 encoding.base64;
 ```
@@ -24,6 +27,7 @@ base64 encoding.base64;
 --------------------------
 ### base64vlq
 ** [base64vlq](base64vlq.md) 编码与解码模块 **
+
 ```JavaScript
 base64vlq encoding.base64vlq;
 ```
@@ -31,6 +35,7 @@ base64vlq encoding.base64vlq;
 --------------------------
 ### hex
 ** [hex](hex.md) 编码与解码模块 **
+
 ```JavaScript
 hex encoding.hex;
 ```
@@ -38,6 +43,7 @@ hex encoding.hex;
 --------------------------
 ### iconv
 ** [iconv](iconv.md) 编码与解码模块 **
+
 ```JavaScript
 iconv encoding.iconv;
 ```
@@ -45,6 +51,7 @@ iconv encoding.iconv;
 --------------------------
 ### json
 ** [json](json.md) 编码与解码模块 **
+
 ```JavaScript
 json encoding.json;
 ```
@@ -52,6 +59,7 @@ json encoding.json;
 --------------------------
 ### bson
 ** [bson](bson.md) 编码与解码模块 **
+
 ```JavaScript
 bson encoding.bson;
 ```
@@ -60,9 +68,10 @@ bson encoding.bson;
         
 ### jsstr
 ** 将字符串编码为 javascript 转义字符串，用以在 javascript 代码中包含文本 **
+
 ```JavaScript
 static String encoding.jsstr(String str,
-                Boolean json = false);
+    Boolean json = false);
 ```
 
 调用参数:
@@ -75,6 +84,7 @@ static String encoding.jsstr(String str,
 --------------------------
 ### encodeURI
 ** [url](url.md) 字符串安全编码 **
+
 ```JavaScript
 static String encoding.encodeURI(String url);
 ```
@@ -88,6 +98,7 @@ static String encoding.encodeURI(String url);
 --------------------------
 ### encodeURIComponent
 ** [url](url.md) 部件字符串安全编码 **
+
 ```JavaScript
 static String encoding.encodeURIComponent(String url);
 ```
@@ -101,6 +112,7 @@ static String encoding.encodeURIComponent(String url);
 --------------------------
 ### decodeURI
 ** [url](url.md) 安全字符串解码 **
+
 ```JavaScript
 static String encoding.decodeURI(String url);
 ```

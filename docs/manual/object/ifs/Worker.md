@@ -86,9 +86,10 @@
         
 ### Worker
 **  **
+
 ```JavaScript
- new Worker(String path,
-                Object opts = {});
+new Worker(String path,
+    Object opts = {});
 ```
 
 调用参数:
@@ -97,6 +98,7 @@
         
 ### defaultMaxListeners
 ** Integer, 默认全局最大监听器数 **
+
 ```JavaScript
 static Integer Worker.defaultMaxListeners;
 ```
@@ -105,6 +107,7 @@ static Integer Worker.defaultMaxListeners;
         
 ### onmessage
 **  **
+
 ```JavaScript
 Function Worker.onmessage;
 ```
@@ -113,6 +116,7 @@ Function Worker.onmessage;
         
 ### postMessage
 **  **
+
 ```JavaScript
 Worker.postMessage(Value data);
 ```
@@ -122,9 +126,10 @@ Worker.postMessage(Value data);
 --------------------------
 ### on
 ** 绑定一个事件处理函数到对象 **
+
 ```JavaScript
 Object Worker.on(String ev,
-                Function func);
+    Function func);
 ```
 
 调用参数:
@@ -136,6 +141,7 @@ Object Worker.on(String ev,
 
 --------------------------
 ** 绑定一个事件处理函数到对象 **
+
 ```JavaScript
 Object Worker.on(Object map);
 ```
@@ -149,9 +155,10 @@ Object Worker.on(Object map);
 --------------------------
 ### addListener
 ** 绑定一个事件处理函数到对象 **
+
 ```JavaScript
 Object Worker.addListener(String ev,
-                Function func);
+    Function func);
 ```
 
 调用参数:
@@ -163,6 +170,7 @@ Object Worker.addListener(String ev,
 
 --------------------------
 ** 绑定一个事件处理函数到对象 **
+
 ```JavaScript
 Object Worker.addListener(Object map);
 ```
@@ -176,9 +184,10 @@ Object Worker.addListener(Object map);
 --------------------------
 ### prependListener
 ** 绑定一个事件处理函数到对象起始 **
+
 ```JavaScript
 Object Worker.prependListener(String ev,
-                Function func);
+    Function func);
 ```
 
 调用参数:
@@ -190,6 +199,7 @@ Object Worker.prependListener(String ev,
 
 --------------------------
 ** 绑定一个事件处理函数到对象起始 **
+
 ```JavaScript
 Object Worker.prependListener(Object map);
 ```
@@ -204,9 +214,10 @@ Object Worker.prependListener(Object map);
 --------------------------
 ### once
 ** 绑定一个一次性事件处理函数到对象，一次性处理函数只会触发一次 **
+
 ```JavaScript
 Object Worker.once(String ev,
-                Function func);
+    Function func);
 ```
 
 调用参数:
@@ -218,6 +229,7 @@ Object Worker.once(String ev,
 
 --------------------------
 ** 绑定一个一次性事件处理函数到对象，一次性处理函数只会触发一次 **
+
 ```JavaScript
 Object Worker.once(Object map);
 ```
@@ -231,9 +243,10 @@ Object Worker.once(Object map);
 --------------------------
 ### prependOnceListener
 ** 绑定一个事件处理函数到对象起始 **
+
 ```JavaScript
 Object Worker.prependOnceListener(String ev,
-                Function func);
+    Function func);
 ```
 
 调用参数:
@@ -245,6 +258,7 @@ Object Worker.prependOnceListener(String ev,
 
 --------------------------
 ** 绑定一个事件处理函数到对象起始 **
+
 ```JavaScript
 Object Worker.prependOnceListener(Object map);
 ```
@@ -259,9 +273,10 @@ Object Worker.prependOnceListener(Object map);
 --------------------------
 ### off
 ** 从对象处理队列中取消指定函数 **
+
 ```JavaScript
 Object Worker.off(String ev,
-                Function func);
+    Function func);
 ```
 
 调用参数:
@@ -273,6 +288,7 @@ Object Worker.off(String ev,
 
 --------------------------
 ** 取消对象处理队列中的全部函数 **
+
 ```JavaScript
 Object Worker.off(String ev);
 ```
@@ -285,6 +301,7 @@ Object Worker.off(String ev);
 
 --------------------------
 ** 从对象处理队列中取消指定函数 **
+
 ```JavaScript
 Object Worker.off(Object map);
 ```
@@ -298,9 +315,10 @@ Object Worker.off(Object map);
 --------------------------
 ### removeListener
 ** 从对象处理队列中取消指定函数 **
+
 ```JavaScript
 Object Worker.removeListener(String ev,
-                Function func);
+    Function func);
 ```
 
 调用参数:
@@ -312,6 +330,7 @@ Object Worker.removeListener(String ev,
 
 --------------------------
 ** 取消对象处理队列中的全部函数 **
+
 ```JavaScript
 Object Worker.removeListener(String ev);
 ```
@@ -324,6 +343,7 @@ Object Worker.removeListener(String ev);
 
 --------------------------
 ** 从对象处理队列中取消指定函数 **
+
 ```JavaScript
 Object Worker.removeListener(Object map);
 ```
@@ -337,6 +357,7 @@ Object Worker.removeListener(Object map);
 --------------------------
 ### removeAllListeners
 ** 从对象处理队列中取消所有事件的所有监听器， 如果指定事件，则移除指定事件的所有监听器。 **
+
 ```JavaScript
 Object Worker.removeAllListeners(Array evs = []);
 ```
@@ -350,6 +371,7 @@ Object Worker.removeAllListeners(Array evs = []);
 --------------------------
 ### setMaxListeners
 ** 监听器的默认限制的数量，仅用于兼容 **
+
 ```JavaScript
 Worker.setMaxListeners(Integer n);
 ```
@@ -360,6 +382,7 @@ Worker.setMaxListeners(Integer n);
 --------------------------
 ### getMaxListeners
 ** 获取监听器的默认限制的数量，仅用于兼容 **
+
 ```JavaScript
 Integer Worker.getMaxListeners();
 ```
@@ -367,6 +390,7 @@ Integer Worker.getMaxListeners();
 --------------------------
 ### listeners
 ** 查询对象指定事件的监听器数组 **
+
 ```JavaScript
 Array Worker.listeners(String ev);
 ```
@@ -380,6 +404,7 @@ Array Worker.listeners(String ev);
 --------------------------
 ### listenerCount
 ** 查询对象指定事件的监听器数量 **
+
 ```JavaScript
 Integer Worker.listenerCount(String ev);
 ```
@@ -393,6 +418,7 @@ Integer Worker.listenerCount(String ev);
 --------------------------
 ### eventNames
 ** 查询监听器事件名称 **
+
 ```JavaScript
 Array Worker.eventNames();
 ```
@@ -403,9 +429,10 @@ Array Worker.eventNames();
 --------------------------
 ### emit
 ** 主动触发一个事件 **
+
 ```JavaScript
 Boolean Worker.emit(String ev,
-                ...);
+    ...);
 ```
 
 调用参数:
@@ -418,6 +445,7 @@ Boolean Worker.emit(String ev,
 --------------------------
 ### dispose
 ** 强制回收对象，调用此方法后，对象资源将立即释放 **
+
 ```JavaScript
 Worker.dispose();
 ```
@@ -425,6 +453,7 @@ Worker.dispose();
 --------------------------
 ### equals
 ** 比较当前对象与给定的对象是否相等 **
+
 ```JavaScript
 Boolean Worker.equals(object expected);
 ```
@@ -438,6 +467,7 @@ Boolean Worker.equals(object expected);
 --------------------------
 ### toString
 ** 返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现 **
+
 ```JavaScript
 String Worker.toString();
 ```
@@ -448,6 +478,7 @@ String Worker.toString();
 --------------------------
 ### toJSON
 ** 返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合 **
+
 ```JavaScript
 Value Worker.toJSON(String key = "");
 ```
@@ -461,6 +492,7 @@ Value Worker.toJSON(String key = "");
 --------------------------
 ### valueOf
 ** 返回对象本身的数值 **
+
 ```JavaScript
 Value Worker.valueOf();
 ```

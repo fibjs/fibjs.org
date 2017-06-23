@@ -2,12 +2,13 @@
 安全沙箱对象，用于管理一个独立的运行空间
 
  所有的代码都运行在自己的沙箱中，全局的 require 会调用当前沙箱加载模块，沙箱会通过 require 传递给加载的沙箱。下面的示例创建一个沙箱，限制只允许访问全局基础模块中的 [assert](../../module/ifs/assert.md) 模块，并添加 a 和 b 两个定制模块：
+
 ```JavaScript
 var vm = require('vm');
 var sbox = new vm.SandBox({
-  a: 100,
-  b: 200,
-  assert: require('assert')
+    a: 100,
+    b: 200,
+    assert: require('assert')
 });
 
 var mod_in_sbox = sbox.require('./path/to/mod');
@@ -69,8 +70,9 @@ var mod_in_sbox = sbox.require('./path/to/mod');
         
 ### SandBox
 ** 构造一个新的安全沙箱对象，并初始化基础模块 **
+
 ```JavaScript
- new SandBox(Object mods);
+new SandBox(Object mods);
 ```
 
 调用参数:
@@ -78,9 +80,10 @@ var mod_in_sbox = sbox.require('./path/to/mod');
 
 --------------------------
 ** 构造一个新的安全沙箱对象，并初始化基础模块 **
+
 ```JavaScript
- new SandBox(Object mods,
-                Function require);
+new SandBox(Object mods,
+    Function require);
 ```
 
 调用参数:
@@ -89,9 +92,10 @@ var mod_in_sbox = sbox.require('./path/to/mod');
 
 --------------------------
 ** 构造一个独立 Global 新的安全沙箱对象，并初始化基础模块 **
+
 ```JavaScript
- new SandBox(Object mods,
-                Object global);
+new SandBox(Object mods,
+    Object global);
 ```
 
 调用参数:
@@ -100,10 +104,11 @@ var mod_in_sbox = sbox.require('./path/to/mod');
 
 --------------------------
 ** 构造一个独立 Global 新的安全沙箱对象，并初始化基础模块 **
+
 ```JavaScript
- new SandBox(Object mods,
-                Function require,
-                Object global);
+new SandBox(Object mods,
+    Function require,
+    Object global);
 ```
 
 调用参数:
@@ -115,6 +120,7 @@ var mod_in_sbox = sbox.require('./path/to/mod');
         
 ### global
 ** Object, 查询沙箱的 [global](../../module/ifs/global.md) 对象 **
+
 ```JavaScript
 readonly Object SandBox.global;
 ```
@@ -123,9 +129,10 @@ readonly Object SandBox.global;
         
 ### add
 ** 向沙箱中添加一个基础模块 **
+
 ```JavaScript
 SandBox.add(String id,
-                Value mod);
+    Value mod);
 ```
 
 调用参数:
@@ -134,6 +141,7 @@ SandBox.add(String id,
 
 --------------------------
 ** 向沙箱中添加一组基础模块 **
+
 ```JavaScript
 SandBox.add(Object mods);
 ```
@@ -144,9 +152,10 @@ SandBox.add(Object mods);
 --------------------------
 ### addScript
 ** 向沙箱中添加一个脚本模块 **
+
 ```JavaScript
 Value SandBox.addScript(String srcname,
-                Buffer script);
+    Buffer script);
 ```
 
 调用参数:
@@ -159,6 +168,7 @@ Value SandBox.addScript(String srcname,
 --------------------------
 ### remove
 ** 从沙箱中删除指定的基础模块 **
+
 ```JavaScript
 SandBox.remove(String id);
 ```
@@ -169,6 +179,7 @@ SandBox.remove(String id);
 --------------------------
 ### clone
 ** 复制当前沙箱，新沙箱包含当前沙箱的模块，以及相同的名称和 require 函数 **
+
 ```JavaScript
 SandBox SandBox.clone();
 ```
@@ -179,9 +190,10 @@ SandBox SandBox.clone();
 --------------------------
 ### run
 ** 运行一个脚本 **
+
 ```JavaScript
 SandBox.run(String fname,
-                Array argv = []);
+    Array argv = []);
 ```
 
 调用参数:
@@ -191,9 +203,10 @@ SandBox.run(String fname,
 --------------------------
 ### resolve
 ** 查询一个模块并返回模块完整文件名 **
+
 ```JavaScript
 String SandBox.resolve(String id,
-                String base);
+    String base);
 ```
 
 调用参数:
@@ -206,9 +219,10 @@ String SandBox.resolve(String id,
 --------------------------
 ### require
 ** 加载一个模块并返回模块对象 **
+
 ```JavaScript
 Value SandBox.require(String id,
-                String base);
+    String base);
 ```
 
 调用参数:
@@ -221,6 +235,7 @@ Value SandBox.require(String id,
 --------------------------
 ### dispose
 ** 强制回收对象，调用此方法后，对象资源将立即释放 **
+
 ```JavaScript
 SandBox.dispose();
 ```
@@ -228,6 +243,7 @@ SandBox.dispose();
 --------------------------
 ### equals
 ** 比较当前对象与给定的对象是否相等 **
+
 ```JavaScript
 Boolean SandBox.equals(object expected);
 ```
@@ -241,6 +257,7 @@ Boolean SandBox.equals(object expected);
 --------------------------
 ### toString
 ** 返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现 **
+
 ```JavaScript
 String SandBox.toString();
 ```
@@ -251,6 +268,7 @@ String SandBox.toString();
 --------------------------
 ### toJSON
 ** 返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合 **
+
 ```JavaScript
 Value SandBox.toJSON(String key = "");
 ```
@@ -264,6 +282,7 @@ Value SandBox.toJSON(String key = "");
 --------------------------
 ### valueOf
 ** 返回对象本身的数值 **
+
 ```JavaScript
 Value SandBox.valueOf();
 ```

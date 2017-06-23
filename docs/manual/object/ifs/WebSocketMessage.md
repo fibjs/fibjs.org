@@ -2,6 +2,7 @@
 websocket 消息对象
 
 创建方法：
+
 ```JavaScript
 var ws = require("ws");
 
@@ -97,10 +98,11 @@ var msg = new ws.Message();
         
 ### WebSocketMessage
 ** 包处理消息对象构造函数 **
+
 ```JavaScript
- new WebSocketMessage(Integer type = ws.BINARY,
-                Boolean masked = true,
-                Integer maxSize = 67108864);
+new WebSocketMessage(Integer type = ws.BINARY,
+    Boolean masked = true,
+    Integer maxSize = 67108864);
 ```
 
 调用参数:
@@ -112,6 +114,7 @@ var msg = new ws.Message();
         
 ### TEXT
 ** 指定消息类型 1，代表一个文本类型 **
+
 ```JavaScript
 const WebSocketMessage.TEXT = 1;
 ```
@@ -119,6 +122,7 @@ const WebSocketMessage.TEXT = 1;
 --------------------------
 ### BINARY
 ** 指定消息类型 2，代表一个二进制类型 **
+
 ```JavaScript
 const WebSocketMessage.BINARY = 2;
 ```
@@ -127,6 +131,7 @@ const WebSocketMessage.BINARY = 2;
         
 ### masked
 ** Boolean, 查询和读取 websocket 掩码标记，缺省为 true **
+
 ```JavaScript
 Boolean WebSocketMessage.masked;
 ```
@@ -134,6 +139,7 @@ Boolean WebSocketMessage.masked;
 --------------------------
 ### maxSize
 ** Integer, 查询和设置最大包尺寸，以字节为单位，缺省为 67108864(64M) **
+
 ```JavaScript
 Integer WebSocketMessage.maxSize;
 ```
@@ -141,6 +147,7 @@ Integer WebSocketMessage.maxSize;
 --------------------------
 ### value
 ** String, 消息的基本内容 **
+
 ```JavaScript
 String WebSocketMessage.value;
 ```
@@ -148,6 +155,7 @@ String WebSocketMessage.value;
 --------------------------
 ### params
 ** [List](List.md), 消息的基本参数 **
+
 ```JavaScript
 List WebSocketMessage.params;
 ```
@@ -155,6 +163,7 @@ List WebSocketMessage.params;
 --------------------------
 ### type
 ** Integer, 消息类型 **
+
 ```JavaScript
 Integer WebSocketMessage.type;
 ```
@@ -162,6 +171,7 @@ Integer WebSocketMessage.type;
 --------------------------
 ### data
 ** Value, 查询消息的数据 **
+
 ```JavaScript
 readonly Value WebSocketMessage.data;
 ```
@@ -169,6 +179,7 @@ readonly Value WebSocketMessage.data;
 --------------------------
 ### body
 ** [SeekableStream](SeekableStream.md), 包含消息数据部分的流对象 **
+
 ```JavaScript
 SeekableStream WebSocketMessage.body;
 ```
@@ -176,6 +187,7 @@ SeekableStream WebSocketMessage.body;
 --------------------------
 ### length
 ** Long, 消息数据部分的长度 **
+
 ```JavaScript
 readonly Long WebSocketMessage.length;
 ```
@@ -183,6 +195,7 @@ readonly Long WebSocketMessage.length;
 --------------------------
 ### stream
 ** [Stream](Stream.md), 查询消息 readFrom 时的流对象 **
+
 ```JavaScript
 readonly Stream WebSocketMessage.stream;
 ```
@@ -190,6 +203,7 @@ readonly Stream WebSocketMessage.stream;
 --------------------------
 ### response
 ** Message, 获取响应消息对象 **
+
 ```JavaScript
 readonly Message WebSocketMessage.response;
 ```
@@ -197,6 +211,7 @@ readonly Message WebSocketMessage.response;
 --------------------------
 ### lastError
 ** String, 查询和设置消息处理的最后错误 **
+
 ```JavaScript
 String WebSocketMessage.lastError;
 ```
@@ -205,6 +220,7 @@ String WebSocketMessage.lastError;
         
 ### read
 ** 从流内读取指定大小的数据，此方法为 body 相应方法的别名 **
+
 ```JavaScript
 Buffer WebSocketMessage.read(Integer bytes = -1) async;
 ```
@@ -218,6 +234,7 @@ Buffer WebSocketMessage.read(Integer bytes = -1) async;
 --------------------------
 ### readAll
 ** 从流内读取剩余的全部数据，此方法为 body 相应方法的别名 **
+
 ```JavaScript
 Buffer WebSocketMessage.readAll() async;
 ```
@@ -228,6 +245,7 @@ Buffer WebSocketMessage.readAll() async;
 --------------------------
 ### write
 ** 写入给定的数据，此方法为 body 相应方法的别名 **
+
 ```JavaScript
 WebSocketMessage.write(Buffer data) async;
 ```
@@ -238,6 +256,7 @@ WebSocketMessage.write(Buffer data) async;
 --------------------------
 ### end
 ** 设置当前消息处理结束，[Chain](Chain.md) 处理器不再继续后面的事务 **
+
 ```JavaScript
 WebSocketMessage.end();
 ```
@@ -245,6 +264,7 @@ WebSocketMessage.end();
 --------------------------
 ### isEnded
 ** 查询当前消息是否结束 **
+
 ```JavaScript
 Boolean WebSocketMessage.isEnded();
 ```
@@ -255,6 +275,7 @@ Boolean WebSocketMessage.isEnded();
 --------------------------
 ### clear
 ** 清除消息的内容 **
+
 ```JavaScript
 WebSocketMessage.clear();
 ```
@@ -262,6 +283,7 @@ WebSocketMessage.clear();
 --------------------------
 ### sendTo
 ** 发送格式化消息到给定的流对象 **
+
 ```JavaScript
 WebSocketMessage.sendTo(Stream stm) async;
 ```
@@ -272,6 +294,7 @@ WebSocketMessage.sendTo(Stream stm) async;
 --------------------------
 ### readFrom
 ** 从给定的缓存流对象中读取格式化消息，并解析填充对象 **
+
 ```JavaScript
 WebSocketMessage.readFrom(Stream stm) async;
 ```
@@ -282,6 +305,7 @@ WebSocketMessage.readFrom(Stream stm) async;
 --------------------------
 ### dispose
 ** 强制回收对象，调用此方法后，对象资源将立即释放 **
+
 ```JavaScript
 WebSocketMessage.dispose();
 ```
@@ -289,6 +313,7 @@ WebSocketMessage.dispose();
 --------------------------
 ### equals
 ** 比较当前对象与给定的对象是否相等 **
+
 ```JavaScript
 Boolean WebSocketMessage.equals(object expected);
 ```
@@ -302,6 +327,7 @@ Boolean WebSocketMessage.equals(object expected);
 --------------------------
 ### toString
 ** 返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现 **
+
 ```JavaScript
 String WebSocketMessage.toString();
 ```
@@ -312,6 +338,7 @@ String WebSocketMessage.toString();
 --------------------------
 ### toJSON
 ** 返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合 **
+
 ```JavaScript
 Value WebSocketMessage.toJSON(String key = "");
 ```
@@ -325,6 +352,7 @@ Value WebSocketMessage.toJSON(String key = "");
 --------------------------
 ### valueOf
 ** 返回对象本身的数值 **
+
 ```JavaScript
 Value WebSocketMessage.valueOf();
 ```
