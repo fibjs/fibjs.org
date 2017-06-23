@@ -794,11 +794,11 @@ async 示例如下：
 // async/await
 var util = require('util');
 
-async function cb_test(a, b) {
+async function async_test(a, b) {
     return a + b;
 }
 
-var fn_sync = util.sync(cb_test);
+var fn_sync = util.sync(async_test);
 console.log(fn_sync(100, 200));
 ```
 
