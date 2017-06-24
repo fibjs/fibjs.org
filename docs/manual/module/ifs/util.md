@@ -742,21 +742,6 @@ static Buffer util.compile(String srcname,
 * [Buffer](../../object/ifs/Buffer.md), 返回编译出的二进制代码
 
 --------------------------
-** 编译脚本为二进制代码 **
-
-```JavaScript
-static Buffer util.compile(String script,
-    Integer mode = 0);
-```
-
-调用参数:
-* script: String, 指定要编译的脚本代码
-* mode: Integer, 编译模式，0: module, 1: main, 2: script, 3: worker，缺省为 0
-
-返回结果:
-* [Buffer](../../object/ifs/Buffer.md), 返回编译出的二进制代码
-
---------------------------
 ### sync
 ** 包裹 callback 或 async 方法为同步调用 **
 
