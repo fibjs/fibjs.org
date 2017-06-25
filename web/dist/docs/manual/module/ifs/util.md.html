@@ -839,11 +839,13 @@
 <hr>
 <h3 id="sync">sync</h3>
 <p><strong> 包裹 callback 或 async 方法为同步调用 </strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> <span class="hljs-built_in">Function</span> util.sync(<span class="hljs-built_in">Function</span> func);
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> <span class="hljs-built_in">Function</span> util.sync(<span class="hljs-built_in">Function</span> func,
+    <span class="hljs-built_in">Boolean</span> async_func = <span class="hljs-literal">false</span>);
 </code></pre>
 <p>调用参数:</p>
 <ul>
 <li>func: Function, 给定需要包裹的方法</li>
+<li>async_func: Boolean, 指定以 async 函数方式处理 func，为 false 则自动判断</li>
 </ul>
 <p>返回结果:</p>
 <ul>
@@ -872,6 +874,19 @@
 }
 
 <span class="hljs-keyword">var</span> fn_sync = util.sync(async_test);
+<span class="hljs-built_in">console</span>.log(fn_sync(<span class="hljs-number">100</span>, <span class="hljs-number">200</span>));
+</code></pre>
+<p>对于未标记为 async 的返回 promise 的函数，可以手动指定 sync 模式：</p>
+<pre><code class="lang-JavaScript"><span class="hljs-comment">// async/await</span>
+<span class="hljs-keyword">var</span> util = <span class="hljs-built_in">require</span>(<span class="hljs-string">'util'</span>);
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">async_test</span>(<span class="hljs-params">a, b</span>) </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">resolve, reject</span>) </span>{
+        resolve(a + b);
+    });
+}
+
+<span class="hljs-keyword">var</span> fn_sync = util.sync(async_test, <span class="hljs-literal">true</span>);
 <span class="hljs-built_in">console</span>.log(fn_sync(<span class="hljs-number">100</span>, <span class="hljs-number">200</span>));
 </code></pre>
 <hr>
