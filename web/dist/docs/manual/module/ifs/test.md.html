@@ -200,27 +200,31 @@ describe(<span class="hljs-string">'test'</span>, () =&gt; {
     });
 });
 
-process.exit(-test.run(<span class="hljs-built_in">console</span>.DEBUG));
-</code></pre>
-<p>如果需要测试异步逻辑，可以像这样编写测试代码：</p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">var</span> test = <span class="hljs-built_in">require</span>(<span class="hljs-string">'test'</span>);
-<span class="hljs-keyword">var</span> sync = <span class="hljs-built_in">require</span>(<span class="hljs-string">'util'</span>).sync;
+<span class="hljs-comment">// async function test</span>
+describe(<span class="hljs-string">'test async'</span>, () =&gt; {
+    it(<span class="hljs-string">'pass case'</span>, <span class="hljs-keyword">async</span>() =&gt; {
+        assert.ok(<span class="hljs-literal">true</span>);
+    });
 
-test.setup();
+    it(<span class="hljs-string">'error case'</span>, <span class="hljs-keyword">async</span>() =&gt; {
+        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">'some thing wrong!'</span>);
+    });
+});
 
-describe(<span class="hljs-string">'test'</span>, () =&gt; {
-    it(<span class="hljs-string">'pass case'</span>, sync(<span class="hljs-function"><span class="hljs-params">done</span> =&gt;</span> {
+<span class="hljs-comment">// callback function test</span>
+describe(<span class="hljs-string">'test callback'</span>, () =&gt; {
+    it(<span class="hljs-string">'pass case'</span>, done =&gt; {
         setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
             assert.ok(<span class="hljs-literal">true</span>);
             done();
         }, <span class="hljs-number">0</span>);
-    }));
+    });
 
-    it(<span class="hljs-string">'error case'</span>, sync(<span class="hljs-function"><span class="hljs-params">done</span> =&gt;</span> {
+    it(<span class="hljs-string">'error case'</span>, done =&gt; {
         setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
             done(<span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">'some thing wrong!'</span>));
         }, <span class="hljs-number">0</span>);
-    }));
+    });
 });
 
 process.exit(-test.run(<span class="hljs-built_in">console</span>.DEBUG));
