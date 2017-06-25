@@ -32,6 +32,21 @@ describe('test', () => {
     xit('case', () => {
         assert.ok(true);
     });
+
+    // ignored test case
+    it.skip('case', () => {
+        assert.ok(true);
+    });
+
+    // only test case
+    oit('case', () => {
+        assert.ok(true);
+    });
+
+    // only test case
+    it.only('case', () => {
+        assert.ok(true);
+    });
 });
 
 process.exit(-test.run(console.DEBUG));
@@ -88,10 +103,23 @@ static test.describe(String name,
 
 --------------------------
 ### xdescribe
-** 停止测试的模块定义 **
+** 暂停测试的模块定义，test.setup 后可使用 describe.skip 调用 **
 
 ```JavaScript
 static test.xdescribe(String name,
+    Function block);
+```
+
+调用参数:
+* name: String, 定义模块名称
+* block: Function, 模块初始化代码
+
+--------------------------
+### odescribe
+** 独立测试的模块定义，test.setup 后可使用 describe.only 调用 **
+
+```JavaScript
+static test.odescribe(String name,
     Function block);
 ```
 
@@ -114,10 +142,23 @@ static test.it(String name,
 
 --------------------------
 ### xit
-** 禁止测试的项目定义 **
+** 暂停测试的项目定义，test.setup 后可使用 it.skip 调用 **
 
 ```JavaScript
 static test.xit(String name,
+    Function block);
+```
+
+调用参数:
+* name: String, 定义项目名称
+* block: Function, 测试内容
+
+--------------------------
+### oit
+** 独立测试的项目定义，test.setup 后可使用 it.only 调用 **
+
+```JavaScript
+static test.oit(String name,
     Function block);
 ```
 
