@@ -13,6 +13,7 @@ var mkdir = require('mkdir');
 var marked = require('marked');
 var ejs = require('ejs');
 var highlight = require('highlight.js');
+var Viz;
 
 var WebpackOnBuildPlugin = require('on-build-webpack');
 
@@ -94,10 +95,33 @@ function build_docs() {
 
     var groups = config.groups;
 
+    var old_dot_cache = {};
+    var dot_cache = {};
+    var has_new = false;
+
+    try {
+        old_dot_cache = JSON.parse(fs.readFileSync(path.join(__dirname, "web/dot_cache.json")).toString());
+    } catch (e) {}
+
     var _tmpl = ejs.compile(fs.readFileSync(path.join(config.dist, 'docs.html')).toString());
 
     function read_doc(p) {
         var md = fs.readFileSync(p).toString();
+
+        md = md.replace(/<dot>((.|\n)*?)<\/dot>/g, (s, s1) => {
+            var svg = old_dot_cache[s1];
+            if (!svg) {
+                if (Viz === undefined)
+                    Viz = require('viz.js');
+                svg = Viz(s1);
+                has_new = true;
+            }
+            dot_cache[s1] = svg;
+
+            svg = svg.replace(/^<\?xml(.|\n)*?\?>(.|\n)*?<!DOCTYPE(.|\n)*?>/, '')
+            return '<div class="dot">' + svg + '</div>';
+        });
+
         var html = marked(md);
 
         html = html.replace(/href=\"[^"]*\.md\"/g, s => {
@@ -162,6 +186,9 @@ function build_docs() {
                 fs.writeFileSync(file1, fs.readFileSync(file));
         }
     });
+
+    if (has_new)
+        fs.writeFileSync(path.join(__dirname, "web/dot_cache.json"), JSON.stringify(dot_cache));
 }
 
 function relative() {
