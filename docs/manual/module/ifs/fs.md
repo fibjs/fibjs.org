@@ -461,6 +461,50 @@ static fs.truncate(String path,
 * len: Integer, 指定修改后文件的大小
 
 --------------------------
+### read
+** 根据文件描述符，读取文件内容 **
+
+```JavaScript
+static Integer fs.read(Integer fd,
+    Buffer buffer,
+    Integer offset = 0,
+    Integer length = 0,
+    Integer position = -1) async;
+```
+
+调用参数:
+* fd: Integer, 文件描述符
+* buffer: [Buffer](../../object/ifs/Buffer.md), 读取结果写入的 [Buffer](../../object/ifs/Buffer.md) 对象
+* offset: Integer, [Buffer](../../object/ifs/Buffer.md) 写入偏移量， 默认为 0
+* length: Integer, 文件读取字节数，默认为 0
+* position: Integer, 文件读取位置，默认为当前文件位置
+
+返回结果:
+* Integer, 实际读取的字节数
+
+--------------------------
+### readSync
+** 根据文件描述符，读取文件内容 **
+
+```JavaScript
+static Integer fs.readSync(Integer fd,
+    Buffer buffer,
+    Integer offset = 0,
+    Integer length = -1,
+    Integer position = -1);
+```
+
+调用参数:
+* fd: Integer, 文件描述符
+* buffer: [Buffer](../../object/ifs/Buffer.md), 读取结果写入的 [Buffer](../../object/ifs/Buffer.md) 对象
+* offset: Integer, [Buffer](../../object/ifs/Buffer.md) 写入偏移量， 默认为 0
+* length: Integer, 文件读取字节数，默认为 0
+* position: Integer, 文件读取位置，默认为当前文件位置
+
+返回结果:
+* Integer, 实际读取的字节数
+
+--------------------------
 ### truncateSync
 ** 修改文件尺寸,如果指定的长度大于源文件大小则用'\0'填充，否则多于的文件内容将丢失，是 truncate 的同步版兼容接口 **
 

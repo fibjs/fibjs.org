@@ -2,23 +2,22 @@
 事件信息对象，用于在事件中传递信息
 
 ## 继承关系
-<div class="inherits"><svg width="93pt" height="238pt" viewBox="0.00 0.00 93.00 238.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 234)">
+<div class="inherits"><svg width="93pt" height="230pt" viewBox="0.00 0.00 92.90 230.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 226)">
 <title>%0</title>
-<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-234 89,-234 89,4 -4,4"/>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-226 88.904,-226 88.904,4 -4,4"/>
 <!-- object -->
 <g id="node1" class="node">
 <title>object</title>
 <g id="a_node1"><a xlink:href="object.md" xlink:title="object">
-<polygon fill="#ffffff" stroke="transparent" points="14,-138 14,-230 71,-230 71,-138 14,-138"/>
-<polygon fill="none" stroke="#000000" points="14.5,-208 14.5,-230 71.5,-230 71.5,-208 14.5,-208"/>
-<text text-anchor="start" x="29.6625" y="-216" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
-<polygon fill="none" stroke="#000000" points="14.5,-138 14.5,-208 71.5,-208 71.5,-138 14.5,-138"/>
-<text text-anchor="start" x="19.5" y="-194" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> dispose()</text>
-<text text-anchor="start" x="19.5" y="-182" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> equals()</text>
-<text text-anchor="start" x="19.5" y="-170" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> toString()</text>
-<text text-anchor="start" x="19.5" y="-158" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> toJSON()</text>
-<text text-anchor="start" x="19.5" y="-146" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> valueOf()</text>
+<polygon fill="#ffffff" stroke="#000000" points="13.6205,-133.5 13.6205,-221.5 71.2835,-221.5 71.2835,-133.5 13.6205,-133.5"/>
+<text text-anchor="middle" x="42.452" y="-208.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
+<polyline fill="none" stroke="#000000" points="13.6205,-201.5 71.2835,-201.5 "/>
+<text text-anchor="start" x="21.6205" y="-188.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">dispose()</text>
+<text text-anchor="start" x="21.6205" y="-176.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">equals()</text>
+<text text-anchor="start" x="21.6205" y="-164.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toString()</text>
+<text text-anchor="start" x="21.6205" y="-152.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toJSON()</text>
+<text text-anchor="start" x="21.6205" y="-140.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">valueOf()</text>
 </a>
 </g>
 </g>
@@ -26,24 +25,23 @@
 <g id="node2" class="node">
 <title>EventInfo</title>
 <g id="a_node2"><a xlink:title="EventInfo">
-<polygon fill="#d3d3d3" stroke="transparent" points="0,0 0,-102 85,-102 85,0 0,0"/>
-<polygon fill="none" stroke="#000000" points=".5,-80 .5,-102 85.5,-102 85.5,-80 .5,-80"/>
-<text text-anchor="start" x="21.879" y="-88" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">EventInfo</text>
-<polygon fill="none" stroke="#000000" points=".5,-58 .5,-80 85.5,-80 85.5,-58 .5,-58"/>
-<text text-anchor="start" x="5.5" y="-66" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> operator[String]</text>
-<polygon fill="none" stroke="#000000" points=".5,0 .5,-58 85.5,-58 85.5,0 .5,0"/>
-<text text-anchor="start" x="5.5" y="-44" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> code</text>
-<text text-anchor="start" x="5.5" y="-32" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> reason</text>
-<text text-anchor="start" x="5.5" y="-20" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> type</text>
-<text text-anchor="start" x="5.5" y="-8" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> target</text>
+<polygon fill="#d3d3d3" stroke="#000000" points="0,-.5 0,-96.5 84.904,-96.5 84.904,-.5 0,-.5"/>
+<text text-anchor="middle" x="42.452" y="-83.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">EventInfo</text>
+<polyline fill="none" stroke="#000000" points="0,-76.5 84.904,-76.5 "/>
+<text text-anchor="start" x="8" y="-63.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">operator[String]</text>
+<polyline fill="none" stroke="#000000" points="0,-56.5 84.904,-56.5 "/>
+<text text-anchor="start" x="8" y="-43.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">code</text>
+<text text-anchor="start" x="8" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">reason</text>
+<text text-anchor="start" x="8" y="-19.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">type</text>
+<text text-anchor="start" x="8" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">target</text>
 </a>
 </g>
 </g>
 <!-- object&#45;&gt;EventInfo -->
 <g id="edge1" class="edge">
 <title>object-&gt;EventInfo</title>
-<path fill="none" stroke="#000000" d="M42.5,-127.6477C42.5,-119.1551 42.5,-110.4363 42.5,-102.0632"/>
-<polygon fill="#000000" stroke="#000000" points="39.0001,-127.8563 42.5,-137.8563 46.0001,-127.8563 39.0001,-127.8563"/>
+<path fill="none" stroke="#000000" d="M42.452,-123.2875C42.452,-114.4791 42.452,-105.4079 42.452,-96.7541"/>
+<polygon fill="#000000" stroke="#000000" points="38.9521,-123.4663 42.452,-133.4663 45.9521,-123.4664 38.9521,-123.4663"/>
 </g>
 </g>
 </svg></div>

@@ -2,23 +2,22 @@
 浏览器窗口对象
 
 ## 继承关系
-<div class="inherits"><svg width="126pt" height="590pt" viewBox="0.00 0.00 126.00 590.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 586)">
+<div class="inherits"><svg width="127pt" height="575pt" viewBox="0.00 0.00 126.80 575.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 571)">
 <title>%0</title>
-<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-586 122,-586 122,4 -4,4"/>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-571 122.801,-571 122.801,4 -4,4"/>
 <!-- object -->
 <g id="node1" class="node">
 <title>object</title>
 <g id="a_node1"><a xlink:href="object.md" xlink:title="object">
-<polygon fill="#ffffff" stroke="transparent" points="30.5,-490 30.5,-582 87.5,-582 87.5,-490 30.5,-490"/>
-<polygon fill="none" stroke="#000000" points="31,-560 31,-582 88,-582 88,-560 31,-560"/>
-<text text-anchor="start" x="46.1625" y="-568" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
-<polygon fill="none" stroke="#000000" points="31,-490 31,-560 88,-560 88,-490 31,-490"/>
-<text text-anchor="start" x="36" y="-546" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> dispose()</text>
-<text text-anchor="start" x="36" y="-534" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> equals()</text>
-<text text-anchor="start" x="36" y="-522" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> toString()</text>
-<text text-anchor="start" x="36" y="-510" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> toJSON()</text>
-<text text-anchor="start" x="36" y="-498" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> valueOf()</text>
+<polygon fill="#ffffff" stroke="#000000" points="30.569,-478.5 30.569,-566.5 88.232,-566.5 88.232,-478.5 30.569,-478.5"/>
+<text text-anchor="middle" x="59.4005" y="-553.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
+<polyline fill="none" stroke="#000000" points="30.569,-546.5 88.232,-546.5 "/>
+<text text-anchor="start" x="38.569" y="-533.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">dispose()</text>
+<text text-anchor="start" x="38.569" y="-521.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">equals()</text>
+<text text-anchor="start" x="38.569" y="-509.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toString()</text>
+<text text-anchor="start" x="38.569" y="-497.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toJSON()</text>
+<text text-anchor="start" x="38.569" y="-485.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">valueOf()</text>
 </a>
 </g>
 </g>
@@ -26,65 +25,63 @@
 <g id="node2" class="node">
 <title>EventEmitter</title>
 <g id="a_node2"><a xlink:href="EventEmitter.md" xlink:title="EventEmitter">
-<polygon fill="#ffffff" stroke="transparent" points="0,-210 0,-454 118,-454 118,-210 0,-210"/>
-<polygon fill="none" stroke="#000000" points="0,-432 0,-454 118,-454 118,-432 0,-432"/>
-<text text-anchor="start" x="30.3855" y="-440" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">EventEmitter</text>
-<polygon fill="none" stroke="#000000" points="0,-410 0,-432 118,-432 118,-410 0,-410"/>
-<text text-anchor="start" x="5" y="-418" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">  new EventEmitter()</text>
-<polygon fill="none" stroke="#000000" points="0,-388 0,-410 118,-410 118,-388 0,-388"/>
-<text text-anchor="start" x="5" y="-396" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> defaultMaxListeners</text>
-<polygon fill="none" stroke="#000000" points="0,-210 0,-388 118,-388 118,-210 0,-210"/>
-<text text-anchor="start" x="5" y="-374" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> on()</text>
-<text text-anchor="start" x="5" y="-362" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> addListener()</text>
-<text text-anchor="start" x="5" y="-350" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> prependListener()</text>
-<text text-anchor="start" x="5" y="-338" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> once()</text>
-<text text-anchor="start" x="5" y="-326" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> prependOnceListener()</text>
-<text text-anchor="start" x="5" y="-314" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> off()</text>
-<text text-anchor="start" x="5" y="-302" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> removeListener()</text>
-<text text-anchor="start" x="5" y="-290" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> removeAllListeners()</text>
-<text text-anchor="start" x="5" y="-278" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> setMaxListeners()</text>
-<text text-anchor="start" x="5" y="-266" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> getMaxListeners()</text>
-<text text-anchor="start" x="5" y="-254" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> listeners()</text>
-<text text-anchor="start" x="5" y="-242" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> listenerCount()</text>
-<text text-anchor="start" x="5" y="-230" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> eventNames()</text>
-<text text-anchor="start" x="5" y="-218" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> emit()</text>
+<polygon fill="#ffffff" stroke="#000000" points="0,-205.5 0,-441.5 118.801,-441.5 118.801,-205.5 0,-205.5"/>
+<text text-anchor="middle" x="59.4005" y="-428.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">EventEmitter</text>
+<polyline fill="none" stroke="#000000" points="0,-421.5 118.801,-421.5 "/>
+<text text-anchor="start" x="8" y="-408.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">new EventEmitter()</text>
+<polyline fill="none" stroke="#000000" points="0,-401.5 118.801,-401.5 "/>
+<text text-anchor="start" x="8" y="-388.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">defaultMaxListeners</text>
+<polyline fill="none" stroke="#000000" points="0,-381.5 118.801,-381.5 "/>
+<text text-anchor="start" x="8" y="-368.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">on()</text>
+<text text-anchor="start" x="8" y="-356.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">addListener()</text>
+<text text-anchor="start" x="8" y="-344.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">prependListener()</text>
+<text text-anchor="start" x="8" y="-332.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">once()</text>
+<text text-anchor="start" x="8" y="-320.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">prependOnceListener()</text>
+<text text-anchor="start" x="8" y="-308.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">off()</text>
+<text text-anchor="start" x="8" y="-296.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">removeListener()</text>
+<text text-anchor="start" x="8" y="-284.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">removeAllListeners()</text>
+<text text-anchor="start" x="8" y="-272.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">setMaxListeners()</text>
+<text text-anchor="start" x="8" y="-260.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">getMaxListeners()</text>
+<text text-anchor="start" x="8" y="-248.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">listeners()</text>
+<text text-anchor="start" x="8" y="-236.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">listenerCount()</text>
+<text text-anchor="start" x="8" y="-224.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">eventNames()</text>
+<text text-anchor="start" x="8" y="-212.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">emit()</text>
 </a>
 </g>
 </g>
 <!-- object&#45;&gt;EventEmitter -->
 <g id="edge1" class="edge">
 <title>object-&gt;EventEmitter</title>
-<path fill="none" stroke="#000000" d="M59,-479.9235C59,-471.7711 59,-463.1241 59,-454.2645"/>
-<polygon fill="#000000" stroke="#000000" points="55.5001,-479.964 59,-489.9641 62.5001,-479.9641 55.5001,-479.964"/>
+<path fill="none" stroke="#000000" d="M59.4005,-468.1104C59.4005,-459.7939 59.4005,-450.9442 59.4005,-441.8773"/>
+<polygon fill="#000000" stroke="#000000" points="55.9006,-468.3354 59.4005,-478.3355 62.9006,-468.3355 55.9006,-468.3354"/>
 </g>
 <!-- WebView -->
 <g id="node3" class="node">
 <title>WebView</title>
 <g id="a_node3"><a xlink:title="WebView">
-<polygon fill="#d3d3d3" stroke="transparent" points="18,0 18,-174 100,-174 100,0 18,0"/>
-<polygon fill="none" stroke="#000000" points="18,-152 18,-174 100,-174 100,-152 18,-152"/>
-<text text-anchor="start" x="37.8885" y="-160" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">WebView</text>
-<polygon fill="none" stroke="#000000" points="18,-70 18,-152 100,-152 100,-70 18,-70"/>
-<text text-anchor="start" x="23" y="-138" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> visible</text>
-<text text-anchor="start" x="23" y="-126" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> onload</text>
-<text text-anchor="start" x="23" y="-114" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> onmove</text>
-<text text-anchor="start" x="23" y="-102" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> onresize</text>
-<text text-anchor="start" x="23" y="-90" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> onclose</text>
-<text text-anchor="start" x="23" y="-78" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> onmessage</text>
-<polygon fill="none" stroke="#000000" points="18,0 18,-70 100,-70 100,0 18,0"/>
-<text text-anchor="start" x="23" y="-56" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> setHtml()</text>
-<text text-anchor="start" x="23" y="-44" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> print()</text>
-<text text-anchor="start" x="23" y="-32" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> close()</text>
-<text text-anchor="start" x="23" y="-20" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> wait()</text>
-<text text-anchor="start" x="23" y="-8" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> postMessage()</text>
+<polygon fill="#d3d3d3" stroke="#000000" points="18.3405,-.5 18.3405,-168.5 100.4605,-168.5 100.4605,-.5 18.3405,-.5"/>
+<text text-anchor="middle" x="59.4005" y="-155.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">WebView</text>
+<polyline fill="none" stroke="#000000" points="18.3405,-148.5 100.4605,-148.5 "/>
+<text text-anchor="start" x="26.3405" y="-135.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">visible</text>
+<text text-anchor="start" x="26.3405" y="-123.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">onload</text>
+<text text-anchor="start" x="26.3405" y="-111.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">onmove</text>
+<text text-anchor="start" x="26.3405" y="-99.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">onresize</text>
+<text text-anchor="start" x="26.3405" y="-87.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">onclose</text>
+<text text-anchor="start" x="26.3405" y="-75.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">onmessage</text>
+<polyline fill="none" stroke="#000000" points="18.3405,-68.5 100.4605,-68.5 "/>
+<text text-anchor="start" x="26.3405" y="-55.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">setHtml()</text>
+<text text-anchor="start" x="26.3405" y="-43.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">print()</text>
+<text text-anchor="start" x="26.3405" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">close()</text>
+<text text-anchor="start" x="26.3405" y="-19.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">wait()</text>
+<text text-anchor="start" x="26.3405" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">postMessage()</text>
 </a>
 </g>
 </g>
 <!-- EventEmitter&#45;&gt;WebView -->
 <g id="edge2" class="edge">
 <title>EventEmitter-&gt;WebView</title>
-<path fill="none" stroke="#000000" d="M59,-199.7546C59,-191.1638 59,-182.6373 59,-174.3455"/>
-<polygon fill="#000000" stroke="#000000" points="55.5001,-199.8589 59,-209.8589 62.5001,-199.8589 55.5001,-199.8589"/>
+<path fill="none" stroke="#000000" d="M59.4005,-195.2771C59.4005,-186.326 59.4005,-177.4405 59.4005,-168.8229"/>
+<polygon fill="#000000" stroke="#000000" points="55.9006,-195.4003 59.4005,-205.4004 62.9006,-195.4004 55.9006,-195.4003"/>
 </g>
 </g>
 </svg></div>

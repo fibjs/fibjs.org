@@ -2,23 +2,22 @@
 Smtp对象
 
 ## 继承关系
-<div class="inherits"><svg width="77pt" height="320pt" viewBox="0.00 0.00 77.00 320.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 316)">
+<div class="inherits"><svg width="75pt" height="310pt" viewBox="0.00 0.00 75.11 310.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 306)">
 <title>%0</title>
-<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-316 73,-316 73,4 -4,4"/>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-306 71.11,-306 71.11,4 -4,4"/>
 <!-- object -->
 <g id="node1" class="node">
 <title>object</title>
 <g id="a_node1"><a xlink:href="object.md" xlink:title="object">
-<polygon fill="#ffffff" stroke="transparent" points="6,-220 6,-312 63,-312 63,-220 6,-220"/>
-<polygon fill="none" stroke="#000000" points="6.5,-290 6.5,-312 63.5,-312 63.5,-290 6.5,-290"/>
-<text text-anchor="start" x="21.6625" y="-298" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
-<polygon fill="none" stroke="#000000" points="6.5,-220 6.5,-290 63.5,-290 63.5,-220 6.5,-220"/>
-<text text-anchor="start" x="11.5" y="-276" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> dispose()</text>
-<text text-anchor="start" x="11.5" y="-264" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> equals()</text>
-<text text-anchor="start" x="11.5" y="-252" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> toString()</text>
-<text text-anchor="start" x="11.5" y="-240" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> toJSON()</text>
-<text text-anchor="start" x="11.5" y="-228" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> valueOf()</text>
+<polygon fill="#ffffff" stroke="#000000" points="4.7235,-213.5 4.7235,-301.5 62.3865,-301.5 62.3865,-213.5 4.7235,-213.5"/>
+<text text-anchor="middle" x="33.555" y="-288.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
+<polyline fill="none" stroke="#000000" points="4.7235,-281.5 62.3865,-281.5 "/>
+<text text-anchor="start" x="12.7235" y="-268.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">dispose()</text>
+<text text-anchor="start" x="12.7235" y="-256.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">equals()</text>
+<text text-anchor="start" x="12.7235" y="-244.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toString()</text>
+<text text-anchor="start" x="12.7235" y="-232.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toJSON()</text>
+<text text-anchor="start" x="12.7235" y="-220.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">valueOf()</text>
 </a>
 </g>
 </g>
@@ -26,31 +25,30 @@ Smtp对象
 <g id="node2" class="node">
 <title>Smtp</title>
 <g id="a_node2"><a xlink:title="Smtp">
-<polygon fill="#d3d3d3" stroke="transparent" points="0,0 0,-184 69,-184 69,0 0,0"/>
-<polygon fill="none" stroke="#000000" points=".5,-162 .5,-184 69.5,-184 69.5,-162 .5,-162"/>
-<text text-anchor="start" x="23.332" y="-170" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Smtp</text>
-<polygon fill="none" stroke="#000000" points=".5,-140 .5,-162 69.5,-162 69.5,-140 .5,-140"/>
-<text text-anchor="start" x="5.5" y="-148" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">  new Smtp()</text>
-<polygon fill="none" stroke="#000000" points=".5,-106 .5,-140 69.5,-140 69.5,-106 .5,-106"/>
-<text text-anchor="start" x="5.5" y="-126" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> timeout</text>
-<text text-anchor="start" x="5.5" y="-114" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> socket</text>
-<polygon fill="none" stroke="#000000" points=".5,0 .5,-106 69.5,-106 69.5,0 .5,0"/>
-<text text-anchor="start" x="5.5" y="-92" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> connect()</text>
-<text text-anchor="start" x="5.5" y="-80" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> command()</text>
-<text text-anchor="start" x="5.5" y="-68" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> hello()</text>
-<text text-anchor="start" x="5.5" y="-56" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> login()</text>
-<text text-anchor="start" x="5.5" y="-44" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> from()</text>
-<text text-anchor="start" x="5.5" y="-32" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> to()</text>
-<text text-anchor="start" x="5.5" y="-20" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> data()</text>
-<text text-anchor="start" x="5.5" y="-8" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> quit()</text>
+<polygon fill="#d3d3d3" stroke="#000000" points="0,-.5 0,-176.5 67.11,-176.5 67.11,-.5 0,-.5"/>
+<text text-anchor="middle" x="33.555" y="-163.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Smtp</text>
+<polyline fill="none" stroke="#000000" points="0,-156.5 67.11,-156.5 "/>
+<text text-anchor="start" x="8" y="-143.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">new Smtp()</text>
+<polyline fill="none" stroke="#000000" points="0,-136.5 67.11,-136.5 "/>
+<text text-anchor="start" x="8" y="-123.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">timeout</text>
+<text text-anchor="start" x="8" y="-111.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">socket</text>
+<polyline fill="none" stroke="#000000" points="0,-104.5 67.11,-104.5 "/>
+<text text-anchor="start" x="8" y="-91.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">connect()</text>
+<text text-anchor="start" x="8" y="-79.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">command()</text>
+<text text-anchor="start" x="8" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">hello()</text>
+<text text-anchor="start" x="8" y="-55.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">login()</text>
+<text text-anchor="start" x="8" y="-43.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">from()</text>
+<text text-anchor="start" x="8" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">to()</text>
+<text text-anchor="start" x="8" y="-19.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">data()</text>
+<text text-anchor="start" x="8" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">quit()</text>
 </a>
 </g>
 </g>
 <!-- object&#45;&gt;Smtp -->
 <g id="edge1" class="edge">
 <title>object-&gt;Smtp</title>
-<path fill="none" stroke="#000000" d="M34.5,-209.6889C34.5,-201.4874 34.5,-192.8685 34.5,-184.1806"/>
-<polygon fill="#000000" stroke="#000000" points="31.0001,-209.828 34.5,-219.828 38.0001,-209.8281 31.0001,-209.828"/>
+<path fill="none" stroke="#000000" d="M33.555,-203.0622C33.555,-194.6261 33.555,-185.7304 33.555,-176.778"/>
+<polygon fill="#000000" stroke="#000000" points="30.0551,-203.0972 33.555,-213.0972 37.0551,-203.0973 30.0551,-203.0972"/>
 </g>
 </g>
 </svg></div>

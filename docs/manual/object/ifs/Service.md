@@ -2,23 +2,22 @@
 系统服务管理对象
 
 ## 继承关系
-<div class="inherits"><svg width="126pt" height="624pt" viewBox="0.00 0.00 126.00 624.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 620)">
+<div class="inherits"><svg width="127pt" height="607pt" viewBox="0.00 0.00 126.80 607.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 603)">
 <title>%0</title>
-<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-620 122,-620 122,4 -4,4"/>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-603 122.801,-603 122.801,4 -4,4"/>
 <!-- object -->
 <g id="node1" class="node">
 <title>object</title>
 <g id="a_node1"><a xlink:href="object.md" xlink:title="object">
-<polygon fill="#ffffff" stroke="transparent" points="30.5,-524 30.5,-616 87.5,-616 87.5,-524 30.5,-524"/>
-<polygon fill="none" stroke="#000000" points="31,-594 31,-616 88,-616 88,-594 31,-594"/>
-<text text-anchor="start" x="46.1625" y="-602" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
-<polygon fill="none" stroke="#000000" points="31,-524 31,-594 88,-594 88,-524 31,-524"/>
-<text text-anchor="start" x="36" y="-580" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> dispose()</text>
-<text text-anchor="start" x="36" y="-568" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> equals()</text>
-<text text-anchor="start" x="36" y="-556" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> toString()</text>
-<text text-anchor="start" x="36" y="-544" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> toJSON()</text>
-<text text-anchor="start" x="36" y="-532" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> valueOf()</text>
+<polygon fill="#ffffff" stroke="#000000" points="30.569,-510.5 30.569,-598.5 88.232,-598.5 88.232,-510.5 30.569,-510.5"/>
+<text text-anchor="middle" x="59.4005" y="-585.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
+<polyline fill="none" stroke="#000000" points="30.569,-578.5 88.232,-578.5 "/>
+<text text-anchor="start" x="38.569" y="-565.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">dispose()</text>
+<text text-anchor="start" x="38.569" y="-553.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">equals()</text>
+<text text-anchor="start" x="38.569" y="-541.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toString()</text>
+<text text-anchor="start" x="38.569" y="-529.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toJSON()</text>
+<text text-anchor="start" x="38.569" y="-517.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">valueOf()</text>
 </a>
 </g>
 </g>
@@ -26,68 +25,66 @@
 <g id="node2" class="node">
 <title>EventEmitter</title>
 <g id="a_node2"><a xlink:href="EventEmitter.md" xlink:title="EventEmitter">
-<polygon fill="#ffffff" stroke="transparent" points="0,-244 0,-488 118,-488 118,-244 0,-244"/>
-<polygon fill="none" stroke="#000000" points="0,-466 0,-488 118,-488 118,-466 0,-466"/>
-<text text-anchor="start" x="30.3855" y="-474" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">EventEmitter</text>
-<polygon fill="none" stroke="#000000" points="0,-444 0,-466 118,-466 118,-444 0,-444"/>
-<text text-anchor="start" x="5" y="-452" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">  new EventEmitter()</text>
-<polygon fill="none" stroke="#000000" points="0,-422 0,-444 118,-444 118,-422 0,-422"/>
-<text text-anchor="start" x="5" y="-430" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> defaultMaxListeners</text>
-<polygon fill="none" stroke="#000000" points="0,-244 0,-422 118,-422 118,-244 0,-244"/>
-<text text-anchor="start" x="5" y="-408" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> on()</text>
-<text text-anchor="start" x="5" y="-396" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> addListener()</text>
-<text text-anchor="start" x="5" y="-384" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> prependListener()</text>
-<text text-anchor="start" x="5" y="-372" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> once()</text>
-<text text-anchor="start" x="5" y="-360" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> prependOnceListener()</text>
-<text text-anchor="start" x="5" y="-348" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> off()</text>
-<text text-anchor="start" x="5" y="-336" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> removeListener()</text>
-<text text-anchor="start" x="5" y="-324" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> removeAllListeners()</text>
-<text text-anchor="start" x="5" y="-312" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> setMaxListeners()</text>
-<text text-anchor="start" x="5" y="-300" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> getMaxListeners()</text>
-<text text-anchor="start" x="5" y="-288" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> listeners()</text>
-<text text-anchor="start" x="5" y="-276" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> listenerCount()</text>
-<text text-anchor="start" x="5" y="-264" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> eventNames()</text>
-<text text-anchor="start" x="5" y="-252" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> emit()</text>
+<polygon fill="#ffffff" stroke="#000000" points="0,-237.5 0,-473.5 118.801,-473.5 118.801,-237.5 0,-237.5"/>
+<text text-anchor="middle" x="59.4005" y="-460.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">EventEmitter</text>
+<polyline fill="none" stroke="#000000" points="0,-453.5 118.801,-453.5 "/>
+<text text-anchor="start" x="8" y="-440.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">new EventEmitter()</text>
+<polyline fill="none" stroke="#000000" points="0,-433.5 118.801,-433.5 "/>
+<text text-anchor="start" x="8" y="-420.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">defaultMaxListeners</text>
+<polyline fill="none" stroke="#000000" points="0,-413.5 118.801,-413.5 "/>
+<text text-anchor="start" x="8" y="-400.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">on()</text>
+<text text-anchor="start" x="8" y="-388.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">addListener()</text>
+<text text-anchor="start" x="8" y="-376.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">prependListener()</text>
+<text text-anchor="start" x="8" y="-364.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">once()</text>
+<text text-anchor="start" x="8" y="-352.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">prependOnceListener()</text>
+<text text-anchor="start" x="8" y="-340.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">off()</text>
+<text text-anchor="start" x="8" y="-328.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">removeListener()</text>
+<text text-anchor="start" x="8" y="-316.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">removeAllListeners()</text>
+<text text-anchor="start" x="8" y="-304.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">setMaxListeners()</text>
+<text text-anchor="start" x="8" y="-292.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">getMaxListeners()</text>
+<text text-anchor="start" x="8" y="-280.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">listeners()</text>
+<text text-anchor="start" x="8" y="-268.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">listenerCount()</text>
+<text text-anchor="start" x="8" y="-256.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">eventNames()</text>
+<text text-anchor="start" x="8" y="-244.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">emit()</text>
 </a>
 </g>
 </g>
 <!-- object&#45;&gt;EventEmitter -->
 <g id="edge1" class="edge">
 <title>object-&gt;EventEmitter</title>
-<path fill="none" stroke="#000000" d="M59,-513.9235C59,-505.7711 59,-497.1241 59,-488.2645"/>
-<polygon fill="#000000" stroke="#000000" points="55.5001,-513.964 59,-523.9641 62.5001,-513.9641 55.5001,-513.964"/>
+<path fill="none" stroke="#000000" d="M59.4005,-500.1104C59.4005,-491.7939 59.4005,-482.9442 59.4005,-473.8773"/>
+<polygon fill="#000000" stroke="#000000" points="55.9006,-500.3354 59.4005,-510.3355 62.9006,-500.3355 55.9006,-500.3354"/>
 </g>
 <!-- Service -->
 <g id="node3" class="node">
 <title>Service</title>
 <g id="a_node3"><a xlink:title="Service">
-<polygon fill="#d3d3d3" stroke="transparent" points="19.5,0 19.5,-208 98.5,-208 98.5,0 19.5,0"/>
-<polygon fill="none" stroke="#000000" points="20,-186 20,-208 99,-208 99,-186 20,-186"/>
-<text text-anchor="start" x="42.8325" y="-194" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Service</text>
-<polygon fill="none" stroke="#000000" points="20,-164 20,-186 99,-186 99,-164 20,-164"/>
-<text text-anchor="start" x="25" y="-172" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">  new Service()</text>
-<polygon fill="none" stroke="#000000" points="20,-106 20,-164 99,-164 99,-106 20,-106"/>
-<text text-anchor="start" x="25" y="-150" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> name</text>
-<text text-anchor="start" x="25" y="-138" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> onstop</text>
-<text text-anchor="start" x="25" y="-126" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> onpause</text>
-<text text-anchor="start" x="25" y="-114" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> oncontinue</text>
-<polygon fill="none" stroke="#000000" points="20,0 20,-106 99,-106 99,0 20,0"/>
-<text text-anchor="start" x="25" y="-92" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> install()</text>
-<text text-anchor="start" x="25" y="-80" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> remove()</text>
-<text text-anchor="start" x="25" y="-68" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> start()</text>
-<text text-anchor="start" x="25" y="-56" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> stop()</text>
-<text text-anchor="start" x="25" y="-44" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> restart()</text>
-<text text-anchor="start" x="25" y="-32" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> run()</text>
-<text text-anchor="start" x="25" y="-20" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> isInstalled()</text>
-<text text-anchor="start" x="25" y="-8" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> isRunning()</text>
+<polygon fill="#d3d3d3" stroke="#000000" points="20.846,-.5 20.846,-200.5 97.955,-200.5 97.955,-.5 20.846,-.5"/>
+<text text-anchor="middle" x="59.4005" y="-187.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Service</text>
+<polyline fill="none" stroke="#000000" points="20.846,-180.5 97.955,-180.5 "/>
+<text text-anchor="start" x="28.846" y="-167.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">new Service()</text>
+<polyline fill="none" stroke="#000000" points="20.846,-160.5 97.955,-160.5 "/>
+<text text-anchor="start" x="28.846" y="-147.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">name</text>
+<text text-anchor="start" x="28.846" y="-135.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">onstop</text>
+<text text-anchor="start" x="28.846" y="-123.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">onpause</text>
+<text text-anchor="start" x="28.846" y="-111.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">oncontinue</text>
+<polyline fill="none" stroke="#000000" points="20.846,-104.5 97.955,-104.5 "/>
+<text text-anchor="start" x="28.846" y="-91.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">install()</text>
+<text text-anchor="start" x="28.846" y="-79.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">remove()</text>
+<text text-anchor="start" x="28.846" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">start()</text>
+<text text-anchor="start" x="28.846" y="-55.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">stop()</text>
+<text text-anchor="start" x="28.846" y="-43.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">restart()</text>
+<text text-anchor="start" x="28.846" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">run()</text>
+<text text-anchor="start" x="28.846" y="-19.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">isInstalled()</text>
+<text text-anchor="start" x="28.846" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">isRunning()</text>
 </a>
 </g>
 </g>
 <!-- EventEmitter&#45;&gt;Service -->
 <g id="edge2" class="edge">
 <title>EventEmitter-&gt;Service</title>
-<path fill="none" stroke="#000000" d="M59,-233.7889C59,-225.2381 59,-216.6942 59,-208.3029"/>
-<polygon fill="#000000" stroke="#000000" points="55.5001,-233.8212 59,-243.8212 62.5001,-233.8212 55.5001,-233.8212"/>
+<path fill="none" stroke="#000000" d="M59.4005,-227.2686C59.4005,-218.3497 59.4005,-209.4356 59.4005,-200.7009"/>
+<polygon fill="#000000" stroke="#000000" points="55.9006,-227.3309 59.4005,-237.331 62.9006,-227.331 55.9006,-227.3309"/>
 </g>
 </g>
 </svg></div>

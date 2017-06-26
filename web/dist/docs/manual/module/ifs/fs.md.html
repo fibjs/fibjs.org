@@ -552,6 +552,48 @@
 <li>len: Integer, 指定修改后文件的大小</li>
 </ul>
 <hr>
+<h3 id="read">read</h3>
+<p><strong> 根据文件描述符，读取文件内容 </strong></p>
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> Integer fs.read(Integer fd,
+    Buffer buffer,
+    Integer offset = <span class="hljs-number">0</span>,
+    Integer length = <span class="hljs-number">0</span>,
+    Integer position = <span class="hljs-number">-1</span>) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li>fd: Integer, 文件描述符</li>
+<li>buffer: <a href=../../object/ifs/buffer.md.html>Buffer</a>, 读取结果写入的 <a href=../../object/ifs/buffer.md.html>Buffer</a> 对象</li>
+<li>offset: Integer, <a href=../../object/ifs/buffer.md.html>Buffer</a> 写入偏移量， 默认为 0</li>
+<li>length: Integer, 文件读取字节数，默认为 0</li>
+<li>position: Integer, 文件读取位置，默认为当前文件位置</li>
+</ul>
+<p>返回结果:</p>
+<ul>
+<li>Integer, 实际读取的字节数</li>
+</ul>
+<hr>
+<h3 id="readsync">readSync</h3>
+<p><strong> 根据文件描述符，读取文件内容 </strong></p>
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> Integer fs.readSync(Integer fd,
+    Buffer buffer,
+    Integer offset = <span class="hljs-number">0</span>,
+    Integer length = <span class="hljs-number">-1</span>,
+    Integer position = <span class="hljs-number">-1</span>);
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li>fd: Integer, 文件描述符</li>
+<li>buffer: <a href=../../object/ifs/buffer.md.html>Buffer</a>, 读取结果写入的 <a href=../../object/ifs/buffer.md.html>Buffer</a> 对象</li>
+<li>offset: Integer, <a href=../../object/ifs/buffer.md.html>Buffer</a> 写入偏移量， 默认为 0</li>
+<li>length: Integer, 文件读取字节数，默认为 0</li>
+<li>position: Integer, 文件读取位置，默认为当前文件位置</li>
+</ul>
+<p>返回结果:</p>
+<ul>
+<li>Integer, 实际读取的字节数</li>
+</ul>
+<hr>
 <h3 id="truncatesync">truncateSync</h3>
 <p><strong> 修改文件尺寸,如果指定的长度大于源文件大小则用&#39;\0&#39;填充，否则多于的文件内容将丢失，是 truncate 的同步版兼容接口 </strong></p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> fs.truncateSync(<span class="hljs-built_in">String</span> path,

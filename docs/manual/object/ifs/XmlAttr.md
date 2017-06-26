@@ -2,23 +2,22 @@
 XmlAttr 对象表示 [XmlElement](XmlElement.md) 对象的属性
 
 ## 继承关系
-<div class="inherits"><svg width="93pt" height="252pt" viewBox="0.00 0.00 93.00 252.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 248)">
+<div class="inherits"><svg width="93pt" height="246pt" viewBox="0.00 0.00 92.90 246.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 242)">
 <title>%0</title>
-<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-248 89,-248 89,4 -4,4"/>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-242 88.9,-242 88.9,4 -4,4"/>
 <!-- object -->
 <g id="node1" class="node">
 <title>object</title>
 <g id="a_node1"><a xlink:href="object.md" xlink:title="object">
-<polygon fill="#ffffff" stroke="transparent" points="14,-152 14,-244 71,-244 71,-152 14,-152"/>
-<polygon fill="none" stroke="#000000" points="14.5,-222 14.5,-244 71.5,-244 71.5,-222 14.5,-222"/>
-<text text-anchor="start" x="29.6625" y="-230" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
-<polygon fill="none" stroke="#000000" points="14.5,-152 14.5,-222 71.5,-222 71.5,-152 14.5,-152"/>
-<text text-anchor="start" x="19.5" y="-208" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> dispose()</text>
-<text text-anchor="start" x="19.5" y="-196" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> equals()</text>
-<text text-anchor="start" x="19.5" y="-184" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> toString()</text>
-<text text-anchor="start" x="19.5" y="-172" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> toJSON()</text>
-<text text-anchor="start" x="19.5" y="-160" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> valueOf()</text>
+<polygon fill="#ffffff" stroke="#000000" points="13.6185,-149.5 13.6185,-237.5 71.2815,-237.5 71.2815,-149.5 13.6185,-149.5"/>
+<text text-anchor="middle" x="42.45" y="-224.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
+<polyline fill="none" stroke="#000000" points="13.6185,-217.5 71.2815,-217.5 "/>
+<text text-anchor="start" x="21.6185" y="-204.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">dispose()</text>
+<text text-anchor="start" x="21.6185" y="-192.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">equals()</text>
+<text text-anchor="start" x="21.6185" y="-180.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toString()</text>
+<text text-anchor="start" x="21.6185" y="-168.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toJSON()</text>
+<text text-anchor="start" x="21.6185" y="-156.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">valueOf()</text>
 </a>
 </g>
 </g>
@@ -26,25 +25,24 @@ XmlAttr 对象表示 [XmlElement](XmlElement.md) 对象的属性
 <g id="node2" class="node">
 <title>XmlAttr</title>
 <g id="a_node2"><a xlink:title="XmlAttr">
-<polygon fill="#d3d3d3" stroke="transparent" points="0,0 0,-116 85,-116 85,0 0,0"/>
-<polygon fill="none" stroke="#000000" points=".5,-94 .5,-116 85.5,-116 85.5,-94 .5,-94"/>
-<text text-anchor="start" x="26.6135" y="-102" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">XmlAttr</text>
-<polygon fill="none" stroke="#000000" points=".5,0 .5,-94 85.5,-94 85.5,0 .5,0"/>
-<text text-anchor="start" x="5.5" y="-80" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> localName</text>
-<text text-anchor="start" x="5.5" y="-68" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> value</text>
-<text text-anchor="start" x="5.5" y="-56" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> name</text>
-<text text-anchor="start" x="5.5" y="-44" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> namespaceURI</text>
-<text text-anchor="start" x="5.5" y="-32" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> prefix</text>
-<text text-anchor="start" x="5.5" y="-20" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> nodeName</text>
-<text text-anchor="start" x="5.5" y="-8" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> nodeValue</text>
+<polygon fill="#d3d3d3" stroke="#000000" points="0,-.5 0,-112.5 84.9,-112.5 84.9,-.5 0,-.5"/>
+<text text-anchor="middle" x="42.45" y="-99.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">XmlAttr</text>
+<polyline fill="none" stroke="#000000" points="0,-92.5 84.9,-92.5 "/>
+<text text-anchor="start" x="8" y="-79.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">localName</text>
+<text text-anchor="start" x="8" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">value</text>
+<text text-anchor="start" x="8" y="-55.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">name</text>
+<text text-anchor="start" x="8" y="-43.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">namespaceURI</text>
+<text text-anchor="start" x="8" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">prefix</text>
+<text text-anchor="start" x="8" y="-19.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">nodeName</text>
+<text text-anchor="start" x="8" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">nodeValue</text>
 </a>
 </g>
 </g>
 <!-- object&#45;&gt;XmlAttr -->
 <g id="edge1" class="edge">
 <title>object-&gt;XmlAttr</title>
-<path fill="none" stroke="#000000" d="M42.5,-141.7612C42.5,-133.4172 42.5,-124.8016 42.5,-116.4142"/>
-<polygon fill="#000000" stroke="#000000" points="39.0001,-141.7707 42.5,-151.7708 46.0001,-141.7708 39.0001,-141.7707"/>
+<path fill="none" stroke="#000000" d="M42.45,-139.2743C42.45,-130.4908 42.45,-121.3795 42.45,-112.5536"/>
+<polygon fill="#000000" stroke="#000000" points="38.9501,-139.3982 42.45,-149.3982 45.9501,-139.3983 38.9501,-139.3982"/>
 </g>
 </g>
 </svg></div>

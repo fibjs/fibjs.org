@@ -2,23 +2,22 @@
 数据库记录对象
 
 ## 继承关系
-<div class="inherits"><svg width="93pt" height="192pt" viewBox="0.00 0.00 93.00 192.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 188)">
+<div class="inherits"><svg width="93pt" height="186pt" viewBox="0.00 0.00 92.90 186.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 182)">
 <title>%0</title>
-<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-188 89,-188 89,4 -4,4"/>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-182 88.904,-182 88.904,4 -4,4"/>
 <!-- object -->
 <g id="node1" class="node">
 <title>object</title>
 <g id="a_node1"><a xlink:href="object.md" xlink:title="object">
-<polygon fill="#ffffff" stroke="transparent" points="14,-92 14,-184 71,-184 71,-92 14,-92"/>
-<polygon fill="none" stroke="#000000" points="14.5,-162 14.5,-184 71.5,-184 71.5,-162 14.5,-162"/>
-<text text-anchor="start" x="29.6625" y="-170" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
-<polygon fill="none" stroke="#000000" points="14.5,-92 14.5,-162 71.5,-162 71.5,-92 14.5,-92"/>
-<text text-anchor="start" x="19.5" y="-148" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> dispose()</text>
-<text text-anchor="start" x="19.5" y="-136" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> equals()</text>
-<text text-anchor="start" x="19.5" y="-124" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> toString()</text>
-<text text-anchor="start" x="19.5" y="-112" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> toJSON()</text>
-<text text-anchor="start" x="19.5" y="-100" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> valueOf()</text>
+<polygon fill="#ffffff" stroke="#000000" points="13.6205,-89.5 13.6205,-177.5 71.2835,-177.5 71.2835,-89.5 13.6205,-89.5"/>
+<text text-anchor="middle" x="42.452" y="-164.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
+<polyline fill="none" stroke="#000000" points="13.6205,-157.5 71.2835,-157.5 "/>
+<text text-anchor="start" x="21.6205" y="-144.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">dispose()</text>
+<text text-anchor="start" x="21.6205" y="-132.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">equals()</text>
+<text text-anchor="start" x="21.6205" y="-120.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toString()</text>
+<text text-anchor="start" x="21.6205" y="-108.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toJSON()</text>
+<text text-anchor="start" x="21.6205" y="-96.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">valueOf()</text>
 </a>
 </g>
 </g>
@@ -26,20 +25,19 @@
 <g id="node2" class="node">
 <title>DBRow</title>
 <g id="a_node2"><a xlink:title="DBRow">
-<polygon fill="#d3d3d3" stroke="transparent" points="0,0 0,-56 85,-56 85,0 0,0"/>
-<polygon fill="none" stroke="#000000" points=".5,-34 .5,-56 85.5,-56 85.5,-34 .5,-34"/>
-<text text-anchor="start" x="26.0575" y="-42" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">DBRow</text>
-<polygon fill="none" stroke="#000000" points=".5,0 .5,-34 85.5,-34 85.5,0 .5,0"/>
-<text text-anchor="start" x="5.5" y="-20" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> operator[]</text>
-<text text-anchor="start" x="5.5" y="-8" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> operator[String]</text>
+<polygon fill="#d3d3d3" stroke="#000000" points="0,-.5 0,-52.5 84.904,-52.5 84.904,-.5 0,-.5"/>
+<text text-anchor="middle" x="42.452" y="-39.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">DBRow</text>
+<polyline fill="none" stroke="#000000" points="0,-32.5 84.904,-32.5 "/>
+<text text-anchor="start" x="8" y="-19.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">operator[]</text>
+<text text-anchor="start" x="8" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">operator[String]</text>
 </a>
 </g>
 </g>
 <!-- object&#45;&gt;DBRow -->
 <g id="edge1" class="edge">
 <title>object-&gt;DBRow</title>
-<path fill="none" stroke="#000000" d="M42.5,-81.9545C42.5,-73.0376 42.5,-64.1574 42.5,-56.2518"/>
-<polygon fill="#000000" stroke="#000000" points="39.0001,-81.9874 42.5,-91.9875 46.0001,-81.9875 39.0001,-81.9874"/>
+<path fill="none" stroke="#000000" d="M42.452,-79.3576C42.452,-70.0995 42.452,-60.867 42.452,-52.7693"/>
+<polygon fill="#000000" stroke="#000000" points="38.9521,-79.3612 42.452,-89.3612 45.9521,-79.3613 38.9521,-79.3612"/>
 </g>
 </g>
 </svg></div>

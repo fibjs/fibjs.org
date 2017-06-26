@@ -2,23 +2,22 @@
 信息摘要对象
 
 ## 继承关系
-<div class="inherits"><svg width="65pt" height="214pt" viewBox="0.00 0.00 65.00 214.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 210)">
+<div class="inherits"><svg width="66pt" height="206pt" viewBox="0.00 0.00 65.66 206.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 202)">
 <title>%0</title>
-<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-210 61,-210 61,4 -4,4"/>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-202 61.663,-202 61.663,4 -4,4"/>
 <!-- object -->
 <g id="node1" class="node">
 <title>object</title>
 <g id="a_node1"><a xlink:href="object.md" xlink:title="object">
-<polygon fill="#ffffff" stroke="transparent" points="0,-114 0,-206 57,-206 57,-114 0,-114"/>
-<polygon fill="none" stroke="#000000" points=".5,-184 .5,-206 57.5,-206 57.5,-184 .5,-184"/>
-<text text-anchor="start" x="15.6625" y="-192" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
-<polygon fill="none" stroke="#000000" points=".5,-114 .5,-184 57.5,-184 57.5,-114 .5,-114"/>
-<text text-anchor="start" x="5.5" y="-170" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> dispose()</text>
-<text text-anchor="start" x="5.5" y="-158" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> equals()</text>
-<text text-anchor="start" x="5.5" y="-146" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> toString()</text>
-<text text-anchor="start" x="5.5" y="-134" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> toJSON()</text>
-<text text-anchor="start" x="5.5" y="-122" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> valueOf()</text>
+<polygon fill="#ffffff" stroke="#000000" points="0,-109.5 0,-197.5 57.663,-197.5 57.663,-109.5 0,-109.5"/>
+<text text-anchor="middle" x="28.8315" y="-184.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
+<polyline fill="none" stroke="#000000" points="0,-177.5 57.663,-177.5 "/>
+<text text-anchor="start" x="8" y="-164.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">dispose()</text>
+<text text-anchor="start" x="8" y="-152.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">equals()</text>
+<text text-anchor="start" x="8" y="-140.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toString()</text>
+<text text-anchor="start" x="8" y="-128.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toJSON()</text>
+<text text-anchor="start" x="8" y="-116.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">valueOf()</text>
 </a>
 </g>
 </g>
@@ -26,22 +25,21 @@
 <g id="node2" class="node">
 <title>Digest</title>
 <g id="a_node2"><a xlink:title="Digest">
-<polygon fill="#d3d3d3" stroke="transparent" points="2,0 2,-78 55,-78 55,0 2,0"/>
-<polygon fill="none" stroke="#000000" points="2.5,-56 2.5,-78 55.5,-78 55.5,-56 2.5,-56"/>
-<text text-anchor="start" x="14.8325" y="-64" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Digest</text>
-<polygon fill="none" stroke="#000000" points="2.5,-34 2.5,-56 55.5,-56 55.5,-34 2.5,-34"/>
-<text text-anchor="start" x="7.5" y="-42" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> size</text>
-<polygon fill="none" stroke="#000000" points="2.5,0 2.5,-34 55.5,-34 55.5,0 2.5,0"/>
-<text text-anchor="start" x="7.5" y="-20" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> update()</text>
-<text text-anchor="start" x="7.5" y="-8" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> digest()</text>
+<polygon fill="#d3d3d3" stroke="#000000" points="1.8315,-.5 1.8315,-72.5 55.8315,-72.5 55.8315,-.5 1.8315,-.5"/>
+<text text-anchor="middle" x="28.4475" y="-59.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Digest</text>
+<polyline fill="none" stroke="#000000" points="1.8315,-52.5 55.0635,-52.5 "/>
+<text text-anchor="start" x="9.8315" y="-39.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">size</text>
+<polyline fill="none" stroke="#000000" points="1.8315,-32.5 55.0635,-32.5 "/>
+<text text-anchor="start" x="9.8315" y="-19.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">update()</text>
+<text text-anchor="start" x="9.8315" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">digest()</text>
 </a>
 </g>
 </g>
 <!-- object&#45;&gt;Digest -->
 <g id="edge1" class="edge">
 <title>object-&gt;Digest</title>
-<path fill="none" stroke="#000000" d="M28.5,-103.852C28.5,-95.2011 28.5,-86.4309 28.5,-78.2539"/>
-<polygon fill="#000000" stroke="#000000" points="25.0001,-103.9099 28.5,-113.9099 32.0001,-103.9099 25.0001,-103.9099"/>
+<path fill="none" stroke="#000000" d="M28.8315,-99.2465C28.8315,-90.2805 28.8315,-81.1808 28.8315,-72.7957"/>
+<polygon fill="#000000" stroke="#000000" points="25.3316,-99.2673 28.8315,-109.2673 32.3316,-99.2674 25.3316,-99.2673"/>
 </g>
 </g>
 </svg></div>

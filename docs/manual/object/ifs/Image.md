@@ -9,23 +9,22 @@ var img1 = gd.load(data);
 ```
 
 ## 继承关系
-<div class="inherits"><svg width="114pt" height="814pt" viewBox="0.00 0.00 114.00 814.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 810)">
+<div class="inherits"><svg width="114pt" height="806pt" viewBox="0.00 0.00 114.00 806.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 802)">
 <title>%0</title>
-<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-810 110,-810 110,4 -4,4"/>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-802 110.004,-802 110.004,4 -4,4"/>
 <!-- object -->
 <g id="node1" class="node">
 <title>object</title>
 <g id="a_node1"><a xlink:href="object.md" xlink:title="object">
-<polygon fill="#ffffff" stroke="transparent" points="24.5,-714 24.5,-806 81.5,-806 81.5,-714 24.5,-714"/>
-<polygon fill="none" stroke="#000000" points="25,-784 25,-806 82,-806 82,-784 25,-784"/>
-<text text-anchor="start" x="40.1625" y="-792" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
-<polygon fill="none" stroke="#000000" points="25,-714 25,-784 82,-784 82,-714 25,-714"/>
-<text text-anchor="start" x="30" y="-770" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> dispose()</text>
-<text text-anchor="start" x="30" y="-758" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> equals()</text>
-<text text-anchor="start" x="30" y="-746" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> toString()</text>
-<text text-anchor="start" x="30" y="-734" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> toJSON()</text>
-<text text-anchor="start" x="30" y="-722" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> valueOf()</text>
+<polygon fill="#ffffff" stroke="#000000" points="24.1705,-709.5 24.1705,-797.5 81.8335,-797.5 81.8335,-709.5 24.1705,-709.5"/>
+<text text-anchor="middle" x="53.002" y="-784.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
+<polyline fill="none" stroke="#000000" points="24.1705,-777.5 81.8335,-777.5 "/>
+<text text-anchor="start" x="32.1705" y="-764.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">dispose()</text>
+<text text-anchor="start" x="32.1705" y="-752.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">equals()</text>
+<text text-anchor="start" x="32.1705" y="-740.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toString()</text>
+<text text-anchor="start" x="32.1705" y="-728.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toJSON()</text>
+<text text-anchor="start" x="32.1705" y="-716.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">valueOf()</text>
 </a>
 </g>
 </g>
@@ -33,72 +32,71 @@ var img1 = gd.load(data);
 <g id="node2" class="node">
 <title>Image</title>
 <g id="a_node2"><a xlink:title="Image">
-<polygon fill="#d3d3d3" stroke="transparent" points="0,0 0,-678 106,-678 106,0 0,0"/>
-<polygon fill="none" stroke="#000000" points="0,-656 0,-678 106,-678 106,-656 0,-656"/>
-<text text-anchor="start" x="39.1075" y="-664" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Image</text>
-<polygon fill="none" stroke="#000000" points="0,-550 0,-656 106,-656 106,-550 0,-550"/>
-<text text-anchor="start" x="5" y="-642" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> width</text>
-<text text-anchor="start" x="5" y="-630" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> height</text>
-<text text-anchor="start" x="5" y="-618" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> format</text>
-<text text-anchor="start" x="5" y="-606" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> type</text>
-<text text-anchor="start" x="5" y="-594" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> colorsTotal</text>
-<text text-anchor="start" x="5" y="-582" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> transparent</text>
-<text text-anchor="start" x="5" y="-570" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> progressive</text>
-<text text-anchor="start" x="5" y="-558" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> alphaBlending</text>
-<polygon fill="none" stroke="#000000" points="0,0 0,-550 106,-550 106,0 0,0"/>
-<text text-anchor="start" x="5" y="-536" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> getData()</text>
-<text text-anchor="start" x="5" y="-524" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> save()</text>
-<text text-anchor="start" x="5" y="-512" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> colorAllocate()</text>
-<text text-anchor="start" x="5" y="-500" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> colorAllocateAlpha()</text>
-<text text-anchor="start" x="5" y="-488" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> colorClosest()</text>
-<text text-anchor="start" x="5" y="-476" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> colorClosestHWB()</text>
-<text text-anchor="start" x="5" y="-464" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> colorClosestAlpha()</text>
-<text text-anchor="start" x="5" y="-452" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> colorExact()</text>
-<text text-anchor="start" x="5" y="-440" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> colorExactAlpha()</text>
-<text text-anchor="start" x="5" y="-428" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> colorResolve()</text>
-<text text-anchor="start" x="5" y="-416" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> colorResolveAlpha()</text>
-<text text-anchor="start" x="5" y="-404" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> colorDeallocate()</text>
-<text text-anchor="start" x="5" y="-392" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> clip()</text>
-<text text-anchor="start" x="5" y="-380" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> getPixel()</text>
-<text text-anchor="start" x="5" y="-368" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> getTrueColorPixel()</text>
-<text text-anchor="start" x="5" y="-356" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> setPixel()</text>
-<text text-anchor="start" x="5" y="-344" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> setThickness()</text>
-<text text-anchor="start" x="5" y="-332" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> line()</text>
-<text text-anchor="start" x="5" y="-320" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> rectangle()</text>
-<text text-anchor="start" x="5" y="-308" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> filledRectangle()</text>
-<text text-anchor="start" x="5" y="-296" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> polygon()</text>
-<text text-anchor="start" x="5" y="-284" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> openPolygon()</text>
-<text text-anchor="start" x="5" y="-272" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> filledPolygon()</text>
-<text text-anchor="start" x="5" y="-260" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> ellipse()</text>
-<text text-anchor="start" x="5" y="-248" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> filledEllipse()</text>
-<text text-anchor="start" x="5" y="-236" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> arc()</text>
-<text text-anchor="start" x="5" y="-224" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> filledArc()</text>
-<text text-anchor="start" x="5" y="-212" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> fill()</text>
-<text text-anchor="start" x="5" y="-200" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> fillToBorder()</text>
-<text text-anchor="start" x="5" y="-188" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> colorReplace()</text>
-<text text-anchor="start" x="5" y="-176" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> clone()</text>
-<text text-anchor="start" x="5" y="-164" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> resample()</text>
-<text text-anchor="start" x="5" y="-152" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> crop()</text>
-<text text-anchor="start" x="5" y="-140" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> flip()</text>
-<text text-anchor="start" x="5" y="-128" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> rotate()</text>
-<text text-anchor="start" x="5" y="-116" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> convert()</text>
-<text text-anchor="start" x="5" y="-104" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> copy()</text>
-<text text-anchor="start" x="5" y="-92" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> copyMerge()</text>
-<text text-anchor="start" x="5" y="-80" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> copyMergeGray()</text>
-<text text-anchor="start" x="5" y="-68" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> copyResized()</text>
-<text text-anchor="start" x="5" y="-56" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> copyResampled()</text>
-<text text-anchor="start" x="5" y="-44" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> copyRotated()</text>
-<text text-anchor="start" x="5" y="-32" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> filter()</text>
-<text text-anchor="start" x="5" y="-20" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> affine()</text>
-<text text-anchor="start" x="5" y="-8" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> gaussianBlur()</text>
+<polygon fill="#d3d3d3" stroke="#000000" points="0,-.5 0,-672.5 106.004,-672.5 106.004,-.5 0,-.5"/>
+<text text-anchor="middle" x="53.002" y="-659.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Image</text>
+<polyline fill="none" stroke="#000000" points="0,-652.5 106.004,-652.5 "/>
+<text text-anchor="start" x="8" y="-639.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">width</text>
+<text text-anchor="start" x="8" y="-627.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">height</text>
+<text text-anchor="start" x="8" y="-615.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">format</text>
+<text text-anchor="start" x="8" y="-603.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">type</text>
+<text text-anchor="start" x="8" y="-591.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">colorsTotal</text>
+<text text-anchor="start" x="8" y="-579.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">transparent</text>
+<text text-anchor="start" x="8" y="-567.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">progressive</text>
+<text text-anchor="start" x="8" y="-555.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">alphaBlending</text>
+<polyline fill="none" stroke="#000000" points="0,-548.5 106.004,-548.5 "/>
+<text text-anchor="start" x="8" y="-535.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">getData()</text>
+<text text-anchor="start" x="8" y="-523.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">save()</text>
+<text text-anchor="start" x="8" y="-511.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">colorAllocate()</text>
+<text text-anchor="start" x="8" y="-499.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">colorAllocateAlpha()</text>
+<text text-anchor="start" x="8" y="-487.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">colorClosest()</text>
+<text text-anchor="start" x="8" y="-475.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">colorClosestHWB()</text>
+<text text-anchor="start" x="8" y="-463.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">colorClosestAlpha()</text>
+<text text-anchor="start" x="8" y="-451.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">colorExact()</text>
+<text text-anchor="start" x="8" y="-439.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">colorExactAlpha()</text>
+<text text-anchor="start" x="8" y="-427.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">colorResolve()</text>
+<text text-anchor="start" x="8" y="-415.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">colorResolveAlpha()</text>
+<text text-anchor="start" x="8" y="-403.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">colorDeallocate()</text>
+<text text-anchor="start" x="8" y="-391.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">clip()</text>
+<text text-anchor="start" x="8" y="-379.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">getPixel()</text>
+<text text-anchor="start" x="8" y="-367.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">getTrueColorPixel()</text>
+<text text-anchor="start" x="8" y="-355.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">setPixel()</text>
+<text text-anchor="start" x="8" y="-343.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">setThickness()</text>
+<text text-anchor="start" x="8" y="-331.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">line()</text>
+<text text-anchor="start" x="8" y="-319.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">rectangle()</text>
+<text text-anchor="start" x="8" y="-307.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">filledRectangle()</text>
+<text text-anchor="start" x="8" y="-295.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">polygon()</text>
+<text text-anchor="start" x="8" y="-283.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">openPolygon()</text>
+<text text-anchor="start" x="8" y="-271.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">filledPolygon()</text>
+<text text-anchor="start" x="8" y="-259.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">ellipse()</text>
+<text text-anchor="start" x="8" y="-247.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">filledEllipse()</text>
+<text text-anchor="start" x="8" y="-235.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">arc()</text>
+<text text-anchor="start" x="8" y="-223.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">filledArc()</text>
+<text text-anchor="start" x="8" y="-211.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">fill()</text>
+<text text-anchor="start" x="8" y="-199.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">fillToBorder()</text>
+<text text-anchor="start" x="8" y="-187.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">colorReplace()</text>
+<text text-anchor="start" x="8" y="-175.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">clone()</text>
+<text text-anchor="start" x="8" y="-163.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">resample()</text>
+<text text-anchor="start" x="8" y="-151.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">crop()</text>
+<text text-anchor="start" x="8" y="-139.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">flip()</text>
+<text text-anchor="start" x="8" y="-127.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">rotate()</text>
+<text text-anchor="start" x="8" y="-115.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">convert()</text>
+<text text-anchor="start" x="8" y="-103.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">copy()</text>
+<text text-anchor="start" x="8" y="-91.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">copyMerge()</text>
+<text text-anchor="start" x="8" y="-79.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">copyMergeGray()</text>
+<text text-anchor="start" x="8" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">copyResized()</text>
+<text text-anchor="start" x="8" y="-55.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">copyResampled()</text>
+<text text-anchor="start" x="8" y="-43.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">copyRotated()</text>
+<text text-anchor="start" x="8" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">filter()</text>
+<text text-anchor="start" x="8" y="-19.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">affine()</text>
+<text text-anchor="start" x="8" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">gaussianBlur()</text>
 </a>
 </g>
 </g>
 <!-- object&#45;&gt;Image -->
 <g id="edge1" class="edge">
 <title>object-&gt;Image</title>
-<path fill="none" stroke="#000000" d="M53,-703.6813C53,-695.7363 53,-687.1423 53,-678.0275"/>
-<polygon fill="#000000" stroke="#000000" points="49.5001,-703.7413 53,-713.7413 56.5001,-703.7414 49.5001,-703.7413"/>
+<path fill="none" stroke="#000000" d="M53.002,-699.2426C53.002,-691.0112 53.002,-682.0522 53.002,-672.5153"/>
+<polygon fill="#000000" stroke="#000000" points="49.5021,-699.2684 53.002,-709.2685 56.5021,-699.2685 49.5021,-699.2684"/>
 </g>
 </g>
 </svg></div>

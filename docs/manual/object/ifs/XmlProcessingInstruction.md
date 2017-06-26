@@ -2,23 +2,22 @@
 XmlProcessingInstruction 对象表示 [xml](../../module/ifs/xml.md) 处理指令
 
 ## 继承关系
-<div class="inherits"><svg width="130pt" height="510pt" viewBox="0.00 0.00 130.00 510.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 506)">
+<div class="inherits"><svg width="137pt" height="499pt" viewBox="0.00 0.00 136.79 499.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 495)">
 <title>%0</title>
-<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-506 126,-506 126,4 -4,4"/>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-495 132.791,-495 132.791,4 -4,4"/>
 <!-- object -->
 <g id="node1" class="node">
 <title>object</title>
 <g id="a_node1"><a xlink:href="object.md" xlink:title="object">
-<polygon fill="#ffffff" stroke="transparent" points="32.5,-410 32.5,-502 89.5,-502 89.5,-410 32.5,-410"/>
-<polygon fill="none" stroke="#000000" points="33,-480 33,-502 90,-502 90,-480 33,-480"/>
-<text text-anchor="start" x="48.1625" y="-488" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
-<polygon fill="none" stroke="#000000" points="33,-410 33,-480 90,-480 90,-410 33,-410"/>
-<text text-anchor="start" x="38" y="-466" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> dispose()</text>
-<text text-anchor="start" x="38" y="-454" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> equals()</text>
-<text text-anchor="start" x="38" y="-442" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> toString()</text>
-<text text-anchor="start" x="38" y="-430" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> toJSON()</text>
-<text text-anchor="start" x="38" y="-418" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> valueOf()</text>
+<polygon fill="#ffffff" stroke="#000000" points="35.564,-402.5 35.564,-490.5 93.227,-490.5 93.227,-402.5 35.564,-402.5"/>
+<text text-anchor="middle" x="64.3955" y="-477.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
+<polyline fill="none" stroke="#000000" points="35.564,-470.5 93.227,-470.5 "/>
+<text text-anchor="start" x="43.564" y="-457.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">dispose()</text>
+<text text-anchor="start" x="43.564" y="-445.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">equals()</text>
+<text text-anchor="start" x="43.564" y="-433.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toString()</text>
+<text text-anchor="start" x="43.564" y="-421.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toJSON()</text>
+<text text-anchor="start" x="43.564" y="-409.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">valueOf()</text>
 </a>
 </g>
 </g>
@@ -26,58 +25,56 @@ XmlProcessingInstruction 对象表示 [xml](../../module/ifs/xml.md) 处理指�
 <g id="node2" class="node">
 <title>XmlNode</title>
 <g id="a_node2"><a xlink:href="XmlNode.md" xlink:title="XmlNode">
-<polygon fill="#ffffff" stroke="transparent" points="0,-92 0,-374 122,-374 122,-92 0,-92"/>
-<polygon fill="none" stroke="#000000" points="0,-352 0,-374 122,-374 122,-352 0,-352"/>
-<text text-anchor="start" x="40.4435" y="-360" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">XmlNode</text>
-<polygon fill="none" stroke="#000000" points="0,-222 0,-352 122,-352 122,-222 0,-222"/>
-<text text-anchor="start" x="5" y="-338" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> nodeType</text>
-<text text-anchor="start" x="5" y="-326" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> nodeName</text>
-<text text-anchor="start" x="5" y="-314" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> nodeValue</text>
-<text text-anchor="start" x="5" y="-302" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> ownerDocument</text>
-<text text-anchor="start" x="5" y="-290" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> parentNode</text>
-<text text-anchor="start" x="5" y="-278" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> childNodes</text>
-<text text-anchor="start" x="5" y="-266" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> firstChild</text>
-<text text-anchor="start" x="5" y="-254" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> lastChild</text>
-<text text-anchor="start" x="5" y="-242" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> previousSibling</text>
-<text text-anchor="start" x="5" y="-230" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> nextSibling</text>
-<polygon fill="none" stroke="#000000" points="0,-92 0,-222 122,-222 122,-92 0,-92"/>
-<text text-anchor="start" x="5" y="-208" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> hasChildNodes()</text>
-<text text-anchor="start" x="5" y="-196" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> normalize()</text>
-<text text-anchor="start" x="5" y="-184" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> cloneNode()</text>
-<text text-anchor="start" x="5" y="-172" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> lookupPrefix()</text>
-<text text-anchor="start" x="5" y="-160" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> lookupNamespaceURI()</text>
-<text text-anchor="start" x="5" y="-148" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> insertBefore()</text>
-<text text-anchor="start" x="5" y="-136" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> insertAfter()</text>
-<text text-anchor="start" x="5" y="-124" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> appendChild()</text>
-<text text-anchor="start" x="5" y="-112" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> replaceChild()</text>
-<text text-anchor="start" x="5" y="-100" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> removeChild()</text>
+<polygon fill="#ffffff" stroke="#000000" points="3.059,-89.5 3.059,-365.5 125.732,-365.5 125.732,-89.5 3.059,-89.5"/>
+<text text-anchor="middle" x="64.3955" y="-352.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">XmlNode</text>
+<polyline fill="none" stroke="#000000" points="3.059,-345.5 125.732,-345.5 "/>
+<text text-anchor="start" x="11.059" y="-332.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">nodeType</text>
+<text text-anchor="start" x="11.059" y="-320.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">nodeName</text>
+<text text-anchor="start" x="11.059" y="-308.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">nodeValue</text>
+<text text-anchor="start" x="11.059" y="-296.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">ownerDocument</text>
+<text text-anchor="start" x="11.059" y="-284.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">parentNode</text>
+<text text-anchor="start" x="11.059" y="-272.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">childNodes</text>
+<text text-anchor="start" x="11.059" y="-260.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">firstChild</text>
+<text text-anchor="start" x="11.059" y="-248.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">lastChild</text>
+<text text-anchor="start" x="11.059" y="-236.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">previousSibling</text>
+<text text-anchor="start" x="11.059" y="-224.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">nextSibling</text>
+<polyline fill="none" stroke="#000000" points="3.059,-217.5 125.732,-217.5 "/>
+<text text-anchor="start" x="11.059" y="-204.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">hasChildNodes()</text>
+<text text-anchor="start" x="11.059" y="-192.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">normalize()</text>
+<text text-anchor="start" x="11.059" y="-180.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">cloneNode()</text>
+<text text-anchor="start" x="11.059" y="-168.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">lookupPrefix()</text>
+<text text-anchor="start" x="11.059" y="-156.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">lookupNamespaceURI()</text>
+<text text-anchor="start" x="11.059" y="-144.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">insertBefore()</text>
+<text text-anchor="start" x="11.059" y="-132.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">insertAfter()</text>
+<text text-anchor="start" x="11.059" y="-120.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">appendChild()</text>
+<text text-anchor="start" x="11.059" y="-108.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">replaceChild()</text>
+<text text-anchor="start" x="11.059" y="-96.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">removeChild()</text>
 </a>
 </g>
 </g>
 <!-- object&#45;&gt;XmlNode -->
 <g id="edge1" class="edge">
 <title>object-&gt;XmlNode</title>
-<path fill="none" stroke="#000000" d="M61,-399.5484C61,-391.5161 61,-382.975 61,-374.1675"/>
-<polygon fill="#000000" stroke="#000000" points="57.5001,-399.7942 61,-409.7943 64.5001,-399.7943 57.5001,-399.7942"/>
+<path fill="none" stroke="#000000" d="M64.3955,-392.1907C64.3955,-383.8324 64.3955,-374.8931 64.3955,-365.6615"/>
+<polygon fill="#000000" stroke="#000000" points="60.8956,-392.4455 64.3955,-402.4455 67.8956,-392.4456 60.8956,-392.4455"/>
 </g>
 <!-- XmlProcessingInstruction -->
 <g id="node3" class="node">
 <title>XmlProcessingInstruction</title>
 <g id="a_node3"><a xlink:title="XmlProcessingInstruction">
-<polygon fill="#d3d3d3" stroke="transparent" points="0,0 0,-56 122,-56 122,0 0,0"/>
-<polygon fill="none" stroke="#000000" points="0,-34 0,-56 122,-56 122,-34 0,-34"/>
-<text text-anchor="start" x="4.6045" y="-42" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">XmlProcessingInstruction</text>
-<polygon fill="none" stroke="#000000" points="0,0 0,-34 122,-34 122,0 0,0"/>
-<text text-anchor="start" x="5" y="-20" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> target</text>
-<text text-anchor="start" x="5" y="-8" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> data</text>
+<polygon fill="#d3d3d3" stroke="#000000" points="0,-.5 0,-52.5 128.791,-52.5 128.791,-.5 0,-.5"/>
+<text text-anchor="middle" x="64.3955" y="-39.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">XmlProcessingInstruction</text>
+<polyline fill="none" stroke="#000000" points="0,-32.5 128.791,-32.5 "/>
+<text text-anchor="start" x="8" y="-19.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">target</text>
+<text text-anchor="start" x="8" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">data</text>
 </a>
 </g>
 </g>
 <!-- XmlNode&#45;&gt;XmlProcessingInstruction -->
 <g id="edge2" class="edge">
 <title>XmlNode-&gt;XmlProcessingInstruction</title>
-<path fill="none" stroke="#000000" d="M61,-81.4713C61,-72.2408 61,-63.7043 61,-56.2858"/>
-<polygon fill="#000000" stroke="#000000" points="57.5001,-81.7395 61,-91.7396 64.5001,-81.7396 57.5001,-81.7395"/>
+<path fill="none" stroke="#000000" d="M64.3955,-79.1583C64.3955,-69.2933 64.3955,-60.2304 64.3955,-52.5061"/>
+<polygon fill="#000000" stroke="#000000" points="60.8956,-79.2708 64.3955,-89.2709 67.8956,-79.2709 60.8956,-79.2708"/>
 </g>
 </g>
 </svg></div>

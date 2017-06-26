@@ -13,23 +13,22 @@ var url = new net.Url({
 ```
 
 ## 继承关系
-<div class="inherits"><svg width="96pt" height="416pt" viewBox="0.00 0.00 96.00 416.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 412)">
+<div class="inherits"><svg width="93pt" height="406pt" viewBox="0.00 0.00 93.44 406.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 402)">
 <title>%0</title>
-<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-412 92,-412 92,4 -4,4"/>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-402 89.436,-402 89.436,4 -4,4"/>
 <!-- object -->
 <g id="node1" class="node">
 <title>object</title>
 <g id="a_node1"><a xlink:href="object.md" xlink:title="object">
-<polygon fill="#ffffff" stroke="transparent" points="15.5,-316 15.5,-408 72.5,-408 72.5,-316 15.5,-316"/>
-<polygon fill="none" stroke="#000000" points="16,-386 16,-408 73,-408 73,-386 16,-386"/>
-<text text-anchor="start" x="31.1625" y="-394" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
-<polygon fill="none" stroke="#000000" points="16,-316 16,-386 73,-386 73,-316 16,-316"/>
-<text text-anchor="start" x="21" y="-372" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> dispose()</text>
-<text text-anchor="start" x="21" y="-360" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> equals()</text>
-<text text-anchor="start" x="21" y="-348" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> toString()</text>
-<text text-anchor="start" x="21" y="-336" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> toJSON()</text>
-<text text-anchor="start" x="21" y="-324" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> valueOf()</text>
+<polygon fill="#ffffff" stroke="#000000" points="13.8865,-309.5 13.8865,-397.5 71.5495,-397.5 71.5495,-309.5 13.8865,-309.5"/>
+<text text-anchor="middle" x="42.718" y="-384.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
+<polyline fill="none" stroke="#000000" points="13.8865,-377.5 71.5495,-377.5 "/>
+<text text-anchor="start" x="21.8865" y="-364.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">dispose()</text>
+<text text-anchor="start" x="21.8865" y="-352.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">equals()</text>
+<text text-anchor="start" x="21.8865" y="-340.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toString()</text>
+<text text-anchor="start" x="21.8865" y="-328.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toJSON()</text>
+<text text-anchor="start" x="21.8865" y="-316.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">valueOf()</text>
 </a>
 </g>
 </g>
@@ -37,39 +36,38 @@ var url = new net.Url({
 <g id="node2" class="node">
 <title>UrlObject</title>
 <g id="a_node2"><a xlink:title="UrlObject">
-<polygon fill="#d3d3d3" stroke="transparent" points="0,0 0,-280 88,-280 88,0 0,0"/>
-<polygon fill="none" stroke="#000000" points="0,-258 0,-280 88,-280 88,-258 0,-258"/>
-<text text-anchor="start" x="23.169" y="-266" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">UrlObject</text>
-<polygon fill="none" stroke="#000000" points="0,-236 0,-258 88,-258 88,-236 0,-236"/>
-<text text-anchor="start" x="5" y="-244" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">  new UrlObject()</text>
-<polygon fill="none" stroke="#000000" points="0,-58 0,-236 88,-236 88,-58 0,-58"/>
-<text text-anchor="start" x="5" y="-222" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> href</text>
-<text text-anchor="start" x="5" y="-210" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> protocol</text>
-<text text-anchor="start" x="5" y="-198" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> slashes</text>
-<text text-anchor="start" x="5" y="-186" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> auth</text>
-<text text-anchor="start" x="5" y="-174" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> username</text>
-<text text-anchor="start" x="5" y="-162" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> password</text>
-<text text-anchor="start" x="5" y="-150" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> host</text>
-<text text-anchor="start" x="5" y="-138" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> hostname</text>
-<text text-anchor="start" x="5" y="-126" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> port</text>
-<text text-anchor="start" x="5" y="-114" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> path</text>
-<text text-anchor="start" x="5" y="-102" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> pathname</text>
-<text text-anchor="start" x="5" y="-90" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> search</text>
-<text text-anchor="start" x="5" y="-78" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> query</text>
-<text text-anchor="start" x="5" y="-66" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> hash</text>
-<polygon fill="none" stroke="#000000" points="0,0 0,-58 88,-58 88,0 0,0"/>
-<text text-anchor="start" x="5" y="-44" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> parse()</text>
-<text text-anchor="start" x="5" y="-32" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> format()</text>
-<text text-anchor="start" x="5" y="-20" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> resolve()</text>
-<text text-anchor="start" x="5" y="-8" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> normalize()</text>
+<polygon fill="#d3d3d3" stroke="#000000" points="0,-.5 0,-272.5 85.436,-272.5 85.436,-.5 0,-.5"/>
+<text text-anchor="middle" x="42.718" y="-259.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">UrlObject</text>
+<polyline fill="none" stroke="#000000" points="0,-252.5 85.436,-252.5 "/>
+<text text-anchor="start" x="8" y="-239.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">new UrlObject()</text>
+<polyline fill="none" stroke="#000000" points="0,-232.5 85.436,-232.5 "/>
+<text text-anchor="start" x="8" y="-219.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">href</text>
+<text text-anchor="start" x="8" y="-207.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">protocol</text>
+<text text-anchor="start" x="8" y="-195.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">slashes</text>
+<text text-anchor="start" x="8" y="-183.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">auth</text>
+<text text-anchor="start" x="8" y="-171.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">username</text>
+<text text-anchor="start" x="8" y="-159.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">password</text>
+<text text-anchor="start" x="8" y="-147.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">host</text>
+<text text-anchor="start" x="8" y="-135.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">hostname</text>
+<text text-anchor="start" x="8" y="-123.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">port</text>
+<text text-anchor="start" x="8" y="-111.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">path</text>
+<text text-anchor="start" x="8" y="-99.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">pathname</text>
+<text text-anchor="start" x="8" y="-87.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">search</text>
+<text text-anchor="start" x="8" y="-75.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">query</text>
+<text text-anchor="start" x="8" y="-63.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">hash</text>
+<polyline fill="none" stroke="#000000" points="0,-56.5 85.436,-56.5 "/>
+<text text-anchor="start" x="8" y="-43.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">parse()</text>
+<text text-anchor="start" x="8" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">format()</text>
+<text text-anchor="start" x="8" y="-19.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">resolve()</text>
+<text text-anchor="start" x="8" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">normalize()</text>
 </a>
 </g>
 </g>
 <!-- object&#45;&gt;UrlObject -->
 <g id="edge1" class="edge">
 <title>object-&gt;UrlObject</title>
-<path fill="none" stroke="#000000" d="M44,-305.5289C44,-297.5321 44,-289.033 44,-280.2719"/>
-<polygon fill="#000000" stroke="#000000" points="40.5001,-305.7317 44,-315.7318 47.5001,-305.7318 40.5001,-305.7317"/>
+<path fill="none" stroke="#000000" d="M42.718,-299.157C42.718,-290.8734 42.718,-282.0234 42.718,-272.8906"/>
+<polygon fill="#000000" stroke="#000000" points="39.2181,-299.3252 42.718,-309.3253 46.2181,-299.3253 39.2181,-299.3252"/>
 </g>
 </g>
 </svg></div>

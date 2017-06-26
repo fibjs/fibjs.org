@@ -10,23 +10,22 @@ var sock = new ws.WebSocket(...);
 ```
 
 ## 继承关系
-<div class="inherits"><svg width="126pt" height="600pt" viewBox="0.00 0.00 126.00 600.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 596)">
+<div class="inherits"><svg width="127pt" height="583pt" viewBox="0.00 0.00 126.80 583.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 579)">
 <title>%0</title>
-<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-596 122,-596 122,4 -4,4"/>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-579 122.801,-579 122.801,4 -4,4"/>
 <!-- object -->
 <g id="node1" class="node">
 <title>object</title>
 <g id="a_node1"><a xlink:href="object.md" xlink:title="object">
-<polygon fill="#ffffff" stroke="transparent" points="30.5,-500 30.5,-592 87.5,-592 87.5,-500 30.5,-500"/>
-<polygon fill="none" stroke="#000000" points="31,-570 31,-592 88,-592 88,-570 31,-570"/>
-<text text-anchor="start" x="46.1625" y="-578" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
-<polygon fill="none" stroke="#000000" points="31,-500 31,-570 88,-570 88,-500 31,-500"/>
-<text text-anchor="start" x="36" y="-556" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> dispose()</text>
-<text text-anchor="start" x="36" y="-544" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> equals()</text>
-<text text-anchor="start" x="36" y="-532" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> toString()</text>
-<text text-anchor="start" x="36" y="-520" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> toJSON()</text>
-<text text-anchor="start" x="36" y="-508" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> valueOf()</text>
+<polygon fill="#ffffff" stroke="#000000" points="30.569,-486.5 30.569,-574.5 88.232,-574.5 88.232,-486.5 30.569,-486.5"/>
+<text text-anchor="middle" x="59.4005" y="-561.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
+<polyline fill="none" stroke="#000000" points="30.569,-554.5 88.232,-554.5 "/>
+<text text-anchor="start" x="38.569" y="-541.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">dispose()</text>
+<text text-anchor="start" x="38.569" y="-529.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">equals()</text>
+<text text-anchor="start" x="38.569" y="-517.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toString()</text>
+<text text-anchor="start" x="38.569" y="-505.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toJSON()</text>
+<text text-anchor="start" x="38.569" y="-493.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">valueOf()</text>
 </a>
 </g>
 </g>
@@ -34,66 +33,64 @@ var sock = new ws.WebSocket(...);
 <g id="node2" class="node">
 <title>EventEmitter</title>
 <g id="a_node2"><a xlink:href="EventEmitter.md" xlink:title="EventEmitter">
-<polygon fill="#ffffff" stroke="transparent" points="0,-220 0,-464 118,-464 118,-220 0,-220"/>
-<polygon fill="none" stroke="#000000" points="0,-442 0,-464 118,-464 118,-442 0,-442"/>
-<text text-anchor="start" x="30.3855" y="-450" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">EventEmitter</text>
-<polygon fill="none" stroke="#000000" points="0,-420 0,-442 118,-442 118,-420 0,-420"/>
-<text text-anchor="start" x="5" y="-428" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">  new EventEmitter()</text>
-<polygon fill="none" stroke="#000000" points="0,-398 0,-420 118,-420 118,-398 0,-398"/>
-<text text-anchor="start" x="5" y="-406" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> defaultMaxListeners</text>
-<polygon fill="none" stroke="#000000" points="0,-220 0,-398 118,-398 118,-220 0,-220"/>
-<text text-anchor="start" x="5" y="-384" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> on()</text>
-<text text-anchor="start" x="5" y="-372" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> addListener()</text>
-<text text-anchor="start" x="5" y="-360" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> prependListener()</text>
-<text text-anchor="start" x="5" y="-348" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> once()</text>
-<text text-anchor="start" x="5" y="-336" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> prependOnceListener()</text>
-<text text-anchor="start" x="5" y="-324" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> off()</text>
-<text text-anchor="start" x="5" y="-312" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> removeListener()</text>
-<text text-anchor="start" x="5" y="-300" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> removeAllListeners()</text>
-<text text-anchor="start" x="5" y="-288" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> setMaxListeners()</text>
-<text text-anchor="start" x="5" y="-276" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> getMaxListeners()</text>
-<text text-anchor="start" x="5" y="-264" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> listeners()</text>
-<text text-anchor="start" x="5" y="-252" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> listenerCount()</text>
-<text text-anchor="start" x="5" y="-240" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> eventNames()</text>
-<text text-anchor="start" x="5" y="-228" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> emit()</text>
+<polygon fill="#ffffff" stroke="#000000" points="0,-213.5 0,-449.5 118.801,-449.5 118.801,-213.5 0,-213.5"/>
+<text text-anchor="middle" x="59.4005" y="-436.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">EventEmitter</text>
+<polyline fill="none" stroke="#000000" points="0,-429.5 118.801,-429.5 "/>
+<text text-anchor="start" x="8" y="-416.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">new EventEmitter()</text>
+<polyline fill="none" stroke="#000000" points="0,-409.5 118.801,-409.5 "/>
+<text text-anchor="start" x="8" y="-396.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">defaultMaxListeners</text>
+<polyline fill="none" stroke="#000000" points="0,-389.5 118.801,-389.5 "/>
+<text text-anchor="start" x="8" y="-376.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">on()</text>
+<text text-anchor="start" x="8" y="-364.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">addListener()</text>
+<text text-anchor="start" x="8" y="-352.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">prependListener()</text>
+<text text-anchor="start" x="8" y="-340.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">once()</text>
+<text text-anchor="start" x="8" y="-328.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">prependOnceListener()</text>
+<text text-anchor="start" x="8" y="-316.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">off()</text>
+<text text-anchor="start" x="8" y="-304.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">removeListener()</text>
+<text text-anchor="start" x="8" y="-292.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">removeAllListeners()</text>
+<text text-anchor="start" x="8" y="-280.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">setMaxListeners()</text>
+<text text-anchor="start" x="8" y="-268.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">getMaxListeners()</text>
+<text text-anchor="start" x="8" y="-256.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">listeners()</text>
+<text text-anchor="start" x="8" y="-244.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">listenerCount()</text>
+<text text-anchor="start" x="8" y="-232.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">eventNames()</text>
+<text text-anchor="start" x="8" y="-220.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">emit()</text>
 </a>
 </g>
 </g>
 <!-- object&#45;&gt;EventEmitter -->
 <g id="edge1" class="edge">
 <title>object-&gt;EventEmitter</title>
-<path fill="none" stroke="#000000" d="M59,-489.9235C59,-481.7711 59,-473.1241 59,-464.2645"/>
-<polygon fill="#000000" stroke="#000000" points="55.5001,-489.964 59,-499.9641 62.5001,-489.9641 55.5001,-489.964"/>
+<path fill="none" stroke="#000000" d="M59.4005,-476.1104C59.4005,-467.7939 59.4005,-458.9442 59.4005,-449.8773"/>
+<polygon fill="#000000" stroke="#000000" points="55.9006,-476.3354 59.4005,-486.3355 62.9006,-476.3355 55.9006,-476.3354"/>
 </g>
 <!-- WebSocket -->
 <g id="node3" class="node">
 <title>WebSocket</title>
 <g id="a_node3"><a xlink:title="WebSocket">
-<polygon fill="#d3d3d3" stroke="transparent" points="10.5,0 10.5,-184 107.5,-184 107.5,0 10.5,0"/>
-<polygon fill="none" stroke="#000000" points="11,-162 11,-184 108,-184 108,-162 11,-162"/>
-<text text-anchor="start" x="33.9385" y="-170" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">WebSocket</text>
-<polygon fill="none" stroke="#000000" points="11,-140 11,-162 108,-162 108,-140 11,-140"/>
-<text text-anchor="start" x="16" y="-148" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">  new WebSocket()</text>
-<polygon fill="none" stroke="#000000" points="11,-34 11,-140 108,-140 108,-34 11,-34"/>
-<text text-anchor="start" x="16" y="-126" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> url</text>
-<text text-anchor="start" x="16" y="-114" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> protocol</text>
-<text text-anchor="start" x="16" y="-102" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> origin</text>
-<text text-anchor="start" x="16" y="-90" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> readyState</text>
-<text text-anchor="start" x="16" y="-78" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> onopen</text>
-<text text-anchor="start" x="16" y="-66" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> onmessage</text>
-<text text-anchor="start" x="16" y="-54" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> onclose</text>
-<text text-anchor="start" x="16" y="-42" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> onerror</text>
-<polygon fill="none" stroke="#000000" points="11,0 11,-34 108,-34 108,0 11,0"/>
-<text text-anchor="start" x="16" y="-20" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> close()</text>
-<text text-anchor="start" x="16" y="-8" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> send()</text>
+<polygon fill="#d3d3d3" stroke="#000000" points="11.952,-.5 11.952,-176.5 106.849,-176.5 106.849,-.5 11.952,-.5"/>
+<text text-anchor="middle" x="59.4005" y="-163.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">WebSocket</text>
+<polyline fill="none" stroke="#000000" points="11.952,-156.5 106.849,-156.5 "/>
+<text text-anchor="start" x="19.952" y="-143.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">new WebSocket()</text>
+<polyline fill="none" stroke="#000000" points="11.952,-136.5 106.849,-136.5 "/>
+<text text-anchor="start" x="19.952" y="-123.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">url</text>
+<text text-anchor="start" x="19.952" y="-111.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">protocol</text>
+<text text-anchor="start" x="19.952" y="-99.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">origin</text>
+<text text-anchor="start" x="19.952" y="-87.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readyState</text>
+<text text-anchor="start" x="19.952" y="-75.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">onopen</text>
+<text text-anchor="start" x="19.952" y="-63.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">onmessage</text>
+<text text-anchor="start" x="19.952" y="-51.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">onclose</text>
+<text text-anchor="start" x="19.952" y="-39.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">onerror</text>
+<polyline fill="none" stroke="#000000" points="11.952,-32.5 106.849,-32.5 "/>
+<text text-anchor="start" x="19.952" y="-19.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">close()</text>
+<text text-anchor="start" x="19.952" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">send()</text>
 </a>
 </g>
 </g>
 <!-- EventEmitter&#45;&gt;WebSocket -->
 <g id="edge2" class="edge">
 <title>EventEmitter-&gt;WebSocket</title>
-<path fill="none" stroke="#000000" d="M59,-209.7865C59,-201.1557 59,-192.5709 59,-184.1975"/>
-<polygon fill="#000000" stroke="#000000" points="55.5001,-209.9294 59,-219.9294 62.5001,-209.9295 55.5001,-209.9294"/>
+<path fill="none" stroke="#000000" d="M59.4005,-203.1045C59.4005,-194.1695 59.4005,-185.2844 59.4005,-176.6433"/>
+<polygon fill="#000000" stroke="#000000" points="55.9006,-203.2032 59.4005,-213.2033 62.9006,-203.2033 55.9006,-203.2032"/>
 </g>
 </g>
 </svg></div>

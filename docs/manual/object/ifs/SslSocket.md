@@ -8,23 +8,22 @@ var s = new ssl.Socket();
 ```
 
 ## 继承关系
-<div class="inherits"><svg width="99pt" height="388pt" viewBox="0.00 0.00 99.00 388.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 384)">
+<div class="inherits"><svg width="96pt" height="375pt" viewBox="0.00 0.00 96.23 375.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 371)">
 <title>%0</title>
-<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-384 95,-384 95,4 -4,4"/>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-371 92.228,-371 92.228,4 -4,4"/>
 <!-- object -->
 <g id="node1" class="node">
 <title>object</title>
 <g id="a_node1"><a xlink:href="object.md" xlink:title="object">
-<polygon fill="#ffffff" stroke="transparent" points="17,-288 17,-380 74,-380 74,-288 17,-288"/>
-<polygon fill="none" stroke="#000000" points="17.5,-358 17.5,-380 74.5,-380 74.5,-358 17.5,-358"/>
-<text text-anchor="start" x="32.6625" y="-366" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
-<polygon fill="none" stroke="#000000" points="17.5,-288 17.5,-358 74.5,-358 74.5,-288 17.5,-288"/>
-<text text-anchor="start" x="22.5" y="-344" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> dispose()</text>
-<text text-anchor="start" x="22.5" y="-332" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> equals()</text>
-<text text-anchor="start" x="22.5" y="-320" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> toString()</text>
-<text text-anchor="start" x="22.5" y="-308" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> toJSON()</text>
-<text text-anchor="start" x="22.5" y="-296" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> valueOf()</text>
+<polygon fill="#ffffff" stroke="#000000" points="15.2825,-278.5 15.2825,-366.5 72.9455,-366.5 72.9455,-278.5 15.2825,-278.5"/>
+<text text-anchor="middle" x="44.114" y="-353.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
+<polyline fill="none" stroke="#000000" points="15.2825,-346.5 72.9455,-346.5 "/>
+<text text-anchor="start" x="23.2825" y="-333.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">dispose()</text>
+<text text-anchor="start" x="23.2825" y="-321.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">equals()</text>
+<text text-anchor="start" x="23.2825" y="-309.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toString()</text>
+<text text-anchor="start" x="23.2825" y="-297.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toJSON()</text>
+<text text-anchor="start" x="23.2825" y="-285.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">valueOf()</text>
 </a>
 </g>
 </g>
@@ -32,48 +31,46 @@ var s = new ssl.Socket();
 <g id="node2" class="node">
 <title>Stream</title>
 <g id="a_node2"><a xlink:href="Stream.md" xlink:title="Stream">
-<polygon fill="#ffffff" stroke="transparent" points="18,-172 18,-252 73,-252 73,-172 18,-172"/>
-<polygon fill="none" stroke="#000000" points="18.5,-230 18.5,-252 73.5,-252 73.5,-230 18.5,-230"/>
-<text text-anchor="start" x="29.888" y="-238" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Stream</text>
-<polygon fill="none" stroke="#000000" points="18.5,-172 18.5,-230 73.5,-230 73.5,-172 18.5,-172"/>
-<text text-anchor="start" x="23.5" y="-216" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> read()</text>
-<text text-anchor="start" x="23.5" y="-204" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> write()</text>
-<text text-anchor="start" x="23.5" y="-192" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> close()</text>
-<text text-anchor="start" x="23.5" y="-180" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> copyTo()</text>
+<polygon fill="#ffffff" stroke="#000000" points="16.392,-165.5 16.392,-241.5 71.836,-241.5 71.836,-165.5 16.392,-165.5"/>
+<text text-anchor="middle" x="44.114" y="-228.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Stream</text>
+<polyline fill="none" stroke="#000000" points="16.392,-221.5 71.836,-221.5 "/>
+<text text-anchor="start" x="24.392" y="-208.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">read()</text>
+<text text-anchor="start" x="24.392" y="-196.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">write()</text>
+<text text-anchor="start" x="24.392" y="-184.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">close()</text>
+<text text-anchor="start" x="24.392" y="-172.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">copyTo()</text>
 </a>
 </g>
 </g>
 <!-- object&#45;&gt;Stream -->
 <g id="edge1" class="edge">
 <title>object-&gt;Stream</title>
-<path fill="none" stroke="#000000" d="M45.5,-277.8267C45.5,-269.1786 45.5,-260.4003 45.5,-252.193"/>
-<polygon fill="#000000" stroke="#000000" points="42.0001,-277.877 45.5,-287.877 49.0001,-277.8771 42.0001,-277.877"/>
+<path fill="none" stroke="#000000" d="M44.114,-268.1681C44.114,-259.1942 44.114,-250.0623 44.114,-241.5973"/>
+<polygon fill="#000000" stroke="#000000" points="40.6141,-268.1888 44.114,-278.1888 47.6141,-268.1888 40.6141,-268.1888"/>
 </g>
 <!-- SslSocket -->
 <g id="node3" class="node">
 <title>SslSocket</title>
 <g id="a_node3"><a xlink:title="SslSocket">
-<polygon fill="#d3d3d3" stroke="transparent" points="0,0 0,-136 91,-136 91,0 0,0"/>
-<polygon fill="none" stroke="#000000" points=".5,-114 .5,-136 91.5,-136 91.5,-114 .5,-114"/>
-<text text-anchor="start" x="23.773" y="-122" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">SslSocket</text>
-<polygon fill="none" stroke="#000000" points=".5,-92 .5,-114 91.5,-114 91.5,-92 .5,-92"/>
-<text text-anchor="start" x="5.5" y="-100" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">  new SslSocket()</text>
-<polygon fill="none" stroke="#000000" points=".5,-34 .5,-92 91.5,-92 91.5,-34 .5,-34"/>
-<text text-anchor="start" x="5.5" y="-78" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> verification</text>
-<text text-anchor="start" x="5.5" y="-66" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> ca</text>
-<text text-anchor="start" x="5.5" y="-54" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> peerCert</text>
-<text text-anchor="start" x="5.5" y="-42" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> stream</text>
-<polygon fill="none" stroke="#000000" points=".5,0 .5,-34 91.5,-34 91.5,0 .5,0"/>
-<text text-anchor="start" x="5.5" y="-20" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> connect()</text>
-<text text-anchor="start" x="5.5" y="-8" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> accept()</text>
+<polygon fill="#d3d3d3" stroke="#000000" points="0,-.5 0,-128.5 88.228,-128.5 88.228,-.5 0,-.5"/>
+<text text-anchor="middle" x="44.114" y="-115.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">SslSocket</text>
+<polyline fill="none" stroke="#000000" points="0,-108.5 88.228,-108.5 "/>
+<text text-anchor="start" x="8" y="-95.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">new SslSocket()</text>
+<polyline fill="none" stroke="#000000" points="0,-88.5 88.228,-88.5 "/>
+<text text-anchor="start" x="8" y="-75.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">verification</text>
+<text text-anchor="start" x="8" y="-63.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">ca</text>
+<text text-anchor="start" x="8" y="-51.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">peerCert</text>
+<text text-anchor="start" x="8" y="-39.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">stream</text>
+<polyline fill="none" stroke="#000000" points="0,-32.5 88.228,-32.5 "/>
+<text text-anchor="start" x="8" y="-19.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">connect()</text>
+<text text-anchor="start" x="8" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">accept()</text>
 </a>
 </g>
 </g>
 <!-- Stream&#45;&gt;SslSocket -->
 <g id="edge2" class="edge">
 <title>Stream-&gt;SslSocket</title>
-<path fill="none" stroke="#000000" d="M45.5,-161.6556C45.5,-153.3696 45.5,-144.6618 45.5,-136.0302"/>
-<polygon fill="#000000" stroke="#000000" points="42.0001,-161.8879 45.5,-171.888 49.0001,-161.888 42.0001,-161.8879"/>
+<path fill="none" stroke="#000000" d="M44.114,-155.0142C44.114,-146.4832 44.114,-137.4859 44.114,-128.6067"/>
+<polygon fill="#000000" stroke="#000000" points="40.6141,-155.1497 44.114,-165.1497 47.6141,-155.1497 40.6141,-155.1497"/>
 </g>
 </g>
 </svg></div>

@@ -2,23 +2,22 @@
 XmlElement 对象表示 XML 文档中的元素
 
 ## 继承关系
-<div class="inherits"><svg width="155pt" height="724pt" viewBox="0.00 0.00 155.00 724.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 720)">
+<div class="inherits"><svg width="156pt" height="711pt" viewBox="0.00 0.00 155.68 711.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 707)">
 <title>%0</title>
-<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-720 151,-720 151,4 -4,4"/>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-707 151.678,-707 151.678,4 -4,4"/>
 <!-- object -->
 <g id="node1" class="node">
 <title>object</title>
 <g id="a_node1"><a xlink:href="object.md" xlink:title="object">
-<polygon fill="#ffffff" stroke="transparent" points="45,-624 45,-716 102,-716 102,-624 45,-624"/>
-<polygon fill="none" stroke="#000000" points="45.5,-694 45.5,-716 102.5,-716 102.5,-694 45.5,-694"/>
-<text text-anchor="start" x="60.6625" y="-702" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
-<polygon fill="none" stroke="#000000" points="45.5,-624 45.5,-694 102.5,-694 102.5,-624 45.5,-624"/>
-<text text-anchor="start" x="50.5" y="-680" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> dispose()</text>
-<text text-anchor="start" x="50.5" y="-668" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> equals()</text>
-<text text-anchor="start" x="50.5" y="-656" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> toString()</text>
-<text text-anchor="start" x="50.5" y="-644" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> toJSON()</text>
-<text text-anchor="start" x="50.5" y="-632" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> valueOf()</text>
+<polygon fill="#ffffff" stroke="#000000" points="45.0075,-614.5 45.0075,-702.5 102.6705,-702.5 102.6705,-614.5 45.0075,-614.5"/>
+<text text-anchor="middle" x="73.839" y="-689.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
+<polyline fill="none" stroke="#000000" points="45.0075,-682.5 102.6705,-682.5 "/>
+<text text-anchor="start" x="53.0075" y="-669.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">dispose()</text>
+<text text-anchor="start" x="53.0075" y="-657.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">equals()</text>
+<text text-anchor="start" x="53.0075" y="-645.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toString()</text>
+<text text-anchor="start" x="53.0075" y="-633.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toJSON()</text>
+<text text-anchor="start" x="53.0075" y="-621.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">valueOf()</text>
 </a>
 </g>
 </g>
@@ -26,76 +25,74 @@ XmlElement 对象表示 XML 文档中的元素
 <g id="node2" class="node">
 <title>XmlNode</title>
 <g id="a_node2"><a xlink:href="XmlNode.md" xlink:title="XmlNode">
-<polygon fill="#ffffff" stroke="transparent" points="12.5,-306 12.5,-588 134.5,-588 134.5,-306 12.5,-306"/>
-<polygon fill="none" stroke="#000000" points="12.5,-566 12.5,-588 134.5,-588 134.5,-566 12.5,-566"/>
-<text text-anchor="start" x="52.9435" y="-574" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">XmlNode</text>
-<polygon fill="none" stroke="#000000" points="12.5,-436 12.5,-566 134.5,-566 134.5,-436 12.5,-436"/>
-<text text-anchor="start" x="17.5" y="-552" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> nodeType</text>
-<text text-anchor="start" x="17.5" y="-540" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> nodeName</text>
-<text text-anchor="start" x="17.5" y="-528" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> nodeValue</text>
-<text text-anchor="start" x="17.5" y="-516" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> ownerDocument</text>
-<text text-anchor="start" x="17.5" y="-504" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> parentNode</text>
-<text text-anchor="start" x="17.5" y="-492" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> childNodes</text>
-<text text-anchor="start" x="17.5" y="-480" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> firstChild</text>
-<text text-anchor="start" x="17.5" y="-468" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> lastChild</text>
-<text text-anchor="start" x="17.5" y="-456" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> previousSibling</text>
-<text text-anchor="start" x="17.5" y="-444" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> nextSibling</text>
-<polygon fill="none" stroke="#000000" points="12.5,-306 12.5,-436 134.5,-436 134.5,-306 12.5,-306"/>
-<text text-anchor="start" x="17.5" y="-422" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> hasChildNodes()</text>
-<text text-anchor="start" x="17.5" y="-410" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> normalize()</text>
-<text text-anchor="start" x="17.5" y="-398" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> cloneNode()</text>
-<text text-anchor="start" x="17.5" y="-386" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> lookupPrefix()</text>
-<text text-anchor="start" x="17.5" y="-374" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> lookupNamespaceURI()</text>
-<text text-anchor="start" x="17.5" y="-362" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> insertBefore()</text>
-<text text-anchor="start" x="17.5" y="-350" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> insertAfter()</text>
-<text text-anchor="start" x="17.5" y="-338" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> appendChild()</text>
-<text text-anchor="start" x="17.5" y="-326" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> replaceChild()</text>
-<text text-anchor="start" x="17.5" y="-314" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> removeChild()</text>
+<polygon fill="#ffffff" stroke="#000000" points="12.5025,-301.5 12.5025,-577.5 135.1755,-577.5 135.1755,-301.5 12.5025,-301.5"/>
+<text text-anchor="middle" x="73.839" y="-564.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">XmlNode</text>
+<polyline fill="none" stroke="#000000" points="12.5025,-557.5 135.1755,-557.5 "/>
+<text text-anchor="start" x="20.5025" y="-544.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">nodeType</text>
+<text text-anchor="start" x="20.5025" y="-532.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">nodeName</text>
+<text text-anchor="start" x="20.5025" y="-520.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">nodeValue</text>
+<text text-anchor="start" x="20.5025" y="-508.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">ownerDocument</text>
+<text text-anchor="start" x="20.5025" y="-496.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">parentNode</text>
+<text text-anchor="start" x="20.5025" y="-484.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">childNodes</text>
+<text text-anchor="start" x="20.5025" y="-472.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">firstChild</text>
+<text text-anchor="start" x="20.5025" y="-460.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">lastChild</text>
+<text text-anchor="start" x="20.5025" y="-448.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">previousSibling</text>
+<text text-anchor="start" x="20.5025" y="-436.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">nextSibling</text>
+<polyline fill="none" stroke="#000000" points="12.5025,-429.5 135.1755,-429.5 "/>
+<text text-anchor="start" x="20.5025" y="-416.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">hasChildNodes()</text>
+<text text-anchor="start" x="20.5025" y="-404.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">normalize()</text>
+<text text-anchor="start" x="20.5025" y="-392.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">cloneNode()</text>
+<text text-anchor="start" x="20.5025" y="-380.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">lookupPrefix()</text>
+<text text-anchor="start" x="20.5025" y="-368.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">lookupNamespaceURI()</text>
+<text text-anchor="start" x="20.5025" y="-356.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">insertBefore()</text>
+<text text-anchor="start" x="20.5025" y="-344.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">insertAfter()</text>
+<text text-anchor="start" x="20.5025" y="-332.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">appendChild()</text>
+<text text-anchor="start" x="20.5025" y="-320.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">replaceChild()</text>
+<text text-anchor="start" x="20.5025" y="-308.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">removeChild()</text>
 </a>
 </g>
 </g>
 <!-- object&#45;&gt;XmlNode -->
 <g id="edge1" class="edge">
 <title>object-&gt;XmlNode</title>
-<path fill="none" stroke="#000000" d="M73.5,-613.5484C73.5,-605.5161 73.5,-596.975 73.5,-588.1675"/>
-<polygon fill="#000000" stroke="#000000" points="70.0001,-613.7942 73.5,-623.7943 77.0001,-613.7943 70.0001,-613.7942"/>
+<path fill="none" stroke="#000000" d="M73.839,-604.1907C73.839,-595.8324 73.839,-586.8931 73.839,-577.6615"/>
+<polygon fill="#000000" stroke="#000000" points="70.3391,-604.4455 73.839,-614.4455 77.3391,-604.4456 70.3391,-604.4455"/>
 </g>
 <!-- XmlElement -->
 <g id="node3" class="node">
 <title>XmlElement</title>
 <g id="a_node3"><a xlink:title="XmlElement">
-<polygon fill="#d3d3d3" stroke="transparent" points="0,0 0,-270 147,-270 147,0 0,0"/>
-<polygon fill="none" stroke="#000000" points=".5,-248 .5,-270 147.5,-270 147.5,-248 .5,-248"/>
-<text text-anchor="start" x="47.055" y="-256" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">XmlElement</text>
-<polygon fill="none" stroke="#000000" points=".5,-130 .5,-248 147.5,-248 147.5,-130 .5,-130"/>
-<text text-anchor="start" x="5.5" y="-234" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> namespaceURI</text>
-<text text-anchor="start" x="5.5" y="-222" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> prefix</text>
-<text text-anchor="start" x="5.5" y="-210" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> localName</text>
-<text text-anchor="start" x="5.5" y="-198" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> tagName</text>
-<text text-anchor="start" x="5.5" y="-186" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> id</text>
-<text text-anchor="start" x="5.5" y="-174" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> textContent</text>
-<text text-anchor="start" x="5.5" y="-162" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> innerHTML</text>
-<text text-anchor="start" x="5.5" y="-150" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> className</text>
-<text text-anchor="start" x="5.5" y="-138" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> attributes</text>
-<polygon fill="none" stroke="#000000" points=".5,0 .5,-130 147.5,-130 147.5,0 .5,0"/>
-<text text-anchor="start" x="5.5" y="-116" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> getAttribute()</text>
-<text text-anchor="start" x="5.5" y="-104" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> getAttributeNS()</text>
-<text text-anchor="start" x="5.5" y="-92" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> setAttribute()</text>
-<text text-anchor="start" x="5.5" y="-80" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> setAttributeNS()</text>
-<text text-anchor="start" x="5.5" y="-68" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> removeAttribute()</text>
-<text text-anchor="start" x="5.5" y="-56" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> removeAttributeNS()</text>
-<text text-anchor="start" x="5.5" y="-44" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> hasAttribute()</text>
-<text text-anchor="start" x="5.5" y="-32" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> hasAttributeNS()</text>
-<text text-anchor="start" x="5.5" y="-20" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> getElementsByTagName()</text>
-<text text-anchor="start" x="5.5" y="-8" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> getElementsByTagNameNS()</text>
+<polygon fill="#d3d3d3" stroke="#000000" points="0,-.5 0,-264.5 147.678,-264.5 147.678,-.5 0,-.5"/>
+<text text-anchor="middle" x="73.839" y="-251.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">XmlElement</text>
+<polyline fill="none" stroke="#000000" points="0,-244.5 147.678,-244.5 "/>
+<text text-anchor="start" x="8" y="-231.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">namespaceURI</text>
+<text text-anchor="start" x="8" y="-219.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">prefix</text>
+<text text-anchor="start" x="8" y="-207.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">localName</text>
+<text text-anchor="start" x="8" y="-195.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">tagName</text>
+<text text-anchor="start" x="8" y="-183.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">id</text>
+<text text-anchor="start" x="8" y="-171.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">textContent</text>
+<text text-anchor="start" x="8" y="-159.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">innerHTML</text>
+<text text-anchor="start" x="8" y="-147.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">className</text>
+<text text-anchor="start" x="8" y="-135.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">attributes</text>
+<polyline fill="none" stroke="#000000" points="0,-128.5 147.678,-128.5 "/>
+<text text-anchor="start" x="8" y="-115.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">getAttribute()</text>
+<text text-anchor="start" x="8" y="-103.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">getAttributeNS()</text>
+<text text-anchor="start" x="8" y="-91.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">setAttribute()</text>
+<text text-anchor="start" x="8" y="-79.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">setAttributeNS()</text>
+<text text-anchor="start" x="8" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">removeAttribute()</text>
+<text text-anchor="start" x="8" y="-55.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">removeAttributeNS()</text>
+<text text-anchor="start" x="8" y="-43.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">hasAttribute()</text>
+<text text-anchor="start" x="8" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">hasAttributeNS()</text>
+<text text-anchor="start" x="8" y="-19.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">getElementsByTagName()</text>
+<text text-anchor="start" x="8" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">getElementsByTagNameNS()</text>
 </a>
 </g>
 </g>
 <!-- XmlNode&#45;&gt;XmlElement -->
 <g id="edge2" class="edge">
 <title>XmlNode-&gt;XmlElement</title>
-<path fill="none" stroke="#000000" d="M73.5,-295.3777C73.5,-286.98 73.5,-278.5655 73.5,-270.2315"/>
-<polygon fill="#000000" stroke="#000000" points="70.0001,-295.6059 73.5,-305.606 77.0001,-295.606 70.0001,-295.6059"/>
+<path fill="none" stroke="#000000" d="M73.839,-291.0384C73.839,-282.3104 73.839,-273.5607 73.839,-264.9022"/>
+<polygon fill="#000000" stroke="#000000" points="70.3391,-291.2675 73.839,-301.2676 77.3391,-291.2676 70.3391,-291.2675"/>
 </g>
 </g>
 </svg></div>

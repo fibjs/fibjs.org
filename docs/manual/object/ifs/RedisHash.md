@@ -10,23 +10,22 @@ var hash = rdb.getHash("test");
 ```
 
 ## 继承关系
-<div class="inherits"><svg width="66pt" height="300pt" viewBox="0.00 0.00 66.00 300.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 296)">
+<div class="inherits"><svg width="73pt" height="294pt" viewBox="0.00 0.00 72.89 294.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 290)">
 <title>%0</title>
-<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-296 62,-296 62,4 -4,4"/>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-290 68.893,-290 68.893,4 -4,4"/>
 <!-- object -->
 <g id="node1" class="node">
 <title>object</title>
 <g id="a_node1"><a xlink:href="object.md" xlink:title="object">
-<polygon fill="#ffffff" stroke="transparent" points=".5,-200 .5,-292 57.5,-292 57.5,-200 .5,-200"/>
-<polygon fill="none" stroke="#000000" points="1,-270 1,-292 58,-292 58,-270 1,-270"/>
-<text text-anchor="start" x="16.1625" y="-278" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
-<polygon fill="none" stroke="#000000" points="1,-200 1,-270 58,-270 58,-200 1,-200"/>
-<text text-anchor="start" x="6" y="-256" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> dispose()</text>
-<text text-anchor="start" x="6" y="-244" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> equals()</text>
-<text text-anchor="start" x="6" y="-232" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> toString()</text>
-<text text-anchor="start" x="6" y="-220" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> toJSON()</text>
-<text text-anchor="start" x="6" y="-208" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> valueOf()</text>
+<polygon fill="#ffffff" stroke="#000000" points="3.615,-197.5 3.615,-285.5 61.278,-285.5 61.278,-197.5 3.615,-197.5"/>
+<text text-anchor="middle" x="32.4465" y="-272.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
+<polyline fill="none" stroke="#000000" points="3.615,-265.5 61.278,-265.5 "/>
+<text text-anchor="start" x="11.615" y="-252.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">dispose()</text>
+<text text-anchor="start" x="11.615" y="-240.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">equals()</text>
+<text text-anchor="start" x="11.615" y="-228.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toString()</text>
+<text text-anchor="start" x="11.615" y="-216.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toJSON()</text>
+<text text-anchor="start" x="11.615" y="-204.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">valueOf()</text>
 </a>
 </g>
 </g>
@@ -34,29 +33,28 @@ var hash = rdb.getHash("test");
 <g id="node2" class="node">
 <title>RedisHash</title>
 <g id="a_node2"><a xlink:title="RedisHash">
-<polygon fill="#d3d3d3" stroke="transparent" points="0,0 0,-164 58,-164 58,0 0,0"/>
-<polygon fill="none" stroke="#000000" points="0,-142 0,-164 58,-164 58,-142 0,-142"/>
-<text text-anchor="start" x="4.5535" y="-150" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">RedisHash</text>
-<polygon fill="none" stroke="#000000" points="0,0 0,-142 58,-142 58,0 0,0"/>
-<text text-anchor="start" x="5" y="-128" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> set()</text>
-<text text-anchor="start" x="5" y="-116" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> setNX()</text>
-<text text-anchor="start" x="5" y="-104" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> mset()</text>
-<text text-anchor="start" x="5" y="-92" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> get()</text>
-<text text-anchor="start" x="5" y="-80" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> mget()</text>
-<text text-anchor="start" x="5" y="-68" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> incr()</text>
-<text text-anchor="start" x="5" y="-56" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> getAll()</text>
-<text text-anchor="start" x="5" y="-44" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> keys()</text>
-<text text-anchor="start" x="5" y="-32" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> len()</text>
-<text text-anchor="start" x="5" y="-20" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> exists()</text>
-<text text-anchor="start" x="5" y="-8" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> del()</text>
+<polygon fill="#d3d3d3" stroke="#000000" points="0,-.5 0,-160.5 64.893,-160.5 64.893,-.5 0,-.5"/>
+<text text-anchor="middle" x="32.4465" y="-147.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">RedisHash</text>
+<polyline fill="none" stroke="#000000" points="0,-140.5 64.893,-140.5 "/>
+<text text-anchor="start" x="8" y="-127.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">set()</text>
+<text text-anchor="start" x="8" y="-115.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">setNX()</text>
+<text text-anchor="start" x="8" y="-103.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">mset()</text>
+<text text-anchor="start" x="8" y="-91.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">get()</text>
+<text text-anchor="start" x="8" y="-79.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">mget()</text>
+<text text-anchor="start" x="8" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">incr()</text>
+<text text-anchor="start" x="8" y="-55.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">getAll()</text>
+<text text-anchor="start" x="8" y="-43.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">keys()</text>
+<text text-anchor="start" x="8" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">len()</text>
+<text text-anchor="start" x="8" y="-19.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">exists()</text>
+<text text-anchor="start" x="8" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">del()</text>
 </a>
 </g>
 </g>
 <!-- object&#45;&gt;RedisHash -->
 <g id="edge1" class="edge">
 <title>object-&gt;RedisHash</title>
-<path fill="none" stroke="#000000" d="M29,-189.6597C29,-181.4049 29,-172.7644 29,-164.122"/>
-<polygon fill="#000000" stroke="#000000" points="25.5001,-189.8804 29,-199.8804 32.5001,-189.8805 25.5001,-189.8804"/>
+<path fill="none" stroke="#000000" d="M32.4465,-186.9594C32.4465,-178.4626 32.4465,-169.5338 32.4465,-160.6112"/>
+<polygon fill="#000000" stroke="#000000" points="28.9466,-187.0798 32.4465,-197.0799 35.9466,-187.0799 28.9466,-187.0798"/>
 </g>
 </g>
 </svg></div>

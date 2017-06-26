@@ -17,23 +17,22 @@ new net.TcpServer(8080, func).run();
 ```
 
 ## 继承关系
-<div class="inherits"><svg width="214pt" height="558pt" viewBox="0.00 0.00 214.00 558.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 554)">
+<div class="inherits"><svg width="212pt" height="536pt" viewBox="0.00 0.00 212.23 536.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 532)">
 <title>%0</title>
-<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-554 210,-554 210,4 -4,4"/>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-532 208.227,-532 208.227,4 -4,4"/>
 <!-- object -->
 <g id="node1" class="node">
 <title>object</title>
 <g id="a_node1"><a xlink:href="object.md" xlink:title="object">
-<polygon fill="#ffffff" stroke="transparent" points="77,-458 77,-550 134,-550 134,-458 77,-458"/>
-<polygon fill="none" stroke="#000000" points="77.5,-528 77.5,-550 134.5,-550 134.5,-528 77.5,-528"/>
-<text text-anchor="start" x="92.6625" y="-536" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
-<polygon fill="none" stroke="#000000" points="77.5,-458 77.5,-528 134.5,-528 134.5,-458 77.5,-458"/>
-<text text-anchor="start" x="82.5" y="-514" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> dispose()</text>
-<text text-anchor="start" x="82.5" y="-502" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> equals()</text>
-<text text-anchor="start" x="82.5" y="-490" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> toString()</text>
-<text text-anchor="start" x="82.5" y="-478" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> toJSON()</text>
-<text text-anchor="start" x="82.5" y="-466" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> valueOf()</text>
+<polygon fill="#ffffff" stroke="#000000" points="75.842,-439.5 75.842,-527.5 133.505,-527.5 133.505,-439.5 75.842,-439.5"/>
+<text text-anchor="middle" x="104.6735" y="-514.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
+<polyline fill="none" stroke="#000000" points="75.842,-507.5 133.505,-507.5 "/>
+<text text-anchor="start" x="83.842" y="-494.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">dispose()</text>
+<text text-anchor="start" x="83.842" y="-482.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">equals()</text>
+<text text-anchor="start" x="83.842" y="-470.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toString()</text>
+<text text-anchor="start" x="83.842" y="-458.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toJSON()</text>
+<text text-anchor="start" x="83.842" y="-446.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">valueOf()</text>
 </a>
 </g>
 </g>
@@ -41,95 +40,91 @@ new net.TcpServer(8080, func).run();
 <g id="node2" class="node">
 <title>TcpServer</title>
 <g id="a_node2"><a xlink:title="TcpServer">
-<polygon fill="#d3d3d3" stroke="transparent" points="59.5,-286 59.5,-422 151.5,-422 151.5,-286 59.5,-286"/>
-<polygon fill="none" stroke="#000000" points="59.5,-400 59.5,-422 151.5,-422 151.5,-400 59.5,-400"/>
-<text text-anchor="start" x="82.4435" y="-408" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">TcpServer</text>
-<polygon fill="none" stroke="#000000" points="59.5,-378 59.5,-400 151.5,-400 151.5,-378 59.5,-378"/>
-<text text-anchor="start" x="64.5" y="-386" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">  new TcpServer()</text>
-<polygon fill="none" stroke="#000000" points="59.5,-332 59.5,-378 151.5,-378 151.5,-332 59.5,-332"/>
-<text text-anchor="start" x="64.5" y="-364" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> socket</text>
-<text text-anchor="start" x="64.5" y="-352" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> handler</text>
-<text text-anchor="start" x="64.5" y="-340" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> stats</text>
-<polygon fill="none" stroke="#000000" points="59.5,-286 59.5,-332 151.5,-332 151.5,-286 59.5,-286"/>
-<text text-anchor="start" x="64.5" y="-318" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> run()</text>
-<text text-anchor="start" x="64.5" y="-306" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> asyncRun()</text>
-<text text-anchor="start" x="64.5" y="-294" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> stop()</text>
+<polygon fill="#d3d3d3" stroke="#000000" points="59.73,-274.5 59.73,-402.5 149.617,-402.5 149.617,-274.5 59.73,-274.5"/>
+<text text-anchor="middle" x="104.6735" y="-389.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">TcpServer</text>
+<polyline fill="none" stroke="#000000" points="59.73,-382.5 149.617,-382.5 "/>
+<text text-anchor="start" x="67.73" y="-369.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">new TcpServer()</text>
+<polyline fill="none" stroke="#000000" points="59.73,-362.5 149.617,-362.5 "/>
+<text text-anchor="start" x="67.73" y="-349.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">socket</text>
+<text text-anchor="start" x="67.73" y="-337.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">handler</text>
+<text text-anchor="start" x="67.73" y="-325.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">stats</text>
+<polyline fill="none" stroke="#000000" points="59.73,-318.5 149.617,-318.5 "/>
+<text text-anchor="start" x="67.73" y="-305.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">run()</text>
+<text text-anchor="start" x="67.73" y="-293.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">asyncRun()</text>
+<text text-anchor="start" x="67.73" y="-281.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">stop()</text>
 </a>
 </g>
 </g>
 <!-- object&#45;&gt;TcpServer -->
 <g id="edge1" class="edge">
 <title>object-&gt;TcpServer</title>
-<path fill="none" stroke="#000000" d="M105.5,-447.7662C105.5,-439.4038 105.5,-430.7087 105.5,-422.1344"/>
-<polygon fill="#000000" stroke="#000000" points="102.0001,-447.7711 105.5,-457.7711 109.0001,-447.7711 102.0001,-447.7711"/>
+<path fill="none" stroke="#000000" d="M104.6735,-429.2025C104.6735,-420.5059 104.6735,-411.4356 104.6735,-402.5377"/>
+<polygon fill="#000000" stroke="#000000" points="101.1736,-429.2073 104.6735,-439.2073 108.1736,-429.2074 101.1736,-429.2073"/>
 </g>
 <!-- HttpServer -->
 <g id="node3" class="node">
 <title>HttpServer</title>
 <g id="a_node3"><a xlink:href="HttpServer.md" xlink:title="HttpServer">
-<polygon fill="#ffffff" stroke="transparent" points="0,-114 0,-250 99,-250 99,-114 0,-114"/>
-<polygon fill="none" stroke="#000000" points=".5,-228 .5,-250 99.5,-250 99.5,-228 .5,-228"/>
-<text text-anchor="start" x="26.1095" y="-236" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">HttpServer</text>
-<polygon fill="none" stroke="#000000" points=".5,-206 .5,-228 99.5,-228 99.5,-206 .5,-206"/>
-<text text-anchor="start" x="5.5" y="-214" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">  new HttpServer()</text>
-<polygon fill="none" stroke="#000000" points=".5,-136 .5,-206 99.5,-206 99.5,-136 .5,-136"/>
-<text text-anchor="start" x="5.5" y="-192" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> crossDomain</text>
-<text text-anchor="start" x="5.5" y="-180" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> forceGZIP</text>
-<text text-anchor="start" x="5.5" y="-168" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> maxHeadersCount</text>
-<text text-anchor="start" x="5.5" y="-156" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> maxUploadSize</text>
-<text text-anchor="start" x="5.5" y="-144" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> httpStats</text>
-<polygon fill="none" stroke="#000000" points=".5,-114 .5,-136 99.5,-136 99.5,-114 .5,-114"/>
-<text text-anchor="start" x="5.5" y="-122" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> onerror()</text>
+<polygon fill="#ffffff" stroke="#000000" points="0,-109.5 0,-237.5 99.347,-237.5 99.347,-109.5 0,-109.5"/>
+<text text-anchor="middle" x="49.6735" y="-224.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">HttpServer</text>
+<polyline fill="none" stroke="#000000" points="0,-217.5 99.347,-217.5 "/>
+<text text-anchor="start" x="8" y="-204.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">new HttpServer()</text>
+<polyline fill="none" stroke="#000000" points="0,-197.5 99.347,-197.5 "/>
+<text text-anchor="start" x="8" y="-184.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">crossDomain</text>
+<text text-anchor="start" x="8" y="-172.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">forceGZIP</text>
+<text text-anchor="start" x="8" y="-160.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">maxHeadersCount</text>
+<text text-anchor="start" x="8" y="-148.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">maxUploadSize</text>
+<text text-anchor="start" x="8" y="-136.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">httpStats</text>
+<polyline fill="none" stroke="#000000" points="0,-129.5 99.347,-129.5 "/>
+<text text-anchor="start" x="8" y="-116.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">onerror()</text>
 </a>
 </g>
 </g>
 <!-- TcpServer&#45;&gt;HttpServer -->
 <g id="edge2" class="edge">
 <title>TcpServer-&gt;HttpServer</title>
-<path fill="none" stroke="#000000" d="M80.0773,-275.916C77.2876,-267.3475 74.4634,-258.6733 71.7169,-250.2376"/>
-<polygon fill="#000000" stroke="#000000" points="76.7824,-277.1017 83.2064,-285.5268 83.4385,-274.9345 76.7824,-277.1017"/>
+<path fill="none" stroke="#000000" d="M80.0232,-264.5492C77.0253,-255.5554 73.9817,-246.4245 71.037,-237.5904"/>
+<polygon fill="#000000" stroke="#000000" points="76.7688,-265.8542 83.2516,-274.2342 83.4096,-263.6406 76.7688,-265.8542"/>
 </g>
 <!-- SslServer -->
 <g id="node5" class="node">
 <title>SslServer</title>
 <g id="a_node5"><a xlink:href="SslServer.md" xlink:title="SslServer">
-<polygon fill="#ffffff" stroke="transparent" points="117,-143 117,-221 206,-221 206,-143 117,-143"/>
-<polygon fill="none" stroke="#000000" points="117.5,-199 117.5,-221 206.5,-221 206.5,-199 117.5,-199"/>
-<text text-anchor="start" x="140.3335" y="-207" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">SslServer</text>
-<polygon fill="none" stroke="#000000" points="117.5,-177 117.5,-199 206.5,-199 206.5,-177 117.5,-177"/>
-<text text-anchor="start" x="122.5" y="-185" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">  new SslServer()</text>
-<polygon fill="none" stroke="#000000" points="117.5,-143 117.5,-177 206.5,-177 206.5,-143 117.5,-143"/>
-<text text-anchor="start" x="122.5" y="-163" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> verification</text>
-<text text-anchor="start" x="122.5" y="-151" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> ca</text>
+<polygon fill="#ffffff" stroke="#000000" points="117.12,-137.5 117.12,-209.5 204.227,-209.5 204.227,-137.5 117.12,-137.5"/>
+<text text-anchor="middle" x="160.6735" y="-196.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">SslServer</text>
+<polyline fill="none" stroke="#000000" points="117.12,-189.5 204.227,-189.5 "/>
+<text text-anchor="start" x="125.12" y="-176.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">new SslServer()</text>
+<polyline fill="none" stroke="#000000" points="117.12,-169.5 204.227,-169.5 "/>
+<text text-anchor="start" x="125.12" y="-156.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">verification</text>
+<text text-anchor="start" x="125.12" y="-144.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">ca</text>
 </a>
 </g>
 </g>
 <!-- TcpServer&#45;&gt;SslServer -->
 <g id="edge4" class="edge">
 <title>TcpServer-&gt;SslServer</title>
-<path fill="none" stroke="#000000" d="M130.9147,-275.9405C137.1131,-256.9026 143.4819,-237.3413 148.7922,-221.0311"/>
-<polygon fill="#000000" stroke="#000000" points="127.5615,-274.9345 127.7936,-285.5268 134.2176,-277.1017 127.5615,-274.9345"/>
+<path fill="none" stroke="#000000" d="M129.739,-264.6463C136.2082,-245.5852 142.8887,-225.9016 148.3787,-209.7259"/>
+<polygon fill="#000000" stroke="#000000" points="126.3845,-263.6399 126.4849,-274.2342 133.0132,-265.8896 126.3845,-263.6399"/>
 </g>
 <!-- HttpsServer -->
 <g id="node4" class="node">
 <title>HttpsServer</title>
 <g id="a_node4"><a xlink:href="HttpsServer.md" xlink:title="HttpsServer">
-<polygon fill="#ffffff" stroke="transparent" points="0,0 0,-78 99,-78 99,0 0,0"/>
-<polygon fill="none" stroke="#000000" points=".5,-56 .5,-78 99.5,-78 99.5,-56 .5,-56"/>
-<text text-anchor="start" x="23.6095" y="-64" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">HttpsServer</text>
-<polygon fill="none" stroke="#000000" points=".5,-34 .5,-56 99.5,-56 99.5,-34 .5,-34"/>
-<text text-anchor="start" x="5.5" y="-42" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">  new HttpsServer()</text>
-<polygon fill="none" stroke="#000000" points=".5,0 .5,-34 99.5,-34 99.5,0 .5,0"/>
-<text text-anchor="start" x="5.5" y="-20" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> verification</text>
-<text text-anchor="start" x="5.5" y="-8" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> ca</text>
+<polygon fill="#ffffff" stroke="#000000" points="1.396,-.5 1.396,-72.5 97.951,-72.5 97.951,-.5 1.396,-.5"/>
+<text text-anchor="middle" x="49.6735" y="-59.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">HttpsServer</text>
+<polyline fill="none" stroke="#000000" points="1.396,-52.5 97.951,-52.5 "/>
+<text text-anchor="start" x="9.396" y="-39.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">new HttpsServer()</text>
+<polyline fill="none" stroke="#000000" points="1.396,-32.5 97.951,-32.5 "/>
+<text text-anchor="start" x="9.396" y="-19.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">verification</text>
+<text text-anchor="start" x="9.396" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">ca</text>
 </a>
 </g>
 </g>
 <!-- HttpServer&#45;&gt;HttpsServer -->
 <g id="edge3" class="edge">
 <title>HttpServer-&gt;HttpsServer</title>
-<path fill="none" stroke="#000000" d="M49.5,-103.8187C49.5,-94.9595 49.5,-86.2382 49.5,-78.2054"/>
-<polygon fill="#000000" stroke="#000000" points="46.0001,-103.8504 49.5,-113.8505 53.0001,-103.8505 46.0001,-103.8504"/>
+<path fill="none" stroke="#000000" d="M49.6735,-99.3022C49.6735,-90.0059 49.6735,-80.8505 49.6735,-72.5273"/>
+<polygon fill="#000000" stroke="#000000" points="46.1736,-99.4123 49.6735,-109.4123 53.1736,-99.4124 46.1736,-99.4123"/>
 </g>
 </g>
 </svg></div>

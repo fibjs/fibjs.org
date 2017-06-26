@@ -2,23 +2,22 @@
 [http](../../module/ifs/http.md) 基础消息对象
 
 ## 继承关系
-<div class="inherits"><svg width="238pt" height="834pt" viewBox="0.00 0.00 238.00 834.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 830)">
+<div class="inherits"><svg width="232pt" height="812pt" viewBox="0.00 0.00 232.23 812.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 808)">
 <title>%0</title>
-<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-830 234,-830 234,4 -4,4"/>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-808 228.234,-808 228.234,4 -4,4"/>
 <!-- object -->
 <g id="node1" class="node">
 <title>object</title>
 <g id="a_node1"><a xlink:href="object.md" xlink:title="object">
-<polygon fill="#ffffff" stroke="transparent" points="84.5,-734 84.5,-826 141.5,-826 141.5,-734 84.5,-734"/>
-<polygon fill="none" stroke="#000000" points="85,-804 85,-826 142,-826 142,-804 85,-804"/>
-<text text-anchor="start" x="100.1625" y="-812" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
-<polygon fill="none" stroke="#000000" points="85,-734 85,-804 142,-804 142,-734 85,-734"/>
-<text text-anchor="start" x="90" y="-790" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> dispose()</text>
-<text text-anchor="start" x="90" y="-778" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> equals()</text>
-<text text-anchor="start" x="90" y="-766" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> toString()</text>
-<text text-anchor="start" x="90" y="-754" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> toJSON()</text>
-<text text-anchor="start" x="90" y="-742" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> valueOf()</text>
+<polygon fill="#ffffff" stroke="#000000" points="80.8405,-715.5 80.8405,-803.5 138.5035,-803.5 138.5035,-715.5 80.8405,-715.5"/>
+<text text-anchor="middle" x="109.672" y="-790.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
+<polyline fill="none" stroke="#000000" points="80.8405,-783.5 138.5035,-783.5 "/>
+<text text-anchor="start" x="88.8405" y="-770.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">dispose()</text>
+<text text-anchor="start" x="88.8405" y="-758.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">equals()</text>
+<text text-anchor="start" x="88.8405" y="-746.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toString()</text>
+<text text-anchor="start" x="88.8405" y="-734.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toJSON()</text>
+<text text-anchor="start" x="88.8405" y="-722.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">valueOf()</text>
 </a>
 </g>
 </g>
@@ -26,122 +25,118 @@
 <g id="node2" class="node">
 <title>Message</title>
 <g id="a_node2"><a xlink:href="Message.md" xlink:title="Message">
-<polygon fill="#ffffff" stroke="transparent" points="69.5,-396 69.5,-698 156.5,-698 156.5,-396 69.5,-396"/>
-<polygon fill="none" stroke="#000000" points="70,-676 70,-698 157,-698 157,-676 70,-676"/>
-<text text-anchor="start" x="93.2175" y="-684" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Message</text>
-<polygon fill="none" stroke="#000000" points="70,-654 70,-676 157,-676 157,-654 70,-654"/>
-<text text-anchor="start" x="75" y="-662" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">  new Message()</text>
-<polygon fill="none" stroke="#000000" points="70,-620 70,-654 157,-654 157,-620 70,-620"/>
-<text text-anchor="start" x="75" y="-640" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> TEXT</text>
-<text text-anchor="start" x="75" y="-628" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> BINARY</text>
-<polygon fill="none" stroke="#000000" points="70,-502 70,-620 157,-620 157,-502 70,-502"/>
-<text text-anchor="start" x="75" y="-606" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> value</text>
-<text text-anchor="start" x="75" y="-594" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> params</text>
-<text text-anchor="start" x="75" y="-582" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> type</text>
-<text text-anchor="start" x="75" y="-570" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> data</text>
-<text text-anchor="start" x="75" y="-558" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> body</text>
-<text text-anchor="start" x="75" y="-546" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> length</text>
-<text text-anchor="start" x="75" y="-534" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> stream</text>
-<text text-anchor="start" x="75" y="-522" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> response</text>
-<text text-anchor="start" x="75" y="-510" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> lastError</text>
-<polygon fill="none" stroke="#000000" points="70,-396 70,-502 157,-502 157,-396 70,-396"/>
-<text text-anchor="start" x="75" y="-488" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> read()</text>
-<text text-anchor="start" x="75" y="-476" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> readAll()</text>
-<text text-anchor="start" x="75" y="-464" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> write()</text>
-<text text-anchor="start" x="75" y="-452" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> end()</text>
-<text text-anchor="start" x="75" y="-440" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> isEnded()</text>
-<text text-anchor="start" x="75" y="-428" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> clear()</text>
-<text text-anchor="start" x="75" y="-416" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> sendTo()</text>
-<text text-anchor="start" x="75" y="-404" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> readFrom()</text>
+<polygon fill="#ffffff" stroke="#000000" points="67.5025,-386.5 67.5025,-678.5 151.8415,-678.5 151.8415,-386.5 67.5025,-386.5"/>
+<text text-anchor="middle" x="109.672" y="-665.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Message</text>
+<polyline fill="none" stroke="#000000" points="67.5025,-658.5 151.8415,-658.5 "/>
+<text text-anchor="start" x="75.5025" y="-645.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">new Message()</text>
+<polyline fill="none" stroke="#000000" points="67.5025,-638.5 151.8415,-638.5 "/>
+<text text-anchor="start" x="75.5025" y="-625.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">TEXT</text>
+<text text-anchor="start" x="75.5025" y="-613.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">BINARY</text>
+<polyline fill="none" stroke="#000000" points="67.5025,-606.5 151.8415,-606.5 "/>
+<text text-anchor="start" x="75.5025" y="-593.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">value</text>
+<text text-anchor="start" x="75.5025" y="-581.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">params</text>
+<text text-anchor="start" x="75.5025" y="-569.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">type</text>
+<text text-anchor="start" x="75.5025" y="-557.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">data</text>
+<text text-anchor="start" x="75.5025" y="-545.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">body</text>
+<text text-anchor="start" x="75.5025" y="-533.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">length</text>
+<text text-anchor="start" x="75.5025" y="-521.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">stream</text>
+<text text-anchor="start" x="75.5025" y="-509.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">response</text>
+<text text-anchor="start" x="75.5025" y="-497.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">lastError</text>
+<polyline fill="none" stroke="#000000" points="67.5025,-490.5 151.8415,-490.5 "/>
+<text text-anchor="start" x="75.5025" y="-477.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">read()</text>
+<text text-anchor="start" x="75.5025" y="-465.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readAll()</text>
+<text text-anchor="start" x="75.5025" y="-453.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">write()</text>
+<text text-anchor="start" x="75.5025" y="-441.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">end()</text>
+<text text-anchor="start" x="75.5025" y="-429.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">isEnded()</text>
+<text text-anchor="start" x="75.5025" y="-417.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">clear()</text>
+<text text-anchor="start" x="75.5025" y="-405.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">sendTo()</text>
+<text text-anchor="start" x="75.5025" y="-393.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readFrom()</text>
 </a>
 </g>
 </g>
 <!-- object&#45;&gt;Message -->
 <g id="edge1" class="edge">
 <title>object-&gt;Message</title>
-<path fill="none" stroke="#000000" d="M113,-723.9524C113,-715.8013 113,-707.104 113,-698.1038"/>
-<polygon fill="#000000" stroke="#000000" points="109.5001,-723.9667 113,-733.9667 116.5001,-723.9667 109.5001,-723.9667"/>
+<path fill="none" stroke="#000000" d="M109.672,-705.2285C109.672,-696.8815 109.672,-687.9408 109.672,-678.6829"/>
+<polygon fill="#000000" stroke="#000000" points="106.1721,-705.4629 109.672,-715.463 113.1721,-705.463 106.1721,-705.4629"/>
 </g>
 <!-- HttpMessage -->
 <g id="node3" class="node">
 <title>HttpMessage</title>
 <g id="a_node3"><a xlink:title="HttpMessage">
-<polygon fill="#d3d3d3" stroke="transparent" points="63.5,-162 63.5,-360 162.5,-360 162.5,-162 63.5,-162"/>
-<polygon fill="none" stroke="#000000" points="64,-338 64,-360 163,-360 163,-338 64,-338"/>
-<text text-anchor="start" x="84.0495" y="-346" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">HttpMessage</text>
-<polygon fill="none" stroke="#000000" points="64,-244 64,-338 163,-338 163,-244 64,-244"/>
-<text text-anchor="start" x="69" y="-324" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> protocol</text>
-<text text-anchor="start" x="69" y="-312" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> headers</text>
-<text text-anchor="start" x="69" y="-300" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> keepAlive</text>
-<text text-anchor="start" x="69" y="-288" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> upgrade</text>
-<text text-anchor="start" x="69" y="-276" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> maxHeadersCount</text>
-<text text-anchor="start" x="69" y="-264" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> maxUploadSize</text>
-<text text-anchor="start" x="69" y="-252" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> socket</text>
-<polygon fill="none" stroke="#000000" points="64,-162 64,-244 163,-244 163,-162 64,-162"/>
-<text text-anchor="start" x="69" y="-230" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> hasHeader()</text>
-<text text-anchor="start" x="69" y="-218" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> firstHeader()</text>
-<text text-anchor="start" x="69" y="-206" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> allHeader()</text>
-<text text-anchor="start" x="69" y="-194" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> addHeader()</text>
-<text text-anchor="start" x="69" y="-182" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> setHeader()</text>
-<text text-anchor="start" x="69" y="-170" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> removeHeader()</text>
+<polygon fill="#d3d3d3" stroke="#000000" points="59.9985,-157.5 59.9985,-349.5 159.3455,-349.5 159.3455,-157.5 59.9985,-157.5"/>
+<text text-anchor="middle" x="109.672" y="-336.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">HttpMessage</text>
+<polyline fill="none" stroke="#000000" points="59.9985,-329.5 159.3455,-329.5 "/>
+<text text-anchor="start" x="67.9985" y="-316.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">protocol</text>
+<text text-anchor="start" x="67.9985" y="-304.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">headers</text>
+<text text-anchor="start" x="67.9985" y="-292.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">keepAlive</text>
+<text text-anchor="start" x="67.9985" y="-280.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">upgrade</text>
+<text text-anchor="start" x="67.9985" y="-268.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">maxHeadersCount</text>
+<text text-anchor="start" x="67.9985" y="-256.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">maxUploadSize</text>
+<text text-anchor="start" x="67.9985" y="-244.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">socket</text>
+<polyline fill="none" stroke="#000000" points="59.9985,-237.5 159.3455,-237.5 "/>
+<text text-anchor="start" x="67.9985" y="-224.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">hasHeader()</text>
+<text text-anchor="start" x="67.9985" y="-212.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">firstHeader()</text>
+<text text-anchor="start" x="67.9985" y="-200.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">allHeader()</text>
+<text text-anchor="start" x="67.9985" y="-188.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">addHeader()</text>
+<text text-anchor="start" x="67.9985" y="-176.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">setHeader()</text>
+<text text-anchor="start" x="67.9985" y="-164.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">removeHeader()</text>
 </a>
 </g>
 </g>
 <!-- Message&#45;&gt;HttpMessage -->
 <g id="edge2" class="edge">
 <title>Message-&gt;HttpMessage</title>
-<path fill="none" stroke="#000000" d="M113,-385.4772C113,-376.8616 113,-368.3372 113,-360.0321"/>
-<polygon fill="#000000" stroke="#000000" points="109.5001,-385.6253 113,-395.6254 116.5001,-385.6254 109.5001,-385.6253"/>
+<path fill="none" stroke="#000000" d="M109.672,-376.2126C109.672,-367.1622 109.672,-358.2075 109.672,-349.5038"/>
+<polygon fill="#000000" stroke="#000000" points="106.1721,-376.463 109.672,-386.4631 113.1721,-376.4631 106.1721,-376.463"/>
 </g>
 <!-- HttpRequest -->
 <g id="node4" class="node">
 <title>HttpRequest</title>
 <g id="a_node4"><a xlink:href="HttpRequest.md" xlink:title="HttpRequest">
-<polygon fill="#ffffff" stroke="transparent" points="0,0 0,-126 102,-126 102,0 0,0"/>
-<polygon fill="none" stroke="#000000" points="0,-104 0,-126 102,-126 102,-104 0,-104"/>
-<text text-anchor="start" x="23.215" y="-112" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">HttpRequest</text>
-<polygon fill="none" stroke="#000000" points="0,-82 0,-104 102,-104 102,-82 0,-82"/>
-<text text-anchor="start" x="5" y="-90" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">  new HttpRequest()</text>
-<polygon fill="none" stroke="#000000" points="0,0 0,-82 102,-82 102,0 0,0"/>
-<text text-anchor="start" x="5" y="-68" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> method</text>
-<text text-anchor="start" x="5" y="-56" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> address</text>
-<text text-anchor="start" x="5" y="-44" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> queryString</text>
-<text text-anchor="start" x="5" y="-32" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> cookies</text>
-<text text-anchor="start" x="5" y="-20" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> form</text>
-<text text-anchor="start" x="5" y="-8" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> query</text>
+<polygon fill="#ffffff" stroke="#000000" points="0,-.5 0,-120.5 99.344,-120.5 99.344,-.5 0,-.5"/>
+<text text-anchor="middle" x="49.672" y="-107.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">HttpRequest</text>
+<polyline fill="none" stroke="#000000" points="0,-100.5 99.344,-100.5 "/>
+<text text-anchor="start" x="8" y="-87.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">new HttpRequest()</text>
+<polyline fill="none" stroke="#000000" points="0,-80.5 99.344,-80.5 "/>
+<text text-anchor="start" x="8" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">method</text>
+<text text-anchor="start" x="8" y="-55.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">address</text>
+<text text-anchor="start" x="8" y="-43.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">queryString</text>
+<text text-anchor="start" x="8" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">cookies</text>
+<text text-anchor="start" x="8" y="-19.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">form</text>
+<text text-anchor="start" x="8" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">query</text>
 </a>
 </g>
 </g>
 <!-- HttpMessage&#45;&gt;HttpRequest -->
 <g id="edge3" class="edge">
 <title>HttpMessage-&gt;HttpRequest</title>
-<path fill="none" stroke="#000000" d="M78.9041,-152.1132C76.1429,-143.2951 73.4147,-134.5826 70.8085,-126.2594"/>
-<polygon fill="#000000" stroke="#000000" points="75.5808,-153.2128 81.9092,-161.71 82.261,-151.121 75.5808,-153.2128"/>
+<path fill="none" stroke="#000000" d="M76.7671,-147.6558C73.9033,-138.444 71.0752,-129.3469 68.3884,-120.7044"/>
+<polygon fill="#000000" stroke="#000000" points="73.4489,-148.7726 79.7599,-157.2827 80.1334,-146.6945 73.4489,-148.7726"/>
 </g>
 <!-- HttpResponse -->
 <g id="node5" class="node">
 <title>HttpResponse</title>
 <g id="a_node5"><a xlink:href="HttpResponse.md" xlink:title="HttpResponse">
-<polygon fill="#ffffff" stroke="transparent" points="120,-1 120,-125 230,-125 230,-1 120,-1"/>
-<polygon fill="none" stroke="#000000" points="120,-103 120,-125 230,-125 230,-103 120,-103"/>
-<text text-anchor="start" x="143.325" y="-111" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">HttpResponse</text>
-<polygon fill="none" stroke="#000000" points="120,-81 120,-103 230,-103 230,-81 120,-81"/>
-<text text-anchor="start" x="125" y="-89" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">  new HttpResponse()</text>
-<polygon fill="none" stroke="#000000" points="120,-47 120,-81 230,-81 230,-47 120,-47"/>
-<text text-anchor="start" x="125" y="-67" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> status</text>
-<text text-anchor="start" x="125" y="-55" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> cookies</text>
-<polygon fill="none" stroke="#000000" points="120,-1 120,-47 230,-47 230,-1 120,-1"/>
-<text text-anchor="start" x="125" y="-33" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> addCookie()</text>
-<text text-anchor="start" x="125" y="-21" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> redirect()</text>
-<text text-anchor="start" x="125" y="-9" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> sendHeader()</text>
+<polygon fill="#ffffff" stroke="#000000" points="117.11,-2.5 117.11,-118.5 224.234,-118.5 224.234,-2.5 117.11,-2.5"/>
+<text text-anchor="middle" x="170.672" y="-105.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">HttpResponse</text>
+<polyline fill="none" stroke="#000000" points="117.11,-98.5 224.234,-98.5 "/>
+<text text-anchor="start" x="125.11" y="-85.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">new HttpResponse()</text>
+<polyline fill="none" stroke="#000000" points="117.11,-78.5 224.234,-78.5 "/>
+<text text-anchor="start" x="125.11" y="-65.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">status</text>
+<text text-anchor="start" x="125.11" y="-53.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">cookies</text>
+<polyline fill="none" stroke="#000000" points="117.11,-46.5 224.234,-46.5 "/>
+<text text-anchor="start" x="125.11" y="-33.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">addCookie()</text>
+<text text-anchor="start" x="125.11" y="-21.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">redirect()</text>
+<text text-anchor="start" x="125.11" y="-9.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">sendHeader()</text>
 </a>
 </g>
 </g>
 <!-- HttpMessage&#45;&gt;HttpResponse -->
 <g id="edge4" class="edge">
 <title>HttpMessage-&gt;HttpResponse</title>
-<path fill="none" stroke="#000000" d="M147.1008,-152.0975C149.9807,-142.9004 152.8245,-133.8185 155.5315,-125.1736"/>
-<polygon fill="#000000" stroke="#000000" points="143.739,-151.121 144.0908,-161.71 150.4192,-153.2128 143.739,-151.121"/>
+<path fill="none" stroke="#000000" d="M143.1142,-147.6911C146.2673,-137.715 149.378,-127.8729 152.3099,-118.5965"/>
+<polygon fill="#000000" stroke="#000000" points="139.7591,-146.6928 140.0826,-157.2827 146.4337,-148.8024 139.7591,-146.6928"/>
 </g>
 </g>
 </svg></div>

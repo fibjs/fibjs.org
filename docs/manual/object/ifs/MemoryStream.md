@@ -8,23 +8,22 @@ var ms = new io.MemoryStream();
 ```
 
 ## 继承关系
-<div class="inherits"><svg width="122pt" height="518pt" viewBox="0.00 0.00 122.00 518.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 514)">
+<div class="inherits"><svg width="120pt" height="504pt" viewBox="0.00 0.00 120.10 504.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 500)">
 <title>%0</title>
-<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-514 118,-514 118,4 -4,4"/>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-500 116.103,-500 116.103,4 -4,4"/>
 <!-- object -->
 <g id="node1" class="node">
 <title>object</title>
 <g id="a_node1"><a xlink:href="object.md" xlink:title="object">
-<polygon fill="#ffffff" stroke="transparent" points="28.5,-418 28.5,-510 85.5,-510 85.5,-418 28.5,-418"/>
-<polygon fill="none" stroke="#000000" points="29,-488 29,-510 86,-510 86,-488 29,-488"/>
-<text text-anchor="start" x="44.1625" y="-496" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
-<polygon fill="none" stroke="#000000" points="29,-418 29,-488 86,-488 86,-418 29,-418"/>
-<text text-anchor="start" x="34" y="-474" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> dispose()</text>
-<text text-anchor="start" x="34" y="-462" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> equals()</text>
-<text text-anchor="start" x="34" y="-450" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> toString()</text>
-<text text-anchor="start" x="34" y="-438" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> toJSON()</text>
-<text text-anchor="start" x="34" y="-426" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> valueOf()</text>
+<polygon fill="#ffffff" stroke="#000000" points="27.22,-407.5 27.22,-495.5 84.883,-495.5 84.883,-407.5 27.22,-407.5"/>
+<text text-anchor="middle" x="56.0515" y="-482.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
+<polyline fill="none" stroke="#000000" points="27.22,-475.5 84.883,-475.5 "/>
+<text text-anchor="start" x="35.22" y="-462.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">dispose()</text>
+<text text-anchor="start" x="35.22" y="-450.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">equals()</text>
+<text text-anchor="start" x="35.22" y="-438.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toString()</text>
+<text text-anchor="start" x="35.22" y="-426.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toJSON()</text>
+<text text-anchor="start" x="35.22" y="-414.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">valueOf()</text>
 </a>
 </g>
 </g>
@@ -32,70 +31,67 @@ var ms = new io.MemoryStream();
 <g id="node2" class="node">
 <title>Stream</title>
 <g id="a_node2"><a xlink:href="Stream.md" xlink:title="Stream">
-<polygon fill="#ffffff" stroke="transparent" points="29.5,-302 29.5,-382 84.5,-382 84.5,-302 29.5,-302"/>
-<polygon fill="none" stroke="#000000" points="30,-360 30,-382 85,-382 85,-360 30,-360"/>
-<text text-anchor="start" x="41.388" y="-368" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Stream</text>
-<polygon fill="none" stroke="#000000" points="30,-302 30,-360 85,-360 85,-302 30,-302"/>
-<text text-anchor="start" x="35" y="-346" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> read()</text>
-<text text-anchor="start" x="35" y="-334" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> write()</text>
-<text text-anchor="start" x="35" y="-322" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> close()</text>
-<text text-anchor="start" x="35" y="-310" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> copyTo()</text>
+<polygon fill="#ffffff" stroke="#000000" points="28.3295,-294.5 28.3295,-370.5 83.7735,-370.5 83.7735,-294.5 28.3295,-294.5"/>
+<text text-anchor="middle" x="56.0515" y="-357.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Stream</text>
+<polyline fill="none" stroke="#000000" points="28.3295,-350.5 83.7735,-350.5 "/>
+<text text-anchor="start" x="36.3295" y="-337.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">read()</text>
+<text text-anchor="start" x="36.3295" y="-325.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">write()</text>
+<text text-anchor="start" x="36.3295" y="-313.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">close()</text>
+<text text-anchor="start" x="36.3295" y="-301.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">copyTo()</text>
 </a>
 </g>
 </g>
 <!-- object&#45;&gt;Stream -->
 <g id="edge1" class="edge">
 <title>object-&gt;Stream</title>
-<path fill="none" stroke="#000000" d="M57,-407.8267C57,-399.1786 57,-390.4003 57,-382.193"/>
-<polygon fill="#000000" stroke="#000000" points="53.5001,-407.877 57,-417.877 60.5001,-407.8771 53.5001,-407.877"/>
+<path fill="none" stroke="#000000" d="M56.0515,-397.1681C56.0515,-388.1942 56.0515,-379.0623 56.0515,-370.5973"/>
+<polygon fill="#000000" stroke="#000000" points="52.5516,-397.1888 56.0515,-407.1888 59.5516,-397.1888 52.5516,-397.1888"/>
 </g>
 <!-- SeekableStream -->
 <g id="node3" class="node">
 <title>SeekableStream</title>
 <g id="a_node3"><a xlink:href="SeekableStream.md" xlink:title="SeekableStream">
-<polygon fill="#ffffff" stroke="transparent" points="15.5,-126 15.5,-266 98.5,-266 98.5,-126 15.5,-126"/>
-<polygon fill="none" stroke="#000000" points="16,-244 16,-266 99,-266 99,-244 16,-244"/>
-<text text-anchor="start" x="20.5465" y="-252" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">SeekableStream</text>
-<polygon fill="none" stroke="#000000" points="16,-126 16,-244 99,-244 99,-126 16,-126"/>
-<text text-anchor="start" x="21" y="-230" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> seek()</text>
-<text text-anchor="start" x="21" y="-218" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> tell()</text>
-<text text-anchor="start" x="21" y="-206" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> rewind()</text>
-<text text-anchor="start" x="21" y="-194" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> size()</text>
-<text text-anchor="start" x="21" y="-182" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> readAll()</text>
-<text text-anchor="start" x="21" y="-170" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> truncate()</text>
-<text text-anchor="start" x="21" y="-158" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> eof()</text>
-<text text-anchor="start" x="21" y="-146" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> flush()</text>
-<text text-anchor="start" x="21" y="-134" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> stat()</text>
+<polygon fill="#ffffff" stroke="#000000" points="11.098,-121.5 11.098,-257.5 101.005,-257.5 101.005,-121.5 11.098,-121.5"/>
+<text text-anchor="middle" x="56.0515" y="-244.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">SeekableStream</text>
+<polyline fill="none" stroke="#000000" points="11.098,-237.5 101.005,-237.5 "/>
+<text text-anchor="start" x="19.098" y="-224.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">seek()</text>
+<text text-anchor="start" x="19.098" y="-212.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">tell()</text>
+<text text-anchor="start" x="19.098" y="-200.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">rewind()</text>
+<text text-anchor="start" x="19.098" y="-188.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">size()</text>
+<text text-anchor="start" x="19.098" y="-176.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readAll()</text>
+<text text-anchor="start" x="19.098" y="-164.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">truncate()</text>
+<text text-anchor="start" x="19.098" y="-152.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">eof()</text>
+<text text-anchor="start" x="19.098" y="-140.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">flush()</text>
+<text text-anchor="start" x="19.098" y="-128.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">stat()</text>
 </a>
 </g>
 </g>
 <!-- Stream&#45;&gt;SeekableStream -->
 <g id="edge2" class="edge">
 <title>Stream-&gt;SeekableStream</title>
-<path fill="none" stroke="#000000" d="M57,-291.5727C57,-283.356 57,-274.7162 57,-266.1293"/>
-<polygon fill="#000000" stroke="#000000" points="53.5001,-291.7183 57,-301.7184 60.5001,-291.7184 53.5001,-291.7183"/>
+<path fill="none" stroke="#000000" d="M56.0515,-284.1057C56.0515,-275.6194 56.0515,-266.6465 56.0515,-257.7411"/>
+<polygon fill="#000000" stroke="#000000" points="52.5516,-284.1786 56.0515,-294.1786 59.5516,-284.1787 52.5516,-284.1786"/>
 </g>
 <!-- MemoryStream -->
 <g id="node4" class="node">
 <title>MemoryStream</title>
 <g id="a_node4"><a xlink:title="MemoryStream">
-<polygon fill="#d3d3d3" stroke="transparent" points="0,0 0,-90 114,-90 114,0 0,0"/>
-<polygon fill="none" stroke="#000000" points="0,-68 0,-90 114,-90 114,-68 0,-68"/>
-<text text-anchor="start" x="22.8355" y="-76" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">MemoryStream</text>
-<polygon fill="none" stroke="#000000" points="0,-46 0,-68 114,-68 114,-46 0,-46"/>
-<text text-anchor="start" x="5" y="-54" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">  new MemoryStream()</text>
-<polygon fill="none" stroke="#000000" points="0,0 0,-46 114,-46 114,0 0,0"/>
-<text text-anchor="start" x="5" y="-32" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> setTime()</text>
-<text text-anchor="start" x="5" y="-20" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> clone()</text>
-<text text-anchor="start" x="5" y="-8" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> clear()</text>
+<polygon fill="#d3d3d3" stroke="#000000" points="0,-.5 0,-84.5 112.103,-84.5 112.103,-.5 0,-.5"/>
+<text text-anchor="middle" x="56.0515" y="-71.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">MemoryStream</text>
+<polyline fill="none" stroke="#000000" points="0,-64.5 112.103,-64.5 "/>
+<text text-anchor="start" x="8" y="-51.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">new MemoryStream()</text>
+<polyline fill="none" stroke="#000000" points="0,-44.5 112.103,-44.5 "/>
+<text text-anchor="start" x="8" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">setTime()</text>
+<text text-anchor="start" x="8" y="-19.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">clone()</text>
+<text text-anchor="start" x="8" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">clear()</text>
 </a>
 </g>
 </g>
 <!-- SeekableStream&#45;&gt;MemoryStream -->
 <g id="edge3" class="edge">
 <title>SeekableStream-&gt;MemoryStream</title>
-<path fill="none" stroke="#000000" d="M57,-115.5219C57,-106.7733 57,-98.1143 57,-90.0174"/>
-<polygon fill="#000000" stroke="#000000" points="53.5001,-115.8047 57,-125.8047 60.5001,-115.8047 53.5001,-115.8047"/>
+<path fill="none" stroke="#000000" d="M56.0515,-110.9393C56.0515,-101.8956 56.0515,-92.9546 56.0515,-84.6674"/>
+<polygon fill="#000000" stroke="#000000" points="52.5516,-111.1641 56.0515,-121.1642 59.5516,-111.1642 52.5516,-111.1641"/>
 </g>
 </g>
 </svg></div>

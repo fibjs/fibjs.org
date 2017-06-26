@@ -2,23 +2,22 @@
 [zip](../../module/ifs/zip.md) 文件访问对象
 
 ## 继承关系
-<div class="inherits"><svg width="91pt" height="252pt" viewBox="0.00 0.00 91.00 252.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 248)">
+<div class="inherits"><svg width="92pt" height="246pt" viewBox="0.00 0.00 91.79 246.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 242)">
 <title>%0</title>
-<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-248 87,-248 87,4 -4,4"/>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-242 87.791,-242 87.791,4 -4,4"/>
 <!-- object -->
 <g id="node1" class="node">
 <title>object</title>
 <g id="a_node1"><a xlink:href="object.md" xlink:title="object">
-<polygon fill="#ffffff" stroke="transparent" points="13,-152 13,-244 70,-244 70,-152 13,-152"/>
-<polygon fill="none" stroke="#000000" points="13.5,-222 13.5,-244 70.5,-244 70.5,-222 13.5,-222"/>
-<text text-anchor="start" x="28.6625" y="-230" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
-<polygon fill="none" stroke="#000000" points="13.5,-152 13.5,-222 70.5,-222 70.5,-152 13.5,-152"/>
-<text text-anchor="start" x="18.5" y="-208" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> dispose()</text>
-<text text-anchor="start" x="18.5" y="-196" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> equals()</text>
-<text text-anchor="start" x="18.5" y="-184" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> toString()</text>
-<text text-anchor="start" x="18.5" y="-172" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> toJSON()</text>
-<text text-anchor="start" x="18.5" y="-160" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> valueOf()</text>
+<polygon fill="#ffffff" stroke="#000000" points="13.064,-149.5 13.064,-237.5 70.727,-237.5 70.727,-149.5 13.064,-149.5"/>
+<text text-anchor="middle" x="41.8955" y="-224.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
+<polyline fill="none" stroke="#000000" points="13.064,-217.5 70.727,-217.5 "/>
+<text text-anchor="start" x="21.064" y="-204.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">dispose()</text>
+<text text-anchor="start" x="21.064" y="-192.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">equals()</text>
+<text text-anchor="start" x="21.064" y="-180.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toString()</text>
+<text text-anchor="start" x="21.064" y="-168.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toJSON()</text>
+<text text-anchor="start" x="21.064" y="-156.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">valueOf()</text>
 </a>
 </g>
 </g>
@@ -26,25 +25,24 @@
 <g id="node2" class="node">
 <title>ZipInfo</title>
 <g id="a_node2"><a xlink:title="ZipInfo">
-<polygon fill="#d3d3d3" stroke="transparent" points="0,0 0,-116 83,-116 83,0 0,0"/>
-<polygon fill="none" stroke="#000000" points=".5,-94 .5,-116 83.5,-116 83.5,-94 .5,-94"/>
-<text text-anchor="start" x="26.7185" y="-102" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">ZipInfo</text>
-<polygon fill="none" stroke="#000000" points=".5,0 .5,-94 83.5,-94 83.5,0 .5,0"/>
-<text text-anchor="start" x="5.5" y="-80" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> filename</text>
-<text text-anchor="start" x="5.5" y="-68" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> date</text>
-<text text-anchor="start" x="5.5" y="-56" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> compress_type</text>
-<text text-anchor="start" x="5.5" y="-44" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> compress_size</text>
-<text text-anchor="start" x="5.5" y="-32" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> file_size</text>
-<text text-anchor="start" x="5.5" y="-20" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> password</text>
-<text text-anchor="start" x="5.5" y="-8" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> data</text>
+<polygon fill="#d3d3d3" stroke="#000000" points="0,-.5 0,-112.5 83.791,-112.5 83.791,-.5 0,-.5"/>
+<text text-anchor="middle" x="41.8955" y="-99.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">ZipInfo</text>
+<polyline fill="none" stroke="#000000" points="0,-92.5 83.791,-92.5 "/>
+<text text-anchor="start" x="8" y="-79.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">filename</text>
+<text text-anchor="start" x="8" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">date</text>
+<text text-anchor="start" x="8" y="-55.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">compress_type</text>
+<text text-anchor="start" x="8" y="-43.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">compress_size</text>
+<text text-anchor="start" x="8" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">file_size</text>
+<text text-anchor="start" x="8" y="-19.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">password</text>
+<text text-anchor="start" x="8" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">data</text>
 </a>
 </g>
 </g>
 <!-- object&#45;&gt;ZipInfo -->
 <g id="edge1" class="edge">
 <title>object-&gt;ZipInfo</title>
-<path fill="none" stroke="#000000" d="M41.5,-141.7612C41.5,-133.4172 41.5,-124.8016 41.5,-116.4142"/>
-<polygon fill="#000000" stroke="#000000" points="38.0001,-141.7707 41.5,-151.7708 45.0001,-141.7708 38.0001,-141.7707"/>
+<path fill="none" stroke="#000000" d="M41.8955,-139.2743C41.8955,-130.4908 41.8955,-121.3795 41.8955,-112.5536"/>
+<polygon fill="#000000" stroke="#000000" points="38.3956,-139.3982 41.8955,-149.3982 45.3956,-139.3983 38.3956,-139.3982"/>
 </g>
 </g>
 </svg></div>

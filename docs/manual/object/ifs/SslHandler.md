@@ -14,23 +14,22 @@ function(s) {
 ```
 
 ## 继承关系
-<div class="inherits"><svg width="103pt" height="328pt" viewBox="0.00 0.00 103.00 328.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 324)">
+<div class="inherits"><svg width="101pt" height="315pt" viewBox="0.00 0.00 100.67 315.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 311)">
 <title>%0</title>
-<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-324 99,-324 99,4 -4,4"/>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-311 96.665,-311 96.665,4 -4,4"/>
 <!-- object -->
 <g id="node1" class="node">
 <title>object</title>
 <g id="a_node1"><a xlink:href="object.md" xlink:title="object">
-<polygon fill="#ffffff" stroke="transparent" points="19,-228 19,-320 76,-320 76,-228 19,-228"/>
-<polygon fill="none" stroke="#000000" points="19.5,-298 19.5,-320 76.5,-320 76.5,-298 19.5,-298"/>
-<text text-anchor="start" x="34.6625" y="-306" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
-<polygon fill="none" stroke="#000000" points="19.5,-228 19.5,-298 76.5,-298 76.5,-228 19.5,-228"/>
-<text text-anchor="start" x="24.5" y="-284" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> dispose()</text>
-<text text-anchor="start" x="24.5" y="-272" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> equals()</text>
-<text text-anchor="start" x="24.5" y="-260" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> toString()</text>
-<text text-anchor="start" x="24.5" y="-248" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> toJSON()</text>
-<text text-anchor="start" x="24.5" y="-236" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> valueOf()</text>
+<polygon fill="#ffffff" stroke="#000000" points="17.501,-218.5 17.501,-306.5 75.164,-306.5 75.164,-218.5 17.501,-218.5"/>
+<text text-anchor="middle" x="46.3325" y="-293.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
+<polyline fill="none" stroke="#000000" points="17.501,-286.5 75.164,-286.5 "/>
+<text text-anchor="start" x="25.501" y="-273.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">dispose()</text>
+<text text-anchor="start" x="25.501" y="-261.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">equals()</text>
+<text text-anchor="start" x="25.501" y="-249.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toString()</text>
+<text text-anchor="start" x="25.501" y="-237.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toJSON()</text>
+<text text-anchor="start" x="25.501" y="-225.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">valueOf()</text>
 </a>
 </g>
 </g>
@@ -38,43 +37,41 @@ function(s) {
 <g id="node2" class="node">
 <title>Handler</title>
 <g id="a_node2"><a xlink:href="Handler.md" xlink:title="Handler">
-<polygon fill="#ffffff" stroke="transparent" points="7,-126 7,-192 88,-192 88,-126 7,-126"/>
-<polygon fill="none" stroke="#000000" points="7.5,-170 7.5,-192 88.5,-192 88.5,-170 7.5,-170"/>
-<text text-anchor="start" x="30.4985" y="-178" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Handler</text>
-<polygon fill="none" stroke="#000000" points="7.5,-148 7.5,-170 88.5,-170 88.5,-148 7.5,-148"/>
-<text text-anchor="start" x="12.5" y="-156" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">  new Handler()</text>
-<polygon fill="none" stroke="#000000" points="7.5,-126 7.5,-148 88.5,-148 88.5,-126 7.5,-126"/>
-<text text-anchor="start" x="12.5" y="-134" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> invoke()</text>
+<polygon fill="#ffffff" stroke="#000000" points="6.944,-121.5 6.944,-181.5 85.721,-181.5 85.721,-121.5 6.944,-121.5"/>
+<text text-anchor="middle" x="46.3325" y="-168.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Handler</text>
+<polyline fill="none" stroke="#000000" points="6.944,-161.5 85.721,-161.5 "/>
+<text text-anchor="start" x="14.944" y="-148.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">new Handler()</text>
+<polyline fill="none" stroke="#000000" points="6.944,-141.5 85.721,-141.5 "/>
+<text text-anchor="start" x="14.944" y="-128.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">invoke()</text>
 </a>
 </g>
 </g>
 <!-- object&#45;&gt;Handler -->
 <g id="edge1" class="edge">
 <title>object-&gt;Handler</title>
-<path fill="none" stroke="#000000" d="M47.5,-217.6502C47.5,-208.8735 47.5,-200.0612 47.5,-192.0314"/>
-<polygon fill="#000000" stroke="#000000" points="44.0001,-217.8877 47.5,-227.8877 51.0001,-217.8878 44.0001,-217.8877"/>
+<path fill="none" stroke="#000000" d="M46.3325,-208.0719C46.3325,-198.9417 46.3325,-189.7729 46.3325,-181.5542"/>
+<polygon fill="#000000" stroke="#000000" points="42.8326,-208.3109 46.3325,-218.3109 49.8326,-208.311 42.8326,-208.3109"/>
 </g>
 <!-- SslHandler -->
 <g id="node3" class="node">
 <title>SslHandler</title>
 <g id="a_node3"><a xlink:title="SslHandler">
-<polygon fill="#d3d3d3" stroke="transparent" points="0,0 0,-90 95,-90 95,0 0,0"/>
-<polygon fill="none" stroke="#000000" points=".5,-68 .5,-90 95.5,-90 95.5,-68 .5,-68"/>
-<text text-anchor="start" x="23.5545" y="-76" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">SslHandler</text>
-<polygon fill="none" stroke="#000000" points=".5,-46 .5,-68 95.5,-68 95.5,-46 .5,-46"/>
-<text text-anchor="start" x="5.5" y="-54" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">  new SslHandler()</text>
-<polygon fill="none" stroke="#000000" points=".5,0 .5,-46 95.5,-46 95.5,0 .5,0"/>
-<text text-anchor="start" x="5.5" y="-32" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> verification</text>
-<text text-anchor="start" x="5.5" y="-20" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> ca</text>
-<text text-anchor="start" x="5.5" y="-8" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> handler</text>
+<polygon fill="#d3d3d3" stroke="#000000" points="0,-.5 0,-84.5 92.665,-84.5 92.665,-.5 0,-.5"/>
+<text text-anchor="middle" x="46.3325" y="-71.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">SslHandler</text>
+<polyline fill="none" stroke="#000000" points="0,-64.5 92.665,-64.5 "/>
+<text text-anchor="start" x="8" y="-51.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">new SslHandler()</text>
+<polyline fill="none" stroke="#000000" points="0,-44.5 92.665,-44.5 "/>
+<text text-anchor="start" x="8" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">verification</text>
+<text text-anchor="start" x="8" y="-19.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">ca</text>
+<text text-anchor="start" x="8" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">handler</text>
 </a>
 </g>
 </g>
 <!-- Handler&#45;&gt;SslHandler -->
 <g id="edge2" class="edge">
 <title>Handler-&gt;SslHandler</title>
-<path fill="none" stroke="#000000" d="M47.5,-115.5605C47.5,-107.3264 47.5,-98.6915 47.5,-90.3987"/>
-<polygon fill="#000000" stroke="#000000" points="44.0001,-115.72 47.5,-125.72 51.0001,-115.7201 44.0001,-115.72"/>
+<path fill="none" stroke="#000000" d="M46.3325,-111.2085C46.3325,-102.5708 46.3325,-93.4211 46.3325,-84.7129"/>
+<polygon fill="#000000" stroke="#000000" points="42.8326,-111.4267 46.3325,-121.4267 49.8326,-111.4268 42.8326,-111.4267"/>
 </g>
 </g>
 </svg></div>

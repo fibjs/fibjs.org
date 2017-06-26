@@ -4,23 +4,22 @@
 Stat 对象通过 [fs](../../module/ifs/fs.md).stat, [File](File.md).stat, [fs](../../module/ifs/fs.md).readdir 查询，不可独立创建
 
 ## 继承关系
-<div class="inherits"><svg width="96pt" height="382pt" viewBox="0.00 0.00 96.00 382.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 378)">
+<div class="inherits"><svg width="97pt" height="374pt" viewBox="0.00 0.00 96.77 374.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 370)">
 <title>%0</title>
-<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-378 92,-378 92,4 -4,4"/>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-370 92.768,-370 92.768,4 -4,4"/>
 <!-- object -->
 <g id="node1" class="node">
 <title>object</title>
 <g id="a_node1"><a xlink:href="object.md" xlink:title="object">
-<polygon fill="#ffffff" stroke="transparent" points="15.5,-282 15.5,-374 72.5,-374 72.5,-282 15.5,-282"/>
-<polygon fill="none" stroke="#000000" points="16,-352 16,-374 73,-374 73,-352 16,-352"/>
-<text text-anchor="start" x="31.1625" y="-360" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
-<polygon fill="none" stroke="#000000" points="16,-282 16,-352 73,-352 73,-282 16,-282"/>
-<text text-anchor="start" x="21" y="-338" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> dispose()</text>
-<text text-anchor="start" x="21" y="-326" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> equals()</text>
-<text text-anchor="start" x="21" y="-314" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> toString()</text>
-<text text-anchor="start" x="21" y="-302" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> toJSON()</text>
-<text text-anchor="start" x="21" y="-290" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> valueOf()</text>
+<polygon fill="#ffffff" stroke="#000000" points="15.5525,-277.5 15.5525,-365.5 73.2155,-365.5 73.2155,-277.5 15.5525,-277.5"/>
+<text text-anchor="middle" x="44.384" y="-352.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
+<polyline fill="none" stroke="#000000" points="15.5525,-345.5 73.2155,-345.5 "/>
+<text text-anchor="start" x="23.5525" y="-332.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">dispose()</text>
+<text text-anchor="start" x="23.5525" y="-320.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">equals()</text>
+<text text-anchor="start" x="23.5525" y="-308.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toString()</text>
+<text text-anchor="start" x="23.5525" y="-296.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toJSON()</text>
+<text text-anchor="start" x="23.5525" y="-284.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">valueOf()</text>
 </a>
 </g>
 </g>
@@ -28,36 +27,35 @@ Stat 对象通过 [fs](../../module/ifs/fs.md).stat, [File](File.md).stat, [fs](
 <g id="node2" class="node">
 <title>Stat</title>
 <g id="a_node2"><a xlink:title="Stat">
-<polygon fill="#d3d3d3" stroke="transparent" points="0,0 0,-246 88,-246 88,0 0,0"/>
-<polygon fill="none" stroke="#000000" points="0,-224 0,-246 88,-246 88,-224 0,-224"/>
-<text text-anchor="start" x="35.107" y="-232" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Stat</text>
-<polygon fill="none" stroke="#000000" points="0,-118 0,-224 88,-224 88,-118 0,-118"/>
-<text text-anchor="start" x="5" y="-210" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> name</text>
-<text text-anchor="start" x="5" y="-198" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> size</text>
-<text text-anchor="start" x="5" y="-186" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> mode</text>
-<text text-anchor="start" x="5" y="-174" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> mtime</text>
-<text text-anchor="start" x="5" y="-162" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> atime</text>
-<text text-anchor="start" x="5" y="-150" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> ctime</text>
-<text text-anchor="start" x="5" y="-138" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> uid</text>
-<text text-anchor="start" x="5" y="-126" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> gid</text>
-<polygon fill="none" stroke="#000000" points="0,0 0,-118 88,-118 88,0 0,0"/>
-<text text-anchor="start" x="5" y="-104" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> isWritable()</text>
-<text text-anchor="start" x="5" y="-92" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> isReadable()</text>
-<text text-anchor="start" x="5" y="-80" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> isExecutable()</text>
-<text text-anchor="start" x="5" y="-68" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> isHidden()</text>
-<text text-anchor="start" x="5" y="-56" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> isDirectory()</text>
-<text text-anchor="start" x="5" y="-44" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> isFile()</text>
-<text text-anchor="start" x="5" y="-32" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> isSymbolicLink()</text>
-<text text-anchor="start" x="5" y="-20" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> isMemory()</text>
-<text text-anchor="start" x="5" y="-8" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> isSocket()</text>
+<polygon fill="#d3d3d3" stroke="#000000" points="0,-.5 0,-240.5 88.768,-240.5 88.768,-.5 0,-.5"/>
+<text text-anchor="middle" x="44.384" y="-227.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Stat</text>
+<polyline fill="none" stroke="#000000" points="0,-220.5 88.768,-220.5 "/>
+<text text-anchor="start" x="8" y="-207.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">name</text>
+<text text-anchor="start" x="8" y="-195.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">size</text>
+<text text-anchor="start" x="8" y="-183.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">mode</text>
+<text text-anchor="start" x="8" y="-171.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">mtime</text>
+<text text-anchor="start" x="8" y="-159.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">atime</text>
+<text text-anchor="start" x="8" y="-147.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">ctime</text>
+<text text-anchor="start" x="8" y="-135.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">uid</text>
+<text text-anchor="start" x="8" y="-123.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">gid</text>
+<polyline fill="none" stroke="#000000" points="0,-116.5 88.768,-116.5 "/>
+<text text-anchor="start" x="8" y="-103.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">isWritable()</text>
+<text text-anchor="start" x="8" y="-91.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">isReadable()</text>
+<text text-anchor="start" x="8" y="-79.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">isExecutable()</text>
+<text text-anchor="start" x="8" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">isHidden()</text>
+<text text-anchor="start" x="8" y="-55.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">isDirectory()</text>
+<text text-anchor="start" x="8" y="-43.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">isFile()</text>
+<text text-anchor="start" x="8" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">isSymbolicLink()</text>
+<text text-anchor="start" x="8" y="-19.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">isMemory()</text>
+<text text-anchor="start" x="8" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">isSocket()</text>
 </a>
 </g>
 </g>
 <!-- object&#45;&gt;Stat -->
 <g id="edge1" class="edge">
 <title>object-&gt;Stat</title>
-<path fill="none" stroke="#000000" d="M44,-271.9052C44,-263.7117 44,-255.0168 44,-246.1051"/>
-<polygon fill="#000000" stroke="#000000" points="40.5001,-271.994 44,-281.994 47.5001,-271.994 40.5001,-271.994"/>
+<path fill="none" stroke="#000000" d="M44.384,-267.3445C44.384,-258.8615 44.384,-249.8145 44.384,-240.5364"/>
+<polygon fill="#000000" stroke="#000000" points="40.8841,-267.3897 44.384,-277.3897 47.8841,-267.3897 40.8841,-267.3897"/>
 </g>
 </g>
 </svg></div>
