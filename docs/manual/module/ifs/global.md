@@ -49,6 +49,75 @@ static global.run(String fname,
 * argv: Array, 指定要运行的参数，此参数可在脚本内使用 argv 获取
 
 --------------------------
+### require
+**加载一个模块并返回模块对象，更多信息参阅 @ref module**
+
+```JavaScript
+static Value global.require(String id);
+```
+
+调用参数:
+* id: String, 指定要加载的模块名称
+
+返回结果:
+* Value, 返回加载模块的引出对象
+
+require 可用于加载基础模块，文件模块。
+
+基础模块是沙箱创建时初始化的模块，引用时只需传递相应的 id，比如 require("[net](net.md)")。
+
+文件模块是用户自定义模块，引用时需传递以 ./ 或 ../ 开头的相对路径。文件模块支持 .js, .jsc 和 .[json](json.md) 文件。
+
+文件模块也支持 package.[json](json.md) 格式，当模块为目录结构时，require 会先查询 package.[json](json.md) 中的 main，未发现则尝试加载路径下的 index.js, index.jsc 或 index.[json](json.md)。
+
+若引用路径不是 ./ 或 ../ 开头，并且非基础模块，require 从当前模块所在路径下的 node_modules 查找，并上级目录递归。
+
+基础流程如下:
+
+<dot>
+   digraph{
+       node [fontname = "Helvetica,sans-Serif", fontsize = 10];
+       edge [fontname = "Helvetica,sans-Serif", fontsize = 10];
+
+       start [label="起始"];
+       resolve [label="[path](path.md).resolve" shape="rect"];
+       search [label="从当前路径\n向上递归查找\nnode_modules" shape="rect"];
+       load [label="加载" shape="rect"];
+       end [label="返回" shape="doublecircle"];
+
+       is_native [label="内置模块?" shape="diamond"];
+       is_mod [label="模块?" shape="diamond"];
+       is_abs [label="绝对路径？" shape="diamond"];
+       has_file [label="原名存在？" shape="diamond"];
+       has_ext [label="增加 .js 存在？" shape="diamond"];
+       has_package [label="/package.[json](json.md)\n存在？" shape="diamond"];
+       has_main [label="main 存在？" shape="diamond"];
+       has_index [label="index.js 存在？" shape="diamond"];
+
+       start -> is_native;
+       is_native -> end [label="是"];
+       is_native -> is_mod [label="否"];
+       is_mod -> search [label="是"];
+       search -> has_file;
+       is_mod -> is_abs [label="否"];
+       is_abs -> has_file [label="是"];
+       is_abs -> resolve [label="否"];
+       resolve -> has_file;
+       has_file -> load [label="是"];
+       has_file -> has_ext [label="否"];
+       has_ext -> load [label="是"];
+       has_ext -> has_package [label="否"];
+       has_package -> has_main [label="是"];
+       has_package -> has_index [label="否"];
+       has_main -> load [label="是"];
+       has_main -> has_index [label="否"];
+       has_index -> load [label="是"];
+       has_index -> end [label="否"];
+       load -> end;
+   }
+</dot>
+
+--------------------------
 ### clearInterval
 **清除指定的定时器**
 
@@ -126,30 +195,6 @@ static Timer global.setImmediate(Function callback);
 
 返回结果:
 * [Timer](../../object/ifs/Timer.md), 返回定时器对象
-
---------------------------
-### require
-**加载一个模块并返回模块对象，更多信息参阅 @ref module**
-
-```JavaScript
-static Value global.require(String id);
-```
-
-调用参数:
-* id: String, 指定要加载的模块名称
-
-返回结果:
-* Value, 返回加载模块的引出对象
-
-require 可用于加载基础模块，文件模块。
-
-基础模块是沙箱创建时初始化的模块，引用时只需传递相应的 id，比如 require("[net](net.md)")。
-
-文件模块是用户自定义模块，引用时需传递以 ./ 或 ../ 开头的相对路径。文件模块支持 .js 和 .[json](json.md) 文件。
-
-文件模块也支持 package.[json](json.md) 格式，当模块为目录结构时，require 会先查询 package.[json](json.md) 中的 main，未发现则尝试加载路径下的 index.js 或 index.[json](json.md)。
-
-若引用路径不是 ./ 或 ../ 开头，并且非基础模块，require 则先在启动路径查找，然后从当前模块所在路径下的 node_modules 查找，并上级目录递归。
 
 --------------------------
 ### GC
