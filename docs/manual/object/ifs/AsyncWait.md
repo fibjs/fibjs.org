@@ -3,9 +3,9 @@
 
 ## 继承关系
 <dot>digraph {node [ fontname = "Helvetica,sans-Serif", fontsize = 10, shape = "record" ];
-object[tooltip="object", style="filled", fillcolor="white", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"]
-Handler[tooltip="Handler", style="filled", fillcolor="white", URL="Handler.md", label="{Handler|new Handler()\l|invoke()\l}"]
-AsyncWait[tooltip="AsyncWait", style="filled", fillcolor="lightgray", label="{AsyncWait|end()\l}"]
+object[tooltip="object", style="filled", fillcolor="white", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
+Handler[tooltip="Handler", style="filled", fillcolor="white", URL="Handler.md", label="{Handler|new Handler()\l|invoke()\l}"];
+AsyncWait[tooltip="AsyncWait", style="filled", fillcolor="lightgray", label="{AsyncWait|end()\l}"];
 object -> Handler [dir=back]
 Handler -> AsyncWait [dir=back]
 }</dot>

@@ -3,8 +3,8 @@ HeapGraphEdge表示两个[HeapGraphNode](HeapGraphNode.md)节点间的关联，�
 
 ## 继承关系
 <dot>digraph {node [ fontname = "Helvetica,sans-Serif", fontsize = 10, shape = "record" ];
-object[tooltip="object", style="filled", fillcolor="white", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"]
-HeapGraphEdge[tooltip="HeapGraphEdge", style="filled", fillcolor="lightgray", label="{HeapGraphEdge|type\lname\ldescription\l|getFromNode()\lgetToNode()\l}"]
+object[tooltip="object", style="filled", fillcolor="white", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
+HeapGraphEdge[tooltip="HeapGraphEdge", style="filled", fillcolor="lightgray", label="{HeapGraphEdge|type\lname\ldescription\l|getFromNode()\lgetToNode()\l}"];
 object -> HeapGraphEdge [dir=back]
 }</dot>
 

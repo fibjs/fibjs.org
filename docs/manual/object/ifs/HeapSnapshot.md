@@ -3,8 +3,8 @@ HeapSnapshots记录JS堆在某个时刻的状态
 
 ## 继承关系
 <dot>digraph {node [ fontname = "Helvetica,sans-Serif", fontsize = 10, shape = "record" ];
-object[tooltip="object", style="filled", fillcolor="white", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"]
-HeapSnapshot[tooltip="HeapSnapshot", style="filled", fillcolor="lightgray", label="{HeapSnapshot|time\lroot\lnodes\l|diff()\lgetNodeById()\lsave()\l}"]
+object[tooltip="object", style="filled", fillcolor="white", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
+HeapSnapshot[tooltip="HeapSnapshot", style="filled", fillcolor="lightgray", label="{HeapSnapshot|time\lroot\lnodes\l|diff()\lgetNodeById()\lsave()\l}"];
 object -> HeapSnapshot [dir=back]
 }</dot>
 

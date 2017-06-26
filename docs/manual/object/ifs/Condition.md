@@ -43,9 +43,9 @@ go
 
 ## 继承关系
 <dot>digraph {node [ fontname = "Helvetica,sans-Serif", fontsize = 10, shape = "record" ];
-object[tooltip="object", style="filled", fillcolor="white", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"]
-Lock[tooltip="Lock", style="filled", fillcolor="white", URL="Lock.md", label="{Lock|new Lock()\l|acquire()\lrelease()\lcount()\l}"]
-Condition[tooltip="Condition", style="filled", fillcolor="lightgray", label="{Condition|new Condition()\l|wait()\lnotify()\lnotifyAll()\l}"]
+object[tooltip="object", style="filled", fillcolor="white", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
+Lock[tooltip="Lock", style="filled", fillcolor="white", URL="Lock.md", label="{Lock|new Lock()\l|acquire()\lrelease()\lcount()\l}"];
+Condition[tooltip="Condition", style="filled", fillcolor="lightgray", label="{Condition|new Condition()\l|wait()\lnotify()\lnotifyAll()\l}"];
 object -> Lock [dir=back]
 Lock -> Condition [dir=back]
 }</dot>

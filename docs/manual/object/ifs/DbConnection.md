@@ -3,11 +3,11 @@
 
 ## 继承关系
 <dot>digraph {node [ fontname = "Helvetica,sans-Serif", fontsize = 10, shape = "record" ];
-object[tooltip="object", style="filled", fillcolor="white", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"]
-DbConnection[tooltip="DbConnection", style="filled", fillcolor="lightgray", label="{DbConnection|type\l|close()\lbegin()\lcommit()\lrollback()\lexecute()\lformat()\l}"]
-MSSQL[tooltip="MSSQL", style="filled", fillcolor="white", URL="MSSQL.md", label="{MSSQL|use()\l}"]
-MySQL[tooltip="MySQL", style="filled", fillcolor="white", URL="MySQL.md", label="{MySQL|rxBufferSize\ltxBufferSize\l|use()\l}"]
-SQLite[tooltip="SQLite", style="filled", fillcolor="white", URL="SQLite.md", label="{SQLite|fileName\ltimeout\l|backup()\l}"]
+object[tooltip="object", style="filled", fillcolor="white", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
+DbConnection[tooltip="DbConnection", style="filled", fillcolor="lightgray", label="{DbConnection|type\l|close()\lbegin()\lcommit()\lrollback()\lexecute()\lformat()\l}"];
+MSSQL[tooltip="MSSQL", style="filled", fillcolor="white", URL="MSSQL.md", label="{MSSQL|use()\l}"];
+MySQL[tooltip="MySQL", style="filled", fillcolor="white", URL="MySQL.md", label="{MySQL|rxBufferSize\ltxBufferSize\l|use()\l}"];
+SQLite[tooltip="SQLite", style="filled", fillcolor="white", URL="SQLite.md", label="{SQLite|fileName\ltimeout\l|backup()\l}"];
 object -> DbConnection [dir=back]
 DbConnection -> MSSQL [dir=back]
 DbConnection -> MySQL [dir=back]

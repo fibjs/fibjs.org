@@ -3,8 +3,8 @@
 
 ## 继承关系
 <dot>digraph {node [ fontname = "Helvetica,sans-Serif", fontsize = 10, shape = "record" ];
-object[tooltip="object", style="filled", fillcolor="white", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"]
-HttpUploadData[tooltip="HttpUploadData", style="filled", fillcolor="lightgray", label="{HttpUploadData|fileName\lcontentType\lcontentTransferEncoding\lbody\l}"]
+object[tooltip="object", style="filled", fillcolor="white", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
+HttpUploadData[tooltip="HttpUploadData", style="filled", fillcolor="lightgray", label="{HttpUploadData|fileName\lcontentType\lcontentTransferEncoding\lbody\l}"];
 object -> HttpUploadData [dir=back]
 }</dot>
 

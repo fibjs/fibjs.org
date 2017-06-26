@@ -15,10 +15,10 @@ var hdlr = new http.Handler(...);
 
 ## 继承关系
 <dot>digraph {node [ fontname = "Helvetica,sans-Serif", fontsize = 10, shape = "record" ];
-object[tooltip="object", style="filled", fillcolor="white", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"]
-Handler[tooltip="Handler", style="filled", fillcolor="white", URL="Handler.md", label="{Handler|new Handler()\l|invoke()\l}"]
-HandlerEx[tooltip="HandlerEx", style="filled", fillcolor="white", URL="HandlerEx.md", label="{HandlerEx|handler\lstats\l|onerror()\l}"]
-HttpHandler[tooltip="HttpHandler", style="filled", fillcolor="lightgray", label="{HttpHandler|new HttpHandler()\l|crossDomain\lforceGZIP\lmaxHeadersCount\lmaxUploadSize\l}"]
+object[tooltip="object", style="filled", fillcolor="white", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
+Handler[tooltip="Handler", style="filled", fillcolor="white", URL="Handler.md", label="{Handler|new Handler()\l|invoke()\l}"];
+HandlerEx[tooltip="HandlerEx", style="filled", fillcolor="white", URL="HandlerEx.md", label="{HandlerEx|handler\lstats\l|onerror()\l}"];
+HttpHandler[tooltip="HttpHandler", style="filled", fillcolor="lightgray", label="{HttpHandler|new HttpHandler()\l|crossDomain\lforceGZIP\lmaxHeadersCount\lmaxUploadSize\l}"];
 object -> Handler [dir=back]
 Handler -> HandlerEx [dir=back]
 HandlerEx -> HttpHandler [dir=back]

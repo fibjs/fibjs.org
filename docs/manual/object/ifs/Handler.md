@@ -3,15 +3,15 @@
 
 ## 继承关系
 <dot>digraph {node [ fontname = "Helvetica,sans-Serif", fontsize = 10, shape = "record" ];
-object[tooltip="object", style="filled", fillcolor="white", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"]
-Handler[tooltip="Handler", style="filled", fillcolor="lightgray", label="{Handler|new Handler()\l|invoke()\l}"]
-AsyncWait[tooltip="AsyncWait", style="filled", fillcolor="white", URL="AsyncWait.md", label="{AsyncWait|end()\l}"]
-Chain[tooltip="Chain", style="filled", fillcolor="white", URL="Chain.md", label="{Chain|new Chain()\l|append()\l}"]
-HandlerEx[tooltip="HandlerEx", style="filled", fillcolor="white", URL="HandlerEx.md", label="{HandlerEx|handler\lstats\l|onerror()\l}"]
-HttpHandler[tooltip="HttpHandler", style="filled", fillcolor="white", URL="HttpHandler.md", label="{HttpHandler|new HttpHandler()\l|crossDomain\lforceGZIP\lmaxHeadersCount\lmaxUploadSize\l}"]
-WebSocketHandler[tooltip="WebSocketHandler", style="filled", fillcolor="white", URL="WebSocketHandler.md", label="{WebSocketHandler|new WebSocketHandler()\l|maxSize\l}"]
-Routing[tooltip="Routing", style="filled", fillcolor="white", URL="Routing.md", label="{Routing|new Routing()\l|append()\lall()\lget()\lpost()\ldel()\lput()\lpatch()\l}"]
-SslHandler[tooltip="SslHandler", style="filled", fillcolor="white", URL="SslHandler.md", label="{SslHandler|new SslHandler()\l|verification\lca\lhandler\l}"]
+object[tooltip="object", style="filled", fillcolor="white", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
+Handler[tooltip="Handler", style="filled", fillcolor="lightgray", label="{Handler|new Handler()\l|invoke()\l}"];
+AsyncWait[tooltip="AsyncWait", style="filled", fillcolor="white", URL="AsyncWait.md", label="{AsyncWait|end()\l}"];
+Chain[tooltip="Chain", style="filled", fillcolor="white", URL="Chain.md", label="{Chain|new Chain()\l|append()\l}"];
+HandlerEx[tooltip="HandlerEx", style="filled", fillcolor="white", URL="HandlerEx.md", label="{HandlerEx|handler\lstats\l|onerror()\l}"];
+HttpHandler[tooltip="HttpHandler", style="filled", fillcolor="white", URL="HttpHandler.md", label="{HttpHandler|new HttpHandler()\l|crossDomain\lforceGZIP\lmaxHeadersCount\lmaxUploadSize\l}"];
+WebSocketHandler[tooltip="WebSocketHandler", style="filled", fillcolor="white", URL="WebSocketHandler.md", label="{WebSocketHandler|new WebSocketHandler()\l|maxSize\l}"];
+Routing[tooltip="Routing", style="filled", fillcolor="white", URL="Routing.md", label="{Routing|new Routing()\l|append()\lall()\lget()\lpost()\ldel()\lput()\lpatch()\l}"];
+SslHandler[tooltip="SslHandler", style="filled", fillcolor="white", URL="SslHandler.md", label="{SslHandler|new SslHandler()\l|verification\lca\lhandler\l}"];
 object -> Handler [dir=back]
 Handler -> AsyncWait [dir=back]
 Handler -> Chain [dir=back]

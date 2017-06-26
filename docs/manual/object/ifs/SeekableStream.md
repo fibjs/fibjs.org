@@ -3,11 +3,11 @@
 
 ## 继承关系
 <dot>digraph {node [ fontname = "Helvetica,sans-Serif", fontsize = 10, shape = "record" ];
-object[tooltip="object", style="filled", fillcolor="white", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"]
-Stream[tooltip="Stream", style="filled", fillcolor="white", URL="Stream.md", label="{Stream|read()\lwrite()\lclose()\lcopyTo()\l}"]
-SeekableStream[tooltip="SeekableStream", style="filled", fillcolor="lightgray", label="{SeekableStream|seek()\ltell()\lrewind()\lsize()\lreadAll()\ltruncate()\leof()\lflush()\lstat()\l}"]
-File[tooltip="File", style="filled", fillcolor="white", URL="File.md", label="{File|name\lfd\l|chmod()\l}"]
-MemoryStream[tooltip="MemoryStream", style="filled", fillcolor="white", URL="MemoryStream.md", label="{MemoryStream|new MemoryStream()\l|setTime()\lclone()\lclear()\l}"]
+object[tooltip="object", style="filled", fillcolor="white", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
+Stream[tooltip="Stream", style="filled", fillcolor="white", URL="Stream.md", label="{Stream|read()\lwrite()\lclose()\lcopyTo()\l}"];
+SeekableStream[tooltip="SeekableStream", style="filled", fillcolor="lightgray", label="{SeekableStream|seek()\ltell()\lrewind()\lsize()\lreadAll()\ltruncate()\leof()\lflush()\lstat()\l}"];
+File[tooltip="File", style="filled", fillcolor="white", URL="File.md", label="{File|name\lfd\l|chmod()\l}"];
+MemoryStream[tooltip="MemoryStream", style="filled", fillcolor="white", URL="MemoryStream.md", label="{MemoryStream|new MemoryStream()\l|setTime()\lclone()\lclear()\l}"];
 object -> Stream [dir=back]
 Stream -> SeekableStream [dir=back]
 SeekableStream -> File [dir=back]
