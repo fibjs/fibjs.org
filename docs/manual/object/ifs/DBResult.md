@@ -2,86 +2,13 @@
 数据库结果集合对象
 
 ## 继承关系
-<div class="inherits"><svg width="81pt" height="539pt" viewBox="0.00 0.00 81.23 539.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 535)">
-<title>%0</title>
-<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-535 77.229,-535 77.229,4 -4,4"/>
-<!-- object -->
-<g id="node1" class="node">
-<title>object</title>
-<g id="a_node1"><a xlink:href="object.md" xlink:title="object">
-<polygon fill="#ffffff" stroke="#000000" points="7.783,-442.5 7.783,-530.5 65.446,-530.5 65.446,-442.5 7.783,-442.5"/>
-<text text-anchor="middle" x="36.6145" y="-517.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
-<polyline fill="none" stroke="#000000" points="7.783,-510.5 65.446,-510.5 "/>
-<text text-anchor="start" x="15.783" y="-497.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">dispose()</text>
-<text text-anchor="start" x="15.783" y="-485.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">equals()</text>
-<text text-anchor="start" x="15.783" y="-473.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toString()</text>
-<text text-anchor="start" x="15.783" y="-461.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toJSON()</text>
-<text text-anchor="start" x="15.783" y="-449.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">valueOf()</text>
-</a>
-</g>
-</g>
-<!-- List -->
-<g id="node2" class="node">
-<title>List</title>
-<g id="a_node2"><a xlink:href="List.md" xlink:title="List">
-<polygon fill="#ffffff" stroke="#000000" points="0,-101.5 0,-405.5 73.229,-405.5 73.229,-101.5 0,-101.5"/>
-<text text-anchor="middle" x="36.6145" y="-392.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">List</text>
-<polyline fill="none" stroke="#000000" points="0,-385.5 73.229,-385.5 "/>
-<text text-anchor="start" x="8" y="-372.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">new List()</text>
-<polyline fill="none" stroke="#000000" points="0,-365.5 73.229,-365.5 "/>
-<text text-anchor="start" x="8" y="-352.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">operator[]</text>
-<polyline fill="none" stroke="#000000" points="0,-345.5 73.229,-345.5 "/>
-<text text-anchor="start" x="8" y="-332.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">length</text>
-<polyline fill="none" stroke="#000000" points="0,-325.5 73.229,-325.5 "/>
-<text text-anchor="start" x="8" y="-312.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">freeze()</text>
-<text text-anchor="start" x="8" y="-300.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">resize()</text>
-<text text-anchor="start" x="8" y="-288.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">push()</text>
-<text text-anchor="start" x="8" y="-276.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">indexOf()</text>
-<text text-anchor="start" x="8" y="-264.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">lastIndexOf()</text>
-<text text-anchor="start" x="8" y="-252.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">push()</text>
-<text text-anchor="start" x="8" y="-240.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">pushArray()</text>
-<text text-anchor="start" x="8" y="-228.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">pop()</text>
-<text text-anchor="start" x="8" y="-216.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">slice()</text>
-<text text-anchor="start" x="8" y="-204.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">concat()</text>
-<text text-anchor="start" x="8" y="-192.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">every()</text>
-<text text-anchor="start" x="8" y="-180.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">some()</text>
-<text text-anchor="start" x="8" y="-168.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">filter()</text>
-<text text-anchor="start" x="8" y="-156.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">forEach()</text>
-<text text-anchor="start" x="8" y="-144.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">map()</text>
-<text text-anchor="start" x="8" y="-132.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">reduce()</text>
-<text text-anchor="start" x="8" y="-120.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">sort()</text>
-<text text-anchor="start" x="8" y="-108.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toArray()</text>
-</a>
-</g>
-</g>
-<!-- object&#45;&gt;List -->
-<g id="edge1" class="edge">
-<title>object-&gt;List</title>
-<path fill="none" stroke="#000000" d="M36.6145,-432.1677C36.6145,-423.8189 36.6145,-414.8676 36.6145,-405.5827"/>
-<polygon fill="#000000" stroke="#000000" points="33.1146,-432.4005 36.6145,-442.4006 40.1146,-432.4006 33.1146,-432.4005"/>
-</g>
-<!-- DBResult -->
-<g id="node3" class="node">
-<title>DBResult</title>
-<g id="a_node3"><a xlink:title="DBResult">
-<polygon fill="#d3d3d3" stroke="#000000" points="7.503,-.5 7.503,-64.5 65.726,-64.5 65.726,-.5 7.503,-.5"/>
-<text text-anchor="middle" x="36.6145" y="-51.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">DBResult</text>
-<polyline fill="none" stroke="#000000" points="7.503,-44.5 65.726,-44.5 "/>
-<text text-anchor="start" x="15.503" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">insertId</text>
-<text text-anchor="start" x="15.503" y="-19.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">affected</text>
-<text text-anchor="start" x="15.503" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">fields</text>
-</a>
-</g>
-</g>
-<!-- List&#45;&gt;DBResult -->
-<g id="edge2" class="edge">
-<title>List-&gt;DBResult</title>
-<path fill="none" stroke="#000000" d="M36.6145,-91.0157C36.6145,-81.4469 36.6145,-72.5517 36.6145,-64.7314"/>
-<polygon fill="#000000" stroke="#000000" points="33.1146,-91.2143 36.6145,-101.2143 40.1146,-91.2144 33.1146,-91.2143"/>
-</g>
-</g>
-</svg></div>
+<dot>digraph {node [ fontname = "Helvetica,sans-Serif", fontsize = 10, shape = "record" ];
+object[tooltip="object", style="filled", fillcolor="white", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"]
+List[tooltip="List", style="filled", fillcolor="white", URL="List.md", label="{List|new List()\l|operator[]\l|length\l|freeze()\lresize()\lpush()\lindexOf()\llastIndexOf()\lpush()\lpushArray()\lpop()\lslice()\lconcat()\levery()\lsome()\lfilter()\lforEach()\lmap()\lreduce()\lsort()\ltoArray()\l}"]
+DBResult[tooltip="DBResult", style="filled", fillcolor="lightgray", label="{DBResult|insertId\laffected\lfields\l}"]
+object -> List [dir=back]
+List -> DBResult [dir=back]
+}</dot>
 
 ## 成员属性
         

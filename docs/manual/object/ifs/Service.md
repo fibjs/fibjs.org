@@ -2,92 +2,13 @@
 系统服务管理对象
 
 ## 继承关系
-<div class="inherits"><svg width="127pt" height="607pt" viewBox="0.00 0.00 126.80 607.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 603)">
-<title>%0</title>
-<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-603 122.801,-603 122.801,4 -4,4"/>
-<!-- object -->
-<g id="node1" class="node">
-<title>object</title>
-<g id="a_node1"><a xlink:href="object.md" xlink:title="object">
-<polygon fill="#ffffff" stroke="#000000" points="30.569,-510.5 30.569,-598.5 88.232,-598.5 88.232,-510.5 30.569,-510.5"/>
-<text text-anchor="middle" x="59.4005" y="-585.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
-<polyline fill="none" stroke="#000000" points="30.569,-578.5 88.232,-578.5 "/>
-<text text-anchor="start" x="38.569" y="-565.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">dispose()</text>
-<text text-anchor="start" x="38.569" y="-553.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">equals()</text>
-<text text-anchor="start" x="38.569" y="-541.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toString()</text>
-<text text-anchor="start" x="38.569" y="-529.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toJSON()</text>
-<text text-anchor="start" x="38.569" y="-517.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">valueOf()</text>
-</a>
-</g>
-</g>
-<!-- EventEmitter -->
-<g id="node2" class="node">
-<title>EventEmitter</title>
-<g id="a_node2"><a xlink:href="EventEmitter.md" xlink:title="EventEmitter">
-<polygon fill="#ffffff" stroke="#000000" points="0,-237.5 0,-473.5 118.801,-473.5 118.801,-237.5 0,-237.5"/>
-<text text-anchor="middle" x="59.4005" y="-460.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">EventEmitter</text>
-<polyline fill="none" stroke="#000000" points="0,-453.5 118.801,-453.5 "/>
-<text text-anchor="start" x="8" y="-440.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">new EventEmitter()</text>
-<polyline fill="none" stroke="#000000" points="0,-433.5 118.801,-433.5 "/>
-<text text-anchor="start" x="8" y="-420.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">defaultMaxListeners</text>
-<polyline fill="none" stroke="#000000" points="0,-413.5 118.801,-413.5 "/>
-<text text-anchor="start" x="8" y="-400.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">on()</text>
-<text text-anchor="start" x="8" y="-388.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">addListener()</text>
-<text text-anchor="start" x="8" y="-376.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">prependListener()</text>
-<text text-anchor="start" x="8" y="-364.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">once()</text>
-<text text-anchor="start" x="8" y="-352.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">prependOnceListener()</text>
-<text text-anchor="start" x="8" y="-340.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">off()</text>
-<text text-anchor="start" x="8" y="-328.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">removeListener()</text>
-<text text-anchor="start" x="8" y="-316.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">removeAllListeners()</text>
-<text text-anchor="start" x="8" y="-304.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">setMaxListeners()</text>
-<text text-anchor="start" x="8" y="-292.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">getMaxListeners()</text>
-<text text-anchor="start" x="8" y="-280.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">listeners()</text>
-<text text-anchor="start" x="8" y="-268.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">listenerCount()</text>
-<text text-anchor="start" x="8" y="-256.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">eventNames()</text>
-<text text-anchor="start" x="8" y="-244.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">emit()</text>
-</a>
-</g>
-</g>
-<!-- object&#45;&gt;EventEmitter -->
-<g id="edge1" class="edge">
-<title>object-&gt;EventEmitter</title>
-<path fill="none" stroke="#000000" d="M59.4005,-500.1104C59.4005,-491.7939 59.4005,-482.9442 59.4005,-473.8773"/>
-<polygon fill="#000000" stroke="#000000" points="55.9006,-500.3354 59.4005,-510.3355 62.9006,-500.3355 55.9006,-500.3354"/>
-</g>
-<!-- Service -->
-<g id="node3" class="node">
-<title>Service</title>
-<g id="a_node3"><a xlink:title="Service">
-<polygon fill="#d3d3d3" stroke="#000000" points="20.846,-.5 20.846,-200.5 97.955,-200.5 97.955,-.5 20.846,-.5"/>
-<text text-anchor="middle" x="59.4005" y="-187.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Service</text>
-<polyline fill="none" stroke="#000000" points="20.846,-180.5 97.955,-180.5 "/>
-<text text-anchor="start" x="28.846" y="-167.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">new Service()</text>
-<polyline fill="none" stroke="#000000" points="20.846,-160.5 97.955,-160.5 "/>
-<text text-anchor="start" x="28.846" y="-147.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">name</text>
-<text text-anchor="start" x="28.846" y="-135.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">onstop</text>
-<text text-anchor="start" x="28.846" y="-123.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">onpause</text>
-<text text-anchor="start" x="28.846" y="-111.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">oncontinue</text>
-<polyline fill="none" stroke="#000000" points="20.846,-104.5 97.955,-104.5 "/>
-<text text-anchor="start" x="28.846" y="-91.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">install()</text>
-<text text-anchor="start" x="28.846" y="-79.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">remove()</text>
-<text text-anchor="start" x="28.846" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">start()</text>
-<text text-anchor="start" x="28.846" y="-55.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">stop()</text>
-<text text-anchor="start" x="28.846" y="-43.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">restart()</text>
-<text text-anchor="start" x="28.846" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">run()</text>
-<text text-anchor="start" x="28.846" y="-19.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">isInstalled()</text>
-<text text-anchor="start" x="28.846" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">isRunning()</text>
-</a>
-</g>
-</g>
-<!-- EventEmitter&#45;&gt;Service -->
-<g id="edge2" class="edge">
-<title>EventEmitter-&gt;Service</title>
-<path fill="none" stroke="#000000" d="M59.4005,-227.2686C59.4005,-218.3497 59.4005,-209.4356 59.4005,-200.7009"/>
-<polygon fill="#000000" stroke="#000000" points="55.9006,-227.3309 59.4005,-237.331 62.9006,-227.331 55.9006,-227.3309"/>
-</g>
-</g>
-</svg></div>
+<dot>digraph {node [ fontname = "Helvetica,sans-Serif", fontsize = 10, shape = "record" ];
+object[tooltip="object", style="filled", fillcolor="white", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"]
+EventEmitter[tooltip="EventEmitter", style="filled", fillcolor="white", URL="EventEmitter.md", label="{EventEmitter|new EventEmitter()\l|defaultMaxListeners\l|on()\laddListener()\lprependListener()\lonce()\lprependOnceListener()\loff()\lremoveListener()\lremoveAllListeners()\lsetMaxListeners()\lgetMaxListeners()\llisteners()\llistenerCount()\leventNames()\lemit()\l}"]
+Service[tooltip="Service", style="filled", fillcolor="lightgray", label="{Service|new Service()\l|name\lonstop\lonpause\loncontinue\l|install()\lremove()\lstart()\lstop()\lrestart()\lrun()\lisInstalled()\lisRunning()\l}"]
+object -> EventEmitter [dir=back]
+EventEmitter -> Service [dir=back]
+}</dot>
 
 ## 构造函数
         

@@ -2,50 +2,11 @@
 HeapSnapshots记录JS堆在某个时刻的状态
 
 ## 继承关系
-<div class="inherits"><svg width="90pt" height="242pt" viewBox="0.00 0.00 90.14 242.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 238)">
-<title>%0</title>
-<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-238 86.139,-238 86.139,4 -4,4"/>
-<!-- object -->
-<g id="node1" class="node">
-<title>object</title>
-<g id="a_node1"><a xlink:href="object.md" xlink:title="object">
-<polygon fill="#ffffff" stroke="#000000" points="12.238,-145.5 12.238,-233.5 69.901,-233.5 69.901,-145.5 12.238,-145.5"/>
-<text text-anchor="middle" x="41.0695" y="-220.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
-<polyline fill="none" stroke="#000000" points="12.238,-213.5 69.901,-213.5 "/>
-<text text-anchor="start" x="20.238" y="-200.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">dispose()</text>
-<text text-anchor="start" x="20.238" y="-188.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">equals()</text>
-<text text-anchor="start" x="20.238" y="-176.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toString()</text>
-<text text-anchor="start" x="20.238" y="-164.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toJSON()</text>
-<text text-anchor="start" x="20.238" y="-152.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">valueOf()</text>
-</a>
-</g>
-</g>
-<!-- HeapSnapshot -->
-<g id="node2" class="node">
-<title>HeapSnapshot</title>
-<g id="a_node2"><a xlink:title="HeapSnapshot">
-<polygon fill="#d3d3d3" stroke="#000000" points="0,-.5 0,-108.5 82.139,-108.5 82.139,-.5 0,-.5"/>
-<text text-anchor="middle" x="41.0695" y="-95.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">HeapSnapshot</text>
-<polyline fill="none" stroke="#000000" points="0,-88.5 82.139,-88.5 "/>
-<text text-anchor="start" x="8" y="-75.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">time</text>
-<text text-anchor="start" x="8" y="-63.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">root</text>
-<text text-anchor="start" x="8" y="-51.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">nodes</text>
-<polyline fill="none" stroke="#000000" points="0,-44.5 82.139,-44.5 "/>
-<text text-anchor="start" x="8" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">diff()</text>
-<text text-anchor="start" x="8" y="-19.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">getNodeById()</text>
-<text text-anchor="start" x="8" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">save()</text>
-</a>
-</g>
-</g>
-<!-- object&#45;&gt;HeapSnapshot -->
-<g id="edge1" class="edge">
-<title>object-&gt;HeapSnapshot</title>
-<path fill="none" stroke="#000000" d="M41.0695,-135.2187C41.0695,-126.4825 41.0695,-117.439 41.0695,-108.7047"/>
-<polygon fill="#000000" stroke="#000000" points="37.5696,-135.2959 41.0695,-145.296 44.5696,-135.296 37.5696,-135.2959"/>
-</g>
-</g>
-</svg></div>
+<dot>digraph {node [ fontname = "Helvetica,sans-Serif", fontsize = 10, shape = "record" ];
+object[tooltip="object", style="filled", fillcolor="white", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"]
+HeapSnapshot[tooltip="HeapSnapshot", style="filled", fillcolor="lightgray", label="{HeapSnapshot|time\lroot\lnodes\l|diff()\lgetNodeById()\lsave()\l}"]
+object -> HeapSnapshot [dir=back]
+}</dot>
 
 ## 成员属性
         

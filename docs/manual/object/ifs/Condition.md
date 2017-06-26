@@ -42,69 +42,13 @@ go
 ```
 
 ## 继承关系
-<div class="inherits"><svg width="94pt" height="339pt" viewBox="0.00 0.00 94.01 339.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 335)">
-<title>%0</title>
-<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-335 90.005,-335 90.005,4 -4,4"/>
-<!-- object -->
-<g id="node1" class="node">
-<title>object</title>
-<g id="a_node1"><a xlink:href="object.md" xlink:title="object">
-<polygon fill="#ffffff" stroke="#000000" points="14.171,-242.5 14.171,-330.5 71.834,-330.5 71.834,-242.5 14.171,-242.5"/>
-<text text-anchor="middle" x="43.0025" y="-317.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
-<polyline fill="none" stroke="#000000" points="14.171,-310.5 71.834,-310.5 "/>
-<text text-anchor="start" x="22.171" y="-297.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">dispose()</text>
-<text text-anchor="start" x="22.171" y="-285.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">equals()</text>
-<text text-anchor="start" x="22.171" y="-273.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toString()</text>
-<text text-anchor="start" x="22.171" y="-261.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toJSON()</text>
-<text text-anchor="start" x="22.171" y="-249.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">valueOf()</text>
-</a>
-</g>
-</g>
-<!-- Lock -->
-<g id="node2" class="node">
-<title>Lock</title>
-<g id="a_node2"><a xlink:href="Lock.md" xlink:title="Lock">
-<polygon fill="#ffffff" stroke="#000000" points="10.5565,-121.5 10.5565,-205.5 75.4485,-205.5 75.4485,-121.5 10.5565,-121.5"/>
-<text text-anchor="middle" x="43.0025" y="-192.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Lock</text>
-<polyline fill="none" stroke="#000000" points="10.5565,-185.5 75.4485,-185.5 "/>
-<text text-anchor="start" x="18.5565" y="-172.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">new Lock()</text>
-<polyline fill="none" stroke="#000000" points="10.5565,-165.5 75.4485,-165.5 "/>
-<text text-anchor="start" x="18.5565" y="-152.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">acquire()</text>
-<text text-anchor="start" x="18.5565" y="-140.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">release()</text>
-<text text-anchor="start" x="18.5565" y="-128.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">count()</text>
-</a>
-</g>
-</g>
-<!-- object&#45;&gt;Lock -->
-<g id="edge1" class="edge">
-<title>object-&gt;Lock</title>
-<path fill="none" stroke="#000000" d="M43.0025,-232.4278C43.0025,-223.4407 43.0025,-214.2389 43.0025,-205.6051"/>
-<polygon fill="#000000" stroke="#000000" points="39.5026,-232.4416 43.0025,-242.4416 46.5026,-232.4416 39.5026,-232.4416"/>
-</g>
-<!-- Condition -->
-<g id="node3" class="node">
-<title>Condition</title>
-<g id="a_node3"><a xlink:title="Condition">
-<polygon fill="#d3d3d3" stroke="#000000" points="0,-.5 0,-84.5 86.005,-84.5 86.005,-.5 0,-.5"/>
-<text text-anchor="middle" x="43.0025" y="-71.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Condition</text>
-<polyline fill="none" stroke="#000000" points="0,-64.5 86.005,-64.5 "/>
-<text text-anchor="start" x="8" y="-51.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">new Condition()</text>
-<polyline fill="none" stroke="#000000" points="0,-44.5 86.005,-44.5 "/>
-<text text-anchor="start" x="8" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">wait()</text>
-<text text-anchor="start" x="8" y="-19.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">notify()</text>
-<text text-anchor="start" x="8" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">notifyAll()</text>
-</a>
-</g>
-</g>
-<!-- Lock&#45;&gt;Condition -->
-<g id="edge2" class="edge">
-<title>Lock-&gt;Condition</title>
-<path fill="none" stroke="#000000" d="M43.0025,-110.977C43.0025,-102.1562 43.0025,-93.1052 43.0025,-84.5917"/>
-<polygon fill="#000000" stroke="#000000" points="39.5026,-111.18 43.0025,-121.1801 46.5026,-111.1801 39.5026,-111.18"/>
-</g>
-</g>
-</svg></div>
+<dot>digraph {node [ fontname = "Helvetica,sans-Serif", fontsize = 10, shape = "record" ];
+object[tooltip="object", style="filled", fillcolor="white", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"]
+Lock[tooltip="Lock", style="filled", fillcolor="white", URL="Lock.md", label="{Lock|new Lock()\l|acquire()\lrelease()\lcount()\l}"]
+Condition[tooltip="Condition", style="filled", fillcolor="lightgray", label="{Condition|new Condition()\l|wait()\lnotify()\lnotifyAll()\l}"]
+object -> Lock [dir=back]
+Lock -> Condition [dir=back]
+}</dot>
 
 ## 构造函数
         

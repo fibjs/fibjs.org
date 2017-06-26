@@ -2,120 +2,15 @@
 [http](../../module/ifs/http.md) 请求消息对象
 
 ## 继承关系
-<div class="inherits"><svg width="107pt" height="812pt" viewBox="0.00 0.00 107.35 812.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 808)">
-<title>%0</title>
-<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-808 103.347,-808 103.347,4 -4,4"/>
-<!-- object -->
-<g id="node1" class="node">
-<title>object</title>
-<g id="a_node1"><a xlink:href="object.md" xlink:title="object">
-<polygon fill="#ffffff" stroke="#000000" points="20.842,-715.5 20.842,-803.5 78.505,-803.5 78.505,-715.5 20.842,-715.5"/>
-<text text-anchor="middle" x="49.6735" y="-790.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
-<polyline fill="none" stroke="#000000" points="20.842,-783.5 78.505,-783.5 "/>
-<text text-anchor="start" x="28.842" y="-770.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">dispose()</text>
-<text text-anchor="start" x="28.842" y="-758.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">equals()</text>
-<text text-anchor="start" x="28.842" y="-746.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toString()</text>
-<text text-anchor="start" x="28.842" y="-734.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toJSON()</text>
-<text text-anchor="start" x="28.842" y="-722.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">valueOf()</text>
-</a>
-</g>
-</g>
-<!-- Message -->
-<g id="node2" class="node">
-<title>Message</title>
-<g id="a_node2"><a xlink:href="Message.md" xlink:title="Message">
-<polygon fill="#ffffff" stroke="#000000" points="7.504,-386.5 7.504,-678.5 91.843,-678.5 91.843,-386.5 7.504,-386.5"/>
-<text text-anchor="middle" x="49.6735" y="-665.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Message</text>
-<polyline fill="none" stroke="#000000" points="7.504,-658.5 91.843,-658.5 "/>
-<text text-anchor="start" x="15.504" y="-645.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">new Message()</text>
-<polyline fill="none" stroke="#000000" points="7.504,-638.5 91.843,-638.5 "/>
-<text text-anchor="start" x="15.504" y="-625.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">TEXT</text>
-<text text-anchor="start" x="15.504" y="-613.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">BINARY</text>
-<polyline fill="none" stroke="#000000" points="7.504,-606.5 91.843,-606.5 "/>
-<text text-anchor="start" x="15.504" y="-593.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">value</text>
-<text text-anchor="start" x="15.504" y="-581.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">params</text>
-<text text-anchor="start" x="15.504" y="-569.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">type</text>
-<text text-anchor="start" x="15.504" y="-557.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">data</text>
-<text text-anchor="start" x="15.504" y="-545.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">body</text>
-<text text-anchor="start" x="15.504" y="-533.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">length</text>
-<text text-anchor="start" x="15.504" y="-521.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">stream</text>
-<text text-anchor="start" x="15.504" y="-509.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">response</text>
-<text text-anchor="start" x="15.504" y="-497.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">lastError</text>
-<polyline fill="none" stroke="#000000" points="7.504,-490.5 91.843,-490.5 "/>
-<text text-anchor="start" x="15.504" y="-477.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">read()</text>
-<text text-anchor="start" x="15.504" y="-465.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readAll()</text>
-<text text-anchor="start" x="15.504" y="-453.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">write()</text>
-<text text-anchor="start" x="15.504" y="-441.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">end()</text>
-<text text-anchor="start" x="15.504" y="-429.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">isEnded()</text>
-<text text-anchor="start" x="15.504" y="-417.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">clear()</text>
-<text text-anchor="start" x="15.504" y="-405.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">sendTo()</text>
-<text text-anchor="start" x="15.504" y="-393.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readFrom()</text>
-</a>
-</g>
-</g>
-<!-- object&#45;&gt;Message -->
-<g id="edge1" class="edge">
-<title>object-&gt;Message</title>
-<path fill="none" stroke="#000000" d="M49.6735,-705.2285C49.6735,-696.8815 49.6735,-687.9408 49.6735,-678.6829"/>
-<polygon fill="#000000" stroke="#000000" points="46.1736,-705.4629 49.6735,-715.463 53.1736,-705.463 46.1736,-705.4629"/>
-</g>
-<!-- HttpMessage -->
-<g id="node3" class="node">
-<title>HttpMessage</title>
-<g id="a_node3"><a xlink:href="HttpMessage.md" xlink:title="HttpMessage">
-<polygon fill="#ffffff" stroke="#000000" points="0,-157.5 0,-349.5 99.347,-349.5 99.347,-157.5 0,-157.5"/>
-<text text-anchor="middle" x="49.6735" y="-336.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">HttpMessage</text>
-<polyline fill="none" stroke="#000000" points="0,-329.5 99.347,-329.5 "/>
-<text text-anchor="start" x="8" y="-316.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">protocol</text>
-<text text-anchor="start" x="8" y="-304.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">headers</text>
-<text text-anchor="start" x="8" y="-292.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">keepAlive</text>
-<text text-anchor="start" x="8" y="-280.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">upgrade</text>
-<text text-anchor="start" x="8" y="-268.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">maxHeadersCount</text>
-<text text-anchor="start" x="8" y="-256.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">maxUploadSize</text>
-<text text-anchor="start" x="8" y="-244.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">socket</text>
-<polyline fill="none" stroke="#000000" points="0,-237.5 99.347,-237.5 "/>
-<text text-anchor="start" x="8" y="-224.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">hasHeader()</text>
-<text text-anchor="start" x="8" y="-212.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">firstHeader()</text>
-<text text-anchor="start" x="8" y="-200.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">allHeader()</text>
-<text text-anchor="start" x="8" y="-188.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">addHeader()</text>
-<text text-anchor="start" x="8" y="-176.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">setHeader()</text>
-<text text-anchor="start" x="8" y="-164.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">removeHeader()</text>
-</a>
-</g>
-</g>
-<!-- Message&#45;&gt;HttpMessage -->
-<g id="edge2" class="edge">
-<title>Message-&gt;HttpMessage</title>
-<path fill="none" stroke="#000000" d="M49.6735,-376.2126C49.6735,-367.1622 49.6735,-358.2075 49.6735,-349.5038"/>
-<polygon fill="#000000" stroke="#000000" points="46.1736,-376.463 49.6735,-386.4631 53.1736,-376.4631 46.1736,-376.463"/>
-</g>
-<!-- HttpRequest -->
-<g id="node4" class="node">
-<title>HttpRequest</title>
-<g id="a_node4"><a xlink:title="HttpRequest">
-<polygon fill="#d3d3d3" stroke="#000000" points=".0015,-.5 .0015,-120.5 99.3455,-120.5 99.3455,-.5 .0015,-.5"/>
-<text text-anchor="middle" x="49.6735" y="-107.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">HttpRequest</text>
-<polyline fill="none" stroke="#000000" points=".0015,-100.5 99.3455,-100.5 "/>
-<text text-anchor="start" x="8.0015" y="-87.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">new HttpRequest()</text>
-<polyline fill="none" stroke="#000000" points=".0015,-80.5 99.3455,-80.5 "/>
-<text text-anchor="start" x="8.0015" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">method</text>
-<text text-anchor="start" x="8.0015" y="-55.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">address</text>
-<text text-anchor="start" x="8.0015" y="-43.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">queryString</text>
-<text text-anchor="start" x="8.0015" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">cookies</text>
-<text text-anchor="start" x="8.0015" y="-19.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">form</text>
-<text text-anchor="start" x="8.0015" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">query</text>
-</a>
-</g>
-</g>
-<!-- HttpMessage&#45;&gt;HttpRequest -->
-<g id="edge3" class="edge">
-<title>HttpMessage-&gt;HttpRequest</title>
-<path fill="none" stroke="#000000" d="M49.6735,-147.0742C49.6735,-138.0612 49.6735,-129.165 49.6735,-120.7044"/>
-<polygon fill="#000000" stroke="#000000" points="46.1736,-147.2827 49.6735,-157.2827 53.1736,-147.2827 46.1736,-147.2827"/>
-</g>
-</g>
-</svg></div>
+<dot>digraph {node [ fontname = "Helvetica,sans-Serif", fontsize = 10, shape = "record" ];
+object[tooltip="object", style="filled", fillcolor="white", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"]
+Message[tooltip="Message", style="filled", fillcolor="white", URL="Message.md", label="{Message|new Message()\l|TEXT\lBINARY\l|value\lparams\ltype\ldata\lbody\llength\lstream\lresponse\llastError\l|read()\lreadAll()\lwrite()\lend()\lisEnded()\lclear()\lsendTo()\lreadFrom()\l}"]
+HttpMessage[tooltip="HttpMessage", style="filled", fillcolor="white", URL="HttpMessage.md", label="{HttpMessage|protocol\lheaders\lkeepAlive\lupgrade\lmaxHeadersCount\lmaxUploadSize\lsocket\l|hasHeader()\lfirstHeader()\lallHeader()\laddHeader()\lsetHeader()\lremoveHeader()\l}"]
+HttpRequest[tooltip="HttpRequest", style="filled", fillcolor="lightgray", label="{HttpRequest|new HttpRequest()\l|method\laddress\lqueryString\lcookies\lform\lquery\l}"]
+object -> Message [dir=back]
+Message -> HttpMessage [dir=back]
+HttpMessage -> HttpRequest [dir=back]
+}</dot>
 
 ## 构造函数
         

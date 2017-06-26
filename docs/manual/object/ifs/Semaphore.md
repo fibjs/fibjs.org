@@ -24,69 +24,13 @@ l.release();
 生产者/消费者模式通常则将信号量与队列配合使用。生产者向队列中加入数据，并 post 一个信号，消费者则先 wait 信号，获取信号后去队查询取数据。
 
 ## 继承关系
-<div class="inherits"><svg width="103pt" height="339pt" viewBox="0.00 0.00 103.46 339.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 335)">
-<title>%0</title>
-<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-335 99.455,-335 99.455,4 -4,4"/>
-<!-- object -->
-<g id="node1" class="node">
-<title>object</title>
-<g id="a_node1"><a xlink:href="object.md" xlink:title="object">
-<polygon fill="#ffffff" stroke="#000000" points="18.896,-242.5 18.896,-330.5 76.559,-330.5 76.559,-242.5 18.896,-242.5"/>
-<text text-anchor="middle" x="47.7275" y="-317.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
-<polyline fill="none" stroke="#000000" points="18.896,-310.5 76.559,-310.5 "/>
-<text text-anchor="start" x="26.896" y="-297.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">dispose()</text>
-<text text-anchor="start" x="26.896" y="-285.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">equals()</text>
-<text text-anchor="start" x="26.896" y="-273.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toString()</text>
-<text text-anchor="start" x="26.896" y="-261.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toJSON()</text>
-<text text-anchor="start" x="26.896" y="-249.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">valueOf()</text>
-</a>
-</g>
-</g>
-<!-- Lock -->
-<g id="node2" class="node">
-<title>Lock</title>
-<g id="a_node2"><a xlink:href="Lock.md" xlink:title="Lock">
-<polygon fill="#ffffff" stroke="#000000" points="15.2815,-121.5 15.2815,-205.5 80.1735,-205.5 80.1735,-121.5 15.2815,-121.5"/>
-<text text-anchor="middle" x="47.7275" y="-192.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Lock</text>
-<polyline fill="none" stroke="#000000" points="15.2815,-185.5 80.1735,-185.5 "/>
-<text text-anchor="start" x="23.2815" y="-172.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">new Lock()</text>
-<polyline fill="none" stroke="#000000" points="15.2815,-165.5 80.1735,-165.5 "/>
-<text text-anchor="start" x="23.2815" y="-152.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">acquire()</text>
-<text text-anchor="start" x="23.2815" y="-140.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">release()</text>
-<text text-anchor="start" x="23.2815" y="-128.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">count()</text>
-</a>
-</g>
-</g>
-<!-- object&#45;&gt;Lock -->
-<g id="edge1" class="edge">
-<title>object-&gt;Lock</title>
-<path fill="none" stroke="#000000" d="M47.7275,-232.4278C47.7275,-223.4407 47.7275,-214.2389 47.7275,-205.6051"/>
-<polygon fill="#000000" stroke="#000000" points="44.2276,-232.4416 47.7275,-242.4416 51.2276,-232.4416 44.2276,-232.4416"/>
-</g>
-<!-- Semaphore -->
-<g id="node3" class="node">
-<title>Semaphore</title>
-<g id="a_node3"><a xlink:title="Semaphore">
-<polygon fill="#d3d3d3" stroke="#000000" points="0,-.5 0,-84.5 95.455,-84.5 95.455,-.5 0,-.5"/>
-<text text-anchor="middle" x="47.7275" y="-71.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Semaphore</text>
-<polyline fill="none" stroke="#000000" points="0,-64.5 95.455,-64.5 "/>
-<text text-anchor="start" x="8" y="-51.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">new Semaphore()</text>
-<polyline fill="none" stroke="#000000" points="0,-44.5 95.455,-44.5 "/>
-<text text-anchor="start" x="8" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">wait()</text>
-<text text-anchor="start" x="8" y="-19.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">post()</text>
-<text text-anchor="start" x="8" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">trywait()</text>
-</a>
-</g>
-</g>
-<!-- Lock&#45;&gt;Semaphore -->
-<g id="edge2" class="edge">
-<title>Lock-&gt;Semaphore</title>
-<path fill="none" stroke="#000000" d="M47.7275,-110.977C47.7275,-102.1562 47.7275,-93.1052 47.7275,-84.5917"/>
-<polygon fill="#000000" stroke="#000000" points="44.2276,-111.18 47.7275,-121.1801 51.2276,-111.1801 44.2276,-111.18"/>
-</g>
-</g>
-</svg></div>
+<dot>digraph {node [ fontname = "Helvetica,sans-Serif", fontsize = 10, shape = "record" ];
+object[tooltip="object", style="filled", fillcolor="white", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"]
+Lock[tooltip="Lock", style="filled", fillcolor="white", URL="Lock.md", label="{Lock|new Lock()\l|acquire()\lrelease()\lcount()\l}"]
+Semaphore[tooltip="Semaphore", style="filled", fillcolor="lightgray", label="{Semaphore|new Semaphore()\l|wait()\lpost()\ltrywait()\l}"]
+object -> Lock [dir=back]
+Lock -> Semaphore [dir=back]
+}</dot>
 
 ## 构造函数
         

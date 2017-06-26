@@ -8,58 +8,11 @@ var n = new Int64(123);
 ```
 
 ## 继承关系
-<div class="inherits"><svg width="75pt" height="334pt" viewBox="0.00 0.00 74.55 334.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 330)">
-<title>%0</title>
-<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-330 70.55,-330 70.55,4 -4,4"/>
-<!-- object -->
-<g id="node1" class="node">
-<title>object</title>
-<g id="a_node1"><a xlink:href="object.md" xlink:title="object">
-<polygon fill="#ffffff" stroke="#000000" points="4.4435,-237.5 4.4435,-325.5 62.1065,-325.5 62.1065,-237.5 4.4435,-237.5"/>
-<text text-anchor="middle" x="33.275" y="-312.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
-<polyline fill="none" stroke="#000000" points="4.4435,-305.5 62.1065,-305.5 "/>
-<text text-anchor="start" x="12.4435" y="-292.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">dispose()</text>
-<text text-anchor="start" x="12.4435" y="-280.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">equals()</text>
-<text text-anchor="start" x="12.4435" y="-268.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toString()</text>
-<text text-anchor="start" x="12.4435" y="-256.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toJSON()</text>
-<text text-anchor="start" x="12.4435" y="-244.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">valueOf()</text>
-</a>
-</g>
-</g>
-<!-- Int64 -->
-<g id="node2" class="node">
-<title>Int64</title>
-<g id="a_node2"><a xlink:title="Int64">
-<polygon fill="#d3d3d3" stroke="#000000" points="0,-.5 0,-200.5 66.55,-200.5 66.55,-.5 0,-.5"/>
-<text text-anchor="middle" x="33.275" y="-187.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Int64</text>
-<polyline fill="none" stroke="#000000" points="0,-180.5 66.55,-180.5 "/>
-<text text-anchor="start" x="8" y="-167.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">new Int64()</text>
-<polyline fill="none" stroke="#000000" points="0,-160.5 66.55,-160.5 "/>
-<text text-anchor="start" x="8" y="-147.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">hi</text>
-<text text-anchor="start" x="8" y="-135.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">lo</text>
-<polyline fill="none" stroke="#000000" points="0,-128.5 66.55,-128.5 "/>
-<text text-anchor="start" x="8" y="-115.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">compare()</text>
-<text text-anchor="start" x="8" y="-103.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">shiftLeft()</text>
-<text text-anchor="start" x="8" y="-91.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">shiftRight()</text>
-<text text-anchor="start" x="8" y="-79.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">and()</text>
-<text text-anchor="start" x="8" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">or()</text>
-<text text-anchor="start" x="8" y="-55.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">xor()</text>
-<text text-anchor="start" x="8" y="-43.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">add()</text>
-<text text-anchor="start" x="8" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">sub()</text>
-<text text-anchor="start" x="8" y="-19.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toNumber()</text>
-<text text-anchor="start" x="8" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toString()</text>
-</a>
-</g>
-</g>
-<!-- object&#45;&gt;Int64 -->
-<g id="edge1" class="edge">
-<title>object-&gt;Int64</title>
-<path fill="none" stroke="#000000" d="M33.275,-227.2126C33.275,-218.7819 33.275,-209.849 33.275,-200.7837"/>
-<polygon fill="#000000" stroke="#000000" points="29.7751,-227.2224 33.275,-237.2224 36.7751,-227.2225 29.7751,-227.2224"/>
-</g>
-</g>
-</svg></div>
+<dot>digraph {node [ fontname = "Helvetica,sans-Serif", fontsize = 10, shape = "record" ];
+object[tooltip="object", style="filled", fillcolor="white", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"]
+Int64[tooltip="Int64", style="filled", fillcolor="lightgray", label="{Int64|new Int64()\l|hi\llo\l|compare()\lshiftLeft()\lshiftRight()\land()\lor()\lxor()\ladd()\lsub()\ltoNumber()\ltoString()\l}"]
+object -> Int64 [dir=back]
+}</dot>
 
 ## 构造函数
         

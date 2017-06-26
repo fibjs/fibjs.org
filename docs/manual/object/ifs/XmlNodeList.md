@@ -2,48 +2,11 @@
 XmlNodeList 对象代表一个有顺序的节点列表
 
 ## 继承关系
-<div class="inherits"><svg width="81pt" height="214pt" viewBox="0.00 0.00 80.67 214.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 210)">
-<title>%0</title>
-<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-210 76.67,-210 76.67,4 -4,4"/>
-<!-- object -->
-<g id="node1" class="node">
-<title>object</title>
-<g id="a_node1"><a xlink:href="object.md" xlink:title="object">
-<polygon fill="#ffffff" stroke="#000000" points="7.5035,-117.5 7.5035,-205.5 65.1665,-205.5 65.1665,-117.5 7.5035,-117.5"/>
-<text text-anchor="middle" x="36.335" y="-192.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
-<polyline fill="none" stroke="#000000" points="7.5035,-185.5 65.1665,-185.5 "/>
-<text text-anchor="start" x="15.5035" y="-172.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">dispose()</text>
-<text text-anchor="start" x="15.5035" y="-160.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">equals()</text>
-<text text-anchor="start" x="15.5035" y="-148.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toString()</text>
-<text text-anchor="start" x="15.5035" y="-136.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toJSON()</text>
-<text text-anchor="start" x="15.5035" y="-124.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">valueOf()</text>
-</a>
-</g>
-</g>
-<!-- XmlNodeList -->
-<g id="node2" class="node">
-<title>XmlNodeList</title>
-<g id="a_node2"><a xlink:title="XmlNodeList">
-<polygon fill="#d3d3d3" stroke="#000000" points="0,-.5 0,-80.5 72.67,-80.5 72.67,-.5 0,-.5"/>
-<text text-anchor="middle" x="36.335" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">XmlNodeList</text>
-<polyline fill="none" stroke="#000000" points="0,-60.5 72.67,-60.5 "/>
-<text text-anchor="start" x="8" y="-47.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">operator[]</text>
-<polyline fill="none" stroke="#000000" points="0,-40.5 72.67,-40.5 "/>
-<text text-anchor="start" x="8" y="-27.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">length</text>
-<polyline fill="none" stroke="#000000" points="0,-20.5 72.67,-20.5 "/>
-<text text-anchor="start" x="8" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">item()</text>
-</a>
-</g>
-</g>
-<!-- object&#45;&gt;XmlNodeList -->
-<g id="edge1" class="edge">
-<title>object-&gt;XmlNodeList</title>
-<path fill="none" stroke="#000000" d="M36.335,-107.4395C36.335,-98.4414 36.335,-89.2511 36.335,-80.677"/>
-<polygon fill="#000000" stroke="#000000" points="32.8351,-107.4739 36.335,-117.4739 39.8351,-107.474 32.8351,-107.4739"/>
-</g>
-</g>
-</svg></div>
+<dot>digraph {node [ fontname = "Helvetica,sans-Serif", fontsize = 10, shape = "record" ];
+object[tooltip="object", style="filled", fillcolor="white", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"]
+XmlNodeList[tooltip="XmlNodeList", style="filled", fillcolor="lightgray", label="{XmlNodeList|operator[]\l|length\l|item()\l}"]
+object -> XmlNodeList [dir=back]
+}</dot>
 
 ## 下标操作
         

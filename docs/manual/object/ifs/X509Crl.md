@@ -8,49 +8,11 @@ var k = new crypto.X509Crl();
 ```
 
 ## 继承关系
-<div class="inherits"><svg width="88pt" height="230pt" viewBox="0.00 0.00 87.89 230.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 226)">
-<title>%0</title>
-<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-226 83.887,-226 83.887,4 -4,4"/>
-<!-- object -->
-<g id="node1" class="node">
-<title>object</title>
-<g id="a_node1"><a xlink:href="object.md" xlink:title="object">
-<polygon fill="#ffffff" stroke="#000000" points="11.112,-133.5 11.112,-221.5 68.775,-221.5 68.775,-133.5 11.112,-133.5"/>
-<text text-anchor="middle" x="39.9435" y="-208.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
-<polyline fill="none" stroke="#000000" points="11.112,-201.5 68.775,-201.5 "/>
-<text text-anchor="start" x="19.112" y="-188.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">dispose()</text>
-<text text-anchor="start" x="19.112" y="-176.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">equals()</text>
-<text text-anchor="start" x="19.112" y="-164.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toString()</text>
-<text text-anchor="start" x="19.112" y="-152.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toJSON()</text>
-<text text-anchor="start" x="19.112" y="-140.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">valueOf()</text>
-</a>
-</g>
-</g>
-<!-- X509Crl -->
-<g id="node2" class="node">
-<title>X509Crl</title>
-<g id="a_node2"><a xlink:title="X509Crl">
-<polygon fill="#d3d3d3" stroke="#000000" points="0,-.5 0,-96.5 79.887,-96.5 79.887,-.5 0,-.5"/>
-<text text-anchor="middle" x="39.9435" y="-83.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">X509Crl</text>
-<polyline fill="none" stroke="#000000" points="0,-76.5 79.887,-76.5 "/>
-<text text-anchor="start" x="8" y="-63.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">new X509Crl()</text>
-<polyline fill="none" stroke="#000000" points="0,-56.5 79.887,-56.5 "/>
-<text text-anchor="start" x="8" y="-43.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">load()</text>
-<text text-anchor="start" x="8" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">loadFile()</text>
-<text text-anchor="start" x="8" y="-19.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">dump()</text>
-<text text-anchor="start" x="8" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">clear()</text>
-</a>
-</g>
-</g>
-<!-- object&#45;&gt;X509Crl -->
-<g id="edge1" class="edge">
-<title>object-&gt;X509Crl</title>
-<path fill="none" stroke="#000000" d="M39.9435,-123.2875C39.9435,-114.4791 39.9435,-105.4079 39.9435,-96.7541"/>
-<polygon fill="#000000" stroke="#000000" points="36.4436,-123.4663 39.9435,-133.4663 43.4436,-123.4664 36.4436,-123.4663"/>
-</g>
-</g>
-</svg></div>
+<dot>digraph {node [ fontname = "Helvetica,sans-Serif", fontsize = 10, shape = "record" ];
+object[tooltip="object", style="filled", fillcolor="white", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"]
+X509Crl[tooltip="X509Crl", style="filled", fillcolor="lightgray", label="{X509Crl|new X509Crl()\l|load()\lloadFile()\ldump()\lclear()\l}"]
+object -> X509Crl [dir=back]
+}</dot>
 
 ## 构造函数
         

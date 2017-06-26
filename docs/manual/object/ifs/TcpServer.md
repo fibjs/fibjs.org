@@ -17,117 +17,17 @@ new net.TcpServer(8080, func).run();
 ```
 
 ## 继承关系
-<div class="inherits"><svg width="212pt" height="536pt" viewBox="0.00 0.00 212.23 536.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 532)">
-<title>%0</title>
-<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-532 208.227,-532 208.227,4 -4,4"/>
-<!-- object -->
-<g id="node1" class="node">
-<title>object</title>
-<g id="a_node1"><a xlink:href="object.md" xlink:title="object">
-<polygon fill="#ffffff" stroke="#000000" points="75.842,-439.5 75.842,-527.5 133.505,-527.5 133.505,-439.5 75.842,-439.5"/>
-<text text-anchor="middle" x="104.6735" y="-514.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
-<polyline fill="none" stroke="#000000" points="75.842,-507.5 133.505,-507.5 "/>
-<text text-anchor="start" x="83.842" y="-494.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">dispose()</text>
-<text text-anchor="start" x="83.842" y="-482.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">equals()</text>
-<text text-anchor="start" x="83.842" y="-470.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toString()</text>
-<text text-anchor="start" x="83.842" y="-458.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toJSON()</text>
-<text text-anchor="start" x="83.842" y="-446.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">valueOf()</text>
-</a>
-</g>
-</g>
-<!-- TcpServer -->
-<g id="node2" class="node">
-<title>TcpServer</title>
-<g id="a_node2"><a xlink:title="TcpServer">
-<polygon fill="#d3d3d3" stroke="#000000" points="59.73,-274.5 59.73,-402.5 149.617,-402.5 149.617,-274.5 59.73,-274.5"/>
-<text text-anchor="middle" x="104.6735" y="-389.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">TcpServer</text>
-<polyline fill="none" stroke="#000000" points="59.73,-382.5 149.617,-382.5 "/>
-<text text-anchor="start" x="67.73" y="-369.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">new TcpServer()</text>
-<polyline fill="none" stroke="#000000" points="59.73,-362.5 149.617,-362.5 "/>
-<text text-anchor="start" x="67.73" y="-349.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">socket</text>
-<text text-anchor="start" x="67.73" y="-337.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">handler</text>
-<text text-anchor="start" x="67.73" y="-325.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">stats</text>
-<polyline fill="none" stroke="#000000" points="59.73,-318.5 149.617,-318.5 "/>
-<text text-anchor="start" x="67.73" y="-305.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">run()</text>
-<text text-anchor="start" x="67.73" y="-293.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">asyncRun()</text>
-<text text-anchor="start" x="67.73" y="-281.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">stop()</text>
-</a>
-</g>
-</g>
-<!-- object&#45;&gt;TcpServer -->
-<g id="edge1" class="edge">
-<title>object-&gt;TcpServer</title>
-<path fill="none" stroke="#000000" d="M104.6735,-429.2025C104.6735,-420.5059 104.6735,-411.4356 104.6735,-402.5377"/>
-<polygon fill="#000000" stroke="#000000" points="101.1736,-429.2073 104.6735,-439.2073 108.1736,-429.2074 101.1736,-429.2073"/>
-</g>
-<!-- HttpServer -->
-<g id="node3" class="node">
-<title>HttpServer</title>
-<g id="a_node3"><a xlink:href="HttpServer.md" xlink:title="HttpServer">
-<polygon fill="#ffffff" stroke="#000000" points="0,-109.5 0,-237.5 99.347,-237.5 99.347,-109.5 0,-109.5"/>
-<text text-anchor="middle" x="49.6735" y="-224.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">HttpServer</text>
-<polyline fill="none" stroke="#000000" points="0,-217.5 99.347,-217.5 "/>
-<text text-anchor="start" x="8" y="-204.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">new HttpServer()</text>
-<polyline fill="none" stroke="#000000" points="0,-197.5 99.347,-197.5 "/>
-<text text-anchor="start" x="8" y="-184.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">crossDomain</text>
-<text text-anchor="start" x="8" y="-172.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">forceGZIP</text>
-<text text-anchor="start" x="8" y="-160.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">maxHeadersCount</text>
-<text text-anchor="start" x="8" y="-148.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">maxUploadSize</text>
-<text text-anchor="start" x="8" y="-136.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">httpStats</text>
-<polyline fill="none" stroke="#000000" points="0,-129.5 99.347,-129.5 "/>
-<text text-anchor="start" x="8" y="-116.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">onerror()</text>
-</a>
-</g>
-</g>
-<!-- TcpServer&#45;&gt;HttpServer -->
-<g id="edge2" class="edge">
-<title>TcpServer-&gt;HttpServer</title>
-<path fill="none" stroke="#000000" d="M80.0232,-264.5492C77.0253,-255.5554 73.9817,-246.4245 71.037,-237.5904"/>
-<polygon fill="#000000" stroke="#000000" points="76.7688,-265.8542 83.2516,-274.2342 83.4096,-263.6406 76.7688,-265.8542"/>
-</g>
-<!-- SslServer -->
-<g id="node5" class="node">
-<title>SslServer</title>
-<g id="a_node5"><a xlink:href="SslServer.md" xlink:title="SslServer">
-<polygon fill="#ffffff" stroke="#000000" points="117.12,-137.5 117.12,-209.5 204.227,-209.5 204.227,-137.5 117.12,-137.5"/>
-<text text-anchor="middle" x="160.6735" y="-196.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">SslServer</text>
-<polyline fill="none" stroke="#000000" points="117.12,-189.5 204.227,-189.5 "/>
-<text text-anchor="start" x="125.12" y="-176.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">new SslServer()</text>
-<polyline fill="none" stroke="#000000" points="117.12,-169.5 204.227,-169.5 "/>
-<text text-anchor="start" x="125.12" y="-156.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">verification</text>
-<text text-anchor="start" x="125.12" y="-144.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">ca</text>
-</a>
-</g>
-</g>
-<!-- TcpServer&#45;&gt;SslServer -->
-<g id="edge4" class="edge">
-<title>TcpServer-&gt;SslServer</title>
-<path fill="none" stroke="#000000" d="M129.739,-264.6463C136.2082,-245.5852 142.8887,-225.9016 148.3787,-209.7259"/>
-<polygon fill="#000000" stroke="#000000" points="126.3845,-263.6399 126.4849,-274.2342 133.0132,-265.8896 126.3845,-263.6399"/>
-</g>
-<!-- HttpsServer -->
-<g id="node4" class="node">
-<title>HttpsServer</title>
-<g id="a_node4"><a xlink:href="HttpsServer.md" xlink:title="HttpsServer">
-<polygon fill="#ffffff" stroke="#000000" points="1.396,-.5 1.396,-72.5 97.951,-72.5 97.951,-.5 1.396,-.5"/>
-<text text-anchor="middle" x="49.6735" y="-59.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">HttpsServer</text>
-<polyline fill="none" stroke="#000000" points="1.396,-52.5 97.951,-52.5 "/>
-<text text-anchor="start" x="9.396" y="-39.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">new HttpsServer()</text>
-<polyline fill="none" stroke="#000000" points="1.396,-32.5 97.951,-32.5 "/>
-<text text-anchor="start" x="9.396" y="-19.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">verification</text>
-<text text-anchor="start" x="9.396" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">ca</text>
-</a>
-</g>
-</g>
-<!-- HttpServer&#45;&gt;HttpsServer -->
-<g id="edge3" class="edge">
-<title>HttpServer-&gt;HttpsServer</title>
-<path fill="none" stroke="#000000" d="M49.6735,-99.3022C49.6735,-90.0059 49.6735,-80.8505 49.6735,-72.5273"/>
-<polygon fill="#000000" stroke="#000000" points="46.1736,-99.4123 49.6735,-109.4123 53.1736,-99.4124 46.1736,-99.4123"/>
-</g>
-</g>
-</svg></div>
+<dot>digraph {node [ fontname = "Helvetica,sans-Serif", fontsize = 10, shape = "record" ];
+object[tooltip="object", style="filled", fillcolor="white", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"]
+TcpServer[tooltip="TcpServer", style="filled", fillcolor="lightgray", label="{TcpServer|new TcpServer()\l|socket\lhandler\lstats\l|run()\lasyncRun()\lstop()\l}"]
+HttpServer[tooltip="HttpServer", style="filled", fillcolor="white", URL="HttpServer.md", label="{HttpServer|new HttpServer()\l|crossDomain\lforceGZIP\lmaxHeadersCount\lmaxUploadSize\lhttpStats\l|onerror()\l}"]
+HttpsServer[tooltip="HttpsServer", style="filled", fillcolor="white", URL="HttpsServer.md", label="{HttpsServer|new HttpsServer()\l|verification\lca\l}"]
+SslServer[tooltip="SslServer", style="filled", fillcolor="white", URL="SslServer.md", label="{SslServer|new SslServer()\l|verification\lca\l}"]
+object -> TcpServer [dir=back]
+TcpServer -> HttpServer [dir=back]
+HttpServer -> HttpsServer [dir=back]
+TcpServer -> SslServer [dir=back]
+}</dot>
 
 ## 构造函数
         

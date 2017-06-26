@@ -2,55 +2,11 @@
 [http](../../module/ifs/http.md) Cookie 对象，用于添加和处理 cookie
 
 ## 继承关系
-<div class="inherits"><svg width="101pt" height="298pt" viewBox="0.00 0.00 101.22 298.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 294)">
-<title>%0</title>
-<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-294 97.225,-294 97.225,4 -4,4"/>
-<!-- object -->
-<g id="node1" class="node">
-<title>object</title>
-<g id="a_node1"><a xlink:href="object.md" xlink:title="object">
-<polygon fill="#ffffff" stroke="#000000" points="17.781,-201.5 17.781,-289.5 75.444,-289.5 75.444,-201.5 17.781,-201.5"/>
-<text text-anchor="middle" x="46.6125" y="-276.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
-<polyline fill="none" stroke="#000000" points="17.781,-269.5 75.444,-269.5 "/>
-<text text-anchor="start" x="25.781" y="-256.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">dispose()</text>
-<text text-anchor="start" x="25.781" y="-244.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">equals()</text>
-<text text-anchor="start" x="25.781" y="-232.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toString()</text>
-<text text-anchor="start" x="25.781" y="-220.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toJSON()</text>
-<text text-anchor="start" x="25.781" y="-208.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">valueOf()</text>
-</a>
-</g>
-</g>
-<!-- HttpCookie -->
-<g id="node2" class="node">
-<title>HttpCookie</title>
-<g id="a_node2"><a xlink:title="HttpCookie">
-<polygon fill="#d3d3d3" stroke="#000000" points="0,-.5 0,-164.5 93.225,-164.5 93.225,-.5 0,-.5"/>
-<text text-anchor="middle" x="46.6125" y="-151.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">HttpCookie</text>
-<polyline fill="none" stroke="#000000" points="0,-144.5 93.225,-144.5 "/>
-<text text-anchor="start" x="8" y="-131.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">new HttpCookie()</text>
-<polyline fill="none" stroke="#000000" points="0,-124.5 93.225,-124.5 "/>
-<text text-anchor="start" x="8" y="-111.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">name</text>
-<text text-anchor="start" x="8" y="-99.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">value</text>
-<text text-anchor="start" x="8" y="-87.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">domain</text>
-<text text-anchor="start" x="8" y="-75.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">path</text>
-<text text-anchor="start" x="8" y="-63.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">expires</text>
-<text text-anchor="start" x="8" y="-51.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">httpOnly</text>
-<text text-anchor="start" x="8" y="-39.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">secure</text>
-<polyline fill="none" stroke="#000000" points="0,-32.5 93.225,-32.5 "/>
-<text text-anchor="start" x="8" y="-19.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">parse()</text>
-<text text-anchor="start" x="8" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">match()</text>
-</a>
-</g>
-</g>
-<!-- object&#45;&gt;HttpCookie -->
-<g id="edge1" class="edge">
-<title>object-&gt;HttpCookie</title>
-<path fill="none" stroke="#000000" d="M46.6125,-191.2135C46.6125,-182.6629 46.6125,-173.6609 46.6125,-164.6482"/>
-<polygon fill="#000000" stroke="#000000" points="43.1126,-191.3898 46.6125,-201.3899 50.1126,-191.3899 43.1126,-191.3898"/>
-</g>
-</g>
-</svg></div>
+<dot>digraph {node [ fontname = "Helvetica,sans-Serif", fontsize = 10, shape = "record" ];
+object[tooltip="object", style="filled", fillcolor="white", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"]
+HttpCookie[tooltip="HttpCookie", style="filled", fillcolor="lightgray", label="{HttpCookie|new HttpCookie()\l|name\lvalue\ldomain\lpath\lexpires\lhttpOnly\lsecure\l|parse()\lmatch()\l}"]
+object -> HttpCookie [dir=back]
+}</dot>
 
 ## 构造函数
         

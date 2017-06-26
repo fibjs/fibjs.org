@@ -8,81 +8,13 @@ var s = new net.Socket();
 ```
 
 ## 继承关系
-<div class="inherits"><svg width="92pt" height="483pt" viewBox="0.00 0.00 91.79 483.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 479)">
-<title>%0</title>
-<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-479 87.789,-479 87.789,4 -4,4"/>
-<!-- object -->
-<g id="node1" class="node">
-<title>object</title>
-<g id="a_node1"><a xlink:href="object.md" xlink:title="object">
-<polygon fill="#ffffff" stroke="#000000" points="13.063,-386.5 13.063,-474.5 70.726,-474.5 70.726,-386.5 13.063,-386.5"/>
-<text text-anchor="middle" x="41.8945" y="-461.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
-<polyline fill="none" stroke="#000000" points="13.063,-454.5 70.726,-454.5 "/>
-<text text-anchor="start" x="21.063" y="-441.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">dispose()</text>
-<text text-anchor="start" x="21.063" y="-429.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">equals()</text>
-<text text-anchor="start" x="21.063" y="-417.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toString()</text>
-<text text-anchor="start" x="21.063" y="-405.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toJSON()</text>
-<text text-anchor="start" x="21.063" y="-393.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">valueOf()</text>
-</a>
-</g>
-</g>
-<!-- Stream -->
-<g id="node2" class="node">
-<title>Stream</title>
-<g id="a_node2"><a xlink:href="Stream.md" xlink:title="Stream">
-<polygon fill="#ffffff" stroke="#000000" points="14.1725,-273.5 14.1725,-349.5 69.6165,-349.5 69.6165,-273.5 14.1725,-273.5"/>
-<text text-anchor="middle" x="41.8945" y="-336.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Stream</text>
-<polyline fill="none" stroke="#000000" points="14.1725,-329.5 69.6165,-329.5 "/>
-<text text-anchor="start" x="22.1725" y="-316.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">read()</text>
-<text text-anchor="start" x="22.1725" y="-304.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">write()</text>
-<text text-anchor="start" x="22.1725" y="-292.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">close()</text>
-<text text-anchor="start" x="22.1725" y="-280.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">copyTo()</text>
-</a>
-</g>
-</g>
-<!-- object&#45;&gt;Stream -->
-<g id="edge1" class="edge">
-<title>object-&gt;Stream</title>
-<path fill="none" stroke="#000000" d="M41.8945,-376.1681C41.8945,-367.1942 41.8945,-358.0623 41.8945,-349.5973"/>
-<polygon fill="#000000" stroke="#000000" points="38.3946,-376.1888 41.8945,-386.1888 45.3946,-376.1888 38.3946,-376.1888"/>
-</g>
-<!-- Socket -->
-<g id="node3" class="node">
-<title>Socket</title>
-<g id="a_node3"><a xlink:title="Socket">
-<polygon fill="#d3d3d3" stroke="#000000" points="0,-.5 0,-236.5 83.789,-236.5 83.789,-.5 0,-.5"/>
-<text text-anchor="middle" x="41.8945" y="-223.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Socket</text>
-<polyline fill="none" stroke="#000000" points="0,-216.5 83.789,-216.5 "/>
-<text text-anchor="start" x="8" y="-203.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">new Socket()</text>
-<polyline fill="none" stroke="#000000" points="0,-196.5 83.789,-196.5 "/>
-<text text-anchor="start" x="8" y="-183.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">family</text>
-<text text-anchor="start" x="8" y="-171.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">type</text>
-<text text-anchor="start" x="8" y="-159.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">remoteAddress</text>
-<text text-anchor="start" x="8" y="-147.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">remotePort</text>
-<text text-anchor="start" x="8" y="-135.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">localAddress</text>
-<text text-anchor="start" x="8" y="-123.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">localPort</text>
-<text text-anchor="start" x="8" y="-111.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">timeout</text>
-<polyline fill="none" stroke="#000000" points="0,-104.5 83.789,-104.5 "/>
-<text text-anchor="start" x="8" y="-91.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">connect()</text>
-<text text-anchor="start" x="8" y="-79.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">bind()</text>
-<text text-anchor="start" x="8" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">listen()</text>
-<text text-anchor="start" x="8" y="-55.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">accept()</text>
-<text text-anchor="start" x="8" y="-43.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">recv()</text>
-<text text-anchor="start" x="8" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">recvfrom()</text>
-<text text-anchor="start" x="8" y="-19.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">send()</text>
-<text text-anchor="start" x="8" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">sendto()</text>
-</a>
-</g>
-</g>
-<!-- Stream&#45;&gt;Socket -->
-<g id="edge2" class="edge">
-<title>Stream-&gt;Socket</title>
-<path fill="none" stroke="#000000" d="M41.8945,-263.1855C41.8945,-254.8514 41.8945,-245.8724 41.8945,-236.6136"/>
-<polygon fill="#000000" stroke="#000000" points="38.3946,-263.3694 41.8945,-273.3694 45.3946,-263.3694 38.3946,-263.3694"/>
-</g>
-</g>
-</svg></div>
+<dot>digraph {node [ fontname = "Helvetica,sans-Serif", fontsize = 10, shape = "record" ];
+object[tooltip="object", style="filled", fillcolor="white", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"]
+Stream[tooltip="Stream", style="filled", fillcolor="white", URL="Stream.md", label="{Stream|read()\lwrite()\lclose()\lcopyTo()\l}"]
+Socket[tooltip="Socket", style="filled", fillcolor="lightgray", label="{Socket|new Socket()\l|family\ltype\lremoteAddress\lremotePort\llocalAddress\llocalPort\ltimeout\l|connect()\lbind()\llisten()\laccept()\lrecv()\lrecvfrom()\lsend()\lsendto()\l}"]
+object -> Stream [dir=back]
+Stream -> Socket [dir=back]
+}</dot>
 
 ## 构造函数
         

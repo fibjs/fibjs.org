@@ -2,83 +2,13 @@
 XmlDocumentType 对象用于访问 XML 所定义的实体
 
 ## 继承关系
-<div class="inherits"><svg width="131pt" height="511pt" viewBox="0.00 0.00 130.67 511.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 507)">
-<title>%0</title>
-<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-507 126.673,-507 126.673,4 -4,4"/>
-<!-- object -->
-<g id="node1" class="node">
-<title>object</title>
-<g id="a_node1"><a xlink:href="object.md" xlink:title="object">
-<polygon fill="#ffffff" stroke="#000000" points="32.505,-414.5 32.505,-502.5 90.168,-502.5 90.168,-414.5 32.505,-414.5"/>
-<text text-anchor="middle" x="61.3365" y="-489.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
-<polyline fill="none" stroke="#000000" points="32.505,-482.5 90.168,-482.5 "/>
-<text text-anchor="start" x="40.505" y="-469.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">dispose()</text>
-<text text-anchor="start" x="40.505" y="-457.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">equals()</text>
-<text text-anchor="start" x="40.505" y="-445.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toString()</text>
-<text text-anchor="start" x="40.505" y="-433.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toJSON()</text>
-<text text-anchor="start" x="40.505" y="-421.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">valueOf()</text>
-</a>
-</g>
-</g>
-<!-- XmlNode -->
-<g id="node2" class="node">
-<title>XmlNode</title>
-<g id="a_node2"><a xlink:href="XmlNode.md" xlink:title="XmlNode">
-<polygon fill="#ffffff" stroke="#000000" points="0,-101.5 0,-377.5 122.673,-377.5 122.673,-101.5 0,-101.5"/>
-<text text-anchor="middle" x="61.3365" y="-364.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">XmlNode</text>
-<polyline fill="none" stroke="#000000" points="0,-357.5 122.673,-357.5 "/>
-<text text-anchor="start" x="8" y="-344.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">nodeType</text>
-<text text-anchor="start" x="8" y="-332.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">nodeName</text>
-<text text-anchor="start" x="8" y="-320.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">nodeValue</text>
-<text text-anchor="start" x="8" y="-308.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">ownerDocument</text>
-<text text-anchor="start" x="8" y="-296.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">parentNode</text>
-<text text-anchor="start" x="8" y="-284.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">childNodes</text>
-<text text-anchor="start" x="8" y="-272.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">firstChild</text>
-<text text-anchor="start" x="8" y="-260.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">lastChild</text>
-<text text-anchor="start" x="8" y="-248.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">previousSibling</text>
-<text text-anchor="start" x="8" y="-236.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">nextSibling</text>
-<polyline fill="none" stroke="#000000" points="0,-229.5 122.673,-229.5 "/>
-<text text-anchor="start" x="8" y="-216.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">hasChildNodes()</text>
-<text text-anchor="start" x="8" y="-204.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">normalize()</text>
-<text text-anchor="start" x="8" y="-192.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">cloneNode()</text>
-<text text-anchor="start" x="8" y="-180.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">lookupPrefix()</text>
-<text text-anchor="start" x="8" y="-168.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">lookupNamespaceURI()</text>
-<text text-anchor="start" x="8" y="-156.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">insertBefore()</text>
-<text text-anchor="start" x="8" y="-144.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">insertAfter()</text>
-<text text-anchor="start" x="8" y="-132.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">appendChild()</text>
-<text text-anchor="start" x="8" y="-120.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">replaceChild()</text>
-<text text-anchor="start" x="8" y="-108.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">removeChild()</text>
-</a>
-</g>
-</g>
-<!-- object&#45;&gt;XmlNode -->
-<g id="edge1" class="edge">
-<title>object-&gt;XmlNode</title>
-<path fill="none" stroke="#000000" d="M61.3365,-404.1907C61.3365,-395.8324 61.3365,-386.8931 61.3365,-377.6615"/>
-<polygon fill="#000000" stroke="#000000" points="57.8366,-404.4455 61.3365,-414.4455 64.8366,-404.4456 57.8366,-404.4455"/>
-</g>
-<!-- XmlDocumentType -->
-<g id="node3" class="node">
-<title>XmlDocumentType</title>
-<g id="a_node3"><a xlink:title="XmlDocumentType">
-<polygon fill="#d3d3d3" stroke="#000000" points="10.833,-.5 10.833,-64.5 111.84,-64.5 111.84,-.5 10.833,-.5"/>
-<text text-anchor="middle" x="61.3365" y="-51.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">XmlDocumentType</text>
-<polyline fill="none" stroke="#000000" points="10.833,-44.5 111.84,-44.5 "/>
-<text text-anchor="start" x="18.833" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">name</text>
-<text text-anchor="start" x="18.833" y="-19.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">publicId</text>
-<text text-anchor="start" x="18.833" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">systemId</text>
-</a>
-</g>
-</g>
-<!-- XmlNode&#45;&gt;XmlDocumentType -->
-<g id="edge2" class="edge">
-<title>XmlNode-&gt;XmlDocumentType</title>
-<path fill="none" stroke="#000000" d="M61.3365,-91.1837C61.3365,-81.5583 61.3365,-72.5738 61.3365,-64.6698"/>
-<polygon fill="#000000" stroke="#000000" points="57.8366,-91.428 61.3365,-101.428 64.8366,-91.428 57.8366,-91.428"/>
-</g>
-</g>
-</svg></div>
+<dot>digraph {node [ fontname = "Helvetica,sans-Serif", fontsize = 10, shape = "record" ];
+object[tooltip="object", style="filled", fillcolor="white", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"]
+XmlNode[tooltip="XmlNode", style="filled", fillcolor="white", URL="XmlNode.md", label="{XmlNode|nodeType\lnodeName\lnodeValue\lownerDocument\lparentNode\lchildNodes\lfirstChild\llastChild\lpreviousSibling\lnextSibling\l|hasChildNodes()\lnormalize()\lcloneNode()\llookupPrefix()\llookupNamespaceURI()\linsertBefore()\linsertAfter()\lappendChild()\lreplaceChild()\lremoveChild()\l}"]
+XmlDocumentType[tooltip="XmlDocumentType", style="filled", fillcolor="lightgray", label="{XmlDocumentType|name\lpublicId\lsystemId\l}"]
+object -> XmlNode [dir=back]
+XmlNode -> XmlDocumentType [dir=back]
+}</dot>
 
 ## 成员属性
         

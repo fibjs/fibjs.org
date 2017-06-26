@@ -10,50 +10,11 @@ var set = rdb.getSet("test");
 ```
 
 ## 继承关系
-<div class="inherits"><svg width="87pt" height="246pt" viewBox="0.00 0.00 87.33 246.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 242)">
-<title>%0</title>
-<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-242 83.328,-242 83.328,4 -4,4"/>
-<!-- object -->
-<g id="node1" class="node">
-<title>object</title>
-<g id="a_node1"><a xlink:href="object.md" xlink:title="object">
-<polygon fill="#ffffff" stroke="#000000" points="10.8325,-149.5 10.8325,-237.5 68.4955,-237.5 68.4955,-149.5 10.8325,-149.5"/>
-<text text-anchor="middle" x="39.664" y="-224.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
-<polyline fill="none" stroke="#000000" points="10.8325,-217.5 68.4955,-217.5 "/>
-<text text-anchor="start" x="18.8325" y="-204.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">dispose()</text>
-<text text-anchor="start" x="18.8325" y="-192.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">equals()</text>
-<text text-anchor="start" x="18.8325" y="-180.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toString()</text>
-<text text-anchor="start" x="18.8325" y="-168.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toJSON()</text>
-<text text-anchor="start" x="18.8325" y="-156.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">valueOf()</text>
-</a>
-</g>
-</g>
-<!-- RedisSet -->
-<g id="node2" class="node">
-<title>RedisSet</title>
-<g id="a_node2"><a xlink:title="RedisSet">
-<polygon fill="#d3d3d3" stroke="#000000" points="0,-.5 0,-112.5 79.328,-112.5 79.328,-.5 0,-.5"/>
-<text text-anchor="middle" x="39.664" y="-99.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">RedisSet</text>
-<polyline fill="none" stroke="#000000" points="0,-92.5 79.328,-92.5 "/>
-<text text-anchor="start" x="8" y="-79.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">add()</text>
-<text text-anchor="start" x="8" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">remove()</text>
-<text text-anchor="start" x="8" y="-55.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">len()</text>
-<text text-anchor="start" x="8" y="-43.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">exists()</text>
-<text text-anchor="start" x="8" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">members()</text>
-<text text-anchor="start" x="8" y="-19.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">pop()</text>
-<text text-anchor="start" x="8" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">randMember()</text>
-</a>
-</g>
-</g>
-<!-- object&#45;&gt;RedisSet -->
-<g id="edge1" class="edge">
-<title>object-&gt;RedisSet</title>
-<path fill="none" stroke="#000000" d="M39.664,-139.2743C39.664,-130.4908 39.664,-121.3795 39.664,-112.5536"/>
-<polygon fill="#000000" stroke="#000000" points="36.1641,-139.3982 39.664,-149.3982 43.1641,-139.3983 36.1641,-139.3982"/>
-</g>
-</g>
-</svg></div>
+<dot>digraph {node [ fontname = "Helvetica,sans-Serif", fontsize = 10, shape = "record" ];
+object[tooltip="object", style="filled", fillcolor="white", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"]
+RedisSet[tooltip="RedisSet", style="filled", fillcolor="lightgray", label="{RedisSet|add()\lremove()\llen()\lexists()\lmembers()\lpop()\lrandMember()\l}"]
+object -> RedisSet [dir=back]
+}</dot>
 
 ## 成员函数
         

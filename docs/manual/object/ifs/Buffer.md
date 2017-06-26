@@ -8,104 +8,11 @@ var buf = new Buffer();
 ```
 
 ## 继承关系
-<div class="inherits"><svg width="97pt" height="878pt" viewBox="0.00 0.00 96.78 878.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 874)">
-<title>%0</title>
-<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-874 92.775,-874 92.775,4 -4,4"/>
-<!-- object -->
-<g id="node1" class="node">
-<title>object</title>
-<g id="a_node1"><a xlink:href="object.md" xlink:title="object">
-<polygon fill="#ffffff" stroke="#000000" points="15.556,-781.5 15.556,-869.5 73.219,-869.5 73.219,-781.5 15.556,-781.5"/>
-<text text-anchor="middle" x="44.3875" y="-856.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
-<polyline fill="none" stroke="#000000" points="15.556,-849.5 73.219,-849.5 "/>
-<text text-anchor="start" x="23.556" y="-836.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">dispose()</text>
-<text text-anchor="start" x="23.556" y="-824.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">equals()</text>
-<text text-anchor="start" x="23.556" y="-812.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toString()</text>
-<text text-anchor="start" x="23.556" y="-800.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toJSON()</text>
-<text text-anchor="start" x="23.556" y="-788.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">valueOf()</text>
-</a>
-</g>
-</g>
-<!-- Buffer -->
-<g id="node2" class="node">
-<title>Buffer</title>
-<g id="a_node2"><a xlink:title="Buffer">
-<polygon fill="#d3d3d3" stroke="#000000" points="0,-.5 0,-744.5 88.775,-744.5 88.775,-.5 0,-.5"/>
-<text text-anchor="middle" x="44.3875" y="-731.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Buffer</text>
-<polyline fill="none" stroke="#000000" points="0,-724.5 88.775,-724.5 "/>
-<text text-anchor="start" x="8" y="-711.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">new Buffer()</text>
-<polyline fill="none" stroke="#000000" points="0,-704.5 88.775,-704.5 "/>
-<text text-anchor="start" x="8" y="-691.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">operator[]</text>
-<polyline fill="none" stroke="#000000" points="0,-684.5 88.775,-684.5 "/>
-<text text-anchor="start" x="8" y="-671.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">isBuffer()</text>
-<text text-anchor="start" x="8" y="-659.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">concat()</text>
-<polyline fill="none" stroke="#000000" points="0,-652.5 88.775,-652.5 "/>
-<text text-anchor="start" x="8" y="-639.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">length</text>
-<polyline fill="none" stroke="#000000" points="0,-632.5 88.775,-632.5 "/>
-<text text-anchor="start" x="8" y="-619.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">resize()</text>
-<text text-anchor="start" x="8" y="-607.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">append()</text>
-<text text-anchor="start" x="8" y="-595.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">write()</text>
-<text text-anchor="start" x="8" y="-583.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">fill()</text>
-<text text-anchor="start" x="8" y="-571.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">indexOf()</text>
-<text text-anchor="start" x="8" y="-559.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">compare()</text>
-<text text-anchor="start" x="8" y="-547.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">copy()</text>
-<text text-anchor="start" x="8" y="-535.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readUInt8()</text>
-<text text-anchor="start" x="8" y="-523.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readUInt16LE()</text>
-<text text-anchor="start" x="8" y="-511.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readUInt16BE()</text>
-<text text-anchor="start" x="8" y="-499.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readUInt32LE()</text>
-<text text-anchor="start" x="8" y="-487.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readUInt32BE()</text>
-<text text-anchor="start" x="8" y="-475.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readUIntLE()</text>
-<text text-anchor="start" x="8" y="-463.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readUIntBE()</text>
-<text text-anchor="start" x="8" y="-451.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readInt8()</text>
-<text text-anchor="start" x="8" y="-439.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readInt16LE()</text>
-<text text-anchor="start" x="8" y="-427.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readInt16BE()</text>
-<text text-anchor="start" x="8" y="-415.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readInt32LE()</text>
-<text text-anchor="start" x="8" y="-403.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readInt32BE()</text>
-<text text-anchor="start" x="8" y="-391.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readIntLE()</text>
-<text text-anchor="start" x="8" y="-379.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readIntBE()</text>
-<text text-anchor="start" x="8" y="-367.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readInt64LE()</text>
-<text text-anchor="start" x="8" y="-355.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readInt64BE()</text>
-<text text-anchor="start" x="8" y="-343.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readFloatLE()</text>
-<text text-anchor="start" x="8" y="-331.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readFloatBE()</text>
-<text text-anchor="start" x="8" y="-319.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readDoubleLE()</text>
-<text text-anchor="start" x="8" y="-307.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readDoubleBE()</text>
-<text text-anchor="start" x="8" y="-295.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeUInt8()</text>
-<text text-anchor="start" x="8" y="-283.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeUInt16LE()</text>
-<text text-anchor="start" x="8" y="-271.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeUInt16BE()</text>
-<text text-anchor="start" x="8" y="-259.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeUInt32LE()</text>
-<text text-anchor="start" x="8" y="-247.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeUInt32BE()</text>
-<text text-anchor="start" x="8" y="-235.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeUIntLE()</text>
-<text text-anchor="start" x="8" y="-223.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeUIntBE()</text>
-<text text-anchor="start" x="8" y="-211.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeInt8()</text>
-<text text-anchor="start" x="8" y="-199.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeInt16LE()</text>
-<text text-anchor="start" x="8" y="-187.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeInt16BE()</text>
-<text text-anchor="start" x="8" y="-175.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeInt32LE()</text>
-<text text-anchor="start" x="8" y="-163.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeInt32BE()</text>
-<text text-anchor="start" x="8" y="-151.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeIntLE()</text>
-<text text-anchor="start" x="8" y="-139.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeIntBE()</text>
-<text text-anchor="start" x="8" y="-127.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeInt64LE()</text>
-<text text-anchor="start" x="8" y="-115.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeInt64BE()</text>
-<text text-anchor="start" x="8" y="-103.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeFloatLE()</text>
-<text text-anchor="start" x="8" y="-91.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeFloatBE()</text>
-<text text-anchor="start" x="8" y="-79.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeDoubleLE()</text>
-<text text-anchor="start" x="8" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeDoubleBE()</text>
-<text text-anchor="start" x="8" y="-55.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">slice()</text>
-<text text-anchor="start" x="8" y="-43.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">hex()</text>
-<text text-anchor="start" x="8" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">base64()</text>
-<text text-anchor="start" x="8" y="-19.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toArray()</text>
-<text text-anchor="start" x="8" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toString()</text>
-</a>
-</g>
-</g>
-<!-- object&#45;&gt;Buffer -->
-<g id="edge1" class="edge">
-<title>object-&gt;Buffer</title>
-<path fill="none" stroke="#000000" d="M44.3875,-771.0404C44.3875,-762.9622 44.3875,-754.1737 44.3875,-744.8064"/>
-<polygon fill="#000000" stroke="#000000" points="40.8876,-771.2396 44.3875,-781.2397 47.8876,-771.2397 40.8876,-771.2396"/>
-</g>
-</g>
-</svg></div>
+<dot>digraph {node [ fontname = "Helvetica,sans-Serif", fontsize = 10, shape = "record" ];
+object[tooltip="object", style="filled", fillcolor="white", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"]
+Buffer[tooltip="Buffer", style="filled", fillcolor="lightgray", label="{Buffer|new Buffer()\l|operator[]\l|isBuffer()\lconcat()\l|length\l|resize()\lappend()\lwrite()\lfill()\lindexOf()\lcompare()\lcopy()\lreadUInt8()\lreadUInt16LE()\lreadUInt16BE()\lreadUInt32LE()\lreadUInt32BE()\lreadUIntLE()\lreadUIntBE()\lreadInt8()\lreadInt16LE()\lreadInt16BE()\lreadInt32LE()\lreadInt32BE()\lreadIntLE()\lreadIntBE()\lreadInt64LE()\lreadInt64BE()\lreadFloatLE()\lreadFloatBE()\lreadDoubleLE()\lreadDoubleBE()\lwriteUInt8()\lwriteUInt16LE()\lwriteUInt16BE()\lwriteUInt32LE()\lwriteUInt32BE()\lwriteUIntLE()\lwriteUIntBE()\lwriteInt8()\lwriteInt16LE()\lwriteInt16BE()\lwriteInt32LE()\lwriteInt32BE()\lwriteIntLE()\lwriteIntBE()\lwriteInt64LE()\lwriteInt64BE()\lwriteFloatLE()\lwriteFloatBE()\lwriteDoubleLE()\lwriteDoubleBE()\lslice()\lhex()\lbase64()\ltoArray()\ltoString()\l}"]
+object -> Buffer [dir=back]
+}</dot>
 
 ## 构造函数
         

@@ -8,71 +8,13 @@ var slite = db.openSQLite("sqlite:/path/to/db");
 ```
 
 ## 继承关系
-<div class="inherits"><svg width="87pt" height="363pt" viewBox="0.00 0.00 87.35 363.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 359)">
-<title>%0</title>
-<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-359 83.349,-359 83.349,4 -4,4"/>
-<!-- object -->
-<g id="node1" class="node">
-<title>object</title>
-<g id="a_node1"><a xlink:href="object.md" xlink:title="object">
-<polygon fill="#ffffff" stroke="#000000" points="10.843,-266.5 10.843,-354.5 68.506,-354.5 68.506,-266.5 10.843,-266.5"/>
-<text text-anchor="middle" x="39.6745" y="-341.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
-<polyline fill="none" stroke="#000000" points="10.843,-334.5 68.506,-334.5 "/>
-<text text-anchor="start" x="18.843" y="-321.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">dispose()</text>
-<text text-anchor="start" x="18.843" y="-309.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">equals()</text>
-<text text-anchor="start" x="18.843" y="-297.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toString()</text>
-<text text-anchor="start" x="18.843" y="-285.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toJSON()</text>
-<text text-anchor="start" x="18.843" y="-273.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">valueOf()</text>
-</a>
-</g>
-</g>
-<!-- DbConnection -->
-<g id="node2" class="node">
-<title>DbConnection</title>
-<g id="a_node2"><a xlink:href="DbConnection.md" xlink:title="DbConnection">
-<polygon fill="#ffffff" stroke="#000000" points="0,-109.5 0,-229.5 79.349,-229.5 79.349,-109.5 0,-109.5"/>
-<text text-anchor="middle" x="39.6745" y="-216.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">DbConnection</text>
-<polyline fill="none" stroke="#000000" points="0,-209.5 79.349,-209.5 "/>
-<text text-anchor="start" x="8" y="-196.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">type</text>
-<polyline fill="none" stroke="#000000" points="0,-189.5 79.349,-189.5 "/>
-<text text-anchor="start" x="8" y="-176.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">close()</text>
-<text text-anchor="start" x="8" y="-164.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">begin()</text>
-<text text-anchor="start" x="8" y="-152.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">commit()</text>
-<text text-anchor="start" x="8" y="-140.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">rollback()</text>
-<text text-anchor="start" x="8" y="-128.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">execute()</text>
-<text text-anchor="start" x="8" y="-116.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">format()</text>
-</a>
-</g>
-</g>
-<!-- object&#45;&gt;DbConnection -->
-<g id="edge1" class="edge">
-<title>object-&gt;DbConnection</title>
-<path fill="none" stroke="#000000" d="M39.6745,-256.2311C39.6745,-247.51 39.6745,-238.4385 39.6745,-229.5906"/>
-<polygon fill="#000000" stroke="#000000" points="36.1746,-256.2735 39.6745,-266.2736 43.1746,-256.2736 36.1746,-256.2735"/>
-</g>
-<!-- SQLite -->
-<g id="node3" class="node">
-<title>SQLite</title>
-<g id="a_node3"><a xlink:title="SQLite">
-<polygon fill="#d3d3d3" stroke="#000000" points="11.9535,-.5 11.9535,-72.5 67.3955,-72.5 67.3955,-.5 11.9535,-.5"/>
-<text text-anchor="middle" x="39.6745" y="-59.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">SQLite</text>
-<polyline fill="none" stroke="#000000" points="11.9535,-52.5 67.3955,-52.5 "/>
-<text text-anchor="start" x="19.9535" y="-39.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">fileName</text>
-<text text-anchor="start" x="19.9535" y="-27.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">timeout</text>
-<polyline fill="none" stroke="#000000" points="11.9535,-20.5 67.3955,-20.5 "/>
-<text text-anchor="start" x="19.9535" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">backup()</text>
-</a>
-</g>
-</g>
-<!-- DbConnection&#45;&gt;SQLite -->
-<g id="edge2" class="edge">
-<title>DbConnection-&gt;SQLite</title>
-<path fill="none" stroke="#000000" d="M39.6745,-98.9351C39.6745,-89.8261 39.6745,-80.8191 39.6745,-72.6013"/>
-<polygon fill="#000000" stroke="#000000" points="36.1746,-99.2262 39.6745,-109.2263 43.1746,-99.2263 36.1746,-99.2262"/>
-</g>
-</g>
-</svg></div>
+<dot>digraph {node [ fontname = "Helvetica,sans-Serif", fontsize = 10, shape = "record" ];
+object[tooltip="object", style="filled", fillcolor="white", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"]
+DbConnection[tooltip="DbConnection", style="filled", fillcolor="white", URL="DbConnection.md", label="{DbConnection|type\l|close()\lbegin()\lcommit()\lrollback()\lexecute()\lformat()\l}"]
+SQLite[tooltip="SQLite", style="filled", fillcolor="lightgray", label="{SQLite|fileName\ltimeout\l|backup()\l}"]
+object -> DbConnection [dir=back]
+DbConnection -> SQLite [dir=back]
+}</dot>
 
 ## 成员属性
         

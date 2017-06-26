@@ -13,64 +13,11 @@ var url = new net.Url({
 ```
 
 ## 继承关系
-<div class="inherits"><svg width="93pt" height="406pt" viewBox="0.00 0.00 93.44 406.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 402)">
-<title>%0</title>
-<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-402 89.436,-402 89.436,4 -4,4"/>
-<!-- object -->
-<g id="node1" class="node">
-<title>object</title>
-<g id="a_node1"><a xlink:href="object.md" xlink:title="object">
-<polygon fill="#ffffff" stroke="#000000" points="13.8865,-309.5 13.8865,-397.5 71.5495,-397.5 71.5495,-309.5 13.8865,-309.5"/>
-<text text-anchor="middle" x="42.718" y="-384.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
-<polyline fill="none" stroke="#000000" points="13.8865,-377.5 71.5495,-377.5 "/>
-<text text-anchor="start" x="21.8865" y="-364.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">dispose()</text>
-<text text-anchor="start" x="21.8865" y="-352.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">equals()</text>
-<text text-anchor="start" x="21.8865" y="-340.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toString()</text>
-<text text-anchor="start" x="21.8865" y="-328.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toJSON()</text>
-<text text-anchor="start" x="21.8865" y="-316.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">valueOf()</text>
-</a>
-</g>
-</g>
-<!-- UrlObject -->
-<g id="node2" class="node">
-<title>UrlObject</title>
-<g id="a_node2"><a xlink:title="UrlObject">
-<polygon fill="#d3d3d3" stroke="#000000" points="0,-.5 0,-272.5 85.436,-272.5 85.436,-.5 0,-.5"/>
-<text text-anchor="middle" x="42.718" y="-259.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">UrlObject</text>
-<polyline fill="none" stroke="#000000" points="0,-252.5 85.436,-252.5 "/>
-<text text-anchor="start" x="8" y="-239.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">new UrlObject()</text>
-<polyline fill="none" stroke="#000000" points="0,-232.5 85.436,-232.5 "/>
-<text text-anchor="start" x="8" y="-219.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">href</text>
-<text text-anchor="start" x="8" y="-207.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">protocol</text>
-<text text-anchor="start" x="8" y="-195.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">slashes</text>
-<text text-anchor="start" x="8" y="-183.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">auth</text>
-<text text-anchor="start" x="8" y="-171.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">username</text>
-<text text-anchor="start" x="8" y="-159.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">password</text>
-<text text-anchor="start" x="8" y="-147.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">host</text>
-<text text-anchor="start" x="8" y="-135.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">hostname</text>
-<text text-anchor="start" x="8" y="-123.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">port</text>
-<text text-anchor="start" x="8" y="-111.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">path</text>
-<text text-anchor="start" x="8" y="-99.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">pathname</text>
-<text text-anchor="start" x="8" y="-87.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">search</text>
-<text text-anchor="start" x="8" y="-75.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">query</text>
-<text text-anchor="start" x="8" y="-63.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">hash</text>
-<polyline fill="none" stroke="#000000" points="0,-56.5 85.436,-56.5 "/>
-<text text-anchor="start" x="8" y="-43.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">parse()</text>
-<text text-anchor="start" x="8" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">format()</text>
-<text text-anchor="start" x="8" y="-19.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">resolve()</text>
-<text text-anchor="start" x="8" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">normalize()</text>
-</a>
-</g>
-</g>
-<!-- object&#45;&gt;UrlObject -->
-<g id="edge1" class="edge">
-<title>object-&gt;UrlObject</title>
-<path fill="none" stroke="#000000" d="M42.718,-299.157C42.718,-290.8734 42.718,-282.0234 42.718,-272.8906"/>
-<polygon fill="#000000" stroke="#000000" points="39.2181,-299.3252 42.718,-309.3253 46.2181,-299.3253 39.2181,-299.3252"/>
-</g>
-</g>
-</svg></div>
+<dot>digraph {node [ fontname = "Helvetica,sans-Serif", fontsize = 10, shape = "record" ];
+object[tooltip="object", style="filled", fillcolor="white", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"]
+UrlObject[tooltip="UrlObject", style="filled", fillcolor="lightgray", label="{UrlObject|new UrlObject()\l|href\lprotocol\lslashes\lauth\lusername\lpassword\lhost\lhostname\lport\lpath\lpathname\lsearch\lquery\lhash\l|parse()\lformat()\lresolve()\lnormalize()\l}"]
+object -> UrlObject [dir=back]
+}</dot>
 
 ## 构造函数
         

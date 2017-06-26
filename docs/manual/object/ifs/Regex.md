@@ -2,50 +2,11 @@
 正则表达式对象
 
 ## 继承关系
-<div class="inherits"><svg width="75pt" height="242pt" viewBox="0.00 0.00 75.12 242.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 238)">
-<title>%0</title>
-<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-238 71.121,-238 71.121,4 -4,4"/>
-<!-- object -->
-<g id="node1" class="node">
-<title>object</title>
-<g id="a_node1"><a xlink:href="object.md" xlink:title="object">
-<polygon fill="#ffffff" stroke="#000000" points="4.729,-145.5 4.729,-233.5 62.392,-233.5 62.392,-145.5 4.729,-145.5"/>
-<text text-anchor="middle" x="33.5605" y="-220.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
-<polyline fill="none" stroke="#000000" points="4.729,-213.5 62.392,-213.5 "/>
-<text text-anchor="start" x="12.729" y="-200.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">dispose()</text>
-<text text-anchor="start" x="12.729" y="-188.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">equals()</text>
-<text text-anchor="start" x="12.729" y="-176.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toString()</text>
-<text text-anchor="start" x="12.729" y="-164.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toJSON()</text>
-<text text-anchor="start" x="12.729" y="-152.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">valueOf()</text>
-</a>
-</g>
-</g>
-<!-- Regex -->
-<g id="node2" class="node">
-<title>Regex</title>
-<g id="a_node2"><a xlink:title="Regex">
-<polygon fill="#d3d3d3" stroke="#000000" points="0,-.5 0,-108.5 67.121,-108.5 67.121,-.5 0,-.5"/>
-<text text-anchor="middle" x="33.5605" y="-95.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Regex</text>
-<polyline fill="none" stroke="#000000" points="0,-88.5 67.121,-88.5 "/>
-<text text-anchor="start" x="8" y="-75.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">lastIndex</text>
-<text text-anchor="start" x="8" y="-63.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">global</text>
-<text text-anchor="start" x="8" y="-51.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">ignoreCase</text>
-<text text-anchor="start" x="8" y="-39.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">multiline</text>
-<polyline fill="none" stroke="#000000" points="0,-32.5 67.121,-32.5 "/>
-<text text-anchor="start" x="8" y="-19.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">exec()</text>
-<text text-anchor="start" x="8" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">test()</text>
-</a>
-</g>
-</g>
-<!-- object&#45;&gt;Regex -->
-<g id="edge1" class="edge">
-<title>object-&gt;Regex</title>
-<path fill="none" stroke="#000000" d="M33.5605,-135.2187C33.5605,-126.4825 33.5605,-117.439 33.5605,-108.7047"/>
-<polygon fill="#000000" stroke="#000000" points="30.0606,-135.2959 33.5605,-145.296 37.0606,-135.296 30.0606,-135.2959"/>
-</g>
-</g>
-</svg></div>
+<dot>digraph {node [ fontname = "Helvetica,sans-Serif", fontsize = 10, shape = "record" ];
+object[tooltip="object", style="filled", fillcolor="white", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"]
+Regex[tooltip="Regex", style="filled", fillcolor="lightgray", label="{Regex|lastIndex\lglobal\lignoreCase\lmultiline\l|exec()\ltest()\l}"]
+object -> Regex [dir=back]
+}</dot>
 
 ## 成员属性
         

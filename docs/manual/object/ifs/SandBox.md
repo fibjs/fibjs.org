@@ -15,54 +15,11 @@ var mod_in_sbox = sbox.require('./path/to/mod');
 ```
 
 ## 继承关系
-<div class="inherits"><svg width="92pt" height="286pt" viewBox="0.00 0.00 92.35 286.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 282)">
-<title>%0</title>
-<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-282 88.348,-282 88.348,4 -4,4"/>
-<!-- object -->
-<g id="node1" class="node">
-<title>object</title>
-<g id="a_node1"><a xlink:href="object.md" xlink:title="object">
-<polygon fill="#ffffff" stroke="#000000" points="13.3425,-189.5 13.3425,-277.5 71.0055,-277.5 71.0055,-189.5 13.3425,-189.5"/>
-<text text-anchor="middle" x="42.174" y="-264.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
-<polyline fill="none" stroke="#000000" points="13.3425,-257.5 71.0055,-257.5 "/>
-<text text-anchor="start" x="21.3425" y="-244.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">dispose()</text>
-<text text-anchor="start" x="21.3425" y="-232.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">equals()</text>
-<text text-anchor="start" x="21.3425" y="-220.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toString()</text>
-<text text-anchor="start" x="21.3425" y="-208.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toJSON()</text>
-<text text-anchor="start" x="21.3425" y="-196.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">valueOf()</text>
-</a>
-</g>
-</g>
-<!-- SandBox -->
-<g id="node2" class="node">
-<title>SandBox</title>
-<g id="a_node2"><a xlink:title="SandBox">
-<polygon fill="#d3d3d3" stroke="#000000" points="0,-.5 0,-152.5 84.348,-152.5 84.348,-.5 0,-.5"/>
-<text text-anchor="middle" x="42.174" y="-139.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">SandBox</text>
-<polyline fill="none" stroke="#000000" points="0,-132.5 84.348,-132.5 "/>
-<text text-anchor="start" x="8" y="-119.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">new SandBox()</text>
-<polyline fill="none" stroke="#000000" points="0,-112.5 84.348,-112.5 "/>
-<text text-anchor="start" x="8" y="-99.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">global</text>
-<polyline fill="none" stroke="#000000" points="0,-92.5 84.348,-92.5 "/>
-<text text-anchor="start" x="8" y="-79.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">add()</text>
-<text text-anchor="start" x="8" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">addScript()</text>
-<text text-anchor="start" x="8" y="-55.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">remove()</text>
-<text text-anchor="start" x="8" y="-43.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">clone()</text>
-<text text-anchor="start" x="8" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">run()</text>
-<text text-anchor="start" x="8" y="-19.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">resolve()</text>
-<text text-anchor="start" x="8" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">require()</text>
-</a>
-</g>
-</g>
-<!-- object&#45;&gt;SandBox -->
-<g id="edge1" class="edge">
-<title>object-&gt;SandBox</title>
-<path fill="none" stroke="#000000" d="M42.174,-179.1668C42.174,-170.6216 42.174,-161.6531 42.174,-152.7238"/>
-<polygon fill="#000000" stroke="#000000" points="38.6741,-179.3489 42.174,-189.3489 45.6741,-179.349 38.6741,-179.3489"/>
-</g>
-</g>
-</svg></div>
+<dot>digraph {node [ fontname = "Helvetica,sans-Serif", fontsize = 10, shape = "record" ];
+object[tooltip="object", style="filled", fillcolor="white", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"]
+SandBox[tooltip="SandBox", style="filled", fillcolor="lightgray", label="{SandBox|new SandBox()\l|global\l|add()\laddScript()\lremove()\lclone()\lrun()\lresolve()\lrequire()\l}"]
+object -> SandBox [dir=back]
+}</dot>
 
 ## 构造函数
         

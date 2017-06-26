@@ -8,98 +8,15 @@ var reader = new io.BufferedStream(stream);
 ```
 
 ## 继承关系
-<div class="inherits"><svg width="122pt" height="556pt" viewBox="0.00 0.00 121.79 556.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 552)">
-<title>%0</title>
-<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-552 117.79,-552 117.79,4 -4,4"/>
-<!-- object -->
-<g id="node1" class="node">
-<title>object</title>
-<g id="a_node1"><a xlink:href="object.md" xlink:title="object">
-<polygon fill="#ffffff" stroke="#000000" points="28.0635,-459.5 28.0635,-547.5 85.7265,-547.5 85.7265,-459.5 28.0635,-459.5"/>
-<text text-anchor="middle" x="56.895" y="-534.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
-<polyline fill="none" stroke="#000000" points="28.0635,-527.5 85.7265,-527.5 "/>
-<text text-anchor="start" x="36.0635" y="-514.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">dispose()</text>
-<text text-anchor="start" x="36.0635" y="-502.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">equals()</text>
-<text text-anchor="start" x="36.0635" y="-490.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toString()</text>
-<text text-anchor="start" x="36.0635" y="-478.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toJSON()</text>
-<text text-anchor="start" x="36.0635" y="-466.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">valueOf()</text>
-</a>
-</g>
-</g>
-<!-- Stream -->
-<g id="node2" class="node">
-<title>Stream</title>
-<g id="a_node2"><a xlink:href="Stream.md" xlink:title="Stream">
-<polygon fill="#ffffff" stroke="#000000" points="29.173,-346.5 29.173,-422.5 84.617,-422.5 84.617,-346.5 29.173,-346.5"/>
-<text text-anchor="middle" x="56.895" y="-409.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Stream</text>
-<polyline fill="none" stroke="#000000" points="29.173,-402.5 84.617,-402.5 "/>
-<text text-anchor="start" x="37.173" y="-389.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">read()</text>
-<text text-anchor="start" x="37.173" y="-377.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">write()</text>
-<text text-anchor="start" x="37.173" y="-365.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">close()</text>
-<text text-anchor="start" x="37.173" y="-353.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">copyTo()</text>
-</a>
-</g>
-</g>
-<!-- object&#45;&gt;Stream -->
-<g id="edge1" class="edge">
-<title>object-&gt;Stream</title>
-<path fill="none" stroke="#000000" d="M56.895,-449.1681C56.895,-440.1942 56.895,-431.0623 56.895,-422.5973"/>
-<polygon fill="#000000" stroke="#000000" points="53.3951,-449.1888 56.895,-459.1888 60.3951,-449.1888 53.3951,-449.1888"/>
-</g>
-<!-- BufferedStream -->
-<g id="node3" class="node">
-<title>BufferedStream</title>
-<g id="a_node3"><a xlink:title="BufferedStream">
-<polygon fill="#d3d3d3" stroke="#000000" points="0,-145.5 0,-309.5 113.79,-309.5 113.79,-145.5 0,-145.5"/>
-<text text-anchor="middle" x="56.895" y="-296.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">BufferedStream</text>
-<polyline fill="none" stroke="#000000" points="0,-289.5 113.79,-289.5 "/>
-<text text-anchor="start" x="8" y="-276.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">new BufferedStream()</text>
-<polyline fill="none" stroke="#000000" points="0,-269.5 113.79,-269.5 "/>
-<text text-anchor="start" x="8" y="-256.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">stream</text>
-<text text-anchor="start" x="8" y="-244.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">charset</text>
-<text text-anchor="start" x="8" y="-232.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">EOL</text>
-<polyline fill="none" stroke="#000000" points="0,-225.5 113.79,-225.5 "/>
-<text text-anchor="start" x="8" y="-212.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readText()</text>
-<text text-anchor="start" x="8" y="-200.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readLine()</text>
-<text text-anchor="start" x="8" y="-188.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readLines()</text>
-<text text-anchor="start" x="8" y="-176.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readUntil()</text>
-<text text-anchor="start" x="8" y="-164.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeText()</text>
-<text text-anchor="start" x="8" y="-152.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeLine()</text>
-</a>
-</g>
-</g>
-<!-- Stream&#45;&gt;BufferedStream -->
-<g id="edge2" class="edge">
-<title>Stream-&gt;BufferedStream</title>
-<path fill="none" stroke="#000000" d="M56.895,-336.3867C56.895,-327.8412 56.895,-318.7276 56.895,-309.5492"/>
-<polygon fill="#000000" stroke="#000000" points="53.3951,-336.4946 56.895,-346.4947 60.3951,-336.4947 53.3951,-336.4946"/>
-</g>
-<!-- SubProcess -->
-<g id="node4" class="node">
-<title>SubProcess</title>
-<g id="a_node4"><a xlink:href="SubProcess.md" xlink:title="SubProcess">
-<polygon fill="#ffffff" stroke="#000000" points="19.731,-.5 19.731,-108.5 94.059,-108.5 94.059,-.5 19.731,-.5"/>
-<text text-anchor="middle" x="56.895" y="-95.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">SubProcess</text>
-<polyline fill="none" stroke="#000000" points="19.731,-88.5 94.059,-88.5 "/>
-<text text-anchor="start" x="27.731" y="-75.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">pid</text>
-<text text-anchor="start" x="27.731" y="-63.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">stdin</text>
-<text text-anchor="start" x="27.731" y="-51.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">stdout</text>
-<polyline fill="none" stroke="#000000" points="19.731,-44.5 94.059,-44.5 "/>
-<text text-anchor="start" x="27.731" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">kill()</text>
-<text text-anchor="start" x="27.731" y="-19.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">wait()</text>
-<text text-anchor="start" x="27.731" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">findWindow()</text>
-</a>
-</g>
-</g>
-<!-- BufferedStream&#45;&gt;SubProcess -->
-<g id="edge3" class="edge">
-<title>BufferedStream-&gt;SubProcess</title>
-<path fill="none" stroke="#000000" d="M56.895,-135.1456C56.895,-126.1594 56.895,-117.2578 56.895,-108.8312"/>
-<polygon fill="#000000" stroke="#000000" points="53.3951,-135.3065 56.895,-145.3065 60.3951,-135.3066 53.3951,-135.3065"/>
-</g>
-</g>
-</svg></div>
+<dot>digraph {node [ fontname = "Helvetica,sans-Serif", fontsize = 10, shape = "record" ];
+object[tooltip="object", style="filled", fillcolor="white", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"]
+Stream[tooltip="Stream", style="filled", fillcolor="white", URL="Stream.md", label="{Stream|read()\lwrite()\lclose()\lcopyTo()\l}"]
+BufferedStream[tooltip="BufferedStream", style="filled", fillcolor="lightgray", label="{BufferedStream|new BufferedStream()\l|stream\lcharset\lEOL\l|readText()\lreadLine()\lreadLines()\lreadUntil()\lwriteText()\lwriteLine()\l}"]
+SubProcess[tooltip="SubProcess", style="filled", fillcolor="white", URL="SubProcess.md", label="{SubProcess|pid\lstdin\lstdout\l|kill()\lwait()\lfindWindow()\l}"]
+object -> Stream [dir=back]
+Stream -> BufferedStream [dir=back]
+BufferedStream -> SubProcess [dir=back]
+}</dot>
 
 ## 构造函数
         

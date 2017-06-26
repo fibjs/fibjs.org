@@ -4,135 +4,19 @@ XmlCharacterData 接口提供了 [XmlText](XmlText.md) 和 [XmlComment](XmlComme
 XmlCharacterData 是 [XmlText](XmlText.md) 和 [XmlComment](XmlComment.md) 节点的超接口。文档从不包含 XmlCharacterData 节点，它们只包含 [XmlText](XmlText.md) 节点和 [XmlComment](XmlComment.md) 节点。但由于这两种节点具有相似的功能，因此此处定义了这些函数，以便 [XmlText](XmlText.md) 和 [XmlComment](XmlComment.md) 可以继承它。
 
 ## 继承关系
-<div class="inherits"><svg width="182pt" height="717pt" viewBox="0.00 0.00 182.50 717.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 713)">
-<title>%0</title>
-<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-713 178.498,-713 178.498,4 -4,4"/>
-<!-- object -->
-<g id="node1" class="node">
-<title>object</title>
-<g id="a_node1"><a xlink:href="object.md" xlink:title="object">
-<polygon fill="#ffffff" stroke="#000000" points="52.4435,-620.5 52.4435,-708.5 110.1065,-708.5 110.1065,-620.5 52.4435,-620.5"/>
-<text text-anchor="middle" x="81.275" y="-695.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
-<polyline fill="none" stroke="#000000" points="52.4435,-688.5 110.1065,-688.5 "/>
-<text text-anchor="start" x="60.4435" y="-675.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">dispose()</text>
-<text text-anchor="start" x="60.4435" y="-663.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">equals()</text>
-<text text-anchor="start" x="60.4435" y="-651.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toString()</text>
-<text text-anchor="start" x="60.4435" y="-639.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toJSON()</text>
-<text text-anchor="start" x="60.4435" y="-627.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">valueOf()</text>
-</a>
-</g>
-</g>
-<!-- XmlNode -->
-<g id="node2" class="node">
-<title>XmlNode</title>
-<g id="a_node2"><a xlink:href="XmlNode.md" xlink:title="XmlNode">
-<polygon fill="#ffffff" stroke="#000000" points="19.9385,-307.5 19.9385,-583.5 142.6115,-583.5 142.6115,-307.5 19.9385,-307.5"/>
-<text text-anchor="middle" x="81.275" y="-570.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">XmlNode</text>
-<polyline fill="none" stroke="#000000" points="19.9385,-563.5 142.6115,-563.5 "/>
-<text text-anchor="start" x="27.9385" y="-550.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">nodeType</text>
-<text text-anchor="start" x="27.9385" y="-538.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">nodeName</text>
-<text text-anchor="start" x="27.9385" y="-526.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">nodeValue</text>
-<text text-anchor="start" x="27.9385" y="-514.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">ownerDocument</text>
-<text text-anchor="start" x="27.9385" y="-502.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">parentNode</text>
-<text text-anchor="start" x="27.9385" y="-490.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">childNodes</text>
-<text text-anchor="start" x="27.9385" y="-478.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">firstChild</text>
-<text text-anchor="start" x="27.9385" y="-466.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">lastChild</text>
-<text text-anchor="start" x="27.9385" y="-454.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">previousSibling</text>
-<text text-anchor="start" x="27.9385" y="-442.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">nextSibling</text>
-<polyline fill="none" stroke="#000000" points="19.9385,-435.5 142.6115,-435.5 "/>
-<text text-anchor="start" x="27.9385" y="-422.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">hasChildNodes()</text>
-<text text-anchor="start" x="27.9385" y="-410.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">normalize()</text>
-<text text-anchor="start" x="27.9385" y="-398.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">cloneNode()</text>
-<text text-anchor="start" x="27.9385" y="-386.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">lookupPrefix()</text>
-<text text-anchor="start" x="27.9385" y="-374.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">lookupNamespaceURI()</text>
-<text text-anchor="start" x="27.9385" y="-362.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">insertBefore()</text>
-<text text-anchor="start" x="27.9385" y="-350.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">insertAfter()</text>
-<text text-anchor="start" x="27.9385" y="-338.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">appendChild()</text>
-<text text-anchor="start" x="27.9385" y="-326.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">replaceChild()</text>
-<text text-anchor="start" x="27.9385" y="-314.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">removeChild()</text>
-</a>
-</g>
-</g>
-<!-- object&#45;&gt;XmlNode -->
-<g id="edge1" class="edge">
-<title>object-&gt;XmlNode</title>
-<path fill="none" stroke="#000000" d="M81.275,-610.1907C81.275,-601.8324 81.275,-592.8931 81.275,-583.6615"/>
-<polygon fill="#000000" stroke="#000000" points="77.7751,-610.4455 81.275,-620.4455 84.7751,-610.4456 77.7751,-610.4455"/>
-</g>
-<!-- XmlCharacterData -->
-<g id="node3" class="node">
-<title>XmlCharacterData</title>
-<g id="a_node3"><a xlink:title="XmlCharacterData">
-<polygon fill="#d3d3d3" stroke="#000000" points="32.1625,-150.5 32.1625,-270.5 130.3875,-270.5 130.3875,-150.5 32.1625,-150.5"/>
-<text text-anchor="middle" x="81.275" y="-257.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">XmlCharacterData</text>
-<polyline fill="none" stroke="#000000" points="32.1625,-250.5 130.3875,-250.5 "/>
-<text text-anchor="start" x="40.1625" y="-237.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">data</text>
-<text text-anchor="start" x="40.1625" y="-225.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">length</text>
-<polyline fill="none" stroke="#000000" points="32.1625,-218.5 130.3875,-218.5 "/>
-<text text-anchor="start" x="40.1625" y="-205.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">substringData()</text>
-<text text-anchor="start" x="40.1625" y="-193.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">appendData()</text>
-<text text-anchor="start" x="40.1625" y="-181.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">insertData()</text>
-<text text-anchor="start" x="40.1625" y="-169.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">deleteData()</text>
-<text text-anchor="start" x="40.1625" y="-157.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">replaceData()</text>
-</a>
-</g>
-</g>
-<!-- XmlNode&#45;&gt;XmlCharacterData -->
-<g id="edge2" class="edge">
-<title>XmlNode-&gt;XmlCharacterData</title>
-<path fill="none" stroke="#000000" d="M81.275,-297.3324C81.275,-288.1046 81.275,-279.1482 81.275,-270.7132"/>
-<polygon fill="#000000" stroke="#000000" points="77.7751,-297.4402 81.275,-307.4403 84.7751,-297.4403 77.7751,-297.4402"/>
-</g>
-<!-- XmlComment -->
-<g id="node4" class="node">
-<title>XmlComment</title>
-<g id="a_node4"><a xlink:href="XmlComment.md" xlink:title="XmlComment">
-<polygon fill="#ffffff" stroke="#000000" points="0,-75.5 0,-111.5 76.55,-111.5 76.55,-75.5 0,-75.5"/>
-<text text-anchor="middle" x="38.275" y="-90.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">XmlComment</text>
-</a>
-</g>
-</g>
-<!-- XmlCharacterData&#45;&gt;XmlComment -->
-<g id="edge3" class="edge">
-<title>XmlCharacterData-&gt;XmlComment</title>
-<path fill="none" stroke="#000000" d="M55.6421,-140.7547C51.6964,-130.0187 47.9437,-119.8078 44.9429,-111.6429"/>
-<polygon fill="#000000" stroke="#000000" points="52.4104,-142.1076 59.1452,-150.2864 58.9807,-139.6928 52.4104,-142.1076"/>
-</g>
-<!-- XmlText -->
-<g id="node5" class="node">
-<title>XmlText</title>
-<g id="a_node5"><a xlink:href="XmlText.md" xlink:title="XmlText">
-<polygon fill="#ffffff" stroke="#000000" points="94.3345,-73.5 94.3345,-113.5 154.2155,-113.5 154.2155,-73.5 94.3345,-73.5"/>
-<text text-anchor="middle" x="124.275" y="-100.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">XmlText</text>
-<polyline fill="none" stroke="#000000" points="94.3345,-93.5 154.2155,-93.5 "/>
-<text text-anchor="start" x="102.3345" y="-80.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">splitText()</text>
-</a>
-</g>
-</g>
-<!-- XmlCharacterData&#45;&gt;XmlText -->
-<g id="edge4" class="edge">
-<title>XmlCharacterData-&gt;XmlText</title>
-<path fill="none" stroke="#000000" d="M106.9117,-140.7444C110.5321,-130.8935 113.9899,-121.4851 116.8532,-113.6942"/>
-<polygon fill="#000000" stroke="#000000" points="103.5693,-139.6928 103.4048,-150.2864 110.1396,-142.1076 103.5693,-139.6928"/>
-</g>
-<!-- XmlCDATASection -->
-<g id="node6" class="node">
-<title>XmlCDATASection</title>
-<g id="a_node6"><a xlink:href="XmlCDATASection.md" xlink:title="XmlCDATASection">
-<polygon fill="#ffffff" stroke="#000000" points="74.052,-.5 74.052,-36.5 174.498,-36.5 174.498,-.5 74.052,-.5"/>
-<text text-anchor="middle" x="124.275" y="-15.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">XmlCDATASection</text>
-</a>
-</g>
-</g>
-<!-- XmlText&#45;&gt;XmlCDATASection -->
-<g id="edge5" class="edge">
-<title>XmlText-&gt;XmlCDATASection</title>
-<path fill="none" stroke="#000000" d="M124.275,-63.2072C124.275,-54.1849 124.275,-44.5841 124.275,-36.6016"/>
-<polygon fill="#000000" stroke="#000000" points="120.7751,-63.4013 124.275,-73.4014 127.7751,-63.4014 120.7751,-63.4013"/>
-</g>
-</g>
-</svg></div>
+<dot>digraph {node [ fontname = "Helvetica,sans-Serif", fontsize = 10, shape = "record" ];
+object[tooltip="object", style="filled", fillcolor="white", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"]
+XmlNode[tooltip="XmlNode", style="filled", fillcolor="white", URL="XmlNode.md", label="{XmlNode|nodeType\lnodeName\lnodeValue\lownerDocument\lparentNode\lchildNodes\lfirstChild\llastChild\lpreviousSibling\lnextSibling\l|hasChildNodes()\lnormalize()\lcloneNode()\llookupPrefix()\llookupNamespaceURI()\linsertBefore()\linsertAfter()\lappendChild()\lreplaceChild()\lremoveChild()\l}"]
+XmlCharacterData[tooltip="XmlCharacterData", style="filled", fillcolor="lightgray", label="{XmlCharacterData|data\llength\l|substringData()\lappendData()\linsertData()\ldeleteData()\lreplaceData()\l}"]
+XmlComment[tooltip="XmlComment", style="filled", fillcolor="white", URL="XmlComment.md", label="{XmlComment}"]
+XmlText[tooltip="XmlText", style="filled", fillcolor="white", URL="XmlText.md", label="{XmlText|splitText()\l}"]
+XmlCDATASection[tooltip="XmlCDATASection", style="filled", fillcolor="white", URL="XmlCDATASection.md", label="{XmlCDATASection}"]
+object -> XmlNode [dir=back]
+XmlNode -> XmlCharacterData [dir=back]
+XmlCharacterData -> XmlComment [dir=back]
+XmlCharacterData -> XmlText [dir=back]
+XmlText -> XmlCDATASection [dir=back]
+}</dot>
 
 ## 成员属性
         

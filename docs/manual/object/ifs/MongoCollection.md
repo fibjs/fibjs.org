@@ -9,60 +9,11 @@ var col = mdb.test;
 ```
 
 ## 继承关系
-<div class="inherits"><svg width="98pt" height="362pt" viewBox="0.00 0.00 98.46 362.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 358)">
-<title>%0</title>
-<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-358 94.456,-358 94.456,4 -4,4"/>
-<!-- object -->
-<g id="node1" class="node">
-<title>object</title>
-<g id="a_node1"><a xlink:href="object.md" xlink:title="object">
-<polygon fill="#ffffff" stroke="#000000" points="16.3965,-265.5 16.3965,-353.5 74.0595,-353.5 74.0595,-265.5 16.3965,-265.5"/>
-<text text-anchor="middle" x="45.228" y="-340.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
-<polyline fill="none" stroke="#000000" points="16.3965,-333.5 74.0595,-333.5 "/>
-<text text-anchor="start" x="24.3965" y="-320.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">dispose()</text>
-<text text-anchor="start" x="24.3965" y="-308.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">equals()</text>
-<text text-anchor="start" x="24.3965" y="-296.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toString()</text>
-<text text-anchor="start" x="24.3965" y="-284.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toJSON()</text>
-<text text-anchor="start" x="24.3965" y="-272.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">valueOf()</text>
-</a>
-</g>
-</g>
-<!-- MongoCollection -->
-<g id="node2" class="node">
-<title>MongoCollection</title>
-<g id="a_node2"><a xlink:title="MongoCollection">
-<polygon fill="#d3d3d3" stroke="#000000" points="0,-.5 0,-228.5 90.456,-228.5 90.456,-.5 0,-.5"/>
-<text text-anchor="middle" x="45.228" y="-215.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">MongoCollection</text>
-<polyline fill="none" stroke="#000000" points="0,-208.5 90.456,-208.5 "/>
-<text text-anchor="start" x="8" y="-195.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">operator[String]</text>
-<polyline fill="none" stroke="#000000" points="0,-188.5 90.456,-188.5 "/>
-<text text-anchor="start" x="8" y="-175.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">find()</text>
-<text text-anchor="start" x="8" y="-163.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">findOne()</text>
-<text text-anchor="start" x="8" y="-151.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">findAndModify()</text>
-<text text-anchor="start" x="8" y="-139.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">insert()</text>
-<text text-anchor="start" x="8" y="-127.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">save()</text>
-<text text-anchor="start" x="8" y="-115.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">update()</text>
-<text text-anchor="start" x="8" y="-103.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">remove()</text>
-<text text-anchor="start" x="8" y="-91.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">runCommand()</text>
-<text text-anchor="start" x="8" y="-79.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">drop()</text>
-<text text-anchor="start" x="8" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">ensureIndex()</text>
-<text text-anchor="start" x="8" y="-55.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">reIndex()</text>
-<text text-anchor="start" x="8" y="-43.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">dropIndex()</text>
-<text text-anchor="start" x="8" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">dropIndexes()</text>
-<text text-anchor="start" x="8" y="-19.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">getIndexes()</text>
-<text text-anchor="start" x="8" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">getCollection()</text>
-</a>
-</g>
-</g>
-<!-- object&#45;&gt;MongoCollection -->
-<g id="edge1" class="edge">
-<title>object-&gt;MongoCollection</title>
-<path fill="none" stroke="#000000" d="M45.228,-255.0153C45.228,-246.6941 45.228,-237.85 45.228,-228.8071"/>
-<polygon fill="#000000" stroke="#000000" points="41.7281,-255.2514 45.228,-265.2515 48.7281,-255.2515 41.7281,-255.2514"/>
-</g>
-</g>
-</svg></div>
+<dot>digraph {node [ fontname = "Helvetica,sans-Serif", fontsize = 10, shape = "record" ];
+object[tooltip="object", style="filled", fillcolor="white", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"]
+MongoCollection[tooltip="MongoCollection", style="filled", fillcolor="lightgray", label="{MongoCollection|operator[String]\l|find()\lfindOne()\lfindAndModify()\linsert()\lsave()\lupdate()\lremove()\lrunCommand()\ldrop()\lensureIndex()\lreIndex()\ldropIndex()\ldropIndexes()\lgetIndexes()\lgetCollection()\l}"]
+object -> MongoCollection [dir=back]
+}</dot>
 
 ## 下标操作
         

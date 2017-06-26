@@ -10,53 +10,11 @@ var set = rdb.getSortedSet("test");
 ```
 
 ## 继承关系
-<div class="inherits"><svg width="94pt" height="282pt" viewBox="0.00 0.00 94.02 282.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 278)">
-<title>%0</title>
-<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-278 90.017,-278 90.017,4 -4,4"/>
-<!-- object -->
-<g id="node1" class="node">
-<title>object</title>
-<g id="a_node1"><a xlink:href="object.md" xlink:title="object">
-<polygon fill="#ffffff" stroke="#000000" points="14.177,-185.5 14.177,-273.5 71.84,-273.5 71.84,-185.5 14.177,-185.5"/>
-<text text-anchor="middle" x="43.0085" y="-260.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
-<polyline fill="none" stroke="#000000" points="14.177,-253.5 71.84,-253.5 "/>
-<text text-anchor="start" x="22.177" y="-240.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">dispose()</text>
-<text text-anchor="start" x="22.177" y="-228.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">equals()</text>
-<text text-anchor="start" x="22.177" y="-216.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toString()</text>
-<text text-anchor="start" x="22.177" y="-204.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toJSON()</text>
-<text text-anchor="start" x="22.177" y="-192.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">valueOf()</text>
-</a>
-</g>
-</g>
-<!-- RedisSortedSet -->
-<g id="node2" class="node">
-<title>RedisSortedSet</title>
-<g id="a_node2"><a xlink:title="RedisSortedSet">
-<polygon fill="#d3d3d3" stroke="#000000" points="0,-.5 0,-148.5 86.017,-148.5 86.017,-.5 0,-.5"/>
-<text text-anchor="middle" x="43.0085" y="-135.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">RedisSortedSet</text>
-<polyline fill="none" stroke="#000000" points="0,-128.5 86.017,-128.5 "/>
-<text text-anchor="start" x="8" y="-115.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">add()</text>
-<text text-anchor="start" x="8" y="-103.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">score()</text>
-<text text-anchor="start" x="8" y="-91.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">incr()</text>
-<text text-anchor="start" x="8" y="-79.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">remove()</text>
-<text text-anchor="start" x="8" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">len()</text>
-<text text-anchor="start" x="8" y="-55.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">count()</text>
-<text text-anchor="start" x="8" y="-43.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">range()</text>
-<text text-anchor="start" x="8" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">rangeRev()</text>
-<text text-anchor="start" x="8" y="-19.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">rank()</text>
-<text text-anchor="start" x="8" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">rankRev()</text>
-</a>
-</g>
-</g>
-<!-- object&#45;&gt;RedisSortedSet -->
-<g id="edge1" class="edge">
-<title>object-&gt;RedisSortedSet</title>
-<path fill="none" stroke="#000000" d="M43.0085,-175.4948C43.0085,-166.7766 43.0085,-157.6203 43.0085,-148.5279"/>
-<polygon fill="#000000" stroke="#000000" points="39.5086,-175.4978 43.0085,-185.4978 46.5086,-175.4979 39.5086,-175.4978"/>
-</g>
-</g>
-</svg></div>
+<dot>digraph {node [ fontname = "Helvetica,sans-Serif", fontsize = 10, shape = "record" ];
+object[tooltip="object", style="filled", fillcolor="white", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"]
+RedisSortedSet[tooltip="RedisSortedSet", style="filled", fillcolor="lightgray", label="{RedisSortedSet|add()\lscore()\lincr()\lremove()\llen()\lcount()\lrange()\lrangeRev()\lrank()\lrankRev()\l}"]
+object -> RedisSortedSet [dir=back]
+}</dot>
 
 ## 成员函数
         

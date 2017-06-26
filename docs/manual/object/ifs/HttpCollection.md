@@ -2,52 +2,11 @@
 [http](../../module/ifs/http.md) 容器对象，用于 [http](../../module/ifs/http.md) header，cookie，query，form，等数据的存储与组织
 
 ## 继承关系
-<div class="inherits"><svg width="93pt" height="266pt" viewBox="0.00 0.00 92.90 266.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 262)">
-<title>%0</title>
-<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-262 88.904,-262 88.904,4 -4,4"/>
-<!-- object -->
-<g id="node1" class="node">
-<title>object</title>
-<g id="a_node1"><a xlink:href="object.md" xlink:title="object">
-<polygon fill="#ffffff" stroke="#000000" points="13.6205,-169.5 13.6205,-257.5 71.2835,-257.5 71.2835,-169.5 13.6205,-169.5"/>
-<text text-anchor="middle" x="42.452" y="-244.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
-<polyline fill="none" stroke="#000000" points="13.6205,-237.5 71.2835,-237.5 "/>
-<text text-anchor="start" x="21.6205" y="-224.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">dispose()</text>
-<text text-anchor="start" x="21.6205" y="-212.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">equals()</text>
-<text text-anchor="start" x="21.6205" y="-200.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toString()</text>
-<text text-anchor="start" x="21.6205" y="-188.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toJSON()</text>
-<text text-anchor="start" x="21.6205" y="-176.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">valueOf()</text>
-</a>
-</g>
-</g>
-<!-- HttpCollection -->
-<g id="node2" class="node">
-<title>HttpCollection</title>
-<g id="a_node2"><a xlink:title="HttpCollection">
-<polygon fill="#d3d3d3" stroke="#000000" points="0,-.5 0,-132.5 84.904,-132.5 84.904,-.5 0,-.5"/>
-<text text-anchor="middle" x="42.452" y="-119.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">HttpCollection</text>
-<polyline fill="none" stroke="#000000" points="0,-112.5 84.904,-112.5 "/>
-<text text-anchor="start" x="8" y="-99.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">operator[String]</text>
-<polyline fill="none" stroke="#000000" points="0,-92.5 84.904,-92.5 "/>
-<text text-anchor="start" x="8" y="-79.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">clear()</text>
-<text text-anchor="start" x="8" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">has()</text>
-<text text-anchor="start" x="8" y="-55.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">first()</text>
-<text text-anchor="start" x="8" y="-43.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">all()</text>
-<text text-anchor="start" x="8" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">add()</text>
-<text text-anchor="start" x="8" y="-19.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">set()</text>
-<text text-anchor="start" x="8" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">remove()</text>
-</a>
-</g>
-</g>
-<!-- object&#45;&gt;HttpCollection -->
-<g id="edge1" class="edge">
-<title>object-&gt;HttpCollection</title>
-<path fill="none" stroke="#000000" d="M42.452,-159.3749C42.452,-150.6583 42.452,-141.5503 42.452,-132.5907"/>
-<polygon fill="#000000" stroke="#000000" points="38.9521,-159.3951 42.452,-169.3952 45.9521,-159.3952 38.9521,-159.3951"/>
-</g>
-</g>
-</svg></div>
+<dot>digraph {node [ fontname = "Helvetica,sans-Serif", fontsize = 10, shape = "record" ];
+object[tooltip="object", style="filled", fillcolor="white", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"]
+HttpCollection[tooltip="HttpCollection", style="filled", fillcolor="lightgray", label="{HttpCollection|operator[String]\l|clear()\lhas()\lfirst()\lall()\ladd()\lset()\lremove()\l}"]
+object -> HttpCollection [dir=back]
+}</dot>
 
 ## 下标操作
         

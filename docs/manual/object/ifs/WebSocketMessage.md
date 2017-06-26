@@ -10,86 +10,13 @@ var msg = new ws.Message();
 ```
 
 ## 继承关系
-<div class="inherits"><svg width="143pt" height="535pt" viewBox="0.00 0.00 143.46 535.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 531)">
-<title>%0</title>
-<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-531 139.462,-531 139.462,4 -4,4"/>
-<!-- object -->
-<g id="node1" class="node">
-<title>object</title>
-<g id="a_node1"><a xlink:href="object.md" xlink:title="object">
-<polygon fill="#ffffff" stroke="#000000" points="38.8995,-438.5 38.8995,-526.5 96.5625,-526.5 96.5625,-438.5 38.8995,-438.5"/>
-<text text-anchor="middle" x="67.731" y="-513.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
-<polyline fill="none" stroke="#000000" points="38.8995,-506.5 96.5625,-506.5 "/>
-<text text-anchor="start" x="46.8995" y="-493.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">dispose()</text>
-<text text-anchor="start" x="46.8995" y="-481.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">equals()</text>
-<text text-anchor="start" x="46.8995" y="-469.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toString()</text>
-<text text-anchor="start" x="46.8995" y="-457.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toJSON()</text>
-<text text-anchor="start" x="46.8995" y="-445.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">valueOf()</text>
-</a>
-</g>
-</g>
-<!-- Message -->
-<g id="node2" class="node">
-<title>Message</title>
-<g id="a_node2"><a xlink:href="Message.md" xlink:title="Message">
-<polygon fill="#ffffff" stroke="#000000" points="25.5615,-109.5 25.5615,-401.5 109.9005,-401.5 109.9005,-109.5 25.5615,-109.5"/>
-<text text-anchor="middle" x="67.731" y="-388.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Message</text>
-<polyline fill="none" stroke="#000000" points="25.5615,-381.5 109.9005,-381.5 "/>
-<text text-anchor="start" x="33.5615" y="-368.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">new Message()</text>
-<polyline fill="none" stroke="#000000" points="25.5615,-361.5 109.9005,-361.5 "/>
-<text text-anchor="start" x="33.5615" y="-348.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">TEXT</text>
-<text text-anchor="start" x="33.5615" y="-336.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">BINARY</text>
-<polyline fill="none" stroke="#000000" points="25.5615,-329.5 109.9005,-329.5 "/>
-<text text-anchor="start" x="33.5615" y="-316.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">value</text>
-<text text-anchor="start" x="33.5615" y="-304.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">params</text>
-<text text-anchor="start" x="33.5615" y="-292.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">type</text>
-<text text-anchor="start" x="33.5615" y="-280.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">data</text>
-<text text-anchor="start" x="33.5615" y="-268.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">body</text>
-<text text-anchor="start" x="33.5615" y="-256.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">length</text>
-<text text-anchor="start" x="33.5615" y="-244.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">stream</text>
-<text text-anchor="start" x="33.5615" y="-232.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">response</text>
-<text text-anchor="start" x="33.5615" y="-220.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">lastError</text>
-<polyline fill="none" stroke="#000000" points="25.5615,-213.5 109.9005,-213.5 "/>
-<text text-anchor="start" x="33.5615" y="-200.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">read()</text>
-<text text-anchor="start" x="33.5615" y="-188.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readAll()</text>
-<text text-anchor="start" x="33.5615" y="-176.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">write()</text>
-<text text-anchor="start" x="33.5615" y="-164.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">end()</text>
-<text text-anchor="start" x="33.5615" y="-152.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">isEnded()</text>
-<text text-anchor="start" x="33.5615" y="-140.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">clear()</text>
-<text text-anchor="start" x="33.5615" y="-128.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">sendTo()</text>
-<text text-anchor="start" x="33.5615" y="-116.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readFrom()</text>
-</a>
-</g>
-</g>
-<!-- object&#45;&gt;Message -->
-<g id="edge1" class="edge">
-<title>object-&gt;Message</title>
-<path fill="none" stroke="#000000" d="M67.731,-428.2285C67.731,-419.8815 67.731,-410.9408 67.731,-401.6829"/>
-<polygon fill="#000000" stroke="#000000" points="64.2311,-428.4629 67.731,-438.463 71.2311,-428.463 64.2311,-428.4629"/>
-</g>
-<!-- WebSocketMessage -->
-<g id="node3" class="node">
-<title>WebSocketMessage</title>
-<g id="a_node3"><a xlink:title="WebSocketMessage">
-<polygon fill="#d3d3d3" stroke="#000000" points="0,-.5 0,-72.5 135.462,-72.5 135.462,-.5 0,-.5"/>
-<text text-anchor="middle" x="67.731" y="-59.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">WebSocketMessage</text>
-<polyline fill="none" stroke="#000000" points="0,-52.5 135.462,-52.5 "/>
-<text text-anchor="start" x="8" y="-39.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">new WebSocketMessage()</text>
-<polyline fill="none" stroke="#000000" points="0,-32.5 135.462,-32.5 "/>
-<text text-anchor="start" x="8" y="-19.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">masked</text>
-<text text-anchor="start" x="8" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">maxSize</text>
-</a>
-</g>
-</g>
-<!-- Message&#45;&gt;WebSocketMessage -->
-<g id="edge2" class="edge">
-<title>Message-&gt;WebSocketMessage</title>
-<path fill="none" stroke="#000000" d="M67.731,-99.2864C67.731,-89.7457 67.731,-80.7872 67.731,-72.7901"/>
-<polygon fill="#000000" stroke="#000000" points="64.2311,-99.4238 67.731,-109.4238 71.2311,-99.4239 64.2311,-99.4238"/>
-</g>
-</g>
-</svg></div>
+<dot>digraph {node [ fontname = "Helvetica,sans-Serif", fontsize = 10, shape = "record" ];
+object[tooltip="object", style="filled", fillcolor="white", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"]
+Message[tooltip="Message", style="filled", fillcolor="white", URL="Message.md", label="{Message|new Message()\l|TEXT\lBINARY\l|value\lparams\ltype\ldata\lbody\llength\lstream\lresponse\llastError\l|read()\lreadAll()\lwrite()\lend()\lisEnded()\lclear()\lsendTo()\lreadFrom()\l}"]
+WebSocketMessage[tooltip="WebSocketMessage", style="filled", fillcolor="lightgray", label="{WebSocketMessage|new WebSocketMessage()\l|masked\lmaxSize\l}"]
+object -> Message [dir=back]
+Message -> WebSocketMessage [dir=back]
+}</dot>
 
 ## 构造函数
         

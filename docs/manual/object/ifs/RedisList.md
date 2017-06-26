@@ -10,55 +10,11 @@ var list = rdb.getList("test");
 ```
 
 ## 继承关系
-<div class="inherits"><svg width="85pt" height="306pt" viewBox="0.00 0.00 84.56 306.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 302)">
-<title>%0</title>
-<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-302 80.557,-302 80.557,4 -4,4"/>
-<!-- object -->
-<g id="node1" class="node">
-<title>object</title>
-<g id="a_node1"><a xlink:href="object.md" xlink:title="object">
-<polygon fill="#ffffff" stroke="#000000" points="9.447,-209.5 9.447,-297.5 67.11,-297.5 67.11,-209.5 9.447,-209.5"/>
-<text text-anchor="middle" x="38.2785" y="-284.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
-<polyline fill="none" stroke="#000000" points="9.447,-277.5 67.11,-277.5 "/>
-<text text-anchor="start" x="17.447" y="-264.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">dispose()</text>
-<text text-anchor="start" x="17.447" y="-252.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">equals()</text>
-<text text-anchor="start" x="17.447" y="-240.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toString()</text>
-<text text-anchor="start" x="17.447" y="-228.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toJSON()</text>
-<text text-anchor="start" x="17.447" y="-216.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">valueOf()</text>
-</a>
-</g>
-</g>
-<!-- RedisList -->
-<g id="node2" class="node">
-<title>RedisList</title>
-<g id="a_node2"><a xlink:title="RedisList">
-<polygon fill="#d3d3d3" stroke="#000000" points="0,-.5 0,-172.5 76.557,-172.5 76.557,-.5 0,-.5"/>
-<text text-anchor="middle" x="38.2785" y="-159.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">RedisList</text>
-<polyline fill="none" stroke="#000000" points="0,-152.5 76.557,-152.5 "/>
-<text text-anchor="start" x="8" y="-139.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">push()</text>
-<text text-anchor="start" x="8" y="-127.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">pop()</text>
-<text text-anchor="start" x="8" y="-115.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">rpush()</text>
-<text text-anchor="start" x="8" y="-103.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">rpop()</text>
-<text text-anchor="start" x="8" y="-91.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">set()</text>
-<text text-anchor="start" x="8" y="-79.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">get()</text>
-<text text-anchor="start" x="8" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">insertBefore()</text>
-<text text-anchor="start" x="8" y="-55.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">insertAfter()</text>
-<text text-anchor="start" x="8" y="-43.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">remove()</text>
-<text text-anchor="start" x="8" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">trim()</text>
-<text text-anchor="start" x="8" y="-19.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">len()</text>
-<text text-anchor="start" x="8" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">range()</text>
-</a>
-</g>
-</g>
-<!-- object&#45;&gt;RedisList -->
-<g id="edge1" class="edge">
-<title>object-&gt;RedisList</title>
-<path fill="none" stroke="#000000" d="M38.2785,-199.0986C38.2785,-190.6202 38.2785,-181.6843 38.2785,-172.7067"/>
-<polygon fill="#000000" stroke="#000000" points="34.7786,-199.1855 38.2785,-209.1855 41.7786,-199.1855 34.7786,-199.1855"/>
-</g>
-</g>
-</svg></div>
+<dot>digraph {node [ fontname = "Helvetica,sans-Serif", fontsize = 10, shape = "record" ];
+object[tooltip="object", style="filled", fillcolor="white", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"]
+RedisList[tooltip="RedisList", style="filled", fillcolor="lightgray", label="{RedisList|push()\lpop()\lrpush()\lrpop()\lset()\lget()\linsertBefore()\linsertAfter()\lremove()\ltrim()\llen()\lrange()\l}"]
+object -> RedisList [dir=back]
+}</dot>
 
 ## 成员函数
         

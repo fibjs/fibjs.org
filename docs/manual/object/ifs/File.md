@@ -8,92 +8,15 @@ var f = fs.openFile('test.txt');
 ```
 
 ## 继承关系
-<div class="inherits"><svg width="98pt" height="492pt" viewBox="0.00 0.00 97.91 492.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 488)">
-<title>%0</title>
-<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-488 93.907,-488 93.907,4 -4,4"/>
-<!-- object -->
-<g id="node1" class="node">
-<title>object</title>
-<g id="a_node1"><a xlink:href="object.md" xlink:title="object">
-<polygon fill="#ffffff" stroke="#000000" points="16.122,-395.5 16.122,-483.5 73.785,-483.5 73.785,-395.5 16.122,-395.5"/>
-<text text-anchor="middle" x="44.9535" y="-470.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
-<polyline fill="none" stroke="#000000" points="16.122,-463.5 73.785,-463.5 "/>
-<text text-anchor="start" x="24.122" y="-450.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">dispose()</text>
-<text text-anchor="start" x="24.122" y="-438.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">equals()</text>
-<text text-anchor="start" x="24.122" y="-426.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toString()</text>
-<text text-anchor="start" x="24.122" y="-414.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toJSON()</text>
-<text text-anchor="start" x="24.122" y="-402.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">valueOf()</text>
-</a>
-</g>
-</g>
-<!-- Stream -->
-<g id="node2" class="node">
-<title>Stream</title>
-<g id="a_node2"><a xlink:href="Stream.md" xlink:title="Stream">
-<polygon fill="#ffffff" stroke="#000000" points="17.2315,-282.5 17.2315,-358.5 72.6755,-358.5 72.6755,-282.5 17.2315,-282.5"/>
-<text text-anchor="middle" x="44.9535" y="-345.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Stream</text>
-<polyline fill="none" stroke="#000000" points="17.2315,-338.5 72.6755,-338.5 "/>
-<text text-anchor="start" x="25.2315" y="-325.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">read()</text>
-<text text-anchor="start" x="25.2315" y="-313.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">write()</text>
-<text text-anchor="start" x="25.2315" y="-301.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">close()</text>
-<text text-anchor="start" x="25.2315" y="-289.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">copyTo()</text>
-</a>
-</g>
-</g>
-<!-- object&#45;&gt;Stream -->
-<g id="edge1" class="edge">
-<title>object-&gt;Stream</title>
-<path fill="none" stroke="#000000" d="M44.9535,-385.1681C44.9535,-376.1942 44.9535,-367.0623 44.9535,-358.5973"/>
-<polygon fill="#000000" stroke="#000000" points="41.4536,-385.1888 44.9535,-395.1888 48.4536,-385.1888 41.4536,-385.1888"/>
-</g>
-<!-- SeekableStream -->
-<g id="node3" class="node">
-<title>SeekableStream</title>
-<g id="a_node3"><a xlink:href="SeekableStream.md" xlink:title="SeekableStream">
-<polygon fill="#ffffff" stroke="#000000" points="0,-109.5 0,-245.5 89.907,-245.5 89.907,-109.5 0,-109.5"/>
-<text text-anchor="middle" x="44.9535" y="-232.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">SeekableStream</text>
-<polyline fill="none" stroke="#000000" points="0,-225.5 89.907,-225.5 "/>
-<text text-anchor="start" x="8" y="-212.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">seek()</text>
-<text text-anchor="start" x="8" y="-200.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">tell()</text>
-<text text-anchor="start" x="8" y="-188.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">rewind()</text>
-<text text-anchor="start" x="8" y="-176.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">size()</text>
-<text text-anchor="start" x="8" y="-164.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readAll()</text>
-<text text-anchor="start" x="8" y="-152.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">truncate()</text>
-<text text-anchor="start" x="8" y="-140.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">eof()</text>
-<text text-anchor="start" x="8" y="-128.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">flush()</text>
-<text text-anchor="start" x="8" y="-116.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">stat()</text>
-</a>
-</g>
-</g>
-<!-- Stream&#45;&gt;SeekableStream -->
-<g id="edge2" class="edge">
-<title>Stream-&gt;SeekableStream</title>
-<path fill="none" stroke="#000000" d="M44.9535,-272.1057C44.9535,-263.6194 44.9535,-254.6465 44.9535,-245.7411"/>
-<polygon fill="#000000" stroke="#000000" points="41.4536,-272.1786 44.9535,-282.1786 48.4536,-272.1787 41.4536,-272.1786"/>
-</g>
-<!-- File -->
-<g id="node4" class="node">
-<title>File</title>
-<g id="a_node4"><a xlink:title="File">
-<polygon fill="#d3d3d3" stroke="#000000" points="17.9535,-.5 17.9535,-72.5 71.9535,-72.5 71.9535,-.5 17.9535,-.5"/>
-<text text-anchor="middle" x="44.7855" y="-59.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">File</text>
-<polyline fill="none" stroke="#000000" points="17.9535,-52.5 71.6175,-52.5 "/>
-<text text-anchor="start" x="25.9535" y="-39.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">name</text>
-<text text-anchor="start" x="25.9535" y="-27.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">fd</text>
-<polyline fill="none" stroke="#000000" points="17.9535,-20.5 71.6175,-20.5 "/>
-<text text-anchor="start" x="25.9535" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">chmod()</text>
-</a>
-</g>
-</g>
-<!-- SeekableStream&#45;&gt;File -->
-<g id="edge3" class="edge">
-<title>SeekableStream-&gt;File</title>
-<path fill="none" stroke="#000000" d="M44.9535,-99.385C44.9535,-90.1193 44.9535,-81.0312 44.9535,-72.7709"/>
-<polygon fill="#000000" stroke="#000000" points="41.4536,-99.478 44.9535,-109.4781 48.4536,-99.4781 41.4536,-99.478"/>
-</g>
-</g>
-</svg></div>
+<dot>digraph {node [ fontname = "Helvetica,sans-Serif", fontsize = 10, shape = "record" ];
+object[tooltip="object", style="filled", fillcolor="white", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"]
+Stream[tooltip="Stream", style="filled", fillcolor="white", URL="Stream.md", label="{Stream|read()\lwrite()\lclose()\lcopyTo()\l}"]
+SeekableStream[tooltip="SeekableStream", style="filled", fillcolor="white", URL="SeekableStream.md", label="{SeekableStream|seek()\ltell()\lrewind()\lsize()\lreadAll()\ltruncate()\leof()\lflush()\lstat()\l}"]
+File[tooltip="File", style="filled", fillcolor="lightgray", label="{File|name\lfd\l|chmod()\l}"]
+object -> Stream [dir=back]
+Stream -> SeekableStream [dir=back]
+SeekableStream -> File [dir=back]
+}</dot>
 
 ## 成员属性
         

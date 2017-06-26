@@ -9,54 +9,11 @@ var c = new util.LruCache(10, 100);
 ```
 
 ## 继承关系
-<div class="inherits"><svg width="95pt" height="286pt" viewBox="0.00 0.00 95.12 286.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 282)">
-<title>%0</title>
-<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-282 91.117,-282 91.117,4 -4,4"/>
-<!-- object -->
-<g id="node1" class="node">
-<title>object</title>
-<g id="a_node1"><a xlink:href="object.md" xlink:title="object">
-<polygon fill="#ffffff" stroke="#000000" points="14.727,-189.5 14.727,-277.5 72.39,-277.5 72.39,-189.5 14.727,-189.5"/>
-<text text-anchor="middle" x="43.5585" y="-264.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
-<polyline fill="none" stroke="#000000" points="14.727,-257.5 72.39,-257.5 "/>
-<text text-anchor="start" x="22.727" y="-244.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">dispose()</text>
-<text text-anchor="start" x="22.727" y="-232.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">equals()</text>
-<text text-anchor="start" x="22.727" y="-220.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toString()</text>
-<text text-anchor="start" x="22.727" y="-208.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toJSON()</text>
-<text text-anchor="start" x="22.727" y="-196.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">valueOf()</text>
-</a>
-</g>
-</g>
-<!-- LruCache -->
-<g id="node2" class="node">
-<title>LruCache</title>
-<g id="a_node2"><a xlink:title="LruCache">
-<polygon fill="#d3d3d3" stroke="#000000" points="0,-.5 0,-152.5 87.117,-152.5 87.117,-.5 0,-.5"/>
-<text text-anchor="middle" x="43.5585" y="-139.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">LruCache</text>
-<polyline fill="none" stroke="#000000" points="0,-132.5 87.117,-132.5 "/>
-<text text-anchor="start" x="8" y="-119.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">new LruCache()</text>
-<polyline fill="none" stroke="#000000" points="0,-112.5 87.117,-112.5 "/>
-<text text-anchor="start" x="8" y="-99.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">size</text>
-<text text-anchor="start" x="8" y="-87.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">timeout</text>
-<polyline fill="none" stroke="#000000" points="0,-80.5 87.117,-80.5 "/>
-<text text-anchor="start" x="8" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">clear()</text>
-<text text-anchor="start" x="8" y="-55.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">has()</text>
-<text text-anchor="start" x="8" y="-43.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">get()</text>
-<text text-anchor="start" x="8" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">set()</text>
-<text text-anchor="start" x="8" y="-19.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">remove()</text>
-<text text-anchor="start" x="8" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">isEmpty()</text>
-</a>
-</g>
-</g>
-<!-- object&#45;&gt;LruCache -->
-<g id="edge1" class="edge">
-<title>object-&gt;LruCache</title>
-<path fill="none" stroke="#000000" d="M43.5585,-179.1668C43.5585,-170.6216 43.5585,-161.6531 43.5585,-152.7238"/>
-<polygon fill="#000000" stroke="#000000" points="40.0586,-179.3489 43.5585,-189.3489 47.0586,-179.349 40.0586,-179.3489"/>
-</g>
-</g>
-</svg></div>
+<dot>digraph {node [ fontname = "Helvetica,sans-Serif", fontsize = 10, shape = "record" ];
+object[tooltip="object", style="filled", fillcolor="white", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"]
+LruCache[tooltip="LruCache", style="filled", fillcolor="lightgray", label="{LruCache|new LruCache()\l|size\ltimeout\l|clear()\lhas()\lget()\lset()\lremove()\lisEmpty()\l}"]
+object -> LruCache [dir=back]
+}</dot>
 
 ## 构造函数
         

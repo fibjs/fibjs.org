@@ -8,53 +8,11 @@ var c = new crypto.Cipher(crypto.AES, crypto.ECB, ...);
 ```
 
 ## 继承关系
-<div class="inherits"><svg width="91pt" height="274pt" viewBox="0.00 0.00 91.24 274.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 270)">
-<title>%0</title>
-<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-270 87.237,-270 87.237,4 -4,4"/>
-<!-- object -->
-<g id="node1" class="node">
-<title>object</title>
-<g id="a_node1"><a xlink:href="object.md" xlink:title="object">
-<polygon fill="#ffffff" stroke="#000000" points="12.787,-177.5 12.787,-265.5 70.45,-265.5 70.45,-177.5 12.787,-177.5"/>
-<text text-anchor="middle" x="41.6185" y="-252.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
-<polyline fill="none" stroke="#000000" points="12.787,-245.5 70.45,-245.5 "/>
-<text text-anchor="start" x="20.787" y="-232.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">dispose()</text>
-<text text-anchor="start" x="20.787" y="-220.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">equals()</text>
-<text text-anchor="start" x="20.787" y="-208.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toString()</text>
-<text text-anchor="start" x="20.787" y="-196.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toJSON()</text>
-<text text-anchor="start" x="20.787" y="-184.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">valueOf()</text>
-</a>
-</g>
-</g>
-<!-- Cipher -->
-<g id="node2" class="node">
-<title>Cipher</title>
-<g id="a_node2"><a xlink:title="Cipher">
-<polygon fill="#d3d3d3" stroke="#000000" points="0,-.5 0,-140.5 83.237,-140.5 83.237,-.5 0,-.5"/>
-<text text-anchor="middle" x="41.6185" y="-127.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Cipher</text>
-<polyline fill="none" stroke="#000000" points="0,-120.5 83.237,-120.5 "/>
-<text text-anchor="start" x="8" y="-107.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">new Cipher()</text>
-<polyline fill="none" stroke="#000000" points="0,-100.5 83.237,-100.5 "/>
-<text text-anchor="start" x="8" y="-87.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">name</text>
-<text text-anchor="start" x="8" y="-75.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">keySize</text>
-<text text-anchor="start" x="8" y="-63.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">ivSize</text>
-<text text-anchor="start" x="8" y="-51.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">blockSize</text>
-<polyline fill="none" stroke="#000000" points="0,-44.5 83.237,-44.5 "/>
-<text text-anchor="start" x="8" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">paddingMode()</text>
-<text text-anchor="start" x="8" y="-19.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">encrypt()</text>
-<text text-anchor="start" x="8" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">decrypt()</text>
-</a>
-</g>
-</g>
-<!-- object&#45;&gt;Cipher -->
-<g id="edge1" class="edge">
-<title>object-&gt;Cipher</title>
-<path fill="none" stroke="#000000" d="M41.6185,-167.191C41.6185,-158.6178 41.6185,-149.6478 41.6185,-140.7746"/>
-<polygon fill="#000000" stroke="#000000" points="38.1186,-167.4186 41.6185,-177.4186 45.1186,-167.4187 38.1186,-167.4186"/>
-</g>
-</g>
-</svg></div>
+<dot>digraph {node [ fontname = "Helvetica,sans-Serif", fontsize = 10, shape = "record" ];
+object[tooltip="object", style="filled", fillcolor="white", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"]
+Cipher[tooltip="Cipher", style="filled", fillcolor="lightgray", label="{Cipher|new Cipher()\l|name\lkeySize\livSize\lblockSize\l|paddingMode()\lencrypt()\ldecrypt()\l}"]
+object -> Cipher [dir=back]
+}</dot>
 
 ## 构造函数
         
