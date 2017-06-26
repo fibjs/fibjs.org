@@ -17,14 +17,14 @@ object -> X509Req [dir=back]
 ## 构造函数
         
 ### X509Req
-** X509Req 构造函数 **
+**X509Req 构造函数**
 
 ```JavaScript
 new X509Req();
 ```
 
 --------------------------
-** X509Req 构造函数，根据给定的信息创建一个证书请求 **
+**X509Req 构造函数，根据给定的信息创建一个证书请求**
 
 ```JavaScript
 new X509Req(String subject,
@@ -40,7 +40,7 @@ new X509Req(String subject,
 ## 成员属性
         
 ### subject
-** String, 获取证书的主题可分辨名称 **
+**String, 获取证书的主题可分辨名称**
 
 ```JavaScript
 readonly String X509Req.subject;
@@ -48,7 +48,7 @@ readonly String X509Req.subject;
 
 --------------------------
 ### publicKey
-** [PKey](PKey.md), 获取证书的公钥 **
+**[PKey](PKey.md), 获取证书的公钥**
 
 ```JavaScript
 readonly PKey X509Req.publicKey;
@@ -57,7 +57,7 @@ readonly PKey X509Req.publicKey;
 ## 成员函数
         
 ### load
-** 加载一个 DER 格式的证书请求 **
+**加载一个 DER 格式的证书请求**
 
 ```JavaScript
 X509Req.load(Buffer derReq);
@@ -67,7 +67,7 @@ X509Req.load(Buffer derReq);
 * derReq: [Buffer](Buffer.md), DER 格式的证书请求
 
 --------------------------
-** 加载一个 PEM 格式的证书请求 **
+**加载一个 PEM 格式的证书请求**
 
 ```JavaScript
 X509Req.load(String pemReq);
@@ -78,7 +78,7 @@ X509Req.load(String pemReq);
 
 --------------------------
 ### loadFile
-** 加载一个 PEM/DER 格式的证书请求，可多次调用 **
+**加载一个 PEM/DER 格式的证书请求，可多次调用**
 
 ```JavaScript
 X509Req.loadFile(String filename);
@@ -89,7 +89,7 @@ X509Req.loadFile(String filename);
 
 --------------------------
 ### exportPem
-** 返回当前证书请求的 PEM 格式编码 **
+**返回当前证书请求的 PEM 格式编码**
 
 ```JavaScript
 String X509Req.exportPem();
@@ -100,7 +100,7 @@ String X509Req.exportPem();
 
 --------------------------
 ### exportDer
-** 返回当前证书请求的 DER 格式编码 **
+**返回当前证书请求的 DER 格式编码**
 
 ```JavaScript
 Buffer X509Req.exportDer();
@@ -111,7 +111,7 @@ Buffer X509Req.exportDer();
 
 --------------------------
 ### sign
-** 签名当前证书请求为正式证书 **
+**签名当前证书请求为正式证书**
 
 ```JavaScript
 X509Cert X509Req.sign(String issuer,
@@ -142,7 +142,7 @@ opts 接收的字段如下：
 
 --------------------------
 ### dispose
-** 强制回收对象，调用此方法后，对象资源将立即释放 **
+**强制回收对象，调用此方法后，对象资源将立即释放**
 
 ```JavaScript
 X509Req.dispose();
@@ -150,7 +150,7 @@ X509Req.dispose();
 
 --------------------------
 ### equals
-** 比较当前对象与给定的对象是否相等 **
+**比较当前对象与给定的对象是否相等**
 
 ```JavaScript
 Boolean X509Req.equals(object expected);
@@ -164,7 +164,7 @@ Boolean X509Req.equals(object expected);
 
 --------------------------
 ### toString
-** 返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现 **
+**返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现**
 
 ```JavaScript
 String X509Req.toString();
@@ -175,7 +175,7 @@ String X509Req.toString();
 
 --------------------------
 ### toJSON
-** 返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合 **
+**返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合**
 
 ```JavaScript
 Value X509Req.toJSON(String key = "");
@@ -189,7 +189,7 @@ Value X509Req.toJSON(String key = "");
 
 --------------------------
 ### valueOf
-** 返回对象本身的数值 **
+**返回对象本身的数值**
 
 ```JavaScript
 Value X509Req.valueOf();

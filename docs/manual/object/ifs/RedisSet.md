@@ -19,7 +19,7 @@ object -> RedisSet [dir=back]
 ## 成员函数
         
 ### add
-** 将一个或多个 member 元素加入到集合 key 当中，已经存在于集合的 member 元素将被忽略 **
+**将一个或多个 member 元素加入到集合 key 当中，已经存在于集合的 member 元素将被忽略**
 
 ```JavaScript
 Integer RedisSet.add(Array members);
@@ -32,7 +32,7 @@ Integer RedisSet.add(Array members);
 * Integer, 被添加到集合中的新元素的数量，不包括被忽略的元素
 
 --------------------------
-** 同时将多个 field-value (域-值)对设置到哈希表中，此命令会覆盖哈希表中已存在的域 **
+**同时将多个 field-value (域-值)对设置到哈希表中，此命令会覆盖哈希表中已存在的域**
 
 ```JavaScript
 Integer RedisSet.add(...);
@@ -46,7 +46,7 @@ Integer RedisSet.add(...);
 
 --------------------------
 ### remove
-** 移除集合中的一个或多个 member 元素 **
+**移除集合中的一个或多个 member 元素**
 
 ```JavaScript
 Integer RedisSet.remove(Array members);
@@ -59,7 +59,7 @@ Integer RedisSet.remove(Array members);
 * Integer, 被成功移除的元素的数量，不包括被忽略的元素
 
 --------------------------
-** 移除集合中的一个或多个 member 元素 **
+**移除集合中的一个或多个 member 元素**
 
 ```JavaScript
 Integer RedisSet.remove(...);
@@ -73,7 +73,7 @@ Integer RedisSet.remove(...);
 
 --------------------------
 ### len
-** 返回集合中元素的数量 **
+**返回集合中元素的数量**
 
 ```JavaScript
 Integer RedisSet.len();
@@ -84,7 +84,7 @@ Integer RedisSet.len();
 
 --------------------------
 ### exists
-** 判断 member 元素是否集合的成员 **
+**判断 member 元素是否集合的成员**
 
 ```JavaScript
 Boolean RedisSet.exists(Buffer member);
@@ -98,7 +98,7 @@ Boolean RedisSet.exists(Buffer member);
 
 --------------------------
 ### members
-** 返回集合中的所有成员 **
+**返回集合中的所有成员**
 
 ```JavaScript
 List RedisSet.members();
@@ -109,7 +109,7 @@ List RedisSet.members();
 
 --------------------------
 ### pop
-** 移除并返回集合中的一个随机元素 **
+**移除并返回集合中的一个随机元素**
 
 ```JavaScript
 Buffer RedisSet.pop();
@@ -120,7 +120,7 @@ Buffer RedisSet.pop();
 
 --------------------------
 ### randMember
-** 从集合中获取随机的一个元素 **
+**从集合中获取随机的一个元素**
 
 ```JavaScript
 Value RedisSet.randMember();
@@ -130,7 +130,7 @@ Value RedisSet.randMember();
 * Value, 返回一个元素；如果集合为空，返回 null
 
 --------------------------
-** 从集合中获取随机的若干元素 **
+**从集合中获取随机的若干元素**
 
 ```JavaScript
 Value RedisSet.randMember(Integer count);
@@ -144,7 +144,7 @@ Value RedisSet.randMember(Integer count);
 
 --------------------------
 ### dispose
-** 强制回收对象，调用此方法后，对象资源将立即释放 **
+**强制回收对象，调用此方法后，对象资源将立即释放**
 
 ```JavaScript
 RedisSet.dispose();
@@ -152,7 +152,7 @@ RedisSet.dispose();
 
 --------------------------
 ### equals
-** 比较当前对象与给定的对象是否相等 **
+**比较当前对象与给定的对象是否相等**
 
 ```JavaScript
 Boolean RedisSet.equals(object expected);
@@ -166,7 +166,7 @@ Boolean RedisSet.equals(object expected);
 
 --------------------------
 ### toString
-** 返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现 **
+**返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现**
 
 ```JavaScript
 String RedisSet.toString();
@@ -177,7 +177,7 @@ String RedisSet.toString();
 
 --------------------------
 ### toJSON
-** 返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合 **
+**返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合**
 
 ```JavaScript
 Value RedisSet.toJSON(String key = "");
@@ -191,7 +191,7 @@ Value RedisSet.toJSON(String key = "");
 
 --------------------------
 ### valueOf
-** 返回对象本身的数值 **
+**返回对象本身的数值**
 
 ```JavaScript
 Value RedisSet.valueOf();

@@ -27,7 +27,7 @@ Stream -> SslSocket [dir=back]
 ## 成员函数
         
 ### read
-** 从流内读取指定大小的数据 **
+**从流内读取指定大小的数据**
 
 ```JavaScript
 Buffer Stream.read(Integer bytes = -1) async;
@@ -41,7 +41,7 @@ Buffer Stream.read(Integer bytes = -1) async;
 
 --------------------------
 ### write
-** 将给定的数据写入流 **
+**将给定的数据写入流**
 
 ```JavaScript
 Stream.write(Buffer data) async;
@@ -52,7 +52,7 @@ Stream.write(Buffer data) async;
 
 --------------------------
 ### close
-** 关闭当前流对象 **
+**关闭当前流对象**
 
 ```JavaScript
 Stream.close() async;
@@ -60,7 +60,7 @@ Stream.close() async;
 
 --------------------------
 ### copyTo
-** 复制流数据到目标流中 **
+**复制流数据到目标流中**
 
 ```JavaScript
 Long Stream.copyTo(Stream stm,
@@ -76,7 +76,7 @@ Long Stream.copyTo(Stream stm,
 
 --------------------------
 ### dispose
-** 强制回收对象，调用此方法后，对象资源将立即释放 **
+**强制回收对象，调用此方法后，对象资源将立即释放**
 
 ```JavaScript
 Stream.dispose();
@@ -84,7 +84,7 @@ Stream.dispose();
 
 --------------------------
 ### equals
-** 比较当前对象与给定的对象是否相等 **
+**比较当前对象与给定的对象是否相等**
 
 ```JavaScript
 Boolean Stream.equals(object expected);
@@ -98,7 +98,7 @@ Boolean Stream.equals(object expected);
 
 --------------------------
 ### toString
-** 返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现 **
+**返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现**
 
 ```JavaScript
 String Stream.toString();
@@ -109,7 +109,7 @@ String Stream.toString();
 
 --------------------------
 ### toJSON
-** 返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合 **
+**返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合**
 
 ```JavaScript
 Value Stream.toJSON(String key = "");
@@ -123,7 +123,7 @@ Value Stream.toJSON(String key = "");
 
 --------------------------
 ### valueOf
-** 返回对象本身的数值 **
+**返回对象本身的数值**
 
 ```JavaScript
 Value Stream.valueOf();

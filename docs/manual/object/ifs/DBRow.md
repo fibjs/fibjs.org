@@ -10,14 +10,14 @@ object -> DBRow [dir=back]
 
 ## 下标操作
         
-** 对象数组可使用下标直接访问对象数据 **
+**对象数组可使用下标直接访问对象数据**
 
 ```JavaScript
 readonly Value DBRow[];
 ```
 
 --------------------------
-** 可使用字段名下标直接访问对象数据 **
+**可使用字段名下标直接访问对象数据**
 
 ```JavaScript
 readonly Value DBRow[String];
@@ -26,7 +26,7 @@ readonly Value DBRow[String];
 ## 成员函数
         
 ### dispose
-** 强制回收对象，调用此方法后，对象资源将立即释放 **
+**强制回收对象，调用此方法后，对象资源将立即释放**
 
 ```JavaScript
 DBRow.dispose();
@@ -34,7 +34,7 @@ DBRow.dispose();
 
 --------------------------
 ### equals
-** 比较当前对象与给定的对象是否相等 **
+**比较当前对象与给定的对象是否相等**
 
 ```JavaScript
 Boolean DBRow.equals(object expected);
@@ -48,7 +48,7 @@ Boolean DBRow.equals(object expected);
 
 --------------------------
 ### toString
-** 返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现 **
+**返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现**
 
 ```JavaScript
 String DBRow.toString();
@@ -59,7 +59,7 @@ String DBRow.toString();
 
 --------------------------
 ### toJSON
-** 返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合 **
+**返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合**
 
 ```JavaScript
 Value DBRow.toJSON(String key = "");
@@ -73,7 +73,7 @@ Value DBRow.toJSON(String key = "");
 
 --------------------------
 ### valueOf
-** 返回对象本身的数值 **
+**返回对象本身的数值**
 
 ```JavaScript
 Value DBRow.valueOf();

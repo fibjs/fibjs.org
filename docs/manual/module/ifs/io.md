@@ -10,7 +10,7 @@ var io = require('io');
 ## 对象
         
 ### MemoryStream
-** 创建一个内存流对象，参见 [MemoryStream](../../object/ifs/MemoryStream.md) **
+**创建一个内存流对象，参见 [MemoryStream](../../object/ifs/MemoryStream.md)**
 
 ```JavaScript
 MemoryStream io.MemoryStream;
@@ -18,7 +18,7 @@ MemoryStream io.MemoryStream;
 
 --------------------------
 ### BufferedStream
-** 创建一个缓存流读取对象，参见 [BufferedStream](../../object/ifs/BufferedStream.md) **
+**创建一个缓存流读取对象，参见 [BufferedStream](../../object/ifs/BufferedStream.md)**
 
 ```JavaScript
 BufferedStream io.BufferedStream;
@@ -27,7 +27,7 @@ BufferedStream io.BufferedStream;
 ## 静态函数
         
 ### copyStream
-** 复制流数据到目标流中 **
+**复制流数据到目标流中**
 
 ```JavaScript
 static Long io.copyStream(Stream from,
@@ -45,7 +45,7 @@ static Long io.copyStream(Stream from,
 
 --------------------------
 ### bridge
-** 双向复制流数据，直到流中无数据，或者流被关闭 **
+**双向复制流数据，直到流中无数据，或者流被关闭**
 
 ```JavaScript
 static io.bridge(Stream stm1,

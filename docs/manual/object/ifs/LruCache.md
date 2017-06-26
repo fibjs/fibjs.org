@@ -18,7 +18,7 @@ object -> LruCache [dir=back]
 ## 构造函数
         
 ### LruCache
-** LruCache 对象构造函数 **
+**LruCache 对象构造函数**
 
 ```JavaScript
 new LruCache(Integer size,
@@ -32,7 +32,7 @@ new LruCache(Integer size,
 ## 成员属性
         
 ### size
-** Integer, 查询容器内数值个数 **
+**Integer, 查询容器内数值个数**
 
 ```JavaScript
 readonly Integer LruCache.size;
@@ -40,7 +40,7 @@ readonly Integer LruCache.size;
 
 --------------------------
 ### timeout
-** Integer, 查询和设置容器内元素失效时间，单位是 ms，小于等于 0 不失效 **
+**Integer, 查询和设置容器内元素失效时间，单位是 ms，小于等于 0 不失效**
 
 ```JavaScript
 Integer LruCache.timeout;
@@ -49,7 +49,7 @@ Integer LruCache.timeout;
 ## 成员函数
         
 ### clear
-** 清除容器数据 **
+**清除容器数据**
 
 ```JavaScript
 LruCache.clear();
@@ -57,7 +57,7 @@ LruCache.clear();
 
 --------------------------
 ### has
-** 检查容器内是否存在指定键值的数据 **
+**检查容器内是否存在指定键值的数据**
 
 ```JavaScript
 Boolean LruCache.has(String name);
@@ -71,7 +71,7 @@ Boolean LruCache.has(String name);
 
 --------------------------
 ### get
-** 查询指定键值的值 **
+**查询指定键值的值**
 
 ```JavaScript
 Value LruCache.get(String name);
@@ -84,7 +84,7 @@ Value LruCache.get(String name);
 * Value, 返回键值所对应的值，若不存在，则返回 undefined
 
 --------------------------
-** 查询指定键值的值，若不存在或过期，则调用回调函数更新数据 **
+**查询指定键值的值，若不存在或过期，则调用回调函数更新数据**
 
 ```JavaScript
 Value LruCache.get(String name,
@@ -100,7 +100,7 @@ Value LruCache.get(String name,
 
 --------------------------
 ### set
-** 设定一个键值数据，键值不存在则插入一条新数据 **
+**设定一个键值数据，键值不存在则插入一条新数据**
 
 ```JavaScript
 LruCache.set(String name,
@@ -112,7 +112,7 @@ LruCache.set(String name,
 * value: Value, 指定要设定的数据
 
 --------------------------
-** 设定一个键值数据，键值不存在则插入新数据 **
+**设定一个键值数据，键值不存在则插入新数据**
 
 ```JavaScript
 LruCache.set(Object map);
@@ -123,7 +123,7 @@ LruCache.set(Object map);
 
 --------------------------
 ### remove
-** 删除指定键值的全部值 **
+**删除指定键值的全部值**
 
 ```JavaScript
 LruCache.remove(String name);
@@ -134,7 +134,7 @@ LruCache.remove(String name);
 
 --------------------------
 ### isEmpty
-** 检查容器是否为空 **
+**检查容器是否为空**
 
 ```JavaScript
 Boolean LruCache.isEmpty();
@@ -145,7 +145,7 @@ Boolean LruCache.isEmpty();
 
 --------------------------
 ### dispose
-** 强制回收对象，调用此方法后，对象资源将立即释放 **
+**强制回收对象，调用此方法后，对象资源将立即释放**
 
 ```JavaScript
 LruCache.dispose();
@@ -153,7 +153,7 @@ LruCache.dispose();
 
 --------------------------
 ### equals
-** 比较当前对象与给定的对象是否相等 **
+**比较当前对象与给定的对象是否相等**
 
 ```JavaScript
 Boolean LruCache.equals(object expected);
@@ -167,7 +167,7 @@ Boolean LruCache.equals(object expected);
 
 --------------------------
 ### toString
-** 返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现 **
+**返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现**
 
 ```JavaScript
 String LruCache.toString();
@@ -178,7 +178,7 @@ String LruCache.toString();
 
 --------------------------
 ### toJSON
-** 返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合 **
+**返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合**
 
 ```JavaScript
 Value LruCache.toJSON(String key = "");
@@ -192,7 +192,7 @@ Value LruCache.toJSON(String key = "");
 
 --------------------------
 ### valueOf
-** 返回对象本身的数值 **
+**返回对象本身的数值**
 
 ```JavaScript
 Value LruCache.valueOf();

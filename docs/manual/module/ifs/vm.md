@@ -19,7 +19,7 @@ var mod_in_sbox = sbox.require('./path/to/mod');
 ## 对象
         
 ### SandBox
-** 创建一个 [SandBox](../../object/ifs/SandBox.md) 对象，参见 [SandBox](../../object/ifs/SandBox.md) **
+**创建一个 [SandBox](../../object/ifs/SandBox.md) 对象，参见 [SandBox](../../object/ifs/SandBox.md)**
 
 ```JavaScript
 SandBox vm.SandBox;

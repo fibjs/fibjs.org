@@ -19,7 +19,7 @@ object -> RedisList [dir=back]
 ## 成员函数
         
 ### push
-** 将一个或多个值 value 插入到列表的表头 **
+**将一个或多个值 value 插入到列表的表头**
 
 ```JavaScript
 Integer RedisList.push(Array values);
@@ -32,7 +32,7 @@ Integer RedisList.push(Array values);
 * Integer, 插入后，列表的长度
 
 --------------------------
-** 将一个或多个值 value 插入到列表的表头 **
+**将一个或多个值 value 插入到列表的表头**
 
 ```JavaScript
 Integer RedisList.push(...);
@@ -46,7 +46,7 @@ Integer RedisList.push(...);
 
 --------------------------
 ### pop
-** 移除并返回列表 key 的头元素 **
+**移除并返回列表 key 的头元素**
 
 ```JavaScript
 Buffer RedisList.pop();
@@ -57,7 +57,7 @@ Buffer RedisList.pop();
 
 --------------------------
 ### rpush
-** 将一个或多个值 value 插入到列表的表尾(最右边) **
+**将一个或多个值 value 插入到列表的表尾(最右边)**
 
 ```JavaScript
 Integer RedisList.rpush(Array values);
@@ -70,7 +70,7 @@ Integer RedisList.rpush(Array values);
 * Integer, 插入后，列表的长度
 
 --------------------------
-** 将一个或多个值 value 插入到列表的表尾(最右边) **
+**将一个或多个值 value 插入到列表的表尾(最右边)**
 
 ```JavaScript
 Integer RedisList.rpush(...);
@@ -84,7 +84,7 @@ Integer RedisList.rpush(...);
 
 --------------------------
 ### rpop
-** 移除并返回列表 key 的表尾(最右边)元素 **
+**移除并返回列表 key 的表尾(最右边)元素**
 
 ```JavaScript
 Buffer RedisList.rpop();
@@ -95,7 +95,7 @@ Buffer RedisList.rpop();
 
 --------------------------
 ### set
-** 将列表下标为 index 的元素的值设置为 value **
+**将列表下标为 index 的元素的值设置为 value**
 
 ```JavaScript
 RedisList.set(Integer index,
@@ -108,7 +108,7 @@ RedisList.set(Integer index,
 
 --------------------------
 ### get
-** 返回列表中，下标为 index 的元素 **
+**返回列表中，下标为 index 的元素**
 
 ```JavaScript
 Buffer RedisList.get(Integer index);
@@ -122,7 +122,7 @@ Buffer RedisList.get(Integer index);
 
 --------------------------
 ### insertBefore
-** 将值 value 插入到列表当中，位于值 pivot 之前 **
+**将值 value 插入到列表当中，位于值 pivot 之前**
 
 ```JavaScript
 Integer RedisList.insertBefore(Buffer pivot,
@@ -138,7 +138,7 @@ Integer RedisList.insertBefore(Buffer pivot,
 
 --------------------------
 ### insertAfter
-** 将值 value 插入到列表当中，位于值 pivot 之后 **
+**将值 value 插入到列表当中，位于值 pivot 之后**
 
 ```JavaScript
 Integer RedisList.insertAfter(Buffer pivot,
@@ -154,7 +154,7 @@ Integer RedisList.insertAfter(Buffer pivot,
 
 --------------------------
 ### remove
-** 根据参数 count 的值，移除列表中与参数 value 相等的元素 **
+**根据参数 count 的值，移除列表中与参数 value 相等的元素**
 
 ```JavaScript
 Integer RedisList.remove(Integer count,
@@ -170,7 +170,7 @@ Integer RedisList.remove(Integer count,
 
 --------------------------
 ### trim
-** 对一个列表进行修剪(trim)，就是说，让列表只保留指定区间内的元素，不在指定区间之内的元素都将被删除 **
+**对一个列表进行修剪(trim)，就是说，让列表只保留指定区间内的元素，不在指定区间之内的元素都将被删除**
 
 ```JavaScript
 RedisList.trim(Integer start,
@@ -183,7 +183,7 @@ RedisList.trim(Integer start,
 
 --------------------------
 ### len
-** 返回列表的长度 **
+**返回列表的长度**
 
 ```JavaScript
 Integer RedisList.len();
@@ -194,7 +194,7 @@ Integer RedisList.len();
 
 --------------------------
 ### range
-** 返回列表中指定区间内的元素，区间以偏移量 start 和 stop 指定，包含 start 和 stop 的元素 **
+**返回列表中指定区间内的元素，区间以偏移量 start 和 stop 指定，包含 start 和 stop 的元素**
 
 ```JavaScript
 List RedisList.range(Integer start,
@@ -210,7 +210,7 @@ List RedisList.range(Integer start,
 
 --------------------------
 ### dispose
-** 强制回收对象，调用此方法后，对象资源将立即释放 **
+**强制回收对象，调用此方法后，对象资源将立即释放**
 
 ```JavaScript
 RedisList.dispose();
@@ -218,7 +218,7 @@ RedisList.dispose();
 
 --------------------------
 ### equals
-** 比较当前对象与给定的对象是否相等 **
+**比较当前对象与给定的对象是否相等**
 
 ```JavaScript
 Boolean RedisList.equals(object expected);
@@ -232,7 +232,7 @@ Boolean RedisList.equals(object expected);
 
 --------------------------
 ### toString
-** 返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现 **
+**返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现**
 
 ```JavaScript
 String RedisList.toString();
@@ -243,7 +243,7 @@ String RedisList.toString();
 
 --------------------------
 ### toJSON
-** 返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合 **
+**返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合**
 
 ```JavaScript
 Value RedisList.toJSON(String key = "");
@@ -257,7 +257,7 @@ Value RedisList.toJSON(String key = "");
 
 --------------------------
 ### valueOf
-** 返回对象本身的数值 **
+**返回对象本身的数值**
 
 ```JavaScript
 Value RedisList.valueOf();

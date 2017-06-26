@@ -4,7 +4,7 @@
 ## 对象
         
 ### Request
-** 创建一个 http 请求对象，参见 [HttpRequest](../../object/ifs/HttpRequest.md) **
+**创建一个 http 请求对象，参见 [HttpRequest](../../object/ifs/HttpRequest.md)**
 
 ```JavaScript
 HttpRequest http.Request;
@@ -12,7 +12,7 @@ HttpRequest http.Request;
 
 --------------------------
 ### Response
-** 创建一个 http 响应对象，参见 [HttpResponse](../../object/ifs/HttpResponse.md) **
+**创建一个 http 响应对象，参见 [HttpResponse](../../object/ifs/HttpResponse.md)**
 
 ```JavaScript
 HttpResponse http.Response;
@@ -20,7 +20,7 @@ HttpResponse http.Response;
 
 --------------------------
 ### Cookie
-** 创建一个 http cookie 对象，参见 [HttpCookie](../../object/ifs/HttpCookie.md) **
+**创建一个 http cookie 对象，参见 [HttpCookie](../../object/ifs/HttpCookie.md)**
 
 ```JavaScript
 HttpCookie http.Cookie;
@@ -28,7 +28,7 @@ HttpCookie http.Cookie;
 
 --------------------------
 ### Server
-** 创建一个 http 服务器，参见 [HttpServer](../../object/ifs/HttpServer.md) **
+**创建一个 http 服务器，参见 [HttpServer](../../object/ifs/HttpServer.md)**
 
 ```JavaScript
 HttpServer http.Server;
@@ -36,7 +36,7 @@ HttpServer http.Server;
 
 --------------------------
 ### Client
-** 创建一个 http 客户端，参见 [HttpClient](../../object/ifs/HttpClient.md) **
+**创建一个 http 客户端，参见 [HttpClient](../../object/ifs/HttpClient.md)**
 
 ```JavaScript
 HttpClient http.Client;
@@ -44,7 +44,7 @@ HttpClient http.Client;
 
 --------------------------
 ### HttpsServer
-** 创建一个 https 服务器，参见 [HttpsServer](../../object/ifs/HttpsServer.md) **
+**创建一个 https 服务器，参见 [HttpsServer](../../object/ifs/HttpsServer.md)**
 
 ```JavaScript
 HttpsServer http.HttpsServer;
@@ -52,7 +52,7 @@ HttpsServer http.HttpsServer;
 
 --------------------------
 ### Handler
-** 创建一个 http 协议处理器对象，参见 [HttpHandler](../../object/ifs/HttpHandler.md) **
+**创建一个 http 协议处理器对象，参见 [HttpHandler](../../object/ifs/HttpHandler.md)**
 
 ```JavaScript
 HttpHandler http.Handler;
@@ -61,7 +61,7 @@ HttpHandler http.Handler;
 ## 静态函数
         
 ### fileHandler
-** 创建一个 http 静态文件处理器，用以用静态文件响应 http 消息 **
+**创建一个 http 静态文件处理器，用以用静态文件响应 http 消息**
 
 ```JavaScript
 static Handler http.fileHandler(String root,
@@ -80,7 +80,7 @@ fileHandler 支持 gzip 预压缩，当请求接受 gzip 编码，且相同路�
 
 --------------------------
 ### request
-** 发送 http 请求到指定的流对象，并返回结果 **
+**发送 http 请求到指定的流对象，并返回结果**
 
 ```JavaScript
 static HttpResponse http.request(Stream conn,
@@ -95,7 +95,7 @@ static HttpResponse http.request(Stream conn,
 * [HttpResponse](../../object/ifs/HttpResponse.md), 返回服务器响应
 
 --------------------------
-** 请求指定的 [url](url.md)，并返回结果 **
+**请求指定的 [url](url.md)，并返回结果**
 
 ```JavaScript
 static HttpResponse http.request(String method,
@@ -112,7 +112,7 @@ static HttpResponse http.request(String method,
 * [HttpResponse](../../object/ifs/HttpResponse.md), 返回服务器响应
 
 --------------------------
-** 请求指定的 [url](url.md)，并返回结果 **
+**请求指定的 [url](url.md)，并返回结果**
 
 ```JavaScript
 static HttpResponse http.request(String method,
@@ -131,7 +131,7 @@ static HttpResponse http.request(String method,
 * [HttpResponse](../../object/ifs/HttpResponse.md), 返回服务器响应
 
 --------------------------
-** 请求指定的 [url](url.md)，并返回结果 **
+**请求指定的 [url](url.md)，并返回结果**
 
 ```JavaScript
 static HttpResponse http.request(String method,
@@ -150,7 +150,7 @@ static HttpResponse http.request(String method,
 * [HttpResponse](../../object/ifs/HttpResponse.md), 返回服务器响应
 
 --------------------------
-** 请求指定的 [url](url.md)，并返回结果 **
+**请求指定的 [url](url.md)，并返回结果**
 
 ```JavaScript
 static HttpResponse http.request(String method,
@@ -170,7 +170,7 @@ static HttpResponse http.request(String method,
 
 --------------------------
 ### get
-** 用 GET 方法请求指定的 [url](url.md)，并返回结果，等同于 request("GET", ...) **
+**用 GET 方法请求指定的 [url](url.md)，并返回结果，等同于 request("GET", ...)**
 
 ```JavaScript
 static HttpResponse http.get(String url,
@@ -186,7 +186,7 @@ static HttpResponse http.get(String url,
 
 --------------------------
 ### post
-** 用 POST 方法请求指定的 [url](url.md)，并返回结果，等同于 request("POST", ...) **
+**用 POST 方法请求指定的 [url](url.md)，并返回结果，等同于 request("POST", ...)**
 
 ```JavaScript
 static HttpResponse http.post(String url,
@@ -203,7 +203,7 @@ static HttpResponse http.post(String url,
 * [HttpResponse](../../object/ifs/HttpResponse.md), 返回服务器响应
 
 --------------------------
-** 用 POST 方法请求指定的 [url](url.md)，并返回结果，等同于 request("POST", ...) **
+**用 POST 方法请求指定的 [url](url.md)，并返回结果，等同于 request("POST", ...)**
 
 ```JavaScript
 static HttpResponse http.post(String url,
@@ -220,7 +220,7 @@ static HttpResponse http.post(String url,
 * [HttpResponse](../../object/ifs/HttpResponse.md), 返回服务器响应
 
 --------------------------
-** 用 POST 方法请求指定的 [url](url.md)，并返回结果，等同于 request("POST", ...) **
+**用 POST 方法请求指定的 [url](url.md)，并返回结果，等同于 request("POST", ...)**
 
 ```JavaScript
 static HttpResponse http.post(String url,
@@ -236,7 +236,7 @@ static HttpResponse http.post(String url,
 
 --------------------------
 ### del
-** 用 DELETE 方法请求指定的 [url](url.md)，并返回结果，等同于 request("DELETE", ...) **
+**用 DELETE 方法请求指定的 [url](url.md)，并返回结果，等同于 request("DELETE", ...)**
 
 ```JavaScript
 static HttpResponse http.del(String url,
@@ -252,7 +252,7 @@ static HttpResponse http.del(String url,
 
 --------------------------
 ### put
-** 用 PUT 方法请求指定的 [url](url.md)，并返回结果，等同于 request("PUT", ...) **
+**用 PUT 方法请求指定的 [url](url.md)，并返回结果，等同于 request("PUT", ...)**
 
 ```JavaScript
 static HttpResponse http.put(String url,
@@ -269,7 +269,7 @@ static HttpResponse http.put(String url,
 * [HttpResponse](../../object/ifs/HttpResponse.md), 返回服务器响应
 
 --------------------------
-** 用 PUT 方法请求指定的 [url](url.md)，并返回结果，等同于 request("PUT", ...) **
+**用 PUT 方法请求指定的 [url](url.md)，并返回结果，等同于 request("PUT", ...)**
 
 ```JavaScript
 static HttpResponse http.put(String url,
@@ -286,7 +286,7 @@ static HttpResponse http.put(String url,
 * [HttpResponse](../../object/ifs/HttpResponse.md), 返回服务器响应
 
 --------------------------
-** 用 PUT 方法请求指定的 [url](url.md)，并返回结果，等同于 request("PUT", ...) **
+**用 PUT 方法请求指定的 [url](url.md)，并返回结果，等同于 request("PUT", ...)**
 
 ```JavaScript
 static HttpResponse http.put(String url,
@@ -302,7 +302,7 @@ static HttpResponse http.put(String url,
 
 --------------------------
 ### patch
-** 用 PATCH 方法请求指定的 [url](url.md)，并返回结果，等同于 request("PATCH", ...) **
+**用 PATCH 方法请求指定的 [url](url.md)，并返回结果，等同于 request("PATCH", ...)**
 
 ```JavaScript
 static HttpResponse http.patch(String url,
@@ -319,7 +319,7 @@ static HttpResponse http.patch(String url,
 * [HttpResponse](../../object/ifs/HttpResponse.md), 返回服务器响应
 
 --------------------------
-** 用 PATCH 方法请求指定的 [url](url.md)，并返回结果，等同于 request("PATCH", ...) **
+**用 PATCH 方法请求指定的 [url](url.md)，并返回结果，等同于 request("PATCH", ...)**
 
 ```JavaScript
 static HttpResponse http.patch(String url,
@@ -336,7 +336,7 @@ static HttpResponse http.patch(String url,
 * [HttpResponse](../../object/ifs/HttpResponse.md), 返回服务器响应
 
 --------------------------
-** 用 PATCH 方法请求指定的 [url](url.md)，并返回结果，等同于 request("PATCH", ...) **
+**用 PATCH 方法请求指定的 [url](url.md)，并返回结果，等同于 request("PATCH", ...)**
 
 ```JavaScript
 static HttpResponse http.patch(String url,
@@ -353,7 +353,7 @@ static HttpResponse http.patch(String url,
 ## 静态属性
         
 ### cookies
-** [List](../../object/ifs/List.md), 返回http客户端的 [HttpCookie](../../object/ifs/HttpCookie.md) 对象列表 **
+**[List](../../object/ifs/List.md), 返回http客户端的 [HttpCookie](../../object/ifs/HttpCookie.md) 对象列表**
 
 ```JavaScript
 static readonly List http.cookies;
@@ -361,7 +361,7 @@ static readonly List http.cookies;
 
 --------------------------
 ### timeout
-** Integer, 查询和设置超时时间 **
+**Integer, 查询和设置超时时间**
 
 ```JavaScript
 static Integer http.timeout;
@@ -369,7 +369,7 @@ static Integer http.timeout;
 
 --------------------------
 ### enableCookie
-** Boolean, cookie功能开关，默认开启 **
+**Boolean, cookie功能开关，默认开启**
 
 ```JavaScript
 static Boolean http.enableCookie;
@@ -377,7 +377,7 @@ static Boolean http.enableCookie;
 
 --------------------------
 ### autoRedirect
-** Boolean, 自动redirect功能开关，默认开启 **
+**Boolean, 自动redirect功能开关，默认开启**
 
 ```JavaScript
 static Boolean http.autoRedirect;
@@ -385,7 +385,7 @@ static Boolean http.autoRedirect;
 
 --------------------------
 ### userAgent
-** String, 查询和设置 http 请求中的浏览器标识 **
+**String, 查询和设置 http 请求中的浏览器标识**
 
 ```JavaScript
 static String http.userAgent;

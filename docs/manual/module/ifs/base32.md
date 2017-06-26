@@ -17,7 +17,7 @@ var base32 = require('base32');
 ## 静态函数
         
 ### encode
-** 以 base32 方式编码数据 **
+**以 base32 方式编码数据**
 
 ```JavaScript
 static String base32.encode(Buffer data);
@@ -31,7 +31,7 @@ static String base32.encode(Buffer data);
 
 --------------------------
 ### decode
-** 以 base32 方式解码字符串为二进制数据 **
+**以 base32 方式解码字符串为二进制数据**
 
 ```JavaScript
 static Buffer base32.decode(String data);

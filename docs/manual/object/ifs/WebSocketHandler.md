@@ -23,7 +23,7 @@ HandlerEx -> WebSocketHandler [dir=back]
 ## 构造函数
         
 ### WebSocketHandler
-** [WebSocket](WebSocket.md) 包处理器构造函数 **
+**[WebSocket](WebSocket.md) 包处理器构造函数**
 
 ```JavaScript
 new WebSocketHandler(Handler hdlr);
@@ -35,7 +35,7 @@ new WebSocketHandler(Handler hdlr);
 ## 成员属性
         
 ### maxSize
-** Integer, 查询和设置最大包尺寸，以 MB 为单位，缺省为 64 **
+**Integer, 查询和设置最大包尺寸，以 MB 为单位，缺省为 64**
 
 ```JavaScript
 Integer WebSocketHandler.maxSize;
@@ -43,7 +43,7 @@ Integer WebSocketHandler.maxSize;
 
 --------------------------
 ### handler
-** [Handler](Handler.md), [WebSocket](WebSocket.md) 协议转换处理器当前事件处理接口对象 **
+**[Handler](Handler.md), [WebSocket](WebSocket.md) 协议转换处理器当前事件处理接口对象**
 
 ```JavaScript
 Handler WebSocketHandler.handler;
@@ -51,7 +51,7 @@ Handler WebSocketHandler.handler;
 
 --------------------------
 ### stats
-** [Stats](Stats.md), 查询 [WebSocket](WebSocket.md) 包协议转换处理器的工作状态 **
+**[Stats](Stats.md), 查询 [WebSocket](WebSocket.md) 包协议转换处理器的工作状态**
 
 ```JavaScript
 readonly Stats WebSocketHandler.stats;
@@ -72,7 +72,7 @@ readonly Stats WebSocketHandler.stats;
 ## 成员函数
         
 ### onerror
-** 设置错误处理器 **
+**设置错误处理器**
 
 ```JavaScript
 WebSocketHandler.onerror(Object hdlrs);
@@ -94,7 +94,7 @@ hdlr.onerror({
 
 --------------------------
 ### invoke
-** 处理一个消息或对象 **
+**处理一个消息或对象**
 
 ```JavaScript
 Handler WebSocketHandler.invoke(object v) async;
@@ -108,7 +108,7 @@ Handler WebSocketHandler.invoke(object v) async;
 
 --------------------------
 ### dispose
-** 强制回收对象，调用此方法后，对象资源将立即释放 **
+**强制回收对象，调用此方法后，对象资源将立即释放**
 
 ```JavaScript
 WebSocketHandler.dispose();
@@ -116,7 +116,7 @@ WebSocketHandler.dispose();
 
 --------------------------
 ### equals
-** 比较当前对象与给定的对象是否相等 **
+**比较当前对象与给定的对象是否相等**
 
 ```JavaScript
 Boolean WebSocketHandler.equals(object expected);
@@ -130,7 +130,7 @@ Boolean WebSocketHandler.equals(object expected);
 
 --------------------------
 ### toString
-** 返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现 **
+**返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现**
 
 ```JavaScript
 String WebSocketHandler.toString();
@@ -141,7 +141,7 @@ String WebSocketHandler.toString();
 
 --------------------------
 ### toJSON
-** 返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合 **
+**返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合**
 
 ```JavaScript
 Value WebSocketHandler.toJSON(String key = "");
@@ -155,7 +155,7 @@ Value WebSocketHandler.toJSON(String key = "");
 
 --------------------------
 ### valueOf
-** 返回对象本身的数值 **
+**返回对象本身的数值**
 
 ```JavaScript
 Value WebSocketHandler.valueOf();

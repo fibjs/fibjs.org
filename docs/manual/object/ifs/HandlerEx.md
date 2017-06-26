@@ -17,7 +17,7 @@ HandlerEx -> WebSocketHandler [dir=back]
 ## 成员属性
         
 ### handler
-** [Handler](Handler.md), [WebSocket](WebSocket.md) 协议转换处理器当前事件处理接口对象 **
+**[Handler](Handler.md), [WebSocket](WebSocket.md) 协议转换处理器当前事件处理接口对象**
 
 ```JavaScript
 Handler HandlerEx.handler;
@@ -25,7 +25,7 @@ Handler HandlerEx.handler;
 
 --------------------------
 ### stats
-** [Stats](Stats.md), 查询 [WebSocket](WebSocket.md) 包协议转换处理器的工作状态 **
+**[Stats](Stats.md), 查询 [WebSocket](WebSocket.md) 包协议转换处理器的工作状态**
 
 ```JavaScript
 readonly Stats HandlerEx.stats;
@@ -46,7 +46,7 @@ readonly Stats HandlerEx.stats;
 ## 成员函数
         
 ### onerror
-** 设置错误处理器 **
+**设置错误处理器**
 
 ```JavaScript
 HandlerEx.onerror(Object hdlrs);
@@ -68,7 +68,7 @@ hdlr.onerror({
 
 --------------------------
 ### invoke
-** 处理一个消息或对象 **
+**处理一个消息或对象**
 
 ```JavaScript
 Handler HandlerEx.invoke(object v) async;
@@ -82,7 +82,7 @@ Handler HandlerEx.invoke(object v) async;
 
 --------------------------
 ### dispose
-** 强制回收对象，调用此方法后，对象资源将立即释放 **
+**强制回收对象，调用此方法后，对象资源将立即释放**
 
 ```JavaScript
 HandlerEx.dispose();
@@ -90,7 +90,7 @@ HandlerEx.dispose();
 
 --------------------------
 ### equals
-** 比较当前对象与给定的对象是否相等 **
+**比较当前对象与给定的对象是否相等**
 
 ```JavaScript
 Boolean HandlerEx.equals(object expected);
@@ -104,7 +104,7 @@ Boolean HandlerEx.equals(object expected);
 
 --------------------------
 ### toString
-** 返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现 **
+**返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现**
 
 ```JavaScript
 String HandlerEx.toString();
@@ -115,7 +115,7 @@ String HandlerEx.toString();
 
 --------------------------
 ### toJSON
-** 返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合 **
+**返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合**
 
 ```JavaScript
 Value HandlerEx.toJSON(String key = "");
@@ -129,7 +129,7 @@ Value HandlerEx.toJSON(String key = "");
 
 --------------------------
 ### valueOf
-** 返回对象本身的数值 **
+**返回对象本身的数值**
 
 ```JavaScript
 Value HandlerEx.valueOf();

@@ -10,7 +10,7 @@ var profiler = require('profiler');
 ## 静态函数
         
 ### saveSnapshot
-** 根据指定名称保存一个堆快照 **
+**根据指定名称保存一个堆快照**
 
 ```JavaScript
 static profiler.saveSnapshot(String fname);
@@ -21,7 +21,7 @@ static profiler.saveSnapshot(String fname);
 
 --------------------------
 ### loadSnapshot
-** 根据指定名称读取一个堆快照 **
+**根据指定名称读取一个堆快照**
 
 ```JavaScript
 static HeapSnapshot profiler.loadSnapshot(String fname);
@@ -35,7 +35,7 @@ static HeapSnapshot profiler.loadSnapshot(String fname);
 
 --------------------------
 ### takeSnapshot
-** 获取当前时间节点的堆快照，堆快照记录了当前时刻JS堆的状态 **
+**获取当前时间节点的堆快照，堆快照记录了当前时刻JS堆的状态**
 
 ```JavaScript
 static HeapSnapshot profiler.takeSnapshot();
@@ -46,7 +46,7 @@ static HeapSnapshot profiler.takeSnapshot();
 
 --------------------------
 ### diff
-** 执行给定的函数，并对比执行前后 v8 堆的变化 **
+**执行给定的函数，并对比执行前后 v8 堆的变化**
 
 ```JavaScript
 static Object profiler.diff(Function test);
@@ -61,7 +61,7 @@ static Object profiler.diff(Function test);
 ## 常量
         
 ### Node_Hidden
-** 隐藏节点，当显示给用户时可以被过滤掉 **
+**隐藏节点，当显示给用户时可以被过滤掉**
 
 ```JavaScript
 const profiler.Node_Hidden = 0;
@@ -69,7 +69,7 @@ const profiler.Node_Hidden = 0;
 
 --------------------------
 ### Node_Array
-** 数组 **
+**数组**
 
 ```JavaScript
 const profiler.Node_Array = 1;
@@ -77,7 +77,7 @@ const profiler.Node_Array = 1;
 
 --------------------------
 ### Node_String
-** 字符串 **
+**字符串**
 
 ```JavaScript
 const profiler.Node_String = 2;
@@ -85,7 +85,7 @@ const profiler.Node_String = 2;
 
 --------------------------
 ### Node_Object
-** JS对象（字符串和数组除外） **
+**JS对象（字符串和数组除外）**
 
 ```JavaScript
 const profiler.Node_Object = 3;
@@ -93,7 +93,7 @@ const profiler.Node_Object = 3;
 
 --------------------------
 ### Node_Code
-** 编译后的代码 **
+**编译后的代码**
 
 ```JavaScript
 const profiler.Node_Code = 4;
@@ -101,7 +101,7 @@ const profiler.Node_Code = 4;
 
 --------------------------
 ### Node_Closure
-** 函数闭包 **
+**函数闭包**
 
 ```JavaScript
 const profiler.Node_Closure = 5;
@@ -109,7 +109,7 @@ const profiler.Node_Closure = 5;
 
 --------------------------
 ### Node_RegExp
-** 正则表达式 **
+**正则表达式**
 
 ```JavaScript
 const profiler.Node_RegExp = 6;
@@ -117,7 +117,7 @@ const profiler.Node_RegExp = 6;
 
 --------------------------
 ### Node_HeapNumber
-** 堆中排好序的数字 **
+**堆中排好序的数字**
 
 ```JavaScript
 const profiler.Node_HeapNumber = 7;
@@ -125,7 +125,7 @@ const profiler.Node_HeapNumber = 7;
 
 --------------------------
 ### Node_Native
-** Native对象（非v8堆上的） **
+**Native对象（非v8堆上的）**
 
 ```JavaScript
 const profiler.Node_Native = 8;
@@ -133,7 +133,7 @@ const profiler.Node_Native = 8;
 
 --------------------------
 ### Node_Synthetic
-** Synthetic对象 **
+**Synthetic对象**
 
 ```JavaScript
 const profiler.Node_Synthetic = 9;
@@ -141,7 +141,7 @@ const profiler.Node_Synthetic = 9;
 
 --------------------------
 ### Node_ConsString
-** 拼接的字符串 **
+**拼接的字符串**
 
 ```JavaScript
 const profiler.Node_ConsString = 10;
@@ -149,7 +149,7 @@ const profiler.Node_ConsString = 10;
 
 --------------------------
 ### Node_SlicedString
-** 分割的字符串 **
+**分割的字符串**
 
 ```JavaScript
 const profiler.Node_SlicedString = 11;
@@ -157,7 +157,7 @@ const profiler.Node_SlicedString = 11;
 
 --------------------------
 ### Node_Symbol
-** 符号（ES6） **
+**符号（ES6）**
 
 ```JavaScript
 const profiler.Node_Symbol = 12;
@@ -165,7 +165,7 @@ const profiler.Node_Symbol = 12;
 
 --------------------------
 ### Node_SimdValue
-** 堆中排好序的SIMD值(ES7) **
+**堆中排好序的SIMD值(ES7)**
 
 ```JavaScript
 const profiler.Node_SimdValue = 13;
@@ -173,7 +173,7 @@ const profiler.Node_SimdValue = 13;
 
 --------------------------
 ### Edge_ContextVariable
-** 函数中的变量 **
+**函数中的变量**
 
 ```JavaScript
 const profiler.Edge_ContextVariable = 0;
@@ -181,7 +181,7 @@ const profiler.Edge_ContextVariable = 0;
 
 --------------------------
 ### Edge_Element
-** 数组中的元素 **
+**数组中的元素**
 
 ```JavaScript
 const profiler.Edge_Element = 1;
@@ -189,7 +189,7 @@ const profiler.Edge_Element = 1;
 
 --------------------------
 ### Edge_Property
-** 有名对象的属性 **
+**有名对象的属性**
 
 ```JavaScript
 const profiler.Edge_Property = 2;
@@ -197,7 +197,7 @@ const profiler.Edge_Property = 2;
 
 --------------------------
 ### Edge_Internal
-** JS无法进入的链接 **
+**JS无法进入的链接**
 
 ```JavaScript
 const profiler.Edge_Internal = 3;
@@ -205,7 +205,7 @@ const profiler.Edge_Internal = 3;
 
 --------------------------
 ### Edge_Hidden
-** 指向需要事先计算出空间大小的节点 **
+**指向需要事先计算出空间大小的节点**
 
 ```JavaScript
 const profiler.Edge_Hidden = 4;
@@ -213,7 +213,7 @@ const profiler.Edge_Hidden = 4;
 
 --------------------------
 ### Edge_Shortcut
-** 指向无法事先计算出空间大小的节点 **
+**指向无法事先计算出空间大小的节点**
 
 ```JavaScript
 const profiler.Edge_Shortcut = 5;
@@ -221,7 +221,7 @@ const profiler.Edge_Shortcut = 5;
 
 --------------------------
 ### Edge_Weak
-** 一个弱引用（被GC忽视） **
+**一个弱引用（被GC忽视）**
 
 ```JavaScript
 const profiler.Edge_Weak = 6;

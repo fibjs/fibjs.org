@@ -23,7 +23,7 @@ require("test").setup();
 ## 静态函数
         
 ### Function
-** 测试数值为真，为假则断言失败 **
+**测试数值为真，为假则断言失败**
 
 ```JavaScript
 static assert.Function(Value actual,
@@ -36,7 +36,7 @@ static assert.Function(Value actual,
 
 --------------------------
 ### ok
-** 测试数值为真，为假则断言失败 **
+**测试数值为真，为假则断言失败**
 
 ```JavaScript
 static assert.ok(Value actual,
@@ -49,7 +49,7 @@ static assert.ok(Value actual,
 
 --------------------------
 ### notOk
-** 测试数值为假，为真则断言失败 **
+**测试数值为假，为真则断言失败**
 
 ```JavaScript
 static assert.notOk(Value actual,
@@ -62,7 +62,7 @@ static assert.notOk(Value actual,
 
 --------------------------
 ### equal
-** 测试数值等于预期值，不相等则断言失败 **
+**测试数值等于预期值，不相等则断言失败**
 
 ```JavaScript
 static assert.equal(Value actual,
@@ -77,7 +77,7 @@ static assert.equal(Value actual,
 
 --------------------------
 ### notEqual
-** 测试数值不等于预期值，相等则断言失败 **
+**测试数值不等于预期值，相等则断言失败**
 
 ```JavaScript
 static assert.notEqual(Value actual,
@@ -92,7 +92,7 @@ static assert.notEqual(Value actual,
 
 --------------------------
 ### strictEqual
-** 测试数值严格等于预期值，不相等则断言失败 **
+**测试数值严格等于预期值，不相等则断言失败**
 
 ```JavaScript
 static assert.strictEqual(Value actual,
@@ -107,7 +107,7 @@ static assert.strictEqual(Value actual,
 
 --------------------------
 ### notStrictEqual
-** 测试数值不严格等于预期值，相等则断言失败 **
+**测试数值不严格等于预期值，相等则断言失败**
 
 ```JavaScript
 static assert.notStrictEqual(Value actual,
@@ -122,7 +122,7 @@ static assert.notStrictEqual(Value actual,
 
 --------------------------
 ### deepEqual
-** 测试数值深度等于预期值，不相等则断言失败 **
+**测试数值深度等于预期值，不相等则断言失败**
 
 ```JavaScript
 static assert.deepEqual(Value actual,
@@ -137,7 +137,7 @@ static assert.deepEqual(Value actual,
 
 --------------------------
 ### notDeepEqual
-** 测试数值不深度等于预期值，相等则断言失败 **
+**测试数值不深度等于预期值，相等则断言失败**
 
 ```JavaScript
 static assert.notDeepEqual(Value actual,
@@ -152,7 +152,7 @@ static assert.notDeepEqual(Value actual,
 
 --------------------------
 ### closeTo
-** 测试数值近似等于预期值，否则断言失败 **
+**测试数值近似等于预期值，否则断言失败**
 
 ```JavaScript
 static assert.closeTo(Value actual,
@@ -169,7 +169,7 @@ static assert.closeTo(Value actual,
 
 --------------------------
 ### notCloseTo
-** 测试数值不近似等于预期值，否则断言失败 **
+**测试数值不近似等于预期值，否则断言失败**
 
 ```JavaScript
 static assert.notCloseTo(Value actual,
@@ -186,7 +186,7 @@ static assert.notCloseTo(Value actual,
 
 --------------------------
 ### lessThan
-** 测试数值小于预期值，大于或等于则断言失败 **
+**测试数值小于预期值，大于或等于则断言失败**
 
 ```JavaScript
 static assert.lessThan(Value actual,
@@ -201,7 +201,7 @@ static assert.lessThan(Value actual,
 
 --------------------------
 ### notLessThan
-** 测试数值不小于预期值，小于则断言失败 **
+**测试数值不小于预期值，小于则断言失败**
 
 ```JavaScript
 static assert.notLessThan(Value actual,
@@ -216,7 +216,7 @@ static assert.notLessThan(Value actual,
 
 --------------------------
 ### greaterThan
-** 测试数值大于预期值，小于或等于则断言失败 **
+**测试数值大于预期值，小于或等于则断言失败**
 
 ```JavaScript
 static assert.greaterThan(Value actual,
@@ -231,7 +231,7 @@ static assert.greaterThan(Value actual,
 
 --------------------------
 ### notGreaterThan
-** 测试数值不大于预期值，大于则断言失败 **
+**测试数值不大于预期值，大于则断言失败**
 
 ```JavaScript
 static assert.notGreaterThan(Value actual,
@@ -246,7 +246,7 @@ static assert.notGreaterThan(Value actual,
 
 --------------------------
 ### exist
-** 测试变量存在，为假则断言失败 **
+**测试变量存在，为假则断言失败**
 
 ```JavaScript
 static assert.exist(Value actual,
@@ -259,7 +259,7 @@ static assert.exist(Value actual,
 
 --------------------------
 ### notExist
-** 测试变量不存在，为真则断言失败 **
+**测试变量不存在，为真则断言失败**
 
 ```JavaScript
 static assert.notExist(Value actual,
@@ -272,7 +272,7 @@ static assert.notExist(Value actual,
 
 --------------------------
 ### isTrue
-** 测试数值为布尔值真，否则断言失败 **
+**测试数值为布尔值真，否则断言失败**
 
 ```JavaScript
 static assert.isTrue(Value actual,
@@ -285,7 +285,7 @@ static assert.isTrue(Value actual,
 
 --------------------------
 ### isNotTrue
-** 测试数值不为布尔值真，否则断言失败 **
+**测试数值不为布尔值真，否则断言失败**
 
 ```JavaScript
 static assert.isNotTrue(Value actual,
@@ -298,7 +298,7 @@ static assert.isNotTrue(Value actual,
 
 --------------------------
 ### isFalse
-** 测试数值为布尔值假，否则断言失败 **
+**测试数值为布尔值假，否则断言失败**
 
 ```JavaScript
 static assert.isFalse(Value actual,
@@ -311,7 +311,7 @@ static assert.isFalse(Value actual,
 
 --------------------------
 ### isNotFalse
-** 测试数值不为布尔值假，否则断言失败 **
+**测试数值不为布尔值假，否则断言失败**
 
 ```JavaScript
 static assert.isNotFalse(Value actual,
@@ -324,7 +324,7 @@ static assert.isNotFalse(Value actual,
 
 --------------------------
 ### isNull
-** 测试数值为 Null，否则断言失败 **
+**测试数值为 Null，否则断言失败**
 
 ```JavaScript
 static assert.isNull(Value actual,
@@ -337,7 +337,7 @@ static assert.isNull(Value actual,
 
 --------------------------
 ### isNotNull
-** 测试数值不为 Null，否则断言失败 **
+**测试数值不为 Null，否则断言失败**
 
 ```JavaScript
 static assert.isNotNull(Value actual,
@@ -350,7 +350,7 @@ static assert.isNotNull(Value actual,
 
 --------------------------
 ### isUndefined
-** 测试数值为 undefined，否则断言失败 **
+**测试数值为 undefined，否则断言失败**
 
 ```JavaScript
 static assert.isUndefined(Value actual,
@@ -363,7 +363,7 @@ static assert.isUndefined(Value actual,
 
 --------------------------
 ### isDefined
-** 测试数值不为 undefined，否则断言失败 **
+**测试数值不为 undefined，否则断言失败**
 
 ```JavaScript
 static assert.isDefined(Value actual,
@@ -376,7 +376,7 @@ static assert.isDefined(Value actual,
 
 --------------------------
 ### isFunction
-** 测试数值为函数，否则断言失败 **
+**测试数值为函数，否则断言失败**
 
 ```JavaScript
 static assert.isFunction(Value actual,
@@ -389,7 +389,7 @@ static assert.isFunction(Value actual,
 
 --------------------------
 ### isNotFunction
-** 测试数值不为函数，否则断言失败 **
+**测试数值不为函数，否则断言失败**
 
 ```JavaScript
 static assert.isNotFunction(Value actual,
@@ -402,7 +402,7 @@ static assert.isNotFunction(Value actual,
 
 --------------------------
 ### isObject
-** 测试数值为对象，否则断言失败 **
+**测试数值为对象，否则断言失败**
 
 ```JavaScript
 static assert.isObject(Value actual,
@@ -415,7 +415,7 @@ static assert.isObject(Value actual,
 
 --------------------------
 ### isNotObject
-** 测试数值不为对象，否则断言失败 **
+**测试数值不为对象，否则断言失败**
 
 ```JavaScript
 static assert.isNotObject(Value actual,
@@ -428,7 +428,7 @@ static assert.isNotObject(Value actual,
 
 --------------------------
 ### isArray
-** 测试数值为数组，否则断言失败 **
+**测试数值为数组，否则断言失败**
 
 ```JavaScript
 static assert.isArray(Value actual,
@@ -441,7 +441,7 @@ static assert.isArray(Value actual,
 
 --------------------------
 ### isNotArray
-** 测试数值不为数组，否则断言失败 **
+**测试数值不为数组，否则断言失败**
 
 ```JavaScript
 static assert.isNotArray(Value actual,
@@ -454,7 +454,7 @@ static assert.isNotArray(Value actual,
 
 --------------------------
 ### isString
-** 测试数值为字符串，否则断言失败 **
+**测试数值为字符串，否则断言失败**
 
 ```JavaScript
 static assert.isString(Value actual,
@@ -467,7 +467,7 @@ static assert.isString(Value actual,
 
 --------------------------
 ### isNotString
-** 测试数值不为字符串，否则断言失败 **
+**测试数值不为字符串，否则断言失败**
 
 ```JavaScript
 static assert.isNotString(Value actual,
@@ -480,7 +480,7 @@ static assert.isNotString(Value actual,
 
 --------------------------
 ### isNumber
-** 测试数值为数字，否则断言失败 **
+**测试数值为数字，否则断言失败**
 
 ```JavaScript
 static assert.isNumber(Value actual,
@@ -493,7 +493,7 @@ static assert.isNumber(Value actual,
 
 --------------------------
 ### isNotNumber
-** 测试数值不为数字，否则断言失败 **
+**测试数值不为数字，否则断言失败**
 
 ```JavaScript
 static assert.isNotNumber(Value actual,
@@ -506,7 +506,7 @@ static assert.isNotNumber(Value actual,
 
 --------------------------
 ### isBoolean
-** 测试数值为布尔，否则断言失败 **
+**测试数值为布尔，否则断言失败**
 
 ```JavaScript
 static assert.isBoolean(Value actual,
@@ -519,7 +519,7 @@ static assert.isBoolean(Value actual,
 
 --------------------------
 ### isNotBoolean
-** 测试数值不为布尔，否则断言失败 **
+**测试数值不为布尔，否则断言失败**
 
 ```JavaScript
 static assert.isNotBoolean(Value actual,
@@ -532,7 +532,7 @@ static assert.isNotBoolean(Value actual,
 
 --------------------------
 ### typeOf
-** 测试数值为给定类型，否则断言失败 **
+**测试数值为给定类型，否则断言失败**
 
 ```JavaScript
 static assert.typeOf(Value actual,
@@ -547,7 +547,7 @@ static assert.typeOf(Value actual,
 
 --------------------------
 ### notTypeOf
-** 测试数值不为给定类型，否则断言失败 **
+**测试数值不为给定类型，否则断言失败**
 
 ```JavaScript
 static assert.notTypeOf(Value actual,
@@ -562,7 +562,7 @@ static assert.notTypeOf(Value actual,
 
 --------------------------
 ### property
-** 测试对象中包含指定属性，否则断言失败 **
+**测试对象中包含指定属性，否则断言失败**
 
 ```JavaScript
 static assert.property(Value object,
@@ -577,7 +577,7 @@ static assert.property(Value object,
 
 --------------------------
 ### notProperty
-** 测试对象中不包含指定属性，否则断言失败 **
+**测试对象中不包含指定属性，否则断言失败**
 
 ```JavaScript
 static assert.notProperty(Value object,
@@ -592,7 +592,7 @@ static assert.notProperty(Value object,
 
 --------------------------
 ### deepProperty
-** 深度测试对象中包含指定属性，否则断言失败 **
+**深度测试对象中包含指定属性，否则断言失败**
 
 ```JavaScript
 static assert.deepProperty(Value object,
@@ -607,7 +607,7 @@ static assert.deepProperty(Value object,
 
 --------------------------
 ### notDeepProperty
-** 深度测试对象中不包含指定属性，否则断言失败 **
+**深度测试对象中不包含指定属性，否则断言失败**
 
 ```JavaScript
 static assert.notDeepProperty(Value object,
@@ -622,7 +622,7 @@ static assert.notDeepProperty(Value object,
 
 --------------------------
 ### propertyVal
-** 测试对象中指定属性的值为给定值，否则断言失败 **
+**测试对象中指定属性的值为给定值，否则断言失败**
 
 ```JavaScript
 static assert.propertyVal(Value object,
@@ -639,7 +639,7 @@ static assert.propertyVal(Value object,
 
 --------------------------
 ### propertyNotVal
-** 测试对象中指定属性的值不为给定值，否则断言失败 **
+**测试对象中指定属性的值不为给定值，否则断言失败**
 
 ```JavaScript
 static assert.propertyNotVal(Value object,
@@ -656,7 +656,7 @@ static assert.propertyNotVal(Value object,
 
 --------------------------
 ### deepPropertyVal
-** 深度测试对象中指定属性的值为给定值，否则断言失败 **
+**深度测试对象中指定属性的值为给定值，否则断言失败**
 
 ```JavaScript
 static assert.deepPropertyVal(Value object,
@@ -673,7 +673,7 @@ static assert.deepPropertyVal(Value object,
 
 --------------------------
 ### deepPropertyNotVal
-** 深度测试对象中指定属性的值不为给定值，否则断言失败 **
+**深度测试对象中指定属性的值不为给定值，否则断言失败**
 
 ```JavaScript
 static assert.deepPropertyNotVal(Value object,
@@ -690,7 +690,7 @@ static assert.deepPropertyNotVal(Value object,
 
 --------------------------
 ### throws
-** 测试给定的代码会抛出错误，未抛出则断言失败 **
+**测试给定的代码会抛出错误，未抛出则断言失败**
 
 ```JavaScript
 static assert.throws(Function block,
@@ -703,7 +703,7 @@ static assert.throws(Function block,
 
 --------------------------
 ### doesNotThrow
-** 测试给定的代码不会抛出错误，抛出则断言失败 **
+**测试给定的代码不会抛出错误，抛出则断言失败**
 
 ```JavaScript
 static assert.doesNotThrow(Function block,

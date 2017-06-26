@@ -24,7 +24,7 @@ object -> SandBox [dir=back]
 ## 构造函数
         
 ### SandBox
-** 构造一个新的安全沙箱对象，并初始化基础模块 **
+**构造一个新的安全沙箱对象，并初始化基础模块**
 
 ```JavaScript
 new SandBox(Object mods);
@@ -34,7 +34,7 @@ new SandBox(Object mods);
 * mods: Object, 指定要添加的模块对象字典
 
 --------------------------
-** 构造一个新的安全沙箱对象，并初始化基础模块 **
+**构造一个新的安全沙箱对象，并初始化基础模块**
 
 ```JavaScript
 new SandBox(Object mods,
@@ -46,7 +46,7 @@ new SandBox(Object mods,
 * require: Function, 自定义 require 函数，当模块不存在时，先调用自定义函数，无返回再从文件中加载
 
 --------------------------
-** 构造一个独立 Global 新的安全沙箱对象，并初始化基础模块 **
+**构造一个独立 Global 新的安全沙箱对象，并初始化基础模块**
 
 ```JavaScript
 new SandBox(Object mods,
@@ -58,7 +58,7 @@ new SandBox(Object mods,
 * global: Object, 指定初始化的 Global 属性
 
 --------------------------
-** 构造一个独立 Global 新的安全沙箱对象，并初始化基础模块 **
+**构造一个独立 Global 新的安全沙箱对象，并初始化基础模块**
 
 ```JavaScript
 new SandBox(Object mods,
@@ -74,7 +74,7 @@ new SandBox(Object mods,
 ## 成员属性
         
 ### global
-** Object, 查询沙箱的 [global](../../module/ifs/global.md) 对象 **
+**Object, 查询沙箱的 [global](../../module/ifs/global.md) 对象**
 
 ```JavaScript
 readonly Object SandBox.global;
@@ -83,7 +83,7 @@ readonly Object SandBox.global;
 ## 成员函数
         
 ### add
-** 向沙箱中添加一个基础模块 **
+**向沙箱中添加一个基础模块**
 
 ```JavaScript
 SandBox.add(String id,
@@ -95,7 +95,7 @@ SandBox.add(String id,
 * mod: Value, 指定要添加的模块对象
 
 --------------------------
-** 向沙箱中添加一组基础模块 **
+**向沙箱中添加一组基础模块**
 
 ```JavaScript
 SandBox.add(Object mods);
@@ -106,7 +106,7 @@ SandBox.add(Object mods);
 
 --------------------------
 ### addScript
-** 向沙箱中添加一个脚本模块 **
+**向沙箱中添加一个脚本模块**
 
 ```JavaScript
 Value SandBox.addScript(String srcname,
@@ -122,7 +122,7 @@ Value SandBox.addScript(String srcname,
 
 --------------------------
 ### remove
-** 从沙箱中删除指定的基础模块 **
+**从沙箱中删除指定的基础模块**
 
 ```JavaScript
 SandBox.remove(String id);
@@ -133,7 +133,7 @@ SandBox.remove(String id);
 
 --------------------------
 ### clone
-** 复制当前沙箱，新沙箱包含当前沙箱的模块，以及相同的名称和 require 函数 **
+**复制当前沙箱，新沙箱包含当前沙箱的模块，以及相同的名称和 require 函数**
 
 ```JavaScript
 SandBox SandBox.clone();
@@ -144,7 +144,7 @@ SandBox SandBox.clone();
 
 --------------------------
 ### run
-** 运行一个脚本 **
+**运行一个脚本**
 
 ```JavaScript
 SandBox.run(String fname,
@@ -157,7 +157,7 @@ SandBox.run(String fname,
 
 --------------------------
 ### resolve
-** 查询一个模块并返回模块完整文件名 **
+**查询一个模块并返回模块完整文件名**
 
 ```JavaScript
 String SandBox.resolve(String id,
@@ -173,7 +173,7 @@ String SandBox.resolve(String id,
 
 --------------------------
 ### require
-** 加载一个模块并返回模块对象 **
+**加载一个模块并返回模块对象**
 
 ```JavaScript
 Value SandBox.require(String id,
@@ -189,7 +189,7 @@ Value SandBox.require(String id,
 
 --------------------------
 ### dispose
-** 强制回收对象，调用此方法后，对象资源将立即释放 **
+**强制回收对象，调用此方法后，对象资源将立即释放**
 
 ```JavaScript
 SandBox.dispose();
@@ -197,7 +197,7 @@ SandBox.dispose();
 
 --------------------------
 ### equals
-** 比较当前对象与给定的对象是否相等 **
+**比较当前对象与给定的对象是否相等**
 
 ```JavaScript
 Boolean SandBox.equals(object expected);
@@ -211,7 +211,7 @@ Boolean SandBox.equals(object expected);
 
 --------------------------
 ### toString
-** 返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现 **
+**返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现**
 
 ```JavaScript
 String SandBox.toString();
@@ -222,7 +222,7 @@ String SandBox.toString();
 
 --------------------------
 ### toJSON
-** 返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合 **
+**返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合**
 
 ```JavaScript
 Value SandBox.toJSON(String key = "");
@@ -236,7 +236,7 @@ Value SandBox.toJSON(String key = "");
 
 --------------------------
 ### valueOf
-** 返回对象本身的数值 **
+**返回对象本身的数值**
 
 ```JavaScript
 Value SandBox.valueOf();

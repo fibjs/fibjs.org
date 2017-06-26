@@ -13,7 +13,7 @@ XmlNode -> XmlProcessingInstruction [dir=back]
 ## 成员属性
         
 ### target
-** String, 返回此处理指令的目标 **
+**String, 返回此处理指令的目标**
 
 ```JavaScript
 readonly String XmlProcessingInstruction.target;
@@ -21,7 +21,7 @@ readonly String XmlProcessingInstruction.target;
 
 --------------------------
 ### data
-** String, 设置或返回此处理指令的内容 **
+**String, 设置或返回此处理指令的内容**
 
 ```JavaScript
 String XmlProcessingInstruction.data;
@@ -29,7 +29,7 @@ String XmlProcessingInstruction.data;
 
 --------------------------
 ### nodeType
-** Integer, 返回节点的节点类型 **
+**Integer, 返回节点的节点类型**
 
 ```JavaScript
 readonly Integer XmlProcessingInstruction.nodeType;
@@ -47,7 +47,7 @@ readonly Integer XmlProcessingInstruction.nodeType;
 
 --------------------------
 ### nodeName
-** String, 返回节点的名称，根据其类型 **
+**String, 返回节点的名称，根据其类型**
 
 ```JavaScript
 readonly String XmlProcessingInstruction.nodeName;
@@ -65,7 +65,7 @@ readonly String XmlProcessingInstruction.nodeName;
 
 --------------------------
 ### nodeValue
-** String, 返回节点的名称，根据其类型 **
+**String, 返回节点的名称，根据其类型**
 
 ```JavaScript
 String XmlProcessingInstruction.nodeValue;
@@ -83,7 +83,7 @@ String XmlProcessingInstruction.nodeValue;
 
 --------------------------
 ### ownerDocument
-** [XmlDocument](XmlDocument.md), 返回节点的根元素（[XmlDocument](XmlDocument.md) 对象） **
+**[XmlDocument](XmlDocument.md), 返回节点的根元素（[XmlDocument](XmlDocument.md) 对象）**
 
 ```JavaScript
 readonly XmlDocument XmlProcessingInstruction.ownerDocument;
@@ -91,7 +91,7 @@ readonly XmlDocument XmlProcessingInstruction.ownerDocument;
 
 --------------------------
 ### parentNode
-** XmlNode, 可返回某节点的父节点 **
+**XmlNode, 可返回某节点的父节点**
 
 ```JavaScript
 readonly XmlNode XmlProcessingInstruction.parentNode;
@@ -99,7 +99,7 @@ readonly XmlNode XmlProcessingInstruction.parentNode;
 
 --------------------------
 ### childNodes
-** [XmlNodeList](XmlNodeList.md), 返回指定节点的子节点的节点列表 **
+**[XmlNodeList](XmlNodeList.md), 返回指定节点的子节点的节点列表**
 
 ```JavaScript
 readonly XmlNodeList XmlProcessingInstruction.childNodes;
@@ -107,7 +107,7 @@ readonly XmlNodeList XmlProcessingInstruction.childNodes;
 
 --------------------------
 ### firstChild
-** XmlNode, 返回节点的首个子节点 **
+**XmlNode, 返回节点的首个子节点**
 
 ```JavaScript
 readonly XmlNode XmlProcessingInstruction.firstChild;
@@ -115,7 +115,7 @@ readonly XmlNode XmlProcessingInstruction.firstChild;
 
 --------------------------
 ### lastChild
-** XmlNode, 返回节点的最后一个子节点 **
+**XmlNode, 返回节点的最后一个子节点**
 
 ```JavaScript
 readonly XmlNode XmlProcessingInstruction.lastChild;
@@ -123,7 +123,7 @@ readonly XmlNode XmlProcessingInstruction.lastChild;
 
 --------------------------
 ### previousSibling
-** XmlNode, 返回某节点之前紧跟的节点（处于同一树层级），如果没有此节点，那么该属性返回 null **
+**XmlNode, 返回某节点之前紧跟的节点（处于同一树层级），如果没有此节点，那么该属性返回 null**
 
 ```JavaScript
 readonly XmlNode XmlProcessingInstruction.previousSibling;
@@ -131,7 +131,7 @@ readonly XmlNode XmlProcessingInstruction.previousSibling;
 
 --------------------------
 ### nextSibling
-** XmlNode, 返回某个元素之后紧跟的节点（处于同一树层级中），如果无此节点，则属性返回 null **
+**XmlNode, 返回某个元素之后紧跟的节点（处于同一树层级中），如果无此节点，则属性返回 null**
 
 ```JavaScript
 readonly XmlNode XmlProcessingInstruction.nextSibling;
@@ -140,7 +140,7 @@ readonly XmlNode XmlProcessingInstruction.nextSibling;
 ## 成员函数
         
 ### hasChildNodes
-** 查询是否存在子节点 **
+**查询是否存在子节点**
 
 ```JavaScript
 Boolean XmlProcessingInstruction.hasChildNodes();
@@ -151,7 +151,7 @@ Boolean XmlProcessingInstruction.hasChildNodes();
 
 --------------------------
 ### normalize
-** 合并相邻的 Text 节点并删除空的 Text 节点 **
+**合并相邻的 Text 节点并删除空的 Text 节点**
 
 ```JavaScript
 XmlProcessingInstruction.normalize();
@@ -161,7 +161,7 @@ XmlProcessingInstruction.normalize();
 
 --------------------------
 ### cloneNode
-** 创建指定的节点的精确拷贝 **
+**创建指定的节点的精确拷贝**
 
 ```JavaScript
 XmlNode XmlProcessingInstruction.cloneNode(Boolean deep = true);
@@ -177,7 +177,7 @@ XmlNode XmlProcessingInstruction.cloneNode(Boolean deep = true);
 
 --------------------------
 ### lookupPrefix
-** 返回在当前节点上匹配指定的命名空间 URI 的前缀 **
+**返回在当前节点上匹配指定的命名空间 URI 的前缀**
 
 ```JavaScript
 String XmlProcessingInstruction.lookupPrefix(String namespaceURI);
@@ -191,7 +191,7 @@ String XmlProcessingInstruction.lookupPrefix(String namespaceURI);
 
 --------------------------
 ### lookupNamespaceURI
-** 返回在当前节点上匹配指定的前缀的命名空间 URI **
+**返回在当前节点上匹配指定的前缀的命名空间 URI**
 
 ```JavaScript
 String XmlProcessingInstruction.lookupNamespaceURI(String prefix);
@@ -205,7 +205,7 @@ String XmlProcessingInstruction.lookupNamespaceURI(String prefix);
 
 --------------------------
 ### insertBefore
-** 在已有的子节点前插入一个新的子节点 **
+**在已有的子节点前插入一个新的子节点**
 
 ```JavaScript
 XmlNode XmlProcessingInstruction.insertBefore(XmlNode newChild,
@@ -223,7 +223,7 @@ XmlNode XmlProcessingInstruction.insertBefore(XmlNode newChild,
 
 --------------------------
 ### insertAfter
-** 在已有的子节点后插入一个新的子节点 **
+**在已有的子节点后插入一个新的子节点**
 
 ```JavaScript
 XmlNode XmlProcessingInstruction.insertAfter(XmlNode newChild,
@@ -241,7 +241,7 @@ XmlNode XmlProcessingInstruction.insertAfter(XmlNode newChild,
 
 --------------------------
 ### appendChild
-** 向节点的子节点列表的末尾添加新的子节点 **
+**向节点的子节点列表的末尾添加新的子节点**
 
 ```JavaScript
 XmlNode XmlProcessingInstruction.appendChild(XmlNode newChild);
@@ -257,7 +257,7 @@ XmlNode XmlProcessingInstruction.appendChild(XmlNode newChild);
 
 --------------------------
 ### replaceChild
-** 将某个子节点替换为另一个 **
+**将某个子节点替换为另一个**
 
 ```JavaScript
 XmlNode XmlProcessingInstruction.replaceChild(XmlNode newChild,
@@ -275,7 +275,7 @@ XmlNode XmlProcessingInstruction.replaceChild(XmlNode newChild,
 
 --------------------------
 ### removeChild
-** 从子节点列表中删除某个节点 **
+**从子节点列表中删除某个节点**
 
 ```JavaScript
 XmlNode XmlProcessingInstruction.removeChild(XmlNode oldChild);
@@ -289,7 +289,7 @@ XmlNode XmlProcessingInstruction.removeChild(XmlNode oldChild);
 
 --------------------------
 ### dispose
-** 强制回收对象，调用此方法后，对象资源将立即释放 **
+**强制回收对象，调用此方法后，对象资源将立即释放**
 
 ```JavaScript
 XmlProcessingInstruction.dispose();
@@ -297,7 +297,7 @@ XmlProcessingInstruction.dispose();
 
 --------------------------
 ### equals
-** 比较当前对象与给定的对象是否相等 **
+**比较当前对象与给定的对象是否相等**
 
 ```JavaScript
 Boolean XmlProcessingInstruction.equals(object expected);
@@ -311,7 +311,7 @@ Boolean XmlProcessingInstruction.equals(object expected);
 
 --------------------------
 ### toString
-** 返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现 **
+**返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现**
 
 ```JavaScript
 String XmlProcessingInstruction.toString();
@@ -322,7 +322,7 @@ String XmlProcessingInstruction.toString();
 
 --------------------------
 ### toJSON
-** 返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合 **
+**返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合**
 
 ```JavaScript
 Value XmlProcessingInstruction.toJSON(String key = "");
@@ -336,7 +336,7 @@ Value XmlProcessingInstruction.toJSON(String key = "");
 
 --------------------------
 ### valueOf
-** 返回对象本身的数值 **
+**返回对象本身的数值**
 
 ```JavaScript
 Value XmlProcessingInstruction.valueOf();

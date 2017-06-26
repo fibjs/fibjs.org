@@ -20,7 +20,7 @@ object -> HttpClient [dir=back]
 ## 构造函数
         
 ### HttpClient
-** HttpClient 构造函数，创建一个新的HttpClient对象 **
+**HttpClient 构造函数，创建一个新的HttpClient对象**
 
 ```JavaScript
 new HttpClient();
@@ -29,7 +29,7 @@ new HttpClient();
 ## 成员属性
         
 ### cookies
-** [List](List.md), 返回[http](../../module/ifs/http.md)客户端的 [HttpCookie](HttpCookie.md) 对象列表 **
+**[List](List.md), 返回[http](../../module/ifs/http.md)客户端的 [HttpCookie](HttpCookie.md) 对象列表**
 
 ```JavaScript
 readonly List HttpClient.cookies;
@@ -37,7 +37,7 @@ readonly List HttpClient.cookies;
 
 --------------------------
 ### timeout
-** Integer, 查询和设置超时时间 单位毫秒 **
+**Integer, 查询和设置超时时间 单位毫秒**
 
 ```JavaScript
 Integer HttpClient.timeout;
@@ -45,7 +45,7 @@ Integer HttpClient.timeout;
 
 --------------------------
 ### enableCookie
-** Boolean, cookie功能开关，默认开启 **
+**Boolean, cookie功能开关，默认开启**
 
 ```JavaScript
 Boolean HttpClient.enableCookie;
@@ -53,7 +53,7 @@ Boolean HttpClient.enableCookie;
 
 --------------------------
 ### autoRedirect
-** Boolean, 自动redirect功能开关，默认开启 **
+**Boolean, 自动redirect功能开关，默认开启**
 
 ```JavaScript
 Boolean HttpClient.autoRedirect;
@@ -61,7 +61,7 @@ Boolean HttpClient.autoRedirect;
 
 --------------------------
 ### userAgent
-** String, 查询和设置 [http](../../module/ifs/http.md) 请求中的浏览器标识 **
+**String, 查询和设置 [http](../../module/ifs/http.md) 请求中的浏览器标识**
 
 ```JavaScript
 String HttpClient.userAgent;
@@ -70,7 +70,7 @@ String HttpClient.userAgent;
 ## 成员函数
         
 ### request
-** 发送 [http](../../module/ifs/http.md) 请求到指定的流对象，并返回结果 **
+**发送 [http](../../module/ifs/http.md) 请求到指定的流对象，并返回结果**
 
 ```JavaScript
 HttpResponse HttpClient.request(Stream conn,
@@ -85,7 +85,7 @@ HttpResponse HttpClient.request(Stream conn,
 * [HttpResponse](HttpResponse.md), 返回服务器响应
 
 --------------------------
-** 请求指定的 [url](../../module/ifs/url.md)，并返回结果 **
+**请求指定的 [url](../../module/ifs/url.md)，并返回结果**
 
 ```JavaScript
 HttpResponse HttpClient.request(String method,
@@ -102,7 +102,7 @@ HttpResponse HttpClient.request(String method,
 * [HttpResponse](HttpResponse.md), 返回服务器响应
 
 --------------------------
-** 请求指定的 [url](../../module/ifs/url.md)，并返回结果 **
+**请求指定的 [url](../../module/ifs/url.md)，并返回结果**
 
 ```JavaScript
 HttpResponse HttpClient.request(String method,
@@ -121,7 +121,7 @@ HttpResponse HttpClient.request(String method,
 * [HttpResponse](HttpResponse.md), 返回服务器响应
 
 --------------------------
-** 请求指定的 [url](../../module/ifs/url.md)，并返回结果 **
+**请求指定的 [url](../../module/ifs/url.md)，并返回结果**
 
 ```JavaScript
 HttpResponse HttpClient.request(String method,
@@ -140,7 +140,7 @@ HttpResponse HttpClient.request(String method,
 * [HttpResponse](HttpResponse.md), 返回服务器响应
 
 --------------------------
-** 请求指定的 [url](../../module/ifs/url.md)，并返回结果 **
+**请求指定的 [url](../../module/ifs/url.md)，并返回结果**
 
 ```JavaScript
 HttpResponse HttpClient.request(String method,
@@ -160,7 +160,7 @@ HttpResponse HttpClient.request(String method,
 
 --------------------------
 ### get
-** 用 GET 方法请求指定的 [url](../../module/ifs/url.md)，并返回结果，等同于 request("GET", ...) **
+**用 GET 方法请求指定的 [url](../../module/ifs/url.md)，并返回结果，等同于 request("GET", ...)**
 
 ```JavaScript
 HttpResponse HttpClient.get(String url,
@@ -176,7 +176,7 @@ HttpResponse HttpClient.get(String url,
 
 --------------------------
 ### post
-** 用 POST 方法请求指定的 [url](../../module/ifs/url.md)，并返回结果，等同于 request("POST", ...) **
+**用 POST 方法请求指定的 [url](../../module/ifs/url.md)，并返回结果，等同于 request("POST", ...)**
 
 ```JavaScript
 HttpResponse HttpClient.post(String url,
@@ -193,7 +193,7 @@ HttpResponse HttpClient.post(String url,
 * [HttpResponse](HttpResponse.md), 返回服务器响应
 
 --------------------------
-** 用 POST 方法请求指定的 [url](../../module/ifs/url.md)，并返回结果，等同于 request("POST", ...) **
+**用 POST 方法请求指定的 [url](../../module/ifs/url.md)，并返回结果，等同于 request("POST", ...)**
 
 ```JavaScript
 HttpResponse HttpClient.post(String url,
@@ -210,7 +210,7 @@ HttpResponse HttpClient.post(String url,
 * [HttpResponse](HttpResponse.md), 返回服务器响应
 
 --------------------------
-** 用 POST 方法请求指定的 [url](../../module/ifs/url.md)，并返回结果，等同于 request("POST", ...) **
+**用 POST 方法请求指定的 [url](../../module/ifs/url.md)，并返回结果，等同于 request("POST", ...)**
 
 ```JavaScript
 HttpResponse HttpClient.post(String url,
@@ -226,7 +226,7 @@ HttpResponse HttpClient.post(String url,
 
 --------------------------
 ### del
-** 用 DELETE 方法请求指定的 [url](../../module/ifs/url.md)，并返回结果，等同于 request("DELETE", ...) **
+**用 DELETE 方法请求指定的 [url](../../module/ifs/url.md)，并返回结果，等同于 request("DELETE", ...)**
 
 ```JavaScript
 HttpResponse HttpClient.del(String url,
@@ -242,7 +242,7 @@ HttpResponse HttpClient.del(String url,
 
 --------------------------
 ### put
-** 用 PUT 方法请求指定的 [url](../../module/ifs/url.md)，并返回结果，等同于 request("PUT", ...) **
+**用 PUT 方法请求指定的 [url](../../module/ifs/url.md)，并返回结果，等同于 request("PUT", ...)**
 
 ```JavaScript
 HttpResponse HttpClient.put(String url,
@@ -259,7 +259,7 @@ HttpResponse HttpClient.put(String url,
 * [HttpResponse](HttpResponse.md), 返回服务器响应
 
 --------------------------
-** 用 PUT 方法请求指定的 [url](../../module/ifs/url.md)，并返回结果，等同于 request("PUT", ...) **
+**用 PUT 方法请求指定的 [url](../../module/ifs/url.md)，并返回结果，等同于 request("PUT", ...)**
 
 ```JavaScript
 HttpResponse HttpClient.put(String url,
@@ -276,7 +276,7 @@ HttpResponse HttpClient.put(String url,
 * [HttpResponse](HttpResponse.md), 返回服务器响应
 
 --------------------------
-** 用 PUT 方法请求指定的 [url](../../module/ifs/url.md)，并返回结果，等同于 request("PUT", ...) **
+**用 PUT 方法请求指定的 [url](../../module/ifs/url.md)，并返回结果，等同于 request("PUT", ...)**
 
 ```JavaScript
 HttpResponse HttpClient.put(String url,
@@ -292,7 +292,7 @@ HttpResponse HttpClient.put(String url,
 
 --------------------------
 ### patch
-** 用 PATCH 方法请求指定的 [url](../../module/ifs/url.md)，并返回结果，等同于 request("PATCH", ...) **
+**用 PATCH 方法请求指定的 [url](../../module/ifs/url.md)，并返回结果，等同于 request("PATCH", ...)**
 
 ```JavaScript
 HttpResponse HttpClient.patch(String url,
@@ -309,7 +309,7 @@ HttpResponse HttpClient.patch(String url,
 * [HttpResponse](HttpResponse.md), 返回服务器响应
 
 --------------------------
-** 用 PATCH 方法请求指定的 [url](../../module/ifs/url.md)，并返回结果，等同于 request("PATCH", ...) **
+**用 PATCH 方法请求指定的 [url](../../module/ifs/url.md)，并返回结果，等同于 request("PATCH", ...)**
 
 ```JavaScript
 HttpResponse HttpClient.patch(String url,
@@ -326,7 +326,7 @@ HttpResponse HttpClient.patch(String url,
 * [HttpResponse](HttpResponse.md), 返回服务器响应
 
 --------------------------
-** 用 PATCH 方法请求指定的 [url](../../module/ifs/url.md)，并返回结果，等同于 request("PATCH", ...) **
+**用 PATCH 方法请求指定的 [url](../../module/ifs/url.md)，并返回结果，等同于 request("PATCH", ...)**
 
 ```JavaScript
 HttpResponse HttpClient.patch(String url,
@@ -342,7 +342,7 @@ HttpResponse HttpClient.patch(String url,
 
 --------------------------
 ### dispose
-** 强制回收对象，调用此方法后，对象资源将立即释放 **
+**强制回收对象，调用此方法后，对象资源将立即释放**
 
 ```JavaScript
 HttpClient.dispose();
@@ -350,7 +350,7 @@ HttpClient.dispose();
 
 --------------------------
 ### equals
-** 比较当前对象与给定的对象是否相等 **
+**比较当前对象与给定的对象是否相等**
 
 ```JavaScript
 Boolean HttpClient.equals(object expected);
@@ -364,7 +364,7 @@ Boolean HttpClient.equals(object expected);
 
 --------------------------
 ### toString
-** 返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现 **
+**返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现**
 
 ```JavaScript
 String HttpClient.toString();
@@ -375,7 +375,7 @@ String HttpClient.toString();
 
 --------------------------
 ### toJSON
-** 返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合 **
+**返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合**
 
 ```JavaScript
 Value HttpClient.toJSON(String key = "");
@@ -389,7 +389,7 @@ Value HttpClient.toJSON(String key = "");
 
 --------------------------
 ### valueOf
-** 返回对象本身的数值 **
+**返回对象本身的数值**
 
 ```JavaScript
 Value HttpClient.valueOf();

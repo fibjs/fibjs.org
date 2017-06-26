@@ -17,7 +17,7 @@ var base64vlq = require('base64vlq');
 ## 静态函数
         
 ### encode
-** 以 base64vlq 方式编码数据 **
+**以 base64vlq 方式编码数据**
 
 ```JavaScript
 static String base64vlq.encode(Integer data);
@@ -30,7 +30,7 @@ static String base64vlq.encode(Integer data);
 * String, 返回编码的字符串
 
 --------------------------
-** 以 base64vlq 方式编码数据 **
+**以 base64vlq 方式编码数据**
 
 ```JavaScript
 static String base64vlq.encode(Array data);
@@ -44,7 +44,7 @@ static String base64vlq.encode(Array data);
 
 --------------------------
 ### decode
-** 以 base64vlq 方式解码字符串为二进制数据 **
+**以 base64vlq 方式解码字符串为二进制数据**
 
 ```JavaScript
 static Array base64vlq.decode(String data);

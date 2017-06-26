@@ -4,7 +4,7 @@
 ## 对象
         
 ### Buffer
-** 二进制数据缓存对象，用于 [io](io.md) 读写的数据处理，参见 [Buffer](../../object/ifs/Buffer.md) 对象。 **
+**二进制数据缓存对象，用于 [io](io.md) 读写的数据处理，参见 [Buffer](../../object/ifs/Buffer.md) 对象。**
 
 ```JavaScript
 Buffer global.Buffer;
@@ -12,7 +12,7 @@ Buffer global.Buffer;
 
 --------------------------
 ### Int64
-** 64位整数对象，参见 [Int64](../../object/ifs/Int64.md) 对象。 **
+**64位整数对象，参见 [Int64](../../object/ifs/Int64.md) 对象。**
 
 ```JavaScript
 Int64 global.Int64;
@@ -20,7 +20,7 @@ Int64 global.Int64;
 
 --------------------------
 ### console
-** 控制台访问对象 **
+**控制台访问对象**
 
 ```JavaScript
 console global.console;
@@ -28,7 +28,7 @@ console global.console;
 
 --------------------------
 ### process
-** 控制台访问对象 **
+**控制台访问对象**
 
 ```JavaScript
 process global.process;
@@ -37,7 +37,7 @@ process global.process;
 ## 静态函数
         
 ### run
-** 运行一个脚本 **
+**运行一个脚本**
 
 ```JavaScript
 static global.run(String fname,
@@ -50,7 +50,7 @@ static global.run(String fname,
 
 --------------------------
 ### clearInterval
-** 清除指定的定时器 **
+**清除指定的定时器**
 
 ```JavaScript
 static global.clearInterval(Timer t);
@@ -61,7 +61,7 @@ static global.clearInterval(Timer t);
 
 --------------------------
 ### clearTimeout
-** 清除指定的定时器 **
+**清除指定的定时器**
 
 ```JavaScript
 static global.clearTimeout(Timer t);
@@ -72,7 +72,7 @@ static global.clearTimeout(Timer t);
 
 --------------------------
 ### clearImmediate
-** 清除指定的定时器 **
+**清除指定的定时器**
 
 ```JavaScript
 static global.clearImmediate(Timer t);
@@ -83,7 +83,7 @@ static global.clearImmediate(Timer t);
 
 --------------------------
 ### setInterval
-** 每间隔指定的时间后调用函数 **
+**每间隔指定的时间后调用函数**
 
 ```JavaScript
 static Timer global.setInterval(Function callback,
@@ -99,7 +99,7 @@ static Timer global.setInterval(Function callback,
 
 --------------------------
 ### setTimeout
-** 在指定的时间后调用函数 **
+**在指定的时间后调用函数**
 
 ```JavaScript
 static Timer global.setTimeout(Function callback,
@@ -115,7 +115,7 @@ static Timer global.setTimeout(Function callback,
 
 --------------------------
 ### setImmediate
-** 下一个空闲时间立即执行回调函数 **
+**下一个空闲时间立即执行回调函数**
 
 ```JavaScript
 static Timer global.setImmediate(Function callback);
@@ -129,7 +129,7 @@ static Timer global.setImmediate(Function callback);
 
 --------------------------
 ### require
-** 加载一个模块并返回模块对象，更多信息参阅 @ref module **
+**加载一个模块并返回模块对象，更多信息参阅 @ref module**
 
 ```JavaScript
 static Value global.require(String id);
@@ -153,7 +153,7 @@ require 可用于加载基础模块，文件模块。
 
 --------------------------
 ### GC
-** 强制要求进行垃圾回收 **
+**强制要求进行垃圾回收**
 
 ```JavaScript
 static global.GC();
@@ -161,7 +161,7 @@ static global.GC();
 
 --------------------------
 ### repl
-** 进入交互模式，可以交互执行内部命令和代码，仅在启动 js 可以引用 **
+**进入交互模式，可以交互执行内部命令和代码，仅在启动 js 可以引用**
 
 ```JavaScript
 static global.repl(Array cmds = []);
@@ -191,7 +191,7 @@ static global.repl(Array cmds = []);
 ```
 
 --------------------------
-** 进入交互模式，可以交互执行内部命令和代码，仅在启动 js 可以引用 **
+**进入交互模式，可以交互执行内部命令和代码，仅在启动 js 可以引用**
 
 ```JavaScript
 static global.repl(Stream out,
@@ -227,7 +227,7 @@ static global.repl(Stream out,
 ## 静态属性
         
 ### Master
-** [Worker](../../object/ifs/Worker.md), [Worker](../../object/ifs/Worker.md) 宿主对象，仅在 [Worker](../../object/ifs/Worker.md) 入口脚本有效 **
+**[Worker](../../object/ifs/Worker.md), [Worker](../../object/ifs/Worker.md) 宿主对象，仅在 [Worker](../../object/ifs/Worker.md) 入口脚本有效**
 
 ```JavaScript
 static readonly Worker global.Master;
@@ -235,7 +235,7 @@ static readonly Worker global.Master;
 
 --------------------------
 ### global
-** Object, 全局对象 **
+**Object, 全局对象**
 
 ```JavaScript
 static readonly Object new global;
@@ -243,7 +243,7 @@ static readonly Object new global;
 
 --------------------------
 ### argv
-** Array, 获取当前脚本的运行参数，启动 js 获取进程启动参数，run 执行的脚本获取传递的参数 **
+**Array, 获取当前脚本的运行参数，启动 js 获取进程启动参数，run 执行的脚本获取传递的参数**
 
 ```JavaScript
 static readonly Array global.argv;
@@ -251,7 +251,7 @@ static readonly Array global.argv;
 
 --------------------------
 ### __filename
-** String, 当前脚本文件名 **
+**String, 当前脚本文件名**
 
 ```JavaScript
 static readonly String global.__filename;
@@ -259,7 +259,7 @@ static readonly String global.__filename;
 
 --------------------------
 ### __dirname
-** String, 当前脚本所在目录 **
+**String, 当前脚本所在目录**
 
 ```JavaScript
 static readonly String global.__dirname;

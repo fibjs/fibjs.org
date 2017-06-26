@@ -25,7 +25,7 @@ Handler -> SslHandler [dir=back]
 ## 构造函数
         
 ### SslHandler
-** SslHandler 构造函数，创建一个新的 SslHandler 对象 **
+**SslHandler 构造函数，创建一个新的 SslHandler 对象**
 
 ```JavaScript
 new SslHandler(Array certs,
@@ -51,7 +51,7 @@ certs 格式为：
 ```
 
 --------------------------
-** SslHandler 构造函数，创建一个新的 SslHandler 对象 **
+**SslHandler 构造函数，创建一个新的 SslHandler 对象**
 
 ```JavaScript
 new SslHandler(X509Cert crt,
@@ -67,7 +67,7 @@ new SslHandler(X509Cert crt,
 ## 成员属性
         
 ### verification
-** Integer, 设定证书验证模式，缺省为 VERIFY_NONE **
+**Integer, 设定证书验证模式，缺省为 VERIFY_NONE**
 
 ```JavaScript
 Integer SslHandler.verification;
@@ -75,7 +75,7 @@ Integer SslHandler.verification;
 
 --------------------------
 ### ca
-** [X509Cert](X509Cert.md), 客户端证书验证证书链 **
+**[X509Cert](X509Cert.md), 客户端证书验证证书链**
 
 ```JavaScript
 readonly X509Cert SslHandler.ca;
@@ -83,7 +83,7 @@ readonly X509Cert SslHandler.ca;
 
 --------------------------
 ### handler
-** [Handler](Handler.md), [ssl](../../module/ifs/ssl.md) 协议转换处理器当前事件处理接口对象 **
+**[Handler](Handler.md), [ssl](../../module/ifs/ssl.md) 协议转换处理器当前事件处理接口对象**
 
 ```JavaScript
 Handler SslHandler.handler;
@@ -92,7 +92,7 @@ Handler SslHandler.handler;
 ## 成员函数
         
 ### invoke
-** 处理一个消息或对象 **
+**处理一个消息或对象**
 
 ```JavaScript
 Handler SslHandler.invoke(object v) async;
@@ -106,7 +106,7 @@ Handler SslHandler.invoke(object v) async;
 
 --------------------------
 ### dispose
-** 强制回收对象，调用此方法后，对象资源将立即释放 **
+**强制回收对象，调用此方法后，对象资源将立即释放**
 
 ```JavaScript
 SslHandler.dispose();
@@ -114,7 +114,7 @@ SslHandler.dispose();
 
 --------------------------
 ### equals
-** 比较当前对象与给定的对象是否相等 **
+**比较当前对象与给定的对象是否相等**
 
 ```JavaScript
 Boolean SslHandler.equals(object expected);
@@ -128,7 +128,7 @@ Boolean SslHandler.equals(object expected);
 
 --------------------------
 ### toString
-** 返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现 **
+**返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现**
 
 ```JavaScript
 String SslHandler.toString();
@@ -139,7 +139,7 @@ String SslHandler.toString();
 
 --------------------------
 ### toJSON
-** 返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合 **
+**返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合**
 
 ```JavaScript
 Value SslHandler.toJSON(String key = "");
@@ -153,7 +153,7 @@ Value SslHandler.toJSON(String key = "");
 
 --------------------------
 ### valueOf
-** 返回对象本身的数值 **
+**返回对象本身的数值**
 
 ```JavaScript
 Value SslHandler.valueOf();

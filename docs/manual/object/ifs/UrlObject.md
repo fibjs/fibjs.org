@@ -22,7 +22,7 @@ object -> UrlObject [dir=back]
 ## 构造函数
         
 ### UrlObject
-** UrlObject 对象构造函数，使用参数构造 **
+**UrlObject 对象构造函数，使用参数构造**
 
 ```JavaScript
 new UrlObject(Object args);
@@ -32,7 +32,7 @@ new UrlObject(Object args);
 * args: Object, 指定构造参数的字典对象，支持的字段有：protocol, slashes, username, password, hostname, port, pathname, query, [hash](../../module/ifs/hash.md)
 
 --------------------------
-** UrlObject 对象构造函数，使用 [url](../../module/ifs/url.md) 字符串构造 **
+**UrlObject 对象构造函数，使用 [url](../../module/ifs/url.md) 字符串构造**
 
 ```JavaScript
 new UrlObject(String url = "",
@@ -46,7 +46,7 @@ new UrlObject(String url = "",
 ## 成员属性
         
 ### href
-** String, 查询和设置当前 UrlObject 对象中的完整 [url](../../module/ifs/url.md) 地址描述，此描述由其他所有属性组装而成 **
+**String, 查询和设置当前 UrlObject 对象中的完整 [url](../../module/ifs/url.md) 地址描述，此描述由其他所有属性组装而成**
 
 ```JavaScript
 String UrlObject.href;
@@ -54,7 +54,7 @@ String UrlObject.href;
 
 --------------------------
 ### protocol
-** String, 查询和设置当前 UrlObject 对象中的协议名称 **
+**String, 查询和设置当前 UrlObject 对象中的协议名称**
 
 ```JavaScript
 String UrlObject.protocol;
@@ -62,7 +62,7 @@ String UrlObject.protocol;
 
 --------------------------
 ### slashes
-** Boolean, 查询和设置当前 UrlObject 对象是否包含双斜杠 **
+**Boolean, 查询和设置当前 UrlObject 对象是否包含双斜杠**
 
 ```JavaScript
 Boolean UrlObject.slashes;
@@ -70,7 +70,7 @@ Boolean UrlObject.slashes;
 
 --------------------------
 ### auth
-** String, 查询和设置当前 UrlObject 对象中的完整验证字符串，由 username 和 password 属性组装而成 **
+**String, 查询和设置当前 UrlObject 对象中的完整验证字符串，由 username 和 password 属性组装而成**
 
 ```JavaScript
 String UrlObject.auth;
@@ -78,7 +78,7 @@ String UrlObject.auth;
 
 --------------------------
 ### username
-** String, 查询和设置当前 UrlObject 对象中的验证用户 **
+**String, 查询和设置当前 UrlObject 对象中的验证用户**
 
 ```JavaScript
 String UrlObject.username;
@@ -86,7 +86,7 @@ String UrlObject.username;
 
 --------------------------
 ### password
-** String, 查询和设置当前 UrlObject 对象中的验证密码 **
+**String, 查询和设置当前 UrlObject 对象中的验证密码**
 
 ```JavaScript
 String UrlObject.password;
@@ -94,7 +94,7 @@ String UrlObject.password;
 
 --------------------------
 ### host
-** String, 查询和设置当前 UrlObject 对象中的完整主机描述，由 hastname 和 port 组装而成 **
+**String, 查询和设置当前 UrlObject 对象中的完整主机描述，由 hastname 和 port 组装而成**
 
 ```JavaScript
 String UrlObject.host;
@@ -102,7 +102,7 @@ String UrlObject.host;
 
 --------------------------
 ### hostname
-** String, 查询和设置当前 UrlObject 对象中的主机名 **
+**String, 查询和设置当前 UrlObject 对象中的主机名**
 
 ```JavaScript
 String UrlObject.hostname;
@@ -110,7 +110,7 @@ String UrlObject.hostname;
 
 --------------------------
 ### port
-** String, 查询和设置当前 UrlObject 对象中的端口号 **
+**String, 查询和设置当前 UrlObject 对象中的端口号**
 
 ```JavaScript
 String UrlObject.port;
@@ -118,7 +118,7 @@ String UrlObject.port;
 
 --------------------------
 ### path
-** String, 查询和设置当前 UrlObject 对象中的请求完整路径（含请求），由 pathname 和 query 组装而成 **
+**String, 查询和设置当前 UrlObject 对象中的请求完整路径（含请求），由 pathname 和 query 组装而成**
 
 ```JavaScript
 String UrlObject.path;
@@ -126,7 +126,7 @@ String UrlObject.path;
 
 --------------------------
 ### pathname
-** String, 查询和设置当前 UrlObject 对象中的路径 **
+**String, 查询和设置当前 UrlObject 对象中的路径**
 
 ```JavaScript
 String UrlObject.pathname;
@@ -134,7 +134,7 @@ String UrlObject.pathname;
 
 --------------------------
 ### search
-** String, 查询和设置当前 UrlObject 对象中的请求字符串（含“?”），等效于“?”+query **
+**String, 查询和设置当前 UrlObject 对象中的请求字符串（含“?”），等效于“?”+query**
 
 ```JavaScript
 String UrlObject.search;
@@ -142,7 +142,7 @@ String UrlObject.search;
 
 --------------------------
 ### query
-** Value, 查询和设置当前 UrlObject 对象中的请求字符串（ 不含“?”） **
+**Value, 查询和设置当前 UrlObject 对象中的请求字符串（ 不含“?”）**
 
 ```JavaScript
 Value UrlObject.query;
@@ -150,7 +150,7 @@ Value UrlObject.query;
 
 --------------------------
 ### hash
-** String, 查询和设置当前 UrlObject 对象中的请求锚点（含“\#”） **
+**String, 查询和设置当前 UrlObject 对象中的请求锚点（含“\#”）**
 
 ```JavaScript
 String UrlObject.hash;
@@ -159,7 +159,7 @@ String UrlObject.hash;
 ## 成员函数
         
 ### parse
-** 解析一个 [url](../../module/ifs/url.md) 字符串 **
+**解析一个 [url](../../module/ifs/url.md) 字符串**
 
 ```JavaScript
 UrlObject.parse(String url,
@@ -172,7 +172,7 @@ UrlObject.parse(String url,
 
 --------------------------
 ### format
-** 使用指定的参数构造 UrlObject **
+**使用指定的参数构造 UrlObject**
 
 ```JavaScript
 UrlObject.format(Object args);
@@ -183,7 +183,7 @@ UrlObject.format(Object args);
 
 --------------------------
 ### resolve
-** 重定位 [url](../../module/ifs/url.md) 路径，自动识别新路径为相对路径还是绝对路径 **
+**重定位 [url](../../module/ifs/url.md) 路径，自动识别新路径为相对路径还是绝对路径**
 
 ```JavaScript
 UrlObject UrlObject.resolve(String url);
@@ -197,7 +197,7 @@ UrlObject UrlObject.resolve(String url);
 
 --------------------------
 ### normalize
-** 标准化路径 **
+**标准化路径**
 
 ```JavaScript
 UrlObject.normalize();
@@ -205,7 +205,7 @@ UrlObject.normalize();
 
 --------------------------
 ### dispose
-** 强制回收对象，调用此方法后，对象资源将立即释放 **
+**强制回收对象，调用此方法后，对象资源将立即释放**
 
 ```JavaScript
 UrlObject.dispose();
@@ -213,7 +213,7 @@ UrlObject.dispose();
 
 --------------------------
 ### equals
-** 比较当前对象与给定的对象是否相等 **
+**比较当前对象与给定的对象是否相等**
 
 ```JavaScript
 Boolean UrlObject.equals(object expected);
@@ -227,7 +227,7 @@ Boolean UrlObject.equals(object expected);
 
 --------------------------
 ### toString
-** 返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现 **
+**返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现**
 
 ```JavaScript
 String UrlObject.toString();
@@ -238,7 +238,7 @@ String UrlObject.toString();
 
 --------------------------
 ### toJSON
-** 返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合 **
+**返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合**
 
 ```JavaScript
 Value UrlObject.toJSON(String key = "");
@@ -252,7 +252,7 @@ Value UrlObject.toJSON(String key = "");
 
 --------------------------
 ### valueOf
-** 返回对象本身的数值 **
+**返回对象本身的数值**
 
 ```JavaScript
 Value UrlObject.valueOf();

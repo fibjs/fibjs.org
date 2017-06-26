@@ -27,7 +27,7 @@ HandlerEx -> HttpHandler [dir=back]
 ## 构造函数
         
 ### HttpHandler
-** 创建一个 [http](../../module/ifs/http.md) 协议处理器对象，将流对象的数据转变为 [http](../../module/ifs/http.md) 消息对象 **
+**创建一个 [http](../../module/ifs/http.md) 协议处理器对象，将流对象的数据转变为 [http](../../module/ifs/http.md) 消息对象**
 
 ```JavaScript
 new HttpHandler(Handler hdlr);
@@ -39,7 +39,7 @@ new HttpHandler(Handler hdlr);
 ## 成员属性
         
 ### crossDomain
-** Boolean, 查询和设置是否允许跨域请求，缺省为 false **
+**Boolean, 查询和设置是否允许跨域请求，缺省为 false**
 
 ```JavaScript
 Boolean HttpHandler.crossDomain;
@@ -47,7 +47,7 @@ Boolean HttpHandler.crossDomain;
 
 --------------------------
 ### forceGZIP
-** Boolean, 查询和设置是否允强制使用 gzip 压缩输出，缺省为 false **
+**Boolean, 查询和设置是否允强制使用 gzip 压缩输出，缺省为 false**
 
 ```JavaScript
 Boolean HttpHandler.forceGZIP;
@@ -55,7 +55,7 @@ Boolean HttpHandler.forceGZIP;
 
 --------------------------
 ### maxHeadersCount
-** Integer, 查询和设置最大请求头个数，缺省为 128 **
+**Integer, 查询和设置最大请求头个数，缺省为 128**
 
 ```JavaScript
 Integer HttpHandler.maxHeadersCount;
@@ -63,7 +63,7 @@ Integer HttpHandler.maxHeadersCount;
 
 --------------------------
 ### maxUploadSize
-** Integer, 查询和设置最大上传尺寸，以字节为单位，缺省为 67108864(64M) **
+**Integer, 查询和设置最大上传尺寸，以字节为单位，缺省为 67108864(64M)**
 
 ```JavaScript
 Integer HttpHandler.maxUploadSize;
@@ -71,7 +71,7 @@ Integer HttpHandler.maxUploadSize;
 
 --------------------------
 ### handler
-** [Handler](Handler.md), [WebSocket](WebSocket.md) 协议转换处理器当前事件处理接口对象 **
+**[Handler](Handler.md), [WebSocket](WebSocket.md) 协议转换处理器当前事件处理接口对象**
 
 ```JavaScript
 Handler HttpHandler.handler;
@@ -79,7 +79,7 @@ Handler HttpHandler.handler;
 
 --------------------------
 ### stats
-** [Stats](Stats.md), 查询 [WebSocket](WebSocket.md) 包协议转换处理器的工作状态 **
+**[Stats](Stats.md), 查询 [WebSocket](WebSocket.md) 包协议转换处理器的工作状态**
 
 ```JavaScript
 readonly Stats HttpHandler.stats;
@@ -100,7 +100,7 @@ readonly Stats HttpHandler.stats;
 ## 成员函数
         
 ### onerror
-** 设置错误处理器 **
+**设置错误处理器**
 
 ```JavaScript
 HttpHandler.onerror(Object hdlrs);
@@ -122,7 +122,7 @@ hdlr.onerror({
 
 --------------------------
 ### invoke
-** 处理一个消息或对象 **
+**处理一个消息或对象**
 
 ```JavaScript
 Handler HttpHandler.invoke(object v) async;
@@ -136,7 +136,7 @@ Handler HttpHandler.invoke(object v) async;
 
 --------------------------
 ### dispose
-** 强制回收对象，调用此方法后，对象资源将立即释放 **
+**强制回收对象，调用此方法后，对象资源将立即释放**
 
 ```JavaScript
 HttpHandler.dispose();
@@ -144,7 +144,7 @@ HttpHandler.dispose();
 
 --------------------------
 ### equals
-** 比较当前对象与给定的对象是否相等 **
+**比较当前对象与给定的对象是否相等**
 
 ```JavaScript
 Boolean HttpHandler.equals(object expected);
@@ -158,7 +158,7 @@ Boolean HttpHandler.equals(object expected);
 
 --------------------------
 ### toString
-** 返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现 **
+**返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现**
 
 ```JavaScript
 String HttpHandler.toString();
@@ -169,7 +169,7 @@ String HttpHandler.toString();
 
 --------------------------
 ### toJSON
-** 返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合 **
+**返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合**
 
 ```JavaScript
 Value HttpHandler.toJSON(String key = "");
@@ -183,7 +183,7 @@ Value HttpHandler.toJSON(String key = "");
 
 --------------------------
 ### valueOf
-** 返回对象本身的数值 **
+**返回对象本身的数值**
 
 ```JavaScript
 Value HttpHandler.valueOf();

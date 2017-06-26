@@ -11,7 +11,7 @@ object -> HttpUploadData [dir=back]
 ## 成员属性
         
 ### fileName
-** String, 包含本条目数据的文件名 **
+**String, 包含本条目数据的文件名**
 
 ```JavaScript
 readonly String HttpUploadData.fileName;
@@ -19,7 +19,7 @@ readonly String HttpUploadData.fileName;
 
 --------------------------
 ### contentType
-** String, 包含本条目数据的类型 **
+**String, 包含本条目数据的类型**
 
 ```JavaScript
 readonly String HttpUploadData.contentType;
@@ -27,7 +27,7 @@ readonly String HttpUploadData.contentType;
 
 --------------------------
 ### contentTransferEncoding
-** String, 包含本条目数据的传输编码类型 **
+**String, 包含本条目数据的传输编码类型**
 
 ```JavaScript
 readonly String HttpUploadData.contentTransferEncoding;
@@ -35,7 +35,7 @@ readonly String HttpUploadData.contentTransferEncoding;
 
 --------------------------
 ### body
-** [SeekableStream](SeekableStream.md), 包含本条目数据部分的流对象 **
+**[SeekableStream](SeekableStream.md), 包含本条目数据部分的流对象**
 
 ```JavaScript
 readonly SeekableStream HttpUploadData.body;
@@ -44,7 +44,7 @@ readonly SeekableStream HttpUploadData.body;
 ## 成员函数
         
 ### dispose
-** 强制回收对象，调用此方法后，对象资源将立即释放 **
+**强制回收对象，调用此方法后，对象资源将立即释放**
 
 ```JavaScript
 HttpUploadData.dispose();
@@ -52,7 +52,7 @@ HttpUploadData.dispose();
 
 --------------------------
 ### equals
-** 比较当前对象与给定的对象是否相等 **
+**比较当前对象与给定的对象是否相等**
 
 ```JavaScript
 Boolean HttpUploadData.equals(object expected);
@@ -66,7 +66,7 @@ Boolean HttpUploadData.equals(object expected);
 
 --------------------------
 ### toString
-** 返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现 **
+**返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现**
 
 ```JavaScript
 String HttpUploadData.toString();
@@ -77,7 +77,7 @@ String HttpUploadData.toString();
 
 --------------------------
 ### toJSON
-** 返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合 **
+**返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合**
 
 ```JavaScript
 Value HttpUploadData.toJSON(String key = "");
@@ -91,7 +91,7 @@ Value HttpUploadData.toJSON(String key = "");
 
 --------------------------
 ### valueOf
-** 返回对象本身的数值 **
+**返回对象本身的数值**
 
 ```JavaScript
 Value HttpUploadData.valueOf();

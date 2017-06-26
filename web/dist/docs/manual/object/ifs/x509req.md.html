@@ -214,11 +214,11 @@
 
 <h2 id="-">构造函数</h2>
 <h3 id="x509req">X509Req</h3>
-<p><strong> X509Req 构造函数 </strong></p>
+<p><strong>X509Req 构造函数</strong></p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">new</span> X509Req();
 </code></pre>
 <hr>
-<p><strong> X509Req 构造函数，根据给定的信息创建一个证书请求 </strong></p>
+<p><strong>X509Req 构造函数，根据给定的信息创建一个证书请求</strong></p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">new</span> X509Req(<span class="hljs-built_in">String</span> subject,
     PKey key,
     Integer hash = hash.SHA1);
@@ -231,17 +231,17 @@
 </ul>
 <h2 id="-">成员属性</h2>
 <h3 id="subject">subject</h3>
-<p><strong> String, 获取证书的主题可分辨名称 </strong></p>
+<p><strong>String, 获取证书的主题可分辨名称</strong></p>
 <pre><code class="lang-JavaScript">readonly <span class="hljs-built_in">String</span> X509Req.subject;
 </code></pre>
 <hr>
 <h3 id="publickey">publicKey</h3>
-<p><strong> <a href=pkey.md.html>PKey</a>, 获取证书的公钥 </strong></p>
+<p><strong><a href=pkey.md.html>PKey</a>, 获取证书的公钥</strong></p>
 <pre><code class="lang-JavaScript">readonly PKey X509Req.publicKey;
 </code></pre>
 <h2 id="-">成员函数</h2>
 <h3 id="load">load</h3>
-<p><strong> 加载一个 DER 格式的证书请求 </strong></p>
+<p><strong>加载一个 DER 格式的证书请求</strong></p>
 <pre><code class="lang-JavaScript">X509Req.load(Buffer derReq);
 </code></pre>
 <p>调用参数:</p>
@@ -249,7 +249,7 @@
 <li>derReq: <a href=buffer.md.html>Buffer</a>, DER 格式的证书请求</li>
 </ul>
 <hr>
-<p><strong> 加载一个 PEM 格式的证书请求 </strong></p>
+<p><strong>加载一个 PEM 格式的证书请求</strong></p>
 <pre><code class="lang-JavaScript">X509Req.load(<span class="hljs-built_in">String</span> pemReq);
 </code></pre>
 <p>调用参数:</p>
@@ -258,7 +258,7 @@
 </ul>
 <hr>
 <h3 id="loadfile">loadFile</h3>
-<p><strong> 加载一个 PEM/DER 格式的证书请求，可多次调用 </strong></p>
+<p><strong>加载一个 PEM/DER 格式的证书请求，可多次调用</strong></p>
 <pre><code class="lang-JavaScript">X509Req.loadFile(<span class="hljs-built_in">String</span> filename);
 </code></pre>
 <p>调用参数:</p>
@@ -267,7 +267,7 @@
 </ul>
 <hr>
 <h3 id="exportpem">exportPem</h3>
-<p><strong> 返回当前证书请求的 PEM 格式编码 </strong></p>
+<p><strong>返回当前证书请求的 PEM 格式编码</strong></p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> X509Req.exportPem();
 </code></pre>
 <p>返回结果:</p>
@@ -276,7 +276,7 @@
 </ul>
 <hr>
 <h3 id="exportder">exportDer</h3>
-<p><strong> 返回当前证书请求的 DER 格式编码 </strong></p>
+<p><strong>返回当前证书请求的 DER 格式编码</strong></p>
 <pre><code class="lang-JavaScript">Buffer X509Req.exportDer();
 </code></pre>
 <p>返回结果:</p>
@@ -285,7 +285,7 @@
 </ul>
 <hr>
 <h3 id="sign">sign</h3>
-<p><strong> 签名当前证书请求为正式证书 </strong></p>
+<p><strong>签名当前证书请求为正式证书</strong></p>
 <pre><code class="lang-JavaScript">X509Cert X509Req.sign(<span class="hljs-built_in">String</span> issuer,
     PKey key,
     <span class="hljs-built_in">Object</span> opts = {}) <span class="hljs-keyword">async</span>;
@@ -312,12 +312,12 @@
 </code></pre>
 <hr>
 <h3 id="dispose">dispose</h3>
-<p><strong> 强制回收对象，调用此方法后，对象资源将立即释放 </strong></p>
+<p><strong>强制回收对象，调用此方法后，对象资源将立即释放</strong></p>
 <pre><code class="lang-JavaScript">X509Req.dispose();
 </code></pre>
 <hr>
 <h3 id="equals">equals</h3>
-<p><strong> 比较当前对象与给定的对象是否相等 </strong></p>
+<p><strong>比较当前对象与给定的对象是否相等</strong></p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">Boolean</span> X509Req.equals(object expected);
 </code></pre>
 <p>调用参数:</p>
@@ -330,7 +330,7 @@
 </ul>
 <hr>
 <h3 id="tostring">toString</h3>
-<p><strong> 返回对象的字符串表示，一般返回 &quot;[Native Object]&quot;，对象可以根据自己的特性重新实现 </strong></p>
+<p><strong>返回对象的字符串表示，一般返回 &quot;[Native Object]&quot;，对象可以根据自己的特性重新实现</strong></p>
 <pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> X509Req.toString();
 </code></pre>
 <p>返回结果:</p>
@@ -339,7 +339,7 @@
 </ul>
 <hr>
 <h3 id="tojson">toJSON</h3>
-<p><strong> 返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合 </strong></p>
+<p><strong>返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合</strong></p>
 <pre><code class="lang-JavaScript">Value X509Req.toJSON(<span class="hljs-built_in">String</span> key = <span class="hljs-string">""</span>);
 </code></pre>
 <p>调用参数:</p>
@@ -352,7 +352,7 @@
 </ul>
 <hr>
 <h3 id="valueof">valueOf</h3>
-<p><strong> 返回对象本身的数值 </strong></p>
+<p><strong>返回对象本身的数值</strong></p>
 <pre><code class="lang-JavaScript">Value X509Req.valueOf();
 </code></pre>
 <p>返回结果:</p>

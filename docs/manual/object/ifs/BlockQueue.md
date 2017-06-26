@@ -20,7 +20,7 @@ Queue -> BlockQueue [dir=back]
 ## 构造函数
         
 ### BlockQueue
-** 队列对象构造函数 **
+**队列对象构造函数**
 
 ```JavaScript
 new BlockQueue(Integer size);
@@ -32,7 +32,7 @@ new BlockQueue(Integer size);
 ## 成员属性
         
 ### length
-** Integer, 返回当前队列尺寸 **
+**Integer, 返回当前队列尺寸**
 
 ```JavaScript
 readonly Integer BlockQueue.length;
@@ -41,7 +41,7 @@ readonly Integer BlockQueue.length;
 ## 成员函数
         
 ### put
-** 插入一个新的元素到队列，成功返回 True，队列满则等待 **
+**插入一个新的元素到队列，成功返回 True，队列满则等待**
 
 ```JavaScript
 BlockQueue.put(Value e);
@@ -52,7 +52,7 @@ BlockQueue.put(Value e);
 
 --------------------------
 ### take
-** 从队列中移除一个元素并返回，如果队列为空则等待 **
+**从队列中移除一个元素并返回，如果队列为空则等待**
 
 ```JavaScript
 Value BlockQueue.take();
@@ -63,7 +63,7 @@ Value BlockQueue.take();
 
 --------------------------
 ### add
-** 插入一个新的元素到队列，成功返回 True，队列满则抛出错误 **
+**插入一个新的元素到队列，成功返回 True，队列满则抛出错误**
 
 ```JavaScript
 Boolean BlockQueue.add(Value e);
@@ -77,7 +77,7 @@ Boolean BlockQueue.add(Value e);
 
 --------------------------
 ### offer
-** 插入一个新的元素到队列，成功返回 True，队列满则返回 False **
+**插入一个新的元素到队列，成功返回 True，队列满则返回 False**
 
 ```JavaScript
 Boolean BlockQueue.offer(Value e);
@@ -91,7 +91,7 @@ Boolean BlockQueue.offer(Value e);
 
 --------------------------
 ### remove
-** 从队列中移除一个元素并返回，如果队列为空则抛出错误 **
+**从队列中移除一个元素并返回，如果队列为空则抛出错误**
 
 ```JavaScript
 Value BlockQueue.remove();
@@ -102,7 +102,7 @@ Value BlockQueue.remove();
 
 --------------------------
 ### poll
-** 从队列中移除一个元素并返回 **
+**从队列中移除一个元素并返回**
 
 ```JavaScript
 Value BlockQueue.poll();
@@ -113,7 +113,7 @@ Value BlockQueue.poll();
 
 --------------------------
 ### element
-** 从队列中返回一个元素，但不移除，队列为空则抛出错误 **
+**从队列中返回一个元素，但不移除，队列为空则抛出错误**
 
 ```JavaScript
 Value BlockQueue.element();
@@ -124,7 +124,7 @@ Value BlockQueue.element();
 
 --------------------------
 ### peek
-** 从队列中返回一个元素，但不移除 **
+**从队列中返回一个元素，但不移除**
 
 ```JavaScript
 Value BlockQueue.peek();
@@ -135,7 +135,7 @@ Value BlockQueue.peek();
 
 --------------------------
 ### clear
-** 清除当前队列 **
+**清除当前队列**
 
 ```JavaScript
 BlockQueue.clear();
@@ -143,7 +143,7 @@ BlockQueue.clear();
 
 --------------------------
 ### toArray
-** 返回队列的 js 数组 **
+**返回队列的 js 数组**
 
 ```JavaScript
 Array BlockQueue.toArray();
@@ -154,7 +154,7 @@ Array BlockQueue.toArray();
 
 --------------------------
 ### dispose
-** 强制回收对象，调用此方法后，对象资源将立即释放 **
+**强制回收对象，调用此方法后，对象资源将立即释放**
 
 ```JavaScript
 BlockQueue.dispose();
@@ -162,7 +162,7 @@ BlockQueue.dispose();
 
 --------------------------
 ### equals
-** 比较当前对象与给定的对象是否相等 **
+**比较当前对象与给定的对象是否相等**
 
 ```JavaScript
 Boolean BlockQueue.equals(object expected);
@@ -176,7 +176,7 @@ Boolean BlockQueue.equals(object expected);
 
 --------------------------
 ### toString
-** 返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现 **
+**返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现**
 
 ```JavaScript
 String BlockQueue.toString();
@@ -187,7 +187,7 @@ String BlockQueue.toString();
 
 --------------------------
 ### toJSON
-** 返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合 **
+**返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合**
 
 ```JavaScript
 Value BlockQueue.toJSON(String key = "");
@@ -201,7 +201,7 @@ Value BlockQueue.toJSON(String key = "");
 
 --------------------------
 ### valueOf
-** 返回对象本身的数值 **
+**返回对象本身的数值**
 
 ```JavaScript
 Value BlockQueue.valueOf();

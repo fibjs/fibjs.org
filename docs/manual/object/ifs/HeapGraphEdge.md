@@ -11,7 +11,7 @@ object -> HeapGraphEdge [dir=back]
 ## 成员属性
         
 ### type
-** Integer, 下游节点的链接方式，可能的值： **
+**Integer, 下游节点的链接方式，可能的值：**
 
 ```JavaScript
 readonly Integer HeapGraphEdge.type;
@@ -27,7 +27,7 @@ readonly Integer HeapGraphEdge.type;
 
 --------------------------
 ### name
-** String, 链接名称 **
+**String, 链接名称**
 
 ```JavaScript
 readonly String HeapGraphEdge.name;
@@ -35,7 +35,7 @@ readonly String HeapGraphEdge.name;
 
 --------------------------
 ### description
-** String, 链接的描述 **
+**String, 链接的描述**
 
 ```JavaScript
 readonly String HeapGraphEdge.description;
@@ -44,7 +44,7 @@ readonly String HeapGraphEdge.description;
 ## 成员函数
         
 ### getFromNode
-** 获取HeapGraphEdge的上游[HeapGraphNode](HeapGraphNode.md)节点 **
+**获取HeapGraphEdge的上游[HeapGraphNode](HeapGraphNode.md)节点**
 
 ```JavaScript
 HeapGraphNode HeapGraphEdge.getFromNode();
@@ -55,7 +55,7 @@ HeapGraphNode HeapGraphEdge.getFromNode();
 
 --------------------------
 ### getToNode
-** 获取HeapGraphEdge的下游[HeapGraphNode](HeapGraphNode.md)节点 **
+**获取HeapGraphEdge的下游[HeapGraphNode](HeapGraphNode.md)节点**
 
 ```JavaScript
 HeapGraphNode HeapGraphEdge.getToNode();
@@ -66,7 +66,7 @@ HeapGraphNode HeapGraphEdge.getToNode();
 
 --------------------------
 ### dispose
-** 强制回收对象，调用此方法后，对象资源将立即释放 **
+**强制回收对象，调用此方法后，对象资源将立即释放**
 
 ```JavaScript
 HeapGraphEdge.dispose();
@@ -74,7 +74,7 @@ HeapGraphEdge.dispose();
 
 --------------------------
 ### equals
-** 比较当前对象与给定的对象是否相等 **
+**比较当前对象与给定的对象是否相等**
 
 ```JavaScript
 Boolean HeapGraphEdge.equals(object expected);
@@ -88,7 +88,7 @@ Boolean HeapGraphEdge.equals(object expected);
 
 --------------------------
 ### toString
-** 返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现 **
+**返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现**
 
 ```JavaScript
 String HeapGraphEdge.toString();
@@ -99,7 +99,7 @@ String HeapGraphEdge.toString();
 
 --------------------------
 ### toJSON
-** 返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合 **
+**返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合**
 
 ```JavaScript
 Value HeapGraphEdge.toJSON(String key = "");
@@ -113,7 +113,7 @@ Value HeapGraphEdge.toJSON(String key = "");
 
 --------------------------
 ### valueOf
-** 返回对象本身的数值 **
+**返回对象本身的数值**
 
 ```JavaScript
 Value HeapGraphEdge.valueOf();

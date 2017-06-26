@@ -26,7 +26,7 @@ Message -> WebSocketMessage [dir=back]
 ## 构造函数
         
 ### Message
-** 消息对象构造函数 **
+**消息对象构造函数**
 
 ```JavaScript
 new Message();
@@ -35,7 +35,7 @@ new Message();
 ## 常量
         
 ### TEXT
-** 指定消息类型 1，代表一个文本类型 **
+**指定消息类型 1，代表一个文本类型**
 
 ```JavaScript
 const Message.TEXT = 1;
@@ -43,7 +43,7 @@ const Message.TEXT = 1;
 
 --------------------------
 ### BINARY
-** 指定消息类型 2，代表一个二进制类型 **
+**指定消息类型 2，代表一个二进制类型**
 
 ```JavaScript
 const Message.BINARY = 2;
@@ -52,7 +52,7 @@ const Message.BINARY = 2;
 ## 成员属性
         
 ### value
-** String, 消息的基本内容 **
+**String, 消息的基本内容**
 
 ```JavaScript
 String Message.value;
@@ -60,7 +60,7 @@ String Message.value;
 
 --------------------------
 ### params
-** [List](List.md), 消息的基本参数 **
+**[List](List.md), 消息的基本参数**
 
 ```JavaScript
 List Message.params;
@@ -68,7 +68,7 @@ List Message.params;
 
 --------------------------
 ### type
-** Integer, 消息类型 **
+**Integer, 消息类型**
 
 ```JavaScript
 Integer Message.type;
@@ -76,7 +76,7 @@ Integer Message.type;
 
 --------------------------
 ### data
-** Value, 查询消息的数据 **
+**Value, 查询消息的数据**
 
 ```JavaScript
 readonly Value Message.data;
@@ -84,7 +84,7 @@ readonly Value Message.data;
 
 --------------------------
 ### body
-** [SeekableStream](SeekableStream.md), 包含消息数据部分的流对象 **
+**[SeekableStream](SeekableStream.md), 包含消息数据部分的流对象**
 
 ```JavaScript
 SeekableStream Message.body;
@@ -92,7 +92,7 @@ SeekableStream Message.body;
 
 --------------------------
 ### length
-** Long, 消息数据部分的长度 **
+**Long, 消息数据部分的长度**
 
 ```JavaScript
 readonly Long Message.length;
@@ -100,7 +100,7 @@ readonly Long Message.length;
 
 --------------------------
 ### stream
-** [Stream](Stream.md), 查询消息 readFrom 时的流对象 **
+**[Stream](Stream.md), 查询消息 readFrom 时的流对象**
 
 ```JavaScript
 readonly Stream Message.stream;
@@ -108,7 +108,7 @@ readonly Stream Message.stream;
 
 --------------------------
 ### response
-** Message, 获取响应消息对象 **
+**Message, 获取响应消息对象**
 
 ```JavaScript
 readonly Message Message.response;
@@ -116,7 +116,7 @@ readonly Message Message.response;
 
 --------------------------
 ### lastError
-** String, 查询和设置消息处理的最后错误 **
+**String, 查询和设置消息处理的最后错误**
 
 ```JavaScript
 String Message.lastError;
@@ -125,7 +125,7 @@ String Message.lastError;
 ## 成员函数
         
 ### read
-** 从流内读取指定大小的数据，此方法为 body 相应方法的别名 **
+**从流内读取指定大小的数据，此方法为 body 相应方法的别名**
 
 ```JavaScript
 Buffer Message.read(Integer bytes = -1) async;
@@ -139,7 +139,7 @@ Buffer Message.read(Integer bytes = -1) async;
 
 --------------------------
 ### readAll
-** 从流内读取剩余的全部数据，此方法为 body 相应方法的别名 **
+**从流内读取剩余的全部数据，此方法为 body 相应方法的别名**
 
 ```JavaScript
 Buffer Message.readAll() async;
@@ -150,7 +150,7 @@ Buffer Message.readAll() async;
 
 --------------------------
 ### write
-** 写入给定的数据，此方法为 body 相应方法的别名 **
+**写入给定的数据，此方法为 body 相应方法的别名**
 
 ```JavaScript
 Message.write(Buffer data) async;
@@ -161,7 +161,7 @@ Message.write(Buffer data) async;
 
 --------------------------
 ### end
-** 设置当前消息处理结束，[Chain](Chain.md) 处理器不再继续后面的事务 **
+**设置当前消息处理结束，[Chain](Chain.md) 处理器不再继续后面的事务**
 
 ```JavaScript
 Message.end();
@@ -169,7 +169,7 @@ Message.end();
 
 --------------------------
 ### isEnded
-** 查询当前消息是否结束 **
+**查询当前消息是否结束**
 
 ```JavaScript
 Boolean Message.isEnded();
@@ -180,7 +180,7 @@ Boolean Message.isEnded();
 
 --------------------------
 ### clear
-** 清除消息的内容 **
+**清除消息的内容**
 
 ```JavaScript
 Message.clear();
@@ -188,7 +188,7 @@ Message.clear();
 
 --------------------------
 ### sendTo
-** 发送格式化消息到给定的流对象 **
+**发送格式化消息到给定的流对象**
 
 ```JavaScript
 Message.sendTo(Stream stm) async;
@@ -199,7 +199,7 @@ Message.sendTo(Stream stm) async;
 
 --------------------------
 ### readFrom
-** 从给定的缓存流对象中读取格式化消息，并解析填充对象 **
+**从给定的缓存流对象中读取格式化消息，并解析填充对象**
 
 ```JavaScript
 Message.readFrom(Stream stm) async;
@@ -210,7 +210,7 @@ Message.readFrom(Stream stm) async;
 
 --------------------------
 ### dispose
-** 强制回收对象，调用此方法后，对象资源将立即释放 **
+**强制回收对象，调用此方法后，对象资源将立即释放**
 
 ```JavaScript
 Message.dispose();
@@ -218,7 +218,7 @@ Message.dispose();
 
 --------------------------
 ### equals
-** 比较当前对象与给定的对象是否相等 **
+**比较当前对象与给定的对象是否相等**
 
 ```JavaScript
 Boolean Message.equals(object expected);
@@ -232,7 +232,7 @@ Boolean Message.equals(object expected);
 
 --------------------------
 ### toString
-** 返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现 **
+**返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现**
 
 ```JavaScript
 String Message.toString();
@@ -243,7 +243,7 @@ String Message.toString();
 
 --------------------------
 ### toJSON
-** 返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合 **
+**返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合**
 
 ```JavaScript
 Value Message.toJSON(String key = "");
@@ -257,7 +257,7 @@ Value Message.toJSON(String key = "");
 
 --------------------------
 ### valueOf
-** 返回对象本身的数值 **
+**返回对象本身的数值**
 
 ```JavaScript
 Value Message.valueOf();

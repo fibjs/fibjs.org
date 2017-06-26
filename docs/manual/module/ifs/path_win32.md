@@ -10,7 +10,7 @@ var path = require('path').win32;
 ## 静态函数
         
 ### normalize
-** 标准化路径，处理路径中父目录等信息 **
+**标准化路径，处理路径中父目录等信息**
 
 ```JavaScript
 static String path_win32.normalize(String path);
@@ -24,7 +24,7 @@ static String path_win32.normalize(String path);
 
 --------------------------
 ### basename
-** 查询路径中的文件名称，若指定扩展名，则自动取消匹配的扩展名 **
+**查询路径中的文件名称，若指定扩展名，则自动取消匹配的扩展名**
 
 ```JavaScript
 static String path_win32.basename(String path,
@@ -40,7 +40,7 @@ static String path_win32.basename(String path,
 
 --------------------------
 ### extname
-** 查询路径中的文件扩展名 **
+**查询路径中的文件扩展名**
 
 ```JavaScript
 static String path_win32.extname(String path);
@@ -54,7 +54,7 @@ static String path_win32.extname(String path);
 
 --------------------------
 ### dirname
-** 查询路径中的目录路径 **
+**查询路径中的目录路径**
 
 ```JavaScript
 static String path_win32.dirname(String path);
@@ -68,7 +68,7 @@ static String path_win32.dirname(String path);
 
 --------------------------
 ### fullpath
-** 转换给定路径为全路径 **
+**转换给定路径为全路径**
 
 ```JavaScript
 static String path_win32.fullpath(String path);
@@ -82,7 +82,7 @@ static String path_win32.fullpath(String path);
 
 --------------------------
 ### isAbsolute
-** 识别给定的路径是否是绝对路径 **
+**识别给定的路径是否是绝对路径**
 
 ```JavaScript
 static Boolean path_win32.isAbsolute(String path);
@@ -96,7 +96,7 @@ static Boolean path_win32.isAbsolute(String path);
 
 --------------------------
 ### join
-** 合并一系列路径成为一个单一路径 **
+**合并一系列路径成为一个单一路径**
 
 ```JavaScript
 static String path_win32.join(...);
@@ -110,7 +110,7 @@ static String path_win32.join(...);
 
 --------------------------
 ### resolve
-** 合并一系列路径成为一个绝对路径 **
+**合并一系列路径成为一个绝对路径**
 
 ```JavaScript
 static String path_win32.resolve(...);
@@ -125,7 +125,7 @@ static String path_win32.resolve(...);
 ## 静态属性
         
 ### sep
-** String, 查询当前操作系统的路径分割字符，posix 返回 '/', windows 返回  '\\' **
+**String, 查询当前操作系统的路径分割字符，posix 返回 '/', windows 返回  '\\'**
 
 ```JavaScript
 static readonly String path_win32.sep;
@@ -133,7 +133,7 @@ static readonly String path_win32.sep;
 
 --------------------------
 ### delimiter
-** String, 查询当前操作系统的多路径组合字符，posix 返回 ':', windows 返回  ';' **
+**String, 查询当前操作系统的多路径组合字符，posix 返回 ':', windows 返回  ';'**
 
 ```JavaScript
 static readonly String path_win32.delimiter;
@@ -141,7 +141,7 @@ static readonly String path_win32.delimiter;
 
 --------------------------
 ### posix
-** Object, posix 实现，参见 [path_posix](path_posix.md) **
+**Object, posix 实现，参见 [path_posix](path_posix.md)**
 
 ```JavaScript
 static readonly Object path_win32.posix;
@@ -149,7 +149,7 @@ static readonly Object path_win32.posix;
 
 --------------------------
 ### win32
-** Object, windows 实现，参见 path_win32 **
+**Object, windows 实现，参见 path_win32**
 
 ```JavaScript
 static readonly Object path_win32.win32;

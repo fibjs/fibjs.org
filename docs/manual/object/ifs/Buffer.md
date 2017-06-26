@@ -17,7 +17,7 @@ object -> Buffer [dir=back]
 ## 构造函数
         
 ### Buffer
-** 缓存对象构造函数 **
+**缓存对象构造函数**
 
 ```JavaScript
 new Buffer(Array datas);
@@ -27,7 +27,7 @@ new Buffer(Array datas);
 * datas: Array, 初始化数据数组
 
 --------------------------
-** 缓存对象构造函数 **
+**缓存对象构造函数**
 
 ```JavaScript
 new Buffer(ArrayBuffer datas);
@@ -37,7 +37,7 @@ new Buffer(ArrayBuffer datas);
 * datas: ArrayBuffer, 初始化数据数组
 
 --------------------------
-** 缓存对象构造函数 **
+**缓存对象构造函数**
 
 ```JavaScript
 new Buffer(TypedArray datas);
@@ -47,7 +47,7 @@ new Buffer(TypedArray datas);
 * datas: TypedArray, 初始化数据数组
 
 --------------------------
-** 缓存对象构造函数 **
+**缓存对象构造函数**
 
 ```JavaScript
 new Buffer(Buffer buffer);
@@ -57,7 +57,7 @@ new Buffer(Buffer buffer);
 * buffer: Buffer, 初始化Buffer对象
 
 --------------------------
-** 缓存对象构造函数 **
+**缓存对象构造函数**
 
 ```JavaScript
 new Buffer(String str,
@@ -69,7 +69,7 @@ new Buffer(String str,
 * codec: String, 指定编码格式，允许值为："[hex](../../module/ifs/hex.md)", "[base64](../../module/ifs/base64.md)", "utf8", 或者系统支持的字符集
 
 --------------------------
-** 缓存对象构造函数 **
+**缓存对象构造函数**
 
 ```JavaScript
 new Buffer(Integer size = 0);
@@ -80,7 +80,7 @@ new Buffer(Integer size = 0);
 
 ## 下标操作
         
-** 缓存对象可使用下标直接访问二进制数据 **
+**缓存对象可使用下标直接访问二进制数据**
 
 ```JavaScript
 Integer Buffer[];
@@ -89,7 +89,7 @@ Integer Buffer[];
 ## 静态函数
         
 ### isBuffer
-** 检测给定的变量是否是 Buffer 对象 **
+**检测给定的变量是否是 Buffer 对象**
 
 ```JavaScript
 static Boolean Buffer.isBuffer(Value v);
@@ -103,7 +103,7 @@ static Boolean Buffer.isBuffer(Value v);
 
 --------------------------
 ### concat
-** 拼接多个缓存区中的数据 **
+**拼接多个缓存区中的数据**
 
 ```JavaScript
 static Buffer Buffer.concat(Array buflist,
@@ -120,7 +120,7 @@ static Buffer Buffer.concat(Array buflist,
 ## 成员属性
         
 ### length
-** Integer, 获取缓存对象的尺寸 **
+**Integer, 获取缓存对象的尺寸**
 
 ```JavaScript
 readonly Integer Buffer.length;
@@ -129,7 +129,7 @@ readonly Integer Buffer.length;
 ## 成员函数
         
 ### resize
-** 修改缓存对象尺寸 **
+**修改缓存对象尺寸**
 
 ```JavaScript
 Buffer.resize(Integer sz);
@@ -140,7 +140,7 @@ Buffer.resize(Integer sz);
 
 --------------------------
 ### append
-** 在缓存对象尾部写入一组数据 **
+**在缓存对象尾部写入一组数据**
 
 ```JavaScript
 Buffer.append(Array datas);
@@ -150,7 +150,7 @@ Buffer.append(Array datas);
 * datas: Array, 初始化数据数组
 
 --------------------------
-** 在缓存对象尾部写入一组数据 **
+**在缓存对象尾部写入一组数据**
 
 ```JavaScript
 Buffer.append(TypedArray datas);
@@ -160,7 +160,7 @@ Buffer.append(TypedArray datas);
 * datas: TypedArray, 初始化数据数组
 
 --------------------------
-** 在缓存对象尾部写入一组数据 **
+**在缓存对象尾部写入一组数据**
 
 ```JavaScript
 Buffer.append(ArrayBuffer datas);
@@ -170,7 +170,7 @@ Buffer.append(ArrayBuffer datas);
 * datas: ArrayBuffer, 初始化数据数组
 
 --------------------------
-** 在缓存对象尾部写入一组二进制数据 **
+**在缓存对象尾部写入一组二进制数据**
 
 ```JavaScript
 Buffer.append(Buffer data);
@@ -180,7 +180,7 @@ Buffer.append(Buffer data);
 * data: Buffer, 初始化二进制数据
 
 --------------------------
-** 在缓存对象尾部写入字符串，字符串将以 utf-8 格式写入 **
+**在缓存对象尾部写入字符串，字符串将以 utf-8 格式写入**
 
 ```JavaScript
 Buffer.append(String str,
@@ -193,7 +193,7 @@ Buffer.append(String str,
 
 --------------------------
 ### write
-** 向缓存对象写入指定字符串，字符串默认为utf-8，越界时只写入部分数据 **
+**向缓存对象写入指定字符串，字符串默认为utf-8，越界时只写入部分数据**
 
 ```JavaScript
 Integer Buffer.write(String str,
@@ -212,7 +212,7 @@ Integer Buffer.write(String str,
 * Integer, 写入的数据字节长度
 
 --------------------------
-** 向缓存对象写入指定字符串，字符串默认为utf-8，越界时只写入部分数据 **
+**向缓存对象写入指定字符串，字符串默认为utf-8，越界时只写入部分数据**
 
 ```JavaScript
 Integer Buffer.write(String str,
@@ -229,7 +229,7 @@ Integer Buffer.write(String str,
 * Integer, 写入的数据字节长度
 
 --------------------------
-** 向缓存对象写入指定字符串，字符串默认为utf-8，越界时只写入部分数据 **
+**向缓存对象写入指定字符串，字符串默认为utf-8，越界时只写入部分数据**
 
 ```JavaScript
 Integer Buffer.write(String str,
@@ -245,7 +245,7 @@ Integer Buffer.write(String str,
 
 --------------------------
 ### fill
-** 为 Buffer 对象填充指定内容数据 **
+**为 Buffer 对象填充指定内容数据**
 
 ```JavaScript
 Buffer Buffer.fill(Integer v,
@@ -262,7 +262,7 @@ Buffer Buffer.fill(Integer v,
 * Buffer, 返回当前 Buffer 对象
 
 --------------------------
-** 为 Buffer 对象填充指定内容数据 **
+**为 Buffer 对象填充指定内容数据**
 
 ```JavaScript
 Buffer Buffer.fill(Buffer v,
@@ -279,7 +279,7 @@ Buffer Buffer.fill(Buffer v,
 * Buffer, 返回当前 Buffer 对象
 
 --------------------------
-** 为 Buffer 对象填充指定内容数据 **
+**为 Buffer 对象填充指定内容数据**
 
 ```JavaScript
 Buffer Buffer.fill(String v,
@@ -297,7 +297,7 @@ Buffer Buffer.fill(String v,
 
 --------------------------
 ### indexOf
-** 返回某个指定数据在 Buffer 中首次出现的位置 **
+**返回某个指定数据在 Buffer 中首次出现的位置**
 
 ```JavaScript
 Integer Buffer.indexOf(Integer v,
@@ -312,7 +312,7 @@ Integer Buffer.indexOf(Integer v,
 * Integer, 返回查找到的位置，未找到返回 -1
 
 --------------------------
-** 返回某个指定数据在 Buffer 中首次出现的位置 **
+**返回某个指定数据在 Buffer 中首次出现的位置**
 
 ```JavaScript
 Integer Buffer.indexOf(Buffer v,
@@ -327,7 +327,7 @@ Integer Buffer.indexOf(Buffer v,
 * Integer, 返回查找到的位置，未找到返回 -1
 
 --------------------------
-** 返回某个指定数据在 Buffer 中首次出现的位置 **
+**返回某个指定数据在 Buffer 中首次出现的位置**
 
 ```JavaScript
 Integer Buffer.indexOf(String v,
@@ -343,7 +343,7 @@ Integer Buffer.indexOf(String v,
 
 --------------------------
 ### compare
-** 比较缓存区的内容 **
+**比较缓存区的内容**
 
 ```JavaScript
 Integer Buffer.compare(Buffer buf);
@@ -357,7 +357,7 @@ Integer Buffer.compare(Buffer buf);
 
 --------------------------
 ### copy
-** 从源缓存对象区域拷贝数据到目标缓存对象区域 **
+**从源缓存对象区域拷贝数据到目标缓存对象区域**
 
 ```JavaScript
 Integer Buffer.copy(Buffer targetBuffer,
@@ -377,7 +377,7 @@ Integer Buffer.copy(Buffer targetBuffer,
 
 --------------------------
 ### readUInt8
-** 从缓存对象读取一个 8 位无符号整型数值 **
+**从缓存对象读取一个 8 位无符号整型数值**
 
 ```JavaScript
 Integer Buffer.readUInt8(Integer offset = 0,
@@ -393,7 +393,7 @@ Integer Buffer.readUInt8(Integer offset = 0,
 
 --------------------------
 ### readUInt16LE
-** 从缓存对象读取一个 16 位无符号整型数值，以低字节序的存储方式 **
+**从缓存对象读取一个 16 位无符号整型数值，以低字节序的存储方式**
 
 ```JavaScript
 Integer Buffer.readUInt16LE(Integer offset = 0,
@@ -409,7 +409,7 @@ Integer Buffer.readUInt16LE(Integer offset = 0,
 
 --------------------------
 ### readUInt16BE
-** 从缓存对象读取一个 16 位无符号整型数值，以高字节序的存储方式 **
+**从缓存对象读取一个 16 位无符号整型数值，以高字节序的存储方式**
 
 ```JavaScript
 Integer Buffer.readUInt16BE(Integer offset = 0,
@@ -425,7 +425,7 @@ Integer Buffer.readUInt16BE(Integer offset = 0,
 
 --------------------------
 ### readUInt32LE
-** 从缓存对象读取一个 32 位无符号整型数值，以低字节序的存储方式 **
+**从缓存对象读取一个 32 位无符号整型数值，以低字节序的存储方式**
 
 ```JavaScript
 Long Buffer.readUInt32LE(Integer offset = 0,
@@ -441,7 +441,7 @@ Long Buffer.readUInt32LE(Integer offset = 0,
 
 --------------------------
 ### readUInt32BE
-** 从缓存对象读取一个 32 位无符号整型数值，以高字节序的存储方式 **
+**从缓存对象读取一个 32 位无符号整型数值，以高字节序的存储方式**
 
 ```JavaScript
 Long Buffer.readUInt32BE(Integer offset = 0,
@@ -457,7 +457,7 @@ Long Buffer.readUInt32BE(Integer offset = 0,
 
 --------------------------
 ### readUIntLE
-** 从缓存对象读取一个无符号整型数值，最大支持 48 位，以低字节序的存储方式 **
+**从缓存对象读取一个无符号整型数值，最大支持 48 位，以低字节序的存储方式**
 
 ```JavaScript
 Long Buffer.readUIntLE(Integer offset = 0,
@@ -473,7 +473,7 @@ Long Buffer.readUIntLE(Integer offset = 0,
 
 --------------------------
 ### readUIntBE
-** 从缓存对象读取一个无符号整型数值，最大支持 48 位，以高字节序的存储方式 **
+**从缓存对象读取一个无符号整型数值，最大支持 48 位，以高字节序的存储方式**
 
 ```JavaScript
 Long Buffer.readUIntBE(Integer offset = 0,
@@ -489,7 +489,7 @@ Long Buffer.readUIntBE(Integer offset = 0,
 
 --------------------------
 ### readInt8
-** 从缓存对象读取一个 8 位整型数值 **
+**从缓存对象读取一个 8 位整型数值**
 
 ```JavaScript
 Integer Buffer.readInt8(Integer offset = 0,
@@ -505,7 +505,7 @@ Integer Buffer.readInt8(Integer offset = 0,
 
 --------------------------
 ### readInt16LE
-** 从缓存对象读取一个 16 位整型数值，以低字节序的存储方式 **
+**从缓存对象读取一个 16 位整型数值，以低字节序的存储方式**
 
 ```JavaScript
 Integer Buffer.readInt16LE(Integer offset = 0,
@@ -521,7 +521,7 @@ Integer Buffer.readInt16LE(Integer offset = 0,
 
 --------------------------
 ### readInt16BE
-** 从缓存对象读取一个 16 位整型数值，以高字节序的存储方式 **
+**从缓存对象读取一个 16 位整型数值，以高字节序的存储方式**
 
 ```JavaScript
 Integer Buffer.readInt16BE(Integer offset = 0,
@@ -537,7 +537,7 @@ Integer Buffer.readInt16BE(Integer offset = 0,
 
 --------------------------
 ### readInt32LE
-** 从缓存对象读取一个 32 位整型数值，以低字节序的存储方式 **
+**从缓存对象读取一个 32 位整型数值，以低字节序的存储方式**
 
 ```JavaScript
 Integer Buffer.readInt32LE(Integer offset = 0,
@@ -553,7 +553,7 @@ Integer Buffer.readInt32LE(Integer offset = 0,
 
 --------------------------
 ### readInt32BE
-** 从缓存对象读取一个 32 位整型数值，以高字节序的存储方式 **
+**从缓存对象读取一个 32 位整型数值，以高字节序的存储方式**
 
 ```JavaScript
 Integer Buffer.readInt32BE(Integer offset = 0,
@@ -569,7 +569,7 @@ Integer Buffer.readInt32BE(Integer offset = 0,
 
 --------------------------
 ### readIntLE
-** 从缓存对象读取一个整型数值，最大支持 48 位，以低字节序的存储方式 **
+**从缓存对象读取一个整型数值，最大支持 48 位，以低字节序的存储方式**
 
 ```JavaScript
 Long Buffer.readIntLE(Integer offset = 0,
@@ -585,7 +585,7 @@ Long Buffer.readIntLE(Integer offset = 0,
 
 --------------------------
 ### readIntBE
-** 从缓存对象读取一个整型数值，最大支持 48 位，以高字节序的存储方式 **
+**从缓存对象读取一个整型数值，最大支持 48 位，以高字节序的存储方式**
 
 ```JavaScript
 Long Buffer.readIntBE(Integer offset = 0,
@@ -601,7 +601,7 @@ Long Buffer.readIntBE(Integer offset = 0,
 
 --------------------------
 ### readInt64LE
-** 从缓存对象读取一个 64 位整型数值，以低字节序的存储方式 **
+**从缓存对象读取一个 64 位整型数值，以低字节序的存储方式**
 
 ```JavaScript
 Int64 Buffer.readInt64LE(Integer offset = 0,
@@ -617,7 +617,7 @@ Int64 Buffer.readInt64LE(Integer offset = 0,
 
 --------------------------
 ### readInt64BE
-** 从缓存对象读取一个 64 位整型数值，以高字节序的存储方式 **
+**从缓存对象读取一个 64 位整型数值，以高字节序的存储方式**
 
 ```JavaScript
 Int64 Buffer.readInt64BE(Integer offset = 0,
@@ -633,7 +633,7 @@ Int64 Buffer.readInt64BE(Integer offset = 0,
 
 --------------------------
 ### readFloatLE
-** 从缓存对象读取一个浮点数，以低字节序的存储方式 **
+**从缓存对象读取一个浮点数，以低字节序的存储方式**
 
 ```JavaScript
 Number Buffer.readFloatLE(Integer offset = 0,
@@ -649,7 +649,7 @@ Number Buffer.readFloatLE(Integer offset = 0,
 
 --------------------------
 ### readFloatBE
-** 从缓存对象读取一个浮点数，以高字节序的存储方式 **
+**从缓存对象读取一个浮点数，以高字节序的存储方式**
 
 ```JavaScript
 Number Buffer.readFloatBE(Integer offset = 0,
@@ -665,7 +665,7 @@ Number Buffer.readFloatBE(Integer offset = 0,
 
 --------------------------
 ### readDoubleLE
-** 从缓存对象读取一个双精度浮点数，以低字节序的存储方式 **
+**从缓存对象读取一个双精度浮点数，以低字节序的存储方式**
 
 ```JavaScript
 Number Buffer.readDoubleLE(Integer offset = 0,
@@ -681,7 +681,7 @@ Number Buffer.readDoubleLE(Integer offset = 0,
 
 --------------------------
 ### readDoubleBE
-** 从缓存对象读取一个双精度浮点数，以高字节序的存储方式 **
+**从缓存对象读取一个双精度浮点数，以高字节序的存储方式**
 
 ```JavaScript
 Number Buffer.readDoubleBE(Integer offset = 0,
@@ -697,7 +697,7 @@ Number Buffer.readDoubleBE(Integer offset = 0,
 
 --------------------------
 ### writeUInt8
-** 向缓存对象写入一个 8 位无符号整型数值 **
+**向缓存对象写入一个 8 位无符号整型数值**
 
 ```JavaScript
 Buffer.writeUInt8(Integer value,
@@ -712,7 +712,7 @@ Buffer.writeUInt8(Integer value,
 
 --------------------------
 ### writeUInt16LE
-** 向缓存对象写入一个 16 位无符号整型数值，以低字节序的存储方式 **
+**向缓存对象写入一个 16 位无符号整型数值，以低字节序的存储方式**
 
 ```JavaScript
 Buffer.writeUInt16LE(Integer value,
@@ -727,7 +727,7 @@ Buffer.writeUInt16LE(Integer value,
 
 --------------------------
 ### writeUInt16BE
-** 向缓存对象写入一个 16 位无符号整型数值，以高字节序的存储方式 **
+**向缓存对象写入一个 16 位无符号整型数值，以高字节序的存储方式**
 
 ```JavaScript
 Buffer.writeUInt16BE(Integer value,
@@ -742,7 +742,7 @@ Buffer.writeUInt16BE(Integer value,
 
 --------------------------
 ### writeUInt32LE
-** 向缓存对象写入一个 32 位无符号整型数值，以低字节序的存储方式 **
+**向缓存对象写入一个 32 位无符号整型数值，以低字节序的存储方式**
 
 ```JavaScript
 Buffer.writeUInt32LE(Long value,
@@ -757,7 +757,7 @@ Buffer.writeUInt32LE(Long value,
 
 --------------------------
 ### writeUInt32BE
-** 向缓存对象写入一个 32 位无符号整型数值，以高字节序的存储方式 **
+**向缓存对象写入一个 32 位无符号整型数值，以高字节序的存储方式**
 
 ```JavaScript
 Buffer.writeUInt32BE(Long value,
@@ -772,7 +772,7 @@ Buffer.writeUInt32BE(Long value,
 
 --------------------------
 ### writeUIntLE
-** 向缓存对象写入一个无符号整型数值，最大支持 48 位，以低字节序的存储方式 **
+**向缓存对象写入一个无符号整型数值，最大支持 48 位，以低字节序的存储方式**
 
 ```JavaScript
 Buffer.writeUIntLE(Long value,
@@ -787,7 +787,7 @@ Buffer.writeUIntLE(Long value,
 
 --------------------------
 ### writeUIntBE
-** 向缓存对象写入一个无符号整型数值，最大支持 48 位，以高字节序的存储方式 **
+**向缓存对象写入一个无符号整型数值，最大支持 48 位，以高字节序的存储方式**
 
 ```JavaScript
 Buffer.writeUIntBE(Long value,
@@ -802,7 +802,7 @@ Buffer.writeUIntBE(Long value,
 
 --------------------------
 ### writeInt8
-** 向缓存对象写入一个 8 位整型数值 **
+**向缓存对象写入一个 8 位整型数值**
 
 ```JavaScript
 Buffer.writeInt8(Integer value,
@@ -817,7 +817,7 @@ Buffer.writeInt8(Integer value,
 
 --------------------------
 ### writeInt16LE
-** 向缓存对象写入一个 16 位整型数值，以低字节序的存储方式 **
+**向缓存对象写入一个 16 位整型数值，以低字节序的存储方式**
 
 ```JavaScript
 Buffer.writeInt16LE(Integer value,
@@ -832,7 +832,7 @@ Buffer.writeInt16LE(Integer value,
 
 --------------------------
 ### writeInt16BE
-** 向缓存对象写入一个 16 位整型数值，以高字节序的存储方式 **
+**向缓存对象写入一个 16 位整型数值，以高字节序的存储方式**
 
 ```JavaScript
 Buffer.writeInt16BE(Integer value,
@@ -847,7 +847,7 @@ Buffer.writeInt16BE(Integer value,
 
 --------------------------
 ### writeInt32LE
-** 向缓存对象写入一个 32 位整型数值，以低字节序的存储方式 **
+**向缓存对象写入一个 32 位整型数值，以低字节序的存储方式**
 
 ```JavaScript
 Buffer.writeInt32LE(Integer value,
@@ -862,7 +862,7 @@ Buffer.writeInt32LE(Integer value,
 
 --------------------------
 ### writeInt32BE
-** 向缓存对象写入一个 32 位整型数值，以高字节序的存储方式 **
+**向缓存对象写入一个 32 位整型数值，以高字节序的存储方式**
 
 ```JavaScript
 Buffer.writeInt32BE(Integer value,
@@ -877,7 +877,7 @@ Buffer.writeInt32BE(Integer value,
 
 --------------------------
 ### writeIntLE
-** 向缓存对象写入一个整型数值，最大支持 48 位，以低字节序的存储方式 **
+**向缓存对象写入一个整型数值，最大支持 48 位，以低字节序的存储方式**
 
 ```JavaScript
 Buffer.writeIntLE(Long value,
@@ -892,7 +892,7 @@ Buffer.writeIntLE(Long value,
 
 --------------------------
 ### writeIntBE
-** 向缓存对象写入一个整型数值，最大支持 48 位，以高字节序的存储方式 **
+**向缓存对象写入一个整型数值，最大支持 48 位，以高字节序的存储方式**
 
 ```JavaScript
 Buffer.writeIntBE(Long value,
@@ -907,7 +907,7 @@ Buffer.writeIntBE(Long value,
 
 --------------------------
 ### writeInt64LE
-** 向缓存对象写入一个 64 位整型数值，以低字节序的存储方式 **
+**向缓存对象写入一个 64 位整型数值，以低字节序的存储方式**
 
 ```JavaScript
 Buffer.writeInt64LE(Int64 value,
@@ -922,7 +922,7 @@ Buffer.writeInt64LE(Int64 value,
 
 --------------------------
 ### writeInt64BE
-** 向缓存对象写入一个 64 位整型数值，以高字节序的存储方式 **
+**向缓存对象写入一个 64 位整型数值，以高字节序的存储方式**
 
 ```JavaScript
 Buffer.writeInt64BE(Int64 value,
@@ -937,7 +937,7 @@ Buffer.writeInt64BE(Int64 value,
 
 --------------------------
 ### writeFloatLE
-** 向缓存对象写入一个浮点数，以低字节序的存储方式 **
+**向缓存对象写入一个浮点数，以低字节序的存储方式**
 
 ```JavaScript
 Buffer.writeFloatLE(Number value,
@@ -952,7 +952,7 @@ Buffer.writeFloatLE(Number value,
 
 --------------------------
 ### writeFloatBE
-** 向缓存对象写入一个浮点数，以高字节序的存储方式 **
+**向缓存对象写入一个浮点数，以高字节序的存储方式**
 
 ```JavaScript
 Buffer.writeFloatBE(Number value,
@@ -967,7 +967,7 @@ Buffer.writeFloatBE(Number value,
 
 --------------------------
 ### writeDoubleLE
-** 向缓存对象写入一个双精度浮点数，以低字节序的存储方式 **
+**向缓存对象写入一个双精度浮点数，以低字节序的存储方式**
 
 ```JavaScript
 Buffer.writeDoubleLE(Number value,
@@ -982,7 +982,7 @@ Buffer.writeDoubleLE(Number value,
 
 --------------------------
 ### writeDoubleBE
-** 向缓存对象写入一个双精度浮点数，以高字节序的存储方式 **
+**向缓存对象写入一个双精度浮点数，以高字节序的存储方式**
 
 ```JavaScript
 Buffer.writeDoubleBE(Number value,
@@ -997,7 +997,7 @@ Buffer.writeDoubleBE(Number value,
 
 --------------------------
 ### slice
-** 返回一个新缓存对象，包含指定起始到缓存结尾的数据 **
+**返回一个新缓存对象，包含指定起始到缓存结尾的数据**
 
 ```JavaScript
 Buffer Buffer.slice(Integer start = 0);
@@ -1010,7 +1010,7 @@ Buffer Buffer.slice(Integer start = 0);
 * Buffer, 返回新的缓存对象
 
 --------------------------
-** 返回一个新缓存对象，包含指定范围的数据，若范围超出缓存，则只返回有效部分数据 **
+**返回一个新缓存对象，包含指定范围的数据，若范围超出缓存，则只返回有效部分数据**
 
 ```JavaScript
 Buffer Buffer.slice(Integer start,
@@ -1026,7 +1026,7 @@ Buffer Buffer.slice(Integer start,
 
 --------------------------
 ### hex
-** 使用 16 进制编码缓存对象内容 **
+**使用 16 进制编码缓存对象内容**
 
 ```JavaScript
 String Buffer.hex();
@@ -1037,7 +1037,7 @@ String Buffer.hex();
 
 --------------------------
 ### base64
-** 使用 [base64](../../module/ifs/base64.md) 编码缓存对象内容 **
+**使用 [base64](../../module/ifs/base64.md) 编码缓存对象内容**
 
 ```JavaScript
 String Buffer.base64();
@@ -1048,7 +1048,7 @@ String Buffer.base64();
 
 --------------------------
 ### toArray
-** 返回全部二进制数据的数组 **
+**返回全部二进制数据的数组**
 
 ```JavaScript
 Array Buffer.toArray();
@@ -1059,7 +1059,7 @@ Array Buffer.toArray();
 
 --------------------------
 ### toString
-** 返回二进制数据的编码字符串 **
+**返回二进制数据的编码字符串**
 
 ```JavaScript
 String Buffer.toString(String codec,
@@ -1076,7 +1076,7 @@ String Buffer.toString(String codec,
 * String, 返回对象的字符串表示
 
 --------------------------
-** 返回二进制数据的 utf8 编码字符串 **
+**返回二进制数据的 utf8 编码字符串**
 
 ```JavaScript
 String Buffer.toString();
@@ -1087,7 +1087,7 @@ String Buffer.toString();
 
 --------------------------
 ### dispose
-** 强制回收对象，调用此方法后，对象资源将立即释放 **
+**强制回收对象，调用此方法后，对象资源将立即释放**
 
 ```JavaScript
 Buffer.dispose();
@@ -1095,7 +1095,7 @@ Buffer.dispose();
 
 --------------------------
 ### equals
-** 比较当前对象与给定的对象是否相等 **
+**比较当前对象与给定的对象是否相等**
 
 ```JavaScript
 Boolean Buffer.equals(object expected);
@@ -1109,7 +1109,7 @@ Boolean Buffer.equals(object expected);
 
 --------------------------
 ### toString
-** 返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现 **
+**返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现**
 
 ```JavaScript
 String Buffer.toString();
@@ -1120,7 +1120,7 @@ String Buffer.toString();
 
 --------------------------
 ### toJSON
-** 返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合 **
+**返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合**
 
 ```JavaScript
 Value Buffer.toJSON(String key = "");
@@ -1134,7 +1134,7 @@ Value Buffer.toJSON(String key = "");
 
 --------------------------
 ### valueOf
-** 返回对象本身的数值 **
+**返回对象本身的数值**
 
 ```JavaScript
 Value Buffer.valueOf();

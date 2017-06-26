@@ -17,7 +17,7 @@ var iconv = require('iconv');
 ## 静态函数
         
 ### encode
-** 用 iconv 将文本转换为二进制数据 **
+**用 iconv 将文本转换为二进制数据**
 
 ```JavaScript
 static Buffer iconv.encode(String charset,
@@ -33,7 +33,7 @@ static Buffer iconv.encode(String charset,
 
 --------------------------
 ### decode
-** 用 iconv 将 [Buffer](../../object/ifs/Buffer.md) 内容转换为文本 **
+**用 iconv 将 [Buffer](../../object/ifs/Buffer.md) 内容转换为文本**
 
 ```JavaScript
 static String iconv.decode(String charset,

@@ -54,7 +54,7 @@ object -> Fiber [dir=back]
 ## 成员属性
         
 ### caller
-** Fiber, 查询纤程的调用纤程 **
+**Fiber, 查询纤程的调用纤程**
 
 ```JavaScript
 readonly Fiber Fiber.caller;
@@ -62,7 +62,7 @@ readonly Fiber Fiber.caller;
 
 --------------------------
 ### traceInfo
-** String, 查询纤程的调用堆栈，查询非当前纤程的堆栈需要在执行时指定参数：--trace_fiber **
+**String, 查询纤程的调用堆栈，查询非当前纤程的堆栈需要在执行时指定参数：--trace_fiber**
 
 ```JavaScript
 readonly String Fiber.traceInfo;
@@ -71,7 +71,7 @@ readonly String Fiber.traceInfo;
 ## 成员函数
         
 ### join
-** 等待纤程结束 **
+**等待纤程结束**
 
 ```JavaScript
 Fiber.join();
@@ -79,7 +79,7 @@ Fiber.join();
 
 --------------------------
 ### dispose
-** 强制回收对象，调用此方法后，对象资源将立即释放 **
+**强制回收对象，调用此方法后，对象资源将立即释放**
 
 ```JavaScript
 Fiber.dispose();
@@ -87,7 +87,7 @@ Fiber.dispose();
 
 --------------------------
 ### equals
-** 比较当前对象与给定的对象是否相等 **
+**比较当前对象与给定的对象是否相等**
 
 ```JavaScript
 Boolean Fiber.equals(object expected);
@@ -101,7 +101,7 @@ Boolean Fiber.equals(object expected);
 
 --------------------------
 ### toString
-** 返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现 **
+**返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现**
 
 ```JavaScript
 String Fiber.toString();
@@ -112,7 +112,7 @@ String Fiber.toString();
 
 --------------------------
 ### toJSON
-** 返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合 **
+**返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合**
 
 ```JavaScript
 Value Fiber.toJSON(String key = "");
@@ -126,7 +126,7 @@ Value Fiber.toJSON(String key = "");
 
 --------------------------
 ### valueOf
-** 返回对象本身的数值 **
+**返回对象本身的数值**
 
 ```JavaScript
 Value Fiber.valueOf();

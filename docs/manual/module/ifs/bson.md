@@ -17,7 +17,7 @@ var bson = require('bson');
 ## 静态函数
         
 ### encode
-** 以 bson 格式编码变量 **
+**以 bson 格式编码变量**
 
 ```JavaScript
 static Buffer bson.encode(Object data);
@@ -31,7 +31,7 @@ static Buffer bson.encode(Object data);
 
 --------------------------
 ### decode
-** 以 bson 方式解码字符串为一个变量 **
+**以 bson 方式解码字符串为一个变量**
 
 ```JavaScript
 static Object bson.decode(Buffer data);

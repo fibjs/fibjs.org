@@ -19,7 +19,7 @@ Stream -> SslSocket [dir=back]
 ## 构造函数
         
 ### SslSocket
-** SslSocket 构造函数，创建一个新的 SslSocket 对象 **
+**SslSocket 构造函数，创建一个新的 SslSocket 对象**
 
 ```JavaScript
 new SslSocket(Array certs = []);
@@ -43,7 +43,7 @@ certs 格式为：
 ```
 
 --------------------------
-** SslSocket 构造函数，创建一个新的 SslSocket 对象 **
+**SslSocket 构造函数，创建一个新的 SslSocket 对象**
 
 ```JavaScript
 new SslSocket(X509Cert crt,
@@ -57,7 +57,7 @@ new SslSocket(X509Cert crt,
 ## 成员属性
         
 ### verification
-** Integer, 设定证书验证模式，缺省为 VERIFY_REQUIRED **
+**Integer, 设定证书验证模式，缺省为 VERIFY_REQUIRED**
 
 ```JavaScript
 Integer SslSocket.verification;
@@ -65,7 +65,7 @@ Integer SslSocket.verification;
 
 --------------------------
 ### ca
-** [X509Cert](X509Cert.md), 证书链，客户端模式 connect 时自动引用 [ssl](../../module/ifs/ssl.md).ca，服务器模式 accept 生成 SslSocket 自动引用当前 SslSocket 的 ca **
+**[X509Cert](X509Cert.md), 证书链，客户端模式 connect 时自动引用 [ssl](../../module/ifs/ssl.md).ca，服务器模式 accept 生成 SslSocket 自动引用当前 SslSocket 的 ca**
 
 ```JavaScript
 readonly X509Cert SslSocket.ca;
@@ -73,7 +73,7 @@ readonly X509Cert SslSocket.ca;
 
 --------------------------
 ### peerCert
-** [X509Cert](X509Cert.md), 连接对方的证书 **
+**[X509Cert](X509Cert.md), 连接对方的证书**
 
 ```JavaScript
 readonly X509Cert SslSocket.peerCert;
@@ -81,7 +81,7 @@ readonly X509Cert SslSocket.peerCert;
 
 --------------------------
 ### stream
-** [Stream](Stream.md), 查询消息 [ssl](../../module/ifs/ssl.md) 建立时的下层流对象 **
+**[Stream](Stream.md), 查询消息 [ssl](../../module/ifs/ssl.md) 建立时的下层流对象**
 
 ```JavaScript
 readonly Stream SslSocket.stream;
@@ -90,7 +90,7 @@ readonly Stream SslSocket.stream;
 ## 成员函数
         
 ### connect
-** 在给定的连接上连接 [ssl](../../module/ifs/ssl.md) 连接，客户端模式 **
+**在给定的连接上连接 [ssl](../../module/ifs/ssl.md) 连接，客户端模式**
 
 ```JavaScript
 Integer SslSocket.connect(Stream s,
@@ -106,7 +106,7 @@ Integer SslSocket.connect(Stream s,
 
 --------------------------
 ### accept
-** 在给定的连接上接收一个 [ssl](../../module/ifs/ssl.md) 连接，并生成一个新的 SslSocket **
+**在给定的连接上接收一个 [ssl](../../module/ifs/ssl.md) 连接，并生成一个新的 SslSocket**
 
 ```JavaScript
 SslSocket SslSocket.accept(Stream s) async;
@@ -120,7 +120,7 @@ SslSocket SslSocket.accept(Stream s) async;
 
 --------------------------
 ### read
-** 从流内读取指定大小的数据 **
+**从流内读取指定大小的数据**
 
 ```JavaScript
 Buffer SslSocket.read(Integer bytes = -1) async;
@@ -134,7 +134,7 @@ Buffer SslSocket.read(Integer bytes = -1) async;
 
 --------------------------
 ### write
-** 将给定的数据写入流 **
+**将给定的数据写入流**
 
 ```JavaScript
 SslSocket.write(Buffer data) async;
@@ -145,7 +145,7 @@ SslSocket.write(Buffer data) async;
 
 --------------------------
 ### close
-** 关闭当前流对象 **
+**关闭当前流对象**
 
 ```JavaScript
 SslSocket.close() async;
@@ -153,7 +153,7 @@ SslSocket.close() async;
 
 --------------------------
 ### copyTo
-** 复制流数据到目标流中 **
+**复制流数据到目标流中**
 
 ```JavaScript
 Long SslSocket.copyTo(Stream stm,
@@ -169,7 +169,7 @@ Long SslSocket.copyTo(Stream stm,
 
 --------------------------
 ### dispose
-** 强制回收对象，调用此方法后，对象资源将立即释放 **
+**强制回收对象，调用此方法后，对象资源将立即释放**
 
 ```JavaScript
 SslSocket.dispose();
@@ -177,7 +177,7 @@ SslSocket.dispose();
 
 --------------------------
 ### equals
-** 比较当前对象与给定的对象是否相等 **
+**比较当前对象与给定的对象是否相等**
 
 ```JavaScript
 Boolean SslSocket.equals(object expected);
@@ -191,7 +191,7 @@ Boolean SslSocket.equals(object expected);
 
 --------------------------
 ### toString
-** 返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现 **
+**返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现**
 
 ```JavaScript
 String SslSocket.toString();
@@ -202,7 +202,7 @@ String SslSocket.toString();
 
 --------------------------
 ### toJSON
-** 返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合 **
+**返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合**
 
 ```JavaScript
 Value SslSocket.toJSON(String key = "");
@@ -216,7 +216,7 @@ Value SslSocket.toJSON(String key = "");
 
 --------------------------
 ### valueOf
-** 返回对象本身的数值 **
+**返回对象本身的数值**
 
 ```JavaScript
 Value SslSocket.valueOf();

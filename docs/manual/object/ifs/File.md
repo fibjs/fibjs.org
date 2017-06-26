@@ -21,7 +21,7 @@ SeekableStream -> File [dir=back]
 ## 成员属性
         
 ### name
-** String, 查询当前文件名 **
+**String, 查询当前文件名**
 
 ```JavaScript
 readonly String File.name;
@@ -29,7 +29,7 @@ readonly String File.name;
 
 --------------------------
 ### fd
-** Integer, 查询当前文件描述符 **
+**Integer, 查询当前文件描述符**
 
 ```JavaScript
 readonly Integer File.fd;
@@ -38,7 +38,7 @@ readonly Integer File.fd;
 ## 成员函数
         
 ### chmod
-** 查询当前文件的访问权限，Windows 不支持此方法 **
+**查询当前文件的访问权限，Windows 不支持此方法**
 
 ```JavaScript
 File.chmod(Integer mode) async;
@@ -49,7 +49,7 @@ File.chmod(Integer mode) async;
 
 --------------------------
 ### seek
-** 移动文件当前操作位置 **
+**移动文件当前操作位置**
 
 ```JavaScript
 File.seek(Long offset,
@@ -62,7 +62,7 @@ File.seek(Long offset,
 
 --------------------------
 ### tell
-** 查询流当前位置 **
+**查询流当前位置**
 
 ```JavaScript
 Long File.tell();
@@ -73,7 +73,7 @@ Long File.tell();
 
 --------------------------
 ### rewind
-** 移动当前位置到流开头 **
+**移动当前位置到流开头**
 
 ```JavaScript
 File.rewind();
@@ -81,7 +81,7 @@ File.rewind();
 
 --------------------------
 ### size
-** 查询流尺寸 **
+**查询流尺寸**
 
 ```JavaScript
 Long File.size();
@@ -92,7 +92,7 @@ Long File.size();
 
 --------------------------
 ### readAll
-** 从流内读取剩余的全部数据 **
+**从流内读取剩余的全部数据**
 
 ```JavaScript
 Buffer File.readAll() async;
@@ -103,7 +103,7 @@ Buffer File.readAll() async;
 
 --------------------------
 ### truncate
-** 修改文件尺寸，如果新尺寸小于原尺寸，则文件被截断 **
+**修改文件尺寸，如果新尺寸小于原尺寸，则文件被截断**
 
 ```JavaScript
 File.truncate(Long bytes) async;
@@ -114,7 +114,7 @@ File.truncate(Long bytes) async;
 
 --------------------------
 ### eof
-** 查询文件是否到结尾 **
+**查询文件是否到结尾**
 
 ```JavaScript
 Boolean File.eof();
@@ -125,7 +125,7 @@ Boolean File.eof();
 
 --------------------------
 ### flush
-** 将文件缓冲区内容写入物理设备 **
+**将文件缓冲区内容写入物理设备**
 
 ```JavaScript
 File.flush() async;
@@ -133,7 +133,7 @@ File.flush() async;
 
 --------------------------
 ### stat
-** 查询当前文件的基础信息 **
+**查询当前文件的基础信息**
 
 ```JavaScript
 Stat File.stat() async;
@@ -144,7 +144,7 @@ Stat File.stat() async;
 
 --------------------------
 ### read
-** 从流内读取指定大小的数据 **
+**从流内读取指定大小的数据**
 
 ```JavaScript
 Buffer File.read(Integer bytes = -1) async;
@@ -158,7 +158,7 @@ Buffer File.read(Integer bytes = -1) async;
 
 --------------------------
 ### write
-** 将给定的数据写入流 **
+**将给定的数据写入流**
 
 ```JavaScript
 File.write(Buffer data) async;
@@ -169,7 +169,7 @@ File.write(Buffer data) async;
 
 --------------------------
 ### close
-** 关闭当前流对象 **
+**关闭当前流对象**
 
 ```JavaScript
 File.close() async;
@@ -177,7 +177,7 @@ File.close() async;
 
 --------------------------
 ### copyTo
-** 复制流数据到目标流中 **
+**复制流数据到目标流中**
 
 ```JavaScript
 Long File.copyTo(Stream stm,
@@ -193,7 +193,7 @@ Long File.copyTo(Stream stm,
 
 --------------------------
 ### dispose
-** 强制回收对象，调用此方法后，对象资源将立即释放 **
+**强制回收对象，调用此方法后，对象资源将立即释放**
 
 ```JavaScript
 File.dispose();
@@ -201,7 +201,7 @@ File.dispose();
 
 --------------------------
 ### equals
-** 比较当前对象与给定的对象是否相等 **
+**比较当前对象与给定的对象是否相等**
 
 ```JavaScript
 Boolean File.equals(object expected);
@@ -215,7 +215,7 @@ Boolean File.equals(object expected);
 
 --------------------------
 ### toString
-** 返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现 **
+**返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现**
 
 ```JavaScript
 String File.toString();
@@ -226,7 +226,7 @@ String File.toString();
 
 --------------------------
 ### toJSON
-** 返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合 **
+**返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合**
 
 ```JavaScript
 Value File.toJSON(String key = "");
@@ -240,7 +240,7 @@ Value File.toJSON(String key = "");
 
 --------------------------
 ### valueOf
-** 返回对象本身的数值 **
+**返回对象本身的数值**
 
 ```JavaScript
 Value File.valueOf();

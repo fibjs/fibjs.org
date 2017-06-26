@@ -4,7 +4,7 @@ timers 模块
 ## 静态函数
         
 ### clearInterval
-** 清除指定的定时器 **
+**清除指定的定时器**
 
 ```JavaScript
 static timers.clearInterval(Timer t);
@@ -15,7 +15,7 @@ static timers.clearInterval(Timer t);
 
 --------------------------
 ### clearTimeout
-** 清除指定的定时器 **
+**清除指定的定时器**
 
 ```JavaScript
 static timers.clearTimeout(Timer t);
@@ -26,7 +26,7 @@ static timers.clearTimeout(Timer t);
 
 --------------------------
 ### clearImmediate
-** 清除指定的定时器 **
+**清除指定的定时器**
 
 ```JavaScript
 static timers.clearImmediate(Timer t);
@@ -37,7 +37,7 @@ static timers.clearImmediate(Timer t);
 
 --------------------------
 ### setInterval
-** 每间隔指定的时间后调用函数 **
+**每间隔指定的时间后调用函数**
 
 ```JavaScript
 static Timer timers.setInterval(Function callback,
@@ -53,7 +53,7 @@ static Timer timers.setInterval(Function callback,
 
 --------------------------
 ### setTimeout
-** 在指定的时间后调用函数 **
+**在指定的时间后调用函数**
 
 ```JavaScript
 static Timer timers.setTimeout(Function callback,
@@ -69,7 +69,7 @@ static Timer timers.setTimeout(Function callback,
 
 --------------------------
 ### setImmediate
-** 下一个空闲时间立即执行回调函数 **
+**下一个空闲时间立即执行回调函数**
 
 ```JavaScript
 static Timer timers.setImmediate(Function callback);

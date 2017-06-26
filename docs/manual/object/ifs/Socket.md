@@ -19,7 +19,7 @@ Stream -> Socket [dir=back]
 ## 构造函数
         
 ### Socket
-** Socket 构造函数，创建一个新的 Socket 对象 **
+**Socket 构造函数，创建一个新的 Socket 对象**
 
 ```JavaScript
 new Socket(Integer family = net.AF_INET,
@@ -33,7 +33,7 @@ new Socket(Integer family = net.AF_INET,
 ## 成员属性
         
 ### family
-** Integer, 查询当前 Socket 对象的地址集 **
+**Integer, 查询当前 Socket 对象的地址集**
 
 ```JavaScript
 readonly Integer Socket.family;
@@ -41,7 +41,7 @@ readonly Integer Socket.family;
 
 --------------------------
 ### type
-** Integer, 查询当前 Socket 对象的协议族 **
+**Integer, 查询当前 Socket 对象的协议族**
 
 ```JavaScript
 readonly Integer Socket.type;
@@ -49,7 +49,7 @@ readonly Integer Socket.type;
 
 --------------------------
 ### remoteAddress
-** String, 查询当前连接的对方地址 **
+**String, 查询当前连接的对方地址**
 
 ```JavaScript
 readonly String Socket.remoteAddress;
@@ -57,7 +57,7 @@ readonly String Socket.remoteAddress;
 
 --------------------------
 ### remotePort
-** Integer, 查询当前连接的对方端口 **
+**Integer, 查询当前连接的对方端口**
 
 ```JavaScript
 readonly Integer Socket.remotePort;
@@ -65,7 +65,7 @@ readonly Integer Socket.remotePort;
 
 --------------------------
 ### localAddress
-** String, 查询当前连接的本地地址 **
+**String, 查询当前连接的本地地址**
 
 ```JavaScript
 readonly String Socket.localAddress;
@@ -73,7 +73,7 @@ readonly String Socket.localAddress;
 
 --------------------------
 ### localPort
-** Integer, 查询当前连接的本地端口 **
+**Integer, 查询当前连接的本地端口**
 
 ```JavaScript
 readonly Integer Socket.localPort;
@@ -81,7 +81,7 @@ readonly Integer Socket.localPort;
 
 --------------------------
 ### timeout
-** Integer, 查询和设置超时时间 单位毫秒 **
+**Integer, 查询和设置超时时间 单位毫秒**
 
 ```JavaScript
 Integer Socket.timeout;
@@ -90,7 +90,7 @@ Integer Socket.timeout;
 ## 成员函数
         
 ### connect
-** 建立一个 tcp 连接 **
+**建立一个 tcp 连接**
 
 ```JavaScript
 Socket.connect(String host,
@@ -103,7 +103,7 @@ Socket.connect(String host,
 
 --------------------------
 ### bind
-** 将当前 Socket 绑定至本地所有地址的指定端口 **
+**将当前 Socket 绑定至本地所有地址的指定端口**
 
 ```JavaScript
 Socket.bind(Integer port,
@@ -115,7 +115,7 @@ Socket.bind(Integer port,
 * allowIPv4: Boolean, 指定是否接受 ipv4 连接，缺省为 true。本参数在 ipv6 时有效，并依赖于操作系统
 
 --------------------------
-** 将当前 Socket 绑定至指定地址的指定端口 **
+**将当前 Socket 绑定至指定地址的指定端口**
 
 ```JavaScript
 Socket.bind(String addr,
@@ -130,7 +130,7 @@ Socket.bind(String addr,
 
 --------------------------
 ### listen
-** 开始监听连接请求 **
+**开始监听连接请求**
 
 ```JavaScript
 Socket.listen(Integer backlog = 120) async;
@@ -141,7 +141,7 @@ Socket.listen(Integer backlog = 120) async;
 
 --------------------------
 ### accept
-** 等待并接受一个连接 **
+**等待并接受一个连接**
 
 ```JavaScript
 Socket Socket.accept() async;
@@ -152,7 +152,7 @@ Socket Socket.accept() async;
 
 --------------------------
 ### recv
-** 从连接读取指定大小的数据，不同于 read 方法，recv 并不保证读完要求的数据，而是在读取到数据后立即返回 **
+**从连接读取指定大小的数据，不同于 read 方法，recv 并不保证读完要求的数据，而是在读取到数据后立即返回**
 
 ```JavaScript
 Buffer Socket.recv(Integer bytes = -1) async;
@@ -166,7 +166,7 @@ Buffer Socket.recv(Integer bytes = -1) async;
 
 --------------------------
 ### recvfrom
-** 读取一个 UDP 包 **
+**读取一个 UDP 包**
 
 ```JavaScript
 DatagramPacket Socket.recvfrom(Integer bytes = -1) async;
@@ -180,7 +180,7 @@ DatagramPacket Socket.recvfrom(Integer bytes = -1) async;
 
 --------------------------
 ### send
-** 将给定的数据写入连接，此方法等效于 write 方法 **
+**将给定的数据写入连接，此方法等效于 write 方法**
 
 ```JavaScript
 Socket.send(Buffer data) async;
@@ -191,7 +191,7 @@ Socket.send(Buffer data) async;
 
 --------------------------
 ### sendto
-** 向给定 ip:port 发送一个 UDP 包 **
+**向给定 ip:port 发送一个 UDP 包**
 
 ```JavaScript
 Socket.sendto(Buffer data,
@@ -206,7 +206,7 @@ Socket.sendto(Buffer data,
 
 --------------------------
 ### read
-** 从流内读取指定大小的数据 **
+**从流内读取指定大小的数据**
 
 ```JavaScript
 Buffer Socket.read(Integer bytes = -1) async;
@@ -220,7 +220,7 @@ Buffer Socket.read(Integer bytes = -1) async;
 
 --------------------------
 ### write
-** 将给定的数据写入流 **
+**将给定的数据写入流**
 
 ```JavaScript
 Socket.write(Buffer data) async;
@@ -231,7 +231,7 @@ Socket.write(Buffer data) async;
 
 --------------------------
 ### close
-** 关闭当前流对象 **
+**关闭当前流对象**
 
 ```JavaScript
 Socket.close() async;
@@ -239,7 +239,7 @@ Socket.close() async;
 
 --------------------------
 ### copyTo
-** 复制流数据到目标流中 **
+**复制流数据到目标流中**
 
 ```JavaScript
 Long Socket.copyTo(Stream stm,
@@ -255,7 +255,7 @@ Long Socket.copyTo(Stream stm,
 
 --------------------------
 ### dispose
-** 强制回收对象，调用此方法后，对象资源将立即释放 **
+**强制回收对象，调用此方法后，对象资源将立即释放**
 
 ```JavaScript
 Socket.dispose();
@@ -263,7 +263,7 @@ Socket.dispose();
 
 --------------------------
 ### equals
-** 比较当前对象与给定的对象是否相等 **
+**比较当前对象与给定的对象是否相等**
 
 ```JavaScript
 Boolean Socket.equals(object expected);
@@ -277,7 +277,7 @@ Boolean Socket.equals(object expected);
 
 --------------------------
 ### toString
-** 返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现 **
+**返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现**
 
 ```JavaScript
 String Socket.toString();
@@ -288,7 +288,7 @@ String Socket.toString();
 
 --------------------------
 ### toJSON
-** 返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合 **
+**返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合**
 
 ```JavaScript
 Value Socket.toJSON(String key = "");
@@ -302,7 +302,7 @@ Value Socket.toJSON(String key = "");
 
 --------------------------
 ### valueOf
-** 返回对象本身的数值 **
+**返回对象本身的数值**
 
 ```JavaScript
 Value Socket.valueOf();

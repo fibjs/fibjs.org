@@ -10,7 +10,7 @@ var zlib = require('zlib');
 ## 静态函数
         
 ### deflate
-** 使用 deflate 算法压缩数据(zlib格式) **
+**使用 deflate 算法压缩数据(zlib格式)**
 
 ```JavaScript
 static Buffer zlib.deflate(Buffer data,
@@ -26,7 +26,7 @@ static Buffer zlib.deflate(Buffer data,
 
 --------------------------
 ### deflateTo
-** 使用 deflate 算法压缩数据到流对象中(zlib格式) **
+**使用 deflate 算法压缩数据到流对象中(zlib格式)**
 
 ```JavaScript
 static zlib.deflateTo(Buffer data,
@@ -40,7 +40,7 @@ static zlib.deflateTo(Buffer data,
 * level: Integer, 指定压缩级别，缺省为 DEFAULT_COMPRESSION
 
 --------------------------
-** 使用 deflate 算法压缩源流中的数据到流对象中(zlib格式) **
+**使用 deflate 算法压缩源流中的数据到流对象中(zlib格式)**
 
 ```JavaScript
 static zlib.deflateTo(Stream src,
@@ -55,7 +55,7 @@ static zlib.deflateTo(Stream src,
 
 --------------------------
 ### inflate
-** 解压缩 deflate 算法压缩的数据(zlib格式) **
+**解压缩 deflate 算法压缩的数据(zlib格式)**
 
 ```JavaScript
 static Buffer zlib.inflate(Buffer data) async;
@@ -69,7 +69,7 @@ static Buffer zlib.inflate(Buffer data) async;
 
 --------------------------
 ### inflateTo
-** 解压缩 deflate 算法压缩的数据到流对象中(zlib格式) **
+**解压缩 deflate 算法压缩的数据到流对象中(zlib格式)**
 
 ```JavaScript
 static zlib.inflateTo(Buffer data,
@@ -81,7 +81,7 @@ static zlib.inflateTo(Buffer data,
 * stm: [Stream](../../object/ifs/Stream.md), 指定存储解压缩数据的流
 
 --------------------------
-** 解压缩源流中 deflate 算法压缩的数据到流对象中(zlib格式) **
+**解压缩源流中 deflate 算法压缩的数据到流对象中(zlib格式)**
 
 ```JavaScript
 static zlib.inflateTo(Stream src,
@@ -94,7 +94,7 @@ static zlib.inflateTo(Stream src,
 
 --------------------------
 ### gzip
-** 使用 gzip 算法压缩数据 **
+**使用 gzip 算法压缩数据**
 
 ```JavaScript
 static Buffer zlib.gzip(Buffer data) async;
@@ -108,7 +108,7 @@ static Buffer zlib.gzip(Buffer data) async;
 
 --------------------------
 ### gzipTo
-** 使用 gzip 算法压缩数据到流对象中 **
+**使用 gzip 算法压缩数据到流对象中**
 
 ```JavaScript
 static zlib.gzipTo(Buffer data,
@@ -120,7 +120,7 @@ static zlib.gzipTo(Buffer data,
 * stm: [Stream](../../object/ifs/Stream.md), 指定存储压缩数据的流
 
 --------------------------
-** 使用 gzip 算法压缩源流中的数据到流对象中 **
+**使用 gzip 算法压缩源流中的数据到流对象中**
 
 ```JavaScript
 static zlib.gzipTo(Stream src,
@@ -133,7 +133,7 @@ static zlib.gzipTo(Stream src,
 
 --------------------------
 ### gunzip
-** 解压缩 gzip 算法压缩的数据 **
+**解压缩 gzip 算法压缩的数据**
 
 ```JavaScript
 static Buffer zlib.gunzip(Buffer data) async;
@@ -147,7 +147,7 @@ static Buffer zlib.gunzip(Buffer data) async;
 
 --------------------------
 ### gunzipTo
-** 解压缩 gzip 算法压缩的数据到流对象中 **
+**解压缩 gzip 算法压缩的数据到流对象中**
 
 ```JavaScript
 static zlib.gunzipTo(Buffer data,
@@ -159,7 +159,7 @@ static zlib.gunzipTo(Buffer data,
 * stm: [Stream](../../object/ifs/Stream.md), 指定存储解压缩数据的流
 
 --------------------------
-** 解压缩源流中 gzip 算法压缩的数据到流对象中 **
+**解压缩源流中 gzip 算法压缩的数据到流对象中**
 
 ```JavaScript
 static zlib.gunzipTo(Stream src,
@@ -172,7 +172,7 @@ static zlib.gunzipTo(Stream src,
 
 --------------------------
 ### deflateRaw
-** 使用 deflate 算法压缩数据(deflateRaw) **
+**使用 deflate 算法压缩数据(deflateRaw)**
 
 ```JavaScript
 static Buffer zlib.deflateRaw(Buffer data,
@@ -188,7 +188,7 @@ static Buffer zlib.deflateRaw(Buffer data,
 
 --------------------------
 ### deflateRawTo
-** 使用 deflate 算法压缩数据到流对象中(deflateRaw) **
+**使用 deflate 算法压缩数据到流对象中(deflateRaw)**
 
 ```JavaScript
 static zlib.deflateRawTo(Buffer data,
@@ -202,7 +202,7 @@ static zlib.deflateRawTo(Buffer data,
 * level: Integer, 指定压缩级别，缺省为 DEFAULT_COMPRESSION
 
 --------------------------
-** 使用 deflate 算法压缩源流中的数据到流对象中(deflateRaw) **
+**使用 deflate 算法压缩源流中的数据到流对象中(deflateRaw)**
 
 ```JavaScript
 static zlib.deflateRawTo(Stream src,
@@ -217,7 +217,7 @@ static zlib.deflateRawTo(Stream src,
 
 --------------------------
 ### inflateRaw
-** 解压缩 deflate 算法压缩的数据(inflateRaw) **
+**解压缩 deflate 算法压缩的数据(inflateRaw)**
 
 ```JavaScript
 static Buffer zlib.inflateRaw(Buffer data) async;
@@ -231,7 +231,7 @@ static Buffer zlib.inflateRaw(Buffer data) async;
 
 --------------------------
 ### inflateRawTo
-** 解压缩 deflate 算法压缩的数据到流对象中(inflateRaw) **
+**解压缩 deflate 算法压缩的数据到流对象中(inflateRaw)**
 
 ```JavaScript
 static zlib.inflateRawTo(Buffer data,
@@ -243,7 +243,7 @@ static zlib.inflateRawTo(Buffer data,
 * stm: [Stream](../../object/ifs/Stream.md), 指定存储解压缩数据的流
 
 --------------------------
-** 解压缩源流中 deflate 算法压缩的数据到流对象中(inflateRaw) **
+**解压缩源流中 deflate 算法压缩的数据到流对象中(inflateRaw)**
 
 ```JavaScript
 static zlib.inflateRawTo(Stream src,
@@ -257,7 +257,7 @@ static zlib.inflateRawTo(Stream src,
 ## 常量
         
 ### NO_COMPRESSION
-** deflate 压缩级别，设定不压缩 **
+**deflate 压缩级别，设定不压缩**
 
 ```JavaScript
 const zlib.NO_COMPRESSION = 0;
@@ -265,7 +265,7 @@ const zlib.NO_COMPRESSION = 0;
 
 --------------------------
 ### BEST_SPEED
-** deflate 压缩级别，设定最快压缩 **
+**deflate 压缩级别，设定最快压缩**
 
 ```JavaScript
 const zlib.BEST_SPEED = 1;
@@ -273,7 +273,7 @@ const zlib.BEST_SPEED = 1;
 
 --------------------------
 ### BEST_COMPRESSION
-** deflate 压缩级别，设定最高压缩 **
+**deflate 压缩级别，设定最高压缩**
 
 ```JavaScript
 const zlib.BEST_COMPRESSION = 9;
@@ -281,7 +281,7 @@ const zlib.BEST_COMPRESSION = 9;
 
 --------------------------
 ### DEFAULT_COMPRESSION
-** deflate 压缩级别，设定缺省设置 **
+**deflate 压缩级别，设定缺省设置**
 
 ```JavaScript
 const zlib.DEFAULT_COMPRESSION = -1;
