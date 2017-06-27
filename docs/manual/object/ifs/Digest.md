@@ -3,11 +3,13 @@
 
 ## 继承关系
 ```dot
-digraph {node [ fontname = "Helvetica,sans-Serif", fontsize = 10, shape = "record" ];
-object[tooltip="object", style="filled", fillcolor="white", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
-Digest[tooltip="Digest", style="filled", fillcolor="lightgray", label="{Digest|size\l|update()\ldigest()\l}"];
+digraph {
+    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
-object -> Digest [dir=back];
+    object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
+    Digest [tooltip="Digest", fillcolor="lightgray", label="{Digest|size\l|update()\ldigest()\l}"];
+
+    object -> Digest [dir=back];
 }
 ```
 

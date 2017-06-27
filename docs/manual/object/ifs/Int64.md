@@ -9,11 +9,13 @@ var n = new Int64(123);
 
 ## 继承关系
 ```dot
-digraph {node [ fontname = "Helvetica,sans-Serif", fontsize = 10, shape = "record" ];
-object[tooltip="object", style="filled", fillcolor="white", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
-Int64[tooltip="Int64", style="filled", fillcolor="lightgray", label="{Int64|new Int64()\l|hi\llo\l|compare()\lshiftLeft()\lshiftRight()\land()\lor()\lxor()\ladd()\lsub()\ltoNumber()\ltoString()\l}"];
+digraph {
+    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
-object -> Int64 [dir=back];
+    object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
+    Int64 [tooltip="Int64", fillcolor="lightgray", label="{Int64|new Int64()\l|hi\llo\l|compare()\lshiftLeft()\lshiftRight()\land()\lor()\lxor()\ladd()\lsub()\ltoNumber()\ltoString()\l}"];
+
+    object -> Int64 [dir=back];
 }
 ```
 

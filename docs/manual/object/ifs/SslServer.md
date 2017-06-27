@@ -20,13 +20,15 @@ var svr = new http.Server(crt, key, function(req) {
 
 ## 继承关系
 ```dot
-digraph {node [ fontname = "Helvetica,sans-Serif", fontsize = 10, shape = "record" ];
-object[tooltip="object", style="filled", fillcolor="white", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
-TcpServer[tooltip="TcpServer", style="filled", fillcolor="white", URL="TcpServer.md", label="{TcpServer|new TcpServer()\l|socket\lhandler\lstats\l|run()\lasyncRun()\lstop()\l}"];
-SslServer[tooltip="SslServer", style="filled", fillcolor="lightgray", label="{SslServer|new SslServer()\l|verification\lca\l}"];
+digraph {
+    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
-object -> TcpServer [dir=back];
-TcpServer -> SslServer [dir=back];
+    object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
+    TcpServer [tooltip="TcpServer", URL="TcpServer.md", label="{TcpServer|new TcpServer()\l|socket\lhandler\lstats\l|run()\lasyncRun()\lstop()\l}"];
+    SslServer [tooltip="SslServer", fillcolor="lightgray", label="{SslServer|new SslServer()\l|verification\lca\l}"];
+
+    object -> TcpServer [dir=back];
+    TcpServer -> SslServer [dir=back];
 }
 ```
 

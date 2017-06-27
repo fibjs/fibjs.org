@@ -9,13 +9,15 @@ var s = new ssl.Socket();
 
 ## 继承关系
 ```dot
-digraph {node [ fontname = "Helvetica,sans-Serif", fontsize = 10, shape = "record" ];
-object[tooltip="object", style="filled", fillcolor="white", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
-Stream[tooltip="Stream", style="filled", fillcolor="white", URL="Stream.md", label="{Stream|read()\lwrite()\lclose()\lcopyTo()\l}"];
-SslSocket[tooltip="SslSocket", style="filled", fillcolor="lightgray", label="{SslSocket|new SslSocket()\l|verification\lca\lpeerCert\lstream\l|connect()\laccept()\l}"];
+digraph {
+    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
-object -> Stream [dir=back];
-Stream -> SslSocket [dir=back];
+    object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
+    Stream [tooltip="Stream", URL="Stream.md", label="{Stream|read()\lwrite()\lclose()\lcopyTo()\l}"];
+    SslSocket [tooltip="SslSocket", fillcolor="lightgray", label="{SslSocket|new SslSocket()\l|verification\lca\lpeerCert\lstream\l|connect()\laccept()\l}"];
+
+    object -> Stream [dir=back];
+    Stream -> SslSocket [dir=back];
 }
 ```
 

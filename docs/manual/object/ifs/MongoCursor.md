@@ -3,11 +3,13 @@ mongodb 数据库数据游标对象
 
 ## 继承关系
 ```dot
-digraph {node [ fontname = "Helvetica,sans-Serif", fontsize = 10, shape = "record" ];
-object[tooltip="object", style="filled", fillcolor="white", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
-MongoCursor[tooltip="MongoCursor", style="filled", fillcolor="lightgray", label="{MongoCursor|skip()\llimit()\lsort()\lhasNext()\lnext()\lcount()\lsize()\lforEach()\lmap()\ltoArray()\lhint()\l}"];
+digraph {
+    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
-object -> MongoCursor [dir=back];
+    object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
+    MongoCursor [tooltip="MongoCursor", fillcolor="lightgray", label="{MongoCursor|skip()\llimit()\lsort()\lhasNext()\lnext()\lcount()\lsize()\lforEach()\lmap()\ltoArray()\lhint()\l}"];
+
+    object -> MongoCursor [dir=back];
 }
 ```
 

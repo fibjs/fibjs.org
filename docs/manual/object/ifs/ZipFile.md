@@ -3,11 +3,13 @@
 
 ## 继承关系
 ```dot
-digraph {node [ fontname = "Helvetica,sans-Serif", fontsize = 10, shape = "record" ];
-object[tooltip="object", style="filled", fillcolor="white", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
-ZipFile[tooltip="ZipFile", style="filled", fillcolor="lightgray", label="{ZipFile|namelist()\linfolist()\lgetinfo()\lread()\lreadAll()\lextract()\lextractAll()\lwrite()\lclose()\l}"];
+digraph {
+    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
-object -> ZipFile [dir=back];
+    object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
+    ZipFile [tooltip="ZipFile", fillcolor="lightgray", label="{ZipFile|namelist()\linfolist()\lgetinfo()\lread()\lreadAll()\lextract()\lextractAll()\lwrite()\lclose()\l}"];
+
+    object -> ZipFile [dir=back];
 }
 ```
 

@@ -9,11 +9,13 @@ var k = new crypto.PKey();
 
 ## 继承关系
 ```dot
-digraph {node [ fontname = "Helvetica,sans-Serif", fontsize = 10, shape = "record" ];
-object[tooltip="object", style="filled", fillcolor="white", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
-PKey[tooltip="PKey", style="filled", fillcolor="lightgray", label="{PKey|new PKey()\l|name\lkeySize\lpublicKey\l|genRsaKey()\lgenEcKey()\lisPrivate()\lclone()\limportKey()\limportFile()\lexportPem()\lexportDer()\lencrypt()\ldecrypt()\lsign()\lverify()\l}"];
+digraph {
+    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
-object -> PKey [dir=back];
+    object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
+    PKey [tooltip="PKey", fillcolor="lightgray", label="{PKey|new PKey()\l|name\lkeySize\lpublicKey\l|genRsaKey()\lgenEcKey()\lisPrivate()\lclone()\limportKey()\limportFile()\lexportPem()\lexportDer()\lencrypt()\ldecrypt()\lsign()\lverify()\l}"];
+
+    object -> PKey [dir=back];
 }
 ```
 

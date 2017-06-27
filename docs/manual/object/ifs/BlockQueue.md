@@ -10,13 +10,15 @@ var q = new coroutine.BlockQueue(100);
 
 ## 继承关系
 ```dot
-digraph {node [ fontname = "Helvetica,sans-Serif", fontsize = 10, shape = "record" ];
-object[tooltip="object", style="filled", fillcolor="white", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
-Queue[tooltip="Queue", style="filled", fillcolor="white", URL="Queue.md", label="{Queue|new Queue()\l|length\l|add()\loffer()\lremove()\lpoll()\lelement()\lpeek()\lclear()\ltoArray()\l}"];
-BlockQueue[tooltip="BlockQueue", style="filled", fillcolor="lightgray", label="{BlockQueue|new BlockQueue()\l|put()\ltake()\l}"];
+digraph {
+    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
-object -> Queue [dir=back];
-Queue -> BlockQueue [dir=back];
+    object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
+    Queue [tooltip="Queue", URL="Queue.md", label="{Queue|new Queue()\l|length\l|add()\loffer()\lremove()\lpoll()\lelement()\lpeek()\lclear()\ltoArray()\l}"];
+    BlockQueue [tooltip="BlockQueue", fillcolor="lightgray", label="{BlockQueue|new BlockQueue()\l|put()\ltake()\l}"];
+
+    object -> Queue [dir=back];
+    Queue -> BlockQueue [dir=back];
 }
 ```
 

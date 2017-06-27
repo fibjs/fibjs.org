@@ -10,13 +10,15 @@ var a = new collection.List();
 
 ## 继承关系
 ```dot
-digraph {node [ fontname = "Helvetica,sans-Serif", fontsize = 10, shape = "record" ];
-object[tooltip="object", style="filled", fillcolor="white", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
-List[tooltip="List", style="filled", fillcolor="lightgray", label="{List|new List()\l|operator[]\l|length\l|freeze()\lresize()\lpush()\lindexOf()\llastIndexOf()\lpush()\lpushArray()\lpop()\lslice()\lconcat()\levery()\lsome()\lfilter()\lforEach()\lmap()\lreduce()\lsort()\ltoArray()\l}"];
-DBResult[tooltip="DBResult", style="filled", fillcolor="white", URL="DBResult.md", label="{DBResult|insertId\laffected\lfields\l}"];
+digraph {
+    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
-object -> List [dir=back];
-List -> DBResult [dir=back];
+    object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
+    List [tooltip="List", fillcolor="lightgray", label="{List|new List()\l|operator[]\l|length\l|freeze()\lresize()\lpush()\lindexOf()\llastIndexOf()\lpush()\lpushArray()\lpop()\lslice()\lconcat()\levery()\lsome()\lfilter()\lforEach()\lmap()\lreduce()\lsort()\ltoArray()\l}"];
+    DBResult [tooltip="DBResult", URL="DBResult.md", label="{DBResult|insertId\laffected\lfields\l}"];
+
+    object -> List [dir=back];
+    List -> DBResult [dir=back];
 }
 ```
 

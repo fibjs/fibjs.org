@@ -8,15 +8,17 @@ var sub = process.open("ls");
 
 ## 继承关系
 ```dot
-digraph {node [ fontname = "Helvetica,sans-Serif", fontsize = 10, shape = "record" ];
-object[tooltip="object", style="filled", fillcolor="white", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
-Stream[tooltip="Stream", style="filled", fillcolor="white", URL="Stream.md", label="{Stream|read()\lwrite()\lclose()\lcopyTo()\l}"];
-BufferedStream[tooltip="BufferedStream", style="filled", fillcolor="white", URL="BufferedStream.md", label="{BufferedStream|new BufferedStream()\l|stream\lcharset\lEOL\l|readText()\lreadLine()\lreadLines()\lreadUntil()\lwriteText()\lwriteLine()\l}"];
-SubProcess[tooltip="SubProcess", style="filled", fillcolor="lightgray", label="{SubProcess|pid\lstdin\lstdout\l|kill()\lwait()\lfindWindow()\l}"];
+digraph {
+    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
-object -> Stream [dir=back];
-Stream -> BufferedStream [dir=back];
-BufferedStream -> SubProcess [dir=back];
+    object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
+    Stream [tooltip="Stream", URL="Stream.md", label="{Stream|read()\lwrite()\lclose()\lcopyTo()\l}"];
+    BufferedStream [tooltip="BufferedStream", URL="BufferedStream.md", label="{BufferedStream|new BufferedStream()\l|stream\lcharset\lEOL\l|readText()\lreadLine()\lreadLines()\lreadUntil()\lwriteText()\lwriteLine()\l}"];
+    SubProcess [tooltip="SubProcess", fillcolor="lightgray", label="{SubProcess|pid\lstdin\lstdout\l|kill()\lwait()\lfindWindow()\l}"];
+
+    object -> Stream [dir=back];
+    Stream -> BufferedStream [dir=back];
+    BufferedStream -> SubProcess [dir=back];
 }
 ```
 

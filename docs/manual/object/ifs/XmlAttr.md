@@ -3,11 +3,13 @@ XmlAttr 对象表示 [XmlElement](XmlElement.md) 对象的属性
 
 ## 继承关系
 ```dot
-digraph {node [ fontname = "Helvetica,sans-Serif", fontsize = 10, shape = "record" ];
-object[tooltip="object", style="filled", fillcolor="white", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
-XmlAttr[tooltip="XmlAttr", style="filled", fillcolor="lightgray", label="{XmlAttr|localName\lvalue\lname\lnamespaceURI\lprefix\lnodeName\lnodeValue\l}"];
+digraph {
+    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
-object -> XmlAttr [dir=back];
+    object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
+    XmlAttr [tooltip="XmlAttr", fillcolor="lightgray", label="{XmlAttr|localName\lvalue\lname\lnamespaceURI\lprefix\lnodeName\lnodeValue\l}"];
+
+    object -> XmlAttr [dir=back];
 }
 ```
 

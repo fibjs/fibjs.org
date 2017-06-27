@@ -9,11 +9,13 @@ var c = new crypto.Cipher(crypto.AES, crypto.ECB, ...);
 
 ## 继承关系
 ```dot
-digraph {node [ fontname = "Helvetica,sans-Serif", fontsize = 10, shape = "record" ];
-object[tooltip="object", style="filled", fillcolor="white", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
-Cipher[tooltip="Cipher", style="filled", fillcolor="lightgray", label="{Cipher|new Cipher()\l|name\lkeySize\livSize\lblockSize\l|paddingMode()\lencrypt()\ldecrypt()\l}"];
+digraph {
+    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
-object -> Cipher [dir=back];
+    object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
+    Cipher [tooltip="Cipher", fillcolor="lightgray", label="{Cipher|new Cipher()\l|name\lkeySize\livSize\lblockSize\l|paddingMode()\lencrypt()\ldecrypt()\l}"];
+
+    object -> Cipher [dir=back];
 }
 ```
 

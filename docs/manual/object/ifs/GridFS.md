@@ -9,11 +9,13 @@ var gfs = mdb.fs;
 
 ## 继承关系
 ```dot
-digraph {node [ fontname = "Helvetica,sans-Serif", fontsize = 10, shape = "record" ];
-object[tooltip="object", style="filled", fillcolor="white", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
-GridFS[tooltip="GridFS", style="filled", fillcolor="lightgray", label="{GridFS|files\lchunks\l|retrieve()\lstore()\lexists()\lremove()\l}"];
+digraph {
+    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
-object -> GridFS [dir=back];
+    object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
+    GridFS [tooltip="GridFS", fillcolor="lightgray", label="{GridFS|files\lchunks\l|retrieve()\lstore()\lexists()\lremove()\l}"];
+
+    object -> GridFS [dir=back];
 }
 ```
 

@@ -9,11 +9,13 @@ var mdb = db.openMongoDB("mongodb://host/db");
 
 ## 继承关系
 ```dot
-digraph {node [ fontname = "Helvetica,sans-Serif", fontsize = 10, shape = "record" ];
-object[tooltip="object", style="filled", fillcolor="white", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
-MongoDB[tooltip="MongoDB", style="filled", fillcolor="lightgray", label="{MongoDB|operator[String]\l|fs\l|getCollection()\lrunCommand()\loid()\lclose()\l}"];
+digraph {
+    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
-object -> MongoDB [dir=back];
+    object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
+    MongoDB [tooltip="MongoDB", fillcolor="lightgray", label="{MongoDB|operator[String]\l|fs\l|getCollection()\lrunCommand()\loid()\lclose()\l}"];
+
+    object -> MongoDB [dir=back];
 }
 ```
 

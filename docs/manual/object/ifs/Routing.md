@@ -52,13 +52,15 @@ var routing = new mq.Routing({
 
 ## 继承关系
 ```dot
-digraph {node [ fontname = "Helvetica,sans-Serif", fontsize = 10, shape = "record" ];
-object[tooltip="object", style="filled", fillcolor="white", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
-Handler[tooltip="Handler", style="filled", fillcolor="white", URL="Handler.md", label="{Handler|new Handler()\l|invoke()\l}"];
-Routing[tooltip="Routing", style="filled", fillcolor="lightgray", label="{Routing|new Routing()\l|append()\lall()\lget()\lpost()\ldel()\lput()\lpatch()\l}"];
+digraph {
+    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
-object -> Handler [dir=back];
-Handler -> Routing [dir=back];
+    object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
+    Handler [tooltip="Handler", URL="Handler.md", label="{Handler|new Handler()\l|invoke()\l}"];
+    Routing [tooltip="Routing", fillcolor="lightgray", label="{Routing|new Routing()\l|append()\lall()\lget()\lpost()\ldel()\lput()\lpatch()\l}"];
+
+    object -> Handler [dir=back];
+    Handler -> Routing [dir=back];
 }
 ```
 

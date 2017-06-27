@@ -5,19 +5,21 @@ XmlCharacterData 是 [XmlText](XmlText.md) 和 [XmlComment](XmlComment.md) 节�
 
 ## 继承关系
 ```dot
-digraph {node [ fontname = "Helvetica,sans-Serif", fontsize = 10, shape = "record" ];
-object[tooltip="object", style="filled", fillcolor="white", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
-XmlNode[tooltip="XmlNode", style="filled", fillcolor="white", URL="XmlNode.md", label="{XmlNode|nodeType\lnodeName\lnodeValue\lownerDocument\lparentNode\lchildNodes\lfirstChild\llastChild\lpreviousSibling\lnextSibling\l|hasChildNodes()\lnormalize()\lcloneNode()\llookupPrefix()\llookupNamespaceURI()\linsertBefore()\linsertAfter()\lappendChild()\lreplaceChild()\lremoveChild()\l}"];
-XmlCharacterData[tooltip="XmlCharacterData", style="filled", fillcolor="lightgray", label="{XmlCharacterData|data\llength\l|substringData()\lappendData()\linsertData()\ldeleteData()\lreplaceData()\l}"];
-XmlComment[tooltip="XmlComment", style="filled", fillcolor="white", URL="XmlComment.md", label="{XmlComment}"];
-XmlText[tooltip="XmlText", style="filled", fillcolor="white", URL="XmlText.md", label="{XmlText|splitText()\l}"];
-XmlCDATASection[tooltip="XmlCDATASection", style="filled", fillcolor="white", URL="XmlCDATASection.md", label="{XmlCDATASection}"];
+digraph {
+    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
-object -> XmlNode [dir=back];
-XmlNode -> XmlCharacterData [dir=back];
-XmlCharacterData -> XmlComment [dir=back];
-XmlCharacterData -> XmlText [dir=back];
-XmlText -> XmlCDATASection [dir=back];
+    object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
+    XmlNode [tooltip="XmlNode", URL="XmlNode.md", label="{XmlNode|nodeType\lnodeName\lnodeValue\lownerDocument\lparentNode\lchildNodes\lfirstChild\llastChild\lpreviousSibling\lnextSibling\l|hasChildNodes()\lnormalize()\lcloneNode()\llookupPrefix()\llookupNamespaceURI()\linsertBefore()\linsertAfter()\lappendChild()\lreplaceChild()\lremoveChild()\l}"];
+    XmlCharacterData [tooltip="XmlCharacterData", fillcolor="lightgray", label="{XmlCharacterData|data\llength\l|substringData()\lappendData()\linsertData()\ldeleteData()\lreplaceData()\l}"];
+    XmlComment [tooltip="XmlComment", URL="XmlComment.md", label="{XmlComment}"];
+    XmlText [tooltip="XmlText", URL="XmlText.md", label="{XmlText|splitText()\l}"];
+    XmlCDATASection [tooltip="XmlCDATASection", URL="XmlCDATASection.md", label="{XmlCDATASection}"];
+
+    object -> XmlNode [dir=back];
+    XmlNode -> XmlCharacterData [dir=back];
+    XmlCharacterData -> XmlComment [dir=back];
+    XmlCharacterData -> XmlText [dir=back];
+    XmlText -> XmlCDATASection [dir=back];
 }
 ```
 
