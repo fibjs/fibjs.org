@@ -10,11 +10,14 @@ var set = rdb.getSet("test");
 ```
 
 ## 继承关系
-<dot>digraph {node [ fontname = "Helvetica,sans-Serif", fontsize = 10, shape = "record" ];
+```dot
+digraph {node [ fontname = "Helvetica,sans-Serif", fontsize = 10, shape = "record" ];
 object[tooltip="object", style="filled", fillcolor="white", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
 RedisSet[tooltip="RedisSet", style="filled", fillcolor="lightgray", label="{RedisSet|add()\lremove()\llen()\lexists()\lmembers()\lpop()\lrandMember()\l}"];
-object -> RedisSet [dir=back]
-}</dot>
+
+object -> RedisSet [dir=back];
+}
+```
 
 ## 成员函数
         

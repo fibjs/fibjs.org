@@ -8,13 +8,16 @@ var slite = db.openSQLite("sqlite:/path/to/db");
 ```
 
 ## 继承关系
-<dot>digraph {node [ fontname = "Helvetica,sans-Serif", fontsize = 10, shape = "record" ];
+```dot
+digraph {node [ fontname = "Helvetica,sans-Serif", fontsize = 10, shape = "record" ];
 object[tooltip="object", style="filled", fillcolor="white", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
 DbConnection[tooltip="DbConnection", style="filled", fillcolor="white", URL="DbConnection.md", label="{DbConnection|type\l|close()\lbegin()\lcommit()\lrollback()\lexecute()\lformat()\l}"];
 SQLite[tooltip="SQLite", style="filled", fillcolor="lightgray", label="{SQLite|fileName\ltimeout\l|backup()\l}"];
-object -> DbConnection [dir=back]
-DbConnection -> SQLite [dir=back]
-}</dot>
+
+object -> DbConnection [dir=back];
+DbConnection -> SQLite [dir=back];
+}
+```
 
 ## 成员属性
         

@@ -11,11 +11,14 @@ var stats = new util.Stats(["begin", "end", "error"]);
 一些内部对象会提供预先定义的的统计对象
 
 ## 继承关系
-<dot>digraph {node [ fontname = "Helvetica,sans-Serif", fontsize = 10, shape = "record" ];
+```dot
+digraph {node [ fontname = "Helvetica,sans-Serif", fontsize = 10, shape = "record" ];
 object[tooltip="object", style="filled", fillcolor="white", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
 Stats[tooltip="Stats", style="filled", fillcolor="lightgray", label="{Stats|new Stats()\l|operator[String]\l|inc()\ldec()\ladd()\lreset()\luptime()\l}"];
-object -> Stats [dir=back]
-}</dot>
+
+object -> Stats [dir=back];
+}
+```
 
 ## 构造函数
         

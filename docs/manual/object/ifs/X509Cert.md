@@ -8,11 +8,14 @@ var k = new crypto.X509Cert();
 ```
 
 ## 继承关系
-<dot>digraph {node [ fontname = "Helvetica,sans-Serif", fontsize = 10, shape = "record" ];
+```dot
+digraph {node [ fontname = "Helvetica,sans-Serif", fontsize = 10, shape = "record" ];
 object[tooltip="object", style="filled", fillcolor="white", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
 X509Cert[tooltip="X509Cert", style="filled", fillcolor="lightgray", label="{X509Cert|new X509Cert()\l|version\lserial\lissuer\lsubject\lnotBefore\lnotAfter\lca\lpathlen\lusage\ltype\lpublicKey\lnext\l|load()\lloadFile()\lloadRootCerts()\lverify()\ldump()\lclear()\l}"];
-object -> X509Cert [dir=back]
-}</dot>
+
+object -> X509Cert [dir=back];
+}
+```
 
 ## 构造函数
         

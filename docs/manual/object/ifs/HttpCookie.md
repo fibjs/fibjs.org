@@ -2,11 +2,14 @@
 [http](../../module/ifs/http.md) Cookie 对象，用于添加和处理 cookie
 
 ## 继承关系
-<dot>digraph {node [ fontname = "Helvetica,sans-Serif", fontsize = 10, shape = "record" ];
+```dot
+digraph {node [ fontname = "Helvetica,sans-Serif", fontsize = 10, shape = "record" ];
 object[tooltip="object", style="filled", fillcolor="white", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
 HttpCookie[tooltip="HttpCookie", style="filled", fillcolor="lightgray", label="{HttpCookie|new HttpCookie()\l|name\lvalue\ldomain\lpath\lexpires\lhttpOnly\lsecure\l|parse()\lmatch()\l}"];
-object -> HttpCookie [dir=back]
-}</dot>
+
+object -> HttpCookie [dir=back];
+}
+```
 
 ## 构造函数
         

@@ -14,13 +14,16 @@ function(s) {
 ```
 
 ## 继承关系
-<dot>digraph {node [ fontname = "Helvetica,sans-Serif", fontsize = 10, shape = "record" ];
+```dot
+digraph {node [ fontname = "Helvetica,sans-Serif", fontsize = 10, shape = "record" ];
 object[tooltip="object", style="filled", fillcolor="white", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
 Handler[tooltip="Handler", style="filled", fillcolor="white", URL="Handler.md", label="{Handler|new Handler()\l|invoke()\l}"];
 SslHandler[tooltip="SslHandler", style="filled", fillcolor="lightgray", label="{SslHandler|new SslHandler()\l|verification\lca\lhandler\l}"];
-object -> Handler [dir=back]
-Handler -> SslHandler [dir=back]
-}</dot>
+
+object -> Handler [dir=back];
+Handler -> SslHandler [dir=back];
+}
+```
 
 ## 构造函数
         

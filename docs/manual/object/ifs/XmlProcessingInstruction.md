@@ -2,13 +2,16 @@
 XmlProcessingInstruction 对象表示 [xml](../../module/ifs/xml.md) 处理指令
 
 ## 继承关系
-<dot>digraph {node [ fontname = "Helvetica,sans-Serif", fontsize = 10, shape = "record" ];
+```dot
+digraph {node [ fontname = "Helvetica,sans-Serif", fontsize = 10, shape = "record" ];
 object[tooltip="object", style="filled", fillcolor="white", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
 XmlNode[tooltip="XmlNode", style="filled", fillcolor="white", URL="XmlNode.md", label="{XmlNode|nodeType\lnodeName\lnodeValue\lownerDocument\lparentNode\lchildNodes\lfirstChild\llastChild\lpreviousSibling\lnextSibling\l|hasChildNodes()\lnormalize()\lcloneNode()\llookupPrefix()\llookupNamespaceURI()\linsertBefore()\linsertAfter()\lappendChild()\lreplaceChild()\lremoveChild()\l}"];
 XmlProcessingInstruction[tooltip="XmlProcessingInstruction", style="filled", fillcolor="lightgray", label="{XmlProcessingInstruction|target\ldata\l}"];
-object -> XmlNode [dir=back]
-XmlNode -> XmlProcessingInstruction [dir=back]
-}</dot>
+
+object -> XmlNode [dir=back];
+XmlNode -> XmlProcessingInstruction [dir=back];
+}
+```
 
 ## 成员属性
         

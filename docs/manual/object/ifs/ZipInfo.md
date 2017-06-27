@@ -2,11 +2,14 @@
 [zip](../../module/ifs/zip.md) 文件访问对象
 
 ## 继承关系
-<dot>digraph {node [ fontname = "Helvetica,sans-Serif", fontsize = 10, shape = "record" ];
+```dot
+digraph {node [ fontname = "Helvetica,sans-Serif", fontsize = 10, shape = "record" ];
 object[tooltip="object", style="filled", fillcolor="white", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
 ZipInfo[tooltip="ZipInfo", style="filled", fillcolor="lightgray", label="{ZipInfo|filename\ldate\lcompress_type\lcompress_size\lfile_size\lpassword\ldata\l}"];
-object -> ZipInfo [dir=back]
-}</dot>
+
+object -> ZipInfo [dir=back];
+}
+```
 
 ## 成员属性
         

@@ -2,11 +2,14 @@
 mongodb 数据库数据唯一标识对象，用于存储传递 oid
 
 ## 继承关系
-<dot>digraph {node [ fontname = "Helvetica,sans-Serif", fontsize = 10, shape = "record" ];
+```dot
+digraph {node [ fontname = "Helvetica,sans-Serif", fontsize = 10, shape = "record" ];
 object[tooltip="object", style="filled", fillcolor="white", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
 MongoID[tooltip="MongoID", style="filled", fillcolor="lightgray", label="{MongoID}"];
-object -> MongoID [dir=back]
-}</dot>
+
+object -> MongoID [dir=back];
+}
+```
 
 ## 成员函数
         

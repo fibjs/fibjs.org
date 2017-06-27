@@ -10,15 +10,18 @@ var pkghdlr = new ws.WebSocketHandler(...);
 ```
 
 ## 继承关系
-<dot>digraph {node [ fontname = "Helvetica,sans-Serif", fontsize = 10, shape = "record" ];
+```dot
+digraph {node [ fontname = "Helvetica,sans-Serif", fontsize = 10, shape = "record" ];
 object[tooltip="object", style="filled", fillcolor="white", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
 Handler[tooltip="Handler", style="filled", fillcolor="white", URL="Handler.md", label="{Handler|new Handler()\l|invoke()\l}"];
 HandlerEx[tooltip="HandlerEx", style="filled", fillcolor="white", URL="HandlerEx.md", label="{HandlerEx|handler\lstats\l|onerror()\l}"];
 WebSocketHandler[tooltip="WebSocketHandler", style="filled", fillcolor="lightgray", label="{WebSocketHandler|new WebSocketHandler()\l|maxSize\l}"];
-object -> Handler [dir=back]
-Handler -> HandlerEx [dir=back]
-HandlerEx -> WebSocketHandler [dir=back]
-}</dot>
+
+object -> Handler [dir=back];
+Handler -> HandlerEx [dir=back];
+HandlerEx -> WebSocketHandler [dir=back];
+}
+```
 
 ## 构造函数
         

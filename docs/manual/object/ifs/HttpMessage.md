@@ -2,17 +2,20 @@
 [http](../../module/ifs/http.md) 基础消息对象
 
 ## 继承关系
-<dot>digraph {node [ fontname = "Helvetica,sans-Serif", fontsize = 10, shape = "record" ];
+```dot
+digraph {node [ fontname = "Helvetica,sans-Serif", fontsize = 10, shape = "record" ];
 object[tooltip="object", style="filled", fillcolor="white", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
 Message[tooltip="Message", style="filled", fillcolor="white", URL="Message.md", label="{Message|new Message()\l|TEXT\lBINARY\l|value\lparams\ltype\ldata\lbody\llength\lstream\lresponse\llastError\l|read()\lreadAll()\lwrite()\lend()\lisEnded()\lclear()\lsendTo()\lreadFrom()\l}"];
 HttpMessage[tooltip="HttpMessage", style="filled", fillcolor="lightgray", label="{HttpMessage|protocol\lheaders\lkeepAlive\lupgrade\lmaxHeadersCount\lmaxUploadSize\lsocket\l|hasHeader()\lfirstHeader()\lallHeader()\laddHeader()\lsetHeader()\lremoveHeader()\l}"];
 HttpRequest[tooltip="HttpRequest", style="filled", fillcolor="white", URL="HttpRequest.md", label="{HttpRequest|new HttpRequest()\l|method\laddress\lqueryString\lcookies\lform\lquery\l}"];
 HttpResponse[tooltip="HttpResponse", style="filled", fillcolor="white", URL="HttpResponse.md", label="{HttpResponse|new HttpResponse()\l|status\lcookies\l|addCookie()\lredirect()\lsendHeader()\l}"];
-object -> Message [dir=back]
-Message -> HttpMessage [dir=back]
-HttpMessage -> HttpRequest [dir=back]
-HttpMessage -> HttpResponse [dir=back]
-}</dot>
+
+object -> Message [dir=back];
+Message -> HttpMessage [dir=back];
+HttpMessage -> HttpRequest [dir=back];
+HttpMessage -> HttpResponse [dir=back];
+}
+```
 
 ## 常量
         

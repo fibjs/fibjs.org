@@ -9,13 +9,16 @@ var q = new collection.Queue(100);
 ```
 
 ## 继承关系
-<dot>digraph {node [ fontname = "Helvetica,sans-Serif", fontsize = 10, shape = "record" ];
+```dot
+digraph {node [ fontname = "Helvetica,sans-Serif", fontsize = 10, shape = "record" ];
 object[tooltip="object", style="filled", fillcolor="white", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
 Queue[tooltip="Queue", style="filled", fillcolor="lightgray", label="{Queue|new Queue()\l|length\l|add()\loffer()\lremove()\lpoll()\lelement()\lpeek()\lclear()\ltoArray()\l}"];
 BlockQueue[tooltip="BlockQueue", style="filled", fillcolor="white", URL="BlockQueue.md", label="{BlockQueue|new BlockQueue()\l|put()\ltake()\l}"];
-object -> Queue [dir=back]
-Queue -> BlockQueue [dir=back]
-}</dot>
+
+object -> Queue [dir=back];
+Queue -> BlockQueue [dir=back];
+}
+```
 
 ## 构造函数
         

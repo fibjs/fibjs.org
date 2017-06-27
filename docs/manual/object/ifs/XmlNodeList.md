@@ -2,11 +2,14 @@
 XmlNodeList 对象代表一个有顺序的节点列表
 
 ## 继承关系
-<dot>digraph {node [ fontname = "Helvetica,sans-Serif", fontsize = 10, shape = "record" ];
+```dot
+digraph {node [ fontname = "Helvetica,sans-Serif", fontsize = 10, shape = "record" ];
 object[tooltip="object", style="filled", fillcolor="white", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
 XmlNodeList[tooltip="XmlNodeList", style="filled", fillcolor="lightgray", label="{XmlNodeList|operator[]\l|length\l|item()\l}"];
-object -> XmlNodeList [dir=back]
-}</dot>
+
+object -> XmlNodeList [dir=back];
+}
+```
 
 ## 下标操作
         

@@ -12,17 +12,20 @@ XmlText 节点没有子节点。
 关于从文档的子树中删除空 XmlText 节点与合并相邻的 XmlText 节点的方法，请参阅 [XmlNode](XmlNode.md).normalize 方法。
 
 ## 继承关系
-<dot>digraph {node [ fontname = "Helvetica,sans-Serif", fontsize = 10, shape = "record" ];
+```dot
+digraph {node [ fontname = "Helvetica,sans-Serif", fontsize = 10, shape = "record" ];
 object[tooltip="object", style="filled", fillcolor="white", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
 XmlNode[tooltip="XmlNode", style="filled", fillcolor="white", URL="XmlNode.md", label="{XmlNode|nodeType\lnodeName\lnodeValue\lownerDocument\lparentNode\lchildNodes\lfirstChild\llastChild\lpreviousSibling\lnextSibling\l|hasChildNodes()\lnormalize()\lcloneNode()\llookupPrefix()\llookupNamespaceURI()\linsertBefore()\linsertAfter()\lappendChild()\lreplaceChild()\lremoveChild()\l}"];
 XmlCharacterData[tooltip="XmlCharacterData", style="filled", fillcolor="white", URL="XmlCharacterData.md", label="{XmlCharacterData|data\llength\l|substringData()\lappendData()\linsertData()\ldeleteData()\lreplaceData()\l}"];
 XmlText[tooltip="XmlText", style="filled", fillcolor="lightgray", label="{XmlText|splitText()\l}"];
 XmlCDATASection[tooltip="XmlCDATASection", style="filled", fillcolor="white", URL="XmlCDATASection.md", label="{XmlCDATASection}"];
-object -> XmlNode [dir=back]
-XmlNode -> XmlCharacterData [dir=back]
-XmlCharacterData -> XmlText [dir=back]
-XmlText -> XmlCDATASection [dir=back]
-}</dot>
+
+object -> XmlNode [dir=back];
+XmlNode -> XmlCharacterData [dir=back];
+XmlCharacterData -> XmlText [dir=back];
+XmlText -> XmlCDATASection [dir=back];
+}
+```
 
 ## 成员属性
         

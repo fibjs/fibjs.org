@@ -2,11 +2,14 @@
 信息摘要对象
 
 ## 继承关系
-<dot>digraph {node [ fontname = "Helvetica,sans-Serif", fontsize = 10, shape = "record" ];
+```dot
+digraph {node [ fontname = "Helvetica,sans-Serif", fontsize = 10, shape = "record" ];
 object[tooltip="object", style="filled", fillcolor="white", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
 Digest[tooltip="Digest", style="filled", fillcolor="lightgray", label="{Digest|size\l|update()\ldigest()\l}"];
-object -> Digest [dir=back]
-}</dot>
+
+object -> Digest [dir=back];
+}
+```
 
 ## 成员属性
         

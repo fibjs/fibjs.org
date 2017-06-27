@@ -8,15 +8,18 @@ var f = fs.openFile('test.txt');
 ```
 
 ## 继承关系
-<dot>digraph {node [ fontname = "Helvetica,sans-Serif", fontsize = 10, shape = "record" ];
+```dot
+digraph {node [ fontname = "Helvetica,sans-Serif", fontsize = 10, shape = "record" ];
 object[tooltip="object", style="filled", fillcolor="white", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
 Stream[tooltip="Stream", style="filled", fillcolor="white", URL="Stream.md", label="{Stream|read()\lwrite()\lclose()\lcopyTo()\l}"];
 SeekableStream[tooltip="SeekableStream", style="filled", fillcolor="white", URL="SeekableStream.md", label="{SeekableStream|seek()\ltell()\lrewind()\lsize()\lreadAll()\ltruncate()\leof()\lflush()\lstat()\l}"];
 File[tooltip="File", style="filled", fillcolor="lightgray", label="{File|name\lfd\l|chmod()\l}"];
-object -> Stream [dir=back]
-Stream -> SeekableStream [dir=back]
-SeekableStream -> File [dir=back]
-}</dot>
+
+object -> Stream [dir=back];
+Stream -> SeekableStream [dir=back];
+SeekableStream -> File [dir=back];
+}
+```
 
 ## 成员属性
         
