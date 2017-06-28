@@ -5,7 +5,7 @@ XmlElement 对象表示 XML 文档中的元素
 <dot>digraph {node [ fontname = "Helvetica,sans-Serif", fontsize = 10, shape = "record" ];
 object[tooltip="object", style="filled", fillcolor="white", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
 XmlNode[tooltip="XmlNode", style="filled", fillcolor="white", URL="XmlNode.md", label="{XmlNode|nodeType\lnodeName\lnodeValue\lownerDocument\lparentNode\lchildNodes\lfirstChild\llastChild\lpreviousSibling\lnextSibling\l|hasChildNodes()\lnormalize()\lcloneNode()\llookupPrefix()\llookupNamespaceURI()\linsertBefore()\linsertAfter()\lappendChild()\lreplaceChild()\lremoveChild()\l}"];
-XmlElement[tooltip="XmlElement", style="filled", fillcolor="lightgray", label="{XmlElement|namespaceURI\lprefix\llocalName\ltagName\lid\ltextContent\linnerHTML\lclassName\lattributes\l|getAttribute()\lgetAttributeNS()\lsetAttribute()\lsetAttributeNS()\lremoveAttribute()\lremoveAttributeNS()\lhasAttribute()\lhasAttributeNS()\lgetElementsByTagName()\lgetElementsByTagNameNS()\l}"];
+XmlElement[tooltip="XmlElement", style="filled", fillcolor="lightgray", label="{XmlElement|namespaceURI\lprefix\llocalName\ltagName\lid\ltextContent\linnerHTML\lclassName\lattributes\l|getAttribute()\lgetAttributeNS()\lsetAttribute()\lsetAttributeNS()\lremoveAttribute()\lremoveAttributeNS()\lhasAttribute()\lhasAttributeNS()\lgetElementsByTagName()\lgetElementsByTagNameNS()\lgetElementById()\lgetElementsByClassName()\l}"];
 object -> XmlNode [dir=back]
 XmlNode -> XmlElement [dir=back]
 }</dot>
@@ -345,6 +345,40 @@ XmlNodeList XmlElement.getElementsByTagNameNS(String namespaceURI,
 * [XmlNodeList](XmlNodeList.md), 节点树中具有指定标记的 XmlElement 节点的 [XmlNodeList](XmlNodeList.md) 集合。返回的元素节点的顺序就是它们在源文档中出现的顺序。
 
 该方法与 getElementsByTagName 方法相似，只是想获取的元素的标记名被指定为命名空间 URI 和在命名空间中定义的本地名的组合。
+
+--------------------------
+### getElementById
+**返回拥有指定 id 属性的元素**
+
+```JavaScript
+XmlElement XmlElement.getElementById(String id);
+```
+
+调用参数:
+* id: String, 需检索的 id
+
+返回结果:
+* XmlElement, 节点树中具有指定 id 属性的 XmlElement 节点
+
+该方法将遍历指定元素的子孙节点，返回一个 XmlElement 节点对象，表示第一个具有指定 id 属性的文档元素。。
+
+[XmlDocument](XmlDocument.md) 接口也定义了 getElementsByTagName 方法，它与该方法相似，但遍历整个文档，而不是遍历某个元素的子孙节点。
+
+--------------------------
+### getElementsByClassName
+**返回带有指定 class 名称的所有元素的一个节点列表**
+
+```JavaScript
+XmlNodeList XmlElement.getElementsByClassName(String className);
+```
+
+调用参数:
+* tagName: 需检索的 class 名称
+
+返回结果:
+* [XmlNodeList](XmlNodeList.md), 文档树中具有指定 class 名的 XmlElement 节点的 [XmlNodeList](XmlNodeList.md) 集合。返回的元素节点的顺序就是它们在源文档中出现的顺序。
+
+该方法将返回一个 [XmlNodeList](XmlNodeList.md) 对象（可以作为只读数组处理），该对象存放文档中具有指定 class 名的所有 XmlElement 节点，它们存放的顺序就是在源文档中出现的顺序。 [XmlNodeList](XmlNodeList.md) 对象是“活”的，即如果在文档中添加或删除了指定标签名的元素，它的内容会自动进行必要的更新。
 
 --------------------------
 ### hasChildNodes
