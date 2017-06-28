@@ -171,34 +171,10 @@
 <li>Boolean, 返回 True 表示文件或目录存在</li>
 </ul>
 <hr>
-<h3 id="existssync">existsSync</h3>
-<p><strong>查询指定的文件或目录是否存在，是 exists 的同步版兼容接口</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> <span class="hljs-built_in">Boolean</span> fs.existsSync(<span class="hljs-built_in">String</span> path);
-</code></pre>
-<p>调用参数:</p>
-<ul>
-<li>path: String, 指定要查询的路径</li>
-</ul>
-<p>返回结果:</p>
-<ul>
-<li>Boolean, 返回 True 表示文件或目录存在</li>
-</ul>
-<hr>
 <h3 id="access">access</h3>
 <p><strong>查询用户对指定的文件的权限</strong></p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> fs.access(<span class="hljs-built_in">String</span> path,
     Integer mode = <span class="hljs-number">0</span>) <span class="hljs-keyword">async</span>;
-</code></pre>
-<p>调用参数:</p>
-<ul>
-<li>path: String, 指定要查询的路径</li>
-<li>mode: Integer, 指定查询的权限,默认为文件是否存在</li>
-</ul>
-<hr>
-<h3 id="accesssync">accessSync</h3>
-<p><strong>查询用户对指定的文件的权限, accesss同步兼容版本</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> fs.accessSync(<span class="hljs-built_in">String</span> path,
-    Integer mode = <span class="hljs-number">0</span>);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -217,29 +193,9 @@
 <li>newPath: String, 将要被创建的文件</li>
 </ul>
 <hr>
-<h3 id="linksync">linkSync</h3>
-<p><strong>创建硬链接文件，windows 下不支持此方法，是 link 的同步版兼容接口</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> fs.linkSync(<span class="hljs-built_in">String</span> oldPath,
-    <span class="hljs-built_in">String</span> newPath);
-</code></pre>
-<p>调用参数:</p>
-<ul>
-<li>oldPath: String, 源文件</li>
-<li>newPath: String, 将要被创建的文件</li>
-</ul>
-<hr>
 <h3 id="unlink">unlink</h3>
 <p><strong>删除指定的文件</strong></p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> fs.unlink(<span class="hljs-built_in">String</span> path) <span class="hljs-keyword">async</span>;
-</code></pre>
-<p>调用参数:</p>
-<ul>
-<li>path: String, 指定要删除的路径</li>
-</ul>
-<hr>
-<h3 id="unlinksync">unlinkSync</h3>
-<p><strong>删除指定的文件，是 unlink 的同步版兼容接口</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> fs.unlinkSync(<span class="hljs-built_in">String</span> path);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -257,29 +213,9 @@
 <li>mode: Integer, 指定文件权限，Windows 忽略此参数</li>
 </ul>
 <hr>
-<h3 id="mkdirsync">mkdirSync</h3>
-<p><strong>创建一个目录，是 mkdir 的同步版兼容接口</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> fs.mkdirSync(<span class="hljs-built_in">String</span> path,
-    Integer mode = <span class="hljs-number">0777</span>);
-</code></pre>
-<p>调用参数:</p>
-<ul>
-<li>path: String, 指定要创建的目录名</li>
-<li>mode: Integer, 指定文件权限，Windows 忽略此参数</li>
-</ul>
-<hr>
 <h3 id="rmdir">rmdir</h3>
 <p><strong>删除一个目录</strong></p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> fs.rmdir(<span class="hljs-built_in">String</span> path) <span class="hljs-keyword">async</span>;
-</code></pre>
-<p>调用参数:</p>
-<ul>
-<li>path: String, 指定要删除的目录名</li>
-</ul>
-<hr>
-<h3 id="rmdirsync">rmdirSync</h3>
-<p><strong>删除一个目录，是 rmdir 的同步版兼容接口</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> fs.rmdirSync(<span class="hljs-built_in">String</span> path);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -290,17 +226,6 @@
 <p><strong>重新命名一个文件</strong></p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> fs.rename(<span class="hljs-built_in">String</span> <span class="hljs-keyword">from</span>,
     <span class="hljs-built_in">String</span> to) <span class="hljs-keyword">async</span>;
-</code></pre>
-<p>调用参数:</p>
-<ul>
-<li>from: String, 指定更名的文件</li>
-<li>to: String, 指定要修改的新文件名</li>
-</ul>
-<hr>
-<h3 id="renamesync">renameSync</h3>
-<p><strong>重新命名一个文件，是 rename 的同步版兼容接口</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> fs.renameSync(<span class="hljs-built_in">String</span> <span class="hljs-keyword">from</span>,
-    <span class="hljs-built_in">String</span> to);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -330,32 +255,10 @@
 <li>mode: Integer, 指定设定的访问权限</li>
 </ul>
 <hr>
-<h3 id="chmodsync">chmodSync</h3>
-<p><strong>设置指定文件的访问权限，是 chmod 的同步版兼容接口</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> fs.chmodSync(<span class="hljs-built_in">String</span> path,
-    Integer mode);
-</code></pre>
-<p>调用参数:</p>
-<ul>
-<li>path: String, 指定操作的文件</li>
-<li>mode: Integer, 指定设定的访问权限</li>
-</ul>
-<hr>
 <h3 id="lchmod">lchmod</h3>
 <p><strong>设置指定文件的访问权限，若文件是软连接则不改变指向文件的权限，只在macOS、BSD 系列平台上可用</strong></p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> fs.lchmod(<span class="hljs-built_in">String</span> path,
     Integer mode) <span class="hljs-keyword">async</span>;
-</code></pre>
-<p>调用参数:</p>
-<ul>
-<li>path: String, 指定操作的文件</li>
-<li>mode: Integer, 指定设定的访问权限</li>
-</ul>
-<hr>
-<h3 id="lchmodsync">lchmodSync</h3>
-<p><strong>设置指定文件的访问权限，若文件是软连接则不改变指向文件的权限，是 lchmod 的同步版兼容接口</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> fs.lchmodSync(<span class="hljs-built_in">String</span> path,
-    Integer mode);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -368,19 +271,6 @@
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> fs.chown(<span class="hljs-built_in">String</span> path,
     Integer uid,
     Integer gid) <span class="hljs-keyword">async</span>;
-</code></pre>
-<p>调用参数:</p>
-<ul>
-<li>path: String, 指定设置的文件</li>
-<li>uid: Integer, 文件拥有者用户id</li>
-<li>gid: Integer, 文件拥有者组id</li>
-</ul>
-<hr>
-<h3 id="chownsync">chownSync</h3>
-<p><strong>设置指定文件的拥有者，Windows 不支持此方法, 是 chown 的同步版兼容接口</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> fs.chownSync(<span class="hljs-built_in">String</span> path,
-    Integer uid,
-    Integer gid);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -402,35 +292,9 @@
 <li>gid: Integer, 文件拥有者组id</li>
 </ul>
 <hr>
-<h3 id="lchownsync">lchownSync</h3>
-<p><strong>设置指定文件的拥有者，如果指定的文件是软连接则不会改变其指向文件的拥有者，Windows 不支持此方法, 是 lchown 的同步版兼容接口</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> fs.lchownSync(<span class="hljs-built_in">String</span> path,
-    Integer uid,
-    Integer gid);
-</code></pre>
-<p>调用参数:</p>
-<ul>
-<li>path: String, 指定设置的文件</li>
-<li>uid: Integer, 文件拥有者用户id</li>
-<li>gid: Integer, 文件拥有者组id</li>
-</ul>
-<hr>
 <h3 id="stat">stat</h3>
 <p><strong>查询指定文件的基础信息</strong></p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> Stat fs.stat(<span class="hljs-built_in">String</span> path) <span class="hljs-keyword">async</span>;
-</code></pre>
-<p>调用参数:</p>
-<ul>
-<li>path: String, 指定查询的文件</li>
-</ul>
-<p>返回结果:</p>
-<ul>
-<li><a href=../../object/ifs/stat.md.html>Stat</a>, 返回文件的基础信息</li>
-</ul>
-<hr>
-<h3 id="statsync">statSync</h3>
-<p><strong>查询指定文件的基础信息，是 stat 的同步版兼容接口</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> Stat fs.statSync(<span class="hljs-built_in">String</span> path);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -454,35 +318,9 @@
 <li><a href=../../object/ifs/stat.md.html>Stat</a>, 返回文件的基础信息</li>
 </ul>
 <hr>
-<h3 id="lstatsync">lstatSync</h3>
-<p><strong>查询指定文件的基础信息，是 lstat 的同步版兼容接口</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> Stat fs.lstatSync(<span class="hljs-built_in">String</span> path);
-</code></pre>
-<p>调用参数:</p>
-<ul>
-<li>path: String, 指定查询的文件</li>
-</ul>
-<p>返回结果:</p>
-<ul>
-<li><a href=../../object/ifs/stat.md.html>Stat</a>, 返回文件的基础信息</li>
-</ul>
-<hr>
 <h3 id="readlink">readlink</h3>
 <p><strong>读取指定的软连接文件, windows 下不支持此方法</strong></p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> <span class="hljs-built_in">String</span> fs.readlink(<span class="hljs-built_in">String</span> path) <span class="hljs-keyword">async</span>;
-</code></pre>
-<p>调用参数:</p>
-<ul>
-<li>path: String, 指定读取的软连接文件</li>
-</ul>
-<p>返回结果:</p>
-<ul>
-<li>String, 返回软连接指向的文件名</li>
-</ul>
-<hr>
-<h3 id="readlinksync">readlinkSync</h3>
-<p><strong>读取指定的软连接文件，windows 下不支持此方法，是 readlink 的同步版兼容接口</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> <span class="hljs-built_in">String</span> fs.readlinkSync(<span class="hljs-built_in">String</span> path);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -506,34 +344,10 @@
 <li>String, 返回处理后的绝对路径</li>
 </ul>
 <hr>
-<h3 id="realpathsync">realpathSync</h3>
-<p><strong>返回指定路径的绝对路径，如果指定路径中包含相对路径也会被展开，是 realpath 的同步版兼容接口</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> <span class="hljs-built_in">String</span> fs.realpathSync(<span class="hljs-built_in">String</span> path);
-</code></pre>
-<p>调用参数:</p>
-<ul>
-<li>path: String, 指定读取的路径</li>
-</ul>
-<p>返回结果:</p>
-<ul>
-<li>String, 返回处理后的绝对路径</li>
-</ul>
-<hr>
 <h3 id="symlink">symlink</h3>
 <p><strong>创建软连接文件</strong></p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> fs.symlink(<span class="hljs-built_in">String</span> target,
     <span class="hljs-built_in">String</span> linkpath) <span class="hljs-keyword">async</span>;
-</code></pre>
-<p>调用参数:</p>
-<ul>
-<li>target: String, 目标文件，可以是文件、目录、或不存在的路径</li>
-<li>linkpath: String, 将被创建的软连接文件</li>
-</ul>
-<hr>
-<h3 id="symlinksync">symlinkSync</h3>
-<p><strong>创建软连接文件, 是 symlink 的同步版兼容接口</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> fs.symlinkSync(<span class="hljs-built_in">String</span> target,
-    <span class="hljs-built_in">String</span> linkpath);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -573,54 +387,9 @@
 <li>Integer, 实际读取的字节数</li>
 </ul>
 <hr>
-<h3 id="readsync">readSync</h3>
-<p><strong>根据文件描述符，读取文件内容</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> Integer fs.readSync(Integer fd,
-    Buffer buffer,
-    Integer offset = <span class="hljs-number">0</span>,
-    Integer length = <span class="hljs-number">-1</span>,
-    Integer position = <span class="hljs-number">-1</span>);
-</code></pre>
-<p>调用参数:</p>
-<ul>
-<li>fd: Integer, 文件描述符</li>
-<li>buffer: <a href=../../object/ifs/buffer.md.html>Buffer</a>, 读取结果写入的 <a href=../../object/ifs/buffer.md.html>Buffer</a> 对象</li>
-<li>offset: Integer, <a href=../../object/ifs/buffer.md.html>Buffer</a> 写入偏移量， 默认为 0</li>
-<li>length: Integer, 文件读取字节数，默认为 0</li>
-<li>position: Integer, 文件读取位置，默认为当前文件位置</li>
-</ul>
-<p>返回结果:</p>
-<ul>
-<li>Integer, 实际读取的字节数</li>
-</ul>
-<hr>
-<h3 id="truncatesync">truncateSync</h3>
-<p><strong>修改文件尺寸,如果指定的长度大于源文件大小则用&#39;\0&#39;填充，否则多于的文件内容将丢失，是 truncate 的同步版兼容接口</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> fs.truncateSync(<span class="hljs-built_in">String</span> path,
-    Integer len);
-</code></pre>
-<p>调用参数:</p>
-<ul>
-<li>path: String, 指定被修改文件的路径</li>
-<li>len: Integer, 指定修改后文件的大小</li>
-</ul>
-<hr>
 <h3 id="readdir">readdir</h3>
 <p><strong>读取指定目录的文件信息</strong></p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> List fs.readdir(<span class="hljs-built_in">String</span> path) <span class="hljs-keyword">async</span>;
-</code></pre>
-<p>调用参数:</p>
-<ul>
-<li>path: String, 指定查询的目录</li>
-</ul>
-<p>返回结果:</p>
-<ul>
-<li><a href=../../object/ifs/list.md.html>List</a>, 返回目录的文件信息数组</li>
-</ul>
-<hr>
-<h3 id="readdirsync">readdirSync</h3>
-<p><strong>读取指定目录的文件信息，是 readdir 的同步版兼容接口</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> List fs.readdirSync(<span class="hljs-built_in">String</span> path);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -681,32 +450,6 @@
 <li>&#39;a+&#39; 读写添加方式，文件不存在则自动创建。</li>
 </ul>
 <hr>
-<h3 id="opensync">openSync</h3>
-<p><strong>fs.open() 的阻塞版本</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> Integer fs.openSync(<span class="hljs-built_in">String</span> fname,
-    <span class="hljs-built_in">String</span> flags = <span class="hljs-string">"r"</span>,
-    Integer mode = <span class="hljs-number">0666</span>);
-</code></pre>
-<p>调用参数:</p>
-<ul>
-<li>fname: String, 指定文件名</li>
-<li>flags: String, 指定文件打开方式，缺省为 &quot;r&quot;，只读方式</li>
-<li>mode: Integer, 当创建文件的时候，指定文件的模式，默认 0666</li>
-</ul>
-<p>返回结果:</p>
-<ul>
-<li>Integer, 返回打开的文件描述符</li>
-</ul>
-<p>参数 flags 支持的方式如下：</p>
-<ul>
-<li>&#39;r&#39; 只读方式，文件不存在则抛出错误。</li>
-<li>&#39;r+&#39; 读写方式，文件不存在则抛出错误。</li>
-<li>&#39;w&#39; 只写方式，文件不存在则自动创建，存在则将被清空。</li>
-<li>&#39;w+&#39; 读写方式，文件不存在则自动创建。</li>
-<li>&#39;a&#39; 只写添加方式，文件不存在则自动创建。</li>
-<li>&#39;a+&#39; 读写添加方式，文件不存在则自动创建。</li>
-</ul>
-<hr>
 <h3 id="close">close</h3>
 <p><strong>关闭文件描述符</strong></p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> fs.close(Integer fd) <span class="hljs-keyword">async</span>;
@@ -716,17 +459,8 @@
 <li>fd: Integer, 文件描述符</li>
 </ul>
 <hr>
-<h3 id="closesync">closeSync</h3>
-<p><strong>fs.close() 的阻塞版本</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> fs.closeSync(Integer fd);
-</code></pre>
-<p>调用参数:</p>
-<ul>
-<li>fd: Integer, 文件描述符</li>
-</ul>
-<hr>
 <h3 id="opentextstream">openTextStream</h3>
-<p><strong>打开文件，用于读取，写入，或者同时读写，是 open 的同步版兼容接口</strong></p>
+<p><strong>打开文本文件，用于读取，写入，或者同时读写</strong></p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> BufferedStream fs.openTextStream(<span class="hljs-built_in">String</span> fname,
     <span class="hljs-built_in">String</span> flags = <span class="hljs-string">"r"</span>) <span class="hljs-keyword">async</span>;
 </code></pre>
@@ -739,8 +473,7 @@
 <ul>
 <li><a href=../../object/ifs/bufferedstream.md.html>BufferedStream</a>, 返回打开的文件对象</li>
 </ul>
-<p>/*! @brief 打开文本文件，用于读取，写入，或者同时读写</p>
-<p> 参数 flags 支持的方式如下：</p>
+<p>参数 flags 支持的方式如下：</p>
 <ul>
 <li>&#39;r&#39; 只读方式，文件不存在则抛出错误。</li>
 <li>&#39;r+&#39; 读写方式，文件不存在则抛出错误。</li>
@@ -767,21 +500,6 @@
 <p><strong>打开二进制文件，并读取内容</strong></p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> Variant fs.readFile(<span class="hljs-built_in">String</span> fname,
     <span class="hljs-built_in">String</span> encoding = <span class="hljs-string">""</span>) <span class="hljs-keyword">async</span>;
-</code></pre>
-<p>调用参数:</p>
-<ul>
-<li>fname: String, 指定文件名</li>
-<li>encoding: String, 指定解码方式，缺省不解码</li>
-</ul>
-<p>返回结果:</p>
-<ul>
-<li>Variant, 返回文件文本内容</li>
-</ul>
-<hr>
-<h3 id="readfilesync">readFileSync</h3>
-<p><strong>打开二进制文件，并读取内容，是 readFile 的同步版兼容接口</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> Variant fs.readFileSync(<span class="hljs-built_in">String</span> fname,
-    <span class="hljs-built_in">String</span> encoding = <span class="hljs-string">""</span>);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -830,32 +548,10 @@
 <li>data: <a href=../../object/ifs/buffer.md.html>Buffer</a>, 指定要写入的二进制数据</li>
 </ul>
 <hr>
-<h3 id="writefilesync">writeFileSync</h3>
-<p><strong>创建二进制文件，并写入内容，是 writeFile 的同步版兼容接口</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> fs.writeFileSync(<span class="hljs-built_in">String</span> fname,
-    Buffer data);
-</code></pre>
-<p>调用参数:</p>
-<ul>
-<li>fname: String, 指定文件名</li>
-<li>data: <a href=../../object/ifs/buffer.md.html>Buffer</a>, 指定要写入的二进制数据</li>
-</ul>
-<hr>
 <h3 id="appendfile">appendFile</h3>
 <p><strong>创建二进制文件，并写入内容</strong></p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> fs.appendFile(<span class="hljs-built_in">String</span> fname,
     Buffer data) <span class="hljs-keyword">async</span>;
-</code></pre>
-<p>调用参数:</p>
-<ul>
-<li>fname: String, 指定文件名</li>
-<li>data: <a href=../../object/ifs/buffer.md.html>Buffer</a>, 指定要写入的二进制数据</li>
-</ul>
-<hr>
-<h3 id="appendfilesync">appendFileSync</h3>
-<p><strong>创建二进制文件，并写入内容，是 appendFile 的同步版兼容接口</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> fs.appendFileSync(<span class="hljs-built_in">String</span> fname,
-    Buffer data);
 </code></pre>
 <p>调用参数:</p>
 <ul>
