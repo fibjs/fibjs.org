@@ -9,11 +9,16 @@ var c = new util.LruCache(10, 100);
 ```
 
 ## 继承关系
-<dot>digraph {node [ fontname = "Helvetica,sans-Serif", fontsize = 10, shape = "record" ];
-object[tooltip="object", style="filled", fillcolor="white", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
-LruCache[tooltip="LruCache", style="filled", fillcolor="lightgray", label="{LruCache|new LruCache()\l|size\ltimeout\l|clear()\lhas()\lget()\lset()\lremove()\lisEmpty()\l}"];
-object -> LruCache [dir=back]
-}</dot>
+```dot
+digraph {
+    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
+
+    object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
+    LruCache [tooltip="LruCache", fillcolor="lightgray", label="{LruCache|new LruCache()\l|size\ltimeout\l|clear()\lhas()\lget()\lset()\lremove()\lisEmpty()\l}"];
+
+    object -> LruCache [dir=back];
+}
+```
 
 ## 构造函数
         

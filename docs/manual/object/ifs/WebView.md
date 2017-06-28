@@ -2,13 +2,18 @@
 浏览器窗口对象
 
 ## 继承关系
-<dot>digraph {node [ fontname = "Helvetica,sans-Serif", fontsize = 10, shape = "record" ];
-object[tooltip="object", style="filled", fillcolor="white", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
-EventEmitter[tooltip="EventEmitter", style="filled", fillcolor="white", URL="EventEmitter.md", label="{EventEmitter|new EventEmitter()\l|defaultMaxListeners\l|on()\laddListener()\lprependListener()\lonce()\lprependOnceListener()\loff()\lremoveListener()\lremoveAllListeners()\lsetMaxListeners()\lgetMaxListeners()\llisteners()\llistenerCount()\leventNames()\lemit()\l}"];
-WebView[tooltip="WebView", style="filled", fillcolor="lightgray", label="{WebView|visible\lonload\lonmove\lonresize\lonclose\lonmessage\l|setHtml()\lprint()\lclose()\lwait()\lpostMessage()\l}"];
-object -> EventEmitter [dir=back]
-EventEmitter -> WebView [dir=back]
-}</dot>
+```dot
+digraph {
+    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
+
+    object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
+    EventEmitter [tooltip="EventEmitter", URL="EventEmitter.md", label="{EventEmitter|new EventEmitter()\l|defaultMaxListeners\l|on()\laddListener()\lprependListener()\lonce()\lprependOnceListener()\loff()\lremoveListener()\lremoveAllListeners()\lsetMaxListeners()\lgetMaxListeners()\llisteners()\llistenerCount()\leventNames()\lemit()\l}"];
+    WebView [tooltip="WebView", fillcolor="lightgray", label="{WebView|visible\lonload\lonmove\lonresize\lonclose\lonmessage\l|setHtml()\lprint()\lclose()\lwait()\lpostMessage()\l}"];
+
+    object -> EventEmitter [dir=back];
+    EventEmitter -> WebView [dir=back];
+}
+```
 
 ## 静态属性
         

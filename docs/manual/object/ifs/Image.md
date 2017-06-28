@@ -9,11 +9,16 @@ var img1 = gd.load(data);
 ```
 
 ## 继承关系
-<dot>digraph {node [ fontname = "Helvetica,sans-Serif", fontsize = 10, shape = "record" ];
-object[tooltip="object", style="filled", fillcolor="white", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
-Image[tooltip="Image", style="filled", fillcolor="lightgray", label="{Image|width\lheight\lformat\ltype\lcolorsTotal\ltransparent\lprogressive\lalphaBlending\l|getData()\lsave()\lcolorAllocate()\lcolorAllocateAlpha()\lcolorClosest()\lcolorClosestHWB()\lcolorClosestAlpha()\lcolorExact()\lcolorExactAlpha()\lcolorResolve()\lcolorResolveAlpha()\lcolorDeallocate()\lclip()\lgetPixel()\lgetTrueColorPixel()\lsetPixel()\lsetThickness()\lline()\lrectangle()\lfilledRectangle()\lpolygon()\lopenPolygon()\lfilledPolygon()\lellipse()\lfilledEllipse()\larc()\lfilledArc()\lfill()\lfillToBorder()\lcolorReplace()\lclone()\lresample()\lcrop()\lflip()\lrotate()\lconvert()\lcopy()\lcopyMerge()\lcopyMergeGray()\lcopyResized()\lcopyResampled()\lcopyRotated()\lfilter()\laffine()\lgaussianBlur()\l}"];
-object -> Image [dir=back]
-}</dot>
+```dot
+digraph {
+    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
+
+    object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
+    Image [tooltip="Image", fillcolor="lightgray", label="{Image|width\lheight\lformat\ltype\lcolorsTotal\ltransparent\lprogressive\lalphaBlending\l|getData()\lsave()\lcolorAllocate()\lcolorAllocateAlpha()\lcolorClosest()\lcolorClosestHWB()\lcolorClosestAlpha()\lcolorExact()\lcolorExactAlpha()\lcolorResolve()\lcolorResolveAlpha()\lcolorDeallocate()\lclip()\lgetPixel()\lgetTrueColorPixel()\lsetPixel()\lsetThickness()\lline()\lrectangle()\lfilledRectangle()\lpolygon()\lopenPolygon()\lfilledPolygon()\lellipse()\lfilledEllipse()\larc()\lfilledArc()\lfill()\lfillToBorder()\lcolorReplace()\lclone()\lresample()\lcrop()\lflip()\lrotate()\lconvert()\lcopy()\lcopyMerge()\lcopyMergeGray()\lcopyResized()\lcopyResampled()\lcopyRotated()\lfilter()\laffine()\lgaussianBlur()\l}"];
+
+    object -> Image [dir=back];
+}
+```
 
 ## 成员属性
         

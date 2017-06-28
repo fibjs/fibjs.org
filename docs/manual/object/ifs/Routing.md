@@ -51,13 +51,18 @@ var routing = new mq.Routing({
 匹配消息 "/func1/123/456.html" 后，value == "123"，params == ["123"];
 
 ## 继承关系
-<dot>digraph {node [ fontname = "Helvetica,sans-Serif", fontsize = 10, shape = "record" ];
-object[tooltip="object", style="filled", fillcolor="white", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
-Handler[tooltip="Handler", style="filled", fillcolor="white", URL="Handler.md", label="{Handler|new Handler()\l|invoke()\l}"];
-Routing[tooltip="Routing", style="filled", fillcolor="lightgray", label="{Routing|new Routing()\l|append()\lall()\lget()\lpost()\ldel()\lput()\lpatch()\l}"];
-object -> Handler [dir=back]
-Handler -> Routing [dir=back]
-}</dot>
+```dot
+digraph {
+    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
+
+    object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
+    Handler [tooltip="Handler", URL="Handler.md", label="{Handler|new Handler()\l|invoke()\l}"];
+    Routing [tooltip="Routing", fillcolor="lightgray", label="{Routing|new Routing()\l|append()\lall()\lget()\lpost()\ldel()\lput()\lpatch()\l}"];
+
+    object -> Handler [dir=back];
+    Handler -> Routing [dir=back];
+}
+```
 
 ## 构造函数
         

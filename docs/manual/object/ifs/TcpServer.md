@@ -17,17 +17,22 @@ new net.TcpServer(8080, func).run();
 ```
 
 ## 继承关系
-<dot>digraph {node [ fontname = "Helvetica,sans-Serif", fontsize = 10, shape = "record" ];
-object[tooltip="object", style="filled", fillcolor="white", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
-TcpServer[tooltip="TcpServer", style="filled", fillcolor="lightgray", label="{TcpServer|new TcpServer()\l|socket\lhandler\lstats\l|run()\lasyncRun()\lstop()\l}"];
-HttpServer[tooltip="HttpServer", style="filled", fillcolor="white", URL="HttpServer.md", label="{HttpServer|new HttpServer()\l|crossDomain\lforceGZIP\lmaxHeadersCount\lmaxUploadSize\lhttpStats\l|onerror()\l}"];
-HttpsServer[tooltip="HttpsServer", style="filled", fillcolor="white", URL="HttpsServer.md", label="{HttpsServer|new HttpsServer()\l|verification\lca\l}"];
-SslServer[tooltip="SslServer", style="filled", fillcolor="white", URL="SslServer.md", label="{SslServer|new SslServer()\l|verification\lca\l}"];
-object -> TcpServer [dir=back]
-TcpServer -> HttpServer [dir=back]
-HttpServer -> HttpsServer [dir=back]
-TcpServer -> SslServer [dir=back]
-}</dot>
+```dot
+digraph {
+    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
+
+    object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
+    TcpServer [tooltip="TcpServer", fillcolor="lightgray", label="{TcpServer|new TcpServer()\l|socket\lhandler\lstats\l|run()\lasyncRun()\lstop()\l}"];
+    HttpServer [tooltip="HttpServer", URL="HttpServer.md", label="{HttpServer|new HttpServer()\l|crossDomain\lforceGZIP\lmaxHeadersCount\lmaxUploadSize\lhttpStats\l|onerror()\l}"];
+    HttpsServer [tooltip="HttpsServer", URL="HttpsServer.md", label="{HttpsServer|new HttpsServer()\l|verification\lca\l}"];
+    SslServer [tooltip="SslServer", URL="SslServer.md", label="{SslServer|new SslServer()\l|verification\lca\l}"];
+
+    object -> TcpServer [dir=back];
+    TcpServer -> HttpServer [dir=back];
+    HttpServer -> HttpsServer [dir=back];
+    TcpServer -> SslServer [dir=back];
+}
+```
 
 ## 构造函数
         

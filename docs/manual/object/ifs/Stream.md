@@ -4,25 +4,30 @@
 Stream 为基础对象，用于为流处理定义标准借口，不能独立创建
 
 ## 继承关系
-<dot>digraph {node [ fontname = "Helvetica,sans-Serif", fontsize = 10, shape = "record" ];
-object[tooltip="object", style="filled", fillcolor="white", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
-Stream[tooltip="Stream", style="filled", fillcolor="lightgray", label="{Stream|read()\lwrite()\lclose()\lcopyTo()\l}"];
-BufferedStream[tooltip="BufferedStream", style="filled", fillcolor="white", URL="BufferedStream.md", label="{BufferedStream|new BufferedStream()\l|stream\lcharset\lEOL\l|readText()\lreadLine()\lreadLines()\lreadUntil()\lwriteText()\lwriteLine()\l}"];
-SubProcess[tooltip="SubProcess", style="filled", fillcolor="white", URL="SubProcess.md", label="{SubProcess|pid\lstdin\lstdout\l|kill()\lwait()\lfindWindow()\l}"];
-SeekableStream[tooltip="SeekableStream", style="filled", fillcolor="white", URL="SeekableStream.md", label="{SeekableStream|seek()\ltell()\lrewind()\lsize()\lreadAll()\ltruncate()\leof()\lflush()\lstat()\l}"];
-File[tooltip="File", style="filled", fillcolor="white", URL="File.md", label="{File|name\lfd\l|chmod()\l}"];
-MemoryStream[tooltip="MemoryStream", style="filled", fillcolor="white", URL="MemoryStream.md", label="{MemoryStream|new MemoryStream()\l|setTime()\lclone()\lclear()\l}"];
-Socket[tooltip="Socket", style="filled", fillcolor="white", URL="Socket.md", label="{Socket|new Socket()\l|family\ltype\lremoteAddress\lremotePort\llocalAddress\llocalPort\ltimeout\l|connect()\lbind()\llisten()\laccept()\lrecv()\lrecvfrom()\lsend()\lsendto()\l}"];
-SslSocket[tooltip="SslSocket", style="filled", fillcolor="white", URL="SslSocket.md", label="{SslSocket|new SslSocket()\l|verification\lca\lpeerCert\lstream\l|connect()\laccept()\l}"];
-object -> Stream [dir=back]
-Stream -> BufferedStream [dir=back]
-BufferedStream -> SubProcess [dir=back]
-Stream -> SeekableStream [dir=back]
-SeekableStream -> File [dir=back]
-SeekableStream -> MemoryStream [dir=back]
-Stream -> Socket [dir=back]
-Stream -> SslSocket [dir=back]
-}</dot>
+```dot
+digraph {
+    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
+
+    object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
+    Stream [tooltip="Stream", fillcolor="lightgray", label="{Stream|read()\lwrite()\lclose()\lcopyTo()\l}"];
+    BufferedStream [tooltip="BufferedStream", URL="BufferedStream.md", label="{BufferedStream|new BufferedStream()\l|stream\lcharset\lEOL\l|readText()\lreadLine()\lreadLines()\lreadUntil()\lwriteText()\lwriteLine()\l}"];
+    SubProcess [tooltip="SubProcess", URL="SubProcess.md", label="{SubProcess|pid\lstdin\lstdout\l|kill()\lwait()\lfindWindow()\l}"];
+    SeekableStream [tooltip="SeekableStream", URL="SeekableStream.md", label="{SeekableStream|seek()\ltell()\lrewind()\lsize()\lreadAll()\ltruncate()\leof()\lflush()\lstat()\l}"];
+    File [tooltip="File", URL="File.md", label="{File|name\lfd\l|chmod()\l}"];
+    MemoryStream [tooltip="MemoryStream", URL="MemoryStream.md", label="{MemoryStream|new MemoryStream()\l|setTime()\lclone()\lclear()\l}"];
+    Socket [tooltip="Socket", URL="Socket.md", label="{Socket|new Socket()\l|family\ltype\lremoteAddress\lremotePort\llocalAddress\llocalPort\ltimeout\l|connect()\lbind()\llisten()\laccept()\lrecv()\lrecvfrom()\lsend()\lsendto()\l}"];
+    SslSocket [tooltip="SslSocket", URL="SslSocket.md", label="{SslSocket|new SslSocket()\l|verification\lca\lpeerCert\lstream\l|connect()\laccept()\l}"];
+
+    object -> Stream [dir=back];
+    Stream -> BufferedStream [dir=back];
+    BufferedStream -> SubProcess [dir=back];
+    Stream -> SeekableStream [dir=back];
+    SeekableStream -> File [dir=back];
+    SeekableStream -> MemoryStream [dir=back];
+    Stream -> Socket [dir=back];
+    Stream -> SslSocket [dir=back];
+}
+```
 
 ## 成员函数
         

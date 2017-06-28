@@ -73,14 +73,13 @@ require 可用于加载基础模块，文件模块。
 若引用路径不是 ./ 或 ../ 开头，并且非基础模块，require 从当前模块所在路径下的 node_modules 查找，并上级目录递归。
 
 基础流程如下:
-
-<dot>
+```dot
    digraph{
        node [fontname = "Helvetica,sans-Serif", fontsize = 10];
        edge [fontname = "Helvetica,sans-Serif", fontsize = 10];
 
        start [label="起始"];
-       resolve [label="[path](path.md).resolve" shape="rect"];
+       resolve [label="path.resolve" shape="rect"];
        search [label="从当前路径\n向上递归查找\nnode_modules" shape="rect"];
        load [label="加载" shape="rect"];
        end [label="返回" shape="doublecircle"];
@@ -90,7 +89,7 @@ require 可用于加载基础模块，文件模块。
        is_abs [label="绝对路径？" shape="diamond"];
        has_file [label="原名存在？" shape="diamond"];
        has_ext [label="增加 .js 存在？" shape="diamond"];
-       has_package [label="/package.[json](json.md)\n存在？" shape="diamond"];
+       has_package [label="/package.json\n存在？" shape="diamond"];
        has_main [label="main 存在？" shape="diamond"];
        has_index [label="index.js 存在？" shape="diamond"];
 
@@ -115,7 +114,7 @@ require 可用于加载基础模块，文件模块。
        has_index -> end [label="否"];
        load -> end;
    }
-</dot>
+```
 
 --------------------------
 ### clearInterval

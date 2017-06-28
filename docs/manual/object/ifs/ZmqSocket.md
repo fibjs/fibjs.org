@@ -2,11 +2,16 @@
 ZeroMQ 套接口对象
 
 ## 继承关系
-<dot>digraph {node [ fontname = "Helvetica,sans-Serif", fontsize = 10, shape = "record" ];
-object[tooltip="object", style="filled", fillcolor="white", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
-ZmqSocket[tooltip="ZmqSocket", style="filled", fillcolor="lightgray", label="{ZmqSocket|new ZmqSocket()\l|type\l|bind()\lconnect()\lrecv()\lsend()\lclose()\l}"];
-object -> ZmqSocket [dir=back]
-}</dot>
+```dot
+digraph {
+    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
+
+    object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
+    ZmqSocket [tooltip="ZmqSocket", fillcolor="lightgray", label="{ZmqSocket|new ZmqSocket()\l|type\l|bind()\lconnect()\lrecv()\lsend()\lclose()\l}"];
+
+    object -> ZmqSocket [dir=back];
+}
+```
 
 ## 构造函数
         

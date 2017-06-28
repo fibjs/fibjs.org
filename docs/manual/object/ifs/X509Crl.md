@@ -8,11 +8,16 @@ var k = new crypto.X509Crl();
 ```
 
 ## 继承关系
-<dot>digraph {node [ fontname = "Helvetica,sans-Serif", fontsize = 10, shape = "record" ];
-object[tooltip="object", style="filled", fillcolor="white", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
-X509Crl[tooltip="X509Crl", style="filled", fillcolor="lightgray", label="{X509Crl|new X509Crl()\l|load()\lloadFile()\ldump()\lclear()\l}"];
-object -> X509Crl [dir=back]
-}</dot>
+```dot
+digraph {
+    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
+
+    object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
+    X509Crl [tooltip="X509Crl", fillcolor="lightgray", label="{X509Crl|new X509Crl()\l|load()\lloadFile()\ldump()\lclear()\l}"];
+
+    object -> X509Crl [dir=back];
+}
+```
 
 ## 构造函数
         

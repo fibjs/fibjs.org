@@ -108,7 +108,7 @@ function build_docs() {
     function read_doc(p) {
         var md = fs.readFileSync(p).toString();
 
-        md = md.replace(/<dot>((.|\n)*?)<\/dot>/g, (s, s1) => {
+        md = md.replace(/```dot((.|\n)*?)```/g, (s, s1) => {
             var svg = old_dot_cache[s1];
             if (!svg) {
                 if (Viz === undefined)

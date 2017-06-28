@@ -2,27 +2,32 @@
 XmlNode 对象是整个 DOM 的基础数据类型
 
 ## 继承关系
-<dot>digraph {node [ fontname = "Helvetica,sans-Serif", fontsize = 10, shape = "record" ];
-object[tooltip="object", style="filled", fillcolor="white", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
-XmlNode[tooltip="XmlNode", style="filled", fillcolor="lightgray", label="{XmlNode|nodeType\lnodeName\lnodeValue\lownerDocument\lparentNode\lchildNodes\lfirstChild\llastChild\lpreviousSibling\lnextSibling\l|hasChildNodes()\lnormalize()\lcloneNode()\llookupPrefix()\llookupNamespaceURI()\linsertBefore()\linsertAfter()\lappendChild()\lreplaceChild()\lremoveChild()\l}"];
-XmlCharacterData[tooltip="XmlCharacterData", style="filled", fillcolor="white", URL="XmlCharacterData.md", label="{XmlCharacterData|data\llength\l|substringData()\lappendData()\linsertData()\ldeleteData()\lreplaceData()\l}"];
-XmlComment[tooltip="XmlComment", style="filled", fillcolor="white", URL="XmlComment.md", label="{XmlComment}"];
-XmlText[tooltip="XmlText", style="filled", fillcolor="white", URL="XmlText.md", label="{XmlText|splitText()\l}"];
-XmlCDATASection[tooltip="XmlCDATASection", style="filled", fillcolor="white", URL="XmlCDATASection.md", label="{XmlCDATASection}"];
-XmlDocument[tooltip="XmlDocument", style="filled", fillcolor="white", URL="XmlDocument.md", label="{XmlDocument|new XmlDocument()\l|inputEncoding\lxmlStandalone\lxmlVersion\ldoctype\ldocumentElement\lhead\ltitle\lbody\l|load()\lgetElementsByTagName()\lgetElementsByTagNameNS()\lgetElementById()\lgetElementsByClassName()\lcreateElement()\lcreateElementNS()\lcreateTextNode()\lcreateComment()\lcreateCDATASection()\lcreateProcessingInstruction()\l}"];
-XmlDocumentType[tooltip="XmlDocumentType", style="filled", fillcolor="white", URL="XmlDocumentType.md", label="{XmlDocumentType|name\lpublicId\lsystemId\l}"];
-XmlElement[tooltip="XmlElement", style="filled", fillcolor="white", URL="XmlElement.md", label="{XmlElement|namespaceURI\lprefix\llocalName\ltagName\lid\ltextContent\linnerHTML\lclassName\lattributes\l|getAttribute()\lgetAttributeNS()\lsetAttribute()\lsetAttributeNS()\lremoveAttribute()\lremoveAttributeNS()\lhasAttribute()\lhasAttributeNS()\lgetElementsByTagName()\lgetElementsByTagNameNS()\lgetElementById()\lgetElementsByClassName()\l}"];
-XmlProcessingInstruction[tooltip="XmlProcessingInstruction", style="filled", fillcolor="white", URL="XmlProcessingInstruction.md", label="{XmlProcessingInstruction|target\ldata\l}"];
-object -> XmlNode [dir=back]
-XmlNode -> XmlCharacterData [dir=back]
-XmlCharacterData -> XmlComment [dir=back]
-XmlCharacterData -> XmlText [dir=back]
-XmlText -> XmlCDATASection [dir=back]
-XmlNode -> XmlDocument [dir=back]
-XmlNode -> XmlDocumentType [dir=back]
-XmlNode -> XmlElement [dir=back]
-XmlNode -> XmlProcessingInstruction [dir=back]
-}</dot>
+```dot
+digraph {
+    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
+
+    object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
+    XmlNode [tooltip="XmlNode", fillcolor="lightgray", label="{XmlNode|nodeType\lnodeName\lnodeValue\lownerDocument\lparentNode\lchildNodes\lfirstChild\llastChild\lpreviousSibling\lnextSibling\l|hasChildNodes()\lnormalize()\lcloneNode()\llookupPrefix()\llookupNamespaceURI()\linsertBefore()\linsertAfter()\lappendChild()\lreplaceChild()\lremoveChild()\l}"];
+    XmlCharacterData [tooltip="XmlCharacterData", URL="XmlCharacterData.md", label="{XmlCharacterData|data\llength\l|substringData()\lappendData()\linsertData()\ldeleteData()\lreplaceData()\l}"];
+    XmlComment [tooltip="XmlComment", URL="XmlComment.md", label="{XmlComment}"];
+    XmlText [tooltip="XmlText", URL="XmlText.md", label="{XmlText|splitText()\l}"];
+    XmlCDATASection [tooltip="XmlCDATASection", URL="XmlCDATASection.md", label="{XmlCDATASection}"];
+    XmlDocument [tooltip="XmlDocument", URL="XmlDocument.md", label="{XmlDocument|new XmlDocument()\l|inputEncoding\lxmlStandalone\lxmlVersion\ldoctype\ldocumentElement\lhead\ltitle\lbody\l|load()\lgetElementsByTagName()\lgetElementsByTagNameNS()\lgetElementById()\lgetElementsByClassName()\lcreateElement()\lcreateElementNS()\lcreateTextNode()\lcreateComment()\lcreateCDATASection()\lcreateProcessingInstruction()\l}"];
+    XmlDocumentType [tooltip="XmlDocumentType", URL="XmlDocumentType.md", label="{XmlDocumentType|name\lpublicId\lsystemId\l}"];
+    XmlElement [tooltip="XmlElement", URL="XmlElement.md", label="{XmlElement|namespaceURI\lprefix\llocalName\ltagName\lid\ltextContent\linnerHTML\lclassName\lattributes\l|getAttribute()\lgetAttributeNS()\lsetAttribute()\lsetAttributeNS()\lremoveAttribute()\lremoveAttributeNS()\lhasAttribute()\lhasAttributeNS()\lgetElementsByTagName()\lgetElementsByTagNameNS()\lgetElementById()\lgetElementsByClassName()\l}"];
+    XmlProcessingInstruction [tooltip="XmlProcessingInstruction", URL="XmlProcessingInstruction.md", label="{XmlProcessingInstruction|target\ldata\l}"];
+
+    object -> XmlNode [dir=back];
+    XmlNode -> XmlCharacterData [dir=back];
+    XmlCharacterData -> XmlComment [dir=back];
+    XmlCharacterData -> XmlText [dir=back];
+    XmlText -> XmlCDATASection [dir=back];
+    XmlNode -> XmlDocument [dir=back];
+    XmlNode -> XmlDocumentType [dir=back];
+    XmlNode -> XmlElement [dir=back];
+    XmlNode -> XmlProcessingInstruction [dir=back];
+}
+```
 
 ## 成员属性
         

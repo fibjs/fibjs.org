@@ -24,13 +24,18 @@ l.release();
 生产者/消费者模式通常则将信号量与队列配合使用。生产者向队列中加入数据，并 post 一个信号，消费者则先 wait 信号，获取信号后去队查询取数据。
 
 ## 继承关系
-<dot>digraph {node [ fontname = "Helvetica,sans-Serif", fontsize = 10, shape = "record" ];
-object[tooltip="object", style="filled", fillcolor="white", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
-Lock[tooltip="Lock", style="filled", fillcolor="white", URL="Lock.md", label="{Lock|new Lock()\l|acquire()\lrelease()\lcount()\l}"];
-Semaphore[tooltip="Semaphore", style="filled", fillcolor="lightgray", label="{Semaphore|new Semaphore()\l|wait()\lpost()\ltrywait()\l}"];
-object -> Lock [dir=back]
-Lock -> Semaphore [dir=back]
-}</dot>
+```dot
+digraph {
+    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
+
+    object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
+    Lock [tooltip="Lock", URL="Lock.md", label="{Lock|new Lock()\l|acquire()\lrelease()\lcount()\l}"];
+    Semaphore [tooltip="Semaphore", fillcolor="lightgray", label="{Semaphore|new Semaphore()\l|wait()\lpost()\ltrywait()\l}"];
+
+    object -> Lock [dir=back];
+    Lock -> Semaphore [dir=back];
+}
+```
 
 ## 构造函数
         
