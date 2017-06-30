@@ -25,7 +25,7 @@ digraph {
 
     object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
     TcpServer [tooltip="TcpServer", URL="TcpServer.md", label="{TcpServer|new TcpServer()\l|socket\lhandler\lstats\l|run()\lasyncRun()\lstop()\l}"];
-    HttpServer [tooltip="HttpServer", fillcolor="lightgray", label="{HttpServer|new HttpServer()\l|crossDomain\lforceGZIP\lmaxHeadersCount\lmaxUploadSize\lhttpStats\l|onerror()\l}"];
+    HttpServer [tooltip="HttpServer", fillcolor="lightgray", label="{HttpServer|new HttpServer()\l|crossDomain\lforceGZIP\lmaxHeadersCount\lmaxUploadSize\lserverName\lhttpStats\l|onerror()\l}"];
     HttpsServer [tooltip="HttpsServer", URL="HttpsServer.md", label="{HttpsServer|new HttpsServer()\l|verification\lca\l}"];
 
     object -> TcpServer [dir=back];
@@ -93,6 +93,14 @@ Integer HttpServer.maxHeadersCount;
 
 ```JavaScript
 Integer HttpServer.maxUploadSize;
+```
+
+--------------------------
+### serverName
+**String, 查询和设置服务器名称，缺省为：fibjs/0.x.0**
+
+```JavaScript
+String HttpServer.serverName;
 ```
 
 --------------------------

@@ -21,7 +21,7 @@ digraph {
     object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
     Handler [tooltip="Handler", URL="Handler.md", label="{Handler|new Handler()\l|invoke()\l}"];
     HandlerEx [tooltip="HandlerEx", URL="HandlerEx.md", label="{HandlerEx|handler\lstats\l|onerror()\l}"];
-    HttpHandler [tooltip="HttpHandler", fillcolor="lightgray", label="{HttpHandler|new HttpHandler()\l|crossDomain\lforceGZIP\lmaxHeadersCount\lmaxUploadSize\l}"];
+    HttpHandler [tooltip="HttpHandler", fillcolor="lightgray", label="{HttpHandler|new HttpHandler()\l|crossDomain\lforceGZIP\lmaxHeadersCount\lmaxUploadSize\lserverName\l}"];
 
     object -> Handler [dir=back];
     Handler -> HandlerEx [dir=back];
@@ -72,6 +72,14 @@ Integer HttpHandler.maxHeadersCount;
 
 ```JavaScript
 Integer HttpHandler.maxUploadSize;
+```
+
+--------------------------
+### serverName
+**String, 查询和设置服务器名称，缺省为：fibjs/0.x.0**
+
+```JavaScript
+String HttpHandler.serverName;
 ```
 
 --------------------------
