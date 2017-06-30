@@ -741,6 +741,10 @@ static Buffer util.compile(String srcname,
 返回结果:
 * [Buffer](../../object/ifs/Buffer.md), 返回编译出的二进制代码
 
+util.compile 可以将脚本编译为 v8 内部运行数据块(非机器执行代码)。编译以后的代码，保存为 *.jsc 后，可以由 run 和 require 直接加载执行。
+
+由于编译之后，目标代码将不能逆向获取源代码，依赖于 Function.toString 的程序将不能正常运行。
+
 --------------------------
 ### sync
 **包裹 callback 或 async 方法为同步调用**
