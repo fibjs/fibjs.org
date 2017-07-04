@@ -326,6 +326,11 @@ recursiveReadSync(pages).forEach(function (file) {
             }));
         } else if (/.jsx?$/.test(file)) {
             webpack_config.entry[file.replace(/.jsx?$/, '')] = path.resolve(pages, file);
+        } else {
+            webpack_config.plugins.push(new CopyWebpackPlugin([{
+                from: path.resolve(path.join('./web/src/pages/' + file)),
+                to: path.resolve(path.join('./web/dist/' + file))
+            }]));
         }
     }
 });

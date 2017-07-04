@@ -41,6 +41,15 @@ function sync_releases() {
 
     var info = JSON.parse(d.toString());
 
+    var old_version = "";
+
+    try {
+        old_version = fs.readTextFile(path.join(baseFolder, 'version.txt'));
+    } catch (e) {};
+
+    if (old_version !== info[0].tag_name)
+        fs.writeFile(path.join(baseFolder, 'version.txt'), info[0].tag_name);
+
     info.forEach(e => {
         e.html = marked(e.body);
         e.assets.sort((a1, a2) => {
