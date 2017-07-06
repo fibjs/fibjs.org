@@ -258,6 +258,65 @@ ul {
     background-color: #eee;
 }
 
+pre {
+    padding: 0px;
+}
+
+pre code {
+    display: block;
+    margin: 0;
+    cursor: text;
+    padding: 10px;
+    tab-size: 4;
+    overflow-x: auto;
+}
+
+
+/* extra layout rules for the pre when the numbers column is present */
+
+pre.line-numbers {
+    position: relative;
+}
+
+pre.line-numbers code {
+    margin-left: 35px;
+    border-left: 1px solid #ccc;
+}
+
+
+/* layout and counter rules for the numbers column */
+
+pre.line-numbers>div {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    border-radius: 0 0 0 3px;
+    overflow: hidden;
+    counter-reset: line;
+    padding-top: 11px;
+    border-left: 4px solid #00abe5;
+    user-select: none;
+}
+
+
+/* layout and counter rules for each individual number */
+
+pre.line-numbers>div>span {
+    display: block;
+    width: 2.5em;
+    padding: 0 0.5em 0 0;
+    text-align: right;
+    color: #777;
+    overflow: hidden;
+    counter-increment: line;
+}
+
+pre.line-numbers>div>span::before {
+    content: counter(line);
+}
+
 @media (min-width: 480px) {
     .home-tips {
         width: 50%;
