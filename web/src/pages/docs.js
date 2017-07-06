@@ -6,21 +6,11 @@ import 'jquery.tocify';
 $(function () {
     var _toc = $("#toc");
 
-    function isMobile() {
-        try {
-            document.createEvent("TouchEvent");
-            return true;
-        } catch (e) {
-            return false;
-        }
-    }
-
     //Calls the tocify method on your HTML div.
     _toc.tocify({
         showAndHide: false,
         extendPage: false,
-        hashGenerator: "pretty",
-        scrollHistory: !isMobile()
+        hashGenerator: "pretty"
     });
 
     var _content = $(".content");
