@@ -9,7 +9,8 @@ $(function () {
     //Calls the tocify method on your HTML div.
     _toc.tocify({
         showAndHide: false,
-        extendPage: false
+        extendPage: false,
+        hashGenerator: "pretty"
     });
 
     var _content = $(".content");
@@ -50,8 +51,14 @@ $(function () {
         }
     }
 
+    function _sync1() {
+        _height = _toc.height() + 50;
+        _top = _toc.offset().top;
+        _sync();
+    }
+
     _sync();
 
-    _window.resize(_sync);
+    _window.resize(_sync1);
     _window.scroll(_sync);
 });
