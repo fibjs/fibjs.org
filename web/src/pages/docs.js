@@ -10,7 +10,8 @@ $(function () {
     _toc.tocify({
         showAndHide: false,
         extendPage: false,
-        hashGenerator: "pretty"
+        hashGenerator: "pretty",
+        scrollHistory: true
     });
 
     var _content = $(".content");
