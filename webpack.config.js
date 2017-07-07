@@ -70,6 +70,19 @@ marked.setOptions({
     }
 });
 
+marked.Renderer.prototype.heading = function (text, level, raw) {
+    return '<h' +
+        level +
+        ' id="' +
+        this.options.headerPrefix +
+        raw.replace(/\s+/g, '-') +
+        '">' +
+        text +
+        '</h' +
+        level +
+        '>\n';
+};
+
 function build_docs() {
     console.log();
 

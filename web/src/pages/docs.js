@@ -10,7 +10,9 @@ $(function () {
     _toc.tocify({
         showAndHide: false,
         extendPage: false,
-        hashGenerator: "pretty"
+        hashGenerator: function (text, element) {
+            return text.replace(/\s+/g, '-');
+        }
     });
 
     var _content = $(".content");
