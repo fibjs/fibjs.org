@@ -120,7 +120,7 @@ Routing.append(String pattern,
 
 调用参数:
 * pattern: String, 消息匹配格式
-* hdlr: [Handler](Handler.md), 内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq](../../module/ifs/mq.md).[Handler](Handler.md)
+* hdlr: [Handler](Handler.md), 内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq.Handler](../../module/ifs/mq.md#handler)
 
 --------------------------
 **添加一组路由规则**
@@ -146,7 +146,7 @@ Routing.append(String method,
 调用参数:
 * method: String, 指定 [http](../../module/ifs/http.md) 请求方法，"*" 接受所有方法
 * pattern: String, 消息匹配格式
-* hdlr: [Handler](Handler.md), 内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq](../../module/ifs/mq.md).[Handler](Handler.md)
+* hdlr: [Handler](Handler.md), 内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq.Handler](../../module/ifs/mq.md#handler)
 
 --------------------------
 ### all
@@ -169,7 +169,7 @@ Routing.all(String pattern,
 
 调用参数:
 * pattern: String, 消息匹配格式
-* hdlr: [Handler](Handler.md), 内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq](../../module/ifs/mq.md).[Handler](Handler.md)
+* hdlr: [Handler](Handler.md), 内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq.Handler](../../module/ifs/mq.md#handler)
 
 --------------------------
 ### get
@@ -192,7 +192,7 @@ Routing.get(String pattern,
 
 调用参数:
 * pattern: String, 消息匹配格式
-* hdlr: [Handler](Handler.md), 内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq](../../module/ifs/mq.md).[Handler](Handler.md)
+* hdlr: [Handler](Handler.md), 内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq.Handler](../../module/ifs/mq.md#handler)
 
 --------------------------
 ### post
@@ -215,7 +215,7 @@ Routing.post(String pattern,
 
 调用参数:
 * pattern: String, 消息匹配格式
-* hdlr: [Handler](Handler.md), 内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq](../../module/ifs/mq.md).[Handler](Handler.md)
+* hdlr: [Handler](Handler.md), 内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq.Handler](../../module/ifs/mq.md#handler)
 
 --------------------------
 ### del
@@ -238,7 +238,7 @@ Routing.del(String pattern,
 
 调用参数:
 * pattern: String, 消息匹配格式
-* hdlr: [Handler](Handler.md), 内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq](../../module/ifs/mq.md).[Handler](Handler.md)
+* hdlr: [Handler](Handler.md), 内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq.Handler](../../module/ifs/mq.md#handler)
 
 --------------------------
 ### put
@@ -261,7 +261,7 @@ Routing.put(String pattern,
 
 调用参数:
 * pattern: String, 消息匹配格式
-* hdlr: [Handler](Handler.md), 内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq](../../module/ifs/mq.md).[Handler](Handler.md)
+* hdlr: [Handler](Handler.md), 内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq.Handler](../../module/ifs/mq.md#handler)
 
 --------------------------
 ### patch
@@ -284,7 +284,7 @@ Routing.patch(String pattern,
 
 调用参数:
 * pattern: String, 消息匹配格式
-* hdlr: [Handler](Handler.md), 内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq](../../module/ifs/mq.md).[Handler](Handler.md)
+* hdlr: [Handler](Handler.md), 内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq.Handler](../../module/ifs/mq.md#handler)
 
 --------------------------
 ### invoke
@@ -298,7 +298,7 @@ Handler Routing.invoke(object v) async;
 * v: [object](object.md), 指定处理的消息或对象
 
 返回结果:
-* Handler, 返回下一步的处理器
+* [Handler](Handler.md), 返回下一步的处理器
 
 --------------------------
 ### dispose
@@ -317,7 +317,7 @@ Boolean Routing.equals(object expected);
 ```
 
 调用参数:
-* expected: object, 制定比较的目标对象
+* expected: [object](object.md), 制定比较的目标对象
 
 返回结果:
 * Boolean, 返回对象比较的结果

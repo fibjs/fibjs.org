@@ -301,7 +301,7 @@
 <li><a href=xmlelement.md.html>XmlElement</a>: ELEMENT_NODE(1)</li>
 <li><a href=xmlattr.md.html>XmlAttr</a>: ATTRIBUTE_NODE(2)</li>
 <li><a href=xmltext.md.html>XmlText</a>: TEXT_NODE(3)</li>
-<li><a href=xmlcdatasection.md.html>XmlCDATASection</a>: CDATA_SECTION_NODE(4)</li>
+<li>XmlCDATASection: CDATA_SECTION_NODE(4)</li>
 <li><a href=xmlprocessinginstruction.md.html>XmlProcessingInstruction</a>: PROCESSING_INSTRUCTION_NODE(7)</li>
 <li><a href=xmlcomment.md.html>XmlComment</a>: COMMENT_NODE(8)</li>
 <li><a href=xmldocument.md.html>XmlDocument</a>: DOCUMENT_NODE(9)</li>
@@ -317,7 +317,7 @@
 <li><a href=xmlelement.md.html>XmlElement</a>: element name</li>
 <li><a href=xmlattr.md.html>XmlAttr</a>: 属性名称</li>
 <li><a href=xmltext.md.html>XmlText</a>: #text</li>
-<li><a href=xmlcdatasection.md.html>XmlCDATASection</a>: #cdata-section</li>
+<li>XmlCDATASection: #cdata-section</li>
 <li><a href=xmlprocessinginstruction.md.html>XmlProcessingInstruction</a>: 返回指定目标 target</li>
 <li><a href=xmlcomment.md.html>XmlComment</a>: #comment</li>
 <li><a href=xmldocument.md.html>XmlDocument</a>: #document</li>
@@ -333,7 +333,7 @@
 <li><a href=xmlelement.md.html>XmlElement</a>: null</li>
 <li><a href=xmlattr.md.html>XmlAttr</a>: 属性的值</li>
 <li><a href=xmltext.md.html>XmlText</a>: 节点的内容</li>
-<li><a href=xmlcdatasection.md.html>XmlCDATASection</a>: 节点的内容</li>
+<li>XmlCDATASection: 节点的内容</li>
 <li><a href=xmlprocessinginstruction.md.html>XmlProcessingInstruction</a>: 返回指定内容 data</li>
 <li><a href=xmlcomment.md.html>XmlComment</a>: 注释文本</li>
 <li><a href=xmldocument.md.html>XmlDocument</a>: null</li>
@@ -346,7 +346,7 @@
 </code></pre>
 <hr>
 <h3 id="parentnode">parentNode</h3>
-<p><strong>XmlNode, 可返回某节点的父节点</strong></p>
+<p><strong><a href=xmlnode.md.html>XmlNode</a>, 可返回某节点的父节点</strong></p>
 <pre><code class="lang-JavaScript">readonly XmlNode XmlCDATASection.parentNode;
 </code></pre>
 <hr>
@@ -356,22 +356,22 @@
 </code></pre>
 <hr>
 <h3 id="firstchild">firstChild</h3>
-<p><strong>XmlNode, 返回节点的首个子节点</strong></p>
+<p><strong><a href=xmlnode.md.html>XmlNode</a>, 返回节点的首个子节点</strong></p>
 <pre><code class="lang-JavaScript">readonly XmlNode XmlCDATASection.firstChild;
 </code></pre>
 <hr>
 <h3 id="lastchild">lastChild</h3>
-<p><strong>XmlNode, 返回节点的最后一个子节点</strong></p>
+<p><strong><a href=xmlnode.md.html>XmlNode</a>, 返回节点的最后一个子节点</strong></p>
 <pre><code class="lang-JavaScript">readonly XmlNode XmlCDATASection.lastChild;
 </code></pre>
 <hr>
 <h3 id="previoussibling">previousSibling</h3>
-<p><strong>XmlNode, 返回某节点之前紧跟的节点（处于同一树层级），如果没有此节点，那么该属性返回 null</strong></p>
+<p><strong><a href=xmlnode.md.html>XmlNode</a>, 返回某节点之前紧跟的节点（处于同一树层级），如果没有此节点，那么该属性返回 null</strong></p>
 <pre><code class="lang-JavaScript">readonly XmlNode XmlCDATASection.previousSibling;
 </code></pre>
 <hr>
 <h3 id="nextsibling">nextSibling</h3>
-<p><strong>XmlNode, 返回某个元素之后紧跟的节点（处于同一树层级中），如果无此节点，则属性返回 null</strong></p>
+<p><strong><a href=xmlnode.md.html>XmlNode</a>, 返回某个元素之后紧跟的节点（处于同一树层级中），如果无此节点，则属性返回 null</strong></p>
 <pre><code class="lang-JavaScript">readonly XmlNode XmlCDATASection.nextSibling;
 </code></pre>
 <h2 id="-">成员函数</h2>
@@ -385,10 +385,10 @@
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>XmlText, 从当前节点分割出的 Text 节点</li>
+<li><a href=xmltext.md.html>XmlText</a>, 从当前节点分割出的 Text 节点</li>
 </ul>
-<p>该方法将在指定的 offset 处把 XmlText 节点分割成两个节点。原始的 XmlText 节点将被修改，使它包含 offset 指定的位置之前的文本内容（但不包括文本内容）。新的 XmlText 节点将被创建，用于存放从 offset 位置（包括该位置上的字符）到原字符结尾的所有字符。新的 XmlText 节点是该方法的返回值。此外，如果原始的 XmlText 节点具有 parentNode，新的 XmlText 节点将插入这个父节点，紧邻在原始节点之后。</p>
-<p><a href=xmlcdatasection.md.html>XmlCDATASection</a> 接口继承了 XmlText 接口， <a href=xmlcdatasection.md.html>XmlCDATASection</a> 节点也可以使用该方法 ，只是新创建的节点是 <a href=xmlcdatasection.md.html>XmlCDATASection</a> 节点，而不是 XmlText 节点。</p>
+<p>该方法将在指定的 offset 处把 <a href=xmltext.md.html>XmlText</a> 节点分割成两个节点。原始的 <a href=xmltext.md.html>XmlText</a> 节点将被修改，使它包含 offset 指定的位置之前的文本内容（但不包括文本内容）。新的 <a href=xmltext.md.html>XmlText</a> 节点将被创建，用于存放从 offset 位置（包括该位置上的字符）到原字符结尾的所有字符。新的 <a href=xmltext.md.html>XmlText</a> 节点是该方法的返回值。此外，如果原始的 <a href=xmltext.md.html>XmlText</a> 节点具有 parentNode，新的 <a href=xmltext.md.html>XmlText</a> 节点将插入这个父节点，紧邻在原始节点之后。</p>
+<p>XmlCDATASection 接口继承了 <a href=xmltext.md.html>XmlText</a> 接口， XmlCDATASection 节点也可以使用该方法 ，只是新创建的节点是 XmlCDATASection 节点，而不是 <a href=xmltext.md.html>XmlText</a> 节点。</p>
 <hr>
 <h3 id="substringdata">substringData</h3>
 <p><strong>从节点中提取子串</strong></p>
@@ -474,7 +474,7 @@
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>XmlNode, 返回所复制的节点</li>
+<li><a href=xmlnode.md.html>XmlNode</a>, 返回所复制的节点</li>
 </ul>
 <p>该方法将复制并返回调用它的节点的副本。如果传递给它的参数是 true，它还将递归复制当前节点的所有子孙节点。 否则，它只复制当前节点。返回的节点不属于文档树，它的 parentNode 属性为 null。当复制的是 Element 节点时，它的所有属性都将被复制。</p>
 <hr>
@@ -511,12 +511,12 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>newChild: XmlNode, 插入新的节点</li>
-<li>refChild: XmlNode, 在此节点前插入新节点</li>
+<li>newChild: <a href=xmlnode.md.html>XmlNode</a>, 插入新的节点</li>
+<li>refChild: <a href=xmlnode.md.html>XmlNode</a>, 在此节点前插入新节点</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>XmlNode, 返回新的子节点</li>
+<li><a href=xmlnode.md.html>XmlNode</a>, 返回新的子节点</li>
 </ul>
 <p>如果文档树中已经存在了 newChild，它将从文档树中删除，然后重新插入它的新位置。来自一个文档的节点（或由一个文档创建的节点）不能插入另一个文档。也就是说，newChild 的 ownerDocument 属性必须与当前节点的 ownerDocument 属性相同。</p>
 <hr>
@@ -527,12 +527,12 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>newChild: XmlNode, 插入新的节点</li>
-<li>refChild: XmlNode, 在此节点后插入新节点</li>
+<li>newChild: <a href=xmlnode.md.html>XmlNode</a>, 插入新的节点</li>
+<li>refChild: <a href=xmlnode.md.html>XmlNode</a>, 在此节点后插入新节点</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>XmlNode, 返回新的子节点</li>
+<li><a href=xmlnode.md.html>XmlNode</a>, 返回新的子节点</li>
 </ul>
 <p>如果文档树中已经存在了 newChild，它将从文档树中删除，然后重新插入它的新位置。来自一个文档的节点（或由一个文档创建的节点）不能插入另一个文档。也就是说，newChild 的 ownerDocument 属性必须与当前节点的 ownerDocument 属性相同。</p>
 <hr>
@@ -542,11 +542,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>newChild: XmlNode, 指定添加的节点</li>
+<li>newChild: <a href=xmlnode.md.html>XmlNode</a>, 指定添加的节点</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>XmlNode, 返回这个新的子节点</li>
+<li><a href=xmlnode.md.html>XmlNode</a>, 返回这个新的子节点</li>
 </ul>
 <p>如果文档树中已经存在了 newChild，它将从文档树中删除，然后重新插入它的新位置。来自一个文档的节点（或由一个文档创建的节点）不能插入另一个文档。也就是说，newChild 的 ownerDocument 属性必须与当前节点的 ownerDocument 属性相同。</p>
 <hr>
@@ -557,12 +557,12 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>newChild: XmlNode, 指定新的节点</li>
-<li>oldChild: XmlNode, 指定被替换的节点</li>
+<li>newChild: <a href=xmlnode.md.html>XmlNode</a>, 指定新的节点</li>
+<li>oldChild: <a href=xmlnode.md.html>XmlNode</a>, 指定被替换的节点</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>XmlNode, 如替换成功，此方法可返回被替换的节点，如替换失败，则返回 null</li>
+<li><a href=xmlnode.md.html>XmlNode</a>, 如替换成功，此方法可返回被替换的节点，如替换失败，则返回 null</li>
 </ul>
 <p>如果文档树中已经存在了 newChild，它将从文档树中删除，然后重新插入它的新位置。来自一个文档的节点（或由一个文档创建的节点）不能插入另一个文档。也就是说，newChild 的 ownerDocument 属性必须与当前节点的 ownerDocument 属性相同。</p>
 <hr>
@@ -572,11 +572,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>oldChild: XmlNode, 指定被删除的节点</li>
+<li>oldChild: <a href=xmlnode.md.html>XmlNode</a>, 指定被删除的节点</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>XmlNode, 如删除成功，此方法可返回被删除的节点，如失败，则返回 null</li>
+<li><a href=xmlnode.md.html>XmlNode</a>, 如删除成功，此方法可返回被删除的节点，如失败，则返回 null</li>
 </ul>
 <hr>
 <h3 id="dispose">dispose</h3>
@@ -590,7 +590,7 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>expected: object, 制定比较的目标对象</li>
+<li>expected: <a href=object.md.html>object</a>, 制定比较的目标对象</li>
 </ul>
 <p>返回结果:</p>
 <ul>

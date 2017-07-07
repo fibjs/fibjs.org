@@ -184,7 +184,7 @@ Long BufferedStream.copyTo(Stream stm,
 ```
 
 调用参数:
-* stm: Stream, 目标流对象
+* stm: [Stream](Stream.md), 目标流对象
 * bytes: Long, 复制的字节数
 
 返回结果:
@@ -207,7 +207,7 @@ Boolean BufferedStream.equals(object expected);
 ```
 
 调用参数:
-* expected: object, 制定比较的目标对象
+* expected: [object](object.md), 制定比较的目标对象
 
 返回结果:
 * Boolean, 返回对象比较的结果

@@ -14,7 +14,7 @@ var test = require('test');
 var assert = test.assert;
 ```
 
-或者通过 [test](test.md).setup 配置：
+或者通过 [test.setup](test.md#setup) 配置：
 
 ```JavaScript
 require("test").setup();

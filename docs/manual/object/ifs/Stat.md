@@ -1,7 +1,7 @@
 # 对象 Stat
 文件的基础信息对象
 
-Stat 对象通过 [fs](../../module/ifs/fs.md).stat, [File](File.md).stat, [fs](../../module/ifs/fs.md).readdir 查询，不可独立创建
+Stat 对象通过 [fs.stat](../../module/ifs/fs.md#stat), [File.stat](File.md#stat), [fs.readdir](../../module/ifs/fs.md#readdir) 查询，不可独立创建
 
 ## 继承关系
 ```dot
@@ -197,7 +197,7 @@ Boolean Stat.equals(object expected);
 ```
 
 调用参数:
-* expected: object, 制定比较的目标对象
+* expected: [object](object.md), 制定比较的目标对象
 
 返回结果:
 * Boolean, 返回对象比较的结果

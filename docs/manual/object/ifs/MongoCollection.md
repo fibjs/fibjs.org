@@ -1,7 +1,7 @@
 # 对象 MongoCollection
 mongodb 数据库数据集对象
 
-使用 [MongoDB](MongoDB.md).getCollection 创建：
+使用 [MongoDB.getCollection](MongoDB.md#getcollection) 创建：
 
 ```JavaScript
 var col1 = mdb.getCollection('test');
@@ -280,7 +280,7 @@ Boolean MongoCollection.equals(object expected);
 ```
 
 调用参数:
-* expected: object, 制定比较的目标对象
+* expected: [object](object.md), 制定比较的目标对象
 
 返回结果:
 * Boolean, 返回对象比较的结果

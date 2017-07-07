@@ -68,7 +68,7 @@ require 可用于加载基础模块，文件模块。
 
 文件模块是用户自定义模块，引用时需传递以 ./ 或 ../ 开头的相对路径。文件模块支持 .js, .jsc 和 .[json](json.md) 文件。
 
-文件模块也支持 package.[json](json.md) 格式，当模块为目录结构时，require 会先查询 package.[json](json.md) 中的 main，未发现则尝试加载路径下的 index.js, index.jsc 或 index.[json](json.md)。
+文件模块也支持 package.json 格式，当模块为目录结构时，require 会先查询 package.json 中的 main，未发现则尝试加载路径下的 index.js, index.jsc 或 index.json。
 
 若引用路径不是 ./ 或 ../ 开头，并且非基础模块，require 从当前模块所在路径下的 node_modules 查找，并上级目录递归。
 

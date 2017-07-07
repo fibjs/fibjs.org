@@ -16,7 +16,7 @@ digraph {
 ## 成员属性
         
 ### notice
-**String, 指定 [console](../../module/ifs/console.md).notice 颜色**
+**String, 指定 [console.notice](../../module/ifs/console.md#notice) 颜色**
 
 ```JavaScript
 String TextColor.notice;
@@ -24,7 +24,7 @@ String TextColor.notice;
 
 --------------------------
 ### warn
-**String, 指定 [console](../../module/ifs/console.md).warn 颜色**
+**String, 指定 [console.warn](../../module/ifs/console.md#warn) 颜色**
 
 ```JavaScript
 String TextColor.warn;
@@ -32,7 +32,7 @@ String TextColor.warn;
 
 --------------------------
 ### error
-**String, 指定 [console](../../module/ifs/console.md).error 颜色**
+**String, 指定 [console.error](../../module/ifs/console.md#error) 颜色**
 
 ```JavaScript
 String TextColor.error;
@@ -64,7 +64,7 @@ Boolean TextColor.equals(object expected);
 ```
 
 调用参数:
-* expected: object, 制定比较的目标对象
+* expected: [object](object.md), 制定比较的目标对象
 
 返回结果:
 * Boolean, 返回对象比较的结果

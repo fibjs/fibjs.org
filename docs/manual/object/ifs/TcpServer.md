@@ -46,7 +46,7 @@ new TcpServer(Integer port,
 
 调用参数:
 * port: Integer, 指定 tcp 服务器侦听端口
-* listener: [Handler](Handler.md), 指定 tcp 接收到的内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq](../../module/ifs/mq.md).[Handler](Handler.md)
+* listener: [Handler](Handler.md), 指定 tcp 接收到的内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq.Handler](../../module/ifs/mq.md#handler)
 
 --------------------------
 **TcpServer 构造函数**
@@ -60,7 +60,7 @@ new TcpServer(String addr,
 调用参数:
 * addr: String, 指定 tcp 服务器侦听地址，为 "" 则在本机所有地址侦听
 * port: Integer, 指定 tcp 服务器侦听端口
-* listener: [Handler](Handler.md), 指定 tcp 接收到的连接的内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq](../../module/ifs/mq.md).[Handler](Handler.md)
+* listener: [Handler](Handler.md), 指定 tcp 接收到的连接的内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq.Handler](../../module/ifs/mq.md#handler)
 
 ## 成员属性
         
@@ -140,7 +140,7 @@ Boolean TcpServer.equals(object expected);
 ```
 
 调用参数:
-* expected: object, 制定比较的目标对象
+* expected: [object](object.md), 制定比较的目标对象
 
 返回结果:
 * Boolean, 返回对象比较的结果

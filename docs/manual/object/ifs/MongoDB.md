@@ -1,7 +1,7 @@
 # 对象 MongoDB
 mongodb 数据库连接对象
 
-使用 [db](../../module/ifs/db.md).open 或 [db](../../module/ifs/db.md).openMongoDB 创建，创建方式：
+使用 [db.open](../../module/ifs/db.md#open) 或 [db.openMongoDB](../../module/ifs/db.md#openmongodb) 创建，创建方式：
 
 ```JavaScript
 var mdb = db.openMongoDB("mongodb://host/db");
@@ -125,7 +125,7 @@ Boolean MongoDB.equals(object expected);
 ```
 
 调用参数:
-* expected: object, 制定比较的目标对象
+* expected: [object](object.md), 制定比较的目标对象
 
 返回结果:
 * Boolean, 返回对象比较的结果

@@ -59,7 +59,7 @@ static SQLite db.openSQLite(String connString) async;
 ```
 
 调用参数:
-* connString: String, 数据库描述，如：sqlite:[test](test.md).db 或者 [test](test.md).db
+* connString: String, 数据库描述，如：sqlite:test.db 或者 test.db
 
 返回结果:
 * [SQLite](../../object/ifs/SQLite.md), 返回数据库连接对象
@@ -87,7 +87,7 @@ static LevelDB db.openLevelDB(String connString) async;
 ```
 
 调用参数:
-* connString: String, 数据库描述，如：level:[test](test.md).db 或者 [test](test.md).db
+* connString: String, 数据库描述，如：level:test.db 或者 test.db
 
 返回结果:
 * [LevelDB](../../object/ifs/LevelDB.md), 返回数据库对象

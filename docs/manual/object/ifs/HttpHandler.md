@@ -39,7 +39,7 @@ new HttpHandler(Handler hdlr);
 ```
 
 调用参数:
-* hdlr: [Handler](Handler.md), 内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq](../../module/ifs/mq.md).[Handler](Handler.md)
+* hdlr: [Handler](Handler.md), 内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq.Handler](../../module/ifs/mq.md#handler)
 
 ## 成员属性
         
@@ -120,7 +120,7 @@ HttpHandler.onerror(Object hdlrs);
 ```
 
 调用参数:
-* hdlrs: Object, 指定不同的错误的处理器，key 是错误号，value 是处理器，可以是内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq](../../module/ifs/mq.md).[Handler](Handler.md)
+* hdlrs: Object, 指定不同的错误的处理器，key 是错误号，value 是处理器，可以是内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq.Handler](../../module/ifs/mq.md#handler)
 
 使用方式：
 
@@ -145,7 +145,7 @@ Handler HttpHandler.invoke(object v) async;
 * v: [object](object.md), 指定处理的消息或对象
 
 返回结果:
-* Handler, 返回下一步的处理器
+* [Handler](Handler.md), 返回下一步的处理器
 
 --------------------------
 ### dispose
@@ -164,7 +164,7 @@ Boolean HttpHandler.equals(object expected);
 ```
 
 调用参数:
-* expected: object, 制定比较的目标对象
+* expected: [object](object.md), 制定比较的目标对象
 
 返回结果:
 * Boolean, 返回对象比较的结果

@@ -741,7 +741,7 @@ static Buffer util.compile(String srcname,
 返回结果:
 * [Buffer](../../object/ifs/Buffer.md), 返回编译出的二进制代码
 
-util.compile 可以将脚本编译为 v8 内部运行数据块(非机器执行代码)。编译以后的代码，保存为 *.jsc 后，可以由 run 和 require 直接加载执行。
+[util.compile](util.md#compile) 可以将脚本编译为 v8 内部运行数据块(非机器执行代码)。编译以后的代码，保存为 *.jsc 后，可以由 run 和 require 直接加载执行。
 
 由于编译之后，目标代码将不能逆向获取源代码，依赖于 Function.toString 的程序将不能正常运行。
 
@@ -761,7 +761,7 @@ static Function util.sync(Function func,
 返回结果:
 * Function, 返回同步运行的方法
 
-util.sync 将 callback 方法或者 async 方法处理为 sync 方法，以方便调用。
+[util.sync](util.md#sync) 将 callback 方法或者 async 方法处理为 sync 方法，以方便调用。
 
 callback 示例如下：
 

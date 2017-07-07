@@ -173,7 +173,7 @@ List DBResult.slice(Integer start = 0,
 * end: Integer, 指定范围的结束，缺省到缓存结尾
 
 返回结果:
-* List, 返回新的数组
+* [List](List.md), 返回新的数组
 
 --------------------------
 ### concat
@@ -187,7 +187,7 @@ List DBResult.concat(...);
 * ...: 给定的一个或多个数组
 
 返回结果:
-* List, 返回合并的数组
+* [List](List.md), 返回合并的数组
 
 --------------------------
 ### every
@@ -235,7 +235,7 @@ List DBResult.filter(Function func,
 * thisArg: Value, 调用过滤函数的参数，可省略
 
 返回结果:
-* List, 经过过滤的新数组
+* [List](List.md), 经过过滤的新数组
 
 --------------------------
 ### forEach
@@ -264,7 +264,7 @@ List DBResult.map(Function func,
 * thisArg: Value, 调用处理函数的参数，可省略
 
 返回结果:
-* List, 处理结果数组
+* [List](List.md), 处理结果数组
 
 --------------------------
 ### reduce
@@ -294,7 +294,7 @@ List DBResult.sort(Function func);
 * func: Function, 比较处理函数
 
 返回结果:
-* List, 列表本身
+* [List](List.md), 列表本身
 
 --------------------------
 **排序全部数据并返回列表本身**
@@ -304,7 +304,7 @@ List DBResult.sort();
 ```
 
 返回结果:
-* List, 列表本身
+* [List](List.md), 列表本身
 
 --------------------------
 ### toArray
@@ -334,7 +334,7 @@ Boolean DBResult.equals(object expected);
 ```
 
 调用参数:
-* expected: object, 制定比较的目标对象
+* expected: [object](object.md), 制定比较的目标对象
 
 返回结果:
 * Boolean, 返回对象比较的结果

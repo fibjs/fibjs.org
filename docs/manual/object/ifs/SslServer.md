@@ -46,7 +46,7 @@ new SslServer(Array certs,
 调用参数:
 * certs: Array, 服务器证书列表
 * port: Integer, 指定 [ssl](../../module/ifs/ssl.md) 服务器侦听端口
-* listener: [Handler](Handler.md), 指定 [ssl](../../module/ifs/ssl.md) 接收到的内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq](../../module/ifs/mq.md).[Handler](Handler.md)
+* listener: [Handler](Handler.md), 指定 [ssl](../../module/ifs/ssl.md) 接收到的内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq.Handler](../../module/ifs/mq.md#handler)
 
 certs 格式为：
 
@@ -76,7 +76,7 @@ new SslServer(Array certs,
 * certs: Array, 服务器证书列表
 * addr: String, 指定 [ssl](../../module/ifs/ssl.md) 服务器侦听地址，为 "" 则在本机所有地址侦听
 * port: Integer, 指定 [ssl](../../module/ifs/ssl.md) 服务器侦听端口
-* listener: [Handler](Handler.md), 指定 [ssl](../../module/ifs/ssl.md) 接收到的连接的内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq](../../module/ifs/mq.md).[Handler](Handler.md)
+* listener: [Handler](Handler.md), 指定 [ssl](../../module/ifs/ssl.md) 接收到的连接的内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq.Handler](../../module/ifs/mq.md#handler)
 
 certs 格式为：
 
@@ -106,7 +106,7 @@ new SslServer(X509Cert crt,
 * crt: [X509Cert](X509Cert.md), [X509Cert](X509Cert.md) 证书，用于客户端验证服务器
 * key: [PKey](PKey.md), [PKey](PKey.md) 私钥，用于与客户端会话
 * port: Integer, 指定 [ssl](../../module/ifs/ssl.md) 服务器侦听端口
-* listener: [Handler](Handler.md), 指定 [ssl](../../module/ifs/ssl.md) 接收到的内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq](../../module/ifs/mq.md).[Handler](Handler.md)
+* listener: [Handler](Handler.md), 指定 [ssl](../../module/ifs/ssl.md) 接收到的内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq.Handler](../../module/ifs/mq.md#handler)
 
 --------------------------
 **SslServer 构造函数**
@@ -124,7 +124,7 @@ new SslServer(X509Cert crt,
 * key: [PKey](PKey.md), [PKey](PKey.md) 私钥，用于与客户端会话
 * addr: String, 指定 [ssl](../../module/ifs/ssl.md) 服务器侦听地址，为 "" 则在本机所有地址侦听
 * port: Integer, 指定 [ssl](../../module/ifs/ssl.md) 服务器侦听端口
-* listener: [Handler](Handler.md), 指定 [ssl](../../module/ifs/ssl.md) 接收到的连接的内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq](../../module/ifs/mq.md).[Handler](Handler.md)
+* listener: [Handler](Handler.md), 指定 [ssl](../../module/ifs/ssl.md) 接收到的连接的内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq.Handler](../../module/ifs/mq.md#handler)
 
 ## 成员属性
         
@@ -220,7 +220,7 @@ Boolean SslServer.equals(object expected);
 ```
 
 调用参数:
-* expected: object, 制定比较的目标对象
+* expected: [object](object.md), 制定比较的目标对象
 
 返回结果:
 * Boolean, 返回对象比较的结果

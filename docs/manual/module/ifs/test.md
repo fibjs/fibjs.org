@@ -105,7 +105,7 @@ static test.describe(String name,
 
 --------------------------
 ### xdescribe
-**暂停测试的模块定义，test.setup 后可使用 describe.skip 调用**
+**暂停测试的模块定义，[test.setup](test.md#setup) 后可使用 describe.skip 调用**
 
 ```JavaScript
 static test.xdescribe(String name,
@@ -118,7 +118,7 @@ static test.xdescribe(String name,
 
 --------------------------
 ### odescribe
-**独立测试的模块定义，test.setup 后可使用 describe.only 调用**
+**独立测试的模块定义，[test.setup](test.md#setup) 后可使用 describe.only 调用**
 
 ```JavaScript
 static test.odescribe(String name,
@@ -144,7 +144,7 @@ static test.it(String name,
 
 --------------------------
 ### xit
-**暂停测试的项目定义，test.setup 后可使用 it.skip 调用**
+**暂停测试的项目定义，[test.setup](test.md#setup) 后可使用 it.skip 调用**
 
 ```JavaScript
 static test.xit(String name,
@@ -157,7 +157,7 @@ static test.xit(String name,
 
 --------------------------
 ### oit
-**独立测试的项目定义，test.setup 后可使用 it.only 调用**
+**独立测试的项目定义，[test.setup](test.md#setup) 后可使用 it.only 调用**
 
 ```JavaScript
 static test.oit(String name,

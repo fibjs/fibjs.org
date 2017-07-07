@@ -1,7 +1,7 @@
 # 对象 MySQL
 mysql 数据库连接对象
 
-使用 [db](../../module/ifs/db.md).open 或 [db](../../module/ifs/db.md).openMySQL 创建，创建方式：
+使用 [db.open](../../module/ifs/db.md#open) 或 [db.openMySQL](../../module/ifs/db.md#openmysql) 创建，创建方式：
 
 ```JavaScript
 var msql = db.openMySQL("mysql://user:pass@host/db");
@@ -152,7 +152,7 @@ Boolean MySQL.equals(object expected);
 ```
 
 调用参数:
-* expected: object, 制定比较的目标对象
+* expected: [object](object.md), 制定比较的目标对象
 
 返回结果:
 * Boolean, 返回对象比较的结果

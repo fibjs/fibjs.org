@@ -56,7 +56,7 @@ readonly Integer XmlDocumentType.nodeType;
 - [XmlProcessingInstruction](XmlProcessingInstruction.md): PROCESSING_INSTRUCTION_NODE(7)
 - [XmlComment](XmlComment.md): COMMENT_NODE(8)
 - [XmlDocument](XmlDocument.md): DOCUMENT_NODE(9)
-- [XmlDocumentType](XmlDocumentType.md): DOCUMENT_TYPE_NODE(10)
+- XmlDocumentType: DOCUMENT_TYPE_NODE(10)
 
 --------------------------
 ### nodeName
@@ -74,7 +74,7 @@ readonly String XmlDocumentType.nodeName;
 - [XmlProcessingInstruction](XmlProcessingInstruction.md): 返回指定目标 target
 - [XmlComment](XmlComment.md): \#comment
 - [XmlDocument](XmlDocument.md): \#document
-- [XmlDocumentType](XmlDocumentType.md): doctype 名称
+- XmlDocumentType: doctype 名称
 
 --------------------------
 ### nodeValue
@@ -92,7 +92,7 @@ String XmlDocumentType.nodeValue;
 - [XmlProcessingInstruction](XmlProcessingInstruction.md): 返回指定内容 data
 - [XmlComment](XmlComment.md): 注释文本
 - [XmlDocument](XmlDocument.md): null
-- [XmlDocumentType](XmlDocumentType.md): null
+- XmlDocumentType: null
 
 --------------------------
 ### ownerDocument
@@ -104,7 +104,7 @@ readonly XmlDocument XmlDocumentType.ownerDocument;
 
 --------------------------
 ### parentNode
-**XmlNode, 可返回某节点的父节点**
+**[XmlNode](XmlNode.md), 可返回某节点的父节点**
 
 ```JavaScript
 readonly XmlNode XmlDocumentType.parentNode;
@@ -120,7 +120,7 @@ readonly XmlNodeList XmlDocumentType.childNodes;
 
 --------------------------
 ### firstChild
-**XmlNode, 返回节点的首个子节点**
+**[XmlNode](XmlNode.md), 返回节点的首个子节点**
 
 ```JavaScript
 readonly XmlNode XmlDocumentType.firstChild;
@@ -128,7 +128,7 @@ readonly XmlNode XmlDocumentType.firstChild;
 
 --------------------------
 ### lastChild
-**XmlNode, 返回节点的最后一个子节点**
+**[XmlNode](XmlNode.md), 返回节点的最后一个子节点**
 
 ```JavaScript
 readonly XmlNode XmlDocumentType.lastChild;
@@ -136,7 +136,7 @@ readonly XmlNode XmlDocumentType.lastChild;
 
 --------------------------
 ### previousSibling
-**XmlNode, 返回某节点之前紧跟的节点（处于同一树层级），如果没有此节点，那么该属性返回 null**
+**[XmlNode](XmlNode.md), 返回某节点之前紧跟的节点（处于同一树层级），如果没有此节点，那么该属性返回 null**
 
 ```JavaScript
 readonly XmlNode XmlDocumentType.previousSibling;
@@ -144,7 +144,7 @@ readonly XmlNode XmlDocumentType.previousSibling;
 
 --------------------------
 ### nextSibling
-**XmlNode, 返回某个元素之后紧跟的节点（处于同一树层级中），如果无此节点，则属性返回 null**
+**[XmlNode](XmlNode.md), 返回某个元素之后紧跟的节点（处于同一树层级中），如果无此节点，则属性返回 null**
 
 ```JavaScript
 readonly XmlNode XmlDocumentType.nextSibling;
@@ -184,7 +184,7 @@ XmlNode XmlDocumentType.cloneNode(Boolean deep = true);
 * deep: Boolean, 是否深度拷贝，为 true 时，被克隆的节点会克隆原节点的所有子节点
 
 返回结果:
-* XmlNode, 返回所复制的节点
+* [XmlNode](XmlNode.md), 返回所复制的节点
 
 该方法将复制并返回调用它的节点的副本。如果传递给它的参数是 true，它还将递归复制当前节点的所有子孙节点。 否则，它只复制当前节点。返回的节点不属于文档树，它的 parentNode 属性为 null。当复制的是 Element 节点时，它的所有属性都将被复制。
 
@@ -226,11 +226,11 @@ XmlNode XmlDocumentType.insertBefore(XmlNode newChild,
 ```
 
 调用参数:
-* newChild: XmlNode, 插入新的节点
-* refChild: XmlNode, 在此节点前插入新节点
+* newChild: [XmlNode](XmlNode.md), 插入新的节点
+* refChild: [XmlNode](XmlNode.md), 在此节点前插入新节点
 
 返回结果:
-* XmlNode, 返回新的子节点
+* [XmlNode](XmlNode.md), 返回新的子节点
 
 如果文档树中已经存在了 newChild，它将从文档树中删除，然后重新插入它的新位置。来自一个文档的节点（或由一个文档创建的节点）不能插入另一个文档。也就是说，newChild 的 ownerDocument 属性必须与当前节点的 ownerDocument 属性相同。
 
@@ -244,11 +244,11 @@ XmlNode XmlDocumentType.insertAfter(XmlNode newChild,
 ```
 
 调用参数:
-* newChild: XmlNode, 插入新的节点
-* refChild: XmlNode, 在此节点后插入新节点
+* newChild: [XmlNode](XmlNode.md), 插入新的节点
+* refChild: [XmlNode](XmlNode.md), 在此节点后插入新节点
 
 返回结果:
-* XmlNode, 返回新的子节点
+* [XmlNode](XmlNode.md), 返回新的子节点
 
 如果文档树中已经存在了 newChild，它将从文档树中删除，然后重新插入它的新位置。来自一个文档的节点（或由一个文档创建的节点）不能插入另一个文档。也就是说，newChild 的 ownerDocument 属性必须与当前节点的 ownerDocument 属性相同。
 
@@ -261,10 +261,10 @@ XmlNode XmlDocumentType.appendChild(XmlNode newChild);
 ```
 
 调用参数:
-* newChild: XmlNode, 指定添加的节点
+* newChild: [XmlNode](XmlNode.md), 指定添加的节点
 
 返回结果:
-* XmlNode, 返回这个新的子节点
+* [XmlNode](XmlNode.md), 返回这个新的子节点
 
 如果文档树中已经存在了 newChild，它将从文档树中删除，然后重新插入它的新位置。来自一个文档的节点（或由一个文档创建的节点）不能插入另一个文档。也就是说，newChild 的 ownerDocument 属性必须与当前节点的 ownerDocument 属性相同。
 
@@ -278,11 +278,11 @@ XmlNode XmlDocumentType.replaceChild(XmlNode newChild,
 ```
 
 调用参数:
-* newChild: XmlNode, 指定新的节点
-* oldChild: XmlNode, 指定被替换的节点
+* newChild: [XmlNode](XmlNode.md), 指定新的节点
+* oldChild: [XmlNode](XmlNode.md), 指定被替换的节点
 
 返回结果:
-* XmlNode, 如替换成功，此方法可返回被替换的节点，如替换失败，则返回 null
+* [XmlNode](XmlNode.md), 如替换成功，此方法可返回被替换的节点，如替换失败，则返回 null
 
 如果文档树中已经存在了 newChild，它将从文档树中删除，然后重新插入它的新位置。来自一个文档的节点（或由一个文档创建的节点）不能插入另一个文档。也就是说，newChild 的 ownerDocument 属性必须与当前节点的 ownerDocument 属性相同。
 
@@ -295,10 +295,10 @@ XmlNode XmlDocumentType.removeChild(XmlNode oldChild);
 ```
 
 调用参数:
-* oldChild: XmlNode, 指定被删除的节点
+* oldChild: [XmlNode](XmlNode.md), 指定被删除的节点
 
 返回结果:
-* XmlNode, 如删除成功，此方法可返回被删除的节点，如失败，则返回 null
+* [XmlNode](XmlNode.md), 如删除成功，此方法可返回被删除的节点，如失败，则返回 null
 
 --------------------------
 ### dispose
@@ -317,7 +317,7 @@ Boolean XmlDocumentType.equals(object expected);
 ```
 
 调用参数:
-* expected: object, 制定比较的目标对象
+* expected: [object](object.md), 制定比较的目标对象
 
 返回结果:
 * Boolean, 返回对象比较的结果

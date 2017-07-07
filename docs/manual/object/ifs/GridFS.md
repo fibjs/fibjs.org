@@ -1,7 +1,7 @@
 # 对象 GridFS
 [MongoDB](MongoDB.md) GridFS 分布式文件系统访问对象
 
-使用 [MongoDB](MongoDB.md).[fs](../../module/ifs/fs.md) 获取，创建方式：
+使用 [MongoDB.fs](MongoDB.md#fs) 获取，创建方式：
 
 ```JavaScript
 var gfs = mdb.fs;
@@ -118,7 +118,7 @@ Boolean GridFS.equals(object expected);
 ```
 
 调用参数:
-* expected: object, 制定比较的目标对象
+* expected: [object](object.md), 制定比较的目标对象
 
 返回结果:
 * Boolean, 返回对象比较的结果

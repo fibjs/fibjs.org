@@ -40,7 +40,7 @@ new X509Req(String subject,
 调用参数:
 * subject: String, 证书的主题可分辨名称
 * key: [PKey](PKey.md), 证书的公钥
-* hash: Integer, 证书摘要算法，缺省为 [hash](../../module/ifs/hash.md).SHA1
+* hash: Integer, 证书摘要算法，缺省为 [hash.SHA1](../../module/ifs/hash.md#sha1)
 
 ## 成员属性
         
@@ -162,7 +162,7 @@ Boolean X509Req.equals(object expected);
 ```
 
 调用参数:
-* expected: object, 制定比较的目标对象
+* expected: [object](object.md), 制定比较的目标对象
 
 返回结果:
 * Boolean, 返回对象比较的结果

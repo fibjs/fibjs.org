@@ -21,7 +21,7 @@ static Image gd.create(Integer width,
 调用参数:
 * width: Integer, 指定图像宽度
 * height: Integer, 指定图像高度
-* color: Integer, 指定图像类型，允许值为 gd.TRUECOLOR 或 gd.PALETTE
+* color: Integer, 指定图像类型，允许值为 [gd.TRUECOLOR](gd.md#truecolor) 或 [gd.PALETTE](gd.md#palette)
 
 返回结果:
 * [Image](../../object/ifs/Image.md), 返回创建成功的图像对象

@@ -23,7 +23,7 @@ new ZmqSocket(Integer type = zmq.PAIR);
 ```
 
 调用参数:
-* type: Integer, 指定 socket 类型，缺省为 [zmq](../../module/ifs/zmq.md).PAIR
+* type: Integer, 指定 socket 类型，缺省为 [zmq.PAIR](../../module/ifs/zmq.md#pair)
 
 ## 成员属性
         
@@ -104,7 +104,7 @@ Boolean ZmqSocket.equals(object expected);
 ```
 
 调用参数:
-* expected: object, 制定比较的目标对象
+* expected: [object](object.md), 制定比较的目标对象
 
 返回结果:
 * Boolean, 返回对象比较的结果

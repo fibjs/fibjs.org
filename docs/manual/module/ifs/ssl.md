@@ -73,7 +73,7 @@ static ssl.loadClientCertFile(String crtFile,
 
 --------------------------
 ### loadRootCerts
-**加载自带的缺省根证书，等同于 ssl.ca.loadRootCerts**
+**加载自带的缺省根证书，等同于 [ssl.ca](ssl.md#ca).loadRootCerts**
 
 ```JavaScript
 static ssl.loadRootCerts();

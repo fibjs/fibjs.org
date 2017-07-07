@@ -1,8 +1,8 @@
 # 对象 Fiber
 纤程操作对象，此对象不可直接创建
 
-使用 [coroutine](../../module/ifs/coroutine.md).start 创建纤程后，将返回此对象，用于纤程处理和纤程间通信。
-纤程主函数可以通过 this 访问本纤程对象，也可通过 [coroutine](../../module/ifs/coroutine.md).current 获取当前纤程。
+使用 [coroutine.start](../../module/ifs/coroutine.md#start) 创建纤程后，将返回此对象，用于纤程处理和纤程间通信。
+纤程主函数可以通过 this 访问本纤程对象，也可通过 [coroutine.current](../../module/ifs/coroutine.md#current) 获取当前纤程。
 
 ```JavaScript
 function func(v1) {
@@ -16,7 +16,7 @@ fb.v = 123;
 fb.join();
 ```
 
-纤程局部存储通过共享的 Fiber 对象完成，通过 [coroutine](../../module/ifs/coroutine.md).current 获取当前纤程，通过修改和查询其变量达到共享数据的目的。
+纤程局部存储通过共享的 Fiber 对象完成，通过 [coroutine.current](../../module/ifs/coroutine.md#current) 获取当前纤程，通过修改和查询其变量达到共享数据的目的。
 
 ```JavaScript
 function func() {
@@ -99,7 +99,7 @@ Boolean Fiber.equals(object expected);
 ```
 
 调用参数:
-* expected: object, 制定比较的目标对象
+* expected: [object](object.md), 制定比较的目标对象
 
 返回结果:
 * Boolean, 返回对象比较的结果

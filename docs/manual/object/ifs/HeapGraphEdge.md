@@ -22,13 +22,13 @@ digraph {
 readonly Integer HeapGraphEdge.type;
 ```
 
-- [profiler](../../module/ifs/profiler.md).Edge_ContextVariable,  函数中的变量
-- [profiler](../../module/ifs/profiler.md).Edge_Element,          数组中的元素
-- [profiler](../../module/ifs/profiler.md).Edge_Property,         有名对象的属性
-- [profiler](../../module/ifs/profiler.md).Edge_Internal,         JS无法进入的链接
-- [profiler](../../module/ifs/profiler.md).Edge_Hidden,           指向需要事先计算出空间大小的节点
-- [profiler](../../module/ifs/profiler.md).Edge_Shortcut,         指向无法事先计算出空间大小的节点
-- [profiler](../../module/ifs/profiler.md).Edge_Weak,             一个弱引用（被GC忽视）
+- [profiler.Edge_ContextVariable](../../module/ifs/profiler.md#edge_contextvariable),  函数中的变量
+- [profiler.Edge_Element](../../module/ifs/profiler.md#edge_element),          数组中的元素
+- [profiler.Edge_Property](../../module/ifs/profiler.md#edge_property),         有名对象的属性
+- [profiler.Edge_Internal](../../module/ifs/profiler.md#edge_internal),         JS无法进入的链接
+- [profiler.Edge_Hidden](../../module/ifs/profiler.md#edge_hidden),           指向需要事先计算出空间大小的节点
+- [profiler.Edge_Shortcut](../../module/ifs/profiler.md#edge_shortcut),         指向无法事先计算出空间大小的节点
+- [profiler.Edge_Weak](../../module/ifs/profiler.md#edge_weak),             一个弱引用（被GC忽视）
 
 --------------------------
 ### name
@@ -86,7 +86,7 @@ Boolean HeapGraphEdge.equals(object expected);
 ```
 
 调用参数:
-* expected: object, 制定比较的目标对象
+* expected: [object](object.md), 制定比较的目标对象
 
 返回结果:
 * Boolean, 返回对象比较的结果
