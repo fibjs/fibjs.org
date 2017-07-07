@@ -152,20 +152,20 @@
 <li><a href=../../object/ifs/zipinfo.md.html>ZipInfo</a></li>
 <li><a href=../../object/ifs/zmqsocket.md.html>ZmqSocket</a></li>
 </ul>
- </div></div></div>  </div></div><div class=content> <h1 id="-mq">模块 mq</h1>
+ </div></div></div>  </div></div><div class=content> <h1 id="模块-mq">模块 mq</h1>
 <p>消息队列模块</p>
-<h2 id="-">对象</h2>
-<h3 id="message">Message</h3>
+<h2 id="对象">对象</h2>
+<h3 id="Message">Message</h3>
 <p><strong>创建一个消息对象，参见 <a href=../../object/ifs/message.md.html>Message</a></strong></p>
 <pre><code class="lang-JavaScript">Message mq.Message;
 </code></pre>
 <hr>
-<h3 id="httphandler">HttpHandler</h3>
+<h3 id="HttpHandler">HttpHandler</h3>
 <p><strong>创建一个 <a href="http.md">http</a> 协议处理器对象，参见 <a href=../../object/ifs/httphandler.md.html>HttpHandler</a></strong></p>
 <pre><code class="lang-JavaScript">HttpHandler mq.HttpHandler;
 </code></pre>
 <hr>
-<h3 id="handler">Handler</h3>
+<h3 id="Handler">Handler</h3>
 <p><strong>创建一个消息处理器对象，传递值内置处理器则直接返回</strong></p>
 <pre><code class="lang-JavaScript">Handler mq.Handler;
 </code></pre>
@@ -177,8 +177,8 @@
 <ul>
 <li>Function javascript 函数，将使用此函数进行处理</li>
 <li><a href=../../object/ifs/handler.md.html>Handler</a> 内置处理器，将使用此处理器进行处理</li>
-<li>链式处理数组，等同于返回 new <a href=mq.md.html#chain>mq.Chain</a>(hdlr)，参见 <a href=../../object/ifs/chain.md.html>Chain</a></li>
-<li>路由对象，等同于返回 new <a href=mq.md.html#routing>mq.Routing</a>(hdlr)，参见 <a href=../../object/ifs/routing.md.html>Routing</a></li>
+<li>链式处理数组，等同于返回 new <a href=mq.md.html#Chain>mq.Chain</a>(hdlr)，参见 <a href=../../object/ifs/chain.md.html>Chain</a></li>
+<li>路由对象，等同于返回 new <a href=mq.md.html#Routing>mq.Routing</a>(hdlr)，参见 <a href=../../object/ifs/routing.md.html>Routing</a></li>
 </ul>
 <p>消息处理函数语法如下：</p>
 <pre><code class="lang-JavaScript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">func</span>(<span class="hljs-params">v</span>) </span>{}
@@ -187,21 +187,21 @@
 <ul>
 <li>Function javascript 函数，将使用此函数进行下一阶段处理</li>
 <li><a href=../../object/ifs/handler.md.html>Handler</a> 内置处理器，将使用此处理器进行下一阶段处理</li>
-<li>链式处理数组，等同于 new <a href=mq.md.html#chain>mq.Chain</a>(v)，参见 <a href=../../object/ifs/chain.md.html>Chain</a></li>
-<li>路由对象，等同于 new <a href=mq.md.html#routing>mq.Routing</a>(v)，参见 <a href=../../object/ifs/routing.md.html>Routing</a></li>
+<li>链式处理数组，等同于 new <a href=mq.md.html#Chain>mq.Chain</a>(v)，参见 <a href=../../object/ifs/chain.md.html>Chain</a></li>
+<li>路由对象，等同于 new <a href=mq.md.html#Routing>mq.Routing</a>(v)，参见 <a href=../../object/ifs/routing.md.html>Routing</a></li>
 </ul>
 <p>无返回或者其他的返回结果将结束消息处理。</p>
 <hr>
-<h3 id="chain">Chain</h3>
+<h3 id="Chain">Chain</h3>
 <p><strong>创建一个消息处理器链处理对象，参见 <a href=../../object/ifs/chain.md.html>Chain</a></strong></p>
 <pre><code class="lang-JavaScript">Chain mq.Chain;
 </code></pre>
 <hr>
-<h3 id="routing">Routing</h3>
+<h3 id="Routing">Routing</h3>
 <p><strong>创建一个消息处理器路由对象，参见 <a href=../../object/ifs/routing.md.html>Routing</a></strong></p>
 <pre><code class="lang-JavaScript">Routing mq.Routing;
 </code></pre>
-<h2 id="-">静态函数</h2>
+<h2 id="静态函数">静态函数</h2>
 <h3 id="await">await</h3>
 <p><strong>创建一个异步等待处理器</strong></p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> Handler mq.await();
@@ -223,7 +223,7 @@
 </code></pre>
 <p>示例是一个 javascript 消息处理函数，当函数返回时，消息处理引擎将等待 await，直到 await.end 被调用，才继续下一阶段的处理。</p>
 <hr>
-<h3 id="nullhandler">nullHandler</h3>
+<h3 id="nullHandler">nullHandler</h3>
 <p><strong>创建一个空处理器对象，次处理对象不做任何处理直接返回</strong></p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> Handler mq.nullHandler();
 </code></pre>

@@ -1,7 +1,7 @@
 # 对象 MongoDB
 mongodb 数据库连接对象
 
-使用 [db.open](../../module/ifs/db.md#open) 或 [db.openMongoDB](../../module/ifs/db.md#openmongodb) 创建，创建方式：
+使用 [db.open](../../module/ifs/db.md#open) 或 [db.openMongoDB](../../module/ifs/db.md#openMongoDB) 创建，创建方式：
 
 ```JavaScript
 var mdb = db.openMongoDB("mongodb://host/db");

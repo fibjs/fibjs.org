@@ -29,7 +29,7 @@ static Buffer uuid.md5(Integer ns,
 ```
 
 调用参数:
-* ns: Integer, 指定命名空间，可以为 [uuid.DNS](uuid.md#dns), [uuid.URL](uuid.md#url), [uuid.OID](uuid.md#oid), [uuid.X509](uuid.md#x509)
+* ns: Integer, 指定命名空间，可以为 [uuid.DNS](uuid.md#DNS), [uuid.URL](uuid.md#URL), [uuid.OID](uuid.md#OID), [uuid.X509](uuid.md#X509)
 * name: String, 指定名称
 
 返回结果:
@@ -56,7 +56,7 @@ static Buffer uuid.sha1(Integer ns,
 ```
 
 调用参数:
-* ns: Integer, 指定命名空间，可以为 [uuid.DNS](uuid.md#dns), [uuid.URL](uuid.md#url), [uuid.OID](uuid.md#oid), [uuid.X509](uuid.md#x509)
+* ns: Integer, 指定命名空间，可以为 [uuid.DNS](uuid.md#DNS), [uuid.URL](uuid.md#URL), [uuid.OID](uuid.md#OID), [uuid.X509](uuid.md#X509)
 * name: String, 指定名称
 
 返回结果:

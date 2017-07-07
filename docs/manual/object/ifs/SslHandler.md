@@ -39,7 +39,7 @@ new SslHandler(Array certs,
 
 调用参数:
 * certs: Array, 服务器证书列表
-* hdlr: [Handler](Handler.md), 内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq.Handler](../../module/ifs/mq.md#handler)
+* hdlr: [Handler](Handler.md), 内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq.Handler](../../module/ifs/mq.md#Handler)
 
 certs 格式为：
 
@@ -67,7 +67,7 @@ new SslHandler(X509Cert crt,
 调用参数:
 * crt: [X509Cert](X509Cert.md), [X509Cert](X509Cert.md) 证书，用于客户端验证服务器
 * key: [PKey](PKey.md), [PKey](PKey.md) 私钥，用于与客户端会话
-* hdlr: [Handler](Handler.md), 内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq.Handler](../../module/ifs/mq.md#handler)
+* hdlr: [Handler](Handler.md), 内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq.Handler](../../module/ifs/mq.md#Handler)
 
 ## 成员属性
         

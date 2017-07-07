@@ -46,7 +46,7 @@ new HttpServer(Integer port,
 
 调用参数:
 * port: Integer, 指定 [http](../../module/ifs/http.md) 服务器侦听端口
-* hdlr: [Handler](Handler.md), [http](../../module/ifs/http.md) 内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq.Handler](../../module/ifs/mq.md#handler)
+* hdlr: [Handler](Handler.md), [http](../../module/ifs/http.md) 内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq.Handler](../../module/ifs/mq.md#Handler)
 
 --------------------------
 **HttpServer 构造函数**
@@ -60,7 +60,7 @@ new HttpServer(String addr,
 调用参数:
 * addr: String, 指定 [http](../../module/ifs/http.md) 服务器侦听地址，为 "" 则在本机所有地址侦听
 * port: Integer, 指定 [http](../../module/ifs/http.md) 服务器侦听端口
-* hdlr: [Handler](Handler.md), [http](../../module/ifs/http.md) 内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq.Handler](../../module/ifs/mq.md#handler)
+* hdlr: [Handler](Handler.md), [http](../../module/ifs/http.md) 内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq.Handler](../../module/ifs/mq.md#Handler)
 
 ## 成员属性
         
@@ -171,7 +171,7 @@ HttpServer.onerror(Object hdlrs);
 ```
 
 调用参数:
-* hdlrs: Object, 指定不同的错误的处理器，key 是错误号，value 是处理器，可以是内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq.Handler](../../module/ifs/mq.md#handler)
+* hdlrs: Object, 指定不同的错误的处理器，key 是错误号，value 是处理器，可以是内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq.Handler](../../module/ifs/mq.md#Handler)
 
 使用方式：
 

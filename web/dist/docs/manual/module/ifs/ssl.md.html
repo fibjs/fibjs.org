@@ -152,24 +152,24 @@
 <li><a href=../../object/ifs/zipinfo.md.html>ZipInfo</a></li>
 <li><a href=../../object/ifs/zmqsocket.md.html>ZmqSocket</a></li>
 </ul>
- </div></div></div>  </div></div><div class=content> <h1 id="-ssl">模块 ssl</h1>
+ </div></div></div>  </div></div><div class=content> <h1 id="模块-ssl">模块 ssl</h1>
 <p>ssl/tls 模块</p>
-<h2 id="-">对象</h2>
-<h3 id="socket">Socket</h3>
+<h2 id="对象">对象</h2>
+<h3 id="Socket">Socket</h3>
 <p><strong>创建一个 <a href=../../object/ifs/sslsocket.md.html>SslSocket</a> 对象，参见 <a href=../../object/ifs/sslsocket.md.html>SslSocket</a></strong></p>
 <pre><code class="lang-JavaScript">SslSocket ssl.Socket;
 </code></pre>
 <hr>
-<h3 id="handler">Handler</h3>
+<h3 id="Handler">Handler</h3>
 <p><strong>创建一个 <a href=../../object/ifs/sslhandler.md.html>SslHandler</a> 对象，参见 <a href=../../object/ifs/sslhandler.md.html>SslHandler</a></strong></p>
 <pre><code class="lang-JavaScript">SslHandler ssl.Handler;
 </code></pre>
 <hr>
-<h3 id="server">Server</h3>
+<h3 id="Server">Server</h3>
 <p><strong>创建一个 <a href=../../object/ifs/sslserver.md.html>SslServer</a> 对象，参见 <a href=../../object/ifs/sslserver.md.html>SslServer</a></strong></p>
 <pre><code class="lang-JavaScript">SslServer ssl.Server;
 </code></pre>
-<h2 id="-">静态函数</h2>
+<h2 id="静态函数">静态函数</h2>
 <h3 id="connect">connect</h3>
 <p><strong>创建一个 <a href=../../object/ifs/sslsocket.md.html>SslSocket</a> 对象并建立连接</strong></p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> Stream ssl.connect(<span class="hljs-built_in">String</span> url,
@@ -185,7 +185,7 @@
 <li><a href=../../object/ifs/stream.md.html>Stream</a>, 返回连接成功的 <a href=../../object/ifs/sslsocket.md.html>SslSocket</a> 对象</li>
 </ul>
 <hr>
-<h3 id="setclientcert">setClientCert</h3>
+<h3 id="setClientCert">setClientCert</h3>
 <p><strong>设定缺省客户端证书</strong></p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> ssl.setClientCert(X509Cert crt,
     PKey key);
@@ -196,7 +196,7 @@
 <li>key: <a href=../../object/ifs/pkey.md.html>PKey</a>, <a href=../../object/ifs/pkey.md.html>PKey</a> 私钥，用于与客户端会话</li>
 </ul>
 <hr>
-<h3 id="loadclientcertfile">loadClientCertFile</h3>
+<h3 id="loadClientCertFile">loadClientCertFile</h3>
 <p><strong>从文件中加载缺省客户端证书</strong></p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> ssl.loadClientCertFile(<span class="hljs-built_in">String</span> crtFile,
     <span class="hljs-built_in">String</span> keyFile,
@@ -209,12 +209,12 @@
 <li>password: String, 解密密码</li>
 </ul>
 <hr>
-<h3 id="loadrootcerts">loadRootCerts</h3>
+<h3 id="loadRootCerts">loadRootCerts</h3>
 <p><strong>加载自带的缺省根证书，等同于 <a href=ssl.md.html#ca>ssl.ca</a>.loadRootCerts</strong></p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> ssl.loadRootCerts();
 </code></pre>
 <p>此证书内容源自：<a href="http.md">http</a>://hg.mozilla.org/releases/mozilla-release/raw-file/default/security/nss/lib/ckfw/builtins/certdata.txt</p>
-<h2 id="-">静态属性</h2>
+<h2 id="静态属性">静态属性</h2>
 <h3 id="ca">ca</h3>
 <p><strong><a href=../../object/ifs/x509cert.md.html>X509Cert</a>, 全局证书，用于 ssl 客户端模式验证服务器证书</strong></p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> readonly X509Cert ssl.ca;
@@ -234,38 +234,38 @@
 <p><strong>Integer, 设定最高版本支持，缺省 tls1_1</strong></p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> Integer ssl.max_version;
 </code></pre>
-<h2 id="-">常量</h2>
-<h3 id="verify_none">VERIFY_NONE</h3>
+<h2 id="常量">常量</h2>
+<h3 id="VERIFY_NONE">VERIFY_NONE</h3>
 <p><strong>证书验证模式，不验证</strong></p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">const</span> ssl.VERIFY_NONE = <span class="hljs-number">0</span>;
 </code></pre>
 <hr>
-<h3 id="verify_optional">VERIFY_OPTIONAL</h3>
+<h3 id="VERIFY_OPTIONAL">VERIFY_OPTIONAL</h3>
 <p><strong>证书验证模式，可选验证，允许验证不通过</strong></p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">const</span> ssl.VERIFY_OPTIONAL = <span class="hljs-number">1</span>;
 </code></pre>
 <hr>
-<h3 id="verify_required">VERIFY_REQUIRED</h3>
+<h3 id="VERIFY_REQUIRED">VERIFY_REQUIRED</h3>
 <p><strong>证书验证模式，要求验证，验证不通过则中断</strong></p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">const</span> ssl.VERIFY_REQUIRED = <span class="hljs-number">2</span>;
 </code></pre>
 <hr>
-<h3 id="badcert_expired">BADCERT_EXPIRED</h3>
+<h3 id="BADCERT_EXPIRED">BADCERT_EXPIRED</h3>
 <p><strong>证书验证结果，证书超时</strong></p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">const</span> ssl.BADCERT_EXPIRED = <span class="hljs-number">1</span>;
 </code></pre>
 <hr>
-<h3 id="badcert_revoked">BADCERT_REVOKED</h3>
+<h3 id="BADCERT_REVOKED">BADCERT_REVOKED</h3>
 <p><strong>证书验证结果，证书被撤销</strong></p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">const</span> ssl.BADCERT_REVOKED = <span class="hljs-number">2</span>;
 </code></pre>
 <hr>
-<h3 id="badcert_cn_mismatch">BADCERT_CN_MISMATCH</h3>
+<h3 id="BADCERT_CN_MISMATCH">BADCERT_CN_MISMATCH</h3>
 <p><strong>证书验证结果，证书名错误</strong></p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">const</span> ssl.BADCERT_CN_MISMATCH = <span class="hljs-number">4</span>;
 </code></pre>
 <hr>
-<h3 id="badcert_not_trusted">BADCERT_NOT_TRUSTED</h3>
+<h3 id="BADCERT_NOT_TRUSTED">BADCERT_NOT_TRUSTED</h3>
 <p><strong>证书验证结果，证书不可信</strong></p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">const</span> ssl.BADCERT_NOT_TRUSTED = <span class="hljs-number">8</span>;
 </code></pre>

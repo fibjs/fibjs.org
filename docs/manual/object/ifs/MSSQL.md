@@ -1,7 +1,7 @@
 # 对象 MSSQL
 SQL Server 数据库连接对象
 
-使用 [db.open](../../module/ifs/db.md#open) 或 [db.openMySQL](../../module/ifs/db.md#openmysql) 创建，创建方式：
+使用 [db.open](../../module/ifs/db.md#open) 或 [db.openMySQL](../../module/ifs/db.md#openMySQL) 创建，创建方式：
 
 ```JavaScript
 var sql = db.openMSSQL("mssql://user:pass@host/db");

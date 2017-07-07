@@ -46,7 +46,7 @@ new TcpServer(Integer port,
 
 调用参数:
 * port: Integer, 指定 tcp 服务器侦听端口
-* listener: [Handler](Handler.md), 指定 tcp 接收到的内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq.Handler](../../module/ifs/mq.md#handler)
+* listener: [Handler](Handler.md), 指定 tcp 接收到的内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq.Handler](../../module/ifs/mq.md#Handler)
 
 --------------------------
 **TcpServer 构造函数**
@@ -60,7 +60,7 @@ new TcpServer(String addr,
 调用参数:
 * addr: String, 指定 tcp 服务器侦听地址，为 "" 则在本机所有地址侦听
 * port: Integer, 指定 tcp 服务器侦听端口
-* listener: [Handler](Handler.md), 指定 tcp 接收到的连接的内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq.Handler](../../module/ifs/mq.md#handler)
+* listener: [Handler](Handler.md), 指定 tcp 接收到的连接的内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq.Handler](../../module/ifs/mq.md#Handler)
 
 ## 成员属性
         

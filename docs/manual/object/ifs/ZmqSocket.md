@@ -23,7 +23,7 @@ new ZmqSocket(Integer type = zmq.PAIR);
 ```
 
 调用参数:
-* type: Integer, 指定 socket 类型，缺省为 [zmq.PAIR](../../module/ifs/zmq.md#pair)
+* type: Integer, 指定 socket 类型，缺省为 [zmq.PAIR](../../module/ifs/zmq.md#PAIR)
 
 ## 成员属性
         

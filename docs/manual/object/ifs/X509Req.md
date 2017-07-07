@@ -40,7 +40,7 @@ new X509Req(String subject,
 调用参数:
 * subject: String, 证书的主题可分辨名称
 * key: [PKey](PKey.md), 证书的公钥
-* hash: Integer, 证书摘要算法，缺省为 [hash.SHA1](../../module/ifs/hash.md#sha1)
+* hash: Integer, 证书摘要算法，缺省为 [hash.SHA1](../../module/ifs/hash.md#SHA1)
 
 ## 成员属性
         

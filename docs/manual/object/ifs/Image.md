@@ -39,7 +39,7 @@ readonly Integer Image.height;
 
 --------------------------
 ### format
-**Integer, 查询图像来源格式，结果为 [gd.PNG](../../module/ifs/gd.md#png), [gd.JPEG](../../module/ifs/gd.md#jpeg), [gd.GIF](../../module/ifs/gd.md#gif), [gd.BMP](../../module/ifs/gd.md#bmp), [gd.WEBP](../../module/ifs/gd.md#webp)**
+**Integer, 查询图像来源格式，结果为 [gd.PNG](../../module/ifs/gd.md#PNG), [gd.JPEG](../../module/ifs/gd.md#JPEG), [gd.GIF](../../module/ifs/gd.md#GIF), [gd.BMP](../../module/ifs/gd.md#BMP), [gd.WEBP](../../module/ifs/gd.md#WEBP)**
 
 ```JavaScript
 readonly Integer Image.format;
@@ -47,7 +47,7 @@ readonly Integer Image.format;
 
 --------------------------
 ### type
-**Integer, 查询图像类型，结果为 [gd.TRUECOLOR](../../module/ifs/gd.md#truecolor), [gd.PALETTE](../../module/ifs/gd.md#palette)**
+**Integer, 查询图像类型，结果为 [gd.TRUECOLOR](../../module/ifs/gd.md#TRUECOLOR), [gd.PALETTE](../../module/ifs/gd.md#PALETTE)**
 
 ```JavaScript
 readonly Integer Image.type;
@@ -96,8 +96,8 @@ Buffer Image.getData(Integer format = gd.PNG,
 ```
 
 调用参数:
-* format: Integer, 指定返回数据的格式，允许值为 [gd.PNG](../../module/ifs/gd.md#png), [gd.JPEG](../../module/ifs/gd.md#jpeg), [gd.GIF](../../module/ifs/gd.md#gif), [gd.BMP](../../module/ifs/gd.md#bmp), [gd.WEBP](../../module/ifs/gd.md#webp), 缺省为 [gd.PNG](../../module/ifs/gd.md#png)
-* quality: Integer, 当格式为 [gd.JPEG](../../module/ifs/gd.md#jpeg) 或 [gd.WEBP](../../module/ifs/gd.md#webp) 时用于指定压缩质量，缺省为 85，其他格式忽略此参数
+* format: Integer, 指定返回数据的格式，允许值为 [gd.PNG](../../module/ifs/gd.md#PNG), [gd.JPEG](../../module/ifs/gd.md#JPEG), [gd.GIF](../../module/ifs/gd.md#GIF), [gd.BMP](../../module/ifs/gd.md#BMP), [gd.WEBP](../../module/ifs/gd.md#WEBP), 缺省为 [gd.PNG](../../module/ifs/gd.md#PNG)
+* quality: Integer, 当格式为 [gd.JPEG](../../module/ifs/gd.md#JPEG) 或 [gd.WEBP](../../module/ifs/gd.md#WEBP) 时用于指定压缩质量，缺省为 85，其他格式忽略此参数
 
 返回结果:
 * [Buffer](Buffer.md), 返回格式化的数据
@@ -114,8 +114,8 @@ Image.save(Stream stm,
 
 调用参数:
 * stm: [Stream](Stream.md), 指定要存入的流对象
-* format: Integer, 指定返回数据的格式，允许值为 [gd.PNG](../../module/ifs/gd.md#png), [gd.JPEG](../../module/ifs/gd.md#jpeg), [gd.GIF](../../module/ifs/gd.md#gif), [gd.BMP](../../module/ifs/gd.md#bmp), [gd.WEBP](../../module/ifs/gd.md#webp), 缺省为 [gd.PNG](../../module/ifs/gd.md#png)
-* quality: Integer, 当格式为 [gd.JPEG](../../module/ifs/gd.md#jpeg) 或 [gd.WEBP](../../module/ifs/gd.md#webp) 时用于指定压缩质量，缺省为 85，其他格式忽略此参数
+* format: Integer, 指定返回数据的格式，允许值为 [gd.PNG](../../module/ifs/gd.md#PNG), [gd.JPEG](../../module/ifs/gd.md#JPEG), [gd.GIF](../../module/ifs/gd.md#GIF), [gd.BMP](../../module/ifs/gd.md#BMP), [gd.WEBP](../../module/ifs/gd.md#WEBP), 缺省为 [gd.PNG](../../module/ifs/gd.md#PNG)
+* quality: Integer, 当格式为 [gd.JPEG](../../module/ifs/gd.md#JPEG) 或 [gd.WEBP](../../module/ifs/gd.md#WEBP) 时用于指定压缩质量，缺省为 85，其他格式忽略此参数
 
 --------------------------
 **按照指定的格式将图像数据存入指定文件，文件将被强制覆盖**
@@ -128,12 +128,12 @@ Image.save(String fname,
 
 调用参数:
 * fname: String, 指定文件名
-* format: Integer, 指定返回数据的格式，允许值为 [gd.PNG](../../module/ifs/gd.md#png), [gd.JPEG](../../module/ifs/gd.md#jpeg), [gd.GIF](../../module/ifs/gd.md#gif), [gd.BMP](../../module/ifs/gd.md#bmp), [gd.WEBP](../../module/ifs/gd.md#webp), 缺省为 [gd.PNG](../../module/ifs/gd.md#png)
-* quality: Integer, 当格式为 [gd.JPEG](../../module/ifs/gd.md#jpeg) 时用于指定压缩质量，缺省为 85，其他格式忽略此参数
+* format: Integer, 指定返回数据的格式，允许值为 [gd.PNG](../../module/ifs/gd.md#PNG), [gd.JPEG](../../module/ifs/gd.md#JPEG), [gd.GIF](../../module/ifs/gd.md#GIF), [gd.BMP](../../module/ifs/gd.md#BMP), [gd.WEBP](../../module/ifs/gd.md#WEBP), 缺省为 [gd.PNG](../../module/ifs/gd.md#PNG)
+* quality: Integer, 当格式为 [gd.JPEG](../../module/ifs/gd.md#JPEG) 时用于指定压缩质量，缺省为 85，其他格式忽略此参数
 
 --------------------------
 ### colorAllocate
-**为指定的颜色申请一个颜色号，对于 [gd.PALETTE](../../module/ifs/gd.md#palette) 图像，颜色号为调色板索引，对于 [gd.TRUECOLOR](../../module/ifs/gd.md#truecolor) 图像，颜色号为 rgb 编码数值**
+**为指定的颜色申请一个颜色号，对于 [gd.PALETTE](../../module/ifs/gd.md#PALETTE) 图像，颜色号为调色板索引，对于 [gd.TRUECOLOR](../../module/ifs/gd.md#TRUECOLOR) 图像，颜色号为 rgb 编码数值**
 
 ```JavaScript
 Integer Image.colorAllocate(Integer red,
@@ -150,7 +150,7 @@ Integer Image.colorAllocate(Integer red,
 * Integer, 返回颜色号，不成功返回 -1
 
 --------------------------
-**为指定的颜色申请一个颜色号，对于 [gd.PALETTE](../../module/ifs/gd.md#palette) 图像，颜色号为调色板索引，对于 [gd.TRUECOLOR](../../module/ifs/gd.md#truecolor) 图像，颜色号为 rgb 编码数值**
+**为指定的颜色申请一个颜色号，对于 [gd.PALETTE](../../module/ifs/gd.md#PALETTE) 图像，颜色号为调色板索引，对于 [gd.TRUECOLOR](../../module/ifs/gd.md#TRUECOLOR) 图像，颜色号为 rgb 编码数值**
 
 ```JavaScript
 Integer Image.colorAllocate(Integer color);
@@ -164,7 +164,7 @@ Integer Image.colorAllocate(Integer color);
 
 --------------------------
 ### colorAllocateAlpha
-**为指定的颜色及透明申请一个颜色号，对于 [gd.PALETTE](../../module/ifs/gd.md#palette) 图像，颜色号为调色板索引，对于 [gd.TRUECOLOR](../../module/ifs/gd.md#truecolor) 图像，颜色号为 rgba 编码数值**
+**为指定的颜色及透明申请一个颜色号，对于 [gd.PALETTE](../../module/ifs/gd.md#PALETTE) 图像，颜色号为调色板索引，对于 [gd.TRUECOLOR](../../module/ifs/gd.md#TRUECOLOR) 图像，颜色号为 rgba 编码数值**
 
 ```JavaScript
 Integer Image.colorAllocateAlpha(Integer red,
@@ -183,7 +183,7 @@ Integer Image.colorAllocateAlpha(Integer red,
 * Integer, 返回颜色号，不成功返回 -1
 
 --------------------------
-**为指定的颜色及透明申请一个颜色号，对于 [gd.PALETTE](../../module/ifs/gd.md#palette) 图像，颜色号为调色板索引，对于 [gd.TRUECOLOR](../../module/ifs/gd.md#truecolor) 图像，颜色号为 rgba 编码数值**
+**为指定的颜色及透明申请一个颜色号，对于 [gd.PALETTE](../../module/ifs/gd.md#PALETTE) 图像，颜色号为调色板索引，对于 [gd.TRUECOLOR](../../module/ifs/gd.md#TRUECOLOR) 图像，颜色号为 rgba 编码数值**
 
 ```JavaScript
 Integer Image.colorAllocateAlpha(Integer color);
@@ -197,7 +197,7 @@ Integer Image.colorAllocateAlpha(Integer color);
 
 --------------------------
 ### colorClosest
-**为指定的颜色查找一个最接近的颜色号，对于 [gd.PALETTE](../../module/ifs/gd.md#palette) 图像，颜色号为调色板索引，对于 [gd.TRUECOLOR](../../module/ifs/gd.md#truecolor) 图像，颜色号为 rgb 编码数值**
+**为指定的颜色查找一个最接近的颜色号，对于 [gd.PALETTE](../../module/ifs/gd.md#PALETTE) 图像，颜色号为调色板索引，对于 [gd.TRUECOLOR](../../module/ifs/gd.md#TRUECOLOR) 图像，颜色号为 rgb 编码数值**
 
 ```JavaScript
 Integer Image.colorClosest(Integer red,
@@ -214,7 +214,7 @@ Integer Image.colorClosest(Integer red,
 * Integer, 返回颜色号，不成功返回 -1
 
 --------------------------
-**为指定的颜色查找一个最接近的颜色号，对于 [gd.PALETTE](../../module/ifs/gd.md#palette) 图像，颜色号为调色板索引，对于 [gd.TRUECOLOR](../../module/ifs/gd.md#truecolor) 图像，颜色号为 rgb 编码数值**
+**为指定的颜色查找一个最接近的颜色号，对于 [gd.PALETTE](../../module/ifs/gd.md#PALETTE) 图像，颜色号为调色板索引，对于 [gd.TRUECOLOR](../../module/ifs/gd.md#TRUECOLOR) 图像，颜色号为 rgb 编码数值**
 
 ```JavaScript
 Integer Image.colorClosest(Integer color);
@@ -228,7 +228,7 @@ Integer Image.colorClosest(Integer color);
 
 --------------------------
 ### colorClosestHWB
-**为指定的颜色查找一个最接近的颜色号，此方法使用 Hue/White/Black 计算查找最接近颜色，对于 [gd.PALETTE](../../module/ifs/gd.md#palette) 图像，颜色号为调色板索引，对于 [gd.TRUECOLOR](../../module/ifs/gd.md#truecolor) 图像，颜色号为 rgb 编码数值**
+**为指定的颜色查找一个最接近的颜色号，此方法使用 Hue/White/Black 计算查找最接近颜色，对于 [gd.PALETTE](../../module/ifs/gd.md#PALETTE) 图像，颜色号为调色板索引，对于 [gd.TRUECOLOR](../../module/ifs/gd.md#TRUECOLOR) 图像，颜色号为 rgb 编码数值**
 
 ```JavaScript
 Integer Image.colorClosestHWB(Integer red,
@@ -245,7 +245,7 @@ Integer Image.colorClosestHWB(Integer red,
 * Integer, 返回颜色号，不成功返回 -1
 
 --------------------------
-**为指定的颜色查找一个最接近的颜色号，此方法使用 Hue/White/Black 计算查找最接近颜色，对于 [gd.PALETTE](../../module/ifs/gd.md#palette) 图像，颜色号为调色板索引，对于 [gd.TRUECOLOR](../../module/ifs/gd.md#truecolor) 图像，颜色号为 rgb 编码数值**
+**为指定的颜色查找一个最接近的颜色号，此方法使用 Hue/White/Black 计算查找最接近颜色，对于 [gd.PALETTE](../../module/ifs/gd.md#PALETTE) 图像，颜色号为调色板索引，对于 [gd.TRUECOLOR](../../module/ifs/gd.md#TRUECOLOR) 图像，颜色号为 rgb 编码数值**
 
 ```JavaScript
 Integer Image.colorClosestHWB(Integer color);
@@ -259,7 +259,7 @@ Integer Image.colorClosestHWB(Integer color);
 
 --------------------------
 ### colorClosestAlpha
-**为指定的颜色及透明查找一个最接近的颜色号，对于 [gd.PALETTE](../../module/ifs/gd.md#palette) 图像，颜色号为调色板索引，对于 [gd.TRUECOLOR](../../module/ifs/gd.md#truecolor) 图像，颜色号为 rgba 编码数值**
+**为指定的颜色及透明查找一个最接近的颜色号，对于 [gd.PALETTE](../../module/ifs/gd.md#PALETTE) 图像，颜色号为调色板索引，对于 [gd.TRUECOLOR](../../module/ifs/gd.md#TRUECOLOR) 图像，颜色号为 rgba 编码数值**
 
 ```JavaScript
 Integer Image.colorClosestAlpha(Integer red,
@@ -278,7 +278,7 @@ Integer Image.colorClosestAlpha(Integer red,
 * Integer, 返回颜色号，不成功返回 -1
 
 --------------------------
-**为指定的颜色及透明查找一个最接近的颜色号，对于 [gd.PALETTE](../../module/ifs/gd.md#palette) 图像，颜色号为调色板索引，对于 [gd.TRUECOLOR](../../module/ifs/gd.md#truecolor) 图像，颜色号为 rgba 编码数值**
+**为指定的颜色及透明查找一个最接近的颜色号，对于 [gd.PALETTE](../../module/ifs/gd.md#PALETTE) 图像，颜色号为调色板索引，对于 [gd.TRUECOLOR](../../module/ifs/gd.md#TRUECOLOR) 图像，颜色号为 rgba 编码数值**
 
 ```JavaScript
 Integer Image.colorClosestAlpha(Integer color);
@@ -292,7 +292,7 @@ Integer Image.colorClosestAlpha(Integer color);
 
 --------------------------
 ### colorExact
-**查找指定的颜色对应的颜色号，对于 [gd.PALETTE](../../module/ifs/gd.md#palette) 图像，颜色号为调色板索引，对于 [gd.TRUECOLOR](../../module/ifs/gd.md#truecolor) 图像，颜色号为 rgb 编码数值**
+**查找指定的颜色对应的颜色号，对于 [gd.PALETTE](../../module/ifs/gd.md#PALETTE) 图像，颜色号为调色板索引，对于 [gd.TRUECOLOR](../../module/ifs/gd.md#TRUECOLOR) 图像，颜色号为 rgb 编码数值**
 
 ```JavaScript
 Integer Image.colorExact(Integer red,
@@ -309,7 +309,7 @@ Integer Image.colorExact(Integer red,
 * Integer, 返回颜色号，不成功返回 -1
 
 --------------------------
-**查找指定的颜色对应的颜色号，对于 [gd.PALETTE](../../module/ifs/gd.md#palette) 图像，颜色号为调色板索引，对于 [gd.TRUECOLOR](../../module/ifs/gd.md#truecolor) 图像，颜色号为 rgb 编码数值**
+**查找指定的颜色对应的颜色号，对于 [gd.PALETTE](../../module/ifs/gd.md#PALETTE) 图像，颜色号为调色板索引，对于 [gd.TRUECOLOR](../../module/ifs/gd.md#TRUECOLOR) 图像，颜色号为 rgb 编码数值**
 
 ```JavaScript
 Integer Image.colorExact(Integer color);
@@ -323,7 +323,7 @@ Integer Image.colorExact(Integer color);
 
 --------------------------
 ### colorExactAlpha
-**查找指定的颜色及透明对应的颜色号，对于 [gd.PALETTE](../../module/ifs/gd.md#palette) 图像，颜色号为调色板索引，对于 [gd.TRUECOLOR](../../module/ifs/gd.md#truecolor) 图像，颜色号为 rgba 编码数值**
+**查找指定的颜色及透明对应的颜色号，对于 [gd.PALETTE](../../module/ifs/gd.md#PALETTE) 图像，颜色号为调色板索引，对于 [gd.TRUECOLOR](../../module/ifs/gd.md#TRUECOLOR) 图像，颜色号为 rgba 编码数值**
 
 ```JavaScript
 Integer Image.colorExactAlpha(Integer red,
@@ -342,7 +342,7 @@ Integer Image.colorExactAlpha(Integer red,
 * Integer, 返回颜色号，不成功返回 -1
 
 --------------------------
-**查找指定的颜色及透明对应的颜色号，对于 [gd.PALETTE](../../module/ifs/gd.md#palette) 图像，颜色号为调色板索引，对于 [gd.TRUECOLOR](../../module/ifs/gd.md#truecolor) 图像，颜色号为 rgba 编码数值**
+**查找指定的颜色及透明对应的颜色号，对于 [gd.PALETTE](../../module/ifs/gd.md#PALETTE) 图像，颜色号为调色板索引，对于 [gd.TRUECOLOR](../../module/ifs/gd.md#TRUECOLOR) 图像，颜色号为 rgba 编码数值**
 
 ```JavaScript
 Integer Image.colorExactAlpha(Integer color);
@@ -356,7 +356,7 @@ Integer Image.colorExactAlpha(Integer color);
 
 --------------------------
 ### colorResolve
-**查找指定的颜色对应的颜色号，如果颜色不存在，则为其申请一个新颜色号，对于 [gd.PALETTE](../../module/ifs/gd.md#palette) 图像，颜色号为调色板索引，对于 [gd.TRUECOLOR](../../module/ifs/gd.md#truecolor) 图像，颜色号为 rgb 编码数值**
+**查找指定的颜色对应的颜色号，如果颜色不存在，则为其申请一个新颜色号，对于 [gd.PALETTE](../../module/ifs/gd.md#PALETTE) 图像，颜色号为调色板索引，对于 [gd.TRUECOLOR](../../module/ifs/gd.md#TRUECOLOR) 图像，颜色号为 rgb 编码数值**
 
 ```JavaScript
 Integer Image.colorResolve(Integer red,
@@ -373,7 +373,7 @@ Integer Image.colorResolve(Integer red,
 * Integer, 返回颜色号，不成功返回 -1
 
 --------------------------
-**查找指定的颜色对应的颜色号，如果颜色不存在，则为其申请一个新颜色号，对于 [gd.PALETTE](../../module/ifs/gd.md#palette) 图像，颜色号为调色板索引，对于 [gd.TRUECOLOR](../../module/ifs/gd.md#truecolor) 图像，颜色号为 rgb 编码数值**
+**查找指定的颜色对应的颜色号，如果颜色不存在，则为其申请一个新颜色号，对于 [gd.PALETTE](../../module/ifs/gd.md#PALETTE) 图像，颜色号为调色板索引，对于 [gd.TRUECOLOR](../../module/ifs/gd.md#TRUECOLOR) 图像，颜色号为 rgb 编码数值**
 
 ```JavaScript
 Integer Image.colorResolve(Integer color);
@@ -387,7 +387,7 @@ Integer Image.colorResolve(Integer color);
 
 --------------------------
 ### colorResolveAlpha
-**查找指定的颜色及透明对应的颜色号，如果颜色不存在，则为其申请一个新颜色号，对于 [gd.PALETTE](../../module/ifs/gd.md#palette) 图像，颜色号为调色板索引，对于 [gd.TRUECOLOR](../../module/ifs/gd.md#truecolor) 图像，颜色号为 rgba 编码数值**
+**查找指定的颜色及透明对应的颜色号，如果颜色不存在，则为其申请一个新颜色号，对于 [gd.PALETTE](../../module/ifs/gd.md#PALETTE) 图像，颜色号为调色板索引，对于 [gd.TRUECOLOR](../../module/ifs/gd.md#TRUECOLOR) 图像，颜色号为 rgba 编码数值**
 
 ```JavaScript
 Integer Image.colorResolveAlpha(Integer red,
@@ -406,7 +406,7 @@ Integer Image.colorResolveAlpha(Integer red,
 * Integer, 返回颜色号，不成功返回 -1
 
 --------------------------
-**查找指定的颜色及透明对应的颜色号，如果颜色不存在，则为其申请一个新颜色号，对于 [gd.PALETTE](../../module/ifs/gd.md#palette) 图像，颜色号为调色板索引，对于 [gd.TRUECOLOR](../../module/ifs/gd.md#truecolor) 图像，颜色号为 rgba 编码数值**
+**查找指定的颜色及透明对应的颜色号，如果颜色不存在，则为其申请一个新颜色号，对于 [gd.PALETTE](../../module/ifs/gd.md#PALETTE) 图像，颜色号为调色板索引，对于 [gd.TRUECOLOR](../../module/ifs/gd.md#TRUECOLOR) 图像，颜色号为 rgba 编码数值**
 
 ```JavaScript
 Integer Image.colorResolveAlpha(Integer color);
@@ -684,7 +684,7 @@ Image.filledArc(Integer x,
 * start: Integer, 扇形开始的角度，范围为 0-360
 * end: Integer, 扇形结束的角度，范围为 0-360
 * color: Integer, 指定矩形的颜色号
-* style: Integer, 指定扇形的样式，允许的值有 [gd.ARC](../../module/ifs/gd.md#arc), [gd.CHORD](../../module/ifs/gd.md#chord), [gd.NOFILL](../../module/ifs/gd.md#nofill), [gd.EDGED](../../module/ifs/gd.md#edged) 及其组合
+* style: Integer, 指定扇形的样式，允许的值有 [gd.ARC](../../module/ifs/gd.md#ARC), [gd.CHORD](../../module/ifs/gd.md#CHORD), [gd.NOFILL](../../module/ifs/gd.md#NOFILL), [gd.EDGED](../../module/ifs/gd.md#EDGED) 及其组合
 
 --------------------------
 ### fill
@@ -787,7 +787,7 @@ Image.flip(Integer dir = gd.HORIZONTAL) async;
 ```
 
 调用参数:
-* dir: Integer, 镜像方向，允许值为 [gd.BOTH](../../module/ifs/gd.md#both),[gd.HORIZONTAL](../../module/ifs/gd.md#horizontal), [gd.VERTICAL](../../module/ifs/gd.md#vertical), 缺省为 [gd.HORIZONTAL](../../module/ifs/gd.md#horizontal)
+* dir: Integer, 镜像方向，允许值为 [gd.BOTH](../../module/ifs/gd.md#BOTH),[gd.HORIZONTAL](../../module/ifs/gd.md#HORIZONTAL), [gd.VERTICAL](../../module/ifs/gd.md#VERTICAL), 缺省为 [gd.HORIZONTAL](../../module/ifs/gd.md#HORIZONTAL)
 
 --------------------------
 ### rotate
@@ -798,7 +798,7 @@ Image.rotate(Integer dir) async;
 ```
 
 调用参数:
-* dir: Integer, 旋转方向，允许值为 [gd.LEFT](../../module/ifs/gd.md#left), [gd.RIGHT](../../module/ifs/gd.md#right)
+* dir: Integer, 旋转方向，允许值为 [gd.LEFT](../../module/ifs/gd.md#LEFT), [gd.RIGHT](../../module/ifs/gd.md#RIGHT)
 
 --------------------------
 ### convert
@@ -809,7 +809,7 @@ Image.convert(Integer color = gd.TRUECOLOR) async;
 ```
 
 调用参数:
-* color: Integer, 指定图像类型，允许值为 [gd.TRUECOLOR](../../module/ifs/gd.md#truecolor) 或 [gd.PALETTE](../../module/ifs/gd.md#palette)
+* color: Integer, 指定图像类型，允许值为 [gd.TRUECOLOR](../../module/ifs/gd.md#TRUECOLOR) 或 [gd.PALETTE](../../module/ifs/gd.md#PALETTE)
 
 --------------------------
 ### copy

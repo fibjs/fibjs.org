@@ -55,7 +55,7 @@ Chain.append(Handler hdlr);
 ```
 
 调用参数:
-* hdlr: [Handler](Handler.md), 内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq.Handler](../../module/ifs/mq.md#handler)
+* hdlr: [Handler](Handler.md), 内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq.Handler](../../module/ifs/mq.md#Handler)
 
 --------------------------
 ### invoke

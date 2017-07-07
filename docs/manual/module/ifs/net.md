@@ -84,7 +84,7 @@ static String net.ip(String name) async;
 
 --------------------------
 ### ipv6
-**快速查询的主机 ipv6 地址，等效与 resolve(name, [net.AF_INET6](net.md#af_inet6))**
+**快速查询的主机 ipv6 地址，等效与 resolve(name, [net.AF_INET6](net.md#AF_INET6))**
 
 ```JavaScript
 static String net.ipv6(String name) async;
