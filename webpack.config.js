@@ -124,15 +124,17 @@ function build_docs() {
 
         var html = marked(md);
 
-        html = html.replace(/href=\"[^"]*\.md\"/g, s => {
-            var s1 = s.substr(6, s.length - 7);
-            if (s1.indexOf('http') == 0)
+        html = html.replace(/href=\"([^"]*\.md)(#\w+)?\"/g, (s, s1, s2) => {
+            var so = s1;
+            if (so.indexOf('http') == 0)
                 return s;
 
-            s1 = s1.toLowerCase() + ".html";
-            s1 = "/" + path.join(path.dirname(p), s1);
-            s1 = 'href="' + s1 + '"';
-            return s1;
+            so = so.toLowerCase() + ".html";
+            if (s2)
+                so += s2;
+            so = "/" + path.join(path.dirname(p), so);
+            so = 'href="' + so + '"';
+            return so;
         });
 
         return html;
