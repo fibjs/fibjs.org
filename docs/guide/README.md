@@ -1,5 +1,5 @@
 # 开发指南
 
-* [快速上手](about.md)
+* [关于 fibjs](about.md)
 * [基本安装](install/README.md)
    * [自己编译 ](install/build.md)

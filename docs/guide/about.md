@@ -1,159 +1,136 @@
-# 什么是 fibjs
-fibjs 是一个建立在 Google v8 Javascript 引擎基础上的应用服务器开发框架，不同于 node.js，fibjs 采用 fiber 解决 v8 引擎的多路复用，并通过大量 c++ 组件，将重负荷运算委托给后台线程，释放 v8 线程，争取更大的并发时间。
+# 关于 fibjs
+fibjs 是一个主要为 web 后端开发而设计的应用服务器开发框架，它建立在 Google v8 Javascript 引擎基础上，并且选择了和 node.js 不同的并发解决方案。fibjs 利用 fiber 在框架层隔离了异步调用带来的业务复杂性，极大降低了开发难度，并减少因为用户空间频繁异步处理带来的性能问题。
 
-## 编译执行版本
-### 第一步：准备编译环境
+由于历史原因，JavaScript 主要被用于浏览器的 UI 处理，UI 开发是典型的单线程事件驱动模式，因此 JavaScript 也形成了以异步处理为主要编程范式。
 
-Windows 下需要安装 Visual Studio 2015。
+随着 JavaScript 的成功，越来越多的人开始将 JavaScript 应用到其它的场景。与此同时，人们也越来越发现在很多场景下异步处理并不是最合适的选择。
 
-unix 下编译fibjs需要依赖以下工具：
-```
-GCC 4.8 or newer
-CMake 2.6 or newer
-GNU Make 3.81 or newer
-libexecinfo (FreeBSD and OpenBSD only)
-```
-MacOSX 下，除需要安装 xcode 及命令行工具外，以 Brew 为例，准备环境命令如下：
-```sh
-brew install cmake
-brew install git
-```
-Ubuntu 准备环境命令如下：
-```sh
-apt install g++
-apt install make
-apt install cmake
-apt install git
-```
-如果要编译 32 位版本，另需要安装 multilib：
-```sh
-apt install gcc-multilib
-apt install g++-multilib
-```
-Arm on Ubuntu 准备环境命令如下：
-```sh
-apt install gcc-arm-linux-gnueabihf
-apt install g++-arm-linux-gnueabihf
-```
-如果要在ubuntu上编译arm64位版本，准备环境命令如下：
-```sh
-apt install gcc-aarch64-linux-gnu
-apt install g++-aarch64-linux-gnu
-```
-Mips on Ubuntu 准备环境如下：
-```sh
-apt install gcc-mips-linux-gnu
-apt install g++-mips-linux-gnu
-```
-如果要在ubuntu上编译mips 64位版本，准备环境命令如下：
-```sh
-apt install gcc-mips64-linux-gnuabi64
-apt install g++-mips64-linux-gnuabi64
-```
-Powerpc on Ubuntu 准备环境命令如下：
-```sh
-apt install gcc-powerpc-linux-gnu
-apt install g++-powerpc-linux-gnu
-```
-如果要在ubuntu上编译powerpc 64位版本，准备环境命令如下：
-```sh
-apt install gcc-powerpc64-linux-gnu
-apt install g++-powerpc64-linux-gnu
-```
-fix：
-```sh
-rm -f /usr/include/asm
-ln -s x86_64-linux-gnu /usr/include/i386-linux-gnu
-ln -s x86_64-linux-gnu /usr/include/x86_64-linux-gnux32
-```
-Fedora 准备环境命令如下：
-```sh
-yum install gcc-c++
-yum install libstdc++-static
-yum install make
-yum install cmake
-yum install git
-```
-如果要编译 32 位版本，准备环境命令如下：
-```sh
-yum install glibc-devel.i686
-yum install libstdc++-static.i686
-```
-FreeBSD (8,9)准备环境命令如下：
-```sh
-pkg_add -r cmake
-pkg_add -r libexecinfo
-pkg_add -r git
-```
-FreeBSD 10及以上系统准备环境命令如下：
-```sh
-pkg install cmake
-pkg install libexecinfo
-pkg install git
-```
-### 第二步：获取代码
-fibjs 当前 github 地址为：https://github.com/fibjs/fibjs
+### 摈弃异步，敏捷开发
+fibjs 利用 fiber 在框架层隔离了异步调用带来的业务复杂性，工程师只需要按照通常的同步业务逻辑编写代码，即可享有异步处理带来的巨大便利。
 
-在合适的位置执行以下命令：
-```sh
-git clone https://github.com/fibjs/fibjs.git
-cd fibjs
-git submodule init
-git submodule update
-```
-### 第三步：编译命令及说明
-Windows 下点击start菜单选择所有程序选择Visual Studio 2015 选择Visual Studio Tools选择Developer Command Prompt for VS2015 打开终端后进入fibjs目录，执行命令：
-```sh
-build
-```
-unix 环境，在 fibjs 项目根目录，有一个 build 的 shell 脚本，可用于 fibjs 编译。 执行编译命令：
-```sh
-sh build [options] [-jn] [-v] [-h]
+以下这段代码摘自 node.js mysql 模块的文档：
+```JavaScript
+conn.beginTransaction(err => {
+    if (err) {
+        throw err;
+    }
+    conn.query('INSERT INTO posts SET title=?', title,
+        (error, results, fields) => {
+            if (error) {
+                return conn.rollback(() => {
+                    throw error;
+                });
+            }
 
-options：
+            var log = 'Post ' + results.insertId + ' added';
 
-clean: 清除编译结果，便于全部重新编译
-Release: 以发布方式编译
-Debug: 以调试方式编译
-i386: 以 32 位发布方式编译
-amd64: 以 32 位发布方式编译
-arm: 交叉编译32位arm版本
-arm64: 交叉编译64位arm版本
-mips: 交叉编译32位mips版本
-mips64: 交叉编译64位mips版本
-ppc: 交叉编译32位powerpc版本
-ppc64: 交叉编译64位powerpc64版本
+            conn.query('INSERT INTO log SET data=?', log,
+                (error, results, fields) => {
+                    if (error) {
+                        return conn.rollback(() => {
+                            throw error;
+                        });
+                    }
+                    conn.commit((err) => {
+                        if (err) {
+                            return conn.rollback(() => {
+                                throw err;
+                            });
+                        }
+                        console.log('success!');
+                    });
+                });
+        });
+});
 ```
-例如：Release 模式编译命令如下：
-```sh
-sh build Release
-```
-### 第四步：测试全部用例
-```sh
-bin/{$OS}_{$arch}_Release/fibjs test
-```
-例如：
-```sh
-bin/Linux_amd64_Release/fibjs test
-```
-即可开始执行 fibjs 全部测试用例。{$OS} 内容自行查阅。
+在 fibjs 中，完成同样的工作，代码如下：
+```JavaScript
+var result, log;
 
-当你看到类似以下结果，表示测试用例全部运行正常：
-```sh
-.......
-db
- √ escape
- √ formatMySQL
-sqlite
- √ empty sql
- √ create table
- √ intert
- √ select
- √ callback
- √ binary (835ms)
-BUG:simple_api_call
- √ not hungup (109ms)
- √ 312 tests completed (6727ms)
+conn.begin();
+try {
+    result = conn.execute('INSERT INTO posts SET title=?', title);
+    log = 'Post ' + results.insertId + ' added';
+    conn.execute('INSERT INTO log SET data=?', log);
+
+    conn.commit();
+    console.log('success!');
+} catch (e) {
+    conn.rollback();
+    throw e;
+}
 ```
-### 第五步：歇一会，喝点什么
-到现在为止，你已经有一个可以执行的 fibjs 版本了，可以庆祝一下，给自己一点奖励。
+如果你喜欢，你甚至可以把代码写成这样：
+```JavaScript
+conn.begin();
+try {
+    conn.execute('INSERT INTO log SET data=?',
+        'Post ' + conn.execute('INSERT INTO posts SET title=?', title).insertId +
+        ' added');
+
+    conn.commit();
+    console.log('success!');
+} catch (e) {
+    conn.rollback();
+    throw e;
+}
+```
+我们可以明显比较出两种不同的编程风格带来的差异。更少的代码会带来更少错误，随着代码的减少，代码的逻辑也更加清晰，无论是开发还是维护，都会从中获益。
+
+### 拥抱高能
+尽管我们可以很方便地通过扩充服务器来提高响应速度，但是性能仍然应该是选择一个开发框架的重要依据之一。随着 ES7 的推出，async 作为一种新的异步开发模式被引入 JavaScript。然而当我们享受 async 带来的同步风格时，也不得不面对它对性能的影响。
+
+我们可以使用一段测试代码来比较不同的编程风格带来的性能差异：
+```JavaScript
+var count = 1000;
+
+async function test_async(n) {
+    if (n == count)
+        return;
+    await test_async(n + 1);
+}
+
+function test_callback(n, cb) {
+    if (n == count)
+        return cb();
+
+    test_callback(n + 1, () => {
+        cb();
+    });
+}
+
+function test_sync(n) {
+    if (n == count)
+        return;
+    test_sync(n + 1);
+}
+
+async function test() {
+    console.time("async");
+    await test_async(0);
+    console.timeEnd("async");
+
+    console.time("callback");
+    test_callback(0, () => {
+        console.timeEnd("callback");
+    });
+
+    console.time("sync");
+    await test_sync(0);
+    console.timeEnd("sync");
+}
+
+test();
+```
+在 node.js v8.1.2 下，这段代码的运行结果如下：
+```sh
+async: 2.271ms
+callback: 0.180ms
+sync: 0.081ms
+```
+我们从测试结果可以明显知道，当项目中被广泛应用 async 之后，服务器将花费大量时间用来处理 async 函数的调用和返回。我们在一些服务端应用的实际测试中也发现了这一点。而且这种性能的急剧下降，是完全不能接受的。
+
+fibjs 采用 fiber 充分利用了 JavaScript 语言本身的特性，并且最大限度地发挥 v8 的优越性能。工程师可以很轻易地将服务器的性能发挥到极致。
+
+### 灵活选择
+选择使用 fibjs 并不意味着你必须使用同步的开发风格，实际上 fibjs 支持你所见过的任何一种异步编程范式，并且可以灵活地在同步风格和异步风格之间切换。
