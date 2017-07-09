@@ -149,7 +149,7 @@ sqlite
 ### 安装至系统
 你可以使用下面的命令，将刚刚编译成功的 fibjs 安装至系统，方便使用:
 ```sh
-bin/{$OS}_{$arch}_release\install.sh
+bin/{$OS}_{$arch}_release/install.sh
 ```
 
 ### 开始编程
