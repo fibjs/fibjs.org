@@ -164,3 +164,8 @@ data = util.sync(async_session_get)(sid);
 data = util.sync(callback_session_get)(sid);
 ```
 fibjs 可以使用 util.sync 将 callback 或者 async 函数转变为 sync 函数，并且直接调用。通过这种方式，我们可以很方便地整合不同编程范式的模块，并且以最小的开发成本将其转变为 sync 范式，有效地避免范式传染带来的灾难。
+
+### 开始体验
+准备好开始一场愉快的开发经历了吗？那么，从安装开始吧。
+
+👉 【[点击安装](install.md)】
