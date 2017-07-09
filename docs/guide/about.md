@@ -1,5 +1,5 @@
 # 关于 fibjs
-fibjs 是一个主要为 web 后端开发而设计的应用服务器开发框架，它建立在 Google v8 Javascript 引擎基础上，并且选择了和 node.js 不同的并发解决方案。fibjs 利用 fiber 在框架层隔离了异步调用带来的业务复杂性，极大降低了开发难度，并减少因为用户空间频繁异步处理带来的性能问题。
+fibjs 是一个主要为 web 后端开发而设计的应用服务器开发框架，它建立在 Google v8 JavaScript 引擎基础上，并且选择了和 node.js 不同的并发解决方案。fibjs 利用 fiber 在框架层隔离了异步调用带来的业务复杂性，极大降低了开发难度，并减少因为用户空间频繁异步处理带来的性能问题。
 
 由于历史原因，JavaScript 主要被用于浏览器的 UI 处理，UI 开发是典型的单线程事件驱动模式，因此 JavaScript 也形成了以异步处理为主要编程范式。
 
@@ -128,9 +128,39 @@ async: 2.271ms
 callback: 0.180ms
 sync: 0.081ms
 ```
-我们从测试结果可以明显知道，当项目中被广泛应用 async 之后，服务器将花费大量时间用来处理 async 函数的调用和返回。我们在一些服务端应用的实际测试中也发现了这一点。而且这种性能的急剧下降，是完全不能接受的。
+我们从测试结果可以明显知道，当项目中广泛应用 async 之后，服务器将花费大量时间用来处理 async 函数的调用和返回。我们在一些服务端应用的实际测试中也发现了这一点。而且这种性能的急剧下降，是完全不能接受的。
 
 fibjs 采用 fiber 充分利用了 JavaScript 语言本身的特性，并且最大限度地发挥 v8 的优越性能。工程师可以很轻易地将服务器的性能发挥到极致。
 
-### 灵活选择
+### 灵活选择范式而不被绑架
 选择使用 fibjs 并不意味着你必须使用同步的开发风格，实际上 fibjs 支持你所见过的任何一种异步编程范式，并且可以灵活地在同步风格和异步风格之间切换。
+
+无论是 callback 还是 async，都有一个致命的缺陷，那就是传染性。只要一个函数是 callback 或者 async，那么所有依赖它的其它函数都必须是 callback 或者 async。这在大规模软件开发中将带来巨大的开发成本。
+
+以一个简单的服务器开发场景为例。在项目初期，我们选择了内存作为 session 数据存储，此时，我们可以使用 sync 方式直接读取和存储数据，并基于此开发出完整业务。随着业务规模的发展，我们需要把 session 数据存储到 redis 或者 mongodb 里，此时，我们就需要把 session 相关的操作修改为 async 模式。
+
+理论上，我们可以依次修改每一个函数，让它们符合所依赖的函数的要求，但是这样就要求我们完全了解所有的模块并且有能力对其作出修改。这对多人合作的项目，或者大量使用第三方模块时，是完全不可能完成的。
+
+因此，所有的通用模块，都需要同时提供 sync 和 async 接口，以均衡处理异步和性能之间的平衡。更多的普通开发者则会选择只提供 async 接口。从而引发性能灾难。
+
+在 fibjs 中，你可以很轻松的解决类似的问题，避免显式异步无节制地传染:
+```JavaScript
+var util = require('util');
+
+function session_get(sid) {
+    return sdata;
+}
+
+async function async_session_get(sid) {
+    return sdata;
+}
+
+function callback_session_get(sid, cb) {
+    cb(null, sdata);
+}
+
+data = session_get(sid);
+data = util.sync(async_session_get)(sid);
+data = util.sync(callback_session_get)(sid);
+```
+fibjs 可以使用 util.sync 将 callback 或者 async 函数转变为 sync 函数，并且直接调用。通过这种方式，我们可以很方便地整合不同编程范式的模块，并且以最小的开发成本将其转变为 sync 范式，有效地避免范式传染带来的灾难。
