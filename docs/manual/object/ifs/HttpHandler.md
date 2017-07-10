@@ -21,7 +21,7 @@ digraph {
     object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
     Handler [tooltip="Handler", URL="Handler.md", label="{Handler|new Handler()\l|invoke()\l}"];
     HandlerEx [tooltip="HandlerEx", URL="HandlerEx.md", label="{HandlerEx|handler\lstats\l|onerror()\l}"];
-    HttpHandler [tooltip="HttpHandler", fillcolor="lightgray", label="{HttpHandler|new HttpHandler()\l|crossDomain\lforceGZIP\lmaxHeadersCount\lmaxUploadSize\lserverName\l}"];
+    HttpHandler [tooltip="HttpHandler", fillcolor="lightgray", label="{HttpHandler|new HttpHandler()\l|crossDomain\lforceGZIP\lmaxHeadersCount\lmaxBodySize\lserverName\l}"];
 
     object -> Handler [dir=back];
     Handler -> HandlerEx [dir=back];
@@ -67,11 +67,11 @@ Integer HttpHandler.maxHeadersCount;
 ```
 
 --------------------------
-### maxUploadSize
-**Integer, 查询和设置最大上传尺寸，以字节为单位，缺省为 67108864(64M)**
+### maxBodySize
+**Integer, 查询和设置 body 最大尺寸，以 MB 为单位，缺省为 64**
 
 ```JavaScript
-Integer HttpHandler.maxUploadSize;
+Integer HttpHandler.maxBodySize;
 ```
 
 --------------------------

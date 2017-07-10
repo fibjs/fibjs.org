@@ -16,7 +16,7 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
-    HttpClient [tooltip="HttpClient", fillcolor="lightgray", label="{HttpClient|new HttpClient()\l|cookies\ltimeout\lmaxDownloadSize\lenableCookie\lautoRedirect\luserAgent\l|request()\lget()\lpost()\ldel()\lput()\lpatch()\l}"];
+    HttpClient [tooltip="HttpClient", fillcolor="lightgray", label="{HttpClient|new HttpClient()\l|cookies\ltimeout\lmaxBodySize\lenableCookie\lautoRedirect\luserAgent\l|request()\lget()\lpost()\ldel()\lput()\lpatch()\l}"];
 
     object -> HttpClient [dir=back];
 }
@@ -49,11 +49,11 @@ Integer HttpClient.timeout;
 ```
 
 --------------------------
-### maxDownloadSize
-**Integer, 查询和设置 [http](../../module/ifs/http.md) 下载数据最大尺寸，缺省 -1，不限制尺寸**
+### maxBodySize
+**Integer, 查询和设置 body 最大尺寸，以 MB 为单位，缺省为 -1，不限制尺寸**
 
 ```JavaScript
-Integer HttpClient.maxDownloadSize;
+Integer HttpClient.maxBodySize;
 ```
 
 --------------------------

@@ -384,18 +384,19 @@ static Boolean http.autoRedirect;
 ```
 
 --------------------------
-### maxDownloadSize
-**Integer, 查询和设置 http 下载数据最大尺寸，缺省 -1，不限制尺寸**
-
-```JavaScript
-static Integer http.maxDownloadSize;
-```
-
---------------------------
 ### userAgent
 **String, 查询和设置 http 请求中的浏览器标识**
 
 ```JavaScript
 static String http.userAgent;
+```
+
+## 成员属性
+        
+### maxBodySize
+**Integer, 查询和设置 body 最大尺寸，以 MB 为单位，缺省为 -1，不限制尺寸**
+
+```JavaScript
+Integer http.maxBodySize;
 ```
 

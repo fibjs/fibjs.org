@@ -25,7 +25,7 @@ digraph {
 
     object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
     TcpServer [tooltip="TcpServer", URL="TcpServer.md", label="{TcpServer|new TcpServer()\l|socket\lhandler\lstats\l|run()\lasyncRun()\lstop()\l}"];
-    HttpServer [tooltip="HttpServer", fillcolor="lightgray", label="{HttpServer|new HttpServer()\l|crossDomain\lforceGZIP\lmaxHeadersCount\lmaxUploadSize\lserverName\lhttpStats\l|onerror()\l}"];
+    HttpServer [tooltip="HttpServer", fillcolor="lightgray", label="{HttpServer|new HttpServer()\l|crossDomain\lforceGZIP\lmaxHeadersCount\lmaxBodySize\lserverName\lhttpStats\l|onerror()\l}"];
     HttpsServer [tooltip="HttpsServer", URL="HttpsServer.md", label="{HttpsServer|new HttpsServer()\l|verification\lca\l}"];
 
     object -> TcpServer [dir=back];
@@ -88,11 +88,11 @@ Integer HttpServer.maxHeadersCount;
 ```
 
 --------------------------
-### maxUploadSize
-**Integer, 查询和设置最大上传尺寸，以 MB 为单位，缺省为 64**
+### maxBodySize
+**Integer, 查询和设置 body 最大尺寸，以 MB 为单位，缺省为 64**
 
 ```JavaScript
-Integer HttpServer.maxUploadSize;
+Integer HttpServer.maxBodySize;
 ```
 
 --------------------------
