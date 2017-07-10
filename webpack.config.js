@@ -106,6 +106,22 @@ function build_docs() {
         }
     };
 
+    var render = {
+        dot: (txt, lang, code) => {
+            var svg = old_dot_cache[code];
+            if (!svg) {
+                if (Viz === undefined)
+                    Viz = require('viz.js');
+                svg = Viz(code);
+                has_new = true;
+            }
+            dot_cache[code] = svg;
+
+            svg = svg.replace(/^<\?xml(.|\n)*?\?>(.|\n)*?<!DOCTYPE(.|\n)*?>/, '')
+            return '<div class="dot">' + svg + '</div>';
+        }
+    }
+
     var groups = config.groups;
 
     var old_dot_cache = {};
@@ -121,18 +137,8 @@ function build_docs() {
     function read_doc(p) {
         var md = fs.readFileSync(p).toString();
 
-        md = md.replace(/```dot((.|\n)*?)```/g, (s, s1) => {
-            var svg = old_dot_cache[s1];
-            if (!svg) {
-                if (Viz === undefined)
-                    Viz = require('viz.js');
-                svg = Viz(s1);
-                has_new = true;
-            }
-            dot_cache[s1] = svg;
-
-            svg = svg.replace(/^<\?xml(.|\n)*?\?>(.|\n)*?<!DOCTYPE(.|\n)*?>/, '')
-            return '<div class="dot">' + svg + '</div>';
+        md = md.replace(/```\s*(\S+)((.|\n)*?)```/g, (txt, lang, code) => {
+            return render[lang] ? render[lang](txt, lang, code) : txt;
         });
 
         var html = marked(md);
