@@ -20,11 +20,13 @@ var base64 = require('base64');
 **以 base64 方式编码数据**
 
 ```JavaScript
-static String base64.encode(Buffer data);
+static String base64.encode(Buffer data,
+    Boolean url = false);
 ```
 
 调用参数:
 * data: [Buffer](../../object/ifs/Buffer.md), 要编码的数据
+* url: Boolean, 指定是否使用 [url](url.md) 安全字符编码
 
 返回结果:
 * String, 返回编码的字符串

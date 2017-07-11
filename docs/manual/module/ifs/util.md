@@ -328,6 +328,20 @@ static Boolean util.isPromise(Value v);
 * Boolean, 如果是 Promise 类型则返回 True
 
 --------------------------
+### isAsyncFunction
+**检测给定的变量是否是 AsyncFunction 类型**
+
+```JavaScript
+static Boolean util.isAsyncFunction(Value v);
+```
+
+调用参数:
+* v: Value, 给定需要检测的变量
+
+返回结果:
+* Boolean, 如果是 AsyncFunction 类型则返回 True
+
+--------------------------
 ### isSet
 **检测给定的变量是否是 Set 类型**
 
