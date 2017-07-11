@@ -138,7 +138,10 @@ function sync_releases() {
     });
 }
 
-while (true) {
-    coroutine.start(sync_releases).join();
-    coroutine.sleep(100000);
+module.exports = () => {
+    console.log("start sync");
+    while (true) {
+        coroutine.start(sync_releases).join();
+        coroutine.sleep(100000);
+    }
 }
