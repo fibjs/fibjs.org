@@ -10,7 +10,7 @@ digraph {
     Buffer [tooltip="Buffer", URL="Buffer.md", label="{Buffer|new Buffer()\l|operator[]\l|isBuffer()\lconcat()\l|length\l|resize()\lappend()\lwrite()\lfill()\lindexOf()\lcompare()\lcopy()\lreadUInt8()\lreadUInt16LE()\lreadUInt16BE()\lreadUInt32LE()\lreadUInt32BE()\lreadUIntLE()\lreadUIntBE()\lreadInt8()\lreadInt16LE()\lreadInt16BE()\lreadInt32LE()\lreadInt32BE()\lreadIntLE()\lreadIntBE()\lreadInt64LE()\lreadInt64BE()\lreadFloatLE()\lreadFloatBE()\lreadDoubleLE()\lreadDoubleBE()\lwriteUInt8()\lwriteUInt16LE()\lwriteUInt16BE()\lwriteUInt32LE()\lwriteUInt32BE()\lwriteUIntLE()\lwriteUIntBE()\lwriteInt8()\lwriteInt16LE()\lwriteInt16BE()\lwriteInt32LE()\lwriteInt32BE()\lwriteIntLE()\lwriteIntBE()\lwriteInt64LE()\lwriteInt64BE()\lwriteFloatLE()\lwriteFloatBE()\lwriteDoubleLE()\lwriteDoubleBE()\lslice()\lhex()\lbase64()\ltoArray()\ltoString()\l}"];
     Cipher [tooltip="Cipher", URL="Cipher.md", label="{Cipher|new Cipher()\l|name\lkeySize\livSize\lblockSize\l|paddingMode()\lencrypt()\ldecrypt()\l}"];
     DatagramPacket [tooltip="DatagramPacket", URL="DatagramPacket.md", label="{DatagramPacket|data\laddress\lport\l}"];
-    DbConnection [tooltip="DbConnection", URL="DbConnection.md", label="{DbConnection|type\l|close()\lbegin()\lcommit()\lrollback()\lexecute()\lformat()\l}"];
+    DbConnection [tooltip="DbConnection", URL="DbConnection.md", label="{DbConnection|type\l|close()\lbegin()\lcommit()\lrollback()\ltrans()\lexecute()\lformat()\l}"];
     MSSQL [tooltip="MSSQL", URL="MSSQL.md", label="{MSSQL|use()\l}"];
     MySQL [tooltip="MySQL", URL="MySQL.md", label="{MySQL|rxBufferSize\ltxBufferSize\l|use()\l}"];
     SQLite [tooltip="SQLite", URL="SQLite.md", label="{SQLite|fileName\ltimeout\l|backup()\l}"];

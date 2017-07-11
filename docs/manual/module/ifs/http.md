@@ -65,12 +65,14 @@ HttpHandler http.Handler;
 
 ```JavaScript
 static Handler http.fileHandler(String root,
-    Object mimes = {});
+    Object mimes = {},
+    Boolean autoIndex = false);
 ```
 
 调用参数:
 * root: String, 文件根路径
 * mimes: Object, 扩展 mime 设置
+* autoIndex: Boolean, 是否支持浏览目录文件，缺省为 false，不支持
 
 返回结果:
 * [Handler](../../object/ifs/Handler.md), 返回一个静态文件处理器用于处理 http 消息

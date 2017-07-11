@@ -255,28 +255,6 @@ static Buffer crypto.pbkdf2(Buffer password,
 返回结果:
 * [Buffer](../../object/ifs/Buffer.md), 返回生成的二进制钥匙
 
---------------------------
-### pbkdf2Sync
-**依据 rfc2898 根据明文 password 生成要求的二进制钥匙，是 pbkdf2 的同步版兼容接口**
-
-```JavaScript
-static Buffer crypto.pbkdf2Sync(Buffer password,
-    Buffer salt,
-    Integer iterations,
-    Integer size,
-    String algoName);
-```
-
-调用参数:
-* password: [Buffer](../../object/ifs/Buffer.md), 指定使用的密码
-* salt: [Buffer](../../object/ifs/Buffer.md), 指定 hmac 使用的 salt
-* iterations: Integer, 指定迭代次数
-* size: Integer, 指定钥匙尺寸
-* algoName: String, 指定要使用的 [hash](hash.md) 算法，详见 [hash](hash.md) 模块
-
-返回结果:
-* [Buffer](../../object/ifs/Buffer.md), 返回生成的二进制钥匙
-
 ## 常量
         
 ### AES

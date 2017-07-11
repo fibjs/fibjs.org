@@ -45,35 +45,21 @@ conn.beginTransaction(err => {
 ```
 在 fibjs 中，完成同样的工作，代码如下：
 ```JavaScript
-var result, log;
-
-conn.begin();
-try {
-    result = conn.execute('INSERT INTO posts SET title=?', title);
-    log = 'Post ' + results.insertId + ' added';
+conn.trans(() => {
+    var result = conn.execute('INSERT INTO posts SET title=?', title);
+    var log = 'Post ' + results.insertId + ' added';
     conn.execute('INSERT INTO log SET data=?', log);
-
-    conn.commit();
-    console.log('success!');
-} catch (e) {
-    conn.rollback();
-    throw e;
-}
+});
+console.log('success!');
 ```
 如果你喜欢，你甚至可以把代码写成这样：
 ```JavaScript
-conn.begin();
-try {
+conn.trans(() => {
     conn.execute('INSERT INTO log SET data=?',
         'Post ' + conn.execute('INSERT INTO posts SET title=?', title).insertId +
         ' added');
-
-    conn.commit();
-    console.log('success!');
-} catch (e) {
-    conn.rollback();
-    throw e;
-}
+});
+console.log('success!');
 ```
 我们可以明显比较出两种不同的编程风格带来的差异。更少的代码会带来更少错误，随着代码的减少，代码的逻辑也更加清晰，无论是开发还是维护，都会从中获益。
 

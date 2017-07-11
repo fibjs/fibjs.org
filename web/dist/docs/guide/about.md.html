@@ -190,34 +190,20 @@
 });
 </code></pre>
 <p>在 fibjs 中，完成同样的工作，代码如下：</p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">var</span> result, log;
-
-conn.begin();
-<span class="hljs-keyword">try</span> {
-    result = conn.execute(<span class="hljs-string">'INSERT INTO posts SET title=?'</span>, title);
-    log = <span class="hljs-string">'Post '</span> + results.insertId + <span class="hljs-string">' added'</span>;
+<pre><code class="lang-JavaScript">conn.trans(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+    <span class="hljs-keyword">var</span> result = conn.execute(<span class="hljs-string">'INSERT INTO posts SET title=?'</span>, title);
+    <span class="hljs-keyword">var</span> log = <span class="hljs-string">'Post '</span> + results.insertId + <span class="hljs-string">' added'</span>;
     conn.execute(<span class="hljs-string">'INSERT INTO log SET data=?'</span>, log);
-
-    conn.commit();
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'success!'</span>);
-} <span class="hljs-keyword">catch</span> (e) {
-    conn.rollback();
-    <span class="hljs-keyword">throw</span> e;
-}
+});
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">'success!'</span>);
 </code></pre>
 <p>如果你喜欢，你甚至可以把代码写成这样：</p>
-<pre><code class="lang-JavaScript">conn.begin();
-<span class="hljs-keyword">try</span> {
+<pre><code class="lang-JavaScript">conn.trans(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
     conn.execute(<span class="hljs-string">'INSERT INTO log SET data=?'</span>,
         <span class="hljs-string">'Post '</span> + conn.execute(<span class="hljs-string">'INSERT INTO posts SET title=?'</span>, title).insertId +
         <span class="hljs-string">' added'</span>);
-
-    conn.commit();
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'success!'</span>);
-} <span class="hljs-keyword">catch</span> (e) {
-    conn.rollback();
-    <span class="hljs-keyword">throw</span> e;
-}
+});
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">'success!'</span>);
 </code></pre>
 <p>我们可以明显比较出两种不同的编程风格带来的差异。更少的代码会带来更少错误，随着代码的减少，代码的逻辑也更加清晰，无论是开发还是维护，都会从中获益。</p>
 <h3 id="拥抱高能">拥抱高能</h3>

@@ -378,7 +378,7 @@ XmlNodeList XmlElement.getElementsByClassName(String className);
 ```
 
 调用参数:
-* tagName: 需检索的 class 名称
+* className: String, 需检索的 class 名称
 
 返回结果:
 * [XmlNodeList](XmlNodeList.md), 文档树中具有指定 class 名的 XmlElement 节点的 [XmlNodeList](XmlNodeList.md) 集合。返回的元素节点的顺序就是它们在源文档中出现的顺序。

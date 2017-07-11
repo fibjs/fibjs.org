@@ -13,7 +13,7 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
-    DbConnection [tooltip="DbConnection", URL="DbConnection.md", label="{DbConnection|type\l|close()\lbegin()\lcommit()\lrollback()\lexecute()\lformat()\l}"];
+    DbConnection [tooltip="DbConnection", URL="DbConnection.md", label="{DbConnection|type\l|close()\lbegin()\lcommit()\lrollback()\ltrans()\lexecute()\lformat()\l}"];
     MSSQL [tooltip="MSSQL", fillcolor="lightgray", label="{MSSQL|use()\l}"];
 
     object -> DbConnection [dir=back];
@@ -73,6 +73,22 @@ MSSQL.commit() async;
 ```JavaScript
 MSSQL.rollback() async;
 ```
+
+--------------------------
+### trans
+**进入事务执行一个函数，并根据函数执行情况提交或者回滚**
+
+```JavaScript
+MSSQL.trans(Function func);
+```
+
+调用参数:
+* func: Function, 以事务方式执行的函数
+
+func 执行有三种结果：
+* 函数正常返回，包括运行结束和主动 return，此时事务将自动提交
+* 函数返回 false，此时事务将回滚
+* 函数运行错误，事务自动回滚
 
 --------------------------
 ### execute
