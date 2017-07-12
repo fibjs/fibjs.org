@@ -46,6 +46,20 @@ static Integer process.umask();
 * Integer, 返回当前的 mask 值
 
 --------------------------
+### hrtime
+**返回系统高精度时间，此时间与当前时间无关，仅用于高精度计时**
+
+```JavaScript
+static Array process.hrtime(Array diff = []);
+```
+
+调用参数:
+* diff: Array, 用于比较的初始时间
+
+返回结果:
+* Array, 返回计时时间，格式为 [seconds, nanoseconds]
+
+--------------------------
 ### exit
 **退出当前进程，并返回结果**
 
