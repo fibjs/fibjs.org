@@ -34,6 +34,7 @@
 * [ssl](ifs/ssl.md) - ssl/tls 模块
 * [test](ifs/test.md) - 测试套件模块，用以定义管理测试套件
 * [timers](ifs/timers.md) - timers 模块
+* [tty](ifs/tty.md) - tty 模块
 * [url](ifs/url.md) - url 处理模块
 * [util](ifs/util.md) - 常用工具模块
 * [uuid](ifs/uuid.md) - uuid 唯一 id 模块

@@ -1,5 +1,5 @@
 # fibjs 是什么？
-fibjs 是一个主要为 web 后端开发而设计的应用服务器开发框架，它建立在 Google v8 JavaScript 引擎基础上，并且选择了和 node.js 不同的并发解决方案。fibjs 利用 fiber 在框架层隔离了异步调用带来的业务复杂性，极大降低了开发难度，并减少因为用户空间频繁异步处理带来的性能问题。
+fibjs 是一个主要为 web 后端开发而设计的应用服务器开发框架，它建立在 Google v8 JavaScript 引擎基础上，并且选择了和传统的 callback 不同的并发解决方案。fibjs 利用 fiber 在框架层隔离了异步调用带来的业务复杂性，极大降低了开发难度，并减少因为用户空间频繁异步处理带来的性能问题。
 
 由于历史原因，JavaScript 主要被用于浏览器的 UI 处理，UI 开发是典型的单线程事件驱动模式，因此 JavaScript 也形成了以异步处理为主要编程范式。
 
@@ -8,7 +8,7 @@ fibjs 是一个主要为 web 后端开发而设计的应用服务器开发框架
 ### 返璞归真，敏捷开发
 fibjs 在框架层使用 fiber 隔离了异步调用带来的业务复杂性，将 io 的异步处理封装为更加直观的同步调用，工程师只需要按照通常的同步业务逻辑编写代码，即可享有异步处理带来的巨大便利。
 
-以下这段代码摘自 node.js mysql 模块的文档：
+以下这段代码摘自 mysql 模块的文档：
 ```JavaScript
 conn.beginTransaction(err => {
     if (err) {
@@ -52,13 +52,11 @@ conn.trans(() => {
 });
 console.log('success!');
 ```
-如果你喜欢，你甚至可以把代码写成这样：
+如果你追求简洁，你甚至可以把代码写成这样：
 ```JavaScript
-conn.trans(() => {
-    conn.execute('INSERT INTO log SET data=?',
+conn.trans(() => conn.execute('INSERT INTO log SET data=?',
         'Post ' + conn.execute('INSERT INTO posts SET title=?', title).insertId +
-        ' added');
-});
+        ' added'));
 console.log('success!');
 ```
 我们可以明显比较出两种不同的编程风格带来的差异。更少的代码会带来更少错误，随着代码的减少，代码的逻辑也更加清晰，无论是开发还是维护，都会从中获益。
@@ -108,15 +106,15 @@ async function test() {
 
 test();
 ```
-在 node.js v8.1.2 下，这段代码的运行结果如下：
+在最新的 v8 引擎下，这段代码的运行结果如下：
 ```sh
-async: 2.271ms
-callback: 0.180ms
-sync: 0.081ms
+async: 14.283ms
+callback: 1.03ms
+sync: 0.106ms
 ```
 我们从测试结果可以明显知道，当项目中广泛应用 async 之后，服务器将花费大量时间用来处理 async 函数的调用和返回。我们在一些服务端应用的实际测试中也发现了这一点。而且这种性能的急剧下降，是完全不能接受的。
 
-fibjs 采用 fiber 充分利用了 JavaScript 语言本身的特性，并且最大限度地发挥 v8 的优越性能。工程师可以很轻易地将服务器的性能发挥到极致。
+fibjs 由于采用 fiber，可以充分利用了 JavaScript 语言本身的特性，并且最大限度地发挥 v8 的优越性能。工程师可以很轻易地将服务器的性能发挥到极致。
 
 ### 灵活选择范式而不被绑架
 选择使用 fibjs 并不意味着你必须使用同步的开发风格，实际上 fibjs 支持你所见过的任何一种异步编程范式，并且可以灵活地在同步风格和异步风格之间切换。
