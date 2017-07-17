@@ -227,12 +227,14 @@ static String fs.realpath(String path) async;
 
 ```JavaScript
 static fs.symlink(String target,
-    String linkpath) async;
+    String linkpath,
+    String type = "file") async;
 ```
 
 调用参数:
 * target: String, 目标文件，可以是文件、目录、或不存在的路径
 * linkpath: String, 将被创建的软连接文件
+* type: String, 创建的软连接类型, 可选类型为'file', 'dir', 'junction', 默认为'file', 该参数只在windows上有效，当为'junction'的时候将要创建的目标路径linkpath必须为绝对路径, 而target则会被自动转化为绝对路径。
 
 --------------------------
 ### truncate
@@ -268,6 +270,56 @@ static Integer fs.read(Integer fd,
 
 返回结果:
 * Integer, 实际读取的字节数
+
+--------------------------
+### fchmod
+**根据文件描述符，改变文件模式。只在 POSIX 系统有效。**
+
+```JavaScript
+static fs.fchmod(Integer fd,
+    Integer mode) async;
+```
+
+调用参数:
+* fd: Integer, 文件描述符
+* mode: Integer, 文件的模式
+
+--------------------------
+### fchown
+**根据文件描述符，改变所有者。只在 POSIX 系统有效。**
+
+```JavaScript
+static fs.fchown(Integer fd,
+    Integer uid,
+    Integer gid) async;
+```
+
+调用参数:
+* fd: Integer, 文件描述符
+* uid: Integer, 用户id
+* gid: Integer, 组id
+
+--------------------------
+### fdatasync
+**根据文件描述符，同步数据到磁盘**
+
+```JavaScript
+static fs.fdatasync(Integer fd) async;
+```
+
+调用参数:
+* fd: Integer, 文件描述符
+
+--------------------------
+### fsync
+**根据文件描述符，同步数据到磁盘**
+
+```JavaScript
+static fs.fsync(Integer fd) async;
+```
+
+调用参数:
+* fd: Integer, 文件描述符
 
 --------------------------
 ### readdir

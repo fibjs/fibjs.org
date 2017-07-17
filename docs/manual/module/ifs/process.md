@@ -64,11 +64,11 @@ static Array process.hrtime(Array diff = []);
 **退出当前进程，并返回结果**
 
 ```JavaScript
-static process.exit(Integer code);
+static process.exit(Integer code = 0);
 ```
 
 调用参数:
-* code: Integer, 返回进程结果
+* code: Integer, 返回进程结果, 默认为 0
 
 --------------------------
 ### cwd

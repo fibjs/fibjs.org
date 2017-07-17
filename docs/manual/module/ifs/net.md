@@ -158,6 +158,48 @@ static String net.backend();
 返回结果:
 * String, 返回网络引擎名称
 
+--------------------------
+### isIP
+**检测输入是否是 IP 地址**
+
+```JavaScript
+static Integer net.isIP(String ip = "");
+```
+
+调用参数:
+* ip: String, 指定要检测的字符串
+
+返回结果:
+* Integer, 非合法的 IP 地址，返回 0, 如果是 IPv4 则返回 4，如果是 IPv6 则返回 6
+
+--------------------------
+### isIPv4
+**检测输入是否是 IPv4 地址**
+
+```JavaScript
+static Boolean net.isIPv4(String ip = "");
+```
+
+调用参数:
+* ip: String, 指定要检测的字符串
+
+返回结果:
+* Boolean, 如果是 IPv4 则返回 true.否则返回 false
+
+--------------------------
+### isIPv6
+**检测输入是否是 IPv6 地址**
+
+```JavaScript
+static Boolean net.isIPv6(String ip = "");
+```
+
+调用参数:
+* ip: String, 指定要检测的字符串
+
+返回结果:
+* Boolean, 如果是 IPv6 则返回 true.否则返回 false
+
 ## 常量
         
 ### AF_INET

@@ -26,7 +26,7 @@ require("test").setup();
 **测试数值为真，为假则断言失败**
 
 ```JavaScript
-static assert.Function(Value actual,
+static assert.Function(Value actual = undefined,
     String msg = "");
 ```
 
@@ -39,7 +39,7 @@ static assert.Function(Value actual,
 **测试数值为真，为假则断言失败**
 
 ```JavaScript
-static assert.ok(Value actual,
+static assert.ok(Value actual = undefined,
     String msg = "");
 ```
 
@@ -52,7 +52,7 @@ static assert.ok(Value actual,
 **测试数值为假，为真则断言失败**
 
 ```JavaScript
-static assert.notOk(Value actual,
+static assert.notOk(Value actual = undefined,
     String msg = "");
 ```
 
@@ -65,8 +65,8 @@ static assert.notOk(Value actual,
 **测试数值等于预期值，不相等则断言失败**
 
 ```JavaScript
-static assert.equal(Value actual,
-    Value expected,
+static assert.equal(Value actual = undefined,
+    Value expected = undefined,
     String msg = "");
 ```
 
@@ -80,8 +80,8 @@ static assert.equal(Value actual,
 **测试数值不等于预期值，相等则断言失败**
 
 ```JavaScript
-static assert.notEqual(Value actual,
-    Value expected,
+static assert.notEqual(Value actual = undefined,
+    Value expected = undefined,
     String msg = "");
 ```
 
@@ -95,8 +95,8 @@ static assert.notEqual(Value actual,
 **测试数值严格等于预期值，不相等则断言失败**
 
 ```JavaScript
-static assert.strictEqual(Value actual,
-    Value expected,
+static assert.strictEqual(Value actual = undefined,
+    Value expected = undefined,
     String msg = "");
 ```
 
@@ -110,8 +110,8 @@ static assert.strictEqual(Value actual,
 **测试数值不严格等于预期值，相等则断言失败**
 
 ```JavaScript
-static assert.notStrictEqual(Value actual,
-    Value expected,
+static assert.notStrictEqual(Value actual = undefined,
+    Value expected = undefined,
     String msg = "");
 ```
 
@@ -125,8 +125,8 @@ static assert.notStrictEqual(Value actual,
 **测试数值深度等于预期值，不相等则断言失败**
 
 ```JavaScript
-static assert.deepEqual(Value actual,
-    Value expected,
+static assert.deepEqual(Value actual = undefined,
+    Value expected = undefined,
     String msg = "");
 ```
 
@@ -140,8 +140,8 @@ static assert.deepEqual(Value actual,
 **测试数值不深度等于预期值，相等则断言失败**
 
 ```JavaScript
-static assert.notDeepEqual(Value actual,
-    Value expected,
+static assert.notDeepEqual(Value actual = undefined,
+    Value expected = undefined,
     String msg = "");
 ```
 
@@ -713,4 +713,15 @@ static assert.doesNotThrow(Function block,
 调用参数:
 * block: Function, 指定测试的代码，以函数形式给出
 * msg: String, 断言失败时的提示信息
+
+--------------------------
+### ifError
+**如果参数为真，则抛出**
+
+```JavaScript
+static assert.ifError(Value object = undefined);
+```
+
+调用参数:
+* object: Value, 参数
 

@@ -345,12 +345,14 @@
 <h3 id="symlink">symlink</h3>
 <p><strong>创建软连接文件</strong></p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> fs.symlink(<span class="hljs-built_in">String</span> target,
-    <span class="hljs-built_in">String</span> linkpath) <span class="hljs-keyword">async</span>;
+    <span class="hljs-built_in">String</span> linkpath,
+    <span class="hljs-built_in">String</span> type = <span class="hljs-string">"file"</span>) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
 <li>target: String, 目标文件，可以是文件、目录、或不存在的路径</li>
 <li>linkpath: String, 将被创建的软连接文件</li>
+<li>type: String, 创建的软连接类型, 可选类型为&#39;file&#39;, &#39;dir&#39;, &#39;junction&#39;, 默认为&#39;file&#39;, 该参数只在windows上有效，当为&#39;junction&#39;的时候将要创建的目标路径linkpath必须为绝对路径, 而target则会被自动转化为绝对路径。</li>
 </ul>
 <hr>
 <h3 id="truncate">truncate</h3>
@@ -383,6 +385,48 @@
 <p>返回结果:</p>
 <ul>
 <li>Integer, 实际读取的字节数</li>
+</ul>
+<hr>
+<h3 id="fchmod">fchmod</h3>
+<p><strong>根据文件描述符，改变文件模式。只在 POSIX 系统有效。</strong></p>
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> fs.fchmod(Integer fd,
+    Integer mode) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li>fd: Integer, 文件描述符</li>
+<li>mode: Integer, 文件的模式</li>
+</ul>
+<hr>
+<h3 id="fchown">fchown</h3>
+<p><strong>根据文件描述符，改变所有者。只在 POSIX 系统有效。</strong></p>
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> fs.fchown(Integer fd,
+    Integer uid,
+    Integer gid) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li>fd: Integer, 文件描述符</li>
+<li>uid: Integer, 用户id</li>
+<li>gid: Integer, 组id</li>
+</ul>
+<hr>
+<h3 id="fdatasync">fdatasync</h3>
+<p><strong>根据文件描述符，同步数据到磁盘</strong></p>
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> fs.fdatasync(Integer fd) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li>fd: Integer, 文件描述符</li>
+</ul>
+<hr>
+<h3 id="fsync">fsync</h3>
+<p><strong>根据文件描述符，同步数据到磁盘</strong></p>
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> fs.fsync(Integer fd) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li>fd: Integer, 文件描述符</li>
 </ul>
 <hr>
 <h3 id="readdir">readdir</h3>
