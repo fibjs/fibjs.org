@@ -40,7 +40,7 @@ index.html 的内容如下：
     external.onmessage = function (m) {
         if (m == 'close' && !bClose) {
             setTimeout(function () {
-				 bClose = true;
+                bClose = true;
                 external.close();
             }, 5000);
             return false;
