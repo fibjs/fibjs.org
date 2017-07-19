@@ -57,7 +57,7 @@ digraph {
 
     object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
     EventEmitter [tooltip="EventEmitter", URL="EventEmitter.md", label="{EventEmitter|new EventEmitter()\l|defaultMaxListeners\l|on()\laddListener()\lprependListener()\lonce()\lprependOnceListener()\loff()\lremoveListener()\lremoveAllListeners()\lsetMaxListeners()\lgetMaxListeners()\llisteners()\llistenerCount()\leventNames()\lemit()\l}"];
-    WebView [tooltip="WebView", fillcolor="lightgray", label="{WebView|visible\lonload\lonmove\lonresize\lonclose\lonmessage\l|setHtml()\lprint()\lclose()\lwait()\lpostMessage()\l}"];
+    WebView [tooltip="WebView", fillcolor="lightgray", label="{WebView|visible\lonload\lonmove\lonresize\lonclosed\lonmessage\l|setHtml()\lprint()\lclose()\lwait()\lpostMessage()\l}"];
 
     object -> EventEmitter [dir=back];
     EventEmitter -> WebView [dir=back];
@@ -129,11 +129,11 @@ webview.onresize = function(evt) {
 ```
 
 --------------------------
-### onclose
-**Function, 查询和绑定窗口关闭事件，相当于 on("close", func);**
+### onclosed
+**Function, 查询和绑定窗口关闭事件，WebView 关闭后会触发此时间，相当于 on("closed", func);**
 
 ```JavaScript
-Function WebView.onclose;
+Function WebView.onclosed;
 ```
 
 --------------------------
