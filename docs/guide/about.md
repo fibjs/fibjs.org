@@ -152,4 +152,4 @@ fibjs 可以使用 util.sync 将 callback 或者 async 函数转变为 sync 函�
 ### 开始体验
 准备好开始一场愉快的开发经历了吗？那么，从安装开始吧。
 
-👉 【[点击安装](install.md)】
+👉 【[安装运行环境](install.md)】
