@@ -218,12 +218,21 @@ function relative() {
 
     recursiveReadSync(baseFolder).forEach(function (file) {
         if (path.extname(file) == '.html') {
-            var p = path.dirname('/' + path.relative(baseFolder, file));
+            var file1 = '/' + path.relative(baseFolder, file);
+            var p = path.dirname(file1);
             var html = fs.readFileSync(file).toString();
+
+            html = html.replace(/<li><a href=\"([^"]*\.md.html)\"/g, (s, s1) => {
+                if (file1 === s1)
+                    return '<li class="active"><a href="' + s1 + '"';
+                return s;
+            });
+
             html = html.replace(re, (s, t, u) => {
                 u = path.relative(p, u);
                 return t + '=' + u;
             });
+
             fs.writeFileSync(file, html);
         }
     });
