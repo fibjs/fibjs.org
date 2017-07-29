@@ -112,7 +112,7 @@ Socket.connect(String host,
 
 ```JavaScript
 Socket.bind(Integer port,
-    Boolean allowIPv4 = true) async;
+    Boolean allowIPv4 = true);
 ```
 
 调用参数:
@@ -125,7 +125,7 @@ Socket.bind(Integer port,
 ```JavaScript
 Socket.bind(String addr,
     Integer port,
-    Boolean allowIPv4 = true) async;
+    Boolean allowIPv4 = true);
 ```
 
 调用参数:
@@ -138,7 +138,7 @@ Socket.bind(String addr,
 **开始监听连接请求**
 
 ```JavaScript
-Socket.listen(Integer backlog = 120) async;
+Socket.listen(Integer backlog = 120);
 ```
 
 调用参数:
