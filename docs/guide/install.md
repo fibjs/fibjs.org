@@ -154,3 +154,5 @@ bin/{$OS}_{$arch}_release/install.sh
 
 ### 开始编程
 到现在为止，你已经有一个可以执行的 fibjs 版本，可以开始体验 fibjs 开发的乐趣了。
+
+👉 【[hello, world](hello.md)】

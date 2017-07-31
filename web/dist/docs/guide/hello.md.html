@@ -1,7 +1,7 @@
-<!DOCTYPE html><html><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel=icon type=image/png href=../../imgs/logo.png><title>  - JavaScript on Fiber</title><link href=../../css/common.css rel=stylesheet><link href=../../css/docs.css rel=stylesheet></head><body><div class="navbar navbar-default navbar-static-top" role=navigation><div class=container><div class=navbar-header><button type=button class="navbar-toggle collapsed" data-toggle=collapse data-target=#navbar aria-expanded=false aria-controls=navbar><span class=sr-only>Toggle navigation</span> <span class=icon-bar></span> <span class=icon-bar></span> <span class=icon-bar></span></button> <a class=navbar-brand href=../../index.html><img src=../../imgs/logo.png> <span>JavaScript on Fiber</span></a></div><div id=navbar class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right"><li><a href=readme.md.html>GUIDE</a></li><li><a href=../manual/module/readme.md.html>MODULE</a></li><li><a href=../manual/object/readme.md.html>OBJECT</a></li><li><a href=../../download/index.html>DOWNLOAD</a></li></ul></div></div></div><div class=container>  <ol class=breadcrumb><li><a href=../../index.html>首页</a></li><li><a href=readme.md.html> 开发指南 </a></li><li class=active>  </li></ol>  <div class="sidebar hidden-xs"><input type=text class="form-control search" placeholder="Search for..."><div class=panel-group id=accordion role=tablist>  <div class=panel><div class=panel-heading role=tab id=headingOne><h4 class=panel-title><a data-toggle=collapse data-parent=#accordion href="#collapse_guide" aria-controls="collapse_guide"> 开发指南 </a></h4></div><div id="collapse_guide" class="panel-collapse collapse in" aria-labelledby=headingOne><div class=panel-body> <ul>
+<!DOCTYPE html><html><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel=icon type=image/png href=../../imgs/logo.png><title> hello, world - JavaScript on Fiber</title><link href=../../css/common.css rel=stylesheet><link href=../../css/docs.css rel=stylesheet></head><body><div class="navbar navbar-default navbar-static-top" role=navigation><div class=container><div class=navbar-header><button type=button class="navbar-toggle collapsed" data-toggle=collapse data-target=#navbar aria-expanded=false aria-controls=navbar><span class=sr-only>Toggle navigation</span> <span class=icon-bar></span> <span class=icon-bar></span> <span class=icon-bar></span></button> <a class=navbar-brand href=../../index.html><img src=../../imgs/logo.png> <span>JavaScript on Fiber</span></a></div><div id=navbar class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right"><li><a href=readme.md.html>GUIDE</a></li><li><a href=../manual/module/readme.md.html>MODULE</a></li><li><a href=../manual/object/readme.md.html>OBJECT</a></li><li><a href=../../download/index.html>DOWNLOAD</a></li></ul></div></div></div><div class=container>  <ol class=breadcrumb><li><a href=../../index.html>首页</a></li><li><a href=readme.md.html> 开发指南 </a></li><li class=active> hello, world </li></ol>  <div class="sidebar hidden-xs"><input type=text class="form-control search" placeholder="Search for..."><div class=panel-group id=accordion role=tablist>  <div class=panel><div class=panel-heading role=tab id=headingOne><h4 class=panel-title><a data-toggle=collapse data-parent=#accordion href="#collapse_guide" aria-controls="collapse_guide"> 开发指南 </a></h4></div><div id="collapse_guide" class="panel-collapse collapse in" aria-labelledby=headingOne><div class=panel-body> <ul>
 <li><a href=about.md.html>fibjs 是什么？</a></li>
 <li><a href=install.md.html>安装运行环境</a></li>
-<li><a href=hello.md.html>hello, world</a></li>
+<li class="active"><a href=hello.md.html>hello, world</a></li>
 </ul>
  </div></div></div>  <div class=panel><div class=panel-heading role=tab id=headingOne><h4 class=panel-title><a data-toggle=collapse data-parent=#accordion href="#collapse_module" aria-controls="collapse_module"> 基础模块 </a></h4></div><div id="collapse_module" class="panel-collapse collapse " aria-labelledby=headingOne><div class=panel-body> <ul>
 <li><a href=../manual/module/ifs/assert.md.html>assert</a></li>
@@ -151,9 +151,82 @@
 <li><a href=../manual/object/ifs/zipinfo.md.html>ZipInfo</a></li>
 <li><a href=../manual/object/ifs/zmqsocket.md.html>ZmqSocket</a></li>
 </ul>
- </div></div></div>  </div></div><div class=content><div class=social-share data-sites=weibo,twitter data-description=分享></div> <ul>
-<li><a href=about.md.html>fibjs 是什么？</a></li>
-<li><a href=install.md.html>安装运行环境</a></li>
-<li><a href=hello.md.html>hello, world</a></li>
-</ul>
+ </div></div></div>  </div></div><div class=content><div class=social-share data-sites=weibo,twitter data-description=分享></div> <h1 id="hello,-world">hello, world</h1>
+<p>首先，你需要成功在系统中安装了 fibjs。依照惯例，我们从最简单的 &quot;hello, world&quot; 开始我们第一行 fibjs 程序：</p>
+<pre><code class="lang-JavaScript"><span class="hljs-built_in">console</span>.log(<span class="hljs-string">'hello, world'</span>);
+</code></pre>
+<p>保存文件 <code>main.js</code> 后，在命令行 <code>fibjs main.js</code>，便可以执行这段代码。</p>
+<h3 id="第一个-hello-服务器">第一个 hello 服务器</h3>
+<p>fibjs 作为后端开发框架，内置了一个相当强大的应用服务器，可以十分方便地迅速搭建起一个 web server。我们来建立第一个 hello 服务器：</p>
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">const</span> http = <span class="hljs-built_in">require</span>(<span class="hljs-string">'http'</span>);
+
+<span class="hljs-keyword">var</span> svr = <span class="hljs-keyword">new</span> http.Server(<span class="hljs-number">8080</span>, (req) =&gt; {
+    req.response.write(<span class="hljs-string">'hello, world'</span>);
+});
+
+svr.run();
+</code></pre>
+<p>运行后，在浏览器内输入：</p>
+<pre><code><span class="hljs-symbol">http:</span><span class="hljs-comment">//127.0.0.1:8080/</span>
+</code></pre><p>你可以看到我们第一个 hello 服务器的输出 <code>hello, world</code>。</p>
+<h3 id="聪明的-hello-服务器">聪明的 hello 服务器</h3>
+<p>第一个 hello 服务器比较笨，无论你输入什么地址，它都只会返回 <code>hello, world</code>。接下来我们来让它变得聪明一些：</p>
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">const</span> http = <span class="hljs-built_in">require</span>(<span class="hljs-string">'http'</span>);
+
+<span class="hljs-keyword">var</span> hello_server = {
+    <span class="hljs-string">'^/(.*)$'</span>: <span class="hljs-function">(<span class="hljs-params">req, name</span>) =&gt;</span> {
+        req.response.write(<span class="hljs-string">'hello, '</span> + name);
+    }
+};
+
+<span class="hljs-keyword">var</span> svr = <span class="hljs-keyword">new</span> http.Server(<span class="hljs-number">8080</span>, hello_server);
+
+svr.run();
+</code></pre>
+<p>运行后，在浏览器内输入：</p>
+<pre><code><span class="hljs-symbol">http:</span><span class="hljs-comment">//127.0.0.1:8080/fibjs</span>
+</code></pre><p>你可以看到服务器的输出变成了 <code>hello, fibjs</code>，你修改地址栏的内容，页面的输出也会跟着发生变化。</p>
+<h3 id="能干的-hello-服务器">能干的 hello 服务器</h3>
+<p>接下来，我们让服务器多做一些事情，我们希望服务器能够支持静态文件浏览，同时也可以输出 <code>hello, world</code>，我们设定响应 <code>hello, fibjs</code> 的地址为：<code>/hello/fibjs</code>：</p>
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">const</span> http = <span class="hljs-built_in">require</span>(<span class="hljs-string">'http'</span>);
+<span class="hljs-keyword">const</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">'path'</span>);
+
+<span class="hljs-keyword">var</span> root_server = {
+    <span class="hljs-string">'^/hello/(.*)$'</span>: <span class="hljs-function">(<span class="hljs-params">req, name</span>) =&gt;</span> {
+        req.response.write(<span class="hljs-string">'hello, '</span> + name);
+    },
+    <span class="hljs-string">'.*'</span>: http.fileHandler(path.join(__dirname, <span class="hljs-string">'web'</span>))
+};
+
+<span class="hljs-keyword">var</span> svr = <span class="hljs-keyword">new</span> http.Server(<span class="hljs-number">8080</span>, root_server);
+
+svr.run();
+</code></pre>
+<p>你需要创建一个目录 <code>web</code>，并且在其中存放一些文件，比如下载一份 fibjs 文档放在里面做为测试。</p>
+<p>运行后，我们访问 <code>http://127.0.0.1:8080/hello/fibjs</code>，一样可以看到 <code>hello, fibjs</code>，而访问其它地址，则会看到我们存放在 <code>web</code> 目录下的静态文件。</p>
+<h3 id="复杂的-hello-服务器">复杂的 hello 服务器</h3>
+<p>接下来，我们来让服务器更复杂一些。我们有一组 hello 服务，完成我们定义的业务请求。这组服务的路径由主服务根据需求指定。下面这个例子中，<code>hello</code> 和 <code>bonjour</code> 都会指向 hello 的服务。</p>
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">const</span> http = <span class="hljs-built_in">require</span>(<span class="hljs-string">'http'</span>);
+<span class="hljs-keyword">const</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">'path'</span>);
+
+<span class="hljs-keyword">var</span> hello_server = {
+    <span class="hljs-string">'^/(fibjs.*)$'</span>: <span class="hljs-function">(<span class="hljs-params">req, name</span>) =&gt;</span> {
+        req.response.write(<span class="hljs-string">'hello, '</span> + name + <span class="hljs-string">'. I love you.'</span>);
+    },
+    <span class="hljs-string">'^/(.*)$'</span>: <span class="hljs-function">(<span class="hljs-params">req, name</span>) =&gt;</span> {
+        req.response.write(<span class="hljs-string">'hello, '</span> + name);
+    }
+};
+
+<span class="hljs-keyword">var</span> root_server = {
+    <span class="hljs-string">'^/hello(/.*)$'</span>: hello_server,
+    <span class="hljs-string">'^/bonjour(/.*)$'</span>: hello_server,
+    <span class="hljs-string">'.*'</span>: http.fileHandler(path.join(__dirname, <span class="hljs-string">'web'</span>))
+};
+
+<span class="hljs-keyword">var</span> svr = <span class="hljs-keyword">new</span> http.Server(<span class="hljs-number">8080</span>, root_server);
+
+svr.run();
+</code></pre>
+<p>通过这种方式，我们可以很方便地创建出完全解耦的模块，最后由主程序组装成我们需要的接口。这在 api 版本管理中格外方便，比如从 <code>/v1/hello/fibjs</code> 修改为 <code>/v2/hello/fibjs</code>，模块本身不需要做任何变动，仅仅在入口处修改即可。</p>
  </div><div class="sidebar hidden-sm hidden-xs"><div id=toc></div></div></div><div class=container><div class=footer><p>&copy; 2017 fibjs.org</p></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="Click to return on the top page" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=../../js/common.js></script><script type=text/javascript src=../../js/docs.js></script></body></html>
