@@ -13,7 +13,7 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
-    Int64 [tooltip="Int64", fillcolor="lightgray", label="{Int64|new Int64()\l|hi\llo\l|compare()\lshiftLeft()\lshiftRight()\land()\lor()\lxor()\ladd()\lsub()\ltoNumber()\ltoString()\l}"];
+    Int64 [tooltip="Int64", fillcolor="lightgray", label="{Int64|new Int64()\l|hi\llo\l|compare()\lshiftLeft()\lshiftRight()\land()\lor()\lxor()\ladd()\lsub()\lmulti()\ldiv()\ltoNumber()\ltoString()\l}"];
 
     object -> Int64 [dir=back];
 }
@@ -187,6 +187,34 @@ Int64 Int64.add(Int64 num);
 
 ```JavaScript
 Int64 Int64.sub(Int64 num);
+```
+
+调用参数:
+* num: Int64, 指定运算的数值
+
+返回结果:
+* Int64, 返回包含预算以后数值的对象
+
+--------------------------
+### multi
+**将 Int64 内的数值与给定的数值进行乘操作，此操作不影响 Int64 原有数值**
+
+```JavaScript
+Int64 Int64.multi(Int64 num);
+```
+
+调用参数:
+* num: Int64, 指定运算的数值
+
+返回结果:
+* Int64, 返回包含预算以后数值的对象
+
+--------------------------
+### div
+**将 Int64 内的数值与给定的数值进行除操作，此操作不影响 Int64 原有数值**
+
+```JavaScript
+Int64 Int64.div(Int64 num);
 ```
 
 调用参数:

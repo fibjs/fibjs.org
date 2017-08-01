@@ -18,7 +18,9 @@ webview.onmessage = function(msg) {
     console.log(msg);
 }
 
-webview.postMessage("hello from fibjs");
+webview.onload = (evt) => {
+    webview.postMessage("hello from fibjs");
+}
 
 webview.wait();
 ```
@@ -195,6 +197,8 @@ WebView.postMessage(String msg) async;
 
 调用参数:
 * msg: String, 要发送的消息
+
+     postMessage 需要在窗口加载完成后发送消息，在此之前发送的消息会丢失。因此建议在 onload 事件触发后再调用此方法。
 
 --------------------------
 ### on

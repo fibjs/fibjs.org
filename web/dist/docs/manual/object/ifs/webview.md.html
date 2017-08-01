@@ -165,7 +165,9 @@ webview.onmessage = <span class="hljs-function"><span class="hljs-keyword">funct
     <span class="hljs-built_in">console</span>.log(msg);
 }
 
-webview.postMessage(<span class="hljs-string">"hello from fibjs"</span>);
+webview.onload = <span class="hljs-function">(<span class="hljs-params">evt</span>) =&gt;</span> {
+    webview.postMessage(<span class="hljs-string">"hello from fibjs"</span>);
+}
 
 webview.wait();
 </code></pre>
@@ -370,7 +372,9 @@ webview.onresize = <span class="hljs-function"><span class="hljs-keyword">functi
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>msg: String, 要发送的消息</li>
+<li><p>msg: String, 要发送的消息</p>
+<p>   postMessage 需要在窗口加载完成后发送消息，在此之前发送的消息会丢失。因此建议在 onload 事件触发后再调用此方法。</p>
+</li>
 </ul>
 <hr>
 <h3 id="on">on</h3>
