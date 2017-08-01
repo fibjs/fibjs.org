@@ -53,7 +53,7 @@ var root_server = {
     '^/hello/(.*)$': (req, name) => {
         req.response.write('hello, ' + name);
     },
-    '.*': http.fileHandler(path.join(__dirname, 'web'))
+    '(.*)': http.fileHandler(path.join(__dirname, 'web'))
 };
 
 var svr = new http.Server(8080, root_server);
@@ -82,7 +82,7 @@ var hello_server = {
 var root_server = {
     '^/hello(/.*)$': hello_server,
     '^/bonjour(/.*)$': hello_server,
-    '.*': http.fileHandler(path.join(__dirname, 'web'))
+    '(.*)': http.fileHandler(path.join(__dirname, 'web'))
 };
 
 var svr = new http.Server(8080, root_server);
