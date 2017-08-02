@@ -155,7 +155,9 @@
  </div></div></div>  </div></div><div class=content><div class=social-share data-sites=weibo,twitter data-description=分享></div> <h1 id="对象-RedisList">对象 RedisList</h1>
 <p><a href=redis.md.html>Redis</a> 数据库客户端 <a href=list.md.html>List</a> 对象，此对象为包含指定 key 的客户端，只有调用其方法才会操作数据库</p>
 <p>用以操作 <a href=redis.md.html>Redis</a> 的 <a href=list.md.html>List</a> 对象，创建方法：</p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">var</span> db = <span class="hljs-built_in">require</span>(<span class="hljs-string">"db"</span>);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">var</span> db = <span class="hljs-built_in">require</span>(<span class="hljs-string">"db"</span>);
 <span class="hljs-keyword">var</span> rdb = <span class="hljs-keyword">new</span> db.openRedis(<span class="hljs-string">"redis-server"</span>);
 <span class="hljs-keyword">var</span> list = rdb.getList(<span class="hljs-string">"test"</span>);
 </code></pre>
@@ -219,7 +221,7 @@
 <h2 id="成员函数">成员函数</h2>
 <h3 id="push">push</h3>
 <p><strong>将一个或多个值 value 插入到列表的表头</strong></p>
-<pre><code class="lang-JavaScript">Integer RedisList.push(<span class="hljs-built_in">Array</span> values);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer RedisList.push(<span class="hljs-built_in">Array</span> values);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -231,7 +233,7 @@
 </ul>
 <hr>
 <p><strong>将一个或多个值 value 插入到列表的表头</strong></p>
-<pre><code class="lang-JavaScript">Integer RedisList.push(...);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer RedisList.push(...);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -244,7 +246,7 @@
 <hr>
 <h3 id="pop">pop</h3>
 <p><strong>移除并返回列表 key 的头元素</strong></p>
-<pre><code class="lang-JavaScript">Buffer RedisList.pop();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Buffer RedisList.pop();
 </code></pre>
 <p>返回结果:</p>
 <ul>
@@ -253,7 +255,7 @@
 <hr>
 <h3 id="rpush">rpush</h3>
 <p><strong>将一个或多个值 value 插入到列表的表尾(最右边)</strong></p>
-<pre><code class="lang-JavaScript">Integer RedisList.rpush(<span class="hljs-built_in">Array</span> values);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer RedisList.rpush(<span class="hljs-built_in">Array</span> values);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -265,7 +267,7 @@
 </ul>
 <hr>
 <p><strong>将一个或多个值 value 插入到列表的表尾(最右边)</strong></p>
-<pre><code class="lang-JavaScript">Integer RedisList.rpush(...);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer RedisList.rpush(...);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -278,7 +280,7 @@
 <hr>
 <h3 id="rpop">rpop</h3>
 <p><strong>移除并返回列表 key 的表尾(最右边)元素</strong></p>
-<pre><code class="lang-JavaScript">Buffer RedisList.rpop();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Buffer RedisList.rpop();
 </code></pre>
 <p>返回结果:</p>
 <ul>
@@ -287,7 +289,8 @@
 <hr>
 <h3 id="set">set</h3>
 <p><strong>将列表下标为 index 的元素的值设置为 value</strong></p>
-<pre><code class="lang-JavaScript">RedisList.set(Integer index,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div>RedisList.set(Integer index,
     Buffer value);
 </code></pre>
 <p>调用参数:</p>
@@ -298,7 +301,7 @@
 <hr>
 <h3 id="get">get</h3>
 <p><strong>返回列表中，下标为 index 的元素</strong></p>
-<pre><code class="lang-JavaScript">Buffer RedisList.get(Integer index);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Buffer RedisList.get(Integer index);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -311,7 +314,8 @@
 <hr>
 <h3 id="insertBefore">insertBefore</h3>
 <p><strong>将值 value 插入到列表当中，位于值 pivot 之前</strong></p>
-<pre><code class="lang-JavaScript">Integer RedisList.insertBefore(Buffer pivot,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div>Integer RedisList.insertBefore(Buffer pivot,
     Buffer value);
 </code></pre>
 <p>调用参数:</p>
@@ -326,7 +330,8 @@
 <hr>
 <h3 id="insertAfter">insertAfter</h3>
 <p><strong>将值 value 插入到列表当中，位于值 pivot 之后</strong></p>
-<pre><code class="lang-JavaScript">Integer RedisList.insertAfter(Buffer pivot,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div>Integer RedisList.insertAfter(Buffer pivot,
     Buffer value);
 </code></pre>
 <p>调用参数:</p>
@@ -341,7 +346,8 @@
 <hr>
 <h3 id="remove">remove</h3>
 <p><strong>根据参数 count 的值，移除列表中与参数 value 相等的元素</strong></p>
-<pre><code class="lang-JavaScript">Integer RedisList.remove(Integer count,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div>Integer RedisList.remove(Integer count,
     Buffer value);
 </code></pre>
 <p>调用参数:</p>
@@ -356,7 +362,8 @@
 <hr>
 <h3 id="trim">trim</h3>
 <p><strong>对一个列表进行修剪(trim)，就是说，让列表只保留指定区间内的元素，不在指定区间之内的元素都将被删除</strong></p>
-<pre><code class="lang-JavaScript">RedisList.trim(Integer start,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div>RedisList.trim(Integer start,
     Integer stop);
 </code></pre>
 <p>调用参数:</p>
@@ -367,7 +374,7 @@
 <hr>
 <h3 id="len">len</h3>
 <p><strong>返回列表的长度</strong></p>
-<pre><code class="lang-JavaScript">Integer RedisList.len();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer RedisList.len();
 </code></pre>
 <p>返回结果:</p>
 <ul>
@@ -376,7 +383,8 @@
 <hr>
 <h3 id="range">range</h3>
 <p><strong>返回列表中指定区间内的元素，区间以偏移量 start 和 stop 指定，包含 start 和 stop 的元素</strong></p>
-<pre><code class="lang-JavaScript">List RedisList.range(Integer start,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div>List RedisList.range(Integer start,
     Integer stop);
 </code></pre>
 <p>调用参数:</p>
@@ -391,12 +399,12 @@
 <hr>
 <h3 id="dispose">dispose</h3>
 <p><strong>强制回收对象，调用此方法后，对象资源将立即释放</strong></p>
-<pre><code class="lang-JavaScript">RedisList.dispose();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>RedisList.dispose();
 </code></pre>
 <hr>
 <h3 id="equals">equals</h3>
 <p><strong>比较当前对象与给定的对象是否相等</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">Boolean</span> RedisList.equals(object expected);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Boolean</span> RedisList.equals(object expected);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -409,7 +417,7 @@
 <hr>
 <h3 id="toString">toString</h3>
 <p><strong>返回对象的字符串表示，一般返回 &quot;[Native Object]&quot;，对象可以根据自己的特性重新实现</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> RedisList.toString();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> RedisList.toString();
 </code></pre>
 <p>返回结果:</p>
 <ul>
@@ -418,7 +426,7 @@
 <hr>
 <h3 id="toJSON">toJSON</h3>
 <p><strong>返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合</strong></p>
-<pre><code class="lang-JavaScript">Value RedisList.toJSON(<span class="hljs-built_in">String</span> key = <span class="hljs-string">""</span>);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Value RedisList.toJSON(<span class="hljs-built_in">String</span> key = <span class="hljs-string">""</span>);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -431,7 +439,7 @@
 <hr>
 <h3 id="valueOf">valueOf</h3>
 <p><strong>返回对象本身的数值</strong></p>
-<pre><code class="lang-JavaScript">Value RedisList.valueOf();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Value RedisList.valueOf();
 </code></pre>
 <p>返回结果:</p>
 <ul>

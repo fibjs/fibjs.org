@@ -156,7 +156,15 @@
 <p>纤程操作对象，此对象不可直接创建</p>
 <p>使用 <a href=../../module/ifs/coroutine.md.html#start>coroutine.start</a> 创建纤程后，将返回此对象，用于纤程处理和纤程间通信。
 纤程主函数可以通过 this 访问本纤程对象，也可通过 <a href=../../module/ifs/coroutine.md.html#current>coroutine.current</a> 获取当前纤程。</p>
-<pre><code class="lang-JavaScript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">func</span>(<span class="hljs-params">v1</span>) </span>{
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9</div><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">func</span>(<span class="hljs-params">v1</span>) </span>{
     <span class="hljs-built_in">console</span>.log(v1 + <span class="hljs-keyword">this</span>.v);
 }
 
@@ -167,7 +175,13 @@ fb.v = <span class="hljs-number">123</span>;
 fb.join();
 </code></pre>
 <p>纤程局部存储通过共享的 Fiber 对象完成，通过 <a href=../../module/ifs/coroutine.md.html#current>coroutine.current</a> 获取当前纤程，通过修改和查询其变量达到共享数据的目的。</p>
-<pre><code class="lang-JavaScript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">func</span>(<span class="hljs-params"></span>) </span>{
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7</div><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">func</span>(<span class="hljs-params"></span>) </span>{
     <span class="hljs-built_in">console</span>.log(coroutine.current().v);
 }
 
@@ -176,7 +190,17 @@ coroutine.current().v = <span class="hljs-number">100</span>;
 func();
 </code></pre>
 <p>纤程在创建时，会自动复制当前纤程的局部变量到新的纤程，之后，各自的局部变量的修改不会相互影响，除非变量本身为对象引用。</p>
-<pre><code class="lang-JavaScript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">func</span>(<span class="hljs-params"></span>) </span>{
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11</div><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">func</span>(<span class="hljs-params"></span>) </span>{
     <span class="hljs-built_in">console</span>.log(coroutine.current().v);
 }
 
@@ -240,27 +264,27 @@ fb.join();
 <h2 id="成员属性">成员属性</h2>
 <h3 id="caller">caller</h3>
 <p><strong>Fiber, 查询纤程的调用纤程</strong></p>
-<pre><code class="lang-JavaScript">readonly Fiber Fiber.caller;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly Fiber Fiber.caller;
 </code></pre>
 <hr>
 <h3 id="traceInfo">traceInfo</h3>
 <p><strong>String, 查询纤程的调用堆栈，查询非当前纤程的堆栈需要在执行时指定参数：--trace_fiber</strong></p>
-<pre><code class="lang-JavaScript">readonly <span class="hljs-built_in">String</span> Fiber.traceInfo;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly <span class="hljs-built_in">String</span> Fiber.traceInfo;
 </code></pre>
 <h2 id="成员函数">成员函数</h2>
 <h3 id="join">join</h3>
 <p><strong>等待纤程结束</strong></p>
-<pre><code class="lang-JavaScript">Fiber.join();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Fiber.join();
 </code></pre>
 <hr>
 <h3 id="dispose">dispose</h3>
 <p><strong>强制回收对象，调用此方法后，对象资源将立即释放</strong></p>
-<pre><code class="lang-JavaScript">Fiber.dispose();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Fiber.dispose();
 </code></pre>
 <hr>
 <h3 id="equals">equals</h3>
 <p><strong>比较当前对象与给定的对象是否相等</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">Boolean</span> Fiber.equals(object expected);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Boolean</span> Fiber.equals(object expected);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -273,7 +297,7 @@ fb.join();
 <hr>
 <h3 id="toString">toString</h3>
 <p><strong>返回对象的字符串表示，一般返回 &quot;[Native Object]&quot;，对象可以根据自己的特性重新实现</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> Fiber.toString();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> Fiber.toString();
 </code></pre>
 <p>返回结果:</p>
 <ul>
@@ -282,7 +306,7 @@ fb.join();
 <hr>
 <h3 id="toJSON">toJSON</h3>
 <p><strong>返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合</strong></p>
-<pre><code class="lang-JavaScript">Value Fiber.toJSON(<span class="hljs-built_in">String</span> key = <span class="hljs-string">""</span>);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Value Fiber.toJSON(<span class="hljs-built_in">String</span> key = <span class="hljs-string">""</span>);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -295,7 +319,7 @@ fb.join();
 <hr>
 <h3 id="valueOf">valueOf</h3>
 <p><strong>返回对象本身的数值</strong></p>
-<pre><code class="lang-JavaScript">Value Fiber.valueOf();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Value Fiber.valueOf();
 </code></pre>
 <p>返回结果:</p>
 <ul>

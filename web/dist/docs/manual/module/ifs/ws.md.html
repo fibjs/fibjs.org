@@ -155,27 +155,28 @@
  </div></div></div>  </div></div><div class=content><div class=social-share data-sites=weibo,twitter data-description=分享></div> <h1 id="模块-ws">模块 ws</h1>
 <p>websocket 支持模块</p>
 <p>使用方法：</p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">var</span> ws = <span class="hljs-built_in">require</span>(<span class="hljs-string">'ws'</span>);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">var</span> ws = <span class="hljs-built_in">require</span>(<span class="hljs-string">'ws'</span>);
 </code></pre>
 <h2 id="对象">对象</h2>
 <h3 id="Message">Message</h3>
 <p><strong>创建一个 websocket 消息对象，参见 <a href=../../object/ifs/websocketmessage.md.html>WebSocketMessage</a></strong></p>
-<pre><code class="lang-JavaScript">WebSocketMessage ws.Message;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>WebSocketMessage ws.Message;
 </code></pre>
 <hr>
 <h3 id="Handler">Handler</h3>
 <p><strong>创建一个 websocket 包协议转换处理器，参见 <a href=../../object/ifs/websockethandler.md.html>WebSocketHandler</a></strong></p>
-<pre><code class="lang-JavaScript">WebSocketHandler ws.Handler;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>WebSocketHandler ws.Handler;
 </code></pre>
 <hr>
 <h3 id="Socket">Socket</h3>
 <p><strong><a href=../../object/ifs/websocket.md.html>WebSocket</a> 对象，参见 <a href=../../object/ifs/websocket.md.html>WebSocket</a></strong></p>
-<pre><code class="lang-JavaScript">WebSocket ws.Socket;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>WebSocket ws.Socket;
 </code></pre>
 <h2 id="静态函数">静态函数</h2>
 <h3 id="connect">connect</h3>
 <p><strong>创建一个 websocket 连接，并返回握手成功的 <a href=../../object/ifs/stream.md.html>Stream</a> 对象</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> Stream ws.connect(<span class="hljs-built_in">String</span> url,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> Stream ws.connect(<span class="hljs-built_in">String</span> url,
     <span class="hljs-built_in">String</span> origin = <span class="hljs-string">""</span>) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
@@ -190,7 +191,7 @@
 <hr>
 <h3 id="upgrade">upgrade</h3>
 <p><strong>创建一个 websocket 协议处理器，从 <a href="http.md">http</a> 接收 upgrade 请求并握手，生成 <a href=../../object/ifs/websocket.md.html>WebSocket</a> 对象</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> Handler ws.upgrade(<span class="hljs-built_in">Function</span> accept);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Handler ws.upgrade(<span class="hljs-built_in">Function</span> accept);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -203,51 +204,51 @@
 <h2 id="常量">常量</h2>
 <h3 id="CONTINUE">CONTINUE</h3>
 <p><strong>指定 websocket 消息类型 0，代表一个继续帧</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">const</span> ws.CONTINUE = <span class="hljs-number">0</span>;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> ws.CONTINUE = <span class="hljs-number">0</span>;
 </code></pre>
 <hr>
 <h3 id="TEXT">TEXT</h3>
 <p><strong>指定 websocket 消息类型 1，代表一个文本帧</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">const</span> ws.TEXT = <span class="hljs-number">1</span>;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> ws.TEXT = <span class="hljs-number">1</span>;
 </code></pre>
 <hr>
 <h3 id="BINARY">BINARY</h3>
 <p><strong>指定 websocket 消息类型 2，代表一个二进制帧</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">const</span> ws.BINARY = <span class="hljs-number">2</span>;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> ws.BINARY = <span class="hljs-number">2</span>;
 </code></pre>
 <hr>
 <h3 id="CLOSE">CLOSE</h3>
 <p><strong>指定 websocket 消息类型 8，连接关闭</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">const</span> ws.CLOSE = <span class="hljs-number">8</span>;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> ws.CLOSE = <span class="hljs-number">8</span>;
 </code></pre>
 <hr>
 <h3 id="PING">PING</h3>
 <p><strong>指定 websocket 消息类型 9，代表一个 ping 帧</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">const</span> ws.PING = <span class="hljs-number">9</span>;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> ws.PING = <span class="hljs-number">9</span>;
 </code></pre>
 <hr>
 <h3 id="PONG">PONG</h3>
 <p><strong>指定 websocket 消息类型 10，代表一个 pong 帧</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">const</span> ws.PONG = <span class="hljs-number">10</span>;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> ws.PONG = <span class="hljs-number">10</span>;
 </code></pre>
 <hr>
 <h3 id="CONNECTING">CONNECTING</h3>
 <p><strong>指定 <a href=../../object/ifs/websocket.md.html>WebSocket</a> 状态，表示正在连接中</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">const</span> ws.CONNECTING = <span class="hljs-number">0</span>;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> ws.CONNECTING = <span class="hljs-number">0</span>;
 </code></pre>
 <hr>
 <h3 id="OPEN">OPEN</h3>
 <p><strong>指定 <a href=../../object/ifs/websocket.md.html>WebSocket</a> 状态，表示打开状态</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">const</span> ws.OPEN = <span class="hljs-number">1</span>;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> ws.OPEN = <span class="hljs-number">1</span>;
 </code></pre>
 <hr>
 <h3 id="CLOSING">CLOSING</h3>
 <p><strong>指定 <a href=../../object/ifs/websocket.md.html>WebSocket</a> 状态，表示已发送 CLOSE 消息，等待关闭中</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">const</span> ws.CLOSING = <span class="hljs-number">2</span>;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> ws.CLOSING = <span class="hljs-number">2</span>;
 </code></pre>
 <hr>
 <h3 id="CLOSED">CLOSED</h3>
 <p><strong>指定 <a href=../../object/ifs/websocket.md.html>WebSocket</a> 状态，表示已经关闭</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">const</span> ws.CLOSED = <span class="hljs-number">3</span>;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> ws.CLOSED = <span class="hljs-number">3</span>;
 </code></pre>
  </div><div class="sidebar hidden-sm hidden-xs"><div id=toc></div></div></div><div class=container><div class=footer><p>&copy; 2017 fibjs.org</p></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="Click to return on the top page" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=../../../../js/common.js></script><script type=text/javascript src=../../../../js/docs.js></script></body></html>

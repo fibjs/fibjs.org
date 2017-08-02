@@ -155,19 +155,21 @@
  </div></div></div>  </div></div><div class=content><div class=social-share data-sites=weibo,twitter data-description=分享></div> <h1 id="模块-assert">模块 assert</h1>
 <p>断言测试模块，如果测试值为假，则报错，报错行为可设定继续运行或者错误抛出</p>
 <p>引用方法：</p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">var</span> assert = <span class="hljs-built_in">require</span>(<span class="hljs-string">'assert'</span>);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">var</span> assert = <span class="hljs-built_in">require</span>(<span class="hljs-string">'assert'</span>);
 </code></pre>
 <p>或者通过 <a href=test.md.html>test</a> 模块引用：</p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">var</span> test = <span class="hljs-built_in">require</span>(<span class="hljs-string">'test'</span>);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">var</span> test = <span class="hljs-built_in">require</span>(<span class="hljs-string">'test'</span>);
 <span class="hljs-keyword">var</span> assert = test.assert;
 </code></pre>
 <p>或者通过 <a href=test.md.html#setup>test.setup</a> 配置：</p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">require</span>(<span class="hljs-string">"test"</span>).setup();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">require</span>(<span class="hljs-string">"test"</span>).setup();
 </code></pre>
 <h2 id="静态函数">静态函数</h2>
 <h3 id="Function">Function</h3>
 <p><strong>测试数值为真，为假则断言失败</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> assert.Function(Value actual = <span class="hljs-literal">undefined</span>,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> assert.Function(Value actual = <span class="hljs-literal">undefined</span>,
     <span class="hljs-built_in">String</span> msg = <span class="hljs-string">""</span>);
 </code></pre>
 <p>调用参数:</p>
@@ -178,7 +180,8 @@
 <hr>
 <h3 id="ok">ok</h3>
 <p><strong>测试数值为真，为假则断言失败</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> assert.ok(Value actual = <span class="hljs-literal">undefined</span>,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> assert.ok(Value actual = <span class="hljs-literal">undefined</span>,
     <span class="hljs-built_in">String</span> msg = <span class="hljs-string">""</span>);
 </code></pre>
 <p>调用参数:</p>
@@ -189,7 +192,8 @@
 <hr>
 <h3 id="notOk">notOk</h3>
 <p><strong>测试数值为假，为真则断言失败</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> assert.notOk(Value actual = <span class="hljs-literal">undefined</span>,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> assert.notOk(Value actual = <span class="hljs-literal">undefined</span>,
     <span class="hljs-built_in">String</span> msg = <span class="hljs-string">""</span>);
 </code></pre>
 <p>调用参数:</p>
@@ -200,7 +204,9 @@
 <hr>
 <h3 id="equal">equal</h3>
 <p><strong>测试数值等于预期值，不相等则断言失败</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> assert.equal(Value actual = <span class="hljs-literal">undefined</span>,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">static</span> assert.equal(Value actual = <span class="hljs-literal">undefined</span>,
     Value expected = <span class="hljs-literal">undefined</span>,
     <span class="hljs-built_in">String</span> msg = <span class="hljs-string">""</span>);
 </code></pre>
@@ -213,7 +219,9 @@
 <hr>
 <h3 id="notEqual">notEqual</h3>
 <p><strong>测试数值不等于预期值，相等则断言失败</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> assert.notEqual(Value actual = <span class="hljs-literal">undefined</span>,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">static</span> assert.notEqual(Value actual = <span class="hljs-literal">undefined</span>,
     Value expected = <span class="hljs-literal">undefined</span>,
     <span class="hljs-built_in">String</span> msg = <span class="hljs-string">""</span>);
 </code></pre>
@@ -226,7 +234,9 @@
 <hr>
 <h3 id="strictEqual">strictEqual</h3>
 <p><strong>测试数值严格等于预期值，不相等则断言失败</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> assert.strictEqual(Value actual = <span class="hljs-literal">undefined</span>,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">static</span> assert.strictEqual(Value actual = <span class="hljs-literal">undefined</span>,
     Value expected = <span class="hljs-literal">undefined</span>,
     <span class="hljs-built_in">String</span> msg = <span class="hljs-string">""</span>);
 </code></pre>
@@ -239,7 +249,9 @@
 <hr>
 <h3 id="notStrictEqual">notStrictEqual</h3>
 <p><strong>测试数值不严格等于预期值，相等则断言失败</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> assert.notStrictEqual(Value actual = <span class="hljs-literal">undefined</span>,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">static</span> assert.notStrictEqual(Value actual = <span class="hljs-literal">undefined</span>,
     Value expected = <span class="hljs-literal">undefined</span>,
     <span class="hljs-built_in">String</span> msg = <span class="hljs-string">""</span>);
 </code></pre>
@@ -252,7 +264,9 @@
 <hr>
 <h3 id="deepEqual">deepEqual</h3>
 <p><strong>测试数值深度等于预期值，不相等则断言失败</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> assert.deepEqual(Value actual = <span class="hljs-literal">undefined</span>,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">static</span> assert.deepEqual(Value actual = <span class="hljs-literal">undefined</span>,
     Value expected = <span class="hljs-literal">undefined</span>,
     <span class="hljs-built_in">String</span> msg = <span class="hljs-string">""</span>);
 </code></pre>
@@ -265,7 +279,9 @@
 <hr>
 <h3 id="notDeepEqual">notDeepEqual</h3>
 <p><strong>测试数值不深度等于预期值，相等则断言失败</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> assert.notDeepEqual(Value actual = <span class="hljs-literal">undefined</span>,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">static</span> assert.notDeepEqual(Value actual = <span class="hljs-literal">undefined</span>,
     Value expected = <span class="hljs-literal">undefined</span>,
     <span class="hljs-built_in">String</span> msg = <span class="hljs-string">""</span>);
 </code></pre>
@@ -278,7 +294,10 @@
 <hr>
 <h3 id="closeTo">closeTo</h3>
 <p><strong>测试数值近似等于预期值，否则断言失败</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> assert.closeTo(Value actual,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4</div><span class="hljs-keyword">static</span> assert.closeTo(Value actual,
     Value expected,
     Value delta,
     <span class="hljs-built_in">String</span> msg = <span class="hljs-string">""</span>);
@@ -293,7 +312,10 @@
 <hr>
 <h3 id="notCloseTo">notCloseTo</h3>
 <p><strong>测试数值不近似等于预期值，否则断言失败</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> assert.notCloseTo(Value actual,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4</div><span class="hljs-keyword">static</span> assert.notCloseTo(Value actual,
     Value expected,
     Value delta,
     <span class="hljs-built_in">String</span> msg = <span class="hljs-string">""</span>);
@@ -308,7 +330,9 @@
 <hr>
 <h3 id="lessThan">lessThan</h3>
 <p><strong>测试数值小于预期值，大于或等于则断言失败</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> assert.lessThan(Value actual,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">static</span> assert.lessThan(Value actual,
     Value expected,
     <span class="hljs-built_in">String</span> msg = <span class="hljs-string">""</span>);
 </code></pre>
@@ -321,7 +345,9 @@
 <hr>
 <h3 id="notLessThan">notLessThan</h3>
 <p><strong>测试数值不小于预期值，小于则断言失败</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> assert.notLessThan(Value actual,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">static</span> assert.notLessThan(Value actual,
     Value expected,
     <span class="hljs-built_in">String</span> msg = <span class="hljs-string">""</span>);
 </code></pre>
@@ -334,7 +360,9 @@
 <hr>
 <h3 id="greaterThan">greaterThan</h3>
 <p><strong>测试数值大于预期值，小于或等于则断言失败</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> assert.greaterThan(Value actual,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">static</span> assert.greaterThan(Value actual,
     Value expected,
     <span class="hljs-built_in">String</span> msg = <span class="hljs-string">""</span>);
 </code></pre>
@@ -347,7 +375,9 @@
 <hr>
 <h3 id="notGreaterThan">notGreaterThan</h3>
 <p><strong>测试数值不大于预期值，大于则断言失败</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> assert.notGreaterThan(Value actual,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">static</span> assert.notGreaterThan(Value actual,
     Value expected,
     <span class="hljs-built_in">String</span> msg = <span class="hljs-string">""</span>);
 </code></pre>
@@ -360,7 +390,8 @@
 <hr>
 <h3 id="exist">exist</h3>
 <p><strong>测试变量存在，为假则断言失败</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> assert.exist(Value actual,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> assert.exist(Value actual,
     <span class="hljs-built_in">String</span> msg = <span class="hljs-string">""</span>);
 </code></pre>
 <p>调用参数:</p>
@@ -371,7 +402,8 @@
 <hr>
 <h3 id="notExist">notExist</h3>
 <p><strong>测试变量不存在，为真则断言失败</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> assert.notExist(Value actual,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> assert.notExist(Value actual,
     <span class="hljs-built_in">String</span> msg = <span class="hljs-string">""</span>);
 </code></pre>
 <p>调用参数:</p>
@@ -382,7 +414,8 @@
 <hr>
 <h3 id="isTrue">isTrue</h3>
 <p><strong>测试数值为布尔值真，否则断言失败</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> assert.isTrue(Value actual,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> assert.isTrue(Value actual,
     <span class="hljs-built_in">String</span> msg = <span class="hljs-string">""</span>);
 </code></pre>
 <p>调用参数:</p>
@@ -393,7 +426,8 @@
 <hr>
 <h3 id="isNotTrue">isNotTrue</h3>
 <p><strong>测试数值不为布尔值真，否则断言失败</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> assert.isNotTrue(Value actual,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> assert.isNotTrue(Value actual,
     <span class="hljs-built_in">String</span> msg = <span class="hljs-string">""</span>);
 </code></pre>
 <p>调用参数:</p>
@@ -404,7 +438,8 @@
 <hr>
 <h3 id="isFalse">isFalse</h3>
 <p><strong>测试数值为布尔值假，否则断言失败</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> assert.isFalse(Value actual,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> assert.isFalse(Value actual,
     <span class="hljs-built_in">String</span> msg = <span class="hljs-string">""</span>);
 </code></pre>
 <p>调用参数:</p>
@@ -415,7 +450,8 @@
 <hr>
 <h3 id="isNotFalse">isNotFalse</h3>
 <p><strong>测试数值不为布尔值假，否则断言失败</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> assert.isNotFalse(Value actual,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> assert.isNotFalse(Value actual,
     <span class="hljs-built_in">String</span> msg = <span class="hljs-string">""</span>);
 </code></pre>
 <p>调用参数:</p>
@@ -426,7 +462,8 @@
 <hr>
 <h3 id="isNull">isNull</h3>
 <p><strong>测试数值为 Null，否则断言失败</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> assert.isNull(Value actual,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> assert.isNull(Value actual,
     <span class="hljs-built_in">String</span> msg = <span class="hljs-string">""</span>);
 </code></pre>
 <p>调用参数:</p>
@@ -437,7 +474,8 @@
 <hr>
 <h3 id="isNotNull">isNotNull</h3>
 <p><strong>测试数值不为 Null，否则断言失败</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> assert.isNotNull(Value actual,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> assert.isNotNull(Value actual,
     <span class="hljs-built_in">String</span> msg = <span class="hljs-string">""</span>);
 </code></pre>
 <p>调用参数:</p>
@@ -448,7 +486,8 @@
 <hr>
 <h3 id="isUndefined">isUndefined</h3>
 <p><strong>测试数值为 undefined，否则断言失败</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> assert.isUndefined(Value actual,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> assert.isUndefined(Value actual,
     <span class="hljs-built_in">String</span> msg = <span class="hljs-string">""</span>);
 </code></pre>
 <p>调用参数:</p>
@@ -459,7 +498,8 @@
 <hr>
 <h3 id="isDefined">isDefined</h3>
 <p><strong>测试数值不为 undefined，否则断言失败</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> assert.isDefined(Value actual,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> assert.isDefined(Value actual,
     <span class="hljs-built_in">String</span> msg = <span class="hljs-string">""</span>);
 </code></pre>
 <p>调用参数:</p>
@@ -470,7 +510,8 @@
 <hr>
 <h3 id="isFunction">isFunction</h3>
 <p><strong>测试数值为函数，否则断言失败</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> assert.isFunction(Value actual,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> assert.isFunction(Value actual,
     <span class="hljs-built_in">String</span> msg = <span class="hljs-string">""</span>);
 </code></pre>
 <p>调用参数:</p>
@@ -481,7 +522,8 @@
 <hr>
 <h3 id="isNotFunction">isNotFunction</h3>
 <p><strong>测试数值不为函数，否则断言失败</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> assert.isNotFunction(Value actual,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> assert.isNotFunction(Value actual,
     <span class="hljs-built_in">String</span> msg = <span class="hljs-string">""</span>);
 </code></pre>
 <p>调用参数:</p>
@@ -492,7 +534,8 @@
 <hr>
 <h3 id="isObject">isObject</h3>
 <p><strong>测试数值为对象，否则断言失败</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> assert.isObject(Value actual,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> assert.isObject(Value actual,
     <span class="hljs-built_in">String</span> msg = <span class="hljs-string">""</span>);
 </code></pre>
 <p>调用参数:</p>
@@ -503,7 +546,8 @@
 <hr>
 <h3 id="isNotObject">isNotObject</h3>
 <p><strong>测试数值不为对象，否则断言失败</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> assert.isNotObject(Value actual,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> assert.isNotObject(Value actual,
     <span class="hljs-built_in">String</span> msg = <span class="hljs-string">""</span>);
 </code></pre>
 <p>调用参数:</p>
@@ -514,7 +558,8 @@
 <hr>
 <h3 id="isArray">isArray</h3>
 <p><strong>测试数值为数组，否则断言失败</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> assert.isArray(Value actual,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> assert.isArray(Value actual,
     <span class="hljs-built_in">String</span> msg = <span class="hljs-string">""</span>);
 </code></pre>
 <p>调用参数:</p>
@@ -525,7 +570,8 @@
 <hr>
 <h3 id="isNotArray">isNotArray</h3>
 <p><strong>测试数值不为数组，否则断言失败</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> assert.isNotArray(Value actual,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> assert.isNotArray(Value actual,
     <span class="hljs-built_in">String</span> msg = <span class="hljs-string">""</span>);
 </code></pre>
 <p>调用参数:</p>
@@ -536,7 +582,8 @@
 <hr>
 <h3 id="isString">isString</h3>
 <p><strong>测试数值为字符串，否则断言失败</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> assert.isString(Value actual,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> assert.isString(Value actual,
     <span class="hljs-built_in">String</span> msg = <span class="hljs-string">""</span>);
 </code></pre>
 <p>调用参数:</p>
@@ -547,7 +594,8 @@
 <hr>
 <h3 id="isNotString">isNotString</h3>
 <p><strong>测试数值不为字符串，否则断言失败</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> assert.isNotString(Value actual,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> assert.isNotString(Value actual,
     <span class="hljs-built_in">String</span> msg = <span class="hljs-string">""</span>);
 </code></pre>
 <p>调用参数:</p>
@@ -558,7 +606,8 @@
 <hr>
 <h3 id="isNumber">isNumber</h3>
 <p><strong>测试数值为数字，否则断言失败</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> assert.isNumber(Value actual,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> assert.isNumber(Value actual,
     <span class="hljs-built_in">String</span> msg = <span class="hljs-string">""</span>);
 </code></pre>
 <p>调用参数:</p>
@@ -569,7 +618,8 @@
 <hr>
 <h3 id="isNotNumber">isNotNumber</h3>
 <p><strong>测试数值不为数字，否则断言失败</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> assert.isNotNumber(Value actual,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> assert.isNotNumber(Value actual,
     <span class="hljs-built_in">String</span> msg = <span class="hljs-string">""</span>);
 </code></pre>
 <p>调用参数:</p>
@@ -580,7 +630,8 @@
 <hr>
 <h3 id="isBoolean">isBoolean</h3>
 <p><strong>测试数值为布尔，否则断言失败</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> assert.isBoolean(Value actual,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> assert.isBoolean(Value actual,
     <span class="hljs-built_in">String</span> msg = <span class="hljs-string">""</span>);
 </code></pre>
 <p>调用参数:</p>
@@ -591,7 +642,8 @@
 <hr>
 <h3 id="isNotBoolean">isNotBoolean</h3>
 <p><strong>测试数值不为布尔，否则断言失败</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> assert.isNotBoolean(Value actual,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> assert.isNotBoolean(Value actual,
     <span class="hljs-built_in">String</span> msg = <span class="hljs-string">""</span>);
 </code></pre>
 <p>调用参数:</p>
@@ -602,7 +654,9 @@
 <hr>
 <h3 id="typeOf">typeOf</h3>
 <p><strong>测试数值为给定类型，否则断言失败</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> assert.typeOf(Value actual,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">static</span> assert.typeOf(Value actual,
     <span class="hljs-built_in">String</span> type,
     <span class="hljs-built_in">String</span> msg = <span class="hljs-string">""</span>);
 </code></pre>
@@ -615,7 +669,9 @@
 <hr>
 <h3 id="notTypeOf">notTypeOf</h3>
 <p><strong>测试数值不为给定类型，否则断言失败</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> assert.notTypeOf(Value actual,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">static</span> assert.notTypeOf(Value actual,
     <span class="hljs-built_in">String</span> type,
     <span class="hljs-built_in">String</span> msg = <span class="hljs-string">""</span>);
 </code></pre>
@@ -628,7 +684,9 @@
 <hr>
 <h3 id="property">property</h3>
 <p><strong>测试对象中包含指定属性，否则断言失败</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> assert.property(Value object,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">static</span> assert.property(Value object,
     Value prop,
     <span class="hljs-built_in">String</span> msg = <span class="hljs-string">""</span>);
 </code></pre>
@@ -641,7 +699,9 @@
 <hr>
 <h3 id="notProperty">notProperty</h3>
 <p><strong>测试对象中不包含指定属性，否则断言失败</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> assert.notProperty(Value object,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">static</span> assert.notProperty(Value object,
     Value prop,
     <span class="hljs-built_in">String</span> msg = <span class="hljs-string">""</span>);
 </code></pre>
@@ -654,7 +714,9 @@
 <hr>
 <h3 id="deepProperty">deepProperty</h3>
 <p><strong>深度测试对象中包含指定属性，否则断言失败</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> assert.deepProperty(Value object,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">static</span> assert.deepProperty(Value object,
     Value prop,
     <span class="hljs-built_in">String</span> msg = <span class="hljs-string">""</span>);
 </code></pre>
@@ -667,7 +729,9 @@
 <hr>
 <h3 id="notDeepProperty">notDeepProperty</h3>
 <p><strong>深度测试对象中不包含指定属性，否则断言失败</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> assert.notDeepProperty(Value object,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">static</span> assert.notDeepProperty(Value object,
     Value prop,
     <span class="hljs-built_in">String</span> msg = <span class="hljs-string">""</span>);
 </code></pre>
@@ -680,7 +744,10 @@
 <hr>
 <h3 id="propertyVal">propertyVal</h3>
 <p><strong>测试对象中指定属性的值为给定值，否则断言失败</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> assert.propertyVal(Value object,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4</div><span class="hljs-keyword">static</span> assert.propertyVal(Value object,
     Value prop,
     Value value,
     <span class="hljs-built_in">String</span> msg = <span class="hljs-string">""</span>);
@@ -695,7 +762,10 @@
 <hr>
 <h3 id="propertyNotVal">propertyNotVal</h3>
 <p><strong>测试对象中指定属性的值不为给定值，否则断言失败</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> assert.propertyNotVal(Value object,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4</div><span class="hljs-keyword">static</span> assert.propertyNotVal(Value object,
     Value prop,
     Value value,
     <span class="hljs-built_in">String</span> msg = <span class="hljs-string">""</span>);
@@ -710,7 +780,10 @@
 <hr>
 <h3 id="deepPropertyVal">deepPropertyVal</h3>
 <p><strong>深度测试对象中指定属性的值为给定值，否则断言失败</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> assert.deepPropertyVal(Value object,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4</div><span class="hljs-keyword">static</span> assert.deepPropertyVal(Value object,
     Value prop,
     Value value,
     <span class="hljs-built_in">String</span> msg = <span class="hljs-string">""</span>);
@@ -725,7 +798,10 @@
 <hr>
 <h3 id="deepPropertyNotVal">deepPropertyNotVal</h3>
 <p><strong>深度测试对象中指定属性的值不为给定值，否则断言失败</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> assert.deepPropertyNotVal(Value object,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4</div><span class="hljs-keyword">static</span> assert.deepPropertyNotVal(Value object,
     Value prop,
     Value value,
     <span class="hljs-built_in">String</span> msg = <span class="hljs-string">""</span>);
@@ -740,7 +816,8 @@
 <hr>
 <h3 id="throws">throws</h3>
 <p><strong>测试给定的代码会抛出错误，未抛出则断言失败</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> assert.throws(<span class="hljs-built_in">Function</span> block,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> assert.throws(<span class="hljs-built_in">Function</span> block,
     <span class="hljs-built_in">String</span> msg = <span class="hljs-string">""</span>);
 </code></pre>
 <p>调用参数:</p>
@@ -751,7 +828,8 @@
 <hr>
 <h3 id="doesNotThrow">doesNotThrow</h3>
 <p><strong>测试给定的代码不会抛出错误，抛出则断言失败</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> assert.doesNotThrow(<span class="hljs-built_in">Function</span> block,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> assert.doesNotThrow(<span class="hljs-built_in">Function</span> block,
     <span class="hljs-built_in">String</span> msg = <span class="hljs-string">""</span>);
 </code></pre>
 <p>调用参数:</p>
@@ -762,7 +840,7 @@
 <hr>
 <h3 id="ifError">ifError</h3>
 <p><strong>如果参数为真，则抛出</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> assert.ifError(Value object = <span class="hljs-literal">undefined</span>);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> assert.ifError(Value object = <span class="hljs-literal">undefined</span>);
 </code></pre>
 <p>调用参数:</p>
 <ul>

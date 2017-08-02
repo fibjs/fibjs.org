@@ -154,7 +154,8 @@
 </ul>
  </div></div></div>  </div></div><div class=content><div class=social-share data-sites=weibo,twitter data-description=分享></div> <h1 id="对象-SubProcess">对象 SubProcess</h1>
 <p>子进程对象</p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">var</span> process = <span class="hljs-built_in">require</span>(<span class="hljs-string">"process"</span>);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">var</span> process = <span class="hljs-built_in">require</span>(<span class="hljs-string">"process"</span>);
 <span class="hljs-keyword">var</span> sub = process.open(<span class="hljs-string">"ls"</span>);
 </code></pre>
 <h2 id="继承关系">继承关系</h2>
@@ -260,37 +261,37 @@
 <h2 id="成员属性">成员属性</h2>
 <h3 id="pid">pid</h3>
 <p><strong>Integer, 读取当前对象指向的进程的 id</strong></p>
-<pre><code class="lang-JavaScript">readonly Integer SubProcess.pid;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly Integer SubProcess.pid;
 </code></pre>
 <hr>
 <h3 id="stdin">stdin</h3>
 <p><strong><a href=bufferedstream.md.html>BufferedStream</a>, 读取当前对象指向的进程的标准输入对象</strong></p>
-<pre><code class="lang-JavaScript">readonly BufferedStream SubProcess.stdin;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly BufferedStream SubProcess.stdin;
 </code></pre>
 <hr>
 <h3 id="stdout">stdout</h3>
 <p><strong><a href=bufferedstream.md.html>BufferedStream</a>, 读取当前对象指向的进程的标准输出对象</strong></p>
-<pre><code class="lang-JavaScript">readonly BufferedStream SubProcess.stdout;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly BufferedStream SubProcess.stdout;
 </code></pre>
 <hr>
 <h3 id="stream">stream</h3>
 <p><strong><a href=stream.md.html>Stream</a>, 查询创建缓存对象时的流对象</strong></p>
-<pre><code class="lang-JavaScript">readonly Stream SubProcess.stream;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly Stream SubProcess.stream;
 </code></pre>
 <hr>
 <h3 id="charset">charset</h3>
 <p><strong>String, 查询和设置当前对象处理文本时的字符集，缺省为 utf-8</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> SubProcess.charset;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> SubProcess.charset;
 </code></pre>
 <hr>
 <h3 id="EOL">EOL</h3>
 <p><strong>String, 查询和设置行结尾标识，缺省时，posix:\&quot;\n\&quot;；windows:\&quot;\r\n\&quot;</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> SubProcess.EOL;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> SubProcess.EOL;
 </code></pre>
 <h2 id="成员函数">成员函数</h2>
 <h3 id="kill">kill</h3>
 <p><strong>杀掉当前对象指向的进程，并传递信号</strong></p>
-<pre><code class="lang-JavaScript">SubProcess.kill(Integer signal);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>SubProcess.kill(Integer signal);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -299,7 +300,7 @@
 <hr>
 <h3 id="wait">wait</h3>
 <p><strong>等待当前对象指向的进程结束，并返回进程结束代码</strong></p>
-<pre><code class="lang-JavaScript">Integer SubProcess.wait() <span class="hljs-keyword">async</span>;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer SubProcess.wait() <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>返回结果:</p>
 <ul>
@@ -308,7 +309,7 @@
 <hr>
 <h3 id="findWindow">findWindow</h3>
 <p><strong>查询当前对象所指向的进程是否存在指定名称的窗口，仅限 windows</strong></p>
-<pre><code class="lang-JavaScript">Value SubProcess.findWindow(<span class="hljs-built_in">String</span> name);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Value SubProcess.findWindow(<span class="hljs-built_in">String</span> name);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -321,7 +322,7 @@
 <hr>
 <h3 id="readText">readText</h3>
 <p><strong>读取指定字符的文本</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> SubProcess.readText(Integer size) <span class="hljs-keyword">async</span>;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> SubProcess.readText(Integer size) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -334,7 +335,7 @@
 <hr>
 <h3 id="readLine">readLine</h3>
 <p><strong>读取一行文本，行结尾标识基于 EOL 属性的设置，缺省时，posix:\&quot;\n\&quot;；windows:\&quot;\r\n\&quot;</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> SubProcess.readLine(Integer maxlen = <span class="hljs-number">-1</span>) <span class="hljs-keyword">async</span>;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> SubProcess.readLine(Integer maxlen = <span class="hljs-number">-1</span>) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -347,7 +348,7 @@
 <hr>
 <h3 id="readLines">readLines</h3>
 <p><strong>以数组方式读取一组文本行，行结尾标识基于 EOL 属性的设置，缺省时，posix:\&quot;\n\&quot;；windows:\&quot;\r\n\&quot;</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">Array</span> SubProcess.readLines(Integer maxlines = <span class="hljs-number">-1</span>);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Array</span> SubProcess.readLines(Integer maxlines = <span class="hljs-number">-1</span>);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -360,7 +361,8 @@
 <hr>
 <h3 id="readUntil">readUntil</h3>
 <p><strong>读取一个文本字符串，以指定的字节为结尾</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> SubProcess.readUntil(<span class="hljs-built_in">String</span> mk,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-built_in">String</span> SubProcess.readUntil(<span class="hljs-built_in">String</span> mk,
     Integer maxlen = <span class="hljs-number">-1</span>) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
@@ -375,7 +377,7 @@
 <hr>
 <h3 id="writeText">writeText</h3>
 <p><strong>写入一个字符串</strong></p>
-<pre><code class="lang-JavaScript">SubProcess.writeText(<span class="hljs-built_in">String</span> txt) <span class="hljs-keyword">async</span>;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>SubProcess.writeText(<span class="hljs-built_in">String</span> txt) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -384,7 +386,7 @@
 <hr>
 <h3 id="writeLine">writeLine</h3>
 <p><strong>写入一个字符串，并写入换行符</strong></p>
-<pre><code class="lang-JavaScript">SubProcess.writeLine(<span class="hljs-built_in">String</span> txt) <span class="hljs-keyword">async</span>;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>SubProcess.writeLine(<span class="hljs-built_in">String</span> txt) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -393,7 +395,7 @@
 <hr>
 <h3 id="read">read</h3>
 <p><strong>从流内读取指定大小的数据</strong></p>
-<pre><code class="lang-JavaScript">Buffer SubProcess.read(Integer bytes = <span class="hljs-number">-1</span>) <span class="hljs-keyword">async</span>;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Buffer SubProcess.read(Integer bytes = <span class="hljs-number">-1</span>) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -406,7 +408,7 @@
 <hr>
 <h3 id="write">write</h3>
 <p><strong>将给定的数据写入流</strong></p>
-<pre><code class="lang-JavaScript">SubProcess.write(Buffer data) <span class="hljs-keyword">async</span>;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>SubProcess.write(Buffer data) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -415,12 +417,13 @@
 <hr>
 <h3 id="close">close</h3>
 <p><strong>关闭当前流对象</strong></p>
-<pre><code class="lang-JavaScript">SubProcess.close() <span class="hljs-keyword">async</span>;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>SubProcess.close() <span class="hljs-keyword">async</span>;
 </code></pre>
 <hr>
 <h3 id="copyTo">copyTo</h3>
 <p><strong>复制流数据到目标流中</strong></p>
-<pre><code class="lang-JavaScript">Long SubProcess.copyTo(Stream stm,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div>Long SubProcess.copyTo(Stream stm,
     Long bytes = <span class="hljs-number">-1</span>) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
@@ -435,12 +438,12 @@
 <hr>
 <h3 id="dispose">dispose</h3>
 <p><strong>强制回收对象，调用此方法后，对象资源将立即释放</strong></p>
-<pre><code class="lang-JavaScript">SubProcess.dispose();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>SubProcess.dispose();
 </code></pre>
 <hr>
 <h3 id="equals">equals</h3>
 <p><strong>比较当前对象与给定的对象是否相等</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">Boolean</span> SubProcess.equals(object expected);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Boolean</span> SubProcess.equals(object expected);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -453,7 +456,7 @@
 <hr>
 <h3 id="toString">toString</h3>
 <p><strong>返回对象的字符串表示，一般返回 &quot;[Native Object]&quot;，对象可以根据自己的特性重新实现</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> SubProcess.toString();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> SubProcess.toString();
 </code></pre>
 <p>返回结果:</p>
 <ul>
@@ -462,7 +465,7 @@
 <hr>
 <h3 id="toJSON">toJSON</h3>
 <p><strong>返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合</strong></p>
-<pre><code class="lang-JavaScript">Value SubProcess.toJSON(<span class="hljs-built_in">String</span> key = <span class="hljs-string">""</span>);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Value SubProcess.toJSON(<span class="hljs-built_in">String</span> key = <span class="hljs-string">""</span>);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -475,7 +478,7 @@
 <hr>
 <h3 id="valueOf">valueOf</h3>
 <p><strong>返回对象本身的数值</strong></p>
-<pre><code class="lang-JavaScript">Value SubProcess.valueOf();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Value SubProcess.valueOf();
 </code></pre>
 <p>返回结果:</p>
 <ul>

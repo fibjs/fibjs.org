@@ -155,7 +155,9 @@
  </div></div></div>  </div></div><div class=content><div class=social-share data-sites=weibo,twitter data-description=分享></div> <h1 id="对象-WebSocketMessage">对象 WebSocketMessage</h1>
 <p>websocket 消息对象</p>
 <p>创建方法：</p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">var</span> ws = <span class="hljs-built_in">require</span>(<span class="hljs-string">"ws"</span>);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">var</span> ws = <span class="hljs-built_in">require</span>(<span class="hljs-string">"ws"</span>);
 
 <span class="hljs-keyword">var</span> msg = <span class="hljs-keyword">new</span> ws.Message();
 </code></pre>
@@ -250,7 +252,9 @@
 <h2 id="构造函数">构造函数</h2>
 <h3 id="WebSocketMessage">WebSocketMessage</h3>
 <p><strong>包处理消息对象构造函数</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">new</span> WebSocketMessage(Integer type = ws.BINARY,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">new</span> WebSocketMessage(Integer type = ws.BINARY,
     <span class="hljs-built_in">Boolean</span> masked = <span class="hljs-literal">true</span>,
     Integer maxSize = <span class="hljs-number">67108864</span>);
 </code></pre>
@@ -263,72 +267,72 @@
 <h2 id="常量">常量</h2>
 <h3 id="TEXT">TEXT</h3>
 <p><strong>指定消息类型 1，代表一个文本类型</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">const</span> WebSocketMessage.TEXT = <span class="hljs-number">1</span>;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> WebSocketMessage.TEXT = <span class="hljs-number">1</span>;
 </code></pre>
 <hr>
 <h3 id="BINARY">BINARY</h3>
 <p><strong>指定消息类型 2，代表一个二进制类型</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">const</span> WebSocketMessage.BINARY = <span class="hljs-number">2</span>;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> WebSocketMessage.BINARY = <span class="hljs-number">2</span>;
 </code></pre>
 <h2 id="成员属性">成员属性</h2>
 <h3 id="masked">masked</h3>
 <p><strong>Boolean, 查询和读取 websocket 掩码标记，缺省为 true</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">Boolean</span> WebSocketMessage.masked;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Boolean</span> WebSocketMessage.masked;
 </code></pre>
 <hr>
 <h3 id="maxSize">maxSize</h3>
 <p><strong>Integer, 查询和设置最大包尺寸，以字节为单位，缺省为 67108864(64M)</strong></p>
-<pre><code class="lang-JavaScript">Integer WebSocketMessage.maxSize;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer WebSocketMessage.maxSize;
 </code></pre>
 <hr>
 <h3 id="value">value</h3>
 <p><strong>String, 消息的基本内容</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> WebSocketMessage.value;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> WebSocketMessage.value;
 </code></pre>
 <hr>
 <h3 id="params">params</h3>
 <p><strong><a href=list.md.html>List</a>, 消息的基本参数</strong></p>
-<pre><code class="lang-JavaScript">List WebSocketMessage.params;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>List WebSocketMessage.params;
 </code></pre>
 <hr>
 <h3 id="type">type</h3>
 <p><strong>Integer, 消息类型</strong></p>
-<pre><code class="lang-JavaScript">Integer WebSocketMessage.type;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer WebSocketMessage.type;
 </code></pre>
 <hr>
 <h3 id="data">data</h3>
 <p><strong>Value, 查询消息的数据</strong></p>
-<pre><code class="lang-JavaScript">readonly Value WebSocketMessage.data;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly Value WebSocketMessage.data;
 </code></pre>
 <hr>
 <h3 id="body">body</h3>
 <p><strong><a href=seekablestream.md.html>SeekableStream</a>, 包含消息数据部分的流对象</strong></p>
-<pre><code class="lang-JavaScript">SeekableStream WebSocketMessage.body;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>SeekableStream WebSocketMessage.body;
 </code></pre>
 <hr>
 <h3 id="length">length</h3>
 <p><strong>Long, 消息数据部分的长度</strong></p>
-<pre><code class="lang-JavaScript">readonly Long WebSocketMessage.length;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly Long WebSocketMessage.length;
 </code></pre>
 <hr>
 <h3 id="stream">stream</h3>
 <p><strong><a href=stream.md.html>Stream</a>, 查询消息 readFrom 时的流对象</strong></p>
-<pre><code class="lang-JavaScript">readonly Stream WebSocketMessage.stream;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly Stream WebSocketMessage.stream;
 </code></pre>
 <hr>
 <h3 id="response">response</h3>
 <p><strong><a href=message.md.html>Message</a>, 获取响应消息对象</strong></p>
-<pre><code class="lang-JavaScript">readonly Message WebSocketMessage.response;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly Message WebSocketMessage.response;
 </code></pre>
 <hr>
 <h3 id="lastError">lastError</h3>
 <p><strong>String, 查询和设置消息处理的最后错误</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> WebSocketMessage.lastError;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> WebSocketMessage.lastError;
 </code></pre>
 <h2 id="成员函数">成员函数</h2>
 <h3 id="read">read</h3>
 <p><strong>从流内读取指定大小的数据，此方法为 body 相应方法的别名</strong></p>
-<pre><code class="lang-JavaScript">Buffer WebSocketMessage.read(Integer bytes = <span class="hljs-number">-1</span>) <span class="hljs-keyword">async</span>;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Buffer WebSocketMessage.read(Integer bytes = <span class="hljs-number">-1</span>) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -341,7 +345,7 @@
 <hr>
 <h3 id="readAll">readAll</h3>
 <p><strong>从流内读取剩余的全部数据，此方法为 body 相应方法的别名</strong></p>
-<pre><code class="lang-JavaScript">Buffer WebSocketMessage.readAll() <span class="hljs-keyword">async</span>;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Buffer WebSocketMessage.readAll() <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>返回结果:</p>
 <ul>
@@ -350,7 +354,7 @@
 <hr>
 <h3 id="write">write</h3>
 <p><strong>写入给定的数据，此方法为 body 相应方法的别名</strong></p>
-<pre><code class="lang-JavaScript">WebSocketMessage.write(Buffer data) <span class="hljs-keyword">async</span>;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>WebSocketMessage.write(Buffer data) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -359,12 +363,12 @@
 <hr>
 <h3 id="end">end</h3>
 <p><strong>设置当前消息处理结束，<a href=chain.md.html>Chain</a> 处理器不再继续后面的事务</strong></p>
-<pre><code class="lang-JavaScript">WebSocketMessage.end();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>WebSocketMessage.end();
 </code></pre>
 <hr>
 <h3 id="isEnded">isEnded</h3>
 <p><strong>查询当前消息是否结束</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">Boolean</span> WebSocketMessage.isEnded();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Boolean</span> WebSocketMessage.isEnded();
 </code></pre>
 <p>返回结果:</p>
 <ul>
@@ -373,12 +377,12 @@
 <hr>
 <h3 id="clear">clear</h3>
 <p><strong>清除消息的内容</strong></p>
-<pre><code class="lang-JavaScript">WebSocketMessage.clear();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>WebSocketMessage.clear();
 </code></pre>
 <hr>
 <h3 id="sendTo">sendTo</h3>
 <p><strong>发送格式化消息到给定的流对象</strong></p>
-<pre><code class="lang-JavaScript">WebSocketMessage.sendTo(Stream stm) <span class="hljs-keyword">async</span>;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>WebSocketMessage.sendTo(Stream stm) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -387,7 +391,7 @@
 <hr>
 <h3 id="readFrom">readFrom</h3>
 <p><strong>从给定的缓存流对象中读取格式化消息，并解析填充对象</strong></p>
-<pre><code class="lang-JavaScript">WebSocketMessage.readFrom(Stream stm) <span class="hljs-keyword">async</span>;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>WebSocketMessage.readFrom(Stream stm) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -396,12 +400,12 @@
 <hr>
 <h3 id="dispose">dispose</h3>
 <p><strong>强制回收对象，调用此方法后，对象资源将立即释放</strong></p>
-<pre><code class="lang-JavaScript">WebSocketMessage.dispose();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>WebSocketMessage.dispose();
 </code></pre>
 <hr>
 <h3 id="equals">equals</h3>
 <p><strong>比较当前对象与给定的对象是否相等</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">Boolean</span> WebSocketMessage.equals(object expected);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Boolean</span> WebSocketMessage.equals(object expected);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -414,7 +418,7 @@
 <hr>
 <h3 id="toString">toString</h3>
 <p><strong>返回对象的字符串表示，一般返回 &quot;[Native Object]&quot;，对象可以根据自己的特性重新实现</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> WebSocketMessage.toString();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> WebSocketMessage.toString();
 </code></pre>
 <p>返回结果:</p>
 <ul>
@@ -423,7 +427,7 @@
 <hr>
 <h3 id="toJSON">toJSON</h3>
 <p><strong>返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合</strong></p>
-<pre><code class="lang-JavaScript">Value WebSocketMessage.toJSON(<span class="hljs-built_in">String</span> key = <span class="hljs-string">""</span>);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Value WebSocketMessage.toJSON(<span class="hljs-built_in">String</span> key = <span class="hljs-string">""</span>);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -436,7 +440,7 @@
 <hr>
 <h3 id="valueOf">valueOf</h3>
 <p><strong>返回对象本身的数值</strong></p>
-<pre><code class="lang-JavaScript">Value WebSocketMessage.valueOf();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Value WebSocketMessage.valueOf();
 </code></pre>
 <p>返回结果:</p>
 <ul>

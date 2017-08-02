@@ -155,42 +155,43 @@
  </div></div></div>  </div></div><div class=content><div class=social-share data-sites=weibo,twitter data-description=分享></div> <h1 id="模块-coroutine">模块 coroutine</h1>
 <p>并发控制模块</p>
 <p>引用方法：</p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">var</span> coroutine = <span class="hljs-built_in">require</span>(<span class="hljs-string">'coroutine'</span>);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">var</span> coroutine = <span class="hljs-built_in">require</span>(<span class="hljs-string">'coroutine'</span>);
 </code></pre>
 <h2 id="对象">对象</h2>
 <h3 id="Lock">Lock</h3>
 <p><strong>锁对象，参见 <a href=../../object/ifs/lock.md.html>Lock</a></strong></p>
-<pre><code class="lang-JavaScript">Lock coroutine.Lock;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Lock coroutine.Lock;
 </code></pre>
 <hr>
 <h3 id="Semaphore">Semaphore</h3>
 <p><strong>信号量对象，参见 <a href=../../object/ifs/semaphore.md.html>Semaphore</a></strong></p>
-<pre><code class="lang-JavaScript">Semaphore coroutine.Semaphore;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Semaphore coroutine.Semaphore;
 </code></pre>
 <hr>
 <h3 id="Condition">Condition</h3>
 <p><strong>条件变量对象，参见 <a href=../../object/ifs/condition.md.html>Condition</a></strong></p>
-<pre><code class="lang-JavaScript">Condition coroutine.Condition;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Condition coroutine.Condition;
 </code></pre>
 <hr>
 <h3 id="Event">Event</h3>
 <p><strong>事件对象，参见 <a href=../../object/ifs/event.md.html>Event</a></strong></p>
-<pre><code class="lang-JavaScript">Event coroutine.Event;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Event coroutine.Event;
 </code></pre>
 <hr>
 <h3 id="BlockQueue">BlockQueue</h3>
 <p><strong>阻塞队列对象，参见 <a href=../../object/ifs/blockqueue.md.html>BlockQueue</a></strong></p>
-<pre><code class="lang-JavaScript">BlockQueue coroutine.BlockQueue;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>BlockQueue coroutine.BlockQueue;
 </code></pre>
 <hr>
 <h3 id="Worker">Worker</h3>
 <p><strong>独立线程工作对象，参见 <a href=../../object/ifs/worker.md.html>Worker</a></strong></p>
-<pre><code class="lang-JavaScript">Worker coroutine.Worker;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Worker coroutine.Worker;
 </code></pre>
 <h2 id="静态函数">静态函数</h2>
 <h3 id="start">start</h3>
 <p><strong>启动一个纤程并返回纤程对象</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> Fiber coroutine.start(<span class="hljs-built_in">Function</span> func,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> Fiber coroutine.start(<span class="hljs-built_in">Function</span> func,
     ...);
 </code></pre>
 <p>调用参数:</p>
@@ -205,7 +206,8 @@
 <hr>
 <h3 id="parallel">parallel</h3>
 <p><strong>并行执行一组函数，并等待返回</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> <span class="hljs-built_in">Array</span> coroutine.parallel(<span class="hljs-built_in">Array</span> funcs,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Array</span> coroutine.parallel(<span class="hljs-built_in">Array</span> funcs,
     Integer fibers = <span class="hljs-number">-1</span>);
 </code></pre>
 <p>调用参数:</p>
@@ -219,7 +221,9 @@
 </ul>
 <hr>
 <p><strong>并行执行一个函数处理一组数据，并等待返回</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> <span class="hljs-built_in">Array</span> coroutine.parallel(<span class="hljs-built_in">Array</span> datas,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Array</span> coroutine.parallel(<span class="hljs-built_in">Array</span> datas,
     <span class="hljs-built_in">Function</span> func,
     Integer fibers = <span class="hljs-number">-1</span>);
 </code></pre>
@@ -235,7 +239,9 @@
 </ul>
 <hr>
 <p><strong>并行执行一个函数多次，并等待返回</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> <span class="hljs-built_in">Array</span> coroutine.parallel(<span class="hljs-built_in">Function</span> func,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Array</span> coroutine.parallel(<span class="hljs-built_in">Function</span> func,
     Integer num,
     Integer fibers = <span class="hljs-number">-1</span>);
 </code></pre>
@@ -251,7 +257,7 @@
 </ul>
 <hr>
 <p><strong>并行执行一组函数，并等待返回</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> <span class="hljs-built_in">Array</span> coroutine.parallel(...);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Array</span> coroutine.parallel(...);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -264,7 +270,7 @@
 <hr>
 <h3 id="current">current</h3>
 <p><strong>返回当前纤程</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> Fiber coroutine.current();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Fiber coroutine.current();
 </code></pre>
 <p>返回结果:</p>
 <ul>
@@ -273,7 +279,7 @@
 <hr>
 <h3 id="sleep">sleep</h3>
 <p><strong>暂停当前纤程指定的时间</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> coroutine.sleep(Integer ms = <span class="hljs-number">0</span>) <span class="hljs-keyword">async</span>;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> coroutine.sleep(Integer ms = <span class="hljs-number">0</span>) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -282,21 +288,21 @@
 <h2 id="静态属性">静态属性</h2>
 <h3 id="fibers">fibers</h3>
 <p><strong>Array, 返回当前正在运行的全部 fiber 数组</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> readonly <span class="hljs-built_in">Array</span> coroutine.fibers;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly <span class="hljs-built_in">Array</span> coroutine.fibers;
 </code></pre>
 <hr>
 <h3 id="spareFibers">spareFibers</h3>
 <p><strong>Integer, 查询和设置空闲 <a href=../../object/ifs/fiber.md.html>Fiber</a> 数量，服务器抖动较大时可适度增加空闲 <a href=../../object/ifs/fiber.md.html>Fiber</a> 数量。缺省为 256</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> Integer coroutine.spareFibers;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Integer coroutine.spareFibers;
 </code></pre>
 <hr>
 <h3 id="vmid">vmid</h3>
 <p><strong>Integer, 查询当前 <a href=vm.md.html>vm</a> 编号</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> readonly Integer coroutine.vmid;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly Integer coroutine.vmid;
 </code></pre>
 <hr>
 <h3 id="loglevel">loglevel</h3>
 <p><strong>Integer, 修改和查询本 <a href=vm.md.html>vm</a> 的输出级别，用以过滤输出信息，缺省为 <a href=console.md.html#NOTSET>console.NOTSET</a>，全部输出</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> Integer coroutine.loglevel;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Integer coroutine.loglevel;
 </code></pre>
  </div><div class="sidebar hidden-sm hidden-xs"><div id=toc></div></div></div><div class=container><div class=footer><p>&copy; 2017 fibjs.org</p></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="Click to return on the top page" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=../../../../js/common.js></script><script type=text/javascript src=../../../../js/docs.js></script></body></html>

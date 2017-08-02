@@ -155,7 +155,8 @@
  </div></div></div>  </div></div><div class=content><div class=social-share data-sites=weibo,twitter data-description=分享></div> <h1 id="对象-LevelDB">对象 LevelDB</h1>
 <p>LevelDB 数据库对象</p>
 <p>用以创建和管理字典对象，创建方法：</p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">var</span> db = <span class="hljs-built_in">require</span>(<span class="hljs-string">"db"</span>);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">var</span> db = <span class="hljs-built_in">require</span>(<span class="hljs-string">"db"</span>);
 <span class="hljs-keyword">var</span> test = <span class="hljs-keyword">new</span> db.openLevelDB(<span class="hljs-string">"test.db"</span>);
 </code></pre>
 <h2 id="继承关系">继承关系</h2>
@@ -218,7 +219,7 @@
 <h2 id="成员函数">成员函数</h2>
 <h3 id="has">has</h3>
 <p><strong>检查数据库内是否存在指定键值的数据</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">Boolean</span> LevelDB.has(Buffer key) <span class="hljs-keyword">async</span>;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Boolean</span> LevelDB.has(Buffer key) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -231,7 +232,7 @@
 <hr>
 <h3 id="get">get</h3>
 <p><strong>查询指定键值的值</strong></p>
-<pre><code class="lang-JavaScript">Buffer LevelDB.get(Buffer key) <span class="hljs-keyword">async</span>;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Buffer LevelDB.get(Buffer key) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -244,7 +245,7 @@
 <hr>
 <h3 id="mget">mget</h3>
 <p><strong>查询一组指定键值的值</strong></p>
-<pre><code class="lang-JavaScript">List LevelDB.mget(<span class="hljs-built_in">Array</span> keys);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>List LevelDB.mget(<span class="hljs-built_in">Array</span> keys);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -257,7 +258,8 @@
 <hr>
 <h3 id="set">set</h3>
 <p><strong>设定一个键值数据，键值不存在则插入新数据</strong></p>
-<pre><code class="lang-JavaScript">LevelDB.set(Buffer key,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div>LevelDB.set(Buffer key,
     Buffer value) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
@@ -268,7 +270,7 @@
 <hr>
 <h3 id="mset">mset</h3>
 <p><strong>设定一组键值数据，键值不存在则插入新数据</strong></p>
-<pre><code class="lang-JavaScript">LevelDB.mset(<span class="hljs-built_in">Object</span> map);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>LevelDB.mset(<span class="hljs-built_in">Object</span> map);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -277,7 +279,7 @@
 <hr>
 <h3 id="mremove">mremove</h3>
 <p><strong>删除一组指定键值的值</strong></p>
-<pre><code class="lang-JavaScript">LevelDB.mremove(<span class="hljs-built_in">Array</span> keys);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>LevelDB.mremove(<span class="hljs-built_in">Array</span> keys);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -286,7 +288,7 @@
 <hr>
 <h3 id="remove">remove</h3>
 <p><strong>删除指定键值的全部值</strong></p>
-<pre><code class="lang-JavaScript">LevelDB.remove(Buffer key) <span class="hljs-keyword">async</span>;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>LevelDB.remove(Buffer key) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -295,14 +297,19 @@
 <hr>
 <h3 id="forEach">forEach</h3>
 <p><strong>枚举数据库中所有的键值对</strong></p>
-<pre><code class="lang-JavaScript">LevelDB.forEach(<span class="hljs-built_in">Function</span> func);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>LevelDB.forEach(<span class="hljs-built_in">Function</span> func);
 </code></pre>
 <p>调用参数:</p>
 <ul>
 <li>func: Function, 枚举回调函数</li>
 </ul>
 <p>回调函数有两个参数，(value, key)</p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">var</span> db = <span class="hljs-built_in">require</span>(<span class="hljs-string">"db"</span>);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6</div><span class="hljs-keyword">var</span> db = <span class="hljs-built_in">require</span>(<span class="hljs-string">"db"</span>);
 <span class="hljs-keyword">var</span> test = <span class="hljs-keyword">new</span> db.openLevelDB(<span class="hljs-string">"test.db"</span>);
 
 test.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">value, key</span>) </span>{
@@ -312,7 +319,9 @@ test.forEach(<span class="hljs-function"><span class="hljs-keyword">function</sp
 <hr>
 <h3 id="between">between</h3>
 <p><strong>枚举数据库中键值在 from 和 to 之间的键值对</strong></p>
-<pre><code class="lang-JavaScript">LevelDB.between(Buffer <span class="hljs-keyword">from</span>,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div>LevelDB.between(Buffer <span class="hljs-keyword">from</span>,
     Buffer to,
     <span class="hljs-built_in">Function</span> func);
 </code></pre>
@@ -323,7 +332,12 @@ test.forEach(<span class="hljs-function"><span class="hljs-keyword">function</sp
 <li>func: Function, 枚举回调函数</li>
 </ul>
 <p>回调函数有两个参数，(value, key)</p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">var</span> db = <span class="hljs-built_in">require</span>(<span class="hljs-string">"db"</span>);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6</div><span class="hljs-keyword">var</span> db = <span class="hljs-built_in">require</span>(<span class="hljs-string">"db"</span>);
 <span class="hljs-keyword">var</span> test = <span class="hljs-keyword">new</span> db.openLevelDB(<span class="hljs-string">"test.db"</span>);
 
 test.between(<span class="hljs-string">"aaa"</span>, <span class="hljs-string">"bbb"</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">value, key</span>) </span>{
@@ -333,7 +347,7 @@ test.between(<span class="hljs-string">"aaa"</span>, <span class="hljs-string">"
 <hr>
 <h3 id="begin">begin</h3>
 <p><strong>在当前数据库上开启一个事务</strong></p>
-<pre><code class="lang-JavaScript">LevelDB LevelDB.begin();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>LevelDB LevelDB.begin();
 </code></pre>
 <p>返回结果:</p>
 <ul>
@@ -342,22 +356,22 @@ test.between(<span class="hljs-string">"aaa"</span>, <span class="hljs-string">"
 <hr>
 <h3 id="commit">commit</h3>
 <p><strong>提交当前事务</strong></p>
-<pre><code class="lang-JavaScript">LevelDB.commit();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>LevelDB.commit();
 </code></pre>
 <hr>
 <h3 id="close">close</h3>
 <p><strong>关闭当前数据库连接或事务</strong></p>
-<pre><code class="lang-JavaScript">LevelDB.close() <span class="hljs-keyword">async</span>;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>LevelDB.close() <span class="hljs-keyword">async</span>;
 </code></pre>
 <hr>
 <h3 id="dispose">dispose</h3>
 <p><strong>强制回收对象，调用此方法后，对象资源将立即释放</strong></p>
-<pre><code class="lang-JavaScript">LevelDB.dispose();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>LevelDB.dispose();
 </code></pre>
 <hr>
 <h3 id="equals">equals</h3>
 <p><strong>比较当前对象与给定的对象是否相等</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">Boolean</span> LevelDB.equals(object expected);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Boolean</span> LevelDB.equals(object expected);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -370,7 +384,7 @@ test.between(<span class="hljs-string">"aaa"</span>, <span class="hljs-string">"
 <hr>
 <h3 id="toString">toString</h3>
 <p><strong>返回对象的字符串表示，一般返回 &quot;[Native Object]&quot;，对象可以根据自己的特性重新实现</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> LevelDB.toString();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> LevelDB.toString();
 </code></pre>
 <p>返回结果:</p>
 <ul>
@@ -379,7 +393,7 @@ test.between(<span class="hljs-string">"aaa"</span>, <span class="hljs-string">"
 <hr>
 <h3 id="toJSON">toJSON</h3>
 <p><strong>返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合</strong></p>
-<pre><code class="lang-JavaScript">Value LevelDB.toJSON(<span class="hljs-built_in">String</span> key = <span class="hljs-string">""</span>);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Value LevelDB.toJSON(<span class="hljs-built_in">String</span> key = <span class="hljs-string">""</span>);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -392,7 +406,7 @@ test.between(<span class="hljs-string">"aaa"</span>, <span class="hljs-string">"
 <hr>
 <h3 id="valueOf">valueOf</h3>
 <p><strong>返回对象本身的数值</strong></p>
-<pre><code class="lang-JavaScript">Value LevelDB.valueOf();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Value LevelDB.valueOf();
 </code></pre>
 <p>返回结果:</p>
 <ul>

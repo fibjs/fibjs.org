@@ -155,7 +155,8 @@
  </div></div></div>  </div></div><div class=content><div class=social-share data-sites=weibo,twitter data-description=分享></div> <h1 id="对象-LruCache">对象 LruCache</h1>
 <p>LRU(least recently used) 缓存对象</p>
 <p>LruCache 用以维护一个 LRU 缓存，创建方法：</p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">var</span> util = <span class="hljs-built_in">require</span>(<span class="hljs-string">"util"</span>);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">var</span> util = <span class="hljs-built_in">require</span>(<span class="hljs-string">"util"</span>);
 <span class="hljs-keyword">var</span> c = <span class="hljs-keyword">new</span> util.LruCache(<span class="hljs-number">10</span>, <span class="hljs-number">100</span>);
 </code></pre>
 <h2 id="继承关系">继承关系</h2>
@@ -217,7 +218,8 @@
 <h2 id="构造函数">构造函数</h2>
 <h3 id="LruCache">LruCache</h3>
 <p><strong>LruCache 对象构造函数</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">new</span> LruCache(Integer size,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">new</span> LruCache(Integer size,
     Integer timeout = <span class="hljs-number">0</span>);
 </code></pre>
 <p>调用参数:</p>
@@ -228,22 +230,22 @@
 <h2 id="成员属性">成员属性</h2>
 <h3 id="size">size</h3>
 <p><strong>Integer, 查询容器内数值个数</strong></p>
-<pre><code class="lang-JavaScript">readonly Integer LruCache.size;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly Integer LruCache.size;
 </code></pre>
 <hr>
 <h3 id="timeout">timeout</h3>
 <p><strong>Integer, 查询和设置容器内元素失效时间，单位是 ms，小于等于 0 不失效</strong></p>
-<pre><code class="lang-JavaScript">Integer LruCache.timeout;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer LruCache.timeout;
 </code></pre>
 <h2 id="成员函数">成员函数</h2>
 <h3 id="clear">clear</h3>
 <p><strong>清除容器数据</strong></p>
-<pre><code class="lang-JavaScript">LruCache.clear();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>LruCache.clear();
 </code></pre>
 <hr>
 <h3 id="has">has</h3>
 <p><strong>检查容器内是否存在指定键值的数据</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">Boolean</span> LruCache.has(<span class="hljs-built_in">String</span> name);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Boolean</span> LruCache.has(<span class="hljs-built_in">String</span> name);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -256,7 +258,7 @@
 <hr>
 <h3 id="get">get</h3>
 <p><strong>查询指定键值的值</strong></p>
-<pre><code class="lang-JavaScript">Value LruCache.get(<span class="hljs-built_in">String</span> name);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Value LruCache.get(<span class="hljs-built_in">String</span> name);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -268,7 +270,8 @@
 </ul>
 <hr>
 <p><strong>查询指定键值的值，若不存在或过期，则调用回调函数更新数据</strong></p>
-<pre><code class="lang-JavaScript">Value LruCache.get(<span class="hljs-built_in">String</span> name,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div>Value LruCache.get(<span class="hljs-built_in">String</span> name,
     <span class="hljs-built_in">Function</span> updater);
 </code></pre>
 <p>调用参数:</p>
@@ -283,7 +286,8 @@
 <hr>
 <h3 id="set">set</h3>
 <p><strong>设定一个键值数据，键值不存在则插入一条新数据</strong></p>
-<pre><code class="lang-JavaScript">LruCache.set(<span class="hljs-built_in">String</span> name,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div>LruCache.set(<span class="hljs-built_in">String</span> name,
     Value value);
 </code></pre>
 <p>调用参数:</p>
@@ -293,7 +297,7 @@
 </ul>
 <hr>
 <p><strong>设定一个键值数据，键值不存在则插入新数据</strong></p>
-<pre><code class="lang-JavaScript">LruCache.set(<span class="hljs-built_in">Object</span> map);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>LruCache.set(<span class="hljs-built_in">Object</span> map);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -302,7 +306,7 @@
 <hr>
 <h3 id="remove">remove</h3>
 <p><strong>删除指定键值的全部值</strong></p>
-<pre><code class="lang-JavaScript">LruCache.remove(<span class="hljs-built_in">String</span> name);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>LruCache.remove(<span class="hljs-built_in">String</span> name);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -311,7 +315,7 @@
 <hr>
 <h3 id="isEmpty">isEmpty</h3>
 <p><strong>检查容器是否为空</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">Boolean</span> LruCache.isEmpty();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Boolean</span> LruCache.isEmpty();
 </code></pre>
 <p>返回结果:</p>
 <ul>
@@ -320,12 +324,12 @@
 <hr>
 <h3 id="dispose">dispose</h3>
 <p><strong>强制回收对象，调用此方法后，对象资源将立即释放</strong></p>
-<pre><code class="lang-JavaScript">LruCache.dispose();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>LruCache.dispose();
 </code></pre>
 <hr>
 <h3 id="equals">equals</h3>
 <p><strong>比较当前对象与给定的对象是否相等</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">Boolean</span> LruCache.equals(object expected);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Boolean</span> LruCache.equals(object expected);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -338,7 +342,7 @@
 <hr>
 <h3 id="toString">toString</h3>
 <p><strong>返回对象的字符串表示，一般返回 &quot;[Native Object]&quot;，对象可以根据自己的特性重新实现</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> LruCache.toString();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> LruCache.toString();
 </code></pre>
 <p>返回结果:</p>
 <ul>
@@ -347,7 +351,7 @@
 <hr>
 <h3 id="toJSON">toJSON</h3>
 <p><strong>返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合</strong></p>
-<pre><code class="lang-JavaScript">Value LruCache.toJSON(<span class="hljs-built_in">String</span> key = <span class="hljs-string">""</span>);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Value LruCache.toJSON(<span class="hljs-built_in">String</span> key = <span class="hljs-string">""</span>);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -360,7 +364,7 @@
 <hr>
 <h3 id="valueOf">valueOf</h3>
 <p><strong>返回对象本身的数值</strong></p>
-<pre><code class="lang-JavaScript">Value LruCache.valueOf();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Value LruCache.valueOf();
 </code></pre>
 <p>返回结果:</p>
 <ul>

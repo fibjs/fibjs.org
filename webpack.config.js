@@ -61,12 +61,28 @@ function styleLoaders(options) {
 
 marked.setOptions({
     highlight: function (code, lang) {
+        var res;
+
         if (lang)
             try {
-                return highlight.highlight(lang, code).value;
+                res = highlight.highlight(lang, code).value;
             } catch (e) {}
 
-        return highlight.highlightAuto(code).value;
+        if (!res)
+            try {
+                res = highlight.highlightAuto(code).value;
+            } catch (e) {}
+
+        if (!res)
+            res = code;
+
+        var lines = res.split('\n').length;
+        var nums = [];
+
+        for (var i = 0; i < lines; i++)
+            nums.push(i + 1);
+
+        return '<div class="line-numbers">' + nums.join('\n') + '</div>' + res;
     }
 });
 

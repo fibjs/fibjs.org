@@ -155,7 +155,9 @@
  </div></div></div>  </div></div><div class=content><div class=social-share data-sites=weibo,twitter data-description=分享></div> <h1 id="对象-WebSocket">对象 WebSocket</h1>
 <p>WebSocket 包协议转换处理器</p>
 <p>用以将 Http 协议转换为 WebSocket 包协议消息。创建方式：</p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">var</span> ws = <span class="hljs-built_in">require</span>(<span class="hljs-string">"ws"</span>);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">var</span> ws = <span class="hljs-built_in">require</span>(<span class="hljs-string">"ws"</span>);
 
 <span class="hljs-keyword">var</span> sock = <span class="hljs-keyword">new</span> ws.WebSocket(...);
 </code></pre>
@@ -254,7 +256,9 @@
 <h2 id="构造函数">构造函数</h2>
 <h3 id="WebSocket">WebSocket</h3>
 <p><strong>WebSocket 构造函数</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">new</span> WebSocket(<span class="hljs-built_in">String</span> url,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">new</span> WebSocket(<span class="hljs-built_in">String</span> url,
     <span class="hljs-built_in">String</span> protocol = <span class="hljs-string">""</span>,
     <span class="hljs-built_in">String</span> origin = <span class="hljs-string">""</span>);
 </code></pre>
@@ -267,52 +271,53 @@
 <h2 id="静态属性">静态属性</h2>
 <h3 id="defaultMaxListeners">defaultMaxListeners</h3>
 <p><strong>Integer, 默认全局最大监听器数</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> Integer WebSocket.defaultMaxListeners;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Integer WebSocket.defaultMaxListeners;
 </code></pre>
 <h2 id="成员属性">成员属性</h2>
 <h3 id="url">url</h3>
 <p><strong>String, 查询当前对象连接的服务器</strong></p>
-<pre><code class="lang-JavaScript">readonly <span class="hljs-built_in">String</span> WebSocket.url;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly <span class="hljs-built_in">String</span> WebSocket.url;
 </code></pre>
 <hr>
 <h3 id="protocol">protocol</h3>
 <p><strong>String, 查询当前对象连接时的协议</strong></p>
-<pre><code class="lang-JavaScript">readonly <span class="hljs-built_in">String</span> WebSocket.protocol;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly <span class="hljs-built_in">String</span> WebSocket.protocol;
 </code></pre>
 <hr>
 <h3 id="origin">origin</h3>
 <p><strong>String, 查询当前对象连接的源</strong></p>
-<pre><code class="lang-JavaScript">readonly <span class="hljs-built_in">String</span> WebSocket.origin;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly <span class="hljs-built_in">String</span> WebSocket.origin;
 </code></pre>
 <hr>
 <h3 id="readyState">readyState</h3>
 <p><strong>Integer, 查询当前对象的连接状态，参见 <a href=../../module/ifs/ws.md.html>ws</a></strong></p>
-<pre><code class="lang-JavaScript">readonly Integer WebSocket.readyState;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly Integer WebSocket.readyState;
 </code></pre>
 <hr>
 <h3 id="onopen">onopen</h3>
 <p><strong>Function, 查询和绑定连接成功事件，相当于 on(&quot;open&quot;, func);</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">Function</span> WebSocket.onopen;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Function</span> WebSocket.onopen;
 </code></pre>
 <hr>
 <h3 id="onmessage">onmessage</h3>
 <p><strong>Function, 查询和绑定接受到对方消息的事件，相当于 on(&quot;message&quot;, func);</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">Function</span> WebSocket.onmessage;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Function</span> WebSocket.onmessage;
 </code></pre>
 <hr>
 <h3 id="onclose">onclose</h3>
 <p><strong>Function, 查询和绑定连接关闭的事件，相当于 on(&quot;close&quot;, func);</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">Function</span> WebSocket.onclose;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Function</span> WebSocket.onclose;
 </code></pre>
 <hr>
 <h3 id="onerror">onerror</h3>
 <p><strong>Function, 查询和绑定错误发生的事件，相当于 on(&quot;error&quot;, func);</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">Function</span> WebSocket.onerror;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Function</span> WebSocket.onerror;
 </code></pre>
 <h2 id="成员函数">成员函数</h2>
 <h3 id="close">close</h3>
 <p><strong>关闭当前连接，此操作会向对方发送 CLOSE 数据包，并等待对方响应</strong></p>
-<pre><code class="lang-JavaScript">WebSocket.close(Integer code = <span class="hljs-number">1000</span>,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div>WebSocket.close(Integer code = <span class="hljs-number">1000</span>,
     <span class="hljs-built_in">String</span> reason = <span class="hljs-string">""</span>);
 </code></pre>
 <p>调用参数:</p>
@@ -323,7 +328,7 @@
 <hr>
 <h3 id="send">send</h3>
 <p><strong>向对方发送一段文本</strong></p>
-<pre><code class="lang-JavaScript">WebSocket.send(<span class="hljs-built_in">String</span> data);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>WebSocket.send(<span class="hljs-built_in">String</span> data);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -331,7 +336,7 @@
 </ul>
 <hr>
 <p><strong>向对方发送一段二进制数据</strong></p>
-<pre><code class="lang-JavaScript">WebSocket.send(Buffer data);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>WebSocket.send(Buffer data);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -340,7 +345,8 @@
 <hr>
 <h3 id="on">on</h3>
 <p><strong>绑定一个事件处理函数到对象</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">Object</span> WebSocket.on(<span class="hljs-built_in">String</span> ev,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-built_in">Object</span> WebSocket.on(<span class="hljs-built_in">String</span> ev,
     <span class="hljs-built_in">Function</span> func);
 </code></pre>
 <p>调用参数:</p>
@@ -354,7 +360,7 @@
 </ul>
 <hr>
 <p><strong>绑定一个事件处理函数到对象</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">Object</span> WebSocket.on(<span class="hljs-built_in">Object</span> map);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> WebSocket.on(<span class="hljs-built_in">Object</span> map);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -367,7 +373,8 @@
 <hr>
 <h3 id="addListener">addListener</h3>
 <p><strong>绑定一个事件处理函数到对象</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">Object</span> WebSocket.addListener(<span class="hljs-built_in">String</span> ev,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-built_in">Object</span> WebSocket.addListener(<span class="hljs-built_in">String</span> ev,
     <span class="hljs-built_in">Function</span> func);
 </code></pre>
 <p>调用参数:</p>
@@ -381,7 +388,7 @@
 </ul>
 <hr>
 <p><strong>绑定一个事件处理函数到对象</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">Object</span> WebSocket.addListener(<span class="hljs-built_in">Object</span> map);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> WebSocket.addListener(<span class="hljs-built_in">Object</span> map);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -394,7 +401,8 @@
 <hr>
 <h3 id="prependListener">prependListener</h3>
 <p><strong>绑定一个事件处理函数到对象起始</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">Object</span> WebSocket.prependListener(<span class="hljs-built_in">String</span> ev,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-built_in">Object</span> WebSocket.prependListener(<span class="hljs-built_in">String</span> ev,
     <span class="hljs-built_in">Function</span> func);
 </code></pre>
 <p>调用参数:</p>
@@ -408,7 +416,7 @@
 </ul>
 <hr>
 <p><strong>绑定一个事件处理函数到对象起始</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">Object</span> WebSocket.prependListener(<span class="hljs-built_in">Object</span> map);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> WebSocket.prependListener(<span class="hljs-built_in">Object</span> map);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -421,7 +429,8 @@
 <hr>
 <h3 id="once">once</h3>
 <p><strong>绑定一个一次性事件处理函数到对象，一次性处理函数只会触发一次</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">Object</span> WebSocket.once(<span class="hljs-built_in">String</span> ev,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-built_in">Object</span> WebSocket.once(<span class="hljs-built_in">String</span> ev,
     <span class="hljs-built_in">Function</span> func);
 </code></pre>
 <p>调用参数:</p>
@@ -435,7 +444,7 @@
 </ul>
 <hr>
 <p><strong>绑定一个一次性事件处理函数到对象，一次性处理函数只会触发一次</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">Object</span> WebSocket.once(<span class="hljs-built_in">Object</span> map);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> WebSocket.once(<span class="hljs-built_in">Object</span> map);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -448,7 +457,8 @@
 <hr>
 <h3 id="prependOnceListener">prependOnceListener</h3>
 <p><strong>绑定一个事件处理函数到对象起始</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">Object</span> WebSocket.prependOnceListener(<span class="hljs-built_in">String</span> ev,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-built_in">Object</span> WebSocket.prependOnceListener(<span class="hljs-built_in">String</span> ev,
     <span class="hljs-built_in">Function</span> func);
 </code></pre>
 <p>调用参数:</p>
@@ -462,7 +472,7 @@
 </ul>
 <hr>
 <p><strong>绑定一个事件处理函数到对象起始</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">Object</span> WebSocket.prependOnceListener(<span class="hljs-built_in">Object</span> map);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> WebSocket.prependOnceListener(<span class="hljs-built_in">Object</span> map);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -475,7 +485,8 @@
 <hr>
 <h3 id="off">off</h3>
 <p><strong>从对象处理队列中取消指定函数</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">Object</span> WebSocket.off(<span class="hljs-built_in">String</span> ev,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-built_in">Object</span> WebSocket.off(<span class="hljs-built_in">String</span> ev,
     <span class="hljs-built_in">Function</span> func);
 </code></pre>
 <p>调用参数:</p>
@@ -489,7 +500,7 @@
 </ul>
 <hr>
 <p><strong>取消对象处理队列中的全部函数</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">Object</span> WebSocket.off(<span class="hljs-built_in">String</span> ev);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> WebSocket.off(<span class="hljs-built_in">String</span> ev);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -501,7 +512,7 @@
 </ul>
 <hr>
 <p><strong>从对象处理队列中取消指定函数</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">Object</span> WebSocket.off(<span class="hljs-built_in">Object</span> map);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> WebSocket.off(<span class="hljs-built_in">Object</span> map);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -514,7 +525,8 @@
 <hr>
 <h3 id="removeListener">removeListener</h3>
 <p><strong>从对象处理队列中取消指定函数</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">Object</span> WebSocket.removeListener(<span class="hljs-built_in">String</span> ev,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-built_in">Object</span> WebSocket.removeListener(<span class="hljs-built_in">String</span> ev,
     <span class="hljs-built_in">Function</span> func);
 </code></pre>
 <p>调用参数:</p>
@@ -528,7 +540,7 @@
 </ul>
 <hr>
 <p><strong>取消对象处理队列中的全部函数</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">Object</span> WebSocket.removeListener(<span class="hljs-built_in">String</span> ev);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> WebSocket.removeListener(<span class="hljs-built_in">String</span> ev);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -540,7 +552,7 @@
 </ul>
 <hr>
 <p><strong>从对象处理队列中取消指定函数</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">Object</span> WebSocket.removeListener(<span class="hljs-built_in">Object</span> map);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> WebSocket.removeListener(<span class="hljs-built_in">Object</span> map);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -553,7 +565,7 @@
 <hr>
 <h3 id="removeAllListeners">removeAllListeners</h3>
 <p><strong>从对象处理队列中取消所有事件的所有监听器， 如果指定事件，则移除指定事件的所有监听器。</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">Object</span> WebSocket.removeAllListeners(<span class="hljs-built_in">Array</span> evs = []);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> WebSocket.removeAllListeners(<span class="hljs-built_in">Array</span> evs = []);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -566,7 +578,7 @@
 <hr>
 <h3 id="setMaxListeners">setMaxListeners</h3>
 <p><strong>监听器的默认限制的数量，仅用于兼容</strong></p>
-<pre><code class="lang-JavaScript">WebSocket.setMaxListeners(Integer n);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>WebSocket.setMaxListeners(Integer n);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -575,7 +587,7 @@
 <hr>
 <h3 id="getMaxListeners">getMaxListeners</h3>
 <p><strong>获取监听器的默认限制的数量，仅用于兼容</strong></p>
-<pre><code class="lang-JavaScript">Integer WebSocket.getMaxListeners();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer WebSocket.getMaxListeners();
 </code></pre>
 <p>返回结果:</p>
 <ul>
@@ -584,7 +596,7 @@
 <hr>
 <h3 id="listeners">listeners</h3>
 <p><strong>查询对象指定事件的监听器数组</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">Array</span> WebSocket.listeners(<span class="hljs-built_in">String</span> ev);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Array</span> WebSocket.listeners(<span class="hljs-built_in">String</span> ev);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -597,7 +609,7 @@
 <hr>
 <h3 id="listenerCount">listenerCount</h3>
 <p><strong>查询对象指定事件的监听器数量</strong></p>
-<pre><code class="lang-JavaScript">Integer WebSocket.listenerCount(<span class="hljs-built_in">String</span> ev);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer WebSocket.listenerCount(<span class="hljs-built_in">String</span> ev);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -610,7 +622,7 @@
 <hr>
 <h3 id="eventNames">eventNames</h3>
 <p><strong>查询监听器事件名称</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">Array</span> WebSocket.eventNames();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Array</span> WebSocket.eventNames();
 </code></pre>
 <p>返回结果:</p>
 <ul>
@@ -619,7 +631,8 @@
 <hr>
 <h3 id="emit">emit</h3>
 <p><strong>主动触发一个事件</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">Boolean</span> WebSocket.emit(<span class="hljs-built_in">String</span> ev,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-built_in">Boolean</span> WebSocket.emit(<span class="hljs-built_in">String</span> ev,
     ...);
 </code></pre>
 <p>调用参数:</p>
@@ -634,12 +647,12 @@
 <hr>
 <h3 id="dispose">dispose</h3>
 <p><strong>强制回收对象，调用此方法后，对象资源将立即释放</strong></p>
-<pre><code class="lang-JavaScript">WebSocket.dispose();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>WebSocket.dispose();
 </code></pre>
 <hr>
 <h3 id="equals">equals</h3>
 <p><strong>比较当前对象与给定的对象是否相等</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">Boolean</span> WebSocket.equals(object expected);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Boolean</span> WebSocket.equals(object expected);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -652,7 +665,7 @@
 <hr>
 <h3 id="toString">toString</h3>
 <p><strong>返回对象的字符串表示，一般返回 &quot;[Native Object]&quot;，对象可以根据自己的特性重新实现</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> WebSocket.toString();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> WebSocket.toString();
 </code></pre>
 <p>返回结果:</p>
 <ul>
@@ -661,7 +674,7 @@
 <hr>
 <h3 id="toJSON">toJSON</h3>
 <p><strong>返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合</strong></p>
-<pre><code class="lang-JavaScript">Value WebSocket.toJSON(<span class="hljs-built_in">String</span> key = <span class="hljs-string">""</span>);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Value WebSocket.toJSON(<span class="hljs-built_in">String</span> key = <span class="hljs-string">""</span>);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -674,7 +687,7 @@
 <hr>
 <h3 id="valueOf">valueOf</h3>
 <p><strong>返回对象本身的数值</strong></p>
-<pre><code class="lang-JavaScript">Value WebSocket.valueOf();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Value WebSocket.valueOf();
 </code></pre>
 <p>返回结果:</p>
 <ul>

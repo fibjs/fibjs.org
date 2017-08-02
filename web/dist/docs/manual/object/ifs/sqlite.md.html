@@ -155,7 +155,7 @@
  </div></div></div>  </div></div><div class=content><div class=social-share data-sites=weibo,twitter data-description=分享></div> <h1 id="对象-SQLite">对象 SQLite</h1>
 <p>sqlite 数据库连接对象</p>
 <p>使用 <a href=../../module/ifs/db.md.html#open>db.open</a> 或 <a href=../../module/ifs/db.md.html#openSQLite>db.openSQLite</a> 创建，创建方式：</p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">var</span> slite = db.openSQLite(<span class="hljs-string">"sqlite:/path/to/db"</span>);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">var</span> slite = db.openSQLite(<span class="hljs-string">"sqlite:/path/to/db"</span>);
 </code></pre>
 <h2 id="继承关系">继承关系</h2>
 <div class="dot">
@@ -234,22 +234,22 @@
 <h2 id="成员属性">成员属性</h2>
 <h3 id="fileName">fileName</h3>
 <p><strong>String, 当前数据库文件名</strong></p>
-<pre><code class="lang-JavaScript">readonly <span class="hljs-built_in">String</span> SQLite.fileName;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly <span class="hljs-built_in">String</span> SQLite.fileName;
 </code></pre>
 <hr>
 <h3 id="timeout">timeout</h3>
 <p><strong>Integer, 查询和设置数据库超时时间，以毫秒为单位</strong></p>
-<pre><code class="lang-JavaScript">Integer SQLite.timeout;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer SQLite.timeout;
 </code></pre>
 <hr>
 <h3 id="type">type</h3>
 <p><strong>String, 查询当前连接数据库类型</strong></p>
-<pre><code class="lang-JavaScript">readonly <span class="hljs-built_in">String</span> SQLite.type;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly <span class="hljs-built_in">String</span> SQLite.type;
 </code></pre>
 <h2 id="成员函数">成员函数</h2>
 <h3 id="backup">backup</h3>
 <p><strong>备份当前数据库到新文件</strong></p>
-<pre><code class="lang-JavaScript">SQLite.backup(<span class="hljs-built_in">String</span> fileName) <span class="hljs-keyword">async</span>;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>SQLite.backup(<span class="hljs-built_in">String</span> fileName) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -258,27 +258,27 @@
 <hr>
 <h3 id="close">close</h3>
 <p><strong>关闭当前数据库连接</strong></p>
-<pre><code class="lang-JavaScript">SQLite.close() <span class="hljs-keyword">async</span>;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>SQLite.close() <span class="hljs-keyword">async</span>;
 </code></pre>
 <hr>
 <h3 id="begin">begin</h3>
 <p><strong>在当前数据库连接上启动一个事务</strong></p>
-<pre><code class="lang-JavaScript">SQLite.begin() <span class="hljs-keyword">async</span>;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>SQLite.begin() <span class="hljs-keyword">async</span>;
 </code></pre>
 <hr>
 <h3 id="commit">commit</h3>
 <p><strong>提交当前数据库连接上的事务</strong></p>
-<pre><code class="lang-JavaScript">SQLite.commit() <span class="hljs-keyword">async</span>;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>SQLite.commit() <span class="hljs-keyword">async</span>;
 </code></pre>
 <hr>
 <h3 id="rollback">rollback</h3>
 <p><strong>回滚当前数据库连接上的事务</strong></p>
-<pre><code class="lang-JavaScript">SQLite.rollback() <span class="hljs-keyword">async</span>;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>SQLite.rollback() <span class="hljs-keyword">async</span>;
 </code></pre>
 <hr>
 <h3 id="trans">trans</h3>
 <p><strong>进入事务执行一个函数，并根据函数执行情况提交或者回滚</strong></p>
-<pre><code class="lang-JavaScript">SQLite.trans(<span class="hljs-built_in">Function</span> func);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>SQLite.trans(<span class="hljs-built_in">Function</span> func);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -293,7 +293,7 @@
 <hr>
 <h3 id="execute">execute</h3>
 <p><strong>执行一个 sql 命令，并返回执行结果</strong></p>
-<pre><code class="lang-JavaScript">DBResult SQLite.execute(<span class="hljs-built_in">String</span> sql) <span class="hljs-keyword">async</span>;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>DBResult SQLite.execute(<span class="hljs-built_in">String</span> sql) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -305,7 +305,8 @@
 </ul>
 <hr>
 <p><strong>执行一个 sql 命令，并返回执行结果，可根据参数格式化字符串</strong></p>
-<pre><code class="lang-JavaScript">DBResult SQLite.execute(<span class="hljs-built_in">String</span> sql,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div>DBResult SQLite.execute(<span class="hljs-built_in">String</span> sql,
     ...);
 </code></pre>
 <p>调用参数:</p>
@@ -320,7 +321,8 @@
 <hr>
 <h3 id="format">format</h3>
 <p><strong>格式化一个 sql 命令，并返回格式化结果</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> SQLite.format(<span class="hljs-built_in">String</span> sql,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-built_in">String</span> SQLite.format(<span class="hljs-built_in">String</span> sql,
     ...);
 </code></pre>
 <p>调用参数:</p>
@@ -335,12 +337,12 @@
 <hr>
 <h3 id="dispose">dispose</h3>
 <p><strong>强制回收对象，调用此方法后，对象资源将立即释放</strong></p>
-<pre><code class="lang-JavaScript">SQLite.dispose();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>SQLite.dispose();
 </code></pre>
 <hr>
 <h3 id="equals">equals</h3>
 <p><strong>比较当前对象与给定的对象是否相等</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">Boolean</span> SQLite.equals(object expected);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Boolean</span> SQLite.equals(object expected);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -353,7 +355,7 @@
 <hr>
 <h3 id="toString">toString</h3>
 <p><strong>返回对象的字符串表示，一般返回 &quot;[Native Object]&quot;，对象可以根据自己的特性重新实现</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> SQLite.toString();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> SQLite.toString();
 </code></pre>
 <p>返回结果:</p>
 <ul>
@@ -362,7 +364,7 @@
 <hr>
 <h3 id="toJSON">toJSON</h3>
 <p><strong>返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合</strong></p>
-<pre><code class="lang-JavaScript">Value SQLite.toJSON(<span class="hljs-built_in">String</span> key = <span class="hljs-string">""</span>);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Value SQLite.toJSON(<span class="hljs-built_in">String</span> key = <span class="hljs-string">""</span>);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -375,7 +377,7 @@
 <hr>
 <h3 id="valueOf">valueOf</h3>
 <p><strong>返回对象本身的数值</strong></p>
-<pre><code class="lang-JavaScript">Value SQLite.valueOf();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Value SQLite.valueOf();
 </code></pre>
 <p>返回结果:</p>
 <ul>

@@ -160,7 +160,27 @@
 <p>为了防止竞争，每个条件变量都需要一个<a href=lock.md.html>Lock</a>的配合（<a href=lock.md.html>Lock</a>可自行显式创建并传递进来，也可交由fibjs为您创建）</p>
 <p>通过使用条件变量，可以利用一个条件变量控制一批纤程的开关；</p>
 <p>以下是两个纤程调度的实例：</p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">var</span> coroutine = <span class="hljs-built_in">require</span>(<span class="hljs-string">"coroutine"</span>);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21</div><span class="hljs-keyword">var</span> coroutine = <span class="hljs-built_in">require</span>(<span class="hljs-string">"coroutine"</span>);
 <span class="hljs-keyword">var</span> cond = <span class="hljs-keyword">new</span> coroutine.Condition();
 <span class="hljs-keyword">var</span> ready = <span class="hljs-literal">false</span>;
 <span class="hljs-keyword">var</span> state = <span class="hljs-string">"ready"</span>;
@@ -183,7 +203,8 @@ coroutine.sleep();
 <span class="hljs-built_in">console</span>.log(state);
 </code></pre>
 <p>will output:</p>
-<pre><code class="lang-sh">ready
+<pre><code class="lang-sh"><div class="line-numbers">1
+2</div>ready
 go
 </code></pre>
 <h2 id="继承关系">继承关系</h2>
@@ -260,11 +281,11 @@ go
 <h2 id="构造函数">构造函数</h2>
 <h3 id="Condition">Condition</h3>
 <p><strong>条件变量构造函数（条件变量所需的锁由fibjs内部构造）</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">new</span> Condition();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">new</span> Condition();
 </code></pre>
 <hr>
 <p><strong>条件变量构造函数</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">new</span> Condition(Lock lock);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">new</span> Condition(Lock lock);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -273,22 +294,22 @@ go
 <h2 id="成员函数">成员函数</h2>
 <h3 id="wait">wait</h3>
 <p><strong>使纤程进入阻塞状态</strong></p>
-<pre><code class="lang-JavaScript">Condition.wait();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Condition.wait();
 </code></pre>
 <hr>
 <h3 id="notify">notify</h3>
 <p><strong>通知一个被阻塞的纤程（最后加入纤程池的）向下继续执行</strong></p>
-<pre><code class="lang-JavaScript">Condition.notify();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Condition.notify();
 </code></pre>
 <hr>
 <h3 id="notifyAll">notifyAll</h3>
 <p><strong>通知所有被阻塞的纤程向下继续执行</strong></p>
-<pre><code class="lang-JavaScript">Condition.notifyAll();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Condition.notifyAll();
 </code></pre>
 <hr>
 <h3 id="acquire">acquire</h3>
 <p><strong>获取锁的拥有权</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">Boolean</span> Condition.acquire(<span class="hljs-built_in">Boolean</span> blocking = <span class="hljs-literal">true</span>);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Boolean</span> Condition.acquire(<span class="hljs-built_in">Boolean</span> blocking = <span class="hljs-literal">true</span>);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -304,13 +325,13 @@ go
 <hr>
 <h3 id="release">release</h3>
 <p><strong>释放锁的拥有权</strong></p>
-<pre><code class="lang-JavaScript">Condition.release();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Condition.release();
 </code></pre>
 <p>此方法将释放对锁的拥有权，如果当前纤程未拥有锁，此方法将抛出错误。</p>
 <hr>
 <h3 id="count">count</h3>
 <p><strong>查询当前等待任务数</strong></p>
-<pre><code class="lang-JavaScript">Integer Condition.count();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer Condition.count();
 </code></pre>
 <p>返回结果:</p>
 <ul>
@@ -319,12 +340,12 @@ go
 <hr>
 <h3 id="dispose">dispose</h3>
 <p><strong>强制回收对象，调用此方法后，对象资源将立即释放</strong></p>
-<pre><code class="lang-JavaScript">Condition.dispose();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Condition.dispose();
 </code></pre>
 <hr>
 <h3 id="equals">equals</h3>
 <p><strong>比较当前对象与给定的对象是否相等</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">Boolean</span> Condition.equals(object expected);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Boolean</span> Condition.equals(object expected);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -337,7 +358,7 @@ go
 <hr>
 <h3 id="toString">toString</h3>
 <p><strong>返回对象的字符串表示，一般返回 &quot;[Native Object]&quot;，对象可以根据自己的特性重新实现</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> Condition.toString();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> Condition.toString();
 </code></pre>
 <p>返回结果:</p>
 <ul>
@@ -346,7 +367,7 @@ go
 <hr>
 <h3 id="toJSON">toJSON</h3>
 <p><strong>返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合</strong></p>
-<pre><code class="lang-JavaScript">Value Condition.toJSON(<span class="hljs-built_in">String</span> key = <span class="hljs-string">""</span>);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Value Condition.toJSON(<span class="hljs-built_in">String</span> key = <span class="hljs-string">""</span>);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -359,7 +380,7 @@ go
 <hr>
 <h3 id="valueOf">valueOf</h3>
 <p><strong>返回对象本身的数值</strong></p>
-<pre><code class="lang-JavaScript">Value Condition.valueOf();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Value Condition.valueOf();
 </code></pre>
 <p>返回结果:</p>
 <ul>

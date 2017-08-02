@@ -155,7 +155,7 @@
  </div></div></div>  </div></div><div class=content><div class=social-share data-sites=weibo,twitter data-description=分享></div> <h1 id="对象-MongoDB">对象 MongoDB</h1>
 <p>mongodb 数据库连接对象</p>
 <p>使用 <a href=../../module/ifs/db.md.html#open>db.open</a> 或 <a href=../../module/ifs/db.md.html#openMongoDB>db.openMongoDB</a> 创建，创建方式：</p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">var</span> mdb = db.openMongoDB(<span class="hljs-string">"mongodb://host/db"</span>);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">var</span> mdb = db.openMongoDB(<span class="hljs-string">"mongodb://host/db"</span>);
 </code></pre>
 <h2 id="继承关系">继承关系</h2>
 <div class="dot">
@@ -212,20 +212,20 @@
 
 <h2 id="下标操作">下标操作</h2>
 <p><strong>快速获取指定集合访问对象</strong></p>
-<pre><code class="lang-JavaScript">readonly MongoCollection MongoDB[<span class="hljs-built_in">String</span>];
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly MongoCollection MongoDB[<span class="hljs-built_in">String</span>];
 </code></pre>
 <p>用于使用属性快速获取集合对象，例如：</p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">var</span> test = mdb.test;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">var</span> test = mdb.test;
 </code></pre>
 <h2 id="成员属性">成员属性</h2>
 <h3 id="fs">fs</h3>
 <p><strong><a href=gridfs.md.html>GridFS</a>, 获取 <a href=gridfs.md.html>GridFS</a> 访问对象</strong></p>
-<pre><code class="lang-JavaScript">readonly GridFS MongoDB.fs;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly GridFS MongoDB.fs;
 </code></pre>
 <h2 id="成员函数">成员函数</h2>
 <h3 id="getCollection">getCollection</h3>
 <p><strong>获取指定集合访问对象</strong></p>
-<pre><code class="lang-JavaScript">MongoCollection MongoDB.getCollection(<span class="hljs-built_in">String</span> name);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>MongoCollection MongoDB.getCollection(<span class="hljs-built_in">String</span> name);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -238,7 +238,7 @@
 <hr>
 <h3 id="runCommand">runCommand</h3>
 <p><strong>指定一个 MongoDB 数据库命令</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">Object</span> MongoDB.runCommand(<span class="hljs-built_in">Object</span> cmd);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> MongoDB.runCommand(<span class="hljs-built_in">Object</span> cmd);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -250,7 +250,8 @@
 </ul>
 <hr>
 <p><strong>指定一个简单的 MongoDB 数据库命令</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">Object</span> MongoDB.runCommand(<span class="hljs-built_in">String</span> cmd,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-built_in">Object</span> MongoDB.runCommand(<span class="hljs-built_in">String</span> cmd,
     Value arg);
 </code></pre>
 <p>调用参数:</p>
@@ -265,7 +266,7 @@
 <hr>
 <h3 id="oid">oid</h3>
 <p><strong>生成一个 mongodb _objectid 对象</strong></p>
-<pre><code class="lang-JavaScript">MongoID MongoDB.oid(<span class="hljs-built_in">String</span> hexStr = <span class="hljs-string">""</span>);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>MongoID MongoDB.oid(<span class="hljs-built_in">String</span> hexStr = <span class="hljs-string">""</span>);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -278,17 +279,17 @@
 <hr>
 <h3 id="close">close</h3>
 <p><strong>关闭当前数据库连接</strong></p>
-<pre><code class="lang-JavaScript">MongoDB.close() <span class="hljs-keyword">async</span>;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>MongoDB.close() <span class="hljs-keyword">async</span>;
 </code></pre>
 <hr>
 <h3 id="dispose">dispose</h3>
 <p><strong>强制回收对象，调用此方法后，对象资源将立即释放</strong></p>
-<pre><code class="lang-JavaScript">MongoDB.dispose();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>MongoDB.dispose();
 </code></pre>
 <hr>
 <h3 id="equals">equals</h3>
 <p><strong>比较当前对象与给定的对象是否相等</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">Boolean</span> MongoDB.equals(object expected);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Boolean</span> MongoDB.equals(object expected);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -301,7 +302,7 @@
 <hr>
 <h3 id="toString">toString</h3>
 <p><strong>返回对象的字符串表示，一般返回 &quot;[Native Object]&quot;，对象可以根据自己的特性重新实现</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> MongoDB.toString();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> MongoDB.toString();
 </code></pre>
 <p>返回结果:</p>
 <ul>
@@ -310,7 +311,7 @@
 <hr>
 <h3 id="toJSON">toJSON</h3>
 <p><strong>返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合</strong></p>
-<pre><code class="lang-JavaScript">Value MongoDB.toJSON(<span class="hljs-built_in">String</span> key = <span class="hljs-string">""</span>);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Value MongoDB.toJSON(<span class="hljs-built_in">String</span> key = <span class="hljs-string">""</span>);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -323,7 +324,7 @@
 <hr>
 <h3 id="valueOf">valueOf</h3>
 <p><strong>返回对象本身的数值</strong></p>
-<pre><code class="lang-JavaScript">Value MongoDB.valueOf();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Value MongoDB.valueOf();
 </code></pre>
 <p>返回结果:</p>
 <ul>

@@ -158,7 +158,19 @@
 <p>由于 WebView 内的 JavaScript 程序与 fibjs 并不在同一个引擎内，所以如果需要与宿主程序进行通讯，需要通过消息进行。</p>
 <p>WebView 用于通讯的对象是 external，external 支持两个方法 postMessage, close 和一个事件 onmessage。</p>
 <p>一个简单的通讯示例代码如下：</p>
-<pre><code class="lang-JavaScript"><span class="hljs-comment">// index.js</span>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13</div><span class="hljs-comment">// index.js</span>
 <span class="hljs-keyword">var</span> gui = <span class="hljs-built_in">require</span>(<span class="hljs-string">'gui'</span>);
 <span class="hljs-keyword">var</span> webview = gui.open(<span class="hljs-string">'fs:index.html'</span>);
 
@@ -173,7 +185,11 @@ webview.onload = <span class="hljs-function">(<span class="hljs-params">evt</spa
 webview.wait();
 </code></pre>
 <p>index.html 的内容如下：</p>
-<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="actionscript">
+<pre><code class="lang-html"><div class="line-numbers">1
+2
+3
+4
+5</div><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="actionscript">
     external.onmessage = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(msg)</span></span>{
         external.postMessage(<span class="hljs-string">"send back: "</span> + msg);
     };
@@ -181,7 +197,18 @@ webview.wait();
 </code></pre>
 <p>在 html 中，有一个特殊的消息 &quot;close&quot;，在用户窗口关闭之前，会向 html 内发送此消息。onmessage 收到此消息后，可以决定是否关闭。如果 onmessage 返回 false，则此次操作取消，否则将关闭窗口。</p>
 <p>以下的例子，会在用户点关闭后等待 5 秒后再关闭窗口。</p>
-<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"JavaScript"</span>&gt;</span><span class="actionscript">
+<pre><code class="lang-html"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12</div><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"JavaScript"</span>&gt;</span><span class="actionscript">
     <span class="hljs-keyword">var</span> bClose = <span class="hljs-literal">false</span>;
     external.onmessage = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(m)</span> </span>{
         <span class="hljs-keyword">if</span> (m == <span class="hljs-string">'close'</span> &amp;&amp; !bClose) {
@@ -289,25 +316,30 @@ webview.wait();
 <h2 id="静态属性">静态属性</h2>
 <h3 id="defaultMaxListeners">defaultMaxListeners</h3>
 <p><strong>Integer, 默认全局最大监听器数</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> Integer WebView.defaultMaxListeners;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Integer WebView.defaultMaxListeners;
 </code></pre>
 <h2 id="成员属性">成员属性</h2>
 <h3 id="visible">visible</h3>
 <p><strong>Boolean, 查询和设置窗口是否显示</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">Boolean</span> WebView.visible;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Boolean</span> WebView.visible;
 </code></pre>
 <hr>
 <h3 id="onload">onload</h3>
 <p><strong>Function, 查询和绑定加载成功事件，相当于 on(&quot;load&quot;, func);</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">Function</span> WebView.onload;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Function</span> WebView.onload;
 </code></pre>
 <hr>
 <h3 id="onmove">onmove</h3>
 <p><strong>Function, 查询和绑定窗口移动事件，相当于 on(&quot;move&quot;, func);</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">Function</span> WebView.onmove;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Function</span> WebView.onmove;
 </code></pre>
 <p>以下示例会在窗口移动时输出窗口的左上角坐标：</p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">var</span> gui = <span class="hljs-built_in">require</span>(<span class="hljs-string">'gui'</span>);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6</div><span class="hljs-keyword">var</span> gui = <span class="hljs-built_in">require</span>(<span class="hljs-string">'gui'</span>);
 <span class="hljs-keyword">var</span> webview = gui.open(<span class="hljs-string">'fs:index.html'</span>);
 
 webview.onmove = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">evt</span>) </span>{
@@ -317,10 +349,15 @@ webview.onmove = <span class="hljs-function"><span class="hljs-keyword">function
 <hr>
 <h3 id="onresize">onresize</h3>
 <p><strong>Function, 查询和绑定窗口尺寸改变事件，相当于 on(&quot;size&quot;, func);</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">Function</span> WebView.onresize;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Function</span> WebView.onresize;
 </code></pre>
 <p>以下示例会在窗口改变大小时输出窗口的尺寸：</p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">var</span> gui = <span class="hljs-built_in">require</span>(<span class="hljs-string">'gui'</span>);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6</div><span class="hljs-keyword">var</span> gui = <span class="hljs-built_in">require</span>(<span class="hljs-string">'gui'</span>);
 <span class="hljs-keyword">var</span> webview = gui.open(<span class="hljs-string">'fs:index.html'</span>);
 
 webview.onresize = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">evt</span>) </span>{
@@ -330,17 +367,17 @@ webview.onresize = <span class="hljs-function"><span class="hljs-keyword">functi
 <hr>
 <h3 id="onclosed">onclosed</h3>
 <p><strong>Function, 查询和绑定窗口关闭事件，WebView 关闭后会触发此时间，相当于 on(&quot;closed&quot;, func);</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">Function</span> WebView.onclosed;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Function</span> WebView.onclosed;
 </code></pre>
 <hr>
 <h3 id="onmessage">onmessage</h3>
 <p><strong>Function, 查询和绑定接受 webview 内 postMessage 消息事件，相当于 on(&quot;message&quot;, func);</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">Function</span> WebView.onmessage;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Function</span> WebView.onmessage;
 </code></pre>
 <h2 id="成员函数">成员函数</h2>
 <h3 id="setHtml">setHtml</h3>
 <p><strong>设置 webview 的页面 html</strong></p>
-<pre><code class="lang-JavaScript">WebView.setHtml(<span class="hljs-built_in">String</span> html) <span class="hljs-keyword">async</span>;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>WebView.setHtml(<span class="hljs-built_in">String</span> html) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -349,7 +386,7 @@ webview.onresize = <span class="hljs-function"><span class="hljs-keyword">functi
 <hr>
 <h3 id="print">print</h3>
 <p><strong>打印当前窗口文档</strong></p>
-<pre><code class="lang-JavaScript">WebView.print(Integer mode = <span class="hljs-number">1</span>) <span class="hljs-keyword">async</span>;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>WebView.print(Integer mode = <span class="hljs-number">1</span>) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -358,18 +395,18 @@ webview.onresize = <span class="hljs-function"><span class="hljs-keyword">functi
 <hr>
 <h3 id="close">close</h3>
 <p><strong>关闭当前窗口</strong></p>
-<pre><code class="lang-JavaScript">WebView.close() <span class="hljs-keyword">async</span>;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>WebView.close() <span class="hljs-keyword">async</span>;
 </code></pre>
 <hr>
 <h3 id="wait">wait</h3>
 <p><strong>等待当前窗口关闭</strong></p>
-<pre><code class="lang-JavaScript">WebView.wait() <span class="hljs-keyword">async</span>;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>WebView.wait() <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>宿主程序在创建窗口后，需要进入等待，否则随着宿主程序的退出，窗口将自动关闭。同时 wait 的调用也并不是必须的，你可以在打开窗口后处理其它业务，只需要保证程序不会自行退出即可。</p>
 <hr>
 <h3 id="postMessage">postMessage</h3>
 <p><strong>向 webview 内发送消息</strong></p>
-<pre><code class="lang-JavaScript">WebView.postMessage(<span class="hljs-built_in">String</span> msg) <span class="hljs-keyword">async</span>;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>WebView.postMessage(<span class="hljs-built_in">String</span> msg) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -380,7 +417,8 @@ webview.onresize = <span class="hljs-function"><span class="hljs-keyword">functi
 <hr>
 <h3 id="on">on</h3>
 <p><strong>绑定一个事件处理函数到对象</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">Object</span> WebView.on(<span class="hljs-built_in">String</span> ev,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-built_in">Object</span> WebView.on(<span class="hljs-built_in">String</span> ev,
     <span class="hljs-built_in">Function</span> func);
 </code></pre>
 <p>调用参数:</p>
@@ -394,7 +432,7 @@ webview.onresize = <span class="hljs-function"><span class="hljs-keyword">functi
 </ul>
 <hr>
 <p><strong>绑定一个事件处理函数到对象</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">Object</span> WebView.on(<span class="hljs-built_in">Object</span> map);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> WebView.on(<span class="hljs-built_in">Object</span> map);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -407,7 +445,8 @@ webview.onresize = <span class="hljs-function"><span class="hljs-keyword">functi
 <hr>
 <h3 id="addListener">addListener</h3>
 <p><strong>绑定一个事件处理函数到对象</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">Object</span> WebView.addListener(<span class="hljs-built_in">String</span> ev,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-built_in">Object</span> WebView.addListener(<span class="hljs-built_in">String</span> ev,
     <span class="hljs-built_in">Function</span> func);
 </code></pre>
 <p>调用参数:</p>
@@ -421,7 +460,7 @@ webview.onresize = <span class="hljs-function"><span class="hljs-keyword">functi
 </ul>
 <hr>
 <p><strong>绑定一个事件处理函数到对象</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">Object</span> WebView.addListener(<span class="hljs-built_in">Object</span> map);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> WebView.addListener(<span class="hljs-built_in">Object</span> map);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -434,7 +473,8 @@ webview.onresize = <span class="hljs-function"><span class="hljs-keyword">functi
 <hr>
 <h3 id="prependListener">prependListener</h3>
 <p><strong>绑定一个事件处理函数到对象起始</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">Object</span> WebView.prependListener(<span class="hljs-built_in">String</span> ev,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-built_in">Object</span> WebView.prependListener(<span class="hljs-built_in">String</span> ev,
     <span class="hljs-built_in">Function</span> func);
 </code></pre>
 <p>调用参数:</p>
@@ -448,7 +488,7 @@ webview.onresize = <span class="hljs-function"><span class="hljs-keyword">functi
 </ul>
 <hr>
 <p><strong>绑定一个事件处理函数到对象起始</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">Object</span> WebView.prependListener(<span class="hljs-built_in">Object</span> map);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> WebView.prependListener(<span class="hljs-built_in">Object</span> map);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -461,7 +501,8 @@ webview.onresize = <span class="hljs-function"><span class="hljs-keyword">functi
 <hr>
 <h3 id="once">once</h3>
 <p><strong>绑定一个一次性事件处理函数到对象，一次性处理函数只会触发一次</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">Object</span> WebView.once(<span class="hljs-built_in">String</span> ev,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-built_in">Object</span> WebView.once(<span class="hljs-built_in">String</span> ev,
     <span class="hljs-built_in">Function</span> func);
 </code></pre>
 <p>调用参数:</p>
@@ -475,7 +516,7 @@ webview.onresize = <span class="hljs-function"><span class="hljs-keyword">functi
 </ul>
 <hr>
 <p><strong>绑定一个一次性事件处理函数到对象，一次性处理函数只会触发一次</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">Object</span> WebView.once(<span class="hljs-built_in">Object</span> map);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> WebView.once(<span class="hljs-built_in">Object</span> map);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -488,7 +529,8 @@ webview.onresize = <span class="hljs-function"><span class="hljs-keyword">functi
 <hr>
 <h3 id="prependOnceListener">prependOnceListener</h3>
 <p><strong>绑定一个事件处理函数到对象起始</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">Object</span> WebView.prependOnceListener(<span class="hljs-built_in">String</span> ev,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-built_in">Object</span> WebView.prependOnceListener(<span class="hljs-built_in">String</span> ev,
     <span class="hljs-built_in">Function</span> func);
 </code></pre>
 <p>调用参数:</p>
@@ -502,7 +544,7 @@ webview.onresize = <span class="hljs-function"><span class="hljs-keyword">functi
 </ul>
 <hr>
 <p><strong>绑定一个事件处理函数到对象起始</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">Object</span> WebView.prependOnceListener(<span class="hljs-built_in">Object</span> map);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> WebView.prependOnceListener(<span class="hljs-built_in">Object</span> map);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -515,7 +557,8 @@ webview.onresize = <span class="hljs-function"><span class="hljs-keyword">functi
 <hr>
 <h3 id="off">off</h3>
 <p><strong>从对象处理队列中取消指定函数</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">Object</span> WebView.off(<span class="hljs-built_in">String</span> ev,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-built_in">Object</span> WebView.off(<span class="hljs-built_in">String</span> ev,
     <span class="hljs-built_in">Function</span> func);
 </code></pre>
 <p>调用参数:</p>
@@ -529,7 +572,7 @@ webview.onresize = <span class="hljs-function"><span class="hljs-keyword">functi
 </ul>
 <hr>
 <p><strong>取消对象处理队列中的全部函数</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">Object</span> WebView.off(<span class="hljs-built_in">String</span> ev);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> WebView.off(<span class="hljs-built_in">String</span> ev);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -541,7 +584,7 @@ webview.onresize = <span class="hljs-function"><span class="hljs-keyword">functi
 </ul>
 <hr>
 <p><strong>从对象处理队列中取消指定函数</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">Object</span> WebView.off(<span class="hljs-built_in">Object</span> map);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> WebView.off(<span class="hljs-built_in">Object</span> map);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -554,7 +597,8 @@ webview.onresize = <span class="hljs-function"><span class="hljs-keyword">functi
 <hr>
 <h3 id="removeListener">removeListener</h3>
 <p><strong>从对象处理队列中取消指定函数</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">Object</span> WebView.removeListener(<span class="hljs-built_in">String</span> ev,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-built_in">Object</span> WebView.removeListener(<span class="hljs-built_in">String</span> ev,
     <span class="hljs-built_in">Function</span> func);
 </code></pre>
 <p>调用参数:</p>
@@ -568,7 +612,7 @@ webview.onresize = <span class="hljs-function"><span class="hljs-keyword">functi
 </ul>
 <hr>
 <p><strong>取消对象处理队列中的全部函数</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">Object</span> WebView.removeListener(<span class="hljs-built_in">String</span> ev);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> WebView.removeListener(<span class="hljs-built_in">String</span> ev);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -580,7 +624,7 @@ webview.onresize = <span class="hljs-function"><span class="hljs-keyword">functi
 </ul>
 <hr>
 <p><strong>从对象处理队列中取消指定函数</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">Object</span> WebView.removeListener(<span class="hljs-built_in">Object</span> map);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> WebView.removeListener(<span class="hljs-built_in">Object</span> map);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -593,7 +637,7 @@ webview.onresize = <span class="hljs-function"><span class="hljs-keyword">functi
 <hr>
 <h3 id="removeAllListeners">removeAllListeners</h3>
 <p><strong>从对象处理队列中取消所有事件的所有监听器， 如果指定事件，则移除指定事件的所有监听器。</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">Object</span> WebView.removeAllListeners(<span class="hljs-built_in">Array</span> evs = []);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> WebView.removeAllListeners(<span class="hljs-built_in">Array</span> evs = []);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -606,7 +650,7 @@ webview.onresize = <span class="hljs-function"><span class="hljs-keyword">functi
 <hr>
 <h3 id="setMaxListeners">setMaxListeners</h3>
 <p><strong>监听器的默认限制的数量，仅用于兼容</strong></p>
-<pre><code class="lang-JavaScript">WebView.setMaxListeners(Integer n);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>WebView.setMaxListeners(Integer n);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -615,7 +659,7 @@ webview.onresize = <span class="hljs-function"><span class="hljs-keyword">functi
 <hr>
 <h3 id="getMaxListeners">getMaxListeners</h3>
 <p><strong>获取监听器的默认限制的数量，仅用于兼容</strong></p>
-<pre><code class="lang-JavaScript">Integer WebView.getMaxListeners();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer WebView.getMaxListeners();
 </code></pre>
 <p>返回结果:</p>
 <ul>
@@ -624,7 +668,7 @@ webview.onresize = <span class="hljs-function"><span class="hljs-keyword">functi
 <hr>
 <h3 id="listeners">listeners</h3>
 <p><strong>查询对象指定事件的监听器数组</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">Array</span> WebView.listeners(<span class="hljs-built_in">String</span> ev);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Array</span> WebView.listeners(<span class="hljs-built_in">String</span> ev);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -637,7 +681,7 @@ webview.onresize = <span class="hljs-function"><span class="hljs-keyword">functi
 <hr>
 <h3 id="listenerCount">listenerCount</h3>
 <p><strong>查询对象指定事件的监听器数量</strong></p>
-<pre><code class="lang-JavaScript">Integer WebView.listenerCount(<span class="hljs-built_in">String</span> ev);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer WebView.listenerCount(<span class="hljs-built_in">String</span> ev);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -650,7 +694,7 @@ webview.onresize = <span class="hljs-function"><span class="hljs-keyword">functi
 <hr>
 <h3 id="eventNames">eventNames</h3>
 <p><strong>查询监听器事件名称</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">Array</span> WebView.eventNames();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Array</span> WebView.eventNames();
 </code></pre>
 <p>返回结果:</p>
 <ul>
@@ -659,7 +703,8 @@ webview.onresize = <span class="hljs-function"><span class="hljs-keyword">functi
 <hr>
 <h3 id="emit">emit</h3>
 <p><strong>主动触发一个事件</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">Boolean</span> WebView.emit(<span class="hljs-built_in">String</span> ev,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-built_in">Boolean</span> WebView.emit(<span class="hljs-built_in">String</span> ev,
     ...);
 </code></pre>
 <p>调用参数:</p>
@@ -674,12 +719,12 @@ webview.onresize = <span class="hljs-function"><span class="hljs-keyword">functi
 <hr>
 <h3 id="dispose">dispose</h3>
 <p><strong>强制回收对象，调用此方法后，对象资源将立即释放</strong></p>
-<pre><code class="lang-JavaScript">WebView.dispose();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>WebView.dispose();
 </code></pre>
 <hr>
 <h3 id="equals">equals</h3>
 <p><strong>比较当前对象与给定的对象是否相等</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">Boolean</span> WebView.equals(object expected);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Boolean</span> WebView.equals(object expected);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -692,7 +737,7 @@ webview.onresize = <span class="hljs-function"><span class="hljs-keyword">functi
 <hr>
 <h3 id="toString">toString</h3>
 <p><strong>返回对象的字符串表示，一般返回 &quot;[Native Object]&quot;，对象可以根据自己的特性重新实现</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> WebView.toString();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> WebView.toString();
 </code></pre>
 <p>返回结果:</p>
 <ul>
@@ -701,7 +746,7 @@ webview.onresize = <span class="hljs-function"><span class="hljs-keyword">functi
 <hr>
 <h3 id="toJSON">toJSON</h3>
 <p><strong>返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合</strong></p>
-<pre><code class="lang-JavaScript">Value WebView.toJSON(<span class="hljs-built_in">String</span> key = <span class="hljs-string">""</span>);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Value WebView.toJSON(<span class="hljs-built_in">String</span> key = <span class="hljs-string">""</span>);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -714,7 +759,7 @@ webview.onresize = <span class="hljs-function"><span class="hljs-keyword">functi
 <hr>
 <h3 id="valueOf">valueOf</h3>
 <p><strong>返回对象本身的数值</strong></p>
-<pre><code class="lang-JavaScript">Value WebView.valueOf();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Value WebView.valueOf();
 </code></pre>
 <p>返回结果:</p>
 <ul>

@@ -155,7 +155,7 @@
  </div></div></div>  </div></div><div class=content><div class=social-share data-sites=weibo,twitter data-description=分享></div> <h1 id="对象-GridFS">对象 GridFS</h1>
 <p><a href=mongodb.md.html>MongoDB</a> GridFS 分布式文件系统访问对象</p>
 <p>使用 <a href=mongodb.md.html#fs>MongoDB.fs</a> 获取，创建方式：</p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">var</span> gfs = mdb.fs;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">var</span> gfs = mdb.fs;
 </code></pre>
 <h2 id="继承关系">继承关系</h2>
 <div class="dot">
@@ -212,17 +212,17 @@
 <h2 id="成员属性">成员属性</h2>
 <h3 id="files">files</h3>
 <p><strong><a href=mongocollection.md.html>MongoCollection</a>, 查询 GridFS 的元数据表</strong></p>
-<pre><code class="lang-JavaScript">readonly MongoCollection GridFS.files;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly MongoCollection GridFS.files;
 </code></pre>
 <hr>
 <h3 id="chunks">chunks</h3>
 <p><strong><a href=mongocollection.md.html>MongoCollection</a>, 查询 GridFS 的分块数据表</strong></p>
-<pre><code class="lang-JavaScript">readonly MongoCollection GridFS.chunks;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly MongoCollection GridFS.chunks;
 </code></pre>
 <h2 id="成员函数">成员函数</h2>
 <h3 id="retrieve">retrieve</h3>
 <p><strong>获取一个文件</strong></p>
-<pre><code class="lang-JavaScript">MemoryStream GridFS.retrieve(<span class="hljs-built_in">String</span> name);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>MemoryStream GridFS.retrieve(<span class="hljs-built_in">String</span> name);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -235,7 +235,8 @@
 <hr>
 <h3 id="store">store</h3>
 <p><strong>保存一个流到文件系统</strong></p>
-<pre><code class="lang-JavaScript">GridFS.store(<span class="hljs-built_in">String</span> name,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div>GridFS.store(<span class="hljs-built_in">String</span> name,
     Stream src);
 </code></pre>
 <p>调用参数:</p>
@@ -245,7 +246,8 @@
 </ul>
 <hr>
 <p><strong>保存一个二进制数据块到文件系统</strong></p>
-<pre><code class="lang-JavaScript">GridFS.store(<span class="hljs-built_in">String</span> name,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div>GridFS.store(<span class="hljs-built_in">String</span> name,
     Buffer data);
 </code></pre>
 <p>调用参数:</p>
@@ -256,7 +258,7 @@
 <hr>
 <h3 id="exists">exists</h3>
 <p><strong>检测指定的文件是否存在</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">Boolean</span> GridFS.exists(<span class="hljs-built_in">String</span> name);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Boolean</span> GridFS.exists(<span class="hljs-built_in">String</span> name);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -269,7 +271,7 @@
 <hr>
 <h3 id="remove">remove</h3>
 <p><strong>删除指定的文件</strong></p>
-<pre><code class="lang-JavaScript">GridFS.remove(<span class="hljs-built_in">String</span> name);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>GridFS.remove(<span class="hljs-built_in">String</span> name);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -278,12 +280,12 @@
 <hr>
 <h3 id="dispose">dispose</h3>
 <p><strong>强制回收对象，调用此方法后，对象资源将立即释放</strong></p>
-<pre><code class="lang-JavaScript">GridFS.dispose();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>GridFS.dispose();
 </code></pre>
 <hr>
 <h3 id="equals">equals</h3>
 <p><strong>比较当前对象与给定的对象是否相等</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">Boolean</span> GridFS.equals(object expected);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Boolean</span> GridFS.equals(object expected);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -296,7 +298,7 @@
 <hr>
 <h3 id="toString">toString</h3>
 <p><strong>返回对象的字符串表示，一般返回 &quot;[Native Object]&quot;，对象可以根据自己的特性重新实现</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> GridFS.toString();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> GridFS.toString();
 </code></pre>
 <p>返回结果:</p>
 <ul>
@@ -305,7 +307,7 @@
 <hr>
 <h3 id="toJSON">toJSON</h3>
 <p><strong>返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合</strong></p>
-<pre><code class="lang-JavaScript">Value GridFS.toJSON(<span class="hljs-built_in">String</span> key = <span class="hljs-string">""</span>);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Value GridFS.toJSON(<span class="hljs-built_in">String</span> key = <span class="hljs-string">""</span>);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -318,7 +320,7 @@
 <hr>
 <h3 id="valueOf">valueOf</h3>
 <p><strong>返回对象本身的数值</strong></p>
-<pre><code class="lang-JavaScript">Value GridFS.valueOf();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Value GridFS.valueOf();
 </code></pre>
 <p>返回结果:</p>
 <ul>

@@ -155,7 +155,80 @@
  </div></div></div>  </div></div><div class=content><div class=social-share data-sites=weibo,twitter data-description=分享></div> <h1 id="模块-test">模块 test</h1>
 <p>测试套件模块，用以定义管理测试套件</p>
 <p>使用方法 ：</p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">var</span> test = <span class="hljs-built_in">require</span>(<span class="hljs-string">'test'</span>);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74</div><span class="hljs-keyword">var</span> test = <span class="hljs-built_in">require</span>(<span class="hljs-string">'test'</span>);
 test.setup();
 
 describe(<span class="hljs-string">'test'</span>, () =&gt; {
@@ -233,12 +306,13 @@ process.exit(-test.run(<span class="hljs-built_in">console</span>.DEBUG));
 <h2 id="对象">对象</h2>
 <h3 id="assert">assert</h3>
 <p><strong>断言测试模块，如果测试值为假，则报错，报错行为可设定继续运行或者错误抛出</strong></p>
-<pre><code class="lang-JavaScript">assert test.assert;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>assert test.assert;
 </code></pre>
 <h2 id="静态函数">静态函数</h2>
 <h3 id="describe">describe</h3>
 <p><strong>定义一个测试模块，可嵌套定义</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> test.describe(<span class="hljs-built_in">String</span> name,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> test.describe(<span class="hljs-built_in">String</span> name,
     <span class="hljs-built_in">Function</span> block);
 </code></pre>
 <p>调用参数:</p>
@@ -249,7 +323,8 @@ process.exit(-test.run(<span class="hljs-built_in">console</span>.DEBUG));
 <hr>
 <h3 id="xdescribe">xdescribe</h3>
 <p><strong>暂停测试的模块定义，<a href=test.md.html#setup>test.setup</a> 后可使用 describe.skip 调用</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> test.xdescribe(<span class="hljs-built_in">String</span> name,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> test.xdescribe(<span class="hljs-built_in">String</span> name,
     <span class="hljs-built_in">Function</span> block);
 </code></pre>
 <p>调用参数:</p>
@@ -260,7 +335,8 @@ process.exit(-test.run(<span class="hljs-built_in">console</span>.DEBUG));
 <hr>
 <h3 id="odescribe">odescribe</h3>
 <p><strong>独立测试的模块定义，<a href=test.md.html#setup>test.setup</a> 后可使用 describe.only 调用</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> test.odescribe(<span class="hljs-built_in">String</span> name,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> test.odescribe(<span class="hljs-built_in">String</span> name,
     <span class="hljs-built_in">Function</span> block);
 </code></pre>
 <p>调用参数:</p>
@@ -271,7 +347,8 @@ process.exit(-test.run(<span class="hljs-built_in">console</span>.DEBUG));
 <hr>
 <h3 id="it">it</h3>
 <p><strong>定义一个测试项目</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> test.it(<span class="hljs-built_in">String</span> name,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> test.it(<span class="hljs-built_in">String</span> name,
     <span class="hljs-built_in">Function</span> block);
 </code></pre>
 <p>调用参数:</p>
@@ -282,7 +359,8 @@ process.exit(-test.run(<span class="hljs-built_in">console</span>.DEBUG));
 <hr>
 <h3 id="xit">xit</h3>
 <p><strong>暂停测试的项目定义，<a href=test.md.html#setup>test.setup</a> 后可使用 it.skip 调用</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> test.xit(<span class="hljs-built_in">String</span> name,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> test.xit(<span class="hljs-built_in">String</span> name,
     <span class="hljs-built_in">Function</span> block);
 </code></pre>
 <p>调用参数:</p>
@@ -293,7 +371,8 @@ process.exit(-test.run(<span class="hljs-built_in">console</span>.DEBUG));
 <hr>
 <h3 id="oit">oit</h3>
 <p><strong>独立测试的项目定义，<a href=test.md.html#setup>test.setup</a> 后可使用 it.only 调用</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> test.oit(<span class="hljs-built_in">String</span> name,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> test.oit(<span class="hljs-built_in">String</span> name,
     <span class="hljs-built_in">Function</span> block);
 </code></pre>
 <p>调用参数:</p>
@@ -304,7 +383,7 @@ process.exit(-test.run(<span class="hljs-built_in">console</span>.DEBUG));
 <hr>
 <h3 id="before">before</h3>
 <p><strong>定义当前测试模块进入事件</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> test.before(<span class="hljs-built_in">Function</span> func);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> test.before(<span class="hljs-built_in">Function</span> func);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -313,7 +392,7 @@ process.exit(-test.run(<span class="hljs-built_in">console</span>.DEBUG));
 <hr>
 <h3 id="after">after</h3>
 <p><strong>定义当前测试模块退出事件</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> test.after(<span class="hljs-built_in">Function</span> func);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> test.after(<span class="hljs-built_in">Function</span> func);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -322,7 +401,7 @@ process.exit(-test.run(<span class="hljs-built_in">console</span>.DEBUG));
 <hr>
 <h3 id="beforeEach">beforeEach</h3>
 <p><strong>定义当前测试模块测试项目进入事件</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> test.beforeEach(<span class="hljs-built_in">Function</span> func);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> test.beforeEach(<span class="hljs-built_in">Function</span> func);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -331,7 +410,7 @@ process.exit(-test.run(<span class="hljs-built_in">console</span>.DEBUG));
 <hr>
 <h3 id="afterEach">afterEach</h3>
 <p><strong>定义当前测试模块测试项目退出事件</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> test.afterEach(<span class="hljs-built_in">Function</span> func);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> test.afterEach(<span class="hljs-built_in">Function</span> func);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -340,7 +419,7 @@ process.exit(-test.run(<span class="hljs-built_in">console</span>.DEBUG));
 <hr>
 <h3 id="run">run</h3>
 <p><strong>开始执行定义的测试模块</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> Integer test.run(Integer loglevel = <span class="hljs-built_in">console</span>.ERROR);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Integer test.run(Integer loglevel = <span class="hljs-built_in">console</span>.ERROR);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -353,11 +432,11 @@ process.exit(-test.run(<span class="hljs-built_in">console</span>.DEBUG));
 <hr>
 <h3 id="setup">setup</h3>
 <p><strong>初始化当前脚本的测试环境，将 test 模块方法复制为当前脚本全局变量</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> test.setup();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> test.setup();
 </code></pre>
 <h2 id="静态属性">静态属性</h2>
 <h3 id="slow">slow</h3>
 <p><strong>Integer, 设置和查询慢速测试警告阀值，以 ms 为单位，缺省为 75</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> Integer test.slow;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Integer test.slow;
 </code></pre>
  </div><div class="sidebar hidden-sm hidden-xs"><div id=toc></div></div></div><div class=container><div class=footer><p>&copy; 2017 fibjs.org</p></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="Click to return on the top page" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=../../../../js/common.js></script><script type=text/javascript src=../../../../js/docs.js></script></body></html>

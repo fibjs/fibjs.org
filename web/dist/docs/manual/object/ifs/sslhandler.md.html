@@ -155,7 +155,13 @@
  </div></div></div>  </div></div><div class=content><div class=social-share data-sites=weibo,twitter data-description=分享></div> <h1 id="对象-SslHandler">对象 SslHandler</h1>
 <p><a href=../../module/ifs/ssl.md.html>ssl</a> 协议转换处理器</p>
 <p>用以将数据流转换为 <a href=../../module/ifs/ssl.md.html>ssl</a> 流协议。SslHandler 是对 <a href=sslsocket.md.html>SslSocket</a> 的封装，用于构建服务器，逻辑上相当于：</p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">var</span> ss = <span class="hljs-keyword">new</span> ssl.Socket(crt, key);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7</div><span class="hljs-keyword">var</span> ss = <span class="hljs-keyword">new</span> ssl.Socket(crt, key);
 
 <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">s</span>) </span>{
     <span class="hljs-keyword">var</span> s1 = ss.accept(s);
@@ -235,7 +241,8 @@
 <h2 id="构造函数">构造函数</h2>
 <h3 id="SslHandler">SslHandler</h3>
 <p><strong>SslHandler 构造函数，创建一个新的 SslHandler 对象</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">new</span> SslHandler(<span class="hljs-built_in">Array</span> certs,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">new</span> SslHandler(<span class="hljs-built_in">Array</span> certs,
     Handler hdlr);
 </code></pre>
 <p>调用参数:</p>
@@ -244,7 +251,15 @@
 <li>hdlr: <a href=handler.md.html>Handler</a>, 内置消息处理器，处理函数，链式处理数组，路由对象，详见 <a href=../../module/ifs/mq.md.html#Handler>mq.Handler</a></li>
 </ul>
 <p>certs 格式为：</p>
-<pre><code class="lang-JavaScript">[{
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9</div>[{
         <span class="hljs-attr">crt</span>: [X509Cert object],
         <span class="hljs-attr">key</span>: [PKey object]
     },
@@ -256,7 +271,9 @@
 </code></pre>
 <hr>
 <p><strong>SslHandler 构造函数，创建一个新的 SslHandler 对象</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">new</span> SslHandler(X509Cert crt,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">new</span> SslHandler(X509Cert crt,
     PKey key,
     Handler hdlr);
 </code></pre>
@@ -269,22 +286,22 @@
 <h2 id="成员属性">成员属性</h2>
 <h3 id="verification">verification</h3>
 <p><strong>Integer, 设定证书验证模式，缺省为 VERIFY_NONE</strong></p>
-<pre><code class="lang-JavaScript">Integer SslHandler.verification;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer SslHandler.verification;
 </code></pre>
 <hr>
 <h3 id="ca">ca</h3>
 <p><strong><a href=x509cert.md.html>X509Cert</a>, 客户端证书验证证书链</strong></p>
-<pre><code class="lang-JavaScript">readonly X509Cert SslHandler.ca;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly X509Cert SslHandler.ca;
 </code></pre>
 <hr>
 <h3 id="handler">handler</h3>
 <p><strong><a href=handler.md.html>Handler</a>, <a href=../../module/ifs/ssl.md.html>ssl</a> 协议转换处理器当前事件处理接口对象</strong></p>
-<pre><code class="lang-JavaScript">Handler SslHandler.handler;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Handler SslHandler.handler;
 </code></pre>
 <h2 id="成员函数">成员函数</h2>
 <h3 id="invoke">invoke</h3>
 <p><strong>处理一个消息或对象</strong></p>
-<pre><code class="lang-JavaScript">Handler SslHandler.invoke(object v) <span class="hljs-keyword">async</span>;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Handler SslHandler.invoke(object v) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -297,12 +314,12 @@
 <hr>
 <h3 id="dispose">dispose</h3>
 <p><strong>强制回收对象，调用此方法后，对象资源将立即释放</strong></p>
-<pre><code class="lang-JavaScript">SslHandler.dispose();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>SslHandler.dispose();
 </code></pre>
 <hr>
 <h3 id="equals">equals</h3>
 <p><strong>比较当前对象与给定的对象是否相等</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">Boolean</span> SslHandler.equals(object expected);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Boolean</span> SslHandler.equals(object expected);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -315,7 +332,7 @@
 <hr>
 <h3 id="toString">toString</h3>
 <p><strong>返回对象的字符串表示，一般返回 &quot;[Native Object]&quot;，对象可以根据自己的特性重新实现</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> SslHandler.toString();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> SslHandler.toString();
 </code></pre>
 <p>返回结果:</p>
 <ul>
@@ -324,7 +341,7 @@
 <hr>
 <h3 id="toJSON">toJSON</h3>
 <p><strong>返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合</strong></p>
-<pre><code class="lang-JavaScript">Value SslHandler.toJSON(<span class="hljs-built_in">String</span> key = <span class="hljs-string">""</span>);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Value SslHandler.toJSON(<span class="hljs-built_in">String</span> key = <span class="hljs-string">""</span>);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -337,7 +354,7 @@
 <hr>
 <h3 id="valueOf">valueOf</h3>
 <p><strong>返回对象本身的数值</strong></p>
-<pre><code class="lang-JavaScript">Value SslHandler.valueOf();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Value SslHandler.valueOf();
 </code></pre>
 <p>返回结果:</p>
 <ul>

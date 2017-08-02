@@ -155,7 +155,9 @@
  </div></div></div>  </div></div><div class=content><div class=social-share data-sites=weibo,twitter data-description=分享></div> <h1 id="对象-RedisSet">对象 RedisSet</h1>
 <p><a href=redis.md.html>Redis</a> 数据库客户端 Set 对象，此对象为包含指定 key 的客户端，只有调用其方法才会操作数据库</p>
 <p>用以操作 <a href=redis.md.html>Redis</a> 的 Set 对象，创建方法：</p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">var</span> db = <span class="hljs-built_in">require</span>(<span class="hljs-string">"db"</span>);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">var</span> db = <span class="hljs-built_in">require</span>(<span class="hljs-string">"db"</span>);
 <span class="hljs-keyword">var</span> rdb = <span class="hljs-keyword">new</span> db.openRedis(<span class="hljs-string">"redis-server"</span>);
 <span class="hljs-keyword">var</span> set = rdb.getSet(<span class="hljs-string">"test"</span>);
 </code></pre>
@@ -214,7 +216,7 @@
 <h2 id="成员函数">成员函数</h2>
 <h3 id="add">add</h3>
 <p><strong>将一个或多个 member 元素加入到集合 key 当中，已经存在于集合的 member 元素将被忽略</strong></p>
-<pre><code class="lang-JavaScript">Integer RedisSet.add(<span class="hljs-built_in">Array</span> members);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer RedisSet.add(<span class="hljs-built_in">Array</span> members);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -226,7 +228,7 @@
 </ul>
 <hr>
 <p><strong>同时将多个 field-value (域-值)对设置到哈希表中，此命令会覆盖哈希表中已存在的域</strong></p>
-<pre><code class="lang-JavaScript">Integer RedisSet.add(...);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer RedisSet.add(...);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -239,7 +241,7 @@
 <hr>
 <h3 id="remove">remove</h3>
 <p><strong>移除集合中的一个或多个 member 元素</strong></p>
-<pre><code class="lang-JavaScript">Integer RedisSet.remove(<span class="hljs-built_in">Array</span> members);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer RedisSet.remove(<span class="hljs-built_in">Array</span> members);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -251,7 +253,7 @@
 </ul>
 <hr>
 <p><strong>移除集合中的一个或多个 member 元素</strong></p>
-<pre><code class="lang-JavaScript">Integer RedisSet.remove(...);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer RedisSet.remove(...);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -264,7 +266,7 @@
 <hr>
 <h3 id="len">len</h3>
 <p><strong>返回集合中元素的数量</strong></p>
-<pre><code class="lang-JavaScript">Integer RedisSet.len();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer RedisSet.len();
 </code></pre>
 <p>返回结果:</p>
 <ul>
@@ -273,7 +275,7 @@
 <hr>
 <h3 id="exists">exists</h3>
 <p><strong>判断 member 元素是否集合的成员</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">Boolean</span> RedisSet.exists(Buffer member);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Boolean</span> RedisSet.exists(Buffer member);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -286,7 +288,7 @@
 <hr>
 <h3 id="members">members</h3>
 <p><strong>返回集合中的所有成员</strong></p>
-<pre><code class="lang-JavaScript">List RedisSet.members();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>List RedisSet.members();
 </code></pre>
 <p>返回结果:</p>
 <ul>
@@ -295,7 +297,7 @@
 <hr>
 <h3 id="pop">pop</h3>
 <p><strong>移除并返回集合中的一个随机元素</strong></p>
-<pre><code class="lang-JavaScript">Buffer RedisSet.pop();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Buffer RedisSet.pop();
 </code></pre>
 <p>返回结果:</p>
 <ul>
@@ -304,7 +306,7 @@
 <hr>
 <h3 id="randMember">randMember</h3>
 <p><strong>从集合中获取随机的一个元素</strong></p>
-<pre><code class="lang-JavaScript">Value RedisSet.randMember();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Value RedisSet.randMember();
 </code></pre>
 <p>返回结果:</p>
 <ul>
@@ -312,7 +314,7 @@
 </ul>
 <hr>
 <p><strong>从集合中获取随机的若干元素</strong></p>
-<pre><code class="lang-JavaScript">Value RedisSet.randMember(Integer count);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Value RedisSet.randMember(Integer count);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -325,12 +327,12 @@
 <hr>
 <h3 id="dispose">dispose</h3>
 <p><strong>强制回收对象，调用此方法后，对象资源将立即释放</strong></p>
-<pre><code class="lang-JavaScript">RedisSet.dispose();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>RedisSet.dispose();
 </code></pre>
 <hr>
 <h3 id="equals">equals</h3>
 <p><strong>比较当前对象与给定的对象是否相等</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">Boolean</span> RedisSet.equals(object expected);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Boolean</span> RedisSet.equals(object expected);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -343,7 +345,7 @@
 <hr>
 <h3 id="toString">toString</h3>
 <p><strong>返回对象的字符串表示，一般返回 &quot;[Native Object]&quot;，对象可以根据自己的特性重新实现</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> RedisSet.toString();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> RedisSet.toString();
 </code></pre>
 <p>返回结果:</p>
 <ul>
@@ -352,7 +354,7 @@
 <hr>
 <h3 id="toJSON">toJSON</h3>
 <p><strong>返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合</strong></p>
-<pre><code class="lang-JavaScript">Value RedisSet.toJSON(<span class="hljs-built_in">String</span> key = <span class="hljs-string">""</span>);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Value RedisSet.toJSON(<span class="hljs-built_in">String</span> key = <span class="hljs-string">""</span>);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -365,7 +367,7 @@
 <hr>
 <h3 id="valueOf">valueOf</h3>
 <p><strong>返回对象本身的数值</strong></p>
-<pre><code class="lang-JavaScript">Value RedisSet.valueOf();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Value RedisSet.valueOf();
 </code></pre>
 <p>返回结果:</p>
 <ul>

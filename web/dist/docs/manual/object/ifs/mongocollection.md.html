@@ -155,7 +155,8 @@
  </div></div></div>  </div></div><div class=content><div class=social-share data-sites=weibo,twitter data-description=分享></div> <h1 id="对象-MongoCollection">对象 MongoCollection</h1>
 <p>mongodb 数据库数据集对象</p>
 <p>使用 <a href=mongodb.md.html#getCollection>MongoDB.getCollection</a> 创建：</p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">var</span> col1 = mdb.getCollection(<span class="hljs-string">'test'</span>);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">var</span> col1 = mdb.getCollection(<span class="hljs-string">'test'</span>);
 <span class="hljs-keyword">var</span> col = mdb.test;
 </code></pre>
 <h2 id="继承关系">继承关系</h2>
@@ -222,7 +223,7 @@
 
 <h2 id="下标操作">下标操作</h2>
 <p><strong>以属性方式快速获取当前集合子命名空间的集合对象</strong></p>
-<pre><code class="lang-JavaScript">readonly MongoCollection MongoCollection[<span class="hljs-built_in">String</span>];
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly MongoCollection MongoCollection[<span class="hljs-built_in">String</span>];
 </code></pre>
 <p>返回结果:</p>
 <ul>
@@ -231,7 +232,8 @@
 <h2 id="成员函数">成员函数</h2>
 <h3 id="find">find</h3>
 <p><strong>根据给定的查询条件和返回字段设定，建立游标对象</strong></p>
-<pre><code class="lang-JavaScript">MongoCursor MongoCollection.find(<span class="hljs-built_in">Object</span> query = {},
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div>MongoCursor MongoCollection.find(<span class="hljs-built_in">Object</span> query = {},
     <span class="hljs-built_in">Object</span> projection = {});
 </code></pre>
 <p>调用参数:</p>
@@ -246,7 +248,8 @@
 <hr>
 <h3 id="findOne">findOne</h3>
 <p><strong>根据给定的查询条件和返回字段设定，查询一条结果</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">Object</span> MongoCollection.findOne(<span class="hljs-built_in">Object</span> query = {},
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-built_in">Object</span> MongoCollection.findOne(<span class="hljs-built_in">Object</span> query = {},
     <span class="hljs-built_in">Object</span> projection = {});
 </code></pre>
 <p>调用参数:</p>
@@ -261,7 +264,7 @@
 <hr>
 <h3 id="findAndModify">findAndModify</h3>
 <p><strong>查询并修改</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">Object</span> MongoCollection.findAndModify(<span class="hljs-built_in">Object</span> query);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> MongoCollection.findAndModify(<span class="hljs-built_in">Object</span> query);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -274,7 +277,7 @@
 <hr>
 <h3 id="insert">insert</h3>
 <p><strong>插入一组数据</strong></p>
-<pre><code class="lang-JavaScript">MongoCollection.insert(<span class="hljs-built_in">Array</span> documents);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>MongoCollection.insert(<span class="hljs-built_in">Array</span> documents);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -282,7 +285,7 @@
 </ul>
 <hr>
 <p><strong>插入一条数据</strong></p>
-<pre><code class="lang-JavaScript">MongoCollection.insert(<span class="hljs-built_in">Object</span> <span class="hljs-built_in">document</span>);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>MongoCollection.insert(<span class="hljs-built_in">Object</span> <span class="hljs-built_in">document</span>);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -291,7 +294,7 @@
 <hr>
 <h3 id="save">save</h3>
 <p><strong>保存一条数据，若数据包含 _id 字段，则为更新，否则为插入</strong></p>
-<pre><code class="lang-JavaScript">MongoCollection.save(<span class="hljs-built_in">Object</span> <span class="hljs-built_in">document</span>);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>MongoCollection.save(<span class="hljs-built_in">Object</span> <span class="hljs-built_in">document</span>);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -300,7 +303,10 @@
 <hr>
 <h3 id="update">update</h3>
 <p><strong>根据给定的查询条件更新数据</strong></p>
-<pre><code class="lang-JavaScript">MongoCollection.update(<span class="hljs-built_in">Object</span> query,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4</div>MongoCollection.update(<span class="hljs-built_in">Object</span> query,
     <span class="hljs-built_in">Object</span> <span class="hljs-built_in">document</span>,
     <span class="hljs-built_in">Boolean</span> upsert = <span class="hljs-literal">false</span>,
     <span class="hljs-built_in">Boolean</span> multi = <span class="hljs-literal">false</span>);
@@ -314,7 +320,9 @@
 </ul>
 <hr>
 <p><strong>根据给定的查询条件更新数据</strong></p>
-<pre><code class="lang-JavaScript">MongoCollection.update(<span class="hljs-built_in">Object</span> query,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div>MongoCollection.update(<span class="hljs-built_in">Object</span> query,
     <span class="hljs-built_in">Object</span> <span class="hljs-built_in">document</span>,
     <span class="hljs-built_in">Object</span> options);
 </code></pre>
@@ -327,7 +335,7 @@
 <hr>
 <h3 id="remove">remove</h3>
 <p><strong>根据给定的查询条件删除数据</strong></p>
-<pre><code class="lang-JavaScript">MongoCollection.remove(<span class="hljs-built_in">Object</span> query);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>MongoCollection.remove(<span class="hljs-built_in">Object</span> query);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -336,7 +344,7 @@
 <hr>
 <h3 id="runCommand">runCommand</h3>
 <p><strong>执行数据库命令</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">Object</span> MongoCollection.runCommand(<span class="hljs-built_in">Object</span> cmd);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> MongoCollection.runCommand(<span class="hljs-built_in">Object</span> cmd);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -348,7 +356,8 @@
 </ul>
 <hr>
 <p><strong>执行数据库命令</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">Object</span> MongoCollection.runCommand(<span class="hljs-built_in">String</span> cmd,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-built_in">Object</span> MongoCollection.runCommand(<span class="hljs-built_in">String</span> cmd,
     <span class="hljs-built_in">Object</span> arg = {});
 </code></pre>
 <p>调用参数:</p>
@@ -363,12 +372,13 @@
 <hr>
 <h3 id="drop">drop</h3>
 <p><strong>删除当前集合</strong></p>
-<pre><code class="lang-JavaScript">MongoCollection.drop();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>MongoCollection.drop();
 </code></pre>
 <hr>
 <h3 id="ensureIndex">ensureIndex</h3>
 <p><strong>在当前集合上创建索引</strong></p>
-<pre><code class="lang-JavaScript">MongoCollection.ensureIndex(<span class="hljs-built_in">Object</span> keys,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div>MongoCollection.ensureIndex(<span class="hljs-built_in">Object</span> keys,
     <span class="hljs-built_in">Object</span> options = {});
 </code></pre>
 <p>调用参数:</p>
@@ -379,7 +389,7 @@
 <hr>
 <h3 id="reIndex">reIndex</h3>
 <p><strong>重建当前集合的索引</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">Object</span> MongoCollection.reIndex();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> MongoCollection.reIndex();
 </code></pre>
 <p>返回结果:</p>
 <ul>
@@ -388,7 +398,7 @@
 <hr>
 <h3 id="dropIndex">dropIndex</h3>
 <p><strong>删除当前集合指定名称的索引</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">Object</span> MongoCollection.dropIndex(<span class="hljs-built_in">String</span> name);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> MongoCollection.dropIndex(<span class="hljs-built_in">String</span> name);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -401,7 +411,7 @@
 <hr>
 <h3 id="dropIndexes">dropIndexes</h3>
 <p><strong>删除当前集合全部索引</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">Object</span> MongoCollection.dropIndexes();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> MongoCollection.dropIndexes();
 </code></pre>
 <p>返回结果:</p>
 <ul>
@@ -410,7 +420,7 @@
 <hr>
 <h3 id="getIndexes">getIndexes</h3>
 <p><strong>查询当前集合全部索引</strong></p>
-<pre><code class="lang-JavaScript">MongoCursor MongoCollection.getIndexes();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>MongoCursor MongoCollection.getIndexes();
 </code></pre>
 <p>返回结果:</p>
 <ul>
@@ -419,7 +429,7 @@
 <hr>
 <h3 id="getCollection">getCollection</h3>
 <p><strong>获取当前集合子命名空间的集合对象</strong></p>
-<pre><code class="lang-JavaScript">MongoCollection MongoCollection.getCollection(<span class="hljs-built_in">String</span> name);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>MongoCollection MongoCollection.getCollection(<span class="hljs-built_in">String</span> name);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -432,12 +442,12 @@
 <hr>
 <h3 id="dispose">dispose</h3>
 <p><strong>强制回收对象，调用此方法后，对象资源将立即释放</strong></p>
-<pre><code class="lang-JavaScript">MongoCollection.dispose();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>MongoCollection.dispose();
 </code></pre>
 <hr>
 <h3 id="equals">equals</h3>
 <p><strong>比较当前对象与给定的对象是否相等</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">Boolean</span> MongoCollection.equals(object expected);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Boolean</span> MongoCollection.equals(object expected);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -450,7 +460,7 @@
 <hr>
 <h3 id="toString">toString</h3>
 <p><strong>返回对象的字符串表示，一般返回 &quot;[Native Object]&quot;，对象可以根据自己的特性重新实现</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> MongoCollection.toString();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> MongoCollection.toString();
 </code></pre>
 <p>返回结果:</p>
 <ul>
@@ -459,7 +469,7 @@
 <hr>
 <h3 id="toJSON">toJSON</h3>
 <p><strong>返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合</strong></p>
-<pre><code class="lang-JavaScript">Value MongoCollection.toJSON(<span class="hljs-built_in">String</span> key = <span class="hljs-string">""</span>);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Value MongoCollection.toJSON(<span class="hljs-built_in">String</span> key = <span class="hljs-string">""</span>);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -472,7 +482,7 @@
 <hr>
 <h3 id="valueOf">valueOf</h3>
 <p><strong>返回对象本身的数值</strong></p>
-<pre><code class="lang-JavaScript">Value MongoCollection.valueOf();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Value MongoCollection.valueOf();
 </code></pre>
 <p>返回结果:</p>
 <ul>

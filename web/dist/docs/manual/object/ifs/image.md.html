@@ -155,7 +155,8 @@
  </div></div></div>  </div></div><div class=content><div class=social-share data-sites=weibo,twitter data-description=分享></div> <h1 id="对象-Image">对象 Image</h1>
 <p>图像处理对象，用以对图像进行转换，绘制，存储等操作</p>
 <p>Image 对象属于 <a href=../../module/ifs/gd.md.html>gd</a> 模块，创建：</p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">var</span> img = gd.create(<span class="hljs-number">640</span>, <span class="hljs-number">480</span>);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">var</span> img = gd.create(<span class="hljs-number">640</span>, <span class="hljs-number">480</span>);
 <span class="hljs-keyword">var</span> img1 = gd.load(data);
 </code></pre>
 <h2 id="继承关系">继承关系</h2>
@@ -260,47 +261,48 @@
 <h2 id="成员属性">成员属性</h2>
 <h3 id="width">width</h3>
 <p><strong>Integer, 查询图像宽度</strong></p>
-<pre><code class="lang-JavaScript">readonly Integer Image.width;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly Integer Image.width;
 </code></pre>
 <hr>
 <h3 id="height">height</h3>
 <p><strong>Integer, 查询图像高度</strong></p>
-<pre><code class="lang-JavaScript">readonly Integer Image.height;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly Integer Image.height;
 </code></pre>
 <hr>
 <h3 id="format">format</h3>
 <p><strong>Integer, 查询图像来源格式，结果为 <a href=../../module/ifs/gd.md.html#PNG>gd.PNG</a>, <a href=../../module/ifs/gd.md.html#JPEG>gd.JPEG</a>, <a href=../../module/ifs/gd.md.html#GIF>gd.GIF</a>, <a href=../../module/ifs/gd.md.html#BMP>gd.BMP</a>, <a href=../../module/ifs/gd.md.html#WEBP>gd.WEBP</a></strong></p>
-<pre><code class="lang-JavaScript">readonly Integer Image.format;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly Integer Image.format;
 </code></pre>
 <hr>
 <h3 id="type">type</h3>
 <p><strong>Integer, 查询图像类型，结果为 <a href=../../module/ifs/gd.md.html#TRUECOLOR>gd.TRUECOLOR</a>, <a href=../../module/ifs/gd.md.html#PALETTE>gd.PALETTE</a></strong></p>
-<pre><code class="lang-JavaScript">readonly Integer Image.type;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly Integer Image.type;
 </code></pre>
 <hr>
 <h3 id="colorsTotal">colorsTotal</h3>
 <p><strong>Integer, 查询图像颜色表内的颜色总数</strong></p>
-<pre><code class="lang-JavaScript">readonly Integer Image.colorsTotal;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly Integer Image.colorsTotal;
 </code></pre>
 <hr>
 <h3 id="transparent">transparent</h3>
 <p><strong>Integer, 查询和设定指定的颜色为透明色</strong></p>
-<pre><code class="lang-JavaScript">Integer Image.transparent;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer Image.transparent;
 </code></pre>
 <hr>
 <h3 id="progressive">progressive</h3>
 <p><strong>Boolean, 查询和设定图像是否渐进式，仅支持 jpeg 格式时</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">Boolean</span> Image.progressive;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Boolean</span> Image.progressive;
 </code></pre>
 <hr>
 <h3 id="alphaBlending">alphaBlending</h3>
 <p><strong>Boolean, 查询和设定绘图时是否计算 alpha 层，缺省为 true</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">Boolean</span> Image.alphaBlending;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Boolean</span> Image.alphaBlending;
 </code></pre>
 <h2 id="成员函数">成员函数</h2>
 <h3 id="getData">getData</h3>
 <p><strong>按照指定的格式返回图像数据</strong></p>
-<pre><code class="lang-JavaScript">Buffer Image.getData(Integer format = gd.PNG,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div>Buffer Image.getData(Integer format = gd.PNG,
     Integer quality = <span class="hljs-number">85</span>) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
@@ -315,7 +317,9 @@
 <hr>
 <h3 id="save">save</h3>
 <p><strong>按照指定的格式将图像数据存入流对象</strong></p>
-<pre><code class="lang-JavaScript">Image.save(Stream stm,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div>Image.save(Stream stm,
     Integer format = gd.PNG,
     Integer quality = <span class="hljs-number">85</span>) <span class="hljs-keyword">async</span>;
 </code></pre>
@@ -327,7 +331,9 @@
 </ul>
 <hr>
 <p><strong>按照指定的格式将图像数据存入指定文件，文件将被强制覆盖</strong></p>
-<pre><code class="lang-JavaScript">Image.save(<span class="hljs-built_in">String</span> fname,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div>Image.save(<span class="hljs-built_in">String</span> fname,
     Integer format = gd.PNG,
     Integer quality = <span class="hljs-number">85</span>) <span class="hljs-keyword">async</span>;
 </code></pre>
@@ -340,7 +346,9 @@
 <hr>
 <h3 id="colorAllocate">colorAllocate</h3>
 <p><strong>为指定的颜色申请一个颜色号，对于 <a href=../../module/ifs/gd.md.html#PALETTE>gd.PALETTE</a> 图像，颜色号为调色板索引，对于 <a href=../../module/ifs/gd.md.html#TRUECOLOR>gd.TRUECOLOR</a> 图像，颜色号为 rgb 编码数值</strong></p>
-<pre><code class="lang-JavaScript">Integer Image.colorAllocate(Integer red,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div>Integer Image.colorAllocate(Integer red,
     Integer green,
     Integer blue);
 </code></pre>
@@ -356,7 +364,7 @@
 </ul>
 <hr>
 <p><strong>为指定的颜色申请一个颜色号，对于 <a href=../../module/ifs/gd.md.html#PALETTE>gd.PALETTE</a> 图像，颜色号为调色板索引，对于 <a href=../../module/ifs/gd.md.html#TRUECOLOR>gd.TRUECOLOR</a> 图像，颜色号为 rgb 编码数值</strong></p>
-<pre><code class="lang-JavaScript">Integer Image.colorAllocate(Integer color);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer Image.colorAllocate(Integer color);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -369,7 +377,10 @@
 <hr>
 <h3 id="colorAllocateAlpha">colorAllocateAlpha</h3>
 <p><strong>为指定的颜色及透明申请一个颜色号，对于 <a href=../../module/ifs/gd.md.html#PALETTE>gd.PALETTE</a> 图像，颜色号为调色板索引，对于 <a href=../../module/ifs/gd.md.html#TRUECOLOR>gd.TRUECOLOR</a> 图像，颜色号为 rgba 编码数值</strong></p>
-<pre><code class="lang-JavaScript">Integer Image.colorAllocateAlpha(Integer red,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4</div>Integer Image.colorAllocateAlpha(Integer red,
     Integer green,
     Integer blue,
     <span class="hljs-built_in">Number</span> alpha);
@@ -387,7 +398,7 @@
 </ul>
 <hr>
 <p><strong>为指定的颜色及透明申请一个颜色号，对于 <a href=../../module/ifs/gd.md.html#PALETTE>gd.PALETTE</a> 图像，颜色号为调色板索引，对于 <a href=../../module/ifs/gd.md.html#TRUECOLOR>gd.TRUECOLOR</a> 图像，颜色号为 rgba 编码数值</strong></p>
-<pre><code class="lang-JavaScript">Integer Image.colorAllocateAlpha(Integer color);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer Image.colorAllocateAlpha(Integer color);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -400,7 +411,9 @@
 <hr>
 <h3 id="colorClosest">colorClosest</h3>
 <p><strong>为指定的颜色查找一个最接近的颜色号，对于 <a href=../../module/ifs/gd.md.html#PALETTE>gd.PALETTE</a> 图像，颜色号为调色板索引，对于 <a href=../../module/ifs/gd.md.html#TRUECOLOR>gd.TRUECOLOR</a> 图像，颜色号为 rgb 编码数值</strong></p>
-<pre><code class="lang-JavaScript">Integer Image.colorClosest(Integer red,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div>Integer Image.colorClosest(Integer red,
     Integer green,
     Integer blue);
 </code></pre>
@@ -416,7 +429,7 @@
 </ul>
 <hr>
 <p><strong>为指定的颜色查找一个最接近的颜色号，对于 <a href=../../module/ifs/gd.md.html#PALETTE>gd.PALETTE</a> 图像，颜色号为调色板索引，对于 <a href=../../module/ifs/gd.md.html#TRUECOLOR>gd.TRUECOLOR</a> 图像，颜色号为 rgb 编码数值</strong></p>
-<pre><code class="lang-JavaScript">Integer Image.colorClosest(Integer color);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer Image.colorClosest(Integer color);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -429,7 +442,9 @@
 <hr>
 <h3 id="colorClosestHWB">colorClosestHWB</h3>
 <p><strong>为指定的颜色查找一个最接近的颜色号，此方法使用 Hue/White/Black 计算查找最接近颜色，对于 <a href=../../module/ifs/gd.md.html#PALETTE>gd.PALETTE</a> 图像，颜色号为调色板索引，对于 <a href=../../module/ifs/gd.md.html#TRUECOLOR>gd.TRUECOLOR</a> 图像，颜色号为 rgb 编码数值</strong></p>
-<pre><code class="lang-JavaScript">Integer Image.colorClosestHWB(Integer red,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div>Integer Image.colorClosestHWB(Integer red,
     Integer green,
     Integer blue);
 </code></pre>
@@ -445,7 +460,7 @@
 </ul>
 <hr>
 <p><strong>为指定的颜色查找一个最接近的颜色号，此方法使用 Hue/White/Black 计算查找最接近颜色，对于 <a href=../../module/ifs/gd.md.html#PALETTE>gd.PALETTE</a> 图像，颜色号为调色板索引，对于 <a href=../../module/ifs/gd.md.html#TRUECOLOR>gd.TRUECOLOR</a> 图像，颜色号为 rgb 编码数值</strong></p>
-<pre><code class="lang-JavaScript">Integer Image.colorClosestHWB(Integer color);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer Image.colorClosestHWB(Integer color);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -458,7 +473,10 @@
 <hr>
 <h3 id="colorClosestAlpha">colorClosestAlpha</h3>
 <p><strong>为指定的颜色及透明查找一个最接近的颜色号，对于 <a href=../../module/ifs/gd.md.html#PALETTE>gd.PALETTE</a> 图像，颜色号为调色板索引，对于 <a href=../../module/ifs/gd.md.html#TRUECOLOR>gd.TRUECOLOR</a> 图像，颜色号为 rgba 编码数值</strong></p>
-<pre><code class="lang-JavaScript">Integer Image.colorClosestAlpha(Integer red,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4</div>Integer Image.colorClosestAlpha(Integer red,
     Integer green,
     Integer blue,
     <span class="hljs-built_in">Number</span> alpha);
@@ -476,7 +494,7 @@
 </ul>
 <hr>
 <p><strong>为指定的颜色及透明查找一个最接近的颜色号，对于 <a href=../../module/ifs/gd.md.html#PALETTE>gd.PALETTE</a> 图像，颜色号为调色板索引，对于 <a href=../../module/ifs/gd.md.html#TRUECOLOR>gd.TRUECOLOR</a> 图像，颜色号为 rgba 编码数值</strong></p>
-<pre><code class="lang-JavaScript">Integer Image.colorClosestAlpha(Integer color);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer Image.colorClosestAlpha(Integer color);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -489,7 +507,9 @@
 <hr>
 <h3 id="colorExact">colorExact</h3>
 <p><strong>查找指定的颜色对应的颜色号，对于 <a href=../../module/ifs/gd.md.html#PALETTE>gd.PALETTE</a> 图像，颜色号为调色板索引，对于 <a href=../../module/ifs/gd.md.html#TRUECOLOR>gd.TRUECOLOR</a> 图像，颜色号为 rgb 编码数值</strong></p>
-<pre><code class="lang-JavaScript">Integer Image.colorExact(Integer red,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div>Integer Image.colorExact(Integer red,
     Integer green,
     Integer blue);
 </code></pre>
@@ -505,7 +525,7 @@
 </ul>
 <hr>
 <p><strong>查找指定的颜色对应的颜色号，对于 <a href=../../module/ifs/gd.md.html#PALETTE>gd.PALETTE</a> 图像，颜色号为调色板索引，对于 <a href=../../module/ifs/gd.md.html#TRUECOLOR>gd.TRUECOLOR</a> 图像，颜色号为 rgb 编码数值</strong></p>
-<pre><code class="lang-JavaScript">Integer Image.colorExact(Integer color);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer Image.colorExact(Integer color);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -518,7 +538,10 @@
 <hr>
 <h3 id="colorExactAlpha">colorExactAlpha</h3>
 <p><strong>查找指定的颜色及透明对应的颜色号，对于 <a href=../../module/ifs/gd.md.html#PALETTE>gd.PALETTE</a> 图像，颜色号为调色板索引，对于 <a href=../../module/ifs/gd.md.html#TRUECOLOR>gd.TRUECOLOR</a> 图像，颜色号为 rgba 编码数值</strong></p>
-<pre><code class="lang-JavaScript">Integer Image.colorExactAlpha(Integer red,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4</div>Integer Image.colorExactAlpha(Integer red,
     Integer green,
     Integer blue,
     <span class="hljs-built_in">Number</span> alpha);
@@ -536,7 +559,7 @@
 </ul>
 <hr>
 <p><strong>查找指定的颜色及透明对应的颜色号，对于 <a href=../../module/ifs/gd.md.html#PALETTE>gd.PALETTE</a> 图像，颜色号为调色板索引，对于 <a href=../../module/ifs/gd.md.html#TRUECOLOR>gd.TRUECOLOR</a> 图像，颜色号为 rgba 编码数值</strong></p>
-<pre><code class="lang-JavaScript">Integer Image.colorExactAlpha(Integer color);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer Image.colorExactAlpha(Integer color);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -549,7 +572,9 @@
 <hr>
 <h3 id="colorResolve">colorResolve</h3>
 <p><strong>查找指定的颜色对应的颜色号，如果颜色不存在，则为其申请一个新颜色号，对于 <a href=../../module/ifs/gd.md.html#PALETTE>gd.PALETTE</a> 图像，颜色号为调色板索引，对于 <a href=../../module/ifs/gd.md.html#TRUECOLOR>gd.TRUECOLOR</a> 图像，颜色号为 rgb 编码数值</strong></p>
-<pre><code class="lang-JavaScript">Integer Image.colorResolve(Integer red,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div>Integer Image.colorResolve(Integer red,
     Integer green,
     Integer blue);
 </code></pre>
@@ -565,7 +590,7 @@
 </ul>
 <hr>
 <p><strong>查找指定的颜色对应的颜色号，如果颜色不存在，则为其申请一个新颜色号，对于 <a href=../../module/ifs/gd.md.html#PALETTE>gd.PALETTE</a> 图像，颜色号为调色板索引，对于 <a href=../../module/ifs/gd.md.html#TRUECOLOR>gd.TRUECOLOR</a> 图像，颜色号为 rgb 编码数值</strong></p>
-<pre><code class="lang-JavaScript">Integer Image.colorResolve(Integer color);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer Image.colorResolve(Integer color);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -578,7 +603,10 @@
 <hr>
 <h3 id="colorResolveAlpha">colorResolveAlpha</h3>
 <p><strong>查找指定的颜色及透明对应的颜色号，如果颜色不存在，则为其申请一个新颜色号，对于 <a href=../../module/ifs/gd.md.html#PALETTE>gd.PALETTE</a> 图像，颜色号为调色板索引，对于 <a href=../../module/ifs/gd.md.html#TRUECOLOR>gd.TRUECOLOR</a> 图像，颜色号为 rgba 编码数值</strong></p>
-<pre><code class="lang-JavaScript">Integer Image.colorResolveAlpha(Integer red,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4</div>Integer Image.colorResolveAlpha(Integer red,
     Integer green,
     Integer blue,
     <span class="hljs-built_in">Number</span> alpha);
@@ -596,7 +624,7 @@
 </ul>
 <hr>
 <p><strong>查找指定的颜色及透明对应的颜色号，如果颜色不存在，则为其申请一个新颜色号，对于 <a href=../../module/ifs/gd.md.html#PALETTE>gd.PALETTE</a> 图像，颜色号为调色板索引，对于 <a href=../../module/ifs/gd.md.html#TRUECOLOR>gd.TRUECOLOR</a> 图像，颜色号为 rgba 编码数值</strong></p>
-<pre><code class="lang-JavaScript">Integer Image.colorResolveAlpha(Integer color);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer Image.colorResolveAlpha(Integer color);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -609,7 +637,7 @@
 <hr>
 <h3 id="colorDeallocate">colorDeallocate</h3>
 <p><strong>释放指定的颜色号，释放的颜色号将会被再次申请后替换</strong></p>
-<pre><code class="lang-JavaScript">Image.colorDeallocate(Integer color);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Image.colorDeallocate(Integer color);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -618,7 +646,10 @@
 <hr>
 <h3 id="clip">clip</h3>
 <p><strong>设定绘图的剪切窗口，设定后，所有的绘制将被剪切在窗口内部</strong></p>
-<pre><code class="lang-JavaScript">Image.clip(Integer x1,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4</div>Image.clip(Integer x1,
     Integer y1,
     Integer x2,
     Integer y2);
@@ -633,7 +664,8 @@
 <hr>
 <h3 id="getPixel">getPixel</h3>
 <p><strong>查询指定位置点的颜色</strong></p>
-<pre><code class="lang-JavaScript">Integer Image.getPixel(Integer x,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div>Integer Image.getPixel(Integer x,
     Integer y);
 </code></pre>
 <p>调用参数:</p>
@@ -648,7 +680,8 @@
 <hr>
 <h3 id="getTrueColorPixel">getTrueColorPixel</h3>
 <p><strong>查询指定位置点的真彩色颜色</strong></p>
-<pre><code class="lang-JavaScript">Integer Image.getTrueColorPixel(Integer x,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div>Integer Image.getTrueColorPixel(Integer x,
     Integer y);
 </code></pre>
 <p>调用参数:</p>
@@ -663,7 +696,9 @@
 <hr>
 <h3 id="setPixel">setPixel</h3>
 <p><strong>在指定位置画一个点</strong></p>
-<pre><code class="lang-JavaScript">Image.setPixel(Integer x,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div>Image.setPixel(Integer x,
     Integer y,
     Integer color);
 </code></pre>
@@ -676,7 +711,7 @@
 <hr>
 <h3 id="setThickness">setThickness</h3>
 <p><strong>设定画线的宽度，line, rectangle, arc 等方法画线时缺省宽度为一个像素，可使用此方法改变线的宽度</strong></p>
-<pre><code class="lang-JavaScript">Image.setThickness(Integer thickness);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Image.setThickness(Integer thickness);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -685,7 +720,11 @@
 <hr>
 <h3 id="line">line</h3>
 <p><strong>在指定的位置画一条线</strong></p>
-<pre><code class="lang-JavaScript">Image.line(Integer x1,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5</div>Image.line(Integer x1,
     Integer y1,
     Integer x2,
     Integer y2,
@@ -702,7 +741,11 @@
 <hr>
 <h3 id="rectangle">rectangle</h3>
 <p><strong>在指定的位置画一个矩形</strong></p>
-<pre><code class="lang-JavaScript">Image.rectangle(Integer x1,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5</div>Image.rectangle(Integer x1,
     Integer y1,
     Integer x2,
     Integer y2,
@@ -719,7 +762,11 @@
 <hr>
 <h3 id="filledRectangle">filledRectangle</h3>
 <p><strong>在指定的位置画一个填充的矩形</strong></p>
-<pre><code class="lang-JavaScript">Image.filledRectangle(Integer x1,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5</div>Image.filledRectangle(Integer x1,
     Integer y1,
     Integer x2,
     Integer y2,
@@ -736,7 +783,8 @@
 <hr>
 <h3 id="polygon">polygon</h3>
 <p><strong>根据给定的点绘制一个多边形</strong></p>
-<pre><code class="lang-JavaScript">Image.polygon(<span class="hljs-built_in">Array</span> points,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div>Image.polygon(<span class="hljs-built_in">Array</span> points,
     Integer color);
 </code></pre>
 <p>调用参数:</p>
@@ -747,7 +795,8 @@
 <hr>
 <h3 id="openPolygon">openPolygon</h3>
 <p><strong>根据给定的点绘制一个开放多边形</strong></p>
-<pre><code class="lang-JavaScript">Image.openPolygon(<span class="hljs-built_in">Array</span> points,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div>Image.openPolygon(<span class="hljs-built_in">Array</span> points,
     Integer color);
 </code></pre>
 <p>调用参数:</p>
@@ -758,7 +807,8 @@
 <hr>
 <h3 id="filledPolygon">filledPolygon</h3>
 <p><strong>根据给定的点绘制一个填充多边形</strong></p>
-<pre><code class="lang-JavaScript">Image.filledPolygon(<span class="hljs-built_in">Array</span> points,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div>Image.filledPolygon(<span class="hljs-built_in">Array</span> points,
     Integer color);
 </code></pre>
 <p>调用参数:</p>
@@ -769,7 +819,11 @@
 <hr>
 <h3 id="ellipse">ellipse</h3>
 <p><strong>画一个椭圆</strong></p>
-<pre><code class="lang-JavaScript">Image.ellipse(Integer x,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5</div>Image.ellipse(Integer x,
     Integer y,
     Integer width,
     Integer height,
@@ -786,7 +840,11 @@
 <hr>
 <h3 id="filledEllipse">filledEllipse</h3>
 <p><strong>画一个填充的椭圆</strong></p>
-<pre><code class="lang-JavaScript">Image.filledEllipse(Integer x,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5</div>Image.filledEllipse(Integer x,
     Integer y,
     Integer width,
     Integer height,
@@ -803,7 +861,13 @@
 <hr>
 <h3 id="arc">arc</h3>
 <p><strong>画一个扇形</strong></p>
-<pre><code class="lang-JavaScript">Image.arc(Integer x,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7</div>Image.arc(Integer x,
     Integer y,
     Integer width,
     Integer height,
@@ -824,7 +888,14 @@
 <hr>
 <h3 id="filledArc">filledArc</h3>
 <p><strong>画一个填充扇形</strong></p>
-<pre><code class="lang-JavaScript">Image.filledArc(Integer x,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8</div>Image.filledArc(Integer x,
     Integer y,
     Integer width,
     Integer height,
@@ -847,7 +918,9 @@
 <hr>
 <h3 id="fill">fill</h3>
 <p><strong>从指定的点开始填充封闭区域</strong></p>
-<pre><code class="lang-JavaScript">Image.fill(Integer x,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div>Image.fill(Integer x,
     Integer y,
     Integer color);
 </code></pre>
@@ -860,7 +933,10 @@
 <hr>
 <h3 id="fillToBorder">fillToBorder</h3>
 <p><strong>从指定的点开始在指定颜色的边框内填充封闭区域</strong></p>
-<pre><code class="lang-JavaScript">Image.fillToBorder(Integer x,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4</div>Image.fillToBorder(Integer x,
     Integer y,
     Integer borderColor,
     Integer color);
@@ -875,7 +951,8 @@
 <hr>
 <h3 id="colorReplace">colorReplace</h3>
 <p><strong>替换图像中指定的颜色为新颜色</strong></p>
-<pre><code class="lang-JavaScript">Image.colorReplace(Integer src,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div>Image.colorReplace(Integer src,
     Integer dst) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
@@ -886,7 +963,7 @@
 <hr>
 <h3 id="clone">clone</h3>
 <p><strong>复制当前图像为一个新图像</strong></p>
-<pre><code class="lang-JavaScript">Image Image.clone() <span class="hljs-keyword">async</span>;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Image Image.clone() <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>返回结果:</p>
 <ul>
@@ -895,7 +972,8 @@
 <hr>
 <h3 id="resample">resample</h3>
 <p><strong>根据图像拉伸生成一个新尺寸的图像</strong></p>
-<pre><code class="lang-JavaScript">Image Image.resample(Integer width,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div>Image Image.resample(Integer width,
     Integer height) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
@@ -910,7 +988,10 @@
 <hr>
 <h3 id="crop">crop</h3>
 <p><strong>剪切图像的一部分为一个新的图像</strong></p>
-<pre><code class="lang-JavaScript">Image Image.crop(Integer x,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4</div>Image Image.crop(Integer x,
     Integer y,
     Integer width,
     Integer height) <span class="hljs-keyword">async</span>;
@@ -929,7 +1010,7 @@
 <hr>
 <h3 id="flip">flip</h3>
 <p><strong>镜像当前图像</strong></p>
-<pre><code class="lang-JavaScript">Image.flip(Integer dir = gd.HORIZONTAL) <span class="hljs-keyword">async</span>;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Image.flip(Integer dir = gd.HORIZONTAL) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -938,7 +1019,7 @@
 <hr>
 <h3 id="rotate">rotate</h3>
 <p><strong>旋转当前图像</strong></p>
-<pre><code class="lang-JavaScript">Image.rotate(Integer dir) <span class="hljs-keyword">async</span>;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Image.rotate(Integer dir) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -947,7 +1028,7 @@
 <hr>
 <h3 id="convert">convert</h3>
 <p><strong>转换当前图像类型</strong></p>
-<pre><code class="lang-JavaScript">Image.convert(Integer color = gd.TRUECOLOR) <span class="hljs-keyword">async</span>;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Image.convert(Integer color = gd.TRUECOLOR) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -956,7 +1037,13 @@
 <hr>
 <h3 id="copy">copy</h3>
 <p><strong>从一个图像中复制一个区域到指定的位置</strong></p>
-<pre><code class="lang-JavaScript">Image.copy(Image source,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7</div>Image.copy(Image source,
     Integer dstX,
     Integer dstY,
     Integer srcX,
@@ -977,7 +1064,14 @@
 <hr>
 <h3 id="copyMerge">copyMerge</h3>
 <p><strong>从一个图像中复制一个区域覆盖到指定的位置</strong></p>
-<pre><code class="lang-JavaScript">Image.copyMerge(Image source,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8</div>Image.copyMerge(Image source,
     Integer dstX,
     Integer dstY,
     Integer srcX,
@@ -1000,7 +1094,14 @@
 <hr>
 <h3 id="copyMergeGray">copyMergeGray</h3>
 <p><strong>从一个图像中复制一个区域的灰度覆盖到指定的位置</strong></p>
-<pre><code class="lang-JavaScript">Image.copyMergeGray(Image source,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8</div>Image.copyMergeGray(Image source,
     Integer dstX,
     Integer dstY,
     Integer srcX,
@@ -1023,7 +1124,15 @@
 <hr>
 <h3 id="copyResized">copyResized</h3>
 <p><strong>将一个图像中的一个区域拉伸后复制到指定的位置</strong></p>
-<pre><code class="lang-JavaScript">Image.copyResized(Image source,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9</div>Image.copyResized(Image source,
     Integer dstX,
     Integer dstY,
     Integer srcX,
@@ -1048,7 +1157,15 @@
 <hr>
 <h3 id="copyResampled">copyResampled</h3>
 <p><strong>将一个图像中的一个区域拉伸后复制到指定的位置，不同与 copyResized，此方法拉伸时会对图像进行抖动</strong></p>
-<pre><code class="lang-JavaScript">Image.copyResampled(Image source,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9</div>Image.copyResampled(Image source,
     Integer dstX,
     Integer dstY,
     Integer srcX,
@@ -1073,7 +1190,14 @@
 <hr>
 <h3 id="copyRotated">copyRotated</h3>
 <p><strong>将一个图像中的一个区域旋转后复制到指定的位置</strong></p>
-<pre><code class="lang-JavaScript">Image.copyRotated(Image source,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8</div>Image.copyRotated(Image source,
     <span class="hljs-built_in">Number</span> dstX,
     <span class="hljs-built_in">Number</span> dstY,
     Integer srcX,
@@ -1096,7 +1220,11 @@
 <hr>
 <h3 id="filter">filter</h3>
 <p><strong>把过滤器 filterType应用到图像上，根据过滤器类型传入所需参数</strong></p>
-<pre><code class="lang-JavaScript">Image.filter(Integer filterType,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5</div>Image.filter(Integer filterType,
     <span class="hljs-built_in">Number</span> arg1 = <span class="hljs-number">0</span>,
     <span class="hljs-built_in">Number</span> arg2 = <span class="hljs-number">0</span>,
     <span class="hljs-built_in">Number</span> arg3 = <span class="hljs-number">0</span>,
@@ -1127,7 +1255,11 @@
 <hr>
 <h3 id="affine">affine</h3>
 <p><strong>根据给定的矩阵，对当前图像进行仿射</strong></p>
-<pre><code class="lang-JavaScript">Image Image.affine(<span class="hljs-built_in">Array</span> affine,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5</div>Image Image.affine(<span class="hljs-built_in">Array</span> affine,
     Integer x = <span class="hljs-number">-1</span>,
     Integer y = <span class="hljs-number">-1</span>,
     Integer width = <span class="hljs-number">-1</span>,
@@ -1146,14 +1278,16 @@
 <li>Image, 返回仿射后的图像</li>
 </ul>
 <p>参数 affine 是一个数组：</p>
-<pre><code class="lang-JavaScript">affine = [a0, a1, b0, b1, a2, b2];
-x &#39; = a0x + a1y + a2;
-y &#39; = b0x + b1y + b2;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div>affine = [a0, a1, b0, b1, a2, b2];
+x ' = a0x + a1y + a2;
+y ' = b0x + b1y + b2;
 </code></pre>
 <hr>
 <h3 id="gaussianBlur">gaussianBlur</h3>
 <p><strong>对当前图像进行高斯模糊处理</strong></p>
-<pre><code class="lang-JavaScript">Image.gaussianBlur(Integer radius) <span class="hljs-keyword">async</span>;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Image.gaussianBlur(Integer radius) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -1162,12 +1296,12 @@ y &#39; = b0x + b1y + b2;
 <hr>
 <h3 id="dispose">dispose</h3>
 <p><strong>强制回收对象，调用此方法后，对象资源将立即释放</strong></p>
-<pre><code class="lang-JavaScript">Image.dispose();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Image.dispose();
 </code></pre>
 <hr>
 <h3 id="equals">equals</h3>
 <p><strong>比较当前对象与给定的对象是否相等</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">Boolean</span> Image.equals(object expected);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Boolean</span> Image.equals(object expected);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -1180,7 +1314,7 @@ y &#39; = b0x + b1y + b2;
 <hr>
 <h3 id="toString">toString</h3>
 <p><strong>返回对象的字符串表示，一般返回 &quot;[Native Object]&quot;，对象可以根据自己的特性重新实现</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> Image.toString();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> Image.toString();
 </code></pre>
 <p>返回结果:</p>
 <ul>
@@ -1189,7 +1323,7 @@ y &#39; = b0x + b1y + b2;
 <hr>
 <h3 id="toJSON">toJSON</h3>
 <p><strong>返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合</strong></p>
-<pre><code class="lang-JavaScript">Value Image.toJSON(<span class="hljs-built_in">String</span> key = <span class="hljs-string">""</span>);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Value Image.toJSON(<span class="hljs-built_in">String</span> key = <span class="hljs-string">""</span>);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -1202,7 +1336,7 @@ y &#39; = b0x + b1y + b2;
 <hr>
 <h3 id="valueOf">valueOf</h3>
 <p><strong>返回对象本身的数值</strong></p>
-<pre><code class="lang-JavaScript">Value Image.valueOf();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Value Image.valueOf();
 </code></pre>
 <p>返回结果:</p>
 <ul>

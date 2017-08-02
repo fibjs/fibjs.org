@@ -155,7 +155,7 @@
  </div></div></div>  </div></div><div class=content><div class=social-share data-sites=weibo,twitter data-description=分享></div> <h1 id="对象-PKey">对象 PKey</h1>
 <p>不对称加密算法对象</p>
 <p>PKey 对象属于 <a href=../../module/ifs/crypto.md.html>crypto</a> 模块，创建：</p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">var</span> k = <span class="hljs-keyword">new</span> crypto.PKey();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">var</span> k = <span class="hljs-keyword">new</span> crypto.PKey();
 </code></pre>
 <h2 id="继承关系">继承关系</h2>
 <div class="dot">
@@ -223,22 +223,22 @@
 <h2 id="构造函数">构造函数</h2>
 <h3 id="PKey">PKey</h3>
 <p><strong>PKey 构造函数</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">new</span> PKey();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">new</span> PKey();
 </code></pre>
 <h2 id="成员属性">成员属性</h2>
 <h3 id="name">name</h3>
 <p><strong>String, 返回当前算法名称</strong></p>
-<pre><code class="lang-JavaScript">readonly <span class="hljs-built_in">String</span> PKey.name;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly <span class="hljs-built_in">String</span> PKey.name;
 </code></pre>
 <hr>
 <h3 id="keySize">keySize</h3>
 <p><strong>Integer, 返回当前算法密码长度，以位为单位</strong></p>
-<pre><code class="lang-JavaScript">readonly Integer PKey.keySize;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly Integer PKey.keySize;
 </code></pre>
 <hr>
 <h3 id="publicKey">publicKey</h3>
 <p><strong>PKey, 返回当前密钥的公钥</strong></p>
-<pre><code class="lang-JavaScript">readonly PKey PKey.publicKey;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly PKey PKey.publicKey;
 </code></pre>
 <p>返回结果:</p>
 <ul>
@@ -247,7 +247,7 @@
 <h2 id="成员函数">成员函数</h2>
 <h3 id="genRsaKey">genRsaKey</h3>
 <p><strong>生成一个 RSA 私钥</strong></p>
-<pre><code class="lang-JavaScript">PKey.genRsaKey(Integer size) <span class="hljs-keyword">async</span>;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>PKey.genRsaKey(Integer size) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -256,7 +256,7 @@
 <hr>
 <h3 id="genEcKey">genEcKey</h3>
 <p><strong>生成一个 EC 私钥</strong></p>
-<pre><code class="lang-JavaScript">PKey.genEcKey(<span class="hljs-built_in">String</span> curve = <span class="hljs-string">"secp521r1"</span>) <span class="hljs-keyword">async</span>;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>PKey.genEcKey(<span class="hljs-built_in">String</span> curve = <span class="hljs-string">"secp521r1"</span>) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -265,7 +265,7 @@
 <hr>
 <h3 id="isPrivate">isPrivate</h3>
 <p><strong>查询当前密钥是否为私钥</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">Boolean</span> PKey.isPrivate();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Boolean</span> PKey.isPrivate();
 </code></pre>
 <p>返回结果:</p>
 <ul>
@@ -274,7 +274,7 @@
 <hr>
 <h3 id="clone">clone</h3>
 <p><strong>复制当前密钥</strong></p>
-<pre><code class="lang-JavaScript">PKey PKey.clone();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>PKey PKey.clone();
 </code></pre>
 <p>返回结果:</p>
 <ul>
@@ -283,7 +283,8 @@
 <hr>
 <h3 id="importKey">importKey</h3>
 <p><strong>加载一个 DER 格式的密钥</strong></p>
-<pre><code class="lang-JavaScript">PKey.importKey(Buffer DerKey,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div>PKey.importKey(Buffer DerKey,
     <span class="hljs-built_in">String</span> password = <span class="hljs-string">""</span>);
 </code></pre>
 <p>调用参数:</p>
@@ -293,7 +294,8 @@
 </ul>
 <hr>
 <p><strong>加载一个 PEM 格式的密钥</strong></p>
-<pre><code class="lang-JavaScript">PKey.importKey(<span class="hljs-built_in">String</span> pemKey,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div>PKey.importKey(<span class="hljs-built_in">String</span> pemKey,
     <span class="hljs-built_in">String</span> password = <span class="hljs-string">""</span>);
 </code></pre>
 <p>调用参数:</p>
@@ -304,7 +306,8 @@
 <hr>
 <h3 id="importFile">importFile</h3>
 <p><strong>加载一个 PEM/DER 格式的密钥文件</strong></p>
-<pre><code class="lang-JavaScript">PKey.importFile(<span class="hljs-built_in">String</span> filename,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div>PKey.importFile(<span class="hljs-built_in">String</span> filename,
     <span class="hljs-built_in">String</span> password = <span class="hljs-string">""</span>);
 </code></pre>
 <p>调用参数:</p>
@@ -315,7 +318,7 @@
 <hr>
 <h3 id="exportPem">exportPem</h3>
 <p><strong>返回当前 key 的 PEM 格式编码</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> PKey.exportPem();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> PKey.exportPem();
 </code></pre>
 <p>返回结果:</p>
 <ul>
@@ -324,7 +327,7 @@
 <hr>
 <h3 id="exportDer">exportDer</h3>
 <p><strong>返回当前 key 的 DER 格式编码</strong></p>
-<pre><code class="lang-JavaScript">Buffer PKey.exportDer();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Buffer PKey.exportDer();
 </code></pre>
 <p>返回结果:</p>
 <ul>
@@ -333,7 +336,7 @@
 <hr>
 <h3 id="encrypt">encrypt</h3>
 <p><strong>使用当前算法密码公钥加密数据</strong></p>
-<pre><code class="lang-JavaScript">Buffer PKey.encrypt(Buffer data) <span class="hljs-keyword">async</span>;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Buffer PKey.encrypt(Buffer data) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -346,7 +349,7 @@
 <hr>
 <h3 id="decrypt">decrypt</h3>
 <p><strong>使用当前算法密码私钥解密数据</strong></p>
-<pre><code class="lang-JavaScript">Buffer PKey.decrypt(Buffer data) <span class="hljs-keyword">async</span>;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Buffer PKey.decrypt(Buffer data) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -359,7 +362,8 @@
 <hr>
 <h3 id="sign">sign</h3>
 <p><strong>使用当前算法密码私钥签名数据</strong></p>
-<pre><code class="lang-JavaScript">Buffer PKey.sign(Buffer data,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div>Buffer PKey.sign(Buffer data,
     Integer alg = <span class="hljs-number">0</span>) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
@@ -374,7 +378,8 @@
 <hr>
 <h3 id="verify">verify</h3>
 <p><strong>使用当前算法密码公钥验证数据</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">Boolean</span> PKey.verify(Buffer sign,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-built_in">Boolean</span> PKey.verify(Buffer sign,
     Buffer data) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
@@ -389,12 +394,12 @@
 <hr>
 <h3 id="dispose">dispose</h3>
 <p><strong>强制回收对象，调用此方法后，对象资源将立即释放</strong></p>
-<pre><code class="lang-JavaScript">PKey.dispose();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>PKey.dispose();
 </code></pre>
 <hr>
 <h3 id="equals">equals</h3>
 <p><strong>比较当前对象与给定的对象是否相等</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">Boolean</span> PKey.equals(object expected);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Boolean</span> PKey.equals(object expected);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -407,7 +412,7 @@
 <hr>
 <h3 id="toString">toString</h3>
 <p><strong>返回对象的字符串表示，一般返回 &quot;[Native Object]&quot;，对象可以根据自己的特性重新实现</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> PKey.toString();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> PKey.toString();
 </code></pre>
 <p>返回结果:</p>
 <ul>
@@ -416,7 +421,7 @@
 <hr>
 <h3 id="toJSON">toJSON</h3>
 <p><strong>返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合</strong></p>
-<pre><code class="lang-JavaScript">Value PKey.toJSON(<span class="hljs-built_in">String</span> key = <span class="hljs-string">""</span>);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Value PKey.toJSON(<span class="hljs-built_in">String</span> key = <span class="hljs-string">""</span>);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -429,7 +434,7 @@
 <hr>
 <h3 id="valueOf">valueOf</h3>
 <p><strong>返回对象本身的数值</strong></p>
-<pre><code class="lang-JavaScript">Value PKey.valueOf();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Value PKey.valueOf();
 </code></pre>
 <p>返回结果:</p>
 <ul>

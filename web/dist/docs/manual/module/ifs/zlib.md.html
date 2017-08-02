@@ -155,12 +155,13 @@
  </div></div></div>  </div></div><div class=content><div class=social-share data-sites=weibo,twitter data-description=分享></div> <h1 id="模块-zlib">模块 zlib</h1>
 <p>zlib 压缩解压模块</p>
 <p>使用方法：</p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">var</span> zlib = <span class="hljs-built_in">require</span>(<span class="hljs-string">'zlib'</span>);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">var</span> zlib = <span class="hljs-built_in">require</span>(<span class="hljs-string">'zlib'</span>);
 </code></pre>
 <h2 id="静态函数">静态函数</h2>
 <h3 id="deflate">deflate</h3>
 <p><strong>使用 deflate 算法压缩数据(zlib格式)</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> Buffer zlib.deflate(Buffer data,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> Buffer zlib.deflate(Buffer data,
     Integer level = DEFAULT_COMPRESSION) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
@@ -175,7 +176,9 @@
 <hr>
 <h3 id="deflateTo">deflateTo</h3>
 <p><strong>使用 deflate 算法压缩数据到流对象中(zlib格式)</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> zlib.deflateTo(Buffer data,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">static</span> zlib.deflateTo(Buffer data,
     Stream stm,
     Integer level = DEFAULT_COMPRESSION) <span class="hljs-keyword">async</span>;
 </code></pre>
@@ -187,7 +190,9 @@
 </ul>
 <hr>
 <p><strong>使用 deflate 算法压缩源流中的数据到流对象中(zlib格式)</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> zlib.deflateTo(Stream src,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">static</span> zlib.deflateTo(Stream src,
     Stream stm,
     Integer level = DEFAULT_COMPRESSION) <span class="hljs-keyword">async</span>;
 </code></pre>
@@ -200,7 +205,7 @@
 <hr>
 <h3 id="inflate">inflate</h3>
 <p><strong>解压缩 deflate 算法压缩的数据(zlib格式)</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> Buffer zlib.inflate(Buffer data) <span class="hljs-keyword">async</span>;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Buffer zlib.inflate(Buffer data) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -213,7 +218,8 @@
 <hr>
 <h3 id="inflateTo">inflateTo</h3>
 <p><strong>解压缩 deflate 算法压缩的数据到流对象中(zlib格式)</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> zlib.inflateTo(Buffer data,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> zlib.inflateTo(Buffer data,
     Stream stm) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
@@ -223,7 +229,8 @@
 </ul>
 <hr>
 <p><strong>解压缩源流中 deflate 算法压缩的数据到流对象中(zlib格式)</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> zlib.inflateTo(Stream src,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> zlib.inflateTo(Stream src,
     Stream stm) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
@@ -234,7 +241,7 @@
 <hr>
 <h3 id="gzip">gzip</h3>
 <p><strong>使用 gzip 算法压缩数据</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> Buffer zlib.gzip(Buffer data) <span class="hljs-keyword">async</span>;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Buffer zlib.gzip(Buffer data) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -247,7 +254,8 @@
 <hr>
 <h3 id="gzipTo">gzipTo</h3>
 <p><strong>使用 gzip 算法压缩数据到流对象中</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> zlib.gzipTo(Buffer data,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> zlib.gzipTo(Buffer data,
     Stream stm) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
@@ -257,7 +265,8 @@
 </ul>
 <hr>
 <p><strong>使用 gzip 算法压缩源流中的数据到流对象中</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> zlib.gzipTo(Stream src,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> zlib.gzipTo(Stream src,
     Stream stm) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
@@ -268,7 +277,7 @@
 <hr>
 <h3 id="gunzip">gunzip</h3>
 <p><strong>解压缩 gzip 算法压缩的数据</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> Buffer zlib.gunzip(Buffer data) <span class="hljs-keyword">async</span>;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Buffer zlib.gunzip(Buffer data) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -281,7 +290,8 @@
 <hr>
 <h3 id="gunzipTo">gunzipTo</h3>
 <p><strong>解压缩 gzip 算法压缩的数据到流对象中</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> zlib.gunzipTo(Buffer data,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> zlib.gunzipTo(Buffer data,
     Stream stm) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
@@ -291,7 +301,8 @@
 </ul>
 <hr>
 <p><strong>解压缩源流中 gzip 算法压缩的数据到流对象中</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> zlib.gunzipTo(Stream src,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> zlib.gunzipTo(Stream src,
     Stream stm) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
@@ -302,7 +313,8 @@
 <hr>
 <h3 id="deflateRaw">deflateRaw</h3>
 <p><strong>使用 deflate 算法压缩数据(deflateRaw)</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> Buffer zlib.deflateRaw(Buffer data,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> Buffer zlib.deflateRaw(Buffer data,
     Integer level = DEFAULT_COMPRESSION) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
@@ -317,7 +329,9 @@
 <hr>
 <h3 id="deflateRawTo">deflateRawTo</h3>
 <p><strong>使用 deflate 算法压缩数据到流对象中(deflateRaw)</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> zlib.deflateRawTo(Buffer data,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">static</span> zlib.deflateRawTo(Buffer data,
     Stream stm,
     Integer level = DEFAULT_COMPRESSION) <span class="hljs-keyword">async</span>;
 </code></pre>
@@ -329,7 +343,9 @@
 </ul>
 <hr>
 <p><strong>使用 deflate 算法压缩源流中的数据到流对象中(deflateRaw)</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> zlib.deflateRawTo(Stream src,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">static</span> zlib.deflateRawTo(Stream src,
     Stream stm,
     Integer level = DEFAULT_COMPRESSION) <span class="hljs-keyword">async</span>;
 </code></pre>
@@ -342,7 +358,7 @@
 <hr>
 <h3 id="inflateRaw">inflateRaw</h3>
 <p><strong>解压缩 deflate 算法压缩的数据(inflateRaw)</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> Buffer zlib.inflateRaw(Buffer data) <span class="hljs-keyword">async</span>;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Buffer zlib.inflateRaw(Buffer data) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -355,7 +371,8 @@
 <hr>
 <h3 id="inflateRawTo">inflateRawTo</h3>
 <p><strong>解压缩 deflate 算法压缩的数据到流对象中(inflateRaw)</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> zlib.inflateRawTo(Buffer data,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> zlib.inflateRawTo(Buffer data,
     Stream stm) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
@@ -365,7 +382,8 @@
 </ul>
 <hr>
 <p><strong>解压缩源流中 deflate 算法压缩的数据到流对象中(inflateRaw)</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> zlib.inflateRawTo(Stream src,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> zlib.inflateRawTo(Stream src,
     Stream stm) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
@@ -376,21 +394,21 @@
 <h2 id="常量">常量</h2>
 <h3 id="NO_COMPRESSION">NO_COMPRESSION</h3>
 <p><strong>deflate 压缩级别，设定不压缩</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">const</span> zlib.NO_COMPRESSION = <span class="hljs-number">0</span>;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> zlib.NO_COMPRESSION = <span class="hljs-number">0</span>;
 </code></pre>
 <hr>
 <h3 id="BEST_SPEED">BEST_SPEED</h3>
 <p><strong>deflate 压缩级别，设定最快压缩</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">const</span> zlib.BEST_SPEED = <span class="hljs-number">1</span>;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> zlib.BEST_SPEED = <span class="hljs-number">1</span>;
 </code></pre>
 <hr>
 <h3 id="BEST_COMPRESSION">BEST_COMPRESSION</h3>
 <p><strong>deflate 压缩级别，设定最高压缩</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">const</span> zlib.BEST_COMPRESSION = <span class="hljs-number">9</span>;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> zlib.BEST_COMPRESSION = <span class="hljs-number">9</span>;
 </code></pre>
 <hr>
 <h3 id="DEFAULT_COMPRESSION">DEFAULT_COMPRESSION</h3>
 <p><strong>deflate 压缩级别，设定缺省设置</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">const</span> zlib.DEFAULT_COMPRESSION = <span class="hljs-number">-1</span>;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> zlib.DEFAULT_COMPRESSION = <span class="hljs-number">-1</span>;
 </code></pre>
  </div><div class="sidebar hidden-sm hidden-xs"><div id=toc></div></div></div><div class=container><div class=footer><p>&copy; 2017 fibjs.org</p></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="Click to return on the top page" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=../../../../js/common.js></script><script type=text/javascript src=../../../../js/docs.js></script></body></html>

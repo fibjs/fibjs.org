@@ -157,27 +157,28 @@
 <h2 id="对象">对象</h2>
 <h3 id="Buffer">Buffer</h3>
 <p><strong>二进制数据缓存对象，用于 <a href=io.md.html>io</a> 读写的数据处理，参见 <a href=../../object/ifs/buffer.md.html>Buffer</a> 对象。</strong></p>
-<pre><code class="lang-JavaScript">Buffer global.Buffer;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Buffer global.Buffer;
 </code></pre>
 <hr>
 <h3 id="Int64">Int64</h3>
 <p><strong>64位整数对象，参见 <a href=../../object/ifs/int64.md.html>Int64</a> 对象。</strong></p>
-<pre><code class="lang-JavaScript">Int64 global.Int64;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Int64 global.Int64;
 </code></pre>
 <hr>
 <h3 id="console">console</h3>
 <p><strong>控制台访问对象</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">console</span> global.console;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">console</span> global.console;
 </code></pre>
 <hr>
 <h3 id="process">process</h3>
 <p><strong>控制台访问对象</strong></p>
-<pre><code class="lang-JavaScript">process global.process;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>process global.process;
 </code></pre>
 <h2 id="静态函数">静态函数</h2>
 <h3 id="run">run</h3>
 <p><strong>运行一个脚本</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> global.run(<span class="hljs-built_in">String</span> fname,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> global.run(<span class="hljs-built_in">String</span> fname,
     <span class="hljs-built_in">Array</span> argv = []);
 </code></pre>
 <p>调用参数:</p>
@@ -188,7 +189,7 @@
 <hr>
 <h3 id="require">require</h3>
 <p><strong>加载一个模块并返回模块对象，更多信息参阅 @ref module</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> Value global.require(<span class="hljs-built_in">String</span> id);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Value global.require(<span class="hljs-built_in">String</span> id);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -438,7 +439,7 @@
 <hr>
 <h3 id="clearInterval">clearInterval</h3>
 <p><strong>清除指定的定时器</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> global.clearInterval(Timer t);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> global.clearInterval(Timer t);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -447,7 +448,7 @@
 <hr>
 <h3 id="clearTimeout">clearTimeout</h3>
 <p><strong>清除指定的定时器</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> global.clearTimeout(Timer t);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> global.clearTimeout(Timer t);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -456,7 +457,7 @@
 <hr>
 <h3 id="clearImmediate">clearImmediate</h3>
 <p><strong>清除指定的定时器</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> global.clearImmediate(Timer t);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> global.clearImmediate(Timer t);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -465,7 +466,8 @@
 <hr>
 <h3 id="setInterval">setInterval</h3>
 <p><strong>每间隔指定的时间后调用函数</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> Timer global.setInterval(<span class="hljs-built_in">Function</span> callback,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> Timer global.setInterval(<span class="hljs-built_in">Function</span> callback,
     Integer timeout);
 </code></pre>
 <p>调用参数:</p>
@@ -480,7 +482,8 @@
 <hr>
 <h3 id="setTimeout">setTimeout</h3>
 <p><strong>在指定的时间后调用函数</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> Timer global.setTimeout(<span class="hljs-built_in">Function</span> callback,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> Timer global.setTimeout(<span class="hljs-built_in">Function</span> callback,
     Integer timeout);
 </code></pre>
 <p>调用参数:</p>
@@ -495,7 +498,7 @@
 <hr>
 <h3 id="setImmediate">setImmediate</h3>
 <p><strong>下一个空闲时间立即执行回调函数</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> Timer global.setImmediate(<span class="hljs-built_in">Function</span> callback);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Timer global.setImmediate(<span class="hljs-built_in">Function</span> callback);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -508,19 +511,33 @@
 <hr>
 <h3 id="GC">GC</h3>
 <p><strong>强制要求进行垃圾回收</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> global.GC();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> global.GC();
 </code></pre>
 <hr>
 <h3 id="repl">repl</h3>
 <p><strong>进入交互模式，可以交互执行内部命令和代码，仅在启动 js 可以引用</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> global.repl(<span class="hljs-built_in">Array</span> cmds = []);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> global.repl(<span class="hljs-built_in">Array</span> cmds = []);
 </code></pre>
 <p>调用参数:</p>
 <ul>
 <li>cmds: Array, 补充命令</li>
 </ul>
 <p>参数 cmd 格式如下：</p>
-<pre><code class="lang-JavaScript">[{
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15</div>[{
         <span class="hljs-attr">cmd</span>: <span class="hljs-string">".test"</span>,
         <span class="hljs-attr">help</span>: <span class="hljs-string">"this is a test"</span>,
         <span class="hljs-attr">exec</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">argv</span>) </span>{
@@ -538,7 +555,8 @@
 </code></pre>
 <hr>
 <p><strong>进入交互模式，可以交互执行内部命令和代码，仅在启动 js 可以引用</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> global.repl(Stream out,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> global.repl(Stream out,
     <span class="hljs-built_in">Array</span> cmds = []);
 </code></pre>
 <p>调用参数:</p>
@@ -548,7 +566,21 @@
 </ul>
 <p>同一时刻只允许一个 <a href=../../object/ifs/stream.md.html>Stream</a> repl，新建一个 <a href=../../object/ifs/stream.md.html>Stream</a> repl 时，前一个 repl 将被关闭。</p>
 <p>参数 cmd 格式如下：</p>
-<pre><code class="lang-JavaScript">[{
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15</div>[{
         <span class="hljs-attr">cmd</span>: <span class="hljs-string">".test"</span>,
         <span class="hljs-attr">help</span>: <span class="hljs-string">"this is a test"</span>,
         <span class="hljs-attr">exec</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">argv</span>) </span>{
@@ -567,26 +599,26 @@
 <h2 id="静态属性">静态属性</h2>
 <h3 id="Master">Master</h3>
 <p><strong><a href=../../object/ifs/worker.md.html>Worker</a>, <a href=../../object/ifs/worker.md.html>Worker</a> 宿主对象，仅在 <a href=../../object/ifs/worker.md.html>Worker</a> 入口脚本有效</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> readonly Worker global.Master;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly Worker global.Master;
 </code></pre>
 <hr>
 <h3 id="global">global</h3>
 <p><strong>Object, 全局对象</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> readonly <span class="hljs-built_in">Object</span> <span class="hljs-keyword">new</span> global;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly <span class="hljs-built_in">Object</span> <span class="hljs-keyword">new</span> global;
 </code></pre>
 <hr>
 <h3 id="argv">argv</h3>
 <p><strong>Array, 获取当前脚本的运行参数，启动 js 获取进程启动参数，run 执行的脚本获取传递的参数</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> readonly <span class="hljs-built_in">Array</span> global.argv;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly <span class="hljs-built_in">Array</span> global.argv;
 </code></pre>
 <hr>
 <h3 id="__filename">__filename</h3>
 <p><strong>String, 当前脚本文件名</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> readonly <span class="hljs-built_in">String</span> global.__filename;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly <span class="hljs-built_in">String</span> global.__filename;
 </code></pre>
 <hr>
 <h3 id="__dirname">__dirname</h3>
 <p><strong>String, 当前脚本所在目录</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">static</span> readonly <span class="hljs-built_in">String</span> global.__dirname;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly <span class="hljs-built_in">String</span> global.__dirname;
 </code></pre>
  </div><div class="sidebar hidden-sm hidden-xs"><div id=toc></div></div></div><div class=container><div class=footer><p>&copy; 2017 fibjs.org</p></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="Click to return on the top page" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=../../../../js/common.js></script><script type=text/javascript src=../../../../js/docs.js></script></body></html>

@@ -155,7 +155,7 @@
  </div></div></div>  </div></div><div class=content><div class=social-share data-sites=weibo,twitter data-description=分享></div> <h1 id="对象-File">对象 File</h1>
 <p>文件操作对象，用于二进制文件读写</p>
 <p>文件操作对象用于对二进制文件进行操作，可使用 <a href=../../module/ifs/fs.md.html>fs</a> 模块打开和创建文件：</p>
-<pre><code class="lang-JavaScript"><span class="hljs-keyword">var</span> f = fs.openFile(<span class="hljs-string">'test.txt'</span>);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">var</span> f = fs.openFile(<span class="hljs-string">'test.txt'</span>);
 </code></pre>
 <h2 id="继承关系">继承关系</h2>
 <div class="dot">
@@ -254,17 +254,17 @@
 <h2 id="成员属性">成员属性</h2>
 <h3 id="name">name</h3>
 <p><strong>String, 查询当前文件名</strong></p>
-<pre><code class="lang-JavaScript">readonly <span class="hljs-built_in">String</span> File.name;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly <span class="hljs-built_in">String</span> File.name;
 </code></pre>
 <hr>
 <h3 id="fd">fd</h3>
 <p><strong>Integer, 查询当前文件描述符</strong></p>
-<pre><code class="lang-JavaScript">readonly Integer File.fd;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly Integer File.fd;
 </code></pre>
 <h2 id="成员函数">成员函数</h2>
 <h3 id="chmod">chmod</h3>
 <p><strong>查询当前文件的访问权限，Windows 不支持此方法</strong></p>
-<pre><code class="lang-JavaScript">File.chmod(Integer mode) <span class="hljs-keyword">async</span>;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>File.chmod(Integer mode) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -273,7 +273,8 @@
 <hr>
 <h3 id="seek">seek</h3>
 <p><strong>移动文件当前操作位置</strong></p>
-<pre><code class="lang-JavaScript">File.seek(Long offset,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div>File.seek(Long offset,
     Integer whence);
 </code></pre>
 <p>调用参数:</p>
@@ -284,7 +285,7 @@
 <hr>
 <h3 id="tell">tell</h3>
 <p><strong>查询流当前位置</strong></p>
-<pre><code class="lang-JavaScript">Long File.tell();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Long File.tell();
 </code></pre>
 <p>返回结果:</p>
 <ul>
@@ -293,12 +294,12 @@
 <hr>
 <h3 id="rewind">rewind</h3>
 <p><strong>移动当前位置到流开头</strong></p>
-<pre><code class="lang-JavaScript">File.rewind();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>File.rewind();
 </code></pre>
 <hr>
 <h3 id="size">size</h3>
 <p><strong>查询流尺寸</strong></p>
-<pre><code class="lang-JavaScript">Long File.size();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Long File.size();
 </code></pre>
 <p>返回结果:</p>
 <ul>
@@ -307,7 +308,7 @@
 <hr>
 <h3 id="readAll">readAll</h3>
 <p><strong>从流内读取剩余的全部数据</strong></p>
-<pre><code class="lang-JavaScript">Buffer File.readAll() <span class="hljs-keyword">async</span>;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Buffer File.readAll() <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>返回结果:</p>
 <ul>
@@ -316,7 +317,7 @@
 <hr>
 <h3 id="truncate">truncate</h3>
 <p><strong>修改文件尺寸，如果新尺寸小于原尺寸，则文件被截断</strong></p>
-<pre><code class="lang-JavaScript">File.truncate(Long bytes) <span class="hljs-keyword">async</span>;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>File.truncate(Long bytes) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -325,7 +326,7 @@
 <hr>
 <h3 id="eof">eof</h3>
 <p><strong>查询文件是否到结尾</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">Boolean</span> File.eof();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Boolean</span> File.eof();
 </code></pre>
 <p>返回结果:</p>
 <ul>
@@ -334,12 +335,12 @@
 <hr>
 <h3 id="flush">flush</h3>
 <p><strong>将文件缓冲区内容写入物理设备</strong></p>
-<pre><code class="lang-JavaScript">File.flush() <span class="hljs-keyword">async</span>;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>File.flush() <span class="hljs-keyword">async</span>;
 </code></pre>
 <hr>
 <h3 id="stat">stat</h3>
 <p><strong>查询当前文件的基础信息</strong></p>
-<pre><code class="lang-JavaScript">Stat File.stat() <span class="hljs-keyword">async</span>;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Stat File.stat() <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>返回结果:</p>
 <ul>
@@ -348,7 +349,7 @@
 <hr>
 <h3 id="read">read</h3>
 <p><strong>从流内读取指定大小的数据</strong></p>
-<pre><code class="lang-JavaScript">Buffer File.read(Integer bytes = <span class="hljs-number">-1</span>) <span class="hljs-keyword">async</span>;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Buffer File.read(Integer bytes = <span class="hljs-number">-1</span>) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -361,7 +362,7 @@
 <hr>
 <h3 id="write">write</h3>
 <p><strong>将给定的数据写入流</strong></p>
-<pre><code class="lang-JavaScript">File.write(Buffer data) <span class="hljs-keyword">async</span>;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>File.write(Buffer data) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -370,12 +371,13 @@
 <hr>
 <h3 id="close">close</h3>
 <p><strong>关闭当前流对象</strong></p>
-<pre><code class="lang-JavaScript">File.close() <span class="hljs-keyword">async</span>;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>File.close() <span class="hljs-keyword">async</span>;
 </code></pre>
 <hr>
 <h3 id="copyTo">copyTo</h3>
 <p><strong>复制流数据到目标流中</strong></p>
-<pre><code class="lang-JavaScript">Long File.copyTo(Stream stm,
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div>Long File.copyTo(Stream stm,
     Long bytes = <span class="hljs-number">-1</span>) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
@@ -390,12 +392,12 @@
 <hr>
 <h3 id="dispose">dispose</h3>
 <p><strong>强制回收对象，调用此方法后，对象资源将立即释放</strong></p>
-<pre><code class="lang-JavaScript">File.dispose();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>File.dispose();
 </code></pre>
 <hr>
 <h3 id="equals">equals</h3>
 <p><strong>比较当前对象与给定的对象是否相等</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">Boolean</span> File.equals(object expected);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Boolean</span> File.equals(object expected);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -408,7 +410,7 @@
 <hr>
 <h3 id="toString">toString</h3>
 <p><strong>返回对象的字符串表示，一般返回 &quot;[Native Object]&quot;，对象可以根据自己的特性重新实现</strong></p>
-<pre><code class="lang-JavaScript"><span class="hljs-built_in">String</span> File.toString();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> File.toString();
 </code></pre>
 <p>返回结果:</p>
 <ul>
@@ -417,7 +419,7 @@
 <hr>
 <h3 id="toJSON">toJSON</h3>
 <p><strong>返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合</strong></p>
-<pre><code class="lang-JavaScript">Value File.toJSON(<span class="hljs-built_in">String</span> key = <span class="hljs-string">""</span>);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Value File.toJSON(<span class="hljs-built_in">String</span> key = <span class="hljs-string">""</span>);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -430,7 +432,7 @@
 <hr>
 <h3 id="valueOf">valueOf</h3>
 <p><strong>返回对象本身的数值</strong></p>
-<pre><code class="lang-JavaScript">Value File.valueOf();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Value File.valueOf();
 </code></pre>
 <p>返回结果:</p>
 <ul>
