@@ -154,4 +154,362 @@
 </ul>
  </div></div></div>  </div></div><div class=content><div class=social-share data-sites=weibo,twitter data-description=分享></div> <h1 id="美好生活从测试开始">美好生活从测试开始</h1>
 <p>不写自动测试用例的程序员不是一个好的测试工程师。我们鼓励所有的项目在启动最初，就建立完整的自动化测试用例。随着项目的发展，前期的投入会得到数百倍的回报。</p>
+<p>我们延续上一小节的例子，来看一下一个如何使用 fibjs 编写测试用例。</p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21</div><span class="hljs-keyword">const</span> http = <span class="hljs-built_in">require</span>(<span class="hljs-string">'http'</span>);
+<span class="hljs-keyword">const</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">'path'</span>);
+
+<span class="hljs-keyword">var</span> hello_server = {
+    <span class="hljs-string">'^/(fibjs.*)$'</span>: <span class="hljs-function">(<span class="hljs-params">req, name</span>) =&gt;</span> {
+        req.response.write(<span class="hljs-string">'hello, '</span> + name + <span class="hljs-string">'. I love you.'</span>);
+    },
+    <span class="hljs-string">'^/(.*)$'</span>: <span class="hljs-function">(<span class="hljs-params">req, name</span>) =&gt;</span> {
+        req.response.write(<span class="hljs-string">'hello, '</span> + name);
+    }
+};
+
+<span class="hljs-keyword">var</span> root_server = {
+    <span class="hljs-string">'^/hello(/.*)$'</span>: hello_server,
+    <span class="hljs-string">'^/bonjour(/.*)$'</span>: hello_server,
+    <span class="hljs-string">'(.*)'</span>: http.fileHandler(path.join(__dirname, <span class="hljs-string">'web'</span>))
+};
+
+<span class="hljs-keyword">var</span> svr = <span class="hljs-keyword">new</span> http.Server(<span class="hljs-number">8080</span>, root_server);
+
+svr.run();
+</code></pre>
+<h3 id="一个空的测试框架">一个空的测试框架</h3>
+<p>我们先从一个最基础的测试框架开始搭建：</p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10</div><span class="hljs-keyword">var</span> test = <span class="hljs-built_in">require</span>(<span class="hljs-string">'test'</span>);
+test.setup();
+
+describe(<span class="hljs-string">'hello, test'</span>, () =&gt; {
+    it(<span class="hljs-string">'a empty test'</span>, () =&gt; {
+
+    });
+});
+
+test.run();
+</code></pre>
+<p>保存为 <code>test.js</code> 后，在命令行执行 <code>fibjs test.js</code>，会看到下面的输出，一个基本的测试框架就写好了。</p>
+<pre><code class="lang-sh"><div class="line-numbers">1
+2
+3
+4</div>  hello, <span class="hljs-built_in">test</span>
+    √ a empty <span class="hljs-built_in">test</span>
+
+  √ 1 tests completed (0ms)
+</code></pre>
+<h3 id="开始测试服务器">开始测试服务器</h3>
+<p>因为我们需要测试 http 服务器，所以我们需要先启动服务器。测试用例会向服务器发出请求，然后测试请求结果，来判断服务器是否符合需求：</p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14</div><span class="hljs-keyword">var</span> test = <span class="hljs-built_in">require</span>(<span class="hljs-string">'test'</span>);
+test.setup();
+
+<span class="hljs-keyword">var</span> http = <span class="hljs-built_in">require</span>(<span class="hljs-string">'http'</span>);
+
+describe(<span class="hljs-string">'hello, test'</span>, () =&gt; {
+    it(<span class="hljs-string">'hello, fibjs'</span>, () =&gt; {
+        <span class="hljs-keyword">var</span> r = http.get(<span class="hljs-string">'http://127.0.0.1:8080/hello/fibjs'</span>);
+        assert.equal(r.status, <span class="hljs-number">200</span>);
+        assert.equal(r.data.toString(), <span class="hljs-string">'hello, fibjs. I love you.'</span>);
+    });
+});
+
+test.run();
+</code></pre>
+<p>在这段代码中，我们通过验证 http.get 的结果是否是我们期望的结果，来判断服务器逻辑是否正常。按照这个示例，我们可以很快完成一组测试，我们同时优化了一下代码：</p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30</div><span class="hljs-keyword">var</span> test = <span class="hljs-built_in">require</span>(<span class="hljs-string">'test'</span>);
+test.setup();
+
+<span class="hljs-keyword">var</span> http = <span class="hljs-built_in">require</span>(<span class="hljs-string">'http'</span>);
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">test_get</span>(<span class="hljs-params">url, rep</span>) </span>{
+    <span class="hljs-keyword">var</span> r = http.get(<span class="hljs-string">'http://127.0.0.1:8080'</span> + url);
+    assert.equal(r.status, <span class="hljs-number">200</span>);
+    assert.equal(r.data.toString(), rep);
+}
+
+describe(<span class="hljs-string">'hello, test'</span>, () =&gt; {
+    it(<span class="hljs-string">'hello, fibjs'</span>, () =&gt; {
+        test_get(<span class="hljs-string">'/hello/fibjs'</span>, <span class="hljs-string">'hello, fibjs. I love you.'</span>);
+    });
+
+    it(<span class="hljs-string">'hello, fibjs*'</span>, () =&gt; {
+        test_get(<span class="hljs-string">'/hello/fibjs-great'</span>, <span class="hljs-string">'hello, fibjs-great. I love you.'</span>);
+    });
+
+    it(<span class="hljs-string">'hello, JavaScript'</span>, () =&gt; {
+        test_get(<span class="hljs-string">'/hello/JavaScript'</span>, <span class="hljs-string">'hello, JavaScript'</span>);
+    });
+
+    it(<span class="hljs-string">'hello, v8'</span>, () =&gt; {
+        test_get(<span class="hljs-string">'/hello/v8'</span>, <span class="hljs-string">'hello, v8'</span>);
+    });
+});
+
+test.run();
+</code></pre>
+<h3 id="用例的分组管理">用例的分组管理</h3>
+<p>下面我们来增加 bonjour 的测试，虽然 bonjour 和 hello 是同一组服务，但是因为路径发生了变化，我们同样需要验证服务的正确性，这一次，为了能更好地管理用例，我们对测试用例进行了分组，同时，因为 hello 和 bonjour 的测试内容是相同的，我们再次优化了代码，用同一套代码测试两组服务：</p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37</div><span class="hljs-keyword">var</span> test = <span class="hljs-built_in">require</span>(<span class="hljs-string">'test'</span>);
+test.setup();
+
+<span class="hljs-keyword">var</span> http = <span class="hljs-built_in">require</span>(<span class="hljs-string">'http'</span>);
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">test_get</span>(<span class="hljs-params">url, rep</span>) </span>{
+    <span class="hljs-keyword">var</span> r = http.get(<span class="hljs-string">'http://127.0.0.1:8080'</span> + url);
+    assert.equal(r.status, <span class="hljs-number">200</span>);
+    assert.equal(r.data.toString(), rep);
+}
+
+describe(<span class="hljs-string">'hello, test'</span>, () =&gt; {
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">test_hello</span>(<span class="hljs-params">hello</span>) </span>{
+        describe(hello + <span class="hljs-string">' test'</span>, () =&gt; {
+            it(<span class="hljs-string">'fibjs'</span>, () =&gt; {
+                test_get(<span class="hljs-string">'/'</span> + hello + <span class="hljs-string">'/fibjs'</span>, <span class="hljs-string">'hello, fibjs. I love you.'</span>);
+            });
+
+            it(<span class="hljs-string">'fibjs*'</span>, () =&gt; {
+                test_get(<span class="hljs-string">'/'</span> + hello + <span class="hljs-string">'/fibjs-great'</span>, <span class="hljs-string">'hello, fibjs-great. I love you.'</span>);
+            });
+
+            it(<span class="hljs-string">'JavaScript'</span>, () =&gt; {
+                test_get(<span class="hljs-string">'/'</span> + hello + <span class="hljs-string">'/JavaScript'</span>, <span class="hljs-string">'hello, JavaScript'</span>);
+            });
+
+            it(<span class="hljs-string">'v8'</span>, () =&gt; {
+                test_get(<span class="hljs-string">'/'</span> + hello + <span class="hljs-string">'/v8'</span>, <span class="hljs-string">'hello, v8'</span>);
+            });
+        });
+    }
+
+    test_hello(<span class="hljs-string">'hello'</span>);
+    test_hello(<span class="hljs-string">'bonjour'</span>);
+});
+
+test.run();
+</code></pre>
+<p>通过用例分组，我们可以更加清晰地查看测试结果，也可以很方便地跳过和单独测试一组用例，加快开发测试速度。以下是这一轮测试的结果：</p>
+<pre><code class="lang-sh"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13</div>  hello, <span class="hljs-built_in">test</span>
+    hello <span class="hljs-built_in">test</span>
+      √ fibjs
+      √ fibjs*
+      √ JavaScript
+      √ v8
+    bonjour <span class="hljs-built_in">test</span>
+      √ fibjs
+      √ fibjs*
+      √ JavaScript
+      √ v8
+
+  √ 8 tests completed (3ms)
+</code></pre>
+<p>根据我们的服务器设计，我们还有一组静态文件服务，按照上面的示例，相信你很快可以补写出这部分测试用例。</p>
+<h3 id="一键测试">一键测试</h3>
+<p>经过上面的介绍，我们已经可以很快建立起测试用例了。但是为了使用这个测试脚本，必须先启动服务器，这样很不方便，我们希望运行 <code>test.js</code> 能够直接完成测试。我们可以用以下代码来实现：</p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43</div><span class="hljs-keyword">var</span> test = <span class="hljs-built_in">require</span>(<span class="hljs-string">'test'</span>);
+test.setup();
+
+<span class="hljs-keyword">var</span> http = <span class="hljs-built_in">require</span>(<span class="hljs-string">'http'</span>);
+
+<span class="hljs-keyword">var</span> coroutine = <span class="hljs-built_in">require</span>(<span class="hljs-string">'coroutine'</span>);
+coroutine.start(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+    run(<span class="hljs-string">'./main.js'</span>);
+});
+coroutine.sleep(<span class="hljs-number">100</span>);
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">test_get</span>(<span class="hljs-params">url, rep</span>) </span>{
+    <span class="hljs-keyword">var</span> r = http.get(<span class="hljs-string">'http://127.0.0.1:8080'</span> + url);
+    assert.equal(r.status, <span class="hljs-number">200</span>);
+    assert.equal(r.data.toString(), rep);
+}
+
+describe(<span class="hljs-string">'hello, test'</span>, () =&gt; {
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">test_hello</span>(<span class="hljs-params">hello</span>) </span>{
+        describe(hello + <span class="hljs-string">' test'</span>, () =&gt; {
+            it(<span class="hljs-string">'fibjs'</span>, () =&gt; {
+                test_get(<span class="hljs-string">'/'</span> + hello + <span class="hljs-string">'/fibjs'</span>, <span class="hljs-string">'hello, fibjs. I love you.'</span>);
+            });
+
+            it(<span class="hljs-string">'fibjs*'</span>, () =&gt; {
+                test_get(<span class="hljs-string">'/'</span> + hello + <span class="hljs-string">'/fibjs-great'</span>, <span class="hljs-string">'hello, fibjs-great. I love you.'</span>);
+            });
+
+            it(<span class="hljs-string">'JavaScript'</span>, () =&gt; {
+                test_get(<span class="hljs-string">'/'</span> + hello + <span class="hljs-string">'/JavaScript'</span>, <span class="hljs-string">'hello, JavaScript'</span>);
+            });
+
+            it(<span class="hljs-string">'v8'</span>, () =&gt; {
+                test_get(<span class="hljs-string">'/'</span> + hello + <span class="hljs-string">'/v8'</span>, <span class="hljs-string">'hello, v8'</span>);
+            });
+        });
+    }
+
+    test_hello(<span class="hljs-string">'hello'</span>);
+    test_hello(<span class="hljs-string">'bonjour'</span>);
+});
+
+process.exit(test.run());
+</code></pre>
+<p>这段代码的第 6~10 行里，我们增加了一段启动 <code>main.js</code> 的代码，并且稍微等待一下，之后再开始测试。</p>
  </div><div class="sidebar hidden-sm hidden-xs"><div id=toc></div></div></div><div class=container><div class=footer><p>&copy; 2017 fibjs.org</p></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="Click to return on the top page" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=../../js/common.js></script><script type=text/javascript src=../../js/docs.js></script></body></html>
