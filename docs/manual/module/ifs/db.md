@@ -112,12 +112,12 @@ static Redis db.openRedis(String connString) async;
 
 ```JavaScript
 static String db.format(String sql,
-    ...);
+    ...args);
 ```
 
 调用参数:
 * sql: String, 格式化字符串，可选参数用 ? 指定。例如：'SELECT FROM TEST WHERE [id]=?'
-* ...: 可选参数列表
+* args: ..., 可选参数列表
 
 返回结果:
 * String, 返回格式化之后的 sql 命令
@@ -128,12 +128,12 @@ static String db.format(String sql,
 
 ```JavaScript
 static String db.formatMySQL(String sql,
-    ...);
+    ...args);
 ```
 
 调用参数:
 * sql: String, 格式化字符串，可选参数用 ? 指定。例如：'SELECT FROM TEST WHERE [id]=?'
-* ...: 可选参数列表
+* args: ..., 可选参数列表
 
 返回结果:
 * String, 返回格式化之后的 sql 命令
@@ -144,12 +144,12 @@ static String db.formatMySQL(String sql,
 
 ```JavaScript
 static String db.formatMSSQL(String sql,
-    ...);
+    ...args);
 ```
 
 调用参数:
 * sql: String, 格式化字符串，可选参数用 ? 指定。例如：'SELECT FROM TEST WHERE [id]=?'
-* ...: 可选参数列表
+* args: ..., 可选参数列表
 
 返回结果:
 * String, 返回格式化之后的 sql 命令

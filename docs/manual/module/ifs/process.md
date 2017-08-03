@@ -135,12 +135,12 @@ static Object process.memoryUsage();
 
 ```JavaScript
 static process.nextTick(Function func,
-    ...);
+    ...args);
 ```
 
 调用参数:
 * func: Function, 制定纤程执行的函数
-* ...: 可变参数序列，此序列会在纤程内传递给函数
+* args: ..., 可变参数序列，此序列会在纤程内传递给函数
 
 --------------------------
 ### open

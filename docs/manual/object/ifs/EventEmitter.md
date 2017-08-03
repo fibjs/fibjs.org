@@ -358,12 +358,12 @@ Array EventEmitter.eventNames();
 
 ```JavaScript
 Boolean EventEmitter.emit(String ev,
-    ...);
+    ...args);
 ```
 
 调用参数:
 * ev: String, 事件名称
-* ...: 事件参数，将会传递给事件处理函数
+* args: ..., 事件参数，将会传递给事件处理函数
 
 返回结果:
 * Boolean, 返回事件触发状态，有响应事件返回 true，否则返回 false

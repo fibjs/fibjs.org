@@ -169,12 +169,12 @@
 <p><strong>按照指定的格式格式化变量</strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">String</span> util.format(<span class="hljs-built_in">String</span> fmt,
-    ...);
+    ...args);
 </code></pre>
 <p>调用参数:</p>
 <ul>
 <li>fmt: String, 格式化字符串</li>
-<li>...: 可选参数列表</li>
+<li>args: ..., 可选参数列表</li>
 </ul>
 <p>返回结果:</p>
 <ul>
@@ -182,11 +182,11 @@
 </ul>
 <hr>
 <p><strong>格式格式化变量</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">String</span> util.format(...);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">String</span> util.format(...args);
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>...: 可选参数列表</li>
+<li>args: ..., 可选参数列表</li>
 </ul>
 <p>返回结果:</p>
 <ul>
@@ -602,12 +602,12 @@
 <p><strong>将一个或者多个对象的键值扩展到指定对象</strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">static</span> Value util.extend(Value v,
-    ...);
+    ...objs);
 </code></pre>
 <p>调用参数:</p>
 <ul>
 <li>v: Value, 指定要扩展的对象</li>
-<li>...: 指定一个或者多个用于扩展的对象</li>
+<li>objs: ..., 指定一个或者多个用于扩展的对象</li>
 </ul>
 <p>返回结果:</p>
 <ul>
@@ -618,12 +618,12 @@
 <p><strong>返回一个<a href=../../object/ifs/object.md.html>object</a>副本，只过滤出指定键的属性值</strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Object</span> util.pick(Value v,
-    ...);
+    ...objs);
 </code></pre>
 <p>调用参数:</p>
 <ul>
 <li>v: Value, 指定要过滤的对象</li>
-<li>...: 指定一个或者多个用于选择的键</li>
+<li>objs: ..., 指定一个或者多个用于选择的键</li>
 </ul>
 <p>返回结果:</p>
 <ul>
@@ -634,12 +634,12 @@
 <p><strong>返回一个<a href=../../object/ifs/object.md.html>object</a>副本，只过排除指定键的属性值</strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Object</span> util.omit(Value v,
-    ...);
+    ...keys);
 </code></pre>
 <p>调用参数:</p>
 <ul>
 <li>v: Value, 指定要过滤的对象</li>
-<li>...: 指定一个或者多个用于排除的键</li>
+<li>keys: ..., 指定一个或者多个用于排除的键</li>
 </ul>
 <p>返回结果:</p>
 <ul>
@@ -720,11 +720,11 @@
 <hr>
 <h3 id="union">union</h3>
 <p><strong>将一个或者多个数组的值合并成一个值唯一的数组</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Array</span> util.union(...);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Array</span> util.union(...arrs);
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>...: 指定一个或者多个用于合并的数组</li>
+<li>arrs: ..., 指定一个或者多个用于合并的数组</li>
 </ul>
 <p>返回结果:</p>
 <ul>
@@ -733,11 +733,11 @@
 <hr>
 <h3 id="intersection">intersection</h3>
 <p><strong>返回一个包含 arr 数组中排除一个或者多个数组元素的交集</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Array</span> util.intersection(...);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Array</span> util.intersection(...arrs);
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>...: 指定一个或者多个用于计算交集的数组</li>
+<li>arrs: ..., 指定一个或者多个用于计算交集的数组</li>
 </ul>
 <p>返回结果:</p>
 <ul>
@@ -764,12 +764,12 @@
 <p><strong>返回一个包含 arr 数组中排除一个或者多个元素后的数组</strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Array</span> util.without(Value arr,
-    ...);
+    ...els);
 </code></pre>
 <p>调用参数:</p>
 <ul>
 <li>arr: Value, 指定需要排除的数组</li>
-<li>...: 指定一个或者多个用于排除的元素</li>
+<li>els: ..., 指定一个或者多个用于排除的元素</li>
 </ul>
 <p>返回结果:</p>
 <ul>
@@ -780,12 +780,12 @@
 <p><strong>返回一个包含 arr 数组中排除 without 数组元素之后的数组</strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Array</span> util.difference(<span class="hljs-built_in">Array</span> list,
-    ...);
+    ...arrs);
 </code></pre>
 <p>调用参数:</p>
 <ul>
 <li>list: Array, 指定需要排除的数组</li>
-<li>...: 指定用于排除的一个或者多个数组</li>
+<li>arrs: ..., 指定用于排除的一个或者多个数组</li>
 </ul>
 <p>返回结果:</p>
 <ul>

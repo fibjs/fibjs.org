@@ -36,12 +36,12 @@ Function Redis.onsuberror;
 
 ```JavaScript
 Value Redis.command(String cmd,
-    ...);
+    ...args);
 ```
 
 调用参数:
 * cmd: String, 指定发送的命令
-* ...: 指定发送的参数
+* args: ..., 指定发送的参数
 
 返回结果:
 * Value, 返回服务器返回的结果
@@ -106,11 +106,11 @@ Redis.mset(Object kvs);
 **同时设置一个或多个 key-value 对。如果某个给定 key 已经存在，那么 MSET 会用新值覆盖原来的旧值**
 
 ```JavaScript
-Redis.mset(...);
+Redis.mset(...kvs);
 ```
 
 调用参数:
-* ...: 指定要设置的 key/value 列表
+* kvs: ..., 指定要设置的 key/value 列表
 
 --------------------------
 ### msetNX
@@ -127,11 +127,11 @@ Redis.msetNX(Object kvs);
 **同时设置一个或多个 key-value 对，当且仅当所有给定 key 都不存在**
 
 ```JavaScript
-Redis.msetNX(...);
+Redis.msetNX(...kvs);
 ```
 
 调用参数:
-* ...: 指定要设置的 key/value 列表
+* kvs: ..., 指定要设置的 key/value 列表
 
 --------------------------
 ### append
@@ -249,11 +249,11 @@ List Redis.mget(Array keys);
 **返回所有(一个或多个)给定 key 的值。如果给定的 key 里面，有某个 key 不存在，那么这个 key 返回特殊值 nil 。**
 
 ```JavaScript
-List Redis.mget(...);
+List Redis.mget(...keys);
 ```
 
 调用参数:
-* ...: 指定要查询的 key 列表
+* keys: ..., 指定要查询的 key 列表
 
 返回结果:
 * [List](List.md), 一个包含所有给定 key 的值的列表
@@ -400,11 +400,11 @@ Integer Redis.del(Array keys);
 **删除给定的一个或多个 key，不存在的 key 会被忽略**
 
 ```JavaScript
-Integer Redis.del(...);
+Integer Redis.del(...keys);
 ```
 
 调用参数:
-* ...: 指定要删除的 key 列表
+* keys: ..., 指定要删除的 key 列表
 
 返回结果:
 * Integer, 被删除 key 的数量

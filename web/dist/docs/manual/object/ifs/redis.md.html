@@ -255,12 +255,12 @@
 <p><strong>redis 基础命令方法</strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Value Redis.command(<span class="hljs-built_in">String</span> cmd,
-    ...);
+    ...args);
 </code></pre>
 <p>调用参数:</p>
 <ul>
 <li>cmd: String, 指定发送的命令</li>
-<li>...: 指定发送的参数</li>
+<li>args: ..., 指定发送的参数</li>
 </ul>
 <p>返回结果:</p>
 <ul>
@@ -322,11 +322,11 @@
 </ul>
 <hr>
 <p><strong>同时设置一个或多个 key-value 对。如果某个给定 key 已经存在，那么 MSET 会用新值覆盖原来的旧值</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Redis.mset(...);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Redis.mset(...kvs);
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>...: 指定要设置的 key/value 列表</li>
+<li>kvs: ..., 指定要设置的 key/value 列表</li>
 </ul>
 <hr>
 <h3 id="msetNX">msetNX</h3>
@@ -339,11 +339,11 @@
 </ul>
 <hr>
 <p><strong>同时设置一个或多个 key-value 对，当且仅当所有给定 key 都不存在</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Redis.msetNX(...);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Redis.msetNX(...kvs);
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>...: 指定要设置的 key/value 列表</li>
+<li>kvs: ..., 指定要设置的 key/value 列表</li>
 </ul>
 <hr>
 <h3 id="append">append</h3>
@@ -459,11 +459,11 @@
 </ul>
 <hr>
 <p><strong>返回所有(一个或多个)给定 key 的值。如果给定的 key 里面，有某个 key 不存在，那么这个 key 返回特殊值 nil 。</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>List Redis.mget(...);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>List Redis.mget(...keys);
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>...: 指定要查询的 key 列表</li>
+<li>keys: ..., 指定要查询的 key 列表</li>
 </ul>
 <p>返回结果:</p>
 <ul>
@@ -606,11 +606,11 @@
 </ul>
 <hr>
 <p><strong>删除给定的一个或多个 key，不存在的 key 会被忽略</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer Redis.del(...);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer Redis.del(...keys);
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>...: 指定要删除的 key 列表</li>
+<li>keys: ..., 指定要删除的 key 列表</li>
 </ul>
 <p>返回结果:</p>
 <ul>

@@ -40,11 +40,11 @@ Integer RedisSet.add(Array members);
 **同时将多个 field-value (域-值)对设置到哈希表中，此命令会覆盖哈希表中已存在的域**
 
 ```JavaScript
-Integer RedisSet.add(...);
+Integer RedisSet.add(...members);
 ```
 
 调用参数:
-* ...: 指定要添加的元素列表
+* members: ..., 指定要添加的元素列表
 
 返回结果:
 * Integer, 被添加到集合中的新元素的数量，不包括被忽略的元素
@@ -67,11 +67,11 @@ Integer RedisSet.remove(Array members);
 **移除集合中的一个或多个 member 元素**
 
 ```JavaScript
-Integer RedisSet.remove(...);
+Integer RedisSet.remove(...members);
 ```
 
 调用参数:
-* ...: 指定要移除的元素列表
+* members: ..., 指定要移除的元素列表
 
 返回结果:
 * Integer, 被成功移除的元素的数量，不包括被忽略的元素

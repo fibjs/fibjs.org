@@ -99,11 +99,11 @@ static Boolean path_win32.isAbsolute(String path);
 **合并一系列路径成为一个单一路径**
 
 ```JavaScript
-static String path_win32.join(...);
+static String path_win32.join(...ps);
 ```
 
 调用参数:
-* ...: 一个或多个相关的路径
+* ps: ..., 一个或多个相关的路径
 
 返回结果:
 * String, 返回得到的新路径
@@ -113,11 +113,11 @@ static String path_win32.join(...);
 **合并一系列路径成为一个绝对路径**
 
 ```JavaScript
-static String path_win32.resolve(...);
+static String path_win32.resolve(...ps);
 ```
 
 调用参数:
-* ...: 一个或多个相关的路径
+* ps: ..., 一个或多个相关的路径
 
 返回结果:
 * String, 返回得到的新路径

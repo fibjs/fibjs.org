@@ -25,12 +25,12 @@ LruCache util.LruCache;
 
 ```JavaScript
 static String util.format(String fmt,
-    ...);
+    ...args);
 ```
 
 调用参数:
 * fmt: String, 格式化字符串
-* ...: 可选参数列表
+* args: ..., 可选参数列表
 
 返回结果:
 * String, 返回格式化后的字符串
@@ -39,11 +39,11 @@ static String util.format(String fmt,
 **格式格式化变量**
 
 ```JavaScript
-static String util.format(...);
+static String util.format(...args);
 ```
 
 调用参数:
-* ...: 可选参数列表
+* args: ..., 可选参数列表
 
 返回结果:
 * String, 返回格式化后的字符串
@@ -489,12 +489,12 @@ static Value util.clone(Value v);
 
 ```JavaScript
 static Value util.extend(Value v,
-    ...);
+    ...objs);
 ```
 
 调用参数:
 * v: Value, 指定要扩展的对象
-* ...: 指定一个或者多个用于扩展的对象
+* objs: ..., 指定一个或者多个用于扩展的对象
 
 返回结果:
 * Value, 返回扩展的结果
@@ -505,12 +505,12 @@ static Value util.extend(Value v,
 
 ```JavaScript
 static Object util.pick(Value v,
-    ...);
+    ...objs);
 ```
 
 调用参数:
 * v: Value, 指定要过滤的对象
-* ...: 指定一个或者多个用于选择的键
+* objs: ..., 指定一个或者多个用于选择的键
 
 返回结果:
 * Object, 返回过滤的结果
@@ -521,12 +521,12 @@ static Object util.pick(Value v,
 
 ```JavaScript
 static Object util.omit(Value v,
-    ...);
+    ...keys);
 ```
 
 调用参数:
 * v: Value, 指定要过滤的对象
-* ...: 指定一个或者多个用于排除的键
+* keys: ..., 指定一个或者多个用于排除的键
 
 返回结果:
 * Object, 返回排除的结果
@@ -610,11 +610,11 @@ static Array util.unique(Value v,
 **将一个或者多个数组的值合并成一个值唯一的数组**
 
 ```JavaScript
-static Array util.union(...);
+static Array util.union(...arrs);
 ```
 
 调用参数:
-* ...: 指定一个或者多个用于合并的数组
+* arrs: ..., 指定一个或者多个用于合并的数组
 
 返回结果:
 * Array, 返回合并的结果
@@ -624,11 +624,11 @@ static Array util.union(...);
 **返回一个包含 arr 数组中排除一个或者多个数组元素的交集**
 
 ```JavaScript
-static Array util.intersection(...);
+static Array util.intersection(...arrs);
 ```
 
 调用参数:
-* ...: 指定一个或者多个用于计算交集的数组
+* arrs: ..., 指定一个或者多个用于计算交集的数组
 
 返回结果:
 * Array, 返回计算交集的结果
@@ -655,12 +655,12 @@ static Array util.flatten(Value arr,
 
 ```JavaScript
 static Array util.without(Value arr,
-    ...);
+    ...els);
 ```
 
 调用参数:
 * arr: Value, 指定需要排除的数组
-* ...: 指定一个或者多个用于排除的元素
+* els: ..., 指定一个或者多个用于排除的元素
 
 返回结果:
 * Array, 返回排除的结果
@@ -671,12 +671,12 @@ static Array util.without(Value arr,
 
 ```JavaScript
 static Array util.difference(Array list,
-    ...);
+    ...arrs);
 ```
 
 调用参数:
 * list: Array, 指定需要排除的数组
-* ...: 指定用于排除的一个或者多个数组
+* arrs: ..., 指定用于排除的一个或者多个数组
 
 返回结果:
 * Array, 返回排除的结果

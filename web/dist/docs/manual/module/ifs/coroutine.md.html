@@ -192,12 +192,12 @@
 <p><strong>启动一个纤程并返回纤程对象</strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">static</span> Fiber coroutine.start(<span class="hljs-built_in">Function</span> func,
-    ...);
+    ...args);
 </code></pre>
 <p>调用参数:</p>
 <ul>
 <li>func: Function, 制定纤程执行的函数</li>
-<li>...: 可变参数序列，此序列会在纤程内传递给函数</li>
+<li>args: ..., 可变参数序列，此序列会在纤程内传递给函数</li>
 </ul>
 <p>返回结果:</p>
 <ul>
@@ -257,11 +257,11 @@
 </ul>
 <hr>
 <p><strong>并行执行一组函数，并等待返回</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Array</span> coroutine.parallel(...);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Array</span> coroutine.parallel(...funcs);
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>...: 一组并行执行的函数</li>
+<li>funcs: ..., 一组并行执行的函数</li>
 </ul>
 <p>返回结果:</p>
 <ul>

@@ -40,11 +40,11 @@ Integer RedisSortedSet.add(Object sms);
 **将一个或多个 member 元素及其 score 值加入到有序集当中**
 
 ```JavaScript
-Integer RedisSortedSet.add(...);
+Integer RedisSortedSet.add(...sms);
 ```
 
 调用参数:
-* ...: 指定要添加的 member/score 列表
+* sms: ..., 指定要添加的 member/score 列表
 
 返回结果:
 * Integer, 被成功添加的新成员的数量，不包括那些被更新的、已经存在的成员
@@ -97,11 +97,11 @@ Integer RedisSortedSet.remove(Array members);
 **移除有序集中的一个或多个 member 元素**
 
 ```JavaScript
-Integer RedisSortedSet.remove(...);
+Integer RedisSortedSet.remove(...members);
 ```
 
 调用参数:
-* ...: 指定要移除的元素列表
+* members: ..., 指定要移除的元素列表
 
 返回结果:
 * Integer, 被成功移除的元素的数量，不包括被忽略的元素

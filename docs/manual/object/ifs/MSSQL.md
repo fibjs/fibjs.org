@@ -109,12 +109,12 @@ DBResult MSSQL.execute(String sql) async;
 
 ```JavaScript
 DBResult MSSQL.execute(String sql,
-    ...);
+    ...args);
 ```
 
 调用参数:
 * sql: String, 格式化字符串，可选参数用 ? 指定。例如：'SELECT FROM TEST WHERE [id]=?'
-* ...: 可选参数列表
+* args: ..., 可选参数列表
 
 返回结果:
 * [DBResult](DBResult.md), 返回 sql 命令执行结果
@@ -125,12 +125,12 @@ DBResult MSSQL.execute(String sql,
 
 ```JavaScript
 String MSSQL.format(String sql,
-    ...);
+    ...args);
 ```
 
 调用参数:
 * sql: String, 格式化字符串，可选参数用 ? 指定。例如：'SELECT FROM TEST WHERE [id]=?'
-* ...: 可选参数列表
+* args: ..., 可选参数列表
 
 返回结果:
 * String, 返回格式化之后的 sql 命令

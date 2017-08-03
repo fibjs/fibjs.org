@@ -135,14 +135,14 @@ Integer List.lastIndexOf(Variant searchElement,
 
 --------------------------
 ### push
-**在数组结尾添加一个元素**
+**在数组结尾添加多个元素**
 
 ```JavaScript
-Integer List.push(...);
+Integer List.push(...els);
 ```
 
 调用参数:
-* ...: 指定添加的多个元素
+* els: ..., 指定添加的多个元素
 
 返回结果:
 * Integer, 添加元素之后数组的长度
@@ -190,11 +190,11 @@ List List.slice(Integer start = 0,
 **将当前数组与给定的一个或者多个数组合并**
 
 ```JavaScript
-List List.concat(...);
+List List.concat(...lists);
 ```
 
 调用参数:
-* ...: 给定的一个或多个数组
+* lists: ..., 给定的一个或多个数组
 
 返回结果:
 * List, 返回合并的数组

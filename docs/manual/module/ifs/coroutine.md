@@ -63,12 +63,12 @@ Worker coroutine.Worker;
 
 ```JavaScript
 static Fiber coroutine.start(Function func,
-    ...);
+    ...args);
 ```
 
 调用参数:
 * func: Function, 制定纤程执行的函数
-* ...: 可变参数序列，此序列会在纤程内传递给函数
+* args: ..., 可变参数序列，此序列会在纤程内传递给函数
 
 返回结果:
 * [Fiber](../../object/ifs/Fiber.md), 返回纤程对象
@@ -127,11 +127,11 @@ static Array coroutine.parallel(Function func,
 **并行执行一组函数，并等待返回**
 
 ```JavaScript
-static Array coroutine.parallel(...);
+static Array coroutine.parallel(...funcs);
 ```
 
 调用参数:
-* ...: 一组并行执行的函数
+* funcs: ..., 一组并行执行的函数
 
 返回结果:
 * Array, 返回函数执行结果的数组

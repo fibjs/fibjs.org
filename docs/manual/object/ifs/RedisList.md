@@ -40,11 +40,11 @@ Integer RedisList.push(Array values);
 **将一个或多个值 value 插入到列表的表头**
 
 ```JavaScript
-Integer RedisList.push(...);
+Integer RedisList.push(...values);
 ```
 
 调用参数:
-* ...: 指定要插入的数据
+* values: ..., 指定要插入的数据
 
 返回结果:
 * Integer, 插入后，列表的长度
@@ -78,11 +78,11 @@ Integer RedisList.rpush(Array values);
 **将一个或多个值 value 插入到列表的表尾(最右边)**
 
 ```JavaScript
-Integer RedisList.rpush(...);
+Integer RedisList.rpush(...values);
 ```
 
 调用参数:
-* ...: 指定要插入的数据
+* values: ..., 指定要插入的数据
 
 返回结果:
 * Integer, 插入后，列表的长度

@@ -63,11 +63,11 @@ RedisHash.mset(Object kvs);
 **同时将多个 field-value (域-值)对设置到哈希表中，此命令会覆盖哈希表中已存在的域**
 
 ```JavaScript
-RedisHash.mset(...);
+RedisHash.mset(...kvs);
 ```
 
 调用参数:
-* ...: 指定要设置的 field/value 列表
+* kvs: ..., 指定要设置的 field/value 列表
 
 --------------------------
 ### get
@@ -101,11 +101,11 @@ List RedisHash.mget(Array fields);
 **返回哈希表中，一个或多个给定域的值**
 
 ```JavaScript
-List RedisHash.mget(...);
+List RedisHash.mget(...fields);
 ```
 
 调用参数:
-* ...: 指定要查询的域列表
+* fields: ..., 指定要查询的域列表
 
 返回结果:
 * [List](List.md), 一个包含所有给定域的值的列表
@@ -191,11 +191,11 @@ Integer RedisHash.del(Array fields);
 **删除哈希表中的一个或多个指定域，不存在的域将被忽略**
 
 ```JavaScript
-Integer RedisHash.del(...);
+Integer RedisHash.del(...fields);
 ```
 
 调用参数:
-* ...: 指定要删除的域列表
+* fields: ..., 指定要删除的域列表
 
 返回结果:
 * Integer, 被删除域的数量

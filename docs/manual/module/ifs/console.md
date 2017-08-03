@@ -132,12 +132,12 @@ static console.reset();
 
 ```JavaScript
 static console.log(String fmt,
-    ...);
+    ...args);
 ```
 
 调用参数:
 * fmt: String, 格式化字符串
-* ...: 可选参数列表
+* args: ..., 可选参数列表
 
 记录一般等级的日志信息。通常用于输出非错误性提示信息。
 
@@ -145,11 +145,11 @@ static console.log(String fmt,
 **记录普通日志信息，与 info 等同**
 
 ```JavaScript
-static console.log(...);
+static console.log(...args);
 ```
 
 调用参数:
-* ...: 可选参数列表
+* args: ..., 可选参数列表
 
 记录一般等级的日志信息。通常用于输出非错误性提示信息。
 
@@ -159,12 +159,12 @@ static console.log(...);
 
 ```JavaScript
 static console.debug(String fmt,
-    ...);
+    ...args);
 ```
 
 调用参数:
 * fmt: String, 格式化字符串
-* ...: 可选参数列表
+* args: ..., 可选参数列表
 
 记录调试日志信息。通常用于输出调试信息。不重要。
 
@@ -172,11 +172,11 @@ static console.debug(String fmt,
 **记录调试日志信息**
 
 ```JavaScript
-static console.debug(...);
+static console.debug(...args);
 ```
 
 调用参数:
-* ...: 可选参数列表
+* args: ..., 可选参数列表
 
 记录调试日志信息。通常用于输出调试信息。不重要。
 
@@ -186,12 +186,12 @@ static console.debug(...);
 
 ```JavaScript
 static console.info(String fmt,
-    ...);
+    ...args);
 ```
 
 调用参数:
 * fmt: String, 格式化字符串
-* ...: 可选参数列表
+* args: ..., 可选参数列表
 
 记录一般等级的日志信息。通常用于输出非错误性提示信息。
 
@@ -199,11 +199,11 @@ static console.info(String fmt,
 **记录普通日志信息，与 log 等同**
 
 ```JavaScript
-static console.info(...);
+static console.info(...args);
 ```
 
 调用参数:
-* ...: 可选参数列表
+* args: ..., 可选参数列表
 
 记录一般等级的日志信息。通常用于输出非错误性提示信息。
 
@@ -213,12 +213,12 @@ static console.info(...);
 
 ```JavaScript
 static console.notice(String fmt,
-    ...);
+    ...args);
 ```
 
 调用参数:
 * fmt: String, 格式化字符串
-* ...: 可选参数列表
+* args: ..., 可选参数列表
 
 记录警告日志信息。通常用于输出提示性调试信息。一般重要。
 
@@ -226,11 +226,11 @@ static console.notice(String fmt,
 **记录警告日志信息**
 
 ```JavaScript
-static console.notice(...);
+static console.notice(...args);
 ```
 
 调用参数:
-* ...: 可选参数列表
+* args: ..., 可选参数列表
 
 记录警告日志信息。通常用于输出提示性调试信息。一般重要。
 
@@ -240,12 +240,12 @@ static console.notice(...);
 
 ```JavaScript
 static console.warn(String fmt,
-    ...);
+    ...args);
 ```
 
 调用参数:
 * fmt: String, 格式化字符串
-* ...: 可选参数列表
+* args: ..., 可选参数列表
 
 记录警告日志信息。通常用于输出警告性调试信息。重要。
 
@@ -253,11 +253,11 @@ static console.warn(String fmt,
 **记录警告日志信息**
 
 ```JavaScript
-static console.warn(...);
+static console.warn(...args);
 ```
 
 调用参数:
-* ...: 可选参数列表
+* args: ..., 可选参数列表
 
 记录警告日志信息。通常用于输出警告性调试信息。重要。
 
@@ -267,12 +267,12 @@ static console.warn(...);
 
 ```JavaScript
 static console.error(String fmt,
-    ...);
+    ...args);
 ```
 
 调用参数:
 * fmt: String, 格式化字符串
-* ...: 可选参数列表
+* args: ..., 可选参数列表
 
 记录用于错误日志信息。通常用于输出错误信息。非常重要。系统的出错信息也会以此等级记录。
 
@@ -280,11 +280,11 @@ static console.error(String fmt,
 **记录错误日志信息**
 
 ```JavaScript
-static console.error(...);
+static console.error(...args);
 ```
 
 调用参数:
-* ...: 可选参数列表
+* args: ..., 可选参数列表
 
 记录用于错误日志信息。通常用于输出错误信息。非常重要。系统的出错信息也会以此等级记录。
 
@@ -294,12 +294,12 @@ static console.error(...);
 
 ```JavaScript
 static console.crit(String fmt,
-    ...);
+    ...args);
 ```
 
 调用参数:
 * fmt: String, 格式化字符串
-* ...: 可选参数列表
+* args: ..., 可选参数列表
 
 记录用于关键错误日志信息。通常用于输出关键错误信息。非常重要。
 
@@ -307,11 +307,11 @@ static console.crit(String fmt,
 **记录关键错误日志信息**
 
 ```JavaScript
-static console.crit(...);
+static console.crit(...args);
 ```
 
 调用参数:
-* ...: 可选参数列表
+* args: ..., 可选参数列表
 
 记录用于关键错误日志信息。通常用于输出关键错误信息。非常重要。
 
@@ -321,12 +321,12 @@ static console.crit(...);
 
 ```JavaScript
 static console.alert(String fmt,
-    ...);
+    ...args);
 ```
 
 调用参数:
 * fmt: String, 格式化字符串
-* ...: 可选参数列表
+* args: ..., 可选参数列表
 
 记录用于警报错误日志信息。通常用于输出警报错误信息。非常重要。为最高级别信息。
 
@@ -334,11 +334,11 @@ static console.alert(String fmt,
 **记录警报错误日志信息**
 
 ```JavaScript
-static console.alert(...);
+static console.alert(...args);
 ```
 
 调用参数:
-* ...: 可选参数列表
+* args: ..., 可选参数列表
 
 记录用于警报错误日志信息。通常用于输出警报错误信息。非常重要。为最高级别信息。
 
@@ -407,22 +407,22 @@ static console.assert(Value value,
 
 ```JavaScript
 static console.print(String fmt,
-    ...);
+    ...args);
 ```
 
 调用参数:
 * fmt: String, 格式化字符串
-* ...: 可选参数列表
+* args: ..., 可选参数列表
 
 --------------------------
 **向控制台输出格式化文本，输出内容不会记入日志系统，输出文本后不会自动换行，可连续输出**
 
 ```JavaScript
-static console.print(...);
+static console.print(...args);
 ```
 
 调用参数:
-* ...: 可选参数列表
+* args: ..., 可选参数列表
 
 --------------------------
 ### moveTo
