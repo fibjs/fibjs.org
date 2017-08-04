@@ -18,14 +18,14 @@ digraph {
 **对象数组可使用下标直接访问对象数据**
 
 ```JavaScript
-readonly Value DBRow[];
+Value DBRow[];
 ```
 
 --------------------------
 **可使用字段名下标直接访问对象数据**
 
 ```JavaScript
-readonly Value DBRow[String];
+Value DBRow[String];
 ```
 
 ## 成员函数
