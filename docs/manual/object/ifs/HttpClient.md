@@ -103,7 +103,7 @@ HttpResponse HttpClient.request(Stream conn,
 ```JavaScript
 HttpResponse HttpClient.request(String method,
     String url,
-    Object headers = {});
+    Object headers = {}) async;
 ```
 
 调用参数:
@@ -140,7 +140,7 @@ HttpResponse HttpClient.request(String method,
 HttpResponse HttpClient.request(String method,
     String url,
     SeekableStream body,
-    Object headers = {});
+    Object headers = {}) async;
 ```
 
 调用参数:
@@ -159,7 +159,7 @@ HttpResponse HttpClient.request(String method,
 HttpResponse HttpClient.request(String method,
     String url,
     Buffer body,
-    Object headers = {});
+    Object headers = {}) async;
 ```
 
 调用参数:
@@ -177,7 +177,7 @@ HttpResponse HttpClient.request(String method,
 
 ```JavaScript
 HttpResponse HttpClient.get(String url,
-    Object headers = {});
+    Object headers = {}) async;
 ```
 
 调用参数:
@@ -194,7 +194,7 @@ HttpResponse HttpClient.get(String url,
 ```JavaScript
 HttpResponse HttpClient.post(String url,
     SeekableStream body,
-    Object headers = {});
+    Object headers = {}) async;
 ```
 
 调用参数:
@@ -211,7 +211,7 @@ HttpResponse HttpClient.post(String url,
 ```JavaScript
 HttpResponse HttpClient.post(String url,
     Buffer body,
-    Object headers = {});
+    Object headers = {}) async;
 ```
 
 调用参数:
@@ -227,7 +227,7 @@ HttpResponse HttpClient.post(String url,
 
 ```JavaScript
 HttpResponse HttpClient.post(String url,
-    Object headers = {});
+    Object headers = {}) async;
 ```
 
 调用参数:
@@ -243,7 +243,7 @@ HttpResponse HttpClient.post(String url,
 
 ```JavaScript
 HttpResponse HttpClient.del(String url,
-    Object headers = {});
+    Object headers = {}) async;
 ```
 
 调用参数:
@@ -260,7 +260,7 @@ HttpResponse HttpClient.del(String url,
 ```JavaScript
 HttpResponse HttpClient.put(String url,
     SeekableStream body,
-    Object headers = {});
+    Object headers = {}) async;
 ```
 
 调用参数:
@@ -277,7 +277,7 @@ HttpResponse HttpClient.put(String url,
 ```JavaScript
 HttpResponse HttpClient.put(String url,
     Buffer body,
-    Object headers = {});
+    Object headers = {}) async;
 ```
 
 调用参数:
@@ -293,7 +293,7 @@ HttpResponse HttpClient.put(String url,
 
 ```JavaScript
 HttpResponse HttpClient.put(String url,
-    Object headers = {});
+    Object headers = {}) async;
 ```
 
 调用参数:
@@ -310,7 +310,7 @@ HttpResponse HttpClient.put(String url,
 ```JavaScript
 HttpResponse HttpClient.patch(String url,
     SeekableStream body,
-    Object headers = {});
+    Object headers = {}) async;
 ```
 
 调用参数:
@@ -327,7 +327,7 @@ HttpResponse HttpClient.patch(String url,
 ```JavaScript
 HttpResponse HttpClient.patch(String url,
     Buffer body,
-    Object headers = {});
+    Object headers = {}) async;
 ```
 
 调用参数:
@@ -343,7 +343,7 @@ HttpResponse HttpClient.patch(String url,
 
 ```JavaScript
 HttpResponse HttpClient.patch(String url,
-    Object headers = {});
+    Object headers = {}) async;
 ```
 
 调用参数:

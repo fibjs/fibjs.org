@@ -102,7 +102,7 @@ static HttpResponse http.request(Stream conn,
 ```JavaScript
 static HttpResponse http.request(String method,
     String url,
-    Object headers = {});
+    Object headers = {}) async;
 ```
 
 调用参数:
@@ -139,7 +139,7 @@ static HttpResponse http.request(String method,
 static HttpResponse http.request(String method,
     String url,
     SeekableStream body,
-    Object headers = {});
+    Object headers = {}) async;
 ```
 
 调用参数:
@@ -158,7 +158,7 @@ static HttpResponse http.request(String method,
 static HttpResponse http.request(String method,
     String url,
     Buffer body,
-    Object headers = {});
+    Object headers = {}) async;
 ```
 
 调用参数:
@@ -176,7 +176,7 @@ static HttpResponse http.request(String method,
 
 ```JavaScript
 static HttpResponse http.get(String url,
-    Object headers = {});
+    Object headers = {}) async;
 ```
 
 调用参数:
@@ -193,7 +193,7 @@ static HttpResponse http.get(String url,
 ```JavaScript
 static HttpResponse http.post(String url,
     SeekableStream body,
-    Object headers = {});
+    Object headers = {}) async;
 ```
 
 调用参数:
@@ -210,7 +210,7 @@ static HttpResponse http.post(String url,
 ```JavaScript
 static HttpResponse http.post(String url,
     Buffer body,
-    Object headers = {});
+    Object headers = {}) async;
 ```
 
 调用参数:
@@ -226,7 +226,7 @@ static HttpResponse http.post(String url,
 
 ```JavaScript
 static HttpResponse http.post(String url,
-    Object headers = {});
+    Object headers = {}) async;
 ```
 
 调用参数:
@@ -242,7 +242,7 @@ static HttpResponse http.post(String url,
 
 ```JavaScript
 static HttpResponse http.del(String url,
-    Object headers = {});
+    Object headers = {}) async;
 ```
 
 调用参数:
@@ -259,7 +259,7 @@ static HttpResponse http.del(String url,
 ```JavaScript
 static HttpResponse http.put(String url,
     SeekableStream body,
-    Object headers = {});
+    Object headers = {}) async;
 ```
 
 调用参数:
@@ -276,7 +276,7 @@ static HttpResponse http.put(String url,
 ```JavaScript
 static HttpResponse http.put(String url,
     Buffer body,
-    Object headers = {});
+    Object headers = {}) async;
 ```
 
 调用参数:
@@ -292,7 +292,7 @@ static HttpResponse http.put(String url,
 
 ```JavaScript
 static HttpResponse http.put(String url,
-    Object headers = {});
+    Object headers = {}) async;
 ```
 
 调用参数:
@@ -309,7 +309,7 @@ static HttpResponse http.put(String url,
 ```JavaScript
 static HttpResponse http.patch(String url,
     SeekableStream body,
-    Object headers = {});
+    Object headers = {}) async;
 ```
 
 调用参数:
@@ -326,7 +326,7 @@ static HttpResponse http.patch(String url,
 ```JavaScript
 static HttpResponse http.patch(String url,
     Buffer body,
-    Object headers = {});
+    Object headers = {}) async;
 ```
 
 调用参数:
@@ -342,7 +342,7 @@ static HttpResponse http.patch(String url,
 
 ```JavaScript
 static HttpResponse http.patch(String url,
-    Object headers = {});
+    Object headers = {}) async;
 ```
 
 调用参数:
