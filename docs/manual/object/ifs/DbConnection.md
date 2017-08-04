@@ -96,7 +96,7 @@ DBResult DbConnection.execute(String sql) async;
 
 ```JavaScript
 DBResult DbConnection.execute(String sql,
-    ...args);
+    ...args) async;
 ```
 
 调用参数:

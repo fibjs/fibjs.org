@@ -109,7 +109,7 @@ DBResult MSSQL.execute(String sql) async;
 
 ```JavaScript
 DBResult MSSQL.execute(String sql,
-    ...args);
+    ...args) async;
 ```
 
 调用参数:

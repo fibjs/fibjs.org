@@ -125,7 +125,7 @@ DBResult MySQL.execute(String sql) async;
 
 ```JavaScript
 DBResult MySQL.execute(String sql,
-    ...args);
+    ...args) async;
 ```
 
 调用参数:
