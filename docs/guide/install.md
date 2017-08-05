@@ -9,13 +9,50 @@ brew install fibjs
 ```
 你也可以选择自行下载合适的版本，用于安装或者自行分发。Windows 下也需要自己下载安装。
 
-## 自行编译
 如果你想随时拥有开发中的最新特性，或者你可能需要自行开发自己的分支，也可以自己编译最新的版本。
 
+## Windows 下自己编译
+
 ### 准备编译环境
+Windows 下需要安装 VS2015 或者 VS2017。如果你希望使用 VS2017 编译兼容 xp 的 fibjs， 还需要在安装时选择安装 `Windows XP support for C++`。
 
-Windows 下需要安装 Visual Studio 2015/2017。
+### 获取代码
+fibjs 当前 github 地址为: https://github.com/fibjs/fibjs
 
+在合适的位置执行以下命令:
+```sh
+git clone https://github.com/fibjs/fibjs.git
+cd fibjs
+git submodule init
+git submodule update
+```
+
+### 编译命令及说明
+Windows 打开 `Developer Command Prompt` 终端，进入 fibjs 目录，执行命令:
+```sh
+build [options]
+```
+options 的选项:
+* clean: 清除编译结果，便于全部重新编译
+* release: 以发布方式编译
+* debug: 以调试方式编译
+* i386: 以 32 位发布方式编译
+* amd64: 以 64 位发布方式编译
+* noxp: 禁用 xp 兼容模式
+
+例如 release 模式编译命令如下:
+```sh
+build release
+```
+
+fibjs build 工具支持兼容 xp 模式。在 Visual Studio 2017 下，缺省安装时未安装 xp 支持，所以需要手动禁用 xp 兼容：
+```sh
+build noxp
+```
+
+## UNIX 下自己编译
+
+### 准备编译环境
 在 UNIX 下编译需要依赖以下工具:
 ```
 GCC 4.8 or newer
@@ -92,22 +129,18 @@ cd fibjs
 git submodule init
 git submodule update
 ```
+
 ### 编译命令及说明
-Windows 下点击 start - Visual Studio 2015 - Visual Studio Tools - Developer Command Prompt for VS2015 打开终端后进入 fibjs 目录，执行命令:
-```sh
-build [options]
-```
 UNIX 环境，在 fibjs 项目根目录，有一个 build 的 shell 脚本，可用于 fibjs 编译。 执行编译命令:
 ```sh
 sh build [options] [-jn] [-v] [-h]
 ```
-
 options 的选项:
 * clean: 清除编译结果，便于全部重新编译
 * release: 以发布方式编译
 * debug: 以调试方式编译
 * i386: 以 32 位发布方式编译
-* amd64: 以 32 位发布方式编译
+* amd64: 以 64 位发布方式编译
 * arm: 交叉编译 32 位 ARM 版本
 * arm64: 交叉编译 64 位 ARM 版本
 * mips: 交叉编译 32 位 MIPS 版本
@@ -120,7 +153,7 @@ options 的选项:
 sh build release
 ```
 
-### 测试全部用例
+## 测试全部用例
 ```sh
 bin/{$OS}_{$arch}_release/fibjs test
 ```
@@ -143,16 +176,17 @@ sqlite
   √ select
   √ callback
   √ binary (835ms)
+
   √ 312 tests completed (6727ms)
 ```
 
-### 安装至系统
+## 安装至系统
 你可以使用下面的命令，将刚刚编译成功的 fibjs 安装至系统，方便使用:
 ```sh
 bin/{$OS}_{$arch}_release/install.sh
 ```
 
-### 开始编程
+## 开始编程
 到现在为止，你已经有一个可以执行的 fibjs 版本，可以开始体验 fibjs 开发的乐趣了。
 
 👉 【[hello, world](hello.md)】
