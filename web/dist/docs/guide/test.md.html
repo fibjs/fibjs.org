@@ -190,7 +190,7 @@
 <span class="hljs-keyword">var</span> root_server = {
     <span class="hljs-string">'^/hello(/.*)$'</span>: hello_server,
     <span class="hljs-string">'^/bonjour(/.*)$'</span>: hello_server,
-    <span class="hljs-string">'(.*)'</span>: http.fileHandler(path.join(__dirname, <span class="hljs-string">'web'</span>))
+    <span class="hljs-string">'^(.*)$'</span>: http.fileHandler(path.join(__dirname, <span class="hljs-string">'web'</span>))
 };
 
 <span class="hljs-keyword">var</span> svr = <span class="hljs-keyword">new</span> http.Server(<span class="hljs-number">8080</span>, root_server);
