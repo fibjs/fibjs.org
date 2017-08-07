@@ -13,7 +13,7 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
-    PKey [tooltip="PKey", fillcolor="lightgray", label="{PKey|new PKey()\l|name\lkeySize\lpublicKey\l|genRsaKey()\lgenEcKey()\lisPrivate()\lclone()\limportKey()\limportFile()\lexportPem()\lexportDer()\lencrypt()\ldecrypt()\lsign()\lverify()\l}"];
+    PKey [tooltip="PKey", fillcolor="lightgray", label="{PKey|new PKey()\l|name\lkeySize\lpublicKey\l|genRsaKey()\lgenEcKey()\lisPrivate()\lclone()\limportKey()\limportFile()\lexportPem()\lexportDer()\lexportJson()\lencrypt()\ldecrypt()\lsign()\lverify()\l}"];
 
     object -> PKey [dir=back];
 }
@@ -127,6 +127,16 @@ PKey.importKey(String pemKey,
 * password: String, 解密密码
 
 --------------------------
+**加载一个 JSON 格式的密钥**
+
+```JavaScript
+PKey.importKey(Object jsonKey);
+```
+
+调用参数:
+* jsonKey: Object, JSON 格式的密钥
+
+--------------------------
 ### importFile
 **加载一个 PEM/DER 格式的密钥文件**
 
@@ -160,6 +170,17 @@ Buffer PKey.exportDer();
 
 返回结果:
 * [Buffer](Buffer.md), 当前 key 的 DER 格式编码
+
+--------------------------
+### exportJson
+**返回当前 key 的 DER 格式编码**
+
+```JavaScript
+Object PKey.exportJson();
+```
+
+返回结果:
+* Object, 当前 key 的 DER 格式编码
 
 --------------------------
 ### encrypt

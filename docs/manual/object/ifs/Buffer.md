@@ -13,7 +13,7 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
-    Buffer [tooltip="Buffer", fillcolor="lightgray", label="{Buffer|new Buffer()\l|operator[]\l|isBuffer()\lconcat()\l|length\l|resize()\lappend()\lwrite()\lfill()\lindexOf()\lcompare()\lcopy()\lreadUInt8()\lreadUInt16LE()\lreadUInt16BE()\lreadUInt32LE()\lreadUInt32BE()\lreadUIntLE()\lreadUIntBE()\lreadInt8()\lreadInt16LE()\lreadInt16BE()\lreadInt32LE()\lreadInt32BE()\lreadIntLE()\lreadIntBE()\lreadInt64LE()\lreadInt64BE()\lreadFloatLE()\lreadFloatBE()\lreadDoubleLE()\lreadDoubleBE()\lwriteUInt8()\lwriteUInt16LE()\lwriteUInt16BE()\lwriteUInt32LE()\lwriteUInt32BE()\lwriteUIntLE()\lwriteUIntBE()\lwriteInt8()\lwriteInt16LE()\lwriteInt16BE()\lwriteInt32LE()\lwriteInt32BE()\lwriteIntLE()\lwriteIntBE()\lwriteInt64LE()\lwriteInt64BE()\lwriteFloatLE()\lwriteFloatBE()\lwriteDoubleLE()\lwriteDoubleBE()\lslice()\lhex()\lbase64()\ltoArray()\ltoString()\l}"];
+    Buffer [tooltip="Buffer", fillcolor="lightgray", label="{Buffer|new Buffer()\l|operator[]\l|isBuffer()\lconcat()\lfrom()\l|length\l|resize()\lappend()\lwrite()\lfill()\lindexOf()\lcompare()\lcopy()\lreadUInt8()\lreadUInt16LE()\lreadUInt16BE()\lreadUInt32LE()\lreadUInt32BE()\lreadUIntLE()\lreadUIntBE()\lreadInt8()\lreadInt16LE()\lreadInt16BE()\lreadInt32LE()\lreadInt32BE()\lreadIntLE()\lreadIntBE()\lreadInt64LE()\lreadInt64BE()\lreadFloatLE()\lreadFloatBE()\lreadDoubleLE()\lreadDoubleBE()\lwriteUInt8()\lwriteUInt16LE()\lwriteUInt16BE()\lwriteUInt32LE()\lwriteUInt32BE()\lwriteUIntLE()\lwriteUIntBE()\lwriteInt8()\lwriteInt16LE()\lwriteInt16BE()\lwriteInt32LE()\lwriteInt32BE()\lwriteIntLE()\lwriteIntBE()\lwriteInt64LE()\lwriteInt64BE()\lwriteFloatLE()\lwriteFloatBE()\lwriteDoubleLE()\lwriteDoubleBE()\lslice()\lhex()\lbase64()\lkeys()\lvalues()\ltoArray()\ltoString()\l}"];
 
     object -> Buffer [dir=back];
 }
@@ -121,6 +121,74 @@ static Buffer Buffer.concat(Array buflist,
 
 返回结果:
 * Buffer, 拼接后产生的新 Buffer 对象
+
+--------------------------
+### from
+**通过数组创建 Buffer 对象**
+
+```JavaScript
+static Buffer Buffer.from(Array datas);
+```
+
+调用参数:
+* datas: Array, 给定数组类型变量用于创建 Buffer 对象
+
+返回结果:
+* Buffer, 返回 Buffer 实例
+
+--------------------------
+**通过 ArrayBuffer 创建 Buffer 对象**
+
+```JavaScript
+static Buffer Buffer.from(ArrayBuffer datas);
+```
+
+调用参数:
+* datas: ArrayBuffer, 给定 ArrayBuffer 类型变量用于创建 Buffer 对象
+
+返回结果:
+* Buffer, 返回 Buffer 实例
+
+--------------------------
+**通过 TypedArray 创建 Buffer 对象**
+
+```JavaScript
+static Buffer Buffer.from(TypedArray datas);
+```
+
+调用参数:
+* datas: TypedArray, 给定 TypedArray 类型变量用于创建 Buffer 对象
+
+返回结果:
+* Buffer, 返回 Buffer 实例
+
+--------------------------
+**通过其他 Buffer 创建 Buffer 对象**
+
+```JavaScript
+static Buffer Buffer.from(Buffer buffer);
+```
+
+调用参数:
+* datas: 给定 Buffer 类型变量用于创建 Buffer 对象
+
+返回结果:
+* Buffer, 返回 Buffer 实例
+
+--------------------------
+**通过字符串创建 Buffer 对象**
+
+```JavaScript
+static Buffer Buffer.from(String str,
+    String codec = "utf8");
+```
+
+调用参数:
+* str: String, 初始化字符串，字符串将以 utf-8 格式写入，缺省则创建一个空对象
+* codec: String, 指定编码格式，允许值为："[hex](../../module/ifs/hex.md)", "[base64](../../module/ifs/base64.md)", "utf8", 或者系统支持的字符集
+
+返回结果:
+* Buffer, 返回 Buffer 实例
 
 ## 成员属性
         
@@ -1050,6 +1118,28 @@ String Buffer.base64();
 
 返回结果:
 * String, 返回编码字符串
+
+--------------------------
+### keys
+**返回全部二进制数据的数组**
+
+```JavaScript
+Object Buffer.keys();
+```
+
+返回结果:
+* Object, 返回包含对象数据索引的迭代器
+
+--------------------------
+### values
+**返回全部二进制数据的数组**
+
+```JavaScript
+Object Buffer.values();
+```
+
+返回结果:
+* Object, 返回包含对象数据值的迭代器
 
 --------------------------
 ### toArray
