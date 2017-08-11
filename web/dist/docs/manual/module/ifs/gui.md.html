@@ -159,7 +159,7 @@
 </code></pre>
 <h2 id="静态函数">静态函数</h2>
 <h3 id="setVersion">setVersion</h3>
-<p><strong>设置 <a href=../../object/ifs/webview.md.html>WebView</a> 内 ie 模拟版本</strong></p>
+<p><strong>设置 <a href=../../object/ifs/webview.md.html>WebView</a> 内 ie 最高模拟版本，当系统 ie 版本低于此版本时，将模拟系统安装版本</strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> gui.setVersion(Integer ver);
 </code></pre>
 <p>调用参数:</p>
@@ -169,26 +169,14 @@
 <hr>
 <h3 id="open">open</h3>
 <p><strong>打开一个窗口并访问指定网址</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> WebView gui.open(<span class="hljs-built_in">String</span> url) <span class="hljs-keyword">async</span>;
-</code></pre>
-<p>调用参数:</p>
-<ul>
-<li>url: String, 指定的网址，，可以使用 <a href=fs.md.html>fs</a>:<a href=path.md.html>path</a> 访问本地文件系统</li>
-</ul>
-<p>返回结果:</p>
-<ul>
-<li><a href=../../object/ifs/webview.md.html>WebView</a>, 返回打开的窗口对象</li>
-</ul>
-<hr>
-<p><strong>打开一个窗口并访问指定网址</strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">static</span> WebView gui.open(<span class="hljs-built_in">String</span> url,
-    <span class="hljs-built_in">Map</span> opt) <span class="hljs-keyword">async</span>;
+    <span class="hljs-built_in">Object</span> opt = {});
 </code></pre>
 <p>调用参数:</p>
 <ul>
 <li>url: String, 指定的网址，，可以使用 <a href=fs.md.html>fs</a>:<a href=path.md.html>path</a> 访问本地文件系统</li>
-<li>opt: <a href=../../object/ifs/map.md.html>Map</a>, 打开窗口参数</li>
+<li>opt: Object, 打开窗口参数</li>
 </ul>
 <p>返回结果:</p>
 <ul>
@@ -216,7 +204,7 @@
     <span class="hljs-string">"resizable"</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">// 是否可改变尺寸，缺省可以改变</span>
     <span class="hljs-string">"maximize"</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// 是否最大化显示，缺省不最大化</span>
     <span class="hljs-string">"visible"</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">// 是否显示，缺省显示</span>
-    <span class="hljs-string">"debug"</span>: <span class="hljs-literal">false</span> <span class="hljs-comment">// 是否提示页面错误，缺省不提示</span>
+    <span class="hljs-string">"debug"</span>: <span class="hljs-literal">true</span> <span class="hljs-comment">// 是否输出 WebView 内的错误和 console 信息，缺省显示</span>
 }
 </code></pre>
 <p>当设定 width 和 height，而未设定 left 或 right 时，窗口将自动居中</p>

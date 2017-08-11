@@ -280,13 +280,15 @@ Buffer PKey.sign(Buffer data,
 **使用当前算法密码公钥验证数据**
 
 ```JavaScript
-Boolean PKey.verify(Buffer sign,
-    Buffer data) async;
+Boolean PKey.verify(Buffer data,
+    Buffer sign,
+    Integer alg = 0) async;
 ```
 
 调用参数:
-* sign: [Buffer](Buffer.md), 指定要验证的签名
 * data: [Buffer](Buffer.md), 指定要验证的数据
+* sign: [Buffer](Buffer.md), 指定要验证的签名
+* alg: Integer, 指定要签名的算法, 默认0. 支持算法: 0=NONE,1=MD2,2=MD4,3=MD5,4=SHA1,5=SHA224,6=SHA256,7=SHA384,8=SHA512,9=RIPEMD160
 
 返回结果:
 * Boolean, 返回验证后的结果

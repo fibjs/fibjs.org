@@ -459,13 +459,16 @@
 <h3 id="verify">verify</h3>
 <p><strong>使用当前算法密码公钥验证数据</strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div><span class="hljs-built_in">Boolean</span> PKey.verify(Buffer sign,
-    Buffer data) <span class="hljs-keyword">async</span>;
+2
+3</div><span class="hljs-built_in">Boolean</span> PKey.verify(Buffer data,
+    Buffer sign,
+    Integer alg = <span class="hljs-number">0</span>) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>sign: <a href=buffer.md.html>Buffer</a>, 指定要验证的签名</li>
 <li>data: <a href=buffer.md.html>Buffer</a>, 指定要验证的数据</li>
+<li>sign: <a href=buffer.md.html>Buffer</a>, 指定要验证的签名</li>
+<li>alg: Integer, 指定要签名的算法, 默认0. 支持算法: 0=NONE,1=MD2,2=MD4,3=MD5,4=SHA1,5=SHA224,6=SHA256,7=SHA384,8=SHA512,9=RIPEMD160</li>
 </ul>
 <p>返回结果:</p>
 <ul>

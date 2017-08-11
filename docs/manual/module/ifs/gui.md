@@ -10,7 +10,7 @@ var gui = require('gui');
 ## 静态函数
         
 ### setVersion
-**设置 [WebView](../../object/ifs/WebView.md) 内 ie 模拟版本**
+**设置 [WebView](../../object/ifs/WebView.md) 内 ie 最高模拟版本，当系统 ie 版本低于此版本时，将模拟系统安装版本**
 
 ```JavaScript
 static gui.setVersion(Integer ver);
@@ -24,26 +24,13 @@ static gui.setVersion(Integer ver);
 **打开一个窗口并访问指定网址**
 
 ```JavaScript
-static WebView gui.open(String url) async;
-```
-
-调用参数:
-* url: String, 指定的网址，，可以使用 [fs](fs.md):[path](path.md) 访问本地文件系统
-
-返回结果:
-* [WebView](../../object/ifs/WebView.md), 返回打开的窗口对象
-
---------------------------
-**打开一个窗口并访问指定网址**
-
-```JavaScript
 static WebView gui.open(String url,
-    Map opt) async;
+    Object opt = {});
 ```
 
 调用参数:
 * url: String, 指定的网址，，可以使用 [fs](fs.md):[path](path.md) 访问本地文件系统
-* opt: [Map](../../object/ifs/Map.md), 打开窗口参数
+* opt: Object, 打开窗口参数
 
 返回结果:
 * [WebView](../../object/ifs/WebView.md), 返回打开的窗口对象
@@ -61,7 +48,7 @@ static WebView gui.open(String url,
     "resizable": true, // 是否可改变尺寸，缺省可以改变
     "maximize": false, // 是否最大化显示，缺省不最大化
     "visible": true, // 是否显示，缺省显示
-    "debug": false // 是否提示页面错误，缺省不提示
+    "debug": true // 是否输出 WebView 内的错误和 console 信息，缺省显示
 }
 ```
 

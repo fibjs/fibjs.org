@@ -13,7 +13,7 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
-    Buffer [tooltip="Buffer", fillcolor="lightgray", label="{Buffer|new Buffer()\l|operator[]\l|isBuffer()\lconcat()\lfrom()\l|length\l|resize()\lappend()\lwrite()\lfill()\lindexOf()\lcompare()\lcopy()\lreadUInt8()\lreadUInt16LE()\lreadUInt16BE()\lreadUInt32LE()\lreadUInt32BE()\lreadUIntLE()\lreadUIntBE()\lreadInt8()\lreadInt16LE()\lreadInt16BE()\lreadInt32LE()\lreadInt32BE()\lreadIntLE()\lreadIntBE()\lreadInt64LE()\lreadInt64BE()\lreadFloatLE()\lreadFloatBE()\lreadDoubleLE()\lreadDoubleBE()\lwriteUInt8()\lwriteUInt16LE()\lwriteUInt16BE()\lwriteUInt32LE()\lwriteUInt32BE()\lwriteUIntLE()\lwriteUIntBE()\lwriteInt8()\lwriteInt16LE()\lwriteInt16BE()\lwriteInt32LE()\lwriteInt32BE()\lwriteIntLE()\lwriteIntBE()\lwriteInt64LE()\lwriteInt64BE()\lwriteFloatLE()\lwriteFloatBE()\lwriteDoubleLE()\lwriteDoubleBE()\lslice()\lhex()\lbase64()\lkeys()\lvalues()\ltoArray()\ltoString()\l}"];
+    Buffer [tooltip="Buffer", fillcolor="lightgray", label="{Buffer|new Buffer()\l|operator[]\l|isBuffer()\lfrom()\lconcat()\lalloc()\lbyteLength()\l|length\l|resize()\lappend()\lwrite()\lfill()\lindexOf()\lcompare()\lcopy()\lreadUInt8()\lreadUInt16LE()\lreadUInt16BE()\lreadUInt32LE()\lreadUInt32BE()\lreadUIntLE()\lreadUIntBE()\lreadInt8()\lreadInt16LE()\lreadInt16BE()\lreadInt32LE()\lreadInt32BE()\lreadIntLE()\lreadIntBE()\lreadInt64LE()\lreadInt64BE()\lreadFloatLE()\lreadFloatBE()\lreadDoubleLE()\lreadDoubleBE()\lwriteUInt8()\lwriteUInt16LE()\lwriteUInt16BE()\lwriteUInt32LE()\lwriteUInt32BE()\lwriteUIntLE()\lwriteUIntBE()\lwriteInt8()\lwriteInt16LE()\lwriteInt16BE()\lwriteInt32LE()\lwriteInt32BE()\lwriteIntLE()\lwriteIntBE()\lwriteInt64LE()\lwriteInt64BE()\lwriteFloatLE()\lwriteFloatBE()\lwriteDoubleLE()\lwriteDoubleBE()\lslice()\lhex()\lbase64()\lkeys()\lvalues()\ltoArray()\ltoString()\l}"];
 
     object -> Buffer [dir=back];
 }
@@ -107,22 +107,6 @@ static Boolean Buffer.isBuffer(Value v);
 * Boolean, 传入对象是否 Buffer 对象
 
 --------------------------
-### concat
-**拼接多个缓存区中的数据**
-
-```JavaScript
-static Buffer Buffer.concat(Array buflist,
-    Integer cutLength = -1);
-```
-
-调用参数:
-* buflist: Array, 待拼接的Buffer数组
-* cutLength: Integer, 截取多少个Buffer对象
-
-返回结果:
-* Buffer, 拼接后产生的新 Buffer 对象
-
---------------------------
 ### from
 **通过数组创建 Buffer 对象**
 
@@ -170,7 +154,7 @@ static Buffer Buffer.from(Buffer buffer);
 ```
 
 调用参数:
-* datas: 给定 Buffer 类型变量用于创建 Buffer 对象
+* buffer: Buffer, 给定 Buffer 类型变量用于创建 Buffer 对象
 
 返回结果:
 * Buffer, 返回 Buffer 实例
@@ -189,6 +173,135 @@ static Buffer Buffer.from(String str,
 
 返回结果:
 * Buffer, 返回 Buffer 实例
+
+--------------------------
+### concat
+**拼接多个缓存区中的数据**
+
+```JavaScript
+static Buffer Buffer.concat(Array buflist,
+    Integer cutLength = -1);
+```
+
+调用参数:
+* buflist: Array, 待拼接的Buffer数组
+* cutLength: Integer, 截取多少个Buffer对象
+
+返回结果:
+* Buffer, 拼接后产生的新 Buffer 对象
+
+--------------------------
+### alloc
+**分配一个指定长度的新缓存区。如果大小为0，将创建一个零长度的缓存区。**
+
+```JavaScript
+static Buffer Buffer.alloc(Integer size,
+    Integer fill = 0,
+    String codec = "utf8");
+```
+
+调用参数:
+* size: Integer, 缓冲区的所需长度
+* fill: Integer, 预先填充新缓冲区的值，可使用 string/buffer/integer 值类型。 默认值：0
+* codec: String, 指定编码格式，允许值为："[hex](../../module/ifs/hex.md)", "[base64](../../module/ifs/base64.md)", "utf8", 或者系统支持的字符集
+
+返回结果:
+* Buffer, 填充好的新 Buffer 对象
+
+--------------------------
+**分配一个指定长度的新缓存区。如果大小为0，将创建一个零长度的缓存区。**
+
+```JavaScript
+static Buffer Buffer.alloc(Integer size,
+    String fill = "",
+    String codec = "utf8");
+```
+
+调用参数:
+* size: Integer, 缓冲区的所需长度
+* fill: String, 预先填充新缓冲区的值，可使用 string/buffer/integer 值类型。 默认值：0
+* codec: String, 指定编码格式，允许值为："[hex](../../module/ifs/hex.md)", "[base64](../../module/ifs/base64.md)", "utf8", 或者系统支持的字符集
+
+返回结果:
+* Buffer, 填充好的新 Buffer 对象
+
+--------------------------
+**分配一个指定长度的新缓存区。如果大小为0，将创建一个零长度的缓存区。**
+
+```JavaScript
+static Buffer Buffer.alloc(Integer size,
+    Buffer fill,
+    String codec = "utf8");
+```
+
+调用参数:
+* size: Integer, 缓冲区的所需长度
+* fill: Buffer, 预先填充新缓冲区的值，可使用 string/buffer/integer 值类型。 默认值：0
+* codec: String, 指定编码格式，允许值为："[hex](../../module/ifs/hex.md)", "[base64](../../module/ifs/base64.md)", "utf8", 或者系统支持的字符集
+
+返回结果:
+* Buffer, 填充好的新 Buffer 对象
+
+--------------------------
+### byteLength
+**返回字符串的实际字节长度**
+
+```JavaScript
+static Integer Buffer.byteLength(String str,
+    String codec = "utf8");
+```
+
+调用参数:
+* str: String, 待取字节的字符串，如果str为 ArrayBuffer/TypedArray/DataView/Buffer 对象，则返回它们的实际长度
+* codec: String, 指定编码格式，允许值为："[hex](../../module/ifs/hex.md)", "[base64](../../module/ifs/base64.md)", "utf8", 或者系统支持的字符集
+
+返回结果:
+* Integer, 返回实际字节长度
+
+--------------------------
+**返回字符串的实际字节长度**
+
+```JavaScript
+static Integer Buffer.byteLength(ArrayBuffer str,
+    String codec = "utf8");
+```
+
+调用参数:
+* str: ArrayBuffer, 待取字节的字符串，如果str为 ArrayBuffer/TypedArray/DataView/Buffer 对象，则返回它们的实际长度
+* codec: String, 指定编码格式，允许值为："[hex](../../module/ifs/hex.md)", "[base64](../../module/ifs/base64.md)", "utf8", 或者系统支持的字符集
+
+返回结果:
+* Integer, 返回实际字节长度
+
+--------------------------
+**返回字符串的实际字节长度**
+
+```JavaScript
+static Integer Buffer.byteLength(ArrayBufferView str,
+    String codec = "utf8");
+```
+
+调用参数:
+* str: ArrayBufferView, 待取字节的字符串，如果 str 为 ArrayBuffer/TypedArray/DataView/Buffer 对象，则返回它们的实际长度
+* codec: String, 指定编码格式，允许值为："[hex](../../module/ifs/hex.md)", "[base64](../../module/ifs/base64.md)", "utf8", 或者系统支持的字符集
+
+返回结果:
+* Integer, 返回实际字节长度
+
+--------------------------
+**返回字符串的实际字节长度**
+
+```JavaScript
+static Integer Buffer.byteLength(Buffer str,
+    String codec = "utf8");
+```
+
+调用参数:
+* str: Buffer, 待取字节的字符串，如果str为 ArrayBuffer/TypedArray/DataView/Buffer 对象，则返回它们的实际长度
+* codec: String, 指定编码格式，允许值为："[hex](../../module/ifs/hex.md)", "[base64](../../module/ifs/base64.md)", "utf8", 或者系统支持的字符集
+
+返回结果:
+* Integer, 返回实际字节长度
 
 ## 成员属性
         
