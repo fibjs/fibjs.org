@@ -157,9 +157,45 @@
 <p>用以将 Http 协议转换为 WebSocket 包协议消息。创建方式：</p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
-3</div><span class="hljs-keyword">var</span> ws = <span class="hljs-built_in">require</span>(<span class="hljs-string">"ws"</span>);
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21</div><span class="hljs-keyword">var</span> ws = <span class="hljs-built_in">require</span>(<span class="hljs-string">'ws'</span>);
+<span class="hljs-keyword">var</span> http = <span class="hljs-built_in">require</span>(<span class="hljs-string">'http'</span>);
 
-<span class="hljs-keyword">var</span> sock = <span class="hljs-keyword">new</span> ws.WebSocket(...);
+<span class="hljs-keyword">var</span> serv = <span class="hljs-keyword">new</span> http.Server(<span class="hljs-number">8811</span>, ws.upgrade(<span class="hljs-function">(<span class="hljs-params">conn</span>) =&gt;</span> {
+    conn.onmessage = <span class="hljs-function"><span class="hljs-params">msg</span> =&gt;</span> {
+        conn.send(<span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>());
+    };
+}));
+
+serv.run(<span class="hljs-function"><span class="hljs-params">r</span> =&gt;</span> <span class="hljs-number">0</span>);
+
+<span class="hljs-keyword">var</span> sock = <span class="hljs-keyword">new</span> ws.Socket(<span class="hljs-string">'ws://127.0.0.1:8811'</span>);
+sock.on(<span class="hljs-string">'open'</span>, () =&gt; {
+    setInterval(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+        sock.send(<span class="hljs-string">'get date'</span>);
+    }, <span class="hljs-number">1000</span>);
+});
+
+sock.onmessage = <span class="hljs-function"><span class="hljs-params">evt</span> =&gt;</span> {
+    <span class="hljs-built_in">console</span>.log(evt.data);
+}
 </code></pre>
 <h2 id="继承关系">继承关系</h2>
 <div class="dot">

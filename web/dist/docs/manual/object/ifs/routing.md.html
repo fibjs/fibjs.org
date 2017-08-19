@@ -154,6 +154,69 @@
 </ul>
  </div></div></div>  </div></div><div class=content><div class=social-share data-sites=weibo,twitter data-description=分享></div> <h1 id="对象-Routing">对象 Routing</h1>
 <p>消息处理器路由对象</p>
+<p>路由对象是 <a href=../../module/ifs/http.md.html>http</a> 消息处理的核心对象，服务器根据路由的设定，匹配 <a href=../../module/ifs/url.md.html>url</a> 和 method，并将 <a href=../../module/ifs/http.md.html>http</a> 消息转发到相应的处理器，以完成不同的事务。</p>
+<p>一个简单的路由，可以直接以 JSON 对象的形式提供，比如：</p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8</div><span class="hljs-keyword">var</span> http = <span class="hljs-built_in">require</span>(<span class="hljs-string">'http'</span>);
+
+<span class="hljs-keyword">var</span> svr = <span class="hljs-keyword">new</span> http.Server(<span class="hljs-number">8080</span>, {
+    <span class="hljs-string">'/'</span>: <span class="hljs-function"><span class="hljs-params">r</span> =&gt;</span> r.response.write(<span class="hljs-string">'home'</span>),
+    <span class="hljs-string">'/help'</span>: <span class="hljs-function"><span class="hljs-params">r</span> =&gt;</span> r.response.write(<span class="hljs-string">'help'</span>)
+});
+
+svr.run();
+</code></pre>
+<p>如果需要更复杂的路由定制，可以自行创建 Routing 对象并根据需要处理路由策略：</p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22</div><span class="hljs-keyword">var</span> http = <span class="hljs-built_in">require</span>(<span class="hljs-string">'http'</span>);
+<span class="hljs-keyword">var</span> mq = <span class="hljs-built_in">require</span>(<span class="hljs-string">'mq'</span>);
+
+<span class="hljs-keyword">var</span> app = <span class="hljs-keyword">new</span> mq.Routing();
+
+app.get(<span class="hljs-string">'/'</span>, r =&gt; r.response.write(<span class="hljs-string">'home'</span>));
+app.get(<span class="hljs-string">'/help'</span>, r =&gt; r.response.write(<span class="hljs-string">'help'</span>));
+
+app.post(<span class="hljs-string">'/help'</span>, r =&gt; r.response.write(<span class="hljs-string">'post a help.'</span>));
+
+app.get(<span class="hljs-string">'/home/:user'</span>, (r, user) =&gt; r.response.write(<span class="hljs-string">'hello '</span> + user));
+
+app.get(<span class="hljs-string">'/user/:id(\\d+)'</span>, (r, id) =&gt; r.response.write(<span class="hljs-string">'get '</span> + id));
+
+app.get(<span class="hljs-string">'/actions'</span>, {
+    <span class="hljs-string">'/run'</span>: <span class="hljs-function"><span class="hljs-params">r</span> =&gt;</span> r.response.write(<span class="hljs-string">'running'</span>),
+    <span class="hljs-string">'/sleep'</span>: <span class="hljs-function"><span class="hljs-params">r</span> =&gt;</span> r.response.write(<span class="hljs-string">'sleeping'</span>),
+    <span class="hljs-string">'(.*)'</span>: <span class="hljs-function"><span class="hljs-params">r</span> =&gt;</span> r.response.write(<span class="hljs-string">'........'</span>)
+});
+
+<span class="hljs-keyword">var</span> svr = <span class="hljs-keyword">new</span> http.Server(<span class="hljs-number">8080</span>, app);
+svr.run();
+</code></pre>
 <p>路由对象根据设定的规则匹配消息，将消息传递给符合规则的第一个处理器。后加入的路由规则优先匹配。创建方法：</p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
@@ -291,24 +354,32 @@
 <h2 id="成员函数">成员函数</h2>
 <h3 id="append">append</h3>
 <p><strong>从已有路由对象中添加规则，添加后原路由将被清空</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Routing.append(Routing route);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Routing Routing.append(Routing route);
 </code></pre>
 <p>调用参数:</p>
 <ul>
 <li>route: Routing, 已经初始化的路由对象</li>
 </ul>
+<p>返回结果:</p>
+<ul>
+<li>Routing, 返回路由对象本身</li>
+</ul>
 <hr>
 <p><strong>添加一组路由规则</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Routing.append(<span class="hljs-built_in">Object</span> map);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Routing Routing.append(<span class="hljs-built_in">Object</span> map);
 </code></pre>
 <p>调用参数:</p>
 <ul>
 <li>map: Object, 路由参数</li>
 </ul>
+<p>返回结果:</p>
+<ul>
+<li>Routing, 返回路由对象本身</li>
+</ul>
 <hr>
 <p><strong>添加一条路由规则</strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div>Routing.append(<span class="hljs-built_in">String</span> pattern,
+2</div>Routing Routing.append(<span class="hljs-built_in">String</span> pattern,
     Handler hdlr);
 </code></pre>
 <p>调用参数:</p>
@@ -316,22 +387,15 @@
 <li>pattern: String, 消息匹配格式</li>
 <li>hdlr: <a href=handler.md.html>Handler</a>, 内置消息处理器，处理函数，链式处理数组，路由对象，详见 <a href=../../module/ifs/mq.md.html#Handler>mq.Handler</a></li>
 </ul>
-<hr>
-<p><strong>添加一组路由规则</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div>Routing.append(<span class="hljs-built_in">String</span> method,
-    <span class="hljs-built_in">Object</span> map);
-</code></pre>
-<p>调用参数:</p>
+<p>返回结果:</p>
 <ul>
-<li>method: String, 指定 <a href=../../module/ifs/http.md.html>http</a> 请求方法，&quot;*&quot; 接受所有方法</li>
-<li>map: Object, 路由参数</li>
+<li>Routing, 返回路由对象本身</li>
 </ul>
 <hr>
 <p><strong>添加一条路由规则</strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
-3</div>Routing.append(<span class="hljs-built_in">String</span> method,
+3</div>Routing Routing.append(<span class="hljs-built_in">String</span> method,
     <span class="hljs-built_in">String</span> pattern,
     Handler hdlr);
 </code></pre>
@@ -341,99 +405,139 @@
 <li>pattern: String, 消息匹配格式</li>
 <li>hdlr: <a href=handler.md.html>Handler</a>, 内置消息处理器，处理函数，链式处理数组，路由对象，详见 <a href=../../module/ifs/mq.md.html#Handler>mq.Handler</a></li>
 </ul>
+<p>返回结果:</p>
+<ul>
+<li>Routing, 返回路由对象本身</li>
+</ul>
 <hr>
 <h3 id="all">all</h3>
 <p><strong>添加一组接受所有 <a href=../../module/ifs/http.md.html>http</a> 方法路由规则</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Routing.all(<span class="hljs-built_in">Object</span> map);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Routing Routing.all(<span class="hljs-built_in">Object</span> map);
 </code></pre>
 <p>调用参数:</p>
 <ul>
 <li>map: Object, 路由参数</li>
+</ul>
+<p>返回结果:</p>
+<ul>
+<li>Routing, 返回路由对象本身</li>
 </ul>
 <hr>
 <p><strong>添加一条接受所有 <a href=../../module/ifs/http.md.html>http</a> 方法路由规则</strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div>Routing.all(<span class="hljs-built_in">String</span> pattern,
+2</div>Routing Routing.all(<span class="hljs-built_in">String</span> pattern,
     Handler hdlr);
 </code></pre>
 <p>调用参数:</p>
 <ul>
 <li>pattern: String, 消息匹配格式</li>
 <li>hdlr: <a href=handler.md.html>Handler</a>, 内置消息处理器，处理函数，链式处理数组，路由对象，详见 <a href=../../module/ifs/mq.md.html#Handler>mq.Handler</a></li>
+</ul>
+<p>返回结果:</p>
+<ul>
+<li>Routing, 返回路由对象本身</li>
 </ul>
 <hr>
 <h3 id="get">get</h3>
 <p><strong>添加一组 GET 方法路由规则</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Routing.get(<span class="hljs-built_in">Object</span> map);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Routing Routing.get(<span class="hljs-built_in">Object</span> map);
 </code></pre>
 <p>调用参数:</p>
 <ul>
 <li>map: Object, 路由参数</li>
+</ul>
+<p>返回结果:</p>
+<ul>
+<li>Routing, 返回路由对象本身</li>
 </ul>
 <hr>
 <p><strong>添加一条接受 <a href=../../module/ifs/http.md.html>http</a> GET 方法路由规则</strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div>Routing.get(<span class="hljs-built_in">String</span> pattern,
+2</div>Routing Routing.get(<span class="hljs-built_in">String</span> pattern,
     Handler hdlr);
 </code></pre>
 <p>调用参数:</p>
 <ul>
 <li>pattern: String, 消息匹配格式</li>
 <li>hdlr: <a href=handler.md.html>Handler</a>, 内置消息处理器，处理函数，链式处理数组，路由对象，详见 <a href=../../module/ifs/mq.md.html#Handler>mq.Handler</a></li>
+</ul>
+<p>返回结果:</p>
+<ul>
+<li>Routing, 返回路由对象本身</li>
 </ul>
 <hr>
 <h3 id="post">post</h3>
 <p><strong>添加一组接受 <a href=../../module/ifs/http.md.html>http</a> POST 方法路由规则</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Routing.post(<span class="hljs-built_in">Object</span> map);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Routing Routing.post(<span class="hljs-built_in">Object</span> map);
 </code></pre>
 <p>调用参数:</p>
 <ul>
 <li>map: Object, 路由参数</li>
+</ul>
+<p>返回结果:</p>
+<ul>
+<li>Routing, 返回路由对象本身</li>
 </ul>
 <hr>
 <p><strong>添加一条接受 <a href=../../module/ifs/http.md.html>http</a> POST 方法路由规则</strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div>Routing.post(<span class="hljs-built_in">String</span> pattern,
+2</div>Routing Routing.post(<span class="hljs-built_in">String</span> pattern,
     Handler hdlr);
 </code></pre>
 <p>调用参数:</p>
 <ul>
 <li>pattern: String, 消息匹配格式</li>
 <li>hdlr: <a href=handler.md.html>Handler</a>, 内置消息处理器，处理函数，链式处理数组，路由对象，详见 <a href=../../module/ifs/mq.md.html#Handler>mq.Handler</a></li>
+</ul>
+<p>返回结果:</p>
+<ul>
+<li>Routing, 返回路由对象本身</li>
 </ul>
 <hr>
 <h3 id="del">del</h3>
 <p><strong>添加一组接受 <a href=../../module/ifs/http.md.html>http</a> DELETE 方法路由规则</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Routing.del(<span class="hljs-built_in">Object</span> map);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Routing Routing.del(<span class="hljs-built_in">Object</span> map);
 </code></pre>
 <p>调用参数:</p>
 <ul>
 <li>map: Object, 路由参数</li>
+</ul>
+<p>返回结果:</p>
+<ul>
+<li>Routing, 返回路由对象本身</li>
 </ul>
 <hr>
 <p><strong>添加一条接受 <a href=../../module/ifs/http.md.html>http</a> DELETE 方法路由规则</strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div>Routing.del(<span class="hljs-built_in">String</span> pattern,
+2</div>Routing Routing.del(<span class="hljs-built_in">String</span> pattern,
     Handler hdlr);
 </code></pre>
 <p>调用参数:</p>
 <ul>
 <li>pattern: String, 消息匹配格式</li>
 <li>hdlr: <a href=handler.md.html>Handler</a>, 内置消息处理器，处理函数，链式处理数组，路由对象，详见 <a href=../../module/ifs/mq.md.html#Handler>mq.Handler</a></li>
+</ul>
+<p>返回结果:</p>
+<ul>
+<li>Routing, 返回路由对象本身</li>
 </ul>
 <hr>
 <h3 id="put">put</h3>
 <p><strong>添加一组 PUT 方法路由规则</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Routing.put(<span class="hljs-built_in">Object</span> map);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Routing Routing.put(<span class="hljs-built_in">Object</span> map);
 </code></pre>
 <p>调用参数:</p>
 <ul>
 <li>map: Object, 路由参数</li>
+</ul>
+<p>返回结果:</p>
+<ul>
+<li>Routing, 返回路由对象本身</li>
 </ul>
 <hr>
 <p><strong>添加一条接受 <a href=../../module/ifs/http.md.html>http</a> PUT 方法路由规则</strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div>Routing.put(<span class="hljs-built_in">String</span> pattern,
+2</div>Routing Routing.put(<span class="hljs-built_in">String</span> pattern,
     Handler hdlr);
 </code></pre>
 <p>调用参数:</p>
@@ -441,25 +545,37 @@
 <li>pattern: String, 消息匹配格式</li>
 <li>hdlr: <a href=handler.md.html>Handler</a>, 内置消息处理器，处理函数，链式处理数组，路由对象，详见 <a href=../../module/ifs/mq.md.html#Handler>mq.Handler</a></li>
 </ul>
+<p>返回结果:</p>
+<ul>
+<li>Routing, 返回路由对象本身</li>
+</ul>
 <hr>
 <h3 id="patch">patch</h3>
 <p><strong>添加一组 PATCH 方法路由规则</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Routing.patch(<span class="hljs-built_in">Object</span> map);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Routing Routing.patch(<span class="hljs-built_in">Object</span> map);
 </code></pre>
 <p>调用参数:</p>
 <ul>
 <li>map: Object, 路由参数</li>
 </ul>
+<p>返回结果:</p>
+<ul>
+<li>Routing, 返回路由对象本身</li>
+</ul>
 <hr>
 <p><strong>添加一条接受 <a href=../../module/ifs/http.md.html>http</a> PATCH 方法路由规则</strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div>Routing.patch(<span class="hljs-built_in">String</span> pattern,
+2</div>Routing Routing.patch(<span class="hljs-built_in">String</span> pattern,
     Handler hdlr);
 </code></pre>
 <p>调用参数:</p>
 <ul>
 <li>pattern: String, 消息匹配格式</li>
 <li>hdlr: <a href=handler.md.html>Handler</a>, 内置消息处理器，处理函数，链式处理数组，路由对象，详见 <a href=../../module/ifs/mq.md.html#Handler>mq.Handler</a></li>
+</ul>
+<p>返回结果:</p>
+<ul>
+<li>Routing, 返回路由对象本身</li>
 </ul>
 <hr>
 <h3 id="invoke">invoke</h3>

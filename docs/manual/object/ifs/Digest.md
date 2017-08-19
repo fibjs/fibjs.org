@@ -28,11 +28,14 @@ readonly Integer Digest.size;
 **更新二进制摘要信息**
 
 ```JavaScript
-Digest.update(Buffer data);
+Digest Digest.update(Buffer data);
 ```
 
 调用参数:
 * data: [Buffer](Buffer.md), 二进制数据块
+
+返回结果:
+* Digest, 返回信息摘要对象本身
 
 --------------------------
 ### digest

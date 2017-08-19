@@ -13,7 +13,7 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
-    Buffer [tooltip="Buffer", fillcolor="lightgray", label="{Buffer|new Buffer()\l|operator[]\l|isBuffer()\lfrom()\lconcat()\lalloc()\lbyteLength()\l|length\l|resize()\lappend()\lwrite()\lfill()\lindexOf()\lcompare()\lcopy()\lreadUInt8()\lreadUInt16LE()\lreadUInt16BE()\lreadUInt32LE()\lreadUInt32BE()\lreadUIntLE()\lreadUIntBE()\lreadInt8()\lreadInt16LE()\lreadInt16BE()\lreadInt32LE()\lreadInt32BE()\lreadIntLE()\lreadIntBE()\lreadInt64LE()\lreadInt64BE()\lreadFloatLE()\lreadFloatBE()\lreadDoubleLE()\lreadDoubleBE()\lwriteUInt8()\lwriteUInt16LE()\lwriteUInt16BE()\lwriteUInt32LE()\lwriteUInt32BE()\lwriteUIntLE()\lwriteUIntBE()\lwriteInt8()\lwriteInt16LE()\lwriteInt16BE()\lwriteInt32LE()\lwriteInt32BE()\lwriteIntLE()\lwriteIntBE()\lwriteInt64LE()\lwriteInt64BE()\lwriteFloatLE()\lwriteFloatBE()\lwriteDoubleLE()\lwriteDoubleBE()\lslice()\lhex()\lbase64()\lkeys()\lvalues()\ltoArray()\ltoString()\l}"];
+    Buffer [tooltip="Buffer", fillcolor="lightgray", label="{Buffer|new Buffer()\l|operator[]\l|isBuffer()\lfrom()\lconcat()\lalloc()\lallocUnsafe()\lallocUnsafeSlow()\lbyteLength()\lisEncoding()\l|length\l|resize()\lappend()\lwrite()\lfill()\lindexOf()\lcompare()\lcopy()\lreadUInt8()\lreadUInt16LE()\lreadUInt16BE()\lreadUInt32LE()\lreadUInt32BE()\lreadUIntLE()\lreadUIntBE()\lreadInt8()\lreadInt16LE()\lreadInt16BE()\lreadInt32LE()\lreadInt32BE()\lreadIntLE()\lreadIntBE()\lreadInt64LE()\lreadInt64BE()\lreadFloatLE()\lreadFloatBE()\lreadDoubleLE()\lreadDoubleBE()\lwriteUInt8()\lwriteUInt16LE()\lwriteUInt16BE()\lwriteUInt32LE()\lwriteUInt32BE()\lwriteUIntLE()\lwriteUIntBE()\lwriteInt8()\lwriteInt16LE()\lwriteInt16BE()\lwriteInt32LE()\lwriteInt32BE()\lwriteIntLE()\lwriteIntBE()\lwriteInt64LE()\lwriteInt64BE()\lwriteFloatLE()\lwriteFloatBE()\lwriteDoubleLE()\lwriteDoubleBE()\lslice()\lreverse()\lhex()\lbase64()\lkeys()\lvalues()\lentries()\ltoArray()\ltoString()\l}"];
 
     object -> Buffer [dir=back];
 }
@@ -50,6 +50,16 @@ new Buffer(TypedArray datas);
 
 调用参数:
 * datas: TypedArray, 初始化数据数组
+
+--------------------------
+**缓存对象构造函数**
+
+```JavaScript
+new Buffer(ArrayBufferView datas);
+```
+
+调用参数:
+* datas: ArrayBufferView, 初始化数据数组
 
 --------------------------
 **缓存对象构造函数**
@@ -108,53 +118,35 @@ static Boolean Buffer.isBuffer(Value v);
 
 --------------------------
 ### from
-**通过数组创建 Buffer 对象**
-
-```JavaScript
-static Buffer Buffer.from(Array datas);
-```
-
-调用参数:
-* datas: Array, 给定数组类型变量用于创建 Buffer 对象
-
-返回结果:
-* Buffer, 返回 Buffer 实例
-
---------------------------
-**通过 ArrayBuffer 创建 Buffer 对象**
-
-```JavaScript
-static Buffer Buffer.from(ArrayBuffer datas);
-```
-
-调用参数:
-* datas: ArrayBuffer, 给定 ArrayBuffer 类型变量用于创建 Buffer 对象
-
-返回结果:
-* Buffer, 返回 Buffer 实例
-
---------------------------
-**通过 TypedArray 创建 Buffer 对象**
-
-```JavaScript
-static Buffer Buffer.from(TypedArray datas);
-```
-
-调用参数:
-* datas: TypedArray, 给定 TypedArray 类型变量用于创建 Buffer 对象
-
-返回结果:
-* Buffer, 返回 Buffer 实例
-
---------------------------
 **通过其他 Buffer 创建 Buffer 对象**
 
 ```JavaScript
-static Buffer Buffer.from(Buffer buffer);
+static Buffer Buffer.from(Buffer buffer,
+    Integer byteOffset = 0,
+    Integer length = -1);
 ```
 
 调用参数:
 * buffer: Buffer, 给定 Buffer 类型变量用于创建 Buffer 对象
+* byteOffset: Integer, 指定数据起始位置，起始为 0
+* length: Integer, 指定数据长度，起始位 -1，表示剩余所有数据
+
+返回结果:
+* Buffer, 返回 Buffer 实例
+
+--------------------------
+**通过字符串创建 Buffer 对象**
+
+```JavaScript
+static Buffer Buffer.from(String str,
+    Integer byteOffset = 0,
+    Integer length = -1);
+```
+
+调用参数:
+* str: String, 初始化字符串，字符串将以 utf-8 格式写入
+* byteOffset: Integer, 指定数据起始位置，起始为 0
+* length: Integer, 指定数据长度，起始位 -1，表示剩余所有数据
 
 返回结果:
 * Buffer, 返回 Buffer 实例
@@ -243,6 +235,34 @@ static Buffer Buffer.alloc(Integer size,
 * Buffer, 填充好的新 Buffer 对象
 
 --------------------------
+### allocUnsafe
+**分配一个指定长度的新缓存区。如果大小为0，将创建一个零长度的缓存区。**
+
+```JavaScript
+static Buffer Buffer.allocUnsafe(Integer size);
+```
+
+调用参数:
+* size: Integer, 缓冲区的所需长度
+
+返回结果:
+* Buffer, 指定尺寸的新 Buffer 对象
+
+--------------------------
+### allocUnsafeSlow
+**分配一个指定长度的新缓存区。如果大小为0，将创建一个零长度的缓存区。**
+
+```JavaScript
+static Buffer Buffer.allocUnsafeSlow(Integer size);
+```
+
+调用参数:
+* size: Integer, 缓冲区的所需长度
+
+返回结果:
+* Buffer, 指定尺寸的新 Buffer 对象
+
+--------------------------
 ### byteLength
 **返回字符串的实际字节长度**
 
@@ -303,6 +323,20 @@ static Integer Buffer.byteLength(Buffer str,
 返回结果:
 * Integer, 返回实际字节长度
 
+--------------------------
+### isEncoding
+**检测编码格式是否被支持**
+
+```JavaScript
+static Boolean Buffer.isEncoding(String codec);
+```
+
+调用参数:
+* codec: String, 待检测的编码格式
+
+返回结果:
+* Boolean, 是否支持
+
 ## 成员属性
         
 ### length
@@ -326,36 +360,6 @@ Buffer.resize(Integer sz);
 
 --------------------------
 ### append
-**在缓存对象尾部写入一组数据**
-
-```JavaScript
-Buffer.append(Array datas);
-```
-
-调用参数:
-* datas: Array, 初始化数据数组
-
---------------------------
-**在缓存对象尾部写入一组数据**
-
-```JavaScript
-Buffer.append(TypedArray datas);
-```
-
-调用参数:
-* datas: TypedArray, 初始化数据数组
-
---------------------------
-**在缓存对象尾部写入一组数据**
-
-```JavaScript
-Buffer.append(ArrayBuffer datas);
-```
-
-调用参数:
-* datas: ArrayBuffer, 初始化数据数组
-
---------------------------
 **在缓存对象尾部写入一组二进制数据**
 
 ```JavaScript
@@ -1211,6 +1215,17 @@ Buffer Buffer.slice(Integer start,
 * Buffer, 返回新的缓存对象
 
 --------------------------
+### reverse
+**返回一个新缓存对象，包含当前对象数据的倒序**
+
+```JavaScript
+Buffer Buffer.reverse();
+```
+
+返回结果:
+* Buffer, 返回新的缓存对象
+
+--------------------------
 ### hex
 **使用 16 进制编码缓存对象内容**
 
@@ -1237,22 +1252,33 @@ String Buffer.base64();
 **返回全部二进制数据的数组**
 
 ```JavaScript
-Object Buffer.keys();
+Iterator Buffer.keys();
 ```
 
 返回结果:
-* Object, 返回包含对象数据索引的迭代器
+* Iterator, 返回包含对象数据索引的迭代器
 
 --------------------------
 ### values
 **返回全部二进制数据的数组**
 
 ```JavaScript
-Object Buffer.values();
+Iterator Buffer.values();
 ```
 
 返回结果:
-* Object, 返回包含对象数据值的迭代器
+* Iterator, 返回包含对象数据值的迭代器
+
+--------------------------
+### entries
+**返回包含对象数据 [index, byte] 对的迭代器**
+
+```JavaScript
+Iterator Buffer.entries();
+```
+
+返回结果:
+* Iterator, [index, byte] 对的迭代器
 
 --------------------------
 ### toArray

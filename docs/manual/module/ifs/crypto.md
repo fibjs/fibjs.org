@@ -50,6 +50,20 @@ X509Req crypto.X509Req;
 
 ## 静态函数
         
+### createHash
+**根据给定的算法名称创建一个信息摘要对象**
+
+```JavaScript
+static Digest crypto.createHash(String algo);
+```
+
+调用参数:
+* algo: String, 指定信息摘要对象的算法
+
+返回结果:
+* [Digest](../../object/ifs/Digest.md), 返回信息摘要对象
+
+--------------------------
 ### loadPKey
 **加载一个 PEM/DER 格式的密钥文件**
 

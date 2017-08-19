@@ -4,9 +4,27 @@ WebSocket 包协议转换处理器
 用以将 Http 协议转换为 WebSocket 包协议消息。创建方式：
 
 ```JavaScript
-var ws = require("ws");
+var ws = require('ws');
+var http = require('http');
 
-var sock = new ws.WebSocket(...);
+var serv = new http.Server(8811, ws.upgrade((conn) => {
+    conn.onmessage = msg => {
+        conn.send(new Date());
+    };
+}));
+
+serv.run(r => 0);
+
+var sock = new ws.Socket('ws://127.0.0.1:8811');
+sock.on('open', () => {
+    setInterval(() => {
+        sock.send('get date');
+    }, 1000);
+});
+
+sock.onmessage = evt => {
+    console.log(evt.data);
+}
 ```
 
 ## 继承关系

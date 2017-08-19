@@ -1,6 +1,48 @@
 # 对象 Routing
 消息处理器路由对象
 
+路由对象是 [http](../../module/ifs/http.md) 消息处理的核心对象，服务器根据路由的设定，匹配 [url](../../module/ifs/url.md) 和 method，并将 [http](../../module/ifs/http.md) 消息转发到相应的处理器，以完成不同的事务。
+
+一个简单的路由，可以直接以 JSON 对象的形式提供，比如：
+
+```JavaScript
+var http = require('http');
+
+var svr = new http.Server(8080, {
+    '/': r => r.response.write('home'),
+    '/help': r => r.response.write('help')
+});
+
+svr.run();
+```
+
+如果需要更复杂的路由定制，可以自行创建 Routing 对象并根据需要处理路由策略：
+
+```JavaScript
+var http = require('http');
+var mq = require('mq');
+
+var app = new mq.Routing();
+
+app.get('/', r => r.response.write('home'));
+app.get('/help', r => r.response.write('help'));
+
+app.post('/help', r => r.response.write('post a help.'));
+
+app.get('/home/:user', (r, user) => r.response.write('hello ' + user));
+
+app.get('/user/:id(\\d+)', (r, id) => r.response.write('get ' + id));
+
+app.get('/actions', {
+    '/run': r => r.response.write('running'),
+    '/sleep': r => r.response.write('sleeping'),
+    '(.*)': r => r.response.write('........')
+});
+
+var svr = new http.Server(8080, app);
+svr.run();
+```
+
 路由对象根据设定的规则匹配消息，将消息传递给符合规则的第一个处理器。后加入的路由规则优先匹配。创建方法：
 
 ```JavaScript
@@ -94,27 +136,33 @@ new Routing(String method,
 **从已有路由对象中添加规则，添加后原路由将被清空**
 
 ```JavaScript
-Routing.append(Routing route);
+Routing Routing.append(Routing route);
 ```
 
 调用参数:
 * route: Routing, 已经初始化的路由对象
 
+返回结果:
+* Routing, 返回路由对象本身
+
 --------------------------
 **添加一组路由规则**
 
 ```JavaScript
-Routing.append(Object map);
+Routing Routing.append(Object map);
 ```
 
 调用参数:
 * map: Object, 路由参数
 
+返回结果:
+* Routing, 返回路由对象本身
+
 --------------------------
 **添加一条路由规则**
 
 ```JavaScript
-Routing.append(String pattern,
+Routing Routing.append(String pattern,
     Handler hdlr);
 ```
 
@@ -122,23 +170,14 @@ Routing.append(String pattern,
 * pattern: String, 消息匹配格式
 * hdlr: [Handler](Handler.md), 内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq.Handler](../../module/ifs/mq.md#Handler)
 
---------------------------
-**添加一组路由规则**
-
-```JavaScript
-Routing.append(String method,
-    Object map);
-```
-
-调用参数:
-* method: String, 指定 [http](../../module/ifs/http.md) 请求方法，"*" 接受所有方法
-* map: Object, 路由参数
+返回结果:
+* Routing, 返回路由对象本身
 
 --------------------------
 **添加一条路由规则**
 
 ```JavaScript
-Routing.append(String method,
+Routing Routing.append(String method,
     String pattern,
     Handler hdlr);
 ```
@@ -148,143 +187,182 @@ Routing.append(String method,
 * pattern: String, 消息匹配格式
 * hdlr: [Handler](Handler.md), 内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq.Handler](../../module/ifs/mq.md#Handler)
 
+返回结果:
+* Routing, 返回路由对象本身
+
 --------------------------
 ### all
 **添加一组接受所有 [http](../../module/ifs/http.md) 方法路由规则**
 
 ```JavaScript
-Routing.all(Object map);
+Routing Routing.all(Object map);
 ```
 
 调用参数:
 * map: Object, 路由参数
 
+返回结果:
+* Routing, 返回路由对象本身
+
 --------------------------
 **添加一条接受所有 [http](../../module/ifs/http.md) 方法路由规则**
 
 ```JavaScript
-Routing.all(String pattern,
+Routing Routing.all(String pattern,
     Handler hdlr);
 ```
 
 调用参数:
 * pattern: String, 消息匹配格式
 * hdlr: [Handler](Handler.md), 内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq.Handler](../../module/ifs/mq.md#Handler)
+
+返回结果:
+* Routing, 返回路由对象本身
 
 --------------------------
 ### get
 **添加一组 GET 方法路由规则**
 
 ```JavaScript
-Routing.get(Object map);
+Routing Routing.get(Object map);
 ```
 
 调用参数:
 * map: Object, 路由参数
 
+返回结果:
+* Routing, 返回路由对象本身
+
 --------------------------
 **添加一条接受 [http](../../module/ifs/http.md) GET 方法路由规则**
 
 ```JavaScript
-Routing.get(String pattern,
+Routing Routing.get(String pattern,
     Handler hdlr);
 ```
 
 调用参数:
 * pattern: String, 消息匹配格式
 * hdlr: [Handler](Handler.md), 内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq.Handler](../../module/ifs/mq.md#Handler)
+
+返回结果:
+* Routing, 返回路由对象本身
 
 --------------------------
 ### post
 **添加一组接受 [http](../../module/ifs/http.md) POST 方法路由规则**
 
 ```JavaScript
-Routing.post(Object map);
+Routing Routing.post(Object map);
 ```
 
 调用参数:
 * map: Object, 路由参数
 
+返回结果:
+* Routing, 返回路由对象本身
+
 --------------------------
 **添加一条接受 [http](../../module/ifs/http.md) POST 方法路由规则**
 
 ```JavaScript
-Routing.post(String pattern,
+Routing Routing.post(String pattern,
     Handler hdlr);
 ```
 
 调用参数:
 * pattern: String, 消息匹配格式
 * hdlr: [Handler](Handler.md), 内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq.Handler](../../module/ifs/mq.md#Handler)
+
+返回结果:
+* Routing, 返回路由对象本身
 
 --------------------------
 ### del
 **添加一组接受 [http](../../module/ifs/http.md) DELETE 方法路由规则**
 
 ```JavaScript
-Routing.del(Object map);
+Routing Routing.del(Object map);
 ```
 
 调用参数:
 * map: Object, 路由参数
 
+返回结果:
+* Routing, 返回路由对象本身
+
 --------------------------
 **添加一条接受 [http](../../module/ifs/http.md) DELETE 方法路由规则**
 
 ```JavaScript
-Routing.del(String pattern,
+Routing Routing.del(String pattern,
     Handler hdlr);
 ```
 
 调用参数:
 * pattern: String, 消息匹配格式
 * hdlr: [Handler](Handler.md), 内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq.Handler](../../module/ifs/mq.md#Handler)
+
+返回结果:
+* Routing, 返回路由对象本身
 
 --------------------------
 ### put
 **添加一组 PUT 方法路由规则**
 
 ```JavaScript
-Routing.put(Object map);
+Routing Routing.put(Object map);
 ```
 
 调用参数:
 * map: Object, 路由参数
 
+返回结果:
+* Routing, 返回路由对象本身
+
 --------------------------
 **添加一条接受 [http](../../module/ifs/http.md) PUT 方法路由规则**
 
 ```JavaScript
-Routing.put(String pattern,
+Routing Routing.put(String pattern,
     Handler hdlr);
 ```
 
 调用参数:
 * pattern: String, 消息匹配格式
 * hdlr: [Handler](Handler.md), 内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq.Handler](../../module/ifs/mq.md#Handler)
+
+返回结果:
+* Routing, 返回路由对象本身
 
 --------------------------
 ### patch
 **添加一组 PATCH 方法路由规则**
 
 ```JavaScript
-Routing.patch(Object map);
+Routing Routing.patch(Object map);
 ```
 
 调用参数:
 * map: Object, 路由参数
 
+返回结果:
+* Routing, 返回路由对象本身
+
 --------------------------
 **添加一条接受 [http](../../module/ifs/http.md) PATCH 方法路由规则**
 
 ```JavaScript
-Routing.patch(String pattern,
+Routing Routing.patch(String pattern,
     Handler hdlr);
 ```
 
 调用参数:
 * pattern: String, 消息匹配格式
 * hdlr: [Handler](Handler.md), 内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq.Handler](../../module/ifs/mq.md#Handler)
+
+返回结果:
+* Routing, 返回路由对象本身
 
 --------------------------
 ### invoke

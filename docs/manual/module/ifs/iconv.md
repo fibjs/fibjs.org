@@ -47,3 +47,17 @@ static String iconv.decode(String charset,
 返回结果:
 * String, 返回编码的字符串
 
+--------------------------
+### isEncoding
+**检测字符集是否被支持**
+
+```JavaScript
+static Boolean iconv.isEncoding(String charset);
+```
+
+调用参数:
+* charset: String, 指定字符集
+
+返回结果:
+* Boolean, 返回是否支持该字符集
+
