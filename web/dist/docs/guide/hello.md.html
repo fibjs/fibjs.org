@@ -191,7 +191,7 @@ svr.run();
 11</div><span class="hljs-keyword">const</span> http = <span class="hljs-built_in">require</span>(<span class="hljs-string">'http'</span>);
 
 <span class="hljs-keyword">var</span> hello_server = {
-    <span class="hljs-string">'^/(.*)$'</span>: <span class="hljs-function">(<span class="hljs-params">req, name</span>) =&gt;</span> {
+    <span class="hljs-string">'/:name'</span>: <span class="hljs-function">(<span class="hljs-params">req, name</span>) =&gt;</span> {
         req.response.write(<span class="hljs-string">'hello, '</span> + name);
     }
 };
@@ -221,10 +221,10 @@ svr.run();
 <span class="hljs-keyword">const</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">'path'</span>);
 
 <span class="hljs-keyword">var</span> root_server = {
-    <span class="hljs-string">'^/hello/(.*)$'</span>: <span class="hljs-function">(<span class="hljs-params">req, name</span>) =&gt;</span> {
+    <span class="hljs-string">'/hello/:name'</span>: <span class="hljs-function">(<span class="hljs-params">req, name</span>) =&gt;</span> {
         req.response.write(<span class="hljs-string">'hello, '</span> + name);
     },
-    <span class="hljs-string">'^(.*)$'</span>: http.fileHandler(path.join(__dirname, <span class="hljs-string">'web'</span>))
+    <span class="hljs-string">'*'</span>: http.fileHandler(path.join(__dirname, <span class="hljs-string">'web'</span>))
 };
 
 <span class="hljs-keyword">var</span> svr = <span class="hljs-keyword">new</span> http.Server(<span class="hljs-number">8080</span>, root_server);
@@ -259,18 +259,18 @@ svr.run();
 <span class="hljs-keyword">const</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">'path'</span>);
 
 <span class="hljs-keyword">var</span> hello_server = {
-    <span class="hljs-string">'^/(fibjs.*)$'</span>: <span class="hljs-function">(<span class="hljs-params">req, name</span>) =&gt;</span> {
+    <span class="hljs-string">'/:name(fibjs.*)'</span>: <span class="hljs-function">(<span class="hljs-params">req, name</span>) =&gt;</span> {
         req.response.write(<span class="hljs-string">'hello, '</span> + name + <span class="hljs-string">'. I love you.'</span>);
     },
-    <span class="hljs-string">'^/(.*)$'</span>: <span class="hljs-function">(<span class="hljs-params">req, name</span>) =&gt;</span> {
+    <span class="hljs-string">'/:name'</span>: <span class="hljs-function">(<span class="hljs-params">req, name</span>) =&gt;</span> {
         req.response.write(<span class="hljs-string">'hello, '</span> + name);
     }
 };
 
 <span class="hljs-keyword">var</span> root_server = {
-    <span class="hljs-string">'^/hello(/.*)$'</span>: hello_server,
-    <span class="hljs-string">'^/bonjour(/.*)$'</span>: hello_server,
-    <span class="hljs-string">'^(.*)$'</span>: http.fileHandler(path.join(__dirname, <span class="hljs-string">'web'</span>))
+    <span class="hljs-string">'/hello'</span>: hello_server,
+    <span class="hljs-string">'/bonjour'</span>: hello_server,
+    <span class="hljs-string">'*'</span>: http.fileHandler(path.join(__dirname, <span class="hljs-string">'web'</span>))
 };
 
 <span class="hljs-keyword">var</span> svr = <span class="hljs-keyword">new</span> http.Server(<span class="hljs-number">8080</span>, root_server);

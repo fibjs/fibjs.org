@@ -28,7 +28,7 @@ http://127.0.0.1:8080/
 const http = require('http');
 
 var hello_server = {
-    '^/(.*)$': (req, name) => {
+    '/:name': (req, name) => {
         req.response.write('hello, ' + name);
     }
 };
@@ -50,10 +50,10 @@ const http = require('http');
 const path = require('path');
 
 var root_server = {
-    '^/hello/(.*)$': (req, name) => {
+    '/hello/:name': (req, name) => {
         req.response.write('hello, ' + name);
     },
-    '^(.*)$': http.fileHandler(path.join(__dirname, 'web'))
+    '*': http.fileHandler(path.join(__dirname, 'web'))
 };
 
 var svr = new http.Server(8080, root_server);
@@ -71,18 +71,18 @@ const http = require('http');
 const path = require('path');
 
 var hello_server = {
-    '^/(fibjs.*)$': (req, name) => {
+    '/:name(fibjs.*)': (req, name) => {
         req.response.write('hello, ' + name + '. I love you.');
     },
-    '^/(.*)$': (req, name) => {
+    '/:name': (req, name) => {
         req.response.write('hello, ' + name);
     }
 };
 
 var root_server = {
-    '^/hello(/.*)$': hello_server,
-    '^/bonjour(/.*)$': hello_server,
-    '^(.*)$': http.fileHandler(path.join(__dirname, 'web'))
+    '/hello': hello_server,
+    '/bonjour': hello_server,
+    '*': http.fileHandler(path.join(__dirname, 'web'))
 };
 
 var svr = new http.Server(8080, root_server);

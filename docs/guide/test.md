@@ -7,18 +7,18 @@ const http = require('http');
 const path = require('path');
 
 var hello_server = {
-    '^/(fibjs.*)$': (req, name) => {
+    '/:name(fibjs.*)': (req, name) => {
         req.response.write('hello, ' + name + '. I love you.');
     },
-    '^/(.*)$': (req, name) => {
+    '/:name': (req, name) => {
         req.response.write('hello, ' + name);
     }
 };
 
 var root_server = {
-    '^/hello(/.*)$': hello_server,
-    '^/bonjour(/.*)$': hello_server,
-    '^(.*)$': http.fileHandler(path.join(__dirname, 'web'))
+    '/hello': hello_server,
+    '/bonjour': hello_server,
+    '*': http.fileHandler(path.join(__dirname, 'web'))
 };
 
 var svr = new http.Server(8080, root_server);
