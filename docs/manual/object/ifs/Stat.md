@@ -8,7 +8,7 @@ Stat 对象通过 [fs.stat](../../module/ifs/fs.md#stat), [File.stat](File.md#st
 digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
-    object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
+    object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\l}"];
     Stat [tooltip="Stat", fillcolor="lightgray", label="{Stat|name\lsize\lmode\lmtime\latime\lctime\luid\lgid\l|isWritable()\lisReadable()\lisExecutable()\lisHidden()\lisDirectory()\lisFile()\lisSymbolicLink()\lisMemory()\lisSocket()\l}"];
 
     object -> Stat [dir=back];
@@ -226,15 +226,4 @@ Value Stat.toJSON(String key = "");
 
 返回结果:
 * Value, 返回包含可 JSON 序列化的值
-
---------------------------
-### valueOf
-**返回对象本身的数值**
-
-```JavaScript
-Value Stat.valueOf();
-```
-
-返回结果:
-* Value, 返回对象本身的数值
 

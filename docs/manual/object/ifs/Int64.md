@@ -12,7 +12,7 @@ var n = new Int64(123);
 digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
-    object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
+    object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\l}"];
     Int64 [tooltip="Int64", fillcolor="lightgray", label="{Int64|new Int64()\l|hi\llo\l|compare()\lshiftLeft()\lshiftRight()\land()\lor()\lxor()\ladd()\lsub()\lmulti()\ldiv()\ltoNumber()\ltoString()\l}"];
 
     object -> Int64 [dir=back];
@@ -294,15 +294,4 @@ Value Int64.toJSON(String key = "");
 
 返回结果:
 * Value, 返回包含可 JSON 序列化的值
-
---------------------------
-### valueOf
-**返回对象本身的数值**
-
-```JavaScript
-Value Int64.valueOf();
-```
-
-返回结果:
-* Value, 返回对象本身的数值
 

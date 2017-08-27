@@ -8,7 +8,7 @@
 digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
-    object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
+    object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\l}"];
     Lock [tooltip="Lock", URL="Lock.md", label="{Lock|new Lock()\l|acquire()\lrelease()\lcount()\l}"];
     Event [tooltip="Event", fillcolor="lightgray", label="{Event|new Event()\l|isSet()\lset()\lpulse()\lclear()\lwait()\l}"];
 
@@ -160,15 +160,4 @@ Value Event.toJSON(String key = "");
 
 返回结果:
 * Value, 返回包含可 JSON 序列化的值
-
---------------------------
-### valueOf
-**返回对象本身的数值**
-
-```JavaScript
-Value Event.valueOf();
-```
-
-返回结果:
-* Value, 返回对象本身的数值
 

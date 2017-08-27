@@ -12,7 +12,7 @@ var k = new crypto.X509Crl();
 digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
-    object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
+    object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\l}"];
     X509Crl [tooltip="X509Crl", fillcolor="lightgray", label="{X509Crl|new X509Crl()\l|load()\lloadFile()\ldump()\lclear()\l}"];
 
     object -> X509Crl [dir=back];
@@ -126,15 +126,4 @@ Value X509Crl.toJSON(String key = "");
 
 返回结果:
 * Value, 返回包含可 JSON 序列化的值
-
---------------------------
-### valueOf
-**返回对象本身的数值**
-
-```JavaScript
-Value X509Crl.valueOf();
-```
-
-返回结果:
-* Value, 返回对象本身的数值
 

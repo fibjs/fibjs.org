@@ -12,7 +12,7 @@ var c = new crypto.Cipher(crypto.AES, crypto.ECB, ...);
 digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
-    object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
+    object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\l}"];
     Cipher [tooltip="Cipher", fillcolor="lightgray", label="{Cipher|new Cipher()\l|name\lkeySize\livSize\lblockSize\l|paddingMode()\lencrypt()\ldecrypt()\l}"];
 
     object -> Cipher [dir=back];
@@ -182,15 +182,4 @@ Value Cipher.toJSON(String key = "");
 
 返回结果:
 * Value, 返回包含可 JSON 序列化的值
-
---------------------------
-### valueOf
-**返回对象本身的数值**
-
-```JavaScript
-Value Cipher.valueOf();
-```
-
-返回结果:
-* Value, 返回对象本身的数值
 

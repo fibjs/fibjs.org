@@ -64,6 +64,22 @@ static Digest crypto.createHash(String algo);
 * [Digest](../../object/ifs/Digest.md), 返回信息摘要对象
 
 --------------------------
+### createHmac
+**根据给定的算法名称创建一个 hmac 信息摘要对象**
+
+```JavaScript
+static Digest crypto.createHmac(String algo,
+    Buffer key);
+```
+
+调用参数:
+* algo: String, 指定信息摘要对象的算法
+* key: [Buffer](../../object/ifs/Buffer.md), 二进制签名密钥
+
+返回结果:
+* [Digest](../../object/ifs/Digest.md), 返回信息摘要对象
+
+--------------------------
 ### loadPKey
 **加载一个 PEM/DER 格式的密钥文件**
 

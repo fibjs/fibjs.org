@@ -12,7 +12,7 @@ var slite = db.openSQLite("sqlite:/path/to/db");
 digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
-    object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
+    object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\l}"];
     DbConnection [tooltip="DbConnection", URL="DbConnection.md", label="{DbConnection|type\l|close()\lbegin()\lcommit()\lrollback()\ltrans()\lexecute()\lformat()\l}"];
     SQLite [tooltip="SQLite", fillcolor="lightgray", label="{SQLite|fileName\ltimeout\l|backup()\l}"];
 
@@ -111,20 +111,20 @@ func 执行有三种结果：
 **执行一个 sql 命令，并返回执行结果**
 
 ```JavaScript
-DBResult SQLite.execute(String sql) async;
+object SQLite.execute(String sql) async;
 ```
 
 调用参数:
 * sql: String, 格式化字符串，可选参数用 ? 指定。例如：'SELECT FROM TEST WHERE [id]=?'
 
 返回结果:
-* [DBResult](DBResult.md), 返回 sql 命令执行结果
+* [object](object.md), 返回包含结果记录的数组，如果请求是 UPDATE 或者 INSERT，返回结果还会包含 affected 和 insertId，mssql 不支持 insertId。
 
 --------------------------
 **执行一个 sql 命令，并返回执行结果，可根据参数格式化字符串**
 
 ```JavaScript
-DBResult SQLite.execute(String sql,
+object SQLite.execute(String sql,
     ...args) async;
 ```
 
@@ -133,7 +133,7 @@ DBResult SQLite.execute(String sql,
 * args: ..., 可选参数列表
 
 返回结果:
-* [DBResult](DBResult.md), 返回 sql 命令执行结果
+* [object](object.md), 返回包含结果记录的数组，如果请求是 UPDATE 或者 INSERT，返回结果还会包含 affected 和 insertId，mssql 不支持 insertId。
 
 --------------------------
 ### format
@@ -197,15 +197,4 @@ Value SQLite.toJSON(String key = "");
 
 返回结果:
 * Value, 返回包含可 JSON 序列化的值
-
---------------------------
-### valueOf
-**返回对象本身的数值**
-
-```JavaScript
-Value SQLite.valueOf();
-```
-
-返回结果:
-* Value, 返回对象本身的数值
 

@@ -12,7 +12,7 @@ var s = new net.Socket();
 digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
-    object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
+    object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\l}"];
     Stream [tooltip="Stream", URL="Stream.md", label="{Stream|read()\lwrite()\lclose()\lcopyTo()\l}"];
     Socket [tooltip="Socket", fillcolor="lightgray", label="{Socket|new Socket()\l|family\ltype\lremoteAddress\lremotePort\llocalAddress\llocalPort\ltimeout\l|connect()\lbind()\llisten()\laccept()\lrecv()\lrecvfrom()\lsend()\lsendto()\l}"];
 
@@ -174,14 +174,19 @@ Buffer Socket.recv(Integer bytes = -1) async;
 **读取一个 UDP 包**
 
 ```JavaScript
-DatagramPacket Socket.recvfrom(Integer bytes = -1) async;
+object Socket.recvfrom(Integer bytes = -1) async;
 ```
 
 调用参数:
 * bytes: Integer, 指定要读取的数据量，缺省读取任意尺寸的数据
 
 返回结果:
-* [DatagramPacket](DatagramPacket.md), 返回从连接读取的数据包
+* [object](object.md), 返回从连接读取的数据包
+
+recvfrom 返回结果中包含以下内容：
+  - data: 接收到的二进制数据块
+  - address: 发送方的地址
+  - port: 发送方的端口
 
 --------------------------
 ### send
@@ -304,15 +309,4 @@ Value Socket.toJSON(String key = "");
 
 返回结果:
 * Value, 返回包含可 JSON 序列化的值
-
---------------------------
-### valueOf
-**返回对象本身的数值**
-
-```JavaScript
-Value Socket.valueOf();
-```
-
-返回结果:
-* Value, 返回对象本身的数值
 

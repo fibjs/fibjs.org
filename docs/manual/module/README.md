@@ -28,8 +28,8 @@
 * [path_win32](ifs/path_win32.md) - 文件路径处理模块
 * [process](ifs/process.md) - 进程处理模块，用以管理当前进程的资源
 * [profiler](ifs/profiler.md) - 内存 profiler 模块
+* [punycode](ifs/punycode.md) - punycode 国际化域名转换模块
 * [querystring](ifs/querystring.md) - http query 处理模块
-* [re](ifs/re.md) - 正则表达式处理模块
 * [registry](ifs/registry.md) - Windows 注册表访问模块
 * [ssl](ifs/ssl.md) - ssl/tls 模块
 * [test](ifs/test.md) - 测试套件模块，用以定义管理测试套件

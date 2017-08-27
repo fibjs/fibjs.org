@@ -14,7 +14,7 @@ var set = rdb.getSet("test");
 digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
-    object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
+    object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\l}"];
     RedisSet [tooltip="RedisSet", fillcolor="lightgray", label="{RedisSet|add()\lremove()\llen()\lexists()\lmembers()\lpop()\lrandMember()\l}"];
 
     object -> RedisSet [dir=back];
@@ -193,15 +193,4 @@ Value RedisSet.toJSON(String key = "");
 
 返回结果:
 * Value, 返回包含可 JSON 序列化的值
-
---------------------------
-### valueOf
-**返回对象本身的数值**
-
-```JavaScript
-Value RedisSet.valueOf();
-```
-
-返回结果:
-* Value, 返回对象本身的数值
 

@@ -14,7 +14,7 @@ var set = rdb.getSortedSet("test");
 digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
-    object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
+    object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\l}"];
     RedisSortedSet [tooltip="RedisSortedSet", fillcolor="lightgray", label="{RedisSortedSet|add()\lscore()\lincr()\lremove()\llen()\lcount()\lrange()\lrangeRev()\lrank()\lrankRev()\l}"];
 
     object -> RedisSortedSet [dir=back];
@@ -243,15 +243,4 @@ Value RedisSortedSet.toJSON(String key = "");
 
 返回结果:
 * Value, 返回包含可 JSON 序列化的值
-
---------------------------
-### valueOf
-**返回对象本身的数值**
-
-```JavaScript
-Value RedisSortedSet.valueOf();
-```
-
-返回结果:
-* Value, 返回对象本身的数值
 

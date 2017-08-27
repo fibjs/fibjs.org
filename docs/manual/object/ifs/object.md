@@ -6,15 +6,13 @@
 digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
-    object [tooltip="object", fillcolor="lightgray", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
+    object [tooltip="object", fillcolor="lightgray", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\l}"];
     Buffer [tooltip="Buffer", URL="Buffer.md", label="{Buffer|new Buffer()\l|operator[]\l|isBuffer()\lfrom()\lconcat()\lalloc()\lallocUnsafe()\lallocUnsafeSlow()\lbyteLength()\lisEncoding()\l|length\l|resize()\lappend()\lwrite()\lfill()\lindexOf()\lcompare()\lcopy()\lreadUInt8()\lreadUInt16LE()\lreadUInt16BE()\lreadUInt32LE()\lreadUInt32BE()\lreadUIntLE()\lreadUIntBE()\lreadInt8()\lreadInt16LE()\lreadInt16BE()\lreadInt32LE()\lreadInt32BE()\lreadIntLE()\lreadIntBE()\lreadInt64LE()\lreadInt64BE()\lreadFloatLE()\lreadFloatBE()\lreadDoubleLE()\lreadDoubleBE()\lwriteUInt8()\lwriteUInt16LE()\lwriteUInt16BE()\lwriteUInt32LE()\lwriteUInt32BE()\lwriteUIntLE()\lwriteUIntBE()\lwriteInt8()\lwriteInt16LE()\lwriteInt16BE()\lwriteInt32LE()\lwriteInt32BE()\lwriteIntLE()\lwriteIntBE()\lwriteInt64LE()\lwriteInt64BE()\lwriteFloatLE()\lwriteFloatBE()\lwriteDoubleLE()\lwriteDoubleBE()\lslice()\lreverse()\lhex()\lbase64()\lkeys()\lvalues()\lentries()\ltoArray()\ltoString()\l}"];
     Cipher [tooltip="Cipher", URL="Cipher.md", label="{Cipher|new Cipher()\l|name\lkeySize\livSize\lblockSize\l|paddingMode()\lencrypt()\ldecrypt()\l}"];
-    DatagramPacket [tooltip="DatagramPacket", URL="DatagramPacket.md", label="{DatagramPacket|data\laddress\lport\l}"];
     DbConnection [tooltip="DbConnection", URL="DbConnection.md", label="{DbConnection|type\l|close()\lbegin()\lcommit()\lrollback()\ltrans()\lexecute()\lformat()\l}"];
     MSSQL [tooltip="MSSQL", URL="MSSQL.md", label="{MSSQL|use()\l}"];
     MySQL [tooltip="MySQL", URL="MySQL.md", label="{MySQL|rxBufferSize\ltxBufferSize\l|use()\l}"];
     SQLite [tooltip="SQLite", URL="SQLite.md", label="{SQLite|fileName\ltimeout\l|backup()\l}"];
-    DBRow [tooltip="DBRow", URL="DBRow.md", label="{DBRow|operator[]\loperator[String]\l}"];
     Digest [tooltip="Digest", URL="Digest.md", label="{Digest|size\l|update()\ldigest()\l}"];
     EventEmitter [tooltip="EventEmitter", URL="EventEmitter.md", label="{EventEmitter|new EventEmitter()\l|defaultMaxListeners\l|on()\laddListener()\lprependListener()\lonce()\lprependOnceListener()\loff()\lremoveListener()\lremoveAllListeners()\lsetMaxListeners()\lgetMaxListeners()\llisteners()\llistenerCount()\leventNames()\lemit()\l}"];
     Service [tooltip="Service", URL="Service.md", label="{Service|new Service()\l|name\lonstop\lonpause\loncontinue\l|install()\lremove()\lstart()\lstop()\lrestart()\lrun()\lisInstalled()\lisRunning()\l}"];
@@ -43,7 +41,6 @@ digraph {
     Int64 [tooltip="Int64", URL="Int64.md", label="{Int64|new Int64()\l|hi\llo\l|compare()\lshiftLeft()\lshiftRight()\land()\lor()\lxor()\ladd()\lsub()\lmulti()\ldiv()\ltoNumber()\ltoString()\l}"];
     LevelDB [tooltip="LevelDB", URL="LevelDB.md", label="{LevelDB|has()\lget()\lmget()\lset()\lmset()\lmremove()\lremove()\lforEach()\lbetween()\lbegin()\lcommit()\lclose()\l}"];
     List [tooltip="List", URL="List.md", label="{List|new List()\l|operator[]\l|length\l|freeze()\lresize()\lpush()\lindexOf()\llastIndexOf()\lpush()\lpushArray()\lpop()\lslice()\lconcat()\levery()\lsome()\lfilter()\lforEach()\lmap()\lreduce()\lsort()\ltoArray()\l}"];
-    DBResult [tooltip="DBResult", URL="DBResult.md", label="{DBResult|insertId\laffected\lfields\l}"];
     Lock [tooltip="Lock", URL="Lock.md", label="{Lock|new Lock()\l|acquire()\lrelease()\lcount()\l}"];
     Condition [tooltip="Condition", URL="Condition.md", label="{Condition|new Condition()\l|wait()\lnotify()\lnotifyAll()\l}"];
     Event [tooltip="Event", URL="Event.md", label="{Event|new Event()\l|isSet()\lset()\lpulse()\lclear()\lwait()\l}"];
@@ -67,7 +64,6 @@ digraph {
     RedisList [tooltip="RedisList", URL="RedisList.md", label="{RedisList|push()\lpop()\lrpush()\lrpop()\lset()\lget()\linsertBefore()\linsertAfter()\lremove()\ltrim()\llen()\lrange()\l}"];
     RedisSet [tooltip="RedisSet", URL="RedisSet.md", label="{RedisSet|add()\lremove()\llen()\lexists()\lmembers()\lpop()\lrandMember()\l}"];
     RedisSortedSet [tooltip="RedisSortedSet", URL="RedisSortedSet.md", label="{RedisSortedSet|add()\lscore()\lincr()\lremove()\llen()\lcount()\lrange()\lrangeRev()\lrank()\lrankRev()\l}"];
-    Regex [tooltip="Regex", URL="Regex.md", label="{Regex|lastIndex\lglobal\lignoreCase\lmultiline\l|exec()\ltest()\l}"];
     SandBox [tooltip="SandBox", URL="SandBox.md", label="{SandBox|new SandBox()\l|global\l|add()\laddScript()\lremove()\lclone()\lrun()\lresolve()\lrequire()\l}"];
     Smtp [tooltip="Smtp", URL="Smtp.md", label="{Smtp|new Smtp()\l|timeout\lsocket\l|connect()\lcommand()\lhello()\llogin()\lfrom()\lto()\ldata()\lquit()\l}"];
     Stat [tooltip="Stat", URL="Stat.md", label="{Stat|name\lsize\lmode\lmtime\latime\lctime\luid\lgid\l|isWritable()\lisReadable()\lisExecutable()\lisHidden()\lisDirectory()\lisFile()\lisSymbolicLink()\lisMemory()\lisSocket()\l}"];
@@ -108,12 +104,10 @@ digraph {
 
     object -> Buffer [dir=back];
     object -> Cipher [dir=back];
-    object -> DatagramPacket [dir=back];
     object -> DbConnection [dir=back];
     DbConnection -> MSSQL [dir=back];
     DbConnection -> MySQL [dir=back];
     DbConnection -> SQLite [dir=back];
-    object -> DBRow [dir=back];
     object -> Digest [dir=back];
     object -> EventEmitter [dir=back];
     EventEmitter -> Service [dir=back];
@@ -142,7 +136,6 @@ digraph {
     object -> Int64 [dir=back];
     object -> LevelDB [dir=back];
     object -> List [dir=back];
-    List -> DBResult [dir=back];
     object -> Lock [dir=back];
     Lock -> Condition [dir=back];
     Lock -> Event [dir=back];
@@ -166,7 +159,6 @@ digraph {
     object -> RedisList [dir=back];
     object -> RedisSet [dir=back];
     object -> RedisSortedSet [dir=back];
-    object -> Regex [dir=back];
     object -> SandBox [dir=back];
     object -> Smtp [dir=back];
     object -> Stat [dir=back];
@@ -254,15 +246,4 @@ Value object.toJSON(String key = "");
 
 返回结果:
 * Value, 返回包含可 JSON 序列化的值
-
---------------------------
-### valueOf
-**返回对象本身的数值**
-
-```JavaScript
-Value object.valueOf();
-```
-
-返回结果:
-* Value, 返回对象本身的数值
 

@@ -13,7 +13,7 @@ var q = new coroutine.BlockQueue(100);
 digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
-    object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
+    object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\l}"];
     Queue [tooltip="Queue", URL="Queue.md", label="{Queue|new Queue()\l|length\l|add()\loffer()\lremove()\lpoll()\lelement()\lpeek()\lclear()\ltoArray()\l}"];
     BlockQueue [tooltip="BlockQueue", fillcolor="lightgray", label="{BlockQueue|new BlockQueue()\l|put()\ltake()\l}"];
 
@@ -203,15 +203,4 @@ Value BlockQueue.toJSON(String key = "");
 
 返回结果:
 * Value, 返回包含可 JSON 序列化的值
-
---------------------------
-### valueOf
-**返回对象本身的数值**
-
-```JavaScript
-Value BlockQueue.valueOf();
-```
-
-返回结果:
-* Value, 返回对象本身的数值
 

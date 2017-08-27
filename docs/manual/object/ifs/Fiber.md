@@ -49,7 +49,7 @@ fb.join();
 digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
-    object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
+    object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\l}"];
     Fiber [tooltip="Fiber", fillcolor="lightgray", label="{Fiber|caller\ltraceInfo\l|join()\l}"];
 
     object -> Fiber [dir=back];
@@ -128,15 +128,4 @@ Value Fiber.toJSON(String key = "");
 
 返回结果:
 * Value, 返回包含可 JSON 序列化的值
-
---------------------------
-### valueOf
-**返回对象本身的数值**
-
-```JavaScript
-Value Fiber.valueOf();
-```
-
-返回结果:
-* Value, 返回对象本身的数值
 

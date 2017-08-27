@@ -19,7 +19,7 @@ var mod_in_sbox = sbox.require('./path/to/mod');
 digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
-    object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
+    object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\l}"];
     SandBox [tooltip="SandBox", fillcolor="lightgray", label="{SandBox|new SandBox()\l|global\l|add()\laddScript()\lremove()\lclone()\lrun()\lresolve()\lrequire()\l}"];
 
     object -> SandBox [dir=back];
@@ -238,15 +238,4 @@ Value SandBox.toJSON(String key = "");
 
 返回结果:
 * Value, 返回包含可 JSON 序列化的值
-
---------------------------
-### valueOf
-**返回对象本身的数值**
-
-```JavaScript
-Value SandBox.valueOf();
-```
-
-返回结果:
-* Value, 返回对象本身的数值
 

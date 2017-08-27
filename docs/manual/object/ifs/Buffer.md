@@ -12,7 +12,7 @@ var buf = new Buffer();
 digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
-    object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
+    object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\l}"];
     Buffer [tooltip="Buffer", fillcolor="lightgray", label="{Buffer|new Buffer()\l|operator[]\l|isBuffer()\lfrom()\lconcat()\lalloc()\lallocUnsafe()\lallocUnsafeSlow()\lbyteLength()\lisEncoding()\l|length\l|resize()\lappend()\lwrite()\lfill()\lindexOf()\lcompare()\lcopy()\lreadUInt8()\lreadUInt16LE()\lreadUInt16BE()\lreadUInt32LE()\lreadUInt32BE()\lreadUIntLE()\lreadUIntBE()\lreadInt8()\lreadInt16LE()\lreadInt16BE()\lreadInt32LE()\lreadInt32BE()\lreadIntLE()\lreadIntBE()\lreadInt64LE()\lreadInt64BE()\lreadFloatLE()\lreadFloatBE()\lreadDoubleLE()\lreadDoubleBE()\lwriteUInt8()\lwriteUInt16LE()\lwriteUInt16BE()\lwriteUInt32LE()\lwriteUInt32BE()\lwriteUIntLE()\lwriteUIntBE()\lwriteInt8()\lwriteInt16LE()\lwriteInt16BE()\lwriteInt32LE()\lwriteInt32BE()\lwriteIntLE()\lwriteIntBE()\lwriteInt64LE()\lwriteInt64BE()\lwriteFloatLE()\lwriteFloatBE()\lwriteDoubleLE()\lwriteDoubleBE()\lslice()\lreverse()\lhex()\lbase64()\lkeys()\lvalues()\lentries()\ltoArray()\ltoString()\l}"];
 
     object -> Buffer [dir=back];
@@ -890,7 +890,7 @@ Number Buffer.readDoubleBE(Integer offset = 0,
 **向缓存对象写入一个 8 位无符号整型数值**
 
 ```JavaScript
-Buffer.writeUInt8(Integer value,
+Integer Buffer.writeUInt8(Integer value,
     Integer offset = 0,
     Boolean noAssert = false);
 ```
@@ -899,13 +899,16 @@ Buffer.writeUInt8(Integer value,
 * value: Integer, 指定写入的数值
 * offset: Integer, 指定写入的起始位置
 * noAssert: Boolean, 指定写入越界时不抛出错误，缺省为 flase，抛出
+
+返回结果:
+* Integer, offset 加上写入的字节数
 
 --------------------------
 ### writeUInt16LE
 **向缓存对象写入一个 16 位无符号整型数值，以低字节序的存储方式**
 
 ```JavaScript
-Buffer.writeUInt16LE(Integer value,
+Integer Buffer.writeUInt16LE(Integer value,
     Integer offset = 0,
     Boolean noAssert = false);
 ```
@@ -914,13 +917,16 @@ Buffer.writeUInt16LE(Integer value,
 * value: Integer, 指定写入的数值
 * offset: Integer, 指定写入的起始位置
 * noAssert: Boolean, 指定写入越界时不抛出错误，缺省为 flase，抛出
+
+返回结果:
+* Integer, offset 加上写入的字节数
 
 --------------------------
 ### writeUInt16BE
 **向缓存对象写入一个 16 位无符号整型数值，以高字节序的存储方式**
 
 ```JavaScript
-Buffer.writeUInt16BE(Integer value,
+Integer Buffer.writeUInt16BE(Integer value,
     Integer offset = 0,
     Boolean noAssert = false);
 ```
@@ -929,13 +935,16 @@ Buffer.writeUInt16BE(Integer value,
 * value: Integer, 指定写入的数值
 * offset: Integer, 指定写入的起始位置
 * noAssert: Boolean, 指定写入越界时不抛出错误，缺省为 flase，抛出
+
+返回结果:
+* Integer, offset 加上写入的字节数
 
 --------------------------
 ### writeUInt32LE
 **向缓存对象写入一个 32 位无符号整型数值，以低字节序的存储方式**
 
 ```JavaScript
-Buffer.writeUInt32LE(Long value,
+Integer Buffer.writeUInt32LE(Long value,
     Integer offset = 0,
     Boolean noAssert = false);
 ```
@@ -944,13 +953,16 @@ Buffer.writeUInt32LE(Long value,
 * value: Long, 指定写入的数值
 * offset: Integer, 指定写入的起始位置
 * noAssert: Boolean, 指定写入越界时不抛出错误，缺省为 flase，抛出
+
+返回结果:
+* Integer, offset 加上写入的字节数
 
 --------------------------
 ### writeUInt32BE
 **向缓存对象写入一个 32 位无符号整型数值，以高字节序的存储方式**
 
 ```JavaScript
-Buffer.writeUInt32BE(Long value,
+Integer Buffer.writeUInt32BE(Long value,
     Integer offset = 0,
     Boolean noAssert = false);
 ```
@@ -959,13 +971,16 @@ Buffer.writeUInt32BE(Long value,
 * value: Long, 指定写入的数值
 * offset: Integer, 指定写入的起始位置
 * noAssert: Boolean, 指定写入越界时不抛出错误，缺省为 flase，抛出
+
+返回结果:
+* Integer, offset 加上写入的字节数
 
 --------------------------
 ### writeUIntLE
 **向缓存对象写入一个无符号整型数值，最大支持 48 位，以低字节序的存储方式**
 
 ```JavaScript
-Buffer.writeUIntLE(Long value,
+Integer Buffer.writeUIntLE(Long value,
     Integer offset = 0,
     Boolean noAssert = false);
 ```
@@ -974,13 +989,16 @@ Buffer.writeUIntLE(Long value,
 * value: Long, 指定写入的数值
 * offset: Integer, 指定写入的起始位置
 * noAssert: Boolean, 指定写入越界时不抛出错误，缺省为 flase，抛出
+
+返回结果:
+* Integer, offset 加上写入的字节数
 
 --------------------------
 ### writeUIntBE
 **向缓存对象写入一个无符号整型数值，最大支持 48 位，以高字节序的存储方式**
 
 ```JavaScript
-Buffer.writeUIntBE(Long value,
+Integer Buffer.writeUIntBE(Long value,
     Integer offset = 0,
     Boolean noAssert = false);
 ```
@@ -989,13 +1007,16 @@ Buffer.writeUIntBE(Long value,
 * value: Long, 指定写入的数值
 * offset: Integer, 指定写入的起始位置
 * noAssert: Boolean, 指定写入越界时不抛出错误，缺省为 flase，抛出
+
+返回结果:
+* Integer, offset 加上写入的字节数
 
 --------------------------
 ### writeInt8
 **向缓存对象写入一个 8 位整型数值**
 
 ```JavaScript
-Buffer.writeInt8(Integer value,
+Integer Buffer.writeInt8(Integer value,
     Integer offset = 0,
     Boolean noAssert = false);
 ```
@@ -1004,13 +1025,16 @@ Buffer.writeInt8(Integer value,
 * value: Integer, 指定写入的数值
 * offset: Integer, 指定写入的起始位置
 * noAssert: Boolean, 指定写入越界时不抛出错误，缺省为 flase，抛出
+
+返回结果:
+* Integer, offset 加上写入的字节数
 
 --------------------------
 ### writeInt16LE
 **向缓存对象写入一个 16 位整型数值，以低字节序的存储方式**
 
 ```JavaScript
-Buffer.writeInt16LE(Integer value,
+Integer Buffer.writeInt16LE(Integer value,
     Integer offset = 0,
     Boolean noAssert = false);
 ```
@@ -1019,13 +1043,16 @@ Buffer.writeInt16LE(Integer value,
 * value: Integer, 指定写入的数值
 * offset: Integer, 指定写入的起始位置
 * noAssert: Boolean, 指定写入越界时不抛出错误，缺省为 flase，抛出
+
+返回结果:
+* Integer, offset 加上写入的字节数
 
 --------------------------
 ### writeInt16BE
 **向缓存对象写入一个 16 位整型数值，以高字节序的存储方式**
 
 ```JavaScript
-Buffer.writeInt16BE(Integer value,
+Integer Buffer.writeInt16BE(Integer value,
     Integer offset = 0,
     Boolean noAssert = false);
 ```
@@ -1034,13 +1061,16 @@ Buffer.writeInt16BE(Integer value,
 * value: Integer, 指定写入的数值
 * offset: Integer, 指定写入的起始位置
 * noAssert: Boolean, 指定写入越界时不抛出错误，缺省为 flase，抛出
+
+返回结果:
+* Integer, offset 加上写入的字节数
 
 --------------------------
 ### writeInt32LE
 **向缓存对象写入一个 32 位整型数值，以低字节序的存储方式**
 
 ```JavaScript
-Buffer.writeInt32LE(Integer value,
+Integer Buffer.writeInt32LE(Integer value,
     Integer offset = 0,
     Boolean noAssert = false);
 ```
@@ -1049,13 +1079,16 @@ Buffer.writeInt32LE(Integer value,
 * value: Integer, 指定写入的数值
 * offset: Integer, 指定写入的起始位置
 * noAssert: Boolean, 指定写入越界时不抛出错误，缺省为 flase，抛出
+
+返回结果:
+* Integer, offset 加上写入的字节数
 
 --------------------------
 ### writeInt32BE
 **向缓存对象写入一个 32 位整型数值，以高字节序的存储方式**
 
 ```JavaScript
-Buffer.writeInt32BE(Integer value,
+Integer Buffer.writeInt32BE(Integer value,
     Integer offset = 0,
     Boolean noAssert = false);
 ```
@@ -1065,12 +1098,15 @@ Buffer.writeInt32BE(Integer value,
 * offset: Integer, 指定写入的起始位置
 * noAssert: Boolean, 指定写入越界时不抛出错误，缺省为 flase，抛出
 
+返回结果:
+* Integer, offset 加上写入的字节数
+
 --------------------------
 ### writeIntLE
 **向缓存对象写入一个整型数值，最大支持 48 位，以低字节序的存储方式**
 
 ```JavaScript
-Buffer.writeIntLE(Long value,
+Integer Buffer.writeIntLE(Long value,
     Integer offset = 0,
     Boolean noAssert = false);
 ```
@@ -1079,13 +1115,16 @@ Buffer.writeIntLE(Long value,
 * value: Long, 指定写入的数值
 * offset: Integer, 指定写入的起始位置
 * noAssert: Boolean, 指定写入越界时不抛出错误，缺省为 flase，抛出
+
+返回结果:
+* Integer, offset 加上写入的字节数
 
 --------------------------
 ### writeIntBE
 **向缓存对象写入一个整型数值，最大支持 48 位，以高字节序的存储方式**
 
 ```JavaScript
-Buffer.writeIntBE(Long value,
+Integer Buffer.writeIntBE(Long value,
     Integer offset = 0,
     Boolean noAssert = false);
 ```
@@ -1095,12 +1134,15 @@ Buffer.writeIntBE(Long value,
 * offset: Integer, 指定写入的起始位置
 * noAssert: Boolean, 指定写入越界时不抛出错误，缺省为 flase，抛出
 
+返回结果:
+* Integer, offset 加上写入的字节数
+
 --------------------------
 ### writeInt64LE
 **向缓存对象写入一个 64 位整型数值，以低字节序的存储方式**
 
 ```JavaScript
-Buffer.writeInt64LE(Int64 value,
+Integer Buffer.writeInt64LE(Int64 value,
     Integer offset = 0,
     Boolean noAssert = false);
 ```
@@ -1109,13 +1151,16 @@ Buffer.writeInt64LE(Int64 value,
 * value: [Int64](Int64.md), 指定写入的数值
 * offset: Integer, 指定写入的起始位置
 * noAssert: Boolean, 指定写入越界时不抛出错误，缺省为 flase，抛出
+
+返回结果:
+* Integer, offset 加上写入的字节数
 
 --------------------------
 ### writeInt64BE
 **向缓存对象写入一个 64 位整型数值，以高字节序的存储方式**
 
 ```JavaScript
-Buffer.writeInt64BE(Int64 value,
+Integer Buffer.writeInt64BE(Int64 value,
     Integer offset = 0,
     Boolean noAssert = false);
 ```
@@ -1125,12 +1170,15 @@ Buffer.writeInt64BE(Int64 value,
 * offset: Integer, 指定写入的起始位置
 * noAssert: Boolean, 指定写入越界时不抛出错误，缺省为 flase，抛出
 
+返回结果:
+* Integer, offset 加上写入的字节数
+
 --------------------------
 ### writeFloatLE
 **向缓存对象写入一个浮点数，以低字节序的存储方式**
 
 ```JavaScript
-Buffer.writeFloatLE(Number value,
+Integer Buffer.writeFloatLE(Number value,
     Integer offset,
     Boolean noAssert = false);
 ```
@@ -1139,13 +1187,16 @@ Buffer.writeFloatLE(Number value,
 * value: Number, 指定写入的数值
 * offset: Integer, 指定写入的起始位置
 * noAssert: Boolean, 指定写入越界时不抛出错误，缺省为 flase，抛出
+
+返回结果:
+* Integer, offset 加上写入的字节数
 
 --------------------------
 ### writeFloatBE
 **向缓存对象写入一个浮点数，以高字节序的存储方式**
 
 ```JavaScript
-Buffer.writeFloatBE(Number value,
+Integer Buffer.writeFloatBE(Number value,
     Integer offset,
     Boolean noAssert = false);
 ```
@@ -1154,13 +1205,16 @@ Buffer.writeFloatBE(Number value,
 * value: Number, 指定写入的数值
 * offset: Integer, 指定写入的起始位置
 * noAssert: Boolean, 指定写入越界时不抛出错误，缺省为 flase，抛出
+
+返回结果:
+* Integer, offset 加上写入的字节数
 
 --------------------------
 ### writeDoubleLE
 **向缓存对象写入一个双精度浮点数，以低字节序的存储方式**
 
 ```JavaScript
-Buffer.writeDoubleLE(Number value,
+Integer Buffer.writeDoubleLE(Number value,
     Integer offset,
     Boolean noAssert = false);
 ```
@@ -1169,13 +1223,16 @@ Buffer.writeDoubleLE(Number value,
 * value: Number, 指定写入的数值
 * offset: Integer, 指定写入的起始位置
 * noAssert: Boolean, 指定写入越界时不抛出错误，缺省为 flase，抛出
+
+返回结果:
+* Integer, offset 加上写入的字节数
 
 --------------------------
 ### writeDoubleBE
 **向缓存对象写入一个双精度浮点数，以高字节序的存储方式**
 
 ```JavaScript
-Buffer.writeDoubleBE(Number value,
+Integer Buffer.writeDoubleBE(Number value,
     Integer offset,
     Boolean noAssert = false);
 ```
@@ -1184,6 +1241,9 @@ Buffer.writeDoubleBE(Number value,
 * value: Number, 指定写入的数值
 * offset: Integer, 指定写入的起始位置
 * noAssert: Boolean, 指定写入越界时不抛出错误，缺省为 flase，抛出
+
+返回结果:
+* Integer, offset 加上写入的字节数
 
 --------------------------
 ### slice
@@ -1365,15 +1425,4 @@ Value Buffer.toJSON(String key = "");
 
 返回结果:
 * Value, 返回包含可 JSON 序列化的值
-
---------------------------
-### valueOf
-**返回对象本身的数值**
-
-```JavaScript
-Value Buffer.valueOf();
-```
-
-返回结果:
-* Value, 返回对象本身的数值
 

@@ -13,12 +13,10 @@ var a = new collection.List();
 digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
-    object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
+    object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\l}"];
     List [tooltip="List", fillcolor="lightgray", label="{List|new List()\l|operator[]\l|length\l|freeze()\lresize()\lpush()\lindexOf()\llastIndexOf()\lpush()\lpushArray()\lpop()\lslice()\lconcat()\levery()\lsome()\lfilter()\lforEach()\lmap()\lreduce()\lsort()\ltoArray()\l}"];
-    DBResult [tooltip="DBResult", URL="DBResult.md", label="{DBResult|insertId\laffected\lfields\l}"];
 
     object -> List [dir=back];
-    List -> DBResult [dir=back];
 }
 ```
 
@@ -373,15 +371,4 @@ Value List.toJSON(String key = "");
 
 返回结果:
 * Value, 返回包含可 JSON 序列化的值
-
---------------------------
-### valueOf
-**返回对象本身的数值**
-
-```JavaScript
-Value List.valueOf();
-```
-
-返回结果:
-* Value, 返回对象本身的数值
 

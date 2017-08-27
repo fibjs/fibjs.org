@@ -6,7 +6,7 @@ XmlProcessingInstruction 对象表示 [xml](../../module/ifs/xml.md) 处理指�
 digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
-    object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\lvalueOf()\l}"];
+    object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\l}"];
     XmlNode [tooltip="XmlNode", URL="XmlNode.md", label="{XmlNode|nodeType\lnodeName\lnodeValue\lownerDocument\lparentNode\lchildNodes\lfirstChild\llastChild\lpreviousSibling\lnextSibling\l|hasChildNodes()\lnormalize()\lcloneNode()\llookupPrefix()\llookupNamespaceURI()\linsertBefore()\linsertAfter()\lappendChild()\lreplaceChild()\lremoveChild()\l}"];
     XmlProcessingInstruction [tooltip="XmlProcessingInstruction", fillcolor="lightgray", label="{XmlProcessingInstruction|target\ldata\l}"];
 
@@ -338,15 +338,4 @@ Value XmlProcessingInstruction.toJSON(String key = "");
 
 返回结果:
 * Value, 返回包含可 JSON 序列化的值
-
---------------------------
-### valueOf
-**返回对象本身的数值**
-
-```JavaScript
-Value XmlProcessingInstruction.valueOf();
-```
-
-返回结果:
-* Value, 返回对象本身的数值
 
