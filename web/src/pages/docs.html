@@ -12,55 +12,56 @@
     <!-- include "../common/header.html" -->
     <div class="band">
         <div class="container">
-            <span class="group">Guide 开发指南</span>
+            <span class="group"><%=groups[group].etitle%> <%=groups[group].title%></span>
         </div>
     </div>
     <div class="container">
-        <%if(group in groups){%>
-            <ol class="breadcrumb">
-                <li><a href="/index.html">首页</a></li>
-                <li>
-                    <a href="<%=groups[group].url%>">
-                        <%=groups[group].title%>
-                    </a>
-                </li>
-                <li class="active">
-                    <%=title%>
-                </li>
-            </ol>
-            <%}%>
-                <div class="sidebar hidden-xs">
-                    <input type="text" class="form-control search" placeholder="Search for...">
-                    <div class="panel-group" id="accordion" role="tablist">
-                        <%for(var g in groups){%>
-                            <div class="panel">
-                                <div class="panel-heading" role="tab" id="headingOne">
-                                    <h4 class="panel-title">
-                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse_<%-g%>" aria-controls="collapse_<%-g%>">
-                                            <%-groups[g].title%>
-                                        </a>
-                                    </h4>
-                                </div>
-                                <div id="collapse_<%-g%>" class="panel-collapse collapse <%if(group==g){%>in<%}%>" aria-labelledby="headingOne">
-                                    <div class="panel-body">
-                                        <%-groups[g].toc%>
-                                    </div>
+        <ol class="breadcrumb">
+            <li><a href="/index.html">首页</a></li>
+            <li>
+                <a href="<%=groups[group].url%>">
+                    <%=groups[group].title%>
+                </a>
+            </li>
+            <li class="active">
+                <%=title%>
+            </li>
+        </ol>
+    </div>
+    <div class="page-body">
+        <div class="container">
+            <div class="sidebar hidden-xs">
+                <div class="panel-group" id="accordion" role="tablist">
+                    <%for(var g in groups){%>
+                        <div class="panel">
+                            <div class="panel-heading" role="tab" id="headingOne">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse_<%-g%>" aria-controls="collapse_<%-g%>">
+                                        <%-groups[g].title%>
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapse_<%-g%>" class="panel-collapse collapse <%if(group==g){%>in<%}%>" aria-labelledby="headingOne">
+                                <div class="panel-body">
+                                    <%-groups[g].toc%>
                                 </div>
                             </div>
-                            <%}%>
-                    </div>
+                        </div>
+                        <%}%>
                 </div>
+            </div>
 
-                <div class="content">
-                    <div class="social-share" data-sites='weibo,twitter' data-description="分享"></div>
-                    <%-doc%>
-                </div>
+            <div class="content">
+                <div class="social-share" data-sites='weibo,twitter' data-description="分享"></div>
+                <%-doc%>
+            </div>
 
-                <div class="sidebar hidden-sm hidden-xs">
-                    <div id="toc"></div>
-                </div>
+            <div class="sidebar hidden-sm hidden-xs">
+                <div id="toc"></div>
+            </div>
+        </div>
+        <!-- /.container -->
     </div>
-    <!-- /.container -->
 
     <!-- include "../common/footer.html" -->
 </body>

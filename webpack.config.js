@@ -108,14 +108,17 @@ function build_docs() {
         to: 'docs',
         groups: {
             "guide": {
+                etitle: 'Guide',
                 title: '开发指南',
                 path: "guide"
             },
             "module": {
+                etitle: 'Module',
                 title: '基础模块',
                 path: "manual/module"
             },
             "object": {
+                etitle: 'Object',
                 title: '内置对象',
                 path: "manual/object"
             }
