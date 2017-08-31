@@ -4,7 +4,7 @@ html {
 
 body {
     font-family: Avenir, 'Segoe UI', Arial, 'Hiragino Sans GB', 冬青黑, 'Microsoft YaHei', 微软雅黑, SimSun, 宋体, Helvetica, Tahoma, 'Arial sans-serif';
-    color: #666666;
+    color: #333333;
     font-size: 16px;
     line-height: 1.8;
 }
@@ -13,7 +13,7 @@ a,
 a:hover,
 a:active,
 a:focus {
-    color: #00abe5;
+    color: #0088cc;
 }
 
 .dot a,
@@ -56,6 +56,20 @@ ul {
     margin: 0 -15px 15px;
 }
 
+.band {
+    height: 84px;
+    background-color: #0088cc;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.band .group {
+    font-size: 32px;
+    line-height: 44px;
+    font-weight: 600;
+    color: #ffffff;
+}
+
 .gravatar {
     display: inline-block;
     width: 44px;
@@ -66,29 +80,42 @@ ul {
     margin-top: 4px;
 }
 
+.btn-primary,
+.btn-default {
+    padding: 14px 28px 13px 28px;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #ffffff;
+}
+
 .btn-primary {
-    background-color: #00abe5;
+    background-color: #0088cc;
     border-color: #0099cf;
+}
+
+.btn-default {
+    background: transparent;
+    border-color: #ffffff;
 }
 
 .btn-primary:hover,
 .btn-primary:focus {
-    background-color: #0089ba;
-    border-color: #0099cf;
+    background-color: #1199dd;
 }
 
 .navbar-default {
-    background-color: #00abe5;
-    box-shadow: 0px 3px 5px #888888;
+    background-color: #ffffff;
     border: none;
+    height: 95px;
+    padding-top: 10px;
     margin-bottom: 0px;
 }
 
 .navbar-default .navbar-brand img {
     display: inline-block;
     margin-top: -20px;
-    width: 50px;
-    height: 50px;
+    max-width: 150px;
 }
 
 .navbar-default .navbar-brand {
@@ -97,16 +124,26 @@ ul {
     padding-top: 30px;
 }
 
+.navbar-default .navbar-collapse {
+    border: none;
+}
+
 .navbar-default .navbar-nav>li>a {
-    color: #ffffff;
+    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: bold;
     font-size: 16px;
-    padding-left: 6px;
-    padding-right: 6px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #333333;
+    -webkit-transition: all .5s ease;
+    transition: all .5s ease;
+    padding-bottom: 40px;
+    display: inline-block;
+    line-height: 14px;
 }
 
 .navbar-default .navbar-right {
     padding-top: 20px;
-    padding-right: 20px;
 }
 
 .navbar-default .navbar-brand:hover,
@@ -121,18 +158,40 @@ ul {
     background-color: transparent;
 }
 
-.navbar-default .navbar-toggle .icon-bar {
-    background-color: #ffffff;
+.jumbotron {
+    background-size: 1400px auto;
+    background-position: center;
+    transform: translate3d(0px, 0px, 0px);
+    height: 620px;
+    padding-top: 210px;
+}
+
+.jumbotron h1 {
+    font-size: 48px;
+    line-height: 56px;
+    margin-bottom: 0px;
+    font-weight: 700;
+    color: #0088cc;
+}
+
+.jumbotron h2 {
+    font-size: 38px;
+    margin-bottom: 40px;
+    color: #ffffff;
+}
+
+.jumbotron .install {
+    margin-top: 60px;
 }
 
 .jumbotron .install span {
     display: block;
-    margin: 4px 10px;
-    background-color: #333;
-    color: #ccc;
+    margin: 20px 0px;
+    background-color: #000;
+    color: #fff;
     padding: 6px 10px;
     font-family: Menlo, Monaco, Consolas, Courier New, monospace;
-    font-size: 14px;
+    font-size: 16px;
     max-width: 600px;
 }
 
@@ -152,9 +211,15 @@ ul {
 
 .breadcrumb {
     background-color: transparent;
+    padding-left: 0px;
     padding-bottom: 0px;
     margin-bottom: 0px;
     list-style: none;
+}
+
+.breadcrumb>li+li:before {
+    padding: 0 0px 0 5px;
+    content: "/";
 }
 
 .back-to-top {
@@ -167,6 +232,9 @@ ul {
     display: none;
     color: #ddd;
     background-color: #eee;
+    padding: 10px;
+    width: 40px;
+    height: 40px;
 }
 
 .content {
@@ -288,7 +356,7 @@ ul {
 
 .panel li.active,
 .nav-list li.active {
-    border-left: 1px solid #00abe5;
+    border-left: 1px solid #0088cc;
     background-color: #eee;
 }
 
@@ -349,6 +417,12 @@ pre div.line-numbers {
     }
 }
 
+@media (min-width: 1400px) {
+    .jumbotron {
+        background-size: 100% auto;
+    }
+}
+
 @media (max-width:767px) {
     .navbar-default .container {
         padding-left: 15px;
@@ -384,10 +458,12 @@ pre div.line-numbers {
     .social-share {
         zoom: 80%;
     }
+    .navbar-default {
+        height: 65px;
+    }
     .navbar-default .navbar-brand img {
         margin-top: -15px;
-        width: 40px;
-        height: 40px;
+        width: 120px;
     }
     .navbar-default .navbar-brand {
         font-size: 20px;
@@ -395,6 +471,13 @@ pre div.line-numbers {
     }
     .navbar-default .navbar-toggle {
         margin-top: 10px;
+    }
+    .navbar-default .navbar-right {
+        background: #ffffff;
+    }
+    .jumbotron {
+        height: 500px;
+        padding-top: 110px;
     }
     .jumbotron .install {
         display: none;
