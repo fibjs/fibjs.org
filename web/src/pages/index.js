@@ -1,2 +1,2 @@
 import 'common';
-import 'js/os';
+import 'js/icons';
