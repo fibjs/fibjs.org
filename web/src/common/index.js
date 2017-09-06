@@ -33,6 +33,12 @@ $(document).ready(function () {
 
     $('#back-to-top').tooltip('show');
 
+    docsearch({
+        apiKey: '4907dc32fc5c4822bb92029ef59843a7',
+        indexName: 'fibjs',
+        inputSelector: '.searchbox',
+        debug: false
+    });
 });
 
 (function (i, s, o, g, r, a, m) {
