@@ -31,6 +31,7 @@
 * [querystring](ifs/querystring.md)
 * [registry](ifs/registry.md)
 * [ssl](ifs/ssl.md)
+* [string_decoder](ifs/string_decoder.md)
 * [test](ifs/test.md)
 * [timers](ifs/timers.md)
 * [tty](ifs/tty.md)

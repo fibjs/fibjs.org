@@ -1358,13 +1358,28 @@ Array Buffer.toArray();
 ```JavaScript
 String Buffer.toString(String codec,
     Integer offset = 0,
-    Integer end = -1);
+    Integer end);
 ```
 
 调用参数:
 * codec: String, 指定编码格式，允许值为："[hex](../../module/ifs/hex.md)", "[base64](../../module/ifs/base64.md)", "utf8", 或者系统支持的字符集
 * offset: Integer, 读取起始位置
 * end: Integer, 读取终止位置
+
+返回结果:
+* String, 返回对象的字符串表示
+
+--------------------------
+**返回二进制数据的编码字符串**
+
+```JavaScript
+String Buffer.toString(String codec,
+    Integer offset = 0);
+```
+
+调用参数:
+* codec: String, 指定编码格式，允许值为："[hex](../../module/ifs/hex.md)", "[base64](../../module/ifs/base64.md)", "utf8", 或者系统支持的字符集
+* offset: Integer, 读取起始位置
 
 返回结果:
 * String, 返回对象的字符串表示

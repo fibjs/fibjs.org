@@ -1,4 +1,4 @@
-<!DOCTYPE html><html><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel=icon type=image/png href=../../../../imgs/icon.png><title> 模块 path_win32 - JavaScript on Fiber</title><link href=../../../../css/common.css rel=stylesheet><link href=../../../../css/docs.css rel=stylesheet></head><body><div class="navbar navbar-default navbar-static-top" role=navigation><div class=container><div class=navbar-header><button type=button class="navbar-toggle collapsed" data-toggle=collapse data-target=#navbar aria-expanded=false aria-controls=navbar><span class=sr-only>Toggle navigation</span> <span class=icon-bar></span> <span class=icon-bar></span> <span class=icon-bar></span></button> <a class=navbar-brand href=../../../../index.html><img src=../../../../imgs/logo-dark.png></a></div><div id=navbar class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right"><li><a href=../../../../index.html>HOME</a></li><li><a href=../../../guide/readme.md.html>GUIDE</a></li><li><a href=../readme.md.html>MODULE</a></li><li><a href=../../object/readme.md.html>OBJECT</a></li><li><a href=../../../../download/index.html>DOWNLOAD</a></li></ul></div></div></div><div class=band><div class=container><span class=group>Module 基础模块</span><div class=search><input type=text class=searchbox placeholder=Search></div></div></div><div class=container><ol class=breadcrumb><li><a href=../../../../index.html>首页</a></li><li><a href=../readme.md.html> 基础模块 </a></li><li class=active> 模块 path_win32 </li></ol></div><div class=page-body><div class=container><div class="sidebar hidden-xs"><div class=panel-group id=accordion role=tablist>  <div class=panel><div class=panel-heading role=tab id=headingOne><h4 class=panel-title><a data-toggle=collapse data-parent=#accordion href="#collapse_guide" aria-controls="collapse_guide"> 开发指南 </a></h4></div><div id="collapse_guide" class="panel-collapse collapse " aria-labelledby=headingOne><div class=panel-body> <ul>
+<!DOCTYPE html><html><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel=icon type=image/png href=../../../../imgs/icon.png><title> 模块 string_decoder - JavaScript on Fiber</title><link href=../../../../css/common.css rel=stylesheet><link href=../../../../css/docs.css rel=stylesheet></head><body><div class="navbar navbar-default navbar-static-top" role=navigation><div class=container><div class=navbar-header><button type=button class="navbar-toggle collapsed" data-toggle=collapse data-target=#navbar aria-expanded=false aria-controls=navbar><span class=sr-only>Toggle navigation</span> <span class=icon-bar></span> <span class=icon-bar></span> <span class=icon-bar></span></button> <a class=navbar-brand href=../../../../index.html><img src=../../../../imgs/logo-dark.png></a></div><div id=navbar class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right"><li><a href=../../../../index.html>HOME</a></li><li><a href=../../../guide/readme.md.html>GUIDE</a></li><li><a href=../readme.md.html>MODULE</a></li><li><a href=../../object/readme.md.html>OBJECT</a></li><li><a href=../../../../download/index.html>DOWNLOAD</a></li></ul></div></div></div><div class=band><div class=container><span class=group>Module 基础模块</span><div class=search><input type=text class=searchbox placeholder=Search></div></div></div><div class=container><ol class=breadcrumb><li><a href=../../../../index.html>首页</a></li><li><a href=../readme.md.html> 基础模块 </a></li><li class=active> 模块 string_decoder </li></ol></div><div class=page-body><div class=container><div class="sidebar hidden-xs"><div class=panel-group id=accordion role=tablist>  <div class=panel><div class=panel-heading role=tab id=headingOne><h4 class=panel-title><a data-toggle=collapse data-parent=#accordion href="#collapse_guide" aria-controls="collapse_guide"> 开发指南 </a></h4></div><div id="collapse_guide" class="panel-collapse collapse " aria-labelledby=headingOne><div class=panel-body> <ul>
 <li><a href=../../../guide/about.md.html>fibjs 是什么？</a></li>
 <li><a href=../../../guide/install.md.html>安装运行环境</a></li>
 <li><a href=../../../guide/hello.md.html>hello, world</a></li>
@@ -31,14 +31,14 @@
 <li><a href=os.md.html>os</a></li>
 <li><a href=path.md.html>path</a></li>
 <li><a href=path_posix.md.html>path_posix</a></li>
-<li class="active"><a href=path_win32.md.html>path_win32</a></li>
+<li><a href=path_win32.md.html>path_win32</a></li>
 <li><a href=process.md.html>process</a></li>
 <li><a href=profiler.md.html>profiler</a></li>
 <li><a href=punycode.md.html>punycode</a></li>
 <li><a href=querystring.md.html>querystring</a></li>
 <li><a href=registry.md.html>registry</a></li>
 <li><a href=ssl.md.html>ssl</a></li>
-<li><a href=string_decoder.md.html>string_decoder</a></li>
+<li class="active"><a href=string_decoder.md.html>string_decoder</a></li>
 <li><a href=test.md.html>test</a></li>
 <li><a href=timers.md.html>timers</a></li>
 <li><a href=tty.md.html>tty</a></li>
@@ -150,136 +150,32 @@
 <li><a href=../../object/ifs/zipinfo.md.html>ZipInfo</a></li>
 <li><a href=../../object/ifs/zmqsocket.md.html>ZmqSocket</a></li>
 </ul>
- </div></div></div>  </div></div><div class=content><div class=social-share data-sites=weibo,twitter data-description=分享></div> <h1 id="模块-path_win32">模块 path_win32</h1>
-<p>文件路径处理模块</p>
-<p>引用方法：</p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">var</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">'path'</span>).win32;
-</code></pre>
-<h2 id="静态函数">静态函数</h2>
-<h3 id="normalize">normalize</h3>
-<p><strong>标准化路径，处理路径中父目录等信息</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">String</span> path_win32.normalize(<span class="hljs-built_in">String</span> path);
-</code></pre>
-<p>调用参数:</p>
-<ul>
-<li>path: String, 给定的未处理的路径</li>
-</ul>
-<p>返回结果:</p>
-<ul>
-<li>String, 返回经过处理的路径</li>
-</ul>
-<hr>
-<h3 id="basename">basename</h3>
-<p><strong>查询路径中的文件名称，若指定扩展名，则自动取消匹配的扩展名</strong></p>
+ </div></div></div>  </div></div><div class=content><div class=social-share data-sites=weibo,twitter data-description=分享></div> <h1 id="模块-string_decoder">模块 string_decoder</h1>
+<p>解码 <a href=../../object/ifs/buffer.md.html>Buffer</a> 到字符串</p>
+<p>使用方法：</p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">String</span> path_win32.basename(<span class="hljs-built_in">String</span> path,
-    <span class="hljs-built_in">String</span> ext = <span class="hljs-string">""</span>);
+2
+3
+4
+5
+6
+7
+8
+9
+10</div><span class="hljs-keyword">const</span> {
+    StringDecoder
+} = <span class="hljs-built_in">require</span>(<span class="hljs-string">'string_decoder'</span>);
+<span class="hljs-keyword">const</span> decoder = <span class="hljs-keyword">new</span> StringDecoder(<span class="hljs-string">'utf8'</span>);
+
+<span class="hljs-keyword">const</span> cent = Buffer.from([<span class="hljs-number">0xC2</span>, <span class="hljs-number">0xA2</span>]);
+<span class="hljs-built_in">console</span>.log(decoder.write(cent));
+
+<span class="hljs-keyword">const</span> euro = Buffer.from([<span class="hljs-number">0xE2</span>, <span class="hljs-number">0x82</span>, <span class="hljs-number">0xAC</span>]);
+<span class="hljs-built_in">console</span>.log(decoder.write(euro));
 </code></pre>
-<p>调用参数:</p>
-<ul>
-<li>path: String, 给定查询的路径</li>
-<li>ext: String, 指定扩展名，若文件名中有符合条件的扩展名，将自动取消</li>
-</ul>
-<p>返回结果:</p>
-<ul>
-<li>String, 返回文件名称</li>
-</ul>
-<hr>
-<h3 id="extname">extname</h3>
-<p><strong>查询路径中的文件扩展名</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">String</span> path_win32.extname(<span class="hljs-built_in">String</span> path);
-</code></pre>
-<p>调用参数:</p>
-<ul>
-<li>path: String, 给定查询的路径</li>
-</ul>
-<p>返回结果:</p>
-<ul>
-<li>String, 返回得到的扩展名</li>
-</ul>
-<hr>
-<h3 id="dirname">dirname</h3>
-<p><strong>查询路径中的目录路径</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">String</span> path_win32.dirname(<span class="hljs-built_in">String</span> path);
-</code></pre>
-<p>调用参数:</p>
-<ul>
-<li>path: String, 给定查询的路径</li>
-</ul>
-<p>返回结果:</p>
-<ul>
-<li>String, 返回得到的目录的路径</li>
-</ul>
-<hr>
-<h3 id="fullpath">fullpath</h3>
-<p><strong>转换给定路径为全路径</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">String</span> path_win32.fullpath(<span class="hljs-built_in">String</span> path);
-</code></pre>
-<p>调用参数:</p>
-<ul>
-<li>path: String, 给定转换的路径</li>
-</ul>
-<p>返回结果:</p>
-<ul>
-<li>String, 返回转换的全路径</li>
-</ul>
-<hr>
-<h3 id="isAbsolute">isAbsolute</h3>
-<p><strong>识别给定的路径是否是绝对路径</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Boolean</span> path_win32.isAbsolute(<span class="hljs-built_in">String</span> path);
-</code></pre>
-<p>调用参数:</p>
-<ul>
-<li>path: String, 给定需要识别的路径</li>
-</ul>
-<p>返回结果:</p>
-<ul>
-<li>Boolean, 是绝对路径则返回 true</li>
-</ul>
-<hr>
-<h3 id="join">join</h3>
-<p><strong>合并一系列路径成为一个单一路径</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">String</span> path_win32.join(...ps);
-</code></pre>
-<p>调用参数:</p>
-<ul>
-<li>ps: ..., 一个或多个相关的路径</li>
-</ul>
-<p>返回结果:</p>
-<ul>
-<li>String, 返回得到的新路径</li>
-</ul>
-<hr>
-<h3 id="resolve">resolve</h3>
-<p><strong>合并一系列路径成为一个绝对路径</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">String</span> path_win32.resolve(...ps);
-</code></pre>
-<p>调用参数:</p>
-<ul>
-<li>ps: ..., 一个或多个相关的路径</li>
-</ul>
-<p>返回结果:</p>
-<ul>
-<li>String, 返回得到的新路径</li>
-</ul>
-<h2 id="静态属性">静态属性</h2>
-<h3 id="sep">sep</h3>
-<p><strong>String, 查询当前操作系统的路径分割字符，posix 返回 &#39;/&#39;, windows 返回  &#39;\&#39;</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly <span class="hljs-built_in">String</span> path_win32.sep;
-</code></pre>
-<hr>
-<h3 id="delimiter">delimiter</h3>
-<p><strong>String, 查询当前操作系统的多路径组合字符，posix 返回 &#39;:&#39;, windows 返回  &#39;;&#39;</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly <span class="hljs-built_in">String</span> path_win32.delimiter;
-</code></pre>
-<hr>
-<h3 id="posix">posix</h3>
-<p><strong>Object, posix 实现，参见 <a href=path_posix.md.html>path_posix</a></strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly <span class="hljs-built_in">Object</span> path_win32.posix;
-</code></pre>
-<hr>
-<h3 id="win32">win32</h3>
-<p><strong>Object, windows 实现，参见 path_win32</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly <span class="hljs-built_in">Object</span> path_win32.win32;
+<h2 id="对象">对象</h2>
+<h3 id="StringDecoder">StringDecoder</h3>
+<p><strong>创建一个解码对象，参见 <a href=../../object/ifs/stringdecoder.md.html>StringDecoder</a></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>StringDecoder string_decoder.StringDecoder;
 </code></pre>
  </div><div class="sidebar hidden-sm hidden-xs"><div id=toc></div></div></div></div><div class=footer><div class=container>&copy; Copright 2017 fibjs.org | <a href=../../../../support.html>支持我们</a></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="Click to return on the top page" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js></script><script type=text/javascript src=../../../../js/common.js></script><script type=text/javascript src=../../../../js/docs.js></script></body></html>

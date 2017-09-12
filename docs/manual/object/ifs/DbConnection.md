@@ -82,20 +82,20 @@ func 执行有三种结果：
 **执行一个 sql 命令，并返回执行结果**
 
 ```JavaScript
-object DbConnection.execute(String sql) async;
+NArray DbConnection.execute(String sql) async;
 ```
 
 调用参数:
 * sql: String, 格式化字符串，可选参数用 ? 指定。例如：'SELECT FROM TEST WHERE [id]=?'
 
 返回结果:
-* [object](object.md), 返回包含结果记录的数组，如果请求是 UPDATE 或者 INSERT，返回结果还会包含 affected 和 insertId，mssql 不支持 insertId。
+* NArray, 返回包含结果记录的数组，如果请求是 UPDATE 或者 INSERT，返回结果还会包含 affected 和 insertId，mssql 不支持 insertId。
 
 --------------------------
 **执行一个 sql 命令，并返回执行结果，可根据参数格式化字符串**
 
 ```JavaScript
-object DbConnection.execute(String sql,
+NArray DbConnection.execute(String sql,
     ...args) async;
 ```
 
@@ -104,7 +104,7 @@ object DbConnection.execute(String sql,
 * args: ..., 可选参数列表
 
 返回结果:
-* [object](object.md), 返回包含结果记录的数组，如果请求是 UPDATE 或者 INSERT，返回结果还会包含 affected 和 insertId，mssql 不支持 insertId。
+* NArray, 返回包含结果记录的数组，如果请求是 UPDATE 或者 INSERT，返回结果还会包含 affected 和 insertId，mssql 不支持 insertId。
 
 --------------------------
 ### format

@@ -174,14 +174,14 @@ Buffer Socket.recv(Integer bytes = -1) async;
 **读取一个 UDP 包**
 
 ```JavaScript
-object Socket.recvfrom(Integer bytes = -1) async;
+NObject Socket.recvfrom(Integer bytes = -1) async;
 ```
 
 调用参数:
 * bytes: Integer, 指定要读取的数据量，缺省读取任意尺寸的数据
 
 返回结果:
-* [object](object.md), 返回从连接读取的数据包
+* NObject, 返回从连接读取的数据包
 
 recvfrom 返回结果中包含以下内容：
   - data: 接收到的二进制数据块

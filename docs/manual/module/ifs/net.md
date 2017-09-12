@@ -98,25 +98,6 @@ static String net.ipv6(String name) async;
 
 --------------------------
 ### connect
-**创建一个 [Socket](../../object/ifs/Socket.md) 对象并建立连接，参见 [Socket](../../object/ifs/Socket.md)**
-
-```JavaScript
-static Stream net.connect(String host,
-    Integer port,
-    Integer timeout = 0,
-    Integer family = net.AF_INET) async;
-```
-
-调用参数:
-* host: String, 指定对方地址或主机名
-* port: Integer, 指定对方端口
-* timeout: Integer, 指定超时时间，单位是毫秒，默认为0
-* family: Integer, 指定地址集，缺省为 AF_INET，ipv4
-
-返回结果:
-* [Stream](../../object/ifs/Stream.md), 返回连接成功的 [Socket](../../object/ifs/Socket.md) 对象
-
---------------------------
 **创建一个 [Socket](../../object/ifs/Socket.md) 或 [SslSocket](../../object/ifs/SslSocket.md) 对象并建立连接**
 
 ```JavaScript

@@ -32,6 +32,7 @@
 * [querystring](ifs/querystring.md) - http query 处理模块
 * [registry](ifs/registry.md) - Windows 注册表访问模块
 * [ssl](ifs/ssl.md) - ssl/tls 模块
+* [string_decoder](ifs/string_decoder.md) - 解码 Buffer 到字符串
 * [test](ifs/test.md) - 测试套件模块，用以定义管理测试套件
 * [timers](ifs/timers.md) - timers 模块
 * [tty](ifs/tty.md) - tty 模块

@@ -66,6 +66,7 @@
 * [Stat](ifs/Stat.md) - 文件的基础信息对象
 * [Stats](ifs/Stats.md) - 数据统计对象，用以构建应用运行时数据收集
 * [Stream](ifs/Stream.md) - 流操作对象，用于二进制数据流读写
+* [StringDecoder](ifs/StringDecoder.md) - 流解码对象
 * [SubProcess](ifs/SubProcess.md) - 子进程对象
 * [TcpServer](ifs/TcpServer.md) - tcp 服务器对象，可方便创建一个标准多纤程 tcp 服务器
 * [TextColor](ifs/TextColor.md) - 终端输出颜色配置对象

@@ -7,7 +7,7 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\l}"];
-    Message [tooltip="Message", URL="Message.md", label="{Message|new Message()\l|TEXT\lBINARY\l|value\lparams\ltype\ldata\lbody\llength\lstream\lresponse\llastError\l|read()\lreadAll()\lwrite()\lend()\lisEnded()\lclear()\lsendTo()\lreadFrom()\l}"];
+    Message [tooltip="Message", URL="Message.md", label="{Message|new Message()\l|TEXT\lBINARY\l|value\lparams\ltype\ldata\lbody\llength\lstream\lresponse\llastError\l|read()\lreadAll()\lwrite()\ljson()\lend()\lisEnded()\lclear()\lsendTo()\lreadFrom()\l}"];
     HttpMessage [tooltip="HttpMessage", URL="HttpMessage.md", label="{HttpMessage|protocol\lheaders\lkeepAlive\lupgrade\lmaxHeadersCount\lmaxBodySize\lsocket\l|hasHeader()\lfirstHeader()\lallHeader()\laddHeader()\lsetHeader()\lremoveHeader()\l}"];
     HttpResponse [tooltip="HttpResponse", fillcolor="lightgray", label="{HttpResponse|new HttpResponse()\l|status\lcookies\l|addCookie()\lredirect()\lsendHeader()\l}"];
 
@@ -356,6 +356,30 @@ HttpResponse.write(Buffer data) async;
 
 调用参数:
 * data: [Buffer](Buffer.md), 给定要写入的数据
+
+--------------------------
+### json
+**以 JSON 编码写入给定的数据**
+
+```JavaScript
+Value HttpResponse.json(Value data);
+```
+
+调用参数:
+* data: Value, 给定要写入的数据
+
+返回结果:
+* Value, 此方法不会返回数据
+
+--------------------------
+**以 JSON 编码解析消息中的数据**
+
+```JavaScript
+Value HttpResponse.json();
+```
+
+返回结果:
+* Value, 返回解析的结果
 
 --------------------------
 ### end

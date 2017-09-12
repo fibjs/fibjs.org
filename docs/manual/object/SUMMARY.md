@@ -65,6 +65,7 @@
 * [Stat](ifs/Stat.md)
 * [Stats](ifs/Stats.md)
 * [Stream](ifs/Stream.md)
+* [StringDecoder](ifs/StringDecoder.md)
 * [SubProcess](ifs/SubProcess.md)
 * [TcpServer](ifs/TcpServer.md)
 * [TextColor](ifs/TextColor.md)
