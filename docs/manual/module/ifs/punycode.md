@@ -38,3 +38,31 @@ static String punycode.decode(String domain);
 返回结果:
 * String, 返回解码后的 Unicode 字符串
 
+--------------------------
+### toASCII
+**转换一个代表了一个域名的Unicode字符串为一个只含有 ASCII 字符的字符串。只有代表了域名的部分的非 ASCII 字符串会被转换。也就是说，如果你调用了一个已经被转换为ASCII的字符串，也是没有问题的。**
+
+```JavaScript
+static String punycode.toASCII(String domain);
+```
+
+调用参数:
+* domain: String, 给定Unicode 字符串
+
+返回结果:
+* String, 返回编码后的 ASCII 字符串
+
+--------------------------
+### toUnicode
+**转换一个代表了一个域名的Punycode字符串为一个Unicode字符串。只有代表了域名的部分的Punycode字符串会被转换。也就是说，如果你调用了一个已经被转换为Unicode的字符串，也是没有问题的。**
+
+```JavaScript
+static String punycode.toUnicode(String domain);
+```
+
+调用参数:
+* domain: String, 给定 ASCII 字符串
+
+返回结果:
+* String, 返回解码后的 Unicode 字符串
+

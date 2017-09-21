@@ -8,7 +8,7 @@ digraph {
 
     object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\l}"];
     EventEmitter [tooltip="EventEmitter", URL="EventEmitter.md", label="{EventEmitter|new EventEmitter()\l|defaultMaxListeners\l|on()\laddListener()\lprependListener()\lonce()\lprependOnceListener()\loff()\lremoveListener()\lremoveAllListeners()\lsetMaxListeners()\lgetMaxListeners()\llisteners()\llistenerCount()\leventNames()\lemit()\l}"];
-    Service [tooltip="Service", fillcolor="lightgray", label="{Service|new Service()\l|name\lonstop\lonpause\loncontinue\l|install()\lremove()\lstart()\lstop()\lrestart()\lrun()\lisInstalled()\lisRunning()\l}"];
+    Service [tooltip="Service", fillcolor="lightgray", label="{Service|new Service()\l|install()\lremove()\lstart()\lstop()\lrestart()\lisInstalled()\lisRunning()\l|name\lonstop\lonpause\loncontinue\l|run()\l}"];
 
     object -> EventEmitter [dir=back];
     EventEmitter -> Service [dir=back];
@@ -30,6 +30,96 @@ new Service(String name,
 * name: String, 服务名称
 * worker: Function, 服务运行函数
 * event: Object, 服务事件处理
+
+## 静态函数
+        
+### install
+**安装服务到系统**
+
+```JavaScript
+static Service.install(String name,
+    String cmd,
+    String displayName = "",
+    String description = "");
+```
+
+调用参数:
+* name: String, 服务名称
+* cmd: String, 服务命令行
+* displayName: String, 服务显示名称
+* description: String, 服务描述信息
+
+--------------------------
+### remove
+**从系统中卸载服务**
+
+```JavaScript
+static Service.remove(String name);
+```
+
+调用参数:
+* name: String, 服务名称
+
+--------------------------
+### start
+**启动服务**
+
+```JavaScript
+static Service.start(String name);
+```
+
+调用参数:
+* name: String, 服务名称
+
+--------------------------
+### stop
+**停止服务**
+
+```JavaScript
+static Service.stop(String name);
+```
+
+调用参数:
+* name: String, 服务名称
+
+--------------------------
+### restart
+**重启服务**
+
+```JavaScript
+static Service.restart(String name);
+```
+
+调用参数:
+* name: String, 服务名称
+
+--------------------------
+### isInstalled
+**检测服务是否安装**
+
+```JavaScript
+static Boolean Service.isInstalled(String name);
+```
+
+调用参数:
+* name: String, 服务名称
+
+返回结果:
+* Boolean, 服务安装返回 True
+
+--------------------------
+### isRunning
+**检测服务是否运行**
+
+```JavaScript
+static Boolean Service.isRunning(String name);
+```
+
+调用参数:
+* name: String, 服务名称
+
+返回结果:
+* Boolean, 服务运行返回 True
 
 ## 静态属性
         
@@ -75,81 +165,12 @@ Function Service.oncontinue;
 
 ## 成员函数
         
-### install
-**安装服务到系统**
-
-```JavaScript
-Service.install(String cmd,
-    String displayName = "",
-    String description = "");
-```
-
-调用参数:
-* cmd: String, 服务命令行
-* displayName: String, 服务显示名称
-* description: String, 服务描述信息
-
---------------------------
-### remove
-**从系统中卸载服务**
-
-```JavaScript
-Service.remove();
-```
-
---------------------------
-### start
-**启动服务**
-
-```JavaScript
-Service.start();
-```
-
---------------------------
-### stop
-**停止服务**
-
-```JavaScript
-Service.stop();
-```
-
---------------------------
-### restart
-**重启服务**
-
-```JavaScript
-Service.restart();
-```
-
---------------------------
 ### run
 **开始运行服务实体**
 
 ```JavaScript
 Service.run() async;
 ```
-
---------------------------
-### isInstalled
-**检测服务是否安装**
-
-```JavaScript
-Boolean Service.isInstalled();
-```
-
-返回结果:
-* Boolean, 服务安装返回 True
-
---------------------------
-### isRunning
-**检测服务是否运行**
-
-```JavaScript
-Boolean Service.isRunning();
-```
-
-返回结果:
-* Boolean, 服务运行返回 True
 
 --------------------------
 ### on

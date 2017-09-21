@@ -16,7 +16,7 @@ digraph {
 
     object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\l}"];
     EventEmitter [tooltip="EventEmitter", fillcolor="lightgray", label="{EventEmitter|new EventEmitter()\l|defaultMaxListeners\l|on()\laddListener()\lprependListener()\lonce()\lprependOnceListener()\loff()\lremoveListener()\lremoveAllListeners()\lsetMaxListeners()\lgetMaxListeners()\llisteners()\llistenerCount()\leventNames()\lemit()\l}"];
-    Service [tooltip="Service", URL="Service.md", label="{Service|new Service()\l|name\lonstop\lonpause\loncontinue\l|install()\lremove()\lstart()\lstop()\lrestart()\lrun()\lisInstalled()\lisRunning()\l}"];
+    Service [tooltip="Service", URL="Service.md", label="{Service|new Service()\l|install()\lremove()\lstart()\lstop()\lrestart()\lisInstalled()\lisRunning()\l|name\lonstop\lonpause\loncontinue\l|run()\l}"];
     WebSocket [tooltip="WebSocket", URL="WebSocket.md", label="{WebSocket|new WebSocket()\l|url\lprotocol\lorigin\lreadyState\lonopen\lonmessage\lonclose\lonerror\l|close()\lsend()\l}"];
     WebView [tooltip="WebView", URL="WebView.md", label="{WebView|visible\lonload\lonmove\lonresize\lonclosed\lonmessage\l|setHtml()\lprint()\lclose()\lwait()\lpostMessage()\l}"];
     Worker [tooltip="Worker", URL="Worker.md", label="{Worker|new Worker()\l|onmessage\l|postMessage()\l}"];

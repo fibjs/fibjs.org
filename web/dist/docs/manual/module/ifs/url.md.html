@@ -169,13 +169,16 @@
 <h3 id="parse">parse</h3>
 <p><strong>解析一个 url 字符串</strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div><span class="hljs-keyword">static</span> UrlObject url.parse(<span class="hljs-built_in">String</span> url,
-    <span class="hljs-built_in">Boolean</span> parseQueryString = <span class="hljs-literal">false</span>);
+2
+3</div><span class="hljs-keyword">static</span> UrlObject url.parse(<span class="hljs-built_in">String</span> url,
+    <span class="hljs-built_in">Boolean</span> parseQueryString = <span class="hljs-literal">false</span>,
+    <span class="hljs-built_in">Boolean</span> slashesDenoteHost = <span class="hljs-literal">false</span>);
 </code></pre>
 <p>调用参数:</p>
 <ul>
 <li>url: String, 指定需要解析的 url 字符串</li>
 <li>parseQueryString: Boolean, 指定是否解析 query</li>
+<li>slashesDenoteHost: Boolean, 默认为false, 如果设置为true，则从字符串&#39;//&#39;之后到下一个&#39;/&#39;之前的字符串会被解析为host，例如&#39;//foo/bar&#39;, 结果应该是{host: &#39;foo&#39;, pathname: &#39;/bar&#39;}而不是{pathname: &#39;//foo/bar&#39;}</li>
 </ul>
 <p>返回结果:</p>
 <ul>

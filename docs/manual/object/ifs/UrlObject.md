@@ -41,12 +41,14 @@ new UrlObject(Object args);
 
 ```JavaScript
 new UrlObject(String url = "",
-    Boolean parseQueryString = false);
+    Boolean parseQueryString = false,
+    Boolean slashesDenoteHost = false);
 ```
 
 调用参数:
 * url: String, 指定构造 [url](../../module/ifs/url.md) 字符串
 * parseQueryString: Boolean, 指定是否解析 query
+* slashesDenoteHost: Boolean, 默认为false, 如果设置为true，则从字符串'//'之后到下一个'/'之前的字符串会被解析为host，例如'//foo/bar', 结果应该是{host: 'foo', pathname: '/bar'}而不是{pathname: '//foo/bar'}
 
 ## 成员属性
         
@@ -168,12 +170,14 @@ String UrlObject.hash;
 
 ```JavaScript
 UrlObject.parse(String url,
-    Boolean parseQueryString = false);
+    Boolean parseQueryString = false,
+    Boolean slashesDenoteHost = false);
 ```
 
 调用参数:
 * url: String, 指定需要解析的 [url](../../module/ifs/url.md) 字符串
 * parseQueryString: Boolean, 指定是否解析 query
+* slashesDenoteHost: Boolean, 默认为false, 如果设置为true，则从字符串'//'之后到下一个'/'之前的字符串会被解析为host，例如'//foo/bar', 结果应该是{host: 'foo', pathname: '/bar'}而不是{pathname: '//foo/bar'}
 
 --------------------------
 ### format

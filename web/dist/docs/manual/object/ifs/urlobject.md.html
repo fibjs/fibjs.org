@@ -242,13 +242,16 @@
 <hr>
 <p><strong>UrlObject 对象构造函数，使用 <a href=../../module/ifs/url.md.html>url</a> 字符串构造</strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div><span class="hljs-keyword">new</span> UrlObject(<span class="hljs-built_in">String</span> url = <span class="hljs-string">""</span>,
-    <span class="hljs-built_in">Boolean</span> parseQueryString = <span class="hljs-literal">false</span>);
+2
+3</div><span class="hljs-keyword">new</span> UrlObject(<span class="hljs-built_in">String</span> url = <span class="hljs-string">""</span>,
+    <span class="hljs-built_in">Boolean</span> parseQueryString = <span class="hljs-literal">false</span>,
+    <span class="hljs-built_in">Boolean</span> slashesDenoteHost = <span class="hljs-literal">false</span>);
 </code></pre>
 <p>调用参数:</p>
 <ul>
 <li>url: String, 指定构造 <a href=../../module/ifs/url.md.html>url</a> 字符串</li>
 <li>parseQueryString: Boolean, 指定是否解析 query</li>
+<li>slashesDenoteHost: Boolean, 默认为false, 如果设置为true，则从字符串&#39;//&#39;之后到下一个&#39;/&#39;之前的字符串会被解析为host，例如&#39;//foo/bar&#39;, 结果应该是{host: &#39;foo&#39;, pathname: &#39;/bar&#39;}而不是{pathname: &#39;//foo/bar&#39;}</li>
 </ul>
 <h2 id="成员属性">成员属性</h2>
 <h3 id="href">href</h3>
@@ -324,13 +327,16 @@
 <h3 id="parse">parse</h3>
 <p><strong>解析一个 <a href=../../module/ifs/url.md.html>url</a> 字符串</strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div>UrlObject.parse(<span class="hljs-built_in">String</span> url,
-    <span class="hljs-built_in">Boolean</span> parseQueryString = <span class="hljs-literal">false</span>);
+2
+3</div>UrlObject.parse(<span class="hljs-built_in">String</span> url,
+    <span class="hljs-built_in">Boolean</span> parseQueryString = <span class="hljs-literal">false</span>,
+    <span class="hljs-built_in">Boolean</span> slashesDenoteHost = <span class="hljs-literal">false</span>);
 </code></pre>
 <p>调用参数:</p>
 <ul>
 <li>url: String, 指定需要解析的 <a href=../../module/ifs/url.md.html>url</a> 字符串</li>
 <li>parseQueryString: Boolean, 指定是否解析 query</li>
+<li>slashesDenoteHost: Boolean, 默认为false, 如果设置为true，则从字符串&#39;//&#39;之后到下一个&#39;/&#39;之前的字符串会被解析为host，例如&#39;//foo/bar&#39;, 结果应该是{host: &#39;foo&#39;, pathname: &#39;/bar&#39;}而不是{pathname: &#39;//foo/bar&#39;}</li>
 </ul>
 <hr>
 <h3 id="format">format</h3>
