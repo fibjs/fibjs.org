@@ -63,22 +63,32 @@ function sync_releases() {
 
     function gen_page() {
         info.forEach(r => {
-            var ne_file = false;
+            if (!r.prerelease) {
+                function check(f, u, sz) {
+                    var f1 = path.join(distFolder, r.tag_name, f);
+                    if (fs.exists(f1))
+                        if (sz == -1 || fs.stat(f1).size == sz)
+                            return '../dist/' + r.tag_name + '/' + f;
+                    return u;
+                }
 
-            function check(f, u, sz) {
-                var f1 = path.join(distFolder, r.tag_name, f);
-                if (fs.exists(f1))
-                    if (sz == -1 || fs.stat(f1).size == sz)
-                        return '../dist/' + r.tag_name + '/' + f;
-                return u;
+                r.assets.forEach(f => {
+                    f.browser_download_url = check(f.name, f.browser_download_url, f.size);
+                });
+
+                r.tarball_url = check('src-' + r.tag_name + '.tar.gz', r.tarball_url, -1);
+                r.zipball_url = check('src-' + r.tag_name + '.zip', r.zipball_url, -1);
+
+                var txt = _tmpl({
+                    info: [r]
+                });
+
+                var fname = path.join(baseFolder, r.tag_name + '.html');
+                if (!fs.exists(fname) || txt !== fs.readTextFile(fname)) {
+                    fs.writeTextFile(fname, txt);
+                    console.log(fname, 'updated.');
+                }
             }
-
-            r.assets.forEach(f => {
-                f.browser_download_url = check(f.name, f.browser_download_url, f.size);
-            });
-
-            r.tarball_url = check('src-' + r.tag_name + '.tar.gz', r.tarball_url, -1);
-            r.zipball_url = check('src-' + r.tag_name + '.zip', r.zipball_url, -1);
         });
 
         var txt = _tmpl({
