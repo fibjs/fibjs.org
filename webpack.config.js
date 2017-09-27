@@ -121,6 +121,11 @@ function build_docs() {
                 etitle: 'Object',
                 title: '内置对象',
                 path: "manual/object"
+            },
+            "awesome": {
+                etitle: 'Awesome',
+                title: '社区模块',
+                path: "awesome"
             }
         }
     };

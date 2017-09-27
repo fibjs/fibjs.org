@@ -62,6 +62,22 @@ static util.inherits(Value constructor,
 * superConstructor: Value, 被继承的超类
 
 --------------------------
+### inspect
+**方法返回 obj 的字符串表示，主要用于调试。 附加的 options 可用于改变格式化字符串的某些方面。**
+
+```JavaScript
+static String util.inspect(Object obj,
+    Object options = {});
+```
+
+调用参数:
+* obj: Object, 指定需要处理的对象
+* options: Object, 指定格式控制选项
+
+返回结果:
+* String, 返回格式化后的字符串
+
+--------------------------
 ### isEmpty
 **检测给定的变量是否不包含任何值(没有可枚举的属性)**
 
@@ -489,6 +505,22 @@ static Value util.clone(Value v);
 
 ```JavaScript
 static Value util.extend(Value v,
+    ...objs);
+```
+
+调用参数:
+* v: Value, 指定要扩展的对象
+* objs: ..., 指定一个或者多个用于扩展的对象
+
+返回结果:
+* Value, 返回扩展的结果
+
+--------------------------
+### _extend
+**将一个或者多个对象的键值扩展到指定对象，是 extend 的别名**
+
+```JavaScript
+static Value util._extend(Value v,
     ...objs);
 ```
 

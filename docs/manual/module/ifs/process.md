@@ -314,10 +314,18 @@ static readonly Array process.execArgv;
 
 --------------------------
 ### version
-**String, 返回fibjs版本字符串**
+**String, 返回 fibjs 版本字符串**
 
 ```JavaScript
 static readonly String process.version;
+```
+
+--------------------------
+### versions
+**Object, 返回 fibjs 及组件的版本信息**
+
+```JavaScript
+static readonly Object process.versions;
 ```
 
 --------------------------
@@ -350,5 +358,29 @@ static readonly String process.arch;
 
 ```JavaScript
 static readonly String process.platform;
+```
+
+--------------------------
+### stdin
+**[File](../../object/ifs/File.md), 查询当前进程标准输入对象**
+
+```JavaScript
+static readonly File process.stdin;
+```
+
+--------------------------
+### stdout
+****
+
+```JavaScript
+static readonly File process.stdout;
+```
+
+--------------------------
+### stderr
+**[File](../../object/ifs/File.md), 查询当前进程标准错误输出对象**
+
+```JavaScript
+static readonly File process.stderr;
 ```
 

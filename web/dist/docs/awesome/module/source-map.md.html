@@ -1,0 +1,1063 @@
+<!DOCTYPE html><html><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel=icon type=image/png href=../../../imgs/icon.png><title> Source Map - JavaScript on Fiber</title><link href=../../../css/common.css rel=stylesheet><link href=../../../css/docs.css rel=stylesheet></head><body><div class="navbar navbar-default navbar-static-top" role=navigation><div class=container><div class=navbar-header><button type=button class="navbar-toggle collapsed" data-toggle=collapse data-target=#navbar aria-expanded=false aria-controls=navbar><span class=sr-only>Toggle navigation</span> <span class=icon-bar></span> <span class=icon-bar></span> <span class=icon-bar></span></button> <a class=navbar-brand href=../../../index.html><img src=../../../imgs/logo-dark.png></a></div><div id=navbar class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right"><li><a href=../../../index.html>HOME</a></li><li><a href=../../guide/readme.md.html>GUIDE</a></li><li><a href=../../manual/module/readme.md.html>MODULE</a></li><li><a href=../../manual/object/readme.md.html>OBJECT</a></li><li><a href=../readme.md.html>AWESOME</a></li><li><a href=../../../download/index.html>DOWNLOAD</a></li></ul></div></div></div><div class=band><div class=container><span class=group>Awesome 社区模块</span><div class=search><input type=text class=searchbox placeholder=Search></div></div></div><div class=container><ol class=breadcrumb><li><a href=../../../index.html>首页</a></li><li><a href=../readme.md.html> 社区模块 </a></li><li class=active> Source Map </li></ol></div><div class=page-body><div class=container><div class="sidebar hidden-xs"><div class=panel-group id=accordion role=tablist>  <div class=panel><div class=panel-heading role=tab id=headingOne><h4 class=panel-title><a data-toggle=collapse data-parent=#accordion href="#collapse_guide" aria-controls="collapse_guide"> 开发指南 </a></h4></div><div id="collapse_guide" class="panel-collapse collapse " aria-labelledby=headingOne><div class=panel-body> <ul>
+<li><a href=../../guide/about.md.html>fibjs 是什么？</a></li>
+<li><a href=../../guide/install.md.html>安装运行环境</a></li>
+<li><a href=../../guide/hello.md.html>hello, world</a></li>
+<li><a href=../../guide/test.md.html>美好生活从测试开始</a></li>
+</ul>
+ </div></div></div>  <div class=panel><div class=panel-heading role=tab id=headingOne><h4 class=panel-title><a data-toggle=collapse data-parent=#accordion href="#collapse_module" aria-controls="collapse_module"> 基础模块 </a></h4></div><div id="collapse_module" class="panel-collapse collapse " aria-labelledby=headingOne><div class=panel-body> <ul>
+<li><a href=../../manual/module/ifs/assert.md.html>assert</a></li>
+<li><a href=../../manual/module/ifs/base32.md.html>base32</a></li>
+<li><a href=../../manual/module/ifs/base64.md.html>base64</a></li>
+<li><a href=../../manual/module/ifs/base64vlq.md.html>base64vlq</a></li>
+<li><a href=../../manual/module/ifs/bson.md.html>bson</a></li>
+<li><a href=../../manual/module/ifs/collection.md.html>collection</a></li>
+<li><a href=../../manual/module/ifs/console.md.html>console</a></li>
+<li><a href=../../manual/module/ifs/coroutine.md.html>coroutine</a></li>
+<li><a href=../../manual/module/ifs/crypto.md.html>crypto</a></li>
+<li><a href=../../manual/module/ifs/db.md.html>db</a></li>
+<li><a href=../../manual/module/ifs/encoding.md.html>encoding</a></li>
+<li><a href=../../manual/module/ifs/fs.md.html>fs</a></li>
+<li><a href=../../manual/module/ifs/gd.md.html>gd</a></li>
+<li><a href=../../manual/module/ifs/global.md.html>global</a></li>
+<li><a href=../../manual/module/ifs/gui.md.html>gui</a></li>
+<li><a href=../../manual/module/ifs/hash.md.html>hash</a></li>
+<li><a href=../../manual/module/ifs/hex.md.html>hex</a></li>
+<li><a href=../../manual/module/ifs/http.md.html>http</a></li>
+<li><a href=../../manual/module/ifs/iconv.md.html>iconv</a></li>
+<li><a href=../../manual/module/ifs/io.md.html>io</a></li>
+<li><a href=../../manual/module/ifs/json.md.html>json</a></li>
+<li><a href=../../manual/module/ifs/mq.md.html>mq</a></li>
+<li><a href=../../manual/module/ifs/net.md.html>net</a></li>
+<li><a href=../../manual/module/ifs/os.md.html>os</a></li>
+<li><a href=../../manual/module/ifs/path.md.html>path</a></li>
+<li><a href=../../manual/module/ifs/path_posix.md.html>path_posix</a></li>
+<li><a href=../../manual/module/ifs/path_win32.md.html>path_win32</a></li>
+<li><a href=../../manual/module/ifs/process.md.html>process</a></li>
+<li><a href=../../manual/module/ifs/profiler.md.html>profiler</a></li>
+<li><a href=../../manual/module/ifs/punycode.md.html>punycode</a></li>
+<li><a href=../../manual/module/ifs/querystring.md.html>querystring</a></li>
+<li><a href=../../manual/module/ifs/registry.md.html>registry</a></li>
+<li><a href=../../manual/module/ifs/ssl.md.html>ssl</a></li>
+<li><a href=../../manual/module/ifs/string_decoder.md.html>string_decoder</a></li>
+<li><a href=../../manual/module/ifs/test.md.html>test</a></li>
+<li><a href=../../manual/module/ifs/timers.md.html>timers</a></li>
+<li><a href=../../manual/module/ifs/tty.md.html>tty</a></li>
+<li><a href=../../manual/module/ifs/url.md.html>url</a></li>
+<li><a href=../../manual/module/ifs/util.md.html>util</a></li>
+<li><a href=../../manual/module/ifs/uuid.md.html>uuid</a></li>
+<li><a href=../../manual/module/ifs/vm.md.html>vm</a></li>
+<li><a href=../../manual/module/ifs/ws.md.html>ws</a></li>
+<li><a href=../../manual/module/ifs/xml.md.html>xml</a></li>
+<li><a href=../../manual/module/ifs/zip.md.html>zip</a></li>
+<li><a href=../../manual/module/ifs/zlib.md.html>zlib</a></li>
+<li><a href=../../manual/module/ifs/zmq.md.html>zmq</a></li>
+</ul>
+ </div></div></div>  <div class=panel><div class=panel-heading role=tab id=headingOne><h4 class=panel-title><a data-toggle=collapse data-parent=#accordion href="#collapse_object" aria-controls="collapse_object"> 内置对象 </a></h4></div><div id="collapse_object" class="panel-collapse collapse " aria-labelledby=headingOne><div class=panel-body> <ul>
+<li><a href=../../manual/object/ifs/asyncwait.md.html>AsyncWait</a></li>
+<li><a href=../../manual/object/ifs/blockqueue.md.html>BlockQueue</a></li>
+<li><a href=../../manual/object/ifs/buffer.md.html>Buffer</a></li>
+<li><a href=../../manual/object/ifs/bufferedstream.md.html>BufferedStream</a></li>
+<li><a href=../../manual/object/ifs/chain.md.html>Chain</a></li>
+<li><a href=../../manual/object/ifs/cipher.md.html>Cipher</a></li>
+<li><a href=../../manual/object/ifs/condition.md.html>Condition</a></li>
+<li><a href=../../manual/object/ifs/dbconnection.md.html>DbConnection</a></li>
+<li><a href=../../manual/object/ifs/digest.md.html>Digest</a></li>
+<li><a href=../../manual/object/ifs/event.md.html>Event</a></li>
+<li><a href=../../manual/object/ifs/eventemitter.md.html>EventEmitter</a></li>
+<li><a href=../../manual/object/ifs/eventinfo.md.html>EventInfo</a></li>
+<li><a href=../../manual/object/ifs/fiber.md.html>Fiber</a></li>
+<li><a href=../../manual/object/ifs/file.md.html>File</a></li>
+<li><a href=../../manual/object/ifs/gridfs.md.html>GridFS</a></li>
+<li><a href=../../manual/object/ifs/handler.md.html>Handler</a></li>
+<li><a href=../../manual/object/ifs/handlerex.md.html>HandlerEx</a></li>
+<li><a href=../../manual/object/ifs/heapgraphedge.md.html>HeapGraphEdge</a></li>
+<li><a href=../../manual/object/ifs/heapgraphnode.md.html>HeapGraphNode</a></li>
+<li><a href=../../manual/object/ifs/heapsnapshot.md.html>HeapSnapshot</a></li>
+<li><a href=../../manual/object/ifs/httpclient.md.html>HttpClient</a></li>
+<li><a href=../../manual/object/ifs/httpcollection.md.html>HttpCollection</a></li>
+<li><a href=../../manual/object/ifs/httpcookie.md.html>HttpCookie</a></li>
+<li><a href=../../manual/object/ifs/httphandler.md.html>HttpHandler</a></li>
+<li><a href=../../manual/object/ifs/httpmessage.md.html>HttpMessage</a></li>
+<li><a href=../../manual/object/ifs/httprequest.md.html>HttpRequest</a></li>
+<li><a href=../../manual/object/ifs/httpresponse.md.html>HttpResponse</a></li>
+<li><a href=../../manual/object/ifs/httpserver.md.html>HttpServer</a></li>
+<li><a href=../../manual/object/ifs/httpsserver.md.html>HttpsServer</a></li>
+<li><a href=../../manual/object/ifs/httpuploaddata.md.html>HttpUploadData</a></li>
+<li><a href=../../manual/object/ifs/image.md.html>Image</a></li>
+<li><a href=../../manual/object/ifs/int64.md.html>Int64</a></li>
+<li><a href=../../manual/object/ifs/leveldb.md.html>LevelDB</a></li>
+<li><a href=../../manual/object/ifs/list.md.html>List</a></li>
+<li><a href=../../manual/object/ifs/lock.md.html>Lock</a></li>
+<li><a href=../../manual/object/ifs/lrucache.md.html>LruCache</a></li>
+<li><a href=../../manual/object/ifs/map.md.html>Map</a></li>
+<li><a href=../../manual/object/ifs/memorystream.md.html>MemoryStream</a></li>
+<li><a href=../../manual/object/ifs/message.md.html>Message</a></li>
+<li><a href=../../manual/object/ifs/mongocollection.md.html>MongoCollection</a></li>
+<li><a href=../../manual/object/ifs/mongocursor.md.html>MongoCursor</a></li>
+<li><a href=../../manual/object/ifs/mongodb.md.html>MongoDB</a></li>
+<li><a href=../../manual/object/ifs/mongoid.md.html>MongoID</a></li>
+<li><a href=../../manual/object/ifs/mssql.md.html>MSSQL</a></li>
+<li><a href=../../manual/object/ifs/mysql.md.html>MySQL</a></li>
+<li><a href=../../manual/object/ifs/object.md.html>object</a></li>
+<li><a href=../../manual/object/ifs/pkey.md.html>PKey</a></li>
+<li><a href=../../manual/object/ifs/queue.md.html>Queue</a></li>
+<li><a href=../../manual/object/ifs/redis.md.html>Redis</a></li>
+<li><a href=../../manual/object/ifs/redishash.md.html>RedisHash</a></li>
+<li><a href=../../manual/object/ifs/redislist.md.html>RedisList</a></li>
+<li><a href=../../manual/object/ifs/redisset.md.html>RedisSet</a></li>
+<li><a href=../../manual/object/ifs/redissortedset.md.html>RedisSortedSet</a></li>
+<li><a href=../../manual/object/ifs/routing.md.html>Routing</a></li>
+<li><a href=../../manual/object/ifs/sandbox.md.html>SandBox</a></li>
+<li><a href=../../manual/object/ifs/seekablestream.md.html>SeekableStream</a></li>
+<li><a href=../../manual/object/ifs/semaphore.md.html>Semaphore</a></li>
+<li><a href=../../manual/object/ifs/service.md.html>Service</a></li>
+<li><a href=../../manual/object/ifs/smtp.md.html>Smtp</a></li>
+<li><a href=../../manual/object/ifs/socket.md.html>Socket</a></li>
+<li><a href=../../manual/object/ifs/sqlite.md.html>SQLite</a></li>
+<li><a href=../../manual/object/ifs/sslhandler.md.html>SslHandler</a></li>
+<li><a href=../../manual/object/ifs/sslserver.md.html>SslServer</a></li>
+<li><a href=../../manual/object/ifs/sslsocket.md.html>SslSocket</a></li>
+<li><a href=../../manual/object/ifs/stat.md.html>Stat</a></li>
+<li><a href=../../manual/object/ifs/stats.md.html>Stats</a></li>
+<li><a href=../../manual/object/ifs/stream.md.html>Stream</a></li>
+<li><a href=../../manual/object/ifs/stringdecoder.md.html>StringDecoder</a></li>
+<li><a href=../../manual/object/ifs/subprocess.md.html>SubProcess</a></li>
+<li><a href=../../manual/object/ifs/tcpserver.md.html>TcpServer</a></li>
+<li><a href=../../manual/object/ifs/textcolor.md.html>TextColor</a></li>
+<li><a href=../../manual/object/ifs/timer.md.html>Timer</a></li>
+<li><a href=../../manual/object/ifs/urlobject.md.html>UrlObject</a></li>
+<li><a href=../../manual/object/ifs/websocket.md.html>WebSocket</a></li>
+<li><a href=../../manual/object/ifs/websockethandler.md.html>WebSocketHandler</a></li>
+<li><a href=../../manual/object/ifs/websocketmessage.md.html>WebSocketMessage</a></li>
+<li><a href=../../manual/object/ifs/webview.md.html>WebView</a></li>
+<li><a href=../../manual/object/ifs/worker.md.html>Worker</a></li>
+<li><a href=../../manual/object/ifs/x509cert.md.html>X509Cert</a></li>
+<li><a href=../../manual/object/ifs/x509crl.md.html>X509Crl</a></li>
+<li><a href=../../manual/object/ifs/x509req.md.html>X509Req</a></li>
+<li><a href=../../manual/object/ifs/xmlattr.md.html>XmlAttr</a></li>
+<li><a href=../../manual/object/ifs/xmlcdatasection.md.html>XmlCDATASection</a></li>
+<li><a href=../../manual/object/ifs/xmlcharacterdata.md.html>XmlCharacterData</a></li>
+<li><a href=../../manual/object/ifs/xmlcomment.md.html>XmlComment</a></li>
+<li><a href=../../manual/object/ifs/xmldocument.md.html>XmlDocument</a></li>
+<li><a href=../../manual/object/ifs/xmldocumenttype.md.html>XmlDocumentType</a></li>
+<li><a href=../../manual/object/ifs/xmlelement.md.html>XmlElement</a></li>
+<li><a href=../../manual/object/ifs/xmlnamednodemap.md.html>XmlNamedNodeMap</a></li>
+<li><a href=../../manual/object/ifs/xmlnode.md.html>XmlNode</a></li>
+<li><a href=../../manual/object/ifs/xmlnodelist.md.html>XmlNodeList</a></li>
+<li><a href=../../manual/object/ifs/xmlprocessinginstruction.md.html>XmlProcessingInstruction</a></li>
+<li><a href=../../manual/object/ifs/xmltext.md.html>XmlText</a></li>
+<li><a href=../../manual/object/ifs/zipfile.md.html>ZipFile</a></li>
+<li><a href=../../manual/object/ifs/zipinfo.md.html>ZipInfo</a></li>
+<li><a href=../../manual/object/ifs/zmqsocket.md.html>ZmqSocket</a></li>
+</ul>
+ </div></div></div>  <div class=panel><div class=panel-heading role=tab id=headingOne><h4 class=panel-title><a data-toggle=collapse data-parent=#accordion href="#collapse_awesome" aria-controls="collapse_awesome"> 社区模块 </a></h4></div><div id="collapse_awesome" class="panel-collapse collapse in" aria-labelledby=headingOne><div class=panel-body> <ul>
+<li><a href=fib-session.md.html>fib-session</a></li>
+<li><a href=fib-pool.md.html>fib-pool</a></li>
+<li><a href=fib-orm.md.html>fib-orm</a></li>
+<li><a href=fib-kv.md.html>fib-kv</a></li>
+<li><a href=fib-rpc.md.html>fib-rpc</a></li>
+<li><a href=fib-qr.md.html>fib-qr</a></li>
+<li><a href=ejs.md.html>ejs</a></li>
+<li><a href=juicer.md.html>Juicer</a></li>
+<li><a href=highlight.js.md.html>highlight.js</a></li>
+<li><a href=marked.md.html>marked</a></li>
+<li><a href=debug.md.html>debug</a></li>
+<li><a href=benchmark.js.md.html>benchmark.js</a></li>
+<li><a href=sinon.md.html>sinon</a></li>
+<li><a href=node-mime.md.html>node-mime</a></li>
+<li><a href=validatorjs.md.html>validatorjs</a></li>
+<li><a href=cluster-server.md.html>cluster-server</a></li>
+<li><a href=synaptic.md.html>synaptic</a></li>
+<li class="active"><a href=source-map.md.html>source-map</a></li>
+<li><a href=json-format.md.html>json-format</a></li>
+<li><a href=viz.js.md.html>viz.js</a></li>
+<li><a href=pegjs.md.html>pegjs</a></li>
+<li><a href=uglify-js.md.html>uglify-js</a></li>
+<li><a href=js-beautify.md.html>js-beautify</a></li>
+<li><a href=chalk-animation.md.html>chalk-animation</a></li>
+<li><a href=jsrsasign.md.html>jsrsasign</a></li>
+<li><a href=crypto-js.md.html>crypto-js</a></li>
+<li><a href=ascii-table.md.html>ascii-table</a></li>
+<li><a href=logstream.md.html>logstream</a></li>
+<li><a href=ci.md.html>ci</a></li>
+<li><a href=fs-readdir-recursive.md.html>fs-readdir-recursive</a></li>
+<li><a href=mkdirp.md.html>mkdirp</a></li>
+<li><a href=rmdirr.md.html>rmdirr</a></li>
+<li><a href=detect-port.md.html>detect-port</a></li>
+</ul>
+ </div></div></div>  </div></div><div class=content><div class=social-share data-sites=weibo,twitter data-description=分享></div> <h1 id="Source-Map">Source Map</h1>
+<p><a href="https://travis-ci.org/mozilla/source-map"><img src="https://travis-ci.org/mozilla/source-map.png?branch=master" alt="Build Status"></a></p>
+<p><a href="https://www.npmjs.com/package/source-map"><img src="https://nodei.co/npm/source-map.png?downloads=true&amp;downloadRank=true" alt="NPM"></a></p>
+<p>This is a library to generate and consume the source map format
+<a href="https://docs.google.com/document/d/1U1RGAehQwRypUTovF1KRlpiOFze0b-_2gc6fAH0KY0k/edit">described here</a>.</p>
+<h2 id="Use-with-Node">Use with Node</h2>
+<pre><code><div class="line-numbers">1</div><span class="hljs-meta">$</span><span class="bash"> npm install <span class="hljs-built_in">source</span>-map</span>
+</code></pre><h2 id="Use-on-the-Web">Use on the Web</h2>
+<pre><code><div class="line-numbers">1</div><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://raw.githubusercontent.com/mozilla/source-map/master/dist/source-map.min.js"</span> <span class="hljs-attr">defer</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+</code></pre><hr>
+<!-- `npm run toc` to regenerate the Table of Contents -->
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+<h2 id="Table-of-Contents">Table of Contents</h2>
+<ul>
+<li><a href="#examples">Examples</a><ul>
+<li><a href="#consuming-a-source-map">Consuming a source map</a></li>
+<li><a href="#generating-a-source-map">Generating a source map</a><ul>
+<li><a href="#with-sourcenode-high-level-api">With SourceNode (high level API)</a></li>
+<li><a href="#with-sourcemapgenerator-low-level-api">With SourceMapGenerator (low level API)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#api">API</a><ul>
+<li><a href="#sourcemapconsumer">SourceMapConsumer</a><ul>
+<li><a href="#new-sourcemapconsumerrawsourcemap">new SourceMapConsumer(rawSourceMap)</a></li>
+<li><a href="#sourcemapconsumerprototypecomputecolumnspans">SourceMapConsumer.prototype.computeColumnSpans()</a></li>
+<li><a href="#sourcemapconsumerprototypeoriginalpositionforgeneratedposition">SourceMapConsumer.prototype.originalPositionFor(generatedPosition)</a></li>
+<li><a href="#sourcemapconsumerprototypegeneratedpositionfororiginalposition">SourceMapConsumer.prototype.generatedPositionFor(originalPosition)</a></li>
+<li><a href="#sourcemapconsumerprototypeallgeneratedpositionsfororiginalposition">SourceMapConsumer.prototype.allGeneratedPositionsFor(originalPosition)</a></li>
+<li><a href="#sourcemapconsumerprototypehascontentsofallsources">SourceMapConsumer.prototype.hasContentsOfAllSources()</a></li>
+<li><a href="#sourcemapconsumerprototypesourcecontentforsource-returnnullonmissing">SourceMapConsumer.prototype.sourceContentFor(source[, returnNullOnMissing])</a></li>
+<li><a href="#sourcemapconsumerprototypeeachmappingcallback-context-order">SourceMapConsumer.prototype.eachMapping(callback, context, order)</a></li>
+</ul>
+</li>
+<li><a href="#sourcemapgenerator">SourceMapGenerator</a><ul>
+<li><a href="#new-sourcemapgeneratorstartofsourcemap">new SourceMapGenerator([startOfSourceMap])</a></li>
+<li><a href="#sourcemapgeneratorfromsourcemapsourcemapconsumer">SourceMapGenerator.fromSourceMap(sourceMapConsumer)</a></li>
+<li><a href="#sourcemapgeneratorprototypeaddmappingmapping">SourceMapGenerator.prototype.addMapping(mapping)</a></li>
+<li><a href="#sourcemapgeneratorprototypesetsourcecontentsourcefile-sourcecontent">SourceMapGenerator.prototype.setSourceContent(sourceFile, sourceContent)</a></li>
+<li><a href="#sourcemapgeneratorprototypeapplysourcemapsourcemapconsumer-sourcefile-sourcemappath">SourceMapGenerator.prototype.applySourceMap(sourceMapConsumer[, sourceFile[, sourceMapPath]])</a></li>
+<li><a href="#sourcemapgeneratorprototypetostring">SourceMapGenerator.prototype.toString()</a></li>
+</ul>
+</li>
+<li><a href="#sourcenode">SourceNode</a><ul>
+<li><a href="#new-sourcenodeline-column-source-chunk-name">new SourceNode([line, column, source[, chunk[, name]]])</a></li>
+<li><a href="#sourcenodefromstringwithsourcemapcode-sourcemapconsumer-relativepath">SourceNode.fromStringWithSourceMap(code, sourceMapConsumer[, relativePath])</a></li>
+<li><a href="#sourcenodeprototypeaddchunk">SourceNode.prototype.add(chunk)</a></li>
+<li><a href="#sourcenodeprototypeprependchunk">SourceNode.prototype.prepend(chunk)</a></li>
+<li><a href="#sourcenodeprototypesetsourcecontentsourcefile-sourcecontent">SourceNode.prototype.setSourceContent(sourceFile, sourceContent)</a></li>
+<li><a href="#sourcenodeprototypewalkfn">SourceNode.prototype.walk(fn)</a></li>
+<li><a href="#sourcenodeprototypewalksourcecontentsfn">SourceNode.prototype.walkSourceContents(fn)</a></li>
+<li><a href="#sourcenodeprototypejoinsep">SourceNode.prototype.join(sep)</a></li>
+<li><a href="#sourcenodeprototypereplacerightpattern-replacement">SourceNode.prototype.replaceRight(pattern, replacement)</a></li>
+<li><a href="#sourcenodeprototypetostring">SourceNode.prototype.toString()</a></li>
+<li><a href="#sourcenodeprototypetostringwithsourcemapstartofsourcemap">SourceNode.prototype.toStringWithSourceMap([startOfSourceMap])</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+<h2 id="Examples">Examples</h2>
+<h3 id="Consuming-a-source-map">Consuming a source map</h3>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34</div><span class="hljs-keyword">var</span> rawSourceMap = {
+  <span class="hljs-attr">version</span>: <span class="hljs-number">3</span>,
+  <span class="hljs-attr">file</span>: <span class="hljs-string">'min.js'</span>,
+  <span class="hljs-attr">names</span>: [<span class="hljs-string">'bar'</span>, <span class="hljs-string">'baz'</span>, <span class="hljs-string">'n'</span>],
+  <span class="hljs-attr">sources</span>: [<span class="hljs-string">'one.js'</span>, <span class="hljs-string">'two.js'</span>],
+  <span class="hljs-attr">sourceRoot</span>: <span class="hljs-string">'http://example.com/www/js/'</span>,
+  <span class="hljs-attr">mappings</span>: <span class="hljs-string">'CAAC,IAAI,IAAM,SAAUA,GAClB,OAAOC,IAAID;CCDb,IAAI,IAAM,SAAUE,GAClB,OAAOA'</span>
+};
+
+<span class="hljs-keyword">var</span> smc = <span class="hljs-keyword">new</span> SourceMapConsumer(rawSourceMap);
+
+<span class="hljs-built_in">console</span>.log(smc.sources);
+<span class="hljs-comment">// [ 'http://example.com/www/js/one.js',</span>
+<span class="hljs-comment">//   'http://example.com/www/js/two.js' ]</span>
+
+<span class="hljs-built_in">console</span>.log(smc.originalPositionFor({
+  <span class="hljs-attr">line</span>: <span class="hljs-number">2</span>,
+  <span class="hljs-attr">column</span>: <span class="hljs-number">28</span>
+}));
+<span class="hljs-comment">// { source: 'http://example.com/www/js/two.js',</span>
+<span class="hljs-comment">//   line: 2,</span>
+<span class="hljs-comment">//   column: 10,</span>
+<span class="hljs-comment">//   name: 'n' }</span>
+
+<span class="hljs-built_in">console</span>.log(smc.generatedPositionFor({
+  <span class="hljs-attr">source</span>: <span class="hljs-string">'http://example.com/www/js/two.js'</span>,
+  <span class="hljs-attr">line</span>: <span class="hljs-number">2</span>,
+  <span class="hljs-attr">column</span>: <span class="hljs-number">10</span>
+}));
+<span class="hljs-comment">// { line: 2, column: 28 }</span>
+
+smc.eachMapping(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">m</span>) </span>{
+  <span class="hljs-comment">// ...</span>
+});
+</code></pre>
+<h3 id="Generating-a-source-map">Generating a source map</h3>
+<p>In depth guide:
+<a href="https://hacks.mozilla.org/2013/05/compiling-to-javascript-and-debugging-with-source-maps/"><strong>Compiling to JavaScript, and Debugging with Source Maps</strong></a></p>
+<h4 id="With-SourceNode-(high-level-API)">With SourceNode (high level API)</h4>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28</div><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">compile</span>(<span class="hljs-params">ast</span>) </span>{
+  <span class="hljs-keyword">switch</span> (ast.type) {
+  <span class="hljs-keyword">case</span> <span class="hljs-string">'BinaryExpression'</span>:
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> SourceNode(
+      ast.location.line,
+      ast.location.column,
+      ast.location.source,
+      [compile(ast.left), <span class="hljs-string">" + "</span>, compile(ast.right)]
+    );
+  <span class="hljs-keyword">case</span> <span class="hljs-string">'Literal'</span>:
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> SourceNode(
+      ast.location.line,
+      ast.location.column,
+      ast.location.source,
+      <span class="hljs-built_in">String</span>(ast.value)
+    );
+  <span class="hljs-comment">// ...</span>
+  <span class="hljs-keyword">default</span>:
+    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">"Bad AST"</span>);
+  }
+}
+
+<span class="hljs-keyword">var</span> ast = parse(<span class="hljs-string">"40 + 2"</span>, <span class="hljs-string">"add.js"</span>);
+<span class="hljs-built_in">console</span>.log(compile(ast).toStringWithSourceMap({
+  <span class="hljs-attr">file</span>: <span class="hljs-string">'add.js'</span>
+}));
+<span class="hljs-comment">// { code: '40 + 2',</span>
+<span class="hljs-comment">//   map: [object SourceMapGenerator] }</span>
+</code></pre>
+<h4 id="With-SourceMapGenerator-(low-level-API)">With SourceMapGenerator (low level API)</h4>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19</div><span class="hljs-keyword">var</span> map = <span class="hljs-keyword">new</span> SourceMapGenerator({
+  <span class="hljs-attr">file</span>: <span class="hljs-string">"source-mapped.js"</span>
+});
+
+map.addMapping({
+  <span class="hljs-attr">generated</span>: {
+    <span class="hljs-attr">line</span>: <span class="hljs-number">10</span>,
+    <span class="hljs-attr">column</span>: <span class="hljs-number">35</span>
+  },
+  <span class="hljs-attr">source</span>: <span class="hljs-string">"foo.js"</span>,
+  <span class="hljs-attr">original</span>: {
+    <span class="hljs-attr">line</span>: <span class="hljs-number">33</span>,
+    <span class="hljs-attr">column</span>: <span class="hljs-number">2</span>
+  },
+  <span class="hljs-attr">name</span>: <span class="hljs-string">"christopher"</span>
+});
+
+<span class="hljs-built_in">console</span>.log(map.toString());
+<span class="hljs-comment">// '{"version":3,"file":"source-mapped.js","sources":["foo.js"],"names":["christopher"],"mappings":";;;;;;;;;mCAgCEA"}'</span>
+</code></pre>
+<h2 id="API">API</h2>
+<p>Get a reference to the module:</p>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8</div><span class="hljs-comment">// Node.js</span>
+<span class="hljs-keyword">var</span> sourceMap = <span class="hljs-built_in">require</span>(<span class="hljs-string">'source-map'</span>);
+
+<span class="hljs-comment">// Browser builds</span>
+<span class="hljs-keyword">var</span> sourceMap = <span class="hljs-built_in">window</span>.sourceMap;
+
+<span class="hljs-comment">// Inside Firefox</span>
+<span class="hljs-keyword">const</span> sourceMap = <span class="hljs-built_in">require</span>(<span class="hljs-string">"devtools/toolkit/sourcemap/source-map.js"</span>);
+</code></pre>
+<h3 id="SourceMapConsumer">SourceMapConsumer</h3>
+<p>A SourceMapConsumer instance represents a parsed source map which we can query
+for information about the original file positions by giving it a file position
+in the generated source.</p>
+<h4 id="new-SourceMapConsumer(rawSourceMap)">new SourceMapConsumer(rawSourceMap)</h4>
+<p>The only parameter is the raw source map (either as a string which can be
+<code>JSON.parse</code>&#39;d, or an object). According to the spec, source maps have the
+following attributes:</p>
+<ul>
+<li><p><code>version</code>: Which version of the source map spec this map is following.</p>
+</li>
+<li><p><code>sources</code>: An array of URLs to the original source files.</p>
+</li>
+<li><p><code>names</code>: An array of identifiers which can be referenced by individual
+mappings.</p>
+</li>
+<li><p><code>sourceRoot</code>: Optional. The URL root from which all sources are relative.</p>
+</li>
+<li><p><code>sourcesContent</code>: Optional. An array of contents of the original source files.</p>
+</li>
+<li><p><code>mappings</code>: A string of base64 VLQs which contain the actual mappings.</p>
+</li>
+<li><p><code>file</code>: Optional. The generated filename this source map is associated with.</p>
+</li>
+</ul>
+<pre><code class="lang-js"><div class="line-numbers">1</div><span class="hljs-keyword">var</span> consumer = <span class="hljs-keyword">new</span> sourceMap.SourceMapConsumer(rawSourceMapJsonData);
+</code></pre>
+<h4 id="SourceMapConsumer.prototype.computeColumnSpans()">SourceMapConsumer.prototype.computeColumnSpans()</h4>
+<p>Compute the last column for each generated mapping. The last column is
+inclusive.</p>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22</div><span class="hljs-comment">// Before:</span>
+consumer.allGeneratedPositionsFor({ <span class="hljs-attr">line</span>: <span class="hljs-number">2</span>, <span class="hljs-attr">source</span>: <span class="hljs-string">"foo.coffee"</span> })
+<span class="hljs-comment">// [ { line: 2,</span>
+<span class="hljs-comment">//     column: 1 },</span>
+<span class="hljs-comment">//   { line: 2,</span>
+<span class="hljs-comment">//     column: 10 },</span>
+<span class="hljs-comment">//   { line: 2,</span>
+<span class="hljs-comment">//     column: 20 } ]</span>
+
+consumer.computeColumnSpans();
+
+<span class="hljs-comment">// After:</span>
+consumer.allGeneratedPositionsFor({ <span class="hljs-attr">line</span>: <span class="hljs-number">2</span>, <span class="hljs-attr">source</span>: <span class="hljs-string">"foo.coffee"</span> })
+<span class="hljs-comment">// [ { line: 2,</span>
+<span class="hljs-comment">//     column: 1,</span>
+<span class="hljs-comment">//     lastColumn: 9 },</span>
+<span class="hljs-comment">//   { line: 2,</span>
+<span class="hljs-comment">//     column: 10,</span>
+<span class="hljs-comment">//     lastColumn: 19 },</span>
+<span class="hljs-comment">//   { line: 2,</span>
+<span class="hljs-comment">//     column: 20,</span>
+<span class="hljs-comment">//     lastColumn: Infinity } ]</span>
+</code></pre>
+<h4 id="SourceMapConsumer.prototype.originalPositionFor(generatedPosition)">SourceMapConsumer.prototype.originalPositionFor(generatedPosition)</h4>
+<p>Returns the original source, line, and column information for the generated
+source&#39;s line and column positions provided. The only argument is an object with
+the following properties:</p>
+<ul>
+<li><p><code>line</code>: The line number in the generated source.  Line numbers in
+this library are 1-based (note that the underlying source map
+specification uses 0-based line numbers -- this library handles the
+translation).</p>
+</li>
+<li><p><code>column</code>: The column number in the generated source.  Column numbers
+in this library are 0-based.</p>
+</li>
+<li><p><code>bias</code>: Either <code>SourceMapConsumer.GREATEST_LOWER_BOUND</code> or
+<code>SourceMapConsumer.LEAST_UPPER_BOUND</code>. Specifies whether to return the closest
+element that is smaller than or greater than the one we are searching for,
+respectively, if the exact element cannot be found.  Defaults to
+<code>SourceMapConsumer.GREATEST_LOWER_BOUND</code>.</p>
+</li>
+</ul>
+<p>and an object is returned with the following properties:</p>
+<ul>
+<li><p><code>source</code>: The original source file, or null if this information is not
+available.</p>
+</li>
+<li><p><code>line</code>: The line number in the original source, or null if this information is
+not available.  The line number is 1-based.</p>
+</li>
+<li><p><code>column</code>: The column number in the original source, or null if this
+information is not available.  The column number is 0-based.</p>
+</li>
+<li><p><code>name</code>: The original identifier, or null if this information is not available.</p>
+</li>
+</ul>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11</div>consumer.originalPositionFor({ <span class="hljs-attr">line</span>: <span class="hljs-number">2</span>, <span class="hljs-attr">column</span>: <span class="hljs-number">10</span> })
+<span class="hljs-comment">// { source: 'foo.coffee',</span>
+<span class="hljs-comment">//   line: 2,</span>
+<span class="hljs-comment">//   column: 2,</span>
+<span class="hljs-comment">//   name: null }</span>
+
+consumer.originalPositionFor({ <span class="hljs-attr">line</span>: <span class="hljs-number">99999999999999999</span>, <span class="hljs-attr">column</span>: <span class="hljs-number">999999999999999</span> })
+<span class="hljs-comment">// { source: null,</span>
+<span class="hljs-comment">//   line: null,</span>
+<span class="hljs-comment">//   column: null,</span>
+<span class="hljs-comment">//   name: null }</span>
+</code></pre>
+<h4 id="SourceMapConsumer.prototype.generatedPositionFor(originalPosition)">SourceMapConsumer.prototype.generatedPositionFor(originalPosition)</h4>
+<p>Returns the generated line and column information for the original source,
+line, and column positions provided. The only argument is an object with
+the following properties:</p>
+<ul>
+<li><p><code>source</code>: The filename of the original source.</p>
+</li>
+<li><p><code>line</code>: The line number in the original source.  The line number is
+1-based.</p>
+</li>
+<li><p><code>column</code>: The column number in the original source.  The column
+number is 0-based.</p>
+</li>
+</ul>
+<p>and an object is returned with the following properties:</p>
+<ul>
+<li><p><code>line</code>: The line number in the generated source, or null.  The line
+number is 1-based.</p>
+</li>
+<li><p><code>column</code>: The column number in the generated source, or null.  The
+column number is 0-based.</p>
+</li>
+</ul>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3</div>consumer.generatedPositionFor({ <span class="hljs-attr">source</span>: <span class="hljs-string">"example.js"</span>, <span class="hljs-attr">line</span>: <span class="hljs-number">2</span>, <span class="hljs-attr">column</span>: <span class="hljs-number">10</span> })
+<span class="hljs-comment">// { line: 1,</span>
+<span class="hljs-comment">//   column: 56 }</span>
+</code></pre>
+<h4 id="SourceMapConsumer.prototype.allGeneratedPositionsFor(originalPosition)">SourceMapConsumer.prototype.allGeneratedPositionsFor(originalPosition)</h4>
+<p>Returns all generated line and column information for the original source, line,
+and column provided. If no column is provided, returns all mappings
+corresponding to a either the line we are searching for or the next closest line
+that has any mappings. Otherwise, returns all mappings corresponding to the
+given line and either the column we are searching for or the next closest column
+that has any offsets.</p>
+<p>The only argument is an object with the following properties:</p>
+<ul>
+<li><p><code>source</code>: The filename of the original source.</p>
+</li>
+<li><p><code>line</code>: The line number in the original source.  The line number is
+1-based.</p>
+</li>
+<li><p><code>column</code>: Optional. The column number in the original source.  The
+column number is 0-based.</p>
+</li>
+</ul>
+<p>and an array of objects is returned, each with the following properties:</p>
+<ul>
+<li><p><code>line</code>: The line number in the generated source, or null.  The line
+number is 1-based.</p>
+</li>
+<li><p><code>column</code>: The column number in the generated source, or null.  The
+column number is 0-based.</p>
+</li>
+</ul>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7</div>consumer.allGeneratedpositionsfor({ <span class="hljs-attr">line</span>: <span class="hljs-number">2</span>, <span class="hljs-attr">source</span>: <span class="hljs-string">"foo.coffee"</span> })
+<span class="hljs-comment">// [ { line: 2,</span>
+<span class="hljs-comment">//     column: 1 },</span>
+<span class="hljs-comment">//   { line: 2,</span>
+<span class="hljs-comment">//     column: 10 },</span>
+<span class="hljs-comment">//   { line: 2,</span>
+<span class="hljs-comment">//     column: 20 } ]</span>
+</code></pre>
+<h4 id="SourceMapConsumer.prototype.hasContentsOfAllSources()">SourceMapConsumer.prototype.hasContentsOfAllSources()</h4>
+<p>Return true if we have the embedded source content for every source listed in
+the source map, false otherwise.</p>
+<p>In other words, if this method returns <code>true</code>, then
+<code>consumer.sourceContentFor(s)</code> will succeed for every source <code>s</code> in
+<code>consumer.sources</code>.</p>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7</div><span class="hljs-comment">// ...</span>
+<span class="hljs-keyword">if</span> (consumer.hasContentsOfAllSources()) {
+  consumerReadyCallback(consumer);
+} <span class="hljs-keyword">else</span> {
+  fetchSources(consumer, consumerReadyCallback);
+}
+<span class="hljs-comment">// ...</span>
+</code></pre>
+<h4 id="SourceMapConsumer.prototype.sourceContentFor(source[,-returnNullOnMissing])">SourceMapConsumer.prototype.sourceContentFor(source[, returnNullOnMissing])</h4>
+<p>Returns the original source content for the source provided. The only
+argument is the URL of the original source file.</p>
+<p>If the source content for the given source is not found, then an error is
+thrown. Optionally, pass <code>true</code> as the second param to have <code>null</code> returned
+instead.</p>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11</div>consumer.sources
+<span class="hljs-comment">// [ "my-cool-lib.clj" ]</span>
+
+consumer.sourceContentFor(<span class="hljs-string">"my-cool-lib.clj"</span>)
+<span class="hljs-comment">// "..."</span>
+
+consumer.sourceContentFor(<span class="hljs-string">"this is not in the source map"</span>);
+<span class="hljs-comment">// Error: "this is not in the source map" is not in the source map</span>
+
+consumer.sourceContentFor(<span class="hljs-string">"this is not in the source map"</span>, <span class="hljs-literal">true</span>);
+<span class="hljs-comment">// null</span>
+</code></pre>
+<h4 id="SourceMapConsumer.prototype.eachMapping(callback,-context,-order)">SourceMapConsumer.prototype.eachMapping(callback, context, order)</h4>
+<p>Iterate over each mapping between an original source/line/column and a
+generated line/column in this source map.</p>
+<ul>
+<li><p><code>callback</code>: The function that is called with each mapping. Mappings have the
+form <code>{ source, generatedLine, generatedColumn, originalLine, originalColumn,
+name }</code></p>
+</li>
+<li><p><code>context</code>: Optional. If specified, this object will be the value of <code>this</code>
+every time that <code>callback</code> is called.</p>
+</li>
+<li><p><code>order</code>: Either <code>SourceMapConsumer.GENERATED_ORDER</code> or
+<code>SourceMapConsumer.ORIGINAL_ORDER</code>. Specifies whether you want to iterate over
+the mappings sorted by the generated file&#39;s line/column order or the
+original&#39;s source/line/column order, respectively. Defaults to
+<code>SourceMapConsumer.GENERATED_ORDER</code>.</p>
+</li>
+</ul>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15</div>consumer.eachMapping(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">m</span>) </span>{ <span class="hljs-built_in">console</span>.log(m); })
+<span class="hljs-comment">// ...</span>
+<span class="hljs-comment">// { source: 'illmatic.js',</span>
+<span class="hljs-comment">//   generatedLine: 1,</span>
+<span class="hljs-comment">//   generatedColumn: 0,</span>
+<span class="hljs-comment">//   originalLine: 1,</span>
+<span class="hljs-comment">//   originalColumn: 0,</span>
+<span class="hljs-comment">//   name: null }</span>
+<span class="hljs-comment">// { source: 'illmatic.js',</span>
+<span class="hljs-comment">//   generatedLine: 2,</span>
+<span class="hljs-comment">//   generatedColumn: 0,</span>
+<span class="hljs-comment">//   originalLine: 2,</span>
+<span class="hljs-comment">//   originalColumn: 0,</span>
+<span class="hljs-comment">//   name: null }</span>
+<span class="hljs-comment">// ...</span>
+</code></pre>
+<h3 id="SourceMapGenerator">SourceMapGenerator</h3>
+<p>An instance of the SourceMapGenerator represents a source map which is being
+built incrementally.</p>
+<h4 id="new-SourceMapGenerator([startOfSourceMap])">new SourceMapGenerator([startOfSourceMap])</h4>
+<p>You may pass an object with the following properties:</p>
+<ul>
+<li><p><code>file</code>: The filename of the generated source that this source map is
+associated with.</p>
+</li>
+<li><p><code>sourceRoot</code>: A root for all relative URLs in this source map.</p>
+</li>
+<li><p><code>skipValidation</code>: Optional. When <code>true</code>, disables validation of mappings as
+they are added. This can improve performance but should be used with
+discretion, as a last resort. Even then, one should avoid using this flag when
+running tests, if possible.</p>
+</li>
+</ul>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3
+4</div><span class="hljs-keyword">var</span> generator = <span class="hljs-keyword">new</span> sourceMap.SourceMapGenerator({
+  <span class="hljs-attr">file</span>: <span class="hljs-string">"my-generated-javascript-file.js"</span>,
+  <span class="hljs-attr">sourceRoot</span>: <span class="hljs-string">"http://example.com/app/js/"</span>
+});
+</code></pre>
+<h4 id="SourceMapGenerator.fromSourceMap(sourceMapConsumer)">SourceMapGenerator.fromSourceMap(sourceMapConsumer)</h4>
+<p>Creates a new <code>SourceMapGenerator</code> from an existing <code>SourceMapConsumer</code> instance.</p>
+<ul>
+<li><code>sourceMapConsumer</code> The SourceMap.</li>
+</ul>
+<pre><code class="lang-js"><div class="line-numbers">1</div><span class="hljs-keyword">var</span> generator = sourceMap.SourceMapGenerator.fromSourceMap(consumer);
+</code></pre>
+<h4 id="SourceMapGenerator.prototype.addMapping(mapping)">SourceMapGenerator.prototype.addMapping(mapping)</h4>
+<p>Add a single mapping from original source line and column to the generated
+source&#39;s line and column for this source map being created. The mapping object
+should have the following properties:</p>
+<ul>
+<li><p><code>generated</code>: An object with the generated line and column positions.</p>
+</li>
+<li><p><code>original</code>: An object with the original line and column positions.</p>
+</li>
+<li><p><code>source</code>: The original source file (relative to the sourceRoot).</p>
+</li>
+<li><p><code>name</code>: An optional original token name for this mapping.</p>
+</li>
+</ul>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3
+4
+5</div>generator.addMapping({
+  <span class="hljs-attr">source</span>: <span class="hljs-string">"module-one.scm"</span>,
+  <span class="hljs-attr">original</span>: { <span class="hljs-attr">line</span>: <span class="hljs-number">128</span>, <span class="hljs-attr">column</span>: <span class="hljs-number">0</span> },
+  <span class="hljs-attr">generated</span>: { <span class="hljs-attr">line</span>: <span class="hljs-number">3</span>, <span class="hljs-attr">column</span>: <span class="hljs-number">456</span> }
+})
+</code></pre>
+<h4 id="SourceMapGenerator.prototype.setSourceContent(sourceFile,-sourceContent)">SourceMapGenerator.prototype.setSourceContent(sourceFile, sourceContent)</h4>
+<p>Set the source content for an original source file.</p>
+<ul>
+<li><p><code>sourceFile</code> the URL of the original source file.</p>
+</li>
+<li><p><code>sourceContent</code> the content of the source file.</p>
+</li>
+</ul>
+<pre><code class="lang-js"><div class="line-numbers">1
+2</div>generator.setSourceContent(<span class="hljs-string">"module-one.scm"</span>,
+                           fs.readFileSync(<span class="hljs-string">"path/to/module-one.scm"</span>))
+</code></pre>
+<h4 id="SourceMapGenerator.prototype.applySourceMap(sourceMapConsumer[,-sourceFile[,-sourceMapPath]])">SourceMapGenerator.prototype.applySourceMap(sourceMapConsumer[, sourceFile[, sourceMapPath]])</h4>
+<p>Applies a SourceMap for a source file to the SourceMap.
+Each mapping to the supplied source file is rewritten using the
+supplied SourceMap. Note: The resolution for the resulting mappings
+is the minimum of this map and the supplied map.</p>
+<ul>
+<li><p><code>sourceMapConsumer</code>: The SourceMap to be applied.</p>
+</li>
+<li><p><code>sourceFile</code>: Optional. The filename of the source file.
+If omitted, sourceMapConsumer.file will be used, if it exists.
+Otherwise an error will be thrown.</p>
+</li>
+<li><p><code>sourceMapPath</code>: Optional. The dirname of the path to the SourceMap
+to be applied. If relative, it is relative to the SourceMap.</p>
+<p>This parameter is needed when the two SourceMaps aren&#39;t in the same
+directory, and the SourceMap to be applied contains relative source
+paths. If so, those relative source paths need to be rewritten
+relative to the SourceMap.</p>
+<p>If omitted, it is assumed that both SourceMaps are in the same directory,
+thus not needing any rewriting. (Supplying <code>&#39;.&#39;</code> has the same effect.)</p>
+</li>
+</ul>
+<h4 id="SourceMapGenerator.prototype.toString()">SourceMapGenerator.prototype.toString()</h4>
+<p>Renders the source map being generated to a string.</p>
+<pre><code class="lang-js"><div class="line-numbers">1
+2</div>generator.toString()
+<span class="hljs-comment">// '{"version":3,"sources":["module-one.scm"],"names":[],"mappings":"...snip...","file":"my-generated-javascript-file.js","sourceRoot":"http://example.com/app/js/"}'</span>
+</code></pre>
+<h3 id="SourceNode">SourceNode</h3>
+<p>SourceNodes provide a way to abstract over interpolating and/or concatenating
+snippets of generated JavaScript source code, while maintaining the line and
+column information associated between those snippets and the original source
+code. This is useful as the final intermediate representation a compiler might
+use before outputting the generated JS and source map.</p>
+<h4 id="new-SourceNode([line,-column,-source[,-chunk[,-name]]])">new SourceNode([line, column, source[, chunk[, name]]])</h4>
+<ul>
+<li><p><code>line</code>: The original line number associated with this source node, or null if
+it isn&#39;t associated with an original line.  The line number is 1-based.</p>
+</li>
+<li><p><code>column</code>: The original column number associated with this source node, or null
+if it isn&#39;t associated with an original column.  The column number
+is 0-based.</p>
+</li>
+<li><p><code>source</code>: The original source&#39;s filename; null if no filename is provided.</p>
+</li>
+<li><p><code>chunk</code>: Optional. Is immediately passed to <code>SourceNode.prototype.add</code>, see
+below.</p>
+</li>
+<li><p><code>name</code>: Optional. The original identifier.</p>
+</li>
+</ul>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3
+4
+5</div><span class="hljs-keyword">var</span> node = <span class="hljs-keyword">new</span> SourceNode(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-string">"a.cpp"</span>, [
+  <span class="hljs-keyword">new</span> SourceNode(<span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-string">"b.cpp"</span>, <span class="hljs-string">"extern int status;\n"</span>),
+  <span class="hljs-keyword">new</span> SourceNode(<span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-string">"c.cpp"</span>, <span class="hljs-string">"std::string* make_string(size_t n);\n"</span>),
+  <span class="hljs-keyword">new</span> SourceNode(<span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-string">"d.cpp"</span>, <span class="hljs-string">"int main(int argc, char** argv) {}\n"</span>),
+]);
+</code></pre>
+<h4 id="SourceNode.fromStringWithSourceMap(code,-sourceMapConsumer[,-relativePath])">SourceNode.fromStringWithSourceMap(code, sourceMapConsumer[, relativePath])</h4>
+<p>Creates a SourceNode from generated code and a SourceMapConsumer.</p>
+<ul>
+<li><p><code>code</code>: The generated code</p>
+</li>
+<li><p><code>sourceMapConsumer</code> The SourceMap for the generated code</p>
+</li>
+<li><p><code>relativePath</code> The optional path that relative sources in <code>sourceMapConsumer</code>
+should be relative to.</p>
+</li>
+</ul>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">var</span> consumer = <span class="hljs-keyword">new</span> SourceMapConsumer(fs.readFileSync(<span class="hljs-string">"path/to/my-file.js.map"</span>, <span class="hljs-string">"utf8"</span>));
+<span class="hljs-keyword">var</span> node = SourceNode.fromStringWithSourceMap(fs.readFileSync(<span class="hljs-string">"path/to/my-file.js"</span>),
+                                              consumer);
+</code></pre>
+<h4 id="SourceNode.prototype.add(chunk)">SourceNode.prototype.add(chunk)</h4>
+<p>Add a chunk of generated JS to this source node.</p>
+<ul>
+<li><code>chunk</code>: A string snippet of generated JS code, another instance of
+ <code>SourceNode</code>, or an array where each member is one of those things.</li>
+</ul>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3</div>node.add(<span class="hljs-string">" + "</span>);
+node.add(otherNode);
+node.add([leftHandOperandNode, <span class="hljs-string">" + "</span>, rightHandOperandNode]);
+</code></pre>
+<h4 id="SourceNode.prototype.prepend(chunk)">SourceNode.prototype.prepend(chunk)</h4>
+<p>Prepend a chunk of generated JS to this source node.</p>
+<ul>
+<li><code>chunk</code>: A string snippet of generated JS code, another instance of
+ <code>SourceNode</code>, or an array where each member is one of those things.</li>
+</ul>
+<pre><code class="lang-js"><div class="line-numbers">1</div>node.prepend(<span class="hljs-string">"/** Build Id: f783haef86324gf **/\n\n"</span>);
+</code></pre>
+<h4 id="SourceNode.prototype.setSourceContent(sourceFile,-sourceContent)">SourceNode.prototype.setSourceContent(sourceFile, sourceContent)</h4>
+<p>Set the source content for a source file. This will be added to the
+<code>SourceMap</code> in the <code>sourcesContent</code> field.</p>
+<ul>
+<li><p><code>sourceFile</code>: The filename of the source file</p>
+</li>
+<li><p><code>sourceContent</code>: The content of the source file</p>
+</li>
+</ul>
+<pre><code class="lang-js"><div class="line-numbers">1
+2</div>node.setSourceContent(<span class="hljs-string">"module-one.scm"</span>,
+                      fs.readFileSync(<span class="hljs-string">"path/to/module-one.scm"</span>))
+</code></pre>
+<h4 id="SourceNode.prototype.walk(fn)">SourceNode.prototype.walk(fn)</h4>
+<p>Walk over the tree of JS snippets in this node and its children. The walking
+function is called once for each snippet of JS and is passed that snippet and
+the its original associated source&#39;s line/column location.</p>
+<ul>
+<li><code>fn</code>: The traversal function.</li>
+</ul>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14</div><span class="hljs-keyword">var</span> node = <span class="hljs-keyword">new</span> SourceNode(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-string">"a.js"</span>, [
+  <span class="hljs-keyword">new</span> SourceNode(<span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-string">"b.js"</span>, <span class="hljs-string">"uno"</span>),
+  <span class="hljs-string">"dos"</span>,
+  [
+    <span class="hljs-string">"tres"</span>,
+    <span class="hljs-keyword">new</span> SourceNode(<span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-string">"c.js"</span>, <span class="hljs-string">"quatro"</span>)
+  ]
+]);
+
+node.walk(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">code, loc</span>) </span>{ <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"WALK:"</span>, code, loc); })
+<span class="hljs-comment">// WALK: uno { source: 'b.js', line: 3, column: 4, name: null }</span>
+<span class="hljs-comment">// WALK: dos { source: 'a.js', line: 1, column: 2, name: null }</span>
+<span class="hljs-comment">// WALK: tres { source: 'a.js', line: 1, column: 2, name: null }</span>
+<span class="hljs-comment">// WALK: quatro { source: 'c.js', line: 5, column: 6, name: null }</span>
+</code></pre>
+<h4 id="SourceNode.prototype.walkSourceContents(fn)">SourceNode.prototype.walkSourceContents(fn)</h4>
+<p>Walk over the tree of SourceNodes. The walking function is called for each
+source file content and is passed the filename and source content.</p>
+<ul>
+<li><code>fn</code>: The traversal function.</li>
+</ul>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12</div><span class="hljs-keyword">var</span> a = <span class="hljs-keyword">new</span> SourceNode(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-string">"a.js"</span>, <span class="hljs-string">"generated from a"</span>);
+a.setSourceContent(<span class="hljs-string">"a.js"</span>, <span class="hljs-string">"original a"</span>);
+<span class="hljs-keyword">var</span> b = <span class="hljs-keyword">new</span> SourceNode(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-string">"b.js"</span>, <span class="hljs-string">"generated from b"</span>);
+b.setSourceContent(<span class="hljs-string">"b.js"</span>, <span class="hljs-string">"original b"</span>);
+<span class="hljs-keyword">var</span> c = <span class="hljs-keyword">new</span> SourceNode(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-string">"c.js"</span>, <span class="hljs-string">"generated from c"</span>);
+c.setSourceContent(<span class="hljs-string">"c.js"</span>, <span class="hljs-string">"original c"</span>);
+
+<span class="hljs-keyword">var</span> node = <span class="hljs-keyword">new</span> SourceNode(<span class="hljs-literal">null</span>, <span class="hljs-literal">null</span>, <span class="hljs-literal">null</span>, [a, b, c]);
+node.walkSourceContents(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">source, contents</span>) </span>{ <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"WALK:"</span>, source, <span class="hljs-string">":"</span>, contents); })
+<span class="hljs-comment">// WALK: a.js : original a</span>
+<span class="hljs-comment">// WALK: b.js : original b</span>
+<span class="hljs-comment">// WALK: c.js : original c</span>
+</code></pre>
+<h4 id="SourceNode.prototype.join(sep)">SourceNode.prototype.join(sep)</h4>
+<p>Like <code>Array.prototype.join</code> except for SourceNodes. Inserts the separator
+between each of this source node&#39;s children.</p>
+<ul>
+<li><code>sep</code>: The separator.</li>
+</ul>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3
+4
+5
+6</div><span class="hljs-keyword">var</span> lhs = <span class="hljs-keyword">new</span> SourceNode(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-string">"a.rs"</span>, <span class="hljs-string">"my_copy"</span>);
+<span class="hljs-keyword">var</span> operand = <span class="hljs-keyword">new</span> SourceNode(<span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-string">"a.rs"</span>, <span class="hljs-string">"="</span>);
+<span class="hljs-keyword">var</span> rhs = <span class="hljs-keyword">new</span> SourceNode(<span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-string">"a.rs"</span>, <span class="hljs-string">"orig.clone()"</span>);
+
+<span class="hljs-keyword">var</span> node = <span class="hljs-keyword">new</span> SourceNode(<span class="hljs-literal">null</span>, <span class="hljs-literal">null</span>, <span class="hljs-literal">null</span>, [ lhs, operand, rhs ]);
+<span class="hljs-keyword">var</span> joinedNode = node.join(<span class="hljs-string">" "</span>);
+</code></pre>
+<h4 id="SourceNode.prototype.replaceRight(pattern,-replacement)">SourceNode.prototype.replaceRight(pattern, replacement)</h4>
+<p>Call <code>String.prototype.replace</code> on the very right-most source snippet. Useful
+for trimming white space from the end of a source node, etc.</p>
+<ul>
+<li><p><code>pattern</code>: The pattern to replace.</p>
+</li>
+<li><p><code>replacement</code>: The thing to replace the pattern with.</p>
+</li>
+</ul>
+<pre><code class="lang-js"><div class="line-numbers">1
+2</div><span class="hljs-comment">// Trim trailing white space.</span>
+node.replaceRight(<span class="hljs-regexp">/\s*$/</span>, <span class="hljs-string">""</span>);
+</code></pre>
+<h4 id="SourceNode.prototype.toString()">SourceNode.prototype.toString()</h4>
+<p>Return the string representation of this source node. Walks over the tree and
+concatenates all the various snippets together to one string.</p>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11</div><span class="hljs-keyword">var</span> node = <span class="hljs-keyword">new</span> SourceNode(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-string">"a.js"</span>, [
+  <span class="hljs-keyword">new</span> SourceNode(<span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-string">"b.js"</span>, <span class="hljs-string">"uno"</span>),
+  <span class="hljs-string">"dos"</span>,
+  [
+    <span class="hljs-string">"tres"</span>,
+    <span class="hljs-keyword">new</span> SourceNode(<span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-string">"c.js"</span>, <span class="hljs-string">"quatro"</span>)
+  ]
+]);
+
+node.toString()
+<span class="hljs-comment">// 'unodostresquatro'</span>
+</code></pre>
+<h4 id="SourceNode.prototype.toStringWithSourceMap([startOfSourceMap])">SourceNode.prototype.toStringWithSourceMap([startOfSourceMap])</h4>
+<p>Returns the string representation of this tree of source nodes, plus a
+SourceMapGenerator which contains all the mappings between the generated and
+original sources.</p>
+<p>The arguments are the same as those to <code>new SourceMapGenerator</code>.</p>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12</div><span class="hljs-keyword">var</span> node = <span class="hljs-keyword">new</span> SourceNode(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-string">"a.js"</span>, [
+  <span class="hljs-keyword">new</span> SourceNode(<span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-string">"b.js"</span>, <span class="hljs-string">"uno"</span>),
+  <span class="hljs-string">"dos"</span>,
+  [
+    <span class="hljs-string">"tres"</span>,
+    <span class="hljs-keyword">new</span> SourceNode(<span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-string">"c.js"</span>, <span class="hljs-string">"quatro"</span>)
+  ]
+]);
+
+node.toStringWithSourceMap({ <span class="hljs-attr">file</span>: <span class="hljs-string">"my-output-file.js"</span> })
+<span class="hljs-comment">// { code: 'unodostresquatro',</span>
+<span class="hljs-comment">//   map: [object SourceMapGenerator] }</span>
+</code></pre>
+ </div><div class="sidebar hidden-sm hidden-xs"><div id=toc></div></div></div></div><div class=footer><div class=container>&copy; Copright 2017 fibjs.org | <a href=../../../support.html>支持我们</a></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="Click to return on the top page" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js></script><script type=text/javascript src=../../../js/common.js></script><script type=text/javascript src=../../../js/docs.js></script></body></html>

@@ -21,7 +21,7 @@ digraph {
     object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\l}"];
     Handler [tooltip="Handler", URL="Handler.md", label="{Handler|new Handler()\l|invoke()\l}"];
     HandlerEx [tooltip="HandlerEx", URL="HandlerEx.md", label="{HandlerEx|handler\lstats\l|onerror()\l}"];
-    HttpHandler [tooltip="HttpHandler", fillcolor="lightgray", label="{HttpHandler|new HttpHandler()\l|crossDomain\lforceGZIP\lmaxHeadersCount\lmaxBodySize\lserverName\l}"];
+    HttpHandler [tooltip="HttpHandler", fillcolor="lightgray", label="{HttpHandler|new HttpHandler()\l|forceGZIP\lmaxHeadersCount\lmaxBodySize\lserverName\l|enableCrossOrigin()\l}"];
 
     object -> Handler [dir=back];
     Handler -> HandlerEx [dir=back];
@@ -43,14 +43,6 @@ new HttpHandler(Handler hdlr);
 
 ## 成员属性
         
-### crossDomain
-**Boolean, 查询和设置是否允许跨域请求，缺省为 false**
-
-```JavaScript
-Boolean HttpHandler.crossDomain;
-```
-
---------------------------
 ### forceGZIP
 **Boolean, 查询和设置是否允强制使用 gzip 压缩输出，缺省为 false**
 
@@ -112,6 +104,17 @@ readonly Stats HttpHandler.stats;
 
 ## 成员函数
         
+### enableCrossOrigin
+**允许跨域请求**
+
+```JavaScript
+HttpHandler.enableCrossOrigin(String allowHeaders = "Content-Type");
+```
+
+调用参数:
+* allowHeaders: String, 指定接受的 [http](../../module/ifs/http.md) 头字段
+
+--------------------------
 ### onerror
 **设置错误处理器**
 

@@ -25,7 +25,7 @@ digraph {
 
     object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\l}"];
     TcpServer [tooltip="TcpServer", URL="TcpServer.md", label="{TcpServer|new TcpServer()\l|socket\lhandler\lstats\l|run()\lasyncRun()\lstop()\l}"];
-    HttpServer [tooltip="HttpServer", fillcolor="lightgray", label="{HttpServer|new HttpServer()\l|crossDomain\lforceGZIP\lmaxHeadersCount\lmaxBodySize\lserverName\lhttpStats\l|onerror()\l}"];
+    HttpServer [tooltip="HttpServer", fillcolor="lightgray", label="{HttpServer|new HttpServer()\l|forceGZIP\lmaxHeadersCount\lmaxBodySize\lserverName\lhttpStats\l|onerror()\lenableCrossOrigin()\l}"];
     HttpsServer [tooltip="HttpsServer", URL="HttpsServer.md", label="{HttpsServer|new HttpsServer()\l|verification\lca\l}"];
 
     object -> TcpServer [dir=back];
@@ -64,14 +64,6 @@ new HttpServer(String addr,
 
 ## 成员属性
         
-### crossDomain
-**Boolean, 查询和设置是否允许跨域请求，缺省为 false**
-
-```JavaScript
-Boolean HttpServer.crossDomain;
-```
-
---------------------------
 ### forceGZIP
 **Boolean, 查询和设置是否允强制使用 gzip 压缩输出，缺省为 false**
 
@@ -183,6 +175,17 @@ hdlr.onerror({
     "500": new mq.Routing(...)
 })
 ```
+
+--------------------------
+### enableCrossOrigin
+**允许跨域请求**
+
+```JavaScript
+HttpServer.enableCrossOrigin(String allowHeaders = "Content-Type");
+```
+
+调用参数:
+* allowHeaders: String, 指定接受的 [http](../../module/ifs/http.md) 头字段
 
 --------------------------
 ### run

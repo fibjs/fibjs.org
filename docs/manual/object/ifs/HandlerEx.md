@@ -9,7 +9,7 @@ digraph {
     object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\l}"];
     Handler [tooltip="Handler", URL="Handler.md", label="{Handler|new Handler()\l|invoke()\l}"];
     HandlerEx [tooltip="HandlerEx", fillcolor="lightgray", label="{HandlerEx|handler\lstats\l|onerror()\l}"];
-    HttpHandler [tooltip="HttpHandler", URL="HttpHandler.md", label="{HttpHandler|new HttpHandler()\l|crossDomain\lforceGZIP\lmaxHeadersCount\lmaxBodySize\lserverName\l}"];
+    HttpHandler [tooltip="HttpHandler", URL="HttpHandler.md", label="{HttpHandler|new HttpHandler()\l|forceGZIP\lmaxHeadersCount\lmaxBodySize\lserverName\l|enableCrossOrigin()\l}"];
     WebSocketHandler [tooltip="WebSocketHandler", URL="WebSocketHandler.md", label="{WebSocketHandler|new WebSocketHandler()\l|maxSize\l}"];
 
     object -> Handler [dir=back];

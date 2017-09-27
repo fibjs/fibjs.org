@@ -1,0 +1,727 @@
+<!DOCTYPE html><html><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel=icon type=image/png href=../../../imgs/icon.png><title> validatorjs - JavaScript on Fiber</title><link href=../../../css/common.css rel=stylesheet><link href=../../../css/docs.css rel=stylesheet></head><body><div class="navbar navbar-default navbar-static-top" role=navigation><div class=container><div class=navbar-header><button type=button class="navbar-toggle collapsed" data-toggle=collapse data-target=#navbar aria-expanded=false aria-controls=navbar><span class=sr-only>Toggle navigation</span> <span class=icon-bar></span> <span class=icon-bar></span> <span class=icon-bar></span></button> <a class=navbar-brand href=../../../index.html><img src=../../../imgs/logo-dark.png></a></div><div id=navbar class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right"><li><a href=../../../index.html>HOME</a></li><li><a href=../../guide/readme.md.html>GUIDE</a></li><li><a href=../../manual/module/readme.md.html>MODULE</a></li><li><a href=../../manual/object/readme.md.html>OBJECT</a></li><li><a href=../readme.md.html>AWESOME</a></li><li><a href=../../../download/index.html>DOWNLOAD</a></li></ul></div></div></div><div class=band><div class=container><span class=group>Awesome 社区模块</span><div class=search><input type=text class=searchbox placeholder=Search></div></div></div><div class=container><ol class=breadcrumb><li><a href=../../../index.html>首页</a></li><li><a href=../readme.md.html> 社区模块 </a></li><li class=active> validatorjs </li></ol></div><div class=page-body><div class=container><div class="sidebar hidden-xs"><div class=panel-group id=accordion role=tablist>  <div class=panel><div class=panel-heading role=tab id=headingOne><h4 class=panel-title><a data-toggle=collapse data-parent=#accordion href="#collapse_guide" aria-controls="collapse_guide"> 开发指南 </a></h4></div><div id="collapse_guide" class="panel-collapse collapse " aria-labelledby=headingOne><div class=panel-body> <ul>
+<li><a href=../../guide/about.md.html>fibjs 是什么？</a></li>
+<li><a href=../../guide/install.md.html>安装运行环境</a></li>
+<li><a href=../../guide/hello.md.html>hello, world</a></li>
+<li><a href=../../guide/test.md.html>美好生活从测试开始</a></li>
+</ul>
+ </div></div></div>  <div class=panel><div class=panel-heading role=tab id=headingOne><h4 class=panel-title><a data-toggle=collapse data-parent=#accordion href="#collapse_module" aria-controls="collapse_module"> 基础模块 </a></h4></div><div id="collapse_module" class="panel-collapse collapse " aria-labelledby=headingOne><div class=panel-body> <ul>
+<li><a href=../../manual/module/ifs/assert.md.html>assert</a></li>
+<li><a href=../../manual/module/ifs/base32.md.html>base32</a></li>
+<li><a href=../../manual/module/ifs/base64.md.html>base64</a></li>
+<li><a href=../../manual/module/ifs/base64vlq.md.html>base64vlq</a></li>
+<li><a href=../../manual/module/ifs/bson.md.html>bson</a></li>
+<li><a href=../../manual/module/ifs/collection.md.html>collection</a></li>
+<li><a href=../../manual/module/ifs/console.md.html>console</a></li>
+<li><a href=../../manual/module/ifs/coroutine.md.html>coroutine</a></li>
+<li><a href=../../manual/module/ifs/crypto.md.html>crypto</a></li>
+<li><a href=../../manual/module/ifs/db.md.html>db</a></li>
+<li><a href=../../manual/module/ifs/encoding.md.html>encoding</a></li>
+<li><a href=../../manual/module/ifs/fs.md.html>fs</a></li>
+<li><a href=../../manual/module/ifs/gd.md.html>gd</a></li>
+<li><a href=../../manual/module/ifs/global.md.html>global</a></li>
+<li><a href=../../manual/module/ifs/gui.md.html>gui</a></li>
+<li><a href=../../manual/module/ifs/hash.md.html>hash</a></li>
+<li><a href=../../manual/module/ifs/hex.md.html>hex</a></li>
+<li><a href=../../manual/module/ifs/http.md.html>http</a></li>
+<li><a href=../../manual/module/ifs/iconv.md.html>iconv</a></li>
+<li><a href=../../manual/module/ifs/io.md.html>io</a></li>
+<li><a href=../../manual/module/ifs/json.md.html>json</a></li>
+<li><a href=../../manual/module/ifs/mq.md.html>mq</a></li>
+<li><a href=../../manual/module/ifs/net.md.html>net</a></li>
+<li><a href=../../manual/module/ifs/os.md.html>os</a></li>
+<li><a href=../../manual/module/ifs/path.md.html>path</a></li>
+<li><a href=../../manual/module/ifs/path_posix.md.html>path_posix</a></li>
+<li><a href=../../manual/module/ifs/path_win32.md.html>path_win32</a></li>
+<li><a href=../../manual/module/ifs/process.md.html>process</a></li>
+<li><a href=../../manual/module/ifs/profiler.md.html>profiler</a></li>
+<li><a href=../../manual/module/ifs/punycode.md.html>punycode</a></li>
+<li><a href=../../manual/module/ifs/querystring.md.html>querystring</a></li>
+<li><a href=../../manual/module/ifs/registry.md.html>registry</a></li>
+<li><a href=../../manual/module/ifs/ssl.md.html>ssl</a></li>
+<li><a href=../../manual/module/ifs/string_decoder.md.html>string_decoder</a></li>
+<li><a href=../../manual/module/ifs/test.md.html>test</a></li>
+<li><a href=../../manual/module/ifs/timers.md.html>timers</a></li>
+<li><a href=../../manual/module/ifs/tty.md.html>tty</a></li>
+<li><a href=../../manual/module/ifs/url.md.html>url</a></li>
+<li><a href=../../manual/module/ifs/util.md.html>util</a></li>
+<li><a href=../../manual/module/ifs/uuid.md.html>uuid</a></li>
+<li><a href=../../manual/module/ifs/vm.md.html>vm</a></li>
+<li><a href=../../manual/module/ifs/ws.md.html>ws</a></li>
+<li><a href=../../manual/module/ifs/xml.md.html>xml</a></li>
+<li><a href=../../manual/module/ifs/zip.md.html>zip</a></li>
+<li><a href=../../manual/module/ifs/zlib.md.html>zlib</a></li>
+<li><a href=../../manual/module/ifs/zmq.md.html>zmq</a></li>
+</ul>
+ </div></div></div>  <div class=panel><div class=panel-heading role=tab id=headingOne><h4 class=panel-title><a data-toggle=collapse data-parent=#accordion href="#collapse_object" aria-controls="collapse_object"> 内置对象 </a></h4></div><div id="collapse_object" class="panel-collapse collapse " aria-labelledby=headingOne><div class=panel-body> <ul>
+<li><a href=../../manual/object/ifs/asyncwait.md.html>AsyncWait</a></li>
+<li><a href=../../manual/object/ifs/blockqueue.md.html>BlockQueue</a></li>
+<li><a href=../../manual/object/ifs/buffer.md.html>Buffer</a></li>
+<li><a href=../../manual/object/ifs/bufferedstream.md.html>BufferedStream</a></li>
+<li><a href=../../manual/object/ifs/chain.md.html>Chain</a></li>
+<li><a href=../../manual/object/ifs/cipher.md.html>Cipher</a></li>
+<li><a href=../../manual/object/ifs/condition.md.html>Condition</a></li>
+<li><a href=../../manual/object/ifs/dbconnection.md.html>DbConnection</a></li>
+<li><a href=../../manual/object/ifs/digest.md.html>Digest</a></li>
+<li><a href=../../manual/object/ifs/event.md.html>Event</a></li>
+<li><a href=../../manual/object/ifs/eventemitter.md.html>EventEmitter</a></li>
+<li><a href=../../manual/object/ifs/eventinfo.md.html>EventInfo</a></li>
+<li><a href=../../manual/object/ifs/fiber.md.html>Fiber</a></li>
+<li><a href=../../manual/object/ifs/file.md.html>File</a></li>
+<li><a href=../../manual/object/ifs/gridfs.md.html>GridFS</a></li>
+<li><a href=../../manual/object/ifs/handler.md.html>Handler</a></li>
+<li><a href=../../manual/object/ifs/handlerex.md.html>HandlerEx</a></li>
+<li><a href=../../manual/object/ifs/heapgraphedge.md.html>HeapGraphEdge</a></li>
+<li><a href=../../manual/object/ifs/heapgraphnode.md.html>HeapGraphNode</a></li>
+<li><a href=../../manual/object/ifs/heapsnapshot.md.html>HeapSnapshot</a></li>
+<li><a href=../../manual/object/ifs/httpclient.md.html>HttpClient</a></li>
+<li><a href=../../manual/object/ifs/httpcollection.md.html>HttpCollection</a></li>
+<li><a href=../../manual/object/ifs/httpcookie.md.html>HttpCookie</a></li>
+<li><a href=../../manual/object/ifs/httphandler.md.html>HttpHandler</a></li>
+<li><a href=../../manual/object/ifs/httpmessage.md.html>HttpMessage</a></li>
+<li><a href=../../manual/object/ifs/httprequest.md.html>HttpRequest</a></li>
+<li><a href=../../manual/object/ifs/httpresponse.md.html>HttpResponse</a></li>
+<li><a href=../../manual/object/ifs/httpserver.md.html>HttpServer</a></li>
+<li><a href=../../manual/object/ifs/httpsserver.md.html>HttpsServer</a></li>
+<li><a href=../../manual/object/ifs/httpuploaddata.md.html>HttpUploadData</a></li>
+<li><a href=../../manual/object/ifs/image.md.html>Image</a></li>
+<li><a href=../../manual/object/ifs/int64.md.html>Int64</a></li>
+<li><a href=../../manual/object/ifs/leveldb.md.html>LevelDB</a></li>
+<li><a href=../../manual/object/ifs/list.md.html>List</a></li>
+<li><a href=../../manual/object/ifs/lock.md.html>Lock</a></li>
+<li><a href=../../manual/object/ifs/lrucache.md.html>LruCache</a></li>
+<li><a href=../../manual/object/ifs/map.md.html>Map</a></li>
+<li><a href=../../manual/object/ifs/memorystream.md.html>MemoryStream</a></li>
+<li><a href=../../manual/object/ifs/message.md.html>Message</a></li>
+<li><a href=../../manual/object/ifs/mongocollection.md.html>MongoCollection</a></li>
+<li><a href=../../manual/object/ifs/mongocursor.md.html>MongoCursor</a></li>
+<li><a href=../../manual/object/ifs/mongodb.md.html>MongoDB</a></li>
+<li><a href=../../manual/object/ifs/mongoid.md.html>MongoID</a></li>
+<li><a href=../../manual/object/ifs/mssql.md.html>MSSQL</a></li>
+<li><a href=../../manual/object/ifs/mysql.md.html>MySQL</a></li>
+<li><a href=../../manual/object/ifs/object.md.html>object</a></li>
+<li><a href=../../manual/object/ifs/pkey.md.html>PKey</a></li>
+<li><a href=../../manual/object/ifs/queue.md.html>Queue</a></li>
+<li><a href=../../manual/object/ifs/redis.md.html>Redis</a></li>
+<li><a href=../../manual/object/ifs/redishash.md.html>RedisHash</a></li>
+<li><a href=../../manual/object/ifs/redislist.md.html>RedisList</a></li>
+<li><a href=../../manual/object/ifs/redisset.md.html>RedisSet</a></li>
+<li><a href=../../manual/object/ifs/redissortedset.md.html>RedisSortedSet</a></li>
+<li><a href=../../manual/object/ifs/routing.md.html>Routing</a></li>
+<li><a href=../../manual/object/ifs/sandbox.md.html>SandBox</a></li>
+<li><a href=../../manual/object/ifs/seekablestream.md.html>SeekableStream</a></li>
+<li><a href=../../manual/object/ifs/semaphore.md.html>Semaphore</a></li>
+<li><a href=../../manual/object/ifs/service.md.html>Service</a></li>
+<li><a href=../../manual/object/ifs/smtp.md.html>Smtp</a></li>
+<li><a href=../../manual/object/ifs/socket.md.html>Socket</a></li>
+<li><a href=../../manual/object/ifs/sqlite.md.html>SQLite</a></li>
+<li><a href=../../manual/object/ifs/sslhandler.md.html>SslHandler</a></li>
+<li><a href=../../manual/object/ifs/sslserver.md.html>SslServer</a></li>
+<li><a href=../../manual/object/ifs/sslsocket.md.html>SslSocket</a></li>
+<li><a href=../../manual/object/ifs/stat.md.html>Stat</a></li>
+<li><a href=../../manual/object/ifs/stats.md.html>Stats</a></li>
+<li><a href=../../manual/object/ifs/stream.md.html>Stream</a></li>
+<li><a href=../../manual/object/ifs/stringdecoder.md.html>StringDecoder</a></li>
+<li><a href=../../manual/object/ifs/subprocess.md.html>SubProcess</a></li>
+<li><a href=../../manual/object/ifs/tcpserver.md.html>TcpServer</a></li>
+<li><a href=../../manual/object/ifs/textcolor.md.html>TextColor</a></li>
+<li><a href=../../manual/object/ifs/timer.md.html>Timer</a></li>
+<li><a href=../../manual/object/ifs/urlobject.md.html>UrlObject</a></li>
+<li><a href=../../manual/object/ifs/websocket.md.html>WebSocket</a></li>
+<li><a href=../../manual/object/ifs/websockethandler.md.html>WebSocketHandler</a></li>
+<li><a href=../../manual/object/ifs/websocketmessage.md.html>WebSocketMessage</a></li>
+<li><a href=../../manual/object/ifs/webview.md.html>WebView</a></li>
+<li><a href=../../manual/object/ifs/worker.md.html>Worker</a></li>
+<li><a href=../../manual/object/ifs/x509cert.md.html>X509Cert</a></li>
+<li><a href=../../manual/object/ifs/x509crl.md.html>X509Crl</a></li>
+<li><a href=../../manual/object/ifs/x509req.md.html>X509Req</a></li>
+<li><a href=../../manual/object/ifs/xmlattr.md.html>XmlAttr</a></li>
+<li><a href=../../manual/object/ifs/xmlcdatasection.md.html>XmlCDATASection</a></li>
+<li><a href=../../manual/object/ifs/xmlcharacterdata.md.html>XmlCharacterData</a></li>
+<li><a href=../../manual/object/ifs/xmlcomment.md.html>XmlComment</a></li>
+<li><a href=../../manual/object/ifs/xmldocument.md.html>XmlDocument</a></li>
+<li><a href=../../manual/object/ifs/xmldocumenttype.md.html>XmlDocumentType</a></li>
+<li><a href=../../manual/object/ifs/xmlelement.md.html>XmlElement</a></li>
+<li><a href=../../manual/object/ifs/xmlnamednodemap.md.html>XmlNamedNodeMap</a></li>
+<li><a href=../../manual/object/ifs/xmlnode.md.html>XmlNode</a></li>
+<li><a href=../../manual/object/ifs/xmlnodelist.md.html>XmlNodeList</a></li>
+<li><a href=../../manual/object/ifs/xmlprocessinginstruction.md.html>XmlProcessingInstruction</a></li>
+<li><a href=../../manual/object/ifs/xmltext.md.html>XmlText</a></li>
+<li><a href=../../manual/object/ifs/zipfile.md.html>ZipFile</a></li>
+<li><a href=../../manual/object/ifs/zipinfo.md.html>ZipInfo</a></li>
+<li><a href=../../manual/object/ifs/zmqsocket.md.html>ZmqSocket</a></li>
+</ul>
+ </div></div></div>  <div class=panel><div class=panel-heading role=tab id=headingOne><h4 class=panel-title><a data-toggle=collapse data-parent=#accordion href="#collapse_awesome" aria-controls="collapse_awesome"> 社区模块 </a></h4></div><div id="collapse_awesome" class="panel-collapse collapse in" aria-labelledby=headingOne><div class=panel-body> <ul>
+<li><a href=fib-session.md.html>fib-session</a></li>
+<li><a href=fib-pool.md.html>fib-pool</a></li>
+<li><a href=fib-orm.md.html>fib-orm</a></li>
+<li><a href=fib-kv.md.html>fib-kv</a></li>
+<li><a href=fib-rpc.md.html>fib-rpc</a></li>
+<li><a href=fib-qr.md.html>fib-qr</a></li>
+<li><a href=ejs.md.html>ejs</a></li>
+<li><a href=juicer.md.html>Juicer</a></li>
+<li><a href=highlight.js.md.html>highlight.js</a></li>
+<li><a href=marked.md.html>marked</a></li>
+<li><a href=debug.md.html>debug</a></li>
+<li><a href=benchmark.js.md.html>benchmark.js</a></li>
+<li><a href=sinon.md.html>sinon</a></li>
+<li><a href=node-mime.md.html>node-mime</a></li>
+<li class="active"><a href=validatorjs.md.html>validatorjs</a></li>
+<li><a href=cluster-server.md.html>cluster-server</a></li>
+<li><a href=synaptic.md.html>synaptic</a></li>
+<li><a href=source-map.md.html>source-map</a></li>
+<li><a href=json-format.md.html>json-format</a></li>
+<li><a href=viz.js.md.html>viz.js</a></li>
+<li><a href=pegjs.md.html>pegjs</a></li>
+<li><a href=uglify-js.md.html>uglify-js</a></li>
+<li><a href=js-beautify.md.html>js-beautify</a></li>
+<li><a href=chalk-animation.md.html>chalk-animation</a></li>
+<li><a href=jsrsasign.md.html>jsrsasign</a></li>
+<li><a href=crypto-js.md.html>crypto-js</a></li>
+<li><a href=ascii-table.md.html>ascii-table</a></li>
+<li><a href=logstream.md.html>logstream</a></li>
+<li><a href=ci.md.html>ci</a></li>
+<li><a href=fs-readdir-recursive.md.html>fs-readdir-recursive</a></li>
+<li><a href=mkdirp.md.html>mkdirp</a></li>
+<li><a href=rmdirr.md.html>rmdirr</a></li>
+<li><a href=detect-port.md.html>detect-port</a></li>
+</ul>
+ </div></div></div>  </div></div><div class=content><div class=social-share data-sites=weibo,twitter data-description=分享></div> <h1 id="validatorjs">validatorjs</h1>
+<p><a href="https://travis-ci.org/skaterdav85/validatorjs"><img src="https://travis-ci.org/skaterdav85/validatorjs.png?branch=master" alt="Build Status"></a></p>
+<p>The validatorjs library makes data validation in JavaScript very easy in both the browser and Node.js. This library was inspired by the <a href="http://laravel.com/docs/validation">Laravel framework&#39;s Validator</a>.</p>
+<h2 id="Why-use-validatorjs?">Why use validatorjs?</h2>
+<ul>
+<li>Not dependent on any libraries.</li>
+<li>Works in both the browser and Node.</li>
+<li>Readable and declarative validation rules.</li>
+<li>Error messages with multilingual support.</li>
+<li>AMD/Require.js and CommonJS/Browserify support.</li>
+</ul>
+<h2 id="Installation">Installation</h2>
+<p>Grab validatorjs from Bower, NPM, or the /dist directory on Github:</p>
+<pre><code><div class="line-numbers">1</div><span class="hljs-keyword">bower </span><span class="hljs-keyword">install </span>validatorjs
+</code></pre><pre><code><div class="line-numbers">1</div>npm <span class="hljs-keyword">install</span> validatorjs
+</code></pre><h3 id="Browser">Browser</h3>
+<pre><code class="lang-html"><div class="line-numbers">1</div><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"validator.js"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+</code></pre>
+<h3 id="Node.js-/-Browserify">Node.js / Browserify</h3>
+<pre><code class="lang-js"><div class="line-numbers">1</div><span class="hljs-keyword">var</span> Validator = <span class="hljs-built_in">require</span>(<span class="hljs-string">'validatorjs'</span>);
+</code></pre>
+<h3 id="Basic-Usage">Basic Usage</h3>
+<pre><code class="lang-js"><div class="line-numbers">1</div><span class="hljs-keyword">var</span> validation = <span class="hljs-keyword">new</span> Validator(data, rules [, customErrorMessages]);
+</code></pre>
+<p><strong>data</strong> {Object} - The data you want to validate</p>
+<p><strong>rules</strong> {Object} - Validation rules</p>
+<p><strong>customErrorMessages</strong> {Object} - Optional custom error messages to return</p>
+<h4 id="Example-1---Passing-validation">Example 1 - Passing validation</h4>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16</div><span class="hljs-keyword">var</span> data = {
+    <span class="hljs-attr">name</span>: <span class="hljs-string">'John'</span>,
+    <span class="hljs-attr">email</span>: <span class="hljs-string">'johndoe@gmail.com'</span>,
+    <span class="hljs-attr">age</span>: <span class="hljs-number">28</span>
+};
+
+<span class="hljs-keyword">var</span> rules = {
+    <span class="hljs-attr">name</span>: <span class="hljs-string">'required'</span>,
+    <span class="hljs-attr">email</span>: <span class="hljs-string">'required|email'</span>,
+    <span class="hljs-attr">age</span>: <span class="hljs-string">'min:18'</span>
+};
+
+<span class="hljs-keyword">var</span> validation = <span class="hljs-keyword">new</span> Validator(data, rules);
+
+validation.passes(); <span class="hljs-comment">// true</span>
+validation.fails(); <span class="hljs-comment">// false</span>
+</code></pre>
+<p>To apply validation rules to the <em>data</em> object, use the same object key names for the <em>rules</em> object.</p>
+<h4 id="Example-2---Failing-validation">Example 2 - Failing validation</h4>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14</div><span class="hljs-keyword">var</span> validation = <span class="hljs-keyword">new</span> Validator({
+    <span class="hljs-attr">name</span>: <span class="hljs-string">'D'</span>,
+    <span class="hljs-attr">email</span>: <span class="hljs-string">'not an email address.com'</span>
+}, {
+    <span class="hljs-attr">name</span>: <span class="hljs-string">'size:3'</span>,
+    <span class="hljs-attr">email</span>: <span class="hljs-string">'required|email'</span>
+});
+
+validation.fails(); <span class="hljs-comment">// true</span>
+validation.passes(); <span class="hljs-comment">// false</span>
+
+<span class="hljs-comment">// Error messages</span>
+validation.errors.first(<span class="hljs-string">'email'</span>); <span class="hljs-comment">// 'The email format is invalid.'</span>
+validation.errors.get(<span class="hljs-string">'email'</span>); <span class="hljs-comment">// returns an array of all email error messages</span>
+</code></pre>
+<h3 id="Nested-rules">Nested rules</h3>
+<p>Nested objects can also be validated. There are two ways to declare validation rules for nested objects. The first way is to declare the validation rules with a corresponding nested object structure that reflects the data. The second way is to declare validation rules with flattened key names. For example, to validate the following data:</p>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10</div><span class="hljs-keyword">var</span> data = {
+  <span class="hljs-attr">name</span>: <span class="hljs-string">'John'</span>,
+  <span class="hljs-attr">bio</span>: {
+    <span class="hljs-attr">age</span>: <span class="hljs-number">28</span>,
+    <span class="hljs-attr">education</span>: {
+      <span class="hljs-attr">primary</span>: <span class="hljs-string">'Elementary School'</span>,
+      <span class="hljs-attr">secondary</span>: <span class="hljs-string">'Secondary School'</span>
+    }
+  }
+};
+</code></pre>
+<p>We could declare our validation rules as follows:</p>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19</div><span class="hljs-keyword">var</span> nested = {
+  <span class="hljs-attr">name</span>: <span class="hljs-string">'required'</span>,
+  <span class="hljs-attr">bio</span>: {
+    <span class="hljs-attr">age</span>: <span class="hljs-string">'min:18'</span>,
+    <span class="hljs-attr">education</span>: {
+      <span class="hljs-attr">primary</span>: <span class="hljs-string">'string'</span>,
+      <span class="hljs-attr">secondary</span>: <span class="hljs-string">'string'</span>
+    }
+  }
+};
+
+<span class="hljs-comment">// OR</span>
+
+<span class="hljs-keyword">var</span> flattened = {
+  <span class="hljs-string">'name'</span>: <span class="hljs-string">'required'</span>,
+  <span class="hljs-string">'bio.age'</span>: <span class="hljs-string">'min:18'</span>
+  <span class="hljs-string">'bio.education.primary'</span>: <span class="hljs-string">'string'</span>,
+  <span class="hljs-string">'bio.education.secondary'</span>: <span class="hljs-string">'string'</span>
+};
+</code></pre>
+<h3 id="WildCards-rules">WildCards rules</h3>
+<p>WildCards can also be validated.</p>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14</div><span class="hljs-keyword">var</span> data = {
+  <span class="hljs-attr">users</span>:[
+    {
+        <span class="hljs-attr">name</span>: <span class="hljs-string">'John'</span>,
+        <span class="hljs-attr">bio</span>: {
+            <span class="hljs-attr">age</span>: <span class="hljs-number">28</span>,
+            <span class="hljs-attr">education</span>: {
+            <span class="hljs-attr">primary</span>: <span class="hljs-string">'Elementary School'</span>,
+            <span class="hljs-attr">secondary</span>: <span class="hljs-string">'Secondary School'</span>
+            }
+        }
+    }
+  ]
+};
+</code></pre>
+<p>We could declare our validation rules as follows:</p>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3
+4
+5
+6</div><span class="hljs-keyword">var</span> rules = {
+  <span class="hljs-string">'users.*.name'</span>: <span class="hljs-string">'required'</span>,
+  <span class="hljs-string">'users.*.bio.age'</span>: <span class="hljs-string">'min:18'</span>
+  <span class="hljs-string">'users.*.bio.education.primary'</span>: <span class="hljs-string">'string'</span>,
+  <span class="hljs-string">'users.*.bio.education.secondary'</span>: <span class="hljs-string">'string'</span>
+};
+</code></pre>
+<h3 id="Available-Rules">Available Rules</h3>
+<p>Validation rules do not have an implicit &#39;required&#39;. If a field is <em>undefined</em> or an empty string, it will pass validation. If you want a validation to fail for undefined or &#39;&#39;, use the <em>required</em> rule.</p>
+<h4 id="accepted">accepted</h4>
+<p>The field under validation must be yes, on, 1 or true. This is useful for validating &quot;Terms of Service&quot; acceptance.</p>
+<h4 id="after:date">after:date</h4>
+<p>The field under validation must be after the given date.</p>
+<h4 id="after_or_equal:date">after_or_equal:date</h4>
+<p>The field unter validation must be after or equal to the given field</p>
+<h4 id="alpha">alpha</h4>
+<p>The field under validation must be entirely alphabetic characters.</p>
+<h4 id="alpha_dash">alpha_dash</h4>
+<p>The field under validation may have alpha-numeric characters, as well as dashes and underscores.</p>
+<h4 id="alpha_num">alpha_num</h4>
+<p>The field under validation must be entirely alpha-numeric characters.</p>
+<h4 id="array">array</h4>
+<p>The field under validation must be an array.</p>
+<h4 id="before:date">before:date</h4>
+<p>The field under validation must be before the given date.</p>
+<h4 id="before_or_equal:date">before_or_equal:date</h4>
+<p>The field under validation must be before or equal to the given date.</p>
+<h4 id="between:min,max">between:min,max</h4>
+<p>The field under validation must have a size between the given min and max. Strings, numerics, and files are evaluated in the same fashion as the size rule.</p>
+<h4 id="boolean">boolean</h4>
+<p>The field under validation must be a boolean value of the form <code>true</code>, <code>false</code>, <code>0</code>, <code>1</code>, <code>&#39;true&#39;</code>, <code>&#39;false&#39;</code>, <code>&#39;0&#39;</code>, <code>&#39;1&#39;</code>,</p>
+<h4 id="confirmed">confirmed</h4>
+<p>The field under validation must have a matching field of foo_confirmation. For example, if the field under validation is password, a matching password_confirmation field must be present in the input.</p>
+<h4 id="date">date</h4>
+<p>The field under validation must be a valid date format which is acceptable by Javascript&#39;s <code>Date</code> object.</p>
+<h4 id="digits:value">digits:value</h4>
+<p>The field under validation must be numeric and must have an exact length of value.</p>
+<h4 id="different:attribute">different:attribute</h4>
+<p>The given field must be different than the field under validation.</p>
+<h4 id="email">email</h4>
+<p>The field under validation must be formatted as an e-mail address.</p>
+<h4 id="in:foo,bar,...">in:foo,bar,...</h4>
+<p>The field under validation must be included in the given list of values. The field can be an array or string.</p>
+<h4 id="integer">integer</h4>
+<p>The field under validation must have an integer value.</p>
+<h4 id="max:value">max:value</h4>
+<p>Validate that an attribute is no greater than a given size</p>
+<p><em>Note: Maximum checks are inclusive.</em></p>
+<h4 id="min:value">min:value</h4>
+<p>Validate that an attribute is at least a given size.</p>
+<p><em>Note: Minimum checks are inclusive.</em></p>
+<h4 id="not_in:foo,bar,...">not_in:foo,bar,...</h4>
+<p>The field under validation must not be included in the given list of values.</p>
+<h4 id="numeric">numeric</h4>
+<p>Validate that an attribute is numeric. The string representation of a number will pass.</p>
+<h4 id="required">required</h4>
+<p>Checks if the length of the String representation of the value is &gt;</p>
+<h4 id="required_if:anotherfield,value">required_if:anotherfield,value</h4>
+<p>The field under validation must be present and not empty if the anotherfield field is equal to any value.</p>
+<h4 id="required_unless:anotherfield,value">required_unless:anotherfield,value</h4>
+<p>The field under validation must be present and not empty unless the anotherfield field is equal to any value.</p>
+<h4 id="required_with:foo,bar,...">required_with:foo,bar,...</h4>
+<p>The field under validation must be present and not empty only if any of the other specified fields are present.</p>
+<h4 id="required_with_all:foo,bar,...">required_with_all:foo,bar,...</h4>
+<p>The field under validation must be present and not empty only if all of the other specified fields are present.</p>
+<h4 id="required_without:foo,bar,...">required_without:foo,bar,...</h4>
+<p>The field under validation must be present and not empty only when any of the other specified fields are not present.</p>
+<h4 id="required_without_all:foo,bar,...">required_without_all:foo,bar,...</h4>
+<p>The field under validation must be present and not empty only when all of the other specified fields are not present.</p>
+<h4 id="same:attribute">same:attribute</h4>
+<p>The given field must match the field under validation.</p>
+<h4 id="size:value">size:value</h4>
+<p>The field under validation must have a size matching the given value. For string data, value corresponds to the number of characters. For numeric data, value corresponds to a given integer value.</p>
+<h4 id="string">string</h4>
+<p>The field under validation must be a string.</p>
+<h4 id="url">url</h4>
+<p>Validate that an attribute has a valid URL format</p>
+<h4 id="regex:pattern">regex:pattern</h4>
+<p>The field under validation must match the given regular expression.</p>
+<p><strong>Note</strong>: When using the <code>regex</code> pattern, it may be necessary to specify rules in an array instead of using pipe delimiters, especially if the regular expression contains a pipe character.
+For each backward slash that you used in your regex pattern, you must escape each one with another backward slash.</p>
+<h4 id="Example-3---Regex-validation">Example 3 - Regex validation</h4>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12</div><span class="hljs-keyword">var</span> validation = <span class="hljs-keyword">new</span> Validator({
+    <span class="hljs-attr">name</span>: <span class="hljs-string">'Doe'</span>,
+    <span class="hljs-attr">salary</span>: <span class="hljs-string">'10,000.00'</span>,
+    <span class="hljs-attr">yearOfBirth</span>: <span class="hljs-string">'1980'</span>
+}, {
+    <span class="hljs-attr">name</span>: <span class="hljs-string">'required|size:3'</span>,
+    <span class="hljs-attr">salary</span>: [<span class="hljs-string">'required'</span>, <span class="hljs-string">'regex:/^(?!0\\.00)\\d{1,3}(,\\d{3})*(\\.\\d\\d)?$/'</span>],
+    <span class="hljs-attr">yearOfBirth</span>: [<span class="hljs-string">'required'</span>, <span class="hljs-string">'regex:/^(19|20)[\\d]{2,2}$/'</span>]
+});
+
+validation.fails(); <span class="hljs-comment">// false</span>
+validation.passes(); <span class="hljs-comment">// true</span>
+</code></pre>
+<h4 id="Example-4---Type-checking-validation">Example 4 - Type checking validation</h4>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10</div><span class="hljs-keyword">var</span> validation = <span class="hljs-keyword">new</span> Validator({
+    <span class="hljs-attr">age</span>: <span class="hljs-number">30</span>,
+    <span class="hljs-attr">name</span>: <span class="hljs-string">''</span>
+}, {
+    <span class="hljs-attr">age</span>: [<span class="hljs-string">'required'</span>, { <span class="hljs-string">'in'</span>: [<span class="hljs-number">29</span>, <span class="hljs-number">30</span>] }],
+    <span class="hljs-attr">name</span>: [{ <span class="hljs-attr">required_if</span>: [<span class="hljs-string">'age'</span>, <span class="hljs-number">30</span>] }]
+});
+
+validation.fails(); <span class="hljs-comment">// true</span>
+validation.passes(); <span class="hljs-comment">// false</span>
+</code></pre>
+<h3 id="Registering-Custom-Validation-Rules">Registering Custom Validation Rules</h3>
+<pre><code class="lang-js"><div class="line-numbers">1</div>Validator.register(name, callbackFn, errorMessage);
+</code></pre>
+<p><strong>name</strong> {String} - The name of the rule.</p>
+<p><strong>callbackFn</strong> {Function} - Returns a boolean to represent a successful or failed validation.</p>
+<p><strong>errorMessage</strong> {String} - An optional string where you can specify a custom error message. <em>:attribute</em> inside errorMessage will be replaced with the attribute name.</p>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3</div>Validator.register(<span class="hljs-string">'telephone'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">value, requirement, attribute</span>) </span>{ <span class="hljs-comment">// requirement parameter defaults to null</span>
+    <span class="hljs-keyword">return</span> value.match(<span class="hljs-regexp">/^\d{3}-\d{3}-\d{4}$/</span>);
+}, <span class="hljs-string">'The :attribute phone number is not in the format XXX-XXX-XXXX.'</span>);
+</code></pre>
+<h3 id="Asynchronous-validation">Asynchronous validation</h3>
+<p>Register an asynchronous rule which accepts a <code>passes</code> callback:</p>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3
+4
+5
+6</div>Validator.registerAsync(<span class="hljs-string">'username_available'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">username, attribute, req, passes</span>) </span>{
+    <span class="hljs-comment">// do your database/api checks here etc</span>
+    <span class="hljs-comment">// then call the `passes` method where appropriate:</span>
+    passes(); <span class="hljs-comment">// if username is available</span>
+    passes(<span class="hljs-literal">false</span>, <span class="hljs-string">'Username has already been taken.'</span>); <span class="hljs-comment">// if username is not available</span>
+});
+</code></pre>
+<p>Then call your validator passing a callback to <code>fails</code> or <code>passes</code> like so:</p>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10</div><span class="hljs-keyword">var</span> validator = <span class="hljs-keyword">new</span> Validator({ <span class="hljs-attr">username</span>: <span class="hljs-string">'test123'</span> }, { <span class="hljs-attr">username</span>: <span class="hljs-string">'required|min:3|username_available'</span> });
+validator.passes(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-comment">// Validation passed</span>
+});
+
+<span class="hljs-comment">// Or call fails()</span>
+validator.fails(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-comment">// Error message:</span>
+    validator.errors.first(<span class="hljs-string">'username'</span>);
+});
+</code></pre>
+<p>Note: if you attempt to call <code>passes</code> or <code>fails</code> without a callback and the validator detects there are asynchronous validation rules, an exception will be thrown.</p>
+<h3 id="Error-Messages">Error Messages</h3>
+<p>This contructor will automatically generate error messages for validation rules that failed.</p>
+<p>If there are errors, the Validator instance will have its <strong>errors</strong> property object populated with the error messages for all failing attributes. The methods and properties on the <strong>errors</strong> property object are:</p>
+<h4 id=".first(attribute)">.first(attribute)</h4>
+<p>returns the first error message for an attribute, false otherwise</p>
+<h4 id=".get(attribute)">.get(attribute)</h4>
+<p>returns an array of error messages for an attribute, or an empty array if there are no errors</p>
+<h4 id=".all()">.all()</h4>
+<p>returns an object containing all error messages for all failing attributes</p>
+<h4 id=".has(attribute)">.has(attribute)</h4>
+<p>returns true if error messages exist for an attribute, false otherwise</p>
+<h4 id=".errorCount">.errorCount</h4>
+<p>the number of validation errors</p>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">var</span> validation = <span class="hljs-keyword">new</span> Validator(input, rules);
+validation.errors.first(<span class="hljs-string">'email'</span>); <span class="hljs-comment">// returns first error message for email attribute</span>
+validator.errors.get(<span class="hljs-string">'email'</span>); <span class="hljs-comment">// returns an array of error messages for the email attribute</span>
+</code></pre>
+<h3 id="Custom-Error-Messages">Custom Error Messages</h3>
+<p>If you need a specific error message and you don&#39;t want to override the default one, you can pass an override as the third argument to the Validator object, just like with <a href="http://laravel.com/docs/validation#custom-error-messages">Laravel</a>.</p>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10</div><span class="hljs-keyword">var</span> input = {
+    <span class="hljs-attr">name</span>: <span class="hljs-string">''</span>
+};
+
+<span class="hljs-keyword">var</span> rules = {
+    <span class="hljs-attr">name</span> : <span class="hljs-string">'required'</span>
+};
+
+<span class="hljs-keyword">var</span> validation = <span class="hljs-keyword">new</span> Validator(input, rules, { <span class="hljs-attr">required</span>: <span class="hljs-string">'You forgot to give a :attribute'</span> });
+validation.errors.first(<span class="hljs-string">'name'</span>); <span class="hljs-comment">// returns 'You forgot to give a name'</span>
+</code></pre>
+<p>Some of the validators have string and numeric versions. You can change them too.</p>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15</div><span class="hljs-keyword">var</span> input = {
+    <span class="hljs-attr">username</span>: <span class="hljs-string">'myusernameistoolong'</span>
+};
+
+<span class="hljs-keyword">var</span> rules = {
+    <span class="hljs-attr">username</span> : <span class="hljs-string">'max:16'</span>
+};
+
+<span class="hljs-keyword">var</span> validation = <span class="hljs-keyword">new</span> Validator(input, rules, {
+    <span class="hljs-attr">max</span>: {
+        <span class="hljs-attr">string</span>: <span class="hljs-string">'The :attribute is too long. Max length is :max.'</span>
+    }
+});
+
+validation.errors.first(<span class="hljs-string">'username'</span>); <span class="hljs-comment">// returns 'The username is too long. Max length is 16.'</span>
+</code></pre>
+<p>You can even provide error messages on a per attribute basis! Just set the message&#39;s key to &#39;validator.attribute&#39;</p>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9</div><span class="hljs-keyword">var</span> input = { <span class="hljs-attr">name</span>: <span class="hljs-string">''</span>, <span class="hljs-attr">email</span>: <span class="hljs-string">''</span> };
+<span class="hljs-keyword">var</span> rules = { <span class="hljs-attr">name</span> : <span class="hljs-string">'required'</span>, <span class="hljs-attr">email</span> : <span class="hljs-string">'required'</span> };
+
+<span class="hljs-keyword">var</span> validation = <span class="hljs-keyword">new</span> Validator(input, rules, {
+    <span class="hljs-string">"required.email"</span>: <span class="hljs-string">"Without an :attribute we can't reach you!"</span>
+});
+
+validation.errors.first(<span class="hljs-string">'name'</span>); <span class="hljs-comment">// returns  'The name field is required.'</span>
+validation.errors.first(<span class="hljs-string">'email'</span>); <span class="hljs-comment">// returns 'Without an email we can\'t reach you!'</span>
+</code></pre>
+<h3 id="Custom-attribute-names">Custom attribute names</h3>
+<p>To display a custom &quot;friendly&quot; attribute name in error messages, use <code>.setAttributeNames()</code></p>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3
+4
+5</div><span class="hljs-keyword">var</span> validator = <span class="hljs-keyword">new</span> Validator({ <span class="hljs-attr">name</span>: <span class="hljs-string">''</span> }, { <span class="hljs-attr">name</span>: <span class="hljs-string">'required'</span> });
+validator.setAttributeNames({ <span class="hljs-attr">name</span>: <span class="hljs-string">'custom_name'</span> });
+<span class="hljs-keyword">if</span> (validator.fails()) {
+    validator.errors.first(<span class="hljs-string">'name'</span>); <span class="hljs-comment">// "The custom_name field is required."</span>
+}
+</code></pre>
+<p>Alternatively you can supply global custom attribute names in your lang with the <code>attributes</code> property.</p>
+<p>You can also configure a custom attribute formatter:</p>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13</div><span class="hljs-comment">// Configure global formatter.</span>
+Validator.setAttributeFormatter(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">attribute</span>) </span>{
+    <span class="hljs-keyword">return</span> attribute.replace(<span class="hljs-regexp">/_/g</span>, <span class="hljs-string">' '</span>);
+});
+
+<span class="hljs-comment">// Or configure formatter for particular instance.</span>
+<span class="hljs-keyword">var</span> validator = <span class="hljs-keyword">new</span> Validator({ <span class="hljs-attr">first_name</span>: <span class="hljs-string">''</span> }, { <span class="hljs-attr">first_name</span>: <span class="hljs-string">'required'</span> });
+validator.setAttributeFormatter(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">attribute</span>) </span>{
+    <span class="hljs-keyword">return</span> attribute.replace(<span class="hljs-regexp">/_/g</span>, <span class="hljs-string">' '</span>);
+});
+<span class="hljs-keyword">if</span> (validator.fails()) {
+    <span class="hljs-built_in">console</span>.log(validator.errors.first(<span class="hljs-string">'first_name'</span>)); <span class="hljs-comment">// The first name field is required.</span>
+}
+</code></pre>
+<p>Note: by default all _[] characters will be replaced with spaces.</p>
+<h3 id="Language-Support">Language Support</h3>
+<p>Error messages are in English by default. To include another language in the browser, reference the language file in a script tag and call <code>Validator.useLang(&#39;lang_code&#39;)</code>.</p>
+<pre><code class="lang-html"><div class="line-numbers">1
+2
+3
+4
+5</div><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"dist/validator.js"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"dist/lang/ru.js"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="actionscript">
+    Validator.useLang(<span class="hljs-string">'es'</span>);
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+</code></pre>
+<p>In Node, it will automatically pickup on the language source files.</p>
+<pre><code class="lang-js"><div class="line-numbers">1
+2</div><span class="hljs-keyword">var</span> Validator = <span class="hljs-built_in">require</span>(<span class="hljs-string">'validatorjs'</span>);
+Validator.useLang(<span class="hljs-string">'ru'</span>);
+</code></pre>
+<p>If you don&#39;t see support for your language, please add one to <code>src/lang</code>!</p>
+<p>You can also add your own custom language by calling <code>setMessages</code>:</p>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3
+4
+5</div>Validator.setMessages(<span class="hljs-string">'lang_code'</span>, {
+    <span class="hljs-attr">required</span>: <span class="hljs-string">'The :attribute field is required.'</span>,
+    ....
+    ....
+});
+</code></pre>
+<p>Get the raw object of messages for the given language:</p>
+<pre><code class="lang-js"><div class="line-numbers">1</div>Validator.getMessages(<span class="hljs-string">'lang_code'</span>);
+</code></pre>
+<p>Switch the default language used by the validator:</p>
+<pre><code class="lang-js"><div class="line-numbers">1</div>Validator.useLang(<span class="hljs-string">'lang_code'</span>);
+</code></pre>
+<p>Get the default language being used:</p>
+<pre><code class="lang-js"><div class="line-numbers">1</div>Validator.getDefaultLang(); <span class="hljs-comment">// returns e.g. 'en'</span>
+</code></pre>
+<p>Override default messages for language:</p>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">var</span> messages = Validator.getMessages(<span class="hljs-string">'en'</span>);
+messages.required = <span class="hljs-string">'Whoops, :attribute field is required.'</span>;
+Validator.setMessages(<span class="hljs-string">'en'</span>, messages);
+</code></pre>
+ </div><div class="sidebar hidden-sm hidden-xs"><div id=toc></div></div></div></div><div class=footer><div class=container>&copy; Copright 2017 fibjs.org | <a href=../../../support.html>支持我们</a></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="Click to return on the top page" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js></script><script type=text/javascript src=../../../js/common.js></script><script type=text/javascript src=../../../js/docs.js></script></body></html>
