@@ -268,11 +268,11 @@ List HttpRequest.allHeader(String name);
 **添加一个消息头，添加数据并不修改已存在的键值的消息头**
 
 ```JavaScript
-HttpRequest.addHeader(Map map);
+HttpRequest.addHeader(Object map);
 ```
 
 调用参数:
-* map: [Map](Map.md), 指定要添加的键值数据字典
+* map: Object, 指定要添加的键值数据字典
 
 --------------------------
 **添加一个消息头，添加数据并不修改已存在的键值的消息头**
@@ -291,11 +291,11 @@ HttpRequest.addHeader(String name,
 **设定一个消息头，设定数据将修改键值所对应的第一个数值，并清除相同键值的其余消息头**
 
 ```JavaScript
-HttpRequest.setHeader(Map map);
+HttpRequest.setHeader(Object map);
 ```
 
 调用参数:
-* map: [Map](Map.md), 指定要设定的键值数据字典
+* map: Object, 指定要设定的键值数据字典
 
 --------------------------
 **设定一个消息头，设定数据将修改键值所对应的第一个数值，并清除相同键值的其余消息头**

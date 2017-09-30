@@ -50,17 +50,6 @@ X509Req crypto.X509Req;
 
 ## 静态函数
         
-### getHashes
-**查询支持的 [hash](hash.md) 算法**
-
-```JavaScript
-static Array crypto.getHashes();
-```
-
-返回结果:
-* Array, 返回算法名称列表
-
---------------------------
 ### createHash
 **根据给定的算法名称创建一个信息摘要对象**
 

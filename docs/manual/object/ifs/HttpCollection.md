@@ -77,11 +77,11 @@ List HttpCollection.all(String name);
 **添加一个键值数据，添加数据并不修改已存在的键值的数据**
 
 ```JavaScript
-HttpCollection.add(Map map);
+HttpCollection.add(Object map);
 ```
 
 调用参数:
-* map: [Map](Map.md), 指定要添加的键值数据字典
+* map: Object, 指定要添加的键值数据字典
 
 --------------------------
 **添加一个键值数据，添加数据并不修改已存在的键值的数据**
@@ -100,11 +100,11 @@ HttpCollection.add(String name,
 **设定一个键值数据，设定数据将修改键值所对应的第一个数值，并清除相同键值的其余数据**
 
 ```JavaScript
-HttpCollection.set(Map map);
+HttpCollection.set(Object map);
 ```
 
 调用参数:
-* map: [Map](Map.md), 指定要设定的键值数据字典
+* map: Object, 指定要设定的键值数据字典
 
 --------------------------
 **设定一个键值数据，设定数据将修改键值所对应的第一个数值，并清除相同键值的其余数据**

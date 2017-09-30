@@ -99,7 +99,7 @@ digraph {
 
     object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\l}"];
     Handler [tooltip="Handler", URL="Handler.md", label="{Handler|new Handler()\l|invoke()\l}"];
-    Routing [tooltip="Routing", fillcolor="lightgray", label="{Routing|new Routing()\l|append()\lall()\lget()\lpost()\ldel()\lput()\lpatch()\l}"];
+    Routing [tooltip="Routing", fillcolor="lightgray", label="{Routing|new Routing()\l|append()\lall()\lget()\lpost()\ldel()\lput()\lpatch()\lfind()\l}"];
 
     object -> Handler [dir=back];
     Handler -> Routing [dir=back];
@@ -354,6 +354,35 @@ Routing Routing.patch(Object map);
 
 ```JavaScript
 Routing Routing.patch(String pattern,
+    Handler hdlr);
+```
+
+调用参数:
+* pattern: String, 消息匹配格式
+* hdlr: [Handler](Handler.md), 内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq.Handler](../../module/ifs/mq.md#Handler)
+
+返回结果:
+* Routing, 返回路由对象本身
+
+--------------------------
+### find
+**添加一组 FIND 方法路由规则**
+
+```JavaScript
+Routing Routing.find(Object map);
+```
+
+调用参数:
+* map: Object, 路由参数
+
+返回结果:
+* Routing, 返回路由对象本身
+
+--------------------------
+**添加一条接受 [http](../../module/ifs/http.md) FIND 方法路由规则**
+
+```JavaScript
+Routing Routing.find(String pattern,
     Handler hdlr);
 ```
 

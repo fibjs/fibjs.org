@@ -10,7 +10,7 @@ digraph {
     Message [tooltip="Message", URL="Message.md", label="{Message|new Message()\l|TEXT\lBINARY\l|value\lparams\ltype\ldata\lbody\llength\lstream\lresponse\llastError\l|read()\lreadAll()\lwrite()\ljson()\lend()\lisEnded()\lclear()\lsendTo()\lreadFrom()\l}"];
     HttpMessage [tooltip="HttpMessage", fillcolor="lightgray", label="{HttpMessage|protocol\lheaders\lkeepAlive\lupgrade\lmaxHeadersCount\lmaxBodySize\lsocket\l|hasHeader()\lfirstHeader()\lallHeader()\laddHeader()\lsetHeader()\lremoveHeader()\l}"];
     HttpRequest [tooltip="HttpRequest", URL="HttpRequest.md", label="{HttpRequest|new HttpRequest()\l|method\laddress\lqueryString\lcookies\lform\lquery\l}"];
-    HttpResponse [tooltip="HttpResponse", URL="HttpResponse.md", label="{HttpResponse|new HttpResponse()\l|status\lcookies\l|addCookie()\lredirect()\lsendHeader()\l}"];
+    HttpResponse [tooltip="HttpResponse", URL="HttpResponse.md", label="{HttpResponse|new HttpResponse()\l|statusCode\lstatusMessage\lcookies\l|writeHead()\laddCookie()\lredirect()\lsendHeader()\l}"];
 
     object -> Message [dir=back];
     Message -> HttpMessage [dir=back];
@@ -213,11 +213,11 @@ List HttpMessage.allHeader(String name);
 **添加一个消息头，添加数据并不修改已存在的键值的消息头**
 
 ```JavaScript
-HttpMessage.addHeader(Map map);
+HttpMessage.addHeader(Object map);
 ```
 
 调用参数:
-* map: [Map](Map.md), 指定要添加的键值数据字典
+* map: Object, 指定要添加的键值数据字典
 
 --------------------------
 **添加一个消息头，添加数据并不修改已存在的键值的消息头**
@@ -236,11 +236,11 @@ HttpMessage.addHeader(String name,
 **设定一个消息头，设定数据将修改键值所对应的第一个数值，并清除相同键值的其余消息头**
 
 ```JavaScript
-HttpMessage.setHeader(Map map);
+HttpMessage.setHeader(Object map);
 ```
 
 调用参数:
-* map: [Map](Map.md), 指定要设定的键值数据字典
+* map: Object, 指定要设定的键值数据字典
 
 --------------------------
 **设定一个消息头，设定数据将修改键值所对应的第一个数值，并清除相同键值的其余消息头**

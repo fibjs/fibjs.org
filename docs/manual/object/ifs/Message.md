@@ -17,7 +17,7 @@ digraph {
     Message [tooltip="Message", fillcolor="lightgray", label="{Message|new Message()\l|TEXT\lBINARY\l|value\lparams\ltype\ldata\lbody\llength\lstream\lresponse\llastError\l|read()\lreadAll()\lwrite()\ljson()\lend()\lisEnded()\lclear()\lsendTo()\lreadFrom()\l}"];
     HttpMessage [tooltip="HttpMessage", URL="HttpMessage.md", label="{HttpMessage|protocol\lheaders\lkeepAlive\lupgrade\lmaxHeadersCount\lmaxBodySize\lsocket\l|hasHeader()\lfirstHeader()\lallHeader()\laddHeader()\lsetHeader()\lremoveHeader()\l}"];
     HttpRequest [tooltip="HttpRequest", URL="HttpRequest.md", label="{HttpRequest|new HttpRequest()\l|method\laddress\lqueryString\lcookies\lform\lquery\l}"];
-    HttpResponse [tooltip="HttpResponse", URL="HttpResponse.md", label="{HttpResponse|new HttpResponse()\l|status\lcookies\l|addCookie()\lredirect()\lsendHeader()\l}"];
+    HttpResponse [tooltip="HttpResponse", URL="HttpResponse.md", label="{HttpResponse|new HttpResponse()\l|statusCode\lstatusMessage\lcookies\l|writeHead()\laddCookie()\lredirect()\lsendHeader()\l}"];
     WebSocketMessage [tooltip="WebSocketMessage", URL="WebSocketMessage.md", label="{WebSocketMessage|new WebSocketMessage()\l|masked\lmaxSize\l}"];
 
     object -> Message [dir=back];

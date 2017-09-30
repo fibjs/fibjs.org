@@ -370,7 +370,7 @@ static readonly File process.stdin;
 
 --------------------------
 ### stdout
-****
+**[File](../../object/ifs/File.md), 查询当前进程标准输出对象**
 
 ```JavaScript
 static readonly File process.stdout;

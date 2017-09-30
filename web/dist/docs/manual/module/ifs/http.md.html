@@ -265,18 +265,30 @@
 2
 3</div><span class="hljs-keyword">static</span> HttpResponse http.request(<span class="hljs-built_in">String</span> method,
     <span class="hljs-built_in">String</span> url,
-    <span class="hljs-built_in">Object</span> headers = {}) <span class="hljs-keyword">async</span>;
+    <span class="hljs-built_in">Object</span> opts = {}) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
 <li>method: String, 指定 http 请求方法：GET, POST 等</li>
 <li>url: String, 指定 <a href=url.md.html>url</a>，必须是包含主机的完整 <a href=url.md.html>url</a></li>
-<li>headers: Object, 指定附加的 http 头，缺省无附加头</li>
+<li>opts: Object, 指定附加信息</li>
 </ul>
 <p>返回结果:</p>
 <ul>
 <li><a href=../../object/ifs/httpresponse.md.html>HttpResponse</a>, 返回服务器响应</li>
 </ul>
+<p>opts 包含请求的附加选项，支持的内容如下：</p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5</div>{
+    <span class="hljs-string">"body"</span>: SeekedStream | Buffer | <span class="hljs-built_in">String</span> | {},
+    <span class="hljs-string">"json"</span>: {},
+    <span class="hljs-string">"headers"</span>: {}
+}
+</code></pre>
+<p>其中 body，<a href=json.md.html>json</a> 不得同时出现。缺省为 {}，不包含任何附加信息</p>
 <hr>
 <p><strong>请求指定的 <a href=url.md.html>url</a>，并返回结果</strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
@@ -299,235 +311,173 @@
 <li><a href=../../object/ifs/httpresponse.md.html>HttpResponse</a>, 返回服务器响应</li>
 </ul>
 <hr>
-<p><strong>请求指定的 <a href=url.md.html>url</a>，并返回结果</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1
-2
-3
-4</div><span class="hljs-keyword">static</span> HttpResponse http.request(<span class="hljs-built_in">String</span> method,
-    <span class="hljs-built_in">String</span> url,
-    SeekableStream body,
-    <span class="hljs-built_in">Object</span> headers = {}) <span class="hljs-keyword">async</span>;
-</code></pre>
-<p>调用参数:</p>
-<ul>
-<li>method: String, 指定 http 请求方法：GET, POST 等</li>
-<li>url: String, 指定 <a href=url.md.html>url</a>，必须是包含主机的完整 <a href=url.md.html>url</a></li>
-<li>body: <a href=../../object/ifs/seekablestream.md.html>SeekableStream</a>, 指定发送的 body 内容</li>
-<li>headers: Object, 指定附加的 http 头，缺省无附加头</li>
-</ul>
-<p>返回结果:</p>
-<ul>
-<li><a href=../../object/ifs/httpresponse.md.html>HttpResponse</a>, 返回服务器响应</li>
-</ul>
-<hr>
-<p><strong>请求指定的 <a href=url.md.html>url</a>，并返回结果</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1
-2
-3
-4</div><span class="hljs-keyword">static</span> HttpResponse http.request(<span class="hljs-built_in">String</span> method,
-    <span class="hljs-built_in">String</span> url,
-    Buffer body,
-    <span class="hljs-built_in">Object</span> headers = {}) <span class="hljs-keyword">async</span>;
-</code></pre>
-<p>调用参数:</p>
-<ul>
-<li>method: String, 指定 http 请求方法：GET, POST 等</li>
-<li>url: String, 指定 <a href=url.md.html>url</a>，必须是包含主机的完整 <a href=url.md.html>url</a></li>
-<li>body: <a href=../../object/ifs/buffer.md.html>Buffer</a>, 指定发送的 body 内容</li>
-<li>headers: Object, 指定附加的 http 头，缺省无附加头</li>
-</ul>
-<p>返回结果:</p>
-<ul>
-<li><a href=../../object/ifs/httpresponse.md.html>HttpResponse</a>, 返回服务器响应</li>
-</ul>
-<hr>
 <h3 id="get">get</h3>
 <p><strong>用 GET 方法请求指定的 <a href=url.md.html>url</a>，并返回结果，等同于 request(&quot;GET&quot;, ...)</strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">static</span> HttpResponse http.get(<span class="hljs-built_in">String</span> url,
-    <span class="hljs-built_in">Object</span> headers = {}) <span class="hljs-keyword">async</span>;
+    <span class="hljs-built_in">Object</span> opts = {}) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
 <li>url: String, 指定 <a href=url.md.html>url</a>，必须是包含主机的完整 <a href=url.md.html>url</a></li>
-<li>headers: Object, 指定附加的 http 头，缺省无附加头</li>
+<li>opts: Object, 指定附加信息</li>
 </ul>
 <p>返回结果:</p>
 <ul>
 <li><a href=../../object/ifs/httpresponse.md.html>HttpResponse</a>, 返回服务器响应</li>
 </ul>
+<p>opts 包含请求的附加选项，支持的内容如下：</p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5</div>{
+    <span class="hljs-string">"body"</span>: SeekedStream | Buffer | <span class="hljs-built_in">String</span> | {},
+    <span class="hljs-string">"json"</span>: {},
+    <span class="hljs-string">"headers"</span>: {}
+}
+</code></pre>
+<p>其中 body，<a href=json.md.html>json</a> 不得同时出现。缺省为 {}，不包含任何附加信息</p>
 <hr>
 <h3 id="post">post</h3>
 <p><strong>用 POST 方法请求指定的 <a href=url.md.html>url</a>，并返回结果，等同于 request(&quot;POST&quot;, ...)</strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
-2
-3</div><span class="hljs-keyword">static</span> HttpResponse http.post(<span class="hljs-built_in">String</span> url,
-    SeekableStream body,
-    <span class="hljs-built_in">Object</span> headers = {}) <span class="hljs-keyword">async</span>;
-</code></pre>
-<p>调用参数:</p>
-<ul>
-<li>url: String, 指定 <a href=url.md.html>url</a>，必须是包含主机的完整 <a href=url.md.html>url</a></li>
-<li>body: <a href=../../object/ifs/seekablestream.md.html>SeekableStream</a>, 指定发送的 body 内容</li>
-<li>headers: Object, 指定附加的 http 头，缺省无附加头</li>
-</ul>
-<p>返回结果:</p>
-<ul>
-<li><a href=../../object/ifs/httpresponse.md.html>HttpResponse</a>, 返回服务器响应</li>
-</ul>
-<hr>
-<p><strong>用 POST 方法请求指定的 <a href=url.md.html>url</a>，并返回结果，等同于 request(&quot;POST&quot;, ...)</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1
-2
-3</div><span class="hljs-keyword">static</span> HttpResponse http.post(<span class="hljs-built_in">String</span> url,
-    Buffer body,
-    <span class="hljs-built_in">Object</span> headers = {}) <span class="hljs-keyword">async</span>;
-</code></pre>
-<p>调用参数:</p>
-<ul>
-<li>url: String, 指定 <a href=url.md.html>url</a>，必须是包含主机的完整 <a href=url.md.html>url</a></li>
-<li>body: <a href=../../object/ifs/buffer.md.html>Buffer</a>, 指定发送的 body 内容</li>
-<li>headers: Object, 指定附加的 http 头，缺省无附加头</li>
-</ul>
-<p>返回结果:</p>
-<ul>
-<li><a href=../../object/ifs/httpresponse.md.html>HttpResponse</a>, 返回服务器响应</li>
-</ul>
-<hr>
-<p><strong>用 POST 方法请求指定的 <a href=url.md.html>url</a>，并返回结果，等同于 request(&quot;POST&quot;, ...)</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">static</span> HttpResponse http.post(<span class="hljs-built_in">String</span> url,
-    <span class="hljs-built_in">Object</span> headers = {}) <span class="hljs-keyword">async</span>;
+    <span class="hljs-built_in">Object</span> opts = {}) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
 <li>url: String, 指定 <a href=url.md.html>url</a>，必须是包含主机的完整 <a href=url.md.html>url</a></li>
-<li>headers: Object, 指定附加的 http 头，缺省无附加头</li>
+<li>opts: Object, 指定附加信息</li>
 </ul>
 <p>返回结果:</p>
 <ul>
 <li><a href=../../object/ifs/httpresponse.md.html>HttpResponse</a>, 返回服务器响应</li>
 </ul>
+<p>opts 包含请求的附加选项，支持的内容如下：</p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5</div>{
+    <span class="hljs-string">"body"</span>: SeekedStream | Buffer | <span class="hljs-built_in">String</span> | {},
+    <span class="hljs-string">"json"</span>: {},
+    <span class="hljs-string">"headers"</span>: {}
+}
+</code></pre>
+<p>其中 body，<a href=json.md.html>json</a> 不得同时出现。缺省为 {}，不包含任何附加信息</p>
 <hr>
 <h3 id="del">del</h3>
 <p><strong>用 DELETE 方法请求指定的 <a href=url.md.html>url</a>，并返回结果，等同于 request(&quot;DELETE&quot;, ...)</strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">static</span> HttpResponse http.del(<span class="hljs-built_in">String</span> url,
-    <span class="hljs-built_in">Object</span> headers = {}) <span class="hljs-keyword">async</span>;
+    <span class="hljs-built_in">Object</span> opts = {}) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
 <li>url: String, 指定 <a href=url.md.html>url</a>，必须是包含主机的完整 <a href=url.md.html>url</a></li>
-<li>headers: Object, 指定附加的 http 头，缺省无附加头</li>
+<li>opts: Object, 指定附加信息</li>
 </ul>
 <p>返回结果:</p>
 <ul>
 <li><a href=../../object/ifs/httpresponse.md.html>HttpResponse</a>, 返回服务器响应</li>
 </ul>
+<p>opts 包含请求的附加选项，支持的内容如下：</p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5</div>{
+    <span class="hljs-string">"body"</span>: SeekedStream | Buffer | <span class="hljs-built_in">String</span> | {},
+    <span class="hljs-string">"json"</span>: {},
+    <span class="hljs-string">"headers"</span>: {}
+}
+</code></pre>
+<p>其中 body，<a href=json.md.html>json</a> 不得同时出现。缺省为 {}，不包含任何附加信息</p>
 <hr>
 <h3 id="put">put</h3>
 <p><strong>用 PUT 方法请求指定的 <a href=url.md.html>url</a>，并返回结果，等同于 request(&quot;PUT&quot;, ...)</strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
-2
-3</div><span class="hljs-keyword">static</span> HttpResponse http.put(<span class="hljs-built_in">String</span> url,
-    SeekableStream body,
-    <span class="hljs-built_in">Object</span> headers = {}) <span class="hljs-keyword">async</span>;
-</code></pre>
-<p>调用参数:</p>
-<ul>
-<li>url: String, 指定 <a href=url.md.html>url</a>，必须是包含主机的完整 <a href=url.md.html>url</a></li>
-<li>body: <a href=../../object/ifs/seekablestream.md.html>SeekableStream</a>, 指定发送的 body 内容</li>
-<li>headers: Object, 指定附加的 http 头，缺省无附加头</li>
-</ul>
-<p>返回结果:</p>
-<ul>
-<li><a href=../../object/ifs/httpresponse.md.html>HttpResponse</a>, 返回服务器响应</li>
-</ul>
-<hr>
-<p><strong>用 PUT 方法请求指定的 <a href=url.md.html>url</a>，并返回结果，等同于 request(&quot;PUT&quot;, ...)</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1
-2
-3</div><span class="hljs-keyword">static</span> HttpResponse http.put(<span class="hljs-built_in">String</span> url,
-    Buffer body,
-    <span class="hljs-built_in">Object</span> headers = {}) <span class="hljs-keyword">async</span>;
-</code></pre>
-<p>调用参数:</p>
-<ul>
-<li>url: String, 指定 <a href=url.md.html>url</a>，必须是包含主机的完整 <a href=url.md.html>url</a></li>
-<li>body: <a href=../../object/ifs/buffer.md.html>Buffer</a>, 指定发送的 body 内容</li>
-<li>headers: Object, 指定附加的 http 头，缺省无附加头</li>
-</ul>
-<p>返回结果:</p>
-<ul>
-<li><a href=../../object/ifs/httpresponse.md.html>HttpResponse</a>, 返回服务器响应</li>
-</ul>
-<hr>
-<p><strong>用 PUT 方法请求指定的 <a href=url.md.html>url</a>，并返回结果，等同于 request(&quot;PUT&quot;, ...)</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">static</span> HttpResponse http.put(<span class="hljs-built_in">String</span> url,
-    <span class="hljs-built_in">Object</span> headers = {}) <span class="hljs-keyword">async</span>;
+    <span class="hljs-built_in">Object</span> opts = {}) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
 <li>url: String, 指定 <a href=url.md.html>url</a>，必须是包含主机的完整 <a href=url.md.html>url</a></li>
-<li>headers: Object, 指定附加的 http 头，缺省无附加头</li>
+<li>opts: Object, 指定附加信息</li>
 </ul>
 <p>返回结果:</p>
 <ul>
 <li><a href=../../object/ifs/httpresponse.md.html>HttpResponse</a>, 返回服务器响应</li>
 </ul>
+<p>opts 包含请求的附加选项，支持的内容如下：</p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5</div>{
+    <span class="hljs-string">"body"</span>: SeekedStream | Buffer | <span class="hljs-built_in">String</span> | {},
+    <span class="hljs-string">"json"</span>: {},
+    <span class="hljs-string">"headers"</span>: {}
+}
+</code></pre>
+<p>其中 body，<a href=json.md.html>json</a> 不得同时出现。缺省为 {}，不包含任何附加信息</p>
 <hr>
 <h3 id="patch">patch</h3>
 <p><strong>用 PATCH 方法请求指定的 <a href=url.md.html>url</a>，并返回结果，等同于 request(&quot;PATCH&quot;, ...)</strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
-2
-3</div><span class="hljs-keyword">static</span> HttpResponse http.patch(<span class="hljs-built_in">String</span> url,
-    SeekableStream body,
-    <span class="hljs-built_in">Object</span> headers = {}) <span class="hljs-keyword">async</span>;
-</code></pre>
-<p>调用参数:</p>
-<ul>
-<li>url: String, 指定 <a href=url.md.html>url</a>，必须是包含主机的完整 <a href=url.md.html>url</a></li>
-<li>body: <a href=../../object/ifs/seekablestream.md.html>SeekableStream</a>, 指定发送的 body 内容</li>
-<li>headers: Object, 指定附加的 http 头，缺省无附加头</li>
-</ul>
-<p>返回结果:</p>
-<ul>
-<li><a href=../../object/ifs/httpresponse.md.html>HttpResponse</a>, 返回服务器响应</li>
-</ul>
-<hr>
-<p><strong>用 PATCH 方法请求指定的 <a href=url.md.html>url</a>，并返回结果，等同于 request(&quot;PATCH&quot;, ...)</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1
-2
-3</div><span class="hljs-keyword">static</span> HttpResponse http.patch(<span class="hljs-built_in">String</span> url,
-    Buffer body,
-    <span class="hljs-built_in">Object</span> headers = {}) <span class="hljs-keyword">async</span>;
-</code></pre>
-<p>调用参数:</p>
-<ul>
-<li>url: String, 指定 <a href=url.md.html>url</a>，必须是包含主机的完整 <a href=url.md.html>url</a></li>
-<li>body: <a href=../../object/ifs/buffer.md.html>Buffer</a>, 指定发送的 body 内容</li>
-<li>headers: Object, 指定附加的 http 头，缺省无附加头</li>
-</ul>
-<p>返回结果:</p>
-<ul>
-<li><a href=../../object/ifs/httpresponse.md.html>HttpResponse</a>, 返回服务器响应</li>
-</ul>
-<hr>
-<p><strong>用 PATCH 方法请求指定的 <a href=url.md.html>url</a>，并返回结果，等同于 request(&quot;PATCH&quot;, ...)</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">static</span> HttpResponse http.patch(<span class="hljs-built_in">String</span> url,
-    <span class="hljs-built_in">Object</span> headers = {}) <span class="hljs-keyword">async</span>;
+    <span class="hljs-built_in">Object</span> opts = {}) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
 <li>url: String, 指定 <a href=url.md.html>url</a>，必须是包含主机的完整 <a href=url.md.html>url</a></li>
-<li>headers: Object, 指定附加的 http 头，缺省无附加头</li>
+<li>opts: Object, 指定附加信息</li>
 </ul>
 <p>返回结果:</p>
 <ul>
 <li><a href=../../object/ifs/httpresponse.md.html>HttpResponse</a>, 返回服务器响应</li>
 </ul>
+<p>opts 包含请求的附加选项，支持的内容如下：</p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5</div>{
+    <span class="hljs-string">"body"</span>: SeekedStream | Buffer | <span class="hljs-built_in">String</span> | {},
+    <span class="hljs-string">"json"</span>: {},
+    <span class="hljs-string">"headers"</span>: {}
+}
+</code></pre>
+<p>其中 body，<a href=json.md.html>json</a> 不得同时出现。缺省为 {}，不包含任何附加信息</p>
+<hr>
+<h3 id="find">find</h3>
+<p><strong>用 FIND 方法请求指定的 <a href=url.md.html>url</a>，并返回结果，等同于 request(&quot;PATCH&quot;, ...)</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> HttpResponse http.find(<span class="hljs-built_in">String</span> url,
+    <span class="hljs-built_in">Object</span> opts = {}) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li>url: String, 指定 <a href=url.md.html>url</a>，必须是包含主机的完整 <a href=url.md.html>url</a></li>
+<li>opts: Object, 指定附加信息</li>
+</ul>
+<p>返回结果:</p>
+<ul>
+<li><a href=../../object/ifs/httpresponse.md.html>HttpResponse</a>, 返回服务器响应</li>
+</ul>
+<p>opts 包含请求的附加选项，支持的内容如下：</p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5</div>{
+    <span class="hljs-string">"body"</span>: SeekedStream | Buffer | <span class="hljs-built_in">String</span> | {},
+    <span class="hljs-string">"json"</span>: {},
+    <span class="hljs-string">"headers"</span>: {}
+}
+</code></pre>
+<p>其中 body，<a href=json.md.html>json</a> 不得同时出现。缺省为 {}，不包含任何附加信息</p>
 <h2 id="静态属性">静态属性</h2>
 <h3 id="cookies">cookies</h3>
 <p><strong><a href=../../object/ifs/list.md.html>List</a>, 返回http客户端的 <a href=../../object/ifs/httpcookie.md.html>HttpCookie</a> 对象列表</strong></p>

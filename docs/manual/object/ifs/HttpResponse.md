@@ -9,7 +9,7 @@ digraph {
     object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\l}"];
     Message [tooltip="Message", URL="Message.md", label="{Message|new Message()\l|TEXT\lBINARY\l|value\lparams\ltype\ldata\lbody\llength\lstream\lresponse\llastError\l|read()\lreadAll()\lwrite()\ljson()\lend()\lisEnded()\lclear()\lsendTo()\lreadFrom()\l}"];
     HttpMessage [tooltip="HttpMessage", URL="HttpMessage.md", label="{HttpMessage|protocol\lheaders\lkeepAlive\lupgrade\lmaxHeadersCount\lmaxBodySize\lsocket\l|hasHeader()\lfirstHeader()\lallHeader()\laddHeader()\lsetHeader()\lremoveHeader()\l}"];
-    HttpResponse [tooltip="HttpResponse", fillcolor="lightgray", label="{HttpResponse|new HttpResponse()\l|status\lcookies\l|addCookie()\lredirect()\lsendHeader()\l}"];
+    HttpResponse [tooltip="HttpResponse", fillcolor="lightgray", label="{HttpResponse|new HttpResponse()\l|statusCode\lstatusMessage\lcookies\l|writeHead()\laddCookie()\lredirect()\lsendHeader()\l}"];
 
     object -> Message [dir=back];
     Message -> HttpMessage [dir=back];
@@ -45,11 +45,19 @@ const HttpResponse.BINARY = 2;
 
 ## 成员属性
         
-### status
+### statusCode
 **Integer, 查询和设置响应消息的返回状态**
 
 ```JavaScript
-Integer HttpResponse.status;
+Integer HttpResponse.statusCode;
+```
+
+--------------------------
+### statusMessage
+**String, 查询和设置响应消息的返回消息**
+
+```JavaScript
+String HttpResponse.statusMessage;
 ```
 
 --------------------------
@@ -190,6 +198,33 @@ String HttpResponse.lastError;
 
 ## 成员函数
         
+### writeHead
+**设置响应消息的返回状态，返回消息，并添加响应头**
+
+```JavaScript
+HttpResponse.writeHead(Integer statusCode,
+    String statusMessage,
+    Object headers = {});
+```
+
+调用参数:
+* statusCode: Integer, 指定响应消息的返回状态
+* statusMessage: String, 指定响应消息的返回消息
+* headers: Object, 指定响应消息添加的响应头
+
+--------------------------
+**设置响应消息的返回状态，返回消息，并添加响应头**
+
+```JavaScript
+HttpResponse.writeHead(Integer statusCode,
+    Object headers = {});
+```
+
+调用参数:
+* statusCode: Integer, 指定响应消息的返回状态
+* headers: Object, 指定响应消息添加的响应头
+
+--------------------------
 ### addCookie
 **向 cookies 添加一个 [HttpCookie](HttpCookie.md) 对象**
 
@@ -269,11 +304,11 @@ List HttpResponse.allHeader(String name);
 **添加一个消息头，添加数据并不修改已存在的键值的消息头**
 
 ```JavaScript
-HttpResponse.addHeader(Map map);
+HttpResponse.addHeader(Object map);
 ```
 
 调用参数:
-* map: [Map](Map.md), 指定要添加的键值数据字典
+* map: Object, 指定要添加的键值数据字典
 
 --------------------------
 **添加一个消息头，添加数据并不修改已存在的键值的消息头**
@@ -292,11 +327,11 @@ HttpResponse.addHeader(String name,
 **设定一个消息头，设定数据将修改键值所对应的第一个数值，并清除相同键值的其余消息头**
 
 ```JavaScript
-HttpResponse.setHeader(Map map);
+HttpResponse.setHeader(Object map);
 ```
 
 调用参数:
-* map: [Map](Map.md), 指定要设定的键值数据字典
+* map: Object, 指定要设定的键值数据字典
 
 --------------------------
 **设定一个消息头，设定数据将修改键值所对应的第一个数值，并清除相同键值的其余消息头**

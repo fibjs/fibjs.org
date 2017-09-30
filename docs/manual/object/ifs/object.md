@@ -28,12 +28,12 @@ digraph {
     HandlerEx [tooltip="HandlerEx", URL="HandlerEx.md", label="{HandlerEx|handler\lstats\l|onerror()\l}"];
     HttpHandler [tooltip="HttpHandler", URL="HttpHandler.md", label="{HttpHandler|new HttpHandler()\l|forceGZIP\lmaxHeadersCount\lmaxBodySize\lserverName\l|enableCrossOrigin()\l}"];
     WebSocketHandler [tooltip="WebSocketHandler", URL="WebSocketHandler.md", label="{WebSocketHandler|new WebSocketHandler()\l|maxSize\l}"];
-    Routing [tooltip="Routing", URL="Routing.md", label="{Routing|new Routing()\l|append()\lall()\lget()\lpost()\ldel()\lput()\lpatch()\l}"];
+    Routing [tooltip="Routing", URL="Routing.md", label="{Routing|new Routing()\l|append()\lall()\lget()\lpost()\ldel()\lput()\lpatch()\lfind()\l}"];
     SslHandler [tooltip="SslHandler", URL="SslHandler.md", label="{SslHandler|new SslHandler()\l|verification\lca\lhandler\l}"];
     HeapGraphEdge [tooltip="HeapGraphEdge", URL="HeapGraphEdge.md", label="{HeapGraphEdge|type\lname\ldescription\l|getFromNode()\lgetToNode()\l}"];
     HeapGraphNode [tooltip="HeapGraphNode", URL="HeapGraphNode.md", label="{HeapGraphNode|type\lname\ldescription\lid\lshallowSize\lchilds\l}"];
     HeapSnapshot [tooltip="HeapSnapshot", URL="HeapSnapshot.md", label="{HeapSnapshot|time\lroot\lnodes\l|diff()\lgetNodeById()\lsave()\l}"];
-    HttpClient [tooltip="HttpClient", URL="HttpClient.md", label="{HttpClient|new HttpClient()\l|cookies\ltimeout\lmaxBodySize\lenableCookie\lautoRedirect\luserAgent\l|request()\lget()\lpost()\ldel()\lput()\lpatch()\l}"];
+    HttpClient [tooltip="HttpClient", URL="HttpClient.md", label="{HttpClient|new HttpClient()\l|cookies\ltimeout\lmaxBodySize\lenableCookie\lautoRedirect\luserAgent\l|request()\lget()\lpost()\ldel()\lput()\lpatch()\lfind()\l}"];
     HttpCollection [tooltip="HttpCollection", URL="HttpCollection.md", label="{HttpCollection|operator[String]\l|clear()\lhas()\lfirst()\lall()\ladd()\lset()\lremove()\l}"];
     HttpCookie [tooltip="HttpCookie", URL="HttpCookie.md", label="{HttpCookie|new HttpCookie()\l|name\lvalue\ldomain\lpath\lexpires\lhttpOnly\lsecure\l|parse()\lmatch()\l}"];
     HttpUploadData [tooltip="HttpUploadData", URL="HttpUploadData.md", label="{HttpUploadData|fileName\lcontentType\lcontentTransferEncoding\lbody\l}"];
@@ -50,7 +50,7 @@ digraph {
     Message [tooltip="Message", URL="Message.md", label="{Message|new Message()\l|TEXT\lBINARY\l|value\lparams\ltype\ldata\lbody\llength\lstream\lresponse\llastError\l|read()\lreadAll()\lwrite()\ljson()\lend()\lisEnded()\lclear()\lsendTo()\lreadFrom()\l}"];
     HttpMessage [tooltip="HttpMessage", URL="HttpMessage.md", label="{HttpMessage|protocol\lheaders\lkeepAlive\lupgrade\lmaxHeadersCount\lmaxBodySize\lsocket\l|hasHeader()\lfirstHeader()\lallHeader()\laddHeader()\lsetHeader()\lremoveHeader()\l}"];
     HttpRequest [tooltip="HttpRequest", URL="HttpRequest.md", label="{HttpRequest|new HttpRequest()\l|method\laddress\lqueryString\lcookies\lform\lquery\l}"];
-    HttpResponse [tooltip="HttpResponse", URL="HttpResponse.md", label="{HttpResponse|new HttpResponse()\l|status\lcookies\l|addCookie()\lredirect()\lsendHeader()\l}"];
+    HttpResponse [tooltip="HttpResponse", URL="HttpResponse.md", label="{HttpResponse|new HttpResponse()\l|statusCode\lstatusMessage\lcookies\l|writeHead()\laddCookie()\lredirect()\lsendHeader()\l}"];
     WebSocketMessage [tooltip="WebSocketMessage", URL="WebSocketMessage.md", label="{WebSocketMessage|new WebSocketMessage()\l|masked\lmaxSize\l}"];
     MongoCollection [tooltip="MongoCollection", URL="MongoCollection.md", label="{MongoCollection|operator[String]\l|find()\lfindOne()\lfindAndModify()\linsert()\lsave()\lupdate()\lremove()\lrunCommand()\ldrop()\lensureIndex()\lreIndex()\ldropIndex()\ldropIndexes()\lgetIndexes()\lgetCollection()\l}"];
     MongoCursor [tooltip="MongoCursor", URL="MongoCursor.md", label="{MongoCursor|skip()\llimit()\lsort()\lhasNext()\lnext()\lcount()\lsize()\lforEach()\lmap()\ltoArray()\lhint()\l}"];

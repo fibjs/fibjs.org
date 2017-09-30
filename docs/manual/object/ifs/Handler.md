@@ -13,7 +13,7 @@ digraph {
     HandlerEx [tooltip="HandlerEx", URL="HandlerEx.md", label="{HandlerEx|handler\lstats\l|onerror()\l}"];
     HttpHandler [tooltip="HttpHandler", URL="HttpHandler.md", label="{HttpHandler|new HttpHandler()\l|forceGZIP\lmaxHeadersCount\lmaxBodySize\lserverName\l|enableCrossOrigin()\l}"];
     WebSocketHandler [tooltip="WebSocketHandler", URL="WebSocketHandler.md", label="{WebSocketHandler|new WebSocketHandler()\l|maxSize\l}"];
-    Routing [tooltip="Routing", URL="Routing.md", label="{Routing|new Routing()\l|append()\lall()\lget()\lpost()\ldel()\lput()\lpatch()\l}"];
+    Routing [tooltip="Routing", URL="Routing.md", label="{Routing|new Routing()\l|append()\lall()\lget()\lpost()\ldel()\lput()\lpatch()\lfind()\l}"];
     SslHandler [tooltip="SslHandler", URL="SslHandler.md", label="{SslHandler|new SslHandler()\l|verification\lca\lhandler\l}"];
 
     object -> Handler [dir=back];

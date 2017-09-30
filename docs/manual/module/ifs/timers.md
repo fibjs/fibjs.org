@@ -41,12 +41,12 @@ static timers.clearImmediate(Timer t);
 
 ```JavaScript
 static Timer timers.setInterval(Function callback,
-    Integer timeout);
+    Number timeout);
 ```
 
 调用参数:
 * callback: Function, 指定回调函数
-* timeout: Integer, 指定间隔的时间，以毫秒为单位
+* timeout: Number, 指定间隔的时间，以毫秒为单位。超过 2^31 的话,立即执行。
 
 返回结果:
 * [Timer](../../object/ifs/Timer.md), 返回定时器对象
@@ -57,12 +57,12 @@ static Timer timers.setInterval(Function callback,
 
 ```JavaScript
 static Timer timers.setTimeout(Function callback,
-    Integer timeout);
+    Number timeout);
 ```
 
 调用参数:
 * callback: Function, 指定回调函数
-* timeout: Integer, 指定延时的时间，以毫秒为单位
+* timeout: Number, 指定延时的时间，以毫秒为单位。超过 2^31 的话,立即执行。
 
 返回结果:
 * [Timer](../../object/ifs/Timer.md), 返回定时器对象
