@@ -81,14 +81,15 @@
 <li><a href=../../object/ifs/httprequest.md.html>HttpRequest</a></li>
 <li><a href=../../object/ifs/httpresponse.md.html>HttpResponse</a></li>
 <li><a href=../../object/ifs/httpserver.md.html>HttpServer</a></li>
-<li><a href=../../object/ifs/httpsserver.md.html>HttpsServer</a></li>
 <li><a href=../../object/ifs/httpuploaddata.md.html>HttpUploadData</a></li>
+<li><a href=../../object/ifs/httpsserver.md.html>HttpsServer</a></li>
 <li><a href=../../object/ifs/image.md.html>Image</a></li>
 <li><a href=../../object/ifs/int64.md.html>Int64</a></li>
 <li><a href=../../object/ifs/leveldb.md.html>LevelDB</a></li>
 <li><a href=../../object/ifs/list.md.html>List</a></li>
 <li><a href=../../object/ifs/lock.md.html>Lock</a></li>
 <li><a href=../../object/ifs/lrucache.md.html>LruCache</a></li>
+<li><a href=../../object/ifs/mssql.md.html>MSSQL</a></li>
 <li><a href=../../object/ifs/map.md.html>Map</a></li>
 <li><a href=../../object/ifs/memorystream.md.html>MemoryStream</a></li>
 <li><a href=../../object/ifs/message.md.html>Message</a></li>
@@ -96,9 +97,7 @@
 <li><a href=../../object/ifs/mongocursor.md.html>MongoCursor</a></li>
 <li><a href=../../object/ifs/mongodb.md.html>MongoDB</a></li>
 <li><a href=../../object/ifs/mongoid.md.html>MongoID</a></li>
-<li><a href=../../object/ifs/mssql.md.html>MSSQL</a></li>
 <li><a href=../../object/ifs/mysql.md.html>MySQL</a></li>
-<li><a href=../../object/ifs/object.md.html>object</a></li>
 <li><a href=../../object/ifs/pkey.md.html>PKey</a></li>
 <li><a href=../../object/ifs/queue.md.html>Queue</a></li>
 <li><a href=../../object/ifs/redis.md.html>Redis</a></li>
@@ -107,13 +106,13 @@
 <li><a href=../../object/ifs/redisset.md.html>RedisSet</a></li>
 <li><a href=../../object/ifs/redissortedset.md.html>RedisSortedSet</a></li>
 <li><a href=../../object/ifs/routing.md.html>Routing</a></li>
+<li><a href=../../object/ifs/sqlite.md.html>SQLite</a></li>
 <li><a href=../../object/ifs/sandbox.md.html>SandBox</a></li>
 <li><a href=../../object/ifs/seekablestream.md.html>SeekableStream</a></li>
 <li><a href=../../object/ifs/semaphore.md.html>Semaphore</a></li>
 <li><a href=../../object/ifs/service.md.html>Service</a></li>
 <li><a href=../../object/ifs/smtp.md.html>Smtp</a></li>
 <li><a href=../../object/ifs/socket.md.html>Socket</a></li>
-<li><a href=../../object/ifs/sqlite.md.html>SQLite</a></li>
 <li><a href=../../object/ifs/sslhandler.md.html>SslHandler</a></li>
 <li><a href=../../object/ifs/sslserver.md.html>SslServer</a></li>
 <li><a href=../../object/ifs/sslsocket.md.html>SslSocket</a></li>
@@ -149,6 +148,7 @@
 <li><a href=../../object/ifs/zipfile.md.html>ZipFile</a></li>
 <li><a href=../../object/ifs/zipinfo.md.html>ZipInfo</a></li>
 <li><a href=../../object/ifs/zmqsocket.md.html>ZmqSocket</a></li>
+<li><a href=../../object/ifs/object.md.html>object</a></li>
 </ul>
  </div></div></div>  <div class=panel><div class=panel-heading role=tab id=headingOne><h4 class=panel-title><a data-toggle=collapse data-parent=#accordion href="#collapse_awesome" aria-controls="collapse_awesome"> 社区模块 </a></h4></div><div id="collapse_awesome" class="panel-collapse collapse " aria-labelledby=headingOne><div class=panel-body> <ul>
 <li><a href=../../../awesome/module/fib-session.md.html>fib-session</a></li>
@@ -188,13 +188,23 @@
  </div></div></div>  </div></div><div class=content><div class=social-share data-sites=weibo,twitter data-description=分享></div> <h1 id="模块-timers">模块 timers</h1>
 <p>timers 模块</p>
 <h2 id="静态函数">静态函数</h2>
-<h3 id="clearInterval">clearInterval</h3>
-<p><strong>清除指定的定时器</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> timers.clearInterval(Timer t);
+<h3 id="setTimeout">setTimeout</h3>
+<p><strong>在指定的时间后调用函数</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">static</span> Timer timers.setTimeout(<span class="hljs-built_in">Function</span> callback,
+    <span class="hljs-built_in">Number</span> timeout,
+    ...args);
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>t: <a href=../../object/ifs/timer.md.html>Timer</a>, 指定要清除的定时器</li>
+<li>callback: Function, 指定回调函数</li>
+<li>timeout: Number, 指定延时的时间，以毫秒为单位。超过 2^31 的话,立即执行。</li>
+<li>args: ..., 额外的参数，传入到指定的 callback 内，可选。</li>
+</ul>
+<p>返回结果:</p>
+<ul>
+<li><a href=../../object/ifs/timer.md.html>Timer</a>, 返回定时器对象</li>
 </ul>
 <hr>
 <h3 id="clearTimeout">clearTimeout</h3>
@@ -206,6 +216,100 @@
 <li>t: <a href=../../object/ifs/timer.md.html>Timer</a>, 指定要清除的定时器</li>
 </ul>
 <hr>
+<h3 id="setInterval">setInterval</h3>
+<p><strong>每间隔指定的时间后调用函数</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">static</span> Timer timers.setInterval(<span class="hljs-built_in">Function</span> callback,
+    <span class="hljs-built_in">Number</span> timeout,
+    ...args);
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li>callback: Function, 指定回调函数</li>
+<li>timeout: Number, 指定间隔的时间，以毫秒为单位。超过 2^31 的话,立即执行。</li>
+<li>args: ..., 额外的参数，传入到指定的 callback 内，可选。</li>
+</ul>
+<p>返回结果:</p>
+<ul>
+<li><a href=../../object/ifs/timer.md.html>Timer</a>, 返回定时器对象</li>
+</ul>
+<hr>
+<h3 id="clearInterval">clearInterval</h3>
+<p><strong>清除指定的定时器</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> timers.clearInterval(Timer t);
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li>t: <a href=../../object/ifs/timer.md.html>Timer</a>, 指定要清除的定时器</li>
+</ul>
+<hr>
+<h3 id="setHrInterval">setHrInterval</h3>
+<p><strong>每间隔指定的时间后调用函数，这是个高精度定时器，会主动打断正在运行的 JavaScript 脚本执行定时器</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">static</span> Timer timers.setHrInterval(<span class="hljs-built_in">Function</span> callback,
+    <span class="hljs-built_in">Number</span> timeout,
+    ...args);
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li>callback: Function, 指定回调函数</li>
+<li>timeout: Number, 指定间隔的时间，以毫秒为单位。超过 2^31 的话,立即执行。</li>
+<li>args: ..., 额外的参数，传入到指定的 callback 内，可选。</li>
+</ul>
+<p>返回结果:</p>
+<ul>
+<li><a href=../../object/ifs/timer.md.html>Timer</a>, 返回定时器对象</li>
+</ul>
+<p>由于 setHrInterval 的定时器会中断正在运行的代码执行回调，因此不要在回调函数内修改可能影响其它模块的数据，或者在回调中调用任何标记为 async 的 api 函数，否则将会产生不可预知的结果。例如：</p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10</div><span class="hljs-keyword">var</span> timers = <span class="hljs-built_in">require</span>(<span class="hljs-string">'timers'</span>);
+
+<span class="hljs-keyword">var</span> cnt = <span class="hljs-number">0</span>;
+timers.setHrInterval(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+    cnt++;
+}, <span class="hljs-number">100</span>);
+
+<span class="hljs-keyword">while</span> (cnt &lt; <span class="hljs-number">10</span>);
+
+<span class="hljs-built_in">console</span>.error(<span class="hljs-string">"===============================&gt; done"</span>);
+</code></pre>
+<p>这段代码中，第 8 行的循环并不会因为 cnt 的改变而结束，因为 JavaScript 在优化代码时会认定在这个循环过程中 cnt 不会被改变。</p>
+<hr>
+<h3 id="clearHrInterval">clearHrInterval</h3>
+<p><strong>清除指定的定时器</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> timers.clearHrInterval(Timer t);
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li>t: <a href=../../object/ifs/timer.md.html>Timer</a>, 指定要清除的定时器</li>
+</ul>
+<hr>
+<h3 id="setImmediate">setImmediate</h3>
+<p><strong>下一个空闲时间立即执行回调函数</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> Timer timers.setImmediate(<span class="hljs-built_in">Function</span> callback,
+    ...args);
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li>callback: Function, 指定回调函数</li>
+<li>args: ..., 额外的参数，传入到指定的 callback 内，可选。</li>
+</ul>
+<p>返回结果:</p>
+<ul>
+<li><a href=../../object/ifs/timer.md.html>Timer</a>, 返回定时器对象</li>
+</ul>
+<hr>
 <h3 id="clearImmediate">clearImmediate</h3>
 <p><strong>清除指定的定时器</strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> timers.clearImmediate(Timer t);
@@ -213,50 +317,5 @@
 <p>调用参数:</p>
 <ul>
 <li>t: <a href=../../object/ifs/timer.md.html>Timer</a>, 指定要清除的定时器</li>
-</ul>
-<hr>
-<h3 id="setInterval">setInterval</h3>
-<p><strong>每间隔指定的时间后调用函数</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div><span class="hljs-keyword">static</span> Timer timers.setInterval(<span class="hljs-built_in">Function</span> callback,
-    <span class="hljs-built_in">Number</span> timeout);
-</code></pre>
-<p>调用参数:</p>
-<ul>
-<li>callback: Function, 指定回调函数</li>
-<li>timeout: Number, 指定间隔的时间，以毫秒为单位。超过 2^31 的话,立即执行。</li>
-</ul>
-<p>返回结果:</p>
-<ul>
-<li><a href=../../object/ifs/timer.md.html>Timer</a>, 返回定时器对象</li>
-</ul>
-<hr>
-<h3 id="setTimeout">setTimeout</h3>
-<p><strong>在指定的时间后调用函数</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div><span class="hljs-keyword">static</span> Timer timers.setTimeout(<span class="hljs-built_in">Function</span> callback,
-    <span class="hljs-built_in">Number</span> timeout);
-</code></pre>
-<p>调用参数:</p>
-<ul>
-<li>callback: Function, 指定回调函数</li>
-<li>timeout: Number, 指定延时的时间，以毫秒为单位。超过 2^31 的话,立即执行。</li>
-</ul>
-<p>返回结果:</p>
-<ul>
-<li><a href=../../object/ifs/timer.md.html>Timer</a>, 返回定时器对象</li>
-</ul>
-<hr>
-<h3 id="setImmediate">setImmediate</h3>
-<p><strong>下一个空闲时间立即执行回调函数</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Timer timers.setImmediate(<span class="hljs-built_in">Function</span> callback);
-</code></pre>
-<p>调用参数:</p>
-<ul>
-<li>callback: Function, 指定回调函数</li>
-</ul>
-<p>返回结果:</p>
-<ul>
-<li><a href=../../object/ifs/timer.md.html>Timer</a>, 返回定时器对象</li>
 </ul>
  </div><div class="sidebar hidden-sm hidden-xs"><div id=toc></div></div></div></div><div class=footer><div class=container>&copy; Copright 2017 fibjs.org | <a href=../../../../support.html>支持我们</a></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="Click to return on the top page" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js></script><script type=text/javascript src=../../../../js/common.js></script><script type=text/javascript src=../../../../js/docs.js></script></body></html>

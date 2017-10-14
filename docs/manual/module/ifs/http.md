@@ -117,6 +117,7 @@ opts 包含请求的附加选项，支持的内容如下：
 
 ```JavaScript
 {
+    "query": {},
     "body": SeekedStream | Buffer | String | {},
     "json": {},
     "headers": {}
@@ -164,6 +165,7 @@ opts 包含请求的附加选项，支持的内容如下：
 
 ```JavaScript
 {
+    "query": {},
     "body": SeekedStream | Buffer | String | {},
     "json": {},
     "headers": {}
@@ -192,6 +194,7 @@ opts 包含请求的附加选项，支持的内容如下：
 
 ```JavaScript
 {
+    "query": {},
     "body": SeekedStream | Buffer | String | {},
     "json": {},
     "headers": {}
@@ -220,6 +223,7 @@ opts 包含请求的附加选项，支持的内容如下：
 
 ```JavaScript
 {
+    "query": {},
     "body": SeekedStream | Buffer | String | {},
     "json": {},
     "headers": {}
@@ -248,6 +252,7 @@ opts 包含请求的附加选项，支持的内容如下：
 
 ```JavaScript
 {
+    "query": {},
     "body": SeekedStream | Buffer | String | {},
     "json": {},
     "headers": {}
@@ -276,6 +281,7 @@ opts 包含请求的附加选项，支持的内容如下：
 
 ```JavaScript
 {
+    "query": {},
     "body": SeekedStream | Buffer | String | {},
     "json": {},
     "headers": {}
@@ -304,6 +310,7 @@ opts 包含请求的附加选项，支持的内容如下：
 
 ```JavaScript
 {
+    "query": {},
     "body": SeekedStream | Buffer | String | {},
     "json": {},
     "headers": {}

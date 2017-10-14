@@ -20,7 +20,7 @@ digraph {
     WebView [tooltip="WebView", URL="WebView.md", label="{WebView|visible\lonload\lonmove\lonresize\lonclosed\lonmessage\l|setHtml()\lprint()\lclose()\lwait()\lpostMessage()\l}"];
     Worker [tooltip="Worker", URL="Worker.md", label="{Worker|new Worker()\l|onmessage\l|postMessage()\l}"];
     EventInfo [tooltip="EventInfo", URL="EventInfo.md", label="{EventInfo|operator[String]\l|code\lreason\ltype\ltarget\l}"];
-    Fiber [tooltip="Fiber", URL="Fiber.md", label="{Fiber|caller\ltraceInfo\l|join()\l}"];
+    Fiber [tooltip="Fiber", URL="Fiber.md", label="{Fiber|caller\lstack\l|join()\l}"];
     GridFS [tooltip="GridFS", URL="GridFS.md", label="{GridFS|files\lchunks\l|retrieve()\lstore()\lexists()\lremove()\l}"];
     Handler [tooltip="Handler", URL="Handler.md", label="{Handler|new Handler()\l|invoke()\l}"];
     AsyncWait [tooltip="AsyncWait", URL="AsyncWait.md", label="{AsyncWait|end()\l}"];
@@ -82,7 +82,7 @@ digraph {
     HttpsServer [tooltip="HttpsServer", URL="HttpsServer.md", label="{HttpsServer|new HttpsServer()\l|verification\lca\l}"];
     SslServer [tooltip="SslServer", URL="SslServer.md", label="{SslServer|new SslServer()\l|verification\lca\l}"];
     TextColor [tooltip="TextColor", URL="TextColor.md", label="{TextColor|notice\lwarn\lerror\lhighLight\l}"];
-    Timer [tooltip="Timer", URL="Timer.md", label="{Timer|clear()\l}"];
+    Timer [tooltip="Timer", URL="Timer.md", label="{Timer|stopped\l|clear()\l}"];
     UrlObject [tooltip="UrlObject", URL="UrlObject.md", label="{UrlObject|new UrlObject()\l|href\lprotocol\lslashes\lauth\lusername\lpassword\lhost\lhostname\lport\lpath\lpathname\lsearch\lquery\lhash\l|parse()\lformat()\lresolve()\lnormalize()\l}"];
     X509Cert [tooltip="X509Cert", URL="X509Cert.md", label="{X509Cert|new X509Cert()\l|version\lserial\lissuer\lsubject\lnotBefore\lnotAfter\lca\lpathlen\lusage\ltype\lpublicKey\lnext\l|load()\lloadFile()\lloadRootCerts()\lverify()\ldump()\lclear()\l}"];
     X509Crl [tooltip="X509Crl", URL="X509Crl.md", label="{X509Crl|new X509Crl()\l|load()\lloadFile()\ldump()\lclear()\l}"];

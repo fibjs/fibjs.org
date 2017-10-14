@@ -117,7 +117,8 @@ HttpResponse HttpClient.request(String method,
 opts 包含请求的附加选项，支持的内容如下：
 
 ```JavaScript
-{
+{“
+    query”: {},
     "body": SeekedStream | Buffer | String | {},
     "json": {},
     "headers": {}
@@ -164,7 +165,8 @@ HttpResponse HttpClient.get(String url,
 opts 包含请求的附加选项，支持的内容如下：
 
 ```JavaScript
-{
+{“
+    query”: {},
     "body": SeekedStream | Buffer | String | {},
     "json": {},
     "headers": {}
@@ -192,7 +194,8 @@ HttpResponse HttpClient.post(String url,
 opts 包含请求的附加选项，支持的内容如下：
 
 ```JavaScript
-{
+{“
+    query”: {},
     "body": SeekedStream | Buffer | String | {},
     "json": {},
     "headers": {}
@@ -220,7 +223,8 @@ HttpResponse HttpClient.del(String url,
 opts 包含请求的附加选项，支持的内容如下：
 
 ```JavaScript
-{
+{“
+    query”: {},
     "body": SeekedStream | Buffer | String | {},
     "json": {},
     "headers": {}
@@ -248,7 +252,8 @@ HttpResponse HttpClient.put(String url,
 opts 包含请求的附加选项，支持的内容如下：
 
 ```JavaScript
-{
+{“
+    query”: {},
     "body": SeekedStream | Buffer | String | {},
     "json": {},
     "headers": {}
@@ -276,7 +281,8 @@ HttpResponse HttpClient.patch(String url,
 opts 包含请求的附加选项，支持的内容如下：
 
 ```JavaScript
-{
+{“
+    query”: {},
     "body": SeekedStream | Buffer | String | {},
     "json": {},
     "headers": {}
@@ -304,7 +310,8 @@ HttpResponse HttpClient.find(String url,
 opts 包含请求的附加选项，支持的内容如下：
 
 ```JavaScript
-{
+{“
+    query”: {},
     "body": SeekedStream | Buffer | String | {},
     "json": {},
     "headers": {}

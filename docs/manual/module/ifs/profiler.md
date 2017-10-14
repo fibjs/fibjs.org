@@ -58,6 +58,24 @@ static Object profiler.diff(Function test);
 返回结果:
 * Object, 返回对比的结果
 
+--------------------------
+### start
+**启动一次运行状态采样日志**
+
+```JavaScript
+static Timer profiler.start(String fname,
+    Integer time = 60000,
+    Integer interval = 100);
+```
+
+调用参数:
+* fname: String, 给定日志存储文件名
+* time: Integer, 指定采样时间，缺省 1 分钟
+* interval: Integer, 指定间隔时间，缺省 100 毫秒
+
+返回结果:
+* [Timer](../../object/ifs/Timer.md), 返回采样定时器，可以通过 clear 方法提前停止采样
+
 ## 常量
         
 ### Node_Hidden

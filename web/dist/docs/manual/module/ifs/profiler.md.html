@@ -81,14 +81,15 @@
 <li><a href=../../object/ifs/httprequest.md.html>HttpRequest</a></li>
 <li><a href=../../object/ifs/httpresponse.md.html>HttpResponse</a></li>
 <li><a href=../../object/ifs/httpserver.md.html>HttpServer</a></li>
-<li><a href=../../object/ifs/httpsserver.md.html>HttpsServer</a></li>
 <li><a href=../../object/ifs/httpuploaddata.md.html>HttpUploadData</a></li>
+<li><a href=../../object/ifs/httpsserver.md.html>HttpsServer</a></li>
 <li><a href=../../object/ifs/image.md.html>Image</a></li>
 <li><a href=../../object/ifs/int64.md.html>Int64</a></li>
 <li><a href=../../object/ifs/leveldb.md.html>LevelDB</a></li>
 <li><a href=../../object/ifs/list.md.html>List</a></li>
 <li><a href=../../object/ifs/lock.md.html>Lock</a></li>
 <li><a href=../../object/ifs/lrucache.md.html>LruCache</a></li>
+<li><a href=../../object/ifs/mssql.md.html>MSSQL</a></li>
 <li><a href=../../object/ifs/map.md.html>Map</a></li>
 <li><a href=../../object/ifs/memorystream.md.html>MemoryStream</a></li>
 <li><a href=../../object/ifs/message.md.html>Message</a></li>
@@ -96,9 +97,7 @@
 <li><a href=../../object/ifs/mongocursor.md.html>MongoCursor</a></li>
 <li><a href=../../object/ifs/mongodb.md.html>MongoDB</a></li>
 <li><a href=../../object/ifs/mongoid.md.html>MongoID</a></li>
-<li><a href=../../object/ifs/mssql.md.html>MSSQL</a></li>
 <li><a href=../../object/ifs/mysql.md.html>MySQL</a></li>
-<li><a href=../../object/ifs/object.md.html>object</a></li>
 <li><a href=../../object/ifs/pkey.md.html>PKey</a></li>
 <li><a href=../../object/ifs/queue.md.html>Queue</a></li>
 <li><a href=../../object/ifs/redis.md.html>Redis</a></li>
@@ -107,13 +106,13 @@
 <li><a href=../../object/ifs/redisset.md.html>RedisSet</a></li>
 <li><a href=../../object/ifs/redissortedset.md.html>RedisSortedSet</a></li>
 <li><a href=../../object/ifs/routing.md.html>Routing</a></li>
+<li><a href=../../object/ifs/sqlite.md.html>SQLite</a></li>
 <li><a href=../../object/ifs/sandbox.md.html>SandBox</a></li>
 <li><a href=../../object/ifs/seekablestream.md.html>SeekableStream</a></li>
 <li><a href=../../object/ifs/semaphore.md.html>Semaphore</a></li>
 <li><a href=../../object/ifs/service.md.html>Service</a></li>
 <li><a href=../../object/ifs/smtp.md.html>Smtp</a></li>
 <li><a href=../../object/ifs/socket.md.html>Socket</a></li>
-<li><a href=../../object/ifs/sqlite.md.html>SQLite</a></li>
 <li><a href=../../object/ifs/sslhandler.md.html>SslHandler</a></li>
 <li><a href=../../object/ifs/sslserver.md.html>SslServer</a></li>
 <li><a href=../../object/ifs/sslsocket.md.html>SslSocket</a></li>
@@ -149,6 +148,7 @@
 <li><a href=../../object/ifs/zipfile.md.html>ZipFile</a></li>
 <li><a href=../../object/ifs/zipinfo.md.html>ZipInfo</a></li>
 <li><a href=../../object/ifs/zmqsocket.md.html>ZmqSocket</a></li>
+<li><a href=../../object/ifs/object.md.html>object</a></li>
 </ul>
  </div></div></div>  <div class=panel><div class=panel-heading role=tab id=headingOne><h4 class=panel-title><a data-toggle=collapse data-parent=#accordion href="#collapse_awesome" aria-controls="collapse_awesome"> 社区模块 </a></h4></div><div id="collapse_awesome" class="panel-collapse collapse " aria-labelledby=headingOne><div class=panel-body> <ul>
 <li><a href=../../../awesome/module/fib-session.md.html>fib-session</a></li>
@@ -233,6 +233,25 @@
 <p>返回结果:</p>
 <ul>
 <li>Object, 返回对比的结果</li>
+</ul>
+<hr>
+<h3 id="start">start</h3>
+<p><strong>启动一次运行状态采样日志</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">static</span> Timer profiler.start(<span class="hljs-built_in">String</span> fname,
+    Integer time = <span class="hljs-number">60000</span>,
+    Integer interval = <span class="hljs-number">100</span>);
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li>fname: String, 给定日志存储文件名</li>
+<li>time: Integer, 指定采样时间，缺省 1 分钟</li>
+<li>interval: Integer, 指定间隔时间，缺省 100 毫秒</li>
+</ul>
+<p>返回结果:</p>
+<ul>
+<li><a href=../../object/ifs/timer.md.html>Timer</a>, 返回采样定时器，可以通过 clear 方法提前停止采样</li>
 </ul>
 <h2 id="常量">常量</h2>
 <h3 id="Node_Hidden">Node_Hidden</h3>

@@ -7,10 +7,19 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\l}"];
-    Timer [tooltip="Timer", fillcolor="lightgray", label="{Timer|clear()\l}"];
+    Timer [tooltip="Timer", fillcolor="lightgray", label="{Timer|stopped\l|clear()\l}"];
 
     object -> Timer [dir=back];
 }
+```
+
+## 成员属性
+        
+### stopped
+**Boolean, 查询当前定时器是否已经终止**
+
+```JavaScript
+readonly Boolean Timer.stopped;
 ```
 
 ## 成员函数

@@ -50,7 +50,7 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\l}"];
-    Fiber [tooltip="Fiber", fillcolor="lightgray", label="{Fiber|caller\ltraceInfo\l|join()\l}"];
+    Fiber [tooltip="Fiber", fillcolor="lightgray", label="{Fiber|caller\lstack\l|join()\l}"];
 
     object -> Fiber [dir=back];
 }
@@ -66,11 +66,11 @@ readonly Fiber Fiber.caller;
 ```
 
 --------------------------
-### traceInfo
-**String, 查询纤程的调用堆栈，查询非当前纤程的堆栈需要在执行时指定参数：--trace_fiber**
+### stack
+**String, 查询纤程的调用堆栈**
 
 ```JavaScript
-readonly String Fiber.traceInfo;
+readonly String Fiber.stack;
 ```
 
 ## 成员函数

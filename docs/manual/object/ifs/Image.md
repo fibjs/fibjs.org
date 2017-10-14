@@ -1004,7 +1004,7 @@ Image Image.affine(Array affine,
     Integer x = -1,
     Integer y = -1,
     Integer width = -1,
-    Integer height = -1);
+    Integer height = -1) async;
 ```
 
 调用参数:

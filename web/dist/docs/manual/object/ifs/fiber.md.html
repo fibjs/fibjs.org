@@ -81,14 +81,15 @@
 <li><a href=httprequest.md.html>HttpRequest</a></li>
 <li><a href=httpresponse.md.html>HttpResponse</a></li>
 <li><a href=httpserver.md.html>HttpServer</a></li>
-<li><a href=httpsserver.md.html>HttpsServer</a></li>
 <li><a href=httpuploaddata.md.html>HttpUploadData</a></li>
+<li><a href=httpsserver.md.html>HttpsServer</a></li>
 <li><a href=image.md.html>Image</a></li>
 <li><a href=int64.md.html>Int64</a></li>
 <li><a href=leveldb.md.html>LevelDB</a></li>
 <li><a href=list.md.html>List</a></li>
 <li><a href=lock.md.html>Lock</a></li>
 <li><a href=lrucache.md.html>LruCache</a></li>
+<li><a href=mssql.md.html>MSSQL</a></li>
 <li><a href=map.md.html>Map</a></li>
 <li><a href=memorystream.md.html>MemoryStream</a></li>
 <li><a href=message.md.html>Message</a></li>
@@ -96,9 +97,7 @@
 <li><a href=mongocursor.md.html>MongoCursor</a></li>
 <li><a href=mongodb.md.html>MongoDB</a></li>
 <li><a href=mongoid.md.html>MongoID</a></li>
-<li><a href=mssql.md.html>MSSQL</a></li>
 <li><a href=mysql.md.html>MySQL</a></li>
-<li><a href=object.md.html>object</a></li>
 <li><a href=pkey.md.html>PKey</a></li>
 <li><a href=queue.md.html>Queue</a></li>
 <li><a href=redis.md.html>Redis</a></li>
@@ -107,13 +106,13 @@
 <li><a href=redisset.md.html>RedisSet</a></li>
 <li><a href=redissortedset.md.html>RedisSortedSet</a></li>
 <li><a href=routing.md.html>Routing</a></li>
+<li><a href=sqlite.md.html>SQLite</a></li>
 <li><a href=sandbox.md.html>SandBox</a></li>
 <li><a href=seekablestream.md.html>SeekableStream</a></li>
 <li><a href=semaphore.md.html>Semaphore</a></li>
 <li><a href=service.md.html>Service</a></li>
 <li><a href=smtp.md.html>Smtp</a></li>
 <li><a href=socket.md.html>Socket</a></li>
-<li><a href=sqlite.md.html>SQLite</a></li>
 <li><a href=sslhandler.md.html>SslHandler</a></li>
 <li><a href=sslserver.md.html>SslServer</a></li>
 <li><a href=sslsocket.md.html>SslSocket</a></li>
@@ -149,6 +148,7 @@
 <li><a href=zipfile.md.html>ZipFile</a></li>
 <li><a href=zipinfo.md.html>ZipInfo</a></li>
 <li><a href=zmqsocket.md.html>ZmqSocket</a></li>
+<li><a href=object.md.html>object</a></li>
 </ul>
  </div></div></div>  <div class=panel><div class=panel-heading role=tab id=headingOne><h4 class=panel-title><a data-toggle=collapse data-parent=#accordion href="#collapse_awesome" aria-controls="collapse_awesome"> 社区模块 </a></h4></div><div id="collapse_awesome" class="panel-collapse collapse " aria-labelledby=headingOne><div class=panel-body> <ul>
 <li><a href=../../../awesome/module/fib-session.md.html>fib-session</a></li>
@@ -273,13 +273,13 @@ fb.join();
 <g id="node2" class="node">
 <title>Fiber</title>
 <g id="a_node2"><a xlink:title="Fiber">
-<polygon fill="#d3d3d3" stroke="#000000" points="1.3805,-.5 1.3805,-72.5 56.2825,-72.5 56.2825,-.5 1.3805,-.5"/>
-<text text-anchor="middle" x="28.8315" y="-59.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Fiber</text>
-<polyline fill="none" stroke="#000000" points="1.3805,-52.5 56.2825,-52.5 "/>
-<text text-anchor="start" x="9.3805" y="-39.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">caller</text>
-<text text-anchor="start" x="9.3805" y="-27.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">traceInfo</text>
-<polyline fill="none" stroke="#000000" points="1.3805,-20.5 56.2825,-20.5 "/>
-<text text-anchor="start" x="9.3805" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">join()</text>
+<polygon fill="#d3d3d3" stroke="#000000" points="1.8315,-.5 1.8315,-72.5 55.8315,-72.5 55.8315,-.5 1.8315,-.5"/>
+<text text-anchor="middle" x="28.774" y="-59.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Fiber</text>
+<polyline fill="none" stroke="#000000" points="1.8315,-52.5 55.7165,-52.5 "/>
+<text text-anchor="start" x="9.8315" y="-39.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">caller</text>
+<text text-anchor="start" x="9.8315" y="-27.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">stack</text>
+<polyline fill="none" stroke="#000000" points="1.8315,-20.5 55.7165,-20.5 "/>
+<text text-anchor="start" x="9.8315" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">join()</text>
 </a>
 </g>
 </g>
@@ -299,9 +299,9 @@ fb.join();
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly Fiber Fiber.caller;
 </code></pre>
 <hr>
-<h3 id="traceInfo">traceInfo</h3>
-<p><strong>String, 查询纤程的调用堆栈，查询非当前纤程的堆栈需要在执行时指定参数：--trace_fiber</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly <span class="hljs-built_in">String</span> Fiber.traceInfo;
+<h3 id="stack">stack</h3>
+<p><strong>String, 查询纤程的调用堆栈</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly <span class="hljs-built_in">String</span> Fiber.stack;
 </code></pre>
 <h2 id="成员函数">成员函数</h2>
 <h3 id="join">join</h3>
