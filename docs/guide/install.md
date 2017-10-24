@@ -14,7 +14,7 @@ brew install fibjs
 ## Windows 下自己编译
 
 ### 准备编译环境
-Windows 下需要安装 VS2015 或者 VS2017。如果你希望使用 VS2017 编译兼容 xp 的 fibjs， 还需要在安装时选择安装 `Windows XP support for C++`。
+Windows 下需要安装 VS2017。如果你希望编译兼容 xp 的 fibjs， 还需要在安装时选择安装 `Windows XP support for C++`。
 
 ### 获取代码
 fibjs 当前 github 地址为: https://github.com/fibjs/fibjs
@@ -45,9 +45,9 @@ options 的选项:
 build release
 ```
 
-fibjs build 工具支持兼容 xp 模式。在 Visual Studio 2017 下，缺省安装时未安装 xp 支持，所以需要手动禁用 xp 兼容：
+fibjs build 工具支持兼容 xp 模式，编译时需要手动开启：
 ```sh
-build noxp
+build xp
 ```
 
 ## UNIX 下自己编译
