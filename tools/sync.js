@@ -23,8 +23,9 @@ marked.setOptions({
 
 function wget(u) {
     var releases = http.get(u);
-    if (releases.status !== 200)
-        throw 'http error: ' + releases.status + '\n   ' + u
+    var status = releases.status || releases.statusCode;
+    if (status !== 200)
+        throw 'http error: ' + status + '\n   ' + u
     return releases.data;
 }
 var baseFolder = path.join(__dirname, '../web/dist/download');
