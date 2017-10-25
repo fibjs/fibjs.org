@@ -26,7 +26,7 @@ var svr = new http.Server(8080, root_server);
 svr.run();
 ```
 
-### 一个空的测试框架
+## 一个空的测试框架
 我们先从一个最基础的测试框架开始搭建：
 ```JavaScript
 var test = require('test');
@@ -47,7 +47,7 @@ test.run();
 
   √ 1 tests completed (0ms)
 ```
-### 开始测试服务器
+## 开始测试服务器
 因为我们需要测试 http 服务器，所以我们需要先启动服务器。测试用例会向服务器发出请求，然后测试请求结果，来判断服务器是否符合需求：
 ```JavaScript
 var test = require('test');
@@ -98,7 +98,7 @@ describe('hello, test', () => {
 
 test.run();
 ```
-### 用例的分组管理
+## 用例的分组管理
 下面我们来增加 bonjour 的测试，虽然 bonjour 和 hello 是同一组服务，但是因为路径发生了变化，我们同样需要验证服务的正确性，这一次，为了能更好地管理用例，我们对测试用例进行了分组，同时，因为 hello 和 bonjour 的测试内容是相同的，我们再次优化了代码，用同一套代码测试两组服务：
 ```JavaScript
 var test = require('test');
@@ -156,7 +156,7 @@ test.run();
   √ 8 tests completed (3ms)
 ```
 根据我们的服务器设计，我们还有一组静态文件服务，按照上面的示例，相信你很快可以补写出这部分测试用例。
-### 一键测试
+## 一键测试
 经过上面的介绍，我们已经可以很快建立起测试用例了。但是为了使用这个测试脚本，必须先启动服务器，这样很不方便，我们希望运行 `test.js` 能够直接完成测试。我们可以用以下代码来实现：
 ```JavaScript
 var test = require('test');
