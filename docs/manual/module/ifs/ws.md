@@ -17,14 +17,6 @@ WebSocketMessage ws.Message;
 ```
 
 --------------------------
-### Handler
-**创建一个 websocket 包协议转换处理器，参见 [WebSocketHandler](../../object/ifs/WebSocketHandler.md)**
-
-```JavaScript
-WebSocketHandler ws.Handler;
-```
-
---------------------------
 ### Socket
 **[WebSocket](../../object/ifs/WebSocket.md) 对象，参见 [WebSocket](../../object/ifs/WebSocket.md)**
 

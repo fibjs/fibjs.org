@@ -7,7 +7,7 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\l}"];
-    TextColor [tooltip="TextColor", fillcolor="lightgray", label="{TextColor|notice\lwarn\lerror\lhighLight\l}"];
+    TextColor [tooltip="TextColor", fillcolor="lightgray", id="me", label="{TextColor|notice\lwarn\lerror\lhighLight\l}"];
 
     object -> TextColor [dir=back];
 }

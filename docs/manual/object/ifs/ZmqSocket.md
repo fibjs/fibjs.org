@@ -7,7 +7,7 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\l}"];
-    ZmqSocket [tooltip="ZmqSocket", fillcolor="lightgray", label="{ZmqSocket|new ZmqSocket()\l|type\l|bind()\lconnect()\lrecv()\lsend()\lclose()\l}"];
+    ZmqSocket [tooltip="ZmqSocket", fillcolor="lightgray", id="me", label="{ZmqSocket|new ZmqSocket()\l|type\l|bind()\lconnect()\lrecv()\lsend()\lclose()\l}"];
 
     object -> ZmqSocket [dir=back];
 }

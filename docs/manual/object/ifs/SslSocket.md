@@ -13,8 +13,8 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\l}"];
-    Stream [tooltip="Stream", URL="Stream.md", label="{Stream|read()\lwrite()\lclose()\lcopyTo()\l}"];
-    SslSocket [tooltip="SslSocket", fillcolor="lightgray", label="{SslSocket|new SslSocket()\l|verification\lca\lpeerCert\lstream\l|connect()\laccept()\l}"];
+    Stream [tooltip="Stream", URL="Stream.md", label="{Stream|read()\lwrite()\lflush()\lclose()\lcopyTo()\l}"];
+    SslSocket [tooltip="SslSocket", fillcolor="lightgray", id="me", label="{SslSocket|new SslSocket()\l|verification\lca\lpeerCert\lstream\l|connect()\laccept()\l}"];
 
     object -> Stream [dir=back];
     Stream -> SslSocket [dir=back];
@@ -147,6 +147,14 @@ SslSocket.write(Buffer data) async;
 
 调用参数:
 * data: [Buffer](Buffer.md), 给定要写入的数据
+
+--------------------------
+### flush
+**将文件缓冲区内容写入物理设备**
+
+```JavaScript
+SslSocket.flush() async;
+```
 
 --------------------------
 ### close

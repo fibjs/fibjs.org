@@ -16,10 +16,10 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\l}"];
-    Lock [tooltip="Lock", fillcolor="lightgray", label="{Lock|new Lock()\l|acquire()\lrelease()\lcount()\l}"];
-    Condition [tooltip="Condition", URL="Condition.md", label="{Condition|new Condition()\l|wait()\lnotify()\lnotifyAll()\l}"];
-    Event [tooltip="Event", URL="Event.md", label="{Event|new Event()\l|isSet()\lset()\lpulse()\lclear()\lwait()\l}"];
-    Semaphore [tooltip="Semaphore", URL="Semaphore.md", label="{Semaphore|new Semaphore()\l|wait()\lpost()\ltrywait()\l}"];
+    Lock [tooltip="Lock", fillcolor="lightgray", id="me", label="{Lock|new Lock()\l|acquire()\lrelease()\lcount()\l}"];
+    Condition [tooltip="Condition", URL="Condition.md", label="{Condition}"];
+    Event [tooltip="Event", URL="Event.md", label="{Event}"];
+    Semaphore [tooltip="Semaphore", URL="Semaphore.md", label="{Semaphore}"];
 
     object -> Lock [dir=back];
     Lock -> Condition [dir=back];

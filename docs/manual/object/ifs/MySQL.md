@@ -14,7 +14,7 @@ digraph {
 
     object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\l}"];
     DbConnection [tooltip="DbConnection", URL="DbConnection.md", label="{DbConnection|type\l|close()\lbegin()\lcommit()\lrollback()\ltrans()\lexecute()\lformat()\l}"];
-    MySQL [tooltip="MySQL", fillcolor="lightgray", label="{MySQL|rxBufferSize\ltxBufferSize\l|use()\l}"];
+    MySQL [tooltip="MySQL", fillcolor="lightgray", id="me", label="{MySQL|rxBufferSize\ltxBufferSize\l|use()\l}"];
 
     object -> DbConnection [dir=back];
     DbConnection -> MySQL [dir=back];

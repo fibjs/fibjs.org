@@ -7,7 +7,7 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\l}"];
-    Smtp [tooltip="Smtp", fillcolor="lightgray", label="{Smtp|new Smtp()\l|timeout\lsocket\l|connect()\lcommand()\lhello()\llogin()\lfrom()\lto()\ldata()\lquit()\l}"];
+    Smtp [tooltip="Smtp", fillcolor="lightgray", id="me", label="{Smtp|new Smtp()\l|timeout\lsocket\l|connect()\lcommand()\lhello()\llogin()\lfrom()\lto()\ldata()\lquit()\l}"];
 
     object -> Smtp [dir=back];
 }

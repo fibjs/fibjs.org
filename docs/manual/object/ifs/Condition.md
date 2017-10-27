@@ -48,7 +48,7 @@ digraph {
 
     object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\l}"];
     Lock [tooltip="Lock", URL="Lock.md", label="{Lock|new Lock()\l|acquire()\lrelease()\lcount()\l}"];
-    Condition [tooltip="Condition", fillcolor="lightgray", label="{Condition|new Condition()\l|wait()\lnotify()\lnotifyAll()\l}"];
+    Condition [tooltip="Condition", fillcolor="lightgray", id="me", label="{Condition|new Condition()\l|wait()\lnotify()\lnotifyAll()\l}"];
 
     object -> Lock [dir=back];
     Lock -> Condition [dir=back];

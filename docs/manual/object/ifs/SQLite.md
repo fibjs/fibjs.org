@@ -14,7 +14,7 @@ digraph {
 
     object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\l}"];
     DbConnection [tooltip="DbConnection", URL="DbConnection.md", label="{DbConnection|type\l|close()\lbegin()\lcommit()\lrollback()\ltrans()\lexecute()\lformat()\l}"];
-    SQLite [tooltip="SQLite", fillcolor="lightgray", label="{SQLite|fileName\ltimeout\l|backup()\l}"];
+    SQLite [tooltip="SQLite", fillcolor="lightgray", id="me", label="{SQLite|fileName\ltimeout\l|backup()\l}"];
 
     object -> DbConnection [dir=back];
     DbConnection -> SQLite [dir=back];

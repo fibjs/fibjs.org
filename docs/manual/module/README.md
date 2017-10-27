@@ -13,7 +13,7 @@
 * [fs](ifs/fs.md) - 文件系统处理模块
 * [gd](ifs/gd.md) - 图像文件处理模块
 * [global](ifs/global.md) - 全局对象，所有脚本均可以访问的基础对象
-* [gui](ifs/gui.md) - 输入输出处理模块
+* [gui](ifs/gui.md) - gui 模块
 * [hash](ifs/hash.md) - 信息摘要计算模块，可用于计算信息摘要和摘要签名
 * [hex](ifs/hex.md) - hex 编码与解码模块
 * [http](ifs/http.md) - 超文本传输协议模块，用以支持 http 协议处理

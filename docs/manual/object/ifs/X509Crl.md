@@ -13,7 +13,7 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\l}"];
-    X509Crl [tooltip="X509Crl", fillcolor="lightgray", label="{X509Crl|new X509Crl()\l|load()\lloadFile()\ldump()\lclear()\l}"];
+    X509Crl [tooltip="X509Crl", fillcolor="lightgray", id="me", label="{X509Crl|new X509Crl()\l|load()\lloadFile()\ldump()\lclear()\l}"];
 
     object -> X509Crl [dir=back];
 }

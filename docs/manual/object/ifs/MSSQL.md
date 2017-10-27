@@ -14,7 +14,7 @@ digraph {
 
     object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\l}"];
     DbConnection [tooltip="DbConnection", URL="DbConnection.md", label="{DbConnection|type\l|close()\lbegin()\lcommit()\lrollback()\ltrans()\lexecute()\lformat()\l}"];
-    MSSQL [tooltip="MSSQL", fillcolor="lightgray", label="{MSSQL|use()\l}"];
+    MSSQL [tooltip="MSSQL", fillcolor="lightgray", id="me", label="{MSSQL|use()\l}"];
 
     object -> DbConnection [dir=back];
     DbConnection -> MSSQL [dir=back];

@@ -7,7 +7,7 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\l}"];
-    XmlNodeList [tooltip="XmlNodeList", fillcolor="lightgray", label="{XmlNodeList|operator[]\l|length\l|item()\l}"];
+    XmlNodeList [tooltip="XmlNodeList", fillcolor="lightgray", id="me", label="{XmlNodeList|operator[]\l|length\l|item()\l}"];
 
     object -> XmlNodeList [dir=back];
 }

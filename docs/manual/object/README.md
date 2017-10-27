@@ -72,7 +72,6 @@
 * [Timer](ifs/Timer.md) - 定时器处理器对象
 * [UrlObject](ifs/UrlObject.md) - Url 处理对象
 * [WebSocket](ifs/WebSocket.md) - WebSocket 包协议转换处理器
-* [WebSocketHandler](ifs/WebSocketHandler.md) - WebSocket 包协议转换处理器
 * [WebSocketMessage](ifs/WebSocketMessage.md) - websocket 消息对象
 * [WebView](ifs/WebView.md) - 浏览器窗口对象
 * [Worker](ifs/Worker.md) - 独立线程工作对象

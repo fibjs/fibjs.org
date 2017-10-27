@@ -13,7 +13,7 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\l}"];
-    X509Req [tooltip="X509Req", fillcolor="lightgray", label="{X509Req|new X509Req()\l|subject\lpublicKey\l|load()\lloadFile()\lexportPem()\lexportDer()\lsign()\l}"];
+    X509Req [tooltip="X509Req", fillcolor="lightgray", id="me", label="{X509Req|new X509Req()\l|subject\lpublicKey\l|load()\lloadFile()\lexportPem()\lexportDer()\lsign()\l}"];
 
     object -> X509Req [dir=back];
 }

@@ -99,7 +99,7 @@ digraph {
 
     object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\l}"];
     Handler [tooltip="Handler", URL="Handler.md", label="{Handler|new Handler()\l|invoke()\l}"];
-    Routing [tooltip="Routing", fillcolor="lightgray", label="{Routing|new Routing()\l|append()\lall()\lget()\lpost()\ldel()\lput()\lpatch()\lfind()\l}"];
+    Routing [tooltip="Routing", fillcolor="lightgray", id="me", label="{Routing|new Routing()\l|append()\lall()\lget()\lpost()\ldel()\lput()\lpatch()\lfind()\l}"];
 
     object -> Handler [dir=back];
     Handler -> Routing [dir=back];

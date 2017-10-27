@@ -7,7 +7,7 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\l}"];
-    HeapGraphEdge [tooltip="HeapGraphEdge", fillcolor="lightgray", label="{HeapGraphEdge|type\lname\ldescription\l|getFromNode()\lgetToNode()\l}"];
+    HeapGraphEdge [tooltip="HeapGraphEdge", fillcolor="lightgray", id="me", label="{HeapGraphEdge|type\lname\ldescription\l|getFromNode()\lgetToNode()\l}"];
 
     object -> HeapGraphEdge [dir=back];
 }

@@ -7,7 +7,7 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\l}"];
-    EventInfo [tooltip="EventInfo", fillcolor="lightgray", label="{EventInfo|operator[String]\l|code\lreason\ltype\ltarget\l}"];
+    EventInfo [tooltip="EventInfo", fillcolor="lightgray", id="me", label="{EventInfo|operator[String]\l|code\lreason\ltype\ltarget\l}"];
 
     object -> EventInfo [dir=back];
 }

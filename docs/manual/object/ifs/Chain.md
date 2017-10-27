@@ -16,7 +16,7 @@ digraph {
 
     object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\l}"];
     Handler [tooltip="Handler", URL="Handler.md", label="{Handler|new Handler()\l|invoke()\l}"];
-    Chain [tooltip="Chain", fillcolor="lightgray", label="{Chain|new Chain()\l|append()\l}"];
+    Chain [tooltip="Chain", fillcolor="lightgray", id="me", label="{Chain|new Chain()\l|append()\l}"];
 
     object -> Handler [dir=back];
     Handler -> Chain [dir=back];

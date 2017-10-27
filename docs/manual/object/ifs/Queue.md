@@ -14,8 +14,8 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\l}"];
-    Queue [tooltip="Queue", fillcolor="lightgray", label="{Queue|new Queue()\l|length\l|add()\loffer()\lremove()\lpoll()\lelement()\lpeek()\lclear()\ltoArray()\l}"];
-    BlockQueue [tooltip="BlockQueue", URL="BlockQueue.md", label="{BlockQueue|new BlockQueue()\l|put()\ltake()\l}"];
+    Queue [tooltip="Queue", fillcolor="lightgray", id="me", label="{Queue|new Queue()\l|length\l|add()\loffer()\lremove()\lpoll()\lelement()\lpeek()\lclear()\ltoArray()\l}"];
+    BlockQueue [tooltip="BlockQueue", URL="BlockQueue.md", label="{BlockQueue}"];
 
     object -> Queue [dir=back];
     Queue -> BlockQueue [dir=back];

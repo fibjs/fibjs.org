@@ -7,10 +7,10 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\l}"];
-    Stream [tooltip="Stream", URL="Stream.md", label="{Stream|read()\lwrite()\lclose()\lcopyTo()\l}"];
-    SeekableStream [tooltip="SeekableStream", fillcolor="lightgray", label="{SeekableStream|seek()\ltell()\lrewind()\lsize()\lreadAll()\ltruncate()\leof()\lflush()\lstat()\l}"];
-    File [tooltip="File", URL="File.md", label="{File|name\lfd\l|chmod()\l}"];
-    MemoryStream [tooltip="MemoryStream", URL="MemoryStream.md", label="{MemoryStream|new MemoryStream()\l|setTime()\lclone()\lclear()\l}"];
+    Stream [tooltip="Stream", URL="Stream.md", label="{Stream|read()\lwrite()\lflush()\lclose()\lcopyTo()\l}"];
+    SeekableStream [tooltip="SeekableStream", fillcolor="lightgray", id="me", label="{SeekableStream|seek()\ltell()\lrewind()\lsize()\lreadAll()\ltruncate()\leof()\lstat()\l}"];
+    File [tooltip="File", URL="File.md", label="{File}"];
+    MemoryStream [tooltip="MemoryStream", URL="MemoryStream.md", label="{MemoryStream}"];
 
     object -> Stream [dir=back];
     Stream -> SeekableStream [dir=back];
@@ -97,14 +97,6 @@ Boolean SeekableStream.eof();
 * Boolean, 返回 True 表示结尾
 
 --------------------------
-### flush
-**将文件缓冲区内容写入物理设备**
-
-```JavaScript
-SeekableStream.flush() async;
-```
-
---------------------------
 ### stat
 **查询当前文件的基础信息**
 
@@ -139,6 +131,14 @@ SeekableStream.write(Buffer data) async;
 
 调用参数:
 * data: [Buffer](Buffer.md), 给定要写入的数据
+
+--------------------------
+### flush
+**将文件缓冲区内容写入物理设备**
+
+```JavaScript
+SeekableStream.flush() async;
+```
 
 --------------------------
 ### close

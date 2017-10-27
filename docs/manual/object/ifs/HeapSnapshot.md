@@ -7,7 +7,7 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\l}"];
-    HeapSnapshot [tooltip="HeapSnapshot", fillcolor="lightgray", label="{HeapSnapshot|time\lroot\lnodes\l|diff()\lgetNodeById()\lsave()\l}"];
+    HeapSnapshot [tooltip="HeapSnapshot", fillcolor="lightgray", id="me", label="{HeapSnapshot|time\lroot\lnodes\l|diff()\lgetNodeById()\lsave()\l}"];
 
     object -> HeapSnapshot [dir=back];
 }

@@ -9,6 +9,90 @@ var zlib = require('zlib');
 
 ## 静态函数
         
+### createDeflate
+**创建一个 deflate 流对象**
+
+```JavaScript
+static Stream zlib.createDeflate(Stream to);
+```
+
+调用参数:
+* to: [Stream](../../object/ifs/Stream.md), 用于存储处理结果的流
+
+返回结果:
+* [Stream](../../object/ifs/Stream.md), 返回封装过的流对象
+
+--------------------------
+### createDeflateRaw
+**创建一个 deflateRaw 流对象**
+
+```JavaScript
+static Stream zlib.createDeflateRaw(Stream to);
+```
+
+调用参数:
+* to: [Stream](../../object/ifs/Stream.md), 用于存储处理结果的流
+
+返回结果:
+* [Stream](../../object/ifs/Stream.md), 返回封装过的流对象
+
+--------------------------
+### createGunzip
+**创建一个 gunzip 流对象**
+
+```JavaScript
+static Stream zlib.createGunzip(Stream to);
+```
+
+调用参数:
+* to: [Stream](../../object/ifs/Stream.md), 用于存储处理结果的流
+
+返回结果:
+* [Stream](../../object/ifs/Stream.md), 返回封装过的流对象
+
+--------------------------
+### createGzip
+**创建一个 gzip 流对象**
+
+```JavaScript
+static Stream zlib.createGzip(Stream to);
+```
+
+调用参数:
+* to: [Stream](../../object/ifs/Stream.md), 用于存储处理结果的流
+
+返回结果:
+* [Stream](../../object/ifs/Stream.md), 返回封装过的流对象
+
+--------------------------
+### createInflate
+**创建一个 inflate 流对象**
+
+```JavaScript
+static Stream zlib.createInflate(Stream to);
+```
+
+调用参数:
+* to: [Stream](../../object/ifs/Stream.md), 用于存储处理结果的流
+
+返回结果:
+* [Stream](../../object/ifs/Stream.md), 返回封装过的流对象
+
+--------------------------
+### createInflateRaw
+**创建一个 inflateRaw 流对象**
+
+```JavaScript
+static Stream zlib.createInflateRaw(Stream to);
+```
+
+调用参数:
+* to: [Stream](../../object/ifs/Stream.md), 用于存储处理结果的流
+
+返回结果:
+* [Stream](../../object/ifs/Stream.md), 返回封装过的流对象
+
+--------------------------
 ### deflate
 **使用 deflate 算法压缩数据(zlib格式)**
 

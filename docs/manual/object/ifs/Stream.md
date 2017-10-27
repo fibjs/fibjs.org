@@ -9,14 +9,14 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\l}"];
-    Stream [tooltip="Stream", fillcolor="lightgray", label="{Stream|read()\lwrite()\lclose()\lcopyTo()\l}"];
-    BufferedStream [tooltip="BufferedStream", URL="BufferedStream.md", label="{BufferedStream|new BufferedStream()\l|stream\lcharset\lEOL\l|readText()\lreadLine()\lreadLines()\lreadUntil()\lwriteText()\lwriteLine()\l}"];
-    SubProcess [tooltip="SubProcess", URL="SubProcess.md", label="{SubProcess|pid\lstdin\lstdout\l|kill()\lwait()\lfindWindow()\l}"];
-    SeekableStream [tooltip="SeekableStream", URL="SeekableStream.md", label="{SeekableStream|seek()\ltell()\lrewind()\lsize()\lreadAll()\ltruncate()\leof()\lflush()\lstat()\l}"];
-    File [tooltip="File", URL="File.md", label="{File|name\lfd\l|chmod()\l}"];
-    MemoryStream [tooltip="MemoryStream", URL="MemoryStream.md", label="{MemoryStream|new MemoryStream()\l|setTime()\lclone()\lclear()\l}"];
-    Socket [tooltip="Socket", URL="Socket.md", label="{Socket|new Socket()\l|family\ltype\lremoteAddress\lremotePort\llocalAddress\llocalPort\ltimeout\l|connect()\lbind()\llisten()\laccept()\lrecv()\lrecvfrom()\lsend()\lsendto()\l}"];
-    SslSocket [tooltip="SslSocket", URL="SslSocket.md", label="{SslSocket|new SslSocket()\l|verification\lca\lpeerCert\lstream\l|connect()\laccept()\l}"];
+    Stream [tooltip="Stream", fillcolor="lightgray", id="me", label="{Stream|read()\lwrite()\lflush()\lclose()\lcopyTo()\l}"];
+    BufferedStream [tooltip="BufferedStream", URL="BufferedStream.md", label="{BufferedStream}"];
+    SubProcess [tooltip="SubProcess", URL="SubProcess.md", label="{SubProcess}"];
+    SeekableStream [tooltip="SeekableStream", URL="SeekableStream.md", label="{SeekableStream}"];
+    File [tooltip="File", URL="File.md", label="{File}"];
+    MemoryStream [tooltip="MemoryStream", URL="MemoryStream.md", label="{MemoryStream}"];
+    Socket [tooltip="Socket", URL="Socket.md", label="{Socket}"];
+    SslSocket [tooltip="SslSocket", URL="SslSocket.md", label="{SslSocket}"];
 
     object -> Stream [dir=back];
     Stream -> BufferedStream [dir=back];
@@ -54,6 +54,14 @@ Stream.write(Buffer data) async;
 
 调用参数:
 * data: [Buffer](Buffer.md), 给定要写入的数据
+
+--------------------------
+### flush
+**将文件缓冲区内容写入物理设备**
+
+```JavaScript
+Stream.flush() async;
+```
 
 --------------------------
 ### close

@@ -7,7 +7,7 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\l}"];
-    HttpUploadData [tooltip="HttpUploadData", fillcolor="lightgray", label="{HttpUploadData|fileName\lcontentType\lcontentTransferEncoding\lbody\l}"];
+    HttpUploadData [tooltip="HttpUploadData", fillcolor="lightgray", id="me", label="{HttpUploadData|fileName\lcontentType\lcontentTransferEncoding\lbody\l}"];
 
     object -> HttpUploadData [dir=back];
 }

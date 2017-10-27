@@ -20,7 +20,7 @@ digraph {
 
     object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\l}"];
     Handler [tooltip="Handler", URL="Handler.md", label="{Handler|new Handler()\l|invoke()\l}"];
-    SslHandler [tooltip="SslHandler", fillcolor="lightgray", label="{SslHandler|new SslHandler()\l|verification\lca\lhandler\l}"];
+    SslHandler [tooltip="SslHandler", fillcolor="lightgray", id="me", label="{SslHandler|new SslHandler()\l|verification\lca\lhandler\l}"];
 
     object -> Handler [dir=back];
     Handler -> SslHandler [dir=back];

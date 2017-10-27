@@ -7,7 +7,7 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\l}"];
-    MongoCursor [tooltip="MongoCursor", fillcolor="lightgray", label="{MongoCursor|skip()\llimit()\lsort()\lhasNext()\lnext()\lcount()\lsize()\lforEach()\lmap()\ltoArray()\lhint()\l}"];
+    MongoCursor [tooltip="MongoCursor", fillcolor="lightgray", id="me", label="{MongoCursor|skip()\llimit()\lsort()\lhasNext()\lnext()\lcount()\lsize()\lforEach()\lmap()\ltoArray()\lhint()\l}"];
 
     object -> MongoCursor [dir=back];
 }

@@ -7,7 +7,7 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\l}"];
-    MongoID [tooltip="MongoID", fillcolor="lightgray", label="{MongoID}"];
+    MongoID [tooltip="MongoID", fillcolor="lightgray", id="me", label="{MongoID}"];
 
     object -> MongoID [dir=back];
 }

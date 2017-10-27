@@ -7,7 +7,7 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\l}"];
-    Timer [tooltip="Timer", fillcolor="lightgray", label="{Timer|stopped\l|clear()\l}"];
+    Timer [tooltip="Timer", fillcolor="lightgray", id="me", label="{Timer|stopped\l|clear()\l}"];
 
     object -> Timer [dir=back];
 }

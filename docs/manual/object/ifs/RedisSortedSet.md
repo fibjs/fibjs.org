@@ -15,7 +15,7 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\l}"];
-    RedisSortedSet [tooltip="RedisSortedSet", fillcolor="lightgray", label="{RedisSortedSet|add()\lscore()\lincr()\lremove()\llen()\lcount()\lrange()\lrangeRev()\lrank()\lrankRev()\l}"];
+    RedisSortedSet [tooltip="RedisSortedSet", fillcolor="lightgray", id="me", label="{RedisSortedSet|add()\lscore()\lincr()\lremove()\llen()\lcount()\lrange()\lrangeRev()\lrank()\lrankRev()\l}"];
 
     object -> RedisSortedSet [dir=back];
 }

@@ -15,7 +15,7 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\l}"];
-    RedisHash [tooltip="RedisHash", fillcolor="lightgray", label="{RedisHash|set()\lsetNX()\lmset()\lget()\lmget()\lincr()\lgetAll()\lkeys()\llen()\lexists()\ldel()\l}"];
+    RedisHash [tooltip="RedisHash", fillcolor="lightgray", id="me", label="{RedisHash|set()\lsetNX()\lmset()\lget()\lmget()\lincr()\lgetAll()\lkeys()\llen()\lexists()\ldel()\l}"];
 
     object -> RedisHash [dir=back];
 }

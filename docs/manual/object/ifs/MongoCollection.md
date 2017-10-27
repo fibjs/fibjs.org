@@ -14,7 +14,7 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\l}"];
-    MongoCollection [tooltip="MongoCollection", fillcolor="lightgray", label="{MongoCollection|operator[String]\l|find()\lfindOne()\lfindAndModify()\linsert()\lsave()\lupdate()\lremove()\lrunCommand()\ldrop()\lensureIndex()\lreIndex()\ldropIndex()\ldropIndexes()\lgetIndexes()\lgetCollection()\l}"];
+    MongoCollection [tooltip="MongoCollection", fillcolor="lightgray", id="me", label="{MongoCollection|operator[String]\l|find()\lfindOne()\lfindAndModify()\linsert()\lsave()\lupdate()\lremove()\lrunCommand()\ldrop()\lensureIndex()\lreIndex()\ldropIndex()\ldropIndexes()\lgetIndexes()\lgetCollection()\l}"];
 
     object -> MongoCollection [dir=back];
 }

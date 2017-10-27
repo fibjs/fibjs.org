@@ -14,7 +14,7 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\l}"];
-    Redis [tooltip="Redis", fillcolor="lightgray", label="{Redis|onsuberror\l|command()\lset()\lsetNX()\lsetXX()\lmset()\lmsetNX()\lappend()\lsetRange()\lgetRange()\lstrlen()\lbitcount()\lget()\lmget()\lgetset()\ldecr()\lincr()\lsetBit()\lgetBit()\lexists()\ltype()\lkeys()\ldel()\lexpire()\lttl()\lpersist()\lrename()\lrenameNX()\lsub()\lunsub()\lpsub()\lunpsub()\lpub()\lgetHash()\lgetList()\lgetSet()\lgetSortedSet()\ldump()\lrestore()\lclose()\l}"];
+    Redis [tooltip="Redis", fillcolor="lightgray", id="me", label="{Redis|onsuberror\l|command()\lset()\lsetNX()\lsetXX()\lmset()\lmsetNX()\lappend()\lsetRange()\lgetRange()\lstrlen()\lbitcount()\lget()\lmget()\lgetset()\ldecr()\lincr()\lsetBit()\lgetBit()\lexists()\ltype()\lkeys()\ldel()\lexpire()\lttl()\lpersist()\lrename()\lrenameNX()\lsub()\lunsub()\lpsub()\lunpsub()\lpub()\lgetHash()\lgetList()\lgetSet()\lgetSortedSet()\ldump()\lrestore()\lclose()\l}"];
 
     object -> Redis [dir=back];
 }

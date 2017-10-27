@@ -13,7 +13,7 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\l}"];
-    Int64 [tooltip="Int64", fillcolor="lightgray", label="{Int64|new Int64()\l|hi\llo\l|compare()\lshiftLeft()\lshiftRight()\land()\lor()\lxor()\ladd()\lsub()\lmulti()\ldiv()\ltoNumber()\ltoString()\l}"];
+    Int64 [tooltip="Int64", fillcolor="lightgray", id="me", label="{Int64|new Int64()\l|hi\llo\l|compare()\lshiftLeft()\lshiftRight()\land()\lor()\lxor()\ladd()\lsub()\lmulti()\ldiv()\ltoNumber()\ltoString()\l}"];
 
     object -> Int64 [dir=back];
 }

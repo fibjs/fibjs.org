@@ -16,7 +16,7 @@ digraph {
 
     object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\l}"];
     Message [tooltip="Message", URL="Message.md", label="{Message|new Message()\l|TEXT\lBINARY\l|value\lparams\ltype\ldata\lbody\llength\lstream\lresponse\llastError\l|read()\lreadAll()\lwrite()\ljson()\lend()\lisEnded()\lclear()\lsendTo()\lreadFrom()\l}"];
-    WebSocketMessage [tooltip="WebSocketMessage", fillcolor="lightgray", label="{WebSocketMessage|new WebSocketMessage()\l|masked\lmaxSize\l}"];
+    WebSocketMessage [tooltip="WebSocketMessage", fillcolor="lightgray", id="me", label="{WebSocketMessage|new WebSocketMessage()\l|masked\lcompress\lmaxSize\l}"];
 
     object -> Message [dir=back];
     Message -> WebSocketMessage [dir=back];
@@ -31,12 +31,14 @@ digraph {
 ```JavaScript
 new WebSocketMessage(Integer type = ws.BINARY,
     Boolean masked = true,
+    Boolean compress = false,
     Integer maxSize = 67108864);
 ```
 
 调用参数:
 * type: Integer, websocket 消息类型，缺省为 websocket.BINARY
 * masked: Boolean, websocket 消息掩码，缺省为 true
+* compress: Boolean, 标记消息是否压缩，缺省为 false
 * maxSize: Integer, 最大包尺寸，以 MB 为单位，缺省为 67108864(64M)
 
 ## 常量
@@ -63,6 +65,14 @@ const WebSocketMessage.BINARY = 2;
 
 ```JavaScript
 Boolean WebSocketMessage.masked;
+```
+
+--------------------------
+### compress
+**Boolean, 查询和读取 websocket 压缩状态，缺省为 false**
+
+```JavaScript
+Boolean WebSocketMessage.compress;
 ```
 
 --------------------------

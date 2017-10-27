@@ -7,7 +7,7 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\l}"];
-    StringDecoder [tooltip="StringDecoder", fillcolor="lightgray", label="{StringDecoder|new StringDecoder()\l|lastNeed\llastTotal\llastChar\lencoding\l|end()\lwrite()\ltext()\lfillLast()\l}"];
+    StringDecoder [tooltip="StringDecoder", fillcolor="lightgray", id="me", label="{StringDecoder|new StringDecoder()\l|lastNeed\llastTotal\llastChar\lencoding\l|end()\lwrite()\ltext()\lfillLast()\l}"];
 
     object -> StringDecoder [dir=back];
 }

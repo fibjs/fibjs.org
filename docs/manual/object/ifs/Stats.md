@@ -16,7 +16,7 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\l}"];
-    Stats [tooltip="Stats", fillcolor="lightgray", label="{Stats|new Stats()\l|operator[String]\l|inc()\ldec()\ladd()\lreset()\luptime()\l}"];
+    Stats [tooltip="Stats", fillcolor="lightgray", id="me", label="{Stats|new Stats()\l|operator[String]\l|inc()\ldec()\ladd()\lreset()\luptime()\l}"];
 
     object -> Stats [dir=back];
 }

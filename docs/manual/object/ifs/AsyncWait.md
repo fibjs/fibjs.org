@@ -8,7 +8,7 @@ digraph {
 
     object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\l}"];
     Handler [tooltip="Handler", URL="Handler.md", label="{Handler|new Handler()\l|invoke()\l}"];
-    AsyncWait [tooltip="AsyncWait", fillcolor="lightgray", label="{AsyncWait|end()\l}"];
+    AsyncWait [tooltip="AsyncWait", fillcolor="lightgray", id="me", label="{AsyncWait|end()\l}"];
 
     object -> Handler [dir=back];
     Handler -> AsyncWait [dir=back];

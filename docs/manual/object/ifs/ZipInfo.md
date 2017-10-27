@@ -7,7 +7,7 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\l}"];
-    ZipInfo [tooltip="ZipInfo", fillcolor="lightgray", label="{ZipInfo|filename\ldate\lcompress_type\lcompress_size\lfile_size\lpassword\ldata\l}"];
+    ZipInfo [tooltip="ZipInfo", fillcolor="lightgray", id="me", label="{ZipInfo|filename\ldate\lcompress_type\lcompress_size\lfile_size\lpassword\ldata\l}"];
 
     object -> ZipInfo [dir=back];
 }

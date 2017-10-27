@@ -9,7 +9,7 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\l}"];
-    Stat [tooltip="Stat", fillcolor="lightgray", label="{Stat|name\lsize\lmode\lmtime\latime\lctime\luid\lgid\l|isWritable()\lisReadable()\lisExecutable()\lisHidden()\lisDirectory()\lisFile()\lisSymbolicLink()\lisMemory()\lisSocket()\l}"];
+    Stat [tooltip="Stat", fillcolor="lightgray", id="me", label="{Stat|name\lsize\lmode\lmtime\latime\lctime\luid\lgid\l|isWritable()\lisReadable()\lisExecutable()\lisHidden()\lisDirectory()\lisFile()\lisSymbolicLink()\lisMemory()\lisSocket()\l}"];
 
     object -> Stat [dir=back];
 }

@@ -7,10 +7,10 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\l}"];
-    DbConnection [tooltip="DbConnection", fillcolor="lightgray", label="{DbConnection|type\l|close()\lbegin()\lcommit()\lrollback()\ltrans()\lexecute()\lformat()\l}"];
-    MSSQL [tooltip="MSSQL", URL="MSSQL.md", label="{MSSQL|use()\l}"];
-    MySQL [tooltip="MySQL", URL="MySQL.md", label="{MySQL|rxBufferSize\ltxBufferSize\l|use()\l}"];
-    SQLite [tooltip="SQLite", URL="SQLite.md", label="{SQLite|fileName\ltimeout\l|backup()\l}"];
+    DbConnection [tooltip="DbConnection", fillcolor="lightgray", id="me", label="{DbConnection|type\l|close()\lbegin()\lcommit()\lrollback()\ltrans()\lexecute()\lformat()\l}"];
+    MSSQL [tooltip="MSSQL", URL="MSSQL.md", label="{MSSQL}"];
+    MySQL [tooltip="MySQL", URL="MySQL.md", label="{MySQL}"];
+    SQLite [tooltip="SQLite", URL="SQLite.md", label="{SQLite}"];
 
     object -> DbConnection [dir=back];
     DbConnection -> MSSQL [dir=back];

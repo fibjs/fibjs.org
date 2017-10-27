@@ -22,10 +22,10 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\l}"];
-    TcpServer [tooltip="TcpServer", fillcolor="lightgray", label="{TcpServer|new TcpServer()\l|socket\lhandler\lstats\l|run()\lasyncRun()\lstop()\l}"];
-    HttpServer [tooltip="HttpServer", URL="HttpServer.md", label="{HttpServer|new HttpServer()\l|forceGZIP\lmaxHeadersCount\lmaxBodySize\lserverName\lhttpStats\l|onerror()\lenableCrossOrigin()\l}"];
-    HttpsServer [tooltip="HttpsServer", URL="HttpsServer.md", label="{HttpsServer|new HttpsServer()\l|verification\lca\l}"];
-    SslServer [tooltip="SslServer", URL="SslServer.md", label="{SslServer|new SslServer()\l|verification\lca\l}"];
+    TcpServer [tooltip="TcpServer", fillcolor="lightgray", id="me", label="{TcpServer|new TcpServer()\l|socket\lhandler\lstats\l|run()\lasyncRun()\lstop()\l}"];
+    HttpServer [tooltip="HttpServer", URL="HttpServer.md", label="{HttpServer}"];
+    HttpsServer [tooltip="HttpsServer", URL="HttpsServer.md", label="{HttpsServer}"];
+    SslServer [tooltip="SslServer", URL="SslServer.md", label="{SslServer}"];
 
     object -> TcpServer [dir=back];
     TcpServer -> HttpServer [dir=back];

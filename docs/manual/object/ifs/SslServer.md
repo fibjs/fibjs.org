@@ -25,7 +25,7 @@ digraph {
 
     object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\l}"];
     TcpServer [tooltip="TcpServer", URL="TcpServer.md", label="{TcpServer|new TcpServer()\l|socket\lhandler\lstats\l|run()\lasyncRun()\lstop()\l}"];
-    SslServer [tooltip="SslServer", fillcolor="lightgray", label="{SslServer|new SslServer()\l|verification\lca\l}"];
+    SslServer [tooltip="SslServer", fillcolor="lightgray", id="me", label="{SslServer|new SslServer()\l|verification\lca\l}"];
 
     object -> TcpServer [dir=back];
     TcpServer -> SslServer [dir=back];

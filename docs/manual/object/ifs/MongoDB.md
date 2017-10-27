@@ -13,7 +13,7 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\l}"];
-    MongoDB [tooltip="MongoDB", fillcolor="lightgray", label="{MongoDB|operator[String]\l|fs\l|getCollection()\lrunCommand()\loid()\lclose()\l}"];
+    MongoDB [tooltip="MongoDB", fillcolor="lightgray", id="me", label="{MongoDB|operator[String]\l|fs\l|getCollection()\lrunCommand()\loid()\lclose()\l}"];
 
     object -> MongoDB [dir=back];
 }

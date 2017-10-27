@@ -8,7 +8,7 @@ digraph {
 
     object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\l}"];
     XmlNode [tooltip="XmlNode", URL="XmlNode.md", label="{XmlNode|nodeType\lnodeName\lnodeValue\lownerDocument\lparentNode\lchildNodes\lfirstChild\llastChild\lpreviousSibling\lnextSibling\l|hasChildNodes()\lnormalize()\lcloneNode()\llookupPrefix()\llookupNamespaceURI()\linsertBefore()\linsertAfter()\lappendChild()\lreplaceChild()\lremoveChild()\l}"];
-    XmlProcessingInstruction [tooltip="XmlProcessingInstruction", fillcolor="lightgray", label="{XmlProcessingInstruction|target\ldata\l}"];
+    XmlProcessingInstruction [tooltip="XmlProcessingInstruction", fillcolor="lightgray", id="me", label="{XmlProcessingInstruction|target\ldata\l}"];
 
     object -> XmlNode [dir=back];
     XmlNode -> XmlProcessingInstruction [dir=back];

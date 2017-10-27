@@ -15,7 +15,7 @@ digraph {
 
     object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\l}"];
     Queue [tooltip="Queue", URL="Queue.md", label="{Queue|new Queue()\l|length\l|add()\loffer()\lremove()\lpoll()\lelement()\lpeek()\lclear()\ltoArray()\l}"];
-    BlockQueue [tooltip="BlockQueue", fillcolor="lightgray", label="{BlockQueue|new BlockQueue()\l|put()\ltake()\l}"];
+    BlockQueue [tooltip="BlockQueue", fillcolor="lightgray", id="me", label="{BlockQueue|new BlockQueue()\l|put()\ltake()\l}"];
 
     object -> Queue [dir=back];
     Queue -> BlockQueue [dir=back];

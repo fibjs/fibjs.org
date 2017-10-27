@@ -13,7 +13,7 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\l}"];
-    PKey [tooltip="PKey", fillcolor="lightgray", label="{PKey|new PKey()\l|name\lkeySize\lpublicKey\l|genRsaKey()\lgenEcKey()\lisPrivate()\lclone()\limportKey()\limportFile()\lexportPem()\lexportDer()\lexportJson()\lencrypt()\ldecrypt()\lsign()\lverify()\l}"];
+    PKey [tooltip="PKey", fillcolor="lightgray", id="me", label="{PKey|new PKey()\l|name\lkeySize\lpublicKey\l|genRsaKey()\lgenEcKey()\lisPrivate()\lclone()\limportKey()\limportFile()\lexportPem()\lexportDer()\lexportJson()\lencrypt()\ldecrypt()\lsign()\lverify()\l}"];
 
     object -> PKey [dir=back];
 }

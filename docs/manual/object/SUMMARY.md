@@ -71,7 +71,6 @@
 * [Timer](ifs/Timer.md)
 * [UrlObject](ifs/UrlObject.md)
 * [WebSocket](ifs/WebSocket.md)
-* [WebSocketHandler](ifs/WebSocketHandler.md)
 * [WebSocketMessage](ifs/WebSocketMessage.md)
 * [WebView](ifs/WebView.md)
 * [Worker](ifs/Worker.md)

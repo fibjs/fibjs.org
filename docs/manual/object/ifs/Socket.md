@@ -13,8 +13,8 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\l}"];
-    Stream [tooltip="Stream", URL="Stream.md", label="{Stream|read()\lwrite()\lclose()\lcopyTo()\l}"];
-    Socket [tooltip="Socket", fillcolor="lightgray", label="{Socket|new Socket()\l|family\ltype\lremoteAddress\lremotePort\llocalAddress\llocalPort\ltimeout\l|connect()\lbind()\llisten()\laccept()\lrecv()\lrecvfrom()\lsend()\lsendto()\l}"];
+    Stream [tooltip="Stream", URL="Stream.md", label="{Stream|read()\lwrite()\lflush()\lclose()\lcopyTo()\l}"];
+    Socket [tooltip="Socket", fillcolor="lightgray", id="me", label="{Socket|new Socket()\l|family\ltype\lremoteAddress\lremotePort\llocalAddress\llocalPort\ltimeout\l|connect()\lbind()\llisten()\laccept()\lrecv()\lrecvfrom()\lsend()\lsendto()\l}"];
 
     object -> Stream [dir=back];
     Stream -> Socket [dir=back];
@@ -238,6 +238,14 @@ Socket.write(Buffer data) async;
 
 调用参数:
 * data: [Buffer](Buffer.md), 给定要写入的数据
+
+--------------------------
+### flush
+**将文件缓冲区内容写入物理设备**
+
+```JavaScript
+Socket.flush() async;
+```
 
 --------------------------
 ### close

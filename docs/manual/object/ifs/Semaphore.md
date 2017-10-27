@@ -30,7 +30,7 @@ digraph {
 
     object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\l}"];
     Lock [tooltip="Lock", URL="Lock.md", label="{Lock|new Lock()\l|acquire()\lrelease()\lcount()\l}"];
-    Semaphore [tooltip="Semaphore", fillcolor="lightgray", label="{Semaphore|new Semaphore()\l|wait()\lpost()\ltrywait()\l}"];
+    Semaphore [tooltip="Semaphore", fillcolor="lightgray", id="me", label="{Semaphore|new Semaphore()\l|wait()\lpost()\ltrywait()\l}"];
 
     object -> Lock [dir=back];
     Lock -> Semaphore [dir=back];
