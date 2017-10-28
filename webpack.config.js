@@ -204,10 +204,11 @@ function build_docs() {
             p = path.join(config.to, p);
             var file1 = path.join(config.dist, p);
 
+            mkdir.mkdirsSync(path.dirname(file1));
+
             if (path.extname(file) == '.md') {
                 file1 += '.html';
 
-                mkdir.mkdirsSync(path.dirname(file1));
                 var doc = read_doc(file);
                 var r = /<h[1-9]?.*>(.*)<\/h[1-9]?>/.exec(doc);
                 var title = r ? r[1] : '';

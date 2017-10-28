@@ -204,3 +204,5 @@ describe('hello, test', () => {
 process.exit(test.run());
 ```
 这段代码的第 6~10 行里，我们增加了一段启动 `main.js` 的代码，并且稍微等待一下，之后再开始测试。
+
+👉 【[找出性能杀手](profiler.md)】

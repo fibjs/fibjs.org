@@ -2,3 +2,4 @@
 * [安装运行环境](install.md)
 * [hello, world](hello.md)
 * [美好生活从测试开始](test.md)
+* [找出性能杀手](profiler.md)

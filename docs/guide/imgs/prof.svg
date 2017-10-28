@@ -1,0 +1,927 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" width="1000" height="274" onload="init(evt)" viewBox="0 0 1000 274" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<defs >
+    <linearGradient id="background" y1="0" y2="1" x1="0" x2="0" >
+        <stop stop-color="#eeeeee" offset="5%" />
+        <stop stop-color="#eeeeb0" offset="95%" />
+    </linearGradient>
+</defs>
+<style type="text/css">
+    .func_g:hover {
+        stroke:black;
+        stroke-width:0.5;
+        cursor:pointer;
+    }
+</style>
+
+<script type="text/ecmascript">
+<![CDATA[
+    var details, searchbtn, matchedtxt, svg;
+    function init(evt) { 
+        details = document.getElementById("details").firstChild; 
+        searchbtn = document.getElementById("search");
+        matchedtxt = document.getElementById("matched");
+        svg = document.getElementsByTagName("svg")[0];
+        searching = 0;
+        unzoom();
+    }
+
+    // mouse-over for info
+    function s(node) {		// show
+        info = g_to_text(node);
+        details.nodeValue = "Function: " + info;
+    }
+    function c() {			// clear
+        details.nodeValue = ' ';
+    }
+
+    // ctrl-F for search
+    window.addEventListener("keydown",function (e) {
+        if (e.keyCode === 114 || (e.ctrlKey && e.keyCode === 70)) {
+            e.preventDefault();
+            search_prompt();
+        }
+    })
+
+    // functions
+    function find_child(parent, name, attr) {
+        var children = parent.childNodes;
+        for (var i=0; i<children.length;i++) {
+            if (children[i].tagName == name)
+                return (attr != undefined) ? children[i].attributes[attr].value : children[i];
+        }
+        return;
+    }
+    function orig_save(e, attr, val) {
+        if (e.attributes["_orig_"+attr] != undefined) return;
+        if (e.attributes[attr] == undefined) return;
+        if (val == undefined) val = e.attributes[attr].value;
+        e.setAttribute("_orig_"+attr, val);
+    }
+    function orig_load(e, attr) {
+        if (e.attributes["_orig_"+attr] == undefined) return;
+        e.attributes[attr].value = e.attributes["_orig_"+attr].value;
+        e.removeAttribute("_orig_"+attr);
+    }
+    function g_to_text(e) {
+        var text = find_child(e, "title").firstChild.nodeValue;
+        return (text)
+    }
+    function g_to_func(e) {
+        var func = g_to_text(e);
+        if (func != null)
+            func = func.replace(/ .*/, "");
+        return (func);
+    }
+    function update_text(e) {
+        var r = find_child(e, "rect");
+        var t = find_child(e, "text");
+        var w = parseFloat(r.attributes["width"].value) -3;
+        var txt = find_child(e, "title").textContent.replace(/\([^(]*\)$/,"");
+        t.attributes["x"].value = parseFloat(r.attributes["x"].value) +3;
+        
+        // Smaller than this size won't fit anything
+        if (w < 2*12*0.59) {
+            t.textContent = "";
+            return;
+        }
+        
+        t.textContent = txt;
+        // Fit in full text width
+        if (/^ *$/.test(txt) || t.getSubStringLength(0, txt.length) < w)
+            return;
+        
+        for (var x=txt.length-2; x>0; x--) {
+            if (t.getSubStringLength(0, x+2) <= w) { 
+                t.textContent = txt.substring(0,x) + "..";
+                return;
+            }
+        }
+        t.textContent = "";
+    }
+
+    // zoom
+    function zoom_reset(e) {
+        if (e.attributes != undefined) {
+            orig_load(e, "x");
+            orig_load(e, "width");
+        }
+        if (e.childNodes == undefined) return;
+        for(var i=0, c=e.childNodes; i<c.length; i++) {
+            zoom_reset(c[i]);
+        }
+    }
+    function zoom_child(e, x, ratio) {
+        if (e.attributes != undefined) {
+            if (e.attributes["x"] != undefined) {
+                orig_save(e, "x");
+                e.attributes["x"].value = (parseFloat(e.attributes["x"].value) - x - 10) * ratio + 10;
+                if(e.tagName == "text") e.attributes["x"].value = find_child(e.parentNode, "rect", "x") + 3;
+            }
+            if (e.attributes["width"] != undefined) {
+                orig_save(e, "width");
+                e.attributes["width"].value = parseFloat(e.attributes["width"].value) * ratio;
+            }
+        }
+        
+        if (e.childNodes == undefined) return;
+        for(var i=0, c=e.childNodes; i<c.length; i++) {
+            zoom_child(c[i], x-10, ratio);
+        }
+    }
+    function zoom_parent(e) {
+        if (e.attributes) {
+            if (e.attributes["x"] != undefined) {
+                orig_save(e, "x");
+                e.attributes["x"].value = 10;
+            }
+            if (e.attributes["width"] != undefined) {
+                orig_save(e, "width");
+                e.attributes["width"].value = parseInt(svg.width.baseVal.value) - (10*2);
+            }
+        }
+        if (e.childNodes == undefined) return;
+        for(var i=0, c=e.childNodes; i<c.length; i++) {
+            zoom_parent(c[i]);
+        }
+    }
+    function zoom(node) { 
+        var attr = find_child(node, "rect").attributes;
+        var width = parseFloat(attr["width"].value);
+        var xmin = parseFloat(attr["x"].value);
+        var xmax = parseFloat(xmin + width);
+        var ymin = parseFloat(attr["y"].value);
+        var ratio = (svg.width.baseVal.value - 2*10) / width;
+        
+        // XXX: Workaround for JavaScript float issues (fix me)
+        var fudge = 0.0001;
+        
+        var unzoombtn = document.getElementById("unzoom");
+        unzoombtn.style["opacity"] = "1.0";
+        
+        var el = document.getElementsByTagName("g");
+        for(var i=0;i<el.length;i++){
+            var e = el[i];
+            var a = find_child(e, "rect").attributes;
+            var ex = parseFloat(a["x"].value);
+            var ew = parseFloat(a["width"].value);
+            // Is it an ancestor
+            if (0 == 0) {
+                var upstack = parseFloat(a["y"].value) > ymin;
+            } else {
+                var upstack = parseFloat(a["y"].value) < ymin;
+            }
+            if (upstack) {
+                // Direct ancestor
+                if (ex <= xmin && (ex+ew+fudge) >= xmax) {
+                    e.style["opacity"] = "0.5";
+                    zoom_parent(e);
+                    e.onclick = function(e){unzoom(); zoom(this);};
+                    update_text(e);
+                }
+                // not in current path
+                else
+                    e.style["display"] = "none";
+            }
+            // Children maybe
+            else {
+                // no common path
+                if (ex < xmin || ex + fudge >= xmax) {
+                    e.style["display"] = "none";
+                }
+                else {
+                    zoom_child(e, xmin, ratio);
+                    e.onclick = function(e){zoom(this);};
+                    update_text(e);
+                }
+            }
+        }
+    }
+    function unzoom() {
+        var unzoombtn = document.getElementById("unzoom");
+        unzoombtn.style["opacity"] = "0.0";
+        
+        var el = document.getElementsByTagName("g");
+        for(i=0;i<el.length;i++) {
+            el[i].style["display"] = "block";
+            el[i].style["opacity"] = "1";
+            zoom_reset(el[i]);
+            update_text(el[i]);
+        }
+    }	
+
+    // search
+    function reset_search() {
+        var el = document.getElementsByTagName("rect");
+        for (var i=0; i < el.length; i++) {
+            orig_load(el[i], "fill")
+        }
+    }
+    function search_prompt() {
+        if (!searching) {
+            var term = prompt("Enter a search term (regexp " +
+                "allowed, eg: ^ext4_)", "");
+            if (term != null) {
+                search(term)
+            }
+        } else {
+            reset_search();
+            searching = 0;
+            searchbtn.style["opacity"] = "0.1";
+            searchbtn.firstChild.nodeValue = "Search"
+            matchedtxt.style["opacity"] = "0.0";
+            matchedtxt.firstChild.nodeValue = ""
+        }
+    }
+    function search(term) {
+        var re = new RegExp(term);
+        var el = document.getElementsByTagName("g");
+        var matches = new Object();
+        var maxwidth = 0;
+        for (var i = 0; i < el.length; i++) {
+            var e = el[i];
+            if (e.attributes["class"].value != "func_g")
+                continue;
+            var func = g_to_func(e);
+            var rect = find_child(e, "rect");
+            if (rect == null) {
+                // the rect might be wrapped in an anchor
+                // if nameattr href is being used
+                if (rect = find_child(e, "a")) {
+                    rect = find_child(r, "rect");
+                }
+            }
+            if (func == null || rect == null)
+                continue;
+
+            // Save max width. Only works as we have a root frame
+            var w = parseFloat(rect.attributes["width"].value);
+            if (w > maxwidth)
+                maxwidth = w;
+
+            if (func.match(re)) {
+                // highlight
+                var x = parseFloat(rect.attributes["x"].value);
+                orig_save(rect, "fill");
+                rect.attributes["fill"].value =
+                    "rgb(230,0,230)";
+
+                // remember matches
+                if (matches[x] == undefined) {
+                    matches[x] = w;
+                } else {
+                    if (w > matches[x]) {
+                        // overwrite with parent
+                        matches[x] = w;
+                    }
+                }
+                searching = 1;
+            }
+        }
+        if (!searching)
+            return;
+
+        searchbtn.style["opacity"] = "1.0";
+        searchbtn.firstChild.nodeValue = "Reset Search"
+
+        // calculate percent matched, excluding vertical overlap
+        var count = 0;
+        var lastx = -1;
+        var lastw = 0;
+        var keys = Array();
+        for (k in matches) {
+            if (matches.hasOwnProperty(k))
+                keys.push(k);
+        }
+        // sort the matched frames by their x location
+        // ascending, then width descending
+        keys.sort(function(a, b){
+                return a - b;
+            if (a < b || a > b)
+                return a - b;
+            return matches[b] - matches[a];
+        });
+        // Step through frames saving only the biggest bottom-up frames
+        // thanks to the sort order. This relies on the tree property
+        // where children are always smaller than their parents.
+        for (var k in keys) {
+            var x = parseFloat(keys[k]);
+            var w = matches[keys[k]];
+            if (x >= lastx + lastw) {
+                count += w;
+                lastx = x;
+                lastw = w;
+            }
+        }
+        // display matched percent
+        matchedtxt.style["opacity"] = "1.0";
+        pct = 100 * count / maxwidth;
+        if (pct == 100)
+            pct = "100"
+        else
+            pct = pct.toFixed(1)
+        matchedtxt.firstChild.nodeValue = "Matched: " + pct + "%";
+    }
+    function searchover(e) {
+        searchbtn.style["opacity"] = "1.0";
+    }
+    function searchout(e) {
+        if (searching) {
+            searchbtn.style["opacity"] = "1.0";
+        } else {
+            searchbtn.style["opacity"] = "0.1";
+        }
+    }
+]]>
+</script>
+
+<rect x="0.0" y="0" width="1000.0" height="274.0" fill="url(#background)"  />
+<text text-anchor="middle" x="500" y="24" font-size="17" font-family="Verdana" fill="rgb(0,0,0)"  >Flame Graph</text>
+<text text-anchor="" x="10.00" y="24" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" id="unzoom" onclick="unzoom()" style="opacity:0.0;cursor:pointer" >Reset Zoom</text>
+<text text-anchor="" x="890.00" y="24" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" id="search" onmouseover="searchover()" onmouseout="searchout()" onclick="search_prompt()" style="opacity:0.1;cursor:pointer" >Search</text>
+<text text-anchor="" x="1090.00" y="545" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" id="matched" > </text>
+<text text-anchor="" x="10" y="257" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" id="details" > </text>
+<g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>all (107 samples, 100.00%)</title><rect x="10.00" y="225" width="981.00" height="15.0" fill="rgb(206,80,29)" rx="2" ry="2" />
+<text text-anchor="" x="13.00" y="235.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>/Users/lion/works/modules/fib-orm/test/index.js:50:1 (102 samples, 95.33%)</title><rect x="10.00" y="209" width="935.16" height="15.0" fill="rgb(229,151,45)" rx="2" ry="2" />
+<text text-anchor="" x="13.00" y="219.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>t (/Users/lion/works/modules/fib-orm/test/index.js:7:5) (3 samples, 2.80%)</title><rect x="10.00" y="193" width="27.50" height="15.0" fill="rgb(235,126,29)" rx="2" ry="2" />
+<text text-anchor="" x="13.00" y="203.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>/Users/lion/works/modules/fib-orm/test/integration/association-extend.js:1:68 (3 samples, 2.80%)</title><rect x="10.00" y="177" width="27.50" height="15.0" fill="rgb(248,87,29)" rx="2" ry="2" />
+<text text-anchor="" x="13.00" y="187.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>/Users/lion/works/modules/fib-orm/test/support/spec_helper.js:1:70 (3 samples, 2.80%)</title><rect x="10.00" y="161" width="27.50" height="15.0" fill="rgb(237,180,1)" rx="2" ry="2" />
+<text text-anchor="" x="13.00" y="171.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>/Users/lion/works/modules/fib-orm/lib/index.js:12:16 (3 samples, 2.80%)</title><rect x="10.00" y="145" width="27.50" height="15.0" fill="rgb(225,47,47)" rx="2" ry="2" />
+<text text-anchor="" x="13.00" y="155.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>/Users/lion/works/modules/fib-orm/node_modules/orm/lib/ORM.js:6:22 (1 samples, 0.93%)</title><rect x="10.00" y="129" width="9.17" height="15.0" fill="rgb(233,138,3)" rx="2" ry="2" />
+<text text-anchor="" x="13.00" y="139.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>/Users/lion/works/modules/fib-orm/node_modules/enforce/index.js:8:14 (1 samples, 0.93%)</title><rect x="10.00" y="113" width="9.17" height="15.0" fill="rgb(215,141,4)" rx="2" ry="2" />
+<text text-anchor="" x="13.00" y="123.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>/Users/lion/works/modules/fib-orm/node_modules/enforce/lib/enforcements/common.js:5:17 (1 samples, 0.93%)</title><rect x="10.00" y="97" width="9.17" height="15.0" fill="rgb(218,132,36)" rx="2" ry="2" />
+<text text-anchor="" x="13.00" y="107.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>/Users/lion/works/modules/fib-orm/node_modules/enforce/lib/validator.js:1:1 (1 samples, 0.93%)</title><rect x="10.00" y="81" width="9.17" height="15.0" fill="rgb(221,125,0)" rx="2" ry="2" />
+<text text-anchor="" x="13.00" y="91.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>/Users/lion/works/modules/fib-orm/node_modules/orm/lib/ORM.js:7:22 (1 samples, 0.93%)</title><rect x="19.17" y="129" width="9.17" height="15.0" fill="rgb(219,229,23)" rx="2" ry="2" />
+<text text-anchor="" x="22.17" y="139.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>/Users/lion/works/modules/fib-orm/node_modules/lodash/lodash.js:17084:3 (1 samples, 0.93%)</title><rect x="19.17" y="113" width="9.17" height="15.0" fill="rgb(245,111,0)" rx="2" ry="2" />
+<text text-anchor="" x="22.17" y="123.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>/Users/lion/works/modules/fib-orm/node_modules/lodash/lodash.js:17057:11 (1 samples, 0.93%)</title><rect x="19.17" y="97" width="9.17" height="15.0" fill="rgb(221,212,38)" rx="2" ry="2" />
+<text text-anchor="" x="22.17" y="107.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>runInContext (/Users/lion/works/modules/fib-orm/node_modules/lodash/lodash.js:11272:23) (1 samples, 0.93%)</title><rect x="19.17" y="81" width="9.17" height="15.0" fill="rgb(228,73,26)" rx="2" ry="2" />
+<text text-anchor="" x="22.17" y="91.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>baseIsArguments (/Users/lion/works/modules/fib-orm/node_modules/lodash/lodash.js:3239:37) (1 samples, 0.93%)</title><rect x="19.17" y="65" width="9.17" height="15.0" fill="rgb(246,152,16)" rx="2" ry="2" />
+<text text-anchor="" x="22.17" y="75.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>baseGetTag (/Users/lion/works/modules/fib-orm/node_modules/lodash/lodash.js:3074:24) (1 samples, 0.93%)</title><rect x="19.17" y="49" width="9.17" height="15.0" fill="rgb(241,201,21)" rx="2" ry="2" />
+<text text-anchor="" x="22.17" y="59.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>/Users/lion/works/modules/fib-orm/node_modules/orm/lib/ORM.js:9:22 (1 samples, 0.93%)</title><rect x="28.34" y="129" width="9.17" height="15.0" fill="rgb(240,147,25)" rx="2" ry="2" />
+<text text-anchor="" x="31.34" y="139.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>/Users/lion/works/modules/fib-orm/node_modules/orm/lib/Model.js:6:25 (1 samples, 0.93%)</title><rect x="28.34" y="113" width="9.17" height="15.0" fill="rgb(244,123,22)" rx="2" ry="2" />
+<text text-anchor="" x="31.34" y="123.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>/Users/lion/works/modules/fib-orm/node_modules/orm/lib/Associations/Many.js:4:27 (1 samples, 0.93%)</title><rect x="28.34" y="97" width="9.17" height="15.0" fill="rgb(244,53,13)" rx="2" ry="2" />
+<text text-anchor="" x="31.34" y="107.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>/Users/lion/works/modules/fib-orm/node_modules/orm/lib/Settings.js:1:1 (1 samples, 0.93%)</title><rect x="28.34" y="81" width="9.17" height="15.0" fill="rgb(253,120,0)" rx="2" ry="2" />
+<text text-anchor="" x="31.34" y="91.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>t (/Users/lion/works/modules/fib-orm/test/index.js:21:5) (1 samples, 0.93%)</title><rect x="37.50" y="193" width="9.17" height="15.0" fill="rgb(224,205,25)" rx="2" ry="2" />
+<text text-anchor="" x="40.50" y="203.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>/Users/lion/works/modules/fib-orm/test/integration/model-clear.js:1:1 (1 samples, 0.93%)</title><rect x="37.50" y="177" width="9.17" height="15.0" fill="rgb(214,227,24)" rx="2" ry="2" />
+<text text-anchor="" x="40.50" y="187.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>t (/Users/lion/works/modules/fib-orm/test/index.js:47:10) (98 samples, 91.59%)</title><rect x="46.67" y="193" width="898.49" height="15.0" fill="rgb(249,180,54)" rx="2" ry="2" />
+<text text-anchor="" x="49.67" y="203.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>/Users/lion/works/modules/fib-orm/test/integration/association-extend.js:34:21 (1 samples, 0.93%)</title><rect x="46.67" y="177" width="9.17" height="15.0" fill="rgb(220,73,48)" rx="2" ry="2" />
+<text text-anchor="" x="49.67" y="187.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>module.exports.connect (/Users/lion/works/modules/fib-orm/test/support/spec_helper.js:4:16) (1 samples, 0.93%)</title><rect x="46.67" y="161" width="9.17" height="15.0" fill="rgb(251,183,2)" rx="2" ry="2" />
+<text text-anchor="" x="49.67" y="171.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>module.exports.orm.connectSync (/Users/lion/works/modules/fib-orm/lib/patch.js:181:23) (1 samples, 0.93%)</title><rect x="46.67" y="145" width="9.17" height="15.0" fill="rgb(223,110,50)" rx="2" ry="2" />
+<text text-anchor="" x="49.67" y="155.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>exports.connect (/Users/lion/works/modules/fib-orm/node_modules/orm/lib/ORM.js:118:27) (1 samples, 0.93%)</title><rect x="46.67" y="129" width="9.17" height="15.0" fill="rgb(209,51,17)" rx="2" ry="2" />
+<text text-anchor="" x="49.67" y="139.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>getAdapter (/Users/lion/works/modules/fib-orm/node_modules/orm/lib/Adapters.js:17:22) (1 samples, 0.93%)</title><rect x="46.67" y="113" width="9.17" height="15.0" fill="rgb(246,67,37)" rx="2" ry="2" />
+<text text-anchor="" x="49.67" y="123.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>/Users/lion/works/modules/fib-orm/node_modules/orm/lib/Drivers/DML/sqlite.js:6:15 (1 samples, 0.93%)</title><rect x="46.67" y="97" width="9.17" height="15.0" fill="rgb(207,9,17)" rx="2" ry="2" />
+<text text-anchor="" x="49.67" y="107.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>/Users/lion/works/modules/fib-orm/node_modules/orm/lib/Drivers/DDL/SQL.js:2:12 (1 samples, 0.93%)</title><rect x="46.67" y="81" width="9.17" height="15.0" fill="rgb(231,39,12)" rx="2" ry="2" />
+<text text-anchor="" x="49.67" y="91.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>/Users/lion/works/modules/fib-orm/node_modules/sql-ddl-sync/lib/index.js:1:1 (1 samples, 0.93%)</title><rect x="46.67" y="65" width="9.17" height="15.0" fill="rgb(243,207,6)" rx="2" ry="2" />
+<text text-anchor="" x="49.67" y="75.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>setup (/Users/lion/works/modules/fib-orm/test/integration/association-extend.js:21:20) (1 samples, 0.93%)</title><rect x="55.84" y="177" width="9.17" height="15.0" fill="rgb(106,81,215)" rx="2" ry="2" />
+<text text-anchor="" x="58.84" y="187.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>module.exports.dropSync (/Users/lion/works/modules/fib-orm/test/support/spec_helper.js:13:12) (1 samples, 0.93%)</title><rect x="55.84" y="161" width="9.17" height="15.0" fill="rgb(120,82,215)" rx="2" ry="2" />
+<text text-anchor="" x="58.84" y="171.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>/Users/lion/works/modules/fib-orm/test/support/spec_helper.js:14:14 (1 samples, 0.93%)</title><rect x="55.84" y="145" width="9.17" height="15.0" fill="rgb(87,87,210)" rx="2" ry="2" />
+<text text-anchor="" x="58.84" y="155.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>util.sync() (native code) (1 samples, 0.93%)</title><rect x="55.84" y="129" width="9.17" height="15.0" fill="rgb(104,86,193)" rx="2" ry="2" />
+<text text-anchor="" x="58.84" y="139.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>/Users/lion/works/modules/fib-orm/test/integration/association-hasmany-extra.js:64:16 (1 samples, 0.93%)</title><rect x="65.01" y="177" width="9.17" height="15.0" fill="rgb(119,131,208)" rx="2" ry="2" />
+<text text-anchor="" x="68.01" y="187.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>util.sync(first) (native code) (1 samples, 0.93%)</title><rect x="65.01" y="161" width="9.17" height="15.0" fill="rgb(127,110,220)" rx="2" ry="2" />
+<text text-anchor="" x="68.01" y="171.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>/Users/lion/works/modules/fib-orm/test/integration/association-hasmany-hooks.js:105:22 (2 samples, 1.87%)</title><rect x="74.18" y="177" width="18.34" height="15.0" fill="rgb(114,112,227)" rx="2" ry="2" />
+<text text-anchor="" x="77.18" y="187.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>util.sync(value) (native code) (2 samples, 1.87%)</title><rect x="74.18" y="161" width="18.34" height="15.0" fill="rgb(109,94,226)" rx="2" ry="2" />
+<text text-anchor="" x="77.18" y="171.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>setup (/Users/lion/works/modules/fib-orm/test/integration/association-hasmany.js:38:24) (2 samples, 1.87%)</title><rect x="92.51" y="177" width="18.34" height="15.0" fill="rgb(80,107,230)" rx="2" ry="2" />
+<text text-anchor="" x="95.51" y="187.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>module.exports.dropSync (/Users/lion/works/modules/fib-orm/test/support/spec_helper.js:19:9) (2 samples, 1.87%)</title><rect x="92.51" y="161" width="18.34" height="15.0" fill="rgb(139,131,210)" rx="2" ry="2" />
+<text text-anchor="" x="95.51" y="171.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>/Users/lion/works/modules/fib-orm/test/integration/association-hasmany.js:51:28 (1 samples, 0.93%)</title><rect x="92.51" y="145" width="9.17" height="15.0" fill="rgb(96,110,233)" rx="2" ry="2" />
+<text text-anchor="" x="95.51" y="155.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>util.sync() (native code) (1 samples, 0.93%)</title><rect x="92.51" y="129" width="9.17" height="15.0" fill="rgb(139,101,232)" rx="2" ry="2" />
+<text text-anchor="" x="95.51" y="139.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>/Users/lion/works/modules/fib-orm/test/integration/association-hasmany.js:39:25 (1 samples, 0.93%)</title><rect x="101.68" y="145" width="9.17" height="15.0" fill="rgb(111,122,222)" rx="2" ry="2" />
+<text text-anchor="" x="104.68" y="155.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>util.sync() (native code) (1 samples, 0.93%)</title><rect x="101.68" y="129" width="9.17" height="15.0" fill="rgb(138,133,218)" rx="2" ry="2" />
+<text text-anchor="" x="104.68" y="139.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>setup (/Users/lion/works/modules/fib-orm/test/integration/association-hasmany.js:26:29) (1 samples, 0.93%)</title><rect x="110.85" y="177" width="9.17" height="15.0" fill="rgb(225,75,45)" rx="2" ry="2" />
+<text text-anchor="" x="113.85" y="187.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>module.exports.orm.connectSync.db.define (/Users/lion/works/modules/fib-orm/lib/patch.js:192:25) (1 samples, 0.93%)</title><rect x="110.85" y="161" width="9.17" height="15.0" fill="rgb(250,114,26)" rx="2" ry="2" />
+<text text-anchor="" x="113.85" y="171.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>ORM.define (/Users/lion/works/modules/fib-orm/node_modules/orm/lib/ORM.js:225:22) (1 samples, 0.93%)</title><rect x="110.85" y="145" width="9.17" height="15.0" fill="rgb(249,96,27)" rx="2" ry="2" />
+<text text-anchor="" x="113.85" y="155.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>Model (/Users/lion/works/modules/fib-orm/node_modules/orm/lib/Model.js:27:11) (1 samples, 0.93%)</title><rect x="110.85" y="129" width="9.17" height="15.0" fill="rgb(219,24,29)" rx="2" ry="2" />
+<text text-anchor="" x="113.85" y="139.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>/Users/lion/works/modules/fib-orm/node_modules/lodash/lodash.js:6585:22 (1 samples, 0.93%)</title><rect x="110.85" y="113" width="9.17" height="15.0" fill="rgb(225,221,29)" rx="2" ry="2" />
+<text text-anchor="" x="113.85" y="123.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>/Users/lion/works/modules/fib-orm/test/integration/association-hasmany.js:322:24 (1 samples, 0.93%)</title><rect x="120.02" y="177" width="9.17" height="15.0" fill="rgb(89,118,212)" rx="2" ry="2" />
+<text text-anchor="" x="123.02" y="187.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>util.sync(value) (native code) (1 samples, 0.93%)</title><rect x="120.02" y="161" width="9.17" height="15.0" fill="rgb(100,139,227)" rx="2" ry="2" />
+<text text-anchor="" x="123.02" y="171.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>/Users/lion/works/modules/fib-orm/test/integration/association-hasmany.js:559:13 (1 samples, 0.93%)</title><rect x="129.19" y="177" width="9.17" height="15.0" fill="rgb(119,107,220)" rx="2" ry="2" />
+<text text-anchor="" x="132.19" y="187.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>setup (/Users/lion/works/modules/fib-orm/test/integration/association-hasmany.js:533:20) (1 samples, 0.93%)</title><rect x="129.19" y="161" width="9.17" height="15.0" fill="rgb(130,117,205)" rx="2" ry="2" />
+<text text-anchor="" x="132.19" y="171.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>module.exports.dropSync (/Users/lion/works/modules/fib-orm/test/support/spec_helper.js:13:12) (1 samples, 0.93%)</title><rect x="129.19" y="145" width="9.17" height="15.0" fill="rgb(124,111,201)" rx="2" ry="2" />
+<text text-anchor="" x="132.19" y="155.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>/Users/lion/works/modules/fib-orm/test/support/spec_helper.js:14:14 (1 samples, 0.93%)</title><rect x="129.19" y="129" width="9.17" height="15.0" fill="rgb(137,84,199)" rx="2" ry="2" />
+<text text-anchor="" x="132.19" y="139.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>util.sync() (native code) (1 samples, 0.93%)</title><rect x="129.19" y="113" width="9.17" height="15.0" fill="rgb(138,124,198)" rx="2" ry="2" />
+<text text-anchor="" x="132.19" y="123.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>setup (/Users/lion/works/modules/fib-orm/test/integration/association-hasone.js:58:20) (3 samples, 2.80%)</title><rect x="138.36" y="177" width="27.50" height="15.0" fill="rgb(113,127,194)" rx="2" ry="2" />
+<text text-anchor="" x="141.36" y="187.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>module.exports.dropSync (/Users/lion/works/modules/fib-orm/test/support/spec_helper.js:13:12) (3 samples, 2.80%)</title><rect x="138.36" y="161" width="27.50" height="15.0" fill="rgb(82,127,194)" rx="2" ry="2" />
+<text text-anchor="" x="141.36" y="171.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>/Users/lion/works/modules/fib-orm/test/support/spec_helper.js:15:14 (2 samples, 1.87%)</title><rect x="138.36" y="145" width="18.34" height="15.0" fill="rgb(109,125,233)" rx="2" ry="2" />
+<text text-anchor="" x="141.36" y="155.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>util.sync() (native code) (2 samples, 1.87%)</title><rect x="138.36" y="129" width="18.34" height="15.0" fill="rgb(97,104,201)" rx="2" ry="2" />
+<text text-anchor="" x="141.36" y="139.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>/Users/lion/works/modules/fib-orm/test/support/spec_helper.js:14:14 (1 samples, 0.93%)</title><rect x="156.69" y="145" width="9.17" height="15.0" fill="rgb(114,101,212)" rx="2" ry="2" />
+<text text-anchor="" x="159.69" y="155.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>util.sync() (native code) (1 samples, 0.93%)</title><rect x="156.69" y="129" width="9.17" height="15.0" fill="rgb(93,82,198)" rx="2" ry="2" />
+<text text-anchor="" x="159.69" y="139.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>/Users/lion/works/modules/fib-orm/test/integration/association-hasone-reverse.js:167:35 (1 samples, 0.93%)</title><rect x="165.86" y="177" width="9.17" height="15.0" fill="rgb(106,135,238)" rx="2" ry="2" />
+<text text-anchor="" x="168.86" y="187.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>util.sync(value) (native code) (1 samples, 0.93%)</title><rect x="165.86" y="161" width="9.17" height="15.0" fill="rgb(117,84,214)" rx="2" ry="2" />
+<text text-anchor="" x="168.86" y="171.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>setup (/Users/lion/works/modules/fib-orm/test/integration/hook.js:52:27) (2 samples, 1.87%)</title><rect x="175.03" y="177" width="18.34" height="15.0" fill="rgb(122,122,202)" rx="2" ry="2" />
+<text text-anchor="" x="178.03" y="187.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>module.exports.dropSync (/Users/lion/works/modules/fib-orm/test/support/spec_helper.js:13:12) (2 samples, 1.87%)</title><rect x="175.03" y="161" width="18.34" height="15.0" fill="rgb(137,139,231)" rx="2" ry="2" />
+<text text-anchor="" x="178.03" y="171.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>/Users/lion/works/modules/fib-orm/test/support/spec_helper.js:15:14 (1 samples, 0.93%)</title><rect x="175.03" y="145" width="9.17" height="15.0" fill="rgb(110,84,192)" rx="2" ry="2" />
+<text text-anchor="" x="178.03" y="155.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>util.sync() (native code) (1 samples, 0.93%)</title><rect x="175.03" y="129" width="9.17" height="15.0" fill="rgb(109,138,230)" rx="2" ry="2" />
+<text text-anchor="" x="178.03" y="139.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>/Users/lion/works/modules/fib-orm/test/support/spec_helper.js:14:14 (1 samples, 0.93%)</title><rect x="184.20" y="145" width="9.17" height="15.0" fill="rgb(103,83,190)" rx="2" ry="2" />
+<text text-anchor="" x="187.20" y="155.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>util.sync() (native code) (1 samples, 0.93%)</title><rect x="184.20" y="129" width="9.17" height="15.0" fill="rgb(90,125,210)" rx="2" ry="2" />
+<text text-anchor="" x="187.20" y="139.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>/Users/lion/works/modules/fib-orm/test/integration/hook.js:172:24 (4 samples, 3.74%)</title><rect x="193.36" y="177" width="36.67" height="15.0" fill="rgb(120,113,205)" rx="2" ry="2" />
+<text text-anchor="" x="196.36" y="187.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>util.sync() (native code) (4 samples, 3.74%)</title><rect x="193.36" y="161" width="36.67" height="15.0" fill="rgb(134,107,213)" rx="2" ry="2" />
+<text text-anchor="" x="196.36" y="171.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>/Users/lion/works/modules/fib-orm/test/integration/hook.js:189:32 (3 samples, 2.80%)</title><rect x="230.04" y="177" width="27.50" height="15.0" fill="rgb(103,124,217)" rx="2" ry="2" />
+<text text-anchor="" x="233.04" y="187.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>util.sync() (native code) (3 samples, 2.80%)</title><rect x="230.04" y="161" width="27.50" height="15.0" fill="rgb(84,93,218)" rx="2" ry="2" />
+<text text-anchor="" x="233.04" y="171.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>/Users/lion/works/modules/fib-orm/test/integration/hook.js:218:20 (1 samples, 0.93%)</title><rect x="257.54" y="177" width="9.17" height="15.0" fill="rgb(131,120,193)" rx="2" ry="2" />
+<text text-anchor="" x="260.54" y="187.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>util.sync() (native code) (1 samples, 0.93%)</title><rect x="257.54" y="161" width="9.17" height="15.0" fill="rgb(128,108,198)" rx="2" ry="2" />
+<text text-anchor="" x="260.54" y="171.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>/Users/lion/works/modules/fib-orm/test/integration/hook.js:281:24 (3 samples, 2.80%)</title><rect x="266.71" y="177" width="27.50" height="15.0" fill="rgb(86,90,238)" rx="2" ry="2" />
+<text text-anchor="" x="269.71" y="187.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>util.sync() (native code) (3 samples, 2.80%)</title><rect x="266.71" y="161" width="27.50" height="15.0" fill="rgb(121,127,232)" rx="2" ry="2" />
+<text text-anchor="" x="269.71" y="171.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>/Users/lion/works/modules/fib-orm/test/integration/hook.js:301:32 (4 samples, 3.74%)</title><rect x="294.21" y="177" width="36.67" height="15.0" fill="rgb(101,102,216)" rx="2" ry="2" />
+<text text-anchor="" x="297.21" y="187.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>util.sync() (native code) (4 samples, 3.74%)</title><rect x="294.21" y="161" width="36.67" height="15.0" fill="rgb(90,109,215)" rx="2" ry="2" />
+<text text-anchor="" x="297.21" y="171.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>/Users/lion/works/modules/fib-orm/test/integration/hook.js:317:33 (4 samples, 3.74%)</title><rect x="330.89" y="177" width="36.67" height="15.0" fill="rgb(112,91,236)" rx="2" ry="2" />
+<text text-anchor="" x="333.89" y="187.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>util.sync(value) (native code) (4 samples, 3.74%)</title><rect x="330.89" y="161" width="36.67" height="15.0" fill="rgb(126,86,203)" rx="2" ry="2" />
+<text text-anchor="" x="333.89" y="171.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>/Users/lion/works/modules/fib-orm/test/integration/hook.js:409:24 (3 samples, 2.80%)</title><rect x="367.56" y="177" width="27.50" height="15.0" fill="rgb(121,83,223)" rx="2" ry="2" />
+<text text-anchor="" x="370.56" y="187.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>util.sync() (native code) (3 samples, 2.80%)</title><rect x="367.56" y="161" width="27.50" height="15.0" fill="rgb(122,117,219)" rx="2" ry="2" />
+<text text-anchor="" x="370.56" y="171.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>/Users/lion/works/modules/fib-orm/test/integration/hook.js:417:28 (4 samples, 3.74%)</title><rect x="395.07" y="177" width="36.67" height="15.0" fill="rgb(115,130,203)" rx="2" ry="2" />
+<text text-anchor="" x="398.07" y="187.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>util.sync() (native code) (4 samples, 3.74%)</title><rect x="395.07" y="161" width="36.67" height="15.0" fill="rgb(90,81,219)" rx="2" ry="2" />
+<text text-anchor="" x="398.07" y="171.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>/Users/lion/works/modules/fib-orm/test/integration/hook.js:429:24 (3 samples, 2.80%)</title><rect x="431.74" y="177" width="27.50" height="15.0" fill="rgb(82,97,214)" rx="2" ry="2" />
+<text text-anchor="" x="434.74" y="187.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>util.sync(value) (native code) (3 samples, 2.80%)</title><rect x="431.74" y="161" width="27.50" height="15.0" fill="rgb(86,129,223)" rx="2" ry="2" />
+<text text-anchor="" x="434.74" y="171.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>/Users/lion/works/modules/fib-orm/test/integration/hook.js:465:24 (4 samples, 3.74%)</title><rect x="459.24" y="177" width="36.67" height="15.0" fill="rgb(113,106,235)" rx="2" ry="2" />
+<text text-anchor="" x="462.24" y="187.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>util.sync() (native code) (4 samples, 3.74%)</title><rect x="459.24" y="161" width="36.67" height="15.0" fill="rgb(101,134,196)" rx="2" ry="2" />
+<text text-anchor="" x="462.24" y="171.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>/Users/lion/works/modules/fib-orm/test/integration/hook.js:522:24 (4 samples, 3.74%)</title><rect x="495.92" y="177" width="36.67" height="15.0" fill="rgb(97,127,235)" rx="2" ry="2" />
+<text text-anchor="" x="498.92" y="187.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>util.sync() (native code) (4 samples, 3.74%)</title><rect x="495.92" y="161" width="36.67" height="15.0" fill="rgb(131,135,198)" rx="2" ry="2" />
+<text text-anchor="" x="498.92" y="171.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>/Users/lion/works/modules/fib-orm/test/integration/hook.js:579:26 (4 samples, 3.74%)</title><rect x="532.59" y="177" width="36.67" height="15.0" fill="rgb(116,120,194)" rx="2" ry="2" />
+<text text-anchor="" x="535.59" y="187.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>util.sync(value) (native code) (4 samples, 3.74%)</title><rect x="532.59" y="161" width="36.67" height="15.0" fill="rgb(94,107,209)" rx="2" ry="2" />
+<text text-anchor="" x="535.59" y="171.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>/Users/lion/works/modules/fib-orm/test/integration/hook.js:597:34 (4 samples, 3.74%)</title><rect x="569.26" y="177" width="36.67" height="15.0" fill="rgb(92,127,192)" rx="2" ry="2" />
+<text text-anchor="" x="572.26" y="187.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>util.sync(value) (native code) (4 samples, 3.74%)</title><rect x="569.26" y="161" width="36.67" height="15.0" fill="rgb(116,123,207)" rx="2" ry="2" />
+<text text-anchor="" x="572.26" y="171.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>/Users/lion/works/modules/fib-orm/test/integration/hook.js:648:23 (4 samples, 3.74%)</title><rect x="605.93" y="177" width="36.67" height="15.0" fill="rgb(98,90,244)" rx="2" ry="2" />
+<text text-anchor="" x="608.93" y="187.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>coroutine.sleep (native code) (4 samples, 3.74%)</title><rect x="605.93" y="161" width="36.67" height="15.0" fill="rgb(111,102,224)" rx="2" ry="2" />
+<text text-anchor="" x="608.93" y="171.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>/Users/lion/works/modules/fib-orm/test/integration/instance.js:111:38 (1 samples, 0.93%)</title><rect x="642.61" y="177" width="9.17" height="15.0" fill="rgb(84,93,191)" rx="2" ry="2" />
+<text text-anchor="" x="645.61" y="187.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>util.sync(first) (native code) (1 samples, 0.93%)</title><rect x="642.61" y="161" width="9.17" height="15.0" fill="rgb(96,93,212)" rx="2" ry="2" />
+<text text-anchor="" x="645.61" y="171.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>setup (/Users/lion/works/modules/fib-orm/test/integration/model-aggregate.js:14:20) (1 samples, 0.93%)</title><rect x="651.78" y="177" width="9.17" height="15.0" fill="rgb(119,131,210)" rx="2" ry="2" />
+<text text-anchor="" x="654.78" y="187.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>module.exports.dropSync (/Users/lion/works/modules/fib-orm/test/support/spec_helper.js:19:9) (1 samples, 0.93%)</title><rect x="651.78" y="161" width="9.17" height="15.0" fill="rgb(103,99,226)" rx="2" ry="2" />
+<text text-anchor="" x="654.78" y="171.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>/Users/lion/works/modules/fib-orm/test/integration/model-aggregate.js:15:24 (1 samples, 0.93%)</title><rect x="651.78" y="145" width="9.17" height="15.0" fill="rgb(87,138,241)" rx="2" ry="2" />
+<text text-anchor="" x="654.78" y="155.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>util.sync() (native code) (1 samples, 0.93%)</title><rect x="651.78" y="129" width="9.17" height="15.0" fill="rgb(134,123,208)" rx="2" ry="2" />
+<text text-anchor="" x="654.78" y="139.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>/Users/lion/works/modules/fib-orm/test/integration/model-count.js:48:32 (1 samples, 0.93%)</title><rect x="660.94" y="177" width="9.17" height="15.0" fill="rgb(139,123,217)" rx="2" ry="2" />
+<text text-anchor="" x="663.94" y="187.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>util.sync() (native code) (1 samples, 0.93%)</title><rect x="660.94" y="161" width="9.17" height="15.0" fill="rgb(132,117,203)" rx="2" ry="2" />
+<text text-anchor="" x="663.94" y="171.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>setup (/Users/lion/works/modules/fib-orm/test/integration/model-exists.js:15:27) (1 samples, 0.93%)</title><rect x="670.11" y="177" width="9.17" height="15.0" fill="rgb(138,129,210)" rx="2" ry="2" />
+<text text-anchor="" x="673.11" y="187.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>module.exports.dropSync (/Users/lion/works/modules/fib-orm/test/support/spec_helper.js:13:12) (1 samples, 0.93%)</title><rect x="670.11" y="161" width="9.17" height="15.0" fill="rgb(89,124,223)" rx="2" ry="2" />
+<text text-anchor="" x="673.11" y="171.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>/Users/lion/works/modules/fib-orm/test/support/spec_helper.js:14:14 (1 samples, 0.93%)</title><rect x="670.11" y="145" width="9.17" height="15.0" fill="rgb(109,81,234)" rx="2" ry="2" />
+<text text-anchor="" x="673.11" y="155.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>util.sync() (native code) (1 samples, 0.93%)</title><rect x="670.11" y="129" width="9.17" height="15.0" fill="rgb(120,108,221)" rx="2" ry="2" />
+<text text-anchor="" x="673.11" y="139.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>setup (/Users/lion/works/modules/fib-orm/test/integration/model-find-chain.js:18:20) (1 samples, 0.93%)</title><rect x="679.28" y="177" width="9.17" height="15.0" fill="rgb(249,125,49)" rx="2" ry="2" />
+<text text-anchor="" x="682.28" y="187.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>exports.prepare.Model.hasMany (/Users/lion/works/modules/fib-orm/node_modules/orm/lib/Associations/Many.js:55:9) (1 samples, 0.93%)</title><rect x="679.28" y="161" width="9.17" height="15.0" fill="rgb(229,95,30)" rx="2" ry="2" />
+<text text-anchor="" x="682.28" y="171.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>exports.wrapFieldObject (/Users/lion/works/modules/fib-orm/node_modules/orm/lib/Utilities.js:190:15) (1 samples, 0.93%)</title><rect x="679.28" y="145" width="9.17" height="15.0" fill="rgb(216,3,20)" rx="2" ry="2" />
+<text text-anchor="" x="682.28" y="155.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>cloneDeep (/Users/lion/works/modules/fib-orm/node_modules/lodash/lodash.js:11101:23) (1 samples, 0.93%)</title><rect x="679.28" y="129" width="9.17" height="15.0" fill="rgb(211,129,25)" rx="2" ry="2" />
+<text text-anchor="" x="682.28" y="139.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>setup (/Users/lion/works/modules/fib-orm/test/integration/model-find-chain.js:23:27) (2 samples, 1.87%)</title><rect x="688.45" y="177" width="18.34" height="15.0" fill="rgb(115,122,242)" rx="2" ry="2" />
+<text text-anchor="" x="691.45" y="187.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>module.exports.dropSync (/Users/lion/works/modules/fib-orm/test/support/spec_helper.js:13:12) (2 samples, 1.87%)</title><rect x="688.45" y="161" width="18.34" height="15.0" fill="rgb(100,134,210)" rx="2" ry="2" />
+<text text-anchor="" x="691.45" y="171.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>/Users/lion/works/modules/fib-orm/test/support/spec_helper.js:15:14 (2 samples, 1.87%)</title><rect x="688.45" y="145" width="18.34" height="15.0" fill="rgb(133,116,235)" rx="2" ry="2" />
+<text text-anchor="" x="691.45" y="155.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>util.sync() (native code) (2 samples, 1.87%)</title><rect x="688.45" y="129" width="18.34" height="15.0" fill="rgb(128,108,225)" rx="2" ry="2" />
+<text text-anchor="" x="691.45" y="139.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>/Users/lion/works/modules/fib-orm/test/integration/model-find-chain.js:520:33 (1 samples, 0.93%)</title><rect x="706.79" y="177" width="9.17" height="15.0" fill="rgb(92,125,219)" rx="2" ry="2" />
+<text text-anchor="" x="709.79" y="187.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>util.sync(find) (native code) (1 samples, 0.93%)</title><rect x="706.79" y="161" width="9.17" height="15.0" fill="rgb(102,129,236)" rx="2" ry="2" />
+<text text-anchor="" x="709.79" y="171.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>/Users/lion/works/modules/fib-orm/test/integration/model-find.js:111:33 (1 samples, 0.93%)</title><rect x="715.95" y="177" width="9.17" height="15.0" fill="rgb(83,113,242)" rx="2" ry="2" />
+<text text-anchor="" x="718.95" y="187.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>util.sync() (native code) (1 samples, 0.93%)</title><rect x="715.95" y="161" width="9.17" height="15.0" fill="rgb(136,113,242)" rx="2" ry="2" />
+<text text-anchor="" x="718.95" y="171.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>/Users/lion/works/modules/fib-orm/test/integration/model-get.js:41:21 (1 samples, 0.93%)</title><rect x="725.12" y="177" width="9.17" height="15.0" fill="rgb(116,131,242)" rx="2" ry="2" />
+<text text-anchor="" x="728.12" y="187.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>module.exports.connect (/Users/lion/works/modules/fib-orm/test/support/spec_helper.js:4:16) (1 samples, 0.93%)</title><rect x="725.12" y="161" width="9.17" height="15.0" fill="rgb(126,120,199)" rx="2" ry="2" />
+<text text-anchor="" x="728.12" y="171.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>module.exports.orm.connectSync (/Users/lion/works/modules/fib-orm/lib/patch.js:181:23) (1 samples, 0.93%)</title><rect x="725.12" y="145" width="9.17" height="15.0" fill="rgb(124,123,217)" rx="2" ry="2" />
+<text text-anchor="" x="728.12" y="155.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>exports.connect (/Users/lion/works/modules/fib-orm/node_modules/orm/lib/ORM.js:120:18) (1 samples, 0.93%)</title><rect x="725.12" y="129" width="9.17" height="15.0" fill="rgb(105,125,213)" rx="2" ry="2" />
+<text text-anchor="" x="728.12" y="139.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>Driver (/Users/lion/works/modules/fib-orm/node_modules/orm/lib/Drivers/DML/sqlite.js:31:14) (1 samples, 0.93%)</title><rect x="725.12" y="113" width="9.17" height="15.0" fill="rgb(128,131,217)" rx="2" ry="2" />
+<text text-anchor="" x="728.12" y="123.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>Database (/Users/lion/works/modules/fib-orm/lib/modules/sqlite3.js:5:24) (1 samples, 0.93%)</title><rect x="725.12" y="97" width="9.17" height="15.0" fill="rgb(89,97,220)" rx="2" ry="2" />
+<text text-anchor="" x="728.12" y="107.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>db.openSQLite (native code) (1 samples, 0.93%)</title><rect x="725.12" y="81" width="9.17" height="15.0" fill="rgb(91,85,207)" rx="2" ry="2" />
+<text text-anchor="" x="728.12" y="91.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>/Users/lion/works/modules/fib-orm/test/integration/model-get.js:139:27 (4 samples, 3.74%)</title><rect x="734.29" y="177" width="36.67" height="15.0" fill="rgb(127,130,217)" rx="2" ry="2" />
+<text text-anchor="" x="737.29" y="187.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>coroutine.sleep (native code) (4 samples, 3.74%)</title><rect x="734.29" y="161" width="36.67" height="15.0" fill="rgb(136,132,223)" rx="2" ry="2" />
+<text text-anchor="" x="737.29" y="171.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>/Users/lion/works/modules/fib-orm/test/integration/model-get.js:152:27 (12 samples, 11.21%)</title><rect x="770.96" y="177" width="110.02" height="15.0" fill="rgb(123,134,222)" rx="2" ry="2" />
+<text text-anchor="" x="773.96" y="187.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>coroutine.sleep (native code) (12 samples, 11.21%)</title><rect x="770.96" y="161" width="110.02" height="15.0" fill="rgb(90,114,204)" rx="2" ry="2" />
+<text text-anchor="" x="773.96" y="171.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>setup (/Users/lion/works/modules/fib-orm/test/integration/model-get.js:29:27) (1 samples, 0.93%)</title><rect x="880.98" y="177" width="9.17" height="15.0" fill="rgb(124,116,240)" rx="2" ry="2" />
+<text text-anchor="" x="883.98" y="187.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>module.exports.dropSync (/Users/lion/works/modules/fib-orm/test/support/spec_helper.js:13:12) (1 samples, 0.93%)</title><rect x="880.98" y="161" width="9.17" height="15.0" fill="rgb(103,123,207)" rx="2" ry="2" />
+<text text-anchor="" x="883.98" y="171.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>/Users/lion/works/modules/fib-orm/test/support/spec_helper.js:14:14 (1 samples, 0.93%)</title><rect x="880.98" y="145" width="9.17" height="15.0" fill="rgb(105,133,235)" rx="2" ry="2" />
+<text text-anchor="" x="883.98" y="155.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>util.sync() (native code) (1 samples, 0.93%)</title><rect x="880.98" y="129" width="9.17" height="15.0" fill="rgb(122,97,232)" rx="2" ry="2" />
+<text text-anchor="" x="883.98" y="139.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>setup (/Users/lion/works/modules/fib-orm/test/integration/model-one.js:14:27) (1 samples, 0.93%)</title><rect x="890.15" y="177" width="9.17" height="15.0" fill="rgb(130,83,228)" rx="2" ry="2" />
+<text text-anchor="" x="893.15" y="187.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>module.exports.dropSync (/Users/lion/works/modules/fib-orm/test/support/spec_helper.js:19:9) (1 samples, 0.93%)</title><rect x="890.15" y="161" width="9.17" height="15.0" fill="rgb(134,92,209)" rx="2" ry="2" />
+<text text-anchor="" x="893.15" y="171.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>/Users/lion/works/modules/fib-orm/test/integration/model-one.js:15:24 (1 samples, 0.93%)</title><rect x="890.15" y="145" width="9.17" height="15.0" fill="rgb(107,122,211)" rx="2" ry="2" />
+<text text-anchor="" x="893.15" y="155.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>util.sync() (native code) (1 samples, 0.93%)</title><rect x="890.15" y="129" width="9.17" height="15.0" fill="rgb(91,100,196)" rx="2" ry="2" />
+<text text-anchor="" x="893.15" y="139.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>/Users/lion/works/modules/fib-orm/test/integration/model-save.js:272:56 (1 samples, 0.93%)</title><rect x="899.32" y="177" width="9.17" height="15.0" fill="rgb(251,147,33)" rx="2" ry="2" />
+<text text-anchor="" x="902.32" y="187.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>get (/Users/lion/works/modules/fib-orm/node_modules/orm/lib/Instance.js:500:18) (1 samples, 0.93%)</title><rect x="899.32" y="161" width="9.17" height="15.0" fill="rgb(206,142,19)" rx="2" ry="2" />
+<text text-anchor="" x="902.32" y="171.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>/Users/lion/works/modules/fib-orm/test/integration/model-sync.js:37:16 (1 samples, 0.93%)</title><rect x="908.49" y="177" width="9.17" height="15.0" fill="rgb(80,107,194)" rx="2" ry="2" />
+<text text-anchor="" x="911.49" y="187.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>module.exports.dropSync (/Users/lion/works/modules/fib-orm/test/support/spec_helper.js:13:12) (1 samples, 0.93%)</title><rect x="908.49" y="161" width="9.17" height="15.0" fill="rgb(97,98,192)" rx="2" ry="2" />
+<text text-anchor="" x="911.49" y="171.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>/Users/lion/works/modules/fib-orm/test/support/spec_helper.js:15:14 (1 samples, 0.93%)</title><rect x="908.49" y="145" width="9.17" height="15.0" fill="rgb(109,107,229)" rx="2" ry="2" />
+<text text-anchor="" x="911.49" y="155.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>util.sync() (native code) (1 samples, 0.93%)</title><rect x="908.49" y="129" width="9.17" height="15.0" fill="rgb(137,121,214)" rx="2" ry="2" />
+<text text-anchor="" x="911.49" y="139.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>/Users/lion/works/modules/fib-orm/test/integration/property-maps-to.js:33:27 (1 samples, 0.93%)</title><rect x="917.65" y="177" width="9.17" height="15.0" fill="rgb(108,87,196)" rx="2" ry="2" />
+<text text-anchor="" x="920.65" y="187.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>module.exports.dropSync (/Users/lion/works/modules/fib-orm/test/support/spec_helper.js:13:12) (1 samples, 0.93%)</title><rect x="917.65" y="161" width="9.17" height="15.0" fill="rgb(110,103,228)" rx="2" ry="2" />
+<text text-anchor="" x="920.65" y="171.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>/Users/lion/works/modules/fib-orm/test/support/spec_helper.js:14:14 (1 samples, 0.93%)</title><rect x="917.65" y="145" width="9.17" height="15.0" fill="rgb(112,129,237)" rx="2" ry="2" />
+<text text-anchor="" x="920.65" y="155.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>util.sync() (native code) (1 samples, 0.93%)</title><rect x="917.65" y="129" width="9.17" height="15.0" fill="rgb(94,108,243)" rx="2" ry="2" />
+<text text-anchor="" x="920.65" y="139.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>/Users/lion/works/modules/fib-orm/test/integration/smart-types.js:100:30 (1 samples, 0.93%)</title><rect x="926.82" y="177" width="9.17" height="15.0" fill="rgb(121,128,217)" rx="2" ry="2" />
+<text text-anchor="" x="929.82" y="187.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>util.sync() (native code) (1 samples, 0.93%)</title><rect x="926.82" y="161" width="9.17" height="15.0" fill="rgb(127,139,216)" rx="2" ry="2" />
+<text text-anchor="" x="929.82" y="171.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>/Users/lion/works/modules/fib-orm/test/integration/validation.js:325:29 (1 samples, 0.93%)</title><rect x="935.99" y="177" width="9.17" height="15.0" fill="rgb(126,118,244)" rx="2" ry="2" />
+<text text-anchor="" x="938.99" y="187.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>util.sync() (native code) (1 samples, 0.93%)</title><rect x="935.99" y="161" width="9.17" height="15.0" fill="rgb(139,90,243)" rx="2" ry="2" />
+<text text-anchor="" x="938.99" y="171.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>/Users/lion/works/modules/fib-orm/node_modules/orm/lib/ChainFind.js:81:10 (1 samples, 0.93%)</title><rect x="945.16" y="209" width="9.17" height="15.0" fill="rgb(233,167,45)" rx="2" ry="2" />
+<text text-anchor="" x="948.16" y="219.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>callback (/Users/lion/works/modules/fib-orm/node_modules/async/dist/async.js:1056:16) (1 samples, 0.93%)</title><rect x="945.16" y="193" width="9.17" height="15.0" fill="rgb(229,183,16)" rx="2" ry="2" />
+<text text-anchor="" x="948.16" y="203.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>_asyncMap (/Users/lion/works/modules/fib-orm/node_modules/async/dist/async.js:1067:5) (1 samples, 0.93%)</title><rect x="945.16" y="177" width="9.17" height="15.0" fill="rgb(219,87,2)" rx="2" ry="2" />
+<text text-anchor="" x="948.16" y="187.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>eachOf (/Users/lion/works/modules/fib-orm/node_modules/async/dist/async.js:1051:5) (1 samples, 0.93%)</title><rect x="945.16" y="161" width="9.17" height="15.0" fill="rgb(242,217,6)" rx="2" ry="2" />
+<text text-anchor="" x="948.16" y="171.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>eachOfArrayLike (/Users/lion/works/modules/fib-orm/node_modules/async/dist/async.js:1003:9) (1 samples, 0.93%)</title><rect x="945.16" y="145" width="9.17" height="15.0" fill="rgb(215,121,36)" rx="2" ry="2" />
+<text text-anchor="" x="948.16" y="155.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>/Users/lion/works/modules/fib-orm/node_modules/async/dist/async.js:1069:9 (1 samples, 0.93%)</title><rect x="945.16" y="129" width="9.17" height="15.0" fill="rgb(230,136,49)" rx="2" ry="2" />
+<text text-anchor="" x="948.16" y="139.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>newInstance (/Users/lion/works/modules/fib-orm/node_modules/orm/lib/Model.js:413:36) (1 samples, 0.93%)</title><rect x="945.16" y="113" width="9.17" height="15.0" fill="rgb(211,33,12)" rx="2" ry="2" />
+<text text-anchor="" x="948.16" y="123.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>get (/Users/lion/works/modules/fib-orm/node_modules/orm/lib/Settings.js:44:12) (1 samples, 0.93%)</title><rect x="945.16" y="97" width="9.17" height="15.0" fill="rgb(245,71,1)" rx="2" ry="2" />
+<text text-anchor="" x="948.16" y="107.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>get (/Users/lion/works/modules/fib-orm/node_modules/orm/lib/Settings.js:92:9) (1 samples, 0.93%)</title><rect x="945.16" y="81" width="9.17" height="15.0" fill="rgb(254,156,36)" rx="2" ry="2" />
+<text text-anchor="" x="948.16" y="91.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>get (/Users/lion/works/modules/fib-orm/node_modules/orm/lib/Settings.js:78:13) (1 samples, 0.93%)</title><rect x="945.16" y="65" width="9.17" height="15.0" fill="rgb(239,188,52)" rx="2" ry="2" />
+<text text-anchor="" x="948.16" y="75.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>/Users/lion/works/modules/fib-orm/node_modules/orm/lib/Instance.js:755:4 (2 samples, 1.87%)</title><rect x="954.33" y="209" width="18.34" height="15.0" fill="rgb(241,107,20)" rx="2" ry="2" />
+<text text-anchor="" x="957.33" y="219.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>emitEvent (/Users/lion/works/modules/fib-orm/node_modules/orm/lib/Instance.js:27:17) (2 samples, 1.87%)</title><rect x="954.33" y="193" width="18.34" height="15.0" fill="rgb(221,213,28)" rx="2" ry="2" />
+<text text-anchor="" x="957.33" y="203.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>/Users/lion/works/modules/fib-orm/node_modules/orm/lib/Instance.js:28:7 (1 samples, 0.93%)</title><rect x="954.33" y="177" width="9.17" height="15.0" fill="rgb(219,189,8)" rx="2" ry="2" />
+<text text-anchor="" x="957.33" y="187.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>/Users/lion/works/modules/fib-orm/node_modules/orm/lib/Model.js:125:12 (1 samples, 0.93%)</title><rect x="954.33" y="161" width="9.17" height="15.0" fill="rgb(214,54,19)" rx="2" ry="2" />
+<text text-anchor="" x="957.33" y="171.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>/Users/lion/works/modules/fib-orm/node_modules/orm/lib/Model.js:600:10 (1 samples, 0.93%)</title><rect x="954.33" y="145" width="9.17" height="15.0" fill="rgb(243,123,33)" rx="2" ry="2" />
+<text text-anchor="" x="957.33" y="155.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>value (/Users/lion/works/modules/fib-orm/node_modules/orm/lib/Instance.js:615:4) (1 samples, 0.93%)</title><rect x="954.33" y="129" width="9.17" height="15.0" fill="rgb(249,221,46)" rx="2" ry="2" />
+<text text-anchor="" x="957.33" y="139.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>saveInstance (/Users/lion/works/modules/fib-orm/node_modules/orm/lib/Instance.js:109:3) (1 samples, 0.93%)</title><rect x="954.33" y="113" width="9.17" height="15.0" fill="rgb(251,87,1)" rx="2" ry="2" />
+<text text-anchor="" x="957.33" y="123.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>handleValidations (/Users/lion/works/modules/fib-orm/node_modules/orm/lib/Instance.js:49:8) (1 samples, 0.93%)</title><rect x="954.33" y="97" width="9.17" height="15.0" fill="rgb(251,180,47)" rx="2" ry="2" />
+<text text-anchor="" x="957.33" y="107.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>exports.wait (/Users/lion/works/modules/fib-orm/node_modules/orm/lib/Hook.js:26:10) (1 samples, 0.93%)</title><rect x="954.33" y="81" width="9.17" height="15.0" fill="rgb(243,123,17)" rx="2" ry="2" />
+<text text-anchor="" x="957.33" y="91.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>/Users/lion/works/modules/fib-orm/node_modules/orm/lib/Instance.js:56:38 (1 samples, 0.93%)</title><rect x="954.33" y="65" width="9.17" height="15.0" fill="rgb(208,220,12)" rx="2" ry="2" />
+<text text-anchor="" x="957.33" y="75.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>get (/Users/lion/works/modules/fib-orm/node_modules/orm/lib/Settings.js:44:12) (1 samples, 0.93%)</title><rect x="954.33" y="49" width="9.17" height="15.0" fill="rgb(206,104,33)" rx="2" ry="2" />
+<text text-anchor="" x="957.33" y="59.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>get (/Users/lion/works/modules/fib-orm/node_modules/orm/lib/Settings.js:78:13) (1 samples, 0.93%)</title><rect x="954.33" y="33" width="9.17" height="15.0" fill="rgb(208,43,53)" rx="2" ry="2" />
+<text text-anchor="" x="957.33" y="43.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>/Users/lion/works/modules/fib-orm/node_modules/orm/lib/Instance.js:27:30 (1 samples, 0.93%)</title><rect x="963.50" y="177" width="9.17" height="15.0" fill="rgb(218,181,41)" rx="2" ry="2" />
+<text text-anchor="" x="966.50" y="187.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>/Users/lion/works/modules/fib-orm/node_modules/sql-ddl-sync/lib/Dialects/sqlite.js:171:16 (1 samples, 0.93%)</title><rect x="972.66" y="209" width="9.17" height="15.0" fill="rgb(88,128,237)" rx="2" ry="2" />
+<text text-anchor="" x="975.66" y="219.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>Queue.check (/Users/lion/works/modules/fib-orm/node_modules/sql-ddl-sync/lib/Queue.js:34:15) (1 samples, 0.93%)</title><rect x="972.66" y="193" width="9.17" height="15.0" fill="rgb(100,128,212)" rx="2" ry="2" />
+<text text-anchor="" x="975.66" y="203.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>/Users/lion/works/modules/fib-orm/node_modules/sql-ddl-sync/lib/Dialects/sqlite.js:150:11 (1 samples, 0.93%)</title><rect x="972.66" y="177" width="9.17" height="15.0" fill="rgb(105,139,228)" rx="2" ry="2" />
+<text text-anchor="" x="975.66" y="187.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>/Users/lion/works/modules/fib-orm/node_modules/sql-ddl-sync/lib/index.js:321:12 (1 samples, 0.93%)</title><rect x="972.66" y="161" width="9.17" height="15.0" fill="rgb(93,100,237)" rx="2" ry="2" />
+<text text-anchor="" x="975.66" y="171.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>Queue.add (/Users/lion/works/modules/fib-orm/node_modules/sql-ddl-sync/lib/Queue.js:27:6) (1 samples, 0.93%)</title><rect x="972.66" y="145" width="9.17" height="15.0" fill="rgb(115,99,241)" rx="2" ry="2" />
+<text text-anchor="" x="975.66" y="155.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>/Users/lion/works/modules/fib-orm/node_modules/sql-ddl-sync/lib/index.js:322:22 (1 samples, 0.93%)</title><rect x="972.66" y="129" width="9.17" height="15.0" fill="rgb(80,127,226)" rx="2" ry="2" />
+<text text-anchor="" x="975.66" y="139.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>exports.addIndex (/Users/lion/works/modules/fib-orm/node_modules/sql-ddl-sync/lib/Dialects/sqlite.js:176:16) (1 samples, 0.93%)</title><rect x="972.66" y="113" width="9.17" height="15.0" fill="rgb(131,137,205)" rx="2" ry="2" />
+<text text-anchor="" x="975.66" y="123.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>execQuery (/Users/lion/works/modules/fib-orm/node_modules/orm/lib/Drivers/DML/_shared.js:11:15) (1 samples, 0.93%)</title><rect x="972.66" y="97" width="9.17" height="15.0" fill="rgb(105,96,191)" rx="2" ry="2" />
+<text text-anchor="" x="975.66" y="107.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>Driver.execSimpleQuery (/Users/lion/works/modules/fib-orm/node_modules/orm/lib/Drivers/DML/sqlite.js:74:10) (1 samples, 0.93%)</title><rect x="972.66" y="81" width="9.17" height="15.0" fill="rgb(119,82,242)" rx="2" ry="2" />
+<text text-anchor="" x="975.66" y="91.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>all (/Users/lion/works/modules/fib-orm/lib/modules/sqlite3.js:11:19) (1 samples, 0.93%)</title><rect x="972.66" y="65" width="9.17" height="15.0" fill="rgb(100,90,225)" rx="2" ry="2" />
+<text text-anchor="" x="975.66" y="75.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>DbConnection.execute (native code) (1 samples, 0.93%)</title><rect x="972.66" y="49" width="9.17" height="15.0" fill="rgb(84,107,205)" rx="2" ry="2" />
+<text text-anchor="" x="975.66" y="59.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>/Users/lion/works/modules/fib-orm/node_modules/orm/lib/ChainFind.js:69:70 (1 samples, 0.93%)</title><rect x="981.83" y="209" width="9.17" height="15.0" fill="rgb(248,207,0)" rx="2" ry="2" />
+<text text-anchor="" x="984.83" y="219.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>model (/Users/lion/works/modules/fib-orm/node_modules/orm/lib/Model.js:193:13) (1 samples, 0.93%)</title><rect x="981.83" y="193" width="9.17" height="15.0" fill="rgb(211,181,51)" rx="2" ry="2" />
+<text text-anchor="" x="984.83" y="203.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>createInstance (/Users/lion/works/modules/fib-orm/node_modules/orm/lib/Model.js:97:18) (1 samples, 0.93%)</title><rect x="981.83" y="177" width="9.17" height="15.0" fill="rgb(225,162,19)" rx="2" ry="2" />
+<text text-anchor="" x="984.83" y="187.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g><g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+<title>Instance (/Users/lion/works/modules/fib-orm/node_modules/orm/lib/Instance.js:548:2) (1 samples, 0.93%)</title><rect x="981.83" y="161" width="9.17" height="15.0" fill="rgb(233,185,13)" rx="2" ry="2" />
+<text text-anchor="" x="984.83" y="171.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g></svg>
