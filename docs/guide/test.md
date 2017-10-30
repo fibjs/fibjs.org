@@ -58,7 +58,7 @@ var http = require('http');
 describe('hello, test', () => {
     it('hello, fibjs', () => {
         var r = http.get('http://127.0.0.1:8080/hello/fibjs');
-        assert.equal(r.status, 200);
+        assert.equal(r.statusCode, 200);
         assert.equal(r.data.toString(), 'hello, fibjs. I love you.');
     });
 });
@@ -74,7 +74,7 @@ var http = require('http');
 
 function test_get(url, rep) {
     var r = http.get('http://127.0.0.1:8080' + url);
-    assert.equal(r.status, 200);
+    assert.equal(r.statusCode, 200);
     assert.equal(r.data.toString(), rep);
 }
 
@@ -108,7 +108,7 @@ var http = require('http');
 
 function test_get(url, rep) {
     var r = http.get('http://127.0.0.1:8080' + url);
-    assert.equal(r.status, 200);
+    assert.equal(r.statusCode, 200);
     assert.equal(r.data.toString(), rep);
 }
 
@@ -172,7 +172,7 @@ coroutine.sleep(100);
 
 function test_get(url, rep) {
     var r = http.get('http://127.0.0.1:8080' + url);
-    assert.equal(r.status, 200);
+    assert.equal(r.statusCode, 200);
     assert.equal(r.data.toString(), rep);
 }
 
@@ -204,5 +204,19 @@ describe('hello, test', () => {
 process.exit(test.run());
 ```
 这段代码的第 6~10 行里，我们增加了一段启动 `main.js` 的代码，并且稍微等待一下，之后再开始测试。
+## 代码覆盖检查
+好的测试用例需要考虑测试用例需要覆盖业务的每一个分支，以确定业务执行正确，此时可以使用代码覆盖检查，来确定测试是否完整。
+
+这个过程很简单，只需要在测试的时候增加 --cov 参数即可：
+```sh
+fibjs --cov test
+```
+测试完成后，会在当前目录生成一个 fibjs-xxxx.lcov 的日志文件，此时需要分析日志并生成报告：
+```sh
+fibjs --cov-process fibjs-xxxx.lcov out
+```
+便可以在 out 目录生成一组分析报告。进入目录查阅，可以看到以下页面：
+![cov](./imgs/cov.png)
+可以看到，`main.js` 的代码覆盖达到了 100%，表示测试完全覆盖了业务逻辑。点击 `main.js` 进一步可以看到更详细的报告。
 
 👉 【[找出性能杀手](profiler.md)】

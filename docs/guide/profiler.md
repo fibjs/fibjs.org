@@ -14,7 +14,7 @@ fibjs --prof --prof-interval=10 main.js
 fibjs --prof-process fibjs-xxxx.log prof.svg
 ```
 运行结束，使用浏览器打开 prof.svg，即可查看此次日志的火焰图：
-![Alt text](./imgs/prof.svg)
+![prof](./imgs/prof.svg)
 你可以点击查看全尺寸的图片，在全尺寸图片中，你可以通过鼠标操作，查阅更详细的信息：[prof.svg](./imgs/prof.svg)。
 ## 火焰图解读
 生成的火焰图中，每一个色块，代表一个记录点，色块越长，表示被记录的次数越多；每一行代表一层调用堆栈，层数越多表示调用的层数越多；调用堆栈的摆放，是倒置的，越靠下的色块，越是最初的函数。
