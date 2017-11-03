@@ -326,14 +326,14 @@ static fs.fsync(Integer fd) async;
 **读取指定目录的文件信息**
 
 ```JavaScript
-static List fs.readdir(String path) async;
+static NArray fs.readdir(String path) async;
 ```
 
 调用参数:
 * path: String, 指定查询的目录
 
 返回结果:
-* [List](../../object/ifs/List.md), 返回目录的文件信息数组
+* NArray, 返回目录的文件信息数组
 
 --------------------------
 ### openFile

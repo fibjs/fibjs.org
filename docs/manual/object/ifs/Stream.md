@@ -8,7 +8,7 @@ Stream 为基础对象，用于为流处理定义标准借口，不能独立创�
 digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
-    object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\l}"];
+    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
     Stream [tooltip="Stream", fillcolor="lightgray", id="me", label="{Stream|read()\lwrite()\lflush()\lclose()\lcopyTo()\l}"];
     BufferedStream [tooltip="BufferedStream", URL="BufferedStream.md", label="{BufferedStream}"];
     SubProcess [tooltip="SubProcess", URL="SubProcess.md", label="{SubProcess}"];
@@ -86,28 +86,6 @@ Long Stream.copyTo(Stream stm,
 
 返回结果:
 * Long, 返回复制的字节数
-
---------------------------
-### dispose
-**强制回收对象，调用此方法后，对象资源将立即释放**
-
-```JavaScript
-Stream.dispose();
-```
-
---------------------------
-### equals
-**比较当前对象与给定的对象是否相等**
-
-```JavaScript
-Boolean Stream.equals(object expected);
-```
-
-调用参数:
-* expected: [object](object.md), 制定比较的目标对象
-
-返回结果:
-* Boolean, 返回对象比较的结果
 
 --------------------------
 ### toString

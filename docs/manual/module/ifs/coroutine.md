@@ -41,14 +41,6 @@ Event coroutine.Event;
 ```
 
 --------------------------
-### BlockQueue
-**阻塞队列对象，参见 [BlockQueue](../../object/ifs/BlockQueue.md)**
-
-```JavaScript
-BlockQueue coroutine.BlockQueue;
-```
-
---------------------------
 ### Worker
 **独立线程工作对象，参见 [Worker](../../object/ifs/Worker.md)**
 

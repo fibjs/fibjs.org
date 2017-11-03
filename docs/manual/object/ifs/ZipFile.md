@@ -6,7 +6,7 @@
 digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
-    object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\l}"];
+    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
     ZipFile [tooltip="ZipFile", fillcolor="lightgray", id="me", label="{ZipFile|namelist()\linfolist()\lgetinfo()\lread()\lreadAll()\lextract()\lextractAll()\lwrite()\lclose()\l}"];
 
     object -> ZipFile [dir=back];
@@ -19,36 +19,40 @@ digraph {
 **获取文件名列表**
 
 ```JavaScript
-List ZipFile.namelist() async;
+NArray ZipFile.namelist() async;
 ```
 
 返回结果:
-* [List](List.md), 返回包含文件名的列表对象
+* NArray, 返回包含文件名的列表对象
 
 --------------------------
 ### infolist
 **获取文件信息列表**
 
 ```JavaScript
-List ZipFile.infolist() async;
+NArray ZipFile.infolist() async;
 ```
 
 返回结果:
-* [List](List.md), 返回包含文件信息的列表对象
+* NArray, 返回包含文件信息的列表对象
+
+文件信息包含字段有：filename, date, compress_type, compress_size, file_size, password, data
 
 --------------------------
 ### getinfo
 **获取文件信息**
 
 ```JavaScript
-ZipInfo ZipFile.getinfo(String member) async;
+NObject ZipFile.getinfo(String member) async;
 ```
 
 调用参数:
 * member: String, 指定要获取信息的文件名
 
 返回结果:
-* [ZipInfo](ZipInfo.md), 返回文件信息对象
+* NObject, 返回文件信息对象
+
+文件信息包含字段有：filename, date, compress_type, compress_size, file_size, password, data
 
 --------------------------
 ### read
@@ -71,14 +75,14 @@ Buffer ZipFile.read(String member,
 **解压所有文件**
 
 ```JavaScript
-List ZipFile.readAll(String password = "") async;
+NArray ZipFile.readAll(String password = "") async;
 ```
 
 调用参数:
 * password: String, 解压密码, 默认没有密码
 
 返回结果:
-* [List](List.md), 包含所有文件数据及信息的列表
+* NArray, 包含所有文件数据及信息的列表
 
 --------------------------
 ### extract
@@ -172,28 +176,6 @@ ZipFile.write(SeekableStream strm,
 ```JavaScript
 ZipFile.close() async;
 ```
-
---------------------------
-### dispose
-**强制回收对象，调用此方法后，对象资源将立即释放**
-
-```JavaScript
-ZipFile.dispose();
-```
-
---------------------------
-### equals
-**比较当前对象与给定的对象是否相等**
-
-```JavaScript
-Boolean ZipFile.equals(object expected);
-```
-
-调用参数:
-* expected: [object](object.md), 制定比较的目标对象
-
-返回结果:
-* Boolean, 返回对象比较的结果
 
 --------------------------
 ### toString

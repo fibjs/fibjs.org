@@ -12,7 +12,7 @@ var k = new crypto.X509Req();
 digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
-    object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\l}"];
+    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
     X509Req [tooltip="X509Req", fillcolor="lightgray", id="me", label="{X509Req|new X509Req()\l|subject\lpublicKey\l|load()\lloadFile()\lexportPem()\lexportDer()\lsign()\l}"];
 
     object -> X509Req [dir=back];
@@ -144,28 +144,6 @@ opts 接收的字段如下：
     type: "" // 证书 Netscape 证书类型，接收：client, server, email, objsign, reserved, sslCA, emailCA, objCA
 }
 ```
-
---------------------------
-### dispose
-**强制回收对象，调用此方法后，对象资源将立即释放**
-
-```JavaScript
-X509Req.dispose();
-```
-
---------------------------
-### equals
-**比较当前对象与给定的对象是否相等**
-
-```JavaScript
-Boolean X509Req.equals(object expected);
-```
-
-调用参数:
-* expected: [object](object.md), 制定比较的目标对象
-
-返回结果:
-* Boolean, 返回对象比较的结果
 
 --------------------------
 ### toString

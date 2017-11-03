@@ -1,6 +1,4 @@
 # 内置对象
-* [AsyncWait](ifs/AsyncWait.md) - 消息处理器异步等待对象
-* [BlockQueue](ifs/BlockQueue.md) - 阻塞 FIFO（先进先出）队列对象
 * [Buffer](ifs/Buffer.md) - 二进制数据缓存对象，用于 io 读写的数据处理
 * [BufferedStream](ifs/BufferedStream.md) - 缓存读取对象
 * [Chain](ifs/Chain.md) - 消息处理器链处理对象
@@ -13,7 +11,6 @@
 * [EventInfo](ifs/EventInfo.md) - 事件信息对象，用于在事件中传递信息
 * [Fiber](ifs/Fiber.md) - 纤程操作对象，此对象不可直接创建
 * [File](ifs/File.md) - 文件操作对象，用于二进制文件读写
-* [GridFS](ifs/GridFS.md) - MongoDB GridFS 分布式文件系统访问对象
 * [Handler](ifs/Handler.md) - 消息处理器接口
 * [HandlerEx](ifs/HandlerEx.md) - 扩展消息处理器接口
 * [HeapGraphEdge](ifs/HeapGraphEdge.md) - HeapGraphEdge表示两个HeapGraphNode节点间的关联，从上游节点到下游节点
@@ -32,11 +29,9 @@
 * [Image](ifs/Image.md) - 图像处理对象，用以对图像进行转换，绘制，存储等操作
 * [Int64](ifs/Int64.md) - 64位整数对象
 * [LevelDB](ifs/LevelDB.md) - LevelDB 数据库对象
-* [List](ifs/List.md) - Variant 数组对象，一般用以返回一组 Variant 数据
 * [Lock](ifs/Lock.md) - 纤程锁对象
 * [LruCache](ifs/LruCache.md) - LRU(least recently used) 缓存对象
 * [MSSQL](ifs/MSSQL.md) - SQL Server 数据库连接对象
-* [Map](ifs/Map.md) - 字典对象
 * [MemoryStream](ifs/MemoryStream.md) - 内存流对象
 * [Message](ifs/Message.md) - 基础消息对象
 * [MongoCollection](ifs/MongoCollection.md) - mongodb 数据库数据集对象
@@ -45,7 +40,6 @@
 * [MongoID](ifs/MongoID.md) - mongodb 数据库数据唯一标识对象，用于存储传递 oid
 * [MySQL](ifs/MySQL.md) - mysql 数据库连接对象
 * [PKey](ifs/PKey.md) - 不对称加密算法对象
-* [Queue](ifs/Queue.md) - FIFO（先进先出）队列对象
 * [Redis](ifs/Redis.md) - Redis 数据库客户端对象
 * [RedisHash](ifs/RedisHash.md) - Redis 数据库客户端 Hash 对象，此对象为包含指定 key 的客户端，只有调用其方法才会操作数据库
 * [RedisList](ifs/RedisList.md) - Redis 数据库客户端 List 对象，此对象为包含指定 key 的客户端，只有调用其方法才会操作数据库
@@ -68,7 +62,6 @@
 * [StringDecoder](ifs/StringDecoder.md) - 流解码对象
 * [SubProcess](ifs/SubProcess.md) - 子进程对象
 * [TcpServer](ifs/TcpServer.md) - tcp 服务器对象，可方便创建一个标准多纤程 tcp 服务器
-* [TextColor](ifs/TextColor.md) - 终端输出颜色配置对象
 * [Timer](ifs/Timer.md) - 定时器处理器对象
 * [UrlObject](ifs/UrlObject.md) - Url 处理对象
 * [WebSocket](ifs/WebSocket.md) - WebSocket 包协议转换处理器
@@ -91,6 +84,5 @@
 * [XmlProcessingInstruction](ifs/XmlProcessingInstruction.md) - XmlProcessingInstruction 对象表示 xml 处理指令
 * [XmlText](ifs/XmlText.md) - XmlText 对象表示元素或属性的文本内容
 * [ZipFile](ifs/ZipFile.md) - zip 文件访问对象
-* [ZipInfo](ifs/ZipInfo.md) - zip 文件访问对象
 * [ZmqSocket](ifs/ZmqSocket.md) - ZeroMQ 套接口对象
 * [object](ifs/object.md) - 基础对象，所有对象均继承于此

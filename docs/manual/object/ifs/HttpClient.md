@@ -15,8 +15,8 @@ httpClient.request('GET', 'http://fibjs.org');
 digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
-    object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\l}"];
-    HttpClient [tooltip="HttpClient", fillcolor="lightgray", id="me", label="{HttpClient|new HttpClient()\l|cookies\ltimeout\lmaxBodySize\lenableCookie\lautoRedirect\luserAgent\l|request()\lget()\lpost()\ldel()\lput()\lpatch()\lfind()\l}"];
+    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
+    HttpClient [tooltip="HttpClient", fillcolor="lightgray", id="me", label="{HttpClient|new HttpClient()\l|cookies\ltimeout\lmaxBodySize\lenableCookie\lautoRedirect\luserAgent\l|request()\lget()\lpost()\ldel()\lput()\lpatch()\l}"];
 
     object -> HttpClient [dir=back];
 }
@@ -34,10 +34,10 @@ new HttpClient();
 ## 成员属性
         
 ### cookies
-**[List](List.md), 返回[http](../../module/ifs/http.md)客户端的 [HttpCookie](HttpCookie.md) 对象列表**
+**NArray, 返回[http](../../module/ifs/http.md)客户端的 [HttpCookie](HttpCookie.md) 对象列表**
 
 ```JavaScript
-readonly List HttpClient.cookies;
+readonly NArray HttpClient.cookies;
 ```
 
 --------------------------
@@ -117,8 +117,8 @@ HttpResponse HttpClient.request(String method,
 opts 包含请求的附加选项，支持的内容如下：
 
 ```JavaScript
-{“
-    query”: {},
+{
+    "query": {},
     "body": SeekedStream | Buffer | String | {},
     "json": {},
     "headers": {}
@@ -126,25 +126,6 @@ opts 包含请求的附加选项，支持的内容如下：
 ```
 
 其中 body，[json](../../module/ifs/json.md) 不得同时出现。缺省为 {}，不包含任何附加信息
-
---------------------------
-**请求指定的 [url](../../module/ifs/url.md)，并返回结果**
-
-```JavaScript
-HttpResponse HttpClient.request(String method,
-    String url,
-    SeekableStream body,
-    Map headers) async;
-```
-
-调用参数:
-* method: String, 指定 [http](../../module/ifs/http.md) 请求方法：GET, POST 等
-* url: String, 指定 [url](../../module/ifs/url.md)，必须是包含主机的完整 [url](../../module/ifs/url.md)
-* body: [SeekableStream](SeekableStream.md), 指定发送的 body 内容
-* headers: [Map](Map.md), 指定附加的 [http](../../module/ifs/http.md) 头
-
-返回结果:
-* [HttpResponse](HttpResponse.md), 返回服务器响应
 
 --------------------------
 ### get
@@ -165,8 +146,8 @@ HttpResponse HttpClient.get(String url,
 opts 包含请求的附加选项，支持的内容如下：
 
 ```JavaScript
-{“
-    query”: {},
+{
+    "query": {},
     "body": SeekedStream | Buffer | String | {},
     "json": {},
     "headers": {}
@@ -194,8 +175,8 @@ HttpResponse HttpClient.post(String url,
 opts 包含请求的附加选项，支持的内容如下：
 
 ```JavaScript
-{“
-    query”: {},
+{
+    "query": {},
     "body": SeekedStream | Buffer | String | {},
     "json": {},
     "headers": {}
@@ -223,8 +204,8 @@ HttpResponse HttpClient.del(String url,
 opts 包含请求的附加选项，支持的内容如下：
 
 ```JavaScript
-{“
-    query”: {},
+{
+    "query": {},
     "body": SeekedStream | Buffer | String | {},
     "json": {},
     "headers": {}
@@ -252,8 +233,8 @@ HttpResponse HttpClient.put(String url,
 opts 包含请求的附加选项，支持的内容如下：
 
 ```JavaScript
-{“
-    query”: {},
+{
+    "query": {},
     "body": SeekedStream | Buffer | String | {},
     "json": {},
     "headers": {}
@@ -281,8 +262,8 @@ HttpResponse HttpClient.patch(String url,
 opts 包含请求的附加选项，支持的内容如下：
 
 ```JavaScript
-{“
-    query”: {},
+{
+    "query": {},
     "body": SeekedStream | Buffer | String | {},
     "json": {},
     "headers": {}
@@ -290,57 +271,6 @@ opts 包含请求的附加选项，支持的内容如下：
 ```
 
 其中 body，[json](../../module/ifs/json.md) 不得同时出现。缺省为 {}，不包含任何附加信息
-
---------------------------
-### find
-**用 FIND 方法请求指定的 [url](../../module/ifs/url.md)，并返回结果，等同于 request("PATCH", ...)**
-
-```JavaScript
-HttpResponse HttpClient.find(String url,
-    Object opts = {}) async;
-```
-
-调用参数:
-* url: String, 指定 [url](../../module/ifs/url.md)，必须是包含主机的完整 [url](../../module/ifs/url.md)
-* opts: Object, 指定附加信息
-
-返回结果:
-* [HttpResponse](HttpResponse.md), 返回服务器响应
-
-opts 包含请求的附加选项，支持的内容如下：
-
-```JavaScript
-{“
-    query”: {},
-    "body": SeekedStream | Buffer | String | {},
-    "json": {},
-    "headers": {}
-}
-```
-
-其中 body，[json](../../module/ifs/json.md) 不得同时出现。缺省为 {}，不包含任何附加信息
-
---------------------------
-### dispose
-**强制回收对象，调用此方法后，对象资源将立即释放**
-
-```JavaScript
-HttpClient.dispose();
-```
-
---------------------------
-### equals
-**比较当前对象与给定的对象是否相等**
-
-```JavaScript
-Boolean HttpClient.equals(object expected);
-```
-
-调用参数:
-* expected: [object](object.md), 制定比较的目标对象
-
-返回结果:
-* Boolean, 返回对象比较的结果
 
 --------------------------
 ### toString

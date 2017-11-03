@@ -14,7 +14,7 @@ var hash = rdb.getHash("test");
 digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
-    object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\l}"];
+    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
     RedisHash [tooltip="RedisHash", fillcolor="lightgray", id="me", label="{RedisHash|set()\lsetNX()\lmset()\lget()\lmget()\lincr()\lgetAll()\lkeys()\llen()\lexists()\ldel()\l}"];
 
     object -> RedisHash [dir=back];
@@ -88,27 +88,27 @@ Buffer RedisHash.get(Buffer field);
 **返回哈希表中，一个或多个给定域的值**
 
 ```JavaScript
-List RedisHash.mget(Array fields);
+NArray RedisHash.mget(Array fields);
 ```
 
 调用参数:
 * fields: Array, 指定要查询的域数组
 
 返回结果:
-* [List](List.md), 一个包含所有给定域的值的列表
+* NArray, 一个包含所有给定域的值的列表
 
 --------------------------
 **返回哈希表中，一个或多个给定域的值**
 
 ```JavaScript
-List RedisHash.mget(...fields);
+NArray RedisHash.mget(...fields);
 ```
 
 调用参数:
 * fields: ..., 指定要查询的域列表
 
 返回结果:
-* [List](List.md), 一个包含所有给定域的值的列表
+* NArray, 一个包含所有给定域的值的列表
 
 --------------------------
 ### incr
@@ -131,22 +131,22 @@ Long RedisHash.incr(Buffer field,
 **返回哈希表中，所有的域和值**
 
 ```JavaScript
-List RedisHash.getAll();
+NArray RedisHash.getAll();
 ```
 
 返回结果:
-* [List](List.md), 返回一个包含哈希表中所有域的列表
+* NArray, 返回一个包含哈希表中所有域的列表
 
 --------------------------
 ### keys
 **返回哈希表中的所有域**
 
 ```JavaScript
-List RedisHash.keys();
+NArray RedisHash.keys();
 ```
 
 返回结果:
-* [List](List.md), 返回值里，紧跟每个域名(field name)之后是域的值(value)，所以返回值的长度是哈希表大小的两倍
+* NArray, 返回值里，紧跟每个域名(field name)之后是域的值(value)，所以返回值的长度是哈希表大小的两倍
 
 --------------------------
 ### len
@@ -199,28 +199,6 @@ Integer RedisHash.del(...fields);
 
 返回结果:
 * Integer, 被删除域的数量
-
---------------------------
-### dispose
-**强制回收对象，调用此方法后，对象资源将立即释放**
-
-```JavaScript
-RedisHash.dispose();
-```
-
---------------------------
-### equals
-**比较当前对象与给定的对象是否相等**
-
-```JavaScript
-Boolean RedisHash.equals(object expected);
-```
-
-调用参数:
-* expected: [object](object.md), 制定比较的目标对象
-
-返回结果:
-* Boolean, 返回对象比较的结果
 
 --------------------------
 ### toString

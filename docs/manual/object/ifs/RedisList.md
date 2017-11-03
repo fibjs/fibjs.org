@@ -1,7 +1,7 @@
 # 对象 RedisList
-[Redis](Redis.md) 数据库客户端 [List](List.md) 对象，此对象为包含指定 key 的客户端，只有调用其方法才会操作数据库
+[Redis](Redis.md) 数据库客户端 List 对象，此对象为包含指定 key 的客户端，只有调用其方法才会操作数据库
 
-用以操作 [Redis](Redis.md) 的 [List](List.md) 对象，创建方法：
+用以操作 [Redis](Redis.md) 的 List 对象，创建方法：
 
 ```JavaScript
 var db = require("db");
@@ -14,7 +14,7 @@ var list = rdb.getList("test");
 digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
-    object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\l}"];
+    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
     RedisList [tooltip="RedisList", fillcolor="lightgray", id="me", label="{RedisList|push()\lpop()\lrpush()\lrpop()\lset()\lget()\linsertBefore()\linsertAfter()\lremove()\ltrim()\llen()\lrange()\l}"];
 
     object -> RedisList [dir=back];
@@ -202,7 +202,7 @@ Integer RedisList.len();
 **返回列表中指定区间内的元素，区间以偏移量 start 和 stop 指定，包含 start 和 stop 的元素**
 
 ```JavaScript
-List RedisList.range(Integer start,
+NArray RedisList.range(Integer start,
     Integer stop);
 ```
 
@@ -211,29 +211,7 @@ List RedisList.range(Integer start,
 * stop: Integer, 指定查询的结束下标，0 表示第一个元素，-1 表示最后一个元素
 
 返回结果:
-* [List](List.md), 包含指定区间内的元素的数组
-
---------------------------
-### dispose
-**强制回收对象，调用此方法后，对象资源将立即释放**
-
-```JavaScript
-RedisList.dispose();
-```
-
---------------------------
-### equals
-**比较当前对象与给定的对象是否相等**
-
-```JavaScript
-Boolean RedisList.equals(object expected);
-```
-
-调用参数:
-* expected: [object](object.md), 制定比较的目标对象
-
-返回结果:
-* Boolean, 返回对象比较的结果
+* NArray, 包含指定区间内的元素的数组
 
 --------------------------
 ### toString

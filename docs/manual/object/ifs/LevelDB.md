@@ -13,7 +13,7 @@ var test = new db.openLevelDB("test.db");
 digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
-    object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\l}"];
+    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
     LevelDB [tooltip="LevelDB", fillcolor="lightgray", id="me", label="{LevelDB|has()\lget()\lmget()\lset()\lmset()\lmremove()\lremove()\lforEach()\lbetween()\lbegin()\lcommit()\lclose()\l}"];
 
     object -> LevelDB [dir=back];
@@ -54,14 +54,14 @@ Buffer LevelDB.get(Buffer key) async;
 **查询一组指定键值的值**
 
 ```JavaScript
-List LevelDB.mget(Array keys);
+NArray LevelDB.mget(Array keys);
 ```
 
 调用参数:
 * keys: Array, 指定要查询的键值数组
 
 返回结果:
-* [List](List.md), 返回包含键值得数组
+* NArray, 返回包含键值得数组
 
 --------------------------
 ### set
@@ -183,28 +183,6 @@ LevelDB.commit();
 ```JavaScript
 LevelDB.close() async;
 ```
-
---------------------------
-### dispose
-**强制回收对象，调用此方法后，对象资源将立即释放**
-
-```JavaScript
-LevelDB.dispose();
-```
-
---------------------------
-### equals
-**比较当前对象与给定的对象是否相等**
-
-```JavaScript
-Boolean LevelDB.equals(object expected);
-```
-
-调用参数:
-* expected: [object](object.md), 制定比较的目标对象
-
-返回结果:
-* Boolean, 返回对象比较的结果
 
 --------------------------
 ### toString

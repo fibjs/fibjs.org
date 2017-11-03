@@ -127,25 +127,6 @@ opts 包含请求的附加选项，支持的内容如下：
 其中 body，[json](json.md) 不得同时出现。缺省为 {}，不包含任何附加信息
 
 --------------------------
-**请求指定的 [url](url.md)，并返回结果**
-
-```JavaScript
-static HttpResponse http.request(String method,
-    String url,
-    SeekableStream body,
-    Map headers) async;
-```
-
-调用参数:
-* method: String, 指定 http 请求方法：GET, POST 等
-* url: String, 指定 [url](url.md)，必须是包含主机的完整 [url](url.md)
-* body: [SeekableStream](../../object/ifs/SeekableStream.md), 指定发送的 body 内容
-* headers: [Map](../../object/ifs/Map.md), 指定附加的 http 头
-
-返回结果:
-* [HttpResponse](../../object/ifs/HttpResponse.md), 返回服务器响应
-
---------------------------
 ### get
 **用 GET 方法请求指定的 [url](url.md)，并返回结果，等同于 request("GET", ...)**
 
@@ -290,42 +271,13 @@ opts 包含请求的附加选项，支持的内容如下：
 
 其中 body，[json](json.md) 不得同时出现。缺省为 {}，不包含任何附加信息
 
---------------------------
-### find
-**用 FIND 方法请求指定的 [url](url.md)，并返回结果，等同于 request("PATCH", ...)**
-
-```JavaScript
-static HttpResponse http.find(String url,
-    Object opts = {}) async;
-```
-
-调用参数:
-* url: String, 指定 [url](url.md)，必须是包含主机的完整 [url](url.md)
-* opts: Object, 指定附加信息
-
-返回结果:
-* [HttpResponse](../../object/ifs/HttpResponse.md), 返回服务器响应
-
-opts 包含请求的附加选项，支持的内容如下：
-
-```JavaScript
-{
-    "query": {},
-    "body": SeekedStream | Buffer | String | {},
-    "json": {},
-    "headers": {}
-}
-```
-
-其中 body，[json](json.md) 不得同时出现。缺省为 {}，不包含任何附加信息
-
 ## 静态属性
         
 ### cookies
-**[List](../../object/ifs/List.md), 返回http客户端的 [HttpCookie](../../object/ifs/HttpCookie.md) 对象列表**
+**NArray, 返回http客户端的 [HttpCookie](../../object/ifs/HttpCookie.md) 对象列表**
 
 ```JavaScript
-static readonly List http.cookies;
+static readonly NArray http.cookies;
 ```
 
 --------------------------

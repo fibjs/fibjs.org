@@ -102,14 +102,21 @@ static Array process.hrtime(Array diff = []);
 
 --------------------------
 ### exit
+**退出当前进程，并返回 exitCode 作为进程结果**
+
+```JavaScript
+static process.exit();
+```
+
+--------------------------
 **退出当前进程，并返回结果**
 
 ```JavaScript
-static process.exit(Integer code = 0);
+static process.exit(Integer code);
 ```
 
 调用参数:
-* code: Integer, 返回进程结果, 默认为 0，此时将使用 exitCode 作为进程结果
+* code: Integer, 返回进程结果
 
 --------------------------
 ### cwd

@@ -3,7 +3,6 @@
 * [base64](ifs/base64.md)
 * [base64vlq](ifs/base64vlq.md)
 * [bson](ifs/bson.md)
-* [collection](ifs/collection.md)
 * [console](ifs/console.md)
 * [coroutine](ifs/coroutine.md)
 * [crypto](ifs/crypto.md)

@@ -6,7 +6,7 @@
 digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
-    object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\l}"];
+    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
     Message [tooltip="Message", URL="Message.md", label="{Message|new Message()\l|TEXT\lBINARY\l|value\lparams\ltype\ldata\lbody\llength\lstream\lresponse\llastError\l|read()\lreadAll()\lwrite()\ljson()\lend()\lisEnded()\lclear()\lsendTo()\lreadFrom()\l}"];
     HttpMessage [tooltip="HttpMessage", URL="HttpMessage.md", label="{HttpMessage|protocol\lheaders\lkeepAlive\lupgrade\lmaxHeadersCount\lmaxBodySize\lsocket\l|hasHeader()\lfirstHeader()\lallHeader()\laddHeader()\lsetHeader()\lremoveHeader()\l}"];
     HttpResponse [tooltip="HttpResponse", fillcolor="lightgray", id="me", label="{HttpResponse|new HttpResponse()\l|statusCode\lstatusMessage\lcookies\l|writeHead()\laddCookie()\lredirect()\lsendHeader()\l}"];
@@ -62,10 +62,10 @@ String HttpResponse.statusMessage;
 
 --------------------------
 ### cookies
-**[List](List.md), 返回当前消息的 [HttpCookie](HttpCookie.md) 对象列表**
+**NArray, 返回当前消息的 [HttpCookie](HttpCookie.md) 对象列表**
 
 ```JavaScript
-readonly List HttpResponse.cookies;
+readonly NArray HttpResponse.cookies;
 ```
 
 --------------------------
@@ -134,10 +134,10 @@ String HttpResponse.value;
 
 --------------------------
 ### params
-**[List](List.md), 消息的基本参数**
+**NArray, 消息的基本参数**
 
 ```JavaScript
-List HttpResponse.params;
+readonly NArray HttpResponse.params;
 ```
 
 --------------------------
@@ -290,14 +290,14 @@ Variant HttpResponse.firstHeader(String name);
 **查询指定键值的全部消息头**
 
 ```JavaScript
-List HttpResponse.allHeader(String name);
+NArray HttpResponse.allHeader(String name);
 ```
 
 调用参数:
 * name: String, 指定要查询的键值
 
 返回结果:
-* [List](List.md), 返回键值所对应全部值的数组，若数据不存在，则返回 null
+* NArray, 返回键值所对应全部值的数组，若数据不存在，则返回 null
 
 --------------------------
 ### addHeader
@@ -464,28 +464,6 @@ HttpResponse.readFrom(Stream stm) async;
 
 调用参数:
 * stm: [Stream](Stream.md), 指定读取格式化消息的流对象
-
---------------------------
-### dispose
-**强制回收对象，调用此方法后，对象资源将立即释放**
-
-```JavaScript
-HttpResponse.dispose();
-```
-
---------------------------
-### equals
-**比较当前对象与给定的对象是否相等**
-
-```JavaScript
-Boolean HttpResponse.equals(object expected);
-```
-
-调用参数:
-* expected: [object](object.md), 制定比较的目标对象
-
-返回结果:
-* Boolean, 返回对象比较的结果
 
 --------------------------
 ### toString

@@ -303,7 +303,7 @@ static Boolean util.isExternal(Value v);
 
 --------------------------
 ### isMap
-**检测给定的变量是否是 [Map](../../object/ifs/Map.md) 类型**
+**检测给定的变量是否是 Map 类型**
 
 ```JavaScript
 static Boolean util.isMap(Value v);
@@ -313,7 +313,7 @@ static Boolean util.isMap(Value v);
 * v: Value, 给定需要检测的变量
 
 返回结果:
-* Boolean, 如果是 [Map](../../object/ifs/Map.md) 类型则返回 True
+* Boolean, 如果是 Map 类型则返回 True
 
 --------------------------
 ### isMapIterator

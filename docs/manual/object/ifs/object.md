@@ -6,7 +6,7 @@
 digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
-    object [tooltip="object", fillcolor="lightgray", id="me", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\l}"];
+    object [tooltip="object", fillcolor="lightgray", id="me", label="{object|toString()\ltoJSON()\l}"];
     Buffer [tooltip="Buffer", URL="Buffer.md", label="{Buffer}"];
     Cipher [tooltip="Cipher", URL="Cipher.md", label="{Cipher}"];
     DbConnection [tooltip="DbConnection", URL="DbConnection.md", label="{DbConnection}"];
@@ -21,9 +21,7 @@ digraph {
     Worker [tooltip="Worker", URL="Worker.md", label="{Worker}"];
     EventInfo [tooltip="EventInfo", URL="EventInfo.md", label="{EventInfo}"];
     Fiber [tooltip="Fiber", URL="Fiber.md", label="{Fiber}"];
-    GridFS [tooltip="GridFS", URL="GridFS.md", label="{GridFS}"];
     Handler [tooltip="Handler", URL="Handler.md", label="{Handler}"];
-    AsyncWait [tooltip="AsyncWait", URL="AsyncWait.md", label="{AsyncWait}"];
     Chain [tooltip="Chain", URL="Chain.md", label="{Chain}"];
     HandlerEx [tooltip="HandlerEx", URL="HandlerEx.md", label="{HandlerEx}"];
     HttpHandler [tooltip="HttpHandler", URL="HttpHandler.md", label="{HttpHandler}"];
@@ -39,13 +37,11 @@ digraph {
     Image [tooltip="Image", URL="Image.md", label="{Image}"];
     Int64 [tooltip="Int64", URL="Int64.md", label="{Int64}"];
     LevelDB [tooltip="LevelDB", URL="LevelDB.md", label="{LevelDB}"];
-    List [tooltip="List", URL="List.md", label="{List}"];
     Lock [tooltip="Lock", URL="Lock.md", label="{Lock}"];
     Condition [tooltip="Condition", URL="Condition.md", label="{Condition}"];
     Event [tooltip="Event", URL="Event.md", label="{Event}"];
     Semaphore [tooltip="Semaphore", URL="Semaphore.md", label="{Semaphore}"];
     LruCache [tooltip="LruCache", URL="LruCache.md", label="{LruCache}"];
-    Map [tooltip="Map", URL="Map.md", label="{Map}"];
     Message [tooltip="Message", URL="Message.md", label="{Message}"];
     HttpMessage [tooltip="HttpMessage", URL="HttpMessage.md", label="{HttpMessage}"];
     HttpRequest [tooltip="HttpRequest", URL="HttpRequest.md", label="{HttpRequest}"];
@@ -56,8 +52,6 @@ digraph {
     MongoDB [tooltip="MongoDB", URL="MongoDB.md", label="{MongoDB}"];
     MongoID [tooltip="MongoID", URL="MongoID.md", label="{MongoID}"];
     PKey [tooltip="PKey", URL="PKey.md", label="{PKey}"];
-    Queue [tooltip="Queue", URL="Queue.md", label="{Queue}"];
-    BlockQueue [tooltip="BlockQueue", URL="BlockQueue.md", label="{BlockQueue}"];
     Redis [tooltip="Redis", URL="Redis.md", label="{Redis}"];
     RedisHash [tooltip="RedisHash", URL="RedisHash.md", label="{RedisHash}"];
     RedisList [tooltip="RedisList", URL="RedisList.md", label="{RedisList}"];
@@ -80,7 +74,6 @@ digraph {
     HttpServer [tooltip="HttpServer", URL="HttpServer.md", label="{HttpServer}"];
     HttpsServer [tooltip="HttpsServer", URL="HttpsServer.md", label="{HttpsServer}"];
     SslServer [tooltip="SslServer", URL="SslServer.md", label="{SslServer}"];
-    TextColor [tooltip="TextColor", URL="TextColor.md", label="{TextColor}"];
     Timer [tooltip="Timer", URL="Timer.md", label="{Timer}"];
     UrlObject [tooltip="UrlObject", URL="UrlObject.md", label="{UrlObject}"];
     X509Cert [tooltip="X509Cert", URL="X509Cert.md", label="{X509Cert}"];
@@ -99,7 +92,6 @@ digraph {
     XmlProcessingInstruction [tooltip="XmlProcessingInstruction", URL="XmlProcessingInstruction.md", label="{XmlProcessingInstruction}"];
     XmlNodeList [tooltip="XmlNodeList", URL="XmlNodeList.md", label="{XmlNodeList}"];
     ZipFile [tooltip="ZipFile", URL="ZipFile.md", label="{ZipFile}"];
-    ZipInfo [tooltip="ZipInfo", URL="ZipInfo.md", label="{ZipInfo}"];
     ZmqSocket [tooltip="ZmqSocket", URL="ZmqSocket.md", label="{ZmqSocket}"];
 
     object -> Buffer [dir=back];
@@ -116,9 +108,7 @@ digraph {
     EventEmitter -> Worker [dir=back];
     object -> EventInfo [dir=back];
     object -> Fiber [dir=back];
-    object -> GridFS [dir=back];
     object -> Handler [dir=back];
-    Handler -> AsyncWait [dir=back];
     Handler -> Chain [dir=back];
     Handler -> HandlerEx [dir=back];
     HandlerEx -> HttpHandler [dir=back];
@@ -134,13 +124,11 @@ digraph {
     object -> Image [dir=back];
     object -> Int64 [dir=back];
     object -> LevelDB [dir=back];
-    object -> List [dir=back];
     object -> Lock [dir=back];
     Lock -> Condition [dir=back];
     Lock -> Event [dir=back];
     Lock -> Semaphore [dir=back];
     object -> LruCache [dir=back];
-    object -> Map [dir=back];
     object -> Message [dir=back];
     Message -> HttpMessage [dir=back];
     HttpMessage -> HttpRequest [dir=back];
@@ -151,8 +139,6 @@ digraph {
     object -> MongoDB [dir=back];
     object -> MongoID [dir=back];
     object -> PKey [dir=back];
-    object -> Queue [dir=back];
-    Queue -> BlockQueue [dir=back];
     object -> Redis [dir=back];
     object -> RedisHash [dir=back];
     object -> RedisList [dir=back];
@@ -175,7 +161,6 @@ digraph {
     TcpServer -> HttpServer [dir=back];
     HttpServer -> HttpsServer [dir=back];
     TcpServer -> SslServer [dir=back];
-    object -> TextColor [dir=back];
     object -> Timer [dir=back];
     object -> UrlObject [dir=back];
     object -> X509Cert [dir=back];
@@ -194,35 +179,12 @@ digraph {
     XmlNode -> XmlProcessingInstruction [dir=back];
     object -> XmlNodeList [dir=back];
     object -> ZipFile [dir=back];
-    object -> ZipInfo [dir=back];
     object -> ZmqSocket [dir=back];
 }
 ```
 
 ## 成员函数
         
-### dispose
-**强制回收对象，调用此方法后，对象资源将立即释放**
-
-```JavaScript
-object.dispose();
-```
-
---------------------------
-### equals
-**比较当前对象与给定的对象是否相等**
-
-```JavaScript
-Boolean object.equals(object expected);
-```
-
-调用参数:
-* expected: object, 制定比较的目标对象
-
-返回结果:
-* Boolean, 返回对象比较的结果
-
---------------------------
 ### toString
 **返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现**
 

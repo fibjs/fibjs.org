@@ -12,8 +12,8 @@ var buf = new Buffer();
 digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
-    object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\l}"];
-    Buffer [tooltip="Buffer", fillcolor="lightgray", id="me", label="{Buffer|new Buffer()\l|operator[]\l|isBuffer()\lfrom()\lconcat()\lalloc()\lallocUnsafe()\lallocUnsafeSlow()\lbyteLength()\lisEncoding()\l|length\l|resize()\lappend()\lwrite()\lfill()\lindexOf()\lcompare()\lcopy()\lreadUInt8()\lreadUInt16LE()\lreadUInt16BE()\lreadUInt32LE()\lreadUInt32BE()\lreadUIntLE()\lreadUIntBE()\lreadInt8()\lreadInt16LE()\lreadInt16BE()\lreadInt32LE()\lreadInt32BE()\lreadIntLE()\lreadIntBE()\lreadInt64LE()\lreadInt64BE()\lreadFloatLE()\lreadFloatBE()\lreadDoubleLE()\lreadDoubleBE()\lwriteUInt8()\lwriteUInt16LE()\lwriteUInt16BE()\lwriteUInt32LE()\lwriteUInt32BE()\lwriteUIntLE()\lwriteUIntBE()\lwriteInt8()\lwriteInt16LE()\lwriteInt16BE()\lwriteInt32LE()\lwriteInt32BE()\lwriteIntLE()\lwriteIntBE()\lwriteInt64LE()\lwriteInt64BE()\lwriteFloatLE()\lwriteFloatBE()\lwriteDoubleLE()\lwriteDoubleBE()\lslice()\lreverse()\lhex()\lbase64()\lkeys()\lvalues()\lentries()\ltoArray()\ltoString()\l}"];
+    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
+    Buffer [tooltip="Buffer", fillcolor="lightgray", id="me", label="{Buffer|new Buffer()\l|operator[]\l|isBuffer()\lfrom()\lconcat()\lalloc()\lallocUnsafe()\lallocUnsafeSlow()\lbyteLength()\lisEncoding()\l|length\l|resize()\lappend()\lwrite()\lfill()\lindexOf()\lcompare()\lcopy()\lreadUInt8()\lreadUInt16LE()\lreadUInt16BE()\lreadUInt32LE()\lreadUInt32BE()\lreadUIntLE()\lreadUIntBE()\lreadInt8()\lreadInt16LE()\lreadInt16BE()\lreadInt32LE()\lreadInt32BE()\lreadIntLE()\lreadIntBE()\lreadInt64LE()\lreadInt64BE()\lreadFloatLE()\lreadFloatBE()\lreadDoubleLE()\lreadDoubleBE()\lwriteUInt8()\lwriteUInt16LE()\lwriteUInt16BE()\lwriteUInt32LE()\lwriteUInt32BE()\lwriteUIntLE()\lwriteUIntBE()\lwriteInt8()\lwriteInt16LE()\lwriteInt16BE()\lwriteInt32LE()\lwriteInt32BE()\lwriteIntLE()\lwriteIntBE()\lwriteInt64LE()\lwriteInt64BE()\lwriteFloatLE()\lwriteFloatBE()\lwriteDoubleLE()\lwriteDoubleBE()\lslice()\lreverse()\lequals()\lhex()\lbase64()\lkeys()\lvalues()\lentries()\ltoArray()\ltoString()\l}"];
 
     object -> Buffer [dir=back];
 }
@@ -1286,6 +1286,20 @@ Buffer Buffer.reverse();
 * Buffer, 返回新的缓存对象
 
 --------------------------
+### equals
+**比较当前对象与给定的对象是否相等**
+
+```JavaScript
+Boolean Buffer.equals(object expected);
+```
+
+调用参数:
+* expected: [object](object.md), 制定比较的目标对象
+
+返回结果:
+* Boolean, 返回对象比较的结果
+
+--------------------------
 ### hex
 **使用 16 进制编码缓存对象内容**
 
@@ -1395,29 +1409,6 @@ String Buffer.toString();
 * String, 返回对象的字符串表示
 
 --------------------------
-### dispose
-**强制回收对象，调用此方法后，对象资源将立即释放**
-
-```JavaScript
-Buffer.dispose();
-```
-
---------------------------
-### equals
-**比较当前对象与给定的对象是否相等**
-
-```JavaScript
-Boolean Buffer.equals(object expected);
-```
-
-调用参数:
-* expected: [object](object.md), 制定比较的目标对象
-
-返回结果:
-* Boolean, 返回对象比较的结果
-
---------------------------
-### toString
 **返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现**
 
 ```JavaScript

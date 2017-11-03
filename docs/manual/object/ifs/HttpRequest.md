@@ -6,7 +6,7 @@
 digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
-    object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\l}"];
+    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
     Message [tooltip="Message", URL="Message.md", label="{Message|new Message()\l|TEXT\lBINARY\l|value\lparams\ltype\ldata\lbody\llength\lstream\lresponse\llastError\l|read()\lreadAll()\lwrite()\ljson()\lend()\lisEnded()\lclear()\lsendTo()\lreadFrom()\l}"];
     HttpMessage [tooltip="HttpMessage", URL="HttpMessage.md", label="{HttpMessage|protocol\lheaders\lkeepAlive\lupgrade\lmaxHeadersCount\lmaxBodySize\lsocket\l|hasHeader()\lfirstHeader()\lallHeader()\laddHeader()\lsetHeader()\lremoveHeader()\l}"];
     HttpRequest [tooltip="HttpRequest", fillcolor="lightgray", id="me", label="{HttpRequest|new HttpRequest()\l|method\laddress\lqueryString\lcookies\lform\lquery\l}"];
@@ -158,10 +158,10 @@ String HttpRequest.value;
 
 --------------------------
 ### params
-**[List](List.md), 消息的基本参数**
+**NArray, 消息的基本参数**
 
 ```JavaScript
-List HttpRequest.params;
+readonly NArray HttpRequest.params;
 ```
 
 --------------------------
@@ -254,14 +254,14 @@ Variant HttpRequest.firstHeader(String name);
 **查询指定键值的全部消息头**
 
 ```JavaScript
-List HttpRequest.allHeader(String name);
+NArray HttpRequest.allHeader(String name);
 ```
 
 调用参数:
 * name: String, 指定要查询的键值
 
 返回结果:
-* [List](List.md), 返回键值所对应全部值的数组，若数据不存在，则返回 null
+* NArray, 返回键值所对应全部值的数组，若数据不存在，则返回 null
 
 --------------------------
 ### addHeader
@@ -428,28 +428,6 @@ HttpRequest.readFrom(Stream stm) async;
 
 调用参数:
 * stm: [Stream](Stream.md), 指定读取格式化消息的流对象
-
---------------------------
-### dispose
-**强制回收对象，调用此方法后，对象资源将立即释放**
-
-```JavaScript
-HttpRequest.dispose();
-```
-
---------------------------
-### equals
-**比较当前对象与给定的对象是否相等**
-
-```JavaScript
-Boolean HttpRequest.equals(object expected);
-```
-
-调用参数:
-* expected: [object](object.md), 制定比较的目标对象
-
-返回结果:
-* Boolean, 返回对象比较的结果
 
 --------------------------
 ### toString

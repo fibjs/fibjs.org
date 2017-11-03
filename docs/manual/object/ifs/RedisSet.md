@@ -14,7 +14,7 @@ var set = rdb.getSet("test");
 digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
-    object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\l}"];
+    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
     RedisSet [tooltip="RedisSet", fillcolor="lightgray", id="me", label="{RedisSet|add()\lremove()\llen()\lexists()\lmembers()\lpop()\lrandMember()\l}"];
 
     object -> RedisSet [dir=back];
@@ -106,11 +106,11 @@ Boolean RedisSet.exists(Buffer member);
 **返回集合中的所有成员**
 
 ```JavaScript
-List RedisSet.members();
+NArray RedisSet.members();
 ```
 
 返回结果:
-* [List](List.md), 集合中所有成员的列表
+* NArray, 集合中所有成员的列表
 
 --------------------------
 ### pop
@@ -146,28 +146,6 @@ Value RedisSet.randMember(Integer count);
 
 返回结果:
 * Value, 返回一个列表；如果集合为空，返回空列表
-
---------------------------
-### dispose
-**强制回收对象，调用此方法后，对象资源将立即释放**
-
-```JavaScript
-RedisSet.dispose();
-```
-
---------------------------
-### equals
-**比较当前对象与给定的对象是否相等**
-
-```JavaScript
-Boolean RedisSet.equals(object expected);
-```
-
-调用参数:
-* expected: [object](object.md), 制定比较的目标对象
-
-返回结果:
-* Boolean, 返回对象比较的结果
 
 --------------------------
 ### toString

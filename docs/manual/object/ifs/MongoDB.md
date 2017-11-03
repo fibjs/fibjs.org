@@ -12,8 +12,8 @@ var mdb = db.openMongoDB("mongodb://host/db");
 digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
-    object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\l}"];
-    MongoDB [tooltip="MongoDB", fillcolor="lightgray", id="me", label="{MongoDB|operator[String]\l|fs\l|getCollection()\lrunCommand()\loid()\lclose()\l}"];
+    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
+    MongoDB [tooltip="MongoDB", fillcolor="lightgray", id="me", label="{MongoDB|operator[String]\l|getCollection()\lrunCommand()\loid()\lclose()\l}"];
 
     object -> MongoDB [dir=back];
 }
@@ -31,15 +31,6 @@ readonly MongoCollection MongoDB[String];
 
 ```JavaScript
 var test = mdb.test;
-```
-
-## 成员属性
-        
-### fs
-**[GridFS](GridFS.md), 获取 [GridFS](GridFS.md) 访问对象**
-
-```JavaScript
-readonly GridFS MongoDB.fs;
 ```
 
 ## 成员函数
@@ -107,28 +98,6 @@ MongoID MongoDB.oid(String hexStr = "");
 ```JavaScript
 MongoDB.close() async;
 ```
-
---------------------------
-### dispose
-**强制回收对象，调用此方法后，对象资源将立即释放**
-
-```JavaScript
-MongoDB.dispose();
-```
-
---------------------------
-### equals
-**比较当前对象与给定的对象是否相等**
-
-```JavaScript
-Boolean MongoDB.equals(object expected);
-```
-
-调用参数:
-* expected: [object](object.md), 制定比较的目标对象
-
-返回结果:
-* Boolean, 返回对象比较的结果
 
 --------------------------
 ### toString

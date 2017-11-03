@@ -13,7 +13,7 @@ var test = new db.openRedis("redis-server");
 digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
-    object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\l}"];
+    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
     Redis [tooltip="Redis", fillcolor="lightgray", id="me", label="{Redis|onsuberror\l|command()\lset()\lsetNX()\lsetXX()\lmset()\lmsetNX()\lappend()\lsetRange()\lgetRange()\lstrlen()\lbitcount()\lget()\lmget()\lgetset()\ldecr()\lincr()\lsetBit()\lgetBit()\lexists()\ltype()\lkeys()\ldel()\lexpire()\lttl()\lpersist()\lrename()\lrenameNX()\lsub()\lunsub()\lpsub()\lunpsub()\lpub()\lgetHash()\lgetList()\lgetSet()\lgetSortedSet()\ldump()\lrestore()\lclose()\l}"];
 
     object -> Redis [dir=back];
@@ -236,27 +236,27 @@ Buffer Redis.get(Buffer key);
 **返回所有(一个或多个)给定 key 的值。如果给定的 key 里面，有某个 key 不存在，那么这个 key 返回特殊值 nil 。**
 
 ```JavaScript
-List Redis.mget(Array keys);
+NArray Redis.mget(Array keys);
 ```
 
 调用参数:
 * keys: Array, 指定要查询的 key 数组
 
 返回结果:
-* [List](List.md), 一个包含所有给定 key 的值的列表
+* NArray, 一个包含所有给定 key 的值的列表
 
 --------------------------
 **返回所有(一个或多个)给定 key 的值。如果给定的 key 里面，有某个 key 不存在，那么这个 key 返回特殊值 nil 。**
 
 ```JavaScript
-List Redis.mget(...keys);
+NArray Redis.mget(...keys);
 ```
 
 调用参数:
 * keys: ..., 指定要查询的 key 列表
 
 返回结果:
-* [List](List.md), 一个包含所有给定 key 的值的列表
+* NArray, 一个包含所有给定 key 的值的列表
 
 --------------------------
 ### getset
@@ -373,14 +373,14 @@ String Redis.type(Buffer key);
 **查找所有符合给定模式 pattern 的 key**
 
 ```JavaScript
-List Redis.keys(String pattern);
+NArray Redis.keys(String pattern);
 ```
 
 调用参数:
 * pattern: String, 指定查询模式
 
 返回结果:
-* [List](List.md), 符合给定模式的 key 列表
+* NArray, 符合给定模式的 key 列表
 
 --------------------------
 ### del
@@ -646,7 +646,7 @@ RedisHash Redis.getHash(Buffer key);
 
 --------------------------
 ### getList
-**获取指定 key 的 [List](List.md) 对象，此对象为包含指定 key 的客户端，只有调用其方法才会操作数据库**
+**获取指定 key 的 List 对象，此对象为包含指定 key 的客户端，只有调用其方法才会操作数据库**
 
 ```JavaScript
 RedisList Redis.getList(Buffer key);
@@ -656,7 +656,7 @@ RedisList Redis.getList(Buffer key);
 * key: [Buffer](Buffer.md), 指定要获取的 key
 
 返回结果:
-* [RedisList](RedisList.md), 返回包含指定 key 的 [List](List.md) 对象
+* [RedisList](RedisList.md), 返回包含指定 key 的 List 对象
 
 --------------------------
 ### getSet
@@ -722,28 +722,6 @@ Redis.restore(Buffer key,
 ```JavaScript
 Redis.close();
 ```
-
---------------------------
-### dispose
-**强制回收对象，调用此方法后，对象资源将立即释放**
-
-```JavaScript
-Redis.dispose();
-```
-
---------------------------
-### equals
-**比较当前对象与给定的对象是否相等**
-
-```JavaScript
-Boolean Redis.equals(object expected);
-```
-
-调用参数:
-* expected: [object](object.md), 制定比较的目标对象
-
-返回结果:
-* Boolean, 返回对象比较的结果
 
 --------------------------
 ### toString

@@ -7,6 +7,29 @@ websocket 支持模块
 var ws = require('ws');
 ```
 
+创建一个服务器：
+
+```JavaScript
+var ws = require('ws');
+var http = require('http');
+
+var svr = new http.Server(80, {
+    '/ws': ws.upgrade((conn, req) => {
+        conn.onmessage = e => console.log(e.data);
+    })
+});
+svr.run();
+```
+
+使用 [WebSocket](../../object/ifs/WebSocket.md) 客户端：
+
+```JavaScript
+var ws = require('ws');
+
+var conn = new ws.Socket('ws://127.0.0.1/ws');
+conn.ommessage = e => console.log(e.data);
+```
+
 ## 对象
         
 ### Message
@@ -26,22 +49,6 @@ WebSocket ws.Socket;
 
 ## 静态函数
         
-### connect
-**创建一个 websocket 连接，并返回握手成功的 [Stream](../../object/ifs/Stream.md) 对象**
-
-```JavaScript
-static Stream ws.connect(String url,
-    String origin = "") async;
-```
-
-调用参数:
-* url: String, 指定连接的 [url](url.md)，支持 ws:// 和 wss:// 协议
-* origin: String, 指定连接的授权域名
-
-返回结果:
-* [Stream](../../object/ifs/Stream.md), 返回连接成功的 [Stream](../../object/ifs/Stream.md) 对象，可能为 [Socket](../../object/ifs/Socket.md) 或者 [SslSocket](../../object/ifs/SslSocket.md)
-
---------------------------
 ### upgrade
 **创建一个 websocket 协议处理器，从 [http](http.md) 接收 upgrade 请求并握手，生成 [WebSocket](../../object/ifs/WebSocket.md) 对象**
 
@@ -50,10 +57,12 @@ static Handler ws.upgrade(Function accept);
 ```
 
 调用参数:
-* accept: Function, 连接成功处理函数，参数为 [WebSocket](../../object/ifs/WebSocket.md) 对象
+* accept: Function, 连接成功处理函数
 
 返回结果:
 * [Handler](../../object/ifs/Handler.md), 返回协议处理器，可与 [HttpServer](../../object/ifs/HttpServer.md), [Chain](../../object/ifs/Chain.md), [Routing](../../object/ifs/Routing.md) 等对接
+
+accept 函数调用时，将传递两个参数，第一个参数为接收到的 [WebSocket](../../object/ifs/WebSocket.md) 对象，第二个参数为握手时的 [HttpRequest](../../object/ifs/HttpRequest.md) 对象。
 
 ## 常量
         

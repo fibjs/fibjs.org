@@ -4,7 +4,6 @@
 * [base64](ifs/base64.md) - base64 编码与解码模块
 * [base64vlq](ifs/base64vlq.md) - base64vlq 编码与解码模块
 * [bson](ifs/bson.md) - bson 编码与解码模块
-* [collection](ifs/collection.md) - 基础容器模块
 * [console](ifs/console.md) - 控制台访问对象
 * [coroutine](ifs/coroutine.md) - 并发控制模块
 * [crypto](ifs/crypto.md) - 加密算法模块

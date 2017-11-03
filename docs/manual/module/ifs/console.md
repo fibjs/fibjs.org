@@ -655,14 +655,6 @@ static Integer console.loglevel;
 ```
 
 --------------------------
-### colors
-**[TextColor](../../object/ifs/TextColor.md), 终端输出颜色配置对象，详见 [TextColor](../../object/ifs/TextColor.md)**
-
-```JavaScript
-static readonly TextColor console.colors;
-```
-
---------------------------
 ### width
 **Integer, 查询终端每行字符数**
 

@@ -14,7 +14,7 @@ var set = rdb.getSortedSet("test");
 digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
-    object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\l}"];
+    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
     RedisSortedSet [tooltip="RedisSortedSet", fillcolor="lightgray", id="me", label="{RedisSortedSet|add()\lscore()\lincr()\lremove()\llen()\lcount()\lrange()\lrangeRev()\lrank()\lrankRev()\l}"];
 
     object -> RedisSortedSet [dir=back];
@@ -138,7 +138,7 @@ Integer RedisSortedSet.count(Integer min,
 **返回有序集中，指定区间内的成员，成员的位置按 score 值递增(从小到大)来排序**
 
 ```JavaScript
-List RedisSortedSet.range(Integer start,
+NArray RedisSortedSet.range(Integer start,
     Integer stop,
     Boolean withScores = false);
 ```
@@ -149,14 +149,14 @@ List RedisSortedSet.range(Integer start,
 * withScores: Boolean, 指定是否在结果中包含 score
 
 返回结果:
-* [List](List.md), 指定区间内，带有 score 值(可选)的有序集成员的列表
+* NArray, 指定区间内，带有 score 值(可选)的有序集成员的列表
 
 --------------------------
 ### rangeRev
 **返回有序集中，指定区间内的成员，成员的位置按 score 值递减(从大到小)来排序**
 
 ```JavaScript
-List RedisSortedSet.rangeRev(Integer start,
+NArray RedisSortedSet.rangeRev(Integer start,
     Integer stop,
     Boolean withScores = false);
 ```
@@ -167,7 +167,7 @@ List RedisSortedSet.rangeRev(Integer start,
 * withScores: Boolean, 指定是否在结果中包含 score
 
 返回结果:
-* [List](List.md), 指定区间内，带有 score 值(可选)的有序集成员的列表
+* NArray, 指定区间内，带有 score 值(可选)的有序集成员的列表
 
 --------------------------
 ### rank
@@ -196,28 +196,6 @@ Integer RedisSortedSet.rankRev(Buffer member);
 
 返回结果:
 * Integer, member 如果 member 是有序集 key 的成员，返回 member 的排名。如果 member 不是有序集 key 的成员，返回 nil
-
---------------------------
-### dispose
-**强制回收对象，调用此方法后，对象资源将立即释放**
-
-```JavaScript
-RedisSortedSet.dispose();
-```
-
---------------------------
-### equals
-**比较当前对象与给定的对象是否相等**
-
-```JavaScript
-Boolean RedisSortedSet.equals(object expected);
-```
-
-调用参数:
-* expected: [object](object.md), 制定比较的目标对象
-
-返回结果:
-* Boolean, 返回对象比较的结果
 
 --------------------------
 ### toString

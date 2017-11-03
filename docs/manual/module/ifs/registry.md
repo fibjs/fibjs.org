@@ -14,7 +14,7 @@ var value = registry.get(registry.CLASSES_ROOT, "\node1\node2\value");
 **返回指定键值下的所有子健**
 
 ```JavaScript
-static List registry.listSubKey(Integer root,
+static NArray registry.listSubKey(Integer root,
     String key);
 ```
 
@@ -23,14 +23,14 @@ static List registry.listSubKey(Integer root,
 * key: String, 指定键值
 
 返回结果:
-* [List](../../object/ifs/List.md), 返回该键值下所有子健
+* NArray, 返回该键值下所有子健
 
 --------------------------
 ### listValue
 **返回指定键值下的所有数据的健**
 
 ```JavaScript
-static List registry.listValue(Integer root,
+static NArray registry.listValue(Integer root,
     String key);
 ```
 
@@ -39,7 +39,7 @@ static List registry.listValue(Integer root,
 * key: String, 指定键值
 
 返回结果:
-* [List](../../object/ifs/List.md), 返回该键值下所有数据的健
+* NArray, 返回该键值下所有数据的健
 
 --------------------------
 ### get

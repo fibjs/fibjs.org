@@ -6,7 +6,7 @@ HeapGraphNode表示堆视图中的一个节点
 digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
-    object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\l}"];
+    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
     HeapGraphNode [tooltip="HeapGraphNode", fillcolor="lightgray", id="me", label="{HeapGraphNode|type\lname\ldescription\lid\lshallowSize\lchilds\l}"];
 
     object -> HeapGraphNode [dir=back];
@@ -71,36 +71,14 @@ readonly Integer HeapGraphNode.shallowSize;
 
 --------------------------
 ### childs
-**[List](List.md), 子节点列表，由[HeapGraphEdge](HeapGraphEdge.md)类型对象组成**
+**NArray, 子节点列表，由[HeapGraphEdge](HeapGraphEdge.md)类型对象组成**
 
 ```JavaScript
-readonly List HeapGraphNode.childs;
+readonly NArray HeapGraphNode.childs;
 ```
 
 ## 成员函数
         
-### dispose
-**强制回收对象，调用此方法后，对象资源将立即释放**
-
-```JavaScript
-HeapGraphNode.dispose();
-```
-
---------------------------
-### equals
-**比较当前对象与给定的对象是否相等**
-
-```JavaScript
-Boolean HeapGraphNode.equals(object expected);
-```
-
-调用参数:
-* expected: [object](object.md), 制定比较的目标对象
-
-返回结果:
-* Boolean, 返回对象比较的结果
-
---------------------------
 ### toString
 **返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现**
 

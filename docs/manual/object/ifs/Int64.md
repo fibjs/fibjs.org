@@ -12,8 +12,8 @@ var n = new Int64(123);
 digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
-    object [tooltip="object", URL="object.md", label="{object|dispose()\lequals()\ltoString()\ltoJSON()\l}"];
-    Int64 [tooltip="Int64", fillcolor="lightgray", id="me", label="{Int64|new Int64()\l|hi\llo\l|compare()\lshiftLeft()\lshiftRight()\land()\lor()\lxor()\ladd()\lsub()\lmulti()\ldiv()\ltoNumber()\ltoString()\l}"];
+    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
+    Int64 [tooltip="Int64", fillcolor="lightgray", id="me", label="{Int64|new Int64()\l|hi\llo\l|compare()\lshiftLeft()\lshiftRight()\land()\lor()\lxor()\ladd()\lsub()\lmulti()\ldiv()\lequals()\ltoNumber()\ltoString()\l}"];
 
     object -> Int64 [dir=back];
 }
@@ -224,6 +224,20 @@ Int64 Int64.div(Int64 num);
 * Int64, 返回包含预算以后数值的对象
 
 --------------------------
+### equals
+**比较当前对象与给定的对象是否相等**
+
+```JavaScript
+Boolean Int64.equals(object expected);
+```
+
+调用参数:
+* expected: [object](object.md), 制定比较的目标对象
+
+返回结果:
+* Boolean, 返回对象比较的结果
+
+--------------------------
 ### toNumber
 **转换成数字类型**
 
@@ -249,29 +263,6 @@ String Int64.toString(Integer base = 10);
 * String, 返回转换后的字符串
 
 --------------------------
-### dispose
-**强制回收对象，调用此方法后，对象资源将立即释放**
-
-```JavaScript
-Int64.dispose();
-```
-
---------------------------
-### equals
-**比较当前对象与给定的对象是否相等**
-
-```JavaScript
-Boolean Int64.equals(object expected);
-```
-
-调用参数:
-* expected: [object](object.md), 制定比较的目标对象
-
-返回结果:
-* Boolean, 返回对象比较的结果
-
---------------------------
-### toString
 **返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现**
 
 ```JavaScript
