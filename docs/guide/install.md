@@ -110,6 +110,10 @@ yum install gcc-c++ libstdc++-static make cmake git
 ```sh
 yum install glibc-devel.i686 libstdc++-static.i686
 ```
+Alpine 准备环境命令如下:
+```sh
+apk add g++ linux-headers make cmake git
+```
 FreeBSD (8,9) 准备环境命令如下:
 ```sh
 pkg_add -r cmake libexecinfo git
