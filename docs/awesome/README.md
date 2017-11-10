@@ -1,6 +1,6 @@
 # Awesome Fibjs
 A collection of awesome server-side [fibjs](https://github.com/fibjs) libraries, resources and shiny things.
-[<img src="https://avatars2.githubusercontent.com/u/1694747?v=3&s=200" align="right" width="70">](https://nodejs.org)
+[<img src="https://avatars2.githubusercontent.com/u/1694747?v=3&s=200" align="right" width="70">](http://fibjs.org)
 
 ## Packages
 
