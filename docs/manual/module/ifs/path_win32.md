@@ -122,6 +122,22 @@ static String path_win32.resolve(...ps);
 返回结果:
 * String, 返回得到的新路径
 
+--------------------------
+### toNamespacedPath
+**转换成 namespace-prefixed 路径。只在 windows 有效，其他系统直接返回。**
+
+```JavaScript
+static Value path_win32.toNamespacedPath(Value path = undefined);
+```
+
+调用参数:
+* path: Value, 给定的路径。
+
+返回结果:
+* Value, 返回得到的新路径
+
+see: https://msdn.microsoft.com/library/windows/desktop/aa365247(v=vs.85).aspx#namespaces
+
 ## 静态属性
         
 ### sep
