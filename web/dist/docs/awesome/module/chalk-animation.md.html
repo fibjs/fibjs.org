@@ -12,6 +12,7 @@
 <li><a href=../../manual/module/ifs/base64vlq.md.html>base64vlq</a></li>
 <li><a href=../../manual/module/ifs/bson.md.html>bson</a></li>
 <li><a href=../../manual/module/ifs/console.md.html>console</a></li>
+<li><a href=../../manual/module/ifs/constants.md.html>constants</a></li>
 <li><a href=../../manual/module/ifs/coroutine.md.html>coroutine</a></li>
 <li><a href=../../manual/module/ifs/crypto.md.html>crypto</a></li>
 <li><a href=../../manual/module/ifs/db.md.html>db</a></li>
@@ -145,6 +146,7 @@
 <li><a href=fib-session.md.html>fib-session</a></li>
 <li><a href=fib-pool.md.html>fib-pool</a></li>
 <li><a href=fib-orm.md.html>fib-orm</a></li>
+<li><a href=fib-app.md.html>fib-app</a></li>
 <li><a href=fib-kv.md.html>fib-kv</a></li>
 <li><a href=fib-rpc.md.html>fib-rpc</a></li>
 <li><a href=fib-qr.md.html>fib-qr</a></li>
@@ -152,6 +154,7 @@
 <li><a href=juicer.md.html>Juicer</a></li>
 <li><a href=highlight.js.md.html>highlight.js</a></li>
 <li><a href=marked.md.html>marked</a></li>
+<li><a href=node-cron.md.html>node-cron</a></li>
 <li><a href=debug.md.html>debug</a></li>
 <li><a href=benchmark.js.md.html>benchmark.js</a></li>
 <li><a href=sinon.md.html>sinon</a></li>
@@ -175,6 +178,8 @@
 <li><a href=mkdirp.md.html>mkdirp</a></li>
 <li><a href=rmdirr.md.html>rmdirr</a></li>
 <li><a href=detect-port.md.html>detect-port</a></li>
+<li><a href=bitcoinjs-lib.md.html>bitcoinjs-lib</a></li>
+<li><a href=rakuten.md.html>Rakuten</a></li>
 </ul>
  </div></div></div>  </div></div><div class=content><div class=social-share data-sites=weibo,twitter data-description=分享></div> <h1 id="chalk-animation">chalk-animation</h1>
 <p><a href="https://travis-ci.org/bokub/chalk-animation"><img src="https://travis-ci.org/bokub/chalk-animation.svg?branch=master" alt="Build Status"></a>
@@ -182,7 +187,7 @@
 <a href="https://github.com/sindresorhus/xo"><img src="https://img.shields.io/badge/code_style-XO-5ed9c7.svg" alt="XO code style"></a>
 <a href="https://codeclimate.com/github/bokub/chalk-animation"><img src="https://img.shields.io/codeclimate/github/bokub/chalk-animation.svg" alt="Code Climate"></a></p>
 <blockquote>
-<p>Colorful animations in terminal stdout</p>
+<p>Colorful animations in terminal output</p>
 </blockquote>
 <h2 id="Available-animations">Available animations</h2>
 <table>
@@ -216,7 +221,7 @@
 </tbody>
 </table>
 <h2 id="Install">Install</h2>
-<pre><code class="lang-bash"><div class="line-numbers">1</div>$ npm install --save chalk-animation
+<pre><code class="lang-bash"><div class="line-numbers">1</div>$ npm i chalk-animation
 </code></pre>
 <h2 id="Usage">Usage</h2>
 <pre><code class="lang-javascript"><div class="line-numbers">1
@@ -225,7 +230,9 @@
 
 chalkAnimation.rainbow(<span class="hljs-string">'Lorem ipsum dolor sit amet'</span>);
 </code></pre>
-<p>You can stop and restart an animation with <code>stop()</code> and <code>start()</code></p>
+<h4 id="Start-and-stop">Start and stop</h4>
+<p>You can stop and resume an animation with <code>stop()</code> and <code>start()</code>.</p>
+<p>When created, the instance of chalkAnimation <strong>starts automatically</strong>.</p>
 <pre><code class="lang-javascript"><div class="line-numbers">1
 2
 3
@@ -244,6 +251,7 @@ setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;
     rainbow.start(); <span class="hljs-comment">// Animation resumes</span>
 }, <span class="hljs-number">2000</span>);
 </code></pre>
+<h4 id="Automatic-stop">Automatic stop</h4>
 <p>Anything printed to the console will stop the previous animation automatically</p>
 <pre><code class="lang-javascript"><div class="line-numbers">1
 2
@@ -255,9 +263,11 @@ setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;
     <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'dolor sit amet'</span>);
 }, <span class="hljs-number">1000</span>);
 </code></pre>
+<h4 id="Changing-speed">Changing speed</h4>
 <p>Change the animation speed using a second parameter. Should be greater than 0, default is 1.</p>
 <pre><code class="lang-javascript"><div class="line-numbers">1</div>chalkAnimation.rainbow(<span class="hljs-string">'Lorem ipsum'</span>, <span class="hljs-number">2</span>); <span class="hljs-comment">// Two times faster than default</span>
 </code></pre>
+<h4 id="Changing-text">Changing text</h4>
 <p>Change the animated text seamlessly with <code>replace()</code></p>
 <pre><code class="lang-javascript"><div class="line-numbers">1
 2
@@ -265,15 +275,27 @@ setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;
 4
 5
 6
-7
-8</div><span class="hljs-keyword">let</span> str = <span class="hljs-string">'Loading...'</span>;
+7</div><span class="hljs-keyword">let</span> str = <span class="hljs-string">'Loading...'</span>;
 <span class="hljs-keyword">const</span> rainbow = chalkAnimation.rainbow(str);
 
 <span class="hljs-comment">// Add a new dot every second</span>
 setInterval(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
-    str += <span class="hljs-string">'.'</span>;
-    rainbow.replace(str);
+    rainbow.replace(str += <span class="hljs-string">'.'</span>);
 }, <span class="hljs-number">1000</span>);
+</code></pre>
+<h4 id="Manual-rendering">Manual rendering</h4>
+<p>Manually render frames with <code>render()</code>, or get the content of the next frame with <code>frame()</code></p>
+<pre><code class="lang-javascript"><div class="line-numbers">1
+2
+3
+4
+5
+6</div><span class="hljs-keyword">const</span> rainbow = chalkAnimation.rainbow(<span class="hljs-string">'Lorem ipsum'</span>).stop(); <span class="hljs-comment">// Don't start the animation</span>
+
+rainbow.render(); <span class="hljs-comment">// Display the first frame</span>
+
+<span class="hljs-keyword">const</span> frame = rainbow.frame(); <span class="hljs-comment">// Get the second frame</span>
+<span class="hljs-built_in">console</span>.log(frame);
 </code></pre>
 <h2 id="CLI-mode">CLI mode</h2>
 <pre><code class="lang-bash"><div class="line-numbers">1

@@ -12,6 +12,7 @@
 <li><a href=../../manual/module/ifs/base64vlq.md.html>base64vlq</a></li>
 <li><a href=../../manual/module/ifs/bson.md.html>bson</a></li>
 <li><a href=../../manual/module/ifs/console.md.html>console</a></li>
+<li><a href=../../manual/module/ifs/constants.md.html>constants</a></li>
 <li><a href=../../manual/module/ifs/coroutine.md.html>coroutine</a></li>
 <li><a href=../../manual/module/ifs/crypto.md.html>crypto</a></li>
 <li><a href=../../manual/module/ifs/db.md.html>db</a></li>
@@ -145,6 +146,7 @@
 <li><a href=fib-session.md.html>fib-session</a></li>
 <li><a href=fib-pool.md.html>fib-pool</a></li>
 <li><a href=fib-orm.md.html>fib-orm</a></li>
+<li><a href=fib-app.md.html>fib-app</a></li>
 <li><a href=fib-kv.md.html>fib-kv</a></li>
 <li><a href=fib-rpc.md.html>fib-rpc</a></li>
 <li><a href=fib-qr.md.html>fib-qr</a></li>
@@ -152,6 +154,7 @@
 <li><a href=juicer.md.html>Juicer</a></li>
 <li><a href=highlight.js.md.html>highlight.js</a></li>
 <li><a href=marked.md.html>marked</a></li>
+<li><a href=node-cron.md.html>node-cron</a></li>
 <li><a href=debug.md.html>debug</a></li>
 <li><a href=benchmark.js.md.html>benchmark.js</a></li>
 <li><a href=sinon.md.html>sinon</a></li>
@@ -175,6 +178,8 @@
 <li><a href=mkdirp.md.html>mkdirp</a></li>
 <li><a href=rmdirr.md.html>rmdirr</a></li>
 <li><a href=detect-port.md.html>detect-port</a></li>
+<li><a href=bitcoinjs-lib.md.html>bitcoinjs-lib</a></li>
+<li><a href=rakuten.md.html>Rakuten</a></li>
 </ul>
  </div></div></div>  </div></div><div class=content><div class=social-share data-sites=weibo,twitter data-description=分享></div> <h1 id="Synaptic-[![Build-Status](https://travis-ci.org/cazala/synaptic.svg?branch=master)](https://travis-ci.org/cazala/synaptic)-[![Join-the-chat-at-https://synapticjs.slack.com](https://synaptic-slack-ugiqacqvmd.now.sh/badge.svg)](https://synaptic-slack-ugiqacqvmd.now.sh/)">Synaptic <a href="https://travis-ci.org/cazala/synaptic"><img src="https://travis-ci.org/cazala/synaptic.svg?branch=master" alt="Build Status"></a> <a href="https://synaptic-slack-ugiqacqvmd.now.sh/"><img src="https://synaptic-slack-ugiqacqvmd.now.sh/badge.svg" alt="Join the chat at https://synapticjs.slack.com"></a></h1>
 <h2 id="Important:-[Synaptic-2.x](https://github.com/cazala/synaptic/issues/140)-is-in-stage-of-discussion-now!-Feel-free-to-participate">Important: <a href="https://github.com/cazala/synaptic/issues/140">Synaptic 2.x</a> is in stage of discussion now! Feel free to participate</h2>
@@ -208,6 +213,8 @@
 </ul>
 <p>To try out the examples, checkout the <a href="https://github.com/cazala/synaptic/tree/gh-pages">gh-pages</a> branch.</p>
 <p><code>git checkout gh-pages</code></p>
+<h4 id="Other-languages">Other languages</h4>
+<p>This README is also available in <a href="https://github.com/cazala/synaptic/blob/master/README_Zh-CN.md">Chinese | 中文文档</a>, thanks to <a href="https://github.com/noraincode">@noraincode</a>.</p>
 <h2 id="Overview">Overview</h2>
 <h3 id="Installation">Installation</h3>
 <h5 id="In-node">In node</h5>
@@ -219,7 +226,7 @@
 <pre><code class="lang-cmd"><div class="line-numbers">1</div>bower install synaptic
 </code></pre>
 <p>Or you can simply use the CDN link, kindly provided by <a href="https://cdnjs.com/">CDNjs</a></p>
-<pre><code class="lang-html"><div class="line-numbers">1</div><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://cdnjs.cloudflare.com/ajax/libs/synaptic/1.1.3/synaptic.js"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<pre><code class="lang-html"><div class="line-numbers">1</div><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://cdnjs.cloudflare.com/ajax/libs/synaptic/1.1.4/synaptic.js"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 </code></pre>
 <h3 id="Usage">Usage</h3>
 <pre><code class="lang-javascript"><div class="line-numbers">1
@@ -234,7 +241,7 @@
     Trainer = synaptic.Trainer,
     Architect = synaptic.Architect;
 </code></pre>
-<p>Now you can start to create networks, train them, or use built-in networks from the <a href="http://github.com/cazala/synaptic#architect">Architect</a>.</p>
+<p>Now you can start to create networks, train them, or use built-in networks from the <a href="https://github.com/cazala/synaptic/wiki/Architect/">Architect</a>.</p>
 <h3 id="Examples">Examples</h3>
 <h5 id="Perceptron">Perceptron</h5>
 <p>This is how you can create a simple <strong>perceptron</strong>:</p>
@@ -402,5 +409,14 @@ Multilayer LSTM network architectures.</p>
 <h2 id="Contribute">Contribute</h2>
 <p><strong>Synaptic</strong> is an Open Source project that started in Buenos Aires, Argentina. Anybody in the world is welcome to contribute to the development of the project.</p>
 <p>If you want to contribute feel free to send PR&#39;s, just make sure to run <strong>npm run test</strong> and <strong>npm run build</strong> before submitting it. This way you&#39;ll run all the test specs and build the web distribution files.</p>
-<p>&lt;3</p>
+<h2 id="Support">Support</h2>
+<p>If you like this project and you want to show your support, you can buy me a beer with <a href="https://i.imgur.com/mScSiOo.jpg">magic internet money</a>:</p>
+<pre><code><div class="line-numbers">1
+2
+3
+4</div><span class="hljs-symbol">BTC:</span> <span class="hljs-number">16</span>ePagGBbHfm2d6esjMXcUBTNgqpnLWNeK
+<span class="hljs-symbol">ETH:</span> <span class="hljs-number">0xa423bfe9db2dc125dd3b56f215e09658491cc556</span>
+<span class="hljs-symbol">LTC:</span> LeeemeZj6YL6pkTTtEGHFD6idDxHBF2HXa
+<span class="hljs-symbol">XMR:</span> <span class="hljs-number">46</span>WNbmwXpYxiBpkbHjAgjC65cyzAxtaaBQjcGpAZquhBKw2r8NtPQniEgMJcwFMCZzSBrEJtmPsTR54MoGBDbjTi2W1XmgM
+</code></pre><p>&lt;3</p>
  </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id=toc></div></div></div></div><div class=footer><div class=container>&copy; Copright 2017 fibjs.org | <a href=../../../support.html>支持我们</a></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="Click to return on the top page" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js></script><script type=text/javascript src=../../../js/common.js></script><script type=text/javascript src=../../../js/docs.js></script></body></html>

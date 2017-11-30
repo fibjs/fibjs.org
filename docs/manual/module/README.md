@@ -5,6 +5,7 @@
 * [base64vlq](ifs/base64vlq.md) - base64vlq 编码与解码模块
 * [bson](ifs/bson.md) - bson 编码与解码模块
 * [console](ifs/console.md) - 控制台访问对象
+* [constants](ifs/constants.md) - 常用常量定义模块
 * [coroutine](ifs/coroutine.md) - 并发控制模块
 * [crypto](ifs/crypto.md) - 加密算法模块
 * [db](ifs/db.md) - 数据库访问模块

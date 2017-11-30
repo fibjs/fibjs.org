@@ -48,6 +48,10 @@ To try out the examples, checkout the [gh-pages](https://github.com/cazala/synap
 
 `git checkout gh-pages`
 
+#### Other languages
+
+This README is also available in [Chinese | 中文文档](https://github.com/cazala/synaptic/blob/master/README_Zh-CN.md), thanks to [@noraincode](https://github.com/noraincode).
+
 
 ## Overview
 
@@ -72,7 +76,7 @@ bower install synaptic
 Or you can simply use the CDN link, kindly provided by [CDNjs](https://cdnjs.com/)
 
 ```html
-<script src="https://cdnjs.cloudflare.com/ajax/libs/synaptic/1.1.3/synaptic.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/synaptic/1.1.4/synaptic.js"></script>
 ```
 
 ### Usage
@@ -86,7 +90,7 @@ var Neuron = synaptic.Neuron,
 	Architect = synaptic.Architect;
 ```
 
-Now you can start to create networks, train them, or use built-in networks from the [Architect](http://github.com/cazala/synaptic#architect).
+Now you can start to create networks, train them, or use built-in networks from the [Architect](https://github.com/cazala/synaptic/wiki/Architect/).
 
 ### Examples
 
@@ -198,5 +202,16 @@ Multilayer LSTM network architectures.
 **Synaptic** is an Open Source project that started in Buenos Aires, Argentina. Anybody in the world is welcome to contribute to the development of the project.
 
 If you want to contribute feel free to send PR's, just make sure to run **npm run test** and **npm run build** before submitting it. This way you'll run all the test specs and build the web distribution files.
+
+## Support
+
+If you like this project and you want to show your support, you can buy me a beer with [magic internet money](https://i.imgur.com/mScSiOo.jpg):
+
+```
+BTC: 16ePagGBbHfm2d6esjMXcUBTNgqpnLWNeK
+ETH: 0xa423bfe9db2dc125dd3b56f215e09658491cc556
+LTC: LeeemeZj6YL6pkTTtEGHFD6idDxHBF2HXa
+XMR: 46WNbmwXpYxiBpkbHjAgjC65cyzAxtaaBQjcGpAZquhBKw2r8NtPQniEgMJcwFMCZzSBrEJtmPsTR54MoGBDbjTi2W1XmgM
+```
 
 <3

@@ -12,6 +12,7 @@
 <li><a href=../../manual/module/ifs/base64vlq.md.html>base64vlq</a></li>
 <li><a href=../../manual/module/ifs/bson.md.html>bson</a></li>
 <li><a href=../../manual/module/ifs/console.md.html>console</a></li>
+<li><a href=../../manual/module/ifs/constants.md.html>constants</a></li>
 <li><a href=../../manual/module/ifs/coroutine.md.html>coroutine</a></li>
 <li><a href=../../manual/module/ifs/crypto.md.html>crypto</a></li>
 <li><a href=../../manual/module/ifs/db.md.html>db</a></li>
@@ -145,6 +146,7 @@
 <li><a href=fib-session.md.html>fib-session</a></li>
 <li><a href=fib-pool.md.html>fib-pool</a></li>
 <li><a href=fib-orm.md.html>fib-orm</a></li>
+<li><a href=fib-app.md.html>fib-app</a></li>
 <li><a href=fib-kv.md.html>fib-kv</a></li>
 <li><a href=fib-rpc.md.html>fib-rpc</a></li>
 <li><a href=fib-qr.md.html>fib-qr</a></li>
@@ -152,6 +154,7 @@
 <li><a href=juicer.md.html>Juicer</a></li>
 <li><a href=highlight.js.md.html>highlight.js</a></li>
 <li><a href=marked.md.html>marked</a></li>
+<li><a href=node-cron.md.html>node-cron</a></li>
 <li><a href=debug.md.html>debug</a></li>
 <li><a href=benchmark.js.md.html>benchmark.js</a></li>
 <li><a href=sinon.md.html>sinon</a></li>
@@ -175,6 +178,8 @@
 <li><a href=mkdirp.md.html>mkdirp</a></li>
 <li><a href=rmdirr.md.html>rmdirr</a></li>
 <li><a href=detect-port.md.html>detect-port</a></li>
+<li><a href=bitcoinjs-lib.md.html>bitcoinjs-lib</a></li>
+<li><a href=rakuten.md.html>Rakuten</a></li>
 </ul>
  </div></div></div>  </div></div><div class=content><div class=social-share data-sites=weibo,twitter data-description=分享></div> <h1 id="UglifyJS-3">UglifyJS 3</h1>
 <p>UglifyJS is a JavaScript parser, minifier, compressor and beautifier toolkit.</p>
@@ -399,11 +404,11 @@ debugging your compressed JavaScript.  To get a source map, pass
 <ul>
 <li><p><code>--source-map &quot;filename=&#39;&lt;NAME&gt;&#39;&quot;</code> to specify the name of the source map.</p>
 </li>
-<li><p><code>--source-map &quot;root=&#39;&lt;URL&gt;&#39;&quot;</code> to pass the URL where the original files can be found.
+<li><p><code>--source-map &quot;root=&#39;&lt;URL&gt;&#39;&quot;</code> to pass the URL where the original files can be found.</p>
+</li>
+<li><p><code>--source-map &quot;url=&#39;&lt;URL&gt;&#39;&quot;</code> to specify the URL where the source map can be found.
 Otherwise UglifyJS assumes HTTP <code>X-SourceMap</code> is being used and will omit the
 <code>//# sourceMappingURL=</code> directive.</p>
-</li>
-<li><p><code>--source-map &quot;url=&#39;&lt;URL&gt;&#39;&quot;</code> to specify the URL where the source map can be found.</p>
 </li>
 </ul>
 <p>For example:</p>
@@ -441,11 +446,9 @@ shortcut for <code>foo=true</code>).</p>
 <p>To enable the mangler you need to pass <code>--mangle</code> (<code>-m</code>).  The following
 (comma-separated) options are supported:</p>
 <ul>
-<li><p><code>toplevel</code> — mangle names declared in the top level scope (disabled by
-default).</p>
+<li><p><code>toplevel</code> (default <code>false</code>) -- mangle names declared in the top level scope.</p>
 </li>
-<li><p><code>eval</code> — mangle names visible in scopes where <code>eval</code> or <code>with</code> are used
-(disabled by default).</p>
+<li><p><code>eval</code> (default <code>false</code>) -- mangle names visible in scopes where <code>eval</code> or <code>with</code> are used.</p>
 </li>
 </ul>
 <p>When mangling is enabled but you want to prevent certain names from being
@@ -458,7 +461,7 @@ comma-separated list of names.  For example:</p>
 is a separate step, different from variable name mangling.  Pass
 <code>--mangle-props</code> to enable it.  It will mangle all properties in the
 input code with the exception of built in DOM properties and properties
-in core javascript classes.  For example:</p>
+in core JavaScript classes.  For example:</p>
 <pre><code class="lang-javascript"><div class="line-numbers">1
 2
 3
@@ -481,7 +484,7 @@ x.bar_ = <span class="hljs-number">2</span>;
 x[<span class="hljs-string">"baz_"</span>] = <span class="hljs-number">3</span>;
 <span class="hljs-built_in">console</span>.log(x.calc());
 </code></pre>
-<p>Mangle all properties (except for javascript <code>builtins</code>):</p>
+<p>Mangle all properties (except for JavaScript <code>builtins</code>):</p>
 <pre><code class="lang-bash"><div class="line-numbers">1</div>$ uglifyjs example.js -c -m --mangle-props
 </code></pre>
 <pre><code class="lang-javascript"><div class="line-numbers">1</div><span class="hljs-keyword">var</span> x={<span class="hljs-attr">o</span>:<span class="hljs-number">0</span>,<span class="hljs-attr">_</span>:<span class="hljs-number">1</span>,<span class="hljs-attr">l</span>:<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{<span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>._+<span class="hljs-keyword">this</span>.o}};x.t=<span class="hljs-number">2</span>,x.o=<span class="hljs-number">3</span>,<span class="hljs-built_in">console</span>.log(x.l());
@@ -785,6 +788,9 @@ reused or externally persisted by the user.</p>
 </li>
 <li><p><code>ie8</code> (default <code>false</code>) - set to <code>true</code> to support IE8.</p>
 </li>
+<li><p><code>keep_fnames</code> (default: <code>false</code>) - pass <code>true</code> to prevent discarding or mangling
+of function names.  Useful for code relying on <code>Function.prototype.name</code>.</p>
+</li>
 </ul>
 <h2 id="Minify-options-structure">Minify options structure</h2>
 <pre><code class="lang-javascript"><div class="line-numbers">1
@@ -812,7 +818,6 @@ reused or externally persisted by the user.</p>
 23
 24
 25</div>{
-    <span class="hljs-attr">warnings</span>: <span class="hljs-literal">false</span>,
     <span class="hljs-attr">parse</span>: {
         <span class="hljs-comment">// parse options</span>
     },
@@ -835,6 +840,7 @@ reused or externally persisted by the user.</p>
     <span class="hljs-attr">nameCache</span>: <span class="hljs-literal">null</span>, <span class="hljs-comment">// or specify a name cache object</span>
     toplevel: <span class="hljs-literal">false</span>,
     <span class="hljs-attr">ie8</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-attr">warnings</span>: <span class="hljs-literal">false</span>,
 }
 </code></pre>
 <h3 id="Source-map-options">Source map options</h3>
@@ -894,112 +900,89 @@ can use <code>sourceMap.content</code>:</p>
 <p>If you&#39;re using the <code>X-SourceMap</code> header instead, you can just omit <code>sourceMap.url</code>.</p>
 <h2 id="Parse-options">Parse options</h2>
 <ul>
-<li><code>bare_returns</code> (default <code>false</code>) -- support top level <code>return</code> statements</li>
-<li><code>html5_comments</code> (default <code>true</code>)</li>
-<li><code>shebang</code> (default <code>true</code>) -- support <code>#!command</code> as the first line</li>
+<li><p><code>bare_returns</code> (default <code>false</code>) -- support top level <code>return</code> statements</p>
+</li>
+<li><p><code>html5_comments</code> (default <code>true</code>)</p>
+</li>
+<li><p><code>shebang</code> (default <code>true</code>) -- support <code>#!command</code> as the first line</p>
+</li>
 </ul>
 <h2 id="Compress-options">Compress options</h2>
 <ul>
-<li><p><code>sequences</code> (default: true) -- join consecutive simple statements using the
-comma operator.  May be set to a positive integer to specify the maximum number
-of consecutive comma sequences that will be generated. If this option is set to
-<code>true</code> then the default <code>sequences</code> limit is <code>200</code>. Set option to <code>false</code> or <code>0</code>
-to disable. The smallest <code>sequences</code> length is <code>2</code>. A <code>sequences</code> value of <code>1</code>
-is grandfathered to be equivalent to <code>true</code> and as such means <code>200</code>. On rare
-occasions the default sequences limit leads to very slow compress times in which
-case a value of <code>20</code> or less is recommended.</p>
+<li><p><code>booleans</code> (default: <code>true</code>) -- various optimizations for boolean context,
+for example <code>!!a ? b : c → a ? b : c</code></p>
 </li>
-<li><p><code>properties</code> -- rewrite property access using the dot notation, for
-example <code>foo[&quot;bar&quot;] → foo.bar</code></p>
+<li><p><code>cascade</code> (default: <code>true</code>) -- small optimization for sequences, transform
+<code>x, x</code> into <code>x</code> and <code>x = something(), x</code> into <code>x = something()</code></p>
 </li>
-<li><p><code>dead_code</code> -- remove unreachable code</p>
+<li><p><code>collapse_vars</code> (default: <code>true</code>) -- Collapse single-use non-constant variables,
+side effects permitting.</p>
 </li>
-<li><p><code>drop_debugger</code> -- remove <code>debugger;</code> statements</p>
-</li>
-<li><p><code>unsafe</code> (default: false) -- apply &quot;unsafe&quot; transformations (discussion below)</p>
-</li>
-<li><p><code>unsafe_comps</code> (default: false) -- Reverse <code>&lt;</code> and <code>&lt;=</code> to <code>&gt;</code> and <code>&gt;=</code> to
-allow improved compression. This might be unsafe when an at least one of two
-operands is an object with computed values due the use of methods like <code>get</code>,
-or <code>valueOf</code>. This could cause change in execution order after operands in the
-comparison are switching. Compression only works if both <code>comparisons</code> and
-<code>unsafe_comps</code> are both set to true.</p>
-</li>
-<li><p><code>unsafe_Func</code> (default: false) -- compress and mangle <code>Function(args, code)</code>
-when both <code>args</code> and <code>code</code> are string literals.</p>
-</li>
-<li><p><code>unsafe_math</code> (default: false) -- optimize numerical expressions like
-<code>2 * x * 3</code> into <code>6 * x</code>, which may give imprecise floating point results.</p>
-</li>
-<li><p><code>unsafe_proto</code> (default: false) -- optimize expressions like
-<code>Array.prototype.slice.call(a)</code> into <code>[].slice.call(a)</code></p>
-</li>
-<li><p><code>unsafe_regexp</code> (default: false) -- enable substitutions of variables with
-<code>RegExp</code> values the same way as if they are constants.</p>
-</li>
-<li><p><code>conditionals</code> -- apply optimizations for <code>if</code>-s and conditional
-expressions</p>
-</li>
-<li><p><code>comparisons</code> -- apply certain optimizations to binary nodes, for example:
-<code>!(a &lt;= b) → a &gt; b</code> (only when <code>unsafe_comps</code>), attempts to negate binary
+<li><p><code>comparisons</code> (default: <code>true</code>) -- apply certain optimizations to binary nodes,
+e.g. <code>!(a &lt;= b) → a &gt; b</code> (only when <code>unsafe_comps</code>), attempts to negate binary
 nodes, e.g. <code>a = !b &amp;&amp; !c &amp;&amp; !d &amp;&amp; !e → a=!(b||c||d||e)</code> etc.</p>
 </li>
-<li><p><code>evaluate</code> -- attempt to evaluate constant expressions</p>
+<li><p><code>conditionals</code> (default: <code>true</code>) -- apply optimizations for <code>if</code>-s and conditional
+expressions</p>
 </li>
-<li><p><code>booleans</code> -- various optimizations for boolean context, for example <code>!!a
-? b : c → a ? b : c</code></p>
+<li><p><code>dead_code</code> (default: <code>true</code>) -- remove unreachable code</p>
 </li>
-<li><p><code>typeofs</code> -- default <code>true</code>.  Transforms <code>typeof foo == &quot;undefined&quot;</code> into
-<code>foo === void 0</code>.  Note: recommend to set this value to <code>false</code> for IE10 and
-earlier versions due to known issues.</p>
+<li><p><code>drop_console</code> (default: <code>false</code>) -- Pass <code>true</code> to discard calls to
+<code>console.*</code> functions. If you wish to drop a specific function call
+such as <code>console.info</code> and/or retain side effects from function arguments
+after dropping the function call then use <code>pure_funcs</code> instead.</p>
 </li>
-<li><p><code>loops</code> -- optimizations for <code>do</code>, <code>while</code> and <code>for</code> loops when we can
-statically determine the condition</p>
+<li><p><code>drop_debugger</code> (default: <code>true</code>) -- remove <code>debugger;</code> statements</p>
 </li>
-<li><p><code>unused</code> -- drop unreferenced functions and variables (simple direct variable
-assignments do not count as references unless set to <code>&quot;keep_assign&quot;</code>)</p>
+<li><p><code>evaluate</code> (default: <code>true</code>) -- attempt to evaluate constant expressions</p>
 </li>
-<li><p><code>toplevel</code> -- drop unreferenced functions (<code>&quot;funcs&quot;</code>) and/or variables (<code>&quot;vars&quot;</code>)
-in the top level scope (<code>false</code> by default, <code>true</code> to drop both unreferenced
-functions and variables)</p>
+<li><p><code>expression</code> (default: <code>false</code>) -- Pass <code>true</code> to preserve completion values
+from terminal statements without <code>return</code>, e.g. in bookmarklets.</p>
 </li>
-<li><p><code>top_retain</code> -- prevent specific toplevel functions and variables from <code>unused</code>
-removal (can be array, comma-separated, RegExp or function. Implies <code>toplevel</code>)</p>
+<li><p><code>global_defs</code> (default: <code>{}</code>) -- see <a href="#conditional-compilation">conditional compilation</a></p>
 </li>
-<li><p><code>hoist_funs</code> -- hoist function declarations</p>
+<li><p><code>hoist_funs</code> (default: <code>true</code>) -- hoist function declarations</p>
 </li>
-<li><p><code>hoist_vars</code> (default: false) -- hoist <code>var</code> declarations (this is <code>false</code>
+<li><p><code>hoist_props</code> (default: <code>true</code>) -- hoist properties from constant object and
+array literals into regular variables subject to a set of constraints. For example:
+<code>var o={p:1, q:2}; f(o.p, o.q);</code> is converted to <code>f(1, 2);</code>. Note: <code>hoist_props</code>
+works best with <code>mangle</code> enabled, the <code>compress</code> option <code>passes</code> set to <code>2</code> or higher,
+and the <code>compress</code> option <code>toplevel</code> enabled.</p>
+</li>
+<li><p><code>hoist_vars</code> (default: <code>false</code>) -- hoist <code>var</code> declarations (this is <code>false</code>
 by default because it seems to increase the size of the output in general)</p>
 </li>
-<li><p><code>if_return</code> -- optimizations for if/return and if/continue</p>
+<li><p><code>if_return</code> (default: <code>true</code>) -- optimizations for if/return and if/continue</p>
 </li>
-<li><p><code>inline</code> -- embed simple functions</p>
+<li><p><code>inline</code> (default: <code>true</code>) -- embed simple functions</p>
 </li>
-<li><p><code>join_vars</code> -- join consecutive <code>var</code> statements</p>
+<li><p><code>join_vars</code> (default: <code>true</code>) -- join consecutive <code>var</code> statements</p>
 </li>
-<li><p><code>cascade</code> -- small optimization for sequences, transform <code>x, x</code> into <code>x</code>
-and <code>x = something(), x</code> into <code>x = something()</code></p>
+<li><p><code>keep_fargs</code> (default: <code>true</code>) -- Prevents the compressor from discarding unused
+function arguments.  You need this for code which relies on <code>Function.length</code>.</p>
 </li>
-<li><p><code>collapse_vars</code> -- Collapse single-use non-constant variables - side
-effects permitting.</p>
+<li><p><code>keep_fnames</code> (default: <code>false</code>) -- Pass <code>true</code> to prevent the
+compressor from discarding function names.  Useful for code relying on
+<code>Function.prototype.name</code>. See also: the <code>keep_fnames</code> <a href="#mangle">mangle option</a>.</p>
 </li>
-<li><p><code>reduce_vars</code> -- Improve optimization on variables assigned with and
-used as constant values.</p>
+<li><p><code>keep_infinity</code> (default: <code>false</code>) -- Pass <code>true</code> to prevent <code>Infinity</code> from
+being compressed into <code>1/0</code>, which may cause performance issues on Chrome.</p>
 </li>
-<li><p><code>warnings</code> -- display warnings when dropping unreachable code or unused
-declarations etc.</p>
+<li><p><code>loops</code> (default: <code>true</code>) -- optimizations for <code>do</code>, <code>while</code> and <code>for</code> loops
+when we can statically determine the condition.</p>
 </li>
-<li><p><code>negate_iife</code> -- negate &quot;Immediately-Called Function Expressions&quot;
+<li><p><code>negate_iife</code> (default: <code>true</code>) -- negate &quot;Immediately-Called Function Expressions&quot;
 where the return value is discarded, to avoid the parens that the
 code generator would insert.</p>
 </li>
-<li><p><code>pure_getters</code> -- the default is <code>false</code>.  If you pass <code>true</code> for
-this, UglifyJS will assume that object property access
-(e.g. <code>foo.bar</code> or <code>foo[&quot;bar&quot;]</code>) doesn&#39;t have any side effects.
-Specify <code>&quot;strict&quot;</code> to treat <code>foo.bar</code> as side-effect-free only when
-<code>foo</code> is certain to not throw, i.e. not <code>null</code> or <code>undefined</code>.</p>
+<li><p><code>passes</code> (default: <code>1</code>) -- The maximum number of times to run compress.
+In some cases more than one pass leads to further compressed code.  Keep in
+mind more passes will take more time.</p>
 </li>
-<li><p><code>pure_funcs</code> -- default <code>null</code>.  You can pass an array of names and
+<li><p><code>properties</code> (default: <code>true</code>) -- rewrite property access using the dot notation, for
+example <code>foo[&quot;bar&quot;] → foo.bar</code></p>
+</li>
+<li><p><code>pure_funcs</code> (default: <code>null</code>) -- You can pass an array of names and
 UglifyJS will assume that those functions do not produce side
 effects.  DANGER: will not check if the name is redefined in scope.
 An example case here, for instance <code>var q = Math.floor(a/b)</code>.  If
@@ -1010,49 +993,91 @@ function won&#39;t produce any side effect, in which case the whole
 statement would get discarded.  The current implementation adds some
 overhead (compression will be slower).</p>
 </li>
-<li><p><code>drop_console</code> -- default <code>false</code>.  Pass <code>true</code> to discard calls to
-<code>console.*</code> functions. If you wish to drop a specific function call
-such as <code>console.info</code> and/or retain side effects from function arguments
-after dropping the function call then use <code>pure_funcs</code> instead.</p>
+<li><p><code>pure_getters</code> (default: <code>&quot;strict&quot;</code>) -- If you pass <code>true</code> for
+this, UglifyJS will assume that object property access
+(e.g. <code>foo.bar</code> or <code>foo[&quot;bar&quot;]</code>) doesn&#39;t have any side effects.
+Specify <code>&quot;strict&quot;</code> to treat <code>foo.bar</code> as side-effect-free only when
+<code>foo</code> is certain to not throw, i.e. not <code>null</code> or <code>undefined</code>.</p>
 </li>
-<li><p><code>expression</code> -- default <code>false</code>.  Pass <code>true</code> to preserve completion values
-from terminal statements without <code>return</code>, e.g. in bookmarklets.</p>
+<li><p><code>reduce_funcs</code> (default: <code>true</code>) -- Allows single-use functions to be
+inlined as function expressions when permissible allowing further
+optimization.  Enabled by default.  Option depends on <code>reduce_vars</code>
+being enabled.  Some code runs faster in the Chrome V8 engine if this
+option is disabled.  Does not negatively impact other major browsers.</p>
 </li>
-<li><p><code>keep_fargs</code> -- default <code>true</code>.  Prevents the
-compressor from discarding unused function arguments.  You need this
-for code which relies on <code>Function.length</code>.</p>
+<li><p><code>reduce_vars</code> (default: <code>true</code>) -- Improve optimization on variables assigned with and
+used as constant values.</p>
 </li>
-<li><p><code>keep_fnames</code> -- default <code>false</code>.  Pass <code>true</code> to prevent the
-compressor from discarding function names.  Useful for code relying on
-<code>Function.prototype.name</code>. See also: the <code>keep_fnames</code> <a href="#mangle">mangle option</a>.</p>
+<li><p><code>sequences</code> (default: <code>true</code>) -- join consecutive simple statements using the
+comma operator.  May be set to a positive integer to specify the maximum number
+of consecutive comma sequences that will be generated. If this option is set to
+<code>true</code> then the default <code>sequences</code> limit is <code>200</code>. Set option to <code>false</code> or <code>0</code>
+to disable. The smallest <code>sequences</code> length is <code>2</code>. A <code>sequences</code> value of <code>1</code>
+is grandfathered to be equivalent to <code>true</code> and as such means <code>200</code>. On rare
+occasions the default sequences limit leads to very slow compress times in which
+case a value of <code>20</code> or less is recommended.</p>
 </li>
-<li><p><code>passes</code> -- default <code>1</code>. The maximum number of times to run compress.
-In some cases more than one pass leads to further compressed code.  Keep in
-mind more passes will take more time.</p>
-</li>
-<li><p><code>keep_infinity</code> -- default <code>false</code>. Pass <code>true</code> to prevent <code>Infinity</code> from
-being compressed into <code>1/0</code>, which may cause performance issues on Chrome.</p>
-</li>
-<li><p><code>side_effects</code> -- default <code>true</code>. Pass <code>false</code> to disable potentially dropping
+<li><p><code>side_effects</code> (default: <code>true</code>) -- Pass <code>false</code> to disable potentially dropping
 functions marked as &quot;pure&quot;.  A function call is marked as &quot;pure&quot; if a comment
 annotation <code>/*@__PURE__*/</code> or <code>/*#__PURE__*/</code> immediately precedes the call. For
 example: <code>/*@__PURE__*/foo();</code></p>
 </li>
+<li><p><code>switches</code> (default: <code>true</code>) -- de-duplicate and remove unreachable <code>switch</code> branches</p>
+</li>
+<li><p><code>toplevel</code> (default: <code>false</code>) -- drop unreferenced functions (<code>&quot;funcs&quot;</code>) and/or
+variables (<code>&quot;vars&quot;</code>) in the top level scope (<code>false</code> by default, <code>true</code> to drop
+both unreferenced functions and variables)</p>
+</li>
+<li><p><code>top_retain</code> (default: <code>null</code>) -- prevent specific toplevel functions and
+variables from <code>unused</code> removal (can be array, comma-separated, RegExp or
+function. Implies <code>toplevel</code>)</p>
+</li>
+<li><p><code>typeofs</code> (default: <code>true</code>) -- Transforms <code>typeof foo == &quot;undefined&quot;</code> into
+<code>foo === void 0</code>.  Note: recommend to set this value to <code>false</code> for IE10 and
+earlier versions due to known issues.</p>
+</li>
+<li><p><code>unsafe</code> (default: <code>false</code>) -- apply &quot;unsafe&quot; transformations (discussion below)</p>
+</li>
+<li><p><code>unsafe_comps</code> (default: <code>false</code>) -- Reverse <code>&lt;</code> and <code>&lt;=</code> to <code>&gt;</code> and <code>&gt;=</code> to
+allow improved compression. This might be unsafe when an at least one of two
+operands is an object with computed values due the use of methods like <code>get</code>,
+or <code>valueOf</code>. This could cause change in execution order after operands in the
+comparison are switching. Compression only works if both <code>comparisons</code> and
+<code>unsafe_comps</code> are both set to true.</p>
+</li>
+<li><p><code>unsafe_Func</code> (default: <code>false</code>) -- compress and mangle <code>Function(args, code)</code>
+when both <code>args</code> and <code>code</code> are string literals.</p>
+</li>
+<li><p><code>unsafe_math</code> (default: <code>false</code>) -- optimize numerical expressions like
+<code>2 * x * 3</code> into <code>6 * x</code>, which may give imprecise floating point results.</p>
+</li>
+<li><p><code>unsafe_proto</code> (default: <code>false</code>) -- optimize expressions like
+<code>Array.prototype.slice.call(a)</code> into <code>[].slice.call(a)</code></p>
+</li>
+<li><p><code>unsafe_regexp</code> (default: <code>false</code>) -- enable substitutions of variables with
+<code>RegExp</code> values the same way as if they are constants.</p>
+</li>
+<li><p><code>unused</code> (default: <code>true</code>) -- drop unreferenced functions and variables (simple
+direct variable assignments do not count as references unless set to <code>&quot;keep_assign&quot;</code>)</p>
+</li>
+<li><p><code>warnings</code> (default: <code>false</code>) -- display warnings when dropping unreachable
+code or unused declarations etc.</p>
+</li>
 </ul>
 <h2 id="Mangle-options">Mangle options</h2>
 <ul>
-<li><p><code>reserved</code> (default <code>[]</code>). Pass an array of identifiers that should be
-excluded from mangling. Example: <code>[&quot;foo&quot;, &quot;bar&quot;]</code>.</p>
+<li><p><code>eval</code> (default <code>false</code>) -- Pass <code>true</code> to mangle names visible in scopes
+where <code>eval</code> or <code>with</code> are used.</p>
 </li>
-<li><p><code>toplevel</code> (default <code>false</code>). Pass <code>true</code> to mangle names declared in the
-top level scope.</p>
-</li>
-<li><p><code>keep_fnames</code> (default <code>false</code>).  Pass <code>true</code> to not mangle function names.
+<li><p><code>keep_fnames</code> (default <code>false</code>) -- Pass <code>true</code> to not mangle function names.
 Useful for code relying on <code>Function.prototype.name</code>. See also: the <code>keep_fnames</code>
 <a href="#compress-options">compress option</a>.</p>
 </li>
-<li><p><code>eval</code> (default <code>false</code>). Pass <code>true</code> to mangle names visible in scopes
-where <code>eval</code> or <code>with</code> are used.</p>
+<li><p><code>reserved</code> (default <code>[]</code>) -- Pass an array of identifiers that should be
+excluded from mangling. Example: <code>[&quot;foo&quot;, &quot;bar&quot;]</code>.</p>
+</li>
+<li><p><code>toplevel</code> (default <code>false</code>) -- Pass <code>true</code> to mangle names declared in the
+top level scope.</p>
 </li>
 </ul>
 <p>Examples:</p>
@@ -1088,50 +1113,68 @@ UglifyJS.minify(code, { <span class="hljs-attr">mangle</span>: { <span class="hl
 </code></pre>
 <h3 id="Mangle-properties-options">Mangle properties options</h3>
 <ul>
-<li><code>reserved</code> (default: <code>[]</code>) -- Do not mangle property names listed in the
-<code>reserved</code> array.</li>
-<li><code>regex</code> (default: <code>null</code>) -— Pass a RegExp literal to only mangle property
-names matching the regular expression.</li>
-<li><code>keep_quoted</code> (default: <code>false</code>) -— Only mangle unquoted property names.</li>
-<li><code>debug</code> (default: <code>false</code>) -— Mangle names with the original name still present.
-Pass an empty string <code>&quot;&quot;</code> to enable, or a non-empty string to set the debug suffix.</li>
-<li><code>builtins</code> (default: <code>false</code>) -- Use <code>true</code> to allow the mangling of builtin
-DOM properties. Not recommended to override this setting.</li>
+<li><p><code>builtins</code> (default: <code>false</code>) -- Use <code>true</code> to allow the mangling of builtin
+DOM properties. Not recommended to override this setting.</p>
+</li>
+<li><p><code>debug</code> (default: <code>false</code>) -— Mangle names with the original name still present.
+Pass an empty string <code>&quot;&quot;</code> to enable, or a non-empty string to set the debug suffix.</p>
+</li>
+<li><p><code>keep_quoted</code> (default: <code>false</code>) -— Only mangle unquoted property names.</p>
+</li>
+<li><p><code>regex</code> (default: <code>null</code>) -— Pass a RegExp literal to only mangle property
+names matching the regular expression.</p>
+</li>
+<li><p><code>reserved</code> (default: <code>[]</code>) -- Do not mangle property names listed in the
+<code>reserved</code> array.</p>
+</li>
 </ul>
 <h2 id="Output-options">Output options</h2>
 <p>The code generator tries to output shortest code possible by default.  In
 case you want beautified output, pass <code>--beautify</code> (<code>-b</code>).  Optionally you
 can pass additional arguments that control the code output:</p>
 <ul>
-<li><code>ascii_only</code> (default <code>false</code>) -- escape Unicode characters in strings and
-regexps (affects directives with non-ascii characters becoming invalid)</li>
-<li><code>beautify</code> (default <code>true</code>) -- whether to actually beautify the output.
+<li><p><code>ascii_only</code> (default <code>false</code>) -- escape Unicode characters in strings and
+regexps (affects directives with non-ascii characters becoming invalid)</p>
+</li>
+<li><p><code>beautify</code> (default <code>true</code>) -- whether to actually beautify the output.
 Passing <code>-b</code> will set this to true, but you might need to pass <code>-b</code> even
 when you want to generate minified code, in order to specify additional
-arguments, so you can use <code>-b beautify=false</code> to override it.</li>
-<li><code>bracketize</code> (default <code>false</code>) -- always insert brackets in <code>if</code>, <code>for</code>,
+arguments, so you can use <code>-b beautify=false</code> to override it.</p>
+</li>
+<li><p><code>bracketize</code> (default <code>false</code>) -- always insert brackets in <code>if</code>, <code>for</code>,
 <code>do</code>, <code>while</code> or <code>with</code> statements, even if their body is a single
-statement.</li>
-<li><code>comments</code> (default <code>false</code>) -- pass <code>true</code> or <code>&quot;all&quot;</code> to preserve all
+statement.</p>
+</li>
+<li><p><code>comments</code> (default <code>false</code>) -- pass <code>true</code> or <code>&quot;all&quot;</code> to preserve all
 comments, <code>&quot;some&quot;</code> to preserve some comments, a regular expression string
-(e.g. <code>/^!/</code>) or a function.</li>
-<li><code>indent_level</code> (default 4)</li>
-<li><code>indent_start</code> (default 0) -- prefix all lines by that many spaces</li>
-<li><code>inline_script</code> (default <code>false</code>) -- escape the slash in occurrences of
-<code>&lt;/script</code> in strings</li>
-<li><code>keep_quoted_props</code> (default <code>false</code>) -- when turned on, prevents stripping
-quotes from property names in object literals.</li>
-<li><code>max_line_len</code> (default <code>false</code>) -- maximum line length (for uglified code)</li>
-<li><code>preamble</code> (default <code>null</code>) -- when passed it must be a string and
+(e.g. <code>/^!/</code>) or a function.</p>
+</li>
+<li><p><code>indent_level</code> (default <code>4</code>)</p>
+</li>
+<li><p><code>indent_start</code> (default <code>0</code>) -- prefix all lines by that many spaces</p>
+</li>
+<li><p><code>inline_script</code> (default <code>false</code>) -- escape the slash in occurrences of
+<code>&lt;/script</code> in strings</p>
+</li>
+<li><p><code>keep_quoted_props</code> (default <code>false</code>) -- when turned on, prevents stripping
+quotes from property names in object literals.</p>
+</li>
+<li><p><code>max_line_len</code> (default <code>false</code>) -- maximum line length (for uglified code)</p>
+</li>
+<li><p><code>preamble</code> (default <code>null</code>) -- when passed it must be a string and
 it will be prepended to the output literally.  The source map will
 adjust for this text.  Can be used to insert a comment containing
-licensing information, for example.</li>
-<li><code>preserve_line</code> (default <code>false</code>) -- pass <code>true</code> to preserve lines, but it
-only works if <code>beautify</code> is set to <code>false</code>.</li>
-<li><code>quote_keys</code> (default <code>false</code>) -- pass <code>true</code> to quote all keys in literal
-objects</li>
-<li><code>quote_style</code> (default <code>0</code>) -- preferred quote style for strings (affects
-quoted property names and directives as well):<ul>
+licensing information, for example.</p>
+</li>
+<li><p><code>preserve_line</code> (default <code>false</code>) -- pass <code>true</code> to preserve lines, but it
+only works if <code>beautify</code> is set to <code>false</code>.</p>
+</li>
+<li><p><code>quote_keys</code> (default <code>false</code>) -- pass <code>true</code> to quote all keys in literal
+objects</p>
+</li>
+<li><p><code>quote_style</code> (default <code>0</code>) -- preferred quote style for strings (affects
+quoted property names and directives as well):</p>
+<ul>
 <li><code>0</code> -- prefers double quotes, switches to single quotes when there are
 more double quotes in the string itself. <code>0</code> is best for gzip size.</li>
 <li><code>1</code> -- always use single quotes</li>
@@ -1139,19 +1182,26 @@ more double quotes in the string itself. <code>0</code> is best for gzip size.</
 <li><code>3</code> -- always use the original quotes</li>
 </ul>
 </li>
-<li><code>semicolons</code> (default <code>true</code>) -- separate statements with semicolons.  If
+<li><p><code>semicolons</code> (default <code>true</code>) -- separate statements with semicolons.  If
 you pass <code>false</code> then whenever possible we will use a newline instead of a
 semicolon, leading to more readable output of uglified code (size before
-gzip could be smaller; size after gzip insignificantly larger).</li>
-<li><code>shebang</code> (default <code>true</code>) -- preserve shebang <code>#!</code> in preamble (bash scripts)</li>
-<li><code>width</code> (default 80) -- only takes effect when beautification is on, this
+gzip could be smaller; size after gzip insignificantly larger).</p>
+</li>
+<li><p><code>shebang</code> (default <code>true</code>) -- preserve shebang <code>#!</code> in preamble (bash scripts)</p>
+</li>
+<li><p><code>webkit</code> (default <code>false</code>) -- enable workarounds for WebKit bugs.
+PhantomJS users should set this option to <code>true</code>.</p>
+</li>
+<li><p><code>width</code> (default <code>80</code>) -- only takes effect when beautification is on, this
 specifies an (orientative) line width that the beautifier will try to
 obey.  It refers to the width of the line text (excluding indentation).
 It doesn&#39;t work very well currently, but it does make the code generated
-by UglifyJS more readable.</li>
-<li><code>wrap_iife</code> (default <code>false</code>) -- pass <code>true</code> to wrap immediately invoked
+by UglifyJS more readable.</p>
+</li>
+<li><p><code>wrap_iife</code> (default <code>false</code>) -- pass <code>true</code> to wrap immediately invoked
 function expressions. See
-<a href="https://github.com/mishoo/UglifyJS2/issues/640">#640</a> for more details.</li>
+<a href="https://github.com/mishoo/UglifyJS2/issues/640">#640</a> for more details.</p>
+</li>
 </ul>
 <h1 id="Miscellaneous">Miscellaneous</h1>
 <h3 id="Keeping-copyright-notices-or-other-comments">Keeping copyright notices or other comments</h3>
@@ -1363,7 +1413,7 @@ converting the SpiderMonkey tree that Acorn produces takes another 150ms so
 in total it&#39;s a bit more than just using UglifyJS&#39;s own parser.</p>
 <h3 id="Uglify-Fast-Minify-Mode">Uglify Fast Minify Mode</h3>
 <p>It&#39;s not well known, but whitespace removal and symbol mangling accounts
-for 95% of the size reduction in minified code for most javascript - not
+for 95% of the size reduction in minified code for most JavaScript - not
 elaborate code transforms. One can simply disable <code>compress</code> to speed up
 Uglify builds by 3 to 4 times. In this fast <code>mangle</code>-only mode Uglify has
 comparable minify speeds and gzip sizes to

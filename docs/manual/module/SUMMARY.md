@@ -4,6 +4,7 @@
 * [base64vlq](ifs/base64vlq.md)
 * [bson](ifs/bson.md)
 * [console](ifs/console.md)
+* [constants](ifs/constants.md)
 * [coroutine](ifs/coroutine.md)
 * [crypto](ifs/crypto.md)
 * [db](ifs/db.md)

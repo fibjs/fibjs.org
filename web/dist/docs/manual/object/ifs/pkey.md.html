@@ -12,6 +12,7 @@
 <li><a href=../../module/ifs/base64vlq.md.html>base64vlq</a></li>
 <li><a href=../../module/ifs/bson.md.html>bson</a></li>
 <li><a href=../../module/ifs/console.md.html>console</a></li>
+<li><a href=../../module/ifs/constants.md.html>constants</a></li>
 <li><a href=../../module/ifs/coroutine.md.html>coroutine</a></li>
 <li><a href=../../module/ifs/crypto.md.html>crypto</a></li>
 <li><a href=../../module/ifs/db.md.html>db</a></li>
@@ -145,6 +146,7 @@
 <li><a href=../../../awesome/module/fib-session.md.html>fib-session</a></li>
 <li><a href=../../../awesome/module/fib-pool.md.html>fib-pool</a></li>
 <li><a href=../../../awesome/module/fib-orm.md.html>fib-orm</a></li>
+<li><a href=../../../awesome/module/fib-app.md.html>fib-app</a></li>
 <li><a href=../../../awesome/module/fib-kv.md.html>fib-kv</a></li>
 <li><a href=../../../awesome/module/fib-rpc.md.html>fib-rpc</a></li>
 <li><a href=../../../awesome/module/fib-qr.md.html>fib-qr</a></li>
@@ -152,6 +154,7 @@
 <li><a href=../../../awesome/module/juicer.md.html>Juicer</a></li>
 <li><a href=../../../awesome/module/highlight.js.md.html>highlight.js</a></li>
 <li><a href=../../../awesome/module/marked.md.html>marked</a></li>
+<li><a href=../../../awesome/module/node-cron.md.html>node-cron</a></li>
 <li><a href=../../../awesome/module/debug.md.html>debug</a></li>
 <li><a href=../../../awesome/module/benchmark.js.md.html>benchmark.js</a></li>
 <li><a href=../../../awesome/module/sinon.md.html>sinon</a></li>
@@ -175,6 +178,8 @@
 <li><a href=../../../awesome/module/mkdirp.md.html>mkdirp</a></li>
 <li><a href=../../../awesome/module/rmdirr.md.html>rmdirr</a></li>
 <li><a href=../../../awesome/module/detect-port.md.html>detect-port</a></li>
+<li><a href=../../../awesome/module/bitcoinjs-lib.md.html>bitcoinjs-lib</a></li>
+<li><a href=../../../awesome/module/rakuten.md.html>Rakuten</a></li>
 </ul>
  </div></div></div>  </div></div><div class=content><div class=social-share data-sites=weibo,twitter data-description=分享></div> <h1 id="对象-PKey">对象 PKey</h1>
 <p>不对称加密算法对象</p>
@@ -246,6 +251,98 @@
 <h3 id="PKey">PKey</h3>
 <p><strong>PKey 构造函数</strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">new</span> PKey();
+</code></pre>
+<hr>
+<p><strong>通过 DER 格式的密钥构造 PKey</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">new</span> PKey(Buffer DerKey,
+    <span class="hljs-built_in">String</span> password = <span class="hljs-string">""</span>);
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li>DerKey: <a href=buffer.md.html>Buffer</a>, DER 格式的密钥</li>
+<li>password: String, 解密密码</li>
+</ul>
+<hr>
+<p><strong>通过 PEM 格式的密钥构造 PKey</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">new</span> PKey(<span class="hljs-built_in">String</span> pemKey,
+    <span class="hljs-built_in">String</span> password = <span class="hljs-string">""</span>);
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li>pemKey: String, PEM 格式的密钥</li>
+<li>password: String, 解密密码</li>
+</ul>
+<hr>
+<p><strong>通过 JSON 格式的密钥构造 PKey</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">new</span> PKey(<span class="hljs-built_in">Object</span> jsonKey);
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li>jsonKey: Object, JSON 格式的密钥</li>
+</ul>
+<p>jsonKey 的格式支持以下四种，RSA 私钥：</p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11</div>{
+    <span class="hljs-string">"kty"</span>: <span class="hljs-string">"RSA"</span>,
+    <span class="hljs-string">"n"</span>: <span class="hljs-string">"0m5lvKpWqy9JS7tV2HIPqHCYHLquSuxIC3F8strIQLJKO3rZmTT96KTnhsOfBO7Y1bI7mnT0PB3_vcHd9ekWMEoZJQw7MuB8KeM_Wn54-elJr5DNLk5bMppSGxX7ZnumiXGG51_X3Yp-_EbGtDG80GxXXix7Mucyo7K25uE0uW8="</span>,
+    <span class="hljs-string">"e"</span>: <span class="hljs-string">"AQAB"</span>,
+    <span class="hljs-string">"d"</span>: <span class="hljs-string">"agN2O9NxMHL1MTMi75WfL9Pxvl-KWXKqZSF6mjzAsF9iKI8euyHIXYFepzU8kual1RsjDhCnzvWqFvZplW8lXqrHf_P-rS_9Y4gBUw6pjnI_DnFIRwWHRvrUHHSCfWOdTCIKdOTkgLZuGFuhEY3RMIW0WSYejjLtftwy0RVxAzk="</span>,
+    <span class="hljs-string">"p"</span>: <span class="hljs-string">"6a4G1qmfwWmn1biigN7IVFlkbLf9oVe6g7rOmHxI-hn1GRxKDSVuAUrmR1IhuAnca9M0y7SD-7TUs6wjOxWxaw=="</span>,
+    <span class="hljs-string">"q"</span>: <span class="hljs-string">"5ofkxFKdPBD0CQHMb9q13AMHUVe0rJ-hSjqqIBrmqApUOneyAcMV76M0QyIQnI2p3POa4Qu_7XChDwRVl7LlDQ=="</span>,
+    <span class="hljs-string">"dp"</span>: <span class="hljs-string">"2mXGiGwCHl8j-FBWuID-1C6z-BRB3MBEVoeKPOOzxOPruatB3mWEGXsqG7A8SWgV9URxTI2K6P3J6Z7RUpBkvw=="</span>,
+    <span class="hljs-string">"dq"</span>: <span class="hljs-string">"oagn5vfb5NQqnOpS9xkSsD67cfIj821ZSFlNFYhnuOzNVda7z_qCtnHm4zDPH0lEFXoKYMfBhfqWJpaugttjPQ=="</span>,
+    <span class="hljs-string">"qi"</span>: <span class="hljs-string">"dqEQgxNmOVFrF4s776hTqeC6oEDila8EvpVb2F2ZvwAOLjCQ66OiAZK1BiYGHqUy0NeqNmtlsLSuBEZQZvqZwg=="</span>
+}
+</code></pre>
+<p>RSA 公钥：</p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5</div>{
+    <span class="hljs-string">"kty"</span>: <span class="hljs-string">"RSA"</span>,
+    <span class="hljs-string">"n"</span>: <span class="hljs-string">"0m5lvKpWqy9JS7tV2HIPqHCYHLquSuxIC3F8strIQLJKO3rZmTT96KTnhsOfBO7Y1bI7mnT0PB3_vcHd9ekWMEoZJQw7MuB8KeM_Wn54-elJr5DNLk5bMppSGxX7ZnumiXGG51_X3Yp-_EbGtDG80GxXXix7Mucyo7K25uE0uW8="</span>,
+    <span class="hljs-string">"e"</span>: <span class="hljs-string">"AQAB"</span>
+}
+</code></pre>
+<p>EC 私钥：</p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7</div>{
+    <span class="hljs-string">"kty"</span>: <span class="hljs-string">"EC"</span>,
+    <span class="hljs-string">"crv"</span>: <span class="hljs-string">"P-521"</span>,
+    <span class="hljs-string">"x"</span>: <span class="hljs-string">"ATfNNFuuvlGxrTGoXgyfSAGgRNNDnO3rN3k74urKJdVS14RYhdnSwm91Bm-F1l-T1XKlAY2yRnzG9w1Ukvo8c0wL"</span>,
+    <span class="hljs-string">"y"</span>: <span class="hljs-string">"ASBHqrruB6kdkEUB3vlW3-UIkk4HtKdUeTwN-7m3j2rgZvYR1ffRAapDvWqKGiBjomqWafxokBkbDI0c95f6f4XU"</span>,
+    <span class="hljs-string">"d"</span>: <span class="hljs-string">"AfkIbUHXfW41njdpoKuqqKludcoLJS8D_oMEwkj-GVaXFNKccIoF5iKGu2c69kNDjo83R_7wyGlfRczsklkik1ST"</span>
+}
+</code></pre>
+<p>EC 公钥：</p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6</div>{
+    <span class="hljs-string">"kty"</span>: <span class="hljs-string">"EC"</span>,
+    <span class="hljs-string">"crv"</span>: <span class="hljs-string">"P-521"</span>,
+    <span class="hljs-string">"x"</span>: <span class="hljs-string">"ATfNNFuuvlGxrTGoXgyfSAGgRNNDnO3rN3k74urKJdVS14RYhdnSwm91Bm-F1l-T1XKlAY2yRnzG9w1Ukvo8c0wL"</span>,
+    <span class="hljs-string">"y"</span>: <span class="hljs-string">"ASBHqrruB6kdkEUB3vlW3-UIkk4HtKdUeTwN-7m3j2rgZvYR1ffRAapDvWqKGiBjomqWafxokBkbDI0c95f6f4XU"</span>
+}
 </code></pre>
 <h2 id="成员属性">成员属性</h2>
 <h3 id="name">name</h3>

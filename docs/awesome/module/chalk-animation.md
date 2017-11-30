@@ -5,7 +5,7 @@
 [![XO code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg)](https://github.com/sindresorhus/xo)
 [![Code Climate](https://img.shields.io/codeclimate/github/bokub/chalk-animation.svg)](https://codeclimate.com/github/bokub/chalk-animation)
 
-> Colorful animations in terminal stdout
+> Colorful animations in terminal output
 
 
 ## Available animations
@@ -22,7 +22,7 @@
 ## Install
 
 ```bash
-$ npm install --save chalk-animation
+$ npm i chalk-animation
 ```
 
 
@@ -34,7 +34,11 @@ const chalkAnimation = require('chalk-animation');
 chalkAnimation.rainbow('Lorem ipsum dolor sit amet');
 ```
 
-You can stop and restart an animation with `stop()` and `start()`
+#### Start and stop
+
+You can stop and resume an animation with `stop()` and `start()`.
+
+When created, the instance of chalkAnimation **starts automatically**.
 
 ```javascript
 const rainbow = chalkAnimation.rainbow('Lorem ipsum'); // Animation starts
@@ -49,6 +53,8 @@ setTimeout(() => {
 
 ```
 
+#### Automatic stop
+
 Anything printed to the console will stop the previous animation automatically
 
 ```javascript
@@ -59,11 +65,15 @@ setTimeout(() => {
 }, 1000);
 ```
 
+#### Changing speed
+
 Change the animation speed using a second parameter. Should be greater than 0, default is 1.
 
 ```javascript
 chalkAnimation.rainbow('Lorem ipsum', 2); // Two times faster than default
 ```
+
+#### Changing text
 
 Change the animated text seamlessly with `replace()`
 
@@ -73,10 +83,23 @@ const rainbow = chalkAnimation.rainbow(str);
 
 // Add a new dot every second
 setInterval(() => {
-	str += '.';
-	rainbow.replace(str);
+	rainbow.replace(str += '.');
 }, 1000);
 ```
+
+#### Manual rendering
+
+Manually render frames with `render()`, or get the content of the next frame with `frame()`
+
+```javascript
+const rainbow = chalkAnimation.rainbow('Lorem ipsum').stop(); // Don't start the animation
+
+rainbow.render(); // Display the first frame
+
+const frame = rainbow.frame(); // Get the second frame
+console.log(frame);
+```
+
 
 ## CLI mode
 
@@ -101,6 +124,7 @@ Available animations
 Example
   $ chalk-animation rainbow Hello world!
 ```
+
 
 ## Related
 

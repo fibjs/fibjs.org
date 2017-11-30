@@ -810,6 +810,26 @@ Person(1).getPetsSync(...);
 Pet(2).getOwnersSync(...);
 ```
 
+
+## Transaction support
+
+You can use low level transaction function to process db transcation.
+```js
+db.begin();
+...
+if(err)
+    db.rollback();
+else
+    db.commit();
+```
+Or you can use trans to simpile process it.
+```js
+var result = db.trans(() => {
+    ...
+    return result;
+});
+```
+
 ## Adding external database adapters
 
 To add an external database adapter to `orm`, call the `addAdapter` method, passing in the alias to use for connecting
