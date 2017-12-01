@@ -21,6 +21,7 @@ A collection of awesome server-side [fibjs](https://github.com/fibjs) libraries,
 - [sinon](./module/sinon.md) - Test spies, stubs and mocks for JavaScript.
 - [node-mime](./module/node-mime.md) - Comprehensive MIME type mapping API based on mime-db module.
 - [validatorjs](./module/validatorjs.md) - A data validation library
+- [superstruct](./module/superstruct.md) - A simple and composable way to validate data in Javascript.
 - [cluster-server](./module/cluster-server.md) - Start a multi-thread server to take advantage of multi-core systems.
 - [synaptic](./module/synaptic.md) - architecture-free neural network library
 - [source-map](./module/source-map.md) - This is a library to generate and consume the source map format described here.

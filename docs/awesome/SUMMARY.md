@@ -15,6 +15,7 @@
 * [sinon](./module/sinon.md)
 * [node-mime](./module/node-mime.md)
 * [validatorjs](./module/validatorjs.md)
+* [superstruct](./module/superstruct.md)
 * [cluster-server](./module/cluster-server.md)
 * [synaptic](./module/synaptic.md)
 * [source-map](./module/source-map.md)
