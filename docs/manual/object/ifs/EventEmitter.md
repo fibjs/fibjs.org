@@ -16,12 +16,14 @@ digraph {
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
     EventEmitter [tooltip="EventEmitter", fillcolor="lightgray", id="me", label="{EventEmitter|new EventEmitter()\l|defaultMaxListeners\l|on()\laddListener()\lprependListener()\lonce()\lprependOnceListener()\loff()\lremoveListener()\lremoveAllListeners()\lsetMaxListeners()\lgetMaxListeners()\llisteners()\llistenerCount()\leventNames()\lemit()\l}"];
+    LruCache [tooltip="LruCache", URL="LruCache.md", label="{LruCache}"];
     Service [tooltip="Service", URL="Service.md", label="{Service}"];
     WebSocket [tooltip="WebSocket", URL="WebSocket.md", label="{WebSocket}"];
     WebView [tooltip="WebView", URL="WebView.md", label="{WebView}"];
     Worker [tooltip="Worker", URL="Worker.md", label="{Worker}"];
 
     object -> EventEmitter [dir=back];
+    EventEmitter -> LruCache [dir=back];
     EventEmitter -> Service [dir=back];
     EventEmitter -> WebSocket [dir=back];
     EventEmitter -> WebView [dir=back];

@@ -18,7 +18,7 @@ digraph {
 **根据事件类型返回的详细信息**
 
 ```JavaScript
-readonly Integer EventInfo[String];
+readonly Value EventInfo[String];
 ```
 
 ## 成员属性

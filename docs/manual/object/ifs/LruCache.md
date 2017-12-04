@@ -14,9 +14,11 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    LruCache [tooltip="LruCache", fillcolor="lightgray", id="me", label="{LruCache|new LruCache()\l|size\ltimeout\l|clear()\lhas()\lget()\lset()\lremove()\lisEmpty()\l}"];
+    EventEmitter [tooltip="EventEmitter", URL="EventEmitter.md", label="{EventEmitter|new EventEmitter()\l|defaultMaxListeners\l|on()\laddListener()\lprependListener()\lonce()\lprependOnceListener()\loff()\lremoveListener()\lremoveAllListeners()\lsetMaxListeners()\lgetMaxListeners()\llisteners()\llistenerCount()\leventNames()\lemit()\l}"];
+    LruCache [tooltip="LruCache", fillcolor="lightgray", id="me", label="{LruCache|new LruCache()\l|size\ltimeout\lonexpire\l|clear()\lhas()\lget()\lset()\lremove()\lisEmpty()\l}"];
 
-    object -> LruCache [dir=back];
+    object -> EventEmitter [dir=back];
+    EventEmitter -> LruCache [dir=back];
 }
 ```
 
@@ -34,6 +36,15 @@ new LruCache(Integer size,
 * size: Integer, 缓存最大尺寸
 * timeout: Integer, 元素失效时间，单位是 ms，小于等于 0 不失效，缺省为 0
 
+## 静态属性
+        
+### defaultMaxListeners
+**Integer, 默认全局最大监听器数**
+
+```JavaScript
+static Integer LruCache.defaultMaxListeners;
+```
+
 ## 成员属性
         
 ### size
@@ -49,6 +60,14 @@ readonly Integer LruCache.size;
 
 ```JavaScript
 Integer LruCache.timeout;
+```
+
+--------------------------
+### onexpire
+**Function, 查询和绑定数据超时事件，相当于 on("expire", func);**
+
+```JavaScript
+Function LruCache.onexpire;
 ```
 
 ## 成员函数
@@ -147,6 +166,326 @@ Boolean LruCache.isEmpty();
 
 返回结果:
 * Boolean, 容器内无数值则返回 true
+
+--------------------------
+### on
+**绑定一个事件处理函数到对象**
+
+```JavaScript
+Object LruCache.on(String ev,
+    Function func);
+```
+
+调用参数:
+* ev: String, 指定事件的名称
+* func: Function, 指定事件处理函数
+
+返回结果:
+* Object, 返回成功绑定的数量，如果函数已绑定则返回 0
+
+--------------------------
+**绑定一个事件处理函数到对象**
+
+```JavaScript
+Object LruCache.on(Object map);
+```
+
+调用参数:
+* map: Object, 指定事件映射关系，对象属性名称将作为事件名称，属性的值将作为事件处理函数
+
+返回结果:
+* Object, 返回事件对象本身，便于链式调用
+
+--------------------------
+### addListener
+**绑定一个事件处理函数到对象**
+
+```JavaScript
+Object LruCache.addListener(String ev,
+    Function func);
+```
+
+调用参数:
+* ev: String, 指定事件的名称
+* func: Function, 指定事件处理函数
+
+返回结果:
+* Object, 返回事件对象本身，便于链式调用
+
+--------------------------
+**绑定一个事件处理函数到对象**
+
+```JavaScript
+Object LruCache.addListener(Object map);
+```
+
+调用参数:
+* map: Object, 指定事件映射关系，对象属性名称将作为事件名称，属性的值将作为事件处理函数
+
+返回结果:
+* Object, 返回事件对象本身，便于链式调用
+
+--------------------------
+### prependListener
+**绑定一个事件处理函数到对象起始**
+
+```JavaScript
+Object LruCache.prependListener(String ev,
+    Function func);
+```
+
+调用参数:
+* ev: String, 指定事件的名称
+* func: Function, 指定事件处理函数
+
+返回结果:
+* Object, 返回成功绑定的数量，如果函数已绑定则返回 0
+
+--------------------------
+**绑定一个事件处理函数到对象起始**
+
+```JavaScript
+Object LruCache.prependListener(Object map);
+```
+
+调用参数:
+* map: Object, 指定事件映射关系，对象属性名称将作为事件名称，属性的值将作为事件处理函数
+
+返回结果:
+* Object, 返回成功绑定的数量，如果函数已绑定则返回 0
+
+--------------------------
+### once
+**绑定一个一次性事件处理函数到对象，一次性处理函数只会触发一次**
+
+```JavaScript
+Object LruCache.once(String ev,
+    Function func);
+```
+
+调用参数:
+* ev: String, 指定事件的名称
+* func: Function, 指定事件处理函数
+
+返回结果:
+* Object, 返回事件对象本身，便于链式调用
+
+--------------------------
+**绑定一个一次性事件处理函数到对象，一次性处理函数只会触发一次**
+
+```JavaScript
+Object LruCache.once(Object map);
+```
+
+调用参数:
+* map: Object, 指定事件映射关系，对象属性名称将作为事件名称，属性的值将作为事件处理函数
+
+返回结果:
+* Object, 返回事件对象本身，便于链式调用
+
+--------------------------
+### prependOnceListener
+**绑定一个事件处理函数到对象起始**
+
+```JavaScript
+Object LruCache.prependOnceListener(String ev,
+    Function func);
+```
+
+调用参数:
+* ev: String, 指定事件的名称
+* func: Function, 指定事件处理函数
+
+返回结果:
+* Object, 返回成功绑定的数量，如果函数已绑定则返回 0
+
+--------------------------
+**绑定一个事件处理函数到对象起始**
+
+```JavaScript
+Object LruCache.prependOnceListener(Object map);
+```
+
+调用参数:
+* map: Object, 指定事件映射关系，对象属性名称将作为事件名称，属性的值将作为事件处理函数
+
+返回结果:
+* Object, 返回成功绑定的数量，如果函数已绑定则返回 0
+
+--------------------------
+### off
+**从对象处理队列中取消指定函数**
+
+```JavaScript
+Object LruCache.off(String ev,
+    Function func);
+```
+
+调用参数:
+* ev: String, 指定事件的名称
+* func: Function, 指定事件处理函数
+
+返回结果:
+* Object, 返回事件对象本身，便于链式调用
+
+--------------------------
+**取消对象处理队列中的全部函数**
+
+```JavaScript
+Object LruCache.off(String ev);
+```
+
+调用参数:
+* ev: String, 指定事件的名称
+
+返回结果:
+* Object, 返回事件对象本身，便于链式调用
+
+--------------------------
+**从对象处理队列中取消指定函数**
+
+```JavaScript
+Object LruCache.off(Object map);
+```
+
+调用参数:
+* map: Object, 指定事件映射关系，对象属性名称作为事件名称，属性的值作为事件处理函数
+
+返回结果:
+* Object, 返回事件对象本身，便于链式调用
+
+--------------------------
+### removeListener
+**从对象处理队列中取消指定函数**
+
+```JavaScript
+Object LruCache.removeListener(String ev,
+    Function func);
+```
+
+调用参数:
+* ev: String, 指定事件的名称
+* func: Function, 指定事件处理函数
+
+返回结果:
+* Object, 返回事件对象本身，便于链式调用
+
+--------------------------
+**取消对象处理队列中的全部函数**
+
+```JavaScript
+Object LruCache.removeListener(String ev);
+```
+
+调用参数:
+* ev: String, 指定事件的名称
+
+返回结果:
+* Object, 返回事件对象本身，便于链式调用
+
+--------------------------
+**从对象处理队列中取消指定函数**
+
+```JavaScript
+Object LruCache.removeListener(Object map);
+```
+
+调用参数:
+* map: Object, 指定事件映射关系，对象属性名称作为事件名称，属性的值作为事件处理函数
+
+返回结果:
+* Object, 返回事件对象本身，便于链式调用
+
+--------------------------
+### removeAllListeners
+**从对象处理队列中取消所有事件的所有监听器， 如果指定事件，则移除指定事件的所有监听器。**
+
+```JavaScript
+Object LruCache.removeAllListeners(Array evs = []);
+```
+
+调用参数:
+* evs: Array, 指定事件的名称
+
+返回结果:
+* Object, 返回事件对象本身，便于链式调用
+
+--------------------------
+### setMaxListeners
+**监听器的默认限制的数量，仅用于兼容**
+
+```JavaScript
+LruCache.setMaxListeners(Integer n);
+```
+
+调用参数:
+* n: Integer, 指定事件的数量
+
+--------------------------
+### getMaxListeners
+**获取监听器的默认限制的数量，仅用于兼容**
+
+```JavaScript
+Integer LruCache.getMaxListeners();
+```
+
+返回结果:
+* Integer, 返回默认限制数量
+
+--------------------------
+### listeners
+**查询对象指定事件的监听器数组**
+
+```JavaScript
+Array LruCache.listeners(String ev);
+```
+
+调用参数:
+* ev: String, 指定事件的名称
+
+返回结果:
+* Array, 返回指定事件的监听器数组
+
+--------------------------
+### listenerCount
+**查询对象指定事件的监听器数量**
+
+```JavaScript
+Integer LruCache.listenerCount(String ev);
+```
+
+调用参数:
+* ev: String, 指定事件的名称
+
+返回结果:
+* Integer, 返回指定事件的监听器数量
+
+--------------------------
+### eventNames
+**查询监听器事件名称**
+
+```JavaScript
+Array LruCache.eventNames();
+```
+
+返回结果:
+* Array, 返回事件名称数组
+
+--------------------------
+### emit
+**主动触发一个事件**
+
+```JavaScript
+Boolean LruCache.emit(String ev,
+    ...args);
+```
+
+调用参数:
+* ev: String, 事件名称
+* args: ..., 事件参数，将会传递给事件处理函数
+
+返回结果:
+* Boolean, 返回事件触发状态，有响应事件返回 true，否则返回 false
 
 --------------------------
 ### toString

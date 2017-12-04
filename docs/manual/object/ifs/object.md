@@ -15,6 +15,7 @@ digraph {
     SQLite [tooltip="SQLite", URL="SQLite.md", label="{SQLite}"];
     Digest [tooltip="Digest", URL="Digest.md", label="{Digest}"];
     EventEmitter [tooltip="EventEmitter", URL="EventEmitter.md", label="{EventEmitter}"];
+    LruCache [tooltip="LruCache", URL="LruCache.md", label="{LruCache}"];
     Service [tooltip="Service", URL="Service.md", label="{Service}"];
     WebSocket [tooltip="WebSocket", URL="WebSocket.md", label="{WebSocket}"];
     WebView [tooltip="WebView", URL="WebView.md", label="{WebView}"];
@@ -41,7 +42,6 @@ digraph {
     Condition [tooltip="Condition", URL="Condition.md", label="{Condition}"];
     Event [tooltip="Event", URL="Event.md", label="{Event}"];
     Semaphore [tooltip="Semaphore", URL="Semaphore.md", label="{Semaphore}"];
-    LruCache [tooltip="LruCache", URL="LruCache.md", label="{LruCache}"];
     Message [tooltip="Message", URL="Message.md", label="{Message}"];
     HttpMessage [tooltip="HttpMessage", URL="HttpMessage.md", label="{HttpMessage}"];
     HttpRequest [tooltip="HttpRequest", URL="HttpRequest.md", label="{HttpRequest}"];
@@ -102,6 +102,7 @@ digraph {
     DbConnection -> SQLite [dir=back];
     object -> Digest [dir=back];
     object -> EventEmitter [dir=back];
+    EventEmitter -> LruCache [dir=back];
     EventEmitter -> Service [dir=back];
     EventEmitter -> WebSocket [dir=back];
     EventEmitter -> WebView [dir=back];
@@ -128,7 +129,6 @@ digraph {
     Lock -> Condition [dir=back];
     Lock -> Event [dir=back];
     Lock -> Semaphore [dir=back];
-    object -> LruCache [dir=back];
     object -> Message [dir=back];
     Message -> HttpMessage [dir=back];
     HttpMessage -> HttpRequest [dir=back];
