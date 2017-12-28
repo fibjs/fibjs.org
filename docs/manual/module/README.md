@@ -9,6 +9,7 @@
 * [coroutine](ifs/coroutine.md) - 并发控制模块
 * [crypto](ifs/crypto.md) - 加密算法模块
 * [db](ifs/db.md) - 数据库访问模块
+* [dns](ifs/dns.md) - dns 域名查询模块
 * [encoding](ifs/encoding.md) - 编码与解码模块，用于处理不同的数据编码格式与二进制之间的转换
 * [fs](ifs/fs.md) - 文件系统处理模块
 * [gd](ifs/gd.md) - 图像文件处理模块

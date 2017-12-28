@@ -8,6 +8,7 @@
 * [coroutine](ifs/coroutine.md)
 * [crypto](ifs/crypto.md)
 * [db](ifs/db.md)
+* [dns](ifs/dns.md)
 * [encoding](ifs/encoding.md)
 * [fs](ifs/fs.md)
 * [gd](ifs/gd.md)
