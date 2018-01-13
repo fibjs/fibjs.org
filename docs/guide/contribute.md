@@ -1,4 +1,6 @@
-## 1、编写idl文件
+# 添加 native 模块
+如果你需要一些 fibjs native 模块所提供功能以外的功能，或者你想为 fibjs 贡献代码，那么这篇文章也许对你有帮助。
+## 编写 idl 文件
 idl 是 fibjs 中用来定义 native 模块和对象方法的描述性语言。
 
 在开始编写自己的 fibjs 模块的之前你需要先编写 idl 描述性语言。我们以自定义模块 name 为例。我需要编写描述性语言 name.idl ，把这个文件放入 ${{fibjs_project_dir}}/idl/zh-cn/ 目录下，其中 ${{fibjs_project_dir}} 代表 fibjs 的项目所在目录。
@@ -23,7 +25,7 @@ module name
     static Boolean test(String lyrics);
 };
 ```
-## 2、生成name.h
+## 生成头文件
 在 tools 目录下执行 `fibjs idlc.js` 命令，这会读取 idl 目录下所有的 idl 文件并解析，生成对应的头文件和文档，其中生成的头文件都会存放在"fibjs/include/ifs/"目录下。例如 name.idl 会自动生成 ${{fibjs_project_dir}}/fibjs/include/ifs/name.h 这个头文件，其中定义了 name_base 这个类。
 
 ```c++
@@ -105,8 +107,8 @@ inline void name_base::s_test(const v8::FunctionCallbackInfo<v8::Value>& args)
 #endif
 
 ```
-## 3、编写源代码
-方法 s_test 是 v8 的访问器，它包裹了方法 test 。这里我们只要实现 test 方法，test 方法有两个参数，v0 是输入的歌词，vr 是返回值。我们将 cpp 文件放在 ${{fibjs_project_dir}}/fibjs/src/ 目录下, 头文件放在 ${{fibjs_project_dir}}/fibjs/include 目录下。
+## 编写源代码
+方法 s_test 是 v8 的访问器，它包裹了方法 test 。这里我们只要实现 test 方法，test 方法有两个参数，v0 是输入的歌词，vr 是返回值。我们将 cpp 文件放在 ${{fibjs_project_dir}}/fibjs/src/ 目录下, 头文件放在 ${{fibjs_project_dir}}/fibjs/include 目录下。本例不需要额外的头文件。
 我们在 fibjs/src/ 目录下新建一个文件 name.cpp 内容如下:
 
 ```c++
@@ -128,10 +130,10 @@ namespace fibjs
 ```
 需要注意的是 `DECLARE_MODULE(name);` 这句话，这句话声明了 "name" 这个 module 并把它注册到 javascript 对象上。在编写源代码的时候需要加上这句话。
 
-## 4、编译并测试
+## 编译并测试
 在 windows 上编译之前，需要先执行一遍 `fibjs tools/vsmake.js` 然后 build。
 编译运行结果如下:
 ![name](./imgs/name.png)
 
-## 5、总结
+## 总结
 学会了如何增加和修改 fibjs 的 native 模块和对象。我们可以编写各种各样复杂的模块，还可以移植第三方库到 fibjs 作为支持来编写我们的模块。欢迎您来为 fibjs 贡献更多的力量。
