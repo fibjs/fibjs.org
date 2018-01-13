@@ -11,9 +11,9 @@ name.idl编写如下
 /*! @brief name module
 
  how to use
- ```
+ @code
  var name = require('name');
- ```
+ @endcode
  */
 module name
 {
@@ -106,7 +106,7 @@ inline void name_base::s_test(const v8::FunctionCallbackInfo<v8::Value>& args)
 
 ```
 ## 3、编写源代码
-其中s_test是v8的访问器，它包裹了方法test。即我们只要实现test方法就可以了，test方法有两个参数，v0是输入的歌词，vr是返回值。一般我们会将cpp文件放在${{fibjs_project_dir}}/fibjs/src/目录下, 头文件放在${{fibjs_project_dir}}/fibjs/include目录下。
+方法s_test是v8的访问器，它包裹了方法test。这里我们只要实现test方法，test方法有两个参数，v0是输入的歌词，vr是返回值。我们将cpp文件放在${{fibjs_project_dir}}/fibjs/src/目录下, 头文件放在${{fibjs_project_dir}}/fibjs/include目录下。
 我们在fibjs/src/目录下新建一个文件name.cpp内容如下:
 
 ```
@@ -127,10 +127,9 @@ namespace fibjs
 }
 ```
 ## 4、编译并测试
-![](http://named.cn/f/e1b29ea981d254fd7bff5b86ce8b141e.jpg)
-> 图. 测试结果
-
-ok, 大功告成！
+在windows上需要额外在fibjs目录下的项目文件fibjs.vcxproj中按照格式将name.h和name.cpp添加进去。
+编译运行结果如下:
+![name](./imgs/name.png)
 
 ## 5、总结
-当然了这个模块并没有什么实际意义。这只编写自己的fibjs模块的方式。我们可以编写各种各样复杂的模块包扩模块属性模块对象以及对象继承等等，还可以移植第三方库到fibjs作为支持来编写我们的模块。方法都是一样的，如果你想为fibjs贡献模块那么你要关心自己的idl文件和最后实现的c++方法。
+学会了如何增加和修改fibjs的native模块和对象。我们可以编写各种各样复杂的模块，还可以移植第三方库到fibjs作为支持来编写我们的模块。欢迎您来为fibjs贡献更多的力量。
