@@ -1,13 +1,13 @@
 ## 1、编写idl文件
-idl是fibjs中用来定义native模块和对象方法的描述性语言。
+idl 是 fibjs 中用来定义 native 模块和对象方法的描述性语言。
 
-在开始编写自己的fibjs模块的之前你需要先编写idl描述性语言。我们以自定义模块name为例。我需要编写描述性语言name.idl，把这个文件放入${{fibjs_project_dir}}/idl/zh-cn/目录下，其中${{fibjs_project_dir}}代表fibjs的项目所在目录。
+在开始编写自己的 fibjs 模块的之前你需要先编写 idl 描述性语言。我们以自定义模块 name 为例。我需要编写描述性语言 name.idl ，把这个文件放入 ${{fibjs_project_dir}}/idl/zh-cn/ 目录下，其中 ${{fibjs_project_dir}} 代表 fibjs 的项目所在目录。
 
 
-我们的name模块很简单，只有一个test方法，其参数是一个字符串，这个字符串是歌词，test方法判断这歌词对不对，返回值是boolean类型。
-name.idl编写如下
+我们的 name 模块很简单，只有一个 test 方法，其参数是一个字符串，这个字符串是歌词， test 方法判断这歌词对不对，返回值是 boolean 类型。
+name.idl 编写如下
 
-```
+```idl
 /*! @brief name module
 
  how to use
@@ -24,9 +24,9 @@ module name
 };
 ```
 ## 2、生成name.h
-在tools目录下执行`fibjs idlc.js`命令，这会读取idl目录下所有的idl文件并解析，生成对应的头文件和文档，其中生成的头文件都会存放在"fibjs/include/ifs/"目录下。例如name.idl会自动生成${{fibjs_project_dir}}/fibjs/include/ifs/name.h这个头文件，其中定义了name_base这个类。
+在tools目录下执行 `fibjs idlc.js` 命令，这会读取 idl 目录下所有的 idl 文件并解析，生成对应的头文件和文档，其中生成的头文件都会存放在"fibjs/include/ifs/"目录下。例如 name.idl 会自动生成 ${{fibjs_project_dir}}/fibjs/include/ifs/name.h 这个头文件，其中定义了 name_base 这个类。
 
-```
+```c++
 /***************************************************************************
  *                                                                         *
  *   This file was automatically generated using idlc.js                   *
@@ -106,10 +106,10 @@ inline void name_base::s_test(const v8::FunctionCallbackInfo<v8::Value>& args)
 
 ```
 ## 3、编写源代码
-方法s_test是v8的访问器，它包裹了方法test。这里我们只要实现test方法，test方法有两个参数，v0是输入的歌词，vr是返回值。我们将cpp文件放在${{fibjs_project_dir}}/fibjs/src/目录下, 头文件放在${{fibjs_project_dir}}/fibjs/include目录下。
-我们在fibjs/src/目录下新建一个文件name.cpp内容如下:
+方法 s_test 是 v8 的访问器，它包裹了方法 test 。这里我们只要实现 test 方法，test 方法有两个参数，v0 是输入的歌词，vr 是返回值。我们将 cpp 文件放在 ${{fibjs_project_dir}}/fibjs/src/ 目录下, 头文件放在 ${{fibjs_project_dir}}/fibjs/include 目录下。
+我们在 fibjs/src/ 目录下新建一个文件 name.cpp 内容如下:
 
-```
+```c++
 #include "object.h"
 #include "ifs/name.h"
 
@@ -126,10 +126,12 @@ namespace fibjs
     }
 }
 ```
+需要注意的是 `DECLARE_MODULE(name);` 这句话，这句话声明了 "name" 这个 module 并把它注册到 javascript 对象上。在编写源代码的时候需要加上这句话。
+
 ## 4、编译并测试
-在windows上需要额外在fibjs目录下的项目文件fibjs.vcxproj中按照格式将name.h和name.cpp添加进去。
+在 windows 上编译之前，需要先执行一遍 `fibjs tools/vsmake.js` 然后 build。
 编译运行结果如下:
 ![name](./imgs/name.png)
 
 ## 5、总结
-学会了如何增加和修改fibjs的native模块和对象。我们可以编写各种各样复杂的模块，还可以移植第三方库到fibjs作为支持来编写我们的模块。欢迎您来为fibjs贡献更多的力量。
+学会了如何增加和修改 fibjs 的 native 模块和对象。我们可以编写各种各样复杂的模块，还可以移植第三方库到 fibjs 作为支持来编写我们的模块。欢迎您来为 fibjs 贡献更多的力量。
