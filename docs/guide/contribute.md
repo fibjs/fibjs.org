@@ -24,7 +24,7 @@ module name
 };
 ```
 ## 2、生成name.h
-在tools目录下执行 `fibjs idlc.js` 命令，这会读取 idl 目录下所有的 idl 文件并解析，生成对应的头文件和文档，其中生成的头文件都会存放在"fibjs/include/ifs/"目录下。例如 name.idl 会自动生成 ${{fibjs_project_dir}}/fibjs/include/ifs/name.h 这个头文件，其中定义了 name_base 这个类。
+在 tools 目录下执行 `fibjs idlc.js` 命令，这会读取 idl 目录下所有的 idl 文件并解析，生成对应的头文件和文档，其中生成的头文件都会存放在"fibjs/include/ifs/"目录下。例如 name.idl 会自动生成 ${{fibjs_project_dir}}/fibjs/include/ifs/name.h 这个头文件，其中定义了 name_base 这个类。
 
 ```c++
 /***************************************************************************
