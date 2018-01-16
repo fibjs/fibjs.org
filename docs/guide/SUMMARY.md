@@ -4,3 +4,4 @@
 * [美好生活从测试开始](test.md)
 * [找出性能杀手](profiler.md)
 * [添加 native 模块](contribute.md)
+* [服务端模块热更新](server-hot-update.md)
