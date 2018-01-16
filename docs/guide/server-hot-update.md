@@ -8,13 +8,11 @@
 
 ```javascript
 // web.js
-var mq = require("mq");
-
 var _ver = new Date();
 
-module.exports = mq.jsHandler(function(req) {
-    req.response.write("Hello, new word @ " + _ver);
-});
+module.exports = function (r) {
+  r.response.write("Hello, new word @ " + _ver);
+}
 ```
 
 ```javascript
@@ -47,12 +45,12 @@ function new_web() {
 }
 
 // 每 1s 重新载入一遍 ./web.js 文件以更新 srv 的 handler
-(function() {
+coroutine.start(function() {
     while (true) {
         coroutine.sleep(1000);
         svr.handler = new_web();
     }
-}).start();
+})
 
 var svr = new http.Server(8080, new_web());
 
