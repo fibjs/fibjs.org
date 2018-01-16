@@ -4,9 +4,9 @@ var fs = require('fs');
 var path = require('path');
 var coroutine = require('coroutine');
 
-var marked = require('./modules/marked');
-var ejs = require('./modules/ejs');
-var highlight = require('./modules/highlight.js');
+var marked = require('marked');
+var ejs = require('ejs');
+var highlight = require('highlight.js');
 
 ssl.ca.loadRootCerts();
 
