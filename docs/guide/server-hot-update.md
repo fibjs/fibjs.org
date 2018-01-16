@@ -29,7 +29,7 @@ svr.run();
 
 在 `app.js` 直接引用 `web.js`， 当每次更新应用的时候，都必须重启 `app.js`，有没有办法可以在更新代码的同时，让 `app.js` 自动加载最新的 `web.js` 呢？
 
-我们可以通过 fibjs 的原生[SandBox](../manual/object/ifs/SandBox.md)模块来实现平滑的热更新。对 `app.js` 做一些更改:
+我们可以通过 fibjs 的原生 [SandBox](../manual/object/ifs/SandBox.md) 模块来实现平滑的热更新。对 `app.js` 做一些更改:
 
 ```javascript
 // app.js
