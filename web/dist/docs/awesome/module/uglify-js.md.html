@@ -4,6 +4,8 @@
 <li><a href=../../guide/hello.md.html>hello, world</a></li>
 <li><a href=../../guide/test.md.html>美好生活从测试开始</a></li>
 <li><a href=../../guide/profiler.md.html>找出性能杀手</a></li>
+<li><a href=../../guide/contribute.md.html>添加 native 模块</a></li>
+<li><a href=../../guide/server-hot-update.md.html>服务端模块热更新</a></li>
 </ul>
  </div></div></div>  <div class=panel><div class=panel-heading role=tab id=headingOne><h4 class=panel-title><a data-toggle=collapse data-parent=#accordion href="#collapse_module" aria-controls="collapse_module"> 基础模块 </a></h4></div><div id="collapse_module" class="panel-collapse collapse " aria-labelledby=headingOne><div class=panel-body> <ul>
 <li><a href=../../manual/module/ifs/assert.md.html>assert</a></li>
@@ -16,6 +18,7 @@
 <li><a href=../../manual/module/ifs/coroutine.md.html>coroutine</a></li>
 <li><a href=../../manual/module/ifs/crypto.md.html>crypto</a></li>
 <li><a href=../../manual/module/ifs/db.md.html>db</a></li>
+<li><a href=../../manual/module/ifs/dgram.md.html>dgram</a></li>
 <li><a href=../../manual/module/ifs/dns.md.html>dns</a></li>
 <li><a href=../../manual/module/ifs/encoding.md.html>encoding</a></li>
 <li><a href=../../manual/module/ifs/fs.md.html>fs</a></li>
@@ -61,6 +64,7 @@
 <li><a href=../../manual/object/ifs/cipher.md.html>Cipher</a></li>
 <li><a href=../../manual/object/ifs/condition.md.html>Condition</a></li>
 <li><a href=../../manual/object/ifs/dbconnection.md.html>DbConnection</a></li>
+<li><a href=../../manual/object/ifs/dgramsocket.md.html>DgramSocket</a></li>
 <li><a href=../../manual/object/ifs/digest.md.html>Digest</a></li>
 <li><a href=../../manual/object/ifs/event.md.html>Event</a></li>
 <li><a href=../../manual/object/ifs/eventemitter.md.html>EventEmitter</a></li>
@@ -506,8 +510,8 @@ x[<span class="hljs-string">"baz_"</span>] = <span class="hljs-number">3</span>;
 </code></pre>
 <pre><code class="lang-javascript"><div class="line-numbers">1</div><span class="hljs-keyword">var</span> x={<span class="hljs-attr">o</span>:<span class="hljs-number">0</span>,<span class="hljs-attr">_</span>:<span class="hljs-number">1</span>,<span class="hljs-attr">calc</span>:<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{<span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>._+<span class="hljs-keyword">this</span>.o}};x.bar_=<span class="hljs-number">2</span>,x.o=<span class="hljs-number">3</span>,<span class="hljs-built_in">console</span>.log(x.calc());
 </code></pre>
-<p>In order for this to be of any use, we avoid mangling standard JS names by</p>
-<p>default (<code>--mangle-props builtins</code> to override).</p>
+<p>In order for this to be of any use, we avoid mangling standard JS names by
+default (<code>--mangle-props builtins</code> to override).</p>
 <p>A default exclusion file is provided in <code>tools/domprops.json</code> which should
 cover most standard JS and DOM properties defined in various browsers.  Pass
 <code>--mangle-props domprops</code> to disable this feature.</p>
@@ -1207,8 +1211,8 @@ function expressions. See
 </ul>
 <h1 id="Miscellaneous">Miscellaneous</h1>
 <h3 id="Keeping-copyright-notices-or-other-comments">Keeping copyright notices or other comments</h3>
-<p>You can pass <code>--comments</code> to retain certain comments in the output.  By</p>
-<p>default it will keep JSDoc-style comments that contain &quot;@preserve&quot;,
+<p>You can pass <code>--comments</code> to retain certain comments in the output.  By
+default it will keep JSDoc-style comments that contain &quot;@preserve&quot;,
 &quot;@license&quot; or &quot;@cc_on&quot; (conditional compilation for IE).  You can pass
 <code>--comments all</code> to keep all the comments, or a valid JavaScript regexp to
 keep only comments that match this regexp.  For example <code>--comments /^!/</code>

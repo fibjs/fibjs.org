@@ -139,11 +139,11 @@ static Timer global.setTimeout(Function callback,
 **清除指定的定时器**
 
 ```JavaScript
-static global.clearTimeout(Timer t);
+static global.clearTimeout(Value t);
 ```
 
 调用参数:
-* t: [Timer](../../object/ifs/Timer.md), 指定要清除的定时器
+* t: Value, 指定要清除的定时器
 
 --------------------------
 ### setInterval
@@ -168,11 +168,11 @@ static Timer global.setInterval(Function callback,
 **清除指定的定时器**
 
 ```JavaScript
-static global.clearInterval(Timer t);
+static global.clearInterval(Value t);
 ```
 
 调用参数:
-* t: [Timer](../../object/ifs/Timer.md), 指定要清除的定时器
+* t: Value, 指定要清除的定时器
 
 --------------------------
 ### setHrInterval
@@ -214,11 +214,11 @@ console.error("===============================> done");
 **清除指定的定时器**
 
 ```JavaScript
-static global.clearHrInterval(Timer t);
+static global.clearHrInterval(Value t);
 ```
 
 调用参数:
-* t: [Timer](../../object/ifs/Timer.md), 指定要清除的定时器
+* t: Value, 指定要清除的定时器
 
 --------------------------
 ### setImmediate
@@ -241,11 +241,11 @@ static Timer global.setImmediate(Function callback,
 **清除指定的定时器**
 
 ```JavaScript
-static global.clearImmediate(Timer t);
+static global.clearImmediate(Value t);
 ```
 
 调用参数:
-* t: [Timer](../../object/ifs/Timer.md), 指定要清除的定时器
+* t: Value, 指定要清除的定时器
 
 --------------------------
 ### GC

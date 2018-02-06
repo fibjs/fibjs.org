@@ -4,6 +4,8 @@
 <li><a href=../../../guide/hello.md.html>hello, world</a></li>
 <li><a href=../../../guide/test.md.html>美好生活从测试开始</a></li>
 <li><a href=../../../guide/profiler.md.html>找出性能杀手</a></li>
+<li><a href=../../../guide/contribute.md.html>添加 native 模块</a></li>
+<li><a href=../../../guide/server-hot-update.md.html>服务端模块热更新</a></li>
 </ul>
  </div></div></div>  <div class=panel><div class=panel-heading role=tab id=headingOne><h4 class=panel-title><a data-toggle=collapse data-parent=#accordion href="#collapse_module" aria-controls="collapse_module"> 基础模块 </a></h4></div><div id="collapse_module" class="panel-collapse collapse in" aria-labelledby=headingOne><div class=panel-body> <ul>
 <li><a href=assert.md.html>assert</a></li>
@@ -16,6 +18,7 @@
 <li><a href=coroutine.md.html>coroutine</a></li>
 <li><a href=crypto.md.html>crypto</a></li>
 <li><a href=db.md.html>db</a></li>
+<li><a href=dgram.md.html>dgram</a></li>
 <li><a href=dns.md.html>dns</a></li>
 <li><a href=encoding.md.html>encoding</a></li>
 <li><a href=fs.md.html>fs</a></li>
@@ -61,6 +64,7 @@
 <li><a href=../../object/ifs/cipher.md.html>Cipher</a></li>
 <li><a href=../../object/ifs/condition.md.html>Condition</a></li>
 <li><a href=../../object/ifs/dbconnection.md.html>DbConnection</a></li>
+<li><a href=../../object/ifs/dgramsocket.md.html>DgramSocket</a></li>
 <li><a href=../../object/ifs/digest.md.html>Digest</a></li>
 <li><a href=../../object/ifs/event.md.html>Event</a></li>
 <li><a href=../../object/ifs/eventemitter.md.html>EventEmitter</a></li>
@@ -489,11 +493,11 @@
 <hr>
 <h3 id="clearTimeout">clearTimeout</h3>
 <p><strong>清除指定的定时器</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> global.clearTimeout(Timer t);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> global.clearTimeout(Value t);
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>t: <a href=../../object/ifs/timer.md.html>Timer</a>, 指定要清除的定时器</li>
+<li>t: Value, 指定要清除的定时器</li>
 </ul>
 <hr>
 <h3 id="setInterval">setInterval</h3>
@@ -517,11 +521,11 @@
 <hr>
 <h3 id="clearInterval">clearInterval</h3>
 <p><strong>清除指定的定时器</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> global.clearInterval(Timer t);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> global.clearInterval(Value t);
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>t: <a href=../../object/ifs/timer.md.html>Timer</a>, 指定要清除的定时器</li>
+<li>t: Value, 指定要清除的定时器</li>
 </ul>
 <hr>
 <h3 id="setHrInterval">setHrInterval</h3>
@@ -567,11 +571,11 @@ timers.setHrInterval(<span class="hljs-function"><span class="hljs-params">()</s
 <hr>
 <h3 id="clearHrInterval">clearHrInterval</h3>
 <p><strong>清除指定的定时器</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> global.clearHrInterval(Timer t);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> global.clearHrInterval(Value t);
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>t: <a href=../../object/ifs/timer.md.html>Timer</a>, 指定要清除的定时器</li>
+<li>t: Value, 指定要清除的定时器</li>
 </ul>
 <hr>
 <h3 id="setImmediate">setImmediate</h3>
@@ -592,11 +596,11 @@ timers.setHrInterval(<span class="hljs-function"><span class="hljs-params">()</s
 <hr>
 <h3 id="clearImmediate">clearImmediate</h3>
 <p><strong>清除指定的定时器</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> global.clearImmediate(Timer t);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> global.clearImmediate(Value t);
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>t: <a href=../../object/ifs/timer.md.html>Timer</a>, 指定要清除的定时器</li>
+<li>t: Value, 指定要清除的定时器</li>
 </ul>
 <hr>
 <h3 id="GC">GC</h3>

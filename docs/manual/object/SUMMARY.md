@@ -4,6 +4,7 @@
 * [Cipher](ifs/Cipher.md)
 * [Condition](ifs/Condition.md)
 * [DbConnection](ifs/DbConnection.md)
+* [DgramSocket](ifs/DgramSocket.md)
 * [Digest](ifs/Digest.md)
 * [Event](ifs/Event.md)
 * [EventEmitter](ifs/EventEmitter.md)

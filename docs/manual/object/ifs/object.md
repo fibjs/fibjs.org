@@ -15,6 +15,7 @@ digraph {
     SQLite [tooltip="SQLite", URL="SQLite.md", label="{SQLite}"];
     Digest [tooltip="Digest", URL="Digest.md", label="{Digest}"];
     EventEmitter [tooltip="EventEmitter", URL="EventEmitter.md", label="{EventEmitter}"];
+    DgramSocket [tooltip="DgramSocket", URL="DgramSocket.md", label="{DgramSocket}"];
     LruCache [tooltip="LruCache", URL="LruCache.md", label="{LruCache}"];
     Service [tooltip="Service", URL="Service.md", label="{Service}"];
     WebSocket [tooltip="WebSocket", URL="WebSocket.md", label="{WebSocket}"];
@@ -102,6 +103,7 @@ digraph {
     DbConnection -> SQLite [dir=back];
     object -> Digest [dir=back];
     object -> EventEmitter [dir=back];
+    EventEmitter -> DgramSocket [dir=back];
     EventEmitter -> LruCache [dir=back];
     EventEmitter -> Service [dir=back];
     EventEmitter -> WebSocket [dir=back];

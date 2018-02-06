@@ -5,6 +5,7 @@
 * [Cipher](ifs/Cipher.md) - 对称加密算法对象
 * [Condition](ifs/Condition.md) - 条件变量对象
 * [DbConnection](ifs/DbConnection.md) - 数据库连接对象，用于建立和维护一个数据库连接会话。
+* [DgramSocket](ifs/DgramSocket.md) - dgram.Socket 对象是一个封装了数据包函数功能的 EventEmitter。
 * [Digest](ifs/Digest.md) - 信息摘要对象
 * [Event](ifs/Event.md) - 事件对象
 * [EventEmitter](ifs/EventEmitter.md) - 事件触发对象，可用于建立观察者模式，支持事件触发的对象均继承于此，同一事件的同一函数只会产生一次回调

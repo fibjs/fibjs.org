@@ -7,7 +7,7 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    Timer [tooltip="Timer", fillcolor="lightgray", id="me", label="{Timer|stopped\l|clear()\l}"];
+    Timer [tooltip="Timer", fillcolor="lightgray", id="me", label="{Timer|stopped\l|ref()\lunref()\lclear()\l}"];
 
     object -> Timer [dir=back];
 }
@@ -24,6 +24,28 @@ readonly Boolean Timer.stopped;
 
 ## 成员函数
         
+### ref
+**维持 fibjs 进程不退出，在定时器等待期间阻止 fibjs 进程退出**
+
+```JavaScript
+Timer Timer.ref();
+```
+
+返回结果:
+* Timer, 返回定时器对象
+
+--------------------------
+### unref
+**允许 fibjs 进程退出，在定时器等待期间允许 fibjs 进程退出**
+
+```JavaScript
+Timer Timer.unref();
+```
+
+返回结果:
+* Timer, 返回定时器对象
+
+--------------------------
 ### clear
 **取消当前定时器**
 

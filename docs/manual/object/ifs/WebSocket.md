@@ -34,7 +34,7 @@ digraph {
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
     EventEmitter [tooltip="EventEmitter", URL="EventEmitter.md", label="{EventEmitter|new EventEmitter()\l|defaultMaxListeners\l|on()\laddListener()\lprependListener()\lonce()\lprependOnceListener()\loff()\lremoveListener()\lremoveAllListeners()\lsetMaxListeners()\lgetMaxListeners()\llisteners()\llistenerCount()\leventNames()\lemit()\l}"];
-    WebSocket [tooltip="WebSocket", fillcolor="lightgray", id="me", label="{WebSocket|new WebSocket()\l|url\lprotocol\lorigin\lreadyState\lonopen\lonmessage\lonclose\lonerror\l|close()\lsend()\l}"];
+    WebSocket [tooltip="WebSocket", fillcolor="lightgray", id="me", label="{WebSocket|new WebSocket()\l|url\lprotocol\lorigin\lreadyState\lonopen\lonmessage\lonclose\lonerror\l|close()\lsend()\lref()\lunref()\l}"];
 
     object -> EventEmitter [dir=back];
     EventEmitter -> WebSocket [dir=back];
@@ -165,6 +165,28 @@ WebSocket.send(Buffer data);
 
 调用参数:
 * data: [Buffer](Buffer.md), 指定发送的二进制数据
+
+--------------------------
+### ref
+**维持 fibjs 进程不退出，在对象绑定期间阻止 fibjs 进程退出**
+
+```JavaScript
+WebSocket WebSocket.ref();
+```
+
+返回结果:
+* WebSocket, 返回当前对象
+
+--------------------------
+### unref
+**允许 fibjs 进程退出，在对象绑定期间允许 fibjs 进程退出**
+
+```JavaScript
+WebSocket WebSocket.unref();
+```
+
+返回结果:
+* WebSocket, 返回当前对象
 
 --------------------------
 ### on
