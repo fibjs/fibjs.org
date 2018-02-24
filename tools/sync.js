@@ -48,8 +48,20 @@ function sync_releases() {
         old_version = fs.readTextFile(path.join(baseFolder, 'version.txt'));
     } catch (e) {};
 
-    if (old_version !== info[0].tag_name)
-        fs.writeFile(path.join(baseFolder, 'version.txt'), info[0].tag_name);
+    var new_version = null;
+    for (var i = 1; i < info.length - 1; i++) {
+        var r = info[i]
+        if (!r.prerelease) {
+            new_version = info[i].tag_name
+            break
+        }
+    }
+
+    if (!new_version)
+        throw 'impossible'
+
+    if (old_version !== new_version)
+        fs.writeFile(path.join(baseFolder, 'version.txt'), new_version);
 
     info.forEach(e => {
         e.html = marked(e.body);
