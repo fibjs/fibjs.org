@@ -128,7 +128,7 @@ fibjs 当前 github 地址为: https://github.com/fibjs/fibjs
 
 在合适的位置执行以下命令:
 ```sh
-git clone https://github.com/fibjs/fibjs.git
+git clone https://github.com/fibjs/fibjs.git --recursive
 cd fibjs
 git submodule init
 git submodule update

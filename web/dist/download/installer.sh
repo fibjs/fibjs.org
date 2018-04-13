@@ -20,7 +20,7 @@ case ${HOST_OS} in
 	FreeBSD) HOST_OS="freebsd";;
 esac
 
-VERSION=`curl -s http://fibjs.org/download/version.txt`
+VERSION=`curl -s http://fibjs.org/dist/version.txt`
 
 curl http://fibjs.org/dist/${VERSION}/installer-${VERSION}-${HOST_OS}-${HOST_ARCH}.sh >> installer.sh
 sh installer.sh

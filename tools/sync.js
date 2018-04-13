@@ -45,7 +45,7 @@ function sync_releases() {
     var old_version = "";
 
     try {
-        old_version = fs.readTextFile(path.join(baseFolder, 'version.txt'));
+        old_version = fs.readTextFile(path.join(distFolder, 'version.txt'));
     } catch (e) {};
 
     var new_version = null;

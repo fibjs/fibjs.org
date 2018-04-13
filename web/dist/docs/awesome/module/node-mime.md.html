@@ -205,10 +205,12 @@
 <pre><code class="lang-javascript"><div class="line-numbers">1
 2
 3
-4</div><span class="hljs-keyword">const</span> mime = <span class="hljs-built_in">require</span>(<span class="hljs-string">'mime'</span>);
+4
+5</div><span class="hljs-keyword">const</span> mime = <span class="hljs-built_in">require</span>(<span class="hljs-string">'mime'</span>);
 
 mime.getType(<span class="hljs-string">'txt'</span>);                    <span class="hljs-comment">// ⇨ 'text/plain'</span>
 mime.getExtension(<span class="hljs-string">'text/plain'</span>);        <span class="hljs-comment">// ⇨ 'txt'</span>
+
 </code></pre>
 <p>See <a href="#mime-api">Mime API</a> below for API details.</p>
 <h2 id="Lite-Version">Lite Version</h2>
@@ -299,7 +301,8 @@ However if you would like to create custom mappings, you may do so as follows
 10
 11
 12
-13</div><span class="hljs-comment">// Require Mime class</span>
+13
+14</div><span class="hljs-comment">// Require Mime class</span>
 <span class="hljs-keyword">const</span> Mime = <span class="hljs-built_in">require</span>(<span class="hljs-string">'mime/Mime'</span>);
 
 <span class="hljs-comment">// Define mime type -&gt; extensions map</span>
@@ -312,6 +315,7 @@ However if you would like to create custom mappings, you may do so as follows
 <span class="hljs-keyword">const</span> myMime = <span class="hljs-keyword">new</span> Mime(typeMap);
 myMime.getType(<span class="hljs-string">'abc'</span>);            <span class="hljs-comment">// ⇨ 'text/abc'</span>
 myMime.getExtension(<span class="hljs-string">'text/def'</span>);  <span class="hljs-comment">// ⇨ 'leppard'</span>
+
 </code></pre>
 <p>If more than one map argument is provided, each map is <code>define()</code>ed (see below), in order.</p>
 <h3 id="mime.getType(pathOrExtension)">mime.getType(pathOrExtension)</h3>
@@ -323,7 +327,8 @@ myMime.getExtension(<span class="hljs-string">'text/def'</span>);  <span class="
 5
 6
 7
-8</div>mime.getType(<span class="hljs-string">'js'</span>);             <span class="hljs-comment">// ⇨ 'application/javascript'</span>
+8
+9</div>mime.getType(<span class="hljs-string">'js'</span>);             <span class="hljs-comment">// ⇨ 'application/javascript'</span>
 mime.getType(<span class="hljs-string">'json'</span>);           <span class="hljs-comment">// ⇨ 'application/json'</span>
 
 mime.getType(<span class="hljs-string">'txt'</span>);            <span class="hljs-comment">// ⇨ 'text/plain'</span>
@@ -331,20 +336,25 @@ mime.getType(<span class="hljs-string">'dir/text.txt'</span>);   <span class="hl
 mime.getType(<span class="hljs-string">'dir\\text.txt'</span>);  <span class="hljs-comment">// ⇨ 'text/plain'</span>
 mime.getType(<span class="hljs-string">'.text.txt'</span>);      <span class="hljs-comment">// ⇨ 'text/plain'</span>
 mime.getType(<span class="hljs-string">'.txt'</span>);           <span class="hljs-comment">// ⇨ 'text/plain'</span>
+
 </code></pre>
 <p><code>null</code> is returned in cases where an extension is not detected or recognized</p>
 <pre><code class="lang-javascript"><div class="line-numbers">1
-2</div>mime.getType(<span class="hljs-string">'foo/txt'</span>);        <span class="hljs-comment">// ⇨ null</span>
+2
+3</div>mime.getType(<span class="hljs-string">'foo/txt'</span>);        <span class="hljs-comment">// ⇨ null</span>
 mime.getType(<span class="hljs-string">'bogus_type'</span>);     <span class="hljs-comment">// ⇨ null</span>
+
 </code></pre>
 <h3 id="mime.getExtension(type)">mime.getExtension(type)</h3>
 <p>Get extension for the given mime type.  Charset options (often included in
 Content-Type headers) are ignored.</p>
 <pre><code class="lang-javascript"><div class="line-numbers">1
 2
-3</div>mime.getExtension(<span class="hljs-string">'text/plain'</span>);               <span class="hljs-comment">// ⇨ 'txt'</span>
+3
+4</div>mime.getExtension(<span class="hljs-string">'text/plain'</span>);               <span class="hljs-comment">// ⇨ 'txt'</span>
 mime.getExtension(<span class="hljs-string">'application/json'</span>);         <span class="hljs-comment">// ⇨ 'json'</span>
 mime.getExtension(<span class="hljs-string">'text/html; charset=utf8'</span>);  <span class="hljs-comment">// ⇨ 'html'</span>
+
 </code></pre>
 <h3 id="mime.define(typeMap[,-force-=-false])">mime.define(typeMap[, force = false])</h3>
 <p>Define [more] type mappings.</p>
@@ -355,10 +365,12 @@ extension that is already assigned to another type.  Passing <code>true</code> f
 <pre><code class="lang-javascript"><div class="line-numbers">1
 2
 3
-4</div>mime.define({<span class="hljs-string">'text/x-abc'</span>: [<span class="hljs-string">'abc'</span>, <span class="hljs-string">'abcd'</span>]});
+4
+5</div>mime.define({<span class="hljs-string">'text/x-abc'</span>: [<span class="hljs-string">'abc'</span>, <span class="hljs-string">'abcd'</span>]});
 
 mime.getType(<span class="hljs-string">'abcd'</span>);            <span class="hljs-comment">// ⇨ 'text/x-abc'</span>
 mime.getExtension(<span class="hljs-string">'text/x-abc'</span>)  <span class="hljs-comment">// ⇨ 'abc'</span>
+
 </code></pre>
 <h2 id="Command-Line">Command Line</h2>
 <pre><code><div class="line-numbers">1</div>mime <span class="hljs-string">[path_or_extension]</span>

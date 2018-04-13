@@ -507,7 +507,8 @@ case-insensitive. The rules shown in the following example all produce the same 
 6
 7
 8
-9</div>
+9
+10</div>
 <span class="hljs-comment">// This will fail</span>
 HI = <span class="hljs-string">"hi"</span> / <span class="hljs-string">"hi!"</span>
 
@@ -516,6 +517,7 @@ HI = <span class="hljs-string">"hi!"</span> / <span class="hljs-string">"hi"</sp
 
 <span class="hljs-comment">// This will also pass</span>
 HI = w:<span class="hljs-string">"hi"</span> !<span class="hljs-string">"!"</span> { return w } / <span class="hljs-string">"hi!"</span>
+
 </code></pre>
 <p>For more information on backtracking in PEG, <a href="https://stackoverflow.com/a/24809596/1518408">checkout this excellent answer on Stack Overflow</a>.</p>
 <h3 id="Parsing-Expression-Types">Parsing Expression Types</h3>
@@ -540,44 +542,44 @@ subexpressions and thus forming a recursive structure:</p>
 <li><a href="#expression--action-">expression { action }</a></li>
 <li><a href="#expression1--expression2----expressionn">expression1 / expression2 / ... / expressionN</a></li>
 </ul>
-<h4 id=""*literal*"<br>'*literal*'">&quot;<em>literal</em>&quot;<br>&#39;<em>literal</em>&#39;</h4>
+<h4 id="literal<br>'literal'">&quot;<em>literal</em>&quot;<br>&#39;<em>literal</em>&#39;</h4>
 <p>Match exact literal string and return it. The string syntax is the same as in
 JavaScript. Appending <code>i</code> right after the literal makes the match
 case-insensitive.</p>
-<h4 id=".-*(dot-character)*">. <em>(dot character)</em></h4>
+<h4 id=".-(dot-character)">. <em>(dot character)</em></h4>
 <p>Match exactly one character and return it as a string.</p>
-<h4 id="[*characters*]">[<em>characters</em>]</h4>
+<h4 id="[characters]">[<em>characters</em>]</h4>
 <p>Match one character from a set and return it as a string. The characters in the
 list can be escaped in exactly the same way as in JavaScript string. The list of
 characters can also contain ranges (e.g. <code>[a-z]</code> means “all lowercase letters”).
 Preceding the characters with <code>^</code> inverts the matched set (e.g. <code>[^a-z]</code> means
 “all character but lowercase letters”). Appending <code>i</code> right after the right
 bracket makes the match case-insensitive.</p>
-<h4 id="*rule*"><em>rule</em></h4>
+<h4 id="rule"><em>rule</em></h4>
 <p>Match a parsing expression of a rule recursively and return its match result.</p>
-<h4 id="(-*expression*-)">( <em>expression</em> )</h4>
+<h4 id="(-expression-)">( <em>expression</em> )</h4>
 <p>Match a subexpression and return its match result.</p>
-<h4 id="*expression*-\*"><em>expression</em> *</h4>
+<h4 id="expression-*"><em>expression</em> *</h4>
 <p>Match zero or more repetitions of the expression and return their match results
 in an array. The matching is greedy, i.e. the parser tries to match the
 expression as many times as possible. Unlike in regular expressions, there is no
 backtracking.</p>
-<h4 id="*expression*-+"><em>expression</em> +</h4>
+<h4 id="expression-+"><em>expression</em> +</h4>
 <p>Match one or more repetitions of the expression and return their match results
 in an array. The matching is greedy, i.e. the parser tries to match the
 expression as many times as possible. Unlike in regular expressions, there is no
 backtracking.</p>
-<h4 id="*expression*-?"><em>expression</em> ?</h4>
+<h4 id="expression-?"><em>expression</em> ?</h4>
 <p>Try to match the expression. If the match succeeds, return its match result,
 otherwise return <code>null</code>. Unlike in regular expressions, there is no
 backtracking.</p>
-<h4 id="&-*expression*">&amp; <em>expression</em></h4>
+<h4 id="-expression">&amp; <em>expression</em></h4>
 <p>Try to match the expression. If the match succeeds, just return <code>undefined</code> and
 do not consume any input, otherwise consider the match failed.</p>
-<h4 id="!-*expression*">! <em>expression</em></h4>
+<h4 id="!-expression">! <em>expression</em></h4>
 <p>Try to match the expression. If the match does not succeed, just return
 <code>undefined</code> and do not consume any input, otherwise consider the match failed.</p>
-<h4 id="&-{-*predicate*-}">&amp; { <em>predicate</em> }</h4>
+<h4 id="-{-predicate-}">&amp; { <em>predicate</em> }</h4>
 <p>This is a positive assertion. No input is consumed.</p>
 <p>The predicate should be JavaScript code, and it&#39;s executed as a
 function. Curly braces in the predicate must be <a href="#balanced-braces">balanced</a>.</p>
@@ -586,7 +588,7 @@ truthy, the match result is <code>undefined</code>, otherwise the match is
 considered failed.</p>
 <p>The predicate has access to all variables and functions in the
 <a href="#action-execution-environment">Action Execution Environment</a>.</p>
-<h4 id="!-{-*predicate*-}">! { <em>predicate</em> }</h4>
+<h4 id="!-{-predicate-}">! { <em>predicate</em> }</h4>
 <p>This is a negative assertion. No input is consumed.</p>
 <p>The predicate should be JavaScript code, and it&#39;s executed as a
 function. Curly braces in the predicate must be <a href="#balanced-braces">balanced</a>.</p>
@@ -595,17 +597,17 @@ falsy, the match result is <code>undefined</code>, otherwise the match is
 considered failed.</p>
 <p>The predicate has access to all variables and functions in the
 <a href="#action-execution-environment">Action Execution Environment</a>.</p>
-<h4 id="$-*expression*">$ <em>expression</em></h4>
+<h4 id="$-expression">$ <em>expression</em></h4>
 <p>Try to match the expression. If the match succeeds, return the matched text
 instead of the match result.</p>
-<h4 id="*label*-:-*expression*"><em>label</em> : <em>expression</em></h4>
+<h4 id="label-:-expression"><em>label</em> : <em>expression</em></h4>
 <p>Match the expression and remember its match result under given label. The label
 must be a JavaScript identifier.</p>
 <p>Labeled expressions are useful together with actions, where saved match results
 can be accessed by action&#39;s JavaScript code.</p>
-<h4 id="*expression<sub>1</sub>*-*expression<sub>2</sub>*-...-*expression<sub>n</sub>*"><em>expression<sub>1</sub></em> <em>expression<sub>2</sub></em> ...  <em>expression<sub>n</sub></em></h4>
+<h4 id="expression<sub>1</sub>-expression<sub>2</sub>-...-expression<sub>n</sub>"><em>expression<sub>1</sub></em> <em>expression<sub>2</sub></em> ...  <em>expression<sub>n</sub></em></h4>
 <p>Match a sequence of expressions and return their match results in an array.</p>
-<h4 id="*expression*-{-*action*-}"><em>expression</em> { <em>action</em> }</h4>
+<h4 id="expression-{-action-}"><em>expression</em> { <em>action</em> }</h4>
 <p>If the expression matches successfully, run the action, otherwise
 consider the match failed.</p>
 <p>The action should be JavaScript code, and it&#39;s executed as a
@@ -614,7 +616,7 @@ function. Curly braces in the action must be <a href="#balanced-braces">balanced
 match result of the expression.</p>
 <p>The action has access to all variables and functions in the
 <a href="#action-execution-environment">Action Execution Environment</a>.</p>
-<h4 id="*expression<sub>1</sub>*-/-*expression<sub>2</sub>*-/-...-/-*expression<sub>n</sub>*"><em>expression<sub>1</sub></em> / <em>expression<sub>2</sub></em> / ... / <em>expression<sub>n</sub></em></h4>
+<h4 id="expression<sub>1</sub>-/-expression<sub>2</sub>-/-...-/-expression<sub>n</sub>"><em>expression<sub>1</sub></em> / <em>expression<sub>2</sub></em> / ... / <em>expression<sub>n</sub></em></h4>
 <p>Try to match the first expression, if it does not succeed, try the second one,
 etc. Return the match result of the first successfully matched expression. If no
 expression matches, consider the match failed.</p>
