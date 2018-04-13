@@ -64,8 +64,10 @@ function sync_releases() {
     if (!new_version)
         throw 'impossible'
 
-    if (old_version !== new_version)
+    if (old_version !== new_version) {
+        console.log("new version:", new_version);
         fs.writeFile(path.join(distFolder, 'version.txt'), new_version);
+    }
 
     info.forEach(e => {
         e.html = marked(e.body);
