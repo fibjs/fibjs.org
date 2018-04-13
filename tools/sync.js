@@ -33,6 +33,10 @@ var distFolder = path.join(__dirname, '../web/dist/dist');
 
 process.chdir(path.join(__dirname, '..'));
 
+try {
+    fs.mkdir(distFolder);
+} catch (e) {}
+
 function sync_releases() {
     process.run('git', ['pull']);
 
@@ -49,7 +53,7 @@ function sync_releases() {
     } catch (e) {};
 
     var new_version = null;
-    for (var i = 1; i < info.length - 1; i++) {
+    for (var i = 0; i < info.length - 1; i++) {
         var r = info[i]
         if (!r.prerelease) {
             new_version = info[i].tag_name
@@ -116,10 +120,6 @@ function sync_releases() {
     }
 
     gen_page();
-
-    try {
-        fs.mkdir(distFolder);
-    } catch (e) {}
 
     info.forEach(r => {
         if (!r.prerelease) {
