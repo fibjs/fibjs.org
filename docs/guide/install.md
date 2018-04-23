@@ -19,12 +19,14 @@ Windows 下需要安装 VS2017。如果你希望编译兼容 xp 的 fibjs， 还
 ### 获取代码
 fibjs 当前 github 地址为: https://github.com/fibjs/fibjs
 
-在合适的位置执行以下命令:
+在工作目录下执行以下命令:
 ```sh
-git clone https://github.com/fibjs/fibjs.git
+git clone https://github.com/fibjs/fibjs.git --recursive
+```
+如果 clone 的时候忘记了添加  --recursive，也可以进入 fibjs 目录手动更新
+```sh
 cd fibjs
-git submodule init
-git submodule update
+git submodule update --init --recursive
 ```
 
 ### 编译命令及说明
@@ -126,12 +128,14 @@ pkg install cmake libexecinfo git
 ### 获取代码
 fibjs 当前 github 地址为: https://github.com/fibjs/fibjs
 
-在合适的位置执行以下命令:
+在工作目录下执行以下命令:
 ```sh
 git clone https://github.com/fibjs/fibjs.git --recursive
+```
+如果 clone 的时候忘记了添加  --recursive，也可以进入 fibjs 目录手动更新
+```sh
 cd fibjs
-git submodule init
-git submodule update
+git submodule update --init --recursive
 ```
 
 ### 编译命令及说明
