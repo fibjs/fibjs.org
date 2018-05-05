@@ -41,7 +41,7 @@ var coroutine = require("coroutine");
 function new_web() {
     return new vm.SandBox({
         mq: require("mq")
-    }).require("./web.js");
+    }).require("./web.js", __dirname);
 }
 
 // 每 1s 重新载入一遍 ./web.js 文件以更新 srv 的 handler
