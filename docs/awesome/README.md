@@ -11,6 +11,7 @@ A collection of awesome server-side [fibjs](https://github.com/fibjs) libraries,
 - [fib-kv](./module/fib-kv.md) - general key-value store on sql/level/mongo/redis.
 - [fib-rpc](./module/fib-rpc.md) - Remote Procedure Calling for fibjs.
 - [fib-qr](./module/fib-qr.md) - QR Code Generator for fibjs.
+- [fib-pug](./module/fib-pug.md) - One indentation-sensitive html pre-processor.
 - [ejs](./module/ejs.md) - Embedded JavaScript templates.
 - [Juicer](./module/Juicer.md) - Juicer is an efficient, lightweight front end (Javascript) templating engine
 - [highlight.js](./module/highlight.js.md) - Highlight.js is a syntax highlighter written in JavaScript. It works in the browser as well as on the server. It works with pretty much any markup, doesn’t depend on any framework and has automatic language detection.
@@ -27,6 +28,7 @@ A collection of awesome server-side [fibjs](https://github.com/fibjs) libraries,
 - [source-map](./module/source-map.md) - This is a library to generate and consume the source map format described here.
 - [json-format](./module/json-format.md) - Parse JavaScript Object to a JSON String indented.
 - [viz.js](./module/viz.js.md) - This project is a Makefile for building Graphviz with Emscripten and a simple wrapper for using it in the browser.
+- [nomnoml](./module/nomnoml.md) - The sassy UML diagram renderer
 - [pegjs](./module/pegjs.md) - This is a simple parser generator for JavaScript that produces fast parsers with excellent error reporting. You can use it to process complex data or computer languages and build transformers, interpreters, compilers and other tools easily.
 - [uglify-js](./module/uglify-js.md) - UglifyJS is a JavaScript parser, minifier, compressor and beautifier toolkit.
 - [js-beautify](./module/js-beautify.md) - Beautifier for javascript.

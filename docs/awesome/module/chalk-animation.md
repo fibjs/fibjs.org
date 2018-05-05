@@ -1,9 +1,10 @@
 # chalk-animation
 
-[![Build Status](https://travis-ci.org/bokub/chalk-animation.svg?branch=master)](https://travis-ci.org/bokub/chalk-animation)
-[![npm](https://img.shields.io/npm/v/chalk-animation.svg)](https://www.npmjs.com/package/chalk-animation)
-[![XO code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg)](https://github.com/sindresorhus/xo)
-[![Code Climate](https://img.shields.io/codeclimate/github/bokub/chalk-animation.svg)](https://codeclimate.com/github/bokub/chalk-animation)
+[![Build Status](https://img.shields.io/travis/bokub/chalk-animation.svg?branch=master&style=flat-square)](https://travis-ci.org/bokub/chalk-animation)
+[![npm](https://img.shields.io/npm/v/chalk-animation.svg?style=flat-square)](https://www.npmjs.com/package/chalk-animation)
+[![Codecov](https://img.shields.io/codecov/c/github/bokub/chalk-animation.svg?style=flat-square)](https://codecov.io/gh/bokub/chalk-animation)
+[![npm](https://img.shields.io/npm/dw/chalk-animation.svg?style=flat-square&colorB=fe7d37)](https://www.npmjs.com/package/chalk-animation)
+[![XO code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg?style=flat-square)](https://github.com/sindresorhus/xo)
 
 > Colorful animations in terminal output
 
@@ -13,10 +14,11 @@
 |   Name    |                   Preview                  |
 |:---------:|:------------------------------------------:|
 |  rainbow  | ![rainbow](http://i.imgur.com/napdxdn.gif) |
-|   pulse   | ![rainbow](http://i.imgur.com/xdaETwr.gif) |
-|   glitch  | ![rainbow](http://i.imgur.com/834FJU1.gif) |
-|   radar   | ![rainbow](http://i.imgur.com/3bFrtRc.gif) |
-|    neon   | ![rainbow](http://i.imgur.com/YdAAroI.gif) |
+|   pulse   | ![pulse](http://i.imgur.com/xdaETwr.gif)   |
+|   glitch  | ![glitch](http://i.imgur.com/834FJU1.gif)  |
+|   radar   | ![radar](http://i.imgur.com/3bFrtRc.gif)   |
+|    neon   | ![neon](http://i.imgur.com/YdAAroI.gif)    |
+|  karaoke  | ![karaoke](https://i.imgur.com/lG7EF1t.gif)|
 
 
 ## Install
@@ -111,18 +113,25 @@ $ npm install --global chalk-animation
 ```
 $ chalk-animation --help
 
-Usage
-  $ chalk-animation <name> [text...]
+  Colorful animations in terminal output
 
-Available animations
-  rainbow
-  pulse
-  glitch
-  radar
-  neon
+  Usage
+    $ chalk-animation <name> [options] [text...]
 
-Example
-  $ chalk-animation rainbow Hello world!
+  Options
+    --duration  Duration of the animation in ms, defaults to Infinity
+    --speed  Animation speed as number > 0, defaults to 1
+
+  Available animations
+    rainbow
+    pulse
+    glitch
+    radar
+    neon
+    karaoke
+
+  Example
+    $ chalk-animation rainbow Hello world!
 ```
 
 
