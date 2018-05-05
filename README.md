@@ -1,19 +1,21 @@
-## 翻译目的
-为方便国际友人阅读和学习，传播 fibjs，需提供英文版文档。
+[中文指南](./README.zh-CN.md)
 
-## 翻译方法：
-直接翻译 src 内 *.idl 和 *.dox 文件注释。
+## Translation Purpose
+To broadcast fibjs and reduce learning cost of developer whose first-language is not chinese, we need to provide English document.
 
-## 翻译流程：
-1. 在此处评论认领翻译文件 https://github.com/fibjs/fibjs_docs/issues/2
-2. fork 此项目
-3. 本地翻译并提交
-4. 校验后合并到主项目
+## Translation Pattern
+Just read comments in `*.idl` and `*.dox` files in `src` directory, then TRANSLATE them.
 
-## 文档生成
-在 src 目录运行 doxygen。
+## Translation Steps
+1. Comment to claim file(s) you want to translate
+2. fork this project
+3. finish translation then take one PULL REQUEST to this project.
+4. wait proofing/reviewing by others, after checked/corrected, changes would be merged to this project.
 
-## 贡献者
+## Documentation Generation
+run `doxygen` at directory `src`.
+
+## Contributors
 * @lingyi
 * @alexandtang
 * @classicemi

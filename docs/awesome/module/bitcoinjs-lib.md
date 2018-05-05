@@ -71,7 +71,7 @@ This is because of the function-name-duck-typing used in [typeforce](https://git
 
 Example:
 ``` bash
-uglifyjs ... --mangle --reserved 'BigInteger,ECPair,Point'
+uglifyjs ... --mangle reserved=['BigInteger','ECPair','Point']
 ```
 
 **NOTE**: This library tracks Node LTS features,  if you need strict ES5,  use [`--transform babelify`](https://github.com/babel/babelify) in conjunction with your `browserify` step (using an [`es2015`](http://babeljs.io/docs/plugins/preset-es2015/) preset).
@@ -162,6 +162,7 @@ If you have a use case that you feel could be listed here, please [ask for it](h
 - [Melis Wallet](https://melis.io)
 - [Robocoin](https://wallet.robocoin.com)
 - [Skyhook ATM](http://projectskyhook.com)
+- [Coinbase Multisig tool](https://github.com/coinbase/multisig-tool)
 
 
 ## Contributing

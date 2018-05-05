@@ -1,22 +1,47 @@
+<!--
+  -- This file is auto-generated from src/README_js.md. Changes should be made there.
+  -->
 # Mime
 
 A comprehensive, compact MIME type module.
 
+[![Build Status](https://travis-ci.org/broofa/node-mime.svg?branch=master)](https://travis-ci.org/broofa/node-mime)
+
 ## Version 2 Notes
 
-Version 2 is a breaking change from 1.x, as the semver implies.  Specifically:
+Version 2 is a breaking change from 1.x as the semver implies.  Specifically:
 
-* **ES6 support required (node@>=6)**
 * `lookup()` renamed to `getType()`
 * `extension()` renamed to `getExtension()`
 * `charset()` and `load()` methods have been removed
 
-If you prefer the legacy version of this module please `npm install mime@^1`.  Version 1 docs may be found [here](https://github.com/broofa/node-mime/tree/v1.x).
+If you prefer the legacy version of this module please `npm install mime@^1`.  Version 1 docs may be found [here](https://github.com/broofa/node-mime/tree/v1.4.0).
 
-## Install - NPM
+## Install
+
+### NPM
 ```
 npm install mime
 ```
+
+### Browser
+
+It is recommended that you use a bundler such as
+[webpack](https://webpack.github.io/) or [browserify](http://browserify.org/) to
+package your code.  However, browser-ready versions are available via wzrd.in.
+E.g. For the full version:
+
+    <script src="https://wzrd.in/standalone/mime@latest"></script>
+    <script>
+    mime.getType(...); // etc.
+    <script>
+
+Or, for the `mime/lite` version:
+
+    <script src="https://wzrd.in/standalone/mime%2flite@latest"></script>
+    <script>
+    mimelite.getType(...); // (Note `mimelite` here)
+    <script>
 
 ## Quick Start
 
@@ -42,25 +67,6 @@ to 8KB for the full version.  To load the lite version:
 const mime = require('mime/lite');
 ```
 
-## Browser-ready Versions
-
-To use this module in the browser, you would typlically use
-[webpack](https://webpack.github.io/) or [browserify](http://browserify.org/) to
-package your code.  However, browser-ready versions are available via wzrd.in.
-E.g. For the full version:
-
-    <script src="https://wzrd.in/standalone/mime@latest"></script>
-    <script>
-    mime.getType(...); // etc.
-    <script>
-
-Or, for the `mime/lite` version:
-
-    <script src="https://wzrd.in/standalone/mime%2flite@latest"></script>
-    <script>
-    mimelite.getType(...); // (Note `mimelite` here)
-    <script>
-
 ## Mime .vs. mime-types .vs. mime-db modules
 
 For those of you wondering about the difference between these [popular] NPM modules,
@@ -77,8 +83,7 @@ wrapper around mime-db that provides an API drop-in compatible(ish) with `mime @
 `mime` is, as of v2, a self-contained module bundled with a pre-optimized version
 of the `mime-db` dataset.  It provides a simplified API with the following characteristics:
 
-* Internally consistent type &hArr; extension mapping. I.e.
-`mime.getType(mime.getExtension(type)) == type` will always be true
+* Intelligently resolved type conflicts (See [mime-score](https://github.com/broofa/mime-score) for details)
 * Method naming consistent with industry best-practices
 * Compact footprint.  E.g. The minified+compressed sizes of the various modules:
 

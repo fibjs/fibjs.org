@@ -1,4 +1,4 @@
-Synaptic [![Build Status](https://travis-ci.org/cazala/synaptic.svg?branch=master)](https://travis-ci.org/cazala/synaptic) [![Join the chat at https://synapticjs.slack.com](https://synaptic-slack-ugiqacqvmd.now.sh/badge.svg)](https://synaptic-slack-ugiqacqvmd.now.sh/)
+Synaptic [![Build Status](https://travis-ci.org/cazala/synaptic.svg?branch=master)](https://travis-ci.org/cazala/synaptic) [![Join the chat at https://synapticjs.slack.com](https://synaptic-slack.now.sh/badge.svg)](https://synaptic-slack.now.sh/)
 ========
 
 ## Important: [Synaptic 2.x](https://github.com/cazala/synaptic/issues/140) is in stage of discussion now! Feel free to participate
@@ -50,8 +50,11 @@ To try out the examples, checkout the [gh-pages](https://github.com/cazala/synap
 
 #### Other languages
 
-This README is also available in [Chinese | 中文文档](https://github.com/cazala/synaptic/blob/master/README_Zh-CN.md), thanks to [@noraincode](https://github.com/noraincode).
+This README is also available in other languages.
 
+- [Chinese Simplified | 中文文档](https://github.com/cazala/synaptic/blob/master/README_Zh-CN.md), thanks to [@noraincode](https://github.com/noraincode).
+- [Chinese Traditional | 繁體中文](https://github.com/cazala/synaptic/blob/master/README_Zh-TW.md), by [@NoobTW](https://github.com/noobtw).
+- [Japanese | 日本語](https://github.com/cazala/synaptic/blob/master/README_Ja-JP.md), thanks to [@oshirogo](https://github.com/dscripps).  
 
 ## Overview
 
