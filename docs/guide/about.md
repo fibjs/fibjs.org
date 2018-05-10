@@ -100,17 +100,17 @@ async function test() {
     });
 
     console.time("sync");
-    await test_sync(0);
+    test_sync(0);
     console.timeEnd("sync");
 }
 
 test();
 ```
-在最新的 v8 引擎下，这段代码的运行结果如下：
+在最新的 v8 v6.7.192 下，这段代码的运行结果如下：
 ```sh
-async: 14.283ms
-callback: 1.03ms
-sync: 0.106ms
+async: 5.276ms
+callback: 0.117ms
+sync: 0.038ms
 ```
 我们从测试结果可以明显知道，当项目中广泛应用 async 之后，服务器将花费大量时间用来处理 async 函数的调用和返回。我们在一些服务端应用的实际测试中也发现了这一点。而且这种性能的急剧下降，是完全不能接受的。
 
