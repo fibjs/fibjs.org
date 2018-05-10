@@ -155,6 +155,7 @@
 <li><a href=fib-kv.md.html>fib-kv</a></li>
 <li><a href=fib-rpc.md.html>fib-rpc</a></li>
 <li><a href=fib-qr.md.html>fib-qr</a></li>
+<li><a href=fib-pug.md.html>fib-pug</a></li>
 <li><a href=ejs.md.html>ejs</a></li>
 <li><a href=juicer.md.html>Juicer</a></li>
 <li><a href=highlight.js.md.html>highlight.js</a></li>
@@ -171,6 +172,7 @@
 <li><a href=source-map.md.html>source-map</a></li>
 <li><a href=json-format.md.html>json-format</a></li>
 <li><a href=viz.js.md.html>viz.js</a></li>
+<li><a href=nomnoml.md.html>nomnoml</a></li>
 <li><a href=pegjs.md.html>pegjs</a></li>
 <li><a href=uglify-js.md.html>uglify-js</a></li>
 <li><a href=js-beautify.md.html>js-beautify</a></li>
@@ -188,10 +190,11 @@
 <li><a href=rakuten.md.html>Rakuten</a></li>
 </ul>
  </div></div></div>  </div></div><div class=content><div class=social-share data-sites=weibo,twitter data-description=分享></div> <h1 id="chalk-animation">chalk-animation</h1>
-<p><a href="https://travis-ci.org/bokub/chalk-animation"><img src="https://travis-ci.org/bokub/chalk-animation.svg?branch=master" alt="Build Status"></a>
-<a href="https://www.npmjs.com/package/chalk-animation"><img src="https://img.shields.io/npm/v/chalk-animation.svg" alt="npm"></a>
-<a href="https://github.com/sindresorhus/xo"><img src="https://img.shields.io/badge/code_style-XO-5ed9c7.svg" alt="XO code style"></a>
-<a href="https://codeclimate.com/github/bokub/chalk-animation"><img src="https://img.shields.io/codeclimate/github/bokub/chalk-animation.svg" alt="Code Climate"></a></p>
+<p><a href="https://travis-ci.org/bokub/chalk-animation"><img src="https://img.shields.io/travis/bokub/chalk-animation.svg?branch=master&amp;style=flat-square" alt="Build Status"></a>
+<a href="https://www.npmjs.com/package/chalk-animation"><img src="https://img.shields.io/npm/v/chalk-animation.svg?style=flat-square" alt="npm"></a>
+<a href="https://codecov.io/gh/bokub/chalk-animation"><img src="https://img.shields.io/codecov/c/github/bokub/chalk-animation.svg?style=flat-square" alt="Codecov"></a>
+<a href="https://www.npmjs.com/package/chalk-animation"><img src="https://img.shields.io/npm/dw/chalk-animation.svg?style=flat-square&amp;colorB=fe7d37" alt="npm"></a>
+<a href="https://github.com/sindresorhus/xo"><img src="https://img.shields.io/badge/code_style-XO-5ed9c7.svg?style=flat-square" alt="XO code style"></a></p>
 <blockquote>
 <p>Colorful animations in terminal output</p>
 </blockquote>
@@ -210,19 +213,23 @@
 </tr>
 <tr>
 <td style="text-align:center">pulse</td>
-<td style="text-align:center"><img src="http://i.imgur.com/xdaETwr.gif" alt="rainbow"></td>
+<td style="text-align:center"><img src="http://i.imgur.com/xdaETwr.gif" alt="pulse"></td>
 </tr>
 <tr>
 <td style="text-align:center">glitch</td>
-<td style="text-align:center"><img src="http://i.imgur.com/834FJU1.gif" alt="rainbow"></td>
+<td style="text-align:center"><img src="http://i.imgur.com/834FJU1.gif" alt="glitch"></td>
 </tr>
 <tr>
 <td style="text-align:center">radar</td>
-<td style="text-align:center"><img src="http://i.imgur.com/3bFrtRc.gif" alt="rainbow"></td>
+<td style="text-align:center"><img src="http://i.imgur.com/3bFrtRc.gif" alt="radar"></td>
 </tr>
 <tr>
 <td style="text-align:center">neon</td>
-<td style="text-align:center"><img src="http://i.imgur.com/YdAAroI.gif" alt="rainbow"></td>
+<td style="text-align:center"><img src="http://i.imgur.com/YdAAroI.gif" alt="neon"></td>
+</tr>
+<tr>
+<td style="text-align:center">karaoke</td>
+<td style="text-align:center"><img src="https://i.imgur.com/lG7EF1t.gif" alt="karaoke"></td>
 </tr>
 </tbody>
 </table>
@@ -323,20 +330,34 @@ $ npm install --global chalk-animation
 11
 12
 13
-14</div><span class="hljs-meta">$</span><span class="bash"> chalk-animation --<span class="hljs-built_in">help</span></span>
+14
+15
+16
+17
+18
+19
+20
+21</div>$ chalk-animation --help
 
-Usage
-<span class="hljs-meta">  $</span><span class="bash"> chalk-animation &lt;name&gt; [text...]</span>
+  Colorful animations <span class="hljs-built_in">in</span> terminal output
 
-Available animations
-  rainbow
-  pulse
-  glitch
-  radar
-  neon
+  Usage
+    $ chalk-animation &lt;<span class="hljs-built_in">name</span>&gt; [options] [<span class="hljs-built_in">text</span>...]
 
-Example
-<span class="hljs-meta">  $</span><span class="bash"> chalk-animation rainbow Hello world!</span>
+  Options
+    --duration  Duration of the animation <span class="hljs-built_in">in</span> ms, defaults <span class="hljs-keyword">to</span> Infinity
+    --<span class="hljs-built_in">speed</span>  Animation <span class="hljs-built_in">speed</span> as number &gt; <span class="hljs-number">0</span>, defaults <span class="hljs-keyword">to</span> <span class="hljs-number">1</span>
+
+  Available animations
+    <span class="hljs-built_in">rainbow</span>
+    pulse
+    glitch
+    radar
+    neon
+    karaoke
+
+  Example
+    $ chalk-animation <span class="hljs-built_in">rainbow</span> Hello world!
 </code></pre><h2 id="Related">Related</h2>
 <ul>
 <li><a href="https://github.com/bokub/gradient-string">gradient-string</a> - Output gradients to terminal</li>
@@ -344,4 +365,4 @@ Example
 </ul>
 <h2 id="License">License</h2>
 <p>MIT © <a href="https://github.com/bokub">Boris K</a></p>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id=toc></div></div></div></div><div class=footer><div class=container>&copy; Copright 2017 fibjs.org | <a href=../../../support.html>支持我们</a></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="Click to return on the top page" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js></script><script type=text/javascript src=../../../js/common.js></script><script type=text/javascript src=../../../js/docs.js></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id=toc></div></div></div></div><div class=footer><div class=container>&copy; Copyright 2018 fibjs.org | <a href=../../../support.html>支持我们</a></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="Click to return on the top page" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js></script><script type=text/javascript src=../../../js/common.js></script><script type=text/javascript src=../../../js/docs.js></script></body></html>

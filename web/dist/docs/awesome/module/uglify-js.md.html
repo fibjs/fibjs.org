@@ -155,6 +155,7 @@
 <li><a href=fib-kv.md.html>fib-kv</a></li>
 <li><a href=fib-rpc.md.html>fib-rpc</a></li>
 <li><a href=fib-qr.md.html>fib-qr</a></li>
+<li><a href=fib-pug.md.html>fib-pug</a></li>
 <li><a href=ejs.md.html>ejs</a></li>
 <li><a href=juicer.md.html>Juicer</a></li>
 <li><a href=highlight.js.md.html>highlight.js</a></li>
@@ -171,6 +172,7 @@
 <li><a href=source-map.md.html>source-map</a></li>
 <li><a href=json-format.md.html>json-format</a></li>
 <li><a href=viz.js.md.html>viz.js</a></li>
+<li><a href=nomnoml.md.html>nomnoml</a></li>
 <li><a href=pegjs.md.html>pegjs</a></li>
 <li class="active"><a href=uglify-js.md.html>uglify-js</a></li>
 <li><a href=js-beautify.md.html>js-beautify</a></li>
@@ -193,9 +195,8 @@
 <ul>
 <li><strong><code>uglify-js@3</code> has a simplified <a href="#api-reference">API</a> and <a href="#command-line-usage">CLI</a> that is not backwards compatible with <a href="https://github.com/mishoo/UglifyJS2/tree/v2.x"><code>uglify-js@2</code></a></strong>.</li>
 <li><strong>Documentation for UglifyJS <code>2.x</code> releases can be found <a href="https://github.com/mishoo/UglifyJS2/tree/v2.x">here</a></strong>.</li>
-<li><code>uglify-js</code> only supports ECMAScript 5 (ES5).</li>
-<li>Those wishing to minify
-ES2015+ (ES6+) should use the <code>npm</code> package <a href="https://github.com/mishoo/UglifyJS2/tree/harmony"><strong>uglify-es</strong></a>.</li>
+<li><code>uglify-js</code> only supports JavaScript (ECMAScript 5).</li>
+<li>To minify ECMAScript 2015 or above, transpile using tools like <a href="https://babeljs.io/">Babel</a>.</li>
 </ul>
 <h2 id="Install">Install</h2>
 <p>First make sure you have installed the latest version of <a href="http://nodejs.org/">node.js</a>
@@ -333,7 +334,7 @@ a double dash to prevent input files being used as option arguments:</p>
                                 <span class="hljs-string">`debug`</span>  <span class="hljs-keyword">Add</span> debug prefix <span class="hljs-keyword">and</span> suffix.
                                 <span class="hljs-string">`domprops`</span>  Mangle property <span class="hljs-keyword">names</span> that overlaps
                                             <span class="hljs-keyword">with</span> DOM properties.
-                                <span class="hljs-string">`keep_quoted`</span>  <span class="hljs-keyword">Only</span> mangle unquoted properies.
+                                <span class="hljs-string">`keep_quoted`</span>  <span class="hljs-keyword">Only</span> mangle unquoted properties.
                                 <span class="hljs-string">`regex`</span>  <span class="hljs-keyword">Only</span> mangle <span class="hljs-keyword">matched</span> property names.
                                 <span class="hljs-string">`reserved`</span>  <span class="hljs-keyword">List</span> <span class="hljs-keyword">of</span> <span class="hljs-keyword">names</span> that should <span class="hljs-keyword">not</span> be mangled.
     -b, <span class="hljs-comment">--beautify [options]    Beautify output/specify output options:</span>
@@ -915,18 +916,18 @@ can use <code>sourceMap.content</code>:</p>
 </ul>
 <h2 id="Compress-options">Compress options</h2>
 <ul>
+<li><p><code>arguments</code> (default: <code>true</code>) -- replace <code>arguments[index]</code> with function
+parameter name whenever possible.</p>
+</li>
 <li><p><code>booleans</code> (default: <code>true</code>) -- various optimizations for boolean context,
 for example <code>!!a ? b : c → a ? b : c</code></p>
-</li>
-<li><p><code>cascade</code> (default: <code>true</code>) -- small optimization for sequences, transform
-<code>x, x</code> into <code>x</code> and <code>x = something(), x</code> into <code>x = something()</code></p>
 </li>
 <li><p><code>collapse_vars</code> (default: <code>true</code>) -- Collapse single-use non-constant variables,
 side effects permitting.</p>
 </li>
 <li><p><code>comparisons</code> (default: <code>true</code>) -- apply certain optimizations to binary nodes,
-e.g. <code>!(a &lt;= b) → a &gt; b</code> (only when <code>unsafe_comps</code>), attempts to negate binary
-nodes, e.g. <code>a = !b &amp;&amp; !c &amp;&amp; !d &amp;&amp; !e → a=!(b||c||d||e)</code> etc.</p>
+e.g. <code>!(a &lt;= b) → a &gt; b</code>, attempts to negate binary nodes, e.g.
+<code>a = !b &amp;&amp; !c &amp;&amp; !d &amp;&amp; !e → a=!(b||c||d||e)</code> etc.</p>
 </li>
 <li><p><code>conditionals</code> (default: <code>true</code>) -- apply optimizations for <code>if</code>-s and conditional
 expressions</p>
@@ -947,7 +948,7 @@ from terminal statements without <code>return</code>, e.g. in bookmarklets.</p>
 </li>
 <li><p><code>global_defs</code> (default: <code>{}</code>) -- see <a href="#conditional-compilation">conditional compilation</a></p>
 </li>
-<li><p><code>hoist_funs</code> (default: <code>true</code>) -- hoist function declarations</p>
+<li><p><code>hoist_funs</code> (default: <code>false</code>) -- hoist function declarations</p>
 </li>
 <li><p><code>hoist_props</code> (default: <code>true</code>) -- hoist properties from constant object and
 array literals into regular variables subject to a set of constraints. For example:
@@ -960,7 +961,15 @@ by default because it seems to increase the size of the output in general)</p>
 </li>
 <li><p><code>if_return</code> (default: <code>true</code>) -- optimizations for if/return and if/continue</p>
 </li>
-<li><p><code>inline</code> (default: <code>true</code>) -- embed simple functions</p>
+<li><p><code>inline</code> (default: <code>true</code>) -- inline calls to function with simple/<code>return</code> statement:</p>
+<ul>
+<li><code>false</code> -- same as <code>0</code></li>
+<li><code>0</code> -- disabled inlining</li>
+<li><code>1</code> -- inline simple functions</li>
+<li><code>2</code> -- inline functions with arguments</li>
+<li><code>3</code> -- inline functions with arguments and variables</li>
+<li><code>true</code> -- same as <code>3</code></li>
+</ul>
 </li>
 <li><p><code>join_vars</code> (default: <code>true</code>) -- join consecutive <code>var</code> statements</p>
 </li>
@@ -997,7 +1006,8 @@ still keep the <code>Math.floor(a/b)</code>, not knowing what it does.  You can
 pass <code>pure_funcs: [ &#39;Math.floor&#39; ]</code> to let it know that this
 function won&#39;t produce any side effect, in which case the whole
 statement would get discarded.  The current implementation adds some
-overhead (compression will be slower).</p>
+overhead (compression will be slower). Make sure symbols under <code>pure_funcs</code>
+are also under <code>mangle.reserved</code> to avoid mangling.</p>
 </li>
 <li><p><code>pure_getters</code> (default: <code>&quot;strict&quot;</code>) -- If you pass <code>true</code> for
 this, UglifyJS will assume that object property access
@@ -1044,14 +1054,10 @@ earlier versions due to known issues.</p>
 </li>
 <li><p><code>unsafe</code> (default: <code>false</code>) -- apply &quot;unsafe&quot; transformations (discussion below)</p>
 </li>
-<li><p><code>unsafe_comps</code> (default: <code>false</code>) -- Reverse <code>&lt;</code> and <code>&lt;=</code> to <code>&gt;</code> and <code>&gt;=</code> to
-allow improved compression. This might be unsafe when an at least one of two
-operands is an object with computed values due the use of methods like <code>get</code>,
-or <code>valueOf</code>. This could cause change in execution order after operands in the
-comparison are switching. Compression only works if both <code>comparisons</code> and
-<code>unsafe_comps</code> are both set to true.</p>
+<li><p><code>unsafe_comps</code> (default: <code>false</code>) -- compress expressions like <code>a &lt;= b</code> assuming
+none of the operands can be (coerced to) <code>NaN</code>.</p>
 </li>
-<li><p><code>unsafe_Func</code> (default: <code>false</code>) -- compress and mangle <code>Function(args, code)</code>
+<li><p><code>unsafe_Function</code> (default: <code>false</code>) -- compress and mangle <code>Function(args, code)</code>
 when both <code>args</code> and <code>code</code> are string literals.</p>
 </li>
 <li><p><code>unsafe_math</code> (default: <code>false</code>) -- optimize numerical expressions like
@@ -1062,6 +1068,10 @@ when both <code>args</code> and <code>code</code> are string literals.</p>
 </li>
 <li><p><code>unsafe_regexp</code> (default: <code>false</code>) -- enable substitutions of variables with
 <code>RegExp</code> values the same way as if they are constants.</p>
+</li>
+<li><p><code>unsafe_undefined</code> (default: <code>false</code>) -- substitute <code>void 0</code> if there is a
+variable named <code>undefined</code> in scope (variable name will be mangled, typically
+reduced to a single character)</p>
 </li>
 <li><p><code>unused</code> (default: <code>true</code>) -- drop unreferenced functions and variables (simple
 direct variable assignments do not count as references unless set to <code>&quot;keep_assign&quot;</code>)</p>
@@ -1147,7 +1157,7 @@ Passing <code>-b</code> will set this to true, but you might need to pass <code>
 when you want to generate minified code, in order to specify additional
 arguments, so you can use <code>-b beautify=false</code> to override it.</p>
 </li>
-<li><p><code>bracketize</code> (default <code>false</code>) -- always insert brackets in <code>if</code>, <code>for</code>,
+<li><p><code>braces</code> (default <code>false</code>) -- always insert braces in <code>if</code>, <code>for</code>,
 <code>do</code>, <code>while</code> or <code>with</code> statements, even if their body is a single
 statement.</p>
 </li>
@@ -1159,8 +1169,8 @@ comments, <code>&quot;some&quot;</code> to preserve some comments, a regular exp
 </li>
 <li><p><code>indent_start</code> (default <code>0</code>) -- prefix all lines by that many spaces</p>
 </li>
-<li><p><code>inline_script</code> (default <code>false</code>) -- escape the slash in occurrences of
-<code>&lt;/script</code> in strings</p>
+<li><p><code>inline_script</code> (default <code>true</code>) -- escape HTML comments and the slash in
+occurrences of <code>&lt;/script&gt;</code> in strings</p>
 </li>
 <li><p><code>keep_quoted_props</code> (default <code>false</code>) -- when turned on, prevents stripping
 quotes from property names in object literals.</p>
@@ -1248,9 +1258,6 @@ when this flag is on:</p>
 <li><code>new Object()</code> → <code>{}</code></li>
 <li><code>String(exp)</code> or <code>exp.toString()</code> → <code>&quot;&quot; + exp</code></li>
 <li><code>new Object/RegExp/Function/Error/Array (...)</code> → we discard the <code>new</code></li>
-<li><code>void 0</code> → <code>undefined</code> (if there is a variable named &quot;undefined&quot; in
-scope; we do it because the variable name will be mangled, typically
-reduced to a single character)</li>
 </ul>
 <h3 id="Conditional-compilation">Conditional compilation</h3>
 <p>You can use the <code>--define</code> (<code>-d</code>) switch in order to declare global
@@ -1395,8 +1402,9 @@ to parse the value as an expression:</p>
 </code></pre>
 <h3 id="Working-with-Uglify-AST">Working with Uglify AST</h3>
 <p>Transversal and transformation of the native AST can be performed through
-<a href="http://lisperator.net/uglifyjs/walk"><code>TreeWalker</code></a> and
-<a href="http://lisperator.net/uglifyjs/transform"><code>TreeTransformer</code></a> respectively.</p>
+<a href="https://github.com/mishoo/UglifyJS2/blob/master/lib/ast.js"><code>TreeWalker</code></a> and
+<a href="https://github.com/mishoo/UglifyJS2/blob/master/lib/transform.js"><code>TreeTransformer</code></a>
+respectively.</p>
 <h3 id="ESTree-/-SpiderMonkey-AST">ESTree / SpiderMonkey AST</h3>
 <p>UglifyJS has its own abstract syntax tree format; for
 <a href="http://lisperator.net/blog/uglifyjs-why-not-switching-to-spidermonkey-ast/">practical reasons</a>
@@ -1477,4 +1485,25 @@ comparable minify speeds and gzip sizes to
 </code></pre><p>To enable fast minify mode with the API use:</p>
 <pre><code class="lang-js"><div class="line-numbers">1</div>UglifyJS.minify(code, { <span class="hljs-attr">compress</span>: <span class="hljs-literal">false</span>, <span class="hljs-attr">mangle</span>: <span class="hljs-literal">true</span> });
 </code></pre>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id=toc></div></div></div></div><div class=footer><div class=container>&copy; Copright 2017 fibjs.org | <a href=../../../support.html>支持我们</a></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="Click to return on the top page" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js></script><script type=text/javascript src=../../../js/common.js></script><script type=text/javascript src=../../../js/docs.js></script></body></html>
+<h4 id="Source-maps-and-debugging">Source maps and debugging</h4>
+<p>Various <code>compress</code> transforms that simplify, rearrange, inline and remove code
+are known to have an adverse effect on debugging with source maps. This is
+expected as code is optimized and mappings are often simply not possible as
+some code no longer exists. For highest fidelity in source map debugging
+disable the Uglify <code>compress</code> option and just use <code>mangle</code>.</p>
+<h3 id="Compiler-assumptions">Compiler assumptions</h3>
+<p>To allow for better optimizations, the compiler makes various assumptions:</p>
+<ul>
+<li><code>.toString()</code> and <code>.valueOf()</code> don&#39;t have side effects, and for built-in
+objects they have not been overridden.</li>
+<li><code>undefined</code>, <code>NaN</code> and <code>Infinity</code> have not been externally redefined.</li>
+<li><code>arguments.callee</code>, <code>arguments.caller</code> and <code>Function.prototype.caller</code> are not used.</li>
+<li>The code doesn&#39;t expect the contents of <code>Function.prototype.toString()</code> or
+<code>Error.prototype.stack</code> to be anything in particular.</li>
+<li>Getting and setting properties on a plain object does not cause other side effects
+(using <code>.watch()</code> or <code>Proxy</code>).</li>
+<li>Object properties can be added, removed and modified (not prevented with
+<code>Object.defineProperty()</code>, <code>Object.defineProperties()</code>, <code>Object.freeze()</code>,
+<code>Object.preventExtensions()</code> or <code>Object.seal()</code>).</li>
+</ul>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id=toc></div></div></div></div><div class=footer><div class=container>&copy; Copyright 2018 fibjs.org | <a href=../../../support.html>支持我们</a></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="Click to return on the top page" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js></script><script type=text/javascript src=../../../js/common.js></script><script type=text/javascript src=../../../js/docs.js></script></body></html>

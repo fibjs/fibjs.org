@@ -155,6 +155,7 @@
 <li><a href=fib-kv.md.html>fib-kv</a></li>
 <li><a href=fib-rpc.md.html>fib-rpc</a></li>
 <li><a href=fib-qr.md.html>fib-qr</a></li>
+<li><a href=fib-pug.md.html>fib-pug</a></li>
 <li><a href=ejs.md.html>ejs</a></li>
 <li><a href=juicer.md.html>Juicer</a></li>
 <li><a href=highlight.js.md.html>highlight.js</a></li>
@@ -171,6 +172,7 @@
 <li><a href=source-map.md.html>source-map</a></li>
 <li><a href=json-format.md.html>json-format</a></li>
 <li class="active"><a href=viz.js.md.html>viz.js</a></li>
+<li><a href=nomnoml.md.html>nomnoml</a></li>
 <li><a href=pegjs.md.html>pegjs</a></li>
 <li><a href=uglify-js.md.html>uglify-js</a></li>
 <li><a href=js-beautify.md.html>js-beautify</a></li>
@@ -188,83 +190,26 @@
 <li><a href=rakuten.md.html>Rakuten</a></li>
 </ul>
  </div></div></div>  </div></div><div class=content><div class=social-share data-sites=weibo,twitter data-description=分享></div> <h1 id="Viz.js">Viz.js</h1>
-<p>This project is a Makefile for building <a href="http://www.graphviz.org">Graphviz</a> with <a href="http://kripken.github.io/emscripten-site/">Emscripten</a> and a simple wrapper for using it in the browser.</p>
+<p><a href="https://travis-ci.org/mdaines/viz.js"><img src="https://travis-ci.org/mdaines/viz.js.svg?branch=master" alt="Build Status"></a></p>
+<p>This project builds <a href="http://www.graphviz.org">Graphviz</a> with <a href="http://kripken.github.io/emscripten-site/">Emscripten</a> and provides a simple wrapper for using it in the browser.</p>
+<p>For more information, <a href="https://github.com/mdaines/viz.js/wiki">see the wiki</a>.</p>
 <h2 id="Getting-Viz.js">Getting Viz.js</h2>
-<p>Install with Bower:</p>
-<pre><code><div class="line-numbers">1</div><span class="hljs-keyword">bower </span><span class="hljs-keyword">install </span>viz.<span class="hljs-keyword">js</span>
-</code></pre><p>Or with npm:</p>
-<pre><code><div class="line-numbers">1</div>npm <span class="hljs-keyword">install</span> viz.js
-</code></pre><p>Or download the <code>viz.js</code> &quot;binary&quot; from the <a href="https://github.com/mdaines/viz.js/releases">releases page</a>.</p>
-<h2 id="Lite-Version">&quot;Lite&quot; Version</h2>
-<p>A smaller version of Viz.js can be downloaded from the <a href="https://github.com/mdaines/viz.js/releases">releases page</a> and is available in the Bower package. <code>viz-lite.js</code> omits Expat and the NEATO layout plugin.</p>
-<h2 id="API">API</h2>
-<h3 id="Viz(src,-options={-format=svg,-engine=dot,-scale,-images=[{-path,-width,-height-}],-totalMemory=16777216-})">Viz(src, options={ format=&quot;svg&quot;, engine=&quot;dot&quot;, scale, images=[{ path, width, height }], totalMemory=16777216 })</h3>
 <ul>
-<li><code>src</code> is a string representing the graph to render in the <a href="http://www.graphviz.org/content/dot-language">DOT language</a>.</li>
-<li><code>options</code><ul>
-<li><code>format</code> sets the output format, and may be one of <code>&quot;svg&quot;</code>, <code>&quot;xdot&quot;</code>, <code>&quot;plain&quot;</code>, <code>&quot;ps&quot;</code>, <code>&quot;json&quot;</code>, or <code>&quot;png-image-element&quot;</code>.</li>
-<li><code>engine</code> sets the Graphviz engine to use, and may be one of <code>&quot;circo&quot;</code>, <code>&quot;dot&quot;</code>, <code>&quot;neato&quot;</code>, <code>&quot;osage&quot;</code>, or <code>&quot;twopi&quot;</code>.</li>
-<li><code>scale</code> sets the scale factor for the <code>&quot;png-image-element&quot;</code> format. If this is not specified, <code>window.devicePixelRatio</code> will be used if available, and <code>1</code> if not.</li>
-<li><code>images</code> specifies image dimensions to use when rendering nodes with <code>image</code> attributes. This is an array of objects, <code>{ href, width, height }</code>. <code>href</code> may be a filename (<code>&quot;example.png&quot;</code>), a relative or absolute path (<code>&quot;/images/example.png&quot;</code>), or a URL (<code>&quot;http://example.com/image.png&quot;</code>). Dimensions may be specified with units: in, px, pc, pt, cm, or mm. If no units are given or dimensions are given as numbers, points (pt) are used. Graphviz does not actually load image data when this option is used — images are referenced with the dimensions given, eg, in SVG by an <code>&lt;image&gt;</code> element with <code>width</code> and <code>height</code> attributes.</li>
-<li><code>files</code> specifies files to make available to Graphviz using Emscripten&#39;s in-memory filesystem. This is an array of objects, <code>{ path, data }</code>. <code>path</code> is a string and may be given as an absolute or relative path, and <code>data</code> is a string. Files are created relative to the root, which is the working directory.</li>
-<li><code>totalMemory</code> sets the total memory available for the Emscripten module instance. This should be a power of 2. The default of 16MB should be sufficient for most cases — only consider using a larger number if you run into the error &quot;Cannot enlarge memory arrays&quot;.</li>
+<li>Install the <a href="https://www.npmjs.com/package/viz.js"><code>viz.js</code> package</a> from npm.</li>
+<li>Download from the <a href="https://github.com/mdaines/viz.js/releases">releases page</a>.</li>
 </ul>
-</li>
-</ul>
-<p>Parses <code>src</code> and renders a graph according to the <code>options</code> given. Output is a string, except when using the &quot;png-image-element&quot; format, when it is an instance of HTMLImageElement.</p>
-<p>For example:</p>
+<h2 id="Building-From-Source">Building From Source</h2>
+<p>To build from source, first <a href="http://kripken.github.io/emscripten-site/docs/getting_started/index.html">install the Emscripten SDK</a>. You&#39;ll also need <a href="https://nodejs.org/">Node.js</a> and <a href="https://yarnpkg.com">Yarn</a>.</p>
+<p>Install the development dependencies using Yarn:</p>
+<pre><code><div class="line-numbers">1</div>yarn <span class="hljs-keyword">install</span>
+</code></pre><p>The build process for Viz.js is split into two parts: building the Graphviz and Expat dependencies, and building the rendering script files and API.</p>
 <pre><code><div class="line-numbers">1
-2
-3
-4
-5</div><span class="hljs-attribute">result</span> = Viz(<span class="hljs-string">"digraph { a -&gt; b; }"</span>);
-<span class="hljs-attribute">result</span> = Viz(<span class="hljs-string">"digraph { a -&gt; b; }"</span>, { format: <span class="hljs-string">"png-image-element"</span>, scale: 2 });
-<span class="hljs-attribute">result</span> = Viz(<span class="hljs-string">"graph { n0 -- n1 -- n2 -- n3 -- n0; }"</span>, { engine: <span class="hljs-string">"neato"</span> });
-<span class="hljs-attribute">result</span> = Viz(<span class="hljs-string">"digraph { x -&gt; y -&gt; z; }"</span>, { format: <span class="hljs-string">"plain"</span> });
-<span class="hljs-attribute">result</span> = Viz(<span class="hljs-string">"digraph { a[image=\"test.png\"]; }"</span>, { images: [ { path: <span class="hljs-string">"test.png"</span>, width: <span class="hljs-string">"400px"</span>, height: <span class="hljs-string">"300px"</span> } ] });
-</code></pre><p>If Graphviz encounters an error, Viz will throw an <code>Error</code> object with the error message.</p>
-<h3 id="Viz.svgXmlToPngImageElement(svgXml[,-scale[,-callback]])">Viz.svgXmlToPngImageElement(svgXml[, scale[, callback]])</h3>
-<ul>
-<li><code>svgXml</code> is an SVG XML string, as may be obtained from the <code>Viz</code> function using the <code>&quot;svg&quot;</code> format option.</li>
-<li><code>scale</code> sets the scale factor for the output. If this is not specified, <code>window.devicePixelRatio</code> will be used if available, and <code>1</code> if not.</li>
-<li><code>callback</code> is an optional Node-style callback. If specified, it is given two arguments, <code>(err, image)</code>. If not specified, <code>Viz.svgXmlToPngImageElement</code> returns an instance of HTMLImageElement.</li>
-</ul>
-<p>Converts <code>svgXml</code> to a PNG HTMLImageElement. If <code>callback</code> is specfied, <code>image</code> is loaded by the time the callback is invoked.</p>
-<h3 id="Viz.svgXmlToPngBase64(svgXml,-scale,-callback)">Viz.svgXmlToPngBase64(svgXml, scale, callback)</h3>
-<ul>
-<li><code>svgXml</code> is an SVG XML string, as may be obtained from the <code>Viz</code> function using the <code>&quot;svg&quot;</code> format option.</li>
-<li><code>scale</code> sets the scale factor for the output. If this is given as <code>undefined</code>, <code>window.devicePixelRatio</code> will be used if available, and <code>1</code> if not.</li>
-<li><code>callback</code> is a Node-style callback. It is given two arguments, <code>(err, data)</code>.</li>
-</ul>
-<p>Converts <code>svgXml</code> to a PNG represented as a Base64 string. This function requires a callback, unlike <code>svgXmlToPngImageElement</code>.</p>
-<h2 id="Supported-Graphviz-features">Supported Graphviz features</h2>
-<p>These engines are supported:</p>
-<ul>
-<li>circo</li>
-<li>dot</li>
-<li>fdp</li>
-<li>neato</li>
-<li>osage</li>
-<li>twopi</li>
-</ul>
-<p>These formats are supported:</p>
-<ul>
-<li>svg</li>
-<li>xdot</li>
-<li>plain</li>
-<li>ps</li>
-<li>json</li>
-</ul>
-<h2 id="PNG-output">PNG output</h2>
-<p>Viz.js provides the <code>&quot;png-image-element&quot;</code> format in addition to the regular Graphviz formats. This returns an <code>HTMLImageElement</code> which can be inserted into the document.</p>
-<pre><code><div class="line-numbers">1
-2</div><span class="hljs-keyword">image</span> = Viz(<span class="hljs-string">"digraph g { a -&gt; b; }"</span>, { <span class="hljs-keyword">format</span>: <span class="hljs-string">"png-image-element"</span> });
-document.body.appendChild(<span class="hljs-keyword">image</span>);
-</code></pre><p>However, this won&#39;t work in a Web Worker context. In that case, ask for the <code>&quot;svg&quot;</code> format in the worker and convert using the accessory function <code>Viz.svgXmlToPngImageElement</code> in the window context. See tests/png.js for an example.</p>
-<h3 id="Internet-Explorer-support">Internet Explorer support</h3>
-<p>Internet Explorer 10 and 11 require <a href="http://fabricjs.com">Fabric.js</a> as an optional dependency for PNG output. Viz.js will look for a <code>fabric</code> object as a member of the global object with a <code>loadSVGFromString()</code> function and use that if present.</p>
-<h2 id="Build">Build</h2>
-<p>To build from source, you will need to <a href="http://kripken.github.io/emscripten-site/docs/getting_started/index.html">install the Emscripten SDK</a>.</p>
-<p>To download the sources and build everything:</p>
-<pre><code><div class="line-numbers">1</div><span class="hljs-attribute">make</span>
-</code></pre> </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id=toc></div></div></div></div><div class=footer><div class=container>&copy; Copright 2017 fibjs.org | <a href=../../../support.html>支持我们</a></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="Click to return on the top page" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js></script><script type=text/javascript src=../../../js/common.js></script><script type=text/javascript src=../../../js/docs.js></script></body></html>
+2</div><span class="hljs-keyword">make</span> deps
+<span class="hljs-keyword">make</span> <span class="hljs-keyword">all</span>
+</code></pre><h2 id="Running-Browser-Tests">Running Browser Tests</h2>
+<p>The browser tests can be run locally using Selenium WebDriver.</p>
+<p>First, serve the project directory at <a href="http://localhost:8000">http://localhost:8000</a>.</p>
+<pre><code><div class="line-numbers">1</div><span class="hljs-attribute">python -m SimpleHTTPServer</span>
+</code></pre><p>Then, run tests using test-browser/runner.js. For example, to run <code>test-browser/full.html</code> in Chrome:</p>
+<pre><code><div class="line-numbers">1</div><span class="hljs-keyword">node</span> <span class="hljs-title">test-browser</span>/runner --file full.html --browser chrome
+</code></pre> </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id=toc></div></div></div></div><div class=footer><div class=container>&copy; Copyright 2018 fibjs.org | <a href=../../../support.html>支持我们</a></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="Click to return on the top page" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js></script><script type=text/javascript src=../../../js/common.js></script><script type=text/javascript src=../../../js/docs.js></script></body></html>

@@ -155,6 +155,7 @@
 <li><a href=../awesome/module/fib-kv.md.html>fib-kv</a></li>
 <li><a href=../awesome/module/fib-rpc.md.html>fib-rpc</a></li>
 <li><a href=../awesome/module/fib-qr.md.html>fib-qr</a></li>
+<li><a href=../awesome/module/fib-pug.md.html>fib-pug</a></li>
 <li><a href=../awesome/module/ejs.md.html>ejs</a></li>
 <li><a href=../awesome/module/juicer.md.html>Juicer</a></li>
 <li><a href=../awesome/module/highlight.js.md.html>highlight.js</a></li>
@@ -171,6 +172,7 @@
 <li><a href=../awesome/module/source-map.md.html>source-map</a></li>
 <li><a href=../awesome/module/json-format.md.html>json-format</a></li>
 <li><a href=../awesome/module/viz.js.md.html>viz.js</a></li>
+<li><a href=../awesome/module/nomnoml.md.html>nomnoml</a></li>
 <li><a href=../awesome/module/pegjs.md.html>pegjs</a></li>
 <li><a href=../awesome/module/uglify-js.md.html>uglify-js</a></li>
 <li><a href=../awesome/module/js-beautify.md.html>js-beautify</a></li>
@@ -356,18 +358,18 @@
     });
 
     <span class="hljs-built_in">console</span>.time(<span class="hljs-string">"sync"</span>);
-    <span class="hljs-keyword">await</span> test_sync(<span class="hljs-number">0</span>);
+    test_sync(<span class="hljs-number">0</span>);
     <span class="hljs-built_in">console</span>.timeEnd(<span class="hljs-string">"sync"</span>);
 }
 
 test();
 </code></pre>
-<p>在最新的 v8 引擎下，这段代码的运行结果如下：</p>
+<p>在最新的 v8 v6.7.192 下，这段代码的运行结果如下：</p>
 <pre><code class="lang-sh"><div class="line-numbers">1
 2
-3</div>async: 14.283ms
-callback: 1.03ms
-sync: 0.106ms
+3</div>async: 5.276ms
+callback: 0.117ms
+sync: 0.038ms
 </code></pre>
 <p>我们从测试结果可以明显知道，当项目中广泛应用 async 之后，服务器将花费大量时间用来处理 async 函数的调用和返回。我们在一些服务端应用的实际测试中也发现了这一点。而且这种性能的急剧下降，是完全不能接受的。</p>
 <p>fibjs 由于采用 fiber，可以充分利用了 JavaScript 语言本身的特性，并且最大限度地发挥 v8 的优越性能。工程师可以很轻易地将服务器的性能发挥到极致。</p>
@@ -416,4 +418,4 @@ data = util.sync(callback_session_get)(sid);
 <h2 id="开始体验">开始体验</h2>
 <p>准备好开始一场愉快的开发经历了吗？那么，从安装开始吧。</p>
 <p>👉 【<a href=install.md.html>安装运行环境</a>】</p>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id=toc></div></div></div></div><div class=footer><div class=container>&copy; Copright 2017 fibjs.org | <a href=../../support.html>支持我们</a></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="Click to return on the top page" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js></script><script type=text/javascript src=../../js/common.js></script><script type=text/javascript src=../../js/docs.js></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id=toc></div></div></div></div><div class=footer><div class=container>&copy; Copyright 2018 fibjs.org | <a href=../../support.html>支持我们</a></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="Click to return on the top page" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js></script><script type=text/javascript src=../../js/common.js></script><script type=text/javascript src=../../js/docs.js></script></body></html>
