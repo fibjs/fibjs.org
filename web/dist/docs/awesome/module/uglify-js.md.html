@@ -463,7 +463,7 @@ mangled, you can declare those names with <code>--mangle reserved</code> — pas
 comma-separated list of names.  For example:</p>
 <pre><code><div class="line-numbers">1</div><span class="hljs-function"><span class="hljs-title">uglifyjs</span></span> ... -m reserved=[<span class="hljs-string">'$'</span>,<span class="hljs-string">'require'</span>,<span class="hljs-string">'exports'</span>]
 </code></pre><p>to prevent the <code>require</code>, <code>exports</code> and <code>$</code> names from being changed.</p>
-<h3 id="CLI-mangling-property-names-(--mangle-props)">CLI mangling property names (<code>--mangle-props</code>)</h3>
+<h3 id="CLI-mangling-property-names-(`--mangle-props`)">CLI mangling property names (<code>--mangle-props</code>)</h3>
 <p><strong>Note:</strong> THIS WILL PROBABLY BREAK YOUR CODE.  Mangling property names
 is a separate step, different from variable name mangling.  Pass
 <code>--mangle-props</code> to enable it.  It will mangle all properties in the
@@ -534,7 +534,7 @@ $ uglifyjs file3.js file4.js --mangle-props --name-cache /tmp/cache.json -o part
 of mangled property names.</p>
 <p>Using the name cache is not necessary if you compress all your files in a
 single call to UglifyJS.</p>
-<h3 id="Mangling-unquoted-names-(--mangle-props-keep_quoted)">Mangling unquoted names (<code>--mangle-props keep_quoted</code>)</h3>
+<h3 id="Mangling-unquoted-names-(`--mangle-props-keep_quoted`)">Mangling unquoted names (<code>--mangle-props keep_quoted</code>)</h3>
 <p>Using quoted property name (<code>o[&quot;foo&quot;]</code>) reserves the property name (<code>foo</code>)
 so that it is not mangled throughout the entire script even when used in an
 unquoted style (<code>o.foo</code>). Example:</p>
@@ -752,7 +752,7 @@ fs.writeFileSync(cacheFileName, <span class="hljs-built_in">JSON</span>.stringif
 <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">JSON</span>.stringify(result.error));
 <span class="hljs-comment">// {"message":"Unexpected token: keyword (else)","filename":"foo.js","line":1,"col":7,"pos":7}</span>
 </code></pre>
-<p>Note: unlike <a href="mailto:`uglify-js@2.x">`uglify-js@2.x</a><code>, the</code>3.x` API does not throw errors. To
+<p>Note: unlike <code>uglify-js@2.x</code>, the <code>3.x</code> API does not throw errors. To
 achieve a similar effect one could do the following:</p>
 <pre><code class="lang-javascript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">var</span> result = UglifyJS.minify(code, options);
@@ -1248,7 +1248,7 @@ function <code>g</code> (which is the AST node to which the comment is attached 
 discarded by the compressor as not referenced.</p>
 <p>The safest comments where to place copyright information (or other info that
 needs to be kept in the output) are comments attached to toplevel nodes.</p>
-<h3 id="The-unsafe-compress-option">The <code>unsafe</code> <code>compress</code> option</h3>
+<h3 id="The-`unsafe`-`compress`-option">The <code>unsafe</code> <code>compress</code> option</h3>
 <p>It enables some transformations that <em>might</em> break code logic in certain
 contrived cases, but should be fine for most code.  You might want to try it
 on your own code, it should reduce the minified size.  Here&#39;s what happens
@@ -1345,7 +1345,7 @@ to parse the value as an expression:</p>
 }).code;
 <span class="hljs-comment">// returns: '"console.log"("hello");'</span>
 </code></pre>
-<h3 id="Using-native-Uglify-AST-with-minify()">Using native Uglify AST with <code>minify()</code></h3>
+<h3 id="Using-native-Uglify-AST-with-`minify()`">Using native Uglify AST with <code>minify()</code></h3>
 <pre><code class="lang-javascript"><div class="line-numbers">1
 2
 3
@@ -1449,31 +1449,31 @@ comparable minify speeds and gzip sizes to
 <td style="text-align:right">-</td>
 </tr>
 <tr>
-<td><a href="mailto:uglify-js@3.0.24">uglify-js@3.0.24</a> mangle=false, compress=false</td>
+<td>uglify-js@3.0.24 mangle=false, compress=false</td>
 <td style="text-align:right">316,600</td>
 <td style="text-align:right">85,245</td>
 <td style="text-align:right">0.70</td>
 </tr>
 <tr>
-<td><a href="mailto:uglify-js@3.0.24">uglify-js@3.0.24</a> mangle=true, compress=false</td>
+<td>uglify-js@3.0.24 mangle=true, compress=false</td>
 <td style="text-align:right">220,216</td>
 <td style="text-align:right">72,730</td>
 <td style="text-align:right">1.13</td>
 </tr>
 <tr>
-<td><a href="mailto:butternut@0.4.6">butternut@0.4.6</a></td>
+<td>butternut@0.4.6</td>
 <td style="text-align:right">217,568</td>
 <td style="text-align:right">72,738</td>
 <td style="text-align:right">1.41</td>
 </tr>
 <tr>
-<td><a href="mailto:uglify-js@3.0.24">uglify-js@3.0.24</a> mangle=true, compress=true</td>
+<td>uglify-js@3.0.24 mangle=true, compress=true</td>
 <td style="text-align:right">212,511</td>
 <td style="text-align:right">71,560</td>
 <td style="text-align:right">3.36</td>
 </tr>
 <tr>
-<td><a href="mailto:babili@0.1.4">babili@0.1.4</a></td>
+<td>babili@0.1.4</td>
 <td style="text-align:right">210,713</td>
 <td style="text-align:right">72,140</td>
 <td style="text-align:right">12.64</td>

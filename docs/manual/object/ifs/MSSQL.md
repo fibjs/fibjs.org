@@ -79,11 +79,14 @@ MSSQL.rollback() async;
 **进入事务执行一个函数，并根据函数执行情况提交或者回滚**
 
 ```JavaScript
-MSSQL.trans(Function func);
+Boolean MSSQL.trans(Function func);
 ```
 
 调用参数:
 * func: Function, 以事务方式执行的函数
+
+返回结果:
+* Boolean, 返回事务是否提交，正常 commit 时返回 true, rollback 时返回 false，如果事务出错则抛出错误
 
 func 执行有三种结果：
 * 函数正常返回，包括运行结束和主动 return，此时事务将自动提交
@@ -92,19 +95,6 @@ func 执行有三种结果：
 
 --------------------------
 ### execute
-**执行一个 sql 命令，并返回执行结果**
-
-```JavaScript
-NArray MSSQL.execute(String sql) async;
-```
-
-调用参数:
-* sql: String, 格式化字符串，可选参数用 ? 指定。例如：'SELECT FROM TEST WHERE [id]=?'
-
-返回结果:
-* NArray, 返回包含结果记录的数组，如果请求是 UPDATE 或者 INSERT，返回结果还会包含 affected 和 insertId，mssql 不支持 insertId。
-
---------------------------
 **执行一个 sql 命令，并返回执行结果，可根据参数格式化字符串**
 
 ```JavaScript

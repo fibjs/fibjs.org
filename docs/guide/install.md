@@ -114,7 +114,7 @@ yum install glibc-devel.i686 libstdc++-static.i686
 ```
 Alpine 准备环境命令如下:
 ```sh
-apk add g++ linux-headers make cmake git
+apk add g++ linux-headers make cmake git libexecinfo-dev
 ```
 FreeBSD (8,9) 准备环境命令如下:
 ```sh
