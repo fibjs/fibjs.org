@@ -1,5 +1,5 @@
 # 模块 ssl
-ssl/tls 模块
+ssl/tls 模块，模块别名：tls
 
 ## 对象
         

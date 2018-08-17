@@ -42,24 +42,14 @@ Digest Digest.update(Buffer data);
 **计算并返回摘要**
 
 ```JavaScript
-Buffer Digest.digest(Buffer data);
+Value Digest.digest(String codec = "buffer");
 ```
 
 调用参数:
-* data: [Buffer](Buffer.md), 二进制数据块，此数据块将在计算前更新进摘要
+* codec: String, 指定编码格式，允许值为："buffer", "[hex](../../module/ifs/hex.md)", "[base64](../../module/ifs/base64.md)", "utf8", 或者系统支持的字符集
 
 返回结果:
-* [Buffer](Buffer.md), 返回摘要的二进制数据
-
---------------------------
-**计算并返回摘要**
-
-```JavaScript
-Buffer Digest.digest();
-```
-
-返回结果:
-* [Buffer](Buffer.md), 返回摘要的二进制数据
+* Value, 返回指定编码的摘要表示
 
 --------------------------
 ### toString

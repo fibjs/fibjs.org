@@ -1,5 +1,5 @@
 # 模块 http
-超文本传输协议模块，用以支持 http 协议处理
+超文本传输协议模块，用以支持 http 协议处理，模块别名：https
 
 ## 对象
         
@@ -273,6 +273,14 @@ opts 包含请求的附加选项，支持的内容如下：
 
 ## 静态属性
         
+### STATUS_CODES
+**Array, 返回标准的 HTTP 响应状态码的集合，以及各自的简短描述。**
+
+```JavaScript
+static readonly Array http.STATUS_CODES;
+```
+
+--------------------------
 ### cookies
 **NArray, 返回http客户端的 [HttpCookie](../../object/ifs/HttpCookie.md) 对象列表**
 
@@ -305,6 +313,14 @@ static Boolean http.autoRedirect;
 ```
 
 --------------------------
+### maxBodySize
+**Integer, 查询和设置 body 最大尺寸，以 MB 为单位，缺省为 -1，不限制尺寸**
+
+```JavaScript
+static Integer http.maxBodySize;
+```
+
+--------------------------
 ### userAgent
 **String, 查询和设置 http 请求中的浏览器标识**
 
@@ -312,12 +328,19 @@ static Boolean http.autoRedirect;
 static String http.userAgent;
 ```
 
-## 成员属性
-        
-### maxBodySize
-**Integer, 查询和设置 body 最大尺寸，以 MB 为单位，缺省为 -1，不限制尺寸**
+--------------------------
+### poolSize
+**Integer, 查询和设置 keep-alive 最大缓存连接数，缺省 128**
 
 ```JavaScript
-Integer http.maxBodySize;
+static Integer http.poolSize;
+```
+
+--------------------------
+### poolTimeout
+**Integer, 查询和设置 keep-alive 缓存连接超时时间，缺省 10000 ms**
+
+```JavaScript
+static Integer http.poolTimeout;
 ```
 

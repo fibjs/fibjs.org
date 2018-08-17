@@ -51,11 +51,11 @@ describe('test', () => {
 
 // async function test
 describe('test async', () => {
-    it('pass case', async() => {
+    it('pass case', async () => {
         assert.ok(true);
     });
 
-    it('error case', async() => {
+    it('error case', async () => {
         throw new Error('some thing wrong!');
     });
 });

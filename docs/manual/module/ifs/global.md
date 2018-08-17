@@ -122,7 +122,7 @@ require 可用于加载基础模块，文件模块。
 
 ```JavaScript
 static Timer global.setTimeout(Function callback,
-    Number timeout,
+    Number timeout = 1,
     ...args);
 ```
 

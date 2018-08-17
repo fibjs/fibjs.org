@@ -123,6 +123,22 @@ static String path.resolve(...ps);
 * String, 返回得到的新路径
 
 --------------------------
+### relative
+**求 _from 到 to 的相对路径**
+
+```JavaScript
+static String path.relative(String _from,
+    String to);
+```
+
+调用参数:
+* _from: String, 源路径
+* to: String, 目标路径
+
+返回结果:
+* String, 返回得到的相对路径
+
+--------------------------
 ### toNamespacedPath
 **转换成 namespace-prefixed 路径。只在 windows 有效，其他系统直接返回。**
 

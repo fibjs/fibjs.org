@@ -223,11 +223,14 @@
 <hr>
 <h3 id="createGunzip">createGunzip</h3>
 <p><strong>创建一个 gunzip 流对象</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Stream zlib.createGunzip(Stream to);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> Stream zlib.createGunzip(Stream to,
+    Integer maxSize = <span class="hljs-number">-1</span>);
 </code></pre>
 <p>调用参数:</p>
 <ul>
 <li>to: <a href=../../object/ifs/stream.md.html>Stream</a>, 用于存储处理结果的流</li>
+<li>maxSize: Integer, 指定解压缩尺寸限制，缺省为 -1，不限制</li>
 </ul>
 <p>返回结果:</p>
 <ul>
@@ -249,11 +252,14 @@
 <hr>
 <h3 id="createInflate">createInflate</h3>
 <p><strong>创建一个 inflate 流对象</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Stream zlib.createInflate(Stream to);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> Stream zlib.createInflate(Stream to,
+    Integer maxSize = <span class="hljs-number">-1</span>);
 </code></pre>
 <p>调用参数:</p>
 <ul>
 <li>to: <a href=../../object/ifs/stream.md.html>Stream</a>, 用于存储处理结果的流</li>
+<li>maxSize: Integer, 指定解压缩尺寸限制，缺省为 -1，不限制</li>
 </ul>
 <p>返回结果:</p>
 <ul>
@@ -262,11 +268,14 @@
 <hr>
 <h3 id="createInflateRaw">createInflateRaw</h3>
 <p><strong>创建一个 inflateRaw 流对象</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Stream zlib.createInflateRaw(Stream to);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> Stream zlib.createInflateRaw(Stream to,
+    Integer maxSize = <span class="hljs-number">-1</span>);
 </code></pre>
 <p>调用参数:</p>
 <ul>
 <li>to: <a href=../../object/ifs/stream.md.html>Stream</a>, 用于存储处理结果的流</li>
+<li>maxSize: Integer, 指定解压缩尺寸限制，缺省为 -1，不限制</li>
 </ul>
 <p>返回结果:</p>
 <ul>
@@ -320,11 +329,14 @@
 <hr>
 <h3 id="inflate">inflate</h3>
 <p><strong>解压缩 deflate 算法压缩的数据(zlib格式)</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Buffer zlib.inflate(Buffer data) <span class="hljs-keyword">async</span>;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> Buffer zlib.inflate(Buffer data,
+    Integer maxSize = <span class="hljs-number">-1</span>) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
 <li>data: <a href=../../object/ifs/buffer.md.html>Buffer</a>, 给定压缩后的数据</li>
+<li>maxSize: Integer, 指定解压缩尺寸限制，缺省为 -1，不限制</li>
 </ul>
 <p>返回结果:</p>
 <ul>
@@ -334,24 +346,30 @@
 <h3 id="inflateTo">inflateTo</h3>
 <p><strong>解压缩 deflate 算法压缩的数据到流对象中(zlib格式)</strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div><span class="hljs-keyword">static</span> zlib.inflateTo(Buffer data,
-    Stream stm) <span class="hljs-keyword">async</span>;
+2
+3</div><span class="hljs-keyword">static</span> zlib.inflateTo(Buffer data,
+    Stream stm,
+    Integer maxSize = <span class="hljs-number">-1</span>) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
 <li>data: <a href=../../object/ifs/buffer.md.html>Buffer</a>, 给定要解压缩的数据</li>
 <li>stm: <a href=../../object/ifs/stream.md.html>Stream</a>, 指定存储解压缩数据的流</li>
+<li>maxSize: Integer, 指定解压缩尺寸限制，缺省为 -1，不限制</li>
 </ul>
 <hr>
 <p><strong>解压缩源流中 deflate 算法压缩的数据到流对象中(zlib格式)</strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div><span class="hljs-keyword">static</span> zlib.inflateTo(Stream src,
-    Stream stm) <span class="hljs-keyword">async</span>;
+2
+3</div><span class="hljs-keyword">static</span> zlib.inflateTo(Stream src,
+    Stream stm,
+    Integer maxSize = <span class="hljs-number">-1</span>) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
 <li>src: <a href=../../object/ifs/stream.md.html>Stream</a>, 给定要解压缩的数据所在的流</li>
 <li>stm: <a href=../../object/ifs/stream.md.html>Stream</a>, 指定存储解压缩数据的流</li>
+<li>maxSize: Integer, 指定解压缩尺寸限制，缺省为 -1，不限制</li>
 </ul>
 <hr>
 <h3 id="gzip">gzip</h3>
@@ -392,11 +410,14 @@
 <hr>
 <h3 id="gunzip">gunzip</h3>
 <p><strong>解压缩 gzip 算法压缩的数据</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Buffer zlib.gunzip(Buffer data) <span class="hljs-keyword">async</span>;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> Buffer zlib.gunzip(Buffer data,
+    Integer maxSize = <span class="hljs-number">-1</span>) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
 <li>data: <a href=../../object/ifs/buffer.md.html>Buffer</a>, 给定压缩后的数据</li>
+<li>maxSize: Integer, 指定解压缩尺寸限制，缺省为 -1，不限制</li>
 </ul>
 <p>返回结果:</p>
 <ul>
@@ -406,24 +427,30 @@
 <h3 id="gunzipTo">gunzipTo</h3>
 <p><strong>解压缩 gzip 算法压缩的数据到流对象中</strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div><span class="hljs-keyword">static</span> zlib.gunzipTo(Buffer data,
-    Stream stm) <span class="hljs-keyword">async</span>;
+2
+3</div><span class="hljs-keyword">static</span> zlib.gunzipTo(Buffer data,
+    Stream stm,
+    Integer maxSize = <span class="hljs-number">-1</span>) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
 <li>data: <a href=../../object/ifs/buffer.md.html>Buffer</a>, 给定要解压缩的数据</li>
 <li>stm: <a href=../../object/ifs/stream.md.html>Stream</a>, 指定存储解压缩数据的流</li>
+<li>maxSize: Integer, 指定解压缩尺寸限制，缺省为 -1，不限制</li>
 </ul>
 <hr>
 <p><strong>解压缩源流中 gzip 算法压缩的数据到流对象中</strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div><span class="hljs-keyword">static</span> zlib.gunzipTo(Stream src,
-    Stream stm) <span class="hljs-keyword">async</span>;
+2
+3</div><span class="hljs-keyword">static</span> zlib.gunzipTo(Stream src,
+    Stream stm,
+    Integer maxSize = <span class="hljs-number">-1</span>) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
 <li>src: <a href=../../object/ifs/stream.md.html>Stream</a>, 给定要解压缩的数据所在的流</li>
 <li>stm: <a href=../../object/ifs/stream.md.html>Stream</a>, 指定存储解压缩数据的流</li>
+<li>maxSize: Integer, 指定解压缩尺寸限制，缺省为 -1，不限制</li>
 </ul>
 <hr>
 <h3 id="deflateRaw">deflateRaw</h3>
@@ -473,11 +500,14 @@
 <hr>
 <h3 id="inflateRaw">inflateRaw</h3>
 <p><strong>解压缩 deflate 算法压缩的数据(inflateRaw)</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Buffer zlib.inflateRaw(Buffer data) <span class="hljs-keyword">async</span>;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> Buffer zlib.inflateRaw(Buffer data,
+    Integer maxSize = <span class="hljs-number">-1</span>) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
 <li>data: <a href=../../object/ifs/buffer.md.html>Buffer</a>, 给定压缩后的数据</li>
+<li>maxSize: Integer, 指定解压缩尺寸限制，缺省为 -1，不限制</li>
 </ul>
 <p>返回结果:</p>
 <ul>
@@ -487,24 +517,30 @@
 <h3 id="inflateRawTo">inflateRawTo</h3>
 <p><strong>解压缩 deflate 算法压缩的数据到流对象中(inflateRaw)</strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div><span class="hljs-keyword">static</span> zlib.inflateRawTo(Buffer data,
-    Stream stm) <span class="hljs-keyword">async</span>;
+2
+3</div><span class="hljs-keyword">static</span> zlib.inflateRawTo(Buffer data,
+    Stream stm,
+    Integer maxSize = <span class="hljs-number">-1</span>) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
 <li>data: <a href=../../object/ifs/buffer.md.html>Buffer</a>, 给定要解压缩的数据</li>
 <li>stm: <a href=../../object/ifs/stream.md.html>Stream</a>, 指定存储解压缩数据的流</li>
+<li>maxSize: Integer, 指定解压缩尺寸限制，缺省为 -1，不限制</li>
 </ul>
 <hr>
 <p><strong>解压缩源流中 deflate 算法压缩的数据到流对象中(inflateRaw)</strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div><span class="hljs-keyword">static</span> zlib.inflateRawTo(Stream src,
-    Stream stm) <span class="hljs-keyword">async</span>;
+2
+3</div><span class="hljs-keyword">static</span> zlib.inflateRawTo(Stream src,
+    Stream stm,
+    Integer maxSize = <span class="hljs-number">-1</span>) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
 <li>src: <a href=../../object/ifs/stream.md.html>Stream</a>, 给定要解压缩的数据所在的流</li>
 <li>stm: <a href=../../object/ifs/stream.md.html>Stream</a>, 指定存储解压缩数据的流</li>
+<li>maxSize: Integer, 指定解压缩尺寸限制，缺省为 -1，不限制</li>
 </ul>
 <h2 id="常量">常量</h2>
 <h3 id="NO_COMPRESSION">NO_COMPRESSION</h3>

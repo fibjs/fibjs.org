@@ -16,7 +16,7 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    HttpClient [tooltip="HttpClient", fillcolor="lightgray", id="me", label="{HttpClient|new HttpClient()\l|cookies\ltimeout\lmaxBodySize\lenableCookie\lautoRedirect\luserAgent\l|request()\lget()\lpost()\ldel()\lput()\lpatch()\l}"];
+    HttpClient [tooltip="HttpClient", fillcolor="lightgray", id="me", label="{HttpClient|new HttpClient()\l|cookies\ltimeout\lmaxBodySize\lenableCookie\lautoRedirect\luserAgent\lpoolSize\lpoolTimeout\l|request()\lget()\lpost()\ldel()\lput()\lpatch()\l}"];
 
     object -> HttpClient [dir=back];
 }
@@ -78,6 +78,22 @@ Boolean HttpClient.autoRedirect;
 
 ```JavaScript
 String HttpClient.userAgent;
+```
+
+--------------------------
+### poolSize
+**Integer, 查询和设置 keep-alive 最大缓存连接数，缺省 128**
+
+```JavaScript
+Integer HttpClient.poolSize;
+```
+
+--------------------------
+### poolTimeout
+**Integer, 查询和设置 keep-alive 缓存连接超时时间，缺省 10000 ms**
+
+```JavaScript
+Integer HttpClient.poolTimeout;
 ```
 
 ## 成员函数

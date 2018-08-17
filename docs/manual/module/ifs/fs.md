@@ -505,6 +505,30 @@ static fs.appendFile(String fname,
 * fname: String, 指定文件名
 * data: [Buffer](../../object/ifs/Buffer.md), 指定要写入的二进制数据
 
+--------------------------
+### setZipFS
+**设置 [zip](zip.md) 虚拟文件映射**
+
+```JavaScript
+static fs.setZipFS(String fname,
+    Buffer data);
+```
+
+调用参数:
+* fname: String, 指定映射路径
+* data: [Buffer](../../object/ifs/Buffer.md), 指定映射的 [zip](zip.md) 文件数据
+
+--------------------------
+### clearZipFS
+**清除 [zip](zip.md) 虚拟文件映射**
+
+```JavaScript
+static fs.clearZipFS(String fname = "");
+```
+
+调用参数:
+* fname: String, 指定映射路径，缺省清除全部缓存
+
 ## 静态属性
         
 ### constants

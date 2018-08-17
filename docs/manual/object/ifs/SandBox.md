@@ -20,7 +20,7 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    SandBox [tooltip="SandBox", fillcolor="lightgray", id="me", label="{SandBox|new SandBox()\l|global\l|add()\laddScript()\lremove()\lclone()\lrun()\lresolve()\lrequire()\l}"];
+    SandBox [tooltip="SandBox", fillcolor="lightgray", id="me", label="{SandBox|new SandBox()\l|global\lmodules\l|add()\laddScript()\lremove()\lhas()\lclone()\lfreeze()\lrefresh()\lrun()\lresolve()\lrequire()\lsetModuleCompiler()\l}"];
 
     object -> SandBox [dir=back];
 }
@@ -85,6 +85,14 @@ new SandBox(Object mods,
 readonly Object SandBox.global;
 ```
 
+--------------------------
+### modules
+**Object, 查询沙箱中现存的所有模块的字典对象**
+
+```JavaScript
+readonly Object SandBox.modules;
+```
+
 ## 成员函数
         
 ### add
@@ -137,6 +145,20 @@ SandBox.remove(String id);
 * id: String, 指定要删除的模块名称，此路径与当前运行脚本无关，必须为绝对路径或者模块名
 
 --------------------------
+### has
+**从沙箱中检测基础模块是否存在**
+
+```JavaScript
+Boolean SandBox.has(String id);
+```
+
+调用参数:
+* id: String, 指定要检测的模块名称，此路径与当前运行脚本无关，必须为绝对路径或者模块名
+
+返回结果:
+* Boolean, 是否存在
+
+--------------------------
 ### clone
 **复制当前沙箱，新沙箱包含当前沙箱的模块，以及相同的名称和 require 函数**
 
@@ -146,6 +168,22 @@ SandBox SandBox.clone();
 
 返回结果:
 * SandBox, 复制的新沙箱
+
+--------------------------
+### freeze
+**冻结当前沙箱，冻结后的沙箱，对 [global](../../module/ifs/global.md) 所做的修改将被忽略**
+
+```JavaScript
+SandBox.freeze();
+```
+
+--------------------------
+### refresh
+**重新加载沙箱内的模块，此操作只会重新初始化模块，复位模块内的变量，不更新模块代码**
+
+```JavaScript
+SandBox.refresh();
+```
 
 --------------------------
 ### run
@@ -191,6 +229,44 @@ Value SandBox.require(String id,
 
 返回结果:
 * Value, 返回加载的模块对象
+
+--------------------------
+### setModuleCompiler
+**对指定的 extname 添加 compiler, extname 不可为系统内置扩展名 (包括 {'.js', '.[json](../../module/ifs/json.md)', '.jsc', '.wasm'}), compiler 需返回有效的 javascript 脚本.**
+
+```JavaScript
+SandBox.setModuleCompiler(String extname,
+    Function compiler);
+```
+
+调用参数:
+* extname: String, 指定的 extname, 必须以 '.' 开头, 且为非系统内置扩展名
+* compiler: Function, 编译回调函数, 所有带 extname 的文件仅会 require 一次. 该回调函数格式为 `compiler(buf, requireInfo)`, buf 为读取到的文件 [Buffer](Buffer.md), requireInfo 结构为 `{filename: string}`.
+
+```JavaScript
+var vm = require('vm');
+var sbox = new vm.SandBox({});
+
+// 编译 typescript 脚本为 js 并加载
+sbox.setModuleCompiler('.ts', tsCompiler);
+var mod_ts = sbox.require('./a.ts');
+
+// 编译 coffee 脚本为 js 并加载
+sbox.setModuleCompiler('.coffee', cafeCompiler);
+var mod_coffee = sbox.require('./a.coffee');
+
+// 编译 jsx 脚本为 js 并加载
+sbox.setModuleCompiler('.jsx', reactCompiler);
+var mod_react = sbox.require('./a.jsx');
+
+// 编译 yml 脚本为自定义的内容(如 API 集合) 并加载
+sbox.setModuleCompiler('.yml', yaml2Rest)
+sbox.setModuleCompiler('.yaml', yaml2Rest)
+
+// 编译 markdown 为自定义的内容(如 html 字符串或 XmlDocument 对象) 并加载
+sbox.setModuleCompiler('.md', mdCompiler)
+sbox.setModuleCompiler('.markdown', mdCompiler)
+```
 
 --------------------------
 ### toString

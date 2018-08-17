@@ -500,6 +500,17 @@ static Value util.clone(Value v);
 * Value, 返回克隆结果
 
 --------------------------
+### deepFreeze
+**深度冻结一个对象，被冻结后的对象及其包含的对象都将不允许修改**
+
+```JavaScript
+static util.deepFreeze(Value v);
+```
+
+调用参数:
+* v: Value, 指定要冻结的对象
+
+--------------------------
 ### extend
 **将一个或者多个对象的键值扩展到指定对象**
 
@@ -868,22 +879,25 @@ static Object util.buildInfo();
 
 ```JavaScript
 {
-    "fibjs": "0.1.0",
-    "svn": 1753,
-    "build": "Dec 10 2013 21:44:17",
+    "fibjs": "0.25.0",
+    "clang": "9.1",
+    "date": "Jun 12 2018 07:22:40",
     "vender": {
-        "ev": "4.11",
-        "exif": "0.6.21",
-        "gd": "2.1.0-alpha",
+        "ev": "4.24",
+        "expat": "2.2.5",
+        "gd": "2.2.4",
         "jpeg": "8.3",
-        "log4cpp": "1.0",
+        "leveldb": "1.17",
         "mongo": "0.7",
         "pcre": "8.21",
         "png": "1.5.4",
-        "sqlite": "3.8.1",
+        "mbedtls": "2.6.1",
+        "snappy": "1.1.2",
+        "sqlite": "3.23.0",
         "tiff": "3.9.5",
         "uuid": "1.6.2",
-        "v8": "3.23.17 (candidate)",
+        "v8": "6.7.288.20",
+        "v8-snapshot": true,
         "zlib": "1.2.7",
         "zmq": "3.1"
     }

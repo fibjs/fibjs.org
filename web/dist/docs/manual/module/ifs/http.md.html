@@ -190,7 +190,7 @@
 <li><a href=../../../awesome/module/rakuten.md.html>Rakuten</a></li>
 </ul>
  </div></div></div>  </div></div><div class=content><div class=social-share data-sites=weibo,twitter data-description=分享></div> <h1 id="模块-http">模块 http</h1>
-<p>超文本传输协议模块，用以支持 http 协议处理</p>
+<p>超文本传输协议模块，用以支持 http 协议处理，模块别名：https</p>
 <h2 id="对象">对象</h2>
 <h3 id="Request">Request</h3>
 <p><strong>创建一个 http 请求对象，参见 <a href=../../object/ifs/httprequest.md.html>HttpRequest</a></strong></p>
@@ -446,6 +446,11 @@
 </code></pre>
 <p>其中 body，<a href=json.md.html>json</a> 不得同时出现。缺省为 {}，不包含任何附加信息</p>
 <h2 id="静态属性">静态属性</h2>
+<h3 id="STATUS_CODES">STATUS_CODES</h3>
+<p><strong>Array, 返回标准的 HTTP 响应状态码的集合，以及各自的简短描述。</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly <span class="hljs-built_in">Array</span> http.STATUS_CODES;
+</code></pre>
+<hr>
 <h3 id="cookies">cookies</h3>
 <p><strong>NArray, 返回http客户端的 <a href=../../object/ifs/httpcookie.md.html>HttpCookie</a> 对象列表</strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly NArray http.cookies;
@@ -466,13 +471,23 @@
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Boolean</span> http.autoRedirect;
 </code></pre>
 <hr>
+<h3 id="maxBodySize">maxBodySize</h3>
+<p><strong>Integer, 查询和设置 body 最大尺寸，以 MB 为单位，缺省为 -1，不限制尺寸</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Integer http.maxBodySize;
+</code></pre>
+<hr>
 <h3 id="userAgent">userAgent</h3>
 <p><strong>String, 查询和设置 http 请求中的浏览器标识</strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">String</span> http.userAgent;
 </code></pre>
-<h2 id="成员属性">成员属性</h2>
-<h3 id="maxBodySize">maxBodySize</h3>
-<p><strong>Integer, 查询和设置 body 最大尺寸，以 MB 为单位，缺省为 -1，不限制尺寸</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer http.maxBodySize;
+<hr>
+<h3 id="poolSize">poolSize</h3>
+<p><strong>Integer, 查询和设置 keep-alive 最大缓存连接数，缺省 128</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Integer http.poolSize;
+</code></pre>
+<hr>
+<h3 id="poolTimeout">poolTimeout</h3>
+<p><strong>Integer, 查询和设置 keep-alive 缓存连接超时时间，缺省 10000 ms</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Integer http.poolTimeout;
 </code></pre>
  </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id=toc></div></div></div></div><div class=footer><div class=container>&copy; Copyright 2018 fibjs.org | <a href=../../../../support.html>支持我们</a></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="Click to return on the top page" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js></script><script type=text/javascript src=../../../../js/common.js></script><script type=text/javascript src=../../../../js/docs.js></script></body></html>
