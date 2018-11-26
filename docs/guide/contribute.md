@@ -129,6 +129,7 @@ namespace fibjs
 }
 ```
 需要注意的是 `DECLARE_MODULE(name);` 这句话，这句话声明了 "name" 这个 module 并把它注册到 javascript 对象上。在编写源代码的时候需要加上这句话。
+在 `v0.25.0` 及以后的版本中，我们将 fibjs 的模块剥离了出来以便更好的复用，所以你仍需要在 `fibjs/program/src/fibjs.cpp` 文件中的 `importModule` 函数中添加如下一句话: `IMPORT_MODULE(name);` 来安装自定义的模块。
 
 ## 编译并测试
 在 windows 上编译之前，需要先执行一遍 `fibjs tools/vsmake.js` 然后 build。
