@@ -4,7 +4,7 @@ mysql 数据库连接对象
 使用 [db.open](../../module/ifs/db.md#open) 或 [db.openMySQL](../../module/ifs/db.md#openMySQL) 创建，创建方式：
 
 ```JavaScript
-var msql = db.openMySQL("mysql://user:pass@host/db");
+var mysql = db.openMySQL("mysql://user:pass@host/db");
 ```
 
 ## 继承关系

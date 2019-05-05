@@ -409,6 +409,14 @@ static readonly String process.platform;
 ```
 
 --------------------------
+### pid
+**Integer, 读取当前对象指向的进程的 id**
+
+```JavaScript
+static readonly Integer process.pid;
+```
+
+--------------------------
 ### stdin
 **[File](../../object/ifs/File.md), 查询当前进程标准输入对象**
 

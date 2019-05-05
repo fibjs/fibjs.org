@@ -243,11 +243,11 @@ Object MongoCollection.dropIndexes();
 **查询当前集合全部索引**
 
 ```JavaScript
-MongoCursor MongoCollection.getIndexes();
+Array MongoCollection.getIndexes();
 ```
 
 返回结果:
-* [MongoCursor](MongoCursor.md), 返回包含索引的结果集
+* Array, 返回包含索引的结果集
 
 --------------------------
 ### getCollection

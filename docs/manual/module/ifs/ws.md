@@ -27,7 +27,7 @@ svr.run();
 var ws = require('ws');
 
 var conn = new ws.Socket('ws://127.0.0.1/ws');
-conn.ommessage = e => console.log(e.data);
+conn.onmessage = e => console.log(e.data);
 ```
 
 ## 对象

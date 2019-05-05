@@ -55,7 +55,19 @@ new WebSocket(String url,
 调用参数:
 * url: String, 指定连接的服务器
 * protocol: String, 指定握手协议，缺省为 ""
-* origin: String, 指定握手时模拟的源
+* origin: String, 指定握手时模拟的源，缺省为 ""
+
+--------------------------
+**WebSocket 构造函数**
+
+```JavaScript
+new WebSocket(String url,
+    Object opts = {});
+```
+
+调用参数:
+* url: String, 指定连接的服务器
+* opts: Object, 连接选项，缺省是 {}，支持的字段有 "protocol", "origin", "headers", "httpClient"。
 
 ## 静态属性
         
