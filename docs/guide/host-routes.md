@@ -51,7 +51,7 @@ fileRoutes.host('file.fibjs.org', http.fileHandler(FILE_DIR))
 而我们希望通过 festatic.fibjs.org 获得这些资源, 则可以这样写:
 
 ```javascript
-fileRoutes.host('static.fibjs.org', http.fileHandlers('/home/frontend/assets/'))
+fileRoutes.host('festatic.fibjs.org', http.fileHandlers('/home/frontend/assets/'))
 ```
 
 ### api 服务器
