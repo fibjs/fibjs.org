@@ -413,7 +413,8 @@ module name
     }
 }
 </code></pre>
-<p>需要注意的是 <code>DECLARE_MODULE(name);</code> 这句话，这句话声明了 &quot;name&quot; 这个 module 并把它注册到 javascript 对象上。在编写源代码的时候需要加上这句话。</p>
+<p>需要注意的是 <code>DECLARE_MODULE(name);</code> 这句话，这句话声明了 &quot;name&quot; 这个 module 并把它注册到 javascript 对象上。在编写源代码的时候需要加上这句话。
+在 <code>v0.25.0</code> 及以后的版本中，我们将 fibjs 的模块剥离了出来以便更好的复用，所以你仍需要在 <code>fibjs/program/src/fibjs.cpp</code> 文件中的 <code>importModule</code> 函数中添加如下一句话: <code>IMPORT_MODULE(name);</code> 来安装自定义的模块。</p>
 <h2 id="编译并测试">编译并测试</h2>
 <p>在 windows 上编译之前，需要先执行一遍 <code>fibjs tools/vsmake.js</code> 然后 build。
 编译运行结果如下:

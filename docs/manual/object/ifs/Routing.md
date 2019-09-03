@@ -99,7 +99,7 @@ digraph {
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
     Handler [tooltip="Handler", URL="Handler.md", label="{Handler|new Handler()\l|invoke()\l}"];
-    Routing [tooltip="Routing", fillcolor="lightgray", id="me", label="{Routing|new Routing()\l|append()\lall()\lget()\lpost()\ldel()\lput()\lpatch()\lfind()\l}"];
+    Routing [tooltip="Routing", fillcolor="lightgray", id="me", label="{Routing|new Routing()\l|append()\lhost()\lall()\lget()\lpost()\ldel()\lput()\lpatch()\lfind()\l}"];
 
     object -> Handler [dir=back];
     Handler -> Routing [dir=back];
@@ -183,7 +183,36 @@ Routing Routing.append(String method,
 ```
 
 调用参数:
-* method: String, 指定 [http](../../module/ifs/http.md) 请求方法，"*" 接受所有方法
+* method: String, 指定 [http](../../module/ifs/http.md) 请求方法，"*" 接受所有方法，"host" 指定虚拟域名
+* pattern: String, 消息匹配格式
+* hdlr: [Handler](Handler.md), 内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq.Handler](../../module/ifs/mq.md#Handler)
+
+返回结果:
+* Routing, 返回路由对象本身
+
+--------------------------
+### host
+**添加一组 [http](../../module/ifs/http.md) 域名的路由规则**
+
+```JavaScript
+Routing Routing.host(Object map);
+```
+
+调用参数:
+* map: Object, 路由参数
+
+返回结果:
+* Routing, 返回路由对象本身
+
+--------------------------
+**添加一条接受 [http](../../module/ifs/http.md) 域名的路由规则**
+
+```JavaScript
+Routing Routing.host(String pattern,
+    Handler hdlr);
+```
+
+调用参数:
 * pattern: String, 消息匹配格式
 * hdlr: [Handler](Handler.md), 内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq.Handler](../../module/ifs/mq.md#Handler)
 

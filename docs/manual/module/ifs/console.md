@@ -656,6 +656,20 @@ static String console.readLine(String msg = "") async;
 返回结果:
 * String, 返回用户输入的信息
 
+--------------------------
+### getpass
+**从控制台读取用户输入的密码**
+
+```JavaScript
+static String console.getpass(String msg = "") async;
+```
+
+调用参数:
+* msg: String, 提示信息
+
+返回结果:
+* String, 返回用户输入的密码
+
 ## 静态属性
         
 ### loglevel

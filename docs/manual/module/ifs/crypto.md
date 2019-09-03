@@ -288,7 +288,7 @@ static Buffer crypto.pbkdf2(Buffer password,
 ## 常量
         
 ### AES
-**指定对称加密算法 AES，支持 128, 192, 256 位 key，分组密码工作模式支持 ECB, CBC, CFB128, CTR, GCM**
+**指定对称加密算法 AES，支持 128, 192, 256 位 key，分组密码工作模式支持 ECB, CBC, CFB128, CTR, GCM，CCM，XTS**
 
 ```JavaScript
 const crypto.AES = 1;
@@ -296,7 +296,7 @@ const crypto.AES = 1;
 
 --------------------------
 ### CAMELLIA
-**指定对称加密算法 CAMELLIA，支持 128, 192, 256 位 key，分组密码工作模式支持 ECB, CBC, CFB128, CTR, GCM**
+**指定对称加密算法 CAMELLIA，支持 128, 192, 256 位 key，分组密码工作模式支持 ECB, CBC, CFB128, CTR, GCM，CCM**
 
 ```JavaScript
 const crypto.CAMELLIA = 2;
@@ -340,6 +340,22 @@ const crypto.BLOWFISH = 6;
 
 ```JavaScript
 const crypto.ARC4 = 7;
+```
+
+--------------------------
+### ARIA
+**指定对称加密算法 ARIA，支持 128, 192, 256 位 key，分组密码工作模式支持 ECB, CBC, CFB128, CTR, GCM，CCM**
+
+```JavaScript
+const crypto.ARIA = 8;
+```
+
+--------------------------
+### CHACHA20
+**指定对称加密算法 CHACHA20，支持 256 位 key，分组密码工作模式支持 POLY1305**
+
+```JavaScript
+const crypto.CHACHA20 = 9;
 ```
 
 --------------------------
@@ -412,6 +428,22 @@ const crypto.STREAM = 8;
 
 ```JavaScript
 const crypto.CCM = 9;
+```
+
+--------------------------
+### XTS
+**指定分组密码工作模式支持 XTS**
+
+```JavaScript
+const crypto.XTS = 10;
+```
+
+--------------------------
+### POLY1305
+**指定分组密码工作模式支持 POLY1305**
+
+```JavaScript
+const crypto.POLY1305 = 11;
 ```
 
 --------------------------

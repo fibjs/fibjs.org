@@ -213,7 +213,7 @@ opts 支持的选项如下：
 ```JavaScript
 {
     "timeout": 100, // 单位为 ms
-    "envs": [] // 进程环境变量
+    "env": {} // 进程环境变量
 }
 ```
 
@@ -237,7 +237,7 @@ opts 支持的选项如下：
 ```JavaScript
 {
     "timeout": 100, // 单位为 ms
-    "envs": [] // 进程环境变量
+    "env": {} // 进程环境变量
 }
 ```
 
@@ -264,7 +264,7 @@ opts 支持的选项如下：
 ```JavaScript
 {
     "timeout": 100, // 单位为 ms
-    "envs": [] // 进程环境变量
+    "env": {} // 进程环境变量
 }
 ```
 
@@ -288,7 +288,7 @@ opts 支持的选项如下：
 ```JavaScript
 {
     "timeout": 100, // 单位为 ms
-    "envs": [] // 进程环境变量
+    "env": {} // 进程环境变量
 }
 ```
 
@@ -299,7 +299,7 @@ opts 支持的选项如下：
 ```JavaScript
 static Integer process.run(String command,
     Array args,
-    Object opts = {});
+    Object opts = {}) async;
 ```
 
 调用参数:
@@ -315,7 +315,7 @@ opts 支持的选项如下：
 ```JavaScript
 {
     "timeout": 100, // 单位为 ms
-    "envs": [] // 进程环境变量
+    "env": {} // 进程环境变量
 }
 ```
 
@@ -324,7 +324,7 @@ opts 支持的选项如下：
 
 ```JavaScript
 static Integer process.run(String command,
-    Object opts = {});
+    Object opts = {}) async;
 ```
 
 调用参数:
@@ -339,7 +339,7 @@ opts 支持的选项如下：
 ```JavaScript
 {
     "timeout": 100, // 单位为 ms
-    "envs": [] // 进程环境变量
+    "env": {} // 进程环境变量
 }
 ```
 
