@@ -5,3 +5,4 @@
 * [找出性能杀手](profiler.md)
 * [添加 native 模块](contribute.md)
 * [服务端模块热更新](server-hot-update.md)
+* [域名路由](host-routes.md)

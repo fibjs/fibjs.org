@@ -1,1 +1,16 @@
-webpackJsonp([1],[function(n,c,t){(function(n){"use strict";t(2),n(".down").click(function(){ga("send","event","下载",this.innerText)})}).call(c,t(1))}]);
+webpackJsonp([1],[
+/* 0 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function($) {'use strict';
+	
+	__webpack_require__(2);
+	
+	$(".down").click(function () {
+	    ga('send', 'event', '下载', this.innerText);
+	});
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+
+/***/ })
+]);
+//# sourceMappingURL=tmpl.js.map
