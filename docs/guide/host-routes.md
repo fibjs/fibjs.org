@@ -24,7 +24,7 @@ rt.append('host', 'fibjs.org', ...)
 
 ### 简单的 fileHandlers
 
-假设域名 fibjs.org 已经被绑定到我们应用所在的机器(处于测试目的, 你也可以通过在本地修改 Hosts 达到这一绑定效果), 而我们希望通过 `file.fibjs.org` 可以下载机器上 FILE_DIR 目录的文件资源,
+假设域名 fibjs.org 已经被绑定到我们应用所在的机器(出于测试目的, 你也可以通过在本地修改 Hosts 达到这一绑定效果), 而我们希望通过 `file.fibjs.org` 可以下载机器上 FILE_DIR 目录的文件资源,
 我们可以这样做:
 
 ```javascript
@@ -83,13 +83,12 @@ apiRoutes.host('api.fibjs.org', {
 
 ```javascript
 const mq = require('mq')
-const http = require('http')
 
 const apiRoutes = new mq.Routing();
 
 apiRoutes.host('api.fibjs.org', {
     '/user': (req) => proxyTo(req, `http://127.0.0.1:3001`),
-    '/biz1': http.post((req) => proxyTo(req, `http://127.0.0.1:8080`)),
+    '/biz1': apiRoutes.post((req) => proxyTo(req, `http://127.0.0.1:8080`)),
     '/biz2': (req) => proxyTo(req, `http://127.0.0.1:9007`),
 })
 ```
