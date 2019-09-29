@@ -16,7 +16,7 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    HttpClient [tooltip="HttpClient", fillcolor="lightgray", id="me", label="{HttpClient|new HttpClient()\l|cookies\ltimeout\lmaxBodySize\lenableCookie\lautoRedirect\luserAgent\lpoolSize\lpoolTimeout\l|request()\lget()\lpost()\ldel()\lput()\lpatch()\l}"];
+    HttpClient [tooltip="HttpClient", fillcolor="lightgray", id="me", label="{HttpClient|new HttpClient()\l|cookies\ltimeout\lenableCookie\lautoRedirect\lenableEncoding\lmaxBodySize\luserAgent\lpoolSize\lpoolTimeout\l|request()\lget()\lpost()\ldel()\lput()\lpatch()\l}"];
 
     object -> HttpClient [dir=back];
 }
@@ -49,16 +49,8 @@ Integer HttpClient.timeout;
 ```
 
 --------------------------
-### maxBodySize
-**Integer, 查询和设置 body 最大尺寸，以 MB 为单位，缺省为 -1，不限制尺寸**
-
-```JavaScript
-Integer HttpClient.maxBodySize;
-```
-
---------------------------
 ### enableCookie
-**Boolean, cookie功能开关，默认开启**
+**Boolean, cookie 功能开关，默认开启**
 
 ```JavaScript
 Boolean HttpClient.enableCookie;
@@ -66,10 +58,26 @@ Boolean HttpClient.enableCookie;
 
 --------------------------
 ### autoRedirect
-**Boolean, 自动redirect功能开关，默认开启**
+**Boolean, 自动 redirect 功能开关，默认开启**
 
 ```JavaScript
 Boolean HttpClient.autoRedirect;
+```
+
+--------------------------
+### enableEncoding
+**Boolean, 自动解压缩功能开关，默认开启**
+
+```JavaScript
+Boolean HttpClient.enableEncoding;
+```
+
+--------------------------
+### maxBodySize
+**Integer, 查询和设置 body 最大尺寸，以 MB 为单位，缺省为 -1，不限制尺寸**
+
+```JavaScript
+Integer HttpClient.maxBodySize;
 ```
 
 --------------------------

@@ -82,6 +82,7 @@
 <li><a href=../../manual/object/ifs/httpcookie.md.html>HttpCookie</a></li>
 <li><a href=../../manual/object/ifs/httphandler.md.html>HttpHandler</a></li>
 <li><a href=../../manual/object/ifs/httpmessage.md.html>HttpMessage</a></li>
+<li><a href=../../manual/object/ifs/httprepeater.md.html>HttpRepeater</a></li>
 <li><a href=../../manual/object/ifs/httprequest.md.html>HttpRequest</a></li>
 <li><a href=../../manual/object/ifs/httpresponse.md.html>HttpResponse</a></li>
 <li><a href=../../manual/object/ifs/httpserver.md.html>HttpServer</a></li>
@@ -342,25 +343,25 @@ rma.hash_func = RakutenMA.create_hash_func(<span class="hljs-number">15</span>);
 16
 17
 18
-19</div>&lt;script <span class="hljs-keyword">type</span>=<span class="hljs-string">"text/javascript"</span> src=<span class="hljs-string">"rakutenma.js"</span> charset=<span class="hljs-string">"UTF-8"</span>&gt;&lt;/script&gt;
-&lt;script <span class="hljs-keyword">type</span>=<span class="hljs-string">"text/javascript"</span> src=<span class="hljs-string">"model_ja.js"</span> charset=<span class="hljs-string">"UTF-8"</span>&gt;&lt;/script&gt;
-&lt;script <span class="hljs-keyword">type</span>=<span class="hljs-string">"text/javascript"</span> src=<span class="hljs-string">"hanzenkaku.js"</span> charset=<span class="hljs-string">"UTF-8"</span>&gt;&lt;/script&gt;
-&lt;script <span class="hljs-keyword">type</span>=<span class="hljs-string">"text/javascript"</span> charset=<span class="hljs-string">"UTF-8"</span>&gt;
-  <span class="hljs-keyword">function</span> <span class="hljs-constructor">Segment()</span> {
+19</div><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"rakutenma.js"</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"UTF-8"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"model_ja.js"</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"UTF-8"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"hanzenkaku.js"</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"UTF-8"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"UTF-8"</span>&gt;</span><span class="javascript">
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Segment</span>(<span class="hljs-params"></span>) </span>{
 
-    rma = <span class="hljs-keyword">new</span> <span class="hljs-constructor">RakutenMA(<span class="hljs-params">model</span>)</span>;
-    rma.featset = <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">RakutenMA</span>.</span></span>default_featset_ja;
-    rma.hash_func = <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">RakutenMA</span>.</span></span>create<span class="hljs-constructor">_hash_func(15)</span>;
+    rma = <span class="hljs-keyword">new</span> RakutenMA(model);
+    rma.featset = RakutenMA.default_featset_ja;
+    rma.hash_func = RakutenMA.create_hash_func(<span class="hljs-number">15</span>);
 
-    var textarea = document.get<span class="hljs-constructor">ElementById(<span class="hljs-string">"input"</span>)</span>;
-    var result = document.get<span class="hljs-constructor">ElementById(<span class="hljs-string">"output"</span>)</span>;
-    var tokens = rma.tokenize(<span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">HanZenKaku</span>.</span></span>hs2fs(<span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">HanZenKaku</span>.</span></span>hw2fw(<span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">HanZenKaku</span>.</span></span>h2z(textarea.value))));
+    <span class="hljs-keyword">var</span> textarea = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"input"</span>);
+    <span class="hljs-keyword">var</span> result = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"output"</span>);
+    <span class="hljs-keyword">var</span> tokens = rma.tokenize(HanZenKaku.hs2fs(HanZenKaku.hw2fw(HanZenKaku.h2z(textarea.value))));
 
-    result.style.display = 'block';
-    result.innerHTML = <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">RakutenMA</span>.</span></span>tokens2string(tokens);
+    result.style.display = <span class="hljs-string">'block'</span>;
+    result.innerHTML = RakutenMA.tokens2string(tokens);
   }
 
-&lt;/script&gt;
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 </code></pre><p>The analysis and result looks like this:</p>
 <pre><code><div class="line-numbers">1
 2

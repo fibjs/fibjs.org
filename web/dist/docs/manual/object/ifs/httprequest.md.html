@@ -82,6 +82,7 @@
 <li><a href=httpcookie.md.html>HttpCookie</a></li>
 <li><a href=httphandler.md.html>HttpHandler</a></li>
 <li><a href=httpmessage.md.html>HttpMessage</a></li>
+<li><a href=httprepeater.md.html>HttpRepeater</a></li>
 <li class="active"><a href=httprequest.md.html>HttpRequest</a></li>
 <li><a href=httpresponse.md.html>HttpResponse</a></li>
 <li><a href=httpserver.md.html>HttpServer</a></li>
@@ -453,7 +454,7 @@
 <hr>
 <h3 id="firstHeader">firstHeader</h3>
 <p><strong>查询指定键值的第一个消息头</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Variant HttpRequest.firstHeader(<span class="hljs-built_in">String</span> name);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> HttpRequest.firstHeader(<span class="hljs-built_in">String</span> name);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -461,20 +462,20 @@
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>Variant, 返回键值所对应的值，若不存在，则返回 undefined</li>
+<li>String, 返回键值所对应的值，若不存在，则返回 undefined</li>
 </ul>
 <hr>
 <h3 id="allHeader">allHeader</h3>
 <p><strong>查询指定键值的全部消息头</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>NArray HttpRequest.allHeader(<span class="hljs-built_in">String</span> name);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>NObject HttpRequest.allHeader(<span class="hljs-built_in">String</span> name = <span class="hljs-string">""</span>);
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li>name: String, 指定要查询的键值</li>
+<li>name: String, 指定要查询的键值，传递空字符串返回全部键值的结果</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li>NArray, 返回键值所对应全部值的数组，若数据不存在，则返回 null</li>
+<li>NObject, 返回键值所对应全部值的数组，若数据不存在，则返回 null</li>
 </ul>
 <hr>
 <h3 id="addHeader">addHeader</h3>
@@ -486,15 +487,26 @@
 <li>map: Object, 指定要添加的键值数据字典</li>
 </ul>
 <hr>
-<p><strong>添加一个消息头，添加数据并不修改已存在的键值的消息头</strong></p>
+<p><strong>添加指定名称的一组消息头，添加数据并不修改已存在的键值的消息头</strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>HttpRequest.addHeader(<span class="hljs-built_in">String</span> name,
-    Variant value);
+    <span class="hljs-built_in">Array</span> values);
 </code></pre>
 <p>调用参数:</p>
 <ul>
 <li>name: String, 指定要添加的键值</li>
-<li>value: Variant, 指定要添加的数据</li>
+<li>values: Array, 指定要添加的一组数据</li>
+</ul>
+<hr>
+<p><strong>添加一个消息头，添加数据并不修改已存在的键值的消息头</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div>HttpRequest.addHeader(<span class="hljs-built_in">String</span> name,
+    <span class="hljs-built_in">String</span> value);
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li>name: String, 指定要添加的键值</li>
+<li>value: String, 指定要添加的数据</li>
 </ul>
 <hr>
 <h3 id="setHeader">setHeader</h3>
@@ -506,15 +518,26 @@
 <li>map: Object, 指定要设定的键值数据字典</li>
 </ul>
 <hr>
-<p><strong>设定一个消息头，设定数据将修改键值所对应的第一个数值，并清除相同键值的其余消息头</strong></p>
+<p><strong>设定指定名称的一组消息头，设定数据将修改键值所对应的数值，并清除相同键值的其余消息头</strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>HttpRequest.setHeader(<span class="hljs-built_in">String</span> name,
-    Variant value);
+    <span class="hljs-built_in">Array</span> values);
 </code></pre>
 <p>调用参数:</p>
 <ul>
 <li>name: String, 指定要设定的键值</li>
-<li>value: Variant, 指定要设定的数据</li>
+<li>values: Array, 指定要设定的一组数据</li>
+</ul>
+<hr>
+<p><strong>设定一个消息头，设定数据将修改键值所对应的第一个数值，并清除相同键值的其余消息头</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div>HttpRequest.setHeader(<span class="hljs-built_in">String</span> name,
+    <span class="hljs-built_in">String</span> value);
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li>name: String, 指定要设定的键值</li>
+<li>value: String, 指定要设定的数据</li>
 </ul>
 <hr>
 <h3 id="removeHeader">removeHeader</h3>

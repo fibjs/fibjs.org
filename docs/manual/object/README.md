@@ -22,6 +22,7 @@
 * [HttpCookie](ifs/HttpCookie.md) - http Cookie 对象，用于添加和处理 cookie
 * [HttpHandler](ifs/HttpHandler.md) - http 协议转换处理器
 * [HttpMessage](ifs/HttpMessage.md) - http 基础消息对象
+* [HttpRepeater](ifs/HttpRepeater.md) - http 请求转发处理器
 * [HttpRequest](ifs/HttpRequest.md) - http 请求消息对象
 * [HttpResponse](ifs/HttpResponse.md) - http 响应消息对象
 * [HttpServer](ifs/HttpServer.md) - http 服务器对象

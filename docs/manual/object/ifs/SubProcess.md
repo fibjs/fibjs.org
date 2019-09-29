@@ -14,7 +14,7 @@ digraph {
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
     Stream [tooltip="Stream", URL="Stream.md", label="{Stream|read()\lwrite()\lflush()\lclose()\lcopyTo()\l}"];
     BufferedStream [tooltip="BufferedStream", URL="BufferedStream.md", label="{BufferedStream|new BufferedStream()\l|stream\lcharset\lEOL\l|readText()\lreadLine()\lreadLines()\lreadUntil()\lwriteText()\lwriteLine()\l}"];
-    SubProcess [tooltip="SubProcess", fillcolor="lightgray", id="me", label="{SubProcess|pid\lstdin\lstdout\l|kill()\lwait()\lfindWindow()\l}"];
+    SubProcess [tooltip="SubProcess", fillcolor="lightgray", id="me", label="{SubProcess|pid\lppid\lstdin\lstdout\l|kill()\lwait()\lfindWindow()\l}"];
 
     object -> Stream [dir=back];
     Stream -> BufferedStream [dir=back];
@@ -29,6 +29,14 @@ digraph {
 
 ```JavaScript
 readonly Integer SubProcess.pid;
+```
+
+--------------------------
+### ppid
+**Integer, 读取当前对象指向的父进程的 id**
+
+```JavaScript
+readonly Integer SubProcess.ppid;
 ```
 
 --------------------------

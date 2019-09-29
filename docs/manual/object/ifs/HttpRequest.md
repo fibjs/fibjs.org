@@ -240,28 +240,28 @@ Boolean HttpRequest.hasHeader(String name);
 **查询指定键值的第一个消息头**
 
 ```JavaScript
-Variant HttpRequest.firstHeader(String name);
+String HttpRequest.firstHeader(String name);
 ```
 
 调用参数:
 * name: String, 指定要查询的键值
 
 返回结果:
-* Variant, 返回键值所对应的值，若不存在，则返回 undefined
+* String, 返回键值所对应的值，若不存在，则返回 undefined
 
 --------------------------
 ### allHeader
 **查询指定键值的全部消息头**
 
 ```JavaScript
-NArray HttpRequest.allHeader(String name);
+NObject HttpRequest.allHeader(String name = "");
 ```
 
 调用参数:
-* name: String, 指定要查询的键值
+* name: String, 指定要查询的键值，传递空字符串返回全部键值的结果
 
 返回结果:
-* NArray, 返回键值所对应全部值的数组，若数据不存在，则返回 null
+* NObject, 返回键值所对应全部值的数组，若数据不存在，则返回 null
 
 --------------------------
 ### addHeader
@@ -275,16 +275,28 @@ HttpRequest.addHeader(Object map);
 * map: Object, 指定要添加的键值数据字典
 
 --------------------------
-**添加一个消息头，添加数据并不修改已存在的键值的消息头**
+**添加指定名称的一组消息头，添加数据并不修改已存在的键值的消息头**
 
 ```JavaScript
 HttpRequest.addHeader(String name,
-    Variant value);
+    Array values);
 ```
 
 调用参数:
 * name: String, 指定要添加的键值
-* value: Variant, 指定要添加的数据
+* values: Array, 指定要添加的一组数据
+
+--------------------------
+**添加一个消息头，添加数据并不修改已存在的键值的消息头**
+
+```JavaScript
+HttpRequest.addHeader(String name,
+    String value);
+```
+
+调用参数:
+* name: String, 指定要添加的键值
+* value: String, 指定要添加的数据
 
 --------------------------
 ### setHeader
@@ -298,16 +310,28 @@ HttpRequest.setHeader(Object map);
 * map: Object, 指定要设定的键值数据字典
 
 --------------------------
-**设定一个消息头，设定数据将修改键值所对应的第一个数值，并清除相同键值的其余消息头**
+**设定指定名称的一组消息头，设定数据将修改键值所对应的数值，并清除相同键值的其余消息头**
 
 ```JavaScript
 HttpRequest.setHeader(String name,
-    Variant value);
+    Array values);
 ```
 
 调用参数:
 * name: String, 指定要设定的键值
-* value: Variant, 指定要设定的数据
+* values: Array, 指定要设定的一组数据
+
+--------------------------
+**设定一个消息头，设定数据将修改键值所对应的第一个数值，并清除相同键值的其余消息头**
+
+```JavaScript
+HttpRequest.setHeader(String name,
+    String value);
+```
+
+调用参数:
+* name: String, 指定要设定的键值
+* value: String, 指定要设定的数据
 
 --------------------------
 ### removeHeader

@@ -63,14 +63,14 @@ Variant HttpCollection.first(String name);
 **查询指定键值的全部值**
 
 ```JavaScript
-NArray HttpCollection.all(String name);
+NObject HttpCollection.all(String name = "");
 ```
 
 调用参数:
-* name: String, 指定要查询的键值
+* name: String, 指定要查询的键值，传递空字符串返回全部键值的结果
 
 返回结果:
-* NArray, 返回键值所对应全部值的数组，若数据不存在，则返回 null
+* NObject, 返回键值所对应全部值的数组，若数据不存在，则返回 null
 
 --------------------------
 ### add
@@ -82,6 +82,18 @@ HttpCollection.add(Object map);
 
 调用参数:
 * map: Object, 指定要添加的键值数据字典
+
+--------------------------
+**添加一个键值的一组数据，添加数据并不修改已存在的键值的数据**
+
+```JavaScript
+HttpCollection.add(String name,
+    Array values);
+```
+
+调用参数:
+* name: String, 指定要添加的键值
+* values: Array, 指定要添加的一组数据
 
 --------------------------
 **添加一个键值数据，添加数据并不修改已存在的键值的数据**
@@ -105,6 +117,18 @@ HttpCollection.set(Object map);
 
 调用参数:
 * map: Object, 指定要设定的键值数据字典
+
+--------------------------
+**设定一个键值的一组数据，设定数据将修改键值所对应的数值，并清除相同键值的其余数据**
+
+```JavaScript
+HttpCollection.set(String name,
+    Array values);
+```
+
+调用参数:
+* name: String, 指定要设定的键值
+* values: Array, 指定要设定的一组数据
 
 --------------------------
 **设定一个键值数据，设定数据将修改键值所对应的第一个数值，并清除相同键值的其余数据**

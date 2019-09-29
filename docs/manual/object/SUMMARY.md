@@ -21,6 +21,7 @@
 * [HttpCookie](ifs/HttpCookie.md)
 * [HttpHandler](ifs/HttpHandler.md)
 * [HttpMessage](ifs/HttpMessage.md)
+* [HttpRepeater](ifs/HttpRepeater.md)
 * [HttpRequest](ifs/HttpRequest.md)
 * [HttpResponse](ifs/HttpResponse.md)
 * [HttpServer](ifs/HttpServer.md)

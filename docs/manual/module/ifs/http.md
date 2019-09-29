@@ -58,6 +58,14 @@ HttpsServer http.HttpsServer;
 HttpHandler http.Handler;
 ```
 
+--------------------------
+### Repeater
+**创建一个 http 请求转发处理器对象，参见 [HttpRepeater](../../object/ifs/HttpRepeater.md)**
+
+```JavaScript
+HttpRepeater http.Repeater;
+```
+
 ## 静态函数
         
 ### fileHandler
@@ -298,7 +306,7 @@ static Integer http.timeout;
 
 --------------------------
 ### enableCookie
-**Boolean, cookie功能开关，默认开启**
+**Boolean, cookie 功能开关，默认开启**
 
 ```JavaScript
 static Boolean http.enableCookie;
@@ -306,10 +314,18 @@ static Boolean http.enableCookie;
 
 --------------------------
 ### autoRedirect
-**Boolean, 自动redirect功能开关，默认开启**
+**Boolean, 自动 redirect 功能开关，默认开启**
 
 ```JavaScript
 static Boolean http.autoRedirect;
+```
+
+--------------------------
+### enableEncoding
+**Boolean, 自动解压缩功能开关，默认开启**
+
+```JavaScript
+static Boolean http.enableEncoding;
 ```
 
 --------------------------

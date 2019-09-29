@@ -27,6 +27,7 @@ digraph {
     Chain [tooltip="Chain", URL="Chain.md", label="{Chain}"];
     HandlerEx [tooltip="HandlerEx", URL="HandlerEx.md", label="{HandlerEx}"];
     HttpHandler [tooltip="HttpHandler", URL="HttpHandler.md", label="{HttpHandler}"];
+    HttpRepeater [tooltip="HttpRepeater", URL="HttpRepeater.md", label="{HttpRepeater}"];
     Routing [tooltip="Routing", URL="Routing.md", label="{Routing}"];
     SslHandler [tooltip="SslHandler", URL="SslHandler.md", label="{SslHandler}"];
     HeapGraphEdge [tooltip="HeapGraphEdge", URL="HeapGraphEdge.md", label="{HeapGraphEdge}"];
@@ -115,6 +116,7 @@ digraph {
     Handler -> Chain [dir=back];
     Handler -> HandlerEx [dir=back];
     HandlerEx -> HttpHandler [dir=back];
+    Handler -> HttpRepeater [dir=back];
     Handler -> Routing [dir=back];
     Handler -> SslHandler [dir=back];
     object -> HeapGraphEdge [dir=back];
