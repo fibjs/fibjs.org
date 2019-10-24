@@ -288,33 +288,33 @@
 <h2 id="成员属性">成员属性</h2>
 <h3 id="type" class ="notranslate">type</h3>
 <p><strong>String, 查询当前连接数据库类型</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div>readonly <span class="hljs-built_in">String</span> DbConnection.type;
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly <span class="hljs-built_in">String</span> DbConnection.type;
+</code></pre>
 <h2 id="成员函数">成员函数</h2>
 <h3 id="close" class ="notranslate">close</h3>
 <p><strong>关闭当前数据库连接</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div>DbConnection.close() <span class="hljs-keyword">async</span>;
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>DbConnection.close() <span class="hljs-keyword">async</span>;
+</code></pre>
 <hr>
 <h3 id="begin" class ="notranslate">begin</h3>
 <p><strong>在当前数据库连接上启动一个事务</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div>DbConnection.begin() <span class="hljs-keyword">async</span>;
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>DbConnection.begin() <span class="hljs-keyword">async</span>;
+</code></pre>
 <hr>
 <h3 id="commit" class ="notranslate">commit</h3>
 <p><strong>提交当前数据库连接上的事务</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div>DbConnection.commit() <span class="hljs-keyword">async</span>;
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>DbConnection.commit() <span class="hljs-keyword">async</span>;
+</code></pre>
 <hr>
 <h3 id="rollback" class ="notranslate">rollback</h3>
 <p><strong>回滚当前数据库连接上的事务</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div>DbConnection.rollback() <span class="hljs-keyword">async</span>;
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>DbConnection.rollback() <span class="hljs-keyword">async</span>;
+</code></pre>
 <hr>
 <h3 id="trans" class ="notranslate">trans</h3>
 <p><strong>进入事务执行一个函数，并根据函数执行情况提交或者回滚</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Boolean</span> DbConnection.trans(<span class="hljs-built_in">Function</span> func);
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Boolean</span> DbConnection.trans(<span class="hljs-built_in">Function</span> func);
+</code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">func</span>: Function, 以事务方式执行的函数</li>
@@ -332,10 +332,10 @@
 <hr>
 <h3 id="execute" class ="notranslate">execute</h3>
 <p><strong>执行一个 sql 命令，并返回执行结果，可根据参数格式化字符串</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>NArray DbConnection.execute(<span class="hljs-built_in">String</span> sql,
     ...args) <span class="hljs-keyword">async</span>;
-</div></pre>
+</code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">sql</span>: String, 格式化字符串，可选参数用 ? 指定。例如：&#39;SELECT FROM TEST WHERE [id]=?&#39;</li>
@@ -348,10 +348,10 @@
 <hr>
 <h3 id="format" class ="notranslate">format</h3>
 <p><strong>格式化一个 sql 命令，并返回格式化结果</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-built_in">String</span> DbConnection.format(<span class="hljs-built_in">String</span> sql,
     ...args);
-</div></pre>
+</code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">sql</span>: String, 格式化字符串，可选参数用 ? 指定。例如：&#39;SELECT FROM TEST WHERE [id]=?&#39;</li>
@@ -364,8 +364,8 @@
 <hr>
 <h3 id="toString" class ="notranslate">toString</h3>
 <p><strong>返回对象的字符串表示，一般返回 &quot;[Native Object]&quot;，对象可以根据自己的特性重新实现</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> DbConnection.toString();
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> DbConnection.toString();
+</code></pre>
 <p>返回结果:</p>
 <ul>
 <li><span class="notranslate">String</span>, 返回对象的字符串表示</li>
@@ -373,8 +373,8 @@
 <hr>
 <h3 id="toJSON" class ="notranslate">toJSON</h3>
 <p><strong>返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div>Value DbConnection.toJSON(<span class="hljs-built_in">String</span> key = <span class="hljs-string">""</span>);
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Value DbConnection.toJSON(<span class="hljs-built_in">String</span> key = <span class="hljs-string">""</span>);
+</code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">key</span>: String, 未使用</li>

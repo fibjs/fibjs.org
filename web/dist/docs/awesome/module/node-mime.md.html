@@ -203,30 +203,30 @@
 <p>If you prefer the legacy version of this module please <code>npm install mime@^1</code>.  Version 1 docs may be found <a href="https://github.com/broofa/node-mime/tree/v1.4.0">here</a>.</p>
 <h2 id="Install">Install</h2>
 <h3 id="NPM" class ="notranslate">NPM</h3>
-<pre class ="notranslate"><div class="code"><div class="line-numbers">1</div>npm <span class="hljs-keyword">install</span> mime
-</div></pre><h3 id="Browser" class ="notranslate">Browser</h3>
+<pre><code><div class="line-numbers">1</div>npm <span class="hljs-keyword">install</span> mime
+</code></pre><h3 id="Browser" class ="notranslate">Browser</h3>
 <p>It is recommended that you use a bundler such as
 <a href="https://webpack.github.io/">webpack</a> or <a href="http://browserify.org/">browserify</a> to
 package your code.  However, browser-ready versions are available via wzrd.in.
 E.g. For the full version:</p>
-<pre class ="notranslate"><div class="code"><div class="line-numbers">1
+<pre><code><div class="line-numbers">1
 2
 3
 4</div><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://wzrd.in/standalone/mime@latest"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
 mime.getType(...); <span class="hljs-comment">// etc.</span>
 <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span></span></span>
-</div></pre><p>Or, for the <code>mime/lite</code> version:</p>
-<pre class ="notranslate"><div class="code"><div class="line-numbers">1
+</code></pre><p>Or, for the <code>mime/lite</code> version:</p>
+<pre><code><div class="line-numbers">1
 2
 3
 4</div><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://wzrd.in/standalone/mime%2flite@latest"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
 mimelite.getType(...); <span class="hljs-comment">// (Note `mimelite` here)</span>
 <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span></span></span>
-</div></pre><h2 id="Quick-Start">Quick Start</h2>
+</code></pre><h2 id="Quick-Start">Quick Start</h2>
 <p>For the full version (800+ MIME types, 1,000+ extensions):</p>
-<pre class ="notranslate"><div class="code lang-javascript"><div class="line-numbers">1
+<pre><code class="lang-javascript"><div class="line-numbers">1
 2
 3
 4
@@ -235,14 +235,14 @@ mimelite.getType(...); <span class="hljs-comment">// (Note `mimelite` here)</spa
 mime.getType(<span class="hljs-string">'txt'</span>);                    <span class="hljs-comment">// ⇨ 'text/plain'</span>
 mime.getExtension(<span class="hljs-string">'text/plain'</span>);        <span class="hljs-comment">// ⇨ 'txt'</span>
 
-</div></pre>
+</code></pre>
 <p>See <a href="#mime-api">Mime API</a> below for API details.</p>
 <h2 id="Lite-Version">Lite Version</h2>
 <p>There is also a &quot;lite&quot; version of this module that omits vendor-specific
 (<code>*/vnd.*</code>) and experimental (<code>*/x-*</code>) types.  It weighs in at ~2.5KB, compared
 to 8KB for the full version.  To load the lite version:</p>
-<pre class ="notranslate"><div class="code lang-javascript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> mime = <span class="hljs-built_in">require</span>(<span class="hljs-string">'mime/lite'</span>);
-</div></pre>
+<pre><code class="lang-javascript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> mime = <span class="hljs-built_in">require</span>(<span class="hljs-string">'mime/lite'</span>);
+</code></pre>
 <h2 id="Mime-.vs.-mime-types-.vs.-mime-db-modules">Mime .vs. mime-types .vs. mime-db modules</h2>
 <p>For those of you wondering about the difference between these [popular] NPM modules,
 here&#39;s a brief rundown ...</p>
@@ -292,7 +292,7 @@ class, documented below.</p>
 <p>Most users of this module will not need to create Mime instances directly.
 However if you would like to create custom mappings, you may do so as follows
 ...</p>
-<pre class ="notranslate"><div class="code lang-javascript"><div class="line-numbers">1
+<pre><code class="lang-javascript"><div class="line-numbers">1
 2
 3
 4
@@ -319,11 +319,11 @@ However if you would like to create custom mappings, you may do so as follows
 myMime.getType(<span class="hljs-string">'abc'</span>);            <span class="hljs-comment">// ⇨ 'text/abc'</span>
 myMime.getExtension(<span class="hljs-string">'text/def'</span>);  <span class="hljs-comment">// ⇨ 'leppard'</span>
 
-</div></pre>
+</code></pre>
 <p>If more than one map argument is provided, each map is <code>define()</code>ed (see below), in order.</p>
 <h3 id="mime.getType(pathOrExtension)" class ="notranslate">mime.getType(pathOrExtension)</h3>
 <p>Get mime type for the given path or extension.  E.g.</p>
-<pre class ="notranslate"><div class="code lang-javascript"><div class="line-numbers">1
+<pre><code class="lang-javascript"><div class="line-numbers">1
 2
 3
 4
@@ -340,32 +340,32 @@ mime.getType(<span class="hljs-string">'dir\\text.txt'</span>);  <span class="hl
 mime.getType(<span class="hljs-string">'.text.txt'</span>);      <span class="hljs-comment">// ⇨ 'text/plain'</span>
 mime.getType(<span class="hljs-string">'.txt'</span>);           <span class="hljs-comment">// ⇨ 'text/plain'</span>
 
-</div></pre>
+</code></pre>
 <p><code>null</code> is returned in cases where an extension is not detected or recognized</p>
-<pre class ="notranslate"><div class="code lang-javascript"><div class="line-numbers">1
+<pre><code class="lang-javascript"><div class="line-numbers">1
 2
 3</div>mime.getType(<span class="hljs-string">'foo/txt'</span>);        <span class="hljs-comment">// ⇨ null</span>
 mime.getType(<span class="hljs-string">'bogus_type'</span>);     <span class="hljs-comment">// ⇨ null</span>
 
-</div></pre>
+</code></pre>
 <h3 id="mime.getExtension(type)" class ="notranslate">mime.getExtension(type)</h3>
 <p>Get extension for the given mime type.  Charset options (often included in
 Content-Type headers) are ignored.</p>
-<pre class ="notranslate"><div class="code lang-javascript"><div class="line-numbers">1
+<pre><code class="lang-javascript"><div class="line-numbers">1
 2
 3
 4</div>mime.getExtension(<span class="hljs-string">'text/plain'</span>);               <span class="hljs-comment">// ⇨ 'txt'</span>
 mime.getExtension(<span class="hljs-string">'application/json'</span>);         <span class="hljs-comment">// ⇨ 'json'</span>
 mime.getExtension(<span class="hljs-string">'text/html; charset=utf8'</span>);  <span class="hljs-comment">// ⇨ 'html'</span>
 
-</div></pre>
+</code></pre>
 <h3 id="mime.define(typeMap[,-force-=-false])" class ="notranslate">mime.define(typeMap[, force = false])</h3>
 <p>Define [more] type mappings.</p>
 <p><code>typeMap</code> is a map of type -&gt; extensions, as documented in <code>new Mime</code>, above.</p>
 <p>By default this method will throw an error if you try to map a type to an
 extension that is already assigned to another type.  Passing <code>true</code> for the
 <code>force</code> argument will suppress this behavior (overriding any previous mapping).</p>
-<pre class ="notranslate"><div class="code lang-javascript"><div class="line-numbers">1
+<pre><code class="lang-javascript"><div class="line-numbers">1
 2
 3
 4
@@ -374,13 +374,13 @@ extension that is already assigned to another type.  Passing <code>true</code> f
 mime.getType(<span class="hljs-string">'abcd'</span>);            <span class="hljs-comment">// ⇨ 'text/x-abc'</span>
 mime.getExtension(<span class="hljs-string">'text/x-abc'</span>)  <span class="hljs-comment">// ⇨ 'abc'</span>
 
-</div></pre>
+</code></pre>
 <h2 id="Command-Line">Command Line</h2>
-<pre class ="notranslate"><div class="code"><div class="line-numbers">1</div>mime <span class="hljs-string">[path_or_extension]</span>
-</div></pre><p>E.g.</p>
-<pre class ="notranslate"><div class="code"><div class="line-numbers">1
+<pre><code><div class="line-numbers">1</div>mime <span class="hljs-string">[path_or_extension]</span>
+</code></pre><p>E.g.</p>
+<pre><code><div class="line-numbers">1
 2</div>&gt; <span class="hljs-variable">mime</span> <span class="hljs-variable"><span class="hljs-class">scripts</span></span>/<span class="hljs-variable">jquery.js</span>
 <span class="hljs-variable"><span class="hljs-class">application</span></span>/<span class="hljs-variable">javascript</span>
-</div></pre><hr>
+</code></pre><hr>
 <p>Markdown generated from <a href=src/readme_js.md.html class ="notranslate">src/README_js.md</a> by <a href="https://github.com/broofa/runmd"><img src="http://i.imgur.com/h0FVyzU.png" alt="RunMD Logo"></a></p>
  </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id=toc></div></div></div></div><div class=footer><div class=container>&copy; Copyright 2014-2019 fibjs.org | <a href=../../../support.html>支持我们</a></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="Click to return on the top page" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js></script><script type=text/javascript src=../../../js/common.js></script><script type=text/javascript src=../../../js/docs.js></script></body></html>

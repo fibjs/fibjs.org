@@ -247,23 +247,23 @@
 <h2 id="构造函数">构造函数</h2>
 <h3 id="Smtp" class ="notranslate">Smtp</h3>
 <p><strong>Smtp 对象构造函数</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">new</span> Smtp();
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">new</span> Smtp();
+</code></pre>
 <h2 id="成员属性">成员属性</h2>
 <h3 id="timeout" class ="notranslate">timeout</h3>
 <p><strong>Integer, 查询和设置超时时间 单位毫秒</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div>Integer Smtp.timeout;
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer Smtp.timeout;
+</code></pre>
 <hr>
 <h3 id="socket" class ="notranslate">socket</h3>
 <p><strong><a href=stream.md.html class ="notranslate">Stream</a>, 查询 Smtp 对象当前连接的 <a href=socket.md.html class ="notranslate">Socket</a></strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div>readonly Stream Smtp.socket;
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly Stream Smtp.socket;
+</code></pre>
 <h2 id="成员函数">成员函数</h2>
 <h3 id="connect" class ="notranslate">connect</h3>
 <p><strong>建立到指定的服务器</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div>Smtp.connect(<span class="hljs-built_in">String</span> url) <span class="hljs-keyword">async</span>;
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Smtp.connect(<span class="hljs-built_in">String</span> url) <span class="hljs-keyword">async</span>;
+</code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">url</span>: String, 指定连接的协议，可以是：tcp://host:port 或者 <a href=../../module/ifs/ssl.md.html class ="notranslate">ssl</a>://host:port</li>
@@ -271,10 +271,10 @@
 <hr>
 <h3 id="command" class ="notranslate">command</h3>
 <p><strong>发送指定命令，并返回响应，服务器报错则抛出错误</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-built_in">String</span> Smtp.command(<span class="hljs-built_in">String</span> cmd,
     <span class="hljs-built_in">String</span> arg) <span class="hljs-keyword">async</span>;
-</div></pre>
+</code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">cmd</span>: String, 命令名</li>
@@ -287,8 +287,8 @@
 <hr>
 <h3 id="hello" class ="notranslate">hello</h3>
 <p><strong>发送 HELO 命令，服务器报错则抛出错误</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div>Smtp.hello(<span class="hljs-built_in">String</span> hostname = <span class="hljs-string">"localhost"</span>) <span class="hljs-keyword">async</span>;
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Smtp.hello(<span class="hljs-built_in">String</span> hostname = <span class="hljs-string">"localhost"</span>) <span class="hljs-keyword">async</span>;
+</code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">hostname</span>: String, 主机名，缺省为“localhost”</li>
@@ -296,10 +296,10 @@
 <hr>
 <h3 id="login" class ="notranslate">login</h3>
 <p><strong>用指定的用户及密码登录服务器，服务器报错则抛出错误</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Smtp.login(<span class="hljs-built_in">String</span> username,
     <span class="hljs-built_in">String</span> password) <span class="hljs-keyword">async</span>;
-</div></pre>
+</code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">username</span>: String, 用户名</li>
@@ -308,8 +308,8 @@
 <hr>
 <h3 id="from" class ="notranslate">from</h3>
 <p><strong>指定发件人信箱，服务器报错则抛出错误</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div>Smtp.from(<span class="hljs-built_in">String</span> address) <span class="hljs-keyword">async</span>;
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Smtp.from(<span class="hljs-built_in">String</span> address) <span class="hljs-keyword">async</span>;
+</code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">address</span>: String, 发件人信箱</li>
@@ -317,8 +317,8 @@
 <hr>
 <h3 id="to" class ="notranslate">to</h3>
 <p><strong>指定收件人信箱，服务器报错则抛出错误</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div>Smtp.to(<span class="hljs-built_in">String</span> address) <span class="hljs-keyword">async</span>;
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Smtp.to(<span class="hljs-built_in">String</span> address) <span class="hljs-keyword">async</span>;
+</code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">address</span>: String, 收件人信箱</li>
@@ -326,8 +326,8 @@
 <hr>
 <h3 id="data" class ="notranslate">data</h3>
 <p><strong>发送文本到收件人，服务器报错则抛出错误</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div>Smtp.data(<span class="hljs-built_in">String</span> txt) <span class="hljs-keyword">async</span>;
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Smtp.data(<span class="hljs-built_in">String</span> txt) <span class="hljs-keyword">async</span>;
+</code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">txt</span>: String, 要发送的文本</li>
@@ -335,13 +335,13 @@
 <hr>
 <h3 id="quit" class ="notranslate">quit</h3>
 <p><strong>退出并关闭连接，服务器报错则抛出错误</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div>Smtp.quit() <span class="hljs-keyword">async</span>;
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Smtp.quit() <span class="hljs-keyword">async</span>;
+</code></pre>
 <hr>
 <h3 id="toString" class ="notranslate">toString</h3>
 <p><strong>返回对象的字符串表示，一般返回 &quot;[Native Object]&quot;，对象可以根据自己的特性重新实现</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> Smtp.toString();
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> Smtp.toString();
+</code></pre>
 <p>返回结果:</p>
 <ul>
 <li><span class="notranslate">String</span>, 返回对象的字符串表示</li>
@@ -349,8 +349,8 @@
 <hr>
 <h3 id="toJSON" class ="notranslate">toJSON</h3>
 <p><strong>返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div>Value Smtp.toJSON(<span class="hljs-built_in">String</span> key = <span class="hljs-string">""</span>);
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Value Smtp.toJSON(<span class="hljs-built_in">String</span> key = <span class="hljs-string">""</span>);
+</code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">key</span>: String, 未使用</li>

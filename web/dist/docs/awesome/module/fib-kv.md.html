@@ -189,17 +189,17 @@
 </ul>
  </div></div></div>  </div></div><div class=content><div class=social-share data-sites=weibo,twitter data-description=分享></div> <h2 id="general-key-value-store-on-sql/level/mongo/redis-for-fibjs">general key-value store on sql/level/mongo/redis for fibjs</h2>
 <h2 id="Install">Install</h2>
-<pre class ="notranslate"><div class="code lang-sh"><div class="line-numbers">1</div>npm install fib-kv [--save]
-</div></pre>
+<pre><code class="lang-sh"><div class="line-numbers">1</div>npm install fib-kv [--save]
+</code></pre>
 <h2 id="Test">Test</h2>
-<pre class ="notranslate"><div class="code lang-sh"><div class="line-numbers">1</div>npm run ci
-</div></pre>
+<pre><code class="lang-sh"><div class="line-numbers">1</div>npm run ci
+</code></pre>
 <h2 id="Creating-a-key-value-store">Creating a key-value store</h2>
 <h3 id="var-kvs-=-new-kv(conn,-opts);" class ="notranslate">var kvs = new kv(conn, opts);</h3>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>conn: database connection or connection factory like fib-pool
 opts: kvs options
-</div></pre>
+</code></pre>
 <table>
 <thead>
 <tr>
@@ -328,7 +328,7 @@ opts: kvs options
 </table>
 <p>A key will not expire if <code>timeout</code> is less than or equal to 0.</p>
 <p>Simple example (memory backend).</p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
 4
@@ -339,18 +339,18 @@ opts: kvs options
     <span class="hljs-string">"a"</span>: <span class="hljs-number">100</span>,
     <span class="hljs-string">"b"</span>: <span class="hljs-number">200</span>
 });
-</div></pre>
+</code></pre>
 <p>LevelDB backend.</p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
 4</div><span class="hljs-keyword">var</span> kv = <span class="hljs-built_in">require</span>(<span class="hljs-string">"fib-kv"</span>);
 <span class="hljs-keyword">var</span> db = <span class="hljs-built_in">require</span>(<span class="hljs-string">"db"</span>);
 
 <span class="hljs-keyword">var</span> kvs = <span class="hljs-keyword">new</span> kv(db.openLevelDB(<span class="hljs-string">"test.ldb"</span>));
-</div></pre>
+</code></pre>
 <p>fib-pool backend.</p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
 4
@@ -359,7 +359,7 @@ opts: kvs options
 <span class="hljs-keyword">var</span> pool = <span class="hljs-built_in">require</span>(<span class="hljs-string">"fib-pool"</span>);
 
 <span class="hljs-keyword">var</span> kvs = <span class="hljs-keyword">new</span> kv(pool(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> db.openLevelDB(<span class="hljs-string">"test.ldb"</span>)));
-</div></pre>
+</code></pre>
 <h2 id="Methods">Methods</h2>
 <h3 id="kvs.setup()" class ="notranslate">kvs.setup()</h3>
 <p>setup the backend database.</p>

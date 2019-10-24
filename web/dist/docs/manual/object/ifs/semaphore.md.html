@@ -193,7 +193,7 @@
 计数器不会减至负数，因为 acquire 和 wait 在发现数值为 0 的时候，会休眠当前纤程，直至其它纤程通过 release 或 post 增加计数器的值。</p>
 <p>信号量常用的场合是限制资源并发使用，以及生产者/消费者模式的应用。</p>
 <p>以数据库请求为例，限制资源并发使用的情形：</p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
 4
@@ -212,7 +212,7 @@ l.acquire();
     .....
 conn.close();
 l.release();
-</div></pre>
+</code></pre>
 <p>生产者/消费者模式通常则将信号量与队列配合使用。生产者向队列中加入数据，并 post 一个信号，消费者则先 wait 信号，获取信号后去队查询取数据。</p>
 <h2 id="继承关系">继承关系</h2>
 <div class="dot notranslate">
@@ -285,8 +285,8 @@ l.release();
 <h2 id="构造函数">构造函数</h2>
 <h3 id="Semaphore" class ="notranslate">Semaphore</h3>
 <p><strong>信号量构造函数</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">new</span> Semaphore(Integer value = <span class="hljs-number">1</span>);
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">new</span> Semaphore(Integer value = <span class="hljs-number">1</span>);
+</code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">value</span>: Integer, 计数器初始数值</li>
@@ -294,18 +294,18 @@ l.release();
 <h2 id="成员函数">成员函数</h2>
 <h3 id="wait" class ="notranslate">wait</h3>
 <p><strong>等待一个信号量，等同于 acquire(true)</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div>Semaphore.wait();
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Semaphore.wait();
+</code></pre>
 <hr>
 <h3 id="post" class ="notranslate">post</h3>
 <p><strong>释放一个信号量，等同于 release()</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div>Semaphore.post();
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Semaphore.post();
+</code></pre>
 <hr>
 <h3 id="trywait" class ="notranslate">trywait</h3>
 <p><strong>尝试获取一个信号，如不能获取，则立即返回并返回 false，等同于 acquire(false)</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Boolean</span> Semaphore.trywait();
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Boolean</span> Semaphore.trywait();
+</code></pre>
 <p>返回结果:</p>
 <ul>
 <li><span class="notranslate">Boolean</span>, 获取成功则返回 true</li>
@@ -313,8 +313,8 @@ l.release();
 <hr>
 <h3 id="acquire" class ="notranslate">acquire</h3>
 <p><strong>获取锁的拥有权</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Boolean</span> Semaphore.acquire(<span class="hljs-built_in">Boolean</span> blocking = <span class="hljs-literal">true</span>);
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Boolean</span> Semaphore.acquire(<span class="hljs-built_in">Boolean</span> blocking = <span class="hljs-literal">true</span>);
+</code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">blocking</span>: Boolean, 指定是否等待，为 true 时等待，缺省为真</li>
@@ -329,14 +329,14 @@ l.release();
 <hr>
 <h3 id="release" class ="notranslate">release</h3>
 <p><strong>释放锁的拥有权</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div>Semaphore.release();
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Semaphore.release();
+</code></pre>
 <p>此方法将释放对锁的拥有权，如果当前纤程未拥有锁，此方法将抛出错误。</p>
 <hr>
 <h3 id="count" class ="notranslate">count</h3>
 <p><strong>查询当前等待任务数</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div>Integer Semaphore.count();
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer Semaphore.count();
+</code></pre>
 <p>返回结果:</p>
 <ul>
 <li><span class="notranslate">Integer</span>, 返回任务数</li>
@@ -344,8 +344,8 @@ l.release();
 <hr>
 <h3 id="toString" class ="notranslate">toString</h3>
 <p><strong>返回对象的字符串表示，一般返回 &quot;[Native Object]&quot;，对象可以根据自己的特性重新实现</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> Semaphore.toString();
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> Semaphore.toString();
+</code></pre>
 <p>返回结果:</p>
 <ul>
 <li><span class="notranslate">String</span>, 返回对象的字符串表示</li>
@@ -353,8 +353,8 @@ l.release();
 <hr>
 <h3 id="toJSON" class ="notranslate">toJSON</h3>
 <p><strong>返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div>Value Semaphore.toJSON(<span class="hljs-built_in">String</span> key = <span class="hljs-string">""</span>);
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Value Semaphore.toJSON(<span class="hljs-built_in">String</span> key = <span class="hljs-string">""</span>);
+</code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">key</span>: String, 未使用</li>

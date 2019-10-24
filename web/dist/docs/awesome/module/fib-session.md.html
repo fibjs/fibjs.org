@@ -190,13 +190,13 @@
  </div></div></div>  </div></div><div class=content><div class=social-share data-sites=weibo,twitter data-description=分享></div> <h1 id="fib-session">fib-session</h1>
 <p>Session middleware for fibjs</p>
 <h2 id="Install">Install</h2>
-<pre class ="notranslate"><div class="code lang-sh"><div class="line-numbers">1</div>npm install fib-session [--save]
-</div></pre>
+<pre><code class="lang-sh"><div class="line-numbers">1</div>npm install fib-session [--save]
+</code></pre>
 <h2 id="Test">Test</h2>
-<pre class ="notranslate"><div class="code lang-sh"><div class="line-numbers">1</div>npm run ci
-</div></pre>
+<pre><code class="lang-sh"><div class="line-numbers">1</div>npm run ci
+</code></pre>
 <h2 id="Creating-a-cookie-based-session-middleware">Creating a cookie-based session middleware</h2>
-<pre class ="notranslate"><div class="code lang-js"><div class="line-numbers">1
+<pre><code class="lang-js"><div class="line-numbers">1
 2
 3
 4
@@ -221,9 +221,9 @@
         ...
     }
 ]);
-</div></pre>
+</code></pre>
 <h2 id="Creating-a-api-session-middleware">Creating a api session middleware</h2>
-<pre class ="notranslate"><div class="code lang-js"><div class="line-numbers">1
+<pre><code class="lang-js"><div class="line-numbers">1
 2
 3
 4
@@ -248,7 +248,7 @@
         <span class="hljs-string">'^/get-token$'</span>: session.api_token
     }
 ]);
-</div></pre>
+</code></pre>
 <p><em>Both kv options and sesion options are in the same object.</em></p>
 <p>kv-store options</p>
 <table>
@@ -449,28 +449,28 @@
 </table>
 <ul>
 <li>see fib-jws <a href="https://github.com/fibjs/fib-jws">https://github.com/fibjs/fib-jws</a></li>
-<li>set session_jwt_algo and session_jwt_key to enable JWT<pre class ="notranslate"><div class="code lang-javascript"><div class="line-numbers">1
+<li>set session_jwt_algo and session_jwt_key to enable JWT<pre><code class="lang-javascript"><div class="line-numbers">1
 2
 3</div><span class="hljs-comment">// session_jwt_algo is encryption algorithms in fib-jws</span>
 <span class="hljs-comment">// session_jwt_key is to verify the signature. </span>
 <span class="hljs-keyword">var</span> session = <span class="hljs-keyword">new</span> Session(conn, { <span class="hljs-attr">session_jwt_algo</span>: <span class="hljs-string">'HS256'</span>,  <span class="hljs-attr">session_jwt_key</span>: verify_key })
-</div></pre>
+</code></pre>
 <h2 id="Methods">Methods</h2>
 <h3 id="session.setTokenCookie" class ="notranslate">session.setTokenCookie</h3>
 </li>
 <li>set the JSON Web Token in cookie </li>
 <li><span class="notranslate">sign_key for signature</span>, may be different from session_jwt_key, depending on the algorithm.</li>
 <li><span class="notranslate">according to JSON Web Token specification</span>, one user session can only be called setTokenCookie once for set user session info. The second will throw an exception: new Error(&#39;Can&#39;t modify the JSON Web Token&#39;)</li>
-<li>default value r.session={}<pre class ="notranslate"><div class="code lang-javascript"><div class="line-numbers">1
+<li>default value r.session={}<pre><code class="lang-javascript"><div class="line-numbers">1
 2
 3</div><span class="hljs-comment">// sign user info: { id: 12345, name: "Frank" }, and set the cookie</span>
 <span class="hljs-comment">// r is request</span>
 session.setTokenCookie(r, { <span class="hljs-attr">id</span>: <span class="hljs-number">12345</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">"Frank"</span> }, sign_key)
-</div></pre>
+</code></pre>
 <h3 id="session.getToken" class ="notranslate">session.getToken</h3>
 </li>
-<li><span class="notranslate">get token for api filter mode</span>, see session.api_filter<pre class ="notranslate"><div class="code lang-javascript"><div class="line-numbers">1</div>session.getToken ({ <span class="hljs-attr">id</span>: <span class="hljs-number">12345</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">"Frank"</span> }, sign_key)
-</div></pre>
+<li><span class="notranslate">get token for api filter mode</span>, see session.api_filter<pre><code class="lang-javascript"><div class="line-numbers">1</div>session.getToken ({ <span class="hljs-attr">id</span>: <span class="hljs-number">12345</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">"Frank"</span> }, sign_key)
+</code></pre>
 </li>
 </ul>
  </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id=toc></div></div></div></div><div class=footer><div class=container>&copy; Copyright 2014-2019 fibjs.org | <a href=../../../support.html>支持我们</a></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="Click to return on the top page" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js></script><script type=text/javascript src=../../../js/common.js></script><script type=text/javascript src=../../../js/docs.js></script></body></html>

@@ -167,11 +167,6 @@ function build_docs() {
 
         var html = marked(md);
 
-        html = html.replace(/<pre><code class="/g, '<pre><div class="code ');
-        html = html.replace(/<pre><code>/g, '<pre><div class="code">');
-        html = html.replace(/<\/code><\/pre>/g, '</div></pre>');
-        html = html.replace(/<pre>/g, '<pre class ="notranslate">');
-
         html = html.replace(/<a href=\"([^"]*\.md(#\w+)?)\">([\x20-\x3b\x3d-\x7f]+)<\/a>/g, (s, s1, s2, s3) => {
             return `<a href="${s1}" class ="notranslate">${s3}</a>`;
         });

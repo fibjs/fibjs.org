@@ -23,15 +23,27 @@ function get_handler(l) {
                     var ms = new io.MemoryStream();
                     var txt = cache.get(hash.md5(data).digest().hex() + "_" + l, () => {
                         var txt = data.toString();
+
                         txt = txt.replace(/<div class=dropdown-menu>( *<a href=[^>]+>[^<]+<\/a>)*/g, (s) => {
                             return s.replace(/href=/g, 'href=../');
                         })
+
+                        var re = /<pre>.*?<\/pre>/sg;
+                        var codes = [];
+                        var r;
+
+                        while (r = re.exec(txt))
+                            codes.push(r[0]);
+
                         txt = trans.translate(txt, {
                             format: 'html',
                             from: 'zh-CN',
                             to: l
                         });
-                        txt = txt.replace(/<\/div> <span/g, '</div><span');
+
+                        var pre_no = 0;
+                        txt = txt.replace(re, s => codes[pre_no++]);
+
                         return txt;
                     });
 

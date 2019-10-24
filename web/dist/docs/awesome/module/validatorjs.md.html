@@ -200,22 +200,22 @@
 </ul>
 <h2 id="Installation">Installation</h2>
 <p>Grab validatorjs from Bower, NPM, or the /dist directory on Github:</p>
-<pre class ="notranslate"><div class="code"><div class="line-numbers">1</div><span class="hljs-keyword">bower </span><span class="hljs-keyword">install </span>validatorjs
-</div></pre><pre class ="notranslate"><div class="code"><div class="line-numbers">1</div>npm <span class="hljs-keyword">install</span> validatorjs
-</div></pre><h3 id="Browser" class ="notranslate">Browser</h3>
-<pre class ="notranslate"><div class="code lang-html"><div class="line-numbers">1</div><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"validator.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
-</div></pre>
+<pre><code><div class="line-numbers">1</div><span class="hljs-keyword">bower </span><span class="hljs-keyword">install </span>validatorjs
+</code></pre><pre><code><div class="line-numbers">1</div>npm <span class="hljs-keyword">install</span> validatorjs
+</code></pre><h3 id="Browser" class ="notranslate">Browser</h3>
+<pre><code class="lang-html"><div class="line-numbers">1</div><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"validator.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+</code></pre>
 <h3 id="Node.js-/-Browserify" class ="notranslate">Node.js / Browserify</h3>
-<pre class ="notranslate"><div class="code lang-js"><div class="line-numbers">1</div><span class="hljs-keyword">let</span> Validator = <span class="hljs-built_in">require</span>(<span class="hljs-string">'validatorjs'</span>);
-</div></pre>
+<pre><code class="lang-js"><div class="line-numbers">1</div><span class="hljs-keyword">let</span> Validator = <span class="hljs-built_in">require</span>(<span class="hljs-string">'validatorjs'</span>);
+</code></pre>
 <h3 id="Basic-Usage" class ="notranslate">Basic Usage</h3>
-<pre class ="notranslate"><div class="code lang-js"><div class="line-numbers">1</div><span class="hljs-keyword">let</span> validation = <span class="hljs-keyword">new</span> Validator(data, rules [, customErrorMessages]);
-</div></pre>
+<pre><code class="lang-js"><div class="line-numbers">1</div><span class="hljs-keyword">let</span> validation = <span class="hljs-keyword">new</span> Validator(data, rules [, customErrorMessages]);
+</code></pre>
 <p><strong>data</strong> {Object} - The data you want to validate</p>
 <p><strong>rules</strong> {Object} - Validation rules</p>
 <p><strong>customErrorMessages</strong> {Object} - Optional custom error messages to return</p>
 <h4 id="Example-1---Passing-Validation">Example 1 - Passing Validation</h4>
-<pre class ="notranslate"><div class="code lang-js"><div class="line-numbers">1
+<pre><code class="lang-js"><div class="line-numbers">1
 2
 3
 4
@@ -246,10 +246,10 @@
 
 validation.passes(); <span class="hljs-comment">// true</span>
 validation.fails(); <span class="hljs-comment">// false</span>
-</div></pre>
+</code></pre>
 <p>To apply validation rules to the <em>data</em> object, use the same object key names for the <em>rules</em> object.</p>
 <h4 id="Example-2---Failing-Validation">Example 2 - Failing Validation</h4>
-<pre class ="notranslate"><div class="code lang-js"><div class="line-numbers">1
+<pre><code class="lang-js"><div class="line-numbers">1
 2
 3
 4
@@ -276,10 +276,10 @@ validation.passes(); <span class="hljs-comment">// false</span>
 <span class="hljs-comment">// Error messages</span>
 validation.errors.first(<span class="hljs-string">'email'</span>); <span class="hljs-comment">// 'The email format is invalid.'</span>
 validation.errors.get(<span class="hljs-string">'email'</span>); <span class="hljs-comment">// returns an array of all email error messages</span>
-</div></pre>
+</code></pre>
 <h3 id="Nested-Rules" class ="notranslate">Nested Rules</h3>
 <p>Nested objects can also be validated. There are two ways to declare validation rules for nested objects. The first way is to declare the validation rules with a corresponding nested object structure that reflects the data. The second way is to declare validation rules with flattened key names. For example, to validate the following data:</p>
-<pre class ="notranslate"><div class="code lang-js"><div class="line-numbers">1
+<pre><code class="lang-js"><div class="line-numbers">1
 2
 3
 4
@@ -298,9 +298,9 @@ validation.errors.get(<span class="hljs-string">'email'</span>); <span class="hl
     }
   }
 };
-</div></pre>
+</code></pre>
 <p>We could declare our validation rules as follows:</p>
-<pre class ="notranslate"><div class="code lang-js"><div class="line-numbers">1
+<pre><code class="lang-js"><div class="line-numbers">1
 2
 3
 4
@@ -337,10 +337,10 @@ validation.errors.get(<span class="hljs-string">'email'</span>); <span class="hl
   <span class="hljs-string">'bio.education.primary'</span>: <span class="hljs-string">'string'</span>,
   <span class="hljs-string">'bio.education.secondary'</span>: <span class="hljs-string">'string'</span>
 };
-</div></pre>
+</code></pre>
 <h3 id="WildCards-Rules" class ="notranslate">WildCards Rules</h3>
 <p>WildCards can also be validated.</p>
-<pre class ="notranslate"><div class="code lang-js"><div class="line-numbers">1
+<pre><code class="lang-js"><div class="line-numbers">1
 2
 3
 4
@@ -363,9 +363,9 @@ validation.errors.get(<span class="hljs-string">'email'</span>); <span class="hl
     }
   }]
 };
-</div></pre>
+</code></pre>
 <p>We could declare our validation rules as follows:</p>
-<pre class ="notranslate"><div class="code lang-js"><div class="line-numbers">1
+<pre><code class="lang-js"><div class="line-numbers">1
 2
 3
 4
@@ -376,7 +376,7 @@ validation.errors.get(<span class="hljs-string">'email'</span>); <span class="hl
   <span class="hljs-string">'users.*.bio.education.primary'</span>: <span class="hljs-string">'string'</span>,
   <span class="hljs-string">'users.*.bio.education.secondary'</span>: <span class="hljs-string">'string'</span>
 };
-</div></pre>
+</code></pre>
 <h3 id="Available-Rules" class ="notranslate">Available Rules</h3>
 <p>Validation rules do not have an implicit &#39;required&#39;. If a field is <em>undefined</em> or an empty string, it will pass validation. If you want a validation to fail for undefined or &#39;&#39;, use the <em>required</em> rule.</p>
 <h4 id="accepted">accepted</h4>
@@ -454,7 +454,7 @@ validation.errors.get(<span class="hljs-string">'email'</span>); <span class="hl
 <p><strong>Note</strong>: When using the <code>regex</code> pattern, it may be necessary to specify rules in an array instead of using pipe delimiters, especially if the regular expression contains a pipe character.
 For each backward slash that you used in your regex pattern, you must escape each one with another backward slash.</p>
 <h4 id="Example-3---Regex-validation">Example 3 - Regex validation</h4>
-<pre class ="notranslate"><div class="code lang-js"><div class="line-numbers">1
+<pre><code class="lang-js"><div class="line-numbers">1
 2
 3
 4
@@ -479,9 +479,9 @@ For each backward slash that you used in your regex pattern, you must escape eac
 validation.fails(); <span class="hljs-comment">// false</span>
 validation.passes(); <span class="hljs-comment">// true</span>
 
-</div></pre>
+</code></pre>
 <h4 id="Example-4---Type-Checking-Validation">Example 4 - Type Checking Validation</h4>
-<pre class ="notranslate"><div class="code lang-js"><div class="line-numbers">1
+<pre><code class="lang-js"><div class="line-numbers">1
 2
 3
 4
@@ -502,22 +502,22 @@ validation.passes(); <span class="hljs-comment">// true</span>
 validation.fails(); <span class="hljs-comment">// true</span>
 validation.passes(); <span class="hljs-comment">// false</span>
 
-</div></pre>
+</code></pre>
 <h3 id="Register-Custom-Validation-Rules" class ="notranslate">Register Custom Validation Rules</h3>
-<pre class ="notranslate"><div class="code lang-js"><div class="line-numbers">1</div>Validator.register(name, callbackFn, errorMessage);
-</div></pre>
+<pre><code class="lang-js"><div class="line-numbers">1</div>Validator.register(name, callbackFn, errorMessage);
+</code></pre>
 <p><strong>name</strong> {String} - The name of the rule.</p>
 <p><strong>callbackFn</strong> {Function} - Returns a boolean to represent a successful or failed validation.</p>
 <p><strong>errorMessage</strong> {String} - An optional string where you can specify a custom error message. <em>:attribute</em> inside errorMessage will be replaced with the attribute name.</p>
-<pre class ="notranslate"><div class="code lang-js"><div class="line-numbers">1
+<pre><code class="lang-js"><div class="line-numbers">1
 2
 3</div>Validator.register(<span class="hljs-string">'telephone'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">value, requirement, attribute</span>) </span>{ <span class="hljs-comment">// requirement parameter defaults to null</span>
   <span class="hljs-keyword">return</span> value.match(<span class="hljs-regexp">/^\d{3}-\d{3}-\d{4}$/</span>);
 }, <span class="hljs-string">'The :attribute phone number is not in the format XXX-XXX-XXXX.'</span>);
-</div></pre>
+</code></pre>
 <h3 id="Asynchronous-Validation" class ="notranslate">Asynchronous Validation</h3>
 <p>Register an asynchronous rule which accepts a <code>passes</code> callback:</p>
-<pre class ="notranslate"><div class="code lang-js"><div class="line-numbers">1
+<pre><code class="lang-js"><div class="line-numbers">1
 2
 3
 4
@@ -528,9 +528,9 @@ validation.passes(); <span class="hljs-comment">// false</span>
   passes(); <span class="hljs-comment">// if username is available</span>
   passes(<span class="hljs-literal">false</span>, <span class="hljs-string">'Username has already been taken.'</span>); <span class="hljs-comment">// if username is not available</span>
 });
-</div></pre>
+</code></pre>
 <p>Then call your validator passing a callback to <code>fails</code> or <code>passes</code> like so:</p>
-<pre class ="notranslate"><div class="code lang-js"><div class="line-numbers">1
+<pre><code class="lang-js"><div class="line-numbers">1
 2
 3
 4
@@ -555,7 +555,7 @@ validator.passes(<span class="hljs-function"><span class="hljs-keyword">function
 validator.fails(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
   validator.errors.first(<span class="hljs-string">'username'</span>);
 });
-</div></pre>
+</code></pre>
 <p>Note: if you attempt to call <code>passes</code> or <code>fails</code> without a callback and the validator detects there are asynchronous validation rules, an exception will be thrown.</p>
 <h3 id="Error-Messages" class ="notranslate">Error Messages</h3>
 <p>This constructor will automatically generate error messages for validation rules that failed.</p>
@@ -570,15 +570,15 @@ validator.fails(<span class="hljs-function"><span class="hljs-keyword">function<
 <p>returns true if error messages exist for an attribute, false otherwise</p>
 <h4 id=".errorCount">.errorCount</h4>
 <p>the number of validation errors</p>
-<pre class ="notranslate"><div class="code lang-js"><div class="line-numbers">1
+<pre><code class="lang-js"><div class="line-numbers">1
 2
 3</div><span class="hljs-keyword">let</span> validation = <span class="hljs-keyword">new</span> Validator(input, rules);
 validation.errors.first(<span class="hljs-string">'email'</span>); <span class="hljs-comment">// returns first error message for email attribute</span>
 validator.errors.get(<span class="hljs-string">'email'</span>); <span class="hljs-comment">// returns an array of error messages for the email attribute</span>
-</div></pre>
+</code></pre>
 <h3 id="Custom-Error-Messages" class ="notranslate">Custom Error Messages</h3>
 <p>If you need a specific error message and you don&#39;t want to override the default one, you can pass an override as the third argument to the Validator object, just like with <a href="http://laravel.com/docs/validation#custom-error-messages">Laravel</a>.</p>
-<pre class ="notranslate"><div class="code lang-js"><div class="line-numbers">1
+<pre><code class="lang-js"><div class="line-numbers">1
 2
 3
 4
@@ -597,9 +597,9 @@ validator.errors.get(<span class="hljs-string">'email'</span>); <span class="hlj
 
 <span class="hljs-keyword">let</span> validation = <span class="hljs-keyword">new</span> Validator(input, rules, { <span class="hljs-attr">required</span>: <span class="hljs-string">'You forgot to give a :attribute'</span> });
 validation.errors.first(<span class="hljs-string">'name'</span>); <span class="hljs-comment">// returns 'You forgot to give a name'</span>
-</div></pre>
+</code></pre>
 <p>Some of the validators have string and numeric versions. You can change them too.</p>
-<pre class ="notranslate"><div class="code lang-js"><div class="line-numbers">1
+<pre><code class="lang-js"><div class="line-numbers">1
 2
 3
 4
@@ -628,9 +628,9 @@ validation.errors.first(<span class="hljs-string">'name'</span>); <span class="h
 });
 
 validation.errors.first(<span class="hljs-string">'username'</span>); <span class="hljs-comment">// returns 'The username is too long. Max length is 16.'</span>
-</div></pre>
+</code></pre>
 <p>You can even provide error messages on a per attribute basis! Just set the message&#39;s key to &#39;validator.attribute&#39;</p>
-<pre class ="notranslate"><div class="code lang-js"><div class="line-numbers">1
+<pre><code class="lang-js"><div class="line-numbers">1
 2
 3
 4
@@ -647,10 +647,10 @@ validation.errors.first(<span class="hljs-string">'username'</span>); <span clas
 
 validation.errors.first(<span class="hljs-string">'name'</span>); <span class="hljs-comment">// returns  'The name field is required.'</span>
 validation.errors.first(<span class="hljs-string">'email'</span>); <span class="hljs-comment">// returns 'Without an email we can\'t reach you!'</span>
-</div></pre>
+</code></pre>
 <h3 id="Custom-Attribute-Names" class ="notranslate">Custom Attribute Names</h3>
 <p>To display a custom &quot;friendly&quot; attribute name in error messages, use <code>.setAttributeNames()</code></p>
-<pre class ="notranslate"><div class="code lang-js"><div class="line-numbers">1
+<pre><code class="lang-js"><div class="line-numbers">1
 2
 3
 4
@@ -659,10 +659,10 @@ validator.setAttributeNames({ <span class="hljs-attr">name</span>: <span class="
 <span class="hljs-keyword">if</span> (validator.fails()) {
   validator.errors.first(<span class="hljs-string">'name'</span>); <span class="hljs-comment">// "The custom_name field is required."</span>
 }
-</div></pre>
+</code></pre>
 <p>Alternatively you can supply global custom attribute names in your lang with the <code>attributes</code> property.</p>
 <p>You can also configure a custom attribute formatter:</p>
-<pre class ="notranslate"><div class="code lang-js"><div class="line-numbers">1
+<pre><code class="lang-js"><div class="line-numbers">1
 2
 3
 4
@@ -687,11 +687,11 @@ validator.setAttributeFormatter(<span class="hljs-function"><span class="hljs-ke
 <span class="hljs-keyword">if</span> (validator.fails()) {
   <span class="hljs-built_in">console</span>.log(validator.errors.first(<span class="hljs-string">'first_name'</span>)); <span class="hljs-comment">// The first name field is required.</span>
 }
-</div></pre>
+</code></pre>
 <p>Note: by default all _ characters will be replaced with spaces.</p>
 <h3 id="Language-Support" class ="notranslate">Language Support</h3>
 <p>Error messages are in English by default. To include another language in the browser, reference the language file in a script tag and call <code>Validator.useLang(&#39;lang_code&#39;)</code>.</p>
-<pre class ="notranslate"><div class="code lang-html"><div class="line-numbers">1
+<pre><code class="lang-html"><div class="line-numbers">1
 2
 3
 4
@@ -700,34 +700,34 @@ validator.setAttributeFormatter(<span class="hljs-function"><span class="hljs-ke
 <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="actionscript">
   Validator.useLang(<span class="hljs-string">'es'</span>);
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
-</div></pre>
+</code></pre>
 <p>In Node, it will automatically pickup on the language source files.</p>
-<pre class ="notranslate"><div class="code lang-js"><div class="line-numbers">1
+<pre><code class="lang-js"><div class="line-numbers">1
 2</div><span class="hljs-keyword">let</span> Validator = <span class="hljs-built_in">require</span>(<span class="hljs-string">'validatorjs'</span>);
 Validator.useLang(<span class="hljs-string">'ru'</span>);
-</div></pre>
+</code></pre>
 <p>If you don&#39;t see support for your language, please add one to <code>src/lang</code>!</p>
 <p>You can also add your own custom language by calling <code>setMessages</code>:</p>
-<pre class ="notranslate"><div class="code lang-js"><div class="line-numbers">1
+<pre><code class="lang-js"><div class="line-numbers">1
 2
 3</div>Validator.setMessages(<span class="hljs-string">'lang_code'</span>, {
   <span class="hljs-attr">required</span>: <span class="hljs-string">'The :attribute field is required.'</span>
 });
-</div></pre>
+</code></pre>
 <p>Get the raw object of messages for the given language:</p>
-<pre class ="notranslate"><div class="code lang-js"><div class="line-numbers">1</div>Validator.getMessages(<span class="hljs-string">'lang_code'</span>);
-</div></pre>
+<pre><code class="lang-js"><div class="line-numbers">1</div>Validator.getMessages(<span class="hljs-string">'lang_code'</span>);
+</code></pre>
 <p>Switch the default language used by the validator:</p>
-<pre class ="notranslate"><div class="code lang-js"><div class="line-numbers">1</div>Validator.useLang(<span class="hljs-string">'lang_code'</span>);
-</div></pre>
+<pre><code class="lang-js"><div class="line-numbers">1</div>Validator.useLang(<span class="hljs-string">'lang_code'</span>);
+</code></pre>
 <p>Get the default language being used:</p>
-<pre class ="notranslate"><div class="code lang-js"><div class="line-numbers">1</div>Validator.getDefaultLang(); <span class="hljs-comment">// returns e.g. 'en'</span>
-</div></pre>
+<pre><code class="lang-js"><div class="line-numbers">1</div>Validator.getDefaultLang(); <span class="hljs-comment">// returns e.g. 'en'</span>
+</code></pre>
 <p>Override default messages for language:</p>
-<pre class ="notranslate"><div class="code lang-js"><div class="line-numbers">1
+<pre><code class="lang-js"><div class="line-numbers">1
 2
 3</div><span class="hljs-keyword">let</span> messages = Validator.getMessages(<span class="hljs-string">'en'</span>);
 messages.required = <span class="hljs-string">'Whoops, :attribute field is required.'</span>;
 Validator.setMessages(<span class="hljs-string">'en'</span>, messages);
-</div></pre>
+</code></pre>
  </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id=toc></div></div></div></div><div class=footer><div class=container>&copy; Copyright 2014-2019 fibjs.org | <a href=../../../support.html>支持我们</a></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="Click to return on the top page" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js></script><script type=text/javascript src=../../../js/common.js></script><script type=text/javascript src=../../../js/docs.js></script></body></html>

@@ -197,30 +197,30 @@ detection.</p>
 <p>The bare minimum for using highlight.js on a web page is linking to the
 library along with one of the styles and calling
 <a href="http://highlightjs.readthedocs.io/en/latest/api.html#inithighlightingonload"><code>initHighlightingOnLoad</code></a>:</p>
-<pre class ="notranslate"><div class="code lang-html"><div class="line-numbers">1
+<pre><code class="lang-html"><div class="line-numbers">1
 2
 3</div><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"/path/to/styles/default.css"</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"/path/to/highlight.pack.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span>hljs.initHighlightingOnLoad();<span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
-</div></pre>
+</code></pre>
 <p>This will find and highlight code inside of <code>&lt;pre&gt;&lt;code&gt;</code> tags; it tries
 to detect the language automatically. If automatic detection doesn’t
 work for you, you can specify the language in the <code>class</code> attribute:</p>
-<pre class ="notranslate"><div class="code lang-html"><div class="line-numbers">1</div><span class="hljs-tag">&lt;<span class="hljs-name">pre</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">code</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"html"</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">code</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span>
-</div></pre>
+<pre><code class="lang-html"><div class="line-numbers">1</div><span class="hljs-tag">&lt;<span class="hljs-name">pre</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">code</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"html"</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">code</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span>
+</code></pre>
 <p>The list of supported language classes is available in the <a href="http://highlightjs.readthedocs.io/en/latest/css-classes-reference.html">class
 reference</a>.  Classes can also be prefixed with either <code>language-</code> or
 <code>lang-</code>.</p>
 <p>To disable highlighting altogether use the <code>nohighlight</code> class:</p>
-<pre class ="notranslate"><div class="code lang-html"><div class="line-numbers">1</div><span class="hljs-tag">&lt;<span class="hljs-name">pre</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">code</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"nohighlight"</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">code</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span>
-</div></pre>
+<pre><code class="lang-html"><div class="line-numbers">1</div><span class="hljs-tag">&lt;<span class="hljs-name">pre</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">code</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"nohighlight"</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">code</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span>
+</code></pre>
 <h2 id="Custom-Initialization">Custom Initialization</h2>
 <p>When you need a bit more control over the initialization of
 highlight.js, you can use the <a href="http://highlightjs.readthedocs.io/en/latest/api.html#highlightblock-block"><code>highlightBlock</code></a> and <a href="http://highlightjs.readthedocs.io/en/latest/api.html#configure-options"><code>configure</code></a>
 functions. This allows you to control <em>what</em> to highlight and <em>when</em>.</p>
 <p>Here’s an equivalent way to calling <a href="http://highlightjs.readthedocs.io/en/latest/api.html#inithighlightingonload"><code>initHighlightingOnLoad</code></a> using
 jQuery:</p>
-<pre class ="notranslate"><div class="code lang-javascript"><div class="line-numbers">1
+<pre><code class="lang-javascript"><div class="line-numbers">1
 2
 3
 4
@@ -229,11 +229,11 @@ jQuery:</p>
     hljs.highlightBlock(block);
   });
 });
-</div></pre>
+</code></pre>
 <p>You can use any tags instead of <code>&lt;pre&gt;&lt;code&gt;</code> to mark up your code. If
 you don&#39;t use a container that preserve line breaks you will need to
 configure highlight.js to use the <code>&lt;br&gt;</code> tag:</p>
-<pre class ="notranslate"><div class="code lang-javascript"><div class="line-numbers">1
+<pre><code class="lang-javascript"><div class="line-numbers">1
 2
 3
 4
@@ -242,13 +242,13 @@ configure highlight.js to use the <code>&lt;br&gt;</code> tag:</p>
 $(<span class="hljs-string">'div.code'</span>).each(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">i, block</span>) </span>{
   hljs.highlightBlock(block);
 });
-</div></pre>
+</code></pre>
 <p>For other options refer to the documentation for <a href="http://highlightjs.readthedocs.io/en/latest/api.html#configure-options"><code>configure</code></a>.</p>
 <h2 id="Web-Workers">Web Workers</h2>
 <p>You can run highlighting inside a web worker to avoid freezing the browser
 window while dealing with very big chunks of code.</p>
 <p>In your main script:</p>
-<pre class ="notranslate"><div class="code lang-javascript"><div class="line-numbers">1
+<pre><code class="lang-javascript"><div class="line-numbers">1
 2
 3
 4
@@ -259,9 +259,9 @@ window while dealing with very big chunks of code.</p>
   worker.onmessage = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">event</span>) </span>{ code.innerHTML = event.data; }
   worker.postMessage(code.textContent);
 })
-</div></pre>
+</code></pre>
 <p>In worker.js:</p>
-<pre class ="notranslate"><div class="code lang-javascript"><div class="line-numbers">1
+<pre><code class="lang-javascript"><div class="line-numbers">1
 2
 3
 4
@@ -270,7 +270,7 @@ window while dealing with very big chunks of code.</p>
   <span class="hljs-keyword">var</span> result = self.hljs.highlightAuto(event.data);
   postMessage(result.value);
 }
-</div></pre>
+</code></pre>
 <h2 id="Getting-the-Library">Getting the Library</h2>
 <p>You can get highlight.js as a hosted, or custom-build, browser script or
 as a server module. Right out of the box the browser script supports
@@ -285,12 +285,12 @@ work for you refer to the <a href="http://highlightjs.readthedocs.io/en/latest/b
 <p><strong>The CDN-hosted package doesn&#39;t have all the languages.</strong> Otherwise it&#39;d be
 too big. If you don&#39;t see the language you need in the <a href="https://highlightjs.org/download/">&quot;Common&quot; section</a>,
 it can be added manually:</p>
-<pre class ="notranslate"><div class="code lang-html"><div class="line-numbers">1</div><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.4.0/languages/go.min.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
-</div></pre>
+<pre><code class="lang-html"><div class="line-numbers">1</div><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.4.0/languages/go.min.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+</code></pre>
 <p><strong>On Almond.</strong> You need to use the optimizer to give the module a name. For
 example:</p>
-<pre class ="notranslate"><div class="code"><div class="line-numbers">1</div>r.js -o <span class="hljs-attribute">name</span>=hljs paths.<span class="hljs-attribute">hljs</span>=/path/to/highlight <span class="hljs-attribute">out</span>=highlight.js
-</div></pre><h2 id="License">License</h2>
+<pre><code><div class="line-numbers">1</div>r.js -o <span class="hljs-attribute">name</span>=hljs paths.<span class="hljs-attribute">hljs</span>=/path/to/highlight <span class="hljs-attribute">out</span>=highlight.js
+</code></pre><h2 id="License">License</h2>
 <p>Highlight.js is released under the BSD License. See <a href="https://github.com/isagalaev/highlight.js/blob/master/LICENSE">LICENSE</a> file
 for details.</p>
 <h2 id="Links">Links</h2>

@@ -190,13 +190,13 @@
  </div></div></div>  </div></div><div class=content><div class=social-share data-sites=weibo,twitter data-description=分享></div> <h1 id="fib-app">fib-app</h1>
 <p>fibjs 应用程序基础 api 框架</p>
 <h2 id="Install">Install</h2>
-<pre class ="notranslate"><div class="code lang-sh"><div class="line-numbers">1</div>npm install fib-app [--save]
-</div></pre>
+<pre><code class="lang-sh"><div class="line-numbers">1</div>npm install fib-app [--save]
+</code></pre>
 <h2 id="Test">Test</h2>
-<pre class ="notranslate"><div class="code lang-sh"><div class="line-numbers">1</div>npm <span class="hljs-built_in">test</span>
-</div></pre>
+<pre><code class="lang-sh"><div class="line-numbers">1</div>npm <span class="hljs-built_in">test</span>
+</code></pre>
 <h2 id="建立基础脚本">建立基础脚本</h2>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
 4
@@ -237,9 +237,9 @@ app.db.use(<span class="hljs-built_in">require</span>(<span class="hljs-string">
   }
 ]);
 svr.run();
-</div></pre>
+</code></pre>
 <p>其中 <code>person</code> 是 Model 定义模块，内容如下：</p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
 4
@@ -252,31 +252,31 @@ svr.run();
     <span class="hljs-attr">age</span>: <span class="hljs-built_in">Number</span>
   });
 };
-</div></pre>
+</code></pre>
 <p>这是一个标准的 orm 定义，同样可以使用 orm 的其它功能，比如类型检查，事件等。</p>
 <h2 id="API-数据格式">API 数据格式</h2>
 <p>对于 POST 和 PUT 请求，请求的主体必须是 JSON 格式，而且 HTTP header 的 Content-Type 需要设置为 application/json。</p>
-<pre class ="notranslate"><div class="code lang-sh"><div class="line-numbers">1
+<pre><code class="lang-sh"><div class="line-numbers">1
 2
 3
 4</div>curl -X PUT \
   -H <span class="hljs-string">"Content-Type: application/json"</span> \
   -d <span class="hljs-string">'{"name": "tom","sex":"male","age":23}'</span> \
   http://localhost/1.0/person/57fbbdb0a2400000
-</div></pre>
+</code></pre>
 <p>对于所有的请求，响应格式都是一个 JSON 对象。</p>
 <p>一个请求是否成功是由 HTTP 状态码标明的。一个 2XX 的状态码表示成功，而一个 4XX 表示请求失败。当一个请求失败时响应的主体仍然是一个 JSON 对象，但是总是会包含 code 和 message 这两个字段，你可以用它们来进行调试。举个例子，如果一个请求权限认证失败，会返回以下信息：</p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
 4</div>{
   <span class="hljs-string">"code"</span>: <span class="hljs-number">4030501</span>,
   <span class="hljs-string">"message"</span>: <span class="hljs-string">"The operation isn’t allowed for clients due to class-level permissions."</span>
 }
-</div></pre>
+</code></pre>
 <p>code 编码分为三个部分，前三位 403 表示错误类型，05 表示数据表编号，01 表示详细错误编码。</p>
 <p>对于 GET 请求，通常会返回对象数据，根据 GET 请求的地址不同，可能会返回一个对象，也可能会返回一个数组。比如：</p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
 4
@@ -285,9 +285,9 @@ svr.run();
   <span class="hljs-string">"sex"</span>: <span class="hljs-string">"male"</span>,
   <span class="hljs-string">"age"</span>: <span class="hljs-number">23</span>
 }
-</div></pre>
+</code></pre>
 <p>或者：</p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
 4
@@ -310,7 +310,7 @@ svr.run();
     <span class="hljs-string">"age"</span>: <span class="hljs-number">22</span>
   }
 ]
-</div></pre>
+</code></pre>
 <h2 id="特殊字段">特殊字段</h2>
 <p>对象数据中，有四个特殊含义的字段，是不允许通过 API 更改的。分别是 <code>id</code>, <code>updatedAt</code>, <code>createdAt</code>, <code>createdBy</code>。</p>
 <p>其中 <code>id</code>, <code>updatedAt</code>, <code>createdAt</code> 单个字段会自动创建和修改。<code>createdBy</code> 则需要自行指定类型。</p>
@@ -354,29 +354,29 @@ svr.run();
 </table>
 <h3 id="创建新对象">创建新对象</h3>
 <p>为了创建一个新的对象，应该向 class 的 URL 发送一个 POST 请求，其中应该包含对象本身。例如，要创建如上所说的对象：</p>
-<pre class ="notranslate"><div class="code lang-sh"><div class="line-numbers">1
+<pre><code class="lang-sh"><div class="line-numbers">1
 2
 3
 4</div>curl -X POST \
   -H <span class="hljs-string">"Content-Type: application/json"</span> \
   -d <span class="hljs-string">'{"name": "tom","sex":"male","age":23}'</span> \
   http://localhost/1.0/person
-</div></pre>
+</code></pre>
 <p>当创建成功时，HTTP 的返回是 201 Created，响应的主体是一个 JSON 对象，包含新的对象的 objectId 和 createdAt 时间戳：</p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
 4</div>{
   <span class="hljs-string">"createdAt"</span>: <span class="hljs-string">"2017-11-25T01:39:35.931Z"</span>,
   <span class="hljs-string">"id"</span>: <span class="hljs-string">"57fbbdb0a2400000"</span>
 }
-</div></pre>
+</code></pre>
 <h3 id="读取对象">读取对象</h3>
 <p>当你创建了一个对象时，你可以通过发送一个 GET 请求到返回的 header 的 Location 以获取它的内容。例如，为了得到我们上面创建的对象：</p>
-<pre class ="notranslate"><div class="code lang-sh"><div class="line-numbers">1</div>curl -X GET http://localhost/1.0/person/57fbbdb0a2400000
-</div></pre>
+<pre><code class="lang-sh"><div class="line-numbers">1</div>curl -X GET http://localhost/1.0/person/57fbbdb0a2400000
+</code></pre>
 <p>返回的主体是一个 JSON 对象包含所有用户提供的 field 加上 <code>createdAt</code>、<code>updatedAt</code> 和 <code>id</code> 字段：</p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
 4
@@ -391,48 +391,48 @@ svr.run();
   <span class="hljs-string">"updatedAt"</span>: <span class="hljs-string">"2017-11-25T01:39:35.931Z"</span>,
   <span class="hljs-string">"id"</span>: <span class="hljs-string">"57fbbdb0a2400000"</span>
 }
-</div></pre>
+</code></pre>
 <p>通过设置返回字段 <code>keys</code>，可以定制返回的内容，<code>keys</code> 的内容是一个以 <code>,</code> 分割的字段名称字符串，：</p>
-<pre class ="notranslate"><div class="code lang-sh"><div class="line-numbers">1</div>curl -X GET http://localhost/1.0/person/57fbbdb0a2400000?keys=name%2Csex
-</div></pre>
+<pre><code class="lang-sh"><div class="line-numbers">1</div>curl -X GET http://localhost/1.0/person/57fbbdb0a2400000?keys=name%2Csex
+</code></pre>
 <p>将返回：</p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
 4</div>{
   <span class="hljs-string">"name"</span>: <span class="hljs-string">"tom"</span>,
   <span class="hljs-string">"sex"</span>: <span class="hljs-string">"male"</span>
 }
-</div></pre>
+</code></pre>
 <h3 id="修改对象">修改对象</h3>
 <p>为了更改一个对象已经有的数据，你可以发送一个 PUT 请求到对象相应的 URL 上，任何你未指定的 key 都不会更改，所以你可以只更新对象数据的一个子集。例如，我们来更改我们对象的一个 age 字段：</p>
-<pre class ="notranslate"><div class="code lang-sh"><div class="line-numbers">1
+<pre><code class="lang-sh"><div class="line-numbers">1
 2
 3
 4</div>curl -X PUT \
   -H <span class="hljs-string">"Content-Type: application/json"</span> \
   -d <span class="hljs-string">'{"age": 25}'</span> \
   http://localhost/1.0/person/57fbbdb0a2400000
-</div></pre>
+</code></pre>
 <p>返回的 JSON 对象会包含 <code>updatedAt</code> 和 <code>id</code> 字段，表明更新发生的时间：</p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
 4</div>{
   <span class="hljs-string">"updatedAt"</span>: <span class="hljs-string">"2017-11-25T01:39:35.931Z"</span>,
   <span class="hljs-string">"id"</span>: <span class="hljs-string">"57fbbdb0a2400000"</span>
 }
-</div></pre>
+</code></pre>
 <h3 id="删除对象">删除对象</h3>
 <p>为了删除一个对象，可以发送一个 DELETE 请求到指定的对象的 URL，比如：</p>
-<pre class ="notranslate"><div class="code lang-sh"><div class="line-numbers">1</div>curl -X DELETE http://localhost/1.0/person/57fbbdb0a2400000
-</div></pre>
+<pre><code class="lang-sh"><div class="line-numbers">1</div>curl -X DELETE http://localhost/1.0/person/57fbbdb0a2400000
+</code></pre>
 <h3 id="查询对象列表">查询对象列表</h3>
 <p>通过发送一个 GET 请求到类的 URL 上，不需要任何 URL 参数，你就可以一次获取多个对象。下面就是简单地获取所有用户：</p>
-<pre class ="notranslate"><div class="code lang-sh"><div class="line-numbers">1</div>curl -X GET http://localhost/1.0/person
-</div></pre>
+<pre><code class="lang-sh"><div class="line-numbers">1</div>curl -X GET http://localhost/1.0/person
+</code></pre>
 <p>返回的值就是一个 JSON 对象包含了 results 字段，它的值就是对象的列表：</p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
 4
@@ -467,17 +467,17 @@ svr.run();
     <span class="hljs-string">"id"</span>: <span class="hljs-string">"57fbbdb0a2400001"</span>
   }
 ]
-</div></pre>
+</code></pre>
 <h4 id="keys-字段定制">keys 字段定制</h4>
 <p>与对象查询一样，查询列表时可以通过设定 <code>keys</code> 来定制返回结果所包含的字段。<code>keys</code> 的内容是一个以 <code>,</code> 分割的字段名称字符串，例如：</p>
-<pre class ="notranslate"><div class="code lang-sh"><div class="line-numbers">1</div>curl -X GET http://localhost/1.0/person?keys=name%2Cage
-</div></pre>
+<pre><code class="lang-sh"><div class="line-numbers">1</div>curl -X GET http://localhost/1.0/person?keys=name%2Cage
+</code></pre>
 <p>将指定只返回 <code>name</code> 和 <code>age</code> 两个字段。</p>
 <h4 id="where-过滤条件">where 过滤条件</h4>
 <p>通过 <code>where</code> 参数的形式可以对查询对象做出约束。</p>
 <p><code>where</code> 参数的值应该是 JSON 编码过的。就是说，如果你查看真正被发出的 URL 请求，它应该是先被 JSON 编码过，然后又被 URL 编码过。最简单的使用 <code>where</code> 参数的方式就是包含应有的 key 和 value。例如，如果我们想要搜索名字为 tom 的用户，我们应该这样构造查询:</p>
-<pre class ="notranslate"><div class="code lang-sh"><div class="line-numbers">1</div>curl -X GET http://localhost/1.0/person?<span class="hljs-built_in">where</span>=%7B%22name%22%3A%22tom%22%7D
-</div></pre>
+<pre><code class="lang-sh"><div class="line-numbers">1</div>curl -X GET http://localhost/1.0/person?<span class="hljs-built_in">where</span>=%7B%22name%22%3A%22tom%22%7D
+</code></pre>
 <p><code>where</code> 的值为一个 urlencode 后的 JSON 字符串，内容为：<code>{&quot;name&quot;:&quot;tom&quot;}</code></p>
 <p>除了完全匹配一个给定的值以外，<code>where</code> 也支持比较的方式，比如包含。<code>where</code> 参数支持如下选项：</p>
 <table>
@@ -558,22 +558,22 @@ svr.run();
 </table>
 <h4 id="skip-跳过记录">skip 跳过记录</h4>
 <p>通过 <code>skip</code> 选项，可以跳过指定的记录数，达到翻页的效果。</p>
-<pre class ="notranslate"><div class="code lang-sh"><div class="line-numbers">1</div>curl -X GET http://localhost/1.0/person?skip=100
-</div></pre>
+<pre><code class="lang-sh"><div class="line-numbers">1</div>curl -X GET http://localhost/1.0/person?skip=100
+</code></pre>
 <h4 id="limit-返回记录限制">limit 返回记录限制</h4>
 <p>通过 <code>limit</code> 选项，可以限制返回记录数，<code>limit</code> 的有效数字为 1-1000，缺省为 100。</p>
-<pre class ="notranslate"><div class="code lang-sh"><div class="line-numbers">1</div>curl -X GET http://localhost/1.0/person?<span class="hljs-built_in">limit</span>=100
-</div></pre>
+<pre><code class="lang-sh"><div class="line-numbers">1</div>curl -X GET http://localhost/1.0/person?<span class="hljs-built_in">limit</span>=100
+</code></pre>
 <h4 id="order-指定排序方式">order 指定排序方式</h4>
 <p>通过 <code>order</code> 选项，设定返回结果集的排序方式，字段名前包含 <code>-</code> 时为倒序。</p>
-<pre class ="notranslate"><div class="code lang-sh"><div class="line-numbers">1</div>curl -X GET http://localhost/1.0/person?order=-id
-</div></pre>
+<pre><code class="lang-sh"><div class="line-numbers">1</div>curl -X GET http://localhost/1.0/person?order=-id
+</code></pre>
 <h4 id="count-返回结果总数">count 返回结果总数</h4>
 <p>在请求时增加 <code>count</code> 可以在返回指定内容的同时返回结果集的总数。</p>
-<pre class ="notranslate"><div class="code lang-sh"><div class="line-numbers">1</div>curl -X GET http://localhost/1.0/person?count=1&amp;<span class="hljs-built_in">limit</span>=1
-</div></pre>
+<pre><code class="lang-sh"><div class="line-numbers">1</div>curl -X GET http://localhost/1.0/person?count=1&amp;<span class="hljs-built_in">limit</span>=1
+</code></pre>
 <p>此时返回结果将包含 <code>count</code> 和 <code>results</code> 两个字段，分别包含总数和结果：</p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
 4
@@ -598,10 +598,10 @@ svr.run();
     }
   ]
 }
-</div></pre>
+</code></pre>
 <h2 id="建立扩展对象">建立扩展对象</h2>
 <p>通过 orm 定义 hasOne 和 hasMany，可以定义对象之间的关联关系，并在 API 上体现出来，例如：</p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
 4
@@ -618,7 +618,7 @@ svr.run();
 
   Person.hasMany(<span class="hljs-string">'pets'</span>, Pet);
 };
-</div></pre>
+</code></pre>
 <h2 id="扩展对象访问-API">扩展对象访问 API</h2>
 <p>下面是扩展对象的 API 定义：</p>
 <table>
@@ -664,51 +664,51 @@ svr.run();
 </table>
 <h3 id="设置扩展对象">设置扩展对象</h3>
 <p>设置扩展对象是将两个独立的对象建立联系。比如 tom 领养了一只叫 cat 的宠物，可以用下面的操作实现：</p>
-<pre class ="notranslate"><div class="code lang-sh"><div class="line-numbers">1
+<pre><code class="lang-sh"><div class="line-numbers">1
 2
 3
 4</div>curl -X PUT \
   -H <span class="hljs-string">"Content-Type: application/json"</span> \
   -d <span class="hljs-string">'{"id": "57fbbdb0a2400007"}'</span> \
   http://localhost/1.0/person/57fbbdb0a2400000/pets
-</div></pre>
+</code></pre>
 <p>在调用里需要在 body 内指定 cat 的 id。</p>
 <h3 id="创建扩展对象">创建扩展对象</h3>
 <p>直接创建扩展对象，可以在创建对象的同时，建立对象之间的联系。比如：</p>
-<pre class ="notranslate"><div class="code lang-sh"><div class="line-numbers">1
+<pre><code class="lang-sh"><div class="line-numbers">1
 2
 3
 4</div>curl -X POST \
   -H <span class="hljs-string">"Content-Type: application/json"</span> \
   -d <span class="hljs-string">'{"name": "cat"}'</span> \
   http://localhost/1.0/person/57fbbdb0a2400000/pets
-</div></pre>
+</code></pre>
 <p>将创建一只名叫 cat 的宠物，并建立与 tom 的关联关系。</p>
 <h3 id="读取扩展对象">读取扩展对象</h3>
 <p>读取扩展对象与读取基础对象很相似，也同样支持 keys 选项：</p>
-<pre class ="notranslate"><div class="code lang-sh"><div class="line-numbers">1</div>curl -X GET http://localhost/1.0/person/57fbbdb0a2400000/pets/57fbbdb0a2400007
-</div></pre>
+<pre><code class="lang-sh"><div class="line-numbers">1</div>curl -X GET http://localhost/1.0/person/57fbbdb0a2400000/pets/57fbbdb0a2400007
+</code></pre>
 <h3 id="修改扩展对象">修改扩展对象</h3>
 <p>读取扩展对象与读取基础对象很相似：</p>
-<pre class ="notranslate"><div class="code lang-sh"><div class="line-numbers">1
+<pre><code class="lang-sh"><div class="line-numbers">1
 2
 3
 4</div>curl -X PUT \
   -H <span class="hljs-string">"Content-Type: application/json"</span> \
   -d <span class="hljs-string">'{"name": "cat 1"}'</span> \
   http://localhost/1.0/person/57fbbdb0a2400000/pets/57fbbdb0a2400007
-</div></pre>
+</code></pre>
 <h3 id="删除扩展对象">删除扩展对象</h3>
 <p>删除扩展对象不会删除对象本身，只会解除对象之间的关系：</p>
-<pre class ="notranslate"><div class="code lang-sh"><div class="line-numbers">1</div>curl -X DETELE http://localhost/1.0/person/57fbbdb0a2400000/pets/57fbbdb0a2400007
-</div></pre>
+<pre><code class="lang-sh"><div class="line-numbers">1</div>curl -X DETELE http://localhost/1.0/person/57fbbdb0a2400000/pets/57fbbdb0a2400007
+</code></pre>
 <h3 id="查询扩展对象列表">查询扩展对象列表</h3>
 <p>查询扩展对象列表与查询基础对象列表很相似，也同样支持 keys 以及条件过滤等选项：</p>
-<pre class ="notranslate"><div class="code lang-sh"><div class="line-numbers">1</div>curl -X GET http://localhost/1.0/person/57fbbdb0a2400000/pets
-</div></pre>
+<pre><code class="lang-sh"><div class="line-numbers">1</div>curl -X GET http://localhost/1.0/person/57fbbdb0a2400000/pets
+</code></pre>
 <h2 id="ACL">ACL</h2>
 <p>可以通过定义 Model 的 ACL 控制数据权限。比如:</p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
 4
@@ -757,9 +757,9 @@ svr.run();
     }
   });
 };
-</div></pre>
+</code></pre>
 <p>如果定义 Model 时未指定 ACL，则等同于设定了缺省权限：</p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
 4
@@ -768,7 +768,7 @@ svr.run();
     <span class="hljs-string">"*"</span>: <span class="hljs-literal">true</span>
   }
 }
-</div></pre>
+</code></pre>
 <h3 id="主体">主体</h3>
 <p>ACL 主体描述有三种，用户 <code>id</code>，用户 <code>role</code> 和 <code>*</code>，<code>id</code> 表示一个具体的用户，<code>role</code> 表示具有某个角色的用户，<code>*</code> 表示所有用户：</p>
 <table>
@@ -844,7 +844,7 @@ svr.run();
 </table>
 <p>权限制定 <code>true</code> 为允许访问，为 <code>false</code> 为禁止访问，为 <code>array</code> 为只允许指定的字段的访问。<code>delete</code> 和 <code>find</code> 不接受 <code>array</code>，如果设置了 <code>array</code> 则视同为 <code>true</code>。如果指定的权限不存在，则匹配同主体下的 <code>*</code> 权限。若都不存在，再一次查询下一优先级的主体。</p>
 <p>比如以上例子，如果需要设定 <code>user</code> 只允许读取 <code>title</code> 和 <code>detail</code>，其他人可以读取  <code>title</code>，则可以这样设定：</p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
 4
@@ -871,10 +871,10 @@ svr.run();
     }
   }
 }
-</div></pre>
+</code></pre>
 <h3 id="对象权限">对象权限</h3>
 <p>在 Model 上设定的是整个类的权限，如果需要对具体的对象设定权限，可以通过设置 OACL 来实现：</p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
 4
@@ -921,7 +921,7 @@ svr.run();
     }
   });
 };
-</div></pre>
+</code></pre>
 <p>在这个例子中，当访问者是对象本人时，将被允许全部操作，否则禁止一切访问。会按照以下步骤检查权限：</p>
 <ul>
 <li><code>person[57fbbdb0a2400000]</code> =&gt; <code>OACL</code></li>
@@ -929,7 +929,7 @@ svr.run();
 </ul>
 <h3 id="扩展对象权限">扩展对象权限</h3>
 <p>扩展对象的访问权限控制和基础对象权限相似，唯一不同的是在 ACL 需要单独指定：</p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
 4
@@ -1010,11 +1010,11 @@ svr.run();
 
   Person.hasMany(<span class="hljs-string">'pets'</span>, Pet);
 };
-</div></pre>
+</code></pre>
 <p>这个定义中，任何人都可以查阅个人信息的 <code>name</code> 和 <code>sex</code>，并自由查阅和搜索他的 <code>pets</code>，用户本人可以操作自己的所有数据，以及拥有自己宠物信息的全部权限。</p>
 <p>在检查扩展对象的访问权限时，会分别检查对象权限和扩展对象权限。比如以下请求：</p>
-<pre class ="notranslate"><div class="code lang-sh"><div class="line-numbers">1</div>curl -X GET http://localhost/1.0/person/57fbbdb0a2400000/pets/57fbbdb0a2400007
-</div></pre>
+<pre><code class="lang-sh"><div class="line-numbers">1</div>curl -X GET http://localhost/1.0/person/57fbbdb0a2400000/pets/57fbbdb0a2400007
+</code></pre>
 <p>会按照以下步骤检查权限：</p>
 <ul>
 <li><code>pets[57fbbdb0a2400007]</code> =&gt; <code>OACL</code></li>

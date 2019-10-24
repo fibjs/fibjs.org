@@ -193,8 +193,8 @@
 <a href="https://david-dm.org/mde/ejs?type=dev"><img src="https://img.shields.io/david/dev/mde/ejs.svg?style=flat" alt="Developing Dependencies"></a>
 <a href="https://snyk.io/test/npm/ejs"><img src="https://snyk.io/test/npm/ejs/badge.svg?style=flat-square" alt="Known Vulnerabilities"></a></p>
 <h2 id="Installation">Installation</h2>
-<pre class ="notranslate"><div class="code lang-bash"><div class="line-numbers">1</div>$ npm install ejs
-</div></pre>
+<pre><code class="lang-bash"><div class="line-numbers">1</div>$ npm install ejs
+</code></pre>
 <h2 id="Features">Features</h2>
 <ul>
 <li>Control flow with <code>&lt;% %&gt;</code></li>
@@ -210,15 +210,15 @@
 <li>Complies with the <a href="http://expressjs.com">Express</a> view system</li>
 </ul>
 <h2 id="Example">Example</h2>
-<pre class ="notranslate"><div class="code lang-html"><div class="line-numbers">1
+<pre><code class="lang-html"><div class="line-numbers">1
 2
 3</div><span class="hljs-tag">&lt;<span class="hljs-name">%</span> <span class="hljs-attr">if</span> (<span class="hljs-attr">user</span>) { %&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">%=</span> <span class="hljs-attr">user.name</span> %&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">%</span> } %&gt;</span>
-</div></pre>
+</code></pre>
 <p>Try EJS online at: <a href="https://ionicabizau.github.io/ejs-playground/">https://ionicabizau.github.io/ejs-playground/</a>.</p>
 <h2 id="Usage">Usage</h2>
-<pre class ="notranslate"><div class="code lang-javascript"><div class="line-numbers">1
+<pre><code class="lang-javascript"><div class="line-numbers">1
 2
 3
 4
@@ -237,7 +237,7 @@ ejs.render(str, data, options);
 ejs.renderFile(filename, data, options, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err, str</span>)</span>{
     <span class="hljs-comment">// str =&gt; Rendered HTML string</span>
 });
-</div></pre>
+</code></pre>
 <p>It is also possible to use <code>ejs.render(dataAndOptions);</code> where you pass
 everything in a single object. In that case, you&#39;ll end up with local variables
 for all the passed options. However, be aware that your code could break if we
@@ -294,7 +294,7 @@ use <code>&lt;%- include(&#39;user/show&#39;) %&gt;</code>.</p>
 call unless you are using <code>renderFile()</code>.</p>
 <p>You&#39;ll likely want to use the raw output tag (<code>&lt;%-</code>) with your include to avoid
 double-escaping the HTML output.</p>
-<pre class ="notranslate"><div class="code lang-html"><div class="line-numbers">1
+<pre><code class="lang-html"><div class="line-numbers">1
 2
 3
 4
@@ -303,7 +303,7 @@ double-escaping the HTML output.</p>
     <span class="hljs-tag">&lt;<span class="hljs-name">%-</span> <span class="hljs-attr">include</span>('<span class="hljs-attr">user</span>/<span class="hljs-attr">show</span>', {<span class="hljs-attr">user:</span> <span class="hljs-attr">user</span>}) %&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">%</span> }); %&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
-</div></pre>
+</code></pre>
 <p>Includes are inserted at runtime, so you can use variables for the path in the
 <code>include</code> call (for example <code>&lt;%- include(somePath) %&gt;</code>). Variables in your
 top-level data object are available to all your includes, but local variables
@@ -312,7 +312,7 @@ need to be passed down.</p>
 still supported.</p>
 <h2 id="Custom-delimiters">Custom delimiters</h2>
 <p>Custom delimiters can be applied on a per-template basis, or globally:</p>
-<pre class ="notranslate"><div class="code lang-javascript"><div class="line-numbers">1
+<pre><code class="lang-javascript"><div class="line-numbers">1
 2
 3
 4
@@ -333,23 +333,23 @@ ejs.render(<span class="hljs-string">'&lt;?= users.join(" | "); ?&gt;'</span>, {
 ejs.delimiter = <span class="hljs-string">'$'</span>;
 ejs.render(<span class="hljs-string">'&lt;$= users.join(" | "); $&gt;'</span>, {<span class="hljs-attr">users</span>: users});
 <span class="hljs-comment">// =&gt; 'geddy | neil | alex'</span>
-</div></pre>
+</code></pre>
 <h2 id="Caching">Caching</h2>
 <p>EJS ships with a basic in-process cache for caching the intermediate JavaScript
 functions used to render templates. It&#39;s easy to plug in LRU caching using
 Node&#39;s <code>lru-cache</code> library:</p>
-<pre class ="notranslate"><div class="code lang-javascript"><div class="line-numbers">1
+<pre><code class="lang-javascript"><div class="line-numbers">1
 2
 3</div><span class="hljs-keyword">let</span> ejs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'ejs'</span>),
     LRU = <span class="hljs-built_in">require</span>(<span class="hljs-string">'lru-cache'</span>);
 ejs.cache = LRU(<span class="hljs-number">100</span>); <span class="hljs-comment">// LRU cache with 100-item limit</span>
-</div></pre>
+</code></pre>
 <p>If you want to clear the EJS cache, call <code>ejs.clearCache</code>. If you&#39;re using the
 LRU cache and need a different limit, simple reset <code>ejs.cache</code> to a new instance
 of the LRU.</p>
 <h2 id="Custom-file-loader">Custom file loader</h2>
 <p>The default file loader is <code>fs.readFileSync</code>, if you want to customize it, you can set ejs.fileLoader.</p>
-<pre class ="notranslate"><div class="code lang-javascript"><div class="line-numbers">1
+<pre><code class="lang-javascript"><div class="line-numbers">1
 2
 3
 4
@@ -360,12 +360,12 @@ of the LRU.</p>
 };
 
 ejs.fileLoader = myFileLoad;
-</div></pre>
+</code></pre>
 <p>With this feature, you can preprocess the template before reading it.</p>
 <h2 id="Layouts">Layouts</h2>
 <p>EJS does not specifically support blocks, but layouts can be implemented by
 including headers and footers, like so:</p>
-<pre class ="notranslate"><div class="code lang-html"><div class="line-numbers">1
+<pre><code class="lang-html"><div class="line-numbers">1
 2
 3
 4
@@ -380,7 +380,7 @@ including headers and footers, like so:</p>
   My page
 <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">%-</span> <span class="hljs-attr">include</span>('<span class="hljs-attr">footer</span>') <span class="hljs-attr">-</span>%&gt;</span>
-</div></pre>
+</code></pre>
 <h2 id="Client-side-support">Client-side support</h2>
 <p>Go to the <a href="https://github.com/mde/ejs/releases/latest">Latest Release</a>, download
 <code>./ejs.js</code> or <code>./ejs.min.js</code>. Alternately, you can compile it yourself by cloning
@@ -388,7 +388,7 @@ the repository and running <code>jake build</code> (or <code>$(npm bin)/jake bui
 not installed globally).</p>
 <p>Include one of these files on your page, and <code>ejs</code> should be available globally.</p>
 <h3 id="Example" class ="notranslate">Example</h3>
-<pre class ="notranslate"><div class="code lang-html"><div class="line-numbers">1
+<pre><code class="lang-html"><div class="line-numbers">1
 2
 3
 4
@@ -407,13 +407,13 @@ not installed globally).</p>
   <span class="hljs-comment">// Vanilla JS:</span>
   <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'output'</span>).innerHTML = html;
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
-</div></pre>
+</code></pre>
 <h3 id="Caveats" class ="notranslate">Caveats</h3>
 <p>Most of EJS will work as expected; however, there are a few things to note:</p>
 <ol>
 <li><span class="notranslate">Obviously</span>, since you do not have access to the filesystem, <code>ejs.renderFile()</code> won&#39;t work.</li>
 <li><p>For the same reason, <code>include</code>s do not work unless you use an <code>include callback</code>. Here is an example:</p>
-<pre class ="notranslate"><div class="code lang-javascript"><div class="line-numbers">1
+<pre><code class="lang-javascript"><div class="line-numbers">1
 2
 3
 4
@@ -430,7 +430,7 @@ fn(data, <span class="hljs-literal">null</span>, <span class="hljs-function"><sp
  <span class="hljs-comment">// Put your code here</span>
  <span class="hljs-comment">// Return the contents of file as a string</span>
 }); <span class="hljs-comment">// returns rendered string</span>
-</div></pre>
+</code></pre>
 </li>
 </ol>
 <h3 id="IDE-Integration-with-Syntax-Highlighting" class ="notranslate">IDE Integration with Syntax Highlighting</h3>

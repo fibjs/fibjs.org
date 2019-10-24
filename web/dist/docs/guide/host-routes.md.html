@@ -189,7 +189,7 @@
 </ul>
  </div></div></div>  </div></div><div class=content><div class=social-share data-sites=weibo,twitter data-description=分享></div> <h1 id="域名路由">域名路由</h1>
 <p>从 0.28.0 开始, <code>fibjs</code> 的 mq.Routing 对象支持 HOST 方法作为域名路由.</p>
-<pre class ="notranslate"><div class="code lang-javascript"><div class="line-numbers">1
+<pre><code class="lang-javascript"><div class="line-numbers">1
 2
 3
 4
@@ -214,13 +214,13 @@ rt.host(<span class="hljs-string">'fibjs.org'</span>, ...)
 
 <span class="hljs-comment">// `rt.host(...args)` 实际上是 `rt.append('host', ...args)` 的别名</span>
 rt.append(<span class="hljs-string">'host'</span>, <span class="hljs-string">'fibjs.org'</span>, ...)
-</div></pre>
+</code></pre>
 <p>我们来看一些例子.</p>
 <h2 id="简单例子">简单例子</h2>
 <h3 id="简单的-fileHandlers">简单的 fileHandlers</h3>
 <p>假设域名 fibjs.org 已经被绑定到我们应用所在的机器(出于测试目的, 你也可以通过在本地修改 Hosts 达到这一绑定效果), 而我们希望通过 <code>file.fibjs.org</code> 可以下载机器上 FILE_DIR 目录的文件资源,
 我们可以这样做:</p>
-<pre class ="notranslate"><div class="code lang-javascript"><div class="line-numbers">1
+<pre><code class="lang-javascript"><div class="line-numbers">1
 2
 3
 4
@@ -231,10 +231,10 @@ rt.append(<span class="hljs-string">'host'</span>, <span class="hljs-string">'fi
 <span class="hljs-keyword">const</span> fileRoutes = <span class="hljs-keyword">new</span> mq.Routing();
 <span class="hljs-comment">// 对域名 file.fibjs.org 的请求, 以 fileHandler 响应</span>
 fileRoutes.host(<span class="hljs-string">'file.fibjs.org'</span>, http.fileHandler(FILE_DIR))
-</div></pre>
+</code></pre>
 <h3 id="前端资源-host">前端资源 host</h3>
 <p>典型的场景是, 编译好的前端应用可能会发布到机器上, 比如存到了 <code>/home/frontend/assets/</code> 目录</p>
-<pre class ="notranslate"><div class="code lang-bash"><div class="line-numbers">1
+<pre><code class="lang-bash"><div class="line-numbers">1
 2
 3
 4
@@ -243,10 +243,10 @@ fileRoutes.host(<span class="hljs-string">'file.fibjs.org'</span>, http.fileHand
 /home/frontend/assets/app.839ca9.js
 /home/frontend/assets/common.537a50.js
 /home/frontend/assets/chunk.d45858.js
-</div></pre>
+</code></pre>
 <p>而我们希望通过 festatic.fibjs.org 获得这些资源, 则可以这样写:</p>
-<pre class ="notranslate"><div class="code lang-javascript"><div class="line-numbers">1</div>fileRoutes.host(<span class="hljs-string">'festatic.fibjs.org'</span>, http.fileHandlers(<span class="hljs-string">'/home/frontend/assets/'</span>))
-</div></pre>
+<pre><code class="lang-javascript"><div class="line-numbers">1</div>fileRoutes.host(<span class="hljs-string">'festatic.fibjs.org'</span>, http.fileHandlers(<span class="hljs-string">'/home/frontend/assets/'</span>))
+</code></pre>
 <h3 id="api-服务器">api 服务器</h3>
 <p>假设你的机器上存在 api 服务器, 你希望将他们统一到 <code>api.fibjs.org</code> 这个域名, 但分配不同的 path , 如:</p>
 <table>
@@ -276,7 +276,7 @@ fileRoutes.host(<span class="hljs-string">'file.fibjs.org'</span>, http.fileHand
 </tbody>
 </table>
 <p>那么你可以:</p>
-<pre class ="notranslate"><div class="code lang-javascript"><div class="line-numbers">1
+<pre><code class="lang-javascript"><div class="line-numbers">1
 2
 3
 4
@@ -295,9 +295,9 @@ apiRoutes.host(<span class="hljs-string">'api.fibjs.org'</span>, {
     <span class="hljs-string">'/biz1'</span>: <span class="hljs-function">(<span class="hljs-params">req</span>) =&gt;</span> proxyTo(req, <span class="hljs-string">`http://127.0.0.1:8080`</span>),
     <span class="hljs-string">'/biz2'</span>: <span class="hljs-function">(<span class="hljs-params">req</span>) =&gt;</span> proxyTo(req, <span class="hljs-string">`http://127.0.0.1:9007`</span>),
 })
-</div></pre>
+</code></pre>
 <p>进一步的, 如果你希望其中的 &#39;/biz1&#39; 路径只接受 http POST 请求, 则可以:</p>
-<pre class ="notranslate"><div class="code lang-javascript"><div class="line-numbers">1
+<pre><code class="lang-javascript"><div class="line-numbers">1
 2
 3
 4
@@ -314,11 +314,11 @@ apiRoutes.host(<span class="hljs-string">'api.fibjs.org'</span>, {
     <span class="hljs-string">'/biz1'</span>: apiRoutes.post(<span class="hljs-function">(<span class="hljs-params">req</span>) =&gt;</span> proxyTo(req, <span class="hljs-string">`http://127.0.0.1:8080`</span>)),
     <span class="hljs-string">'/biz2'</span>: <span class="hljs-function">(<span class="hljs-params">req</span>) =&gt;</span> proxyTo(req, <span class="hljs-string">`http://127.0.0.1:9007`</span>),
 })
-</div></pre>
+</code></pre>
 <p><strong>注意</strong> api.fibjs.org 必须已经绑定到当前机器</p>
 <h2 id="复杂例子">复杂例子</h2>
 <p>若无其它声明, 以下例子中, 存在以下函数:</p>
-<pre class ="notranslate"><div class="code lang-javascript"><div class="line-numbers">1
+<pre><code class="lang-javascript"><div class="line-numbers">1
 2
 3
 4
@@ -361,9 +361,9 @@ apiRoutes.host(<span class="hljs-string">'api.fibjs.org'</span>, {
     <span class="hljs-keyword">const</span> result = req.response.body.readAll()
     <span class="hljs-keyword">return</span> result ? result.toString() : result
 }
-</div></pre>
+</code></pre>
 <h3 id="域名分流">域名分流</h3>
-<pre class ="notranslate"><div class="code lang-javascript"><div class="line-numbers">1
+<pre><code class="lang-javascript"><div class="line-numbers">1
 2
 3
 4
@@ -434,6 +434,6 @@ assert.equal( invokePathFromHost(<span class="hljs-string">'/user/information'</
 } <span class="hljs-keyword">catch</span> (error) {
     assert.equal(error, <span class="hljs-string">'Error: Routing: unknown routing: fibjs.org'</span>)
 }
-</div></pre>
+</code></pre>
 <p>接下来,你只需要将上例中的 routes 挂载到一个 http(s)Server, 它就可以开始工作了. 如果这个 server 监听了所在机器的默认端口(一般是 80), 则一个根据域名分流不同路由的网关服务就搭建好了 —— 这意味着, 完成同样的功能, 你可以仅使用 fibjs 的 mq.Routing 而不一定非要安装 nginx/apache/tomcat/iis 等传统网关服务.</p>
  </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id=toc></div></div></div></div><div class=footer><div class=container>&copy; Copyright 2014-2019 fibjs.org | <a href=../../support.html>支持我们</a></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="Click to return on the top page" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js></script><script type=text/javascript src=../../js/common.js></script><script type=text/javascript src=../../js/docs.js></script></body></html>

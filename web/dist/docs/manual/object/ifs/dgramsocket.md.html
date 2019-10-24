@@ -191,10 +191,10 @@
 <p><a href=../../module/ifs/dgram.md.html#Socket class ="notranslate">dgram.Socket</a> 对象是一个封装了数据包函数功能的 <a href=eventemitter.md.html class ="notranslate">EventEmitter</a>。</p>
 <p>DgramSocket 实例是由 <a href=../../module/ifs/dgram.md.html#createSocket class ="notranslate">dgram.createSocket</a>() 创建的。创建 <a href=../../module/ifs/dgram.md.html#Socket class ="notranslate">dgram.Socket</a> 实例不需要使用 new 关键字。</p>
 <p>创建方法：</p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">var</span> dgram = <span class="hljs-built_in">require</span>(<span class="hljs-string">'dgram'</span>);
 <span class="hljs-keyword">var</span> sock = dgram.createSocket(<span class="hljs-string">'udp4'</span>);
-</div></pre>
+</code></pre>
 <h2 id="事件">事件</h2>
 <p>DgramSocket 继承于 <a href=eventemitter.md.html class ="notranslate">EventEmitter</a>，对象的状态变化，以及数据接受，都是以事件的方式实现。</p>
 <h3 id="close-事件">close 事件</h3>
@@ -305,15 +305,15 @@
 <h2 id="静态属性">静态属性</h2>
 <h3 id="defaultMaxListeners" class ="notranslate">defaultMaxListeners</h3>
 <p><strong>Integer, 默认全局最大监听器数</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Integer DgramSocket.defaultMaxListeners;
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Integer DgramSocket.defaultMaxListeners;
+</code></pre>
 <h2 id="成员函数">成员函数</h2>
 <h3 id="bind" class ="notranslate">bind</h3>
 <p><strong>该方法会令 <a href=../../module/ifs/dgram.md.html#Socket class ="notranslate">dgram.Socket</a> 在指定的 <code>port</code> 和 <code>addr</code> 上监听数据包信息。绑定完成时会触发一个 <code>listening</code> 事件。</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>DgramSocket.bind(Integer port = <span class="hljs-number">0</span>,
     <span class="hljs-built_in">String</span> addr = <span class="hljs-string">""</span>) <span class="hljs-keyword">async</span>;
-</div></pre>
+</code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">port</span>: Integer, 指定绑定端口，若 <code>port</code> 未指定或为 0，操作系统会尝试绑定一个随机的端口</li>
@@ -321,8 +321,8 @@
 </ul>
 <hr>
 <p><strong>该方法会令 <a href=../../module/ifs/dgram.md.html#Socket class ="notranslate">dgram.Socket</a> 在 <code>opts</code> 指定的 <code>port</code> 和 <code>address</code> 上监听数据包信息。绑定完成时会触发一个 <code>listening</code> 事件。</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div>DgramSocket.bind(<span class="hljs-built_in">Object</span> opts) <span class="hljs-keyword">async</span>;
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>DgramSocket.bind(<span class="hljs-built_in">Object</span> opts) <span class="hljs-keyword">async</span>;
+</code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">opts</span>: Object, 指定绑定参数</li>
@@ -330,12 +330,12 @@
 <hr>
 <h3 id="send" class ="notranslate">send</h3>
 <p><strong>在 socket 上发送一个数据包</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3</div>Integer DgramSocket.send(Buffer msg,
     Integer port,
     <span class="hljs-built_in">String</span> address = <span class="hljs-string">""</span>) <span class="hljs-keyword">async</span>;
-</div></pre>
+</code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">msg</span>: <a href=buffer.md.html class ="notranslate">Buffer</a>, 指定发送的数据</li>
@@ -348,7 +348,7 @@
 </ul>
 <hr>
 <p><strong>在 socket 上发送一个数据包</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
 4
@@ -357,7 +357,7 @@
     Integer length,
     Integer port,
     <span class="hljs-built_in">String</span> address = <span class="hljs-string">""</span>) <span class="hljs-keyword">async</span>;
-</div></pre>
+</code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">msg</span>: <a href=buffer.md.html class ="notranslate">Buffer</a>, 指定发送的数据</li>
@@ -373,8 +373,8 @@
 <hr>
 <h3 id="address" class ="notranslate">address</h3>
 <p><strong>返回一个包含 socket 地址信息的对象。对于 UDP socket，该对象将包含 address、family 和 port 属性。</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div>NObject DgramSocket.address();
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>NObject DgramSocket.address();
+</code></pre>
 <p>返回结果:</p>
 <ul>
 <li><span class="notranslate">NObject</span>, 返回对象绑定地址</li>
@@ -382,12 +382,12 @@
 <hr>
 <h3 id="close" class ="notranslate">close</h3>
 <p><strong>关闭当前 socket</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div>DgramSocket.close();
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>DgramSocket.close();
+</code></pre>
 <hr>
 <p><strong>关闭当前 socket</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div>DgramSocket.close(<span class="hljs-built_in">Function</span> callback);
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>DgramSocket.close(<span class="hljs-built_in">Function</span> callback);
+</code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">callback</span>: Function, 关闭完成后的回调函数，它相当于为 <code>close</code> 事件添加了一个监听器</li>
@@ -395,8 +395,8 @@
 <hr>
 <h3 id="getRecvBufferSize" class ="notranslate">getRecvBufferSize</h3>
 <p><strong>查询 socket 接收缓冲区大小</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div>Integer DgramSocket.getRecvBufferSize();
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer DgramSocket.getRecvBufferSize();
+</code></pre>
 <p>返回结果:</p>
 <ul>
 <li><span class="notranslate">Integer</span>, 返回查询结果</li>
@@ -404,8 +404,8 @@
 <hr>
 <h3 id="getSendBufferSize" class ="notranslate">getSendBufferSize</h3>
 <p><strong>查询 socket 发送缓冲区大小</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div>Integer DgramSocket.getSendBufferSize();
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer DgramSocket.getSendBufferSize();
+</code></pre>
 <p>返回结果:</p>
 <ul>
 <li><span class="notranslate">Integer</span>, 返回查询结果</li>
@@ -413,8 +413,8 @@
 <hr>
 <h3 id="setRecvBufferSize" class ="notranslate">setRecvBufferSize</h3>
 <p><strong>设置 socket 接收缓冲区大小</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div>DgramSocket.setRecvBufferSize(Integer size);
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>DgramSocket.setRecvBufferSize(Integer size);
+</code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">size</span>: Integer, 指定要设置的尺寸</li>
@@ -422,8 +422,8 @@
 <hr>
 <h3 id="setSendBufferSize" class ="notranslate">setSendBufferSize</h3>
 <p><strong>设置 socket 发送缓冲区大小</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div>DgramSocket.setSendBufferSize(Integer size);
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>DgramSocket.setSendBufferSize(Integer size);
+</code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">size</span>: Integer, 指定要设置的尺寸</li>
@@ -431,8 +431,8 @@
 <hr>
 <h3 id="setBroadcast" class ="notranslate">setBroadcast</h3>
 <p><strong>设置或清除 SO_BROADCAST socket 选项</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div>DgramSocket.setBroadcast(<span class="hljs-built_in">Boolean</span> flag);
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>DgramSocket.setBroadcast(<span class="hljs-built_in">Boolean</span> flag);
+</code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">flag</span>: Boolean, 当设置为 true, UDP包会被发送到一个本地接口的广播地址</li>
@@ -440,8 +440,8 @@
 <hr>
 <h3 id="ref" class ="notranslate">ref</h3>
 <p><strong>维持 fibjs 进程不退出，在对象绑定期间阻止 fibjs 进程退出</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div>DgramSocket DgramSocket.ref();
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>DgramSocket DgramSocket.ref();
+</code></pre>
 <p>返回结果:</p>
 <ul>
 <li><span class="notranslate">DgramSocket</span>, 返回当前对象</li>
@@ -449,8 +449,8 @@
 <hr>
 <h3 id="unref" class ="notranslate">unref</h3>
 <p><strong>允许 fibjs 进程退出，在对象绑定期间允许 fibjs 进程退出</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div>DgramSocket DgramSocket.unref();
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>DgramSocket DgramSocket.unref();
+</code></pre>
 <p>返回结果:</p>
 <ul>
 <li><span class="notranslate">DgramSocket</span>, 返回当前对象</li>
@@ -458,10 +458,10 @@
 <hr>
 <h3 id="on" class ="notranslate">on</h3>
 <p><strong>绑定一个事件处理函数到对象</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-built_in">Object</span> DgramSocket.on(<span class="hljs-built_in">String</span> ev,
     <span class="hljs-built_in">Function</span> func);
-</div></pre>
+</code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">ev</span>: String, 指定事件的名称</li>
@@ -473,8 +473,8 @@
 </ul>
 <hr>
 <p><strong>绑定一个事件处理函数到对象</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> DgramSocket.on(<span class="hljs-built_in">Object</span> map);
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> DgramSocket.on(<span class="hljs-built_in">Object</span> map);
+</code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">map</span>: Object, 指定事件映射关系，对象属性名称将作为事件名称，属性的值将作为事件处理函数</li>
@@ -486,10 +486,10 @@
 <hr>
 <h3 id="addListener" class ="notranslate">addListener</h3>
 <p><strong>绑定一个事件处理函数到对象</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-built_in">Object</span> DgramSocket.addListener(<span class="hljs-built_in">String</span> ev,
     <span class="hljs-built_in">Function</span> func);
-</div></pre>
+</code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">ev</span>: String, 指定事件的名称</li>
@@ -501,8 +501,8 @@
 </ul>
 <hr>
 <p><strong>绑定一个事件处理函数到对象</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> DgramSocket.addListener(<span class="hljs-built_in">Object</span> map);
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> DgramSocket.addListener(<span class="hljs-built_in">Object</span> map);
+</code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">map</span>: Object, 指定事件映射关系，对象属性名称将作为事件名称，属性的值将作为事件处理函数</li>
@@ -514,10 +514,10 @@
 <hr>
 <h3 id="prependListener" class ="notranslate">prependListener</h3>
 <p><strong>绑定一个事件处理函数到对象起始</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-built_in">Object</span> DgramSocket.prependListener(<span class="hljs-built_in">String</span> ev,
     <span class="hljs-built_in">Function</span> func);
-</div></pre>
+</code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">ev</span>: String, 指定事件的名称</li>
@@ -529,8 +529,8 @@
 </ul>
 <hr>
 <p><strong>绑定一个事件处理函数到对象起始</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> DgramSocket.prependListener(<span class="hljs-built_in">Object</span> map);
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> DgramSocket.prependListener(<span class="hljs-built_in">Object</span> map);
+</code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">map</span>: Object, 指定事件映射关系，对象属性名称将作为事件名称，属性的值将作为事件处理函数</li>
@@ -542,10 +542,10 @@
 <hr>
 <h3 id="once" class ="notranslate">once</h3>
 <p><strong>绑定一个一次性事件处理函数到对象，一次性处理函数只会触发一次</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-built_in">Object</span> DgramSocket.once(<span class="hljs-built_in">String</span> ev,
     <span class="hljs-built_in">Function</span> func);
-</div></pre>
+</code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">ev</span>: String, 指定事件的名称</li>
@@ -557,8 +557,8 @@
 </ul>
 <hr>
 <p><strong>绑定一个一次性事件处理函数到对象，一次性处理函数只会触发一次</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> DgramSocket.once(<span class="hljs-built_in">Object</span> map);
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> DgramSocket.once(<span class="hljs-built_in">Object</span> map);
+</code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">map</span>: Object, 指定事件映射关系，对象属性名称将作为事件名称，属性的值将作为事件处理函数</li>
@@ -570,10 +570,10 @@
 <hr>
 <h3 id="prependOnceListener" class ="notranslate">prependOnceListener</h3>
 <p><strong>绑定一个事件处理函数到对象起始</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-built_in">Object</span> DgramSocket.prependOnceListener(<span class="hljs-built_in">String</span> ev,
     <span class="hljs-built_in">Function</span> func);
-</div></pre>
+</code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">ev</span>: String, 指定事件的名称</li>
@@ -585,8 +585,8 @@
 </ul>
 <hr>
 <p><strong>绑定一个事件处理函数到对象起始</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> DgramSocket.prependOnceListener(<span class="hljs-built_in">Object</span> map);
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> DgramSocket.prependOnceListener(<span class="hljs-built_in">Object</span> map);
+</code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">map</span>: Object, 指定事件映射关系，对象属性名称将作为事件名称，属性的值将作为事件处理函数</li>
@@ -598,10 +598,10 @@
 <hr>
 <h3 id="off" class ="notranslate">off</h3>
 <p><strong>从对象处理队列中取消指定函数</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-built_in">Object</span> DgramSocket.off(<span class="hljs-built_in">String</span> ev,
     <span class="hljs-built_in">Function</span> func);
-</div></pre>
+</code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">ev</span>: String, 指定事件的名称</li>
@@ -613,8 +613,8 @@
 </ul>
 <hr>
 <p><strong>取消对象处理队列中的全部函数</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> DgramSocket.off(<span class="hljs-built_in">String</span> ev);
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> DgramSocket.off(<span class="hljs-built_in">String</span> ev);
+</code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">ev</span>: String, 指定事件的名称</li>
@@ -625,8 +625,8 @@
 </ul>
 <hr>
 <p><strong>从对象处理队列中取消指定函数</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> DgramSocket.off(<span class="hljs-built_in">Object</span> map);
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> DgramSocket.off(<span class="hljs-built_in">Object</span> map);
+</code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">map</span>: Object, 指定事件映射关系，对象属性名称作为事件名称，属性的值作为事件处理函数</li>
@@ -638,10 +638,10 @@
 <hr>
 <h3 id="removeListener" class ="notranslate">removeListener</h3>
 <p><strong>从对象处理队列中取消指定函数</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-built_in">Object</span> DgramSocket.removeListener(<span class="hljs-built_in">String</span> ev,
     <span class="hljs-built_in">Function</span> func);
-</div></pre>
+</code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">ev</span>: String, 指定事件的名称</li>
@@ -653,8 +653,8 @@
 </ul>
 <hr>
 <p><strong>取消对象处理队列中的全部函数</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> DgramSocket.removeListener(<span class="hljs-built_in">String</span> ev);
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> DgramSocket.removeListener(<span class="hljs-built_in">String</span> ev);
+</code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">ev</span>: String, 指定事件的名称</li>
@@ -665,8 +665,8 @@
 </ul>
 <hr>
 <p><strong>从对象处理队列中取消指定函数</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> DgramSocket.removeListener(<span class="hljs-built_in">Object</span> map);
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> DgramSocket.removeListener(<span class="hljs-built_in">Object</span> map);
+</code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">map</span>: Object, 指定事件映射关系，对象属性名称作为事件名称，属性的值作为事件处理函数</li>
@@ -678,8 +678,8 @@
 <hr>
 <h3 id="removeAllListeners" class ="notranslate">removeAllListeners</h3>
 <p><strong>从对象处理队列中取消所有事件的所有监听器， 如果指定事件，则移除指定事件的所有监听器。</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> DgramSocket.removeAllListeners(<span class="hljs-built_in">Array</span> evs = []);
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> DgramSocket.removeAllListeners(<span class="hljs-built_in">Array</span> evs = []);
+</code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">evs</span>: Array, 指定事件的名称</li>
@@ -691,8 +691,8 @@
 <hr>
 <h3 id="setMaxListeners" class ="notranslate">setMaxListeners</h3>
 <p><strong>监听器的默认限制的数量，仅用于兼容</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div>DgramSocket.setMaxListeners(Integer n);
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>DgramSocket.setMaxListeners(Integer n);
+</code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">n</span>: Integer, 指定事件的数量</li>
@@ -700,8 +700,8 @@
 <hr>
 <h3 id="getMaxListeners" class ="notranslate">getMaxListeners</h3>
 <p><strong>获取监听器的默认限制的数量，仅用于兼容</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div>Integer DgramSocket.getMaxListeners();
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer DgramSocket.getMaxListeners();
+</code></pre>
 <p>返回结果:</p>
 <ul>
 <li><span class="notranslate">Integer</span>, 返回默认限制数量</li>
@@ -709,8 +709,8 @@
 <hr>
 <h3 id="listeners" class ="notranslate">listeners</h3>
 <p><strong>查询对象指定事件的监听器数组</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Array</span> DgramSocket.listeners(<span class="hljs-built_in">String</span> ev);
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Array</span> DgramSocket.listeners(<span class="hljs-built_in">String</span> ev);
+</code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">ev</span>: String, 指定事件的名称</li>
@@ -722,8 +722,8 @@
 <hr>
 <h3 id="listenerCount" class ="notranslate">listenerCount</h3>
 <p><strong>查询对象指定事件的监听器数量</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div>Integer DgramSocket.listenerCount(<span class="hljs-built_in">String</span> ev);
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer DgramSocket.listenerCount(<span class="hljs-built_in">String</span> ev);
+</code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">ev</span>: String, 指定事件的名称</li>
@@ -735,8 +735,8 @@
 <hr>
 <h3 id="eventNames" class ="notranslate">eventNames</h3>
 <p><strong>查询监听器事件名称</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Array</span> DgramSocket.eventNames();
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Array</span> DgramSocket.eventNames();
+</code></pre>
 <p>返回结果:</p>
 <ul>
 <li><span class="notranslate">Array</span>, 返回事件名称数组</li>
@@ -744,10 +744,10 @@
 <hr>
 <h3 id="emit" class ="notranslate">emit</h3>
 <p><strong>主动触发一个事件</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-built_in">Boolean</span> DgramSocket.emit(<span class="hljs-built_in">String</span> ev,
     ...args);
-</div></pre>
+</code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">ev</span>: String, 事件名称</li>
@@ -760,8 +760,8 @@
 <hr>
 <h3 id="toString" class ="notranslate">toString</h3>
 <p><strong>返回对象的字符串表示，一般返回 &quot;[Native Object]&quot;，对象可以根据自己的特性重新实现</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> DgramSocket.toString();
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> DgramSocket.toString();
+</code></pre>
 <p>返回结果:</p>
 <ul>
 <li><span class="notranslate">String</span>, 返回对象的字符串表示</li>
@@ -769,8 +769,8 @@
 <hr>
 <h3 id="toJSON" class ="notranslate">toJSON</h3>
 <p><strong>返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div>Value DgramSocket.toJSON(<span class="hljs-built_in">String</span> key = <span class="hljs-string">""</span>);
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Value DgramSocket.toJSON(<span class="hljs-built_in">String</span> key = <span class="hljs-string">""</span>);
+</code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">key</span>: String, 未使用</li>

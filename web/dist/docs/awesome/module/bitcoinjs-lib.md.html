@@ -212,18 +212,18 @@ Estimated to be in use by over 15 million wallet users and is the backbone for a
 <p>If you are thinking of using the master branch of this library in production, <strong>stop</strong>.
 Master is not stable; it is our development branch, and <a href="https://github.com/bitcoinjs/bitcoinjs-lib/tags">only tagged releases may be classified as stable</a>.</p>
 <h2 id="Installation">Installation</h2>
-<pre class ="notranslate"><div class="code lang-bash"><div class="line-numbers">1</div>npm install bitcoinjs-lib
-</div></pre>
+<pre><code class="lang-bash"><div class="line-numbers">1</div>npm install bitcoinjs-lib
+</code></pre>
 <h2 id="Setup">Setup</h2>
 <h3 id="Node.js" class ="notranslate">Node.js</h3>
-<pre class ="notranslate"><div class="code lang-javascript"><div class="line-numbers">1</div><span class="hljs-keyword">var</span> bitcoin = <span class="hljs-built_in">require</span>(<span class="hljs-string">'bitcoinjs-lib'</span>)
-</div></pre>
+<pre><code class="lang-javascript"><div class="line-numbers">1</div><span class="hljs-keyword">var</span> bitcoin = <span class="hljs-built_in">require</span>(<span class="hljs-string">'bitcoinjs-lib'</span>)
+</code></pre>
 <h3 id="Browser" class ="notranslate">Browser</h3>
 <p>If you&#39;re familiar with how to use browserify, ignore this and proceed normally.
 These steps are advisory only,  and may not be suitable for your application.</p>
 <p><a href="https://github.com/substack/node-browserify">Browserify</a> is assumed to be installed for these steps.</p>
 <p>For your project, create an <code>index.js</code> file</p>
-<pre class ="notranslate"><div class="code lang-javascript"><div class="line-numbers">1
+<pre><code class="lang-javascript"><div class="line-numbers">1
 2
 3
 4
@@ -242,34 +242,34 @@ These steps are advisory only,  and may not be suitable for your application.</p
 <span class="hljs-built_in">module</span>.exports = {
     myFunction
 }
-</div></pre>
+</code></pre>
 <p>Now, to compile for the browser:</p>
-<pre class ="notranslate"><div class="code lang-bash"><div class="line-numbers">1</div>browserify index.js --standalone foo &gt; app.js
-</div></pre>
+<pre><code class="lang-bash"><div class="line-numbers">1</div>browserify index.js --standalone foo &gt; app.js
+</code></pre>
 <p>You can now put <code>&lt;script src=&quot;app.js&quot; /&gt;</code> in your web page,  using <code>foo.myFunction</code> to create a new Bitcoin private key.</p>
 <p><strong>NOTE</strong>: If you uglify the javascript, you must exclude the following variable names from being mangled: <code>BigInteger</code>, <code>ECPair</code>, <code>Point</code>.
 This is because of the function-name-duck-typing used in <a href="https://github.com/dcousens/typeforce">typeforce</a>.</p>
 <p>Example:</p>
-<pre class ="notranslate"><div class="code lang-bash"><div class="line-numbers">1</div>uglifyjs ... --mangle reserved=[<span class="hljs-string">'BigInteger'</span>,<span class="hljs-string">'ECPair'</span>,<span class="hljs-string">'Point'</span>]
-</div></pre>
+<pre><code class="lang-bash"><div class="line-numbers">1</div>uglifyjs ... --mangle reserved=[<span class="hljs-string">'BigInteger'</span>,<span class="hljs-string">'ECPair'</span>,<span class="hljs-string">'Point'</span>]
+</code></pre>
 <p><strong>NOTE</strong>: This library tracks Node LTS features,  if you need strict ES5,  use <a href="https://github.com/babel/babelify"><code>--transform babelify</code></a> in conjunction with your <code>browserify</code> step (using an <a href="http://babeljs.io/docs/plugins/preset-es2015/"><code>es2015</code></a> preset).</p>
 <p><strong>NOTE</strong>: If you expect this library to run on an iOS 10 device, ensure that you are using <a href="https://github.com/feross/buffer/pull/155">buffer@5.0.5</a> or greater.</p>
 <h3 id="Typescript-or-VSCode-users" class ="notranslate">Typescript or VSCode users</h3>
 <p>Type declarations for Typescript are available for version <code>^3.0.0</code> of the library.</p>
-<pre class ="notranslate"><div class="code lang-bash"><div class="line-numbers">1</div>npm install @types/bitcoinjs-lib
-</div></pre>
+<pre><code class="lang-bash"><div class="line-numbers">1</div>npm install @types/bitcoinjs-lib
+</code></pre>
 <p>You can now use <code>bitcoinjs-lib</code> as a typescript compliant library.</p>
-<pre class ="notranslate"><div class="code lang-javascript"><div class="line-numbers">1</div><span class="hljs-keyword">import</span> { HDNode, Transaction } <span class="hljs-keyword">from</span> <span class="hljs-string">'bitcoinjs-lib'</span>
-</div></pre>
+<pre><code class="lang-javascript"><div class="line-numbers">1</div><span class="hljs-keyword">import</span> { HDNode, Transaction } <span class="hljs-keyword">from</span> <span class="hljs-string">'bitcoinjs-lib'</span>
+</code></pre>
 <p>For VSCode (and other editors), users are advised to install the type declarations, as Intellisense uses that information to help you code (autocompletion, static analysis).</p>
 <p>Report any typescript related bugs at <a href="https://github.com/dlebrecht/DefinitelyTyped">@dlebrecht DefinitelyTyped fork</a>,  submit PRs to <a href="https://github.com/DefinitelyTyped/DefinitelyTyped">DefinitelyTyped</a></p>
 <h3 id="Flow" class ="notranslate">Flow</h3>
 <p>Definitions for <a href="https://flowtype.org/">Flow typechecker</a> are available in flow-typed repository.</p>
 <p><a href="https://github.com/flowtype/flow-typed/blob/master/definitions/npm/bitcoinjs-lib_v2.x.x/flow_v0.17.x-/bitcoinjs-lib_v2.x.x.js">You can either download them directly</a> from the repo, or with the flow-typed CLI</p>
-<pre class ="notranslate"><div class="code"><div class="line-numbers">1
+<pre><code><div class="line-numbers">1
 2</div><span class="hljs-comment"># npm install -g flow-typed</span>
 $ flow-typed install -f <span class="hljs-number">0.27</span> bitcoinjs-<span class="hljs-class"><span class="hljs-keyword">lib</span>@2.2.0 <span class="hljs-comment"># 0.27 for flow version, 2.2.0 for bitcoinjs-lib version</span></span>
-</div></pre><p>The definitions are complete and up to date with version 2.2.0. The definitions are maintained by <a href="https://github.com/runn1ng">@runn1ng</a>.</p>
+</code></pre><p>The definitions are complete and up to date with version 2.2.0. The definitions are maintained by <a href="https://github.com/runn1ng">@runn1ng</a>.</p>
 <h2 id="Examples">Examples</h2>
 <p>The below examples are implemented as integration tests, they should be very easy to understand.
 Otherwise, pull requests are appreciated.
@@ -332,10 +332,10 @@ Some examples interact (via HTTPS) with a 3rd Party Blockchain Provider (3PBP).<
 <p>We are always accepting of pull requests, but we do adhere to specific standards in regards to coding style, test driven development and commit messages.</p>
 <p>Please make your best effort to adhere to these when contributing to save on trivial corrections.</p>
 <h3 id="Running-the-test-suite" class ="notranslate">Running the test suite</h3>
-<pre class ="notranslate"><div class="code lang-bash"><div class="line-numbers">1
+<pre><code class="lang-bash"><div class="line-numbers">1
 2</div>npm <span class="hljs-built_in">test</span>
 npm run-script coverage
-</div></pre>
+</code></pre>
 <h2 id="Complementing-Libraries">Complementing Libraries</h2>
 <ul>
 <li><a href="https://github.com/bitcoinjs/bip21">BIP21</a> - A BIP21 compatible URL encoding library</li>

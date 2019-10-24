@@ -192,12 +192,12 @@
 <h2 id="静态函数">静态函数</h2>
 <h3 id="setTimeout" class ="notranslate">setTimeout</h3>
 <p><strong>在指定的时间后调用函数</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3</div><span class="hljs-keyword">static</span> Timer timers.setTimeout(<span class="hljs-built_in">Function</span> callback,
     <span class="hljs-built_in">Number</span> timeout = <span class="hljs-number">1</span>,
     ...args);
-</div></pre>
+</code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">callback</span>: Function, 指定回调函数</li>
@@ -211,8 +211,8 @@
 <hr>
 <h3 id="clearTimeout" class ="notranslate">clearTimeout</h3>
 <p><strong>清除指定的定时器</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> timers.clearTimeout(Value t);
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> timers.clearTimeout(Value t);
+</code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">t</span>: Value, 指定要清除的定时器</li>
@@ -220,12 +220,12 @@
 <hr>
 <h3 id="setInterval" class ="notranslate">setInterval</h3>
 <p><strong>每间隔指定的时间后调用函数</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3</div><span class="hljs-keyword">static</span> Timer timers.setInterval(<span class="hljs-built_in">Function</span> callback,
     <span class="hljs-built_in">Number</span> timeout,
     ...args);
-</div></pre>
+</code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">callback</span>: Function, 指定回调函数</li>
@@ -239,8 +239,8 @@
 <hr>
 <h3 id="clearInterval" class ="notranslate">clearInterval</h3>
 <p><strong>清除指定的定时器</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> timers.clearInterval(Value t);
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> timers.clearInterval(Value t);
+</code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">t</span>: Value, 指定要清除的定时器</li>
@@ -248,12 +248,12 @@
 <hr>
 <h3 id="setHrInterval" class ="notranslate">setHrInterval</h3>
 <p><strong>每间隔指定的时间后调用函数，这是个高精度定时器，会主动打断正在运行的 JavaScript 脚本执行定时器</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3</div><span class="hljs-keyword">static</span> Timer timers.setHrInterval(<span class="hljs-built_in">Function</span> callback,
     <span class="hljs-built_in">Number</span> timeout,
     ...args);
-</div></pre>
+</code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">callback</span>: Function, 指定回调函数</li>
@@ -265,7 +265,7 @@
 <li><a href=../../object/ifs/timer.md.html class ="notranslate">Timer</a>, 返回定时器对象</li>
 </ul>
 <p>由于 setHrInterval 的定时器会中断正在运行的代码执行回调，因此不要在回调函数内修改可能影响其它模块的数据，或者在回调中调用任何标记为 async 的 api 函数，否则将会产生不可预知的结果。例如：</p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
 4
@@ -284,13 +284,13 @@ timers.setHrInterval(<span class="hljs-function"><span class="hljs-params">()</s
 <span class="hljs-keyword">while</span> (cnt &lt; <span class="hljs-number">10</span>);
 
 <span class="hljs-built_in">console</span>.error(<span class="hljs-string">"===============================&gt; done"</span>);
-</div></pre>
+</code></pre>
 <p>这段代码中，第 8 行的循环并不会因为 cnt 的改变而结束，因为 JavaScript 在优化代码时会认定在这个循环过程中 cnt 不会被改变。</p>
 <hr>
 <h3 id="clearHrInterval" class ="notranslate">clearHrInterval</h3>
 <p><strong>清除指定的定时器</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> timers.clearHrInterval(Value t);
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> timers.clearHrInterval(Value t);
+</code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">t</span>: Value, 指定要清除的定时器</li>
@@ -298,10 +298,10 @@ timers.setHrInterval(<span class="hljs-function"><span class="hljs-params">()</s
 <hr>
 <h3 id="setImmediate" class ="notranslate">setImmediate</h3>
 <p><strong>下一个空闲时间立即执行回调函数</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">static</span> Timer timers.setImmediate(<span class="hljs-built_in">Function</span> callback,
     ...args);
-</div></pre>
+</code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">callback</span>: Function, 指定回调函数</li>
@@ -314,8 +314,8 @@ timers.setHrInterval(<span class="hljs-function"><span class="hljs-params">()</s
 <hr>
 <h3 id="clearImmediate" class ="notranslate">clearImmediate</h3>
 <p><strong>清除指定的定时器</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> timers.clearImmediate(Value t);
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> timers.clearImmediate(Value t);
+</code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">t</span>: Value, 指定要清除的定时器</li>
@@ -323,12 +323,12 @@ timers.setHrInterval(<span class="hljs-function"><span class="hljs-params">()</s
 <hr>
 <h3 id="call" class ="notranslate">call</h3>
 <p><strong>调用给定的函数，并在超时时间到期时中断函数运行</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3</div><span class="hljs-keyword">static</span> Value timers.call(<span class="hljs-built_in">Function</span> func,
     <span class="hljs-built_in">Number</span> timeout,
     ...args);
-</div></pre>
+</code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">func</span>: Function, 指定要运行的函数</li>

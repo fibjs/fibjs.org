@@ -193,9 +193,9 @@
 <p>This is a library to generate and consume the source map format
 <a href="https://docs.google.com/document/d/1U1RGAehQwRypUTovF1KRlpiOFze0b-_2gc6fAH0KY0k/edit">described here</a>.</p>
 <h2 id="Use-with-Node">Use with Node</h2>
-<pre class ="notranslate"><div class="code"><div class="line-numbers">1</div>$ npm <span class="hljs-keyword">install</span> <span class="hljs-keyword">source</span>-<span class="hljs-keyword">map</span>
-</div></pre><h2 id="Use-on-the-Web">Use on the Web</h2>
-<pre class ="notranslate"><div class="code"><div class="line-numbers">1
+<pre><code><div class="line-numbers">1</div>$ npm <span class="hljs-keyword">install</span> <span class="hljs-keyword">source</span>-<span class="hljs-keyword">map</span>
+</code></pre><h2 id="Use-on-the-Web">Use on the Web</h2>
+<pre><code><div class="line-numbers">1
 2
 3
 4
@@ -206,7 +206,7 @@
         "lib/mappings</span>.wasm<span class="hljs-string">": "</span><span class="hljs-symbol">https:</span>/<span class="hljs-regexp">/unpkg.com/source</span>-map@<span class="hljs-number">0.7</span>.<span class="hljs-number">2</span>/<span class="hljs-class"><span class="hljs-keyword">lib</span>/<span class="hljs-title">mappings</span>.<span class="hljs-title">wasm</span>"</span>
     });
 &lt;<span class="hljs-regexp">/script&gt;</span>
-</div></pre><hr>
+</code></pre><hr>
 <!-- `npm run toc` to regenerate the Table of Contents -->
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
@@ -265,7 +265,7 @@
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 <h2 id="Examples">Examples</h2>
 <h3 id="Consuming-a-source-map" class ="notranslate">Consuming a source map</h3>
-<pre class ="notranslate"><div class="code lang-js"><div class="line-numbers">1
+<pre><code class="lang-js"><div class="line-numbers">1
 2
 3
 4
@@ -338,12 +338,12 @@
 
   <span class="hljs-keyword">return</span> computeWhatever();
 });
-</div></pre>
+</code></pre>
 <h3 id="Generating-a-source-map" class ="notranslate">Generating a source map</h3>
 <p>In depth guide:
 <a href="https://hacks.mozilla.org/2013/05/compiling-to-javascript-and-debugging-with-source-maps/"><strong>Compiling to JavaScript, and Debugging with Source Maps</strong></a></p>
 <h4 id="With-SourceNode-(high-level-API)">With SourceNode (high level API)</h4>
-<pre class ="notranslate"><div class="code lang-js"><div class="line-numbers">1
+<pre><code class="lang-js"><div class="line-numbers">1
 2
 3
 4
@@ -398,9 +398,9 @@
 }));
 <span class="hljs-comment">// { code: '40 + 2',</span>
 <span class="hljs-comment">//   map: [object SourceMapGenerator] }</span>
-</div></pre>
+</code></pre>
 <h4 id="With-SourceMapGenerator-(low-level-API)">With SourceMapGenerator (low level API)</h4>
-<pre class ="notranslate"><div class="code lang-js"><div class="line-numbers">1
+<pre><code class="lang-js"><div class="line-numbers">1
 2
 3
 4
@@ -437,10 +437,10 @@ map.addMapping({
 
 <span class="hljs-built_in">console</span>.log(map.toString());
 <span class="hljs-comment">// '{"version":3,"file":"source-mapped.js","sources":["foo.js"],"names":["christopher"],"mappings":";;;;;;;;;mCAgCEA"}'</span>
-</div></pre>
+</code></pre>
 <h2 id="API">API</h2>
 <p>Get a reference to the module:</p>
-<pre class ="notranslate"><div class="code lang-js"><div class="line-numbers">1
+<pre><code class="lang-js"><div class="line-numbers">1
 2
 3
 4
@@ -455,7 +455,7 @@ map.addMapping({
 
 <span class="hljs-comment">// Inside Firefox</span>
 <span class="hljs-keyword">const</span> sourceMap = <span class="hljs-built_in">require</span>(<span class="hljs-string">"devtools/toolkit/sourcemap/source-map.js"</span>);
-</div></pre>
+</code></pre>
 <h3 id="SourceMapConsumer" class ="notranslate">SourceMapConsumer</h3>
 <p>A <code>SourceMapConsumer</code> instance represents a parsed source map which we can query
 for information about the original file positions by giving it a file position
@@ -469,12 +469,12 @@ calling <code>initialize</code> before constructing any <code>SourceMapConsumer<
 <li><code>&quot;lib/mappings.wasm&quot;</code>: A <code>String</code> containing the URL of the
 <code>lib/mappings.wasm</code> file.</li>
 </ul>
-<pre class ="notranslate"><div class="code lang-js"><div class="line-numbers">1
+<pre><code class="lang-js"><div class="line-numbers">1
 2
 3</div>sourceMap.SourceMapConsumer.initialize({
   <span class="hljs-string">"lib/mappings.wasm"</span>: <span class="hljs-string">"https://example.com/source-map/lib/mappings.wasm"</span>
 });
-</div></pre>
+</code></pre>
 <h4 id="new-SourceMapConsumer(rawSourceMap)">new SourceMapConsumer(rawSourceMap)</h4>
 <p>The only parameter is the raw source map (either as a string which can be
 <code>JSON.parse</code>&#39;d, or an object). According to the spec, source maps have the
@@ -499,12 +499,12 @@ mappings.</p>
 <p>The promise of the constructed souce map consumer is returned.</p>
 <p>When the <code>SourceMapConsumer</code> will no longer be used anymore, you must call its
 <code>destroy</code> method.</p>
-<pre class ="notranslate"><div class="code lang-js"><div class="line-numbers">1
+<pre><code class="lang-js"><div class="line-numbers">1
 2
 3</div><span class="hljs-keyword">const</span> consumer = <span class="hljs-keyword">await</span> <span class="hljs-keyword">new</span> sourceMap.SourceMapConsumer(rawSourceMapJsonData);
 doStuffWith(consumer);
 consumer.destroy();
-</div></pre>
+</code></pre>
 <p>Alternatively, you can use <code>SourceMapConsumer.with</code> to avoid needing to remember
 to call <code>destroy</code>.</p>
 <h4 id="SourceMapConsumer.with">SourceMapConsumer.with</h4>
@@ -516,7 +516,7 @@ value.</p>
 <p>You must not use the consumer after <code>f</code> completes!</p>
 <p>By using <code>with</code>, you do not have to remember to manually call <code>destroy</code> on
 the consumer, since it will be called automatically once <code>f</code> completes.</p>
-<pre class ="notranslate"><div class="code lang-js"><div class="line-numbers">1
+<pre><code class="lang-js"><div class="line-numbers">1
 2
 3
 4
@@ -545,17 +545,17 @@ the consumer, since it will be called automatically once <code>f</code> complete
 <span class="hljs-comment">// You may not use that `consumer` anymore out here; it has</span>
 <span class="hljs-comment">// been destroyed. But you can use `xSquared`.</span>
 <span class="hljs-built_in">console</span>.log(xSquared);
-</div></pre>
+</code></pre>
 <h4 id="SourceMapConsumer.prototype.destroy()">SourceMapConsumer.prototype.destroy()</h4>
 <p>Free this source map consumer&#39;s associated wasm data that is manually-managed.</p>
-<pre class ="notranslate"><div class="code lang-js"><div class="line-numbers">1</div>consumer.destroy();
-</div></pre>
+<pre><code class="lang-js"><div class="line-numbers">1</div>consumer.destroy();
+</code></pre>
 <p>Alternatively, you can use <code>SourceMapConsumer.with</code> to avoid needing to remember
 to call <code>destroy</code>.</p>
 <h4 id="SourceMapConsumer.prototype.computeColumnSpans()">SourceMapConsumer.prototype.computeColumnSpans()</h4>
 <p>Compute the last column for each generated mapping. The last column is
 inclusive.</p>
-<pre class ="notranslate"><div class="code lang-js"><div class="line-numbers">1
+<pre><code class="lang-js"><div class="line-numbers">1
 2
 3
 4
@@ -598,7 +598,7 @@ consumer.allGeneratedPositionsFor({ <span class="hljs-attr">line</span>: <span c
 <span class="hljs-comment">//   { line: 2,</span>
 <span class="hljs-comment">//     column: 20,</span>
 <span class="hljs-comment">//     lastColumn: Infinity } ]</span>
-</div></pre>
+</code></pre>
 <h4 id="SourceMapConsumer.prototype.originalPositionFor(generatedPosition)">SourceMapConsumer.prototype.originalPositionFor(generatedPosition)</h4>
 <p>Returns the original source, line, and column information for the generated
 source&#39;s line and column positions provided. The only argument is an object with
@@ -633,7 +633,7 @@ information is not available.  The column number is 0-based.</p>
 <li><p><code>name</code>: The original identifier, or null if this information is not available.</p>
 </li>
 </ul>
-<pre class ="notranslate"><div class="code lang-js"><div class="line-numbers">1
+<pre><code class="lang-js"><div class="line-numbers">1
 2
 3
 4
@@ -654,7 +654,7 @@ consumer.originalPositionFor({ <span class="hljs-attr">line</span>: <span class=
 <span class="hljs-comment">//   line: null,</span>
 <span class="hljs-comment">//   column: null,</span>
 <span class="hljs-comment">//   name: null }</span>
-</div></pre>
+</code></pre>
 <h4 id="SourceMapConsumer.prototype.generatedPositionFor(originalPosition)">SourceMapConsumer.prototype.generatedPositionFor(originalPosition)</h4>
 <p>Returns the generated line and column information for the original source,
 line, and column positions provided. The only argument is an object with
@@ -678,12 +678,12 @@ number is 1-based.</p>
 column number is 0-based.</p>
 </li>
 </ul>
-<pre class ="notranslate"><div class="code lang-js"><div class="line-numbers">1
+<pre><code class="lang-js"><div class="line-numbers">1
 2
 3</div>consumer.generatedPositionFor({ <span class="hljs-attr">source</span>: <span class="hljs-string">"example.js"</span>, <span class="hljs-attr">line</span>: <span class="hljs-number">2</span>, <span class="hljs-attr">column</span>: <span class="hljs-number">10</span> })
 <span class="hljs-comment">// { line: 1,</span>
 <span class="hljs-comment">//   column: 56 }</span>
-</div></pre>
+</code></pre>
 <h4 id="SourceMapConsumer.prototype.allGeneratedPositionsFor(originalPosition)">SourceMapConsumer.prototype.allGeneratedPositionsFor(originalPosition)</h4>
 <p>Returns all generated line and column information for the original source, line,
 and column provided. If no column is provided, returns all mappings
@@ -711,7 +711,7 @@ number is 1-based.</p>
 column number is 0-based.</p>
 </li>
 </ul>
-<pre class ="notranslate"><div class="code lang-js"><div class="line-numbers">1
+<pre><code class="lang-js"><div class="line-numbers">1
 2
 3
 4
@@ -724,14 +724,14 @@ column number is 0-based.</p>
 <span class="hljs-comment">//     column: 10 },</span>
 <span class="hljs-comment">//   { line: 2,</span>
 <span class="hljs-comment">//     column: 20 } ]</span>
-</div></pre>
+</code></pre>
 <h4 id="SourceMapConsumer.prototype.hasContentsOfAllSources()">SourceMapConsumer.prototype.hasContentsOfAllSources()</h4>
 <p>Return true if we have the embedded source content for every source listed in
 the source map, false otherwise.</p>
 <p>In other words, if this method returns <code>true</code>, then
 <code>consumer.sourceContentFor(s)</code> will succeed for every source <code>s</code> in
 <code>consumer.sources</code>.</p>
-<pre class ="notranslate"><div class="code lang-js"><div class="line-numbers">1
+<pre><code class="lang-js"><div class="line-numbers">1
 2
 3
 4
@@ -744,14 +744,14 @@ the source map, false otherwise.</p>
   fetchSources(consumer, consumerReadyCallback);
 }
 <span class="hljs-comment">// ...</span>
-</div></pre>
+</code></pre>
 <h4 id="SourceMapConsumer.prototype.sourceContentFor(source[,-returnNullOnMissing])">SourceMapConsumer.prototype.sourceContentFor(source[, returnNullOnMissing])</h4>
 <p>Returns the original source content for the source provided. The only
 argument is the URL of the original source file.</p>
 <p>If the source content for the given source is not found, then an error is
 thrown. Optionally, pass <code>true</code> as the second param to have <code>null</code> returned
 instead.</p>
-<pre class ="notranslate"><div class="code lang-js"><div class="line-numbers">1
+<pre><code class="lang-js"><div class="line-numbers">1
 2
 3
 4
@@ -772,7 +772,7 @@ consumer.sourceContentFor(<span class="hljs-string">"this is not in the source m
 
 consumer.sourceContentFor(<span class="hljs-string">"this is not in the source map"</span>, <span class="hljs-literal">true</span>);
 <span class="hljs-comment">// null</span>
-</div></pre>
+</code></pre>
 <h4 id="SourceMapConsumer.prototype.eachMapping(callback,-context,-order)">SourceMapConsumer.prototype.eachMapping(callback, context, order)</h4>
 <p>Iterate over each mapping between an original source/line/column and a
 generated line/column in this source map.</p>
@@ -791,7 +791,7 @@ original&#39;s source/line/column order, respectively. Defaults to
 <code>SourceMapConsumer.GENERATED_ORDER</code>.</p>
 </li>
 </ul>
-<pre class ="notranslate"><div class="code lang-js"><div class="line-numbers">1
+<pre><code class="lang-js"><div class="line-numbers">1
 2
 3
 4
@@ -820,7 +820,7 @@ original&#39;s source/line/column order, respectively. Defaults to
 <span class="hljs-comment">//   originalColumn: 0,</span>
 <span class="hljs-comment">//   name: null }</span>
 <span class="hljs-comment">// ...</span>
-</div></pre>
+</code></pre>
 <h3 id="SourceMapGenerator" class ="notranslate">SourceMapGenerator</h3>
 <p>An instance of the SourceMapGenerator represents a source map which is being
 built incrementally.</p>
@@ -838,21 +838,21 @@ discretion, as a last resort. Even then, one should avoid using this flag when
 running tests, if possible.</p>
 </li>
 </ul>
-<pre class ="notranslate"><div class="code lang-js"><div class="line-numbers">1
+<pre><code class="lang-js"><div class="line-numbers">1
 2
 3
 4</div><span class="hljs-keyword">var</span> generator = <span class="hljs-keyword">new</span> sourceMap.SourceMapGenerator({
   <span class="hljs-attr">file</span>: <span class="hljs-string">"my-generated-javascript-file.js"</span>,
   <span class="hljs-attr">sourceRoot</span>: <span class="hljs-string">"http://example.com/app/js/"</span>
 });
-</div></pre>
+</code></pre>
 <h4 id="SourceMapGenerator.fromSourceMap(sourceMapConsumer)">SourceMapGenerator.fromSourceMap(sourceMapConsumer)</h4>
 <p>Creates a new <code>SourceMapGenerator</code> from an existing <code>SourceMapConsumer</code> instance.</p>
 <ul>
 <li><code>sourceMapConsumer</code> The SourceMap.</li>
 </ul>
-<pre class ="notranslate"><div class="code lang-js"><div class="line-numbers">1</div><span class="hljs-keyword">var</span> generator = sourceMap.SourceMapGenerator.fromSourceMap(consumer);
-</div></pre>
+<pre><code class="lang-js"><div class="line-numbers">1</div><span class="hljs-keyword">var</span> generator = sourceMap.SourceMapGenerator.fromSourceMap(consumer);
+</code></pre>
 <h4 id="SourceMapGenerator.prototype.addMapping(mapping)">SourceMapGenerator.prototype.addMapping(mapping)</h4>
 <p>Add a single mapping from original source line and column to the generated
 source&#39;s line and column for this source map being created. The mapping object
@@ -867,7 +867,7 @@ should have the following properties:</p>
 <li><p><code>name</code>: An optional original token name for this mapping.</p>
 </li>
 </ul>
-<pre class ="notranslate"><div class="code lang-js"><div class="line-numbers">1
+<pre><code class="lang-js"><div class="line-numbers">1
 2
 3
 4
@@ -876,7 +876,7 @@ should have the following properties:</p>
   <span class="hljs-attr">original</span>: { <span class="hljs-attr">line</span>: <span class="hljs-number">128</span>, <span class="hljs-attr">column</span>: <span class="hljs-number">0</span> },
   <span class="hljs-attr">generated</span>: { <span class="hljs-attr">line</span>: <span class="hljs-number">3</span>, <span class="hljs-attr">column</span>: <span class="hljs-number">456</span> }
 })
-</div></pre>
+</code></pre>
 <h4 id="SourceMapGenerator.prototype.setSourceContent(sourceFile,-sourceContent)">SourceMapGenerator.prototype.setSourceContent(sourceFile, sourceContent)</h4>
 <p>Set the source content for an original source file.</p>
 <ul>
@@ -885,10 +885,10 @@ should have the following properties:</p>
 <li><p><code>sourceContent</code> the content of the source file.</p>
 </li>
 </ul>
-<pre class ="notranslate"><div class="code lang-js"><div class="line-numbers">1
+<pre><code class="lang-js"><div class="line-numbers">1
 2</div>generator.setSourceContent(<span class="hljs-string">"module-one.scm"</span>,
                            fs.readFileSync(<span class="hljs-string">"path/to/module-one.scm"</span>))
-</div></pre>
+</code></pre>
 <h4 id="SourceMapGenerator.prototype.applySourceMap(sourceMapConsumer[,-sourceFile[,-sourceMapPath]])">SourceMapGenerator.prototype.applySourceMap(sourceMapConsumer[, sourceFile[, sourceMapPath]])</h4>
 <p>Applies a SourceMap for a source file to the SourceMap.
 Each mapping to the supplied source file is rewritten using the
@@ -913,10 +913,10 @@ thus not needing any rewriting. (Supplying <code>&#39;.&#39;</code> has the same
 </ul>
 <h4 id="SourceMapGenerator.prototype.toString()">SourceMapGenerator.prototype.toString()</h4>
 <p>Renders the source map being generated to a string.</p>
-<pre class ="notranslate"><div class="code lang-js"><div class="line-numbers">1
+<pre><code class="lang-js"><div class="line-numbers">1
 2</div>generator.toString()
 <span class="hljs-comment">// '{"version":3,"sources":["module-one.scm"],"names":[],"mappings":"...snip...","file":"my-generated-javascript-file.js","sourceRoot":"http://example.com/app/js/"}'</span>
-</div></pre>
+</code></pre>
 <h3 id="SourceNode" class ="notranslate">SourceNode</h3>
 <p>SourceNodes provide a way to abstract over interpolating and/or concatenating
 snippets of generated JavaScript source code, while maintaining the line and
@@ -940,7 +940,7 @@ below.</p>
 <li><p><code>name</code>: Optional. The original identifier.</p>
 </li>
 </ul>
-<pre class ="notranslate"><div class="code lang-js"><div class="line-numbers">1
+<pre><code class="lang-js"><div class="line-numbers">1
 2
 3
 4
@@ -949,7 +949,7 @@ below.</p>
   <span class="hljs-keyword">new</span> SourceNode(<span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-string">"c.cpp"</span>, <span class="hljs-string">"std::string* make_string(size_t n);\n"</span>),
   <span class="hljs-keyword">new</span> SourceNode(<span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-string">"d.cpp"</span>, <span class="hljs-string">"int main(int argc, char** argv) {}\n"</span>),
 ]);
-</div></pre>
+</code></pre>
 <h4 id="SourceNode.fromStringWithSourceMap(code,-sourceMapConsumer[,-relativePath])">SourceNode.fromStringWithSourceMap(code, sourceMapConsumer[, relativePath])</h4>
 <p>Creates a SourceNode from generated code and a SourceMapConsumer.</p>
 <ul>
@@ -961,30 +961,30 @@ below.</p>
 should be relative to.</p>
 </li>
 </ul>
-<pre class ="notranslate"><div class="code lang-js"><div class="line-numbers">1
+<pre><code class="lang-js"><div class="line-numbers">1
 2</div><span class="hljs-keyword">const</span> consumer = <span class="hljs-keyword">await</span> <span class="hljs-keyword">new</span> SourceMapConsumer(fs.readFileSync(<span class="hljs-string">"path/to/my-file.js.map"</span>, <span class="hljs-string">"utf8"</span>));
 <span class="hljs-keyword">const</span> node = SourceNode.fromStringWithSourceMap(fs.readFileSync(<span class="hljs-string">"path/to/my-file.js"</span>), consumer);
-</div></pre>
+</code></pre>
 <h4 id="SourceNode.prototype.add(chunk)">SourceNode.prototype.add(chunk)</h4>
 <p>Add a chunk of generated JS to this source node.</p>
 <ul>
 <li><code>chunk</code>: A string snippet of generated JS code, another instance of
  <code>SourceNode</code>, or an array where each member is one of those things.</li>
 </ul>
-<pre class ="notranslate"><div class="code lang-js"><div class="line-numbers">1
+<pre><code class="lang-js"><div class="line-numbers">1
 2
 3</div>node.add(<span class="hljs-string">" + "</span>);
 node.add(otherNode);
 node.add([leftHandOperandNode, <span class="hljs-string">" + "</span>, rightHandOperandNode]);
-</div></pre>
+</code></pre>
 <h4 id="SourceNode.prototype.prepend(chunk)">SourceNode.prototype.prepend(chunk)</h4>
 <p>Prepend a chunk of generated JS to this source node.</p>
 <ul>
 <li><code>chunk</code>: A string snippet of generated JS code, another instance of
  <code>SourceNode</code>, or an array where each member is one of those things.</li>
 </ul>
-<pre class ="notranslate"><div class="code lang-js"><div class="line-numbers">1</div>node.prepend(<span class="hljs-string">"/** Build Id: f783haef86324gf **/\n\n"</span>);
-</div></pre>
+<pre><code class="lang-js"><div class="line-numbers">1</div>node.prepend(<span class="hljs-string">"/** Build Id: f783haef86324gf **/\n\n"</span>);
+</code></pre>
 <h4 id="SourceNode.prototype.setSourceContent(sourceFile,-sourceContent)">SourceNode.prototype.setSourceContent(sourceFile, sourceContent)</h4>
 <p>Set the source content for a source file. This will be added to the
 <code>SourceMap</code> in the <code>sourcesContent</code> field.</p>
@@ -994,10 +994,10 @@ node.add([leftHandOperandNode, <span class="hljs-string">" + "</span>, rightHand
 <li><p><code>sourceContent</code>: The content of the source file</p>
 </li>
 </ul>
-<pre class ="notranslate"><div class="code lang-js"><div class="line-numbers">1
+<pre><code class="lang-js"><div class="line-numbers">1
 2</div>node.setSourceContent(<span class="hljs-string">"module-one.scm"</span>,
                       fs.readFileSync(<span class="hljs-string">"path/to/module-one.scm"</span>))
-</div></pre>
+</code></pre>
 <h4 id="SourceNode.prototype.walk(fn)">SourceNode.prototype.walk(fn)</h4>
 <p>Walk over the tree of JS snippets in this node and its children. The walking
 function is called once for each snippet of JS and is passed that snippet and
@@ -1005,7 +1005,7 @@ the its original associated source&#39;s line/column location.</p>
 <ul>
 <li><code>fn</code>: The traversal function.</li>
 </ul>
-<pre class ="notranslate"><div class="code lang-js"><div class="line-numbers">1
+<pre><code class="lang-js"><div class="line-numbers">1
 2
 3
 4
@@ -1032,14 +1032,14 @@ node.walk(<span class="hljs-function"><span class="hljs-keyword">function</span>
 <span class="hljs-comment">// WALK: dos { source: 'a.js', line: 1, column: 2, name: null }</span>
 <span class="hljs-comment">// WALK: tres { source: 'a.js', line: 1, column: 2, name: null }</span>
 <span class="hljs-comment">// WALK: quatro { source: 'c.js', line: 5, column: 6, name: null }</span>
-</div></pre>
+</code></pre>
 <h4 id="SourceNode.prototype.walkSourceContents(fn)">SourceNode.prototype.walkSourceContents(fn)</h4>
 <p>Walk over the tree of SourceNodes. The walking function is called for each
 source file content and is passed the filename and source content.</p>
 <ul>
 <li><code>fn</code>: The traversal function.</li>
 </ul>
-<pre class ="notranslate"><div class="code lang-js"><div class="line-numbers">1
+<pre><code class="lang-js"><div class="line-numbers">1
 2
 3
 4
@@ -1062,14 +1062,14 @@ node.walkSourceContents(<span class="hljs-function"><span class="hljs-keyword">f
 <span class="hljs-comment">// WALK: a.js : original a</span>
 <span class="hljs-comment">// WALK: b.js : original b</span>
 <span class="hljs-comment">// WALK: c.js : original c</span>
-</div></pre>
+</code></pre>
 <h4 id="SourceNode.prototype.join(sep)">SourceNode.prototype.join(sep)</h4>
 <p>Like <code>Array.prototype.join</code> except for SourceNodes. Inserts the separator
 between each of this source node&#39;s children.</p>
 <ul>
 <li><code>sep</code>: The separator.</li>
 </ul>
-<pre class ="notranslate"><div class="code lang-js"><div class="line-numbers">1
+<pre><code class="lang-js"><div class="line-numbers">1
 2
 3
 4
@@ -1080,7 +1080,7 @@ between each of this source node&#39;s children.</p>
 
 <span class="hljs-keyword">var</span> node = <span class="hljs-keyword">new</span> SourceNode(<span class="hljs-literal">null</span>, <span class="hljs-literal">null</span>, <span class="hljs-literal">null</span>, [ lhs, operand, rhs ]);
 <span class="hljs-keyword">var</span> joinedNode = node.join(<span class="hljs-string">" "</span>);
-</div></pre>
+</code></pre>
 <h4 id="SourceNode.prototype.replaceRight(pattern,-replacement)">SourceNode.prototype.replaceRight(pattern, replacement)</h4>
 <p>Call <code>String.prototype.replace</code> on the very right-most source snippet. Useful
 for trimming white space from the end of a source node, etc.</p>
@@ -1090,14 +1090,14 @@ for trimming white space from the end of a source node, etc.</p>
 <li><p><code>replacement</code>: The thing to replace the pattern with.</p>
 </li>
 </ul>
-<pre class ="notranslate"><div class="code lang-js"><div class="line-numbers">1
+<pre><code class="lang-js"><div class="line-numbers">1
 2</div><span class="hljs-comment">// Trim trailing white space.</span>
 node.replaceRight(<span class="hljs-regexp">/\s*$/</span>, <span class="hljs-string">""</span>);
-</div></pre>
+</code></pre>
 <h4 id="SourceNode.prototype.toString()">SourceNode.prototype.toString()</h4>
 <p>Return the string representation of this source node. Walks over the tree and
 concatenates all the various snippets together to one string.</p>
-<pre class ="notranslate"><div class="code lang-js"><div class="line-numbers">1
+<pre><code class="lang-js"><div class="line-numbers">1
 2
 3
 4
@@ -1118,13 +1118,13 @@ concatenates all the various snippets together to one string.</p>
 
 node.toString()
 <span class="hljs-comment">// 'unodostresquatro'</span>
-</div></pre>
+</code></pre>
 <h4 id="SourceNode.prototype.toStringWithSourceMap([startOfSourceMap])">SourceNode.prototype.toStringWithSourceMap([startOfSourceMap])</h4>
 <p>Returns the string representation of this tree of source nodes, plus a
 SourceMapGenerator which contains all the mappings between the generated and
 original sources.</p>
 <p>The arguments are the same as those to <code>new SourceMapGenerator</code>.</p>
-<pre class ="notranslate"><div class="code lang-js"><div class="line-numbers">1
+<pre><code class="lang-js"><div class="line-numbers">1
 2
 3
 4
@@ -1147,5 +1147,5 @@ original sources.</p>
 node.toStringWithSourceMap({ <span class="hljs-attr">file</span>: <span class="hljs-string">"my-output-file.js"</span> })
 <span class="hljs-comment">// { code: 'unodostresquatro',</span>
 <span class="hljs-comment">//   map: [object SourceMapGenerator] }</span>
-</div></pre>
+</code></pre>
  </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id=toc></div></div></div></div><div class=footer><div class=container>&copy; Copyright 2014-2019 fibjs.org | <a href=../../../support.html>支持我们</a></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="Click to return on the top page" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js></script><script type=text/javascript src=../../../js/common.js></script><script type=text/javascript src=../../../js/docs.js></script></body></html>

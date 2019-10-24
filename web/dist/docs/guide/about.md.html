@@ -194,7 +194,7 @@
 <h2 id="返璞归真，敏捷开发">返璞归真，敏捷开发</h2>
 <p>fibjs 在框架层使用 fiber 隔离了异步调用带来的业务复杂性，将 io 的异步处理封装为更加直观的同步调用，工程师只需要按照通常的同步业务逻辑编写代码，即可享有异步处理带来的巨大便利。</p>
 <p>以下这段代码摘自 mysql 模块的文档：</p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
 4
@@ -257,9 +257,9 @@
                 });
         });
 });
-</div></pre>
+</code></pre>
 <p>在 fibjs 中，完成同样的工作，代码如下：</p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
 4
@@ -270,21 +270,21 @@
     conn.execute(<span class="hljs-string">'INSERT INTO log SET data=?'</span>, log);
 });
 <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'success!'</span>);
-</div></pre>
+</code></pre>
 <p>如果你追求简洁，你甚至可以把代码写成这样：</p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
 4</div>conn.trans(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> conn.execute(<span class="hljs-string">'INSERT INTO log SET data=?'</span>,
         <span class="hljs-string">'Post '</span> + conn.execute(<span class="hljs-string">'INSERT INTO posts SET title=?'</span>, title).insertId +
         <span class="hljs-string">' added'</span>));
 <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'success!'</span>);
-</div></pre>
+</code></pre>
 <p>我们可以明显比较出两种不同的编程风格带来的差异。更少的代码会带来更少错误，随着代码的减少，代码的逻辑也更加清晰，无论是开发还是维护，都会从中获益。</p>
 <h2 id="拥抱高能">拥抱高能</h2>
 <p>尽管我们可以很方便地通过扩充服务器来提高响应速度，但是性能仍然应该是选择一个开发框架的重要依据之一。随着 ES7 的推出，async 作为一种新的异步开发模式被引入 JavaScript。然而当我们享受 async 带来的同步风格时，也不得不面对它对性能的影响。</p>
 <p>我们可以使用一段测试代码来比较不同的编程风格带来的性能差异：</p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
 4
@@ -361,14 +361,14 @@
 }
 
 test();
-</div></pre>
+</code></pre>
 <p>在最新的 v8 v6.7.192 下，这段代码的运行结果如下：</p>
-<pre class ="notranslate"><div class="code lang-sh"><div class="line-numbers">1
+<pre><code class="lang-sh"><div class="line-numbers">1
 2
 3</div>async: 5.276ms
 callback: 0.117ms
 sync: 0.038ms
-</div></pre>
+</code></pre>
 <p>我们从测试结果可以明显知道，当项目中广泛应用 async 之后，服务器将花费大量时间用来处理 async 函数的调用和返回。我们在一些服务端应用的实际测试中也发现了这一点。而且这种性能的急剧下降，是完全不能接受的。</p>
 <p>fibjs 由于采用 fiber，可以充分利用了 JavaScript 语言本身的特性，并且最大限度地发挥 v8 的优越性能。工程师可以很轻易地将服务器的性能发挥到极致。</p>
 <h2 id="灵活选择范式而不被绑架">灵活选择范式而不被绑架</h2>
@@ -378,7 +378,7 @@ sync: 0.038ms
 <p>理论上，我们可以依次修改每一个函数，让它们符合所依赖的函数的要求，但是这样就要求我们完全了解所有的模块并且有能力对其作出修改。这在多人协作开发时或者使用第三方模块时是完全不可能完成的。</p>
 <p>因此，所有的通用模块，都需要同时提供 sync 和 async 接口，以均衡处理异步和性能之间的平衡。更多的普通开发者则会选择只提供 async 接口。从而引发性能灾难。</p>
 <p>在 fibjs 中，你可以很轻松的解决类似的问题，避免显式异步无节制地传染:</p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
 4
@@ -411,7 +411,7 @@ sync: 0.038ms
 data = session_get(sid);
 data = util.sync(async_session_get)(sid);
 data = util.sync(callback_session_get)(sid);
-</div></pre>
+</code></pre>
 <p>fibjs 可以使用 util.sync 将 callback 或者 async 函数转变为 sync 函数，并且直接调用。通过这种方式，我们可以很方便地整合不同编程范式的模块，并且以最小的开发成本将其转变为 sync 范式，有效地避免范式传染带来的灾难。</p>
 <h2 id="开始体验">开始体验</h2>
 <p>准备好开始一场愉快的开发经历了吗？那么，从安装开始吧。</p>

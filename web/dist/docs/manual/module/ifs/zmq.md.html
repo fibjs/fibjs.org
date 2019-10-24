@@ -190,66 +190,66 @@
  </div></div></div>  </div></div><div class=content><div class=social-share data-sites=weibo,twitter data-description=分享></div> <h1 id="模块-zmq">模块 zmq</h1>
 <p>zeroMQ 消息队列模块</p>
 <p>基础模块。提供 zeroMQ 消息队列支撑。</p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">var</span> zmq = <span class="hljs-built_in">require</span>(<span class="hljs-string">'zmq'</span>);
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">var</span> zmq = <span class="hljs-built_in">require</span>(<span class="hljs-string">'zmq'</span>);
+</code></pre>
 <h2 id="对象">对象</h2>
 <h3 id="Socket" class ="notranslate">Socket</h3>
 <p><strong><a href=../../object/ifs/zmqsocket.md.html class ="notranslate">ZmqSocket</a> 对象，参见 <a href=../../object/ifs/zmqsocket.md.html class ="notranslate">ZmqSocket</a></strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div>ZmqSocket zmq.Socket;
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>ZmqSocket zmq.Socket;
+</code></pre>
 <h2 id="常量">常量</h2>
 <h3 id="PAIR" class ="notranslate">PAIR</h3>
 <hr>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> zmq.PAIR = <span class="hljs-number">0</span>;
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> zmq.PAIR = <span class="hljs-number">0</span>;
+</code></pre>
 <hr>
 <h3 id="PUB" class ="notranslate">PUB</h3>
 <p><strong>发布类型，所发送的消息将会分发给所有订阅者。</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> zmq.PUB = <span class="hljs-number">1</span>;
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> zmq.PUB = <span class="hljs-number">1</span>;
+</code></pre>
 <hr>
 <h3 id="SUB" class ="notranslate">SUB</h3>
 <p><strong>订阅类型，用于接收 PUB 分发的消息。</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> zmq.SUB = <span class="hljs-number">2</span>;
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> zmq.SUB = <span class="hljs-number">2</span>;
+</code></pre>
 <hr>
 <h3 id="REQ" class ="notranslate">REQ</h3>
 <p><strong>请求类型，此类型的接口只允许交替进行 send 和 recv 消息，每一个接受的消息都是最后一次发送请求的响应。</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> zmq.REQ = <span class="hljs-number">3</span>;
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> zmq.REQ = <span class="hljs-number">3</span>;
+</code></pre>
 <hr>
 <h3 id="REP" class ="notranslate">REP</h3>
 <p><strong>响应类型，此类型的接口只允许交替进行 recv 和 send 消息，每一个发送的消息都会作为最后一次接受的请求的回应。</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> zmq.REP = <span class="hljs-number">4</span>;
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> zmq.REP = <span class="hljs-number">4</span>;
+</code></pre>
 <hr>
 <h3 id="DEALER" class ="notranslate">DEALER</h3>
 <hr>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> zmq.DEALER = <span class="hljs-number">5</span>;
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> zmq.DEALER = <span class="hljs-number">5</span>;
+</code></pre>
 <hr>
 <h3 id="ROUTER" class ="notranslate">ROUTER</h3>
 <hr>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> zmq.ROUTER = <span class="hljs-number">6</span>;
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> zmq.ROUTER = <span class="hljs-number">6</span>;
+</code></pre>
 <hr>
 <h3 id="PULL" class ="notranslate">PULL</h3>
 <p><strong>获取消息类型，上游推送的消息将被公平的分发到此类接口。</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> zmq.PULL = <span class="hljs-number">7</span>;
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> zmq.PULL = <span class="hljs-number">7</span>;
+</code></pre>
 <hr>
 <h3 id="PUSH" class ="notranslate">PUSH</h3>
 <p><strong>推送类型，推送的消息将均衡发送到下游接口。</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> zmq.PUSH = <span class="hljs-number">8</span>;
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> zmq.PUSH = <span class="hljs-number">8</span>;
+</code></pre>
 <hr>
 <h3 id="XPUB" class ="notranslate">XPUB</h3>
 <hr>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> zmq.XPUB = <span class="hljs-number">9</span>;
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> zmq.XPUB = <span class="hljs-number">9</span>;
+</code></pre>
 <hr>
 <h3 id="XSUB" class ="notranslate">XSUB</h3>
 <hr>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> zmq.XSUB = <span class="hljs-number">10</span>;
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> zmq.XSUB = <span class="hljs-number">10</span>;
+</code></pre>
  </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id=toc></div></div></div></div><div class=footer><div class=container>&copy; Copyright 2014-2019 fibjs.org | <a href=../../../../support.html>支持我们</a></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="Click to return on the top page" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js></script><script type=text/javascript src=../../../../js/common.js></script><script type=text/javascript src=../../../../js/docs.js></script></body></html>

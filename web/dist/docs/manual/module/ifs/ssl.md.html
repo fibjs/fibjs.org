@@ -192,25 +192,25 @@
 <h2 id="对象">对象</h2>
 <h3 id="Socket" class ="notranslate">Socket</h3>
 <p><strong>创建一个 <a href=../../object/ifs/sslsocket.md.html class ="notranslate">SslSocket</a> 对象，参见 <a href=../../object/ifs/sslsocket.md.html class ="notranslate">SslSocket</a></strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div>SslSocket ssl.Socket;
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>SslSocket ssl.Socket;
+</code></pre>
 <hr>
 <h3 id="Handler" class ="notranslate">Handler</h3>
 <p><strong>创建一个 <a href=../../object/ifs/sslhandler.md.html class ="notranslate">SslHandler</a> 对象，参见 <a href=../../object/ifs/sslhandler.md.html class ="notranslate">SslHandler</a></strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div>SslHandler ssl.Handler;
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>SslHandler ssl.Handler;
+</code></pre>
 <hr>
 <h3 id="Server" class ="notranslate">Server</h3>
 <p><strong>创建一个 <a href=../../object/ifs/sslserver.md.html class ="notranslate">SslServer</a> 对象，参见 <a href=../../object/ifs/sslserver.md.html class ="notranslate">SslServer</a></strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div>SslServer ssl.Server;
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>SslServer ssl.Server;
+</code></pre>
 <h2 id="静态函数">静态函数</h2>
 <h3 id="connect" class ="notranslate">connect</h3>
 <p><strong>创建一个 <a href=../../object/ifs/sslsocket.md.html class ="notranslate">SslSocket</a> 对象并建立连接</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">static</span> Stream ssl.connect(<span class="hljs-built_in">String</span> url,
     Integer timeout = <span class="hljs-number">0</span>) <span class="hljs-keyword">async</span>;
-</div></pre>
+</code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">url</span>: String, 指定连接的协议，可以是：ssl://host:port</li>
@@ -223,10 +223,10 @@
 <hr>
 <h3 id="setClientCert" class ="notranslate">setClientCert</h3>
 <p><strong>设定缺省客户端证书</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">static</span> ssl.setClientCert(X509Cert crt,
     PKey key);
-</div></pre>
+</code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">crt</span>: <a href=../../object/ifs/x509cert.md.html class ="notranslate">X509Cert</a>, <a href=../../object/ifs/x509cert.md.html class ="notranslate">X509Cert</a> 证书，用于客户端验证服务器</li>
@@ -235,12 +235,12 @@
 <hr>
 <h3 id="loadClientCertFile" class ="notranslate">loadClientCertFile</h3>
 <p><strong>从文件中加载缺省客户端证书</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3</div><span class="hljs-keyword">static</span> ssl.loadClientCertFile(<span class="hljs-built_in">String</span> crtFile,
     <span class="hljs-built_in">String</span> keyFile,
     <span class="hljs-built_in">String</span> password = <span class="hljs-string">""</span>);
-</div></pre>
+</code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">crtFile</span>: String, <a href=../../object/ifs/x509cert.md.html class ="notranslate">X509Cert</a> 证书文件，用于客户端验证服务器</li>
@@ -250,82 +250,82 @@
 <hr>
 <h3 id="loadRootCerts" class ="notranslate">loadRootCerts</h3>
 <p><strong>加载自带的缺省根证书，等同于 <a href=ssl.md.html#ca class ="notranslate">ssl.ca</a>.loadRootCerts</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> ssl.loadRootCerts();
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> ssl.loadRootCerts();
+</code></pre>
 <p>此证书内容源自：<a href="http.md" class ="notranslate">http</a>://hg.mozilla.org/releases/mozilla-release/raw-file/default/security/nss/lib/ckfw/builtins/certdata.txt</p>
 <h2 id="静态属性">静态属性</h2>
 <h3 id="ca" class ="notranslate">ca</h3>
 <p><strong><a href=../../object/ifs/x509cert.md.html class ="notranslate">X509Cert</a>, 全局证书，用于 ssl 客户端模式验证服务器证书</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly X509Cert ssl.ca;
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly X509Cert ssl.ca;
+</code></pre>
 <hr>
 <h3 id="verification" class ="notranslate">verification</h3>
 <p><strong>Integer, 设定证书验证模式，缺省为 VERIFY_REQUIRED</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Integer ssl.verification;
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Integer ssl.verification;
+</code></pre>
 <hr>
 <h3 id="min_version" class ="notranslate">min_version</h3>
 <p><strong>Integer, 设定最低版本支持，缺省 ssl3</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Integer ssl.min_version;
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Integer ssl.min_version;
+</code></pre>
 <hr>
 <h3 id="max_version" class ="notranslate">max_version</h3>
 <p><strong>Integer, 设定最高版本支持，缺省 tls1_1</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Integer ssl.max_version;
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Integer ssl.max_version;
+</code></pre>
 <h2 id="常量">常量</h2>
 <h3 id="VERIFY_NONE" class ="notranslate">VERIFY_NONE</h3>
 <p><strong>证书验证模式，不验证</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> ssl.VERIFY_NONE = <span class="hljs-number">0</span>;
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> ssl.VERIFY_NONE = <span class="hljs-number">0</span>;
+</code></pre>
 <hr>
 <h3 id="VERIFY_OPTIONAL" class ="notranslate">VERIFY_OPTIONAL</h3>
 <p><strong>证书验证模式，可选验证，允许验证不通过</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> ssl.VERIFY_OPTIONAL = <span class="hljs-number">1</span>;
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> ssl.VERIFY_OPTIONAL = <span class="hljs-number">1</span>;
+</code></pre>
 <hr>
 <h3 id="VERIFY_REQUIRED" class ="notranslate">VERIFY_REQUIRED</h3>
 <p><strong>证书验证模式，要求验证，验证不通过则中断</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> ssl.VERIFY_REQUIRED = <span class="hljs-number">2</span>;
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> ssl.VERIFY_REQUIRED = <span class="hljs-number">2</span>;
+</code></pre>
 <hr>
 <h3 id="BADCERT_EXPIRED" class ="notranslate">BADCERT_EXPIRED</h3>
 <p><strong>证书验证结果，证书超时</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> ssl.BADCERT_EXPIRED = <span class="hljs-number">1</span>;
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> ssl.BADCERT_EXPIRED = <span class="hljs-number">1</span>;
+</code></pre>
 <hr>
 <h3 id="BADCERT_REVOKED" class ="notranslate">BADCERT_REVOKED</h3>
 <p><strong>证书验证结果，证书被撤销</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> ssl.BADCERT_REVOKED = <span class="hljs-number">2</span>;
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> ssl.BADCERT_REVOKED = <span class="hljs-number">2</span>;
+</code></pre>
 <hr>
 <h3 id="BADCERT_CN_MISMATCH" class ="notranslate">BADCERT_CN_MISMATCH</h3>
 <p><strong>证书验证结果，证书名错误</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> ssl.BADCERT_CN_MISMATCH = <span class="hljs-number">4</span>;
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> ssl.BADCERT_CN_MISMATCH = <span class="hljs-number">4</span>;
+</code></pre>
 <hr>
 <h3 id="BADCERT_NOT_TRUSTED" class ="notranslate">BADCERT_NOT_TRUSTED</h3>
 <p><strong>证书验证结果，证书不可信</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> ssl.BADCERT_NOT_TRUSTED = <span class="hljs-number">8</span>;
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> ssl.BADCERT_NOT_TRUSTED = <span class="hljs-number">8</span>;
+</code></pre>
 <hr>
 <h3 id="ssl3" class ="notranslate">ssl3</h3>
 <p><strong>ssl 协议版本 ssl 3.0</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> ssl.ssl3 = <span class="hljs-number">0</span>;
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> ssl.ssl3 = <span class="hljs-number">0</span>;
+</code></pre>
 <hr>
 <h3 id="tls1" class ="notranslate">tls1</h3>
 <p><strong>ssl 协议版本 tls 1.0</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> ssl.tls1 = <span class="hljs-number">1</span>;
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> ssl.tls1 = <span class="hljs-number">1</span>;
+</code></pre>
 <hr>
 <h3 id="tls1_1" class ="notranslate">tls1_1</h3>
 <p><strong>ssl 协议版本 tls 1.1</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> ssl.tls1_1 = <span class="hljs-number">2</span>;
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> ssl.tls1_1 = <span class="hljs-number">2</span>;
+</code></pre>
 <hr>
 <h3 id="tls1_2" class ="notranslate">tls1_2</h3>
 <p><strong>ssl 协议版本 tls 1.2</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> ssl.tls1_2 = <span class="hljs-number">3</span>;
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> ssl.tls1_2 = <span class="hljs-number">3</span>;
+</code></pre>
  </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id=toc></div></div></div></div><div class=footer><div class=container>&copy; Copyright 2014-2019 fibjs.org | <a href=../../../../support.html>支持我们</a></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="Click to return on the top page" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js></script><script type=text/javascript src=../../../../js/common.js></script><script type=text/javascript src=../../../../js/docs.js></script></body></html>

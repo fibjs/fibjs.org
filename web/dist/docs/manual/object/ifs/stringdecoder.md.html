@@ -245,8 +245,8 @@
 <h2 id="构造函数">构造函数</h2>
 <h3 id="StringDecoder" class ="notranslate">StringDecoder</h3>
 <p><strong>解码器构造函数</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">new</span> StringDecoder(<span class="hljs-built_in">String</span> encoding = <span class="hljs-string">"utf8"</span>);
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">new</span> StringDecoder(<span class="hljs-built_in">String</span> encoding = <span class="hljs-string">"utf8"</span>);
+</code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">encoding</span>: String, 解码编码. 默认 &#39;utf8&#39;.</li>
@@ -254,36 +254,36 @@
 <h2 id="成员属性">成员属性</h2>
 <h3 id="lastNeed" class ="notranslate">lastNeed</h3>
 <p><strong>Integer, 内部使用。</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div>Integer StringDecoder.lastNeed;
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer StringDecoder.lastNeed;
+</code></pre>
 <hr>
 <h3 id="lastTotal" class ="notranslate">lastTotal</h3>
 <p><strong>Integer, 内部使用。</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div>Integer StringDecoder.lastTotal;
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer StringDecoder.lastTotal;
+</code></pre>
 <hr>
 <h3 id="lastChar" class ="notranslate">lastChar</h3>
 <p><strong><a href=buffer.md.html class ="notranslate">Buffer</a>, 内部使用。</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div>Buffer StringDecoder.lastChar;
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Buffer StringDecoder.lastChar;
+</code></pre>
 <hr>
 <h3 id="encoding" class ="notranslate">encoding</h3>
 <p><strong>String, 解码编码.内部使用。</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> StringDecoder.encoding;
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> StringDecoder.encoding;
+</code></pre>
 <h2 id="成员函数">成员函数</h2>
 <h3 id="end" class ="notranslate">end</h3>
 <p><strong>将内部存留的 buffer 作为字符返回。不完整的 UTF-8 和 UTF-16 字节会尝试补全。</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> StringDecoder.end();
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> StringDecoder.end();
+</code></pre>
 <p>返回结果:</p>
 <ul>
 <li><span class="notranslate">String</span>, 解码后的字符串.</li>
 </ul>
 <hr>
 <p><strong>将内部存留的 buffer 作为字符返回。不完整的 UTF-8 和 UTF-16 字节会尝试补全。</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> StringDecoder.end(Buffer buf);
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> StringDecoder.end(Buffer buf);
+</code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">buf</span>: <a href=buffer.md.html class ="notranslate">Buffer</a>, 需要解码的 <a href=buffer.md.html class ="notranslate">Buffer</a>. 在执行 end 之前，会先调用 write 将 buffer 写入。</li>
@@ -295,8 +295,8 @@
 <hr>
 <h3 id="write" class ="notranslate">write</h3>
 <p><strong>返回一个解码后的字符串, 确保任何非完整的末尾字符被省略此次不返回，并被存储在内部供下一次的 write 或者 end 方法使用。</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> StringDecoder.write(Buffer buf);
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> StringDecoder.write(Buffer buf);
+</code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">buf</span>: <a href=buffer.md.html class ="notranslate">Buffer</a>, 需要解码的 <a href=buffer.md.html class ="notranslate">Buffer</a>。</li>
@@ -308,10 +308,10 @@
 <hr>
 <h3 id="text" class ="notranslate">text</h3>
 <p><strong>内部使用。.</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-built_in">String</span> StringDecoder.text(Buffer buf,
     Integer offset);
-</div></pre>
+</code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">buf</span>: <a href=buffer.md.html class ="notranslate">Buffer</a>, 需要解码的 <a href=buffer.md.html class ="notranslate">Buffer</a>。</li>
@@ -324,8 +324,8 @@
 <hr>
 <h3 id="fillLast" class ="notranslate">fillLast</h3>
 <p><strong>内部使用。.</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> StringDecoder.fillLast(Buffer buf);
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> StringDecoder.fillLast(Buffer buf);
+</code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">buf</span>: <a href=buffer.md.html class ="notranslate">Buffer</a>, A <a href=buffer.md.html class ="notranslate">Buffer</a> containing the bytes to decode.</li>
@@ -337,8 +337,8 @@
 <hr>
 <h3 id="toString" class ="notranslate">toString</h3>
 <p><strong>返回对象的字符串表示，一般返回 &quot;[Native Object]&quot;，对象可以根据自己的特性重新实现</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> StringDecoder.toString();
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> StringDecoder.toString();
+</code></pre>
 <p>返回结果:</p>
 <ul>
 <li><span class="notranslate">String</span>, 返回对象的字符串表示</li>
@@ -346,8 +346,8 @@
 <hr>
 <h3 id="toJSON" class ="notranslate">toJSON</h3>
 <p><strong>返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div>Value StringDecoder.toJSON(<span class="hljs-built_in">String</span> key = <span class="hljs-string">""</span>);
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Value StringDecoder.toJSON(<span class="hljs-built_in">String</span> key = <span class="hljs-string">""</span>);
+</code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">key</span>: String, 未使用</li>

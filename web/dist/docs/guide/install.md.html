@@ -189,11 +189,11 @@
 </ul>
  </div></div></div>  </div></div><div class=content><div class=social-share data-sites=weibo,twitter data-description=分享></div> <h1 id="安装运行环境">安装运行环境</h1>
 <p>对于常用的 UNIX 操作系统，比如 Mac OS X, Linux 和 FreeBSD，建议在终端使用下面的命令直接安装:</p>
-<pre class ="notranslate"><div class="code lang-sh"><div class="line-numbers">1</div>curl -s http://fibjs.org/download/installer.sh | sh
-</div></pre>
+<pre><code class="lang-sh"><div class="line-numbers">1</div>curl -s http://fibjs.org/download/installer.sh | sh
+</code></pre>
 <p>在 Mac OS X 下，也可以选择使用 Homebrew 来安装最新版的 fibjs:</p>
-<pre class ="notranslate"><div class="code lang-sh"><div class="line-numbers">1</div>brew install fibjs
-</div></pre>
+<pre><code class="lang-sh"><div class="line-numbers">1</div>brew install fibjs
+</code></pre>
 <p>你也可以选择自行下载合适的版本，用于安装或者自行分发。Windows 下也需要自己下载安装。</p>
 <p>如果你想随时拥有开发中的最新特性，或者你可能需要自行开发自己的分支，也可以自己编译最新的版本。</p>
 <h2 id="Windows-下自己编译">Windows 下自己编译</h2>
@@ -202,17 +202,17 @@
 <h3 id="获取代码">获取代码</h3>
 <p>fibjs 当前 github 地址为: <a href="https://github.com/fibjs/fibjs">https://github.com/fibjs/fibjs</a></p>
 <p>在工作目录下执行以下命令:</p>
-<pre class ="notranslate"><div class="code lang-sh"><div class="line-numbers">1</div>git <span class="hljs-built_in">clone</span> https://github.com/fibjs/fibjs.git --recursive
-</div></pre>
+<pre><code class="lang-sh"><div class="line-numbers">1</div>git <span class="hljs-built_in">clone</span> https://github.com/fibjs/fibjs.git --recursive
+</code></pre>
 <p>如果 clone 的时候忘记了添加  --recursive，也可以进入 fibjs 目录手动更新</p>
-<pre class ="notranslate"><div class="code lang-sh"><div class="line-numbers">1
+<pre><code class="lang-sh"><div class="line-numbers">1
 2</div><span class="hljs-built_in">cd</span> fibjs
 git submodule update --init --recursive
-</div></pre>
+</code></pre>
 <h3 id="编译命令及说明">编译命令及说明</h3>
 <p>Windows 打开 <code>Developer Command Prompt</code> 终端，进入 fibjs 目录，执行命令:</p>
-<pre class ="notranslate"><div class="code lang-sh"><div class="line-numbers">1</div>build [options]
-</div></pre>
+<pre><code class="lang-sh"><div class="line-numbers">1</div>build [options]
+</code></pre>
 <p>options 的选项:</p>
 <ul>
 <li><span class="notranslate">clean</span>: 清除编译结果，便于全部重新编译</li>
@@ -223,84 +223,84 @@ git submodule update --init --recursive
 <li><span class="notranslate">noxp</span>: 禁用 xp 兼容模式</li>
 </ul>
 <p>例如 release 模式编译命令如下:</p>
-<pre class ="notranslate"><div class="code lang-sh"><div class="line-numbers">1</div>build release
-</div></pre>
+<pre><code class="lang-sh"><div class="line-numbers">1</div>build release
+</code></pre>
 <p>fibjs build 工具支持兼容 xp 模式，编译时需要手动开启：</p>
-<pre class ="notranslate"><div class="code lang-sh"><div class="line-numbers">1</div>build xp
-</div></pre>
+<pre><code class="lang-sh"><div class="line-numbers">1</div>build xp
+</code></pre>
 <h2 id="UNIX-下自己编译">UNIX 下自己编译</h2>
 <h3 id="准备编译环境">准备编译环境</h3>
 <p>在 UNIX 下编译需要依赖以下工具:</p>
-<pre class ="notranslate"><div class="code"><div class="line-numbers">1
+<pre><code><div class="line-numbers">1
 2
 3
 4</div>GCC <span class="hljs-number">4.8</span> <span class="hljs-keyword">or</span> newer
 CMake <span class="hljs-number">2.6</span> <span class="hljs-keyword">or</span> newer
 GNU Make <span class="hljs-number">3.81</span> <span class="hljs-keyword">or</span> newer
 libexecinfo (FreeBSD <span class="hljs-keyword">and</span> OpenBSD only)
-</div></pre><p>Mac OS X 下，除需要安装 Xcode 及命令行工具外，以 brew 为例，准备环境命令如下:</p>
-<pre class ="notranslate"><div class="code lang-sh"><div class="line-numbers">1</div>brew install cmake git
-</div></pre>
+</code></pre><p>Mac OS X 下，除需要安装 Xcode 及命令行工具外，以 brew 为例，准备环境命令如下:</p>
+<pre><code class="lang-sh"><div class="line-numbers">1</div>brew install cmake git
+</code></pre>
 <p>Ubuntu 准备环境命令如下:</p>
-<pre class ="notranslate"><div class="code lang-sh"><div class="line-numbers">1</div>apt install g++ make cmake git
-</div></pre>
+<pre><code class="lang-sh"><div class="line-numbers">1</div>apt install g++ make cmake git
+</code></pre>
 <p>如果要编译 32 位版本，另需要安装 multilib:</p>
-<pre class ="notranslate"><div class="code lang-sh"><div class="line-numbers">1</div>apt install gcc-multilib g++-multilib
-</div></pre>
+<pre><code class="lang-sh"><div class="line-numbers">1</div>apt install gcc-multilib g++-multilib
+</code></pre>
 <p>ARM on Ubuntu 准备环境命令如下:</p>
-<pre class ="notranslate"><div class="code lang-sh"><div class="line-numbers">1</div>apt install gcc-arm-linux-gnueabihf g++-arm-linux-gnueabihf
-</div></pre>
+<pre><code class="lang-sh"><div class="line-numbers">1</div>apt install gcc-arm-linux-gnueabihf g++-arm-linux-gnueabihf
+</code></pre>
 <p>如果要在 Ubuntu 上编译 ARM 64 位版本，准备环境命令如下:</p>
-<pre class ="notranslate"><div class="code lang-sh"><div class="line-numbers">1</div>apt install gcc-aarch64-linux-gnu g++-aarch64-linux-gnu
-</div></pre>
+<pre><code class="lang-sh"><div class="line-numbers">1</div>apt install gcc-aarch64-linux-gnu g++-aarch64-linux-gnu
+</code></pre>
 <p>MIPS on Ubuntu 准备环境如下:</p>
-<pre class ="notranslate"><div class="code lang-sh"><div class="line-numbers">1</div>apt install gcc-mips-linux-gnu g++-mips-linux-gnu
-</div></pre>
+<pre><code class="lang-sh"><div class="line-numbers">1</div>apt install gcc-mips-linux-gnu g++-mips-linux-gnu
+</code></pre>
 <p>如果要在 Ubuntu 上编译 MIPS 64 位版本，准备环境命令如下:</p>
-<pre class ="notranslate"><div class="code lang-sh"><div class="line-numbers">1</div>apt install gcc-mips64-linux-gnuabi64 g++-mips64-linux-gnuabi64
-</div></pre>
+<pre><code class="lang-sh"><div class="line-numbers">1</div>apt install gcc-mips64-linux-gnuabi64 g++-mips64-linux-gnuabi64
+</code></pre>
 <p>PowerPC on Ubuntu 准备环境命令如下:</p>
-<pre class ="notranslate"><div class="code lang-sh"><div class="line-numbers">1</div>apt install gcc-powerpc-linux-gnu g++-powerpc-linux-gnu
-</div></pre>
+<pre><code class="lang-sh"><div class="line-numbers">1</div>apt install gcc-powerpc-linux-gnu g++-powerpc-linux-gnu
+</code></pre>
 <p>如果要在 Ubuntu 上编译 PowerPC 64 位版本，准备环境命令如下:</p>
-<pre class ="notranslate"><div class="code lang-sh"><div class="line-numbers">1</div>apt install gcc-powerpc64-linux-gnu g++-powerpc64-linux-gnu
-</div></pre>
+<pre><code class="lang-sh"><div class="line-numbers">1</div>apt install gcc-powerpc64-linux-gnu g++-powerpc64-linux-gnu
+</code></pre>
 <p>fix:</p>
-<pre class ="notranslate"><div class="code lang-sh"><div class="line-numbers">1
+<pre><code class="lang-sh"><div class="line-numbers">1
 2
 3</div>rm -f /usr/include/asm
 ln -s x86_64-linux-gnu /usr/include/i386-linux-gnu
 ln -s x86_64-linux-gnu /usr/include/x86_64-linux-gnux32
-</div></pre>
+</code></pre>
 <p>Fedora 准备环境命令如下:</p>
-<pre class ="notranslate"><div class="code lang-sh"><div class="line-numbers">1</div>yum install gcc-c++ libstdc++-static make cmake git
-</div></pre>
+<pre><code class="lang-sh"><div class="line-numbers">1</div>yum install gcc-c++ libstdc++-static make cmake git
+</code></pre>
 <p>如果要编译 32 位版本，准备环境命令如下:</p>
-<pre class ="notranslate"><div class="code lang-sh"><div class="line-numbers">1</div>yum install glibc-devel.i686 libstdc++-static.i686
-</div></pre>
+<pre><code class="lang-sh"><div class="line-numbers">1</div>yum install glibc-devel.i686 libstdc++-static.i686
+</code></pre>
 <p>Alpine 准备环境命令如下:</p>
-<pre class ="notranslate"><div class="code lang-sh"><div class="line-numbers">1</div>apk add g++ linux-headers make cmake git libexecinfo-dev
-</div></pre>
+<pre><code class="lang-sh"><div class="line-numbers">1</div>apk add g++ linux-headers make cmake git libexecinfo-dev
+</code></pre>
 <p>FreeBSD (8,9) 准备环境命令如下:</p>
-<pre class ="notranslate"><div class="code lang-sh"><div class="line-numbers">1</div>pkg_add -r cmake libexecinfo git
-</div></pre>
+<pre><code class="lang-sh"><div class="line-numbers">1</div>pkg_add -r cmake libexecinfo git
+</code></pre>
 <p>FreeBSD 10 及以上系统准备环境命令如下:</p>
-<pre class ="notranslate"><div class="code lang-sh"><div class="line-numbers">1</div>pkg install cmake libexecinfo git
-</div></pre>
+<pre><code class="lang-sh"><div class="line-numbers">1</div>pkg install cmake libexecinfo git
+</code></pre>
 <h3 id="获取代码">获取代码</h3>
 <p>fibjs 当前 github 地址为: <a href="https://github.com/fibjs/fibjs">https://github.com/fibjs/fibjs</a></p>
 <p>在工作目录下执行以下命令:</p>
-<pre class ="notranslate"><div class="code lang-sh"><div class="line-numbers">1</div>git <span class="hljs-built_in">clone</span> https://github.com/fibjs/fibjs.git --recursive
-</div></pre>
+<pre><code class="lang-sh"><div class="line-numbers">1</div>git <span class="hljs-built_in">clone</span> https://github.com/fibjs/fibjs.git --recursive
+</code></pre>
 <p>如果 clone 的时候忘记了添加  --recursive，也可以进入 fibjs 目录手动更新</p>
-<pre class ="notranslate"><div class="code lang-sh"><div class="line-numbers">1
+<pre><code class="lang-sh"><div class="line-numbers">1
 2</div><span class="hljs-built_in">cd</span> fibjs
 git submodule update --init --recursive
-</div></pre>
+</code></pre>
 <h3 id="编译命令及说明">编译命令及说明</h3>
 <p>UNIX 环境，在 fibjs 项目根目录，有一个 build 的 shell 脚本，可用于 fibjs 编译。 执行编译命令:</p>
-<pre class ="notranslate"><div class="code lang-sh"><div class="line-numbers">1</div>sh build [options] [-jn] [-v] [-h]
-</div></pre>
+<pre><code class="lang-sh"><div class="line-numbers">1</div>sh build [options] [-jn] [-v] [-h]
+</code></pre>
 <p>options 的选项:</p>
 <ul>
 <li><span class="notranslate">clean</span>: 清除编译结果，便于全部重新编译</li>
@@ -316,17 +316,17 @@ git submodule update --init --recursive
 <li><span class="notranslate">ppc64</span>: 交叉编译 64 位 PowerPC 版本</li>
 </ul>
 <p>例如 release 模式编译命令如下:</p>
-<pre class ="notranslate"><div class="code lang-sh"><div class="line-numbers">1</div>sh build release
-</div></pre>
+<pre><code class="lang-sh"><div class="line-numbers">1</div>sh build release
+</code></pre>
 <h2 id="测试全部用例">测试全部用例</h2>
-<pre class ="notranslate"><div class="code lang-sh"><div class="line-numbers">1</div>bin/{<span class="hljs-variable">$OS</span>}_{<span class="hljs-variable">$arch</span>}_release/fibjs <span class="hljs-built_in">test</span>
-</div></pre>
+<pre><code class="lang-sh"><div class="line-numbers">1</div>bin/{<span class="hljs-variable">$OS</span>}_{<span class="hljs-variable">$arch</span>}_release/fibjs <span class="hljs-built_in">test</span>
+</code></pre>
 <p>例如:</p>
-<pre class ="notranslate"><div class="code lang-sh"><div class="line-numbers">1</div>bin/Linux_amd64_release/fibjs <span class="hljs-built_in">test</span>
-</div></pre>
+<pre><code class="lang-sh"><div class="line-numbers">1</div>bin/Linux_amd64_release/fibjs <span class="hljs-built_in">test</span>
+</code></pre>
 <p>即可开始执行 fibjs 全部测试用例。{$OS} 内容自行查阅。</p>
 <p>当你看到类似以下结果，表示测试用例全部运行正常:</p>
-<pre class ="notranslate"><div class="code lang-sh"><div class="line-numbers">1
+<pre><code class="lang-sh"><div class="line-numbers">1
 2
 3
 4
@@ -351,11 +351,11 @@ sqlite
   √ binary (835ms)
 
   √ 312 tests completed (6727ms)
-</div></pre>
+</code></pre>
 <h2 id="安装至系统">安装至系统</h2>
 <p>你可以使用下面的命令，将刚刚编译成功的 fibjs 安装至系统，方便使用:</p>
-<pre class ="notranslate"><div class="code lang-sh"><div class="line-numbers">1</div>bin/{<span class="hljs-variable">$OS</span>}_{<span class="hljs-variable">$arch</span>}_release/install.sh
-</div></pre>
+<pre><code class="lang-sh"><div class="line-numbers">1</div>bin/{<span class="hljs-variable">$OS</span>}_{<span class="hljs-variable">$arch</span>}_release/install.sh
+</code></pre>
 <h2 id="开始编程">开始编程</h2>
 <p>到现在为止，你已经有一个可以执行的 fibjs 版本，可以开始体验 fibjs 开发的乐趣了。</p>
 <p>👉 【<a href=hello.md.html class ="notranslate">hello, world</a>】</p>

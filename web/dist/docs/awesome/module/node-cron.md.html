@@ -199,10 +199,10 @@
 <p><a href="https://nodei.co/npm/node-cron/"><img src="https://nodei.co/npm/node-cron.png?downloads=true&amp;downloadRank=true&amp;stars=false" alt="NPM"></a></p>
 <h2 id="Getting-Started">Getting Started</h2>
 <p>Install node-cron using npm:</p>
-<pre class ="notranslate"><div class="code lang-console"><div class="line-numbers">1</div><span class="hljs-meta">$</span><span class="bash"> npm install --save node-cron</span>
-</div></pre>
+<pre><code class="lang-console"><div class="line-numbers">1</div><span class="hljs-meta">$</span><span class="bash"> npm install --save node-cron</span>
+</code></pre>
 <p>Import node-cron and schedule a task:</p>
-<pre class ="notranslate"><div class="code lang-javascript"><div class="line-numbers">1
+<pre><code class="lang-javascript"><div class="line-numbers">1
 2
 3
 4
@@ -211,11 +211,11 @@
 cron.schedule(<span class="hljs-string">'* * * * *'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
   <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'running a task every minute'</span>);
 });
-</div></pre>
+</code></pre>
 <h2 id="Cron-Syntax">Cron Syntax</h2>
 <p>This is a quick reference to cron syntax and also shows the options supported by node-cron.</p>
 <h3 id="Allowed-fields" class ="notranslate">Allowed fields</h3>
-<pre class ="notranslate"><div class="code"><div class="line-numbers">1
+<pre><code><div class="line-numbers">1
 2
 3
 4
@@ -232,7 +232,7 @@ cron.schedule(<span class="hljs-string">'* * * * *'</span>, <span class="hljs-fu
  # │ │ │ │ │ │
  # │ │ │ │ │ │
  # * * * * * *
-</div></pre><h3 id="Allowed-values" class ="notranslate">Allowed values</h3>
+</code></pre><h3 id="Allowed-values" class ="notranslate">Allowed values</h3>
 <table>
 <thead>
 <tr>
@@ -269,7 +269,7 @@ cron.schedule(<span class="hljs-string">'* * * * *'</span>, <span class="hljs-fu
 </table>
 <h4 id="Using-multiples-values">Using multiples values</h4>
 <p>You may use multiples values separated by comma:</p>
-<pre class ="notranslate"><div class="code lang-javascript"><div class="line-numbers">1
+<pre><code class="lang-javascript"><div class="line-numbers">1
 2
 3
 4
@@ -278,10 +278,10 @@ cron.schedule(<span class="hljs-string">'* * * * *'</span>, <span class="hljs-fu
 cron.schedule(<span class="hljs-string">'1,2,4,5 * * * *'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
   <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'running every minute 1, 2, 4 and 5'</span>);
 });
-</div></pre>
+</code></pre>
 <h4 id="Using-ranges">Using ranges</h4>
 <p>You may also define a range of values:</p>
-<pre class ="notranslate"><div class="code lang-javascript"><div class="line-numbers">1
+<pre><code class="lang-javascript"><div class="line-numbers">1
 2
 3
 4
@@ -290,10 +290,10 @@ cron.schedule(<span class="hljs-string">'1,2,4,5 * * * *'</span>, <span class="h
 cron.schedule(<span class="hljs-string">'1-5 * * * *'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
   <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'running every minute to 1 from 5'</span>);
 });
-</div></pre>
+</code></pre>
 <h4 id="Using-step-values">Using step values</h4>
 <p>Step values can be used in conjunction with ranges, following a range with &#39;/&#39; and a number. e.g: <code>1-10/2</code> that is the same as <code>2,4,6,8,10</code>. Steps are also permitted after an asterisk, so if you want to say “every two minutes”, just use <code>*/2</code>.</p>
-<pre class ="notranslate"><div class="code lang-javascript"><div class="line-numbers">1
+<pre><code class="lang-javascript"><div class="line-numbers">1
 2
 3
 4
@@ -302,10 +302,10 @@ cron.schedule(<span class="hljs-string">'1-5 * * * *'</span>, <span class="hljs-
 cron.schedule(<span class="hljs-string">'*/2 * * * *'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
   <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'running a task every two minutes'</span>);
 });
-</div></pre>
+</code></pre>
 <h4 id="Using-names">Using names</h4>
 <p>For month and week day you also may use names or short names. e.g:</p>
-<pre class ="notranslate"><div class="code lang-javascript"><div class="line-numbers">1
+<pre><code class="lang-javascript"><div class="line-numbers">1
 2
 3
 4
@@ -314,9 +314,9 @@ cron.schedule(<span class="hljs-string">'*/2 * * * *'</span>, <span class="hljs-
 cron.schedule(<span class="hljs-string">'* * * January,September Sunday'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
   <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'running on Sundays of January and September'</span>);
 });
-</div></pre>
+</code></pre>
 <p>Or with short names:</p>
-<pre class ="notranslate"><div class="code lang-javascript"><div class="line-numbers">1
+<pre><code class="lang-javascript"><div class="line-numbers">1
 2
 3
 4
@@ -325,7 +325,7 @@ cron.schedule(<span class="hljs-string">'* * * January,September Sunday'</span>,
 cron.schedule(<span class="hljs-string">'* * * Jan,Sep Sun'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
   <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'running on Sundays of January and September'</span>);
 });
-</div></pre>
+</code></pre>
 <h2 id="Cron-methods">Cron methods</h2>
 <h3 id="Schedule" class ="notranslate">Schedule</h3>
 <p>Schedules given task to be executed whenever the cron expression ticks.</p>
@@ -338,7 +338,7 @@ cron.schedule(<span class="hljs-string">'* * * Jan,Sep Sun'</span>, <span class=
 <h2 id="ScheduledTask-methods">ScheduledTask methods</h2>
 <h3 id="Start" class ="notranslate">Start</h3>
 <p>Starts the scheduled task.</p>
-<pre class ="notranslate"><div class="code lang-javascript"><div class="line-numbers">1
+<pre><code class="lang-javascript"><div class="line-numbers">1
 2
 3
 4
@@ -351,10 +351,10 @@ cron.schedule(<span class="hljs-string">'* * * Jan,Sep Sun'</span>, <span class=
 }, <span class="hljs-literal">false</span>);
 
 task.start();
-</div></pre>
+</code></pre>
 <h3 id="Stop" class ="notranslate">Stop</h3>
 <p>The task won&#39;t be executed unless re-started.</p>
-<pre class ="notranslate"><div class="code lang-javascript"><div class="line-numbers">1
+<pre><code class="lang-javascript"><div class="line-numbers">1
 2
 3
 4
@@ -367,10 +367,10 @@ task.start();
 });
 
 task.stop();
-</div></pre>
+</code></pre>
 <h3 id="Destroy" class ="notranslate">Destroy</h3>
 <p>The task will be stopped and completely destroyed.</p>
-<pre class ="notranslate"><div class="code lang-javascript"><div class="line-numbers">1
+<pre><code class="lang-javascript"><div class="line-numbers">1
 2
 3
 4
@@ -383,17 +383,17 @@ task.stop();
 });
 
 task.destroy();
-</div></pre>
+</code></pre>
 <h3 id="Validate" class ="notranslate">Validate</h3>
 <p>Validate that the given string is a valid cron expression.</p>
-<pre class ="notranslate"><div class="code lang-javascript"><div class="line-numbers">1
+<pre><code class="lang-javascript"><div class="line-numbers">1
 2
 3
 4</div><span class="hljs-keyword">var</span> cron = <span class="hljs-built_in">require</span>(<span class="hljs-string">'node-cron'</span>);
 
 <span class="hljs-keyword">var</span> valid = cron.validate(<span class="hljs-string">'59 * * * *'</span>);
 <span class="hljs-keyword">var</span> invalid = cron.validate(<span class="hljs-string">'60 * * * *'</span>);
-</div></pre>
+</code></pre>
 <h2 id="Issues">Issues</h2>
 <p>Feel free to submit issues and enhancement requests <a href="https://github.com/merencia/node-cron/issues">here</a>.</p>
 <h2 id="Contributors">Contributors</h2>

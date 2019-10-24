@@ -194,7 +194,7 @@
 <li><code>web.js</code> http handler</li>
 <li><code>app.js</code> 应用入口</li>
 </ul>
-<pre class ="notranslate"><div class="code lang-javascript"><div class="line-numbers">1
+<pre><code class="lang-javascript"><div class="line-numbers">1
 2
 3
 4
@@ -205,8 +205,8 @@
 <span class="hljs-built_in">module</span>.exports = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">r</span>) </span>{
   r.response.write(<span class="hljs-string">"Hello, new word @ "</span> + _ver);
 }
-</div></pre>
-<pre class ="notranslate"><div class="code lang-javascript"><div class="line-numbers">1
+</code></pre>
+<pre><code class="lang-javascript"><div class="line-numbers">1
 2
 3
 4
@@ -223,10 +223,10 @@
 <span class="hljs-keyword">var</span> svr = <span class="hljs-keyword">new</span> http.Server(<span class="hljs-number">8080</span>, webServer);
 
 svr.run();
-</div></pre>
+</code></pre>
 <p>在 <code>app.js</code> 直接引用 <code>web.js</code>， 当每次更新应用的时候，都必须重启 <code>app.js</code>，有没有办法可以在更新代码的同时，让 <code>app.js</code> 自动加载最新的 <code>web.js</code> 呢？</p>
 <p>我们可以通过 fibjs 的原生 <a href=../manual/object/ifs/sandbox.md.html class ="notranslate">SandBox</a> 模块来实现平滑的热更新。对 <code>app.js</code> 做一些更改:</p>
-<pre class ="notranslate"><div class="code lang-javascript"><div class="line-numbers">1
+<pre><code class="lang-javascript"><div class="line-numbers">1
 2
 3
 4
@@ -271,6 +271,6 @@ coroutine.start(<span class="hljs-function"><span class="hljs-keyword">function<
 <span class="hljs-keyword">var</span> svr = <span class="hljs-keyword">new</span> http.Server(<span class="hljs-number">8080</span>, new_web());
 
 svr.run();
-</div></pre>
+</code></pre>
 <p><code>app.js</code> 中启动了一个循环，每隔 1s 重新 <code>require</code> 一次 <code>web.js</code> 中的内容生成安全的模块，用于为 <code>svr</code> 重新挂载 <code>handler</code>。当 <code>web.js</code>中的内容需要更新的时候，只需替换该文件，即可实现服务端程序的平滑更新。</p>
  </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id=toc></div></div></div></div><div class=footer><div class=container>&copy; Copyright 2014-2019 fibjs.org | <a href=../../support.html>支持我们</a></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="Click to return on the top page" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js></script><script type=text/javascript src=../../js/common.js></script><script type=text/javascript src=../../js/docs.js></script></body></html>

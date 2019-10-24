@@ -195,11 +195,11 @@
 <li>Node.js</li>
 <li>npm (Node.js package manager)</li>
 </ul>
-<pre class ="notranslate"><div class="code lang-bash"><div class="line-numbers">1</div>npm install crypto-js
-</div></pre>
+<pre><code class="lang-bash"><div class="line-numbers">1</div>npm install crypto-js
+</code></pre>
 <h3 id="Usage" class ="notranslate">Usage</h3>
 <p>ES6 import for typical API call signing use case:</p>
-<pre class ="notranslate"><div class="code lang-javascript"><div class="line-numbers">1
+<pre><code class="lang-javascript"><div class="line-numbers">1
 2
 3
 4
@@ -212,32 +212,32 @@
 <span class="hljs-keyword">const</span> message, nonce, path, privateKey; <span class="hljs-comment">// ...</span>
 <span class="hljs-keyword">const</span> hashDigest = sha256(nonce + message);
 <span class="hljs-keyword">const</span> hmacDigest = Base64.stringify(hmacSHA512(path + hashDigest, privateKey));
-</div></pre>
+</code></pre>
 <p>Modular include:</p>
-<pre class ="notranslate"><div class="code lang-javascript"><div class="line-numbers">1
+<pre><code class="lang-javascript"><div class="line-numbers">1
 2
 3
 4</div><span class="hljs-keyword">var</span> AES = <span class="hljs-built_in">require</span>(<span class="hljs-string">"crypto-js/aes"</span>);
 <span class="hljs-keyword">var</span> SHA256 = <span class="hljs-built_in">require</span>(<span class="hljs-string">"crypto-js/sha256"</span>);
 ...
 console.log(SHA256(<span class="hljs-string">"Message"</span>));
-</div></pre>
+</code></pre>
 <p>Including all libraries, for access to extra methods:</p>
-<pre class ="notranslate"><div class="code lang-javascript"><div class="line-numbers">1
+<pre><code class="lang-javascript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">var</span> CryptoJS = <span class="hljs-built_in">require</span>(<span class="hljs-string">"crypto-js"</span>);
 <span class="hljs-built_in">console</span>.log(CryptoJS.HmacSHA1(<span class="hljs-string">"Message"</span>, <span class="hljs-string">"Key"</span>));
-</div></pre>
+</code></pre>
 <h2 id="Client-(browser)">Client (browser)</h2>
 <p>Requirements:</p>
 <ul>
 <li>Node.js</li>
 <li>Bower (package manager for frontend)</li>
 </ul>
-<pre class ="notranslate"><div class="code lang-bash"><div class="line-numbers">1</div>bower install crypto-js
-</div></pre>
+<pre><code class="lang-bash"><div class="line-numbers">1</div>bower install crypto-js
+</code></pre>
 <h3 id="Usage" class ="notranslate">Usage</h3>
 <p>Modular include:</p>
-<pre class ="notranslate"><div class="code lang-javascript"><div class="line-numbers">1
+<pre><code class="lang-javascript"><div class="line-numbers">1
 2
 3
 4
@@ -262,9 +262,9 @@ console.log(SHA256(<span class="hljs-string">"Message"</span>));
 <span class="hljs-built_in">require</span>([<span class="hljs-string">"crypto-js/aes"</span>, <span class="hljs-string">"crypto-js/sha256"</span>], <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">AES, SHA256</span>) </span>{
     <span class="hljs-built_in">console</span>.log(SHA256(<span class="hljs-string">"Message"</span>));
 });
-</div></pre>
+</code></pre>
 <p>Including all libraries, for access to extra methods:</p>
-<pre class ="notranslate"><div class="code lang-javascript"><div class="line-numbers">1
+<pre><code class="lang-javascript"><div class="line-numbers">1
 2
 3
 4
@@ -283,9 +283,9 @@ console.log(SHA256(<span class="hljs-string">"Message"</span>));
 <span class="hljs-built_in">require</span>([<span class="hljs-string">"crypto-js"</span>], <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">CryptoJS</span>) </span>{
     <span class="hljs-built_in">console</span>.log(CryptoJS.HmacSHA1(<span class="hljs-string">"Message"</span>, <span class="hljs-string">"Key"</span>));
 });
-</div></pre>
+</code></pre>
 <h3 id="Usage-without-RequireJS" class ="notranslate">Usage without RequireJS</h3>
-<pre class ="notranslate"><div class="code lang-html"><div class="line-numbers">1
+<pre><code class="lang-html"><div class="line-numbers">1
 2
 3
 4
@@ -294,12 +294,12 @@ console.log(SHA256(<span class="hljs-string">"Message"</span>));
     <span class="hljs-keyword">var</span> encrypted = CryptoJS.AES(...);
     <span class="hljs-keyword">var</span> encrypted = CryptoJS.SHA256(...);
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
-</div></pre>
+</code></pre>
 <h2 id="API">API</h2>
 <p>See: <a href="https://code.google.com/p/crypto-js">https://code.google.com/p/crypto-js</a></p>
 <h3 id="AES-Encryption" class ="notranslate">AES Encryption</h3>
 <h4 id="Plain-text-encryption">Plain text encryption</h4>
-<pre class ="notranslate"><div class="code lang-javascript"><div class="line-numbers">1
+<pre><code class="lang-javascript"><div class="line-numbers">1
 2
 3
 4
@@ -318,9 +318,9 @@ console.log(SHA256(<span class="hljs-string">"Message"</span>));
 <span class="hljs-keyword">var</span> plaintext = bytes.toString(CryptoJS.enc.Utf8);
 
 <span class="hljs-built_in">console</span>.log(plaintext);
-</div></pre>
+</code></pre>
 <h4 id="Object-encryption">Object encryption</h4>
-<pre class ="notranslate"><div class="code lang-javascript"><div class="line-numbers">1
+<pre><code class="lang-javascript"><div class="line-numbers">1
 2
 3
 4
@@ -343,7 +343,7 @@ console.log(SHA256(<span class="hljs-string">"Message"</span>));
 <span class="hljs-keyword">var</span> decryptedData = <span class="hljs-built_in">JSON</span>.parse(bytes.toString(CryptoJS.enc.Utf8));
 
 <span class="hljs-built_in">console</span>.log(decryptedData);
-</div></pre>
+</code></pre>
 <h3 id="List-of-modules" class ="notranslate">List of modules</h3>
 <ul>
 <li><code>crypto-js/core</code></li>

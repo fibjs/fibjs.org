@@ -194,12 +194,12 @@
 <p>A tiny JavaScript debugging utility modelled after Node.js core&#39;s debugging
 technique. Works in Node.js and web browsers.</p>
 <h2 id="Installation">Installation</h2>
-<pre class ="notranslate"><div class="code lang-bash"><div class="line-numbers">1</div>$ npm install debug
-</div></pre>
+<pre><code class="lang-bash"><div class="line-numbers">1</div>$ npm install debug
+</code></pre>
 <h2 id="Usage">Usage</h2>
 <p><code>debug</code> exposes a function; simply pass this function the name of your module, and it will return a decorated version of <code>console.error</code> for you to pass debug statements to. This will allow you to toggle the debug output for different parts of your module as well as the module as a whole.</p>
 <p>Example <a href="./examples/node/app.js"><em>app.js</em></a>:</p>
-<pre class ="notranslate"><div class="code lang-js"><div class="line-numbers">1
+<pre><code class="lang-js"><div class="line-numbers">1
 2
 3
 4
@@ -234,9 +234,9 @@ http.createServer(<span class="hljs-function"><span class="hljs-keyword">functio
 <span class="hljs-comment">// fake worker of some kind</span>
 
 <span class="hljs-built_in">require</span>(<span class="hljs-string">'./worker'</span>);
-</div></pre>
+</code></pre>
 <p>Example <a href="./examples/node/worker.js"><em>worker.js</em></a>:</p>
-<pre class ="notranslate"><div class="code lang-js"><div class="line-numbers">1
+<pre><code class="lang-js"><div class="line-numbers">1
 2
 3
 4
@@ -267,7 +267,7 @@ work();
 }
 
 workb();
-</div></pre>
+</code></pre>
 <p>The <code>DEBUG</code> environment variable is then used to enable these based on space or
 comma-delimited names.</p>
 <p>Here are some examples:</p>
@@ -276,11 +276,11 @@ comma-delimited names.</p>
 <img width="647" alt="screen shot 2017-08-08 at 12 53 25 pm" src="https://user-images.githubusercontent.com/71256/29091701-a62ea114-7c38-11e7-826a-2692bedca740.png"></p>
 <h4 id="Windows-note">Windows note</h4>
 <p>On Windows the environment variable is set using the <code>set</code> command.</p>
-<pre class ="notranslate"><div class="code lang-cmd"><div class="line-numbers">1</div><span class="hljs-built_in">set</span> DEBUG=*,-not_this
-</div></pre>
+<pre><code class="lang-cmd"><div class="line-numbers">1</div><span class="hljs-built_in">set</span> DEBUG=*,-not_this
+</code></pre>
 <p>Note that PowerShell uses different syntax to set environment variables.</p>
-<pre class ="notranslate"><div class="code lang-cmd"><div class="line-numbers">1</div>$env:DEBUG = "*,-not_this"
-</div></pre>
+<pre><code class="lang-cmd"><div class="line-numbers">1</div>$env:DEBUG = "*,-not_this"
+</code></pre>
 <p>Then, run the program to be debugged as usual.</p>
 <h2 id="Namespace-Colors">Namespace Colors</h2>
 <p>Every debug instance has a color generated for it based on its namespace name.
@@ -392,7 +392,7 @@ Below are the officially supported formatters:</p>
 <p>You can add custom formatters by extending the <code>debug.formatters</code> object.
 For example, if you wanted to add support for rendering a Buffer as hex with
 <code>%h</code>, you could do something like:</p>
-<pre class ="notranslate"><div class="code lang-js"><div class="line-numbers">1
+<pre><code class="lang-js"><div class="line-numbers">1
 2
 3
 4
@@ -409,7 +409,7 @@ createDebug.formatters.h = <span class="hljs-function">(<span class="hljs-params
 <span class="hljs-keyword">const</span> debug = createDebug(<span class="hljs-string">'foo'</span>)
 debug(<span class="hljs-string">'this is hex: %h'</span>, <span class="hljs-keyword">new</span> Buffer(<span class="hljs-string">'hello world'</span>))
 <span class="hljs-comment">//   foo this is hex: 68656c6c6f20776f726c6421 +0ms</span>
-</div></pre>
+</code></pre>
 <h2 id="Browser-Support">Browser Support</h2>
 <p>You can build a browser-ready script using <a href="https://github.com/substack/node-browserify">browserify</a>,
 or just use the <a href="https://wzrd.in/">browserify-as-a-service</a> <a href="https://wzrd.in/standalone/debug@latest">build</a>,
@@ -417,10 +417,10 @@ if you don&#39;t want to build it yourself.</p>
 <p>Debug&#39;s enable state is currently persisted by <code>localStorage</code>.
 Consider the situation shown below where you have <code>worker:a</code> and <code>worker:b</code>,
 and wish to debug both. You can enable this using <code>localStorage.debug</code>:</p>
-<pre class ="notranslate"><div class="code lang-js"><div class="line-numbers">1</div>localStorage.debug = <span class="hljs-string">'worker:*'</span>
-</div></pre>
+<pre><code class="lang-js"><div class="line-numbers">1</div>localStorage.debug = <span class="hljs-string">'worker:*'</span>
+</code></pre>
 <p>And then refresh the page.</p>
-<pre class ="notranslate"><div class="code lang-js"><div class="line-numbers">1
+<pre><code class="lang-js"><div class="line-numbers">1
 2
 3
 4
@@ -439,11 +439,11 @@ setInterval(<span class="hljs-function"><span class="hljs-keyword">function</spa
 setInterval(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
   b(<span class="hljs-string">'doing some work'</span>);
 }, <span class="hljs-number">1200</span>);
-</div></pre>
+</code></pre>
 <h2 id="Output-streams">Output streams</h2>
 <p>  By default <code>debug</code> will log to stderr, however this can be configured per-namespace by overriding the <code>log</code> method:</p>
 <p>Example <a href="./examples/node/stdout.js"><em>stdout.js</em></a>:</p>
-<pre class ="notranslate"><div class="code lang-js"><div class="line-numbers">1
+<pre><code class="lang-js"><div class="line-numbers">1
 2
 3
 4
@@ -476,10 +476,10 @@ error(<span class="hljs-string">'still goes to stderr!'</span>);
 debug.log = <span class="hljs-built_in">console</span>.info.bind(<span class="hljs-built_in">console</span>);
 error(<span class="hljs-string">'now goes to stdout via console.info'</span>);
 log(<span class="hljs-string">'still goes to stdout, but via console.info now'</span>);
-</div></pre>
+</code></pre>
 <h2 id="Set-dynamically">Set dynamically</h2>
 <p>You can also enable debug dynamically by calling the <code>enable()</code> method :</p>
-<pre class ="notranslate"><div class="code lang-js"><div class="line-numbers">1
+<pre><code class="lang-js"><div class="line-numbers">1
 2
 3
 4
@@ -498,22 +498,22 @@ debug.enable(<span class="hljs-string">'test'</span>);
 debug.disable();
 <span class="hljs-built_in">console</span>.log(<span class="hljs-number">3</span>, debug.enabled(<span class="hljs-string">'test'</span>));
 
-</div></pre>
+</code></pre>
 <p>print :   </p>
-<pre class ="notranslate"><div class="code"><div class="line-numbers">1
+<pre><code><div class="line-numbers">1
 2
 3</div><span class="hljs-symbol">1 </span>false
 <span class="hljs-symbol">2 </span>true
 <span class="hljs-symbol">3 </span>false
-</div></pre><p>Usage :<br><code>enable(namespaces)</code><br><code>namespaces</code> can include modes separated by a colon and wildcards.</p>
+</code></pre><p>Usage :<br><code>enable(namespaces)</code><br><code>namespaces</code> can include modes separated by a colon and wildcards.</p>
 <p>Note that calling <code>enable()</code> completely overrides previously set DEBUG variable : </p>
-<pre class ="notranslate"><div class="code"><div class="line-numbers">1
+<pre><code><div class="line-numbers">1
 2</div>$ DEBUG=foo node -e '<span class="hljs-built_in">var</span> dbg = require(<span class="hljs-string">"debug"</span>); dbg.enable(<span class="hljs-string">"bar"</span>); console.log(dbg.enabled(<span class="hljs-string">"foo"</span>))'
 =&gt; <span class="hljs-built_in">false</span>
-</div></pre><h2 id="Checking-whether-a-debug-target-is-enabled">Checking whether a debug target is enabled</h2>
+</code></pre><h2 id="Checking-whether-a-debug-target-is-enabled">Checking whether a debug target is enabled</h2>
 <p>After you&#39;ve created a debug instance, you can determine whether or not it is
 enabled by checking the <code>enabled</code> property:</p>
-<pre class ="notranslate"><div class="code lang-javascript"><div class="line-numbers">1
+<pre><code class="lang-javascript"><div class="line-numbers">1
 2
 3
 4
@@ -522,7 +522,7 @@ enabled by checking the <code>enabled</code> property:</p>
 <span class="hljs-keyword">if</span> (debug.enabled) {
   <span class="hljs-comment">// do stuff...</span>
 }
-</div></pre>
+</code></pre>
 <p>You can also manually toggle this property to force the debug instance to be
 enabled or disabled.</p>
 <h2 id="Authors">Authors</h2>

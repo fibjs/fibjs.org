@@ -194,7 +194,7 @@
 <p>在开始编写自己的 fibjs 模块的之前你需要先编写 idl 描述性语言。我们以自定义模块 name 为例。我需要编写描述性语言 name.idl ，把这个文件放入 ${{fibjs_project_dir}}/idl/zh-cn/ 目录下，其中 ${{fibjs_project_dir}} 代表 fibjs 的项目所在目录。</p>
 <p>我们的 name 模块很简单，只有一个 test 方法，其参数是一个字符串，这个字符串是歌词， test 方法判断这歌词对不对，返回值是 boolean 类型。
 name.idl 编写如下</p>
-<pre class ="notranslate"><div class="code lang-idl"><div class="line-numbers">1
+<pre><code class="lang-idl"><div class="line-numbers">1
 2
 3
 4
@@ -221,10 +221,10 @@ module name
     */</span>
     <span class="hljs-keyword">static</span> <span class="hljs-keyword">Boolean</span> test(String lyrics);
 };
-</div></pre>
+</code></pre>
 <h2 id="生成头文件">生成头文件</h2>
 <p>在 tools 目录下执行 <code>fibjs idlc.js</code> 命令，这会读取 idl 目录下所有的 idl 文件并解析，生成对应的头文件和文档，其中生成的头文件都会存放在&quot;fibjs/include/ifs/&quot;目录下。例如 name.idl 会自动生成 ${{fibjs_project_dir}}/fibjs/include/ifs/name.h 这个头文件，其中定义了 name_base 这个类。</p>
-<pre class ="notranslate"><div class="code lang-c++"><div class="line-numbers">1
+<pre><code class="lang-c++"><div class="line-numbers">1
 2
 3
 4
@@ -377,11 +377,11 @@ module name
 
 <span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span>
 
-</div></pre>
+</code></pre>
 <h2 id="编写源代码">编写源代码</h2>
 <p>方法 s_test 是 v8 的访问器，它包裹了方法 test 。这里我们只要实现 test 方法，test 方法有两个参数，v0 是输入的歌词，vr 是返回值。我们将 cpp 文件放在 ${{fibjs_project_dir}}/fibjs/src/ 目录下, 头文件放在 ${{fibjs_project_dir}}/fibjs/include 目录下。本例不需要额外的头文件。
 我们在 fibjs/src/ 目录下新建一个文件 name.cpp 内容如下:</p>
-<pre class ="notranslate"><div class="code lang-c++"><div class="line-numbers">1
+<pre><code class="lang-c++"><div class="line-numbers">1
 2
 3
 4
@@ -410,7 +410,7 @@ module name
         <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
     }
 }
-</div></pre>
+</code></pre>
 <p>需要注意的是 <code>DECLARE_MODULE(name);</code> 这句话，这句话声明了 &quot;name&quot; 这个 module 并把它注册到 javascript 对象上。在编写源代码的时候需要加上这句话。
 在 <code>v0.25.0</code> 及以后的版本中，我们将 fibjs 的模块剥离了出来以便更好的复用，所以你仍需要在 <code>fibjs/program/src/fibjs.cpp</code> 文件中的 <code>importModule</code> 函数中添加如下一句话: <code>IMPORT_MODULE(name);</code> 来安装自定义的模块。</p>
 <h2 id="编译并测试">编译并测试</h2>

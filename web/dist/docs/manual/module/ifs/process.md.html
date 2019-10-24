@@ -190,25 +190,25 @@
  </div></div></div>  </div></div><div class=content><div class=social-share data-sites=weibo,twitter data-description=分享></div> <h1 id="模块-process">模块 process</h1>
 <p>进程处理模块，用以管理当前进程的资源</p>
 <p>引用方法：</p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">var</span> process = <span class="hljs-built_in">require</span>(<span class="hljs-string">'process'</span>);
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">var</span> process = <span class="hljs-built_in">require</span>(<span class="hljs-string">'process'</span>);
+</code></pre>
 <h2 id="进程事件">进程事件</h2>
 <p>process 模块对象是 <a href=../../object/ifs/eventemitter.md.html class ="notranslate">EventEmitter</a> 的实例，可以通过注册事件监听器响应进程级别的事件。</p>
 <h3 id="beforeExit-事件">beforeExit 事件</h3>
 <p><strong>当 fibjs 的任务已经为空，并且没有额外的工作被添加进来，事件 <code>beforeExit</code> 会被触发</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div>process.on(<span class="hljs-string">'beforeExit'</span>, exitCode =&gt; {});
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>process.on(<span class="hljs-string">'beforeExit'</span>, exitCode =&gt; {});
+</code></pre>
 <p>正常情况下，如果没有额外的工作被添加到任务队列，fibjs 进程会结束。但是如果 <code>beforeExit</code> 事件绑定的监听器的回调函数中，启动了一个新的任务，比如开启一个 fiber，那么 fibjs 进程会继续运行。</p>
 <p><a href=process.md.html#exitCode class ="notranslate">process.exitCode</a> 作为唯一的参数值传递给 <code>beforeExit</code> 事件监听器的回调函数。如果进程由于显式的原因而将要终止，例如直接调用 <a href=process.md.html#exit class ="notranslate">process.exit</a> 或抛出未捕获的异常，<code>beforeExit</code>事件不会被触发。</p>
 <h3 id="exit-事件">exit 事件</h3>
 <p><strong>当 fibjs 退出时，事件 <code>exit</code> 会被触发，一旦所有与 <code>exit</code> 事件绑定的监听器执行完成，进程会终止</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div>process.on(<span class="hljs-string">'exit'</span>, exitCode =&gt; {});
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>process.on(<span class="hljs-string">'exit'</span>, exitCode =&gt; {});
+</code></pre>
 <p><code>exit</code> 事件监听器的回调函数，只有一个入参，这个参数的值可以是 <a href=process.md.html#exitCode class ="notranslate">process.exitCode</a> 的属性值，或者是调用 <a href=process.md.html#exit class ="notranslate">process.exit</a> 方法时传入的 <code>exitCode</code> 值。</p>
 <h3 id="Signal-事件">Signal 事件</h3>
 <p><strong>当 fibjs 进程接收到一个信号时，会触发信号事件，目前支持的信号有 SIGINT 和 SIGTERM。每个事件名称，以信号名称的大写表示 (比如事件&#39;SIGINT&#39; 对应信号 SIGINT)。</strong></p>
 <p>信号事件不同于其它进程事件，信号事件是抢占的，当信号发生时，无论当前在 <a href=io.md.html class ="notranslate">io</a> 操作，还是 JavaScript 运算，都会尽快触发相应事件。比如你可以用下面的代码，中断当前应用，并输出运行状态：</p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
 4
@@ -219,7 +219,7 @@ process.on(<span class="hljs-string">'SIGINT'</span>, () =&gt; {
     coroutine.fibers.forEach(<span class="hljs-function"><span class="hljs-params">f</span> =&gt;</span> <span class="hljs-built_in">console</span>.error(<span class="hljs-string">"Fiber %d:\n%s"</span>, f.id, f.stack));
     process.exit();
 });
-</div></pre>
+</code></pre>
 <p>信号名称及其意义如下：</p>
 <ul>
 <li>SIGINT：在终端运行时，可以被所有平台支持，通常可以通过 CTRL+C 触发。</li>
@@ -228,8 +228,8 @@ process.on(<span class="hljs-string">'SIGINT'</span>, () =&gt; {
 <h2 id="静态函数">静态函数</h2>
 <h3 id="umask" class ="notranslate">umask</h3>
 <p><strong>改变当前的 umask，Windows 不支持此方法</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Integer process.umask(Integer mask);
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Integer process.umask(Integer mask);
+</code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">mask</span>: Integer, 指定新的掩码</li>
@@ -240,8 +240,8 @@ process.on(<span class="hljs-string">'SIGINT'</span>, () =&gt; {
 </ul>
 <hr>
 <p><strong>改变当前的 umask，Windows 不支持此方法</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Integer process.umask(<span class="hljs-built_in">String</span> mask);
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Integer process.umask(<span class="hljs-built_in">String</span> mask);
+</code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">mask</span>: String, 指定新的掩码， 字符串类型八进制(e.g: &quot;0664&quot;)</li>
@@ -252,8 +252,8 @@ process.on(<span class="hljs-string">'SIGINT'</span>, () =&gt; {
 </ul>
 <hr>
 <p><strong>返回当前的 umask，Windows 不支持此方法</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Integer process.umask();
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Integer process.umask();
+</code></pre>
 <p>返回结果:</p>
 <ul>
 <li><span class="notranslate">Integer</span>, 返回当前的 mask 值</li>
@@ -261,8 +261,8 @@ process.on(<span class="hljs-string">'SIGINT'</span>, () =&gt; {
 <hr>
 <h3 id="hrtime" class ="notranslate">hrtime</h3>
 <p><strong>返回系统高精度时间，此时间与当前时间无关，仅用于高精度计时</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Array</span> process.hrtime(<span class="hljs-built_in">Array</span> diff = []);
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Array</span> process.hrtime(<span class="hljs-built_in">Array</span> diff = []);
+</code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">diff</span>: Array, 用于比较的初始时间</li>
@@ -274,12 +274,12 @@ process.on(<span class="hljs-string">'SIGINT'</span>, () =&gt; {
 <hr>
 <h3 id="exit" class ="notranslate">exit</h3>
 <p><strong>退出当前进程，并返回 exitCode 作为进程结果</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> process.exit();
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> process.exit();
+</code></pre>
 <hr>
 <p><strong>退出当前进程，并返回结果</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> process.exit(Integer code);
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> process.exit(Integer code);
+</code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">code</span>: Integer, 返回进程结果</li>
@@ -287,8 +287,8 @@ process.on(<span class="hljs-string">'SIGINT'</span>, () =&gt; {
 <hr>
 <h3 id="cwd" class ="notranslate">cwd</h3>
 <p><strong>返回操作系统当前工作路径</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">String</span> process.cwd();
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">String</span> process.cwd();
+</code></pre>
 <p>返回结果:</p>
 <ul>
 <li><span class="notranslate">String</span>, 返回当前系统路径</li>
@@ -296,8 +296,8 @@ process.on(<span class="hljs-string">'SIGINT'</span>, () =&gt; {
 <hr>
 <h3 id="chdir" class ="notranslate">chdir</h3>
 <p><strong>修改操作系统当前工作路径</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> process.chdir(<span class="hljs-built_in">String</span> directory);
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> process.chdir(<span class="hljs-built_in">String</span> directory);
+</code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">directory</span>: String, 指定设定的新路径</li>
@@ -305,8 +305,8 @@ process.on(<span class="hljs-string">'SIGINT'</span>, () =&gt; {
 <hr>
 <h3 id="uptime" class ="notranslate">uptime</h3>
 <p><strong>查询运行环境运行时间，以秒为单位</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Number</span> process.uptime();
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Number</span> process.uptime();
+</code></pre>
 <p>返回结果:</p>
 <ul>
 <li><span class="notranslate">Number</span>, 返回表示时间的数值</li>
@@ -314,14 +314,14 @@ process.on(<span class="hljs-string">'SIGINT'</span>, () =&gt; {
 <hr>
 <h3 id="memoryUsage" class ="notranslate">memoryUsage</h3>
 <p><strong>查询当前进程内存使用报告</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Object</span> process.memoryUsage();
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Object</span> process.memoryUsage();
+</code></pre>
 <p>返回结果:</p>
 <ul>
 <li><span class="notranslate">Object</span>, 返回包含内存报告</li>
 </ul>
 <p>内存报告生成类似以下结果：</p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
 4
@@ -330,7 +330,7 @@ process.on(<span class="hljs-string">'SIGINT'</span>, () =&gt; {
     <span class="hljs-string">"heapTotal"</span>: <span class="hljs-number">4083456</span>,
     <span class="hljs-string">"heapUsed"</span>: <span class="hljs-number">1621800</span>
 }
-</div></pre>
+</code></pre>
 <p>其中：</p>
 <ul>
 <li>rss 返回进程当前占用物理内存大小</li>
@@ -340,10 +340,10 @@ process.on(<span class="hljs-string">'SIGINT'</span>, () =&gt; {
 <hr>
 <h3 id="nextTick" class ="notranslate">nextTick</h3>
 <p><strong>启动一个纤程</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">static</span> process.nextTick(<span class="hljs-built_in">Function</span> func,
     ...args);
-</div></pre>
+</code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">func</span>: Function, 制定纤程执行的函数</li>
@@ -352,12 +352,12 @@ process.on(<span class="hljs-string">'SIGINT'</span>, () =&gt; {
 <hr>
 <h3 id="open" class ="notranslate">open</h3>
 <p><strong>运行指定的命令行，接管进程输入输出流，并返回进程对象</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3</div><span class="hljs-keyword">static</span> SubProcess process.open(<span class="hljs-built_in">String</span> command,
     <span class="hljs-built_in">Array</span> args,
     <span class="hljs-built_in">Object</span> opts = {});
-</div></pre>
+</code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">command</span>: String, 指定运行的命令行</li>
@@ -369,20 +369,20 @@ process.on(<span class="hljs-string">'SIGINT'</span>, () =&gt; {
 <li><a href=../../object/ifs/subprocess.md.html class ="notranslate">SubProcess</a>, 返回包含运行结果的进程对象</li>
 </ul>
 <p>opts 支持的选项如下：</p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
 4</div>{
     <span class="hljs-string">"timeout"</span>: <span class="hljs-number">100</span>, <span class="hljs-comment">// 单位为 ms</span>
     <span class="hljs-string">"env"</span>: {} <span class="hljs-comment">// 进程环境变量</span>
 }
-</div></pre>
+</code></pre>
 <hr>
 <p><strong>运行指定的命令行，接管进程输入输出流，并返回进程对象</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">static</span> SubProcess process.open(<span class="hljs-built_in">String</span> command,
     <span class="hljs-built_in">Object</span> opts = {});
-</div></pre>
+</code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">command</span>: String, 指定运行的命令行</li>
@@ -393,23 +393,23 @@ process.on(<span class="hljs-string">'SIGINT'</span>, () =&gt; {
 <li><a href=../../object/ifs/subprocess.md.html class ="notranslate">SubProcess</a>, 返回包含运行结果的进程对象</li>
 </ul>
 <p>opts 支持的选项如下：</p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
 4</div>{
     <span class="hljs-string">"timeout"</span>: <span class="hljs-number">100</span>, <span class="hljs-comment">// 单位为 ms</span>
     <span class="hljs-string">"env"</span>: {} <span class="hljs-comment">// 进程环境变量</span>
 }
-</div></pre>
+</code></pre>
 <hr>
 <h3 id="start" class ="notranslate">start</h3>
 <p><strong>运行指定的命令行，并返回进程对象</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3</div><span class="hljs-keyword">static</span> SubProcess process.start(<span class="hljs-built_in">String</span> command,
     <span class="hljs-built_in">Array</span> args,
     <span class="hljs-built_in">Object</span> opts = {});
-</div></pre>
+</code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">command</span>: String, 指定运行的命令行</li>
@@ -421,20 +421,20 @@ process.on(<span class="hljs-string">'SIGINT'</span>, () =&gt; {
 <li><a href=../../object/ifs/subprocess.md.html class ="notranslate">SubProcess</a>, 返回包含运行结果的进程对象</li>
 </ul>
 <p>opts 支持的选项如下：</p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
 4</div>{
     <span class="hljs-string">"timeout"</span>: <span class="hljs-number">100</span>, <span class="hljs-comment">// 单位为 ms</span>
     <span class="hljs-string">"env"</span>: {} <span class="hljs-comment">// 进程环境变量</span>
 }
-</div></pre>
+</code></pre>
 <hr>
 <p><strong>运行指定的命令行，并返回进程对象</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">static</span> SubProcess process.start(<span class="hljs-built_in">String</span> command,
     <span class="hljs-built_in">Object</span> opts = {});
-</div></pre>
+</code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">command</span>: String, 指定运行的命令行</li>
@@ -445,23 +445,23 @@ process.on(<span class="hljs-string">'SIGINT'</span>, () =&gt; {
 <li><a href=../../object/ifs/subprocess.md.html class ="notranslate">SubProcess</a>, 返回包含运行结果的进程对象</li>
 </ul>
 <p>opts 支持的选项如下：</p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
 4</div>{
     <span class="hljs-string">"timeout"</span>: <span class="hljs-number">100</span>, <span class="hljs-comment">// 单位为 ms</span>
     <span class="hljs-string">"env"</span>: {} <span class="hljs-comment">// 进程环境变量</span>
 }
-</div></pre>
+</code></pre>
 <hr>
 <h3 id="run" class ="notranslate">run</h3>
 <p><strong>运行指定的命令行，并返回进程的结束代码</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3</div><span class="hljs-keyword">static</span> Integer process.run(<span class="hljs-built_in">String</span> command,
     <span class="hljs-built_in">Array</span> args,
     <span class="hljs-built_in">Object</span> opts = {}) <span class="hljs-keyword">async</span>;
-</div></pre>
+</code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">command</span>: String, 指定运行的命令行</li>
@@ -473,20 +473,20 @@ process.on(<span class="hljs-string">'SIGINT'</span>, () =&gt; {
 <li><span class="notranslate">Integer</span>, 返回命令的运行结果</li>
 </ul>
 <p>opts 支持的选项如下：</p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
 4</div>{
     <span class="hljs-string">"timeout"</span>: <span class="hljs-number">100</span>, <span class="hljs-comment">// 单位为 ms</span>
     <span class="hljs-string">"env"</span>: {} <span class="hljs-comment">// 进程环境变量</span>
 }
-</div></pre>
+</code></pre>
 <hr>
 <p><strong>运行指定的命令行，并返回进程的结束代码</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">static</span> Integer process.run(<span class="hljs-built_in">String</span> command,
     <span class="hljs-built_in">Object</span> opts = {}) <span class="hljs-keyword">async</span>;
-</div></pre>
+</code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">command</span>: String, 指定运行的命令行</li>
@@ -497,82 +497,82 @@ process.on(<span class="hljs-string">'SIGINT'</span>, () =&gt; {
 <li><span class="notranslate">Integer</span>, 返回命令的运行结果</li>
 </ul>
 <p>opts 支持的选项如下：</p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
 4</div>{
     <span class="hljs-string">"timeout"</span>: <span class="hljs-number">100</span>, <span class="hljs-comment">// 单位为 ms</span>
     <span class="hljs-string">"env"</span>: {} <span class="hljs-comment">// 进程环境变量</span>
 }
-</div></pre>
+</code></pre>
 <h2 id="静态属性">静态属性</h2>
 <h3 id="argv" class ="notranslate">argv</h3>
 <p><strong>Array, 返回当前进程的命令行参数</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly <span class="hljs-built_in">Array</span> process.argv;
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly <span class="hljs-built_in">Array</span> process.argv;
+</code></pre>
 <hr>
 <h3 id="execArgv" class ="notranslate">execArgv</h3>
 <p><strong>Array, 返回当前进程的特殊命令行参数，这些参数被 fibjs 用于设置运行环境</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly <span class="hljs-built_in">Array</span> process.execArgv;
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly <span class="hljs-built_in">Array</span> process.execArgv;
+</code></pre>
 <hr>
 <h3 id="version" class ="notranslate">version</h3>
 <p><strong>String, 返回 fibjs 版本字符串</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly <span class="hljs-built_in">String</span> process.version;
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly <span class="hljs-built_in">String</span> process.version;
+</code></pre>
 <hr>
 <h3 id="versions" class ="notranslate">versions</h3>
 <p><strong>Object, 返回 fibjs 及组件的版本信息</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly <span class="hljs-built_in">Object</span> process.versions;
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly <span class="hljs-built_in">Object</span> process.versions;
+</code></pre>
 <hr>
 <h3 id="execPath" class ="notranslate">execPath</h3>
 <p><strong>String, 查询当前运行执行文件完整路径</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly <span class="hljs-built_in">String</span> process.execPath;
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly <span class="hljs-built_in">String</span> process.execPath;
+</code></pre>
 <hr>
 <h3 id="env" class ="notranslate">env</h3>
 <p><strong>Object, 查询当前进程的环境变量</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly <span class="hljs-built_in">Object</span> process.env;
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly <span class="hljs-built_in">Object</span> process.env;
+</code></pre>
 <hr>
 <h3 id="arch" class ="notranslate">arch</h3>
 <p><strong>String, 查询当前 cpu 环境，可能的结果为 &#39;amd64&#39;, &#39;arm&#39;, &#39;arm64&#39;, &#39;ia32&#39;</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly <span class="hljs-built_in">String</span> process.arch;
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly <span class="hljs-built_in">String</span> process.arch;
+</code></pre>
 <hr>
 <h3 id="platform" class ="notranslate">platform</h3>
 <p><strong>String, 查询当前平台名称，可能的结果为 &#39;darwin&#39;, &#39;freebsd&#39;, &#39;linux&#39;, 或 &#39;win32&#39;</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly <span class="hljs-built_in">String</span> process.platform;
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly <span class="hljs-built_in">String</span> process.platform;
+</code></pre>
 <hr>
 <h3 id="pid" class ="notranslate">pid</h3>
 <p><strong>Integer, 读取当前对象指向的进程的 id</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly Integer process.pid;
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly Integer process.pid;
+</code></pre>
 <hr>
 <h3 id="ppid" class ="notranslate">ppid</h3>
 <p><strong>Integer, 读取当前对象指向的父进程的 id</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly Integer process.ppid;
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly Integer process.ppid;
+</code></pre>
 <hr>
 <h3 id="stdin" class ="notranslate">stdin</h3>
 <p><strong><a href=../../object/ifs/file.md.html class ="notranslate">File</a>, 查询当前进程标准输入对象</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly File process.stdin;
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly File process.stdin;
+</code></pre>
 <hr>
 <h3 id="stdout" class ="notranslate">stdout</h3>
 <p><strong><a href=../../object/ifs/file.md.html class ="notranslate">File</a>, 查询当前进程标准输出对象</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly File process.stdout;
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly File process.stdout;
+</code></pre>
 <hr>
 <h3 id="stderr" class ="notranslate">stderr</h3>
 <p><strong><a href=../../object/ifs/file.md.html class ="notranslate">File</a>, 查询当前进程标准错误输出对象</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly File process.stderr;
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly File process.stderr;
+</code></pre>
 <hr>
 <h3 id="exitCode" class ="notranslate">exitCode</h3>
 <p><strong>Integer, 查询和设置当前进程的退出码</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Integer process.exitCode;
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Integer process.exitCode;
+</code></pre>
  </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id=toc></div></div></div></div><div class=footer><div class=container>&copy; Copyright 2014-2019 fibjs.org | <a href=../../../../support.html>支持我们</a></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="Click to return on the top page" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js></script><script type=text/javascript src=../../../../js/common.js></script><script type=text/javascript src=../../../../js/docs.js></script></body></html>

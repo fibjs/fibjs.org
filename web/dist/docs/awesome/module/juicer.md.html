@@ -195,22 +195,22 @@
 <h3 id="名字的由来">名字的由来</h3>
 <p>倘若我们把数据比作新鲜可口的水果，把模板看做是水，Juicer 就是把水果和水榨出我们需要的HTML代码片段的榨汁机。</p>
 <h3 id="Juicer-的引入">Juicer 的引入</h3>
-<pre class ="notranslate"><div class="code"><div class="line-numbers">1</div>&lt;script <span class="hljs-class"><span class="hljs-keyword">type</span></span>=<span class="hljs-string">"text/javascript"</span> src=<span class="hljs-string">"juicer-min.js&gt;&lt;/script&gt;</span>
-</div></pre><h2 id="*-使用方法">* 使用方法</h2>
+<pre><code><div class="line-numbers">1</div>&lt;script <span class="hljs-class"><span class="hljs-keyword">type</span></span>=<span class="hljs-string">"text/javascript"</span> src=<span class="hljs-string">"juicer-min.js&gt;&lt;/script&gt;</span>
+</code></pre><h2 id="*-使用方法">* 使用方法</h2>
 <p>&gt; 编译模板并根据所给的数据立即渲染出结果.</p>
-<pre class ="notranslate"><div class="code"><div class="line-numbers">1</div><span class="hljs-title">juicer</span>(tpl, <span class="hljs-class"><span class="hljs-keyword">data</span>);</span>
-</div></pre><p>&gt; 仅编译模版暂不渲染，它会返回一个可重用的编译后的函数.</p>
-<pre class ="notranslate"><div class="code"><div class="line-numbers">1</div>var compiled_tpl = juicer(<span class="hljs-name">tpl</span>)<span class="hljs-comment">;</span>
-</div></pre><p>&gt; 根据给定的数据，对之前编译好的模板进行数据渲染.</p>
-<pre class ="notranslate"><div class="code"><div class="line-numbers">1
+<pre><code><div class="line-numbers">1</div><span class="hljs-title">juicer</span>(tpl, <span class="hljs-class"><span class="hljs-keyword">data</span>);</span>
+</code></pre><p>&gt; 仅编译模版暂不渲染，它会返回一个可重用的编译后的函数.</p>
+<pre><code><div class="line-numbers">1</div>var compiled_tpl = juicer(<span class="hljs-name">tpl</span>)<span class="hljs-comment">;</span>
+</code></pre><p>&gt; 根据给定的数据，对之前编译好的模板进行数据渲染.</p>
+<pre><code><div class="line-numbers">1
 2</div><span class="hljs-keyword">var</span> compiled_tpl = juicer(tpl);
 <span class="hljs-keyword">var</span> html = compiled_tpl.render(<span class="hljs-keyword">data</span>);
-</div></pre><p>&gt; 注册/注销自定义函数（对象），在下边 ${变量} 中会有实例.</p>
-<pre class ="notranslate"><div class="code"><div class="line-numbers">1
+</code></pre><p>&gt; 注册/注销自定义函数（对象），在下边 ${变量} 中会有实例.</p>
+<pre><code><div class="line-numbers">1
 2</div>juicer.<span class="hljs-keyword">register</span>(<span class="hljs-string">'function_name'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>);</span>
 juicer.unregister(<span class="hljs-string">'function_name'</span>);
-</div></pre><p>&gt; 自定义模板语法边界符，下边是 Juicer 默认的边界符。你可以借此解决 Juicer 模板语法同某些后端语言模板语法冲突的情况.</p>
-<pre class ="notranslate"><div class="code"><div class="line-numbers">1
+</code></pre><p>&gt; 自定义模板语法边界符，下边是 Juicer 默认的边界符。你可以借此解决 Juicer 模板语法同某些后端语言模板语法冲突的情况.</p>
+<pre><code><div class="line-numbers">1
 2
 3
 4
@@ -229,8 +229,8 @@ juicer.unregister(<span class="hljs-string">'function_name'</span>);
     <span class="hljs-string">'tag::commentOpen'</span>: <span class="hljs-string">'{#'</span>,
     <span class="hljs-string">'tag::commentClose'</span>: <span class="hljs-string">'}'</span>
 });
-</div></pre><h3 id="默认参数配置">默认参数配置</h3>
-<pre class ="notranslate"><div class="code"><div class="line-numbers">1
+</code></pre><h3 id="默认参数配置">默认参数配置</h3>
+<pre><code><div class="line-numbers">1
 2
 3
 4
@@ -241,31 +241,31 @@ juicer.unregister(<span class="hljs-string">'function_name'</span>);
     errorhandling:  <span class="hljs-literal">true</span> [<span class="hljs-literal">false</span>],
     detection:      <span class="hljs-literal">true</span> [<span class="hljs-literal">false</span>]
 }
-</div></pre><p>默认配置是 Juicer 推荐的使用方式，如果你使用过程中的确需要更改这些参数，可以这么做：</p>
+</code></pre><p>默认配置是 Juicer 推荐的使用方式，如果你使用过程中的确需要更改这些参数，可以这么做：</p>
 <h4 id="逐条参数更改：">逐条参数更改：</h4>
-<pre class ="notranslate"><div class="code"><div class="line-numbers">1
+<pre><code><div class="line-numbers">1
 2</div>juicer.<span class="hljs-keyword">set</span>(<span class="hljs-string">'strip'</span>,<span class="hljs-literal">false</span>);
 juicer.<span class="hljs-keyword">set</span>(<span class="hljs-string">'cache'</span>,<span class="hljs-literal">false</span>);
-</div></pre><h4 id="批量参数更改：">批量参数更改：</h4>
-<pre class ="notranslate"><div class="code"><div class="line-numbers">1
+</code></pre><h4 id="批量参数更改：">批量参数更改：</h4>
+<pre><code><div class="line-numbers">1
 2
 3
 4</div><span class="hljs-string">juicer.set({</span>
 <span class="hljs-attr">    'strip':</span> <span class="hljs-literal">false</span><span class="hljs-string">,</span>
 <span class="hljs-attr">    'cache':</span> <span class="hljs-literal">false</span>
 <span class="hljs-string">};</span>
-</div></pre><p>Juicer 默认会对编译后的模板进行缓存，从而避免同一模板多次数据渲染时候重复编译所耗的时间，如无特殊需要，强烈不建议关闭默认参数中的 cache，这么做将会令 Juicer 缓存失效从而降低性能.</p>
+</code></pre><p>Juicer 默认会对编译后的模板进行缓存，从而避免同一模板多次数据渲染时候重复编译所耗的时间，如无特殊需要，强烈不建议关闭默认参数中的 cache，这么做将会令 Juicer 缓存失效从而降低性能.</p>
 <p><a href="!syntax"></a></p>
 <h2 id="*-语法">* 语法</h2>
 <h4 id="a.-${变量}">a. ${变量}</h4>
 <p>使用 <code>${}</code> 输出变量值，其中<code>_</code>为对数据源的引用（如<code>${_}</code>，常用于数据源为数组的情况）。支持自定义函数（通过自定义函数你可以实现很多有趣的功能，类似 <code>${data|links}</code> 就可以通过事先定义的自定义函数 links 直接对 data 拼装出<code>&lt;a href=&quot;..&quot; alt=&quot;..&quot; /&gt;</code> ）.</p>
-<pre class ="notranslate"><div class="code"><div class="line-numbers">1
+<pre><code><div class="line-numbers">1
 2
 3</div>${<span class="hljs-keyword">name</span>}
 ${<span class="hljs-keyword">name</span>|<span class="hljs-function"><span class="hljs-keyword">function</span></span>}
 ${<span class="hljs-keyword">name</span>|<span class="hljs-function"><span class="hljs-keyword">function</span></span>, arg1, arg2}
-</div></pre><p>让我们通过一个例子演示一下自定义函数的奇妙用法吧.</p>
-<pre class ="notranslate"><div class="code"><div class="line-numbers">1
+</code></pre><p>让我们通过一个例子演示一下自定义函数的奇妙用法吧.</p>
+<pre><code><div class="line-numbers">1
 2
 3
 4
@@ -298,19 +298,19 @@ ${<span class="hljs-keyword">name</span>|<span class="hljs-function"><span class
 <span class="hljs-keyword">var</span> links = function(<span class="hljs-keyword">data</span>) {
     <span class="hljs-keyword">return</span> <span class="hljs-string">'&lt;a href="'</span> + <span class="hljs-keyword">data</span>.href + <span class="hljs-string">'" alt="'</span> + <span class="hljs-keyword">data</span>.alt + <span class="hljs-string">'" /&gt;'</span>;
 };
-</div></pre><p>juicer.register(&#39;links_build&#39;, links); //注册自定义函数
+</code></pre><p>juicer.register(&#39;links_build&#39;, links); //注册自定义函数
 juicer(tpl, json);
-</div></pre></p>
+</code></pre></p>
 <p>上述代码执行后我们会发现结果是这样的：</p>
-<pre class ="notranslate"><div class="code"><div class="line-numbers">1
+<pre><code><div class="line-numbers">1
 2
 3</div><span class="hljs-variable">&amp;lt</span>;a href=<span class="hljs-variable">&amp;quot</span>;http://juicer.name<span class="hljs-variable">&amp;quot</span>; alt=<span class="hljs-variable">&amp;quot</span>;Juicer<span class="hljs-variable">&amp;quot</span>; &lt;br /&gt;
 <span class="hljs-variable">&amp;lt</span>;a href=<span class="hljs-variable">&amp;quot</span>;http://benben.cc<span class="hljs-variable">&amp;quot</span>; alt=<span class="hljs-variable">&amp;quot</span>;Benben<span class="hljs-variable">&amp;quot</span>; &lt;br /&gt;
 <span class="hljs-variable">&amp;lt</span>;a href=<span class="hljs-variable">&amp;quot</span>;http://ued.taobao.com<span class="hljs-variable">&amp;quot</span>; alt=<span class="hljs-variable">&amp;quot</span>;Taobao UED<span class="hljs-variable">&amp;quot</span>; &lt;br /&gt;
-</div></pre><p>可以看得出，结果被转义了，如果我们上边使用 $${item|links} 就会得到我们预期的结果，这就是下边即将提到的避免转义。</p>
+</code></pre><p>可以看得出，结果被转义了，如果我们上边使用 $${item|links} 就会得到我们预期的结果，这就是下边即将提到的避免转义。</p>
 <p><strong>转义/避免转义</strong></p>
 <p>出于安全角度的考虑，<code>${变量}</code> 在输出之前会对其内容进行转义，如果你不想输出结果被转义，可以使用 <code>$${变量}</code> 来避免这种情况。例如：</p>
-<pre class ="notranslate"><div class="code"><div class="line-numbers">1
+<pre><code><div class="line-numbers">1
 2
 3
 4
@@ -327,24 +327,24 @@ juicer(tpl, json);
 
 juicer(escape_tpl, json); <span class="hljs-comment">//输出 '&amp;lt;strong&amp;gt;juicer&amp;lt;/strong&amp;gt;'</span>
 juicer(unescape_tpl, json); <span class="hljs-comment">//输出 '&lt;strong&gt;juicer&lt;/strong&gt;'</span>
-</div></pre><h4 id="b.-循环遍历-{@each}-...-{@/each}">b. 循环遍历 {@each} ... {@/each}</h4>
+</code></pre><h4 id="b.-循环遍历-{@each}-...-{@/each}">b. 循环遍历 {@each} ... {@/each}</h4>
 <p>如果你需要对数组进行循环遍历的操作，就可以像这样使用 <code>each</code> .</p>
-<pre class ="notranslate"><div class="code"><div class="line-numbers">1
+<pre><code><div class="line-numbers">1
 2
 3</div>{@each <span class="hljs-built_in">list</span> <span class="hljs-keyword">as</span> <span class="hljs-built_in">item</span>}
     ${<span class="hljs-built_in">item</span>.<span class="hljs-keyword">prop</span>}
 {@/each}
-</div></pre><p>如果遍历过程中想取得当前的索引值，也很方便.</p>
-<pre class ="notranslate"><div class="code"><div class="line-numbers">1
+</code></pre><p>如果遍历过程中想取得当前的索引值，也很方便.</p>
+<pre><code><div class="line-numbers">1
 2
 3
 4</div>{@each <span class="hljs-keyword">list</span> <span class="hljs-keyword">as</span> item, index}
     <span class="hljs-variable">${item</span>.<span class="hljs-keyword">prop</span>}
     <span class="hljs-variable">${index}</span> <span class="hljs-comment">//当前索引</span>
 {@/each}
-</div></pre><h4 id="c.-判断-{@if}-...-{@else-if}-...-{@else}-...-{@/if}">c. 判断 {@if} ... {@else if} ... {@else} ... {@/if}</h4>
+</code></pre><h4 id="c.-判断-{@if}-...-{@else-if}-...-{@else}-...-{@/if}">c. 判断 {@if} ... {@else if} ... {@else} ... {@/if}</h4>
 <p>我们也会经常碰到对数据进行逻辑判断的时候.</p>
-<pre class ="notranslate"><div class="code"><div class="line-numbers">1
+<pre><code><div class="line-numbers">1
 2
 3
 4
@@ -361,26 +361,26 @@ juicer(unescape_tpl, json); <span class="hljs-comment">//输出 '&lt;strong&gt;j
         the <span class="hljs-keyword">index</span> <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> <span class="hljs-number">3</span>, the <span class="hljs-keyword">value</span> <span class="hljs-keyword">is</span> ${item.prop}
     {@/<span class="hljs-keyword">if</span>}
 {@/<span class="hljs-keyword">each</span>}
-</div></pre><h4 id="d.-注释-{#-注释内容}">d. 注释 {# 注释内容}</h4>
+</code></pre><h4 id="d.-注释-{#-注释内容}">d. 注释 {# 注释内容}</h4>
 <p>为了后续代码的可维护性和可读性，我们可以在模板中增加注释.</p>
-<pre class ="notranslate"><div class="code"><div class="line-numbers">1</div>{<span class="hljs-meta"># 这里是注释内容}</span>
-</div></pre><h4 id="e.-辅助循环-{@each-i-in-range(m,-n)}">e. 辅助循环 {@each i in range(m, n)}</h4>
+<pre><code><div class="line-numbers">1</div>{<span class="hljs-meta"># 这里是注释内容}</span>
+</code></pre><h4 id="e.-辅助循环-{@each-i-in-range(m,-n)}">e. 辅助循环 {@each i in range(m, n)}</h4>
 <p>辅助循环是 Juicer 为你精心设置的一个语法糖，也许你会在某种情境下需要它.</p>
-<pre class ="notranslate"><div class="code"><div class="line-numbers">1
+<pre><code><div class="line-numbers">1
 2
 3</div>{@each i <span class="hljs-keyword">in</span> range(<span class="hljs-number">5</span>, <span class="hljs-number">10</span>)}
     ${i}; <span class="hljs-comment">//输出 5;6;7;8;9;</span>
 {@/each}
-</div></pre><h4 id="f.-子模板嵌套-{@include-tpl,-data}">f. 子模板嵌套 {@include tpl, data}</h4>
+</code></pre><h4 id="f.-子模板嵌套-{@include-tpl,-data}">f. 子模板嵌套 {@include tpl, data}</h4>
 <p>子模板嵌套可以让你更灵活的组织你的模板代码，除了可以引入在数据中指定的子模板外，当然你也可以通过指定字符串<code>#id</code>使用写在<code>script</code>标签中的模板代码.</p>
 <p>HTML代码：</p>
-<pre class ="notranslate"><div class="code"><div class="line-numbers">1
+<pre><code><div class="line-numbers">1
 2
 3</div>&lt;<span class="hljs-keyword">script</span> type=<span class="hljs-string">"text/juicer"</span> <span class="hljs-built_in">id</span>=<span class="hljs-string">"subTpl"</span>&gt;
     I'm sub content, ${<span class="hljs-built_in">name</span>}
 &lt;/<span class="hljs-keyword">script</span>&gt;
-</div></pre><p>Javascript 代码：</p>
-<pre class ="notranslate"><div class="code"><div class="line-numbers">1
+</code></pre><p>Javascript 代码：</p>
+<pre><code><div class="line-numbers">1
 2
 3
 4
@@ -417,9 +417,9 @@ juicer(tpl, {
         name: <span class="hljs-symbol">'juice</span>r'
     }
 });
-</div></pre><p><a href="!node.js"></a></p>
+</code></pre><p><a href="!node.js"></a></p>
 <h2 id="*-在-Node.js-环境中运行">* 在 Node.js 环境中运行</h2>
-<pre class ="notranslate"><div class="code"><div class="line-numbers">1
+<pre><code><div class="line-numbers">1
 2
 3
 4
@@ -430,9 +430,9 @@ npm <span class="hljs-keyword">install </span><span class="hljs-keyword">juicer
 在代码中这么引入:
 var <span class="hljs-keyword">juicer </span>= require(<span class="hljs-string">'juicer'</span>)<span class="hljs-comment">;</span>
 var html = <span class="hljs-keyword">juicer(tpl, </span>data)<span class="hljs-comment">;</span>
-</div></pre><h4 id="在-Express.js-框架中使用">在 Express.js 框架中使用</h4>
+</code></pre><h4 id="在-Express.js-框架中使用">在 Express.js 框架中使用</h4>
 <p>在 Express 2.x 系列版本中：</p>
-<pre class ="notranslate"><div class="code"><div class="line-numbers">1
+<pre><code><div class="line-numbers">1
 2
 3
 4
@@ -447,8 +447,8 @@ app.register(<span class="hljs-string">'.html'</span>, {
         <span class="hljs-keyword">return</span> juicer.compile(str, options).render;
     }
 });
-</div></pre><p>在 Express 3.x 系列版本中：</p>
-<pre class ="notranslate"><div class="code"><div class="line-numbers">1
+</code></pre><p>在 Express 3.x 系列版本中：</p>
+<pre><code><div class="line-numbers">1
 2
 3
 4
@@ -469,14 +469,14 @@ app.engine(<span class="hljs-string">'html'</span>, <span class="hljs-function">
         fn(<span class="hljs-literal">null</span>, str);
     });
 });
-</div></pre><p>在 Express 4.x 系列版本中：</p>
-<pre class ="notranslate"><div class="code"><div class="line-numbers">1
+</code></pre><p>在 Express 4.x 系列版本中：</p>
+<pre><code><div class="line-numbers">1
 2
 3</div><span class="hljs-built_in">var</span> juicerExpressAdapter = <span class="hljs-keyword">require</span>(<span class="hljs-string">'juicer-express-adapter'</span>);
 app.<span class="hljs-built_in">set</span>(<span class="hljs-string">'view engine'</span>, <span class="hljs-string">'html'</span>);
 app.engine(<span class="hljs-string">'html'</span>, juicerExpressAdapter);
-</div></pre><p>在命令行预编译模板文件：</p>
-<pre class ="notranslate"><div class="code"><div class="line-numbers">1
+</code></pre><p>在命令行预编译模板文件：</p>
+<pre><code><div class="line-numbers">1
 2
 3
 4
@@ -485,8 +485,8 @@ juicer example.juicer.tmpl -f example.js
 
 // <span class="hljs-keyword">type</span> <span class="hljs-string">`juicer`</span> <span class="hljs-keyword">after</span> <span class="hljs-keyword">install</span> <span class="hljs-keyword">for</span> more help.
 // 全局模式安装 <span class="hljs-string">`juicer`</span> 后，在命令行下输入 <span class="hljs-string">`juicer`</span> 可以获得更多帮助信息。
-</div></pre><p>为模板引擎设置外部Cache存储：</p>
-<pre class ="notranslate"><div class="code"><div class="line-numbers">1
+</code></pre><p>为模板引擎设置外部Cache存储：</p>
+<pre><code><div class="line-numbers">1
 2
 3
 4
@@ -495,9 +495,9 @@ juicer example.juicer.tmpl -f example.js
 <span class="hljs-built_in">var</span> <span class="hljs-keyword">cache</span> = <span class="hljs-literal">new</span> LRUCache({ maxElements: <span class="hljs-number">1000</span> });
 
 juicer.<span class="hljs-built_in">set</span>(<span class="hljs-string">'cachestore'</span>, <span class="hljs-keyword">cache</span>);
-</div></pre><p><a href="!demo"></a></p>
+</code></pre><p><a href="!demo"></a></p>
 <h2 id="*-一个完整的例子">* 一个完整的例子</h2>
-<pre class ="notranslate"><div class="code"><div class="line-numbers">1
+<pre><code><div class="line-numbers">1
 2
 3
 4
@@ -582,4 +582,4 @@ var data = {
 
 var tpl = document.getElementById(<span class="hljs-string">'tpl'</span>).innerHTML;
 var html = juicer(tpl, data);
-</div></pre> </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id=toc></div></div></div></div><div class=footer><div class=container>&copy; Copyright 2014-2019 fibjs.org | <a href=../../../support.html>支持我们</a></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="Click to return on the top page" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js></script><script type=text/javascript src=../../../js/common.js></script><script type=text/javascript src=../../../js/docs.js></script></body></html>
+</code></pre> </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id=toc></div></div></div></div><div class=footer><div class=container>&copy; Copyright 2014-2019 fibjs.org | <a href=../../../support.html>支持我们</a></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="Click to return on the top page" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js></script><script type=text/javascript src=../../../js/common.js></script><script type=text/javascript src=../../../js/docs.js></script></body></html>

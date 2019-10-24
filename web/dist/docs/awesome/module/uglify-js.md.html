@@ -200,12 +200,12 @@
 <p>First make sure you have installed the latest version of <a href="http://nodejs.org/">node.js</a>
 (You may need to restart your computer after this step).</p>
 <p>From NPM for use as a command line app:</p>
-<pre class ="notranslate"><div class="code"><div class="line-numbers">1</div>npm <span class="hljs-keyword">install </span>uglify-<span class="hljs-keyword">js </span>-g
-</div></pre><p>From NPM for programmatic use:</p>
-<pre class ="notranslate"><div class="code"><div class="line-numbers">1</div>npm <span class="hljs-keyword">install</span> uglify-js
-</div></pre><h1 id="Command-line-usage">Command line usage</h1>
-<pre class ="notranslate"><div class="code"><div class="line-numbers">1</div>uglifyjs [<span class="hljs-built_in">input</span> <span class="hljs-keyword">files</span>] [<span class="hljs-keyword">options</span>]
-</div></pre><p>UglifyJS can take multiple input files.  It&#39;s recommended that you pass the
+<pre><code><div class="line-numbers">1</div>npm <span class="hljs-keyword">install </span>uglify-<span class="hljs-keyword">js </span>-g
+</code></pre><p>From NPM for programmatic use:</p>
+<pre><code><div class="line-numbers">1</div>npm <span class="hljs-keyword">install</span> uglify-js
+</code></pre><h1 id="Command-line-usage">Command line usage</h1>
+<pre><code><div class="line-numbers">1</div>uglifyjs [<span class="hljs-built_in">input</span> <span class="hljs-keyword">files</span>] [<span class="hljs-keyword">options</span>]
+</code></pre><p>UglifyJS can take multiple input files.  It&#39;s recommended that you pass the
 input files first, then pass the options.  UglifyJS will parse input files
 in sequence and apply any compression options.  The files are parsed in the
 same global scope, that is, a reference from a file to some
@@ -213,9 +213,9 @@ variable/function declared in another file will be matched properly.</p>
 <p>If no input file is specified, UglifyJS will read from STDIN.</p>
 <p>If you wish to pass your options before the input files, separate the two with
 a double dash to prevent input files being used as option arguments:</p>
-<pre class ="notranslate"><div class="code"><div class="line-numbers">1</div><span class="hljs-comment">uglifyjs</span> <span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-comment">compress</span> <span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-comment">mangle</span> <span class="hljs-literal">-</span><span class="hljs-literal">-</span> <span class="hljs-comment">input</span><span class="hljs-string">.</span><span class="hljs-comment">js</span>
-</div></pre><h3 id="Command-line-options" class ="notranslate">Command line options</h3>
-<pre class ="notranslate"><div class="code"><div class="line-numbers">1
+<pre><code><div class="line-numbers">1</div><span class="hljs-comment">uglifyjs</span> <span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-comment">compress</span> <span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-comment">mangle</span> <span class="hljs-literal">-</span><span class="hljs-literal">-</span> <span class="hljs-comment">input</span><span class="hljs-string">.</span><span class="hljs-comment">js</span>
+</code></pre><h3 id="Command-line-options" class ="notranslate">Command line options</h3>
+<pre><code><div class="line-numbers">1
 2
 3
 4
@@ -398,7 +398,7 @@ a double dash to prevent input files being used as option arguments:</p>
                                 need to pass an argument to this option to
                                 specify the name that your module will take
                                 when included in, say, a browser.</span>
-</div></pre><p>Specify <code>--output</code> (<code>-o</code>) to declare the output file.  Otherwise the output
+</code></pre><p>Specify <code>--output</code> (<code>-o</code>) to declare the output file.  Otherwise the output
 goes to STDOUT.</p>
 <h2 id="CLI-source-map-options">CLI source map options</h2>
 <p>UglifyJS can generate a source map file, which is highly useful for
@@ -417,12 +417,12 @@ Otherwise UglifyJS assumes HTTP <code>X-SourceMap</code> is being used and will 
 </li>
 </ul>
 <p>For example:</p>
-<pre class ="notranslate"><div class="code"><div class="line-numbers">1
+<pre><code><div class="line-numbers">1
 2
 3</div>uglifyjs js/file1<span class="hljs-selector-class">.js</span> js/file2<span class="hljs-selector-class">.js</span> \
          -o foo<span class="hljs-selector-class">.min</span><span class="hljs-selector-class">.js</span> -c -m \
          --source-map <span class="hljs-string">"root='http://foo.com/src',url='foo.min.js.map'"</span>
-</div></pre><p>The above will compress and mangle <code>file1.js</code> and <code>file2.js</code>, will drop the
+</code></pre><p>The above will compress and mangle <code>file1.js</code> and <code>file2.js</code>, will drop the
 output in <code>foo.min.js</code> and the source map in <code>foo.min.js.map</code>.  The source
 mapping will refer to <code>http://foo.com/src/js/file1.js</code> and
 <code>http://foo.com/src/js/file2.js</code> (in fact it will list <code>http://foo.com/src</code>
@@ -446,8 +446,8 @@ you can pass a comma-separated list of <a href="#compress-options">compress opti
 a boolean option that you want to set <code>true</code>; it&#39;s effectively a
 shortcut for <code>foo=true</code>).</p>
 <p>Example:</p>
-<pre class ="notranslate"><div class="code"><div class="line-numbers">1</div>uglifyjs <span class="hljs-built_in">file</span>.js -c toplevel,sequences=<span class="hljs-literal">false</span>
-</div></pre><h2 id="CLI-mangle-options">CLI mangle options</h2>
+<pre><code><div class="line-numbers">1</div>uglifyjs <span class="hljs-built_in">file</span>.js -c toplevel,sequences=<span class="hljs-literal">false</span>
+</code></pre><h2 id="CLI-mangle-options">CLI mangle options</h2>
 <p>To enable the mangler you need to pass <code>--mangle</code> (<code>-m</code>).  The following
 (comma-separated) options are supported:</p>
 <ul>
@@ -459,15 +459,15 @@ shortcut for <code>foo=true</code>).</p>
 <p>When mangling is enabled but you want to prevent certain names from being
 mangled, you can declare those names with <code>--mangle reserved</code> — pass a
 comma-separated list of names.  For example:</p>
-<pre class ="notranslate"><div class="code"><div class="line-numbers">1</div><span class="hljs-function"><span class="hljs-title">uglifyjs</span></span> ... -m reserved=[<span class="hljs-string">'$'</span>,<span class="hljs-string">'require'</span>,<span class="hljs-string">'exports'</span>]
-</div></pre><p>to prevent the <code>require</code>, <code>exports</code> and <code>$</code> names from being changed.</p>
+<pre><code><div class="line-numbers">1</div><span class="hljs-function"><span class="hljs-title">uglifyjs</span></span> ... -m reserved=[<span class="hljs-string">'$'</span>,<span class="hljs-string">'require'</span>,<span class="hljs-string">'exports'</span>]
+</code></pre><p>to prevent the <code>require</code>, <code>exports</code> and <code>$</code> names from being changed.</p>
 <h3 id="CLI-mangling-property-names-(--mangle-props)">CLI mangling property names (<code>--mangle-props</code>)</h3>
 <p><strong>Note:</strong> THIS WILL PROBABLY BREAK YOUR CODE.  Mangling property names
 is a separate step, different from variable name mangling.  Pass
 <code>--mangle-props</code> to enable it.  It will mangle all properties in the
 input code with the exception of built in DOM properties and properties
 in core JavaScript classes.  For example:</p>
-<pre class ="notranslate"><div class="code lang-javascript"><div class="line-numbers">1
+<pre><code class="lang-javascript"><div class="line-numbers">1
 2
 3
 4
@@ -488,27 +488,27 @@ in core JavaScript classes.  For example:</p>
 x.bar_ = <span class="hljs-number">2</span>;
 x[<span class="hljs-string">"baz_"</span>] = <span class="hljs-number">3</span>;
 <span class="hljs-built_in">console</span>.log(x.calc());
-</div></pre>
+</code></pre>
 <p>Mangle all properties (except for JavaScript <code>builtins</code>):</p>
-<pre class ="notranslate"><div class="code lang-bash"><div class="line-numbers">1</div>$ uglifyjs example.js -c -m --mangle-props
-</div></pre>
-<pre class ="notranslate"><div class="code lang-javascript"><div class="line-numbers">1</div><span class="hljs-keyword">var</span> x={<span class="hljs-attr">o</span>:<span class="hljs-number">0</span>,<span class="hljs-attr">_</span>:<span class="hljs-number">1</span>,<span class="hljs-attr">l</span>:<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{<span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>._+<span class="hljs-keyword">this</span>.o}};x.t=<span class="hljs-number">2</span>,x.o=<span class="hljs-number">3</span>,<span class="hljs-built_in">console</span>.log(x.l());
-</div></pre>
+<pre><code class="lang-bash"><div class="line-numbers">1</div>$ uglifyjs example.js -c -m --mangle-props
+</code></pre>
+<pre><code class="lang-javascript"><div class="line-numbers">1</div><span class="hljs-keyword">var</span> x={<span class="hljs-attr">o</span>:<span class="hljs-number">0</span>,<span class="hljs-attr">_</span>:<span class="hljs-number">1</span>,<span class="hljs-attr">l</span>:<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{<span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>._+<span class="hljs-keyword">this</span>.o}};x.t=<span class="hljs-number">2</span>,x.o=<span class="hljs-number">3</span>,<span class="hljs-built_in">console</span>.log(x.l());
+</code></pre>
 <p>Mangle all properties except for <code>reserved</code> properties:</p>
-<pre class ="notranslate"><div class="code lang-bash"><div class="line-numbers">1</div>$ uglifyjs example.js -c -m --mangle-props reserved=[foo_,bar_]
-</div></pre>
-<pre class ="notranslate"><div class="code lang-javascript"><div class="line-numbers">1</div><span class="hljs-keyword">var</span> x={<span class="hljs-attr">o</span>:<span class="hljs-number">0</span>,<span class="hljs-attr">foo_</span>:<span class="hljs-number">1</span>,<span class="hljs-attr">_</span>:<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{<span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.foo_+<span class="hljs-keyword">this</span>.o}};x.bar_=<span class="hljs-number">2</span>,x.o=<span class="hljs-number">3</span>,<span class="hljs-built_in">console</span>.log(x._());
-</div></pre>
+<pre><code class="lang-bash"><div class="line-numbers">1</div>$ uglifyjs example.js -c -m --mangle-props reserved=[foo_,bar_]
+</code></pre>
+<pre><code class="lang-javascript"><div class="line-numbers">1</div><span class="hljs-keyword">var</span> x={<span class="hljs-attr">o</span>:<span class="hljs-number">0</span>,<span class="hljs-attr">foo_</span>:<span class="hljs-number">1</span>,<span class="hljs-attr">_</span>:<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{<span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.foo_+<span class="hljs-keyword">this</span>.o}};x.bar_=<span class="hljs-number">2</span>,x.o=<span class="hljs-number">3</span>,<span class="hljs-built_in">console</span>.log(x._());
+</code></pre>
 <p>Mangle all properties matching a <code>regex</code>:</p>
-<pre class ="notranslate"><div class="code lang-bash"><div class="line-numbers">1</div>$ uglifyjs example.js -c -m --mangle-props regex=/_$/
-</div></pre>
-<pre class ="notranslate"><div class="code lang-javascript"><div class="line-numbers">1</div><span class="hljs-keyword">var</span> x={<span class="hljs-attr">o</span>:<span class="hljs-number">0</span>,<span class="hljs-attr">_</span>:<span class="hljs-number">1</span>,<span class="hljs-attr">calc</span>:<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{<span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>._+<span class="hljs-keyword">this</span>.o}};x.l=<span class="hljs-number">2</span>,x.o=<span class="hljs-number">3</span>,<span class="hljs-built_in">console</span>.log(x.calc());
-</div></pre>
+<pre><code class="lang-bash"><div class="line-numbers">1</div>$ uglifyjs example.js -c -m --mangle-props regex=/_$/
+</code></pre>
+<pre><code class="lang-javascript"><div class="line-numbers">1</div><span class="hljs-keyword">var</span> x={<span class="hljs-attr">o</span>:<span class="hljs-number">0</span>,<span class="hljs-attr">_</span>:<span class="hljs-number">1</span>,<span class="hljs-attr">calc</span>:<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{<span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>._+<span class="hljs-keyword">this</span>.o}};x.l=<span class="hljs-number">2</span>,x.o=<span class="hljs-number">3</span>,<span class="hljs-built_in">console</span>.log(x.calc());
+</code></pre>
 <p>Combining mangle properties options:</p>
-<pre class ="notranslate"><div class="code lang-bash"><div class="line-numbers">1</div>$ uglifyjs example.js -c -m --mangle-props regex=/_$/,reserved=[bar_]
-</div></pre>
-<pre class ="notranslate"><div class="code lang-javascript"><div class="line-numbers">1</div><span class="hljs-keyword">var</span> x={<span class="hljs-attr">o</span>:<span class="hljs-number">0</span>,<span class="hljs-attr">_</span>:<span class="hljs-number">1</span>,<span class="hljs-attr">calc</span>:<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{<span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>._+<span class="hljs-keyword">this</span>.o}};x.bar_=<span class="hljs-number">2</span>,x.o=<span class="hljs-number">3</span>,<span class="hljs-built_in">console</span>.log(x.calc());
-</div></pre>
+<pre><code class="lang-bash"><div class="line-numbers">1</div>$ uglifyjs example.js -c -m --mangle-props regex=/_$/,reserved=[bar_]
+</code></pre>
+<pre><code class="lang-javascript"><div class="line-numbers">1</div><span class="hljs-keyword">var</span> x={<span class="hljs-attr">o</span>:<span class="hljs-number">0</span>,<span class="hljs-attr">_</span>:<span class="hljs-number">1</span>,<span class="hljs-attr">calc</span>:<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{<span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>._+<span class="hljs-keyword">this</span>.o}};x.bar_=<span class="hljs-number">2</span>,x.o=<span class="hljs-number">3</span>,<span class="hljs-built_in">console</span>.log(x.calc());
+</code></pre>
 <p>In order for this to be of any use, we avoid mangling standard JS names by
 default (<code>--mangle-props builtins</code> to override).</p>
 <p>A default exclusion file is provided in <code>tools/domprops.json</code> which should
@@ -522,12 +522,12 @@ work together in the end we need to ensure somehow that one property gets
 mangled to the same name in all of them.  For this, pass <code>--name-cache filename.json</code>
 and UglifyJS will maintain these mappings in a file which can then be reused.
 It should be initially empty.  Example:</p>
-<pre class ="notranslate"><div class="code lang-bash"><div class="line-numbers">1
+<pre><code class="lang-bash"><div class="line-numbers">1
 2
 3</div>$ rm -f /tmp/cache.json  <span class="hljs-comment"># start fresh</span>
 $ uglifyjs file1.js file2.js --mangle-props --name-cache /tmp/cache.json -o part1.js
 $ uglifyjs file3.js file4.js --mangle-props --name-cache /tmp/cache.json -o part2.js
-</div></pre>
+</code></pre>
 <p>Now, <code>part1.js</code> and <code>part2.js</code> will be consistent with each other in terms
 of mangled property names.</p>
 <p>Using the name cache is not necessary if you compress all your files in a
@@ -536,7 +536,7 @@ single call to UglifyJS.</p>
 <p>Using quoted property name (<code>o[&quot;foo&quot;]</code>) reserves the property name (<code>foo</code>)
 so that it is not mangled throughout the entire script even when used in an
 unquoted style (<code>o.foo</code>). Example:</p>
-<pre class ="notranslate"><div class="code lang-javascript"><div class="line-numbers">1
+<pre><code class="lang-javascript"><div class="line-numbers">1
 2
 3
 4
@@ -549,21 +549,21 @@ unquoted style (<code>o.foo</code>). Example:</p>
 };
 o.foo += o.bar;
 <span class="hljs-built_in">console</span>.log(o.foo);
-</div></pre>
-<pre class ="notranslate"><div class="code lang-bash"><div class="line-numbers">1</div>$ uglifyjs stuff.js --mangle-props keep_quoted -c -m
-</div></pre>
-<pre class ="notranslate"><div class="code lang-javascript"><div class="line-numbers">1</div><span class="hljs-keyword">var</span> o={<span class="hljs-attr">foo</span>:<span class="hljs-number">1</span>,<span class="hljs-attr">o</span>:<span class="hljs-number">3</span>};o.foo+=o.o,<span class="hljs-built_in">console</span>.log(o.foo);
-</div></pre>
+</code></pre>
+<pre><code class="lang-bash"><div class="line-numbers">1</div>$ uglifyjs stuff.js --mangle-props keep_quoted -c -m
+</code></pre>
+<pre><code class="lang-javascript"><div class="line-numbers">1</div><span class="hljs-keyword">var</span> o={<span class="hljs-attr">foo</span>:<span class="hljs-number">1</span>,<span class="hljs-attr">o</span>:<span class="hljs-number">3</span>};o.foo+=o.o,<span class="hljs-built_in">console</span>.log(o.foo);
+</code></pre>
 <h3 id="Debugging-property-name-mangling" class ="notranslate">Debugging property name mangling</h3>
 <p>You can also pass <code>--mangle-props debug</code> in order to mangle property names
 without completely obscuring them. For example the property <code>o.foo</code>
 would mangle to <code>o._$foo$_</code> with this option. This allows property mangling
 of a large codebase while still being able to debug the code and identify
 where mangling is breaking things.</p>
-<pre class ="notranslate"><div class="code lang-bash"><div class="line-numbers">1</div>$ uglifyjs stuff.js --mangle-props debug -c -m
-</div></pre>
-<pre class ="notranslate"><div class="code lang-javascript"><div class="line-numbers">1</div><span class="hljs-keyword">var</span> o={<span class="hljs-attr">_$foo$_</span>:<span class="hljs-number">1</span>,<span class="hljs-attr">_$bar$_</span>:<span class="hljs-number">3</span>};o._$foo$_+=o._$bar$_,<span class="hljs-built_in">console</span>.log(o._$foo$_);
-</div></pre>
+<pre><code class="lang-bash"><div class="line-numbers">1</div>$ uglifyjs stuff.js --mangle-props debug -c -m
+</code></pre>
+<pre><code class="lang-javascript"><div class="line-numbers">1</div><span class="hljs-keyword">var</span> o={<span class="hljs-attr">_$foo$_</span>:<span class="hljs-number">1</span>,<span class="hljs-attr">_$bar$_</span>:<span class="hljs-number">3</span>};o._$foo$_+=o._$bar$_,<span class="hljs-built_in">console</span>.log(o._$foo$_);
+</code></pre>
 <p>You can also pass a custom suffix using <code>--mangle-props debug=XYZ</code>. This would then
 mangle <code>o.foo</code> to <code>o._$foo$XYZ_</code>. You can change this each time you compile a
 script to identify how a property got mangled. One technique is to pass a
@@ -573,24 +573,24 @@ identify mistakes like writing mangled keys to storage.</p>
 <h1 id="API-Reference">API Reference</h1>
 <p>Assuming installation via NPM, you can load UglifyJS in your application
 like this:</p>
-<pre class ="notranslate"><div class="code lang-javascript"><div class="line-numbers">1</div><span class="hljs-keyword">var</span> UglifyJS = <span class="hljs-built_in">require</span>(<span class="hljs-string">"uglify-js"</span>);
-</div></pre>
+<pre><code class="lang-javascript"><div class="line-numbers">1</div><span class="hljs-keyword">var</span> UglifyJS = <span class="hljs-built_in">require</span>(<span class="hljs-string">"uglify-js"</span>);
+</code></pre>
 <p>There is a single high level function, <strong><code>minify(code, options)</code></strong>,
 which will perform all minification <a href="#minify-options">phases</a> in a configurable
 manner. By default <code>minify()</code> will enable the options <a href="#compress-options"><code>compress</code></a>
 and <a href="#mangle-options"><code>mangle</code></a>. Example:</p>
-<pre class ="notranslate"><div class="code lang-javascript"><div class="line-numbers">1
+<pre><code class="lang-javascript"><div class="line-numbers">1
 2
 3
 4</div><span class="hljs-keyword">var</span> code = <span class="hljs-string">"function add(first, second) { return first + second; }"</span>;
 <span class="hljs-keyword">var</span> result = UglifyJS.minify(code);
 <span class="hljs-built_in">console</span>.log(result.error); <span class="hljs-comment">// runtime error, or `undefined` if no error</span>
 <span class="hljs-built_in">console</span>.log(result.code);  <span class="hljs-comment">// minified output: function add(n,d){return n+d}</span>
-</div></pre>
+</code></pre>
 <p>You can <code>minify</code> more than one JavaScript file at a time by using an object
 for the first argument where the keys are file names and the values are source
 code:</p>
-<pre class ="notranslate"><div class="code lang-javascript"><div class="line-numbers">1
+<pre><code class="lang-javascript"><div class="line-numbers">1
 2
 3
 4
@@ -603,9 +603,9 @@ code:</p>
 <span class="hljs-keyword">var</span> result = UglifyJS.minify(code);
 <span class="hljs-built_in">console</span>.log(result.code);
 <span class="hljs-comment">// function add(d,n){return d+n}console.log(add(3,7));</span>
-</div></pre>
+</code></pre>
 <p>The <code>toplevel</code> option:</p>
-<pre class ="notranslate"><div class="code lang-javascript"><div class="line-numbers">1
+<pre><code class="lang-javascript"><div class="line-numbers">1
 2
 3
 4
@@ -620,9 +620,9 @@ code:</p>
 <span class="hljs-keyword">var</span> result = UglifyJS.minify(code, options);
 <span class="hljs-built_in">console</span>.log(result.code);
 <span class="hljs-comment">// console.log(3+7);</span>
-</div></pre>
+</code></pre>
 <p>The <code>nameCache</code> option:</p>
-<pre class ="notranslate"><div class="code lang-javascript"><div class="line-numbers">1
+<pre><code class="lang-javascript"><div class="line-numbers">1
 2
 3
 4
@@ -653,9 +653,9 @@ code:</p>
 <span class="hljs-comment">// function n(n,r){return n+r}</span>
 <span class="hljs-built_in">console</span>.log(result2.code);
 <span class="hljs-comment">// console.log(n(3,7));</span>
-</div></pre>
+</code></pre>
 <p>You may persist the name cache to the file system in the following way:</p>
-<pre class ="notranslate"><div class="code lang-javascript"><div class="line-numbers">1
+<pre><code class="lang-javascript"><div class="line-numbers">1
 2
 3
 4
@@ -686,9 +686,9 @@ fs.writeFileSync(<span class="hljs-string">"part2.js"</span>, UglifyJS.minify({
     <span class="hljs-string">"file4.js"</span>: fs.readFileSync(<span class="hljs-string">"file4.js"</span>, <span class="hljs-string">"utf8"</span>)
 }, options).code, <span class="hljs-string">"utf8"</span>);
 fs.writeFileSync(cacheFileName, <span class="hljs-built_in">JSON</span>.stringify(options.nameCache), <span class="hljs-string">"utf8"</span>);
-</div></pre>
+</code></pre>
 <p>An example of a combination of <code>minify()</code> options:</p>
-<pre class ="notranslate"><div class="code lang-javascript"><div class="line-numbers">1
+<pre><code class="lang-javascript"><div class="line-numbers">1
 2
 3
 4
@@ -729,9 +729,9 @@ fs.writeFileSync(cacheFileName, <span class="hljs-built_in">JSON</span>.stringif
 <span class="hljs-built_in">console</span>.log(result.code);
 <span class="hljs-comment">// /* uglified */</span>
 <span class="hljs-comment">// alert(10);"</span>
-</div></pre>
+</code></pre>
 <p>To produce warnings:</p>
-<pre class ="notranslate"><div class="code lang-javascript"><div class="line-numbers">1
+<pre><code class="lang-javascript"><div class="line-numbers">1
 2
 3
 4
@@ -742,20 +742,20 @@ fs.writeFileSync(cacheFileName, <span class="hljs-built_in">JSON</span>.stringif
 <span class="hljs-built_in">console</span>.log(result.error);    <span class="hljs-comment">// runtime error, `undefined` in this case</span>
 <span class="hljs-built_in">console</span>.log(result.warnings); <span class="hljs-comment">// [ 'Dropping unused variable u [0:1,18]' ]</span>
 <span class="hljs-built_in">console</span>.log(result.code);     <span class="hljs-comment">// function f(){return 5}</span>
-</div></pre>
+</code></pre>
 <p>An error example:</p>
-<pre class ="notranslate"><div class="code lang-javascript"><div class="line-numbers">1
+<pre><code class="lang-javascript"><div class="line-numbers">1
 2
 3</div><span class="hljs-keyword">var</span> result = UglifyJS.minify({<span class="hljs-string">"foo.js"</span> : <span class="hljs-string">"if (0) else console.log(1);"</span>});
 <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">JSON</span>.stringify(result.error));
 <span class="hljs-comment">// {"message":"Unexpected token: keyword (else)","filename":"foo.js","line":1,"col":7,"pos":7}</span>
-</div></pre>
+</code></pre>
 <p>Note: unlike <a href="mailto:`uglify-js@2.x">`uglify-js@2.x</a><code>, the</code>3.x` API does not throw errors. To
 achieve a similar effect one could do the following:</p>
-<pre class ="notranslate"><div class="code lang-javascript"><div class="line-numbers">1
+<pre><code class="lang-javascript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">var</span> result = UglifyJS.minify(code, options);
 <span class="hljs-keyword">if</span> (result.error) <span class="hljs-keyword">throw</span> result.error;
-</div></pre>
+</code></pre>
 <h2 id="Minify-options">Minify options</h2>
 <ul>
 <li><p><code>warnings</code> (default <code>false</code>) — pass <code>true</code> to return compressor warnings
@@ -798,7 +798,7 @@ of function names.  Useful for code relying on <code>Function.prototype.name</co
 </li>
 </ul>
 <h2 id="Minify-options-structure">Minify options structure</h2>
-<pre class ="notranslate"><div class="code lang-javascript"><div class="line-numbers">1
+<pre><code class="lang-javascript"><div class="line-numbers">1
 2
 3
 4
@@ -847,10 +847,10 @@ of function names.  Useful for code relying on <code>Function.prototype.name</co
     <span class="hljs-attr">ie8</span>: <span class="hljs-literal">false</span>,
     <span class="hljs-attr">warnings</span>: <span class="hljs-literal">false</span>,
 }
-</div></pre>
+</code></pre>
 <h3 id="Source-map-options" class ="notranslate">Source map options</h3>
 <p>To generate a source map:</p>
-<pre class ="notranslate"><div class="code lang-javascript"><div class="line-numbers">1
+<pre><code class="lang-javascript"><div class="line-numbers">1
 2
 3
 4
@@ -865,7 +865,7 @@ of function names.  Useful for code relying on <code>Function.prototype.name</co
 });
 <span class="hljs-built_in">console</span>.log(result.code); <span class="hljs-comment">// minified output</span>
 <span class="hljs-built_in">console</span>.log(result.map);  <span class="hljs-comment">// source map</span>
-</div></pre>
+</code></pre>
 <p>Note that the source map is not saved in a file, it&#39;s just returned in
 <code>result.map</code>.  The value passed for <code>sourceMap.url</code> is only used to set
 <code>//# sourceMappingURL=out.js.map</code> in <code>result.code</code>. The value of
@@ -874,7 +874,7 @@ in source map file.</p>
 <p>You can set option <code>sourceMap.url</code> to be <code>&quot;inline&quot;</code> and source map will
 be appended to code.</p>
 <p>You can also specify sourceRoot property to be included in source map:</p>
-<pre class ="notranslate"><div class="code lang-javascript"><div class="line-numbers">1
+<pre><code class="lang-javascript"><div class="line-numbers">1
 2
 3
 4
@@ -885,10 +885,10 @@ be appended to code.</p>
         <span class="hljs-attr">url</span>: <span class="hljs-string">"out.js.map"</span>
     }
 });
-</div></pre>
+</code></pre>
 <p>If you&#39;re compressing compiled JavaScript and have a source map for it, you
 can use <code>sourceMap.content</code>:</p>
-<pre class ="notranslate"><div class="code lang-javascript"><div class="line-numbers">1
+<pre><code class="lang-javascript"><div class="line-numbers">1
 2
 3
 4
@@ -901,7 +901,7 @@ can use <code>sourceMap.content</code>:</p>
     }
 });
 <span class="hljs-comment">// same as before, it returns `code` and `map`</span>
-</div></pre>
+</code></pre>
 <p>If you&#39;re using the <code>X-SourceMap</code> header instead, you can just omit <code>sourceMap.url</code>.</p>
 <h2 id="Parse-options">Parse options</h2>
 <ul>
@@ -1095,7 +1095,7 @@ top level scope.</p>
 </li>
 </ul>
 <p>Examples:</p>
-<pre class ="notranslate"><div class="code lang-javascript"><div class="line-numbers">1
+<pre><code class="lang-javascript"><div class="line-numbers">1
 2
 3
 4
@@ -1104,8 +1104,8 @@ top level scope.</p>
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">funcName</span>(<span class="hljs-params">firstLongName, anotherLongName</span>) </span>{
     <span class="hljs-keyword">var</span> myVariable = firstLongName +  anotherLongName;
 }
-</div></pre>
-<pre class ="notranslate"><div class="code lang-javascript"><div class="line-numbers">1
+</code></pre>
+<pre><code class="lang-javascript"><div class="line-numbers">1
 2
 3
 4
@@ -1124,7 +1124,7 @@ UglifyJS.minify(code, { <span class="hljs-attr">mangle</span>: { <span class="hl
 
 UglifyJS.minify(code, { <span class="hljs-attr">mangle</span>: { <span class="hljs-attr">toplevel</span>: <span class="hljs-literal">true</span> } }).code;
 <span class="hljs-comment">// 'function n(n,a){}var a;'</span>
-</div></pre>
+</code></pre>
 <h3 id="Mangle-properties-options" class ="notranslate">Mangle properties options</h3>
 <ul>
 <li><p><code>builtins</code> (default: <code>false</code>) -- Use <code>true</code> to allow the mangling of builtin
@@ -1227,7 +1227,7 @@ keep only comments that match this regexp.  For example <code>--comments /^!/</c
 will keep comments like <code>/*! Copyright Notice */</code>.</p>
 <p>Note, however, that there might be situations where comments are lost.  For
 example:</p>
-<pre class ="notranslate"><div class="code lang-javascript"><div class="line-numbers">1
+<pre><code class="lang-javascript"><div class="line-numbers">1
 2
 3
 4
@@ -1240,7 +1240,7 @@ example:</p>
     }
     <span class="hljs-keyword">return</span> something();
 }
-</div></pre>
+</code></pre>
 <p>Even though it has &quot;@preserve&quot;, the comment will be lost because the inner
 function <code>g</code> (which is the AST node to which the comment is attached to) is
 discarded by the compressor as not referenced.</p>
@@ -1262,12 +1262,12 @@ when this flag is on:</p>
 variables that UglifyJS will assume to be constants (unless defined in
 scope).  For example if you pass <code>--define DEBUG=false</code> then, coupled with
 dead code removal UglifyJS will discard the following from the output:</p>
-<pre class ="notranslate"><div class="code lang-javascript"><div class="line-numbers">1
+<pre><code class="lang-javascript"><div class="line-numbers">1
 2
 3</div><span class="hljs-keyword">if</span> (DEBUG) {
     <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"debug stuff"</span>);
 }
-</div></pre>
+</code></pre>
 <p>You can specify nested constants in the form of <code>--define env.DEBUG=false</code>.</p>
 <p>UglifyJS will warn about the condition being always false and about dropping
 unreachable code; for now there is no option to turn off only this specific
@@ -1275,15 +1275,15 @@ warning, you can pass <code>warnings=false</code> to turn off <em>all</em> warni
 <p>Another way of doing that is to declare your globals as constants in a
 separate file and include it into the build.  For example you can have a
 <code>build/defines.js</code> file with the following:</p>
-<pre class ="notranslate"><div class="code lang-javascript"><div class="line-numbers">1
+<pre><code class="lang-javascript"><div class="line-numbers">1
 2
 3</div><span class="hljs-keyword">var</span> DEBUG = <span class="hljs-literal">false</span>;
 <span class="hljs-keyword">var</span> PRODUCTION = <span class="hljs-literal">true</span>;
 <span class="hljs-comment">// etc.</span>
-</div></pre>
+</code></pre>
 <p>and build your code like this:</p>
-<pre class ="notranslate"><div class="code"><div class="line-numbers">1</div>uglifyjs build/defines<span class="hljs-selector-class">.js</span> js/foo<span class="hljs-selector-class">.js</span> js/bar<span class="hljs-selector-class">.js</span>... -c
-</div></pre><p>UglifyJS will notice the constants and, since they cannot be altered, it
+<pre><code><div class="line-numbers">1</div>uglifyjs build/defines<span class="hljs-selector-class">.js</span> js/foo<span class="hljs-selector-class">.js</span> js/bar<span class="hljs-selector-class">.js</span>... -c
+</code></pre><p>UglifyJS will notice the constants and, since they cannot be altered, it
 will evaluate references to them to the value itself and drop unreachable
 code as usual.  The build will contain the <code>const</code> declarations if you use
 them. If you are targeting &lt; ES6 environments which does not support <code>const</code>,
@@ -1291,7 +1291,7 @@ using <code>var</code> with <code>reduce_vars</code> (enabled by default) should
 <h3 id="Conditional-compilation-API" class ="notranslate">Conditional compilation API</h3>
 <p>You can also use conditional compilation via the programmatic API. With the difference that the
 property name is <code>global_defs</code> and is a compressor property:</p>
-<pre class ="notranslate"><div class="code lang-javascript"><div class="line-numbers">1
+<pre><code class="lang-javascript"><div class="line-numbers">1
 2
 3
 4
@@ -1306,11 +1306,11 @@ property name is <code>global_defs</code> and is a compressor property:</p>
         }
     }
 });
-</div></pre>
+</code></pre>
 <p>To replace an identifier with an arbitrary non-constant expression it is
 necessary to prefix the <code>global_defs</code> key with <code>&quot;@&quot;</code> to instruct UglifyJS
 to parse the value as an expression:</p>
-<pre class ="notranslate"><div class="code lang-javascript"><div class="line-numbers">1
+<pre><code class="lang-javascript"><div class="line-numbers">1
 2
 3
 4
@@ -1325,9 +1325,9 @@ to parse the value as an expression:</p>
     }
 }).code;
 <span class="hljs-comment">// returns: 'console.log("hello");'</span>
-</div></pre>
+</code></pre>
 <p>Otherwise it would be replaced as string literal:</p>
-<pre class ="notranslate"><div class="code lang-javascript"><div class="line-numbers">1
+<pre><code class="lang-javascript"><div class="line-numbers">1
 2
 3
 4
@@ -1342,9 +1342,9 @@ to parse the value as an expression:</p>
     }
 }).code;
 <span class="hljs-comment">// returns: '"console.log"("hello");'</span>
-</div></pre>
+</code></pre>
 <h3 id="Using-native-Uglify-AST-with-minify()">Using native Uglify AST with <code>minify()</code></h3>
-<pre class ="notranslate"><div class="code lang-javascript"><div class="line-numbers">1
+<pre><code class="lang-javascript"><div class="line-numbers">1
 2
 3
 4
@@ -1369,8 +1369,8 @@ to parse the value as an expression:</p>
 });
 
 <span class="hljs-comment">// result.ast contains native Uglify AST</span>
-</div></pre>
-<pre class ="notranslate"><div class="code lang-javascript"><div class="line-numbers">1
+</code></pre>
+<pre><code class="lang-javascript"><div class="line-numbers">1
 2
 3
 4
@@ -1397,7 +1397,7 @@ to parse the value as an expression:</p>
 
 <span class="hljs-comment">// result.ast contains native Uglify AST</span>
 <span class="hljs-comment">// result.code contains the minified code in string form.</span>
-</div></pre>
+</code></pre>
 <h3 id="Working-with-Uglify-AST" class ="notranslate">Working with Uglify AST</h3>
 <p>Transversal and transformation of the native AST can be performed through
 <a href="https://github.com/mishoo/UglifyJS2/blob/master/lib/ast.js"><code>TreeWalker</code></a> and
@@ -1412,8 +1412,8 @@ UglifyJS now has a converter which can import a SpiderMonkey AST.</p>
 SpiderMonkey AST.  It has a small CLI utility that parses one file and dumps
 the AST in JSON on the standard output.  To use UglifyJS to mangle and
 compress that:</p>
-<pre class ="notranslate"><div class="code"><div class="line-numbers">1</div>acorn file.js <span class="hljs-string">| uglifyjs -p spidermonkey -m -c</span>
-</div></pre><p>The <code>-p spidermonkey</code> option tells UglifyJS that all input files are not
+<pre><code><div class="line-numbers">1</div>acorn file.js <span class="hljs-string">| uglifyjs -p spidermonkey -m -c</span>
+</code></pre><p>The <code>-p spidermonkey</code> option tells UglifyJS that all input files are not
 JavaScript, but JS code described in SpiderMonkey AST in JSON.  Therefore we
 don&#39;t use our own parser in this case, but just transform that AST into our
 internal AST.</p>
@@ -1479,10 +1479,10 @@ comparable minify speeds and gzip sizes to
 </tbody>
 </table>
 <p>To enable fast minify mode from the CLI use:</p>
-<pre class ="notranslate"><div class="code"><div class="line-numbers">1</div>uglifyjs <span class="hljs-keyword">file</span>.js -<span class="hljs-built_in">m</span>
-</div></pre><p>To enable fast minify mode with the API use:</p>
-<pre class ="notranslate"><div class="code lang-js"><div class="line-numbers">1</div>UglifyJS.minify(code, { <span class="hljs-attr">compress</span>: <span class="hljs-literal">false</span>, <span class="hljs-attr">mangle</span>: <span class="hljs-literal">true</span> });
-</div></pre>
+<pre><code><div class="line-numbers">1</div>uglifyjs <span class="hljs-keyword">file</span>.js -<span class="hljs-built_in">m</span>
+</code></pre><p>To enable fast minify mode with the API use:</p>
+<pre><code class="lang-js"><div class="line-numbers">1</div>UglifyJS.minify(code, { <span class="hljs-attr">compress</span>: <span class="hljs-literal">false</span>, <span class="hljs-attr">mangle</span>: <span class="hljs-literal">true</span> });
+</code></pre>
 <h4 id="Source-maps-and-debugging">Source maps and debugging</h4>
 <p>Various <code>compress</code> transforms that simplify, rearrange, inline and remove code
 are known to have an adverse effect on debugging with source maps. This is

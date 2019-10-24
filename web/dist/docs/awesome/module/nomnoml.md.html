@@ -203,7 +203,7 @@
 <h2 id="Library">Library</h2>
 <p>The <a href="http://www.nomnoml.com">nomnoml</a> standalone javascript library can be used to render diagrams on your own web page. The only dependencies are <a href="http://lodash.com">lodash</a> and <a href="https://github.com/cpettitt/dagre">dagre</a>. Install it using either <em>npm</em> or good old script inclusion.</p>
 <p>NodeJS usage with SVG output:</p>
-<pre class ="notranslate"><div class="code"><div class="line-numbers">1
+<pre><code><div class="line-numbers">1
 2
 3
 4
@@ -212,8 +212,8 @@
 <span class="hljs-keyword">var</span> nomnoml = <span class="hljs-built_in">require</span>(<span class="hljs-string">'nomnoml'</span>);
 <span class="hljs-keyword">var</span> src = <span class="hljs-string">'[nomnoml] is -&gt; [awesome]'</span>;
 <span class="hljs-built_in">console</span>.log(nomnoml.renderSvg(src));
-</div></pre><p>Html usage with a Canvas rendering target:</p>
-<pre class ="notranslate"><div class="code lang-html"><div class="line-numbers">1
+</code></pre><p>Html usage with a Canvas rendering target:</p>
+<pre><code class="lang-html"><div class="line-numbers">1
 2
 3
 4
@@ -232,7 +232,7 @@
     <span class="hljs-keyword">var</span> source = <span class="hljs-string">'[nomnoml] is -&gt; [awesome]'</span>;
     nomnoml.draw(canvas, source);
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
-</div></pre>
+</code></pre>
 <h2 id="SVG-support">SVG support</h2>
 <p>An experimental (and not fully featured) SVG rendering mode is available as the <code>nomnoml.renderSvg</code> function.</p>
 <h2 id="Command-Line-Interface">Command Line Interface</h2>
@@ -243,7 +243,7 @@
 <p>The canvas can be panned and zoomed by dragging and scrolling in the right hand third of the canvas. Downloaded image files will be given the filename in the <code>#title</code> directive.</p>
 <h3 id="Example" class ="notranslate">Example</h3>
 <p>This is how the Decorator pattern looks like in nomnoml syntax:</p>
-<pre class ="notranslate"><div class="code"><div class="line-numbers">1
+<pre><code><div class="line-numbers">1
 2
 3
 4
@@ -258,8 +258,8 @@
   [<span class="hljs-name">Component</span>] &lt;:- [<span class="hljs-name">Decorator</span>]
   [<span class="hljs-name">Component</span>] &lt;:- [<span class="hljs-name">ConcreteComponent</span>]
 ]
-</div></pre><h3 id="Association-types" class ="notranslate">Association types</h3>
-<pre class ="notranslate"><div class="code"><div class="line-numbers">1
+</code></pre><h3 id="Association-types" class ="notranslate">Association types</h3>
+<pre><code><div class="line-numbers">1
 2
 3
 4
@@ -288,8 +288,8 @@ o-   aggregation
 o-&gt;  aggregation
 --   note
 -<span class="hljs-regexp">/-  hidden</span>
-</div></pre><h3 id="Classifier-types" class ="notranslate">Classifier types</h3>
-<pre class ="notranslate"><div class="code"><div class="line-numbers">1
+</code></pre><h3 id="Classifier-types" class ="notranslate">Classifier types</h3>
+<pre><code><div class="line-numbers">1
 2
 3
 4
@@ -328,8 +328,8 @@ o-&gt;  aggregation
 [&lt;usecase&gt; name]
 [&lt;label&gt; name]
 [&lt;hidden&gt; name]
-</div></pre><h3 id="Directives" class ="notranslate">Directives</h3>
-<pre class ="notranslate"><div class="code"><div class="line-numbers">1
+</code></pre><h3 id="Directives" class ="notranslate">Directives</h3>
+<pre><code><div class="line-numbers">1
 2
 3
 4
@@ -362,19 +362,19 @@ o-&gt;  aggregation
 <span class="hljs-meta">#stroke: #33322E</span>
 <span class="hljs-meta">#title: filename</span>
 <span class="hljs-meta">#zoom: 1</span>
-</div></pre><p>Directives only available when using the command line interface</p>
-<pre class ="notranslate"><div class="code"><div class="line-numbers">1</div>#<span class="hljs-keyword">import</span>: my-common-styles.nomnoml
-</div></pre><h3 id="Custom-classifier-styles" class ="notranslate">Custom classifier styles</h3>
+</code></pre><p>Directives only available when using the command line interface</p>
+<pre><code><div class="line-numbers">1</div>#<span class="hljs-keyword">import</span>: my-common-styles.nomnoml
+</code></pre><h3 id="Custom-classifier-styles" class ="notranslate">Custom classifier styles</h3>
 <p>A directive that starts with &quot;.&quot; define a classifier style.</p>
-<pre class ="notranslate"><div class="code"><div class="line-numbers">1
+<pre><code><div class="line-numbers">1
 2
 3
 4</div>#.<span class="hljs-keyword">box: </span><span class="hljs-meta">fill</span>=<span class="hljs-number">#88</span>ff88
 #.<span class="hljs-keyword">blob: </span><span class="hljs-meta">fill</span><span class="hljs-symbol">=pink</span> visual<span class="hljs-symbol">=ellipse</span> <span class="hljs-keyword">italic </span><span class="hljs-keyword">bold </span>dashed
 [&lt;<span class="hljs-keyword">box&gt; </span>GreenBox]
 [&lt;<span class="hljs-keyword">blob&gt; </span>HideousBlob]
-</div></pre><p>Available visuals are</p>
-<pre class ="notranslate"><div class="code"><div class="line-numbers">1
+</code></pre><p>Available visuals are</p>
+<pre><code><div class="line-numbers">1
 2
 3
 4
@@ -407,8 +407,8 @@ o-&gt;  aggregation
 <span class="hljs-attr">visual</span>=sender
 <span class="hljs-attr">visual</span>=start
 <span class="hljs-attr">visual</span>=transceiver
-</div></pre><p>Available modifiers are</p>
-<pre class ="notranslate"><div class="code"><div class="line-numbers">1
+</code></pre><p>Available modifiers are</p>
+<pre><code><div class="line-numbers">1
 2
 3
 4
@@ -419,6 +419,6 @@ underline
 italic
 dashed
 empty
-</div></pre><h2 id="Contributing">Contributing</h2>
+</code></pre><h2 id="Contributing">Contributing</h2>
 <p>If you want to contribute to the project more info is available in <a href=contributing.md.html class ="notranslate">CONTRIBUTING.md</a>.</p>
  </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id=toc></div></div></div></div><div class=footer><div class=container>&copy; Copyright 2014-2019 fibjs.org | <a href=../../../support.html>支持我们</a></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="Click to return on the top page" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js></script><script type=text/javascript src=../../../js/common.js></script><script type=text/javascript src=../../../js/docs.js></script></body></html>

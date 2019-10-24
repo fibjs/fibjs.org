@@ -206,17 +206,17 @@ for Chinese and Japanese written purely in JavaScript.</p>
 <h2 id="Usage">Usage</h2>
 <h3 id="Download-Install" class ="notranslate">Download &amp; Install</h3>
 <p>Since Rakuten MA is a JavaScript library, there&#39;s no need for installation. Clone the git repository as</p>
-<pre class ="notranslate"><div class="code"><div class="line-numbers">1</div>git <span class="hljs-keyword">clone</span> <span class="hljs-title">https</span>://github.com/rakuten-nlp/rakutenma.git
-</div></pre><p>or download the zip archive from here: <a href="https://github.com/rakuten-nlp/rakutenma/archive/master.zip">https://github.com/rakuten-nlp/rakutenma/archive/master.zip</a></p>
+<pre><code><div class="line-numbers">1</div>git <span class="hljs-keyword">clone</span> <span class="hljs-title">https</span>://github.com/rakuten-nlp/rakutenma.git
+</code></pre><p>or download the zip archive from here: <a href="https://github.com/rakuten-nlp/rakutenma/archive/master.zip">https://github.com/rakuten-nlp/rakutenma/archive/master.zip</a></p>
 <p>If you have Node.js installed, you can run the demo by</p>
-<pre class ="notranslate"><div class="code"><div class="line-numbers">1</div><span class="hljs-keyword">node</span> <span class="hljs-title">demo</span>.js
-</div></pre><p>which is identical to the usage example below.</p>
+<pre><code><div class="line-numbers">1</div><span class="hljs-keyword">node</span> <span class="hljs-title">demo</span>.js
+</code></pre><p>which is identical to the usage example below.</p>
 <h3 id="npm-package" class ="notranslate">npm package</h3>
 <p>You can also use Rakuten MA as an npm package. You can install it by:</p>
-<pre class ="notranslate"><div class="code"><div class="line-numbers">1</div>npm <span class="hljs-keyword">install</span> rakutenma
-</div></pre><p>The model files can be found under <code>node_modules/rakutenma/</code>.</p>
+<pre><code><div class="line-numbers">1</div>npm <span class="hljs-keyword">install</span> rakutenma
+</code></pre><p>The model files can be found under <code>node_modules/rakutenma/</code>.</p>
 <h3 id="Usage-Example-(on-Node.js)" class ="notranslate">Usage Example (on Node.js)</h3>
-<pre class ="notranslate"><div class="code"><div class="line-numbers">1
+<pre><code><div class="line-numbers">1
 2
 3
 4
@@ -319,9 +319,9 @@ rma.hash_func = RakutenMA.create_hash_func(<span class="hljs-number">15</span>);
 
 <span class="hljs-comment">// Now what does the result look like?</span>
 <span class="hljs-built_in">console</span>.log(rma.tokenize(<span class="hljs-string">"うらにわにはにわにわとりがいる"</span>));
-</div></pre><h3 id="Usage-Example-(on-browsers)" class ="notranslate">Usage Example (on browsers)</h3>
+</code></pre><h3 id="Usage-Example-(on-browsers)" class ="notranslate">Usage Example (on browsers)</h3>
 <p>Include the following code snippet in the <code>&lt;head&gt;</code> of your HTML.</p>
-<pre class ="notranslate"><div class="code"><div class="line-numbers">1
+<pre><code><div class="line-numbers">1
 2
 3
 4
@@ -358,13 +358,13 @@ rma.hash_func = RakutenMA.create_hash_func(<span class="hljs-number">15</span>);
   }
 
 &lt;/script&gt;
-</div></pre><p>The analysis and result looks like this:</p>
-<pre class ="notranslate"><div class="code"><div class="line-numbers">1
+</code></pre><p>The analysis and result looks like this:</p>
+<pre><code><div class="line-numbers">1
 2
 3</div>&lt;textarea <span class="hljs-attribute">id</span>=<span class="hljs-string">"input"</span> <span class="hljs-attribute">cols</span>=<span class="hljs-string">"80"</span> <span class="hljs-attribute">rows</span>=<span class="hljs-string">"5"</span>&gt;&lt;/textarea&gt;
 &lt;input <span class="hljs-attribute">type</span>=<span class="hljs-string">"submit"</span> <span class="hljs-attribute">value</span>=<span class="hljs-string">"Analyze"</span> <span class="hljs-attribute">onclick</span>=<span class="hljs-string">"Segment()"</span>&gt;
 &lt;div <span class="hljs-attribute">id</span>=<span class="hljs-string">"output"</span>&gt;&lt;/div&gt;
-</div></pre><h3 id="Using-bundled-models-to-analyze-Chinese/Japanese-sentences" class ="notranslate">Using bundled models to analyze Chinese/Japanese sentences</h3>
+</code></pre><h3 id="Using-bundled-models-to-analyze-Chinese/Japanese-sentences" class ="notranslate">Using bundled models to analyze Chinese/Japanese sentences</h3>
 <ol>
 <li><span class="notranslate">Load an existing model</span>, e.g., <code>model = JSON.parse(fs.readFileSync(&quot;model_file&quot;));</code> then <code>rma = new RakutenMA(model);</code> or <code>rma.set_model(model);</code></li>
 <li>Specify <code>featset</code> depending on your langage (e.g., <code>rma.featset = RakutenMA.default_featset_zh;</code> for Chinese and <code>rma.featset = RakutenMA.default_featset_ja;</code> for Japanese).</li>

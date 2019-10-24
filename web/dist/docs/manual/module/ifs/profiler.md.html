@@ -190,13 +190,13 @@
  </div></div></div>  </div></div><div class=content><div class=social-share data-sites=weibo,twitter data-description=分享></div> <h1 id="模块-profiler">模块 profiler</h1>
 <p>内存 profiler 模块</p>
 <p>使用方法：</p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">var</span> profiler = <span class="hljs-built_in">require</span>(<span class="hljs-string">'profiler'</span>);
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">var</span> profiler = <span class="hljs-built_in">require</span>(<span class="hljs-string">'profiler'</span>);
+</code></pre>
 <h2 id="静态函数">静态函数</h2>
 <h3 id="saveSnapshot" class ="notranslate">saveSnapshot</h3>
 <p><strong>根据指定名称保存一个堆快照</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> profiler.saveSnapshot(<span class="hljs-built_in">String</span> fname);
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> profiler.saveSnapshot(<span class="hljs-built_in">String</span> fname);
+</code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">fname</span>: String, 堆快照名称</li>
@@ -204,8 +204,8 @@
 <hr>
 <h3 id="loadSnapshot" class ="notranslate">loadSnapshot</h3>
 <p><strong>根据指定名称读取一个堆快照</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> HeapSnapshot profiler.loadSnapshot(<span class="hljs-built_in">String</span> fname);
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> HeapSnapshot profiler.loadSnapshot(<span class="hljs-built_in">String</span> fname);
+</code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">fname</span>: String, 堆快照名称</li>
@@ -217,8 +217,8 @@
 <hr>
 <h3 id="takeSnapshot" class ="notranslate">takeSnapshot</h3>
 <p><strong>获取当前时间节点的堆快照，堆快照记录了当前时刻JS堆的状态</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> HeapSnapshot profiler.takeSnapshot();
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> HeapSnapshot profiler.takeSnapshot();
+</code></pre>
 <p>返回结果:</p>
 <ul>
 <li><a href=../../object/ifs/heapsnapshot.md.html class ="notranslate">HeapSnapshot</a>, 返回获取到的堆信息快照</li>
@@ -226,8 +226,8 @@
 <hr>
 <h3 id="diff" class ="notranslate">diff</h3>
 <p><strong>执行给定的函数，并对比执行前后 v8 堆的变化</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Object</span> profiler.diff(<span class="hljs-built_in">Function</span> test);
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Object</span> profiler.diff(<span class="hljs-built_in">Function</span> test);
+</code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">test</span>: Function, 给定要测试的函数</li>
@@ -239,12 +239,12 @@
 <hr>
 <h3 id="start" class ="notranslate">start</h3>
 <p><strong>启动一次运行状态采样日志</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3</div><span class="hljs-keyword">static</span> Timer profiler.start(<span class="hljs-built_in">String</span> fname,
     Integer time = <span class="hljs-number">60000</span>,
     Integer interval = <span class="hljs-number">100</span>);
-</div></pre>
+</code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">fname</span>: String, 给定日志存储文件名</li>
@@ -258,106 +258,106 @@
 <h2 id="常量">常量</h2>
 <h3 id="Node_Hidden" class ="notranslate">Node_Hidden</h3>
 <p><strong>隐藏节点，当显示给用户时可以被过滤掉</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> profiler.Node_Hidden = <span class="hljs-number">0</span>;
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> profiler.Node_Hidden = <span class="hljs-number">0</span>;
+</code></pre>
 <hr>
 <h3 id="Node_Array" class ="notranslate">Node_Array</h3>
 <p><strong>数组</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> profiler.Node_Array = <span class="hljs-number">1</span>;
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> profiler.Node_Array = <span class="hljs-number">1</span>;
+</code></pre>
 <hr>
 <h3 id="Node_String" class ="notranslate">Node_String</h3>
 <p><strong>字符串</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> profiler.Node_String = <span class="hljs-number">2</span>;
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> profiler.Node_String = <span class="hljs-number">2</span>;
+</code></pre>
 <hr>
 <h3 id="Node_Object" class ="notranslate">Node_Object</h3>
 <p><strong>JS对象（字符串和数组除外）</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> profiler.Node_Object = <span class="hljs-number">3</span>;
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> profiler.Node_Object = <span class="hljs-number">3</span>;
+</code></pre>
 <hr>
 <h3 id="Node_Code" class ="notranslate">Node_Code</h3>
 <p><strong>编译后的代码</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> profiler.Node_Code = <span class="hljs-number">4</span>;
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> profiler.Node_Code = <span class="hljs-number">4</span>;
+</code></pre>
 <hr>
 <h3 id="Node_Closure" class ="notranslate">Node_Closure</h3>
 <p><strong>函数闭包</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> profiler.Node_Closure = <span class="hljs-number">5</span>;
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> profiler.Node_Closure = <span class="hljs-number">5</span>;
+</code></pre>
 <hr>
 <h3 id="Node_RegExp" class ="notranslate">Node_RegExp</h3>
 <p><strong>正则表达式</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> profiler.Node_RegExp = <span class="hljs-number">6</span>;
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> profiler.Node_RegExp = <span class="hljs-number">6</span>;
+</code></pre>
 <hr>
 <h3 id="Node_HeapNumber" class ="notranslate">Node_HeapNumber</h3>
 <p><strong>堆中排好序的数字</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> profiler.Node_HeapNumber = <span class="hljs-number">7</span>;
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> profiler.Node_HeapNumber = <span class="hljs-number">7</span>;
+</code></pre>
 <hr>
 <h3 id="Node_Native" class ="notranslate">Node_Native</h3>
 <p><strong>Native对象（非v8堆上的）</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> profiler.Node_Native = <span class="hljs-number">8</span>;
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> profiler.Node_Native = <span class="hljs-number">8</span>;
+</code></pre>
 <hr>
 <h3 id="Node_Synthetic" class ="notranslate">Node_Synthetic</h3>
 <p><strong>Synthetic对象</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> profiler.Node_Synthetic = <span class="hljs-number">9</span>;
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> profiler.Node_Synthetic = <span class="hljs-number">9</span>;
+</code></pre>
 <hr>
 <h3 id="Node_ConsString" class ="notranslate">Node_ConsString</h3>
 <p><strong>拼接的字符串</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> profiler.Node_ConsString = <span class="hljs-number">10</span>;
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> profiler.Node_ConsString = <span class="hljs-number">10</span>;
+</code></pre>
 <hr>
 <h3 id="Node_SlicedString" class ="notranslate">Node_SlicedString</h3>
 <p><strong>分割的字符串</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> profiler.Node_SlicedString = <span class="hljs-number">11</span>;
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> profiler.Node_SlicedString = <span class="hljs-number">11</span>;
+</code></pre>
 <hr>
 <h3 id="Node_Symbol" class ="notranslate">Node_Symbol</h3>
 <p><strong>符号（ES6）</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> profiler.Node_Symbol = <span class="hljs-number">12</span>;
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> profiler.Node_Symbol = <span class="hljs-number">12</span>;
+</code></pre>
 <hr>
 <h3 id="Node_SimdValue" class ="notranslate">Node_SimdValue</h3>
 <p><strong>堆中排好序的SIMD值(ES7)</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> profiler.Node_SimdValue = <span class="hljs-number">13</span>;
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> profiler.Node_SimdValue = <span class="hljs-number">13</span>;
+</code></pre>
 <hr>
 <h3 id="Edge_ContextVariable" class ="notranslate">Edge_ContextVariable</h3>
 <p><strong>函数中的变量</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> profiler.Edge_ContextVariable = <span class="hljs-number">0</span>;
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> profiler.Edge_ContextVariable = <span class="hljs-number">0</span>;
+</code></pre>
 <hr>
 <h3 id="Edge_Element" class ="notranslate">Edge_Element</h3>
 <p><strong>数组中的元素</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> profiler.Edge_Element = <span class="hljs-number">1</span>;
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> profiler.Edge_Element = <span class="hljs-number">1</span>;
+</code></pre>
 <hr>
 <h3 id="Edge_Property" class ="notranslate">Edge_Property</h3>
 <p><strong>有名对象的属性</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> profiler.Edge_Property = <span class="hljs-number">2</span>;
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> profiler.Edge_Property = <span class="hljs-number">2</span>;
+</code></pre>
 <hr>
 <h3 id="Edge_Internal" class ="notranslate">Edge_Internal</h3>
 <p><strong>JS无法进入的链接</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> profiler.Edge_Internal = <span class="hljs-number">3</span>;
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> profiler.Edge_Internal = <span class="hljs-number">3</span>;
+</code></pre>
 <hr>
 <h3 id="Edge_Hidden" class ="notranslate">Edge_Hidden</h3>
 <p><strong>指向需要事先计算出空间大小的节点</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> profiler.Edge_Hidden = <span class="hljs-number">4</span>;
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> profiler.Edge_Hidden = <span class="hljs-number">4</span>;
+</code></pre>
 <hr>
 <h3 id="Edge_Shortcut" class ="notranslate">Edge_Shortcut</h3>
 <p><strong>指向无法事先计算出空间大小的节点</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> profiler.Edge_Shortcut = <span class="hljs-number">5</span>;
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> profiler.Edge_Shortcut = <span class="hljs-number">5</span>;
+</code></pre>
 <hr>
 <h3 id="Edge_Weak" class ="notranslate">Edge_Weak</h3>
 <p><strong>一个弱引用（被GC忽视）</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> profiler.Edge_Weak = <span class="hljs-number">6</span>;
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> profiler.Edge_Weak = <span class="hljs-number">6</span>;
+</code></pre>
  </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id=toc></div></div></div></div><div class=footer><div class=container>&copy; Copyright 2014-2019 fibjs.org | <a href=../../../../support.html>支持我们</a></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="Click to return on the top page" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js></script><script type=text/javascript src=../../../../js/common.js></script><script type=text/javascript src=../../../../js/docs.js></script></body></html>

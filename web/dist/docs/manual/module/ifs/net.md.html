@@ -190,33 +190,33 @@
  </div></div></div>  </div></div><div class=content><div class=social-share data-sites=weibo,twitter data-description=分享></div> <h1 id="模块-net">模块 net</h1>
 <p>网络访问模块</p>
 <p>基础模块。可用于创建和操作网络资源，引用方式：</p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">var</span> net = <span class="hljs-built_in">require</span>(<span class="hljs-string">'net'</span>);
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">var</span> net = <span class="hljs-built_in">require</span>(<span class="hljs-string">'net'</span>);
+</code></pre>
 <h2 id="对象">对象</h2>
 <h3 id="Socket" class ="notranslate">Socket</h3>
 <p><strong>创建一个 <a href=../../object/ifs/socket.md.html class ="notranslate">Socket</a> 对象，参见 <a href=../../object/ifs/socket.md.html class ="notranslate">Socket</a></strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div>Socket net.Socket;
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Socket net.Socket;
+</code></pre>
 <hr>
 <h3 id="Smtp" class ="notranslate">Smtp</h3>
 <p><strong>创建一个 <a href=../../object/ifs/smtp.md.html class ="notranslate">Smtp</a> 对象，参见 <a href=../../object/ifs/smtp.md.html class ="notranslate">Smtp</a></strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div>Smtp net.Smtp;
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Smtp net.Smtp;
+</code></pre>
 <hr>
 <h3 id="TcpServer" class ="notranslate">TcpServer</h3>
 <p><strong>创建一个 <a href=../../object/ifs/tcpserver.md.html class ="notranslate">TcpServer</a> 对象，参见 <a href=../../object/ifs/tcpserver.md.html class ="notranslate">TcpServer</a></strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div>TcpServer net.TcpServer;
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>TcpServer net.TcpServer;
+</code></pre>
 <hr>
 <h3 id="Url" class ="notranslate">Url</h3>
 <p><strong>创建一个 <a href=../../object/ifs/urlobject.md.html class ="notranslate">UrlObject</a> 对象，参见 <a href=../../object/ifs/urlobject.md.html class ="notranslate">UrlObject</a></strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div>UrlObject net.Url;
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>UrlObject net.Url;
+</code></pre>
 <h2 id="静态函数">静态函数</h2>
 <h3 id="info" class ="notranslate">info</h3>
 <p><strong>查询当前运行环境网络信息</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Object</span> net.info();
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Object</span> net.info();
+</code></pre>
 <p>返回结果:</p>
 <ul>
 <li><span class="notranslate">Object</span>, 返回网卡信息</li>
@@ -224,10 +224,10 @@
 <hr>
 <h3 id="resolve" class ="notranslate">resolve</h3>
 <p><strong>查询给定的主机名的地址</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">String</span> net.resolve(<span class="hljs-built_in">String</span> name,
     Integer family = AF_INET) <span class="hljs-keyword">async</span>;
-</div></pre>
+</code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">name</span>: String, 指定主机名</li>
@@ -240,8 +240,8 @@
 <hr>
 <h3 id="ip" class ="notranslate">ip</h3>
 <p><strong>快速查询的主机地址，等效与 resolve(name)</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">String</span> net.ip(<span class="hljs-built_in">String</span> name) <span class="hljs-keyword">async</span>;
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">String</span> net.ip(<span class="hljs-built_in">String</span> name) <span class="hljs-keyword">async</span>;
+</code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">name</span>: String, 指定主机名</li>
@@ -253,8 +253,8 @@
 <hr>
 <h3 id="ipv6" class ="notranslate">ipv6</h3>
 <p><strong>快速查询的主机 ipv6 地址，等效与 resolve(name, <a href=net.md.html#AF_INET6 class ="notranslate">net.AF_INET6</a>)</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">String</span> net.ipv6(<span class="hljs-built_in">String</span> name) <span class="hljs-keyword">async</span>;
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">String</span> net.ipv6(<span class="hljs-built_in">String</span> name) <span class="hljs-keyword">async</span>;
+</code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">name</span>: String, 指定主机名</li>
@@ -266,10 +266,10 @@
 <hr>
 <h3 id="connect" class ="notranslate">connect</h3>
 <p><strong>创建一个 <a href=../../object/ifs/socket.md.html class ="notranslate">Socket</a> 或 <a href=../../object/ifs/sslsocket.md.html class ="notranslate">SslSocket</a> 对象并建立连接</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">static</span> Stream net.connect(<span class="hljs-built_in">String</span> url,
     Integer timeout = <span class="hljs-number">0</span>) <span class="hljs-keyword">async</span>;
-</div></pre>
+</code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">url</span>: String, 指定连接的协议，可以是：tcp://host:port 或者 <a href=ssl.md.html class ="notranslate">ssl</a>://host:port</li>
@@ -282,10 +282,10 @@
 <hr>
 <h3 id="openSmtp" class ="notranslate">openSmtp</h3>
 <p><strong>创建一个 <a href=../../object/ifs/smtp.md.html class ="notranslate">Smtp</a> 对象并建立连接，参见 <a href=../../object/ifs/smtp.md.html class ="notranslate">Smtp</a></strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">static</span> Smtp net.openSmtp(<span class="hljs-built_in">String</span> url,
     Integer timeout = <span class="hljs-number">0</span>) <span class="hljs-keyword">async</span>;
-</div></pre>
+</code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">url</span>: String, 指定连接的协议，可以是：tcp://host:port 或者 <a href=ssl.md.html class ="notranslate">ssl</a>://host:port</li>
@@ -298,8 +298,8 @@
 <hr>
 <h3 id="backend" class ="notranslate">backend</h3>
 <p><strong>查询当前系统异步网络引擎</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">String</span> net.backend();
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">String</span> net.backend();
+</code></pre>
 <p>返回结果:</p>
 <ul>
 <li><span class="notranslate">String</span>, 返回网络引擎名称</li>
@@ -307,8 +307,8 @@
 <hr>
 <h3 id="isIP" class ="notranslate">isIP</h3>
 <p><strong>检测输入是否是 IP 地址</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Integer net.isIP(<span class="hljs-built_in">String</span> ip = <span class="hljs-string">""</span>);
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Integer net.isIP(<span class="hljs-built_in">String</span> ip = <span class="hljs-string">""</span>);
+</code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">ip</span>: String, 指定要检测的字符串</li>
@@ -320,8 +320,8 @@
 <hr>
 <h3 id="isIPv4" class ="notranslate">isIPv4</h3>
 <p><strong>检测输入是否是 IPv4 地址</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Boolean</span> net.isIPv4(<span class="hljs-built_in">String</span> ip = <span class="hljs-string">""</span>);
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Boolean</span> net.isIPv4(<span class="hljs-built_in">String</span> ip = <span class="hljs-string">""</span>);
+</code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">ip</span>: String, 指定要检测的字符串</li>
@@ -333,8 +333,8 @@
 <hr>
 <h3 id="isIPv6" class ="notranslate">isIPv6</h3>
 <p><strong>检测输入是否是 IPv6 地址</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Boolean</span> net.isIPv6(<span class="hljs-built_in">String</span> ip = <span class="hljs-string">""</span>);
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Boolean</span> net.isIPv6(<span class="hljs-built_in">String</span> ip = <span class="hljs-string">""</span>);
+</code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">ip</span>: String, 指定要检测的字符串</li>
@@ -346,21 +346,21 @@
 <h2 id="常量">常量</h2>
 <h3 id="AF_INET" class ="notranslate">AF_INET</h3>
 <p><strong>地址集常量，指定 ipv4</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> net.AF_INET = <span class="hljs-number">2</span>;
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> net.AF_INET = <span class="hljs-number">2</span>;
+</code></pre>
 <hr>
 <h3 id="AF_INET6" class ="notranslate">AF_INET6</h3>
 <p><strong>地址集常量，指定 ipv6</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> net.AF_INET6 = <span class="hljs-number">10</span>;
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> net.AF_INET6 = <span class="hljs-number">10</span>;
+</code></pre>
 <hr>
 <h3 id="SOCK_STREAM" class ="notranslate">SOCK_STREAM</h3>
 <p><strong>协议族常量，指定 tcp</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> net.SOCK_STREAM = <span class="hljs-number">1</span>;
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> net.SOCK_STREAM = <span class="hljs-number">1</span>;
+</code></pre>
 <hr>
 <h3 id="SOCK_DGRAM" class ="notranslate">SOCK_DGRAM</h3>
 <p><strong>协议族常量，指定 udp</strong></p>
-<pre class ="notranslate"><div class="code lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> net.SOCK_DGRAM = <span class="hljs-number">2</span>;
-</div></pre>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> net.SOCK_DGRAM = <span class="hljs-number">2</span>;
+</code></pre>
  </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id=toc></div></div></div></div><div class=footer><div class=container>&copy; Copyright 2014-2019 fibjs.org | <a href=../../../../support.html>支持我们</a></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="Click to return on the top page" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js></script><script type=text/javascript src=../../../../js/common.js></script><script type=text/javascript src=../../../../js/docs.js></script></body></html>
