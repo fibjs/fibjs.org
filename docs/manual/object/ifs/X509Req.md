@@ -42,6 +42,26 @@ new X509Req(String subject,
 * key: [PKey](PKey.md), 证书的公钥
 * hash: Integer, 证书摘要算法，缺省为 [hash.SHA1](../../module/ifs/hash.md#SHA1)
 
+--------------------------
+**X509Req 构造函数，加载一个 DER 格式的证书请求**
+
+```JavaScript
+new X509Req(Buffer derReq);
+```
+
+调用参数:
+* derReq: [Buffer](Buffer.md), DER 格式的证书请求
+
+--------------------------
+**X509Req 构造函数，加载一个 PEM 格式的证书请求**
+
+```JavaScript
+new X509Req(String pemReq);
+```
+
+调用参数:
+* pemReq: String, DER 格式的证书请求
+
 ## 成员属性
         
 ### subject

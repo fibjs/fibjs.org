@@ -3,14 +3,6 @@
 
 ## 对象
         
-### Stats
-**数据统计对象，用以构建应用运行时数据收集，参见 [Stats](../../object/ifs/Stats.md) 对象。**
-
-```JavaScript
-Stats util.Stats;
-```
-
---------------------------
 ### LruCache
 **LRU(least recently used) 缓存对象，参见 [LruCache](../../object/ifs/LruCache.md) 对象。**
 
@@ -153,6 +145,20 @@ static Boolean util.isNullOrUndefined(Value v);
 
 ```JavaScript
 static Boolean util.isNumber(Value v);
+```
+
+调用参数:
+* v: Value, 给定需要检测的变量
+
+返回结果:
+* Boolean, 如果是数字则返回 True
+
+--------------------------
+### isBigInt
+**检测给定的变量是否是 BigInt**
+
+```JavaScript
+static Boolean util.isBigInt(Value v);
 ```
 
 调用参数:

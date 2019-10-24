@@ -11,7 +11,6 @@ digraph {
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
     Stream [tooltip="Stream", fillcolor="lightgray", id="me", label="{Stream|read()\lwrite()\lflush()\lclose()\lcopyTo()\l}"];
     BufferedStream [tooltip="BufferedStream", URL="BufferedStream.md", label="{BufferedStream}"];
-    SubProcess [tooltip="SubProcess", URL="SubProcess.md", label="{SubProcess}"];
     SeekableStream [tooltip="SeekableStream", URL="SeekableStream.md", label="{SeekableStream}"];
     File [tooltip="File", URL="File.md", label="{File}"];
     MemoryStream [tooltip="MemoryStream", URL="MemoryStream.md", label="{MemoryStream}"];
@@ -20,7 +19,6 @@ digraph {
 
     object -> Stream [dir=back];
     Stream -> BufferedStream [dir=back];
-    BufferedStream -> SubProcess [dir=back];
     Stream -> SeekableStream [dir=back];
     SeekableStream -> File [dir=back];
     SeekableStream -> MemoryStream [dir=back];

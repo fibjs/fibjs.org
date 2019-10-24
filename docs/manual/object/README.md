@@ -9,11 +9,9 @@
 * [Digest](ifs/Digest.md) - 信息摘要对象
 * [Event](ifs/Event.md) - 事件对象
 * [EventEmitter](ifs/EventEmitter.md) - 事件触发对象，可用于建立观察者模式，支持事件触发的对象均继承于此，同一事件的同一函数只会产生一次回调
-* [EventInfo](ifs/EventInfo.md) - 事件信息对象，用于在事件中传递信息
 * [Fiber](ifs/Fiber.md) - 纤程操作对象，此对象不可直接创建
 * [File](ifs/File.md) - 文件操作对象，用于二进制文件读写
 * [Handler](ifs/Handler.md) - 消息处理器接口
-* [HandlerEx](ifs/HandlerEx.md) - 扩展消息处理器接口
 * [HeapGraphEdge](ifs/HeapGraphEdge.md) - HeapGraphEdge表示两个HeapGraphNode节点间的关联，从上游节点到下游节点
 * [HeapGraphNode](ifs/HeapGraphNode.md) - HeapGraphNode表示堆视图中的一个节点
 * [HeapSnapshot](ifs/HeapSnapshot.md) - HeapSnapshots记录JS堆在某个时刻的状态
@@ -29,7 +27,6 @@
 * [HttpUploadData](ifs/HttpUploadData.md) - 包含 multipart 的一个条目数据
 * [HttpsServer](ifs/HttpsServer.md) - https 服务器对象
 * [Image](ifs/Image.md) - 图像处理对象，用以对图像进行转换，绘制，存储等操作
-* [Int64](ifs/Int64.md) - 64位整数对象
 * [LevelDB](ifs/LevelDB.md) - LevelDB 数据库对象
 * [Lock](ifs/Lock.md) - 纤程锁对象
 * [LruCache](ifs/LruCache.md) - LRU(least recently used) 缓存对象
@@ -59,7 +56,6 @@
 * [SslServer](ifs/SslServer.md) - ssl 服务器对象，可方便创建一个标准多纤程 ssl 服务器
 * [SslSocket](ifs/SslSocket.md) - ssl 网络套接口对象
 * [Stat](ifs/Stat.md) - 文件的基础信息对象
-* [Stats](ifs/Stats.md) - 数据统计对象，用以构建应用运行时数据收集
 * [Stream](ifs/Stream.md) - 流操作对象，用于二进制数据流读写
 * [StringDecoder](ifs/StringDecoder.md) - 流解码对象
 * [SubProcess](ifs/SubProcess.md) - 子进程对象

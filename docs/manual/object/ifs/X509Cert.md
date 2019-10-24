@@ -28,6 +28,28 @@ digraph {
 new X509Cert();
 ```
 
+--------------------------
+**X509Cert 构造函数，加载一个 DER 格式的证书**
+
+```JavaScript
+new X509Cert(Buffer derCert);
+```
+
+调用参数:
+* derCert: [Buffer](Buffer.md), DER 格式的证书
+
+--------------------------
+**X509Cert 构造函数，加载一个 CRT/PEM/TXT 格式的证书**
+
+```JavaScript
+new X509Cert(String txtCert);
+```
+
+调用参数:
+* txtCert: String, CRT/PEM/TXT 格式的证书
+
+load 加载 mozilla 的 certdata,txt， 可于 [http](../../module/ifs/http.md)://hg.mozilla.org/releases/mozilla-release/raw-file/default/security/nss/lib/ckfw/builtins/certdata.txt 下载使用
+
 ## 成员属性
         
 ### version
@@ -149,7 +171,7 @@ X509Cert.load(String txtCert);
 ```
 
 调用参数:
-* txtCert: String, PEM 格式的证书
+* txtCert: String, CRT/PEM/TXT 格式的证书
 
 load 加载 mozilla 的 certdata,txt， 可于 [http](../../module/ifs/http.md)://hg.mozilla.org/releases/mozilla-release/raw-file/default/security/nss/lib/ckfw/builtins/certdata.txt 下载使用
 
@@ -195,8 +217,11 @@ Boolean X509Cert.verify(X509Cert cert) async;
 **导出已经加载的证书**
 
 ```JavaScript
-Array X509Cert.dump();
+Array X509Cert.dump(Boolean pem = true);
 ```
+
+调用参数:
+* pem: Boolean, 指定输出 PEM 格式的撤销证书，缺省为 true
 
 返回结果:
 * Array, 以数组方式导出证书链

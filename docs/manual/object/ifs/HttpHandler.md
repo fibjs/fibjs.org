@@ -20,12 +20,10 @@ digraph {
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
     Handler [tooltip="Handler", URL="Handler.md", label="{Handler|new Handler()\l|invoke()\l}"];
-    HandlerEx [tooltip="HandlerEx", URL="HandlerEx.md", label="{HandlerEx|handler\lstats\l|onerror()\l}"];
-    HttpHandler [tooltip="HttpHandler", fillcolor="lightgray", id="me", label="{HttpHandler|new HttpHandler()\l|forceGZIP\lmaxHeadersCount\lmaxBodySize\lserverName\l|enableCrossOrigin()\l}"];
+    HttpHandler [tooltip="HttpHandler", fillcolor="lightgray", id="me", label="{HttpHandler|new HttpHandler()\l|maxHeadersCount\lmaxBodySize\lserverName\lhandler\l|enableCrossOrigin()\l}"];
 
     object -> Handler [dir=back];
-    Handler -> HandlerEx [dir=back];
-    HandlerEx -> HttpHandler [dir=back];
+    Handler -> HttpHandler [dir=back];
 }
 ```
 
@@ -43,14 +41,6 @@ new HttpHandler(Handler hdlr);
 
 ## 成员属性
         
-### forceGZIP
-**Boolean, 查询和设置是否允强制使用 gzip 压缩输出，缺省为 false**
-
-```JavaScript
-Boolean HttpHandler.forceGZIP;
-```
-
---------------------------
 ### maxHeadersCount
 **Integer, 查询和设置最大请求头个数，缺省为 128**
 
@@ -76,30 +66,10 @@ String HttpHandler.serverName;
 
 --------------------------
 ### handler
-**[Handler](Handler.md), [WebSocket](WebSocket.md) 协议转换处理器当前事件处理接口对象**
+**[Handler](Handler.md), [http](../../module/ifs/http.md) 协议转换处理器当前事件处理接口对象**
 
 ```JavaScript
 Handler HttpHandler.handler;
-```
-
---------------------------
-### stats
-**[Stats](Stats.md), 查询 [WebSocket](WebSocket.md) 包协议转换处理器的工作状态**
-
-```JavaScript
-readonly Stats HttpHandler.stats;
-```
-
-返回的结果为一个 [Stats](Stats.md) 对象，结构如下：
-
-```JavaScript
-{
-    total: 1000, // 总计处理的请求
-    pendding: 100, // 当前正在处理的请求
-    request: 10, // 新建的请求
-    response: 10, // 发送的响应
-    error: 100 // 发生的错误
-}
 ```
 
 ## 成员函数
@@ -113,28 +83,6 @@ HttpHandler.enableCrossOrigin(String allowHeaders = "Content-Type");
 
 调用参数:
 * allowHeaders: String, 指定接受的 [http](../../module/ifs/http.md) 头字段
-
---------------------------
-### onerror
-**设置错误处理器**
-
-```JavaScript
-HttpHandler.onerror(Object hdlrs);
-```
-
-调用参数:
-* hdlrs: Object, 指定不同的错误的处理器，key 是错误号，value 是处理器，可以是内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq.Handler](../../module/ifs/mq.md#Handler)
-
-使用方式：
-
-```JavaScript
-hdlr.onerror({
-    "404": function(v) {
-        ...
-    },
-    "500": new mq.Routing(...)
-})
-```
 
 --------------------------
 ### invoke

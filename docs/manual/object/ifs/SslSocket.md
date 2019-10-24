@@ -14,7 +14,7 @@ digraph {
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
     Stream [tooltip="Stream", URL="Stream.md", label="{Stream|read()\lwrite()\lflush()\lclose()\lcopyTo()\l}"];
-    SslSocket [tooltip="SslSocket", fillcolor="lightgray", id="me", label="{SslSocket|new SslSocket()\l|verification\lca\lpeerCert\lstream\l|connect()\laccept()\l}"];
+    SslSocket [tooltip="SslSocket", fillcolor="lightgray", id="me", label="{SslSocket|new SslSocket()\l|verification\lca\lpeerCert\lhostname\lstream\l|connect()\laccept()\l}"];
 
     object -> Stream [dir=back];
     Stream -> SslSocket [dir=back];
@@ -37,10 +37,12 @@ certs 格式为：
 
 ```JavaScript
 [{
+        name: "fibjs.org",
         crt: [X509Cert object],
         key: [PKey object]
     },
     {
+        name: "*.fibjs.org",
         crt: [X509Cert object],
         key: [PKey object]
     }
@@ -82,6 +84,14 @@ readonly X509Cert SslSocket.ca;
 
 ```JavaScript
 readonly X509Cert SslSocket.peerCert;
+```
+
+--------------------------
+### hostname
+**String, 连接的主机名**
+
+```JavaScript
+readonly String SslSocket.hostname;
 ```
 
 --------------------------

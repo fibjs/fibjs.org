@@ -4,7 +4,7 @@ var hash = require('hash');
 var io = require('io');
 var path = require('path');
 var sync = require('./sync');
-var translate = require('./fib-translate').translate;
+var trans = require('./fib-translate');
 
 console.log("start server");
 
@@ -21,14 +21,17 @@ function get_handler(l) {
                 var data = r.response.data;
                 if (data) {
                     var ms = new io.MemoryStream();
-                    var txt = cache.get(hash.md5(data).digest().hex(), () => {
-                        var txt = translate(data.toString(), {
+                    var txt = cache.get(hash.md5(data).digest().hex() + "_" + l, () => {
+                        var txt = data.toString();
+                        txt = txt.replace(/<div class=dropdown-menu>( *<a href=[^>]+>[^<]+<\/a>)*/g, (s) => {
+                            return s.replace(/href=/g, 'href=../');
+                        })
+                        txt = trans.translate(txt, {
                             format: 'html',
                             from: 'zh-CN',
                             to: l
                         });
                         txt = txt.replace(/<\/div> <span/g, '</div><span');
-                        txt = txt.replace(/en\/index.html>EN<\/a>/g, '../index.html>CN</a>');
                         return txt;
                     });
 
@@ -41,13 +44,16 @@ function get_handler(l) {
     ];
 }
 
-var svr = new http.Server(port, {
-    '/en/*': get_handler('zh-TW'),
-    "*": hdr
-});
+var r = {};
+
+for (var l in trans.langs)
+    r[`/${l}/*`] = get_handler(l);
+r['*'] = hdr;
+
+var svr = new http.Server(port, r);
 svr.start();
 
-// var disableSync = !!process.env.FIBJS_DOC_NO_SYNC
-// if (!disableSync) {
-//     sync();
-// }
+var disableSync = !!process.env.FIBJS_DOC_NO_SYNC
+if (!disableSync) {
+    sync();
+}

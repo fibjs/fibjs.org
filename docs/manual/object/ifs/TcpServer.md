@@ -22,7 +22,7 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    TcpServer [tooltip="TcpServer", fillcolor="lightgray", id="me", label="{TcpServer|new TcpServer()\l|socket\lhandler\lstats\l|run()\lasyncRun()\lstop()\l}"];
+    TcpServer [tooltip="TcpServer", fillcolor="lightgray", id="me", label="{TcpServer|new TcpServer()\l|socket\lhandler\l|start()\lstop()\l}"];
     HttpServer [tooltip="HttpServer", URL="HttpServer.md", label="{HttpServer}"];
     HttpsServer [tooltip="HttpsServer", URL="HttpsServer.md", label="{HttpsServer}"];
     SslServer [tooltip="SslServer", URL="SslServer.md", label="{SslServer}"];
@@ -79,40 +79,13 @@ readonly Socket TcpServer.socket;
 Handler TcpServer.handler;
 ```
 
---------------------------
-### stats
-**[Stats](Stats.md), 查询当前服务器运行状态**
-
-```JavaScript
-readonly Stats TcpServer.stats;
-```
-
-返回的结果为一个 [Stats](Stats.md) 对象，初始化计数器如下：
-
-```JavaScript
-{
-    total: 1000, // 总计处理的连接
-    connections: 100, // 当前正在处理的连接
-    accept: 10, // 上次查询后新建的连接
-    close: 10 // 上次查询后关闭的连接
-}
-```
-
 ## 成员函数
         
-### run
-**运行服务器并开始接收和分发连接，此函数不会返回**
+### start
+**启动当前服务器**
 
 ```JavaScript
-TcpServer.run() async;
-```
-
---------------------------
-### asyncRun
-**异步运行服务器并开始接收和分发连接，调用后立即返回，服务器在后台运行**
-
-```JavaScript
-TcpServer.asyncRun();
+TcpServer.start();
 ```
 
 --------------------------

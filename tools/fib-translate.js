@@ -278,4 +278,5 @@ function translate(text, opts) {
     }
 }
 
+exports.langs = langs;
 exports.translate = translate;

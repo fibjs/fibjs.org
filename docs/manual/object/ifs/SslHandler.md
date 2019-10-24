@@ -45,10 +45,12 @@ certs 格式为：
 
 ```JavaScript
 [{
+        name: "fibjs.org",
         crt: [X509Cert object],
         key: [PKey object]
     },
     {
+        name: "*.fibjs.org",
         crt: [X509Cert object],
         key: [PKey object]
     }

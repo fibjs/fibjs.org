@@ -360,3 +360,11 @@ static Integer http.poolSize;
 static Integer http.poolTimeout;
 ```
 
+--------------------------
+### proxyAgent
+**String, 查询和设置代理服务器**
+
+```JavaScript
+static String http.proxyAgent;
+```
+

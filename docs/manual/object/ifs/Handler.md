@@ -9,7 +9,6 @@ digraph {
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
     Handler [tooltip="Handler", fillcolor="lightgray", id="me", label="{Handler|new Handler()\l|invoke()\l}"];
     Chain [tooltip="Chain", URL="Chain.md", label="{Chain}"];
-    HandlerEx [tooltip="HandlerEx", URL="HandlerEx.md", label="{HandlerEx}"];
     HttpHandler [tooltip="HttpHandler", URL="HttpHandler.md", label="{HttpHandler}"];
     HttpRepeater [tooltip="HttpRepeater", URL="HttpRepeater.md", label="{HttpRepeater}"];
     Routing [tooltip="Routing", URL="Routing.md", label="{Routing}"];
@@ -17,8 +16,7 @@ digraph {
 
     object -> Handler [dir=back];
     Handler -> Chain [dir=back];
-    Handler -> HandlerEx [dir=back];
-    HandlerEx -> HttpHandler [dir=back];
+    Handler -> HttpHandler [dir=back];
     Handler -> HttpRepeater [dir=back];
     Handler -> Routing [dir=back];
     Handler -> SslHandler [dir=back];
@@ -56,6 +54,16 @@ new Handler(Function hdlr);
 
 调用参数:
 * hdlr: Function, JavaScript 处理器函数
+
+--------------------------
+**构造一个 fileHandler 或者 [HttpRepeater](HttpRepeater.md)**
+
+```JavaScript
+new Handler(String hdlr);
+```
+
+调用参数:
+* hdlr: String, 处理器的地址参数
 
 ## 成员函数
         

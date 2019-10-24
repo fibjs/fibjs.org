@@ -8,7 +8,7 @@ digraph {
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
     EventEmitter [tooltip="EventEmitter", URL="EventEmitter.md", label="{EventEmitter|new EventEmitter()\l|defaultMaxListeners\l|on()\laddListener()\lprependListener()\lonce()\lprependOnceListener()\loff()\lremoveListener()\lremoveAllListeners()\lsetMaxListeners()\lgetMaxListeners()\llisteners()\llistenerCount()\leventNames()\lemit()\l}"];
-    Worker [tooltip="Worker", fillcolor="lightgray", id="me", label="{Worker|new Worker()\l|onmessage\l|postMessage()\l}"];
+    Worker [tooltip="Worker", fillcolor="lightgray", id="me", label="{Worker|new Worker()\l|onload\lonmessage\lonerror\l|postMessage()\l}"];
 
     object -> EventEmitter [dir=back];
     EventEmitter -> Worker [dir=back];
@@ -40,11 +40,27 @@ static Integer Worker.defaultMaxListeners;
 
 ## 成员属性
         
+### onload
+**Function, 查询和绑定接受 load 消息事件，相当于 on("load", func);**
+
+```JavaScript
+Function Worker.onload;
+```
+
+--------------------------
 ### onmessage
 **Function, 查询和绑定接受 postMessage 消息事件，相当于 on("message", func);**
 
 ```JavaScript
 Function Worker.onmessage;
+```
+
+--------------------------
+### onerror
+**Function, 查询和绑定接受 error 消息事件，相当于 on("error", func);**
+
+```JavaScript
+Function Worker.onerror;
 ```
 
 ## 成员函数

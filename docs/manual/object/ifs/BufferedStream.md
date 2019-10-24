@@ -15,11 +15,9 @@ digraph {
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
     Stream [tooltip="Stream", URL="Stream.md", label="{Stream|read()\lwrite()\lflush()\lclose()\lcopyTo()\l}"];
     BufferedStream [tooltip="BufferedStream", fillcolor="lightgray", id="me", label="{BufferedStream|new BufferedStream()\l|stream\lcharset\lEOL\l|readText()\lreadLine()\lreadLines()\lreadUntil()\lwriteText()\lwriteLine()\l}"];
-    SubProcess [tooltip="SubProcess", URL="SubProcess.md", label="{SubProcess}"];
 
     object -> Stream [dir=back];
     Stream -> BufferedStream [dir=back];
-    BufferedStream -> SubProcess [dir=back];
 }
 ```
 

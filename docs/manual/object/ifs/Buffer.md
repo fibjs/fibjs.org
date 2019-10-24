@@ -13,7 +13,7 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    Buffer [tooltip="Buffer", fillcolor="lightgray", id="me", label="{Buffer|new Buffer()\l|operator[]\l|isBuffer()\lfrom()\lconcat()\lalloc()\lallocUnsafe()\lallocUnsafeSlow()\lbyteLength()\lisEncoding()\l|length\l|resize()\lappend()\lwrite()\lfill()\lindexOf()\lcompare()\lcopy()\lreadUInt8()\lreadUInt16LE()\lreadUInt16BE()\lreadUInt32LE()\lreadUInt32BE()\lreadUIntLE()\lreadUIntBE()\lreadInt8()\lreadInt16LE()\lreadInt16BE()\lreadInt32LE()\lreadInt32BE()\lreadIntLE()\lreadIntBE()\lreadInt64LE()\lreadInt64BE()\lreadFloatLE()\lreadFloatBE()\lreadDoubleLE()\lreadDoubleBE()\lwriteUInt8()\lwriteUInt16LE()\lwriteUInt16BE()\lwriteUInt32LE()\lwriteUInt32BE()\lwriteUIntLE()\lwriteUIntBE()\lwriteInt8()\lwriteInt16LE()\lwriteInt16BE()\lwriteInt32LE()\lwriteInt32BE()\lwriteIntLE()\lwriteIntBE()\lwriteInt64LE()\lwriteInt64BE()\lwriteFloatLE()\lwriteFloatBE()\lwriteDoubleLE()\lwriteDoubleBE()\lslice()\ljoin()\lreverse()\lequals()\lhex()\lbase64()\lkeys()\lvalues()\lentries()\ltoArray()\ltoString()\l}"];
+    Buffer [tooltip="Buffer", fillcolor="lightgray", id="me", label="{Buffer|new Buffer()\l|operator[]\l|isBuffer()\lfrom()\lconcat()\lalloc()\lallocUnsafe()\lallocUnsafeSlow()\lbyteLength()\lisEncoding()\l|length\l|resize()\lappend()\lwrite()\lfill()\lindexOf()\lcompare()\lcopy()\lreadUInt8()\lreadUInt16LE()\lreadUInt16BE()\lreadUInt32LE()\lreadUInt32BE()\lreadUIntLE()\lreadUIntBE()\lreadInt64LE()\lreadInt64BE()\lreadInt8()\lreadInt16LE()\lreadInt16BE()\lreadInt32LE()\lreadInt32BE()\lreadIntLE()\lreadIntBE()\lwriteInt64LE()\lwriteInt64BE()\lreadFloatLE()\lreadFloatBE()\lreadDoubleLE()\lreadDoubleBE()\lwriteUInt8()\lwriteUInt16LE()\lwriteUInt16BE()\lwriteUInt32LE()\lwriteUInt32BE()\lwriteUIntLE()\lwriteUIntBE()\lwriteInt8()\lwriteInt16LE()\lwriteInt16BE()\lwriteInt32LE()\lwriteInt32BE()\lwriteIntLE()\lwriteIntBE()\lwriteFloatLE()\lwriteFloatBE()\lwriteDoubleLE()\lwriteDoubleBE()\lslice()\ljoin()\lreverse()\lequals()\lhex()\lbase64()\lkeys()\lvalues()\lentries()\ltoArray()\ltoString()\l}"];
 
     object -> Buffer [dir=back];
 }
@@ -647,10 +647,46 @@ Long Buffer.readUInt32BE(Integer offset = 0,
 
 --------------------------
 ### readUIntLE
-**从缓存对象读取一个无符号整型数值，最大支持 48 位，以低字节序的存储方式**
+**从缓存对象读取一个无符号整型数值，最大支持 64 位，以低字节序的存储方式**
 
 ```JavaScript
 Long Buffer.readUIntLE(Integer offset = 0,
+    Integer byteLength = 8,
+    Boolean noAssert = false);
+```
+
+调用参数:
+* offset: Integer, 指定读取的起始位置，缺省为 0
+* byteLength: Integer, 指定读取的字节数，缺省 8 个字节
+* noAssert: Boolean, 指定读取越界时不抛出错误，缺省为 flase，抛出
+
+返回结果:
+* Long, 返回读取的整型数值
+
+--------------------------
+### readUIntBE
+**从缓存对象读取一个无符号整型数值，最大支持 64 位，以高字节序的存储方式**
+
+```JavaScript
+Long Buffer.readUIntBE(Integer offset = 0,
+    Integer byteLength = 8,
+    Boolean noAssert = false);
+```
+
+调用参数:
+* offset: Integer, 指定读取的起始位置，缺省为 0
+* byteLength: Integer, 指定读取的字节数，缺省 8 个字节
+* noAssert: Boolean, 指定读取越界时不抛出错误，缺省为 flase，抛出
+
+返回结果:
+* Long, 返回读取的整型数值
+
+--------------------------
+### readInt64LE
+**从缓存对象读取一个 64 位整型数值，以低字节序的存储方式**
+
+```JavaScript
+Long Buffer.readInt64LE(Integer offset = 0,
     Boolean noAssert = false);
 ```
 
@@ -662,11 +698,11 @@ Long Buffer.readUIntLE(Integer offset = 0,
 * Long, 返回读取的整型数值
 
 --------------------------
-### readUIntBE
-**从缓存对象读取一个无符号整型数值，最大支持 48 位，以高字节序的存储方式**
+### readInt64BE
+**从缓存对象读取一个 64 位整型数值，以高字节序的存储方式**
 
 ```JavaScript
-Long Buffer.readUIntBE(Integer offset = 0,
+Long Buffer.readInt64BE(Integer offset = 0,
     Boolean noAssert = false);
 ```
 
@@ -759,15 +795,17 @@ Integer Buffer.readInt32BE(Integer offset = 0,
 
 --------------------------
 ### readIntLE
-**从缓存对象读取一个整型数值，最大支持 48 位，以低字节序的存储方式**
+**从缓存对象读取一个整型数值，最大支持 64 位，以低字节序的存储方式**
 
 ```JavaScript
 Long Buffer.readIntLE(Integer offset = 0,
+    Integer byteLength = 8,
     Boolean noAssert = false);
 ```
 
 调用参数:
 * offset: Integer, 指定读取的起始位置，缺省为 0
+* byteLength: Integer, 指定读取的字节数，缺省 8 个字节
 * noAssert: Boolean, 指定读取越界时不抛出错误，缺省为 flase，抛出
 
 返回结果:
@@ -775,51 +813,57 @@ Long Buffer.readIntLE(Integer offset = 0,
 
 --------------------------
 ### readIntBE
-**从缓存对象读取一个整型数值，最大支持 48 位，以高字节序的存储方式**
+**从缓存对象读取一个整型数值，最大支持 64 位，以高字节序的存储方式**
 
 ```JavaScript
 Long Buffer.readIntBE(Integer offset = 0,
+    Integer byteLength = 8,
     Boolean noAssert = false);
 ```
 
 调用参数:
 * offset: Integer, 指定读取的起始位置，缺省为 0
+* byteLength: Integer, 指定读取的字节数，缺省 8 个字节
 * noAssert: Boolean, 指定读取越界时不抛出错误，缺省为 flase，抛出
 
 返回结果:
 * Long, 返回读取的整型数值
 
 --------------------------
-### readInt64LE
-**从缓存对象读取一个 64 位整型数值，以低字节序的存储方式**
+### writeInt64LE
+**向缓存对象写入一个 64 位整型数值，以低字节序的存储方式**
 
 ```JavaScript
-Int64 Buffer.readInt64LE(Integer offset = 0,
+Integer Buffer.writeInt64LE(Long value,
+    Integer offset = 0,
     Boolean noAssert = false);
 ```
 
 调用参数:
-* offset: Integer, 指定读取的起始位置，缺省为 0
-* noAssert: Boolean, 指定读取越界时不抛出错误，缺省为 flase，抛出
+* value: Long, 指定写入的数值
+* offset: Integer, 指定写入的起始位置
+* noAssert: Boolean, 指定写入越界时不抛出错误，缺省为 flase，抛出
 
 返回结果:
-* [Int64](Int64.md), 返回读取的整型数值
+* Integer, offset 加上写入的字节数
 
 --------------------------
-### readInt64BE
-**从缓存对象读取一个 64 位整型数值，以高字节序的存储方式**
+### writeInt64BE
+**向缓存对象写入一个 64 位整型数值，以高字节序的存储方式**
 
 ```JavaScript
-Int64 Buffer.readInt64BE(Integer offset = 0,
+Integer Buffer.writeInt64BE(Long value,
+    Integer offset = 0,
     Boolean noAssert = false);
 ```
 
 调用参数:
-* offset: Integer, 指定读取的起始位置，缺省为 0
-* noAssert: Boolean, 指定读取越界时不抛出错误，缺省为 flase，抛出
+* value: Long, 指定写入的数值
+* offset: Integer, 指定写入的起始位置
+* noAssert: Boolean, 指定写入越界时不抛出错误，缺省为 flase，抛出
 
 返回结果:
-* [Int64](Int64.md), 返回读取的整型数值
+* Integer, offset 加上写入的字节数
 
 --------------------------
 ### readFloatLE
@@ -977,17 +1021,19 @@ Integer Buffer.writeUInt32BE(Long value,
 
 --------------------------
 ### writeUIntLE
-**向缓存对象写入一个无符号整型数值，最大支持 48 位，以低字节序的存储方式**
+**向缓存对象写入一个无符号整型数值，最大支持 64 位，以低字节序的存储方式**
 
 ```JavaScript
 Integer Buffer.writeUIntLE(Long value,
     Integer offset = 0,
+    Integer byteLength = 8,
     Boolean noAssert = false);
 ```
 
 调用参数:
 * value: Long, 指定写入的数值
 * offset: Integer, 指定写入的起始位置
+* byteLength: Integer, 指定写入的字节数，缺省 8 个字节
 * noAssert: Boolean, 指定写入越界时不抛出错误，缺省为 flase，抛出
 
 返回结果:
@@ -995,17 +1041,19 @@ Integer Buffer.writeUIntLE(Long value,
 
 --------------------------
 ### writeUIntBE
-**向缓存对象写入一个无符号整型数值，最大支持 48 位，以高字节序的存储方式**
+**向缓存对象写入一个无符号整型数值，最大支持 64 位，以高字节序的存储方式**
 
 ```JavaScript
 Integer Buffer.writeUIntBE(Long value,
     Integer offset = 0,
+    Integer byteLength = 8,
     Boolean noAssert = false);
 ```
 
 调用参数:
 * value: Long, 指定写入的数值
 * offset: Integer, 指定写入的起始位置
+* byteLength: Integer, 指定写入的字节数，缺省 8 个字节
 * noAssert: Boolean, 指定写入越界时不抛出错误，缺省为 flase，抛出
 
 返回结果:
@@ -1103,17 +1151,19 @@ Integer Buffer.writeInt32BE(Integer value,
 
 --------------------------
 ### writeIntLE
-**向缓存对象写入一个整型数值，最大支持 48 位，以低字节序的存储方式**
+**向缓存对象写入一个整型数值，最大支持 64 位，以低字节序的存储方式**
 
 ```JavaScript
 Integer Buffer.writeIntLE(Long value,
     Integer offset = 0,
+    Integer byteLength = 8,
     Boolean noAssert = false);
 ```
 
 调用参数:
 * value: Long, 指定写入的数值
 * offset: Integer, 指定写入的起始位置
+* byteLength: Integer, 指定写入的字节数，缺省 8 个字节
 * noAssert: Boolean, 指定写入越界时不抛出错误，缺省为 flase，抛出
 
 返回结果:
@@ -1121,53 +1171,19 @@ Integer Buffer.writeIntLE(Long value,
 
 --------------------------
 ### writeIntBE
-**向缓存对象写入一个整型数值，最大支持 48 位，以高字节序的存储方式**
+**向缓存对象写入一个整型数值，最大支持 64 位，以高字节序的存储方式**
 
 ```JavaScript
 Integer Buffer.writeIntBE(Long value,
     Integer offset = 0,
+    Integer byteLength = 8,
     Boolean noAssert = false);
 ```
 
 调用参数:
 * value: Long, 指定写入的数值
 * offset: Integer, 指定写入的起始位置
-* noAssert: Boolean, 指定写入越界时不抛出错误，缺省为 flase，抛出
-
-返回结果:
-* Integer, offset 加上写入的字节数
-
---------------------------
-### writeInt64LE
-**向缓存对象写入一个 64 位整型数值，以低字节序的存储方式**
-
-```JavaScript
-Integer Buffer.writeInt64LE(Int64 value,
-    Integer offset = 0,
-    Boolean noAssert = false);
-```
-
-调用参数:
-* value: [Int64](Int64.md), 指定写入的数值
-* offset: Integer, 指定写入的起始位置
-* noAssert: Boolean, 指定写入越界时不抛出错误，缺省为 flase，抛出
-
-返回结果:
-* Integer, offset 加上写入的字节数
-
---------------------------
-### writeInt64BE
-**向缓存对象写入一个 64 位整型数值，以高字节序的存储方式**
-
-```JavaScript
-Integer Buffer.writeInt64BE(Int64 value,
-    Integer offset = 0,
-    Boolean noAssert = false);
-```
-
-调用参数:
-* value: [Int64](Int64.md), 指定写入的数值
-* offset: Integer, 指定写入的起始位置
+* byteLength: Integer, 指定写入的字节数，缺省 8 个字节
 * noAssert: Boolean, 指定写入越界时不抛出错误，缺省为 flase，抛出
 
 返回结果:

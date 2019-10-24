@@ -16,7 +16,7 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    HttpClient [tooltip="HttpClient", fillcolor="lightgray", id="me", label="{HttpClient|new HttpClient()\l|cookies\ltimeout\lenableCookie\lautoRedirect\lenableEncoding\lmaxBodySize\luserAgent\lpoolSize\lpoolTimeout\l|request()\lget()\lpost()\ldel()\lput()\lpatch()\l}"];
+    HttpClient [tooltip="HttpClient", fillcolor="lightgray", id="me", label="{HttpClient|new HttpClient()\l|cookies\ltimeout\lenableCookie\lautoRedirect\lenableEncoding\lmaxBodySize\luserAgent\lpoolSize\lpoolTimeout\lproxyAgent\l|request()\lget()\lpost()\ldel()\lput()\lpatch()\l}"];
 
     object -> HttpClient [dir=back];
 }
@@ -102,6 +102,14 @@ Integer HttpClient.poolSize;
 
 ```JavaScript
 Integer HttpClient.poolTimeout;
+```
+
+--------------------------
+### proxyAgent
+**String, 查询和设置代理服务器**
+
+```JavaScript
+String HttpClient.proxyAgent;
 ```
 
 ## 成员函数

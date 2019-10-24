@@ -58,7 +58,7 @@ digraph {
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
     EventEmitter [tooltip="EventEmitter", URL="EventEmitter.md", label="{EventEmitter|new EventEmitter()\l|defaultMaxListeners\l|on()\laddListener()\lprependListener()\lonce()\lprependOnceListener()\loff()\lremoveListener()\lremoveAllListeners()\lsetMaxListeners()\lgetMaxListeners()\llisteners()\llistenerCount()\leventNames()\lemit()\l}"];
-    WebView [tooltip="WebView", fillcolor="lightgray", id="me", label="{WebView|visible\lonload\lonmove\lonresize\lonclosed\lonmessage\l|setHtml()\lprint()\lclose()\lwait()\lpostMessage()\l}"];
+    WebView [tooltip="WebView", fillcolor="lightgray", id="me", label="{WebView|visible\lonload\lonmove\lonresize\lonclosed\lonmessage\l|setHtml()\lprint()\lclose()\lpostMessage()\l}"];
 
     object -> EventEmitter [dir=back];
     EventEmitter -> WebView [dir=back];
@@ -171,16 +171,6 @@ WebView.print(Integer mode = 1) async;
 ```JavaScript
 WebView.close() async;
 ```
-
---------------------------
-### wait
-**等待当前窗口关闭**
-
-```JavaScript
-WebView.wait() async;
-```
-
-宿主程序在创建窗口后，需要进入等待，否则随着宿主程序的退出，窗口将自动关闭。同时 wait 的调用也并不是必须的，你可以在打开窗口后处理其它业务，只需要保证程序不会自行退出即可。
 
 --------------------------
 ### postMessage

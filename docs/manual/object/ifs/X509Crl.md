@@ -28,6 +28,26 @@ digraph {
 new X509Crl();
 ```
 
+--------------------------
+**X509Crl 构造函数,加载一个 DER 格式的撤销证书**
+
+```JavaScript
+new X509Crl(Buffer derCrl);
+```
+
+调用参数:
+* derCrl: [Buffer](Buffer.md), DER 格式的撤销证书
+
+--------------------------
+**X509Crl 构造函数,加载一个 PEM 格式的撤销证书**
+
+```JavaScript
+new X509Crl(String pemCrl);
+```
+
+调用参数:
+* pemCrl: String, PEM 格式的撤销证书
+
 ## 成员函数
         
 ### load
@@ -66,8 +86,11 @@ X509Crl.loadFile(String filename);
 **导出已经加载的撤销证书**
 
 ```JavaScript
-Array X509Crl.dump();
+Array X509Crl.dump(Boolean pem = true);
 ```
+
+调用参数:
+* pem: Boolean, 指定输出 PEM 格式的撤销证书，缺省为 true
 
 返回结果:
 * Array, 以数组方式导出撤销证书链

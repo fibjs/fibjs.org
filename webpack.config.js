@@ -142,7 +142,7 @@ function build_docs() {
             dot_cache[code] = svg;
 
             svg = svg.replace(/^<\?xml(.|\n)*?\?>(.|\n)*?<!DOCTYPE(.|\n)*?>/, '')
-            return '<div class="dot">' + svg + '</div>';
+            return '<div class="dot notranslate">' + svg + '</div>';
         }
     }
 
