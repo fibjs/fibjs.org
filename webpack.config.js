@@ -265,9 +265,21 @@ function relative() {
                 return s;
             });
 
+            html = html.replace(/<div class=dropdown-menu>( *<a href=[^>]+>[^<]+<\/a>)*/g, (s) => {
+                return s.replace(/href=#([^>]*)/g, (t, u) => {
+                    return `href=/${u}${file1}`;
+                });
+            });
+
             html = html.replace(re, (s, t, u) => {
                 u = path.relative(p, u);
                 return t + '=' + u;
+            });
+
+            html = html.replace(/<div class=dropdown-menu>( *<a href=[^>]+>[^<]+<\/a>)*/g, (s) => {
+                return s.replace(/&\//g, (t) => {
+                    return '';
+                });
             });
 
             fs.writeFileSync(file, html);
