@@ -274,7 +274,7 @@ function relative() {
             html = html.replace(re, (s, t, u) => {
                 u = path.relative(p, u);
                 if(u.endsWith('/download/tmpl.html')){
-                    u = '"' + u.replace('tmpl','<%=file_name%>') + '"';
+                    u =u.replace('tmpl','<%=file_name%>');
                 }
                 return t + '=' + u;
             });

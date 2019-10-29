@@ -111,7 +111,8 @@ function sync_releases() {
             }
         });
 
-        var file_name = info.some(r => { if (!r.prerelease){ file_name = r.tag_name; return true; }})
+        var file_name; 
+        info.some(r => { if (!r.prerelease){ file_name = r.tag_name; return true; }})
         var txt = _tmpl({
             info: info,
             file_name:file_name
