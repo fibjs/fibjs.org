@@ -99,7 +99,8 @@ function sync_releases() {
                 r.zipball_url = check('src-' + r.tag_name + '.zip', r.zipball_url, -1);
 
                 var txt = _tmpl({
-                    info: [r]
+                    info: [r],
+                    file_name:r.tag_name
                 });
 
                 var fname = path.join(baseFolder, r.tag_name + '.html');
@@ -110,8 +111,10 @@ function sync_releases() {
             }
         });
 
+        var file_name = info.some(r => { if (!r.prerelease){ file_name = r.tag_name; return true; }})
         var txt = _tmpl({
-            info: info
+            info: info,
+            file_name:file_name
         });
 
         var fname = path.join(baseFolder, 'index.html');
