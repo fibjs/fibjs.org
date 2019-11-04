@@ -45,4 +45,3 @@
 * [xml](ifs/xml.md)
 * [zip](ifs/zip.md)
 * [zlib](ifs/zlib.md)
-* [zmq](ifs/zmq.md)

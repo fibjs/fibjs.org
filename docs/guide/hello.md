@@ -14,7 +14,7 @@ var svr = new http.Server(8080, (req) => {
     req.response.write('hello, world');
 });
 
-svr.run();
+svr.start();
 ```
 运行后，在浏览器内输入：
 ```
@@ -35,7 +35,7 @@ var hello_server = {
 
 var svr = new http.Server(8080, hello_server);
 
-svr.run();
+svr.start();
 ```
 运行后，在浏览器地址栏内输入：
 ```
@@ -53,12 +53,12 @@ var root_server = {
     '/hello/:name': (req, name) => {
         req.response.write('hello, ' + name);
     },
-    '*': http.fileHandler(path.join(__dirname, 'web'))
+    '*': path.join(__dirname, 'web')
 };
 
 var svr = new http.Server(8080, root_server);
 
-svr.run();
+svr.start();
 ```
 你需要创建一个目录 `web`，并且在其中存放一些文件，比如下载一份 fibjs 文档放在里面做为测试。
 
@@ -82,12 +82,12 @@ var hello_server = {
 var root_server = {
     '/hello': hello_server,
     '/bonjour': hello_server,
-    '*': http.fileHandler(path.join(__dirname, 'web'))
+    '*': path.join(__dirname, 'web')
 };
 
 var svr = new http.Server(8080, root_server);
 
-svr.run();
+svr.start();
 ```
 通过这种方式，我们可以很方便地创建出完全解耦的模块，然后使用主程序组装成我们需要的接口。这在 api 版本管理中格外方便，比如从 `/v1/hello/fibjs` 修改为 `/v2/hello/fibjs`，模块本身不需要做任何变动，仅仅在入口处修改即可。
 

@@ -23,7 +23,7 @@ var root_server = {
 
 var svr = new http.Server(8080, root_server);
 
-svr.run();
+svr.start();
 ```
 
 ## 一个空的测试框架

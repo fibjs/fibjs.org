@@ -24,7 +24,7 @@ var webServer = require("./web");
 
 var svr = new http.Server(8080, webServer);
 
-svr.run();
+svr.start();
 ```
 
 在 `app.js` 直接引用 `web.js`， 当每次更新应用的时候，都必须重启 `app.js`，有没有办法可以在更新代码的同时，让 `app.js` 自动加载最新的 `web.js` 呢？
@@ -54,7 +54,7 @@ coroutine.start(function() {
 
 var svr = new http.Server(8080, new_web());
 
-svr.run();
+svr.start();
 ```
 
 `app.js` 中启动了一个循环，每隔 1s 重新 `require` 一次 `web.js` 中的内容生成安全的模块，用于为 `svr` 重新挂载 `handler`。当 `web.js`中的内容需要更新的时候，只需替换该文件，即可实现服务端程序的平滑更新。

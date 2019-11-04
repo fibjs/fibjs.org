@@ -13,7 +13,7 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    DbConnection [tooltip="DbConnection", URL="DbConnection.md", label="{DbConnection|type\l|close()\lbegin()\lcommit()\lrollback()\ltrans()\lexecute()\lformat()\l}"];
+    DbConnection [tooltip="DbConnection", URL="DbConnection.md", label="{DbConnection|type\l|close()\lbegin()\lcommit()\lrollback()\ltrans()\lexecute()\linsert()\lfind()\lcount()\lupdate()\lremove()\lformat()\l}"];
     MySQL [tooltip="MySQL", fillcolor="lightgray", id="me", label="{MySQL|rxBufferSize\ltxBufferSize\l|use()\l}"];
 
     object -> DbConnection [dir=back];
@@ -126,7 +126,92 @@ NArray MySQL.execute(String sql,
 * NArray, 返回包含结果记录的数组，如果请求是 UPDATE 或者 INSERT，返回结果还会包含 affected 和 insertId，mssql 不支持 insertId。
 
 --------------------------
+### insert
+**插入新记录**
+
+```JavaScript
+Number MySQL.insert(Object opts) async;
+```
+
+调用参数:
+* opts: Object, 参数列表
+
+返回结果:
+* Number, 返回包含插入的 id，如果引擎不支持则返回 0
+
+--------------------------
+### find
+**根据指定的条件查询数据**
+
+```JavaScript
+NArray MySQL.find(Object opts) async;
+```
+
+调用参数:
+* opts: Object, 参数列表
+
+返回结果:
+* NArray, 返回包含结果记录
+
+--------------------------
+### count
+**根据指定的条件统计数据记录数**
+
+```JavaScript
+Integer MySQL.count(Object opts) async;
+```
+
+调用参数:
+* opts: Object, 参数列表
+
+返回结果:
+* Integer, 返回包含结果记录数
+
+--------------------------
+### update
+**根据指定的条件更新数据**
+
+```JavaScript
+Integer MySQL.update(Object opts) async;
+```
+
+调用参数:
+* opts: Object, 参数列表
+
+返回结果:
+* Integer, 返回包含更新的记录数
+
+--------------------------
+### remove
+**根据指定的条件删除数据**
+
+```JavaScript
+Integer MySQL.remove(Object opts) async;
+```
+
+调用参数:
+* opts: Object, 可选参数列表
+
+返回结果:
+* Integer, 返回包含更新的记录数
+
+--------------------------
 ### format
+**格式化一个 sql 命令，并返回格式化结果**
+
+```JavaScript
+String MySQL.format(String method,
+    Object opts);
+```
+
+调用参数:
+* method: String, 指定请求的方法
+* opts: Object, 可选参数列表
+
+返回结果:
+* String, 返回格式化之后的 sql 命令
+
+--------------------------
 **格式化一个 sql 命令，并返回格式化结果**
 
 ```JavaScript

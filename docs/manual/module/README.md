@@ -26,7 +26,6 @@
   - [ssl](ifs/ssl.md) - ssl/tls 模块，模块别名：tls
   - [url](ifs/url.md) - url 处理模块
   - [ws](ifs/ws.md) - websocket 支持模块
-  - [zmq](ifs/zmq.md) - zeroMQ 消息队列模块
 * Encoding
   - [base32](ifs/base32.md) - base32 编码与解码模块
   - [base64](ifs/base64.md) - base64 编码与解码模块

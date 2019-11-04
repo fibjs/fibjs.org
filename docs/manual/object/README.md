@@ -82,5 +82,4 @@
 * [XmlProcessingInstruction](ifs/XmlProcessingInstruction.md) - XmlProcessingInstruction 对象表示 xml 处理指令
 * [XmlText](ifs/XmlText.md) - XmlText 对象表示元素或属性的文本内容
 * [ZipFile](ifs/ZipFile.md) - zip 文件访问对象
-* [ZmqSocket](ifs/ZmqSocket.md) - ZeroMQ 套接口对象
 * [object](ifs/object.md) - 基础对象，所有对象均继承于此

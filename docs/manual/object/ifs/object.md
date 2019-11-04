@@ -90,7 +90,6 @@ digraph {
     XmlProcessingInstruction [tooltip="XmlProcessingInstruction", URL="XmlProcessingInstruction.md", label="{XmlProcessingInstruction}"];
     XmlNodeList [tooltip="XmlNodeList", URL="XmlNodeList.md", label="{XmlNodeList}"];
     ZipFile [tooltip="ZipFile", URL="ZipFile.md", label="{ZipFile}"];
-    ZmqSocket [tooltip="ZmqSocket", URL="ZmqSocket.md", label="{ZmqSocket}"];
 
     object -> Buffer [dir=back];
     object -> Cipher [dir=back];
@@ -175,7 +174,6 @@ digraph {
     XmlNode -> XmlProcessingInstruction [dir=back];
     object -> XmlNodeList [dir=back];
     object -> ZipFile [dir=back];
-    object -> ZmqSocket [dir=back];
 }
 ```
 

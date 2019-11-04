@@ -81,5 +81,4 @@
 * [XmlProcessingInstruction](ifs/XmlProcessingInstruction.md)
 * [XmlText](ifs/XmlText.md)
 * [ZipFile](ifs/ZipFile.md)
-* [ZmqSocket](ifs/ZmqSocket.md)
 * [object](ifs/object.md)

@@ -111,6 +111,21 @@ static Redis db.openRedis(String connString) async;
 **格式化一个 sql 命令，并返回格式化结果**
 
 ```JavaScript
+static String db.format(String method,
+    Object opts);
+```
+
+调用参数:
+* method: String, 指定请求的方法
+* opts: Object, 参数列表
+
+返回结果:
+* String, 返回格式化之后的 sql 命令
+
+--------------------------
+**格式化一个 sql 命令，并返回格式化结果**
+
+```JavaScript
 static String db.format(String sql,
     ...args);
 ```
@@ -127,6 +142,21 @@ static String db.format(String sql,
 **格式化一个 mysql 命令，并返回格式化结果**
 
 ```JavaScript
+static String db.formatMySQL(String method,
+    Object opts);
+```
+
+调用参数:
+* method: String, 指定请求的方法
+* opts: Object, 参数列表
+
+返回结果:
+* String, 返回格式化之后的 mysql 命令
+
+--------------------------
+**格式化一个 mysql 命令，并返回格式化结果**
+
+```JavaScript
 static String db.formatMySQL(String sql,
     ...args);
 ```
@@ -140,6 +170,21 @@ static String db.formatMySQL(String sql,
 
 --------------------------
 ### formatMSSQL
+**格式化一个 mssql 命令，并返回格式化结果**
+
+```JavaScript
+static String db.formatMSSQL(String method,
+    Object opts);
+```
+
+调用参数:
+* method: String, 指定请求的方法
+* opts: Object, 参数列表
+
+返回结果:
+* String, 返回格式化之后的 mssql 命令
+
+--------------------------
 **格式化一个 mssql 命令，并返回格式化结果**
 
 ```JavaScript
