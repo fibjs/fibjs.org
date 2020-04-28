@@ -64,43 +64,38 @@ libexecinfo (FreeBSD and OpenBSD only)
 ```
 Mac OS X 下，除需要安装 Xcode 及命令行工具外，以 brew 为例，准备环境命令如下:
 ```sh
-brew install cmake git
+brew install cmake git ccache
 ```
 Ubuntu 准备环境命令如下:
 ```sh
-apt install g++ make cmake git
+apt install clang g++ make cmake git ccache
 ```
 如果要编译 32 位版本，另需要安装 multilib:
 ```sh
-apt install gcc-multilib g++-multilib
+apt install g++-multilib
 ```
 ARM on Ubuntu 准备环境命令如下:
 ```sh
-apt install gcc-arm-linux-gnueabihf g++-arm-linux-gnueabihf
+apt install g++-arm-linux-gnueabihf
 ```
 如果要在 Ubuntu 上编译 ARM 64 位版本，准备环境命令如下:
 ```sh
-apt install gcc-aarch64-linux-gnu g++-aarch64-linux-gnu
+apt install g++-aarch64-linux-gnu
 ```
 MIPS on Ubuntu 准备环境如下:
 ```sh
-apt install gcc-mips-linux-gnu g++-mips-linux-gnu
+apt install g++-mips-linux-gnu
 ```
 如果要在 Ubuntu 上编译 MIPS 64 位版本，准备环境命令如下:
 ```sh
-apt install gcc-mips64-linux-gnuabi64 g++-mips64-linux-gnuabi64
-```
-PowerPC on Ubuntu 准备环境命令如下:
-```sh
-apt install gcc-powerpc-linux-gnu g++-powerpc-linux-gnu
-```
-如果要在 Ubuntu 上编译 PowerPC 64 位版本，准备环境命令如下:
-```sh
-apt install gcc-powerpc64-linux-gnu g++-powerpc64-linux-gnu
+apt install g++-mips64-linux-gnuabi64
 ```
 fix:
 ```sh
 rm -f /usr/include/asm
+rm -f /usr/include/i386-linux-gnu
+rm -f /usr/include/x86_64-linux-gnux32
+
 ln -s x86_64-linux-gnu /usr/include/i386-linux-gnu
 ln -s x86_64-linux-gnu /usr/include/x86_64-linux-gnux32
 ```
