@@ -70,6 +70,24 @@ static String util.inspect(Object obj,
 * String, 返回格式化后的字符串
 
 --------------------------
+### deprecate
+**封装给定的方法，本方法仅为兼容，并不输出警告**
+
+```JavaScript
+static Function util.deprecate(Function fn,
+    String msg,
+    String code = "");
+```
+
+调用参数:
+* fn: Function, 给定需要封装的方法
+* msg: String, 给定警告消息
+* code: String, 给定警告编号
+
+返回结果:
+* Function, 如果封装结果
+
+--------------------------
 ### isEmpty
 **检测给定的变量是否不包含任何值(没有可枚举的属性)**
 

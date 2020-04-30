@@ -44,6 +44,25 @@ static Stream ssl.connect(String url,
 * [Stream](../../object/ifs/Stream.md), 返回连接成功的 [SslSocket](../../object/ifs/SslSocket.md) 对象
 
 --------------------------
+**创建一个 [SslSocket](../../object/ifs/SslSocket.md) 对象并建立连接**
+
+```JavaScript
+static Stream ssl.connect(String url,
+    X509Cert crt,
+    PKey key,
+    Integer timeout = 0) async;
+```
+
+调用参数:
+* url: String, 指定连接的协议，可以是：ssl://host:port
+* crt: [X509Cert](../../object/ifs/X509Cert.md), [X509Cert](../../object/ifs/X509Cert.md) 证书，用于客户端验证服务器
+* key: [PKey](../../object/ifs/PKey.md), [PKey](../../object/ifs/PKey.md) 私钥，用于与客户端会话
+* timeout: Integer, 指定超时时间，单位是毫秒，默认为0
+
+返回结果:
+* [Stream](../../object/ifs/Stream.md), 返回连接成功的 [SslSocket](../../object/ifs/SslSocket.md) 对象
+
+--------------------------
 ### setClientCert
 **设定缺省客户端证书**
 

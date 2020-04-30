@@ -9,7 +9,7 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    Stat [tooltip="Stat", fillcolor="lightgray", id="me", label="{Stat|name\lsize\lmode\lmtime\latime\lctime\luid\lgid\l|isWritable()\lisReadable()\lisExecutable()\lisHidden()\lisDirectory()\lisFile()\lisSymbolicLink()\lisMemory()\lisSocket()\l}"];
+    Stat [tooltip="Stat", fillcolor="lightgray", id="me", label="{Stat|name\ldev\lino\lmode\lnlink\luid\lgid\lrdev\lsize\lblksize\lblocks\lmtime\lmtimeMs\latime\latimeMs\lctime\lctimeMs\lbirthtime\lbirthtimeMs\l|isWritable()\lisReadable()\lisExecutable()\lisHidden()\lisDirectory()\lisFile()\lisSymbolicLink()\lisMemory()\lisSocket()\l}"];
 
     object -> Stat [dir=back];
 }
@@ -25,11 +25,19 @@ readonly String Stat.name;
 ```
 
 --------------------------
-### size
-**Long, 文件尺寸**
+### dev
+**Integer, 包含该文件的设备 ID**
 
 ```JavaScript
-readonly Long Stat.size;
+readonly Integer Stat.dev;
+```
+
+--------------------------
+### ino
+**Integer, 文件中的 Inode 数量**
+
+```JavaScript
+readonly Integer Stat.ino;
 ```
 
 --------------------------
@@ -41,27 +49,11 @@ readonly Integer Stat.mode;
 ```
 
 --------------------------
-### mtime
-**Date, 文件最后修改时间**
+### nlink
+**Integer, 与此文件相关联的硬链接数量**
 
 ```JavaScript
-readonly Date Stat.mtime;
-```
-
---------------------------
-### atime
-**Date, 文件最后访问时间**
-
-```JavaScript
-readonly Date Stat.atime;
-```
-
---------------------------
-### ctime
-**Date, 文件创建时间**
-
-```JavaScript
-readonly Date Stat.ctime;
+readonly Integer Stat.nlink;
 ```
 
 --------------------------
@@ -78,6 +70,102 @@ readonly Integer Stat.uid;
 
 ```JavaScript
 readonly Integer Stat.gid;
+```
+
+--------------------------
+### rdev
+**Integer, 对于特殊类型的文件, 包含该文件的设备 ID**
+
+```JavaScript
+readonly Integer Stat.rdev;
+```
+
+--------------------------
+### size
+**Number, 文件尺寸**
+
+```JavaScript
+readonly Number Stat.size;
+```
+
+--------------------------
+### blksize
+**Integer, 在 I/O 操作中文件系统区块大小**
+
+```JavaScript
+readonly Integer Stat.blksize;
+```
+
+--------------------------
+### blocks
+**Integer, 分配给该文件的区块数量**
+
+```JavaScript
+readonly Integer Stat.blocks;
+```
+
+--------------------------
+### mtime
+**Date, 文件最后修改时间**
+
+```JavaScript
+readonly Date Stat.mtime;
+```
+
+--------------------------
+### mtimeMs
+**Number, 文件最后修改时间(ms)**
+
+```JavaScript
+readonly Number Stat.mtimeMs;
+```
+
+--------------------------
+### atime
+**Date, 文件最后访问时间**
+
+```JavaScript
+readonly Date Stat.atime;
+```
+
+--------------------------
+### atimeMs
+**Number, 文件最后访问时间(ms)**
+
+```JavaScript
+readonly Number Stat.atimeMs;
+```
+
+--------------------------
+### ctime
+**Date, 文件创建时间**
+
+```JavaScript
+readonly Date Stat.ctime;
+```
+
+--------------------------
+### ctimeMs
+**Number, 文件创建时间(ms)**
+
+```JavaScript
+readonly Number Stat.ctimeMs;
+```
+
+--------------------------
+### birthtime
+**Date, 文件产生时间**
+
+```JavaScript
+readonly Date Stat.birthtime;
+```
+
+--------------------------
+### birthtimeMs
+**Number, 文件产生时间(ms)**
+
+```JavaScript
+readonly Number Stat.birthtimeMs;
 ```
 
 ## 成员函数

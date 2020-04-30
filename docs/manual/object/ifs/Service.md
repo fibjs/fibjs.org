@@ -186,7 +186,7 @@ Object Service.on(String ev,
 * func: Function, 指定事件处理函数
 
 返回结果:
-* Object, 返回成功绑定的数量，如果函数已绑定则返回 0
+* Object, 返回事件对象本身，便于链式调用
 
 --------------------------
 **绑定一个事件处理函数到对象**
@@ -244,7 +244,7 @@ Object Service.prependListener(String ev,
 * func: Function, 指定事件处理函数
 
 返回结果:
-* Object, 返回成功绑定的数量，如果函数已绑定则返回 0
+* Object, 返回事件对象本身，便于链式调用
 
 --------------------------
 **绑定一个事件处理函数到对象起始**
@@ -257,7 +257,7 @@ Object Service.prependListener(Object map);
 * map: Object, 指定事件映射关系，对象属性名称将作为事件名称，属性的值将作为事件处理函数
 
 返回结果:
-* Object, 返回成功绑定的数量，如果函数已绑定则返回 0
+* Object, 返回事件对象本身，便于链式调用
 
 --------------------------
 ### once
@@ -302,7 +302,7 @@ Object Service.prependOnceListener(String ev,
 * func: Function, 指定事件处理函数
 
 返回结果:
-* Object, 返回成功绑定的数量，如果函数已绑定则返回 0
+* Object, 返回事件对象本身，便于链式调用
 
 --------------------------
 **绑定一个事件处理函数到对象起始**
@@ -315,7 +315,7 @@ Object Service.prependOnceListener(Object map);
 * map: Object, 指定事件映射关系，对象属性名称将作为事件名称，属性的值将作为事件处理函数
 
 返回结果:
-* Object, 返回成功绑定的数量，如果函数已绑定则返回 0
+* Object, 返回事件对象本身，便于链式调用
 
 --------------------------
 ### off

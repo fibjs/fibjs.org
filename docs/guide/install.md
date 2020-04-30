@@ -57,6 +57,7 @@ build xp
 ### 准备编译环境
 在 UNIX 下编译需要依赖以下工具:
 ```
+CLANG 3.8 or newer
 GCC 4.8 or newer
 CMake 2.6 or newer
 GNU Make 3.81 or newer

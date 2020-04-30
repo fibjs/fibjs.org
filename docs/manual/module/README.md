@@ -35,6 +35,7 @@
   - [hex](ifs/hex.md) - hex 编码与解码模块
   - [iconv](ifs/iconv.md) - iconv 编码与解码模块
   - [json](ifs/json.md) - json 编码与解码模块
+  - [msgpack](ifs/msgpack.md) - msgpack 编码与解码模块
   - [string_decoder](ifs/string_decoder.md) - 解码 Buffer 到字符串
 * Crypto
   - [crypto](ifs/crypto.md) - 加密算法模块

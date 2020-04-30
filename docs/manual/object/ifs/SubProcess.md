@@ -12,7 +12,7 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    SubProcess [tooltip="SubProcess", fillcolor="lightgray", id="me", label="{SubProcess|pid\lppid\lstdin\lstdout\l|kill()\lwait()\lfindWindow()\l}"];
+    SubProcess [tooltip="SubProcess", fillcolor="lightgray", id="me", label="{SubProcess|pid\lppid\lstdin\lstdout\lstderr\l|kill()\lwait()\lfindWindow()\l}"];
 
     object -> SubProcess [dir=back];
 }
@@ -49,6 +49,14 @@ readonly BufferedStream SubProcess.stdin;
 
 ```JavaScript
 readonly BufferedStream SubProcess.stdout;
+```
+
+--------------------------
+### stderr
+**[BufferedStream](BufferedStream.md), 读取当前对象指向的进程的标准错误对象**
+
+```JavaScript
+readonly BufferedStream SubProcess.stderr;
 ```
 
 ## 成员函数

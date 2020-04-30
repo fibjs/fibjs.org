@@ -34,6 +34,7 @@
 <li><a href=../../module/ifs/io.md.html class ="notranslate">io</a></li>
 <li><a href=../../module/ifs/json.md.html class ="notranslate">json</a></li>
 <li><a href=../../module/ifs/mq.md.html class ="notranslate">mq</a></li>
+<li><a href=../../module/ifs/msgpack.md.html class ="notranslate">msgpack</a></li>
 <li><a href=../../module/ifs/net.md.html class ="notranslate">net</a></li>
 <li><a href=../../module/ifs/os.md.html class ="notranslate">os</a></li>
 <li><a href=../../module/ifs/path.md.html class ="notranslate">path</a></li>
@@ -341,13 +342,30 @@ sock.onmessage = <span class="hljs-function"><span class="hljs-params">evt</span
 <p><strong>WebSocket 构造函数</strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">new</span> WebSocket(<span class="hljs-built_in">String</span> url,
-    <span class="hljs-built_in">Object</span> opts = {});
+    <span class="hljs-built_in">Object</span> opts);
 </code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">url</span>: String, 指定连接的服务器</li>
-<li><span class="notranslate">opts</span>: Object, 连接选项，缺省是 {}，支持的字段有 &quot;protocol&quot;, &quot;origin&quot;, &quot;headers&quot;, &quot;httpClient&quot;。</li>
+<li><span class="notranslate">opts</span>: Object, 连接选项，缺省是 {}</li>
 </ul>
+<p>opts 包含请求的附加选项，支持的内容如下：</p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8</div>{
+    <span class="hljs-string">"protocol"</span>: <span class="hljs-string">""</span>, <span class="hljs-comment">// 指定握手协议，缺省为空</span>
+    <span class="hljs-string">"origin"</span>: <span class="hljs-string">""</span>, <span class="hljs-comment">// 指定握手时模拟的源，缺省为空</span>
+    <span class="hljs-string">"perMessageDeflate"</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">// 指定是否支持压缩，缺省支持</span>
+    <span class="hljs-string">"maxPayload"</span>: <span class="hljs-number">67108864</span>, <span class="hljs-comment">// 指定最大数据包尺寸，缺省为 67108864</span>
+    <span class="hljs-string">"httpClient"</span>: hc, <span class="hljs-comment">// 自定义 httpClient 对象，缺省使用全局 httpClient</span>
+    <span class="hljs-string">"headers"</span>: <span class="hljs-comment">// 指定 http(s) 连接时携带的 header，缺省为 {}，</span>
+}
+</code></pre>
 <h2 id="静态属性">静态属性</h2>
 <h3 id="defaultMaxListeners" class ="notranslate">defaultMaxListeners</h3>
 <p><strong>Integer, 默认全局最大监听器数</strong></p>
@@ -454,7 +472,7 @@ sock.onmessage = <span class="hljs-function"><span class="hljs-params">evt</span
 </ul>
 <p>返回结果:</p>
 <ul>
-<li><span class="notranslate">Object</span>, 返回成功绑定的数量，如果函数已绑定则返回 0</li>
+<li><span class="notranslate">Object</span>, 返回事件对象本身，便于链式调用</li>
 </ul>
 <hr>
 <p><strong>绑定一个事件处理函数到对象</strong></p>
@@ -510,7 +528,7 @@ sock.onmessage = <span class="hljs-function"><span class="hljs-params">evt</span
 </ul>
 <p>返回结果:</p>
 <ul>
-<li><span class="notranslate">Object</span>, 返回成功绑定的数量，如果函数已绑定则返回 0</li>
+<li><span class="notranslate">Object</span>, 返回事件对象本身，便于链式调用</li>
 </ul>
 <hr>
 <p><strong>绑定一个事件处理函数到对象起始</strong></p>
@@ -522,7 +540,7 @@ sock.onmessage = <span class="hljs-function"><span class="hljs-params">evt</span
 </ul>
 <p>返回结果:</p>
 <ul>
-<li><span class="notranslate">Object</span>, 返回成功绑定的数量，如果函数已绑定则返回 0</li>
+<li><span class="notranslate">Object</span>, 返回事件对象本身，便于链式调用</li>
 </ul>
 <hr>
 <h3 id="once" class ="notranslate">once</h3>
@@ -566,7 +584,7 @@ sock.onmessage = <span class="hljs-function"><span class="hljs-params">evt</span
 </ul>
 <p>返回结果:</p>
 <ul>
-<li><span class="notranslate">Object</span>, 返回成功绑定的数量，如果函数已绑定则返回 0</li>
+<li><span class="notranslate">Object</span>, 返回事件对象本身，便于链式调用</li>
 </ul>
 <hr>
 <p><strong>绑定一个事件处理函数到对象起始</strong></p>
@@ -578,7 +596,7 @@ sock.onmessage = <span class="hljs-function"><span class="hljs-params">evt</span
 </ul>
 <p>返回结果:</p>
 <ul>
-<li><span class="notranslate">Object</span>, 返回成功绑定的数量，如果函数已绑定则返回 0</li>
+<li><span class="notranslate">Object</span>, 返回事件对象本身，便于链式调用</li>
 </ul>
 <hr>
 <h3 id="off" class ="notranslate">off</h3>

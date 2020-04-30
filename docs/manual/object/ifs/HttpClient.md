@@ -16,7 +16,7 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    HttpClient [tooltip="HttpClient", fillcolor="lightgray", id="me", label="{HttpClient|new HttpClient()\l|cookies\ltimeout\lenableCookie\lautoRedirect\lenableEncoding\lmaxBodySize\luserAgent\lpoolSize\lpoolTimeout\lproxyAgent\l|request()\lget()\lpost()\ldel()\lput()\lpatch()\l}"];
+    HttpClient [tooltip="HttpClient", fillcolor="lightgray", id="me", label="{HttpClient|new HttpClient()\l|cookies\ltimeout\lenableCookie\lautoRedirect\lenableEncoding\lmaxBodySize\luserAgent\lpoolSize\lpoolTimeout\lproxyAgent\l|setClientCert()\lrequest()\lget()\lpost()\ldel()\lput()\lpatch()\l}"];
 
     object -> HttpClient [dir=back];
 }
@@ -114,6 +114,19 @@ String HttpClient.proxyAgent;
 
 ## 成员函数
         
+### setClientCert
+**设定缺省客户端证书**
+
+```JavaScript
+HttpClient.setClientCert(X509Cert crt,
+    PKey key);
+```
+
+调用参数:
+* crt: [X509Cert](X509Cert.md), [X509Cert](X509Cert.md) 证书，用于客户端验证服务器
+* key: [PKey](PKey.md), [PKey](PKey.md) 私钥，用于与客户端会话
+
+--------------------------
 ### request
 **发送 [http](../../module/ifs/http.md) 请求到指定的流对象，并返回结果**
 

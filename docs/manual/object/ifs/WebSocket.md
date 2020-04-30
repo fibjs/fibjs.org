@@ -62,12 +62,25 @@ new WebSocket(String url,
 
 ```JavaScript
 new WebSocket(String url,
-    Object opts = {});
+    Object opts);
 ```
 
 调用参数:
 * url: String, 指定连接的服务器
-* opts: Object, 连接选项，缺省是 {}，支持的字段有 "protocol", "origin", "headers", "httpClient"。
+* opts: Object, 连接选项，缺省是 {}
+
+opts 包含请求的附加选项，支持的内容如下：
+
+```JavaScript
+{
+    "protocol": "", // 指定握手协议，缺省为空
+    "origin": "", // 指定握手时模拟的源，缺省为空
+    "perMessageDeflate": true, // 指定是否支持压缩，缺省支持
+    "maxPayload": 67108864, // 指定最大数据包尺寸，缺省为 67108864
+    "httpClient": hc, // 自定义 httpClient 对象，缺省使用全局 httpClient
+    "headers": // 指定 http(s) 连接时携带的 header，缺省为 {}，
+}
+```
 
 ## 静态属性
         
@@ -214,7 +227,7 @@ Object WebSocket.on(String ev,
 * func: Function, 指定事件处理函数
 
 返回结果:
-* Object, 返回成功绑定的数量，如果函数已绑定则返回 0
+* Object, 返回事件对象本身，便于链式调用
 
 --------------------------
 **绑定一个事件处理函数到对象**
@@ -272,7 +285,7 @@ Object WebSocket.prependListener(String ev,
 * func: Function, 指定事件处理函数
 
 返回结果:
-* Object, 返回成功绑定的数量，如果函数已绑定则返回 0
+* Object, 返回事件对象本身，便于链式调用
 
 --------------------------
 **绑定一个事件处理函数到对象起始**
@@ -285,7 +298,7 @@ Object WebSocket.prependListener(Object map);
 * map: Object, 指定事件映射关系，对象属性名称将作为事件名称，属性的值将作为事件处理函数
 
 返回结果:
-* Object, 返回成功绑定的数量，如果函数已绑定则返回 0
+* Object, 返回事件对象本身，便于链式调用
 
 --------------------------
 ### once
@@ -330,7 +343,7 @@ Object WebSocket.prependOnceListener(String ev,
 * func: Function, 指定事件处理函数
 
 返回结果:
-* Object, 返回成功绑定的数量，如果函数已绑定则返回 0
+* Object, 返回事件对象本身，便于链式调用
 
 --------------------------
 **绑定一个事件处理函数到对象起始**
@@ -343,7 +356,7 @@ Object WebSocket.prependOnceListener(Object map);
 * map: Object, 指定事件映射关系，对象属性名称将作为事件名称，属性的值将作为事件处理函数
 
 返回结果:
-* Object, 返回成功绑定的数量，如果函数已绑定则返回 0
+* Object, 返回事件对象本身，便于链式调用
 
 --------------------------
 ### off

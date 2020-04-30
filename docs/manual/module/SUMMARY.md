@@ -22,6 +22,7 @@
 * [io](ifs/io.md)
 * [json](ifs/json.md)
 * [mq](ifs/mq.md)
+* [msgpack](ifs/msgpack.md)
 * [net](ifs/net.md)
 * [os](ifs/os.md)
 * [path](ifs/path.md)

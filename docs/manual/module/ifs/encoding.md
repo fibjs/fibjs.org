@@ -57,6 +57,14 @@ json encoding.json;
 ```
 
 --------------------------
+### msgpack
+**[msgpack](msgpack.md) 编码与解码模块**
+
+```JavaScript
+msgpack encoding.msgpack;
+```
+
+--------------------------
 ### bson
 **[bson](bson.md) 编码与解码模块**
 

@@ -34,6 +34,7 @@
 <li><a href=io.md.html class ="notranslate">io</a></li>
 <li><a href=json.md.html class ="notranslate">json</a></li>
 <li><a href=mq.md.html class ="notranslate">mq</a></li>
+<li><a href=msgpack.md.html class ="notranslate">msgpack</a></li>
 <li><a href=net.md.html class ="notranslate">net</a></li>
 <li><a href=os.md.html class ="notranslate">os</a></li>
 <li><a href=path.md.html class ="notranslate">path</a></li>
@@ -213,6 +214,27 @@
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">url</span>: String, 指定连接的协议，可以是：ssl://host:port</li>
+<li><span class="notranslate">timeout</span>: Integer, 指定超时时间，单位是毫秒，默认为0</li>
+</ul>
+<p>返回结果:</p>
+<ul>
+<li><a href=../../object/ifs/stream.md.html class ="notranslate">Stream</a>, 返回连接成功的 <a href=../../object/ifs/sslsocket.md.html class ="notranslate">SslSocket</a> 对象</li>
+</ul>
+<hr>
+<p><strong>创建一个 <a href=../../object/ifs/sslsocket.md.html class ="notranslate">SslSocket</a> 对象并建立连接</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4</div><span class="hljs-keyword">static</span> Stream ssl.connect(<span class="hljs-built_in">String</span> url,
+    X509Cert crt,
+    PKey key,
+    Integer timeout = <span class="hljs-number">0</span>) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li><span class="notranslate">url</span>: String, 指定连接的协议，可以是：ssl://host:port</li>
+<li><span class="notranslate">crt</span>: <a href=../../object/ifs/x509cert.md.html class ="notranslate">X509Cert</a>, <a href=../../object/ifs/x509cert.md.html class ="notranslate">X509Cert</a> 证书，用于客户端验证服务器</li>
+<li><span class="notranslate">key</span>: <a href=../../object/ifs/pkey.md.html class ="notranslate">PKey</a>, <a href=../../object/ifs/pkey.md.html class ="notranslate">PKey</a> 私钥，用于与客户端会话</li>
 <li><span class="notranslate">timeout</span>: Integer, 指定超时时间，单位是毫秒，默认为0</li>
 </ul>
 <p>返回结果:</p>

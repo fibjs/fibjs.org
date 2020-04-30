@@ -18,7 +18,7 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    UrlObject [tooltip="UrlObject", fillcolor="lightgray", id="me", label="{UrlObject|new UrlObject()\l|href\lprotocol\lslashes\lauth\lusername\lpassword\lhost\lhostname\lport\lpath\lpathname\lsearch\lquery\lhash\l|parse()\lformat()\lresolve()\lnormalize()\l}"];
+    UrlObject [tooltip="UrlObject", fillcolor="lightgray", id="me", label="{UrlObject|new UrlObject()\l|href\lprotocol\lslashes\lauth\lusername\lpassword\lhost\lhostname\lport\lpath\lpathname\lsearch\lquery\lhash\lsearchParams\l|parse()\lformat()\lresolve()\lnormalize()\l}"];
 
     object -> UrlObject [dir=back];
 }
@@ -161,6 +161,14 @@ Value UrlObject.query;
 
 ```JavaScript
 String UrlObject.hash;
+```
+
+--------------------------
+### searchParams
+**[HttpCollection](HttpCollection.md), 查询当前 UrlObject 对象中的请求字符串（ 不含“?”）**
+
+```JavaScript
+readonly HttpCollection UrlObject.searchParams;
 ```
 
 ## 成员函数

@@ -1,6 +1,15 @@
 # 模块 url
 url 处理模块
 
+## 对象
+        
+### URL
+**创建一个 [UrlObject](../../object/ifs/UrlObject.md) 请求对象，参见 [UrlObject](../../object/ifs/UrlObject.md)**
+
+```JavaScript
+UrlObject url.URL;
+```
+
 ## 静态函数
         
 ### format

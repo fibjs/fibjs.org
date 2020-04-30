@@ -158,6 +158,20 @@ static Digest hash.ripemd160(Buffer data);
 * [Digest](../../object/ifs/Digest.md), 返回构造的信息摘要对象
 
 --------------------------
+### sm3
+**创建一个 SM3 信息摘要运算对象**
+
+```JavaScript
+static Digest hash.sm3(Buffer data);
+```
+
+调用参数:
+* data: [Buffer](../../object/ifs/Buffer.md), 创建同时更新的二进制数据
+
+返回结果:
+* [Digest](../../object/ifs/Digest.md), 返回构造的信息摘要对象
+
+--------------------------
 ### hmac
 **根据指定的算法标识创建一个信息摘要签名运算对象**
 
@@ -299,6 +313,20 @@ static Digest hash.hmac_ripemd160(Buffer key);
 返回结果:
 * [Digest](../../object/ifs/Digest.md), 返回构造的信息摘要对象
 
+--------------------------
+### hmac_sm3
+**创建一个 SM3 信息摘要签名运算对象**
+
+```JavaScript
+static Digest hash.hmac_sm3(Buffer key);
+```
+
+调用参数:
+* key: [Buffer](../../object/ifs/Buffer.md), 二进制签名密钥
+
+返回结果:
+* [Digest](../../object/ifs/Digest.md), 返回构造的信息摘要对象
+
 ## 常量
         
 ### MD2
@@ -370,5 +398,13 @@ const hash.SHA512 = 8;
 
 ```JavaScript
 const hash.RIPEMD160 = 9;
+```
+
+--------------------------
+### SM3
+**SM3 信息摘要算法标识常量**
+
+```JavaScript
+const hash.SM3 = 10;
 ```
 

@@ -34,6 +34,7 @@
 <li><a href=io.md.html class ="notranslate">io</a></li>
 <li><a href=json.md.html class ="notranslate">json</a></li>
 <li><a href=mq.md.html class ="notranslate">mq</a></li>
+<li><a href=msgpack.md.html class ="notranslate">msgpack</a></li>
 <li><a href=net.md.html class ="notranslate">net</a></li>
 <li><a href=os.md.html class ="notranslate">os</a></li>
 <li><a href=path.md.html class ="notranslate">path</a></li>
@@ -236,13 +237,37 @@ conn.onmessage = <span class="hljs-function"><span class="hljs-params">e</span> 
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li><span class="notranslate">accept</span>: Function, 连接成功处理函数</li>
+<li><span class="notranslate">accept</span>: Function, 连接成功处理函数，回调将传递两个参数，第一个参数为接收到的 <a href=../../object/ifs/websocket.md.html class ="notranslate">WebSocket</a> 对象，第二个参数为握手时的 <a href=../../object/ifs/httprequest.md.html class ="notranslate">HttpRequest</a> 对象</li>
+</ul>
+<p>返回结果:</p>
+<ul>
+<li><a href=../../object/ifs/handler.md.html class ="notranslate">Handler</a>, 返回协议处理器，可与 <a href=../../object/ifs/httpserver.md.html class ="notranslate">HttpServer</a>, <a href=../../object/ifs/chain.md.html class ="notranslate">Chain</a>, <a href=../../object/ifs/routing.md.html class ="notranslate">Routing</a> 等对接
+<code>`</code></li>
+</ul>
+<hr>
+<p><strong>创建一个 websocket 协议处理器，从 <a href="http.md" class ="notranslate">http</a> 接收 upgrade 请求并握手，生成 <a href=../../object/ifs/websocket.md.html class ="notranslate">WebSocket</a> 对象</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> Handler ws.upgrade(<span class="hljs-built_in">Object</span> opts,
+    <span class="hljs-built_in">Function</span> accept);
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li><span class="notranslate">opts</span>: Object, 连接选项，缺省是 {}</li>
+<li><span class="notranslate">accept</span>: Function, 连接成功处理函数，回调将传递两个参数，第一个参数为接收到的 <a href=../../object/ifs/websocket.md.html class ="notranslate">WebSocket</a> 对象，第二个参数为握手时的 <a href=../../object/ifs/httprequest.md.html class ="notranslate">HttpRequest</a> 对象</li>
 </ul>
 <p>返回结果:</p>
 <ul>
 <li><a href=../../object/ifs/handler.md.html class ="notranslate">Handler</a>, 返回协议处理器，可与 <a href=../../object/ifs/httpserver.md.html class ="notranslate">HttpServer</a>, <a href=../../object/ifs/chain.md.html class ="notranslate">Chain</a>, <a href=../../object/ifs/routing.md.html class ="notranslate">Routing</a> 等对接</li>
 </ul>
-<p>accept 函数调用时，将传递两个参数，第一个参数为接收到的 <a href=../../object/ifs/websocket.md.html class ="notranslate">WebSocket</a> 对象，第二个参数为握手时的 <a href=../../object/ifs/httprequest.md.html class ="notranslate">HttpRequest</a> 对象。</p>
+<p>opts 包含请求的附加选项，支持的内容如下：</p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4</div>{
+    <span class="hljs-string">"perMessageDeflate"</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">// 指定是否支持压缩，缺省支持</span>
+    <span class="hljs-string">"maxPayload"</span>: <span class="hljs-number">67108864</span> <span class="hljs-comment">// 指定最大数据包尺寸，缺省为 67108864</span>
+}
+</code></pre>
 <h2 id="常量">常量</h2>
 <h3 id="CONTINUE" class ="notranslate">CONTINUE</h3>
 <p><strong>指定 websocket 消息类型 0，代表一个继续帧</strong></p>

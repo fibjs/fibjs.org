@@ -13,7 +13,7 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    X509Crl [tooltip="X509Crl", fillcolor="lightgray", id="me", label="{X509Crl|new X509Crl()\l|load()\lloadFile()\ldump()\lclear()\l}"];
+    X509Crl [tooltip="X509Crl", fillcolor="lightgray", id="me", label="{X509Crl|new X509Crl()\l|version\lissuer\lserials\lthisUpdate\lnextUpdate\lnext\l|load()\lloadFile()\ldump()\lclear()\l}"];
 
     object -> X509Crl [dir=back];
 }
@@ -47,6 +47,55 @@ new X509Crl(String pemCrl);
 
 调用参数:
 * pemCrl: String, PEM 格式的撤销证书
+
+## 成员属性
+        
+### version
+**Integer, 获取证书的版本**
+
+```JavaScript
+readonly Integer X509Crl.version;
+```
+
+--------------------------
+### issuer
+**String, 获取证书颁发者的可分辨名称**
+
+```JavaScript
+readonly String X509Crl.issuer;
+```
+
+--------------------------
+### serials
+**Array, 获取证书吊销序列号列表**
+
+```JavaScript
+readonly Array X509Crl.serials;
+```
+
+--------------------------
+### thisUpdate
+**Date, 获取证书的本次更新时间**
+
+```JavaScript
+readonly Date X509Crl.thisUpdate;
+```
+
+--------------------------
+### nextUpdate
+**Date, 获取证书的下次更新时间**
+
+```JavaScript
+readonly Date X509Crl.nextUpdate;
+```
+
+--------------------------
+### next
+**X509Crl, 获取证书链中得下一个证书**
+
+```JavaScript
+readonly X509Crl X509Crl.next;
+```
 
 ## 成员函数
         

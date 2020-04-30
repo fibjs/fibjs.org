@@ -191,6 +191,20 @@ static process.nextTick(Function func,
 * args: ..., 可变参数序列，此序列会在纤程内传递给函数
 
 --------------------------
+### binding
+**获取指定名称的内部模块**
+
+```JavaScript
+static Value process.binding(String name);
+```
+
+调用参数:
+* name: String, 指定要查询的内部模块名称
+
+返回结果:
+* Value, 返回指定的内部模块
+
+--------------------------
 ### open
 **运行指定的命令行，接管进程输入输出流，并返回进程对象**
 

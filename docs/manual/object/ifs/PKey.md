@@ -13,7 +13,7 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    PKey [tooltip="PKey", fillcolor="lightgray", id="me", label="{PKey|new PKey()\l|name\lkeySize\lpublicKey\l|genRsaKey()\lgenEcKey()\lisPrivate()\lclone()\limportKey()\limportFile()\lexportPem()\lexportDer()\lexportJson()\lencrypt()\ldecrypt()\lsign()\lverify()\l}"];
+    PKey [tooltip="PKey", fillcolor="lightgray", id="me", label="{PKey|new PKey()\l|name\lkeySize\lpublicKey\l|genRsaKey()\lgenEcKey()\lgenSm2Key()\lisPrivate()\lclone()\limportKey()\limportFile()\lexportPem()\lexportDer()\lexportJson()\lencrypt()\ldecrypt()\lsign()\lverify()\l}"];
 
     object -> PKey [dir=back];
 }
@@ -161,6 +161,14 @@ PKey.genEcKey(String curve = "secp521r1") async;
 
 调用参数:
 * curve: String, 指定预置椭圆曲线，可选值为："secp521r1", "brainpoolP512r1", "secp384r1", "brainpoolP384r1", "secp256r1", "secp256k1", "brainpoolP256r1", "secp224r1", "secp224k1", "secp192r1", "secp192k1"
+
+--------------------------
+### genSm2Key
+**生成一个 SM2 私钥**
+
+```JavaScript
+PKey.genSm2Key() async;
+```
 
 --------------------------
 ### isPrivate

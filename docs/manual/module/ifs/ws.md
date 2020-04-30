@@ -57,12 +57,35 @@ static Handler ws.upgrade(Function accept);
 ```
 
 调用参数:
-* accept: Function, 连接成功处理函数
+* accept: Function, 连接成功处理函数，回调将传递两个参数，第一个参数为接收到的 [WebSocket](../../object/ifs/WebSocket.md) 对象，第二个参数为握手时的 [HttpRequest](../../object/ifs/HttpRequest.md) 对象
+
+返回结果:
+* [Handler](../../object/ifs/Handler.md), 返回协议处理器，可与 [HttpServer](../../object/ifs/HttpServer.md), [Chain](../../object/ifs/Chain.md), [Routing](../../object/ifs/Routing.md) 等对接
+```
+
+--------------------------
+**创建一个 websocket 协议处理器，从 [http](http.md) 接收 upgrade 请求并握手，生成 [WebSocket](../../object/ifs/WebSocket.md) 对象**
+
+```JavaScript
+static Handler ws.upgrade(Object opts,
+    Function accept);
+```
+
+调用参数:
+* opts: Object, 连接选项，缺省是 {}
+* accept: Function, 连接成功处理函数，回调将传递两个参数，第一个参数为接收到的 [WebSocket](../../object/ifs/WebSocket.md) 对象，第二个参数为握手时的 [HttpRequest](../../object/ifs/HttpRequest.md) 对象
 
 返回结果:
 * [Handler](../../object/ifs/Handler.md), 返回协议处理器，可与 [HttpServer](../../object/ifs/HttpServer.md), [Chain](../../object/ifs/Chain.md), [Routing](../../object/ifs/Routing.md) 等对接
 
-accept 函数调用时，将传递两个参数，第一个参数为接收到的 [WebSocket](../../object/ifs/WebSocket.md) 对象，第二个参数为握手时的 [HttpRequest](../../object/ifs/HttpRequest.md) 对象。
+opts 包含请求的附加选项，支持的内容如下：
+
+```JavaScript
+{
+    "perMessageDeflate": true, // 指定是否支持压缩，缺省支持
+    "maxPayload": 67108864 // 指定最大数据包尺寸，缺省为 67108864
+}
+```
 
 ## 常量
         

@@ -34,6 +34,7 @@
 <li><a href=../manual/module/ifs/io.md.html class ="notranslate">io</a></li>
 <li><a href=../manual/module/ifs/json.md.html class ="notranslate">json</a></li>
 <li><a href=../manual/module/ifs/mq.md.html class ="notranslate">mq</a></li>
+<li><a href=../manual/module/ifs/msgpack.md.html class ="notranslate">msgpack</a></li>
 <li><a href=../manual/module/ifs/net.md.html class ="notranslate">net</a></li>
 <li><a href=../manual/module/ifs/os.md.html class ="notranslate">os</a></li>
 <li><a href=../manual/module/ifs/path.md.html class ="notranslate">path</a></li>
@@ -233,41 +234,43 @@ git submodule update --init --recursive
 <pre><code><div class="line-numbers">1
 2
 3
-4</div>GCC <span class="hljs-number">4.8</span> <span class="hljs-keyword">or</span> newer
+4
+5</div>CLANG <span class="hljs-number">3.8</span> <span class="hljs-keyword">or</span> newer
+GCC <span class="hljs-number">4.8</span> <span class="hljs-keyword">or</span> newer
 CMake <span class="hljs-number">2.6</span> <span class="hljs-keyword">or</span> newer
 GNU Make <span class="hljs-number">3.81</span> <span class="hljs-keyword">or</span> newer
 libexecinfo (FreeBSD <span class="hljs-keyword">and</span> OpenBSD only)
 </code></pre><p>Mac OS X 下，除需要安装 Xcode 及命令行工具外，以 brew 为例，准备环境命令如下:</p>
-<pre><code class="lang-sh"><div class="line-numbers">1</div>brew install cmake git
+<pre><code class="lang-sh"><div class="line-numbers">1</div>brew install cmake git ccache
 </code></pre>
 <p>Ubuntu 准备环境命令如下:</p>
-<pre><code class="lang-sh"><div class="line-numbers">1</div>apt install g++ make cmake git
+<pre><code class="lang-sh"><div class="line-numbers">1</div>apt install clang g++ make cmake git ccache
 </code></pre>
 <p>如果要编译 32 位版本，另需要安装 multilib:</p>
-<pre><code class="lang-sh"><div class="line-numbers">1</div>apt install gcc-multilib g++-multilib
+<pre><code class="lang-sh"><div class="line-numbers">1</div>apt install g++-multilib
 </code></pre>
 <p>ARM on Ubuntu 准备环境命令如下:</p>
-<pre><code class="lang-sh"><div class="line-numbers">1</div>apt install gcc-arm-linux-gnueabihf g++-arm-linux-gnueabihf
+<pre><code class="lang-sh"><div class="line-numbers">1</div>apt install g++-arm-linux-gnueabihf
 </code></pre>
 <p>如果要在 Ubuntu 上编译 ARM 64 位版本，准备环境命令如下:</p>
-<pre><code class="lang-sh"><div class="line-numbers">1</div>apt install gcc-aarch64-linux-gnu g++-aarch64-linux-gnu
+<pre><code class="lang-sh"><div class="line-numbers">1</div>apt install g++-aarch64-linux-gnu
 </code></pre>
 <p>MIPS on Ubuntu 准备环境如下:</p>
-<pre><code class="lang-sh"><div class="line-numbers">1</div>apt install gcc-mips-linux-gnu g++-mips-linux-gnu
+<pre><code class="lang-sh"><div class="line-numbers">1</div>apt install g++-mips-linux-gnu
 </code></pre>
 <p>如果要在 Ubuntu 上编译 MIPS 64 位版本，准备环境命令如下:</p>
-<pre><code class="lang-sh"><div class="line-numbers">1</div>apt install gcc-mips64-linux-gnuabi64 g++-mips64-linux-gnuabi64
-</code></pre>
-<p>PowerPC on Ubuntu 准备环境命令如下:</p>
-<pre><code class="lang-sh"><div class="line-numbers">1</div>apt install gcc-powerpc-linux-gnu g++-powerpc-linux-gnu
-</code></pre>
-<p>如果要在 Ubuntu 上编译 PowerPC 64 位版本，准备环境命令如下:</p>
-<pre><code class="lang-sh"><div class="line-numbers">1</div>apt install gcc-powerpc64-linux-gnu g++-powerpc64-linux-gnu
+<pre><code class="lang-sh"><div class="line-numbers">1</div>apt install g++-mips64-linux-gnuabi64
 </code></pre>
 <p>fix:</p>
 <pre><code class="lang-sh"><div class="line-numbers">1
 2
-3</div>rm -f /usr/include/asm
+3
+4
+5
+6</div>rm -f /usr/include/asm
+rm -f /usr/include/i386-linux-gnu
+rm -f /usr/include/x86_64-linux-gnux32
+
 ln -s x86_64-linux-gnu /usr/include/i386-linux-gnu
 ln -s x86_64-linux-gnu /usr/include/x86_64-linux-gnux32
 </code></pre>

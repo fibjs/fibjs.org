@@ -34,6 +34,7 @@
 <li><a href=io.md.html class ="notranslate">io</a></li>
 <li><a href=json.md.html class ="notranslate">json</a></li>
 <li><a href=mq.md.html class ="notranslate">mq</a></li>
+<li><a href=msgpack.md.html class ="notranslate">msgpack</a></li>
 <li><a href=net.md.html class ="notranslate">net</a></li>
 <li><a href=os.md.html class ="notranslate">os</a></li>
 <li><a href=path.md.html class ="notranslate">path</a></li>
@@ -249,6 +250,18 @@
 </ul>
 <p>fileHandler 支持 gzip 预压缩，当请求接受 gzip 编码，且相同路径下 filename.ext.gz 文件存在时，将直接返回此文件，
 从而避免重复压缩带来服务器负载。</p>
+<hr>
+<h3 id="setClientCert" class ="notranslate">setClientCert</h3>
+<p><strong>设定缺省客户端证书</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> http.setClientCert(X509Cert crt,
+    PKey key);
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li><span class="notranslate">crt</span>: <a href=../../object/ifs/x509cert.md.html class ="notranslate">X509Cert</a>, <a href=../../object/ifs/x509cert.md.html class ="notranslate">X509Cert</a> 证书，用于客户端验证服务器</li>
+<li><span class="notranslate">key</span>: <a href=../../object/ifs/pkey.md.html class ="notranslate">PKey</a>, <a href=../../object/ifs/pkey.md.html class ="notranslate">PKey</a> 私钥，用于与客户端会话</li>
+</ul>
 <hr>
 <h3 id="request" class ="notranslate">request</h3>
 <p><strong>发送 http 请求到指定的流对象，并返回结果</strong></p>

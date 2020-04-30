@@ -7,7 +7,7 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    HttpCollection [tooltip="HttpCollection", fillcolor="lightgray", id="me", label="{HttpCollection|operator[String]\l|clear()\lhas()\lfirst()\lall()\ladd()\lset()\lremove()\l}"];
+    HttpCollection [tooltip="HttpCollection", fillcolor="lightgray", id="me", label="{HttpCollection|operator[String]\l|clear()\lhas()\lfirst()\lall()\ladd()\lset()\lremove()\ldelete()\lsort()\lkeys()\lvalues()\l}"];
 
     object -> HttpCollection [dir=back];
 }
@@ -152,6 +152,47 @@ HttpCollection.remove(String name);
 
 调用参数:
 * name: String, 指定要删除的键值
+
+--------------------------
+### delete
+**删除指定键值的全部值**
+
+```JavaScript
+HttpCollection.delete(String name);
+```
+
+调用参数:
+* name: String, 指定要删除的键值
+
+--------------------------
+### sort
+**按照键值排序容器内的内容**
+
+```JavaScript
+HttpCollection.sort();
+```
+
+--------------------------
+### keys
+**查询容器内的键值**
+
+```JavaScript
+NArray HttpCollection.keys();
+```
+
+返回结果:
+* NArray, 返回包含所有键值的数组
+
+--------------------------
+### values
+**查询容器内的数值**
+
+```JavaScript
+NArray HttpCollection.values();
+```
+
+返回结果:
+* NArray, 返回包含所有数值的数组
 
 --------------------------
 ### toString
