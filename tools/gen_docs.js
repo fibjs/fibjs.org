@@ -3,6 +3,9 @@ var path = require('path');
 
 var fibjsFolderBase = process.env.FIBJS_FOLDER || '';
 
+if (!fibjsFolderBase && console.readLine)
+    fibjsFolderBase = console.readLine('provide fibjs source directory: ')
+
 if (!fibjsFolderBase || !fs.exists(fibjsFolderBase))
     throw new Error('set env FIBJS_FOLDER firstly!')
 
