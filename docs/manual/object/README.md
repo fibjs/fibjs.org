@@ -9,6 +9,7 @@
 * [Digest](ifs/Digest.md) - 信息摘要对象
 * [Event](ifs/Event.md) - 事件对象
 * [EventEmitter](ifs/EventEmitter.md) - 事件触发对象，可用于建立观察者模式，支持事件触发的对象均继承于此，同一事件的同一函数只会产生一次回调
+* [FSWatcher](ifs/FSWatcher.md) - 文件系统观察对象
 * [Fiber](ifs/Fiber.md) - 纤程操作对象，此对象不可直接创建
 * [File](ifs/File.md) - 文件操作对象，用于二进制文件读写
 * [Handler](ifs/Handler.md) - 消息处理器接口
@@ -56,6 +57,7 @@
 * [SslServer](ifs/SslServer.md) - ssl 服务器对象，可方便创建一个标准多纤程 ssl 服务器
 * [SslSocket](ifs/SslSocket.md) - ssl 网络套接口对象
 * [Stat](ifs/Stat.md) - 文件的基础信息对象
+* [StatsWatcher](ifs/StatsWatcher.md) - 文件 Stats 观察对象
 * [Stream](ifs/Stream.md) - 流操作对象，用于二进制数据流读写
 * [StringDecoder](ifs/StringDecoder.md) - 流解码对象
 * [SubProcess](ifs/SubProcess.md) - 子进程对象

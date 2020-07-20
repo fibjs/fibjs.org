@@ -16,8 +16,10 @@ digraph {
     Digest [tooltip="Digest", URL="Digest.md", label="{Digest}"];
     EventEmitter [tooltip="EventEmitter", URL="EventEmitter.md", label="{EventEmitter}"];
     DgramSocket [tooltip="DgramSocket", URL="DgramSocket.md", label="{DgramSocket}"];
+    FSWatcher [tooltip="FSWatcher", URL="FSWatcher.md", label="{FSWatcher}"];
     LruCache [tooltip="LruCache", URL="LruCache.md", label="{LruCache}"];
     Service [tooltip="Service", URL="Service.md", label="{Service}"];
+    StatsWatcher [tooltip="StatsWatcher", URL="StatsWatcher.md", label="{StatsWatcher}"];
     WebSocket [tooltip="WebSocket", URL="WebSocket.md", label="{WebSocket}"];
     WebView [tooltip="WebView", URL="WebView.md", label="{WebView}"];
     Worker [tooltip="Worker", URL="Worker.md", label="{Worker}"];
@@ -100,8 +102,10 @@ digraph {
     object -> Digest [dir=back];
     object -> EventEmitter [dir=back];
     EventEmitter -> DgramSocket [dir=back];
+    EventEmitter -> FSWatcher [dir=back];
     EventEmitter -> LruCache [dir=back];
     EventEmitter -> Service [dir=back];
+    EventEmitter -> StatsWatcher [dir=back];
     EventEmitter -> WebSocket [dir=back];
     EventEmitter -> WebView [dir=back];
     EventEmitter -> Worker [dir=back];

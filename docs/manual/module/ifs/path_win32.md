@@ -53,6 +53,39 @@ static String path_win32.extname(String path);
 * String, 返回得到的扩展名
 
 --------------------------
+### format
+**尝试将一个对象格式化为路径**
+
+```JavaScript
+static String path_win32.format(Object pathObject);
+```
+
+调用参数:
+* pathObject: Object, 对象
+* pathObject.dir: 
+* pathObject.root: 
+* pathObject.base: 
+* pathObject.name: 
+* pathObject.ext: 
+
+返回结果:
+* String, 返回格式化后的路径
+
+--------------------------
+### parse
+**解析路径为路径对象**
+
+```JavaScript
+static NObject path_win32.parse(String path);
+```
+
+调用参数:
+* path: String, 路径
+
+返回结果:
+* NObject, 返回 pathObject 对象
+
+--------------------------
 ### dirname
 **查询路径中的目录路径**
 

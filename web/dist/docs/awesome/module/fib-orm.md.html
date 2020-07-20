@@ -70,6 +70,7 @@
 <li><a href=../../manual/object/ifs/digest.md.html class ="notranslate">Digest</a></li>
 <li><a href=../../manual/object/ifs/event.md.html class ="notranslate">Event</a></li>
 <li><a href=../../manual/object/ifs/eventemitter.md.html class ="notranslate">EventEmitter</a></li>
+<li><a href=../../manual/object/ifs/fswatcher.md.html class ="notranslate">FSWatcher</a></li>
 <li><a href=../../manual/object/ifs/fiber.md.html class ="notranslate">Fiber</a></li>
 <li><a href=../../manual/object/ifs/file.md.html class ="notranslate">File</a></li>
 <li><a href=../../manual/object/ifs/handler.md.html class ="notranslate">Handler</a></li>
@@ -117,6 +118,7 @@
 <li><a href=../../manual/object/ifs/sslserver.md.html class ="notranslate">SslServer</a></li>
 <li><a href=../../manual/object/ifs/sslsocket.md.html class ="notranslate">SslSocket</a></li>
 <li><a href=../../manual/object/ifs/stat.md.html class ="notranslate">Stat</a></li>
+<li><a href=../../manual/object/ifs/statswatcher.md.html class ="notranslate">StatsWatcher</a></li>
 <li><a href=../../manual/object/ifs/stream.md.html class ="notranslate">Stream</a></li>
 <li><a href=../../manual/object/ifs/stringdecoder.md.html class ="notranslate">StringDecoder</a></li>
 <li><a href=../../manual/object/ifs/subprocess.md.html class ="notranslate">SubProcess</a></li>
@@ -248,10 +250,10 @@
     <span class="hljs-attr">name</span>      : <span class="hljs-built_in">String</span>,
     <span class="hljs-attr">surname</span>   : <span class="hljs-built_in">String</span>,
     <span class="hljs-attr">age</span>       : <span class="hljs-built_in">Number</span>, <span class="hljs-comment">// FLOAT</span>
-    male      : <span class="hljs-built_in">Boolean</span>,
+    <span class="hljs-attr">male</span>      : <span class="hljs-built_in">Boolean</span>,
     <span class="hljs-attr">continent</span> : [ <span class="hljs-string">"Europe"</span>, <span class="hljs-string">"America"</span>, <span class="hljs-string">"Asia"</span>, <span class="hljs-string">"Africa"</span>, <span class="hljs-string">"Australia"</span>, <span class="hljs-string">"Antartica"</span> ], <span class="hljs-comment">// ENUM type</span>
-    photo     : Buffer, <span class="hljs-comment">// BLOB/BINARY</span>
-    data      : <span class="hljs-built_in">Object</span> <span class="hljs-comment">// JSON encoded</span>
+    <span class="hljs-attr">photo</span>     : Buffer, <span class="hljs-comment">// BLOB/BINARY</span>
+    <span class="hljs-attr">data</span>      : <span class="hljs-built_in">Object</span> <span class="hljs-comment">// JSON encoded</span>
 }, {
     <span class="hljs-attr">methods</span>: {
         <span class="hljs-attr">fullName</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
@@ -337,10 +339,10 @@ orm.connect(<span class="hljs-string">"mysql://username:password@host/database"<
         <span class="hljs-attr">name</span>      : <span class="hljs-built_in">String</span>,
         <span class="hljs-attr">surname</span>   : <span class="hljs-built_in">String</span>,
         <span class="hljs-attr">age</span>       : <span class="hljs-built_in">Number</span>, <span class="hljs-comment">// FLOAT</span>
-        male      : <span class="hljs-built_in">Boolean</span>,
+        <span class="hljs-attr">male</span>      : <span class="hljs-built_in">Boolean</span>,
         <span class="hljs-attr">continent</span> : [ <span class="hljs-string">"Europe"</span>, <span class="hljs-string">"America"</span>, <span class="hljs-string">"Asia"</span>, <span class="hljs-string">"Africa"</span>, <span class="hljs-string">"Australia"</span>, <span class="hljs-string">"Antartica"</span> ], <span class="hljs-comment">// ENUM type</span>
-        photo     : Buffer, <span class="hljs-comment">// BLOB/BINARY</span>
-        data      : <span class="hljs-built_in">Object</span> <span class="hljs-comment">// JSON encoded</span>
+        <span class="hljs-attr">photo</span>     : Buffer, <span class="hljs-comment">// BLOB/BINARY</span>
+        <span class="hljs-attr">data</span>      : <span class="hljs-built_in">Object</span> <span class="hljs-comment">// JSON encoded</span>
     }, {
         <span class="hljs-attr">methods</span>: {
             <span class="hljs-attr">fullName</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
@@ -1026,7 +1028,7 @@ Person.hasMany(<span class="hljs-string">"friends"</span>, {
     <span class="hljs-attr">rate</span> : <span class="hljs-built_in">Number</span>
 }, {
     <span class="hljs-attr">key</span>       : <span class="hljs-literal">true</span>, <span class="hljs-comment">// Turns the foreign keys in the join table into a composite key</span>
-    autoFetch : <span class="hljs-literal">true</span>
+    <span class="hljs-attr">autoFetch</span> : <span class="hljs-literal">true</span>
 });
 
 <span class="hljs-keyword">var</span> John = Person.getSync(<span class="hljs-number">123</span>);
@@ -1149,4 +1151,4 @@ with this adapter, along with the constructor for the adapter:</p>
 <pre><code class="lang-js"><div class="line-numbers">1</div><span class="hljs-built_in">require</span>(<span class="hljs-string">'orm'</span>).addAdapter(<span class="hljs-string">'cassandra'</span>, CassandraAdapter);
 </code></pre>
 <p>See <a href=adapters.md.html class ="notranslate">the documentation for creating adapters</a> for more details.</p>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id=toc></div></div></div></div><div class=footer><div class=container>&copy; Copyright 2014-2019 fibjs.org | <a href=../../../support.html>支持我们</a></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="Click to return on the top page" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js></script><script type=text/javascript src=../../../js/common.js></script><script type=text/javascript src=../../../js/docs.js></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id=toc></div></div></div></div><div class=footer><div class=container>&copy; Copyright 2014-Present fibjs.org | <a href=../../../support.html>支持我们</a></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="Click to return on the top page" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js></script><script type=text/javascript src=../../../js/common.js></script><script type=text/javascript src=../../../js/docs.js></script></body></html>

@@ -70,6 +70,7 @@
 <li><a href=digest.md.html class ="notranslate">Digest</a></li>
 <li><a href=event.md.html class ="notranslate">Event</a></li>
 <li><a href=eventemitter.md.html class ="notranslate">EventEmitter</a></li>
+<li><a href=fswatcher.md.html class ="notranslate">FSWatcher</a></li>
 <li><a href=fiber.md.html class ="notranslate">Fiber</a></li>
 <li><a href=file.md.html class ="notranslate">File</a></li>
 <li><a href=handler.md.html class ="notranslate">Handler</a></li>
@@ -117,6 +118,7 @@
 <li><a href=sslserver.md.html class ="notranslate">SslServer</a></li>
 <li><a href=sslsocket.md.html class ="notranslate">SslSocket</a></li>
 <li><a href=stat.md.html class ="notranslate">Stat</a></li>
+<li><a href=statswatcher.md.html class ="notranslate">StatsWatcher</a></li>
 <li><a href=stream.md.html class ="notranslate">Stream</a></li>
 <li><a href=stringdecoder.md.html class ="notranslate">StringDecoder</a></li>
 <li><a href=subprocess.md.html class ="notranslate">SubProcess</a></li>
@@ -189,7 +191,7 @@
 </ul>
  </div></div></div>  </div></div><div class=content><div class=social-share data-sites=weibo,twitter data-description=分享></div> <h1 id="对象-WebView">对象 WebView</h1>
 <p>浏览器窗口对象</p>
-<p>WebView 是一个嵌入浏览器的窗口组件，目前仅支持 windows ie。</p>
+<p>WebView 是一个嵌入浏览器的窗口组件，目前仅支持 windows, macOS(10.10+). 在 windows 使用 IE/Edge 内核, 在 macOS 使用 WKWebView.</p>
 <p>由于 WebView 内的 JavaScript 程序与 fibjs 并不在同一个引擎内，所以如果需要与宿主程序进行通讯，需要通过消息进行。</p>
 <p>WebView 用于通讯的对象是 external，external 支持一个方法 postMessage 和两个事件 onmessage、onclose。</p>
 <p>一个简单的通讯示例代码如下：</p>
@@ -203,7 +205,7 @@
 8
 9</div><span class="hljs-comment">// index.js</span>
 <span class="hljs-keyword">var</span> gui = <span class="hljs-built_in">require</span>(<span class="hljs-string">'gui'</span>);
-<span class="hljs-keyword">var</span> webview = gui.open(<span class="hljs-string">'fs:index.html'</span>);
+<span class="hljs-keyword">var</span> webview = gui.open(<span class="hljs-string">'fs://index.html'</span>);
 
 webview.onmessage = <span class="hljs-function"><span class="hljs-params">msg</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(msg);
 
@@ -228,7 +230,7 @@ webview.wait();
     };
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 </code></pre>
-<p> 在用户窗口关闭之前，会触发 external.onclose 事件，external.onclose 可以决定是否关闭。如果 external.onclose 返回 false，则此次操作取消，否则将关闭窗口。</p>
+<p>在用户窗口关闭之前，会触发 external.onclose 事件，external.onclose 可以决定是否关闭。如果 external.onclose 返回 false，则此次操作取消，否则将关闭窗口。</p>
 <p>以下的例子，会在用户点关闭后等待 5 秒后再关闭窗口。</p>
 <pre><code class="lang-html"><div class="line-numbers">1
 2
@@ -367,7 +369,7 @@ webview.wait();
 2
 3
 4</div><span class="hljs-keyword">var</span> gui = <span class="hljs-built_in">require</span>(<span class="hljs-string">'gui'</span>);
-<span class="hljs-keyword">var</span> webview = gui.open(<span class="hljs-string">'fs:index.html'</span>);
+<span class="hljs-keyword">var</span> webview = gui.open(<span class="hljs-string">'fs://index.html'</span>);
 
 webview.onmove = <span class="hljs-function"><span class="hljs-params">evt</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(evt.left, evt.top);
 </code></pre>
@@ -381,7 +383,7 @@ webview.onmove = <span class="hljs-function"><span class="hljs-params">evt</span
 2
 3
 4</div><span class="hljs-keyword">var</span> gui = <span class="hljs-built_in">require</span>(<span class="hljs-string">'gui'</span>);
-<span class="hljs-keyword">var</span> webview = gui.open(<span class="hljs-string">'fs:index.html'</span>);
+<span class="hljs-keyword">var</span> webview = gui.open(<span class="hljs-string">'fs://index.html'</span>);
 
 webview.onresize = <span class="hljs-function"><span class="hljs-params">evt</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(evt.width, evt.height);
 </code></pre>
@@ -753,4 +755,4 @@ webview.onresize = <span class="hljs-function"><span class="hljs-params">evt</sp
 <ul>
 <li><span class="notranslate">Value</span>, 返回包含可 JSON 序列化的值</li>
 </ul>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id=toc></div></div></div></div><div class=footer><div class=container>&copy; Copyright 2014-2019 fibjs.org | <a href=../../../../support.html>支持我们</a></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="Click to return on the top page" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js></script><script type=text/javascript src=../../../../js/common.js></script><script type=text/javascript src=../../../../js/docs.js></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id=toc></div></div></div></div><div class=footer><div class=container>&copy; Copyright 2014-Present fibjs.org | <a href=../../../../support.html>支持我们</a></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="Click to return on the top page" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js></script><script type=text/javascript src=../../../../js/common.js></script><script type=text/javascript src=../../../../js/docs.js></script></body></html>

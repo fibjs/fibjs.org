@@ -1,56 +1,24 @@
-# 对象 WebView
-浏览器窗口对象
+# 对象 StatsWatcher
+文件 Stats 观察对象
 
-WebView 是一个嵌入浏览器的窗口组件，目前仅支持 windows, macOS(10.10+). 在 windows 使用 IE/Edge 内核, 在 macOS 使用 WKWebView.
-
-由于 WebView 内的 JavaScript 程序与 fibjs 并不在同一个引擎内，所以如果需要与宿主程序进行通讯，需要通过消息进行。
-
-WebView 用于通讯的对象是 external，external 支持一个方法 postMessage 和两个事件 onmessage、onclose。
-
-一个简单的通讯示例代码如下：
+当调用 `fs.watchFile(target, onchange)` 成功时, 返回该类型对象
 
 ```JavaScript
-// index.js
-var gui = require('gui');
-var webview = gui.open('fs://index.html');
+var fs = require("fs");
+var statsWatcher = fs.watchFile(target, (curStat, prevStat) => {
+    // process
+    // ...
 
-webview.onmessage = msg => console.log(msg);
-
-webview.onload = evt => webview.postMessage("hello from fibjs");
-
-webview.wait();
+    statsWatcher.unref();
+});
 ```
 
-index.html 的内容如下：
-```html
-<script>
-    external.onclose = function() {
-    }
+**注意** 当且**仅当**被观察的目标文件 target 的 mtime 属性发生变化时才会触发 onchange 回调
 
-    external.onmessage = function(msg){
-        external.postMessage("send back: " + msg);
-    };
-</script>
-```
+单纯地访问(access)目标文件 target 不会触发 onchange 回调.
 
-在用户窗口关闭之前，会触发 external.onclose 事件，external.onclose 可以决定是否关闭。如果 external.onclose 返回 false，则此次操作取消，否则将关闭窗口。
-
-以下的例子，会在用户点关闭后等待 5 秒后再关闭窗口。
-```html
-<script lang="JavaScript">
-    var bClose = false;
-    external.onclose = function () {
-        if (!bClose) {
-            setTimeout(function () {
-                bClose = true;
-                window.close();
-            }, 5000);
-            return false;
-        }
-    }
-</script>
-```
-上面的代码中，因为 window.close 本身也会触发 onclose 事件，所以需要增加一个开关变量，用于识别是否需要处理此次事件。
+如果调用 `fs.watchFile(target)` 时, target 表示的文件或目录还不存在, 则onchange 回调**不会**被调用, 一直到该 target 被创建, 该回调才会开始被调用.
+如果在 watcher 工作途中, )目标文件被删除, 则后续不会再有回调产生
 
 ## 继承关系
 ```dot
@@ -59,10 +27,10 @@ digraph {
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
     EventEmitter [tooltip="EventEmitter", URL="EventEmitter.md", label="{EventEmitter|new EventEmitter()\l|defaultMaxListeners\l|on()\laddListener()\lprependListener()\lonce()\lprependOnceListener()\loff()\lremoveListener()\lremoveAllListeners()\lsetMaxListeners()\lgetMaxListeners()\llisteners()\llistenerCount()\leventNames()\lemit()\l}"];
-    WebView [tooltip="WebView", fillcolor="lightgray", id="me", label="{WebView|visible\lonload\lonmove\lonresize\lonclosed\lonmessage\l|setHtml()\lprint()\lclose()\lpostMessage()\l}"];
+    StatsWatcher [tooltip="StatsWatcher", fillcolor="lightgray", id="me", label="{StatsWatcher|onchange\l|close()\lref()\lunref()\l}"];
 
     object -> EventEmitter [dir=back];
-    EventEmitter -> WebView [dir=back];
+    EventEmitter -> StatsWatcher [dir=back];
 }
 ```
 
@@ -72,126 +40,57 @@ digraph {
 **Integer, 默认全局最大监听器数**
 
 ```JavaScript
-static Integer WebView.defaultMaxListeners;
+static Integer StatsWatcher.defaultMaxListeners;
 ```
 
 ## 成员属性
         
-### visible
-**Boolean, 查询和设置窗口是否显示**
+### onchange
+**Function, 查询和绑定"文件改变"事件，相当于 on("change", func);**
 
 ```JavaScript
-Boolean WebView.visible;
-```
-
---------------------------
-### onload
-**Function, 查询和绑定加载成功事件，相当于 on("load", func);**
-
-```JavaScript
-Function WebView.onload;
-```
-
---------------------------
-### onmove
-**Function, 查询和绑定窗口移动事件，相当于 on("move", func);**
-
-```JavaScript
-Function WebView.onmove;
-```
-
-以下示例会在窗口移动时输出窗口的左上角坐标：
-
-```JavaScript
-var gui = require('gui');
-var webview = gui.open('fs://index.html');
-
-webview.onmove = evt => console.log(evt.left, evt.top);
-```
-
---------------------------
-### onresize
-**Function, 查询和绑定窗口尺寸改变事件，相当于 on("size", func);**
-
-```JavaScript
-Function WebView.onresize;
-```
-
-以下示例会在窗口改变大小时输出窗口的尺寸：
-
-```JavaScript
-var gui = require('gui');
-var webview = gui.open('fs://index.html');
-
-webview.onresize = evt => console.log(evt.width, evt.height);
-```
-
---------------------------
-### onclosed
-**Function, 查询和绑定窗口关闭事件，WebView 关闭后会触发此时间，相当于 on("closed", func);**
-
-```JavaScript
-Function WebView.onclosed;
-```
-
---------------------------
-### onmessage
-**Function, 查询和绑定接受 webview 内 postMessage 消息事件，相当于 on("message", func);**
-
-```JavaScript
-Function WebView.onmessage;
+Function StatsWatcher.onchange;
 ```
 
 ## 成员函数
         
-### setHtml
-**设置 webview 的页面 html**
-
-```JavaScript
-WebView.setHtml(String html) async;
-```
-
-调用参数:
-* html: String, 设置的 html
-
---------------------------
-### print
-**打印当前窗口文档**
-
-```JavaScript
-WebView.print(Integer mode = 1) async;
-```
-
-调用参数:
-* mode: Integer, 打印参数，0: 快速打印; 1: 标准打印; 2: 打印预览。缺省为 1
-
---------------------------
 ### close
-**关闭当前窗口**
+**停止对目标文件路径的观察, 清除引用计数(不再 hold 进程)**
 
 ```JavaScript
-WebView.close() async;
+StatsWatcher.close();
 ```
 
 --------------------------
-### postMessage
-**向 webview 内发送消息**
+### ref
+**增加引用计数, 告知 fibjs 只要该 watcher 还在使用就不要退出进程,**
 
 ```JavaScript
-WebView.postMessage(String msg) async;
+StatsWatcher StatsWatcher.ref();
 ```
 
-调用参数:
-* msg: String, 要发送的消息
+返回结果:
+* StatsWatcher, 返回 StatsWatcher 本身
 
-     postMessage 需要在窗口加载完成后发送消息，在此之前发送的消息会丢失。因此建议在 onload 事件触发后再调用此方法。
+经由 `fs.watchFile()` 得到的 StatsWatcher 默认已调用了该方法, 即默认就会 hold 进程.
+
+--------------------------
+### unref
+**减少引用计数**
+
+```JavaScript
+StatsWatcher StatsWatcher.unref();
+```
+
+返回结果:
+* StatsWatcher, 返回 StatsWatcher 本身
 
 --------------------------
 ### on
 **绑定一个事件处理函数到对象**
 
 ```JavaScript
-Object WebView.on(String ev,
+Object StatsWatcher.on(String ev,
     Function func);
 ```
 
@@ -206,7 +105,7 @@ Object WebView.on(String ev,
 **绑定一个事件处理函数到对象**
 
 ```JavaScript
-Object WebView.on(Object map);
+Object StatsWatcher.on(Object map);
 ```
 
 调用参数:
@@ -220,7 +119,7 @@ Object WebView.on(Object map);
 **绑定一个事件处理函数到对象**
 
 ```JavaScript
-Object WebView.addListener(String ev,
+Object StatsWatcher.addListener(String ev,
     Function func);
 ```
 
@@ -235,7 +134,7 @@ Object WebView.addListener(String ev,
 **绑定一个事件处理函数到对象**
 
 ```JavaScript
-Object WebView.addListener(Object map);
+Object StatsWatcher.addListener(Object map);
 ```
 
 调用参数:
@@ -249,7 +148,7 @@ Object WebView.addListener(Object map);
 **绑定一个事件处理函数到对象起始**
 
 ```JavaScript
-Object WebView.prependListener(String ev,
+Object StatsWatcher.prependListener(String ev,
     Function func);
 ```
 
@@ -264,7 +163,7 @@ Object WebView.prependListener(String ev,
 **绑定一个事件处理函数到对象起始**
 
 ```JavaScript
-Object WebView.prependListener(Object map);
+Object StatsWatcher.prependListener(Object map);
 ```
 
 调用参数:
@@ -278,7 +177,7 @@ Object WebView.prependListener(Object map);
 **绑定一个一次性事件处理函数到对象，一次性处理函数只会触发一次**
 
 ```JavaScript
-Object WebView.once(String ev,
+Object StatsWatcher.once(String ev,
     Function func);
 ```
 
@@ -293,7 +192,7 @@ Object WebView.once(String ev,
 **绑定一个一次性事件处理函数到对象，一次性处理函数只会触发一次**
 
 ```JavaScript
-Object WebView.once(Object map);
+Object StatsWatcher.once(Object map);
 ```
 
 调用参数:
@@ -307,7 +206,7 @@ Object WebView.once(Object map);
 **绑定一个事件处理函数到对象起始**
 
 ```JavaScript
-Object WebView.prependOnceListener(String ev,
+Object StatsWatcher.prependOnceListener(String ev,
     Function func);
 ```
 
@@ -322,7 +221,7 @@ Object WebView.prependOnceListener(String ev,
 **绑定一个事件处理函数到对象起始**
 
 ```JavaScript
-Object WebView.prependOnceListener(Object map);
+Object StatsWatcher.prependOnceListener(Object map);
 ```
 
 调用参数:
@@ -336,7 +235,7 @@ Object WebView.prependOnceListener(Object map);
 **从对象处理队列中取消指定函数**
 
 ```JavaScript
-Object WebView.off(String ev,
+Object StatsWatcher.off(String ev,
     Function func);
 ```
 
@@ -351,7 +250,7 @@ Object WebView.off(String ev,
 **取消对象处理队列中的全部函数**
 
 ```JavaScript
-Object WebView.off(String ev);
+Object StatsWatcher.off(String ev);
 ```
 
 调用参数:
@@ -364,7 +263,7 @@ Object WebView.off(String ev);
 **从对象处理队列中取消指定函数**
 
 ```JavaScript
-Object WebView.off(Object map);
+Object StatsWatcher.off(Object map);
 ```
 
 调用参数:
@@ -378,7 +277,7 @@ Object WebView.off(Object map);
 **从对象处理队列中取消指定函数**
 
 ```JavaScript
-Object WebView.removeListener(String ev,
+Object StatsWatcher.removeListener(String ev,
     Function func);
 ```
 
@@ -393,7 +292,7 @@ Object WebView.removeListener(String ev,
 **取消对象处理队列中的全部函数**
 
 ```JavaScript
-Object WebView.removeListener(String ev);
+Object StatsWatcher.removeListener(String ev);
 ```
 
 调用参数:
@@ -406,7 +305,7 @@ Object WebView.removeListener(String ev);
 **从对象处理队列中取消指定函数**
 
 ```JavaScript
-Object WebView.removeListener(Object map);
+Object StatsWatcher.removeListener(Object map);
 ```
 
 调用参数:
@@ -420,7 +319,7 @@ Object WebView.removeListener(Object map);
 **从对象处理队列中取消所有事件的所有监听器， 如果指定事件，则移除指定事件的所有监听器。**
 
 ```JavaScript
-Object WebView.removeAllListeners(Array evs = []);
+Object StatsWatcher.removeAllListeners(Array evs = []);
 ```
 
 调用参数:
@@ -434,7 +333,7 @@ Object WebView.removeAllListeners(Array evs = []);
 **监听器的默认限制的数量，仅用于兼容**
 
 ```JavaScript
-WebView.setMaxListeners(Integer n);
+StatsWatcher.setMaxListeners(Integer n);
 ```
 
 调用参数:
@@ -445,7 +344,7 @@ WebView.setMaxListeners(Integer n);
 **获取监听器的默认限制的数量，仅用于兼容**
 
 ```JavaScript
-Integer WebView.getMaxListeners();
+Integer StatsWatcher.getMaxListeners();
 ```
 
 返回结果:
@@ -456,7 +355,7 @@ Integer WebView.getMaxListeners();
 **查询对象指定事件的监听器数组**
 
 ```JavaScript
-Array WebView.listeners(String ev);
+Array StatsWatcher.listeners(String ev);
 ```
 
 调用参数:
@@ -470,7 +369,7 @@ Array WebView.listeners(String ev);
 **查询对象指定事件的监听器数量**
 
 ```JavaScript
-Integer WebView.listenerCount(String ev);
+Integer StatsWatcher.listenerCount(String ev);
 ```
 
 调用参数:
@@ -484,7 +383,7 @@ Integer WebView.listenerCount(String ev);
 **查询监听器事件名称**
 
 ```JavaScript
-Array WebView.eventNames();
+Array StatsWatcher.eventNames();
 ```
 
 返回结果:
@@ -495,7 +394,7 @@ Array WebView.eventNames();
 **主动触发一个事件**
 
 ```JavaScript
-Boolean WebView.emit(String ev,
+Boolean StatsWatcher.emit(String ev,
     ...args);
 ```
 
@@ -511,7 +410,7 @@ Boolean WebView.emit(String ev,
 **返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现**
 
 ```JavaScript
-String WebView.toString();
+String StatsWatcher.toString();
 ```
 
 返回结果:
@@ -522,7 +421,7 @@ String WebView.toString();
 **返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合**
 
 ```JavaScript
-Value WebView.toJSON(String key = "");
+Value StatsWatcher.toJSON(String key = "");
 ```
 
 调用参数:

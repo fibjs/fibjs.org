@@ -70,6 +70,7 @@
 <li><a href=../../object/ifs/digest.md.html class ="notranslate">Digest</a></li>
 <li><a href=../../object/ifs/event.md.html class ="notranslate">Event</a></li>
 <li><a href=../../object/ifs/eventemitter.md.html class ="notranslate">EventEmitter</a></li>
+<li><a href=../../object/ifs/fswatcher.md.html class ="notranslate">FSWatcher</a></li>
 <li><a href=../../object/ifs/fiber.md.html class ="notranslate">Fiber</a></li>
 <li><a href=../../object/ifs/file.md.html class ="notranslate">File</a></li>
 <li><a href=../../object/ifs/handler.md.html class ="notranslate">Handler</a></li>
@@ -117,6 +118,7 @@
 <li><a href=../../object/ifs/sslserver.md.html class ="notranslate">SslServer</a></li>
 <li><a href=../../object/ifs/sslsocket.md.html class ="notranslate">SslSocket</a></li>
 <li><a href=../../object/ifs/stat.md.html class ="notranslate">Stat</a></li>
+<li><a href=../../object/ifs/statswatcher.md.html class ="notranslate">StatsWatcher</a></li>
 <li><a href=../../object/ifs/stream.md.html class ="notranslate">Stream</a></li>
 <li><a href=../../object/ifs/stringdecoder.md.html class ="notranslate">StringDecoder</a></li>
 <li><a href=../../object/ifs/subprocess.md.html class ="notranslate">SubProcess</a></li>
@@ -192,6 +194,12 @@
 <p>使用方法：</p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">var</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fs'</span>);
 </code></pre>
+<p>一些注意点:</p>
+<ul>
+<li>运行 <code>fs.watch(filename)</code> 会返回一个继承自 <a href=../../object/ifs/eventemitter.md.html class ="notranslate">EventEmitter</a> 的 watcher, 它支持 &#39;change&#39;, &#39;changeonly&#39;, &#39;renameonly&#39; 三个事件</li>
+<li><code>fs.watchFile(target)</code> 和 <code>fs.unwatchFile(target)</code> 依然可以成对使用</li>
+<li><code>fs.watchFile(target)</code> 会返回一个继承自 <a href=../../object/ifs/eventemitter.md.html class ="notranslate">EventEmitter</a> 的 <a href=../../object/ifs/statswatcher.md.html class ="notranslate">StatsWatcher</a> 对象, 调用 <code>fs.unwatchFile(target)</code> 等价于调用 <code>StatsWatcher.close()</code>.</li>
+</ul>
 <h2 id="静态函数">静态函数</h2>
 <h3 id="exists" class ="notranslate">exists</h3>
 <p><strong>查询指定的文件或目录是否存在</strong></p>
@@ -688,6 +696,139 @@
 <ul>
 <li><span class="notranslate">fname</span>: String, 指定映射路径，缺省清除全部缓存</li>
 </ul>
+<hr>
+<h3 id="watch" class ="notranslate">watch</h3>
+<p><strong>观察一个文件, 返回对应的 watcher 对象</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> FSWatcher fs.watch(<span class="hljs-built_in">String</span> fname);
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li><span class="notranslate">fname</span>: String, 指定要观察的文件对象</li>
+</ul>
+<p>返回结果:</p>
+<ul>
+<li><a href=../../object/ifs/fswatcher.md.html class ="notranslate">FSWatcher</a>, <a href=../../object/ifs/fswatcher.md.html class ="notranslate">FSWatcher</a> 对象</li>
+</ul>
+<hr>
+<p><strong>观察一个文件, 返回对应的 watcher 对象</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> FSWatcher fs.watch(<span class="hljs-built_in">String</span> fname,
+    <span class="hljs-built_in">Function</span> callback);
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li><span class="notranslate">fname</span>: String, 指定要观察的文件对象</li>
+<li><span class="notranslate">callback</span>: Function, <code>(evtType: &#39;change&#39; | &#39;rename&#39;, filename: string) =&gt; any</code> 当文件对象发生变化时的处理回调</li>
+</ul>
+<p>返回结果:</p>
+<ul>
+<li><a href=../../object/ifs/fswatcher.md.html class ="notranslate">FSWatcher</a>, <a href=../../object/ifs/fswatcher.md.html class ="notranslate">FSWatcher</a> 对象</li>
+</ul>
+<hr>
+<p><strong>观察一个文件, 返回对应的 watcher 对象</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> FSWatcher fs.watch(<span class="hljs-built_in">String</span> fname,
+    <span class="hljs-built_in">Object</span> options);
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li><span class="notranslate">fname</span>: String, 指定要观察的文件对象</li>
+<li><span class="notranslate">options</span>: Object, 观察选项</li>
+<li><span class="notranslate">options.persistent</span>: {boolean} default: true 是否只要目标文件还在被观察, 进程就不退出</li>
+<li><span class="notranslate">options.recursive</span>: {boolean} default: false 对于 fname 为文件夹的情况, 是否递归地观察其下所有的子目录</li>
+<li><span class="notranslate">options.encoding</span>: {enum} default: &#39;utf8&#39; 指定解析传入的 fname 的字符编码</li>
+</ul>
+<p>返回结果:</p>
+<ul>
+<li><a href=../../object/ifs/fswatcher.md.html class ="notranslate">FSWatcher</a>, <a href=../../object/ifs/fswatcher.md.html class ="notranslate">FSWatcher</a> 对象</li>
+</ul>
+<hr>
+<p><strong>观察一个文件, 返回对应的 watcher 对象</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">static</span> FSWatcher fs.watch(<span class="hljs-built_in">String</span> fname,
+    <span class="hljs-built_in">Object</span> options,
+    <span class="hljs-built_in">Function</span> callback);
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li><span class="notranslate">fname</span>: String, 指定要观察的文件对象</li>
+<li><span class="notranslate">options</span>: Object, 观察选项</li>
+<li><span class="notranslate">options.persistent</span>: {boolean} default: true 是否只要目标文件还在被观察, 进程就不退出</li>
+<li><span class="notranslate">options.recursive</span>: {boolean} default: false 对于 fname 为文件夹的情况, 是否递归地观察其下所有的子目录</li>
+<li><span class="notranslate">options.encoding</span>: {enum} default: &#39;utf8&#39; 指定解析传入的 fname 的字符编码</li>
+<li><span class="notranslate">callback</span>: <code>(evtType: &#39;change&#39; | &#39;rename&#39;, filename: string) =&gt; any</code> 当文件对象发生变化时的处理回调</li>
+</ul>
+<p>返回结果:</p>
+<ul>
+<li><a href=../../object/ifs/fswatcher.md.html class ="notranslate">FSWatcher</a>, <a href=../../object/ifs/fswatcher.md.html class ="notranslate">FSWatcher</a> 对象</li>
+</ul>
+<hr>
+<h3 id="watchFile" class ="notranslate">watchFile</h3>
+<p><strong>观察一个文件, 返回对应的 <a href=../../object/ifs/statswatcher.md.html class ="notranslate">StatsWatcher</a> 对象</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> StatsWatcher fs.watchFile(<span class="hljs-built_in">String</span> fname,
+    <span class="hljs-built_in">Function</span> callback);
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li><span class="notranslate">fname</span>: String, 指定要观察的文件对象</li>
+<li><span class="notranslate">callback</span>: Function, <code>(curStats: Stats, prevStats: Stats) =&gt; any</code> 当文件对象的 stats 发生变化时的处理回调</li>
+</ul>
+<p>返回结果:</p>
+<ul>
+<li><a href=../../object/ifs/statswatcher.md.html class ="notranslate">StatsWatcher</a>, <a href=../../object/ifs/statswatcher.md.html class ="notranslate">StatsWatcher</a> 对象</li>
+</ul>
+<hr>
+<p><strong>观察一个文件, 返回对应的 <a href=../../object/ifs/statswatcher.md.html class ="notranslate">StatsWatcher</a> 对象</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">static</span> StatsWatcher fs.watchFile(<span class="hljs-built_in">String</span> fname,
+    <span class="hljs-built_in">Object</span> options,
+    <span class="hljs-built_in">Function</span> callback);
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li><span class="notranslate">fname</span>: String, 指定要观察的文件对象</li>
+<li><span class="notranslate">options</span>: Object, 观察选项</li>
+<li><span class="notranslate">options.persistent</span>: {boolean} default: true 是否只要目标文件还在被观察, 进程就不退出</li>
+<li><span class="notranslate">options.recursive</span>: {boolean} default: false 对于 fname 为文件夹的情况, 是否递归地观察其下所有的子目录</li>
+<li><span class="notranslate">options.encoding</span>: {enum} default: &#39;utf8&#39; 指定解析传入的 fname 的字符编码</li>
+<li><span class="notranslate">callback</span>: <code>(curStats: Stats, prevStats: Stats) =&gt; any</code> 当文件对象的 stats 发生变化时的处理回调</li>
+</ul>
+<p>返回结果:</p>
+<ul>
+<li><a href=../../object/ifs/statswatcher.md.html class ="notranslate">StatsWatcher</a>, <a href=../../object/ifs/statswatcher.md.html class ="notranslate">StatsWatcher</a> 对象</li>
+</ul>
+<hr>
+<h3 id="unwatchFile" class ="notranslate">unwatchFile</h3>
+<p><strong>从观察 fname 的 <a href=../../object/ifs/statswatcher.md.html class ="notranslate">StatsWatcher</a> 中移除所有观察事件的回调</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> fs.unwatchFile(<span class="hljs-built_in">String</span> fname);
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li><span class="notranslate">fname</span>: String, 指定要观察的文件对象</li>
+</ul>
+<p>返回结果:</p>
+<ul>
+<li><a href=../../object/ifs/statswatcher.md.html class ="notranslate">StatsWatcher</a> 对象</li>
+</ul>
+<hr>
+<p><strong>从观察 fname 的 <a href=../../object/ifs/statswatcher.md.html class ="notranslate">StatsWatcher</a> 的观察事件回调中移除 <code>callback</code> 回调</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> fs.unwatchFile(<span class="hljs-built_in">String</span> fname,
+    <span class="hljs-built_in">Function</span> callback);
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li><span class="notranslate">fname</span>: String, 指定要观察的文件对象</li>
+<li><span class="notranslate">callback</span>: Function, 要移除的回调</li>
+</ul>
+<p>返回结果:</p>
+<ul>
+<li><a href=../../object/ifs/statswatcher.md.html class ="notranslate">StatsWatcher</a> 对象</li>
+</ul>
+<p>即便 callback 不再 <a href=../../object/ifs/statswatcher.md.html class ="notranslate">StatsWatcher</a> 的观察事件回调中也不会报错</p>
 <h2 id="静态属性">静态属性</h2>
 <h3 id="constants" class ="notranslate">constants</h3>
 <p><strong>Object, fs模块的常量对象</strong></p>
@@ -708,4 +849,4 @@
 <p><strong>seek 方式常量，移动到文件结尾的相对位置</strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> fs.SEEK_END = <span class="hljs-number">2</span>;
 </code></pre>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id=toc></div></div></div></div><div class=footer><div class=container>&copy; Copyright 2014-2019 fibjs.org | <a href=../../../../support.html>支持我们</a></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="Click to return on the top page" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js></script><script type=text/javascript src=../../../../js/common.js></script><script type=text/javascript src=../../../../js/docs.js></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id=toc></div></div></div></div><div class=footer><div class=container>&copy; Copyright 2014-Present fibjs.org | <a href=../../../../support.html>支持我们</a></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="Click to return on the top page" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js></script><script type=text/javascript src=../../../../js/common.js></script><script type=text/javascript src=../../../../js/docs.js></script></body></html>

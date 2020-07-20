@@ -16,7 +16,7 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    HttpClient [tooltip="HttpClient", fillcolor="lightgray", id="me", label="{HttpClient|new HttpClient()\l|cookies\ltimeout\lenableCookie\lautoRedirect\lenableEncoding\lmaxBodySize\luserAgent\lpoolSize\lpoolTimeout\lproxyAgent\l|setClientCert()\lrequest()\lget()\lpost()\ldel()\lput()\lpatch()\l}"];
+    HttpClient [tooltip="HttpClient", fillcolor="lightgray", id="me", label="{HttpClient|new HttpClient()\l|cookies\ltimeout\lenableCookie\lautoRedirect\lenableEncoding\lmaxBodySize\luserAgent\lpoolSize\lpoolTimeout\lproxyAgent\lsslVerification\l|setClientCert()\lrequest()\lget()\lpost()\ldel()\lput()\lpatch()\l}"];
 
     object -> HttpClient [dir=back];
 }
@@ -110,6 +110,14 @@ Integer HttpClient.poolTimeout;
 
 ```JavaScript
 String HttpClient.proxyAgent;
+```
+
+--------------------------
+### sslVerification
+**Integer, 查询和设置连接 https 时的证书验证模式, 参考 [ssl](../../module/ifs/ssl.md) 模块的 VERIFY_* 常量, 默认值为 [ssl.verification](../../module/ifs/ssl.md#verification)**
+
+```JavaScript
+Integer HttpClient.sslVerification;
 ```
 
 ## 成员函数

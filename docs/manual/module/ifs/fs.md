@@ -7,6 +7,12 @@
 var fs = require('fs');
 ```
 
+一些注意点:
+
+- 运行 `fs.watch(filename)` 会返回一个继承自 [EventEmitter](../../object/ifs/EventEmitter.md) 的 watcher, 它支持 'change', 'changeonly', 'renameonly' 三个事件
+- `fs.watchFile(target)` 和 `fs.unwatchFile(target)` 依然可以成对使用
+- `fs.watchFile(target)` 会返回一个继承自 [EventEmitter](../../object/ifs/EventEmitter.md) 的 [StatsWatcher](../../object/ifs/StatsWatcher.md) 对象, 调用 `fs.unwatchFile(target)` 等价于调用 `StatsWatcher.close()`.
+
 ## 静态函数
         
 ### exists
@@ -528,6 +534,140 @@ static fs.clearZipFS(String fname = "");
 
 调用参数:
 * fname: String, 指定映射路径，缺省清除全部缓存
+
+--------------------------
+### watch
+**观察一个文件, 返回对应的 watcher 对象**
+
+```JavaScript
+static FSWatcher fs.watch(String fname);
+```
+
+调用参数:
+* fname: String, 指定要观察的文件对象
+
+返回结果:
+* [FSWatcher](../../object/ifs/FSWatcher.md), [FSWatcher](../../object/ifs/FSWatcher.md) 对象
+
+--------------------------
+**观察一个文件, 返回对应的 watcher 对象**
+
+```JavaScript
+static FSWatcher fs.watch(String fname,
+    Function callback);
+```
+
+调用参数:
+* fname: String, 指定要观察的文件对象
+* callback: Function, `(evtType: 'change' | 'rename', filename: string) => any` 当文件对象发生变化时的处理回调
+
+返回结果:
+* [FSWatcher](../../object/ifs/FSWatcher.md), [FSWatcher](../../object/ifs/FSWatcher.md) 对象
+
+--------------------------
+**观察一个文件, 返回对应的 watcher 对象**
+
+```JavaScript
+static FSWatcher fs.watch(String fname,
+    Object options);
+```
+
+调用参数:
+* fname: String, 指定要观察的文件对象
+* options: Object, 观察选项
+* options.persistent: {boolean} default: true 是否只要目标文件还在被观察, 进程就不退出
+* options.recursive: {boolean} default: false 对于 fname 为文件夹的情况, 是否递归地观察其下所有的子目录
+* options.encoding: {enum} default: 'utf8' 指定解析传入的 fname 的字符编码
+
+返回结果:
+* [FSWatcher](../../object/ifs/FSWatcher.md), [FSWatcher](../../object/ifs/FSWatcher.md) 对象
+
+--------------------------
+**观察一个文件, 返回对应的 watcher 对象**
+
+```JavaScript
+static FSWatcher fs.watch(String fname,
+    Object options,
+    Function callback);
+```
+
+调用参数:
+* fname: String, 指定要观察的文件对象
+* options: Object, 观察选项
+* options.persistent: {boolean} default: true 是否只要目标文件还在被观察, 进程就不退出
+* options.recursive: {boolean} default: false 对于 fname 为文件夹的情况, 是否递归地观察其下所有的子目录
+* options.encoding: {enum} default: 'utf8' 指定解析传入的 fname 的字符编码
+* callback: `(evtType: 'change' | 'rename', filename: string) => any` 当文件对象发生变化时的处理回调
+
+返回结果:
+* [FSWatcher](../../object/ifs/FSWatcher.md), [FSWatcher](../../object/ifs/FSWatcher.md) 对象
+
+--------------------------
+### watchFile
+**观察一个文件, 返回对应的 [StatsWatcher](../../object/ifs/StatsWatcher.md) 对象**
+
+```JavaScript
+static StatsWatcher fs.watchFile(String fname,
+    Function callback);
+```
+
+调用参数:
+* fname: String, 指定要观察的文件对象
+* callback: Function, `(curStats: Stats, prevStats: Stats) => any` 当文件对象的 stats 发生变化时的处理回调
+
+返回结果:
+* [StatsWatcher](../../object/ifs/StatsWatcher.md), [StatsWatcher](../../object/ifs/StatsWatcher.md) 对象
+
+--------------------------
+**观察一个文件, 返回对应的 [StatsWatcher](../../object/ifs/StatsWatcher.md) 对象**
+
+```JavaScript
+static StatsWatcher fs.watchFile(String fname,
+    Object options,
+    Function callback);
+```
+
+调用参数:
+* fname: String, 指定要观察的文件对象
+* options: Object, 观察选项
+* options.persistent: {boolean} default: true 是否只要目标文件还在被观察, 进程就不退出
+* options.recursive: {boolean} default: false 对于 fname 为文件夹的情况, 是否递归地观察其下所有的子目录
+* options.encoding: {enum} default: 'utf8' 指定解析传入的 fname 的字符编码
+* callback: `(curStats: Stats, prevStats: Stats) => any` 当文件对象的 stats 发生变化时的处理回调
+
+返回结果:
+* [StatsWatcher](../../object/ifs/StatsWatcher.md), [StatsWatcher](../../object/ifs/StatsWatcher.md) 对象
+
+--------------------------
+### unwatchFile
+**从观察 fname 的 [StatsWatcher](../../object/ifs/StatsWatcher.md) 中移除所有观察事件的回调**
+
+```JavaScript
+static fs.unwatchFile(String fname);
+```
+
+调用参数:
+* fname: String, 指定要观察的文件对象
+
+返回结果:
+* [StatsWatcher](../../object/ifs/StatsWatcher.md) 对象
+
+--------------------------
+**从观察 fname 的 [StatsWatcher](../../object/ifs/StatsWatcher.md) 的观察事件回调中移除 `callback` 回调**
+
+```JavaScript
+static fs.unwatchFile(String fname,
+    Function callback);
+```
+
+调用参数:
+* fname: String, 指定要观察的文件对象
+* callback: Function, 要移除的回调
+
+返回结果:
+* [StatsWatcher](../../object/ifs/StatsWatcher.md) 对象
+
+即便 callback 不再 [StatsWatcher](../../object/ifs/StatsWatcher.md) 的观察事件回调中也不会报错
 
 ## 静态属性
         
