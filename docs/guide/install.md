@@ -69,7 +69,7 @@ brew install cmake git ccache
 ```
 Ubuntu 准备环境命令如下:
 ```sh
-apt install clang g++ make cmake git ccache
+apt install clang g++ make cmake git ccache libx11-dev
 ```
 如果要编译 32 位版本，另需要安装 multilib:
 ```sh
