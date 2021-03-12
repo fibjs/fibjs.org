@@ -15,7 +15,7 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    Message [tooltip="Message", URL="Message.md", label="{Message|new Message()\l|TEXT\lBINARY\l|value\lparams\ltype\ldata\lbody\llength\lstream\llastError\l|read()\lreadAll()\lwrite()\ljson()\lend()\lisEnded()\lclear()\lsendTo()\lreadFrom()\l}"];
+    Message [tooltip="Message", URL="Message.md", label="{Message|new Message()\l|TEXT\lBINARY\l|value\lparams\ltype\ldata\lbody\llength\lstream\llastError\l|read()\lreadAll()\lwrite()\ljson()\lpack()\lend()\lisEnded()\lclear()\lsendTo()\lreadFrom()\l}"];
     WebSocketMessage [tooltip="WebSocketMessage", fillcolor="lightgray", id="me", label="{WebSocketMessage|new WebSocketMessage()\l|masked\lcompress\lmaxSize\l}"];
 
     object -> Message [dir=back];
@@ -203,6 +203,30 @@ Value WebSocketMessage.json(Value data);
 
 ```JavaScript
 Value WebSocketMessage.json();
+```
+
+返回结果:
+* Value, 返回解析的结果
+
+--------------------------
+### pack
+**以 [msgpack](../../module/ifs/msgpack.md) 编码写入给定的数据**
+
+```JavaScript
+Value WebSocketMessage.pack(Value data);
+```
+
+调用参数:
+* data: Value, 给定要写入的数据
+
+返回结果:
+* Value, 此方法不会返回数据
+
+--------------------------
+**以 [msgpack](../../module/ifs/msgpack.md) 编码解析消息中的数据**
+
+```JavaScript
+Value WebSocketMessage.pack();
 ```
 
 返回结果:

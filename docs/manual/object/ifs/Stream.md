@@ -9,11 +9,12 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    Stream [tooltip="Stream", fillcolor="lightgray", id="me", label="{Stream|read()\lwrite()\lflush()\lclose()\lcopyTo()\l}"];
+    Stream [tooltip="Stream", fillcolor="lightgray", id="me", label="{Stream|fd\l|read()\lwrite()\lflush()\lclose()\lcopyTo()\l}"];
     BufferedStream [tooltip="BufferedStream", URL="BufferedStream.md", label="{BufferedStream}"];
     SeekableStream [tooltip="SeekableStream", URL="SeekableStream.md", label="{SeekableStream}"];
     File [tooltip="File", URL="File.md", label="{File}"];
     MemoryStream [tooltip="MemoryStream", URL="MemoryStream.md", label="{MemoryStream}"];
+    RangeStream [tooltip="RangeStream", URL="RangeStream.md", label="{RangeStream}"];
     Socket [tooltip="Socket", URL="Socket.md", label="{Socket}"];
     SslSocket [tooltip="SslSocket", URL="SslSocket.md", label="{SslSocket}"];
 
@@ -22,9 +23,19 @@ digraph {
     Stream -> SeekableStream [dir=back];
     SeekableStream -> File [dir=back];
     SeekableStream -> MemoryStream [dir=back];
+    SeekableStream -> RangeStream [dir=back];
     Stream -> Socket [dir=back];
     Stream -> SslSocket [dir=back];
 }
+```
+
+## 成员属性
+        
+### fd
+**Integer, 查询 Stream 对应的文件描述符值, 由子类实现**
+
+```JavaScript
+readonly Integer Stream.fd;
 ```
 
 ## 成员函数

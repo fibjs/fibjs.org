@@ -13,7 +13,7 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    Stream [tooltip="Stream", URL="Stream.md", label="{Stream|read()\lwrite()\lflush()\lclose()\lcopyTo()\l}"];
+    Stream [tooltip="Stream", URL="Stream.md", label="{Stream|fd\l|read()\lwrite()\lflush()\lclose()\lcopyTo()\l}"];
     SeekableStream [tooltip="SeekableStream", URL="SeekableStream.md", label="{SeekableStream|seek()\ltell()\lrewind()\lsize()\lreadAll()\ltruncate()\leof()\lstat()\l}"];
     MemoryStream [tooltip="MemoryStream", fillcolor="lightgray", id="me", label="{MemoryStream|new MemoryStream()\l|setTime()\lclone()\lclear()\l}"];
 
@@ -30,6 +30,15 @@ digraph {
 
 ```JavaScript
 new MemoryStream();
+```
+
+## 成员属性
+        
+### fd
+**Integer, 查询 [Stream](Stream.md) 对应的文件描述符值, 由子类实现**
+
+```JavaScript
+readonly Integer MemoryStream.fd;
 ```
 
 ## 成员函数
@@ -69,7 +78,7 @@ MemoryStream.clear();
 
 ```JavaScript
 MemoryStream.seek(Long offset,
-    Integer whence);
+    Integer whence = fs.SEEK_SET);
 ```
 
 调用参数:

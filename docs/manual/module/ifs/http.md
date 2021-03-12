@@ -118,6 +118,23 @@ static HttpResponse http.request(Stream conn,
 * [HttpResponse](../../object/ifs/HttpResponse.md), 返回服务器响应
 
 --------------------------
+**发送 http 请求到指定的流对象，并返回结果**
+
+```JavaScript
+static HttpResponse http.request(Stream conn,
+    HttpRequest req,
+    SeekableStream response_body) async;
+```
+
+调用参数:
+* conn: [Stream](../../object/ifs/Stream.md), 指定处理请求的流对象
+* req: [HttpRequest](../../object/ifs/HttpRequest.md), 要发送的 [HttpRequest](../../object/ifs/HttpRequest.md) 对象
+* response_body: [SeekableStream](../../object/ifs/SeekableStream.md), 指定 response.body 的流
+
+返回结果:
+* [HttpResponse](../../object/ifs/HttpResponse.md), 返回服务器响应
+
+--------------------------
 **请求指定的 [url](url.md)，并返回结果**
 
 ```JavaScript
@@ -139,9 +156,10 @@ opts 包含请求的附加选项，支持的内容如下：
 ```JavaScript
 {
     "query": {},
-    "body": SeekedStream | Buffer | String | {},
+    "body": SeekableStream | Buffer | String | {},
     "json": {},
-    "headers": {}
+    "headers": {},
+    "response_body": SeekableStream //指定接受 resposne 数据的流
 }
 ```
 
@@ -168,7 +186,7 @@ opts 包含请求的附加选项，支持的内容如下：
 ```JavaScript
 {
     "query": {},
-    "body": SeekedStream | Buffer | String | {},
+    "body": SeekableStream | Buffer | String | {},
     "json": {},
     "headers": {}
 }
@@ -197,7 +215,7 @@ opts 包含请求的附加选项，支持的内容如下：
 ```JavaScript
 {
     "query": {},
-    "body": SeekedStream | Buffer | String | {},
+    "body": SeekableStream | Buffer | String | {},
     "json": {},
     "headers": {}
 }
@@ -226,7 +244,7 @@ opts 包含请求的附加选项，支持的内容如下：
 ```JavaScript
 {
     "query": {},
-    "body": SeekedStream | Buffer | String | {},
+    "body": SeekableStream | Buffer | String | {},
     "json": {},
     "headers": {}
 }
@@ -255,7 +273,7 @@ opts 包含请求的附加选项，支持的内容如下：
 ```JavaScript
 {
     "query": {},
-    "body": SeekedStream | Buffer | String | {},
+    "body": SeekableStream | Buffer | String | {},
     "json": {},
     "headers": {}
 }
@@ -284,7 +302,7 @@ opts 包含请求的附加选项，支持的内容如下：
 ```JavaScript
 {
     "query": {},
-    "body": SeekedStream | Buffer | String | {},
+    "body": SeekableStream | Buffer | String | {},
     "json": {},
     "headers": {}
 }

@@ -14,7 +14,7 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    Message [tooltip="Message", fillcolor="lightgray", id="me", label="{Message|new Message()\l|TEXT\lBINARY\l|value\lparams\ltype\ldata\lbody\llength\lstream\llastError\l|read()\lreadAll()\lwrite()\ljson()\lend()\lisEnded()\lclear()\lsendTo()\lreadFrom()\l}"];
+    Message [tooltip="Message", fillcolor="lightgray", id="me", label="{Message|new Message()\l|TEXT\lBINARY\l|value\lparams\ltype\ldata\lbody\llength\lstream\llastError\l|read()\lreadAll()\lwrite()\ljson()\lpack()\lend()\lisEnded()\lclear()\lsendTo()\lreadFrom()\l}"];
     HttpMessage [tooltip="HttpMessage", URL="HttpMessage.md", label="{HttpMessage}"];
     HttpRequest [tooltip="HttpRequest", URL="HttpRequest.md", label="{HttpRequest}"];
     HttpResponse [tooltip="HttpResponse", URL="HttpResponse.md", label="{HttpResponse}"];
@@ -175,6 +175,30 @@ Value Message.json(Value data);
 
 ```JavaScript
 Value Message.json();
+```
+
+返回结果:
+* Value, 返回解析的结果
+
+--------------------------
+### pack
+**以 [msgpack](../../module/ifs/msgpack.md) 编码写入给定的数据**
+
+```JavaScript
+Value Message.pack(Value data);
+```
+
+调用参数:
+* data: Value, 给定要写入的数据
+
+返回结果:
+* Value, 此方法不会返回数据
+
+--------------------------
+**以 [msgpack](../../module/ifs/msgpack.md) 编码解析消息中的数据**
+
+```JavaScript
+Value Message.pack();
 ```
 
 返回结果:

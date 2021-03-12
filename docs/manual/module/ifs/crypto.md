@@ -109,7 +109,7 @@ static X509Cert crypto.loadCert(String filename);
 返回结果:
 * [X509Cert](../../object/ifs/X509Cert.md), 返回包含证书的对象
 
-loadFile 加载 mozilla 的 certdata,txt， 可于 [http](http.md)://hg.mozilla.org/releases/mozilla-release/raw-file/default/security/nss/lib/ckfw/builtins/certdata.txt 下载使用
+loadFile 加载 mozilla 的 certdata,txt， 可于 http://hg.mozilla.org/releases/mozilla-release/raw-file/default/security/nss/lib/ckfw/builtins/certdata.txt 下载使用
 
 --------------------------
 ### loadCrl
@@ -198,6 +198,45 @@ static String crypto.randomArt(Buffer data,
 
 返回结果:
 * String, 返回生成的可视化字符串图像
+
+--------------------------
+### genRsaKey
+**生成一个 RSA 私钥**
+
+```JavaScript
+static PKey crypto.genRsaKey(Integer size) async;
+```
+
+调用参数:
+* size: Integer, 指定 RSA 密钥长度，bit 为单位
+
+返回结果:
+* [PKey](../../object/ifs/PKey.md), 返回包含生成私钥的对象
+
+--------------------------
+### genEcKey
+**生成一个 EC 私钥**
+
+```JavaScript
+static PKey crypto.genEcKey(String curve = "secp521r1") async;
+```
+
+调用参数:
+* curve: String, 指定预置椭圆曲线，可选值为："secp521r1", "brainpoolP512r1", "secp384r1", "brainpoolP384r1", "secp256r1", "secp256k1", "brainpoolP256r1", "secp224r1", "secp224k1", "secp192r1", "secp192k1"
+
+返回结果:
+* [PKey](../../object/ifs/PKey.md), 返回包含生成私钥的对象
+
+--------------------------
+### genSm2Key
+**生成一个 SM2 私钥**
+
+```JavaScript
+static PKey crypto.genSm2Key() async;
+```
+
+返回结果:
+* [PKey](../../object/ifs/PKey.md), 返回包含生成私钥的对象
 
 --------------------------
 ### pbkdf1

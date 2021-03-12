@@ -9,7 +9,7 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    Stat [tooltip="Stat", fillcolor="lightgray", id="me", label="{Stat|name\ldev\lino\lmode\lnlink\luid\lgid\lrdev\lsize\lblksize\lblocks\lmtime\lmtimeMs\latime\latimeMs\lctime\lctimeMs\lbirthtime\lbirthtimeMs\l|isWritable()\lisReadable()\lisExecutable()\lisHidden()\lisDirectory()\lisFile()\lisSymbolicLink()\lisMemory()\lisSocket()\l}"];
+    Stat [tooltip="Stat", fillcolor="lightgray", id="me", label="{Stat|name\ldev\lino\lmode\lnlink\luid\lgid\lrdev\lsize\lblksize\lblocks\lmtime\lmtimeMs\latime\latimeMs\lctime\lctimeMs\lbirthtime\lbirthtimeMs\l|isWritable()\lisReadable()\lisExecutable()\lisHidden()\lisBlockDevice()\lisCharacterDevice()\lisDirectory()\lisFIFO()\lisFile()\lisSymbolicLink()\lisMemory()\lisSocket()\l}"];
 
     object -> Stat [dir=back];
 }
@@ -214,6 +214,28 @@ Boolean Stat.isHidden();
 * Boolean, 为 true 则隐藏
 
 --------------------------
+### isBlockDevice
+**查询 Stat 是否描述了一个 block device**
+
+```JavaScript
+Boolean Stat.isBlockDevice();
+```
+
+返回结果:
+* Boolean, 为 true 表示描述了一个 block device
+
+--------------------------
+### isCharacterDevice
+**查询 Stat 是否描述了一个 character device**
+
+```JavaScript
+Boolean Stat.isCharacterDevice();
+```
+
+返回结果:
+* Boolean, 为 true 表示描述了一个 character device
+
+--------------------------
 ### isDirectory
 **查询文件是否是目录**
 
@@ -223,6 +245,17 @@ Boolean Stat.isDirectory();
 
 返回结果:
 * Boolean, 为 true 则是目录
+
+--------------------------
+### isFIFO
+**查询 Stat 是否描述了一个 FIFO 管道**
+
+```JavaScript
+Boolean Stat.isFIFO();
+```
+
+返回结果:
+* Boolean, 为 true 表示描述了一个 FIFO 管道
 
 --------------------------
 ### isFile

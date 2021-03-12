@@ -61,15 +61,22 @@ static String path_win32.format(Object pathObject);
 ```
 
 调用参数:
-* pathObject: Object, 对象
-* pathObject.dir: 
-* pathObject.root: 
-* pathObject.base: 
-* pathObject.name: 
-* pathObject.ext: 
+* pathObject: Object, 指定参数
 
 返回结果:
 * String, 返回格式化后的路径
+
+pathObject 支持的字段如下：
+
+```JavaScript
+{
+    "dir": "", // 指定路径的目录
+    "root": "", // 指定路径的根目录
+    "base": "", // 指定路径的文件名，等同于 ${name}.${ext}
+    "name": "", // 指定路径的主文件名
+    "ext": "", // 指定路径的扩展名
+}
+```
 
 --------------------------
 ### parse

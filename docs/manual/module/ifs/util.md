@@ -805,6 +805,20 @@ static Value util.reduce(Value list,
 * Value, 返回归结的结果
 
 --------------------------
+### parseArgs
+**解析命令行字符串返回参数列表**
+
+```JavaScript
+static NArray util.parseArgs(String command);
+```
+
+调用参数:
+* command: String, 指定要解析的命令行字符串
+
+返回结果:
+* NArray, 返回解析出的参数列表
+
+--------------------------
 ### compile
 **编译脚本为二进制代码**
 

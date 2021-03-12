@@ -98,7 +98,7 @@ static ssl.loadClientCertFile(String crtFile,
 static ssl.loadRootCerts();
 ```
 
-此证书内容源自：[http](http.md)://hg.mozilla.org/releases/mozilla-release/raw-file/default/security/nss/lib/ckfw/builtins/certdata.txt
+此证书内容源自：http://hg.mozilla.org/releases/mozilla-release/raw-file/default/security/nss/lib/ckfw/builtins/certdata.txt
 
 ## 静态属性
         

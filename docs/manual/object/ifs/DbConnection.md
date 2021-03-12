@@ -7,7 +7,7 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    DbConnection [tooltip="DbConnection", fillcolor="lightgray", id="me", label="{DbConnection|type\l|close()\lbegin()\lcommit()\lrollback()\ltrans()\lexecute()\linsert()\lfind()\lcount()\lupdate()\lremove()\lformat()\l}"];
+    DbConnection [tooltip="DbConnection", fillcolor="lightgray", id="me", label="{DbConnection|type\l|close()\lbegin()\lcommit()\lrollback()\ltrans()\lexecute()\lcreateTable()\ldropTable()\lcreateIndex()\ldropIndex()\linsert()\lfind()\lcount()\lupdate()\lremove()\lformat()\l}"];
     MSSQL [tooltip="MSSQL", URL="MSSQL.md", label="{MSSQL}"];
     MySQL [tooltip="MySQL", URL="MySQL.md", label="{MySQL}"];
     SQLite [tooltip="SQLite", URL="SQLite.md", label="{SQLite}"];
@@ -42,24 +42,33 @@ DbConnection.close() async;
 **在当前数据库连接上启动一个事务**
 
 ```JavaScript
-DbConnection.begin() async;
+DbConnection.begin(String point = "") async;
 ```
+
+调用参数:
+* point: String, 指定事务的名称，缺省不指定
 
 --------------------------
 ### commit
 **提交当前数据库连接上的事务**
 
 ```JavaScript
-DbConnection.commit() async;
+DbConnection.commit(String point = "") async;
 ```
+
+调用参数:
+* point: String, 指定事务的名称，缺省不指定
 
 --------------------------
 ### rollback
 **回滚当前数据库连接上的事务**
 
 ```JavaScript
-DbConnection.rollback() async;
+DbConnection.rollback(String point = "") async;
 ```
+
+调用参数:
+* point: String, 指定事务的名称，缺省不指定
 
 --------------------------
 ### trans
@@ -70,6 +79,26 @@ Boolean DbConnection.trans(Function func);
 ```
 
 调用参数:
+* func: Function, 以事务方式执行的函数
+
+返回结果:
+* Boolean, 返回事务是否提交，正常 commit 时返回 true, rollback 时返回 false，如果事务出错则抛出错误
+
+func 执行有三种结果：
+* 函数正常返回，包括运行结束和主动 return，此时事务将自动提交
+* 函数返回 false，此时事务将回滚
+* 函数运行错误，事务自动回滚
+
+--------------------------
+**进入事务执行一个函数，并根据函数执行情况提交或者回滚**
+
+```JavaScript
+Boolean DbConnection.trans(String point,
+    Function func);
+```
+
+调用参数:
+* point: String, 指定事务的名称
 * func: Function, 以事务方式执行的函数
 
 返回结果:
@@ -95,6 +124,50 @@ NArray DbConnection.execute(String sql,
 
 返回结果:
 * NArray, 返回包含结果记录的数组，如果请求是 UPDATE 或者 INSERT，返回结果还会包含 affected 和 insertId，mssql 不支持 insertId。
+
+--------------------------
+### createTable
+**创建数据表**
+
+```JavaScript
+DbConnection.createTable(Object opts) async;
+```
+
+调用参数:
+* opts: Object, 参数列表
+
+--------------------------
+### dropTable
+**删除数据表**
+
+```JavaScript
+DbConnection.dropTable(Object opts) async;
+```
+
+调用参数:
+* opts: Object, 参数列表
+
+--------------------------
+### createIndex
+**创建数据表索引**
+
+```JavaScript
+DbConnection.createIndex(Object opts) async;
+```
+
+调用参数:
+* opts: Object, 参数列表
+
+--------------------------
+### dropIndex
+**删除数据表索引**
+
+```JavaScript
+DbConnection.dropIndex(Object opts) async;
+```
+
+调用参数:
+* opts: Object, 参数列表
 
 --------------------------
 ### insert

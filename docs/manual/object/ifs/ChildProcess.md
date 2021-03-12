@@ -1,12 +1,9 @@
-# 对象 EventEmitter
-事件触发对象，可用于建立观察者模式，支持事件触发的对象均继承于此，同一事件的同一函数只会产生一次回调
-
-[Event](Event.md) 对象可独立创建，以用于组建自定义的事件系统：
+# 对象 ChildProcess
+子进程对象
 
 ```JavaScript
-var EventEmitter = require('events');
-
-var e = new EventEmitter();
+var child_process = require("child_process");
+var child = child_process.spwan("ls");
 ```
 
 ## 继承关系
@@ -15,37 +12,12 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    EventEmitter [tooltip="EventEmitter", fillcolor="lightgray", id="me", label="{EventEmitter|new EventEmitter()\l|defaultMaxListeners\l|on()\laddListener()\lprependListener()\lonce()\lprependOnceListener()\loff()\lremoveListener()\lremoveAllListeners()\lsetMaxListeners()\lgetMaxListeners()\llisteners()\llistenerCount()\leventNames()\lemit()\l}"];
-    ChildProcess [tooltip="ChildProcess", URL="ChildProcess.md", label="{ChildProcess}"];
-    DgramSocket [tooltip="DgramSocket", URL="DgramSocket.md", label="{DgramSocket}"];
-    FSWatcher [tooltip="FSWatcher", URL="FSWatcher.md", label="{FSWatcher}"];
-    LruCache [tooltip="LruCache", URL="LruCache.md", label="{LruCache}"];
-    Service [tooltip="Service", URL="Service.md", label="{Service}"];
-    StatsWatcher [tooltip="StatsWatcher", URL="StatsWatcher.md", label="{StatsWatcher}"];
-    WebSocket [tooltip="WebSocket", URL="WebSocket.md", label="{WebSocket}"];
-    WebView [tooltip="WebView", URL="WebView.md", label="{WebView}"];
-    Worker [tooltip="Worker", URL="Worker.md", label="{Worker}"];
+    EventEmitter [tooltip="EventEmitter", URL="EventEmitter.md", label="{EventEmitter|new EventEmitter()\l|defaultMaxListeners\l|on()\laddListener()\lprependListener()\lonce()\lprependOnceListener()\loff()\lremoveListener()\lremoveAllListeners()\lsetMaxListeners()\lgetMaxListeners()\llisteners()\llistenerCount()\leventNames()\lemit()\l}"];
+    ChildProcess [tooltip="ChildProcess", fillcolor="lightgray", id="me", label="{ChildProcess|pid\lexitCode\lstdin\lstdout\lstderr\lonexit\l|kill()\ljoin()\l}"];
 
     object -> EventEmitter [dir=back];
     EventEmitter -> ChildProcess [dir=back];
-    EventEmitter -> DgramSocket [dir=back];
-    EventEmitter -> FSWatcher [dir=back];
-    EventEmitter -> LruCache [dir=back];
-    EventEmitter -> Service [dir=back];
-    EventEmitter -> StatsWatcher [dir=back];
-    EventEmitter -> WebSocket [dir=back];
-    EventEmitter -> WebView [dir=back];
-    EventEmitter -> Worker [dir=back];
 }
-```
-
-## 构造函数
-        
-### EventEmitter
-**构造函数**
-
-```JavaScript
-new EventEmitter();
 ```
 
 ## 静态属性
@@ -54,16 +26,87 @@ new EventEmitter();
 **Integer, 默认全局最大监听器数**
 
 ```JavaScript
-static Integer EventEmitter.defaultMaxListeners;
+static Integer ChildProcess.defaultMaxListeners;
+```
+
+## 成员属性
+        
+### pid
+**Integer, 读取当前对象指向的进程的 id**
+
+```JavaScript
+readonly Integer ChildProcess.pid;
+```
+
+--------------------------
+### exitCode
+**Integer, 查询和设置当前进程的退出码**
+
+```JavaScript
+readonly Integer ChildProcess.exitCode;
+```
+
+--------------------------
+### stdin
+**[Stream](Stream.md), 读取当前对象指向的进程的标准输入对象**
+
+```JavaScript
+readonly Stream ChildProcess.stdin;
+```
+
+--------------------------
+### stdout
+**[Stream](Stream.md), 读取当前对象指向的进程的标准输出对象**
+
+```JavaScript
+readonly Stream ChildProcess.stdout;
+```
+
+--------------------------
+### stderr
+**[Stream](Stream.md), 读取当前对象指向的进程的标准错误对象**
+
+```JavaScript
+readonly Stream ChildProcess.stderr;
+```
+
+--------------------------
+### onexit
+**Function, 查询和绑定进程退出事件，相当于 on("exit", func);**
+
+```JavaScript
+Function ChildProcess.onexit;
 ```
 
 ## 成员函数
         
+### kill
+**杀掉当前对象指向的进程，并传递信号**
+
+```JavaScript
+ChildProcess.kill(Integer signal);
+```
+
+调用参数:
+* signal: Integer, 传递的信号
+
+--------------------------
+### join
+**等待当前对象指向的进程结束，并返回进程结束代码**
+
+```JavaScript
+ChildProcess.join() async;
+```
+
+返回结果:
+* 进程的结束代码
+
+--------------------------
 ### on
 **绑定一个事件处理函数到对象**
 
 ```JavaScript
-Object EventEmitter.on(String ev,
+Object ChildProcess.on(String ev,
     Function func);
 ```
 
@@ -78,7 +121,7 @@ Object EventEmitter.on(String ev,
 **绑定一个事件处理函数到对象**
 
 ```JavaScript
-Object EventEmitter.on(Object map);
+Object ChildProcess.on(Object map);
 ```
 
 调用参数:
@@ -92,7 +135,7 @@ Object EventEmitter.on(Object map);
 **绑定一个事件处理函数到对象**
 
 ```JavaScript
-Object EventEmitter.addListener(String ev,
+Object ChildProcess.addListener(String ev,
     Function func);
 ```
 
@@ -107,7 +150,7 @@ Object EventEmitter.addListener(String ev,
 **绑定一个事件处理函数到对象**
 
 ```JavaScript
-Object EventEmitter.addListener(Object map);
+Object ChildProcess.addListener(Object map);
 ```
 
 调用参数:
@@ -121,7 +164,7 @@ Object EventEmitter.addListener(Object map);
 **绑定一个事件处理函数到对象起始**
 
 ```JavaScript
-Object EventEmitter.prependListener(String ev,
+Object ChildProcess.prependListener(String ev,
     Function func);
 ```
 
@@ -136,7 +179,7 @@ Object EventEmitter.prependListener(String ev,
 **绑定一个事件处理函数到对象起始**
 
 ```JavaScript
-Object EventEmitter.prependListener(Object map);
+Object ChildProcess.prependListener(Object map);
 ```
 
 调用参数:
@@ -150,7 +193,7 @@ Object EventEmitter.prependListener(Object map);
 **绑定一个一次性事件处理函数到对象，一次性处理函数只会触发一次**
 
 ```JavaScript
-Object EventEmitter.once(String ev,
+Object ChildProcess.once(String ev,
     Function func);
 ```
 
@@ -165,7 +208,7 @@ Object EventEmitter.once(String ev,
 **绑定一个一次性事件处理函数到对象，一次性处理函数只会触发一次**
 
 ```JavaScript
-Object EventEmitter.once(Object map);
+Object ChildProcess.once(Object map);
 ```
 
 调用参数:
@@ -179,7 +222,7 @@ Object EventEmitter.once(Object map);
 **绑定一个事件处理函数到对象起始**
 
 ```JavaScript
-Object EventEmitter.prependOnceListener(String ev,
+Object ChildProcess.prependOnceListener(String ev,
     Function func);
 ```
 
@@ -194,7 +237,7 @@ Object EventEmitter.prependOnceListener(String ev,
 **绑定一个事件处理函数到对象起始**
 
 ```JavaScript
-Object EventEmitter.prependOnceListener(Object map);
+Object ChildProcess.prependOnceListener(Object map);
 ```
 
 调用参数:
@@ -208,7 +251,7 @@ Object EventEmitter.prependOnceListener(Object map);
 **从对象处理队列中取消指定函数**
 
 ```JavaScript
-Object EventEmitter.off(String ev,
+Object ChildProcess.off(String ev,
     Function func);
 ```
 
@@ -223,7 +266,7 @@ Object EventEmitter.off(String ev,
 **取消对象处理队列中的全部函数**
 
 ```JavaScript
-Object EventEmitter.off(String ev);
+Object ChildProcess.off(String ev);
 ```
 
 调用参数:
@@ -236,7 +279,7 @@ Object EventEmitter.off(String ev);
 **从对象处理队列中取消指定函数**
 
 ```JavaScript
-Object EventEmitter.off(Object map);
+Object ChildProcess.off(Object map);
 ```
 
 调用参数:
@@ -250,7 +293,7 @@ Object EventEmitter.off(Object map);
 **从对象处理队列中取消指定函数**
 
 ```JavaScript
-Object EventEmitter.removeListener(String ev,
+Object ChildProcess.removeListener(String ev,
     Function func);
 ```
 
@@ -265,7 +308,7 @@ Object EventEmitter.removeListener(String ev,
 **取消对象处理队列中的全部函数**
 
 ```JavaScript
-Object EventEmitter.removeListener(String ev);
+Object ChildProcess.removeListener(String ev);
 ```
 
 调用参数:
@@ -278,7 +321,7 @@ Object EventEmitter.removeListener(String ev);
 **从对象处理队列中取消指定函数**
 
 ```JavaScript
-Object EventEmitter.removeListener(Object map);
+Object ChildProcess.removeListener(Object map);
 ```
 
 调用参数:
@@ -292,7 +335,7 @@ Object EventEmitter.removeListener(Object map);
 **从对象处理队列中取消所有事件的所有监听器， 如果指定事件，则移除指定事件的所有监听器。**
 
 ```JavaScript
-Object EventEmitter.removeAllListeners(Array evs = []);
+Object ChildProcess.removeAllListeners(Array evs = []);
 ```
 
 调用参数:
@@ -306,7 +349,7 @@ Object EventEmitter.removeAllListeners(Array evs = []);
 **监听器的默认限制的数量，仅用于兼容**
 
 ```JavaScript
-EventEmitter.setMaxListeners(Integer n);
+ChildProcess.setMaxListeners(Integer n);
 ```
 
 调用参数:
@@ -317,7 +360,7 @@ EventEmitter.setMaxListeners(Integer n);
 **获取监听器的默认限制的数量，仅用于兼容**
 
 ```JavaScript
-Integer EventEmitter.getMaxListeners();
+Integer ChildProcess.getMaxListeners();
 ```
 
 返回结果:
@@ -328,7 +371,7 @@ Integer EventEmitter.getMaxListeners();
 **查询对象指定事件的监听器数组**
 
 ```JavaScript
-Array EventEmitter.listeners(String ev);
+Array ChildProcess.listeners(String ev);
 ```
 
 调用参数:
@@ -342,7 +385,7 @@ Array EventEmitter.listeners(String ev);
 **查询对象指定事件的监听器数量**
 
 ```JavaScript
-Integer EventEmitter.listenerCount(String ev);
+Integer ChildProcess.listenerCount(String ev);
 ```
 
 调用参数:
@@ -356,7 +399,7 @@ Integer EventEmitter.listenerCount(String ev);
 **查询监听器事件名称**
 
 ```JavaScript
-Array EventEmitter.eventNames();
+Array ChildProcess.eventNames();
 ```
 
 返回结果:
@@ -367,7 +410,7 @@ Array EventEmitter.eventNames();
 **主动触发一个事件**
 
 ```JavaScript
-Boolean EventEmitter.emit(String ev,
+Boolean ChildProcess.emit(String ev,
     ...args);
 ```
 
@@ -383,7 +426,7 @@ Boolean EventEmitter.emit(String ev,
 **返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现**
 
 ```JavaScript
-String EventEmitter.toString();
+String ChildProcess.toString();
 ```
 
 返回结果:
@@ -394,7 +437,7 @@ String EventEmitter.toString();
 **返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合**
 
 ```JavaScript
-Value EventEmitter.toJSON(String key = "");
+Value ChildProcess.toJSON(String key = "");
 ```
 
 调用参数:

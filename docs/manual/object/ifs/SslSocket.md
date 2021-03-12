@@ -13,7 +13,7 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    Stream [tooltip="Stream", URL="Stream.md", label="{Stream|read()\lwrite()\lflush()\lclose()\lcopyTo()\l}"];
+    Stream [tooltip="Stream", URL="Stream.md", label="{Stream|fd\l|read()\lwrite()\lflush()\lclose()\lcopyTo()\l}"];
     SslSocket [tooltip="SslSocket", fillcolor="lightgray", id="me", label="{SslSocket|new SslSocket()\l|verification\lca\lpeerCert\lhostname\lstream\l|connect()\laccept()\l}"];
 
     object -> Stream [dir=back];
@@ -100,6 +100,14 @@ readonly String SslSocket.hostname;
 
 ```JavaScript
 readonly Stream SslSocket.stream;
+```
+
+--------------------------
+### fd
+**Integer, 查询 [Stream](Stream.md) 对应的文件描述符值, 由子类实现**
+
+```JavaScript
+readonly Integer SslSocket.fd;
 ```
 
 ## 成员函数

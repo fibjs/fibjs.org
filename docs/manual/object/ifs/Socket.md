@@ -13,7 +13,7 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    Stream [tooltip="Stream", URL="Stream.md", label="{Stream|read()\lwrite()\lflush()\lclose()\lcopyTo()\l}"];
+    Stream [tooltip="Stream", URL="Stream.md", label="{Stream|fd\l|read()\lwrite()\lflush()\lclose()\lcopyTo()\l}"];
     Socket [tooltip="Socket", fillcolor="lightgray", id="me", label="{Socket|new Socket()\l|family\ltype\lremoteAddress\lremotePort\llocalAddress\llocalPort\ltimeout\l|connect()\lbind()\llisten()\laccept()\lrecv()\lrecvfrom()\lsend()\lsendto()\l}"];
 
     object -> Stream [dir=back];
@@ -90,6 +90,14 @@ readonly Integer Socket.localPort;
 
 ```JavaScript
 Integer Socket.timeout;
+```
+
+--------------------------
+### fd
+**Integer, 查询 [Stream](Stream.md) 对应的文件描述符值, 由子类实现**
+
+```JavaScript
+readonly Integer Socket.fd;
 ```
 
 ## 成员函数

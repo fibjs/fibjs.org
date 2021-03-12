@@ -20,6 +20,34 @@ static gui.setVersion(Integer ver);
 * ver: Integer, 指定 ie 模拟版本
 
 --------------------------
+### config
+**设置 gui 全局参数，config 只对 cef gui 有效，不会影响 native webview**
+
+```JavaScript
+static gui.config(Object opt = {});
+```
+
+调用参数:
+* opt: Object, 指定设置的参数
+
+支持以下参数:
+
+```JavaScript
+{
+    "cache_path": "", // 设置数据持久化目录，缺省为空，退出进程后，客户端临时数据将不会被保存
+    "cef_path": "", // 设置 runtime 路径，缺省时在当前目录寻找 runtime
+    "debug": true, // 全局设置是否输出 WebView 内的错误和 console 信息，缺省显示
+    "popup": true, // 全局设置是否允许弹出新的网页，缺省允许
+    "menu": true, // 全局设置是否允许右键菜单，缺省允许
+    "headless": false, // 设置 gui 全局无窗口，缺省不使用无窗口，当命令行指定 --headless 时，此属性将被忽略
+    "backend": {
+        "http://app1/": handler1,
+        "fibjs://app2/": handler2,
+    } // 设置 cef 后端处理器，可用于处理 WebView 内部请求
+}
+```
+
+--------------------------
 ### open
 **打开一个窗口并访问指定网址**
 
@@ -47,8 +75,11 @@ static WebView gui.open(String url,
     "caption": true, // 是否有标题栏，缺省有标题栏
     "resizable": true, // 是否可改变尺寸，缺省可以改变
     "maximize": false, // 是否最大化显示，缺省不最大化
-    "visible": true, // 是否显示，缺省显示
-    "debug": true // 是否输出 WebView 内的错误和 console 信息，缺省显示
+    "fullscreen": false, // 是否显示全屏窗口，缺省不全屏
+    "debug": true, // 是否输出 WebView 内的错误和 console 信息，缺省显示或继承全局设置
+    "popup": true, // 是否允许弹出新的网页，缺省允许或继承全局设置
+    "menu": true, // 是否允许右键菜单，缺省允许或继承全局设置
+    "headless": false // 是否使用无窗口模式加载页面，缺省不使用无窗口，当命令行指定 --headless 时，此属性将被忽略
 }
 ```
 

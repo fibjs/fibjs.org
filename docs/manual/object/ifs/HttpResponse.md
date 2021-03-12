@@ -7,7 +7,7 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    Message [tooltip="Message", URL="Message.md", label="{Message|new Message()\l|TEXT\lBINARY\l|value\lparams\ltype\ldata\lbody\llength\lstream\llastError\l|read()\lreadAll()\lwrite()\ljson()\lend()\lisEnded()\lclear()\lsendTo()\lreadFrom()\l}"];
+    Message [tooltip="Message", URL="Message.md", label="{Message|new Message()\l|TEXT\lBINARY\l|value\lparams\ltype\ldata\lbody\llength\lstream\llastError\l|read()\lreadAll()\lwrite()\ljson()\lpack()\lend()\lisEnded()\lclear()\lsendTo()\lreadFrom()\l}"];
     HttpMessage [tooltip="HttpMessage", URL="HttpMessage.md", label="{HttpMessage|protocol\lheaders\lkeepAlive\lupgrade\lmaxHeadersCount\lmaxBodySize\lsocket\l|hasHeader()\lfirstHeader()\lallHeader()\laddHeader()\lsetHeader()\lremoveHeader()\l}"];
     HttpResponse [tooltip="HttpResponse", fillcolor="lightgray", id="me", label="{HttpResponse|new HttpResponse()\l|statusCode\lstatusMessage\lcookies\l|writeHead()\laddCookie()\lredirect()\lsendHeader()\l}"];
 
@@ -239,6 +239,18 @@ HttpResponse.redirect(String url);
 * url: String, 重定向的地址
 
 --------------------------
+**发送重定向到客户端**
+
+```JavaScript
+HttpResponse.redirect(Integer statusCode,
+    String url);
+```
+
+调用参数:
+* statusCode: Integer, 指定响应消息的返回状态，接受的状态为：301, 302, 307
+* url: String, 重定向的地址
+
+--------------------------
 ### sendHeader
 **仅发送格式化 [http](../../module/ifs/http.md) 头到给定的流对象**
 
@@ -427,6 +439,30 @@ Value HttpResponse.json(Value data);
 
 ```JavaScript
 Value HttpResponse.json();
+```
+
+返回结果:
+* Value, 返回解析的结果
+
+--------------------------
+### pack
+**以 [msgpack](../../module/ifs/msgpack.md) 编码写入给定的数据**
+
+```JavaScript
+Value HttpResponse.pack(Value data);
+```
+
+调用参数:
+* data: Value, 给定要写入的数据
+
+返回结果:
+* Value, 此方法不会返回数据
+
+--------------------------
+**以 [msgpack](../../module/ifs/msgpack.md) 编码解析消息中的数据**
+
+```JavaScript
+Value HttpResponse.pack();
 ```
 
 返回结果:

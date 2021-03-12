@@ -204,159 +204,6 @@ static Value process.binding(String name);
 返回结果:
 * Value, 返回指定的内部模块
 
---------------------------
-### open
-**运行指定的命令行，接管进程输入输出流，并返回进程对象**
-
-```JavaScript
-static SubProcess process.open(String command,
-    Array args,
-    Object opts = {});
-```
-
-调用参数:
-* command: String, 指定运行的命令行
-* args: Array, 指定运行的参数列表
-* opts: Object, 指定运行的选项
-
-返回结果:
-* [SubProcess](../../object/ifs/SubProcess.md), 返回包含运行结果的进程对象
-
-opts 支持的选项如下：
-
-```JavaScript
-{
-    "timeout": 100, // 单位为 ms
-    "env": {} // 进程环境变量
-}
-```
-
---------------------------
-**运行指定的命令行，接管进程输入输出流，并返回进程对象**
-
-```JavaScript
-static SubProcess process.open(String command,
-    Object opts = {});
-```
-
-调用参数:
-* command: String, 指定运行的命令行
-* opts: Object, 指定运行的选项
-
-返回结果:
-* [SubProcess](../../object/ifs/SubProcess.md), 返回包含运行结果的进程对象
-
-opts 支持的选项如下：
-
-```JavaScript
-{
-    "timeout": 100, // 单位为 ms
-    "env": {} // 进程环境变量
-}
-```
-
---------------------------
-### start
-**运行指定的命令行，并返回进程对象**
-
-```JavaScript
-static SubProcess process.start(String command,
-    Array args,
-    Object opts = {});
-```
-
-调用参数:
-* command: String, 指定运行的命令行
-* args: Array, 指定运行的参数列表
-* opts: Object, 指定运行的选项
-
-返回结果:
-* [SubProcess](../../object/ifs/SubProcess.md), 返回包含运行结果的进程对象
-
-opts 支持的选项如下：
-
-```JavaScript
-{
-    "timeout": 100, // 单位为 ms
-    "env": {} // 进程环境变量
-}
-```
-
---------------------------
-**运行指定的命令行，并返回进程对象**
-
-```JavaScript
-static SubProcess process.start(String command,
-    Object opts = {});
-```
-
-调用参数:
-* command: String, 指定运行的命令行
-* opts: Object, 指定运行的选项
-
-返回结果:
-* [SubProcess](../../object/ifs/SubProcess.md), 返回包含运行结果的进程对象
-
-opts 支持的选项如下：
-
-```JavaScript
-{
-    "timeout": 100, // 单位为 ms
-    "env": {} // 进程环境变量
-}
-```
-
---------------------------
-### run
-**运行指定的命令行，并返回进程的结束代码**
-
-```JavaScript
-static Integer process.run(String command,
-    Array args,
-    Object opts = {}) async;
-```
-
-调用参数:
-* command: String, 指定运行的命令行
-* args: Array, 指定运行的参数列表
-* opts: Object, 指定运行的选项
-
-返回结果:
-* Integer, 返回命令的运行结果
-
-opts 支持的选项如下：
-
-```JavaScript
-{
-    "timeout": 100, // 单位为 ms
-    "env": {} // 进程环境变量
-}
-```
-
---------------------------
-**运行指定的命令行，并返回进程的结束代码**
-
-```JavaScript
-static Integer process.run(String command,
-    Object opts = {}) async;
-```
-
-调用参数:
-* command: String, 指定运行的命令行
-* opts: Object, 指定运行的选项
-
-返回结果:
-* Integer, 返回命令的运行结果
-
-opts 支持的选项如下：
-
-```JavaScript
-{
-    "timeout": 100, // 单位为 ms
-    "env": {} // 进程环境变量
-}
-```
-
 ## 静态属性
         
 ### argv
@@ -440,26 +287,26 @@ static readonly Integer process.ppid;
 
 --------------------------
 ### stdin
-**[File](../../object/ifs/File.md), 查询当前进程标准输入对象**
+**[Stream](../../object/ifs/Stream.md), 查询当前进程标准输入对象**
 
 ```JavaScript
-static readonly File process.stdin;
+static readonly Stream process.stdin;
 ```
 
 --------------------------
 ### stdout
-**[File](../../object/ifs/File.md), 查询当前进程标准输出对象**
+**[Stream](../../object/ifs/Stream.md), 查询当前进程标准输出对象**
 
 ```JavaScript
-static readonly File process.stdout;
+static readonly Stream process.stdout;
 ```
 
 --------------------------
 ### stderr
-**[File](../../object/ifs/File.md), 查询当前进程标准错误输出对象**
+**[Stream](../../object/ifs/Stream.md), 查询当前进程标准错误输出对象**
 
 ```JavaScript
-static readonly File process.stderr;
+static readonly Stream process.stderr;
 ```
 
 --------------------------

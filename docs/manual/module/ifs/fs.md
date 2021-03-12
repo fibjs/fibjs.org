@@ -575,12 +575,19 @@ static FSWatcher fs.watch(String fname,
 调用参数:
 * fname: String, 指定要观察的文件对象
 * options: Object, 观察选项
-* options.persistent: {boolean} default: true 是否只要目标文件还在被观察, 进程就不退出
-* options.recursive: {boolean} default: false 对于 fname 为文件夹的情况, 是否递归地观察其下所有的子目录
-* options.encoding: {enum} default: 'utf8' 指定解析传入的 fname 的字符编码
 
 返回结果:
 * [FSWatcher](../../object/ifs/FSWatcher.md), [FSWatcher](../../object/ifs/FSWatcher.md) 对象
+
+options 支持的选项如下：
+
+```JavaScript
+{
+    "persistent": true, // {boolean} default: true 是否只要目标文件还在被观察, 进程就不退出
+    "recursive": false, // {boolean} default: false 对于 fname 为文件夹的情况, 是否递归地观察其下所有的子目录
+    "encoding": "utf8", // {enum} default: 'utf8' 指定解析传入的 fname 的字符编码
+}
+```
 
 --------------------------
 **观察一个文件, 返回对应的 watcher 对象**
@@ -594,13 +601,20 @@ static FSWatcher fs.watch(String fname,
 调用参数:
 * fname: String, 指定要观察的文件对象
 * options: Object, 观察选项
-* options.persistent: {boolean} default: true 是否只要目标文件还在被观察, 进程就不退出
-* options.recursive: {boolean} default: false 对于 fname 为文件夹的情况, 是否递归地观察其下所有的子目录
-* options.encoding: {enum} default: 'utf8' 指定解析传入的 fname 的字符编码
-* callback: `(evtType: 'change' | 'rename', filename: string) => any` 当文件对象发生变化时的处理回调
+* callback: Function, `(evtType: 'change' | 'rename', filename: string) => any` 当文件对象发生变化时的处理回调
 
 返回结果:
 * [FSWatcher](../../object/ifs/FSWatcher.md), [FSWatcher](../../object/ifs/FSWatcher.md) 对象
+
+options 支持的选项如下：
+
+```JavaScript
+{
+    "persistent": true, // {boolean} default: true 是否只要目标文件还在被观察, 进程就不退出
+    "recursive": false, // {boolean} default: false 对于 fname 为文件夹的情况, 是否递归地观察其下所有的子目录
+    "encoding": "utf8", // {enum} default: 'utf8' 指定解析传入的 fname 的字符编码
+}
+```
 
 --------------------------
 ### watchFile
@@ -630,13 +644,20 @@ static StatsWatcher fs.watchFile(String fname,
 调用参数:
 * fname: String, 指定要观察的文件对象
 * options: Object, 观察选项
-* options.persistent: {boolean} default: true 是否只要目标文件还在被观察, 进程就不退出
-* options.recursive: {boolean} default: false 对于 fname 为文件夹的情况, 是否递归地观察其下所有的子目录
-* options.encoding: {enum} default: 'utf8' 指定解析传入的 fname 的字符编码
-* callback: `(curStats: Stats, prevStats: Stats) => any` 当文件对象的 stats 发生变化时的处理回调
+* callback: Function, `(curStats: Stats, prevStats: Stats) => any` 当文件对象的 stats 发生变化时的处理回调
 
 返回结果:
 * [StatsWatcher](../../object/ifs/StatsWatcher.md), [StatsWatcher](../../object/ifs/StatsWatcher.md) 对象
+
+options 支持的选项如下：
+
+```JavaScript
+{
+    "persistent": true, // {boolean} default: true 是否只要目标文件还在被观察, 进程就不退出
+    "recursive": false, // {boolean} default: false 对于 fname 为文件夹的情况, 是否递归地观察其下所有的子目录
+    "encoding": "utf8", // {enum} default: 'utf8' 指定解析传入的 fname 的字符编码
+}
+```
 
 --------------------------
 ### unwatchFile

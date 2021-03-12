@@ -62,14 +62,21 @@ static String path.format(Object pathObject);
 
 调用参数:
 * pathObject: Object, 对象
-* pathObject.dir: 
-* pathObject.root: 
-* pathObject.base: 
-* pathObject.name: 
-* pathObject.ext: 
 
 返回结果:
 * String, 返回格式化后的路径
+
+pathObject 支持的参数如下：
+
+```JavaScript
+{
+    "root": "/",
+    "dir": "/a/b",
+    "base": "c.ext",
+    "ext": ".ext",
+    "name": "c"
+}
+```
 
 --------------------------
 ### parse

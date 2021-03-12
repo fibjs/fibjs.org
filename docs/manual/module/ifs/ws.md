@@ -18,7 +18,7 @@ var svr = new http.Server(80, {
         conn.onmessage = e => console.log(e.data);
     })
 });
-svr.run();
+svr.start();
 ```
 
 使用 [WebSocket](../../object/ifs/WebSocket.md) 客户端：

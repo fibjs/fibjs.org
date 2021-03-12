@@ -13,7 +13,7 @@ function func(conn) {
     conn.close();
 }
 
-new net.TcpServer(8080, func).run();
+new net.TcpServer(8080, func).start();
 ```
 
 ## 继承关系

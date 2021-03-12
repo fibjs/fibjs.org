@@ -151,6 +151,23 @@ HttpResponse HttpClient.request(Stream conn,
 * [HttpResponse](HttpResponse.md), 返回服务器响应
 
 --------------------------
+**发送 [http](../../module/ifs/http.md) 请求到指定的流对象，并返回结果**
+
+```JavaScript
+HttpResponse HttpClient.request(Stream conn,
+    HttpRequest req,
+    SeekableStream response_body) async;
+```
+
+调用参数:
+* conn: [Stream](Stream.md), 指定处理请求的流对象
+* req: [HttpRequest](HttpRequest.md), 要发送的 [HttpRequest](HttpRequest.md) 对象
+* response_body: [SeekableStream](SeekableStream.md), 指定 response.body 的流
+
+返回结果:
+* [HttpResponse](HttpResponse.md), 返回服务器响应
+
+--------------------------
 **请求指定的 [url](../../module/ifs/url.md)，并返回结果**
 
 ```JavaScript
@@ -172,9 +189,10 @@ opts 包含请求的附加选项，支持的内容如下：
 ```JavaScript
 {
     "query": {},
-    "body": SeekedStream | Buffer | String | {},
+    "body": SeekableStream | Buffer | String | {},
     "json": {},
-    "headers": {}
+    "headers": {},
+    "response_body": SeekableStream // 指定接受 resposne 数据的流
 }
 ```
 
@@ -201,7 +219,7 @@ opts 包含请求的附加选项，支持的内容如下：
 ```JavaScript
 {
     "query": {},
-    "body": SeekedStream | Buffer | String | {},
+    "body": SeekableStream | Buffer | String | {},
     "json": {},
     "headers": {}
 }
@@ -230,7 +248,7 @@ opts 包含请求的附加选项，支持的内容如下：
 ```JavaScript
 {
     "query": {},
-    "body": SeekedStream | Buffer | String | {},
+    "body": SeekableStream | Buffer | String | {},
     "json": {},
     "headers": {}
 }
@@ -259,7 +277,7 @@ opts 包含请求的附加选项，支持的内容如下：
 ```JavaScript
 {
     "query": {},
-    "body": SeekedStream | Buffer | String | {},
+    "body": SeekableStream | Buffer | String | {},
     "json": {},
     "headers": {}
 }
@@ -288,7 +306,7 @@ opts 包含请求的附加选项，支持的内容如下：
 ```JavaScript
 {
     "query": {},
-    "body": SeekedStream | Buffer | String | {},
+    "body": SeekableStream | Buffer | String | {},
     "json": {},
     "headers": {}
 }
@@ -317,7 +335,7 @@ opts 包含请求的附加选项，支持的内容如下：
 ```JavaScript
 {
     "query": {},
-    "body": SeekedStream | Buffer | String | {},
+    "body": SeekableStream | Buffer | String | {},
     "json": {},
     "headers": {}
 }

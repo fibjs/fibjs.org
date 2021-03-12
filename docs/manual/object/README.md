@@ -2,6 +2,7 @@
 * [Buffer](ifs/Buffer.md) - 二进制数据缓存对象，用于 io 读写的数据处理
 * [BufferedStream](ifs/BufferedStream.md) - 缓存读取对象
 * [Chain](ifs/Chain.md) - 消息处理器链处理对象
+* [ChildProcess](ifs/ChildProcess.md) - 子进程对象
 * [Cipher](ifs/Cipher.md) - 对称加密算法对象
 * [Condition](ifs/Condition.md) - 条件变量对象
 * [DbConnection](ifs/DbConnection.md) - 数据库连接对象，用于建立和维护一个数据库连接会话。
@@ -40,6 +41,7 @@
 * [MongoID](ifs/MongoID.md) - mongodb 数据库数据唯一标识对象，用于存储传递 oid
 * [MySQL](ifs/MySQL.md) - mysql 数据库连接对象
 * [PKey](ifs/PKey.md) - 不对称加密算法对象
+* [RangeStream](ifs/RangeStream.md) - Range 查询流读取对象
 * [Redis](ifs/Redis.md) - Redis 数据库客户端对象
 * [RedisHash](ifs/RedisHash.md) - Redis 数据库客户端 Hash 对象，此对象为包含指定 key 的客户端，只有调用其方法才会操作数据库
 * [RedisList](ifs/RedisList.md) - Redis 数据库客户端 List 对象，此对象为包含指定 key 的客户端，只有调用其方法才会操作数据库
@@ -60,7 +62,6 @@
 * [StatsWatcher](ifs/StatsWatcher.md) - 文件 Stats 观察对象
 * [Stream](ifs/Stream.md) - 流操作对象，用于二进制数据流读写
 * [StringDecoder](ifs/StringDecoder.md) - 流解码对象
-* [SubProcess](ifs/SubProcess.md) - 子进程对象
 * [TcpServer](ifs/TcpServer.md) - tcp 服务器对象，可方便创建一个标准多纤程 tcp 服务器
 * [Timer](ifs/Timer.md) - 定时器处理器对象
 * [UrlObject](ifs/UrlObject.md) - Url 处理对象

@@ -1,5 +1,6 @@
 # 基础模块
 * System
+  - [child_process](ifs/child_process.md) - 子进程管理模块
   - [console](ifs/console.md) - 控制台访问对象
   - [coroutine](ifs/coroutine.md) - 并发控制模块
   - [global](ifs/global.md) - 全局对象，所有脚本均可以访问的基础对象

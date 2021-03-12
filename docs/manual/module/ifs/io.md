@@ -24,6 +24,14 @@ MemoryStream io.MemoryStream;
 BufferedStream io.BufferedStream;
 ```
 
+--------------------------
+### RangeStream
+**创建一个 Range 查询流读取对象，参见 [RangeStream](../../object/ifs/RangeStream.md)**
+
+```JavaScript
+RangeStream io.RangeStream;
+```
+
 ## 静态函数
         
 ### copyStream

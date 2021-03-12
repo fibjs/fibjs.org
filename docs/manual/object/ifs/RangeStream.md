@@ -1,5 +1,15 @@
-# 对象 SeekableStream
-可移动当前指针的流对象接口
+# 对象 RangeStream
+Range 查询流读取对象
+
+RangeStream 对象用于对 [SeekableStream](SeekableStream.md) 对象数据进行截取。创建方法：
+
+```JavaScript
+var stm = new io.RangeStream(stream, '0-10');
+stm.end // 11
+
+var stm = new io.RangeStream(stream, 0, 10);
+stm.end // 10
+```
 
 ## 继承关系
 ```dot
@@ -8,26 +18,66 @@ digraph {
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
     Stream [tooltip="Stream", URL="Stream.md", label="{Stream|fd\l|read()\lwrite()\lflush()\lclose()\lcopyTo()\l}"];
-    SeekableStream [tooltip="SeekableStream", fillcolor="lightgray", id="me", label="{SeekableStream|seek()\ltell()\lrewind()\lsize()\lreadAll()\ltruncate()\leof()\lstat()\l}"];
-    File [tooltip="File", URL="File.md", label="{File}"];
-    MemoryStream [tooltip="MemoryStream", URL="MemoryStream.md", label="{MemoryStream}"];
-    RangeStream [tooltip="RangeStream", URL="RangeStream.md", label="{RangeStream}"];
+    SeekableStream [tooltip="SeekableStream", URL="SeekableStream.md", label="{SeekableStream|seek()\ltell()\lrewind()\lsize()\lreadAll()\ltruncate()\leof()\lstat()\l}"];
+    RangeStream [tooltip="RangeStream", fillcolor="lightgray", id="me", label="{RangeStream|new RangeStream()\l|begin\lend\l}"];
 
     object -> Stream [dir=back];
     Stream -> SeekableStream [dir=back];
-    SeekableStream -> File [dir=back];
-    SeekableStream -> MemoryStream [dir=back];
     SeekableStream -> RangeStream [dir=back];
 }
 ```
 
+## 构造函数
+        
+### RangeStream
+**RangeStream 构造函数**
+
+```JavaScript
+new RangeStream(SeekableStream stm,
+    String range);
+```
+
+调用参数:
+* stm: [SeekableStream](SeekableStream.md), RangeStream 的二进制基础流对象, 必须是 [SeekableStream](SeekableStream.md)
+* range: String, 描述 range 的字符串, 格式为 'begin-[end]', '[begin]-end'
+
+--------------------------
+**RangeStream 构造函数**
+
+```JavaScript
+new RangeStream(SeekableStream stm,
+    Long begin,
+    Long end);
+```
+
+调用参数:
+* stm: [SeekableStream](SeekableStream.md), RangeStream 的二进制基础流对象, 必须是 [SeekableStream](SeekableStream.md)
+* begin: Long, 从 stm 读取内容的起始位置
+* end: Long, 从 stm 读取内容的结束位置
+
 ## 成员属性
         
+### begin
+**Long, 查询 range 开始值**
+
+```JavaScript
+readonly Long RangeStream.begin;
+```
+
+--------------------------
+### end
+**Long, 查询 range 结束值**
+
+```JavaScript
+readonly Long RangeStream.end;
+```
+
+--------------------------
 ### fd
 **Integer, 查询 [Stream](Stream.md) 对应的文件描述符值, 由子类实现**
 
 ```JavaScript
-readonly Integer SeekableStream.fd;
+readonly Integer RangeStream.fd;
 ```
 
 ## 成员函数
@@ -36,7 +86,7 @@ readonly Integer SeekableStream.fd;
 **移动文件当前操作位置**
 
 ```JavaScript
-SeekableStream.seek(Long offset,
+RangeStream.seek(Long offset,
     Integer whence = fs.SEEK_SET);
 ```
 
@@ -49,7 +99,7 @@ SeekableStream.seek(Long offset,
 **查询流当前位置**
 
 ```JavaScript
-Long SeekableStream.tell();
+Long RangeStream.tell();
 ```
 
 返回结果:
@@ -60,7 +110,7 @@ Long SeekableStream.tell();
 **移动当前位置到流开头**
 
 ```JavaScript
-SeekableStream.rewind();
+RangeStream.rewind();
 ```
 
 --------------------------
@@ -68,7 +118,7 @@ SeekableStream.rewind();
 **查询流尺寸**
 
 ```JavaScript
-Long SeekableStream.size();
+Long RangeStream.size();
 ```
 
 返回结果:
@@ -79,7 +129,7 @@ Long SeekableStream.size();
 **从流内读取剩余的全部数据**
 
 ```JavaScript
-Buffer SeekableStream.readAll() async;
+Buffer RangeStream.readAll() async;
 ```
 
 返回结果:
@@ -90,7 +140,7 @@ Buffer SeekableStream.readAll() async;
 **修改文件尺寸，如果新尺寸小于原尺寸，则文件被截断**
 
 ```JavaScript
-SeekableStream.truncate(Long bytes) async;
+RangeStream.truncate(Long bytes) async;
 ```
 
 调用参数:
@@ -101,7 +151,7 @@ SeekableStream.truncate(Long bytes) async;
 **查询文件是否到结尾**
 
 ```JavaScript
-Boolean SeekableStream.eof();
+Boolean RangeStream.eof();
 ```
 
 返回结果:
@@ -112,7 +162,7 @@ Boolean SeekableStream.eof();
 **查询当前文件的基础信息**
 
 ```JavaScript
-Stat SeekableStream.stat() async;
+Stat RangeStream.stat() async;
 ```
 
 返回结果:
@@ -123,7 +173,7 @@ Stat SeekableStream.stat() async;
 **从流内读取指定大小的数据**
 
 ```JavaScript
-Buffer SeekableStream.read(Integer bytes = -1) async;
+Buffer RangeStream.read(Integer bytes = -1) async;
 ```
 
 调用参数:
@@ -137,7 +187,7 @@ Buffer SeekableStream.read(Integer bytes = -1) async;
 **将给定的数据写入流**
 
 ```JavaScript
-SeekableStream.write(Buffer data) async;
+RangeStream.write(Buffer data) async;
 ```
 
 调用参数:
@@ -148,7 +198,7 @@ SeekableStream.write(Buffer data) async;
 **将文件缓冲区内容写入物理设备**
 
 ```JavaScript
-SeekableStream.flush() async;
+RangeStream.flush() async;
 ```
 
 --------------------------
@@ -156,7 +206,7 @@ SeekableStream.flush() async;
 **关闭当前流对象**
 
 ```JavaScript
-SeekableStream.close() async;
+RangeStream.close() async;
 ```
 
 --------------------------
@@ -164,7 +214,7 @@ SeekableStream.close() async;
 **复制流数据到目标流中**
 
 ```JavaScript
-Long SeekableStream.copyTo(Stream stm,
+Long RangeStream.copyTo(Stream stm,
     Long bytes = -1) async;
 ```
 
@@ -180,7 +230,7 @@ Long SeekableStream.copyTo(Stream stm,
 **返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现**
 
 ```JavaScript
-String SeekableStream.toString();
+String RangeStream.toString();
 ```
 
 返回结果:
@@ -191,7 +241,7 @@ String SeekableStream.toString();
 **返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合**
 
 ```JavaScript
-Value SeekableStream.toJSON(String key = "");
+Value RangeStream.toJSON(String key = "");
 ```
 
 调用参数:

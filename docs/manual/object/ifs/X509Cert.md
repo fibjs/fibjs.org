@@ -48,7 +48,7 @@ new X509Cert(String txtCert);
 调用参数:
 * txtCert: String, CRT/PEM/TXT 格式的证书
 
-load 加载 mozilla 的 certdata,txt， 可于 [http](../../module/ifs/http.md)://hg.mozilla.org/releases/mozilla-release/raw-file/default/security/nss/lib/ckfw/builtins/certdata.txt 下载使用
+load 加载 mozilla 的 certdata,txt， 可于 http://hg.mozilla.org/releases/mozilla-release/raw-file/default/security/nss/lib/ckfw/builtins/certdata.txt 下载使用
 
 ## 成员属性
         
@@ -173,7 +173,7 @@ X509Cert.load(String txtCert);
 调用参数:
 * txtCert: String, CRT/PEM/TXT 格式的证书
 
-load 加载 mozilla 的 certdata,txt， 可于 [http](../../module/ifs/http.md)://hg.mozilla.org/releases/mozilla-release/raw-file/default/security/nss/lib/ckfw/builtins/certdata.txt 下载使用
+load 加载 mozilla 的 certdata,txt， 可于 http://hg.mozilla.org/releases/mozilla-release/raw-file/default/security/nss/lib/ckfw/builtins/certdata.txt 下载使用
 
 --------------------------
 ### loadFile
@@ -186,7 +186,7 @@ X509Cert.loadFile(String filename);
 调用参数:
 * filename: String, 证书文件名
 
-loadFile 加载 mozilla 的 certdata,txt， 可于 [http](../../module/ifs/http.md)://hg.mozilla.org/releases/mozilla-release/raw-file/default/security/nss/lib/ckfw/builtins/certdata.txt 下载使用
+loadFile 加载 mozilla 的 certdata,txt， 可于 http://hg.mozilla.org/releases/mozilla-release/raw-file/default/security/nss/lib/ckfw/builtins/certdata.txt 下载使用
 
 --------------------------
 ### loadRootCerts
@@ -196,7 +196,7 @@ loadFile 加载 mozilla 的 certdata,txt， 可于 [http](../../module/ifs/http.
 X509Cert.loadRootCerts();
 ```
 
-此证书内容源自：[http](../../module/ifs/http.md)://hg.mozilla.org/releases/mozilla-release/raw-file/default/security/nss/lib/ckfw/builtins/certdata.txt
+此证书内容源自：http://hg.mozilla.org/releases/mozilla-release/raw-file/default/security/nss/lib/ckfw/builtins/certdata.txt
 
 --------------------------
 ### verify

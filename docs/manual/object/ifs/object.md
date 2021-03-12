@@ -15,6 +15,7 @@ digraph {
     SQLite [tooltip="SQLite", URL="SQLite.md", label="{SQLite}"];
     Digest [tooltip="Digest", URL="Digest.md", label="{Digest}"];
     EventEmitter [tooltip="EventEmitter", URL="EventEmitter.md", label="{EventEmitter}"];
+    ChildProcess [tooltip="ChildProcess", URL="ChildProcess.md", label="{ChildProcess}"];
     DgramSocket [tooltip="DgramSocket", URL="DgramSocket.md", label="{DgramSocket}"];
     FSWatcher [tooltip="FSWatcher", URL="FSWatcher.md", label="{FSWatcher}"];
     LruCache [tooltip="LruCache", URL="LruCache.md", label="{LruCache}"];
@@ -66,10 +67,10 @@ digraph {
     SeekableStream [tooltip="SeekableStream", URL="SeekableStream.md", label="{SeekableStream}"];
     File [tooltip="File", URL="File.md", label="{File}"];
     MemoryStream [tooltip="MemoryStream", URL="MemoryStream.md", label="{MemoryStream}"];
+    RangeStream [tooltip="RangeStream", URL="RangeStream.md", label="{RangeStream}"];
     Socket [tooltip="Socket", URL="Socket.md", label="{Socket}"];
     SslSocket [tooltip="SslSocket", URL="SslSocket.md", label="{SslSocket}"];
     StringDecoder [tooltip="StringDecoder", URL="StringDecoder.md", label="{StringDecoder}"];
-    SubProcess [tooltip="SubProcess", URL="SubProcess.md", label="{SubProcess}"];
     TcpServer [tooltip="TcpServer", URL="TcpServer.md", label="{TcpServer}"];
     HttpServer [tooltip="HttpServer", URL="HttpServer.md", label="{HttpServer}"];
     HttpsServer [tooltip="HttpsServer", URL="HttpsServer.md", label="{HttpsServer}"];
@@ -101,6 +102,7 @@ digraph {
     DbConnection -> SQLite [dir=back];
     object -> Digest [dir=back];
     object -> EventEmitter [dir=back];
+    EventEmitter -> ChildProcess [dir=back];
     EventEmitter -> DgramSocket [dir=back];
     EventEmitter -> FSWatcher [dir=back];
     EventEmitter -> LruCache [dir=back];
@@ -152,10 +154,10 @@ digraph {
     Stream -> SeekableStream [dir=back];
     SeekableStream -> File [dir=back];
     SeekableStream -> MemoryStream [dir=back];
+    SeekableStream -> RangeStream [dir=back];
     Stream -> Socket [dir=back];
     Stream -> SslSocket [dir=back];
     object -> StringDecoder [dir=back];
-    object -> SubProcess [dir=back];
     object -> TcpServer [dir=back];
     TcpServer -> HttpServer [dir=back];
     HttpServer -> HttpsServer [dir=back];

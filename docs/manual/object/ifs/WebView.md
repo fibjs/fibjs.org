@@ -59,7 +59,7 @@ digraph {
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
     EventEmitter [tooltip="EventEmitter", URL="EventEmitter.md", label="{EventEmitter|new EventEmitter()\l|defaultMaxListeners\l|on()\laddListener()\lprependListener()\lonce()\lprependOnceListener()\loff()\lremoveListener()\lremoveAllListeners()\lsetMaxListeners()\lgetMaxListeners()\llisteners()\llistenerCount()\leventNames()\lemit()\l}"];
-    WebView [tooltip="WebView", fillcolor="lightgray", id="me", label="{WebView|visible\lonload\lonmove\lonresize\lonclosed\lonmessage\l|setHtml()\lprint()\lclose()\lpostMessage()\l}"];
+    WebView [tooltip="WebView", fillcolor="lightgray", id="me", label="{WebView|dev\lonopen\lonload\lonmove\lonresize\lonclosed\lonmessage\l|loadUrl()\lgetUrl()\lsetHtml()\lreload()\lgoBack()\lgoForward()\lprint()\lprintToPDF()\lexecuteJavaScript()\lexecuteDevToolsMethod()\lclose()\lpostMessage()\l}"];
 
     object -> EventEmitter [dir=back];
     EventEmitter -> WebView [dir=back];
@@ -77,11 +77,19 @@ static Integer WebView.defaultMaxListeners;
 
 ## 成员属性
         
-### visible
-**Boolean, 查询和设置窗口是否显示**
+### dev
+**Value, DevTools 访问对象，调用接口参见：https://chromedevtools.github.io/devtools-protocol/**
 
 ```JavaScript
-Boolean WebView.visible;
+readonly Value WebView.dev;
+```
+
+--------------------------
+### onopen
+**Function, 查询和绑定加载成功事件，相当于 on("open", func);**
+
+```JavaScript
+Function WebView.onopen;
 ```
 
 --------------------------
@@ -144,6 +152,28 @@ Function WebView.onmessage;
 
 ## 成员函数
         
+### loadUrl
+**加载指定 [url](../../module/ifs/url.md) 的页面**
+
+```JavaScript
+WebView.loadUrl(String url) async;
+```
+
+调用参数:
+* url: String, 指定的 [url](../../module/ifs/url.md)
+
+--------------------------
+### getUrl
+**查询当前页面的 [url](../../module/ifs/url.md)**
+
+```JavaScript
+String WebView.getUrl() async;
+```
+
+返回结果:
+* String, 返回当前页面的 [url](../../module/ifs/url.md)
+
+--------------------------
 ### setHtml
 **设置 webview 的页面 html**
 
@@ -155,6 +185,30 @@ WebView.setHtml(String html) async;
 * html: String, 设置的 html
 
 --------------------------
+### reload
+**刷新当前页面**
+
+```JavaScript
+WebView.reload() async;
+```
+
+--------------------------
+### goBack
+**退回到上一个页面**
+
+```JavaScript
+WebView.goBack() async;
+```
+
+--------------------------
+### goForward
+**前进到下一个页面**
+
+```JavaScript
+WebView.goForward() async;
+```
+
+--------------------------
 ### print
 **打印当前窗口文档**
 
@@ -164,6 +218,44 @@ WebView.print(Integer mode = 1) async;
 
 调用参数:
 * mode: Integer, 打印参数，0: 快速打印; 1: 标准打印; 2: 打印预览。缺省为 1
+
+--------------------------
+### printToPDF
+**打印当前窗口文档到 PDF 文件**
+
+```JavaScript
+WebView.printToPDF(String file) async;
+```
+
+调用参数:
+* file: String, 指定 pdf 路径
+
+--------------------------
+### executeJavaScript
+**在当前窗口运行一段 JavaScript 代码**
+
+```JavaScript
+WebView.executeJavaScript(String code) async;
+```
+
+调用参数:
+* code: String, 指定要执行的 JavaScript 代码
+
+--------------------------
+### executeDevToolsMethod
+**在当前窗口执行 DevTools 命令，并返回结果**
+
+```JavaScript
+Variant WebView.executeDevToolsMethod(String method,
+    Object params = {}) async;
+```
+
+调用参数:
+* method: String, 指定要执行的 DevTools 命令
+* params: Object, 指定命令的参数
+
+返回结果:
+* Variant, 返回执行的结果
 
 --------------------------
 ### close
