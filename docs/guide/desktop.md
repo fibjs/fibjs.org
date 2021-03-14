@@ -175,7 +175,7 @@ gui.config({
 ```sh
 apt install xorg
 ```
-在一些应用里，需要同时存在用户交互和自动化处理，这是可以单独指定某个窗口使用 headless 模式：
+在一些应用里，需要同时存在用户交互和自动化处理，这时可以单独指定某个窗口使用 headless 模式：
 ```JavaScript
 var win = gui.open("https://fibjs.org", {
     "headless": true
