@@ -1,0 +1,631 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../../../imgs/icon.png"><title>モジュール暗号化-ファイバー上のJavaScript</title><link href="../../../../../css/common.css" rel="stylesheet"><link href="../../../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ナビゲーションの切り替え</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../../../index.html"><img src="../../../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../../../index.html">HOME</a></li><li><a href="../../../guide/readme.md.html">GUIDE</a></li><li><a href="../readme.md.html">MODULE</a></li><li><a href="../../object/readme.md.html">OBJECT</a></li><li><a href="../../../awesome/readme.md.html">AWESOME</a></li><li><a href="../../../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../../../docs/manual/module/ifs/crypto.md.html">中文</a> <a href="../../../../../en/docs/manual/module/ifs/crypto.md.html">ENGLISH</a> <a href="../../../../../ja/docs/manual/module/ifs/crypto.md.html">日本語</a> <a href="../../../../../de/docs/manual/module/ifs/crypto.md.html">Deutsch</a> <a href="../../../../../es/docs/manual/module/ifs/crypto.md.html">Español</a> <a href="../../../../../fr/docs/manual/module/ifs/crypto.md.html">Français</a> <a href="../../../../../ko/docs/manual/module/ifs/crypto.md.html">한국어</a> <a href="../../../../../it/docs/manual/module/ifs/crypto.md.html">Italiano</a> <a href="../../../../../ru/docs/manual/module/ifs/crypto.md.html">Русский</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> モジュール基本モジュール </font></font></span><div class="search"><span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input type="text" class="searchbox ds-input" placeholder="探す" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-label="検索入力" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Avenir, &quot;Segoe UI&quot;, Arial, &quot;Hiragino Sans GB&quot;, 冬青黑, &quot;Microsoft YaHei&quot;, 微软雅黑, SimSun, 宋体, Helvetica, Tahoma, &quot;Arial sans-serif&quot;; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div class="ds-dataset-1"></div></span></span></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ホームページ</font></font></a></li><li><a href="../readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 基本モジュール </font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> モジュール暗号 </font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 開発ガイド </font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="../../../guide/about.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjsとは何ですか？</font></font></a></li>
+<li><a href="../../../guide/install.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">インストールおよび動作環境</font></font></a></li>
+<li><a href="../../../guide/hello.md.html" class="notranslate">hello, world</a></li>
+<li><a href="../../../guide/test.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">良い人生はテストから始まります</font></font></a></li>
+<li><a href="../../../guide/profiler.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">パフォーマンスキラーを見つける</font></font></a></li>
+<li><a href="../../../guide/desktop.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">デスクトップアプリケーションをすばやく開発する</font></font></a></li>
+<li><a href="../../../guide/server-hot-update.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">サーバーモジュールのホットアップデート</font></font></a></li>
+<li><a href="../../../guide/host-routes.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ドメイン名ルーティング</font></font></a></li>
+<li><a href="../../../guide/x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjsでのX509証明書の使用</font></font></a></li>
+<li><a href="../../../guide/contribute.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ネイティブモジュールを追加する</font></font></a></li>
+</ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_module" aria-controls="collapse_module"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 基本モジュール </font></font></a></h4></div><div id="collapse_module" class="panel-collapse collapse in" aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="assert.md.html" class="notranslate">assert</a></li>
+<li><a href="base32.md.html" class="notranslate">base32</a></li>
+<li><a href="base64.md.html" class="notranslate">base64</a></li>
+<li><a href="base64vlq.md.html" class="notranslate">base64vlq</a></li>
+<li><a href="bson.md.html" class="notranslate">bson</a></li>
+<li><a href="child_process.md.html" class="notranslate">child_process</a></li>
+<li><a href="console.md.html" class="notranslate">console</a></li>
+<li><a href="constants.md.html" class="notranslate">constants</a></li>
+<li><a href="coroutine.md.html" class="notranslate">coroutine</a></li>
+<li class="active"><a href="crypto.md.html" class="notranslate">crypto</a></li>
+<li><a href="db.md.html" class="notranslate">db</a></li>
+<li><a href="dgram.md.html" class="notranslate">dgram</a></li>
+<li><a href="dns.md.html" class="notranslate">dns</a></li>
+<li><a href="encoding.md.html" class="notranslate">encoding</a></li>
+<li><a href="fs.md.html" class="notranslate">fs</a></li>
+<li><a href="gd.md.html" class="notranslate">gd</a></li>
+<li><a href="global.md.html" class="notranslate">global</a></li>
+<li><a href="gui.md.html" class="notranslate">gui</a></li>
+<li><a href="hash.md.html" class="notranslate">hash</a></li>
+<li><a href="hex.md.html" class="notranslate">hex</a></li>
+<li><a href="http.md.html" class="notranslate">http</a></li>
+<li><a href="iconv.md.html" class="notranslate">iconv</a></li>
+<li><a href="io.md.html" class="notranslate">io</a></li>
+<li><a href="json.md.html" class="notranslate">json</a></li>
+<li><a href="mq.md.html" class="notranslate">mq</a></li>
+<li><a href="msgpack.md.html" class="notranslate">msgpack</a></li>
+<li><a href="net.md.html" class="notranslate">net</a></li>
+<li><a href="os.md.html" class="notranslate">os</a></li>
+<li><a href="path.md.html" class="notranslate">path</a></li>
+<li><a href="path_posix.md.html" class="notranslate">path_posix</a></li>
+<li><a href="path_win32.md.html" class="notranslate">path_win32</a></li>
+<li><a href="process.md.html" class="notranslate">process</a></li>
+<li><a href="profiler.md.html" class="notranslate">profiler</a></li>
+<li><a href="punycode.md.html" class="notranslate">punycode</a></li>
+<li><a href="querystring.md.html" class="notranslate">querystring</a></li>
+<li><a href="registry.md.html" class="notranslate">registry</a></li>
+<li><a href="ssl.md.html" class="notranslate">ssl</a></li>
+<li><a href="string_decoder.md.html" class="notranslate">string_decoder</a></li>
+<li><a href="test.md.html" class="notranslate">test</a></li>
+<li><a href="timers.md.html" class="notranslate">timers</a></li>
+<li><a href="tty.md.html" class="notranslate">tty</a></li>
+<li><a href="url.md.html" class="notranslate">url</a></li>
+<li><a href="util.md.html" class="notranslate">util</a></li>
+<li><a href="uuid.md.html" class="notranslate">uuid</a></li>
+<li><a href="vm.md.html" class="notranslate">vm</a></li>
+<li><a href="ws.md.html" class="notranslate">ws</a></li>
+<li><a href="xml.md.html" class="notranslate">xml</a></li>
+<li><a href="zip.md.html" class="notranslate">zip</a></li>
+<li><a href="zlib.md.html" class="notranslate">zlib</a></li>
+</ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_object" aria-controls="collapse_object"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 組み込みオブジェクト </font></font></a></h4></div><div id="collapse_object" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="../../object/ifs/buffer.md.html" class="notranslate">Buffer</a></li>
+<li><a href="../../object/ifs/bufferedstream.md.html" class="notranslate">BufferedStream</a></li>
+<li><a href="../../object/ifs/chain.md.html" class="notranslate">Chain</a></li>
+<li><a href="../../object/ifs/childprocess.md.html" class="notranslate">ChildProcess</a></li>
+<li><a href="../../object/ifs/cipher.md.html" class="notranslate">Cipher</a></li>
+<li><a href="../../object/ifs/condition.md.html" class="notranslate">Condition</a></li>
+<li><a href="../../object/ifs/dbconnection.md.html" class="notranslate">DbConnection</a></li>
+<li><a href="../../object/ifs/dgramsocket.md.html" class="notranslate">DgramSocket</a></li>
+<li><a href="../../object/ifs/digest.md.html" class="notranslate">Digest</a></li>
+<li><a href="../../object/ifs/event.md.html" class="notranslate">Event</a></li>
+<li><a href="../../object/ifs/eventemitter.md.html" class="notranslate">EventEmitter</a></li>
+<li><a href="../../object/ifs/fswatcher.md.html" class="notranslate">FSWatcher</a></li>
+<li><a href="../../object/ifs/fiber.md.html" class="notranslate">Fiber</a></li>
+<li><a href="../../object/ifs/file.md.html" class="notranslate">File</a></li>
+<li><a href="../../object/ifs/handler.md.html" class="notranslate">Handler</a></li>
+<li><a href="../../object/ifs/heapgraphedge.md.html" class="notranslate">HeapGraphEdge</a></li>
+<li><a href="../../object/ifs/heapgraphnode.md.html" class="notranslate">HeapGraphNode</a></li>
+<li><a href="../../object/ifs/heapsnapshot.md.html" class="notranslate">HeapSnapshot</a></li>
+<li><a href="../../object/ifs/httpclient.md.html" class="notranslate">HttpClient</a></li>
+<li><a href="../../object/ifs/httpcollection.md.html" class="notranslate">HttpCollection</a></li>
+<li><a href="../../object/ifs/httpcookie.md.html" class="notranslate">HttpCookie</a></li>
+<li><a href="../../object/ifs/httphandler.md.html" class="notranslate">HttpHandler</a></li>
+<li><a href="../../object/ifs/httpmessage.md.html" class="notranslate">HttpMessage</a></li>
+<li><a href="../../object/ifs/httprepeater.md.html" class="notranslate">HttpRepeater</a></li>
+<li><a href="../../object/ifs/httprequest.md.html" class="notranslate">HttpRequest</a></li>
+<li><a href="../../object/ifs/httpresponse.md.html" class="notranslate">HttpResponse</a></li>
+<li><a href="../../object/ifs/httpserver.md.html" class="notranslate">HttpServer</a></li>
+<li><a href="../../object/ifs/httpuploaddata.md.html" class="notranslate">HttpUploadData</a></li>
+<li><a href="../../object/ifs/httpsserver.md.html" class="notranslate">HttpsServer</a></li>
+<li><a href="../../object/ifs/image.md.html" class="notranslate">Image</a></li>
+<li><a href="../../object/ifs/leveldb.md.html" class="notranslate">LevelDB</a></li>
+<li><a href="../../object/ifs/lock.md.html" class="notranslate">Lock</a></li>
+<li><a href="../../object/ifs/lrucache.md.html" class="notranslate">LruCache</a></li>
+<li><a href="../../object/ifs/mssql.md.html" class="notranslate">MSSQL</a></li>
+<li><a href="../../object/ifs/memorystream.md.html" class="notranslate">MemoryStream</a></li>
+<li><a href="../../object/ifs/message.md.html" class="notranslate">Message</a></li>
+<li><a href="../../object/ifs/mongocollection.md.html" class="notranslate">MongoCollection</a></li>
+<li><a href="../../object/ifs/mongocursor.md.html" class="notranslate">MongoCursor</a></li>
+<li><a href="../../object/ifs/mongodb.md.html" class="notranslate">MongoDB</a></li>
+<li><a href="../../object/ifs/mongoid.md.html" class="notranslate">MongoID</a></li>
+<li><a href="../../object/ifs/mysql.md.html" class="notranslate">MySQL</a></li>
+<li><a href="../../object/ifs/pkey.md.html" class="notranslate">PKey</a></li>
+<li><a href="../../object/ifs/rangestream.md.html" class="notranslate">RangeStream</a></li>
+<li><a href="../../object/ifs/redis.md.html" class="notranslate">Redis</a></li>
+<li><a href="../../object/ifs/redishash.md.html" class="notranslate">RedisHash</a></li>
+<li><a href="../../object/ifs/redislist.md.html" class="notranslate">RedisList</a></li>
+<li><a href="../../object/ifs/redisset.md.html" class="notranslate">RedisSet</a></li>
+<li><a href="../../object/ifs/redissortedset.md.html" class="notranslate">RedisSortedSet</a></li>
+<li><a href="../../object/ifs/routing.md.html" class="notranslate">Routing</a></li>
+<li><a href="../../object/ifs/sqlite.md.html" class="notranslate">SQLite</a></li>
+<li><a href="../../object/ifs/sandbox.md.html" class="notranslate">SandBox</a></li>
+<li><a href="../../object/ifs/seekablestream.md.html" class="notranslate">SeekableStream</a></li>
+<li><a href="../../object/ifs/semaphore.md.html" class="notranslate">Semaphore</a></li>
+<li><a href="../../object/ifs/service.md.html" class="notranslate">Service</a></li>
+<li><a href="../../object/ifs/smtp.md.html" class="notranslate">Smtp</a></li>
+<li><a href="../../object/ifs/socket.md.html" class="notranslate">Socket</a></li>
+<li><a href="../../object/ifs/sslhandler.md.html" class="notranslate">SslHandler</a></li>
+<li><a href="../../object/ifs/sslserver.md.html" class="notranslate">SslServer</a></li>
+<li><a href="../../object/ifs/sslsocket.md.html" class="notranslate">SslSocket</a></li>
+<li><a href="../../object/ifs/stat.md.html" class="notranslate">Stat</a></li>
+<li><a href="../../object/ifs/statswatcher.md.html" class="notranslate">StatsWatcher</a></li>
+<li><a href="../../object/ifs/stream.md.html" class="notranslate">Stream</a></li>
+<li><a href="../../object/ifs/stringdecoder.md.html" class="notranslate">StringDecoder</a></li>
+<li><a href="../../object/ifs/tcpserver.md.html" class="notranslate">TcpServer</a></li>
+<li><a href="../../object/ifs/timer.md.html" class="notranslate">Timer</a></li>
+<li><a href="../../object/ifs/urlobject.md.html" class="notranslate">UrlObject</a></li>
+<li><a href="../../object/ifs/websocket.md.html" class="notranslate">WebSocket</a></li>
+<li><a href="../../object/ifs/websocketmessage.md.html" class="notranslate">WebSocketMessage</a></li>
+<li><a href="../../object/ifs/webview.md.html" class="notranslate">WebView</a></li>
+<li><a href="../../object/ifs/worker.md.html" class="notranslate">Worker</a></li>
+<li><a href="../../object/ifs/x509cert.md.html" class="notranslate">X509Cert</a></li>
+<li><a href="../../object/ifs/x509crl.md.html" class="notranslate">X509Crl</a></li>
+<li><a href="../../object/ifs/x509req.md.html" class="notranslate">X509Req</a></li>
+<li><a href="../../object/ifs/xmlattr.md.html" class="notranslate">XmlAttr</a></li>
+<li><a href="../../object/ifs/xmlcdatasection.md.html" class="notranslate">XmlCDATASection</a></li>
+<li><a href="../../object/ifs/xmlcharacterdata.md.html" class="notranslate">XmlCharacterData</a></li>
+<li><a href="../../object/ifs/xmlcomment.md.html" class="notranslate">XmlComment</a></li>
+<li><a href="../../object/ifs/xmldocument.md.html" class="notranslate">XmlDocument</a></li>
+<li><a href="../../object/ifs/xmldocumenttype.md.html" class="notranslate">XmlDocumentType</a></li>
+<li><a href="../../object/ifs/xmlelement.md.html" class="notranslate">XmlElement</a></li>
+<li><a href="../../object/ifs/xmlnamednodemap.md.html" class="notranslate">XmlNamedNodeMap</a></li>
+<li><a href="../../object/ifs/xmlnode.md.html" class="notranslate">XmlNode</a></li>
+<li><a href="../../object/ifs/xmlnodelist.md.html" class="notranslate">XmlNodeList</a></li>
+<li><a href="../../object/ifs/xmlprocessinginstruction.md.html" class="notranslate">XmlProcessingInstruction</a></li>
+<li><a href="../../object/ifs/xmltext.md.html" class="notranslate">XmlText</a></li>
+<li><a href="../../object/ifs/zipfile.md.html" class="notranslate">ZipFile</a></li>
+<li><a href="../../object/ifs/object.md.html" class="notranslate">object</a></li>
+</ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_awesome" aria-controls="collapse_awesome"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> コミュニティモジュール </font></font></a></h4></div><div id="collapse_awesome" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="../../../awesome/module/fib-session.md.html" class="notranslate">fib-session</a></li>
+<li><a href="../../../awesome/module/fib-pool.md.html" class="notranslate">fib-pool</a></li>
+<li><a href="../../../awesome/module/fib-orm.md.html" class="notranslate">fib-orm</a></li>
+<li><a href="../../../awesome/module/fib-app.md.html" class="notranslate">fib-app</a></li>
+<li><a href="../../../awesome/module/fib-kv.md.html" class="notranslate">fib-kv</a></li>
+<li><a href="../../../awesome/module/fib-rpc.md.html" class="notranslate">fib-rpc</a></li>
+<li><a href="../../../awesome/module/fib-qr.md.html" class="notranslate">fib-qr</a></li>
+<li><a href="../../../awesome/module/fib-pug.md.html" class="notranslate">fib-pug</a></li>
+<li><a href="../../../awesome/module/ejs.md.html" class="notranslate">ejs</a></li>
+<li><a href="../../../awesome/module/juicer.md.html" class="notranslate">Juicer</a></li>
+<li><a href="../../../awesome/module/highlight.js.md.html" class="notranslate">highlight.js</a></li>
+<li><a href="../../../awesome/module/marked.md.html" class="notranslate">marked</a></li>
+<li><a href="../../../awesome/module/node-cron.md.html" class="notranslate">node-cron</a></li>
+<li><a href="../../../awesome/module/debug.md.html" class="notranslate">debug</a></li>
+<li><a href="../../../awesome/module/benchmark.js.md.html" class="notranslate">benchmark.js</a></li>
+<li><a href="../../../awesome/module/sinon.md.html" class="notranslate">sinon</a></li>
+<li><a href="../../../awesome/module/node-mime.md.html" class="notranslate">node-mime</a></li>
+<li><a href="../../../awesome/module/validatorjs.md.html" class="notranslate">validatorjs</a></li>
+<li><a href="../../../awesome/module/superstruct.md.html" class="notranslate">superstruct</a></li>
+<li><a href="../../../awesome/module/cluster-server.md.html" class="notranslate">cluster-server</a></li>
+<li><a href="../../../awesome/module/synaptic.md.html" class="notranslate">synaptic</a></li>
+<li><a href="../../../awesome/module/source-map.md.html" class="notranslate">source-map</a></li>
+<li><a href="../../../awesome/module/json-format.md.html" class="notranslate">json-format</a></li>
+<li><a href="../../../awesome/module/viz.js.md.html" class="notranslate">viz.js</a></li>
+<li><a href="../../../awesome/module/nomnoml.md.html" class="notranslate">nomnoml</a></li>
+<li><a href="../../../awesome/module/pegjs.md.html" class="notranslate">pegjs</a></li>
+<li><a href="../../../awesome/module/uglify-js.md.html" class="notranslate">uglify-js</a></li>
+<li><a href="../../../awesome/module/js-beautify.md.html" class="notranslate">js-beautify</a></li>
+<li><a href="../../../awesome/module/chalk-animation.md.html" class="notranslate">chalk-animation</a></li>
+<li><a href="../../../awesome/module/jsrsasign.md.html" class="notranslate">jsrsasign</a></li>
+<li><a href="../../../awesome/module/crypto-js.md.html" class="notranslate">crypto-js</a></li>
+<li><a href="../../../awesome/module/ascii-table.md.html" class="notranslate">ascii-table</a></li>
+<li><a href="../../../awesome/module/logstream.md.html" class="notranslate">logstream</a></li>
+<li><a href="../../../awesome/module/ci.md.html" class="notranslate">ci</a></li>
+<li><a href="../../../awesome/module/fs-readdir-recursive.md.html" class="notranslate">fs-readdir-recursive</a></li>
+<li><a href="../../../awesome/module/mkdirp.md.html" class="notranslate">mkdirp</a></li>
+<li><a href="../../../awesome/module/rmdirr.md.html" class="notranslate">rmdirr</a></li>
+<li><a href="../../../awesome/module/detect-port.md.html" class="notranslate">detect-port</a></li>
+<li><a href="../../../awesome/module/bitcoinjs-lib.md.html" class="notranslate">bitcoinjs-lib</a></li>
+<li><a href="../../../awesome/module/rakuten.md.html" class="notranslate">Rakuten</a></li>
+</ul>
+ </div></div></div>  </div></div><div class="content"><div class="social-share share-component" data-sites="weibo,twitter" data-description="分享"></div> <div name="模块-crypto" data-unique="模块-crypto"></div><h1 id="模块-crypto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">モジュール暗号</font></font></h1>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">暗号化アルゴリズムモジュール</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">指示：</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">var</span> crypto = <span class="hljs-built_in">require</span>(<span class="hljs-string">'crypto'</span>);
+</code></pre>
+<div name="对象" data-unique="对象"></div><h2 id="对象"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">オブジェクト</font></font></h2>
+<div name="Cipher" data-unique="Cipher"></div><h3 id="Cipher" class="notranslate">Cipher</h3>
+<p><strong><a href="../../object/ifs/cipher.md.html" class="notranslate">Cipher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> コンストラクター、を参照してください </font></font><a href="../../object/ifs/cipher.md.html" class="notranslate">Cipher</a></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Cipher crypto.Cipher;
+</code></pre>
+<hr>
+<div name="PKey" data-unique="PKey"></div><h3 id="PKey" class="notranslate">PKey</h3>
+<p><strong><a href="../../object/ifs/pkey.md.html" class="notranslate">PKey</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> コンストラクター、を参照してください </font></font><a href="../../object/ifs/pkey.md.html" class="notranslate">PKey</a></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>PKey crypto.PKey;
+</code></pre>
+<hr>
+<div name="X509Cert" data-unique="X509Cert"></div><h3 id="X509Cert" class="notranslate">X509Cert</h3>
+<p><strong><a href="../../object/ifs/x509cert.md.html" class="notranslate">X509Cert</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> コンストラクター、を参照してください </font></font><a href="../../object/ifs/x509cert.md.html" class="notranslate">X509Cert</a></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>X509Cert crypto.X509Cert;
+</code></pre>
+<hr>
+<div name="X509Crl" data-unique="X509Crl"></div><h3 id="X509Crl" class="notranslate">X509Crl</h3>
+<p><strong><a href="../../object/ifs/x509crl.md.html" class="notranslate">X509Crl</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> コンストラクター、を参照してください </font></font><a href="../../object/ifs/x509crl.md.html" class="notranslate">X509Crl</a></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>X509Crl crypto.X509Crl;
+</code></pre>
+<hr>
+<div name="X509Req" data-unique="X509Req"></div><h3 id="X509Req" class="notranslate">X509Req</h3>
+<p><strong><a href="../../object/ifs/x509req.md.html" class="notranslate">X509Req</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> コンストラクター、を参照してください </font></font><a href="../../object/ifs/x509req.md.html" class="notranslate">X509Req</a></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>X509Req crypto.X509Req;
+</code></pre>
+<div name="静态函数" data-unique="静态函数"></div><h2 id="静态函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">静的関数</font></font></h2>
+<div name="createHash" data-unique="createHash"></div><h3 id="createHash" class="notranslate">createHash</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">指定されたアルゴリズム名に基づいて情報要約オブジェクトを作成します</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Digest crypto.createHash(<span class="hljs-built_in">String</span> algo);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター：</font></font></p>
+<ul>
+<li><span class="notranslate">algo</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：文字列、情報要約オブジェクトのアルゴリズムを指定します</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り結果：</font></font></p>
+<ul>
+<li><a href="../../object/ifs/digest.md.html" class="notranslate">Digest</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、情報サマリーオブジェクトを返します</font></font></li>
+</ul>
+<hr>
+<div name="createHmac" data-unique="createHmac"></div><h3 id="createHmac" class="notranslate">createHmac</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">指定されたアルゴリズム名に基づいてhmac情報ダイジェストオブジェクトを作成します</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> Digest crypto.createHmac(<span class="hljs-built_in">String</span> algo,<font></font>
+    Buffer key);<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター：</font></font></p>
+<ul>
+<li><span class="notranslate">algo</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：文字列、情報要約オブジェクトのアルゴリズムを指定します</font></font></li>
+<li><span class="notranslate">key</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">： </font></font><a href="../../object/ifs/buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、バイナリ署名キー</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り結果：</font></font></p>
+<ul>
+<li><a href="../../object/ifs/digest.md.html" class="notranslate">Digest</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、情報サマリーオブジェクトを返します</font></font></li>
+</ul>
+<hr>
+<div name="loadPKey" data-unique="loadPKey"></div><h3 id="loadPKey" class="notranslate">loadPKey</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">キーファイルをPEM / DER形式でロードします</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> PKey crypto.loadPKey(<span class="hljs-built_in">String</span> filename,
+    <span class="hljs-built_in">String</span> password = <span class="hljs-string">""</span>);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター：</font></font></p>
+<ul>
+<li><span class="notranslate">filename</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：文字列、キーファイル名</font></font></li>
+<li><span class="notranslate">password</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：文字列、パスワードの復号化</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り結果：</font></font></p>
+<ul>
+<li><a href="../../object/ifs/pkey.md.html" class="notranslate">PKey</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、キーを含むオブジェクトを返します</font></font></li>
+</ul>
+<hr>
+<div name="loadCert" data-unique="loadCert"></div><h3 id="loadCert" class="notranslate">loadCert</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">複数回呼び出すことができるCRT / PEM / DER / TXT形式の証明書をロードします</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> X509Cert crypto.loadCert(<span class="hljs-built_in">String</span> filename);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター：</font></font></p>
+<ul>
+<li><span class="notranslate">filename</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：文字列、証明書ファイル名</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り結果：</font></font></p>
+<ul>
+<li><a href="../../object/ifs/x509cert.md.html" class="notranslate">X509Cert</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、証明書を含むオブジェクトを返します</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">loadFileは、mozillaのcertdata、txtをロードします。これは、</font></font><a href="http://hg.mozilla.org/releases/mozilla-release/raw-file/default/security/nss/lib/ckfw/builtins/certdata.txt"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">http：</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> //hg.mozilla.org/releases/mozilla-release/raw-file/default/security/nss/lib/ckfw/builtins/certdata.txtから</font><font style="vertical-align: inherit;">ダウンロードして使用</font><font style="vertical-align: inherit;">できます。</font></font></p>
+<hr>
+<div name="loadCrl" data-unique="loadCrl"></div><h3 id="loadCrl" class="notranslate">loadCrl</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">複数回呼び出すことができるPEM / DER形式の失効証明書をロードします</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> X509Crl crypto.loadCrl(<span class="hljs-built_in">String</span> filename);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター：</font></font></p>
+<ul>
+<li><span class="notranslate">filename</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：文字列、取り消された証明書のファイル名</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り結果：</font></font></p>
+<ul>
+<li><a href="../../object/ifs/x509crl.md.html" class="notranslate">X509Crl</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、取り消された証明書を含むオブジェクトを返します</font></font></li>
+</ul>
+<hr>
+<div name="loadReq" data-unique="loadReq"></div><h3 id="loadReq" class="notranslate">loadReq</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">複数回呼び出すことができるPEM / DER形式で証明書要求をロードします</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> X509Req crypto.loadReq(<span class="hljs-built_in">String</span> filename);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター：</font></font></p>
+<ul>
+<li><span class="notranslate">filename</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：文字列、証明書要求ファイル名</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り結果：</font></font></p>
+<ul>
+<li><a href="../../object/ifs/x509req.md.html" class="notranslate">X509Req</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、要求された証明書を含むオブジェクトを返します</font></font></li>
+</ul>
+<hr>
+<div name="randomBytes" data-unique="randomBytes"></div><h3 id="randomBytes" class="notranslate">randomBytes</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">指定されたサイズの乱数を生成し、havegeジェネレーターを使用します</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Buffer crypto.randomBytes(Integer size) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター：</font></font></p>
+<ul>
+<li><span class="notranslate">size</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：整数、生成される乱数のサイズを指定します</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り結果：</font></font></p>
+<ul>
+<li><a href="../../object/ifs/buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、生成された乱数を返します</font></font></li>
+</ul>
+<hr>
+<div name="simpleRandomBytes" data-unique="simpleRandomBytes"></div><h3 id="simpleRandomBytes" class="notranslate">simpleRandomBytes</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">高速アルゴリズムを使用して、指定されたサイズの低強度の乱数を生成します</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Buffer crypto.simpleRandomBytes(Integer size) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター：</font></font></p>
+<ul>
+<li><span class="notranslate">size</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：整数、生成される乱数のサイズを指定します</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り結果：</font></font></p>
+<ul>
+<li><a href="../../object/ifs/buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、生成された乱数を返します</font></font></li>
+</ul>
+<hr>
+<div name="pseudoRandomBytes" data-unique="pseudoRandomBytes"></div><h3 id="pseudoRandomBytes" class="notranslate">pseudoRandomBytes</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">エントロピージェネレーターを使用して、指定されたサイズの疑似乱数を生成します</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Buffer crypto.pseudoRandomBytes(Integer size) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター：</font></font></p>
+<ul>
+<li><span class="notranslate">size</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：整数、生成される乱数のサイズを指定します</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り結果：</font></font></p>
+<ul>
+<li><a href="../../object/ifs/buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、生成された乱数を返します</font></font></li>
+</ul>
+<hr>
+<div name="randomArt" data-unique="randomArt"></div><h3 id="randomArt" class="notranslate">randomArt</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">指定されたデータの視覚的な文字画像を生成します</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">String</span> crypto.randomArt(Buffer data,
+    <span class="hljs-built_in">String</span> title,<font></font>
+    Integer size = <span class="hljs-number">8</span>);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター：</font></font></p>
+<ul>
+<li><span class="notranslate">data</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">： </font></font><a href="../../object/ifs/buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、表示するデータを指定します</font></font></li>
+<li><span class="notranslate">title</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：文字列、文字画像のタイトルを指定します。マルチバイト文字は幅エラーを引き起こします</font></font></li>
+<li><span class="notranslate">size</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：整数、文字画像サイズ</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り結果：</font></font></p>
+<ul>
+<li><span class="notranslate">String</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、生成されたビジュアル文字列画像を返します</font></font></li>
+</ul>
+<hr>
+<div name="genRsaKey" data-unique="genRsaKey"></div><h3 id="genRsaKey" class="notranslate">genRsaKey</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">RSA秘密鍵を生成する</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> PKey crypto.genRsaKey(Integer size) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター：</font></font></p>
+<ul>
+<li><span class="notranslate">size</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：整数、RSAキーの長さを指定し、ビットを単位として指定します</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り結果：</font></font></p>
+<ul>
+<li><a href="../../object/ifs/pkey.md.html" class="notranslate">PKey</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、生成された秘密鍵を含むオブジェクトを返します</font></font></li>
+</ul>
+<hr>
+<div name="genEcKey" data-unique="genEcKey"></div><h3 id="genEcKey" class="notranslate">genEcKey</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">EC秘密鍵を生成する</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> PKey crypto.genEcKey(<span class="hljs-built_in">String</span> curve = <span class="hljs-string">"secp521r1"</span>) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター：</font></font></p>
+<ul>
+<li><span class="notranslate">curve</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：文字列、事前設定された楕円曲線を指定、オプションの値は次のとおりです： "secp521r1"、 "brainpoolP512r1"、 "secp384r1"、 "brainpoolP384r1"、 "secp256r1"、 "secp256k1"、 "brainpoolP256r1"、 "secp224r1"、 "secp224k1"、 「secp192r1」、「secp192k1」</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り結果：</font></font></p>
+<ul>
+<li><a href="../../object/ifs/pkey.md.html" class="notranslate">PKey</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、生成された秘密鍵を含むオブジェクトを返します</font></font></li>
+</ul>
+<hr>
+<div name="genSm2Key" data-unique="genSm2Key"></div><h3 id="genSm2Key" class="notranslate">genSm2Key</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SM2秘密鍵を生成する</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> PKey crypto.genSm2Key() <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り結果：</font></font></p>
+<ul>
+<li><a href="../../object/ifs/pkey.md.html" class="notranslate">PKey</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、生成された秘密鍵を含むオブジェクトを返します</font></font></li>
+</ul>
+<hr>
+<div name="pbkdf1" data-unique="pbkdf1"></div><h3 id="pbkdf1" class="notranslate">pbkdf1</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">プレーンテキストのパスワードに従って、pbkdf1に従って必要なバイナリキーを生成します</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5</div><span class="hljs-keyword">static</span> Buffer crypto.pbkdf1(Buffer password,<font></font>
+    Buffer salt,<font></font>
+    Integer iterations,<font></font>
+    Integer size,<font></font>
+    Integer algo) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター：</font></font></p>
+<ul>
+<li><span class="notranslate">password</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">： </font></font><a href="../../object/ifs/buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、使用するパスワードを指定します</font></font></li>
+<li><span class="notranslate">salt</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">： </font></font><a href="../../object/ifs/buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、hmacで使用されるソルトを指定します</font></font></li>
+<li><span class="notranslate">iterations</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：整数、反復回数を指定します</font></font></li>
+<li><span class="notranslate">size</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：整数、キーサイズを指定</font></font></li>
+<li><span class="notranslate">algo</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：整数、何を使用するかを指定します </font></font><a href="hash.md.html" class="notranslate">hash</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> アルゴリズム、を参照してください </font></font><a href="hash.md.html" class="notranslate">hash</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> モジュール</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り結果：</font></font></p>
+<ul>
+<li><a href="../../object/ifs/buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、生成されたバイナリキーを返します</font></font></li>
+</ul>
+<hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">プレーンテキストのパスワードに従って、pbkdf1に従って必要なバイナリキーを生成します</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5</div><span class="hljs-keyword">static</span> Buffer crypto.pbkdf1(Buffer password,<font></font>
+    Buffer salt,<font></font>
+    Integer iterations,<font></font>
+    Integer size,<font></font>
+    <span class="hljs-built_in">String</span> algoName) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター：</font></font></p>
+<ul>
+<li><span class="notranslate">password</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">： </font></font><a href="../../object/ifs/buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、使用するパスワードを指定します</font></font></li>
+<li><span class="notranslate">salt</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">： </font></font><a href="../../object/ifs/buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、hmacで使用されるソルトを指定します</font></font></li>
+<li><span class="notranslate">iterations</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：整数、反復回数を指定します</font></font></li>
+<li><span class="notranslate">size</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：整数、キーサイズを指定</font></font></li>
+<li><span class="notranslate">algoName</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：文字列、使用するものを指定します </font></font><a href="hash.md.html" class="notranslate">hash</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> アルゴリズム、を参照してください </font></font><a href="hash.md.html" class="notranslate">hash</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> モジュール</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り結果：</font></font></p>
+<ul>
+<li><a href="../../object/ifs/buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、生成されたバイナリキーを返します</font></font></li>
+</ul>
+<hr>
+<div name="pbkdf2" data-unique="pbkdf2"></div><h3 id="pbkdf2" class="notranslate">pbkdf2</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">rfc2898に従って、プレーンテキストのパスワードに従って必要なバイナリキーを生成します</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5</div><span class="hljs-keyword">static</span> Buffer crypto.pbkdf2(Buffer password,<font></font>
+    Buffer salt,<font></font>
+    Integer iterations,<font></font>
+    Integer size,<font></font>
+    Integer algo) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター：</font></font></p>
+<ul>
+<li><span class="notranslate">password</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">： </font></font><a href="../../object/ifs/buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、使用するパスワードを指定します</font></font></li>
+<li><span class="notranslate">salt</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">： </font></font><a href="../../object/ifs/buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、hmacで使用されるソルトを指定します</font></font></li>
+<li><span class="notranslate">iterations</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：整数、反復回数を指定します</font></font></li>
+<li><span class="notranslate">size</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：整数、キーサイズを指定</font></font></li>
+<li><span class="notranslate">algo</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：整数、何を使用するかを指定します </font></font><a href="hash.md.html" class="notranslate">hash</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> アルゴリズム、を参照してください </font></font><a href="hash.md.html" class="notranslate">hash</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> モジュール</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り結果：</font></font></p>
+<ul>
+<li><a href="../../object/ifs/buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、生成されたバイナリキーを返します</font></font></li>
+</ul>
+<hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">rfc2898に従って、プレーンテキストのパスワードに従って必要なバイナリキーを生成します</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5</div><span class="hljs-keyword">static</span> Buffer crypto.pbkdf2(Buffer password,<font></font>
+    Buffer salt,<font></font>
+    Integer iterations,<font></font>
+    Integer size,<font></font>
+    <span class="hljs-built_in">String</span> algoName) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター：</font></font></p>
+<ul>
+<li><span class="notranslate">password</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">： </font></font><a href="../../object/ifs/buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、使用するパスワードを指定します</font></font></li>
+<li><span class="notranslate">salt</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">： </font></font><a href="../../object/ifs/buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、hmacで使用されるソルトを指定します</font></font></li>
+<li><span class="notranslate">iterations</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：整数、反復回数を指定します</font></font></li>
+<li><span class="notranslate">size</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：整数、キーサイズを指定</font></font></li>
+<li><span class="notranslate">algoName</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：文字列、使用するものを指定します </font></font><a href="hash.md.html" class="notranslate">hash</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> アルゴリズム、を参照してください </font></font><a href="hash.md.html" class="notranslate">hash</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> モジュール</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り結果：</font></font></p>
+<ul>
+<li><a href="../../object/ifs/buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、生成されたバイナリキーを返します</font></font></li>
+</ul>
+<div name="常量" data-unique="常量"></div><h2 id="常量"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">絶え間ない</font></font></h2>
+<div name="AES" data-unique="AES"></div><h3 id="AES" class="notranslate">AES</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">対称暗号化アルゴリズムAESを指定し、128、192、256ビットキーをサポートし、ブロック暗号作業モードはECB、CBC、CFB128、CTR、GCM、CCM、XTSをサポートします</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> crypto.AES = <span class="hljs-number">1</span>;
+</code></pre>
+<hr>
+<div name="CAMELLIA" data-unique="CAMELLIA"></div><h3 id="CAMELLIA" class="notranslate">CAMELLIA</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">対称暗号化アルゴリズムCAMELLIAを指定し、128、192、256ビットキーをサポートし、ブロック暗号作業モードはECB、CBC、CFB128、CTR、GCM、CCMをサポートします</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> crypto.CAMELLIA = <span class="hljs-number">2</span>;
+</code></pre>
+<hr>
+<div name="DES" data-unique="DES"></div><h3 id="DES" class="notranslate">DES</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">対称暗号化アルゴリズムDESを指定し、64ビットキーをサポートし、ブロック暗号作業モードはECB、CBCをサポートします</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> crypto.DES = <span class="hljs-number">3</span>;
+</code></pre>
+<hr>
+<div name="DES_EDE" data-unique="DES_EDE"></div><h3 id="DES_EDE" class="notranslate">DES_EDE</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">対称暗号化アルゴリズムDES-EDEを指定し、128ビットキーをサポートし、ブロック暗号作業モードはECB、CBCをサポートします</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> crypto.DES_EDE = <span class="hljs-number">4</span>;
+</code></pre>
+<hr>
+<div name="DES_EDE3" data-unique="DES_EDE3"></div><h3 id="DES_EDE3" class="notranslate">DES_EDE3</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">対称暗号化アルゴリズムDES-EDE3を指定し、192ビットキーをサポートし、ブロック暗号作業モードはECB、CBCをサポートします</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> crypto.DES_EDE3 = <span class="hljs-number">5</span>;
+</code></pre>
+<hr>
+<div name="BLOWFISH" data-unique="BLOWFISH"></div><h3 id="BLOWFISH" class="notranslate">BLOWFISH</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">対称暗号化アルゴリズムBLOWFISHを指定し、192ビットキーをサポートし、ブロック暗号作業モードはECB、CBC、CFB64、CTRをサポートします</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> crypto.BLOWFISH = <span class="hljs-number">6</span>;
+</code></pre>
+<hr>
+<div name="ARC4" data-unique="ARC4"></div><h3 id="ARC4" class="notranslate">ARC4</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">対称暗号化アルゴリズムARC4を指定し、40、56、64、128ビットキーをサポートします</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> crypto.ARC4 = <span class="hljs-number">7</span>;
+</code></pre>
+<hr>
+<div name="ARIA" data-unique="ARIA"></div><h3 id="ARIA" class="notranslate">ARIA</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">対称暗号化アルゴリズムARIAを指定し、128、192、256ビットキーをサポートし、ブロック暗号作業モードはECB、CBC、CFB128、CTR、GCM、CCMをサポートします</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> crypto.ARIA = <span class="hljs-number">8</span>;
+</code></pre>
+<hr>
+<div name="CHACHA20" data-unique="CHACHA20"></div><h3 id="CHACHA20" class="notranslate">CHACHA20</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">対称暗号化アルゴリズムCHACHA20を指定し、256ビットキーをサポートし、ブロック暗号作業モードはPOLY1305をサポートします</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> crypto.CHACHA20 = <span class="hljs-number">9</span>;
+</code></pre>
+<hr>
+<div name="SM4" data-unique="SM4"></div><h3 id="SM4" class="notranslate">SM4</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">対称暗号化アルゴリズムSM4を指定し、ブロック暗号動作モードはECB、CBCをサポートします</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> crypto.SM4 = <span class="hljs-number">10</span>;
+</code></pre>
+<hr>
+<div name="ECB" data-unique="ECB"></div><h3 id="ECB" class="notranslate">ECB</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">指定ブロック暗号動作モードはECBをサポートします</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> crypto.ECB = <span class="hljs-number">1</span>;
+</code></pre>
+<hr>
+<div name="CBC" data-unique="CBC"></div><h3 id="CBC" class="notranslate">CBC</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">指定ブロック暗号動作モードはCBCをサポートします</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> crypto.CBC = <span class="hljs-number">2</span>;
+</code></pre>
+<hr>
+<div name="CFB64" data-unique="CFB64"></div><h3 id="CFB64" class="notranslate">CFB64</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">指定ブロック暗号動作モードはCFB64をサポートします</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> crypto.CFB64 = <span class="hljs-number">3</span>;
+</code></pre>
+<hr>
+<div name="CFB128" data-unique="CFB128"></div><h3 id="CFB128" class="notranslate">CFB128</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">指定ブロック暗号動作モードはCFB128をサポートします</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> crypto.CFB128 = <span class="hljs-number">4</span>;
+</code></pre>
+<hr>
+<div name="OFB" data-unique="OFB"></div><h3 id="OFB" class="notranslate">OFB</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">指定ブロック暗号動作モードはOFBをサポートします</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> crypto.OFB = <span class="hljs-number">5</span>;
+</code></pre>
+<hr>
+<div name="CTR" data-unique="CTR"></div><h3 id="CTR" class="notranslate">CTR</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">指定ブロック暗号動作モードはCTRをサポートします</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> crypto.CTR = <span class="hljs-number">6</span>;
+</code></pre>
+<hr>
+<div name="GCM" data-unique="GCM"></div><h3 id="GCM" class="notranslate">GCM</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">指定ブロック暗号動作モードはGCMをサポートします</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> crypto.GCM = <span class="hljs-number">7</span>;
+</code></pre>
+<hr>
+<div name="STREAM" data-unique="STREAM"></div><h3 id="STREAM" class="notranslate">STREAM</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ストリーム暗号モードを指定する</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> crypto.STREAM = <span class="hljs-number">8</span>;
+</code></pre>
+<hr>
+<div name="CCM" data-unique="CCM"></div><h3 id="CCM" class="notranslate">CCM</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">指定ブロック暗号動作モードはCCMをサポートします</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> crypto.CCM = <span class="hljs-number">9</span>;
+</code></pre>
+<hr>
+<div name="XTS" data-unique="XTS"></div><h3 id="XTS" class="notranslate">XTS</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">指定ブロック暗号動作モードはXTSをサポートします</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> crypto.XTS = <span class="hljs-number">10</span>;
+</code></pre>
+<hr>
+<div name="POLY1305" data-unique="POLY1305"></div><h3 id="POLY1305" class="notranslate">POLY1305</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">指定ブロック暗号動作モードはPOLY1305をサポートします</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> crypto.POLY1305 = <span class="hljs-number">11</span>;
+</code></pre>
+<hr>
+<div name="PKCS7" data-unique="PKCS7"></div><h3 id="PKCS7" class="notranslate">PKCS7</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">充填モードをPKCS7として指定します</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> crypto.PKCS7 = <span class="hljs-number">0</span>;
+</code></pre>
+<hr>
+<div name="ONE_AND_ZEROS" data-unique="ONE_AND_ZEROS"></div><h3 id="ONE_AND_ZEROS" class="notranslate">ONE_AND_ZEROS</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">塗りつぶしモードをONE_AND_ZEROSとして指定します</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> crypto.ONE_AND_ZEROS = <span class="hljs-number">1</span>;
+</code></pre>
+<hr>
+<div name="ZEROS_AND_LEN" data-unique="ZEROS_AND_LEN"></div><h3 id="ZEROS_AND_LEN" class="notranslate">ZEROS_AND_LEN</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">塗りつぶしモードをZEROS_AND_LENとして指定します</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> crypto.ZEROS_AND_LEN = <span class="hljs-number">2</span>;
+</code></pre>
+<hr>
+<div name="ZEROS" data-unique="ZEROS"></div><h3 id="ZEROS" class="notranslate">ZEROS</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">塗りつぶしモードをZEROSとして指定します</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> crypto.ZEROS = <span class="hljs-number">3</span>;
+</code></pre>
+<hr>
+<div name="NOPADDING" data-unique="NOPADDING"></div><h3 id="NOPADDING" class="notranslate">NOPADDING</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">充填モードをNOPADDINGとして指定します</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> crypto.NOPADDING = <span class="hljs-number">4</span>;
+</code></pre>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">©Copyright2014-Present fibjs.org |</font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">サポートしてください</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip264688"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip264688" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">クリックしてトップページに戻る</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>

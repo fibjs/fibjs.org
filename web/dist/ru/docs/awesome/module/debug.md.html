@@ -1,0 +1,585 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../../imgs/icon.png"><title>debug-JavaScript на Fiber</title><link href="../../../../css/common.css" rel="stylesheet"><link href="../../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Переключить навигацию</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../../index.html"><img src="../../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../../index.html">HOME</a></li><li><a href="../../guide/readme.md.html">GUIDE</a></li><li><a href="../../manual/module/readme.md.html">MODULE</a></li><li><a href="../../manual/object/readme.md.html">OBJECT</a></li><li><a href="../readme.md.html">AWESOME</a></li><li><a href="../../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../../docs/awesome/module/debug.md.html">中文</a> <a href="../../../../en/docs/awesome/module/debug.md.html">ENGLISH</a> <a href="../../../../ja/docs/awesome/module/debug.md.html">日本語</a> <a href="../../../../de/docs/awesome/module/debug.md.html">Deutsch</a> <a href="../../../../es/docs/awesome/module/debug.md.html">Español</a> <a href="../../../../fr/docs/awesome/module/debug.md.html">Français</a> <a href="../../../../ko/docs/awesome/module/debug.md.html">한국어</a> <a href="../../../../it/docs/awesome/module/debug.md.html">Italiano</a> <a href="../../../../ru/docs/awesome/module/debug.md.html">Русский</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Замечательный модуль сообщества </font></font></span><div class="search"><span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input type="text" class="searchbox ds-input" placeholder="Поиск" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-label="поисковый ввод" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Avenir, &quot;Segoe UI&quot;, Arial, &quot;Hiragino Sans GB&quot;, 冬青黑, &quot;Microsoft YaHei&quot;, 微软雅黑, SimSun, 宋体, Helvetica, Tahoma, &quot;Arial sans-serif&quot;; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div class="ds-dataset-1"></div></span></span></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Домашняя страница</font></font></a></li><li><a href="../readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Модуль сообщества </font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> отлаживать </font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Руководство по развитию </font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="../../guide/about.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Что такое fibjs?</font></font></a></li>
+<li><a href="../../guide/install.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Установка и рабочая среда</font></font></a></li>
+<li><a href="../../guide/hello.md.html" class="notranslate">hello, world</a></li>
+<li><a href="../../guide/test.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Хорошая жизнь начинается с испытания</font></font></a></li>
+<li><a href="../../guide/profiler.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Найдите убийцу производительности</font></font></a></li>
+<li><a href="../../guide/desktop.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Быстро разрабатывать настольные приложения</font></font></a></li>
+<li><a href="../../guide/server-hot-update.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Горячее обновление серверного модуля</font></font></a></li>
+<li><a href="../../guide/host-routes.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Маршрутизация доменного имени</font></font></a></li>
+<li><a href="../../guide/x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Использование сертификата X509 в fibjs</font></font></a></li>
+<li><a href="../../guide/contribute.md.html">添加 native 模块</a></li>
+</ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_module" aria-controls="collapse_module"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Базовый модуль </font></font></a></h4></div><div id="collapse_module" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="../../manual/module/ifs/assert.md.html" class="notranslate">assert</a></li>
+<li><a href="../../manual/module/ifs/base32.md.html" class="notranslate">base32</a></li>
+<li><a href="../../manual/module/ifs/base64.md.html" class="notranslate">base64</a></li>
+<li><a href="../../manual/module/ifs/base64vlq.md.html" class="notranslate">base64vlq</a></li>
+<li><a href="../../manual/module/ifs/bson.md.html" class="notranslate">bson</a></li>
+<li><a href="../../manual/module/ifs/child_process.md.html" class="notranslate">child_process</a></li>
+<li><a href="../../manual/module/ifs/console.md.html" class="notranslate">console</a></li>
+<li><a href="../../manual/module/ifs/constants.md.html" class="notranslate">constants</a></li>
+<li><a href="../../manual/module/ifs/coroutine.md.html" class="notranslate">coroutine</a></li>
+<li><a href="../../manual/module/ifs/crypto.md.html" class="notranslate">crypto</a></li>
+<li><a href="../../manual/module/ifs/db.md.html" class="notranslate">db</a></li>
+<li><a href="../../manual/module/ifs/dgram.md.html" class="notranslate">dgram</a></li>
+<li><a href="../../manual/module/ifs/dns.md.html" class="notranslate">dns</a></li>
+<li><a href="../../manual/module/ifs/encoding.md.html" class="notranslate">encoding</a></li>
+<li><a href="../../manual/module/ifs/fs.md.html" class="notranslate">fs</a></li>
+<li><a href="../../manual/module/ifs/gd.md.html" class="notranslate">gd</a></li>
+<li><a href="../../manual/module/ifs/global.md.html" class="notranslate">global</a></li>
+<li><a href="../../manual/module/ifs/gui.md.html" class="notranslate">gui</a></li>
+<li><a href="../../manual/module/ifs/hash.md.html" class="notranslate">hash</a></li>
+<li><a href="../../manual/module/ifs/hex.md.html" class="notranslate">hex</a></li>
+<li><a href="../../manual/module/ifs/http.md.html" class="notranslate">http</a></li>
+<li><a href="../../manual/module/ifs/iconv.md.html" class="notranslate">iconv</a></li>
+<li><a href="../../manual/module/ifs/io.md.html" class="notranslate">io</a></li>
+<li><a href="../../manual/module/ifs/json.md.html" class="notranslate">json</a></li>
+<li><a href="../../manual/module/ifs/mq.md.html" class="notranslate">mq</a></li>
+<li><a href="../../manual/module/ifs/msgpack.md.html" class="notranslate">msgpack</a></li>
+<li><a href="../../manual/module/ifs/net.md.html" class="notranslate">net</a></li>
+<li><a href="../../manual/module/ifs/os.md.html" class="notranslate">os</a></li>
+<li><a href="../../manual/module/ifs/path.md.html" class="notranslate">path</a></li>
+<li><a href="../../manual/module/ifs/path_posix.md.html" class="notranslate">path_posix</a></li>
+<li><a href="../../manual/module/ifs/path_win32.md.html" class="notranslate">path_win32</a></li>
+<li><a href="../../manual/module/ifs/process.md.html" class="notranslate">process</a></li>
+<li><a href="../../manual/module/ifs/profiler.md.html" class="notranslate">profiler</a></li>
+<li><a href="../../manual/module/ifs/punycode.md.html" class="notranslate">punycode</a></li>
+<li><a href="../../manual/module/ifs/querystring.md.html" class="notranslate">querystring</a></li>
+<li><a href="../../manual/module/ifs/registry.md.html" class="notranslate">registry</a></li>
+<li><a href="../../manual/module/ifs/ssl.md.html" class="notranslate">ssl</a></li>
+<li><a href="../../manual/module/ifs/string_decoder.md.html" class="notranslate">string_decoder</a></li>
+<li><a href="../../manual/module/ifs/test.md.html" class="notranslate">test</a></li>
+<li><a href="../../manual/module/ifs/timers.md.html" class="notranslate">timers</a></li>
+<li><a href="../../manual/module/ifs/tty.md.html" class="notranslate">tty</a></li>
+<li><a href="../../manual/module/ifs/url.md.html" class="notranslate">url</a></li>
+<li><a href="../../manual/module/ifs/util.md.html" class="notranslate">util</a></li>
+<li><a href="../../manual/module/ifs/uuid.md.html" class="notranslate">uuid</a></li>
+<li><a href="../../manual/module/ifs/vm.md.html" class="notranslate">vm</a></li>
+<li><a href="../../manual/module/ifs/ws.md.html" class="notranslate">ws</a></li>
+<li><a href="../../manual/module/ifs/xml.md.html" class="notranslate">xml</a></li>
+<li><a href="../../manual/module/ifs/zip.md.html" class="notranslate">zip</a></li>
+<li><a href="../../manual/module/ifs/zlib.md.html" class="notranslate">zlib</a></li>
+</ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_object" aria-controls="collapse_object"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Встроенные объекты </font></font></a></h4></div><div id="collapse_object" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="../../manual/object/ifs/buffer.md.html" class="notranslate">Buffer</a></li>
+<li><a href="../../manual/object/ifs/bufferedstream.md.html" class="notranslate">BufferedStream</a></li>
+<li><a href="../../manual/object/ifs/chain.md.html" class="notranslate">Chain</a></li>
+<li><a href="../../manual/object/ifs/childprocess.md.html" class="notranslate">ChildProcess</a></li>
+<li><a href="../../manual/object/ifs/cipher.md.html" class="notranslate">Cipher</a></li>
+<li><a href="../../manual/object/ifs/condition.md.html" class="notranslate">Condition</a></li>
+<li><a href="../../manual/object/ifs/dbconnection.md.html" class="notranslate">DbConnection</a></li>
+<li><a href="../../manual/object/ifs/dgramsocket.md.html" class="notranslate">DgramSocket</a></li>
+<li><a href="../../manual/object/ifs/digest.md.html" class="notranslate">Digest</a></li>
+<li><a href="../../manual/object/ifs/event.md.html" class="notranslate">Event</a></li>
+<li><a href="../../manual/object/ifs/eventemitter.md.html" class="notranslate">EventEmitter</a></li>
+<li><a href="../../manual/object/ifs/fswatcher.md.html" class="notranslate">FSWatcher</a></li>
+<li><a href="../../manual/object/ifs/fiber.md.html" class="notranslate">Fiber</a></li>
+<li><a href="../../manual/object/ifs/file.md.html" class="notranslate">File</a></li>
+<li><a href="../../manual/object/ifs/handler.md.html" class="notranslate">Handler</a></li>
+<li><a href="../../manual/object/ifs/heapgraphedge.md.html" class="notranslate">HeapGraphEdge</a></li>
+<li><a href="../../manual/object/ifs/heapgraphnode.md.html" class="notranslate">HeapGraphNode</a></li>
+<li><a href="../../manual/object/ifs/heapsnapshot.md.html" class="notranslate">HeapSnapshot</a></li>
+<li><a href="../../manual/object/ifs/httpclient.md.html" class="notranslate">HttpClient</a></li>
+<li><a href="../../manual/object/ifs/httpcollection.md.html" class="notranslate">HttpCollection</a></li>
+<li><a href="../../manual/object/ifs/httpcookie.md.html" class="notranslate">HttpCookie</a></li>
+<li><a href="../../manual/object/ifs/httphandler.md.html" class="notranslate">HttpHandler</a></li>
+<li><a href="../../manual/object/ifs/httpmessage.md.html" class="notranslate">HttpMessage</a></li>
+<li><a href="../../manual/object/ifs/httprepeater.md.html" class="notranslate">HttpRepeater</a></li>
+<li><a href="../../manual/object/ifs/httprequest.md.html" class="notranslate">HttpRequest</a></li>
+<li><a href="../../manual/object/ifs/httpresponse.md.html" class="notranslate">HttpResponse</a></li>
+<li><a href="../../manual/object/ifs/httpserver.md.html" class="notranslate">HttpServer</a></li>
+<li><a href="../../manual/object/ifs/httpuploaddata.md.html" class="notranslate">HttpUploadData</a></li>
+<li><a href="../../manual/object/ifs/httpsserver.md.html" class="notranslate">HttpsServer</a></li>
+<li><a href="../../manual/object/ifs/image.md.html" class="notranslate">Image</a></li>
+<li><a href="../../manual/object/ifs/leveldb.md.html" class="notranslate">LevelDB</a></li>
+<li><a href="../../manual/object/ifs/lock.md.html" class="notranslate">Lock</a></li>
+<li><a href="../../manual/object/ifs/lrucache.md.html" class="notranslate">LruCache</a></li>
+<li><a href="../../manual/object/ifs/mssql.md.html" class="notranslate">MSSQL</a></li>
+<li><a href="../../manual/object/ifs/memorystream.md.html" class="notranslate">MemoryStream</a></li>
+<li><a href="../../manual/object/ifs/message.md.html" class="notranslate">Message</a></li>
+<li><a href="../../manual/object/ifs/mongocollection.md.html" class="notranslate">MongoCollection</a></li>
+<li><a href="../../manual/object/ifs/mongocursor.md.html" class="notranslate">MongoCursor</a></li>
+<li><a href="../../manual/object/ifs/mongodb.md.html" class="notranslate">MongoDB</a></li>
+<li><a href="../../manual/object/ifs/mongoid.md.html" class="notranslate">MongoID</a></li>
+<li><a href="../../manual/object/ifs/mysql.md.html" class="notranslate">MySQL</a></li>
+<li><a href="../../manual/object/ifs/pkey.md.html" class="notranslate">PKey</a></li>
+<li><a href="../../manual/object/ifs/rangestream.md.html" class="notranslate">RangeStream</a></li>
+<li><a href="../../manual/object/ifs/redis.md.html" class="notranslate">Redis</a></li>
+<li><a href="../../manual/object/ifs/redishash.md.html" class="notranslate">RedisHash</a></li>
+<li><a href="../../manual/object/ifs/redislist.md.html" class="notranslate">RedisList</a></li>
+<li><a href="../../manual/object/ifs/redisset.md.html" class="notranslate">RedisSet</a></li>
+<li><a href="../../manual/object/ifs/redissortedset.md.html" class="notranslate">RedisSortedSet</a></li>
+<li><a href="../../manual/object/ifs/routing.md.html" class="notranslate">Routing</a></li>
+<li><a href="../../manual/object/ifs/sqlite.md.html" class="notranslate">SQLite</a></li>
+<li><a href="../../manual/object/ifs/sandbox.md.html" class="notranslate">SandBox</a></li>
+<li><a href="../../manual/object/ifs/seekablestream.md.html" class="notranslate">SeekableStream</a></li>
+<li><a href="../../manual/object/ifs/semaphore.md.html" class="notranslate">Semaphore</a></li>
+<li><a href="../../manual/object/ifs/service.md.html" class="notranslate">Service</a></li>
+<li><a href="../../manual/object/ifs/smtp.md.html" class="notranslate">Smtp</a></li>
+<li><a href="../../manual/object/ifs/socket.md.html" class="notranslate">Socket</a></li>
+<li><a href="../../manual/object/ifs/sslhandler.md.html" class="notranslate">SslHandler</a></li>
+<li><a href="../../manual/object/ifs/sslserver.md.html" class="notranslate">SslServer</a></li>
+<li><a href="../../manual/object/ifs/sslsocket.md.html" class="notranslate">SslSocket</a></li>
+<li><a href="../../manual/object/ifs/stat.md.html" class="notranslate">Stat</a></li>
+<li><a href="../../manual/object/ifs/statswatcher.md.html" class="notranslate">StatsWatcher</a></li>
+<li><a href="../../manual/object/ifs/stream.md.html" class="notranslate">Stream</a></li>
+<li><a href="../../manual/object/ifs/stringdecoder.md.html" class="notranslate">StringDecoder</a></li>
+<li><a href="../../manual/object/ifs/tcpserver.md.html" class="notranslate">TcpServer</a></li>
+<li><a href="../../manual/object/ifs/timer.md.html" class="notranslate">Timer</a></li>
+<li><a href="../../manual/object/ifs/urlobject.md.html" class="notranslate">UrlObject</a></li>
+<li><a href="../../manual/object/ifs/websocket.md.html" class="notranslate">WebSocket</a></li>
+<li><a href="../../manual/object/ifs/websocketmessage.md.html" class="notranslate">WebSocketMessage</a></li>
+<li><a href="../../manual/object/ifs/webview.md.html" class="notranslate">WebView</a></li>
+<li><a href="../../manual/object/ifs/worker.md.html" class="notranslate">Worker</a></li>
+<li><a href="../../manual/object/ifs/x509cert.md.html" class="notranslate">X509Cert</a></li>
+<li><a href="../../manual/object/ifs/x509crl.md.html" class="notranslate">X509Crl</a></li>
+<li><a href="../../manual/object/ifs/x509req.md.html" class="notranslate">X509Req</a></li>
+<li><a href="../../manual/object/ifs/xmlattr.md.html" class="notranslate">XmlAttr</a></li>
+<li><a href="../../manual/object/ifs/xmlcdatasection.md.html" class="notranslate">XmlCDATASection</a></li>
+<li><a href="../../manual/object/ifs/xmlcharacterdata.md.html" class="notranslate">XmlCharacterData</a></li>
+<li><a href="../../manual/object/ifs/xmlcomment.md.html" class="notranslate">XmlComment</a></li>
+<li><a href="../../manual/object/ifs/xmldocument.md.html" class="notranslate">XmlDocument</a></li>
+<li><a href="../../manual/object/ifs/xmldocumenttype.md.html" class="notranslate">XmlDocumentType</a></li>
+<li><a href="../../manual/object/ifs/xmlelement.md.html" class="notranslate">XmlElement</a></li>
+<li><a href="../../manual/object/ifs/xmlnamednodemap.md.html" class="notranslate">XmlNamedNodeMap</a></li>
+<li><a href="../../manual/object/ifs/xmlnode.md.html" class="notranslate">XmlNode</a></li>
+<li><a href="../../manual/object/ifs/xmlnodelist.md.html" class="notranslate">XmlNodeList</a></li>
+<li><a href="../../manual/object/ifs/xmlprocessinginstruction.md.html" class="notranslate">XmlProcessingInstruction</a></li>
+<li><a href="../../manual/object/ifs/xmltext.md.html" class="notranslate">XmlText</a></li>
+<li><a href="../../manual/object/ifs/zipfile.md.html" class="notranslate">ZipFile</a></li>
+<li><a href="../../manual/object/ifs/object.md.html" class="notranslate">object</a></li>
+</ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_awesome" aria-controls="collapse_awesome"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Модуль сообщества </font></font></a></h4></div><div id="collapse_awesome" class="panel-collapse collapse in" aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="fib-session.md.html" class="notranslate">fib-session</a></li>
+<li><a href="fib-pool.md.html" class="notranslate">fib-pool</a></li>
+<li><a href="fib-orm.md.html" class="notranslate">fib-orm</a></li>
+<li><a href="fib-app.md.html" class="notranslate">fib-app</a></li>
+<li><a href="fib-kv.md.html" class="notranslate">fib-kv</a></li>
+<li><a href="fib-rpc.md.html" class="notranslate">fib-rpc</a></li>
+<li><a href="fib-qr.md.html" class="notranslate">fib-qr</a></li>
+<li><a href="fib-pug.md.html" class="notranslate">fib-pug</a></li>
+<li><a href="ejs.md.html" class="notranslate">ejs</a></li>
+<li><a href="juicer.md.html" class="notranslate">Juicer</a></li>
+<li><a href="highlight.js.md.html" class="notranslate">highlight.js</a></li>
+<li><a href="marked.md.html" class="notranslate">marked</a></li>
+<li><a href="node-cron.md.html" class="notranslate">node-cron</a></li>
+<li class="active"><a href="debug.md.html" class="notranslate">debug</a></li>
+<li><a href="benchmark.js.md.html" class="notranslate">benchmark.js</a></li>
+<li><a href="sinon.md.html" class="notranslate">sinon</a></li>
+<li><a href="node-mime.md.html" class="notranslate">node-mime</a></li>
+<li><a href="validatorjs.md.html" class="notranslate">validatorjs</a></li>
+<li><a href="superstruct.md.html" class="notranslate">superstruct</a></li>
+<li><a href="cluster-server.md.html" class="notranslate">cluster-server</a></li>
+<li><a href="synaptic.md.html" class="notranslate">synaptic</a></li>
+<li><a href="source-map.md.html" class="notranslate">source-map</a></li>
+<li><a href="json-format.md.html" class="notranslate">json-format</a></li>
+<li><a href="viz.js.md.html" class="notranslate">viz.js</a></li>
+<li><a href="nomnoml.md.html" class="notranslate">nomnoml</a></li>
+<li><a href="pegjs.md.html" class="notranslate">pegjs</a></li>
+<li><a href="uglify-js.md.html" class="notranslate">uglify-js</a></li>
+<li><a href="js-beautify.md.html" class="notranslate">js-beautify</a></li>
+<li><a href="chalk-animation.md.html" class="notranslate">chalk-animation</a></li>
+<li><a href="jsrsasign.md.html" class="notranslate">jsrsasign</a></li>
+<li><a href="crypto-js.md.html" class="notranslate">crypto-js</a></li>
+<li><a href="ascii-table.md.html" class="notranslate">ascii-table</a></li>
+<li><a href="logstream.md.html" class="notranslate">logstream</a></li>
+<li><a href="ci.md.html" class="notranslate">ci</a></li>
+<li><a href="fs-readdir-recursive.md.html" class="notranslate">fs-readdir-recursive</a></li>
+<li><a href="mkdirp.md.html" class="notranslate">mkdirp</a></li>
+<li><a href="rmdirr.md.html" class="notranslate">rmdirr</a></li>
+<li><a href="detect-port.md.html" class="notranslate">detect-port</a></li>
+<li><a href="bitcoinjs-lib.md.html" class="notranslate">bitcoinjs-lib</a></li>
+<li><a href="rakuten.md.html" class="notranslate">Rakuten</a></li>
+</ul>
+ </div></div></div>  </div></div><div class="content"><div class="social-share share-component" data-sites="weibo,twitter" data-description="分享"></div> <div name="debug" data-unique="debug"></div><h1 id="debug"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">отлаживать</font></font></h1>
+<p><a href="https://travis-ci.org/visionmedia/debug"><img src="https://travis-ci.org/visionmedia/debug.svg?branch=master" alt="Статус сборки"></a>  <a href="https://coveralls.io/github/visionmedia/debug?branch=master"><img src="https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master" alt="Статус покрытия"></a>  <a href="https://visionmedia-community-slackin.now.sh/"><img src="https://visionmedia-community-slackin.now.sh/badge.svg" alt="Слабина"></a> <a href="#backers"><img src="https://opencollective.com/debug/backers/badge.svg" alt="OpenCollective"></a>
+<a href="#sponsors"><img src="https://opencollective.com/debug/sponsors/badge.svg" alt="OpenCollective"></a></p>
+<p><img width="647" src="https://user-images.githubusercontent.com/71256/29091486-fa38524c-7c37-11e7-895f-e7ec8e1039b6.png"></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Крошечная утилита отладки JavaScript, созданная по образцу метода отладки ядра Node.js. Работает в Node.js и веб-браузерах.</font></font></p>
+<div name="Installation" data-unique="Installation"></div><h2 id="Installation"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Установка</font></font></h2>
+<pre><code class="lang-bash"><div class="line-numbers">1</div>$ npm install debug
+</code></pre>
+<div name="Usage" data-unique="Usage"></div><h2 id="Usage"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">использование</font></font></h2>
+<p><code>debug</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">предоставляет функцию; просто передайте этой функции имя вашего модуля, и она вернет декорированную версию, в которую </font></font><code>console.error</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">вы можете передать операторы отладки. Это позволит вам переключать вывод отладки для разных частей вашего модуля, а также для модуля в целом.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Пример </font></font><a href="./examples/node/app.js"><em><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">app.js</font></font></em></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> :</font></font></p>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18</div><span class="hljs-keyword">var</span> debug = <span class="hljs-built_in">require</span>(<span class="hljs-string">'debug'</span>)(<span class="hljs-string">'http'</span>)<font></font>
+  , http = <span class="hljs-built_in">require</span>(<span class="hljs-string">'http'</span>)<font></font>
+  , name = <span class="hljs-string">'My App'</span>;<font></font>
+<font></font>
+<span class="hljs-comment">// fake app</span><font></font>
+<font></font>
+debug(<span class="hljs-string">'booting %o'</span>, name);<font></font>
+<font></font>
+http.createServer(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">req, res</span>)</span>{<font></font>
+  debug(req.method + <span class="hljs-string">' '</span> + req.url);<font></font>
+  res.end(<span class="hljs-string">'hello\n'</span>);<font></font>
+}).listen(<span class="hljs-number">3000</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{<font></font>
+  debug(<span class="hljs-string">'listening'</span>);<font></font>
+});<font></font>
+<font></font>
+<span class="hljs-comment">// fake worker of some kind</span><font></font>
+<font></font>
+<span class="hljs-built_in">require</span>(<span class="hljs-string">'./worker'</span>);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Пример </font></font><a href="./examples/node/worker.js"><em><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">worker.js</font></font></em></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> :</font></font></p>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16</div><span class="hljs-keyword">var</span> a = <span class="hljs-built_in">require</span>(<span class="hljs-string">'debug'</span>)(<span class="hljs-string">'worker:a'</span>)<font></font>
+  , b = <span class="hljs-built_in">require</span>(<span class="hljs-string">'debug'</span>)(<span class="hljs-string">'worker:b'</span>);<font></font>
+<font></font>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">work</span>(<span class="hljs-params"></span>) </span>{<font></font>
+  a(<span class="hljs-string">'doing lots of uninteresting work'</span>);<font></font>
+  setTimeout(work, <span class="hljs-built_in">Math</span>.random() * <span class="hljs-number">1000</span>);<font></font>
+}<font></font>
+<font></font>
+work();<font></font>
+<font></font>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">workb</span>(<span class="hljs-params"></span>) </span>{<font></font>
+  b(<span class="hljs-string">'doing some work'</span>);<font></font>
+  setTimeout(workb, <span class="hljs-built_in">Math</span>.random() * <span class="hljs-number">2000</span>);<font></font>
+}<font></font>
+<font></font>
+workb();<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"></font><code>DEBUG</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Переменная среды затем используется для того, </font><font style="vertical-align: inherit;">чтобы они основаны на пространстве имен или разделенных запятыми.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Вот некоторые примеры:</font></font></p>
+<p><img width="647" alt="снимок экрана 2017-08-08 в 12 53 16:00" src="https://user-images.githubusercontent.com/71256/29091703-a6302cdc-7c38-11e7-8304-7c0b3bc600cd.png">
+<img width="647" alt="снимок экрана 2017-08-08 в 12 53 38 пп" src="https://user-images.githubusercontent.com/71256/29091700-a62a6888-7c38-11e7-800b-db911291ca2b.png">
+<img width="647" alt="снимок экрана 2017-08-08 в 12 53 25 пп" src="https://user-images.githubusercontent.com/71256/29091701-a62ea114-7c38-11e7-826a-2692bedca740.png"></p>
+<h4 id="Windows-note"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Примечание Windows</font></font></h4>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">В Windows переменная среды устанавливается с помощью </font></font><code>set</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">команды.</font></font></p>
+<pre><code class="lang-cmd"><div class="line-numbers">1</div><span class="hljs-built_in">set</span> DEBUG=*,-not_this
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Обратите внимание, что PowerShell использует другой синтаксис для установки переменных среды.</font></font></p>
+<pre><code class="lang-cmd"><div class="line-numbers">1</div>$env:DEBUG = "*,-not_this"
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Затем запустите программу для отладки как обычно.</font></font></p>
+<div name="Namespace-Colors" data-unique="Namespace-Colors"></div><h2 id="Namespace-Colors"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Цвета пространства имен</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Каждый экземпляр отладки имеет цвет, сгенерированный для него на основе имени пространства имен.Это помогает при визуальном анализе выходных данных отладки, чтобы определить, к какому экземпляру отладки принадлежит строка отладки.</font></font></p>
+<h4 id="Node.js"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Node.js</font></font></h4>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">В Node.js цвета включены, когда stderr является телетайпом. Вы также </font></font><em><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">должны</font></font></em><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> установить </font></font><a href="https://npmjs.org/supports-color"><code>supports-color</code></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">модуль вместе с отладкой, иначе отладка будет использовать только небольшую горстку основных цветов.</font></font></p>
+<p><img width="521" src="https://user-images.githubusercontent.com/71256/29092181-47f6a9e6-7c3a-11e7-9a14-1928d8a711cd.png"></p>
+<h4 id="Web-Browser"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Веб-браузер</font></font></h4>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Цвета также включены в «Веб-инспекторах», которые понимают параметр </font></font><code>%c</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">форматирования: это веб-инспекторы WebKit, Firefox ( </font></font><a href="https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-developer-tools-episode-31/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">начиная с версии 31</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> ) и плагин Firebug для Firefox (любая версия).</font></font></p>
+<p><img width="524" src="https://user-images.githubusercontent.com/71256/29092033-b65f9f2e-7c39-11e7-8e32-f6f0d8e865c1.png"></p>
+<div name="Millisecond-diff" data-unique="Millisecond-diff"></div><h2 id="Millisecond-diff"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Миллисекундная разница</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">При активной разработке приложения может быть полезно узнать, </font></font><code>debug()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">сколько </font><font style="vertical-align: inherit;">времени прошло между одним </font><font style="vertical-align: inherit;">вызовом и следующим. Предположим, например, вы вызываете </font></font><code>debug()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">перед запросом ресурса, а также после того, как "+ NNNms" покажет вам, сколько времени было потрачено. между звонками.</font></font></p>
+<p><img width="647" src="https://user-images.githubusercontent.com/71256/29091486-fa38524c-7c37-11e7-895f-e7ec8e1039b6.png"></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Когда stdout не является TTY, </font></font><code>Date#toISOString()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">используется, что делает его более полезным для регистрации отладочной информации, как показано ниже:</font></font></p>
+<p><img width="647" src="https://user-images.githubusercontent.com/71256/29091956-6bd78372-7c39-11e7-8c55-c948396d6edd.png"></p>
+<div name="Conventions" data-unique="Conventions"></div><h2 id="Conventions"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Соглашения</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Если вы используете это в одной или нескольких своих библиотеках, вы </font></font><em><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">должны</font></font></em><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> использовать имя своей библиотеки, чтобы разработчики могли переключать отладку по желанию, не угадывая имена. Если у вас более одного отладчика, вы </font></font><em><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">должны</font></font></em><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> добавить к ним имя вашей библиотеки и используйте «:» для разделения функций. Например, «bodyParser» из Connect будет тогда «connect: bodyParser». Если вы добавите «*» в конец своего имени, он всегда будет включен независимо от настройки DEBUG. Переменная окружения, которую затем можно использовать как для обычного вывода, так и для вывода отладки.</font></font></p>
+<div name="Wildcards" data-unique="Wildcards"></div><h2 id="Wildcards"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Подстановочные знаки</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Этот </font></font><code>*</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">символ может использоваться как подстановочный знак. Предположим, например, в вашей библиотеке есть отладчики с именами «connect: bodyParser», «connect: compress», «connect: session», вместо перечисления всех трех с помощью
+ </font></font><code>DEBUG=connect:bodyParser,connect:compress,connect:session</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, вы можете просто выполнить
+ </font></font><code>DEBUG=connect:*</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">или запустить все, что использует этот модуль, просто используйте </font></font><code>DEBUG=*</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Вы также можете исключить определенные отладчики, поставив перед ними символ «-». Например, </font></font><code>DEBUG=*,-connect:*</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">будут включены все отладчики, кроме тех, которые начинаются с «connect:».</font></font></p>
+<div name="Environment-Variables" data-unique="Environment-Variables"></div><h2 id="Environment-Variables"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Переменные среды</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">При запуске через Node.js вы можете установить несколько переменных среды, которые изменят поведение журнала отладки:</font></font></p>
+<table>
+<thead>
+<tr>
+<th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Имя</font></font></th>
+<th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Цель</font></font></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>DEBUG</code></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Включает / отключает определенные пространства имен отладки.</font></font></td>
+</tr>
+<tr>
+<td><code>DEBUG_HIDE_DATE</code></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Скрыть дату из вывода отладки (без TTY).</font></font></td>
+</tr>
+<tr>
+<td><code>DEBUG_COLORS</code></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Следует ли использовать цвета в выводе отладки.</font></font></td>
+</tr>
+<tr>
+<td><code>DEBUG_DEPTH</code></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Глубина осмотра объекта.</font></font></td>
+</tr>
+<tr>
+<td><code>DEBUG_SHOW_HIDDEN</code></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Показывает скрытые свойства на проверяемых объектах.</font></font></td>
+</tr>
+</tbody>
+</table>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Примечание:</font></font></strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Переменные среды , </font><font style="vertical-align: inherit;">начиная с </font></font><code>DEBUG_</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">конца до превращения в объект Options , </font><font style="vertical-align: inherit;">который привыкает с </font></font><code>%o</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ </font></font><code>%O</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">. Форматтеров Смотрите документацию Node.js для
+ </font></font><a href="https://nodejs.org/api/util.html#util_util_inspect_object_options"><code>util.inspect()</code></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+для полного списка.</font></font></p>
+<div name="Formatters" data-unique="Formatters"></div><h2 id="Formatters"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Форматировщики</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Отладка использует </font><font style="vertical-align: inherit;">форматирование в </font></font><a href="https://wikipedia.org/wiki/Printf_format_string"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">стиле printf</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> . Ниже перечислены официально поддерживаемые программы форматирования:</font></font></p>
+<table>
+<thead>
+<tr>
+<th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Форматировщик</font></font></th>
+<th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Представление</font></font></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>%O</code></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Распечатайте объект в несколько строк.</font></font></td>
+</tr>
+<tr>
+<td><code>%o</code></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Распечатайте все объекты в одной строке.</font></font></td>
+</tr>
+<tr>
+<td><code>%s</code></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Нить.</font></font></td>
+</tr>
+<tr>
+<td><code>%d</code></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Число (как целое, так и с плавающей запятой).</font></font></td>
+</tr>
+<tr>
+<td><code>%j</code></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">JSON. Заменяется на строку "[Circular]", если аргумент содержит циклические ссылки.</font></font></td>
+</tr>
+<tr>
+<td><code>%%</code></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Одиночный знак процента ("%"). Аргумент не используется.</font></font></td>
+</tr>
+</tbody>
+</table>
+<div name="Custom-formatters" data-unique="Custom-formatters"></div><h3 id="Custom-formatters" class="notranslate">Custom formatters</h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Вы можете добавить собственные средства форматирования, расширив </font></font><code>debug.formatters</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">объект. Например, если вы хотите добавить поддержку для рендеринга буфера как шестнадцатеричного с помощью
+ </font></font><code>%h</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, вы можете сделать что-то вроде:</font></font></p>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9</div><span class="hljs-keyword">const</span> createDebug = <span class="hljs-built_in">require</span>(<span class="hljs-string">'debug'</span>)<font></font>
+createDebug.formatters.h = <span class="hljs-function">(<span class="hljs-params">v</span>) =&gt;</span> {
+  <span class="hljs-keyword">return</span> v.toString(<span class="hljs-string">'hex'</span>)<font></font>
+}<font></font>
+<font></font>
+<span class="hljs-comment">// …elsewhere</span>
+<span class="hljs-keyword">const</span> debug = createDebug(<span class="hljs-string">'foo'</span>)<font></font>
+debug(<span class="hljs-string">'this is hex: %h'</span>, <span class="hljs-keyword">new</span> Buffer(<span class="hljs-string">'hello world'</span>))
+<span class="hljs-comment">//   foo this is hex: 68656c6c6f20776f726c6421 +0ms</span>
+</code></pre>
+<div name="Browser-Support" data-unique="Browser-Support"></div><h2 id="Browser-Support"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Поддержка браузера</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Вы можете создать браузерную готовый скрипт , </font><font style="vertical-align: inherit;">используя </font></font><a href="https://github.com/substack/node-browserify"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">browserify</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> , или просто использовать </font></font><a href="https://wzrd.in/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">browserify-как-услуга </font></font></a> <a href="https://wzrd.in/standalone/debug@latest"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">сборки</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> , если вы не хотите , </font><font style="vertical-align: inherit;">чтобы построить его самостоятельно.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Состояние включения отладки в настоящее время сохраняется </font></font><code>localStorage</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">. Рассмотрим ситуацию, показанную ниже, где у вас есть </font></font><code>worker:a</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">и </font></font><code>worker:b</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, и вы хотите отладить оба. Вы можете включить это, используя </font></font><code>localStorage.debug</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font></p>
+<pre><code class="lang-js"><div class="line-numbers">1</div>localStorage.debug = <span class="hljs-string">'worker:*'</span>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">А затем обновите страницу.</font></font></p>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10</div>a = debug(<span class="hljs-string">'worker:a'</span>);<font></font>
+b = debug(<span class="hljs-string">'worker:b'</span>);<font></font>
+<font></font>
+setInterval(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{<font></font>
+  a(<span class="hljs-string">'doing some work'</span>);<font></font>
+}, <span class="hljs-number">1000</span>);<font></font>
+<font></font>
+setInterval(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{<font></font>
+  b(<span class="hljs-string">'doing some work'</span>);<font></font>
+}, <span class="hljs-number">1200</span>);
+</code></pre>
+<div name="Output-streams" data-unique="Output-streams"></div><h2 id="Output-streams"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Выходные потоки</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">  По умолчанию </font></font><code>debug</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">будет регистрироваться в stderr, однако это можно настроить для каждого пространства имен, переопределив </font></font><code>log</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">метод:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Пример </font></font><a href="./examples/node/stdout.js"><em><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">stdout.js</font></font></em></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> :</font></font></p>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17</div><span class="hljs-keyword">var</span> debug = <span class="hljs-built_in">require</span>(<span class="hljs-string">'debug'</span>);
+<span class="hljs-keyword">var</span> error = debug(<span class="hljs-string">'app:error'</span>);<font></font>
+<font></font>
+<span class="hljs-comment">// by default stderr is used</span>
+error(<span class="hljs-string">'goes to stderr!'</span>);<font></font>
+<font></font>
+<span class="hljs-keyword">var</span> log = debug(<span class="hljs-string">'app:log'</span>);
+<span class="hljs-comment">// set this namespace to log via console.log</span>
+log.log = <span class="hljs-built_in">console</span>.log.bind(<span class="hljs-built_in">console</span>); <span class="hljs-comment">// don't forget to bind to console!</span>
+log(<span class="hljs-string">'goes to stdout'</span>);<font></font>
+error(<span class="hljs-string">'still goes to stderr!'</span>);<font></font>
+<font></font>
+<span class="hljs-comment">// set all output to go via console.info</span>
+<span class="hljs-comment">// overrides all per-namespace log settings</span>
+debug.log = <span class="hljs-built_in">console</span>.info.bind(<span class="hljs-built_in">console</span>);<font></font>
+error(<span class="hljs-string">'now goes to stdout via console.info'</span>);<font></font>
+log(<span class="hljs-string">'still goes to stdout, but via console.info now'</span>);
+</code></pre>
+<div name="Set-dynamically" data-unique="Set-dynamically"></div><h2 id="Set-dynamically"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Установить динамически</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Вы также можете включить отладку динамически, вызвав </font></font><code>enable()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">метод:</font></font></p>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10</div><span class="hljs-keyword">let</span> debug = <span class="hljs-built_in">require</span>(<span class="hljs-string">'debug'</span>);<font></font>
+<font></font>
+<span class="hljs-built_in">console</span>.log(<span class="hljs-number">1</span>, debug.enabled(<span class="hljs-string">'test'</span>));<font></font>
+<font></font>
+debug.enable(<span class="hljs-string">'test'</span>);
+<span class="hljs-built_in">console</span>.log(<span class="hljs-number">2</span>, debug.enabled(<span class="hljs-string">'test'</span>));<font></font>
+<font></font>
+debug.disable();<font></font>
+<span class="hljs-built_in">console</span>.log(<span class="hljs-number">3</span>, debug.enabled(<span class="hljs-string">'test'</span>));<font></font>
+<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Распечатать:   </font></font></p>
+<pre><code><div class="line-numbers">1
+2
+3</div><span class="hljs-symbol">1 </span>false
+<span class="hljs-symbol">2 </span>true
+<span class="hljs-symbol">3 </span>false
+</code></pre><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Использование: </font></font><br><code>enable(namespaces)</code><br><code>namespaces</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">может включать режимы, разделенные двоеточием и подстановочными знаками.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Обратите внимание, что вызов </font></font><code>enable()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">полностью отменяет ранее установленную переменную DEBUG:</font></font></p>
+<pre><code><div class="line-numbers">1
+2</div>$ DEBUG=foo node -e '<span class="hljs-built_in">var</span> dbg = require(<span class="hljs-string">"debug"</span>); dbg.enable(<span class="hljs-string">"bar"</span>); console.log(dbg.enabled(<span class="hljs-string">"foo"</span>))'<font></font>
+=&gt; <span class="hljs-built_in">false</span>
+</code></pre><div name="Checking-whether-a-debug-target-is-enabled" data-unique="Checking-whether-a-debug-target-is-enabled"></div><h2 id="Checking-whether-a-debug-target-is-enabled"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Проверка, включена ли цель отладки</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">После создания экземпляра отладки вы можете определить, включен ли он, проверив </font></font><code>enabled</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">свойство:</font></font></p>
+<pre><code class="lang-javascript"><div class="line-numbers">1
+2
+3
+4
+5</div><span class="hljs-keyword">const</span> debug = <span class="hljs-built_in">require</span>(<span class="hljs-string">'debug'</span>)(<span class="hljs-string">'http'</span>);<font></font>
+<font></font>
+<span class="hljs-keyword">if</span> (debug.enabled) {
+  <span class="hljs-comment">// do stuff...</span><font></font>
+}<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Вы также можете вручную переключить это свойство, чтобы принудительно включить или отключить экземпляр отладки.</font></font></p>
+<div name="Authors" data-unique="Authors"></div><h2 id="Authors"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Авторы</font></font></h2>
+<ul>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Т.Дж. Головайчук</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Натан Райлих</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Эндрю Райн</font></font></li>
+</ul>
+<div name="Backers" data-unique="Backers"></div><h2 id="Backers"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Спонсоры</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Поддержите нас ежемесячным пожертвованием и помогите нам продолжить нашу деятельность. [ </font></font><a href="https://opencollective.com/debug#backer"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Станьте спонсором</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> ]</font></font></p>
+<p><a href="https://opencollective.com/debug/backer/0/website" target="_blank"><img src="https://opencollective.com/debug/backer/0/avatar.svg"></a>
+<a href="https://opencollective.com/debug/backer/1/website" target="_blank"><img src="https://opencollective.com/debug/backer/1/avatar.svg"></a>
+<a href="https://opencollective.com/debug/backer/2/website" target="_blank"><img src="https://opencollective.com/debug/backer/2/avatar.svg"></a>
+<a href="https://opencollective.com/debug/backer/3/website" target="_blank"><img src="https://opencollective.com/debug/backer/3/avatar.svg"></a>
+<a href="https://opencollective.com/debug/backer/4/website" target="_blank"><img src="https://opencollective.com/debug/backer/4/avatar.svg"></a>
+<a href="https://opencollective.com/debug/backer/5/website" target="_blank"><img src="https://opencollective.com/debug/backer/5/avatar.svg"></a>
+<a href="https://opencollective.com/debug/backer/6/website" target="_blank"><img src="https://opencollective.com/debug/backer/6/avatar.svg"></a>
+<a href="https://opencollective.com/debug/backer/7/website" target="_blank"><img src="https://opencollective.com/debug/backer/7/avatar.svg"></a>
+<a href="https://opencollective.com/debug/backer/8/website" target="_blank"><img src="https://opencollective.com/debug/backer/8/avatar.svg"></a>
+<a href="https://opencollective.com/debug/backer/9/website" target="_blank"><img src="https://opencollective.com/debug/backer/9/avatar.svg"></a>
+<a href="https://opencollective.com/debug/backer/10/website" target="_blank"><img src="https://opencollective.com/debug/backer/10/avatar.svg"></a>
+<a href="https://opencollective.com/debug/backer/11/website" target="_blank"><img src="https://opencollective.com/debug/backer/11/avatar.svg"></a>
+<a href="https://opencollective.com/debug/backer/12/website" target="_blank"><img src="https://opencollective.com/debug/backer/12/avatar.svg"></a>
+<a href="https://opencollective.com/debug/backer/13/website" target="_blank"><img src="https://opencollective.com/debug/backer/13/avatar.svg"></a>
+<a href="https://opencollective.com/debug/backer/14/website" target="_blank"><img src="https://opencollective.com/debug/backer/14/avatar.svg"></a>
+<a href="https://opencollective.com/debug/backer/15/website" target="_blank"><img src="https://opencollective.com/debug/backer/15/avatar.svg"></a>
+<a href="https://opencollective.com/debug/backer/16/website" target="_blank"><img src="https://opencollective.com/debug/backer/16/avatar.svg"></a>
+<a href="https://opencollective.com/debug/backer/17/website" target="_blank"><img src="https://opencollective.com/debug/backer/17/avatar.svg"></a>
+<a href="https://opencollective.com/debug/backer/18/website" target="_blank"><img src="https://opencollective.com/debug/backer/18/avatar.svg"></a>
+<a href="https://opencollective.com/debug/backer/19/website" target="_blank"><img src="https://opencollective.com/debug/backer/19/avatar.svg"></a>
+<a href="https://opencollective.com/debug/backer/20/website" target="_blank"><img src="https://opencollective.com/debug/backer/20/avatar.svg"></a>
+<a href="https://opencollective.com/debug/backer/21/website" target="_blank"><img src="https://opencollective.com/debug/backer/21/avatar.svg"></a>
+<a href="https://opencollective.com/debug/backer/22/website" target="_blank"><img src="https://opencollective.com/debug/backer/22/avatar.svg"></a>
+<a href="https://opencollective.com/debug/backer/23/website" target="_blank"><img src="https://opencollective.com/debug/backer/23/avatar.svg"></a>
+<a href="https://opencollective.com/debug/backer/24/website" target="_blank"><img src="https://opencollective.com/debug/backer/24/avatar.svg"></a>
+<a href="https://opencollective.com/debug/backer/25/website" target="_blank"><img src="https://opencollective.com/debug/backer/25/avatar.svg"></a>
+<a href="https://opencollective.com/debug/backer/26/website" target="_blank"><img src="https://opencollective.com/debug/backer/26/avatar.svg"></a>
+<a href="https://opencollective.com/debug/backer/27/website" target="_blank"><img src="https://opencollective.com/debug/backer/27/avatar.svg"></a>
+<a href="https://opencollective.com/debug/backer/28/website" target="_blank"><img src="https://opencollective.com/debug/backer/28/avatar.svg"></a>
+<a href="https://opencollective.com/debug/backer/29/website" target="_blank"><img src="https://opencollective.com/debug/backer/29/avatar.svg"></a></p>
+<div name="Sponsors" data-unique="Sponsors"></div><h2 id="Sponsors"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Спонсоры</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Станьте спонсором и разместите свой логотип в README на Github со ссылкой на свой сайт. [ </font></font><a href="https://opencollective.com/debug#sponsor"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Стать спонсором</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> ]</font></font></p>
+<p><a href="https://opencollective.com/debug/sponsor/0/website" target="_blank"><img src="https://opencollective.com/debug/sponsor/0/avatar.svg"></a>
+<a href="https://opencollective.com/debug/sponsor/1/website" target="_blank"><img src="https://opencollective.com/debug/sponsor/1/avatar.svg"></a>
+<a href="https://opencollective.com/debug/sponsor/2/website" target="_blank"><img src="https://opencollective.com/debug/sponsor/2/avatar.svg"></a>
+<a href="https://opencollective.com/debug/sponsor/3/website" target="_blank"><img src="https://opencollective.com/debug/sponsor/3/avatar.svg"></a>
+<a href="https://opencollective.com/debug/sponsor/4/website" target="_blank"><img src="https://opencollective.com/debug/sponsor/4/avatar.svg"></a>
+<a href="https://opencollective.com/debug/sponsor/5/website" target="_blank"><img src="https://opencollective.com/debug/sponsor/5/avatar.svg"></a>
+<a href="https://opencollective.com/debug/sponsor/6/website" target="_blank"><img src="https://opencollective.com/debug/sponsor/6/avatar.svg"></a>
+<a href="https://opencollective.com/debug/sponsor/7/website" target="_blank"><img src="https://opencollective.com/debug/sponsor/7/avatar.svg"></a>
+<a href="https://opencollective.com/debug/sponsor/8/website" target="_blank"><img src="https://opencollective.com/debug/sponsor/8/avatar.svg"></a>
+<a href="https://opencollective.com/debug/sponsor/9/website" target="_blank"><img src="https://opencollective.com/debug/sponsor/9/avatar.svg"></a>
+<a href="https://opencollective.com/debug/sponsor/10/website" target="_blank"><img src="https://opencollective.com/debug/sponsor/10/avatar.svg"></a>
+<a href="https://opencollective.com/debug/sponsor/11/website" target="_blank"><img src="https://opencollective.com/debug/sponsor/11/avatar.svg"></a>
+<a href="https://opencollective.com/debug/sponsor/12/website" target="_blank"><img src="https://opencollective.com/debug/sponsor/12/avatar.svg"></a>
+<a href="https://opencollective.com/debug/sponsor/13/website" target="_blank"><img src="https://opencollective.com/debug/sponsor/13/avatar.svg"></a>
+<a href="https://opencollective.com/debug/sponsor/14/website" target="_blank"><img src="https://opencollective.com/debug/sponsor/14/avatar.svg"></a>
+<a href="https://opencollective.com/debug/sponsor/15/website" target="_blank"><img src="https://opencollective.com/debug/sponsor/15/avatar.svg"></a>
+<a href="https://opencollective.com/debug/sponsor/16/website" target="_blank"><img src="https://opencollective.com/debug/sponsor/16/avatar.svg"></a>
+<a href="https://opencollective.com/debug/sponsor/17/website" target="_blank"><img src="https://opencollective.com/debug/sponsor/17/avatar.svg"></a>
+<a href="https://opencollective.com/debug/sponsor/18/website" target="_blank"><img src="https://opencollective.com/debug/sponsor/18/avatar.svg"></a>
+<a href="https://opencollective.com/debug/sponsor/19/website" target="_blank"><img src="https://opencollective.com/debug/sponsor/19/avatar.svg"></a>
+<a href="https://opencollective.com/debug/sponsor/20/website" target="_blank"><img src="https://opencollective.com/debug/sponsor/20/avatar.svg"></a>
+<a href="https://opencollective.com/debug/sponsor/21/website" target="_blank"><img src="https://opencollective.com/debug/sponsor/21/avatar.svg"></a>
+<a href="https://opencollective.com/debug/sponsor/22/website" target="_blank"><img src="https://opencollective.com/debug/sponsor/22/avatar.svg"></a>
+<a href="https://opencollective.com/debug/sponsor/23/website" target="_blank"><img src="https://opencollective.com/debug/sponsor/23/avatar.svg"></a>
+<a href="https://opencollective.com/debug/sponsor/24/website" target="_blank"><img src="https://opencollective.com/debug/sponsor/24/avatar.svg"></a>
+<a href="https://opencollective.com/debug/sponsor/25/website" target="_blank"><img src="https://opencollective.com/debug/sponsor/25/avatar.svg"></a>
+<a href="https://opencollective.com/debug/sponsor/26/website" target="_blank"><img src="https://opencollective.com/debug/sponsor/26/avatar.svg"></a>
+<a href="https://opencollective.com/debug/sponsor/27/website" target="_blank"><img src="https://opencollective.com/debug/sponsor/27/avatar.svg"></a>
+<a href="https://opencollective.com/debug/sponsor/28/website" target="_blank"><img src="https://opencollective.com/debug/sponsor/28/avatar.svg"></a>
+<a href="https://opencollective.com/debug/sponsor/29/website" target="_blank"><img src="https://opencollective.com/debug/sponsor/29/avatar.svg"></a></p>
+<div name="License" data-unique="License"></div><h2 id="License"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Лицензия</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(Лицензия MIT)</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Авторские права (c) 2014-2017 TJ Holowaychuk &lt; </font></font><a href="mailto:tj@vision-media.ca"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">tj@vision-media.ca</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &gt;</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Настоящим предоставляется бесплатное разрешение любому лицу, получившему копию этого программного обеспечения и связанных файлов документации («Программное обеспечение»), на использование Программного обеспечения без ограничений, включая, помимо прочего, права на использование, копирование, изменение, объединение. , публиковать, распространять, сублицензировать и / или продавать копии Программного обеспечения и разрешать лицам, которым предоставляется Программное обеспечение, делать это при соблюдении следующих условий:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Вышеупомянутое уведомление об авторских правах и это уведомление о разрешении должны быть включены во все копии или существенные части Программного обеспечения.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ПРОГРАММНОЕ ОБЕСПЕЧЕНИЕ ПРЕДОСТАВЛЯЕТСЯ «КАК ЕСТЬ», БЕЗ КАКИХ-ЛИБО ГАРАНТИЙ, ЯВНЫХ ИЛИ ПОДРАЗУМЕВАЕМЫХ, ВКЛЮЧАЯ, НО НЕ ОГРАНИЧИВАЯСЬ ​​ГАРАНТИЯМИ КОММЕРЧЕСКОЙ ЦЕННОСТИ, ПРИГОДНОСТИ ДЛЯ КОНКРЕТНОЙ ЦЕЛИ И НЕЗАЩИТЫ ДЕРЖАТЕЛЯ. УБЫТКИ ИЛИ ДРУГАЯ ОТВЕТСТВЕННОСТЬ, В РЕЗУЛЬТАТЕ ДЕЙСТВИЯ ДОГОВОРА, ПРАВИЛА ИЛИ ИНЫМ ОБРАЗОМ, ВОЗНИКНУЮЩИМ В РЕЗУЛЬТАТЕ ПРОГРАММНОГО ОБЕСПЕЧЕНИЯ, ИЛИ ИЛИ В СВЯЗИ С ПРОГРАММНЫМ ОБЕСПЕЧЕНИЕМ ИЛИ ИСПОЛЬЗОВАНИЕМ ИЛИ ДРУГИМИ ДЕЛАМИ ПРОГРАММНОГО ОБЕСПЕЧЕНИЯ.</font></font></p>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2014-Настоящее время fibjs.org | </font></font><a href="../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Поддержите нас</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip941092"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip941092" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Нажмите, чтобы вернуться на главную страницу</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../js/common.js"></script><script type="text/javascript" src="../../../../js/docs.js"></script></body></html>

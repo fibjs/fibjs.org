@@ -1,0 +1,839 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../../../imgs/icon.png"><title>Модуль console-JavaScript на Fiber</title><link href="../../../../../css/common.css" rel="stylesheet"><link href="../../../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Переключить навигацию</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../../../index.html"><img src="../../../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../../../index.html">HOME</a></li><li><a href="../../../guide/readme.md.html">GUIDE</a></li><li><a href="../readme.md.html">MODULE</a></li><li><a href="../../object/readme.md.html">OBJECT</a></li><li><a href="../../../awesome/readme.md.html">AWESOME</a></li><li><a href="../../../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../../../docs/manual/module/ifs/console.md.html">中文</a> <a href="../../../../../en/docs/manual/module/ifs/console.md.html">ENGLISH</a> <a href="../../../../../ja/docs/manual/module/ifs/console.md.html">日本語</a> <a href="../../../../../de/docs/manual/module/ifs/console.md.html">Deutsch</a> <a href="../../../../../es/docs/manual/module/ifs/console.md.html">Español</a> <a href="../../../../../fr/docs/manual/module/ifs/console.md.html">Français</a> <a href="../../../../../ko/docs/manual/module/ifs/console.md.html">한국어</a> <a href="../../../../../it/docs/manual/module/ifs/console.md.html">Italiano</a> <a href="../../../../../ru/docs/manual/module/ifs/console.md.html">Русский</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Модуль базовый модуль </font></font></span><div class="search"><span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input type="text" class="searchbox ds-input" placeholder="Поиск" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-label="поисковый ввод" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Avenir, &quot;Segoe UI&quot;, Arial, &quot;Hiragino Sans GB&quot;, 冬青黑, &quot;Microsoft YaHei&quot;, 微软雅黑, SimSun, 宋体, Helvetica, Tahoma, &quot;Arial sans-serif&quot;; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div class="ds-dataset-1"></div></span></span></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Домашняя страница</font></font></a></li><li><a href="../readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Базовый модуль </font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Консоль модуля </font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Руководство по развитию </font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="../../../guide/about.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Что такое fibjs?</font></font></a></li>
+<li><a href="../../../guide/install.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Установка и рабочая среда</font></font></a></li>
+<li><a href="../../../guide/hello.md.html" class="notranslate">hello, world</a></li>
+<li><a href="../../../guide/test.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Хорошая жизнь начинается с испытания</font></font></a></li>
+<li><a href="../../../guide/profiler.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Найдите убийцу производительности</font></font></a></li>
+<li><a href="../../../guide/desktop.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Быстро разрабатывать настольные приложения</font></font></a></li>
+<li><a href="../../../guide/server-hot-update.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Горячее обновление серверного модуля</font></font></a></li>
+<li><a href="../../../guide/host-routes.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Маршрутизация доменного имени</font></font></a></li>
+<li><a href="../../../guide/x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Использование сертификата X509 в fibjs</font></font></a></li>
+<li><a href="../../../guide/contribute.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Добавить собственный модуль</font></font></a></li>
+</ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_module" aria-controls="collapse_module"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Базовый модуль </font></font></a></h4></div><div id="collapse_module" class="panel-collapse collapse in" aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="assert.md.html" class="notranslate">assert</a></li>
+<li><a href="base32.md.html" class="notranslate">base32</a></li>
+<li><a href="base64.md.html" class="notranslate">base64</a></li>
+<li><a href="base64vlq.md.html" class="notranslate">base64vlq</a></li>
+<li><a href="bson.md.html" class="notranslate">bson</a></li>
+<li><a href="child_process.md.html" class="notranslate">child_process</a></li>
+<li class="active"><a href="console.md.html" class="notranslate">console</a></li>
+<li><a href="constants.md.html" class="notranslate">constants</a></li>
+<li><a href="coroutine.md.html" class="notranslate">coroutine</a></li>
+<li><a href="crypto.md.html" class="notranslate">crypto</a></li>
+<li><a href="db.md.html" class="notranslate">db</a></li>
+<li><a href="dgram.md.html" class="notranslate">dgram</a></li>
+<li><a href="dns.md.html" class="notranslate">dns</a></li>
+<li><a href="encoding.md.html" class="notranslate">encoding</a></li>
+<li><a href="fs.md.html" class="notranslate">fs</a></li>
+<li><a href="gd.md.html" class="notranslate">gd</a></li>
+<li><a href="global.md.html" class="notranslate">global</a></li>
+<li><a href="gui.md.html" class="notranslate">gui</a></li>
+<li><a href="hash.md.html" class="notranslate">hash</a></li>
+<li><a href="hex.md.html" class="notranslate">hex</a></li>
+<li><a href="http.md.html" class="notranslate">http</a></li>
+<li><a href="iconv.md.html" class="notranslate">iconv</a></li>
+<li><a href="io.md.html" class="notranslate">io</a></li>
+<li><a href="json.md.html" class="notranslate">json</a></li>
+<li><a href="mq.md.html" class="notranslate">mq</a></li>
+<li><a href="msgpack.md.html" class="notranslate">msgpack</a></li>
+<li><a href="net.md.html" class="notranslate">net</a></li>
+<li><a href="os.md.html" class="notranslate">os</a></li>
+<li><a href="path.md.html" class="notranslate">path</a></li>
+<li><a href="path_posix.md.html" class="notranslate">path_posix</a></li>
+<li><a href="path_win32.md.html" class="notranslate">path_win32</a></li>
+<li><a href="process.md.html" class="notranslate">process</a></li>
+<li><a href="profiler.md.html" class="notranslate">profiler</a></li>
+<li><a href="punycode.md.html" class="notranslate">punycode</a></li>
+<li><a href="querystring.md.html" class="notranslate">querystring</a></li>
+<li><a href="registry.md.html" class="notranslate">registry</a></li>
+<li><a href="ssl.md.html" class="notranslate">ssl</a></li>
+<li><a href="string_decoder.md.html" class="notranslate">string_decoder</a></li>
+<li><a href="test.md.html" class="notranslate">test</a></li>
+<li><a href="timers.md.html" class="notranslate">timers</a></li>
+<li><a href="tty.md.html" class="notranslate">tty</a></li>
+<li><a href="url.md.html" class="notranslate">url</a></li>
+<li><a href="util.md.html" class="notranslate">util</a></li>
+<li><a href="uuid.md.html" class="notranslate">uuid</a></li>
+<li><a href="vm.md.html" class="notranslate">vm</a></li>
+<li><a href="ws.md.html" class="notranslate">ws</a></li>
+<li><a href="xml.md.html" class="notranslate">xml</a></li>
+<li><a href="zip.md.html" class="notranslate">zip</a></li>
+<li><a href="zlib.md.html" class="notranslate">zlib</a></li>
+</ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_object" aria-controls="collapse_object"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Встроенные объекты </font></font></a></h4></div><div id="collapse_object" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="../../object/ifs/buffer.md.html" class="notranslate">Buffer</a></li>
+<li><a href="../../object/ifs/bufferedstream.md.html" class="notranslate">BufferedStream</a></li>
+<li><a href="../../object/ifs/chain.md.html" class="notranslate">Chain</a></li>
+<li><a href="../../object/ifs/childprocess.md.html" class="notranslate">ChildProcess</a></li>
+<li><a href="../../object/ifs/cipher.md.html" class="notranslate">Cipher</a></li>
+<li><a href="../../object/ifs/condition.md.html" class="notranslate">Condition</a></li>
+<li><a href="../../object/ifs/dbconnection.md.html" class="notranslate">DbConnection</a></li>
+<li><a href="../../object/ifs/dgramsocket.md.html" class="notranslate">DgramSocket</a></li>
+<li><a href="../../object/ifs/digest.md.html" class="notranslate">Digest</a></li>
+<li><a href="../../object/ifs/event.md.html" class="notranslate">Event</a></li>
+<li><a href="../../object/ifs/eventemitter.md.html" class="notranslate">EventEmitter</a></li>
+<li><a href="../../object/ifs/fswatcher.md.html" class="notranslate">FSWatcher</a></li>
+<li><a href="../../object/ifs/fiber.md.html" class="notranslate">Fiber</a></li>
+<li><a href="../../object/ifs/file.md.html" class="notranslate">File</a></li>
+<li><a href="../../object/ifs/handler.md.html" class="notranslate">Handler</a></li>
+<li><a href="../../object/ifs/heapgraphedge.md.html" class="notranslate">HeapGraphEdge</a></li>
+<li><a href="../../object/ifs/heapgraphnode.md.html" class="notranslate">HeapGraphNode</a></li>
+<li><a href="../../object/ifs/heapsnapshot.md.html" class="notranslate">HeapSnapshot</a></li>
+<li><a href="../../object/ifs/httpclient.md.html" class="notranslate">HttpClient</a></li>
+<li><a href="../../object/ifs/httpcollection.md.html" class="notranslate">HttpCollection</a></li>
+<li><a href="../../object/ifs/httpcookie.md.html" class="notranslate">HttpCookie</a></li>
+<li><a href="../../object/ifs/httphandler.md.html" class="notranslate">HttpHandler</a></li>
+<li><a href="../../object/ifs/httpmessage.md.html" class="notranslate">HttpMessage</a></li>
+<li><a href="../../object/ifs/httprepeater.md.html" class="notranslate">HttpRepeater</a></li>
+<li><a href="../../object/ifs/httprequest.md.html" class="notranslate">HttpRequest</a></li>
+<li><a href="../../object/ifs/httpresponse.md.html" class="notranslate">HttpResponse</a></li>
+<li><a href="../../object/ifs/httpserver.md.html" class="notranslate">HttpServer</a></li>
+<li><a href="../../object/ifs/httpuploaddata.md.html" class="notranslate">HttpUploadData</a></li>
+<li><a href="../../object/ifs/httpsserver.md.html" class="notranslate">HttpsServer</a></li>
+<li><a href="../../object/ifs/image.md.html" class="notranslate">Image</a></li>
+<li><a href="../../object/ifs/leveldb.md.html" class="notranslate">LevelDB</a></li>
+<li><a href="../../object/ifs/lock.md.html" class="notranslate">Lock</a></li>
+<li><a href="../../object/ifs/lrucache.md.html" class="notranslate">LruCache</a></li>
+<li><a href="../../object/ifs/mssql.md.html" class="notranslate">MSSQL</a></li>
+<li><a href="../../object/ifs/memorystream.md.html" class="notranslate">MemoryStream</a></li>
+<li><a href="../../object/ifs/message.md.html" class="notranslate">Message</a></li>
+<li><a href="../../object/ifs/mongocollection.md.html" class="notranslate">MongoCollection</a></li>
+<li><a href="../../object/ifs/mongocursor.md.html" class="notranslate">MongoCursor</a></li>
+<li><a href="../../object/ifs/mongodb.md.html" class="notranslate">MongoDB</a></li>
+<li><a href="../../object/ifs/mongoid.md.html" class="notranslate">MongoID</a></li>
+<li><a href="../../object/ifs/mysql.md.html" class="notranslate">MySQL</a></li>
+<li><a href="../../object/ifs/pkey.md.html" class="notranslate">PKey</a></li>
+<li><a href="../../object/ifs/rangestream.md.html" class="notranslate">RangeStream</a></li>
+<li><a href="../../object/ifs/redis.md.html" class="notranslate">Redis</a></li>
+<li><a href="../../object/ifs/redishash.md.html" class="notranslate">RedisHash</a></li>
+<li><a href="../../object/ifs/redislist.md.html" class="notranslate">RedisList</a></li>
+<li><a href="../../object/ifs/redisset.md.html" class="notranslate">RedisSet</a></li>
+<li><a href="../../object/ifs/redissortedset.md.html" class="notranslate">RedisSortedSet</a></li>
+<li><a href="../../object/ifs/routing.md.html" class="notranslate">Routing</a></li>
+<li><a href="../../object/ifs/sqlite.md.html" class="notranslate">SQLite</a></li>
+<li><a href="../../object/ifs/sandbox.md.html" class="notranslate">SandBox</a></li>
+<li><a href="../../object/ifs/seekablestream.md.html" class="notranslate">SeekableStream</a></li>
+<li><a href="../../object/ifs/semaphore.md.html" class="notranslate">Semaphore</a></li>
+<li><a href="../../object/ifs/service.md.html" class="notranslate">Service</a></li>
+<li><a href="../../object/ifs/smtp.md.html" class="notranslate">Smtp</a></li>
+<li><a href="../../object/ifs/socket.md.html" class="notranslate">Socket</a></li>
+<li><a href="../../object/ifs/sslhandler.md.html" class="notranslate">SslHandler</a></li>
+<li><a href="../../object/ifs/sslserver.md.html" class="notranslate">SslServer</a></li>
+<li><a href="../../object/ifs/sslsocket.md.html" class="notranslate">SslSocket</a></li>
+<li><a href="../../object/ifs/stat.md.html" class="notranslate">Stat</a></li>
+<li><a href="../../object/ifs/statswatcher.md.html" class="notranslate">StatsWatcher</a></li>
+<li><a href="../../object/ifs/stream.md.html" class="notranslate">Stream</a></li>
+<li><a href="../../object/ifs/stringdecoder.md.html" class="notranslate">StringDecoder</a></li>
+<li><a href="../../object/ifs/tcpserver.md.html" class="notranslate">TcpServer</a></li>
+<li><a href="../../object/ifs/timer.md.html" class="notranslate">Timer</a></li>
+<li><a href="../../object/ifs/urlobject.md.html" class="notranslate">UrlObject</a></li>
+<li><a href="../../object/ifs/websocket.md.html" class="notranslate">WebSocket</a></li>
+<li><a href="../../object/ifs/websocketmessage.md.html" class="notranslate">WebSocketMessage</a></li>
+<li><a href="../../object/ifs/webview.md.html" class="notranslate">WebView</a></li>
+<li><a href="../../object/ifs/worker.md.html" class="notranslate">Worker</a></li>
+<li><a href="../../object/ifs/x509cert.md.html" class="notranslate">X509Cert</a></li>
+<li><a href="../../object/ifs/x509crl.md.html" class="notranslate">X509Crl</a></li>
+<li><a href="../../object/ifs/x509req.md.html" class="notranslate">X509Req</a></li>
+<li><a href="../../object/ifs/xmlattr.md.html" class="notranslate">XmlAttr</a></li>
+<li><a href="../../object/ifs/xmlcdatasection.md.html" class="notranslate">XmlCDATASection</a></li>
+<li><a href="../../object/ifs/xmlcharacterdata.md.html" class="notranslate">XmlCharacterData</a></li>
+<li><a href="../../object/ifs/xmlcomment.md.html" class="notranslate">XmlComment</a></li>
+<li><a href="../../object/ifs/xmldocument.md.html" class="notranslate">XmlDocument</a></li>
+<li><a href="../../object/ifs/xmldocumenttype.md.html" class="notranslate">XmlDocumentType</a></li>
+<li><a href="../../object/ifs/xmlelement.md.html" class="notranslate">XmlElement</a></li>
+<li><a href="../../object/ifs/xmlnamednodemap.md.html" class="notranslate">XmlNamedNodeMap</a></li>
+<li><a href="../../object/ifs/xmlnode.md.html" class="notranslate">XmlNode</a></li>
+<li><a href="../../object/ifs/xmlnodelist.md.html" class="notranslate">XmlNodeList</a></li>
+<li><a href="../../object/ifs/xmlprocessinginstruction.md.html" class="notranslate">XmlProcessingInstruction</a></li>
+<li><a href="../../object/ifs/xmltext.md.html" class="notranslate">XmlText</a></li>
+<li><a href="../../object/ifs/zipfile.md.html" class="notranslate">ZipFile</a></li>
+<li><a href="../../object/ifs/object.md.html" class="notranslate">object</a></li>
+</ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_awesome" aria-controls="collapse_awesome"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Модуль сообщества </font></font></a></h4></div><div id="collapse_awesome" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="../../../awesome/module/fib-session.md.html" class="notranslate">fib-session</a></li>
+<li><a href="../../../awesome/module/fib-pool.md.html" class="notranslate">fib-pool</a></li>
+<li><a href="../../../awesome/module/fib-orm.md.html" class="notranslate">fib-orm</a></li>
+<li><a href="../../../awesome/module/fib-app.md.html" class="notranslate">fib-app</a></li>
+<li><a href="../../../awesome/module/fib-kv.md.html" class="notranslate">fib-kv</a></li>
+<li><a href="../../../awesome/module/fib-rpc.md.html" class="notranslate">fib-rpc</a></li>
+<li><a href="../../../awesome/module/fib-qr.md.html" class="notranslate">fib-qr</a></li>
+<li><a href="../../../awesome/module/fib-pug.md.html" class="notranslate">fib-pug</a></li>
+<li><a href="../../../awesome/module/ejs.md.html" class="notranslate">ejs</a></li>
+<li><a href="../../../awesome/module/juicer.md.html" class="notranslate">Juicer</a></li>
+<li><a href="../../../awesome/module/highlight.js.md.html" class="notranslate">highlight.js</a></li>
+<li><a href="../../../awesome/module/marked.md.html" class="notranslate">marked</a></li>
+<li><a href="../../../awesome/module/node-cron.md.html" class="notranslate">node-cron</a></li>
+<li><a href="../../../awesome/module/debug.md.html" class="notranslate">debug</a></li>
+<li><a href="../../../awesome/module/benchmark.js.md.html" class="notranslate">benchmark.js</a></li>
+<li><a href="../../../awesome/module/sinon.md.html" class="notranslate">sinon</a></li>
+<li><a href="../../../awesome/module/node-mime.md.html" class="notranslate">node-mime</a></li>
+<li><a href="../../../awesome/module/validatorjs.md.html" class="notranslate">validatorjs</a></li>
+<li><a href="../../../awesome/module/superstruct.md.html" class="notranslate">superstruct</a></li>
+<li><a href="../../../awesome/module/cluster-server.md.html" class="notranslate">cluster-server</a></li>
+<li><a href="../../../awesome/module/synaptic.md.html" class="notranslate">synaptic</a></li>
+<li><a href="../../../awesome/module/source-map.md.html" class="notranslate">source-map</a></li>
+<li><a href="../../../awesome/module/json-format.md.html" class="notranslate">json-format</a></li>
+<li><a href="../../../awesome/module/viz.js.md.html" class="notranslate">viz.js</a></li>
+<li><a href="../../../awesome/module/nomnoml.md.html" class="notranslate">nomnoml</a></li>
+<li><a href="../../../awesome/module/pegjs.md.html" class="notranslate">pegjs</a></li>
+<li><a href="../../../awesome/module/uglify-js.md.html" class="notranslate">uglify-js</a></li>
+<li><a href="../../../awesome/module/js-beautify.md.html" class="notranslate">js-beautify</a></li>
+<li><a href="../../../awesome/module/chalk-animation.md.html" class="notranslate">chalk-animation</a></li>
+<li><a href="../../../awesome/module/jsrsasign.md.html" class="notranslate">jsrsasign</a></li>
+<li><a href="../../../awesome/module/crypto-js.md.html" class="notranslate">crypto-js</a></li>
+<li><a href="../../../awesome/module/ascii-table.md.html" class="notranslate">ascii-table</a></li>
+<li><a href="../../../awesome/module/logstream.md.html" class="notranslate">logstream</a></li>
+<li><a href="../../../awesome/module/ci.md.html" class="notranslate">ci</a></li>
+<li><a href="../../../awesome/module/fs-readdir-recursive.md.html" class="notranslate">fs-readdir-recursive</a></li>
+<li><a href="../../../awesome/module/mkdirp.md.html" class="notranslate">mkdirp</a></li>
+<li><a href="../../../awesome/module/rmdirr.md.html" class="notranslate">rmdirr</a></li>
+<li><a href="../../../awesome/module/detect-port.md.html" class="notranslate">detect-port</a></li>
+<li><a href="../../../awesome/module/bitcoinjs-lib.md.html" class="notranslate">bitcoinjs-lib</a></li>
+<li><a href="../../../awesome/module/rakuten.md.html" class="notranslate">Rakuten</a></li>
+</ul>
+ </div></div></div>  </div></div><div class="content"><div class="social-share share-component" data-sites="weibo,twitter" data-description="分享"></div> <div name="模块-console" data-unique="模块-console"></div><h1 id="模块-console"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Консоль модуля</font></font></h1>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Объект консольного доступа</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Глобальный объект. </font><font style="vertical-align: inherit;">Может использоваться для оперативной информации, предупреждений и регистрации ошибок. </font><font style="vertical-align: inherit;">После запуска файла конфигурации журналы могут быть размещены на разных устройствах для упрощения отслеживания. </font><font style="vertical-align: inherit;">Журнал поддерживает форматированный вывод, например:</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">console</span>.log(<span class="hljs-string">"%d + %d = %d"</span>, <span class="hljs-number">100</span>, <span class="hljs-number">200</span>, <span class="hljs-number">100</span> + <span class="hljs-number">200</span>);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Можно использовать следующие параметры форматирования:</font></font></p>
+<ul>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">% s-строка</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">% d-числа, включая целые и числа</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">% j-объект вывода в формате JSON</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">%% - сам выводимый символ '%'</font></font></li>
+</ul>
+<div name="静态函数" data-unique="静态函数"></div><h2 id="静态函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Статическая функция</font></font></h2>
+<div name="add" data-unique="add"></div><h3 id="add" class="notranslate">add</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Добавьте систему вывода консоли, поддерживаемые устройства: консоль, системный журнал, событие, вы можете добавить до 10 выходов</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">console</span>.add(<span class="hljs-built_in">String</span> type);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
+<ul>
+<li><span class="notranslate">type</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Строка, устройство вывода</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">При настройке консоли вывод программы и системные ошибки можно отправлять на различные устройства для сбора информации об операционной среде.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Тип - это конфигурация, которая представляет собой строку имени устройства:</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">console</span>.add(<span class="hljs-string">"console"</span>);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">syslog действителен только на платформе posix:</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">console</span>.add(<span class="hljs-string">"syslog"</span>);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">событие действительно только на платформе Windows:</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">console</span>.add(<span class="hljs-string">"event"</span>);
+</code></pre>
+<hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Добавьте систему вывода консоли. Поддерживаемые устройства: консоль, системный журнал, событие и файл. Вы можете добавить до 10 выходов.</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">console</span>.add(<span class="hljs-built_in">Object</span> cfg);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
+<ul>
+<li><span class="notranslate">cfg</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Объект, конфигурация вывода</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">При настройке консоли вывод программы и системные ошибки можно отправлять на различные устройства для сбора информации об операционной среде.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">cfg может настраивать объекты для устройства:</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4</div><span class="hljs-built_in">console</span>.add({
+    <span class="hljs-attr">type</span>: <span class="hljs-string">"console"</span>,
+    <span class="hljs-attr">levels</span>: [<span class="hljs-built_in">console</span>.INFO, <span class="hljs-built_in">console</span>.ERROR] <span class="hljs-comment">// 选项，省略则输出全部级别日志</span><font></font>
+});<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">syslog действителен только на платформе posix:</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4</div><span class="hljs-built_in">console</span>.add({
+    <span class="hljs-attr">type</span>: <span class="hljs-string">"syslog"</span>,
+    <span class="hljs-attr">levels</span>: [<span class="hljs-built_in">console</span>.INFO, <span class="hljs-built_in">console</span>.ERROR]<font></font>
+});<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">событие действительно только на платформе Windows:</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4</div><span class="hljs-built_in">console</span>.add({
+    <span class="hljs-attr">type</span>: <span class="hljs-string">"event"</span>,
+    <span class="hljs-attr">levels</span>: [<span class="hljs-built_in">console</span>.INFO, <span class="hljs-built_in">console</span>.ERROR]<font></font>
+});<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">файл журнала:</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10</div><span class="hljs-built_in">console</span>.add({
+    <span class="hljs-attr">type</span>: <span class="hljs-string">"file"</span>,
+    <span class="hljs-attr">levels</span>: [<span class="hljs-built_in">console</span>.INFO, <span class="hljs-built_in">console</span>.ERROR],
+    <span class="hljs-comment">// 必选项，指定日志输出文件，可使用 s% 指定插入日期位置，不指定则添加在结尾</span>
+    path: <span class="hljs-string">"path/to/file_%s.log"</span>,
+    <span class="hljs-comment">// 选项，可选值为 "day", "hour", "minute", "###k", "###m", "###g"，缺省为 "1m"</span>
+    split: <span class="hljs-string">"30m"</span>,
+    <span class="hljs-comment">// 选项，可选范围为 2-128，缺省为 128</span>
+    count: <span class="hljs-number">10</span><font></font>
+});<font></font>
+</code></pre>
+<hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Добавляйте консольную систему вывода в пакетном режиме. Поддерживаемые устройства: консоль, системный журнал, событие и файл. Вы можете добавить до 10 выходов.</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">console</span>.add(<span class="hljs-built_in">Array</span> cfg);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
+<ul>
+<li><span class="notranslate">cfg</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Массив, выходной массив конфигурации</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">При настройке консоли вывод программы и системные ошибки можно отправлять на различные устройства для сбора информации об операционной среде.</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4</div><span class="hljs-built_in">console</span>.add([<span class="hljs-string">"console"</span>, {
+    <span class="hljs-attr">type</span>: <span class="hljs-string">"syslog"</span>,
+    <span class="hljs-attr">levels</span>: [<span class="hljs-built_in">console</span>.INFO, <span class="hljs-built_in">console</span>.ERROR]<font></font>
+}]);<font></font>
+</code></pre>
+<hr>
+<div name="reset" data-unique="reset"></div><h3 id="reset" class="notranslate">reset</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Инициализировать настройки по умолчанию, выводить информацию только в консоль</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">console</span>.reset();
+</code></pre>
+<hr>
+<div name="log" data-unique="log"></div><h3 id="log" class="notranslate">log</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Записывайте общую информацию журнала, эквивалентную info</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">String</span> fmt,<font></font>
+    ...args);<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
+<ul>
+<li><span class="notranslate">fmt</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Строка, строка формата</font></font></li>
+<li><span class="notranslate">args</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: ..., необязательный список параметров</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Запишите информацию журнала общего уровня. </font><font style="vertical-align: inherit;">Обычно используется для вывода подсказок, не связанных с ошибками.</font></font></p>
+<hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Записывайте общую информацию журнала, эквивалентную info</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">console</span>.log(...args);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
+<ul>
+<li><span class="notranslate">args</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: ..., необязательный список параметров</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Запишите информацию журнала общего уровня. </font><font style="vertical-align: inherit;">Обычно используется для вывода подсказок, не связанных с ошибками.</font></font></p>
+<hr>
+<div name="debug" data-unique="debug"></div><h3 id="debug" class="notranslate">debug</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Записывать информацию журнала отладки</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">console</span>.debug(<span class="hljs-built_in">String</span> fmt,<font></font>
+    ...args);<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
+<ul>
+<li><span class="notranslate">fmt</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Строка, строка формата</font></font></li>
+<li><span class="notranslate">args</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: ..., необязательный список параметров</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Запишите информацию журнала отладки. </font><font style="vertical-align: inherit;">Обычно используется для вывода отладочной информации. </font><font style="vertical-align: inherit;">неважно.</font></font></p>
+<hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Записывать информацию журнала отладки</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">console</span>.debug(...args);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
+<ul>
+<li><span class="notranslate">args</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: ..., необязательный список параметров</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Запишите информацию журнала отладки. </font><font style="vertical-align: inherit;">Обычно используется для вывода отладочной информации. </font><font style="vertical-align: inherit;">неважно.</font></font></p>
+<hr>
+<div name="info" data-unique="info"></div><h3 id="info" class="notranslate">info</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Записывать общую информацию журнала, что эквивалентно журналу</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">console</span>.info(<span class="hljs-built_in">String</span> fmt,<font></font>
+    ...args);<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
+<ul>
+<li><span class="notranslate">fmt</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Строка, строка формата</font></font></li>
+<li><span class="notranslate">args</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: ..., необязательный список параметров</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Запишите информацию журнала общего уровня. </font><font style="vertical-align: inherit;">Обычно используется для вывода подсказок, не связанных с ошибками.</font></font></p>
+<hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Записывать общую информацию журнала, что эквивалентно журналу</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">console</span>.info(...args);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
+<ul>
+<li><span class="notranslate">args</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: ..., необязательный список параметров</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Запишите информацию журнала общего уровня. </font><font style="vertical-align: inherit;">Обычно используется для вывода подсказок, не связанных с ошибками.</font></font></p>
+<hr>
+<div name="notice" data-unique="notice"></div><h3 id="notice" class="notranslate">notice</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Записывать информацию журнала предупреждений</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">console</span>.notice(<span class="hljs-built_in">String</span> fmt,<font></font>
+    ...args);<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
+<ul>
+<li><span class="notranslate">fmt</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Строка, строка формата</font></font></li>
+<li><span class="notranslate">args</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: ..., необязательный список параметров</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Запишите информацию журнала предупреждений. </font><font style="vertical-align: inherit;">Обычно используется для вывода оперативной отладочной информации. </font><font style="vertical-align: inherit;">Вообще важно.</font></font></p>
+<hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Записывать информацию журнала предупреждений</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">console</span>.notice(...args);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
+<ul>
+<li><span class="notranslate">args</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: ..., необязательный список параметров</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Запишите информацию журнала предупреждений. </font><font style="vertical-align: inherit;">Обычно используется для вывода оперативной отладочной информации. </font><font style="vertical-align: inherit;">Вообще важно.</font></font></p>
+<hr>
+<div name="warn" data-unique="warn"></div><h3 id="warn" class="notranslate">warn</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Записывать информацию журнала предупреждений</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">console</span>.warn(<span class="hljs-built_in">String</span> fmt,<font></font>
+    ...args);<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
+<ul>
+<li><span class="notranslate">fmt</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Строка, строка формата</font></font></li>
+<li><span class="notranslate">args</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: ..., необязательный список параметров</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Запишите информацию журнала предупреждений. </font><font style="vertical-align: inherit;">Обычно используется для вывода предупреждений об отладочной информации. </font><font style="vertical-align: inherit;">важный.</font></font></p>
+<hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Записывать информацию журнала предупреждений</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">console</span>.warn(...args);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
+<ul>
+<li><span class="notranslate">args</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: ..., необязательный список параметров</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Запишите информацию журнала предупреждений. </font><font style="vertical-align: inherit;">Обычно используется для вывода предупреждений об отладочной информации. </font><font style="vertical-align: inherit;">важный.</font></font></p>
+<hr>
+<div name="error" data-unique="error"></div><h3 id="error" class="notranslate">error</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Запись информации в журнал ошибок</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">console</span>.error(<span class="hljs-built_in">String</span> fmt,<font></font>
+    ...args);<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
+<ul>
+<li><span class="notranslate">fmt</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Строка, строка формата</font></font></li>
+<li><span class="notranslate">args</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: ..., необязательный список параметров</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Запишите информацию в журнал ошибок. </font><font style="vertical-align: inherit;">Обычно используется для вывода сообщений об ошибках. </font><font style="vertical-align: inherit;">Очень важно. </font><font style="vertical-align: inherit;">Информация о системной ошибке также будет записана на этом уровне.</font></font></p>
+<hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Запись информации в журнал ошибок</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">console</span>.error(...args);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
+<ul>
+<li><span class="notranslate">args</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: ..., необязательный список параметров</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Запишите информацию в журнал ошибок. </font><font style="vertical-align: inherit;">Обычно используется для вывода сообщений об ошибках. </font><font style="vertical-align: inherit;">Очень важно. </font><font style="vertical-align: inherit;">Информация о системной ошибке также будет записана на этом уровне.</font></font></p>
+<hr>
+<div name="crit" data-unique="crit"></div><h3 id="crit" class="notranslate">crit</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Записывать информацию в журнал критических ошибок</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">console</span>.crit(<span class="hljs-built_in">String</span> fmt,<font></font>
+    ...args);<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
+<ul>
+<li><span class="notranslate">fmt</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Строка, строка формата</font></font></li>
+<li><span class="notranslate">args</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: ..., необязательный список параметров</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Записывает информацию журнала для критических ошибок. </font><font style="vertical-align: inherit;">Обычно используется для вывода сообщений о критических ошибках. </font><font style="vertical-align: inherit;">Очень важно.</font></font></p>
+<hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Записывать информацию в журнал критических ошибок</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">console</span>.crit(...args);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
+<ul>
+<li><span class="notranslate">args</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: ..., необязательный список параметров</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Записывает информацию журнала для критических ошибок. </font><font style="vertical-align: inherit;">Обычно используется для вывода сообщений о критических ошибках. </font><font style="vertical-align: inherit;">Очень важно.</font></font></p>
+<hr>
+<div name="alert" data-unique="alert"></div><h3 id="alert" class="notranslate">alert</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Запись информации журнала ошибок сигнализации</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">console</span>.alert(<span class="hljs-built_in">String</span> fmt,<font></font>
+    ...args);<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
+<ul>
+<li><span class="notranslate">fmt</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Строка, строка формата</font></font></li>
+<li><span class="notranslate">args</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: ..., необязательный список параметров</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Запишите информацию журнала ошибок для сигналов тревоги. </font><font style="vertical-align: inherit;">Обычно используется для вывода аварийных сообщений об ошибках. </font><font style="vertical-align: inherit;">Очень важно. </font><font style="vertical-align: inherit;">Это высший уровень информации.</font></font></p>
+<hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Запись информации журнала ошибок сигнализации</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">console</span>.alert(...args);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
+<ul>
+<li><span class="notranslate">args</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: ..., необязательный список параметров</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Запишите информацию журнала ошибок для сигналов тревоги. </font><font style="vertical-align: inherit;">Обычно используется для вывода аварийных сообщений об ошибках. </font><font style="vertical-align: inherit;">Очень важно. </font><font style="vertical-align: inherit;">Это высший уровень информации.</font></font></p>
+<hr>
+<div name="dir" data-unique="dir"></div><h3 id="dir" class="notranslate">dir</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Выходные объекты в формате JSON</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">console</span>.dir(Value obj);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
+<ul>
+<li><span class="notranslate">obj</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Значение, заданное отображаемому объекту.</font></font></li>
+</ul>
+<hr>
+<div name="time" data-unique="time"></div><h3 id="time" class="notranslate">time</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Запустить таймер</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">console</span>.time(<span class="hljs-built_in">String</span> label = <span class="hljs-string">"time"</span>);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
+<ul>
+<li><span class="notranslate">label</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Строка, заголовок, по умолчанию - пустая строка.</font></font></li>
+</ul>
+<hr>
+<div name="timeElapse" data-unique="timeElapse"></div><h3 id="timeElapse" class="notranslate">timeElapse</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Вывести текущее значение указанного таймера</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">console</span>.timeElapse(<span class="hljs-built_in">String</span> label = <span class="hljs-string">"time"</span>);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
+<ul>
+<li><span class="notranslate">label</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Строка, заголовок, по умолчанию - пустая строка.</font></font></li>
+</ul>
+<hr>
+<div name="timeEnd" data-unique="timeEnd"></div><h3 id="timeEnd" class="notranslate">timeEnd</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Завершить указанный таймер и вывести последнее значение таймера</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">console</span>.timeEnd(<span class="hljs-built_in">String</span> label = <span class="hljs-string">"time"</span>);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
+<ul>
+<li><span class="notranslate">label</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Строка, заголовок, по умолчанию - пустая строка.</font></font></li>
+</ul>
+<hr>
+<div name="trace" data-unique="trace"></div><h3 id="trace" class="notranslate">trace</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Выходной текущий стек вызовов</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">console</span>.trace(<span class="hljs-built_in">String</span> label = <span class="hljs-string">"trace"</span>);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
+<ul>
+<li><span class="notranslate">label</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Строка, заголовок, по умолчанию - пустая строка.</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Вывести текущий стек вызовов через журнал.</font></font></p>
+<hr>
+<div name="assert" data-unique="assert"></div><h3 id="assert" class="notranslate">assert</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Проверка утверждения, если значение проверки ложно, выдается сообщение об ошибке</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">console</span>.assert(Value value,
+    <span class="hljs-built_in">String</span> msg = <span class="hljs-string">""</span>);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
+<ul>
+<li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Значение, значение теста</font></font></li>
+<li><span class="notranslate">msg</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Строка, сообщение об ошибке</font></font></li>
+</ul>
+<hr>
+<div name="print" data-unique="print"></div><h3 id="print" class="notranslate">print</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Выведите форматированный текст на консоль, выходной контент не будет записан в системе журналов, текст не будет автоматически переноситься после вывода и может выводиться непрерывно</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">console</span>.print(<span class="hljs-built_in">String</span> fmt,<font></font>
+    ...args);<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
+<ul>
+<li><span class="notranslate">fmt</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Строка, строка формата</font></font></li>
+<li><span class="notranslate">args</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: ..., необязательный список параметров</font></font></li>
+</ul>
+<hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Выведите форматированный текст на консоль, выходной контент не будет записан в системе журналов, текст не будет автоматически переноситься после вывода и может выводиться непрерывно</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">console</span>.print(...args);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
+<ul>
+<li><span class="notranslate">args</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: ..., необязательный список параметров</font></font></li>
+</ul>
+<hr>
+<div name="moveTo" data-unique="moveTo"></div><h3 id="moveTo" class="notranslate">moveTo</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Переместите курсор консоли в указанную позицию</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">console</span>.moveTo(Integer row,<font></font>
+    Integer column);<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
+<ul>
+<li><span class="notranslate">row</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Целое число, укажите координаты строки нового курсора</font></font></li>
+<li><span class="notranslate">column</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Целое число, укажите координаты столбца нового курсора</font></font></li>
+</ul>
+<hr>
+<div name="hideCursor" data-unique="hideCursor"></div><h3 id="hideCursor" class="notranslate">hideCursor</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Скрыть курсор консоли</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">console</span>.hideCursor();
+</code></pre>
+<hr>
+<div name="showCursor" data-unique="showCursor"></div><h3 id="showCursor" class="notranslate">showCursor</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Показать курсор консоли</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">console</span>.showCursor();
+</code></pre>
+<hr>
+<div name="clear" data-unique="clear"></div><h3 id="clear" class="notranslate">clear</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Очистить консоль</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">console</span>.clear();
+</code></pre>
+<hr>
+<div name="keyDown" data-unique="keyDown"></div><h3 id="keyDown" class="notranslate">keyDown</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">нажмите кнопку</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">console</span>.keyDown(<span class="hljs-built_in">String</span> key,
+    <span class="hljs-built_in">String</span> modifier = <span class="hljs-string">""</span>);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
+<ul>
+<li><span class="notranslate">key</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Строка, обозначенная клавиша, один символ передается напрямую, функциональная клавиша передается в имени</font></font></li>
+<li><span class="notranslate">modifier</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Строка, назначенная управляющая клавиша, может быть: control, alt, shift, command</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ключ параметра может использовать строку для передачи функциональной клавиши:</font></font></p>
+<ul>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Функциональные клавиши: f1-f12</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Клавиши со стрелками: вверх, вниз, влево, вправо, домой, конец, страница вверх, вниз по странице</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Клавиши редактирования: backspace, delete, insert, enter, tab, escape, space</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Клавиши управления: control, alt, shift, command</font></font></li>
+</ul>
+<hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">нажмите кнопку</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">console</span>.keyDown(<span class="hljs-built_in">String</span> key,
+    <span class="hljs-built_in">Array</span> modifier);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
+<ul>
+<li><span class="notranslate">key</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Строка, обозначенная клавиша, один символ передается напрямую, функциональная клавиша передается в имени</font></font></li>
+<li><span class="notranslate">modifier</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Массив, укажите массив управляющих клавиш, может быть: control, alt, shift, command</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ключ параметра может использовать строку для передачи функциональной клавиши:</font></font></p>
+<ul>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Функциональные клавиши: f1-f12</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Клавиши со стрелками: вверх, вниз, влево, вправо, домой, конец, страница вверх, вниз по странице</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Клавиши редактирования: backspace, delete, insert, enter, tab, escape, space</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Клавиши управления: control, alt, shift, command</font></font></li>
+</ul>
+<hr>
+<div name="keyUp" data-unique="keyUp"></div><h3 id="keyUp" class="notranslate">keyUp</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Отпустить кнопку</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">console</span>.keyUp(<span class="hljs-built_in">String</span> key,
+    <span class="hljs-built_in">String</span> modifier = <span class="hljs-string">""</span>);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
+<ul>
+<li><span class="notranslate">key</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Строка, обозначенная клавиша, один символ передается напрямую, функциональная клавиша передается в имени</font></font></li>
+<li><span class="notranslate">modifier</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Строка, назначенная управляющая клавиша, может быть: control, alt, shift, command</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ключ параметра может использовать строку для передачи функциональной клавиши:</font></font></p>
+<ul>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Функциональные клавиши: f1-f12</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Клавиши со стрелками: вверх, вниз, влево, вправо, домой, конец, страница вверх, вниз по странице</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Клавиши редактирования: backspace, delete, insert, enter, tab, escape, space</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Клавиши управления: control, alt, shift, command</font></font></li>
+</ul>
+<hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Отпустить кнопку</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">console</span>.keyUp(<span class="hljs-built_in">String</span> key,
+    <span class="hljs-built_in">Array</span> modifier);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
+<ul>
+<li><span class="notranslate">key</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Строка, обозначенная клавиша, один символ передается напрямую, функциональная клавиша передается в имени</font></font></li>
+<li><span class="notranslate">modifier</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Массив, укажите массив управляющих клавиш, может быть: control, alt, shift, command</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ключ параметра может использовать строку для передачи функциональной клавиши:</font></font></p>
+<ul>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Функциональные клавиши: f1-f12</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Клавиши со стрелками: вверх, вниз, влево, вправо, домой, конец, страница вверх, вниз по странице</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Клавиши редактирования: backspace, delete, insert, enter, tab, escape, space</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Клавиши управления: control, alt, shift, command</font></font></li>
+</ul>
+<hr>
+<div name="keyTap" data-unique="keyTap"></div><h3 id="keyTap" class="notranslate">keyTap</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Нажмите и отпустите кнопку</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">console</span>.keyTap(<span class="hljs-built_in">String</span> key,
+    <span class="hljs-built_in">String</span> modifier = <span class="hljs-string">""</span>);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
+<ul>
+<li><span class="notranslate">key</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Строка, обозначенная клавиша, один символ передается напрямую, функциональная клавиша передается в имени</font></font></li>
+<li><span class="notranslate">modifier</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Строка, назначенная управляющая клавиша, может быть: control, alt, shift, command</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ключ параметра может использовать строку для передачи функциональной клавиши:</font></font></p>
+<ul>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Функциональные клавиши: f1-f12</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Клавиши со стрелками: вверх, вниз, влево, вправо, домой, конец, страница вверх, вниз по странице</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Клавиши редактирования: backspace, delete, insert, enter, tab, escape, space</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Клавиши управления: control, alt, shift, command</font></font></li>
+</ul>
+<hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Нажмите и отпустите кнопку</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">console</span>.keyTap(<span class="hljs-built_in">String</span> key,
+    <span class="hljs-built_in">Array</span> modifier);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
+<ul>
+<li><span class="notranslate">key</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Строка, обозначенная клавиша, один символ передается напрямую, функциональная клавиша передается в имени</font></font></li>
+<li><span class="notranslate">modifier</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Массив, укажите массив управляющих клавиш, может быть: control, alt, shift, command</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ключ параметра может использовать строку для передачи функциональной клавиши:</font></font></p>
+<ul>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Функциональные клавиши: f1-f12</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Клавиши со стрелками: вверх, вниз, влево, вправо, домой, конец, страница вверх, вниз по странице</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Клавиши редактирования: backspace, delete, insert, enter, tab, escape, space</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Клавиши управления: control, alt, shift, command</font></font></li>
+</ul>
+<hr>
+<div name="typeString" data-unique="typeString"></div><h3 id="typeString" class="notranslate">typeString</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Введите строку</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">console</span>.typeString(<span class="hljs-built_in">String</span> text);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
+<ul>
+<li><span class="notranslate">text</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, укажите строку ввода</font></font></li>
+</ul>
+<hr>
+<div name="moveMouse" data-unique="moveMouse"></div><h3 id="moveMouse" class="notranslate">moveMouse</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Переместите мышь в указанную позицию</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">console</span>.moveMouse(Integer x,<font></font>
+    Integer y);<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
+<ul>
+<li><span class="notranslate">x</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Целое число, укажите координату x</font></font></li>
+<li><span class="notranslate">y</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Целое число, укажите координату y</font></font></li>
+</ul>
+<hr>
+<div name="mouseUp" data-unique="mouseUp"></div><h3 id="mouseUp" class="notranslate">mouseUp</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Нажмите кнопку мыши</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">console</span>.mouseUp(<span class="hljs-built_in">String</span> button);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
+<ul>
+<li><span class="notranslate">button</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, укажите название кнопки мыши, допустимые значения: left, right, moddle</font></font></li>
+</ul>
+<hr>
+<div name="mouseDown" data-unique="mouseDown"></div><h3 id="mouseDown" class="notranslate">mouseDown</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Отпустите кнопку мыши</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">console</span>.mouseDown(<span class="hljs-built_in">String</span> button);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
+<ul>
+<li><span class="notranslate">button</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, укажите название кнопки мыши, допустимые значения: left, right, moddle</font></font></li>
+</ul>
+<hr>
+<div name="clickMouse" data-unique="clickMouse"></div><h3 id="clickMouse" class="notranslate">clickMouse</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Щелкните кнопкой мыши</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">console</span>.clickMouse(<span class="hljs-built_in">String</span> button,
+    <span class="hljs-built_in">Boolean</span> dbclick = <span class="hljs-literal">false</span>);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
+<ul>
+<li><span class="notranslate">button</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, укажите название кнопки мыши, допустимые значения: left, right, moddle</font></font></li>
+<li><span class="notranslate">dbclick</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Boolean, укажите, нужно ли делать двойной щелчок, по умолчанию false</font></font></li>
+</ul>
+<hr>
+<div name="readLine" data-unique="readLine"></div><h3 id="readLine" class="notranslate">readLine</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Чтение пользовательского ввода с консоли</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">String</span> <span class="hljs-built_in">console</span>.readLine(<span class="hljs-built_in">String</span> msg = <span class="hljs-string">""</span>) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
+<ul>
+<li><span class="notranslate">msg</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Строка, подсказка</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Результат возврата:</font></font></p>
+<ul>
+<li><span class="notranslate">String</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Верните информацию, введенную пользователем</font></font></li>
+</ul>
+<hr>
+<div name="getpass" data-unique="getpass"></div><h3 id="getpass" class="notranslate">getpass</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Прочтите пароль, введенный пользователем с консоли</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">String</span> <span class="hljs-built_in">console</span>.getpass(<span class="hljs-built_in">String</span> msg = <span class="hljs-string">""</span>) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
+<ul>
+<li><span class="notranslate">msg</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Строка, подсказка</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Результат возврата:</font></font></p>
+<ul>
+<li><span class="notranslate">String</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Верните пароль, введенный пользователем</font></font></li>
+</ul>
+<div name="静态属性" data-unique="静态属性"></div><h2 id="静态属性"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Статические свойства</font></font></h2>
+<div name="loglevel" data-unique="loglevel"></div><h3 id="loglevel" class="notranslate">loglevel</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Целое число, выходной уровень, используется для фильтрации выходной информации, по умолчанию NOTSET, все выходные. </font><font style="vertical-align: inherit;">После фильтрации информация будет выводиться на каждое устройство, установленное путем добавления.</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Integer <span class="hljs-built_in">console</span>.loglevel;
+</code></pre>
+<hr>
+<div name="width" data-unique="width"></div><h3 id="width" class="notranslate">width</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Целое число, запросить количество символов в каждой строке терминала</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly Integer <span class="hljs-built_in">console</span>.width;
+</code></pre>
+<hr>
+<div name="height" data-unique="height"></div><h3 id="height" class="notranslate">height</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Целое число, запросить количество строк терминала</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly Integer <span class="hljs-built_in">console</span>.height;
+</code></pre>
+<div name="常量" data-unique="常量"></div><h2 id="常量"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">постоянный</font></font></h2>
+<div name="FATAL" data-unique="FATAL"></div><h3 id="FATAL" class="notranslate">FATAL</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">постоянная логического уровня</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> <span class="hljs-built_in">console</span>.FATAL = <span class="hljs-number">0</span>;
+</code></pre>
+<hr>
+<div name="ALERT" data-unique="ALERT"></div><h3 id="ALERT" class="notranslate">ALERT</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">постоянная логического уровня</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> <span class="hljs-built_in">console</span>.ALERT = <span class="hljs-number">1</span>;
+</code></pre>
+<hr>
+<div name="CRIT" data-unique="CRIT"></div><h3 id="CRIT" class="notranslate">CRIT</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">постоянная логического уровня</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> <span class="hljs-built_in">console</span>.CRIT = <span class="hljs-number">2</span>;
+</code></pre>
+<hr>
+<div name="ERROR" data-unique="ERROR"></div><h3 id="ERROR" class="notranslate">ERROR</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">постоянная логического уровня</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> <span class="hljs-built_in">console</span>.ERROR = <span class="hljs-number">3</span>;
+</code></pre>
+<hr>
+<div name="WARN" data-unique="WARN"></div><h3 id="WARN" class="notranslate">WARN</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">постоянная логического уровня</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> <span class="hljs-built_in">console</span>.WARN = <span class="hljs-number">4</span>;
+</code></pre>
+<hr>
+<div name="NOTICE" data-unique="NOTICE"></div><h3 id="NOTICE" class="notranslate">NOTICE</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">постоянная логического уровня</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> <span class="hljs-built_in">console</span>.NOTICE = <span class="hljs-number">5</span>;
+</code></pre>
+<hr>
+<div name="INFO" data-unique="INFO"></div><h3 id="INFO" class="notranslate">INFO</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">постоянная логического уровня</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> <span class="hljs-built_in">console</span>.INFO = <span class="hljs-number">6</span>;
+</code></pre>
+<hr>
+<div name="DEBUG" data-unique="DEBUG"></div><h3 id="DEBUG" class="notranslate">DEBUG</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">постоянная логического уровня</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> <span class="hljs-built_in">console</span>.DEBUG = <span class="hljs-number">7</span>;
+</code></pre>
+<hr>
+<div name="PRINT" data-unique="PRINT"></div><h3 id="PRINT" class="notranslate">PRINT</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">loglevel используется только для вывода, информация не будет переноситься после вывода, файл и системный журнал не сохраняют информацию об этом уровне</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> <span class="hljs-built_in">console</span>.PRINT = <span class="hljs-number">9</span>;
+</code></pre>
+<hr>
+<div name="NOTSET" data-unique="NOTSET"></div><h3 id="NOTSET" class="notranslate">NOTSET</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">постоянная логического уровня</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> <span class="hljs-built_in">console</span>.NOTSET = <span class="hljs-number">10</span>;
+</code></pre>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2014-Настоящее время fibjs.org | </font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Поддержите нас</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip511084"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip511084" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Нажмите, чтобы вернуться на главную страницу</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>

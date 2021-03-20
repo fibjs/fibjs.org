@@ -4,10 +4,11 @@
 <li><a href=../../../guide/hello.md.html class ="notranslate">hello, world</a></li>
 <li><a href=../../../guide/test.md.html>美好生活从测试开始</a></li>
 <li><a href=../../../guide/profiler.md.html>找出性能杀手</a></li>
-<li><a href=../../../guide/contribute.md.html>添加 native 模块</a></li>
+<li><a href=../../../guide/desktop.md.html>快速开发桌面应用</a></li>
 <li><a href=../../../guide/server-hot-update.md.html>服务端模块热更新</a></li>
 <li><a href=../../../guide/host-routes.md.html>域名路由</a></li>
-<li><a href=../../../guide/fibjs.x509.md.html>fibjs 中 X509 证书的使用</a></li>
+<li><a href=../../../guide/x509.md.html>fibjs 中 X509 证书的使用</a></li>
+<li><a href=../../../guide/contribute.md.html>添加 native 模块</a></li>
 </ul>
  </div></div></div>  <div class=panel><div class=panel-heading role=tab id=headingOne><h4 class=panel-title><a data-toggle=collapse data-parent=#accordion href="#collapse_module" aria-controls="collapse_module"> 基础模块 </a></h4></div><div id="collapse_module" class="panel-collapse collapse in" aria-labelledby=headingOne><div class=panel-body> <ul>
 <li><a href=assert.md.html class ="notranslate">assert</a></li>
@@ -15,6 +16,7 @@
 <li><a href=base64.md.html class ="notranslate">base64</a></li>
 <li><a href=base64vlq.md.html class ="notranslate">base64vlq</a></li>
 <li><a href=bson.md.html class ="notranslate">bson</a></li>
+<li><a href=child_process.md.html class ="notranslate">child_process</a></li>
 <li><a href=console.md.html class ="notranslate">console</a></li>
 <li><a href=constants.md.html class ="notranslate">constants</a></li>
 <li><a href=coroutine.md.html class ="notranslate">coroutine</a></li>
@@ -63,6 +65,7 @@
 <li><a href=../../object/ifs/buffer.md.html class ="notranslate">Buffer</a></li>
 <li><a href=../../object/ifs/bufferedstream.md.html class ="notranslate">BufferedStream</a></li>
 <li><a href=../../object/ifs/chain.md.html class ="notranslate">Chain</a></li>
+<li><a href=../../object/ifs/childprocess.md.html class ="notranslate">ChildProcess</a></li>
 <li><a href=../../object/ifs/cipher.md.html class ="notranslate">Cipher</a></li>
 <li><a href=../../object/ifs/condition.md.html class ="notranslate">Condition</a></li>
 <li><a href=../../object/ifs/dbconnection.md.html class ="notranslate">DbConnection</a></li>
@@ -101,6 +104,7 @@
 <li><a href=../../object/ifs/mongoid.md.html class ="notranslate">MongoID</a></li>
 <li><a href=../../object/ifs/mysql.md.html class ="notranslate">MySQL</a></li>
 <li><a href=../../object/ifs/pkey.md.html class ="notranslate">PKey</a></li>
+<li><a href=../../object/ifs/rangestream.md.html class ="notranslate">RangeStream</a></li>
 <li><a href=../../object/ifs/redis.md.html class ="notranslate">Redis</a></li>
 <li><a href=../../object/ifs/redishash.md.html class ="notranslate">RedisHash</a></li>
 <li><a href=../../object/ifs/redislist.md.html class ="notranslate">RedisList</a></li>
@@ -121,7 +125,6 @@
 <li><a href=../../object/ifs/statswatcher.md.html class ="notranslate">StatsWatcher</a></li>
 <li><a href=../../object/ifs/stream.md.html class ="notranslate">Stream</a></li>
 <li><a href=../../object/ifs/stringdecoder.md.html class ="notranslate">StringDecoder</a></li>
-<li><a href=../../object/ifs/subprocess.md.html class ="notranslate">SubProcess</a></li>
 <li><a href=../../object/ifs/tcpserver.md.html class ="notranslate">TcpServer</a></li>
 <li><a href=../../object/ifs/timer.md.html class ="notranslate">Timer</a></li>
 <li><a href=../../object/ifs/urlobject.md.html class ="notranslate">UrlObject</a></li>
@@ -277,7 +280,7 @@
 <ul>
 <li><a href=../../object/ifs/x509cert.md.html class ="notranslate">X509Cert</a>, 返回包含证书的对象</li>
 </ul>
-<p>loadFile 加载 mozilla 的 certdata,txt， 可于 <a href="http.md" class ="notranslate">http</a>://hg.mozilla.org/releases/mozilla-release/raw-file/default/security/nss/lib/ckfw/builtins/certdata.txt 下载使用</p>
+<p>loadFile 加载 mozilla 的 certdata,txt， 可于 <a href="http://hg.mozilla.org/releases/mozilla-release/raw-file/default/security/nss/lib/ckfw/builtins/certdata.txt">http://hg.mozilla.org/releases/mozilla-release/raw-file/default/security/nss/lib/ckfw/builtins/certdata.txt</a> 下载使用</p>
 <hr>
 <h3 id="loadCrl" class ="notranslate">loadCrl</h3>
 <p><strong>加载一个 PEM/DER 格式的撤销证书，可多次调用</strong></p>
@@ -361,6 +364,41 @@
 <p>返回结果:</p>
 <ul>
 <li><span class="notranslate">String</span>, 返回生成的可视化字符串图像</li>
+</ul>
+<hr>
+<h3 id="genRsaKey" class ="notranslate">genRsaKey</h3>
+<p><strong>生成一个 RSA 私钥</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> PKey crypto.genRsaKey(Integer size) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li><span class="notranslate">size</span>: Integer, 指定 RSA 密钥长度，bit 为单位</li>
+</ul>
+<p>返回结果:</p>
+<ul>
+<li><a href=../../object/ifs/pkey.md.html class ="notranslate">PKey</a>, 返回包含生成私钥的对象</li>
+</ul>
+<hr>
+<h3 id="genEcKey" class ="notranslate">genEcKey</h3>
+<p><strong>生成一个 EC 私钥</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> PKey crypto.genEcKey(<span class="hljs-built_in">String</span> curve = <span class="hljs-string">"secp521r1"</span>) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li><span class="notranslate">curve</span>: String, 指定预置椭圆曲线，可选值为：&quot;secp521r1&quot;, &quot;brainpoolP512r1&quot;, &quot;secp384r1&quot;, &quot;brainpoolP384r1&quot;, &quot;secp256r1&quot;, &quot;secp256k1&quot;, &quot;brainpoolP256r1&quot;, &quot;secp224r1&quot;, &quot;secp224k1&quot;, &quot;secp192r1&quot;, &quot;secp192k1&quot;</li>
+</ul>
+<p>返回结果:</p>
+<ul>
+<li><a href=../../object/ifs/pkey.md.html class ="notranslate">PKey</a>, 返回包含生成私钥的对象</li>
+</ul>
+<hr>
+<h3 id="genSm2Key" class ="notranslate">genSm2Key</h3>
+<p><strong>生成一个 SM2 私钥</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> PKey crypto.genSm2Key() <span class="hljs-keyword">async</span>;
+</code></pre>
+<p>返回结果:</p>
+<ul>
+<li><a href=../../object/ifs/pkey.md.html class ="notranslate">PKey</a>, 返回包含生成私钥的对象</li>
 </ul>
 <hr>
 <h3 id="pbkdf1" class ="notranslate">pbkdf1</h3>

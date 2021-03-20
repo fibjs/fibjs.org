@@ -1,0 +1,1077 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../../imgs/icon.png"><title>Quell-Map-JavaScript auf Glasfaser</title><link href="../../../../css/common.css" rel="stylesheet"><link href="../../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Navigation umschalten</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../../index.html"><img src="../../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../../index.html">HOME</a></li><li><a href="../../guide/readme.md.html">GUIDE</a></li><li><a href="../../manual/module/readme.md.html">MODULE</a></li><li><a href="../../manual/object/readme.md.html">OBJECT</a></li><li><a href="../readme.md.html">AWESOME</a></li><li><a href="../../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../../docs/awesome/module/source-map.md.html">中文</a> <a href="../../../../en/docs/awesome/module/source-map.md.html">ENGLISH</a> <a href="../../../../ja/docs/awesome/module/source-map.md.html">日本語</a> <a href="../../../../de/docs/awesome/module/source-map.md.html">Deutsch</a> <a href="../../../../es/docs/awesome/module/source-map.md.html">Español</a> <a href="../../../../fr/docs/awesome/module/source-map.md.html">Français</a> <a href="../../../../ko/docs/awesome/module/source-map.md.html">한국어</a> <a href="../../../../it/docs/awesome/module/source-map.md.html">Italiano</a> <a href="../../../../ru/docs/awesome/module/source-map.md.html">Русский</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Fantastisches Community-Modul </font></font></span><div class="search"><span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input type="text" class="searchbox ds-input" placeholder="Suche" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-label="Sucheingabe" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Avenir, &quot;Segoe UI&quot;, Arial, &quot;Hiragino Sans GB&quot;, 冬青黑, &quot;Microsoft YaHei&quot;, 微软雅黑, SimSun, 宋体, Helvetica, Tahoma, &quot;Arial sans-serif&quot;; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div class="ds-dataset-1"></div></span></span></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Startseite</font></font></a></li><li><a href="../readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Community-Modul </font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Quellkarte </font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Entwicklungshandbuch </font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="../../guide/about.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Was ist Fibjs?</font></font></a></li>
+<li><a href="../../guide/install.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Installations- und Betriebsumgebung</font></font></a></li>
+<li><a href="../../guide/hello.md.html" class="notranslate">hello, world</a></li>
+<li><a href="../../guide/test.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ein gutes Leben beginnt mit dem Test</font></font></a></li>
+<li><a href="../../guide/profiler.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Finden Sie den Performance-Killer</font></font></a></li>
+<li><a href="../../guide/desktop.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Entwickeln Sie schnell Desktop-Anwendungen</font></font></a></li>
+<li><a href="../../guide/server-hot-update.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Hot-Update des Servermoduls</font></font></a></li>
+<li><a href="../../guide/host-routes.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Domain Name Routing</font></font></a></li>
+<li><a href="../../guide/x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Die Verwendung des X509-Zertifikats in Fibjs</font></font></a></li>
+<li><a href="../../guide/contribute.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Natives Modul hinzufügen</font></font></a></li>
+</ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_module" aria-controls="collapse_module"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Grundmodul </font></font></a></h4></div><div id="collapse_module" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="../../manual/module/ifs/assert.md.html" class="notranslate">assert</a></li>
+<li><a href="../../manual/module/ifs/base32.md.html" class="notranslate">base32</a></li>
+<li><a href="../../manual/module/ifs/base64.md.html" class="notranslate">base64</a></li>
+<li><a href="../../manual/module/ifs/base64vlq.md.html" class="notranslate">base64vlq</a></li>
+<li><a href="../../manual/module/ifs/bson.md.html" class="notranslate">bson</a></li>
+<li><a href="../../manual/module/ifs/child_process.md.html" class="notranslate">child_process</a></li>
+<li><a href="../../manual/module/ifs/console.md.html" class="notranslate">console</a></li>
+<li><a href="../../manual/module/ifs/constants.md.html" class="notranslate">constants</a></li>
+<li><a href="../../manual/module/ifs/coroutine.md.html" class="notranslate">coroutine</a></li>
+<li><a href="../../manual/module/ifs/crypto.md.html" class="notranslate">crypto</a></li>
+<li><a href="../../manual/module/ifs/db.md.html" class="notranslate">db</a></li>
+<li><a href="../../manual/module/ifs/dgram.md.html" class="notranslate">dgram</a></li>
+<li><a href="../../manual/module/ifs/dns.md.html" class="notranslate">dns</a></li>
+<li><a href="../../manual/module/ifs/encoding.md.html" class="notranslate">encoding</a></li>
+<li><a href="../../manual/module/ifs/fs.md.html" class="notranslate">fs</a></li>
+<li><a href="../../manual/module/ifs/gd.md.html" class="notranslate">gd</a></li>
+<li><a href="../../manual/module/ifs/global.md.html" class="notranslate">global</a></li>
+<li><a href="../../manual/module/ifs/gui.md.html" class="notranslate">gui</a></li>
+<li><a href="../../manual/module/ifs/hash.md.html" class="notranslate">hash</a></li>
+<li><a href="../../manual/module/ifs/hex.md.html" class="notranslate">hex</a></li>
+<li><a href="../../manual/module/ifs/http.md.html" class="notranslate">http</a></li>
+<li><a href="../../manual/module/ifs/iconv.md.html" class="notranslate">iconv</a></li>
+<li><a href="../../manual/module/ifs/io.md.html" class="notranslate">io</a></li>
+<li><a href="../../manual/module/ifs/json.md.html" class="notranslate">json</a></li>
+<li><a href="../../manual/module/ifs/mq.md.html" class="notranslate">mq</a></li>
+<li><a href="../../manual/module/ifs/msgpack.md.html" class="notranslate">msgpack</a></li>
+<li><a href="../../manual/module/ifs/net.md.html" class="notranslate">net</a></li>
+<li><a href="../../manual/module/ifs/os.md.html" class="notranslate">os</a></li>
+<li><a href="../../manual/module/ifs/path.md.html" class="notranslate">path</a></li>
+<li><a href="../../manual/module/ifs/path_posix.md.html" class="notranslate">path_posix</a></li>
+<li><a href="../../manual/module/ifs/path_win32.md.html" class="notranslate">path_win32</a></li>
+<li><a href="../../manual/module/ifs/process.md.html" class="notranslate">process</a></li>
+<li><a href="../../manual/module/ifs/profiler.md.html" class="notranslate">profiler</a></li>
+<li><a href="../../manual/module/ifs/punycode.md.html" class="notranslate">punycode</a></li>
+<li><a href="../../manual/module/ifs/querystring.md.html" class="notranslate">querystring</a></li>
+<li><a href="../../manual/module/ifs/registry.md.html" class="notranslate">registry</a></li>
+<li><a href="../../manual/module/ifs/ssl.md.html" class="notranslate">ssl</a></li>
+<li><a href="../../manual/module/ifs/string_decoder.md.html" class="notranslate">string_decoder</a></li>
+<li><a href="../../manual/module/ifs/test.md.html" class="notranslate">test</a></li>
+<li><a href="../../manual/module/ifs/timers.md.html" class="notranslate">timers</a></li>
+<li><a href="../../manual/module/ifs/tty.md.html" class="notranslate">tty</a></li>
+<li><a href="../../manual/module/ifs/url.md.html" class="notranslate">url</a></li>
+<li><a href="../../manual/module/ifs/util.md.html" class="notranslate">util</a></li>
+<li><a href="../../manual/module/ifs/uuid.md.html" class="notranslate">uuid</a></li>
+<li><a href="../../manual/module/ifs/vm.md.html" class="notranslate">vm</a></li>
+<li><a href="../../manual/module/ifs/ws.md.html" class="notranslate">ws</a></li>
+<li><a href="../../manual/module/ifs/xml.md.html" class="notranslate">xml</a></li>
+<li><a href="../../manual/module/ifs/zip.md.html" class="notranslate">zip</a></li>
+<li><a href="../../manual/module/ifs/zlib.md.html" class="notranslate">zlib</a></li>
+</ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_object" aria-controls="collapse_object"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Eingebaute Objekte </font></font></a></h4></div><div id="collapse_object" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="../../manual/object/ifs/buffer.md.html" class="notranslate">Buffer</a></li>
+<li><a href="../../manual/object/ifs/bufferedstream.md.html" class="notranslate">BufferedStream</a></li>
+<li><a href="../../manual/object/ifs/chain.md.html" class="notranslate">Chain</a></li>
+<li><a href="../../manual/object/ifs/childprocess.md.html" class="notranslate">ChildProcess</a></li>
+<li><a href="../../manual/object/ifs/cipher.md.html" class="notranslate">Cipher</a></li>
+<li><a href="../../manual/object/ifs/condition.md.html" class="notranslate">Condition</a></li>
+<li><a href="../../manual/object/ifs/dbconnection.md.html" class="notranslate">DbConnection</a></li>
+<li><a href="../../manual/object/ifs/dgramsocket.md.html" class="notranslate">DgramSocket</a></li>
+<li><a href="../../manual/object/ifs/digest.md.html" class="notranslate">Digest</a></li>
+<li><a href="../../manual/object/ifs/event.md.html" class="notranslate">Event</a></li>
+<li><a href="../../manual/object/ifs/eventemitter.md.html" class="notranslate">EventEmitter</a></li>
+<li><a href="../../manual/object/ifs/fswatcher.md.html" class="notranslate">FSWatcher</a></li>
+<li><a href="../../manual/object/ifs/fiber.md.html" class="notranslate">Fiber</a></li>
+<li><a href="../../manual/object/ifs/file.md.html" class="notranslate">File</a></li>
+<li><a href="../../manual/object/ifs/handler.md.html" class="notranslate">Handler</a></li>
+<li><a href="../../manual/object/ifs/heapgraphedge.md.html" class="notranslate">HeapGraphEdge</a></li>
+<li><a href="../../manual/object/ifs/heapgraphnode.md.html" class="notranslate">HeapGraphNode</a></li>
+<li><a href="../../manual/object/ifs/heapsnapshot.md.html" class="notranslate">HeapSnapshot</a></li>
+<li><a href="../../manual/object/ifs/httpclient.md.html" class="notranslate">HttpClient</a></li>
+<li><a href="../../manual/object/ifs/httpcollection.md.html" class="notranslate">HttpCollection</a></li>
+<li><a href="../../manual/object/ifs/httpcookie.md.html" class="notranslate">HttpCookie</a></li>
+<li><a href="../../manual/object/ifs/httphandler.md.html" class="notranslate">HttpHandler</a></li>
+<li><a href="../../manual/object/ifs/httpmessage.md.html" class="notranslate">HttpMessage</a></li>
+<li><a href="../../manual/object/ifs/httprepeater.md.html" class="notranslate">HttpRepeater</a></li>
+<li><a href="../../manual/object/ifs/httprequest.md.html" class="notranslate">HttpRequest</a></li>
+<li><a href="../../manual/object/ifs/httpresponse.md.html" class="notranslate">HttpResponse</a></li>
+<li><a href="../../manual/object/ifs/httpserver.md.html" class="notranslate">HttpServer</a></li>
+<li><a href="../../manual/object/ifs/httpuploaddata.md.html" class="notranslate">HttpUploadData</a></li>
+<li><a href="../../manual/object/ifs/httpsserver.md.html" class="notranslate">HttpsServer</a></li>
+<li><a href="../../manual/object/ifs/image.md.html" class="notranslate">Image</a></li>
+<li><a href="../../manual/object/ifs/leveldb.md.html" class="notranslate">LevelDB</a></li>
+<li><a href="../../manual/object/ifs/lock.md.html" class="notranslate">Lock</a></li>
+<li><a href="../../manual/object/ifs/lrucache.md.html" class="notranslate">LruCache</a></li>
+<li><a href="../../manual/object/ifs/mssql.md.html" class="notranslate">MSSQL</a></li>
+<li><a href="../../manual/object/ifs/memorystream.md.html" class="notranslate">MemoryStream</a></li>
+<li><a href="../../manual/object/ifs/message.md.html" class="notranslate">Message</a></li>
+<li><a href="../../manual/object/ifs/mongocollection.md.html" class="notranslate">MongoCollection</a></li>
+<li><a href="../../manual/object/ifs/mongocursor.md.html" class="notranslate">MongoCursor</a></li>
+<li><a href="../../manual/object/ifs/mongodb.md.html" class="notranslate">MongoDB</a></li>
+<li><a href="../../manual/object/ifs/mongoid.md.html" class="notranslate">MongoID</a></li>
+<li><a href="../../manual/object/ifs/mysql.md.html" class="notranslate">MySQL</a></li>
+<li><a href="../../manual/object/ifs/pkey.md.html" class="notranslate">PKey</a></li>
+<li><a href="../../manual/object/ifs/rangestream.md.html" class="notranslate">RangeStream</a></li>
+<li><a href="../../manual/object/ifs/redis.md.html" class="notranslate">Redis</a></li>
+<li><a href="../../manual/object/ifs/redishash.md.html" class="notranslate">RedisHash</a></li>
+<li><a href="../../manual/object/ifs/redislist.md.html" class="notranslate">RedisList</a></li>
+<li><a href="../../manual/object/ifs/redisset.md.html" class="notranslate">RedisSet</a></li>
+<li><a href="../../manual/object/ifs/redissortedset.md.html" class="notranslate">RedisSortedSet</a></li>
+<li><a href="../../manual/object/ifs/routing.md.html" class="notranslate">Routing</a></li>
+<li><a href="../../manual/object/ifs/sqlite.md.html" class="notranslate">SQLite</a></li>
+<li><a href="../../manual/object/ifs/sandbox.md.html" class="notranslate">SandBox</a></li>
+<li><a href="../../manual/object/ifs/seekablestream.md.html" class="notranslate">SeekableStream</a></li>
+<li><a href="../../manual/object/ifs/semaphore.md.html" class="notranslate">Semaphore</a></li>
+<li><a href="../../manual/object/ifs/service.md.html" class="notranslate">Service</a></li>
+<li><a href="../../manual/object/ifs/smtp.md.html" class="notranslate">Smtp</a></li>
+<li><a href="../../manual/object/ifs/socket.md.html" class="notranslate">Socket</a></li>
+<li><a href="../../manual/object/ifs/sslhandler.md.html" class="notranslate">SslHandler</a></li>
+<li><a href="../../manual/object/ifs/sslserver.md.html" class="notranslate">SslServer</a></li>
+<li><a href="../../manual/object/ifs/sslsocket.md.html" class="notranslate">SslSocket</a></li>
+<li><a href="../../manual/object/ifs/stat.md.html" class="notranslate">Stat</a></li>
+<li><a href="../../manual/object/ifs/statswatcher.md.html" class="notranslate">StatsWatcher</a></li>
+<li><a href="../../manual/object/ifs/stream.md.html" class="notranslate">Stream</a></li>
+<li><a href="../../manual/object/ifs/stringdecoder.md.html" class="notranslate">StringDecoder</a></li>
+<li><a href="../../manual/object/ifs/tcpserver.md.html" class="notranslate">TcpServer</a></li>
+<li><a href="../../manual/object/ifs/timer.md.html" class="notranslate">Timer</a></li>
+<li><a href="../../manual/object/ifs/urlobject.md.html" class="notranslate">UrlObject</a></li>
+<li><a href="../../manual/object/ifs/websocket.md.html" class="notranslate">WebSocket</a></li>
+<li><a href="../../manual/object/ifs/websocketmessage.md.html" class="notranslate">WebSocketMessage</a></li>
+<li><a href="../../manual/object/ifs/webview.md.html" class="notranslate">WebView</a></li>
+<li><a href="../../manual/object/ifs/worker.md.html" class="notranslate">Worker</a></li>
+<li><a href="../../manual/object/ifs/x509cert.md.html" class="notranslate">X509Cert</a></li>
+<li><a href="../../manual/object/ifs/x509crl.md.html" class="notranslate">X509Crl</a></li>
+<li><a href="../../manual/object/ifs/x509req.md.html" class="notranslate">X509Req</a></li>
+<li><a href="../../manual/object/ifs/xmlattr.md.html" class="notranslate">XmlAttr</a></li>
+<li><a href="../../manual/object/ifs/xmlcdatasection.md.html" class="notranslate">XmlCDATASection</a></li>
+<li><a href="../../manual/object/ifs/xmlcharacterdata.md.html" class="notranslate">XmlCharacterData</a></li>
+<li><a href="../../manual/object/ifs/xmlcomment.md.html" class="notranslate">XmlComment</a></li>
+<li><a href="../../manual/object/ifs/xmldocument.md.html" class="notranslate">XmlDocument</a></li>
+<li><a href="../../manual/object/ifs/xmldocumenttype.md.html" class="notranslate">XmlDocumentType</a></li>
+<li><a href="../../manual/object/ifs/xmlelement.md.html" class="notranslate">XmlElement</a></li>
+<li><a href="../../manual/object/ifs/xmlnamednodemap.md.html" class="notranslate">XmlNamedNodeMap</a></li>
+<li><a href="../../manual/object/ifs/xmlnode.md.html" class="notranslate">XmlNode</a></li>
+<li><a href="../../manual/object/ifs/xmlnodelist.md.html" class="notranslate">XmlNodeList</a></li>
+<li><a href="../../manual/object/ifs/xmlprocessinginstruction.md.html" class="notranslate">XmlProcessingInstruction</a></li>
+<li><a href="../../manual/object/ifs/xmltext.md.html" class="notranslate">XmlText</a></li>
+<li><a href="../../manual/object/ifs/zipfile.md.html" class="notranslate">ZipFile</a></li>
+<li><a href="../../manual/object/ifs/object.md.html" class="notranslate">object</a></li>
+</ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_awesome" aria-controls="collapse_awesome"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Community-Modul </font></font></a></h4></div><div id="collapse_awesome" class="panel-collapse collapse in" aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="fib-session.md.html" class="notranslate">fib-session</a></li>
+<li><a href="fib-pool.md.html" class="notranslate">fib-pool</a></li>
+<li><a href="fib-orm.md.html" class="notranslate">fib-orm</a></li>
+<li><a href="fib-app.md.html" class="notranslate">fib-app</a></li>
+<li><a href="fib-kv.md.html" class="notranslate">fib-kv</a></li>
+<li><a href="fib-rpc.md.html" class="notranslate">fib-rpc</a></li>
+<li><a href="fib-qr.md.html" class="notranslate">fib-qr</a></li>
+<li><a href="fib-pug.md.html" class="notranslate">fib-pug</a></li>
+<li><a href="ejs.md.html" class="notranslate">ejs</a></li>
+<li><a href="juicer.md.html" class="notranslate">Juicer</a></li>
+<li><a href="highlight.js.md.html" class="notranslate">highlight.js</a></li>
+<li><a href="marked.md.html" class="notranslate">marked</a></li>
+<li><a href="node-cron.md.html" class="notranslate">node-cron</a></li>
+<li><a href="debug.md.html" class="notranslate">debug</a></li>
+<li><a href="benchmark.js.md.html" class="notranslate">benchmark.js</a></li>
+<li><a href="sinon.md.html" class="notranslate">sinon</a></li>
+<li><a href="node-mime.md.html" class="notranslate">node-mime</a></li>
+<li><a href="validatorjs.md.html" class="notranslate">validatorjs</a></li>
+<li><a href="superstruct.md.html" class="notranslate">superstruct</a></li>
+<li><a href="cluster-server.md.html" class="notranslate">cluster-server</a></li>
+<li><a href="synaptic.md.html" class="notranslate">synaptic</a></li>
+<li class="active"><a href="source-map.md.html" class="notranslate">source-map</a></li>
+<li><a href="json-format.md.html" class="notranslate">json-format</a></li>
+<li><a href="viz.js.md.html" class="notranslate">viz.js</a></li>
+<li><a href="nomnoml.md.html" class="notranslate">nomnoml</a></li>
+<li><a href="pegjs.md.html" class="notranslate">pegjs</a></li>
+<li><a href="uglify-js.md.html" class="notranslate">uglify-js</a></li>
+<li><a href="js-beautify.md.html" class="notranslate">js-beautify</a></li>
+<li><a href="chalk-animation.md.html" class="notranslate">chalk-animation</a></li>
+<li><a href="jsrsasign.md.html" class="notranslate">jsrsasign</a></li>
+<li><a href="crypto-js.md.html" class="notranslate">crypto-js</a></li>
+<li><a href="ascii-table.md.html" class="notranslate">ascii-table</a></li>
+<li><a href="logstream.md.html" class="notranslate">logstream</a></li>
+<li><a href="ci.md.html" class="notranslate">ci</a></li>
+<li><a href="fs-readdir-recursive.md.html" class="notranslate">fs-readdir-recursive</a></li>
+<li><a href="mkdirp.md.html" class="notranslate">mkdirp</a></li>
+<li><a href="rmdirr.md.html" class="notranslate">rmdirr</a></li>
+<li><a href="detect-port.md.html" class="notranslate">detect-port</a></li>
+<li><a href="bitcoinjs-lib.md.html" class="notranslate">bitcoinjs-lib</a></li>
+<li><a href="rakuten.md.html" class="notranslate">Rakuten</a></li>
+</ul>
+ </div></div></div>  </div></div><div class="content"><div class="social-share share-component" data-sites="weibo,twitter" data-description="分享"></div> <div name="Source-Map" data-unique="Source-Map"></div><h1 id="Source-Map"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Quellkarte</font></font></h1>
+<p><a href="https://travis-ci.org/mozilla/source-map"><img src="https://travis-ci.org/mozilla/source-map.png?branch=master" alt="Build-Status"></a></p>
+<p><a href="https://www.npmjs.com/package/source-map"><img src="https://nodei.co/npm/source-map.png?downloads=true&amp;downloadRank=true" alt="NPM"></a></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Dies ist eine Bibliothek zum Generieren und Verwenden des
+ </font></font><a href="https://docs.google.com/document/d/1U1RGAehQwRypUTovF1KRlpiOFze0b-_2gc6fAH0KY0k/edit"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">hier beschriebenen Quellkartenformats</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> .</font></font></p>
+<div name="Use-with-Node" data-unique="Use-with-Node"></div><h2 id="Use-with-Node"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Mit Knoten verwenden</font></font></h2>
+<pre><code><div class="line-numbers">1</div>$ npm <span class="hljs-keyword">install</span> <span class="hljs-keyword">source</span>-<span class="hljs-keyword">map</span>
+</code></pre><div name="Use-on-the-Web" data-unique="Use-on-the-Web"></div><h2 id="Use-on-the-Web"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Verwendung im Web</font></font></h2>
+<pre><code><div class="line-numbers">1
+2
+3
+4
+5
+6</div>&lt;script src=<span class="hljs-string">"https://unpkg.com/source-map@0.7.2/dist/source-map.js"</span>&gt;&lt;<span class="hljs-regexp">/script&gt;
+&lt;script&gt;
+    sourceMap.SourceMapConsumer.initialize({
+        "lib/mappings</span>.wasm<span class="hljs-string">": "</span><span class="hljs-symbol">https:</span>/<span class="hljs-regexp">/unpkg.com/source</span>-map@<span class="hljs-number">0.7</span>.<span class="hljs-number">2</span>/<span class="hljs-class"><span class="hljs-keyword">lib</span>/<span class="hljs-title">mappings</span>.<span class="hljs-title">wasm</span>"</span><font></font>
+    });<font></font>
+&lt;<span class="hljs-regexp">/script&gt;</span>
+</code></pre><hr>
+<!-- `npm run toc` to regenerate the Table of Contents -->
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+<div name="Table-of-Contents" data-unique="Table-of-Contents"></div><h2 id="Table-of-Contents"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Inhaltsverzeichnis</font></font></h2>
+<ul>
+<li><a href="#examples"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Beispiele</font></font></a><ul>
+<li><a href="#consuming-a-source-map"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Eine Quellkarte verbrauchen</font></font></a></li>
+<li><a href="#generating-a-source-map"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Erstellen einer Quellkarte</font></font></a><ul>
+<li><a href="#with-sourcenode-high-level-api"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Mit SourceNode (High-Level-API)</font></font></a></li>
+<li><a href="#with-sourcemapgenerator-low-level-api"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Mit SourceMapGenerator (Low-Level-API)</font></font></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#api"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">API</font></font></a><ul>
+<li><a href="#sourcemapconsumer"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SourceMapConsumer</font></font></a><ul>
+<li><a href="#sourcemapconsumerinitializeoptions"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SourceMapConsumer.initialize (Optionen)</font></font></a></li>
+<li><a href="#new-sourcemapconsumerrawsourcemap"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">neuer SourceMapConsumer (rawSourceMap)</font></font></a></li>
+<li><a href="#sourcemapconsumerwith"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SourceMapConsumer.with</font></font></a></li>
+<li><a href="#sourcemapconsumerprototypedestroy"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SourceMapConsumer.prototype.destroy ()</font></font></a></li>
+<li><a href="#sourcemapconsumerprototypecomputecolumnspans"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SourceMapConsumer.prototype.computeColumnSpans ()</font></font></a></li>
+<li><a href="#sourcemapconsumerprototypeoriginalpositionforgeneratedposition"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SourceMapConsumer.prototype.originalPositionFor (generatePosition)</font></font></a></li>
+<li><a href="#sourcemapconsumerprototypegeneratedpositionfororiginalposition"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SourceMapConsumer.prototype.generatedPositionFor (originalPosition)</font></font></a></li>
+<li><a href="#sourcemapconsumerprototypeallgeneratedpositionsfororiginalposition"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SourceMapConsumer.prototype.allGeneratedPositionsFor (originalPosition)</font></font></a></li>
+<li><a href="#sourcemapconsumerprototypehascontentsofallsources"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SourceMapConsumer.prototype.hasContentsOfAllSources ()</font></font></a></li>
+<li><a href="#sourcemapconsumerprototypesourcecontentforsource-returnnullonmissing"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SourceMapConsumer.prototype.sourceContentFor (source [, returnNullOnMissing])</font></font></a></li>
+<li><a href="#sourcemapconsumerprototypeeachmappingcallback-context-order"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SourceMapConsumer.prototype.eachMapping (Rückruf, Kontext, Reihenfolge)</font></font></a></li>
+</ul>
+</li>
+<li><a href="#sourcemapgenerator"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SourceMapGenerator</font></font></a><ul>
+<li><a href="#new-sourcemapgeneratorstartofsourcemap"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">neuer SourceMapGenerator ([startOfSourceMap])</font></font></a></li>
+<li><a href="#sourcemapgeneratorfromsourcemapsourcemapconsumer"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SourceMapGenerator.fromSourceMap (sourceMapConsumer)</font></font></a></li>
+<li><a href="#sourcemapgeneratorprototypeaddmappingmapping"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SourceMapGenerator.prototype.addMapping (Zuordnung)</font></font></a></li>
+<li><a href="#sourcemapgeneratorprototypesetsourcecontentsourcefile-sourcecontent"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SourceMapGenerator.prototype.setSourceContent (sourceFile, sourceContent)</font></font></a></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">[SourceMapGenerator.prototype.applySourceMap (sourceMapConsumer </font></font><a href="#sourcemapgeneratorprototypeapplysourcemapsourcemapconsumer-sourcefile-sourcemappath"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, sourceFile [, sourceMapPath]])</font></font></a></li>
+<li><a href="#sourcemapgeneratorprototypetostring"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SourceMapGenerator.prototype.toString ()</font></font></a></li>
+</ul>
+</li>
+<li><a href="#sourcenode"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SourceNode</font></font></a><ul>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">[neuer SourceNode ([Zeile, Spalte, Quelle </font></font><a href="#new-sourcenodeline-column-source-chunk-name"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Block [, Name]]])</font></font></a></li>
+<li><a href="#sourcenodefromstringwithsourcemapcode-sourcemapconsumer-relativepath"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SourceNode.fromStringWithSourceMap (Code, sourceMapConsumer [, relativePath])</font></font></a></li>
+<li><a href="#sourcenodeprototypeaddchunk"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SourceNode.prototype.add (Chunk)</font></font></a></li>
+<li><a href="#sourcenodeprototypeprependchunk"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SourceNode.prototype.prepend (Chunk)</font></font></a></li>
+<li><a href="#sourcenodeprototypesetsourcecontentsourcefile-sourcecontent"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SourceNode.prototype.setSourceContent (sourceFile, sourceContent)</font></font></a></li>
+<li><a href="#sourcenodeprototypewalkfn"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SourceNode.prototype.walk (fn)</font></font></a></li>
+<li><a href="#sourcenodeprototypewalksourcecontentsfn"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SourceNode.prototype.walkSourceContents (fn)</font></font></a></li>
+<li><a href="#sourcenodeprototypejoinsep"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SourceNode.prototype.join (sep)</font></font></a></li>
+<li><a href="#sourcenodeprototypereplacerightpattern-replacement"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SourceNode.prototype.replaceRight (Muster, Ersatz)</font></font></a></li>
+<li><a href="#sourcenodeprototypetostring"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SourceNode.prototype.toString ()</font></font></a></li>
+<li><a href="#sourcenodeprototypetostringwithsourcemapstartofsourcemap"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SourceNode.prototype.toStringWithSourceMap ([startOfSourceMap])</font></font></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+<div name="Examples" data-unique="Examples"></div><h2 id="Examples"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Beispiele</font></font></h2>
+<div name="Consuming-a-source-map" data-unique="Consuming-a-source-map"></div><h3 id="Consuming-a-source-map" class="notranslate">Consuming a source map</h3>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37</div><span class="hljs-keyword">const</span> rawSourceMap = {
+  <span class="hljs-attr">version</span>: <span class="hljs-number">3</span>,
+  <span class="hljs-attr">file</span>: <span class="hljs-string">'min.js'</span>,
+  <span class="hljs-attr">names</span>: [<span class="hljs-string">'bar'</span>, <span class="hljs-string">'baz'</span>, <span class="hljs-string">'n'</span>],
+  <span class="hljs-attr">sources</span>: [<span class="hljs-string">'one.js'</span>, <span class="hljs-string">'two.js'</span>],
+  <span class="hljs-attr">sourceRoot</span>: <span class="hljs-string">'http://example.com/www/js/'</span>,
+  <span class="hljs-attr">mappings</span>: <span class="hljs-string">'CAAC,IAAI,IAAM,SAAUA,GAClB,OAAOC,IAAID;CCDb,IAAI,IAAM,SAAUE,GAClB,OAAOA'</span><font></font>
+};<font></font>
+<font></font>
+<span class="hljs-keyword">const</span> whatever = <span class="hljs-keyword">await</span> SourceMapConsumer.with(rawSourceMap, <span class="hljs-literal">null</span>, consumer =&gt; {<font></font>
+<font></font>
+  <span class="hljs-built_in">console</span>.log(consumer.sources);
+  <span class="hljs-comment">// [ 'http://example.com/www/js/one.js',</span>
+  <span class="hljs-comment">//   'http://example.com/www/js/two.js' ]</span><font></font>
+<font></font>
+  <span class="hljs-built_in">console</span>.log(consumer.originalPositionFor({
+    <span class="hljs-attr">line</span>: <span class="hljs-number">2</span>,
+    <span class="hljs-attr">column</span>: <span class="hljs-number">28</span><font></font>
+  }));<font></font>
+  <span class="hljs-comment">// { source: 'http://example.com/www/js/two.js',</span>
+  <span class="hljs-comment">//   line: 2,</span>
+  <span class="hljs-comment">//   column: 10,</span>
+  <span class="hljs-comment">//   name: 'n' }</span><font></font>
+<font></font>
+  <span class="hljs-built_in">console</span>.log(consumer.generatedPositionFor({
+    <span class="hljs-attr">source</span>: <span class="hljs-string">'http://example.com/www/js/two.js'</span>,
+    <span class="hljs-attr">line</span>: <span class="hljs-number">2</span>,
+    <span class="hljs-attr">column</span>: <span class="hljs-number">10</span><font></font>
+  }));<font></font>
+  <span class="hljs-comment">// { line: 2, column: 28 }</span><font></font>
+<font></font>
+  consumer.eachMapping(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">m</span>) </span>{
+    <span class="hljs-comment">// ...</span><font></font>
+  });<font></font>
+<font></font>
+  <span class="hljs-keyword">return</span> computeWhatever();<font></font>
+});<font></font>
+</code></pre>
+<div name="Generating-a-source-map" data-unique="Generating-a-source-map"></div><h3 id="Generating-a-source-map" class="notranslate">Generating a source map</h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ausführliche Anleitung:
+ </font></font><a href="https://hacks.mozilla.org/2013/05/compiling-to-javascript-and-debugging-with-source-maps/"><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Kompilieren mit JavaScript und Debuggen mit Quellzuordnungen</font></font></strong></a></p>
+<h4 id="With-SourceNode-(high-level-API)"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Mit SourceNode (High-Level-API)</font></font></h4>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28</div><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">compile</span>(<span class="hljs-params">ast</span>) </span>{
+  <span class="hljs-keyword">switch</span> (ast.type) {
+  <span class="hljs-keyword">case</span> <span class="hljs-string">'BinaryExpression'</span>:
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> SourceNode(<font></font>
+      ast.location.line,<font></font>
+      ast.location.column,<font></font>
+      ast.location.source,<font></font>
+      [compile(ast.left), <span class="hljs-string">" + "</span>, compile(ast.right)]<font></font>
+    );<font></font>
+  <span class="hljs-keyword">case</span> <span class="hljs-string">'Literal'</span>:
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> SourceNode(<font></font>
+      ast.location.line,<font></font>
+      ast.location.column,<font></font>
+      ast.location.source,<font></font>
+      <span class="hljs-built_in">String</span>(ast.value)<font></font>
+    );<font></font>
+  <span class="hljs-comment">// ...</span>
+  <span class="hljs-keyword">default</span>:
+    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">"Bad AST"</span>);<font></font>
+  }<font></font>
+}<font></font>
+<font></font>
+<span class="hljs-keyword">var</span> ast = parse(<span class="hljs-string">"40 + 2"</span>, <span class="hljs-string">"add.js"</span>);
+<span class="hljs-built_in">console</span>.log(compile(ast).toStringWithSourceMap({
+  <span class="hljs-attr">file</span>: <span class="hljs-string">'add.js'</span><font></font>
+}));<font></font>
+<span class="hljs-comment">// { code: '40 + 2',</span>
+<span class="hljs-comment">//   map: [object SourceMapGenerator] }</span>
+</code></pre>
+<h4 id="With-SourceMapGenerator-(low-level-API)"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Mit SourceMapGenerator (Low-Level-API)</font></font></h4>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19</div><span class="hljs-keyword">var</span> map = <span class="hljs-keyword">new</span> SourceMapGenerator({
+  <span class="hljs-attr">file</span>: <span class="hljs-string">"source-mapped.js"</span><font></font>
+});<font></font>
+<font></font>
+map.addMapping({<font></font>
+  <span class="hljs-attr">generated</span>: {
+    <span class="hljs-attr">line</span>: <span class="hljs-number">10</span>,
+    <span class="hljs-attr">column</span>: <span class="hljs-number">35</span><font></font>
+  },<font></font>
+  <span class="hljs-attr">source</span>: <span class="hljs-string">"foo.js"</span>,
+  <span class="hljs-attr">original</span>: {
+    <span class="hljs-attr">line</span>: <span class="hljs-number">33</span>,
+    <span class="hljs-attr">column</span>: <span class="hljs-number">2</span><font></font>
+  },<font></font>
+  <span class="hljs-attr">name</span>: <span class="hljs-string">"christopher"</span><font></font>
+});<font></font>
+<font></font>
+<span class="hljs-built_in">console</span>.log(map.toString());
+<span class="hljs-comment">// '{"version":3,"file":"source-mapped.js","sources":["foo.js"],"names":["christopher"],"mappings":";;;;;;;;;mCAgCEA"}'</span>
+</code></pre>
+<div name="API" data-unique="API"></div><h2 id="API"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">API</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Erhalten Sie einen Verweis auf das Modul:</font></font></p>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8</div><span class="hljs-comment">// Node.js</span>
+<span class="hljs-keyword">var</span> sourceMap = <span class="hljs-built_in">require</span>(<span class="hljs-string">'source-map'</span>);<font></font>
+<font></font>
+<span class="hljs-comment">// Browser builds</span>
+<span class="hljs-keyword">var</span> sourceMap = <span class="hljs-built_in">window</span>.sourceMap;<font></font>
+<font></font>
+<span class="hljs-comment">// Inside Firefox</span>
+<span class="hljs-keyword">const</span> sourceMap = <span class="hljs-built_in">require</span>(<span class="hljs-string">"devtools/toolkit/sourcemap/source-map.js"</span>);
+</code></pre>
+<div name="SourceMapConsumer" data-unique="SourceMapConsumer"></div><h3 id="SourceMapConsumer" class="notranslate">SourceMapConsumer</h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Eine </font></font><code>SourceMapConsumer</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Instanz stellt eine analysierte Quellzuordnung dar, die Informationen zu den ursprünglichen Dateipositionen abfragen können, indem sie in der generierten Quelle eine Dateiposition erhält.</font></font></p>
+<h4 id="SourceMapConsumer.initialize(options)"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SourceMapConsumer.initialize (Optionen)</font></font></h4>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Bei Verwendung </font></font><code>SourceMapConsumer</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">außerhalb von node.js, z. B. im Web, muss bekannt sein, von welcher URL geladen werden soll </font></font><code>lib/mappings.wasm</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">. Sie müssen dies durch Aufrufen mitteilen, </font></font><code>initialize</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">bevor Sie </font></font><code>SourceMapConsumer</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">s erstellen.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Das Optionsobjekt hat die folgenden Eigenschaften:</font></font></p>
+<ul>
+<li><code>"lib/mappings.wasm"</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: A </font></font><code>String</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">enthält die URL der
+ </font></font><code>lib/mappings.wasm</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Datei.</font></font></li>
+</ul>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3</div>sourceMap.SourceMapConsumer.initialize({
+  <span class="hljs-string">"lib/mappings.wasm"</span>: <span class="hljs-string">"https://example.com/source-map/lib/mappings.wasm"</span><font></font>
+});<font></font>
+</code></pre>
+<h4 id="new-SourceMapConsumer(rawSourceMap)"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">neuer SourceMapConsumer (rawSourceMap)</font></font></h4>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Der einzige Parameter ist die unformatierte Quellzuordnung (entweder als Zeichenfolge </font></font><code>JSON.parse</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">oder als Objekt). Gemäß der Spezifikation weisen </font><font style="vertical-align: inherit;">Quellzuordnungen
+ </font><font style="vertical-align: inherit;">die folgenden Attribute auf:</font></font></p>
+<ul>
+<li><p><code>version</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Welcher Version der Quellkartenspezifikation folgt diese Karte?</font></font></p>
+</li>
+<li><p><code>sources</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Ein Array von URLs zu den ursprünglichen Quelldateien.</font></font></p>
+</li>
+<li><p><code>names</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Ein Array von Bezeichnern, auf die durch einzelne Zuordnungen verwiesen werden kann.</font></font></p>
+</li>
+<li><p><code>sourceRoot</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Optional. Der URL-Stamm, von dem alle Quellen relativ sind.</font></font></p>
+</li>
+<li><p><code>sourcesContent</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Optional. Ein Array mit Inhalten der ursprünglichen Quelldateien.</font></font></p>
+</li>
+<li><p><code>mappings</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Eine Zeichenfolge von base64-VLQs, die die tatsächlichen Zuordnungen enthalten.</font></font></p>
+</li>
+<li><p><code>file</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Optional. Der generierte Dateiname, dem diese Quellzuordnung zugeordnet ist.</font></font></p>
+</li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Das Versprechen des konstruierten Quellkartenkonsumenten wird zurückgegeben.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Wenn das </font></font><code>SourceMapConsumer</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">nicht mehr verwendet wird, müssen Sie seine </font></font><code>destroy</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Methode </font><font style="vertical-align: inherit;">aufrufen
+ </font><font style="vertical-align: inherit;">.</font></font></p>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">const</span> consumer = <span class="hljs-keyword">await</span> <span class="hljs-keyword">new</span> sourceMap.SourceMapConsumer(rawSourceMapJsonData);<font></font>
+doStuffWith(consumer);<font></font>
+consumer.destroy();<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Alternativ können Sie </font></font><code>SourceMapConsumer.with</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">vermeiden, dass Sie sich an einen Anruf erinnern müssen </font></font><code>destroy</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">.</font></font></p>
+<h4 id="SourceMapConsumer.with"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SourceMapConsumer.with</font></font></h4>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Erstellen Sie ein neues </font></font><code>SourceMapConsumer</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">from </font></font><code>rawSourceMap</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">und </font></font><code>sourceMapUrl</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+( </font></font><code>SourceMapConsumer</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Einzelheiten finden </font><font style="vertical-align: inherit;">Sie im </font><font style="vertical-align: inherit;">Konstruktor. Rufen Sie dann das </font></font><code>async
+function f(SourceMapConsumer) -&gt; T</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">mit dem neu erstellten Consumer auf, warten Sie, </font></font><code>f</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">bis es abgeschlossen ist, rufen Sie </font></font><code>destroy</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">den Consumer auf und geben Sie den Rückgabewert </font></font><code>f</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">zurück.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sie dürfen den Verbraucher nach </font></font><code>f</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Abschluss </font><font style="vertical-align: inherit;">nicht mehr benutzen </font><font style="vertical-align: inherit;">!</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Bei Verwendung von </font></font><code>with</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">müssen Sie nicht daran denken, </font></font><code>destroy</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">den Verbraucher </font><font style="vertical-align: inherit;">manuell anzurufen </font><font style="vertical-align: inherit;">, da dieser nach Abschluss automatisch aufgerufen wird </font></font><code>f</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">.</font></font></p>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15</div><span class="hljs-keyword">const</span> xSquared = <span class="hljs-keyword">await</span> SourceMapConsumer.with(<font></font>
+  myRawSourceMap,<font></font>
+  <span class="hljs-literal">null</span>,
+  <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">consumer</span>) </span>{
+    <span class="hljs-comment">// Use `consumer` inside here and don't worry about remembering</span>
+    <span class="hljs-comment">// to call `destroy`.</span><font></font>
+<font></font>
+    <span class="hljs-keyword">const</span> x = <span class="hljs-keyword">await</span> whatever(consumer);
+    <span class="hljs-keyword">return</span> x * x;<font></font>
+  }<font></font>
+);<font></font>
+<font></font>
+<span class="hljs-comment">// You may not use that `consumer` anymore out here; it has</span>
+<span class="hljs-comment">// been destroyed. But you can use `xSquared`.</span>
+<span class="hljs-built_in">console</span>.log(xSquared);
+</code></pre>
+<h4 id="SourceMapConsumer.prototype.destroy()"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SourceMapConsumer.prototype.destroy ()</font></font></h4>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Geben Sie die zugehörigen Wasm-Daten des Quellkarten-Verbrauchers frei, die manuell verwaltet werden.</font></font></p>
+<pre><code class="lang-js"><div class="line-numbers">1</div>consumer.destroy();
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Alternativ können Sie </font></font><code>SourceMapConsumer.with</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">vermeiden, dass Sie sich an einen Anruf erinnern müssen </font></font><code>destroy</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">.</font></font></p>
+<h4 id="SourceMapConsumer.prototype.computeColumnSpans()"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SourceMapConsumer.prototype.computeColumnSpans ()</font></font></h4>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Berechnen Sie die letzte Spalte für jede generierte Zuordnung. Die letzte Spalte ist inklusive.</font></font></p>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22</div><span class="hljs-comment">// Before:</span>
+consumer.allGeneratedPositionsFor({ <span class="hljs-attr">line</span>: <span class="hljs-number">2</span>, <span class="hljs-attr">source</span>: <span class="hljs-string">"foo.coffee"</span> })
+<span class="hljs-comment">// [ { line: 2,</span>
+<span class="hljs-comment">//     column: 1 },</span>
+<span class="hljs-comment">//   { line: 2,</span>
+<span class="hljs-comment">//     column: 10 },</span>
+<span class="hljs-comment">//   { line: 2,</span>
+<span class="hljs-comment">//     column: 20 } ]</span><font></font>
+<font></font>
+consumer.computeColumnSpans();<font></font>
+<font></font>
+<span class="hljs-comment">// After:</span>
+consumer.allGeneratedPositionsFor({ <span class="hljs-attr">line</span>: <span class="hljs-number">2</span>, <span class="hljs-attr">source</span>: <span class="hljs-string">"foo.coffee"</span> })
+<span class="hljs-comment">// [ { line: 2,</span>
+<span class="hljs-comment">//     column: 1,</span>
+<span class="hljs-comment">//     lastColumn: 9 },</span>
+<span class="hljs-comment">//   { line: 2,</span>
+<span class="hljs-comment">//     column: 10,</span>
+<span class="hljs-comment">//     lastColumn: 19 },</span>
+<span class="hljs-comment">//   { line: 2,</span>
+<span class="hljs-comment">//     column: 20,</span>
+<span class="hljs-comment">//     lastColumn: Infinity } ]</span>
+</code></pre>
+<h4 id="SourceMapConsumer.prototype.originalPositionFor(generatedPosition)"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SourceMapConsumer.prototype.originalPositionFor (generatePosition)</font></font></h4>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Gibt die ursprünglichen Quell-, Zeilen- und Spalteninformationen für die angegebenen Zeilen- und Spaltenpositionen der generierten Quelle zurück. Das einzige Argument ist ein Objekt mit den folgenden Eigenschaften:</font></font></p>
+<ul>
+<li><p><code>line</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Die Zeilennummer in der generierten Quelle. Die Zeilennummern in dieser Bibliothek basieren auf 1 (beachten Sie, dass die zugrunde liegende Quellkartenspezifikation 0-basierte Zeilennummern verwendet - diese Bibliothek übernimmt die Übersetzung).</font></font></p>
+</li>
+<li><p><code>column</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Die Spaltennummer in der generierten Quelle. Die Spaltennummern in dieser Bibliothek basieren auf 0.</font></font></p>
+</li>
+<li><p><code>bias</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Entweder </font></font><code>SourceMapConsumer.GREATEST_LOWER_BOUND</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">oder
+ </font></font><code>SourceMapConsumer.LEAST_UPPER_BOUND</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">. Gibt an, ob das nächste Element zurückgegeben werden soll, das kleiner oder größer als das gesuchte ist, wenn das genaue Element nicht gefunden werden kann. Der Standardwert ist
+ </font></font><code>SourceMapConsumer.GREATEST_LOWER_BOUND</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">.</font></font></p>
+</li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">und ein Objekt wird mit den folgenden Eigenschaften zurückgegeben:</font></font></p>
+<ul>
+<li><p><code>source</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Die ursprüngliche Quelldatei oder null, wenn diese Informationen nicht verfügbar sind.</font></font></p>
+</li>
+<li><p><code>line</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Die Zeilennummer in der Originalquelle oder null, wenn diese Informationen nicht verfügbar sind. Die Zeilennummer basiert auf 1.</font></font></p>
+</li>
+<li><p><code>column</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Die Spaltennummer in der Originalquelle oder null, wenn diese Informationen nicht verfügbar sind. Die Spaltennummer basiert auf 0.</font></font></p>
+</li>
+<li><p><code>name</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Die ursprüngliche Kennung oder null, wenn diese Informationen nicht verfügbar sind.</font></font></p>
+</li>
+</ul>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11</div>consumer.originalPositionFor({ <span class="hljs-attr">line</span>: <span class="hljs-number">2</span>, <span class="hljs-attr">column</span>: <span class="hljs-number">10</span> })
+<span class="hljs-comment">// { source: 'foo.coffee',</span>
+<span class="hljs-comment">//   line: 2,</span>
+<span class="hljs-comment">//   column: 2,</span>
+<span class="hljs-comment">//   name: null }</span><font></font>
+<font></font>
+consumer.originalPositionFor({ <span class="hljs-attr">line</span>: <span class="hljs-number">99999999999999999</span>, <span class="hljs-attr">column</span>: <span class="hljs-number">999999999999999</span> })
+<span class="hljs-comment">// { source: null,</span>
+<span class="hljs-comment">//   line: null,</span>
+<span class="hljs-comment">//   column: null,</span>
+<span class="hljs-comment">//   name: null }</span>
+</code></pre>
+<h4 id="SourceMapConsumer.prototype.generatedPositionFor(originalPosition)"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SourceMapConsumer.prototype.generatedPositionFor (originalPosition)</font></font></h4>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Gibt die generierten Zeilen- und Spalteninformationen für die ursprünglich angegebenen Quell-, Zeilen- und Spaltenpositionen zurück. Das einzige Argument ist ein Objekt mit den folgenden Eigenschaften:</font></font></p>
+<ul>
+<li><p><code>source</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Der Dateiname der Originalquelle.</font></font></p>
+</li>
+<li><p><code>line</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Die Zeilennummer in der Originalquelle. Die Zeilennummer basiert auf 1.</font></font></p>
+</li>
+<li><p><code>column</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Die Spaltennummer in der Originalquelle. Die Spaltennummer basiert auf 0.</font></font></p>
+</li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">und ein Objekt wird mit den folgenden Eigenschaften zurückgegeben:</font></font></p>
+<ul>
+<li><p><code>line</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Die Zeilennummer in der generierten Quelle oder null. Die Zeilennummer basiert auf 1.</font></font></p>
+</li>
+<li><p><code>column</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Die Spaltennummer in der generierten Quelle oder null. Die Spaltennummer basiert auf 0.</font></font></p>
+</li>
+</ul>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3</div>consumer.generatedPositionFor({ <span class="hljs-attr">source</span>: <span class="hljs-string">"example.js"</span>, <span class="hljs-attr">line</span>: <span class="hljs-number">2</span>, <span class="hljs-attr">column</span>: <span class="hljs-number">10</span> })
+<span class="hljs-comment">// { line: 1,</span>
+<span class="hljs-comment">//   column: 56 }</span>
+</code></pre>
+<h4 id="SourceMapConsumer.prototype.allGeneratedPositionsFor(originalPosition)"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SourceMapConsumer.prototype.allGeneratedPositionsFor (originalPosition)</font></font></h4>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Gibt alle generierten Zeilen- und Spalteninformationen für die ursprünglich bereitgestellte Quelle, Zeile und Spalte zurück. Wenn keine Spalte angegeben ist, werden alle Zuordnungen zurückgegeben, die entweder der gesuchten Zeile oder der nächstgelegenen Zeile mit Zuordnungen entsprechen. Andernfalls wird zurückgegeben Alle Zuordnungen, die der angegebenen Zeile und entweder der gesuchten Spalte oder der nächstgelegenen Spalte mit Offsets entsprechen.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Das einzige Argument ist ein Objekt mit den folgenden Eigenschaften:</font></font></p>
+<ul>
+<li><p><code>source</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Der Dateiname der Originalquelle.</font></font></p>
+</li>
+<li><p><code>line</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Die Zeilennummer in der Originalquelle. Die Zeilennummer basiert auf 1.</font></font></p>
+</li>
+<li><p><code>column</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Optional. Die Spaltennummer in der Originalquelle. Die Spaltennummer basiert auf 0.</font></font></p>
+</li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">und ein Array von Objekten mit den folgenden Eigenschaften wird zurückgegeben:</font></font></p>
+<ul>
+<li><p><code>line</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Die Zeilennummer in der generierten Quelle oder null. Die Zeilennummer basiert auf 1.</font></font></p>
+</li>
+<li><p><code>column</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Die Spaltennummer in der generierten Quelle oder null. Die Spaltennummer basiert auf 0.</font></font></p>
+</li>
+</ul>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7</div>consumer.allGeneratedpositionsfor({ <span class="hljs-attr">line</span>: <span class="hljs-number">2</span>, <span class="hljs-attr">source</span>: <span class="hljs-string">"foo.coffee"</span> })
+<span class="hljs-comment">// [ { line: 2,</span>
+<span class="hljs-comment">//     column: 1 },</span>
+<span class="hljs-comment">//   { line: 2,</span>
+<span class="hljs-comment">//     column: 10 },</span>
+<span class="hljs-comment">//   { line: 2,</span>
+<span class="hljs-comment">//     column: 20 } ]</span>
+</code></pre>
+<h4 id="SourceMapConsumer.prototype.hasContentsOfAllSources()"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SourceMapConsumer.prototype.hasContentsOfAllSources ()</font></font></h4>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Geben Sie true zurück, wenn wir den eingebetteten Quellinhalt für jede in der Quellzuordnung aufgeführte Quelle haben, andernfalls false.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Mit anderen Worten, wenn diese Methode </font></font><code>true</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, dann
+ </font></font><code>consumer.sourceContentFor(s)</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">wird für jede Quelle erfolgreich </font></font><code>s</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">in
+ </font></font><code>consumer.sources</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">.</font></font></p>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7</div><span class="hljs-comment">// ...</span>
+<span class="hljs-keyword">if</span> (consumer.hasContentsOfAllSources()) {<font></font>
+  consumerReadyCallback(consumer);<font></font>
+} <span class="hljs-keyword">else</span> {<font></font>
+  fetchSources(consumer, consumerReadyCallback);<font></font>
+}<font></font>
+<span class="hljs-comment">// ...</span>
+</code></pre>
+<h4 id="SourceMapConsumer.prototype.sourceContentFor(source[,-returnNullOnMissing])"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SourceMapConsumer.prototype.sourceContentFor (source [, returnNullOnMissing])</font></font></h4>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Gibt den ursprünglichen Quellinhalt für die angegebene Quelle zurück. Das einzige Argument ist die URL der ursprünglichen Quelldatei.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Wenn der </font></font><code>true</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Quellinhalt </font><font style="vertical-align: inherit;">für die angegebene Quelle nicht gefunden wird, wird ein Fehler </font><font style="vertical-align: inherit;">ausgegeben. Übergeben Sie </font><font style="vertical-align: inherit;">optional </font><font style="vertical-align: inherit;">den zweiten Parameter, der </font></font><code>null</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">stattdessen zurückgegeben wurde.</font></font></p>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11</div>consumer.sources
+<span class="hljs-comment">// [ "my-cool-lib.clj" ]</span><font></font>
+<font></font>
+consumer.sourceContentFor(<span class="hljs-string">"my-cool-lib.clj"</span>)
+<span class="hljs-comment">// "..."</span><font></font>
+<font></font>
+consumer.sourceContentFor(<span class="hljs-string">"this is not in the source map"</span>);
+<span class="hljs-comment">// Error: "this is not in the source map" is not in the source map</span><font></font>
+<font></font>
+consumer.sourceContentFor(<span class="hljs-string">"this is not in the source map"</span>, <span class="hljs-literal">true</span>);
+<span class="hljs-comment">// null</span>
+</code></pre>
+<h4 id="SourceMapConsumer.prototype.eachMapping(callback,-context,-order)"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SourceMapConsumer.prototype.eachMapping (Rückruf, Kontext, Reihenfolge)</font></font></h4>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Durchlaufen Sie jede Zuordnung zwischen einer ursprünglichen Quelle / Zeile / Spalte und einer generierten Zeile / Spalte in dieser Quellzuordnung.</font></font></p>
+<ul>
+<li><p><code>callback</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Die Funktion, die bei jedem Mapping aufgerufen wird. Mappings haben die Form </font></font><code>{ source, generatedLine, generatedColumn, originalLine, originalColumn,
+name }</code></p>
+</li>
+<li><p><code>context</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Optional. Wenn angegeben, ist dieses Objekt der Wert </font></font><code>this</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+jedes Mal, wenn </font></font><code>callback</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">es aufgerufen wird.</font></font></p>
+</li>
+<li><p><code>order</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Entweder </font></font><code>SourceMapConsumer.GENERATED_ORDER</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">oder
+ </font></font><code>SourceMapConsumer.ORIGINAL_ORDER</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">. Gibt an, ob Sie die Zuordnungen durchlaufen möchten, sortiert nach der Zeilen- / Spaltenreihenfolge der generierten Datei bzw. der Quell- / Zeilen- / Spaltenreihenfolge des Originals. Der Standardwert ist
+ </font></font><code>SourceMapConsumer.GENERATED_ORDER</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">.</font></font></p>
+</li>
+</ul>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15</div>consumer.eachMapping(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">m</span>) </span>{ <span class="hljs-built_in">console</span>.log(m); })
+<span class="hljs-comment">// ...</span>
+<span class="hljs-comment">// { source: 'illmatic.js',</span>
+<span class="hljs-comment">//   generatedLine: 1,</span>
+<span class="hljs-comment">//   generatedColumn: 0,</span>
+<span class="hljs-comment">//   originalLine: 1,</span>
+<span class="hljs-comment">//   originalColumn: 0,</span>
+<span class="hljs-comment">//   name: null }</span>
+<span class="hljs-comment">// { source: 'illmatic.js',</span>
+<span class="hljs-comment">//   generatedLine: 2,</span>
+<span class="hljs-comment">//   generatedColumn: 0,</span>
+<span class="hljs-comment">//   originalLine: 2,</span>
+<span class="hljs-comment">//   originalColumn: 0,</span>
+<span class="hljs-comment">//   name: null }</span>
+<span class="hljs-comment">// ...</span>
+</code></pre>
+<div name="SourceMapGenerator" data-unique="SourceMapGenerator"></div><h3 id="SourceMapGenerator" class="notranslate">SourceMapGenerator</h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Eine Instanz des SourceMapGenerator stellt eine Quellzuordnung dar, die inkrementell erstellt wird.</font></font></p>
+<h4 id="new-SourceMapGenerator([startOfSourceMap])"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">neuer SourceMapGenerator ([startOfSourceMap])</font></font></h4>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sie können ein Objekt mit den folgenden Eigenschaften übergeben:</font></font></p>
+<ul>
+<li><p><code>file</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Der Dateiname der generierten Quelle, der diese Quellzuordnung zugeordnet ist.</font></font></p>
+</li>
+<li><p><code>sourceRoot</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Ein Stammverzeichnis für alle relativen URLs in dieser Quellzuordnung.</font></font></p>
+</li>
+<li><p><code>skipValidation</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Optional. Wenn </font></font><code>true</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, deaktiviert die Validierung von Zuordnungen beim Hinzufügen. Dies kann die Leistung verbessern, sollte jedoch als letztes Mittel mit Diskretion verwendet werden. Selbst dann sollte die Verwendung dieses Flags nach Möglichkeit beim Ausführen von Tests vermieden werden.</font></font></p>
+</li>
+</ul>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3
+4</div><span class="hljs-keyword">var</span> generator = <span class="hljs-keyword">new</span> sourceMap.SourceMapGenerator({
+  <span class="hljs-attr">file</span>: <span class="hljs-string">"my-generated-javascript-file.js"</span>,
+  <span class="hljs-attr">sourceRoot</span>: <span class="hljs-string">"http://example.com/app/js/"</span><font></font>
+});<font></font>
+</code></pre>
+<h4 id="SourceMapGenerator.fromSourceMap(sourceMapConsumer)"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SourceMapGenerator.fromSourceMap (sourceMapConsumer)</font></font></h4>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Erstellt eine neue </font></font><code>SourceMapGenerator</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">aus einer vorhandenen </font></font><code>SourceMapConsumer</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Instanz.</font></font></p>
+<ul>
+<li><code>sourceMapConsumer</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Die SourceMap.</font></font></li>
+</ul>
+<pre><code class="lang-js"><div class="line-numbers">1</div><span class="hljs-keyword">var</span> generator = sourceMap.SourceMapGenerator.fromSourceMap(consumer);
+</code></pre>
+<h4 id="SourceMapGenerator.prototype.addMapping(mapping)"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SourceMapGenerator.prototype.addMapping (Zuordnung)</font></font></h4>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Fügen Sie eine einzelne Zuordnung von der ursprünglichen Quellzeile und -spalte zur Zeile und Spalte der generierten Quelle für diese zu erstellende Quellzuordnung hinzu. Das Zuordnungsobjekt sollte die folgenden Eigenschaften haben:</font></font></p>
+<ul>
+<li><p><code>generated</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Ein Objekt mit den generierten Zeilen- und Spaltenpositionen.</font></font></p>
+</li>
+<li><p><code>original</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Ein Objekt mit den ursprünglichen Zeilen- und Spaltenpositionen.</font></font></p>
+</li>
+<li><p><code>source</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Die ursprüngliche Quelldatei (relativ zum sourceRoot).</font></font></p>
+</li>
+<li><p><code>name</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Ein optionaler ursprünglicher Token-Name für diese Zuordnung.</font></font></p>
+</li>
+</ul>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3
+4
+5</div>generator.addMapping({
+  <span class="hljs-attr">source</span>: <span class="hljs-string">"module-one.scm"</span>,
+  <span class="hljs-attr">original</span>: { <span class="hljs-attr">line</span>: <span class="hljs-number">128</span>, <span class="hljs-attr">column</span>: <span class="hljs-number">0</span> },
+  <span class="hljs-attr">generated</span>: { <span class="hljs-attr">line</span>: <span class="hljs-number">3</span>, <span class="hljs-attr">column</span>: <span class="hljs-number">456</span> }<font></font>
+})<font></font>
+</code></pre>
+<h4 id="SourceMapGenerator.prototype.setSourceContent(sourceFile,-sourceContent)"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SourceMapGenerator.prototype.setSourceContent (sourceFile, sourceContent)</font></font></h4>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Legen Sie den Quellinhalt für eine Originalquelldatei fest.</font></font></p>
+<ul>
+<li><p><code>sourceFile</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> die URL der ursprünglichen Quelldatei.</font></font></p>
+</li>
+<li><p><code>sourceContent</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> den Inhalt der Quelldatei.</font></font></p>
+</li>
+</ul>
+<pre><code class="lang-js"><div class="line-numbers">1
+2</div>generator.setSourceContent(<span class="hljs-string">"module-one.scm"</span>,<font></font>
+                           fs.readFileSync(<span class="hljs-string">"path/to/module-one.scm"</span>))
+</code></pre>
+<h4 id="SourceMapGenerator.prototype.applySourceMap(sourceMapConsumer[,-sourceFile[,-sourceMapPath]])"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SourceMapGenerator.prototype.applySourceMap (sourceMapConsumer [, sourceFile [, sourceMapPath]])</font></font></h4>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Wendet eine SourceMap für eine Quelldatei auf die SourceMap an. Jede Zuordnung zur bereitgestellten Quelldatei wird mit der mitgelieferten SourceMap neu geschrieben. Hinweis: Die Auflösung für die resultierenden Zuordnungen ist das Minimum dieser Zuordnung und der mitgelieferten Zuordnung.</font></font></p>
+<ul>
+<li><p><code>sourceMapConsumer</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Die anzuwendende SourceMap.</font></font></p>
+</li>
+<li><p><code>sourceFile</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Optional. Der Dateiname der Quelldatei. Wenn nicht angegeben, wird sourceMapConsumer.file verwendet, sofern vorhanden. Andernfalls wird ein Fehler ausgegeben.</font></font></p>
+</li>
+<li><p><code>sourceMapPath</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Optional. Der Verzeichnisname des Pfads zur anzuwendenden SourceMap. Wenn relativ, ist er relativ zur SourceMap.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Dieser Parameter wird benötigt, wenn sich die beiden SourceMaps nicht im selben Verzeichnis befinden und die anzuwendende SourceMap relative Quellpfade enthält. In diesem Fall müssen diese relativen Quellpfade relativ zur SourceMap neu geschrieben werden.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Wenn dies weggelassen wird, wird davon ausgegangen, dass sich beide SourceMaps im selben Verzeichnis befinden und daher nicht neu geschrieben werden müssen. (Das Bereitstellen </font></font><code>'.'</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">hat den gleichen Effekt.)</font></font></p>
+</li>
+</ul>
+<h4 id="SourceMapGenerator.prototype.toString()"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SourceMapGenerator.prototype.toString ()</font></font></h4>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Rendert die generierte Quellzuordnung in eine Zeichenfolge.</font></font></p>
+<pre><code class="lang-js"><div class="line-numbers">1
+2</div>generator.toString()
+<span class="hljs-comment">// '{"version":3,"sources":["module-one.scm"],"names":[],"mappings":"...snip...","file":"my-generated-javascript-file.js","sourceRoot":"http://example.com/app/js/"}'</span>
+</code></pre>
+<div name="SourceNode" data-unique="SourceNode"></div><h3 id="SourceNode" class="notranslate">SourceNode</h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SourceNodes bieten eine Möglichkeit, das Interpolieren und / oder Verketten von Snippets des generierten JavaScript-Quellcodes zu abstrahieren, während die zwischen diesen Snippets und dem ursprünglichen Quellcode verknüpften Zeilen- und Spalteninformationen beibehalten werden. Dies ist nützlich als endgültige Zwischendarstellung, die ein Compiler möglicherweise vor der Ausgabe verwendet die generierte JS- und Quellkarte.</font></font></p>
+<h4 id="new-SourceNode([line,-column,-source[,-chunk[,-name]]])"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">neuer SourceNode ([Zeile, Spalte, Quelle [, Block [, Name]]])</font></font></h4>
+<ul>
+<li><p><code>line</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Die ursprüngliche Zeilennummer, die diesem Quellknoten zugeordnet ist, oder null, wenn sie keiner ursprünglichen Zeile zugeordnet ist. Die Zeilennummer basiert auf 1.</font></font></p>
+</li>
+<li><p><code>column</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Die ursprüngliche Spaltennummer, die diesem Quellknoten zugeordnet ist, oder null, wenn sie keiner ursprünglichen Spalte zugeordnet ist. Die Spaltennummer basiert auf 0.</font></font></p>
+</li>
+<li><p><code>source</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Der Dateiname der Originalquelle; null, wenn kein Dateiname angegeben ist.</font></font></p>
+</li>
+<li><p><code>chunk</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Optional. Wird sofort an weitergeleitet </font></font><code>SourceNode.prototype.add</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, siehe unten.</font></font></p>
+</li>
+<li><p><code>name</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Optional. Die ursprüngliche Kennung.</font></font></p>
+</li>
+</ul>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3
+4
+5</div><span class="hljs-keyword">var</span> node = <span class="hljs-keyword">new</span> SourceNode(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-string">"a.cpp"</span>, [
+  <span class="hljs-keyword">new</span> SourceNode(<span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-string">"b.cpp"</span>, <span class="hljs-string">"extern int status;\n"</span>),
+  <span class="hljs-keyword">new</span> SourceNode(<span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-string">"c.cpp"</span>, <span class="hljs-string">"std::string* make_string(size_t n);\n"</span>),
+  <span class="hljs-keyword">new</span> SourceNode(<span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-string">"d.cpp"</span>, <span class="hljs-string">"int main(int argc, char** argv) {}\n"</span>),<font></font>
+]);<font></font>
+</code></pre>
+<h4 id="SourceNode.fromStringWithSourceMap(code,-sourceMapConsumer[,-relativePath])"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SourceNode.fromStringWithSourceMap (Code, sourceMapConsumer [, relativePath])</font></font></h4>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Erstellt einen SourceNode aus generiertem Code und einem SourceMapConsumer.</font></font></p>
+<ul>
+<li><p><code>code</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Der generierte Code</font></font></p>
+</li>
+<li><p><code>sourceMapConsumer</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Die SourceMap für den generierten Code</font></font></p>
+</li>
+<li><p><code>relativePath</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Der optionale Pfad, in dem sich relative Quellen befinden, </font></font><code>sourceMapConsumer</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+sollte relativ zu sein.</font></font></p>
+</li>
+</ul>
+<pre><code class="lang-js"><div class="line-numbers">1
+2</div><span class="hljs-keyword">const</span> consumer = <span class="hljs-keyword">await</span> <span class="hljs-keyword">new</span> SourceMapConsumer(fs.readFileSync(<span class="hljs-string">"path/to/my-file.js.map"</span>, <span class="hljs-string">"utf8"</span>));
+<span class="hljs-keyword">const</span> node = SourceNode.fromStringWithSourceMap(fs.readFileSync(<span class="hljs-string">"path/to/my-file.js"</span>), consumer);
+</code></pre>
+<h4 id="SourceNode.prototype.add(chunk)"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SourceNode.prototype.add (Chunk)</font></font></h4>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Fügen Sie diesem Quellknoten einen Teil des generierten JS hinzu.</font></font></p>
+<ul>
+<li><code>chunk</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Ein String-Snippet aus generiertem JS-Code, einer anderen Instanz von
+  </font></font><code>SourceNode</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">oder einem Array, in dem jedes Mitglied eines dieser Dinge ist.</font></font></li>
+</ul>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3</div>node.add(<span class="hljs-string">" + "</span>);<font></font>
+node.add(otherNode);<font></font>
+node.add([leftHandOperandNode, <span class="hljs-string">" + "</span>, rightHandOperandNode]);
+</code></pre>
+<h4 id="SourceNode.prototype.prepend(chunk)"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SourceNode.prototype.prepend (Chunk)</font></font></h4>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Stellen Sie diesem Quellknoten einen Teil des generierten JS voran.</font></font></p>
+<ul>
+<li><code>chunk</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Ein String-Snippet aus generiertem JS-Code, einer anderen Instanz von
+  </font></font><code>SourceNode</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">oder einem Array, in dem jedes Mitglied eines dieser Dinge ist.</font></font></li>
+</ul>
+<pre><code class="lang-js"><div class="line-numbers">1</div>node.prepend(<span class="hljs-string">"/** Build Id: f783haef86324gf **/\n\n"</span>);
+</code></pre>
+<h4 id="SourceNode.prototype.setSourceContent(sourceFile,-sourceContent)"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SourceNode.prototype.setSourceContent (sourceFile, sourceContent)</font></font></h4>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Legen Sie den Quellinhalt für eine Quelldatei fest. Dieser wird </font></font><code>SourceMap</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">dem </font></font><code>sourcesContent</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Feld </font><font style="vertical-align: inherit;">hinzugefügt
+ </font><font style="vertical-align: inherit;">.</font></font></p>
+<ul>
+<li><p><code>sourceFile</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Der Dateiname der Quelldatei</font></font></p>
+</li>
+<li><p><code>sourceContent</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Der Inhalt der Quelldatei</font></font></p>
+</li>
+</ul>
+<pre><code class="lang-js"><div class="line-numbers">1
+2</div>node.setSourceContent(<span class="hljs-string">"module-one.scm"</span>,<font></font>
+                      fs.readFileSync(<span class="hljs-string">"path/to/module-one.scm"</span>))
+</code></pre>
+<h4 id="SourceNode.prototype.walk(fn)"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SourceNode.prototype.walk (fn)</font></font></h4>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Gehen Sie über den Baum der JS-Snippets in diesem Knoten und seinen untergeordneten Knoten. Die Walking-Funktion wird einmal für jedes JS-Snippet aufgerufen und an dieses Snippet und die Zeilen- / Spaltenposition der ursprünglich zugeordneten Quelle übergeben.</font></font></p>
+<ul>
+<li><code>fn</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Die Durchquerungsfunktion.</font></font></li>
+</ul>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14</div><span class="hljs-keyword">var</span> node = <span class="hljs-keyword">new</span> SourceNode(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-string">"a.js"</span>, [
+  <span class="hljs-keyword">new</span> SourceNode(<span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-string">"b.js"</span>, <span class="hljs-string">"uno"</span>),
+  <span class="hljs-string">"dos"</span>,<font></font>
+  [<font></font>
+    <span class="hljs-string">"tres"</span>,
+    <span class="hljs-keyword">new</span> SourceNode(<span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-string">"c.js"</span>, <span class="hljs-string">"quatro"</span>)<font></font>
+  ]<font></font>
+]);<font></font>
+<font></font>
+node.walk(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">code, loc</span>) </span>{ <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"WALK:"</span>, code, loc); })
+<span class="hljs-comment">// WALK: uno { source: 'b.js', line: 3, column: 4, name: null }</span>
+<span class="hljs-comment">// WALK: dos { source: 'a.js', line: 1, column: 2, name: null }</span>
+<span class="hljs-comment">// WALK: tres { source: 'a.js', line: 1, column: 2, name: null }</span>
+<span class="hljs-comment">// WALK: quatro { source: 'c.js', line: 5, column: 6, name: null }</span>
+</code></pre>
+<h4 id="SourceNode.prototype.walkSourceContents(fn)"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SourceNode.prototype.walkSourceContents (fn)</font></font></h4>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Gehen Sie über den Baum von SourceNodes. Die Walking-Funktion wird für jeden Quelldateiinhalt aufgerufen und übergibt den Dateinamen und den Quellinhalt.</font></font></p>
+<ul>
+<li><code>fn</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Die Durchquerungsfunktion.</font></font></li>
+</ul>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12</div><span class="hljs-keyword">var</span> a = <span class="hljs-keyword">new</span> SourceNode(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-string">"a.js"</span>, <span class="hljs-string">"generated from a"</span>);<font></font>
+a.setSourceContent(<span class="hljs-string">"a.js"</span>, <span class="hljs-string">"original a"</span>);
+<span class="hljs-keyword">var</span> b = <span class="hljs-keyword">new</span> SourceNode(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-string">"b.js"</span>, <span class="hljs-string">"generated from b"</span>);<font></font>
+b.setSourceContent(<span class="hljs-string">"b.js"</span>, <span class="hljs-string">"original b"</span>);
+<span class="hljs-keyword">var</span> c = <span class="hljs-keyword">new</span> SourceNode(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-string">"c.js"</span>, <span class="hljs-string">"generated from c"</span>);<font></font>
+c.setSourceContent(<span class="hljs-string">"c.js"</span>, <span class="hljs-string">"original c"</span>);<font></font>
+<font></font>
+<span class="hljs-keyword">var</span> node = <span class="hljs-keyword">new</span> SourceNode(<span class="hljs-literal">null</span>, <span class="hljs-literal">null</span>, <span class="hljs-literal">null</span>, [a, b, c]);<font></font>
+node.walkSourceContents(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">source, contents</span>) </span>{ <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"WALK:"</span>, source, <span class="hljs-string">":"</span>, contents); })
+<span class="hljs-comment">// WALK: a.js : original a</span>
+<span class="hljs-comment">// WALK: b.js : original b</span>
+<span class="hljs-comment">// WALK: c.js : original c</span>
+</code></pre>
+<h4 id="SourceNode.prototype.join(sep)"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SourceNode.prototype.join (sep)</font></font></h4>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Wie mit </font></font><code>Array.prototype.join</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ausnahme von SourceNodes. Fügt das Trennzeichen zwischen den untergeordneten Elementen dieses Quellknotens ein.</font></font></p>
+<ul>
+<li><code>sep</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Das Trennzeichen.</font></font></li>
+</ul>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3
+4
+5
+6</div><span class="hljs-keyword">var</span> lhs = <span class="hljs-keyword">new</span> SourceNode(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-string">"a.rs"</span>, <span class="hljs-string">"my_copy"</span>);
+<span class="hljs-keyword">var</span> operand = <span class="hljs-keyword">new</span> SourceNode(<span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-string">"a.rs"</span>, <span class="hljs-string">"="</span>);
+<span class="hljs-keyword">var</span> rhs = <span class="hljs-keyword">new</span> SourceNode(<span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-string">"a.rs"</span>, <span class="hljs-string">"orig.clone()"</span>);<font></font>
+<font></font>
+<span class="hljs-keyword">var</span> node = <span class="hljs-keyword">new</span> SourceNode(<span class="hljs-literal">null</span>, <span class="hljs-literal">null</span>, <span class="hljs-literal">null</span>, [ lhs, operand, rhs ]);
+<span class="hljs-keyword">var</span> joinedNode = node.join(<span class="hljs-string">" "</span>);
+</code></pre>
+<h4 id="SourceNode.prototype.replaceRight(pattern,-replacement)"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SourceNode.prototype.replaceRight (Muster, Ersatz)</font></font></h4>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Rufen Sie </font></font><code>String.prototype.replace</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">das Quell-Snippet ganz rechts auf. Nützlich, um Leerzeichen vom Ende eines Quellknotens usw. zu entfernen.</font></font></p>
+<ul>
+<li><p><code>pattern</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Das zu ersetzende Muster.</font></font></p>
+</li>
+<li><p><code>replacement</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Das Ding, durch das das Muster ersetzt werden soll.</font></font></p>
+</li>
+</ul>
+<pre><code class="lang-js"><div class="line-numbers">1
+2</div><span class="hljs-comment">// Trim trailing white space.</span>
+node.replaceRight(<span class="hljs-regexp">/\s*$/</span>, <span class="hljs-string">""</span>);
+</code></pre>
+<h4 id="SourceNode.prototype.toString()"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SourceNode.prototype.toString ()</font></font></h4>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Gibt die Zeichenfolgendarstellung dieses Quellknotens zurück. Geht über den Baum und verkettet alle verschiedenen Snippets zu einer Zeichenfolge.</font></font></p>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11</div><span class="hljs-keyword">var</span> node = <span class="hljs-keyword">new</span> SourceNode(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-string">"a.js"</span>, [
+  <span class="hljs-keyword">new</span> SourceNode(<span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-string">"b.js"</span>, <span class="hljs-string">"uno"</span>),
+  <span class="hljs-string">"dos"</span>,<font></font>
+  [<font></font>
+    <span class="hljs-string">"tres"</span>,
+    <span class="hljs-keyword">new</span> SourceNode(<span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-string">"c.js"</span>, <span class="hljs-string">"quatro"</span>)<font></font>
+  ]<font></font>
+]);<font></font>
+<font></font>
+node.toString()<font></font>
+<span class="hljs-comment">// 'unodostresquatro'</span>
+</code></pre>
+<h4 id="SourceNode.prototype.toStringWithSourceMap([startOfSourceMap])"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SourceNode.prototype.toStringWithSourceMap ([startOfSourceMap])</font></font></h4>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Gibt die Zeichenfolgendarstellung dieses Baums von Quellknoten sowie einen SourceMapGenerator zurück, der alle Zuordnungen zwischen der generierten und der ursprünglichen Quelle enthält.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Die Argumente sind die gleichen wie die zu </font></font><code>new SourceMapGenerator</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">.</font></font></p>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12</div><span class="hljs-keyword">var</span> node = <span class="hljs-keyword">new</span> SourceNode(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-string">"a.js"</span>, [
+  <span class="hljs-keyword">new</span> SourceNode(<span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-string">"b.js"</span>, <span class="hljs-string">"uno"</span>),
+  <span class="hljs-string">"dos"</span>,<font></font>
+  [<font></font>
+    <span class="hljs-string">"tres"</span>,
+    <span class="hljs-keyword">new</span> SourceNode(<span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-string">"c.js"</span>, <span class="hljs-string">"quatro"</span>)<font></font>
+  ]<font></font>
+]);<font></font>
+<font></font>
+node.toStringWithSourceMap({ <span class="hljs-attr">file</span>: <span class="hljs-string">"my-output-file.js"</span> })
+<span class="hljs-comment">// { code: 'unodostresquatro',</span>
+<span class="hljs-comment">//   map: [object SourceMapGenerator] }</span>
+</code></pre>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2014-Present fibjs.org | </font></font><a href="../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Unterstützen Sie uns</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip951280"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip951280" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Klicken Sie hier, um zur obersten Seite zurückzukehren</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../js/common.js"></script><script type="text/javascript" src="../../../../js/docs.js"></script></body></html>

@@ -1,0 +1,542 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../../../imgs/icon.png"><title>Module http-JavaScript on Fiber</title><link href="../../../../../css/common.css" rel="stylesheet"><link href="../../../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">탐색 전환</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../../../index.html"><img src="../../../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../../../index.html">HOME</a></li><li><a href="../../../guide/readme.md.html">GUIDE</a></li><li><a href="../readme.md.html">MODULE</a></li><li><a href="../../object/readme.md.html">OBJECT</a></li><li><a href="../../../awesome/readme.md.html">AWESOME</a></li><li><a href="../../../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../../../docs/manual/module/ifs/http.md.html">中文</a> <a href="../../../../../en/docs/manual/module/ifs/http.md.html">ENGLISH</a> <a href="../../../../../ja/docs/manual/module/ifs/http.md.html">日本語</a> <a href="../../../../../de/docs/manual/module/ifs/http.md.html">Deutsch</a> <a href="../../../../../es/docs/manual/module/ifs/http.md.html">Español</a> <a href="../../../../../fr/docs/manual/module/ifs/http.md.html">Français</a> <a href="../../../../../ko/docs/manual/module/ifs/http.md.html">한국어</a> <a href="../../../../../it/docs/manual/module/ifs/http.md.html">Italiano</a> <a href="../../../../../ru/docs/manual/module/ifs/http.md.html">Русский</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 모듈 기본 모듈 </font></font></span><div class="search"><span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input type="text" class="searchbox ds-input" placeholder="검색" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-label="검색 입력" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Avenir, &quot;Segoe UI&quot;, Arial, &quot;Hiragino Sans GB&quot;, 冬青黑, &quot;Microsoft YaHei&quot;, 微软雅黑, SimSun, 宋体, Helvetica, Tahoma, &quot;Arial sans-serif&quot;; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div class="ds-dataset-1"></div></span></span></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">홈페이지</font></font></a></li><li><a href="../readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 기본 모듈 </font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 모듈 http </font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 개발 가이드 </font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="../../../guide/about.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs는 무엇입니까?</font></font></a></li>
+<li><a href="../../../guide/install.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">설치 및 운영 환경</font></font></a></li>
+<li><a href="../../../guide/hello.md.html" class="notranslate">hello, world</a></li>
+<li><a href="../../../guide/test.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">좋은 삶은 시험에서 시작됩니다</font></font></a></li>
+<li><a href="../../../guide/profiler.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">성능 킬러 찾기</font></font></a></li>
+<li><a href="../../../guide/desktop.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">데스크톱 애플리케이션을 빠르게 개발</font></font></a></li>
+<li><a href="../../../guide/server-hot-update.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">서버 모듈 핫 업데이트</font></font></a></li>
+<li><a href="../../../guide/host-routes.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">도메인 이름 라우팅</font></font></a></li>
+<li><a href="../../../guide/x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs에서 X509 인증서 사용</font></font></a></li>
+<li><a href="../../../guide/contribute.md.html">添加 native 模块</a></li>
+</ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_module" aria-controls="collapse_module"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 기본 모듈 </font></font></a></h4></div><div id="collapse_module" class="panel-collapse collapse in" aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="assert.md.html" class="notranslate">assert</a></li>
+<li><a href="base32.md.html" class="notranslate">base32</a></li>
+<li><a href="base64.md.html" class="notranslate">base64</a></li>
+<li><a href="base64vlq.md.html" class="notranslate">base64vlq</a></li>
+<li><a href="bson.md.html" class="notranslate">bson</a></li>
+<li><a href="child_process.md.html" class="notranslate">child_process</a></li>
+<li><a href="console.md.html" class="notranslate">console</a></li>
+<li><a href="constants.md.html" class="notranslate">constants</a></li>
+<li><a href="coroutine.md.html" class="notranslate">coroutine</a></li>
+<li><a href="crypto.md.html" class="notranslate">crypto</a></li>
+<li><a href="db.md.html" class="notranslate">db</a></li>
+<li><a href="dgram.md.html" class="notranslate">dgram</a></li>
+<li><a href="dns.md.html" class="notranslate">dns</a></li>
+<li><a href="encoding.md.html" class="notranslate">encoding</a></li>
+<li><a href="fs.md.html" class="notranslate">fs</a></li>
+<li><a href="gd.md.html" class="notranslate">gd</a></li>
+<li><a href="global.md.html" class="notranslate">global</a></li>
+<li><a href="gui.md.html" class="notranslate">gui</a></li>
+<li><a href="hash.md.html" class="notranslate">hash</a></li>
+<li><a href="hex.md.html" class="notranslate">hex</a></li>
+<li class="active"><a href="http.md.html" class="notranslate">http</a></li>
+<li><a href="iconv.md.html" class="notranslate">iconv</a></li>
+<li><a href="io.md.html" class="notranslate">io</a></li>
+<li><a href="json.md.html" class="notranslate">json</a></li>
+<li><a href="mq.md.html" class="notranslate">mq</a></li>
+<li><a href="msgpack.md.html" class="notranslate">msgpack</a></li>
+<li><a href="net.md.html" class="notranslate">net</a></li>
+<li><a href="os.md.html" class="notranslate">os</a></li>
+<li><a href="path.md.html" class="notranslate">path</a></li>
+<li><a href="path_posix.md.html" class="notranslate">path_posix</a></li>
+<li><a href="path_win32.md.html" class="notranslate">path_win32</a></li>
+<li><a href="process.md.html" class="notranslate">process</a></li>
+<li><a href="profiler.md.html" class="notranslate">profiler</a></li>
+<li><a href="punycode.md.html" class="notranslate">punycode</a></li>
+<li><a href="querystring.md.html" class="notranslate">querystring</a></li>
+<li><a href="registry.md.html" class="notranslate">registry</a></li>
+<li><a href="ssl.md.html" class="notranslate">ssl</a></li>
+<li><a href="string_decoder.md.html" class="notranslate">string_decoder</a></li>
+<li><a href="test.md.html" class="notranslate">test</a></li>
+<li><a href="timers.md.html" class="notranslate">timers</a></li>
+<li><a href="tty.md.html" class="notranslate">tty</a></li>
+<li><a href="url.md.html" class="notranslate">url</a></li>
+<li><a href="util.md.html" class="notranslate">util</a></li>
+<li><a href="uuid.md.html" class="notranslate">uuid</a></li>
+<li><a href="vm.md.html" class="notranslate">vm</a></li>
+<li><a href="ws.md.html" class="notranslate">ws</a></li>
+<li><a href="xml.md.html" class="notranslate">xml</a></li>
+<li><a href="zip.md.html" class="notranslate">zip</a></li>
+<li><a href="zlib.md.html" class="notranslate">zlib</a></li>
+</ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_object" aria-controls="collapse_object"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 내장 개체 </font></font></a></h4></div><div id="collapse_object" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="../../object/ifs/buffer.md.html" class="notranslate">Buffer</a></li>
+<li><a href="../../object/ifs/bufferedstream.md.html" class="notranslate">BufferedStream</a></li>
+<li><a href="../../object/ifs/chain.md.html" class="notranslate">Chain</a></li>
+<li><a href="../../object/ifs/childprocess.md.html" class="notranslate">ChildProcess</a></li>
+<li><a href="../../object/ifs/cipher.md.html" class="notranslate">Cipher</a></li>
+<li><a href="../../object/ifs/condition.md.html" class="notranslate">Condition</a></li>
+<li><a href="../../object/ifs/dbconnection.md.html" class="notranslate">DbConnection</a></li>
+<li><a href="../../object/ifs/dgramsocket.md.html" class="notranslate">DgramSocket</a></li>
+<li><a href="../../object/ifs/digest.md.html" class="notranslate">Digest</a></li>
+<li><a href="../../object/ifs/event.md.html" class="notranslate">Event</a></li>
+<li><a href="../../object/ifs/eventemitter.md.html" class="notranslate">EventEmitter</a></li>
+<li><a href="../../object/ifs/fswatcher.md.html" class="notranslate">FSWatcher</a></li>
+<li><a href="../../object/ifs/fiber.md.html" class="notranslate">Fiber</a></li>
+<li><a href="../../object/ifs/file.md.html" class="notranslate">File</a></li>
+<li><a href="../../object/ifs/handler.md.html" class="notranslate">Handler</a></li>
+<li><a href="../../object/ifs/heapgraphedge.md.html" class="notranslate">HeapGraphEdge</a></li>
+<li><a href="../../object/ifs/heapgraphnode.md.html" class="notranslate">HeapGraphNode</a></li>
+<li><a href="../../object/ifs/heapsnapshot.md.html" class="notranslate">HeapSnapshot</a></li>
+<li><a href="../../object/ifs/httpclient.md.html" class="notranslate">HttpClient</a></li>
+<li><a href="../../object/ifs/httpcollection.md.html" class="notranslate">HttpCollection</a></li>
+<li><a href="../../object/ifs/httpcookie.md.html" class="notranslate">HttpCookie</a></li>
+<li><a href="../../object/ifs/httphandler.md.html" class="notranslate">HttpHandler</a></li>
+<li><a href="../../object/ifs/httpmessage.md.html" class="notranslate">HttpMessage</a></li>
+<li><a href="../../object/ifs/httprepeater.md.html" class="notranslate">HttpRepeater</a></li>
+<li><a href="../../object/ifs/httprequest.md.html" class="notranslate">HttpRequest</a></li>
+<li><a href="../../object/ifs/httpresponse.md.html" class="notranslate">HttpResponse</a></li>
+<li><a href="../../object/ifs/httpserver.md.html" class="notranslate">HttpServer</a></li>
+<li><a href="../../object/ifs/httpuploaddata.md.html" class="notranslate">HttpUploadData</a></li>
+<li><a href="../../object/ifs/httpsserver.md.html" class="notranslate">HttpsServer</a></li>
+<li><a href="../../object/ifs/image.md.html" class="notranslate">Image</a></li>
+<li><a href="../../object/ifs/leveldb.md.html" class="notranslate">LevelDB</a></li>
+<li><a href="../../object/ifs/lock.md.html" class="notranslate">Lock</a></li>
+<li><a href="../../object/ifs/lrucache.md.html" class="notranslate">LruCache</a></li>
+<li><a href="../../object/ifs/mssql.md.html" class="notranslate">MSSQL</a></li>
+<li><a href="../../object/ifs/memorystream.md.html" class="notranslate">MemoryStream</a></li>
+<li><a href="../../object/ifs/message.md.html" class="notranslate">Message</a></li>
+<li><a href="../../object/ifs/mongocollection.md.html" class="notranslate">MongoCollection</a></li>
+<li><a href="../../object/ifs/mongocursor.md.html" class="notranslate">MongoCursor</a></li>
+<li><a href="../../object/ifs/mongodb.md.html" class="notranslate">MongoDB</a></li>
+<li><a href="../../object/ifs/mongoid.md.html" class="notranslate">MongoID</a></li>
+<li><a href="../../object/ifs/mysql.md.html" class="notranslate">MySQL</a></li>
+<li><a href="../../object/ifs/pkey.md.html" class="notranslate">PKey</a></li>
+<li><a href="../../object/ifs/rangestream.md.html" class="notranslate">RangeStream</a></li>
+<li><a href="../../object/ifs/redis.md.html" class="notranslate">Redis</a></li>
+<li><a href="../../object/ifs/redishash.md.html" class="notranslate">RedisHash</a></li>
+<li><a href="../../object/ifs/redislist.md.html" class="notranslate">RedisList</a></li>
+<li><a href="../../object/ifs/redisset.md.html" class="notranslate">RedisSet</a></li>
+<li><a href="../../object/ifs/redissortedset.md.html" class="notranslate">RedisSortedSet</a></li>
+<li><a href="../../object/ifs/routing.md.html" class="notranslate">Routing</a></li>
+<li><a href="../../object/ifs/sqlite.md.html" class="notranslate">SQLite</a></li>
+<li><a href="../../object/ifs/sandbox.md.html" class="notranslate">SandBox</a></li>
+<li><a href="../../object/ifs/seekablestream.md.html" class="notranslate">SeekableStream</a></li>
+<li><a href="../../object/ifs/semaphore.md.html" class="notranslate">Semaphore</a></li>
+<li><a href="../../object/ifs/service.md.html" class="notranslate">Service</a></li>
+<li><a href="../../object/ifs/smtp.md.html" class="notranslate">Smtp</a></li>
+<li><a href="../../object/ifs/socket.md.html" class="notranslate">Socket</a></li>
+<li><a href="../../object/ifs/sslhandler.md.html" class="notranslate">SslHandler</a></li>
+<li><a href="../../object/ifs/sslserver.md.html" class="notranslate">SslServer</a></li>
+<li><a href="../../object/ifs/sslsocket.md.html" class="notranslate">SslSocket</a></li>
+<li><a href="../../object/ifs/stat.md.html" class="notranslate">Stat</a></li>
+<li><a href="../../object/ifs/statswatcher.md.html" class="notranslate">StatsWatcher</a></li>
+<li><a href="../../object/ifs/stream.md.html" class="notranslate">Stream</a></li>
+<li><a href="../../object/ifs/stringdecoder.md.html" class="notranslate">StringDecoder</a></li>
+<li><a href="../../object/ifs/tcpserver.md.html" class="notranslate">TcpServer</a></li>
+<li><a href="../../object/ifs/timer.md.html" class="notranslate">Timer</a></li>
+<li><a href="../../object/ifs/urlobject.md.html" class="notranslate">UrlObject</a></li>
+<li><a href="../../object/ifs/websocket.md.html" class="notranslate">WebSocket</a></li>
+<li><a href="../../object/ifs/websocketmessage.md.html" class="notranslate">WebSocketMessage</a></li>
+<li><a href="../../object/ifs/webview.md.html" class="notranslate">WebView</a></li>
+<li><a href="../../object/ifs/worker.md.html" class="notranslate">Worker</a></li>
+<li><a href="../../object/ifs/x509cert.md.html" class="notranslate">X509Cert</a></li>
+<li><a href="../../object/ifs/x509crl.md.html" class="notranslate">X509Crl</a></li>
+<li><a href="../../object/ifs/x509req.md.html" class="notranslate">X509Req</a></li>
+<li><a href="../../object/ifs/xmlattr.md.html" class="notranslate">XmlAttr</a></li>
+<li><a href="../../object/ifs/xmlcdatasection.md.html" class="notranslate">XmlCDATASection</a></li>
+<li><a href="../../object/ifs/xmlcharacterdata.md.html" class="notranslate">XmlCharacterData</a></li>
+<li><a href="../../object/ifs/xmlcomment.md.html" class="notranslate">XmlComment</a></li>
+<li><a href="../../object/ifs/xmldocument.md.html" class="notranslate">XmlDocument</a></li>
+<li><a href="../../object/ifs/xmldocumenttype.md.html" class="notranslate">XmlDocumentType</a></li>
+<li><a href="../../object/ifs/xmlelement.md.html" class="notranslate">XmlElement</a></li>
+<li><a href="../../object/ifs/xmlnamednodemap.md.html" class="notranslate">XmlNamedNodeMap</a></li>
+<li><a href="../../object/ifs/xmlnode.md.html" class="notranslate">XmlNode</a></li>
+<li><a href="../../object/ifs/xmlnodelist.md.html" class="notranslate">XmlNodeList</a></li>
+<li><a href="../../object/ifs/xmlprocessinginstruction.md.html" class="notranslate">XmlProcessingInstruction</a></li>
+<li><a href="../../object/ifs/xmltext.md.html" class="notranslate">XmlText</a></li>
+<li><a href="../../object/ifs/zipfile.md.html" class="notranslate">ZipFile</a></li>
+<li><a href="../../object/ifs/object.md.html" class="notranslate">object</a></li>
+</ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_awesome" aria-controls="collapse_awesome"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 커뮤니티 모듈 </font></font></a></h4></div><div id="collapse_awesome" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="../../../awesome/module/fib-session.md.html" class="notranslate">fib-session</a></li>
+<li><a href="../../../awesome/module/fib-pool.md.html" class="notranslate">fib-pool</a></li>
+<li><a href="../../../awesome/module/fib-orm.md.html" class="notranslate">fib-orm</a></li>
+<li><a href="../../../awesome/module/fib-app.md.html" class="notranslate">fib-app</a></li>
+<li><a href="../../../awesome/module/fib-kv.md.html" class="notranslate">fib-kv</a></li>
+<li><a href="../../../awesome/module/fib-rpc.md.html" class="notranslate">fib-rpc</a></li>
+<li><a href="../../../awesome/module/fib-qr.md.html" class="notranslate">fib-qr</a></li>
+<li><a href="../../../awesome/module/fib-pug.md.html" class="notranslate">fib-pug</a></li>
+<li><a href="../../../awesome/module/ejs.md.html" class="notranslate">ejs</a></li>
+<li><a href="../../../awesome/module/juicer.md.html" class="notranslate">Juicer</a></li>
+<li><a href="../../../awesome/module/highlight.js.md.html" class="notranslate">highlight.js</a></li>
+<li><a href="../../../awesome/module/marked.md.html" class="notranslate">marked</a></li>
+<li><a href="../../../awesome/module/node-cron.md.html" class="notranslate">node-cron</a></li>
+<li><a href="../../../awesome/module/debug.md.html" class="notranslate">debug</a></li>
+<li><a href="../../../awesome/module/benchmark.js.md.html" class="notranslate">benchmark.js</a></li>
+<li><a href="../../../awesome/module/sinon.md.html" class="notranslate">sinon</a></li>
+<li><a href="../../../awesome/module/node-mime.md.html" class="notranslate">node-mime</a></li>
+<li><a href="../../../awesome/module/validatorjs.md.html" class="notranslate">validatorjs</a></li>
+<li><a href="../../../awesome/module/superstruct.md.html" class="notranslate">superstruct</a></li>
+<li><a href="../../../awesome/module/cluster-server.md.html" class="notranslate">cluster-server</a></li>
+<li><a href="../../../awesome/module/synaptic.md.html" class="notranslate">synaptic</a></li>
+<li><a href="../../../awesome/module/source-map.md.html" class="notranslate">source-map</a></li>
+<li><a href="../../../awesome/module/json-format.md.html" class="notranslate">json-format</a></li>
+<li><a href="../../../awesome/module/viz.js.md.html" class="notranslate">viz.js</a></li>
+<li><a href="../../../awesome/module/nomnoml.md.html" class="notranslate">nomnoml</a></li>
+<li><a href="../../../awesome/module/pegjs.md.html" class="notranslate">pegjs</a></li>
+<li><a href="../../../awesome/module/uglify-js.md.html" class="notranslate">uglify-js</a></li>
+<li><a href="../../../awesome/module/js-beautify.md.html" class="notranslate">js-beautify</a></li>
+<li><a href="../../../awesome/module/chalk-animation.md.html" class="notranslate">chalk-animation</a></li>
+<li><a href="../../../awesome/module/jsrsasign.md.html" class="notranslate">jsrsasign</a></li>
+<li><a href="../../../awesome/module/crypto-js.md.html" class="notranslate">crypto-js</a></li>
+<li><a href="../../../awesome/module/ascii-table.md.html" class="notranslate">ascii-table</a></li>
+<li><a href="../../../awesome/module/logstream.md.html" class="notranslate">logstream</a></li>
+<li><a href="../../../awesome/module/ci.md.html" class="notranslate">ci</a></li>
+<li><a href="../../../awesome/module/fs-readdir-recursive.md.html" class="notranslate">fs-readdir-recursive</a></li>
+<li><a href="../../../awesome/module/mkdirp.md.html" class="notranslate">mkdirp</a></li>
+<li><a href="../../../awesome/module/rmdirr.md.html" class="notranslate">rmdirr</a></li>
+<li><a href="../../../awesome/module/detect-port.md.html" class="notranslate">detect-port</a></li>
+<li><a href="../../../awesome/module/bitcoinjs-lib.md.html" class="notranslate">bitcoinjs-lib</a></li>
+<li><a href="../../../awesome/module/rakuten.md.html" class="notranslate">Rakuten</a></li>
+</ul>
+ </div></div></div>  </div></div><div class="content"><div class="social-share share-component" data-sites="weibo,twitter" data-description="分享"></div> <div name="模块-http" data-unique="模块-http"></div><h1 id="模块-http"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">모듈 http</font></font></h1>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">http 프로토콜 처리를 지원하는 하이퍼 텍스트 전송 프로토콜 모듈, 모듈 별칭 : https</font></font></p>
+<div name="对象" data-unique="对象"></div><h2 id="对象"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">목적</font></font></h2>
+<div name="Request" data-unique="Request"></div><h3 id="Request" class="notranslate">Request</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">http 요청 객체를 생성합니다. </font></font><a href="../../object/ifs/httprequest.md.html" class="notranslate">HttpRequest</a></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>HttpRequest http.Request;
+</code></pre>
+<hr>
+<div name="Response" data-unique="Response"></div><h3 id="Response" class="notranslate">Response</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">http 응답 객체를 만듭니다. </font></font><a href="../../object/ifs/httpresponse.md.html" class="notranslate">HttpResponse</a></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>HttpResponse http.Response;
+</code></pre>
+<hr>
+<div name="Cookie" data-unique="Cookie"></div><h3 id="Cookie" class="notranslate">Cookie</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">http 쿠키 개체를 만듭니다. </font></font><a href="../../object/ifs/httpcookie.md.html" class="notranslate">HttpCookie</a></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>HttpCookie http.Cookie;
+</code></pre>
+<hr>
+<div name="Server" data-unique="Server"></div><h3 id="Server" class="notranslate">Server</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">http 서버를 만듭니다. </font></font><a href="../../object/ifs/httpserver.md.html" class="notranslate">HttpServer</a></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>HttpServer http.Server;
+</code></pre>
+<hr>
+<div name="Client" data-unique="Client"></div><h3 id="Client" class="notranslate">Client</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">http 클라이언트를 만듭니다. </font></font><a href="../../object/ifs/httpclient.md.html" class="notranslate">HttpClient</a></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>HttpClient http.Client;
+</code></pre>
+<hr>
+<div name="HttpsServer" data-unique="HttpsServer"></div><h3 id="HttpsServer" class="notranslate">HttpsServer</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">https 서버를 만듭니다. </font></font><a href="../../object/ifs/httpsserver.md.html" class="notranslate">HttpsServer</a></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>HttpsServer http.HttpsServer;
+</code></pre>
+<hr>
+<div name="Handler" data-unique="Handler"></div><h3 id="Handler" class="notranslate">Handler</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">http 프로토콜 처리기 개체를 만듭니다. </font></font><a href="../../object/ifs/httphandler.md.html" class="notranslate">HttpHandler</a></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>HttpHandler http.Handler;
+</code></pre>
+<hr>
+<div name="Repeater" data-unique="Repeater"></div><h3 id="Repeater" class="notranslate">Repeater</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">http 요청 전달 프로세서 객체를 만듭니다. </font></font><a href="../../object/ifs/httprepeater.md.html" class="notranslate">HttpRepeater</a></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>HttpRepeater http.Repeater;
+</code></pre>
+<div name="静态函数" data-unique="静态函数"></div><h2 id="静态函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">정적 기능</font></font></h2>
+<div name="fileHandler" data-unique="fileHandler"></div><h3 id="fileHandler" class="notranslate">fileHandler</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">정적 파일로 http 메시지에 응답하는 http 정적 파일 프로세서를 만듭니다.</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">static</span> Handler http.fileHandler(<span class="hljs-built_in">String</span> root,
+    <span class="hljs-built_in">Object</span> mimes = {},
+    <span class="hljs-built_in">Boolean</span> autoIndex = <span class="hljs-literal">false</span>);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">root</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 파일 루트 경로</font></font></li>
+<li><span class="notranslate">mimes</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 개체, 확장 된 MIME 설정</font></font></li>
+<li><span class="notranslate">autoIndex</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 부울, 카탈로그 파일 검색 지원 여부, 기본값은 지원되지 않음</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과 :</font></font></p>
+<ul>
+<li><a href="../../object/ifs/handler.md.html" class="notranslate">Handler</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, http 메시지 처리를위한 정적 파일 프로세서를 반환합니다.</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fileHandler는 gzip 사전 압축을 지원합니다. 요청이 gzip 인코딩을 수락하고 동일한 경로에 filename.ext.gz 파일이있는 경우이 파일을 직접 반환하여 반복 압축으로 인한 서버 부하를 방지합니다.</font></font></p>
+<hr>
+<div name="setClientCert" data-unique="setClientCert"></div><h3 id="setClientCert" class="notranslate">setClientCert</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">기본 클라이언트 인증서 설정</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> http.setClientCert(X509Cert crt,<font></font>
+    PKey key);<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">crt</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="../../object/ifs/x509cert.md.html" class="notranslate">X509Cert</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><a href="../../object/ifs/x509cert.md.html" class="notranslate">X509Cert</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 클라이언트 인증 서버용 인증서</font></font></li>
+<li><span class="notranslate">key</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="../../object/ifs/pkey.md.html" class="notranslate">PKey</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><a href="../../object/ifs/pkey.md.html" class="notranslate">PKey</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 클라이언트와 통신하는 데 사용되는 개인 키</font></font></li>
+</ul>
+<hr>
+<div name="request" data-unique="request"></div><h3 id="request" class="notranslate">request</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">지정된 스트림 개체에 http 요청을 보내고 결과를 반환합니다.</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> HttpResponse http.request(Stream conn,<font></font>
+    HttpRequest req) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">conn</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="../../object/ifs/stream.md.html" class="notranslate">Stream</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 요청을 처리 할 스트림 개체 지정</font></font></li>
+<li><span class="notranslate">req</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="../../object/ifs/httprequest.md.html" class="notranslate">HttpRequest</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 발송 예정 </font></font><a href="../../object/ifs/httprequest.md.html" class="notranslate">HttpRequest</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 목적</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과 :</font></font></p>
+<ul>
+<li><a href="../../object/ifs/httpresponse.md.html" class="notranslate">HttpResponse</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 반환 서버 응답</font></font></li>
+</ul>
+<hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">지정된 스트림 개체에 http 요청을 보내고 결과를 반환합니다.</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">static</span> HttpResponse http.request(Stream conn,<font></font>
+    HttpRequest req,<font></font>
+    SeekableStream response_body) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">conn</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="../../object/ifs/stream.md.html" class="notranslate">Stream</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 요청을 처리 할 스트림 개체 지정</font></font></li>
+<li><span class="notranslate">req</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="../../object/ifs/httprequest.md.html" class="notranslate">HttpRequest</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 발송 예정 </font></font><a href="../../object/ifs/httprequest.md.html" class="notranslate">HttpRequest</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 목적</font></font></li>
+<li><span class="notranslate">response_body</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="../../object/ifs/seekablestream.md.html" class="notranslate">SeekableStream</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, response.body의 흐름을 지정합니다.</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과 :</font></font></p>
+<ul>
+<li><a href="../../object/ifs/httpresponse.md.html" class="notranslate">HttpResponse</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 반환 서버 응답</font></font></li>
+</ul>
+<hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">지정된 요청 </font></font><a href="url.md.html" class="notranslate">url</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">그리고 결과를 반환</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">static</span> HttpResponse http.request(<span class="hljs-built_in">String</span> method,
+    <span class="hljs-built_in">String</span> url,
+    <span class="hljs-built_in">Object</span> opts = {}) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">method</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, http 요청 방법 지정 : GET, POST 등</font></font></li>
+<li><span class="notranslate">url</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 지정 </font></font><a href="url.md.html" class="notranslate">url</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 호스트를 포함하여 완전해야합니다. </font></font><a href="url.md.html" class="notranslate">url</a></li>
+<li><span class="notranslate">opts</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 개체, 추가 정보 지정</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과 :</font></font></p>
+<ul>
+<li><a href="../../object/ifs/httpresponse.md.html" class="notranslate">HttpResponse</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 반환 서버 응답</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">opts에는 요청 된 추가 옵션이 포함되어 있으며 지원되는 콘텐츠는 다음과 같습니다.</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7</div>{
+    <span class="hljs-string">"query"</span>: {},
+    <span class="hljs-string">"body"</span>: SeekableStream | Buffer | <span class="hljs-built_in">String</span> | {},
+    <span class="hljs-string">"json"</span>: {},
+    <span class="hljs-string">"headers"</span>: {},
+    <span class="hljs-string">"response_body"</span>: SeekableStream <span class="hljs-comment">//指定接受 resposne 数据的流</span><font></font>
+}<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">어디 몸,</font></font><a href="json.md.html" class="notranslate">json</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">동시에 나타나지 않아야합니다. </font><font style="vertical-align: inherit;">기본값은 {}이며 추가 정보를 포함하지 않습니다.</font></font></p>
+<hr>
+<div name="get" data-unique="get"></div><h3 id="get" class="notranslate">get</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">GET 메소드를 사용하여 지정된 </font></font><a href="url.md.html" class="notranslate">url</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 그리고 결과를 반환합니다. 이는 request ( "GET", ...)</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> HttpResponse http.get(<span class="hljs-built_in">String</span> url,
+    <span class="hljs-built_in">Object</span> opts = {}) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">url</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 지정 </font></font><a href="url.md.html" class="notranslate">url</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 호스트를 포함하여 완전해야합니다. </font></font><a href="url.md.html" class="notranslate">url</a></li>
+<li><span class="notranslate">opts</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 개체, 추가 정보 지정</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과 :</font></font></p>
+<ul>
+<li><a href="../../object/ifs/httpresponse.md.html" class="notranslate">HttpResponse</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 반환 서버 응답</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">opts에는 요청 된 추가 옵션이 포함되어 있으며 지원되는 콘텐츠는 다음과 같습니다.</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6</div>{
+    <span class="hljs-string">"query"</span>: {},
+    <span class="hljs-string">"body"</span>: SeekableStream | Buffer | <span class="hljs-built_in">String</span> | {},
+    <span class="hljs-string">"json"</span>: {},
+    <span class="hljs-string">"headers"</span>: {}<font></font>
+}<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">어디 몸,</font></font><a href="json.md.html" class="notranslate">json</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">동시에 나타나지 않아야합니다. </font><font style="vertical-align: inherit;">기본값은 {}이며 추가 정보를 포함하지 않습니다.</font></font></p>
+<hr>
+<div name="post" data-unique="post"></div><h3 id="post" class="notranslate">post</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">POST 메서드를 사용하여 지정된 </font></font><a href="url.md.html" class="notranslate">url</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 그리고 결과를 반환합니다. 이는 request ( "POST", ...)</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> HttpResponse http.post(<span class="hljs-built_in">String</span> url,
+    <span class="hljs-built_in">Object</span> opts = {}) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">url</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 지정 </font></font><a href="url.md.html" class="notranslate">url</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 호스트를 포함하여 완전해야합니다. </font></font><a href="url.md.html" class="notranslate">url</a></li>
+<li><span class="notranslate">opts</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 개체, 추가 정보 지정</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과 :</font></font></p>
+<ul>
+<li><a href="../../object/ifs/httpresponse.md.html" class="notranslate">HttpResponse</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 반환 서버 응답</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">opts에는 요청 된 추가 옵션이 포함되어 있으며 지원되는 콘텐츠는 다음과 같습니다.</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6</div>{
+    <span class="hljs-string">"query"</span>: {},
+    <span class="hljs-string">"body"</span>: SeekableStream | Buffer | <span class="hljs-built_in">String</span> | {},
+    <span class="hljs-string">"json"</span>: {},
+    <span class="hljs-string">"headers"</span>: {}<font></font>
+}<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">어디 몸,</font></font><a href="json.md.html" class="notranslate">json</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">동시에 나타나지 않아야합니다. </font><font style="vertical-align: inherit;">기본값은 {}이며 추가 정보를 포함하지 않습니다.</font></font></p>
+<hr>
+<div name="del" data-unique="del"></div><h3 id="del" class="notranslate">del</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">DELETE 메서드를 사용하여 지정된 </font></font><a href="url.md.html" class="notranslate">url</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 그리고 결과를 반환합니다. 이는 request ( "DELETE", ...)</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> HttpResponse http.del(<span class="hljs-built_in">String</span> url,
+    <span class="hljs-built_in">Object</span> opts = {}) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">url</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 지정 </font></font><a href="url.md.html" class="notranslate">url</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 호스트를 포함하여 완전해야합니다. </font></font><a href="url.md.html" class="notranslate">url</a></li>
+<li><span class="notranslate">opts</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 개체, 추가 정보 지정</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과 :</font></font></p>
+<ul>
+<li><a href="../../object/ifs/httpresponse.md.html" class="notranslate">HttpResponse</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 반환 서버 응답</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">opts에는 요청 된 추가 옵션이 포함되어 있으며 지원되는 콘텐츠는 다음과 같습니다.</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6</div>{
+    <span class="hljs-string">"query"</span>: {},
+    <span class="hljs-string">"body"</span>: SeekableStream | Buffer | <span class="hljs-built_in">String</span> | {},
+    <span class="hljs-string">"json"</span>: {},
+    <span class="hljs-string">"headers"</span>: {}<font></font>
+}<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">어디 몸,</font></font><a href="json.md.html" class="notranslate">json</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">동시에 나타나지 않아야합니다. </font><font style="vertical-align: inherit;">기본값은 {}이며 추가 정보를 포함하지 않습니다.</font></font></p>
+<hr>
+<div name="put" data-unique="put"></div><h3 id="put" class="notranslate">put</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">PUT 메소드를 사용하여 지정된 </font></font><a href="url.md.html" class="notranslate">url</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 그리고 결과를 반환합니다. 이는 request ( "PUT", ...)</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> HttpResponse http.put(<span class="hljs-built_in">String</span> url,
+    <span class="hljs-built_in">Object</span> opts = {}) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">url</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 지정 </font></font><a href="url.md.html" class="notranslate">url</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 호스트를 포함하여 완전해야합니다. </font></font><a href="url.md.html" class="notranslate">url</a></li>
+<li><span class="notranslate">opts</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 개체, 추가 정보 지정</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과 :</font></font></p>
+<ul>
+<li><a href="../../object/ifs/httpresponse.md.html" class="notranslate">HttpResponse</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 반환 서버 응답</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">opts에는 요청 된 추가 옵션이 포함되어 있으며 지원되는 콘텐츠는 다음과 같습니다.</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6</div>{
+    <span class="hljs-string">"query"</span>: {},
+    <span class="hljs-string">"body"</span>: SeekableStream | Buffer | <span class="hljs-built_in">String</span> | {},
+    <span class="hljs-string">"json"</span>: {},
+    <span class="hljs-string">"headers"</span>: {}<font></font>
+}<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">어디 몸,</font></font><a href="json.md.html" class="notranslate">json</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">동시에 나타나지 않아야합니다. </font><font style="vertical-align: inherit;">기본값은 {}이며 추가 정보를 포함하지 않습니다.</font></font></p>
+<hr>
+<div name="patch" data-unique="patch"></div><h3 id="patch" class="notranslate">patch</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">PATCH 메소드를 사용하여 지정된 </font></font><a href="url.md.html" class="notranslate">url</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 그리고 결과를 반환합니다. 이는 request ( "PATCH", ...)</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> HttpResponse http.patch(<span class="hljs-built_in">String</span> url,
+    <span class="hljs-built_in">Object</span> opts = {}) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">url</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 지정 </font></font><a href="url.md.html" class="notranslate">url</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 호스트를 포함하여 완전해야합니다. </font></font><a href="url.md.html" class="notranslate">url</a></li>
+<li><span class="notranslate">opts</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 개체, 추가 정보 지정</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과 :</font></font></p>
+<ul>
+<li><a href="../../object/ifs/httpresponse.md.html" class="notranslate">HttpResponse</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 반환 서버 응답</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">opts에는 요청 된 추가 옵션이 포함되어 있으며 지원되는 콘텐츠는 다음과 같습니다.</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6</div>{
+    <span class="hljs-string">"query"</span>: {},
+    <span class="hljs-string">"body"</span>: SeekableStream | Buffer | <span class="hljs-built_in">String</span> | {},
+    <span class="hljs-string">"json"</span>: {},
+    <span class="hljs-string">"headers"</span>: {}<font></font>
+}<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">어디 몸,</font></font><a href="json.md.html" class="notranslate">json</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">동시에 나타나지 않아야합니다. </font><font style="vertical-align: inherit;">기본값은 {}이며 추가 정보를 포함하지 않습니다.</font></font></p>
+<div name="静态属性" data-unique="静态属性"></div><h2 id="静态属性"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">정적 속성</font></font></h2>
+<div name="STATUS_CODES" data-unique="STATUS_CODES"></div><h3 id="STATUS_CODES" class="notranslate">STATUS_CODES</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">배열, 표준 HTTP 응답 상태 코드 모음과 각각에 대한 간략한 설명을 반환합니다.</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly <span class="hljs-built_in">Array</span> http.STATUS_CODES;
+</code></pre>
+<hr>
+<div name="cookies" data-unique="cookies"></div><h3 id="cookies" class="notranslate">cookies</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">NArray, http 클라이언트의 </font></font><a href="../../object/ifs/httpcookie.md.html" class="notranslate">HttpCookie</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 개체 목록</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly NArray http.cookies;
+</code></pre>
+<hr>
+<div name="timeout" data-unique="timeout"></div><h3 id="timeout" class="notranslate">timeout</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">정수, 쿼리 및 설정 시간 제한</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Integer http.timeout;
+</code></pre>
+<hr>
+<div name="enableCookie" data-unique="enableCookie"></div><h3 id="enableCookie" class="notranslate">enableCookie</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">부울, 쿠키 기능 스위치, 기본적으로 활성화 됨</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Boolean</span> http.enableCookie;
+</code></pre>
+<hr>
+<div name="autoRedirect" data-unique="autoRedirect"></div><h3 id="autoRedirect" class="notranslate">autoRedirect</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">부울, 자동 리디렉션 기능 스위치, 기본적으로 활성화 됨</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Boolean</span> http.autoRedirect;
+</code></pre>
+<hr>
+<div name="enableEncoding" data-unique="enableEncoding"></div><h3 id="enableEncoding" class="notranslate">enableEncoding</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">부울, 자동 감압 기능 스위치, 기본적으로 활성화 됨</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Boolean</span> http.enableEncoding;
+</code></pre>
+<hr>
+<div name="maxBodySize" data-unique="maxBodySize"></div><h3 id="maxBodySize" class="notranslate">maxBodySize</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">정수, 쿼리 및 본문의 최대 크기 (MB)를 설정합니다. 기본값은 -1이며 크기는 제한되지 않습니다.</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Integer http.maxBodySize;
+</code></pre>
+<hr>
+<div name="userAgent" data-unique="userAgent"></div><h3 id="userAgent" class="notranslate">userAgent</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">http 요청에서 문자열, 쿼리 및 브라우저 ID 설정</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">String</span> http.userAgent;
+</code></pre>
+<hr>
+<div name="poolSize" data-unique="poolSize"></div><h3 id="poolSize" class="notranslate">poolSize</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">정수, 쿼리 및 최대 연결 유지 캐시 연결 수를 설정합니다. 기본값은 128입니다.</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Integer http.poolSize;
+</code></pre>
+<hr>
+<div name="poolTimeout" data-unique="poolTimeout"></div><h3 id="poolTimeout" class="notranslate">poolTimeout</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">연결 유지 캐시 연결 시간 초과 시간을 정수, 쿼리 및 설정합니다. 기본값은 10000ms입니다.</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Integer http.poolTimeout;
+</code></pre>
+<hr>
+<div name="proxyAgent" data-unique="proxyAgent"></div><h3 id="proxyAgent" class="notranslate">proxyAgent</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">문자열, 쿼리 및 프록시 서버 설정</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">String</span> http.proxyAgent;
+</code></pre>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2014-Present fibjs.org | </font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">지원</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip859095"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip859095" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">클릭하면 톱 페이지로 돌아갑니다</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>

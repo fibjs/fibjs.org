@@ -58,8 +58,8 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    EventEmitter [tooltip="EventEmitter", URL="EventEmitter.md", label="{EventEmitter|new EventEmitter()\l|defaultMaxListeners\l|on()\laddListener()\lprependListener()\lonce()\lprependOnceListener()\loff()\lremoveListener()\lremoveAllListeners()\lsetMaxListeners()\lgetMaxListeners()\llisteners()\llistenerCount()\leventNames()\lemit()\l}"];
-    WebView [tooltip="WebView", fillcolor="lightgray", id="me", label="{WebView|dev\lonopen\lonload\lonmove\lonresize\lonclosed\lonmessage\l|loadUrl()\lgetUrl()\lsetHtml()\lreload()\lgoBack()\lgoForward()\lprint()\lprintToPDF()\lexecuteJavaScript()\lexecuteDevToolsMethod()\lclose()\lpostMessage()\l}"];
+    EventEmitter [tooltip="EventEmitter", URL="EventEmitter.md", label="{EventEmitter|new EventEmitter()\l|EventEmitter\l|defaultMaxListeners\l|on()\laddListener()\lprependListener()\lonce()\lprependOnceListener()\loff()\lremoveListener()\lremoveAllListeners()\lsetMaxListeners()\lgetMaxListeners()\llisteners()\llistenerCount()\leventNames()\lemit()\l}"];
+    WebView [tooltip="WebView", fillcolor="lightgray", id="me", label="{WebView|type\ldev\lonopen\lonload\lonaddress\lontitle\lonmove\lonresize\lonclosed\lonmessage\l|loadUrl()\lgetUrl()\lsetHtml()\lreload()\lgoBack()\lgoForward()\lprint()\lprintToPDF()\lexecuteJavaScript()\lexecuteDevToolsMethod()\lclose()\lpostMessage()\l}"];
 
     object -> EventEmitter [dir=back];
     EventEmitter -> WebView [dir=back];
@@ -77,6 +77,14 @@ static Integer WebView.defaultMaxListeners;
 
 ## 成员属性
         
+### type
+**String, 当前窗口的 WebView 引擎**
+
+```JavaScript
+readonly String WebView.type;
+```
+
+--------------------------
 ### dev
 **Value, DevTools 访问对象，调用接口参见：https://chromedevtools.github.io/devtools-protocol/**
 
@@ -98,6 +106,22 @@ Function WebView.onopen;
 
 ```JavaScript
 Function WebView.onload;
+```
+
+--------------------------
+### onaddress
+**Function, 查询和绑定页面地址变化事件，相当于 on("address", func);**
+
+```JavaScript
+Function WebView.onaddress;
+```
+
+--------------------------
+### ontitle
+**Function, 查询和绑定页面标题改变事件，相当于 on("title", func);**
+
+```JavaScript
+Function WebView.ontitle;
 ```
 
 --------------------------

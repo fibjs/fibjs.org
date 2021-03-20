@@ -1,0 +1,746 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../../../imgs/icon.png"><title>Fiber의 개체 XmlDocument-JavaScript</title><link href="../../../../../css/common.css" rel="stylesheet"><link href="../../../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">탐색 전환</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../../../index.html"><img src="../../../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../../../index.html">HOME</a></li><li><a href="../../../guide/readme.md.html">GUIDE</a></li><li><a href="../../module/readme.md.html">MODULE</a></li><li><a href="../readme.md.html">OBJECT</a></li><li><a href="../../../awesome/readme.md.html">AWESOME</a></li><li><a href="../../../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../../../docs/manual/object/ifs/xmldocument.md.html">中文</a> <a href="../../../../../en/docs/manual/object/ifs/xmldocument.md.html">ENGLISH</a> <a href="../../../../../ja/docs/manual/object/ifs/xmldocument.md.html">日本語</a> <a href="../../../../../de/docs/manual/object/ifs/xmldocument.md.html">Deutsch</a> <a href="../../../../../es/docs/manual/object/ifs/xmldocument.md.html">Español</a> <a href="../../../../../fr/docs/manual/object/ifs/xmldocument.md.html">Français</a> <a href="../../../../../ko/docs/manual/object/ifs/xmldocument.md.html">한국어</a> <a href="../../../../../it/docs/manual/object/ifs/xmldocument.md.html">Italiano</a> <a href="../../../../../ru/docs/manual/object/ifs/xmldocument.md.html">Русский</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 개체 내장 개체 </font></font></span><div class="search"><span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input type="text" class="searchbox ds-input" placeholder="검색" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-label="검색 입력" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Avenir, &quot;Segoe UI&quot;, Arial, &quot;Hiragino Sans GB&quot;, 冬青黑, &quot;Microsoft YaHei&quot;, 微软雅黑, SimSun, 宋体, Helvetica, Tahoma, &quot;Arial sans-serif&quot;; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div class="ds-dataset-1"></div></span></span></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">홈페이지</font></font></a></li><li><a href="../readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 내장 개체 </font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 개체 XmlDocument </font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 개발 가이드 </font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="../../../guide/about.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs는 무엇입니까?</font></font></a></li>
+<li><a href="../../../guide/install.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">설치 및 운영 환경</font></font></a></li>
+<li><a href="../../../guide/hello.md.html" class="notranslate">hello, world</a></li>
+<li><a href="../../../guide/test.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">좋은 삶은 시험에서 시작됩니다</font></font></a></li>
+<li><a href="../../../guide/profiler.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">성능 킬러 찾기</font></font></a></li>
+<li><a href="../../../guide/desktop.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">데스크톱 애플리케이션을 빠르게 개발</font></font></a></li>
+<li><a href="../../../guide/server-hot-update.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">서버 모듈 핫 업데이트</font></font></a></li>
+<li><a href="../../../guide/host-routes.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">도메인 이름 라우팅</font></font></a></li>
+<li><a href="../../../guide/x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs에서 X509 인증서 사용</font></font></a></li>
+<li><a href="../../../guide/contribute.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">네이티브 모듈 추가</font></font></a></li>
+</ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_module" aria-controls="collapse_module"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 기본 모듈 </font></font></a></h4></div><div id="collapse_module" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="../../module/ifs/assert.md.html" class="notranslate">assert</a></li>
+<li><a href="../../module/ifs/base32.md.html" class="notranslate">base32</a></li>
+<li><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a></li>
+<li><a href="../../module/ifs/base64vlq.md.html" class="notranslate">base64vlq</a></li>
+<li><a href="../../module/ifs/bson.md.html" class="notranslate">bson</a></li>
+<li><a href="../../module/ifs/child_process.md.html" class="notranslate">child_process</a></li>
+<li><a href="../../module/ifs/console.md.html" class="notranslate">console</a></li>
+<li><a href="../../module/ifs/constants.md.html" class="notranslate">constants</a></li>
+<li><a href="../../module/ifs/coroutine.md.html" class="notranslate">coroutine</a></li>
+<li><a href="../../module/ifs/crypto.md.html" class="notranslate">crypto</a></li>
+<li><a href="../../module/ifs/db.md.html" class="notranslate">db</a></li>
+<li><a href="../../module/ifs/dgram.md.html" class="notranslate">dgram</a></li>
+<li><a href="../../module/ifs/dns.md.html" class="notranslate">dns</a></li>
+<li><a href="../../module/ifs/encoding.md.html" class="notranslate">encoding</a></li>
+<li><a href="../../module/ifs/fs.md.html" class="notranslate">fs</a></li>
+<li><a href="../../module/ifs/gd.md.html" class="notranslate">gd</a></li>
+<li><a href="../../module/ifs/global.md.html" class="notranslate">global</a></li>
+<li><a href="../../module/ifs/gui.md.html" class="notranslate">gui</a></li>
+<li><a href="../../module/ifs/hash.md.html" class="notranslate">hash</a></li>
+<li><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a></li>
+<li><a href="../../module/ifs/http.md.html" class="notranslate">http</a></li>
+<li><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a></li>
+<li><a href="../../module/ifs/io.md.html" class="notranslate">io</a></li>
+<li><a href="../../module/ifs/json.md.html" class="notranslate">json</a></li>
+<li><a href="../../module/ifs/mq.md.html" class="notranslate">mq</a></li>
+<li><a href="../../module/ifs/msgpack.md.html" class="notranslate">msgpack</a></li>
+<li><a href="../../module/ifs/net.md.html" class="notranslate">net</a></li>
+<li><a href="../../module/ifs/os.md.html" class="notranslate">os</a></li>
+<li><a href="../../module/ifs/path.md.html" class="notranslate">path</a></li>
+<li><a href="../../module/ifs/path_posix.md.html" class="notranslate">path_posix</a></li>
+<li><a href="../../module/ifs/path_win32.md.html" class="notranslate">path_win32</a></li>
+<li><a href="../../module/ifs/process.md.html" class="notranslate">process</a></li>
+<li><a href="../../module/ifs/profiler.md.html" class="notranslate">profiler</a></li>
+<li><a href="../../module/ifs/punycode.md.html" class="notranslate">punycode</a></li>
+<li><a href="../../module/ifs/querystring.md.html" class="notranslate">querystring</a></li>
+<li><a href="../../module/ifs/registry.md.html" class="notranslate">registry</a></li>
+<li><a href="../../module/ifs/ssl.md.html" class="notranslate">ssl</a></li>
+<li><a href="../../module/ifs/string_decoder.md.html" class="notranslate">string_decoder</a></li>
+<li><a href="../../module/ifs/test.md.html" class="notranslate">test</a></li>
+<li><a href="../../module/ifs/timers.md.html" class="notranslate">timers</a></li>
+<li><a href="../../module/ifs/tty.md.html" class="notranslate">tty</a></li>
+<li><a href="../../module/ifs/url.md.html" class="notranslate">url</a></li>
+<li><a href="../../module/ifs/util.md.html" class="notranslate">util</a></li>
+<li><a href="../../module/ifs/uuid.md.html" class="notranslate">uuid</a></li>
+<li><a href="../../module/ifs/vm.md.html" class="notranslate">vm</a></li>
+<li><a href="../../module/ifs/ws.md.html" class="notranslate">ws</a></li>
+<li><a href="../../module/ifs/xml.md.html" class="notranslate">xml</a></li>
+<li><a href="../../module/ifs/zip.md.html" class="notranslate">zip</a></li>
+<li><a href="../../module/ifs/zlib.md.html" class="notranslate">zlib</a></li>
+</ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_object" aria-controls="collapse_object"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 내장 개체 </font></font></a></h4></div><div id="collapse_object" class="panel-collapse collapse in" aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="buffer.md.html" class="notranslate">Buffer</a></li>
+<li><a href="bufferedstream.md.html" class="notranslate">BufferedStream</a></li>
+<li><a href="chain.md.html" class="notranslate">Chain</a></li>
+<li><a href="childprocess.md.html" class="notranslate">ChildProcess</a></li>
+<li><a href="cipher.md.html" class="notranslate">Cipher</a></li>
+<li><a href="condition.md.html" class="notranslate">Condition</a></li>
+<li><a href="dbconnection.md.html" class="notranslate">DbConnection</a></li>
+<li><a href="dgramsocket.md.html" class="notranslate">DgramSocket</a></li>
+<li><a href="digest.md.html" class="notranslate">Digest</a></li>
+<li><a href="event.md.html" class="notranslate">Event</a></li>
+<li><a href="eventemitter.md.html" class="notranslate">EventEmitter</a></li>
+<li><a href="fswatcher.md.html" class="notranslate">FSWatcher</a></li>
+<li><a href="fiber.md.html" class="notranslate">Fiber</a></li>
+<li><a href="file.md.html" class="notranslate">File</a></li>
+<li><a href="handler.md.html" class="notranslate">Handler</a></li>
+<li><a href="heapgraphedge.md.html" class="notranslate">HeapGraphEdge</a></li>
+<li><a href="heapgraphnode.md.html" class="notranslate">HeapGraphNode</a></li>
+<li><a href="heapsnapshot.md.html" class="notranslate">HeapSnapshot</a></li>
+<li><a href="httpclient.md.html" class="notranslate">HttpClient</a></li>
+<li><a href="httpcollection.md.html" class="notranslate">HttpCollection</a></li>
+<li><a href="httpcookie.md.html" class="notranslate">HttpCookie</a></li>
+<li><a href="httphandler.md.html" class="notranslate">HttpHandler</a></li>
+<li><a href="httpmessage.md.html" class="notranslate">HttpMessage</a></li>
+<li><a href="httprepeater.md.html" class="notranslate">HttpRepeater</a></li>
+<li><a href="httprequest.md.html" class="notranslate">HttpRequest</a></li>
+<li><a href="httpresponse.md.html" class="notranslate">HttpResponse</a></li>
+<li><a href="httpserver.md.html" class="notranslate">HttpServer</a></li>
+<li><a href="httpuploaddata.md.html" class="notranslate">HttpUploadData</a></li>
+<li><a href="httpsserver.md.html" class="notranslate">HttpsServer</a></li>
+<li><a href="image.md.html" class="notranslate">Image</a></li>
+<li><a href="leveldb.md.html" class="notranslate">LevelDB</a></li>
+<li><a href="lock.md.html" class="notranslate">Lock</a></li>
+<li><a href="lrucache.md.html" class="notranslate">LruCache</a></li>
+<li><a href="mssql.md.html" class="notranslate">MSSQL</a></li>
+<li><a href="memorystream.md.html" class="notranslate">MemoryStream</a></li>
+<li><a href="message.md.html" class="notranslate">Message</a></li>
+<li><a href="mongocollection.md.html" class="notranslate">MongoCollection</a></li>
+<li><a href="mongocursor.md.html" class="notranslate">MongoCursor</a></li>
+<li><a href="mongodb.md.html" class="notranslate">MongoDB</a></li>
+<li><a href="mongoid.md.html" class="notranslate">MongoID</a></li>
+<li><a href="mysql.md.html" class="notranslate">MySQL</a></li>
+<li><a href="pkey.md.html" class="notranslate">PKey</a></li>
+<li><a href="rangestream.md.html" class="notranslate">RangeStream</a></li>
+<li><a href="redis.md.html" class="notranslate">Redis</a></li>
+<li><a href="redishash.md.html" class="notranslate">RedisHash</a></li>
+<li><a href="redislist.md.html" class="notranslate">RedisList</a></li>
+<li><a href="redisset.md.html" class="notranslate">RedisSet</a></li>
+<li><a href="redissortedset.md.html" class="notranslate">RedisSortedSet</a></li>
+<li><a href="routing.md.html" class="notranslate">Routing</a></li>
+<li><a href="sqlite.md.html" class="notranslate">SQLite</a></li>
+<li><a href="sandbox.md.html" class="notranslate">SandBox</a></li>
+<li><a href="seekablestream.md.html" class="notranslate">SeekableStream</a></li>
+<li><a href="semaphore.md.html" class="notranslate">Semaphore</a></li>
+<li><a href="service.md.html" class="notranslate">Service</a></li>
+<li><a href="smtp.md.html" class="notranslate">Smtp</a></li>
+<li><a href="socket.md.html" class="notranslate">Socket</a></li>
+<li><a href="sslhandler.md.html" class="notranslate">SslHandler</a></li>
+<li><a href="sslserver.md.html" class="notranslate">SslServer</a></li>
+<li><a href="sslsocket.md.html" class="notranslate">SslSocket</a></li>
+<li><a href="stat.md.html" class="notranslate">Stat</a></li>
+<li><a href="statswatcher.md.html" class="notranslate">StatsWatcher</a></li>
+<li><a href="stream.md.html" class="notranslate">Stream</a></li>
+<li><a href="stringdecoder.md.html" class="notranslate">StringDecoder</a></li>
+<li><a href="tcpserver.md.html" class="notranslate">TcpServer</a></li>
+<li><a href="timer.md.html" class="notranslate">Timer</a></li>
+<li><a href="urlobject.md.html" class="notranslate">UrlObject</a></li>
+<li><a href="websocket.md.html" class="notranslate">WebSocket</a></li>
+<li><a href="websocketmessage.md.html" class="notranslate">WebSocketMessage</a></li>
+<li><a href="webview.md.html" class="notranslate">WebView</a></li>
+<li><a href="worker.md.html" class="notranslate">Worker</a></li>
+<li><a href="x509cert.md.html" class="notranslate">X509Cert</a></li>
+<li><a href="x509crl.md.html" class="notranslate">X509Crl</a></li>
+<li><a href="x509req.md.html" class="notranslate">X509Req</a></li>
+<li><a href="xmlattr.md.html" class="notranslate">XmlAttr</a></li>
+<li><a href="xmlcdatasection.md.html" class="notranslate">XmlCDATASection</a></li>
+<li><a href="xmlcharacterdata.md.html" class="notranslate">XmlCharacterData</a></li>
+<li><a href="xmlcomment.md.html" class="notranslate">XmlComment</a></li>
+<li class="active"><a href="xmldocument.md.html" class="notranslate">XmlDocument</a></li>
+<li><a href="xmldocumenttype.md.html" class="notranslate">XmlDocumentType</a></li>
+<li><a href="xmlelement.md.html" class="notranslate">XmlElement</a></li>
+<li><a href="xmlnamednodemap.md.html" class="notranslate">XmlNamedNodeMap</a></li>
+<li><a href="xmlnode.md.html" class="notranslate">XmlNode</a></li>
+<li><a href="xmlnodelist.md.html" class="notranslate">XmlNodeList</a></li>
+<li><a href="xmlprocessinginstruction.md.html" class="notranslate">XmlProcessingInstruction</a></li>
+<li><a href="xmltext.md.html" class="notranslate">XmlText</a></li>
+<li><a href="zipfile.md.html" class="notranslate">ZipFile</a></li>
+<li><a href="object.md.html" class="notranslate">object</a></li>
+</ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_awesome" aria-controls="collapse_awesome"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 커뮤니티 모듈 </font></font></a></h4></div><div id="collapse_awesome" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="../../../awesome/module/fib-session.md.html" class="notranslate">fib-session</a></li>
+<li><a href="../../../awesome/module/fib-pool.md.html" class="notranslate">fib-pool</a></li>
+<li><a href="../../../awesome/module/fib-orm.md.html" class="notranslate">fib-orm</a></li>
+<li><a href="../../../awesome/module/fib-app.md.html" class="notranslate">fib-app</a></li>
+<li><a href="../../../awesome/module/fib-kv.md.html" class="notranslate">fib-kv</a></li>
+<li><a href="../../../awesome/module/fib-rpc.md.html" class="notranslate">fib-rpc</a></li>
+<li><a href="../../../awesome/module/fib-qr.md.html" class="notranslate">fib-qr</a></li>
+<li><a href="../../../awesome/module/fib-pug.md.html" class="notranslate">fib-pug</a></li>
+<li><a href="../../../awesome/module/ejs.md.html" class="notranslate">ejs</a></li>
+<li><a href="../../../awesome/module/juicer.md.html" class="notranslate">Juicer</a></li>
+<li><a href="../../../awesome/module/highlight.js.md.html" class="notranslate">highlight.js</a></li>
+<li><a href="../../../awesome/module/marked.md.html" class="notranslate">marked</a></li>
+<li><a href="../../../awesome/module/node-cron.md.html" class="notranslate">node-cron</a></li>
+<li><a href="../../../awesome/module/debug.md.html" class="notranslate">debug</a></li>
+<li><a href="../../../awesome/module/benchmark.js.md.html" class="notranslate">benchmark.js</a></li>
+<li><a href="../../../awesome/module/sinon.md.html" class="notranslate">sinon</a></li>
+<li><a href="../../../awesome/module/node-mime.md.html" class="notranslate">node-mime</a></li>
+<li><a href="../../../awesome/module/validatorjs.md.html" class="notranslate">validatorjs</a></li>
+<li><a href="../../../awesome/module/superstruct.md.html" class="notranslate">superstruct</a></li>
+<li><a href="../../../awesome/module/cluster-server.md.html" class="notranslate">cluster-server</a></li>
+<li><a href="../../../awesome/module/synaptic.md.html" class="notranslate">synaptic</a></li>
+<li><a href="../../../awesome/module/source-map.md.html" class="notranslate">source-map</a></li>
+<li><a href="../../../awesome/module/json-format.md.html" class="notranslate">json-format</a></li>
+<li><a href="../../../awesome/module/viz.js.md.html" class="notranslate">viz.js</a></li>
+<li><a href="../../../awesome/module/nomnoml.md.html" class="notranslate">nomnoml</a></li>
+<li><a href="../../../awesome/module/pegjs.md.html" class="notranslate">pegjs</a></li>
+<li><a href="../../../awesome/module/uglify-js.md.html" class="notranslate">uglify-js</a></li>
+<li><a href="../../../awesome/module/js-beautify.md.html" class="notranslate">js-beautify</a></li>
+<li><a href="../../../awesome/module/chalk-animation.md.html" class="notranslate">chalk-animation</a></li>
+<li><a href="../../../awesome/module/jsrsasign.md.html" class="notranslate">jsrsasign</a></li>
+<li><a href="../../../awesome/module/crypto-js.md.html" class="notranslate">crypto-js</a></li>
+<li><a href="../../../awesome/module/ascii-table.md.html" class="notranslate">ascii-table</a></li>
+<li><a href="../../../awesome/module/logstream.md.html" class="notranslate">logstream</a></li>
+<li><a href="../../../awesome/module/ci.md.html" class="notranslate">ci</a></li>
+<li><a href="../../../awesome/module/fs-readdir-recursive.md.html" class="notranslate">fs-readdir-recursive</a></li>
+<li><a href="../../../awesome/module/mkdirp.md.html" class="notranslate">mkdirp</a></li>
+<li><a href="../../../awesome/module/rmdirr.md.html" class="notranslate">rmdirr</a></li>
+<li><a href="../../../awesome/module/detect-port.md.html" class="notranslate">detect-port</a></li>
+<li><a href="../../../awesome/module/bitcoinjs-lib.md.html" class="notranslate">bitcoinjs-lib</a></li>
+<li><a href="../../../awesome/module/rakuten.md.html" class="notranslate">Rakuten</a></li>
+</ul>
+ </div></div></div>  </div></div><div class="content"><div class="social-share share-component" data-sites="weibo,twitter" data-description="分享"></div> <div name="对象-XmlDocument" data-unique="对象-XmlDocument"></div><h1 id="对象-XmlDocument"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">개체 XmlDocument</font></font></h1>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">XmlDocument 개체는 전체 XML 문서를 나타냅니다.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">XmlDocument 개체는 문서 데이터에 대한 초기 (또는 최상위) 액세스를 제공하는 문서 트리의 루트입니다. </font><font style="vertical-align: inherit;">요소 노드, 텍스트 노드, 주석, 처리 지침 등의 경우 모두 XmlDocument 외부에 존재할 수 없으며 XmlDocument 개체는 이러한 개체를 만드는 메서드도 제공합니다.</font></font><a href="xmlnode.md.html" class="notranslate">XmlNode</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 개체는 개체를 만든 XmlDocument와 연결하는 ownerDocument 속성을 제공합니다.</font></font></p>
+<div name="继承关系" data-unique="继承关系"></div><h2 id="继承关系"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">상속 관계</font></font></h2>
+<div class="dot notranslate">
+<!-- Generated by graphviz version 2.40.1 (20161225.0304)
+ -->
+<!-- Title: %0 Pages: 1 -->
+<svg width="156pt" height="695pt" viewBox="0.00 0.00 155.68 695.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 691)">
+<title>%0</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-691 151.678,-691 151.678,4 -4,4"></polygon>
+<!-- object -->
+<g id="node1" class="node">
+<title>object</title>
+<g id="a_node1"><a xlink:href="object.md.html" xlink:title="object">
+<polygon fill="#ffffff" stroke="#000000" points="45.0075,-634.5 45.0075,-686.5 102.6705,-686.5 102.6705,-634.5 45.0075,-634.5"></polygon>
+<text text-anchor="middle" x="73.839" y="-673.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
+<polyline fill="none" stroke="#000000" points="45.0075,-666.5 102.6705,-666.5 "></polyline>
+<text text-anchor="start" x="53.0075" y="-653.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toString()</text>
+<text text-anchor="start" x="53.0075" y="-641.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toJSON()</text>
+</a>
+</g>
+</g>
+<!-- XmlNode -->
+<g id="node2" class="node">
+<title>XmlNode</title>
+<g id="a_node2"><a xlink:href="xmlnode.md.html" xlink:title="XmlNode">
+<polygon fill="#ffffff" stroke="#000000" points="12.5025,-321.5 12.5025,-597.5 135.1755,-597.5 135.1755,-321.5 12.5025,-321.5"></polygon>
+<text text-anchor="middle" x="73.839" y="-584.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">XmlNode</text>
+<polyline fill="none" stroke="#000000" points="12.5025,-577.5 135.1755,-577.5 "></polyline>
+<text text-anchor="start" x="20.5025" y="-564.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">nodeType</text>
+<text text-anchor="start" x="20.5025" y="-552.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">nodeName</text>
+<text text-anchor="start" x="20.5025" y="-540.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">nodeValue</text>
+<text text-anchor="start" x="20.5025" y="-528.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">ownerDocument</text>
+<text text-anchor="start" x="20.5025" y="-516.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">parentNode</text>
+<text text-anchor="start" x="20.5025" y="-504.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">childNodes</text>
+<text text-anchor="start" x="20.5025" y="-492.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">firstChild</text>
+<text text-anchor="start" x="20.5025" y="-480.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">lastChild</text>
+<text text-anchor="start" x="20.5025" y="-468.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">previousSibling</text>
+<text text-anchor="start" x="20.5025" y="-456.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">nextSibling</text>
+<polyline fill="none" stroke="#000000" points="12.5025,-449.5 135.1755,-449.5 "></polyline>
+<text text-anchor="start" x="20.5025" y="-436.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">hasChildNodes()</text>
+<text text-anchor="start" x="20.5025" y="-424.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">normalize()</text>
+<text text-anchor="start" x="20.5025" y="-412.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">cloneNode()</text>
+<text text-anchor="start" x="20.5025" y="-400.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">lookupPrefix()</text>
+<text text-anchor="start" x="20.5025" y="-388.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">lookupNamespaceURI()</text>
+<text text-anchor="start" x="20.5025" y="-376.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">insertBefore()</text>
+<text text-anchor="start" x="20.5025" y="-364.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">insertAfter()</text>
+<text text-anchor="start" x="20.5025" y="-352.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">appendChild()</text>
+<text text-anchor="start" x="20.5025" y="-340.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">replaceChild()</text>
+<text text-anchor="start" x="20.5025" y="-328.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">removeChild()</text>
+</a>
+</g>
+</g>
+<!-- object&#45;&gt;XmlNode -->
+<g id="edge1" class="edge">
+<title>object-&gt;XmlNode</title>
+<path fill="none" stroke="#000000" d="M73.839,-624.0057C73.839,-616.0715 73.839,-607.2257 73.839,-597.8667"></path>
+<polygon fill="#000000" stroke="#000000" points="70.3391,-624.2227 73.839,-634.2228 77.3391,-624.2228 70.3391,-624.2227"></polygon>
+</g>
+<!-- XmlDocument -->
+<g id="me" class="node">
+<title>XmlDocument</title>
+<g id="a_me"><a xlink:title="XmlDocument">
+<polygon fill="#d3d3d3" stroke="#000000" points="0,-.5 0,-284.5 147.678,-284.5 147.678,-.5 0,-.5"></polygon>
+<text text-anchor="middle" x="73.839" y="-271.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">XmlDocument</text>
+<polyline fill="none" stroke="#000000" points="0,-264.5 147.678,-264.5 "></polyline>
+<text text-anchor="start" x="8" y="-251.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">new XmlDocument()</text>
+<polyline fill="none" stroke="#000000" points="0,-244.5 147.678,-244.5 "></polyline>
+<text text-anchor="start" x="8" y="-231.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">inputEncoding</text>
+<text text-anchor="start" x="8" y="-219.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">xmlStandalone</text>
+<text text-anchor="start" x="8" y="-207.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">xmlVersion</text>
+<text text-anchor="start" x="8" y="-195.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">doctype</text>
+<text text-anchor="start" x="8" y="-183.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">documentElement</text>
+<text text-anchor="start" x="8" y="-171.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">head</text>
+<text text-anchor="start" x="8" y="-159.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">title</text>
+<text text-anchor="start" x="8" y="-147.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">body</text>
+<polyline fill="none" stroke="#000000" points="0,-140.5 147.678,-140.5 "></polyline>
+<text text-anchor="start" x="8" y="-127.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">load()</text>
+<text text-anchor="start" x="8" y="-115.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">getElementsByTagName()</text>
+<text text-anchor="start" x="8" y="-103.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">getElementsByTagNameNS()</text>
+<text text-anchor="start" x="8" y="-91.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">getElementById()</text>
+<text text-anchor="start" x="8" y="-79.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">getElementsByClassName()</text>
+<text text-anchor="start" x="8" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">createElement()</text>
+<text text-anchor="start" x="8" y="-55.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">createElementNS()</text>
+<text text-anchor="start" x="8" y="-43.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">createTextNode()</text>
+<text text-anchor="start" x="8" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">createComment()</text>
+<text text-anchor="start" x="8" y="-19.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">createCDATASection()</text>
+<text text-anchor="start" x="8" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">createProcessingInstruction()</text>
+</a>
+</g>
+</g>
+<!-- XmlNode&#45;&gt;XmlDocument -->
+<g id="edge2" class="edge">
+<title>XmlNode-&gt;XmlDocument</title>
+<path fill="none" stroke="#000000" d="M73.839,-311.3595C73.839,-302.4613 73.839,-293.5194 73.839,-284.6465"></path>
+<polygon fill="#000000" stroke="#000000" points="70.3391,-311.3813 73.839,-321.3813 77.3391,-311.3814 70.3391,-311.3813"></polygon>
+</g>
+</g>
+</svg>
+</div>
+
+<div name="构造函数" data-unique="构造函数"></div><h2 id="构造函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">건설자</font></font></h2>
+<div name="XmlDocument" data-unique="XmlDocument"></div><h3 id="XmlDocument" class="notranslate">XmlDocument</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">XmlDocument 개체 생성</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">new</span> XmlDocument(<span class="hljs-built_in">String</span> type = <span class="hljs-string">"text/xml"</span>);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">type</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 문서 객체의 유형을 지정합니다. 기본값은 "text /</font></font><a href="../../module/ifs/xml.md.html" class="notranslate">xml</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", html을 처리해야하는 경우"text / html "을 지정해야합니다.</font></font></li>
+</ul>
+<div name="成员属性" data-unique="成员属性"></div><h2 id="成员属性"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">회원 속성</font></font></h2>
+<div name="inputEncoding" data-unique="inputEncoding"></div><h3 id="inputEncoding" class="notranslate">inputEncoding</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">문자열, 문서에 사용 된 인코딩을 반환합니다 (파싱 할 때).</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly <span class="hljs-built_in">String</span> XmlDocument.inputEncoding;
+</code></pre>
+<hr>
+<div name="xmlStandalone" data-unique="xmlStandalone"></div><h3 id="xmlStandalone" class="notranslate">xmlStandalone</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">부울, 문서가 독립형인지 여부를 설정하거나 반환합니다.</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Boolean</span> XmlDocument.xmlStandalone;
+</code></pre>
+<hr>
+<div name="xmlVersion" data-unique="xmlVersion"></div><h3 id="xmlVersion" class="notranslate">xmlVersion</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">문서의 XML 버전을 문자열로 설정하거나 반환합니다.</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> XmlDocument.xmlVersion;
+</code></pre>
+<hr>
+<div name="doctype" data-unique="doctype"></div><h3 id="doctype" class="notranslate">doctype</h3>
+<p><strong><a href="xmldocumenttype.md.html" class="notranslate">XmlDocumentType</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 문서와 관련된 문서 유형 선언을 반환합니다 (문서 유형 선언).</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly XmlDocumentType XmlDocument.doctype;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">DTD가없는 XML 문서의 경우 null이 반환됩니다. </font><font style="vertical-align: inherit;">이 속성은 다음을 제공 할 수 있습니다.</font></font><a href="xmldocumenttype.md.html" class="notranslate">XmlDocumentType</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 개체 (XmlDocument의 자식 노드)에 직접 액세스합니다.</font></font></p>
+<hr>
+<div name="documentElement" data-unique="documentElement"></div><h3 id="documentElement" class="notranslate">documentElement</h3>
+<p><strong><a href="xmlelement.md.html" class="notranslate">XmlElement</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 문서의 루트 노드를 반환</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly XmlElement XmlDocument.documentElement;
+</code></pre>
+<hr>
+<div name="head" data-unique="head"></div><h3 id="head" class="notranslate">head</h3>
+<p><strong><a href="xmlelement.md.html" class="notranslate">XmlElement</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, HTML 문서의 헤드 노드를 반환하며 html 모드에서만 유효합니다.</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly XmlElement XmlDocument.head;
+</code></pre>
+<hr>
+<div name="title" data-unique="title"></div><h3 id="title" class="notranslate">title</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">문자열, HTML 문서의 제목 노드 내용을 반환하며 html 모드에서만 유효합니다.</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly <span class="hljs-built_in">String</span> XmlDocument.title;
+</code></pre>
+<hr>
+<div name="body" data-unique="body"></div><h3 id="body" class="notranslate">body</h3>
+<p><strong><a href="xmlelement.md.html" class="notranslate">XmlElement</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, HTML 문서의 본문 노드를 반환하며 html 모드에서만 유효합니다.</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly XmlElement XmlDocument.body;
+</code></pre>
+<hr>
+<div name="nodeType" data-unique="nodeType"></div><h3 id="nodeType" class="notranslate">nodeType</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">정수, 노드의 노드 유형을 반환합니다.</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly Integer XmlDocument.nodeType;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">다른 객체의 nodeType은 다른 값을 반환합니다.</font></font></p>
+<ul>
+<li><a href="xmlelement.md.html" class="notranslate">XmlElement</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: ELEMENT_NODE (1)</font></font></li>
+<li><a href="xmlattr.md.html" class="notranslate">XmlAttr</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: ATTRIBUTE_NODE (2)</font></font></li>
+<li><a href="xmltext.md.html" class="notranslate">XmlText</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: TEXT_NODE (3)</font></font></li>
+<li><a href="xmlcdatasection.md.html" class="notranslate">XmlCDATASection</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: CDATA_SECTION_NODE (4)</font></font></li>
+<li><a href="xmlprocessinginstruction.md.html" class="notranslate">XmlProcessingInstruction</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: PROCESSING_INSTRUCTION_NODE (7)</font></font></li>
+<li><a href="xmlcomment.md.html" class="notranslate">XmlComment</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: COMMENT_NODE (8)</font></font></li>
+<li><span class="notranslate">XmlDocument</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: DOCUMENT_NODE (9)</font></font></li>
+<li><a href="xmldocumenttype.md.html" class="notranslate">XmlDocumentType</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: DOCUMENT_TYPE_NODE (10)</font></font></li>
+</ul>
+<hr>
+<div name="nodeName" data-unique="nodeName"></div><h3 id="nodeName" class="notranslate">nodeName</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">문자열, 유형에 따라 노드의 이름을 반환합니다.</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly <span class="hljs-built_in">String</span> XmlDocument.nodeName;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">다른 객체의 nodeName은 다른 값을 반환합니다.</font></font></p>
+<ul>
+<li><a href="xmlelement.md.html" class="notranslate">XmlElement</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 요소 이름</font></font></li>
+<li><a href="xmlattr.md.html" class="notranslate">XmlAttr</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 속성 이름</font></font></li>
+<li><a href="xmltext.md.html" class="notranslate">XmlText</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: # 텍스트</font></font></li>
+<li><a href="xmlcdatasection.md.html" class="notranslate">XmlCDATASection</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: # cdata-section</font></font></li>
+<li><a href="xmlprocessinginstruction.md.html" class="notranslate">XmlProcessingInstruction</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 지정된 대상으로 돌아 가기</font></font></li>
+<li><a href="xmlcomment.md.html" class="notranslate">XmlComment</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: #comment</font></font></li>
+<li><span class="notranslate">XmlDocument</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: # 문서</font></font></li>
+<li><a href="xmldocumenttype.md.html" class="notranslate">XmlDocumentType</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문서 유형 이름</font></font></li>
+</ul>
+<hr>
+<div name="nodeValue" data-unique="nodeValue"></div><h3 id="nodeValue" class="notranslate">nodeValue</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">문자열, 유형에 따라 노드의 이름을 반환합니다.</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> XmlDocument.nodeValue;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">다른 객체의 nodeName은 다른 값을 반환합니다.</font></font></p>
+<ul>
+<li><a href="xmlelement.md.html" class="notranslate">XmlElement</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 없는</font></font></li>
+<li><a href="xmlattr.md.html" class="notranslate">XmlAttr</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 속성 값</font></font></li>
+<li><a href="xmltext.md.html" class="notranslate">XmlText</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 노드의 내용</font></font></li>
+<li><a href="xmlcdatasection.md.html" class="notranslate">XmlCDATASection</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 노드의 내용</font></font></li>
+<li><a href="xmlprocessinginstruction.md.html" class="notranslate">XmlProcessingInstruction</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 지정된 콘텐츠 데이터 반환</font></font></li>
+<li><a href="xmlcomment.md.html" class="notranslate">XmlComment</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 댓글 텍스트</font></font></li>
+<li><span class="notranslate">XmlDocument</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 없는</font></font></li>
+<li><a href="xmldocumenttype.md.html" class="notranslate">XmlDocumentType</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 없는</font></font></li>
+</ul>
+<hr>
+<div name="ownerDocument" data-unique="ownerDocument"></div><h3 id="ownerDocument" class="notranslate">ownerDocument</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">XmlDocument, 노드의 루트 요소 (XmlDocument 개체)를 반환합니다.</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly XmlDocument XmlDocument.ownerDocument;
+</code></pre>
+<hr>
+<div name="parentNode" data-unique="parentNode"></div><h3 id="parentNode" class="notranslate">parentNode</h3>
+<p><strong><a href="xmlnode.md.html" class="notranslate">XmlNode</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 노드의 부모 노드를 반환 할 수 있습니다.</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly XmlNode XmlDocument.parentNode;
+</code></pre>
+<hr>
+<div name="childNodes" data-unique="childNodes"></div><h3 id="childNodes" class="notranslate">childNodes</h3>
+<p><strong><a href="xmlnodelist.md.html" class="notranslate">XmlNodeList</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 지정된 노드의 자식 노드의 노드 목록을 반환합니다.</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly XmlNodeList XmlDocument.childNodes;
+</code></pre>
+<hr>
+<div name="firstChild" data-unique="firstChild"></div><h3 id="firstChild" class="notranslate">firstChild</h3>
+<p><strong><a href="xmlnode.md.html" class="notranslate">XmlNode</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 노드의 첫 번째 자식 노드를 반환</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly XmlNode XmlDocument.firstChild;
+</code></pre>
+<hr>
+<div name="lastChild" data-unique="lastChild"></div><h3 id="lastChild" class="notranslate">lastChild</h3>
+<p><strong><a href="xmlnode.md.html" class="notranslate">XmlNode</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 노드의 마지막 자식 노드를 반환</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly XmlNode XmlDocument.lastChild;
+</code></pre>
+<hr>
+<div name="previousSibling" data-unique="previousSibling"></div><h3 id="previousSibling" class="notranslate">previousSibling</h3>
+<p><strong><a href="xmlnode.md.html" class="notranslate">XmlNode</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 특정 노드 (동일한 트리 수준) 바로 앞의 노드를 반환합니다. 해당 노드가없는 경우이 속성은 null을 반환합니다.</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly XmlNode XmlDocument.previousSibling;
+</code></pre>
+<hr>
+<div name="nextSibling" data-unique="nextSibling"></div><h3 id="nextSibling" class="notranslate">nextSibling</h3>
+<p><strong><a href="xmlnode.md.html" class="notranslate">XmlNode</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 요소 바로 다음의 노드를 반환합니다 (동일한 트리 수준에서). 해당 노드가 없으면 속성은 null을 반환합니다.</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly XmlNode XmlDocument.nextSibling;
+</code></pre>
+<div name="成员函数" data-unique="成员函数"></div><h2 id="成员函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">회원 기능</font></font></h2>
+<div name="load" data-unique="load"></div><h3 id="load" class="notranslate">load</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">XML / HTML 문자열을 구문 분석하여 문서를 작성하고 다국어를 지원하지 않습니다.</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>XmlDocument.load(<span class="hljs-built_in">String</span> source);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">source</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 문서 작성시 문서 유형에 따라 구문 분석 할 XML / HTML 텍스트</font></font></li>
+</ul>
+<hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">문서는 이진 XML / HTML 문자열을 구문 분석하여 구성되며 언어에 따라 자동으로 변환됩니다.</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>XmlDocument.load(Buffer source);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">source</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 구문 분석 할 XML / HTML 텍스트는 문서 작성 당시의 문서 유형에 따라 다릅니다.</font></font></li>
+</ul>
+<hr>
+<div name="getElementsByTagName" data-unique="getElementsByTagName"></div><h3 id="getElementsByTagName" class="notranslate">getElementsByTagName</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">지정된 이름을 가진 모든 요소의 노드 목록을 반환합니다.</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>XmlNodeList XmlDocument.getElementsByTagName(<span class="hljs-built_in">String</span> tagName);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">tagName</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 검색 할 레이블 이름입니다. </font><font style="vertical-align: inherit;">"*"값은 모든 태그와 일치합니다.</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과 :</font></font></p>
+<ul>
+<li><a href="xmlnodelist.md.html" class="notranslate">XmlNodeList</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 문서 트리에 지정된 마크 포함 </font></font><a href="xmlelement.md.html" class="notranslate">XmlElement</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 노드 </font></font><a href="xmlnodelist.md.html" class="notranslate">XmlNodeList</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">세트. </font><font style="vertical-align: inherit;">반환 된 요소 노드의 순서는 소스 문서에 나타나는 순서입니다.</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">이 메서드는 </font></font><a href="xmlnodelist.md.html" class="notranslate">XmlNodeList</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 개체 (읽기 전용 배열로 처리 가능), 개체는 지정된 태그 이름을 가진 모든 문서를 저장합니다. </font></font><a href="xmlelement.md.html" class="notranslate">XmlElement</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 노드, 저장되는 순서는 소스 문서에 나타나는 순서입니다. </font></font><a href="xmlnodelist.md.html" class="notranslate">XmlNodeList</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 개체는 "라이브"입니다. 즉, 지정된 태그 이름을 가진 요소가 문서에서 추가되거나 삭제되면 해당 내용이 필요에 따라 자동으로 업데이트됩니다.</font></font></p>
+<hr>
+<div name="getElementsByTagNameNS" data-unique="getElementsByTagNameNS"></div><h3 id="getElementsByTagNameNS" class="notranslate">getElementsByTagNameNS</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">지정된 네임 스페이스 및 이름의 모든 요소가있는 노드 목록을 반환합니다.</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div>XmlNodeList XmlDocument.getElementsByTagNameNS(<span class="hljs-built_in">String</span> namespaceURI,
+    <span class="hljs-built_in">String</span> localName);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">namespaceURI</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 검색 할 네임 스페이스 URI를 지정합니다. </font><font style="vertical-align: inherit;">"*"값은 모든 태그와 일치 할 수 있습니다.</font></font></li>
+<li><span class="notranslate">localName</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 검색 할 레이블 이름입니다. </font><font style="vertical-align: inherit;">"*"값은 모든 태그와 일치합니다.</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과 :</font></font></p>
+<ul>
+<li><a href="xmlnodelist.md.html" class="notranslate">XmlNodeList</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 문서 트리에 지정된 마크 포함 </font></font><a href="xmlelement.md.html" class="notranslate">XmlElement</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 노드 </font></font><a href="xmlnodelist.md.html" class="notranslate">XmlNodeList</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">세트. </font><font style="vertical-align: inherit;">반환 된 요소 노드의 순서는 소스 문서에 나타나는 순서입니다.</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">이 메서드는 네임 스페이스와 이름을 기반으로 요소를 검색한다는 점을 제외하면 getElementsByTagName () 메서드와 유사합니다.</font></font></p>
+<hr>
+<div name="getElementById" data-unique="getElementById"></div><h3 id="getElementById" class="notranslate">getElementById</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">지정된 id 속성을 가진 요소를 반환합니다.</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>XmlElement XmlDocument.getElementById(<span class="hljs-built_in">String</span> id);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">id</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 검색 할 문자열, ID</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과 :</font></font></p>
+<ul>
+<li><a href="xmlelement.md.html" class="notranslate">XmlElement</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 지정된 id 속성을 가진 노드 트리 </font></font><a href="xmlelement.md.html" class="notranslate">XmlElement</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 마디</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">이 메서드는 문서의 하위 노드를 탐색하고 </font></font><a href="xmlelement.md.html" class="notranslate">XmlElement</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">노드 개체는 지정된 id 속성을 가진 첫 번째 문서 요소를 나타냅니다. </font><font style="vertical-align: inherit;">.</font></font></p>
+<hr>
+<div name="getElementsByClassName" data-unique="getElementsByClassName"></div><h3 id="getElementsByClassName" class="notranslate">getElementsByClassName</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">지정된 클래스 이름을 가진 모든 요소의 노드 목록을 반환합니다.</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>XmlNodeList XmlDocument.getElementsByClassName(<span class="hljs-built_in">String</span> className);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">className</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, 검색 할 클래스 이름</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과 :</font></font></p>
+<ul>
+<li><a href="xmlnodelist.md.html" class="notranslate">XmlNodeList</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 문서 트리에 지정된 클래스 이름 사용 </font></font><a href="xmlelement.md.html" class="notranslate">XmlElement</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 노드 </font></font><a href="xmlnodelist.md.html" class="notranslate">XmlNodeList</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">세트. </font><font style="vertical-align: inherit;">반환 된 요소 노드의 순서는 소스 문서에 나타나는 순서입니다.</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">이 메서드는 </font></font><a href="xmlnodelist.md.html" class="notranslate">XmlNodeList</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 문서에 지정된 클래스 이름을 가진 모든 파일을 저장하는 개체 (읽기 전용 배열로 처리 가능) </font></font><a href="xmlelement.md.html" class="notranslate">XmlElement</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 노드, 저장되는 순서는 소스 문서에 나타나는 순서입니다. </font></font><a href="xmlnodelist.md.html" class="notranslate">XmlNodeList</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 개체는 "라이브"입니다. 즉, 지정된 태그 이름을 가진 요소가 문서에서 추가되거나 삭제되면 해당 내용이 필요에 따라 자동으로 업데이트됩니다.</font></font></p>
+<hr>
+<div name="createElement" data-unique="createElement"></div><h3 id="createElement" class="notranslate">createElement</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">요소 노드 만들기</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>XmlElement XmlDocument.createElement(<span class="hljs-built_in">String</span> tagName);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">tagName</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 요소 노드의 지정된 이름 지정</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과 :</font></font></p>
+<ul>
+<li><a href="xmlelement.md.html" class="notranslate">XmlElement</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 새로 생성 된 반환 </font></font><a href="xmlelement.md.html" class="notranslate">XmlElement</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 지정된 레이블 이름이있는 노드</font></font></li>
+</ul>
+<hr>
+<div name="createElementNS" data-unique="createElementNS"></div><h3 id="createElementNS" class="notranslate">createElementNS</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">지정된 네임 스페이스로 요소 노드 만들기</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div>XmlElement XmlDocument.createElementNS(<span class="hljs-built_in">String</span> namespaceURI,
+    <span class="hljs-built_in">String</span> qualifiedName);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">namespaceURI</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 요소 노드 네임 스페이스의 URI를 지정합니다.</font></font></li>
+<li><span class="notranslate">qualifiedName</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 요소 노드의 지정된 이름 지정</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과 :</font></font></p>
+<ul>
+<li><a href="xmlelement.md.html" class="notranslate">XmlElement</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 새로 생성 된 반환 </font></font><a href="xmlelement.md.html" class="notranslate">XmlElement</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 지정된 레이블 이름이있는 노드</font></font></li>
+</ul>
+<hr>
+<div name="createTextNode" data-unique="createTextNode"></div><h3 id="createTextNode" class="notranslate">createTextNode</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">텍스트 노드 만들기</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>XmlText XmlDocument.createTextNode(<span class="hljs-built_in">String</span> data);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">data</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열,이 노드의 텍스트 지정</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과 :</font></font></p>
+<ul>
+<li><a href="xmltext.md.html" class="notranslate">XmlText</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 새로 생성 된 반환 </font></font><a href="xmltext.md.html" class="notranslate">XmlText</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 지정된 데이터 문자열을 나타내는 노드</font></font></li>
+</ul>
+<hr>
+<div name="createComment" data-unique="createComment"></div><h3 id="createComment" class="notranslate">createComment</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">댓글 노드 만들기</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>XmlComment XmlDocument.createComment(<span class="hljs-built_in">String</span> data);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">data</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열,이 노드의 주석 텍스트를 지정합니다.</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과 :</font></font></p>
+<ul>
+<li><a href="xmlcomment.md.html" class="notranslate">XmlComment</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 새로 생성 된 반환 </font></font><a href="xmlcomment.md.html" class="notranslate">XmlComment</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 노드, 주석 텍스트는 지정된 데이터입니다.</font></font></li>
+</ul>
+<hr>
+<div name="createCDATASection" data-unique="createCDATASection"></div><h3 id="createCDATASection" class="notranslate">createCDATASection</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">창조하다 </font></font><a href="xmlcdatasection.md.html" class="notranslate">XmlCDATASection</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 마디</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>XmlCDATASection XmlDocument.createCDATASection(<span class="hljs-built_in">String</span> data);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">data</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, CDATA 데이터를 지정하려면이 노드를 지정하십시오.</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과 :</font></font></p>
+<ul>
+<li><a href="xmlcdatasection.md.html" class="notranslate">XmlCDATASection</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 새로 생성 된 반환 </font></font><a href="xmlcdatasection.md.html" class="notranslate">XmlCDATASection</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 노드, 콘텐츠는 지정된 데이터입니다.</font></font></li>
+</ul>
+<hr>
+<div name="createProcessingInstruction" data-unique="createProcessingInstruction"></div><h3 id="createProcessingInstruction" class="notranslate">createProcessingInstruction</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">창조하다 </font></font><a href="xmlprocessinginstruction.md.html" class="notranslate">XmlProcessingInstruction</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 마디</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div>XmlProcessingInstruction XmlDocument.createProcessingInstruction(<span class="hljs-built_in">String</span> target,
+    <span class="hljs-built_in">String</span> data);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">target</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 처리 명령의 대상 지정</font></font></li>
+<li><span class="notranslate">data</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 처리 명령의 내용 텍스트를 지정합니다.</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과 :</font></font></p>
+<ul>
+<li><a href="xmlprocessinginstruction.md.html" class="notranslate">XmlProcessingInstruction</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 새로 생성 된 ProcessingInstruction 노드</font></font></li>
+</ul>
+<hr>
+<div name="hasChildNodes" data-unique="hasChildNodes"></div><h3 id="hasChildNodes" class="notranslate">hasChildNodes</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">자식 노드가 있는지 쿼리</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Boolean</span> XmlDocument.hasChildNodes();
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과 :</font></font></p>
+<ul>
+<li><span class="notranslate">Boolean</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 자식 노드가 있으면 true를 반환하고, 그렇지 않으면 false를 반환합니다.</font></font></li>
+</ul>
+<hr>
+<div name="normalize" data-unique="normalize"></div><h3 id="normalize" class="notranslate">normalize</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">인접한 텍스트 노드를 병합하고 빈 텍스트 노드를 삭제합니다.</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>XmlDocument.normalize();
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">이 메서드는 현재 노드의 모든 하위 노드를 탐색하고 빈 텍스트 노드를 삭제하고 인접한 모든 텍스트 노드를 병합하여 문서를 정규화합니다. </font><font style="vertical-align: inherit;">이 방법은 노드를 삽입하거나 삭제 한 후 문서 트리의 구조를 단순화하는 데 유용합니다.</font></font></p>
+<hr>
+<div name="cloneNode" data-unique="cloneNode"></div><h3 id="cloneNode" class="notranslate">cloneNode</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">지정된 노드의 정확한 복사본 만들기</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>XmlNode XmlDocument.cloneNode(<span class="hljs-built_in">Boolean</span> deep = <span class="hljs-literal">true</span>);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">deep</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Boolean, 깊은 복사 여부, true 인 경우 복제 된 노드는 원래 노드의 모든 자식 노드를 복제합니다.</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과 :</font></font></p>
+<ul>
+<li><a href="xmlnode.md.html" class="notranslate">XmlNode</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 복사 된 노드 반환</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">이 메서드는이를 호출 한 노드의 복사본을 복사하고 반환합니다. </font><font style="vertical-align: inherit;">전달 된 매개 변수가 참이면 현재 노드의 모든 하위 항목도 재귀 적으로 복사합니다. </font><font style="vertical-align: inherit;">그렇지 않으면 현재 노드 만 복사합니다. </font><font style="vertical-align: inherit;">반환 된 노드는 문서 트리에 속하지 않으며 parentNode 속성은 null입니다. </font><font style="vertical-align: inherit;">요소 노드가 복사되면 모든 속성이 복사됩니다.</font></font></p>
+<hr>
+<div name="lookupPrefix" data-unique="lookupPrefix"></div><h3 id="lookupPrefix" class="notranslate">lookupPrefix</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">현재 노드에서 지정된 네임 스페이스 URI와 일치하는 접두사를 반환합니다.</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> XmlDocument.lookupPrefix(<span class="hljs-built_in">String</span> namespaceURI);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">namespaceURI</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 일치하는 네임 스페이스 URI 지정</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과 :</font></font></p>
+<ul>
+<li><span class="notranslate">String</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 일치하는 접두사를 반환하고 일치하지 않으면 null을 반환합니다.</font></font></li>
+</ul>
+<hr>
+<div name="lookupNamespaceURI" data-unique="lookupNamespaceURI"></div><h3 id="lookupNamespaceURI" class="notranslate">lookupNamespaceURI</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">현재 노드의 지정된 접두사와 일치하는 네임 스페이스 URI를 반환합니다.</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> XmlDocument.lookupNamespaceURI(<span class="hljs-built_in">String</span> prefix);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">prefix</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 일치하는 접두사 지정</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과 :</font></font></p>
+<ul>
+<li><span class="notranslate">String</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 일치하는 네임 스페이스 URI를 반환하고 일치하지 않으면 null을 반환합니다.</font></font></li>
+</ul>
+<hr>
+<div name="insertBefore" data-unique="insertBefore"></div><h3 id="insertBefore" class="notranslate">insertBefore</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">기존 자식 노드 앞에 새 자식 노드 삽입</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div>XmlNode XmlDocument.insertBefore(XmlNode newChild,<font></font>
+    XmlNode refChild);<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">newChild</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="xmlnode.md.html" class="notranslate">XmlNode</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 새 노드 삽입</font></font></li>
+<li><span class="notranslate">refChild</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="xmlnode.md.html" class="notranslate">XmlNode</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">,이 노드 앞에 새 노드 삽입</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과 :</font></font></p>
+<ul>
+<li><a href="xmlnode.md.html" class="notranslate">XmlNode</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 새 자식 노드를 반환</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">newChild가 문서 트리에 이미있는 경우 문서 트리에서 삭제 된 다음 새 위치에 다시 삽입됩니다. </font><font style="vertical-align: inherit;">한 문서의 노드 (또는 한 문서에서 만든 노드)는 다른 문서에 삽입 할 수 없습니다. </font><font style="vertical-align: inherit;">즉, newChild의 ownerDocument 속성은 현재 노드의 ownerDocument 속성과 동일해야합니다.</font></font></p>
+<hr>
+<div name="insertAfter" data-unique="insertAfter"></div><h3 id="insertAfter" class="notranslate">insertAfter</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">기존 자식 노드 뒤에 새 자식 노드 삽입</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div>XmlNode XmlDocument.insertAfter(XmlNode newChild,<font></font>
+    XmlNode refChild);<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">newChild</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="xmlnode.md.html" class="notranslate">XmlNode</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 새 노드 삽입</font></font></li>
+<li><span class="notranslate">refChild</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="xmlnode.md.html" class="notranslate">XmlNode</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">,이 노드 뒤에 새 노드 삽입</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과 :</font></font></p>
+<ul>
+<li><a href="xmlnode.md.html" class="notranslate">XmlNode</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 새 자식 노드를 반환</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">newChild가 문서 트리에 이미있는 경우 문서 트리에서 삭제 된 다음 새 위치에 다시 삽입됩니다. </font><font style="vertical-align: inherit;">한 문서의 노드 (또는 한 문서에서 만든 노드)는 다른 문서에 삽입 할 수 없습니다. </font><font style="vertical-align: inherit;">즉, newChild의 ownerDocument 속성은 현재 노드의 ownerDocument 속성과 동일해야합니다.</font></font></p>
+<hr>
+<div name="appendChild" data-unique="appendChild"></div><h3 id="appendChild" class="notranslate">appendChild</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">노드의 자식 노드 목록 끝에 새 자식 노드를 추가합니다.</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>XmlNode XmlDocument.appendChild(XmlNode newChild);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">newChild</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="xmlnode.md.html" class="notranslate">XmlNode</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 추가 된 노드 지정</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과 :</font></font></p>
+<ul>
+<li><a href="xmlnode.md.html" class="notranslate">XmlNode</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">,이 새로운 자식 노드를 반환</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">newChild가 문서 트리에 이미있는 경우 문서 트리에서 삭제 된 다음 새 위치에 다시 삽입됩니다. </font><font style="vertical-align: inherit;">한 문서의 노드 (또는 한 문서에서 만든 노드)는 다른 문서에 삽입 할 수 없습니다. </font><font style="vertical-align: inherit;">즉, newChild의 ownerDocument 속성은 현재 노드의 ownerDocument 속성과 동일해야합니다.</font></font></p>
+<hr>
+<div name="replaceChild" data-unique="replaceChild"></div><h3 id="replaceChild" class="notranslate">replaceChild</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">한 자식 노드를 다른 노드로 교체</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div>XmlNode XmlDocument.replaceChild(XmlNode newChild,<font></font>
+    XmlNode oldChild);<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">newChild</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="xmlnode.md.html" class="notranslate">XmlNode</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 새 노드 지정</font></font></li>
+<li><span class="notranslate">oldChild</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="xmlnode.md.html" class="notranslate">XmlNode</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 교체 할 노드 지정</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과 :</font></font></p>
+<ul>
+<li><a href="xmlnode.md.html" class="notranslate">XmlNode</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 교체가 성공하면이 메소드는 교체 된 노드를 반환 할 수 있으며 교체가 실패하면 null을 반환합니다.</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">newChild가 문서 트리에 이미있는 경우 문서 트리에서 삭제 된 다음 새 위치에 다시 삽입됩니다. </font><font style="vertical-align: inherit;">한 문서의 노드 (또는 한 문서에서 만든 노드)는 다른 문서에 삽입 할 수 없습니다. </font><font style="vertical-align: inherit;">즉, newChild의 ownerDocument 속성은 현재 노드의 ownerDocument 속성과 동일해야합니다.</font></font></p>
+<hr>
+<div name="removeChild" data-unique="removeChild"></div><h3 id="removeChild" class="notranslate">removeChild</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">자식 노드 목록에서 노드 제거</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>XmlNode XmlDocument.removeChild(XmlNode oldChild);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">oldChild</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="xmlnode.md.html" class="notranslate">XmlNode</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 삭제할 노드 지정</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과 :</font></font></p>
+<ul>
+<li><a href="xmlnode.md.html" class="notranslate">XmlNode</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 삭제에 성공하면이 메서드는 삭제 된 노드를 반환 할 수 있으며 실패하면 null을 반환합니다.</font></font></li>
+</ul>
+<hr>
+<div name="toString" data-unique="toString"></div><h3 id="toString" class="notranslate">toString</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">객체의 문자열 표현을 반환합니다. 일반적으로 "[Native Object]"를 반환합니다. 객체는 자체 특성에 따라 다시 구현 될 수 있습니다.</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> XmlDocument.toString();
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과 :</font></font></p>
+<ul>
+<li><span class="notranslate">String</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 객체의 문자열 표현을 반환합니다.</font></font></li>
+</ul>
+<hr>
+<div name="toJSON" data-unique="toJSON"></div><h3 id="toJSON" class="notranslate">toJSON</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">객체의 JSON 형식 표현을 반환하고 일반적으로 객체가 정의한 읽을 수있는 속성 모음을 반환합니다.</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Value XmlDocument.toJSON(<span class="hljs-built_in">String</span> key = <span class="hljs-string">""</span>);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">key</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 미사용</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과 :</font></font></p>
+<ul>
+<li><span class="notranslate">Value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 직렬화 가능한 JSON이 포함 된 값을 반환합니다.</font></font></li>
+</ul>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2014-Present fibjs.org | </font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">지원</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip921004"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip921004" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">클릭하면 톱 페이지로 돌아갑니다</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>

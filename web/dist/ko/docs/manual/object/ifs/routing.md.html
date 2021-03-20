@@ -1,0 +1,709 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../../../imgs/icon.png"><title>파이버상의 객체 라우팅-자바 스크립트</title><link href="../../../../../css/common.css" rel="stylesheet"><link href="../../../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">탐색 전환</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../../../index.html"><img src="../../../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../../../index.html">HOME</a></li><li><a href="../../../guide/readme.md.html">GUIDE</a></li><li><a href="../../module/readme.md.html">MODULE</a></li><li><a href="../readme.md.html">OBJECT</a></li><li><a href="../../../awesome/readme.md.html">AWESOME</a></li><li><a href="../../../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../../../docs/manual/object/ifs/routing.md.html">中文</a> <a href="../../../../../en/docs/manual/object/ifs/routing.md.html">ENGLISH</a> <a href="../../../../../ja/docs/manual/object/ifs/routing.md.html">日本語</a> <a href="../../../../../de/docs/manual/object/ifs/routing.md.html">Deutsch</a> <a href="../../../../../es/docs/manual/object/ifs/routing.md.html">Español</a> <a href="../../../../../fr/docs/manual/object/ifs/routing.md.html">Français</a> <a href="../../../../../ko/docs/manual/object/ifs/routing.md.html">한국어</a> <a href="../../../../../it/docs/manual/object/ifs/routing.md.html">Italiano</a> <a href="../../../../../ru/docs/manual/object/ifs/routing.md.html">Русский</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 개체 내장 개체 </font></font></span><div class="search"><span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input type="text" class="searchbox ds-input" placeholder="검색" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-label="검색 입력" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Avenir, &quot;Segoe UI&quot;, Arial, &quot;Hiragino Sans GB&quot;, 冬青黑, &quot;Microsoft YaHei&quot;, 微软雅黑, SimSun, 宋体, Helvetica, Tahoma, &quot;Arial sans-serif&quot;; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div class="ds-dataset-1"></div></span></span></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">홈페이지</font></font></a></li><li><a href="../readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 내장 개체 </font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 개체 라우팅 </font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 개발 가이드 </font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="../../../guide/about.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs는 무엇입니까?</font></font></a></li>
+<li><a href="../../../guide/install.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">설치 및 운영 환경</font></font></a></li>
+<li><a href="../../../guide/hello.md.html" class="notranslate">hello, world</a></li>
+<li><a href="../../../guide/test.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">좋은 삶은 시험에서 시작됩니다</font></font></a></li>
+<li><a href="../../../guide/profiler.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">성능 킬러 찾기</font></font></a></li>
+<li><a href="../../../guide/desktop.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">데스크톱 애플리케이션을 빠르게 개발</font></font></a></li>
+<li><a href="../../../guide/server-hot-update.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">서버 모듈 핫 업데이트</font></font></a></li>
+<li><a href="../../../guide/host-routes.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">도메인 이름 라우팅</font></font></a></li>
+<li><a href="../../../guide/x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs에서 X509 인증서 사용</font></font></a></li>
+<li><a href="../../../guide/contribute.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">네이티브 모듈 추가</font></font></a></li>
+</ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_module" aria-controls="collapse_module"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 기본 모듈 </font></font></a></h4></div><div id="collapse_module" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="../../module/ifs/assert.md.html" class="notranslate">assert</a></li>
+<li><a href="../../module/ifs/base32.md.html" class="notranslate">base32</a></li>
+<li><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a></li>
+<li><a href="../../module/ifs/base64vlq.md.html" class="notranslate">base64vlq</a></li>
+<li><a href="../../module/ifs/bson.md.html" class="notranslate">bson</a></li>
+<li><a href="../../module/ifs/child_process.md.html" class="notranslate">child_process</a></li>
+<li><a href="../../module/ifs/console.md.html" class="notranslate">console</a></li>
+<li><a href="../../module/ifs/constants.md.html" class="notranslate">constants</a></li>
+<li><a href="../../module/ifs/coroutine.md.html" class="notranslate">coroutine</a></li>
+<li><a href="../../module/ifs/crypto.md.html" class="notranslate">crypto</a></li>
+<li><a href="../../module/ifs/db.md.html" class="notranslate">db</a></li>
+<li><a href="../../module/ifs/dgram.md.html" class="notranslate">dgram</a></li>
+<li><a href="../../module/ifs/dns.md.html" class="notranslate">dns</a></li>
+<li><a href="../../module/ifs/encoding.md.html" class="notranslate">encoding</a></li>
+<li><a href="../../module/ifs/fs.md.html" class="notranslate">fs</a></li>
+<li><a href="../../module/ifs/gd.md.html" class="notranslate">gd</a></li>
+<li><a href="../../module/ifs/global.md.html" class="notranslate">global</a></li>
+<li><a href="../../module/ifs/gui.md.html" class="notranslate">gui</a></li>
+<li><a href="../../module/ifs/hash.md.html" class="notranslate">hash</a></li>
+<li><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a></li>
+<li><a href="../../module/ifs/http.md.html" class="notranslate">http</a></li>
+<li><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a></li>
+<li><a href="../../module/ifs/io.md.html" class="notranslate">io</a></li>
+<li><a href="../../module/ifs/json.md.html" class="notranslate">json</a></li>
+<li><a href="../../module/ifs/mq.md.html" class="notranslate">mq</a></li>
+<li><a href="../../module/ifs/msgpack.md.html" class="notranslate">msgpack</a></li>
+<li><a href="../../module/ifs/net.md.html" class="notranslate">net</a></li>
+<li><a href="../../module/ifs/os.md.html" class="notranslate">os</a></li>
+<li><a href="../../module/ifs/path.md.html" class="notranslate">path</a></li>
+<li><a href="../../module/ifs/path_posix.md.html" class="notranslate">path_posix</a></li>
+<li><a href="../../module/ifs/path_win32.md.html" class="notranslate">path_win32</a></li>
+<li><a href="../../module/ifs/process.md.html" class="notranslate">process</a></li>
+<li><a href="../../module/ifs/profiler.md.html" class="notranslate">profiler</a></li>
+<li><a href="../../module/ifs/punycode.md.html" class="notranslate">punycode</a></li>
+<li><a href="../../module/ifs/querystring.md.html" class="notranslate">querystring</a></li>
+<li><a href="../../module/ifs/registry.md.html" class="notranslate">registry</a></li>
+<li><a href="../../module/ifs/ssl.md.html" class="notranslate">ssl</a></li>
+<li><a href="../../module/ifs/string_decoder.md.html" class="notranslate">string_decoder</a></li>
+<li><a href="../../module/ifs/test.md.html" class="notranslate">test</a></li>
+<li><a href="../../module/ifs/timers.md.html" class="notranslate">timers</a></li>
+<li><a href="../../module/ifs/tty.md.html" class="notranslate">tty</a></li>
+<li><a href="../../module/ifs/url.md.html" class="notranslate">url</a></li>
+<li><a href="../../module/ifs/util.md.html" class="notranslate">util</a></li>
+<li><a href="../../module/ifs/uuid.md.html" class="notranslate">uuid</a></li>
+<li><a href="../../module/ifs/vm.md.html" class="notranslate">vm</a></li>
+<li><a href="../../module/ifs/ws.md.html" class="notranslate">ws</a></li>
+<li><a href="../../module/ifs/xml.md.html" class="notranslate">xml</a></li>
+<li><a href="../../module/ifs/zip.md.html" class="notranslate">zip</a></li>
+<li><a href="../../module/ifs/zlib.md.html" class="notranslate">zlib</a></li>
+</ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_object" aria-controls="collapse_object"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 내장 개체 </font></font></a></h4></div><div id="collapse_object" class="panel-collapse collapse in" aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="buffer.md.html" class="notranslate">Buffer</a></li>
+<li><a href="bufferedstream.md.html" class="notranslate">BufferedStream</a></li>
+<li><a href="chain.md.html" class="notranslate">Chain</a></li>
+<li><a href="childprocess.md.html" class="notranslate">ChildProcess</a></li>
+<li><a href="cipher.md.html" class="notranslate">Cipher</a></li>
+<li><a href="condition.md.html" class="notranslate">Condition</a></li>
+<li><a href="dbconnection.md.html" class="notranslate">DbConnection</a></li>
+<li><a href="dgramsocket.md.html" class="notranslate">DgramSocket</a></li>
+<li><a href="digest.md.html" class="notranslate">Digest</a></li>
+<li><a href="event.md.html" class="notranslate">Event</a></li>
+<li><a href="eventemitter.md.html" class="notranslate">EventEmitter</a></li>
+<li><a href="fswatcher.md.html" class="notranslate">FSWatcher</a></li>
+<li><a href="fiber.md.html" class="notranslate">Fiber</a></li>
+<li><a href="file.md.html" class="notranslate">File</a></li>
+<li><a href="handler.md.html" class="notranslate">Handler</a></li>
+<li><a href="heapgraphedge.md.html" class="notranslate">HeapGraphEdge</a></li>
+<li><a href="heapgraphnode.md.html" class="notranslate">HeapGraphNode</a></li>
+<li><a href="heapsnapshot.md.html" class="notranslate">HeapSnapshot</a></li>
+<li><a href="httpclient.md.html" class="notranslate">HttpClient</a></li>
+<li><a href="httpcollection.md.html" class="notranslate">HttpCollection</a></li>
+<li><a href="httpcookie.md.html" class="notranslate">HttpCookie</a></li>
+<li><a href="httphandler.md.html" class="notranslate">HttpHandler</a></li>
+<li><a href="httpmessage.md.html" class="notranslate">HttpMessage</a></li>
+<li><a href="httprepeater.md.html" class="notranslate">HttpRepeater</a></li>
+<li><a href="httprequest.md.html" class="notranslate">HttpRequest</a></li>
+<li><a href="httpresponse.md.html" class="notranslate">HttpResponse</a></li>
+<li><a href="httpserver.md.html" class="notranslate">HttpServer</a></li>
+<li><a href="httpuploaddata.md.html" class="notranslate">HttpUploadData</a></li>
+<li><a href="httpsserver.md.html" class="notranslate">HttpsServer</a></li>
+<li><a href="image.md.html" class="notranslate">Image</a></li>
+<li><a href="leveldb.md.html" class="notranslate">LevelDB</a></li>
+<li><a href="lock.md.html" class="notranslate">Lock</a></li>
+<li><a href="lrucache.md.html" class="notranslate">LruCache</a></li>
+<li><a href="mssql.md.html" class="notranslate">MSSQL</a></li>
+<li><a href="memorystream.md.html" class="notranslate">MemoryStream</a></li>
+<li><a href="message.md.html" class="notranslate">Message</a></li>
+<li><a href="mongocollection.md.html" class="notranslate">MongoCollection</a></li>
+<li><a href="mongocursor.md.html" class="notranslate">MongoCursor</a></li>
+<li><a href="mongodb.md.html" class="notranslate">MongoDB</a></li>
+<li><a href="mongoid.md.html" class="notranslate">MongoID</a></li>
+<li><a href="mysql.md.html" class="notranslate">MySQL</a></li>
+<li><a href="pkey.md.html" class="notranslate">PKey</a></li>
+<li><a href="rangestream.md.html" class="notranslate">RangeStream</a></li>
+<li><a href="redis.md.html" class="notranslate">Redis</a></li>
+<li><a href="redishash.md.html" class="notranslate">RedisHash</a></li>
+<li><a href="redislist.md.html" class="notranslate">RedisList</a></li>
+<li><a href="redisset.md.html" class="notranslate">RedisSet</a></li>
+<li><a href="redissortedset.md.html" class="notranslate">RedisSortedSet</a></li>
+<li class="active"><a href="routing.md.html" class="notranslate">Routing</a></li>
+<li><a href="sqlite.md.html" class="notranslate">SQLite</a></li>
+<li><a href="sandbox.md.html" class="notranslate">SandBox</a></li>
+<li><a href="seekablestream.md.html" class="notranslate">SeekableStream</a></li>
+<li><a href="semaphore.md.html" class="notranslate">Semaphore</a></li>
+<li><a href="service.md.html" class="notranslate">Service</a></li>
+<li><a href="smtp.md.html" class="notranslate">Smtp</a></li>
+<li><a href="socket.md.html" class="notranslate">Socket</a></li>
+<li><a href="sslhandler.md.html" class="notranslate">SslHandler</a></li>
+<li><a href="sslserver.md.html" class="notranslate">SslServer</a></li>
+<li><a href="sslsocket.md.html" class="notranslate">SslSocket</a></li>
+<li><a href="stat.md.html" class="notranslate">Stat</a></li>
+<li><a href="statswatcher.md.html" class="notranslate">StatsWatcher</a></li>
+<li><a href="stream.md.html" class="notranslate">Stream</a></li>
+<li><a href="stringdecoder.md.html" class="notranslate">StringDecoder</a></li>
+<li><a href="tcpserver.md.html" class="notranslate">TcpServer</a></li>
+<li><a href="timer.md.html" class="notranslate">Timer</a></li>
+<li><a href="urlobject.md.html" class="notranslate">UrlObject</a></li>
+<li><a href="websocket.md.html" class="notranslate">WebSocket</a></li>
+<li><a href="websocketmessage.md.html" class="notranslate">WebSocketMessage</a></li>
+<li><a href="webview.md.html" class="notranslate">WebView</a></li>
+<li><a href="worker.md.html" class="notranslate">Worker</a></li>
+<li><a href="x509cert.md.html" class="notranslate">X509Cert</a></li>
+<li><a href="x509crl.md.html" class="notranslate">X509Crl</a></li>
+<li><a href="x509req.md.html" class="notranslate">X509Req</a></li>
+<li><a href="xmlattr.md.html" class="notranslate">XmlAttr</a></li>
+<li><a href="xmlcdatasection.md.html" class="notranslate">XmlCDATASection</a></li>
+<li><a href="xmlcharacterdata.md.html" class="notranslate">XmlCharacterData</a></li>
+<li><a href="xmlcomment.md.html" class="notranslate">XmlComment</a></li>
+<li><a href="xmldocument.md.html" class="notranslate">XmlDocument</a></li>
+<li><a href="xmldocumenttype.md.html" class="notranslate">XmlDocumentType</a></li>
+<li><a href="xmlelement.md.html" class="notranslate">XmlElement</a></li>
+<li><a href="xmlnamednodemap.md.html" class="notranslate">XmlNamedNodeMap</a></li>
+<li><a href="xmlnode.md.html" class="notranslate">XmlNode</a></li>
+<li><a href="xmlnodelist.md.html" class="notranslate">XmlNodeList</a></li>
+<li><a href="xmlprocessinginstruction.md.html" class="notranslate">XmlProcessingInstruction</a></li>
+<li><a href="xmltext.md.html" class="notranslate">XmlText</a></li>
+<li><a href="zipfile.md.html" class="notranslate">ZipFile</a></li>
+<li><a href="object.md.html" class="notranslate">object</a></li>
+</ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_awesome" aria-controls="collapse_awesome"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 커뮤니티 모듈 </font></font></a></h4></div><div id="collapse_awesome" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="../../../awesome/module/fib-session.md.html" class="notranslate">fib-session</a></li>
+<li><a href="../../../awesome/module/fib-pool.md.html" class="notranslate">fib-pool</a></li>
+<li><a href="../../../awesome/module/fib-orm.md.html" class="notranslate">fib-orm</a></li>
+<li><a href="../../../awesome/module/fib-app.md.html" class="notranslate">fib-app</a></li>
+<li><a href="../../../awesome/module/fib-kv.md.html" class="notranslate">fib-kv</a></li>
+<li><a href="../../../awesome/module/fib-rpc.md.html" class="notranslate">fib-rpc</a></li>
+<li><a href="../../../awesome/module/fib-qr.md.html" class="notranslate">fib-qr</a></li>
+<li><a href="../../../awesome/module/fib-pug.md.html" class="notranslate">fib-pug</a></li>
+<li><a href="../../../awesome/module/ejs.md.html" class="notranslate">ejs</a></li>
+<li><a href="../../../awesome/module/juicer.md.html" class="notranslate">Juicer</a></li>
+<li><a href="../../../awesome/module/highlight.js.md.html" class="notranslate">highlight.js</a></li>
+<li><a href="../../../awesome/module/marked.md.html" class="notranslate">marked</a></li>
+<li><a href="../../../awesome/module/node-cron.md.html" class="notranslate">node-cron</a></li>
+<li><a href="../../../awesome/module/debug.md.html" class="notranslate">debug</a></li>
+<li><a href="../../../awesome/module/benchmark.js.md.html" class="notranslate">benchmark.js</a></li>
+<li><a href="../../../awesome/module/sinon.md.html" class="notranslate">sinon</a></li>
+<li><a href="../../../awesome/module/node-mime.md.html" class="notranslate">node-mime</a></li>
+<li><a href="../../../awesome/module/validatorjs.md.html" class="notranslate">validatorjs</a></li>
+<li><a href="../../../awesome/module/superstruct.md.html" class="notranslate">superstruct</a></li>
+<li><a href="../../../awesome/module/cluster-server.md.html" class="notranslate">cluster-server</a></li>
+<li><a href="../../../awesome/module/synaptic.md.html" class="notranslate">synaptic</a></li>
+<li><a href="../../../awesome/module/source-map.md.html" class="notranslate">source-map</a></li>
+<li><a href="../../../awesome/module/json-format.md.html" class="notranslate">json-format</a></li>
+<li><a href="../../../awesome/module/viz.js.md.html" class="notranslate">viz.js</a></li>
+<li><a href="../../../awesome/module/nomnoml.md.html" class="notranslate">nomnoml</a></li>
+<li><a href="../../../awesome/module/pegjs.md.html" class="notranslate">pegjs</a></li>
+<li><a href="../../../awesome/module/uglify-js.md.html" class="notranslate">uglify-js</a></li>
+<li><a href="../../../awesome/module/js-beautify.md.html" class="notranslate">js-beautify</a></li>
+<li><a href="../../../awesome/module/chalk-animation.md.html" class="notranslate">chalk-animation</a></li>
+<li><a href="../../../awesome/module/jsrsasign.md.html" class="notranslate">jsrsasign</a></li>
+<li><a href="../../../awesome/module/crypto-js.md.html" class="notranslate">crypto-js</a></li>
+<li><a href="../../../awesome/module/ascii-table.md.html" class="notranslate">ascii-table</a></li>
+<li><a href="../../../awesome/module/logstream.md.html" class="notranslate">logstream</a></li>
+<li><a href="../../../awesome/module/ci.md.html" class="notranslate">ci</a></li>
+<li><a href="../../../awesome/module/fs-readdir-recursive.md.html" class="notranslate">fs-readdir-recursive</a></li>
+<li><a href="../../../awesome/module/mkdirp.md.html" class="notranslate">mkdirp</a></li>
+<li><a href="../../../awesome/module/rmdirr.md.html" class="notranslate">rmdirr</a></li>
+<li><a href="../../../awesome/module/detect-port.md.html" class="notranslate">detect-port</a></li>
+<li><a href="../../../awesome/module/bitcoinjs-lib.md.html" class="notranslate">bitcoinjs-lib</a></li>
+<li><a href="../../../awesome/module/rakuten.md.html" class="notranslate">Rakuten</a></li>
+</ul>
+ </div></div></div>  </div></div><div class="content"><div class="social-share share-component" data-sites="weibo,twitter" data-description="分享"></div> <div name="对象-Routing" data-unique="对象-Routing"></div><h1 id="对象-Routing"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">개체 라우팅</font></font></h1>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">메시지 처리기 라우팅 개체</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">경로 객체는 </font></font><a href="../../module/ifs/http.md.html" class="notranslate">http</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 메시지 처리의 핵심 개체 인 서버는 라우팅 설정에 따라 일치합니다. </font></font><a href="../../module/ifs/url.md.html" class="notranslate">url</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 그리고 방법, 그리고 </font></font><a href="../../module/ifs/http.md.html" class="notranslate">http</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 메시지는 다른 트랜잭션을 완료하기 위해 해당 프로세서로 전달됩니다.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">간단한 경로는 다음과 같은 JSON 객체의 형태로 직접 제공 될 수 있습니다.</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8</div><span class="hljs-keyword">var</span> http = <span class="hljs-built_in">require</span>(<span class="hljs-string">'http'</span>);<font></font>
+<font></font>
+<span class="hljs-keyword">var</span> svr = <span class="hljs-keyword">new</span> http.Server(<span class="hljs-number">8080</span>, {
+    <span class="hljs-string">'/'</span>: <span class="hljs-function"><span class="hljs-params">r</span> =&gt;</span> r.response.write(<span class="hljs-string">'home'</span>),
+    <span class="hljs-string">'/help'</span>: <span class="hljs-function"><span class="hljs-params">r</span> =&gt;</span> r.response.write(<span class="hljs-string">'help'</span>)<font></font>
+});<font></font>
+<font></font>
+svr.start();<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">더 복잡한 라우팅 사용자 지정이 필요한 경우 라우팅 개체를 직접 만들고 필요에 따라 라우팅 전략을 처리 할 수 ​​있습니다.</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22</div><span class="hljs-keyword">var</span> http = <span class="hljs-built_in">require</span>(<span class="hljs-string">'http'</span>);
+<span class="hljs-keyword">var</span> mq = <span class="hljs-built_in">require</span>(<span class="hljs-string">'mq'</span>);<font></font>
+<font></font>
+<span class="hljs-keyword">var</span> app = <span class="hljs-keyword">new</span> mq.Routing();<font></font>
+<font></font>
+app.get(<span class="hljs-string">'/'</span>, r =&gt; r.response.write(<span class="hljs-string">'home'</span>));<font></font>
+app.get(<span class="hljs-string">'/help'</span>, r =&gt; r.response.write(<span class="hljs-string">'help'</span>));<font></font>
+<font></font>
+app.post(<span class="hljs-string">'/help'</span>, r =&gt; r.response.write(<span class="hljs-string">'post a help.'</span>));<font></font>
+<font></font>
+app.get(<span class="hljs-string">'/home/:user'</span>, (r, user) =&gt; r.response.write(<span class="hljs-string">'hello '</span> + user));<font></font>
+<font></font>
+app.get(<span class="hljs-string">'/user/:id(\\d+)'</span>, (r, id) =&gt; r.response.write(<span class="hljs-string">'get '</span> + id));<font></font>
+<font></font>
+app.get(<span class="hljs-string">'/actions'</span>, {
+    <span class="hljs-string">'/run'</span>: <span class="hljs-function"><span class="hljs-params">r</span> =&gt;</span> r.response.write(<span class="hljs-string">'running'</span>),
+    <span class="hljs-string">'/sleep'</span>: <span class="hljs-function"><span class="hljs-params">r</span> =&gt;</span> r.response.write(<span class="hljs-string">'sleeping'</span>),
+    <span class="hljs-string">'(.*)'</span>: <span class="hljs-function"><span class="hljs-params">r</span> =&gt;</span> r.response.write(<span class="hljs-string">'........'</span>)<font></font>
+});<font></font>
+<font></font>
+<span class="hljs-keyword">var</span> svr = <span class="hljs-keyword">new</span> http.Server(<span class="hljs-number">8080</span>, app);<font></font>
+svr.start();<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">라우팅 개체는 설정된 규칙에 따라 메시지를 일치시키고 규칙을 충족하는 첫 번째 프로세서로 메시지를 전달합니다. </font><font style="vertical-align: inherit;">나중에 추가 된 라우팅 규칙이 먼저 일치합니다. </font><font style="vertical-align: inherit;">생성 방법 :</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4</div><span class="hljs-keyword">var</span> routing = <span class="hljs-keyword">new</span> mq.Routing({
+    <span class="hljs-string">"^/func1(/.*)$"</span>: func1,
+    <span class="hljs-string">"^/func2(/.*)$"</span>: func2<font></font>
+});<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">정규식과 일치하는 항목은 메시지의 값 속성을 수정하고 하위 항목은 메시지의 params 속성에 저장됩니다. </font><font style="vertical-align: inherit;">예 :</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">var</span> routing = <span class="hljs-keyword">new</span> mq.Routing({
+    <span class="hljs-string">"^/func1(/([0-9]+)/([0-9]+)\.html)$"</span>: func1,<font></font>
+});<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">메시지 "/func1/123/456.html", value == "/123/456.html", params == [ "123", "456"];</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">일치하는 결과에 자식이 없으면 값은 비어 있고 params는 비어 있습니다. </font><font style="vertical-align: inherit;">예 :</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">var</span> routing = <span class="hljs-keyword">new</span> mq.Routing({
+    <span class="hljs-string">"^/func1/[0-9]+/[0-9]+\.html$"</span>: func1,<font></font>
+});<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">메시지 "/func1/123/456.html", value == "", params == [];</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">일치 결과의 첫 번째 수준에 여러 하위 항목이있는 경우 값은 비어 있고 params는 첫 번째 수준의 하위 항목입니다. </font><font style="vertical-align: inherit;">예 :</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">var</span> routing = <span class="hljs-keyword">new</span> mq.Routing({
+    <span class="hljs-string">"^/func1/([0-9]+)/([0-9]+)\.html$"</span>: func1,<font></font>
+});<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">메시지 "/func1/123/456.html", value == "", params == [ "123", "456"];</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">일치하는 결과에 하위 항목이 하나만 있고 하위 항목이없는 경우 value와 params는 모두이 하위 항목입니다. </font><font style="vertical-align: inherit;">예 :</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">var</span> routing = <span class="hljs-keyword">new</span> mq.Routing({
+    <span class="hljs-string">"^/func1/([0-9]+)/[0-9]+\.html$"</span>: func1,<font></font>
+});<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">메시지 "/func1/123/456.html", 값 == "123", params == [ "123"];</font></font></p>
+<div name="继承关系" data-unique="继承关系"></div><h2 id="继承关系"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">상속 관계</font></font></h2>
+<div class="dot notranslate">
+<!-- Generated by graphviz version 2.40.1 (20161225.0304)
+ -->
+<!-- Title: %0 Pages: 1 -->
+<svg width="87pt" height="351pt" viewBox="0.00 0.00 86.78 351.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 347)">
+<title>%0</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-347 82.777,-347 82.777,4 -4,4"></polygon>
+<!-- object -->
+<g id="node1" class="node">
+<title>object</title>
+<g id="a_node1"><a xlink:href="object.md.html" xlink:title="object">
+<polygon fill="#ffffff" stroke="#000000" points="10.557,-290.5 10.557,-342.5 68.22,-342.5 68.22,-290.5 10.557,-290.5"></polygon>
+<text text-anchor="middle" x="39.3885" y="-329.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
+<polyline fill="none" stroke="#000000" points="10.557,-322.5 68.22,-322.5 "></polyline>
+<text text-anchor="start" x="18.557" y="-309.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toString()</text>
+<text text-anchor="start" x="18.557" y="-297.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toJSON()</text>
+</a>
+</g>
+</g>
+<!-- Handler -->
+<g id="node2" class="node">
+<title>Handler</title>
+<g id="a_node2"><a xlink:href="handler.md.html" xlink:title="Handler">
+<polygon fill="#ffffff" stroke="#000000" points="0,-193.5 0,-253.5 78.777,-253.5 78.777,-193.5 0,-193.5"></polygon>
+<text text-anchor="middle" x="39.3885" y="-240.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Handler</text>
+<polyline fill="none" stroke="#000000" points="0,-233.5 78.777,-233.5 "></polyline>
+<text text-anchor="start" x="8" y="-220.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">new Handler()</text>
+<polyline fill="none" stroke="#000000" points="0,-213.5 78.777,-213.5 "></polyline>
+<text text-anchor="start" x="8" y="-200.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">invoke()</text>
+</a>
+</g>
+</g>
+<!-- object&#45;&gt;Handler -->
+<g id="edge1" class="edge">
+<title>object-&gt;Handler</title>
+<path fill="none" stroke="#000000" d="M39.3885,-279.8142C39.3885,-271.1162 39.3885,-261.9383 39.3885,-253.574"></path>
+<polygon fill="#000000" stroke="#000000" points="35.8886,-280.0987 39.3885,-290.0987 42.8886,-280.0987 35.8886,-280.0987"></polygon>
+</g>
+<!-- Routing -->
+<g id="me" class="node">
+<title>Routing</title>
+<g id="a_me"><a xlink:title="Routing">
+<polygon fill="#d3d3d3" stroke="#000000" points=".275,-.5 .275,-156.5 78.502,-156.5 78.502,-.5 .275,-.5"></polygon>
+<text text-anchor="middle" x="39.3885" y="-143.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Routing</text>
+<polyline fill="none" stroke="#000000" points=".275,-136.5 78.502,-136.5 "></polyline>
+<text text-anchor="start" x="8.275" y="-123.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">new Routing()</text>
+<polyline fill="none" stroke="#000000" points=".275,-116.5 78.502,-116.5 "></polyline>
+<text text-anchor="start" x="8.275" y="-103.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">append()</text>
+<text text-anchor="start" x="8.275" y="-91.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">host()</text>
+<text text-anchor="start" x="8.275" y="-79.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">all()</text>
+<text text-anchor="start" x="8.275" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">get()</text>
+<text text-anchor="start" x="8.275" y="-55.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">post()</text>
+<text text-anchor="start" x="8.275" y="-43.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">del()</text>
+<text text-anchor="start" x="8.275" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">put()</text>
+<text text-anchor="start" x="8.275" y="-19.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">patch()</text>
+<text text-anchor="start" x="8.275" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">find()</text>
+</a>
+</g>
+</g>
+<!-- Handler&#45;&gt;Routing -->
+<g id="edge2" class="edge">
+<title>Handler-&gt;Routing</title>
+<path fill="none" stroke="#000000" d="M39.3885,-183.3032C39.3885,-174.9487 39.3885,-165.8748 39.3885,-156.6782"></path>
+<polygon fill="#000000" stroke="#000000" points="35.8886,-183.4559 39.3885,-193.4559 42.8886,-183.4559 35.8886,-183.4559"></polygon>
+</g>
+</g>
+</svg>
+</div>
+
+<div name="构造函数" data-unique="构造函数"></div><h2 id="构造函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">건설자</font></font></h2>
+<div name="Routing" data-unique="Routing"></div><h3 id="Routing" class="notranslate">Routing</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">메시지 처리기 라우팅 개체 만들기</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">new</span> Routing(<span class="hljs-built_in">Object</span> map = {});
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 객체, 라우팅 매개 변수 초기화</font></font></li>
+</ul>
+<hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">메시지 처리기 라우팅 개체 만들기</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">new</span> Routing(<span class="hljs-built_in">String</span> method,
+    <span class="hljs-built_in">Object</span> map);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">method</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 지정 </font></font><a href="../../module/ifs/http.md.html" class="notranslate">http</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 요청 방법, "*"는 모든 방법을 허용합니다.</font></font></li>
+<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 객체, 라우팅 매개 변수 초기화</font></font></li>
+</ul>
+<div name="成员函数" data-unique="成员函数"></div><h2 id="成员函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">회원 기능</font></font></h2>
+<div name="append" data-unique="append"></div><h3 id="append" class="notranslate">append</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">기존 경로 개체에서 규칙을 추가하면 원래 경로가 추가 된 후 지워집니다.</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Routing Routing.append(Routing route);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">route</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Routing, 초기화 된 라우팅 객체</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과 :</font></font></p>
+<ul>
+<li><span class="notranslate">Routing</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 경로 객체 자체 반환</font></font></li>
+</ul>
+<hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">라우팅 규칙 세트 추가</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Routing Routing.append(<span class="hljs-built_in">Object</span> map);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 객체, 라우팅 매개 변수</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과 :</font></font></p>
+<ul>
+<li><span class="notranslate">Routing</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 경로 객체 자체 반환</font></font></li>
+</ul>
+<hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">라우팅 규칙 추가</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div>Routing Routing.append(<span class="hljs-built_in">String</span> pattern,<font></font>
+    Handler hdlr);<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">pattern</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 메시지 일치 형식</font></font></li>
+<li><span class="notranslate">hdlr</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="handler.md.html" class="notranslate">Handler</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 내장 메시지 프로세서, 처리 기능, 체인 처리 배열, 라우팅 개체, 세부 정보 참조 </font></font><a href="../../module/ifs/mq.md.html#Handler" class="notranslate">mq.Handler</a></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과 :</font></font></p>
+<ul>
+<li><span class="notranslate">Routing</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 경로 객체 자체 반환</font></font></li>
+</ul>
+<hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">라우팅 규칙 추가</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div>Routing Routing.append(<span class="hljs-built_in">String</span> method,
+    <span class="hljs-built_in">String</span> pattern,<font></font>
+    Handler hdlr);<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">method</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 지정 </font></font><a href="../../module/ifs/http.md.html" class="notranslate">http</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 요청 방법, "*"는 모든 방법을 허용하고 "host"는 가상 도메인 이름을 지정합니다.</font></font></li>
+<li><span class="notranslate">pattern</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 메시지 일치 형식</font></font></li>
+<li><span class="notranslate">hdlr</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="handler.md.html" class="notranslate">Handler</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 내장 메시지 프로세서, 처리 기능, 체인 처리 배열, 라우팅 개체, 세부 정보 참조 </font></font><a href="../../module/ifs/mq.md.html#Handler" class="notranslate">mq.Handler</a></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과 :</font></font></p>
+<ul>
+<li><span class="notranslate">Routing</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 경로 객체 자체 반환</font></font></li>
+</ul>
+<hr>
+<div name="host" data-unique="host"></div><h3 id="host" class="notranslate">host</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">그룹 추가 </font></font><a href="../../module/ifs/http.md.html" class="notranslate">http</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 도메인 이름 라우팅 규칙</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Routing Routing.host(<span class="hljs-built_in">Object</span> map);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 객체, 라우팅 매개 변수</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과 :</font></font></p>
+<ul>
+<li><span class="notranslate">Routing</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 경로 객체 자체 반환</font></font></li>
+</ul>
+<hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">수락 추가 </font></font><a href="../../module/ifs/http.md.html" class="notranslate">http</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 도메인 이름 라우팅 규칙</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div>Routing Routing.host(<span class="hljs-built_in">String</span> pattern,<font></font>
+    Handler hdlr);<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">pattern</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 메시지 일치 형식</font></font></li>
+<li><span class="notranslate">hdlr</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="handler.md.html" class="notranslate">Handler</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 내장 메시지 프로세서, 처리 기능, 체인 처리 배열, 라우팅 개체, 세부 정보 참조 </font></font><a href="../../module/ifs/mq.md.html#Handler" class="notranslate">mq.Handler</a></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과 :</font></font></p>
+<ul>
+<li><span class="notranslate">Routing</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 경로 객체 자체 반환</font></font></li>
+</ul>
+<hr>
+<div name="all" data-unique="all"></div><h3 id="all" class="notranslate">all</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">모두 수락하려면 그룹 추가 </font></font><a href="../../module/ifs/http.md.html" class="notranslate">http</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 메서드 라우팅 규칙</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Routing Routing.all(<span class="hljs-built_in">Object</span> map);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 객체, 라우팅 매개 변수</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과 :</font></font></p>
+<ul>
+<li><span class="notranslate">Routing</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 경로 객체 자체 반환</font></font></li>
+</ul>
+<hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">하나 추가 모두 수락 </font></font><a href="../../module/ifs/http.md.html" class="notranslate">http</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 메서드 라우팅 규칙</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div>Routing Routing.all(<span class="hljs-built_in">String</span> pattern,<font></font>
+    Handler hdlr);<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">pattern</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 메시지 일치 형식</font></font></li>
+<li><span class="notranslate">hdlr</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="handler.md.html" class="notranslate">Handler</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 내장 메시지 프로세서, 처리 기능, 체인 처리 배열, 라우팅 개체, 세부 정보 참조 </font></font><a href="../../module/ifs/mq.md.html#Handler" class="notranslate">mq.Handler</a></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과 :</font></font></p>
+<ul>
+<li><span class="notranslate">Routing</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 경로 객체 자체 반환</font></font></li>
+</ul>
+<hr>
+<div name="get" data-unique="get"></div><h3 id="get" class="notranslate">get</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">GET 메소드 라우팅 규칙 세트 추가</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Routing Routing.get(<span class="hljs-built_in">Object</span> map);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 객체, 라우팅 매개 변수</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과 :</font></font></p>
+<ul>
+<li><span class="notranslate">Routing</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 경로 객체 자체 반환</font></font></li>
+</ul>
+<hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">수락 추가 </font></font><a href="../../module/ifs/http.md.html" class="notranslate">http</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> GET 메서드 라우팅 규칙</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div>Routing Routing.get(<span class="hljs-built_in">String</span> pattern,<font></font>
+    Handler hdlr);<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">pattern</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 메시지 일치 형식</font></font></li>
+<li><span class="notranslate">hdlr</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="handler.md.html" class="notranslate">Handler</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 내장 메시지 프로세서, 처리 기능, 체인 처리 배열, 라우팅 개체, 세부 정보 참조 </font></font><a href="../../module/ifs/mq.md.html#Handler" class="notranslate">mq.Handler</a></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과 :</font></font></p>
+<ul>
+<li><span class="notranslate">Routing</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 경로 객체 자체 반환</font></font></li>
+</ul>
+<hr>
+<div name="post" data-unique="post"></div><h3 id="post" class="notranslate">post</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">수락 할 그룹 추가 </font></font><a href="../../module/ifs/http.md.html" class="notranslate">http</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> POST 메서드 라우팅 규칙</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Routing Routing.post(<span class="hljs-built_in">Object</span> map);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 객체, 라우팅 매개 변수</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과 :</font></font></p>
+<ul>
+<li><span class="notranslate">Routing</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 경로 객체 자체 반환</font></font></li>
+</ul>
+<hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">수락 추가 </font></font><a href="../../module/ifs/http.md.html" class="notranslate">http</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> POST 메서드 라우팅 규칙</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div>Routing Routing.post(<span class="hljs-built_in">String</span> pattern,<font></font>
+    Handler hdlr);<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">pattern</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 메시지 일치 형식</font></font></li>
+<li><span class="notranslate">hdlr</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="handler.md.html" class="notranslate">Handler</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 내장 메시지 프로세서, 처리 기능, 체인 처리 배열, 라우팅 개체, 세부 정보 참조 </font></font><a href="../../module/ifs/mq.md.html#Handler" class="notranslate">mq.Handler</a></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과 :</font></font></p>
+<ul>
+<li><span class="notranslate">Routing</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 경로 객체 자체 반환</font></font></li>
+</ul>
+<hr>
+<div name="del" data-unique="del"></div><h3 id="del" class="notranslate">del</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">수락 할 그룹 추가 </font></font><a href="../../module/ifs/http.md.html" class="notranslate">http</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> DELETE 메서드 라우팅 규칙</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Routing Routing.del(<span class="hljs-built_in">Object</span> map);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 객체, 라우팅 매개 변수</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과 :</font></font></p>
+<ul>
+<li><span class="notranslate">Routing</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 경로 객체 자체 반환</font></font></li>
+</ul>
+<hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">수락 추가 </font></font><a href="../../module/ifs/http.md.html" class="notranslate">http</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> DELETE 메서드 라우팅 규칙</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div>Routing Routing.del(<span class="hljs-built_in">String</span> pattern,<font></font>
+    Handler hdlr);<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">pattern</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 메시지 일치 형식</font></font></li>
+<li><span class="notranslate">hdlr</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="handler.md.html" class="notranslate">Handler</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 내장 메시지 프로세서, 처리 기능, 체인 처리 배열, 라우팅 개체, 세부 정보 참조 </font></font><a href="../../module/ifs/mq.md.html#Handler" class="notranslate">mq.Handler</a></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과 :</font></font></p>
+<ul>
+<li><span class="notranslate">Routing</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 경로 객체 자체 반환</font></font></li>
+</ul>
+<hr>
+<div name="put" data-unique="put"></div><h3 id="put" class="notranslate">put</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">PUT 메소드 라우팅 규칙 세트 추가</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Routing Routing.put(<span class="hljs-built_in">Object</span> map);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 객체, 라우팅 매개 변수</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과 :</font></font></p>
+<ul>
+<li><span class="notranslate">Routing</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 경로 객체 자체 반환</font></font></li>
+</ul>
+<hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">수락 추가 </font></font><a href="../../module/ifs/http.md.html" class="notranslate">http</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> PUT 메서드 라우팅 규칙</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div>Routing Routing.put(<span class="hljs-built_in">String</span> pattern,<font></font>
+    Handler hdlr);<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">pattern</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 메시지 일치 형식</font></font></li>
+<li><span class="notranslate">hdlr</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="handler.md.html" class="notranslate">Handler</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 내장 메시지 프로세서, 처리 기능, 체인 처리 배열, 라우팅 개체, 세부 정보 참조 </font></font><a href="../../module/ifs/mq.md.html#Handler" class="notranslate">mq.Handler</a></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과 :</font></font></p>
+<ul>
+<li><span class="notranslate">Routing</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 경로 객체 자체 반환</font></font></li>
+</ul>
+<hr>
+<div name="patch" data-unique="patch"></div><h3 id="patch" class="notranslate">patch</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">PATCH 메소드 라우팅 규칙 세트 추가</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Routing Routing.patch(<span class="hljs-built_in">Object</span> map);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 객체, 라우팅 매개 변수</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과 :</font></font></p>
+<ul>
+<li><span class="notranslate">Routing</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 경로 객체 자체 반환</font></font></li>
+</ul>
+<hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">수락 추가 </font></font><a href="../../module/ifs/http.md.html" class="notranslate">http</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> PATCH 방법 라우팅 규칙</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div>Routing Routing.patch(<span class="hljs-built_in">String</span> pattern,<font></font>
+    Handler hdlr);<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">pattern</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 메시지 일치 형식</font></font></li>
+<li><span class="notranslate">hdlr</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="handler.md.html" class="notranslate">Handler</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 내장 메시지 프로세서, 처리 기능, 체인 처리 배열, 라우팅 개체, 세부 정보 참조 </font></font><a href="../../module/ifs/mq.md.html#Handler" class="notranslate">mq.Handler</a></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과 :</font></font></p>
+<ul>
+<li><span class="notranslate">Routing</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 경로 객체 자체 반환</font></font></li>
+</ul>
+<hr>
+<div name="find" data-unique="find"></div><h3 id="find" class="notranslate">find</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">FIND 메소드 라우팅 규칙 세트 추가</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Routing Routing.find(<span class="hljs-built_in">Object</span> map);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 객체, 라우팅 매개 변수</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과 :</font></font></p>
+<ul>
+<li><span class="notranslate">Routing</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 경로 객체 자체 반환</font></font></li>
+</ul>
+<hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">수락 추가 </font></font><a href="../../module/ifs/http.md.html" class="notranslate">http</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> FIND 메소드 라우팅 규칙</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div>Routing Routing.find(<span class="hljs-built_in">String</span> pattern,<font></font>
+    Handler hdlr);<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">pattern</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 메시지 일치 형식</font></font></li>
+<li><span class="notranslate">hdlr</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="handler.md.html" class="notranslate">Handler</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 내장 메시지 프로세서, 처리 기능, 체인 처리 배열, 라우팅 개체, 세부 정보 참조 </font></font><a href="../../module/ifs/mq.md.html#Handler" class="notranslate">mq.Handler</a></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과 :</font></font></p>
+<ul>
+<li><span class="notranslate">Routing</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 경로 객체 자체 반환</font></font></li>
+</ul>
+<hr>
+<div name="invoke" data-unique="invoke"></div><h3 id="invoke" class="notranslate">invoke</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">메시지 또는 개체 처리</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Handler Routing.invoke(object v) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">v</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="object.md.html" class="notranslate">object</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 처리 할 메시지 또는 개체 지정</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과 :</font></font></p>
+<ul>
+<li><a href="handler.md.html" class="notranslate">Handler</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 다음 프로세서로 돌아 가기</font></font></li>
+</ul>
+<hr>
+<div name="toString" data-unique="toString"></div><h3 id="toString" class="notranslate">toString</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">객체의 문자열 표현을 반환합니다. 일반적으로 "[Native Object]"를 반환합니다. 객체는 자체 특성에 따라 다시 구현 될 수 있습니다.</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> Routing.toString();
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과 :</font></font></p>
+<ul>
+<li><span class="notranslate">String</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 객체의 문자열 표현을 반환합니다.</font></font></li>
+</ul>
+<hr>
+<div name="toJSON" data-unique="toJSON"></div><h3 id="toJSON" class="notranslate">toJSON</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">객체의 JSON 형식 표현을 반환하고 일반적으로 객체가 정의한 읽을 수있는 속성 모음을 반환합니다.</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Value Routing.toJSON(<span class="hljs-built_in">String</span> key = <span class="hljs-string">""</span>);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">key</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 미사용</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과 :</font></font></p>
+<ul>
+<li><span class="notranslate">Value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 직렬화 가능한 JSON이 포함 된 값을 반환합니다.</font></font></li>
+</ul>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2014-Present fibjs.org | </font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">지원</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip88640"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip88640" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">클릭하면 톱 페이지로 돌아갑니다</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>

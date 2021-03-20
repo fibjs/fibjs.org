@@ -3,6 +3,7 @@ var http = require('http');
 var fs = require('fs');
 var path = require('path');
 var coroutine = require('coroutine');
+var child_process = require('child_process');
 
 var marked = require('marked');
 var ejs = require('ejs');
@@ -38,7 +39,7 @@ try {
 } catch (e) {}
 
 function sync_releases() {
-    process.run('git', ['pull']);
+    child_process.run('git', ['pull']);
 
     var _tmpl = ejs.compile(fs.readTextFile(path.join(baseFolder, 'tmpl.html')));
 
@@ -100,7 +101,7 @@ function sync_releases() {
 
                 var txt = _tmpl({
                     info: [r],
-                    file_name:r.tag_name
+                    file_name: r.tag_name
                 });
 
                 var fname = path.join(baseFolder, r.tag_name + '.html');
@@ -111,11 +112,16 @@ function sync_releases() {
             }
         });
 
-        var file_name; 
-        info.some(r => { if (!r.prerelease){ file_name = r.tag_name; return true; }})
+        var file_name;
+        info.some(r => {
+            if (!r.prerelease) {
+                file_name = r.tag_name;
+                return true;
+            }
+        })
         var txt = _tmpl({
             info: info,
-            file_name:file_name
+            file_name: file_name
         });
 
         var fname = path.join(baseFolder, 'index.html');
@@ -170,7 +176,7 @@ function sync_releases() {
 module.exports = () => {
     console.log("start sync");
     while (true) {
-        coroutine.start(sync_releases).join();
+        // coroutine.start(sync_releases).join();
         coroutine.sleep(100000);
     }
 }

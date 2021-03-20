@@ -1,0 +1,1315 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../../imgs/icon.png"><title>UglifyJS3-ファイバー上のJavaScript</title><link href="../../../../css/common.css" rel="stylesheet"><link href="../../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ナビゲーションの切り替え</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../../index.html"><img src="../../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../../index.html">HOME</a></li><li><a href="../../guide/readme.md.html">GUIDE</a></li><li><a href="../../manual/module/readme.md.html">MODULE</a></li><li><a href="../../manual/object/readme.md.html">OBJECT</a></li><li><a href="../readme.md.html">AWESOME</a></li><li><a href="../../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../../docs/awesome/module/uglify-js.md.html">中文</a> <a href="../../../../en/docs/awesome/module/uglify-js.md.html">ENGLISH</a> <a href="../../../../ja/docs/awesome/module/uglify-js.md.html">日本語</a> <a href="../../../../de/docs/awesome/module/uglify-js.md.html">Deutsch</a> <a href="../../../../es/docs/awesome/module/uglify-js.md.html">Español</a> <a href="../../../../fr/docs/awesome/module/uglify-js.md.html">Français</a> <a href="../../../../ko/docs/awesome/module/uglify-js.md.html">한국어</a> <a href="../../../../it/docs/awesome/module/uglify-js.md.html">Italiano</a> <a href="../../../../ru/docs/awesome/module/uglify-js.md.html">Русский</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 素晴らしいコミュニティモジュール </font></font></span><div class="search"><span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input type="text" class="searchbox ds-input" placeholder="探す" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-label="検索入力" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Avenir, &quot;Segoe UI&quot;, Arial, &quot;Hiragino Sans GB&quot;, 冬青黑, &quot;Microsoft YaHei&quot;, 微软雅黑, SimSun, 宋体, Helvetica, Tahoma, &quot;Arial sans-serif&quot;; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div class="ds-dataset-1"></div></span></span></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ホームページ</font></font></a></li><li><a href="../readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> コミュニティモジュール </font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> UglifyJS 3 </font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 開発ガイド </font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="../../guide/about.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjsとは何ですか？</font></font></a></li>
+<li><a href="../../guide/install.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">インストールおよび動作環境</font></font></a></li>
+<li><a href="../../guide/hello.md.html" class="notranslate">hello, world</a></li>
+<li><a href="../../guide/test.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">良い人生はテストから始まります</font></font></a></li>
+<li><a href="../../guide/profiler.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">パフォーマンスキラーを見つける</font></font></a></li>
+<li><a href="../../guide/desktop.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">デスクトップアプリケーションをすばやく開発する</font></font></a></li>
+<li><a href="../../guide/server-hot-update.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">サーバーモジュールのホットアップデート</font></font></a></li>
+<li><a href="../../guide/host-routes.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ドメイン名ルーティング</font></font></a></li>
+<li><a href="../../guide/x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjsでのX509証明書の使用</font></font></a></li>
+<li><a href="../../guide/contribute.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ネイティブモジュールを追加する</font></font></a></li>
+</ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_module" aria-controls="collapse_module"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 基本モジュール </font></font></a></h4></div><div id="collapse_module" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="../../manual/module/ifs/assert.md.html" class="notranslate">assert</a></li>
+<li><a href="../../manual/module/ifs/base32.md.html" class="notranslate">base32</a></li>
+<li><a href="../../manual/module/ifs/base64.md.html" class="notranslate">base64</a></li>
+<li><a href="../../manual/module/ifs/base64vlq.md.html" class="notranslate">base64vlq</a></li>
+<li><a href="../../manual/module/ifs/bson.md.html" class="notranslate">bson</a></li>
+<li><a href="../../manual/module/ifs/child_process.md.html" class="notranslate">child_process</a></li>
+<li><a href="../../manual/module/ifs/console.md.html" class="notranslate">console</a></li>
+<li><a href="../../manual/module/ifs/constants.md.html" class="notranslate">constants</a></li>
+<li><a href="../../manual/module/ifs/coroutine.md.html" class="notranslate">coroutine</a></li>
+<li><a href="../../manual/module/ifs/crypto.md.html" class="notranslate">crypto</a></li>
+<li><a href="../../manual/module/ifs/db.md.html" class="notranslate">db</a></li>
+<li><a href="../../manual/module/ifs/dgram.md.html" class="notranslate">dgram</a></li>
+<li><a href="../../manual/module/ifs/dns.md.html" class="notranslate">dns</a></li>
+<li><a href="../../manual/module/ifs/encoding.md.html" class="notranslate">encoding</a></li>
+<li><a href="../../manual/module/ifs/fs.md.html" class="notranslate">fs</a></li>
+<li><a href="../../manual/module/ifs/gd.md.html" class="notranslate">gd</a></li>
+<li><a href="../../manual/module/ifs/global.md.html" class="notranslate">global</a></li>
+<li><a href="../../manual/module/ifs/gui.md.html" class="notranslate">gui</a></li>
+<li><a href="../../manual/module/ifs/hash.md.html" class="notranslate">hash</a></li>
+<li><a href="../../manual/module/ifs/hex.md.html" class="notranslate">hex</a></li>
+<li><a href="../../manual/module/ifs/http.md.html" class="notranslate">http</a></li>
+<li><a href="../../manual/module/ifs/iconv.md.html" class="notranslate">iconv</a></li>
+<li><a href="../../manual/module/ifs/io.md.html" class="notranslate">io</a></li>
+<li><a href="../../manual/module/ifs/json.md.html" class="notranslate">json</a></li>
+<li><a href="../../manual/module/ifs/mq.md.html" class="notranslate">mq</a></li>
+<li><a href="../../manual/module/ifs/msgpack.md.html" class="notranslate">msgpack</a></li>
+<li><a href="../../manual/module/ifs/net.md.html" class="notranslate">net</a></li>
+<li><a href="../../manual/module/ifs/os.md.html" class="notranslate">os</a></li>
+<li><a href="../../manual/module/ifs/path.md.html" class="notranslate">path</a></li>
+<li><a href="../../manual/module/ifs/path_posix.md.html" class="notranslate">path_posix</a></li>
+<li><a href="../../manual/module/ifs/path_win32.md.html" class="notranslate">path_win32</a></li>
+<li><a href="../../manual/module/ifs/process.md.html" class="notranslate">process</a></li>
+<li><a href="../../manual/module/ifs/profiler.md.html" class="notranslate">profiler</a></li>
+<li><a href="../../manual/module/ifs/punycode.md.html" class="notranslate">punycode</a></li>
+<li><a href="../../manual/module/ifs/querystring.md.html" class="notranslate">querystring</a></li>
+<li><a href="../../manual/module/ifs/registry.md.html" class="notranslate">registry</a></li>
+<li><a href="../../manual/module/ifs/ssl.md.html" class="notranslate">ssl</a></li>
+<li><a href="../../manual/module/ifs/string_decoder.md.html" class="notranslate">string_decoder</a></li>
+<li><a href="../../manual/module/ifs/test.md.html" class="notranslate">test</a></li>
+<li><a href="../../manual/module/ifs/timers.md.html" class="notranslate">timers</a></li>
+<li><a href="../../manual/module/ifs/tty.md.html" class="notranslate">tty</a></li>
+<li><a href="../../manual/module/ifs/url.md.html" class="notranslate">url</a></li>
+<li><a href="../../manual/module/ifs/util.md.html" class="notranslate">util</a></li>
+<li><a href="../../manual/module/ifs/uuid.md.html" class="notranslate">uuid</a></li>
+<li><a href="../../manual/module/ifs/vm.md.html" class="notranslate">vm</a></li>
+<li><a href="../../manual/module/ifs/ws.md.html" class="notranslate">ws</a></li>
+<li><a href="../../manual/module/ifs/xml.md.html" class="notranslate">xml</a></li>
+<li><a href="../../manual/module/ifs/zip.md.html" class="notranslate">zip</a></li>
+<li><a href="../../manual/module/ifs/zlib.md.html" class="notranslate">zlib</a></li>
+</ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_object" aria-controls="collapse_object"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 組み込みオブジェクト </font></font></a></h4></div><div id="collapse_object" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="../../manual/object/ifs/buffer.md.html" class="notranslate">Buffer</a></li>
+<li><a href="../../manual/object/ifs/bufferedstream.md.html" class="notranslate">BufferedStream</a></li>
+<li><a href="../../manual/object/ifs/chain.md.html" class="notranslate">Chain</a></li>
+<li><a href="../../manual/object/ifs/childprocess.md.html" class="notranslate">ChildProcess</a></li>
+<li><a href="../../manual/object/ifs/cipher.md.html" class="notranslate">Cipher</a></li>
+<li><a href="../../manual/object/ifs/condition.md.html" class="notranslate">Condition</a></li>
+<li><a href="../../manual/object/ifs/dbconnection.md.html" class="notranslate">DbConnection</a></li>
+<li><a href="../../manual/object/ifs/dgramsocket.md.html" class="notranslate">DgramSocket</a></li>
+<li><a href="../../manual/object/ifs/digest.md.html" class="notranslate">Digest</a></li>
+<li><a href="../../manual/object/ifs/event.md.html" class="notranslate">Event</a></li>
+<li><a href="../../manual/object/ifs/eventemitter.md.html" class="notranslate">EventEmitter</a></li>
+<li><a href="../../manual/object/ifs/fswatcher.md.html" class="notranslate">FSWatcher</a></li>
+<li><a href="../../manual/object/ifs/fiber.md.html" class="notranslate">Fiber</a></li>
+<li><a href="../../manual/object/ifs/file.md.html" class="notranslate">File</a></li>
+<li><a href="../../manual/object/ifs/handler.md.html" class="notranslate">Handler</a></li>
+<li><a href="../../manual/object/ifs/heapgraphedge.md.html" class="notranslate">HeapGraphEdge</a></li>
+<li><a href="../../manual/object/ifs/heapgraphnode.md.html" class="notranslate">HeapGraphNode</a></li>
+<li><a href="../../manual/object/ifs/heapsnapshot.md.html" class="notranslate">HeapSnapshot</a></li>
+<li><a href="../../manual/object/ifs/httpclient.md.html" class="notranslate">HttpClient</a></li>
+<li><a href="../../manual/object/ifs/httpcollection.md.html" class="notranslate">HttpCollection</a></li>
+<li><a href="../../manual/object/ifs/httpcookie.md.html" class="notranslate">HttpCookie</a></li>
+<li><a href="../../manual/object/ifs/httphandler.md.html" class="notranslate">HttpHandler</a></li>
+<li><a href="../../manual/object/ifs/httpmessage.md.html" class="notranslate">HttpMessage</a></li>
+<li><a href="../../manual/object/ifs/httprepeater.md.html" class="notranslate">HttpRepeater</a></li>
+<li><a href="../../manual/object/ifs/httprequest.md.html" class="notranslate">HttpRequest</a></li>
+<li><a href="../../manual/object/ifs/httpresponse.md.html" class="notranslate">HttpResponse</a></li>
+<li><a href="../../manual/object/ifs/httpserver.md.html" class="notranslate">HttpServer</a></li>
+<li><a href="../../manual/object/ifs/httpuploaddata.md.html" class="notranslate">HttpUploadData</a></li>
+<li><a href="../../manual/object/ifs/httpsserver.md.html" class="notranslate">HttpsServer</a></li>
+<li><a href="../../manual/object/ifs/image.md.html" class="notranslate">Image</a></li>
+<li><a href="../../manual/object/ifs/leveldb.md.html" class="notranslate">LevelDB</a></li>
+<li><a href="../../manual/object/ifs/lock.md.html" class="notranslate">Lock</a></li>
+<li><a href="../../manual/object/ifs/lrucache.md.html" class="notranslate">LruCache</a></li>
+<li><a href="../../manual/object/ifs/mssql.md.html" class="notranslate">MSSQL</a></li>
+<li><a href="../../manual/object/ifs/memorystream.md.html" class="notranslate">MemoryStream</a></li>
+<li><a href="../../manual/object/ifs/message.md.html" class="notranslate">Message</a></li>
+<li><a href="../../manual/object/ifs/mongocollection.md.html" class="notranslate">MongoCollection</a></li>
+<li><a href="../../manual/object/ifs/mongocursor.md.html" class="notranslate">MongoCursor</a></li>
+<li><a href="../../manual/object/ifs/mongodb.md.html" class="notranslate">MongoDB</a></li>
+<li><a href="../../manual/object/ifs/mongoid.md.html" class="notranslate">MongoID</a></li>
+<li><a href="../../manual/object/ifs/mysql.md.html" class="notranslate">MySQL</a></li>
+<li><a href="../../manual/object/ifs/pkey.md.html" class="notranslate">PKey</a></li>
+<li><a href="../../manual/object/ifs/rangestream.md.html" class="notranslate">RangeStream</a></li>
+<li><a href="../../manual/object/ifs/redis.md.html" class="notranslate">Redis</a></li>
+<li><a href="../../manual/object/ifs/redishash.md.html" class="notranslate">RedisHash</a></li>
+<li><a href="../../manual/object/ifs/redislist.md.html" class="notranslate">RedisList</a></li>
+<li><a href="../../manual/object/ifs/redisset.md.html" class="notranslate">RedisSet</a></li>
+<li><a href="../../manual/object/ifs/redissortedset.md.html" class="notranslate">RedisSortedSet</a></li>
+<li><a href="../../manual/object/ifs/routing.md.html" class="notranslate">Routing</a></li>
+<li><a href="../../manual/object/ifs/sqlite.md.html" class="notranslate">SQLite</a></li>
+<li><a href="../../manual/object/ifs/sandbox.md.html" class="notranslate">SandBox</a></li>
+<li><a href="../../manual/object/ifs/seekablestream.md.html" class="notranslate">SeekableStream</a></li>
+<li><a href="../../manual/object/ifs/semaphore.md.html" class="notranslate">Semaphore</a></li>
+<li><a href="../../manual/object/ifs/service.md.html" class="notranslate">Service</a></li>
+<li><a href="../../manual/object/ifs/smtp.md.html" class="notranslate">Smtp</a></li>
+<li><a href="../../manual/object/ifs/socket.md.html" class="notranslate">Socket</a></li>
+<li><a href="../../manual/object/ifs/sslhandler.md.html" class="notranslate">SslHandler</a></li>
+<li><a href="../../manual/object/ifs/sslserver.md.html" class="notranslate">SslServer</a></li>
+<li><a href="../../manual/object/ifs/sslsocket.md.html" class="notranslate">SslSocket</a></li>
+<li><a href="../../manual/object/ifs/stat.md.html" class="notranslate">Stat</a></li>
+<li><a href="../../manual/object/ifs/statswatcher.md.html" class="notranslate">StatsWatcher</a></li>
+<li><a href="../../manual/object/ifs/stream.md.html" class="notranslate">Stream</a></li>
+<li><a href="../../manual/object/ifs/stringdecoder.md.html" class="notranslate">StringDecoder</a></li>
+<li><a href="../../manual/object/ifs/tcpserver.md.html" class="notranslate">TcpServer</a></li>
+<li><a href="../../manual/object/ifs/timer.md.html" class="notranslate">Timer</a></li>
+<li><a href="../../manual/object/ifs/urlobject.md.html" class="notranslate">UrlObject</a></li>
+<li><a href="../../manual/object/ifs/websocket.md.html" class="notranslate">WebSocket</a></li>
+<li><a href="../../manual/object/ifs/websocketmessage.md.html" class="notranslate">WebSocketMessage</a></li>
+<li><a href="../../manual/object/ifs/webview.md.html" class="notranslate">WebView</a></li>
+<li><a href="../../manual/object/ifs/worker.md.html" class="notranslate">Worker</a></li>
+<li><a href="../../manual/object/ifs/x509cert.md.html" class="notranslate">X509Cert</a></li>
+<li><a href="../../manual/object/ifs/x509crl.md.html" class="notranslate">X509Crl</a></li>
+<li><a href="../../manual/object/ifs/x509req.md.html" class="notranslate">X509Req</a></li>
+<li><a href="../../manual/object/ifs/xmlattr.md.html" class="notranslate">XmlAttr</a></li>
+<li><a href="../../manual/object/ifs/xmlcdatasection.md.html" class="notranslate">XmlCDATASection</a></li>
+<li><a href="../../manual/object/ifs/xmlcharacterdata.md.html" class="notranslate">XmlCharacterData</a></li>
+<li><a href="../../manual/object/ifs/xmlcomment.md.html" class="notranslate">XmlComment</a></li>
+<li><a href="../../manual/object/ifs/xmldocument.md.html" class="notranslate">XmlDocument</a></li>
+<li><a href="../../manual/object/ifs/xmldocumenttype.md.html" class="notranslate">XmlDocumentType</a></li>
+<li><a href="../../manual/object/ifs/xmlelement.md.html" class="notranslate">XmlElement</a></li>
+<li><a href="../../manual/object/ifs/xmlnamednodemap.md.html" class="notranslate">XmlNamedNodeMap</a></li>
+<li><a href="../../manual/object/ifs/xmlnode.md.html" class="notranslate">XmlNode</a></li>
+<li><a href="../../manual/object/ifs/xmlnodelist.md.html" class="notranslate">XmlNodeList</a></li>
+<li><a href="../../manual/object/ifs/xmlprocessinginstruction.md.html" class="notranslate">XmlProcessingInstruction</a></li>
+<li><a href="../../manual/object/ifs/xmltext.md.html" class="notranslate">XmlText</a></li>
+<li><a href="../../manual/object/ifs/zipfile.md.html" class="notranslate">ZipFile</a></li>
+<li><a href="../../manual/object/ifs/object.md.html" class="notranslate">object</a></li>
+</ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_awesome" aria-controls="collapse_awesome"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> コミュニティモジュール </font></font></a></h4></div><div id="collapse_awesome" class="panel-collapse collapse in" aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="fib-session.md.html" class="notranslate">fib-session</a></li>
+<li><a href="fib-pool.md.html" class="notranslate">fib-pool</a></li>
+<li><a href="fib-orm.md.html" class="notranslate">fib-orm</a></li>
+<li><a href="fib-app.md.html" class="notranslate">fib-app</a></li>
+<li><a href="fib-kv.md.html" class="notranslate">fib-kv</a></li>
+<li><a href="fib-rpc.md.html" class="notranslate">fib-rpc</a></li>
+<li><a href="fib-qr.md.html" class="notranslate">fib-qr</a></li>
+<li><a href="fib-pug.md.html" class="notranslate">fib-pug</a></li>
+<li><a href="ejs.md.html" class="notranslate">ejs</a></li>
+<li><a href="juicer.md.html" class="notranslate">Juicer</a></li>
+<li><a href="highlight.js.md.html" class="notranslate">highlight.js</a></li>
+<li><a href="marked.md.html" class="notranslate">marked</a></li>
+<li><a href="node-cron.md.html" class="notranslate">node-cron</a></li>
+<li><a href="debug.md.html" class="notranslate">debug</a></li>
+<li><a href="benchmark.js.md.html" class="notranslate">benchmark.js</a></li>
+<li><a href="sinon.md.html" class="notranslate">sinon</a></li>
+<li><a href="node-mime.md.html" class="notranslate">node-mime</a></li>
+<li><a href="validatorjs.md.html" class="notranslate">validatorjs</a></li>
+<li><a href="superstruct.md.html" class="notranslate">superstruct</a></li>
+<li><a href="cluster-server.md.html" class="notranslate">cluster-server</a></li>
+<li><a href="synaptic.md.html" class="notranslate">synaptic</a></li>
+<li><a href="source-map.md.html" class="notranslate">source-map</a></li>
+<li><a href="json-format.md.html" class="notranslate">json-format</a></li>
+<li><a href="viz.js.md.html" class="notranslate">viz.js</a></li>
+<li><a href="nomnoml.md.html" class="notranslate">nomnoml</a></li>
+<li><a href="pegjs.md.html" class="notranslate">pegjs</a></li>
+<li class="active"><a href="uglify-js.md.html" class="notranslate">uglify-js</a></li>
+<li><a href="js-beautify.md.html" class="notranslate">js-beautify</a></li>
+<li><a href="chalk-animation.md.html" class="notranslate">chalk-animation</a></li>
+<li><a href="jsrsasign.md.html" class="notranslate">jsrsasign</a></li>
+<li><a href="crypto-js.md.html" class="notranslate">crypto-js</a></li>
+<li><a href="ascii-table.md.html" class="notranslate">ascii-table</a></li>
+<li><a href="logstream.md.html" class="notranslate">logstream</a></li>
+<li><a href="ci.md.html" class="notranslate">ci</a></li>
+<li><a href="fs-readdir-recursive.md.html" class="notranslate">fs-readdir-recursive</a></li>
+<li><a href="mkdirp.md.html" class="notranslate">mkdirp</a></li>
+<li><a href="rmdirr.md.html" class="notranslate">rmdirr</a></li>
+<li><a href="detect-port.md.html" class="notranslate">detect-port</a></li>
+<li><a href="bitcoinjs-lib.md.html" class="notranslate">bitcoinjs-lib</a></li>
+<li><a href="rakuten.md.html" class="notranslate">Rakuten</a></li>
+</ul>
+ </div></div></div>  </div></div><div class="content"><div class="social-share share-component" data-sites="weibo,twitter" data-description="分享"></div> <div name="UglifyJS-3" data-unique="UglifyJS-3"></div><h1 id="UglifyJS-3"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">UglifyJS 3</font></font></h1>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">UglifyJSは、JavaScriptパーサー、ミニファイア、コンプレッサー、およびビューティファイアツールキットです。</font></font></p>
+<h4 id="Note:"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">注意：</font></font></h4>
+<ul>
+<li><strong><code>uglify-js@3</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">との</font><font style="vertical-align: inherit;">下位互換性がない</font><font style="vertical-align: inherit;">簡略化された</font></font><a href="#api-reference"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">API</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">と</font></font><a href="#command-line-usage"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">CLI</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">が</font><font style="vertical-align: inherit;">あり</font><a href="#command-line-usage"><font style="vertical-align: inherit;">ます</font></a></font><a href="https://github.com/mishoo/UglifyJS2/tree/v2.x"><code>uglify-js@2</code></a></strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font></li>
+<li><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">UglifyJS</font></font><code>2.x</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">リリースの</font><font style="vertical-align: inherit;">ドキュメントは</font></font><a href="https://github.com/mishoo/UglifyJS2/tree/v2.x"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ここにあります</font></font></a></strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font></li>
+<li><code>uglify-js</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> JavaScript（ECMAScript 5）のみをサポートします。</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ECMAScript 2015以降を縮小するには、</font></font><a href="https://babeljs.io/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Babel</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">などのツールを使用してトランスパイルします</font><font style="vertical-align: inherit;">。</font></font></li>
+</ul>
+<div name="Install" data-unique="Install"></div><h2 id="Install"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">インストール</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">まず、最新バージョンの</font></font><a href="http://nodejs.org/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">node.js</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">がインストールされていることを確認します</font><font style="vertical-align: inherit;">
+（この手順の後でコンピューターを再起動する必要がある場合があります）。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">コマンドラインアプリとして使用するためのNPMから：</font></font></p>
+<pre><code><div class="line-numbers">1</div>npm <span class="hljs-keyword">install </span>uglify-<span class="hljs-keyword">js </span>-g
+</code></pre><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">プログラムで使用するためのNPMから：</font></font></p>
+<pre><code><div class="line-numbers">1</div>npm <span class="hljs-keyword">install</span> uglify-js
+</code></pre><div name="Command-line-usage" data-unique="Command-line-usage"></div><h1 id="Command-line-usage"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">コマンドラインの使用法</font></font></h1>
+<pre><code><div class="line-numbers">1</div>uglifyjs [<span class="hljs-built_in">input</span> <span class="hljs-keyword">files</span>] [<span class="hljs-keyword">options</span>]
+</code></pre><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">UglifyJSは複数の入力ファイルを受け取ることができます。最初に入力ファイルを渡し、次にオプションを渡すことをお勧めします。UglifyJSは入力ファイルを順番に解析し、圧縮オプションを適用します。ファイルは同じグローバルスコープ、つまり参照で解析されます。ファイルから別のファイルで宣言された変数/関数への変換は適切に照合されます。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">入力ファイルが指定されていない場合、UglifyJSはSTDINから読み取ります。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">入力ファイルの前にオプションを渡したい場合は、入力ファイルがオプション引数として使用されないように、2つを二重ダッシュで区切ります。</font></font></p>
+<pre><code><div class="line-numbers">1</div><span class="hljs-comment">uglifyjs</span> <span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-comment">compress</span> <span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-comment">mangle</span> <span class="hljs-literal">-</span><span class="hljs-literal">-</span> <span class="hljs-comment">input</span><span class="hljs-string">.</span><span class="hljs-comment">js</span>
+</code></pre><div name="Command-line-options" data-unique="Command-line-options"></div><h3 id="Command-line-options" class="notranslate">Command line options</h3>
+<pre><code><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92</div>    -h, <span class="hljs-comment">--help                  Print usage information.</span>
+                                `<span class="hljs-comment">--help options` for details on available options.</span>
+    -V, <span class="hljs-comment">--version               Print version number.</span>
+    -p, <span class="hljs-comment">--parse &lt;options&gt;       Specify parser options:</span>
+                                `acorn`  <span class="hljs-keyword">Use</span> Acorn <span class="hljs-keyword">for</span> parsing.
+                                <span class="hljs-string">`bare_returns`</span>  <span class="hljs-keyword">Allow</span> <span class="hljs-keyword">return</span> outside <span class="hljs-keyword">of</span> functions.<font></font>
+                                                Useful <span class="hljs-keyword">when</span> minifying CommonJS<font></font>
+                                                modules <span class="hljs-keyword">and</span> Userscripts that may<font></font>
+                                                be anonymous <span class="hljs-keyword">function</span> <span class="hljs-keyword">wrapped</span> (IIFE)
+                                                <span class="hljs-keyword">by</span> the .user.js <span class="hljs-keyword">engine</span> <span class="hljs-string">`caller`</span>.
+                                <span class="hljs-string">`expression`</span>  <span class="hljs-keyword">Parse</span> a single expression, rather <span class="hljs-keyword">than</span>
+                                              a program (<span class="hljs-keyword">for</span> parsing <span class="hljs-keyword">JSON</span>).
+                                <span class="hljs-string">`spidermonkey`</span>  Assume <span class="hljs-keyword">input</span> files <span class="hljs-keyword">are</span> SpiderMonkey<font></font>
+                                                AST <span class="hljs-keyword">format</span> (<span class="hljs-keyword">as</span> <span class="hljs-keyword">JSON</span>).<font></font>
+    -c, <span class="hljs-comment">--compress [options]    Enable compressor/specify compressor options:</span>
+                                <span class="hljs-string">`pure_funcs`</span>  <span class="hljs-keyword">List</span> <span class="hljs-keyword">of</span> functions that can be safely<font></font>
+                                              removed <span class="hljs-keyword">when</span> their <span class="hljs-keyword">return</span> <span class="hljs-keyword">values</span> <span class="hljs-keyword">are</span>
+                                              <span class="hljs-keyword">not</span> used.<font></font>
+    -m, <span class="hljs-comment">--mangle [options]      Mangle names/specify mangler options:</span>
+                                <span class="hljs-string">`reserved`</span>  <span class="hljs-keyword">List</span> <span class="hljs-keyword">of</span> <span class="hljs-keyword">names</span> that should <span class="hljs-keyword">not</span> be mangled.
+    <span class="hljs-comment">--mangle-props [options]    Mangle properties/specify mangler options:</span>
+                                <span class="hljs-string">`builtins`</span>  Mangle property <span class="hljs-keyword">names</span> that overlaps
+                                            <span class="hljs-keyword">with</span> standard JavaScript globals.
+                                <span class="hljs-string">`debug`</span>  <span class="hljs-keyword">Add</span> debug prefix <span class="hljs-keyword">and</span> suffix.
+                                <span class="hljs-string">`domprops`</span>  Mangle property <span class="hljs-keyword">names</span> that overlaps
+                                            <span class="hljs-keyword">with</span> DOM properties.
+                                <span class="hljs-string">`keep_quoted`</span>  <span class="hljs-keyword">Only</span> mangle unquoted properties.
+                                <span class="hljs-string">`regex`</span>  <span class="hljs-keyword">Only</span> mangle <span class="hljs-keyword">matched</span> property names.
+                                <span class="hljs-string">`reserved`</span>  <span class="hljs-keyword">List</span> <span class="hljs-keyword">of</span> <span class="hljs-keyword">names</span> that should <span class="hljs-keyword">not</span> be mangled.<font></font>
+    -b, <span class="hljs-comment">--beautify [options]    Beautify output/specify output options:</span>
+                                <span class="hljs-string">`beautify`</span>  Enabled <span class="hljs-keyword">with</span> <span class="hljs-string">`--beautify`</span> <span class="hljs-keyword">by</span> default.
+                                <span class="hljs-string">`preamble`</span>  Preamble <span class="hljs-keyword">to</span> prepend <span class="hljs-keyword">to</span> the output. You<font></font>
+                                            can <span class="hljs-keyword">use</span> this <span class="hljs-keyword">to</span> <span class="hljs-keyword">insert</span> a <span class="hljs-keyword">comment</span>, <span class="hljs-keyword">for</span>
+                                            example <span class="hljs-keyword">for</span> licensing information.<font></font>
+                                            This will <span class="hljs-keyword">not</span> be parsed, but the <span class="hljs-keyword">source</span>
+                                            <span class="hljs-keyword">map</span> will adjust <span class="hljs-keyword">for</span> its presence.
+                                <span class="hljs-string">`quote_style`</span>  Quote <span class="hljs-keyword">style</span>:
+                                               <span class="hljs-number">0</span> - <span class="hljs-keyword">auto</span>
+                                               <span class="hljs-number">1</span> - single
+                                               <span class="hljs-number">2</span> - <span class="hljs-keyword">double</span>
+                                               <span class="hljs-number">3</span> - original
+                                <span class="hljs-string">`wrap_iife`</span>  Wrap IIFEs <span class="hljs-keyword">in</span> parenthesis. Note: you may<font></font>
+                                             want <span class="hljs-keyword">to</span> <span class="hljs-keyword">disable</span> <span class="hljs-string">`negate_iife`</span> <span class="hljs-keyword">under</span><font></font>
+                                             compressor options.<font></font>
+    -o, <span class="hljs-comment">--output &lt;file&gt;         Output file path (default STDOUT). Specify `ast` or</span>
+                                <span class="hljs-string">`spidermonkey`</span> <span class="hljs-keyword">to</span> write UglifyJS <span class="hljs-keyword">or</span> SpiderMonkey AST
+                                <span class="hljs-keyword">as</span> <span class="hljs-keyword">JSON</span> <span class="hljs-keyword">to</span> STDOUT respectively.
+    <span class="hljs-comment">--comments [filter]         Preserve copyright comments in the output. By</span>
+                                <span class="hljs-keyword">default</span> this works <span class="hljs-keyword">like</span> Google Closure, keeping<font></font>
+                                JSDoc-<span class="hljs-keyword">style</span> comments that contain <span class="hljs-string">"@license"</span> <span class="hljs-keyword">or</span>
+                                <span class="hljs-string">"@preserve"</span>. You can <span class="hljs-keyword">optionally</span> pass one <span class="hljs-keyword">of</span> the
+                                <span class="hljs-keyword">following</span> arguments <span class="hljs-keyword">to</span> this flag:<font></font>
+                                - <span class="hljs-string">"all"</span> <span class="hljs-keyword">to</span> <span class="hljs-keyword">keep</span> <span class="hljs-keyword">all</span> comments<font></font>
+                                - a valid JS RegExp <span class="hljs-keyword">like</span> <span class="hljs-string">`/foo/`</span> <span class="hljs-keyword">or</span> <span class="hljs-string">`/^!/`</span> <span class="hljs-keyword">to</span>
+                                <span class="hljs-keyword">keep</span> <span class="hljs-keyword">only</span> matching comments.<font></font>
+                                Note that currently <span class="hljs-keyword">not</span> *<span class="hljs-keyword">all</span>* comments can be<font></font>
+                                kept <span class="hljs-keyword">when</span> compression <span class="hljs-keyword">is</span> <span class="hljs-keyword">on</span>, because <span class="hljs-keyword">of</span> dead<font></font>
+                                code removal <span class="hljs-keyword">or</span> cascading statements <span class="hljs-keyword">into</span><font></font>
+                                sequences.<font></font>
+    <span class="hljs-comment">--config-file &lt;file&gt;        Read `minify()` options from JSON file.</span>
+    -d, <span class="hljs-comment">--define &lt;expr&gt;[=value] Global definitions.</span>
+    <span class="hljs-comment">--ie8                       Support non-standard Internet Explorer 8.</span>
+                                Equivalent <span class="hljs-keyword">to</span> setting <span class="hljs-string">`ie8: true`</span> <span class="hljs-keyword">in</span> <span class="hljs-string">`minify()`</span>
+                                <span class="hljs-keyword">for</span> <span class="hljs-string">`compress`</span>, <span class="hljs-string">`mangle`</span> <span class="hljs-keyword">and</span> <span class="hljs-string">`output`</span> options.
+                                <span class="hljs-keyword">By</span> <span class="hljs-keyword">default</span> UglifyJS will <span class="hljs-keyword">not</span> try <span class="hljs-keyword">to</span> be IE-proof.
+    <span class="hljs-comment">--keep-fnames               Do not mangle/drop function names.  Useful for</span>
+                                code relying <span class="hljs-keyword">on</span> Function.prototype.name.
+    <span class="hljs-comment">--name-cache &lt;file&gt;         File to hold mangled name mappings.</span>
+    <span class="hljs-comment">--self                      Build UglifyJS as a library (implies --wrap UglifyJS)</span>
+    <span class="hljs-comment">--source-map [options]      Enable source map/specify source map options:</span>
+                                <span class="hljs-string">`base`</span>  <span class="hljs-keyword">Path</span> <span class="hljs-keyword">to</span> <span class="hljs-keyword">compute</span> <span class="hljs-keyword">relative</span> paths <span class="hljs-keyword">from</span> <span class="hljs-keyword">input</span> files.
+                                <span class="hljs-string">`content`</span>  <span class="hljs-keyword">Input</span> <span class="hljs-keyword">source</span> <span class="hljs-keyword">map</span>, useful <span class="hljs-keyword">if</span> you<span class="hljs-string">'re compressing
+                                           JS that was generated from some other original
+                                           code. Specify "inline" if the source map is
+                                           included within the sources.
+                                `filename`  Name and/or location of the output source.
+                                `includeSources`  Pass this flag if you want to include
+                                                  the content of source files in the
+                                                  source map as sourcesContent property.
+                                `root`  Path to the original source to be included in
+                                        the source map.
+                                `url`  If specified, path to the source map to append in
+                                       `//# sourceMappingURL`.
+    --timings                   Display operations run time on STDERR.
+    --toplevel                  Compress and/or mangle variables in top level scope.
+    --verbose                   Print diagnostic messages.
+    --warn                      Print warning messages.
+    --wrap &lt;name&gt;               Embed everything in a big function, making the
+                                “exports” and “global” variables available. You
+                                need to pass an argument to this option to
+                                specify the name that your module will take
+                                when included in, say, a browser.</span>
+</code></pre><p><font style="vertical-align: inherit;"></font><code>--output</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（</font></font><code>-o</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">）を</font><font style="vertical-align: inherit;">指定</font><font style="vertical-align: inherit;">して出力ファイルを宣言します。それ以外の場合、出力はSTDOUTに送られます。</font></font></p>
+<div name="CLI-source-map-options" data-unique="CLI-source-map-options"></div><h2 id="CLI-source-map-options"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">CLIソースマップオプション</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">UglifyJSは、圧縮されたJavaScriptのデバッグに非常に役立つソースマップファイルを生成できます。ソースマップを取得するには、パスします
+</font></font><code>--source-map --output output.js</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（ソースマップはに書き出されます
+</font></font><code>output.js.map</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">）。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">追加オプション：</font></font></p>
+<ul>
+<li><p><code>--source-map "filename='&lt;NAME&gt;'"</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> ソースマップの名前を指定します。</font></font></p>
+</li>
+<li><p><code>--source-map "root='&lt;URL&gt;'"</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 元のファイルが見つかるURLを渡します。</font></font></p>
+</li>
+<li><p><code>--source-map "url='&lt;URL&gt;'"</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ソースマップを見つけることができるURLを指定します。それ以外の場合、UglifyJSはHTTP</font></font><code>X-SourceMap</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">が使用されていると</font><font style="vertical-align: inherit;">想定し</font><font style="vertical-align: inherit;">、</font></font><code>//# sourceMappingURL=</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ディレクティブ</font><font style="vertical-align: inherit;">を省略し
+</font><font style="vertical-align: inherit;">ます。</font></font></p>
+</li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">例えば：</font></font></p>
+<pre><code><div class="line-numbers">1
+2
+3</div>uglifyjs js/file1<span class="hljs-selector-class">.js</span> js/file2<span class="hljs-selector-class">.js</span> \<font></font>
+         -o foo<span class="hljs-selector-class">.min</span><span class="hljs-selector-class">.js</span> -c -m \<font></font>
+         --source-map <span class="hljs-string">"root='http://foo.com/src',url='foo.min.js.map'"</span>
+</code></pre><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上記の意志の圧縮とマングル</font></font><code>file1.js</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">とは</font></font><code>file2.js</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、出力低下する</font></font><code>foo.min.js</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">に、ソースマップを</font></font><code>foo.min.js.map</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。ソースマッピングはを参照する</font></font><code>http://foo.com/src/js/file1.js</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">と
+</font></font><code>http://foo.com/src/js/file2.js</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（実際には、一覧表示されます</font></font><code>http://foo.com/src</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ソースマップルートとして、元ファイルとして</font></font><code>js/file1.js</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">及び
+</font></font><code>js/file2.js</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">）。</font></font></p>
+<div name="Composed-source-map" data-unique="Composed-source-map"></div><h3 id="Composed-source-map" class="notranslate">Composed source map</h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">CoffeeScriptなどのコンパイラによって出力されたJSコードを圧縮する場合、JSコードへのマッピングはあまり役に立ちません。代わりに、元のコード（つまり、CoffeeScript）にマッピングし直したいと思います。UglifyJSには入力ソースマップを取得するオプション。CoffeeScript→コンパイルされたJSからのマッピングがあるとすると、UglifyJSは、コンパイルされたJS内のすべてのトークンを元の場所にマッピングすることにより、CoffeeScript→圧縮されたJSからマップを生成できます。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">この機能パスを使用するには、</font></font><code>--source-map "content='/path/to/input/source.map'"</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+または</font></font><code>--source-map "content=inline"</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ソースマップがソースとインラインで含まれている場合。</font></font></p>
+<div name="CLI-compress-options" data-unique="CLI-compress-options"></div><h2 id="CLI-compress-options"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">CLI圧縮オプション</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">コンプレッサーを有効にするには、</font></font><code>--compress</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（</font></font><code>-c</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">）</font><font style="vertical-align: inherit;">を渡す必要があり</font></font><a href="#compress-options"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ます</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><a href="#compress-options"><font style="vertical-align: inherit;">オプション</font></a><font style="vertical-align: inherit;">で、</font><a href="#compress-options"><font style="vertical-align: inherit;">圧縮オプションの</font></a><font style="vertical-align: inherit;">コンマ区切りリストを渡すことができ</font><a href="#compress-options"><font style="vertical-align: inherit;">ます</font></a><font style="vertical-align: inherit;">。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">オプションは</font></font><code>foo=bar</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、または単に</font><font style="vertical-align: inherit;">の形式</font><font style="vertical-align: inherit;">です</font></font><code>foo</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（後者は、設定するブールオプションを意味します</font></font><code>true</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。これは、事実上、のショートカットです</font></font><code>foo=true</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">）。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">例：</font></font></p>
+<pre><code><div class="line-numbers">1</div>uglifyjs <span class="hljs-built_in">file</span>.js -c toplevel,sequences=<span class="hljs-literal">false</span>
+</code></pre><div name="CLI-mangle-options" data-unique="CLI-mangle-options"></div><h2 id="CLI-mangle-options"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">CLIマングルオプション</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">マングラーを有効にするには、</font></font><code>--mangle</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（</font></font><code>-m</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">）</font><font style="vertical-align: inherit;">を渡す必要があります</font><font style="vertical-align: inherit;">。次の（コンマ区切りの）オプションがサポートされています。</font></font></p>
+<ul>
+<li><p><code>toplevel</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（デフォルト</font></font><code>false</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">）-トップレベルスコープで宣言されたマングル名。</font></font></p>
+</li>
+<li><p><code>eval</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（デフォルト</font></font><code>false</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">）-</font></font><code>eval</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">または</font></font><code>with</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">が使用さ</font><font style="vertical-align: inherit;">れているスコープに表示されるマングル名</font><font style="vertical-align: inherit;">。</font></font></p>
+</li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">マングリングが有効になっているが、特定の名前がマングルされないようにしたい場合は、それらの名前を</font></font><code>--mangle reserved</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">—で</font><font style="vertical-align: inherit;">宣言でき</font><font style="vertical-align: inherit;">ます。名前のコンマ区切りリストを渡します。次に例を示します。</font></font></p>
+<pre><code><div class="line-numbers">1</div><span class="hljs-function"><span class="hljs-title">uglifyjs</span></span> ... -m reserved=[<span class="hljs-string">'$'</span>,<span class="hljs-string">'require'</span>,<span class="hljs-string">'exports'</span>]
+</code></pre><p><font style="vertical-align: inherit;"></font><code>require</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、</font></font><code>exports</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">および</font></font><code>$</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">名前が変更さ</font><font style="vertical-align: inherit;">れないようにし</font><font style="vertical-align: inherit;">ます。</font></font></p>
+<div name="CLI-mangling-property-names-(--mangle-props)" data-unique="CLI-mangling-property-names-(--mangle-props)"></div><h3 id="CLI-mangling-property-names-(--mangle-props)"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">CLIマングリングプロパティ名（</font></font><code>--mangle-props</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">）</font></font></h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">注：これにより</font></font></strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">コードが破損する可能性があります。プロパティ名のマングリングは、変数名のマングリングとは別の手順です。パス
+</font></font><code>--mangle-props</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">して有効にします。組み込みのDOMプロパティとコアJavaScriptのプロパティを除き、入力コードのすべてのプロパティがマングルされます。クラス。例：</font></font></p>
+<pre><code class="lang-javascript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11</div><span class="hljs-comment">// example.js</span>
+<span class="hljs-keyword">var</span> x = {
+    <span class="hljs-attr">baz_</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">foo_</span>: <span class="hljs-number">1</span>,
+    <span class="hljs-attr">calc</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.foo_ + <span class="hljs-keyword">this</span>.baz_;<font></font>
+    }<font></font>
+};<font></font>
+x.bar_ = <span class="hljs-number">2</span>;<font></font>
+x[<span class="hljs-string">"baz_"</span>] = <span class="hljs-number">3</span>;
+<span class="hljs-built_in">console</span>.log(x.calc());
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">すべてのプロパティをマングルします（JavaScriptを除く</font></font><code>builtins</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">）：</font></font></p>
+<pre><code class="lang-bash"><div class="line-numbers">1</div>$ uglifyjs example.js -c -m --mangle-props
+</code></pre>
+<pre><code class="lang-javascript"><div class="line-numbers">1</div><span class="hljs-keyword">var</span> x={<span class="hljs-attr">o</span>:<span class="hljs-number">0</span>,<span class="hljs-attr">_</span>:<span class="hljs-number">1</span>,<span class="hljs-attr">l</span>:<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{<span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>._+<span class="hljs-keyword">this</span>.o}};x.t=<span class="hljs-number">2</span>,x.o=<span class="hljs-number">3</span>,<span class="hljs-built_in">console</span>.log(x.l());
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">プロパティを除くすべてのプロパティをマングルし</font></font><code>reserved</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ます。</font></font></p>
+<pre><code class="lang-bash"><div class="line-numbers">1</div>$ uglifyjs example.js -c -m --mangle-props reserved=[foo_,bar_]
+</code></pre>
+<pre><code class="lang-javascript"><div class="line-numbers">1</div><span class="hljs-keyword">var</span> x={<span class="hljs-attr">o</span>:<span class="hljs-number">0</span>,<span class="hljs-attr">foo_</span>:<span class="hljs-number">1</span>,<span class="hljs-attr">_</span>:<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{<span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.foo_+<span class="hljs-keyword">this</span>.o}};x.bar_=<span class="hljs-number">2</span>,x.o=<span class="hljs-number">3</span>,<span class="hljs-built_in">console</span>.log(x._());
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">に一致するすべてのプロパティをマングルします</font></font><code>regex</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：</font></font></p>
+<pre><code class="lang-bash"><div class="line-numbers">1</div>$ uglifyjs example.js -c -m --mangle-props regex=/_$/
+</code></pre>
+<pre><code class="lang-javascript"><div class="line-numbers">1</div><span class="hljs-keyword">var</span> x={<span class="hljs-attr">o</span>:<span class="hljs-number">0</span>,<span class="hljs-attr">_</span>:<span class="hljs-number">1</span>,<span class="hljs-attr">calc</span>:<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{<span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>._+<span class="hljs-keyword">this</span>.o}};x.l=<span class="hljs-number">2</span>,x.o=<span class="hljs-number">3</span>,<span class="hljs-built_in">console</span>.log(x.calc());
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">マングルプロパティオプションの組み合わせ：</font></font></p>
+<pre><code class="lang-bash"><div class="line-numbers">1</div>$ uglifyjs example.js -c -m --mangle-props regex=/_$/,reserved=[bar_]
+</code></pre>
+<pre><code class="lang-javascript"><div class="line-numbers">1</div><span class="hljs-keyword">var</span> x={<span class="hljs-attr">o</span>:<span class="hljs-number">0</span>,<span class="hljs-attr">_</span>:<span class="hljs-number">1</span>,<span class="hljs-attr">calc</span>:<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{<span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>._+<span class="hljs-keyword">this</span>.o}};x.bar_=<span class="hljs-number">2</span>,x.o=<span class="hljs-number">3</span>,<span class="hljs-built_in">console</span>.log(x.calc());
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">これを役立てるために、デフォルトで標準のJS名を操作することは避けています（</font></font><code>--mangle-props builtins</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">オーバーライドするため）。</font></font></p>
+<p><font style="vertical-align: inherit;"></font><code>tools/domprops.json</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">さまざまなブラウザで定義されているほとんどの標準JSおよびDOMプロパティをカバー</font><font style="vertical-align: inherit;">するデフォルトの除外ファイルが提供</font><font style="vertical-align: inherit;">されています。</font></font><code>--mangle-props domprops</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">この機能を無効にするには</font><font style="vertical-align: inherit;">パス
+</font><font style="vertical-align: inherit;">します。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">正規表現を使用して、</font></font><code>--mangle-props regex=/^_/</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">マングルするプロパティ名</font><font style="vertical-align: inherit;">を定義できます。たとえば</font><font style="vertical-align: inherit;">、アンダースコアで始まるプロパティ名のみをマングルします。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">このオプションを使用して複数のファイルを圧縮する場合、それらが最終的に連携するためには、何らかの方法で1つのプロパティがすべてのファイルで同じ名前に</font></font><code>--name-cache filename.json</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+マングルさ</font><font style="vertical-align: inherit;">れるようにする必要があります。このために、pass</font><font style="vertical-align: inherit;">とUglifyJSはこれらのマッピングをその後再利用できるファイル。最初は空である必要があります。例：</font></font></p>
+<pre><code class="lang-bash"><div class="line-numbers">1
+2
+3</div>$ rm -f /tmp/cache.json  <span class="hljs-comment"># start fresh</span><font></font>
+$ uglifyjs file1.js file2.js --mangle-props --name-cache /tmp/cache.json -o part1.js<font></font>
+$ uglifyjs file3.js file4.js --mangle-props --name-cache /tmp/cache.json -o part2.js<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">さて、</font></font><code>part1.js</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">及び</font></font><code>part2.js</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">マングルされたプロパティ名の面で互いに矛盾になります。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">UglifyJSへの1回の呼び出しですべてのファイルを圧縮する場合は、名前キャッシュを使用する必要はありません。</font></font></p>
+<div name="Mangling-unquoted-names-(--mangle-props-keep_quoted)" data-unique="Mangling-unquoted-names-(--mangle-props-keep_quoted)"></div><h3 id="Mangling-unquoted-names-(--mangle-props-keep_quoted)"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">引用符で囲まれていない名前のマングリング（</font></font><code>--mangle-props keep_quoted</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">）</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">引用符で囲まれたプロパティ名（</font></font><code>o["foo"]</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">）</font><font style="vertical-align: inherit;">を使用すると、プロパティ名（</font><font style="vertical-align: inherit;">）が予約</font></font><code>foo</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">されるため、引用符で囲まれていないスタイル（</font></font><code>o.foo</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">）で</font><font style="vertical-align: inherit;">使用された場合でも、スクリプト全体でマングルされません</font><font style="vertical-align: inherit;">。</font></font></p>
+<pre><code class="lang-javascript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7</div><span class="hljs-comment">// stuff.js</span>
+<span class="hljs-keyword">var</span> o = {
+    <span class="hljs-string">"foo"</span>: <span class="hljs-number">1</span>,
+    <span class="hljs-attr">bar</span>: <span class="hljs-number">3</span><font></font>
+};<font></font>
+o.foo += o.bar;<font></font>
+<span class="hljs-built_in">console</span>.log(o.foo);
+</code></pre>
+<pre><code class="lang-bash"><div class="line-numbers">1</div>$ uglifyjs stuff.js --mangle-props keep_quoted -c -m
+</code></pre>
+<pre><code class="lang-javascript"><div class="line-numbers">1</div><span class="hljs-keyword">var</span> o={<span class="hljs-attr">foo</span>:<span class="hljs-number">1</span>,<span class="hljs-attr">o</span>:<span class="hljs-number">3</span>};o.foo+=o.o,<span class="hljs-built_in">console</span>.log(o.foo);
+</code></pre>
+<div name="Debugging-property-name-mangling" data-unique="Debugging-property-name-mangling"></div><h3 id="Debugging-property-name-mangling" class="notranslate">Debugging property name mangling</h3>
+<p><font style="vertical-align: inherit;"></font><code>--mangle-props debug</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">プロパティ名を完全に隠すことなくマングルするために</font><font style="vertical-align: inherit;">渡すこともでき</font><font style="vertical-align: inherit;">ます。たとえば、プロパティ</font></font><code>o.foo</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+は</font></font><code>o._$foo$_</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">このオプションで</font><font style="vertical-align: inherit;">マングルし</font><font style="vertical-align: inherit;">ます。これにより、コードをデバッグし、マングリングが問題を引き起こしている場所を特定しながら、大規模なコードベースのプロパティマングリングが可能になります。</font></font></p>
+<pre><code class="lang-bash"><div class="line-numbers">1</div>$ uglifyjs stuff.js --mangle-props debug -c -m
+</code></pre>
+<pre><code class="lang-javascript"><div class="line-numbers">1</div><span class="hljs-keyword">var</span> o={<span class="hljs-attr">_$foo$_</span>:<span class="hljs-number">1</span>,<span class="hljs-attr">_$bar$_</span>:<span class="hljs-number">3</span>};o._$foo$_+=o._$bar$_,<span class="hljs-built_in">console</span>.log(o._$foo$_);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">を使用してカスタムサフィックスを渡すこともできます</font></font><code>--mangle-props debug=XYZ</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。これにより、にマングルが発生</font></font><code>o.foo</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">し</font></font><code>o._$foo$XYZ_</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ます。スクリプトをコンパイルするたびにこれを変更して、プロパティが</font><font style="vertical-align: inherit;">マングルさ</font><font style="vertical-align: inherit;">れ</font><font style="vertical-align: inherit;">た方法を特定できます。1つの手法は、コンパイルごとに乱数を渡して、異なるマングリングの変更をシミュレートすることです。入力（たとえば、入力スクリプトを新しいプロパティで更新するとき）、およびストレージへのマングルキーの書き込みなどの間違いを特定するのに役立ちます。</font></font></p>
+<div name="API-Reference" data-unique="API-Reference"></div><h1 id="API-Reference"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">APIリファレンス</font></font></h1>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">NPMを介したインストールを想定すると、次のようにアプリケーションにUglifyJSをロードできます。</font></font></p>
+<pre><code class="lang-javascript"><div class="line-numbers">1</div><span class="hljs-keyword">var</span> UglifyJS = <span class="hljs-built_in">require</span>(<span class="hljs-string">"uglify-js"</span>);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">構成可能な方法で</font></font><strong><code>minify(code, options)</code></strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">すべての縮小</font></font><a href="#minify-options"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">フェーズ</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">を実行</font><font style="vertical-align: inherit;">する単一の高レベル関数</font><font style="vertical-align: inherit;">があります。デフォルトで</font></font><code>minify()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">は、オプション</font></font><a href="#compress-options"><code>compress</code></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+と</font><font style="vertical-align: inherit;">が有効になります</font></font><a href="#mangle-options"><code>mangle</code></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。例：</font></font></p>
+<pre><code class="lang-javascript"><div class="line-numbers">1
+2
+3
+4</div><span class="hljs-keyword">var</span> code = <span class="hljs-string">"function add(first, second) { return first + second; }"</span>;
+<span class="hljs-keyword">var</span> result = UglifyJS.minify(code);
+<span class="hljs-built_in">console</span>.log(result.error); <span class="hljs-comment">// runtime error, or `undefined` if no error</span>
+<span class="hljs-built_in">console</span>.log(result.code);  <span class="hljs-comment">// minified output: function add(n,d){return n+d}</span>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">あなたはできる</font></font><code>minify</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">複数のキーは、ファイル名と値であり、第一引数のオブジェクトを使用して、一度に一つのJavaScriptファイルよりソースコードです：</font></font></p>
+<pre><code class="lang-javascript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7</div><span class="hljs-keyword">var</span> code = {
+    <span class="hljs-string">"file1.js"</span>: <span class="hljs-string">"function add(first, second) { return first + second; }"</span>,
+    <span class="hljs-string">"file2.js"</span>: <span class="hljs-string">"console.log(add(1 + 2, 3 + 4));"</span><font></font>
+};<font></font>
+<span class="hljs-keyword">var</span> result = UglifyJS.minify(code);
+<span class="hljs-built_in">console</span>.log(result.code);
+<span class="hljs-comment">// function add(d,n){return d+n}console.log(add(3,7));</span>
+</code></pre>
+<p><font style="vertical-align: inherit;"></font><code>toplevel</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">オプション：</font></font></p>
+<pre><code class="lang-javascript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8</div><span class="hljs-keyword">var</span> code = {
+    <span class="hljs-string">"file1.js"</span>: <span class="hljs-string">"function add(first, second) { return first + second; }"</span>,
+    <span class="hljs-string">"file2.js"</span>: <span class="hljs-string">"console.log(add(1 + 2, 3 + 4));"</span><font></font>
+};<font></font>
+<span class="hljs-keyword">var</span> options = { <span class="hljs-attr">toplevel</span>: <span class="hljs-literal">true</span> };
+<span class="hljs-keyword">var</span> result = UglifyJS.minify(code, options);
+<span class="hljs-built_in">console</span>.log(result.code);
+<span class="hljs-comment">// console.log(3+7);</span>
+</code></pre>
+<p><font style="vertical-align: inherit;"></font><code>nameCache</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">オプション：</font></font></p>
+<pre><code class="lang-javascript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16</div><span class="hljs-keyword">var</span> options = {
+    <span class="hljs-attr">mangle</span>: {
+        <span class="hljs-attr">toplevel</span>: <span class="hljs-literal">true</span>,<font></font>
+    },<font></font>
+    <span class="hljs-attr">nameCache</span>: {}<font></font>
+};<font></font>
+<span class="hljs-keyword">var</span> result1 = UglifyJS.minify({
+    <span class="hljs-string">"file1.js"</span>: <span class="hljs-string">"function add(first, second) { return first + second; }"</span><font></font>
+}, options);<font></font>
+<span class="hljs-keyword">var</span> result2 = UglifyJS.minify({
+    <span class="hljs-string">"file2.js"</span>: <span class="hljs-string">"console.log(add(1 + 2, 3 + 4));"</span><font></font>
+}, options);<font></font>
+<span class="hljs-built_in">console</span>.log(result1.code);
+<span class="hljs-comment">// function n(n,r){return n+r}</span>
+<span class="hljs-built_in">console</span>.log(result2.code);
+<span class="hljs-comment">// console.log(n(3,7));</span>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">次の方法で、名前キャッシュをファイルシステムに永続化できます。</font></font></p>
+<pre><code class="lang-javascript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16</div><span class="hljs-keyword">var</span> cacheFileName = <span class="hljs-string">"/tmp/cache.json"</span>;
+<span class="hljs-keyword">var</span> options = {
+    <span class="hljs-attr">mangle</span>: {
+        <span class="hljs-attr">properties</span>: <span class="hljs-literal">true</span>,<font></font>
+    },<font></font>
+    <span class="hljs-attr">nameCache</span>: <span class="hljs-built_in">JSON</span>.parse(fs.readFileSync(cacheFileName, <span class="hljs-string">"utf8"</span>))<font></font>
+};<font></font>
+fs.writeFileSync(<span class="hljs-string">"part1.js"</span>, UglifyJS.minify({
+    <span class="hljs-string">"file1.js"</span>: fs.readFileSync(<span class="hljs-string">"file1.js"</span>, <span class="hljs-string">"utf8"</span>),
+    <span class="hljs-string">"file2.js"</span>: fs.readFileSync(<span class="hljs-string">"file2.js"</span>, <span class="hljs-string">"utf8"</span>)<font></font>
+}, options).code, <span class="hljs-string">"utf8"</span>);<font></font>
+fs.writeFileSync(<span class="hljs-string">"part2.js"</span>, UglifyJS.minify({
+    <span class="hljs-string">"file3.js"</span>: fs.readFileSync(<span class="hljs-string">"file3.js"</span>, <span class="hljs-string">"utf8"</span>),
+    <span class="hljs-string">"file4.js"</span>: fs.readFileSync(<span class="hljs-string">"file4.js"</span>, <span class="hljs-string">"utf8"</span>)<font></font>
+}, options).code, <span class="hljs-string">"utf8"</span>);<font></font>
+fs.writeFileSync(cacheFileName, <span class="hljs-built_in">JSON</span>.stringify(options.nameCache), <span class="hljs-string">"utf8"</span>);
+</code></pre>
+<p><font style="vertical-align: inherit;"></font><code>minify()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">オプションの</font><font style="vertical-align: inherit;">組み合わせの例</font><font style="vertical-align: inherit;">：</font></font></p>
+<pre><code class="lang-javascript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21</div><span class="hljs-keyword">var</span> code = {
+    <span class="hljs-string">"file1.js"</span>: <span class="hljs-string">"function add(first, second) { return first + second; }"</span>,
+    <span class="hljs-string">"file2.js"</span>: <span class="hljs-string">"console.log(add(1 + 2, 3 + 4));"</span><font></font>
+};<font></font>
+<span class="hljs-keyword">var</span> options = {
+    <span class="hljs-attr">toplevel</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">compress</span>: {
+        <span class="hljs-attr">global_defs</span>: {
+            <span class="hljs-string">"@console.log"</span>: <span class="hljs-string">"alert"</span><font></font>
+        },<font></font>
+        <span class="hljs-attr">passes</span>: <span class="hljs-number">2</span><font></font>
+    },<font></font>
+    <span class="hljs-attr">output</span>: {
+        <span class="hljs-attr">beautify</span>: <span class="hljs-literal">false</span>,
+        <span class="hljs-attr">preamble</span>: <span class="hljs-string">"/* uglified */"</span><font></font>
+    }<font></font>
+};<font></font>
+<span class="hljs-keyword">var</span> result = UglifyJS.minify(code, options);
+<span class="hljs-built_in">console</span>.log(result.code);
+<span class="hljs-comment">// /* uglified */</span>
+<span class="hljs-comment">// alert(10);"</span>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">警告を生成するには：</font></font></p>
+<pre><code class="lang-javascript"><div class="line-numbers">1
+2
+3
+4
+5
+6</div><span class="hljs-keyword">var</span> code = <span class="hljs-string">"function f(){ var u; return 2 + 3; }"</span>;
+<span class="hljs-keyword">var</span> options = { <span class="hljs-attr">warnings</span>: <span class="hljs-literal">true</span> };
+<span class="hljs-keyword">var</span> result = UglifyJS.minify(code, options);
+<span class="hljs-built_in">console</span>.log(result.error);    <span class="hljs-comment">// runtime error, `undefined` in this case</span>
+<span class="hljs-built_in">console</span>.log(result.warnings); <span class="hljs-comment">// [ 'Dropping unused variable u [0:1,18]' ]</span>
+<span class="hljs-built_in">console</span>.log(result.code);     <span class="hljs-comment">// function f(){return 5}</span>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">エラーの例：</font></font></p>
+<pre><code class="lang-javascript"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">var</span> result = UglifyJS.minify({<span class="hljs-string">"foo.js"</span> : <span class="hljs-string">"if (0) else console.log(1);"</span>});
+<span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">JSON</span>.stringify(result.error));
+<span class="hljs-comment">// {"message":"Unexpected token: keyword (else)","filename":"foo.js","line":1,"col":7,"pos":7}</span>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">注：</font></font><a href="mailto:`uglify-js@2.x"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">`uglify-js@2.x</font></font></a><code>, the</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 3.x` API</font><font style="vertical-align: inherit;">とは異なり、</font><font style="vertical-align: inherit;">APIはエラーをスローしません。同様の効果を実現するには、次のようにします。</font></font></p>
+<pre><code class="lang-javascript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">var</span> result = UglifyJS.minify(code, options);
+<span class="hljs-keyword">if</span> (result.error) <span class="hljs-keyword">throw</span> result.error;
+</code></pre>
+<div name="Minify-options" data-unique="Minify-options"></div><h2 id="Minify-options"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">オプションを縮小する</font></font></h2>
+<ul>
+<li><p><code>warnings</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（デフォルト</font></font><code>false</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">）—</font></font><code>true</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">コンプレッサーの警告を返すために</font><font style="vertical-align: inherit;">渡し</font><font style="vertical-align: inherit;">ます。より詳細な警告に</font></font><code>result.warnings</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">は値</font></font><code>"verbose"</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">を</font><font style="vertical-align: inherit;">使用し</font><font style="vertical-align: inherit;">ます。</font></font></p>
+</li>
+<li><p><code>parse</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（デフォルト</font></font><code>{}</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">）—追加の</font></font><a href="#parse-options"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">解析オプション</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">を指定する場合は、オブジェクトを渡し</font><a href="#parse-options"><font style="vertical-align: inherit;">ます</font></a><font style="vertical-align: inherit;">。</font></font></p>
+</li>
+<li><p><code>compress</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（デフォルト</font></font><code>{}</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">）—パス</font></font><code>false</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">して完全に圧縮をスキップし</font></font><a href="#compress-options"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ます</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">オブジェクトを渡してカスタム</font><a href="#compress-options"><font style="vertical-align: inherit;">圧縮オプション</font></a><font style="vertical-align: inherit;">を指定し</font><a href="#compress-options"><font style="vertical-align: inherit;">ます</font></a><font style="vertical-align: inherit;">。</font></font></p>
+</li>
+<li><p><code>mangle</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（デフォルト</font></font><code>true</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">）—パス</font></font><code>false</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">して名前のマングリングをスキップするか、オブジェクトを渡して</font></font><a href="#mangle-options"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">マングルオプション</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">を指定し</font><a href="#mangle-options"><font style="vertical-align: inherit;">ます</font></a><font style="vertical-align: inherit;">（以下を参照）。</font></font></p>
+<ul>
+<li><code>mangle.properties</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（デフォルト</font></font><code>false</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">）—マングルオプションのサブカテゴリ。オブジェクトを渡して、カスタム</font></font><a href="#mangle-properties-options"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">マングルプロパティオプション</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">を指定し</font><a href="#mangle-properties-options"><font style="vertical-align: inherit;">ます</font></a><font style="vertical-align: inherit;">。</font></font></li>
+</ul>
+</li>
+<li><p><code>output</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（デフォルト</font></font><code>null</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">）—追加の</font></font><a href="#output-options"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">出力オプション</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">を指定する場合は、オブジェクトを渡し</font><a href="#output-options"><font style="vertical-align: inherit;">ます</font></a><font style="vertical-align: inherit;">。デフォルトは、最適な圧縮のために最適化されています。</font></font></p>
+</li>
+<li><p><code>sourceMap</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（デフォルト</font></font><code>false</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">）-</font></font><a href="#source-map-options"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ソースマップオプション</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">を指定する場合は、オブジェクトを渡し
+</font><a href="#source-map-options"><font style="vertical-align: inherit;">ます</font></a><font style="vertical-align: inherit;">。</font></font></p>
+</li>
+<li><p><code>toplevel</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（デフォルト</font></font><code>false</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">）-</font></font><code>true</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">トップレベルの変数と関数名のマングリングを有効にし、未使用の変数と関数を削除する場合に設定します。</font></font></p>
+</li>
+<li><p><code>nameCache</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（デフォルト</font></font><code>null</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">）-マングルされた</font><font style="vertical-align: inherit;">変数とプロパティ名を複数の呼び出しにわたってキャッシュする場合</font></font><code>{}</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">は</font><font style="vertical-align: inherit;">、空のオブジェクト</font><font style="vertical-align: inherit;">または以前に使用された</font></font><code>nameCache</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">オブジェクトを</font><font style="vertical-align: inherit;">渡し</font><font style="vertical-align: inherit;">ます</font></font><code>minify()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。注：これは読み取り/書き込みプロパティです。</font></font><code>minify()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">このオブジェクトの名前キャッシュ状態を読み取り、更新します。最小化中に、ユーザーが再利用または外部的に永続化できるようにします。</font></font></p>
+</li>
+<li><p><code>ie8</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（デフォルト</font></font><code>false</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">）-IE8を</font></font><code>true</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">サポート</font><font style="vertical-align: inherit;">する</font><font style="vertical-align: inherit;">ように</font><font style="vertical-align: inherit;">設定します</font><font style="vertical-align: inherit;">。</font></font></p>
+</li>
+<li><p><code>keep_fnames</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（デフォルト：</font></font><code>false</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">）-</font></font><code>true</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">関数名の破棄やマングリングを防ぐために</font><font style="vertical-align: inherit;">渡し</font><font style="vertical-align: inherit;">ます。に依存するコードに役立ちます</font></font><code>Function.prototype.name</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font></p>
+</li>
+</ul>
+<div name="Minify-options-structure" data-unique="Minify-options-structure"></div><h2 id="Minify-options-structure"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">オプション構造の縮小</font></font></h2>
+<pre><code class="lang-javascript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25</div>{
+    <span class="hljs-attr">parse</span>: {
+        <span class="hljs-comment">// parse options</span><font></font>
+    },<font></font>
+    <span class="hljs-attr">compress</span>: {
+        <span class="hljs-comment">// compress options</span><font></font>
+    },<font></font>
+    <span class="hljs-attr">mangle</span>: {
+        <span class="hljs-comment">// mangle options</span><font></font>
+<font></font>
+        properties: {<font></font>
+            <span class="hljs-comment">// mangle property options</span><font></font>
+        }<font></font>
+    },<font></font>
+    <span class="hljs-attr">output</span>: {
+        <span class="hljs-comment">// output options</span><font></font>
+    },<font></font>
+    <span class="hljs-attr">sourceMap</span>: {
+        <span class="hljs-comment">// source map options</span><font></font>
+    },<font></font>
+    <span class="hljs-attr">nameCache</span>: <span class="hljs-literal">null</span>, <span class="hljs-comment">// or specify a name cache object</span>
+    toplevel: <span class="hljs-literal">false</span>,
+    <span class="hljs-attr">ie8</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-attr">warnings</span>: <span class="hljs-literal">false</span>,<font></font>
+}<font></font>
+</code></pre>
+<div name="Source-map-options" data-unique="Source-map-options"></div><h3 id="Source-map-options" class="notranslate">Source map options</h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ソースマップを生成するには：</font></font></p>
+<pre><code class="lang-javascript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8</div><span class="hljs-keyword">var</span> result = UglifyJS.minify({<span class="hljs-string">"file1.js"</span>: <span class="hljs-string">"var a = function() {};"</span>}, {
+    <span class="hljs-attr">sourceMap</span>: {
+        <span class="hljs-attr">filename</span>: <span class="hljs-string">"out.js"</span>,
+        <span class="hljs-attr">url</span>: <span class="hljs-string">"out.js.map"</span><font></font>
+    }<font></font>
+});<font></font>
+<span class="hljs-built_in">console</span>.log(result.code); <span class="hljs-comment">// minified output</span>
+<span class="hljs-built_in">console</span>.log(result.map);  <span class="hljs-comment">// source map</span>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ソースマップはファイルに保存されず、返されるだけであることに注意してください
+</font></font><code>result.map</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。渡された値は、の</font></font><code>sourceMap.url</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">設定</font></font><code>//# sourceMappingURL=out.js.map</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">に</font><font style="vertical-align: inherit;">のみ使用さ
+</font><font style="vertical-align: inherit;">れ</font></font><code>result.code</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ます。の値は
+</font><font style="vertical-align: inherit;">、ソースマップファイルの</font><font style="vertical-align: inherit;">属性（</font><a href="https://docs.google.com/document/d/1U1RGAehQwRypUTovF1KRlpiOFze0b-_2gc6fAH0KY0k"><font style="vertical-align: inherit;">仕様を</font></a><font style="vertical-align: inherit;">参照</font><font style="vertical-align: inherit;">）の</font></font><code>filename</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">設定にのみ使用され</font><font style="vertical-align: inherit;">ます。</font></font><code>file</code><font style="vertical-align: inherit;"></font><a href="https://docs.google.com/document/d/1U1RGAehQwRypUTovF1KRlpiOFze0b-_2gc6fAH0KY0k"><font style="vertical-align: inherit;"></font></a><font style="vertical-align: inherit;"></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">オプション</font></font><code>sourceMap.url</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">をに</font><font style="vertical-align: inherit;">設定</font><font style="vertical-align: inherit;">すると</font></font><code>"inline"</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、ソースマップがコードに追加されます。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ソースマップに含めるsourceRootプロパティを指定することもできます。</font></font></p>
+<pre><code class="lang-javascript"><div class="line-numbers">1
+2
+3
+4
+5
+6</div><span class="hljs-keyword">var</span> result = UglifyJS.minify({<span class="hljs-string">"file1.js"</span>: <span class="hljs-string">"var a = function() {};"</span>}, {
+    <span class="hljs-attr">sourceMap</span>: {
+        <span class="hljs-attr">root</span>: <span class="hljs-string">"http://example.com/src"</span>,
+        <span class="hljs-attr">url</span>: <span class="hljs-string">"out.js.map"</span><font></font>
+    }<font></font>
+});<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">コンパイルされたJavaScriptを圧縮していて、そのソースマップがある場合は、次を使用できます</font></font><code>sourceMap.content</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font></p>
+<pre><code class="lang-javascript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7</div><span class="hljs-keyword">var</span> result = UglifyJS.minify({<span class="hljs-string">"compiled.js"</span>: <span class="hljs-string">"compiled code"</span>}, {
+    <span class="hljs-attr">sourceMap</span>: {
+        <span class="hljs-attr">content</span>: <span class="hljs-string">"content from compiled.js.map"</span>,
+        <span class="hljs-attr">url</span>: <span class="hljs-string">"minified.js.map"</span><font></font>
+    }<font></font>
+});<font></font>
+<span class="hljs-comment">// same as before, it returns `code` and `map`</span>
+</code></pre>
+<p><font style="vertical-align: inherit;"></font><code>X-SourceMap</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">代わりにヘッダー</font><font style="vertical-align: inherit;">を使用している場合は</font><font style="vertical-align: inherit;">、を省略できます</font></font><code>sourceMap.url</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font></p>
+<div name="Parse-options" data-unique="Parse-options"></div><h2 id="Parse-options"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">解析オプション</font></font></h2>
+<ul>
+<li><p><code>bare_returns</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（デフォルト</font></font><code>false</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">）-トップレベルの</font></font><code>return</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ステートメントを</font><font style="vertical-align: inherit;">サポート</font></font></p>
+</li>
+<li><p><code>html5_comments</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（デフォルト</font></font><code>true</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">）</font></font></p>
+</li>
+<li><p><code>shebang</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（デフォルト</font></font><code>true</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">）-</font></font><code>#!command</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">最初の行として</font><font style="vertical-align: inherit;">サポート</font></font></p>
+</li>
+</ul>
+<div name="Compress-options" data-unique="Compress-options"></div><h2 id="Compress-options"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">圧縮オプション</font></font></h2>
+<ul>
+<li><p><code>arguments</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（デフォルト：）</font></font><code>true</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-</font></font><code>arguments[index]</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">可能な限り、関数パラメーター名に</font><font style="vertical-align: inherit;">置き換え</font><font style="vertical-align: inherit;">ます。</font></font></p>
+</li>
+<li><p><code>booleans</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（デフォルト</font></font><code>true</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：）-ブールコンテキストのさまざまな最適化、たとえば</font></font><code>!!a ? b : c → a ? b : c</code></p>
+</li>
+<li><p><code>collapse_vars</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（デフォルト</font></font><code>true</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：）-副作用が許す限り、単一使用の非定数変数を折りたたみ</font><font style="vertical-align: inherit;">ます</font><font style="vertical-align: inherit;">。</font></font></p>
+</li>
+<li><p><code>comparisons</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（デフォルト</font></font><code>true</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：）-バイナリノードに特定の最適化を適用します。たとえば</font></font><code>!(a &lt;= b) → a &gt; b</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、バイナリノードを無効にしようとします
+</font></font><code>a = !b &amp;&amp; !c &amp;&amp; !d &amp;&amp; !e → a=!(b||c||d||e)</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font></p>
+</li>
+<li><p><code>conditionals</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（デフォルト</font></font><code>true</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：）- </font></font><code>if</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sおよび条件式に</font><font style="vertical-align: inherit;">最適化を適用します</font></font></p>
+</li>
+<li><p><code>dead_code</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（デフォルト</font></font><code>true</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：）-到達不能コードを削除します</font></font></p>
+</li>
+<li><p><code>drop_console</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（デフォルト</font><font style="vertical-align: inherit;">：）</font></font><code>false</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-</font><font style="vertical-align: inherit;">関数</font></font><code>true</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">への呼び出しを破棄するために
+</font><font style="vertical-align: inherit;">渡し</font></font><code>console.*</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ます。関数呼び出しを削除した</font></font><code>console.info</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">後、関数の引数からの副作用</font><font style="vertical-align: inherit;">などの特定の関数呼び出しを削除したり、</font><font style="vertical-align: inherit;">副作用を保持したりする場合は、</font></font><code>pure_funcs</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">代わりに</font><font style="vertical-align: inherit;">を使用し</font><font style="vertical-align: inherit;">ます。</font></font></p>
+</li>
+<li><p><code>drop_debugger</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（デフォルト：）</font></font><code>true</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-</font></font><code>debugger;</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ステートメントを</font><font style="vertical-align: inherit;">削除し</font><font style="vertical-align: inherit;">ます</font></font></p>
+</li>
+<li><p><code>evaluate</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（デフォルト</font></font><code>true</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：）-定数式の評価を試み</font><font style="vertical-align: inherit;">ます</font></font></p>
+</li>
+<li><p><code>expression</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（デフォルト</font><font style="vertical-align: inherit;">：）</font></font><code>false</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-</font><font style="vertical-align: inherit;">ブックマークレットなどの</font></font><code>true</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ないターミナルステートメントからの完了値を保持するために</font><font style="vertical-align: inherit;">渡し</font></font><code>return</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ます。</font></font></p>
+</li>
+<li><p><code>global_defs</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（デフォルト</font><a href="#conditional-compilation"><font style="vertical-align: inherit;">：）</font></a></font><code>{}</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> -</font><a href="#conditional-compilation"><font style="vertical-align: inherit;">条件付きコンパイルを</font></a><font style="vertical-align: inherit;">参照</font></font><a href="#conditional-compilation"><font style="vertical-align: inherit;"></font></a></p>
+</li>
+<li><p><code>hoist_funs</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（デフォルト</font></font><code>false</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：）-ホイスト関数の宣言</font></font></p>
+</li>
+<li><p><code>hoist_props</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（デフォルト</font></font><code>true</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：）-定数オブジェクトおよび配列リテラルから一連の制約の対象となる通常の変数にプロパティをホイストします。例：
+</font></font><code>var o={p:1, q:2}; f(o.p, o.q);</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">に変換され</font></font><code>f(1, 2);</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ます。注：</font><font style="vertical-align: inherit;">有効、</font><font style="vertical-align: inherit;">オプション</font><font style="vertical-align: inherit;">を</font><font style="vertical-align: inherit;">以上に</font><font style="vertical-align: inherit;">設定</font><font style="vertical-align: inherit;">、および</font><font style="vertical-align: inherit;">オプション</font></font><code>hoist_props</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+を</font></font><code>mangle</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">有効にする</font><font style="vertical-align: inherit;">と最適に機能し</font><font style="vertical-align: inherit;">ます</font><font style="vertical-align: inherit;">。</font></font><code>compress</code><font style="vertical-align: inherit;"></font><code>passes</code><font style="vertical-align: inherit;"></font><code>2</code><font style="vertical-align: inherit;"></font><code>compress</code><font style="vertical-align: inherit;"></font><code>toplevel</code><font style="vertical-align: inherit;"></font></p>
+</li>
+<li><p><code>hoist_vars</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（デフォルト</font></font><code>false</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：）-ホイスト</font></font><code>var</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">宣言（</font></font><code>false</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+一般的に出力のサイズが大きくなるように見えるため、</font><font style="vertical-align: inherit;">これは</font><font style="vertical-align: inherit;">デフォルトです）</font></font></p>
+</li>
+<li><p><code>if_return</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（デフォルト</font></font><code>true</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：）-if / returnおよびif / continueの最適化</font></font></p>
+</li>
+<li><p><code>inline</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（デフォルト</font></font><code>true</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：）-simple /</font></font><code>return</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ステートメント</font><font style="vertical-align: inherit;">を使用した関数へのインライン呼び出し</font><font style="vertical-align: inherit;">：</font></font></p>
+<ul>
+<li><code>false</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> - と同じ </font></font><code>0</code></li>
+<li><code>0</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> -インライン化を無効にしました</font></font></li>
+<li><code>1</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> -インラインの単純な関数</font></font></li>
+<li><code>2</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> -引数付きのインライン関数</font></font></li>
+<li><code>3</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> -引数と変数を持つインライン関数</font></font></li>
+<li><code>true</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> - と同じ </font></font><code>3</code></li>
+</ul>
+</li>
+<li><p><code>join_vars</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（デフォルト</font></font><code>true</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：）-連続する</font></font><code>var</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ステートメントを</font><font style="vertical-align: inherit;">結合する</font></font></p>
+</li>
+<li><p><code>keep_fargs</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（デフォルト</font></font><code>true</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：）-コンプレッサーが未使用の関数引数を破棄しないようにします。これは、に依存するコードに必要</font></font><code>Function.length</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">です。</font></font></p>
+</li>
+<li><p><code>keep_fnames</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（デフォルト</font><font style="vertical-align: inherit;">：）</font></font><code>false</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-</font></font><code>true</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">コンプレッサーが関数名を破棄しないようにするために</font><font style="vertical-align: inherit;">渡し</font><font style="vertical-align: inherit;">ます。依存するコードに役立ちます
+</font></font><code>Function.prototype.name</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。参照：</font></font><code>keep_fnames</code> <a href="#mangle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">マングルオプション</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font></p>
+</li>
+<li><p><code>keep_infinity</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（デフォルト</font><font style="vertical-align: inherit;">：）</font></font><code>false</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-</font><font style="vertical-align: inherit;">に圧縮され</font></font><code>true</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ないように</font><font style="vertical-align: inherit;">パス</font><font style="vertical-align: inherit;">し</font><font style="vertical-align: inherit;">ます</font><font style="vertical-align: inherit;">。これにより、Chromeでパフォーマンスの問題が発生する可能性があります。</font></font><code>Infinity</code><font style="vertical-align: inherit;"></font><code>1/0</code><font style="vertical-align: inherit;"></font></p>
+</li>
+<li><p><code>loops</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（デフォルト</font></font><code>true</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：）-の最適化</font></font><code>do</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、</font></font><code>while</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">および</font></font><code>for</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">条件を静的に決定できる場合はループします。</font></font></p>
+</li>
+<li><p><code>negate_iife</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（デフォルト</font></font><code>true</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：）-コードジェネレーターが挿入する親を避けるために、戻り値が破棄される「Immediately-CalledFunctionExpressions」を否定し</font><font style="vertical-align: inherit;">ます</font><font style="vertical-align: inherit;">。</font></font></p>
+</li>
+<li><p><code>passes</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（デフォルト：）</font></font><code>1</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-compressを実行する最大回数。パスが複数あると、コードがさらに圧縮される場合があります。パスが多いほど、時間がかかることに注意してください。</font></font></p>
+</li>
+<li><p><code>properties</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（デフォルト</font></font><code>true</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：）-たとえば、ドット表記を使用してプロパティアクセスを書き換えます</font></font><code>foo["bar"] → foo.bar</code></p>
+</li>
+<li><p><code>pure_funcs</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（デフォルト：）</font></font><code>null</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-名前の配列を渡すことができ、UglifyJSはそれらの関数が副作用を生成しないと想定します。危険：名前がスコープで再定義されているかどうかをチェックしません。たとえば、ここでの例</font></font><code>var q = Math.floor(a/b)</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">です。変数</font></font><code>q</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">がそうでない</font><font style="vertical-align: inherit;">場合</font><font style="vertical-align: inherit;">他の場所で使用すると、UglifyJSはそれを削除しますが、それが</font></font><code>Math.floor(a/b)</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">何をするのかわからないまま、を</font><font style="vertical-align: inherit;">保持</font><font style="vertical-align: inherit;">します。</font></font><code>pure_funcs: [ 'Math.floor' ]</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">この関数が副作用を生成しないことを</font><font style="vertical-align: inherit;">通知するために</font><font style="vertical-align: inherit;">渡すことができます。</font><font style="vertical-align: inherit;">その場合、ステートメント全体が破棄されます。実装によりオーバーヘッドが追加されます（圧縮が遅くなります）。</font><font style="vertical-align: inherit;">マングリングを回避するために、</font></font><code>pure_funcs</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+下の</font><font style="vertical-align: inherit;">記号</font><font style="vertical-align: inherit;">も下</font></font><code>mangle.reserved</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">にあること</font><font style="vertical-align: inherit;">を確認</font><font style="vertical-align: inherit;">し</font><font style="vertical-align: inherit;">てください。</font></font></p>
+</li>
+<li><p><code>pure_getters</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（デフォルト</font><font style="vertical-align: inherit;">：）</font></font><code>"strict"</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-</font></font><code>true</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">これに合格すると、UglifyJSは、オブジェクトプロパティアクセス（</font></font><code>foo.bar</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">または</font></font><code>foo["bar"]</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">）に副作用がない</font><font style="vertical-align: inherit;">と見なします</font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">スローしないことが確実な</font><font style="vertical-align: inherit;">場合</font><font style="vertical-align: inherit;">、つまり、</font><font style="vertical-align: inherit;">または</font><font style="vertical-align: inherit;">しない</font><font style="vertical-align: inherit;">場合にのみ、</font><font style="vertical-align: inherit;">副作用のないもの</font><font style="vertical-align: inherit;">として</font></font><code>"strict"</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">扱う</font></font><code>foo.bar</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ように
+</font><font style="vertical-align: inherit;">指定</font><font style="vertical-align: inherit;">し</font><font style="vertical-align: inherit;">ます。</font><font style="vertical-align: inherit;">。</font></font><code>foo</code><font style="vertical-align: inherit;"></font><code>null</code><font style="vertical-align: inherit;"></font><code>undefined</code><font style="vertical-align: inherit;"></font></p>
+</li>
+<li><p><code>reduce_funcs</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（デフォルト</font></font><code>true</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：）-許容される場合、シングルユース関数を関数式としてインライン化して、さらに最適化できるようにします。デフォルトで有効になっています。オプションは</font></font><code>reduce_vars</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+有効に</font><font style="vertical-align: inherit;">依存します。</font><font style="vertical-align: inherit;">このオプションを無効にすると、一部のコードはChromeV8エンジンでより高速に実行</font><font style="vertical-align: inherit;">されます。</font><font style="vertical-align: inherit;">他の主要なブラウザに影響を与えます。</font></font></p>
+</li>
+<li><p><code>reduce_vars</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（デフォルト</font></font><code>true</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：）-定数値として割り当てられ、使用される変数の最適化を改善します。</font></font></p>
+</li>
+<li><p><code>sequences</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（デフォルト</font></font><code>true</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：）-コンマ演算子を使用して連続する単純なステートメントを結合します。生成される連続するコンマシーケンスの最大数を指定するために正の整数に設定できます。このオプションがに設定されている
+</font></font><code>true</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">場合、デフォルトの</font></font><code>sequences</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">制限は</font></font><code>200</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">です。オプションをに設定します。</font></font><code>false</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">または</font></font><code>0</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+無効にする。最小の</font></font><code>sequences</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">長さである</font></font><code>2</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。Aの</font></font><code>sequences</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">値</font></font><code>1</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+と同等であることが適用除外され</font></font><code>true</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、そのような手段として</font></font><code>200</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。まれに、デフォルトの配列は、値その場合には非常に遅い圧縮倍にリードを制限</font></font><code>20</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">以下が推奨されます。</font></font></p>
+</li>
+<li><p><code>side_effects</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（デフォルト</font><font style="vertical-align: inherit;">：）</font></font><code>true</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">- </font></font><code>false</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">「純粋」とマークされた潜在的にドロップする関数を無効にするために</font><font style="vertical-align: inherit;">パス</font><font style="vertical-align: inherit;">し</font><font style="vertical-align: inherit;">ます</font><font style="vertical-align: inherit;">。コメント注釈</font></font><code>/*@__PURE__*/</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">または</font></font><code>/*#__PURE__*/</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しの直前の</font><font style="vertical-align: inherit;">場合、関数呼び出しは「純粋」としてマークされ</font><font style="vertical-align: inherit;">ます。例：</font></font><code>/*@__PURE__*/foo();</code></p>
+</li>
+<li><p><code>switches</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（デフォルト</font></font><code>true</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：）-到達不能な</font></font><code>switch</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ブランチの</font><font style="vertical-align: inherit;">重複を排除して削除し</font><font style="vertical-align: inherit;">ます</font></font></p>
+</li>
+<li><p><code>toplevel</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（デフォルト</font></font><code>false</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：）-参照されていない関数（</font></font><code>"funcs"</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">）および/または変数（</font></font><code>"vars"</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">）をトップレベルスコープ</font><font style="vertical-align: inherit;">にドロップ</font></font><code>false</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">します</font><font style="vertical-align: inherit;">（</font><font style="vertical-align: inherit;">デフォルトでは、</font></font><code>true</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">参照されていない関数と変数の両方をドロップします）</font></font></p>
+</li>
+<li><p><code>top_retain</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（デフォルト</font></font><code>null</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：）-特定のトップレベル関数および変数が</font></font><code>unused</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">削除されないようにします（配列、コンマ区切り、正規表現、または関数にすることができます。意味します</font></font><code>toplevel</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">）</font></font></p>
+</li>
+<li><p><code>typeofs</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（デフォルト：）</font></font><code>true</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-に変換</font></font><code>typeof foo == "undefined"</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">され
+</font></font><code>foo === void 0</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ます。注：</font></font><code>false</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">既知の問題があるため、IE10以前のバージョンでは</font><font style="vertical-align: inherit;">この値をに設定することをお勧めし</font><font style="vertical-align: inherit;">ます。</font></font></p>
+</li>
+<li><p><code>unsafe</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（デフォルト</font></font><code>false</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：）-「安全でない」変換を適用します（以下の説明）</font></font></p>
+</li>
+<li><p><code>unsafe_comps</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（デフォルト</font><font style="vertical-align: inherit;">：）</font></font><code>false</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-</font></font><code>a &lt;= b</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">どのオペランドも（強制的に）できないと仮定</font><font style="vertical-align: inherit;">するような式を圧縮</font><font style="vertical-align: inherit;">します</font></font><code>NaN</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font></p>
+</li>
+<li><p><code>unsafe_Function</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（デフォルト</font></font><code>false</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：）-</font><font style="vertical-align: inherit;">と</font><font style="vertical-align: inherit;">が文字列リテラルの</font></font><code>Function(args, code)</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+場合、</font><font style="vertical-align: inherit;">圧縮とマングル</font><font style="vertical-align: inherit;">。</font></font><code>args</code><font style="vertical-align: inherit;"></font><code>code</code><font style="vertical-align: inherit;"></font></p>
+</li>
+<li><p><code>unsafe_math</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（デフォルト</font></font><code>false</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：）-のような数式を最適化し
+</font><font style="vertical-align: inherit;">ます。これ</font></font><code>2 * x * 3</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">により</font></font><code>6 * x</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、浮動小数点の結果が不正確になる可能性があります。</font></font></p>
+</li>
+<li><p><code>unsafe_proto</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（デフォルト</font></font><code>false</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:) -のような最適化の表現
+</font></font><code>Array.prototype.slice.call(a)</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">に</font></font><code>[].slice.call(a)</code></p>
+</li>
+<li><p><code>unsafe_regexp</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（デフォルト</font></font><code>false</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：）-</font></font><code>RegExp</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">定数である場合と同じ方法</font><font style="vertical-align: inherit;">で、変数を</font><font style="vertical-align: inherit;">値に</font><font style="vertical-align: inherit;">置き換えることができ
+</font><font style="vertical-align: inherit;">ます</font><font style="vertical-align: inherit;">。</font></font></p>
+</li>
+<li><p><code>unsafe_undefined</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（デフォルト</font></font><code>false</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：）-</font><font style="vertical-align: inherit;">スコープ内に名前が</font></font><code>void 0</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">付けられた変数がある場合は</font><font style="vertical-align: inherit;">置換</font></font><code>undefined</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">します（変数名はマングルされ、通常は1文字に縮小されます）</font></font></p>
+</li>
+<li><p><code>unused</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（デフォルト</font></font><code>true</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：）-参照されていない関数と変数を削除します（単純な直接変数の割り当ては、に設定されていない限り参照としてカウントされません</font></font><code>"keep_assign"</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">）</font></font></p>
+</li>
+<li><p><code>warnings</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（デフォルト</font></font><code>false</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：）-到達不能コードや未使用の宣言などを削除すると警告が表示されます。</font></font></p>
+</li>
+</ul>
+<div name="Mangle-options" data-unique="Mangle-options"></div><h2 id="Mangle-options"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">マングルオプション</font></font></h2>
+<ul>
+<li><p><code>eval</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（デフォルト</font></font><code>false</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">）-</font><font style="vertical-align: inherit;">または</font><font style="vertical-align: inherit;">が使用さ</font></font><code>true</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">れているスコープに表示されるマングル名に</font><font style="vertical-align: inherit;">渡し</font><font style="vertical-align: inherit;">ます</font><font style="vertical-align: inherit;">。</font></font><code>eval</code><font style="vertical-align: inherit;"></font><code>with</code><font style="vertical-align: inherit;"></font></p>
+</li>
+<li><p><code>keep_fnames</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（デフォルト</font></font><code>false</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">）-</font></font><code>true</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">関数名をマングルしないように</font><font style="vertical-align: inherit;">渡し</font><font style="vertical-align: inherit;">ます。依存するコードに役立ち</font><a href="#compress-options"><font style="vertical-align: inherit;">ます</font></a><font style="vertical-align: inherit;">。</font></font><code>Function.prototype.name</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">「</font></font><code>keep_fnames</code>
+<a href="#compress-options"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">compress」オプション</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">も参照してください</font><font style="vertical-align: inherit;">。</font></font></p>
+</li>
+<li><p><code>reserved</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（デフォルトでは</font></font><code>[]</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">） -パスANはマングリングが:.例から除外されていることを識別子の万一の配列であること</font></font><code>["foo", "bar"]</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font></p>
+</li>
+<li><p><code>toplevel</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（デフォルト</font></font><code>false</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">）-</font></font><code>true</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">トップレベルスコープで宣言されたマングル名に</font><font style="vertical-align: inherit;">渡し</font><font style="vertical-align: inherit;">ます。</font></font></p>
+</li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">例：</font></font></p>
+<pre><code class="lang-javascript"><div class="line-numbers">1
+2
+3
+4
+5</div><span class="hljs-comment">// test.js</span>
+<span class="hljs-keyword">var</span> globalVar;
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">funcName</span>(<span class="hljs-params">firstLongName, anotherLongName</span>) </span>{
+    <span class="hljs-keyword">var</span> myVariable = firstLongName +  anotherLongName;<font></font>
+}<font></font>
+</code></pre>
+<pre><code class="lang-javascript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10</div><span class="hljs-keyword">var</span> code = fs.readFileSync(<span class="hljs-string">"test.js"</span>, <span class="hljs-string">"utf8"</span>);<font></font>
+<font></font>
+UglifyJS.minify(code).code;<font></font>
+<span class="hljs-comment">// 'function funcName(a,n){}var globalVar;'</span><font></font>
+<font></font>
+UglifyJS.minify(code, { <span class="hljs-attr">mangle</span>: { <span class="hljs-attr">reserved</span>: [<span class="hljs-string">'firstLongName'</span>] } }).code;
+<span class="hljs-comment">// 'function funcName(firstLongName,a){}var globalVar;'</span><font></font>
+<font></font>
+UglifyJS.minify(code, { <span class="hljs-attr">mangle</span>: { <span class="hljs-attr">toplevel</span>: <span class="hljs-literal">true</span> } }).code;
+<span class="hljs-comment">// 'function n(n,a){}var a;'</span>
+</code></pre>
+<div name="Mangle-properties-options" data-unique="Mangle-properties-options"></div><h3 id="Mangle-properties-options" class="notranslate">Mangle properties options</h3>
+<ul>
+<li><p><code>builtins</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（デフォルト</font><font style="vertical-align: inherit;">：）</font></font><code>false</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-</font></font><code>true</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">組み込みのDOMプロパティのマングリングを許可するために</font><font style="vertical-align: inherit;">使用</font><font style="vertical-align: inherit;">します。この設定をオーバーライドすることはお勧めしません。</font></font></p>
+</li>
+<li><p><code>debug</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（デフォルト</font></font><code>false</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：）-元の名前がまだ存在するマングル名。空の文字列</font></font><code>""</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">を</font><font style="vertical-align: inherit;">渡し</font><font style="vertical-align: inherit;">て有効にするか</font><font style="vertical-align: inherit;">、空でない文字列</font><font style="vertical-align: inherit;">を</font><font style="vertical-align: inherit;">渡し</font><font style="vertical-align: inherit;">てデバッグサフィックスを設定します。</font></font></p>
+</li>
+<li><p><code>keep_quoted</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（デフォルト</font></font><code>false</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：）-引用符で囲まれていないプロパティ名のみをマングルします。</font></font></p>
+</li>
+<li><p><code>regex</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（デフォルト</font></font><code>null</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：）-正規表現に一致するプロパティ名のみにRegExpリテラルを渡し</font><font style="vertical-align: inherit;">ます</font><font style="vertical-align: inherit;">。</font></font></p>
+</li>
+<li><p><code>reserved</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（デフォルト</font></font><code>[]</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：）-</font></font><code>reserved</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">配列に</font><font style="vertical-align: inherit;">リストされているプロパティ名をマングルしないでください
+</font><font style="vertical-align: inherit;">。</font></font></p>
+</li>
+</ul>
+<div name="Output-options" data-unique="Output-options"></div><h2 id="Output-options"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">出力オプション</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">コードジェネレーターは、デフォルトで可能な限り最短のコードを出力しようとします。美化された出力が必要な場合は、</font></font><code>--beautify</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（</font></font><code>-b</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">）を渡します。オプションで、コード出力を制御する追加の引数を渡すことができます。</font></font></p>
+<ul>
+<li><p><code>ascii_only</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（デフォルト</font></font><code>false</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">）-文字列および正規表現内のUnicode文字をエスケープします（ASCII以外の文字が無効になるディレクティブに影響します）</font></font></p>
+</li>
+<li><p><code>beautify</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（デフォルト</font></font><code>true</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">）-出力を実際に美化するかどうか。渡す</font></font><code>-b</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">とこれがtrueに設定</font></font><code>-b</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">されますが、追加の引数を指定するために縮小コードを生成する場合でも</font><font style="vertical-align: inherit;">渡す必要がある場合があり</font></font><code>-b beautify=false</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ます。</font><font style="vertical-align: inherit;">これを使用</font><font style="vertical-align: inherit;">してオーバーライド</font><font style="vertical-align: inherit;">でき</font><font style="vertical-align: inherit;">ます。</font></font></p>
+</li>
+<li><p><code>braces</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（デフォルトでは</font></font><code>false</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">） - INSERTの括弧内は、必ず</font></font><code>if</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、</font></font><code>for</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、
+ </font></font><code>do</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、</font></font><code>while</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">または</font></font><code>with</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ステートメントが、でも自分の体は、A SINGLE IF文です。</font></font></p>
+</li>
+<li><p><code>comments</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（デフォルト</font></font><code>false</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">）-</font><font style="vertical-align: inherit;">すべてのコメント、</font><font style="vertical-align: inherit;">一部のコメント、正規表現文字列（eg </font><font style="vertical-align: inherit;">）または関数を</font><font style="vertical-align: inherit;">渡す</font></font><code>true</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">か</font></font><code>"all"</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">保持します</font><font style="vertical-align: inherit;">。</font></font><code>"some"</code><font style="vertical-align: inherit;"></font><code>/^!/</code><font style="vertical-align: inherit;"></font></p>
+</li>
+<li><p><code>indent_level</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（デフォルト</font></font><code>4</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">）</font></font></p>
+</li>
+<li><p><code>indent_start</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（デフォルト</font></font><code>0</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">）-すべての行の前にその数のスペースを付けます</font></font></p>
+</li>
+<li><p><code>inline_script</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（デフォルト</font></font><code>true</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">）-HTMLコメントと</font></font><code>&lt;/script&gt;</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">文字列</font><font style="vertical-align: inherit;">内のオカレンスのスラッシュをエスケープ</font><font style="vertical-align: inherit;">します</font></font></p>
+</li>
+<li><p><code>keep_quoted_props</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（デフォルト</font></font><code>false</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">）-オンにすると、オブジェクトリテラルのプロパティ名から引用符が削除されなくなります。</font></font></p>
+</li>
+<li><p><code>max_line_len</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（デフォルト</font></font><code>false</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">）-最大行長（醜いコードの場合）</font></font></p>
+</li>
+<li><p><code>preamble</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（デフォルト</font></font><code>null</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">）-渡されると、文字列である必要があり、文字通り出力の先頭に追加されます。ソースマップはこのテキストに合わせて調整されます。たとえば、ライセンス情報を含むコメントを挿入するために使用できます。</font></font></p>
+</li>
+<li><p><code>preserve_line</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（デフォルト</font></font><code>false</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">）-</font></font><code>true</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">行を保持するために</font><font style="vertical-align: inherit;">渡し</font><font style="vertical-align: inherit;">ます</font><font style="vertical-align: inherit;">が、がに</font></font><code>beautify</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">設定されて</font><font style="vertical-align: inherit;">いる場合にのみ機能</font><font style="vertical-align: inherit;">し</font></font><code>false</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ます。</font></font></p>
+</li>
+<li><p><code>quote_keys</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（デフォルト</font></font><code>false</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">）-</font></font><code>true</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">リテラルオブジェクトのすべてのキーを引用するために</font><font style="vertical-align: inherit;">渡す</font></font></p>
+</li>
+<li><p><code>quote_style</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（デフォルト</font></font><code>0</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">）-文字列の優先引用スタイル（引用されたプロパティ名とディレクティブにも影響します）：</font></font></p>
+<ul>
+<li><code>0</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-二重引用符を優先し、文字列自体に二重引用符が多い場合は一重引用符に切り替えます</font></font><code>0</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。gzipサイズに最適です。</font></font></li>
+<li><code>1</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> -常に一重引用符を使用します</font></font></li>
+<li><code>2</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> -常に二重引用符を使用します</font></font></li>
+<li><code>3</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> -常に元の引用符を使用してください</font></font></li>
+</ul>
+</li>
+<li><p><code>semicolons</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（デフォルト</font></font><code>true</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">）-ステートメントをセミコロンで区切り</font><font style="vertical-align: inherit;">ます</font><font style="vertical-align: inherit;">。渡すと</font></font><code>false</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、可能な限りセミコロンの代わりに改行を使用して、醜いコードの出力を読みやすくします（gzipの前のサイズは小さくなり、gzipの後のサイズはわずかに大きくなります）。</font></font></p>
+</li>
+<li><p><code>shebang</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（デフォルト</font></font><code>true</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">）-</font></font><code>#!</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">プリアンブルで</font><font style="vertical-align: inherit;">シバン</font><font style="vertical-align: inherit;">を</font><font style="vertical-align: inherit;">保持し</font><font style="vertical-align: inherit;">ます</font><font style="vertical-align: inherit;">（bashスクリプト）</font></font></p>
+</li>
+<li><p><code>webkit</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（デフォルト</font></font><code>false</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">）-WebKitバグの回避策を有効にします。PhantomJSユーザーはこのオプションをに設定する必要があります</font></font><code>true</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font></p>
+</li>
+<li><p><code>width</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（デフォルト</font></font><code>80</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">）-美化がオンの場合にのみ有効になります。これは、美化者が従おうとする（方向性のある）線幅を指定します。これは、行テキストの幅（インデントを除く）を指します。現在、あまりうまく機能していません。 、ただし、UglifyJSによって生成されたコードが読みやすくなります。</font></font></p>
+</li>
+<li><p><code>wrap_iife</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（デフォルト</font></font><code>false</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">）-</font></font><code>true</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">すぐに呼び出される関数式をラップするために</font><font style="vertical-align: inherit;">渡し</font><font style="vertical-align: inherit;">ます</font><font style="vertical-align: inherit;">。詳細については、
+ </font></font><a href="https://github.com/mishoo/UglifyJS2/issues/640"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">＃640</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">を参照してください。</font></font></p>
+</li>
+</ul>
+<div name="Miscellaneous" data-unique="Miscellaneous"></div><h1 id="Miscellaneous"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">その他</font></font></h1>
+<div name="Keeping-copyright-notices-or-other-comments" data-unique="Keeping-copyright-notices-or-other-comments"></div><h3 id="Keeping-copyright-notices-or-other-comments" class="notranslate">Keeping copyright notices or other comments</h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">あなたは渡すことができ</font></font><code>--comments</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、出力で特定のコメントを保持する。デフォルトでは、それは「@preserve」、「@license」または「@cc_on」（IEの条件付きコンパイル）を含有するJSDocのスタイルのコメントを維持します。あなたが渡すことができ
+</font></font><code>--comments all</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、すべて維持しますコメント、またはこの正規表現に一致するコメントのみを保持する有効なJavaScript正規表現。たとえば、の</font></font><code>--comments /^!/</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ようなコメントを保持します</font></font><code>/*! Copyright Notice */</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ただし、コメントが失われる場合があることに注意してください。次に例を示します。</font></font></p>
+<pre><code class="lang-javascript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7</div><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-comment">/** @preserve Foo Bar */</span>
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">g</span>(<span class="hljs-params"></span>) </span>{
+        <span class="hljs-comment">// this function is never called</span><font></font>
+    }<font></font>
+    <span class="hljs-keyword">return</span> something();<font></font>
+}<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">「@preserve」が含まれていても、内部関数</font></font><code>g</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（コメントが添付されているASTノード）が参照されていないためにコンプレッサーによって破棄される</font><font style="vertical-align: inherit;">ため、コメントは失わ</font><font style="vertical-align: inherit;">れます。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">著作権情報（または出力に保持する必要のあるその他の情報）を配置する最も安全なコメントは、トップレベルノードに添付されたコメントです。</font></font></p>
+<div name="The-unsafe-compress-option" data-unique="The-unsafe-compress-option"></div><h3 id="The-unsafe-compress-option"><font style="vertical-align: inherit;"></font><code>unsafe</code> <code>compress</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">オプション</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">これにより</font><font style="vertical-align: inherit;">、特定の不自然な場合にコードロジックを壊す</font></font><em><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">可能性のある</font></font></em><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">いくつかの変換が有効になります</font><font style="vertical-align: inherit;">が、ほとんどのコードでは問題ないはずです。独自のコードで試してみて、縮小サイズを小さくする必要があります。このフラグがオンの場合は次のようになります。</font></font></p>
+<ul>
+<li><code>new Array(1, 2, 3)</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">または</font></font><code>Array(1, 2, 3)</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">→</font></font><code>[ 1, 2, 3 ]</code></li>
+<li><code>new Object()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> → </font></font><code>{}</code></li>
+<li><code>String(exp)</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">または</font></font><code>exp.toString()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">→</font></font><code>"" + exp</code></li>
+<li><code>new Object/RegExp/Function/Error/Array (...)</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> →廃棄します </font></font><code>new</code></li>
+</ul>
+<div name="Conditional-compilation" data-unique="Conditional-compilation"></div><h3 id="Conditional-compilation" class="notranslate">Conditional compilation</h3>
+<p><font style="vertical-align: inherit;"></font><code>--define</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（</font></font><code>-d</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">）スイッチを</font><font style="vertical-align: inherit;">使用して、</font><font style="vertical-align: inherit;">UglifyJSが定数と見なすグローバル変数を宣言</font><font style="vertical-align: inherit;">できます</font><font style="vertical-align: inherit;">（</font><font style="vertical-align: inherit;">スコープで定義されていない場合）。たとえば、それを渡す</font></font><code>--define DEBUG=false</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">と、デッドコードの削除と相まって、UglifyJSは出力から次のものを破棄します。</font></font></p>
+<pre><code class="lang-javascript"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">if</span> (DEBUG) {
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"debug stuff"</span>);<font></font>
+}<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ネストされた定数は、の形式で指定できます</font></font><code>--define env.DEBUG=false</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">UglifyJSは、条件が常にfalseであり、到達不能コードをドロップすることについて警告します。現時点では、この特定の警告のみをオフにするオプションはありません</font><font style="vertical-align: inherit;">。</font><em><font style="vertical-align: inherit;">すべての</font></em><font style="vertical-align: inherit;">警告を</font></font><code>warnings=false</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">オフにするために</font><font style="vertical-align: inherit;">渡すことができ</font><font style="vertical-align: inherit;">ます。</font></font><em><font style="vertical-align: inherit;"></font></em><font style="vertical-align: inherit;"></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">これを行う別の方法は、グローバルを別のファイルで定数として宣言し、それをビルドに含めることです。たとえば</font></font><code>build/defines.js</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、次のようなファイルを作成</font><font style="vertical-align: inherit;">でき
+</font><font style="vertical-align: inherit;">ます。</font></font></p>
+<pre><code class="lang-javascript"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">var</span> DEBUG = <span class="hljs-literal">false</span>;
+<span class="hljs-keyword">var</span> PRODUCTION = <span class="hljs-literal">true</span>;
+<span class="hljs-comment">// etc.</span>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">次のようにコードを作成します。</font></font></p>
+<pre><code><div class="line-numbers">1</div>uglifyjs build/defines<span class="hljs-selector-class">.js</span> js/foo<span class="hljs-selector-class">.js</span> js/bar<span class="hljs-selector-class">.js</span>... -c
+</code></pre><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">UglifyJSは定数を認識し、変更できないため、値自体への参照を評価し、通常どおり到達不能コードをドロップ</font></font><code>const</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">します。これらを使用</font><font style="vertical-align: inherit;">すると、ビルドに</font><font style="vertical-align: inherit;">宣言</font><font style="vertical-align: inherit;">が含まれ</font><font style="vertical-align: inherit;">ます。サポートしていませ</font></font><code>const</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用して、</font></font><code>var</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">で</font></font><code>reduce_vars</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">十分です（デフォルトで有効）。</font></font></p>
+<div name="Conditional-compilation-API" data-unique="Conditional-compilation-API"></div><h3 id="Conditional-compilation-API" class="notranslate">Conditional compilation API</h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">プログラムAPIを介して条件付きコンパイルを使用することもできます。プロパティ名が</font></font><code>global_defs</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">コンプレッサープロパティである</font><font style="vertical-align: inherit;">という違いは次のとおりです</font><font style="vertical-align: inherit;">。</font></font></p>
+<pre><code class="lang-javascript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8</div><span class="hljs-keyword">var</span> result = UglifyJS.minify(fs.readFileSync(<span class="hljs-string">"input.js"</span>, <span class="hljs-string">"utf8"</span>), {
+    <span class="hljs-attr">compress</span>: {
+        <span class="hljs-attr">dead_code</span>: <span class="hljs-literal">true</span>,
+        <span class="hljs-attr">global_defs</span>: {
+            <span class="hljs-attr">DEBUG</span>: <span class="hljs-literal">false</span><font></font>
+        }<font></font>
+    }<font></font>
+});<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">識別子を任意の非定数式に置き換えるには、</font></font><code>global_defs</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">キーの</font><font style="vertical-align: inherit;">前に接頭辞を</font></font><code>"@"</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">付けて、値を式として解析するようにUglifyJSに指示</font><font style="vertical-align: inherit;">する必要があります</font><font style="vertical-align: inherit;">。</font></font></p>
+<pre><code class="lang-javascript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8</div>UglifyJS.minify(<span class="hljs-string">"alert('hello');"</span>, {
+    <span class="hljs-attr">compress</span>: {
+        <span class="hljs-attr">global_defs</span>: {
+            <span class="hljs-string">"@alert"</span>: <span class="hljs-string">"console.log"</span><font></font>
+        }<font></font>
+    }<font></font>
+}).code;<font></font>
+<span class="hljs-comment">// returns: 'console.log("hello");'</span>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">それ以外の場合は、文字列リテラルとして置き換えられます。</font></font></p>
+<pre><code class="lang-javascript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8</div>UglifyJS.minify(<span class="hljs-string">"alert('hello');"</span>, {
+    <span class="hljs-attr">compress</span>: {
+        <span class="hljs-attr">global_defs</span>: {
+            <span class="hljs-string">"alert"</span>: <span class="hljs-string">"console.log"</span><font></font>
+        }<font></font>
+    }<font></font>
+}).code;<font></font>
+<span class="hljs-comment">// returns: '"console.log"("hello");'</span>
+</code></pre>
+<div name="Using-native-Uglify-AST-with-minify()" data-unique="Using-native-Uglify-AST-with-minify()"></div><h3 id="Using-native-Uglify-AST-with-minify()"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ネイティブのUglifyASTを </font></font><code>minify()</code></h3>
+<pre><code class="lang-javascript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13</div><span class="hljs-comment">// example: parse only, produce native Uglify AST</span><font></font>
+<font></font>
+<span class="hljs-keyword">var</span> result = UglifyJS.minify(code, {
+    <span class="hljs-attr">parse</span>: {},
+    <span class="hljs-attr">compress</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-attr">mangle</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-attr">output</span>: {
+        <span class="hljs-attr">ast</span>: <span class="hljs-literal">true</span>,
+        <span class="hljs-attr">code</span>: <span class="hljs-literal">false</span>  <span class="hljs-comment">// optional - faster if false</span><font></font>
+    }<font></font>
+});<font></font>
+<font></font>
+<span class="hljs-comment">// result.ast contains native Uglify AST</span>
+</code></pre>
+<pre><code class="lang-javascript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14</div><span class="hljs-comment">// example: accept native Uglify AST input and then compress and mangle</span>
+<span class="hljs-comment">//          to produce both code and native AST.</span><font></font>
+<font></font>
+<span class="hljs-keyword">var</span> result = UglifyJS.minify(ast, {
+    <span class="hljs-attr">compress</span>: {},
+    <span class="hljs-attr">mangle</span>: {},
+    <span class="hljs-attr">output</span>: {
+        <span class="hljs-attr">ast</span>: <span class="hljs-literal">true</span>,
+        <span class="hljs-attr">code</span>: <span class="hljs-literal">true</span>  <span class="hljs-comment">// optional - faster if false</span><font></font>
+    }<font></font>
+});<font></font>
+<font></font>
+<span class="hljs-comment">// result.ast contains native Uglify AST</span>
+<span class="hljs-comment">// result.code contains the minified code in string form.</span>
+</code></pre>
+<div name="Working-with-Uglify-AST" data-unique="Working-with-Uglify-AST"></div><h3 id="Working-with-Uglify-AST" class="notranslate">Working with Uglify AST</h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ネイティブASTのトランスバーサルと変換は、</font><font style="vertical-align: inherit;">
+それぞれ</font></font><a href="https://github.com/mishoo/UglifyJS2/blob/master/lib/ast.js"><code>TreeWalker</code></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">と
+</font><font style="vertical-align: inherit;">を介して実行できます
+</font></font><a href="https://github.com/mishoo/UglifyJS2/blob/master/lib/transform.js"><code>TreeTransformer</code></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font></p>
+<div name="ESTree-/-SpiderMonkey-AST" data-unique="ESTree-/-SpiderMonkey-AST"></div><h3 id="ESTree-/-SpiderMonkey-AST" class="notranslate">ESTree / SpiderMonkey AST</h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">UglifyJSには独自の抽象構文木形式があり、
+</font></font><a href="http://lisperator.net/blog/uglifyjs-why-not-switching-to-spidermonkey-ast/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">実用上の理由から</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+、SpiderMonkey ASTを内部で使用するように簡単に変更することはできません。ただし、UglifyJSには、SpiderMonkeyASTをインポートできるコンバーターがあります。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">たとえば、</font></font><a href="https://github.com/ternjs/acorn"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Acorn</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">は、SpiderMonkey ASTを生成する超高速パーサーです。1つのファイルを解析し、ASTをJSONで標準出力にダンプする小さなCLIユーティリティがあります。UglifyJSを使用してそれをマングルおよび圧縮するには：</font></font></p>
+<pre><code><div class="line-numbers">1</div>acorn file.js <span class="hljs-string">| uglifyjs -p spidermonkey -m -c</span>
+</code></pre><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">この</font></font><code>-p spidermonkey</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">オプションは、すべての入力ファイルがJavaScriptではなく、JSONのSpiderMonkey ASTで記述されたJSコードであることをUglifyJSに通知します。したがって、この場合は独自のパーサーを使用せず、そのASTを内部ASTに変換するだけです。</font></font></p>
+<div name="Use-Acorn-for-parsing" data-unique="Use-Acorn-for-parsing"></div><h3 id="Use-Acorn-for-parsing" class="notranslate">Use Acorn for parsing</h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">さらに楽しく</font></font><code>-p acorn</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">するために、Acornを使用してすべての解析を実行するオプション</font><font style="vertical-align: inherit;">を追加しました</font><font style="vertical-align: inherit;">。このオプションを渡すと、UglifyJSが実行し</font></font><code>require("acorn")</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ます。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Acornは非常に高速です（たとえば、一部の650Kコードでは380msではなく250ms）が、Acornが生成するSpiderMonkeyツリーの変換にはさらに150msかかるため、UglifyJS独自のパーサーを使用するよりも少し多くなります。</font></font></p>
+<div name="Uglify-Fast-Minify-Mode" data-unique="Uglify-Fast-Minify-Mode"></div><h3 id="Uglify-Fast-Minify-Mode" class="notranslate">Uglify Fast Minify Mode</h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ITはよく知られていませんが、空白の削除とシンボルのマングリングがMOST JavaScriptの縮小コードのサイズ縮小の95％を占めています-</font></font><code>compress</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">複雑</font><font style="vertical-align: inherit;">なコードではありません</font><font style="vertical-align: inherit;">変換</font><font style="vertical-align: inherit;">1つを無効</font><font style="vertical-align: inherit;">にするとUglifyビルドを3〜4倍高速化できますこれは</font></font><code>mangle</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">高速です。-モードUglifyのみが、同等の最小化速度とgzipサイズを備えてい
+</font></font><a href="https://www.npmjs.com/package/butternut"><code>butternut</code></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ます。</font></font></p>
+<table>
+<thead>
+<tr>
+<th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">d3.js</font></font></th>
+<th style="text-align:right"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">サイズを縮小する</font></font></th>
+<th style="text-align:right"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">gzipサイズ</font></font></th>
+<th style="text-align:right"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">時間の縮小（秒）</font></font></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">元の</font></font></td>
+<td style="text-align:right"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">451,131</font></font></td>
+<td style="text-align:right"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">108,733</font></font></td>
+<td style="text-align:right"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-</font></font></td>
+</tr>
+<tr>
+<td><a href="mailto:uglify-js@3.0.24"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">uglify-js@3.0.24</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> mangle = false、compress = false</font></font></td>
+<td style="text-align:right"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">316,600</font></font></td>
+<td style="text-align:right"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">85,245</font></font></td>
+<td style="text-align:right"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">0.70</font></font></td>
+</tr>
+<tr>
+<td><a href="mailto:uglify-js@3.0.24"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">uglify-js@3.0.24</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> mangle = true、compress = false</font></font></td>
+<td style="text-align:right"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">220,216</font></font></td>
+<td style="text-align:right"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">72,730</font></font></td>
+<td style="text-align:right"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">1.13</font></font></td>
+</tr>
+<tr>
+<td><a href="mailto:butternut@0.4.6"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">バターナッツ@ 0.4.6</font></font></a></td>
+<td style="text-align:right"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">217,568</font></font></td>
+<td style="text-align:right"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">72,738</font></font></td>
+<td style="text-align:right"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">1.41</font></font></td>
+</tr>
+<tr>
+<td><a href="mailto:uglify-js@3.0.24"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">uglify-js@3.0.24</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> mangle = true、compress = true</font></font></td>
+<td style="text-align:right"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">212,511</font></font></td>
+<td style="text-align:right"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">71,560</font></font></td>
+<td style="text-align:right"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">3.36</font></font></td>
+</tr>
+<tr>
+<td><a href="mailto:babili@0.1.4"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">babili@0.1.4</font></font></a></td>
+<td style="text-align:right"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">210,713</font></font></td>
+<td style="text-align:right"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">72,140</font></font></td>
+<td style="text-align:right"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">12.64</font></font></td>
+</tr>
+</tbody>
+</table>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">CLIから高速ミニファイモードを有効にするには、次のコマンドを使用します。</font></font></p>
+<pre><code><div class="line-numbers">1</div>uglifyjs <span class="hljs-keyword">file</span>.js -<span class="hljs-built_in">m</span>
+</code></pre><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">APIを使用して高速ミニファイモードを有効にするには、次のようにします。</font></font></p>
+<pre><code class="lang-js"><div class="line-numbers">1</div>UglifyJS.minify(code, { <span class="hljs-attr">compress</span>: <span class="hljs-literal">false</span>, <span class="hljs-attr">mangle</span>: <span class="hljs-literal">true</span> });
+</code></pre>
+<h4 id="Source-maps-and-debugging"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ソースマップとデバッグ</font></font></h4>
+<p><font style="vertical-align: inherit;"></font><code>compress</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">コードを単純化、再配置、インライン化、削除する</font><font style="vertical-align: inherit;">さまざまな</font><font style="vertical-align: inherit;">変換は、ソースマップを使用したデバッグに悪影響を与えることが知られています。これは、コードが最適化され、一部のコードが存在しなくなったためにマッピングが不可能になることが多いためです。マップのデバッグでは、Uglify</font></font><code>compress</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">オプションを</font><font style="vertical-align: inherit;">無効にして、を</font><font style="vertical-align: inherit;">使用します</font></font><code>mangle</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font></p>
+<div name="Compiler-assumptions" data-unique="Compiler-assumptions"></div><h3 id="Compiler-assumptions" class="notranslate">Compiler assumptions</h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">より良い最適化を可能にするために、コンパイラーはさまざまな仮定を行います。</font></font></p>
+<ul>
+<li><code>.toString()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">そして</font></font><code>.valueOf()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">副作用を持っていない、と組み込みオブジェクトのために、彼らは上書きされていません。</font></font></li>
+<li><code>undefined</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、</font></font><code>NaN</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">および</font></font><code>Infinity</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">外部で再定義されていません。</font></font></li>
+<li><code>arguments.callee</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、</font></font><code>arguments.caller</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">および</font></font><code>Function.prototype.caller</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">は使用されません。</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">コードは、の内容</font></font><code>Function.prototype.toString()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">や
+</font></font><code>Error.prototype.stack</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">特定のものであること</font><font style="vertical-align: inherit;">を期待していません</font><font style="vertical-align: inherit;">。</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">プレーンオブジェクトのプロパティを取得および設定しても、他の副作用は発生しません（</font></font><code>.watch()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">または</font><font style="vertical-align: inherit;">を使用</font></font><code>Proxy</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">）。</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">除去および変更されたプロパティオブジェクトを追加することができる（と妨げられない
+</font></font><code>Object.defineProperty()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、</font></font><code>Object.defineProperties()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、</font></font><code>Object.freeze()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、
+</font></font><code>Object.preventExtensions()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">または</font></font><code>Object.seal()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">）。</font></font></li>
+</ul>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">©Copyright2014-Present fibjs.org |</font></font><a href="../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">サポートしてください</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip225176"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip225176" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">クリックしてトップページに戻る</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../js/common.js"></script><script type="text/javascript" src="../../../../js/docs.js"></script></body></html>

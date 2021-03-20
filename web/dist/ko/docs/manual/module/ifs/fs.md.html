@@ -1,0 +1,879 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../../../imgs/icon.png"><title>Fiber의 모듈 fs-JavaScript</title><link href="../../../../../css/common.css" rel="stylesheet"><link href="../../../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">탐색 전환</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../../../index.html"><img src="../../../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../../../index.html">HOME</a></li><li><a href="../../../guide/readme.md.html">GUIDE</a></li><li><a href="../readme.md.html">MODULE</a></li><li><a href="../../object/readme.md.html">OBJECT</a></li><li><a href="../../../awesome/readme.md.html">AWESOME</a></li><li><a href="../../../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../../../docs/manual/module/ifs/fs.md.html">中文</a> <a href="../../../../../en/docs/manual/module/ifs/fs.md.html">ENGLISH</a> <a href="../../../../../ja/docs/manual/module/ifs/fs.md.html">日本語</a> <a href="../../../../../de/docs/manual/module/ifs/fs.md.html">Deutsch</a> <a href="../../../../../es/docs/manual/module/ifs/fs.md.html">Español</a> <a href="../../../../../fr/docs/manual/module/ifs/fs.md.html">Français</a> <a href="../../../../../ko/docs/manual/module/ifs/fs.md.html">한국어</a> <a href="../../../../../it/docs/manual/module/ifs/fs.md.html">Italiano</a> <a href="../../../../../ru/docs/manual/module/ifs/fs.md.html">Русский</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 모듈 기본 모듈 </font></font></span><div class="search"><span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input type="text" class="searchbox ds-input" placeholder="검색" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-label="검색 입력" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Avenir, &quot;Segoe UI&quot;, Arial, &quot;Hiragino Sans GB&quot;, 冬青黑, &quot;Microsoft YaHei&quot;, 微软雅黑, SimSun, 宋体, Helvetica, Tahoma, &quot;Arial sans-serif&quot;; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div class="ds-dataset-1"></div></span></span></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">홈페이지</font></font></a></li><li><a href="../readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 기본 모듈 </font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 모듈 fs </font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 개발 가이드 </font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="../../../guide/about.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs는 무엇입니까?</font></font></a></li>
+<li><a href="../../../guide/install.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">설치 및 운영 환경</font></font></a></li>
+<li><a href="../../../guide/hello.md.html" class="notranslate">hello, world</a></li>
+<li><a href="../../../guide/test.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">좋은 삶은 시험에서 시작됩니다</font></font></a></li>
+<li><a href="../../../guide/profiler.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">성능 킬러 찾기</font></font></a></li>
+<li><a href="../../../guide/desktop.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">데스크톱 애플리케이션을 빠르게 개발</font></font></a></li>
+<li><a href="../../../guide/server-hot-update.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">서버 모듈 핫 업데이트</font></font></a></li>
+<li><a href="../../../guide/host-routes.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">도메인 이름 라우팅</font></font></a></li>
+<li><a href="../../../guide/x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs에서 X509 인증서 사용</font></font></a></li>
+<li><a href="../../../guide/contribute.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">네이티브 모듈 추가</font></font></a></li>
+</ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_module" aria-controls="collapse_module"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 기본 모듈 </font></font></a></h4></div><div id="collapse_module" class="panel-collapse collapse in" aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="assert.md.html" class="notranslate">assert</a></li>
+<li><a href="base32.md.html" class="notranslate">base32</a></li>
+<li><a href="base64.md.html" class="notranslate">base64</a></li>
+<li><a href="base64vlq.md.html" class="notranslate">base64vlq</a></li>
+<li><a href="bson.md.html" class="notranslate">bson</a></li>
+<li><a href="child_process.md.html" class="notranslate">child_process</a></li>
+<li><a href="console.md.html" class="notranslate">console</a></li>
+<li><a href="constants.md.html" class="notranslate">constants</a></li>
+<li><a href="coroutine.md.html" class="notranslate">coroutine</a></li>
+<li><a href="crypto.md.html" class="notranslate">crypto</a></li>
+<li><a href="db.md.html" class="notranslate">db</a></li>
+<li><a href="dgram.md.html" class="notranslate">dgram</a></li>
+<li><a href="dns.md.html" class="notranslate">dns</a></li>
+<li><a href="encoding.md.html" class="notranslate">encoding</a></li>
+<li class="active"><a href="fs.md.html" class="notranslate">fs</a></li>
+<li><a href="gd.md.html" class="notranslate">gd</a></li>
+<li><a href="global.md.html" class="notranslate">global</a></li>
+<li><a href="gui.md.html" class="notranslate">gui</a></li>
+<li><a href="hash.md.html" class="notranslate">hash</a></li>
+<li><a href="hex.md.html" class="notranslate">hex</a></li>
+<li><a href="http.md.html" class="notranslate">http</a></li>
+<li><a href="iconv.md.html" class="notranslate">iconv</a></li>
+<li><a href="io.md.html" class="notranslate">io</a></li>
+<li><a href="json.md.html" class="notranslate">json</a></li>
+<li><a href="mq.md.html" class="notranslate">mq</a></li>
+<li><a href="msgpack.md.html" class="notranslate">msgpack</a></li>
+<li><a href="net.md.html" class="notranslate">net</a></li>
+<li><a href="os.md.html" class="notranslate">os</a></li>
+<li><a href="path.md.html" class="notranslate">path</a></li>
+<li><a href="path_posix.md.html" class="notranslate">path_posix</a></li>
+<li><a href="path_win32.md.html" class="notranslate">path_win32</a></li>
+<li><a href="process.md.html" class="notranslate">process</a></li>
+<li><a href="profiler.md.html" class="notranslate">profiler</a></li>
+<li><a href="punycode.md.html" class="notranslate">punycode</a></li>
+<li><a href="querystring.md.html" class="notranslate">querystring</a></li>
+<li><a href="registry.md.html" class="notranslate">registry</a></li>
+<li><a href="ssl.md.html" class="notranslate">ssl</a></li>
+<li><a href="string_decoder.md.html" class="notranslate">string_decoder</a></li>
+<li><a href="test.md.html" class="notranslate">test</a></li>
+<li><a href="timers.md.html" class="notranslate">timers</a></li>
+<li><a href="tty.md.html" class="notranslate">tty</a></li>
+<li><a href="url.md.html" class="notranslate">url</a></li>
+<li><a href="util.md.html" class="notranslate">util</a></li>
+<li><a href="uuid.md.html" class="notranslate">uuid</a></li>
+<li><a href="vm.md.html" class="notranslate">vm</a></li>
+<li><a href="ws.md.html" class="notranslate">ws</a></li>
+<li><a href="xml.md.html" class="notranslate">xml</a></li>
+<li><a href="zip.md.html" class="notranslate">zip</a></li>
+<li><a href="zlib.md.html" class="notranslate">zlib</a></li>
+</ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_object" aria-controls="collapse_object"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 내장 개체 </font></font></a></h4></div><div id="collapse_object" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="../../object/ifs/buffer.md.html" class="notranslate">Buffer</a></li>
+<li><a href="../../object/ifs/bufferedstream.md.html" class="notranslate">BufferedStream</a></li>
+<li><a href="../../object/ifs/chain.md.html" class="notranslate">Chain</a></li>
+<li><a href="../../object/ifs/childprocess.md.html" class="notranslate">ChildProcess</a></li>
+<li><a href="../../object/ifs/cipher.md.html" class="notranslate">Cipher</a></li>
+<li><a href="../../object/ifs/condition.md.html" class="notranslate">Condition</a></li>
+<li><a href="../../object/ifs/dbconnection.md.html" class="notranslate">DbConnection</a></li>
+<li><a href="../../object/ifs/dgramsocket.md.html" class="notranslate">DgramSocket</a></li>
+<li><a href="../../object/ifs/digest.md.html" class="notranslate">Digest</a></li>
+<li><a href="../../object/ifs/event.md.html" class="notranslate">Event</a></li>
+<li><a href="../../object/ifs/eventemitter.md.html" class="notranslate">EventEmitter</a></li>
+<li><a href="../../object/ifs/fswatcher.md.html" class="notranslate">FSWatcher</a></li>
+<li><a href="../../object/ifs/fiber.md.html" class="notranslate">Fiber</a></li>
+<li><a href="../../object/ifs/file.md.html" class="notranslate">File</a></li>
+<li><a href="../../object/ifs/handler.md.html" class="notranslate">Handler</a></li>
+<li><a href="../../object/ifs/heapgraphedge.md.html" class="notranslate">HeapGraphEdge</a></li>
+<li><a href="../../object/ifs/heapgraphnode.md.html" class="notranslate">HeapGraphNode</a></li>
+<li><a href="../../object/ifs/heapsnapshot.md.html" class="notranslate">HeapSnapshot</a></li>
+<li><a href="../../object/ifs/httpclient.md.html" class="notranslate">HttpClient</a></li>
+<li><a href="../../object/ifs/httpcollection.md.html" class="notranslate">HttpCollection</a></li>
+<li><a href="../../object/ifs/httpcookie.md.html" class="notranslate">HttpCookie</a></li>
+<li><a href="../../object/ifs/httphandler.md.html" class="notranslate">HttpHandler</a></li>
+<li><a href="../../object/ifs/httpmessage.md.html" class="notranslate">HttpMessage</a></li>
+<li><a href="../../object/ifs/httprepeater.md.html" class="notranslate">HttpRepeater</a></li>
+<li><a href="../../object/ifs/httprequest.md.html" class="notranslate">HttpRequest</a></li>
+<li><a href="../../object/ifs/httpresponse.md.html" class="notranslate">HttpResponse</a></li>
+<li><a href="../../object/ifs/httpserver.md.html" class="notranslate">HttpServer</a></li>
+<li><a href="../../object/ifs/httpuploaddata.md.html" class="notranslate">HttpUploadData</a></li>
+<li><a href="../../object/ifs/httpsserver.md.html" class="notranslate">HttpsServer</a></li>
+<li><a href="../../object/ifs/image.md.html" class="notranslate">Image</a></li>
+<li><a href="../../object/ifs/leveldb.md.html" class="notranslate">LevelDB</a></li>
+<li><a href="../../object/ifs/lock.md.html" class="notranslate">Lock</a></li>
+<li><a href="../../object/ifs/lrucache.md.html" class="notranslate">LruCache</a></li>
+<li><a href="../../object/ifs/mssql.md.html" class="notranslate">MSSQL</a></li>
+<li><a href="../../object/ifs/memorystream.md.html" class="notranslate">MemoryStream</a></li>
+<li><a href="../../object/ifs/message.md.html" class="notranslate">Message</a></li>
+<li><a href="../../object/ifs/mongocollection.md.html" class="notranslate">MongoCollection</a></li>
+<li><a href="../../object/ifs/mongocursor.md.html" class="notranslate">MongoCursor</a></li>
+<li><a href="../../object/ifs/mongodb.md.html" class="notranslate">MongoDB</a></li>
+<li><a href="../../object/ifs/mongoid.md.html" class="notranslate">MongoID</a></li>
+<li><a href="../../object/ifs/mysql.md.html" class="notranslate">MySQL</a></li>
+<li><a href="../../object/ifs/pkey.md.html" class="notranslate">PKey</a></li>
+<li><a href="../../object/ifs/rangestream.md.html" class="notranslate">RangeStream</a></li>
+<li><a href="../../object/ifs/redis.md.html" class="notranslate">Redis</a></li>
+<li><a href="../../object/ifs/redishash.md.html" class="notranslate">RedisHash</a></li>
+<li><a href="../../object/ifs/redislist.md.html" class="notranslate">RedisList</a></li>
+<li><a href="../../object/ifs/redisset.md.html" class="notranslate">RedisSet</a></li>
+<li><a href="../../object/ifs/redissortedset.md.html" class="notranslate">RedisSortedSet</a></li>
+<li><a href="../../object/ifs/routing.md.html" class="notranslate">Routing</a></li>
+<li><a href="../../object/ifs/sqlite.md.html" class="notranslate">SQLite</a></li>
+<li><a href="../../object/ifs/sandbox.md.html" class="notranslate">SandBox</a></li>
+<li><a href="../../object/ifs/seekablestream.md.html" class="notranslate">SeekableStream</a></li>
+<li><a href="../../object/ifs/semaphore.md.html" class="notranslate">Semaphore</a></li>
+<li><a href="../../object/ifs/service.md.html" class="notranslate">Service</a></li>
+<li><a href="../../object/ifs/smtp.md.html" class="notranslate">Smtp</a></li>
+<li><a href="../../object/ifs/socket.md.html" class="notranslate">Socket</a></li>
+<li><a href="../../object/ifs/sslhandler.md.html" class="notranslate">SslHandler</a></li>
+<li><a href="../../object/ifs/sslserver.md.html" class="notranslate">SslServer</a></li>
+<li><a href="../../object/ifs/sslsocket.md.html" class="notranslate">SslSocket</a></li>
+<li><a href="../../object/ifs/stat.md.html" class="notranslate">Stat</a></li>
+<li><a href="../../object/ifs/statswatcher.md.html" class="notranslate">StatsWatcher</a></li>
+<li><a href="../../object/ifs/stream.md.html" class="notranslate">Stream</a></li>
+<li><a href="../../object/ifs/stringdecoder.md.html" class="notranslate">StringDecoder</a></li>
+<li><a href="../../object/ifs/tcpserver.md.html" class="notranslate">TcpServer</a></li>
+<li><a href="../../object/ifs/timer.md.html" class="notranslate">Timer</a></li>
+<li><a href="../../object/ifs/urlobject.md.html" class="notranslate">UrlObject</a></li>
+<li><a href="../../object/ifs/websocket.md.html" class="notranslate">WebSocket</a></li>
+<li><a href="../../object/ifs/websocketmessage.md.html" class="notranslate">WebSocketMessage</a></li>
+<li><a href="../../object/ifs/webview.md.html" class="notranslate">WebView</a></li>
+<li><a href="../../object/ifs/worker.md.html" class="notranslate">Worker</a></li>
+<li><a href="../../object/ifs/x509cert.md.html" class="notranslate">X509Cert</a></li>
+<li><a href="../../object/ifs/x509crl.md.html" class="notranslate">X509Crl</a></li>
+<li><a href="../../object/ifs/x509req.md.html" class="notranslate">X509Req</a></li>
+<li><a href="../../object/ifs/xmlattr.md.html" class="notranslate">XmlAttr</a></li>
+<li><a href="../../object/ifs/xmlcdatasection.md.html" class="notranslate">XmlCDATASection</a></li>
+<li><a href="../../object/ifs/xmlcharacterdata.md.html" class="notranslate">XmlCharacterData</a></li>
+<li><a href="../../object/ifs/xmlcomment.md.html" class="notranslate">XmlComment</a></li>
+<li><a href="../../object/ifs/xmldocument.md.html" class="notranslate">XmlDocument</a></li>
+<li><a href="../../object/ifs/xmldocumenttype.md.html" class="notranslate">XmlDocumentType</a></li>
+<li><a href="../../object/ifs/xmlelement.md.html" class="notranslate">XmlElement</a></li>
+<li><a href="../../object/ifs/xmlnamednodemap.md.html" class="notranslate">XmlNamedNodeMap</a></li>
+<li><a href="../../object/ifs/xmlnode.md.html" class="notranslate">XmlNode</a></li>
+<li><a href="../../object/ifs/xmlnodelist.md.html" class="notranslate">XmlNodeList</a></li>
+<li><a href="../../object/ifs/xmlprocessinginstruction.md.html" class="notranslate">XmlProcessingInstruction</a></li>
+<li><a href="../../object/ifs/xmltext.md.html" class="notranslate">XmlText</a></li>
+<li><a href="../../object/ifs/zipfile.md.html" class="notranslate">ZipFile</a></li>
+<li><a href="../../object/ifs/object.md.html" class="notranslate">object</a></li>
+</ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_awesome" aria-controls="collapse_awesome"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 커뮤니티 모듈 </font></font></a></h4></div><div id="collapse_awesome" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="../../../awesome/module/fib-session.md.html" class="notranslate">fib-session</a></li>
+<li><a href="../../../awesome/module/fib-pool.md.html" class="notranslate">fib-pool</a></li>
+<li><a href="../../../awesome/module/fib-orm.md.html" class="notranslate">fib-orm</a></li>
+<li><a href="../../../awesome/module/fib-app.md.html" class="notranslate">fib-app</a></li>
+<li><a href="../../../awesome/module/fib-kv.md.html" class="notranslate">fib-kv</a></li>
+<li><a href="../../../awesome/module/fib-rpc.md.html" class="notranslate">fib-rpc</a></li>
+<li><a href="../../../awesome/module/fib-qr.md.html" class="notranslate">fib-qr</a></li>
+<li><a href="../../../awesome/module/fib-pug.md.html" class="notranslate">fib-pug</a></li>
+<li><a href="../../../awesome/module/ejs.md.html" class="notranslate">ejs</a></li>
+<li><a href="../../../awesome/module/juicer.md.html" class="notranslate">Juicer</a></li>
+<li><a href="../../../awesome/module/highlight.js.md.html" class="notranslate">highlight.js</a></li>
+<li><a href="../../../awesome/module/marked.md.html" class="notranslate">marked</a></li>
+<li><a href="../../../awesome/module/node-cron.md.html" class="notranslate">node-cron</a></li>
+<li><a href="../../../awesome/module/debug.md.html" class="notranslate">debug</a></li>
+<li><a href="../../../awesome/module/benchmark.js.md.html" class="notranslate">benchmark.js</a></li>
+<li><a href="../../../awesome/module/sinon.md.html" class="notranslate">sinon</a></li>
+<li><a href="../../../awesome/module/node-mime.md.html" class="notranslate">node-mime</a></li>
+<li><a href="../../../awesome/module/validatorjs.md.html" class="notranslate">validatorjs</a></li>
+<li><a href="../../../awesome/module/superstruct.md.html" class="notranslate">superstruct</a></li>
+<li><a href="../../../awesome/module/cluster-server.md.html" class="notranslate">cluster-server</a></li>
+<li><a href="../../../awesome/module/synaptic.md.html" class="notranslate">synaptic</a></li>
+<li><a href="../../../awesome/module/source-map.md.html" class="notranslate">source-map</a></li>
+<li><a href="../../../awesome/module/json-format.md.html" class="notranslate">json-format</a></li>
+<li><a href="../../../awesome/module/viz.js.md.html" class="notranslate">viz.js</a></li>
+<li><a href="../../../awesome/module/nomnoml.md.html" class="notranslate">nomnoml</a></li>
+<li><a href="../../../awesome/module/pegjs.md.html" class="notranslate">pegjs</a></li>
+<li><a href="../../../awesome/module/uglify-js.md.html" class="notranslate">uglify-js</a></li>
+<li><a href="../../../awesome/module/js-beautify.md.html" class="notranslate">js-beautify</a></li>
+<li><a href="../../../awesome/module/chalk-animation.md.html" class="notranslate">chalk-animation</a></li>
+<li><a href="../../../awesome/module/jsrsasign.md.html" class="notranslate">jsrsasign</a></li>
+<li><a href="../../../awesome/module/crypto-js.md.html" class="notranslate">crypto-js</a></li>
+<li><a href="../../../awesome/module/ascii-table.md.html" class="notranslate">ascii-table</a></li>
+<li><a href="../../../awesome/module/logstream.md.html" class="notranslate">logstream</a></li>
+<li><a href="../../../awesome/module/ci.md.html" class="notranslate">ci</a></li>
+<li><a href="../../../awesome/module/fs-readdir-recursive.md.html" class="notranslate">fs-readdir-recursive</a></li>
+<li><a href="../../../awesome/module/mkdirp.md.html" class="notranslate">mkdirp</a></li>
+<li><a href="../../../awesome/module/rmdirr.md.html" class="notranslate">rmdirr</a></li>
+<li><a href="../../../awesome/module/detect-port.md.html" class="notranslate">detect-port</a></li>
+<li><a href="../../../awesome/module/bitcoinjs-lib.md.html" class="notranslate">bitcoinjs-lib</a></li>
+<li><a href="../../../awesome/module/rakuten.md.html" class="notranslate">Rakuten</a></li>
+</ul>
+ </div></div></div>  </div></div><div class="content"><div class="social-share share-component" data-sites="weibo,twitter" data-description="分享"></div> <div name="模块-fs" data-unique="模块-fs"></div><h1 id="模块-fs"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">모듈 fs</font></font></h1>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">파일 시스템 처리 모듈</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">명령:</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">var</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fs'</span>);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">참고할 몇 가지 사항 :</font></font></p>
+<ul>
+<li><font style="vertical-align: inherit;"></font><code>fs.watch(filename)</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">상속에서 반환 </font><font style="vertical-align: inherit;">실행</font></font><a href="../../object/ifs/eventemitter.md.html" class="notranslate">EventEmitter</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Watcher, 'change', 'changeonly', 'renameonly'세 가지 이벤트 지원</font></font></li>
+<li><code>fs.watchFile(target)</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">그리고 </font></font><code>fs.unwatchFile(target)</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">여전히 쌍으로 사용할 수 있습니다.</font></font></li>
+<li><code>fs.watchFile(target)</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 상속 된 것을 반환합니다 </font></font><a href="../../object/ifs/eventemitter.md.html" class="notranslate">EventEmitter</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 의 </font></font><a href="../../object/ifs/statswatcher.md.html" class="notranslate">StatsWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">개체, 전화 </font></font><code>fs.unwatchFile(target)</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출하는 것과 같습니다 </font></font><code>StatsWatcher.close()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">.</font></font></li>
+</ul>
+<div name="静态函数" data-unique="静态函数"></div><h2 id="静态函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">정적 기능</font></font></h2>
+<div name="exists" data-unique="exists"></div><h3 id="exists" class="notranslate">exists</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">지정된 파일 또는 디렉터리가 있는지 쿼리</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Boolean</span> fs.exists(<span class="hljs-built_in">String</span> path) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">path</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 쿼리 할 경로 지정</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과 :</font></font></p>
+<ul>
+<li><span class="notranslate">Boolean</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, True를 반환하여 파일 또는 디렉터리가 있음을 나타냅니다.</font></font></li>
+</ul>
+<hr>
+<div name="access" data-unique="access"></div><h3 id="access" class="notranslate">access</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">지정된 파일에 대한 사용자 권한 조회</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> fs.access(<span class="hljs-built_in">String</span> path,<font></font>
+    Integer mode = <span class="hljs-number">0</span>) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">path</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 쿼리 할 경로 지정</font></font></li>
+<li><span class="notranslate">mode</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 쿼리 권한 지정, 기본값은 파일 존재 여부입니다.</font></font></li>
+</ul>
+<hr>
+<div name="link" data-unique="link"></div><h3 id="link" class="notranslate">link</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">하드 링크 파일을 생성합니다.이 방법은 Windows에서 지원되지 않습니다.</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> fs.link(<span class="hljs-built_in">String</span> oldPath,
+    <span class="hljs-built_in">String</span> newPath) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">oldPath</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 소스 파일</font></font></li>
+<li><span class="notranslate">newPath</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, 생성 할 파일</font></font></li>
+</ul>
+<hr>
+<div name="unlink" data-unique="unlink"></div><h3 id="unlink" class="notranslate">unlink</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">지정된 파일 삭제</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> fs.unlink(<span class="hljs-built_in">String</span> path) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">path</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 삭제할 경로 지정</font></font></li>
+</ul>
+<hr>
+<div name="mkdir" data-unique="mkdir"></div><h3 id="mkdir" class="notranslate">mkdir</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">디렉토리 생성</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> fs.mkdir(<span class="hljs-built_in">String</span> path,<font></font>
+    Integer mode = <span class="hljs-number">0777</span>) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">path</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 생성 할 디렉토리 이름 지정</font></font></li>
+<li><span class="notranslate">mode</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 파일 권한 지정, Windows에서이 매개 변수 무시</font></font></li>
+</ul>
+<hr>
+<div name="rmdir" data-unique="rmdir"></div><h3 id="rmdir" class="notranslate">rmdir</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">디렉토리 삭제</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> fs.rmdir(<span class="hljs-built_in">String</span> path) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">path</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 삭제할 디렉토리 이름을 지정합니다.</font></font></li>
+</ul>
+<hr>
+<div name="rename" data-unique="rename"></div><h3 id="rename" class="notranslate">rename</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">파일 이름 바꾸기</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> fs.rename(<span class="hljs-built_in">String</span> <span class="hljs-keyword">from</span>,
+    <span class="hljs-built_in">String</span> to) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">from</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 이름이 변경된 파일 지정</font></font></li>
+<li><span class="notranslate">to</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 수정할 새 파일 이름을 지정합니다.</font></font></li>
+</ul>
+<hr>
+<div name="copy" data-unique="copy"></div><h3 id="copy" class="notranslate">copy</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">파일 복사</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> fs.copy(<span class="hljs-built_in">String</span> <span class="hljs-keyword">from</span>,
+    <span class="hljs-built_in">String</span> to) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">from</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 이름이 변경된 파일 지정</font></font></li>
+<li><span class="notranslate">to</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 수정할 새 파일 이름을 지정합니다.</font></font></li>
+</ul>
+<hr>
+<div name="chmod" data-unique="chmod"></div><h3 id="chmod" class="notranslate">chmod</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">지정된 파일의 액세스 권한을 설정합니다. Windows는이 방법을 지원하지 않습니다.</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> fs.chmod(<span class="hljs-built_in">String</span> path,<font></font>
+    Integer mode) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">path</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 작업 파일 지정</font></font></li>
+<li><span class="notranslate">mode</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 설정된 액세스 권한 지정</font></font></li>
+</ul>
+<hr>
+<div name="lchmod" data-unique="lchmod"></div><h3 id="lchmod" class="notranslate">lchmod</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">지정된 파일의 접근 권한을 설정합니다. 파일이 소프트 링크 인 경우 파일에 대한 권한은 변경되지 않으며 macOS 및 BSD 시리즈 플랫폼에서만 사용할 수 있습니다.</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> fs.lchmod(<span class="hljs-built_in">String</span> path,<font></font>
+    Integer mode) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">path</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 작업 파일 지정</font></font></li>
+<li><span class="notranslate">mode</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 설정된 액세스 권한 지정</font></font></li>
+</ul>
+<hr>
+<div name="chown" data-unique="chown"></div><h3 id="chown" class="notranslate">chown</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">지정된 파일의 소유자를 설정합니다. Windows는이 방법을 지원하지 않습니다.</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">static</span> fs.chown(<span class="hljs-built_in">String</span> path,<font></font>
+    Integer uid,<font></font>
+    Integer gid) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">path</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 지정된 설정의 파일</font></font></li>
+<li><span class="notranslate">uid</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 파일 소유자의 사용자 ID</font></font></li>
+<li><span class="notranslate">gid</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 파일 소유자 그룹 ID</font></font></li>
+</ul>
+<hr>
+<div name="lchown" data-unique="lchown"></div><h3 id="lchown" class="notranslate">lchown</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">지정된 파일의 소유자를 설정합니다. 지정된 파일이 소프트 링크 인 경우 지정된 파일의 소유자는 변경되지 않습니다. Windows에서는이 방법을 지원하지 않습니다.</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">static</span> fs.lchown(<span class="hljs-built_in">String</span> path,<font></font>
+    Integer uid,<font></font>
+    Integer gid) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">path</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 지정된 설정의 파일</font></font></li>
+<li><span class="notranslate">uid</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 파일 소유자의 사용자 ID</font></font></li>
+<li><span class="notranslate">gid</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 파일 소유자 그룹 ID</font></font></li>
+</ul>
+<hr>
+<div name="stat" data-unique="stat"></div><h3 id="stat" class="notranslate">stat</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">지정된 파일의 기본 정보를 쿼리합니다.</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Stat fs.stat(<span class="hljs-built_in">String</span> path) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">path</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 조회 할 파일 지정</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과 :</font></font></p>
+<ul>
+<li><a href="../../object/ifs/stat.md.html" class="notranslate">Stat</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 파일의 기본 정보를 반환</font></font></li>
+</ul>
+<hr>
+<div name="lstat" data-unique="lstat"></div><h3 id="lstat" class="notranslate">lstat</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">지정된 파일의 기본 정보를 쿼리합니다. stat와 다른 점은</font></font><a href="path.md.html" class="notranslate">path</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">소프트 링크 인 경우 포인트 파일 정보 대신 소프트 링크 정보가 반환됩니다.</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Stat fs.lstat(<span class="hljs-built_in">String</span> path) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">path</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 조회 할 파일 지정</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과 :</font></font></p>
+<ul>
+<li><a href="../../object/ifs/stat.md.html" class="notranslate">Stat</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 파일의 기본 정보를 반환</font></font></li>
+</ul>
+<hr>
+<div name="readlink" data-unique="readlink"></div><h3 id="readlink" class="notranslate">readlink</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">지정된 소프트 연결 파일을 읽습니다.이 방법은 Windows에서 지원되지 않습니다.</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">String</span> fs.readlink(<span class="hljs-built_in">String</span> path) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">path</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 읽을 소프트 연결 파일 지정</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과 :</font></font></p>
+<ul>
+<li><span class="notranslate">String</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 소프트 링크가 가리키는 파일 이름을 반환합니다.</font></font></li>
+</ul>
+<hr>
+<div name="realpath" data-unique="realpath"></div><h3 id="realpath" class="notranslate">realpath</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">지정된 경로의 절대 경로를 반환합니다. 지정된 경로에 상대 경로가 포함되어 있으면 확장됩니다.</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">String</span> fs.realpath(<span class="hljs-built_in">String</span> path) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">path</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 읽을 경로 지정</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과 :</font></font></p>
+<ul>
+<li><span class="notranslate">String</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 처리 된 절대 경로 반환</font></font></li>
+</ul>
+<hr>
+<div name="symlink" data-unique="symlink"></div><h3 id="symlink" class="notranslate">symlink</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">소프트 연결 파일 생성</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">static</span> fs.symlink(<span class="hljs-built_in">String</span> target,
+    <span class="hljs-built_in">String</span> linkpath,
+    <span class="hljs-built_in">String</span> type = <span class="hljs-string">"file"</span>) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">target</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 대상 파일 (파일, 디렉토리 또는 존재하지 않는 경로 일 수 있음)</font></font></li>
+<li><span class="notranslate">linkpath</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 생성 할 소프트 링크 파일</font></font></li>
+<li><span class="notranslate">type</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, 생성 된 소프트 연결 유형, 선택 유형은 'file', 'dir', 'junction', 기본값은 'file',이 매개 변수는 Windows에서만 유효하며 대상이 'junction'인 경우 경로 링크 경로는 절대 경로 여야하며 대상은 자동으로 절대 경로로 변환됩니다.</font></font></li>
+</ul>
+<hr>
+<div name="truncate" data-unique="truncate"></div><h3 id="truncate" class="notranslate">truncate</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">파일 크기를 수정하십시오. 지정된 길이가 원본 파일의 크기보다 크면 '\ 0'으로 채우십시오. 그렇지 않으면 더 많은 파일 내용이 손실됩니다.</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> fs.truncate(<span class="hljs-built_in">String</span> path,<font></font>
+    Integer len) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">path</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 수정 된 파일의 경로 지정</font></font></li>
+<li><span class="notranslate">len</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 수정 된 파일의 크기 지정</font></font></li>
+</ul>
+<hr>
+<div name="read" data-unique="read"></div><h3 id="read" class="notranslate">read</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">파일 설명자에 따라 파일 내용 읽기</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5</div><span class="hljs-keyword">static</span> Integer fs.read(Integer fd,<font></font>
+    Buffer buffer,<font></font>
+    Integer offset = <span class="hljs-number">0</span>,<font></font>
+    Integer length = <span class="hljs-number">0</span>,<font></font>
+    Integer position = <span class="hljs-number">-1</span>) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">fd</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 파일 설명자</font></font></li>
+<li><span class="notranslate">buffer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="../../object/ifs/buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 작성된 결과 읽기 </font></font><a href="../../object/ifs/buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 목적</font></font></li>
+<li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, </font></font><a href="../../object/ifs/buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 쓰기 오프셋, 기본값은 0입니다.</font></font></li>
+<li><span class="notranslate">length</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 파일에서 읽은 바이트 수, 기본값은 0입니다.</font></font></li>
+<li><span class="notranslate">position</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 파일 읽기 위치, 기본값은 현재 파일 위치</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과 :</font></font></p>
+<ul>
+<li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 실제로 읽은 바이트 수</font></font></li>
+</ul>
+<hr>
+<div name="fchmod" data-unique="fchmod"></div><h3 id="fchmod" class="notranslate">fchmod</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">파일 디스크립터에 따라 파일 모드가 변경됩니다. </font><font style="vertical-align: inherit;">POSIX 시스템에서만 유효합니다.</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> fs.fchmod(Integer fd,<font></font>
+    Integer mode) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">fd</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 파일 설명자</font></font></li>
+<li><span class="notranslate">mode</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 파일 모드</font></font></li>
+</ul>
+<hr>
+<div name="fchown" data-unique="fchown"></div><h3 id="fchown" class="notranslate">fchown</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">파일 설명자에 따라 소유자가 변경됩니다. </font><font style="vertical-align: inherit;">POSIX 시스템에서만 유효합니다.</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">static</span> fs.fchown(Integer fd,<font></font>
+    Integer uid,<font></font>
+    Integer gid) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">fd</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 파일 설명자</font></font></li>
+<li><span class="notranslate">uid</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 사용자 ID</font></font></li>
+<li><span class="notranslate">gid</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 그룹 ID</font></font></li>
+</ul>
+<hr>
+<div name="fdatasync" data-unique="fdatasync"></div><h3 id="fdatasync" class="notranslate">fdatasync</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">파일 설명자에 따라 데이터를 디스크에 동기화</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> fs.fdatasync(Integer fd) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">fd</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 파일 설명자</font></font></li>
+</ul>
+<hr>
+<div name="fsync" data-unique="fsync"></div><h3 id="fsync" class="notranslate">fsync</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">파일 설명자에 따라 데이터를 디스크에 동기화</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> fs.fsync(Integer fd) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">fd</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 파일 설명자</font></font></li>
+</ul>
+<hr>
+<div name="readdir" data-unique="readdir"></div><h3 id="readdir" class="notranslate">readdir</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">지정된 디렉토리의 파일 정보 읽기</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> NArray fs.readdir(<span class="hljs-built_in">String</span> path) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">path</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 조회 할 디렉토리 지정</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과 :</font></font></p>
+<ul>
+<li><span class="notranslate">NArray</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 디렉토리의 파일 정보 배열을 반환합니다.</font></font></li>
+</ul>
+<hr>
+<div name="openFile" data-unique="openFile"></div><h3 id="openFile" class="notranslate">openFile</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">읽기, 쓰기 또는 읽기와 쓰기를 동시에 할 수 있도록 파일 열기</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> SeekableStream fs.openFile(<span class="hljs-built_in">String</span> fname,
+    <span class="hljs-built_in">String</span> flags = <span class="hljs-string">"r"</span>) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">fname</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 파일 이름 지정</font></font></li>
+<li><span class="notranslate">flags</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 파일 열기 방법 지정, 기본값은 "r", 읽기 전용</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과 :</font></font></p>
+<ul>
+<li><a href="../../object/ifs/seekablestream.md.html" class="notranslate">SeekableStream</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 열린 파일 객체 반환</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">지원되는 매개 변수 플래그 방법은 다음과 같습니다.</font></font></p>
+<ul>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">'r'은 읽기 전용이며 파일이 존재하지 않으면 오류가 발생합니다.</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">'r +'읽기 및 쓰기 모드, 파일이 존재하지 않으면 오류가 발생합니다.</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">'w'만 기록되며 파일이 존재하지 않으면 자동으로 생성되며 존재하면 지워집니다.</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">'w +'읽기 및 쓰기 모드, 파일이 존재하지 않으면 자동으로 생성됩니다.</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">'a'는 추가 메소드 만 작성하고 파일이 없으면 자동으로 생성됩니다.</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">'a +'읽기-쓰기 추가 방법, 파일이 없으면 자동으로 생성됩니다.</font></font></li>
+</ul>
+<hr>
+<div name="open" data-unique="open"></div><h3 id="open" class="notranslate">open</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">파일 설명자 열기</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">static</span> Integer fs.open(<span class="hljs-built_in">String</span> fname,
+    <span class="hljs-built_in">String</span> flags = <span class="hljs-string">"r"</span>,<font></font>
+    Integer mode = <span class="hljs-number">0666</span>) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">fname</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 파일 이름 지정</font></font></li>
+<li><span class="notranslate">flags</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 파일 열기 방법 지정, 기본값은 "r", 읽기 전용</font></font></li>
+<li><span class="notranslate">mode</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 파일 생성시 파일 모드 지정, 기본값은 0666</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과 :</font></font></p>
+<ul>
+<li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 열린 파일 설명자를 반환</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">지원되는 매개 변수 플래그 방법은 다음과 같습니다.</font></font></p>
+<ul>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">'r'은 읽기 전용이며 파일이 존재하지 않으면 오류가 발생합니다.</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">'r +'읽기 및 쓰기 모드, 파일이 존재하지 않으면 오류가 발생합니다.</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">'w'만 기록되며 파일이 존재하지 않으면 자동으로 생성되며 존재하면 지워집니다.</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">'w +'읽기 및 쓰기 모드, 파일이 존재하지 않으면 자동으로 생성됩니다.</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">'a'는 추가 메소드 만 작성하고 파일이 없으면 자동으로 생성됩니다.</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">'a +'읽기-쓰기 추가 방법, 파일이 없으면 자동으로 생성됩니다.</font></font></li>
+</ul>
+<hr>
+<div name="close" data-unique="close"></div><h3 id="close" class="notranslate">close</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">파일 설명자 닫기</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> fs.close(Integer fd) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">fd</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 파일 설명자</font></font></li>
+</ul>
+<hr>
+<div name="openTextStream" data-unique="openTextStream"></div><h3 id="openTextStream" class="notranslate">openTextStream</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">읽기, 쓰기 또는 읽기와 쓰기를 동시에 할 수있는 텍스트 파일 열기</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> BufferedStream fs.openTextStream(<span class="hljs-built_in">String</span> fname,
+    <span class="hljs-built_in">String</span> flags = <span class="hljs-string">"r"</span>) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">fname</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 파일 이름 지정</font></font></li>
+<li><span class="notranslate">flags</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 파일 열기 방법 지정, 기본값은 "r", 읽기 전용</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과 :</font></font></p>
+<ul>
+<li><a href="../../object/ifs/bufferedstream.md.html" class="notranslate">BufferedStream</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 열린 파일 객체 반환</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">지원되는 매개 변수 플래그 방법은 다음과 같습니다.</font></font></p>
+<ul>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">'r'은 읽기 전용이며 파일이 존재하지 않으면 오류가 발생합니다.</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">'r +'읽기 및 쓰기 모드, 파일이 존재하지 않으면 오류가 발생합니다.</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">'w'만 기록되며 파일이 존재하지 않으면 자동으로 생성되며 존재하면 지워집니다.</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">'w +'읽기 및 쓰기 모드, 파일이 존재하지 않으면 자동으로 생성됩니다.</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">'a'는 추가 메소드 만 작성하고 파일이 없으면 자동으로 생성됩니다.</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">'a +'읽기-쓰기 추가 방법, 파일이 없으면 자동으로 생성됩니다.</font></font></li>
+</ul>
+<hr>
+<div name="readTextFile" data-unique="readTextFile"></div><h3 id="readTextFile" class="notranslate">readTextFile</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">텍스트 파일을 열고 내용을 읽으십시오.</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">String</span> fs.readTextFile(<span class="hljs-built_in">String</span> fname) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">fname</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 파일 이름 지정</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과 :</font></font></p>
+<ul>
+<li><span class="notranslate">String</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 파일의 텍스트 내용을 반환</font></font></li>
+</ul>
+<hr>
+<div name="readFile" data-unique="readFile"></div><h3 id="readFile" class="notranslate">readFile</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">바이너리 파일을 열고 내용을 읽습니다.</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> Variant fs.readFile(<span class="hljs-built_in">String</span> fname,
+    <span class="hljs-built_in">String</span> encoding = <span class="hljs-string">""</span>) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">fname</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 파일 이름 지정</font></font></li>
+<li><span class="notranslate">encoding</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 디코딩 방법을 지정합니다. 기본값은 디코딩하지 않는 것입니다.</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과 :</font></font></p>
+<ul>
+<li><span class="notranslate">Variant</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 파일의 텍스트 내용을 반환</font></font></li>
+</ul>
+<hr>
+<div name="readLines" data-unique="readLines"></div><h3 id="readLines" class="notranslate">readLines</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">파일을 열고 배열의 텍스트 행 세트를 읽습니다. 행의 끝은 EOL 속성 설정에 따라 식별됩니다. 기본적으로 posix : "\ n"; windows : "\ r \ n"</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Array</span> fs.readLines(<span class="hljs-built_in">String</span> fname,<font></font>
+    Integer maxlines = <span class="hljs-number">-1</span>);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">fname</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 파일 이름 지정</font></font></li>
+<li><span class="notranslate">maxlines</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 이번에 읽을 최대 줄 수 지정, 기본적으로 모든 텍스트 줄 읽기</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과 :</font></font></p>
+<ul>
+<li><span class="notranslate">Array</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 읽을 데이터가 없거나 연결이 중단 된 경우 읽은 텍스트 줄 배열을 반환합니다. 빈 배열</font></font></li>
+</ul>
+<hr>
+<div name="writeTextFile" data-unique="writeTextFile"></div><h3 id="writeTextFile" class="notranslate">writeTextFile</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">텍스트 파일 생성 및 내용 작성</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> fs.writeTextFile(<span class="hljs-built_in">String</span> fname,
+    <span class="hljs-built_in">String</span> txt) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">fname</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 파일 이름 지정</font></font></li>
+<li><span class="notranslate">txt</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 쓸 문자열 지정</font></font></li>
+</ul>
+<hr>
+<div name="writeFile" data-unique="writeFile"></div><h3 id="writeFile" class="notranslate">writeFile</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">바이너리 파일을 만들고 내용을 작성합니다.</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> fs.writeFile(<span class="hljs-built_in">String</span> fname,<font></font>
+    Buffer data) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">fname</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 파일 이름 지정</font></font></li>
+<li><span class="notranslate">data</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="../../object/ifs/buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 기록 할 바이너리 데이터를 지정합니다.</font></font></li>
+</ul>
+<hr>
+<div name="appendFile" data-unique="appendFile"></div><h3 id="appendFile" class="notranslate">appendFile</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">바이너리 파일을 만들고 내용을 작성합니다.</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> fs.appendFile(<span class="hljs-built_in">String</span> fname,<font></font>
+    Buffer data) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">fname</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 파일 이름 지정</font></font></li>
+<li><span class="notranslate">data</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="../../object/ifs/buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 기록 할 바이너리 데이터를 지정합니다.</font></font></li>
+</ul>
+<hr>
+<div name="setZipFS" data-unique="setZipFS"></div><h3 id="setZipFS" class="notranslate">setZipFS</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">설정 </font></font><a href="zip.md.html" class="notranslate">zip</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 가상 파일 매핑</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> fs.setZipFS(<span class="hljs-built_in">String</span> fname,<font></font>
+    Buffer data);<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">fname</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 매핑 경로 지정</font></font></li>
+<li><span class="notranslate">data</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="../../object/ifs/buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 매핑 된 지정 </font></font><a href="zip.md.html" class="notranslate">zip</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 파일 데이터</font></font></li>
+</ul>
+<hr>
+<div name="clearZipFS" data-unique="clearZipFS"></div><h3 id="clearZipFS" class="notranslate">clearZipFS</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">맑은 </font></font><a href="zip.md.html" class="notranslate">zip</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 가상 파일 매핑</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> fs.clearZipFS(<span class="hljs-built_in">String</span> fname = <span class="hljs-string">""</span>);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">fname</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 매핑 경로 지정, 기본적으로 모든 캐시 지우기</font></font></li>
+</ul>
+<hr>
+<div name="watch" data-unique="watch"></div><h3 id="watch" class="notranslate">watch</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">파일을 관찰하고 해당 감시자 객체를 반환합니다.</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> FSWatcher fs.watch(<span class="hljs-built_in">String</span> fname);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">fname</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 관찰 할 파일 객체 지정</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과 :</font></font></p>
+<ul>
+<li><a href="../../object/ifs/fswatcher.md.html" class="notranslate">FSWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><a href="../../object/ifs/fswatcher.md.html" class="notranslate">FSWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 목적</font></font></li>
+</ul>
+<hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">파일을 관찰하고 해당 감시자 객체를 반환합니다.</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> FSWatcher fs.watch(<span class="hljs-built_in">String</span> fname,
+    <span class="hljs-built_in">Function</span> callback);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">fname</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 관찰 할 파일 객체 지정</font></font></li>
+<li><span class="notranslate">callback</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 함수, </font></font><code>(evtType: 'change' | 'rename', filename: string) =&gt; any</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">파일 객체 변경시 처리 콜백</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과 :</font></font></p>
+<ul>
+<li><a href="../../object/ifs/fswatcher.md.html" class="notranslate">FSWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><a href="../../object/ifs/fswatcher.md.html" class="notranslate">FSWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 목적</font></font></li>
+</ul>
+<hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">파일을 관찰하고 해당 감시자 객체를 반환합니다.</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> FSWatcher fs.watch(<span class="hljs-built_in">String</span> fname,
+    <span class="hljs-built_in">Object</span> options);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">fname</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 관찰 할 파일 객체 지정</font></font></li>
+<li><span class="notranslate">options</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 물체, 관찰 옵션</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과 :</font></font></p>
+<ul>
+<li><a href="../../object/ifs/fswatcher.md.html" class="notranslate">FSWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><a href="../../object/ifs/fswatcher.md.html" class="notranslate">FSWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 목적</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">옵션 지원되는 옵션은 다음과 같습니다.</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5</div>{
+    <span class="hljs-string">"persistent"</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">// {boolean} default: true 是否只要目标文件还在被观察, 进程就不退出</span>
+    <span class="hljs-string">"recursive"</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// {boolean} default: false 对于 fname 为文件夹的情况, 是否递归地观察其下所有的子目录</span>
+    <span class="hljs-string">"encoding"</span>: <span class="hljs-string">"utf8"</span>, <span class="hljs-comment">// {enum} default: 'utf8' 指定解析传入的 fname 的字符编码</span><font></font>
+}<font></font>
+</code></pre>
+<hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">파일을 관찰하고 해당 감시자 객체를 반환합니다.</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">static</span> FSWatcher fs.watch(<span class="hljs-built_in">String</span> fname,
+    <span class="hljs-built_in">Object</span> options,
+    <span class="hljs-built_in">Function</span> callback);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">fname</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 관찰 할 파일 객체 지정</font></font></li>
+<li><span class="notranslate">options</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 물체, 관찰 옵션</font></font></li>
+<li><span class="notranslate">callback</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 함수, </font></font><code>(evtType: 'change' | 'rename', filename: string) =&gt; any</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">파일 객체 변경시 처리 콜백</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과 :</font></font></p>
+<ul>
+<li><a href="../../object/ifs/fswatcher.md.html" class="notranslate">FSWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><a href="../../object/ifs/fswatcher.md.html" class="notranslate">FSWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 목적</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">옵션 지원되는 옵션은 다음과 같습니다.</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5</div>{
+    <span class="hljs-string">"persistent"</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">// {boolean} default: true 是否只要目标文件还在被观察, 进程就不退出</span>
+    <span class="hljs-string">"recursive"</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// {boolean} default: false 对于 fname 为文件夹的情况, 是否递归地观察其下所有的子目录</span>
+    <span class="hljs-string">"encoding"</span>: <span class="hljs-string">"utf8"</span>, <span class="hljs-comment">// {enum} default: 'utf8' 指定解析传入的 fname 的字符编码</span><font></font>
+}<font></font>
+</code></pre>
+<hr>
+<div name="watchFile" data-unique="watchFile"></div><h3 id="watchFile" class="notranslate">watchFile</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">파일을 관찰하고 해당 </font></font><a href="../../object/ifs/statswatcher.md.html" class="notranslate">StatsWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 목적</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> StatsWatcher fs.watchFile(<span class="hljs-built_in">String</span> fname,
+    <span class="hljs-built_in">Function</span> callback);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">fname</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 관찰 할 파일 객체 지정</font></font></li>
+<li><span class="notranslate">callback</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 함수, </font></font><code>(curStats: Stats, prevStats: Stats) =&gt; any</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">파일 객체의 통계 변경시 처리 콜백</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과 :</font></font></p>
+<ul>
+<li><a href="../../object/ifs/statswatcher.md.html" class="notranslate">StatsWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><a href="../../object/ifs/statswatcher.md.html" class="notranslate">StatsWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 목적</font></font></li>
+</ul>
+<hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">파일을 관찰하고 해당 </font></font><a href="../../object/ifs/statswatcher.md.html" class="notranslate">StatsWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 목적</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">static</span> StatsWatcher fs.watchFile(<span class="hljs-built_in">String</span> fname,
+    <span class="hljs-built_in">Object</span> options,
+    <span class="hljs-built_in">Function</span> callback);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">fname</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 관찰 할 파일 객체 지정</font></font></li>
+<li><span class="notranslate">options</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 물체, 관찰 옵션</font></font></li>
+<li><span class="notranslate">callback</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 함수, </font></font><code>(curStats: Stats, prevStats: Stats) =&gt; any</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">파일 객체의 통계 변경시 처리 콜백</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과 :</font></font></p>
+<ul>
+<li><a href="../../object/ifs/statswatcher.md.html" class="notranslate">StatsWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><a href="../../object/ifs/statswatcher.md.html" class="notranslate">StatsWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 목적</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">옵션 지원되는 옵션은 다음과 같습니다.</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5</div>{
+    <span class="hljs-string">"persistent"</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">// {boolean} default: true 是否只要目标文件还在被观察, 进程就不退出</span>
+    <span class="hljs-string">"recursive"</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// {boolean} default: false 对于 fname 为文件夹的情况, 是否递归地观察其下所有的子目录</span>
+    <span class="hljs-string">"encoding"</span>: <span class="hljs-string">"utf8"</span>, <span class="hljs-comment">// {enum} default: 'utf8' 指定解析传入的 fname 的字符编码</span><font></font>
+}<font></font>
+</code></pre>
+<hr>
+<div name="unwatchFile" data-unique="unwatchFile"></div><h3 id="unwatchFile" class="notranslate">unwatchFile</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fname의 관찰에서 </font></font><a href="../../object/ifs/statswatcher.md.html" class="notranslate">StatsWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 관찰 된 모든 이벤트 콜백 제거</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> fs.unwatchFile(<span class="hljs-built_in">String</span> fname);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">fname</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 관찰 할 파일 객체 지정</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과 :</font></font></p>
+<ul>
+<li><a href="../../object/ifs/statswatcher.md.html" class="notranslate">StatsWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 목적</font></font></li>
+</ul>
+<hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fname의 관찰에서 </font></font><a href="../../object/ifs/statswatcher.md.html" class="notranslate">StatsWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">관찰 된 이벤트 콜백 제거 </font></font><code>callback</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">콜백</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> fs.unwatchFile(<span class="hljs-built_in">String</span> fname,
+    <span class="hljs-built_in">Function</span> callback);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<ul>
+<li><span class="notranslate">fname</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 관찰 할 파일 객체 지정</font></font></li>
+<li><span class="notranslate">callback</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 제거 할 함수, 콜백</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과 :</font></font></p>
+<ul>
+<li><a href="../../object/ifs/statswatcher.md.html" class="notranslate">StatsWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 목적</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">콜백이 더 이상 </font></font><a href="../../object/ifs/statswatcher.md.html" class="notranslate">StatsWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 의 관찰 이벤트 콜백에서 오류가보고되지 않습니다.</font></font></p>
+<div name="静态属性" data-unique="静态属性"></div><h2 id="静态属性"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">정적 속성</font></font></h2>
+<div name="constants" data-unique="constants"></div><h3 id="constants" class="notranslate">constants</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">객체, fs 모듈의 상수 객체</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly <span class="hljs-built_in">Object</span> fs.constants;
+</code></pre>
+<div name="常量" data-unique="常量"></div><h2 id="常量"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">일정한</font></font></h2>
+<div name="SEEK_SET" data-unique="SEEK_SET"></div><h3 id="SEEK_SET" class="notranslate">SEEK_SET</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">탐색 모드 상수, 절대 위치로 이동</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> fs.SEEK_SET = <span class="hljs-number">0</span>;
+</code></pre>
+<hr>
+<div name="SEEK_CUR" data-unique="SEEK_CUR"></div><h3 id="SEEK_CUR" class="notranslate">SEEK_CUR</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">탐색 모드 상수, 현재 위치의 상대 위치로 이동</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> fs.SEEK_CUR = <span class="hljs-number">1</span>;
+</code></pre>
+<hr>
+<div name="SEEK_END" data-unique="SEEK_END"></div><h3 id="SEEK_END" class="notranslate">SEEK_END</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">탐색 모드 상수, 파일 끝의 상대 위치로 이동</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> fs.SEEK_END = <span class="hljs-number">2</span>;
+</code></pre>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2014-Present fibjs.org | </font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">지원</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip756910"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip756910" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">클릭하면 톱 페이지로 돌아갑니다</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>

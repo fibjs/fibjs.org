@@ -1,0 +1,1036 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../../imgs/icon.png"><title>fib-app-JavaScript en fibra</title><link href="../../../../css/common.css" rel="stylesheet"><link href="../../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Navegación de palanca</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../../index.html"><img src="../../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../../index.html">HOME</a></li><li><a href="../../guide/readme.md.html">GUIDE</a></li><li><a href="../../manual/module/readme.md.html">MODULE</a></li><li><a href="../../manual/object/readme.md.html">OBJECT</a></li><li><a href="../readme.md.html">AWESOME</a></li><li><a href="../../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../../docs/awesome/module/fib-app.md.html">中文</a> <a href="../../../../en/docs/awesome/module/fib-app.md.html">ENGLISH</a> <a href="../../../../ja/docs/awesome/module/fib-app.md.html">日本語</a> <a href="../../../../de/docs/awesome/module/fib-app.md.html">Deutsch</a> <a href="../../../../es/docs/awesome/module/fib-app.md.html">Español</a> <a href="../../../../fr/docs/awesome/module/fib-app.md.html">Français</a> <a href="../../../../ko/docs/awesome/module/fib-app.md.html">한국어</a> <a href="../../../../it/docs/awesome/module/fib-app.md.html">Italiano</a> <a href="../../../../ru/docs/awesome/module/fib-app.md.html">Русский</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Módulo de comunidad impresionante </font></font></span><div class="search"><span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input type="text" class="searchbox ds-input" placeholder="Buscar" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-label="entrada de búsqueda" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Avenir, &quot;Segoe UI&quot;, Arial, &quot;Hiragino Sans GB&quot;, 冬青黑, &quot;Microsoft YaHei&quot;, 微软雅黑, SimSun, 宋体, Helvetica, Tahoma, &quot;Arial sans-serif&quot;; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div class="ds-dataset-1"></div></span></span></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Página de inicio</font></font></a></li><li><a href="../readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Módulo de comunidad </font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> fib-app </font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Guía de desarrollo </font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="../../guide/about.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">¿Qué es fibjs?</font></font></a></li>
+<li><a href="../../guide/install.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Entorno operativo y de instalación</font></font></a></li>
+<li><a href="../../guide/hello.md.html" class="notranslate">hello, world</a></li>
+<li><a href="../../guide/test.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Una buena vida comienza con la prueba</font></font></a></li>
+<li><a href="../../guide/profiler.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Encuentra al asesino del rendimiento</font></font></a></li>
+<li><a href="../../guide/desktop.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Desarrolle rápidamente aplicaciones de escritorio</font></font></a></li>
+<li><a href="../../guide/server-hot-update.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Actualización en caliente del módulo de servidor</font></font></a></li>
+<li><a href="../../guide/host-routes.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Enrutamiento de nombre de dominio</font></font></a></li>
+<li><a href="../../guide/x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">El uso del certificado X509 en fibjs</font></font></a></li>
+<li><a href="../../guide/contribute.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Agregar módulo nativo</font></font></a></li>
+</ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_module" aria-controls="collapse_module"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Módulo básico </font></font></a></h4></div><div id="collapse_module" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="../../manual/module/ifs/assert.md.html" class="notranslate">assert</a></li>
+<li><a href="../../manual/module/ifs/base32.md.html" class="notranslate">base32</a></li>
+<li><a href="../../manual/module/ifs/base64.md.html" class="notranslate">base64</a></li>
+<li><a href="../../manual/module/ifs/base64vlq.md.html" class="notranslate">base64vlq</a></li>
+<li><a href="../../manual/module/ifs/bson.md.html" class="notranslate">bson</a></li>
+<li><a href="../../manual/module/ifs/child_process.md.html" class="notranslate">child_process</a></li>
+<li><a href="../../manual/module/ifs/console.md.html" class="notranslate">console</a></li>
+<li><a href="../../manual/module/ifs/constants.md.html" class="notranslate">constants</a></li>
+<li><a href="../../manual/module/ifs/coroutine.md.html" class="notranslate">coroutine</a></li>
+<li><a href="../../manual/module/ifs/crypto.md.html" class="notranslate">crypto</a></li>
+<li><a href="../../manual/module/ifs/db.md.html" class="notranslate">db</a></li>
+<li><a href="../../manual/module/ifs/dgram.md.html" class="notranslate">dgram</a></li>
+<li><a href="../../manual/module/ifs/dns.md.html" class="notranslate">dns</a></li>
+<li><a href="../../manual/module/ifs/encoding.md.html" class="notranslate">encoding</a></li>
+<li><a href="../../manual/module/ifs/fs.md.html" class="notranslate">fs</a></li>
+<li><a href="../../manual/module/ifs/gd.md.html" class="notranslate">gd</a></li>
+<li><a href="../../manual/module/ifs/global.md.html" class="notranslate">global</a></li>
+<li><a href="../../manual/module/ifs/gui.md.html" class="notranslate">gui</a></li>
+<li><a href="../../manual/module/ifs/hash.md.html" class="notranslate">hash</a></li>
+<li><a href="../../manual/module/ifs/hex.md.html" class="notranslate">hex</a></li>
+<li><a href="../../manual/module/ifs/http.md.html" class="notranslate">http</a></li>
+<li><a href="../../manual/module/ifs/iconv.md.html" class="notranslate">iconv</a></li>
+<li><a href="../../manual/module/ifs/io.md.html" class="notranslate">io</a></li>
+<li><a href="../../manual/module/ifs/json.md.html" class="notranslate">json</a></li>
+<li><a href="../../manual/module/ifs/mq.md.html" class="notranslate">mq</a></li>
+<li><a href="../../manual/module/ifs/msgpack.md.html" class="notranslate">msgpack</a></li>
+<li><a href="../../manual/module/ifs/net.md.html" class="notranslate">net</a></li>
+<li><a href="../../manual/module/ifs/os.md.html" class="notranslate">os</a></li>
+<li><a href="../../manual/module/ifs/path.md.html" class="notranslate">path</a></li>
+<li><a href="../../manual/module/ifs/path_posix.md.html" class="notranslate">path_posix</a></li>
+<li><a href="../../manual/module/ifs/path_win32.md.html" class="notranslate">path_win32</a></li>
+<li><a href="../../manual/module/ifs/process.md.html" class="notranslate">process</a></li>
+<li><a href="../../manual/module/ifs/profiler.md.html" class="notranslate">profiler</a></li>
+<li><a href="../../manual/module/ifs/punycode.md.html" class="notranslate">punycode</a></li>
+<li><a href="../../manual/module/ifs/querystring.md.html" class="notranslate">querystring</a></li>
+<li><a href="../../manual/module/ifs/registry.md.html" class="notranslate">registry</a></li>
+<li><a href="../../manual/module/ifs/ssl.md.html" class="notranslate">ssl</a></li>
+<li><a href="../../manual/module/ifs/string_decoder.md.html" class="notranslate">string_decoder</a></li>
+<li><a href="../../manual/module/ifs/test.md.html" class="notranslate">test</a></li>
+<li><a href="../../manual/module/ifs/timers.md.html" class="notranslate">timers</a></li>
+<li><a href="../../manual/module/ifs/tty.md.html" class="notranslate">tty</a></li>
+<li><a href="../../manual/module/ifs/url.md.html" class="notranslate">url</a></li>
+<li><a href="../../manual/module/ifs/util.md.html" class="notranslate">util</a></li>
+<li><a href="../../manual/module/ifs/uuid.md.html" class="notranslate">uuid</a></li>
+<li><a href="../../manual/module/ifs/vm.md.html" class="notranslate">vm</a></li>
+<li><a href="../../manual/module/ifs/ws.md.html" class="notranslate">ws</a></li>
+<li><a href="../../manual/module/ifs/xml.md.html" class="notranslate">xml</a></li>
+<li><a href="../../manual/module/ifs/zip.md.html" class="notranslate">zip</a></li>
+<li><a href="../../manual/module/ifs/zlib.md.html" class="notranslate">zlib</a></li>
+</ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_object" aria-controls="collapse_object"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Objetos incorporados </font></font></a></h4></div><div id="collapse_object" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="../../manual/object/ifs/buffer.md.html" class="notranslate">Buffer</a></li>
+<li><a href="../../manual/object/ifs/bufferedstream.md.html" class="notranslate">BufferedStream</a></li>
+<li><a href="../../manual/object/ifs/chain.md.html" class="notranslate">Chain</a></li>
+<li><a href="../../manual/object/ifs/childprocess.md.html" class="notranslate">ChildProcess</a></li>
+<li><a href="../../manual/object/ifs/cipher.md.html" class="notranslate">Cipher</a></li>
+<li><a href="../../manual/object/ifs/condition.md.html" class="notranslate">Condition</a></li>
+<li><a href="../../manual/object/ifs/dbconnection.md.html" class="notranslate">DbConnection</a></li>
+<li><a href="../../manual/object/ifs/dgramsocket.md.html" class="notranslate">DgramSocket</a></li>
+<li><a href="../../manual/object/ifs/digest.md.html" class="notranslate">Digest</a></li>
+<li><a href="../../manual/object/ifs/event.md.html" class="notranslate">Event</a></li>
+<li><a href="../../manual/object/ifs/eventemitter.md.html" class="notranslate">EventEmitter</a></li>
+<li><a href="../../manual/object/ifs/fswatcher.md.html" class="notranslate">FSWatcher</a></li>
+<li><a href="../../manual/object/ifs/fiber.md.html" class="notranslate">Fiber</a></li>
+<li><a href="../../manual/object/ifs/file.md.html" class="notranslate">File</a></li>
+<li><a href="../../manual/object/ifs/handler.md.html" class="notranslate">Handler</a></li>
+<li><a href="../../manual/object/ifs/heapgraphedge.md.html" class="notranslate">HeapGraphEdge</a></li>
+<li><a href="../../manual/object/ifs/heapgraphnode.md.html" class="notranslate">HeapGraphNode</a></li>
+<li><a href="../../manual/object/ifs/heapsnapshot.md.html" class="notranslate">HeapSnapshot</a></li>
+<li><a href="../../manual/object/ifs/httpclient.md.html" class="notranslate">HttpClient</a></li>
+<li><a href="../../manual/object/ifs/httpcollection.md.html" class="notranslate">HttpCollection</a></li>
+<li><a href="../../manual/object/ifs/httpcookie.md.html" class="notranslate">HttpCookie</a></li>
+<li><a href="../../manual/object/ifs/httphandler.md.html" class="notranslate">HttpHandler</a></li>
+<li><a href="../../manual/object/ifs/httpmessage.md.html" class="notranslate">HttpMessage</a></li>
+<li><a href="../../manual/object/ifs/httprepeater.md.html" class="notranslate">HttpRepeater</a></li>
+<li><a href="../../manual/object/ifs/httprequest.md.html" class="notranslate">HttpRequest</a></li>
+<li><a href="../../manual/object/ifs/httpresponse.md.html" class="notranslate">HttpResponse</a></li>
+<li><a href="../../manual/object/ifs/httpserver.md.html" class="notranslate">HttpServer</a></li>
+<li><a href="../../manual/object/ifs/httpuploaddata.md.html" class="notranslate">HttpUploadData</a></li>
+<li><a href="../../manual/object/ifs/httpsserver.md.html" class="notranslate">HttpsServer</a></li>
+<li><a href="../../manual/object/ifs/image.md.html" class="notranslate">Image</a></li>
+<li><a href="../../manual/object/ifs/leveldb.md.html" class="notranslate">LevelDB</a></li>
+<li><a href="../../manual/object/ifs/lock.md.html" class="notranslate">Lock</a></li>
+<li><a href="../../manual/object/ifs/lrucache.md.html" class="notranslate">LruCache</a></li>
+<li><a href="../../manual/object/ifs/mssql.md.html" class="notranslate">MSSQL</a></li>
+<li><a href="../../manual/object/ifs/memorystream.md.html" class="notranslate">MemoryStream</a></li>
+<li><a href="../../manual/object/ifs/message.md.html" class="notranslate">Message</a></li>
+<li><a href="../../manual/object/ifs/mongocollection.md.html" class="notranslate">MongoCollection</a></li>
+<li><a href="../../manual/object/ifs/mongocursor.md.html" class="notranslate">MongoCursor</a></li>
+<li><a href="../../manual/object/ifs/mongodb.md.html" class="notranslate">MongoDB</a></li>
+<li><a href="../../manual/object/ifs/mongoid.md.html" class="notranslate">MongoID</a></li>
+<li><a href="../../manual/object/ifs/mysql.md.html" class="notranslate">MySQL</a></li>
+<li><a href="../../manual/object/ifs/pkey.md.html" class="notranslate">PKey</a></li>
+<li><a href="../../manual/object/ifs/rangestream.md.html" class="notranslate">RangeStream</a></li>
+<li><a href="../../manual/object/ifs/redis.md.html" class="notranslate">Redis</a></li>
+<li><a href="../../manual/object/ifs/redishash.md.html" class="notranslate">RedisHash</a></li>
+<li><a href="../../manual/object/ifs/redislist.md.html" class="notranslate">RedisList</a></li>
+<li><a href="../../manual/object/ifs/redisset.md.html" class="notranslate">RedisSet</a></li>
+<li><a href="../../manual/object/ifs/redissortedset.md.html" class="notranslate">RedisSortedSet</a></li>
+<li><a href="../../manual/object/ifs/routing.md.html" class="notranslate">Routing</a></li>
+<li><a href="../../manual/object/ifs/sqlite.md.html" class="notranslate">SQLite</a></li>
+<li><a href="../../manual/object/ifs/sandbox.md.html" class="notranslate">SandBox</a></li>
+<li><a href="../../manual/object/ifs/seekablestream.md.html" class="notranslate">SeekableStream</a></li>
+<li><a href="../../manual/object/ifs/semaphore.md.html" class="notranslate">Semaphore</a></li>
+<li><a href="../../manual/object/ifs/service.md.html" class="notranslate">Service</a></li>
+<li><a href="../../manual/object/ifs/smtp.md.html" class="notranslate">Smtp</a></li>
+<li><a href="../../manual/object/ifs/socket.md.html" class="notranslate">Socket</a></li>
+<li><a href="../../manual/object/ifs/sslhandler.md.html" class="notranslate">SslHandler</a></li>
+<li><a href="../../manual/object/ifs/sslserver.md.html" class="notranslate">SslServer</a></li>
+<li><a href="../../manual/object/ifs/sslsocket.md.html" class="notranslate">SslSocket</a></li>
+<li><a href="../../manual/object/ifs/stat.md.html" class="notranslate">Stat</a></li>
+<li><a href="../../manual/object/ifs/statswatcher.md.html" class="notranslate">StatsWatcher</a></li>
+<li><a href="../../manual/object/ifs/stream.md.html" class="notranslate">Stream</a></li>
+<li><a href="../../manual/object/ifs/stringdecoder.md.html" class="notranslate">StringDecoder</a></li>
+<li><a href="../../manual/object/ifs/tcpserver.md.html" class="notranslate">TcpServer</a></li>
+<li><a href="../../manual/object/ifs/timer.md.html" class="notranslate">Timer</a></li>
+<li><a href="../../manual/object/ifs/urlobject.md.html" class="notranslate">UrlObject</a></li>
+<li><a href="../../manual/object/ifs/websocket.md.html" class="notranslate">WebSocket</a></li>
+<li><a href="../../manual/object/ifs/websocketmessage.md.html" class="notranslate">WebSocketMessage</a></li>
+<li><a href="../../manual/object/ifs/webview.md.html" class="notranslate">WebView</a></li>
+<li><a href="../../manual/object/ifs/worker.md.html" class="notranslate">Worker</a></li>
+<li><a href="../../manual/object/ifs/x509cert.md.html" class="notranslate">X509Cert</a></li>
+<li><a href="../../manual/object/ifs/x509crl.md.html" class="notranslate">X509Crl</a></li>
+<li><a href="../../manual/object/ifs/x509req.md.html" class="notranslate">X509Req</a></li>
+<li><a href="../../manual/object/ifs/xmlattr.md.html" class="notranslate">XmlAttr</a></li>
+<li><a href="../../manual/object/ifs/xmlcdatasection.md.html" class="notranslate">XmlCDATASection</a></li>
+<li><a href="../../manual/object/ifs/xmlcharacterdata.md.html" class="notranslate">XmlCharacterData</a></li>
+<li><a href="../../manual/object/ifs/xmlcomment.md.html" class="notranslate">XmlComment</a></li>
+<li><a href="../../manual/object/ifs/xmldocument.md.html" class="notranslate">XmlDocument</a></li>
+<li><a href="../../manual/object/ifs/xmldocumenttype.md.html" class="notranslate">XmlDocumentType</a></li>
+<li><a href="../../manual/object/ifs/xmlelement.md.html" class="notranslate">XmlElement</a></li>
+<li><a href="../../manual/object/ifs/xmlnamednodemap.md.html" class="notranslate">XmlNamedNodeMap</a></li>
+<li><a href="../../manual/object/ifs/xmlnode.md.html" class="notranslate">XmlNode</a></li>
+<li><a href="../../manual/object/ifs/xmlnodelist.md.html" class="notranslate">XmlNodeList</a></li>
+<li><a href="../../manual/object/ifs/xmlprocessinginstruction.md.html" class="notranslate">XmlProcessingInstruction</a></li>
+<li><a href="../../manual/object/ifs/xmltext.md.html" class="notranslate">XmlText</a></li>
+<li><a href="../../manual/object/ifs/zipfile.md.html" class="notranslate">ZipFile</a></li>
+<li><a href="../../manual/object/ifs/object.md.html" class="notranslate">object</a></li>
+</ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_awesome" aria-controls="collapse_awesome"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Módulo de comunidad </font></font></a></h4></div><div id="collapse_awesome" class="panel-collapse collapse in" aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="fib-session.md.html" class="notranslate">fib-session</a></li>
+<li><a href="fib-pool.md.html" class="notranslate">fib-pool</a></li>
+<li><a href="fib-orm.md.html" class="notranslate">fib-orm</a></li>
+<li class="active"><a href="fib-app.md.html" class="notranslate">fib-app</a></li>
+<li><a href="fib-kv.md.html" class="notranslate">fib-kv</a></li>
+<li><a href="fib-rpc.md.html" class="notranslate">fib-rpc</a></li>
+<li><a href="fib-qr.md.html" class="notranslate">fib-qr</a></li>
+<li><a href="fib-pug.md.html" class="notranslate">fib-pug</a></li>
+<li><a href="ejs.md.html" class="notranslate">ejs</a></li>
+<li><a href="juicer.md.html" class="notranslate">Juicer</a></li>
+<li><a href="highlight.js.md.html" class="notranslate">highlight.js</a></li>
+<li><a href="marked.md.html" class="notranslate">marked</a></li>
+<li><a href="node-cron.md.html" class="notranslate">node-cron</a></li>
+<li><a href="debug.md.html" class="notranslate">debug</a></li>
+<li><a href="benchmark.js.md.html" class="notranslate">benchmark.js</a></li>
+<li><a href="sinon.md.html" class="notranslate">sinon</a></li>
+<li><a href="node-mime.md.html" class="notranslate">node-mime</a></li>
+<li><a href="validatorjs.md.html" class="notranslate">validatorjs</a></li>
+<li><a href="superstruct.md.html" class="notranslate">superstruct</a></li>
+<li><a href="cluster-server.md.html" class="notranslate">cluster-server</a></li>
+<li><a href="synaptic.md.html" class="notranslate">synaptic</a></li>
+<li><a href="source-map.md.html" class="notranslate">source-map</a></li>
+<li><a href="json-format.md.html" class="notranslate">json-format</a></li>
+<li><a href="viz.js.md.html" class="notranslate">viz.js</a></li>
+<li><a href="nomnoml.md.html" class="notranslate">nomnoml</a></li>
+<li><a href="pegjs.md.html" class="notranslate">pegjs</a></li>
+<li><a href="uglify-js.md.html" class="notranslate">uglify-js</a></li>
+<li><a href="js-beautify.md.html" class="notranslate">js-beautify</a></li>
+<li><a href="chalk-animation.md.html" class="notranslate">chalk-animation</a></li>
+<li><a href="jsrsasign.md.html" class="notranslate">jsrsasign</a></li>
+<li><a href="crypto-js.md.html" class="notranslate">crypto-js</a></li>
+<li><a href="ascii-table.md.html" class="notranslate">ascii-table</a></li>
+<li><a href="logstream.md.html" class="notranslate">logstream</a></li>
+<li><a href="ci.md.html" class="notranslate">ci</a></li>
+<li><a href="fs-readdir-recursive.md.html" class="notranslate">fs-readdir-recursive</a></li>
+<li><a href="mkdirp.md.html" class="notranslate">mkdirp</a></li>
+<li><a href="rmdirr.md.html" class="notranslate">rmdirr</a></li>
+<li><a href="detect-port.md.html" class="notranslate">detect-port</a></li>
+<li><a href="bitcoinjs-lib.md.html" class="notranslate">bitcoinjs-lib</a></li>
+<li><a href="rakuten.md.html" class="notranslate">Rakuten</a></li>
+</ul>
+ </div></div></div>  </div></div><div class="content"><div class="social-share share-component" data-sites="weibo,twitter" data-description="分享"></div> <div name="fib-app" data-unique="fib-app"></div><h1 id="fib-app"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fib-app</font></font></h1>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">marco api básico de la aplicación fibjs</font></font></p>
+<div name="Install" data-unique="Install"></div><h2 id="Install"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Instalar en pc</font></font></h2>
+<pre><code class="lang-sh"><div class="line-numbers">1</div>npm install fib-app [--save]
+</code></pre>
+<div name="Test" data-unique="Test"></div><h2 id="Test"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Prueba</font></font></h2>
+<pre><code class="lang-sh"><div class="line-numbers">1</div>npm <span class="hljs-built_in">test</span>
+</code></pre>
+<div name="建立基础脚本" data-unique="建立基础脚本"></div><h2 id="建立基础脚本"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Construye un guión básico</font></font></h2>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21</div><span class="hljs-keyword">const</span> http = <span class="hljs-built_in">require</span>(<span class="hljs-string">'http'</span>);
+<span class="hljs-keyword">const</span> util = <span class="hljs-built_in">require</span>(<span class="hljs-string">'util'</span>)
+<span class="hljs-keyword">const</span> Session = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fib-session'</span>)
+<span class="hljs-keyword">const</span> App = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../'</span>);<font></font>
+<font></font>
+<span class="hljs-keyword">var</span> app = <span class="hljs-keyword">new</span> App(<span class="hljs-string">'sqlite:test.db'</span>, {
+  <span class="hljs-attr">uuid</span>: <span class="hljs-literal">true</span><font></font>
+});<font></font>
+app.db.use(<span class="hljs-built_in">require</span>(<span class="hljs-string">'./defs/person'</span>));<font></font>
+<font></font>
+<span class="hljs-keyword">var</span> session = <span class="hljs-keyword">new</span> Session(<span class="hljs-keyword">new</span> util.LruCache(<span class="hljs-number">20000</span>), {
+  <span class="hljs-attr">timeout</span>: <span class="hljs-number">60</span> * <span class="hljs-number">1000</span><font></font>
+});<font></font>
+<font></font>
+<span class="hljs-keyword">var</span> svr = <span class="hljs-keyword">new</span> http.Server(<span class="hljs-number">8080</span>, [<font></font>
+  session.cookie_filter,<font></font>
+  {<font></font>
+    <span class="hljs-string">'/1.0'</span>: app<font></font>
+  }<font></font>
+]);<font></font>
+svr.run();<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Donde </font></font><code>person</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">está el módulo de definición del modelo, como sigue:</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7</div><span class="hljs-built_in">module</span>.exports = <span class="hljs-function"><span class="hljs-params">db</span> =&gt;</span> {<font></font>
+  db.define(<span class="hljs-string">'person'</span>, {
+    <span class="hljs-attr">name</span>: <span class="hljs-built_in">String</span>,
+    <span class="hljs-attr">sex</span>: [<span class="hljs-string">"male"</span>, <span class="hljs-string">"female"</span>],
+    <span class="hljs-attr">age</span>: <span class="hljs-built_in">Number</span><font></font>
+  });<font></font>
+};<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Esta es una definición estándar de orm, y también se pueden usar otras funciones de orm, como verificación de tipos, eventos, etc.</font></font></p>
+<div name="API-数据格式" data-unique="API-数据格式"></div><h2 id="API-数据格式"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Formato de datos API</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Para las solicitudes POST y PUT, el cuerpo de la solicitud debe estar en formato JSON y el tipo de contenido del encabezado HTTP debe establecerse en application / json.</font></font></p>
+<pre><code class="lang-sh"><div class="line-numbers">1
+2
+3
+4</div>curl -X PUT \<font></font>
+  -H <span class="hljs-string">"Content-Type: application/json"</span> \<font></font>
+  -d <span class="hljs-string">'{"name": "tom","sex":"male","age":23}'</span> \<font></font>
+  http://localhost/1.0/person/57fbbdb0a2400000<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Para todas las solicitudes, el formato de respuesta es un objeto JSON.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">El éxito de una solicitud se indica mediante el código de estado HTTP. </font><font style="vertical-align: inherit;">Un código de estado 2XX indica éxito y un 4XX indica falla en la solicitud. </font><font style="vertical-align: inherit;">Cuando falla una solicitud, el cuerpo de la respuesta sigue siendo un objeto JSON, pero siempre contendrá los dos campos de código y mensaje, que puede usar para depurar. </font><font style="vertical-align: inherit;">Por ejemplo, si falla una solicitud de autenticación de permiso, se devolverá la siguiente información:</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4</div>{
+  <span class="hljs-string">"code"</span>: <span class="hljs-number">4030501</span>,
+  <span class="hljs-string">"message"</span>: <span class="hljs-string">"The operation isn’t allowed for clients due to class-level permissions."</span><font></font>
+}<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">El código se divide en tres partes: los primeros tres dígitos 403 indican el tipo de error, 05 indican el número de la tabla de datos y 01 indican el código de error detallado.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Para una solicitud GET, los datos del objeto generalmente se devuelven. Dependiendo de la dirección de la solicitud GET, se puede devolver un objeto o una matriz. </font><font style="vertical-align: inherit;">tal como:</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5</div>{
+  <span class="hljs-string">"name"</span>: <span class="hljs-string">"tom"</span>,
+  <span class="hljs-string">"sex"</span>: <span class="hljs-string">"male"</span>,
+  <span class="hljs-string">"age"</span>: <span class="hljs-number">23</span><font></font>
+}<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">o:</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12</div>[<font></font>
+  {<font></font>
+    <span class="hljs-string">"name"</span>: <span class="hljs-string">"tom"</span>,
+    <span class="hljs-string">"sex"</span>: <span class="hljs-string">"male"</span>,
+    <span class="hljs-string">"age"</span>: <span class="hljs-number">23</span><font></font>
+  },<font></font>
+  {<font></font>
+    <span class="hljs-string">"name"</span>: <span class="hljs-string">"lily"</span>,
+    <span class="hljs-string">"sex"</span>: <span class="hljs-string">"female"</span>,
+    <span class="hljs-string">"age"</span>: <span class="hljs-number">22</span><font></font>
+  }<font></font>
+]<font></font>
+</code></pre>
+<div name="特殊字段" data-unique="特殊字段"></div><h2 id="特殊字段"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Campo especial</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">En los datos del objeto, hay cuatro campos con significados especiales, que no se pueden cambiar a través de la API. </font><font style="vertical-align: inherit;">Respectivamente </font></font><code>id</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><code>updatedAt</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><code>createdAt</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><code>createdBy</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Donde </font></font><code>id</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><code>updatedAt</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><code>createdAt</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">campos individuales se pueden crear y modificar de forma automática. </font></font><code>createdBy</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Debe especificar el tipo usted mismo.</font></font></p>
+<div name="基础对象访问-API" data-unique="基础对象访问-API"></div><h2 id="基础对象访问-API"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">API de acceso a objetos básica</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Después de completar esta definición de datos, tendrá directamente un conjunto completo de llamadas de interfaz que se ajustan a la especificación de la API REST:</font></font></p>
+<table>
+<thead>
+<tr>
+<th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">url</font></font></th>
+<th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">método</font></font></th>
+<th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">acción</font></font></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/1.0/:className</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">CORREO</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Crear nuevo objeto</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/1.0/:className/:id</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">OBTENER</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Leer objeto</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/1.0/:className/:id</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">PONER</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Modificar el objeto</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/1.0/:className/:id</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ELIMINAR</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Eliminar objeto</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/1.0/:className</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">OBTENER</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Lista de objetos de consulta</font></font></td>
+</tr>
+</tbody>
+</table>
+<div name="创建新对象" data-unique="创建新对象"></div><h3 id="创建新对象"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Crear nuevo objeto</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Para crear un nuevo objeto, se debe enviar una solicitud POST a la URL de la clase, que debe contener el objeto en sí. </font><font style="vertical-align: inherit;">Por ejemplo, para crear el objeto como se mencionó anteriormente:</font></font></p>
+<pre><code class="lang-sh"><div class="line-numbers">1
+2
+3
+4</div>curl -X POST \<font></font>
+  -H <span class="hljs-string">"Content-Type: application/json"</span> \<font></font>
+  -d <span class="hljs-string">'{"name": "tom","sex":"male","age":23}'</span> \<font></font>
+  http://localhost/1.0/person<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cuando la creación es exitosa, la respuesta HTTP es 201 Created y el cuerpo de la respuesta es un objeto JSON, incluido el objectId y la marca de tiempo createdAt del nuevo objeto:</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4</div>{
+  <span class="hljs-string">"createdAt"</span>: <span class="hljs-string">"2017-11-25T01:39:35.931Z"</span>,
+  <span class="hljs-string">"id"</span>: <span class="hljs-string">"57fbbdb0a2400000"</span><font></font>
+}<font></font>
+</code></pre>
+<div name="读取对象" data-unique="读取对象"></div><h3 id="读取对象"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Leer objeto</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cuando crea un objeto, puede obtener su contenido enviando una solicitud GET a la Ubicación del encabezado devuelto. </font><font style="vertical-align: inherit;">Por ejemplo, para obtener el objeto que creamos arriba:</font></font></p>
+<pre><code class="lang-sh"><div class="line-numbers">1</div>curl -X GET http://localhost/1.0/person/57fbbdb0a2400000
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">El cuerpo devuelve un objeto JSON contiene todas las juntas con el campo suministrados por el usuario </font></font><code>createdAt</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><code>updatedAt</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">y </font></font><code>id</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">campos:</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8</div>{
+  <span class="hljs-string">"name"</span>: <span class="hljs-string">"tom"</span>,
+  <span class="hljs-string">"sex"</span>: <span class="hljs-string">"male"</span>,
+  <span class="hljs-string">"age"</span>: <span class="hljs-number">23</span>,
+  <span class="hljs-string">"createdAt"</span>: <span class="hljs-string">"2017-11-25T01:39:35.931Z"</span>,
+  <span class="hljs-string">"updatedAt"</span>: <span class="hljs-string">"2017-11-25T01:39:35.931Z"</span>,
+  <span class="hljs-string">"id"</span>: <span class="hljs-string">"57fbbdb0a2400000"</span><font></font>
+}<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Devuelve el campo proporcionando </font></font><code>keys</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">contenido personalizado que se puede devolver </font></font><code>keys</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">contenido en </font></font><code>,</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">cadenas de nombre de campo divididas:</font></font></p>
+<pre><code class="lang-sh"><div class="line-numbers">1</div>curl -X GET http://localhost/1.0/person/57fbbdb0a2400000?keys=name%2Csex
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Regresará:</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4</div>{
+  <span class="hljs-string">"name"</span>: <span class="hljs-string">"tom"</span>,
+  <span class="hljs-string">"sex"</span>: <span class="hljs-string">"male"</span><font></font>
+}<font></font>
+</code></pre>
+<div name="修改对象" data-unique="修改对象"></div><h3 id="修改对象"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Modificar el objeto</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Para cambiar los datos existentes de un objeto, puede enviar una solicitud PUT a la URL correspondiente del objeto. Cualquier clave que no haya especificado no se cambiará, por lo que solo puede actualizar un subconjunto de los datos del objeto. </font><font style="vertical-align: inherit;">Por ejemplo, cambiemos un campo de edad de nuestro objeto:</font></font></p>
+<pre><code class="lang-sh"><div class="line-numbers">1
+2
+3
+4</div>curl -X PUT \<font></font>
+  -H <span class="hljs-string">"Content-Type: application/json"</span> \<font></font>
+  -d <span class="hljs-string">'{"age": 25}'</span> \<font></font>
+  http://localhost/1.0/person/57fbbdb0a2400000<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">JSON devuelto objeto contendrá </font></font><code>updatedAt</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">y </font></font><code>id</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">campo que indica la actualización se produjo en un momento:</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4</div>{
+  <span class="hljs-string">"updatedAt"</span>: <span class="hljs-string">"2017-11-25T01:39:35.931Z"</span>,
+  <span class="hljs-string">"id"</span>: <span class="hljs-string">"57fbbdb0a2400000"</span><font></font>
+}<font></font>
+</code></pre>
+<div name="删除对象" data-unique="删除对象"></div><h3 id="删除对象"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Eliminar objeto</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Para eliminar un objeto, puede enviar una solicitud DELETE a la URL del objeto especificado, como por ejemplo:</font></font></p>
+<pre><code class="lang-sh"><div class="line-numbers">1</div>curl -X DELETE http://localhost/1.0/person/57fbbdb0a2400000
+</code></pre>
+<div name="查询对象列表" data-unique="查询对象列表"></div><h3 id="查询对象列表"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Lista de objetos de consulta</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Al enviar una solicitud GET a la URL de la clase, puede obtener varios objetos a la vez sin ningún parámetro de URL. </font><font style="vertical-align: inherit;">Lo siguiente es simplemente para obtener todos los usuarios:</font></font></p>
+<pre><code class="lang-sh"><div class="line-numbers">1</div>curl -X GET http://localhost/1.0/person
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">El valor devuelto es un objeto JSON que contiene el campo de resultados y su valor es una lista de objetos:</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18</div>[<font></font>
+  {<font></font>
+    <span class="hljs-string">"name"</span>: <span class="hljs-string">"tom"</span>,
+    <span class="hljs-string">"sex"</span>: <span class="hljs-string">"male"</span>,
+    <span class="hljs-string">"age"</span>: <span class="hljs-number">23</span>,
+    <span class="hljs-string">"createdAt"</span>: <span class="hljs-string">"2017-11-25T01:39:35.931Z"</span>,
+    <span class="hljs-string">"updatedAt"</span>: <span class="hljs-string">"2017-11-25T01:39:35.931Z"</span>,
+    <span class="hljs-string">"id"</span>: <span class="hljs-string">"57fbbdb0a2400000"</span><font></font>
+  },<font></font>
+  {<font></font>
+    <span class="hljs-string">"name"</span>: <span class="hljs-string">"lily"</span>,
+    <span class="hljs-string">"sex"</span>: <span class="hljs-string">"female"</span>,
+    <span class="hljs-string">"age"</span>: <span class="hljs-number">22</span>,
+    <span class="hljs-string">"createdAt"</span>: <span class="hljs-string">"2017-11-25T01:39:35.931Z"</span>,
+    <span class="hljs-string">"updatedAt"</span>: <span class="hljs-string">"2017-11-25T01:39:35.931Z"</span>,
+    <span class="hljs-string">"id"</span>: <span class="hljs-string">"57fbbdb0a2400001"</span><font></font>
+  }<font></font>
+]<font></font>
+</code></pre>
+<h4 id="keys-字段定制"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">personalización del campo de claves</font></font></h4>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Al igual que con la consulta de objetos, puede establecer que el </font></font><code>keys</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">campo personalizado de la </font><font style="vertical-align: inherit;">lista de consultas </font><font style="vertical-align: inherit;">devuelva el resultado a contener. </font></font><code>keys</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">El contenido está </font></font><code>,</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">dividido </font><font style="vertical-align: inherit;">en una </font><font style="vertical-align: inherit;">cadena de nombre de campo, por ejemplo:</font></font></p>
+<pre><code class="lang-sh"><div class="line-numbers">1</div>curl -X GET http://localhost/1.0/person?keys=name%2Cage
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">La devolución especificada solo </font></font><code>name</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">y </font></font><code>age</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">dos campos.</font></font></p>
+<h4 id="where-过滤条件"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">donde condición de filtro</font></font></h4>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Por </font></font><code>where</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">puede establecer restricciones en el objeto de consulta como parámetro.</font></font></p>
+<p><code>where</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">El valor del parámetro debe estar codificado en JSON. </font><font style="vertical-align: inherit;">En otras palabras, si observa la solicitud de URL que realmente se envió, primero debe estar codificada en JSON y luego en la URL. </font><font style="vertical-align: inherit;">Lo más fácil de usar </font></font><code>where</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">como argumentos es incluir la clave y el valor adecuados. </font><font style="vertical-align: inherit;">Por ejemplo, si queremos buscar usuarios cuyo nombre sea tom, deberíamos construir la consulta así:</font></font></p>
+<pre><code class="lang-sh"><div class="line-numbers">1</div>curl -X GET http://localhost/1.0/person?<span class="hljs-built_in">where</span>=%7B%22name%22%3A%22tom%22%7D
+</code></pre>
+<p><code>where</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> El valor es una cadena JSON después de urlencode, el contenido es:</font></font><code>{"name":"tom"}</code></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Además de coincidir exactamente con un valor dado, </font></font><code>where</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">también se admiten métodos de comparación como la inclusión. </font></font><code>where</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Los parámetros admiten las siguientes opciones:</font></font></p>
+<table>
+<thead>
+<tr>
+<th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">llave</font></font></th>
+<th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">operación</font></font></th>
+<th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">muestra</font></font></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">eq</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">igual</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{"name": {"eq": "tom"}} o {"name": "tom"}</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">nordeste</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">no igual a</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{"nombre": {"ne": "tom"}}</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">gt</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">mas que el</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{"age": {"gt": "24"}}</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">gte</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">mayor o igual a</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{"age": {"gte": "24"}}</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">es</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Menos que</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{"age": {"lt": "24"}}</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">lte</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Menos que o igual a</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{"age": {"lte": "24"}}</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">me gusta</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Consulta difusa</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{"nombre": {"me gusta": "% m"}}</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">diferente a</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Consulta difusa</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{"nombre": {"not_like": "% m"}}</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Entre</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Comparación de intervalo</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{"edad": {"entre": [22,25]}}</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">no entre</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Comparación de intervalo</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{"edad": {"not_between": [22,25]}}</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">en</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">enumerar</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{"name": {"in": ["tom", "lily"]}}</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">no en</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">enumerar</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{"nombre": {"not_in": ["tom", "lily"]}}</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">o</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">O operación</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{"o": [{"nombre": "tom"}, {"edad": 24}]}</font></font></td>
+</tr>
+</tbody>
+</table>
+<h4 id="skip-跳过记录"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">omitir omitir registro</font></font></h4>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">De forma </font></font><code>skip</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">opcional, puede especificar el número de registros que se deben omitir para lograr el efecto de volteo.</font></font></p>
+<pre><code class="lang-sh"><div class="line-numbers">1</div>curl -X GET http://localhost/1.0/person?skip=100
+</code></pre>
+<h4 id="limit-返回记录限制"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">límite devuelve el límite de registro</font></font></h4>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">De forma </font></font><code>limit</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">opcional, puede limitar el número de registros devueltos, </font></font><code>limit</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">los dígitos significativos de 1 a 1000 y los valores predeterminados a 100.</font></font></p>
+<pre><code class="lang-sh"><div class="line-numbers">1</div>curl -X GET http://localhost/1.0/person?<span class="hljs-built_in">limit</span>=100
+</code></pre>
+<h4 id="order-指定排序方式"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">orden especifica el método de clasificación</font></font></h4>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Por </font></font><code>order</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">conjunto de opciones para devolver Ordenar conjunto de resultados, antes de que el nombre del campo contenga </font></font><code>-</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">como tiempo inverso.</font></font></p>
+<pre><code class="lang-sh"><div class="line-numbers">1</div>curl -X GET http://localhost/1.0/person?order=-id
+</code></pre>
+<h4 id="count-返回结果总数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">count devuelve el número total de resultados</font></font></h4>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cuando se solicita aumentar </font></font><code>count</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">el número total, puede devolver un conjunto de resultados del contenido especificado al mismo tiempo.</font></font></p>
+<pre><code class="lang-sh"><div class="line-numbers">1</div>curl -X GET http://localhost/1.0/person?count=1&amp;<span class="hljs-built_in">limit</span>=1
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">En este momento, los resultados de retorno que contienen </font></font><code>count</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">y </font></font><code>results</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">que comprende dos campos, y cada uno un número total de resultados:</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13</div>{
+  <span class="hljs-string">"count"</span>: <span class="hljs-number">2</span>,
+  <span class="hljs-string">"results"</span>: [<font></font>
+    {<font></font>
+      <span class="hljs-string">"name"</span>: <span class="hljs-string">"tom"</span>,
+      <span class="hljs-string">"sex"</span>: <span class="hljs-string">"male"</span>,
+      <span class="hljs-string">"age"</span>: <span class="hljs-number">23</span>,
+      <span class="hljs-string">"createdAt"</span>: <span class="hljs-string">"2017-11-25T01:39:35.931Z"</span>,
+      <span class="hljs-string">"updatedAt"</span>: <span class="hljs-string">"2017-11-25T01:39:35.931Z"</span>,
+      <span class="hljs-string">"id"</span>: <span class="hljs-string">"57fbbdb0a2400000"</span><font></font>
+    }<font></font>
+  ]<font></font>
+}<font></font>
+</code></pre>
+<div name="建立扩展对象" data-unique="建立扩展对象"></div><h2 id="建立扩展对象"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Crea un objeto de extensión</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Al definir hasOne y hasMany a través de orm, la relación de asociación entre objetos se puede definir y reflejar en la API, por ejemplo:</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9</div><span class="hljs-built_in">module</span>.exports = <span class="hljs-function"><span class="hljs-params">db</span> =&gt;</span> {
+  <span class="hljs-keyword">var</span> Person = db.models.person;<font></font>
+<font></font>
+  <span class="hljs-keyword">var</span> Pet = db.define(<span class="hljs-string">'pet'</span>, {
+    <span class="hljs-attr">name</span>: <span class="hljs-built_in">String</span><font></font>
+  });<font></font>
+<font></font>
+  Person.hasMany(<span class="hljs-string">'pets'</span>, Pet);<font></font>
+};<font></font>
+</code></pre>
+<div name="扩展对象访问-API" data-unique="扩展对象访问-API"></div><h2 id="扩展对象访问-API"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">API de acceso a objetos extendido</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">La siguiente es la definición de API del objeto de extensión:</font></font></p>
+<table>
+<thead>
+<tr>
+<th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">url</font></font></th>
+<th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">método</font></font></th>
+<th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">acción</font></font></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/1.0/:className/:id/:extendName</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">PONER</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Establecer objeto de extensión</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/1.0/:className/:id/:extendName</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">CORREO</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Crea un objeto de extensión</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/1.0/:className/:id/:extendName/:rid</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">OBTENER</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Leer objeto extendido</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/1.0/:className/:id/:extendName/:rid</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">PONER</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Modificar el objeto de extensión</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/1.0/:className/:id/:extendName/:rid</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ELIMINAR</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Eliminar objeto de extensión</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/1.0/:className/:id/:extendName</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">OBTENER</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Consultar la lista de objetos extendidos</font></font></td>
+</tr>
+</tbody>
+</table>
+<div name="设置扩展对象" data-unique="设置扩展对象"></div><h3 id="设置扩展对象"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Establecer objeto de extensión</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Establecer un objeto extendido es establecer una conexión entre dos objetos independientes. </font><font style="vertical-align: inherit;">Por ejemplo, Tom ha adoptado una mascota llamada gato, lo que se puede lograr con las siguientes operaciones:</font></font></p>
+<pre><code class="lang-sh"><div class="line-numbers">1
+2
+3
+4</div>curl -X PUT \<font></font>
+  -H <span class="hljs-string">"Content-Type: application/json"</span> \<font></font>
+  -d <span class="hljs-string">'{"id": "57fbbdb0a2400007"}'</span> \<font></font>
+  http://localhost/1.0/person/57fbbdb0a2400000/pets<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">En la llamada, la identificación de cat debe especificarse en el cuerpo.</font></font></p>
+<div name="创建扩展对象" data-unique="创建扩展对象"></div><h3 id="创建扩展对象"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Crea un objeto de extensión</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Al crear directamente objetos extendidos, puede establecer conexiones entre objetos mientras crea objetos. </font><font style="vertical-align: inherit;">tal como:</font></font></p>
+<pre><code class="lang-sh"><div class="line-numbers">1
+2
+3
+4</div>curl -X POST \<font></font>
+  -H <span class="hljs-string">"Content-Type: application/json"</span> \<font></font>
+  -d <span class="hljs-string">'{"name": "cat"}'</span> \<font></font>
+  http://localhost/1.0/person/57fbbdb0a2400000/pets<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Se creará una mascota llamada gato y se establecerá una relación de asociación con Tom.</font></font></p>
+<div name="读取扩展对象" data-unique="读取扩展对象"></div><h3 id="读取扩展对象"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Leer objeto extendido</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">La lectura de objetos extendidos es muy similar a la lectura de objetos base y también admite la opción de claves:</font></font></p>
+<pre><code class="lang-sh"><div class="line-numbers">1</div>curl -X GET http://localhost/1.0/person/57fbbdb0a2400000/pets/57fbbdb0a2400007
+</code></pre>
+<div name="修改扩展对象" data-unique="修改扩展对象"></div><h3 id="修改扩展对象"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Modificar el objeto de extensión</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Leer objetos extendidos es muy similar a leer objetos base:</font></font></p>
+<pre><code class="lang-sh"><div class="line-numbers">1
+2
+3
+4</div>curl -X PUT \<font></font>
+  -H <span class="hljs-string">"Content-Type: application/json"</span> \<font></font>
+  -d <span class="hljs-string">'{"name": "cat 1"}'</span> \<font></font>
+  http://localhost/1.0/person/57fbbdb0a2400000/pets/57fbbdb0a2400007<font></font>
+</code></pre>
+<div name="删除扩展对象" data-unique="删除扩展对象"></div><h3 id="删除扩展对象"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Eliminar objeto de extensión</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Eliminar un objeto extendido no elimina el objeto en sí, solo elimina la relación entre los objetos:</font></font></p>
+<pre><code class="lang-sh"><div class="line-numbers">1</div>curl -X DETELE http://localhost/1.0/person/57fbbdb0a2400000/pets/57fbbdb0a2400007
+</code></pre>
+<div name="查询扩展对象列表" data-unique="查询扩展对象列表"></div><h3 id="查询扩展对象列表"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Consultar la lista de objetos extendidos</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Consultar la lista de objetos extendida es muy similar a consultar la lista de objetos básica y también admite opciones como claves y filtrado condicional:</font></font></p>
+<pre><code class="lang-sh"><div class="line-numbers">1</div>curl -X GET http://localhost/1.0/person/57fbbdb0a2400000/pets
+</code></pre>
+<div name="ACL" data-unique="ACL"></div><h2 id="ACL"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ACL</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Los permisos de datos se pueden controlar definiendo la ACL del modelo. </font><font style="vertical-align: inherit;">tal como:</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25</div><span class="hljs-keyword">const</span> orm = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fib-orm'</span>);<font></font>
+<font></font>
+<span class="hljs-built_in">module</span>.exports = <span class="hljs-function"><span class="hljs-params">db</span> =&gt;</span> {<font></font>
+  db.define(<span class="hljs-string">'blog'</span>, {
+    <span class="hljs-attr">title</span>: <span class="hljs-built_in">String</span>,
+    <span class="hljs-attr">detail</span>: <span class="hljs-built_in">String</span>，<font></font>
+    note: <span class="hljs-built_in">String</span><font></font>
+  }, {<font></font>
+    <span class="hljs-attr">ACL</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">session</span>) </span>{
+      <span class="hljs-keyword">return</span> {
+        <span class="hljs-string">"*"</span>: {
+          <span class="hljs-string">"*"</span>: <span class="hljs-literal">false</span><font></font>
+        },<font></font>
+        <span class="hljs-string">"57fbbdb0a2400000"</span>: {
+          <span class="hljs-string">"*"</span>: <span class="hljs-literal">true</span><font></font>
+        },<font></font>
+        <span class="hljs-string">"roles"</span>: {
+          <span class="hljs-string">"user"</span>: {
+            <span class="hljs-string">"read"</span>: <span class="hljs-literal">true</span><font></font>
+          }<font></font>
+        }<font></font>
+      };<font></font>
+    }<font></font>
+  });<font></font>
+};<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Si no se especifica ninguna ACL cuando se define el modelo, equivale a establecer los permisos predeterminados:</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5</div>{
+  <span class="hljs-string">"*"</span>: {
+    <span class="hljs-string">"*"</span>: <span class="hljs-literal">true</span><font></font>
+  }<font></font>
+}<font></font>
+</code></pre>
+<div name="主体" data-unique="主体"></div><h3 id="主体"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">cuerpo principal</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Hay tres descripciones principales de ACL, usuario </font></font><code>id</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, usuario </font></font><code>role</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">y </font></font><code>*</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><code>id</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">representan a un usuario específico, </font></font><code>role</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">lo que indica que el usuario tiene un rol, </font></font><code>*</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">significa que todos los usuarios:</font></font></p>
+<table>
+<thead>
+<tr>
+<th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">cuerpo principal</font></font></th>
+<th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">descripción</font></font></th>
+<th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">prioridad</font></font></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">identificación</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ID de usuario específico</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">1</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">papel</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Nombre del grupo de usuarios</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">2</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">*</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Todos</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">3</font></font></td>
+</tr>
+</tbody>
+</table>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Al verificar los privilegios, el primero coincidirá con </font></font><code>id</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">los derechos correspondientes, si no se especifica, los </font></font><code>role</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">permisos de </font><font style="vertical-align: inherit;">usuario coincidentes </font><font style="vertical-align: inherit;">correspondientes aún si se especifica, para ver si la </font></font><code>*</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">autoridad </font><font style="vertical-align: inherit;">designada </font><font style="vertical-align: inherit;">, si </font></font><code>*</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">tampoco se especifica, no tiene permiso.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Por ejemplo, la configuración de permisos anterior, especifica que el </font></font><code>user</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">grupo de usuarios puede leer, el usuario </font></font><code>57fbbdb0a2400000</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">tiene todos los derechos, mientras que otros usuarios sin ningún permiso.</font></font></p>
+<div name="权限" data-unique="权限"></div><h3 id="权限"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Autoridad</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ACL categoriza cinco tipos de permisos según el comportamiento de la API:</font></font></p>
+<table>
+<thead>
+<tr>
+<th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Autoridad</font></font></th>
+<th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">descripción</font></font></th>
+<th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Tipo permitido</font></font></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">crear</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Crea un objeto</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">verdadero / falso / matriz</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">leer</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Leer objeto</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">verdadero / falso / matriz</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">escribir</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Modificar el objeto</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">verdadero / falso / matriz</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Eliminar</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Eliminar objeto</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">verdadero Falso</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">encontrar</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Lista de objetos de consulta</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">verdadero Falso</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">*</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Coincidir con todos los permisos</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">verdadero / falso / matriz</font></font></td>
+</tr>
+</tbody>
+</table>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Permisos desarrollados </font></font><code>true</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">para permitir el acceso, para </font></font><code>false</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">prohibir el acceso para </font></font><code>array</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">permitir solo campos de acceso específicos. </font></font><code>delete</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Y </font></font><code>find</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">no acepta </font></font><code>array</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, si lo establece, </font></font><code>array</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">entonces se considera como </font></font><code>true</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">. </font><font style="vertical-align: inherit;">Si el permiso especificado no existe, el siguiente coincide con la </font></font><code>*</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">autoridad </font><font style="vertical-align: inherit;">principal </font><font style="vertical-align: inherit;">. </font><font style="vertical-align: inherit;">Si no existe, vuelva a consultar el tema de la siguiente prioridad.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ejemplos del ejemplo anterior, si se requiere configurar </font></font><code>user</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">solo permite la lectura </font></font><code>title</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">y </font></font><code>detail</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">se pueden leer otros   </font></font><code>title</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, se puede configurar de manera que:</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14</div>{
+  <span class="hljs-string">"*"</span>: {
+    <span class="hljs-string">"*"</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-string">"read"</span>: [<span class="hljs-string">'title'</span>]<font></font>
+  },<font></font>
+  <span class="hljs-string">"57fbbdb0a2400000"</span>: {
+    <span class="hljs-string">"*"</span>: <span class="hljs-literal">true</span><font></font>
+  },<font></font>
+  <span class="hljs-string">"roles"</span>: {
+    <span class="hljs-string">"user"</span>: {
+      <span class="hljs-string">"read"</span>: [<span class="hljs-string">'title'</span>, <span class="hljs-string">'detail'</span>]<font></font>
+    }<font></font>
+  }<font></font>
+}<font></font>
+</code></pre>
+<div name="对象权限" data-unique="对象权限"></div><h3 id="对象权限"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Permisos de objeto</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Los permisos de toda la clase se establecen en el modelo. Si necesita establecer permisos para objetos específicos, puede configurar OACL para lograr:</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24</div><span class="hljs-built_in">module</span>.exports = <span class="hljs-function"><span class="hljs-params">db</span> =&gt;</span> {<font></font>
+  db.define(<span class="hljs-string">'person'</span>, {
+    <span class="hljs-attr">name</span>: <span class="hljs-built_in">String</span>,
+    <span class="hljs-attr">sex</span>: [<span class="hljs-string">"male"</span>, <span class="hljs-string">"female"</span>],
+    <span class="hljs-attr">age</span>: <span class="hljs-built_in">Number</span><font></font>
+  }, {<font></font>
+    <span class="hljs-attr">ACL</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">session</span>) </span>{
+      <span class="hljs-keyword">return</span> {
+        <span class="hljs-string">"*"</span>: {
+          <span class="hljs-string">"*"</span>: <span class="hljs-literal">false</span><font></font>
+        }<font></font>
+      }<font></font>
+    },<font></font>
+    <span class="hljs-attr">OACL</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">session</span>) </span>{
+      <span class="hljs-keyword">var</span> _acl = {};
+      <span class="hljs-keyword">if</span>(<span class="hljs-keyword">this</span>.id === session.id)<font></font>
+        _acl[session.id] = {<font></font>
+          <span class="hljs-string">"*"</span>: <span class="hljs-literal">true</span><font></font>
+        };<font></font>
+<font></font>
+      <span class="hljs-keyword">return</span> _acl;<font></font>
+    }<font></font>
+  });<font></font>
+};<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">En este ejemplo, cuando el visitante es el sujeto, se permitirán todas las operaciones, de lo contrario se prohibirán todas las visitas. </font><font style="vertical-align: inherit;">Los permisos se comprobarán de acuerdo con los siguientes pasos:</font></font></p>
+<ul>
+<li><code>person[57fbbdb0a2400000]</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> =&gt; </font></font><code>OACL</code></li>
+<li><code>person</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> =&gt; </font></font><code>ACL</code></li>
+</ul>
+<div name="扩展对象权限" data-unique="扩展对象权限"></div><h3 id="扩展对象权限"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Permisos de objetos extendidos</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">El control de permisos de acceso del objeto extendido es similar al permiso de objeto básico, la única diferencia es que debe especificarse por separado en la ACL:</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41</div><span class="hljs-built_in">module</span>.exports = <span class="hljs-function"><span class="hljs-params">db</span> =&gt;</span> {
+  <span class="hljs-keyword">var</span> Person = db.define(<span class="hljs-string">'person'</span>, {
+    <span class="hljs-attr">name</span>: <span class="hljs-built_in">String</span>,
+    <span class="hljs-attr">sex</span>: [<span class="hljs-string">"male"</span>, <span class="hljs-string">"female"</span>],
+    <span class="hljs-attr">age</span>: <span class="hljs-built_in">Number</span><font></font>
+  },{<font></font>
+    <span class="hljs-attr">ACL</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">session</span>) </span>{
+      <span class="hljs-keyword">return</span> {
+        <span class="hljs-string">"*"</span>: {
+          <span class="hljs-string">"read"</span>: [<span class="hljs-string">'name'</span>, <span class="hljs-string">'sex'</span>],
+          <span class="hljs-string">"extends"</span>: {
+            <span class="hljs-string">"pets"</span>: {
+              <span class="hljs-string">"read"</span>: <span class="hljs-literal">true</span>,
+              <span class="hljs-string">"find"</span>: <span class="hljs-literal">true</span><font></font>
+            }<font></font>
+          }<font></font>
+        }<font></font>
+      }<font></font>
+    },<font></font>
+    <span class="hljs-attr">OACL</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">session</span>) </span>{
+      <span class="hljs-keyword">var</span> _acl = {};
+      <span class="hljs-keyword">if</span>(<span class="hljs-keyword">this</span>.id === session.id)<font></font>
+        _acl[session.id] = {<font></font>
+          <span class="hljs-string">"*"</span>: <span class="hljs-literal">true</span>,
+          <span class="hljs-string">"extends"</span>: {
+            <span class="hljs-string">"pets"</span>: {
+              <span class="hljs-string">"*"</span>: <span class="hljs-literal">true</span><font></font>
+            }<font></font>
+          }<font></font>
+        };<font></font>
+<font></font>
+      <span class="hljs-keyword">return</span> _acl;<font></font>
+    }<font></font>
+  });<font></font>
+<font></font>
+  <span class="hljs-keyword">var</span> Pet = db.define(<span class="hljs-string">'pet'</span>, {
+    <span class="hljs-attr">name</span>: <span class="hljs-built_in">String</span><font></font>
+  });<font></font>
+<font></font>
+  Person.hasMany(<span class="hljs-string">'pets'</span>, Pet);<font></font>
+};<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">En esta definición, cualquier persona puede acceder a la información personal </font></font><code>name</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">y </font></font><code>sex</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, y acceder y buscarlo libremente </font></font><code>pets</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, soy el usuario que puede operar todos sus datos, y todos los derechos para tener su propia información de mascotas.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Al verificar la autoridad de acceso del objeto extendido, la autoridad del objeto y la autoridad del objeto extendido se verifican por separado. </font><font style="vertical-align: inherit;">Por ejemplo, la siguiente solicitud:</font></font></p>
+<pre><code class="lang-sh"><div class="line-numbers">1</div>curl -X GET http://localhost/1.0/person/57fbbdb0a2400000/pets/57fbbdb0a2400007
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Los permisos se comprobarán de acuerdo con los siguientes pasos:</font></font></p>
+<ul>
+<li><code>pets[57fbbdb0a2400007]</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> =&gt; </font></font><code>OACL</code></li>
+<li><code>person[57fbbdb0a2400000]</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">=&gt; </font></font><code>OACL</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">=&gt; </font></font><code>extends</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">=&gt;</font></font><code>pets</code></li>
+<li><code>person</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">=&gt; </font></font><code>ACL</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">=&gt; </font></font><code>extends</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">=&gt;</font></font><code>pets</code></li>
+<li><code>pets</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> =&gt; </font></font><code>ACL</code></li>
+</ul>
+<div name="Function" data-unique="Function"></div><h2 id="Function"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Función</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Se pueden definir API para el modelo y se pueden completar operaciones de datos complejas personalizando la función.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">La gran mayoría de los permisos se pueden controlar mediante ACL y no se requiere ninguna función para completar los permisos basados ​​en objetos. </font><font style="vertical-align: inherit;">La función se puede utilizar para completar permisos basados ​​en datos, como otorgar permisos a diferentes grupos de usuarios según el estado de aprobación. </font><font style="vertical-align: inherit;">Y múltiples modificaciones, como la necesidad de modificar varios registros de la base de datos.</font></font></p>
+<div name="绘制数据模型" data-unique="绘制数据模型"></div><h2 id="绘制数据模型"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Dibujar el modelo de datos</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Una vez completada la definición de datos, se puede utilizar </font></font><code>app.diagram()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">para dibujar </font></font><code>svg</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">un diagrama de clases de formato de </font><font style="vertical-align: inherit;">modelo de datos </font><font style="vertical-align: inherit;">, los archivos se guardarán en una imagen similar a la siguiente:
+</font></font><img src="./demo/diagram.svg" alt="diagrama"></p>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Derechos de autor fibjs.org 2014-Presente | </font></font><a href="../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Nos apoyan</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip744354"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip744354" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Haga clic para volver a la página superior</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../js/common.js"></script><script type="text/javascript" src="../../../../js/docs.js"></script></body></html>

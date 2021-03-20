@@ -1,0 +1,667 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../../../imgs/icon.png"><title>Object FSWatcher-JavaScript on Fiber</title><link href="../../../../../css/common.css" rel="stylesheet"><link href="../../../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Toggle navigation</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../../../index.html"><img src="../../../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../../../index.html">HOME</a></li><li><a href="../../../guide/readme.md.html">GUIDE</a></li><li><a href="../../module/readme.md.html">MODULE</a></li><li><a href="../readme.md.html">OBJECT</a></li><li><a href="../../../awesome/readme.md.html">AWESOME</a></li><li><a href="../../../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../../../docs/manual/object/ifs/fswatcher.md.html">中文</a> <a href="../../../../../en/docs/manual/object/ifs/fswatcher.md.html">ENGLISH</a> <a href="../../../../../ja/docs/manual/object/ifs/fswatcher.md.html">日本語</a> <a href="../../../../../de/docs/manual/object/ifs/fswatcher.md.html">Deutsch</a> <a href="../../../../../es/docs/manual/object/ifs/fswatcher.md.html">Español</a> <a href="../../../../../fr/docs/manual/object/ifs/fswatcher.md.html">Français</a> <a href="../../../../../ko/docs/manual/object/ifs/fswatcher.md.html">한국어</a> <a href="../../../../../it/docs/manual/object/ifs/fswatcher.md.html">Italiano</a> <a href="../../../../../ru/docs/manual/object/ifs/fswatcher.md.html">Русский</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Object built-in object </font></font></span><div class="search"><span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input type="text" class="searchbox ds-input" placeholder="Search" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-label="search input" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Avenir, &quot;Segoe UI&quot;, Arial, &quot;Hiragino Sans GB&quot;, 冬青黑, &quot;Microsoft YaHei&quot;, 微软雅黑, SimSun, 宋体, Helvetica, Tahoma, &quot;Arial sans-serif&quot;; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div class="ds-dataset-1"></div></span></span></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Home page</font></font></a></li><li><a href="../readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Built-in objects </font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Object FSWatcher </font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Development Guide </font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="../../../guide/about.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">What is fibjs?</font></font></a></li>
+<li><a href="../../../guide/install.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Installation and operating environment</font></font></a></li>
+<li><a href="../../../guide/hello.md.html" class="notranslate">hello, world</a></li>
+<li><a href="../../../guide/test.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">A good life starts with the test</font></font></a></li>
+<li><a href="../../../guide/profiler.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Find the performance killer</font></font></a></li>
+<li><a href="../../../guide/desktop.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Quickly develop desktop applications</font></font></a></li>
+<li><a href="../../../guide/server-hot-update.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Server module hot update</font></font></a></li>
+<li><a href="../../../guide/host-routes.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Domain name routing</font></font></a></li>
+<li><a href="../../../guide/x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Use of X509 certificate in fibjs</font></font></a></li>
+<li><a href="../../../guide/contribute.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Add native module</font></font></a></li>
+</ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_module" aria-controls="collapse_module"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Basic module </font></font></a></h4></div><div id="collapse_module" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="../../module/ifs/assert.md.html" class="notranslate">assert</a></li>
+<li><a href="../../module/ifs/base32.md.html" class="notranslate">base32</a></li>
+<li><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a></li>
+<li><a href="../../module/ifs/base64vlq.md.html" class="notranslate">base64vlq</a></li>
+<li><a href="../../module/ifs/bson.md.html" class="notranslate">bson</a></li>
+<li><a href="../../module/ifs/child_process.md.html" class="notranslate">child_process</a></li>
+<li><a href="../../module/ifs/console.md.html" class="notranslate">console</a></li>
+<li><a href="../../module/ifs/constants.md.html" class="notranslate">constants</a></li>
+<li><a href="../../module/ifs/coroutine.md.html" class="notranslate">coroutine</a></li>
+<li><a href="../../module/ifs/crypto.md.html" class="notranslate">crypto</a></li>
+<li><a href="../../module/ifs/db.md.html" class="notranslate">db</a></li>
+<li><a href="../../module/ifs/dgram.md.html" class="notranslate">dgram</a></li>
+<li><a href="../../module/ifs/dns.md.html" class="notranslate">dns</a></li>
+<li><a href="../../module/ifs/encoding.md.html" class="notranslate">encoding</a></li>
+<li><a href="../../module/ifs/fs.md.html" class="notranslate">fs</a></li>
+<li><a href="../../module/ifs/gd.md.html" class="notranslate">gd</a></li>
+<li><a href="../../module/ifs/global.md.html" class="notranslate">global</a></li>
+<li><a href="../../module/ifs/gui.md.html" class="notranslate">gui</a></li>
+<li><a href="../../module/ifs/hash.md.html" class="notranslate">hash</a></li>
+<li><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a></li>
+<li><a href="../../module/ifs/http.md.html" class="notranslate">http</a></li>
+<li><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a></li>
+<li><a href="../../module/ifs/io.md.html" class="notranslate">io</a></li>
+<li><a href="../../module/ifs/json.md.html" class="notranslate">json</a></li>
+<li><a href="../../module/ifs/mq.md.html" class="notranslate">mq</a></li>
+<li><a href="../../module/ifs/msgpack.md.html" class="notranslate">msgpack</a></li>
+<li><a href="../../module/ifs/net.md.html" class="notranslate">net</a></li>
+<li><a href="../../module/ifs/os.md.html" class="notranslate">os</a></li>
+<li><a href="../../module/ifs/path.md.html" class="notranslate">path</a></li>
+<li><a href="../../module/ifs/path_posix.md.html" class="notranslate">path_posix</a></li>
+<li><a href="../../module/ifs/path_win32.md.html" class="notranslate">path_win32</a></li>
+<li><a href="../../module/ifs/process.md.html" class="notranslate">process</a></li>
+<li><a href="../../module/ifs/profiler.md.html" class="notranslate">profiler</a></li>
+<li><a href="../../module/ifs/punycode.md.html" class="notranslate">punycode</a></li>
+<li><a href="../../module/ifs/querystring.md.html" class="notranslate">querystring</a></li>
+<li><a href="../../module/ifs/registry.md.html" class="notranslate">registry</a></li>
+<li><a href="../../module/ifs/ssl.md.html" class="notranslate">ssl</a></li>
+<li><a href="../../module/ifs/string_decoder.md.html" class="notranslate">string_decoder</a></li>
+<li><a href="../../module/ifs/test.md.html" class="notranslate">test</a></li>
+<li><a href="../../module/ifs/timers.md.html" class="notranslate">timers</a></li>
+<li><a href="../../module/ifs/tty.md.html" class="notranslate">tty</a></li>
+<li><a href="../../module/ifs/url.md.html" class="notranslate">url</a></li>
+<li><a href="../../module/ifs/util.md.html" class="notranslate">util</a></li>
+<li><a href="../../module/ifs/uuid.md.html" class="notranslate">uuid</a></li>
+<li><a href="../../module/ifs/vm.md.html" class="notranslate">vm</a></li>
+<li><a href="../../module/ifs/ws.md.html" class="notranslate">ws</a></li>
+<li><a href="../../module/ifs/xml.md.html" class="notranslate">xml</a></li>
+<li><a href="../../module/ifs/zip.md.html" class="notranslate">zip</a></li>
+<li><a href="../../module/ifs/zlib.md.html" class="notranslate">zlib</a></li>
+</ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_object" aria-controls="collapse_object"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Built-in objects </font></font></a></h4></div><div id="collapse_object" class="panel-collapse collapse in" aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="buffer.md.html" class="notranslate">Buffer</a></li>
+<li><a href="bufferedstream.md.html" class="notranslate">BufferedStream</a></li>
+<li><a href="chain.md.html" class="notranslate">Chain</a></li>
+<li><a href="childprocess.md.html" class="notranslate">ChildProcess</a></li>
+<li><a href="cipher.md.html" class="notranslate">Cipher</a></li>
+<li><a href="condition.md.html" class="notranslate">Condition</a></li>
+<li><a href="dbconnection.md.html" class="notranslate">DbConnection</a></li>
+<li><a href="dgramsocket.md.html" class="notranslate">DgramSocket</a></li>
+<li><a href="digest.md.html" class="notranslate">Digest</a></li>
+<li><a href="event.md.html" class="notranslate">Event</a></li>
+<li><a href="eventemitter.md.html" class="notranslate">EventEmitter</a></li>
+<li class="active"><a href="fswatcher.md.html" class="notranslate">FSWatcher</a></li>
+<li><a href="fiber.md.html" class="notranslate">Fiber</a></li>
+<li><a href="file.md.html" class="notranslate">File</a></li>
+<li><a href="handler.md.html" class="notranslate">Handler</a></li>
+<li><a href="heapgraphedge.md.html" class="notranslate">HeapGraphEdge</a></li>
+<li><a href="heapgraphnode.md.html" class="notranslate">HeapGraphNode</a></li>
+<li><a href="heapsnapshot.md.html" class="notranslate">HeapSnapshot</a></li>
+<li><a href="httpclient.md.html" class="notranslate">HttpClient</a></li>
+<li><a href="httpcollection.md.html" class="notranslate">HttpCollection</a></li>
+<li><a href="httpcookie.md.html" class="notranslate">HttpCookie</a></li>
+<li><a href="httphandler.md.html" class="notranslate">HttpHandler</a></li>
+<li><a href="httpmessage.md.html" class="notranslate">HttpMessage</a></li>
+<li><a href="httprepeater.md.html" class="notranslate">HttpRepeater</a></li>
+<li><a href="httprequest.md.html" class="notranslate">HttpRequest</a></li>
+<li><a href="httpresponse.md.html" class="notranslate">HttpResponse</a></li>
+<li><a href="httpserver.md.html" class="notranslate">HttpServer</a></li>
+<li><a href="httpuploaddata.md.html" class="notranslate">HttpUploadData</a></li>
+<li><a href="httpsserver.md.html" class="notranslate">HttpsServer</a></li>
+<li><a href="image.md.html" class="notranslate">Image</a></li>
+<li><a href="leveldb.md.html" class="notranslate">LevelDB</a></li>
+<li><a href="lock.md.html" class="notranslate">Lock</a></li>
+<li><a href="lrucache.md.html" class="notranslate">LruCache</a></li>
+<li><a href="mssql.md.html" class="notranslate">MSSQL</a></li>
+<li><a href="memorystream.md.html" class="notranslate">MemoryStream</a></li>
+<li><a href="message.md.html" class="notranslate">Message</a></li>
+<li><a href="mongocollection.md.html" class="notranslate">MongoCollection</a></li>
+<li><a href="mongocursor.md.html" class="notranslate">MongoCursor</a></li>
+<li><a href="mongodb.md.html" class="notranslate">MongoDB</a></li>
+<li><a href="mongoid.md.html" class="notranslate">MongoID</a></li>
+<li><a href="mysql.md.html" class="notranslate">MySQL</a></li>
+<li><a href="pkey.md.html" class="notranslate">PKey</a></li>
+<li><a href="rangestream.md.html" class="notranslate">RangeStream</a></li>
+<li><a href="redis.md.html" class="notranslate">Redis</a></li>
+<li><a href="redishash.md.html" class="notranslate">RedisHash</a></li>
+<li><a href="redislist.md.html" class="notranslate">RedisList</a></li>
+<li><a href="redisset.md.html" class="notranslate">RedisSet</a></li>
+<li><a href="redissortedset.md.html" class="notranslate">RedisSortedSet</a></li>
+<li><a href="routing.md.html" class="notranslate">Routing</a></li>
+<li><a href="sqlite.md.html" class="notranslate">SQLite</a></li>
+<li><a href="sandbox.md.html" class="notranslate">SandBox</a></li>
+<li><a href="seekablestream.md.html" class="notranslate">SeekableStream</a></li>
+<li><a href="semaphore.md.html" class="notranslate">Semaphore</a></li>
+<li><a href="service.md.html" class="notranslate">Service</a></li>
+<li><a href="smtp.md.html" class="notranslate">Smtp</a></li>
+<li><a href="socket.md.html" class="notranslate">Socket</a></li>
+<li><a href="sslhandler.md.html" class="notranslate">SslHandler</a></li>
+<li><a href="sslserver.md.html" class="notranslate">SslServer</a></li>
+<li><a href="sslsocket.md.html" class="notranslate">SslSocket</a></li>
+<li><a href="stat.md.html" class="notranslate">Stat</a></li>
+<li><a href="statswatcher.md.html" class="notranslate">StatsWatcher</a></li>
+<li><a href="stream.md.html" class="notranslate">Stream</a></li>
+<li><a href="stringdecoder.md.html" class="notranslate">StringDecoder</a></li>
+<li><a href="tcpserver.md.html" class="notranslate">TcpServer</a></li>
+<li><a href="timer.md.html" class="notranslate">Timer</a></li>
+<li><a href="urlobject.md.html" class="notranslate">UrlObject</a></li>
+<li><a href="websocket.md.html" class="notranslate">WebSocket</a></li>
+<li><a href="websocketmessage.md.html" class="notranslate">WebSocketMessage</a></li>
+<li><a href="webview.md.html" class="notranslate">WebView</a></li>
+<li><a href="worker.md.html" class="notranslate">Worker</a></li>
+<li><a href="x509cert.md.html" class="notranslate">X509Cert</a></li>
+<li><a href="x509crl.md.html" class="notranslate">X509Crl</a></li>
+<li><a href="x509req.md.html" class="notranslate">X509Req</a></li>
+<li><a href="xmlattr.md.html" class="notranslate">XmlAttr</a></li>
+<li><a href="xmlcdatasection.md.html" class="notranslate">XmlCDATASection</a></li>
+<li><a href="xmlcharacterdata.md.html" class="notranslate">XmlCharacterData</a></li>
+<li><a href="xmlcomment.md.html" class="notranslate">XmlComment</a></li>
+<li><a href="xmldocument.md.html" class="notranslate">XmlDocument</a></li>
+<li><a href="xmldocumenttype.md.html" class="notranslate">XmlDocumentType</a></li>
+<li><a href="xmlelement.md.html" class="notranslate">XmlElement</a></li>
+<li><a href="xmlnamednodemap.md.html" class="notranslate">XmlNamedNodeMap</a></li>
+<li><a href="xmlnode.md.html" class="notranslate">XmlNode</a></li>
+<li><a href="xmlnodelist.md.html" class="notranslate">XmlNodeList</a></li>
+<li><a href="xmlprocessinginstruction.md.html" class="notranslate">XmlProcessingInstruction</a></li>
+<li><a href="xmltext.md.html" class="notranslate">XmlText</a></li>
+<li><a href="zipfile.md.html" class="notranslate">ZipFile</a></li>
+<li><a href="object.md.html" class="notranslate">object</a></li>
+</ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_awesome" aria-controls="collapse_awesome"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Community module </font></font></a></h4></div><div id="collapse_awesome" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="../../../awesome/module/fib-session.md.html" class="notranslate">fib-session</a></li>
+<li><a href="../../../awesome/module/fib-pool.md.html" class="notranslate">fib-pool</a></li>
+<li><a href="../../../awesome/module/fib-orm.md.html" class="notranslate">fib-orm</a></li>
+<li><a href="../../../awesome/module/fib-app.md.html" class="notranslate">fib-app</a></li>
+<li><a href="../../../awesome/module/fib-kv.md.html" class="notranslate">fib-kv</a></li>
+<li><a href="../../../awesome/module/fib-rpc.md.html" class="notranslate">fib-rpc</a></li>
+<li><a href="../../../awesome/module/fib-qr.md.html" class="notranslate">fib-qr</a></li>
+<li><a href="../../../awesome/module/fib-pug.md.html" class="notranslate">fib-pug</a></li>
+<li><a href="../../../awesome/module/ejs.md.html" class="notranslate">ejs</a></li>
+<li><a href="../../../awesome/module/juicer.md.html" class="notranslate">Juicer</a></li>
+<li><a href="../../../awesome/module/highlight.js.md.html" class="notranslate">highlight.js</a></li>
+<li><a href="../../../awesome/module/marked.md.html" class="notranslate">marked</a></li>
+<li><a href="../../../awesome/module/node-cron.md.html" class="notranslate">node-cron</a></li>
+<li><a href="../../../awesome/module/debug.md.html" class="notranslate">debug</a></li>
+<li><a href="../../../awesome/module/benchmark.js.md.html" class="notranslate">benchmark.js</a></li>
+<li><a href="../../../awesome/module/sinon.md.html" class="notranslate">sinon</a></li>
+<li><a href="../../../awesome/module/node-mime.md.html" class="notranslate">node-mime</a></li>
+<li><a href="../../../awesome/module/validatorjs.md.html" class="notranslate">validatorjs</a></li>
+<li><a href="../../../awesome/module/superstruct.md.html" class="notranslate">superstruct</a></li>
+<li><a href="../../../awesome/module/cluster-server.md.html" class="notranslate">cluster-server</a></li>
+<li><a href="../../../awesome/module/synaptic.md.html" class="notranslate">synaptic</a></li>
+<li><a href="../../../awesome/module/source-map.md.html" class="notranslate">source-map</a></li>
+<li><a href="../../../awesome/module/json-format.md.html" class="notranslate">json-format</a></li>
+<li><a href="../../../awesome/module/viz.js.md.html" class="notranslate">viz.js</a></li>
+<li><a href="../../../awesome/module/nomnoml.md.html" class="notranslate">nomnoml</a></li>
+<li><a href="../../../awesome/module/pegjs.md.html" class="notranslate">pegjs</a></li>
+<li><a href="../../../awesome/module/uglify-js.md.html" class="notranslate">uglify-js</a></li>
+<li><a href="../../../awesome/module/js-beautify.md.html" class="notranslate">js-beautify</a></li>
+<li><a href="../../../awesome/module/chalk-animation.md.html" class="notranslate">chalk-animation</a></li>
+<li><a href="../../../awesome/module/jsrsasign.md.html" class="notranslate">jsrsasign</a></li>
+<li><a href="../../../awesome/module/crypto-js.md.html" class="notranslate">crypto-js</a></li>
+<li><a href="../../../awesome/module/ascii-table.md.html" class="notranslate">ascii-table</a></li>
+<li><a href="../../../awesome/module/logstream.md.html" class="notranslate">logstream</a></li>
+<li><a href="../../../awesome/module/ci.md.html" class="notranslate">ci</a></li>
+<li><a href="../../../awesome/module/fs-readdir-recursive.md.html" class="notranslate">fs-readdir-recursive</a></li>
+<li><a href="../../../awesome/module/mkdirp.md.html" class="notranslate">mkdirp</a></li>
+<li><a href="../../../awesome/module/rmdirr.md.html" class="notranslate">rmdirr</a></li>
+<li><a href="../../../awesome/module/detect-port.md.html" class="notranslate">detect-port</a></li>
+<li><a href="../../../awesome/module/bitcoinjs-lib.md.html" class="notranslate">bitcoinjs-lib</a></li>
+<li><a href="../../../awesome/module/rakuten.md.html" class="notranslate">Rakuten</a></li>
+</ul>
+ </div></div></div>  </div></div><div class="content"><div class="social-share share-component" data-sites="weibo,twitter" data-description="分享"></div> <div name="对象-FSWatcher" data-unique="对象-FSWatcher"></div><h1 id="对象-FSWatcher"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Object FSWatcher</font></font></h1>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">File system observation object</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">When the call </font></font><code>fs.watch(target)</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">is successful, the return type of object</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19</div><span class="hljs-keyword">var</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">"fs"</span>);
+<span class="hljs-keyword">var</span> watcher = fs.watch(<span class="hljs-function">(<span class="hljs-params">eventType, filename</span>) =&gt;</span> {
+    <span class="hljs-keyword">if</span> (filename) {
+        <span class="hljs-built_in">console</span>.log(filename);
+        <span class="hljs-comment">// Prints: &lt;Buffer ...&gt;</span><font></font>
+    }<font></font>
+});<font></font>
+<font></font>
+watcher.close();<font></font>
+<font></font>
+<span class="hljs-comment">// 带回调地调用</span>
+fs.watch(<span class="hljs-string">'./tmp'</span>, {
+    <span class="hljs-attr">encoding</span>: <span class="hljs-string">'buffer'</span><font></font>
+}, (eventType, filename) =&gt; {<font></font>
+    <span class="hljs-keyword">if</span> (filename) {
+        <span class="hljs-built_in">console</span>.log(filename);
+        <span class="hljs-comment">// Prints: &lt;Buffer ...&gt;</span><font></font>
+    }<font></font>
+});<font></font>
+</code></pre>
+<div name="继承关系" data-unique="继承关系"></div><h2 id="继承关系"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Inheritance relationship</font></font></h2>
+<div class="dot notranslate">
+<!-- Generated by graphviz version 2.40.1 (20161225.0304)
+ -->
+<!-- Title: %0 Pages: 1 -->
+<svg width="127pt" height="475pt" viewBox="0.00 0.00 126.80 475.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 471)">
+<title>%0</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-471 122.801,-471 122.801,4 -4,4"></polygon>
+<!-- object -->
+<g id="node1" class="node">
+<title>object</title>
+<g id="a_node1"><a xlink:href="object.md.html" xlink:title="object">
+<polygon fill="#ffffff" stroke="#000000" points="30.569,-414.5 30.569,-466.5 88.232,-466.5 88.232,-414.5 30.569,-414.5"></polygon>
+<text text-anchor="middle" x="59.4005" y="-453.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
+<polyline fill="none" stroke="#000000" points="30.569,-446.5 88.232,-446.5 "></polyline>
+<text text-anchor="start" x="38.569" y="-433.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toString()</text>
+<text text-anchor="start" x="38.569" y="-421.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toJSON()</text>
+</a>
+</g>
+</g>
+<!-- EventEmitter -->
+<g id="node2" class="node">
+<title>EventEmitter</title>
+<g id="a_node2"><a xlink:href="eventemitter.md.html" xlink:title="EventEmitter">
+<polygon fill="#ffffff" stroke="#000000" points="0,-121.5 0,-377.5 118.801,-377.5 118.801,-121.5 0,-121.5"></polygon>
+<text text-anchor="middle" x="59.4005" y="-364.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">EventEmitter</text>
+<polyline fill="none" stroke="#000000" points="0,-357.5 118.801,-357.5 "></polyline>
+<text text-anchor="start" x="8" y="-344.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">new EventEmitter()</text>
+<polyline fill="none" stroke="#000000" points="0,-337.5 118.801,-337.5 "></polyline>
+<text text-anchor="start" x="8" y="-324.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">new EventEmitter()</text>
+<polyline fill="none" stroke="#000000" points="0,-317.5 118.801,-317.5 "></polyline>
+<text text-anchor="start" x="8" y="-304.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">defaultMaxListeners</text>
+<polyline fill="none" stroke="#000000" points="0,-297.5 118.801,-297.5 "></polyline>
+<text text-anchor="start" x="8" y="-284.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">on()</text>
+<text text-anchor="start" x="8" y="-272.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">addListener()</text>
+<text text-anchor="start" x="8" y="-260.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">prependListener()</text>
+<text text-anchor="start" x="8" y="-248.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">once()</text>
+<text text-anchor="start" x="8" y="-236.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">prependOnceListener()</text>
+<text text-anchor="start" x="8" y="-224.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">off()</text>
+<text text-anchor="start" x="8" y="-212.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">removeListener()</text>
+<text text-anchor="start" x="8" y="-200.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">removeAllListeners()</text>
+<text text-anchor="start" x="8" y="-188.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">setMaxListeners()</text>
+<text text-anchor="start" x="8" y="-176.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">getMaxListeners()</text>
+<text text-anchor="start" x="8" y="-164.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">listeners()</text>
+<text text-anchor="start" x="8" y="-152.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">listenerCount()</text>
+<text text-anchor="start" x="8" y="-140.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">eventNames()</text>
+<text text-anchor="start" x="8" y="-128.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">emit()</text>
+</a>
+</g>
+</g>
+<!-- object&#45;&gt;EventEmitter -->
+<g id="edge1" class="edge">
+<title>object-&gt;EventEmitter</title>
+<path fill="none" stroke="#000000" d="M59.4005,-404.2954C59.4005,-396.2131 59.4005,-387.1932 59.4005,-377.6815"></path>
+<polygon fill="#000000" stroke="#000000" points="55.9006,-404.3427 59.4005,-414.3427 62.9006,-404.3428 55.9006,-404.3427"></polygon>
+</g>
+<!-- FSWatcher -->
+<g id="me" class="node">
+<title>FSWatcher</title>
+<g id="a_me"><a xlink:title="FSWatcher">
+<polygon fill="#d3d3d3" stroke="#000000" points="26.3995,-.5 26.3995,-84.5 92.4015,-84.5 92.4015,-.5 26.3995,-.5"></polygon>
+<text text-anchor="middle" x="59.4005" y="-71.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">FSWatcher</text>
+<polyline fill="none" stroke="#000000" points="26.3995,-64.5 92.4015,-64.5 "></polyline>
+<text text-anchor="start" x="34.3995" y="-51.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">onchange</text>
+<text text-anchor="start" x="34.3995" y="-39.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">onclose</text>
+<text text-anchor="start" x="34.3995" y="-27.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">onerror</text>
+<polyline fill="none" stroke="#000000" points="26.3995,-20.5 92.4015,-20.5 "></polyline>
+<text text-anchor="start" x="34.3995" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">close()</text>
+</a>
+</g>
+</g>
+<!-- EventEmitter&#45;&gt;FSWatcher -->
+<g id="edge2" class="edge">
+<title>EventEmitter-&gt;FSWatcher</title>
+<path fill="none" stroke="#000000" d="M59.4005,-111.0694C59.4005,-101.7365 59.4005,-92.8328 59.4005,-84.7152"></path>
+<polygon fill="#000000" stroke="#000000" points="55.9006,-111.3483 59.4005,-121.3483 62.9006,-111.3484 55.9006,-111.3483"></polygon>
+</g>
+</g>
+</svg>
+</div>
+
+<div name="静态属性" data-unique="静态属性"></div><h2 id="静态属性"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Static properties</font></font></h2>
+<div name="defaultMaxListeners" data-unique="defaultMaxListeners"></div><h3 id="defaultMaxListeners" class="notranslate">defaultMaxListeners</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Integer, the default global maximum number of listeners</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Integer FSWatcher.defaultMaxListeners;
+</code></pre>
+<div name="成员属性" data-unique="成员属性"></div><h2 id="成员属性"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Member attributes</font></font></h2>
+<div name="onchange" data-unique="onchange"></div><h3 id="onchange" class="notranslate">onchange</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Function, query and bind "file change" event, equivalent to on("change", func);</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Function</span> FSWatcher.onchange;
+</code></pre>
+<hr>
+<div name="onclose" data-unique="onclose"></div><h3 id="onclose" class="notranslate">onclose</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Function, query and bind the "watcher close" event, equivalent to on("close", func);</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Function</span> FSWatcher.onclose;
+</code></pre>
+<hr>
+<div name="onerror" data-unique="onerror"></div><h3 id="onerror" class="notranslate">onerror</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Function, query and bind the "error occurred" event, equivalent to on("error", func);</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Function</span> FSWatcher.onerror;
+</code></pre>
+<div name="成员函数" data-unique="成员函数"></div><h2 id="成员函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Member function</font></font></h2>
+<div name="close" data-unique="close"></div><h3 id="close" class="notranslate">close</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Close the Watcher and no longer receive corresponding file change processing events</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>FSWatcher.close();
+</code></pre>
+<hr>
+<div name="on" data-unique="on"></div><h3 id="on" class="notranslate">on</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Bind an event handler to the object</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-built_in">Object</span> FSWatcher.on(<span class="hljs-built_in">String</span> ev,
+    <span class="hljs-built_in">Function</span> func);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
+<ul>
+<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, specify the name of the event</font></font></li>
+<li><span class="notranslate">func</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Function, specify event processing function</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Return result:</font></font></p>
+<ul>
+<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Return the event object itself, which is convenient for chain call</font></font></li>
+</ul>
+<hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Bind an event handler to the object</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> FSWatcher.on(<span class="hljs-built_in">Object</span> map);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
+<ul>
+<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Object, specify the event mapping relationship, the object property name will be the event name, and the property value will be the event processing function</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Return result:</font></font></p>
+<ul>
+<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Return the event object itself, which is convenient for chain call</font></font></li>
+</ul>
+<hr>
+<div name="addListener" data-unique="addListener"></div><h3 id="addListener" class="notranslate">addListener</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Bind an event handler to the object</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-built_in">Object</span> FSWatcher.addListener(<span class="hljs-built_in">String</span> ev,
+    <span class="hljs-built_in">Function</span> func);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
+<ul>
+<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, specify the name of the event</font></font></li>
+<li><span class="notranslate">func</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Function, specify event processing function</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Return result:</font></font></p>
+<ul>
+<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Return the event object itself, which is convenient for chain call</font></font></li>
+</ul>
+<hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Bind an event handler to the object</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> FSWatcher.addListener(<span class="hljs-built_in">Object</span> map);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
+<ul>
+<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Object, specify the event mapping relationship, the object property name will be the event name, and the property value will be the event processing function</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Return result:</font></font></p>
+<ul>
+<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Return the event object itself, which is convenient for chain call</font></font></li>
+</ul>
+<hr>
+<div name="prependListener" data-unique="prependListener"></div><h3 id="prependListener" class="notranslate">prependListener</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Bind an event handler to the start of the object</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-built_in">Object</span> FSWatcher.prependListener(<span class="hljs-built_in">String</span> ev,
+    <span class="hljs-built_in">Function</span> func);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
+<ul>
+<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, specify the name of the event</font></font></li>
+<li><span class="notranslate">func</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Function, specify event processing function</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Return result:</font></font></p>
+<ul>
+<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Return the event object itself, which is convenient for chain call</font></font></li>
+</ul>
+<hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Bind an event handler to the start of the object</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> FSWatcher.prependListener(<span class="hljs-built_in">Object</span> map);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
+<ul>
+<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Object, specify the event mapping relationship, the object property name will be the event name, and the property value will be the event processing function</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Return result:</font></font></p>
+<ul>
+<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Return the event object itself, which is convenient for chain call</font></font></li>
+</ul>
+<hr>
+<div name="once" data-unique="once"></div><h3 id="once" class="notranslate">once</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Bind a one-time event processing function to the object, the one-time processing function will only be triggered once</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-built_in">Object</span> FSWatcher.once(<span class="hljs-built_in">String</span> ev,
+    <span class="hljs-built_in">Function</span> func);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
+<ul>
+<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, specify the name of the event</font></font></li>
+<li><span class="notranslate">func</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Function, specify event processing function</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Return result:</font></font></p>
+<ul>
+<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Return the event object itself, which is convenient for chain call</font></font></li>
+</ul>
+<hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Bind a one-time event processing function to the object, the one-time processing function will only be triggered once</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> FSWatcher.once(<span class="hljs-built_in">Object</span> map);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
+<ul>
+<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Object, specify the event mapping relationship, the object property name will be the event name, and the property value will be the event processing function</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Return result:</font></font></p>
+<ul>
+<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Return the event object itself, which is convenient for chain call</font></font></li>
+</ul>
+<hr>
+<div name="prependOnceListener" data-unique="prependOnceListener"></div><h3 id="prependOnceListener" class="notranslate">prependOnceListener</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Bind an event handler to the start of the object</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-built_in">Object</span> FSWatcher.prependOnceListener(<span class="hljs-built_in">String</span> ev,
+    <span class="hljs-built_in">Function</span> func);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
+<ul>
+<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, specify the name of the event</font></font></li>
+<li><span class="notranslate">func</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Function, specify event processing function</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Return result:</font></font></p>
+<ul>
+<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Return the event object itself, which is convenient for chain call</font></font></li>
+</ul>
+<hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Bind an event handler to the start of the object</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> FSWatcher.prependOnceListener(<span class="hljs-built_in">Object</span> map);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
+<ul>
+<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Object, specify the event mapping relationship, the object property name will be the event name, and the property value will be the event processing function</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Return result:</font></font></p>
+<ul>
+<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Return the event object itself, which is convenient for chain call</font></font></li>
+</ul>
+<hr>
+<div name="off" data-unique="off"></div><h3 id="off" class="notranslate">off</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cancel the specified function from the object processing queue</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-built_in">Object</span> FSWatcher.off(<span class="hljs-built_in">String</span> ev,
+    <span class="hljs-built_in">Function</span> func);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
+<ul>
+<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, specify the name of the event</font></font></li>
+<li><span class="notranslate">func</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Function, specify event processing function</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Return result:</font></font></p>
+<ul>
+<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Return the event object itself, which is convenient for chain call</font></font></li>
+</ul>
+<hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cancel all functions in the object processing queue</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> FSWatcher.off(<span class="hljs-built_in">String</span> ev);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
+<ul>
+<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, specify the name of the event</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Return result:</font></font></p>
+<ul>
+<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Return the event object itself, which is convenient for chain call</font></font></li>
+</ul>
+<hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cancel the specified function from the object processing queue</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> FSWatcher.off(<span class="hljs-built_in">Object</span> map);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
+<ul>
+<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Object, specify the event mapping relationship, the object property name is used as the event name, and the property value is used as the event processing function</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Return result:</font></font></p>
+<ul>
+<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Return the event object itself, which is convenient for chain call</font></font></li>
+</ul>
+<hr>
+<div name="removeListener" data-unique="removeListener"></div><h3 id="removeListener" class="notranslate">removeListener</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cancel the specified function from the object processing queue</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-built_in">Object</span> FSWatcher.removeListener(<span class="hljs-built_in">String</span> ev,
+    <span class="hljs-built_in">Function</span> func);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
+<ul>
+<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, specify the name of the event</font></font></li>
+<li><span class="notranslate">func</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Function, specify event processing function</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Return result:</font></font></p>
+<ul>
+<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Return the event object itself, which is convenient for chain call</font></font></li>
+</ul>
+<hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cancel all functions in the object processing queue</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> FSWatcher.removeListener(<span class="hljs-built_in">String</span> ev);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
+<ul>
+<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, specify the name of the event</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Return result:</font></font></p>
+<ul>
+<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Return the event object itself, which is convenient for chain call</font></font></li>
+</ul>
+<hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cancel the specified function from the object processing queue</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> FSWatcher.removeListener(<span class="hljs-built_in">Object</span> map);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
+<ul>
+<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Object, specify the event mapping relationship, the object property name is used as the event name, and the property value is used as the event processing function</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Return result:</font></font></p>
+<ul>
+<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Return the event object itself, which is convenient for chain call</font></font></li>
+</ul>
+<hr>
+<div name="removeAllListeners" data-unique="removeAllListeners"></div><h3 id="removeAllListeners" class="notranslate">removeAllListeners</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cancel all listeners of all events from the object processing queue. If an event is specified, remove all listeners of the specified event.</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> FSWatcher.removeAllListeners(<span class="hljs-built_in">Array</span> evs = []);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
+<ul>
+<li><span class="notranslate">evs</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Array, specify the name of the event</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Return result:</font></font></p>
+<ul>
+<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Return the event object itself, which is convenient for chain call</font></font></li>
+</ul>
+<hr>
+<div name="setMaxListeners" data-unique="setMaxListeners"></div><h3 id="setMaxListeners" class="notranslate">setMaxListeners</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">The default limit of the number of listeners, only for compatibility</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>FSWatcher.setMaxListeners(Integer n);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
+<ul>
+<li><span class="notranslate">n</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Integer, specify the number of events</font></font></li>
+</ul>
+<hr>
+<div name="getMaxListeners" data-unique="getMaxListeners"></div><h3 id="getMaxListeners" class="notranslate">getMaxListeners</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Get the default limit of the number of listeners, only for compatibility</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer FSWatcher.getMaxListeners();
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Return result:</font></font></p>
+<ul>
+<li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Return to the default limit number</font></font></li>
+</ul>
+<hr>
+<div name="listeners" data-unique="listeners"></div><h3 id="listeners" class="notranslate">listeners</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Array of listeners for the specified event of the query object</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Array</span> FSWatcher.listeners(<span class="hljs-built_in">String</span> ev);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
+<ul>
+<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, specify the name of the event</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Return result:</font></font></p>
+<ul>
+<li><span class="notranslate">Array</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Returns an array of listeners for the specified event</font></font></li>
+</ul>
+<hr>
+<div name="listenerCount" data-unique="listenerCount"></div><h3 id="listenerCount" class="notranslate">listenerCount</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">The number of listeners for the specified event of the query object</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer FSWatcher.listenerCount(<span class="hljs-built_in">String</span> ev);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
+<ul>
+<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, specify the name of the event</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Return result:</font></font></p>
+<ul>
+<li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Returns the number of listeners for the specified event</font></font></li>
+</ul>
+<hr>
+<div name="eventNames" data-unique="eventNames"></div><h3 id="eventNames" class="notranslate">eventNames</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Query the name of the listener event</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Array</span> FSWatcher.eventNames();
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Return result:</font></font></p>
+<ul>
+<li><span class="notranslate">Array</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Returns an array of event names</font></font></li>
+</ul>
+<hr>
+<div name="emit" data-unique="emit"></div><h3 id="emit" class="notranslate">emit</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Trigger an event proactively</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-built_in">Boolean</span> FSWatcher.emit(<span class="hljs-built_in">String</span> ev,<font></font>
+    ...args);<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
+<ul>
+<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, event name</font></font></li>
+<li><span class="notranslate">args</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: ..., event parameters, which will be passed to the event handler</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Return result:</font></font></p>
+<ul>
+<li><span class="notranslate">Boolean</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Return to the event trigger state, return true if there is a response event, otherwise return false</font></font></li>
+</ul>
+<hr>
+<div name="toString" data-unique="toString"></div><h3 id="toString" class="notranslate">toString</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Returns the string representation of the object, generally returns "[Native Object]", the object can be re-implemented according to its own characteristics</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> FSWatcher.toString();
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Return result:</font></font></p>
+<ul>
+<li><span class="notranslate">String</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Returns the string representation of the object</font></font></li>
+</ul>
+<hr>
+<div name="toJSON" data-unique="toJSON"></div><h3 id="toJSON" class="notranslate">toJSON</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Returns the JSON format representation of the object, generally returns a collection of readable attributes defined by the object</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Value FSWatcher.toJSON(<span class="hljs-built_in">String</span> key = <span class="hljs-string">""</span>);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
+<ul>
+<li><span class="notranslate">key</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, unused</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Return result:</font></font></p>
+<ul>
+<li><span class="notranslate">Value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Returns a value containing JSON serializable</font></font></li>
+</ul>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2014-Present fibjs.org | </font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Support us</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip379677"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip379677" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Click to return on the top page</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>

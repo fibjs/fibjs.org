@@ -1,0 +1,440 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../../../imgs/icon.png"><title>Módulo de proceso-JavaScript en fibra</title><link href="../../../../../css/common.css" rel="stylesheet"><link href="../../../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Navegación de palanca</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../../../index.html"><img src="../../../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../../../index.html">HOME</a></li><li><a href="../../../guide/readme.md.html">GUIDE</a></li><li><a href="../readme.md.html">MODULE</a></li><li><a href="../../object/readme.md.html">OBJECT</a></li><li><a href="../../../awesome/readme.md.html">AWESOME</a></li><li><a href="../../../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../../../docs/manual/module/ifs/process.md.html">中文</a> <a href="../../../../../en/docs/manual/module/ifs/process.md.html">ENGLISH</a> <a href="../../../../../ja/docs/manual/module/ifs/process.md.html">日本語</a> <a href="../../../../../de/docs/manual/module/ifs/process.md.html">Deutsch</a> <a href="../../../../../es/docs/manual/module/ifs/process.md.html">Español</a> <a href="../../../../../fr/docs/manual/module/ifs/process.md.html">Français</a> <a href="../../../../../ko/docs/manual/module/ifs/process.md.html">한국어</a> <a href="../../../../../it/docs/manual/module/ifs/process.md.html">Italiano</a> <a href="../../../../../ru/docs/manual/module/ifs/process.md.html">Русский</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Módulo módulo básico </font></font></span><div class="search"><span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input type="text" class="searchbox ds-input" placeholder="Buscar" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-label="entrada de búsqueda" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Avenir, &quot;Segoe UI&quot;, Arial, &quot;Hiragino Sans GB&quot;, 冬青黑, &quot;Microsoft YaHei&quot;, 微软雅黑, SimSun, 宋体, Helvetica, Tahoma, &quot;Arial sans-serif&quot;; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div class="ds-dataset-1"></div></span></span></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Página de inicio</font></font></a></li><li><a href="../readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Módulo básico </font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Proceso del módulo </font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Guía de desarrollo </font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="../../../guide/about.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">¿Qué es fibjs?</font></font></a></li>
+<li><a href="../../../guide/install.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Entorno operativo y de instalación</font></font></a></li>
+<li><a href="../../../guide/hello.md.html" class="notranslate">hello, world</a></li>
+<li><a href="../../../guide/test.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Una buena vida comienza con la prueba</font></font></a></li>
+<li><a href="../../../guide/profiler.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Encuentra al asesino del rendimiento</font></font></a></li>
+<li><a href="../../../guide/desktop.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Desarrolle rápidamente aplicaciones de escritorio</font></font></a></li>
+<li><a href="../../../guide/server-hot-update.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Actualización en caliente del módulo de servidor</font></font></a></li>
+<li><a href="../../../guide/host-routes.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Enrutamiento de nombre de dominio</font></font></a></li>
+<li><a href="../../../guide/x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">El uso del certificado X509 en fibjs</font></font></a></li>
+<li><a href="../../../guide/contribute.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Agregar módulo nativo</font></font></a></li>
+</ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_module" aria-controls="collapse_module"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Módulo básico </font></font></a></h4></div><div id="collapse_module" class="panel-collapse collapse in" aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="assert.md.html" class="notranslate">assert</a></li>
+<li><a href="base32.md.html" class="notranslate">base32</a></li>
+<li><a href="base64.md.html" class="notranslate">base64</a></li>
+<li><a href="base64vlq.md.html" class="notranslate">base64vlq</a></li>
+<li><a href="bson.md.html" class="notranslate">bson</a></li>
+<li><a href="child_process.md.html" class="notranslate">child_process</a></li>
+<li><a href="console.md.html" class="notranslate">console</a></li>
+<li><a href="constants.md.html" class="notranslate">constants</a></li>
+<li><a href="coroutine.md.html" class="notranslate">coroutine</a></li>
+<li><a href="crypto.md.html" class="notranslate">crypto</a></li>
+<li><a href="db.md.html" class="notranslate">db</a></li>
+<li><a href="dgram.md.html" class="notranslate">dgram</a></li>
+<li><a href="dns.md.html" class="notranslate">dns</a></li>
+<li><a href="encoding.md.html" class="notranslate">encoding</a></li>
+<li><a href="fs.md.html" class="notranslate">fs</a></li>
+<li><a href="gd.md.html" class="notranslate">gd</a></li>
+<li><a href="global.md.html" class="notranslate">global</a></li>
+<li><a href="gui.md.html" class="notranslate">gui</a></li>
+<li><a href="hash.md.html" class="notranslate">hash</a></li>
+<li><a href="hex.md.html" class="notranslate">hex</a></li>
+<li><a href="http.md.html" class="notranslate">http</a></li>
+<li><a href="iconv.md.html" class="notranslate">iconv</a></li>
+<li><a href="io.md.html" class="notranslate">io</a></li>
+<li><a href="json.md.html" class="notranslate">json</a></li>
+<li><a href="mq.md.html" class="notranslate">mq</a></li>
+<li><a href="msgpack.md.html" class="notranslate">msgpack</a></li>
+<li><a href="net.md.html" class="notranslate">net</a></li>
+<li><a href="os.md.html" class="notranslate">os</a></li>
+<li><a href="path.md.html" class="notranslate">path</a></li>
+<li><a href="path_posix.md.html" class="notranslate">path_posix</a></li>
+<li><a href="path_win32.md.html" class="notranslate">path_win32</a></li>
+<li class="active"><a href="process.md.html" class="notranslate">process</a></li>
+<li><a href="profiler.md.html" class="notranslate">profiler</a></li>
+<li><a href="punycode.md.html" class="notranslate">punycode</a></li>
+<li><a href="querystring.md.html" class="notranslate">querystring</a></li>
+<li><a href="registry.md.html" class="notranslate">registry</a></li>
+<li><a href="ssl.md.html" class="notranslate">ssl</a></li>
+<li><a href="string_decoder.md.html" class="notranslate">string_decoder</a></li>
+<li><a href="test.md.html" class="notranslate">test</a></li>
+<li><a href="timers.md.html" class="notranslate">timers</a></li>
+<li><a href="tty.md.html" class="notranslate">tty</a></li>
+<li><a href="url.md.html" class="notranslate">url</a></li>
+<li><a href="util.md.html" class="notranslate">util</a></li>
+<li><a href="uuid.md.html" class="notranslate">uuid</a></li>
+<li><a href="vm.md.html" class="notranslate">vm</a></li>
+<li><a href="ws.md.html" class="notranslate">ws</a></li>
+<li><a href="xml.md.html" class="notranslate">xml</a></li>
+<li><a href="zip.md.html" class="notranslate">zip</a></li>
+<li><a href="zlib.md.html" class="notranslate">zlib</a></li>
+</ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_object" aria-controls="collapse_object"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Objetos incorporados </font></font></a></h4></div><div id="collapse_object" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="../../object/ifs/buffer.md.html" class="notranslate">Buffer</a></li>
+<li><a href="../../object/ifs/bufferedstream.md.html" class="notranslate">BufferedStream</a></li>
+<li><a href="../../object/ifs/chain.md.html" class="notranslate">Chain</a></li>
+<li><a href="../../object/ifs/childprocess.md.html" class="notranslate">ChildProcess</a></li>
+<li><a href="../../object/ifs/cipher.md.html" class="notranslate">Cipher</a></li>
+<li><a href="../../object/ifs/condition.md.html" class="notranslate">Condition</a></li>
+<li><a href="../../object/ifs/dbconnection.md.html" class="notranslate">DbConnection</a></li>
+<li><a href="../../object/ifs/dgramsocket.md.html" class="notranslate">DgramSocket</a></li>
+<li><a href="../../object/ifs/digest.md.html" class="notranslate">Digest</a></li>
+<li><a href="../../object/ifs/event.md.html" class="notranslate">Event</a></li>
+<li><a href="../../object/ifs/eventemitter.md.html" class="notranslate">EventEmitter</a></li>
+<li><a href="../../object/ifs/fswatcher.md.html" class="notranslate">FSWatcher</a></li>
+<li><a href="../../object/ifs/fiber.md.html" class="notranslate">Fiber</a></li>
+<li><a href="../../object/ifs/file.md.html" class="notranslate">File</a></li>
+<li><a href="../../object/ifs/handler.md.html" class="notranslate">Handler</a></li>
+<li><a href="../../object/ifs/heapgraphedge.md.html" class="notranslate">HeapGraphEdge</a></li>
+<li><a href="../../object/ifs/heapgraphnode.md.html" class="notranslate">HeapGraphNode</a></li>
+<li><a href="../../object/ifs/heapsnapshot.md.html" class="notranslate">HeapSnapshot</a></li>
+<li><a href="../../object/ifs/httpclient.md.html" class="notranslate">HttpClient</a></li>
+<li><a href="../../object/ifs/httpcollection.md.html" class="notranslate">HttpCollection</a></li>
+<li><a href="../../object/ifs/httpcookie.md.html" class="notranslate">HttpCookie</a></li>
+<li><a href="../../object/ifs/httphandler.md.html" class="notranslate">HttpHandler</a></li>
+<li><a href="../../object/ifs/httpmessage.md.html" class="notranslate">HttpMessage</a></li>
+<li><a href="../../object/ifs/httprepeater.md.html" class="notranslate">HttpRepeater</a></li>
+<li><a href="../../object/ifs/httprequest.md.html" class="notranslate">HttpRequest</a></li>
+<li><a href="../../object/ifs/httpresponse.md.html" class="notranslate">HttpResponse</a></li>
+<li><a href="../../object/ifs/httpserver.md.html" class="notranslate">HttpServer</a></li>
+<li><a href="../../object/ifs/httpuploaddata.md.html" class="notranslate">HttpUploadData</a></li>
+<li><a href="../../object/ifs/httpsserver.md.html" class="notranslate">HttpsServer</a></li>
+<li><a href="../../object/ifs/image.md.html" class="notranslate">Image</a></li>
+<li><a href="../../object/ifs/leveldb.md.html" class="notranslate">LevelDB</a></li>
+<li><a href="../../object/ifs/lock.md.html" class="notranslate">Lock</a></li>
+<li><a href="../../object/ifs/lrucache.md.html" class="notranslate">LruCache</a></li>
+<li><a href="../../object/ifs/mssql.md.html" class="notranslate">MSSQL</a></li>
+<li><a href="../../object/ifs/memorystream.md.html" class="notranslate">MemoryStream</a></li>
+<li><a href="../../object/ifs/message.md.html" class="notranslate">Message</a></li>
+<li><a href="../../object/ifs/mongocollection.md.html" class="notranslate">MongoCollection</a></li>
+<li><a href="../../object/ifs/mongocursor.md.html" class="notranslate">MongoCursor</a></li>
+<li><a href="../../object/ifs/mongodb.md.html" class="notranslate">MongoDB</a></li>
+<li><a href="../../object/ifs/mongoid.md.html" class="notranslate">MongoID</a></li>
+<li><a href="../../object/ifs/mysql.md.html" class="notranslate">MySQL</a></li>
+<li><a href="../../object/ifs/pkey.md.html" class="notranslate">PKey</a></li>
+<li><a href="../../object/ifs/rangestream.md.html" class="notranslate">RangeStream</a></li>
+<li><a href="../../object/ifs/redis.md.html" class="notranslate">Redis</a></li>
+<li><a href="../../object/ifs/redishash.md.html" class="notranslate">RedisHash</a></li>
+<li><a href="../../object/ifs/redislist.md.html" class="notranslate">RedisList</a></li>
+<li><a href="../../object/ifs/redisset.md.html" class="notranslate">RedisSet</a></li>
+<li><a href="../../object/ifs/redissortedset.md.html" class="notranslate">RedisSortedSet</a></li>
+<li><a href="../../object/ifs/routing.md.html" class="notranslate">Routing</a></li>
+<li><a href="../../object/ifs/sqlite.md.html" class="notranslate">SQLite</a></li>
+<li><a href="../../object/ifs/sandbox.md.html" class="notranslate">SandBox</a></li>
+<li><a href="../../object/ifs/seekablestream.md.html" class="notranslate">SeekableStream</a></li>
+<li><a href="../../object/ifs/semaphore.md.html" class="notranslate">Semaphore</a></li>
+<li><a href="../../object/ifs/service.md.html" class="notranslate">Service</a></li>
+<li><a href="../../object/ifs/smtp.md.html" class="notranslate">Smtp</a></li>
+<li><a href="../../object/ifs/socket.md.html" class="notranslate">Socket</a></li>
+<li><a href="../../object/ifs/sslhandler.md.html" class="notranslate">SslHandler</a></li>
+<li><a href="../../object/ifs/sslserver.md.html" class="notranslate">SslServer</a></li>
+<li><a href="../../object/ifs/sslsocket.md.html" class="notranslate">SslSocket</a></li>
+<li><a href="../../object/ifs/stat.md.html" class="notranslate">Stat</a></li>
+<li><a href="../../object/ifs/statswatcher.md.html" class="notranslate">StatsWatcher</a></li>
+<li><a href="../../object/ifs/stream.md.html" class="notranslate">Stream</a></li>
+<li><a href="../../object/ifs/stringdecoder.md.html" class="notranslate">StringDecoder</a></li>
+<li><a href="../../object/ifs/tcpserver.md.html" class="notranslate">TcpServer</a></li>
+<li><a href="../../object/ifs/timer.md.html" class="notranslate">Timer</a></li>
+<li><a href="../../object/ifs/urlobject.md.html" class="notranslate">UrlObject</a></li>
+<li><a href="../../object/ifs/websocket.md.html" class="notranslate">WebSocket</a></li>
+<li><a href="../../object/ifs/websocketmessage.md.html" class="notranslate">WebSocketMessage</a></li>
+<li><a href="../../object/ifs/webview.md.html" class="notranslate">WebView</a></li>
+<li><a href="../../object/ifs/worker.md.html" class="notranslate">Worker</a></li>
+<li><a href="../../object/ifs/x509cert.md.html" class="notranslate">X509Cert</a></li>
+<li><a href="../../object/ifs/x509crl.md.html" class="notranslate">X509Crl</a></li>
+<li><a href="../../object/ifs/x509req.md.html" class="notranslate">X509Req</a></li>
+<li><a href="../../object/ifs/xmlattr.md.html" class="notranslate">XmlAttr</a></li>
+<li><a href="../../object/ifs/xmlcdatasection.md.html" class="notranslate">XmlCDATASection</a></li>
+<li><a href="../../object/ifs/xmlcharacterdata.md.html" class="notranslate">XmlCharacterData</a></li>
+<li><a href="../../object/ifs/xmlcomment.md.html" class="notranslate">XmlComment</a></li>
+<li><a href="../../object/ifs/xmldocument.md.html" class="notranslate">XmlDocument</a></li>
+<li><a href="../../object/ifs/xmldocumenttype.md.html" class="notranslate">XmlDocumentType</a></li>
+<li><a href="../../object/ifs/xmlelement.md.html" class="notranslate">XmlElement</a></li>
+<li><a href="../../object/ifs/xmlnamednodemap.md.html" class="notranslate">XmlNamedNodeMap</a></li>
+<li><a href="../../object/ifs/xmlnode.md.html" class="notranslate">XmlNode</a></li>
+<li><a href="../../object/ifs/xmlnodelist.md.html" class="notranslate">XmlNodeList</a></li>
+<li><a href="../../object/ifs/xmlprocessinginstruction.md.html" class="notranslate">XmlProcessingInstruction</a></li>
+<li><a href="../../object/ifs/xmltext.md.html" class="notranslate">XmlText</a></li>
+<li><a href="../../object/ifs/zipfile.md.html" class="notranslate">ZipFile</a></li>
+<li><a href="../../object/ifs/object.md.html" class="notranslate">object</a></li>
+</ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_awesome" aria-controls="collapse_awesome"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Módulo de comunidad </font></font></a></h4></div><div id="collapse_awesome" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="../../../awesome/module/fib-session.md.html" class="notranslate">fib-session</a></li>
+<li><a href="../../../awesome/module/fib-pool.md.html" class="notranslate">fib-pool</a></li>
+<li><a href="../../../awesome/module/fib-orm.md.html" class="notranslate">fib-orm</a></li>
+<li><a href="../../../awesome/module/fib-app.md.html" class="notranslate">fib-app</a></li>
+<li><a href="../../../awesome/module/fib-kv.md.html" class="notranslate">fib-kv</a></li>
+<li><a href="../../../awesome/module/fib-rpc.md.html" class="notranslate">fib-rpc</a></li>
+<li><a href="../../../awesome/module/fib-qr.md.html" class="notranslate">fib-qr</a></li>
+<li><a href="../../../awesome/module/fib-pug.md.html" class="notranslate">fib-pug</a></li>
+<li><a href="../../../awesome/module/ejs.md.html" class="notranslate">ejs</a></li>
+<li><a href="../../../awesome/module/juicer.md.html" class="notranslate">Juicer</a></li>
+<li><a href="../../../awesome/module/highlight.js.md.html" class="notranslate">highlight.js</a></li>
+<li><a href="../../../awesome/module/marked.md.html" class="notranslate">marked</a></li>
+<li><a href="../../../awesome/module/node-cron.md.html" class="notranslate">node-cron</a></li>
+<li><a href="../../../awesome/module/debug.md.html" class="notranslate">debug</a></li>
+<li><a href="../../../awesome/module/benchmark.js.md.html" class="notranslate">benchmark.js</a></li>
+<li><a href="../../../awesome/module/sinon.md.html" class="notranslate">sinon</a></li>
+<li><a href="../../../awesome/module/node-mime.md.html" class="notranslate">node-mime</a></li>
+<li><a href="../../../awesome/module/validatorjs.md.html" class="notranslate">validatorjs</a></li>
+<li><a href="../../../awesome/module/superstruct.md.html" class="notranslate">superstruct</a></li>
+<li><a href="../../../awesome/module/cluster-server.md.html" class="notranslate">cluster-server</a></li>
+<li><a href="../../../awesome/module/synaptic.md.html" class="notranslate">synaptic</a></li>
+<li><a href="../../../awesome/module/source-map.md.html" class="notranslate">source-map</a></li>
+<li><a href="../../../awesome/module/json-format.md.html" class="notranslate">json-format</a></li>
+<li><a href="../../../awesome/module/viz.js.md.html" class="notranslate">viz.js</a></li>
+<li><a href="../../../awesome/module/nomnoml.md.html" class="notranslate">nomnoml</a></li>
+<li><a href="../../../awesome/module/pegjs.md.html" class="notranslate">pegjs</a></li>
+<li><a href="../../../awesome/module/uglify-js.md.html" class="notranslate">uglify-js</a></li>
+<li><a href="../../../awesome/module/js-beautify.md.html" class="notranslate">js-beautify</a></li>
+<li><a href="../../../awesome/module/chalk-animation.md.html" class="notranslate">chalk-animation</a></li>
+<li><a href="../../../awesome/module/jsrsasign.md.html" class="notranslate">jsrsasign</a></li>
+<li><a href="../../../awesome/module/crypto-js.md.html" class="notranslate">crypto-js</a></li>
+<li><a href="../../../awesome/module/ascii-table.md.html" class="notranslate">ascii-table</a></li>
+<li><a href="../../../awesome/module/logstream.md.html" class="notranslate">logstream</a></li>
+<li><a href="../../../awesome/module/ci.md.html" class="notranslate">ci</a></li>
+<li><a href="../../../awesome/module/fs-readdir-recursive.md.html" class="notranslate">fs-readdir-recursive</a></li>
+<li><a href="../../../awesome/module/mkdirp.md.html" class="notranslate">mkdirp</a></li>
+<li><a href="../../../awesome/module/rmdirr.md.html" class="notranslate">rmdirr</a></li>
+<li><a href="../../../awesome/module/detect-port.md.html" class="notranslate">detect-port</a></li>
+<li><a href="../../../awesome/module/bitcoinjs-lib.md.html" class="notranslate">bitcoinjs-lib</a></li>
+<li><a href="../../../awesome/module/rakuten.md.html" class="notranslate">Rakuten</a></li>
+</ul>
+ </div></div></div>  </div></div><div class="content"><div class="social-share share-component" data-sites="weibo,twitter" data-description="分享"></div> <div name="模块-process" data-unique="模块-process"></div><h1 id="模块-process"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Proceso del módulo</font></font></h1>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Módulo de procesamiento de procesos para administrar los recursos del proceso actual</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Método de referencia:</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">var</span> process = <span class="hljs-built_in">require</span>(<span class="hljs-string">'process'</span>);
+</code></pre>
+<div name="进程事件" data-unique="进程事件"></div><h2 id="进程事件"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Evento de proceso</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">El objeto del módulo de proceso es </font></font><a href="../../object/ifs/eventemitter.md.html" class="notranslate">EventEmitter</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Por ejemplo, puede responder a eventos a nivel de proceso registrando oyentes de eventos.</font></font></p>
+<div name="beforeExit-事件" data-unique="beforeExit-事件"></div><h3 id="beforeExit-事件"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">antes del evento de salida</font></font></h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cuando la misión de fibjs ha estado vacía y no se agrega trabajo adicional, el evento </font></font><code>beforeExit</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">se activa</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>process.on(<span class="hljs-string">'beforeExit'</span>, exitCode =&gt; {});
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">En circunstancias normales, si no se agrega trabajo adicional a la cola de tareas, el proceso de fibjs finalizará. </font><font style="vertical-align: inherit;">Pero si los </font></font><code>beforeExit</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">enlaces de eventos de escucha de devolución de llamada, inician una nueva tarea, como abrir una fibra, el proceso de fibjs continuará ejecutándose.</font></font></p>
+<p><a href="process.md.html#exitCode" class="notranslate">process.exitCode</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Como el único parámetro que se pasa al valor del </font></font><code>beforeExit</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">detector de eventos </font><font style="vertical-align: inherit;">de </font><font style="vertical-align: inherit;">la función de devolución </font><font style="vertical-align: inherit;">de </font><font style="vertical-align: inherit;">llamada. </font><font style="vertical-align: inherit;">Si el proceso está a punto de finalizar debido a razones explícitas, como llamar directamente</font></font><a href="process.md.html#exit" class="notranslate">process.exit</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">O lanza una excepción no detectada, el </font></font><code>beforeExit</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">evento no se activará.</font></font></p>
+<div name="exit-事件" data-unique="exit-事件"></div><h3 id="exit-事件"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">evento de salida</font></font></h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cuando fibjs sale, el evento </font></font><code>exit</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">se activará una vez que </font></font><code>exit</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">se complete </font><font style="vertical-align: inherit;">toda la </font><font style="vertical-align: inherit;">ejecución del oyente de enlace de eventos, el proceso se terminará</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>process.on(<span class="hljs-string">'exit'</span>, exitCode =&gt; {});
+</code></pre>
+<p><code>exit</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> La función de devolución de llamada del detector de eventos tiene solo un parámetro de entrada. El valor de este parámetro puede ser </font></font><a href="process.md.html#exitCode" class="notranslate">process.exitCode</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> El valor del atributo o llamada </font></font><a href="process.md.html#exit" class="notranslate">process.exit</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cuando el método pasó </font></font><code>exitCode</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">value.</font></font></p>
+<div name="Signal-事件" data-unique="Signal-事件"></div><h3 id="Signal-事件"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Evento de señal</font></font></h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cuando el proceso fibjs recibe una señal, activará un evento de señal. Las señales actualmente admitidas son SIGINT y SIGTERM. </font><font style="vertical-align: inherit;">Cada nombre de evento está representado por las mayúsculas del nombre de la señal (por ejemplo, el evento 'SIGINT' corresponde a la señal SIGINT).</font></font></strong></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Los eventos de señal son diferentes de otros eventos de proceso. Los eventos de señal tienen prioridad. Cuando ocurre una señal, independientemente de la corriente </font></font><a href="io.md.html" class="notranslate">io</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">La operación, o la operación de JavaScript, activará el evento correspondiente lo antes posible. </font><font style="vertical-align: inherit;">Por ejemplo, puede utilizar el siguiente código para interrumpir la aplicación actual y generar el estado de ejecución:</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6</div><span class="hljs-keyword">var</span> coroutine = <span class="hljs-built_in">require</span>(<span class="hljs-string">'coroutine'</span>);<font></font>
+<font></font>
+process.on(<span class="hljs-string">'SIGINT'</span>, () =&gt; {<font></font>
+    coroutine.fibers.forEach(<span class="hljs-function"><span class="hljs-params">f</span> =&gt;</span> <span class="hljs-built_in">console</span>.error(<span class="hljs-string">"Fiber %d:\n%s"</span>, f.id, f.stack));<font></font>
+    process.exit();<font></font>
+});<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Los nombres de las señales y sus significados son los siguientes:</font></font></p>
+<ul>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SIGINT: cuando el terminal está en ejecución, puede ser compatible con todas las plataformas y, por lo general, puede activarse con CTRL + C.</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SIGTERM: Esta señal se activa cuando se mata el proceso. </font><font style="vertical-align: inherit;">No es compatible con Windows.</font></font></li>
+</ul>
+<div name="静态函数" data-unique="静态函数"></div><h2 id="静态函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Función estática</font></font></h2>
+<div name="umask" data-unique="umask"></div><h3 id="umask" class="notranslate">umask</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cambie la umask actual, Windows no admite este método</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Integer process.umask(Integer mask);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
+<ul>
+<li><span class="notranslate">mask</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Entero, especifique una nueva máscara</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Devolver resultado:</font></font></p>
+<ul>
+<li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Volver a la máscara anterior</font></font></li>
+</ul>
+<hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cambie la umask actual, Windows no admite este método</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Integer process.umask(<span class="hljs-built_in">String</span> mask);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
+<ul>
+<li><span class="notranslate">mask</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifique una nueva máscara, tipo de cadena octal (por ejemplo: "0664")</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Devolver resultado:</font></font></p>
+<ul>
+<li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Volver a la máscara anterior</font></font></li>
+</ul>
+<hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Devuelve la umask actual, Windows no admite este método</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Integer process.umask();
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Devolver resultado:</font></font></p>
+<ul>
+<li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Devuelve el valor de la máscara actual</font></font></li>
+</ul>
+<hr>
+<div name="hrtime" data-unique="hrtime"></div><h3 id="hrtime" class="notranslate">hrtime</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Devuelve la hora de alta precisión del sistema, esta hora no tiene nada que ver con la hora actual, solo se utiliza para cronometraje de alta precisión</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Array</span> process.hrtime(<span class="hljs-built_in">Array</span> diff = []);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
+<ul>
+<li><span class="notranslate">diff</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Array, el tiempo inicial para la comparación</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Devolver resultado:</font></font></p>
+<ul>
+<li><span class="notranslate">Array</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Devuelve el tiempo, el formato es [segundos, nanosegundos]</font></font></li>
+</ul>
+<hr>
+<div name="exit" data-unique="exit"></div><h3 id="exit" class="notranslate">exit</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Salir del proceso actual y devolver exitCode como resultado del proceso</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> process.exit();
+</code></pre>
+<hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Salir del proceso actual y devolver el resultado.</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> process.exit(Integer code);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
+<ul>
+<li><span class="notranslate">code</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Entero, resultado del proceso de retorno</font></font></li>
+</ul>
+<hr>
+<div name="cwd" data-unique="cwd"></div><h3 id="cwd" class="notranslate">cwd</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Devuelve la ruta de trabajo actual del sistema operativo.</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">String</span> process.cwd();
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Devolver resultado:</font></font></p>
+<ul>
+<li><span class="notranslate">String</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Devuelve la ruta del sistema actual</font></font></li>
+</ul>
+<hr>
+<div name="chdir" data-unique="chdir"></div><h3 id="chdir" class="notranslate">chdir</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Modificar la ruta de trabajo actual del sistema operativo.</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> process.chdir(<span class="hljs-built_in">String</span> directory);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
+<ul>
+<li><span class="notranslate">directory</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifique la nueva ruta que se establecerá</font></font></li>
+</ul>
+<hr>
+<div name="uptime" data-unique="uptime"></div><h3 id="uptime" class="notranslate">uptime</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Consultar el tiempo de ejecución del entorno de ejecución, en segundos</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Number</span> process.uptime();
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Devolver resultado:</font></font></p>
+<ul>
+<li><span class="notranslate">Number</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Devuelve el valor que representa el tiempo</font></font></li>
+</ul>
+<hr>
+<div name="memoryUsage" data-unique="memoryUsage"></div><h3 id="memoryUsage" class="notranslate">memoryUsage</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Consultar el informe de uso de memoria del proceso actual</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Object</span> process.memoryUsage();
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Devolver resultado:</font></font></p>
+<ul>
+<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, La devolución contiene un informe de memoria</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">El informe de memoria genera resultados similares a los siguientes:</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5</div>{
+    <span class="hljs-string">"rss"</span>: <span class="hljs-number">8622080</span>,
+    <span class="hljs-string">"heapTotal"</span>: <span class="hljs-number">4083456</span>,
+    <span class="hljs-string">"heapUsed"</span>: <span class="hljs-number">1621800</span><font></font>
+}<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">entre ellos:</font></font></p>
+<ul>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">rss devuelve el tamaño de la memoria física ocupada actualmente por el proceso</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">heapTotal devuelve el tamaño de la memoria del montón del motor v8</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">heapUsed devuelve el tamaño de la memoria dinámica que utiliza el motor v8</font></font></li>
+</ul>
+<hr>
+<div name="nextTick" data-unique="nextTick"></div><h3 id="nextTick" class="notranslate">nextTick</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Iniciar una fibra</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> process.nextTick(<span class="hljs-built_in">Function</span> func,<font></font>
+    ...args);<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
+<ul>
+<li><span class="notranslate">func</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Función, especifique la función a ejecutar por la fibra</font></font></li>
+<li><span class="notranslate">args</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: ..., secuencia de parámetros variables, esta secuencia se pasará a la función en la fibra</font></font></li>
+</ul>
+<hr>
+<div name="binding" data-unique="binding"></div><h3 id="binding" class="notranslate">binding</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Obtener el módulo interno del nombre especificado</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Value process.binding(<span class="hljs-built_in">String</span> name);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
+<ul>
+<li><span class="notranslate">name</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifique el nombre del módulo interno a consultar</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Devolver resultado:</font></font></p>
+<ul>
+<li><span class="notranslate">Value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Devuelve el módulo interno especificado</font></font></li>
+</ul>
+<div name="静态属性" data-unique="静态属性"></div><h2 id="静态属性"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Propiedades estáticas</font></font></h2>
+<div name="argv" data-unique="argv"></div><h3 id="argv" class="notranslate">argv</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Matriz, devuelve los parámetros de la línea de comando del proceso actual</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly <span class="hljs-built_in">Array</span> process.argv;
+</code></pre>
+<hr>
+<div name="execArgv" data-unique="execArgv"></div><h3 id="execArgv" class="notranslate">execArgv</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Array, devuelve los parámetros especiales de la línea de comandos del proceso actual, estos parámetros son utilizados por fibjs para configurar el entorno operativo</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly <span class="hljs-built_in">Array</span> process.execArgv;
+</code></pre>
+<hr>
+<div name="version" data-unique="version"></div><h3 id="version" class="notranslate">version</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cadena, devuelve la cadena de versión de fibjs</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly <span class="hljs-built_in">String</span> process.version;
+</code></pre>
+<hr>
+<div name="versions" data-unique="versions"></div><h3 id="versions" class="notranslate">versions</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Objeto, devuelve información de versión de fibjs y componentes</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly <span class="hljs-built_in">Object</span> process.versions;
+</code></pre>
+<hr>
+<div name="execPath" data-unique="execPath"></div><h3 id="execPath" class="notranslate">execPath</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cadena, consulta la ruta completa del archivo de ejecución que se está ejecutando actualmente</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly <span class="hljs-built_in">String</span> process.execPath;
+</code></pre>
+<hr>
+<div name="env" data-unique="env"></div><h3 id="env" class="notranslate">env</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Objeto, consulta las variables de entorno del proceso actual.</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly <span class="hljs-built_in">Object</span> process.env;
+</code></pre>
+<hr>
+<div name="arch" data-unique="arch"></div><h3 id="arch" class="notranslate">arch</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cadena, consulta el entorno actual de la CPU, los resultados posibles son 'amd64', 'arm', 'arm64', 'ia32'</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly <span class="hljs-built_in">String</span> process.arch;
+</code></pre>
+<hr>
+<div name="platform" data-unique="platform"></div><h3 id="platform" class="notranslate">platform</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cadena, consulta el nombre de la plataforma actual, los resultados posibles son 'darwin', 'freebsd', 'linux' o 'win32'</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly <span class="hljs-built_in">String</span> process.platform;
+</code></pre>
+<hr>
+<div name="pid" data-unique="pid"></div><h3 id="pid" class="notranslate">pid</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Entero, lee la identificación del proceso al que apunta el objeto actual</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly Integer process.pid;
+</code></pre>
+<hr>
+<div name="ppid" data-unique="ppid"></div><h3 id="ppid" class="notranslate">ppid</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Entero, lee la identificación del proceso padre al que apunta el objeto actual</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly Integer process.ppid;
+</code></pre>
+<hr>
+<div name="stdin" data-unique="stdin"></div><h3 id="stdin" class="notranslate">stdin</h3>
+<p><strong><a href="../../object/ifs/stream.md.html" class="notranslate">Stream</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Consultar el objeto de entrada estándar del proceso actual</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly Stream process.stdin;
+</code></pre>
+<hr>
+<div name="stdout" data-unique="stdout"></div><h3 id="stdout" class="notranslate">stdout</h3>
+<p><strong><a href="../../object/ifs/stream.md.html" class="notranslate">Stream</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Consulta el objeto de salida estándar del proceso actual</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly Stream process.stdout;
+</code></pre>
+<hr>
+<div name="stderr" data-unique="stderr"></div><h3 id="stderr" class="notranslate">stderr</h3>
+<p><strong><a href="../../object/ifs/stream.md.html" class="notranslate">Stream</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Consultar el objeto de salida de error estándar del proceso actual</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly Stream process.stderr;
+</code></pre>
+<hr>
+<div name="exitCode" data-unique="exitCode"></div><h3 id="exitCode" class="notranslate">exitCode</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Entero, consulta y establece el código de salida del proceso actual</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Integer process.exitCode;
+</code></pre>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Derechos de autor fibjs.org 2014-Presente | </font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Nos apoyan</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip898165"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip898165" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Haga clic para volver a la página superior</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>

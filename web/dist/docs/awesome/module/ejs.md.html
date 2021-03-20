@@ -4,10 +4,11 @@
 <li><a href=../../guide/hello.md.html class ="notranslate">hello, world</a></li>
 <li><a href=../../guide/test.md.html>美好生活从测试开始</a></li>
 <li><a href=../../guide/profiler.md.html>找出性能杀手</a></li>
-<li><a href=../../guide/contribute.md.html>添加 native 模块</a></li>
+<li><a href=../../guide/desktop.md.html>快速开发桌面应用</a></li>
 <li><a href=../../guide/server-hot-update.md.html>服务端模块热更新</a></li>
 <li><a href=../../guide/host-routes.md.html>域名路由</a></li>
-<li><a href=../../guide/fibjs.x509.md.html>fibjs 中 X509 证书的使用</a></li>
+<li><a href=../../guide/x509.md.html>fibjs 中 X509 证书的使用</a></li>
+<li><a href=../../guide/contribute.md.html>添加 native 模块</a></li>
 </ul>
  </div></div></div>  <div class=panel><div class=panel-heading role=tab id=headingOne><h4 class=panel-title><a data-toggle=collapse data-parent=#accordion href="#collapse_module" aria-controls="collapse_module"> 基础模块 </a></h4></div><div id="collapse_module" class="panel-collapse collapse " aria-labelledby=headingOne><div class=panel-body> <ul>
 <li><a href=../../manual/module/ifs/assert.md.html class ="notranslate">assert</a></li>
@@ -15,6 +16,7 @@
 <li><a href=../../manual/module/ifs/base64.md.html class ="notranslate">base64</a></li>
 <li><a href=../../manual/module/ifs/base64vlq.md.html class ="notranslate">base64vlq</a></li>
 <li><a href=../../manual/module/ifs/bson.md.html class ="notranslate">bson</a></li>
+<li><a href=../../manual/module/ifs/child_process.md.html class ="notranslate">child_process</a></li>
 <li><a href=../../manual/module/ifs/console.md.html class ="notranslate">console</a></li>
 <li><a href=../../manual/module/ifs/constants.md.html class ="notranslate">constants</a></li>
 <li><a href=../../manual/module/ifs/coroutine.md.html class ="notranslate">coroutine</a></li>
@@ -63,6 +65,7 @@
 <li><a href=../../manual/object/ifs/buffer.md.html class ="notranslate">Buffer</a></li>
 <li><a href=../../manual/object/ifs/bufferedstream.md.html class ="notranslate">BufferedStream</a></li>
 <li><a href=../../manual/object/ifs/chain.md.html class ="notranslate">Chain</a></li>
+<li><a href=../../manual/object/ifs/childprocess.md.html class ="notranslate">ChildProcess</a></li>
 <li><a href=../../manual/object/ifs/cipher.md.html class ="notranslate">Cipher</a></li>
 <li><a href=../../manual/object/ifs/condition.md.html class ="notranslate">Condition</a></li>
 <li><a href=../../manual/object/ifs/dbconnection.md.html class ="notranslate">DbConnection</a></li>
@@ -101,6 +104,7 @@
 <li><a href=../../manual/object/ifs/mongoid.md.html class ="notranslate">MongoID</a></li>
 <li><a href=../../manual/object/ifs/mysql.md.html class ="notranslate">MySQL</a></li>
 <li><a href=../../manual/object/ifs/pkey.md.html class ="notranslate">PKey</a></li>
+<li><a href=../../manual/object/ifs/rangestream.md.html class ="notranslate">RangeStream</a></li>
 <li><a href=../../manual/object/ifs/redis.md.html class ="notranslate">Redis</a></li>
 <li><a href=../../manual/object/ifs/redishash.md.html class ="notranslate">RedisHash</a></li>
 <li><a href=../../manual/object/ifs/redislist.md.html class ="notranslate">RedisList</a></li>
@@ -121,7 +125,6 @@
 <li><a href=../../manual/object/ifs/statswatcher.md.html class ="notranslate">StatsWatcher</a></li>
 <li><a href=../../manual/object/ifs/stream.md.html class ="notranslate">Stream</a></li>
 <li><a href=../../manual/object/ifs/stringdecoder.md.html class ="notranslate">StringDecoder</a></li>
-<li><a href=../../manual/object/ifs/subprocess.md.html class ="notranslate">SubProcess</a></li>
 <li><a href=../../manual/object/ifs/tcpserver.md.html class ="notranslate">TcpServer</a></li>
 <li><a href=../../manual/object/ifs/timer.md.html class ="notranslate">Timer</a></li>
 <li><a href=../../manual/object/ifs/urlobject.md.html class ="notranslate">UrlObject</a></li>
@@ -204,7 +207,7 @@
 <li>Unescaped raw output with <code>&lt;%- %&gt;</code></li>
 <li>Newline-trim mode (&#39;newline slurping&#39;) with <code>-%&gt;</code> ending tag</li>
 <li>Whitespace-trim mode (slurp all whitespace) for control flow with <code>&lt;%_ _%&gt;</code></li>
-<li><span class="notranslate">Custom delimiters (e.g.</span>, use <code>&lt;? ?&gt;</code> instead of <code>&lt;% %&gt;</code>)</li>
+<li>Custom delimiters (e.g., use <code>&lt;? ?&gt;</code> instead of <code>&lt;% %&gt;</code>)</li>
 <li>Includes</li>
 <li>Client-side support</li>
 <li>Static caching of intermediate JavaScript</li>
@@ -440,12 +443,12 @@ fn(data, <span class="hljs-literal">null</span>, <span class="hljs-function"><sp
 <h2 id="Related-projects">Related projects</h2>
 <p>There are a number of implementations of EJS:</p>
 <ul>
-<li><span class="notranslate">TJ&#39;s implementation</span>, the v1 of this library: <a href="https://github.com/tj/ejs">https://github.com/tj/ejs</a></li>
-<li><span class="notranslate">Jupiter Consulting&#39;s EJS</span>: <a href="http://www.embeddedjs.com/">http://www.embeddedjs.com/</a></li>
-<li><span class="notranslate">EJS Embedded JavaScript Framework on Google Code</span>: <a href="https://code.google.com/p/embeddedjavascript/">https://code.google.com/p/embeddedjavascript/</a></li>
-<li><span class="notranslate">Sam Stephenson&#39;s Ruby implementation</span>: <a href="https://rubygems.org/gems/ejs">https://rubygems.org/gems/ejs</a></li>
+<li>TJ&#39;s implementation, the v1 of this library: <a href="https://github.com/tj/ejs">https://github.com/tj/ejs</a></li>
+<li>Jupiter Consulting&#39;s EJS: <a href="http://www.embeddedjs.com/">http://www.embeddedjs.com/</a></li>
+<li>EJS Embedded JavaScript Framework on Google Code: <a href="https://code.google.com/p/embeddedjavascript/">https://code.google.com/p/embeddedjavascript/</a></li>
+<li>Sam Stephenson&#39;s Ruby implementation: <a href="https://rubygems.org/gems/ejs">https://rubygems.org/gems/ejs</a></li>
 <li><span class="notranslate">Erubis</span>, an ERB implementation which also runs JavaScript: <a href="http://www.kuwata-lab.com/erubis/users-guide.04.html#lang-javascript">http://www.kuwata-lab.com/erubis/users-guide.04.html#lang-javascript</a></li>
-<li><span class="notranslate">DigitalBrainstem EJS Language support</span>: <a href="https://github.com/Digitalbrainstem/ejs-grammar">https://github.com/Digitalbrainstem/ejs-grammar</a></li>
+<li>DigitalBrainstem EJS Language support: <a href="https://github.com/Digitalbrainstem/ejs-grammar">https://github.com/Digitalbrainstem/ejs-grammar</a></li>
 </ul>
 <h2 id="License">License</h2>
 <p>Licensed under the Apache License, Version 2.0

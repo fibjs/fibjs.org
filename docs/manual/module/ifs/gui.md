@@ -71,6 +71,7 @@ static WebView gui.open(String url,
 
 ```JavaScript
 {
+    "type": "cef", // 指定 WenView 引擎，允许值为 "native" 和 "cef"，缺省为 "cef"
     "left": 100, // 窗口左上角 x，缺省系统自动设定
     "right": 100, // 窗口左上角 y，缺省系统自动设定
     "width": 100, // 窗口宽度，缺省系统自动设定

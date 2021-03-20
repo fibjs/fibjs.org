@@ -4,10 +4,11 @@
 <li><a href=../../../guide/hello.md.html class ="notranslate">hello, world</a></li>
 <li><a href=../../../guide/test.md.html>美好生活从测试开始</a></li>
 <li><a href=../../../guide/profiler.md.html>找出性能杀手</a></li>
-<li><a href=../../../guide/contribute.md.html>添加 native 模块</a></li>
+<li><a href=../../../guide/desktop.md.html>快速开发桌面应用</a></li>
 <li><a href=../../../guide/server-hot-update.md.html>服务端模块热更新</a></li>
 <li><a href=../../../guide/host-routes.md.html>域名路由</a></li>
-<li><a href=../../../guide/fibjs.x509.md.html>fibjs 中 X509 证书的使用</a></li>
+<li><a href=../../../guide/x509.md.html>fibjs 中 X509 证书的使用</a></li>
+<li><a href=../../../guide/contribute.md.html>添加 native 模块</a></li>
 </ul>
  </div></div></div>  <div class=panel><div class=panel-heading role=tab id=headingOne><h4 class=panel-title><a data-toggle=collapse data-parent=#accordion href="#collapse_module" aria-controls="collapse_module"> 基础模块 </a></h4></div><div id="collapse_module" class="panel-collapse collapse in" aria-labelledby=headingOne><div class=panel-body> <ul>
 <li><a href=assert.md.html class ="notranslate">assert</a></li>
@@ -15,6 +16,7 @@
 <li><a href=base64.md.html class ="notranslate">base64</a></li>
 <li><a href=base64vlq.md.html class ="notranslate">base64vlq</a></li>
 <li><a href=bson.md.html class ="notranslate">bson</a></li>
+<li><a href=child_process.md.html class ="notranslate">child_process</a></li>
 <li><a href=console.md.html class ="notranslate">console</a></li>
 <li><a href=constants.md.html class ="notranslate">constants</a></li>
 <li><a href=coroutine.md.html class ="notranslate">coroutine</a></li>
@@ -63,6 +65,7 @@
 <li><a href=../../object/ifs/buffer.md.html class ="notranslate">Buffer</a></li>
 <li><a href=../../object/ifs/bufferedstream.md.html class ="notranslate">BufferedStream</a></li>
 <li><a href=../../object/ifs/chain.md.html class ="notranslate">Chain</a></li>
+<li><a href=../../object/ifs/childprocess.md.html class ="notranslate">ChildProcess</a></li>
 <li><a href=../../object/ifs/cipher.md.html class ="notranslate">Cipher</a></li>
 <li><a href=../../object/ifs/condition.md.html class ="notranslate">Condition</a></li>
 <li><a href=../../object/ifs/dbconnection.md.html class ="notranslate">DbConnection</a></li>
@@ -101,6 +104,7 @@
 <li><a href=../../object/ifs/mongoid.md.html class ="notranslate">MongoID</a></li>
 <li><a href=../../object/ifs/mysql.md.html class ="notranslate">MySQL</a></li>
 <li><a href=../../object/ifs/pkey.md.html class ="notranslate">PKey</a></li>
+<li><a href=../../object/ifs/rangestream.md.html class ="notranslate">RangeStream</a></li>
 <li><a href=../../object/ifs/redis.md.html class ="notranslate">Redis</a></li>
 <li><a href=../../object/ifs/redishash.md.html class ="notranslate">RedisHash</a></li>
 <li><a href=../../object/ifs/redislist.md.html class ="notranslate">RedisList</a></li>
@@ -121,7 +125,6 @@
 <li><a href=../../object/ifs/statswatcher.md.html class ="notranslate">StatsWatcher</a></li>
 <li><a href=../../object/ifs/stream.md.html class ="notranslate">Stream</a></li>
 <li><a href=../../object/ifs/stringdecoder.md.html class ="notranslate">StringDecoder</a></li>
-<li><a href=../../object/ifs/subprocess.md.html class ="notranslate">SubProcess</a></li>
 <li><a href=../../object/ifs/tcpserver.md.html class ="notranslate">TcpServer</a></li>
 <li><a href=../../object/ifs/timer.md.html class ="notranslate">Timer</a></li>
 <li><a href=../../object/ifs/urlobject.md.html class ="notranslate">UrlObject</a></li>
@@ -364,162 +367,6 @@ process.on(<span class="hljs-string">'SIGINT'</span>, () =&gt; {
 <ul>
 <li><span class="notranslate">Value</span>, 返回指定的内部模块</li>
 </ul>
-<hr>
-<h3 id="open" class ="notranslate">open</h3>
-<p><strong>运行指定的命令行，接管进程输入输出流，并返回进程对象</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1
-2
-3</div><span class="hljs-keyword">static</span> SubProcess process.open(<span class="hljs-built_in">String</span> command,
-    <span class="hljs-built_in">Array</span> args,
-    <span class="hljs-built_in">Object</span> opts = {});
-</code></pre>
-<p>调用参数:</p>
-<ul>
-<li><span class="notranslate">command</span>: String, 指定运行的命令行</li>
-<li><span class="notranslate">args</span>: Array, 指定运行的参数列表</li>
-<li><span class="notranslate">opts</span>: Object, 指定运行的选项</li>
-</ul>
-<p>返回结果:</p>
-<ul>
-<li><a href=../../object/ifs/subprocess.md.html class ="notranslate">SubProcess</a>, 返回包含运行结果的进程对象</li>
-</ul>
-<p>opts 支持的选项如下：</p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1
-2
-3
-4</div>{
-    <span class="hljs-string">"timeout"</span>: <span class="hljs-number">100</span>, <span class="hljs-comment">// 单位为 ms</span>
-    <span class="hljs-string">"env"</span>: {} <span class="hljs-comment">// 进程环境变量</span>
-}
-</code></pre>
-<hr>
-<p><strong>运行指定的命令行，接管进程输入输出流，并返回进程对象</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div><span class="hljs-keyword">static</span> SubProcess process.open(<span class="hljs-built_in">String</span> command,
-    <span class="hljs-built_in">Object</span> opts = {});
-</code></pre>
-<p>调用参数:</p>
-<ul>
-<li><span class="notranslate">command</span>: String, 指定运行的命令行</li>
-<li><span class="notranslate">opts</span>: Object, 指定运行的选项</li>
-</ul>
-<p>返回结果:</p>
-<ul>
-<li><a href=../../object/ifs/subprocess.md.html class ="notranslate">SubProcess</a>, 返回包含运行结果的进程对象</li>
-</ul>
-<p>opts 支持的选项如下：</p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1
-2
-3
-4</div>{
-    <span class="hljs-string">"timeout"</span>: <span class="hljs-number">100</span>, <span class="hljs-comment">// 单位为 ms</span>
-    <span class="hljs-string">"env"</span>: {} <span class="hljs-comment">// 进程环境变量</span>
-}
-</code></pre>
-<hr>
-<h3 id="start" class ="notranslate">start</h3>
-<p><strong>运行指定的命令行，并返回进程对象</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1
-2
-3</div><span class="hljs-keyword">static</span> SubProcess process.start(<span class="hljs-built_in">String</span> command,
-    <span class="hljs-built_in">Array</span> args,
-    <span class="hljs-built_in">Object</span> opts = {});
-</code></pre>
-<p>调用参数:</p>
-<ul>
-<li><span class="notranslate">command</span>: String, 指定运行的命令行</li>
-<li><span class="notranslate">args</span>: Array, 指定运行的参数列表</li>
-<li><span class="notranslate">opts</span>: Object, 指定运行的选项</li>
-</ul>
-<p>返回结果:</p>
-<ul>
-<li><a href=../../object/ifs/subprocess.md.html class ="notranslate">SubProcess</a>, 返回包含运行结果的进程对象</li>
-</ul>
-<p>opts 支持的选项如下：</p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1
-2
-3
-4</div>{
-    <span class="hljs-string">"timeout"</span>: <span class="hljs-number">100</span>, <span class="hljs-comment">// 单位为 ms</span>
-    <span class="hljs-string">"env"</span>: {} <span class="hljs-comment">// 进程环境变量</span>
-}
-</code></pre>
-<hr>
-<p><strong>运行指定的命令行，并返回进程对象</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div><span class="hljs-keyword">static</span> SubProcess process.start(<span class="hljs-built_in">String</span> command,
-    <span class="hljs-built_in">Object</span> opts = {});
-</code></pre>
-<p>调用参数:</p>
-<ul>
-<li><span class="notranslate">command</span>: String, 指定运行的命令行</li>
-<li><span class="notranslate">opts</span>: Object, 指定运行的选项</li>
-</ul>
-<p>返回结果:</p>
-<ul>
-<li><a href=../../object/ifs/subprocess.md.html class ="notranslate">SubProcess</a>, 返回包含运行结果的进程对象</li>
-</ul>
-<p>opts 支持的选项如下：</p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1
-2
-3
-4</div>{
-    <span class="hljs-string">"timeout"</span>: <span class="hljs-number">100</span>, <span class="hljs-comment">// 单位为 ms</span>
-    <span class="hljs-string">"env"</span>: {} <span class="hljs-comment">// 进程环境变量</span>
-}
-</code></pre>
-<hr>
-<h3 id="run" class ="notranslate">run</h3>
-<p><strong>运行指定的命令行，并返回进程的结束代码</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1
-2
-3</div><span class="hljs-keyword">static</span> Integer process.run(<span class="hljs-built_in">String</span> command,
-    <span class="hljs-built_in">Array</span> args,
-    <span class="hljs-built_in">Object</span> opts = {}) <span class="hljs-keyword">async</span>;
-</code></pre>
-<p>调用参数:</p>
-<ul>
-<li><span class="notranslate">command</span>: String, 指定运行的命令行</li>
-<li><span class="notranslate">args</span>: Array, 指定运行的参数列表</li>
-<li><span class="notranslate">opts</span>: Object, 指定运行的选项</li>
-</ul>
-<p>返回结果:</p>
-<ul>
-<li><span class="notranslate">Integer</span>, 返回命令的运行结果</li>
-</ul>
-<p>opts 支持的选项如下：</p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1
-2
-3
-4</div>{
-    <span class="hljs-string">"timeout"</span>: <span class="hljs-number">100</span>, <span class="hljs-comment">// 单位为 ms</span>
-    <span class="hljs-string">"env"</span>: {} <span class="hljs-comment">// 进程环境变量</span>
-}
-</code></pre>
-<hr>
-<p><strong>运行指定的命令行，并返回进程的结束代码</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div><span class="hljs-keyword">static</span> Integer process.run(<span class="hljs-built_in">String</span> command,
-    <span class="hljs-built_in">Object</span> opts = {}) <span class="hljs-keyword">async</span>;
-</code></pre>
-<p>调用参数:</p>
-<ul>
-<li><span class="notranslate">command</span>: String, 指定运行的命令行</li>
-<li><span class="notranslate">opts</span>: Object, 指定运行的选项</li>
-</ul>
-<p>返回结果:</p>
-<ul>
-<li><span class="notranslate">Integer</span>, 返回命令的运行结果</li>
-</ul>
-<p>opts 支持的选项如下：</p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1
-2
-3
-4</div>{
-    <span class="hljs-string">"timeout"</span>: <span class="hljs-number">100</span>, <span class="hljs-comment">// 单位为 ms</span>
-    <span class="hljs-string">"env"</span>: {} <span class="hljs-comment">// 进程环境变量</span>
-}
-</code></pre>
 <h2 id="静态属性">静态属性</h2>
 <h3 id="argv" class ="notranslate">argv</h3>
 <p><strong>Array, 返回当前进程的命令行参数</strong></p>
@@ -572,18 +419,18 @@ process.on(<span class="hljs-string">'SIGINT'</span>, () =&gt; {
 </code></pre>
 <hr>
 <h3 id="stdin" class ="notranslate">stdin</h3>
-<p><strong><a href=../../object/ifs/file.md.html class ="notranslate">File</a>, 查询当前进程标准输入对象</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly File process.stdin;
+<p><strong><a href=../../object/ifs/stream.md.html class ="notranslate">Stream</a>, 查询当前进程标准输入对象</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly Stream process.stdin;
 </code></pre>
 <hr>
 <h3 id="stdout" class ="notranslate">stdout</h3>
-<p><strong><a href=../../object/ifs/file.md.html class ="notranslate">File</a>, 查询当前进程标准输出对象</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly File process.stdout;
+<p><strong><a href=../../object/ifs/stream.md.html class ="notranslate">Stream</a>, 查询当前进程标准输出对象</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly Stream process.stdout;
 </code></pre>
 <hr>
 <h3 id="stderr" class ="notranslate">stderr</h3>
-<p><strong><a href=../../object/ifs/file.md.html class ="notranslate">File</a>, 查询当前进程标准错误输出对象</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly File process.stderr;
+<p><strong><a href=../../object/ifs/stream.md.html class ="notranslate">Stream</a>, 查询当前进程标准错误输出对象</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly Stream process.stderr;
 </code></pre>
 <hr>
 <h3 id="exitCode" class ="notranslate">exitCode</h3>

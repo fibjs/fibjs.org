@@ -1,0 +1,649 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../../../imgs/icon.png"><title>Objet HttpMessage-JavaScript sur fibre</title><link href="../../../../../css/common.css" rel="stylesheet"><link href="../../../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Basculer la navigation</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../../../index.html"><img src="../../../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../../../index.html">HOME</a></li><li><a href="../../../guide/readme.md.html">GUIDE</a></li><li><a href="../../module/readme.md.html">MODULE</a></li><li><a href="../readme.md.html">OBJECT</a></li><li><a href="../../../awesome/readme.md.html">AWESOME</a></li><li><a href="../../../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../../../docs/manual/object/ifs/httpmessage.md.html">中文</a> <a href="../../../../../en/docs/manual/object/ifs/httpmessage.md.html">ENGLISH</a> <a href="../../../../../ja/docs/manual/object/ifs/httpmessage.md.html">日本語</a> <a href="../../../../../de/docs/manual/object/ifs/httpmessage.md.html">Deutsch</a> <a href="../../../../../es/docs/manual/object/ifs/httpmessage.md.html">Español</a> <a href="../../../../../fr/docs/manual/object/ifs/httpmessage.md.html">Français</a> <a href="../../../../../ko/docs/manual/object/ifs/httpmessage.md.html">한국어</a> <a href="../../../../../it/docs/manual/object/ifs/httpmessage.md.html">Italiano</a> <a href="../../../../../ru/docs/manual/object/ifs/httpmessage.md.html">Русский</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Objet intégré objet </font></font></span><div class="search"><span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input type="text" class="searchbox ds-input" placeholder="Chercher" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-label="recherche d'entrée" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Avenir, &quot;Segoe UI&quot;, Arial, &quot;Hiragino Sans GB&quot;, 冬青黑, &quot;Microsoft YaHei&quot;, 微软雅黑, SimSun, 宋体, Helvetica, Tahoma, &quot;Arial sans-serif&quot;; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div class="ds-dataset-1"></div></span></span></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Page d'accueil</font></font></a></li><li><a href="../readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Objets intégrés </font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Objet HttpMessage </font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Guide de développement </font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="../../../guide/about.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Qu'est-ce que fibjs?</font></font></a></li>
+<li><a href="../../../guide/install.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Environnement d'installation et d'exploitation</font></font></a></li>
+<li><a href="../../../guide/hello.md.html" class="notranslate">hello, world</a></li>
+<li><a href="../../../guide/test.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Une bonne vie commence par le test</font></font></a></li>
+<li><a href="../../../guide/profiler.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Trouvez le tueur de performances</font></font></a></li>
+<li><a href="../../../guide/desktop.md.html">快速开发桌面应用</a></li>
+<li><a href="../../../guide/server-hot-update.md.html">服务端模块热更新</a></li>
+<li><a href="../../../guide/host-routes.md.html">域名路由</a></li>
+<li><a href="../../../guide/x509.md.html">fibjs 中 X509 证书的使用</a></li>
+<li><a href="../../../guide/contribute.md.html">添加 native 模块</a></li>
+</ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_module" aria-controls="collapse_module"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Module de base </font></font></a></h4></div><div id="collapse_module" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="../../module/ifs/assert.md.html" class="notranslate">assert</a></li>
+<li><a href="../../module/ifs/base32.md.html" class="notranslate">base32</a></li>
+<li><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a></li>
+<li><a href="../../module/ifs/base64vlq.md.html" class="notranslate">base64vlq</a></li>
+<li><a href="../../module/ifs/bson.md.html" class="notranslate">bson</a></li>
+<li><a href="../../module/ifs/child_process.md.html" class="notranslate">child_process</a></li>
+<li><a href="../../module/ifs/console.md.html" class="notranslate">console</a></li>
+<li><a href="../../module/ifs/constants.md.html" class="notranslate">constants</a></li>
+<li><a href="../../module/ifs/coroutine.md.html" class="notranslate">coroutine</a></li>
+<li><a href="../../module/ifs/crypto.md.html" class="notranslate">crypto</a></li>
+<li><a href="../../module/ifs/db.md.html" class="notranslate">db</a></li>
+<li><a href="../../module/ifs/dgram.md.html" class="notranslate">dgram</a></li>
+<li><a href="../../module/ifs/dns.md.html" class="notranslate">dns</a></li>
+<li><a href="../../module/ifs/encoding.md.html" class="notranslate">encoding</a></li>
+<li><a href="../../module/ifs/fs.md.html" class="notranslate">fs</a></li>
+<li><a href="../../module/ifs/gd.md.html" class="notranslate">gd</a></li>
+<li><a href="../../module/ifs/global.md.html" class="notranslate">global</a></li>
+<li><a href="../../module/ifs/gui.md.html" class="notranslate">gui</a></li>
+<li><a href="../../module/ifs/hash.md.html" class="notranslate">hash</a></li>
+<li><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a></li>
+<li><a href="../../module/ifs/http.md.html" class="notranslate">http</a></li>
+<li><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a></li>
+<li><a href="../../module/ifs/io.md.html" class="notranslate">io</a></li>
+<li><a href="../../module/ifs/json.md.html" class="notranslate">json</a></li>
+<li><a href="../../module/ifs/mq.md.html" class="notranslate">mq</a></li>
+<li><a href="../../module/ifs/msgpack.md.html" class="notranslate">msgpack</a></li>
+<li><a href="../../module/ifs/net.md.html" class="notranslate">net</a></li>
+<li><a href="../../module/ifs/os.md.html" class="notranslate">os</a></li>
+<li><a href="../../module/ifs/path.md.html" class="notranslate">path</a></li>
+<li><a href="../../module/ifs/path_posix.md.html" class="notranslate">path_posix</a></li>
+<li><a href="../../module/ifs/path_win32.md.html" class="notranslate">path_win32</a></li>
+<li><a href="../../module/ifs/process.md.html" class="notranslate">process</a></li>
+<li><a href="../../module/ifs/profiler.md.html" class="notranslate">profiler</a></li>
+<li><a href="../../module/ifs/punycode.md.html" class="notranslate">punycode</a></li>
+<li><a href="../../module/ifs/querystring.md.html" class="notranslate">querystring</a></li>
+<li><a href="../../module/ifs/registry.md.html" class="notranslate">registry</a></li>
+<li><a href="../../module/ifs/ssl.md.html" class="notranslate">ssl</a></li>
+<li><a href="../../module/ifs/string_decoder.md.html" class="notranslate">string_decoder</a></li>
+<li><a href="../../module/ifs/test.md.html" class="notranslate">test</a></li>
+<li><a href="../../module/ifs/timers.md.html" class="notranslate">timers</a></li>
+<li><a href="../../module/ifs/tty.md.html" class="notranslate">tty</a></li>
+<li><a href="../../module/ifs/url.md.html" class="notranslate">url</a></li>
+<li><a href="../../module/ifs/util.md.html" class="notranslate">util</a></li>
+<li><a href="../../module/ifs/uuid.md.html" class="notranslate">uuid</a></li>
+<li><a href="../../module/ifs/vm.md.html" class="notranslate">vm</a></li>
+<li><a href="../../module/ifs/ws.md.html" class="notranslate">ws</a></li>
+<li><a href="../../module/ifs/xml.md.html" class="notranslate">xml</a></li>
+<li><a href="../../module/ifs/zip.md.html" class="notranslate">zip</a></li>
+<li><a href="../../module/ifs/zlib.md.html" class="notranslate">zlib</a></li>
+</ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_object" aria-controls="collapse_object"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Objets intégrés </font></font></a></h4></div><div id="collapse_object" class="panel-collapse collapse in" aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="buffer.md.html" class="notranslate">Buffer</a></li>
+<li><a href="bufferedstream.md.html" class="notranslate">BufferedStream</a></li>
+<li><a href="chain.md.html" class="notranslate">Chain</a></li>
+<li><a href="childprocess.md.html" class="notranslate">ChildProcess</a></li>
+<li><a href="cipher.md.html" class="notranslate">Cipher</a></li>
+<li><a href="condition.md.html" class="notranslate">Condition</a></li>
+<li><a href="dbconnection.md.html" class="notranslate">DbConnection</a></li>
+<li><a href="dgramsocket.md.html" class="notranslate">DgramSocket</a></li>
+<li><a href="digest.md.html" class="notranslate">Digest</a></li>
+<li><a href="event.md.html" class="notranslate">Event</a></li>
+<li><a href="eventemitter.md.html" class="notranslate">EventEmitter</a></li>
+<li><a href="fswatcher.md.html" class="notranslate">FSWatcher</a></li>
+<li><a href="fiber.md.html" class="notranslate">Fiber</a></li>
+<li><a href="file.md.html" class="notranslate">File</a></li>
+<li><a href="handler.md.html" class="notranslate">Handler</a></li>
+<li><a href="heapgraphedge.md.html" class="notranslate">HeapGraphEdge</a></li>
+<li><a href="heapgraphnode.md.html" class="notranslate">HeapGraphNode</a></li>
+<li><a href="heapsnapshot.md.html" class="notranslate">HeapSnapshot</a></li>
+<li><a href="httpclient.md.html" class="notranslate">HttpClient</a></li>
+<li><a href="httpcollection.md.html" class="notranslate">HttpCollection</a></li>
+<li><a href="httpcookie.md.html" class="notranslate">HttpCookie</a></li>
+<li><a href="httphandler.md.html" class="notranslate">HttpHandler</a></li>
+<li class="active"><a href="httpmessage.md.html" class="notranslate">HttpMessage</a></li>
+<li><a href="httprepeater.md.html" class="notranslate">HttpRepeater</a></li>
+<li><a href="httprequest.md.html" class="notranslate">HttpRequest</a></li>
+<li><a href="httpresponse.md.html" class="notranslate">HttpResponse</a></li>
+<li><a href="httpserver.md.html" class="notranslate">HttpServer</a></li>
+<li><a href="httpuploaddata.md.html" class="notranslate">HttpUploadData</a></li>
+<li><a href="httpsserver.md.html" class="notranslate">HttpsServer</a></li>
+<li><a href="image.md.html" class="notranslate">Image</a></li>
+<li><a href="leveldb.md.html" class="notranslate">LevelDB</a></li>
+<li><a href="lock.md.html" class="notranslate">Lock</a></li>
+<li><a href="lrucache.md.html" class="notranslate">LruCache</a></li>
+<li><a href="mssql.md.html" class="notranslate">MSSQL</a></li>
+<li><a href="memorystream.md.html" class="notranslate">MemoryStream</a></li>
+<li><a href="message.md.html" class="notranslate">Message</a></li>
+<li><a href="mongocollection.md.html" class="notranslate">MongoCollection</a></li>
+<li><a href="mongocursor.md.html" class="notranslate">MongoCursor</a></li>
+<li><a href="mongodb.md.html" class="notranslate">MongoDB</a></li>
+<li><a href="mongoid.md.html" class="notranslate">MongoID</a></li>
+<li><a href="mysql.md.html" class="notranslate">MySQL</a></li>
+<li><a href="pkey.md.html" class="notranslate">PKey</a></li>
+<li><a href="rangestream.md.html" class="notranslate">RangeStream</a></li>
+<li><a href="redis.md.html" class="notranslate">Redis</a></li>
+<li><a href="redishash.md.html" class="notranslate">RedisHash</a></li>
+<li><a href="redislist.md.html" class="notranslate">RedisList</a></li>
+<li><a href="redisset.md.html" class="notranslate">RedisSet</a></li>
+<li><a href="redissortedset.md.html" class="notranslate">RedisSortedSet</a></li>
+<li><a href="routing.md.html" class="notranslate">Routing</a></li>
+<li><a href="sqlite.md.html" class="notranslate">SQLite</a></li>
+<li><a href="sandbox.md.html" class="notranslate">SandBox</a></li>
+<li><a href="seekablestream.md.html" class="notranslate">SeekableStream</a></li>
+<li><a href="semaphore.md.html" class="notranslate">Semaphore</a></li>
+<li><a href="service.md.html" class="notranslate">Service</a></li>
+<li><a href="smtp.md.html" class="notranslate">Smtp</a></li>
+<li><a href="socket.md.html" class="notranslate">Socket</a></li>
+<li><a href="sslhandler.md.html" class="notranslate">SslHandler</a></li>
+<li><a href="sslserver.md.html" class="notranslate">SslServer</a></li>
+<li><a href="sslsocket.md.html" class="notranslate">SslSocket</a></li>
+<li><a href="stat.md.html" class="notranslate">Stat</a></li>
+<li><a href="statswatcher.md.html" class="notranslate">StatsWatcher</a></li>
+<li><a href="stream.md.html" class="notranslate">Stream</a></li>
+<li><a href="stringdecoder.md.html" class="notranslate">StringDecoder</a></li>
+<li><a href="tcpserver.md.html" class="notranslate">TcpServer</a></li>
+<li><a href="timer.md.html" class="notranslate">Timer</a></li>
+<li><a href="urlobject.md.html" class="notranslate">UrlObject</a></li>
+<li><a href="websocket.md.html" class="notranslate">WebSocket</a></li>
+<li><a href="websocketmessage.md.html" class="notranslate">WebSocketMessage</a></li>
+<li><a href="webview.md.html" class="notranslate">WebView</a></li>
+<li><a href="worker.md.html" class="notranslate">Worker</a></li>
+<li><a href="x509cert.md.html" class="notranslate">X509Cert</a></li>
+<li><a href="x509crl.md.html" class="notranslate">X509Crl</a></li>
+<li><a href="x509req.md.html" class="notranslate">X509Req</a></li>
+<li><a href="xmlattr.md.html" class="notranslate">XmlAttr</a></li>
+<li><a href="xmlcdatasection.md.html" class="notranslate">XmlCDATASection</a></li>
+<li><a href="xmlcharacterdata.md.html" class="notranslate">XmlCharacterData</a></li>
+<li><a href="xmlcomment.md.html" class="notranslate">XmlComment</a></li>
+<li><a href="xmldocument.md.html" class="notranslate">XmlDocument</a></li>
+<li><a href="xmldocumenttype.md.html" class="notranslate">XmlDocumentType</a></li>
+<li><a href="xmlelement.md.html" class="notranslate">XmlElement</a></li>
+<li><a href="xmlnamednodemap.md.html" class="notranslate">XmlNamedNodeMap</a></li>
+<li><a href="xmlnode.md.html" class="notranslate">XmlNode</a></li>
+<li><a href="xmlnodelist.md.html" class="notranslate">XmlNodeList</a></li>
+<li><a href="xmlprocessinginstruction.md.html" class="notranslate">XmlProcessingInstruction</a></li>
+<li><a href="xmltext.md.html" class="notranslate">XmlText</a></li>
+<li><a href="zipfile.md.html" class="notranslate">ZipFile</a></li>
+<li><a href="object.md.html" class="notranslate">object</a></li>
+</ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_awesome" aria-controls="collapse_awesome"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Module communautaire </font></font></a></h4></div><div id="collapse_awesome" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="../../../awesome/module/fib-session.md.html" class="notranslate">fib-session</a></li>
+<li><a href="../../../awesome/module/fib-pool.md.html" class="notranslate">fib-pool</a></li>
+<li><a href="../../../awesome/module/fib-orm.md.html" class="notranslate">fib-orm</a></li>
+<li><a href="../../../awesome/module/fib-app.md.html" class="notranslate">fib-app</a></li>
+<li><a href="../../../awesome/module/fib-kv.md.html" class="notranslate">fib-kv</a></li>
+<li><a href="../../../awesome/module/fib-rpc.md.html" class="notranslate">fib-rpc</a></li>
+<li><a href="../../../awesome/module/fib-qr.md.html" class="notranslate">fib-qr</a></li>
+<li><a href="../../../awesome/module/fib-pug.md.html" class="notranslate">fib-pug</a></li>
+<li><a href="../../../awesome/module/ejs.md.html" class="notranslate">ejs</a></li>
+<li><a href="../../../awesome/module/juicer.md.html" class="notranslate">Juicer</a></li>
+<li><a href="../../../awesome/module/highlight.js.md.html" class="notranslate">highlight.js</a></li>
+<li><a href="../../../awesome/module/marked.md.html" class="notranslate">marked</a></li>
+<li><a href="../../../awesome/module/node-cron.md.html" class="notranslate">node-cron</a></li>
+<li><a href="../../../awesome/module/debug.md.html" class="notranslate">debug</a></li>
+<li><a href="../../../awesome/module/benchmark.js.md.html" class="notranslate">benchmark.js</a></li>
+<li><a href="../../../awesome/module/sinon.md.html" class="notranslate">sinon</a></li>
+<li><a href="../../../awesome/module/node-mime.md.html" class="notranslate">node-mime</a></li>
+<li><a href="../../../awesome/module/validatorjs.md.html" class="notranslate">validatorjs</a></li>
+<li><a href="../../../awesome/module/superstruct.md.html" class="notranslate">superstruct</a></li>
+<li><a href="../../../awesome/module/cluster-server.md.html" class="notranslate">cluster-server</a></li>
+<li><a href="../../../awesome/module/synaptic.md.html" class="notranslate">synaptic</a></li>
+<li><a href="../../../awesome/module/source-map.md.html" class="notranslate">source-map</a></li>
+<li><a href="../../../awesome/module/json-format.md.html" class="notranslate">json-format</a></li>
+<li><a href="../../../awesome/module/viz.js.md.html" class="notranslate">viz.js</a></li>
+<li><a href="../../../awesome/module/nomnoml.md.html" class="notranslate">nomnoml</a></li>
+<li><a href="../../../awesome/module/pegjs.md.html" class="notranslate">pegjs</a></li>
+<li><a href="../../../awesome/module/uglify-js.md.html" class="notranslate">uglify-js</a></li>
+<li><a href="../../../awesome/module/js-beautify.md.html" class="notranslate">js-beautify</a></li>
+<li><a href="../../../awesome/module/chalk-animation.md.html" class="notranslate">chalk-animation</a></li>
+<li><a href="../../../awesome/module/jsrsasign.md.html" class="notranslate">jsrsasign</a></li>
+<li><a href="../../../awesome/module/crypto-js.md.html" class="notranslate">crypto-js</a></li>
+<li><a href="../../../awesome/module/ascii-table.md.html" class="notranslate">ascii-table</a></li>
+<li><a href="../../../awesome/module/logstream.md.html" class="notranslate">logstream</a></li>
+<li><a href="../../../awesome/module/ci.md.html" class="notranslate">ci</a></li>
+<li><a href="../../../awesome/module/fs-readdir-recursive.md.html" class="notranslate">fs-readdir-recursive</a></li>
+<li><a href="../../../awesome/module/mkdirp.md.html" class="notranslate">mkdirp</a></li>
+<li><a href="../../../awesome/module/rmdirr.md.html" class="notranslate">rmdirr</a></li>
+<li><a href="../../../awesome/module/detect-port.md.html" class="notranslate">detect-port</a></li>
+<li><a href="../../../awesome/module/bitcoinjs-lib.md.html" class="notranslate">bitcoinjs-lib</a></li>
+<li><a href="../../../awesome/module/rakuten.md.html" class="notranslate">Rakuten</a></li>
+</ul>
+ </div></div></div>  </div></div><div class="content"><div class="social-share share-component" data-sites="weibo,twitter" data-description="分享"></div> <div name="对象-HttpMessage" data-unique="对象-HttpMessage"></div><h1 id="对象-HttpMessage"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Objet HttpMessage</font></font></h1>
+<p><a href="../../module/ifs/http.md.html" class="notranslate">http</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Objet de message de base</font></font></p>
+<div name="继承关系" data-unique="继承关系"></div><h2 id="继承关系"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Relation d'héritage</font></font></h2>
+<div class="dot notranslate">
+<!-- Generated by graphviz version 2.40.1 (20161225.0304)
+ -->
+<!-- Title: %0 Pages: 1 -->
+<svg width="176pt" height="704pt" viewBox="0.00 0.00 176.46 704.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 700)">
+<title>%0</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-700 172.46,-700 172.46,4 -4,4"></polygon>
+<!-- object -->
+<g id="node1" class="node">
+<title>object</title>
+<g id="a_node1"><a xlink:href="object.md.html" xlink:title="object">
+<polygon fill="#ffffff" stroke="#000000" points="52.9535,-643.5 52.9535,-695.5 110.6165,-695.5 110.6165,-643.5 52.9535,-643.5"></polygon>
+<text text-anchor="middle" x="81.785" y="-682.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
+<polyline fill="none" stroke="#000000" points="52.9535,-675.5 110.6165,-675.5 "></polyline>
+<text text-anchor="start" x="60.9535" y="-662.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toString()</text>
+<text text-anchor="start" x="60.9535" y="-650.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toJSON()</text>
+</a>
+</g>
+</g>
+<!-- Message -->
+<g id="node2" class="node">
+<title>Message</title>
+<g id="a_node2"><a xlink:href="message.md.html" xlink:title="Message">
+<polygon fill="#ffffff" stroke="#000000" points="39.6155,-302.5 39.6155,-606.5 123.9545,-606.5 123.9545,-302.5 39.6155,-302.5"></polygon>
+<text text-anchor="middle" x="81.785" y="-593.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Message</text>
+<polyline fill="none" stroke="#000000" points="39.6155,-586.5 123.9545,-586.5 "></polyline>
+<text text-anchor="start" x="47.6155" y="-573.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">new Message()</text>
+<polyline fill="none" stroke="#000000" points="39.6155,-566.5 123.9545,-566.5 "></polyline>
+<text text-anchor="start" x="47.6155" y="-553.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">TEXT</text>
+<text text-anchor="start" x="47.6155" y="-541.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">BINARY</text>
+<polyline fill="none" stroke="#000000" points="39.6155,-534.5 123.9545,-534.5 "></polyline>
+<text text-anchor="start" x="47.6155" y="-521.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">value</text>
+<text text-anchor="start" x="47.6155" y="-509.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">params</text>
+<text text-anchor="start" x="47.6155" y="-497.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">type</text>
+<text text-anchor="start" x="47.6155" y="-485.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">data</text>
+<text text-anchor="start" x="47.6155" y="-473.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">body</text>
+<text text-anchor="start" x="47.6155" y="-461.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">length</text>
+<text text-anchor="start" x="47.6155" y="-449.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">stream</text>
+<text text-anchor="start" x="47.6155" y="-437.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">lastError</text>
+<polyline fill="none" stroke="#000000" points="39.6155,-430.5 123.9545,-430.5 "></polyline>
+<text text-anchor="start" x="47.6155" y="-417.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">read()</text>
+<text text-anchor="start" x="47.6155" y="-405.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readAll()</text>
+<text text-anchor="start" x="47.6155" y="-393.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">write()</text>
+<text text-anchor="start" x="47.6155" y="-381.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">json()</text>
+<text text-anchor="start" x="47.6155" y="-369.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">pack()</text>
+<text text-anchor="start" x="47.6155" y="-357.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">end()</text>
+<text text-anchor="start" x="47.6155" y="-345.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">isEnded()</text>
+<text text-anchor="start" x="47.6155" y="-333.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">clear()</text>
+<text text-anchor="start" x="47.6155" y="-321.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">sendTo()</text>
+<text text-anchor="start" x="47.6155" y="-309.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readFrom()</text>
+</a>
+</g>
+</g>
+<!-- object&#45;&gt;Message -->
+<g id="edge1" class="edge">
+<title>object-&gt;Message</title>
+<path fill="none" stroke="#000000" d="M81.785,-632.9226C81.785,-624.9827 81.785,-616.1108 81.785,-606.6809"></path>
+<polygon fill="#000000" stroke="#000000" points="78.2851,-633.1367 81.785,-643.1368 85.2851,-633.1368 78.2851,-633.1367"></polygon>
+</g>
+<!-- HttpMessage -->
+<g id="me" class="node">
+<title>HttpMessage</title>
+<g id="a_me"><a xlink:title="HttpMessage">
+<polygon fill="#d3d3d3" stroke="#000000" points="32.1115,-73.5 32.1115,-265.5 131.4585,-265.5 131.4585,-73.5 32.1115,-73.5"></polygon>
+<text text-anchor="middle" x="81.785" y="-252.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">HttpMessage</text>
+<polyline fill="none" stroke="#000000" points="32.1115,-245.5 131.4585,-245.5 "></polyline>
+<text text-anchor="start" x="40.1115" y="-232.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">protocol</text>
+<text text-anchor="start" x="40.1115" y="-220.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">headers</text>
+<text text-anchor="start" x="40.1115" y="-208.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">keepAlive</text>
+<text text-anchor="start" x="40.1115" y="-196.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">upgrade</text>
+<text text-anchor="start" x="40.1115" y="-184.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">maxHeadersCount</text>
+<text text-anchor="start" x="40.1115" y="-172.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">maxBodySize</text>
+<text text-anchor="start" x="40.1115" y="-160.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">socket</text>
+<polyline fill="none" stroke="#000000" points="32.1115,-153.5 131.4585,-153.5 "></polyline>
+<text text-anchor="start" x="40.1115" y="-140.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">hasHeader()</text>
+<text text-anchor="start" x="40.1115" y="-128.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">firstHeader()</text>
+<text text-anchor="start" x="40.1115" y="-116.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">allHeader()</text>
+<text text-anchor="start" x="40.1115" y="-104.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">addHeader()</text>
+<text text-anchor="start" x="40.1115" y="-92.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">setHeader()</text>
+<text text-anchor="start" x="40.1115" y="-80.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">removeHeader()</text>
+</a>
+</g>
+</g>
+<!-- Message&#45;&gt;HttpMessage -->
+<g id="edge2" class="edge">
+<title>Message-&gt;HttpMessage</title>
+<path fill="none" stroke="#000000" d="M81.785,-292.2065C81.785,-283.2075 81.785,-274.316 81.785,-265.6791"></path>
+<polygon fill="#000000" stroke="#000000" points="78.2851,-292.4044 81.785,-302.4044 85.2851,-292.4044 78.2851,-292.4044"></polygon>
+</g>
+<!-- HttpRequest -->
+<g id="node4" class="node">
+<title>HttpRequest</title>
+<g id="a_node4"><a xlink:href="httprequest.md.html" xlink:title="HttpRequest">
+<polygon fill="#ffffff" stroke="#000000" points="0,-.5 0,-36.5 71.57,-36.5 71.57,-.5 0,-.5"></polygon>
+<text text-anchor="middle" x="35.785" y="-15.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">HttpRequest</text>
+</a>
+</g>
+</g>
+<!-- HttpMessage&#45;&gt;HttpRequest -->
+<g id="edge3" class="edge">
+<title>HttpMessage-&gt;HttpRequest</title>
+<path fill="none" stroke="#000000" d="M49.5913,-63.8208C46.4735,-53.5862 43.6255,-44.2373 41.3365,-36.7235"></path>
+<polygon fill="#000000" stroke="#000000" points="46.2599,-64.8956 52.5222,-73.4416 52.9561,-62.8557 46.2599,-64.8956"></polygon>
+</g>
+<!-- HttpResponse -->
+<g id="node5" class="node">
+<title>HttpResponse</title>
+<g id="a_node5"><a xlink:href="httpresponse.md.html" xlink:title="HttpResponse">
+<polygon fill="#ffffff" stroke="#000000" points="89.11,-.5 89.11,-36.5 168.46,-36.5 168.46,-.5 89.11,-.5"></polygon>
+<text text-anchor="middle" x="128.785" y="-15.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">HttpResponse</text>
+</a>
+</g>
+</g>
+<!-- HttpMessage&#45;&gt;HttpResponse -->
+<g id="edge4" class="edge">
+<title>HttpMessage-&gt;HttpResponse</title>
+<path fill="none" stroke="#000000" d="M114.6785,-63.8208C117.8641,-53.5862 120.7741,-44.2373 123.1128,-36.7235"></path>
+<polygon fill="#000000" stroke="#000000" points="111.3141,-62.8532 111.684,-73.4416 117.9978,-64.9336 111.3141,-62.8532"></polygon>
+</g>
+</g>
+</svg>
+</div>
+
+<div name="常量" data-unique="常量"></div><h2 id="常量"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">constant</font></font></h2>
+<div name="TEXT" data-unique="TEXT"></div><h3 id="TEXT" class="notranslate">TEXT</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Spécifiez le type de message 1, qui représente un type de texte</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> HttpMessage.TEXT = <span class="hljs-number">1</span>;
+</code></pre>
+<hr>
+<div name="BINARY" data-unique="BINARY"></div><h3 id="BINARY" class="notranslate">BINARY</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Spécifiez le type de message 2, qui représente un type binaire</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> HttpMessage.BINARY = <span class="hljs-number">2</span>;
+</code></pre>
+<div name="成员属性" data-unique="成员属性"></div><h2 id="成员属性"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Attributs des membres</font></font></h2>
+<div name="protocol" data-unique="protocol"></div><h3 id="protocol" class="notranslate">protocol</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Chaîne, informations sur la version du protocole, le format autorisé est: HTTP /#.#</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> HttpMessage.protocol;
+</code></pre>
+<hr>
+<div name="headers" data-unique="headers"></div><h3 id="headers" class="notranslate">headers</h3>
+<p><strong><a href="httpcollection.md.html" class="notranslate">HttpCollection</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Inclus dans le message </font></font><a href="../../module/ifs/http.md.html" class="notranslate">http</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Le conteneur de l'en-tête du message, attribut en lecture seule</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly HttpCollection HttpMessage.headers;
+</code></pre>
+<hr>
+<div name="keepAlive" data-unique="keepAlive"></div><h3 id="keepAlive" class="notranslate">keepAlive</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Boolean, interroger et définir s'il faut conserver la connexion</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Boolean</span> HttpMessage.keepAlive;
+</code></pre>
+<hr>
+<div name="upgrade" data-unique="upgrade"></div><h3 id="upgrade" class="notranslate">upgrade</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Boolean, interrogez et définissez s'il s'agit d'un accord de mise à niveau</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Boolean</span> HttpMessage.upgrade;
+</code></pre>
+<hr>
+<div name="maxHeadersCount" data-unique="maxHeadersCount"></div><h3 id="maxHeadersCount" class="notranslate">maxHeadersCount</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Entier, interroger et définir le nombre maximum d'en-têtes de requête, la valeur par défaut est 128</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer HttpMessage.maxHeadersCount;
+</code></pre>
+<hr>
+<div name="maxBodySize" data-unique="maxBodySize"></div><h3 id="maxBodySize" class="notranslate">maxBodySize</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Entier, interroger et définir la taille maximale du corps, en Mo, la valeur par défaut est 64</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer HttpMessage.maxBodySize;
+</code></pre>
+<hr>
+<div name="socket" data-unique="socket"></div><h3 id="socket" class="notranslate">socket</h3>
+<p><strong><a href="stream.md.html" class="notranslate">Stream</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Interroge le socket source de l'objet courant</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly Stream HttpMessage.socket;
+</code></pre>
+<hr>
+<div name="value" data-unique="value"></div><h3 id="value" class="notranslate">value</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">String, le contenu de base du message</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> HttpMessage.value;
+</code></pre>
+<hr>
+<div name="params" data-unique="params"></div><h3 id="params" class="notranslate">params</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">NArray, les paramètres de base du message</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly NArray HttpMessage.params;
+</code></pre>
+<hr>
+<div name="type" data-unique="type"></div><h3 id="type" class="notranslate">type</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Entier, type de message</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer HttpMessage.type;
+</code></pre>
+<hr>
+<div name="data" data-unique="data"></div><h3 id="data" class="notranslate">data</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Valeur, interrogez les données du message</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly Value HttpMessage.data;
+</code></pre>
+<hr>
+<div name="body" data-unique="body"></div><h3 id="body" class="notranslate">body</h3>
+<p><strong><a href="seekablestream.md.html" class="notranslate">SeekableStream</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, L'objet de flux qui contient la partie données du message</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>SeekableStream HttpMessage.body;
+</code></pre>
+<hr>
+<div name="length" data-unique="length"></div><h3 id="length" class="notranslate">length</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Long, la longueur de la partie données du message</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly Long HttpMessage.length;
+</code></pre>
+<hr>
+<div name="stream" data-unique="stream"></div><h3 id="stream" class="notranslate">stream</h3>
+<p><strong><a href="stream.md.html" class="notranslate">Stream</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Interroge l'objet de flux lorsque le message readFrom</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly Stream HttpMessage.stream;
+</code></pre>
+<hr>
+<div name="lastError" data-unique="lastError"></div><h3 id="lastError" class="notranslate">lastError</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Chaîne, interroge et définit la dernière erreur de traitement des messages</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> HttpMessage.lastError;
+</code></pre>
+<div name="成员函数" data-unique="成员函数"></div><h2 id="成员函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Fonction membre</font></font></h2>
+<div name="hasHeader" data-unique="hasHeader"></div><h3 id="hasHeader" class="notranslate">hasHeader</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Vérifiez s'il existe un en-tête de message avec la valeur de clé spécifiée</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Boolean</span> HttpMessage.hasHeader(<span class="hljs-built_in">String</span> name);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paramètres d'appel:</font></font></p>
+<ul>
+<li><span class="notranslate">name</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Chaîne, spécifiez la valeur de clé à vérifier</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Résultat de retour:</font></font></p>
+<ul>
+<li><span class="notranslate">Boolean</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retourne si la valeur de clé existe</font></font></li>
+</ul>
+<hr>
+<div name="firstHeader" data-unique="firstHeader"></div><h3 id="firstHeader" class="notranslate">firstHeader</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Interroger le premier en-tête de message de la valeur de clé spécifiée</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> HttpMessage.firstHeader(<span class="hljs-built_in">String</span> name);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paramètres d'appel:</font></font></p>
+<ul>
+<li><span class="notranslate">name</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Chaîne, spécifiez la valeur de clé à interroger</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Résultat de retour:</font></font></p>
+<ul>
+<li><span class="notranslate">String</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Renvoie la valeur correspondant à la valeur clé, si elle n'existe pas, renvoie undefined</font></font></li>
+</ul>
+<hr>
+<div name="allHeader" data-unique="allHeader"></div><h3 id="allHeader" class="notranslate">allHeader</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Interroger tous les en-têtes de message de la valeur de clé spécifiée</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>NObject HttpMessage.allHeader(<span class="hljs-built_in">String</span> name = <span class="hljs-string">""</span>);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paramètres d'appel:</font></font></p>
+<ul>
+<li><span class="notranslate">name</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Chaîne, spécifiez la valeur de clé à interroger, passez une chaîne vide pour renvoyer le résultat de toutes les valeurs de clé</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Résultat de retour:</font></font></p>
+<ul>
+<li><span class="notranslate">NObject</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Renvoie un tableau de toutes les valeurs correspondant à la valeur de clé, si les données n'existent pas, renvoie null</font></font></li>
+</ul>
+<hr>
+<div name="addHeader" data-unique="addHeader"></div><h3 id="addHeader" class="notranslate">addHeader</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ajouter un en-tête de message, l'ajout de données ne modifie pas l'en-tête de message de la valeur de clé existante</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>HttpMessage.addHeader(<span class="hljs-built_in">Object</span> map);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paramètres d'appel:</font></font></p>
+<ul>
+<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Objet, spécifiez le dictionnaire de données clé-valeur à ajouter</font></font></li>
+</ul>
+<hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ajouter un ensemble d'en-têtes de message avec un nom spécifié, l'ajout de données ne modifie pas les en-têtes de message de la valeur de clé existante</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div>HttpMessage.addHeader(<span class="hljs-built_in">String</span> name,
+    <span class="hljs-built_in">Array</span> values);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paramètres d'appel:</font></font></p>
+<ul>
+<li><span class="notranslate">name</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Chaîne, spécifiez la valeur de clé à ajouter</font></font></li>
+<li><span class="notranslate">values</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Array, spécifiez un ensemble de données à ajouter</font></font></li>
+</ul>
+<hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ajouter un en-tête de message, l'ajout de données ne modifie pas l'en-tête de message de la valeur de clé existante</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div>HttpMessage.addHeader(<span class="hljs-built_in">String</span> name,
+    <span class="hljs-built_in">String</span> value);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paramètres d'appel:</font></font></p>
+<ul>
+<li><span class="notranslate">name</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Chaîne, spécifiez la valeur de clé à ajouter</font></font></li>
+<li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Chaîne, spécifiez les données à ajouter</font></font></li>
+</ul>
+<hr>
+<div name="setHeader" data-unique="setHeader"></div><h3 id="setHeader" class="notranslate">setHeader</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Définissez un en-tête de message, les données de réglage modifieront la première valeur correspondant à la valeur de clé et effaceront les en-têtes de message restants avec la même valeur de clé</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>HttpMessage.setHeader(<span class="hljs-built_in">Object</span> map);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paramètres d'appel:</font></font></p>
+<ul>
+<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Objet, spécifiez le dictionnaire de données clé-valeur à définir</font></font></li>
+</ul>
+<hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Définissez un ensemble d'en-têtes de message avec un nom spécifié, les données de réglage modifieront la valeur correspondant à la valeur de clé et effaceront le reste des en-têtes de message avec la même valeur de clé</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div>HttpMessage.setHeader(<span class="hljs-built_in">String</span> name,
+    <span class="hljs-built_in">Array</span> values);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paramètres d'appel:</font></font></p>
+<ul>
+<li><span class="notranslate">name</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Chaîne, spécifiez la valeur de clé à définir</font></font></li>
+<li><span class="notranslate">values</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Array, spécifiez un ensemble de données à définir</font></font></li>
+</ul>
+<hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Définissez un en-tête de message, les données de réglage modifieront la première valeur correspondant à la valeur de clé et effaceront les en-têtes de message restants avec la même valeur de clé</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div>HttpMessage.setHeader(<span class="hljs-built_in">String</span> name,
+    <span class="hljs-built_in">String</span> value);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paramètres d'appel:</font></font></p>
+<ul>
+<li><span class="notranslate">name</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Chaîne, spécifiez la valeur de clé à définir</font></font></li>
+<li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Chaîne, spécifiez les données à définir</font></font></li>
+</ul>
+<hr>
+<div name="removeHeader" data-unique="removeHeader"></div><h3 id="removeHeader" class="notranslate">removeHeader</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Supprimer tous les en-têtes de message de la valeur de clé spécifiée</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>HttpMessage.removeHeader(<span class="hljs-built_in">String</span> name);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paramètres d'appel:</font></font></p>
+<ul>
+<li><span class="notranslate">name</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Chaîne, spécifiez la clé à supprimer</font></font></li>
+</ul>
+<hr>
+<div name="read" data-unique="read"></div><h3 id="read" class="notranslate">read</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Lire les données de la taille spécifiée dans le flux, cette méthode est l'alias de la méthode correspondante du corps</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Buffer HttpMessage.read(Integer bytes = <span class="hljs-number">-1</span>) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paramètres d'appel:</font></font></p>
+<ul>
+<li><span class="notranslate">bytes</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Entier, spécifiez la quantité de données à lire, la valeur par défaut est de lire un bloc de données de taille aléatoire, la taille des données lues dépend de l'appareil</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Résultat de retour:</font></font></p>
+<ul>
+<li><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Renvoie les données lues dans le flux, s'il n'y a aucune donnée à lire ou si la connexion est interrompue, puis renvoie null</font></font></li>
+</ul>
+<hr>
+<div name="readAll" data-unique="readAll"></div><h3 id="readAll" class="notranslate">readAll</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Lire toutes les données restantes du flux, cette méthode est un alias de la méthode correspondante du corps</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Buffer HttpMessage.readAll() <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Résultat de retour:</font></font></p>
+<ul>
+<li><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Renvoie les données lues dans le flux, s'il n'y a aucune donnée à lire ou si la connexion est interrompue, puis renvoie null</font></font></li>
+</ul>
+<hr>
+<div name="write" data-unique="write"></div><h3 id="write" class="notranslate">write</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Écrivez les données données, cette méthode est l'alias de la méthode correspondante du corps</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>HttpMessage.write(Buffer data) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paramètres d'appel:</font></font></p>
+<ul>
+<li><span class="notranslate">data</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Compte tenu des données à écrire</font></font></li>
+</ul>
+<hr>
+<div name="json" data-unique="json"></div><h3 id="json" class="notranslate">json</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ecrire les données données dans l'encodage JSON</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Value HttpMessage.json(Value data);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paramètres d'appel:</font></font></p>
+<ul>
+<li><span class="notranslate">data</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Valeur, compte tenu des données à écrire</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Résultat de retour:</font></font></p>
+<ul>
+<li><span class="notranslate">Value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Cette méthode ne retournera pas de données</font></font></li>
+</ul>
+<hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Analyser les données du message en encodage JSON</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Value HttpMessage.json();
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Résultat de retour:</font></font></p>
+<ul>
+<li><span class="notranslate">Value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Renvoie le résultat analysé</font></font></li>
+</ul>
+<hr>
+<div name="pack" data-unique="pack"></div><h3 id="pack" class="notranslate">pack</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">À </font></font><a href="../../module/ifs/msgpack.md.html" class="notranslate">msgpack</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Encode pour écrire les données données</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Value HttpMessage.pack(Value data);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paramètres d'appel:</font></font></p>
+<ul>
+<li><span class="notranslate">data</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Valeur, compte tenu des données à écrire</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Résultat de retour:</font></font></p>
+<ul>
+<li><span class="notranslate">Value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Cette méthode ne retournera pas de données</font></font></li>
+</ul>
+<hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">À </font></font><a href="../../module/ifs/msgpack.md.html" class="notranslate">msgpack</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Codage et analyse des données dans le message</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Value HttpMessage.pack();
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Résultat de retour:</font></font></p>
+<ul>
+<li><span class="notranslate">Value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Renvoie le résultat analysé</font></font></li>
+</ul>
+<hr>
+<div name="end" data-unique="end"></div><h3 id="end" class="notranslate">end</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Définit la fin du traitement des messages en cours,</font></font><a href="chain.md.html" class="notranslate">Chain</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Le sous-traitant ne poursuit pas les transactions suivantes</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>HttpMessage.end();
+</code></pre>
+<hr>
+<div name="isEnded" data-unique="isEnded"></div><h3 id="isEnded" class="notranslate">isEnded</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Demander si le message actuel est terminé</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Boolean</span> HttpMessage.isEnded();
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Résultat de retour:</font></font></p>
+<ul>
+<li><span class="notranslate">Boolean</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Renvoie vrai à la fin</font></font></li>
+</ul>
+<hr>
+<div name="clear" data-unique="clear"></div><h3 id="clear" class="notranslate">clear</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Effacer le contenu du message</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>HttpMessage.clear();
+</code></pre>
+<hr>
+<div name="sendTo" data-unique="sendTo"></div><h3 id="sendTo" class="notranslate">sendTo</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Envoyer un message formaté à l'objet de flux donné</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>HttpMessage.sendTo(Stream stm) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paramètres d'appel:</font></font></p>
+<ul>
+<li><span class="notranslate">stm</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="stream.md.html" class="notranslate">Stream</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Spécifiez l'objet de flux pour recevoir les messages formatés</font></font></li>
+</ul>
+<hr>
+<div name="readFrom" data-unique="readFrom"></div><h3 id="readFrom" class="notranslate">readFrom</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Lire le message formaté à partir de l'objet de flux de cache donné et analyser l'objet de remplissage</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>HttpMessage.readFrom(Stream stm) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paramètres d'appel:</font></font></p>
+<ul>
+<li><span class="notranslate">stm</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="stream.md.html" class="notranslate">Stream</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Spécifiez l'objet de flux pour lire les messages formatés</font></font></li>
+</ul>
+<hr>
+<div name="toString" data-unique="toString"></div><h3 id="toString" class="notranslate">toString</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Renvoie la représentation sous forme de chaîne de l'objet, renvoie généralement "[Native Object]", l'objet peut être réimplémenté selon ses propres caractéristiques</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> HttpMessage.toString();
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Résultat de retour:</font></font></p>
+<ul>
+<li><span class="notranslate">String</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Renvoie la représentation sous forme de chaîne de l'objet</font></font></li>
+</ul>
+<hr>
+<div name="toJSON" data-unique="toJSON"></div><h3 id="toJSON" class="notranslate">toJSON</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Renvoie la représentation au format JSON de l'objet, renvoie généralement une collection d'attributs lisibles définis par l'objet</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Value HttpMessage.toJSON(<span class="hljs-built_in">String</span> key = <span class="hljs-string">""</span>);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paramètres d'appel:</font></font></p>
+<ul>
+<li><span class="notranslate">key</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Chaîne, inutilisée</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Résultat de retour:</font></font></p>
+<ul>
+<li><span class="notranslate">Value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Renvoie une valeur contenant JSON sérialisable</font></font></li>
+</ul>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2014-Present fibjs.org | </font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Soutenez-nous</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip796992"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip796992" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cliquez pour revenir en haut de la page</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>

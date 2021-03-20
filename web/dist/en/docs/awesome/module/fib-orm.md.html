@@ -1,0 +1,1132 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../../imgs/icon.png"><title>Object Relational Mapping for fibjs-JavaScript on Fiber</title><link href="../../../../css/common.css" rel="stylesheet"><link href="../../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Toggle navigation</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../../index.html"><img src="../../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../../index.html">HOME</a></li><li><a href="../../guide/readme.md.html">GUIDE</a></li><li><a href="../../manual/module/readme.md.html">MODULE</a></li><li><a href="../../manual/object/readme.md.html">OBJECT</a></li><li><a href="../readme.md.html">AWESOME</a></li><li><a href="../../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../../docs/awesome/module/fib-orm.md.html">中文</a> <a href="../../../../en/docs/awesome/module/fib-orm.md.html">ENGLISH</a> <a href="../../../../ja/docs/awesome/module/fib-orm.md.html">日本語</a> <a href="../../../../de/docs/awesome/module/fib-orm.md.html">Deutsch</a> <a href="../../../../es/docs/awesome/module/fib-orm.md.html">Español</a> <a href="../../../../fr/docs/awesome/module/fib-orm.md.html">Français</a> <a href="../../../../ko/docs/awesome/module/fib-orm.md.html">한국어</a> <a href="../../../../it/docs/awesome/module/fib-orm.md.html">Italiano</a> <a href="../../../../ru/docs/awesome/module/fib-orm.md.html">Русский</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Awesome community module </font></font></span><div class="search"><span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input type="text" class="searchbox ds-input" placeholder="Search" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-label="search input" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Avenir, &quot;Segoe UI&quot;, Arial, &quot;Hiragino Sans GB&quot;, 冬青黑, &quot;Microsoft YaHei&quot;, 微软雅黑, SimSun, 宋体, Helvetica, Tahoma, &quot;Arial sans-serif&quot;; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div class="ds-dataset-1"></div></span></span></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Home page</font></font></a></li><li><a href="../readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Community module </font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Object Relational Mapping for fibjs </font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Development Guide </font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="../../guide/about.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">What is fibjs?</font></font></a></li>
+<li><a href="../../guide/install.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Installation and operating environment</font></font></a></li>
+<li><a href="../../guide/hello.md.html" class="notranslate">hello, world</a></li>
+<li><a href="../../guide/test.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">A good life starts with the test</font></font></a></li>
+<li><a href="../../guide/profiler.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Find the performance killer</font></font></a></li>
+<li><a href="../../guide/desktop.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Quickly develop desktop applications</font></font></a></li>
+<li><a href="../../guide/server-hot-update.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Server module hot update</font></font></a></li>
+<li><a href="../../guide/host-routes.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Domain name routing</font></font></a></li>
+<li><a href="../../guide/x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Use of X509 certificate in fibjs</font></font></a></li>
+<li><a href="../../guide/contribute.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Add native module</font></font></a></li>
+</ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_module" aria-controls="collapse_module"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Basic module </font></font></a></h4></div><div id="collapse_module" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="../../manual/module/ifs/assert.md.html" class="notranslate">assert</a></li>
+<li><a href="../../manual/module/ifs/base32.md.html" class="notranslate">base32</a></li>
+<li><a href="../../manual/module/ifs/base64.md.html" class="notranslate">base64</a></li>
+<li><a href="../../manual/module/ifs/base64vlq.md.html" class="notranslate">base64vlq</a></li>
+<li><a href="../../manual/module/ifs/bson.md.html" class="notranslate">bson</a></li>
+<li><a href="../../manual/module/ifs/child_process.md.html" class="notranslate">child_process</a></li>
+<li><a href="../../manual/module/ifs/console.md.html" class="notranslate">console</a></li>
+<li><a href="../../manual/module/ifs/constants.md.html" class="notranslate">constants</a></li>
+<li><a href="../../manual/module/ifs/coroutine.md.html" class="notranslate">coroutine</a></li>
+<li><a href="../../manual/module/ifs/crypto.md.html" class="notranslate">crypto</a></li>
+<li><a href="../../manual/module/ifs/db.md.html" class="notranslate">db</a></li>
+<li><a href="../../manual/module/ifs/dgram.md.html" class="notranslate">dgram</a></li>
+<li><a href="../../manual/module/ifs/dns.md.html" class="notranslate">dns</a></li>
+<li><a href="../../manual/module/ifs/encoding.md.html" class="notranslate">encoding</a></li>
+<li><a href="../../manual/module/ifs/fs.md.html" class="notranslate">fs</a></li>
+<li><a href="../../manual/module/ifs/gd.md.html" class="notranslate">gd</a></li>
+<li><a href="../../manual/module/ifs/global.md.html" class="notranslate">global</a></li>
+<li><a href="../../manual/module/ifs/gui.md.html" class="notranslate">gui</a></li>
+<li><a href="../../manual/module/ifs/hash.md.html" class="notranslate">hash</a></li>
+<li><a href="../../manual/module/ifs/hex.md.html" class="notranslate">hex</a></li>
+<li><a href="../../manual/module/ifs/http.md.html" class="notranslate">http</a></li>
+<li><a href="../../manual/module/ifs/iconv.md.html" class="notranslate">iconv</a></li>
+<li><a href="../../manual/module/ifs/io.md.html" class="notranslate">io</a></li>
+<li><a href="../../manual/module/ifs/json.md.html" class="notranslate">json</a></li>
+<li><a href="../../manual/module/ifs/mq.md.html" class="notranslate">mq</a></li>
+<li><a href="../../manual/module/ifs/msgpack.md.html" class="notranslate">msgpack</a></li>
+<li><a href="../../manual/module/ifs/net.md.html" class="notranslate">net</a></li>
+<li><a href="../../manual/module/ifs/os.md.html" class="notranslate">os</a></li>
+<li><a href="../../manual/module/ifs/path.md.html" class="notranslate">path</a></li>
+<li><a href="../../manual/module/ifs/path_posix.md.html" class="notranslate">path_posix</a></li>
+<li><a href="../../manual/module/ifs/path_win32.md.html" class="notranslate">path_win32</a></li>
+<li><a href="../../manual/module/ifs/process.md.html" class="notranslate">process</a></li>
+<li><a href="../../manual/module/ifs/profiler.md.html" class="notranslate">profiler</a></li>
+<li><a href="../../manual/module/ifs/punycode.md.html" class="notranslate">punycode</a></li>
+<li><a href="../../manual/module/ifs/querystring.md.html" class="notranslate">querystring</a></li>
+<li><a href="../../manual/module/ifs/registry.md.html" class="notranslate">registry</a></li>
+<li><a href="../../manual/module/ifs/ssl.md.html" class="notranslate">ssl</a></li>
+<li><a href="../../manual/module/ifs/string_decoder.md.html" class="notranslate">string_decoder</a></li>
+<li><a href="../../manual/module/ifs/test.md.html" class="notranslate">test</a></li>
+<li><a href="../../manual/module/ifs/timers.md.html" class="notranslate">timers</a></li>
+<li><a href="../../manual/module/ifs/tty.md.html" class="notranslate">tty</a></li>
+<li><a href="../../manual/module/ifs/url.md.html" class="notranslate">url</a></li>
+<li><a href="../../manual/module/ifs/util.md.html" class="notranslate">util</a></li>
+<li><a href="../../manual/module/ifs/uuid.md.html" class="notranslate">uuid</a></li>
+<li><a href="../../manual/module/ifs/vm.md.html" class="notranslate">vm</a></li>
+<li><a href="../../manual/module/ifs/ws.md.html" class="notranslate">ws</a></li>
+<li><a href="../../manual/module/ifs/xml.md.html" class="notranslate">xml</a></li>
+<li><a href="../../manual/module/ifs/zip.md.html" class="notranslate">zip</a></li>
+<li><a href="../../manual/module/ifs/zlib.md.html" class="notranslate">zlib</a></li>
+</ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_object" aria-controls="collapse_object"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Built-in objects </font></font></a></h4></div><div id="collapse_object" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="../../manual/object/ifs/buffer.md.html" class="notranslate">Buffer</a></li>
+<li><a href="../../manual/object/ifs/bufferedstream.md.html" class="notranslate">BufferedStream</a></li>
+<li><a href="../../manual/object/ifs/chain.md.html" class="notranslate">Chain</a></li>
+<li><a href="../../manual/object/ifs/childprocess.md.html" class="notranslate">ChildProcess</a></li>
+<li><a href="../../manual/object/ifs/cipher.md.html" class="notranslate">Cipher</a></li>
+<li><a href="../../manual/object/ifs/condition.md.html" class="notranslate">Condition</a></li>
+<li><a href="../../manual/object/ifs/dbconnection.md.html" class="notranslate">DbConnection</a></li>
+<li><a href="../../manual/object/ifs/dgramsocket.md.html" class="notranslate">DgramSocket</a></li>
+<li><a href="../../manual/object/ifs/digest.md.html" class="notranslate">Digest</a></li>
+<li><a href="../../manual/object/ifs/event.md.html" class="notranslate">Event</a></li>
+<li><a href="../../manual/object/ifs/eventemitter.md.html" class="notranslate">EventEmitter</a></li>
+<li><a href="../../manual/object/ifs/fswatcher.md.html" class="notranslate">FSWatcher</a></li>
+<li><a href="../../manual/object/ifs/fiber.md.html" class="notranslate">Fiber</a></li>
+<li><a href="../../manual/object/ifs/file.md.html" class="notranslate">File</a></li>
+<li><a href="../../manual/object/ifs/handler.md.html" class="notranslate">Handler</a></li>
+<li><a href="../../manual/object/ifs/heapgraphedge.md.html" class="notranslate">HeapGraphEdge</a></li>
+<li><a href="../../manual/object/ifs/heapgraphnode.md.html" class="notranslate">HeapGraphNode</a></li>
+<li><a href="../../manual/object/ifs/heapsnapshot.md.html" class="notranslate">HeapSnapshot</a></li>
+<li><a href="../../manual/object/ifs/httpclient.md.html" class="notranslate">HttpClient</a></li>
+<li><a href="../../manual/object/ifs/httpcollection.md.html" class="notranslate">HttpCollection</a></li>
+<li><a href="../../manual/object/ifs/httpcookie.md.html" class="notranslate">HttpCookie</a></li>
+<li><a href="../../manual/object/ifs/httphandler.md.html" class="notranslate">HttpHandler</a></li>
+<li><a href="../../manual/object/ifs/httpmessage.md.html" class="notranslate">HttpMessage</a></li>
+<li><a href="../../manual/object/ifs/httprepeater.md.html" class="notranslate">HttpRepeater</a></li>
+<li><a href="../../manual/object/ifs/httprequest.md.html" class="notranslate">HttpRequest</a></li>
+<li><a href="../../manual/object/ifs/httpresponse.md.html" class="notranslate">HttpResponse</a></li>
+<li><a href="../../manual/object/ifs/httpserver.md.html" class="notranslate">HttpServer</a></li>
+<li><a href="../../manual/object/ifs/httpuploaddata.md.html" class="notranslate">HttpUploadData</a></li>
+<li><a href="../../manual/object/ifs/httpsserver.md.html" class="notranslate">HttpsServer</a></li>
+<li><a href="../../manual/object/ifs/image.md.html" class="notranslate">Image</a></li>
+<li><a href="../../manual/object/ifs/leveldb.md.html" class="notranslate">LevelDB</a></li>
+<li><a href="../../manual/object/ifs/lock.md.html" class="notranslate">Lock</a></li>
+<li><a href="../../manual/object/ifs/lrucache.md.html" class="notranslate">LruCache</a></li>
+<li><a href="../../manual/object/ifs/mssql.md.html" class="notranslate">MSSQL</a></li>
+<li><a href="../../manual/object/ifs/memorystream.md.html" class="notranslate">MemoryStream</a></li>
+<li><a href="../../manual/object/ifs/message.md.html" class="notranslate">Message</a></li>
+<li><a href="../../manual/object/ifs/mongocollection.md.html" class="notranslate">MongoCollection</a></li>
+<li><a href="../../manual/object/ifs/mongocursor.md.html" class="notranslate">MongoCursor</a></li>
+<li><a href="../../manual/object/ifs/mongodb.md.html" class="notranslate">MongoDB</a></li>
+<li><a href="../../manual/object/ifs/mongoid.md.html" class="notranslate">MongoID</a></li>
+<li><a href="../../manual/object/ifs/mysql.md.html" class="notranslate">MySQL</a></li>
+<li><a href="../../manual/object/ifs/pkey.md.html" class="notranslate">PKey</a></li>
+<li><a href="../../manual/object/ifs/rangestream.md.html" class="notranslate">RangeStream</a></li>
+<li><a href="../../manual/object/ifs/redis.md.html" class="notranslate">Redis</a></li>
+<li><a href="../../manual/object/ifs/redishash.md.html" class="notranslate">RedisHash</a></li>
+<li><a href="../../manual/object/ifs/redislist.md.html" class="notranslate">RedisList</a></li>
+<li><a href="../../manual/object/ifs/redisset.md.html" class="notranslate">RedisSet</a></li>
+<li><a href="../../manual/object/ifs/redissortedset.md.html" class="notranslate">RedisSortedSet</a></li>
+<li><a href="../../manual/object/ifs/routing.md.html" class="notranslate">Routing</a></li>
+<li><a href="../../manual/object/ifs/sqlite.md.html" class="notranslate">SQLite</a></li>
+<li><a href="../../manual/object/ifs/sandbox.md.html" class="notranslate">SandBox</a></li>
+<li><a href="../../manual/object/ifs/seekablestream.md.html" class="notranslate">SeekableStream</a></li>
+<li><a href="../../manual/object/ifs/semaphore.md.html" class="notranslate">Semaphore</a></li>
+<li><a href="../../manual/object/ifs/service.md.html" class="notranslate">Service</a></li>
+<li><a href="../../manual/object/ifs/smtp.md.html" class="notranslate">Smtp</a></li>
+<li><a href="../../manual/object/ifs/socket.md.html" class="notranslate">Socket</a></li>
+<li><a href="../../manual/object/ifs/sslhandler.md.html" class="notranslate">SslHandler</a></li>
+<li><a href="../../manual/object/ifs/sslserver.md.html" class="notranslate">SslServer</a></li>
+<li><a href="../../manual/object/ifs/sslsocket.md.html" class="notranslate">SslSocket</a></li>
+<li><a href="../../manual/object/ifs/stat.md.html" class="notranslate">Stat</a></li>
+<li><a href="../../manual/object/ifs/statswatcher.md.html" class="notranslate">StatsWatcher</a></li>
+<li><a href="../../manual/object/ifs/stream.md.html" class="notranslate">Stream</a></li>
+<li><a href="../../manual/object/ifs/stringdecoder.md.html" class="notranslate">StringDecoder</a></li>
+<li><a href="../../manual/object/ifs/tcpserver.md.html" class="notranslate">TcpServer</a></li>
+<li><a href="../../manual/object/ifs/timer.md.html" class="notranslate">Timer</a></li>
+<li><a href="../../manual/object/ifs/urlobject.md.html" class="notranslate">UrlObject</a></li>
+<li><a href="../../manual/object/ifs/websocket.md.html" class="notranslate">WebSocket</a></li>
+<li><a href="../../manual/object/ifs/websocketmessage.md.html" class="notranslate">WebSocketMessage</a></li>
+<li><a href="../../manual/object/ifs/webview.md.html" class="notranslate">WebView</a></li>
+<li><a href="../../manual/object/ifs/worker.md.html" class="notranslate">Worker</a></li>
+<li><a href="../../manual/object/ifs/x509cert.md.html" class="notranslate">X509Cert</a></li>
+<li><a href="../../manual/object/ifs/x509crl.md.html" class="notranslate">X509Crl</a></li>
+<li><a href="../../manual/object/ifs/x509req.md.html" class="notranslate">X509Req</a></li>
+<li><a href="../../manual/object/ifs/xmlattr.md.html" class="notranslate">XmlAttr</a></li>
+<li><a href="../../manual/object/ifs/xmlcdatasection.md.html" class="notranslate">XmlCDATASection</a></li>
+<li><a href="../../manual/object/ifs/xmlcharacterdata.md.html" class="notranslate">XmlCharacterData</a></li>
+<li><a href="../../manual/object/ifs/xmlcomment.md.html" class="notranslate">XmlComment</a></li>
+<li><a href="../../manual/object/ifs/xmldocument.md.html" class="notranslate">XmlDocument</a></li>
+<li><a href="../../manual/object/ifs/xmldocumenttype.md.html" class="notranslate">XmlDocumentType</a></li>
+<li><a href="../../manual/object/ifs/xmlelement.md.html" class="notranslate">XmlElement</a></li>
+<li><a href="../../manual/object/ifs/xmlnamednodemap.md.html" class="notranslate">XmlNamedNodeMap</a></li>
+<li><a href="../../manual/object/ifs/xmlnode.md.html" class="notranslate">XmlNode</a></li>
+<li><a href="../../manual/object/ifs/xmlnodelist.md.html" class="notranslate">XmlNodeList</a></li>
+<li><a href="../../manual/object/ifs/xmlprocessinginstruction.md.html" class="notranslate">XmlProcessingInstruction</a></li>
+<li><a href="../../manual/object/ifs/xmltext.md.html" class="notranslate">XmlText</a></li>
+<li><a href="../../manual/object/ifs/zipfile.md.html" class="notranslate">ZipFile</a></li>
+<li><a href="../../manual/object/ifs/object.md.html" class="notranslate">object</a></li>
+</ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_awesome" aria-controls="collapse_awesome"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Community module </font></font></a></h4></div><div id="collapse_awesome" class="panel-collapse collapse in" aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="fib-session.md.html" class="notranslate">fib-session</a></li>
+<li><a href="fib-pool.md.html" class="notranslate">fib-pool</a></li>
+<li class="active"><a href="fib-orm.md.html" class="notranslate">fib-orm</a></li>
+<li><a href="fib-app.md.html" class="notranslate">fib-app</a></li>
+<li><a href="fib-kv.md.html" class="notranslate">fib-kv</a></li>
+<li><a href="fib-rpc.md.html" class="notranslate">fib-rpc</a></li>
+<li><a href="fib-qr.md.html" class="notranslate">fib-qr</a></li>
+<li><a href="fib-pug.md.html" class="notranslate">fib-pug</a></li>
+<li><a href="ejs.md.html" class="notranslate">ejs</a></li>
+<li><a href="juicer.md.html" class="notranslate">Juicer</a></li>
+<li><a href="highlight.js.md.html" class="notranslate">highlight.js</a></li>
+<li><a href="marked.md.html" class="notranslate">marked</a></li>
+<li><a href="node-cron.md.html" class="notranslate">node-cron</a></li>
+<li><a href="debug.md.html" class="notranslate">debug</a></li>
+<li><a href="benchmark.js.md.html" class="notranslate">benchmark.js</a></li>
+<li><a href="sinon.md.html" class="notranslate">sinon</a></li>
+<li><a href="node-mime.md.html" class="notranslate">node-mime</a></li>
+<li><a href="validatorjs.md.html" class="notranslate">validatorjs</a></li>
+<li><a href="superstruct.md.html" class="notranslate">superstruct</a></li>
+<li><a href="cluster-server.md.html" class="notranslate">cluster-server</a></li>
+<li><a href="synaptic.md.html" class="notranslate">synaptic</a></li>
+<li><a href="source-map.md.html" class="notranslate">source-map</a></li>
+<li><a href="json-format.md.html" class="notranslate">json-format</a></li>
+<li><a href="viz.js.md.html" class="notranslate">viz.js</a></li>
+<li><a href="nomnoml.md.html" class="notranslate">nomnoml</a></li>
+<li><a href="pegjs.md.html" class="notranslate">pegjs</a></li>
+<li><a href="uglify-js.md.html" class="notranslate">uglify-js</a></li>
+<li><a href="js-beautify.md.html" class="notranslate">js-beautify</a></li>
+<li><a href="chalk-animation.md.html" class="notranslate">chalk-animation</a></li>
+<li><a href="jsrsasign.md.html" class="notranslate">jsrsasign</a></li>
+<li><a href="crypto-js.md.html" class="notranslate">crypto-js</a></li>
+<li><a href="ascii-table.md.html" class="notranslate">ascii-table</a></li>
+<li><a href="logstream.md.html" class="notranslate">logstream</a></li>
+<li><a href="ci.md.html" class="notranslate">ci</a></li>
+<li><a href="fs-readdir-recursive.md.html" class="notranslate">fs-readdir-recursive</a></li>
+<li><a href="mkdirp.md.html" class="notranslate">mkdirp</a></li>
+<li><a href="rmdirr.md.html" class="notranslate">rmdirr</a></li>
+<li><a href="detect-port.md.html" class="notranslate">detect-port</a></li>
+<li><a href="bitcoinjs-lib.md.html" class="notranslate">bitcoinjs-lib</a></li>
+<li><a href="rakuten.md.html" class="notranslate">Rakuten</a></li>
+</ul>
+ </div></div></div>  </div></div><div class="content"><div class="social-share share-component" data-sites="weibo,twitter" data-description="分享"></div> <h2 id="Object-Relational-Mapping-for-fibjs"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Object Relational Mapping for fibjs</font></font></h2>
+<p><a href="https://travis-ci.org/fibjs/fib-orm"><img src="https://travis-ci.org/fibjs/fib-orm.svg" alt="Build Status"></a></p>
+<h2 id="Install"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Install</font></font></h2>
+<pre><code class="lang-sh"><div class="line-numbers">1</div>npm install fib-orm
+</code></pre>
+<h2 id="Test"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Test</font></font></h2>
+<pre><code class="lang-sh"><div class="line-numbers">1</div>npm run ci
+</code></pre>
+<h2 id="DBMS-Support"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">DBMS Support</font></font></h2>
+<ul>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">MySQL &amp; MariaDB</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SQLite</font></font></li>
+</ul>
+<h2 id="Features"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Features</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fib-orm add a set of synchronous version method on node-orm object.</font></font></p>
+<h2 id="Introduction"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Introduction</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">This is a fibjs object relational mapping module.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">An example:</font></font></p>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37</div><span class="hljs-keyword">var</span> orm = <span class="hljs-built_in">require</span>(<span class="hljs-string">"fib-orm"</span>);<font></font>
+<font></font>
+<span class="hljs-keyword">var</span> db = orm.connectSync(<span class="hljs-string">"mysql://username:password@host/database"</span>);
+<span class="hljs-keyword">var</span> Person = db.define(<span class="hljs-string">"person"</span>, {
+    <span class="hljs-attr">name</span>      : <span class="hljs-built_in">String</span>,
+    <span class="hljs-attr">surname</span>   : <span class="hljs-built_in">String</span>,
+    <span class="hljs-attr">age</span>       : <span class="hljs-built_in">Number</span>, <span class="hljs-comment">// FLOAT</span>
+    male      : <span class="hljs-built_in">Boolean</span>,
+    <span class="hljs-attr">continent</span> : [ <span class="hljs-string">"Europe"</span>, <span class="hljs-string">"America"</span>, <span class="hljs-string">"Asia"</span>, <span class="hljs-string">"Africa"</span>, <span class="hljs-string">"Australia"</span>, <span class="hljs-string">"Antartica"</span> ], <span class="hljs-comment">// ENUM type</span>
+    photo     : Buffer, <span class="hljs-comment">// BLOB/BINARY</span>
+    data      : <span class="hljs-built_in">Object</span> <span class="hljs-comment">// JSON encoded</span><font></font>
+}, {<font></font>
+    <span class="hljs-attr">methods</span>: {
+        <span class="hljs-attr">fullName</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.name + <span class="hljs-string">' '</span> + <span class="hljs-keyword">this</span>.surname;<font></font>
+        }<font></font>
+    },<font></font>
+    <span class="hljs-attr">validations</span>: {
+        <span class="hljs-attr">age</span>: orm.enforce.ranges.number(<span class="hljs-number">18</span>, <span class="hljs-literal">undefined</span>, <span class="hljs-string">"under-age"</span>)<font></font>
+    }<font></font>
+});<font></font>
+<font></font>
+<span class="hljs-comment">// add the table to the database</span><font></font>
+db.syncSync();<font></font>
+<font></font>
+<span class="hljs-comment">// add a row to the person table</span>
+Person.createSync({ <span class="hljs-attr">id</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">"John"</span>, <span class="hljs-attr">surname</span>: <span class="hljs-string">"Doe"</span>, <span class="hljs-attr">age</span>: <span class="hljs-number">27</span> });<font></font>
+<font></font>
+<span class="hljs-comment">// query the person table by surname</span>
+<span class="hljs-keyword">var</span> people = Person.findSync({ <span class="hljs-attr">surname</span>: <span class="hljs-string">"Doe"</span> });
+<span class="hljs-comment">// SQL: "SELECT * FROM person WHERE surname = 'Doe'"</span><font></font>
+<font></font>
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">"People found: %d"</span>, people.length);
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">"First person: %s, age %d"</span>, people[<span class="hljs-number">0</span>].fullName(), people[<span class="hljs-number">0</span>].age);<font></font>
+<font></font>
+people[<span class="hljs-number">0</span>].age = <span class="hljs-number">16</span>;<font></font>
+people[<span class="hljs-number">0</span>].saveSync();
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">The node.js version like this:</font></font></p>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49</div><span class="hljs-keyword">var</span> orm = <span class="hljs-built_in">require</span>(<span class="hljs-string">"orm"</span>);<font></font>
+<font></font>
+orm.connect(<span class="hljs-string">"mysql://username:password@host/database"</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">err, db</span>) </span>{
+  <span class="hljs-keyword">if</span> (err) <span class="hljs-keyword">throw</span> err;<font></font>
+<font></font>
+    <span class="hljs-keyword">var</span> Person = db.define(<span class="hljs-string">"person"</span>, {
+        <span class="hljs-attr">name</span>      : <span class="hljs-built_in">String</span>,
+        <span class="hljs-attr">surname</span>   : <span class="hljs-built_in">String</span>,
+        <span class="hljs-attr">age</span>       : <span class="hljs-built_in">Number</span>, <span class="hljs-comment">// FLOAT</span>
+        male      : <span class="hljs-built_in">Boolean</span>,
+        <span class="hljs-attr">continent</span> : [ <span class="hljs-string">"Europe"</span>, <span class="hljs-string">"America"</span>, <span class="hljs-string">"Asia"</span>, <span class="hljs-string">"Africa"</span>, <span class="hljs-string">"Australia"</span>, <span class="hljs-string">"Antartica"</span> ], <span class="hljs-comment">// ENUM type</span>
+        photo     : Buffer, <span class="hljs-comment">// BLOB/BINARY</span>
+        data      : <span class="hljs-built_in">Object</span> <span class="hljs-comment">// JSON encoded</span><font></font>
+    }, {<font></font>
+        <span class="hljs-attr">methods</span>: {
+            <span class="hljs-attr">fullName</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+                <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.name + <span class="hljs-string">' '</span> + <span class="hljs-keyword">this</span>.surname;<font></font>
+            }<font></font>
+        },<font></font>
+        <span class="hljs-attr">validations</span>: {
+            <span class="hljs-attr">age</span>: orm.enforce.ranges.number(<span class="hljs-number">18</span>, <span class="hljs-literal">undefined</span>, <span class="hljs-string">"under-age"</span>)<font></font>
+        }<font></font>
+    });<font></font>
+<font></font>
+    <span class="hljs-comment">// add the table to the database</span>
+    db.sync(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>) </span>{
+        <span class="hljs-keyword">if</span> (err) <span class="hljs-keyword">throw</span> err;<font></font>
+<font></font>
+        <span class="hljs-comment">// add a row to the person table</span>
+        Person.create({ <span class="hljs-attr">id</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">"John"</span>, <span class="hljs-attr">surname</span>: <span class="hljs-string">"Doe"</span>, <span class="hljs-attr">age</span>: <span class="hljs-number">27</span> }, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>) </span>{
+            <span class="hljs-keyword">if</span> (err) <span class="hljs-keyword">throw</span> err;<font></font>
+<font></font>
+                <span class="hljs-comment">// query the person table by surname</span>
+                Person.find({ <span class="hljs-attr">surname</span>: <span class="hljs-string">"Doe"</span> }, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">err, people</span>) </span>{
+                    <span class="hljs-comment">// SQL: "SELECT * FROM person WHERE surname = 'Doe'"</span>
+                    <span class="hljs-keyword">if</span> (err) <span class="hljs-keyword">throw</span> err;<font></font>
+<font></font>
+                    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"People found: %d"</span>, people.length);
+                    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"First person: %s, age %d"</span>, people[<span class="hljs-number">0</span>].fullName(), people[<span class="hljs-number">0</span>].age);<font></font>
+<font></font>
+                    people[<span class="hljs-number">0</span>].age = <span class="hljs-number">16</span>;<font></font>
+                    people[<span class="hljs-number">0</span>].save(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">err</span>) </span>{
+                        <span class="hljs-comment">// err.msg = "under-age";</span><font></font>
+                });<font></font>
+            });<font></font>
+<font></font>
+        });<font></font>
+    });<font></font>
+});<font></font>
+</code></pre>
+<h2 id="Documentation"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Documentation</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Fibjs did not add new functions, the development of documents can refer to node-orm, only need to change the asynchronous call to synchronous version.   </font></font><a href="https://github.com/dresende/node-orm2/wiki/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">wiki</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> .</font></font></p>
+<h2 id="Settings"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Settings</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">See information in the </font></font><a href="https://github.com/dresende/node-orm2/wiki/Settings"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">wiki</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> .</font></font></p>
+<h2 id="Connecting"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Connecting</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">See information in the </font></font><a href="https://github.com/dresende/node-orm2/wiki/Connecting-to-Database"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">wiki</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> .</font></font></p>
+<h2 id="Models"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Models</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">A Model is an abstraction over one or more database tables. Models support associations (more below). The name of the model is assumed to match the table name.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Models support behaviours for accessing and manipulating table data.</font></font></p>
+<h2 id="Defining-Models"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Defining Models</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">See information in the </font></font><a href="https://github.com/dresende/node-orm2/wiki/Defining-Models"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">wiki</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> .</font></font></p>
+<h3 id="Properties" class="notranslate">Properties</h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">See information in the </font></font><a href="https://github.com/dresende/node-orm2/wiki/Model-Properties"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">wiki</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> .</font></font></p>
+<h3 id="Instance-Methods" class="notranslate">Instance Methods</h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Are passed in during model definition.</font></font></p>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13</div><span class="hljs-keyword">var</span> Person = db.define(<span class="hljs-string">'person'</span>, {
+    <span class="hljs-attr">name</span>    : <span class="hljs-built_in">String</span>,
+    <span class="hljs-attr">surname</span> : <span class="hljs-built_in">String</span><font></font>
+}, {<font></font>
+    <span class="hljs-attr">methods</span>: {
+        <span class="hljs-attr">fullName</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.name + <span class="hljs-string">' '</span> + <span class="hljs-keyword">this</span>.surname;<font></font>
+        }<font></font>
+    }<font></font>
+});<font></font>
+<font></font>
+<span class="hljs-keyword">var</span> person = Person.getSync(<span class="hljs-number">4</span>);
+<span class="hljs-built_in">console</span>.log( person.fullName() );
+</code></pre>
+<h3 id="Model-Methods" class="notranslate">Model Methods</h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Are defined directly on the model.</font></font></p>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9</div><span class="hljs-keyword">var</span> Person = db.define(<span class="hljs-string">'person'</span>, {
+    <span class="hljs-attr">name</span>    : <span class="hljs-built_in">String</span>,
+    <span class="hljs-attr">height</span>  : { <span class="hljs-attr">type</span>: <span class="hljs-string">'integer'</span> }<font></font>
+});<font></font>
+Person.tallerThan = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">height</span>) </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.findSync({ <span class="hljs-attr">height</span>: orm.gt(height) });<font></font>
+};<font></font>
+<font></font>
+<span class="hljs-keyword">var</span> tallPeople = Person.tallerThan( <span class="hljs-number">192</span>);
+</code></pre>
+<h2 id="Loading-Models-[NOT-SUPPORT]"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Loading Models [NOT SUPPORT]</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Models can be in separate modules. Simply ensure that the module holding the models uses module.exports to publish a function that accepts the database connection, then load your models however you like.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Note-using this technique you can have cascading loads.</font></font></p>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20</div><span class="hljs-comment">// your main file (after connecting)</span>
+db.loadSync(<span class="hljs-string">"./models"</span>);
+<span class="hljs-comment">// loaded!</span>
+<span class="hljs-keyword">var</span> Person = db.models.person;
+<span class="hljs-keyword">var</span> Pet    = db.models.pet;<font></font>
+<font></font>
+<span class="hljs-comment">// models.js</span>
+<span class="hljs-built_in">module</span>.exports = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">db</span>) </span>{<font></font>
+    db.loadSync(<span class="hljs-string">"./models-extra"</span>);<font></font>
+    db.define(<span class="hljs-string">'person'</span>, {
+        <span class="hljs-attr">name</span> : <span class="hljs-built_in">String</span><font></font>
+    });<font></font>
+};<font></font>
+<font></font>
+<span class="hljs-comment">// models-extra.js</span>
+<span class="hljs-built_in">module</span>.exports = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">db</span>) </span>{<font></font>
+    db.define(<span class="hljs-string">'pet'</span>, {
+        <span class="hljs-attr">name</span> : <span class="hljs-built_in">String</span><font></font>
+    });<font></font>
+};<font></font>
+</code></pre>
+<h2 id="Synchronizing-Models"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Synchronizing Models</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">See information in the </font></font><a href="https://github.com/dresende/node-orm2/wiki/Syncing-and-dropping-models"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">wiki</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> .</font></font></p>
+<h2 id="Dropping-Models"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Dropping Models</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">See information in the </font></font><a href="https://github.com/dresende/node-orm2/wiki/Syncing-and-dropping-models"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">wiki</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> .</font></font></p>
+<h2 id="Advanced-Options"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Advanced Options</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ORM2 allows you some advanced tweaks on your Model definitions. You can configure these via settings or in the call to </font></font><code>define</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">when you setup the Model.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">For example, each Model instance has a unique ID in the database. This table column is added automatically, and called "id" by default. </font></font><br><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+If you define your own </font></font><code>key: true</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">column, "id" will not be added:</font></font></p>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12</div><span class="hljs-keyword">var</span> Person = db.define(<span class="hljs-string">"person"</span>, {
+    <span class="hljs-attr">personId</span> : { <span class="hljs-attr">type</span>: <span class="hljs-string">'serial'</span>, <span class="hljs-attr">key</span>: <span class="hljs-literal">true</span> },
+    <span class="hljs-attr">name</span>     : <span class="hljs-built_in">String</span><font></font>
+});<font></font>
+<font></font>
+<span class="hljs-comment">// You can also change the default "id" property name globally:</span>
+db.settings.set(<span class="hljs-string">"properties.primary_key"</span>, <span class="hljs-string">"UID"</span>);<font></font>
+<font></font>
+<span class="hljs-comment">// ..and then define your Models</span>
+<span class="hljs-keyword">var</span> Pet = db.define(<span class="hljs-string">"pet"</span>, {
+    <span class="hljs-attr">name</span> : <span class="hljs-built_in">String</span><font></font>
+});<font></font>
+</code></pre>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Pet</font></font></strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> model will have 2 columns, an </font></font><code>UID</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">and a </font></font><code>name</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">It's also possible to have composite keys:</font></font></p>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3
+4</div><span class="hljs-keyword">var</span> Person = db.define(<span class="hljs-string">"person"</span>, {
+    <span class="hljs-attr">firstname</span> : { <span class="hljs-attr">type</span>: <span class="hljs-string">'text'</span>, <span class="hljs-attr">key</span>: <span class="hljs-literal">true</span> },
+    <span class="hljs-attr">lastname</span>  : { <span class="hljs-attr">type</span>: <span class="hljs-string">'text'</span>, <span class="hljs-attr">key</span>: <span class="hljs-literal">true</span> }<font></font>
+});<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Other options:</font></font></p>
+<ul>
+<li><code>identityCache</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">  : (default:) </font></font><code>false</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Set it to </font></font><code>true</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">to enable identity cache ( </font></font><a href="#singleton"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Singletons</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> ) or set a timeout value (in seconds);</font></font></li>
+<li><code>autoSave</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">       : (default:) </font></font><code>false</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Set it to </font></font><code>true</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">to save an Instance right after changing any property;</font></font></li>
+<li><code>autoFetch</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">      : (default </font><font style="vertical-align: inherit;">:) </font></font><code>false</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Set it to </font></font><code>true</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">to fetch associations when fetching an instance from the database;</font></font></li>
+<li><code>autoFetchLimit</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: (default </font><font style="vertical-align: inherit;">:) </font></font><code>1</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">If </font></font><code>autoFetch</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">is enabled this defines how many hoops (associations of associations) you want it to automatically fetch.</font></font></li>
+</ul>
+<h2 id="Hooks"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Hooks</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">See information in the </font></font><a href="https://github.com/dresende/node-orm2/wiki/Model-Hooks"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">wiki</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> .</font></font></p>
+<h2 id="Finding-Items"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Finding Items</font></font></h2>
+<h3 id="Model.getSync(id,-[-options-])" class="notranslate">Model.getSync(id, [ options ])</h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">To get a specific element from the database use </font></font><code>Model.get</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">.</font></font></p>
+<pre><code class="lang-js"><div class="line-numbers">1
+2</div><span class="hljs-keyword">var</span> person = Person.getSync(<span class="hljs-number">123</span>);
+<span class="hljs-comment">// finds person with id = 123</span>
+</code></pre>
+<h3 id="Model.findSync([-conditions-]-[,-options-]-[,-limit-]-[,-order-])" class="notranslate">Model.findSync([ conditions ] [, options ] [, limit ] [, order ])</h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Finding one or more elements has more options, each one can be given in no specific parameter order. Only </font></font><code>options</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">has to be after </font></font><code>conditions</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(even if it's an empty object).</font></font></p>
+<pre><code class="lang-js"><div class="line-numbers">1
+2</div><span class="hljs-keyword">var</span> people = Person.findSync({ <span class="hljs-attr">name</span>: <span class="hljs-string">"John"</span>, <span class="hljs-attr">surname</span>: <span class="hljs-string">"Doe"</span> }, <span class="hljs-number">3</span>);
+<span class="hljs-comment">// finds people with name='John' AND surname='Doe' and returns the first 3</span>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">If you need to sort the results because you're limiting or just because you want them sorted do:</font></font></p>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3
+4
+5
+6</div><span class="hljs-keyword">var</span> people = Person.findSync({ <span class="hljs-attr">surname</span>: <span class="hljs-string">"Doe"</span> }, <span class="hljs-string">"name"</span>);
+<span class="hljs-comment">// finds people with surname='Doe' and returns sorted by name ascending</span><font></font>
+<font></font>
+people = Person.findSync({ <span class="hljs-attr">surname</span>: <span class="hljs-string">"Doe"</span> }, [ <span class="hljs-string">"name"</span>, <span class="hljs-string">"Z"</span> ]);
+<span class="hljs-comment">// finds people with surname='Doe' and returns sorted by name descending</span>
+<span class="hljs-comment">// ('Z' means DESC; 'A' means ASC - default)</span>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">There are more options that you can pass to find something. These options are passed in a second object:</font></font></p>
+<pre><code class="lang-js"><div class="line-numbers">1
+2</div><span class="hljs-keyword">var</span> people = Person.findSync({ <span class="hljs-attr">surname</span>: <span class="hljs-string">"Doe"</span> }, { <span class="hljs-attr">offset</span>: <span class="hljs-number">2</span> });
+<span class="hljs-comment">// finds people with surname='Doe', skips the first 2 and returns the others</span>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">You can also use raw SQL when searching. It's documented in the </font></font><em><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Chaining</font></font></em><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> section below.</font></font></p>
+<h3 id="Model.countSync([-conditions])" class="notranslate">Model.countSync([ conditions])</h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">If you just want to count the number of items that match a condition you can just use </font></font><code>.count()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">instead of finding all of them and counting. This will actually tell the database server to do a count (it won't be done in the node process itself ).</font></font></p>
+<pre><code class="lang-js"><div class="line-numbers">1
+2</div><span class="hljs-keyword">var</span> count = Person.countSync({ <span class="hljs-attr">surname</span>: <span class="hljs-string">"Doe"</span> });
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">"We have %d Does in our db"</span>, count);
+</code></pre>
+<h3 id="Model.existsSync([-conditions])" class="notranslate">Model.existsSync([ conditions])</h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Similar to </font></font><code>.count()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, this method just checks if the count is greater than zero or not.</font></font></p>
+<pre><code class="lang-js"><div class="line-numbers">1
+2</div><span class="hljs-keyword">var</span> exists = Person.existsSync({ <span class="hljs-attr">surname</span>: <span class="hljs-string">"Doe"</span> });
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">"We %s Does in our db"</span>, exists ? <span class="hljs-string">"have"</span> : <span class="hljs-string">"don't have"</span>);
+</code></pre>
+<h3 id="Aggregating-Functions" class="notranslate">Aggregating Functions</h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">An </font></font><code>Array</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">of properties can be passed to select only a few properties. An </font></font><code>Object</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">is also accepted to define conditions.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Here's an example to illustrate how to use </font></font><code>.groupBy()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font></p>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3</div><span class="hljs-comment">//The same as "select avg(weight), age from person where country='someCountry' group by age;"</span>
+<span class="hljs-keyword">var</span> stats = Person.aggregate([<span class="hljs-string">"age"</span>], { <span class="hljs-attr">country</span>: <span class="hljs-string">"someCountry"</span> }).avg(<span class="hljs-string">"weight"</span>).groupBy(<span class="hljs-string">"age"</span>).getSync();
+<span class="hljs-comment">// stats is an Array, each item should have 'age' and 'avg_weight'</span>
+</code></pre>
+<h3 id="Base-.aggregate()-methods"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Base </font></font><code>.aggregate()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">methods</font></font></h3>
+<ul>
+<li><code>.limit()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: you can pass a number as a limit, or two numbers as offset and limit respectively</font></font></li>
+<li><code>.order()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: same as </font></font><code>Model.find().order()</code></li>
+</ul>
+<h3 id="Additional-.aggregate()-methods"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Additional </font></font><code>.aggregate()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">methods</font></font></h3>
+<ul>
+<li><code>min</code></li>
+<li><code>max</code></li>
+<li><code>avg</code></li>
+<li><code>sum</code></li>
+<li><code>count</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(there's a shortcut to this- </font></font><code>Model.count</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">)</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">There are more aggregate functions depending on the driver (Math functions for example).</font></font></p>
+<h3 id="Chaining" class="notranslate">Chaining</h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">If you prefer less complicated syntax you can chain </font></font><code>.find()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">by not giving a callback parameter.</font></font></p>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">var</span> people = Person.find({ <span class="hljs-attr">surname</span>: <span class="hljs-string">"Doe"</span> }).limit(<span class="hljs-number">3</span>).offset(<span class="hljs-number">2</span>).only(<span class="hljs-string">"name"</span>, <span class="hljs-string">"surname"</span>).runSync();
+<span class="hljs-comment">// finds people with surname='Doe', skips first 2 and limits to 3 elements,</span>
+<span class="hljs-comment">// returning only 'name' and 'surname' properties</span>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">If you want to skip just one or two properties, you can call </font></font><code>.omit()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">instead of </font></font><code>.only</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Chaining allows for more complicated queries. For example, we can search by specifying custom SQL:</font></font></p>
+<pre><code class="lang-js"><div class="line-numbers">1</div>Person.find({ <span class="hljs-attr">age</span>: <span class="hljs-number">18</span> }).where(<span class="hljs-string">"LOWER(surname) LIKE ?"</span>, [<span class="hljs-string">'dea%'</span>]).allSync( ... );
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">It's bad practice to manually escape SQL parameters as it's error prone and exposes your application to SQL injection. The </font></font><code>?</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">syntax takes care of escaping for you, by safely substituting the question mark in the query with the parameters provided. You can also chain multiple </font></font><code>where</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">clauses as needed.</font></font></p>
+<p><code>.find</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><code>.where</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">&amp; </font></font><code>.all</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">do the same thing; they are all interchangeable and chainable.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">You can also </font></font><code>order</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">or </font></font><code>orderRaw</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font></p>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3</div>Person.find({ <span class="hljs-attr">age</span>: <span class="hljs-number">18</span> }).order(<span class="hljs-string">'-name'</span>).allSync( ... );
+<span class="hljs-comment">// see the 'Raw queries' section below for more details</span>
+Person.find({ <span class="hljs-attr">age</span>: <span class="hljs-number">18</span> }).orderRaw(<span class="hljs-string">"?? DESC"</span>, [<span class="hljs-string">'age'</span>]).allSync( ... );
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">You can also chain and just get the count in the end. In this case, offset, limit and order are ignored.</font></font></p>
+<pre><code class="lang-js"><div class="line-numbers">1
+2</div><span class="hljs-keyword">var</span> people = Person.find({ <span class="hljs-attr">surname</span>: <span class="hljs-string">"Doe"</span> }).countSync();
+<span class="hljs-comment">// people = number of people with surname="Doe"</span>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Also available is the option to remove the selected items. Note that a chained remove will not run any hooks.</font></font></p>
+<pre><code class="lang-js"><div class="line-numbers">1
+2</div>Person.find({ <span class="hljs-attr">surname</span>: <span class="hljs-string">"Doe"</span> }).removeSync();
+<span class="hljs-comment">// Does gone..</span>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">You can also make modifications to your instances using common Array traversal methods and save everything in the end. [NOT SUPPORT]</font></font></p>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13</div>Person.find({ <span class="hljs-attr">surname</span>: <span class="hljs-string">"Doe"</span> }).each(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">person</span>) </span>{<font></font>
+    person.surname = <span class="hljs-string">"Dean"</span>;<font></font>
+}).save(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">err</span>) </span>{
+    <span class="hljs-comment">// done!</span><font></font>
+});<font></font>
+<font></font>
+Person.find({ <span class="hljs-attr">surname</span>: <span class="hljs-string">"Doe"</span> }).each().filter(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">person</span>) </span>{
+    <span class="hljs-keyword">return</span> person.age &gt;= <span class="hljs-number">18</span>;<font></font>
+}).sort(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">person1, person2</span>) </span>{
+    <span class="hljs-keyword">return</span> person1.age &lt; person2.age;<font></font>
+}).get(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">people</span>) </span>{
+    <span class="hljs-comment">// get all people with at least 18 years, sorted by age</span><font></font>
+});<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Of course you could do this directly on </font></font><code>.find()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, but for some more complicated tasks this can be very usefull.</font></font></p>
+<p><code>Model.find()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">does not return an Array so you can't just chain directly. To start chaining you have to call
+ </font></font><code>.each()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(with an optional callback if you want to traverse the list). You can then use the common functions
+ </font></font><code>.filter()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><code>.sort()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">and </font></font><code>.forEach()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">more than once.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">In the end (or during the process..) you can call:</font></font></p>
+<ul>
+<li><code>.countSync()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> if you just want to know how many items there are;</font></font></li>
+<li><code>.getSync()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> to retrieve the list;</font></font></li>
+<li><code>.saveSync()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> to save all item changes.</font></font></li>
+</ul>
+<h4 id="Conditions"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Conditions</font></font></h4>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Conditions are defined as an object where every key is a property (table column). All keys are supposed to be concatenated by the logical </font></font><code>AND</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">. Values ​​are considered to match exactly, unless you're passing an </font></font><code>Array</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">. In this case it is considered a list to compare the property with.</font></font></p>
+<pre><code class="lang-js"><div class="line-numbers">1
+2</div>{ <span class="hljs-attr">col1</span>: <span class="hljs-number">123</span>, <span class="hljs-attr">col2</span>: <span class="hljs-string">"foo"</span> } <span class="hljs-comment">// `col1` = 123 AND `col2` = 'foo'</span>
+{ <span class="hljs-attr">col1</span>: [ <span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">5</span> ] } <span class="hljs-comment">// `col1` IN (1, 3, 5)</span>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">If you need other comparisons, you have to use a special object created by some helper functions. Here are a few examples to describe it:</font></font></p>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11</div>{ <span class="hljs-attr">col1</span>: orm.eq(<span class="hljs-number">123</span>) } <span class="hljs-comment">// `col1` = 123 (default)</span>
+{ <span class="hljs-attr">col1</span>: orm.ne(<span class="hljs-number">123</span>) } <span class="hljs-comment">// `col1` &lt;&gt; 123</span>
+{ <span class="hljs-attr">col1</span>: orm.gt(<span class="hljs-number">123</span>) } <span class="hljs-comment">// `col1` &gt; 123</span>
+{ <span class="hljs-attr">col1</span>: orm.gte(<span class="hljs-number">123</span>) } <span class="hljs-comment">// `col1` &gt;= 123</span>
+{ <span class="hljs-attr">col1</span>: orm.lt(<span class="hljs-number">123</span>) } <span class="hljs-comment">// `col1` &lt; 123</span>
+{ <span class="hljs-attr">col1</span>: orm.lte(<span class="hljs-number">123</span>) } <span class="hljs-comment">// `col1` &lt;= 123</span>
+{ <span class="hljs-attr">col1</span>: orm.between(<span class="hljs-number">123</span>, <span class="hljs-number">456</span>) } <span class="hljs-comment">// `col1` BETWEEN 123 AND 456</span>
+{ <span class="hljs-attr">col1</span>: orm.not_between(<span class="hljs-number">123</span>, <span class="hljs-number">456</span>) } <span class="hljs-comment">// `col1` NOT BETWEEN 123 AND 456</span>
+{ <span class="hljs-attr">col1</span>: orm.like(<span class="hljs-number">12</span> + <span class="hljs-string">"%"</span>) } <span class="hljs-comment">// `col1` LIKE '12%'</span>
+{ <span class="hljs-attr">col1</span>: orm.not_like(<span class="hljs-number">12</span> + <span class="hljs-string">"%"</span>) } <span class="hljs-comment">// `col1` NOT LIKE '12%'</span>
+{ <span class="hljs-attr">col1</span>: orm.not_in([<span class="hljs-number">1</span>, <span class="hljs-number">4</span>, <span class="hljs-number">8</span>]) } <span class="hljs-comment">// `col1` NOT IN (1, 4, 8)</span>
+</code></pre>
+<h4 id="Raw-queries"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Raw queries</font></font></h4>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13</div><span class="hljs-keyword">var</span> data = db.driver.execQuerySync(<span class="hljs-string">"SELECT id, email FROM user"</span>)<font></font>
+<font></font>
+<span class="hljs-comment">// You can escape identifiers and values.</span>
+<span class="hljs-comment">// For identifier substitution use: ??</span>
+<span class="hljs-comment">// For value substitution use: ?</span>
+<span class="hljs-keyword">var</span> data = db.driver.execQuerySync(
+  <span class="hljs-string">"SELECT user.??, user.?? FROM user WHERE user.?? LIKE ? AND user.?? &gt; ?"</span>,<font></font>
+  [<span class="hljs-string">'id'</span>, <span class="hljs-string">'name'</span>, <span class="hljs-string">'name'</span>, <span class="hljs-string">'john'</span>, <span class="hljs-string">'id'</span>, <span class="hljs-number">55</span>])<font></font>
+<font></font>
+<span class="hljs-comment">// Identifiers don't need to be scaped most of the time</span>
+<span class="hljs-keyword">var</span> data = db.driver.execQuerySync(
+  <span class="hljs-string">"SELECT user.id, user.name FROM user WHERE user.name LIKE ? AND user.id &gt; ?"</span>,<font></font>
+  [<span class="hljs-string">'john'</span>, <span class="hljs-number">55</span>])
+</code></pre>
+<h3 id="Identity-pattern" class="notranslate">Identity pattern</h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">You can use the identity pattern (turned off by default). If enabled, multiple different queries will result in the same result-you will get the same object. If you have other systems that can change your database or you need to call some manual SQL queries, you shouldn't use this feature. It is also know to cause some problems with complex autofetch relationships. Use at your own risk.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">It can be enabled/disabled per model:</font></font></p>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3
+4
+5</div><span class="hljs-keyword">var</span> Person = db.define(<span class="hljs-string">'person'</span>, {
+    <span class="hljs-attr">name</span>          : <span class="hljs-built_in">String</span><font></font>
+}, {<font></font>
+    <span class="hljs-attr">identityCache</span> : <span class="hljs-literal">true</span><font></font>
+});<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">and also globally:</font></font></p>
+<pre><code class="lang-js"><div class="line-numbers">1
+2</div><span class="hljs-keyword">var</span> db = orm.connectSync(<span class="hljs-string">'...'</span>);<font></font>
+db.settings.set(<span class="hljs-string">'instance.identityCache'</span>, <span class="hljs-literal">true</span>);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">The identity cache can be configured to expire after a period of time by passing in a number instead of a boolean. The number will be considered the cache timeout in seconds (you can use floating point).</font></font></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Note</font></font></strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> : One exception about Caching is that it won't be used if an instance is not saved. For example, if you fetch a Person and then change it, while it doesn't get saved it won't be passed from Cache.</font></font></p>
+<h2 id="Creating-Items"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Creating Items</font></font></h2>
+<h3 id="Model.createSync(items)" class="notranslate">Model.createSync(items)</h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">To insert new elements to the database use </font></font><code>Model.create</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">.</font></font></p>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15</div><span class="hljs-keyword">var</span> items = Person.createSync([<font></font>
+    {<font></font>
+        <span class="hljs-attr">name</span>: <span class="hljs-string">"John"</span>,
+        <span class="hljs-attr">surname</span>: <span class="hljs-string">"Doe"</span>,
+        <span class="hljs-attr">age</span>: <span class="hljs-number">25</span>,
+        <span class="hljs-attr">male</span>: <span class="hljs-literal">true</span><font></font>
+    },<font></font>
+    {<font></font>
+        <span class="hljs-attr">name</span>: <span class="hljs-string">"Liza"</span>,
+        <span class="hljs-attr">surname</span>: <span class="hljs-string">"Kollan"</span>,
+        <span class="hljs-attr">age</span>: <span class="hljs-number">19</span>,
+        <span class="hljs-attr">male</span>: <span class="hljs-literal">false</span><font></font>
+    }<font></font>
+]);<font></font>
+<span class="hljs-comment">// items - array of inserted items</span>
+</code></pre>
+<h2 id="Updating-Items"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Updating Items</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Every item returned has the properties that were defined to the Model and also a couple of methods you can use to change each item.</font></font></p>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3
+4
+5</div><span class="hljs-keyword">var</span> John = Person.getSync(<span class="hljs-number">1</span>);<font></font>
+John.name = <span class="hljs-string">"Joe"</span>;<font></font>
+John.surname = <span class="hljs-string">"Doe"</span>;<font></font>
+John.saveSync();<font></font>
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">"saved!"</span>);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Updating and then saving an instance can be done in a single call:</font></font></p>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">var</span> John = Person.getSync(<span class="hljs-number">1</span>);<font></font>
+John.saveSync({ <span class="hljs-attr">name</span>: <span class="hljs-string">"Joe"</span>, <span class="hljs-attr">surname</span>: <span class="hljs-string">"Doe"</span> });
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">"saved!"</span>);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">If you want to remove an instance, just do:</font></font></p>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3
+4</div><span class="hljs-comment">// you could do this without even fetching it, look at Chaining section above</span>
+<span class="hljs-keyword">var</span> John = Person.getSync(<span class="hljs-number">1</span>);<font></font>
+John.removeSync();<font></font>
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">"removed!"</span>);
+</code></pre>
+<h2 id="Validations"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Validations</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">See information in the </font></font><a href="https://github.com/dresende/node-orm2/wiki/Model-Validations"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">wiki</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> .</font></font></p>
+<h2 id="Associations"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Associations</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">An association is a relation between one or more tables.</font></font></p>
+<h3 id="hasOne" class="notranslate">hasOne</h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">A IS </font></font><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">MANY to One</font></font></strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> . It's Relationship at The Same, AS </font></font><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Belongs to.</font></font></strong><br><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+Eg: </font></font><code>Animal.hasOne('owner', Person)</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">. </font></font><br><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+. Animal CAN have have only One owner, have have MANY CAN But the Person Animals </font></font><br><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+Animal by Will have have at The </font></font><code>owner_id</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Property Automatically added.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">The following functions will become available:</font></font></p>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3
+4</div>animal.getOwnerSync()         <span class="hljs-comment">// Gets owner</span>
+animal.setOwnerSync(person) <span class="hljs-comment">// Sets owner_id</span>
+animal.hasOwnerSync()         <span class="hljs-comment">// Checks if owner exists</span>
+animal.removeOwnerSync()                <span class="hljs-comment">// Sets owner_id to 0</span>
+</code></pre>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Chain Find</font></font></strong></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">The hasOne association is also chain find compatible. Using the example above, we can do this to access a new instance of a ChainFind object:</font></font></p>
+<pre><code class="lang-js"><div class="line-numbers">1</div>Animal.findByOwner({ <span class="hljs-comment">/* options */</span> })
+</code></pre>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Reverse access</font></font></strong></p>
+<pre><code class="lang-js"><div class="line-numbers">1</div>Animal.hasOne(<span class="hljs-string">'owner'</span>, Person, {<span class="hljs-attr">reverse</span>: <span class="hljs-string">'pets'</span>})
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">will add the following:</font></font></p>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3
+4
+5
+6</div><span class="hljs-comment">// Instance methods</span>
+person.getPetsSync(<span class="hljs-function"><span class="hljs-keyword">function</span>..)
+<span class="hljs-title">person</span>.<span class="hljs-title">setPetsSync</span>(<span class="hljs-params">cat, function..</span>)
+
+// <span class="hljs-title">Model</span> <span class="hljs-title">methods</span>
+<span class="hljs-title">Person</span>.<span class="hljs-title">findByPets</span>(<span class="hljs-params">{ <span class="hljs-regexp">/* options */</span> }</span>) // <span class="hljs-title">returns</span> <span class="hljs-title">ChainFind</span> <span class="hljs-title">object</span></span>
+</code></pre>
+<h3 id="hasMany" class="notranslate">hasMany</h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">A IS </font></font><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">MANY to MANY</font></font></strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Relationship (Includes the Join Table). </font></font><br><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+Eg of: </font></font><code>Patient.hasMany('doctors', Doctor, { why: String }, { reverse: 'patients', key: true })</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">. </font></font><br><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+. The Patient Each CAN Doctor Doctors have have MANY CAN Different Different patients have have MANY.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">This will create a join table </font></font><code>patient_doctors</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">when you call </font></font><code>Patient.sync()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">column name</font></font></th>
+<th style="text-align:left"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">type</font></font></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> patient_id</font></font></td>
+<td style="text-align:left"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Integer (composite key)</font></font></td>
+</tr>
+<tr>
+<td style="text-align:left"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> doctor_id</font></font></td>
+<td style="text-align:left"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Integer (composite key)</font></font></td>
+</tr>
+<tr>
+<td style="text-align:left"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> why</font></font></td>
+<td style="text-align:left"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">varchar(255)</font></font></td>
+</tr>
+</tbody>
+</table>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">The following functions will be available:</font></font></p>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12</div>patient.getDoctorsSync()           <span class="hljs-comment">// List of doctors</span>
+patient.addDoctorsSync(docs)    <span class="hljs-comment">// Adds entries to join table</span>
+patient.setDoctorsSync(docs)    <span class="hljs-comment">// Removes existing entries in join table, adds new ones</span>
+patient.hasDoctorsSync(docs)    <span class="hljs-comment">// Checks if patient is associated to specified doctors</span>
+patient.removeDoctorsSync(docs) <span class="hljs-comment">// Removes specified doctors from join table</span><font></font>
+<font></font>
+doctor.getPatientsSync()<font></font>
+etc...<font></font>
+<font></font>
+<span class="hljs-comment">// You can also do:</span><font></font>
+patient.doctors = [doc1, doc2];<font></font>
+patient.saveSync()<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">To associate a doctor to a patient:</font></font></p>
+<pre><code class="lang-js"><div class="line-numbers">1</div>patient.addDoctorSync(surgeon, {<span class="hljs-attr">why</span>: <span class="hljs-string">"remove appendix"</span>})
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">which will add </font></font><code>{patient_id: 4, doctor_id: 6, why: "remove appendix"}</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">to the join table.</font></font></p>
+<h4 id="getAccessor"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">getAccessor</font></font></h4>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">This accessor in this type of association returns a </font></font><code>ChainFind</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">if not passing a callback. This means you can do things like:</font></font></p>
+<pre><code class="lang-js"><div class="line-numbers">1
+2</div><span class="hljs-keyword">var</span> doctors = patient.getDoctors().order(<span class="hljs-string">"name"</span>).offset(<span class="hljs-number">1</span>).runSync());
+<span class="hljs-comment">// ... all doctors, ordered by name, excluding first one</span>
+</code></pre>
+<h3 id="extendsTo" class="notranslate">extendsTo</h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">If you want to split maybe optional properties into different tables or collections. Every extension will be in a new table, where the unique identifier of each row is the main model instance id. For example:</font></font></p>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7</div><span class="hljs-keyword">var</span> Person = db.define(<span class="hljs-string">"person"</span>, {
+    <span class="hljs-attr">name</span> : <span class="hljs-built_in">String</span><font></font>
+});<font></font>
+<span class="hljs-keyword">var</span> PersonAddress = Person.extendsTo(<span class="hljs-string">"address"</span>, {
+    <span class="hljs-attr">street</span> : <span class="hljs-built_in">String</span>,
+    <span class="hljs-attr">number</span> : <span class="hljs-built_in">Number</span><font></font>
+});<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">A Create Table Will the this </font></font><code>person</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">with Columns </font></font><code>id</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">and </font></font><code>name</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">. Extension of The Will Create A Table </font></font><code>person_address</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">with Columns </font></font><code>person_id</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><code>street</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">and </font></font><code>number</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">. Available in The Methods of The </font></font><code>Person</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Model Similar to AN are </font></font><code>hasOne</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+Association. Would you the In the this Example BE Able to Call </font></font><code>.getAddress(cb)</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><code>.setAddress(Address, cb)</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, ..</font></font></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Note:</font></font></strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> you don't have to save the result from </font></font><code>Person.extendsTo</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">. It returns an extended model. You can use it to query directly this extended table (and even find the related model) but that's up to you. If you only want to access it using the original model you can just discard the return.</font></font></p>
+<h3 id="Examples-options" class="notranslate">Examples &amp; options</h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">If you have a relation of 1 to n, you should use </font></font><code>hasOne</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(belongs to) association.</font></font></p>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13</div><span class="hljs-keyword">var</span> Person = db.define(<span class="hljs-string">'person'</span>, {
+    <span class="hljs-attr">name</span> : <span class="hljs-built_in">String</span><font></font>
+});<font></font>
+<span class="hljs-keyword">var</span> Animal = db.define(<span class="hljs-string">'animal'</span>, {
+    <span class="hljs-attr">name</span> : <span class="hljs-built_in">String</span><font></font>
+});<font></font>
+Animal.hasOne(<span class="hljs-string">"owner"</span>, Person); <span class="hljs-comment">// creates column 'owner_id' in 'animal' table</span><font></font>
+<font></font>
+<span class="hljs-comment">// get animal with id = 123</span>
+<span class="hljs-keyword">var</span> animal = Animal.getSync(<span class="hljs-number">123</span>);
+<span class="hljs-comment">// animal is the animal model instance, if found</span>
+<span class="hljs-keyword">var</span> person = animal.getOwnerSync();
+<span class="hljs-comment">// if animal has really an owner, person points to it</span>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">You can mark the </font></font><code>owner_id</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">field as required in the database by specifying the </font></font><code>required</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">option:</font></font></p>
+<pre><code class="lang-js"><div class="line-numbers">1</div>Animal.hasOne(<span class="hljs-string">"owner"</span>, Person, { <span class="hljs-attr">required</span>: <span class="hljs-literal">true</span> });
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">If a field is not required, but should be validated even if it is not present, then specify the </font></font><code>alwaysValidate</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">option. (this can happen, for example when validation of a null field depends on other fields in the record)</font></font></p>
+<pre><code class="lang-js"><div class="line-numbers">1</div>Animal.hasOne(<span class="hljs-string">"owner"</span>, Person, { <span class="hljs-attr">required</span>: <span class="hljs-literal">false</span>, <span class="hljs-attr">alwaysValidate</span>: <span class="hljs-literal">true</span> });
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">If you prefer to use another name for the field (owner_id) you can change this parameter in the settings.</font></font></p>
+<pre><code class="lang-js"><div class="line-numbers">1</div>db.settings.set(<span class="hljs-string">"properties.association_key"</span>, <span class="hljs-string">"{field}_{name}"</span>); <span class="hljs-comment">// {name} will be replaced by 'owner' and {field} will be replaced by 'id' in this case</span>
+</code></pre>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Note: This has to be done before the association is specified.</font></font></strong></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">The </font></font><code>hasMany</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">associations can have additional properties in the association table.</font></font></p>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11</div><span class="hljs-keyword">var</span> Person = db.define(<span class="hljs-string">'person'</span>, {
+    <span class="hljs-attr">name</span> : <span class="hljs-built_in">String</span><font></font>
+});<font></font>
+Person.hasMany(<span class="hljs-string">"friends"</span>, {
+    <span class="hljs-attr">rate</span> : <span class="hljs-built_in">Number</span>
+}, {}, { <span class="hljs-attr">key</span>: <span class="hljs-literal">true</span> });<font></font>
+<font></font>
+<span class="hljs-keyword">var</span> John = Person.getSync(<span class="hljs-number">123</span>);
+<span class="hljs-keyword">var</span> friends = John.getFriendsSync();
+<span class="hljs-comment">// assumes rate is another column on table person_friends</span>
+<span class="hljs-comment">// you can access it by going to friends[N].extra.rate</span>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">If you prefer you can activate </font></font><code>autoFetch</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">. This way associations are automatically fetched when you get or find instances of a model.</font></font></p>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12</div><span class="hljs-keyword">var</span> Person = db.define(<span class="hljs-string">'person'</span>, {
+  <span class="hljs-attr">name</span> : <span class="hljs-built_in">String</span><font></font>
+});<font></font>
+Person.hasMany(<span class="hljs-string">"friends"</span>, {
+    <span class="hljs-attr">rate</span> : <span class="hljs-built_in">Number</span><font></font>
+}, {<font></font>
+    <span class="hljs-attr">key</span>       : <span class="hljs-literal">true</span>, <span class="hljs-comment">// Turns the foreign keys in the join table into a composite key</span>
+    autoFetch : <span class="hljs-literal">true</span><font></font>
+});<font></font>
+<font></font>
+<span class="hljs-keyword">var</span> John = Person.getSync(<span class="hljs-number">123</span>);
+<span class="hljs-comment">// no need to do John.getFriends() , John already has John.friends Array</span>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">You can also define this option globally instead of a per association basis.</font></font></p>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10</div><span class="hljs-keyword">var</span> Person = db.define(<span class="hljs-string">'person'</span>, {
+    <span class="hljs-attr">name</span> : <span class="hljs-built_in">String</span><font></font>
+}, {<font></font>
+    <span class="hljs-attr">autoFetch</span> : <span class="hljs-literal">true</span><font></font>
+});<font></font>
+Person.hasMany(<span class="hljs-string">"friends"</span>, {
+    <span class="hljs-attr">rate</span> : <span class="hljs-built_in">Number</span><font></font>
+}, {<font></font>
+  <span class="hljs-attr">key</span>: <span class="hljs-literal">true</span><font></font>
+});<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Associations can make calls to the associated Model by using the </font></font><code>reverse</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">option. For example, if you have an association from ModelA to ModelB, you can create an accessor in ModelB to get instances from ModelA. Confusing? Look at the next example.</font></font></p>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16</div><span class="hljs-keyword">var</span> Pet = db.define(<span class="hljs-string">'pet'</span>, {
+    <span class="hljs-attr">name</span> : <span class="hljs-built_in">String</span><font></font>
+});<font></font>
+<span class="hljs-keyword">var</span> Person = db.define(<span class="hljs-string">'person'</span>, {
+    <span class="hljs-attr">name</span> : <span class="hljs-built_in">String</span><font></font>
+});<font></font>
+Pet.hasOne(<span class="hljs-string">"owner"</span>, Person, {
+    <span class="hljs-attr">reverse</span> : <span class="hljs-string">"pets"</span><font></font>
+});<font></font>
+<font></font>
+<span class="hljs-keyword">var</span> pets = Person(<span class="hljs-number">4</span>).getPetsSync();
+<span class="hljs-comment">// although the association was made on Pet,</span>
+<span class="hljs-comment">// Person will have an accessor (getPets)</span>
+<span class="hljs-comment">//</span>
+<span class="hljs-comment">// In this example, ORM will fetch all pets</span>
+<span class="hljs-comment">// whose owner_id = 4</span>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">This makes even more sense when having </font></font><code>hasMany</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">associations since you can manage the </font></font><em><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">many to many</font></font></em><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+associations from both sides.</font></font></p>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15</div><span class="hljs-keyword">var</span> Pet = db.define(<span class="hljs-string">'pet'</span>, {
+    <span class="hljs-attr">name</span> : <span class="hljs-built_in">String</span><font></font>
+});<font></font>
+<span class="hljs-keyword">var</span> Person = db.define(<span class="hljs-string">'person'</span>, {
+    <span class="hljs-attr">name</span> : <span class="hljs-built_in">String</span><font></font>
+});<font></font>
+Person.hasMany(<span class="hljs-string">"pets"</span>, Pet, {
+    <span class="hljs-attr">bought</span>  : <span class="hljs-built_in">Date</span><font></font>
+}, {<font></font>
+    <span class="hljs-attr">key</span>     : <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">reverse</span> : <span class="hljs-string">"owners"</span><font></font>
+});<font></font>
+<font></font>
+Person(<span class="hljs-number">1</span>).getPetsSync(...);<font></font>
+Pet(<span class="hljs-number">2</span>).getOwnersSync(...);
+</code></pre>
+<h2 id="Transaction-support"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Transaction support</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">You can use low level transaction function to process db transcation.</font></font></p>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3
+4
+5
+6</div>db.begin();<font></font>
+...<font></font>
+if(err)<font></font>
+    db.rollback();<font></font>
+<span class="hljs-keyword">else</span><font></font>
+    db.commit();<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Or you can use trans to simpile process it.</font></font></p>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3
+4</div><span class="hljs-keyword">var</span> result = db.trans(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {<font></font>
+    ...<font></font>
+    return result;<font></font>
+});<font></font>
+</code></pre>
+<h2 id="Adding-external-database-adapters"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Adding external database adapters</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">To add an external database adapter to </font></font><code>orm</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, call the </font></font><code>addAdapter</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">method, passing in the alias to use for connecting with this adapter, along with the constructor for the adapter:</font></font></p>
+<pre><code class="lang-js"><div class="line-numbers">1</div><span class="hljs-built_in">require</span>(<span class="hljs-string">'orm'</span>).addAdapter(<span class="hljs-string">'cassandra'</span>, CassandraAdapter);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">See </font></font><a href="adapters.md.html" class="notranslate">the documentation for creating adapters</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> for more details.</font></font></p>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify-hide"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2014-Present fibjs.org | </font></font><a href="../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Support us</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip107498"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip107498" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Click to return on the top page</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../js/common.js"></script><script type="text/javascript" src="../../../../js/docs.js"></script></body></html>

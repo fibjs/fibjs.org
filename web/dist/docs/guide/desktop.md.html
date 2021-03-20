@@ -1,0 +1,607 @@
+<!DOCTYPE html><html><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel=icon type=image/png href=../../imgs/icon.png><title> 快速开发桌面应用 - JavaScript on Fiber</title><link href=../../css/common.css rel=stylesheet><link href=../../css/docs.css rel=stylesheet></head><body><div class="navbar navbar-default navbar-static-top" role=navigation><div class=container><div class=navbar-header><button type=button class="navbar-toggle collapsed" data-toggle=collapse data-target=#navbar aria-expanded=false aria-controls=navbar><span class=sr-only>Toggle navigation</span> <span class=icon-bar></span> <span class=icon-bar></span> <span class=icon-bar></span></button> <a class=navbar-brand href=../../index.html><img src=../../imgs/logo-dark.png></a></div><div id=navbar class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href=../../index.html>HOME</a></li><li><a href=readme.md.html>GUIDE</a></li><li><a href=../manual/module/readme.md.html>MODULE</a></li><li><a href=../manual/object/readme.md.html>OBJECT</a></li><li><a href=../awesome/readme.md.html>AWESOME</a></li><li><a href=../../download/index.html>DOWNLOAD</a></li><li class="nav-item dropdown"><a href=# data-toggle=dropdown aria-haspopup=true aria-expanded=false>LANGUAGE</a><div class=dropdown-menu><a href=../../docs/guide/desktop.md.html>中文</a> <a href=../../en/docs/guide/desktop.md.html>ENGLISH</a> <a href=../../ja/docs/guide/desktop.md.html>日本語</a> <a href=../../de/docs/guide/desktop.md.html>Deutsch</a> <a href=../../es/docs/guide/desktop.md.html>Español</a> <a href=../../fr/docs/guide/desktop.md.html>Français</a> <a href=../../ko/docs/guide/desktop.md.html>한국어</a> <a href=../../it/docs/guide/desktop.md.html>Italiano</a> <a href=../../ru/docs/guide/desktop.md.html>Русский</a></div></li></ul></div></div></div><div class=band><div class=container><span class=group> Guide 开发指南 </span><div class=search><input type=text class=searchbox placeholder=Search></div></div></div><div class=container><ol class=breadcrumb><li><a href=../../index.html>首页</a></li><li><a href=readme.md.html> 开发指南 </a></li><li class=active> 快速开发桌面应用 </li></ol></div><div class=page-body><div class=container><div class="sidebar hidden-xs"><div class=panel-group id=accordion role=tablist>  <div class=panel><div class=panel-heading role=tab id=headingOne><h4 class=panel-title><a data-toggle=collapse data-parent=#accordion href="#collapse_guide" aria-controls="collapse_guide"> 开发指南 </a></h4></div><div id="collapse_guide" class="panel-collapse collapse in" aria-labelledby=headingOne><div class=panel-body> <ul>
+<li><a href=about.md.html>fibjs 是什么？</a></li>
+<li><a href=install.md.html>安装运行环境</a></li>
+<li><a href=hello.md.html class ="notranslate">hello, world</a></li>
+<li><a href=test.md.html>美好生活从测试开始</a></li>
+<li><a href=profiler.md.html>找出性能杀手</a></li>
+<li class="active"><a href=desktop.md.html>快速开发桌面应用</a></li>
+<li><a href=server-hot-update.md.html>服务端模块热更新</a></li>
+<li><a href=host-routes.md.html>域名路由</a></li>
+<li><a href=x509.md.html>fibjs 中 X509 证书的使用</a></li>
+<li><a href=contribute.md.html>添加 native 模块</a></li>
+</ul>
+ </div></div></div>  <div class=panel><div class=panel-heading role=tab id=headingOne><h4 class=panel-title><a data-toggle=collapse data-parent=#accordion href="#collapse_module" aria-controls="collapse_module"> 基础模块 </a></h4></div><div id="collapse_module" class="panel-collapse collapse " aria-labelledby=headingOne><div class=panel-body> <ul>
+<li><a href=../manual/module/ifs/assert.md.html class ="notranslate">assert</a></li>
+<li><a href=../manual/module/ifs/base32.md.html class ="notranslate">base32</a></li>
+<li><a href=../manual/module/ifs/base64.md.html class ="notranslate">base64</a></li>
+<li><a href=../manual/module/ifs/base64vlq.md.html class ="notranslate">base64vlq</a></li>
+<li><a href=../manual/module/ifs/bson.md.html class ="notranslate">bson</a></li>
+<li><a href=../manual/module/ifs/child_process.md.html class ="notranslate">child_process</a></li>
+<li><a href=../manual/module/ifs/console.md.html class ="notranslate">console</a></li>
+<li><a href=../manual/module/ifs/constants.md.html class ="notranslate">constants</a></li>
+<li><a href=../manual/module/ifs/coroutine.md.html class ="notranslate">coroutine</a></li>
+<li><a href=../manual/module/ifs/crypto.md.html class ="notranslate">crypto</a></li>
+<li><a href=../manual/module/ifs/db.md.html class ="notranslate">db</a></li>
+<li><a href=../manual/module/ifs/dgram.md.html class ="notranslate">dgram</a></li>
+<li><a href=../manual/module/ifs/dns.md.html class ="notranslate">dns</a></li>
+<li><a href=../manual/module/ifs/encoding.md.html class ="notranslate">encoding</a></li>
+<li><a href=../manual/module/ifs/fs.md.html class ="notranslate">fs</a></li>
+<li><a href=../manual/module/ifs/gd.md.html class ="notranslate">gd</a></li>
+<li><a href=../manual/module/ifs/global.md.html class ="notranslate">global</a></li>
+<li><a href=../manual/module/ifs/gui.md.html class ="notranslate">gui</a></li>
+<li><a href=../manual/module/ifs/hash.md.html class ="notranslate">hash</a></li>
+<li><a href=../manual/module/ifs/hex.md.html class ="notranslate">hex</a></li>
+<li><a href=../manual/module/ifs/http.md.html class ="notranslate">http</a></li>
+<li><a href=../manual/module/ifs/iconv.md.html class ="notranslate">iconv</a></li>
+<li><a href=../manual/module/ifs/io.md.html class ="notranslate">io</a></li>
+<li><a href=../manual/module/ifs/json.md.html class ="notranslate">json</a></li>
+<li><a href=../manual/module/ifs/mq.md.html class ="notranslate">mq</a></li>
+<li><a href=../manual/module/ifs/msgpack.md.html class ="notranslate">msgpack</a></li>
+<li><a href=../manual/module/ifs/net.md.html class ="notranslate">net</a></li>
+<li><a href=../manual/module/ifs/os.md.html class ="notranslate">os</a></li>
+<li><a href=../manual/module/ifs/path.md.html class ="notranslate">path</a></li>
+<li><a href=../manual/module/ifs/path_posix.md.html class ="notranslate">path_posix</a></li>
+<li><a href=../manual/module/ifs/path_win32.md.html class ="notranslate">path_win32</a></li>
+<li><a href=../manual/module/ifs/process.md.html class ="notranslate">process</a></li>
+<li><a href=../manual/module/ifs/profiler.md.html class ="notranslate">profiler</a></li>
+<li><a href=../manual/module/ifs/punycode.md.html class ="notranslate">punycode</a></li>
+<li><a href=../manual/module/ifs/querystring.md.html class ="notranslate">querystring</a></li>
+<li><a href=../manual/module/ifs/registry.md.html class ="notranslate">registry</a></li>
+<li><a href=../manual/module/ifs/ssl.md.html class ="notranslate">ssl</a></li>
+<li><a href=../manual/module/ifs/string_decoder.md.html class ="notranslate">string_decoder</a></li>
+<li><a href=../manual/module/ifs/test.md.html class ="notranslate">test</a></li>
+<li><a href=../manual/module/ifs/timers.md.html class ="notranslate">timers</a></li>
+<li><a href=../manual/module/ifs/tty.md.html class ="notranslate">tty</a></li>
+<li><a href=../manual/module/ifs/url.md.html class ="notranslate">url</a></li>
+<li><a href=../manual/module/ifs/util.md.html class ="notranslate">util</a></li>
+<li><a href=../manual/module/ifs/uuid.md.html class ="notranslate">uuid</a></li>
+<li><a href=../manual/module/ifs/vm.md.html class ="notranslate">vm</a></li>
+<li><a href=../manual/module/ifs/ws.md.html class ="notranslate">ws</a></li>
+<li><a href=../manual/module/ifs/xml.md.html class ="notranslate">xml</a></li>
+<li><a href=../manual/module/ifs/zip.md.html class ="notranslate">zip</a></li>
+<li><a href=../manual/module/ifs/zlib.md.html class ="notranslate">zlib</a></li>
+</ul>
+ </div></div></div>  <div class=panel><div class=panel-heading role=tab id=headingOne><h4 class=panel-title><a data-toggle=collapse data-parent=#accordion href="#collapse_object" aria-controls="collapse_object"> 内置对象 </a></h4></div><div id="collapse_object" class="panel-collapse collapse " aria-labelledby=headingOne><div class=panel-body> <ul>
+<li><a href=../manual/object/ifs/buffer.md.html class ="notranslate">Buffer</a></li>
+<li><a href=../manual/object/ifs/bufferedstream.md.html class ="notranslate">BufferedStream</a></li>
+<li><a href=../manual/object/ifs/chain.md.html class ="notranslate">Chain</a></li>
+<li><a href=../manual/object/ifs/childprocess.md.html class ="notranslate">ChildProcess</a></li>
+<li><a href=../manual/object/ifs/cipher.md.html class ="notranslate">Cipher</a></li>
+<li><a href=../manual/object/ifs/condition.md.html class ="notranslate">Condition</a></li>
+<li><a href=../manual/object/ifs/dbconnection.md.html class ="notranslate">DbConnection</a></li>
+<li><a href=../manual/object/ifs/dgramsocket.md.html class ="notranslate">DgramSocket</a></li>
+<li><a href=../manual/object/ifs/digest.md.html class ="notranslate">Digest</a></li>
+<li><a href=../manual/object/ifs/event.md.html class ="notranslate">Event</a></li>
+<li><a href=../manual/object/ifs/eventemitter.md.html class ="notranslate">EventEmitter</a></li>
+<li><a href=../manual/object/ifs/fswatcher.md.html class ="notranslate">FSWatcher</a></li>
+<li><a href=../manual/object/ifs/fiber.md.html class ="notranslate">Fiber</a></li>
+<li><a href=../manual/object/ifs/file.md.html class ="notranslate">File</a></li>
+<li><a href=../manual/object/ifs/handler.md.html class ="notranslate">Handler</a></li>
+<li><a href=../manual/object/ifs/heapgraphedge.md.html class ="notranslate">HeapGraphEdge</a></li>
+<li><a href=../manual/object/ifs/heapgraphnode.md.html class ="notranslate">HeapGraphNode</a></li>
+<li><a href=../manual/object/ifs/heapsnapshot.md.html class ="notranslate">HeapSnapshot</a></li>
+<li><a href=../manual/object/ifs/httpclient.md.html class ="notranslate">HttpClient</a></li>
+<li><a href=../manual/object/ifs/httpcollection.md.html class ="notranslate">HttpCollection</a></li>
+<li><a href=../manual/object/ifs/httpcookie.md.html class ="notranslate">HttpCookie</a></li>
+<li><a href=../manual/object/ifs/httphandler.md.html class ="notranslate">HttpHandler</a></li>
+<li><a href=../manual/object/ifs/httpmessage.md.html class ="notranslate">HttpMessage</a></li>
+<li><a href=../manual/object/ifs/httprepeater.md.html class ="notranslate">HttpRepeater</a></li>
+<li><a href=../manual/object/ifs/httprequest.md.html class ="notranslate">HttpRequest</a></li>
+<li><a href=../manual/object/ifs/httpresponse.md.html class ="notranslate">HttpResponse</a></li>
+<li><a href=../manual/object/ifs/httpserver.md.html class ="notranslate">HttpServer</a></li>
+<li><a href=../manual/object/ifs/httpuploaddata.md.html class ="notranslate">HttpUploadData</a></li>
+<li><a href=../manual/object/ifs/httpsserver.md.html class ="notranslate">HttpsServer</a></li>
+<li><a href=../manual/object/ifs/image.md.html class ="notranslate">Image</a></li>
+<li><a href=../manual/object/ifs/leveldb.md.html class ="notranslate">LevelDB</a></li>
+<li><a href=../manual/object/ifs/lock.md.html class ="notranslate">Lock</a></li>
+<li><a href=../manual/object/ifs/lrucache.md.html class ="notranslate">LruCache</a></li>
+<li><a href=../manual/object/ifs/mssql.md.html class ="notranslate">MSSQL</a></li>
+<li><a href=../manual/object/ifs/memorystream.md.html class ="notranslate">MemoryStream</a></li>
+<li><a href=../manual/object/ifs/message.md.html class ="notranslate">Message</a></li>
+<li><a href=../manual/object/ifs/mongocollection.md.html class ="notranslate">MongoCollection</a></li>
+<li><a href=../manual/object/ifs/mongocursor.md.html class ="notranslate">MongoCursor</a></li>
+<li><a href=../manual/object/ifs/mongodb.md.html class ="notranslate">MongoDB</a></li>
+<li><a href=../manual/object/ifs/mongoid.md.html class ="notranslate">MongoID</a></li>
+<li><a href=../manual/object/ifs/mysql.md.html class ="notranslate">MySQL</a></li>
+<li><a href=../manual/object/ifs/pkey.md.html class ="notranslate">PKey</a></li>
+<li><a href=../manual/object/ifs/rangestream.md.html class ="notranslate">RangeStream</a></li>
+<li><a href=../manual/object/ifs/redis.md.html class ="notranslate">Redis</a></li>
+<li><a href=../manual/object/ifs/redishash.md.html class ="notranslate">RedisHash</a></li>
+<li><a href=../manual/object/ifs/redislist.md.html class ="notranslate">RedisList</a></li>
+<li><a href=../manual/object/ifs/redisset.md.html class ="notranslate">RedisSet</a></li>
+<li><a href=../manual/object/ifs/redissortedset.md.html class ="notranslate">RedisSortedSet</a></li>
+<li><a href=../manual/object/ifs/routing.md.html class ="notranslate">Routing</a></li>
+<li><a href=../manual/object/ifs/sqlite.md.html class ="notranslate">SQLite</a></li>
+<li><a href=../manual/object/ifs/sandbox.md.html class ="notranslate">SandBox</a></li>
+<li><a href=../manual/object/ifs/seekablestream.md.html class ="notranslate">SeekableStream</a></li>
+<li><a href=../manual/object/ifs/semaphore.md.html class ="notranslate">Semaphore</a></li>
+<li><a href=../manual/object/ifs/service.md.html class ="notranslate">Service</a></li>
+<li><a href=../manual/object/ifs/smtp.md.html class ="notranslate">Smtp</a></li>
+<li><a href=../manual/object/ifs/socket.md.html class ="notranslate">Socket</a></li>
+<li><a href=../manual/object/ifs/sslhandler.md.html class ="notranslate">SslHandler</a></li>
+<li><a href=../manual/object/ifs/sslserver.md.html class ="notranslate">SslServer</a></li>
+<li><a href=../manual/object/ifs/sslsocket.md.html class ="notranslate">SslSocket</a></li>
+<li><a href=../manual/object/ifs/stat.md.html class ="notranslate">Stat</a></li>
+<li><a href=../manual/object/ifs/statswatcher.md.html class ="notranslate">StatsWatcher</a></li>
+<li><a href=../manual/object/ifs/stream.md.html class ="notranslate">Stream</a></li>
+<li><a href=../manual/object/ifs/stringdecoder.md.html class ="notranslate">StringDecoder</a></li>
+<li><a href=../manual/object/ifs/tcpserver.md.html class ="notranslate">TcpServer</a></li>
+<li><a href=../manual/object/ifs/timer.md.html class ="notranslate">Timer</a></li>
+<li><a href=../manual/object/ifs/urlobject.md.html class ="notranslate">UrlObject</a></li>
+<li><a href=../manual/object/ifs/websocket.md.html class ="notranslate">WebSocket</a></li>
+<li><a href=../manual/object/ifs/websocketmessage.md.html class ="notranslate">WebSocketMessage</a></li>
+<li><a href=../manual/object/ifs/webview.md.html class ="notranslate">WebView</a></li>
+<li><a href=../manual/object/ifs/worker.md.html class ="notranslate">Worker</a></li>
+<li><a href=../manual/object/ifs/x509cert.md.html class ="notranslate">X509Cert</a></li>
+<li><a href=../manual/object/ifs/x509crl.md.html class ="notranslate">X509Crl</a></li>
+<li><a href=../manual/object/ifs/x509req.md.html class ="notranslate">X509Req</a></li>
+<li><a href=../manual/object/ifs/xmlattr.md.html class ="notranslate">XmlAttr</a></li>
+<li><a href=../manual/object/ifs/xmlcdatasection.md.html class ="notranslate">XmlCDATASection</a></li>
+<li><a href=../manual/object/ifs/xmlcharacterdata.md.html class ="notranslate">XmlCharacterData</a></li>
+<li><a href=../manual/object/ifs/xmlcomment.md.html class ="notranslate">XmlComment</a></li>
+<li><a href=../manual/object/ifs/xmldocument.md.html class ="notranslate">XmlDocument</a></li>
+<li><a href=../manual/object/ifs/xmldocumenttype.md.html class ="notranslate">XmlDocumentType</a></li>
+<li><a href=../manual/object/ifs/xmlelement.md.html class ="notranslate">XmlElement</a></li>
+<li><a href=../manual/object/ifs/xmlnamednodemap.md.html class ="notranslate">XmlNamedNodeMap</a></li>
+<li><a href=../manual/object/ifs/xmlnode.md.html class ="notranslate">XmlNode</a></li>
+<li><a href=../manual/object/ifs/xmlnodelist.md.html class ="notranslate">XmlNodeList</a></li>
+<li><a href=../manual/object/ifs/xmlprocessinginstruction.md.html class ="notranslate">XmlProcessingInstruction</a></li>
+<li><a href=../manual/object/ifs/xmltext.md.html class ="notranslate">XmlText</a></li>
+<li><a href=../manual/object/ifs/zipfile.md.html class ="notranslate">ZipFile</a></li>
+<li><a href=../manual/object/ifs/object.md.html class ="notranslate">object</a></li>
+</ul>
+ </div></div></div>  <div class=panel><div class=panel-heading role=tab id=headingOne><h4 class=panel-title><a data-toggle=collapse data-parent=#accordion href="#collapse_awesome" aria-controls="collapse_awesome"> 社区模块 </a></h4></div><div id="collapse_awesome" class="panel-collapse collapse " aria-labelledby=headingOne><div class=panel-body> <ul>
+<li><a href=../awesome/module/fib-session.md.html class ="notranslate">fib-session</a></li>
+<li><a href=../awesome/module/fib-pool.md.html class ="notranslate">fib-pool</a></li>
+<li><a href=../awesome/module/fib-orm.md.html class ="notranslate">fib-orm</a></li>
+<li><a href=../awesome/module/fib-app.md.html class ="notranslate">fib-app</a></li>
+<li><a href=../awesome/module/fib-kv.md.html class ="notranslate">fib-kv</a></li>
+<li><a href=../awesome/module/fib-rpc.md.html class ="notranslate">fib-rpc</a></li>
+<li><a href=../awesome/module/fib-qr.md.html class ="notranslate">fib-qr</a></li>
+<li><a href=../awesome/module/fib-pug.md.html class ="notranslate">fib-pug</a></li>
+<li><a href=../awesome/module/ejs.md.html class ="notranslate">ejs</a></li>
+<li><a href=../awesome/module/juicer.md.html class ="notranslate">Juicer</a></li>
+<li><a href=../awesome/module/highlight.js.md.html class ="notranslate">highlight.js</a></li>
+<li><a href=../awesome/module/marked.md.html class ="notranslate">marked</a></li>
+<li><a href=../awesome/module/node-cron.md.html class ="notranslate">node-cron</a></li>
+<li><a href=../awesome/module/debug.md.html class ="notranslate">debug</a></li>
+<li><a href=../awesome/module/benchmark.js.md.html class ="notranslate">benchmark.js</a></li>
+<li><a href=../awesome/module/sinon.md.html class ="notranslate">sinon</a></li>
+<li><a href=../awesome/module/node-mime.md.html class ="notranslate">node-mime</a></li>
+<li><a href=../awesome/module/validatorjs.md.html class ="notranslate">validatorjs</a></li>
+<li><a href=../awesome/module/superstruct.md.html class ="notranslate">superstruct</a></li>
+<li><a href=../awesome/module/cluster-server.md.html class ="notranslate">cluster-server</a></li>
+<li><a href=../awesome/module/synaptic.md.html class ="notranslate">synaptic</a></li>
+<li><a href=../awesome/module/source-map.md.html class ="notranslate">source-map</a></li>
+<li><a href=../awesome/module/json-format.md.html class ="notranslate">json-format</a></li>
+<li><a href=../awesome/module/viz.js.md.html class ="notranslate">viz.js</a></li>
+<li><a href=../awesome/module/nomnoml.md.html class ="notranslate">nomnoml</a></li>
+<li><a href=../awesome/module/pegjs.md.html class ="notranslate">pegjs</a></li>
+<li><a href=../awesome/module/uglify-js.md.html class ="notranslate">uglify-js</a></li>
+<li><a href=../awesome/module/js-beautify.md.html class ="notranslate">js-beautify</a></li>
+<li><a href=../awesome/module/chalk-animation.md.html class ="notranslate">chalk-animation</a></li>
+<li><a href=../awesome/module/jsrsasign.md.html class ="notranslate">jsrsasign</a></li>
+<li><a href=../awesome/module/crypto-js.md.html class ="notranslate">crypto-js</a></li>
+<li><a href=../awesome/module/ascii-table.md.html class ="notranslate">ascii-table</a></li>
+<li><a href=../awesome/module/logstream.md.html class ="notranslate">logstream</a></li>
+<li><a href=../awesome/module/ci.md.html class ="notranslate">ci</a></li>
+<li><a href=../awesome/module/fs-readdir-recursive.md.html class ="notranslate">fs-readdir-recursive</a></li>
+<li><a href=../awesome/module/mkdirp.md.html class ="notranslate">mkdirp</a></li>
+<li><a href=../awesome/module/rmdirr.md.html class ="notranslate">rmdirr</a></li>
+<li><a href=../awesome/module/detect-port.md.html class ="notranslate">detect-port</a></li>
+<li><a href=../awesome/module/bitcoinjs-lib.md.html class ="notranslate">bitcoinjs-lib</a></li>
+<li><a href=../awesome/module/rakuten.md.html class ="notranslate">Rakuten</a></li>
+</ul>
+ </div></div></div>  </div></div><div class=content><div class=social-share data-sites=weibo,twitter data-description=分享></div> <h1 id="快速开发桌面应用">快速开发桌面应用</h1>
+<p>在 fibjs 中启动一个桌面应用是很快的，只需要键入以下代码，即可打开并运行一个 WebView 窗口：</p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">var</span> gui = <span class="hljs-built_in">require</span>(<span class="hljs-string">"gui"</span>);
+
+gui.open(<span class="hljs-string">"https://fibjs.org"</span>);
+</code></pre>
+<p>这段代码会打开一个操作系统内置的 WebView 窗口，并进入 fibjs.org 的网站。</p>
+<p>然而，系统内置的 WebView 无论在接口功能还是兼容性，都不能满足强大的桌面应用开发。因此 fibjs 还支持基于 cef 的应用开发。</p>
+<h2 id="cef-简介">cef 简介</h2>
+<p>cef 全称 Chromium Embedded Framework，是一个基于 Google Chromium 的开源项目。Google Chromium 项目主要是为 Google Chrome 应用开发的，而 cef 的目标则是为第三方应用提供可嵌入浏览器支持。cef 隔离底层 Chromium 和 Blink 的复杂代码，并提供一套产品级稳定的 API，发布跟踪具体 Chromium 版本的分支，以及二进制包。cef 的大部分特性都提供了丰富的默认实现，让使用者做尽量少的定制即可满足需求。cef 的典型应用场景包括：</p>
+<ul>
+<li>嵌入一个兼容 HTML5 的浏览器控件到一个已经存在的本地应用。</li>
+<li>创建一个轻量化的壳浏览器，用以托管主要用 Web 技术开发的应用。</li>
+<li>有些应用有独立的绘制框架，使用 cef 对 Web 内容做离线渲染。</li>
+<li>使用 cef 做自动化 Web 测试。</li>
+</ul>
+<p>cef3 是基于 Chomuim Content API 多进程构架的下一代 cef，拥有下列优势：</p>
+<ul>
+<li>改进的性能和稳定性（JavaScript 和插件在一个独立的进程内执行）。</li>
+<li>支持 Retina 显示器。</li>
+<li>支持 WebGL 和 3D CSS 的 GPU 加速。</li>
+<li>类似 WebRTC 和语音输入这样的前卫特性。</li>
+<li>通过 DevTools 远程调试协议以及 ChromeDriver2 提供更好的自动化UI测试。</li>
+<li>更快获得当前以及未来的 Web 特性和标准的能力。</li>
+</ul>
+<h2 id="准备运行环境">准备运行环境</h2>
+<p>cef3 的二进制包可以在 [<a href="https://cef-builds.spotifycdn.com/index.html">这个页面</a>] 下载。其中包含了在特定平台（Windows，Mac OS X 以及 Linux）编译特定版本 cef3 所需的全部文件。不同平台拥有共同的结构，你需要在下载后重新组织资源目录结构。应用资源布局依赖于平台，有很大的不同。</p>
+<h3 id="Windows-操作系统(Windows)">Windows 操作系统(Windows)</h3>
+<p>在 Windows 平台上文件夹结构大致如下，你通常可以在二进制包内的 <code>Release</code> 和 <code>Resources</code> 目录下找到全部文件：</p>
+<pre><code class="lang-bash"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24</div>Application
+├── fibjs.exe
+├── cef.pak
+├── cef_100_percent.pak
+├── cef_200_percent.pak
+├── cef_extensions.pak
+├── cef_sandbox.lib
+├── chrome_elf.dll
+├── d3dcompiler_47.dll
+├── devtools_resources.pak
+├── icudtl.dat
+├── libEGL.dll
+├── libGLESv2.dll
+├── libcef.dll
+├── libcef.lib
+├── locales
+│   ├── am.pak
+│   ├── ......
+│   └── zh-TW.pak
+├── snapshot_blob.bin
+├── swiftshader
+│   ├── libEGL.dll
+│   └── libGLESv2.dll
+└── v8_context_snapshot.bin
+</code></pre>
+<h3 id="Linux-操作系统(Linux)">Linux 操作系统(Linux)</h3>
+<p>在 Linux 平台上文件夹结构大致如下，你通常可以在二进制包内的 <code>Release</code> 和 <code>Resources</code> 目录下找到全部文件：</p>
+<pre><code class="lang-bash"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20</div>Application
+├── fibjs
+├── cef.pak
+├── cef_100_percent.pak
+├── cef_200_percent.pak
+├── cef_extensions.pak
+├── devtools_resources.pak
+├── icudtl.dat
+├── libEGL.so
+├── libGLESv2.so
+├── libcef.so
+├── locales
+│   ├── am.pak
+│   ├── ......
+│   └── zh-TW.pak
+├── snapshot_blob.bin
+├── swiftshader
+│   ├── libEGL.so
+│   └── libGLESv2.so
+└── v8_context_snapshot.bin
+</code></pre>
+<p>在 Linux Server 上因为没有桌面环境支持，只可以以 <code>--headless</code> 模式运行，当以无窗口模式运行时，还需要安装 xorg：</p>
+<pre><code class="lang-sh"><div class="line-numbers">1</div>apt install xorg
+</code></pre>
+<p>在 Linux Server 上，和一些 gpu 支持不好的 Linux Desktop，还需要增加 <code>--disable-gpu</code> 启动选项禁用 gpu 渲染。</p>
+<h3 id="Mac-X-平台(Mac-OS-X)">Mac X 平台(Mac OS X)</h3>
+<p>在 Mac X 平台上文件夹结构大致如下，你通常可以在二进制包内的 <code>Release/Chromium Embedded Framework.framework</code> 目录下找到全部文件，如果你下载的是 cefclient，那么你需要打开 app 的 Contents 找到相应的文件：</p>
+<pre><code class="lang-bash"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15</div>Application
+├── fibjs
+├── Chromium Embedded Framework
+├── Libraries
+│   ├── libEGL.dylib
+│   ├── libGLESv2.dylib
+│   ├── libswiftshader_libEGL.dylib
+│   ├── libswiftshader_libGLESv2.dylib
+│   ├── libvk_swiftshader.dylib
+│   └── vk_swiftshader_icd.json
+└── Resources
+    ├── Info.plist
+    ├── ......
+    └── zh_TW.lproj
+        └── locale.pak 
+</code></pre>
+<p>你还可以使用 <code>gui.config</code> 设置 <code>cef_path</code> 来指定 cef 的二进制路径，从而更加灵活地部署运行环境。当未设定 <code>cef_path</code> 时，cef 二进制文件必须与 fibjs 执行文件部署在同一个目录下。</p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div>gui.config({
+    <span class="hljs-string">"cef_path"</span>: cef_path
+});
+</code></pre>
+<p>准备好运行环境，再运行以下代码</p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">var</span> gui = <span class="hljs-built_in">require</span>(<span class="hljs-string">"gui"</span>);
+
+gui.open(<span class="hljs-string">"https://fibjs.org"</span>);
+</code></pre>
+<p>同样会看到一个加载了 fibjs 官网的浏览器窗口，但是它的引擎已经是最新的 Chrome 内核了。</p>
+<p>gui 的基础应用十分简便，参照 gui 文档即可迅速实现，不再赘述。接下来主要介绍一些特别的应用方式。</p>
+<h2 id="前后端服务对接">前后端服务对接</h2>
+<p>基于 web 的桌面应用通常有两种扩展方式，一种是 WebView 扩展，另一种是在本地实现前后端分离。前一种方式，对 WebView 做了侵入式扩展，运行环境与标准的浏览器其实已经不再兼容。后一种方式则需要在本地开启一个 http Server，这样又导致服务接口对外暴露。</p>
+<p>fibjs 针对桌面应用的扩展，基于 cef 的协议扩展能力，将 WebView 和 fibjs 的 <code>Handler</code> 融合在一起，使得 WebView 可以在进程内直接连接到对应的 <code>Handler</code> 处理器，在完全兼容传统 B/S 前后端开发范式的同时，确保了安全性和可移植性。同时前后端代码，也与标准的 B/S 前后端开发完全一致，可以在浏览器内开发调试，然后直接移植为本地应用。</p>
+<p>fibjs 配置后端处理器的方式，是通过 <code>gui.config</code> 完成的。</p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17</div>gui.config({
+    <span class="hljs-string">"backend"</span>: {
+        <span class="hljs-string">"cef://test/"</span>: cef_files_path,
+        <span class="hljs-string">"http://cef_test/"</span>: {
+            <span class="hljs-string">"/mock/:act"</span>: <span class="hljs-function">(<span class="hljs-params">r, a</span>) =&gt;</span> {
+                <span class="hljs-keyword">if</span> (a == <span class="hljs-string">'header'</span>) {
+                    r.response.write(r.firstHeader(<span class="hljs-string">'test'</span>));
+                    r.response.addHeader(<span class="hljs-string">"test"</span>, <span class="hljs-string">"world"</span>);
+                } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (a == <span class="hljs-string">'post'</span>) {
+                    r.response.write(<span class="hljs-string">`[<span class="hljs-subst">${r.firstHeader(<span class="hljs-string">"Content-type"</span>)}</span>]`</span>);
+                    r.response.write(r.body.readAll());
+                }
+            },
+            <span class="hljs-string">"/*"</span>: cef_files_path
+        }
+    }
+});
+</code></pre>
+<p>这段代码定义了两个后端，一个是 <code>cef</code> 协议的 test domain，指向静态目录 <code>cef_files_path</code>，另一个是 <code>http</code> 的 cef_test domain，指向一个路由。</p>
+<p>在 cef 里，对非标准协议的处理有一些限制，比如不支持向服务器 post 数据，因此如果希望兼容性更好的前后端通信，需要定义 http 或者 https 后端，当然这个后端也并不是通过网络协议完成通信，而是在进程内部直接对接的。</p>
+<p>关于如何开发 Handler 后端，可以参阅：<a href=hello.md.html class ="notranslate">hello, world</a>。</p>
+<h2 id="无窗口模式">无窗口模式</h2>
+<p>在自动化测试或者流程自动化场景中，业务运行过程无需用户交互，因此可以以无窗口模式在服务器上自动运行。这时就需要 headless 模式来运行。</p>
+<p>fibjs 支持两种方式的 headless，分别是全局 headless 和实例 headless。</p>
+<p>全局模式下，所有的窗口都将以 headless 模式运行，无论创建窗口是是如何设定的。全局模式的运行方式，是指定 <code>--headless</code> 启动选项。</p>
+<pre><code class="lang-sh"><div class="line-numbers">1</div>fibjs --headless test.js
+</code></pre>
+<p>在程序启动时调用 <code>gui.config</code> 配置也可以达到同样的目标：</p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div>gui.config({
+    <span class="hljs-string">"headless"</span>: <span class="hljs-literal">true</span>
+});
+</code></pre>
+<p>在 Linux Server 下，虽然 headless 模式不需要桌面支持，但是 cef 基础模块仍需要一些基础组件支持，因此需要安装 xorg：</p>
+<pre><code class="lang-sh"><div class="line-numbers">1</div>apt install xorg
+</code></pre>
+<p>在一些应用里，需要同时存在用户交互和自动化处理，这时可以单独指定某个窗口使用 headless 模式：</p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">var</span> win = gui.open(<span class="hljs-string">"https://fibjs.org"</span>, {
+    <span class="hljs-string">"headless"</span>: <span class="hljs-literal">true</span>
+});
+</code></pre>
+<p>需要注意的是，headless 实例因为没有用户交互，不能被用户主动关闭，因此程序要在不需要的时候自行关闭，否则因为实例的存在，进程将不会自动退出。</p>
+<h2 id="DevTools-接口">DevTools 接口</h2>
+<p>Chrome DevTools Protocol 允许工具对 Chromium，Chrome 和其它基于 Blink 的浏览器进行测试、检查、调试以及配置。Chrome DevTools Protocol 被分为多个域（DOM，Debugger，Network 等），每个域定义了相应支持的 commands 和相关的 events。</p>
+<p>fibjs 封装了 cdp 的访问接口，可以充分运用 cef 内置的 cdp 接口，直接调试 WebView 内的网页。WebView 用于访问 cdp 服务的接口，是 WebView.dev。关于 cdp 的详细文档，可以参阅：<a href="https://chromedevtools.github.io/devtools-protocol/">https://chromedevtools.github.io/devtools-protocol/</a></p>
+<p>以下列举的是几个常用的代码片段，用于展示如何使用 dev 操控页面元素。详细的使用演示，可以参阅 <code>test/cef_test.js</code>。</p>
+<h3 id="查询-DOM">查询 DOM</h3>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13</div><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getOuterHTML</span>(<span class="hljs-params">win, selector</span>) </span>{
+    <span class="hljs-keyword">var</span> doc = win.dev.DOM.getDocument();
+    <span class="hljs-keyword">var</span> e = win.dev.DOM.querySelector({
+        <span class="hljs-string">"nodeId"</span>: doc.root.nodeId,
+        <span class="hljs-string">"selector"</span>: selector
+    });
+
+    <span class="hljs-keyword">var</span> html = win.dev.DOM.getOuterHTML({
+        <span class="hljs-string">"nodeId"</span>: e.nodeId
+    });
+
+    <span class="hljs-keyword">return</span> html.outerHTML;
+}
+</code></pre>
+<h3 id="模拟鼠标操作">模拟鼠标操作</h3>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24</div><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">click</span>(<span class="hljs-params">win, selector</span>) </span>{
+    <span class="hljs-keyword">var</span> doc = win.dev.DOM.getDocument();
+    <span class="hljs-keyword">var</span> e = win.dev.DOM.querySelector({
+        <span class="hljs-string">"nodeId"</span>: doc.root.nodeId,
+        <span class="hljs-string">"selector"</span>: selector
+    });
+
+    <span class="hljs-keyword">var</span> box = win.dev.DOM.getBoxModel({
+        <span class="hljs-string">"nodeId"</span>: e.nodeId
+    });
+
+    <span class="hljs-keyword">var</span> mi = {
+        <span class="hljs-string">"x"</span>: box.model.content[<span class="hljs-number">0</span>] + <span class="hljs-number">1</span>,
+        <span class="hljs-string">"y"</span>: box.model.content[<span class="hljs-number">1</span>] + <span class="hljs-number">1</span>,
+        <span class="hljs-string">"button"</span>: <span class="hljs-string">'left'</span>,
+        <span class="hljs-string">"clickCount"</span>: <span class="hljs-number">1</span>
+    }
+
+    mi.type = <span class="hljs-string">"mousePressed"</span>;
+    win.dev.Input.dispatchMouseEvent(mi);
+
+    mi.type = <span class="hljs-string">"mouseReleased"</span>;
+    win.dev.Input.dispatchMouseEvent(mi);
+}
+</code></pre>
+<h3 id="模拟键盘操作">模拟键盘操作</h3>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24</div><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">type</span>(<span class="hljs-params">win, text</span>) </span>{
+    <span class="hljs-keyword">for</span> (char <span class="hljs-keyword">of</span> text) {
+        win.dev.Input.dispatchKeyEvent({
+            <span class="hljs-string">"type"</span>: <span class="hljs-string">"char"</span>,
+            <span class="hljs-string">"text"</span>: char
+        });
+    }
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">press</span>(<span class="hljs-params">win, key</span>) </span>{
+    <span class="hljs-keyword">var</span> code = key_code[key];
+    <span class="hljs-keyword">var</span> ki = {
+        <span class="hljs-string">"key"</span>: key,
+        <span class="hljs-string">"code"</span>: key,
+        <span class="hljs-string">"windowsVirtualKeyCode"</span>: code,
+        <span class="hljs-string">"nativeVirtualKeyCode"</span>: code
+    };
+
+    ki.type = <span class="hljs-string">"keyDown"</span>;
+    win.dev.Input.dispatchKeyEvent(ki);
+
+    ki.type = <span class="hljs-string">"keyUp"</span>;
+    win.dev.Input.dispatchKeyEvent(ki);
+}
+</code></pre>
+<h3 id="页面截屏">页面截屏</h3>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11</div><span class="hljs-keyword">var</span> ret = win.dev.Page.captureScreenshot({
+    <span class="hljs-attr">clip</span>: {
+        <span class="hljs-string">"x"</span>: <span class="hljs-number">0</span>,
+        <span class="hljs-string">"y"</span>: <span class="hljs-number">0</span>,
+        <span class="hljs-string">"width"</span>: <span class="hljs-number">100</span>,
+        <span class="hljs-string">"height"</span>: <span class="hljs-number">100</span>,
+        <span class="hljs-string">"scale"</span>: <span class="hljs-number">1</span>
+    }
+});
+
+<span class="hljs-keyword">var</span> img = gd.load(encoding.base64.decode(ret.data));
+</code></pre>
+<h3 id="模拟-User-Agent">模拟 User-Agent</h3>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9</div><span class="hljs-keyword">var</span> win = gui.open();
+
+win.on(<span class="hljs-string">'open'</span>, () =&gt; {
+    win.dev.Network.setUserAgentOverride({
+        <span class="hljs-attr">userAgent</span>: <span class="hljs-string">'Mozilla/5.0 (iPhone; CPU iPhone OS 10_0_1 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) Version/10.0 Mobile/14A403 Safari/602.1'</span>,
+    });
+
+    win.loadUrl(<span class="hljs-string">'https://fibjs.org'</span>);
+});
+</code></pre>
+<h2 id="小结">小结</h2>
+<p>通过这个小节的介绍，我们可以快速开发自己的桌面应用，将 html 渲染成图片或者 PDF，利用 cdp 的强大接口建立前端自动化测试和流程自动化引擎。</p>
+<p>👉 【<a href=server-hot-update.md.html>服务端模块热更新</a>】</p>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id=toc></div></div></div></div><div class=footer><div class=container>&copy; Copyright 2014-Present fibjs.org | <a href=../../support.html>支持我们</a></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="Click to return on the top page" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js></script><script type=text/javascript src=../../js/common.js></script><script type=text/javascript src=../../js/docs.js></script></body></html>

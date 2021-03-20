@@ -15,7 +15,7 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    EventEmitter [tooltip="EventEmitter", fillcolor="lightgray", id="me", label="{EventEmitter|new EventEmitter()\l|defaultMaxListeners\l|on()\laddListener()\lprependListener()\lonce()\lprependOnceListener()\loff()\lremoveListener()\lremoveAllListeners()\lsetMaxListeners()\lgetMaxListeners()\llisteners()\llistenerCount()\leventNames()\lemit()\l}"];
+    EventEmitter [tooltip="EventEmitter", fillcolor="lightgray", id="me", label="{EventEmitter|new EventEmitter()\l|EventEmitter\l|defaultMaxListeners\l|on()\laddListener()\lprependListener()\lonce()\lprependOnceListener()\loff()\lremoveListener()\lremoveAllListeners()\lsetMaxListeners()\lgetMaxListeners()\llisteners()\llistenerCount()\leventNames()\lemit()\l}"];
     ChildProcess [tooltip="ChildProcess", URL="ChildProcess.md", label="{ChildProcess}"];
     DgramSocket [tooltip="DgramSocket", URL="DgramSocket.md", label="{DgramSocket}"];
     FSWatcher [tooltip="FSWatcher", URL="FSWatcher.md", label="{FSWatcher}"];
@@ -46,6 +46,14 @@ digraph {
 
 ```JavaScript
 new EventEmitter();
+```
+
+## 对象
+        
+**事件触发对象**
+
+```JavaScript
+EventEmitter new EventEmitter;
 ```
 
 ## 静态属性
