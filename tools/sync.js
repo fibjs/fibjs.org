@@ -176,7 +176,7 @@ function sync_releases() {
 module.exports = () => {
     console.log("start sync");
     while (true) {
-        // coroutine.start(sync_releases).join();
+        coroutine.start(sync_releases).join();
         coroutine.sleep(100000);
     }
 }
