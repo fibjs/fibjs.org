@@ -5,8 +5,9 @@ var sync = require('./sync');
 console.log("start server");
 
 var port = process.env.FIBJS_DOC_PORT || 80;
+var hdr = http.fileHandler(path.join(__dirname, "../web/dist"), {}, true);
 
-var svr = new http.Server(port, path.join(__dirname, "../web/dist"));
+var svr = new http.Server(port, hdr);
 svr.start();
 
 var disableSync = !!process.env.FIBJS_DOC_NO_SYNC
