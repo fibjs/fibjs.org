@@ -328,7 +328,7 @@ module name
 
 <span class="hljs-keyword">public</span>:
     <span class="hljs-comment">// name_base</span>
-    <span class="hljs-function"><span class="hljs-keyword">static</span> result_t <span class="hljs-title">test</span><span class="hljs-params">(exlib::<span class="hljs-built_in">string</span> lyrics, <span class="hljs-keyword">bool</span>&amp; retVal)</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">result_t</span> <span class="hljs-title">test</span><span class="hljs-params">(exlib::<span class="hljs-built_in">string</span> lyrics, <span class="hljs-keyword">bool</span>&amp; retVal)</span></span>;
 
 <span class="hljs-keyword">public</span>:
     <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">s__new</span><span class="hljs-params">(<span class="hljs-keyword">const</span> v8::FunctionCallbackInfo&lt;v8::Value&gt;&amp; args)</span>
@@ -347,8 +347,8 @@ module name
 }
 
 <span class="hljs-keyword">namespace</span> fibjs {
-<span class="hljs-keyword">inline</span> ClassInfo&amp; name_base::class_info()
-{
+<span class="hljs-function"><span class="hljs-keyword">inline</span> ClassInfo&amp; <span class="hljs-title">name_base::class_info</span><span class="hljs-params">()</span>
+</span>{
     <span class="hljs-keyword">static</span> ClassData::ClassMethod s_method[] = {
         { <span class="hljs-string">"test"</span>, s_test, <span class="hljs-literal">true</span> }
     };
@@ -363,8 +363,8 @@ module name
     <span class="hljs-keyword">return</span> s_ci;
 }
 
-<span class="hljs-keyword">inline</span> <span class="hljs-keyword">void</span> name_base::s_test(<span class="hljs-keyword">const</span> v8::FunctionCallbackInfo&lt;v8::Value&gt;&amp; args)
-{
+<span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">void</span> <span class="hljs-title">name_base::s_test</span><span class="hljs-params">(<span class="hljs-keyword">const</span> v8::FunctionCallbackInfo&lt;v8::Value&gt;&amp; args)</span>
+</span>{
     <span class="hljs-keyword">bool</span> vr;
 
     METHOD_NAME(<span class="hljs-string">"name.test"</span>);
@@ -406,8 +406,8 @@ module name
 <span class="hljs-keyword">namespace</span> fibjs
 {
     DECLARE_MODULE(name);
-    <span class="hljs-keyword">result_t</span> name_base::test(exlib::<span class="hljs-built_in">string</span> lyrics, <span class="hljs-keyword">bool</span>&amp; retVal)
-    {
+    <span class="hljs-function"><span class="hljs-keyword">result_t</span> <span class="hljs-title">name_base::test</span><span class="hljs-params">(exlib::<span class="hljs-built_in">string</span> lyrics, <span class="hljs-keyword">bool</span>&amp; retVal)</span>
+    </span>{
         <span class="hljs-keyword">if</span> (lyrics == <span class="hljs-string">"youmeiyounameyishougehuirangnituranxiangqiwo"</span>)
             retVal = <span class="hljs-literal">true</span>;
         <span class="hljs-keyword">else</span> retVal = <span class="hljs-literal">false</span>;
@@ -424,4 +424,4 @@ module name
 <img src="./imgs/name.png" alt="name"></p>
 <h2 id="总结">总结</h2>
 <p>学会了如何增加和修改 fibjs 的 native 模块和对象。我们可以编写各种各样复杂的模块，还可以移植第三方库到 fibjs 作为支持来编写我们的模块。欢迎您来为 fibjs 贡献更多的力量。</p>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id=toc></div></div></div></div><div class=footer><div class=container>&copy; Copyright 2014-Present fibjs.org | <a href=../../support.html>支持我们</a></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="Click to return on the top page" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js></script><script type=text/javascript src=../../js/common.js></script><script type=text/javascript src=../../js/docs.js></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id=toc></div></div></div></div><div class=footer><div class=container>&copy; Copyright 2012-2021 fibjs.org</div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="Click to return on the top page" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js></script><script type=text/javascript src=../../js/common.js></script><script type=text/javascript src=../../js/docs.js></script></body></html>

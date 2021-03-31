@@ -3,7 +3,9 @@
 ```JavaScript
 var gui = require("gui");
 
-gui.open("https://fibjs.org");
+gui.open("https://fibjs.org", {
+    "native": true
+});
 ```
 这段代码会打开一个操作系统内置的 WebView 窗口，并进入 fibjs.org 的网站。
 
@@ -27,7 +29,7 @@ cef3 是基于 Chomuim Content API 多进程构架的下一代 cef，拥有下�
 - 更快获得当前以及未来的 Web 特性和标准的能力。
 
 ## 准备运行环境
-cef3 的二进制包可以在 [[这个页面](https://cef-builds.spotifycdn.com/index.html)] 下载。其中包含了在特定平台（Windows，Mac OS X 以及 Linux）编译特定版本 cef3 所需的全部文件。不同平台拥有共同的结构，你需要在下载后重新组织资源目录结构。应用资源布局依赖于平台，有很大的不同。
+cef3 的二进制包可以在 [[这个页面](https://cef-builds.spotifycdn.com/index.html)] 下载。其中包含了在特定平台（Windows，Mac OS X 以及 Linux）编译特定版本 cef3 所需的全部文件。不同平台的目录结构不太，你需要在下载后重新组织资源目录结构。
 
 ### Windows 操作系统(Windows)
 在 Windows 平台上文件夹结构大致如下，你通常可以在二进制包内的 `Release` 和 `Resources` 目录下找到全部文件：
@@ -82,11 +84,11 @@ Application
 │   └── libGLESv2.so
 └── v8_context_snapshot.bin
 ```
-在 Linux Server 上因为没有桌面环境支持，只可以以 `--headless` 模式运行，当以无窗口模式运行时，还需要安装 xorg：
+在 Linux Server 上因为没有桌面环境支持，只可以以 `--headless` 模式运行，当以无窗口模式运行时，需要安装 xorg：
 ```sh
 apt install xorg
 ```
-在 Linux Server 上，和一些 gpu 支持不好的 Linux Desktop，还需要增加 `--disable-gpu` 启动选项禁用 gpu 渲染。
+在一些 gpu 支持不好的 Linux Desktop，还需要增加 `--disable-gpu` 启动选项禁用 gpu 渲染。
 
 ### Mac X 平台(Mac OS X)
 在 Mac X 平台上文件夹结构大致如下，你通常可以在二进制包内的 `Release/Chromium Embedded Framework.framework` 目录下找到全部文件，如果你下载的是 cefclient，那么你需要打开 app 的 Contents 找到相应的文件：
@@ -119,9 +121,11 @@ gui.config({
 ```JavaScript
 var gui = require("gui");
 
-gui.open("https://fibjs.org");
+gui.open("https://fibjs.org", {
+    // "native": true
+});
 ```
-同样会看到一个加载了 fibjs 官网的浏览器窗口，但是它的引擎已经是最新的 Chrome 内核了。
+同样会看到一个加载了 fibjs 官网的浏览器窗口，但是它的引擎已经是最新的 Chrome 内核了。注意此处需要取消 `native` 选项，否则还将打开 os 内置的 webview。
 
 gui 的基础应用十分简便，参照 gui 文档即可迅速实现，不再赘述。接下来主要介绍一些特别的应用方式。
 
@@ -285,6 +289,20 @@ win.on('open', () => {
     win.loadUrl('https://fibjs.org');
 });
 ```
+### 监听事件
+```JavaScript
+var win = gui.open();
+
+win.on('open', () => {
+    win.dev.Page.enable();
+    win.dev.Page.on("frameNavigated", ev => {
+        console.log(ev.frame.url);
+        win.close();
+    });
+});
+```
+## 多媒体支持
+因为版权问题，cef 的二进制发行版中通常不包含 mp4 和 mp3 的解码。但是 cef 中包含开源的 webm 解码，对于独立的桌面应用，建议使用免费授权的 webm 编码处理音频和视频。
 ## 小结
 通过这个小节的介绍，我们可以快速开发自己的桌面应用，将 html 渲染成图片或者 PDF，利用 cdp 的强大接口建立前端自动化测试和流程自动化引擎。
 

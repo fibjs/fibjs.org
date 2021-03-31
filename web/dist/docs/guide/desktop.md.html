@@ -196,9 +196,13 @@
 <p>在 fibjs 中启动一个桌面应用是很快的，只需要键入以下代码，即可打开并运行一个 WebView 窗口：</p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
-3</div><span class="hljs-keyword">var</span> gui = <span class="hljs-built_in">require</span>(<span class="hljs-string">"gui"</span>);
+3
+4
+5</div><span class="hljs-keyword">var</span> gui = <span class="hljs-built_in">require</span>(<span class="hljs-string">"gui"</span>);
 
-gui.open(<span class="hljs-string">"https://fibjs.org"</span>);
+gui.open(<span class="hljs-string">"https://fibjs.org"</span>, {
+    <span class="hljs-string">"native"</span>: <span class="hljs-literal">true</span>
+});
 </code></pre>
 <p>这段代码会打开一个操作系统内置的 WebView 窗口，并进入 fibjs.org 的网站。</p>
 <p>然而，系统内置的 WebView 无论在接口功能还是兼容性，都不能满足强大的桌面应用开发。因此 fibjs 还支持基于 cef 的应用开发。</p>
@@ -220,7 +224,7 @@ gui.open(<span class="hljs-string">"https://fibjs.org"</span>);
 <li>更快获得当前以及未来的 Web 特性和标准的能力。</li>
 </ul>
 <h2 id="准备运行环境">准备运行环境</h2>
-<p>cef3 的二进制包可以在 [<a href="https://cef-builds.spotifycdn.com/index.html">这个页面</a>] 下载。其中包含了在特定平台（Windows，Mac OS X 以及 Linux）编译特定版本 cef3 所需的全部文件。不同平台拥有共同的结构，你需要在下载后重新组织资源目录结构。应用资源布局依赖于平台，有很大的不同。</p>
+<p>cef3 的二进制包可以在 [<a href="https://cef-builds.spotifycdn.com/index.html">这个页面</a>] 下载。其中包含了在特定平台（Windows，Mac OS X 以及 Linux）编译特定版本 cef3 所需的全部文件。不同平台的目录结构不太，你需要在下载后重新组织资源目录结构。</p>
 <h3 id="Windows-操作系统(Windows)">Windows 操作系统(Windows)</h3>
 <p>在 Windows 平台上文件夹结构大致如下，你通常可以在二进制包内的 <code>Release</code> 和 <code>Resources</code> 目录下找到全部文件：</p>
 <pre><code class="lang-bash"><div class="line-numbers">1
@@ -313,10 +317,10 @@ gui.open(<span class="hljs-string">"https://fibjs.org"</span>);
 │   └── libGLESv2.so
 └── v8_context_snapshot.bin
 </code></pre>
-<p>在 Linux Server 上因为没有桌面环境支持，只可以以 <code>--headless</code> 模式运行，当以无窗口模式运行时，还需要安装 xorg：</p>
+<p>在 Linux Server 上因为没有桌面环境支持，只可以以 <code>--headless</code> 模式运行，当以无窗口模式运行时，需要安装 xorg：</p>
 <pre><code class="lang-sh"><div class="line-numbers">1</div>apt install xorg
 </code></pre>
-<p>在 Linux Server 上，和一些 gpu 支持不好的 Linux Desktop，还需要增加 <code>--disable-gpu</code> 启动选项禁用 gpu 渲染。</p>
+<p>在一些 gpu 支持不好的 Linux Desktop，还需要增加 <code>--disable-gpu</code> 启动选项禁用 gpu 渲染。</p>
 <h3 id="Mac-X-平台(Mac-OS-X)">Mac X 平台(Mac OS X)</h3>
 <p>在 Mac X 平台上文件夹结构大致如下，你通常可以在二进制包内的 <code>Release/Chromium Embedded Framework.framework</code> 目录下找到全部文件，如果你下载的是 cefclient，那么你需要打开 app 的 Contents 找到相应的文件：</p>
 <pre><code class="lang-bash"><div class="line-numbers">1
@@ -359,11 +363,15 @@ gui.open(<span class="hljs-string">"https://fibjs.org"</span>);
 <p>准备好运行环境，再运行以下代码</p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
-3</div><span class="hljs-keyword">var</span> gui = <span class="hljs-built_in">require</span>(<span class="hljs-string">"gui"</span>);
+3
+4
+5</div><span class="hljs-keyword">var</span> gui = <span class="hljs-built_in">require</span>(<span class="hljs-string">"gui"</span>);
 
-gui.open(<span class="hljs-string">"https://fibjs.org"</span>);
+gui.open(<span class="hljs-string">"https://fibjs.org"</span>, {
+    <span class="hljs-comment">// "native": true</span>
+});
 </code></pre>
-<p>同样会看到一个加载了 fibjs 官网的浏览器窗口，但是它的引擎已经是最新的 Chrome 内核了。</p>
+<p>同样会看到一个加载了 fibjs 官网的浏览器窗口，但是它的引擎已经是最新的 Chrome 内核了。注意此处需要取消 <code>native</code> 选项，否则还将打开 os 内置的 webview。</p>
 <p>gui 的基础应用十分简便，参照 gui 文档即可迅速实现，不再赘述。接下来主要介绍一些特别的应用方式。</p>
 <h2 id="前后端服务对接">前后端服务对接</h2>
 <p>基于 web 的桌面应用通常有两种扩展方式，一种是 WebView 扩展，另一种是在本地实现前后端分离。前一种方式，对 WebView 做了侵入式扩展，运行环境与标准的浏览器其实已经不再兼容。后一种方式则需要在本地开启一个 http Server，这样又导致服务接口对外暴露。</p>
@@ -601,7 +609,28 @@ win.on(<span class="hljs-string">'open'</span>, () =&gt; {
     win.loadUrl(<span class="hljs-string">'https://fibjs.org'</span>);
 });
 </code></pre>
+<h3 id="监听事件">监听事件</h3>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9</div><span class="hljs-keyword">var</span> win = gui.open();
+
+win.on(<span class="hljs-string">'open'</span>, () =&gt; {
+    win.dev.Page.enable();
+    win.dev.Page.on(<span class="hljs-string">"frameNavigated"</span>, ev =&gt; {
+        <span class="hljs-built_in">console</span>.log(ev.frame.url);
+        win.close();
+    });
+});
+</code></pre>
+<h2 id="多媒体支持">多媒体支持</h2>
+<p>因为版权问题，cef 的二进制发行版中通常不包含 mp4 和 mp3 的解码。但是 cef 中包含开源的 webm 解码，对于独立的桌面应用，建议使用免费授权的 webm 编码处理音频和视频。</p>
 <h2 id="小结">小结</h2>
 <p>通过这个小节的介绍，我们可以快速开发自己的桌面应用，将 html 渲染成图片或者 PDF，利用 cdp 的强大接口建立前端自动化测试和流程自动化引擎。</p>
 <p>👉 【<a href=server-hot-update.md.html>服务端模块热更新</a>】</p>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id=toc></div></div></div></div><div class=footer><div class=container>&copy; Copyright 2014-Present fibjs.org | <a href=../../support.html>支持我们</a></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="Click to return on the top page" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js></script><script type=text/javascript src=../../js/common.js></script><script type=text/javascript src=../../js/docs.js></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id=toc></div></div></div></div><div class=footer><div class=container>&copy; Copyright 2012-2021 fibjs.org</div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="Click to return on the top page" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js></script><script type=text/javascript src=../../js/common.js></script><script type=text/javascript src=../../js/docs.js></script></body></html>
