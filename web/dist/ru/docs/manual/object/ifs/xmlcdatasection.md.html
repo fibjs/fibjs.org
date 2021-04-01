@@ -197,7 +197,7 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Интерфейс XmlCDATASection </font></font><a href="xmltext.md.html" class="notranslate">XmlText</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Под-интерфейс интерфейса не определяет никаких собственных свойств и методов. </font><font style="vertical-align: inherit;">Перейти от</font></font><a href="xmlnode.md.html" class="notranslate">XmlNode</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Интерфейс наследует свойство nodeValue или через </font></font><a href="xmlcharacterdata.md.html" class="notranslate">XmlCharacterData</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Интерфейс наследует атрибут данных и может получить доступ к текстовому содержимому раздела CDATA.</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Хотя узел XmlCDATASection обычно можно использовать как </font></font><a href="xmltext.md.html" class="notranslate">XmlText</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Обработка узлов, но обратите внимание </font></font><a href="xmlnode.md.html" class="notranslate">XmlNode</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Метод нормализации не включает соседний раздел CDATA.</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">использовать </font></font><a href="xmldocument.md.html" class="notranslate">XmlDocument</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Метод createXmlCDATASection для создания XmlCDATASection.</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Раздел CDATA содержит текст, который не будет анализироваться парсером. </font><font style="vertical-align: inherit;">Теги в разделе CDATA не будут рассматриваться как метки, а объекты не будут разворачиваться. </font><font style="vertical-align: inherit;">Основная цель - включить такой материал, как фрагменты XML, без необходимости экранировать все разделители.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Раздел CDATA содержит текст, который не будет анализироваться парсером. </font><font style="vertical-align: inherit;">Теги в разделе CDATA не будут рассматриваться как маркеры, и объекты не будут разворачиваться. </font><font style="vertical-align: inherit;">Основная цель - включить такой материал, как фрагменты XML, без необходимости экранировать все разделители.</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Единственный разделитель, распознаваемый в CDATA, - это "]]&gt;", который может обозначать конец раздела CDATA. </font><font style="vertical-align: inherit;">Разделы CDATA не могут быть вложенными.</font></font></p>
 <div name="继承关系" data-unique="继承关系"></div><h2 id="继承关系"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Отношения по наследству</font></font></h2>
 <div class="dot notranslate">
@@ -366,14 +366,14 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">NodeName разных объектов будет возвращать разные значения:</font></font></p>
 <ul>
-<li><a href="xmlelement.md.html" class="notranslate">XmlElement</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: ноль</font></font></li>
+<li><a href="xmlelement.md.html" class="notranslate">XmlElement</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: нулевой</font></font></li>
 <li><a href="xmlattr.md.html" class="notranslate">XmlAttr</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Значение атрибута</font></font></li>
 <li><a href="xmltext.md.html" class="notranslate">XmlText</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Содержимое узла</font></font></li>
 <li><span class="notranslate">XmlCDATASection</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Содержимое узла</font></font></li>
 <li><a href="xmlprocessinginstruction.md.html" class="notranslate">XmlProcessingInstruction</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Вернуть указанные данные содержимого</font></font></li>
 <li><a href="xmlcomment.md.html" class="notranslate">XmlComment</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Текст комментария</font></font></li>
-<li><a href="xmldocument.md.html" class="notranslate">XmlDocument</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: ноль</font></font></li>
-<li><a href="xmldocumenttype.md.html" class="notranslate">XmlDocumentType</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: ноль</font></font></li>
+<li><a href="xmldocument.md.html" class="notranslate">XmlDocument</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: нулевой</font></font></li>
+<li><a href="xmldocumenttype.md.html" class="notranslate">XmlDocumentType</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: нулевой</font></font></li>
 </ul>
 <hr>
 <div name="ownerDocument" data-unique="ownerDocument"></div><h3 id="ownerDocument" class="notranslate">ownerDocument</h3>
@@ -511,7 +511,7 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
 <ul>
-<li><span class="notranslate">deep</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Boolean, следует ли выполнять глубокое копирование; если true, клонированный узел будет клонировать все дочерние узлы исходного узла.</font></font></li>
+<li><span class="notranslate">deep</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Boolean, следует ли выполнять глубокое копирование, если true, клонированный узел будет клонировать все дочерние узлы исходного узла.</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Результат возврата:</font></font></p>
 <ul>
@@ -606,7 +606,7 @@
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Результат возврата:</font></font></p>
 <ul>
-<li><a href="xmlnode.md.html" class="notranslate">XmlNode</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Если замена прошла успешно, этот метод может вернуть замененный узел, если замена не удалась, он возвращает ноль</font></font></li>
+<li><a href="xmlnode.md.html" class="notranslate">XmlNode</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Если замена успешна, этот метод может вернуть замененный узел, если замена не удалась, он возвращает ноль</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Если newChild уже существует в дереве документа, он будет удален из дерева, а затем снова вставлен в его новую позицию. </font><font style="vertical-align: inherit;">Узлы из одного документа (или узлы, созданные одним документом) не могут быть вставлены в другой документ. </font><font style="vertical-align: inherit;">Другими словами, свойство ownerDocument у newChild должно быть таким же, как свойство ownerDocument текущего узла.</font></font></p>
 <hr>
@@ -620,7 +620,7 @@
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Результат возврата:</font></font></p>
 <ul>
-<li><a href="xmlnode.md.html" class="notranslate">XmlNode</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Если удаление прошло успешно, этот метод может вернуть удаленный узел, в случае неудачи - нуль</font></font></li>
+<li><a href="xmlnode.md.html" class="notranslate">XmlNode</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Если удаление прошло успешно, этот метод может вернуть удаленный узел, в случае неудачи - нуль.</font></font></li>
 </ul>
 <hr>
 <div name="toString" data-unique="toString"></div><h3 id="toString" class="notranslate">toString</h3>
@@ -644,4 +644,4 @@
 <ul>
 <li><span class="notranslate">Value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Возвращает значение, содержащее сериализуемый JSON</font></font></li>
 </ul>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2014-Настоящее время fibjs.org | </font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Поддержите нас</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip240423"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip240423" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Нажмите, чтобы вернуться на главную страницу</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org | </font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Поддержите нас</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip507323"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip507323" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Нажмите, чтобы вернуться на главную страницу</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>

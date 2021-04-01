@@ -7,7 +7,7 @@
 <li><a href="../../../guide/desktop.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sviluppa rapidamente applicazioni desktop</font></font></a></li>
 <li><a href="../../../guide/server-hot-update.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Aggiornamento a caldo del modulo server</font></font></a></li>
 <li><a href="../../../guide/host-routes.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Instradamento del nome di dominio</font></font></a></li>
-<li><a href="../../../guide/x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">L'uso del certificato X509 in fibjs</font></font></a></li>
+<li><a href="../../../guide/x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Uso del certificato X509 in fibjs</font></font></a></li>
 <li><a href="../../../guide/contribute.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Aggiungi modulo nativo</font></font></a></li>
 </ul>
  </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_module" aria-controls="collapse_module"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Modulo base </font></font></a></h4></div><div id="collapse_module" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
@@ -283,7 +283,7 @@
 
 <div name="成员属性" data-unique="成员属性"></div><h2 id="成员属性"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Attributi dei membri</font></font></h2>
 <div name="onsuberror" data-unique="onsuberror"></div><h3 id="onsuberror" class="notranslate">onsuberror</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Funzione, interrogazione e impostazione della funzione di gestione degli errori, richiamata in caso di errore nel sub o la rete è interrotta, quando si verifica il callback, tutti i sub di questo oggetto verranno interrotti</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Funzione, interrogazione e impostazione della funzione di gestione degli errori, richiamata quando si verifica un errore nel sub o la rete è interrotta, quando si verifica il callback, tutti i sub di questo oggetto si fermeranno</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Function</span> Redis.onsuberror;
 </code></pre>
 <div name="成员函数" data-unique="成员函数"></div><h2 id="成员函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Funzione membro</font></font></h2>
@@ -720,7 +720,7 @@
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Risultato di ritorno:</font></font></p>
 <ul>
-<li><span class="notranslate">Boolean</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Quando la modifica ha esito positivo, restituisce True, se la nuova chiave esiste già, restituisce False</font></font></li>
+<li><span class="notranslate">Boolean</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Quando la modifica ha esito positivo, restituisce True, se la newkey esiste già, restituisce False</font></font></li>
 </ul>
 <hr>
 <div name="sub" data-unique="sub"></div><h3 id="sub" class="notranslate">sub</h3>
@@ -740,7 +740,7 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parametri di chiamata:</font></font></p>
 <ul>
-<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Oggetto, specificare la relazione di mappatura del canale, il nome dell'attributo dell'oggetto sarà il nome del canale e il valore dell'attributo sarà la funzione di callback</font></font></li>
+<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Oggetto, specificare la relazione di mappatura del canale, il nome dell'attributo dell'oggetto sarà il nome del canale e il valore dell'attributo sarà la funzione di richiamata</font></font></li>
 </ul>
 <hr>
 <div name="unsub" data-unique="unsub"></div><h3 id="unsub" class="notranslate">unsub</h3>
@@ -749,7 +749,7 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parametri di chiamata:</font></font></p>
 <ul>
-<li><span class="notranslate">channel</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Specificare il nome del canale per l'annullamento della sottoscrizione</font></font></li>
+<li><span class="notranslate">channel</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Specificare il nome del canale non sottoscritto</font></font></li>
 </ul>
 <hr>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Annulla la sottoscrizione della funzione di callback specificata del canale specificato</font></font></strong></p>
@@ -759,7 +759,7 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parametri di chiamata:</font></font></p>
 <ul>
-<li><span class="notranslate">channel</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Specificare il nome del canale per l'annullamento della sottoscrizione</font></font></li>
+<li><span class="notranslate">channel</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Specificare il nome del canale non sottoscritto</font></font></li>
 <li><span class="notranslate">func</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Funzione, specifica la funzione di callback per l'annullamento della sottoscrizione</font></font></li>
 </ul>
 <hr>
@@ -768,7 +768,7 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parametri di chiamata:</font></font></p>
 <ul>
-<li><span class="notranslate">channels</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Array, specifica l'array di canali non sottoscritto</font></font></li>
+<li><span class="notranslate">channels</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Array, specifica un array di canali non sottoscritto</font></font></li>
 </ul>
 <hr>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Annulla la sottoscrizione della funzione di callback specificata di un determinato insieme di canali</font></font></strong></p>
@@ -776,11 +776,11 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parametri di chiamata:</font></font></p>
 <ul>
-<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Oggetto, specificare la relazione di mappatura del canale, il nome dell'attributo dell'oggetto sarà il nome del canale e il valore dell'attributo sarà la funzione di callback</font></font></li>
+<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Oggetto, specificare la relazione di mappatura del canale, il nome dell'attributo dell'oggetto sarà il nome del canale e il valore dell'attributo sarà la funzione di richiamata</font></font></li>
 </ul>
 <hr>
 <div name="psub" data-unique="psub"></div><h3 id="psub" class="notranslate">psub</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Iscriviti alle informazioni di un gruppo di canali in base al modello e chiama automaticamente func quando si verifica un messaggio. Func contiene tre parametri, che sono canale, messaggio e pattern a turno. La stessa funzione dello stesso modello verrà solo richiamata una volta</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sottoscrivi le informazioni di un insieme di canali in base al modello. Quando si verifica un messaggio, func viene chiamato automaticamente. Func contiene tre parametri, che sono canale, messaggio e pattern a turno. La stessa funzione dello stesso modello verrà chiamata solo indietro una volta.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Redis.psub(<span class="hljs-built_in">String</span> pattern,
     <span class="hljs-built_in">Function</span> func);
@@ -791,7 +791,7 @@
 <li><span class="notranslate">func</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Funzione, specifica la funzione di callback</font></font></li>
 </ul>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Iscriviti alle informazioni di un determinato insieme di modelli di canale e chiama automaticamente la funzione corrispondente quando si verifica un messaggio e la stessa funzione sullo stesso canale verrà richiamata solo una volta</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Iscriviti alle informazioni di un dato insieme di modelli di canale e chiama automaticamente la funzione corrispondente quando si verifica un messaggio e la stessa funzione sullo stesso canale verrà richiamata solo una volta</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Redis.psub(<span class="hljs-built_in">Object</span> map);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parametri di chiamata:</font></font></p>
@@ -957,4 +957,4 @@
 <ul>
 <li><span class="notranslate">Value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Restituisce un valore contenente JSON serializzabile</font></font></li>
 </ul>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2014-Presente fibjs.org | </font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sostienici</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip642492"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip642492" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Fare clic per tornare alla pagina principale</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org | </font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sostienici</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip501458"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip501458" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Fare clic per tornare alla pagina principale</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>

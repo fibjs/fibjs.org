@@ -194,7 +194,7 @@
 </ul>
  </div></div></div>  </div></div><div class="content"><div class="social-share share-component" data-sites="weibo,twitter" data-description="分享"></div> <div name="模块-console" data-unique="模块-console"></div><h1 id="模块-console"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Консоль модуля</font></font></h1>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Объект консольного доступа</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Глобальный объект. </font><font style="vertical-align: inherit;">Может использоваться для оперативной информации, предупреждений и регистрации ошибок. </font><font style="vertical-align: inherit;">После запуска файла конфигурации журналы могут быть размещены на разных устройствах для упрощения отслеживания. </font><font style="vertical-align: inherit;">Журнал поддерживает форматированный вывод, например:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Глобальный объект. </font><font style="vertical-align: inherit;">Может использоваться для оперативной информации, предупреждений и регистрации ошибок. </font><font style="vertical-align: inherit;">Запустив файл конфигурации, журналы могут быть размещены на разных устройствах для упрощения отслеживания. </font><font style="vertical-align: inherit;">Журнал поддерживает форматированный вывод, например:</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">console</span>.log(<span class="hljs-string">"%d + %d = %d"</span>, <span class="hljs-number">100</span>, <span class="hljs-number">200</span>, <span class="hljs-number">100</span> + <span class="hljs-number">200</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Можно использовать следующие параметры форматирования:</font></font></p>
@@ -224,7 +224,7 @@
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">console</span>.add(<span class="hljs-string">"event"</span>);
 </code></pre>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Добавьте систему вывода консоли. Поддерживаемые устройства: консоль, системный журнал, событие и файл. Вы можете добавить до 10 выходов.</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Добавьте систему вывода консоли. Поддерживаемые устройства: консоль, системный журнал, событие и файл. Можно добавить до 10 выходов.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">console</span>.add(<span class="hljs-built_in">Object</span> cfg);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
@@ -273,11 +273,11 @@
     <span class="hljs-attr">type</span>: <span class="hljs-string">"file"</span>,
     <span class="hljs-attr">levels</span>: [<span class="hljs-built_in">console</span>.INFO, <span class="hljs-built_in">console</span>.ERROR],
     <span class="hljs-comment">// 必选项，指定日志输出文件，可使用 s% 指定插入日期位置，不指定则添加在结尾</span>
-    path: <span class="hljs-string">"path/to/file_%s.log"</span>,
+    <span class="hljs-attr">path</span>: <span class="hljs-string">"path/to/file_%s.log"</span>,
     <span class="hljs-comment">// 选项，可选值为 "day", "hour", "minute", "###k", "###m", "###g"，缺省为 "1m"</span>
-    split: <span class="hljs-string">"30m"</span>,
+    <span class="hljs-attr">split</span>: <span class="hljs-string">"30m"</span>,
     <span class="hljs-comment">// 选项，可选范围为 2-128，缺省为 128</span>
-    count: <span class="hljs-number">10</span><font></font>
+    <span class="hljs-attr">count</span>: <span class="hljs-number">10</span><font></font>
 });<font></font>
 </code></pre>
 <hr>
@@ -526,7 +526,7 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Вывести текущий стек вызовов через журнал.</font></font></p>
 <hr>
 <div name="assert" data-unique="assert"></div><h3 id="assert" class="notranslate">assert</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Проверка утверждения, если значение проверки ложно, выдается сообщение об ошибке</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Утверждение: если тестовое значение ложно, выдается сообщение об ошибке.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">console</span>.assert(Value value,
     <span class="hljs-built_in">String</span> msg = <span class="hljs-string">""</span>);
@@ -836,4 +836,4 @@
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">постоянная логического уровня</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> <span class="hljs-built_in">console</span>.NOTSET = <span class="hljs-number">10</span>;
 </code></pre>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2014-Настоящее время fibjs.org | </font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Поддержите нас</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip511084"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip511084" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Нажмите, чтобы вернуться на главную страницу</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org | </font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Поддержите нас</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip374763"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip374763" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Нажмите, чтобы вернуться на главную страницу</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>

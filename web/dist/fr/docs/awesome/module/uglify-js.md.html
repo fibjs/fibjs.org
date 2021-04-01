@@ -7,7 +7,7 @@
 <li><a href="../../guide/desktop.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Développez rapidement des applications de bureau</font></font></a></li>
 <li><a href="../../guide/server-hot-update.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Mise à jour à chaud du module serveur</font></font></a></li>
 <li><a href="../../guide/host-routes.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Routage de nom de domaine</font></font></a></li>
-<li><a href="../../guide/x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">L'utilisation du certificat X509 dans fibjs</font></font></a></li>
+<li><a href="../../guide/x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Utilisation du certificat X509 dans fibjs</font></font></a></li>
 <li><a href="../../guide/contribute.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ajouter un module natif</font></font></a></li>
 </ul>
  </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_module" aria-controls="collapse_module"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Module de base </font></font></a></h4></div><div id="collapse_module" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
@@ -213,7 +213,7 @@
 </code></pre><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">UglifyJS peut prendre plusieurs fichiers d'entrée. Il est recommandé de transmettre d'abord les fichiers d'entrée, puis de transmettre les options. UglifyJS analysera les fichiers d'entrée dans l'ordre et appliquera toutes les options de compression. Les fichiers sont analysés dans la même portée globale, c'est-à-dire une référence d'un fichier à une variable / fonction déclarée dans un autre fichier sera correctement mis en correspondance.</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Si aucun fichier d'entrée n'est spécifié, UglifyJS lira à partir de STDIN.</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Si vous souhaitez passer vos options avant les fichiers d'entrée, séparez les deux par un double tiret pour éviter que les fichiers d'entrée ne soient utilisés comme arguments d'option:</font></font></p>
-<pre><code><div class="line-numbers">1</div><span class="hljs-comment">uglifyjs</span> <span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-comment">compress</span> <span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-comment">mangle</span> <span class="hljs-literal">-</span><span class="hljs-literal">-</span> <span class="hljs-comment">input</span><span class="hljs-string">.</span><span class="hljs-comment">js</span>
+<pre><code><div class="line-numbers">1</div><span class="hljs-comment">uglifyjs</span> --<span class="hljs-comment">compress</span> --<span class="hljs-comment">mangle</span> -- <span class="hljs-comment">input</span><span class="hljs-string">.</span><span class="hljs-comment">js</span>
 </code></pre><div name="Command-line-options" data-unique="Command-line-options"></div><h3 id="Command-line-options" class="notranslate">Command line options</h3>
 <pre><code><div class="line-numbers">1
 2
@@ -306,78 +306,78 @@
 89
 90
 91
-92</div>    -h, <span class="hljs-comment">--help                  Print usage information.</span>
-                                `<span class="hljs-comment">--help options` for details on available options.</span>
-    -V, <span class="hljs-comment">--version               Print version number.</span>
-    -p, <span class="hljs-comment">--parse &lt;options&gt;       Specify parser options:</span>
-                                `acorn`  <span class="hljs-keyword">Use</span> Acorn <span class="hljs-keyword">for</span> parsing.
-                                <span class="hljs-string">`bare_returns`</span>  <span class="hljs-keyword">Allow</span> <span class="hljs-keyword">return</span> outside <span class="hljs-keyword">of</span> functions.<font></font>
-                                                Useful <span class="hljs-keyword">when</span> minifying CommonJS<font></font>
+92</div>    -h, --help                  <span class="hljs-builtin-name">Print</span> usage information.<font></font>
+                                `--help options` <span class="hljs-keyword">for</span> details on available options.<font></font>
+    -V, --version               <span class="hljs-builtin-name">Print</span> version number.<font></font>
+    -p, --parse &lt;options&gt;       Specify parser options:<font></font>
+                                `acorn`  Use Acorn <span class="hljs-keyword">for</span> parsing.<font></font>
+                                `bare_returns`  Allow return outside of functions.<font></font>
+                                                Useful when minifying CommonJS<font></font>
                                                 modules <span class="hljs-keyword">and</span> Userscripts that may<font></font>
-                                                be anonymous <span class="hljs-keyword">function</span> <span class="hljs-keyword">wrapped</span> (IIFE)
-                                                <span class="hljs-keyword">by</span> the .user.js <span class="hljs-keyword">engine</span> <span class="hljs-string">`caller`</span>.
-                                <span class="hljs-string">`expression`</span>  <span class="hljs-keyword">Parse</span> a single expression, rather <span class="hljs-keyword">than</span>
-                                              a program (<span class="hljs-keyword">for</span> parsing <span class="hljs-keyword">JSON</span>).
-                                <span class="hljs-string">`spidermonkey`</span>  Assume <span class="hljs-keyword">input</span> files <span class="hljs-keyword">are</span> SpiderMonkey<font></font>
-                                                AST <span class="hljs-keyword">format</span> (<span class="hljs-keyword">as</span> <span class="hljs-keyword">JSON</span>).<font></font>
-    -c, <span class="hljs-comment">--compress [options]    Enable compressor/specify compressor options:</span>
-                                <span class="hljs-string">`pure_funcs`</span>  <span class="hljs-keyword">List</span> <span class="hljs-keyword">of</span> functions that can be safely<font></font>
-                                              removed <span class="hljs-keyword">when</span> their <span class="hljs-keyword">return</span> <span class="hljs-keyword">values</span> <span class="hljs-keyword">are</span>
+                                                be anonymous function wrapped (IIFE)<font></font>
+                                                by the .user.js engine `caller`.<font></font>
+                                `expression`  Parse a single expression, rather than<font></font>
+                                              a program (<span class="hljs-keyword">for</span> parsing JSON).<font></font>
+                                `spidermonkey`  Assume input files are SpiderMonkey<font></font>
+                                                AST format (as JSON).<font></font>
+    -c, --compress [options]    <span class="hljs-builtin-name">Enable</span> compressor/specify compressor options:<font></font>
+                                `pure_funcs`  List of functions that can be safely<font></font>
+                                              removed when their return values are<font></font>
                                               <span class="hljs-keyword">not</span> used.<font></font>
-    -m, <span class="hljs-comment">--mangle [options]      Mangle names/specify mangler options:</span>
-                                <span class="hljs-string">`reserved`</span>  <span class="hljs-keyword">List</span> <span class="hljs-keyword">of</span> <span class="hljs-keyword">names</span> that should <span class="hljs-keyword">not</span> be mangled.
-    <span class="hljs-comment">--mangle-props [options]    Mangle properties/specify mangler options:</span>
-                                <span class="hljs-string">`builtins`</span>  Mangle property <span class="hljs-keyword">names</span> that overlaps
-                                            <span class="hljs-keyword">with</span> standard JavaScript globals.
-                                <span class="hljs-string">`debug`</span>  <span class="hljs-keyword">Add</span> debug prefix <span class="hljs-keyword">and</span> suffix.
-                                <span class="hljs-string">`domprops`</span>  Mangle property <span class="hljs-keyword">names</span> that overlaps
-                                            <span class="hljs-keyword">with</span> DOM properties.
-                                <span class="hljs-string">`keep_quoted`</span>  <span class="hljs-keyword">Only</span> mangle unquoted properties.
-                                <span class="hljs-string">`regex`</span>  <span class="hljs-keyword">Only</span> mangle <span class="hljs-keyword">matched</span> property names.
-                                <span class="hljs-string">`reserved`</span>  <span class="hljs-keyword">List</span> <span class="hljs-keyword">of</span> <span class="hljs-keyword">names</span> that should <span class="hljs-keyword">not</span> be mangled.<font></font>
-    -b, <span class="hljs-comment">--beautify [options]    Beautify output/specify output options:</span>
-                                <span class="hljs-string">`beautify`</span>  Enabled <span class="hljs-keyword">with</span> <span class="hljs-string">`--beautify`</span> <span class="hljs-keyword">by</span> default.
-                                <span class="hljs-string">`preamble`</span>  Preamble <span class="hljs-keyword">to</span> prepend <span class="hljs-keyword">to</span> the output. You<font></font>
-                                            can <span class="hljs-keyword">use</span> this <span class="hljs-keyword">to</span> <span class="hljs-keyword">insert</span> a <span class="hljs-keyword">comment</span>, <span class="hljs-keyword">for</span>
+    -m, --mangle [options]     <span class="hljs-built_in"> Mangle </span>names/specify mangler options:<font></font>
+                                `reserved`  List of names that should <span class="hljs-keyword">not</span> be mangled.<font></font>
+    --mangle-props [options]   <span class="hljs-built_in"> Mangle </span>properties/specify mangler options:<font></font>
+                                `builtins` <span class="hljs-built_in"> Mangle </span>property names that overlaps<font></font>
+                                            with standard JavaScript globals.<font></font>
+                                `debug`  <span class="hljs-builtin-name">Add</span> <span class="hljs-builtin-name">debug</span><span class="hljs-built_in"> prefix </span><span class="hljs-keyword">and</span> suffix.<font></font>
+                                `domprops` <span class="hljs-built_in"> Mangle </span>property names that overlaps<font></font>
+                                            with DOM properties.<font></font>
+                                `keep_quoted`  Only<span class="hljs-built_in"> mangle </span>unquoted properties.<font></font>
+                                `regex`  Only<span class="hljs-built_in"> mangle </span>matched property names.<font></font>
+                                `reserved`  List of names that should <span class="hljs-keyword">not</span> be mangled.<font></font>
+    -b, --beautify [options]    Beautify output/specify output options:<font></font>
+                                `beautify`  Enabled with `--beautify` by default.<font></font>
+                                `preamble`  Preamble <span class="hljs-keyword">to</span> prepend <span class="hljs-keyword">to</span> the output. You<font></font>
+                                            can use this <span class="hljs-keyword">to</span> insert a comment, <span class="hljs-keyword">for</span>
                                             example <span class="hljs-keyword">for</span> licensing information.<font></font>
-                                            This will <span class="hljs-keyword">not</span> be parsed, but the <span class="hljs-keyword">source</span>
-                                            <span class="hljs-keyword">map</span> will adjust <span class="hljs-keyword">for</span> its presence.
-                                <span class="hljs-string">`quote_style`</span>  Quote <span class="hljs-keyword">style</span>:
-                                               <span class="hljs-number">0</span> - <span class="hljs-keyword">auto</span>
-                                               <span class="hljs-number">1</span> - single
-                                               <span class="hljs-number">2</span> - <span class="hljs-keyword">double</span>
-                                               <span class="hljs-number">3</span> - original
-                                <span class="hljs-string">`wrap_iife`</span>  Wrap IIFEs <span class="hljs-keyword">in</span> parenthesis. Note: you may<font></font>
-                                             want <span class="hljs-keyword">to</span> <span class="hljs-keyword">disable</span> <span class="hljs-string">`negate_iife`</span> <span class="hljs-keyword">under</span><font></font>
+                                            This will <span class="hljs-keyword">not</span> be parsed, but the source<font></font>
+                                            map will adjust <span class="hljs-keyword">for</span> its presence.<font></font>
+                                `quote_style`  Quote style:<font></font>
+                                               0 - auto<font></font>
+                                               1 - single<font></font>
+                                               2 - double<font></font>
+                                               3 - original<font></font>
+                                `wrap_iife`  Wrap IIFEs <span class="hljs-keyword">in</span> parenthesis. Note: you may<font></font>
+                                             want <span class="hljs-keyword">to</span> <span class="hljs-builtin-name">disable</span> `negate_iife` under<font></font>
                                              compressor options.<font></font>
-    -o, <span class="hljs-comment">--output &lt;file&gt;         Output file path (default STDOUT). Specify `ast` or</span>
-                                <span class="hljs-string">`spidermonkey`</span> <span class="hljs-keyword">to</span> write UglifyJS <span class="hljs-keyword">or</span> SpiderMonkey AST
-                                <span class="hljs-keyword">as</span> <span class="hljs-keyword">JSON</span> <span class="hljs-keyword">to</span> STDOUT respectively.
-    <span class="hljs-comment">--comments [filter]         Preserve copyright comments in the output. By</span>
-                                <span class="hljs-keyword">default</span> this works <span class="hljs-keyword">like</span> Google Closure, keeping<font></font>
-                                JSDoc-<span class="hljs-keyword">style</span> comments that contain <span class="hljs-string">"@license"</span> <span class="hljs-keyword">or</span>
-                                <span class="hljs-string">"@preserve"</span>. You can <span class="hljs-keyword">optionally</span> pass one <span class="hljs-keyword">of</span> the
-                                <span class="hljs-keyword">following</span> arguments <span class="hljs-keyword">to</span> this flag:<font></font>
-                                - <span class="hljs-string">"all"</span> <span class="hljs-keyword">to</span> <span class="hljs-keyword">keep</span> <span class="hljs-keyword">all</span> comments<font></font>
-                                - a valid JS RegExp <span class="hljs-keyword">like</span> <span class="hljs-string">`/foo/`</span> <span class="hljs-keyword">or</span> <span class="hljs-string">`/^!/`</span> <span class="hljs-keyword">to</span>
-                                <span class="hljs-keyword">keep</span> <span class="hljs-keyword">only</span> matching comments.<font></font>
-                                Note that currently <span class="hljs-keyword">not</span> *<span class="hljs-keyword">all</span>* comments can be<font></font>
-                                kept <span class="hljs-keyword">when</span> compression <span class="hljs-keyword">is</span> <span class="hljs-keyword">on</span>, because <span class="hljs-keyword">of</span> dead<font></font>
-                                code removal <span class="hljs-keyword">or</span> cascading statements <span class="hljs-keyword">into</span><font></font>
+    -o, --output &lt;file&gt;         Output file path (default STDOUT). Specify `ast` <span class="hljs-keyword">or</span>
+                                `spidermonkey` <span class="hljs-keyword">to</span> write UglifyJS <span class="hljs-keyword">or</span> SpiderMonkey AST<font></font>
+                                as JSON <span class="hljs-keyword">to</span> STDOUT respectively.<font></font>
+    --comments [filter]         Preserve copyright comments <span class="hljs-keyword">in</span> the output. By
+                               <span class="hljs-built_in"> default </span>this works like Google Closure, keeping<font></font>
+                                JSDoc-style comments that contain <span class="hljs-string">"@license"</span> <span class="hljs-keyword">or</span>
+                                <span class="hljs-string">"@preserve"</span>. You can optionally pass one of the<font></font>
+                                following arguments <span class="hljs-keyword">to</span> this flag:<font></font>
+                                - <span class="hljs-string">"all"</span> <span class="hljs-keyword">to</span> keep all comments<font></font>
+                                - a valid JS RegExp like `/foo/` <span class="hljs-keyword">or</span> `/^!/` <span class="hljs-keyword">to</span><font></font>
+                                keep only matching comments.<font></font>
+                               <span class="hljs-built_in"> Note </span>that currently <span class="hljs-keyword">not</span> <span class="hljs-number">*a</span>ll* comments can be<font></font>
+                                kept when compression is on, because of dead<font></font>
+                                code removal <span class="hljs-keyword">or</span> cascading statements into<font></font>
                                 sequences.<font></font>
-    <span class="hljs-comment">--config-file &lt;file&gt;        Read `minify()` options from JSON file.</span>
-    -d, <span class="hljs-comment">--define &lt;expr&gt;[=value] Global definitions.</span>
-    <span class="hljs-comment">--ie8                       Support non-standard Internet Explorer 8.</span>
-                                Equivalent <span class="hljs-keyword">to</span> setting <span class="hljs-string">`ie8: true`</span> <span class="hljs-keyword">in</span> <span class="hljs-string">`minify()`</span>
-                                <span class="hljs-keyword">for</span> <span class="hljs-string">`compress`</span>, <span class="hljs-string">`mangle`</span> <span class="hljs-keyword">and</span> <span class="hljs-string">`output`</span> options.
-                                <span class="hljs-keyword">By</span> <span class="hljs-keyword">default</span> UglifyJS will <span class="hljs-keyword">not</span> try <span class="hljs-keyword">to</span> be IE-proof.
-    <span class="hljs-comment">--keep-fnames               Do not mangle/drop function names.  Useful for</span>
-                                code relying <span class="hljs-keyword">on</span> Function.prototype.name.
-    <span class="hljs-comment">--name-cache &lt;file&gt;         File to hold mangled name mappings.</span>
-    <span class="hljs-comment">--self                      Build UglifyJS as a library (implies --wrap UglifyJS)</span>
-    <span class="hljs-comment">--source-map [options]      Enable source map/specify source map options:</span>
-                                <span class="hljs-string">`base`</span>  <span class="hljs-keyword">Path</span> <span class="hljs-keyword">to</span> <span class="hljs-keyword">compute</span> <span class="hljs-keyword">relative</span> paths <span class="hljs-keyword">from</span> <span class="hljs-keyword">input</span> files.
-                                <span class="hljs-string">`content`</span>  <span class="hljs-keyword">Input</span> <span class="hljs-keyword">source</span> <span class="hljs-keyword">map</span>, useful <span class="hljs-keyword">if</span> you<span class="hljs-string">'re compressing
+    --config-file &lt;file&gt;        Read `minify()` options <span class="hljs-keyword">from</span> JSON file.<font></font>
+    -d, --define &lt;expr&gt;[=value] Global definitions.<font></font>
+    --ie8                       Support non-standard Internet Explorer 8.<font></font>
+                                Equivalent <span class="hljs-keyword">to</span> setting `ie8: <span class="hljs-literal">true</span>` <span class="hljs-keyword">in</span> `minify()`
+                                <span class="hljs-keyword">for</span> `compress`, `mangle` <span class="hljs-keyword">and</span> `output` options.<font></font>
+                                By<span class="hljs-built_in"> default </span>UglifyJS will <span class="hljs-keyword">not</span> try <span class="hljs-keyword">to</span> be IE-proof.<font></font>
+    --keep-fnames               <span class="hljs-keyword">Do</span> <span class="hljs-keyword">not</span> mangle/drop function names.  Useful <span class="hljs-keyword">for</span><font></font>
+                                code relying on Function.prototype.name.<font></font>
+    --name-cache &lt;file&gt;         File <span class="hljs-keyword">to</span> hold mangled name mappings.<font></font>
+    --self                      Build UglifyJS as a library (implies --wrap UglifyJS)<font></font>
+    --source-map [options]      <span class="hljs-builtin-name">Enable</span> source map/specify source map options:<font></font>
+                                `base`  Path <span class="hljs-keyword">to</span> compute relative paths <span class="hljs-keyword">from</span> input files.<font></font>
+                                `content`  Input source map, useful <span class="hljs-keyword">if</span> you<span class="hljs-string">'re compressing
                                            JS that was generated from some other original
                                            code. Specify "inline" if the source map is
                                            included within the sources.
@@ -416,8 +416,8 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Par exemple:</font></font></p>
 <pre><code><div class="line-numbers">1
 2
-3</div>uglifyjs js/file1<span class="hljs-selector-class">.js</span> js/file2<span class="hljs-selector-class">.js</span> \<font></font>
-         -o foo<span class="hljs-selector-class">.min</span><span class="hljs-selector-class">.js</span> -c -m \<font></font>
+3</div>uglifyjs <span class="hljs-keyword">js</span>/file1<span class="hljs-number">.</span><span class="hljs-keyword">js</span> <span class="hljs-keyword">js</span>/file2<span class="hljs-number">.</span><span class="hljs-keyword">js</span> \<font></font>
+         -o foo<span class="hljs-number">.</span>min<span class="hljs-number">.</span><span class="hljs-keyword">js</span> -c -m \<font></font>
          --source-map <span class="hljs-string">"root='http://foo.com/src',url='foo.min.js.map'"</span>
 </code></pre><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ce qui précède compressera et déformera </font></font><code>file1.js</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">et </font></font><code>file2.js</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, supprimera la sortie </font></font><code>foo.min.js</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">et la carte source dans </font></font><code>foo.min.js.map</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">. Le mappage source se référera à </font></font><code>http://foo.com/src/js/file1.js</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">et
  </font></font><code>http://foo.com/src/js/file2.js</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(en fait, il sera répertorié </font></font><code>http://foo.com/src</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
@@ -433,14 +433,14 @@ ou </font></font><code>--source-map "content=inline"</code><font style="vertical
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Exemple:</font></font></p>
 <pre><code><div class="line-numbers">1</div>uglifyjs <span class="hljs-built_in">file</span>.js -c toplevel,sequences=<span class="hljs-literal">false</span>
 </code></pre><div name="CLI-mangle-options" data-unique="CLI-mangle-options"></div><h2 id="CLI-mangle-options"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Options de mangle de la CLI</font></font></h2>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Pour activer le mangler, vous devez passer </font></font><code>--mangle</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">( </font></font><code>-m</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">). Les options suivantes (séparées par des virgules) sont prises en charge:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Pour activer le mangleur, vous devez passer </font></font><code>--mangle</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">( </font></font><code>-m</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">). Les options suivantes (séparées par des virgules) sont prises en charge:</font></font></p>
 <ul>
 <li><p><code>toplevel</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(par défaut </font></font><code>false</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">) - noms de mangle déclarés dans la portée de niveau supérieur.</font></font></p>
 </li>
 <li><p><code>eval</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(par défaut </font></font><code>false</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">) - mangle les noms visibles dans les étendues où </font></font><code>eval</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ou </font></font><code>with</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sont utilisés.</font></font></p>
 </li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Lorsque le découpage est activé mais que vous voulez éviter que certains noms ne soient mutilés, vous pouvez déclarer ces noms avec </font></font><code>--mangle reserved</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">- en passant une liste de noms séparés par des virgules. Par exemple:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Lorsque le découpage est activé mais que vous souhaitez éviter que certains noms ne soient mutilés, vous pouvez déclarer ces noms avec </font></font><code>--mangle reserved</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">- en passant une liste de noms séparés par des virgules. Par exemple:</font></font></p>
 <pre><code><div class="line-numbers">1</div><span class="hljs-function"><span class="hljs-title">uglifyjs</span></span> ... -m reserved=[<span class="hljs-string">'$'</span>,<span class="hljs-string">'require'</span>,<span class="hljs-string">'exports'</span>]
 </code></pre><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">pour empêcher la </font></font><code>require</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><code>exports</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">et les </font></font><code>$</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">noms d'être changé.</font></font></p>
 <div name="CLI-mangling-property-names-(--mangle-props)" data-unique="CLI-mangling-property-names-(--mangle-props)"></div><h3 id="CLI-mangling-property-names-(--mangle-props)"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">CLI mutilation des noms de propriété ( </font></font><code>--mangle-props</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">)</font></font></h3>
@@ -473,7 +473,7 @@ x[<span class="hljs-string">"baz_"</span>] = <span class="hljs-number">3</span>;
 </code></pre>
 <pre><code class="lang-javascript"><div class="line-numbers">1</div><span class="hljs-keyword">var</span> x={<span class="hljs-attr">o</span>:<span class="hljs-number">0</span>,<span class="hljs-attr">_</span>:<span class="hljs-number">1</span>,<span class="hljs-attr">l</span>:<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{<span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>._+<span class="hljs-keyword">this</span>.o}};x.t=<span class="hljs-number">2</span>,x.o=<span class="hljs-number">3</span>,<span class="hljs-built_in">console</span>.log(x.l());
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Mélangez toutes les propriétés à l'exception des </font></font><code>reserved</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">propriétés:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Mangle toutes les propriétés à l'exception des </font></font><code>reserved</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">propriétés:</font></font></p>
 <pre><code class="lang-bash"><div class="line-numbers">1</div>$ uglifyjs example.js -c -m --mangle-props reserved=[foo_,bar_]
 </code></pre>
 <pre><code class="lang-javascript"><div class="line-numbers">1</div><span class="hljs-keyword">var</span> x={<span class="hljs-attr">o</span>:<span class="hljs-number">0</span>,<span class="hljs-attr">foo_</span>:<span class="hljs-number">1</span>,<span class="hljs-attr">_</span>:<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{<span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.foo_+<span class="hljs-keyword">this</span>.o}};x.bar_=<span class="hljs-number">2</span>,x.o=<span class="hljs-number">3</span>,<span class="hljs-built_in">console</span>.log(x._());
@@ -502,7 +502,7 @@ $ uglifyjs file3.js file4.js --mangle-props --name-cache /tmp/cache.json -o part
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Maintenant, </font></font><code>part1.js</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">et </font></font><code>part2.js</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">seront cohérents les uns avec les autres en termes de noms de propriétés mutilés.</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">L'utilisation du cache de noms n'est pas nécessaire si vous compressez tous vos fichiers en un seul appel à UglifyJS.</font></font></p>
-<div name="Mangling-unquoted-names-(--mangle-props-keep_quoted)" data-unique="Mangling-unquoted-names-(--mangle-props-keep_quoted)"></div><h3 id="Mangling-unquoted-names-(--mangle-props-keep_quoted)"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Gestion des noms non cités ( </font></font><code>--mangle-props keep_quoted</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">)</font></font></h3>
+<div name="Mangling-unquoted-names-(--mangle-props-keep_quoted)" data-unique="Mangling-unquoted-names-(--mangle-props-keep_quoted)"></div><h3 id="Mangling-unquoted-names-(--mangle-props-keep_quoted)"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Gestion des noms sans guillemets ( </font></font><code>--mangle-props keep_quoted</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">)</font></font></h3>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">L'utilisation du nom de propriété entre guillemets ( </font></font><code>o["foo"]</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">) réserve le nom de la propriété ( </font></font><code>foo</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">) afin qu'il ne soit pas mutilé dans tout le script, même s'il est utilisé dans un style sans guillemets ( </font></font><code>o.foo</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">). Exemple:</font></font></p>
 <pre><code class="lang-javascript"><div class="line-numbers">1
 2
@@ -524,7 +524,7 @@ o.foo += o.bar;<font></font>
 </code></pre>
 <div name="Debugging-property-name-mangling" data-unique="Debugging-property-name-mangling"></div><h3 id="Debugging-property-name-mangling" class="notranslate">Debugging property name mangling</h3>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Vous pouvez également passer </font></font><code>--mangle-props debug</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">afin de modifier les noms de propriétés sans les masquer complètement. Par exemple, la propriété </font></font><code>o.foo</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
-serait modifiée </font></font><code>o._$foo$_</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">avec cette option. Cela permet de modifier les propriétés d'une base de code volumineuse tout en étant capable de déboguer le code et d'identifier les endroits où la manipulation est en train de casser les choses.</font></font></p>
+serait remplacée </font></font><code>o._$foo$_</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">par cette option. Cela permet de modifier les propriétés d'une base de code volumineuse tout en étant capable de déboguer le code et d'identifier les endroits où la manipulation est en train de casser les choses.</font></font></p>
 <pre><code class="lang-bash"><div class="line-numbers">1</div>$ uglifyjs stuff.js --mangle-props debug -c -m
 </code></pre>
 <pre><code class="lang-javascript"><div class="line-numbers">1</div><span class="hljs-keyword">var</span> o={<span class="hljs-attr">_$foo$_</span>:<span class="hljs-number">1</span>,<span class="hljs-attr">_$bar$_</span>:<span class="hljs-number">3</span>};o._$foo$_+=o._$bar$_,<span class="hljs-built_in">console</span>.log(o._$foo$_);
@@ -730,7 +730,7 @@ fs.writeFileSync(cacheFileName, <span class="hljs-built_in">JSON</span>.stringif
 </li>
 <li><p><code>toplevel</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(par défaut </font></font><code>false</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">) -set à </font></font><code>true</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">si vous souhaitez activer la gestion des variables et des noms de fonction de niveau supérieur et supprimer les variables et fonctions inutilisées.</font></font></p>
 </li>
-<li><p><code>nameCache</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(par défaut </font></font><code>null</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">) -passez un objet vide </font></font><code>{}</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ou un </font><font style="vertical-align: inherit;">objet </font><font style="vertical-align: inherit;">précédemment utilisé </font></font><code>nameCache</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">si vous souhaitez mettre en cache les noms de variables et de propriétés mutilés sur plusieurs appels de </font></font><code>minify()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">. Remarque: il s'agit d'une propriété en lecture / écriture. </font></font><code>minify()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">lira l'état du cache de nom de cet objet et le mettra à jour pendant la minification afin qu'il puisse être réutilisé ou conservé de manière externe par l'utilisateur.</font></font></p>
+<li><p><code>nameCache</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(par défaut </font></font><code>null</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">) -passez un objet vide </font></font><code>{}</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ou un </font><font style="vertical-align: inherit;">objet </font><font style="vertical-align: inherit;">précédemment utilisé </font></font><code>nameCache</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">si vous souhaitez mettre en cache les noms de variables et de propriétés mutilés sur plusieurs appels de </font></font><code>minify()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">. Remarque: il s'agit d'une propriété en lecture / écriture. </font></font><code>minify()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">lira l'état du cache de nom de cet objet et le mettra à jour lors de la minification afin qu'il puisse être réutilisé ou conservé en externe par l'utilisateur.</font></font></p>
 </li>
 <li><p><code>ie8</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(par défaut </font></font><code>false</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">) -set à </font></font><code>true</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">pour prendre en charge IE8.</font></font></p>
 </li>
@@ -772,7 +772,7 @@ fs.writeFileSync(cacheFileName, <span class="hljs-built_in">JSON</span>.stringif
     <span class="hljs-attr">mangle</span>: {
         <span class="hljs-comment">// mangle options</span><font></font>
 <font></font>
-        properties: {<font></font>
+        <span class="hljs-attr">properties</span>: {
             <span class="hljs-comment">// mangle property options</span><font></font>
         }<font></font>
     },<font></font>
@@ -783,7 +783,7 @@ fs.writeFileSync(cacheFileName, <span class="hljs-built_in">JSON</span>.stringif
         <span class="hljs-comment">// source map options</span><font></font>
     },<font></font>
     <span class="hljs-attr">nameCache</span>: <span class="hljs-literal">null</span>, <span class="hljs-comment">// or specify a name cache object</span>
-    toplevel: <span class="hljs-literal">false</span>,
+    <span class="hljs-attr">toplevel</span>: <span class="hljs-literal">false</span>,
     <span class="hljs-attr">ie8</span>: <span class="hljs-literal">false</span>,
     <span class="hljs-attr">warnings</span>: <span class="hljs-literal">false</span>,<font></font>
 }<font></font>
@@ -914,7 +914,7 @@ par défaut car cela semble augmenter la taille de la sortie en général)</font
 <li><p><code>properties</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(par défaut </font></font><code>true</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:) - réécrire l'accès aux propriétés en utilisant la notation par points, par exemple</font></font><code>foo["bar"] → foo.bar</code></p>
 </li>
 <li><p><code>pure_funcs</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(par défaut :) </font></font><code>null</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">- Vous pouvez passer un tableau de noms et UglifyJS supposera que ces fonctions ne produisent pas d'effets secondaires. DANGER: ne vérifiera pas si le nom est redéfini dans la portée. Un exemple de cas ici, par exemple </font></font><code>var q = Math.floor(a/b)</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">. Si la variable </font></font><code>q</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ne l'est pas utilisé ailleurs, UglifyJS le supprimera, mais le conservera toujours </font></font><code>Math.floor(a/b)</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, ne sachant pas ce qu'il fait. Vous pouvez passer </font></font><code>pure_funcs: [ 'Math.floor' ]</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">pour lui faire savoir que cette fonction ne produira aucun effet secondaire, auquel cas l'instruction entière sera rejetée. l'implémentation ajoute une surcharge (la compression sera plus lente) </font><font style="vertical-align: inherit;">.Assurez- </font><font style="vertical-align: inherit;">vous que les symboles ci-dessous </font></font><code>pure_funcs</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
-sont également en dessous </font></font><code>mangle.reserved</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">pour éviter les déformations.</font></font></p>
+sont également en dessous </font></font><code>mangle.reserved</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">pour éviter les mutilations.</font></font></p>
 </li>
 <li><p><code>pure_getters</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(par défaut </font><font style="vertical-align: inherit;">:) </font></font><code>"strict"</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">- Si vous passez </font></font><code>true</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">pour cela, UglifyJS supposera que l'accès aux propriétés de l'objet (par exemple </font></font><code>foo.bar</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ou </font></font><code>foo["bar"]</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">) n'a pas d'effets secondaires. Spécifiez </font></font><code>"strict"</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">de traiter </font></font><code>foo.bar</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">comme sans effet secondaire uniquement quand il
  </font></font><code>foo</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">est certain de ne pas lancer, c'est-à-dire pas </font></font><code>null</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ou </font></font><code>undefined</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">.</font></font></p>
@@ -927,7 +927,7 @@ son activation. Certains codes s'exécutent plus rapidement dans le moteur Chrom
 <li><p><code>sequences</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(par défaut </font></font><code>true</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:) - joindre des instructions simples consécutives à l'aide de l'opérateur virgule. Peut être défini sur un entier positif pour spécifier le nombre maximal de séquences de virgules consécutives qui seront générées. Si cette option est définie sur,
  </font></font><code>true</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">la </font></font><code>sequences</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">limite </font><font style="vertical-align: inherit;">par défaut </font><font style="vertical-align: inherit;">est </font></font><code>200</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">. Définissez l'option sur </font></font><code>false</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ou </font></font><code>0</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
 pour désactiver. La plus petite </font></font><code>sequences</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">longueur est </font></font><code>2</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">. Une </font></font><code>sequences</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">valeur de </font></font><code>1</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
-est acquise pour être équivalente à </font></font><code>true</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">et en tant que tel signifie </font></font><code>200</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">. En de rares occasions, la limite de séquences par défaut entraîne des temps de compression très lents, auquel cas une valeur </font></font><code>20</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">égale ou inférieure est recommandée.</font></font></p>
+est acquise pour être équivalente à </font></font><code>true</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">et en tant que telle signifie </font></font><code>200</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">. En de rares occasions, la limite de séquences par défaut entraîne des temps de compression très lents, auquel cas une valeur </font></font><code>20</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">inférieure ou égale à est recommandée.</font></font></p>
 </li>
 <li><p><code>side_effects</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(par défaut </font><font style="vertical-align: inherit;">:) </font></font><code>true</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">- Passe </font></font><code>false</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">pour désactiver les fonctions potentiellement abandonnées marquées comme "pures". Un appel de fonction est marqué comme "pur" si une annotation de commentaire </font></font><code>/*@__PURE__*/</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ou </font></font><code>/*#__PURE__*/</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">précède immédiatement l'appel. Par exemple:</font></font><code>/*@__PURE__*/foo();</code></p>
 </li>
@@ -1081,7 +1081,7 @@ UglifyJS.minify(code, { <span class="hljs-attr">mangle</span>: { <span class="hl
 5
 6
 7</div><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f</span>(<span class="hljs-params"></span>) </span>{
-    <span class="hljs-comment">/** @preserve Foo Bar */</span>
+    <span class="hljs-comment">/** <span class="hljs-doctag">@preserve </span>Foo Bar */</span>
     <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">g</span>(<span class="hljs-params"></span>) </span>{
         <span class="hljs-comment">// this function is never called</span><font></font>
     }<font></font>
@@ -1117,8 +1117,8 @@ UglifyJS.minify(code, { <span class="hljs-attr">mangle</span>: { <span class="hl
 <span class="hljs-comment">// etc.</span>
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">et construisez votre code comme ceci:</font></font></p>
-<pre><code><div class="line-numbers">1</div>uglifyjs build/defines<span class="hljs-selector-class">.js</span> js/foo<span class="hljs-selector-class">.js</span> js/bar<span class="hljs-selector-class">.js</span>... -c
-</code></pre><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">UglifyJS remarquera les constantes et, comme elles ne peuvent pas être modifiées, il évaluera les références à celles-ci à la valeur elle-même et supprimera le code inaccessible comme d'habitude. La construction contiendra les </font></font><code>const</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">déclarations si vous les utilisez. Si vous ciblez des environnements &lt;ES6, ce qui le fait pas pris en charge </font></font><code>const</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, utiliser </font></font><code>var</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">avec </font></font><code>reduce_vars</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(activé par défaut) devrait suffire.</font></font></p>
+<pre><code><div class="line-numbers">1</div>uglifyjs build/defines<span class="hljs-number">.</span><span class="hljs-keyword">js</span> <span class="hljs-keyword">js</span>/foo<span class="hljs-number">.</span><span class="hljs-keyword">js</span> <span class="hljs-keyword">js</span>/bar<span class="hljs-number">.</span><span class="hljs-keyword">js</span>... -c
+</code></pre><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">UglifyJS remarquera les constantes et, comme elles ne peuvent pas être modifiées, il évaluera les références à celles-ci à la valeur elle-même et supprimera le code inaccessible comme d'habitude. La compilation contiendra les </font></font><code>const</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">déclarations si vous les utilisez. Si vous ciblez des environnements &lt;ES6, ce qui le fait pas pris en charge </font></font><code>const</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, utiliser </font></font><code>var</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">avec </font></font><code>reduce_vars</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(activé par défaut) devrait suffire.</font></font></p>
 <div name="Conditional-compilation-API" data-unique="Conditional-compilation-API"></div><h3 id="Conditional-compilation-API" class="notranslate">Conditional compilation API</h3>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Vous pouvez également utiliser la compilation conditionnelle via l'API de programmation. À la différence que le nom de la propriété est </font></font><code>global_defs</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">et est une propriété de compresseur:</font></font></p>
 <pre><code class="lang-javascript"><div class="line-numbers">1
@@ -1293,7 +1293,7 @@ nous ne pouvons pas facilement passer à l'utilisation de SpiderMonkey AST en in
 </tbody>
 </table>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Pour activer le mode de minification rapide à partir de la CLI, utilisez:</font></font></p>
-<pre><code><div class="line-numbers">1</div>uglifyjs <span class="hljs-keyword">file</span>.js -<span class="hljs-built_in">m</span>
+<pre><code><div class="line-numbers">1</div>uglifyjs <span class="hljs-built_in">file</span>.js -m
 </code></pre><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Pour activer le mode de minification rapide avec l'API, utilisez:</font></font></p>
 <pre><code class="lang-js"><div class="line-numbers">1</div>UglifyJS.minify(code, { <span class="hljs-attr">compress</span>: <span class="hljs-literal">false</span>, <span class="hljs-attr">mangle</span>: <span class="hljs-literal">true</span> });
 </code></pre>
@@ -1302,14 +1302,14 @@ nous ne pouvons pas facilement passer à l'utilisation de SpiderMonkey AST en in
 <div name="Compiler-assumptions" data-unique="Compiler-assumptions"></div><h3 id="Compiler-assumptions" class="notranslate">Compiler assumptions</h3>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Pour permettre de meilleures optimisations, le compilateur fait diverses hypothèses:</font></font></p>
 <ul>
-<li><code>.toString()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">et </font></font><code>.valueOf()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">n'ont pas d'effets secondaires, et pour les objets intégrés, ils n'ont pas été remplacés.</font></font></li>
-<li><code>undefined</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><code>NaN</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">et </font></font><code>Infinity</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">n'ont pas été redéfinis en externe.</font></font></li>
-<li><code>arguments.callee</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><code>arguments.caller</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">et </font></font><code>Function.prototype.caller</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ne sont pas utilisés.</font></font></li>
-<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Le code ne s'attend pas au contenu de </font></font><code>Function.prototype.toString()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ou
- </font></font><code>Error.prototype.stack</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">à quelque chose de particulier.</font></font></li>
-<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">L'obtention et la définition de propriétés sur un objet simple ne provoquent pas d'autres effets secondaires (en utilisant </font></font><code>.watch()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ou </font></font><code>Proxy</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">).</font></font></li>
+<li><code>.toString()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> et </font></font><code>.valueOf()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> n'ont pas d'effets secondaires, et pour les objets intégrés, ils n'ont pas été remplacés.</font></font></li>
+<li><code>undefined</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><code>NaN</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">et</font></font><code>Infinity</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> n'ont pas été redéfinis en externe.</font></font></li>
+<li><code>arguments.callee</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><code>arguments.caller</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">et</font></font><code>Function.prototype.caller</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> ne sont pas utilisés.</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Le code n'attend pas le contenu de </font></font><code>Function.prototype.toString()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ou
+</font></font><code>Error.prototype.stack</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> à quelque chose de particulier.</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">L'obtention et la définition de propriétés sur un objet simple ne provoquent pas d'autres effets secondaires (en utilisant </font></font><code>.watch()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ou</font></font><code>Proxy</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> ).</font></font></li>
 <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Peut être ajouté l'objet Propriétés, retiré et modifié (pas empêché avec
  </font></font><code>Object.defineProperty()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><code>Object.defineProperties()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><code>Object.freeze()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">,
  </font></font><code>Object.preventExtensions()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ou </font></font><code>Object.seal()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">).</font></font></li>
 </ul>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2014-Present fibjs.org | </font></font><a href="../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Soutenez-nous</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip139854"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip139854" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cliquez pour revenir en haut de la page</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../js/common.js"></script><script type="text/javascript" src="../../../../js/docs.js"></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org | </font></font><a href="../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Soutenez-nous</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip447670"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip447670" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cliquez pour revenir en haut de la page</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../js/common.js"></script><script type="text/javascript" src="../../../../js/docs.js"></script></body></html>

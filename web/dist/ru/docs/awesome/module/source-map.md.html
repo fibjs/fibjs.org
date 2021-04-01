@@ -464,7 +464,7 @@ map.addMapping({<font></font>
 <div name="SourceMapConsumer" data-unique="SourceMapConsumer"></div><h3 id="SourceMapConsumer" class="notranslate">SourceMapConsumer</h3>
 <p><font style="vertical-align: inherit;"></font><code>SourceMapConsumer</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Экземпляр представляет собой разобранную карту источника , </font><font style="vertical-align: inherit;">который мы можем запросить информацию о первоначальных позициях файла, давая ему позицию файла в созданном источнике.</font></font></p>
 <h4 id="SourceMapConsumer.initialize(options)"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SourceMapConsumer.initialize (параметры)</font></font></h4>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">При использовании </font></font><code>SourceMapConsumer</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">за пределами node.js, например, в Интернете, ему необходимо знать, с какого URL-адреса загружать </font></font><code>lib/mappings.wasm</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">. Вы должны сообщить ему, позвонив, </font></font><code>initialize</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">прежде чем создавать какие-либо </font></font><code>SourceMapConsumer</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">s.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">При использовании </font></font><code>SourceMapConsumer</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">вне node.js, например, в Интернете, ему необходимо знать, с какого URL-адреса загружаться </font></font><code>lib/mappings.wasm</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">. Вы должны сообщить ему, позвонив </font></font><code>initialize</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">перед построением любого </font></font><code>SourceMapConsumer</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">s.</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Объект параметров имеет следующие свойства:</font></font></p>
 <ul>
 <li><code>"lib/mappings.wasm"</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: A, </font></font><code>String</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">содержащий URL-адрес
@@ -477,7 +477,7 @@ map.addMapping({<font></font>
 });<font></font>
 </code></pre>
 <h4 id="new-SourceMapConsumer(rawSourceMap)"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">новый SourceMapConsumer (rawSourceMap)</font></font></h4>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Единственным параметром является исходная карта исходного кода (либо в виде строки, которая может быть получена
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Единственным параметром является исходная карта исходного кода (либо в виде строки, которую можно использовать
  </font></font><code>JSON.parse</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, либо в виде объекта). Согласно спецификации исходные карты имеют следующие атрибуты:</font></font></p>
 <ul>
 <li><p><code>version</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Какая версия спецификации исходной карты используется для этой карты.</font></font></p>
@@ -492,7 +492,7 @@ map.addMapping({<font></font>
 </li>
 <li><p><code>mappings</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Строка VLQ base64, которая содержит фактические сопоставления.</font></font></p>
 </li>
-<li><p><code>file</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Необязательно. Созданное имя файла, с которым связана эта исходная карта.</font></font></p>
+<li><p><code>file</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Необязательно. Сгенерированное имя файла, с которым связана эта исходная карта.</font></font></p>
 </li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Обещание потребителя построенной исходной карты возвращается.</font></font></p>
@@ -595,7 +595,7 @@ consumer.allGeneratedPositionsFor({ <span class="hljs-attr">line</span>: <span c
 <h4 id="SourceMapConsumer.prototype.originalPositionFor(generatedPosition)"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SourceMapConsumer.prototype.originalPositionFor (createdPosition)</font></font></h4>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Возвращает исходную информацию об источнике, строке и столбце для предоставленных позиций строки и столбца сгенерированного источника. Единственным аргументом является объект со следующими свойствами:</font></font></p>
 <ul>
-<li><p><code>line</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Номер строки в сгенерированном источнике. Номера строк в этой библиотеке начинаются с 1 (обратите внимание, что в базовой спецификации карты источников используются номера строк с отсчетом от 0 - эта библиотека обрабатывает перевод).</font></font></p>
+<li><p><code>line</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Номер строки в сгенерированном источнике. Номера строк в этой библиотеке начинаются с 1 (обратите внимание, что в спецификации базовой карты источников используются номера строк с отсчетом от 0 - эта библиотека обрабатывает перевод).</font></font></p>
 </li>
 <li><p><code>column</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Номер столбца в сгенерированном источнике. Номера столбцов в этой библиотеке отсчитываются от 0.</font></font></p>
 </li>
@@ -848,9 +848,9 @@ name }</code></p>
 </li>
 <li><p><code>sourceFile</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Необязательно. Имя исходного файла. Если не указано, будет использоваться файл sourceMapConsumer.file, если он существует. В противном случае будет выдана ошибка.</font></font></p>
 </li>
-<li><p><code>sourceMapPath</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Необязательно. Имя каталога пути к SourceMap, который будет применяться. Если относительный, он будет относительно SourceMap.</font></font></p>
+<li><p><code>sourceMapPath</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Необязательно. Имя каталога пути к SourceMap, который будет применяться. Если относительный, он будет относиться к SourceMap.</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Этот параметр необходим, когда два SourceMap не находятся в одном каталоге, а SourceMap, который должен быть применен, содержит относительные исходные пути. Если да, то эти относительные исходные пути необходимо переписать относительно SourceMap.</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Если этот параметр опущен, предполагается, что оба SourceMap находятся в одном каталоге, что не требует перезаписи (поставка </font></font><code>'.'</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">имеет тот же эффект).</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Если он опущен, предполагается, что оба SourceMap находятся в одном каталоге, поэтому переписывать не нужно (поставка </font></font><code>'.'</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">имеет тот же эффект).</font></font></p>
 </li>
 </ul>
 <h4 id="SourceMapGenerator.prototype.toString()"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SourceMapGenerator.prototype.toString ()</font></font></h4>
@@ -966,7 +966,7 @@ node.walk(<span class="hljs-function"><span class="hljs-keyword">function</span>
 <span class="hljs-comment">// WALK: quatro { source: 'c.js', line: 5, column: 6, name: null }</span>
 </code></pre>
 <h4 id="SourceNode.prototype.walkSourceContents(fn)"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SourceNode.prototype.walkSourceContents (fn)</font></font></h4>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Обходите дерево SourceNodes.Функция обхода вызывается для каждого содержимого исходного файла, ей передается имя файла и исходное содержимое.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Обходите дерево SourceNodes.Функция обхода вызывается для каждого содержимого исходного файла, и ей передается имя файла и исходное содержимое.</font></font></p>
 <ul>
 <li><code>fn</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Функция обхода.</font></font></li>
 </ul>
@@ -1074,4 +1074,4 @@ node.toStringWithSourceMap({ <span class="hljs-attr">file</span>: <span class="h
 <span class="hljs-comment">// { code: 'unodostresquatro',</span>
 <span class="hljs-comment">//   map: [object SourceMapGenerator] }</span>
 </code></pre>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2014-Настоящее время fibjs.org | </font></font><a href="../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Поддержите нас</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip273524"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip273524" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Нажмите, чтобы вернуться на главную страницу</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../js/common.js"></script><script type="text/javascript" src="../../../../js/docs.js"></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org | </font></font><a href="../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Поддержите нас</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip838794"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip838794" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Нажмите, чтобы вернуться на главную страницу</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../js/common.js"></script><script type="text/javascript" src="../../../../js/docs.js"></script></body></html>

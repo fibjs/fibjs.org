@@ -6,7 +6,7 @@
 <li><a href="../../guide/profiler.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">パフォーマンスキラーを見つける</font></font></a></li>
 <li><a href="../../guide/desktop.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">デスクトップアプリケーションをすばやく開発する</font></font></a></li>
 <li><a href="../../guide/server-hot-update.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">サーバーモジュールのホットアップデート</font></font></a></li>
-<li><a href="../../guide/host-routes.md.html">域名路由</a></li>
+<li><a href="../../guide/host-routes.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ドメイン名ルーティング</font></font></a></li>
 <li><a href="../../guide/x509.md.html">fibjs 中 X509 证书的使用</a></li>
 <li><a href="../../guide/contribute.md.html">添加 native 模块</a></li>
 </ul>
@@ -205,7 +205,7 @@
 <li><code>extension()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> に名前が変更されました </font></font><code>getExtension()</code></li>
 <li><code>charset()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">および</font></font><code>load()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">メソッドが削除されました</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">このモジュールのレガシーバージョンをご希望の場合は、どうぞ</font></font><code>npm install mime@^1</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。バージョン1のドキュメントは</font></font><a href="https://github.com/broofa/node-mime/tree/v1.4.0"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">こちらにあります</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">このモジュールのレガシーバージョンをご希望の場合は、こちらをご覧ください</font></font><code>npm install mime@^1</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。バージョン1のドキュメントは</font></font><a href="https://github.com/broofa/node-mime/tree/v1.4.0"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">こちらにあります</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font></p>
 <div name="Install" data-unique="Install"></div><h2 id="Install"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">インストール</font></font></h2>
 <div name="NPM" data-unique="NPM"></div><h3 id="NPM" class="notranslate">NPM</h3>
 <pre><code><div class="line-numbers">1</div>npm <span class="hljs-keyword">install</span> mime
@@ -246,7 +246,7 @@ mime.getExtension(<span class="hljs-string">'text/plain'</span>);        <span c
 </code></pre>
 <div name="Mime-.vs.-mime-types-.vs.-mime-db-modules" data-unique="Mime-.vs.-mime-types-.vs.-mime-db-modules"></div><h2 id="Mime-.vs.-mime-types-.vs.-mime-db-modules"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Mime.vs。mime-types.vs。mime-dbモジュール</font></font></h2>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">これらの[人気のある] NPMモジュールの違いについて疑問に思っている方のために、簡単な要約を示します...</font></font></p>
-<p><a href="https://github.com/jshttp/mime-db"><code>mime-db</code></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> はMIMEタイプ情報の「信頼できる情報源」です。これはAPIではありません。むしろ、IANA、Apache、NGINX、およびNode.jsコミュニティによって送信されたカスタムマッピングから取得されたmimeタイプ定義の正規データセットです。</font></font></p>
+<p><a href="https://github.com/jshttp/mime-db"><code>mime-db</code></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> はMIMEタイプ情報の「真実の源」です。これはAPIではありません。むしろ、IANA、Apache、NGINX、およびNode.jsコミュニティによって送信されたカスタムマッピングから取得されたmimeタイプ定義の正規データセットです。</font></font></p>
 <p><a href="https://github.com/jshttp/mime-types"><code>mime-types</code></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">は、APIと互換性のあるAPIドロップインを提供するmime-dbの薄いラッパー</font></font><code>mime @ &lt; v1.3.6</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">です。</font></font></p>
 <p><code>mime</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">v2の時点では、</font></font><code>mime-db</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">データセットの</font><font style="vertical-align: inherit;">事前に最適化されたバージョンにバンドルされた自己完結型のモジュール</font><font style="vertical-align: inherit;">であり、次の特性を備えた簡略化されたAPIを提供します。</font></font></p>
 <ul>
@@ -312,7 +312,7 @@ myMime.getType(<span class="hljs-string">'abc'</span>);            <span class="
 myMime.getExtension(<span class="hljs-string">'text/def'</span>);  <span class="hljs-comment">// ⇨ 'leppard'</span><font></font>
 <font></font>
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">複数のmap引数が指定されている場合は、各マップが</font></font><code>define()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">順番に編集されます（以下を参照）。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">複数のmap引数が指定されている場合、各マップが</font></font><code>define()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">順番に編集されます（以下を参照）。</font></font></p>
 <div name="mime.getType(pathOrExtension)" data-unique="mime.getType(pathOrExtension)"></div><h3 id="mime.getType(pathOrExtension)" class="notranslate">mime.getType(pathOrExtension)</h3>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">指定されたパスまたは拡張子のmimeタイプを取得します。例：</font></font></p>
 <pre><code class="lang-javascript"><div class="line-numbers">1
@@ -353,7 +353,7 @@ mime.getExtension(<span class="hljs-string">'text/html; charset=utf8'</span>);  
 <div name="mime.define(typeMap[,-force-=-false])" data-unique="mime.define(typeMap[,-force-=-false])"></div><h3 id="mime.define(typeMap[,-force-=-false])" class="notranslate">mime.define(typeMap[, force = false])</h3>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">[詳細]タイプのマッピングを定義します。</font></font></p>
 <p><code>typeMap</code><font style="vertical-align: inherit;"></font><code>new Mime</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上記のに</font><font style="vertical-align: inherit;">記載されている</font><font style="vertical-align: inherit;">ように</font><font style="vertical-align: inherit;">、タイプ-&gt;拡張機能のマップです</font><font style="vertical-align: inherit;">。</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">デフォルトでは、別の型にすでに割り当てられている拡張機能に型をマップしようとすると、このメソッドはエラーをスローします。</font><font style="vertical-align: inherit;">引数を</font><font style="vertical-align: inherit;">渡す</font></font><code>true</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">と、
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">デフォルトでは、別のタイプにすでに割り当てられている拡張機能にタイプをマップしようとすると、このメソッドはエラーをスローします。</font><font style="vertical-align: inherit;">引数を</font><font style="vertical-align: inherit;">渡す</font></font><code>true</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">と、
 </font></font><code>force</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">この動作が抑制されます（以前のマッピングがオーバーライドされます）。</font></font></p>
 <pre><code class="lang-javascript"><div class="line-numbers">1
 2
@@ -366,11 +366,11 @@ mime.getExtension(<span class="hljs-string">'text/x-abc'</span>)  <span class="h
 <font></font>
 </code></pre>
 <div name="Command-Line" data-unique="Command-Line"></div><h2 id="Command-Line"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">コマンドライン</font></font></h2>
-<pre><code><div class="line-numbers">1</div>mime <span class="hljs-string">[path_or_extension]</span>
+<pre><code><div class="line-numbers">1</div><span class="hljs-attribute">mime</span><span class="hljs-meta"> [path_or_extension]</span>
 </code></pre><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">例えば</font></font></p>
 <pre><code><div class="line-numbers">1
 2</div>&gt; <span class="hljs-variable">mime</span> <span class="hljs-variable"><span class="hljs-class">scripts</span></span>/<span class="hljs-variable">jquery.js</span>
 <span class="hljs-variable"><span class="hljs-class">application</span></span>/<span class="hljs-variable">javascript</span>
 </code></pre><hr>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">から生成されたマークダウン </font></font><a href="src/readme_js.md.html" class="notranslate">src/README_js.md</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 沿って </font></font><a href="https://github.com/broofa/runmd"><img src="http://i.imgur.com/h0FVyzU.png" alt="RunMDロゴ"></a></p>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">©Copyright2014-Present fibjs.org |</font></font><a href="../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">サポートしてください</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip270021"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip270021" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">クリックしてトップページに戻る</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../js/common.js"></script><script type="text/javascript" src="../../../../js/docs.js"></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">©Copyright2012-2021 fibjs.org |</font></font><a href="../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">サポートしてください</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip2697"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip2697" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">クリックしてトップページに戻る</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../js/common.js"></script><script type="text/javascript" src="../../../../js/docs.js"></script></body></html>

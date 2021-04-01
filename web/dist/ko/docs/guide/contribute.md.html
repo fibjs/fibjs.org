@@ -196,7 +196,7 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs 네이티브 모듈에서 제공하는 것 이외의 기능이 필요하거나 fibjs에 코드를 제공하려는 경우이 기사가 도움이 될 수 있습니다.</font></font></p>
 <div name="编写-idl-文件" data-unique="编写-idl-文件"></div><h2 id="编写-idl-文件"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">IDL 파일 쓰기</font></font></h2>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">idl은 fibjs에서 네이티브 모듈 및 개체 메서드를 정의하는 데 사용되는 설명 언어입니다.</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">자신의 fibjs 모듈 작성을 시작하기 전에 idl 설명 언어를 작성해야합니다. </font><font style="vertical-align: inherit;">사용자 정의 모듈 이름을 예로 들어 보겠습니다. </font><font style="vertical-align: inherit;">설명 언어 name.idl을 작성하고이 파일을 $ {{fibjs_project_dir}} / idl / zh-cn / 디렉터리에 넣어야합니다. 여기서 $ {{fibjs_project_dir}}은 fibjs 프로젝트가있는 디렉터리를 나타냅니다.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">자신의 fibjs 모듈 작성을 시작하기 전에 idl 설명 언어를 작성해야합니다. </font><font style="vertical-align: inherit;">사용자 지정 모듈 이름을 예로 들어 보겠습니다. </font><font style="vertical-align: inherit;">설명 언어 name.idl을 작성하고이 파일을 $ {{fibjs_project_dir}} / idl / zh-cn / 디렉터리에 넣어야합니다. 여기서 $ {{fibjs_project_dir}}은 fibjs 프로젝트가있는 디렉터리를 나타냅니다.</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">우리의 이름 모듈은 매우 간단합니다. 테스트 방법은 하나 뿐이고 매개 변수는 문자열이고이 문자열은 가사이고 테스트 방법은 가사가 올바른지 여부를 판단하고 반환 값은 부울입니다. </font><font style="vertical-align: inherit;">name.idl은 다음과 같이 작성됩니다.</font></font></p>
 <pre><code class="lang-idl"><div class="line-numbers">1
 2
@@ -327,7 +327,7 @@ module name<font></font>
 <font></font>
 <span class="hljs-keyword">public</span>:
     <span class="hljs-comment">// name_base</span>
-    <span class="hljs-function"><span class="hljs-keyword">static</span> result_t <span class="hljs-title">test</span><span class="hljs-params">(exlib::<span class="hljs-built_in">string</span> lyrics, <span class="hljs-keyword">bool</span>&amp; retVal)</span></span>;<font></font>
+    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">result_t</span> <span class="hljs-title">test</span><span class="hljs-params">(exlib::<span class="hljs-built_in">string</span> lyrics, <span class="hljs-keyword">bool</span>&amp; retVal)</span></span>;<font></font>
 <font></font>
 <span class="hljs-keyword">public</span>:
     <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">s__new</span><span class="hljs-params">(<span class="hljs-keyword">const</span> v8::FunctionCallbackInfo&lt;v8::Value&gt;&amp; args)</span>
@@ -346,8 +346,8 @@ module name<font></font>
 }<font></font>
 <font></font>
 <span class="hljs-keyword">namespace</span> fibjs {
-<span class="hljs-keyword">inline</span> ClassInfo&amp; name_base::class_info()<font></font>
-{<font></font>
+<span class="hljs-function"><span class="hljs-keyword">inline</span> ClassInfo&amp; <span class="hljs-title">name_base::class_info</span><span class="hljs-params">()</span>
+</span>{
     <span class="hljs-keyword">static</span> ClassData::ClassMethod s_method[] = {<font></font>
         { <span class="hljs-string">"test"</span>, s_test, <span class="hljs-literal">true</span> }<font></font>
     };<font></font>
@@ -362,8 +362,8 @@ module name<font></font>
     <span class="hljs-keyword">return</span> s_ci;<font></font>
 }<font></font>
 <font></font>
-<span class="hljs-keyword">inline</span> <span class="hljs-keyword">void</span> name_base::s_test(<span class="hljs-keyword">const</span> v8::FunctionCallbackInfo&lt;v8::Value&gt;&amp; args)<font></font>
-{<font></font>
+<span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">void</span> <span class="hljs-title">name_base::s_test</span><span class="hljs-params">(<span class="hljs-keyword">const</span> v8::FunctionCallbackInfo&lt;v8::Value&gt;&amp; args)</span>
+</span>{
     <span class="hljs-keyword">bool</span> vr;<font></font>
 <font></font>
     METHOD_NAME(<span class="hljs-string">"name.test"</span>);<font></font>
@@ -404,8 +404,8 @@ module name<font></font>
 <span class="hljs-keyword">namespace</span> fibjs<font></font>
 {<font></font>
     DECLARE_MODULE(name);<font></font>
-    <span class="hljs-keyword">result_t</span> name_base::test(exlib::<span class="hljs-built_in">string</span> lyrics, <span class="hljs-keyword">bool</span>&amp; retVal)<font></font>
-    {<font></font>
+    <span class="hljs-function"><span class="hljs-keyword">result_t</span> <span class="hljs-title">name_base::test</span><span class="hljs-params">(exlib::<span class="hljs-built_in">string</span> lyrics, <span class="hljs-keyword">bool</span>&amp; retVal)</span>
+    </span>{
         <span class="hljs-keyword">if</span> (lyrics == <span class="hljs-string">"youmeiyounameyishougehuirangnituranxiangqiwo"</span>)<font></font>
             retVal = <span class="hljs-literal">true</span>;
         <span class="hljs-keyword">else</span> retVal = <span class="hljs-literal">false</span>;<font></font>
@@ -420,4 +420,4 @@ module name<font></font>
 </font></font><img src="./imgs/name.png" alt="이름"></p>
 <div name="总结" data-unique="总结"></div><h2 id="总结"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">요약하자면</font></font></h2>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs의 네이티브 모듈과 객체를 추가하고 수정하는 방법을 배웠습니다. </font><font style="vertical-align: inherit;">모든 종류의 복잡한 모듈을 작성할 수 있으며 모듈 작성을 지원하기 위해 타사 라이브러리를 fibjs에 이식 할 수도 있습니다. </font><font style="vertical-align: inherit;">fibjs에 더 많은 기여를하실 수 있습니다.</font></font></p>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2014-Present fibjs.org | </font></font><a href="../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">지원</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip764395"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip764395" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">클릭하면 톱 페이지로 돌아갑니다</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../js/common.js"></script><script type="text/javascript" src="../../../js/docs.js"></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org | </font></font><a href="../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">지원</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip706830"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip706830" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">클릭하면 톱 페이지로 돌아갑니다</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../js/common.js"></script><script type="text/javascript" src="../../../js/docs.js"></script></body></html>

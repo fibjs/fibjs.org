@@ -7,7 +7,7 @@
 <li><a href="../../guide/desktop.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sviluppa rapidamente applicazioni desktop</font></font></a></li>
 <li><a href="../../guide/server-hot-update.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Aggiornamento a caldo del modulo server</font></font></a></li>
 <li><a href="../../guide/host-routes.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Instradamento del nome di dominio</font></font></a></li>
-<li><a href="../../guide/x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">L'uso del certificato X509 in fibjs</font></font></a></li>
+<li><a href="../../guide/x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Uso del certificato X509 in fibjs</font></font></a></li>
 <li><a href="../../guide/contribute.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Aggiungi modulo nativo</font></font></a></li>
 </ul>
  </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_module" aria-controls="collapse_module"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Modulo base </font></font></a></h4></div><div id="collapse_module" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
@@ -253,10 +253,10 @@
     <span class="hljs-attr">name</span>      : <span class="hljs-built_in">String</span>,
     <span class="hljs-attr">surname</span>   : <span class="hljs-built_in">String</span>,
     <span class="hljs-attr">age</span>       : <span class="hljs-built_in">Number</span>, <span class="hljs-comment">// FLOAT</span>
-    male      : <span class="hljs-built_in">Boolean</span>,
+    <span class="hljs-attr">male</span>      : <span class="hljs-built_in">Boolean</span>,
     <span class="hljs-attr">continent</span> : [ <span class="hljs-string">"Europe"</span>, <span class="hljs-string">"America"</span>, <span class="hljs-string">"Asia"</span>, <span class="hljs-string">"Africa"</span>, <span class="hljs-string">"Australia"</span>, <span class="hljs-string">"Antartica"</span> ], <span class="hljs-comment">// ENUM type</span>
-    photo     : Buffer, <span class="hljs-comment">// BLOB/BINARY</span>
-    data      : <span class="hljs-built_in">Object</span> <span class="hljs-comment">// JSON encoded</span><font></font>
+    <span class="hljs-attr">photo</span>     : Buffer, <span class="hljs-comment">// BLOB/BINARY</span>
+    <span class="hljs-attr">data</span>      : <span class="hljs-built_in">Object</span> <span class="hljs-comment">// JSON encoded</span><font></font>
 }, {<font></font>
     <span class="hljs-attr">methods</span>: {
         <span class="hljs-attr">fullName</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
@@ -342,10 +342,10 @@ orm.connect(<span class="hljs-string">"mysql://username:password@host/database"<
         <span class="hljs-attr">name</span>      : <span class="hljs-built_in">String</span>,
         <span class="hljs-attr">surname</span>   : <span class="hljs-built_in">String</span>,
         <span class="hljs-attr">age</span>       : <span class="hljs-built_in">Number</span>, <span class="hljs-comment">// FLOAT</span>
-        male      : <span class="hljs-built_in">Boolean</span>,
+        <span class="hljs-attr">male</span>      : <span class="hljs-built_in">Boolean</span>,
         <span class="hljs-attr">continent</span> : [ <span class="hljs-string">"Europe"</span>, <span class="hljs-string">"America"</span>, <span class="hljs-string">"Asia"</span>, <span class="hljs-string">"Africa"</span>, <span class="hljs-string">"Australia"</span>, <span class="hljs-string">"Antartica"</span> ], <span class="hljs-comment">// ENUM type</span>
-        photo     : Buffer, <span class="hljs-comment">// BLOB/BINARY</span>
-        data      : <span class="hljs-built_in">Object</span> <span class="hljs-comment">// JSON encoded</span><font></font>
+        <span class="hljs-attr">photo</span>     : Buffer, <span class="hljs-comment">// BLOB/BINARY</span>
+        <span class="hljs-attr">data</span>      : <span class="hljs-built_in">Object</span> <span class="hljs-comment">// JSON encoded</span><font></font>
     }, {<font></font>
         <span class="hljs-attr">methods</span>: {
             <span class="hljs-attr">fullName</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
@@ -631,7 +631,7 @@ Person.find({ <span class="hljs-attr">age</span>: <span class="hljs-number">18</
 2</div><span class="hljs-keyword">var</span> people = Person.find({ <span class="hljs-attr">surname</span>: <span class="hljs-string">"Doe"</span> }).countSync();
 <span class="hljs-comment">// people = number of people with surname="Doe"</span>
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">È inoltre disponibile l'opzione per rimuovere gli elementi selezionati Nota che una rimozione concatenata non eseguirà alcun gancio.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">È disponibile anche l'opzione per rimuovere gli elementi selezionati Nota che una rimozione concatenata non eseguirà alcun gancio.</font></font></p>
 <pre><code class="lang-js"><div class="line-numbers">1
 2</div>Person.find({ <span class="hljs-attr">surname</span>: <span class="hljs-string">"Doe"</span> }).removeSync();
 <span class="hljs-comment">// Does gone..</span>
@@ -665,7 +665,7 @@ Person.find({ <span class="hljs-attr">surname</span>: <span class="hljs-string">
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ovviamente potresti farlo direttamente su </font></font><code>.find()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, ma per alcune attività più complicate questo può essere molto utile.</font></font></p>
 <p><code>Model.find()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">non restituisce un Array quindi non puoi semplicemente concatenare direttamente.Per iniziare a concatenare devi chiamare
- </font></font><code>.each()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(con un callback opzionale se vuoi attraversare la lista) .Puoi quindi usare le funzioni comuni
+ </font></font><code>.each()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(con un callback opzionale se vuoi attraversare la lista) Puoi quindi usare le funzioni comuni
  </font></font><code>.filter()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><code>.sort()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">e </font></font><code>.forEach()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">più di una volta.</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Alla fine (o durante il processo ..) puoi chiamare:</font></font></p>
 <ul>
@@ -1009,7 +1009,7 @@ Person.hasMany(<span class="hljs-string">"friends"</span>, {
     <span class="hljs-attr">rate</span> : <span class="hljs-built_in">Number</span><font></font>
 }, {<font></font>
     <span class="hljs-attr">key</span>       : <span class="hljs-literal">true</span>, <span class="hljs-comment">// Turns the foreign keys in the join table into a composite key</span>
-    autoFetch : <span class="hljs-literal">true</span><font></font>
+    <span class="hljs-attr">autoFetch</span> : <span class="hljs-literal">true</span><font></font>
 });<font></font>
 <font></font>
 <span class="hljs-keyword">var</span> John = Person.getSync(<span class="hljs-number">123</span>);
@@ -1129,4 +1129,4 @@ if(err)<font></font>
 <pre><code class="lang-js"><div class="line-numbers">1</div><span class="hljs-built_in">require</span>(<span class="hljs-string">'orm'</span>).addAdapter(<span class="hljs-string">'cassandra'</span>, CassandraAdapter);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Vedere </font></font><a href="adapters.md.html" class="notranslate">the documentation for creating adapters</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> per ulteriori dettagli.</font></font></p>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify-hide"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2014-Presente fibjs.org | </font></font><a href="../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sostienici</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip402915"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip402915" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Fare clic per tornare alla pagina principale</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../js/common.js"></script><script type="text/javascript" src="../../../../js/docs.js"></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify-hide"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org | </font></font><a href="../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sostienici</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip518207"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip518207" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Fare clic per tornare alla pagina principale</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../js/common.js"></script><script type="text/javascript" src="../../../../js/docs.js"></script></body></html>

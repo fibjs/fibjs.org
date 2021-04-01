@@ -197,7 +197,7 @@
 <div name="编写-idl-文件" data-unique="编写-idl-文件"></div><h2 id="编写-idl-文件"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Write idl file</font></font></h2>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">idl is a descriptive language used to define native modules and object methods in fibjs.</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Before you start writing your own fibjs module, you need to write idl descriptive language. </font><font style="vertical-align: inherit;">Let's take the custom module name as an example. </font><font style="vertical-align: inherit;">I need to write the descriptive language name.idl and put this file in the ${{fibjs_project_dir}}/idl/zh-cn/ directory, where ${{fibjs_project_dir}} represents the directory where the fibjs project is located.</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Our name module is very simple, there is only one test method, the parameter is a string, this string is the lyrics, the test method judges whether the lyrics are correct, and the return value is a boolean. </font><font style="vertical-align: inherit;">name.idl is written as follows</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Our name module is very simple, there is only one test method, the parameter is a string, this string is the lyrics, the test method judges whether the lyrics are correct, and the return value is a boolean type. </font><font style="vertical-align: inherit;">name.idl is written as follows</font></font></p>
 <pre><code class="lang-idl"><div class="line-numbers">1
 2
 3
@@ -327,7 +327,7 @@ module name<font></font>
 <font></font>
 <span class="hljs-keyword">public</span>:
     <span class="hljs-comment">// name_base</span>
-    <span class="hljs-function"><span class="hljs-keyword">static</span> result_t <span class="hljs-title">test</span><span class="hljs-params">(exlib::<span class="hljs-built_in">string</span> lyrics, <span class="hljs-keyword">bool</span>&amp; retVal)</span></span>;<font></font>
+    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">result_t</span> <span class="hljs-title">test</span><span class="hljs-params">(exlib::<span class="hljs-built_in">string</span> lyrics, <span class="hljs-keyword">bool</span>&amp; retVal)</span></span>;<font></font>
 <font></font>
 <span class="hljs-keyword">public</span>:
     <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">s__new</span><span class="hljs-params">(<span class="hljs-keyword">const</span> v8::FunctionCallbackInfo&lt;v8::Value&gt;&amp; args)</span>
@@ -346,8 +346,8 @@ module name<font></font>
 }<font></font>
 <font></font>
 <span class="hljs-keyword">namespace</span> fibjs {
-<span class="hljs-keyword">inline</span> ClassInfo&amp; name_base::class_info()<font></font>
-{<font></font>
+<span class="hljs-function"><span class="hljs-keyword">inline</span> ClassInfo&amp; <span class="hljs-title">name_base::class_info</span><span class="hljs-params">()</span>
+</span>{
     <span class="hljs-keyword">static</span> ClassData::ClassMethod s_method[] = {<font></font>
         { <span class="hljs-string">"test"</span>, s_test, <span class="hljs-literal">true</span> }<font></font>
     };<font></font>
@@ -362,8 +362,8 @@ module name<font></font>
     <span class="hljs-keyword">return</span> s_ci;<font></font>
 }<font></font>
 <font></font>
-<span class="hljs-keyword">inline</span> <span class="hljs-keyword">void</span> name_base::s_test(<span class="hljs-keyword">const</span> v8::FunctionCallbackInfo&lt;v8::Value&gt;&amp; args)<font></font>
-{<font></font>
+<span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">void</span> <span class="hljs-title">name_base::s_test</span><span class="hljs-params">(<span class="hljs-keyword">const</span> v8::FunctionCallbackInfo&lt;v8::Value&gt;&amp; args)</span>
+</span>{
     <span class="hljs-keyword">bool</span> vr;<font></font>
 <font></font>
     METHOD_NAME(<span class="hljs-string">"name.test"</span>);<font></font>
@@ -404,8 +404,8 @@ module name<font></font>
 <span class="hljs-keyword">namespace</span> fibjs<font></font>
 {<font></font>
     DECLARE_MODULE(name);<font></font>
-    <span class="hljs-keyword">result_t</span> name_base::test(exlib::<span class="hljs-built_in">string</span> lyrics, <span class="hljs-keyword">bool</span>&amp; retVal)<font></font>
-    {<font></font>
+    <span class="hljs-function"><span class="hljs-keyword">result_t</span> <span class="hljs-title">name_base::test</span><span class="hljs-params">(exlib::<span class="hljs-built_in">string</span> lyrics, <span class="hljs-keyword">bool</span>&amp; retVal)</span>
+    </span>{
         <span class="hljs-keyword">if</span> (lyrics == <span class="hljs-string">"youmeiyounameyishougehuirangnituranxiangqiwo"</span>)<font></font>
             retVal = <span class="hljs-literal">true</span>;
         <span class="hljs-keyword">else</span> retVal = <span class="hljs-literal">false</span>;<font></font>
@@ -420,4 +420,4 @@ module name<font></font>
 </font></font><img src="./imgs/name.png" alt="name"></p>
 <div name="总结" data-unique="总结"></div><h2 id="总结"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">to sum up</font></font></h2>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Learned how to add and modify native modules and objects of fibjs. </font><font style="vertical-align: inherit;">We can write all kinds of complex modules, and we can also transplant third-party libraries to fibjs as support to write our modules. </font><font style="vertical-align: inherit;">You are welcome to contribute more to fibjs.</font></font></p>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2014-Present fibjs.org | </font></font><a href="../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Support us</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip739470"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip739470" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Click to return on the top page</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../js/common.js"></script><script type="text/javascript" src="../../../js/docs.js"></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org | </font></font><a href="../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Support us</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip564957"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip564957" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Click to return on the top page</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../js/common.js"></script><script type="text/javascript" src="../../../js/docs.js"></script></body></html>

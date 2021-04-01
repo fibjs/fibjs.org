@@ -7,7 +7,7 @@
 <li><a href="../../guide/desktop.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sviluppa rapidamente applicazioni desktop</font></font></a></li>
 <li><a href="../../guide/server-hot-update.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Aggiornamento a caldo del modulo server</font></font></a></li>
 <li><a href="../../guide/host-routes.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Instradamento del nome di dominio</font></font></a></li>
-<li><a href="../../guide/x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">L'uso del certificato X509 in fibjs</font></font></a></li>
+<li><a href="../../guide/x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Uso del certificato X509 in fibjs</font></font></a></li>
 <li><a href="../../guide/contribute.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Aggiungi modulo nativo</font></font></a></li>
 </ul>
  </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_module" aria-controls="collapse_module"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Modulo base </font></font></a></h4></div><div id="collapse_module" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
@@ -492,7 +492,7 @@ map.addMapping({<font></font>
 </li>
 <li><p><code>mappings</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Una stringa di VLQ base64 che contengono le mappature effettive.</font></font></p>
 </li>
-<li><p><code>file</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Facoltativo Il nome del file generato a cui è associata questa mappa di origine.</font></font></p>
+<li><p><code>file</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Facoltativo. Il nome del file generato a cui è associata questa mappa di origine.</font></font></p>
 </li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Viene restituita la promessa del consumatore della mappa sorgente costruita.</font></font></p>
@@ -510,7 +510,7 @@ consumer.destroy();<font></font>
 (vedere il </font></font><code>SourceMapConsumer</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">costruttore per i dettagli. Quindi, invocare il </font></font><code>async
 function f(SourceMapConsumer) -&gt; T</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">con il consumatore di nuova costruzione, attendere il </font></font><code>f</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">completamento, chiamare </font></font><code>destroy</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">il consumatore e restituire </font></font><code>f</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">il valore di ritorno.</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Non è necessario utilizzare il consumatore dopo aver </font></font><code>f</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">completato!</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Usando </font></font><code>with</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, non devi ricordarti di chiamare manualmente </font></font><code>destroy</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">il consumatore, poiché verrà chiamato automaticamente una volta </font></font><code>f</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">completato.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Utilizzando </font></font><code>with</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, non devi ricordarti di chiamare manualmente </font></font><code>destroy</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">il consumatore, poiché verrà chiamato automaticamente una volta </font></font><code>f</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">completato.</font></font></p>
 <pre><code class="lang-js"><div class="line-numbers">1
 2
 3
@@ -593,9 +593,9 @@ consumer.allGeneratedPositionsFor({ <span class="hljs-attr">line</span>: <span c
 <span class="hljs-comment">//     lastColumn: Infinity } ]</span>
 </code></pre>
 <h4 id="SourceMapConsumer.prototype.originalPositionFor(generatedPosition)"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SourceMapConsumer.prototype.originalPositionFor (generatedPosition)</font></font></h4>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Restituisce le informazioni su origine, riga e colonna originali per le posizioni di riga e colonna dell'origine generata. L'unico argomento è un oggetto con le seguenti proprietà:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Restituisce l'origine originale, la riga e le informazioni di colonna per le posizioni di riga e colonna dell'origine generata. L'unico argomento è un oggetto con le seguenti proprietà:</font></font></p>
 <ul>
-<li><p><code>line</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Il numero di riga nella sorgente generata. I numeri di riga in questa libreria sono basati su 1 (si noti che la specifica della mappa sorgente sottostante utilizza numeri di riga basati su 0 - questa libreria gestisce la traduzione).</font></font></p>
+<li><p><code>line</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Il numero di riga nell'origine generata. I numeri di riga in questa libreria sono basati su 1 (si noti che la specifica della mappa di origine sottostante utilizza numeri di riga basati su 0 - questa libreria gestisce la traduzione).</font></font></p>
 </li>
 <li><p><code>column</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Il numero di colonna nell'origine generata. I numeri di colonna in questa libreria sono basati su 0.</font></font></p>
 </li>
@@ -789,7 +789,7 @@ ogni volta che </font></font><code>callback</code><font style="vertical-align: i
 </li>
 <li><p><code>sourceRoot</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Una radice per tutti gli URL relativi in ​​questa mappa di origine.</font></font></p>
 </li>
-<li><p><code>skipValidation</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Opzionale. Quando </font></font><code>true</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, disabilita la convalida delle mappature man mano che vengono aggiunte. Questo può migliorare le prestazioni ma dovrebbe essere usato con discrezione, come ultima risorsa. Anche in questo caso, si dovrebbe evitare di usare questo flag durante l'esecuzione dei test, se possibile.</font></font></p>
+<li><p><code>skipValidation</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Facoltativo. Quando </font></font><code>true</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, disabilita la convalida delle mappature man mano che vengono aggiunte. Questo può migliorare le prestazioni ma dovrebbe essere usato con discrezione, come ultima risorsa. Anche in questo caso, si dovrebbe evitare di usare questo flag durante l'esecuzione dei test, se possibile.</font></font></p>
 </li>
 </ul>
 <pre><code class="lang-js"><div class="line-numbers">1
@@ -850,7 +850,7 @@ ogni volta che </font></font><code>callback</code><font style="vertical-align: i
 </li>
 <li><p><code>sourceMapPath</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Facoltativo. Il nome della directory del percorso di SourceMap da applicare. Se relativo, è relativo a SourceMap.</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Questo parametro è necessario quando le due SourceMap non sono nella stessa directory e la SourceMap da applicare contiene percorsi di origine relativi. In tal caso, tali percorsi di origine relativi devono essere riscritti rispetto a SourceMap.</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Se omesso, si presume che entrambe le SourceMap si trovino nella stessa directory, quindi non necessitano di alcuna riscrittura (la fornitura </font></font><code>'.'</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ha lo stesso effetto).</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Se omesso, si presume che entrambe le SourceMap siano nella stessa directory, quindi non necessitano di alcuna riscrittura (la fornitura </font></font><code>'.'</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ha lo stesso effetto).</font></font></p>
 </li>
 </ul>
 <h4 id="SourceMapGenerator.prototype.toString()"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SourceMapGenerator.prototype.toString ()</font></font></h4>
@@ -863,7 +863,7 @@ ogni volta che </font></font><code>callback</code><font style="vertical-align: i
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">I SourceNodes forniscono un modo per astrarre su interpolazione e / o concatenazione di frammenti di codice sorgente JavaScript generato, mantenendo le informazioni di riga e colonna associate tra tali frammenti e il codice sorgente originale. Ciò è utile come rappresentazione intermedia finale che un compilatore potrebbe utilizzare prima dell'output il JS generato e la mappa sorgente.</font></font></p>
 <h4 id="new-SourceNode([line,-column,-source[,-chunk[,-name]]])"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">nuovo SourceNode ([riga, colonna, sorgente [, blocco [, nome]]])</font></font></h4>
 <ul>
-<li><p><code>line</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Il numero di riga originale associato a questo nodo di origine o null se non è associato a una riga originale. Il numero di riga è in base 1.</font></font></p>
+<li><p><code>line</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Il numero di riga originale associato a questo nodo di origine o null se non è associato a una riga originale. Il numero di riga è a base 1.</font></font></p>
 </li>
 <li><p><code>column</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Il numero di colonna originale associato a questo nodo di origine o null se non è associato a una colonna originale. Il numero di colonna è in base 0.</font></font></p>
 </li>
@@ -966,7 +966,7 @@ node.walk(<span class="hljs-function"><span class="hljs-keyword">function</span>
 <span class="hljs-comment">// WALK: quatro { source: 'c.js', line: 5, column: 6, name: null }</span>
 </code></pre>
 <h4 id="SourceNode.prototype.walkSourceContents(fn)"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SourceNode.prototype.walkSourceContents (fn)</font></font></h4>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cammina sull'albero dei SourceNodes La funzione walking viene chiamata per ogni contenuto del file di origine e viene passato il nome del file e il contenuto di origine.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cammina sull'albero dei SourceNodes La funzione walking viene chiamata per ogni contenuto del file sorgente e viene passato il nome del file e il contenuto sorgente.</font></font></p>
 <ul>
 <li><code>fn</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: La funzione trasversale.</font></font></li>
 </ul>
@@ -1012,7 +1012,7 @@ node.walkSourceContents(<span class="hljs-function"><span class="hljs-keyword">f
 <span class="hljs-keyword">var</span> joinedNode = node.join(<span class="hljs-string">" "</span>);
 </code></pre>
 <h4 id="SourceNode.prototype.replaceRight(pattern,-replacement)"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SourceNode.prototype.replaceRight (pattern, sostituzione)</font></font></h4>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Richiama </font></font><code>String.prototype.replace</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">lo snippet di origine più a destra. Utile per tagliare lo spazio bianco dalla fine di un nodo di origine, ecc.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Richiama </font></font><code>String.prototype.replace</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">lo snippet di origine più a destra. Utile per tagliare lo spazio bianco dalla fine di un nodo di origine e così via.</font></font></p>
 <ul>
 <li><p><code>pattern</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Il modello da sostituire.</font></font></p>
 </li>
@@ -1074,4 +1074,4 @@ node.toStringWithSourceMap({ <span class="hljs-attr">file</span>: <span class="h
 <span class="hljs-comment">// { code: 'unodostresquatro',</span>
 <span class="hljs-comment">//   map: [object SourceMapGenerator] }</span>
 </code></pre>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2014-Presente fibjs.org | </font></font><a href="../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sostienici</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip464466"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip464466" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Fare clic per tornare alla pagina principale</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../js/common.js"></script><script type="text/javascript" src="../../../../js/docs.js"></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org | </font></font><a href="../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sostienici</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip259508"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip259508" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Fare clic per tornare alla pagina principale</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../js/common.js"></script><script type="text/javascript" src="../../../../js/docs.js"></script></body></html>

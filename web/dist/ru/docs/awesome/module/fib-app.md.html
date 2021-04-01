@@ -197,7 +197,7 @@
 <div name="Install" data-unique="Install"></div><h2 id="Install"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Установить</font></font></h2>
 <pre><code class="lang-sh"><div class="line-numbers">1</div>npm install fib-app [--save]
 </code></pre>
-<div name="Test" data-unique="Test"></div><h2 id="Test"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Тест</font></font></h2>
+<div name="Test" data-unique="Test"></div><h2 id="Test"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Тестовое задание</font></font></h2>
 <pre><code class="lang-sh"><div class="line-numbers">1</div>npm <span class="hljs-built_in">test</span>
 </code></pre>
 <div name="建立基础脚本" data-unique="建立基础脚本"></div><h2 id="建立基础脚本"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Создайте базовый скрипт</font></font></h2>
@@ -270,7 +270,7 @@ svr.run();<font></font>
   http://localhost/1.0/person/57fbbdb0a2400000<font></font>
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Для всех запросов формат ответа - объект JSON.</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Успешность запроса обозначается кодом состояния HTTP. </font><font style="vertical-align: inherit;">Код состояния 2XX указывает на успех, а код состояния 4XX указывает на сбой запроса. </font><font style="vertical-align: inherit;">В случае сбоя запроса тело ответа по-прежнему является объектом JSON, но всегда будет содержать два поля кода и сообщения, которые вы можете использовать для отладки. </font><font style="vertical-align: inherit;">Например, если запрос на аутентификацию разрешения завершится неудачно, будет возвращена следующая информация:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Успешность запроса обозначается кодом состояния HTTP. </font><font style="vertical-align: inherit;">Код состояния 2XX указывает на успех, а код состояния 4XX указывает на сбой запроса. </font><font style="vertical-align: inherit;">Когда запрос не выполняется, тело ответа по-прежнему является объектом JSON, но всегда будет содержать два поля кода и сообщения, которые вы можете использовать для отладки. </font><font style="vertical-align: inherit;">Например, если запрос на аутентификацию разрешения завершится неудачно, будет возвращена следующая информация:</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
@@ -280,7 +280,7 @@ svr.run();<font></font>
 }<font></font>
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Код разделен на три части: первые три цифры 403 указывают тип ошибки, 05 указывают номер таблицы данных, а 01 указывают подробный код ошибки.</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Для запроса GET обычно возвращаются данные объекта.В зависимости от адреса запроса GET может быть возвращен объект или массив. </font><font style="vertical-align: inherit;">Такие как:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Для запроса GET обычно возвращаются данные объекта.В зависимости от адреса запроса GET может быть возвращен объект или массив. </font><font style="vertical-align: inherit;">такие как:</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
@@ -317,7 +317,7 @@ svr.run();<font></font>
 ]<font></font>
 </code></pre>
 <div name="特殊字段" data-unique="特殊字段"></div><h2 id="特殊字段"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Специальное поле</font></font></h2>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">В данных объекта есть четыре поля со специальными значениями, которые нельзя изменять через API. </font><font style="vertical-align: inherit;">Соответственно </font></font><code>id</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><code>updatedAt</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><code>createdAt</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><code>createdBy</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">В данных объекта есть четыре поля со специальным значением, которые нельзя изменять через API. </font><font style="vertical-align: inherit;">Соответственно </font></font><code>id</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><code>updatedAt</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><code>createdAt</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><code>createdBy</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">.</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Где </font></font><code>id</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><code>updatedAt</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><code>createdAt</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">отдельные поля будут автоматически созданы и изменены. </font></font><code>createdBy</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Тип нужно указывать самостоятельно.</font></font></p>
 <div name="基础对象访问-API" data-unique="基础对象访问-API"></div><h2 id="基础对象访问-API"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Базовый API доступа к объектам</font></font></h2>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">После завершения этого определения данных у вас будет полный набор интерфейсных вызовов, соответствующих спецификации REST api:</font></font></p>
@@ -332,17 +332,17 @@ svr.run();<font></font>
 <tbody>
 <tr>
 <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/1.0/:className</font></font></td>
-<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ПОЧТОВЫЙ</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ПОЧТА</font></font></td>
 <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Создать новый объект</font></font></td>
 </tr>
 <tr>
 <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/1.0/:className/:id</font></font></td>
-<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ПОЛУЧАТЬ</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ПОЛУЧИТЬ</font></font></td>
 <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Прочитать объект</font></font></td>
 </tr>
 <tr>
 <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/1.0/:className/:id</font></font></td>
-<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ПОЛОЖИТЬ</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ПОМЕЩАТЬ</font></font></td>
 <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Изменить объект</font></font></td>
 </tr>
 <tr>
@@ -352,7 +352,7 @@ svr.run();<font></font>
 </tr>
 <tr>
 <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/1.0/:className</font></font></td>
-<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ПОЛУЧАТЬ</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ПОЛУЧИТЬ</font></font></td>
 <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Список объектов запроса</font></font></td>
 </tr>
 </tbody>
@@ -400,7 +400,7 @@ svr.run();<font></font>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Возвращает поле, предоставляя </font></font><code>keys</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">настраиваемое содержимое, может быть возвращено </font></font><code>keys</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">содержимое в виде </font></font><code>,</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">разделенных строк имени поля:</font></font></p>
 <pre><code class="lang-sh"><div class="line-numbers">1</div>curl -X GET http://localhost/1.0/person/57fbbdb0a2400000?keys=name%2Csex
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Вернусь:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Вернется:</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
@@ -433,7 +433,7 @@ svr.run();<font></font>
 <pre><code class="lang-sh"><div class="line-numbers">1</div>curl -X DELETE http://localhost/1.0/person/57fbbdb0a2400000
 </code></pre>
 <div name="查询对象列表" data-unique="查询对象列表"></div><h3 id="查询对象列表"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Список объектов запроса</font></font></h3>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Отправляя запрос GET на URL-адрес класса, вы можете получить сразу несколько объектов без каких-либо параметров URL-адреса. </font><font style="vertical-align: inherit;">Следующее просто для того, чтобы получить всех пользователей:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Отправляя запрос GET на URL-адрес класса, вы можете получить сразу несколько объектов без каких-либо параметров URL-адреса. </font><font style="vertical-align: inherit;">Следующее - просто получить всех пользователей:</font></font></p>
 <pre><code class="lang-sh"><div class="line-numbers">1</div>curl -X GET http://localhost/1.0/person
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Возвращаемое значение представляет собой объект JSON, содержащий поле результатов, а его значение представляет собой список объектов:</font></font></p>
@@ -483,7 +483,7 @@ svr.run();<font></font>
 <p><code>where</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Значение параметра должно быть в кодировке JSON. </font><font style="vertical-align: inherit;">Другими словами, если вы посмотрите на фактически отправленный URL-запрос, он должен быть сначала закодирован в формате JSON, а затем в кодировке URL. </font><font style="vertical-align: inherit;">Самый простой способ использовать в </font></font><code>where</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">качестве аргументов - включить правильный ключ и значение. </font><font style="vertical-align: inherit;">Например, если мы хотим найти пользователей с именем tom, мы должны составить запрос следующим образом:</font></font></p>
 <pre><code class="lang-sh"><div class="line-numbers">1</div>curl -X GET http://localhost/1.0/person?<span class="hljs-built_in">where</span>=%7B%22name%22%3A%22tom%22%7D
 </code></pre>
-<p><code>where</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Значение представляет собой строку JSON после urlencode, содержимое:</font></font><code>{"name":"tom"}</code></p>
+<p><code>where</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Значение - это строка JSON после urlencode, содержимое:</font></font><code>{"name":"tom"}</code></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Помимо точного соответствия заданному значению, </font></font><code>where</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">также поддерживаются такие методы сравнения, как включение. </font></font><code>where</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры поддерживают следующие параметры:</font></font></p>
 <table>
 <thead>
@@ -525,7 +525,7 @@ svr.run();<font></font>
 <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{"возраст": {"lte": "24"}}</font></font></td>
 </tr>
 <tr>
-<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">подобно</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">нравиться</font></font></td>
 <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Нечеткий запрос</font></font></td>
 <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{"name": {"like": "% m"}}</font></font></td>
 </tr>
@@ -570,7 +570,7 @@ svr.run();<font></font>
 <pre><code class="lang-sh"><div class="line-numbers">1</div>curl -X GET http://localhost/1.0/person?<span class="hljs-built_in">limit</span>=100
 </code></pre>
 <h4 id="order-指定排序方式"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">порядок определяет метод сортировки</font></font></h4>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">По </font></font><code>order</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">параметру, заданному для возврата набора результатов сортировки, до того, как имя поля будет указано </font></font><code>-</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">как обратное время.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">По </font></font><code>order</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">параметру, заданному для возврата набора результатов сортировки, до того, как имя поля станет </font></font><code>-</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">обратным временем.</font></font></p>
 <pre><code class="lang-sh"><div class="line-numbers">1</div>curl -X GET http://localhost/1.0/person?order=-id
 </code></pre>
 <h4 id="count-返回结果总数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">count возвращает общее количество результатов</font></font></h4>
@@ -637,22 +637,22 @@ svr.run();<font></font>
 <tbody>
 <tr>
 <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/1.0/:className/:id/:extendName</font></font></td>
-<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ПОЛОЖИТЬ</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ПОМЕЩАТЬ</font></font></td>
 <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Установить объект расширения</font></font></td>
 </tr>
 <tr>
 <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/1.0/:className/:id/:extendName</font></font></td>
-<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ПОЧТОВЫЙ</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ПОЧТА</font></font></td>
 <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Создать объект расширения</font></font></td>
 </tr>
 <tr>
 <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/1.0/:className/:id/:extendName/:rid</font></font></td>
-<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ПОЛУЧАТЬ</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ПОЛУЧИТЬ</font></font></td>
 <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Читать расширенный объект</font></font></td>
 </tr>
 <tr>
 <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/1.0/:className/:id/:extendName/:rid</font></font></td>
-<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ПОЛОЖИТЬ</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ПОМЕЩАТЬ</font></font></td>
 <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Измените объект расширения</font></font></td>
 </tr>
 <tr>
@@ -662,7 +662,7 @@ svr.run();<font></font>
 </tr>
 <tr>
 <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/1.0/:className/:id/:extendName</font></font></td>
-<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ПОЛУЧАТЬ</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ПОЛУЧИТЬ</font></font></td>
 <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Запросить список расширенных объектов</font></font></td>
 </tr>
 </tbody>
@@ -679,7 +679,7 @@ svr.run();<font></font>
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">В вызове необходимо указать id кота в теле.</font></font></p>
 <div name="创建扩展对象" data-unique="创建扩展对象"></div><h3 id="创建扩展对象"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Создать объект расширения</font></font></h3>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Непосредственно создавая расширенные объекты, вы можете устанавливать связи между объектами при создании объектов. </font><font style="vertical-align: inherit;">Такие как:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Непосредственно создавая расширенные объекты, вы можете устанавливать связи между объектами при создании объектов. </font><font style="vertical-align: inherit;">такие как:</font></font></p>
 <pre><code class="lang-sh"><div class="line-numbers">1
 2
 3
@@ -712,7 +712,7 @@ svr.run();<font></font>
 <pre><code class="lang-sh"><div class="line-numbers">1</div>curl -X GET http://localhost/1.0/person/57fbbdb0a2400000/pets
 </code></pre>
 <div name="ACL" data-unique="ACL"></div><h2 id="ACL"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ACL</font></font></h2>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Разрешениями на данные можно управлять, задав ACL модели. </font><font style="vertical-align: inherit;">Такие как:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Разрешениями на данные можно управлять, задав ACL модели. </font><font style="vertical-align: inherit;">такие как:</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
@@ -742,8 +742,8 @@ svr.run();<font></font>
 <span class="hljs-built_in">module</span>.exports = <span class="hljs-function"><span class="hljs-params">db</span> =&gt;</span> {<font></font>
   db.define(<span class="hljs-string">'blog'</span>, {
     <span class="hljs-attr">title</span>: <span class="hljs-built_in">String</span>,
-    <span class="hljs-attr">detail</span>: <span class="hljs-built_in">String</span>，<font></font>
-    note: <span class="hljs-built_in">String</span><font></font>
+    <span class="hljs-attr">detail</span>: <span class="hljs-built_in">String</span>，
+    <span class="hljs-attr">note</span>: <span class="hljs-built_in">String</span><font></font>
   }, {<font></font>
     <span class="hljs-attr">ACL</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">session</span>) </span>{
       <span class="hljs-keyword">return</span> {
@@ -775,7 +775,7 @@ svr.run();<font></font>
 }<font></font>
 </code></pre>
 <div name="主体" data-unique="主体"></div><h3 id="主体"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">основная часть</font></font></h3>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Есть три основных описания ACL: пользователь </font></font><code>id</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, пользователь </font></font><code>role</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">и </font></font><code>*</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><code>id</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">представляющие конкретного пользователя, </font></font><code>role</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">указывающие, что у пользователя есть роль, </font></font><code>*</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">означает, что все пользователи:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Есть три основных описания ACL: пользователь </font></font><code>id</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, пользователь </font></font><code>role</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">и </font></font><code>*</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><code>id</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">представляющие конкретного пользователя, </font></font><code>role</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">что указывает на то </font><font style="vertical-align: inherit;">, </font><font style="vertical-align: inherit;">что у пользователя есть роль, </font></font><code>*</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">означает, что все пользователи:</font></font></p>
 <table>
 <thead>
 <tr>
@@ -802,14 +802,14 @@ svr.run();<font></font>
 </tr>
 </tbody>
 </table>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">При проверке привилегий первые будут соответствовать </font></font><code>id</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">соответствующим правам, если они не указаны, соответствующие </font></font><code>role</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">разрешения </font><font style="vertical-align: inherit;">пользователя, </font><font style="vertical-align: inherit;">соответствующие еще, если они указаны, чтобы увидеть, не имеет ли назначенный </font></font><code>*</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">орган, если он </font></font><code>*</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">также не указан, разрешения.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">При проверке привилегий первые будут соответствовать </font></font><code>id</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">соответствующим правам, если они не указаны, соответствующие </font></font><code>role</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">разрешения </font><font style="vertical-align: inherit;">пользователя, </font><font style="vertical-align: inherit;">все еще соответствующие, если они указаны, чтобы увидеть, нет ли у назначенного </font></font><code>*</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">органа, если он </font></font><code>*</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">также не указан, разрешения.</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Например, в приведенной выше конфигурации разрешений укажите, что </font></font><code>user</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">группа пользователей может читать, пользователь </font></font><code>57fbbdb0a2400000</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">имеет полные права, а другие пользователи без каких-либо разрешений.</font></font></p>
-<div name="权限" data-unique="权限"></div><h3 id="权限"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Орган власти</font></font></h3>
+<div name="权限" data-unique="权限"></div><h3 id="权限"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Власть</font></font></h3>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ACL классифицирует пять типов разрешений в зависимости от поведения API:</font></font></p>
 <table>
 <thead>
 <tr>
-<th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Орган власти</font></font></th>
+<th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Власть</font></font></th>
 <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">описание</font></font></th>
 <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Разрешенный тип</font></font></th>
 </tr>
@@ -826,7 +826,7 @@ svr.run();<font></font>
 <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">истина / ложь / массив</font></font></td>
 </tr>
 <tr>
-<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">записывать</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">написать</font></font></td>
 <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Изменить объект</font></font></td>
 <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">истина / ложь / массив</font></font></td>
 </tr>
@@ -933,7 +933,7 @@ svr.run();<font></font>
 <li><code>person</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> =&gt; </font></font><code>ACL</code></li>
 </ul>
 <div name="扩展对象权限" data-unique="扩展对象权限"></div><h3 id="扩展对象权限"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Расширенные права доступа к объекту</font></font></h3>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Управление разрешениями доступа расширенного объекта аналогично базовому разрешению объекта, с той лишь разницей, что его нужно указывать отдельно в ACL:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Управление разрешениями доступа расширенного объекта аналогично базовому объекту, с той лишь разницей, что ACL нужно указывать отдельно:</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
@@ -1016,7 +1016,7 @@ svr.run();<font></font>
   Person.hasMany(<span class="hljs-string">'pets'</span>, Pet);<font></font>
 };<font></font>
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Согласно этому определению, каждый может получить доступ к личной информации </font></font><code>name</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">и </font></font><code>sex</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, а также свободный доступ и поиск его </font></font><code>pets</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, я пользователь, могу управлять всеми своими данными, и все права на их собственную информацию о домашних животных.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Согласно этому определению, любой может получить доступ к личной информации </font></font><code>name</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">и </font></font><code>sex</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, а также свободный доступ и поиск его </font></font><code>pets</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, я пользователь, могу управлять всеми своими данными, и все права на их собственную информацию о домашних животных.</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">При проверке прав доступа расширенного объекта права доступа к объекту и расширенные права доступа проверяются отдельно. </font><font style="vertical-align: inherit;">Например, такой запрос:</font></font></p>
 <pre><code class="lang-sh"><div class="line-numbers">1</div>curl -X GET http://localhost/1.0/person/57fbbdb0a2400000/pets/57fbbdb0a2400007
 </code></pre>
@@ -1029,8 +1029,8 @@ svr.run();<font></font>
 </ul>
 <div name="Function" data-unique="Function"></div><h2 id="Function"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Функция</font></font></h2>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">API-интерфейсы могут быть определены для модели, а сложные операции с данными могут быть выполнены путем настройки функции.</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Подавляющее большинство разрешений можно контролировать с помощью ACL, и для выполнения разрешений на основе объектов не требуется никаких функций. </font><font style="vertical-align: inherit;">Функцию можно использовать для выполнения разрешений на основе данных, таких как предоставление разрешений различным группам пользователей на основе статуса утверждения. </font><font style="vertical-align: inherit;">И несколько модификаций, например, необходимость изменить несколько записей базы данных.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Подавляющим большинством разрешений можно управлять с помощью ACL, и для выполнения разрешений на основе объектов не требуется никаких функций. </font><font style="vertical-align: inherit;">Функцию можно использовать для выполнения разрешений на основе данных, таких как предоставление разрешений различным группам пользователей на основе статуса утверждения. </font><font style="vertical-align: inherit;">И несколько модификаций, например, необходимость изменить несколько записей базы данных.</font></font></p>
 <div name="绘制数据模型" data-unique="绘制数据模型"></div><h2 id="绘制数据模型"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Нарисуйте модель данных</font></font></h2>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">После завершения определения данных, которые можно использовать </font></font><code>app.diagram()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">для построения </font></font><code>svg</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">диаграммы классов формата </font><font style="vertical-align: inherit;">модели данных </font><font style="vertical-align: inherit;">, файлы будут сохранены в изображение, подобное приведенному ниже:
 </font></font><img src="./demo/diagram.svg" alt="диаграмма"></p>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2014-Настоящее время fibjs.org | </font></font><a href="../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Поддержите нас</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip326517"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip326517" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Нажмите, чтобы вернуться на главную страницу</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../js/common.js"></script><script type="text/javascript" src="../../../../js/docs.js"></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org | </font></font><a href="../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Поддержите нас</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip875461"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip875461" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Нажмите, чтобы вернуться на главную страницу</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../js/common.js"></script><script type="text/javascript" src="../../../../js/docs.js"></script></body></html>

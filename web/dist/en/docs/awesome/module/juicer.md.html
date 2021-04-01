@@ -195,7 +195,7 @@
  </div></div></div>  </div></div><div class="content"><div class="social-share share-component" data-sites="weibo,twitter" data-description="分享"></div> <h2 id="Juicer-中文文档"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Juicer Chinese Document</font></font></h2>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Current latest version: 0.6.14</font></font></strong></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Juicer is an efficient and lightweight front-end (Javascript) template engine. Using Juicer can be your code to achieve the separation of data and view model (MVC). </font><font style="vertical-align: inherit;">In addition, it can also run in the Node.js environment.</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">You can use and distribute it freely under the premise of observing the MIT Licence. </font><font style="vertical-align: inherit;">The Juicer code is completely open source and hosted on </font></font><a href="https://github.com/PaulGuo/Juicer"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Github</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> . If you find any bugs or some good suggestions during the use, please </font><font style="vertical-align: inherit;">submit </font><font style="vertical-align: inherit;">them on </font></font><a href="https://github.com/PaulGuo/Juicer/issues"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Github Issue</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> .</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">You can use and distribute it freely under the premise of observing the MIT Licence. </font><font style="vertical-align: inherit;">The Juicer code is completely open source and hosted on </font></font><a href="https://github.com/PaulGuo/Juicer"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Github</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> . If you find any bugs or some good suggestions in the process of using it, you are welcome </font><font style="vertical-align: inherit;">to submit it </font><font style="vertical-align: inherit;">on </font></font><a href="https://github.com/PaulGuo/Juicer/issues"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Github Issue</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> .</font></font></p>
 <p><a href="!about"></a></p>
 <h3 id="名字的由来"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">origin of name</font></font></h3>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">If we compare data to fresh and delicious fruits, and view templates as water, Juicer is a juicer that squeezes the fruit and water out of the HTML code fragments we need.</font></font></p>
@@ -205,7 +205,7 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">&gt; Compile the template and immediately render the result based on the given data.</font></font></p>
 <pre><code><div class="line-numbers">1</div><span class="hljs-title">juicer</span>(tpl, <span class="hljs-class"><span class="hljs-keyword">data</span>);</span>
 </code></pre><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">&gt; Only the compiled template will not be rendered, it will return a reusable compiled function.</font></font></p>
-<pre><code><div class="line-numbers">1</div>var compiled_tpl = juicer(<span class="hljs-name">tpl</span>)<span class="hljs-comment">;</span>
+<pre><code><div class="line-numbers">1</div><span class="hljs-attribute">var compiled_tpl</span> = juicer(tpl);
 </code></pre><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">&gt; Perform data rendering on the previously compiled template according to the given data.</font></font></p>
 <pre><code><div class="line-numbers">1
 2</div><span class="hljs-keyword">var</span> compiled_tpl = juicer(tpl);
@@ -249,17 +249,17 @@ juicer.unregister(<span class="hljs-string">'function_name'</span>);
 </code></pre><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">The default configuration is the recommended method of use by Juicer. If you really need to change these parameters during use, you can do this:</font></font></p>
 <h4 id="逐条参数更改："><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Change the parameters one by one:</font></font></h4>
 <pre><code><div class="line-numbers">1
-2</div>juicer.<span class="hljs-keyword">set</span>(<span class="hljs-string">'strip'</span>,<span class="hljs-literal">false</span>);<font></font>
-juicer.<span class="hljs-keyword">set</span>(<span class="hljs-string">'cache'</span>,<span class="hljs-literal">false</span>);
+2</div>juicer.<span class="hljs-builtin-name">set</span>(<span class="hljs-string">'strip'</span>,<span class="hljs-literal">false</span>);<font></font>
+juicer.<span class="hljs-builtin-name">set</span>(<span class="hljs-string">'cache'</span>,<span class="hljs-literal">false</span>);
 </code></pre><h4 id="批量参数更改："><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Batch parameter changes:</font></font></h4>
 <pre><code><div class="line-numbers">1
 2
 3
-4</div><span class="hljs-string">juicer.set({</span>
-<span class="hljs-attr">    'strip':</span> <span class="hljs-literal">false</span><span class="hljs-string">,</span>
-<span class="hljs-attr">    'cache':</span> <span class="hljs-literal">false</span>
-<span class="hljs-string">};</span>
-</code></pre><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Juicer will cache the compiled template by default to avoid the time consumed by repeated compilation when the same template is rendered multiple times. If there is no special need, it is strongly recommended not to turn off the cache in the default parameters. Doing so will invalidate the Juicer cache Thereby reducing performance.</font></font></p>
+4</div>juicer.<span class="hljs-builtin-name">set</span>({
+    <span class="hljs-string">'strip'</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-string">'cache'</span>: <span class="hljs-literal">false</span><font></font>
+};<font></font>
+</code></pre><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">By default, Juicer will cache the compiled template to avoid the time consumed by repeated compilation when the same template is rendered multiple times. If there is no special need, it is strongly recommended not to turn off the cache in the default parameters. Doing so will invalidate the Juicer cache. Thereby reducing performance.</font></font></p>
 <p><a href="!syntax"></a></p>
 <h2 id="*-语法"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">* Grammar</font></font></h2>
 <h4 id="a.-${变量}"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">a. ${variables}</font></font></h4>
@@ -308,9 +308,9 @@ ${<span class="hljs-keyword">name</span>|<span class="hljs-function"><span class
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">After the above code is executed, we will find that the result is like this:</font></font></p>
 <pre><code><div class="line-numbers">1
 2
-3</div><span class="hljs-variable">&amp;lt</span>;a href=<span class="hljs-variable">&amp;quot</span>;http://juicer.name<span class="hljs-variable">&amp;quot</span>; alt=<span class="hljs-variable">&amp;quot</span>;Juicer<span class="hljs-variable">&amp;quot</span>; &lt;br /&gt;
-<span class="hljs-variable">&amp;lt</span>;a href=<span class="hljs-variable">&amp;quot</span>;http://benben.cc<span class="hljs-variable">&amp;quot</span>; alt=<span class="hljs-variable">&amp;quot</span>;Benben<span class="hljs-variable">&amp;quot</span>; &lt;br /&gt;
-<span class="hljs-variable">&amp;lt</span>;a href=<span class="hljs-variable">&amp;quot</span>;http://ued.taobao.com<span class="hljs-variable">&amp;quot</span>; alt=<span class="hljs-variable">&amp;quot</span>;Taobao UED<span class="hljs-variable">&amp;quot</span>; &lt;br /&gt;
+3</div><span class="hljs-symbol">&amp;lt;</span>a href=<span class="hljs-symbol">&amp;quot;</span>http://juicer.name<span class="hljs-symbol">&amp;quot;</span> alt=<span class="hljs-symbol">&amp;quot;</span>Juicer<span class="hljs-symbol">&amp;quot;</span> <span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
+<span class="hljs-symbol">&amp;lt;</span>a href=<span class="hljs-symbol">&amp;quot;</span>http://benben.cc<span class="hljs-symbol">&amp;quot;</span> alt=<span class="hljs-symbol">&amp;quot;</span>Benben<span class="hljs-symbol">&amp;quot;</span> <span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
+<span class="hljs-symbol">&amp;lt;</span>a href=<span class="hljs-symbol">&amp;quot;</span>http://ued.taobao.com<span class="hljs-symbol">&amp;quot;</span> alt=<span class="hljs-symbol">&amp;quot;</span>Taobao UED<span class="hljs-symbol">&amp;quot;</span> <span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
 </code></pre><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">It can be seen that the result is escaped. If we use $${item|links} above, we will get the expected result, which is the avoidance of escaping mentioned below.</font></font></p>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Escaping/Avoiding Escaping</font></font></strong></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">For security angle, </font></font><code>${变量}</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">it will escape its contents before output, if you do not want the output escaped, you can use </font></font><code>$${变量}</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">to avoid this situation. </font><font style="vertical-align: inherit;">E.g:</font></font></p>
@@ -322,15 +322,15 @@ ${<span class="hljs-keyword">name</span>|<span class="hljs-function"><span class
 6
 7
 8
-9</div><span class="hljs-keyword">var</span> json = {<font></font>
-    value: <span class="hljs-string">'&amp;lt;strong&amp;gt;juicer&amp;lt;/strong&amp;gt;'</span><font></font>
+9</div>var json = {<font></font>
+    value: '<span class="hljs-symbol">&amp;lt;</span>strong<span class="hljs-symbol">&amp;gt;</span>juicer<span class="hljs-symbol">&amp;lt;</span>/strong<span class="hljs-symbol">&amp;gt;</span>'<font></font>
 };<font></font>
 <font></font>
-<span class="hljs-keyword">var</span> escape_tpl=<span class="hljs-string">'<span class="hljs-subst">${value}</span>'</span>;
-<span class="hljs-keyword">var</span> unescape_tpl=<span class="hljs-string">'$<span class="hljs-subst">${value}</span>'</span>;<font></font>
+var escape_tpl='${value}';<font></font>
+var unescape_tpl='$${value}';<font></font>
 <font></font>
-juicer(escape_tpl, json); <span class="hljs-comment">//输出 '&amp;lt;strong&amp;gt;juicer&amp;lt;/strong&amp;gt;'</span>
-juicer(unescape_tpl, json); <span class="hljs-comment">//输出 '&lt;strong&gt;juicer&lt;/strong&gt;'</span>
+juicer(escape_tpl, json); //输出 '<span class="hljs-symbol">&amp;lt;</span>strong<span class="hljs-symbol">&amp;gt;</span>juicer<span class="hljs-symbol">&amp;lt;</span>/strong<span class="hljs-symbol">&amp;gt;</span>'<font></font>
+juicer(unescape_tpl, json); //输出 '<span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>juicer<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span>'
 </code></pre><h4 id="b.-循环遍历-{@each}-...-{@/each}"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">b. Loop traversal {@each} ... {@/each}</font></font></h4>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">If you need to loop through the array, you can use it like this </font></font><code>each</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">.</font></font></p>
 <pre><code><div class="line-numbers">1
@@ -376,7 +376,7 @@ juicer(unescape_tpl, json); <span class="hljs-comment">//输出 '&lt;strong&gt;j
     ${i}; <span class="hljs-comment">//输出 5;6;7;8;9;</span><font></font>
 {@/each}<font></font>
 </code></pre><h4 id="f.-子模板嵌套-{@include-tpl,-data}"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">f. Sub-template nesting {@include tpl, data}</font></font></h4>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Nesting of sub-templates allows you to organize your template code more flexibly. In addition to importing sub-templates specified in the data, you can also </font></font><code>#id</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">use </font></font><code>script</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">the template code </font><font style="vertical-align: inherit;">written in </font><font style="vertical-align: inherit;">tags </font><font style="vertical-align: inherit;">by specifying strings </font><font style="vertical-align: inherit;">.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Nesting of sub-templates allows you to organize your template code more flexibly. In addition to importing sub-templates specified in the data, of course you can also </font></font><code>#id</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">use </font></font><code>script</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">the template code </font><font style="vertical-align: inherit;">written in </font><font style="vertical-align: inherit;">tags </font><font style="vertical-align: inherit;">by specifying strings </font><font style="vertical-align: inherit;">.</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">HTML code:</font></font></p>
 <pre><code><div class="line-numbers">1
 2
@@ -429,11 +429,11 @@ juicer(tpl, {<font></font>
 4
 5
 6</div>在命令行中执行:<font></font>
-npm <span class="hljs-keyword">install </span><span class="hljs-keyword">juicer
-</span><font></font>
+npm install juicer<font></font>
+<font></font>
 在代码中这么引入:<font></font>
-var <span class="hljs-keyword">juicer </span>= require(<span class="hljs-string">'juicer'</span>)<span class="hljs-comment">;</span>
-var html = <span class="hljs-keyword">juicer(tpl, </span>data)<span class="hljs-comment">;</span>
+<span class="hljs-built_in">var</span> juicer = <span class="hljs-keyword">require</span>(<span class="hljs-string">'juicer'</span>);
+<span class="hljs-built_in">var</span> html = juicer(tpl, <span class="hljs-built_in">data</span>);
 </code></pre><h4 id="在-Express.js-框架中使用"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Use in Express.js framework</font></font></h4>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">In the Express 2.x series version:</font></font></p>
 <pre><code><div class="line-numbers">1
@@ -586,4 +586,4 @@ var data = {<font></font>
 <font></font>
 var tpl = document.getElementById(<span class="hljs-string">'tpl'</span>).innerHTML;<font></font>
 var html = juicer(tpl, data);<font></font>
-</code></pre> </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify-hide"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2014-Present fibjs.org | </font></font><a href="../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Support us</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip342245"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip342245" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Click to return on the top page</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../js/common.js"></script><script type="text/javascript" src="../../../../js/docs.js"></script></body></html>
+</code></pre> </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify-hide"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org | </font></font><a href="../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Support us</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip243980"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip243980" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Click to return on the top page</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../js/common.js"></script><script type="text/javascript" src="../../../../js/docs.js"></script></body></html>

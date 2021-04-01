@@ -253,10 +253,10 @@
     <span class="hljs-attr">name</span>      : <span class="hljs-built_in">String</span>,
     <span class="hljs-attr">surname</span>   : <span class="hljs-built_in">String</span>,
     <span class="hljs-attr">age</span>       : <span class="hljs-built_in">Number</span>, <span class="hljs-comment">// FLOAT</span>
-    male      : <span class="hljs-built_in">Boolean</span>,
+    <span class="hljs-attr">male</span>      : <span class="hljs-built_in">Boolean</span>,
     <span class="hljs-attr">continent</span> : [ <span class="hljs-string">"Europe"</span>, <span class="hljs-string">"America"</span>, <span class="hljs-string">"Asia"</span>, <span class="hljs-string">"Africa"</span>, <span class="hljs-string">"Australia"</span>, <span class="hljs-string">"Antartica"</span> ], <span class="hljs-comment">// ENUM type</span>
-    photo     : Buffer, <span class="hljs-comment">// BLOB/BINARY</span>
-    data      : <span class="hljs-built_in">Object</span> <span class="hljs-comment">// JSON encoded</span><font></font>
+    <span class="hljs-attr">photo</span>     : Buffer, <span class="hljs-comment">// BLOB/BINARY</span>
+    <span class="hljs-attr">data</span>      : <span class="hljs-built_in">Object</span> <span class="hljs-comment">// JSON encoded</span><font></font>
 }, {<font></font>
     <span class="hljs-attr">methods</span>: {
         <span class="hljs-attr">fullName</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
@@ -342,10 +342,10 @@ orm.connect(<span class="hljs-string">"mysql://username:password@host/database"<
         <span class="hljs-attr">name</span>      : <span class="hljs-built_in">String</span>,
         <span class="hljs-attr">surname</span>   : <span class="hljs-built_in">String</span>,
         <span class="hljs-attr">age</span>       : <span class="hljs-built_in">Number</span>, <span class="hljs-comment">// FLOAT</span>
-        male      : <span class="hljs-built_in">Boolean</span>,
+        <span class="hljs-attr">male</span>      : <span class="hljs-built_in">Boolean</span>,
         <span class="hljs-attr">continent</span> : [ <span class="hljs-string">"Europe"</span>, <span class="hljs-string">"America"</span>, <span class="hljs-string">"Asia"</span>, <span class="hljs-string">"Africa"</span>, <span class="hljs-string">"Australia"</span>, <span class="hljs-string">"Antartica"</span> ], <span class="hljs-comment">// ENUM type</span>
-        photo     : Buffer, <span class="hljs-comment">// BLOB/BINARY</span>
-        data      : <span class="hljs-built_in">Object</span> <span class="hljs-comment">// JSON encoded</span><font></font>
+        <span class="hljs-attr">photo</span>     : Buffer, <span class="hljs-comment">// BLOB/BINARY</span>
+        <span class="hljs-attr">data</span>      : <span class="hljs-built_in">Object</span> <span class="hljs-comment">// JSON encoded</span><font></font>
     }, {<font></font>
         <span class="hljs-attr">methods</span>: {
             <span class="hljs-attr">fullName</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
@@ -583,7 +583,7 @@ people = Person.findSync({ <span class="hljs-attr">surname</span>: <span class="
 <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"We %s Does in our db"</span>, exists ? <span class="hljs-string">"have"</span> : <span class="hljs-string">"don't have"</span>);
 </code></pre>
 <h3 id="Aggregating-Functions" class="notranslate">Aggregating Functions</h3>
-<p><font style="vertical-align: inherit;"></font><code>Array</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">いくつかのプロパティのみを選択するために、プロパティの</font><font style="vertical-align: inherit;">1つ</font><font style="vertical-align: inherit;">を渡すことができます。</font></font><code>Object</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">条件を定義するために</font><font style="vertical-align: inherit;">An</font><font style="vertical-align: inherit;">も受け入れられます。</font></font></p>
+<p><font style="vertical-align: inherit;"></font><code>Array</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">いくつかのプロパティのみを選択するために、プロパティの</font><font style="vertical-align: inherit;">1つ</font><font style="vertical-align: inherit;">を渡すことができます。</font></font><code>Object</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">条件を定義するために</font><font style="vertical-align: inherit;">、プロパティを渡すこともできます</font><font style="vertical-align: inherit;">。</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用方法を説明する例を次に示します</font></font><code>.groupBy()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font></p>
 <pre><code class="lang-js"><div class="line-numbers">1
 2
@@ -617,7 +617,7 @@ people = Person.findSync({ <span class="hljs-attr">surname</span>: <span class="
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">連鎖により、より複雑なクエリが可能になります。たとえば、カスタムSQLを指定して検索できます。</font></font></p>
 <pre><code class="lang-js"><div class="line-numbers">1</div>Person.find({ <span class="hljs-attr">age</span>: <span class="hljs-number">18</span> }).where(<span class="hljs-string">"LOWER(surname) LIKE ?"</span>, [<span class="hljs-string">'dea%'</span>]).allSync( ... );
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">エラーが発生しやすく、アプリケーションがSQLインジェクションにさらされるため、SQLパラメータを手動でエスケープ</font></font><code>?</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">することはお勧めできません</font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">構文は、クエリ内の疑問符を指定されたパラメータで安全に置き換えることにより、エスケープを処理します。複数の</font></font><code>where</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">句を次のように</font><font style="vertical-align: inherit;">チェーンすることもできます。</font><font style="vertical-align: inherit;">必要です。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">エラーが発生しやすく、アプリケーションがSQLインジェクションにさらされるため、SQLパラメータを手動でエスケープ</font></font><code>?</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">することはお勧めできません</font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">構文は、クエリ内の疑問符を指定されたパラメータに安全に置き換えることで、エスケープを処理します。複数の</font></font><code>where</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">句を次のように</font><font style="vertical-align: inherit;">チェーンすることもできます。</font><font style="vertical-align: inherit;">必要です。</font></font></p>
 <p><code>.find</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、</font></font><code>.where</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">＆</font></font><code>.all</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">同じことをします;それらはすべて交換可能で連鎖可能です。</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">また、</font></font><code>order</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">または</font></font><code>orderRaw</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：</font></font></p>
 <pre><code class="lang-js"><div class="line-numbers">1
@@ -748,7 +748,7 @@ Person.find({ <span class="hljs-attr">surname</span>: <span class="hljs-string">
 db.settings.set(<span class="hljs-string">'instance.identityCache'</span>, <span class="hljs-literal">true</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">IDキャッシュは、ブール値の代わりに数値を渡すことにより、一定期間後に期限切れになるように構成できます。数値は、秒単位のキャッシュタイムアウトと見なされます（浮動小数点を使用できます）。</font></font></p>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">注</font></font></strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：キャッシングの1つの例外は、インスタンスが保存されていない場合は使用されないことです。たとえば、Personをフェッチして変更した場合、保存されていない間はキャッシュから渡されません。</font></font></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">注</font></font></strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：キャッシングに関する1つの例外は、インスタンスが保存されていない場合は使用されないことです。たとえば、Personをフェッチして変更した場合、保存されていない間はキャッシュから渡されません。</font></font></p>
 <h2 id="Creating-Items"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">アイテムの作成</font></font></h2>
 <h3 id="Model.createSync(items)" class="notranslate">Model.createSync(items)</h3>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">データベースに新しい要素を挿入するには、を使用します</font></font><code>Model.create</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font></p>
@@ -829,13 +829,13 @@ animal.hasOwnerSync()         <span class="hljs-comment">// Checks if owner exis
 animal.removeOwnerSync()                <span class="hljs-comment">// Sets owner_id to 0</span>
 </code></pre>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">チェーン検索</font></font></strong></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">hasOneアソシエーションもチェーン検索と互換性があります。上記の例を使用して、ChainFindオブジェクトの新しいインスタンスにアクセスするためにこれを行うことができます。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">hasOneアソシエーションもチェーン検索と互換性があります。上記の例を使用すると、ChainFindオブジェクトの新しいインスタンスにアクセスするためにこれを行うことができます。</font></font></p>
 <pre><code class="lang-js"><div class="line-numbers">1</div>Animal.findByOwner({ <span class="hljs-comment">/* options */</span> })
 </code></pre>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">リバースアクセス</font></font></strong></p>
 <pre><code class="lang-js"><div class="line-numbers">1</div>Animal.hasOne(<span class="hljs-string">'owner'</span>, Person, {<span class="hljs-attr">reverse</span>: <span class="hljs-string">'pets'</span>})
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">以下を追加します：</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">以下を追加します。</font></font></p>
 <pre><code class="lang-js"><div class="line-numbers">1
 2
 3
@@ -928,7 +928,7 @@ patient.saveSync()<font></font>
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Aがこれを表ウィルを作成して</font></font><code>person</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">列に</font></font><code>id</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">して</font></font><code>name</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。A表を作成する拡張の</font></font><code>person_address</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">列で</font></font><code>person_id</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、</font></font><code>street</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">そして</font></font><code>number</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。使用可能にする方法で</font></font><code>Person</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ANとモデルと同様です</font></font><code>hasOne</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
 協会うあなたはこの例では呼び出すことができます</font></font><code>.getAddress(cb)</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、</font></font><code>.setAddress(Address, cb)</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">..</font></font></p>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">注：</font></font></strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">からの結果を保存する必要はありません</font></font><code>Person.extendsTo</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。拡張モデルを返します。これを使用して、この拡張テーブルに直接クエリを実行できます（さらに、関連するモデルを見つけることもできます）が、それはあなた次第です。アクセスするだけの場合元のモデルを使用すると、返品を破棄できます。</font></font></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">注：</font></font></strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">からの結果を保存する必要はありません</font></font><code>Person.extendsTo</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。拡張モデルが返されます。これを使用して、この拡張テーブルを直接クエリできます（さらに、関連するモデルを見つけることもできます）が、それはあなた次第です。アクセスするだけの場合元のモデルを使用すると、返品を破棄できます。</font></font></p>
 <h3 id="Examples-options" class="notranslate">Examples &amp; options</h3>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">1からnの関係がある場合は、関連付けを使用する</font></font><code>hasOne</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（に属する）</font><font style="vertical-align: inherit;">必要があります</font><font style="vertical-align: inherit;">。</font></font></p>
 <pre><code class="lang-js"><div class="line-numbers">1
@@ -1009,7 +1009,7 @@ Person.hasMany(<span class="hljs-string">"friends"</span>, {
     <span class="hljs-attr">rate</span> : <span class="hljs-built_in">Number</span><font></font>
 }, {<font></font>
     <span class="hljs-attr">key</span>       : <span class="hljs-literal">true</span>, <span class="hljs-comment">// Turns the foreign keys in the join table into a composite key</span>
-    autoFetch : <span class="hljs-literal">true</span><font></font>
+    <span class="hljs-attr">autoFetch</span> : <span class="hljs-literal">true</span><font></font>
 });<font></font>
 <font></font>
 <span class="hljs-keyword">var</span> John = Person.getSync(<span class="hljs-number">123</span>);
@@ -1129,4 +1129,4 @@ if(err)<font></font>
 <pre><code class="lang-js"><div class="line-numbers">1</div><span class="hljs-built_in">require</span>(<span class="hljs-string">'orm'</span>).addAdapter(<span class="hljs-string">'cassandra'</span>, CassandraAdapter);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">見る </font></font><a href="adapters.md.html" class="notranslate">the documentation for creating adapters</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 詳細については。</font></font></p>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify-hide"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">©Copyright2014-Present fibjs.org |</font></font><a href="../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">サポートしてください</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip896714"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip896714" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">クリックしてトップページに戻る</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../js/common.js"></script><script type="text/javascript" src="../../../../js/docs.js"></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify-hide"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">©Copyright2012-2021 fibjs.org |</font></font><a href="../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">サポートしてください</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip358240"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip358240" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">クリックしてトップページに戻る</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../js/common.js"></script><script type="text/javascript" src="../../../../js/docs.js"></script></body></html>

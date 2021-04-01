@@ -6,7 +6,7 @@
 <li><a href="../../guide/profiler.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Trova il killer delle prestazioni</font></font></a></li>
 <li><a href="../../guide/desktop.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sviluppa rapidamente applicazioni desktop</font></font></a></li>
 <li><a href="../../guide/server-hot-update.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Aggiornamento a caldo del modulo server</font></font></a></li>
-<li><a href="../../guide/host-routes.md.html">域名路由</a></li>
+<li><a href="../../guide/host-routes.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Instradamento del nome di dominio</font></font></a></li>
 <li><a href="../../guide/x509.md.html">fibjs 中 X509 证书的使用</a></li>
 <li><a href="../../guide/contribute.md.html">添加 native 模块</a></li>
 </ul>
@@ -199,7 +199,7 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Un modulo di tipo MIME completo e compatto.</font></font></p>
 <p><a href="https://travis-ci.org/broofa/node-mime"><img src="https://travis-ci.org/broofa/node-mime.svg?branch=master" alt="Stato build"></a></p>
 <div name="Version-2-Notes" data-unique="Version-2-Notes"></div><h2 id="Version-2-Notes"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Note sulla versione 2</font></font></h2>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">La versione 2 è un cambiamento radicale da 1.x come suggerisce il semver. In particolare:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">La versione 2 è un cambiamento radicale rispetto a 1.x come suggerisce il semver. In particolare:</font></font></p>
 <ul>
 <li><code>lookup()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> rinominato in </font></font><code>getType()</code></li>
 <li><code>extension()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> rinominato in </font></font><code>getExtension()</code></li>
@@ -239,7 +239,7 @@ mime.getType(<span class="hljs-string">'txt'</span>);                    <span c
 mime.getExtension(<span class="hljs-string">'text/plain'</span>);        <span class="hljs-comment">// ⇨ 'txt'</span><font></font>
 <font></font>
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Vedi </font></font><a href="#mime-api"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">API Mime di</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> seguito per i dettagli API.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Consulta l' </font></font><a href="#mime-api"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">API Mime di</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> seguito per i dettagli dell'API.</font></font></p>
 <div name="Lite-Version" data-unique="Lite-Version"></div><h2 id="Lite-Version"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Versione semplificata</font></font></h2>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Esiste anche una versione "lite" di questo modulo che omette i </font><font style="vertical-align: inherit;">tipi </font><font style="vertical-align: inherit;">specifici del fornitore ( </font></font><code>*/vnd.*</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">) e sperimentale ( </font></font><code>*/x-*</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">). Pesa ~ 2,5 KB, rispetto agli 8 KB della versione completa. Per caricare la versione lite:</font></font></p>
 <pre><code class="lang-javascript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> mime = <span class="hljs-built_in">require</span>(<span class="hljs-string">'mime/lite'</span>);
@@ -258,7 +258,7 @@ mime.getExtension(<span class="hljs-string">'text/plain'</span>);        <span c
 <thead>
 <tr>
 <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Modulo</font></font></th>
-<th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Taglia</font></font></th>
+<th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Dimensione</font></font></th>
 </tr>
 </thead>
 <tbody>
@@ -341,7 +341,7 @@ mime.getType(<span class="hljs-string">'bogus_type'</span>);     <span class="hl
 <font></font>
 </code></pre>
 <div name="mime.getExtension(type)" data-unique="mime.getExtension(type)"></div><h3 id="mime.getExtension(type)" class="notranslate">mime.getExtension(type)</h3>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ottieni l'estensione per il tipo MIME specificato. Le opzioni del set di caratteri (spesso incluse nelle intestazioni del tipo di contenuto) vengono ignorate.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ottieni l'estensione per il tipo MIME specificato. Le opzioni del set di caratteri (spesso incluse nelle intestazioni Content-Type) vengono ignorate.</font></font></p>
 <pre><code class="lang-javascript"><div class="line-numbers">1
 2
 3
@@ -353,8 +353,8 @@ mime.getExtension(<span class="hljs-string">'text/html; charset=utf8'</span>);  
 <div name="mime.define(typeMap[,-force-=-false])" data-unique="mime.define(typeMap[,-force-=-false])"></div><h3 id="mime.define(typeMap[,-force-=-false])" class="notranslate">mime.define(typeMap[, force = false])</h3>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Definisci [più] mappature di tipo.</font></font></p>
 <p><code>typeMap</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">è una mappa di tipo -&gt; estensioni, come documentato in </font></font><code>new Mime</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, sopra.</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Per impostazione predefinita, questo metodo genera un errore se si tenta di mappare un tipo a un interno che è già assegnato a un altro tipo. Passando </font></font><code>true</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">per l'
- </font></font><code>force</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">argomento sarà sopprimere questo comportamento (ignorando qualsiasi mappatura precedente).</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Per impostazione predefinita, questo metodo genererà un errore se si tenta di mappare un tipo a un'estensione che è già assegnata a un altro tipo. Il passaggio </font></font><code>true</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">per l'
+ </font></font><code>force</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">argomento sopprimerà questo comportamento (sovrascrivendo qualsiasi mappatura precedente).</font></font></p>
 <pre><code class="lang-javascript"><div class="line-numbers">1
 2
 3
@@ -366,11 +366,11 @@ mime.getExtension(<span class="hljs-string">'text/x-abc'</span>)  <span class="h
 <font></font>
 </code></pre>
 <div name="Command-Line" data-unique="Command-Line"></div><h2 id="Command-Line"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Riga di comando</font></font></h2>
-<pre><code><div class="line-numbers">1</div>mime <span class="hljs-string">[path_or_extension]</span>
+<pre><code><div class="line-numbers">1</div><span class="hljs-attribute">mime</span><span class="hljs-meta"> [path_or_extension]</span>
 </code></pre><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Per esempio</font></font></p>
 <pre><code><div class="line-numbers">1
 2</div>&gt; <span class="hljs-variable">mime</span> <span class="hljs-variable"><span class="hljs-class">scripts</span></span>/<span class="hljs-variable">jquery.js</span>
 <span class="hljs-variable"><span class="hljs-class">application</span></span>/<span class="hljs-variable">javascript</span>
 </code></pre><hr>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Markdown generato da </font></font><a href="src/readme_js.md.html" class="notranslate">src/README_js.md</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> di </font></font><a href="https://github.com/broofa/runmd"><img src="http://i.imgur.com/h0FVyzU.png" alt="Logo RunMD"></a></p>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2014-Presente fibjs.org | </font></font><a href="../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sostienici</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip443624"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip443624" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Fare clic per tornare alla pagina principale</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../js/common.js"></script><script type="text/javascript" src="../../../../js/docs.js"></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org | </font></font><a href="../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sostienici</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip465230"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip465230" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Fare clic per tornare alla pagina principale</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../js/common.js"></script><script type="text/javascript" src="../../../../js/docs.js"></script></body></html>

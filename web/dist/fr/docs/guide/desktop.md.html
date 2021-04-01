@@ -7,7 +7,7 @@
 <li class="active"><a href="desktop.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Développez rapidement des applications de bureau</font></font></a></li>
 <li><a href="server-hot-update.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Mise à jour à chaud du module serveur</font></font></a></li>
 <li><a href="host-routes.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Routage de nom de domaine</font></font></a></li>
-<li><a href="x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">L'utilisation du certificat X509 dans fibjs</font></font></a></li>
+<li><a href="x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Utilisation du certificat X509 dans fibjs</font></font></a></li>
 <li><a href="contribute.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ajouter un module natif</font></font></a></li>
 </ul>
  </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_module" aria-controls="collapse_module"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Module de base </font></font></a></h4></div><div id="collapse_module" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
@@ -196,9 +196,13 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Le lancement d'une application de bureau dans fibjs est très rapide. Tapez simplement le code suivant pour ouvrir et exécuter une fenêtre WebView:</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
-3</div><span class="hljs-keyword">var</span> gui = <span class="hljs-built_in">require</span>(<span class="hljs-string">"gui"</span>);<font></font>
+3
+4
+5</div><span class="hljs-keyword">var</span> gui = <span class="hljs-built_in">require</span>(<span class="hljs-string">"gui"</span>);<font></font>
 <font></font>
-gui.open(<span class="hljs-string">"https://fibjs.org"</span>);
+gui.open(<span class="hljs-string">"https://fibjs.org"</span>, {
+    <span class="hljs-string">"native"</span>: <span class="hljs-literal">true</span><font></font>
+});<font></font>
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ce code ouvrira une fenêtre WebView intégrée au système d'exploitation et accédera au site Web fibjs.org.</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cependant, la WebView intégrée du système ne peut pas satisfaire le puissant développement d'applications de bureau en termes de fonction d'interface ou de compatibilité. </font><font style="vertical-align: inherit;">Par conséquent, fibjs prend également en charge le développement d'applications basé sur cef.</font></font></p>
@@ -215,12 +219,12 @@ gui.open(<span class="hljs-string">"https://fibjs.org"</span>);
 <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Amélioration des performances et de la stabilité (JavaScript et les plugins sont exécutés dans un processus séparé).</font></font></li>
 <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Supporte l'affichage Retina.</font></font></li>
 <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Prend en charge l'accélération GPU de WebGL et 3D CSS.</font></font></li>
-<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Des fonctionnalités d'avant-garde telles que WebRTC et la saisie vocale.</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Des fonctionnalités d'avant-garde comme WebRTC et la saisie vocale.</font></font></li>
 <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Fournissez de meilleurs tests d'interface utilisateur automatisés via le protocole de débogage à distance DevTools et ChromeDriver2.</font></font></li>
 <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">La possibilité d'obtenir plus rapidement les fonctionnalités et les normes Web actuelles et futures.</font></font></li>
 </ul>
 <div name="准备运行环境" data-unique="准备运行环境"></div><h2 id="准备运行环境"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Préparez l'environnement d'exploitation</font></font></h2>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Le paquet binaire de cef3 peut être </font><font style="vertical-align: inherit;">téléchargé </font><font style="vertical-align: inherit;">depuis [ </font></font><a href="https://cef-builds.spotifycdn.com/index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">cette page</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> ]. </font><font style="vertical-align: inherit;">Il contient tous les fichiers nécessaires pour compiler une version spécifique de cef3 sur une plateforme spécifique (Windows, Mac OS X et Linux). </font><font style="vertical-align: inherit;">Différentes plates-formes ont une structure commune et vous devez réorganiser la structure du répertoire des ressources après le téléchargement. </font><font style="vertical-align: inherit;">La disposition des ressources d'application dépend de la plate-forme et est très différente.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Le paquet binaire de cef3 peut être </font><font style="vertical-align: inherit;">téléchargé </font><font style="vertical-align: inherit;">depuis [ </font></font><a href="https://cef-builds.spotifycdn.com/index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">cette page</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> ]. </font><font style="vertical-align: inherit;">Il contient tous les fichiers nécessaires pour compiler une version spécifique de cef3 sur une plateforme spécifique (Windows, Mac OS X et Linux). </font><font style="vertical-align: inherit;">La structure des répertoires des différentes plates-formes est différente, vous devez réorganiser la structure des répertoires des ressources après le téléchargement.</font></font></p>
 <div name="Windows-操作系统(Windows)" data-unique="Windows-操作系统(Windows)"></div><h3 id="Windows-操作系统(Windows)"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Système d'exploitation Windows (Windows)</font></font></h3>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sur la structure des dossiers de la plate-forme Windows est la suivante, vous pouvez généralement dans des packages binaires </font></font><code>Release</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">et </font></font><code>Resources</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">trouver tous les fichiers dans le répertoire:</font></font></p>
 <pre><code class="lang-bash"><div class="line-numbers">1
@@ -313,10 +317,10 @@ gui.open(<span class="hljs-string">"https://fibjs.org"</span>);
 │   └── libGLESv2.so<font></font>
 └── v8_context_snapshot.bin<font></font>
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sur Linux Server, car il n'y a pas de prise en charge de l'environnement de bureau, vous ne pouvez </font></font><code>--headless</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">exécuter que le mode, lorsque vous travaillez en mode sans fenêtre, vous devez également installer xorg:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sur Linux Server, car il n'y a pas de prise en charge de l'environnement de bureau, vous ne pouvez </font></font><code>--headless</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">exécuter le mode qu'en mode fenêtré lorsque vous n'avez pas besoin d'installer xorg:</font></font></p>
 <pre><code class="lang-sh"><div class="line-numbers">1</div>apt install xorg
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sur Linux Server, et certains des mauvais gpu prennent en charge Linux Desktop, mais doivent également augmenter l' </font></font><code>--disable-gpu</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">option de démarrage est le rendu gpu désactivé.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Dans certains gpu prennent en charge mauvais Linux Desktop, mais doivent également augmenter l' </font></font><code>--disable-gpu</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">option de démarrage est le rendu gpu désactivé.</font></font></p>
 <div name="Mac-X-平台(Mac-OS-X)" data-unique="Mac-X-平台(Mac-OS-X)"></div><h3 id="Mac-X-平台(Mac-OS-X)"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Plateforme Mac X (Mac OS X)</font></font></h3>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sur la structure des dossiers de la plate-forme Mac X est la suivante, vous pouvez généralement dans le binaire du package </font></font><code>Release/Chromium Embedded Framework.framework</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">trouver tous les fichiers du répertoire, si vous téléchargez le cefclient, vous devez ouvrir l'application Contents pour trouver le fichier approprié:</font></font></p>
 <pre><code class="lang-bash"><div class="line-numbers">1
@@ -359,15 +363,19 @@ gui.open(<span class="hljs-string">"https://fibjs.org"</span>);
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Préparez l'environnement d'exploitation, puis exécutez le code suivant</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
-3</div><span class="hljs-keyword">var</span> gui = <span class="hljs-built_in">require</span>(<span class="hljs-string">"gui"</span>);<font></font>
+3
+4
+5</div><span class="hljs-keyword">var</span> gui = <span class="hljs-built_in">require</span>(<span class="hljs-string">"gui"</span>);<font></font>
 <font></font>
-gui.open(<span class="hljs-string">"https://fibjs.org"</span>);
+gui.open(<span class="hljs-string">"https://fibjs.org"</span>, {
+    <span class="hljs-comment">// "native": true</span><font></font>
+});<font></font>
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Vous verrez également une fenêtre de navigateur chargée avec le site officiel de fibjs, mais son moteur est déjà le dernier noyau Chrome.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Vous verrez également une fenêtre de navigateur chargée avec le site officiel de fibjs, mais son moteur est déjà le dernier noyau Chrome. </font><font style="vertical-align: inherit;">Notez ici besoin d'annuler l' </font></font><code>native</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">option, sinon ouvrira la vue Web construite par os.</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">L'application de base de l'interface graphique est très simple et peut être rapidement réalisée en se référant au document de l'interface graphique, donc je ne la répéterai pas. </font><font style="vertical-align: inherit;">Ensuite, nous introduisons principalement des méthodes d'application spéciales.</font></font></p>
 <div name="前后端服务对接" data-unique="前后端服务对接"></div><h2 id="前后端服务对接"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Station d'accueil des services frontaux et principaux</font></font></h2>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Les applications de bureau basées sur le Web ont généralement deux méthodes d'extension, l'une est l'extension WebView et l'autre consiste à séparer les extrémités avant et arrière localement. </font><font style="vertical-align: inherit;">Dans la première méthode, WebView est étendu de manière invasive et l'environnement d'exploitation n'est plus compatible avec les navigateurs standard. </font><font style="vertical-align: inherit;">Cette dernière méthode nécessite l’ouverture locale d’un serveur http, ce qui entraîne à son tour l’exposition de l’interface de service à l’extérieur.</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs pour les applications de bureau étendues, basé sur une évolutivité de protocole cef sera WebView et les fibjs </font></font><code>Handler</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ensemble, de sorte que le processus WebView puisse être connecté directement au </font></font><code>Handler</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">processeur </font><font style="vertical-align: inherit;">correspondant </font><font style="vertical-align: inherit;">, entièrement compatible avec le paradigme B / S conventionnel développé simultanément avant et arrière assurer la sécurité et la portabilité. </font><font style="vertical-align: inherit;">Dans le même temps, le code front-end et back-end est totalement cohérent avec le développement standard B / S front-end et back-end, qui peut être développé et débogué dans le navigateur, puis directement transplanté dans les applications locales.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs pour les applications de bureau étendues, basé sur une évolutivité de protocole cef sera WebView et les fibjs </font></font><code>Handler</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ensemble, de sorte que le processus WebView puisse être connecté directement au </font></font><code>Handler</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">processeur </font><font style="vertical-align: inherit;">correspondant </font><font style="vertical-align: inherit;">, entièrement compatible avec le paradigme B / S conventionnel développé simultanément aux extrémités avant et arrière, pour assurer la sécurité et la portabilité. </font><font style="vertical-align: inherit;">Dans le même temps, le code front-end et back-end est totalement cohérent avec le développement standard B / S front-end et back-end, qui peut être développé et débogué dans le navigateur, puis directement transplanté dans une application locale .</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">processeur dorsal fibjs configuré de manière, à travers </font></font><code>gui.config</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">done.</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
@@ -601,7 +609,28 @@ win.on(<span class="hljs-string">'open'</span>, () =&gt; {<font></font>
     win.loadUrl(<span class="hljs-string">'https://fibjs.org'</span>);<font></font>
 });<font></font>
 </code></pre>
+<div name="监听事件" data-unique="监听事件"></div><h3 id="监听事件"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Écoutez les événements</font></font></h3>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9</div><span class="hljs-keyword">var</span> win = gui.open();<font></font>
+<font></font>
+win.on(<span class="hljs-string">'open'</span>, () =&gt; {<font></font>
+    win.dev.Page.enable();<font></font>
+    win.dev.Page.on(<span class="hljs-string">"frameNavigated"</span>, ev =&gt; {
+        <span class="hljs-built_in">console</span>.log(ev.frame.url);<font></font>
+        win.close();<font></font>
+    });<font></font>
+});<font></font>
+</code></pre>
+<div name="多媒体支持" data-unique="多媒体支持"></div><h2 id="多媒体支持"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Support multimédia</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">En raison de problèmes de droits d'auteur, la distribution binaire de cef n'inclut généralement pas le décodage de mp4 et mp3. </font><font style="vertical-align: inherit;">Cependant, cef contient un décodage Webm open source. Pour les applications de bureau indépendantes, il est recommandé d'utiliser un codage Webm sous licence libre pour traiter l'audio et la vidéo.</font></font></p>
 <div name="小结" data-unique="小结"></div><h2 id="小结"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">résumé</font></font></h2>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Grâce à l'introduction de cette section, nous pouvons rapidement développer nos propres applications de bureau, rendre le HTML en images ou PDF, et utiliser la puissante interface de cdp pour établir un test d'automatisation frontale et un moteur d'automatisation des processus.</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">👉 [ </font></font><a href="server-hot-update.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Mise à jour à chaud du module serveur</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> ]</font></font></p>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2014-Present fibjs.org | </font></font><a href="../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Soutenez-nous</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip659269"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip659269" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cliquez pour revenir en haut de la page</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../js/common.js"></script><script type="text/javascript" src="../../../js/docs.js"></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org | </font></font><a href="../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Soutenez-nous</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip485694"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip485694" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cliquez pour revenir en haut de la page</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../js/common.js"></script><script type="text/javascript" src="../../../js/docs.js"></script></body></html>

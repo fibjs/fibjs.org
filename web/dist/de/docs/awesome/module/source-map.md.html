@@ -7,7 +7,7 @@
 <li><a href="../../guide/desktop.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Entwickeln Sie schnell Desktop-Anwendungen</font></font></a></li>
 <li><a href="../../guide/server-hot-update.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Hot-Update des Servermoduls</font></font></a></li>
 <li><a href="../../guide/host-routes.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Domain Name Routing</font></font></a></li>
-<li><a href="../../guide/x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Die Verwendung des X509-Zertifikats in Fibjs</font></font></a></li>
+<li><a href="../../guide/x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Verwendung des X509-Zertifikats in Fibjs</font></font></a></li>
 <li><a href="../../guide/contribute.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Natives Modul hinzufügen</font></font></a></li>
 </ul>
  </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_module" aria-controls="collapse_module"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Grundmodul </font></font></a></h4></div><div id="collapse_module" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
@@ -462,7 +462,7 @@ map.addMapping({<font></font>
 <span class="hljs-keyword">const</span> sourceMap = <span class="hljs-built_in">require</span>(<span class="hljs-string">"devtools/toolkit/sourcemap/source-map.js"</span>);
 </code></pre>
 <div name="SourceMapConsumer" data-unique="SourceMapConsumer"></div><h3 id="SourceMapConsumer" class="notranslate">SourceMapConsumer</h3>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Eine </font></font><code>SourceMapConsumer</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Instanz stellt eine analysierte Quellzuordnung dar, die Informationen zu den ursprünglichen Dateipositionen abfragen können, indem sie in der generierten Quelle eine Dateiposition erhält.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Eine </font></font><code>SourceMapConsumer</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Instanz stellt eine analysierte Quellzuordnung dar, die wir nach Informationen zu den ursprünglichen Dateipositionen abfragen können, indem wir ihr eine Dateiposition in der generierten Quelle zuweisen.</font></font></p>
 <h4 id="SourceMapConsumer.initialize(options)"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SourceMapConsumer.initialize (Optionen)</font></font></h4>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Bei Verwendung </font></font><code>SourceMapConsumer</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">außerhalb von node.js, z. B. im Web, muss bekannt sein, von welcher URL geladen werden soll </font></font><code>lib/mappings.wasm</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">. Sie müssen dies durch Aufrufen mitteilen, </font></font><code>initialize</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">bevor Sie </font></font><code>SourceMapConsumer</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">s erstellen.</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Das Optionsobjekt hat die folgenden Eigenschaften:</font></font></p>
@@ -542,7 +542,7 @@ function f(SourceMapConsumer) -&gt; T</code><font style="vertical-align: inherit
 <span class="hljs-built_in">console</span>.log(xSquared);
 </code></pre>
 <h4 id="SourceMapConsumer.prototype.destroy()"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SourceMapConsumer.prototype.destroy ()</font></font></h4>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Geben Sie die zugehörigen Wasm-Daten des Quellkarten-Verbrauchers frei, die manuell verwaltet werden.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Geben Sie die zugehörigen WASM-Daten des Quellzuordners frei, die manuell verwaltet werden.</font></font></p>
 <pre><code class="lang-js"><div class="line-numbers">1</div>consumer.destroy();
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Alternativ können Sie </font></font><code>SourceMapConsumer.with</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">vermeiden, dass Sie sich an einen Anruf erinnern müssen </font></font><code>destroy</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">.</font></font></p>
@@ -885,7 +885,7 @@ jedes Mal, wenn </font></font><code>callback</code><font style="vertical-align: 
 ]);<font></font>
 </code></pre>
 <h4 id="SourceNode.fromStringWithSourceMap(code,-sourceMapConsumer[,-relativePath])"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SourceNode.fromStringWithSourceMap (Code, sourceMapConsumer [, relativePath])</font></font></h4>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Erstellt einen SourceNode aus generiertem Code und einem SourceMapConsumer.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Erstellt einen SourceNode aus dem generierten Code und einem SourceMapConsumer.</font></font></p>
 <ul>
 <li><p><code>code</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Der generierte Code</font></font></p>
 </li>
@@ -933,7 +933,7 @@ node.add([leftHandOperandNode, <span class="hljs-string">" + "</span>, rightHand
                       fs.readFileSync(<span class="hljs-string">"path/to/module-one.scm"</span>))
 </code></pre>
 <h4 id="SourceNode.prototype.walk(fn)"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SourceNode.prototype.walk (fn)</font></font></h4>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Gehen Sie über den Baum der JS-Snippets in diesem Knoten und seinen untergeordneten Knoten. Die Walking-Funktion wird einmal für jedes JS-Snippet aufgerufen und an dieses Snippet und die Zeilen- / Spaltenposition der ursprünglich zugeordneten Quelle übergeben.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Gehen Sie über den Baum der JS-Snippets in diesem Knoten und seinen untergeordneten Knoten. Die Walking-Funktion wird einmal für jedes JS-Snippet aufgerufen und übergibt dieses Snippet und die Zeilen- / Spaltenposition der ursprünglich zugeordneten Quelle.</font></font></p>
 <ul>
 <li><code>fn</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Die Durchquerungsfunktion.</font></font></li>
 </ul>
@@ -1012,7 +1012,7 @@ node.walkSourceContents(<span class="hljs-function"><span class="hljs-keyword">f
 <span class="hljs-keyword">var</span> joinedNode = node.join(<span class="hljs-string">" "</span>);
 </code></pre>
 <h4 id="SourceNode.prototype.replaceRight(pattern,-replacement)"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SourceNode.prototype.replaceRight (Muster, Ersatz)</font></font></h4>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Rufen Sie </font></font><code>String.prototype.replace</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">das Quell-Snippet ganz rechts auf. Nützlich, um Leerzeichen vom Ende eines Quellknotens usw. zu entfernen.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Rufen Sie das </font></font><code>String.prototype.replace</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">am weitesten rechts stehende Quell-Snippet auf. Nützlich zum Trimmen von Leerzeichen vom Ende eines Quellknotens usw.</font></font></p>
 <ul>
 <li><p><code>pattern</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Das zu ersetzende Muster.</font></font></p>
 </li>
@@ -1074,4 +1074,4 @@ node.toStringWithSourceMap({ <span class="hljs-attr">file</span>: <span class="h
 <span class="hljs-comment">// { code: 'unodostresquatro',</span>
 <span class="hljs-comment">//   map: [object SourceMapGenerator] }</span>
 </code></pre>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2014-Present fibjs.org | </font></font><a href="../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Unterstützen Sie uns</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip951280"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip951280" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Klicken Sie hier, um zur obersten Seite zurückzukehren</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../js/common.js"></script><script type="text/javascript" src="../../../../js/docs.js"></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org | </font></font><a href="../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Unterstützen Sie uns</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip179875"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip179875" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Klicken Sie hier, um zur obersten Seite zurückzukehren</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../js/common.js"></script><script type="text/javascript" src="../../../../js/docs.js"></script></body></html>

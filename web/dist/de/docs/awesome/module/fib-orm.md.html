@@ -7,7 +7,7 @@
 <li><a href="../../guide/desktop.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Entwickeln Sie schnell Desktop-Anwendungen</font></font></a></li>
 <li><a href="../../guide/server-hot-update.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Hot-Update des Servermoduls</font></font></a></li>
 <li><a href="../../guide/host-routes.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Domain Name Routing</font></font></a></li>
-<li><a href="../../guide/x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Die Verwendung des X509-Zertifikats in Fibjs</font></font></a></li>
+<li><a href="../../guide/x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Verwendung des X509-Zertifikats in Fibjs</font></font></a></li>
 <li><a href="../../guide/contribute.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Natives Modul hinzufügen</font></font></a></li>
 </ul>
  </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_module" aria-controls="collapse_module"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Grundmodul </font></font></a></h4></div><div id="collapse_module" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
@@ -253,10 +253,10 @@
     <span class="hljs-attr">name</span>      : <span class="hljs-built_in">String</span>,
     <span class="hljs-attr">surname</span>   : <span class="hljs-built_in">String</span>,
     <span class="hljs-attr">age</span>       : <span class="hljs-built_in">Number</span>, <span class="hljs-comment">// FLOAT</span>
-    male      : <span class="hljs-built_in">Boolean</span>,
+    <span class="hljs-attr">male</span>      : <span class="hljs-built_in">Boolean</span>,
     <span class="hljs-attr">continent</span> : [ <span class="hljs-string">"Europe"</span>, <span class="hljs-string">"America"</span>, <span class="hljs-string">"Asia"</span>, <span class="hljs-string">"Africa"</span>, <span class="hljs-string">"Australia"</span>, <span class="hljs-string">"Antartica"</span> ], <span class="hljs-comment">// ENUM type</span>
-    photo     : Buffer, <span class="hljs-comment">// BLOB/BINARY</span>
-    data      : <span class="hljs-built_in">Object</span> <span class="hljs-comment">// JSON encoded</span><font></font>
+    <span class="hljs-attr">photo</span>     : Buffer, <span class="hljs-comment">// BLOB/BINARY</span>
+    <span class="hljs-attr">data</span>      : <span class="hljs-built_in">Object</span> <span class="hljs-comment">// JSON encoded</span><font></font>
 }, {<font></font>
     <span class="hljs-attr">methods</span>: {
         <span class="hljs-attr">fullName</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
@@ -342,10 +342,10 @@ orm.connect(<span class="hljs-string">"mysql://username:password@host/database"<
         <span class="hljs-attr">name</span>      : <span class="hljs-built_in">String</span>,
         <span class="hljs-attr">surname</span>   : <span class="hljs-built_in">String</span>,
         <span class="hljs-attr">age</span>       : <span class="hljs-built_in">Number</span>, <span class="hljs-comment">// FLOAT</span>
-        male      : <span class="hljs-built_in">Boolean</span>,
+        <span class="hljs-attr">male</span>      : <span class="hljs-built_in">Boolean</span>,
         <span class="hljs-attr">continent</span> : [ <span class="hljs-string">"Europe"</span>, <span class="hljs-string">"America"</span>, <span class="hljs-string">"Asia"</span>, <span class="hljs-string">"Africa"</span>, <span class="hljs-string">"Australia"</span>, <span class="hljs-string">"Antartica"</span> ], <span class="hljs-comment">// ENUM type</span>
-        photo     : Buffer, <span class="hljs-comment">// BLOB/BINARY</span>
-        data      : <span class="hljs-built_in">Object</span> <span class="hljs-comment">// JSON encoded</span><font></font>
+        <span class="hljs-attr">photo</span>     : Buffer, <span class="hljs-comment">// BLOB/BINARY</span>
+        <span class="hljs-attr">data</span>      : <span class="hljs-built_in">Object</span> <span class="hljs-comment">// JSON encoded</span><font></font>
     }, {<font></font>
         <span class="hljs-attr">methods</span>: {
             <span class="hljs-attr">fullName</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
@@ -1009,7 +1009,7 @@ Person.hasMany(<span class="hljs-string">"friends"</span>, {
     <span class="hljs-attr">rate</span> : <span class="hljs-built_in">Number</span><font></font>
 }, {<font></font>
     <span class="hljs-attr">key</span>       : <span class="hljs-literal">true</span>, <span class="hljs-comment">// Turns the foreign keys in the join table into a composite key</span>
-    autoFetch : <span class="hljs-literal">true</span><font></font>
+    <span class="hljs-attr">autoFetch</span> : <span class="hljs-literal">true</span><font></font>
 });<font></font>
 <font></font>
 <span class="hljs-keyword">var</span> John = Person.getSync(<span class="hljs-number">123</span>);
@@ -1129,4 +1129,4 @@ if(err)<font></font>
 <pre><code class="lang-js"><div class="line-numbers">1</div><span class="hljs-built_in">require</span>(<span class="hljs-string">'orm'</span>).addAdapter(<span class="hljs-string">'cassandra'</span>, CassandraAdapter);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sehen </font></font><a href="adapters.md.html" class="notranslate">the documentation for creating adapters</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> für mehr Details.</font></font></p>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify-hide"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2014-Present fibjs.org | </font></font><a href="../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Unterstützen Sie uns</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip154289"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip154289" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Klicken Sie hier, um zur obersten Seite zurückzukehren</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../js/common.js"></script><script type="text/javascript" src="../../../../js/docs.js"></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify-hide"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org | </font></font><a href="../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Unterstützen Sie uns</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip824369"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip824369" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Klicken Sie hier, um zur obersten Seite zurückzukehren</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../js/common.js"></script><script type="text/javascript" src="../../../../js/docs.js"></script></body></html>

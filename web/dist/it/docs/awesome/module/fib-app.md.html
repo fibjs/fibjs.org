@@ -7,7 +7,7 @@
 <li><a href="../../guide/desktop.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sviluppa rapidamente applicazioni desktop</font></font></a></li>
 <li><a href="../../guide/server-hot-update.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Aggiornamento a caldo del modulo server</font></font></a></li>
 <li><a href="../../guide/host-routes.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Instradamento del nome di dominio</font></font></a></li>
-<li><a href="../../guide/x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">L'uso del certificato X509 in fibjs</font></font></a></li>
+<li><a href="../../guide/x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Uso del certificato X509 in fibjs</font></font></a></li>
 <li><a href="../../guide/contribute.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Aggiungi modulo nativo</font></font></a></li>
 </ul>
  </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_module" aria-controls="collapse_module"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Modulo base </font></font></a></h4></div><div id="collapse_module" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
@@ -317,7 +317,7 @@ svr.run();<font></font>
 ]<font></font>
 </code></pre>
 <div name="特殊字段" data-unique="特殊字段"></div><h2 id="特殊字段"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Campo speciale</font></font></h2>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Nei dati dell'oggetto ci sono quattro campi con significati speciali, che non possono essere modificati tramite l'API. </font><font style="vertical-align: inherit;">Rispettivamente </font></font><code>id</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><code>updatedAt</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><code>createdAt</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><code>createdBy</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Nei dati dell'oggetto ci sono quattro campi con un significato speciale, che non possono essere modificati tramite l'API. </font><font style="vertical-align: inherit;">Rispettivamente </font></font><code>id</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><code>updatedAt</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><code>createdAt</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><code>createdBy</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">.</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Dove </font></font><code>id</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><code>updatedAt</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><code>createdAt</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">singoli campi verranno creati e modificati automaticamente. </font></font><code>createdBy</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Devi specificare tu stesso il tipo.</font></font></p>
 <div name="基础对象访问-API" data-unique="基础对象访问-API"></div><h2 id="基础对象访问-API"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">API di accesso agli oggetti di base</font></font></h2>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Dopo aver completato questa definizione dei dati, avrai direttamente un set completo di chiamate all'interfaccia conformi alla specifica dell'api REST:</font></font></p>
@@ -400,7 +400,7 @@ svr.run();<font></font>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Restituisce il campo fornendo </font></font><code>keys</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, il contenuto personalizzato può essere restituito il </font></font><code>keys</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">contenuto è in </font></font><code>,</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">stringhe del nome di </font><font style="vertical-align: inherit;">un </font><font style="vertical-align: inherit;">campo diviso:</font></font></p>
 <pre><code class="lang-sh"><div class="line-numbers">1</div>curl -X GET http://localhost/1.0/person/57fbbdb0a2400000?keys=name%2Csex
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sarà di ritorno:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Tornerà:</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
@@ -410,7 +410,7 @@ svr.run();<font></font>
 }<font></font>
 </code></pre>
 <div name="修改对象" data-unique="修改对象"></div><h3 id="修改对象"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Modifica l'oggetto</font></font></h3>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Per modificare i dati esistenti di un oggetto, puoi inviare una richiesta PUT all'URL corrispondente dell'oggetto. Qualsiasi chiave non specificata non verrà modificata, quindi puoi aggiornare solo un sottoinsieme dei dati dell'oggetto. </font><font style="vertical-align: inherit;">Ad esempio, cambiamo un campo età del nostro oggetto:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Per modificare i dati esistenti di un oggetto, è possibile inviare una richiesta PUT all'URL corrispondente dell'oggetto. Qualsiasi chiave non specificata non verrà modificata, quindi è possibile aggiornare solo un sottoinsieme dei dati dell'oggetto. </font><font style="vertical-align: inherit;">Ad esempio, cambiamo un campo età del nostro oggetto:</font></font></p>
 <pre><code class="lang-sh"><div class="line-numbers">1
 2
 3
@@ -483,7 +483,7 @@ svr.run();<font></font>
 <p><code>where</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Il valore del parametro deve essere codificato in JSON. </font><font style="vertical-align: inherit;">In altre parole, se guardi la richiesta URL che è stata effettivamente inviata, dovrebbe essere codificata prima in JSON e poi codificata in URL. </font><font style="vertical-align: inherit;">Il modo più semplice da usare </font></font><code>where</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">come argomenti è includere chiave e valore corretti. </font><font style="vertical-align: inherit;">Ad esempio, se vogliamo cercare utenti il ​​cui nome è tom, dovremmo costruire la query in questo modo:</font></font></p>
 <pre><code class="lang-sh"><div class="line-numbers">1</div>curl -X GET http://localhost/1.0/person?<span class="hljs-built_in">where</span>=%7B%22name%22%3A%22tom%22%7D
 </code></pre>
-<p><code>where</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Il valore è una stringa JSON dopo urlencode, il contenuto è:</font></font><code>{"name":"tom"}</code></p>
+<p><code>where</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Il valore di è una stringa JSON dopo urlencode, il contenuto è:</font></font><code>{"name":"tom"}</code></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Oltre a far corrispondere esattamente un dato valore, </font></font><code>where</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sono supportati anche metodi di confronto come l'inclusione. </font></font><code>where</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">I parametri supportano le seguenti opzioni:</font></font></p>
 <table>
 <thead>
@@ -545,7 +545,7 @@ svr.run();<font></font>
 <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{"age": {"not_between": [22,25]}}</font></font></td>
 </tr>
 <tr>
-<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">nel</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">in</font></font></td>
 <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">enumerare</font></font></td>
 <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{"name": {"in": ["tom", "lily"]}}</font></font></td>
 </tr>
@@ -742,8 +742,8 @@ svr.run();<font></font>
 <span class="hljs-built_in">module</span>.exports = <span class="hljs-function"><span class="hljs-params">db</span> =&gt;</span> {<font></font>
   db.define(<span class="hljs-string">'blog'</span>, {
     <span class="hljs-attr">title</span>: <span class="hljs-built_in">String</span>,
-    <span class="hljs-attr">detail</span>: <span class="hljs-built_in">String</span>，<font></font>
-    note: <span class="hljs-built_in">String</span><font></font>
+    <span class="hljs-attr">detail</span>: <span class="hljs-built_in">String</span>，
+    <span class="hljs-attr">note</span>: <span class="hljs-built_in">String</span><font></font>
   }, {<font></font>
     <span class="hljs-attr">ACL</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">session</span>) </span>{
       <span class="hljs-keyword">return</span> {
@@ -933,7 +933,7 @@ svr.run();<font></font>
 <li><code>person</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> =&gt; </font></font><code>ACL</code></li>
 </ul>
 <div name="扩展对象权限" data-unique="扩展对象权限"></div><h3 id="扩展对象权限"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Autorizzazioni estese per gli oggetti</font></font></h3>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Il controllo dell'autorizzazione di accesso dell'oggetto esteso è simile all'autorizzazione dell'oggetto di base, l'unica differenza è che deve essere specificato separatamente nell'ACL:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Il controllo dei permessi di accesso dell'oggetto esteso è simile a quello dell'oggetto di base, l'unica differenza è che l'ACL deve essere specificato separatamente:</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
@@ -1033,4 +1033,4 @@ svr.run();<font></font>
 <div name="绘制数据模型" data-unique="绘制数据模型"></div><h2 id="绘制数据模型"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Disegna il modello di dati</font></font></h2>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Dopo il completamento della definizione dei dati può essere utilizzato </font></font><code>app.diagram()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">per disegnare il </font></font><code>svg</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">diagramma di classe del formato del </font><font style="vertical-align: inherit;">modello di dati </font><font style="vertical-align: inherit;">, i file verranno salvati in un'immagine simile alla seguente:
 </font></font><img src="./demo/diagram.svg" alt="diagramma"></p>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2014-Presente fibjs.org | </font></font><a href="../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sostienici</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip738068"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip738068" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Fare clic per tornare alla pagina principale</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../js/common.js"></script><script type="text/javascript" src="../../../../js/docs.js"></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org | </font></font><a href="../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sostienici</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip222620"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip222620" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Fare clic per tornare alla pagina principale</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../js/common.js"></script><script type="text/javascript" src="../../../../js/docs.js"></script></body></html>

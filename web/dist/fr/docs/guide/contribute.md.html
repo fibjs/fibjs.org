@@ -7,7 +7,7 @@
 <li><a href="desktop.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Développez rapidement des applications de bureau</font></font></a></li>
 <li><a href="server-hot-update.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Mise à jour à chaud du module serveur</font></font></a></li>
 <li><a href="host-routes.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Routage de nom de domaine</font></font></a></li>
-<li><a href="x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">L'utilisation du certificat X509 dans fibjs</font></font></a></li>
+<li><a href="x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Utilisation du certificat X509 dans fibjs</font></font></a></li>
 <li class="active"><a href="contribute.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ajouter un module natif</font></font></a></li>
 </ul>
  </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_module" aria-controls="collapse_module"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Module de base </font></font></a></h4></div><div id="collapse_module" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
@@ -197,7 +197,7 @@
 <div name="编写-idl-文件" data-unique="编写-idl-文件"></div><h2 id="编写-idl-文件"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ecrire un fichier idl</font></font></h2>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">idl est un langage descriptif utilisé pour définir des modules natifs et des méthodes objet dans fibjs.</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Avant de commencer à écrire votre propre module fibjs, vous devez écrire un langage descriptif idl. </font><font style="vertical-align: inherit;">Prenons le nom du module personnalisé comme exemple. </font><font style="vertical-align: inherit;">J'ai besoin d'écrire le langage descriptif name.idl et de mettre ce fichier dans le répertoire $ {{fibjs_project_dir}} / idl / zh-cn /, où $ {{fibjs_project_dir}} représente le répertoire où se trouve le projet fibjs.</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Notre module de nom est très simple, il n'y a qu'une seule méthode de test, le paramètre est une chaîne, cette chaîne est les paroles, la méthode de test juge si les paroles sont correctes et la valeur de retour est un booléen. </font><font style="vertical-align: inherit;">name.idl s'écrit comme suit</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Notre module de nom est très simple, il n'y a qu'une seule méthode de test, le paramètre est une chaîne, cette chaîne est les paroles, la méthode de test détermine si les paroles sont correctes et la valeur de retour est un booléen. </font><font style="vertical-align: inherit;">name.idl s'écrit comme suit</font></font></p>
 <pre><code class="lang-idl"><div class="line-numbers">1
 2
 3
@@ -327,7 +327,7 @@ module name<font></font>
 <font></font>
 <span class="hljs-keyword">public</span>:
     <span class="hljs-comment">// name_base</span>
-    <span class="hljs-function"><span class="hljs-keyword">static</span> result_t <span class="hljs-title">test</span><span class="hljs-params">(exlib::<span class="hljs-built_in">string</span> lyrics, <span class="hljs-keyword">bool</span>&amp; retVal)</span></span>;<font></font>
+    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">result_t</span> <span class="hljs-title">test</span><span class="hljs-params">(exlib::<span class="hljs-built_in">string</span> lyrics, <span class="hljs-keyword">bool</span>&amp; retVal)</span></span>;<font></font>
 <font></font>
 <span class="hljs-keyword">public</span>:
     <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">s__new</span><span class="hljs-params">(<span class="hljs-keyword">const</span> v8::FunctionCallbackInfo&lt;v8::Value&gt;&amp; args)</span>
@@ -346,8 +346,8 @@ module name<font></font>
 }<font></font>
 <font></font>
 <span class="hljs-keyword">namespace</span> fibjs {
-<span class="hljs-keyword">inline</span> ClassInfo&amp; name_base::class_info()<font></font>
-{<font></font>
+<span class="hljs-function"><span class="hljs-keyword">inline</span> ClassInfo&amp; <span class="hljs-title">name_base::class_info</span><span class="hljs-params">()</span>
+</span>{
     <span class="hljs-keyword">static</span> ClassData::ClassMethod s_method[] = {<font></font>
         { <span class="hljs-string">"test"</span>, s_test, <span class="hljs-literal">true</span> }<font></font>
     };<font></font>
@@ -362,8 +362,8 @@ module name<font></font>
     <span class="hljs-keyword">return</span> s_ci;<font></font>
 }<font></font>
 <font></font>
-<span class="hljs-keyword">inline</span> <span class="hljs-keyword">void</span> name_base::s_test(<span class="hljs-keyword">const</span> v8::FunctionCallbackInfo&lt;v8::Value&gt;&amp; args)<font></font>
-{<font></font>
+<span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">void</span> <span class="hljs-title">name_base::s_test</span><span class="hljs-params">(<span class="hljs-keyword">const</span> v8::FunctionCallbackInfo&lt;v8::Value&gt;&amp; args)</span>
+</span>{
     <span class="hljs-keyword">bool</span> vr;<font></font>
 <font></font>
     METHOD_NAME(<span class="hljs-string">"name.test"</span>);<font></font>
@@ -404,8 +404,8 @@ module name<font></font>
 <span class="hljs-keyword">namespace</span> fibjs<font></font>
 {<font></font>
     DECLARE_MODULE(name);<font></font>
-    <span class="hljs-keyword">result_t</span> name_base::test(exlib::<span class="hljs-built_in">string</span> lyrics, <span class="hljs-keyword">bool</span>&amp; retVal)<font></font>
-    {<font></font>
+    <span class="hljs-function"><span class="hljs-keyword">result_t</span> <span class="hljs-title">name_base::test</span><span class="hljs-params">(exlib::<span class="hljs-built_in">string</span> lyrics, <span class="hljs-keyword">bool</span>&amp; retVal)</span>
+    </span>{
         <span class="hljs-keyword">if</span> (lyrics == <span class="hljs-string">"youmeiyounameyishougehuirangnituranxiangqiwo"</span>)<font></font>
             retVal = <span class="hljs-literal">true</span>;
         <span class="hljs-keyword">else</span> retVal = <span class="hljs-literal">false</span>;<font></font>
@@ -420,4 +420,4 @@ module name<font></font>
 </font></font><img src="./imgs/name.png" alt="Nom"></p>
 <div name="总结" data-unique="总结"></div><h2 id="总结"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Pour résumer</font></font></h2>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Apprentissage de l'ajout et de la modification de modules et d'objets natifs de fibjs. </font><font style="vertical-align: inherit;">Nous pouvons écrire toutes sortes de modules complexes, et nous pouvons également transplanter des bibliothèques tierces dans fibjs comme support pour écrire nos modules. </font><font style="vertical-align: inherit;">Vous êtes invités à contribuer davantage à fibjs.</font></font></p>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2014-Present fibjs.org | </font></font><a href="../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Soutenez-nous</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip481990"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip481990" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cliquez pour revenir en haut de la page</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../js/common.js"></script><script type="text/javascript" src="../../../js/docs.js"></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org | </font></font><a href="../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Soutenez-nous</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip141545"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip141545" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cliquez pour revenir en haut de la page</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../js/common.js"></script><script type="text/javascript" src="../../../js/docs.js"></script></body></html>

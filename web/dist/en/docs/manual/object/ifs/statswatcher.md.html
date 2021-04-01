@@ -209,7 +209,7 @@
     statsWatcher.unref();<font></font>
 });<font></font>
 </code></pre>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Note that</font></font></strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> if and </font></font><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">only if</font></font></strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> the target file mtime of the observed target property changes to trigger onchange callback</font></font></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Note that the</font></font></strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> onchange callback will be triggered </font><font style="vertical-align: inherit;">when and </font></font><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">only when</font></font></strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> the mtime attribute of the observed target file target changes</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Simply accessing the target file target will not trigger the onchange callback.</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">If you call </font></font><code>fs.watchFile(target)</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, the file or directory target represented did not exist, then onchange callback </font></font><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">will not</font></font></strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> be called until the target is created, the callback will start to be called. If the work en route watcher,) the target file is deleted, No more callbacks will be generated in the future</font></font></p>
 <div name="继承关系" data-unique="继承关系"></div><h2 id="继承关系"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Inheritance relationship</font></font></h2>
@@ -242,7 +242,7 @@
 <polyline fill="none" stroke="#000000" points="0,-357.5 118.801,-357.5 "></polyline>
 <text text-anchor="start" x="8" y="-344.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">new EventEmitter()</text>
 <polyline fill="none" stroke="#000000" points="0,-337.5 118.801,-337.5 "></polyline>
-<text text-anchor="start" x="8" y="-324.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">new EventEmitter()</text>
+<text text-anchor="start" x="8" y="-324.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">EventEmitter</text>
 <polyline fill="none" stroke="#000000" points="0,-317.5 118.801,-317.5 "></polyline>
 <text text-anchor="start" x="8" y="-304.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">defaultMaxListeners</text>
 <polyline fill="none" stroke="#000000" points="0,-297.5 118.801,-297.5 "></polyline>
@@ -306,12 +306,12 @@
 </code></pre>
 <div name="成员函数" data-unique="成员函数"></div><h2 id="成员函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Member function</font></font></h2>
 <div name="close" data-unique="close"></div><h3 id="close" class="notranslate">close</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Stop observing the target file path and clear the reference count (no longer hold the process)</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Stop observing the target file path, clear the reference count (no longer hold the process)</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>StatsWatcher.close();
 </code></pre>
 <hr>
 <div name="ref" data-unique="ref"></div><h3 id="ref" class="notranslate">ref</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Increase the reference count and tell fibjs not to exit the process as long as the watcher is still in use,</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Increase the reference count and tell fibjs not to exit the process as long as the watcher is still in use.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>StatsWatcher StatsWatcher.ref();
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Return result:</font></font></p>
@@ -350,7 +350,7 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
 <ul>
-<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Object, specify the event mapping relationship, the object property name will be the event name, and the property value will be the event processing function</font></font></li>
+<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Object, specify the event mapping relationship, the object property name will be used as the event name, and the property value will be used as the event processing function</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Return result:</font></font></p>
 <ul>
@@ -378,7 +378,7 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
 <ul>
-<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Object, specify the event mapping relationship, the object property name will be the event name, and the property value will be the event processing function</font></font></li>
+<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Object, specify the event mapping relationship, the object property name will be used as the event name, and the property value will be used as the event processing function</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Return result:</font></font></p>
 <ul>
@@ -406,7 +406,7 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
 <ul>
-<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Object, specify the event mapping relationship, the object property name will be the event name, and the property value will be the event processing function</font></font></li>
+<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Object, specify the event mapping relationship, the object property name will be used as the event name, and the property value will be used as the event processing function</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Return result:</font></font></p>
 <ul>
@@ -434,7 +434,7 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
 <ul>
-<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Object, specify the event mapping relationship, the object property name will be the event name, and the property value will be the event processing function</font></font></li>
+<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Object, specify the event mapping relationship, the object property name will be used as the event name, and the property value will be used as the event processing function</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Return result:</font></font></p>
 <ul>
@@ -462,7 +462,7 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
 <ul>
-<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Object, specify the event mapping relationship, the object property name will be the event name, and the property value will be the event processing function</font></font></li>
+<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Object, specify the event mapping relationship, the object property name will be used as the event name, and the property value will be used as the event processing function</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Return result:</font></font></p>
 <ul>
@@ -652,4 +652,4 @@
 <ul>
 <li><span class="notranslate">Value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Returns a value containing JSON serializable</font></font></li>
 </ul>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2014-Present fibjs.org | </font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Support us</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip164710"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip164710" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Click to return on the top page</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org | </font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Support us</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip968511"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip968511" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Click to return on the top page</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>

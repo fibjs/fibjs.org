@@ -283,7 +283,7 @@
 
 <div name="成员属性" data-unique="成员属性"></div><h2 id="成员属性"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">メンバー属性</font></font></h2>
 <div name="onsuberror" data-unique="onsuberror"></div><h3 id="onsuberror" class="notranslate">onsuberror</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">関数、クエリ、およびエラー処理関数の設定、subにエラーがある場合、またはネットワークが中断された場合にコールバックします。コールバックが発生すると、このオブジェクトのすべてのsubが中止されます。</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">関数、クエリ、およびエラー処理関数の設定、subにエラーがある場合、またはネットワークが中断された場合のコールバック、コールバックが発生すると、このオブジェクトのすべてのsubが停止します</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Function</span> Redis.onsuberror;
 </code></pre>
 <div name="成员函数" data-unique="成员函数"></div><h2 id="成员函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">メンバー関数</font></font></h2>
@@ -749,7 +749,7 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター：</font></font></p>
 <ul>
-<li><span class="notranslate">channel</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">： </font></font><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、サブスクリプション解除のチャネル名を指定します</font></font></li>
+<li><span class="notranslate">channel</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">： </font></font><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、登録されていないチャネルの名前を指定します</font></font></li>
 </ul>
 <hr>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">指定されたチャネルの指定されたコールバック関数のサブスクライブを解除します</font></font></strong></p>
@@ -759,7 +759,7 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター：</font></font></p>
 <ul>
-<li><span class="notranslate">channel</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">： </font></font><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、サブスクリプション解除のチャネル名を指定します</font></font></li>
+<li><span class="notranslate">channel</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">： </font></font><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、登録されていないチャネルの名前を指定します</font></font></li>
 <li><span class="notranslate">func</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：関数、サブスクリプション解除のコールバック関数を指定します</font></font></li>
 </ul>
 <hr>
@@ -780,7 +780,7 @@
 </ul>
 <hr>
 <div name="psub" data-unique="psub"></div><h3 id="psub" class="notranslate">psub</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">テンプレートに従ってチャネルのグループの情報をサブスクライブし、メッセージが発生すると自動的にfuncを呼び出します。Funcには、チャネル、メッセージ、パターンの3つのパラメーターが含まれています。同じテンプレートの同じ関数は、コールバックされるだけです。一度</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">テンプレートに従って一連のチャネルの情報をサブスクライブします。メッセージが発生すると、funcが自動的に呼び出されます。Funcには、チャネル、メッセージ、パターンの3つのパラメータが含まれています。同じテンプレートの同じ関数のみが呼び出されます。一度戻って。</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Redis.psub(<span class="hljs-built_in">String</span> pattern,
     <span class="hljs-built_in">Function</span> func);
@@ -800,7 +800,7 @@
 </ul>
 <hr>
 <div name="unpsub" data-unique="unpsub"></div><h3 id="unpsub" class="notranslate">unpsub</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">特定のテンプレートを使用して、チャネルのすべてのコールバックのサブスクライブを解除します</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">指定されたテンプレートを使用して、チャネルのすべてのコールバックのサブスクライブを解除します</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Redis.unpsub(<span class="hljs-built_in">String</span> pattern);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター：</font></font></p>
@@ -819,7 +819,7 @@
 <li><span class="notranslate">func</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：関数、サブスクリプション解除のコールバック関数を指定します</font></font></li>
 </ul>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">特定のテンプレートを使用して、一連のチャネルのすべてのコールバックのサブスクライブを解除します</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">指定されたテンプレートを使用して、一連のチャネルのすべてのコールバックのサブスクライブを解除します</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Redis.unpsub(<span class="hljs-built_in">Array</span> patterns);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター：</font></font></p>
@@ -957,4 +957,4 @@
 <ul>
 <li><span class="notranslate">Value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、シリアル化可能なJSONを含む値を返します</font></font></li>
 </ul>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">©Copyright2014-Present fibjs.org |</font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">サポートしてください</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip969877"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip969877" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">クリックしてトップページに戻る</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">©Copyright2012-2021 fibjs.org |</font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">サポートしてください</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip715223"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip715223" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">クリックしてトップページに戻る</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>

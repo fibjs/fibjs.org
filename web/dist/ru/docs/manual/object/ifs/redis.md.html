@@ -283,7 +283,7 @@
 
 <div name="成员属性" data-unique="成员属性"></div><h2 id="成员属性"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Атрибуты члена</font></font></h2>
 <div name="onsuberror" data-unique="onsuberror"></div><h3 id="onsuberror" class="notranslate">onsuberror</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Функция, запрос и функция обработки ошибок, обратный вызов, когда есть ошибка в подпрограмме или сеть прерывается, когда происходит обратный вызов, все подпрограммы этого объекта будут прерваны</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Функция, запрос и функция обработки ошибок, обратный вызов, когда есть ошибка в подпрограмме или сеть прерывается, когда происходит обратный вызов, все подпрограммы этого объекта будут остановлены</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Function</span> Redis.onsuberror;
 </code></pre>
 <div name="成员函数" data-unique="成员函数"></div><h2 id="成员函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Функция члена</font></font></h2>
@@ -749,7 +749,7 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
 <ul>
-<li><span class="notranslate">channel</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Укажите название канала для отписки</font></font></li>
+<li><span class="notranslate">channel</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Укажите название неподписанного канала</font></font></li>
 </ul>
 <hr>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Отказаться от подписки на указанную функцию обратного вызова данного канала</font></font></strong></p>
@@ -759,7 +759,7 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
 <ul>
-<li><span class="notranslate">channel</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Укажите название канала для отписки</font></font></li>
+<li><span class="notranslate">channel</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Укажите название неподписанного канала</font></font></li>
 <li><span class="notranslate">func</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Функция, укажите функцию обратного вызова для отписки</font></font></li>
 </ul>
 <hr>
@@ -768,7 +768,7 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
 <ul>
-<li><span class="notranslate">channels</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Array, укажите массив каналов без подписки</font></font></li>
+<li><span class="notranslate">channels</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Массив, укажите массив неподписанных каналов</font></font></li>
 </ul>
 <hr>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Отказаться от подписки на указанную функцию обратного вызова для заданного набора каналов</font></font></strong></p>
@@ -780,7 +780,7 @@
 </ul>
 <hr>
 <div name="psub" data-unique="psub"></div><h3 id="psub" class="notranslate">psub</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Подпишитесь на информацию о группе каналов в соответствии с шаблоном и автоматически вызовите func при появлении сообщения. Func содержит три параметра, которые по очереди являются каналом, сообщением и шаблоном. Одна и та же функция того же шаблона будет только вызвана. однажды</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Подпишитесь на информацию о наборе каналов в соответствии с шаблоном. При появлении сообщения функция func вызывается автоматически. Func содержит три параметра, которые по очереди являются каналом, сообщением и шаблоном. Будет вызвана одна и та же функция того же шаблона. назад один раз.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Redis.psub(<span class="hljs-built_in">String</span> pattern,
     <span class="hljs-built_in">Function</span> func);
@@ -874,7 +874,7 @@
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Результат возврата:</font></font></p>
 <ul>
-<li><a href="redislist.md.html" class="notranslate">RedisList</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Вернуть объект списка, содержащий указанный ключ</font></font></li>
+<li><a href="redislist.md.html" class="notranslate">RedisList</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Возвращает объект списка, содержащий указанный ключ</font></font></li>
 </ul>
 <hr>
 <div name="getSet" data-unique="getSet"></div><h3 id="getSet" class="notranslate">getSet</h3>
@@ -957,4 +957,4 @@
 <ul>
 <li><span class="notranslate">Value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Возвращает значение, содержащее сериализуемый JSON</font></font></li>
 </ul>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2014-Настоящее время fibjs.org | </font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Поддержите нас</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip795488"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip795488" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Нажмите, чтобы вернуться на главную страницу</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org | </font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Поддержите нас</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip168046"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip168046" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Нажмите, чтобы вернуться на главную страницу</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>

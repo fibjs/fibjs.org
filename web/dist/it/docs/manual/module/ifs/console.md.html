@@ -7,7 +7,7 @@
 <li><a href="../../../guide/desktop.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sviluppa rapidamente applicazioni desktop</font></font></a></li>
 <li><a href="../../../guide/server-hot-update.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Aggiornamento a caldo del modulo server</font></font></a></li>
 <li><a href="../../../guide/host-routes.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Instradamento del nome di dominio</font></font></a></li>
-<li><a href="../../../guide/x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">L'uso del certificato X509 in fibjs</font></font></a></li>
+<li><a href="../../../guide/x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Uso del certificato X509 in fibjs</font></font></a></li>
 <li><a href="../../../guide/contribute.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Aggiungi modulo nativo</font></font></a></li>
 </ul>
  </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_module" aria-controls="collapse_module"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Modulo base </font></font></a></h4></div><div id="collapse_module" class="panel-collapse collapse in" aria-labelledby="headingOne"><div class="panel-body"> <ul>
@@ -213,7 +213,7 @@
 <ul>
 <li><span class="notranslate">type</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, dispositivo di output</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Configurando la console, l'output del programma e gli errori di sistema possono essere inviati a diversi dispositivi per raccogliere le informazioni sull'ambiente operativo.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Configurando la console, l'output del programma e gli errori di sistema possono essere inviati a diversi dispositivi per raccogliere informazioni sull'ambiente operativo.</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">il tipo è la configurazione, che è la stringa del nome del dispositivo:</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">console</span>.add(<span class="hljs-string">"console"</span>);
 </code></pre>
@@ -224,14 +224,14 @@
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">console</span>.add(<span class="hljs-string">"event"</span>);
 </code></pre>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Aggiungi un sistema di output della console. I dispositivi supportati sono console, syslog, eventi e file. Puoi aggiungere fino a 10 output</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Aggiungi sistema di output della console. I dispositivi supportati sono console, syslog, eventi e file. Puoi aggiungere fino a 10 output</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">console</span>.add(<span class="hljs-built_in">Object</span> cfg);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parametri di chiamata:</font></font></p>
 <ul>
 <li><span class="notranslate">cfg</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Oggetto, configurazione output</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Configurando la console, l'output del programma e gli errori di sistema possono essere inviati a diversi dispositivi per raccogliere le informazioni sull'ambiente operativo.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Configurando la console, l'output del programma e gli errori di sistema possono essere inviati a diversi dispositivi per raccogliere informazioni sull'ambiente operativo.</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">cfg può configurare oggetti per un dispositivo:</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
@@ -273,11 +273,11 @@
     <span class="hljs-attr">type</span>: <span class="hljs-string">"file"</span>,
     <span class="hljs-attr">levels</span>: [<span class="hljs-built_in">console</span>.INFO, <span class="hljs-built_in">console</span>.ERROR],
     <span class="hljs-comment">// 必选项，指定日志输出文件，可使用 s% 指定插入日期位置，不指定则添加在结尾</span>
-    path: <span class="hljs-string">"path/to/file_%s.log"</span>,
+    <span class="hljs-attr">path</span>: <span class="hljs-string">"path/to/file_%s.log"</span>,
     <span class="hljs-comment">// 选项，可选值为 "day", "hour", "minute", "###k", "###m", "###g"，缺省为 "1m"</span>
-    split: <span class="hljs-string">"30m"</span>,
+    <span class="hljs-attr">split</span>: <span class="hljs-string">"30m"</span>,
     <span class="hljs-comment">// 选项，可选范围为 2-128，缺省为 128</span>
-    count: <span class="hljs-number">10</span><font></font>
+    <span class="hljs-attr">count</span>: <span class="hljs-number">10</span><font></font>
 });<font></font>
 </code></pre>
 <hr>
@@ -288,7 +288,7 @@
 <ul>
 <li><span class="notranslate">cfg</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Array, array di configurazione dell'output</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Configurando la console, l'output del programma e gli errori di sistema possono essere inviati a diversi dispositivi per raccogliere le informazioni sull'ambiente operativo.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Configurando la console, l'output del programma e gli errori di sistema possono essere inviati a diversi dispositivi per raccogliere informazioni sull'ambiente operativo.</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
@@ -538,7 +538,7 @@
 </ul>
 <hr>
 <div name="print" data-unique="print"></div><h3 id="print" class="notranslate">print</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Invia il testo formattato alla console, il contenuto di output non verrà registrato nel sistema di registro, il testo non verrà disposto automaticamente dopo l'output e può essere emesso in modo continuo</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Invia il testo formattato alla console, il contenuto di output non verrà registrato nel sistema di registro, il testo non verrà disposto automaticamente dopo l'output e può essere stampato in modo continuo</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">console</span>.print(<span class="hljs-built_in">String</span> fmt,<font></font>
     ...args);<font></font>
@@ -549,7 +549,7 @@
 <li><span class="notranslate">args</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: ..., lista di parametri opzionali</font></font></li>
 </ul>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Invia il testo formattato alla console, il contenuto di output non verrà registrato nel sistema di registro, il testo non verrà disposto automaticamente dopo l'output e può essere emesso in modo continuo</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Invia il testo formattato alla console, il contenuto di output non verrà registrato nel sistema di registro, il testo non verrà disposto automaticamente dopo l'output e può essere stampato in modo continuo</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">console</span>.print(...args);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parametri di chiamata:</font></font></p>
@@ -836,4 +836,4 @@
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">costante di loglevel</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> <span class="hljs-built_in">console</span>.NOTSET = <span class="hljs-number">10</span>;
 </code></pre>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2014-Presente fibjs.org | </font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sostienici</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip388252"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip388252" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Fare clic per tornare alla pagina principale</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org | </font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sostienici</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip225752"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip225752" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Fare clic per tornare alla pagina principale</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>

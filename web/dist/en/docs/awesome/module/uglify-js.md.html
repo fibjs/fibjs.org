@@ -213,7 +213,7 @@
 </code></pre><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">UglifyJS can take multiple input files. It's recommended that you pass the input files first, then pass the options. UglifyJS will parse input files in sequence and apply any compression options. The files are parsed in the same global scope, that is, a reference from a file to some variable/function declared in another file will be matched properly.</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">If no input file is specified, UglifyJS will read from STDIN.</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">If you wish to pass your options before the input files, separate the two with a double dash to prevent input files being used as option arguments:</font></font></p>
-<pre><code><div class="line-numbers">1</div><span class="hljs-comment">uglifyjs</span> <span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-comment">compress</span> <span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-comment">mangle</span> <span class="hljs-literal">-</span><span class="hljs-literal">-</span> <span class="hljs-comment">input</span><span class="hljs-string">.</span><span class="hljs-comment">js</span>
+<pre><code><div class="line-numbers">1</div><span class="hljs-comment">uglifyjs</span> --<span class="hljs-comment">compress</span> --<span class="hljs-comment">mangle</span> -- <span class="hljs-comment">input</span><span class="hljs-string">.</span><span class="hljs-comment">js</span>
 </code></pre><div name="Command-line-options" data-unique="Command-line-options"></div><h3 id="Command-line-options" class="notranslate">Command line options</h3>
 <pre><code><div class="line-numbers">1
 2
@@ -306,78 +306,78 @@
 89
 90
 91
-92</div>    -h, <span class="hljs-comment">--help                  Print usage information.</span>
-                                `<span class="hljs-comment">--help options` for details on available options.</span>
-    -V, <span class="hljs-comment">--version               Print version number.</span>
-    -p, <span class="hljs-comment">--parse &lt;options&gt;       Specify parser options:</span>
-                                `acorn`  <span class="hljs-keyword">Use</span> Acorn <span class="hljs-keyword">for</span> parsing.
-                                <span class="hljs-string">`bare_returns`</span>  <span class="hljs-keyword">Allow</span> <span class="hljs-keyword">return</span> outside <span class="hljs-keyword">of</span> functions.<font></font>
-                                                Useful <span class="hljs-keyword">when</span> minifying CommonJS<font></font>
+92</div>    -h, --help                  <span class="hljs-builtin-name">Print</span> usage information.<font></font>
+                                `--help options` <span class="hljs-keyword">for</span> details on available options.<font></font>
+    -V, --version               <span class="hljs-builtin-name">Print</span> version number.<font></font>
+    -p, --parse &lt;options&gt;       Specify parser options:<font></font>
+                                `acorn`  Use Acorn <span class="hljs-keyword">for</span> parsing.<font></font>
+                                `bare_returns`  Allow return outside of functions.<font></font>
+                                                Useful when minifying CommonJS<font></font>
                                                 modules <span class="hljs-keyword">and</span> Userscripts that may<font></font>
-                                                be anonymous <span class="hljs-keyword">function</span> <span class="hljs-keyword">wrapped</span> (IIFE)
-                                                <span class="hljs-keyword">by</span> the .user.js <span class="hljs-keyword">engine</span> <span class="hljs-string">`caller`</span>.
-                                <span class="hljs-string">`expression`</span>  <span class="hljs-keyword">Parse</span> a single expression, rather <span class="hljs-keyword">than</span>
-                                              a program (<span class="hljs-keyword">for</span> parsing <span class="hljs-keyword">JSON</span>).
-                                <span class="hljs-string">`spidermonkey`</span>  Assume <span class="hljs-keyword">input</span> files <span class="hljs-keyword">are</span> SpiderMonkey<font></font>
-                                                AST <span class="hljs-keyword">format</span> (<span class="hljs-keyword">as</span> <span class="hljs-keyword">JSON</span>).<font></font>
-    -c, <span class="hljs-comment">--compress [options]    Enable compressor/specify compressor options:</span>
-                                <span class="hljs-string">`pure_funcs`</span>  <span class="hljs-keyword">List</span> <span class="hljs-keyword">of</span> functions that can be safely<font></font>
-                                              removed <span class="hljs-keyword">when</span> their <span class="hljs-keyword">return</span> <span class="hljs-keyword">values</span> <span class="hljs-keyword">are</span>
+                                                be anonymous function wrapped (IIFE)<font></font>
+                                                by the .user.js engine `caller`.<font></font>
+                                `expression`  Parse a single expression, rather than<font></font>
+                                              a program (<span class="hljs-keyword">for</span> parsing JSON).<font></font>
+                                `spidermonkey`  Assume input files are SpiderMonkey<font></font>
+                                                AST format (as JSON).<font></font>
+    -c, --compress [options]    <span class="hljs-builtin-name">Enable</span> compressor/specify compressor options:<font></font>
+                                `pure_funcs`  List of functions that can be safely<font></font>
+                                              removed when their return values are<font></font>
                                               <span class="hljs-keyword">not</span> used.<font></font>
-    -m, <span class="hljs-comment">--mangle [options]      Mangle names/specify mangler options:</span>
-                                <span class="hljs-string">`reserved`</span>  <span class="hljs-keyword">List</span> <span class="hljs-keyword">of</span> <span class="hljs-keyword">names</span> that should <span class="hljs-keyword">not</span> be mangled.
-    <span class="hljs-comment">--mangle-props [options]    Mangle properties/specify mangler options:</span>
-                                <span class="hljs-string">`builtins`</span>  Mangle property <span class="hljs-keyword">names</span> that overlaps
-                                            <span class="hljs-keyword">with</span> standard JavaScript globals.
-                                <span class="hljs-string">`debug`</span>  <span class="hljs-keyword">Add</span> debug prefix <span class="hljs-keyword">and</span> suffix.
-                                <span class="hljs-string">`domprops`</span>  Mangle property <span class="hljs-keyword">names</span> that overlaps
-                                            <span class="hljs-keyword">with</span> DOM properties.
-                                <span class="hljs-string">`keep_quoted`</span>  <span class="hljs-keyword">Only</span> mangle unquoted properties.
-                                <span class="hljs-string">`regex`</span>  <span class="hljs-keyword">Only</span> mangle <span class="hljs-keyword">matched</span> property names.
-                                <span class="hljs-string">`reserved`</span>  <span class="hljs-keyword">List</span> <span class="hljs-keyword">of</span> <span class="hljs-keyword">names</span> that should <span class="hljs-keyword">not</span> be mangled.<font></font>
-    -b, <span class="hljs-comment">--beautify [options]    Beautify output/specify output options:</span>
-                                <span class="hljs-string">`beautify`</span>  Enabled <span class="hljs-keyword">with</span> <span class="hljs-string">`--beautify`</span> <span class="hljs-keyword">by</span> default.
-                                <span class="hljs-string">`preamble`</span>  Preamble <span class="hljs-keyword">to</span> prepend <span class="hljs-keyword">to</span> the output. You<font></font>
-                                            can <span class="hljs-keyword">use</span> this <span class="hljs-keyword">to</span> <span class="hljs-keyword">insert</span> a <span class="hljs-keyword">comment</span>, <span class="hljs-keyword">for</span>
+    -m, --mangle [options]     <span class="hljs-built_in"> Mangle </span>names/specify mangler options:<font></font>
+                                `reserved`  List of names that should <span class="hljs-keyword">not</span> be mangled.<font></font>
+    --mangle-props [options]   <span class="hljs-built_in"> Mangle </span>properties/specify mangler options:<font></font>
+                                `builtins` <span class="hljs-built_in"> Mangle </span>property names that overlaps<font></font>
+                                            with standard JavaScript globals.<font></font>
+                                `debug`  <span class="hljs-builtin-name">Add</span> <span class="hljs-builtin-name">debug</span><span class="hljs-built_in"> prefix </span><span class="hljs-keyword">and</span> suffix.<font></font>
+                                `domprops` <span class="hljs-built_in"> Mangle </span>property names that overlaps<font></font>
+                                            with DOM properties.<font></font>
+                                `keep_quoted`  Only<span class="hljs-built_in"> mangle </span>unquoted properties.<font></font>
+                                `regex`  Only<span class="hljs-built_in"> mangle </span>matched property names.<font></font>
+                                `reserved`  List of names that should <span class="hljs-keyword">not</span> be mangled.<font></font>
+    -b, --beautify [options]    Beautify output/specify output options:<font></font>
+                                `beautify`  Enabled with `--beautify` by default.<font></font>
+                                `preamble`  Preamble <span class="hljs-keyword">to</span> prepend <span class="hljs-keyword">to</span> the output. You<font></font>
+                                            can use this <span class="hljs-keyword">to</span> insert a comment, <span class="hljs-keyword">for</span>
                                             example <span class="hljs-keyword">for</span> licensing information.<font></font>
-                                            This will <span class="hljs-keyword">not</span> be parsed, but the <span class="hljs-keyword">source</span>
-                                            <span class="hljs-keyword">map</span> will adjust <span class="hljs-keyword">for</span> its presence.
-                                <span class="hljs-string">`quote_style`</span>  Quote <span class="hljs-keyword">style</span>:
-                                               <span class="hljs-number">0</span> - <span class="hljs-keyword">auto</span>
-                                               <span class="hljs-number">1</span> - single
-                                               <span class="hljs-number">2</span> - <span class="hljs-keyword">double</span>
-                                               <span class="hljs-number">3</span> - original
-                                <span class="hljs-string">`wrap_iife`</span>  Wrap IIFEs <span class="hljs-keyword">in</span> parenthesis. Note: you may<font></font>
-                                             want <span class="hljs-keyword">to</span> <span class="hljs-keyword">disable</span> <span class="hljs-string">`negate_iife`</span> <span class="hljs-keyword">under</span><font></font>
+                                            This will <span class="hljs-keyword">not</span> be parsed, but the source<font></font>
+                                            map will adjust <span class="hljs-keyword">for</span> its presence.<font></font>
+                                `quote_style`  Quote style:<font></font>
+                                               0 - auto<font></font>
+                                               1 - single<font></font>
+                                               2 - double<font></font>
+                                               3 - original<font></font>
+                                `wrap_iife`  Wrap IIFEs <span class="hljs-keyword">in</span> parenthesis. Note: you may<font></font>
+                                             want <span class="hljs-keyword">to</span> <span class="hljs-builtin-name">disable</span> `negate_iife` under<font></font>
                                              compressor options.<font></font>
-    -o, <span class="hljs-comment">--output &lt;file&gt;         Output file path (default STDOUT). Specify `ast` or</span>
-                                <span class="hljs-string">`spidermonkey`</span> <span class="hljs-keyword">to</span> write UglifyJS <span class="hljs-keyword">or</span> SpiderMonkey AST
-                                <span class="hljs-keyword">as</span> <span class="hljs-keyword">JSON</span> <span class="hljs-keyword">to</span> STDOUT respectively.
-    <span class="hljs-comment">--comments [filter]         Preserve copyright comments in the output. By</span>
-                                <span class="hljs-keyword">default</span> this works <span class="hljs-keyword">like</span> Google Closure, keeping<font></font>
-                                JSDoc-<span class="hljs-keyword">style</span> comments that contain <span class="hljs-string">"@license"</span> <span class="hljs-keyword">or</span>
-                                <span class="hljs-string">"@preserve"</span>. You can <span class="hljs-keyword">optionally</span> pass one <span class="hljs-keyword">of</span> the
-                                <span class="hljs-keyword">following</span> arguments <span class="hljs-keyword">to</span> this flag:<font></font>
-                                - <span class="hljs-string">"all"</span> <span class="hljs-keyword">to</span> <span class="hljs-keyword">keep</span> <span class="hljs-keyword">all</span> comments<font></font>
-                                - a valid JS RegExp <span class="hljs-keyword">like</span> <span class="hljs-string">`/foo/`</span> <span class="hljs-keyword">or</span> <span class="hljs-string">`/^!/`</span> <span class="hljs-keyword">to</span>
-                                <span class="hljs-keyword">keep</span> <span class="hljs-keyword">only</span> matching comments.<font></font>
-                                Note that currently <span class="hljs-keyword">not</span> *<span class="hljs-keyword">all</span>* comments can be<font></font>
-                                kept <span class="hljs-keyword">when</span> compression <span class="hljs-keyword">is</span> <span class="hljs-keyword">on</span>, because <span class="hljs-keyword">of</span> dead<font></font>
-                                code removal <span class="hljs-keyword">or</span> cascading statements <span class="hljs-keyword">into</span><font></font>
+    -o, --output &lt;file&gt;         Output file path (default STDOUT). Specify `ast` <span class="hljs-keyword">or</span>
+                                `spidermonkey` <span class="hljs-keyword">to</span> write UglifyJS <span class="hljs-keyword">or</span> SpiderMonkey AST<font></font>
+                                as JSON <span class="hljs-keyword">to</span> STDOUT respectively.<font></font>
+    --comments [filter]         Preserve copyright comments <span class="hljs-keyword">in</span> the output. By
+                               <span class="hljs-built_in"> default </span>this works like Google Closure, keeping<font></font>
+                                JSDoc-style comments that contain <span class="hljs-string">"@license"</span> <span class="hljs-keyword">or</span>
+                                <span class="hljs-string">"@preserve"</span>. You can optionally pass one of the<font></font>
+                                following arguments <span class="hljs-keyword">to</span> this flag:<font></font>
+                                - <span class="hljs-string">"all"</span> <span class="hljs-keyword">to</span> keep all comments<font></font>
+                                - a valid JS RegExp like `/foo/` <span class="hljs-keyword">or</span> `/^!/` <span class="hljs-keyword">to</span><font></font>
+                                keep only matching comments.<font></font>
+                               <span class="hljs-built_in"> Note </span>that currently <span class="hljs-keyword">not</span> <span class="hljs-number">*a</span>ll* comments can be<font></font>
+                                kept when compression is on, because of dead<font></font>
+                                code removal <span class="hljs-keyword">or</span> cascading statements into<font></font>
                                 sequences.<font></font>
-    <span class="hljs-comment">--config-file &lt;file&gt;        Read `minify()` options from JSON file.</span>
-    -d, <span class="hljs-comment">--define &lt;expr&gt;[=value] Global definitions.</span>
-    <span class="hljs-comment">--ie8                       Support non-standard Internet Explorer 8.</span>
-                                Equivalent <span class="hljs-keyword">to</span> setting <span class="hljs-string">`ie8: true`</span> <span class="hljs-keyword">in</span> <span class="hljs-string">`minify()`</span>
-                                <span class="hljs-keyword">for</span> <span class="hljs-string">`compress`</span>, <span class="hljs-string">`mangle`</span> <span class="hljs-keyword">and</span> <span class="hljs-string">`output`</span> options.
-                                <span class="hljs-keyword">By</span> <span class="hljs-keyword">default</span> UglifyJS will <span class="hljs-keyword">not</span> try <span class="hljs-keyword">to</span> be IE-proof.
-    <span class="hljs-comment">--keep-fnames               Do not mangle/drop function names.  Useful for</span>
-                                code relying <span class="hljs-keyword">on</span> Function.prototype.name.
-    <span class="hljs-comment">--name-cache &lt;file&gt;         File to hold mangled name mappings.</span>
-    <span class="hljs-comment">--self                      Build UglifyJS as a library (implies --wrap UglifyJS)</span>
-    <span class="hljs-comment">--source-map [options]      Enable source map/specify source map options:</span>
-                                <span class="hljs-string">`base`</span>  <span class="hljs-keyword">Path</span> <span class="hljs-keyword">to</span> <span class="hljs-keyword">compute</span> <span class="hljs-keyword">relative</span> paths <span class="hljs-keyword">from</span> <span class="hljs-keyword">input</span> files.
-                                <span class="hljs-string">`content`</span>  <span class="hljs-keyword">Input</span> <span class="hljs-keyword">source</span> <span class="hljs-keyword">map</span>, useful <span class="hljs-keyword">if</span> you<span class="hljs-string">'re compressing
+    --config-file &lt;file&gt;        Read `minify()` options <span class="hljs-keyword">from</span> JSON file.<font></font>
+    -d, --define &lt;expr&gt;[=value] Global definitions.<font></font>
+    --ie8                       Support non-standard Internet Explorer 8.<font></font>
+                                Equivalent <span class="hljs-keyword">to</span> setting `ie8: <span class="hljs-literal">true</span>` <span class="hljs-keyword">in</span> `minify()`
+                                <span class="hljs-keyword">for</span> `compress`, `mangle` <span class="hljs-keyword">and</span> `output` options.<font></font>
+                                By<span class="hljs-built_in"> default </span>UglifyJS will <span class="hljs-keyword">not</span> try <span class="hljs-keyword">to</span> be IE-proof.<font></font>
+    --keep-fnames               <span class="hljs-keyword">Do</span> <span class="hljs-keyword">not</span> mangle/drop function names.  Useful <span class="hljs-keyword">for</span><font></font>
+                                code relying on Function.prototype.name.<font></font>
+    --name-cache &lt;file&gt;         File <span class="hljs-keyword">to</span> hold mangled name mappings.<font></font>
+    --self                      Build UglifyJS as a library (implies --wrap UglifyJS)<font></font>
+    --source-map [options]      <span class="hljs-builtin-name">Enable</span> source map/specify source map options:<font></font>
+                                `base`  Path <span class="hljs-keyword">to</span> compute relative paths <span class="hljs-keyword">from</span> input files.<font></font>
+                                `content`  Input source map, useful <span class="hljs-keyword">if</span> you<span class="hljs-string">'re compressing
                                            JS that was generated from some other original
                                            code. Specify "inline" if the source map is
                                            included within the sources.
@@ -416,8 +416,8 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">For example:</font></font></p>
 <pre><code><div class="line-numbers">1
 2
-3</div>uglifyjs js/file1<span class="hljs-selector-class">.js</span> js/file2<span class="hljs-selector-class">.js</span> \<font></font>
-         -o foo<span class="hljs-selector-class">.min</span><span class="hljs-selector-class">.js</span> -c -m \<font></font>
+3</div>uglifyjs <span class="hljs-keyword">js</span>/file1<span class="hljs-number">.</span><span class="hljs-keyword">js</span> <span class="hljs-keyword">js</span>/file2<span class="hljs-number">.</span><span class="hljs-keyword">js</span> \<font></font>
+         -o foo<span class="hljs-number">.</span>min<span class="hljs-number">.</span><span class="hljs-keyword">js</span> -c -m \<font></font>
          --source-map <span class="hljs-string">"root='http://foo.com/src',url='foo.min.js.map'"</span>
 </code></pre><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">The above will compress and mangle </font></font><code>file1.js</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">and </font></font><code>file2.js</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, will drop the output in </font></font><code>foo.min.js</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">and the source map in </font></font><code>foo.min.js.map</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">. The source mapping will refer to </font></font><code>http://foo.com/src/js/file1.js</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">and
  </font></font><code>http://foo.com/src/js/file2.js</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(in fact it will list </font></font><code>http://foo.com/src</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
@@ -772,7 +772,7 @@ fs.writeFileSync(cacheFileName, <span class="hljs-built_in">JSON</span>.stringif
     <span class="hljs-attr">mangle</span>: {
         <span class="hljs-comment">// mangle options</span><font></font>
 <font></font>
-        properties: {<font></font>
+        <span class="hljs-attr">properties</span>: {
             <span class="hljs-comment">// mangle property options</span><font></font>
         }<font></font>
     },<font></font>
@@ -783,7 +783,7 @@ fs.writeFileSync(cacheFileName, <span class="hljs-built_in">JSON</span>.stringif
         <span class="hljs-comment">// source map options</span><font></font>
     },<font></font>
     <span class="hljs-attr">nameCache</span>: <span class="hljs-literal">null</span>, <span class="hljs-comment">// or specify a name cache object</span>
-    toplevel: <span class="hljs-literal">false</span>,
+    <span class="hljs-attr">toplevel</span>: <span class="hljs-literal">false</span>,
     <span class="hljs-attr">ie8</span>: <span class="hljs-literal">false</span>,
     <span class="hljs-attr">warnings</span>: <span class="hljs-literal">false</span>,<font></font>
 }<font></font>
@@ -1081,7 +1081,7 @@ will keep comments like </font></font><code>/*! Copyright Notice */</code><font 
 5
 6
 7</div><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f</span>(<span class="hljs-params"></span>) </span>{
-    <span class="hljs-comment">/** @preserve Foo Bar */</span>
+    <span class="hljs-comment">/** <span class="hljs-doctag">@preserve </span>Foo Bar */</span>
     <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">g</span>(<span class="hljs-params"></span>) </span>{
         <span class="hljs-comment">// this function is never called</span><font></font>
     }<font></font>
@@ -1117,7 +1117,7 @@ will keep comments like </font></font><code>/*! Copyright Notice */</code><font 
 <span class="hljs-comment">// etc.</span>
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">and build your code like this:</font></font></p>
-<pre><code><div class="line-numbers">1</div>uglifyjs build/defines<span class="hljs-selector-class">.js</span> js/foo<span class="hljs-selector-class">.js</span> js/bar<span class="hljs-selector-class">.js</span>... -c
+<pre><code><div class="line-numbers">1</div>uglifyjs build/defines<span class="hljs-number">.</span><span class="hljs-keyword">js</span> <span class="hljs-keyword">js</span>/foo<span class="hljs-number">.</span><span class="hljs-keyword">js</span> <span class="hljs-keyword">js</span>/bar<span class="hljs-number">.</span><span class="hljs-keyword">js</span>... -c
 </code></pre><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">UglifyJS will notice the constants and, since they cannot be altered, it will evaluate references to them to the value itself and drop unreachable code as usual. The build will contain the </font></font><code>const</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">declarations if you use them. If you are targeting &lt;ES6 environments which does not support </font></font><code>const</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, using </font></font><code>var</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">with </font></font><code>reduce_vars</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(enabled by default) should suffice.</font></font></p>
 <div name="Conditional-compilation-API" data-unique="Conditional-compilation-API"></div><h3 id="Conditional-compilation-API" class="notranslate">Conditional compilation API</h3>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">You can also use conditional compilation via the programmatic API. With the difference that the property name is </font></font><code>global_defs</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">and is a compressor property:</font></font></p>
@@ -1293,7 +1293,7 @@ we can't easily change to using the SpiderMonkey AST internally. However, Uglify
 </tbody>
 </table>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">To enable fast minify mode from the CLI use:</font></font></p>
-<pre><code><div class="line-numbers">1</div>uglifyjs <span class="hljs-keyword">file</span>.js -<span class="hljs-built_in">m</span>
+<pre><code><div class="line-numbers">1</div>uglifyjs <span class="hljs-built_in">file</span>.js -m
 </code></pre><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">To enable fast minify mode with the API use:</font></font></p>
 <pre><code class="lang-js"><div class="line-numbers">1</div>UglifyJS.minify(code, { <span class="hljs-attr">compress</span>: <span class="hljs-literal">false</span>, <span class="hljs-attr">mangle</span>: <span class="hljs-literal">true</span> });
 </code></pre>
@@ -1312,4 +1312,4 @@ we can't easily change to using the SpiderMonkey AST internally. However, Uglify
  </font></font><code>Object.defineProperty()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><code>Object.defineProperties()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><code>Object.freeze()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">,
  </font></font><code>Object.preventExtensions()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">or </font></font><code>Object.seal()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">).</font></font></li>
 </ul>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2014-Present fibjs.org | </font></font><a href="../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Support us</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip858764"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip858764" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Click to return on the top page</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../js/common.js"></script><script type="text/javascript" src="../../../../js/docs.js"></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org | </font></font><a href="../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Support us</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip665304"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip665304" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Click to return on the top page</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../js/common.js"></script><script type="text/javascript" src="../../../../js/docs.js"></script></body></html>

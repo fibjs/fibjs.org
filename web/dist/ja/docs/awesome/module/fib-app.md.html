@@ -270,7 +270,7 @@ svr.run();<font></font>
   http://localhost/1.0/person/57fbbdb0a2400000<font></font>
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">すべてのリクエストで、応答形式はJSONオブジェクトです。</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">リクエストの成功は、HTTPステータスコードによって示されます。</font><font style="vertical-align: inherit;">2XXステータスコードは成功を示し、4XXはリクエストの失敗を示します。</font><font style="vertical-align: inherit;">リクエストが失敗した場合でも、レスポンスの本文はJSONオブジェクトのままですが、デバッグに使用できるコードとメッセージの2つのフィールドが常に含まれます。</font><font style="vertical-align: inherit;">たとえば、権限認証の要求が失敗した場合、次の情報が返されます。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">リクエストの成功は、HTTPステータスコードによって示されます。</font><font style="vertical-align: inherit;">2XXステータスコードは成功を示し、4XXは要求の失敗を示します。</font><font style="vertical-align: inherit;">リクエストが失敗した場合でも、レスポンスの本文はJSONオブジェクトのままですが、デバッグに使用できるコードとメッセージの2つのフィールドが常に含まれます。</font><font style="vertical-align: inherit;">たとえば、権限認証の要求が失敗した場合、次の情報が返されます。</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
@@ -530,7 +530,7 @@ svr.run();<font></font>
 <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{"name"：{"like"： "％m"}}</font></font></td>
 </tr>
 <tr>
-<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">みたいではなく</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">好きじゃない</font></font></td>
 <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ファジークエリ</font></font></td>
 <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{"name"：{"not_like"： "％m"}}</font></font></td>
 </tr>
@@ -742,8 +742,8 @@ svr.run();<font></font>
 <span class="hljs-built_in">module</span>.exports = <span class="hljs-function"><span class="hljs-params">db</span> =&gt;</span> {<font></font>
   db.define(<span class="hljs-string">'blog'</span>, {
     <span class="hljs-attr">title</span>: <span class="hljs-built_in">String</span>,
-    <span class="hljs-attr">detail</span>: <span class="hljs-built_in">String</span>，<font></font>
-    note: <span class="hljs-built_in">String</span><font></font>
+    <span class="hljs-attr">detail</span>: <span class="hljs-built_in">String</span>，
+    <span class="hljs-attr">note</span>: <span class="hljs-built_in">String</span><font></font>
   }, {<font></font>
     <span class="hljs-attr">ACL</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">session</span>) </span>{
       <span class="hljs-keyword">return</span> {
@@ -878,7 +878,7 @@ svr.run();<font></font>
 }<font></font>
 </code></pre>
 <div name="对象权限" data-unique="对象权限"></div><h3 id="对象权限"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">オブジェクトのアクセス許可</font></font></h3>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">クラス全体のアクセス許可はモデルで設定されます。特定のオブジェクトのアクセス許可を設定する必要がある場合は、次のことを実現するようにOACLを設定できます。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">クラス全体の権限はモデルで設定されます。特定のオブジェクトの権限を設定する必要がある場合は、次のことを実現するようにOACLを設定できます。</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
@@ -933,7 +933,7 @@ svr.run();<font></font>
 <li><code>person</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> =&gt; </font></font><code>ACL</code></li>
 </ul>
 <div name="扩展对象权限" data-unique="扩展对象权限"></div><h3 id="扩展对象权限"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">拡張オブジェクトのアクセス許可</font></font></h3>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">拡張オブジェクトのアクセス許可制御は、基本オブジェクト許可に似ていますが、唯一の違いは、ACLで個別に指定する必要があることです。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">拡張オブジェクトのアクセス許可制御は基本オブジェクトのアクセス許可制御と似ていますが、唯一の違いは、ACLを個別に指定する必要があることです。</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
@@ -1033,4 +1033,4 @@ svr.run();<font></font>
 <div name="绘制数据模型" data-unique="绘制数据模型"></div><h2 id="绘制数据模型"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">データモデルを描く</font></font></h2>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">データ定義の完了後、</font></font><code>app.diagram()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">データモデル</font></font><code>svg</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">形式のクラス図</font><font style="vertical-align: inherit;">を描画</font><font style="vertical-align: inherit;">するために使用</font><font style="vertical-align: inherit;">できます。ファイルは次のような画像に保存されます。
 </font></font><img src="./demo/diagram.svg" alt="図"></p>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">©Copyright2014-Present fibjs.org |</font></font><a href="../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">サポートしてください</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip903220"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip903220" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">クリックしてトップページに戻る</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../js/common.js"></script><script type="text/javascript" src="../../../../js/docs.js"></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">©Copyright2012-2021 fibjs.org |</font></font><a href="../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">サポートしてください</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip605501"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip605501" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">クリックしてトップページに戻る</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../js/common.js"></script><script type="text/javascript" src="../../../../js/docs.js"></script></body></html>

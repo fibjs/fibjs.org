@@ -317,7 +317,7 @@ svr.run();<font></font>
 ]<font></font>
 </code></pre>
 <div name="特殊字段" data-unique="特殊字段"></div><h2 id="特殊字段"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">특수 분야</font></font></h2>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">오브젝트 데이터에는 특별한 의미를 가진 4 개의 필드가 있으며 API를 통해 변경할 수 없습니다. </font><font style="vertical-align: inherit;">각각 </font></font><code>id</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><code>updatedAt</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><code>createdAt</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><code>createdBy</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">오브젝트 데이터에는 특별한 의미를 지닌 4 개의 필드가 있으며 API를 통해 변경할 수 없습니다. </font><font style="vertical-align: inherit;">각각 </font></font><code>id</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><code>updatedAt</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><code>createdAt</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><code>createdBy</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">.</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">어디 </font></font><code>id</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><code>updatedAt</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><code>createdAt</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">개별 필드가 자동으로 생성되고 수정됩니다. </font></font><code>createdBy</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">유형을 직접 지정해야합니다.</font></font></p>
 <div name="基础对象访问-API" data-unique="基础对象访问-API"></div><h2 id="基础对象访问-API"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">기본 개체 액세스 API</font></font></h2>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">이 데이터 정의를 완료하면 REST API 사양을 준수하는 완전한 인터페이스 호출 세트를 직접 갖게됩니다.</font></font></p>
@@ -397,7 +397,7 @@ svr.run();<font></font>
   <span class="hljs-string">"id"</span>: <span class="hljs-string">"57fbbdb0a2400000"</span><font></font>
 }<font></font>
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">제공하여 필드를 반환 </font></font><code>keys</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 사용자 정의 콘텐츠를 반환 할 수 있습니다 </font></font><code>keys</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">을 내용에 </font></font><code>,</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">나누어 필드 이름 문자열 :</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">을 제공하여 필드를 반환하고 </font></font><code>keys</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 사용자 지정 콘텐츠를 반환 할 수 있습니다. </font></font><code>keys</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">콘텐츠는 </font></font><code>,</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">분할 된 필드 이름 문자열에 있습니다.</font></font></p>
 <pre><code class="lang-sh"><div class="line-numbers">1</div>curl -X GET http://localhost/1.0/person/57fbbdb0a2400000?keys=name%2Csex
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 :</font></font></p>
@@ -410,7 +410,7 @@ svr.run();<font></font>
 }<font></font>
 </code></pre>
 <div name="修改对象" data-unique="修改对象"></div><h3 id="修改对象"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">개체 수정</font></font></h3>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">객체의 기존 데이터를 변경하려면 객체의 해당 URL에 PUT 요청을 보낼 수 있습니다. 지정하지 않은 키는 변경되지 않으므로 객체 데이터의 하위 집합 만 업데이트 할 수 있습니다. </font><font style="vertical-align: inherit;">예를 들어 객체의 연령 필드를 변경해 보겠습니다.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">객체의 기존 데이터를 변경하려면 객체의 해당 URL로 PUT 요청을 보낼 수 있습니다. 지정하지 않은 키는 변경되지 않으므로 객체 데이터의 하위 집합 만 업데이트 할 수 있습니다. </font><font style="vertical-align: inherit;">예를 들어 객체의 연령 필드를 변경해 보겠습니다.</font></font></p>
 <pre><code class="lang-sh"><div class="line-numbers">1
 2
 3
@@ -480,10 +480,10 @@ svr.run();<font></font>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">지정된 반환 만 </font></font><code>name</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">및 </font></font><code>age</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">두 개의 필드.</font></font></p>
 <h4 id="where-过滤条件"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">필터 조건</font></font></h4>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">By </font></font><code>where</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">는 쿼리 개체에 대한 제약 조건을 매개 변수로 만들 수 있습니다.</font></font></p>
-<p><code>where</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">매개 변수 값은 JSON으로 인코딩되어야합니다. </font><font style="vertical-align: inherit;">즉, 실제로 전송 된 URL 요청을 보면 먼저 JSON 인코딩 한 다음 URL 인코딩해야합니다. </font></font><code>where</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">인수 </font><font style="vertical-align: inherit;">로 사용하기 가장 쉬운 방법 </font><font style="vertical-align: inherit;">은 적절한 키와 값을 포함하는 것입니다. </font><font style="vertical-align: inherit;">예를 들어 이름이 tom 인 사용자를 검색하려면 다음과 같은 쿼리를 생성해야합니다.</font></font></p>
+<p><code>where</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">매개 변수 값은 JSON으로 인코딩되어야합니다. </font><font style="vertical-align: inherit;">즉, 실제로 전송 된 URL 요청을 보면 먼저 JSON으로 인코딩 한 다음 URL로 인코딩해야합니다. </font></font><code>where</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">인수 </font><font style="vertical-align: inherit;">로 사용하기 가장 쉬운 방법 </font><font style="vertical-align: inherit;">은 적절한 키와 값을 포함하는 것입니다. </font><font style="vertical-align: inherit;">예를 들어, 이름이 tom 인 사용자를 검색하려면 다음과 같은 쿼리를 생성해야합니다.</font></font></p>
 <pre><code class="lang-sh"><div class="line-numbers">1</div>curl -X GET http://localhost/1.0/person?<span class="hljs-built_in">where</span>=%7B%22name%22%3A%22tom%22%7D
 </code></pre>
-<p><code>where</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 값은 urlencode 뒤의 JSON 문자열이며 내용은 다음과 같습니다.</font></font><code>{"name":"tom"}</code></p>
+<p><code>where</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 의 값은 urlencode 뒤의 JSON 문자열이며 내용은 다음과 같습니다.</font></font><code>{"name":"tom"}</code></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">주어진 값과 정확히 일치하는 것 외에도 </font></font><code>where</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">포함과 같은 비교 방법도 지원됩니다. </font></font><code>where</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">매개 변수는 다음 옵션을 지원합니다.</font></font></p>
 <table>
 <thead>
@@ -530,7 +530,7 @@ svr.run();<font></font>
 <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{ "이름": { "like": "% m"}}</font></font></td>
 </tr>
 <tr>
-<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">좋아하지 않는</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">같지 않은</font></font></td>
 <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">퍼지 쿼리</font></font></td>
 <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{ "name": { "not_like": "% m"}}</font></font></td>
 </tr>
@@ -742,8 +742,8 @@ svr.run();<font></font>
 <span class="hljs-built_in">module</span>.exports = <span class="hljs-function"><span class="hljs-params">db</span> =&gt;</span> {<font></font>
   db.define(<span class="hljs-string">'blog'</span>, {
     <span class="hljs-attr">title</span>: <span class="hljs-built_in">String</span>,
-    <span class="hljs-attr">detail</span>: <span class="hljs-built_in">String</span>，<font></font>
-    note: <span class="hljs-built_in">String</span><font></font>
+    <span class="hljs-attr">detail</span>: <span class="hljs-built_in">String</span>，
+    <span class="hljs-attr">note</span>: <span class="hljs-built_in">String</span><font></font>
   }, {<font></font>
     <span class="hljs-attr">ACL</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">session</span>) </span>{
       <span class="hljs-keyword">return</span> {
@@ -802,7 +802,7 @@ svr.run();<font></font>
 </tr>
 </tbody>
 </table>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">권한을 확인할 때 첫 번째 권한이 </font></font><code>id</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">지정되지 않은 경우 일치하는 사용자 </font></font><code>role</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">권한 </font><font style="vertical-align: inherit;">과 일치 </font><font style="vertical-align: inherit;">하고 지정된 경우 여전히 해당 </font><font style="vertical-align: inherit;">하는 사용자 </font><font style="vertical-align: inherit;">권한 </font><font style="vertical-align: inherit;">과 일치 </font><font style="vertical-align: inherit;">하여 지정된 </font></font><code>*</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">권한 </font><font style="vertical-align: inherit;">이 지정 </font></font><code>*</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">되지 않은 경우 권한이 없는지 확인합니다.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">권한을 확인할 때 첫 번째 권한이 </font></font><code>id</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">지정되지 않은 경우 해당 권한 </font><font style="vertical-align: inherit;">과 일치 </font><font style="vertical-align: inherit;">하고 지정된 </font></font><code>role</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">경우 여전히 해당 </font><font style="vertical-align: inherit;">하는 사용자 </font><font style="vertical-align: inherit;">권한 </font><font style="vertical-align: inherit;">과 일치 </font><font style="vertical-align: inherit;">하여 지정된 </font></font><code>*</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">권한 </font><font style="vertical-align: inherit;">이 지정 </font></font><code>*</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">되지 않은 경우 권한이 없는지 확인합니다.</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">예를 들어, 위의 권한 구성은 </font></font><code>user</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">사용자 그룹을 읽을 수 있도록 </font><font style="vertical-align: inherit;">지정하고 </font><font style="vertical-align: inherit;">, 사용자 </font></font><code>57fbbdb0a2400000</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">는 전체 권한을 가지며 다른 사용자는 권한이 없습니다.</font></font></p>
 <div name="权限" data-unique="权限"></div><h3 id="权限"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">권위</font></font></h3>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ACL은 API 동작에 따라 5 가지 유형의 권한을 분류합니다.</font></font></p>
@@ -933,7 +933,7 @@ svr.run();<font></font>
 <li><code>person</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> =&gt; </font></font><code>ACL</code></li>
 </ul>
 <div name="扩展对象权限" data-unique="扩展对象权限"></div><h3 id="扩展对象权限"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">확장 된 개체 권한</font></font></h3>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">확장 개체의 액세스 권한 제어는 기본 개체 권한과 유사하지만 유일한 차이점은 ACL에서 별도로 지정해야한다는 것입니다.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">확장 개체의 액세스 권한 제어는 기본 개체의 액세스 권한 제어와 유사하지만 유일한 차이점은 ACL을 별도로 지정해야한다는 것입니다.</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
@@ -1016,7 +1016,7 @@ svr.run();<font></font>
   Person.hasMany(<span class="hljs-string">'pets'</span>, Pet);<font></font>
 };<font></font>
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">이 정의는 누구나 개인 정보에 접근 할 수 </font></font><code>name</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">있으며 </font></font><code>sex</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 무료 접근 및 검색이 가능하며 </font></font><code>pets</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 사용자는 자신의 모든 데이터를 운영 할 수 있으며 자신의 애완 동물 정보를 가질 수있는 모든 권리를 가지고 있습니다.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">이 정의는 누구나 개인 정보에 접근 할 수 </font></font><code>name</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">있으며 </font></font><code>sex</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 무료 접근 및 검색이 가능하며 </font></font><code>pets</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 사용자는 자신의 모든 데이터를 운영 할 수 있으며, 자신의 애완 동물 정보를 가질 수있는 모든 권리를 가지고 있습니다.</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">확장 오브젝트의 액세스 권한을 확인할 때 오브젝트 권한과 확장 오브젝트 권한을 별도로 확인합니다. </font><font style="vertical-align: inherit;">예를 들어, 다음 요청 :</font></font></p>
 <pre><code class="lang-sh"><div class="line-numbers">1</div>curl -X GET http://localhost/1.0/person/57fbbdb0a2400000/pets/57fbbdb0a2400007
 </code></pre>
@@ -1033,4 +1033,4 @@ svr.run();<font></font>
 <div name="绘制数据模型" data-unique="绘制数据模型"></div><h2 id="绘制数据模型"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">데이터 모델 그리기</font></font></h2>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">데이터 정의가 완료되면 </font></font><code>app.diagram()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">데이터 모델 </font></font><code>svg</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">형식 클래스 다이어그램 </font><font style="vertical-align: inherit;">을 그리는 </font><font style="vertical-align: inherit;">데 사용할 수 있으며 </font><font style="vertical-align: inherit;">파일은 다음과 유사한 이미지로 저장됩니다.
 </font></font><img src="./demo/diagram.svg" alt="도표"></p>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2014-Present fibjs.org | </font></font><a href="../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">지원</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip784493"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip784493" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">클릭하면 톱 페이지로 돌아갑니다</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../js/common.js"></script><script type="text/javascript" src="../../../../js/docs.js"></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org | </font></font><a href="../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">지원</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip107068"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip107068" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">클릭하면 톱 페이지로 돌아갑니다</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../js/common.js"></script><script type="text/javascript" src="../../../../js/docs.js"></script></body></html>

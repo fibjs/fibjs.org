@@ -196,14 +196,18 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs에서 데스크톱 애플리케이션을 실행하는 것은 매우 빠릅니다. 다음 코드를 입력하여 WebView 창을 열고 실행하기 만하면됩니다.</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
-3</div><span class="hljs-keyword">var</span> gui = <span class="hljs-built_in">require</span>(<span class="hljs-string">"gui"</span>);<font></font>
+3
+4
+5</div><span class="hljs-keyword">var</span> gui = <span class="hljs-built_in">require</span>(<span class="hljs-string">"gui"</span>);<font></font>
 <font></font>
-gui.open(<span class="hljs-string">"https://fibjs.org"</span>);
+gui.open(<span class="hljs-string">"https://fibjs.org"</span>, {
+    <span class="hljs-string">"native"</span>: <span class="hljs-literal">true</span><font></font>
+});<font></font>
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">이 코드는 운영 체제에 내장 된 WebView 창을 열고 fibjs.org 웹 사이트로 들어갑니다.</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">그러나 시스템에 내장 된 WebView는 인터페이스 기능이나 호환성 측면에서 강력한 데스크톱 애플리케이션 개발을 만족시킬 수 없습니다. </font><font style="vertical-align: inherit;">따라서 fibjs는 cef 기반 애플리케이션 개발도 지원합니다.</font></font></p>
 <div name="cef-简介" data-unique="cef-简介"></div><h2 id="cef-简介"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">CEF 소개</font></font></h2>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">cef의 전체 이름은 Google Chromium을 기반으로하는 오픈 소스 프로젝트 인 Chromium Embedded Framework입니다. </font><font style="vertical-align: inherit;">Google Chromium 프로젝트는 주로 Google Chrome 애플리케이션 용으로 개발되었으며 cef의 목표는 타사 애플리케이션에 대한 내장형 브라우저 지원을 제공하는 것입니다. </font><font style="vertical-align: inherit;">cef는 기본 Chromium 및 Blink의 복잡한 코드를 분리하고 제품 수준의 안정적인 API 세트를 제공하고 특정 Chromium 버전을 추적하는 분기 및 바이너리 패키지를 출시합니다. </font><font style="vertical-align: inherit;">cef의 대부분의 기능은 풍부한 기본 구현을 제공하여 사용자가 자신의 요구를 충족시키기 위해 가능한 한 작은 사용자 정의를 수행 할 수 있도록합니다. </font><font style="vertical-align: inherit;">cef의 일반적인 적용 시나리오는 다음과 같습니다.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">cef의 전체 이름은 Google Chromium을 기반으로하는 오픈 소스 프로젝트 인 Chromium Embedded Framework입니다. </font><font style="vertical-align: inherit;">Google Chromium 프로젝트는 주로 Google Chrome 애플리케이션을 위해 개발되었으며 cef의 목표는 타사 애플리케이션에 임베드 가능한 브라우저 지원을 제공하는 것입니다. </font><font style="vertical-align: inherit;">cef는 기본 Chromium 및 Blink의 복잡한 코드를 분리하고 제품 수준의 안정적인 API 세트를 제공하고 특정 Chromium 버전을 추적하는 분기 및 바이너리 패키지를 출시합니다. </font><font style="vertical-align: inherit;">cef의 대부분의 기능은 풍부한 기본 구현을 제공하여 사용자가 자신의 요구를 충족시키기 위해 가능한 한 작은 사용자 정의를 수행 할 수 있도록합니다. </font><font style="vertical-align: inherit;">cef의 일반적인 적용 시나리오는 다음과 같습니다.</font></font></p>
 <ul>
 <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">HTML5 호환 브라우저 컨트롤을 기존 로컬 애플리케이션에 포함합니다.</font></font></li>
 <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">주로 웹 기술로 개발 된 응용 프로그램을 호스팅하는 경량 셸 브라우저를 만듭니다.</font></font></li>
@@ -220,7 +224,7 @@ gui.open(<span class="hljs-string">"https://fibjs.org"</span>);
 <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">현재와 ​​미래의 웹 기능과 표준을 더 빨리 얻을 수있는 능력.</font></font></li>
 </ul>
 <div name="准备运行环境" data-unique="准备运行环境"></div><h2 id="准备运行环境"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">운영 환경 준비</font></font></h2>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">cef3 바이너리 패키지는 [ </font></font><a href="https://cef-builds.spotifycdn.com/index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">this page</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> ] </font><font style="vertical-align: inherit;">에서 </font><font style="vertical-align: inherit;">다운로드 </font><font style="vertical-align: inherit;">할 수 있습니다 </font><font style="vertical-align: inherit;">. </font><font style="vertical-align: inherit;">여기에는 특정 플랫폼 (Windows, Mac OS X 및 Linux)에서 특정 버전의 cef3를 컴파일하는 데 필요한 모든 파일이 포함되어 있습니다. </font><font style="vertical-align: inherit;">플랫폼마다 공통 구조가 있으며 다운로드 후 리소스 디렉토리 구조를 재구성해야합니다. </font><font style="vertical-align: inherit;">애플리케이션 리소스의 레이아웃은 플랫폼에 따라 다르며 매우 다릅니다.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">cef3 바이너리 패키지는 [ </font></font><a href="https://cef-builds.spotifycdn.com/index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">this page</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> ] </font><font style="vertical-align: inherit;">에서 </font><font style="vertical-align: inherit;">다운로드 </font><font style="vertical-align: inherit;">할 수 있습니다 </font><font style="vertical-align: inherit;">. </font><font style="vertical-align: inherit;">여기에는 특정 플랫폼 (Windows, Mac OS X 및 Linux)에서 특정 버전의 cef3를 컴파일하는 데 필요한 모든 파일이 포함되어 있습니다. </font><font style="vertical-align: inherit;">플랫폼마다 디렉토리 구조가 다르므로 다운로드 후 리소스 디렉토리 구조를 재구성해야합니다.</font></font></p>
 <div name="Windows-操作系统(Windows)" data-unique="Windows-操作系统(Windows)"></div><h3 id="Windows-操作系统(Windows)"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Windows 운영 체제 (Windows)</font></font></h3>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">윈도우 플랫폼 폴더 구조로 다음과됩니다에, 당신은 일반적으로 바이너리 패키지 내에서 할 수있는 </font></font><code>Release</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">및 </font></font><code>Resources</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">디렉토리에있는 모든 파일을 찾을 수 :</font></font></p>
 <pre><code class="lang-bash"><div class="line-numbers">1
@@ -313,10 +317,10 @@ gui.open(<span class="hljs-string">"https://fibjs.org"</span>);
 │   └── libGLESv2.so<font></font>
 └── v8_context_snapshot.bin<font></font>
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Linux Server에서는 데스크탑 환경이 지원되지 않으므로 </font></font><code>--headless</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">모드 </font><font style="vertical-align: inherit;">만 </font><font style="vertical-align: inherit;">실행할 </font><font style="vertical-align: inherit;">수 있으며 </font><font style="vertical-align: inherit;">비창 모드에서 작동 할 때 xorg도 설치해야합니다.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Linux Server에서는 데스크탑 환경이 지원 </font></font><code>--headless</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">되지 않으므로 xorg를 설치할 필요가 없을 때 창 모드로 실행할 </font><font style="vertical-align: inherit;">때만 </font><font style="vertical-align: inherit;">모드를 실행할 </font><font style="vertical-align: inherit;">수 있습니다 </font><font style="vertical-align: inherit;">.</font></font></p>
 <pre><code class="lang-sh"><div class="line-numbers">1</div>apt install xorg
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Linux 서버에서 일부 GPU는 Linux 데스크톱을 지원하지만 </font></font><code>--disable-gpu</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">시작 옵션 </font><font style="vertical-align: inherit;">을 늘려야하는 경우 </font><font style="vertical-align: inherit;">GPU 렌더링이 비활성화됩니다.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">일부 GPU에서는 잘못된 Linux 데스크톱을 지원하지만 </font></font><code>--disable-gpu</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">시작 옵션 </font><font style="vertical-align: inherit;">을 늘려야하는 경우 </font><font style="vertical-align: inherit;">GPU 렌더링이 비활성화됩니다.</font></font></p>
 <div name="Mac-X-平台(Mac-OS-X)" data-unique="Mac-X-平台(Mac-OS-X)"></div><h3 id="Mac-X-平台(Mac-OS-X)"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Mac X 플랫폼 (Mac OS X)</font></font></h3>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Mac X 플랫폼에서 폴더 구조는 다음과 같습니다. 일반적으로 패키지 바이너리 내 </font></font><code>Release/Chromium Embedded Framework.framework</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">에서 디렉토리의 모든 파일을 찾을 수 있습니다. cefclient를 다운로드 한 다음 적절한 파일을 찾으려면 Contents 앱을 열어야합니다.</font></font></p>
 <pre><code class="lang-bash"><div class="line-numbers">1
@@ -359,15 +363,19 @@ gui.open(<span class="hljs-string">"https://fibjs.org"</span>);
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">운영 환경을 준비하고 다음 코드를 실행합니다.</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
-3</div><span class="hljs-keyword">var</span> gui = <span class="hljs-built_in">require</span>(<span class="hljs-string">"gui"</span>);<font></font>
+3
+4
+5</div><span class="hljs-keyword">var</span> gui = <span class="hljs-built_in">require</span>(<span class="hljs-string">"gui"</span>);<font></font>
 <font></font>
-gui.open(<span class="hljs-string">"https://fibjs.org"</span>);
+gui.open(<span class="hljs-string">"https://fibjs.org"</span>, {
+    <span class="hljs-comment">// "native": true</span><font></font>
+});<font></font>
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs의 공식 웹 사이트가로드 된 브라우저 창이 표시되지만 해당 엔진은 이미 최신 Chrome 커널입니다.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs의 공식 웹 사이트가로드 된 브라우저 창이 표시되지만 해당 엔진은 이미 최신 Chrome 커널입니다. </font><font style="vertical-align: inherit;">여기에서 </font></font><code>native</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">옵션 </font><font style="vertical-align: inherit;">을 취소해야합니다 </font><font style="vertical-align: inherit;">. 그렇지 않으면 os에서 빌드 된 webview가 열립니다.</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">gui의 기본 적용은 매우 간단하고 gui 문서를 참조하면 빠르게 구현할 수 있으므로 반복하지 않겠습니다. </font><font style="vertical-align: inherit;">다음으로, 우리는 주로 몇 가지 특별한 응용 방법을 소개합니다.</font></font></p>
 <div name="前后端服务对接" data-unique="前后端服务对接"></div><h2 id="前后端服务对接"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">프런트 엔드 및 백엔드 서비스 도킹</font></font></h2>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">웹 기반 데스크톱 응용 프로그램에는 일반적으로 두 가지 확장 방법이 있습니다. 하나는 WebView 확장이고 다른 하나는 프런트 엔드와 백 엔드를 로컬로 분리하는 것입니다. </font><font style="vertical-align: inherit;">이전 방법에서 WebView는 침입 적으로 확장되며 운영 환경은 더 이상 표준 브라우저와 호환되지 않습니다. </font><font style="vertical-align: inherit;">후자의 방법은 http 서버가 로컬로 열리도록 요구하므로 서비스 인터페이스가 외부로 노출됩니다.</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">확장 데스크탑 애플리케이션을위한 fibjs는 프로토콜 확장 성 cef를 기반으로 WebView와 fibj를 </font></font><code>Handler</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">함께 사용하므로 프로세스 WebView가 해당 </font></font><code>Handler</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">프로세서에 </font><font style="vertical-align: inherit;">직접 연결될 수 있으며 </font><font style="vertical-align: inherit;">, 동시에 개발 된 기존 B / S 패러다임과 완벽하게 호환됩니다. 안전과 휴대 성을 보장합니다. </font><font style="vertical-align: inherit;">동시에 프런트 엔드 및 백 엔드 코드는 표준 B / S 프런트 엔드 및 백 엔드 개발과 완전히 일치하며 브라우저에서 개발 및 디버깅 한 다음 로컬 애플리케이션으로 직접 이식 할 수 있습니다.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">확장 데스크탑 애플리케이션을위한 fibjs는 프로토콜 확장 성 cef를 기반으로 WebView와 fibj를 </font></font><code>Handler</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">함께 사용하므로 프로세스 WebView가 해당 </font></font><code>Handler</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">프로세서에 </font><font style="vertical-align: inherit;">직접 연결될 수 있으며 </font><font style="vertical-align: inherit;">, 동시에 개발 된 기존 B / S 패러다임과 완벽하게 호환됩니다. 안전과 휴대 성을 보장합니다. </font><font style="vertical-align: inherit;">동시에 프런트 엔드 및 백 엔드 코드는 표준 B / S 프런트 엔드 및 백 엔드 개발과 완전히 일치하며 브라우저에서 개발 및 디버깅 한 다음 로컬 애플리케이션에 직접 이식 할 수 있습니다. .</font></font></p>
 <p><font style="vertical-align: inherit;"></font><code>gui.config</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">완료를 </font><font style="vertical-align: inherit;">통해 fibjs 백엔드 프로세서 구성 방식 </font><font style="vertical-align: inherit;">.</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
@@ -407,9 +415,9 @@ gui.open(<span class="hljs-string">"https://fibjs.org"</span>);
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">cef에서는 서버에 대한 포스트 데이터를 지원하지 않는 등 비표준 프로토콜 처리에 대한 몇 가지 제한이 있습니다. 따라서 더 나은 호환성을 제공하는 프런트 엔드 및 백 엔드 통신을 원한다면 http 또는 https back을 정의해야합니다. 물론이 백엔드는 통과하지 않습니다. 네트워크 프로토콜은 통신을 완료하지만 프로세스 내에서 직접 연결됩니다.</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">핸들러 백엔드를 개발하는 방법은 다음을 참조하십시오.</font></font><a href="hello.md.html" class="notranslate">hello, world</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">.</font></font></p>
 <div name="无窗口模式" data-unique="无窗口模式"></div><h2 id="无窗口模式"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">창없는 모드</font></font></h2>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">자동화 된 테스트 또는 프로세스 자동화 시나리오에서 비즈니스 운영 프로세스는 사용자 상호 작용이 필요하지 않으므로 창없는 모드로 서버에서 자동으로 실행될 수 있습니다. </font><font style="vertical-align: inherit;">이때 헤드리스 모드를 실행해야합니다.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">자동화 된 테스트 또는 프로세스 자동화 시나리오에서 비즈니스 운영 프로세스는 사용자 상호 작용이 필요하지 않으므로 창없는 모드로 서버에서 자동으로 실행할 수 있습니다. </font><font style="vertical-align: inherit;">이때 헤드리스 모드를 실행해야합니다.</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs는 헤드리스의 두 가지 방법, 즉 글로벌 헤드리스 및 인스턴스 헤드리스를 지원합니다.</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">전역 모드에서는 창이 생성되는 방법에 관계없이 모든 창이 헤드리스 모드로 실행됩니다. </font><font style="vertical-align: inherit;">글로벌 모델 실행은 지정된 </font></font><code>--headless</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">시작 옵션입니다.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">전역 모드에서는 창이 생성되는 방식에 관계없이 모든 창이 헤드리스 모드로 실행됩니다. </font><font style="vertical-align: inherit;">글로벌 모델 실행은 지정된 </font></font><code>--headless</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">시작 옵션입니다.</font></font></p>
 <pre><code class="lang-sh"><div class="line-numbers">1</div>fibjs --headless test.js
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">프로그램 시작 </font></font><code>gui.config</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">구성 </font><font style="vertical-align: inherit;">시 호출 </font><font style="vertical-align: inherit;">도 동일한 목표를 달성 할 수 있습니다.</font></font></p>
@@ -419,7 +427,7 @@ gui.open(<span class="hljs-string">"https://fibjs.org"</span>);
     <span class="hljs-string">"headless"</span>: <span class="hljs-literal">true</span><font></font>
 });<font></font>
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Linux Server에서는 헤드리스 모드가 데스크탑 지원을 필요로하지 않지만 cef 기본 모듈은 여전히 ​​몇 가지 기본 구성 요소 지원이 필요하므로 xorg를 설치해야합니다.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Linux Server에서 헤드리스 모드는 데스크탑 지원이 필요하지 않지만 cef 기본 모듈은 여전히 ​​일부 기본 구성 요소 지원이 필요하므로 xorg를 설치해야합니다.</font></font></p>
 <pre><code class="lang-sh"><div class="line-numbers">1</div>apt install xorg
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">일부 응용 프로그램에서는 사용자 상호 작용과 자동화 된 처리가 동시에 필요합니다. 이때 헤드리스 모드를 개별적으로 사용하도록 창을 지정할 수 있습니다.</font></font></p>
@@ -601,7 +609,28 @@ win.on(<span class="hljs-string">'open'</span>, () =&gt; {<font></font>
     win.loadUrl(<span class="hljs-string">'https://fibjs.org'</span>);<font></font>
 });<font></font>
 </code></pre>
+<div name="监听事件" data-unique="监听事件"></div><h3 id="监听事件"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">이벤트 듣기</font></font></h3>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9</div><span class="hljs-keyword">var</span> win = gui.open();<font></font>
+<font></font>
+win.on(<span class="hljs-string">'open'</span>, () =&gt; {<font></font>
+    win.dev.Page.enable();<font></font>
+    win.dev.Page.on(<span class="hljs-string">"frameNavigated"</span>, ev =&gt; {
+        <span class="hljs-built_in">console</span>.log(ev.frame.url);<font></font>
+        win.close();<font></font>
+    });<font></font>
+});<font></font>
+</code></pre>
+<div name="多媒体支持" data-unique="多媒体支持"></div><h2 id="多媒体支持"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">멀티미디어 지원</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">저작권 문제로 인해 cef의 바이너리 배포에는 일반적으로 mp4 및 mp3의 디코딩이 포함되지 않습니다. </font><font style="vertical-align: inherit;">그러나 cef에는 오픈 소스 webm 디코딩이 포함되어 있으므로 독립적 인 데스크톱 애플리케이션의 경우 무료 라이선스 webm 인코딩을 사용하여 오디오 및 비디오를 처리하는 것이 좋습니다.</font></font></p>
 <div name="小结" data-unique="小结"></div><h2 id="小结"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">요약</font></font></h2>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">이 섹션의 소개를 통해 자체 데스크톱 응용 프로그램을 빠르게 개발하고, html을 이미지 또는 PDF로 렌더링하고, cdp의 강력한 인터페이스를 사용하여 프런트 엔드 자동화 테스트 및 프로세스 자동화 엔진을 설정할 수 있습니다.</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">👉 [ </font></font><a href="server-hot-update.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">서버 모듈 핫 업데이트</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> ]</font></font></p>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2014-Present fibjs.org | </font></font><a href="../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">지원</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip793424"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip793424" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">클릭하면 톱 페이지로 돌아갑니다</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../js/common.js"></script><script type="text/javascript" src="../../../js/docs.js"></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org | </font></font><a href="../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">지원</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip328653"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip328653" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">클릭하면 톱 페이지로 돌아갑니다</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../js/common.js"></script><script type="text/javascript" src="../../../js/docs.js"></script></body></html>

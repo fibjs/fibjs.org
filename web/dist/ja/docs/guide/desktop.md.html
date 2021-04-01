@@ -196,9 +196,13 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjsでデスクトップアプリケーションを起動するのは非常に高速です。次のコードを入力するだけで、WebViewウィンドウを開いて実行できます。</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
-3</div><span class="hljs-keyword">var</span> gui = <span class="hljs-built_in">require</span>(<span class="hljs-string">"gui"</span>);<font></font>
+3
+4
+5</div><span class="hljs-keyword">var</span> gui = <span class="hljs-built_in">require</span>(<span class="hljs-string">"gui"</span>);<font></font>
 <font></font>
-gui.open(<span class="hljs-string">"https://fibjs.org"</span>);
+gui.open(<span class="hljs-string">"https://fibjs.org"</span>, {
+    <span class="hljs-string">"native"</span>: <span class="hljs-literal">true</span><font></font>
+});<font></font>
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">このコードは、オペレーティングシステムに組み込まれているWebViewウィンドウを開き、fibjs.orgWebサイトに入ります。</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ただし、システムに組み込まれているWebViewは、インターフェイス機能や互換性の点で強力なデスクトップアプリケーション開発を満足させることはできません。</font><font style="vertical-align: inherit;">したがって、fibjsはcefベースのアプリケーション開発もサポートしています。</font></font></p>
@@ -220,7 +224,7 @@ gui.open(<span class="hljs-string">"https://fibjs.org"</span>);
 <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">現在および将来のWeb機能と標準をより迅速に取得する機能。</font></font></li>
 </ul>
 <div name="准备运行环境" data-unique="准备运行环境"></div><h2 id="准备运行环境"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">動作環境を整える</font></font></h2>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">cef3のバイナリパッケージは[</font></font><a href="https://cef-builds.spotifycdn.com/index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">このページ</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">]</font><font style="vertical-align: inherit;">から</font><font style="vertical-align: inherit;">ダウンロード</font><font style="vertical-align: inherit;">できます</font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">これには、特定のプラットフォーム（Windows、Mac OS X、およびLinux）で特定のバージョンのcef3をコンパイルするために必要なすべてのファイルが含まれています。</font><font style="vertical-align: inherit;">異なるプラットフォームには共通の構造があり、ダウンロード後にリソースディレクトリ構造を再編成する必要があります。</font><font style="vertical-align: inherit;">アプリケーションリソースのレイアウトはプラットフォームによって異なり、大きく異なります。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">cef3のバイナリパッケージは[</font></font><a href="https://cef-builds.spotifycdn.com/index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">このページ</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">]</font><font style="vertical-align: inherit;">から</font><font style="vertical-align: inherit;">ダウンロード</font><font style="vertical-align: inherit;">できます</font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">これには、特定のプラットフォーム（Windows、Mac OS X、およびLinux）で特定のバージョンのcef3をコンパイルするために必要なすべてのファイルが含まれています。</font><font style="vertical-align: inherit;">プラットフォームによってディレクトリ構造が異なるため、ダウンロード後にリソースのディレクトリ構造を再編成する必要があります。</font></font></p>
 <div name="Windows-操作系统(Windows)" data-unique="Windows-操作系统(Windows)"></div><h3 id="Windows-操作系统(Windows)"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Windowsオペレーティングシステム（Windows）</font></font></h3>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Windowsプラットフォームのフォルダー構造は次のとおりです。通常、バイナリパッケージ内</font><font style="vertical-align: inherit;">で、ディレクトリ内のすべてのファイル</font></font><code>Release</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">を</font></font><code>Resources</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">見つけることができます。</font></font></p>
 <pre><code class="lang-bash"><div class="line-numbers">1
@@ -313,10 +317,10 @@ gui.open(<span class="hljs-string">"https://fibjs.org"</span>);
 │   └── libGLESv2.so<font></font>
 └── v8_context_snapshot.bin<font></font>
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Linux Serverでは、デスクトップ環境がサポートされていないため、実行できるのは</font></font><code>--headless</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">モード</font><font style="vertical-align: inherit;">のみ</font><font style="vertical-align: inherit;">です。非ウィンドウモードで操作する場合は、xorgもインストールする必要があります。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Linux Serverでは、デスクトップ環境がサポートされていないため、</font></font><code>--headless</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">xorgをインストールする必要がない場合、ウィンドウモードで実行している場合に</font><font style="vertical-align: inherit;">のみ</font><font style="vertical-align: inherit;">モードを実行</font><font style="vertical-align: inherit;">できます</font><font style="vertical-align: inherit;">。</font></font></p>
 <pre><code class="lang-sh"><div class="line-numbers">1</div>apt install xorg
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Linuxサーバーでは、一部の不良GPUはLinuxデスクトップをサポートしてい</font></font><code>--disable-gpu</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ますが</font><font style="vertical-align: inherit;">、</font><font style="vertical-align: inherit;">起動オプション</font><font style="vertical-align: inherit;">を増やす必要がある</font><font style="vertical-align: inherit;">場合は、GPUレンダリングが無効になります。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">一部のGPUサポートでは悪いLinuxデスクトップがサポートされてい</font></font><code>--disable-gpu</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ますが</font><font style="vertical-align: inherit;">、</font><font style="vertical-align: inherit;">起動オプション</font><font style="vertical-align: inherit;">を増やす必要があるため、</font><font style="vertical-align: inherit;">GPUレンダリングが無効になっています。</font></font></p>
 <div name="Mac-X-平台(Mac-OS-X)" data-unique="Mac-X-平台(Mac-OS-X)"></div><h3 id="Mac-X-平台(Mac-OS-X)"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Mac Xプラットフォーム（Mac OS X）</font></font></h3>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Mac Xプラットフォームのフォルダ構造は次のとおりです。通常、パッケージバイナリ内で</font></font><code>Release/Chromium Embedded Framework.framework</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ディレクトリ</font><font style="vertical-align: inherit;">内の</font><font style="vertical-align: inherit;">すべてのファイルを見つけることができます。cefclientをダウンロードした場合は、コンテンツのアプリを開いて適切なファイルを見つける必要があります。</font></font></p>
 <pre><code class="lang-bash"><div class="line-numbers">1
@@ -359,15 +363,19 @@ gui.open(<span class="hljs-string">"https://fibjs.org"</span>);
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">動作環境を準備し、次のコードを実行します</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
-3</div><span class="hljs-keyword">var</span> gui = <span class="hljs-built_in">require</span>(<span class="hljs-string">"gui"</span>);<font></font>
+3
+4
+5</div><span class="hljs-keyword">var</span> gui = <span class="hljs-built_in">require</span>(<span class="hljs-string">"gui"</span>);<font></font>
 <font></font>
-gui.open(<span class="hljs-string">"https://fibjs.org"</span>);
+gui.open(<span class="hljs-string">"https://fibjs.org"</span>, {
+    <span class="hljs-comment">// "native": true</span><font></font>
+});<font></font>
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjsの公式ウェブサイトが読み込まれたブラウザウィンドウも表示されますが、そのエンジンはすでに最新のChromeカーネルです。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjsの公式ウェブサイトが読み込まれたブラウザウィンドウも表示されますが、そのエンジンはすでに最新のChromeカーネルです。</font><font style="vertical-align: inherit;">ここで</font></font><code>native</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">オプション</font><font style="vertical-align: inherit;">をキャンセルする必要があることに注意してください</font><font style="vertical-align: inherit;">。そうしないと、OSで構築されたWebビューが開きます。</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">guiの基本的なアプリケーションは非常にシンプルで、GUIドキュメントを参照することですぐに実現できるため、繰り返しません。</font><font style="vertical-align: inherit;">次に、主にいくつかの特別な適用方法を紹介します。</font></font></p>
 <div name="前后端服务对接" data-unique="前后端服务对接"></div><h2 id="前后端服务对接"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">フロントエンドとバックエンドのサービスドッキング</font></font></h2>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Webベースのデスクトップアプリケーションには通常、2つの拡張方法があります。1つはWebView拡張であり、もう1つはフロントエンドとバックエンドをローカルで分離する方法です。</font><font style="vertical-align: inherit;">前者の方法では、WebViewが侵襲的に拡張され、動作環境は標準のブラウザと互換性がなくなります。</font><font style="vertical-align: inherit;">後者の方法では、httpサーバーをローカルで開く必要があります。これにより、サービスインターフェイスが外部に公開されます。</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">プロトコルスケーラビリティに基づく拡張デスクトップアプリケーション用のfibjscefはWebViewとfibjsを</font></font><code>Handler</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">一緒に使用するため、プロセスWebViewは対応する</font></font><code>Handler</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">プロセッサに</font><font style="vertical-align: inherit;">直接接続でき</font><font style="vertical-align: inherit;">、フロントエンドとリアエンドで同時に開発される従来のB / Sパラダイムと完全に互換性があります。安全性と携帯性を確保します。</font><font style="vertical-align: inherit;">同時に、フロントエンドとバックエンドのコードは、標準のB / Sフロントエンドとバックエンドの開発と完全に一致しており、ブラウザーで開発およびデバッグしてから、ローカルアプリケーションに直接移植できます。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">プロトコルスケーラビリティに基づく拡張デスクトップアプリケーション用のfibjscefはWebViewとfibjsを</font></font><code>Handler</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">一緒に使用するため、プロセスWebViewは対応する</font></font><code>Handler</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">プロセッサに</font><font style="vertical-align: inherit;">直接接続でき</font><font style="vertical-align: inherit;">、フロントエンドとリアエンドで同時に開発される従来のB / Sパラダイムと完全に互換性があります。安全性と携帯性を確保します。</font><font style="vertical-align: inherit;">同時に、フロントエンドとバックエンドのコードは、標準のB / Sフロントエンドとバックエンドの開発と完全に一致しており、ブラウザーで開発およびデバッグしてから、ローカルアプリケーションに直接移植できます。 。</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjsバックエンドプロセッサが構成された方法で、</font></font><code>gui.config</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">完了しました。</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
@@ -403,7 +411,7 @@ gui.open(<span class="hljs-string">"https://fibjs.org"</span>);
     }<font></font>
 });<font></font>
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">このコードは2つのバックエンドを定義</font></font><code>cef</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">し、ディレクトリを指す静的なテストドメインプロトコル</font></font><code>cef_files_path</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">であり、もう1つは</font></font><code>http</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ルートを指すcef_testドメインです。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">このコードは2つのバックエンドを定義します。これ</font></font><code>cef</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">はディレクトリを指す静的なテストドメインプロトコル</font></font><code>cef_files_path</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">であり、もう1つは</font></font><code>http</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ルートを指すcef_testドメインです。</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">cefでは、サーバーへの投稿データをサポートしないなど、非標準プロトコルの処理にいくつかの制限があります。したがって、より互換性の高いフロントエンドとバックエンドの通信が必要な場合は、httpまたはhttpsbackを定義する必要があります。 -ends。もちろん、このバックエンドは通過しません。ネットワークプロトコルは通信を完了しますが、プロセス内で直接接続されます。</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ハンドラーバックエンドの開発方法については、以下を参照してください。</font></font><a href="hello.md.html" class="notranslate">hello, world</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font></p>
 <div name="无窗口模式" data-unique="无窗口模式"></div><h2 id="无窗口模式"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ウィンドウレスモード</font></font></h2>
@@ -601,7 +609,28 @@ win.on(<span class="hljs-string">'open'</span>, () =&gt; {<font></font>
     win.loadUrl(<span class="hljs-string">'https://fibjs.org'</span>);<font></font>
 });<font></font>
 </code></pre>
+<div name="监听事件" data-unique="监听事件"></div><h3 id="监听事件"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">イベントを聞く</font></font></h3>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9</div><span class="hljs-keyword">var</span> win = gui.open();<font></font>
+<font></font>
+win.on(<span class="hljs-string">'open'</span>, () =&gt; {<font></font>
+    win.dev.Page.enable();<font></font>
+    win.dev.Page.on(<span class="hljs-string">"frameNavigated"</span>, ev =&gt; {
+        <span class="hljs-built_in">console</span>.log(ev.frame.url);<font></font>
+        win.close();<font></font>
+    });<font></font>
+});<font></font>
+</code></pre>
+<div name="多媒体支持" data-unique="多媒体支持"></div><h2 id="多媒体支持"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">マルチメディアサポート</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">著作権の問題により、cefのバイナリ配布には通常mp4とmp3のデコードは含まれていません。</font><font style="vertical-align: inherit;">ただし、cefにはオープンソースのwebmデコードが含まれています。独立したデスクトップアプリケーションの場合、オーディオとビデオの処理には、自由にライセンスされたwebmエンコードを使用することをお勧めします。</font></font></p>
 <div name="小结" data-unique="小结"></div><h2 id="小结"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">概要</font></font></h2>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">このセクションの紹介により、独自のデスクトップアプリケーションをすばやく開発し、htmlを画像またはPDFにレンダリングし、cdpの強力なインターフェイスを使用してフロントエンドの自動化テストとプロセス自動化エンジンを確立できます。</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">👉[</font></font><a href="server-hot-update.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">サーバーモジュールのホットアップデート</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">]</font></font></p>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">©Copyright2014-Present fibjs.org |</font></font><a href="../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">サポートしてください</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip270558"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip270558" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">クリックしてトップページに戻る</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../js/common.js"></script><script type="text/javascript" src="../../../js/docs.js"></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">©Copyright2012-2021 fibjs.org |</font></font><a href="../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">サポートしてください</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip81580"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip81580" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">クリックしてトップページに戻る</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../js/common.js"></script><script type="text/javascript" src="../../../js/docs.js"></script></body></html>

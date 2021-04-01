@@ -7,7 +7,7 @@
 <li><a href="../../guide/desktop.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Développez rapidement des applications de bureau</font></font></a></li>
 <li><a href="../../guide/server-hot-update.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Mise à jour à chaud du module serveur</font></font></a></li>
 <li><a href="../../guide/host-routes.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Routage de nom de domaine</font></font></a></li>
-<li><a href="../../guide/x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">L'utilisation du certificat X509 dans fibjs</font></font></a></li>
+<li><a href="../../guide/x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Utilisation du certificat X509 dans fibjs</font></font></a></li>
 <li><a href="../../guide/contribute.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ajouter un module natif</font></font></a></li>
 </ul>
  </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_module" aria-controls="collapse_module"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Module de base </font></font></a></h4></div><div id="collapse_module" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
@@ -317,7 +317,7 @@ svr.run();<font></font>
 ]<font></font>
 </code></pre>
 <div name="特殊字段" data-unique="特殊字段"></div><h2 id="特殊字段"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Domaine spécial</font></font></h2>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Dans les données d'objet, il y a quatre champs avec des significations spéciales, qui ne peuvent pas être modifiés via l'API. </font><font style="vertical-align: inherit;">Respectivement </font></font><code>id</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><code>updatedAt</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><code>createdAt</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><code>createdBy</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Dans les données d'objet, il y a quatre champs avec une signification spéciale, qui ne peuvent pas être modifiés via l'API. </font><font style="vertical-align: inherit;">Respectivement </font></font><code>id</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><code>updatedAt</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><code>createdAt</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><code>createdBy</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">.</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Où </font></font><code>id</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><code>updatedAt</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, les </font></font><code>createdAt</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">champs individuels seront automatiquement créés et modifiés. </font></font><code>createdBy</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Vous devez spécifier le type vous-même.</font></font></p>
 <div name="基础对象访问-API" data-unique="基础对象访问-API"></div><h2 id="基础对象访问-API"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">API d'accès aux objets de base</font></font></h2>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Après avoir terminé cette définition de données, vous aurez directement un ensemble complet d'appels d'interface conformes à la spécification de l'API REST:</font></font></p>
@@ -337,7 +337,7 @@ svr.run();<font></font>
 </tr>
 <tr>
 <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/1.0/:className/:id</font></font></td>
-<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">OBTENIR</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">AVOIR</font></font></td>
 <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Lire l'objet</font></font></td>
 </tr>
 <tr>
@@ -352,7 +352,7 @@ svr.run();<font></font>
 </tr>
 <tr>
 <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/1.0/:className</font></font></td>
-<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">OBTENIR</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">AVOIR</font></font></td>
 <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Liste des objets de requête</font></font></td>
 </tr>
 </tbody>
@@ -483,14 +483,14 @@ svr.run();<font></font>
 <p><code>where</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">La valeur du paramètre doit être codée JSON. </font><font style="vertical-align: inherit;">En d'autres termes, si vous regardez la demande d'URL qui a été réellement envoyée, elle doit d'abord être encodée en JSON, puis encodée en URL. </font><font style="vertical-align: inherit;">Le plus simple à utiliser </font></font><code>where</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">comme arguments est d'inclure la clé et la valeur appropriées. </font><font style="vertical-align: inherit;">Par exemple, si nous voulons rechercher des utilisateurs dont le nom est tom, nous devons construire la requête comme ceci:</font></font></p>
 <pre><code class="lang-sh"><div class="line-numbers">1</div>curl -X GET http://localhost/1.0/person?<span class="hljs-built_in">where</span>=%7B%22name%22%3A%22tom%22%7D
 </code></pre>
-<p><code>where</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> La valeur est une chaîne JSON après urlencode, le contenu est:</font></font><code>{"name":"tom"}</code></p>
+<p><code>where</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> La valeur de est une chaîne JSON après urlencode, le contenu est:</font></font><code>{"name":"tom"}</code></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">En plus de correspondre exactement à une valeur donnée, </font></font><code>where</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">les méthodes de comparaison telles que l'inclusion sont également prises en charge. </font></font><code>where</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Les paramètres prennent en charge les options suivantes:</font></font></p>
 <table>
 <thead>
 <tr>
 <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">clé</font></font></th>
 <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">opération</font></font></th>
-<th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">échantillon</font></font></th>
+<th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">goûter</font></font></th>
 </tr>
 </thead>
 <tbody>
@@ -525,7 +525,7 @@ svr.run();<font></font>
 <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{"age": {"lte": "24"}}</font></font></td>
 </tr>
 <tr>
-<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">aimer</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Comme</font></font></td>
 <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Requête floue</font></font></td>
 <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{"name": {"like": "% m"}}</font></font></td>
 </tr>
@@ -647,7 +647,7 @@ svr.run();<font></font>
 </tr>
 <tr>
 <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/1.0/:className/:id/:extendName/:rid</font></font></td>
-<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">OBTENIR</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">AVOIR</font></font></td>
 <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Lire l'objet étendu</font></font></td>
 </tr>
 <tr>
@@ -662,7 +662,7 @@ svr.run();<font></font>
 </tr>
 <tr>
 <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/1.0/:className/:id/:extendName</font></font></td>
-<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">OBTENIR</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">AVOIR</font></font></td>
 <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Interroger la liste des objets étendus</font></font></td>
 </tr>
 </tbody>
@@ -742,8 +742,8 @@ svr.run();<font></font>
 <span class="hljs-built_in">module</span>.exports = <span class="hljs-function"><span class="hljs-params">db</span> =&gt;</span> {<font></font>
   db.define(<span class="hljs-string">'blog'</span>, {
     <span class="hljs-attr">title</span>: <span class="hljs-built_in">String</span>,
-    <span class="hljs-attr">detail</span>: <span class="hljs-built_in">String</span>，<font></font>
-    note: <span class="hljs-built_in">String</span><font></font>
+    <span class="hljs-attr">detail</span>: <span class="hljs-built_in">String</span>，
+    <span class="hljs-attr">note</span>: <span class="hljs-built_in">String</span><font></font>
   }, {<font></font>
     <span class="hljs-attr">ACL</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">session</span>) </span>{
       <span class="hljs-keyword">return</span> {
@@ -821,7 +821,7 @@ svr.run();<font></font>
 <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">vrai / faux / tableau</font></font></td>
 </tr>
 <tr>
-<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">lire</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">lis</font></font></td>
 <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Lire l'objet</font></font></td>
 <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">vrai / faux / tableau</font></font></td>
 </tr>
@@ -836,7 +836,7 @@ svr.run();<font></font>
 <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">vrai faux</font></font></td>
 </tr>
 <tr>
-<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">trouver</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">trouve</font></font></td>
 <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Liste des objets de requête</font></font></td>
 <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">vrai faux</font></font></td>
 </tr>
@@ -933,7 +933,7 @@ svr.run();<font></font>
 <li><code>person</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> =&gt; </font></font><code>ACL</code></li>
 </ul>
 <div name="扩展对象权限" data-unique="扩展对象权限"></div><h3 id="扩展对象权限"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Autorisations d'objet étendues</font></font></h3>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Le contrôle d'autorisation d'accès de l'objet étendu est similaire à l'autorisation d'objet de base, la seule différence est qu'il doit être spécifié séparément dans l'ACL:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Le contrôle d'autorisation d'accès de l'objet étendu est similaire à celui de l'objet de base, la seule différence est que l'ACL doit être spécifiée séparément:</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
@@ -1016,7 +1016,7 @@ svr.run();<font></font>
   Person.hasMany(<span class="hljs-string">'pets'</span>, Pet);<font></font>
 };<font></font>
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cette définition, n'importe qui peut accéder aux informations personnelles </font></font><code>name</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">et </font></font><code>sex</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, et y accéder librement et le rechercher </font></font><code>pets</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, je suis l'utilisateur peut exploiter toutes ses données, et tous les droits d'avoir leurs propres informations sur les animaux de compagnie.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cette définition, tout le monde peut accéder aux informations personnelles </font></font><code>name</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">et </font></font><code>sex</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, et un accès gratuit et le rechercher </font></font><code>pets</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, je suis l'utilisateur peut exploiter toutes leurs données, et tous les droits d'avoir leurs propres informations sur les animaux de compagnie.</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Lors de la vérification de l'autorité d'accès de l'objet étendu, l'autorité d'objet et l'autorité d'objet étendu sont vérifiées séparément. </font><font style="vertical-align: inherit;">Par exemple, la demande suivante:</font></font></p>
 <pre><code class="lang-sh"><div class="line-numbers">1</div>curl -X GET http://localhost/1.0/person/57fbbdb0a2400000/pets/57fbbdb0a2400007
 </code></pre>
@@ -1027,10 +1027,10 @@ svr.run();<font></font>
 <li><code>person</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">=&gt; </font></font><code>ACL</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">=&gt; </font></font><code>extends</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">=&gt;</font></font><code>pets</code></li>
 <li><code>pets</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> =&gt; </font></font><code>ACL</code></li>
 </ul>
-<div name="Function" data-unique="Function"></div><h2 id="Function"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Fonction</font></font></h2>
+<div name="Function" data-unique="Function"></div><h2 id="Function"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Une fonction</font></font></h2>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Des API peuvent être définies pour le modèle et des opérations de données complexes peuvent être effectuées en personnalisant la fonction.</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">La grande majorité des autorisations peuvent être contrôlées par ACL et aucune fonction n'est requise pour compléter les autorisations basées sur les objets. </font><font style="vertical-align: inherit;">La fonction peut être utilisée pour compléter des autorisations basées sur des données, telles que l'octroi d'autorisations à différents groupes d'utilisateurs en fonction de l'état d'approbation. </font><font style="vertical-align: inherit;">Et de multiples modifications, telles que la nécessité de modifier plusieurs enregistrements de base de données.</font></font></p>
 <div name="绘制数据模型" data-unique="绘制数据模型"></div><h2 id="绘制数据模型"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Dessinez le modèle de données</font></font></h2>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Une fois la définition des données terminée, elle peut être utilisée </font></font><code>app.diagram()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">pour dessiner un </font></font><code>svg</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">diagramme de classe de format de </font><font style="vertical-align: inherit;">modèle de données </font><font style="vertical-align: inherit;">, les fichiers seront enregistrés dans une image similaire à la suivante:
 </font></font><img src="./demo/diagram.svg" alt="diagramme"></p>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2014-Present fibjs.org | </font></font><a href="../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Soutenez-nous</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip435993"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip435993" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cliquez pour revenir en haut de la page</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../js/common.js"></script><script type="text/javascript" src="../../../../js/docs.js"></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org | </font></font><a href="../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Soutenez-nous</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip562513"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip562513" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cliquez pour revenir en haut de la page</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../js/common.js"></script><script type="text/javascript" src="../../../../js/docs.js"></script></body></html>
