@@ -1,0 +1,1036 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../../imgs/icon.png"><title>fib-app - JavaScript on Fiber</title><link href="../../../../css/common.css" rel="stylesheet"><link href="../../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Toggle navigation</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../../index.html"><img src="../../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../../index.html">HOME</a></li><li><a href="../../guide/readme.md.html">GUIDE</a></li><li><a href="../../manual/module/readme.md.html">MODULE</a></li><li><a href="../../manual/object/readme.md.html">OBJECT</a></li><li><a href="../readme.md.html">AWESOME</a></li><li><a href="../../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../../docs/awesome/module/fib-app.md.html">中文</a> <a href="../../../../ca/docs/awesome/module/fib-app.md.html">Catalan</a> <a href="../../../../de/docs/awesome/module/fib-app.md.html">Deutsch</a> <a href="../../../../en/docs/awesome/module/fib-app.md.html">English</a> <a href="../../../../es/docs/awesome/module/fib-app.md.html">Español</a> <a href="../../../../fr/docs/awesome/module/fib-app.md.html">Français</a> <a href="../../../../gl/docs/awesome/module/fib-app.md.html">Galego</a> <a href="../../../../it/docs/awesome/module/fib-app.md.html">Italiano</a> <a href="../../../../ru/docs/awesome/module/fib-app.md.html">Русский</a> <a href="../../../../ja/docs/awesome/module/fib-app.md.html">日本語</a> <a href="../../../../ko/docs/awesome/module/fib-app.md.html">한국어</a> <a href="../../../../zh-tw/docs/awesome/module/fib-app.md.html">繁體中文</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Awesome 社區模塊 </font></font></span><div class="search"><span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input type="text" class="searchbox ds-input" placeholder="Search" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-label="search input" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Avenir, &quot;Segoe UI&quot;, Arial, &quot;Hiragino Sans GB&quot;, 冬青黑, &quot;Microsoft YaHei&quot;, 微软雅黑, SimSun, 宋体, Helvetica, Tahoma, &quot;Arial sans-serif&quot;; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div class="ds-dataset-1"></div></span></span></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">首頁</font></font></a></li><li><a href="../readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 社區模塊 </font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> fib-app </font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 開髮指南 </font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="../../guide/about.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs 是什麼？</font></font></a></li>
+<li><a href="../../guide/install.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">安裝運行環境</font></font></a></li>
+<li><a href="../../guide/hello.md.html" class="notranslate">hello, world</a></li>
+<li><a href="../../guide/test.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">美好生活從測試開始</font></font></a></li>
+<li><a href="../../guide/profiler.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">找出性能殺手</font></font></a></li>
+<li><a href="../../guide/desktop.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">快速開發桌面應用</font></font></a></li>
+<li><a href="../../guide/server-hot-update.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">服務端模塊熱更新</font></font></a></li>
+<li><a href="../../guide/host-routes.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">域名路由</font></font></a></li>
+<li><a href="../../guide/x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs 中X509 證書的使用</font></font></a></li>
+<li><a href="../../guide/contribute.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">添加native 模塊</font></font></a></li>
+</ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_module" aria-controls="collapse_module"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 基礎模塊 </font></font></a></h4></div><div id="collapse_module" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="../../manual/module/ifs/assert.md.html" class="notranslate">assert</a></li>
+<li><a href="../../manual/module/ifs/base32.md.html" class="notranslate">base32</a></li>
+<li><a href="../../manual/module/ifs/base64.md.html" class="notranslate">base64</a></li>
+<li><a href="../../manual/module/ifs/base64vlq.md.html" class="notranslate">base64vlq</a></li>
+<li><a href="../../manual/module/ifs/bson.md.html" class="notranslate">bson</a></li>
+<li><a href="../../manual/module/ifs/child_process.md.html" class="notranslate">child_process</a></li>
+<li><a href="../../manual/module/ifs/console.md.html" class="notranslate">console</a></li>
+<li><a href="../../manual/module/ifs/constants.md.html" class="notranslate">constants</a></li>
+<li><a href="../../manual/module/ifs/coroutine.md.html" class="notranslate">coroutine</a></li>
+<li><a href="../../manual/module/ifs/crypto.md.html" class="notranslate">crypto</a></li>
+<li><a href="../../manual/module/ifs/db.md.html" class="notranslate">db</a></li>
+<li><a href="../../manual/module/ifs/dgram.md.html" class="notranslate">dgram</a></li>
+<li><a href="../../manual/module/ifs/dns.md.html" class="notranslate">dns</a></li>
+<li><a href="../../manual/module/ifs/encoding.md.html" class="notranslate">encoding</a></li>
+<li><a href="../../manual/module/ifs/fs.md.html" class="notranslate">fs</a></li>
+<li><a href="../../manual/module/ifs/gd.md.html" class="notranslate">gd</a></li>
+<li><a href="../../manual/module/ifs/global.md.html" class="notranslate">global</a></li>
+<li><a href="../../manual/module/ifs/gui.md.html" class="notranslate">gui</a></li>
+<li><a href="../../manual/module/ifs/hash.md.html" class="notranslate">hash</a></li>
+<li><a href="../../manual/module/ifs/hex.md.html" class="notranslate">hex</a></li>
+<li><a href="../../manual/module/ifs/http.md.html" class="notranslate">http</a></li>
+<li><a href="../../manual/module/ifs/iconv.md.html" class="notranslate">iconv</a></li>
+<li><a href="../../manual/module/ifs/io.md.html" class="notranslate">io</a></li>
+<li><a href="../../manual/module/ifs/json.md.html" class="notranslate">json</a></li>
+<li><a href="../../manual/module/ifs/mq.md.html" class="notranslate">mq</a></li>
+<li><a href="../../manual/module/ifs/msgpack.md.html" class="notranslate">msgpack</a></li>
+<li><a href="../../manual/module/ifs/net.md.html" class="notranslate">net</a></li>
+<li><a href="../../manual/module/ifs/os.md.html" class="notranslate">os</a></li>
+<li><a href="../../manual/module/ifs/path.md.html" class="notranslate">path</a></li>
+<li><a href="../../manual/module/ifs/path_posix.md.html" class="notranslate">path_posix</a></li>
+<li><a href="../../manual/module/ifs/path_win32.md.html" class="notranslate">path_win32</a></li>
+<li><a href="../../manual/module/ifs/process.md.html" class="notranslate">process</a></li>
+<li><a href="../../manual/module/ifs/profiler.md.html" class="notranslate">profiler</a></li>
+<li><a href="../../manual/module/ifs/punycode.md.html" class="notranslate">punycode</a></li>
+<li><a href="../../manual/module/ifs/querystring.md.html" class="notranslate">querystring</a></li>
+<li><a href="../../manual/module/ifs/registry.md.html" class="notranslate">registry</a></li>
+<li><a href="../../manual/module/ifs/ssl.md.html" class="notranslate">ssl</a></li>
+<li><a href="../../manual/module/ifs/string_decoder.md.html" class="notranslate">string_decoder</a></li>
+<li><a href="../../manual/module/ifs/test.md.html" class="notranslate">test</a></li>
+<li><a href="../../manual/module/ifs/timers.md.html" class="notranslate">timers</a></li>
+<li><a href="../../manual/module/ifs/tty.md.html" class="notranslate">tty</a></li>
+<li><a href="../../manual/module/ifs/url.md.html" class="notranslate">url</a></li>
+<li><a href="../../manual/module/ifs/util.md.html" class="notranslate">util</a></li>
+<li><a href="../../manual/module/ifs/uuid.md.html" class="notranslate">uuid</a></li>
+<li><a href="../../manual/module/ifs/vm.md.html" class="notranslate">vm</a></li>
+<li><a href="../../manual/module/ifs/ws.md.html" class="notranslate">ws</a></li>
+<li><a href="../../manual/module/ifs/xml.md.html" class="notranslate">xml</a></li>
+<li><a href="../../manual/module/ifs/zip.md.html" class="notranslate">zip</a></li>
+<li><a href="../../manual/module/ifs/zlib.md.html" class="notranslate">zlib</a></li>
+</ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_object" aria-controls="collapse_object"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 內置對象 </font></font></a></h4></div><div id="collapse_object" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="../../manual/object/ifs/buffer.md.html" class="notranslate">Buffer</a></li>
+<li><a href="../../manual/object/ifs/bufferedstream.md.html" class="notranslate">BufferedStream</a></li>
+<li><a href="../../manual/object/ifs/chain.md.html" class="notranslate">Chain</a></li>
+<li><a href="../../manual/object/ifs/childprocess.md.html" class="notranslate">ChildProcess</a></li>
+<li><a href="../../manual/object/ifs/cipher.md.html" class="notranslate">Cipher</a></li>
+<li><a href="../../manual/object/ifs/condition.md.html" class="notranslate">Condition</a></li>
+<li><a href="../../manual/object/ifs/dbconnection.md.html" class="notranslate">DbConnection</a></li>
+<li><a href="../../manual/object/ifs/dgramsocket.md.html" class="notranslate">DgramSocket</a></li>
+<li><a href="../../manual/object/ifs/digest.md.html" class="notranslate">Digest</a></li>
+<li><a href="../../manual/object/ifs/event.md.html" class="notranslate">Event</a></li>
+<li><a href="../../manual/object/ifs/eventemitter.md.html" class="notranslate">EventEmitter</a></li>
+<li><a href="../../manual/object/ifs/fswatcher.md.html" class="notranslate">FSWatcher</a></li>
+<li><a href="../../manual/object/ifs/fiber.md.html" class="notranslate">Fiber</a></li>
+<li><a href="../../manual/object/ifs/file.md.html" class="notranslate">File</a></li>
+<li><a href="../../manual/object/ifs/handler.md.html" class="notranslate">Handler</a></li>
+<li><a href="../../manual/object/ifs/heapgraphedge.md.html" class="notranslate">HeapGraphEdge</a></li>
+<li><a href="../../manual/object/ifs/heapgraphnode.md.html" class="notranslate">HeapGraphNode</a></li>
+<li><a href="../../manual/object/ifs/heapsnapshot.md.html" class="notranslate">HeapSnapshot</a></li>
+<li><a href="../../manual/object/ifs/httpclient.md.html" class="notranslate">HttpClient</a></li>
+<li><a href="../../manual/object/ifs/httpcollection.md.html" class="notranslate">HttpCollection</a></li>
+<li><a href="../../manual/object/ifs/httpcookie.md.html" class="notranslate">HttpCookie</a></li>
+<li><a href="../../manual/object/ifs/httphandler.md.html" class="notranslate">HttpHandler</a></li>
+<li><a href="../../manual/object/ifs/httpmessage.md.html" class="notranslate">HttpMessage</a></li>
+<li><a href="../../manual/object/ifs/httprepeater.md.html" class="notranslate">HttpRepeater</a></li>
+<li><a href="../../manual/object/ifs/httprequest.md.html" class="notranslate">HttpRequest</a></li>
+<li><a href="../../manual/object/ifs/httpresponse.md.html" class="notranslate">HttpResponse</a></li>
+<li><a href="../../manual/object/ifs/httpserver.md.html" class="notranslate">HttpServer</a></li>
+<li><a href="../../manual/object/ifs/httpuploaddata.md.html" class="notranslate">HttpUploadData</a></li>
+<li><a href="../../manual/object/ifs/httpsserver.md.html" class="notranslate">HttpsServer</a></li>
+<li><a href="../../manual/object/ifs/image.md.html" class="notranslate">Image</a></li>
+<li><a href="../../manual/object/ifs/leveldb.md.html" class="notranslate">LevelDB</a></li>
+<li><a href="../../manual/object/ifs/lock.md.html" class="notranslate">Lock</a></li>
+<li><a href="../../manual/object/ifs/lrucache.md.html" class="notranslate">LruCache</a></li>
+<li><a href="../../manual/object/ifs/mssql.md.html" class="notranslate">MSSQL</a></li>
+<li><a href="../../manual/object/ifs/memorystream.md.html" class="notranslate">MemoryStream</a></li>
+<li><a href="../../manual/object/ifs/message.md.html" class="notranslate">Message</a></li>
+<li><a href="../../manual/object/ifs/mongocollection.md.html" class="notranslate">MongoCollection</a></li>
+<li><a href="../../manual/object/ifs/mongocursor.md.html" class="notranslate">MongoCursor</a></li>
+<li><a href="../../manual/object/ifs/mongodb.md.html" class="notranslate">MongoDB</a></li>
+<li><a href="../../manual/object/ifs/mongoid.md.html" class="notranslate">MongoID</a></li>
+<li><a href="../../manual/object/ifs/mysql.md.html" class="notranslate">MySQL</a></li>
+<li><a href="../../manual/object/ifs/pkey.md.html" class="notranslate">PKey</a></li>
+<li><a href="../../manual/object/ifs/rangestream.md.html" class="notranslate">RangeStream</a></li>
+<li><a href="../../manual/object/ifs/redis.md.html" class="notranslate">Redis</a></li>
+<li><a href="../../manual/object/ifs/redishash.md.html" class="notranslate">RedisHash</a></li>
+<li><a href="../../manual/object/ifs/redislist.md.html" class="notranslate">RedisList</a></li>
+<li><a href="../../manual/object/ifs/redisset.md.html" class="notranslate">RedisSet</a></li>
+<li><a href="../../manual/object/ifs/redissortedset.md.html" class="notranslate">RedisSortedSet</a></li>
+<li><a href="../../manual/object/ifs/routing.md.html" class="notranslate">Routing</a></li>
+<li><a href="../../manual/object/ifs/sqlite.md.html" class="notranslate">SQLite</a></li>
+<li><a href="../../manual/object/ifs/sandbox.md.html" class="notranslate">SandBox</a></li>
+<li><a href="../../manual/object/ifs/seekablestream.md.html" class="notranslate">SeekableStream</a></li>
+<li><a href="../../manual/object/ifs/semaphore.md.html" class="notranslate">Semaphore</a></li>
+<li><a href="../../manual/object/ifs/service.md.html" class="notranslate">Service</a></li>
+<li><a href="../../manual/object/ifs/smtp.md.html" class="notranslate">Smtp</a></li>
+<li><a href="../../manual/object/ifs/socket.md.html" class="notranslate">Socket</a></li>
+<li><a href="../../manual/object/ifs/sslhandler.md.html" class="notranslate">SslHandler</a></li>
+<li><a href="../../manual/object/ifs/sslserver.md.html" class="notranslate">SslServer</a></li>
+<li><a href="../../manual/object/ifs/sslsocket.md.html" class="notranslate">SslSocket</a></li>
+<li><a href="../../manual/object/ifs/stat.md.html" class="notranslate">Stat</a></li>
+<li><a href="../../manual/object/ifs/statswatcher.md.html" class="notranslate">StatsWatcher</a></li>
+<li><a href="../../manual/object/ifs/stream.md.html" class="notranslate">Stream</a></li>
+<li><a href="../../manual/object/ifs/stringdecoder.md.html" class="notranslate">StringDecoder</a></li>
+<li><a href="../../manual/object/ifs/tcpserver.md.html" class="notranslate">TcpServer</a></li>
+<li><a href="../../manual/object/ifs/timer.md.html" class="notranslate">Timer</a></li>
+<li><a href="../../manual/object/ifs/urlobject.md.html" class="notranslate">UrlObject</a></li>
+<li><a href="../../manual/object/ifs/websocket.md.html" class="notranslate">WebSocket</a></li>
+<li><a href="../../manual/object/ifs/websocketmessage.md.html" class="notranslate">WebSocketMessage</a></li>
+<li><a href="../../manual/object/ifs/webview.md.html" class="notranslate">WebView</a></li>
+<li><a href="../../manual/object/ifs/worker.md.html" class="notranslate">Worker</a></li>
+<li><a href="../../manual/object/ifs/x509cert.md.html" class="notranslate">X509Cert</a></li>
+<li><a href="../../manual/object/ifs/x509crl.md.html" class="notranslate">X509Crl</a></li>
+<li><a href="../../manual/object/ifs/x509req.md.html" class="notranslate">X509Req</a></li>
+<li><a href="../../manual/object/ifs/xmlattr.md.html" class="notranslate">XmlAttr</a></li>
+<li><a href="../../manual/object/ifs/xmlcdatasection.md.html" class="notranslate">XmlCDATASection</a></li>
+<li><a href="../../manual/object/ifs/xmlcharacterdata.md.html" class="notranslate">XmlCharacterData</a></li>
+<li><a href="../../manual/object/ifs/xmlcomment.md.html" class="notranslate">XmlComment</a></li>
+<li><a href="../../manual/object/ifs/xmldocument.md.html" class="notranslate">XmlDocument</a></li>
+<li><a href="../../manual/object/ifs/xmldocumenttype.md.html" class="notranslate">XmlDocumentType</a></li>
+<li><a href="../../manual/object/ifs/xmlelement.md.html" class="notranslate">XmlElement</a></li>
+<li><a href="../../manual/object/ifs/xmlnamednodemap.md.html" class="notranslate">XmlNamedNodeMap</a></li>
+<li><a href="../../manual/object/ifs/xmlnode.md.html" class="notranslate">XmlNode</a></li>
+<li><a href="../../manual/object/ifs/xmlnodelist.md.html" class="notranslate">XmlNodeList</a></li>
+<li><a href="../../manual/object/ifs/xmlprocessinginstruction.md.html" class="notranslate">XmlProcessingInstruction</a></li>
+<li><a href="../../manual/object/ifs/xmltext.md.html" class="notranslate">XmlText</a></li>
+<li><a href="../../manual/object/ifs/zipfile.md.html" class="notranslate">ZipFile</a></li>
+<li><a href="../../manual/object/ifs/object.md.html" class="notranslate">object</a></li>
+</ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_awesome" aria-controls="collapse_awesome"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 社區模塊 </font></font></a></h4></div><div id="collapse_awesome" class="panel-collapse collapse in" aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="fib-session.md.html" class="notranslate">fib-session</a></li>
+<li><a href="fib-pool.md.html" class="notranslate">fib-pool</a></li>
+<li><a href="fib-orm.md.html" class="notranslate">fib-orm</a></li>
+<li class="active"><a href="fib-app.md.html" class="notranslate">fib-app</a></li>
+<li><a href="fib-kv.md.html" class="notranslate">fib-kv</a></li>
+<li><a href="fib-rpc.md.html" class="notranslate">fib-rpc</a></li>
+<li><a href="fib-qr.md.html" class="notranslate">fib-qr</a></li>
+<li><a href="fib-pug.md.html" class="notranslate">fib-pug</a></li>
+<li><a href="ejs.md.html" class="notranslate">ejs</a></li>
+<li><a href="juicer.md.html" class="notranslate">Juicer</a></li>
+<li><a href="highlight.js.md.html" class="notranslate">highlight.js</a></li>
+<li><a href="marked.md.html" class="notranslate">marked</a></li>
+<li><a href="node-cron.md.html" class="notranslate">node-cron</a></li>
+<li><a href="debug.md.html" class="notranslate">debug</a></li>
+<li><a href="benchmark.js.md.html" class="notranslate">benchmark.js</a></li>
+<li><a href="sinon.md.html" class="notranslate">sinon</a></li>
+<li><a href="node-mime.md.html" class="notranslate">node-mime</a></li>
+<li><a href="validatorjs.md.html" class="notranslate">validatorjs</a></li>
+<li><a href="superstruct.md.html" class="notranslate">superstruct</a></li>
+<li><a href="cluster-server.md.html" class="notranslate">cluster-server</a></li>
+<li><a href="synaptic.md.html" class="notranslate">synaptic</a></li>
+<li><a href="source-map.md.html" class="notranslate">source-map</a></li>
+<li><a href="json-format.md.html" class="notranslate">json-format</a></li>
+<li><a href="viz.js.md.html" class="notranslate">viz.js</a></li>
+<li><a href="nomnoml.md.html" class="notranslate">nomnoml</a></li>
+<li><a href="pegjs.md.html" class="notranslate">pegjs</a></li>
+<li><a href="uglify-js.md.html" class="notranslate">uglify-js</a></li>
+<li><a href="js-beautify.md.html" class="notranslate">js-beautify</a></li>
+<li><a href="chalk-animation.md.html" class="notranslate">chalk-animation</a></li>
+<li><a href="jsrsasign.md.html" class="notranslate">jsrsasign</a></li>
+<li><a href="crypto-js.md.html" class="notranslate">crypto-js</a></li>
+<li><a href="ascii-table.md.html" class="notranslate">ascii-table</a></li>
+<li><a href="logstream.md.html" class="notranslate">logstream</a></li>
+<li><a href="ci.md.html" class="notranslate">ci</a></li>
+<li><a href="fs-readdir-recursive.md.html" class="notranslate">fs-readdir-recursive</a></li>
+<li><a href="mkdirp.md.html" class="notranslate">mkdirp</a></li>
+<li><a href="rmdirr.md.html" class="notranslate">rmdirr</a></li>
+<li><a href="detect-port.md.html" class="notranslate">detect-port</a></li>
+<li><a href="bitcoinjs-lib.md.html" class="notranslate">bitcoinjs-lib</a></li>
+<li><a href="rakuten.md.html" class="notranslate">Rakuten</a></li>
+</ul>
+ </div></div></div>  </div></div><div class="content"><div class="social-share share-component" data-sites="weibo,twitter" data-description="分享"></div> <div name="fib-app" data-unique="fib-app"></div><h1 id="fib-app"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fib-app</font></font></h1>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs 應用程序基礎api 框架</font></font></p>
+<div name="Install" data-unique="Install"></div><h2 id="Install"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Install</font></font></h2>
+<pre><code class="lang-sh"><div class="line-numbers">1</div>npm install fib-app [--save]
+</code></pre>
+<div name="Test" data-unique="Test"></div><h2 id="Test"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Test</font></font></h2>
+<pre><code class="lang-sh"><div class="line-numbers">1</div>npm <span class="hljs-built_in">test</span>
+</code></pre>
+<div name="建立基础脚本" data-unique="建立基础脚本"></div><h2 id="建立基础脚本"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">建立基礎腳本</font></font></h2>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21</div><span class="hljs-keyword">const</span> http = <span class="hljs-built_in">require</span>(<span class="hljs-string">'http'</span>);
+<span class="hljs-keyword">const</span> util = <span class="hljs-built_in">require</span>(<span class="hljs-string">'util'</span>)
+<span class="hljs-keyword">const</span> Session = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fib-session'</span>)
+<span class="hljs-keyword">const</span> App = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../'</span>);<font></font>
+<font></font>
+<span class="hljs-keyword">var</span> app = <span class="hljs-keyword">new</span> App(<span class="hljs-string">'sqlite:test.db'</span>, {
+  <span class="hljs-attr">uuid</span>: <span class="hljs-literal">true</span><font></font>
+});<font></font>
+app.db.use(<span class="hljs-built_in">require</span>(<span class="hljs-string">'./defs/person'</span>));<font></font>
+<font></font>
+<span class="hljs-keyword">var</span> session = <span class="hljs-keyword">new</span> Session(<span class="hljs-keyword">new</span> util.LruCache(<span class="hljs-number">20000</span>), {
+  <span class="hljs-attr">timeout</span>: <span class="hljs-number">60</span> * <span class="hljs-number">1000</span><font></font>
+});<font></font>
+<font></font>
+<span class="hljs-keyword">var</span> svr = <span class="hljs-keyword">new</span> http.Server(<span class="hljs-number">8080</span>, [<font></font>
+  session.cookie_filter,<font></font>
+  {<font></font>
+    <span class="hljs-string">'/1.0'</span>: app<font></font>
+  }<font></font>
+]);<font></font>
+svr.run();<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">其中</font></font><code>person</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">是Model定義模塊，內容如下：</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7</div><span class="hljs-built_in">module</span>.exports = <span class="hljs-function"><span class="hljs-params">db</span> =&gt;</span> {<font></font>
+  db.define(<span class="hljs-string">'person'</span>, {
+    <span class="hljs-attr">name</span>: <span class="hljs-built_in">String</span>,
+    <span class="hljs-attr">sex</span>: [<span class="hljs-string">"male"</span>, <span class="hljs-string">"female"</span>],
+    <span class="hljs-attr">age</span>: <span class="hljs-built_in">Number</span><font></font>
+  });<font></font>
+};<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">這是一個標準的orm 定義，同樣可以使用orm 的其它功能，比如類型檢查，事件等。</font></font></p>
+<div name="API-数据格式" data-unique="API-数据格式"></div><h2 id="API-数据格式"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">API 數據格式</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">對於POST 和PUT 請求，請求的主體必須是JSON 格式，而且HTTP header 的Content-Type 需要設置為application/json。</font></font></p>
+<pre><code class="lang-sh"><div class="line-numbers">1
+2
+3
+4</div>curl -X PUT \<font></font>
+  -H <span class="hljs-string">"Content-Type: application/json"</span> \<font></font>
+  -d <span class="hljs-string">'{"name": "tom","sex":"male","age":23}'</span> \<font></font>
+  http://localhost/1.0/person/57fbbdb0a2400000<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">對於所有的請求，響應格式都是一個JSON 對象。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">一個請求是否成功是由HTTP 狀態碼標明的。</font><font style="vertical-align: inherit;">一個2XX 的狀態碼表示成功，而一個4XX 表示請求失敗。</font><font style="vertical-align: inherit;">當一個請求失敗時響應的主體仍然是一個JSON 對象，但是總是會包含code 和message 這兩個字段，你可以用它們來進行調試。</font><font style="vertical-align: inherit;">舉個例子，如果一個請求權限認證失敗，會返回以下信息：</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4</div>{
+  <span class="hljs-string">"code"</span>: <span class="hljs-number">4030501</span>,
+  <span class="hljs-string">"message"</span>: <span class="hljs-string">"The operation isn’t allowed for clients due to class-level permissions."</span><font></font>
+}<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">code 編碼分為三個部分，前三位403 表示錯誤類型，05 表示數據表編號，01 表示詳細錯誤編碼。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">對於GET 請求，通常會返回對像數據，根據GET 請求的地址不同，可能會返回一個對象，也可能會返回一個數組。</font><font style="vertical-align: inherit;">比如：</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5</div>{
+  <span class="hljs-string">"name"</span>: <span class="hljs-string">"tom"</span>,
+  <span class="hljs-string">"sex"</span>: <span class="hljs-string">"male"</span>,
+  <span class="hljs-string">"age"</span>: <span class="hljs-number">23</span><font></font>
+}<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">或者：</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12</div>[<font></font>
+  {<font></font>
+    <span class="hljs-string">"name"</span>: <span class="hljs-string">"tom"</span>,
+    <span class="hljs-string">"sex"</span>: <span class="hljs-string">"male"</span>,
+    <span class="hljs-string">"age"</span>: <span class="hljs-number">23</span><font></font>
+  },<font></font>
+  {<font></font>
+    <span class="hljs-string">"name"</span>: <span class="hljs-string">"lily"</span>,
+    <span class="hljs-string">"sex"</span>: <span class="hljs-string">"female"</span>,
+    <span class="hljs-string">"age"</span>: <span class="hljs-number">22</span><font></font>
+  }<font></font>
+]<font></font>
+</code></pre>
+<div name="特殊字段" data-unique="特殊字段"></div><h2 id="特殊字段"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">特殊字段</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">對像數據中，有四個特殊含義的字段，是不允許通過API更改的。</font><font style="vertical-align: inherit;">分別是</font></font><code>id</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><code>updatedAt</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><code>createdAt</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><code>createdBy</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">其中</font></font><code>id</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><code>updatedAt</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">,</font></font><code>createdAt</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">單個字段會自動創建和修改。</font></font><code>createdBy</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">則需要自行指定類型。</font></font></p>
+<div name="基础对象访问-API" data-unique="基础对象访问-API"></div><h2 id="基础对象访问-API"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">基礎對象訪問API</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">完成這樣的數據定義，便直接擁有了一整套符合REST api 規範的接口調用：</font></font></p>
+<table>
+<thead>
+<tr>
+<th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">url</font></font></th>
+<th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">method</font></font></th>
+<th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">action</font></font></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/1.0/:className</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">POST</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">創建新對象</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/1.0/:className/:id</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">GET</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">讀取對象</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/1.0/:className/:id</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">PUT</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">修改對象</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/1.0/:className/:id</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">DELETE</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">刪除對象</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/1.0/:className</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">GET</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">查詢對象列表</font></font></td>
+</tr>
+</tbody>
+</table>
+<div name="创建新对象" data-unique="创建新对象"></div><h3 id="创建新对象"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">創建新對象</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">為了創建一個新的對象，應該向class 的URL 發送一個POST 請求，其中應該包含對象本身。</font><font style="vertical-align: inherit;">例如，要創建如上所說的對象：</font></font></p>
+<pre><code class="lang-sh"><div class="line-numbers">1
+2
+3
+4</div>curl -X POST \<font></font>
+  -H <span class="hljs-string">"Content-Type: application/json"</span> \<font></font>
+  -d <span class="hljs-string">'{"name": "tom","sex":"male","age":23}'</span> \<font></font>
+  http://localhost/1.0/person<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">當創建成功時，HTTP 的返回是201 Created，響應的主體是一個JSON 對象，包含新的對象的objectId 和createdAt 時間戳：</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4</div>{
+  <span class="hljs-string">"createdAt"</span>: <span class="hljs-string">"2017-11-25T01:39:35.931Z"</span>,
+  <span class="hljs-string">"id"</span>: <span class="hljs-string">"57fbbdb0a2400000"</span><font></font>
+}<font></font>
+</code></pre>
+<div name="读取对象" data-unique="读取对象"></div><h3 id="读取对象"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">讀取對象</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">當你創建了一個對象時，你可以通過發送一個GET 請求到返回的header 的Location 以獲取它的內容。</font><font style="vertical-align: inherit;">例如，為了得到我們上面創建的對象：</font></font></p>
+<pre><code class="lang-sh"><div class="line-numbers">1</div>curl -X GET http://localhost/1.0/person/57fbbdb0a2400000
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返回的主體是一個JSON對象包含所有用戶提供的field加上</font></font><code>createdAt</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、</font></font><code>updatedAt</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和</font></font><code>id</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">字段：</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8</div>{
+  <span class="hljs-string">"name"</span>: <span class="hljs-string">"tom"</span>,
+  <span class="hljs-string">"sex"</span>: <span class="hljs-string">"male"</span>,
+  <span class="hljs-string">"age"</span>: <span class="hljs-number">23</span>,
+  <span class="hljs-string">"createdAt"</span>: <span class="hljs-string">"2017-11-25T01:39:35.931Z"</span>,
+  <span class="hljs-string">"updatedAt"</span>: <span class="hljs-string">"2017-11-25T01:39:35.931Z"</span>,
+  <span class="hljs-string">"id"</span>: <span class="hljs-string">"57fbbdb0a2400000"</span><font></font>
+}<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">通過設置返回字段</font></font><code>keys</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，可以定制返回的內容，</font></font><code>keys</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的內容是一個以</font></font><code>,</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">分割的字段名稱字符串，：</font></font></p>
+<pre><code class="lang-sh"><div class="line-numbers">1</div>curl -X GET http://localhost/1.0/person/57fbbdb0a2400000?keys=name%2Csex
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">將返回：</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4</div>{
+  <span class="hljs-string">"name"</span>: <span class="hljs-string">"tom"</span>,
+  <span class="hljs-string">"sex"</span>: <span class="hljs-string">"male"</span><font></font>
+}<font></font>
+</code></pre>
+<div name="修改对象" data-unique="修改对象"></div><h3 id="修改对象"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">修改對象</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">為了更改一個對像已經有的數據，你可以發送一個PUT 請求到對象相應的URL 上，任何你未指定的key 都不會更改，所以你可以只更新對像數據的一個子集。</font><font style="vertical-align: inherit;">例如，我們來更改我們對象的一個age 字段：</font></font></p>
+<pre><code class="lang-sh"><div class="line-numbers">1
+2
+3
+4</div>curl -X PUT \<font></font>
+  -H <span class="hljs-string">"Content-Type: application/json"</span> \<font></font>
+  -d <span class="hljs-string">'{"age": 25}'</span> \<font></font>
+  http://localhost/1.0/person/57fbbdb0a2400000<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返回的JSON對象會包含</font></font><code>updatedAt</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和</font></font><code>id</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">字段，表明更新發生的時間：</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4</div>{
+  <span class="hljs-string">"updatedAt"</span>: <span class="hljs-string">"2017-11-25T01:39:35.931Z"</span>,
+  <span class="hljs-string">"id"</span>: <span class="hljs-string">"57fbbdb0a2400000"</span><font></font>
+}<font></font>
+</code></pre>
+<div name="删除对象" data-unique="删除对象"></div><h3 id="删除对象"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">刪除對象</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">為了刪除一個對象，可以發送一個DELETE 請求到指定的對象的URL，比如：</font></font></p>
+<pre><code class="lang-sh"><div class="line-numbers">1</div>curl -X DELETE http://localhost/1.0/person/57fbbdb0a2400000
+</code></pre>
+<div name="查询对象列表" data-unique="查询对象列表"></div><h3 id="查询对象列表"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">查詢對象列表</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">通過發送一個GET 請求到類的URL 上，不需要任何URL 參數，你就可以一次獲取多個對象。</font><font style="vertical-align: inherit;">下面就是簡單地獲取所有用戶：</font></font></p>
+<pre><code class="lang-sh"><div class="line-numbers">1</div>curl -X GET http://localhost/1.0/person
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返回的值就是一個JSON 對象包含了results 字段，它的值就是對象的列表：</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18</div>[<font></font>
+  {<font></font>
+    <span class="hljs-string">"name"</span>: <span class="hljs-string">"tom"</span>,
+    <span class="hljs-string">"sex"</span>: <span class="hljs-string">"male"</span>,
+    <span class="hljs-string">"age"</span>: <span class="hljs-number">23</span>,
+    <span class="hljs-string">"createdAt"</span>: <span class="hljs-string">"2017-11-25T01:39:35.931Z"</span>,
+    <span class="hljs-string">"updatedAt"</span>: <span class="hljs-string">"2017-11-25T01:39:35.931Z"</span>,
+    <span class="hljs-string">"id"</span>: <span class="hljs-string">"57fbbdb0a2400000"</span><font></font>
+  },<font></font>
+  {<font></font>
+    <span class="hljs-string">"name"</span>: <span class="hljs-string">"lily"</span>,
+    <span class="hljs-string">"sex"</span>: <span class="hljs-string">"female"</span>,
+    <span class="hljs-string">"age"</span>: <span class="hljs-number">22</span>,
+    <span class="hljs-string">"createdAt"</span>: <span class="hljs-string">"2017-11-25T01:39:35.931Z"</span>,
+    <span class="hljs-string">"updatedAt"</span>: <span class="hljs-string">"2017-11-25T01:39:35.931Z"</span>,
+    <span class="hljs-string">"id"</span>: <span class="hljs-string">"57fbbdb0a2400001"</span><font></font>
+  }<font></font>
+]<font></font>
+</code></pre>
+<h4 id="keys-字段定制"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">keys 字段定制</font></font></h4>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">與對象查詢一樣，查詢列表時可以通過設定</font></font><code>keys</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">來定制返回結果所包含的字段。</font></font><code>keys</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的內容是一個以</font></font><code>,</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">分割的字段名稱字符串，例如：</font></font></p>
+<pre><code class="lang-sh"><div class="line-numbers">1</div>curl -X GET http://localhost/1.0/person?keys=name%2Cage
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">將指定只返回</font></font><code>name</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和</font></font><code>age</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">兩個字段。</font></font></p>
+<h4 id="where-过滤条件"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">where 過濾條件</font></font></h4>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">通過</font></font><code>where</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">參數的形式可以對查詢對像做出約束。</font></font></p>
+<p><code>where</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">參數的值應該是JSON編碼過的。</font><font style="vertical-align: inherit;">就是說，如果你查看真正被發出的URL請求，它應該是先被JSON編碼過，然後又被URL編碼過。</font><font style="vertical-align: inherit;">最簡單的使用</font></font><code>where</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">參數的方式就是包含應有的key和value。</font><font style="vertical-align: inherit;">例如，如果我們想要搜索名字為tom的用戶，我們應該這樣構造查詢:</font></font></p>
+<pre><code class="lang-sh"><div class="line-numbers">1</div>curl -X GET http://localhost/1.0/person?<span class="hljs-built_in">where</span>=%7B%22name%22%3A%22tom%22%7D
+</code></pre>
+<p><code>where</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 的值為一個urlencode 後的JSON 字符串，內容為：</font></font><code>{"name":"tom"}</code></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">除了完全匹配一個給定的值以外，</font></font><code>where</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">也支持比較的方式，比如包含。</font></font><code>where</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">參數支持如下選項：</font></font></p>
+<table>
+<thead>
+<tr>
+<th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">key</font></font></th>
+<th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">operation</font></font></th>
+<th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sample</font></font></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">eq</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">等於</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{"name":{"eq":"tom"}} 或者{"name":"tom"}</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ne</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">不等於</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{"name":{"ne":"tom"}}</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">gt</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">大於</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{"age":{"gt":"24"}}</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">gte</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">大於等於</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{"age":{"gte":"24"}}</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">lt</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">小於</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{"age":{"lt":"24"}}</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">lte</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">小於等於</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{"age":{"lte":"24"}}</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">like</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">模糊查詢</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{"name":{"like":"%m"}}</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">not_like</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">模糊查詢</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{"name":{"not_like":"%m"}}</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">between</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">區間比較</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{"age":{"between":[22,25]}}</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">not_between</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">區間比較</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{"age":{"not_between":[22,25]}}</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">in</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">枚舉</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{"name":{"in":["tom","lily"]}}</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">not_in</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">枚舉</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{"name":{"not_in":["tom","lily"]}}</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">or</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">或運算</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{"or":[{"name":"tom"},{"age":24}]}</font></font></td>
+</tr>
+</tbody>
+</table>
+<h4 id="skip-跳过记录"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">skip 跳過記錄</font></font></h4>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">通過</font></font><code>skip</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">選項，可以跳過指定的記錄數，達到翻頁的效果。</font></font></p>
+<pre><code class="lang-sh"><div class="line-numbers">1</div>curl -X GET http://localhost/1.0/person?skip=100
+</code></pre>
+<h4 id="limit-返回记录限制"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">limit 返回記錄限制</font></font></h4>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">通過</font></font><code>limit</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">選項，可以限制返回記錄數，</font></font><code>limit</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的有效數字為1-1000，缺省為100。</font></font></p>
+<pre><code class="lang-sh"><div class="line-numbers">1</div>curl -X GET http://localhost/1.0/person?<span class="hljs-built_in">limit</span>=100
+</code></pre>
+<h4 id="order-指定排序方式"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">order 指定排序方式</font></font></h4>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">通過</font></font><code>order</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">選項，設定返回結果集的排序方式，字段名前包含</font></font><code>-</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">時為倒序。</font></font></p>
+<pre><code class="lang-sh"><div class="line-numbers">1</div>curl -X GET http://localhost/1.0/person?order=-id
+</code></pre>
+<h4 id="count-返回结果总数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">count 返回結果總數</font></font></h4>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在請求時增加</font></font><code>count</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">可以在返回指定內容的同時返回結果集的總數。</font></font></p>
+<pre><code class="lang-sh"><div class="line-numbers">1</div>curl -X GET http://localhost/1.0/person?count=1&amp;<span class="hljs-built_in">limit</span>=1
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">此時返回結果將包含</font></font><code>count</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和</font></font><code>results</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">兩個字段，分別包含總數和結果：</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13</div>{
+  <span class="hljs-string">"count"</span>: <span class="hljs-number">2</span>,
+  <span class="hljs-string">"results"</span>: [<font></font>
+    {<font></font>
+      <span class="hljs-string">"name"</span>: <span class="hljs-string">"tom"</span>,
+      <span class="hljs-string">"sex"</span>: <span class="hljs-string">"male"</span>,
+      <span class="hljs-string">"age"</span>: <span class="hljs-number">23</span>,
+      <span class="hljs-string">"createdAt"</span>: <span class="hljs-string">"2017-11-25T01:39:35.931Z"</span>,
+      <span class="hljs-string">"updatedAt"</span>: <span class="hljs-string">"2017-11-25T01:39:35.931Z"</span>,
+      <span class="hljs-string">"id"</span>: <span class="hljs-string">"57fbbdb0a2400000"</span><font></font>
+    }<font></font>
+  ]<font></font>
+}<font></font>
+</code></pre>
+<div name="建立扩展对象" data-unique="建立扩展对象"></div><h2 id="建立扩展对象"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">建立擴展對象</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">通過orm 定義hasOne 和hasMany，可以定義對象之間的關聯關係，並在API 上體現出來，例如：</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9</div><span class="hljs-built_in">module</span>.exports = <span class="hljs-function"><span class="hljs-params">db</span> =&gt;</span> {
+  <span class="hljs-keyword">var</span> Person = db.models.person;<font></font>
+<font></font>
+  <span class="hljs-keyword">var</span> Pet = db.define(<span class="hljs-string">'pet'</span>, {
+    <span class="hljs-attr">name</span>: <span class="hljs-built_in">String</span><font></font>
+  });<font></font>
+<font></font>
+  Person.hasMany(<span class="hljs-string">'pets'</span>, Pet);<font></font>
+};<font></font>
+</code></pre>
+<div name="扩展对象访问-API" data-unique="扩展对象访问-API"></div><h2 id="扩展对象访问-API"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">擴展對象訪問API</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">下面是擴展對象的API 定義：</font></font></p>
+<table>
+<thead>
+<tr>
+<th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">url</font></font></th>
+<th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">method</font></font></th>
+<th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">action</font></font></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/1.0/:className/:id/:extendName</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">PUT</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">設置擴展對象</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/1.0/:className/:id/:extendName</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">POST</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">創建擴展對象</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/1.0/:className/:id/:extendName/:rid</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">GET</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">讀取擴展對象</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/1.0/:className/:id/:extendName/:rid</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">PUT</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">修改擴展對象</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/1.0/:className/:id/:extendName/:rid</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">DELETE</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">刪除擴展對象</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/1.0/:className/:id/:extendName</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">GET</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">查詢擴展對象列表</font></font></td>
+</tr>
+</tbody>
+</table>
+<div name="设置扩展对象" data-unique="设置扩展对象"></div><h3 id="设置扩展对象"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">設置擴展對象</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">設置擴展對像是將兩個獨立的對象建立聯繫。</font><font style="vertical-align: inherit;">比如tom 領養了一隻叫cat 的寵物，可以用下面的操作實現：</font></font></p>
+<pre><code class="lang-sh"><div class="line-numbers">1
+2
+3
+4</div>curl -X PUT \<font></font>
+  -H <span class="hljs-string">"Content-Type: application/json"</span> \<font></font>
+  -d <span class="hljs-string">'{"id": "57fbbdb0a2400007"}'</span> \<font></font>
+  http://localhost/1.0/person/57fbbdb0a2400000/pets<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在調用裡需要在body 內指定cat 的id。</font></font></p>
+<div name="创建扩展对象" data-unique="创建扩展对象"></div><h3 id="创建扩展对象"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">創建擴展對象</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">直接創建擴展對象，可以在創建對象的同時，建立對象之間的聯繫。</font><font style="vertical-align: inherit;">比如：</font></font></p>
+<pre><code class="lang-sh"><div class="line-numbers">1
+2
+3
+4</div>curl -X POST \<font></font>
+  -H <span class="hljs-string">"Content-Type: application/json"</span> \<font></font>
+  -d <span class="hljs-string">'{"name": "cat"}'</span> \<font></font>
+  http://localhost/1.0/person/57fbbdb0a2400000/pets<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">將創建一隻名叫cat 的寵物，並建立與tom 的關聯關係。</font></font></p>
+<div name="读取扩展对象" data-unique="读取扩展对象"></div><h3 id="读取扩展对象"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">讀取擴展對象</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">讀取擴展對象與讀取基礎對像很相似，也同樣支持keys 選項：</font></font></p>
+<pre><code class="lang-sh"><div class="line-numbers">1</div>curl -X GET http://localhost/1.0/person/57fbbdb0a2400000/pets/57fbbdb0a2400007
+</code></pre>
+<div name="修改扩展对象" data-unique="修改扩展对象"></div><h3 id="修改扩展对象"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">修改擴展對象</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">讀取擴展對象與讀取基礎對像很相似：</font></font></p>
+<pre><code class="lang-sh"><div class="line-numbers">1
+2
+3
+4</div>curl -X PUT \<font></font>
+  -H <span class="hljs-string">"Content-Type: application/json"</span> \<font></font>
+  -d <span class="hljs-string">'{"name": "cat 1"}'</span> \<font></font>
+  http://localhost/1.0/person/57fbbdb0a2400000/pets/57fbbdb0a2400007<font></font>
+</code></pre>
+<div name="删除扩展对象" data-unique="删除扩展对象"></div><h3 id="删除扩展对象"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">刪除擴展對象</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">刪除擴展對像不會刪除對象本身，只會解除對象之間的關係：</font></font></p>
+<pre><code class="lang-sh"><div class="line-numbers">1</div>curl -X DETELE http://localhost/1.0/person/57fbbdb0a2400000/pets/57fbbdb0a2400007
+</code></pre>
+<div name="查询扩展对象列表" data-unique="查询扩展对象列表"></div><h3 id="查询扩展对象列表"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">查詢擴展對象列表</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">查詢擴展對象列表與查詢基礎對象列表很相似，也同樣支持keys 以及條件過濾等選項：</font></font></p>
+<pre><code class="lang-sh"><div class="line-numbers">1</div>curl -X GET http://localhost/1.0/person/57fbbdb0a2400000/pets
+</code></pre>
+<div name="ACL" data-unique="ACL"></div><h2 id="ACL"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ACL</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">可以通過定義Model 的ACL 控制數據權限。</font><font style="vertical-align: inherit;">比如:</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25</div><span class="hljs-keyword">const</span> orm = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fib-orm'</span>);<font></font>
+<font></font>
+<span class="hljs-built_in">module</span>.exports = <span class="hljs-function"><span class="hljs-params">db</span> =&gt;</span> {<font></font>
+  db.define(<span class="hljs-string">'blog'</span>, {
+    <span class="hljs-attr">title</span>: <span class="hljs-built_in">String</span>,
+    <span class="hljs-attr">detail</span>: <span class="hljs-built_in">String</span>，
+    <span class="hljs-attr">note</span>: <span class="hljs-built_in">String</span><font></font>
+  }, {<font></font>
+    <span class="hljs-attr">ACL</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">session</span>) </span>{
+      <span class="hljs-keyword">return</span> {
+        <span class="hljs-string">"*"</span>: {
+          <span class="hljs-string">"*"</span>: <span class="hljs-literal">false</span><font></font>
+        },<font></font>
+        <span class="hljs-string">"57fbbdb0a2400000"</span>: {
+          <span class="hljs-string">"*"</span>: <span class="hljs-literal">true</span><font></font>
+        },<font></font>
+        <span class="hljs-string">"roles"</span>: {
+          <span class="hljs-string">"user"</span>: {
+            <span class="hljs-string">"read"</span>: <span class="hljs-literal">true</span><font></font>
+          }<font></font>
+        }<font></font>
+      };<font></font>
+    }<font></font>
+  });<font></font>
+};<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">如果定義Model 時未指定ACL，則等同於設定了缺省權限：</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5</div>{
+  <span class="hljs-string">"*"</span>: {
+    <span class="hljs-string">"*"</span>: <span class="hljs-literal">true</span><font></font>
+  }<font></font>
+}<font></font>
+</code></pre>
+<div name="主体" data-unique="主体"></div><h3 id="主体"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">主體</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ACL主體描述有三種，用戶</font></font><code>id</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，用戶</font></font><code>role</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和</font></font><code>*</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，</font></font><code>id</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">表示一個具體的用戶，</font></font><code>role</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">表示具有某個角色的用戶，</font></font><code>*</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">表示所有用戶：</font></font></p>
+<table>
+<thead>
+<tr>
+<th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">主體</font></font></th>
+<th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">描述</font></font></th>
+<th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">優先級</font></font></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">id</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">具體用戶的id</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">1</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">role</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">用戶組名</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">2</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">*</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">全體</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">3</font></font></td>
+</tr>
+</tbody>
+</table>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在檢查權限時，首先會匹配</font></font><code>id</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">對應的權限，如果未指定，則匹配用戶</font></font><code>role</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">對應的權限，如果仍為指定，則查看是否指定了</font></font><code>*</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的權限，如果</font></font><code>*</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">也未指定，則沒有權限。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">比如上面的權限配置，指定了</font></font><code>user</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">用戶組可以閱讀，用戶</font></font><code>57fbbdb0a2400000</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">擁有全部權限，而其它用戶沒有任何權限。</font></font></p>
+<div name="权限" data-unique="权限"></div><h3 id="权限"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">權限</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ACL 根據API 行為將權限分類五種：</font></font></p>
+<table>
+<thead>
+<tr>
+<th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">權限</font></font></th>
+<th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">描述</font></font></th>
+<th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">允許類型</font></font></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">create</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">創建對象</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">true / false / array</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">read</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">讀取對象</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">true / false / array</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">write</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">修改對象</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">true / false / array</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">delete</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">刪除對象</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">true / false</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">find</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">查詢對象列表</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">true / false</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">*</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">匹配所有權限</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">true / false / array</font></font></td>
+</tr>
+</tbody>
+</table>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">權限制定</font></font><code>true</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">為允許訪問，為</font></font><code>false</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">為禁止訪問，為</font></font><code>array</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">為只允許指定的字段的訪問。</font></font><code>delete</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和</font></font><code>find</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">不接受</font></font><code>array</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，如果設置了</font></font><code>array</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">則視同為</font></font><code>true</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">如果指定的權限不存在，則匹配同主體下的</font></font><code>*</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">權限。</font><font style="vertical-align: inherit;">若都不存在，再一次查詢下一優先級的主體。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">比如以上例子，如果需要設定</font></font><code>user</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">只允許讀取</font></font><code>title</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和</font></font><code>detail</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，其他人可以讀取  </font></font><code>title</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，則可以這樣設定：</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14</div>{
+  <span class="hljs-string">"*"</span>: {
+    <span class="hljs-string">"*"</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-string">"read"</span>: [<span class="hljs-string">'title'</span>]<font></font>
+  },<font></font>
+  <span class="hljs-string">"57fbbdb0a2400000"</span>: {
+    <span class="hljs-string">"*"</span>: <span class="hljs-literal">true</span><font></font>
+  },<font></font>
+  <span class="hljs-string">"roles"</span>: {
+    <span class="hljs-string">"user"</span>: {
+      <span class="hljs-string">"read"</span>: [<span class="hljs-string">'title'</span>, <span class="hljs-string">'detail'</span>]<font></font>
+    }<font></font>
+  }<font></font>
+}<font></font>
+</code></pre>
+<div name="对象权限" data-unique="对象权限"></div><h3 id="对象权限"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">對象權限</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在Model 上設定的是整個類的權限，如果需要對具體的對象設定權限，可以通過設置OACL 來實現：</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24</div><span class="hljs-built_in">module</span>.exports = <span class="hljs-function"><span class="hljs-params">db</span> =&gt;</span> {<font></font>
+  db.define(<span class="hljs-string">'person'</span>, {
+    <span class="hljs-attr">name</span>: <span class="hljs-built_in">String</span>,
+    <span class="hljs-attr">sex</span>: [<span class="hljs-string">"male"</span>, <span class="hljs-string">"female"</span>],
+    <span class="hljs-attr">age</span>: <span class="hljs-built_in">Number</span><font></font>
+  }, {<font></font>
+    <span class="hljs-attr">ACL</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">session</span>) </span>{
+      <span class="hljs-keyword">return</span> {
+        <span class="hljs-string">"*"</span>: {
+          <span class="hljs-string">"*"</span>: <span class="hljs-literal">false</span><font></font>
+        }<font></font>
+      }<font></font>
+    },<font></font>
+    <span class="hljs-attr">OACL</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">session</span>) </span>{
+      <span class="hljs-keyword">var</span> _acl = {};
+      <span class="hljs-keyword">if</span>(<span class="hljs-keyword">this</span>.id === session.id)<font></font>
+        _acl[session.id] = {<font></font>
+          <span class="hljs-string">"*"</span>: <span class="hljs-literal">true</span><font></font>
+        };<font></font>
+<font></font>
+      <span class="hljs-keyword">return</span> _acl;<font></font>
+    }<font></font>
+  });<font></font>
+};<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在這個例子中，當訪問者是對象本人時，將被允許全部操作，否則禁止一切訪問。</font><font style="vertical-align: inherit;">會按照以下步驟檢查權限：</font></font></p>
+<ul>
+<li><code>person[57fbbdb0a2400000]</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> =&gt; </font></font><code>OACL</code></li>
+<li><code>person</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> =&gt; </font></font><code>ACL</code></li>
+</ul>
+<div name="扩展对象权限" data-unique="扩展对象权限"></div><h3 id="扩展对象权限"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">擴展對象權限</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">擴展對象的訪問權限控制和基礎對象權限相似，唯一不同的是在ACL 需要單獨指定：</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41</div><span class="hljs-built_in">module</span>.exports = <span class="hljs-function"><span class="hljs-params">db</span> =&gt;</span> {
+  <span class="hljs-keyword">var</span> Person = db.define(<span class="hljs-string">'person'</span>, {
+    <span class="hljs-attr">name</span>: <span class="hljs-built_in">String</span>,
+    <span class="hljs-attr">sex</span>: [<span class="hljs-string">"male"</span>, <span class="hljs-string">"female"</span>],
+    <span class="hljs-attr">age</span>: <span class="hljs-built_in">Number</span><font></font>
+  },{<font></font>
+    <span class="hljs-attr">ACL</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">session</span>) </span>{
+      <span class="hljs-keyword">return</span> {
+        <span class="hljs-string">"*"</span>: {
+          <span class="hljs-string">"read"</span>: [<span class="hljs-string">'name'</span>, <span class="hljs-string">'sex'</span>],
+          <span class="hljs-string">"extends"</span>: {
+            <span class="hljs-string">"pets"</span>: {
+              <span class="hljs-string">"read"</span>: <span class="hljs-literal">true</span>,
+              <span class="hljs-string">"find"</span>: <span class="hljs-literal">true</span><font></font>
+            }<font></font>
+          }<font></font>
+        }<font></font>
+      }<font></font>
+    },<font></font>
+    <span class="hljs-attr">OACL</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">session</span>) </span>{
+      <span class="hljs-keyword">var</span> _acl = {};
+      <span class="hljs-keyword">if</span>(<span class="hljs-keyword">this</span>.id === session.id)<font></font>
+        _acl[session.id] = {<font></font>
+          <span class="hljs-string">"*"</span>: <span class="hljs-literal">true</span>,
+          <span class="hljs-string">"extends"</span>: {
+            <span class="hljs-string">"pets"</span>: {
+              <span class="hljs-string">"*"</span>: <span class="hljs-literal">true</span><font></font>
+            }<font></font>
+          }<font></font>
+        };<font></font>
+<font></font>
+      <span class="hljs-keyword">return</span> _acl;<font></font>
+    }<font></font>
+  });<font></font>
+<font></font>
+  <span class="hljs-keyword">var</span> Pet = db.define(<span class="hljs-string">'pet'</span>, {
+    <span class="hljs-attr">name</span>: <span class="hljs-built_in">String</span><font></font>
+  });<font></font>
+<font></font>
+  Person.hasMany(<span class="hljs-string">'pets'</span>, Pet);<font></font>
+};<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">這個定義中，任何人都可以查閱個人信息的</font></font><code>name</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和</font></font><code>sex</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，並自由查閱和搜索他的</font></font><code>pets</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，用戶本人可以操作自己的所有數據，以及擁有自己寵物信息的全部權限。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在檢查擴展對象的訪問權限時，會分別檢查對象權限和擴展對象權限。</font><font style="vertical-align: inherit;">比如以下請求：</font></font></p>
+<pre><code class="lang-sh"><div class="line-numbers">1</div>curl -X GET http://localhost/1.0/person/57fbbdb0a2400000/pets/57fbbdb0a2400007
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">會按照以下步驟檢查權限：</font></font></p>
+<ul>
+<li><code>pets[57fbbdb0a2400007]</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> =&gt; </font></font><code>OACL</code></li>
+<li><code>person[57fbbdb0a2400000]</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">=&gt; </font></font><code>OACL</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">=&gt; </font></font><code>extends</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">=&gt;</font></font><code>pets</code></li>
+<li><code>person</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">=&gt; </font></font><code>ACL</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">=&gt; </font></font><code>extends</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">=&gt;</font></font><code>pets</code></li>
+<li><code>pets</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> =&gt; </font></font><code>ACL</code></li>
+</ul>
+<div name="Function" data-unique="Function"></div><h2 id="Function"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Function</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">可以為Model 定義api，對於復雜數據操作，可以通過自定義Function 來完成。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">絕大多數權限可以通過ACL 控製完成，不需要通過Function 來完成基於對象的權限。</font><font style="vertical-align: inherit;">Function 可用於完成基於數據的權限，比如根據審批狀態，賦予不同用戶組權限。</font><font style="vertical-align: inherit;">以及多項修改，比如需要修改多條數據庫記錄。</font></font></p>
+<div name="绘制数据模型" data-unique="绘制数据模型"></div><h2 id="绘制数据模型"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">繪製數據模型</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在完成數據定義以後，可以使用</font></font><code>app.diagram()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">繪製數據模型的</font></font><code>svg</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">格式類圖，保存至文件會得到類似下面的圖像：
+</font></font><img src="./demo/diagram.svg" alt="diagram"></p>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org |</font></font><a href="../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持我們</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip280334"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip280334" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Click to return on the top page</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../js/common.js"></script><script type="text/javascript" src="../../../../js/docs.js"></script></body></html>

@@ -1,0 +1,991 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../../imgs/icon.png"><title>-JavaScript en fibra</title><link href="../../../../css/common.css" rel="stylesheet"><link href="../../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Alternar navegación</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../../index.html"><img src="../../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../../index.html">HOME</a></li><li><a href="../../guide/readme.md.html">GUIDE</a></li><li><a href="../../manual/module/readme.md.html">MODULE</a></li><li><a href="../../manual/object/readme.md.html">OBJECT</a></li><li><a href="../readme.md.html">AWESOME</a></li><li><a href="../../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../../docs/awesome/module/rakuten.md.html">中文</a> <a href="../../../../ca/docs/awesome/module/rakuten.md.html">Catalan</a> <a href="../../../../de/docs/awesome/module/rakuten.md.html">Deutsch</a> <a href="../../../../en/docs/awesome/module/rakuten.md.html">English</a> <a href="../../../../es/docs/awesome/module/rakuten.md.html">Español</a> <a href="../../../../fr/docs/awesome/module/rakuten.md.html">Français</a> <a href="../../../../gl/docs/awesome/module/rakuten.md.html">Galego</a> <a href="../../../../it/docs/awesome/module/rakuten.md.html">Italiano</a> <a href="../../../../ru/docs/awesome/module/rakuten.md.html">Русский</a> <a href="../../../../ja/docs/awesome/module/rakuten.md.html">日本語</a> <a href="../../../../ko/docs/awesome/module/rakuten.md.html">한국어</a> <a href="../../../../zh-tw/docs/awesome/module/rakuten.md.html">繁體中文</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Módulo comunitario incrible </font></font></span><div class="search"><span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input type="text" class="searchbox ds-input" placeholder="Buscar" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-label="entrada de busca" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Avenir, &quot;Segoe UI&quot;, Arial, &quot;Hiragino Sans GB&quot;, 冬青黑, &quot;Microsoft YaHei&quot;, 微软雅黑, SimSun, 宋体, Helvetica, Tahoma, &quot;Arial sans-serif&quot;; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div class="ds-dataset-1"></div></span></span></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Páxina de inicio</font></font></a></li><li><a href="../readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Módulo comunitario </font></font></a></li><li class="active">  </li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Guía de desenvolvemento </font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="../../guide/about.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Que é fibjs?</font></font></a></li>
+<li><a href="../../guide/install.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Instalación e contorno operativo</font></font></a></li>
+<li><a href="../../guide/hello.md.html" class="notranslate">hello, world</a></li>
+<li><a href="../../guide/test.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Unha boa vida comeza coa proba</font></font></a></li>
+<li><a href="../../guide/profiler.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Atopa o asesino de rendemento</font></font></a></li>
+<li><a href="../../guide/desktop.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Desenvolve rapidamente aplicacións de escritorio</font></font></a></li>
+<li><a href="../../guide/server-hot-update.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Actualización activa do módulo de servidor</font></font></a></li>
+<li><a href="../../guide/host-routes.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Enrutamento de nomes de dominio</font></font></a></li>
+<li><a href="../../guide/x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Uso do certificado X509 en fibjs</font></font></a></li>
+<li><a href="../../guide/contribute.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Engadir módulo nativo</font></font></a></li>
+</ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_module" aria-controls="collapse_module"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Módulo básico </font></font></a></h4></div><div id="collapse_module" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="../../manual/module/ifs/assert.md.html" class="notranslate">assert</a></li>
+<li><a href="../../manual/module/ifs/base32.md.html" class="notranslate">base32</a></li>
+<li><a href="../../manual/module/ifs/base64.md.html" class="notranslate">base64</a></li>
+<li><a href="../../manual/module/ifs/base64vlq.md.html" class="notranslate">base64vlq</a></li>
+<li><a href="../../manual/module/ifs/bson.md.html" class="notranslate">bson</a></li>
+<li><a href="../../manual/module/ifs/child_process.md.html" class="notranslate">child_process</a></li>
+<li><a href="../../manual/module/ifs/console.md.html" class="notranslate">console</a></li>
+<li><a href="../../manual/module/ifs/constants.md.html" class="notranslate">constants</a></li>
+<li><a href="../../manual/module/ifs/coroutine.md.html" class="notranslate">coroutine</a></li>
+<li><a href="../../manual/module/ifs/crypto.md.html" class="notranslate">crypto</a></li>
+<li><a href="../../manual/module/ifs/db.md.html" class="notranslate">db</a></li>
+<li><a href="../../manual/module/ifs/dgram.md.html" class="notranslate">dgram</a></li>
+<li><a href="../../manual/module/ifs/dns.md.html" class="notranslate">dns</a></li>
+<li><a href="../../manual/module/ifs/encoding.md.html" class="notranslate">encoding</a></li>
+<li><a href="../../manual/module/ifs/fs.md.html" class="notranslate">fs</a></li>
+<li><a href="../../manual/module/ifs/gd.md.html" class="notranslate">gd</a></li>
+<li><a href="../../manual/module/ifs/global.md.html" class="notranslate">global</a></li>
+<li><a href="../../manual/module/ifs/gui.md.html" class="notranslate">gui</a></li>
+<li><a href="../../manual/module/ifs/hash.md.html" class="notranslate">hash</a></li>
+<li><a href="../../manual/module/ifs/hex.md.html" class="notranslate">hex</a></li>
+<li><a href="../../manual/module/ifs/http.md.html" class="notranslate">http</a></li>
+<li><a href="../../manual/module/ifs/iconv.md.html" class="notranslate">iconv</a></li>
+<li><a href="../../manual/module/ifs/io.md.html" class="notranslate">io</a></li>
+<li><a href="../../manual/module/ifs/json.md.html" class="notranslate">json</a></li>
+<li><a href="../../manual/module/ifs/mq.md.html" class="notranslate">mq</a></li>
+<li><a href="../../manual/module/ifs/msgpack.md.html" class="notranslate">msgpack</a></li>
+<li><a href="../../manual/module/ifs/net.md.html" class="notranslate">net</a></li>
+<li><a href="../../manual/module/ifs/os.md.html" class="notranslate">os</a></li>
+<li><a href="../../manual/module/ifs/path.md.html" class="notranslate">path</a></li>
+<li><a href="../../manual/module/ifs/path_posix.md.html" class="notranslate">path_posix</a></li>
+<li><a href="../../manual/module/ifs/path_win32.md.html" class="notranslate">path_win32</a></li>
+<li><a href="../../manual/module/ifs/process.md.html" class="notranslate">process</a></li>
+<li><a href="../../manual/module/ifs/profiler.md.html" class="notranslate">profiler</a></li>
+<li><a href="../../manual/module/ifs/punycode.md.html" class="notranslate">punycode</a></li>
+<li><a href="../../manual/module/ifs/querystring.md.html" class="notranslate">querystring</a></li>
+<li><a href="../../manual/module/ifs/registry.md.html" class="notranslate">registry</a></li>
+<li><a href="../../manual/module/ifs/ssl.md.html" class="notranslate">ssl</a></li>
+<li><a href="../../manual/module/ifs/string_decoder.md.html" class="notranslate">string_decoder</a></li>
+<li><a href="../../manual/module/ifs/test.md.html" class="notranslate">test</a></li>
+<li><a href="../../manual/module/ifs/timers.md.html" class="notranslate">timers</a></li>
+<li><a href="../../manual/module/ifs/tty.md.html" class="notranslate">tty</a></li>
+<li><a href="../../manual/module/ifs/url.md.html" class="notranslate">url</a></li>
+<li><a href="../../manual/module/ifs/util.md.html" class="notranslate">util</a></li>
+<li><a href="../../manual/module/ifs/uuid.md.html" class="notranslate">uuid</a></li>
+<li><a href="../../manual/module/ifs/vm.md.html" class="notranslate">vm</a></li>
+<li><a href="../../manual/module/ifs/ws.md.html" class="notranslate">ws</a></li>
+<li><a href="../../manual/module/ifs/xml.md.html" class="notranslate">xml</a></li>
+<li><a href="../../manual/module/ifs/zip.md.html" class="notranslate">zip</a></li>
+<li><a href="../../manual/module/ifs/zlib.md.html" class="notranslate">zlib</a></li>
+</ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_object" aria-controls="collapse_object"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Obxectos incorporados </font></font></a></h4></div><div id="collapse_object" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="../../manual/object/ifs/buffer.md.html" class="notranslate">Buffer</a></li>
+<li><a href="../../manual/object/ifs/bufferedstream.md.html" class="notranslate">BufferedStream</a></li>
+<li><a href="../../manual/object/ifs/chain.md.html" class="notranslate">Chain</a></li>
+<li><a href="../../manual/object/ifs/childprocess.md.html" class="notranslate">ChildProcess</a></li>
+<li><a href="../../manual/object/ifs/cipher.md.html" class="notranslate">Cipher</a></li>
+<li><a href="../../manual/object/ifs/condition.md.html" class="notranslate">Condition</a></li>
+<li><a href="../../manual/object/ifs/dbconnection.md.html" class="notranslate">DbConnection</a></li>
+<li><a href="../../manual/object/ifs/dgramsocket.md.html" class="notranslate">DgramSocket</a></li>
+<li><a href="../../manual/object/ifs/digest.md.html" class="notranslate">Digest</a></li>
+<li><a href="../../manual/object/ifs/event.md.html" class="notranslate">Event</a></li>
+<li><a href="../../manual/object/ifs/eventemitter.md.html" class="notranslate">EventEmitter</a></li>
+<li><a href="../../manual/object/ifs/fswatcher.md.html" class="notranslate">FSWatcher</a></li>
+<li><a href="../../manual/object/ifs/fiber.md.html" class="notranslate">Fiber</a></li>
+<li><a href="../../manual/object/ifs/file.md.html" class="notranslate">File</a></li>
+<li><a href="../../manual/object/ifs/handler.md.html" class="notranslate">Handler</a></li>
+<li><a href="../../manual/object/ifs/heapgraphedge.md.html" class="notranslate">HeapGraphEdge</a></li>
+<li><a href="../../manual/object/ifs/heapgraphnode.md.html" class="notranslate">HeapGraphNode</a></li>
+<li><a href="../../manual/object/ifs/heapsnapshot.md.html" class="notranslate">HeapSnapshot</a></li>
+<li><a href="../../manual/object/ifs/httpclient.md.html" class="notranslate">HttpClient</a></li>
+<li><a href="../../manual/object/ifs/httpcollection.md.html" class="notranslate">HttpCollection</a></li>
+<li><a href="../../manual/object/ifs/httpcookie.md.html" class="notranslate">HttpCookie</a></li>
+<li><a href="../../manual/object/ifs/httphandler.md.html" class="notranslate">HttpHandler</a></li>
+<li><a href="../../manual/object/ifs/httpmessage.md.html" class="notranslate">HttpMessage</a></li>
+<li><a href="../../manual/object/ifs/httprepeater.md.html" class="notranslate">HttpRepeater</a></li>
+<li><a href="../../manual/object/ifs/httprequest.md.html" class="notranslate">HttpRequest</a></li>
+<li><a href="../../manual/object/ifs/httpresponse.md.html" class="notranslate">HttpResponse</a></li>
+<li><a href="../../manual/object/ifs/httpserver.md.html" class="notranslate">HttpServer</a></li>
+<li><a href="../../manual/object/ifs/httpuploaddata.md.html" class="notranslate">HttpUploadData</a></li>
+<li><a href="../../manual/object/ifs/httpsserver.md.html" class="notranslate">HttpsServer</a></li>
+<li><a href="../../manual/object/ifs/image.md.html" class="notranslate">Image</a></li>
+<li><a href="../../manual/object/ifs/leveldb.md.html" class="notranslate">LevelDB</a></li>
+<li><a href="../../manual/object/ifs/lock.md.html" class="notranslate">Lock</a></li>
+<li><a href="../../manual/object/ifs/lrucache.md.html" class="notranslate">LruCache</a></li>
+<li><a href="../../manual/object/ifs/mssql.md.html" class="notranslate">MSSQL</a></li>
+<li><a href="../../manual/object/ifs/memorystream.md.html" class="notranslate">MemoryStream</a></li>
+<li><a href="../../manual/object/ifs/message.md.html" class="notranslate">Message</a></li>
+<li><a href="../../manual/object/ifs/mongocollection.md.html" class="notranslate">MongoCollection</a></li>
+<li><a href="../../manual/object/ifs/mongocursor.md.html" class="notranslate">MongoCursor</a></li>
+<li><a href="../../manual/object/ifs/mongodb.md.html" class="notranslate">MongoDB</a></li>
+<li><a href="../../manual/object/ifs/mongoid.md.html" class="notranslate">MongoID</a></li>
+<li><a href="../../manual/object/ifs/mysql.md.html" class="notranslate">MySQL</a></li>
+<li><a href="../../manual/object/ifs/pkey.md.html" class="notranslate">PKey</a></li>
+<li><a href="../../manual/object/ifs/rangestream.md.html" class="notranslate">RangeStream</a></li>
+<li><a href="../../manual/object/ifs/redis.md.html" class="notranslate">Redis</a></li>
+<li><a href="../../manual/object/ifs/redishash.md.html" class="notranslate">RedisHash</a></li>
+<li><a href="../../manual/object/ifs/redislist.md.html" class="notranslate">RedisList</a></li>
+<li><a href="../../manual/object/ifs/redisset.md.html" class="notranslate">RedisSet</a></li>
+<li><a href="../../manual/object/ifs/redissortedset.md.html" class="notranslate">RedisSortedSet</a></li>
+<li><a href="../../manual/object/ifs/routing.md.html" class="notranslate">Routing</a></li>
+<li><a href="../../manual/object/ifs/sqlite.md.html" class="notranslate">SQLite</a></li>
+<li><a href="../../manual/object/ifs/sandbox.md.html" class="notranslate">SandBox</a></li>
+<li><a href="../../manual/object/ifs/seekablestream.md.html" class="notranslate">SeekableStream</a></li>
+<li><a href="../../manual/object/ifs/semaphore.md.html" class="notranslate">Semaphore</a></li>
+<li><a href="../../manual/object/ifs/service.md.html" class="notranslate">Service</a></li>
+<li><a href="../../manual/object/ifs/smtp.md.html" class="notranslate">Smtp</a></li>
+<li><a href="../../manual/object/ifs/socket.md.html" class="notranslate">Socket</a></li>
+<li><a href="../../manual/object/ifs/sslhandler.md.html" class="notranslate">SslHandler</a></li>
+<li><a href="../../manual/object/ifs/sslserver.md.html" class="notranslate">SslServer</a></li>
+<li><a href="../../manual/object/ifs/sslsocket.md.html" class="notranslate">SslSocket</a></li>
+<li><a href="../../manual/object/ifs/stat.md.html" class="notranslate">Stat</a></li>
+<li><a href="../../manual/object/ifs/statswatcher.md.html" class="notranslate">StatsWatcher</a></li>
+<li><a href="../../manual/object/ifs/stream.md.html" class="notranslate">Stream</a></li>
+<li><a href="../../manual/object/ifs/stringdecoder.md.html" class="notranslate">StringDecoder</a></li>
+<li><a href="../../manual/object/ifs/tcpserver.md.html" class="notranslate">TcpServer</a></li>
+<li><a href="../../manual/object/ifs/timer.md.html" class="notranslate">Timer</a></li>
+<li><a href="../../manual/object/ifs/urlobject.md.html" class="notranslate">UrlObject</a></li>
+<li><a href="../../manual/object/ifs/websocket.md.html" class="notranslate">WebSocket</a></li>
+<li><a href="../../manual/object/ifs/websocketmessage.md.html" class="notranslate">WebSocketMessage</a></li>
+<li><a href="../../manual/object/ifs/webview.md.html" class="notranslate">WebView</a></li>
+<li><a href="../../manual/object/ifs/worker.md.html" class="notranslate">Worker</a></li>
+<li><a href="../../manual/object/ifs/x509cert.md.html" class="notranslate">X509Cert</a></li>
+<li><a href="../../manual/object/ifs/x509crl.md.html" class="notranslate">X509Crl</a></li>
+<li><a href="../../manual/object/ifs/x509req.md.html" class="notranslate">X509Req</a></li>
+<li><a href="../../manual/object/ifs/xmlattr.md.html" class="notranslate">XmlAttr</a></li>
+<li><a href="../../manual/object/ifs/xmlcdatasection.md.html" class="notranslate">XmlCDATASection</a></li>
+<li><a href="../../manual/object/ifs/xmlcharacterdata.md.html" class="notranslate">XmlCharacterData</a></li>
+<li><a href="../../manual/object/ifs/xmlcomment.md.html" class="notranslate">XmlComment</a></li>
+<li><a href="../../manual/object/ifs/xmldocument.md.html" class="notranslate">XmlDocument</a></li>
+<li><a href="../../manual/object/ifs/xmldocumenttype.md.html" class="notranslate">XmlDocumentType</a></li>
+<li><a href="../../manual/object/ifs/xmlelement.md.html" class="notranslate">XmlElement</a></li>
+<li><a href="../../manual/object/ifs/xmlnamednodemap.md.html" class="notranslate">XmlNamedNodeMap</a></li>
+<li><a href="../../manual/object/ifs/xmlnode.md.html" class="notranslate">XmlNode</a></li>
+<li><a href="../../manual/object/ifs/xmlnodelist.md.html" class="notranslate">XmlNodeList</a></li>
+<li><a href="../../manual/object/ifs/xmlprocessinginstruction.md.html" class="notranslate">XmlProcessingInstruction</a></li>
+<li><a href="../../manual/object/ifs/xmltext.md.html" class="notranslate">XmlText</a></li>
+<li><a href="../../manual/object/ifs/zipfile.md.html" class="notranslate">ZipFile</a></li>
+<li><a href="../../manual/object/ifs/object.md.html" class="notranslate">object</a></li>
+</ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_awesome" aria-controls="collapse_awesome"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Módulo comunitario </font></font></a></h4></div><div id="collapse_awesome" class="panel-collapse collapse in" aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="fib-session.md.html" class="notranslate">fib-session</a></li>
+<li><a href="fib-pool.md.html" class="notranslate">fib-pool</a></li>
+<li><a href="fib-orm.md.html" class="notranslate">fib-orm</a></li>
+<li><a href="fib-app.md.html" class="notranslate">fib-app</a></li>
+<li><a href="fib-kv.md.html" class="notranslate">fib-kv</a></li>
+<li><a href="fib-rpc.md.html" class="notranslate">fib-rpc</a></li>
+<li><a href="fib-qr.md.html" class="notranslate">fib-qr</a></li>
+<li><a href="fib-pug.md.html" class="notranslate">fib-pug</a></li>
+<li><a href="ejs.md.html" class="notranslate">ejs</a></li>
+<li><a href="juicer.md.html" class="notranslate">Juicer</a></li>
+<li><a href="highlight.js.md.html" class="notranslate">highlight.js</a></li>
+<li><a href="marked.md.html" class="notranslate">marked</a></li>
+<li><a href="node-cron.md.html" class="notranslate">node-cron</a></li>
+<li><a href="debug.md.html" class="notranslate">debug</a></li>
+<li><a href="benchmark.js.md.html" class="notranslate">benchmark.js</a></li>
+<li><a href="sinon.md.html" class="notranslate">sinon</a></li>
+<li><a href="node-mime.md.html" class="notranslate">node-mime</a></li>
+<li><a href="validatorjs.md.html" class="notranslate">validatorjs</a></li>
+<li><a href="superstruct.md.html" class="notranslate">superstruct</a></li>
+<li><a href="cluster-server.md.html" class="notranslate">cluster-server</a></li>
+<li><a href="synaptic.md.html" class="notranslate">synaptic</a></li>
+<li><a href="source-map.md.html" class="notranslate">source-map</a></li>
+<li><a href="json-format.md.html" class="notranslate">json-format</a></li>
+<li><a href="viz.js.md.html" class="notranslate">viz.js</a></li>
+<li><a href="nomnoml.md.html" class="notranslate">nomnoml</a></li>
+<li><a href="pegjs.md.html" class="notranslate">pegjs</a></li>
+<li><a href="uglify-js.md.html" class="notranslate">uglify-js</a></li>
+<li><a href="js-beautify.md.html" class="notranslate">js-beautify</a></li>
+<li><a href="chalk-animation.md.html" class="notranslate">chalk-animation</a></li>
+<li><a href="jsrsasign.md.html" class="notranslate">jsrsasign</a></li>
+<li><a href="crypto-js.md.html" class="notranslate">crypto-js</a></li>
+<li><a href="ascii-table.md.html" class="notranslate">ascii-table</a></li>
+<li><a href="logstream.md.html" class="notranslate">logstream</a></li>
+<li><a href="ci.md.html" class="notranslate">ci</a></li>
+<li><a href="fs-readdir-recursive.md.html" class="notranslate">fs-readdir-recursive</a></li>
+<li><a href="mkdirp.md.html" class="notranslate">mkdirp</a></li>
+<li><a href="rmdirr.md.html" class="notranslate">rmdirr</a></li>
+<li><a href="detect-port.md.html" class="notranslate">detect-port</a></li>
+<li><a href="bitcoinjs-lib.md.html" class="notranslate">bitcoinjs-lib</a></li>
+<li class="active"><a href="rakuten.md.html" class="notranslate">Rakuten</a></li>
+</ul>
+ </div></div></div>  </div></div><div class="content"><div class="social-share share-component" data-sites="weibo,twitter" data-description="分享"></div> <div name="" data-unique=""></div><h1 id="Rakuten-MA"><img src="https://raw.githubusercontent.com/rakuten-nlp/rakutenma/master/rakutenma_logo.png" alt="Rakuten MA" title="Rakuten MA"></h1>
+<p><a href="https://github.com/rakuten-nlp/rakutenma/blob/master/README-ja.md"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">README xaponés (日本语 ド キ ュ メ ン ト)</font></font></a></p>
+<div name="Introduction" data-unique="Introduction"></div><h2 id="Introduction"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Introdución</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Rakuten MA (analizador morfolóxico) é un analizador morfolóxico (segmentador de palabras + PoS Tagger) para chinés e xaponés escrito puramente en JavaScript.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Rakuten MA ten as seguintes características únicas:</font></font></p>
+<ul>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Implementación de JavaScript puro. Funciona tanto en navegadores modernos como en node.js.</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Implementa un modelo de etiquetaxe de caracteres independente do idioma. Produce segmentación de palabras e etiquetas PoS para chinés / xaponés.</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Admite a actualización incremental de modelos por aprendizaxe en liña (Soft Confidence Weighted, Wang et al. ICML 2012).</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Función personalizable.</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Admite hash de funcións, cuantificación e poda para a representación de modelos compactos.</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Xunto con modelos chineses e xaponeses formados a partir de corpus xerais (CTB [Xue et al. 2005] e BCCWJ [Maekawa 2008]) e corpus de comercio electrónico.</font></font></li>
+</ul>
+<div name="Demo" data-unique="Demo"></div><h2 id="Demo"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Demostración</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Podes probar Rakuten MA na </font></font><a href="http://rakuten-nlp.github.io/rakutenma/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">páxina de demostración</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> (pode levar un tempo cargar esta páxina).</font></font></p>
+<div name="Usage" data-unique="Usage"></div><h2 id="Usage"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Uso</font></font></h2>
+<div name="Download-&amp;-Install" data-unique="Download-&amp;-Install"></div><h3 id="Download-Install" class="notranslate">Download &amp; Install</h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Dado que Rakuten MA é unha biblioteca JavaScript, non fai falta instalar. Clonar o repositorio git como</font></font></p>
+<pre><code><div class="line-numbers">1</div>git <span class="hljs-keyword">clone</span> <span class="hljs-title">https</span>://github.com/rakuten-nlp/rakutenma.git
+</code></pre><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ou descarga o arquivo zip desde aquí: </font></font><a href="https://github.com/rakuten-nlp/rakutenma/archive/master.zip"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">https://github.com/rakuten-nlp/rakutenma/archive/master.zip</font></font></a></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Se tes Node.js instalado, podes executar a demostración</font></font></p>
+<pre><code><div class="line-numbers">1</div><span class="hljs-keyword">node</span> <span class="hljs-title">demo</span>.js
+</code></pre><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">que é idéntico ao exemplo de uso a continuación.</font></font></p>
+<div name="npm-package" data-unique="npm-package"></div><h3 id="npm-package" class="notranslate">npm package</h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Tamén podes usar Rakuten MA como paquete npm. Podes instalalo mediante:</font></font></p>
+<pre><code><div class="line-numbers">1</div>npm <span class="hljs-keyword">install</span> rakutenma
+</code></pre><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Os ficheiros modelo pódense atopar en </font></font><code>node_modules/rakutenma/</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">.</font></font></p>
+<div name="Usage-Example-(on-Node.js)" data-unique="Usage-Example-(on-Node.js)"></div><h3 id="Usage-Example-(on-Node.js)" class="notranslate">Usage Example (on Node.js)</h3>
+<pre><code><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52</div><span class="hljs-comment">// RakutenMA demo</span><font></font>
+<font></font>
+<span class="hljs-comment">// Load necessary libraries</span>
+<span class="hljs-keyword">var</span> RakutenMA = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./rakutenma'</span>);
+<span class="hljs-keyword">var</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fs'</span>);<font></font>
+<font></font>
+<span class="hljs-comment">// Initialize a RakutenMA instance</span>
+<span class="hljs-comment">// with an empty model and the default ja feature set</span>
+<span class="hljs-keyword">var</span> rma = <span class="hljs-keyword">new</span> RakutenMA();<font></font>
+rma.featset = RakutenMA.default_featset_ja;<font></font>
+<font></font>
+<span class="hljs-comment">// Let's analyze a sample sentence (from http://tatoeba.org/jpn/sentences/show/103809)</span>
+<span class="hljs-comment">// With a disastrous result, since the model is empty!</span>
+<span class="hljs-built_in">console</span>.log(rma.tokenize(<span class="hljs-string">"彼は新しい仕事できっと成功するだろう。"</span>));<font></font>
+<font></font>
+<span class="hljs-comment">// Feed the model with ten sample sentences from tatoeba.com</span>
+<span class="hljs-keyword">var</span> tatoeba = <span class="hljs-built_in">JSON</span>.parse(fs.readFileSync(<span class="hljs-string">"tatoeba.json"</span>));
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i ++) {<font></font>
+    rma.train_one(tatoeba[i]);<font></font>
+}<font></font>
+<font></font>
+<span class="hljs-comment">// Now what does the result look like?</span>
+<span class="hljs-built_in">console</span>.log(rma.tokenize(<span class="hljs-string">"彼は新しい仕事できっと成功するだろう。"</span>));<font></font>
+<font></font>
+<span class="hljs-comment">// Initialize a RakutenMA instance with a pre-trained model</span>
+<span class="hljs-keyword">var</span> model = <span class="hljs-built_in">JSON</span>.parse(fs.readFileSync(<span class="hljs-string">"model_ja.json"</span>));<font></font>
+rma = <span class="hljs-keyword">new</span> RakutenMA(model, <span class="hljs-number">1024</span>, <span class="hljs-number">0.007812</span>);  <span class="hljs-comment">// Specify hyperparameter for SCW (for demonstration purpose)</span><font></font>
+rma.featset = RakutenMA.default_featset_ja;<font></font>
+<font></font>
+<span class="hljs-comment">// Set the feature hash function (15bit)</span>
+rma.hash_func = RakutenMA.create_hash_func(<span class="hljs-number">15</span>);<font></font>
+<font></font>
+<span class="hljs-comment">// Tokenize one sample sentence</span>
+<span class="hljs-built_in">console</span>.log(rma.tokenize(<span class="hljs-string">"うらにわにはにわにわとりがいる"</span>));<font></font>
+<font></font>
+<span class="hljs-comment">// Re-train the model feeding the right answer (pairs of [token, PoS tag])</span>
+<span class="hljs-keyword">var</span> res = rma.train_one(<font></font>
+        [[<span class="hljs-string">"うらにわ"</span>,<span class="hljs-string">"N-nc"</span>],<font></font>
+         [<span class="hljs-string">"に"</span>,<span class="hljs-string">"P-k"</span>],<font></font>
+         [<span class="hljs-string">"は"</span>,<span class="hljs-string">"P-rj"</span>],<font></font>
+         [<span class="hljs-string">"にわ"</span>,<span class="hljs-string">"N-n"</span>],<font></font>
+         [<span class="hljs-string">"にわとり"</span>,<span class="hljs-string">"N-nc"</span>],<font></font>
+         [<span class="hljs-string">"が"</span>,<span class="hljs-string">"P-k"</span>],<font></font>
+         [<span class="hljs-string">"いる"</span>,<span class="hljs-string">"V-c"</span>]]);
+<span class="hljs-comment">// The result of train_one contains:</span>
+<span class="hljs-comment">//   sys: the system output (using the current model)</span>
+<span class="hljs-comment">//   ans: answer fed by the user</span>
+<span class="hljs-comment">//   update: whether the model was updated</span>
+<span class="hljs-built_in">console</span>.log(res);<font></font>
+<font></font>
+<span class="hljs-comment">// Now what does the result look like?</span>
+<span class="hljs-built_in">console</span>.log(rma.tokenize(<span class="hljs-string">"うらにわにはにわにわとりがいる"</span>));
+</code></pre><div name="Usage-Example-(on-browsers)" data-unique="Usage-Example-(on-browsers)"></div><h3 id="Usage-Example-(on-browsers)" class="notranslate">Usage Example (on browsers)</h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Inclúa o seguinte fragmento de código no </font></font><code>&lt;head&gt;</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">seu HTML.</font></font></p>
+<pre><code><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19</div>&lt;script <span class="hljs-keyword">type</span>=<span class="hljs-string">"text/javascript"</span> src=<span class="hljs-string">"rakutenma.js"</span> charset=<span class="hljs-string">"UTF-8"</span>&gt;&lt;/script&gt;<font></font>
+&lt;script <span class="hljs-keyword">type</span>=<span class="hljs-string">"text/javascript"</span> src=<span class="hljs-string">"model_ja.js"</span> charset=<span class="hljs-string">"UTF-8"</span>&gt;&lt;/script&gt;<font></font>
+&lt;script <span class="hljs-keyword">type</span>=<span class="hljs-string">"text/javascript"</span> src=<span class="hljs-string">"hanzenkaku.js"</span> charset=<span class="hljs-string">"UTF-8"</span>&gt;&lt;/script&gt;<font></font>
+&lt;script <span class="hljs-keyword">type</span>=<span class="hljs-string">"text/javascript"</span> charset=<span class="hljs-string">"UTF-8"</span>&gt;
+  <span class="hljs-keyword">function</span> <span class="hljs-constructor">Segment()</span> {<font></font>
+<font></font>
+    rma = <span class="hljs-keyword">new</span> <span class="hljs-constructor">RakutenMA(<span class="hljs-params">model</span>)</span>;<font></font>
+    rma.featset = <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">RakutenMA</span>.</span></span>default_featset_ja;<font></font>
+    rma.hash_func = <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">RakutenMA</span>.</span></span>create<span class="hljs-constructor">_hash_func(15)</span>;<font></font>
+<font></font>
+    var textarea = document.get<span class="hljs-constructor">ElementById(<span class="hljs-string">"input"</span>)</span>;<font></font>
+    var result = document.get<span class="hljs-constructor">ElementById(<span class="hljs-string">"output"</span>)</span>;<font></font>
+    var tokens = rma.tokenize(<span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">HanZenKaku</span>.</span></span>hs2fs(<span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">HanZenKaku</span>.</span></span>hw2fw(<span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">HanZenKaku</span>.</span></span>h2z(textarea.value))));<font></font>
+<font></font>
+    result.style.display = 'block';<font></font>
+    result.innerHTML = <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">RakutenMA</span>.</span></span>tokens2string(tokens);<font></font>
+  }<font></font>
+<font></font>
+&lt;/script&gt;<font></font>
+</code></pre><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">A análise e o resultado son os seguintes:</font></font></p>
+<pre><code><div class="line-numbers">1
+2
+3</div>&lt;textarea <span class="hljs-attribute">id</span>=<span class="hljs-string">"input"</span> <span class="hljs-attribute">cols</span>=<span class="hljs-string">"80"</span> <span class="hljs-attribute">rows</span>=<span class="hljs-string">"5"</span>&gt;&lt;/textarea&gt;<font></font>
+&lt;input <span class="hljs-attribute">type</span>=<span class="hljs-string">"submit"</span> <span class="hljs-attribute">value</span>=<span class="hljs-string">"Analyze"</span> <span class="hljs-attribute">onclick</span>=<span class="hljs-string">"Segment()"</span>&gt;<font></font>
+&lt;div <span class="hljs-attribute">id</span>=<span class="hljs-string">"output"</span>&gt;&lt;/div&gt;
+</code></pre><div name="Using-bundled-models-to-analyze-Chinese/Japanese-sentences" data-unique="Using-bundled-models-to-analyze-Chinese/Japanese-sentences"></div><h3 id="Using-bundled-models-to-analyze-Chinese/Japanese-sentences" class="notranslate">Using bundled models to analyze Chinese/Japanese sentences</h3>
+<ol>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cargue un modelo existente, por exemplo, </font></font><code>model = JSON.parse(fs.readFileSync("model_file"));</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">entón </font></font><code>rma = new RakutenMA(model);</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ou</font></font><code>rma.set_model(model);</code></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Especifica </font></font><code>featset</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">dependendo da túa lingua (por exemplo, </font></font><code>rma.featset = RakutenMA.default_featset_zh;</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">para chinés e </font></font><code>rma.featset = RakutenMA.default_featset_ja;</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">para xaponés).</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Lembre de usar a función de hash de funcións de 15 bits ( </font></font><code>rma.hash_func = RakutenMA.create_hash_func(15);</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">) cando use os modelos incluídos ( </font></font><code>model_zh.json</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">e </font></font><code>model_ja.json</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">).</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Use </font></font><code>rma.tokenize(input)</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">para analizar a súa entrada.</font></font></li>
+</ol>
+<div name="Training-your-own-analysis-model-from-scratch" data-unique="Training-your-own-analysis-model-from-scratch"></div><h3 id="Training-your-own-analysis-model-from-scratch" class="notranslate">Training your own analysis model from scratch</h3>
+<ol>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Prepare o seu corpus de adestramento (un conxunto de frases de adestramento onde unha frase é só unha matriz de [token, etiqueta PoS] correcta.)</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Inicialice unha instancia de RakutenMA con </font></font><code>new RakutenMA()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">.</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Especificar </font></font><code>featset</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">. (E opcionalmente </font></font><code>ctype_func</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><code>hash_func</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">etc.)</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Alimenta as frases de adestramento unha a unha (desde a primeira ata a última) ata o </font></font><code>train_one(sent)</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">método.</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Normalmente SCW converxe o suficiente despois dun </font></font><code>epoch</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(un paso por todo o corpus de adestramento) pero pode repetir o paso 4. para acadar un mellor rendemento.</font></font></li>
+</ol>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Vexa </font></font><code>scripts/train_zh.js</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(para chinés) e </font></font><code>scripts/train_ja.js</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(para xaponés) para ver un exemplo que mostra como adestrar o seu propio modelo.</font></font></p>
+<div name="Re-training-an-existing-model-(domain-adaptation,-fixing-errors,-etc.)" data-unique="Re-training-an-existing-model-(domain-adaptation,-fixing-errors,-etc.)"></div><h3 id="Re-training-an-existing-model-(domain-adaptation,-fixing-errors,-etc.)" class="notranslate">Re-training an existing model (domain adaptation, fixing errors, etc.)</h3>
+<ol>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cargue un modelo existente e inicialice unha instancia de RakutenMA. (Consulte "Uso de modelos incluídos para analizar frases chinesas / xaponesas" anterior)</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Prepare os seus datos de adestramento (pode ser tan pequeno como un par de frases, dependendo de que e canto queira "volver adestrar").</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Alimenta as túas frases de adestramento unha por unha ao </font></font><code>train_one(sent)</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">método.</font></font></li>
+</ol>
+<div name="Reducing-the-model-size" data-unique="Reducing-the-model-size"></div><h3 id="Reducing-the-model-size" class="notranslate">Reducing the model size</h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">O tamaño do modelo aínda podería ser un problema para a distribución do lado do cliente incluso despois de aplicar o hash de funcións. </font></font><code>scripts/minify.js</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Incluímos </font><font style="vertical-align: inherit;">un script </font><font style="vertical-align: inherit;">que aplica a cuantificación de funcións (ver [Hagiwara and Sekine COLING 2014] para os detalles) para reducir o tamaño do modelo adestrado.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Podes executalo </font></font><code>node scripts/minify.js [input_model_file] [output_model_file]</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">para facer unha versión reducida do ficheiro do modelo.
+ </font></font><em><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Lembra:</font></font></em><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> tamén elimina a parte "sigma" do modelo adestrado, o que significa que xa non podes volver adestrar o modelo reducido. Se é necesario, volve adestrar primeiro o modelo, despois minifícao.</font></font></p>
+<div name="API-Documentation" data-unique="API-Documentation"></div><h2 id="API-Documentation"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Documentación API</font></font></h2>
+<table>
+<thead>
+<tr>
+<th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Construtor</font></font></th>
+<th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Descrición</font></font></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>RakutenMA(model, phi, c)</code></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">. Crea novas nova instancia RakutenMA A </font></font><code>model</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">especifica (opcional) para o obxecto instancia Modelo coa arrincar o RakutenMA. </font></font><code>phi</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">E </font></font><code>c</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(ambos opcionais) son amiga Parámetros do ACS (por defecto: </font></font><code>phi = 2048</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><code>c = 0.003906</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">).</font></font></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Métodos</font></font></th>
+<th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Descrición</font></font></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tokenize(input)</code></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Tokeniza </font></font><code>input</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(cadea) e devolve o resultado </font><font style="vertical-align: inherit;">tokenizado </font><font style="vertical-align: inherit;">([token, etiqueta PoS] pares).</font></font></td>
+</tr>
+<tr>
+<td><code>train_one(sent)</code></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">As actualizacións do modelo actual (se é necesario) a usar a resposta dada </font></font><code>sent</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">([xeito, o Tag post] pares). Do valor de retorno é obxecto AN con tres propiedades </font></font><code>ans</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><code>sys</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">e </font></font><code>updated</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">onde </font></font><code>ans</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">é a resposta dada (o mesmo que </font></font><code>sent</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">), </font></font><code>sys</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">IS O sistema dá a saída usando o modelo (antigo) e </font></font><code>updated</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">é unha bandeira binaria (verdadeiro / falso) que significa que se actualizou o modelo (porque </font></font><code>sys</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">era diferente de </font></font><code>ans</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">) ou non.</font></font></td>
+</tr>
+<tr>
+<td><code>set_model(model)</code></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Establece o modelo da instancia de Rakuten MA en </font></font><code>model</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">.</font></font></td>
+</tr>
+<tr>
+<td><code>set_tag_scheme(scheme)</code></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Establece o esquema de etiquetas secuencial. Actualmente, </font></font><code>"IOB2"</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">e </font></font><code>"SBIEO"</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">son compatibles. Especificar outros esquemas de etiquetas provoca unha excepción.</font></font></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Propiedades</font></font></th>
+<th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Descrición</font></font></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>featset</code></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Especifica unha matriz de modelos de funcións (cadea) utilizados para a análise. Podes usar </font></font><code>RakutenMA.default_featset_ja</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">e </font></font><code>RakutenMA.default_featset_zh</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">como conxuntos de funcións predeterminados para o xaponés e o chinés, respectivamente. Vexa a continuación ("Modelos de funcións compatibles") para os detalles dos modelos de funcións.</font></font></td>
+</tr>
+<tr>
+<td><code>ctype_func</code></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Especifica a función usada para converter un carácter ao seu tipo de carácter. </font></font><code>RakutenMA.ctype_ja_default_func</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">É a función de tipo de carácter predeterminada que se usa para o xaponés. Alternativamente, pode chamar </font></font><code>RakutenMA.create_ctype_chardic_func(chardic)</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">para crear unha función de tipo de carácter que leve un carácter para buscalo </font></font><code>chardic</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">e devolver o seu valor. (Para por exemplo, </font></font><code>RakutenMA.create_ctype_chardic_func({"A": "type1"})</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">devolve unha función </font></font><code>f</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">onde </font></font><code>f("A")</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">devolve </font></font><code>"type1"</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">e </font></font><code>[]</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">se non.)</font></font></td>
+</tr>
+<tr>
+<td><code>hash_func</code></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Especifica a función de hash que se usará para o hash de funcións. Predeterminado = </font></font><code>undefined</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(sen hash de funcións). Pódese crear unha función de hash de funcións con </font></font><code>bit</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">espazo de hash -bit chamando </font></font><code>RakutenMA.create_hash_func(bit)</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">.</font></font></td>
+</tr>
+</tbody>
+</table>
+<div name="Terms-and-Conditions" data-unique="Terms-and-Conditions"></div><h2 id="Terms-and-Conditions"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Termos e condicións</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Permítese a distribución, modificación e uso académico / comercial de Rakuten MA, sempre que cumpra coa licenza Apache versión 2.0 </font></font><a href="http://www.apache.org/licenses/LICENSE-2.0.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">http://www.apache.org/licenses/LICENSE-2.0.html</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> .</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Se está a usar Rakuten MA para fins de investigación, cite o noso artigo sobre Rakuten MA [Hagiwara and Sekine 2014]</font></font></p>
+<div name="FAQ-(Frequently-Asked-Questions)" data-unique="FAQ-(Frequently-Asked-Questions)"></div><h2 id="FAQ-(Frequently-Asked-Questions)"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">FAQ (preguntas máis frecuentes)</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">P. Que son os navegadores e versións de Node.js compatibles?</font></font></p>
+<ul>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">R. Confirmamos que Rakuten MA funciona nos seguintes contornos:</font></font><ul>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Internet Explorer 8 (ver. 8.0.7601.17414 ou superior)</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Google Chrome (ver. 35.0.1916.153 ou superior)</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Firefox (ver. 16.0.2 ou superior)</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Safari (ver. 6.1.5 ou superior)</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Node.js (ver. 0.10.13 ou superior)</font></font></li>
+</ul>
+</li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">P. Está permitido o uso comercial?</font></font></p>
+<ul>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">R. Si, sempre que siga os termos e condicións. Consulte "Termos e condicións" máis arriba para os detalles.</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">P. Atopei un erro / erro de análise / etc. Onde debo informar?</font></font></p>
+<ul>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">A. Por favor, cree un problema en Github issues </font></font><a href="https://github.com/rakuten-nlp/rakutenma/issues"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">https://github.com/rakuten-nlp/rakutenma/issues</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> .</font></font></li>
+<li><span class="notranslate">Alternatively</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, pode crear unha solicitude de extracción se modifica o código. Rakuten MA ten unha suite de probas usando Jasmine </font></font><a href="http://jasmine.github.io/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">http://jasmine.github.io/</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> . Asegúrese de que todas as probas pasen (non hai erros despois de executalo </font></font><code>jasmine-node spec</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">) e escriba o seu propio ( se é necesario) antes de enviar unha solicitude de tracción.</font></font></li>
+<li><span class="notranslate">Finally</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Se a súa pregunta aínda non se resolve, póñase en contacto connosco en prj-rakutenma [en] mail.rakuten.com.</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">P. Os resultados da tokenización parecen estraños (en concreto, a frase divídese en caracteres individuais sen etiquetas PoS)</font></font></p>
+<ul>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">A. Comprobe se está a usar o mesmo conxunto de funcións ( </font></font><code>featset</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">) e a función de hash de funcións ( </font></font><code>hash_func</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">) empregadas para o adestramento. Lembre de usar a función de hash de funcións de 15 bits ( </font></font><code>rma.hash_func = RakutenMA.create_hash_func(15);</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">) cando use os modelos incluídos ( </font></font><code>model_zh.json</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">e </font></font><code>model_ja.json</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">).</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">P. Que scripts (simplificados / tradicionais) son compatibles co chinés?</font></font></p>
+<ul>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">R. Actualmente só se admite o chinés simplificado.</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">P. ¿Podemos usar o mesmo ficheiro modelo no formato JSON para navegadores?</font></font></p>
+<ul>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">A. Si e non. Aínda que a estrutura de datos interna dos modelos é a mesma, cómpre engadir unha asignación (por exemplo, </font></font><code>var model = [JSON representation];</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">) para referila aos navegadores. Vexa a diferenza entre </font></font><code>model_zh.json</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(para Node.js) e </font></font><code>model_zh.js</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(para navegadores). Hai un mini script </font></font><code>scripts/convert_for_browser.js</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">que fai isto por ti. Recomendámosche traballar en Node.js para a formación de modelos, etc. e logo convertelo para o uso do navegador.</font></font></li>
+</ul>
+<div name="Appendix" data-unique="Appendix"></div><h2 id="Appendix"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Apéndice</font></font></h2>
+<div name="Supported-feature-templates" data-unique="Supported-feature-templates"></div><h3 id="Supported-feature-templates" class="notranslate">Supported feature templates</h3>
+<table>
+<thead>
+<tr>
+<th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Modelo de función</font></font></th>
+<th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Descrición</font></font></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">w7</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Unigrama de caracteres (c-3)</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">w8</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Unigrama de caracteres (c-2)</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">w9</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Unigrama de caracteres (c-1)</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">w0</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Unigrama de caracteres (c0)</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">w1</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Unigrama de caracteres (c + 1)</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">w2</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Unigrama de caracteres (c + 2)</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">w3</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Unigrama de caracteres (c + 3)</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">c7</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Tipo de carácter unigrama (t-3)</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">c8</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Tipo de carácter unigrama (t-2)</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">c9</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Tipo de carácter unigrama (t-1)</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">c0</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Tipo de carácter unigrama (t0)</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">c1</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Tipo de carácter unigrama (t + 1)</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">c2</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Tipo de carácter unigrama (t + 2)</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">c3</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Tipo de carácter unigrama (t + 3)</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">b7</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Bigram de personaxes (c-3 c-2)</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">b8</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Bigram de personaxes (c-2 c-1)</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">b9</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Bigram de personaxes (c-1 c0)</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">b1</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Bigram de personaxes (c0 c + 1)</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">b2</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Bigrama de personaxes (c + 1 c + 2)</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">b3</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Bigram de personaxes (c + 2 c + 3)</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">d7</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Tipo de personaxe bigram (t-3 t-2)</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">d8</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Tipo de personaxe bigram (t-2 t-1)</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">d9</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Tipo de personaxe bigram (t-1 t0)</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">d1</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Tipo de carácter bigram (t0 t + 1)</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">d2</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Tipo de carácter bigram (t + 1 t + 2)</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">d3</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Tipo de carácter bigram (t + 2 t + 3)</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">outros</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Se especifica unha función de característica personalizada na </font></font><code>featset</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">matriz, a función chamarase con dous argumentos </font></font><code>_t</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">e </font></font><code>i</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, onde </font></font><code>_t</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">é unha función que toma unha posición </font></font><code>j</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">e devolve o obxecto de carácter nesa posición e </font></font><code>i</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">é a posición actual. Un obxecto de carácter é un obxecto con dúas propiedades </font></font><code>c</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">e </font></font><code>t</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">que son caracteres e tipo de caracteres, respectivamente. O valor devolto desa función úsase como valor de característica. (Por exemplo, se especifica unha función </font></font><code>f(_t, i)</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">que </font></font><code>returns _t(i).t;</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, entón devolve o tipo de carácter da posición actual, que é basicamente o mesmo que o modelo </font></font><code>c0</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">.)</font></font></td>
+</tr>
+</tbody>
+</table>
+<div name="PoS-tag-list-in-Chinese" data-unique="PoS-tag-list-in-Chinese"></div><h3 id="PoS-tag-list-in-Chinese" class="notranslate">PoS tag list in Chinese</h3>
+<table>
+<thead>
+<tr>
+<th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Etiqueta</font></font></th>
+<th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Descrición</font></font></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ANUNCIO</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Adverbio</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">AS</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Partícula de aspecto</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">BA</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ba3 (en construción ba)</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">CC</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Conxunción coordinadora</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">CD</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Número cardeal</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">CS</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Conxunción subordinada</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">DEC</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">de5 (Complementador / Nominalizador)</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">DEG</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">de5 (xenitivo / asociativo)</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">DER</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">de5 (resultante)</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">DEV</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">de5 (Forma)</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">DT</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Determinante</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ETC</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Outros</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">FW</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Palabra estranxeira</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">IJ</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Interxección</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">JJ</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Outro modificador de substantivos</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">LB</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">bei4 (en construción bei longa)</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">LC</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Localizador</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">M</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Medir palabra</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">MSP</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Outra partícula</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">NN</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Outro substantivo</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">NN-CURTO</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Outro substantivo (abrev.)</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">NR</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Nome propio</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">NR-CURTO</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Nome propio (abrev.)</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">NT</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Substantivo temporal</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">NT-CURTO</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Substantivo temporal (abreviatura)</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">OD</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Número ordinal</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ACTIVADO</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Onomatopeia</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Páx</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Preposición</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">PN</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Pronome</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">PU</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Puntuación</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SB</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">bei4 (en resumo bei-construction)</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SP</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Partícula frase final</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">URL</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">URL</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">VA</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Adxectivo predicativo</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">VC</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cópula</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">VE</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">you3 (verbo principal)</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">VV</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Outro verbo</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">X</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Outros</font></font></td>
+</tr>
+</tbody>
+</table>
+<div name="PoS-tag-list-in-Japanese-and-correspondence-to-BCCWJ-tags" data-unique="PoS-tag-list-in-Japanese-and-correspondence-to-BCCWJ-tags"></div><h3 id="PoS-tag-list-in-Japanese-and-correspondence-to-BCCWJ-tags" class="notranslate">PoS tag list in Japanese and correspondence to BCCWJ tags</h3>
+<table>
+<thead>
+<tr>
+<th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Etiqueta</font></font></th>
+<th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Nome orixinal de JA</font></font></th>
+<th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Inglés</font></font></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ac</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Adxectivo xeral</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Adxectivo-Común</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">A-dp</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Os adxectivos non son autosuficientes</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Adxectivo-Dependente</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">C</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Palabras de conexión</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Conxunción</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">D</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sinónimo</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Pronome</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">E</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Inglés</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Palabra inglesa</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">F</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">adverbio</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Adverbio</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">I C</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Tocando verbos-Xerais</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Interxección-Común</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Jc</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Forma palabras-xerais</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Substantivo adxectivo común</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">J-tari</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Forma palabra- タ リ</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Substantivo adxectivo-Tari</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">J-xs</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Forma palabras-tallo do verbo auxiliar</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Subxectivo substantivo-aux verbo</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">M-aa</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Marca de subvención-AA</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Signo auxiliar-AA</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Mc</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Signo xeral de subvención</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Signo auxiliar-Común</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">M-cp</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paréntese pechado marca de subvención</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Signo auxiliar-Paréntese aberto</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">M-op</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Marca de subvención aberta entre parénteses</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Signo auxiliar-Pechar paréntese</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Mp</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Período de marca da subvención</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Signo auxiliar-Período</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Nn</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Substantivo-substantivo</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Substantivo-Substantivo</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">N-nc</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Substantivo substantivo común</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Substantivo-Substantivo común</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">N-pn</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Substantivo propio</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Substantivo-Substantivo propio</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">N-xs</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Tallo do verbo substantivo-auxiliar</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Noun-AuxVerb stem</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">O</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">そ の 他</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Outros</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Páx</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Palabras conxuntas</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Prefixo</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">P-fj</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Auxiliar-adverbial</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Partícula-Adverbial</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">P-jj</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Palabras auxiliares-Cuasi-suxeito Palabras auxiliares</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Partícula-Frase</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Pk</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Palabras auxiliares-Case Auxiliar Words</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Marcado de partículas</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">P-rj</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Palabras auxiliares-Palabras auxiliares copulativas</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Unión de partículas</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">P-sj</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Palabra auxiliar-Palabra auxiliar</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Partícula-Conxuntivo</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Qa</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sufixo-adxectivo</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sufixo-Adxectivo</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Qj</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Palabras en forma de sufixo</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sufixo-Adxectivo Substantivo</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Qn</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sufixo-substantivo</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sufixo-Substantivo</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Qv</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sufixo-verbal</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sufixo-Verbo</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">R</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Palabras unidas</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Adxectivo adnominal</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sc</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Marca xeral</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Signo común</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sl</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Marcar texto</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Carta de sinatura</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">U</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">URL</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">URL</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Vc</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Verbo xeral</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Verbo-Común</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">V-dp</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Posibilidade de verbo-independencia</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Dependente do verbo</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">W</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">en branco</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Espazo en branco</font></font></td>
+</tr>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">X</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Verbo auxiliar</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">AuxVerb</font></font></td>
+</tr>
+</tbody>
+</table>
+<div name="Acknowledgements" data-unique="Acknowledgements"></div><h2 id="Acknowledgements"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Agradecementos</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Os desenvolvedores queren agradecer a Satoshi Sekine, Satoko Marumoto, Yoichi Yoshimoto, Keiji Shinzato, Keita Yaegashi e Soh Masuko pola súa contribución a este proxecto.</font></font></p>
+<div name="References" data-unique="References"></div><h2 id="References"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Referencias</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Masato Hagiwara e Satoshi Sekine. Analizador morfolóxico chino / xaponés do lado do cliente lixeiro baseado na aprendizaxe en liña. Sesión de demostración de COLING 2014, páxinas 39-43, 2014. [ </font></font><a href="http://anthology.aclweb.org/C/C14/C14-2009.pdf"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">PDF</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> ]</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Kikuo Maekawa. Recopilación do corpus Kotonoha-BCCWJ (en xaponés). Nihongo no kenkyu (Estudos en xaponés), 4 (1): 82-95, 2008. (Pódese atopar algunha información en inglés </font></font><a href="http://www2.ninjal.ac.jp/kikuo/Yonsei_KM20070129.pdf"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">aquí</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> .) [ </font></font><a href="http://www.ninjal.ac.jp/corpus_center/bccwj/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sitio</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> ]</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Jialei Wang, Peilin Zhao e Steven C. Hoi. Aprendizaxe suave e ponderada na confianza. En Proc. Of ICML 2012, páxinas 121-128, 2012. [ </font></font><a href="http://icml.cc/2012/papers/86.pdf"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">PDF</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> ]</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Naiwen Xue, Fei Xia, Fu-dong Chiou e Marta Palmer. O banco de árbores chinés Penn: Anotación de estrutura de frases dun gran corpus. Enxeñaría da linguaxe natural, 11 (2): 207-238, 2005. [ </font></font><a href="http://verbs.colorado.edu/~mpalmer/papers/ctb.pdf"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">PDF</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> ] [ </font></font><a href="https://catalog.ldc.upenn.edu/LDC2010T07"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sitio</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> ]</font></font></p>
+<hr>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© 2014, 2015 Proxecto Rakuten NLP. Todos os dereitos reservados. / Patrocinado por </font></font><a href="http://global.rakuten.com/corp/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Rakuten, Inc.</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> e </font></font><a href="http://rit.rakuten.co.jp/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Rakuten Institute of Technology</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> .</font></font></p>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org | </font></font><a href="../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Apóianos</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip37019"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip37019" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Fai clic para volver á páxina superior</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../js/common.js"></script><script type="text/javascript" src="../../../../js/docs.js"></script></body></html>

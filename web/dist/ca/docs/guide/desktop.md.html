@@ -1,0 +1,636 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../imgs/icon.png"><title>Desenvolupament ràpid d'aplicacions d'escriptori-JavaScript a Fiber</title><link href="../../../css/common.css" rel="stylesheet"><link href="../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Commuta la navegació</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../index.html"><img src="../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../index.html">HOME</a></li><li><a href="readme.md.html">GUIDE</a></li><li><a href="../manual/module/readme.md.html">MODULE</a></li><li><a href="../manual/object/readme.md.html">OBJECT</a></li><li><a href="../awesome/readme.md.html">AWESOME</a></li><li><a href="../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../docs/guide/desktop.md.html">中文</a> <a href="../../../ca/docs/guide/desktop.md.html">Catalan</a> <a href="../../../de/docs/guide/desktop.md.html">Deutsch</a> <a href="../../../en/docs/guide/desktop.md.html">English</a> <a href="../../../es/docs/guide/desktop.md.html">Español</a> <a href="../../../fr/docs/guide/desktop.md.html">Français</a> <a href="../../../gl/docs/guide/desktop.md.html">Galego</a> <a href="../../../it/docs/guide/desktop.md.html">Italiano</a> <a href="../../../ru/docs/guide/desktop.md.html">Русский</a> <a href="../../../ja/docs/guide/desktop.md.html">日本語</a> <a href="../../../ko/docs/guide/desktop.md.html">한국어</a> <a href="../../../zh-tw/docs/guide/desktop.md.html">繁體中文</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Guia Guia de desenvolupament </font></font></span><div class="search"><span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input type="text" class="searchbox ds-input" placeholder="Cerca" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-label="entrada de cerca" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Avenir, &quot;Segoe UI&quot;, Arial, &quot;Hiragino Sans GB&quot;, 冬青黑, &quot;Microsoft YaHei&quot;, 微软雅黑, SimSun, 宋体, Helvetica, Tahoma, &quot;Arial sans-serif&quot;; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div class="ds-dataset-1"></div></span></span></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Pàgina inicial</font></font></a></li><li><a href="readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Guia de desenvolupament </font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Desenvolupeu ràpidament aplicacions d'escriptori </font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Guia de desenvolupament </font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse in" aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="about.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Què és fibjs?</font></font></a></li>
+<li><a href="install.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Instal·lació i entorn operatiu</font></font></a></li>
+<li><a href="hello.md.html" class="notranslate">hello, world</a></li>
+<li><a href="test.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Una bona vida comença amb la prova</font></font></a></li>
+<li><a href="profiler.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Troba l'assassí del rendiment</font></font></a></li>
+<li class="active"><a href="desktop.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Desenvolupeu ràpidament aplicacions d'escriptori</font></font></a></li>
+<li><a href="server-hot-update.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Actualització actualitzada del mòdul de servidor</font></font></a></li>
+<li><a href="host-routes.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Encaminament de noms de domini</font></font></a></li>
+<li><a href="x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ús del certificat X509 a fibjs</font></font></a></li>
+<li><a href="contribute.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Afegeix un mòdul natiu</font></font></a></li>
+</ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_module" aria-controls="collapse_module"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Mòdul bàsic </font></font></a></h4></div><div id="collapse_module" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="../manual/module/ifs/assert.md.html" class="notranslate">assert</a></li>
+<li><a href="../manual/module/ifs/base32.md.html" class="notranslate">base32</a></li>
+<li><a href="../manual/module/ifs/base64.md.html" class="notranslate">base64</a></li>
+<li><a href="../manual/module/ifs/base64vlq.md.html" class="notranslate">base64vlq</a></li>
+<li><a href="../manual/module/ifs/bson.md.html" class="notranslate">bson</a></li>
+<li><a href="../manual/module/ifs/child_process.md.html" class="notranslate">child_process</a></li>
+<li><a href="../manual/module/ifs/console.md.html" class="notranslate">console</a></li>
+<li><a href="../manual/module/ifs/constants.md.html" class="notranslate">constants</a></li>
+<li><a href="../manual/module/ifs/coroutine.md.html" class="notranslate">coroutine</a></li>
+<li><a href="../manual/module/ifs/crypto.md.html" class="notranslate">crypto</a></li>
+<li><a href="../manual/module/ifs/db.md.html" class="notranslate">db</a></li>
+<li><a href="../manual/module/ifs/dgram.md.html" class="notranslate">dgram</a></li>
+<li><a href="../manual/module/ifs/dns.md.html" class="notranslate">dns</a></li>
+<li><a href="../manual/module/ifs/encoding.md.html" class="notranslate">encoding</a></li>
+<li><a href="../manual/module/ifs/fs.md.html" class="notranslate">fs</a></li>
+<li><a href="../manual/module/ifs/gd.md.html" class="notranslate">gd</a></li>
+<li><a href="../manual/module/ifs/global.md.html" class="notranslate">global</a></li>
+<li><a href="../manual/module/ifs/gui.md.html" class="notranslate">gui</a></li>
+<li><a href="../manual/module/ifs/hash.md.html" class="notranslate">hash</a></li>
+<li><a href="../manual/module/ifs/hex.md.html" class="notranslate">hex</a></li>
+<li><a href="../manual/module/ifs/http.md.html" class="notranslate">http</a></li>
+<li><a href="../manual/module/ifs/iconv.md.html" class="notranslate">iconv</a></li>
+<li><a href="../manual/module/ifs/io.md.html" class="notranslate">io</a></li>
+<li><a href="../manual/module/ifs/json.md.html" class="notranslate">json</a></li>
+<li><a href="../manual/module/ifs/mq.md.html" class="notranslate">mq</a></li>
+<li><a href="../manual/module/ifs/msgpack.md.html" class="notranslate">msgpack</a></li>
+<li><a href="../manual/module/ifs/net.md.html" class="notranslate">net</a></li>
+<li><a href="../manual/module/ifs/os.md.html" class="notranslate">os</a></li>
+<li><a href="../manual/module/ifs/path.md.html" class="notranslate">path</a></li>
+<li><a href="../manual/module/ifs/path_posix.md.html" class="notranslate">path_posix</a></li>
+<li><a href="../manual/module/ifs/path_win32.md.html" class="notranslate">path_win32</a></li>
+<li><a href="../manual/module/ifs/process.md.html" class="notranslate">process</a></li>
+<li><a href="../manual/module/ifs/profiler.md.html" class="notranslate">profiler</a></li>
+<li><a href="../manual/module/ifs/punycode.md.html" class="notranslate">punycode</a></li>
+<li><a href="../manual/module/ifs/querystring.md.html" class="notranslate">querystring</a></li>
+<li><a href="../manual/module/ifs/registry.md.html" class="notranslate">registry</a></li>
+<li><a href="../manual/module/ifs/ssl.md.html" class="notranslate">ssl</a></li>
+<li><a href="../manual/module/ifs/string_decoder.md.html" class="notranslate">string_decoder</a></li>
+<li><a href="../manual/module/ifs/test.md.html" class="notranslate">test</a></li>
+<li><a href="../manual/module/ifs/timers.md.html" class="notranslate">timers</a></li>
+<li><a href="../manual/module/ifs/tty.md.html" class="notranslate">tty</a></li>
+<li><a href="../manual/module/ifs/url.md.html" class="notranslate">url</a></li>
+<li><a href="../manual/module/ifs/util.md.html" class="notranslate">util</a></li>
+<li><a href="../manual/module/ifs/uuid.md.html" class="notranslate">uuid</a></li>
+<li><a href="../manual/module/ifs/vm.md.html" class="notranslate">vm</a></li>
+<li><a href="../manual/module/ifs/ws.md.html" class="notranslate">ws</a></li>
+<li><a href="../manual/module/ifs/xml.md.html" class="notranslate">xml</a></li>
+<li><a href="../manual/module/ifs/zip.md.html" class="notranslate">zip</a></li>
+<li><a href="../manual/module/ifs/zlib.md.html" class="notranslate">zlib</a></li>
+</ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_object" aria-controls="collapse_object"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Objectes incorporats </font></font></a></h4></div><div id="collapse_object" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="../manual/object/ifs/buffer.md.html" class="notranslate">Buffer</a></li>
+<li><a href="../manual/object/ifs/bufferedstream.md.html" class="notranslate">BufferedStream</a></li>
+<li><a href="../manual/object/ifs/chain.md.html" class="notranslate">Chain</a></li>
+<li><a href="../manual/object/ifs/childprocess.md.html" class="notranslate">ChildProcess</a></li>
+<li><a href="../manual/object/ifs/cipher.md.html" class="notranslate">Cipher</a></li>
+<li><a href="../manual/object/ifs/condition.md.html" class="notranslate">Condition</a></li>
+<li><a href="../manual/object/ifs/dbconnection.md.html" class="notranslate">DbConnection</a></li>
+<li><a href="../manual/object/ifs/dgramsocket.md.html" class="notranslate">DgramSocket</a></li>
+<li><a href="../manual/object/ifs/digest.md.html" class="notranslate">Digest</a></li>
+<li><a href="../manual/object/ifs/event.md.html" class="notranslate">Event</a></li>
+<li><a href="../manual/object/ifs/eventemitter.md.html" class="notranslate">EventEmitter</a></li>
+<li><a href="../manual/object/ifs/fswatcher.md.html" class="notranslate">FSWatcher</a></li>
+<li><a href="../manual/object/ifs/fiber.md.html" class="notranslate">Fiber</a></li>
+<li><a href="../manual/object/ifs/file.md.html" class="notranslate">File</a></li>
+<li><a href="../manual/object/ifs/handler.md.html" class="notranslate">Handler</a></li>
+<li><a href="../manual/object/ifs/heapgraphedge.md.html" class="notranslate">HeapGraphEdge</a></li>
+<li><a href="../manual/object/ifs/heapgraphnode.md.html" class="notranslate">HeapGraphNode</a></li>
+<li><a href="../manual/object/ifs/heapsnapshot.md.html" class="notranslate">HeapSnapshot</a></li>
+<li><a href="../manual/object/ifs/httpclient.md.html" class="notranslate">HttpClient</a></li>
+<li><a href="../manual/object/ifs/httpcollection.md.html" class="notranslate">HttpCollection</a></li>
+<li><a href="../manual/object/ifs/httpcookie.md.html" class="notranslate">HttpCookie</a></li>
+<li><a href="../manual/object/ifs/httphandler.md.html" class="notranslate">HttpHandler</a></li>
+<li><a href="../manual/object/ifs/httpmessage.md.html" class="notranslate">HttpMessage</a></li>
+<li><a href="../manual/object/ifs/httprepeater.md.html" class="notranslate">HttpRepeater</a></li>
+<li><a href="../manual/object/ifs/httprequest.md.html" class="notranslate">HttpRequest</a></li>
+<li><a href="../manual/object/ifs/httpresponse.md.html" class="notranslate">HttpResponse</a></li>
+<li><a href="../manual/object/ifs/httpserver.md.html" class="notranslate">HttpServer</a></li>
+<li><a href="../manual/object/ifs/httpuploaddata.md.html" class="notranslate">HttpUploadData</a></li>
+<li><a href="../manual/object/ifs/httpsserver.md.html" class="notranslate">HttpsServer</a></li>
+<li><a href="../manual/object/ifs/image.md.html" class="notranslate">Image</a></li>
+<li><a href="../manual/object/ifs/leveldb.md.html" class="notranslate">LevelDB</a></li>
+<li><a href="../manual/object/ifs/lock.md.html" class="notranslate">Lock</a></li>
+<li><a href="../manual/object/ifs/lrucache.md.html" class="notranslate">LruCache</a></li>
+<li><a href="../manual/object/ifs/mssql.md.html" class="notranslate">MSSQL</a></li>
+<li><a href="../manual/object/ifs/memorystream.md.html" class="notranslate">MemoryStream</a></li>
+<li><a href="../manual/object/ifs/message.md.html" class="notranslate">Message</a></li>
+<li><a href="../manual/object/ifs/mongocollection.md.html" class="notranslate">MongoCollection</a></li>
+<li><a href="../manual/object/ifs/mongocursor.md.html" class="notranslate">MongoCursor</a></li>
+<li><a href="../manual/object/ifs/mongodb.md.html" class="notranslate">MongoDB</a></li>
+<li><a href="../manual/object/ifs/mongoid.md.html" class="notranslate">MongoID</a></li>
+<li><a href="../manual/object/ifs/mysql.md.html" class="notranslate">MySQL</a></li>
+<li><a href="../manual/object/ifs/pkey.md.html" class="notranslate">PKey</a></li>
+<li><a href="../manual/object/ifs/rangestream.md.html" class="notranslate">RangeStream</a></li>
+<li><a href="../manual/object/ifs/redis.md.html" class="notranslate">Redis</a></li>
+<li><a href="../manual/object/ifs/redishash.md.html" class="notranslate">RedisHash</a></li>
+<li><a href="../manual/object/ifs/redislist.md.html" class="notranslate">RedisList</a></li>
+<li><a href="../manual/object/ifs/redisset.md.html" class="notranslate">RedisSet</a></li>
+<li><a href="../manual/object/ifs/redissortedset.md.html" class="notranslate">RedisSortedSet</a></li>
+<li><a href="../manual/object/ifs/routing.md.html" class="notranslate">Routing</a></li>
+<li><a href="../manual/object/ifs/sqlite.md.html" class="notranslate">SQLite</a></li>
+<li><a href="../manual/object/ifs/sandbox.md.html" class="notranslate">SandBox</a></li>
+<li><a href="../manual/object/ifs/seekablestream.md.html" class="notranslate">SeekableStream</a></li>
+<li><a href="../manual/object/ifs/semaphore.md.html" class="notranslate">Semaphore</a></li>
+<li><a href="../manual/object/ifs/service.md.html" class="notranslate">Service</a></li>
+<li><a href="../manual/object/ifs/smtp.md.html" class="notranslate">Smtp</a></li>
+<li><a href="../manual/object/ifs/socket.md.html" class="notranslate">Socket</a></li>
+<li><a href="../manual/object/ifs/sslhandler.md.html" class="notranslate">SslHandler</a></li>
+<li><a href="../manual/object/ifs/sslserver.md.html" class="notranslate">SslServer</a></li>
+<li><a href="../manual/object/ifs/sslsocket.md.html" class="notranslate">SslSocket</a></li>
+<li><a href="../manual/object/ifs/stat.md.html" class="notranslate">Stat</a></li>
+<li><a href="../manual/object/ifs/statswatcher.md.html" class="notranslate">StatsWatcher</a></li>
+<li><a href="../manual/object/ifs/stream.md.html" class="notranslate">Stream</a></li>
+<li><a href="../manual/object/ifs/stringdecoder.md.html" class="notranslate">StringDecoder</a></li>
+<li><a href="../manual/object/ifs/tcpserver.md.html" class="notranslate">TcpServer</a></li>
+<li><a href="../manual/object/ifs/timer.md.html" class="notranslate">Timer</a></li>
+<li><a href="../manual/object/ifs/urlobject.md.html" class="notranslate">UrlObject</a></li>
+<li><a href="../manual/object/ifs/websocket.md.html" class="notranslate">WebSocket</a></li>
+<li><a href="../manual/object/ifs/websocketmessage.md.html" class="notranslate">WebSocketMessage</a></li>
+<li><a href="../manual/object/ifs/webview.md.html" class="notranslate">WebView</a></li>
+<li><a href="../manual/object/ifs/worker.md.html" class="notranslate">Worker</a></li>
+<li><a href="../manual/object/ifs/x509cert.md.html" class="notranslate">X509Cert</a></li>
+<li><a href="../manual/object/ifs/x509crl.md.html" class="notranslate">X509Crl</a></li>
+<li><a href="../manual/object/ifs/x509req.md.html" class="notranslate">X509Req</a></li>
+<li><a href="../manual/object/ifs/xmlattr.md.html" class="notranslate">XmlAttr</a></li>
+<li><a href="../manual/object/ifs/xmlcdatasection.md.html" class="notranslate">XmlCDATASection</a></li>
+<li><a href="../manual/object/ifs/xmlcharacterdata.md.html" class="notranslate">XmlCharacterData</a></li>
+<li><a href="../manual/object/ifs/xmlcomment.md.html" class="notranslate">XmlComment</a></li>
+<li><a href="../manual/object/ifs/xmldocument.md.html" class="notranslate">XmlDocument</a></li>
+<li><a href="../manual/object/ifs/xmldocumenttype.md.html" class="notranslate">XmlDocumentType</a></li>
+<li><a href="../manual/object/ifs/xmlelement.md.html" class="notranslate">XmlElement</a></li>
+<li><a href="../manual/object/ifs/xmlnamednodemap.md.html" class="notranslate">XmlNamedNodeMap</a></li>
+<li><a href="../manual/object/ifs/xmlnode.md.html" class="notranslate">XmlNode</a></li>
+<li><a href="../manual/object/ifs/xmlnodelist.md.html" class="notranslate">XmlNodeList</a></li>
+<li><a href="../manual/object/ifs/xmlprocessinginstruction.md.html" class="notranslate">XmlProcessingInstruction</a></li>
+<li><a href="../manual/object/ifs/xmltext.md.html" class="notranslate">XmlText</a></li>
+<li><a href="../manual/object/ifs/zipfile.md.html" class="notranslate">ZipFile</a></li>
+<li><a href="../manual/object/ifs/object.md.html" class="notranslate">object</a></li>
+</ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_awesome" aria-controls="collapse_awesome"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Mòdul de comunitat </font></font></a></h4></div><div id="collapse_awesome" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="../awesome/module/fib-session.md.html" class="notranslate">fib-session</a></li>
+<li><a href="../awesome/module/fib-pool.md.html" class="notranslate">fib-pool</a></li>
+<li><a href="../awesome/module/fib-orm.md.html" class="notranslate">fib-orm</a></li>
+<li><a href="../awesome/module/fib-app.md.html" class="notranslate">fib-app</a></li>
+<li><a href="../awesome/module/fib-kv.md.html" class="notranslate">fib-kv</a></li>
+<li><a href="../awesome/module/fib-rpc.md.html" class="notranslate">fib-rpc</a></li>
+<li><a href="../awesome/module/fib-qr.md.html" class="notranslate">fib-qr</a></li>
+<li><a href="../awesome/module/fib-pug.md.html" class="notranslate">fib-pug</a></li>
+<li><a href="../awesome/module/ejs.md.html" class="notranslate">ejs</a></li>
+<li><a href="../awesome/module/juicer.md.html" class="notranslate">Juicer</a></li>
+<li><a href="../awesome/module/highlight.js.md.html" class="notranslate">highlight.js</a></li>
+<li><a href="../awesome/module/marked.md.html" class="notranslate">marked</a></li>
+<li><a href="../awesome/module/node-cron.md.html" class="notranslate">node-cron</a></li>
+<li><a href="../awesome/module/debug.md.html" class="notranslate">debug</a></li>
+<li><a href="../awesome/module/benchmark.js.md.html" class="notranslate">benchmark.js</a></li>
+<li><a href="../awesome/module/sinon.md.html" class="notranslate">sinon</a></li>
+<li><a href="../awesome/module/node-mime.md.html" class="notranslate">node-mime</a></li>
+<li><a href="../awesome/module/validatorjs.md.html" class="notranslate">validatorjs</a></li>
+<li><a href="../awesome/module/superstruct.md.html" class="notranslate">superstruct</a></li>
+<li><a href="../awesome/module/cluster-server.md.html" class="notranslate">cluster-server</a></li>
+<li><a href="../awesome/module/synaptic.md.html" class="notranslate">synaptic</a></li>
+<li><a href="../awesome/module/source-map.md.html" class="notranslate">source-map</a></li>
+<li><a href="../awesome/module/json-format.md.html" class="notranslate">json-format</a></li>
+<li><a href="../awesome/module/viz.js.md.html" class="notranslate">viz.js</a></li>
+<li><a href="../awesome/module/nomnoml.md.html" class="notranslate">nomnoml</a></li>
+<li><a href="../awesome/module/pegjs.md.html" class="notranslate">pegjs</a></li>
+<li><a href="../awesome/module/uglify-js.md.html" class="notranslate">uglify-js</a></li>
+<li><a href="../awesome/module/js-beautify.md.html" class="notranslate">js-beautify</a></li>
+<li><a href="../awesome/module/chalk-animation.md.html" class="notranslate">chalk-animation</a></li>
+<li><a href="../awesome/module/jsrsasign.md.html" class="notranslate">jsrsasign</a></li>
+<li><a href="../awesome/module/crypto-js.md.html" class="notranslate">crypto-js</a></li>
+<li><a href="../awesome/module/ascii-table.md.html" class="notranslate">ascii-table</a></li>
+<li><a href="../awesome/module/logstream.md.html" class="notranslate">logstream</a></li>
+<li><a href="../awesome/module/ci.md.html" class="notranslate">ci</a></li>
+<li><a href="../awesome/module/fs-readdir-recursive.md.html" class="notranslate">fs-readdir-recursive</a></li>
+<li><a href="../awesome/module/mkdirp.md.html" class="notranslate">mkdirp</a></li>
+<li><a href="../awesome/module/rmdirr.md.html" class="notranslate">rmdirr</a></li>
+<li><a href="../awesome/module/detect-port.md.html" class="notranslate">detect-port</a></li>
+<li><a href="../awesome/module/bitcoinjs-lib.md.html" class="notranslate">bitcoinjs-lib</a></li>
+<li><a href="../awesome/module/rakuten.md.html" class="notranslate">Rakuten</a></li>
+</ul>
+ </div></div></div>  </div></div><div class="content"><div class="social-share share-component" data-sites="weibo,twitter" data-description="分享"></div> <div name="快速开发桌面应用" data-unique="快速开发桌面应用"></div><h1 id="快速开发桌面应用"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Desenvolupeu ràpidament aplicacions d'escriptori</font></font></h1>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">El llançament d’una aplicació d’escriptori a fibjs és molt ràpid. Només cal que escriviu el codi següent per obrir i executar una finestra de WebView:</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5</div><span class="hljs-keyword">var</span> gui = <span class="hljs-built_in">require</span>(<span class="hljs-string">"gui"</span>);<font></font>
+<font></font>
+gui.open(<span class="hljs-string">"https://fibjs.org"</span>, {
+    <span class="hljs-string">"native"</span>: <span class="hljs-literal">true</span><font></font>
+});<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Aquest codi obrirà una finestra de WebView integrada al sistema operatiu i entrarà al lloc web fibjs.org.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Tanmateix, la WebView integrada del sistema no pot satisfer el potent desenvolupament d'aplicacions d'escriptori en termes de funció d'interfície o compatibilitat. </font><font style="vertical-align: inherit;">Per tant, fibjs també admet el desenvolupament d'aplicacions basades en cef.</font></font></p>
+<div name="cef-简介" data-unique="cef-简介"></div><h2 id="cef-简介"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Introducció al cef</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">El nom complet de cef és Chromium Embedded Framework, que és un projecte de codi obert basat en Google Chromium. </font><font style="vertical-align: inherit;">El projecte Google Chromium es desenvolupa principalment per a aplicacions de Google Chrome i l’objectiu de cef és proporcionar suport per al navegador incrustable per a aplicacions de tercers. </font><font style="vertical-align: inherit;">cef aïlla el complex codi de Chromium i Blink subjacents i proporciona un conjunt d’APIs estables a nivell de producte, allibera branques que fan un seguiment de versions específiques de Chromium i paquets binaris. </font><font style="vertical-align: inherit;">La majoria de les funcions de cef ofereixen implementacions predeterminades, que permeten als usuaris fer la mínima personalització possible per satisfer les seves necessitats. </font><font style="vertical-align: inherit;">Els escenaris d’aplicació típics de cef inclouen:</font></font></p>
+<ul>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Inseriu un control del navegador compatible amb HTML5 en una aplicació local existent.</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Creeu un navegador de shell lleuger per allotjar aplicacions desenvolupades principalment amb tecnologia web.</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Algunes aplicacions tenen marcs de dibuix independents i utilitzen cef per renderitzar contingut web fora de línia.</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Utilitzeu cef per fer proves web automatitzades.</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">cef3 és el cef de nova generació basat en l'arquitectura multiprocés de l'API de contingut de Chomuim i té els següents avantatges:</font></font></p>
+<ul>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Rendiment i estabilitat millorats (JavaScript i connectors s’executen en un procés separat).</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Suporta pantalla Retina.</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Admet l'acceleració GPU de WebGL i CSS 3D.</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Funcions avantguardistes com WebRTC i entrada de veu.</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Proporcioneu una prova d’interfície d’usuari millor automatitzada mitjançant el protocol de depuració remota de DevTools i ChromeDriver2.</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">La possibilitat d'obtenir funcions i estàndards web actuals i futurs més ràpidament.</font></font></li>
+</ul>
+<div name="准备运行环境" data-unique="准备运行环境"></div><h2 id="准备运行环境"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Prepareu l’entorn operatiu</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">El paquet binari de cef3 es pot </font><font style="vertical-align: inherit;">descarregar </font><font style="vertical-align: inherit;">des de [ </font></font><a href="https://cef-builds.spotifycdn.com/index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">aquesta pàgina</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> ]. </font><font style="vertical-align: inherit;">Conté tots els fitxers necessaris per compilar una versió específica de cef3 en una plataforma específica (Windows, Mac OS X i Linux). </font><font style="vertical-align: inherit;">L'estructura de directoris de les diferents plataformes és diferent, heu de reorganitzar l'estructura de directoris de recursos després de descarregar-la.</font></font></p>
+<div name="Windows-操作系统(Windows)" data-unique="Windows-操作系统(Windows)"></div><h3 id="Windows-操作系统(Windows)"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sistema operatiu Windows (Windows)</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">A la plataforma de Windows, l'estructura de carpetes és la següent, normalment podeu incloure paquets binaris </font></font><code>Release</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">i </font></font><code>Resources</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">trobar tots els fitxers al directori:</font></font></p>
+<pre><code class="lang-bash"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24</div>Application<font></font>
+├── fibjs.exe<font></font>
+├── cef.pak<font></font>
+├── cef_100_percent.pak<font></font>
+├── cef_200_percent.pak<font></font>
+├── cef_extensions.pak<font></font>
+├── cef_sandbox.lib<font></font>
+├── chrome_elf.dll<font></font>
+├── d3dcompiler_47.dll<font></font>
+├── devtools_resources.pak<font></font>
+├── icudtl.dat<font></font>
+├── libEGL.dll<font></font>
+├── libGLESv2.dll<font></font>
+├── libcef.dll<font></font>
+├── libcef.lib<font></font>
+├── locales<font></font>
+│   ├── am.pak<font></font>
+│   ├── ......<font></font>
+│   └── zh-TW.pak<font></font>
+├── snapshot_blob.bin<font></font>
+├── swiftshader<font></font>
+│   ├── libEGL.dll<font></font>
+│   └── libGLESv2.dll<font></font>
+└── v8_context_snapshot.bin<font></font>
+</code></pre>
+<div name="Linux-操作系统(Linux)" data-unique="Linux-操作系统(Linux)"></div><h3 id="Linux-操作系统(Linux)"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sistema operatiu Linux (Linux)</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">A la plataforma de Linux, l'estructura de carpetes és la següent: normalment podeu </font><font style="vertical-align: inherit;">trobar </font><font style="vertical-align: inherit;">paquets binaris </font></font><code>Release</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">i </font></font><code>Resources</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">trobar tots els fitxers al directori:</font></font></p>
+<pre><code class="lang-bash"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20</div>Application<font></font>
+├── fibjs<font></font>
+├── cef.pak<font></font>
+├── cef_100_percent.pak<font></font>
+├── cef_200_percent.pak<font></font>
+├── cef_extensions.pak<font></font>
+├── devtools_resources.pak<font></font>
+├── icudtl.dat<font></font>
+├── libEGL.so<font></font>
+├── libGLESv2.so<font></font>
+├── libcef.so<font></font>
+├── locales<font></font>
+│   ├── am.pak<font></font>
+│   ├── ......<font></font>
+│   └── zh-TW.pak<font></font>
+├── snapshot_blob.bin<font></font>
+├── swiftshader<font></font>
+│   ├── libEGL.so<font></font>
+│   └── libGLESv2.so<font></font>
+└── v8_context_snapshot.bin<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Al servidor Linux, perquè no hi ha suport per a entorns d'escriptori, només podeu </font></font><code>--headless</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">executar el mode quan s'executa en mode finestra quan no cal instal·lar xorg:</font></font></p>
+<pre><code class="lang-sh"><div class="line-numbers">1</div>apt install xorg
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">En alguns gpu suporten un mal escriptori Linux, però també cal augmentar l' </font></font><code>--disable-gpu</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">opció d'inici desactivada la representació gpu.</font></font></p>
+<div name="Mac-X-平台(Mac-OS-X)" data-unique="Mac-X-平台(Mac-OS-X)"></div><h3 id="Mac-X-平台(Mac-OS-X)"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Plataforma Mac X (Mac OS X)</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">A l'estructura de carpetes de la plataforma Mac X </font></font><code>Release/Chromium Embedded Framework.framework</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, seguiu aquests passos: </font><font style="vertical-align: inherit;">normalment, dins del paquet binari, podeu </font><font style="vertical-align: inherit;">trobar tots els fitxers del directori; si descarregueu el cefclient, heu d'obrir l'aplicació Contents per trobar el fitxer adequat:</font></font></p>
+<pre><code class="lang-bash"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15</div>Application<font></font>
+├── fibjs<font></font>
+├── Chromium Embedded Framework<font></font>
+├── Libraries<font></font>
+│   ├── libEGL.dylib<font></font>
+│   ├── libGLESv2.dylib<font></font>
+│   ├── libswiftshader_libEGL.dylib<font></font>
+│   ├── libswiftshader_libGLESv2.dylib<font></font>
+│   ├── libvk_swiftshader.dylib<font></font>
+│   └── vk_swiftshader_icd.json<font></font>
+└── Resources<font></font>
+    ├── Info.plist<font></font>
+    ├── ......<font></font>
+    └── zh_TW.lproj<font></font>
+        └── locale.pak <font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">També podeu utilitzar la </font></font><code>gui.config</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">configuració </font></font><code>cef_path</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">per especificar el camí binari cef i, per tant, més flexibilitat per desplegar l'entorn operatiu. </font><font style="vertical-align: inherit;">Quan no s'estableix </font></font><code>cef_path</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">l'hora, els fitxers binaris cef s'han de desplegar al mateix directori que el fitxer executable fibjs.</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div>gui.config({
+    <span class="hljs-string">"cef_path"</span>: cef_path<font></font>
+});<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Prepareu l’entorn operatiu i executeu el codi següent</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5</div><span class="hljs-keyword">var</span> gui = <span class="hljs-built_in">require</span>(<span class="hljs-string">"gui"</span>);<font></font>
+<font></font>
+gui.open(<span class="hljs-string">"https://fibjs.org"</span>, {
+    <span class="hljs-comment">// "native": true</span><font></font>
+});<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">També veureu una finestra del navegador carregada amb el lloc web oficial de fibjs, però el seu motor ja és l’últim nucli de Chrome. </font><font style="vertical-align: inherit;">Tingueu en compte que aquí cal cancel·lar l' </font></font><code>native</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">opció, en cas contrari s'obrirà la vista web integrada.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">L'aplicació bàsica del gui és molt senzilla i es pot realitzar ràpidament fent referència al document gui, de manera que no el repetiré. </font><font style="vertical-align: inherit;">A continuació, introduïm principalment alguns mètodes especials d’aplicació.</font></font></p>
+<div name="前后端服务对接" data-unique="前后端服务对接"></div><h2 id="前后端服务对接"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Acoblament de servei frontal i posterior</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Les aplicacions d'escriptori basades en web solen tenir dos mètodes d'extensió, un és l'extensió WebView i l'altre és separar localment els frontals i posteriors. </font><font style="vertical-align: inherit;">En el mètode anterior, WebView s'amplia de manera invasiva i l'entorn operatiu ja no és compatible amb els navegadors estàndard. </font><font style="vertical-align: inherit;">Aquest darrer mètode requereix que s’obri localment un servidor http, cosa que provoca que la interfície de servei quedi exposada a l’exterior.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs per a aplicacions d’escriptori ampliades, basades en un protocol d’escalabilitat del protocol, cef de WebView i fibjs </font></font><code>Handler</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">junts, de manera que el procés WebView es pugui connectar directament al </font></font><code>Handler</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">processador </font><font style="vertical-align: inherit;">corresponent </font><font style="vertical-align: inherit;">, totalment compatible amb el paradigma convencional de B / S desenvolupat simultàniament amb els extrems frontals i posteriors. garantir la seguretat i la portabilitat. </font><font style="vertical-align: inherit;">Al mateix temps, el codi frontal i posterior és totalment compatible amb el desenvolupament frontal i posterior estàndard de B / S, que es pot desenvolupar i depurar al navegador i després trasplantar-lo directament a una aplicació local. .</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">El processador back-end de fibjs es configura de manera configurada, a través del </font></font><code>gui.config</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fet.</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17</div>gui.config({
+    <span class="hljs-string">"backend"</span>: {
+        <span class="hljs-string">"cef://test/"</span>: cef_files_path,
+        <span class="hljs-string">"http://cef_test/"</span>: {
+            <span class="hljs-string">"/mock/:act"</span>: <span class="hljs-function">(<span class="hljs-params">r, a</span>) =&gt;</span> {
+                <span class="hljs-keyword">if</span> (a == <span class="hljs-string">'header'</span>) {<font></font>
+                    r.response.write(r.firstHeader(<span class="hljs-string">'test'</span>));<font></font>
+                    r.response.addHeader(<span class="hljs-string">"test"</span>, <span class="hljs-string">"world"</span>);<font></font>
+                } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (a == <span class="hljs-string">'post'</span>) {<font></font>
+                    r.response.write(<span class="hljs-string">`[<span class="hljs-subst">${r.firstHeader(<span class="hljs-string">"Content-type"</span>)}</span>]`</span>);<font></font>
+                    r.response.write(r.body.readAll());<font></font>
+                }<font></font>
+            },<font></font>
+            <span class="hljs-string">"/*"</span>: cef_files_path<font></font>
+        }<font></font>
+    }<font></font>
+});<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Aquest codi defineix dos back-end, és un </font></font><code>cef</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">protocol de domini de prova, que apunta estàtic a un directori </font></font><code>cef_files_path</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">i l’altre és </font></font><code>http</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">el domini cef_test, que apunta a una ruta.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">A cef, hi ha algunes restriccions en el processament de protocols no estàndards, com ara no admetre dades de publicació al servidor. Per tant, si voleu una comunicació frontal i posterior millor compatibles, heu de definir http o https Per descomptat, aquest back-end no passa El protocol de xarxa completa la comunicació, sinó que està directament connectat dins del procés.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Per obtenir informació sobre com desenvolupar el backend Handler, consulteu:</font></font><a href="hello.md.html" class="notranslate">hello, world</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">.</font></font></p>
+<div name="无窗口模式" data-unique="无窗口模式"></div><h2 id="无窗口模式"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Mode sense finestres</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">En escenaris de proves automatitzades o d’automatització de processos, el procés d’operació empresarial no requereix interacció de l’usuari, de manera que es pot executar automàticament al servidor en mode sense finestres. </font><font style="vertical-align: inherit;">En aquest moment, cal executar el mode sense cap.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs admet dues maneres de cap sense cap, és a dir, global sense cap i instància sense cap.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">En mode global, totes les finestres funcionaran en mode sense cap, independentment de com es creï la finestra. </font><font style="vertical-align: inherit;">Executar un model global, es designa com </font></font><code>--headless</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">a opcions d'inici.</font></font></p>
+<pre><code class="lang-sh"><div class="line-numbers">1</div>fibjs --headless test.js
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">La trucada a la </font></font><code>gui.config</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">configuració d’ </font><font style="vertical-align: inherit;">inici del programa </font><font style="vertical-align: inherit;">també pot assolir el mateix objectiu:</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div>gui.config({
+    <span class="hljs-string">"headless"</span>: <span class="hljs-literal">true</span><font></font>
+});<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">A Linux Server, tot i que el mode sense cap no requereix suport per a escriptori, el mòdul bàsic cef encara necessita una compatibilitat amb components bàsics, de manera que cal instal·lar xorg:</font></font></p>
+<pre><code class="lang-sh"><div class="line-numbers">1</div>apt install xorg
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">En algunes aplicacions, la interacció de l'usuari i el processament automatitzat són necessaris alhora. En aquest moment, podeu especificar una finestra per utilitzar el mode sense cap per separat:</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">var</span> win = gui.open(<span class="hljs-string">"https://fibjs.org"</span>, {
+    <span class="hljs-string">"headless"</span>: <span class="hljs-literal">true</span><font></font>
+});<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cal tenir en compte que, com que no hi ha interacció de l'usuari, l'usuari no pot tancar la instància sense cap, de manera que el programa s'ha de tancar quan no sigui necessari, en cas contrari el procés no sortirà automàticament a causa de l'existència de la instància.</font></font></p>
+<div name="DevTools-接口" data-unique="DevTools-接口"></div><h2 id="DevTools-接口"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Interfície DevTools</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">El protocol Chrome DevTools permet eines per provar, inspeccionar, depurar i configurar Chromium, Chrome i altres navegadors basats en Blink. </font><font style="vertical-align: inherit;">El protocol Chrome DevTools es divideix en diversos dominis (DOM, depurador, xarxa, etc.) i cada domini defineix les ordres compatibles corresponents i els esdeveniments relacionats.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs encapsula la interfície d'accés del cdp, podeu fer un ús complet de la interfície cdp integrada del cef per depurar directament pàgines web a WebView. </font><font style="vertical-align: inherit;">La interfície que utilitza WebView per accedir al servei cdp és WebView.dev. </font><font style="vertical-align: inherit;">Per obtenir documentació detallada de cdp, consulteu: </font></font><a href="https://chromedevtools.github.io/devtools-protocol/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">https://chromedevtools.github.io/devtools-protocol/</font></font></a></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">A continuació s’enumeren alguns fragments de codi que s’utilitzen habitualment per mostrar com s’ha d’utilitzar dev per manipular els elements de la pàgina. </font><font style="vertical-align: inherit;">Podeu consultar la demostració d’ús detallada </font></font><code>test/cef_test.js</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">.</font></font></p>
+<div name="查询-DOM" data-unique="查询-DOM"></div><h3 id="查询-DOM"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Consulteu el DOM</font></font></h3>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13</div><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getOuterHTML</span>(<span class="hljs-params">win, selector</span>) </span>{
+    <span class="hljs-keyword">var</span> doc = win.dev.DOM.getDocument();
+    <span class="hljs-keyword">var</span> e = win.dev.DOM.querySelector({
+        <span class="hljs-string">"nodeId"</span>: doc.root.nodeId,
+        <span class="hljs-string">"selector"</span>: selector<font></font>
+    });<font></font>
+<font></font>
+    <span class="hljs-keyword">var</span> html = win.dev.DOM.getOuterHTML({
+        <span class="hljs-string">"nodeId"</span>: e.nodeId<font></font>
+    });<font></font>
+<font></font>
+    <span class="hljs-keyword">return</span> html.outerHTML;<font></font>
+}<font></font>
+</code></pre>
+<div name="模拟鼠标操作" data-unique="模拟鼠标操作"></div><h3 id="模拟鼠标操作"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Simular el funcionament del ratolí</font></font></h3>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24</div><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">click</span>(<span class="hljs-params">win, selector</span>) </span>{
+    <span class="hljs-keyword">var</span> doc = win.dev.DOM.getDocument();
+    <span class="hljs-keyword">var</span> e = win.dev.DOM.querySelector({
+        <span class="hljs-string">"nodeId"</span>: doc.root.nodeId,
+        <span class="hljs-string">"selector"</span>: selector<font></font>
+    });<font></font>
+<font></font>
+    <span class="hljs-keyword">var</span> box = win.dev.DOM.getBoxModel({
+        <span class="hljs-string">"nodeId"</span>: e.nodeId<font></font>
+    });<font></font>
+<font></font>
+    <span class="hljs-keyword">var</span> mi = {
+        <span class="hljs-string">"x"</span>: box.model.content[<span class="hljs-number">0</span>] + <span class="hljs-number">1</span>,
+        <span class="hljs-string">"y"</span>: box.model.content[<span class="hljs-number">1</span>] + <span class="hljs-number">1</span>,
+        <span class="hljs-string">"button"</span>: <span class="hljs-string">'left'</span>,
+        <span class="hljs-string">"clickCount"</span>: <span class="hljs-number">1</span><font></font>
+    }<font></font>
+<font></font>
+    mi.type = <span class="hljs-string">"mousePressed"</span>;<font></font>
+    win.dev.Input.dispatchMouseEvent(mi);<font></font>
+<font></font>
+    mi.type = <span class="hljs-string">"mouseReleased"</span>;<font></font>
+    win.dev.Input.dispatchMouseEvent(mi);<font></font>
+}<font></font>
+</code></pre>
+<div name="模拟键盘操作" data-unique="模拟键盘操作"></div><h3 id="模拟键盘操作"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Simular el funcionament del teclat</font></font></h3>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24</div><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">type</span>(<span class="hljs-params">win, text</span>) </span>{
+    <span class="hljs-keyword">for</span> (char <span class="hljs-keyword">of</span> text) {<font></font>
+        win.dev.Input.dispatchKeyEvent({<font></font>
+            <span class="hljs-string">"type"</span>: <span class="hljs-string">"char"</span>,
+            <span class="hljs-string">"text"</span>: char<font></font>
+        });<font></font>
+    }<font></font>
+}<font></font>
+<font></font>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">press</span>(<span class="hljs-params">win, key</span>) </span>{
+    <span class="hljs-keyword">var</span> code = key_code[key];
+    <span class="hljs-keyword">var</span> ki = {
+        <span class="hljs-string">"key"</span>: key,
+        <span class="hljs-string">"code"</span>: key,
+        <span class="hljs-string">"windowsVirtualKeyCode"</span>: code,
+        <span class="hljs-string">"nativeVirtualKeyCode"</span>: code<font></font>
+    };<font></font>
+<font></font>
+    ki.type = <span class="hljs-string">"keyDown"</span>;<font></font>
+    win.dev.Input.dispatchKeyEvent(ki);<font></font>
+<font></font>
+    ki.type = <span class="hljs-string">"keyUp"</span>;<font></font>
+    win.dev.Input.dispatchKeyEvent(ki);<font></font>
+}<font></font>
+</code></pre>
+<div name="页面截屏" data-unique="页面截屏"></div><h3 id="页面截屏"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Captura de pantalla de la pàgina</font></font></h3>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11</div><span class="hljs-keyword">var</span> ret = win.dev.Page.captureScreenshot({
+    <span class="hljs-attr">clip</span>: {
+        <span class="hljs-string">"x"</span>: <span class="hljs-number">0</span>,
+        <span class="hljs-string">"y"</span>: <span class="hljs-number">0</span>,
+        <span class="hljs-string">"width"</span>: <span class="hljs-number">100</span>,
+        <span class="hljs-string">"height"</span>: <span class="hljs-number">100</span>,
+        <span class="hljs-string">"scale"</span>: <span class="hljs-number">1</span><font></font>
+    }<font></font>
+});<font></font>
+<font></font>
+<span class="hljs-keyword">var</span> img = gd.load(encoding.base64.decode(ret.data));
+</code></pre>
+<div name="模拟-User-Agent" data-unique="模拟-User-Agent"></div><h3 id="模拟-User-Agent"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Simula l'usuari-agent</font></font></h3>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9</div><span class="hljs-keyword">var</span> win = gui.open();<font></font>
+<font></font>
+win.on(<span class="hljs-string">'open'</span>, () =&gt; {<font></font>
+    win.dev.Network.setUserAgentOverride({<font></font>
+        <span class="hljs-attr">userAgent</span>: <span class="hljs-string">'Mozilla/5.0 (iPhone; CPU iPhone OS 10_0_1 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) Version/10.0 Mobile/14A403 Safari/602.1'</span>,<font></font>
+    });<font></font>
+<font></font>
+    win.loadUrl(<span class="hljs-string">'https://fibjs.org'</span>);<font></font>
+});<font></font>
+</code></pre>
+<div name="监听事件" data-unique="监听事件"></div><h3 id="监听事件"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Escolta els esdeveniments</font></font></h3>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9</div><span class="hljs-keyword">var</span> win = gui.open();<font></font>
+<font></font>
+win.on(<span class="hljs-string">'open'</span>, () =&gt; {<font></font>
+    win.dev.Page.enable();<font></font>
+    win.dev.Page.on(<span class="hljs-string">"frameNavigated"</span>, ev =&gt; {
+        <span class="hljs-built_in">console</span>.log(ev.frame.url);<font></font>
+        win.close();<font></font>
+    });<font></font>
+});<font></font>
+</code></pre>
+<div name="多媒体支持" data-unique="多媒体支持"></div><h2 id="多媒体支持"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Suport multimèdia</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">A causa de problemes de copyright, la distribució binària de cef normalment no inclou la descodificació de mp4 i mp3. </font><font style="vertical-align: inherit;">Tot i això, cef conté una descodificació webm de codi obert. Per a aplicacions d'escriptori independents, es recomana utilitzar codificació webm amb llicència lliure per processar àudio i vídeo.</font></font></p>
+<div name="小结" data-unique="小结"></div><h2 id="小结"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">resum</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Mitjançant la introducció d’aquesta secció, podem desenvolupar ràpidament les nostres pròpies aplicacions d’escriptori, convertir HTML en imatges o PDF i utilitzar la potent interfície de cdp per establir un motor d’automatització de processos i proves d’automatització frontal.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">👉 [ </font></font><a href="server-hot-update.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Actualització actualitzada del mòdul de servidor</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> ]</font></font></p>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org | </font></font><a href="../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Doneu-nos suport</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip33604"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip33604" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Feu clic per tornar a la pàgina superior</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../js/common.js"></script><script type="text/javascript" src="../../../js/docs.js"></script></body></html>

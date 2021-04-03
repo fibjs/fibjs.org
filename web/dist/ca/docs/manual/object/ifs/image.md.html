@@ -1,0 +1,1354 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../../../imgs/icon.png"><title>Imatge d'objectes-JavaScript sobre fibra</title><link href="../../../../../css/common.css" rel="stylesheet"><link href="../../../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Commuta la navegació</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../../../index.html"><img src="../../../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../../../index.html">HOME</a></li><li><a href="../../../guide/readme.md.html">GUIDE</a></li><li><a href="../../module/readme.md.html">MODULE</a></li><li><a href="../readme.md.html">OBJECT</a></li><li><a href="../../../awesome/readme.md.html">AWESOME</a></li><li><a href="../../../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../../../docs/manual/object/ifs/image.md.html">中文</a> <a href="../../../../../ca/docs/manual/object/ifs/image.md.html">Catalan</a> <a href="../../../../../de/docs/manual/object/ifs/image.md.html">Deutsch</a> <a href="../../../../../en/docs/manual/object/ifs/image.md.html">English</a> <a href="../../../../../es/docs/manual/object/ifs/image.md.html">Español</a> <a href="../../../../../fr/docs/manual/object/ifs/image.md.html">Français</a> <a href="../../../../../gl/docs/manual/object/ifs/image.md.html">Galego</a> <a href="../../../../../it/docs/manual/object/ifs/image.md.html">Italiano</a> <a href="../../../../../ru/docs/manual/object/ifs/image.md.html">Русский</a> <a href="../../../../../ja/docs/manual/object/ifs/image.md.html">日本語</a> <a href="../../../../../ko/docs/manual/object/ifs/image.md.html">한국어</a> <a href="../../../../../zh-tw/docs/manual/object/ifs/image.md.html">繁體中文</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Objecte objecte incorporat </font></font></span><div class="search"><span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input type="text" class="searchbox ds-input" placeholder="Cerca" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-label="entrada de cerca" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Avenir, &quot;Segoe UI&quot;, Arial, &quot;Hiragino Sans GB&quot;, 冬青黑, &quot;Microsoft YaHei&quot;, 微软雅黑, SimSun, 宋体, Helvetica, Tahoma, &quot;Arial sans-serif&quot;; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div class="ds-dataset-1"></div></span></span></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Pàgina inicial</font></font></a></li><li><a href="../readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Objectes incorporats </font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Imatge d'objecte </font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Guia de desenvolupament </font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="../../../guide/about.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Què és fibjs?</font></font></a></li>
+<li><a href="../../../guide/install.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Instal·lació i entorn operatiu</font></font></a></li>
+<li><a href="../../../guide/hello.md.html" class="notranslate">hello, world</a></li>
+<li><a href="../../../guide/test.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Una bona vida comença amb la prova</font></font></a></li>
+<li><a href="../../../guide/profiler.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Troba l'assassí del rendiment</font></font></a></li>
+<li><a href="../../../guide/desktop.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Desenvolupeu ràpidament aplicacions d'escriptori</font></font></a></li>
+<li><a href="../../../guide/server-hot-update.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Actualització actualitzada del mòdul de servidor</font></font></a></li>
+<li><a href="../../../guide/host-routes.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Encaminament de noms de domini</font></font></a></li>
+<li><a href="../../../guide/x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ús del certificat X509 a fibjs</font></font></a></li>
+<li><a href="../../../guide/contribute.md.html">添加 native 模块</a></li>
+</ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_module" aria-controls="collapse_module"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Mòdul bàsic </font></font></a></h4></div><div id="collapse_module" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="../../module/ifs/assert.md.html" class="notranslate">assert</a></li>
+<li><a href="../../module/ifs/base32.md.html" class="notranslate">base32</a></li>
+<li><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a></li>
+<li><a href="../../module/ifs/base64vlq.md.html" class="notranslate">base64vlq</a></li>
+<li><a href="../../module/ifs/bson.md.html" class="notranslate">bson</a></li>
+<li><a href="../../module/ifs/child_process.md.html" class="notranslate">child_process</a></li>
+<li><a href="../../module/ifs/console.md.html" class="notranslate">console</a></li>
+<li><a href="../../module/ifs/constants.md.html" class="notranslate">constants</a></li>
+<li><a href="../../module/ifs/coroutine.md.html" class="notranslate">coroutine</a></li>
+<li><a href="../../module/ifs/crypto.md.html" class="notranslate">crypto</a></li>
+<li><a href="../../module/ifs/db.md.html" class="notranslate">db</a></li>
+<li><a href="../../module/ifs/dgram.md.html" class="notranslate">dgram</a></li>
+<li><a href="../../module/ifs/dns.md.html" class="notranslate">dns</a></li>
+<li><a href="../../module/ifs/encoding.md.html" class="notranslate">encoding</a></li>
+<li><a href="../../module/ifs/fs.md.html" class="notranslate">fs</a></li>
+<li><a href="../../module/ifs/gd.md.html" class="notranslate">gd</a></li>
+<li><a href="../../module/ifs/global.md.html" class="notranslate">global</a></li>
+<li><a href="../../module/ifs/gui.md.html" class="notranslate">gui</a></li>
+<li><a href="../../module/ifs/hash.md.html" class="notranslate">hash</a></li>
+<li><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a></li>
+<li><a href="../../module/ifs/http.md.html" class="notranslate">http</a></li>
+<li><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a></li>
+<li><a href="../../module/ifs/io.md.html" class="notranslate">io</a></li>
+<li><a href="../../module/ifs/json.md.html" class="notranslate">json</a></li>
+<li><a href="../../module/ifs/mq.md.html" class="notranslate">mq</a></li>
+<li><a href="../../module/ifs/msgpack.md.html" class="notranslate">msgpack</a></li>
+<li><a href="../../module/ifs/net.md.html" class="notranslate">net</a></li>
+<li><a href="../../module/ifs/os.md.html" class="notranslate">os</a></li>
+<li><a href="../../module/ifs/path.md.html" class="notranslate">path</a></li>
+<li><a href="../../module/ifs/path_posix.md.html" class="notranslate">path_posix</a></li>
+<li><a href="../../module/ifs/path_win32.md.html" class="notranslate">path_win32</a></li>
+<li><a href="../../module/ifs/process.md.html" class="notranslate">process</a></li>
+<li><a href="../../module/ifs/profiler.md.html" class="notranslate">profiler</a></li>
+<li><a href="../../module/ifs/punycode.md.html" class="notranslate">punycode</a></li>
+<li><a href="../../module/ifs/querystring.md.html" class="notranslate">querystring</a></li>
+<li><a href="../../module/ifs/registry.md.html" class="notranslate">registry</a></li>
+<li><a href="../../module/ifs/ssl.md.html" class="notranslate">ssl</a></li>
+<li><a href="../../module/ifs/string_decoder.md.html" class="notranslate">string_decoder</a></li>
+<li><a href="../../module/ifs/test.md.html" class="notranslate">test</a></li>
+<li><a href="../../module/ifs/timers.md.html" class="notranslate">timers</a></li>
+<li><a href="../../module/ifs/tty.md.html" class="notranslate">tty</a></li>
+<li><a href="../../module/ifs/url.md.html" class="notranslate">url</a></li>
+<li><a href="../../module/ifs/util.md.html" class="notranslate">util</a></li>
+<li><a href="../../module/ifs/uuid.md.html" class="notranslate">uuid</a></li>
+<li><a href="../../module/ifs/vm.md.html" class="notranslate">vm</a></li>
+<li><a href="../../module/ifs/ws.md.html" class="notranslate">ws</a></li>
+<li><a href="../../module/ifs/xml.md.html" class="notranslate">xml</a></li>
+<li><a href="../../module/ifs/zip.md.html" class="notranslate">zip</a></li>
+<li><a href="../../module/ifs/zlib.md.html" class="notranslate">zlib</a></li>
+</ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_object" aria-controls="collapse_object"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Objectes incorporats </font></font></a></h4></div><div id="collapse_object" class="panel-collapse collapse in" aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="buffer.md.html" class="notranslate">Buffer</a></li>
+<li><a href="bufferedstream.md.html" class="notranslate">BufferedStream</a></li>
+<li><a href="chain.md.html" class="notranslate">Chain</a></li>
+<li><a href="childprocess.md.html" class="notranslate">ChildProcess</a></li>
+<li><a href="cipher.md.html" class="notranslate">Cipher</a></li>
+<li><a href="condition.md.html" class="notranslate">Condition</a></li>
+<li><a href="dbconnection.md.html" class="notranslate">DbConnection</a></li>
+<li><a href="dgramsocket.md.html" class="notranslate">DgramSocket</a></li>
+<li><a href="digest.md.html" class="notranslate">Digest</a></li>
+<li><a href="event.md.html" class="notranslate">Event</a></li>
+<li><a href="eventemitter.md.html" class="notranslate">EventEmitter</a></li>
+<li><a href="fswatcher.md.html" class="notranslate">FSWatcher</a></li>
+<li><a href="fiber.md.html" class="notranslate">Fiber</a></li>
+<li><a href="file.md.html" class="notranslate">File</a></li>
+<li><a href="handler.md.html" class="notranslate">Handler</a></li>
+<li><a href="heapgraphedge.md.html" class="notranslate">HeapGraphEdge</a></li>
+<li><a href="heapgraphnode.md.html" class="notranslate">HeapGraphNode</a></li>
+<li><a href="heapsnapshot.md.html" class="notranslate">HeapSnapshot</a></li>
+<li><a href="httpclient.md.html" class="notranslate">HttpClient</a></li>
+<li><a href="httpcollection.md.html" class="notranslate">HttpCollection</a></li>
+<li><a href="httpcookie.md.html" class="notranslate">HttpCookie</a></li>
+<li><a href="httphandler.md.html" class="notranslate">HttpHandler</a></li>
+<li><a href="httpmessage.md.html" class="notranslate">HttpMessage</a></li>
+<li><a href="httprepeater.md.html" class="notranslate">HttpRepeater</a></li>
+<li><a href="httprequest.md.html" class="notranslate">HttpRequest</a></li>
+<li><a href="httpresponse.md.html" class="notranslate">HttpResponse</a></li>
+<li><a href="httpserver.md.html" class="notranslate">HttpServer</a></li>
+<li><a href="httpuploaddata.md.html" class="notranslate">HttpUploadData</a></li>
+<li><a href="httpsserver.md.html" class="notranslate">HttpsServer</a></li>
+<li class="active"><a href="image.md.html" class="notranslate">Image</a></li>
+<li><a href="leveldb.md.html" class="notranslate">LevelDB</a></li>
+<li><a href="lock.md.html" class="notranslate">Lock</a></li>
+<li><a href="lrucache.md.html" class="notranslate">LruCache</a></li>
+<li><a href="mssql.md.html" class="notranslate">MSSQL</a></li>
+<li><a href="memorystream.md.html" class="notranslate">MemoryStream</a></li>
+<li><a href="message.md.html" class="notranslate">Message</a></li>
+<li><a href="mongocollection.md.html" class="notranslate">MongoCollection</a></li>
+<li><a href="mongocursor.md.html" class="notranslate">MongoCursor</a></li>
+<li><a href="mongodb.md.html" class="notranslate">MongoDB</a></li>
+<li><a href="mongoid.md.html" class="notranslate">MongoID</a></li>
+<li><a href="mysql.md.html" class="notranslate">MySQL</a></li>
+<li><a href="pkey.md.html" class="notranslate">PKey</a></li>
+<li><a href="rangestream.md.html" class="notranslate">RangeStream</a></li>
+<li><a href="redis.md.html" class="notranslate">Redis</a></li>
+<li><a href="redishash.md.html" class="notranslate">RedisHash</a></li>
+<li><a href="redislist.md.html" class="notranslate">RedisList</a></li>
+<li><a href="redisset.md.html" class="notranslate">RedisSet</a></li>
+<li><a href="redissortedset.md.html" class="notranslate">RedisSortedSet</a></li>
+<li><a href="routing.md.html" class="notranslate">Routing</a></li>
+<li><a href="sqlite.md.html" class="notranslate">SQLite</a></li>
+<li><a href="sandbox.md.html" class="notranslate">SandBox</a></li>
+<li><a href="seekablestream.md.html" class="notranslate">SeekableStream</a></li>
+<li><a href="semaphore.md.html" class="notranslate">Semaphore</a></li>
+<li><a href="service.md.html" class="notranslate">Service</a></li>
+<li><a href="smtp.md.html" class="notranslate">Smtp</a></li>
+<li><a href="socket.md.html" class="notranslate">Socket</a></li>
+<li><a href="sslhandler.md.html" class="notranslate">SslHandler</a></li>
+<li><a href="sslserver.md.html" class="notranslate">SslServer</a></li>
+<li><a href="sslsocket.md.html" class="notranslate">SslSocket</a></li>
+<li><a href="stat.md.html" class="notranslate">Stat</a></li>
+<li><a href="statswatcher.md.html" class="notranslate">StatsWatcher</a></li>
+<li><a href="stream.md.html" class="notranslate">Stream</a></li>
+<li><a href="stringdecoder.md.html" class="notranslate">StringDecoder</a></li>
+<li><a href="tcpserver.md.html" class="notranslate">TcpServer</a></li>
+<li><a href="timer.md.html" class="notranslate">Timer</a></li>
+<li><a href="urlobject.md.html" class="notranslate">UrlObject</a></li>
+<li><a href="websocket.md.html" class="notranslate">WebSocket</a></li>
+<li><a href="websocketmessage.md.html" class="notranslate">WebSocketMessage</a></li>
+<li><a href="webview.md.html" class="notranslate">WebView</a></li>
+<li><a href="worker.md.html" class="notranslate">Worker</a></li>
+<li><a href="x509cert.md.html" class="notranslate">X509Cert</a></li>
+<li><a href="x509crl.md.html" class="notranslate">X509Crl</a></li>
+<li><a href="x509req.md.html" class="notranslate">X509Req</a></li>
+<li><a href="xmlattr.md.html" class="notranslate">XmlAttr</a></li>
+<li><a href="xmlcdatasection.md.html" class="notranslate">XmlCDATASection</a></li>
+<li><a href="xmlcharacterdata.md.html" class="notranslate">XmlCharacterData</a></li>
+<li><a href="xmlcomment.md.html" class="notranslate">XmlComment</a></li>
+<li><a href="xmldocument.md.html" class="notranslate">XmlDocument</a></li>
+<li><a href="xmldocumenttype.md.html" class="notranslate">XmlDocumentType</a></li>
+<li><a href="xmlelement.md.html" class="notranslate">XmlElement</a></li>
+<li><a href="xmlnamednodemap.md.html" class="notranslate">XmlNamedNodeMap</a></li>
+<li><a href="xmlnode.md.html" class="notranslate">XmlNode</a></li>
+<li><a href="xmlnodelist.md.html" class="notranslate">XmlNodeList</a></li>
+<li><a href="xmlprocessinginstruction.md.html" class="notranslate">XmlProcessingInstruction</a></li>
+<li><a href="xmltext.md.html" class="notranslate">XmlText</a></li>
+<li><a href="zipfile.md.html" class="notranslate">ZipFile</a></li>
+<li><a href="object.md.html" class="notranslate">object</a></li>
+</ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_awesome" aria-controls="collapse_awesome"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Mòdul de comunitat </font></font></a></h4></div><div id="collapse_awesome" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="../../../awesome/module/fib-session.md.html" class="notranslate">fib-session</a></li>
+<li><a href="../../../awesome/module/fib-pool.md.html" class="notranslate">fib-pool</a></li>
+<li><a href="../../../awesome/module/fib-orm.md.html" class="notranslate">fib-orm</a></li>
+<li><a href="../../../awesome/module/fib-app.md.html" class="notranslate">fib-app</a></li>
+<li><a href="../../../awesome/module/fib-kv.md.html" class="notranslate">fib-kv</a></li>
+<li><a href="../../../awesome/module/fib-rpc.md.html" class="notranslate">fib-rpc</a></li>
+<li><a href="../../../awesome/module/fib-qr.md.html" class="notranslate">fib-qr</a></li>
+<li><a href="../../../awesome/module/fib-pug.md.html" class="notranslate">fib-pug</a></li>
+<li><a href="../../../awesome/module/ejs.md.html" class="notranslate">ejs</a></li>
+<li><a href="../../../awesome/module/juicer.md.html" class="notranslate">Juicer</a></li>
+<li><a href="../../../awesome/module/highlight.js.md.html" class="notranslate">highlight.js</a></li>
+<li><a href="../../../awesome/module/marked.md.html" class="notranslate">marked</a></li>
+<li><a href="../../../awesome/module/node-cron.md.html" class="notranslate">node-cron</a></li>
+<li><a href="../../../awesome/module/debug.md.html" class="notranslate">debug</a></li>
+<li><a href="../../../awesome/module/benchmark.js.md.html" class="notranslate">benchmark.js</a></li>
+<li><a href="../../../awesome/module/sinon.md.html" class="notranslate">sinon</a></li>
+<li><a href="../../../awesome/module/node-mime.md.html" class="notranslate">node-mime</a></li>
+<li><a href="../../../awesome/module/validatorjs.md.html" class="notranslate">validatorjs</a></li>
+<li><a href="../../../awesome/module/superstruct.md.html" class="notranslate">superstruct</a></li>
+<li><a href="../../../awesome/module/cluster-server.md.html" class="notranslate">cluster-server</a></li>
+<li><a href="../../../awesome/module/synaptic.md.html" class="notranslate">synaptic</a></li>
+<li><a href="../../../awesome/module/source-map.md.html" class="notranslate">source-map</a></li>
+<li><a href="../../../awesome/module/json-format.md.html" class="notranslate">json-format</a></li>
+<li><a href="../../../awesome/module/viz.js.md.html" class="notranslate">viz.js</a></li>
+<li><a href="../../../awesome/module/nomnoml.md.html" class="notranslate">nomnoml</a></li>
+<li><a href="../../../awesome/module/pegjs.md.html" class="notranslate">pegjs</a></li>
+<li><a href="../../../awesome/module/uglify-js.md.html" class="notranslate">uglify-js</a></li>
+<li><a href="../../../awesome/module/js-beautify.md.html" class="notranslate">js-beautify</a></li>
+<li><a href="../../../awesome/module/chalk-animation.md.html" class="notranslate">chalk-animation</a></li>
+<li><a href="../../../awesome/module/jsrsasign.md.html" class="notranslate">jsrsasign</a></li>
+<li><a href="../../../awesome/module/crypto-js.md.html" class="notranslate">crypto-js</a></li>
+<li><a href="../../../awesome/module/ascii-table.md.html" class="notranslate">ascii-table</a></li>
+<li><a href="../../../awesome/module/logstream.md.html" class="notranslate">logstream</a></li>
+<li><a href="../../../awesome/module/ci.md.html" class="notranslate">ci</a></li>
+<li><a href="../../../awesome/module/fs-readdir-recursive.md.html" class="notranslate">fs-readdir-recursive</a></li>
+<li><a href="../../../awesome/module/mkdirp.md.html" class="notranslate">mkdirp</a></li>
+<li><a href="../../../awesome/module/rmdirr.md.html" class="notranslate">rmdirr</a></li>
+<li><a href="../../../awesome/module/detect-port.md.html" class="notranslate">detect-port</a></li>
+<li><a href="../../../awesome/module/bitcoinjs-lib.md.html" class="notranslate">bitcoinjs-lib</a></li>
+<li><a href="../../../awesome/module/rakuten.md.html" class="notranslate">Rakuten</a></li>
+</ul>
+ </div></div></div>  </div></div><div class="content"><div class="social-share share-component" data-sites="weibo,twitter" data-description="分享"></div> <div name="对象-Image" data-unique="对象-Image"></div><h1 id="对象-Image"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Imatge d'objecte</font></font></h1>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Objectes de processament d’imatges, que s’utilitzen per convertir, dibuixar i emmagatzemar imatges</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">L'objecte de la imatge pertany a </font></font><a href="../../module/ifs/gd.md.html" class="notranslate">gd</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Mòdul, crea:</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">var</span> img = gd.create(<span class="hljs-number">640</span>, <span class="hljs-number">480</span>);
+<span class="hljs-keyword">var</span> img1 = gd.load(data);
+</code></pre>
+<div name="继承关系" data-unique="继承关系"></div><h2 id="继承关系"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Relació d’herència</font></font></h2>
+<div class="dot notranslate">
+<!-- Generated by graphviz version 2.40.1 (20161225.0304)
+ -->
+<!-- Title: %0 Pages: 1 -->
+<svg width="114pt" height="770pt" viewBox="0.00 0.00 114.00 770.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 766)">
+<title>%0</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-766 110.004,-766 110.004,4 -4,4"></polygon>
+<!-- object -->
+<g id="node1" class="node">
+<title>object</title>
+<g id="a_node1"><a xlink:href="object.md.html" xlink:title="object">
+<polygon fill="#ffffff" stroke="#000000" points="24.1705,-709.5 24.1705,-761.5 81.8335,-761.5 81.8335,-709.5 24.1705,-709.5"></polygon>
+<text text-anchor="middle" x="53.002" y="-748.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
+<polyline fill="none" stroke="#000000" points="24.1705,-741.5 81.8335,-741.5 "></polyline>
+<text text-anchor="start" x="32.1705" y="-728.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toString()</text>
+<text text-anchor="start" x="32.1705" y="-716.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toJSON()</text>
+</a>
+</g>
+</g>
+<!-- Image -->
+<g id="me" class="node">
+<title>Image</title>
+<g id="a_me"><a xlink:title="Image">
+<polygon fill="#d3d3d3" stroke="#000000" points="0,-.5 0,-672.5 106.004,-672.5 106.004,-.5 0,-.5"></polygon>
+<text text-anchor="middle" x="53.002" y="-659.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Image</text>
+<polyline fill="none" stroke="#000000" points="0,-652.5 106.004,-652.5 "></polyline>
+<text text-anchor="start" x="8" y="-639.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">width</text>
+<text text-anchor="start" x="8" y="-627.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">height</text>
+<text text-anchor="start" x="8" y="-615.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">format</text>
+<text text-anchor="start" x="8" y="-603.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">type</text>
+<text text-anchor="start" x="8" y="-591.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">colorsTotal</text>
+<text text-anchor="start" x="8" y="-579.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">transparent</text>
+<text text-anchor="start" x="8" y="-567.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">progressive</text>
+<text text-anchor="start" x="8" y="-555.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">alphaBlending</text>
+<polyline fill="none" stroke="#000000" points="0,-548.5 106.004,-548.5 "></polyline>
+<text text-anchor="start" x="8" y="-535.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">getData()</text>
+<text text-anchor="start" x="8" y="-523.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">save()</text>
+<text text-anchor="start" x="8" y="-511.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">colorAllocate()</text>
+<text text-anchor="start" x="8" y="-499.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">colorAllocateAlpha()</text>
+<text text-anchor="start" x="8" y="-487.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">colorClosest()</text>
+<text text-anchor="start" x="8" y="-475.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">colorClosestHWB()</text>
+<text text-anchor="start" x="8" y="-463.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">colorClosestAlpha()</text>
+<text text-anchor="start" x="8" y="-451.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">colorExact()</text>
+<text text-anchor="start" x="8" y="-439.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">colorExactAlpha()</text>
+<text text-anchor="start" x="8" y="-427.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">colorResolve()</text>
+<text text-anchor="start" x="8" y="-415.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">colorResolveAlpha()</text>
+<text text-anchor="start" x="8" y="-403.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">colorDeallocate()</text>
+<text text-anchor="start" x="8" y="-391.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">clip()</text>
+<text text-anchor="start" x="8" y="-379.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">getPixel()</text>
+<text text-anchor="start" x="8" y="-367.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">getTrueColorPixel()</text>
+<text text-anchor="start" x="8" y="-355.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">setPixel()</text>
+<text text-anchor="start" x="8" y="-343.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">setThickness()</text>
+<text text-anchor="start" x="8" y="-331.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">line()</text>
+<text text-anchor="start" x="8" y="-319.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">rectangle()</text>
+<text text-anchor="start" x="8" y="-307.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">filledRectangle()</text>
+<text text-anchor="start" x="8" y="-295.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">polygon()</text>
+<text text-anchor="start" x="8" y="-283.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">openPolygon()</text>
+<text text-anchor="start" x="8" y="-271.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">filledPolygon()</text>
+<text text-anchor="start" x="8" y="-259.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">ellipse()</text>
+<text text-anchor="start" x="8" y="-247.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">filledEllipse()</text>
+<text text-anchor="start" x="8" y="-235.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">arc()</text>
+<text text-anchor="start" x="8" y="-223.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">filledArc()</text>
+<text text-anchor="start" x="8" y="-211.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">fill()</text>
+<text text-anchor="start" x="8" y="-199.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">fillToBorder()</text>
+<text text-anchor="start" x="8" y="-187.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">colorReplace()</text>
+<text text-anchor="start" x="8" y="-175.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">clone()</text>
+<text text-anchor="start" x="8" y="-163.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">resample()</text>
+<text text-anchor="start" x="8" y="-151.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">crop()</text>
+<text text-anchor="start" x="8" y="-139.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">flip()</text>
+<text text-anchor="start" x="8" y="-127.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">rotate()</text>
+<text text-anchor="start" x="8" y="-115.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">convert()</text>
+<text text-anchor="start" x="8" y="-103.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">copy()</text>
+<text text-anchor="start" x="8" y="-91.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">copyMerge()</text>
+<text text-anchor="start" x="8" y="-79.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">copyMergeGray()</text>
+<text text-anchor="start" x="8" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">copyResized()</text>
+<text text-anchor="start" x="8" y="-55.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">copyResampled()</text>
+<text text-anchor="start" x="8" y="-43.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">copyRotated()</text>
+<text text-anchor="start" x="8" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">filter()</text>
+<text text-anchor="start" x="8" y="-19.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">affine()</text>
+<text text-anchor="start" x="8" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">gaussianBlur()</text>
+</a>
+</g>
+</g>
+<!-- object&#45;&gt;Image -->
+<g id="edge1" class="edge">
+<title>object-&gt;Image</title>
+<path fill="none" stroke="#000000" d="M53.002,-699.2738C53.002,-691.4074 53.002,-682.4771 53.002,-672.7036"></path>
+<polygon fill="#000000" stroke="#000000" points="49.5021,-699.3205 53.002,-709.3205 56.5021,-699.3205 49.5021,-699.3205"></polygon>
+</g>
+</g>
+</svg>
+</div>
+
+<div name="成员属性" data-unique="成员属性"></div><h2 id="成员属性"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Atributs de membre</font></font></h2>
+<div name="width" data-unique="width"></div><h3 id="width" class="notranslate">width</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Enter, consulta l'amplada de la imatge</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly Integer Image.width;
+</code></pre>
+<hr>
+<div name="height" data-unique="height"></div><h3 id="height" class="notranslate">height</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Enter, consulta l'alçada de la imatge</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly Integer Image.height;
+</code></pre>
+<hr>
+<div name="format" data-unique="format"></div><h3 id="format" class="notranslate">format</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Enter, consulteu el format de la font de la imatge; el resultat és </font></font><a href="../../module/ifs/gd.md.html#PNG" class="notranslate">gd.PNG</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><a href="../../module/ifs/gd.md.html#JPEG" class="notranslate">gd.JPEG</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><a href="../../module/ifs/gd.md.html#GIF" class="notranslate">gd.GIF</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><a href="../../module/ifs/gd.md.html#BMP" class="notranslate">gd.BMP</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><a href="../../module/ifs/gd.md.html#WEBP" class="notranslate">gd.WEBP</a></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly Integer Image.format;
+</code></pre>
+<hr>
+<div name="type" data-unique="type"></div><h3 id="type" class="notranslate">type</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Enter, consulteu el tipus d’imatge, el resultat és </font></font><a href="../../module/ifs/gd.md.html#TRUECOLOR" class="notranslate">gd.TRUECOLOR</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><a href="../../module/ifs/gd.md.html#PALETTE" class="notranslate">gd.PALETTE</a></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly Integer Image.type;
+</code></pre>
+<hr>
+<div name="colorsTotal" data-unique="colorsTotal"></div><h3 id="colorsTotal" class="notranslate">colorsTotal</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Enter, consulteu el nombre total de colors de la taula de colors de la imatge</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly Integer Image.colorsTotal;
+</code></pre>
+<hr>
+<div name="transparent" data-unique="transparent"></div><h3 id="transparent" class="notranslate">transparent</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Enter, consulta i estableix el color especificat com a transparent</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer Image.transparent;
+</code></pre>
+<hr>
+<div name="progressive" data-unique="progressive"></div><h3 id="progressive" class="notranslate">progressive</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Booleà, consulta i defineix si la imatge és progressiva o no, quan només s'admet el format jpeg</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Boolean</span> Image.progressive;
+</code></pre>
+<hr>
+<div name="alphaBlending" data-unique="alphaBlending"></div><h3 id="alphaBlending" class="notranslate">alphaBlending</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Booleà, consulta i defineix si cal calcular la capa alfa quan es dibuixa, el valor per defecte és cert</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Boolean</span> Image.alphaBlending;
+</code></pre>
+<div name="成员函数" data-unique="成员函数"></div><h2 id="成员函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Funció de membre</font></font></h2>
+<div name="getData" data-unique="getData"></div><h3 id="getData" class="notranslate">getData</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Retorna les dades de la imatge segons el format especificat</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div>Buffer Image.getData(Integer format = gd.PNG,<font></font>
+    Integer quality = <span class="hljs-number">85</span>) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">format</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu el format de les dades retornades, el valor permès és </font></font><a href="../../module/ifs/gd.md.html#PNG" class="notranslate">gd.PNG</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><a href="../../module/ifs/gd.md.html#JPEG" class="notranslate">gd.JPEG</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><a href="../../module/ifs/gd.md.html#GIF" class="notranslate">gd.GIF</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><a href="../../module/ifs/gd.md.html#BMP" class="notranslate">gd.BMP</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><a href="../../module/ifs/gd.md.html#WEBP" class="notranslate">gd.WEBP</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, El valor per defecte és </font></font><a href="../../module/ifs/gd.md.html#PNG" class="notranslate">gd.PNG</a></li>
+<li><span class="notranslate">quality</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, quan el format és </font></font><a href="../../module/ifs/gd.md.html#JPEG" class="notranslate">gd.JPEG</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> o bé </font></font><a href="../../module/ifs/gd.md.html#WEBP" class="notranslate">gd.WEBP</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Quan s’utilitza per especificar la qualitat de compressió, el valor per defecte és 85; altres formats ignoren aquest paràmetre</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorna les dades formatades</font></font></li>
+</ul>
+<hr>
+<div name="save" data-unique="save"></div><h3 id="save" class="notranslate">save</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Emmagatzemeu les dades de la imatge a l'objecte de flux segons el format especificat</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div>Image.save(Stream stm,<font></font>
+    Integer format = gd.PNG,<font></font>
+    Integer quality = <span class="hljs-number">85</span>) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">stm</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="stream.md.html" class="notranslate">Stream</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Especifiqueu l'objecte de flux que cal emmagatzemar</font></font></li>
+<li><span class="notranslate">format</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu el format de les dades retornades, el valor permès és </font></font><a href="../../module/ifs/gd.md.html#PNG" class="notranslate">gd.PNG</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><a href="../../module/ifs/gd.md.html#JPEG" class="notranslate">gd.JPEG</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><a href="../../module/ifs/gd.md.html#GIF" class="notranslate">gd.GIF</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><a href="../../module/ifs/gd.md.html#BMP" class="notranslate">gd.BMP</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><a href="../../module/ifs/gd.md.html#WEBP" class="notranslate">gd.WEBP</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, El valor per defecte és </font></font><a href="../../module/ifs/gd.md.html#PNG" class="notranslate">gd.PNG</a></li>
+<li><span class="notranslate">quality</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, quan el format és </font></font><a href="../../module/ifs/gd.md.html#JPEG" class="notranslate">gd.JPEG</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> o bé </font></font><a href="../../module/ifs/gd.md.html#WEBP" class="notranslate">gd.WEBP</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Quan s’utilitza per especificar la qualitat de compressió, el valor per defecte és 85; altres formats ignoren aquest paràmetre</font></font></li>
+</ul>
+<hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Deseu les dades de la imatge al fitxer especificat segons el format especificat i el fitxer se sobreescriurà per la força</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div>Image.save(<span class="hljs-built_in">String</span> fname,<font></font>
+    Integer format = gd.PNG,<font></font>
+    Integer quality = <span class="hljs-number">85</span>) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">fname</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifiqueu el nom del fitxer</font></font></li>
+<li><span class="notranslate">format</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu el format de les dades retornades, el valor permès és </font></font><a href="../../module/ifs/gd.md.html#PNG" class="notranslate">gd.PNG</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><a href="../../module/ifs/gd.md.html#JPEG" class="notranslate">gd.JPEG</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><a href="../../module/ifs/gd.md.html#GIF" class="notranslate">gd.GIF</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><a href="../../module/ifs/gd.md.html#BMP" class="notranslate">gd.BMP</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><a href="../../module/ifs/gd.md.html#WEBP" class="notranslate">gd.WEBP</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, El valor per defecte és </font></font><a href="../../module/ifs/gd.md.html#PNG" class="notranslate">gd.PNG</a></li>
+<li><span class="notranslate">quality</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, quan el format és </font></font><a href="../../module/ifs/gd.md.html#JPEG" class="notranslate">gd.JPEG</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Quan s’utilitza per especificar la qualitat de compressió, el valor per defecte és 85; altres formats ignoren aquest paràmetre</font></font></li>
+</ul>
+<hr>
+<div name="colorAllocate" data-unique="colorAllocate"></div><h3 id="colorAllocate" class="notranslate">colorAllocate</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sol·liciteu un número de color per al color especificat, per a </font></font><a href="../../module/ifs/gd.md.html#PALETTE" class="notranslate">gd.PALETTE</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Imatge, el número de color és l’índex de paleta, per a </font></font><a href="../../module/ifs/gd.md.html#TRUECOLOR" class="notranslate">gd.TRUECOLOR</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> La imatge, el número de color és un valor codificat en rgb</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div>Integer Image.colorAllocate(Integer red,<font></font>
+    Integer green,<font></font>
+    Integer blue);<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">red</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, el component vermell, el rang és de 0 a 255</font></font></li>
+<li><span class="notranslate">green</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, el component verd, el rang és de 0 a 255</font></font></li>
+<li><span class="notranslate">blue</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, component blau, interval 0-255</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorna el número de color, torna -1 si no té èxit</font></font></li>
+</ul>
+<hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sol·liciteu un número de color per al color especificat, per a </font></font><a href="../../module/ifs/gd.md.html#PALETTE" class="notranslate">gd.PALETTE</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Imatge, el número de color és l’índex de paleta, per a </font></font><a href="../../module/ifs/gd.md.html#TRUECOLOR" class="notranslate">gd.TRUECOLOR</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> La imatge, el número de color és un valor codificat en rgb</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer Image.colorAllocate(Integer color);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">color</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: El valor de color sencer, combinat, pot ser </font></font><a href="../../module/ifs/gd.md.html#color" class="notranslate">gd.color</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, gb.rgb, </font></font><a href="../../module/ifs/gd.md.html#rgba" class="notranslate">gd.rgba</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Espereu la generació de funcions</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorna el número de color, torna -1 si no té èxit</font></font></li>
+</ul>
+<hr>
+<div name="colorAllocateAlpha" data-unique="colorAllocateAlpha"></div><h3 id="colorAllocateAlpha" class="notranslate">colorAllocateAlpha</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sol·liciteu un número de color per al color i la transparència especificats, per a </font></font><a href="../../module/ifs/gd.md.html#PALETTE" class="notranslate">gd.PALETTE</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Imatge, el número de color és l’índex de paleta, per a </font></font><a href="../../module/ifs/gd.md.html#TRUECOLOR" class="notranslate">gd.TRUECOLOR</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> La imatge, el número de color és el valor codificat rgba</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4</div>Integer Image.colorAllocateAlpha(Integer red,<font></font>
+    Integer green,<font></font>
+    Integer blue,<font></font>
+    <span class="hljs-built_in">Number</span> alpha);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">red</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, el component vermell, el rang és de 0 a 255</font></font></li>
+<li><span class="notranslate">green</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, el component verd, el rang és de 0 a 255</font></font></li>
+<li><span class="notranslate">blue</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, component blau, interval 0-255</font></font></li>
+<li><span class="notranslate">alpha</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Nombre, el component transparent, l'interval és 0-1,0</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorna el número de color, torna -1 si no té èxit</font></font></li>
+</ul>
+<hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sol·liciteu un número de color per al color i la transparència especificats, per a </font></font><a href="../../module/ifs/gd.md.html#PALETTE" class="notranslate">gd.PALETTE</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Imatge, el número de color és l’índex de paleta, per a </font></font><a href="../../module/ifs/gd.md.html#TRUECOLOR" class="notranslate">gd.TRUECOLOR</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> La imatge, el número de color és el valor codificat rgba</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer Image.colorAllocateAlpha(Integer color);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">color</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: El valor de color sencer, combinat, pot ser </font></font><a href="../../module/ifs/gd.md.html#color" class="notranslate">gd.color</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, gb.rgb, </font></font><a href="../../module/ifs/gd.md.html#rgba" class="notranslate">gd.rgba</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Espereu la generació de funcions</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorna el número de color, torna -1 si no té èxit</font></font></li>
+</ul>
+<hr>
+<div name="colorClosest" data-unique="colorClosest"></div><h3 id="colorClosest" class="notranslate">colorClosest</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cerqueu el número de color més proper al color especificat, per a </font></font><a href="../../module/ifs/gd.md.html#PALETTE" class="notranslate">gd.PALETTE</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Imatge, el número de color és l’índex de paleta, per a </font></font><a href="../../module/ifs/gd.md.html#TRUECOLOR" class="notranslate">gd.TRUECOLOR</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> La imatge, el número de color és un valor codificat en rgb</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div>Integer Image.colorClosest(Integer red,<font></font>
+    Integer green,<font></font>
+    Integer blue);<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">red</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, el component vermell, el rang és de 0 a 255</font></font></li>
+<li><span class="notranslate">green</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, el component verd, el rang és de 0 a 255</font></font></li>
+<li><span class="notranslate">blue</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, component blau, interval 0-255</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorna el número de color, torna -1 si no té èxit</font></font></li>
+</ul>
+<hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cerqueu el número de color més proper al color especificat, per a </font></font><a href="../../module/ifs/gd.md.html#PALETTE" class="notranslate">gd.PALETTE</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Imatge, el número de color és l’índex de paleta, per a </font></font><a href="../../module/ifs/gd.md.html#TRUECOLOR" class="notranslate">gd.TRUECOLOR</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> La imatge, el número de color és un valor codificat en rgb</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer Image.colorClosest(Integer color);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">color</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: El valor de color sencer, combinat, pot ser </font></font><a href="../../module/ifs/gd.md.html#color" class="notranslate">gd.color</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, gb.rgb, </font></font><a href="../../module/ifs/gd.md.html#rgba" class="notranslate">gd.rgba</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Espereu la generació de funcions</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorna el número de color, torna -1 si no té èxit</font></font></li>
+</ul>
+<hr>
+<div name="colorClosestHWB" data-unique="colorClosestHWB"></div><h3 id="colorClosestHWB" class="notranslate">colorClosestHWB</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cerqueu el número de color més proper per al color especificat. Aquest mètode utilitza el càlcul Tonalitat / Blanc / Negre per trobar el color més proper </font></font><a href="../../module/ifs/gd.md.html#PALETTE" class="notranslate">gd.PALETTE</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Imatge, el número de color és l’índex de paleta, per a </font></font><a href="../../module/ifs/gd.md.html#TRUECOLOR" class="notranslate">gd.TRUECOLOR</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> La imatge, el número de color és un valor codificat en rgb</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div>Integer Image.colorClosestHWB(Integer red,<font></font>
+    Integer green,<font></font>
+    Integer blue);<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">red</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, el component vermell, el rang és de 0 a 255</font></font></li>
+<li><span class="notranslate">green</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, el component verd, el rang és de 0 a 255</font></font></li>
+<li><span class="notranslate">blue</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, component blau, interval 0-255</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorna el número de color, torna -1 si no té èxit</font></font></li>
+</ul>
+<hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cerqueu el número de color més proper per al color especificat. Aquest mètode utilitza el càlcul Tonalitat / Blanc / Negre per trobar el color més proper </font></font><a href="../../module/ifs/gd.md.html#PALETTE" class="notranslate">gd.PALETTE</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Imatge, el número de color és l’índex de paleta, per a </font></font><a href="../../module/ifs/gd.md.html#TRUECOLOR" class="notranslate">gd.TRUECOLOR</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> La imatge, el número de color és un valor codificat en rgb</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer Image.colorClosestHWB(Integer color);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">color</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: El valor de color sencer, combinat, pot ser </font></font><a href="../../module/ifs/gd.md.html#color" class="notranslate">gd.color</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, gb.rgb, </font></font><a href="../../module/ifs/gd.md.html#rgba" class="notranslate">gd.rgba</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Espereu la generació de funcions</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorna el número de color, torna -1 si no té èxit</font></font></li>
+</ul>
+<hr>
+<div name="colorClosestAlpha" data-unique="colorClosestAlpha"></div><h3 id="colorClosestAlpha" class="notranslate">colorClosestAlpha</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cerqueu el número de color més proper per al color i la transparència especificats, per a </font></font><a href="../../module/ifs/gd.md.html#PALETTE" class="notranslate">gd.PALETTE</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Imatge, el número de color és l’índex de paleta, per a </font></font><a href="../../module/ifs/gd.md.html#TRUECOLOR" class="notranslate">gd.TRUECOLOR</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> La imatge, el número de color és el valor codificat rgba</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4</div>Integer Image.colorClosestAlpha(Integer red,<font></font>
+    Integer green,<font></font>
+    Integer blue,<font></font>
+    <span class="hljs-built_in">Number</span> alpha);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">red</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, el component vermell, el rang és de 0 a 255</font></font></li>
+<li><span class="notranslate">green</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, el component verd, el rang és de 0 a 255</font></font></li>
+<li><span class="notranslate">blue</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, component blau, interval 0-255</font></font></li>
+<li><span class="notranslate">alpha</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Nombre, el component transparent, l'interval és 0-1,0</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorna el número de color, torna -1 si no té èxit</font></font></li>
+</ul>
+<hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cerqueu el número de color més proper per al color i la transparència especificats, per a </font></font><a href="../../module/ifs/gd.md.html#PALETTE" class="notranslate">gd.PALETTE</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Imatge, el número de color és l’índex de paleta, per a </font></font><a href="../../module/ifs/gd.md.html#TRUECOLOR" class="notranslate">gd.TRUECOLOR</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> La imatge, el número de color és el valor codificat rgba</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer Image.colorClosestAlpha(Integer color);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">color</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: El valor de color sencer, combinat, pot ser </font></font><a href="../../module/ifs/gd.md.html#color" class="notranslate">gd.color</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, gb.rgb, </font></font><a href="../../module/ifs/gd.md.html#rgba" class="notranslate">gd.rgba</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Espereu la generació de funcions</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorna el número de color, torna -1 si no té èxit</font></font></li>
+</ul>
+<hr>
+<div name="colorExact" data-unique="colorExact"></div><h3 id="colorExact" class="notranslate">colorExact</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cerqueu el número de color corresponent al color especificat, per a </font></font><a href="../../module/ifs/gd.md.html#PALETTE" class="notranslate">gd.PALETTE</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Imatge, el número de color és l’índex de paleta, per a </font></font><a href="../../module/ifs/gd.md.html#TRUECOLOR" class="notranslate">gd.TRUECOLOR</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> La imatge, el número de color és un valor codificat en rgb</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div>Integer Image.colorExact(Integer red,<font></font>
+    Integer green,<font></font>
+    Integer blue);<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">red</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, el component vermell, el rang és de 0 a 255</font></font></li>
+<li><span class="notranslate">green</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, el component verd, el rang és de 0 a 255</font></font></li>
+<li><span class="notranslate">blue</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, component blau, interval 0-255</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorna el número de color, torna -1 si no té èxit</font></font></li>
+</ul>
+<hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cerqueu el número de color corresponent al color especificat, per a </font></font><a href="../../module/ifs/gd.md.html#PALETTE" class="notranslate">gd.PALETTE</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Imatge, el número de color és l’índex de paleta, per a </font></font><a href="../../module/ifs/gd.md.html#TRUECOLOR" class="notranslate">gd.TRUECOLOR</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> La imatge, el número de color és un valor codificat en rgb</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer Image.colorExact(Integer color);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">color</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: El valor de color sencer, combinat, pot ser </font></font><a href="../../module/ifs/gd.md.html#color" class="notranslate">gd.color</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, gb.rgb, </font></font><a href="../../module/ifs/gd.md.html#rgba" class="notranslate">gd.rgba</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Espereu la generació de funcions</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorna el número de color, torna -1 si no té èxit</font></font></li>
+</ul>
+<hr>
+<div name="colorExactAlpha" data-unique="colorExactAlpha"></div><h3 id="colorExactAlpha" class="notranslate">colorExactAlpha</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cerqueu el color especificat i el número de color corresponent a la transparència, per a </font></font><a href="../../module/ifs/gd.md.html#PALETTE" class="notranslate">gd.PALETTE</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Imatge, el número de color és l’índex de paleta, per a </font></font><a href="../../module/ifs/gd.md.html#TRUECOLOR" class="notranslate">gd.TRUECOLOR</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> La imatge, el número de color és el valor codificat rgba</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4</div>Integer Image.colorExactAlpha(Integer red,<font></font>
+    Integer green,<font></font>
+    Integer blue,<font></font>
+    <span class="hljs-built_in">Number</span> alpha);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">red</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, el component vermell, el rang és de 0 a 255</font></font></li>
+<li><span class="notranslate">green</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, el component verd, el rang és de 0 a 255</font></font></li>
+<li><span class="notranslate">blue</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, component blau, interval 0-255</font></font></li>
+<li><span class="notranslate">alpha</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Nombre, el component transparent, l'interval és 0-1,0</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorna el número de color, torna -1 si no té èxit</font></font></li>
+</ul>
+<hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cerqueu el color especificat i el número de color corresponent a la transparència, per a </font></font><a href="../../module/ifs/gd.md.html#PALETTE" class="notranslate">gd.PALETTE</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Imatge, el número de color és l’índex de paleta, per a </font></font><a href="../../module/ifs/gd.md.html#TRUECOLOR" class="notranslate">gd.TRUECOLOR</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> La imatge, el número de color és el valor codificat rgba</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer Image.colorExactAlpha(Integer color);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">color</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: El valor de color sencer, combinat, pot ser </font></font><a href="../../module/ifs/gd.md.html#color" class="notranslate">gd.color</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, gb.rgb, </font></font><a href="../../module/ifs/gd.md.html#rgba" class="notranslate">gd.rgba</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Espereu la generació de funcions</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorna el número de color, torna -1 si no té èxit</font></font></li>
+</ul>
+<hr>
+<div name="colorResolve" data-unique="colorResolve"></div><h3 id="colorResolve" class="notranslate">colorResolve</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cerqueu el número de color corresponent al color especificat. Si el color no existeix, sol·liciteu un número de color nou </font></font><a href="../../module/ifs/gd.md.html#PALETTE" class="notranslate">gd.PALETTE</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Imatge, el número de color és l’índex de paleta, per a </font></font><a href="../../module/ifs/gd.md.html#TRUECOLOR" class="notranslate">gd.TRUECOLOR</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> La imatge, el número de color és un valor codificat en rgb</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div>Integer Image.colorResolve(Integer red,<font></font>
+    Integer green,<font></font>
+    Integer blue);<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">red</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, el component vermell, el rang és de 0 a 255</font></font></li>
+<li><span class="notranslate">green</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, el component verd, el rang és de 0 a 255</font></font></li>
+<li><span class="notranslate">blue</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, component blau, interval 0-255</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorna el número de color, torna -1 si no té èxit</font></font></li>
+</ul>
+<hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cerqueu el número de color corresponent al color especificat. Si el color no existeix, sol·liciteu un número de color nou </font></font><a href="../../module/ifs/gd.md.html#PALETTE" class="notranslate">gd.PALETTE</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Imatge, el número de color és l’índex de paleta, per a </font></font><a href="../../module/ifs/gd.md.html#TRUECOLOR" class="notranslate">gd.TRUECOLOR</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> La imatge, el número de color és un valor codificat en rgb</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer Image.colorResolve(Integer color);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">color</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: El valor de color sencer, combinat, pot ser </font></font><a href="../../module/ifs/gd.md.html#color" class="notranslate">gd.color</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, gb.rgb, </font></font><a href="../../module/ifs/gd.md.html#rgba" class="notranslate">gd.rgba</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Espereu la generació de funcions</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorna el número de color, torna -1 si no té èxit</font></font></li>
+</ul>
+<hr>
+<div name="colorResolveAlpha" data-unique="colorResolveAlpha"></div><h3 id="colorResolveAlpha" class="notranslate">colorResolveAlpha</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cerqueu el color especificat i el número de color corresponent a la transparència. Si el color no existeix, sol·liciteu un número de color nou </font></font><a href="../../module/ifs/gd.md.html#PALETTE" class="notranslate">gd.PALETTE</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Imatge, el número de color és l’índex de paleta, per a </font></font><a href="../../module/ifs/gd.md.html#TRUECOLOR" class="notranslate">gd.TRUECOLOR</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> La imatge, el número de color és el valor codificat rgba</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4</div>Integer Image.colorResolveAlpha(Integer red,<font></font>
+    Integer green,<font></font>
+    Integer blue,<font></font>
+    <span class="hljs-built_in">Number</span> alpha);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">red</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, el component vermell, el rang és de 0 a 255</font></font></li>
+<li><span class="notranslate">green</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, el component verd, el rang és de 0 a 255</font></font></li>
+<li><span class="notranslate">blue</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, component blau, interval 0-255</font></font></li>
+<li><span class="notranslate">alpha</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Nombre, el component transparent, l'interval és 0-1,0</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorna el número de color, torna -1 si no té èxit</font></font></li>
+</ul>
+<hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cerqueu el color especificat i el número de color corresponent a la transparència. Si el color no existeix, sol·liciteu un número de color nou </font></font><a href="../../module/ifs/gd.md.html#PALETTE" class="notranslate">gd.PALETTE</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Imatge, el número de color és l’índex de paleta, per a </font></font><a href="../../module/ifs/gd.md.html#TRUECOLOR" class="notranslate">gd.TRUECOLOR</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> La imatge, el número de color és el valor codificat rgba</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer Image.colorResolveAlpha(Integer color);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">color</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: El valor de color sencer, combinat, pot ser </font></font><a href="../../module/ifs/gd.md.html#color" class="notranslate">gd.color</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, gb.rgb, </font></font><a href="../../module/ifs/gd.md.html#rgba" class="notranslate">gd.rgba</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Espereu la generació de funcions</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorna el número de color, torna -1 si no té èxit</font></font></li>
+</ul>
+<hr>
+<div name="colorDeallocate" data-unique="colorDeallocate"></div><h3 id="colorDeallocate" class="notranslate">colorDeallocate</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Deixeu anar el número de color especificat, el número de color alliberat se substituirà després de tornar-lo a aplicar</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Image.colorDeallocate(Integer color);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">color</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu el número de color que voleu alliberar</font></font></li>
+</ul>
+<hr>
+<div name="clip" data-unique="clip"></div><h3 id="clip" class="notranslate">clip</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Establiu la finestra de tall del dibuix, després de configurar-lo, es tallarà tot el dibuix a la finestra</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4</div>Image.clip(Integer x1,<font></font>
+    Integer y1,<font></font>
+    Integer x2,<font></font>
+    Integer y2);<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">x1</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, la coordenada x superior esquerra de la finestra de retall</font></font></li>
+<li><span class="notranslate">y1</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, la coordenada y superior esquerra de la finestra de retall</font></font></li>
+<li><span class="notranslate">x2</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, la coordenada x inferior dreta de la finestra de retall</font></font></li>
+<li><span class="notranslate">y2</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, la coordenada inferior dreta de la finestra de retall</font></font></li>
+</ul>
+<hr>
+<div name="getPixel" data-unique="getPixel"></div><h3 id="getPixel" class="notranslate">getPixel</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Consulteu el color del punt especificat</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div>Integer Image.getPixel(Integer x,<font></font>
+    Integer y);<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">x</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu la coordenada x de la consulta</font></font></li>
+<li><span class="notranslate">y</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu la coordenada y de la consulta</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorna el número de color del punt especificat</font></font></li>
+</ul>
+<hr>
+<div name="getTrueColorPixel" data-unique="getTrueColorPixel"></div><h3 id="getTrueColorPixel" class="notranslate">getTrueColorPixel</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Consulteu el color veritable del punt d'ubicació especificat</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div>Integer Image.getTrueColorPixel(Integer x,<font></font>
+    Integer y);<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">x</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu la coordenada x de la consulta</font></font></li>
+<li><span class="notranslate">y</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu la coordenada y de la consulta</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorna el número de color del punt especificat</font></font></li>
+</ul>
+<hr>
+<div name="setPixel" data-unique="setPixel"></div><h3 id="setPixel" class="notranslate">setPixel</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Dibuixeu un punt a la posició especificada</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div>Image.setPixel(Integer x,<font></font>
+    Integer y,<font></font>
+    Integer color);<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">x</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu la coordenada x del punt de dibuix</font></font></li>
+<li><span class="notranslate">y</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu la coordenada y del punt de dibuix</font></font></li>
+<li><span class="notranslate">color</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu el número de color del punt pintat</font></font></li>
+</ul>
+<hr>
+<div name="setThickness" data-unique="setThickness"></div><h3 id="setThickness" class="notranslate">setThickness</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Definiu l'amplada de la línia; l'amplada per defecte és d'un píxel quan es dibuixen la línia, el rectangle, l'arc i altres mètodes. Podeu utilitzar aquest mètode per canviar l'amplada de la línia.</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Image.setThickness(Integer thickness);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">thickness</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, l'amplada de la línia</font></font></li>
+</ul>
+<hr>
+<div name="line" data-unique="line"></div><h3 id="line" class="notranslate">line</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Dibuixeu una línia a la posició especificada</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5</div>Image.line(Integer x1,<font></font>
+    Integer y1,<font></font>
+    Integer x2,<font></font>
+    Integer y2,<font></font>
+    Integer color);<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">x1</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu la coordenada x inicial de la línia</font></font></li>
+<li><span class="notranslate">y1</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu la coordenada y inicial de la línia</font></font></li>
+<li><span class="notranslate">x2</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu la coordenada final x de la línia</font></font></li>
+<li><span class="notranslate">y2</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu la coordenada y final de la línia</font></font></li>
+<li><span class="notranslate">color</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu el número de color de la línia</font></font></li>
+</ul>
+<hr>
+<div name="rectangle" data-unique="rectangle"></div><h3 id="rectangle" class="notranslate">rectangle</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Dibuixeu un rectangle a la posició especificada</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5</div>Image.rectangle(Integer x1,<font></font>
+    Integer y1,<font></font>
+    Integer x2,<font></font>
+    Integer y2,<font></font>
+    Integer color);<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">x1</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu la coordenada x de la cantonada superior esquerra</font></font></li>
+<li><span class="notranslate">y1</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu la coordenada y de la cantonada superior esquerra</font></font></li>
+<li><span class="notranslate">x2</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu la coordenada x de la cantonada inferior dreta</font></font></li>
+<li><span class="notranslate">y2</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu la coordenada y de la cantonada inferior dreta</font></font></li>
+<li><span class="notranslate">color</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu el número de color del rectangle</font></font></li>
+</ul>
+<hr>
+<div name="filledRectangle" data-unique="filledRectangle"></div><h3 id="filledRectangle" class="notranslate">filledRectangle</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Dibuixeu un rectangle ple a la posició especificada</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5</div>Image.filledRectangle(Integer x1,<font></font>
+    Integer y1,<font></font>
+    Integer x2,<font></font>
+    Integer y2,<font></font>
+    Integer color);<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">x1</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu la coordenada x de la cantonada superior esquerra</font></font></li>
+<li><span class="notranslate">y1</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu la coordenada y de la cantonada superior esquerra</font></font></li>
+<li><span class="notranslate">x2</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu la coordenada x de la cantonada inferior dreta</font></font></li>
+<li><span class="notranslate">y2</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu la coordenada y de la cantonada inferior dreta</font></font></li>
+<li><span class="notranslate">color</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu el número de color del rectangle</font></font></li>
+</ul>
+<hr>
+<div name="polygon" data-unique="polygon"></div><h3 id="polygon" class="notranslate">polygon</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Dibuixa un polígon basat en un punt determinat</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div>Image.polygon(<span class="hljs-built_in">Array</span> points,<font></font>
+    Integer color);<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">points</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Matriu, una matriu que conté punts de polígon, com ara [[1, 1], [1, 10], [10, 15], [10, 20]]</font></font></li>
+<li><span class="notranslate">color</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu el número de color del rectangle</font></font></li>
+</ul>
+<hr>
+<div name="openPolygon" data-unique="openPolygon"></div><h3 id="openPolygon" class="notranslate">openPolygon</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Dibuixeu un polígon obert basat en un punt determinat</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div>Image.openPolygon(<span class="hljs-built_in">Array</span> points,<font></font>
+    Integer color);<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">points</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Matriu, una matriu que conté punts de polígon, com ara [[1, 1], [1, 10], [10, 15], [10, 20]]</font></font></li>
+<li><span class="notranslate">color</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu el número de color del rectangle</font></font></li>
+</ul>
+<hr>
+<div name="filledPolygon" data-unique="filledPolygon"></div><h3 id="filledPolygon" class="notranslate">filledPolygon</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Dibuixeu un polígon ple basat en el punt indicat</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div>Image.filledPolygon(<span class="hljs-built_in">Array</span> points,<font></font>
+    Integer color);<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">points</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Matriu, una matriu que conté punts de polígon, com ara [[1, 1], [1, 10], [10, 15], [10, 20]]</font></font></li>
+<li><span class="notranslate">color</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu el número de color del rectangle</font></font></li>
+</ul>
+<hr>
+<div name="ellipse" data-unique="ellipse"></div><h3 id="ellipse" class="notranslate">ellipse</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Dibuixa un oval</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5</div>Image.ellipse(Integer x,<font></font>
+    Integer y,<font></font>
+    Integer width,<font></font>
+    Integer height,<font></font>
+    Integer color);<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">x</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, la coordenada x del centre de l’el·lipse</font></font></li>
+<li><span class="notranslate">y</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, la coordenada y del centre de l’el·lipse</font></font></li>
+<li><span class="notranslate">width</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, l’amplada de l’el·lipse</font></font></li>
+<li><span class="notranslate">height</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, l’alçada de l’el·lipse</font></font></li>
+<li><span class="notranslate">color</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu el número de color del rectangle</font></font></li>
+</ul>
+<hr>
+<div name="filledEllipse" data-unique="filledEllipse"></div><h3 id="filledEllipse" class="notranslate">filledEllipse</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Dibuixa una el·lipse plena</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5</div>Image.filledEllipse(Integer x,<font></font>
+    Integer y,<font></font>
+    Integer width,<font></font>
+    Integer height,<font></font>
+    Integer color);<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">x</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, la coordenada x del centre de l’el·lipse</font></font></li>
+<li><span class="notranslate">y</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, la coordenada y del centre de l’el·lipse</font></font></li>
+<li><span class="notranslate">width</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, l’amplada de l’el·lipse</font></font></li>
+<li><span class="notranslate">height</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, l’alçada de l’el·lipse</font></font></li>
+<li><span class="notranslate">color</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu el número de color del rectangle</font></font></li>
+</ul>
+<hr>
+<div name="arc" data-unique="arc"></div><h3 id="arc" class="notranslate">arc</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Dibuixa un ventilador</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7</div>Image.arc(Integer x,<font></font>
+    Integer y,<font></font>
+    Integer width,<font></font>
+    Integer height,<font></font>
+    Integer start,<font></font>
+    Integer end,<font></font>
+    Integer color);<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">x</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, la coordenada x del centre del sector</font></font></li>
+<li><span class="notranslate">y</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, la coordenada y del centre del sector</font></font></li>
+<li><span class="notranslate">width</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, l’amplada de l’el·lipse on es troba el sector</font></font></li>
+<li><span class="notranslate">height</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, l’altura de l’el·lipse on es troba el sector</font></font></li>
+<li><span class="notranslate">start</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, l'angle inicial del sector, el rang és de 0-360</font></font></li>
+<li><span class="notranslate">end</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, l'angle en què s'acaba el sector, el rang és de 0-360</font></font></li>
+<li><span class="notranslate">color</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu el número de color del rectangle</font></font></li>
+</ul>
+<hr>
+<div name="filledArc" data-unique="filledArc"></div><h3 id="filledArc" class="notranslate">filledArc</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Dibuixa un sector ple</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8</div>Image.filledArc(Integer x,<font></font>
+    Integer y,<font></font>
+    Integer width,<font></font>
+    Integer height,<font></font>
+    Integer start,<font></font>
+    Integer end,<font></font>
+    Integer color,<font></font>
+    Integer style = gd.ARC);<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">x</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, la coordenada x del centre del sector</font></font></li>
+<li><span class="notranslate">y</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, la coordenada y del centre del sector</font></font></li>
+<li><span class="notranslate">width</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, l’amplada de l’el·lipse on es troba el sector</font></font></li>
+<li><span class="notranslate">height</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, l’altura de l’el·lipse on es troba el sector</font></font></li>
+<li><span class="notranslate">start</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, l'angle inicial del sector, el rang és de 0-360</font></font></li>
+<li><span class="notranslate">end</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, l'angle en què s'acaba el sector, el rang és de 0-360</font></font></li>
+<li><span class="notranslate">color</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu el número de color del rectangle</font></font></li>
+<li><span class="notranslate">style</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu l'estil en forma de ventall, els valors permesos són </font></font><a href="../../module/ifs/gd.md.html#ARC" class="notranslate">gd.ARC</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><a href="../../module/ifs/gd.md.html#CHORD" class="notranslate">gd.CHORD</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><a href="../../module/ifs/gd.md.html#NOFILL" class="notranslate">gd.NOFILL</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><a href="../../module/ifs/gd.md.html#EDGED" class="notranslate">gd.EDGED</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> I la seva combinació</font></font></li>
+</ul>
+<hr>
+<div name="fill" data-unique="fill"></div><h3 id="fill" class="notranslate">fill</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ompliu l'àrea tancada des del punt especificat</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div>Image.fill(Integer x,<font></font>
+    Integer y,<font></font>
+    Integer color);<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">x</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, la coordenada x per començar a omplir</font></font></li>
+<li><span class="notranslate">y</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, la coordenada y per començar a omplir</font></font></li>
+<li><span class="notranslate">color</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu el número de color del farciment</font></font></li>
+</ul>
+<hr>
+<div name="fillToBorder" data-unique="fillToBorder"></div><h3 id="fillToBorder" class="notranslate">fillToBorder</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Empleneu l'àrea tancada dins del límit del color especificat des del punt especificat</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4</div>Image.fillToBorder(Integer x,<font></font>
+    Integer y,<font></font>
+    Integer borderColor,<font></font>
+    Integer color);<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">x</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, la coordenada x per començar a omplir</font></font></li>
+<li><span class="notranslate">y</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, la coordenada y per començar a omplir</font></font></li>
+<li><span class="notranslate">borderColor</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu el número de color de la vora</font></font></li>
+<li><span class="notranslate">color</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu el número de color del farciment</font></font></li>
+</ul>
+<hr>
+<div name="colorReplace" data-unique="colorReplace"></div><h3 id="colorReplace" class="notranslate">colorReplace</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Substituïu el color especificat a la imatge pel color nou</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div>Image.colorReplace(Integer src,<font></font>
+    Integer dst) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">src</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu el color a substituir</font></font></li>
+<li><span class="notranslate">dst</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu un color nou</font></font></li>
+</ul>
+<hr>
+<div name="clone" data-unique="clone"></div><h3 id="clone" class="notranslate">clone</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Copieu la imatge actual com a imatge nova</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Image Image.clone() <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><span class="notranslate">Image</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorna l'objecte d'imatge nova copiat</font></font></li>
+</ul>
+<hr>
+<div name="resample" data-unique="resample"></div><h3 id="resample" class="notranslate">resample</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Genereu una imatge de nova mida segons el tram de la imatge</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div>Image Image.resample(Integer width,<font></font>
+    Integer height) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">width</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu l'amplada del tram</font></font></li>
+<li><span class="notranslate">height</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu l'alçada del tram</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><span class="notranslate">Image</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorna un nou objecte d'imatge</font></font></li>
+</ul>
+<hr>
+<div name="crop" data-unique="crop"></div><h3 id="crop" class="notranslate">crop</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Talla part de la imatge en una imatge nova</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4</div>Image Image.crop(Integer x,<font></font>
+    Integer y,<font></font>
+    Integer width,<font></font>
+    Integer height) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">x</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, la coordenada x superior esquerra de la finestra de retall</font></font></li>
+<li><span class="notranslate">y</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, la coordenada y superior esquerra de la finestra de retall</font></font></li>
+<li><span class="notranslate">width</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, l'amplada de la finestra tallada</font></font></li>
+<li><span class="notranslate">height</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, l'alçada de la finestra de retall</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><span class="notranslate">Image</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Torneu la imatge retallada</font></font></li>
+</ul>
+<hr>
+<div name="flip" data-unique="flip"></div><h3 id="flip" class="notranslate">flip</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Mirall de la imatge actual</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Image.flip(Integer dir = gd.HORIZONTAL) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">dir</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, direcció del mirall, valor permès </font></font><a href="../../module/ifs/gd.md.html#BOTH" class="notranslate">gd.BOTH</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">,</font></font><a href="../../module/ifs/gd.md.html#HORIZONTAL" class="notranslate">gd.HORIZONTAL</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><a href="../../module/ifs/gd.md.html#VERTICAL" class="notranslate">gd.VERTICAL</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, El valor per defecte és </font></font><a href="../../module/ifs/gd.md.html#HORIZONTAL" class="notranslate">gd.HORIZONTAL</a></li>
+</ul>
+<hr>
+<div name="rotate" data-unique="rotate"></div><h3 id="rotate" class="notranslate">rotate</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Gireu la imatge actual</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Image.rotate(Integer dir) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">dir</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, sentit de rotació, valor permès </font></font><a href="../../module/ifs/gd.md.html#LEFT" class="notranslate">gd.LEFT</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><a href="../../module/ifs/gd.md.html#RIGHT" class="notranslate">gd.RIGHT</a></li>
+</ul>
+<hr>
+<div name="convert" data-unique="convert"></div><h3 id="convert" class="notranslate">convert</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Convertiu el tipus d'imatge actual</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Image.convert(Integer color = gd.TRUECOLOR) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">color</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu el tipus d’imatge, el valor permès és </font></font><a href="../../module/ifs/gd.md.html#TRUECOLOR" class="notranslate">gd.TRUECOLOR</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> o bé </font></font><a href="../../module/ifs/gd.md.html#PALETTE" class="notranslate">gd.PALETTE</a></li>
+</ul>
+<hr>
+<div name="copy" data-unique="copy"></div><h3 id="copy" class="notranslate">copy</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Copieu una àrea d'una imatge a la ubicació especificada</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7</div>Image.copy(Image source,<font></font>
+    Integer dstX,<font></font>
+    Integer dstY,<font></font>
+    Integer srcX,<font></font>
+    Integer srcY,<font></font>
+    Integer width,<font></font>
+    Integer height) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">source</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Imatge, objecte imatge font</font></font></li>
+<li><span class="notranslate">dstX</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu la coordenada x de la destinació de la còpia</font></font></li>
+<li><span class="notranslate">dstY</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu la coordenada y de la destinació de la còpia</font></font></li>
+<li><span class="notranslate">srcX</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu la coordenada x de la cantonada superior esquerra de la font de la còpia</font></font></li>
+<li><span class="notranslate">srcY</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu la coordenada y de la cantonada superior esquerra de la font de còpia</font></font></li>
+<li><span class="notranslate">width</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu l'amplada de la còpia</font></font></li>
+<li><span class="notranslate">height</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu l'alçada de la còpia</font></font></li>
+</ul>
+<hr>
+<div name="copyMerge" data-unique="copyMerge"></div><h3 id="copyMerge" class="notranslate">copyMerge</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Copieu una àrea d'una imatge a la ubicació especificada</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8</div>Image.copyMerge(Image source,<font></font>
+    Integer dstX,<font></font>
+    Integer dstY,<font></font>
+    Integer srcX,<font></font>
+    Integer srcY,<font></font>
+    Integer width,<font></font>
+    Integer height,<font></font>
+    Integer percent) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">source</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Imatge, objecte imatge font</font></font></li>
+<li><span class="notranslate">dstX</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu la coordenada x de la destinació de la còpia</font></font></li>
+<li><span class="notranslate">dstY</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu la coordenada y de la destinació de la còpia</font></font></li>
+<li><span class="notranslate">srcX</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu la coordenada x de la cantonada superior esquerra de la font de la còpia</font></font></li>
+<li><span class="notranslate">srcY</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu la coordenada y de la cantonada superior esquerra de la font de còpia</font></font></li>
+<li><span class="notranslate">width</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu l'amplada de la còpia</font></font></li>
+<li><span class="notranslate">height</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu l'alçada de la còpia</font></font></li>
+<li><span class="notranslate">percent</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu la transparència de la superposició</font></font></li>
+</ul>
+<hr>
+<div name="copyMergeGray" data-unique="copyMergeGray"></div><h3 id="copyMergeGray" class="notranslate">copyMergeGray</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Copieu la cobertura gris d'una àrea d'una imatge a la posició especificada</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8</div>Image.copyMergeGray(Image source,<font></font>
+    Integer dstX,<font></font>
+    Integer dstY,<font></font>
+    Integer srcX,<font></font>
+    Integer srcY,<font></font>
+    Integer width,<font></font>
+    Integer height,<font></font>
+    Integer percent) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">source</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Imatge, objecte imatge font</font></font></li>
+<li><span class="notranslate">dstX</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu la coordenada x de la destinació de la còpia</font></font></li>
+<li><span class="notranslate">dstY</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu la coordenada y de la destinació de la còpia</font></font></li>
+<li><span class="notranslate">srcX</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu la coordenada x de la cantonada superior esquerra de la font de la còpia</font></font></li>
+<li><span class="notranslate">srcY</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu la coordenada y de la cantonada superior esquerra de la font de còpia</font></font></li>
+<li><span class="notranslate">width</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu l'amplada de la còpia</font></font></li>
+<li><span class="notranslate">height</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu l'alçada de la còpia</font></font></li>
+<li><span class="notranslate">percent</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu la transparència de la superposició</font></font></li>
+</ul>
+<hr>
+<div name="copyResized" data-unique="copyResized"></div><h3 id="copyResized" class="notranslate">copyResized</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Estireu una àrea en una imatge i copieu-la a la posició especificada</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9</div>Image.copyResized(Image source,<font></font>
+    Integer dstX,<font></font>
+    Integer dstY,<font></font>
+    Integer srcX,<font></font>
+    Integer srcY,<font></font>
+    Integer dstW,<font></font>
+    Integer dstH,<font></font>
+    Integer srcW,<font></font>
+    Integer srcH) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">source</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Imatge, objecte imatge font</font></font></li>
+<li><span class="notranslate">dstX</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu la coordenada x de la destinació de la còpia</font></font></li>
+<li><span class="notranslate">dstY</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu la coordenada y de la destinació de la còpia</font></font></li>
+<li><span class="notranslate">srcX</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu la coordenada x de la cantonada superior esquerra de la font de la còpia</font></font></li>
+<li><span class="notranslate">srcY</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu la coordenada y de la cantonada superior esquerra de la font de còpia</font></font></li>
+<li><span class="notranslate">dstW</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu l'amplada estirada de la còpia</font></font></li>
+<li><span class="notranslate">dstH</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu l'alçada d'estirament de la còpia</font></font></li>
+<li><span class="notranslate">srcW</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu l'amplada de la font de la còpia</font></font></li>
+<li><span class="notranslate">srcH</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu l'alçada de la font de la còpia</font></font></li>
+</ul>
+<hr>
+<div name="copyResampled" data-unique="copyResampled"></div><h3 id="copyResampled" class="notranslate">copyResampled</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Estireu una àrea d’una imatge i copieu-la a la posició especificada. A diferència de copyResized, aquest mètode reduirà la imatge quan s’estiri.</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9</div>Image.copyResampled(Image source,<font></font>
+    Integer dstX,<font></font>
+    Integer dstY,<font></font>
+    Integer srcX,<font></font>
+    Integer srcY,<font></font>
+    Integer dstW,<font></font>
+    Integer dstH,<font></font>
+    Integer srcW,<font></font>
+    Integer srcH) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">source</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Imatge, objecte imatge font</font></font></li>
+<li><span class="notranslate">dstX</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu la coordenada x de la destinació de la còpia</font></font></li>
+<li><span class="notranslate">dstY</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu la coordenada y de la destinació de la còpia</font></font></li>
+<li><span class="notranslate">srcX</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu la coordenada x de la cantonada superior esquerra de la font de la còpia</font></font></li>
+<li><span class="notranslate">srcY</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu la coordenada y de la cantonada superior esquerra de la font de còpia</font></font></li>
+<li><span class="notranslate">dstW</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu l'amplada estirada de la còpia</font></font></li>
+<li><span class="notranslate">dstH</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu l'alçada d'estirament de la còpia</font></font></li>
+<li><span class="notranslate">srcW</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu l'amplada de la font de la còpia</font></font></li>
+<li><span class="notranslate">srcH</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu l'alçada de la font de la còpia</font></font></li>
+</ul>
+<hr>
+<div name="copyRotated" data-unique="copyRotated"></div><h3 id="copyRotated" class="notranslate">copyRotated</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Gireu una àrea en una imatge i copieu-la a la posició especificada</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8</div>Image.copyRotated(Image source,
+    <span class="hljs-built_in">Number</span> dstX,
+    <span class="hljs-built_in">Number</span> dstY,<font></font>
+    Integer srcX,<font></font>
+    Integer srcY,<font></font>
+    Integer width,<font></font>
+    Integer height,<font></font>
+    <span class="hljs-built_in">Number</span> angle) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">source</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Imatge, objecte imatge font</font></font></li>
+<li><span class="notranslate">dstX</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Nombre, especifiqueu la coordenada x de la destinació de la còpia</font></font></li>
+<li><span class="notranslate">dstY</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Nombre, especifiqueu la coordenada y de la destinació de la còpia</font></font></li>
+<li><span class="notranslate">srcX</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu la coordenada x de la cantonada superior esquerra de la font de la còpia</font></font></li>
+<li><span class="notranslate">srcY</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu la coordenada y de la cantonada superior esquerra de la font de còpia</font></font></li>
+<li><span class="notranslate">width</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu l'amplada de la còpia</font></font></li>
+<li><span class="notranslate">height</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu l'alçada de la còpia</font></font></li>
+<li><span class="notranslate">angle</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Nombre, especifiqueu l'angle de rotació</font></font></li>
+</ul>
+<hr>
+<div name="filter" data-unique="filter"></div><h3 id="filter" class="notranslate">filter</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Apliqueu el filtre Tipus de filtre a la imatge i introduïu els paràmetres necessaris segons el tipus de filtre</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5</div>Image.filter(Integer filterType,
+    <span class="hljs-built_in">Number</span> arg1 = <span class="hljs-number">0</span>,
+    <span class="hljs-built_in">Number</span> arg2 = <span class="hljs-number">0</span>,
+    <span class="hljs-built_in">Number</span> arg3 = <span class="hljs-number">0</span>,
+    <span class="hljs-built_in">Number</span> arg4 = <span class="hljs-number">0</span>) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">filterType</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, tipus de filtre</font></font></li>
+<li><span class="notranslate">arg1</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Nombre, paràmetres necessaris del filtre: nivell de suavització suau, nivell de brillantor BRILLANT, nivell de contrast de CONTRAST, COLORITZAR puntuació vermella</font></font></li>
+<li><span class="notranslate">arg2</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Nombre, els paràmetres necessaris del filtre: la puntuació verda de COLORITZAR</font></font></li>
+<li><span class="notranslate">arg3</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Nombre, els paràmetres necessaris del filtre: la puntuació blava de COLORITZAR</font></font></li>
+<li><span class="notranslate">arg4</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Nombre, els paràmetres necessaris del filtre: la puntuació alfa de la transparència de COLORITZAR</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">El paràmetre filterType pot ser el següent:</font></font></p>
+<ul>
+<li><span class="notranslate">MEAN_REMOVAL</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Utilitzeu el mètode d’eliminació mitjà per aconseguir l’efecte de contorn</font></font></li>
+<li><span class="notranslate">EDGEDETECT</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Utilitzeu la detecció de vores per ressaltar les vores de la imatge</font></font></li>
+<li><span class="notranslate">EMBOSS</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Per gravar la imatge</font></font></li>
+<li><span class="notranslate">SELECTIVE_BLUR</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Imatge borrosa</font></font></li>
+<li><span class="notranslate">GAUSSIAN_BLUR</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Difuminar la imatge amb l'algorisme de Gauss</font></font></li>
+<li><span class="notranslate">NEGATE</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Inverteix tots els colors de la imatge</font></font></li>
+<li><span class="notranslate">GRAYSCALE</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Convertiu la imatge a escala de grisos</font></font></li>
+<li><span class="notranslate">SMOOTH</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Per fer la imatge més suau, utilitzeu arg1 per establir el nivell de suavitat</font></font></li>
+<li><span class="notranslate">BRIGHTNESS</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Canvieu la brillantor de la imatge, utilitzeu arg1 per establir el nivell de brillantor, l’interval de valors és de -255 ~ 255</font></font></li>
+<li><span class="notranslate">CONTRAST</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Canvieu el contrast de la imatge, utilitzeu arg1 per establir el nivell de contrast, l’interval de valors és de 0 a 100</font></font></li>
+<li><span class="notranslate">COLORIZE</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Canvieu el to de la imatge, utilitzeu arg1, arg2 i arg3 per especificar les puntuacions vermelles, blaves i verdes respectivament. L'interval de cada color és de 0 ~ 255, arg4 és transparència i el valor de retorn és de 0 ~ 127</font></font></li>
+</ul>
+<hr>
+<div name="affine" data-unique="affine"></div><h3 id="affine" class="notranslate">affine</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Segons la matriu donada, afineu la imatge actual</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5</div>Image Image.affine(<span class="hljs-built_in">Array</span> affine,<font></font>
+    Integer x = <span class="hljs-number">-1</span>,<font></font>
+    Integer y = <span class="hljs-number">-1</span>,<font></font>
+    Integer width = <span class="hljs-number">-1</span>,<font></font>
+    Integer height = <span class="hljs-number">-1</span>) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">affine</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Matriu, matriu afí, composta per 6 nombres dobles</font></font></li>
+<li><span class="notranslate">x</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, la coordenada x de l'origen de l'àrea de retall opcional</font></font></li>
+<li><span class="notranslate">y</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, coordenada y opcional de l'origen de l'àrea de retallada</font></font></li>
+<li><span class="notranslate">width</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, l'amplada de l'àrea de retall opcional</font></font></li>
+<li><span class="notranslate">height</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, l'alçada de l'àrea de retall opcional</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><span class="notranslate">Image</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorna la imatge afí</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">El paràmetre afí és una matriu:</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div>affine = [a0, a1, b0, b1, a2, b2];<font></font>
+x ' = a0x + a1y + a2;<font></font>
+y ' = b0x + b1y + b2;<font></font>
+</code></pre>
+<hr>
+<div name="gaussianBlur" data-unique="gaussianBlur"></div><h3 id="gaussianBlur" class="notranslate">gaussianBlur</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Processament de desenfocament gaussià a la imatge actual</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Image.gaussianBlur(Integer radius) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">radius</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, radi de desenfocament</font></font></li>
+</ul>
+<hr>
+<div name="toString" data-unique="toString"></div><h3 id="toString" class="notranslate">toString</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Retorna la representació de cadena de l'objecte, generalment retorna "[Objecte natiu]", l'objecte es pot tornar a implementar segons les seves pròpies característiques</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> Image.toString();
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><span class="notranslate">String</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorna la representació de cadena de l'objecte</font></font></li>
+</ul>
+<hr>
+<div name="toJSON" data-unique="toJSON"></div><h3 id="toJSON" class="notranslate">toJSON</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Retorna la representació en format JSON de l'objecte, generalment retorna una col·lecció d'atributs llegibles definits per l'objecte</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Value Image.toJSON(<span class="hljs-built_in">String</span> key = <span class="hljs-string">""</span>);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">key</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, sense utilitzar</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><span class="notranslate">Value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorna un valor que conté JSON serialitzable</font></font></li>
+</ul>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org | </font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Doneu-nos suport</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip80419"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip80419" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Feu clic per tornar a la pàgina superior</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>

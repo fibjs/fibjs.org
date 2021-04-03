@@ -1,0 +1,731 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../../../imgs/icon.png"><title>對象LruCache - JavaScript on Fiber</title><link href="../../../../../css/common.css" rel="stylesheet"><link href="../../../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Toggle navigation</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../../../index.html"><img src="../../../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../../../index.html">HOME</a></li><li><a href="../../../guide/readme.md.html">GUIDE</a></li><li><a href="../../module/readme.md.html">MODULE</a></li><li><a href="../readme.md.html">OBJECT</a></li><li><a href="../../../awesome/readme.md.html">AWESOME</a></li><li><a href="../../../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../../../docs/manual/object/ifs/lrucache.md.html">中文</a> <a href="../../../../../ca/docs/manual/object/ifs/lrucache.md.html">Catalan</a> <a href="../../../../../de/docs/manual/object/ifs/lrucache.md.html">Deutsch</a> <a href="../../../../../en/docs/manual/object/ifs/lrucache.md.html">English</a> <a href="../../../../../es/docs/manual/object/ifs/lrucache.md.html">Español</a> <a href="../../../../../fr/docs/manual/object/ifs/lrucache.md.html">Français</a> <a href="../../../../../gl/docs/manual/object/ifs/lrucache.md.html">Galego</a> <a href="../../../../../it/docs/manual/object/ifs/lrucache.md.html">Italiano</a> <a href="../../../../../ru/docs/manual/object/ifs/lrucache.md.html">Русский</a> <a href="../../../../../ja/docs/manual/object/ifs/lrucache.md.html">日本語</a> <a href="../../../../../ko/docs/manual/object/ifs/lrucache.md.html">한국어</a> <a href="../../../../../zh-tw/docs/manual/object/ifs/lrucache.md.html">繁體中文</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Object 內置對象 </font></font></span><div class="search"><span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input type="text" class="searchbox ds-input" placeholder="Search" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-label="search input" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Avenir, &quot;Segoe UI&quot;, Arial, &quot;Hiragino Sans GB&quot;, 冬青黑, &quot;Microsoft YaHei&quot;, 微软雅黑, SimSun, 宋体, Helvetica, Tahoma, &quot;Arial sans-serif&quot;; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div class="ds-dataset-1"></div></span></span></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">首頁</font></font></a></li><li><a href="../readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 內置對象 </font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 對象LruCache </font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 開髮指南 </font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="../../../guide/about.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs 是什麼？</font></font></a></li>
+<li><a href="../../../guide/install.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">安裝運行環境</font></font></a></li>
+<li><a href="../../../guide/hello.md.html" class="notranslate">hello, world</a></li>
+<li><a href="../../../guide/test.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">美好生活從測試開始</font></font></a></li>
+<li><a href="../../../guide/profiler.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">找出性能殺手</font></font></a></li>
+<li><a href="../../../guide/desktop.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">快速開發桌面應用</font></font></a></li>
+<li><a href="../../../guide/server-hot-update.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">服務端模塊熱更新</font></font></a></li>
+<li><a href="../../../guide/host-routes.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">域名路由</font></font></a></li>
+<li><a href="../../../guide/x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs 中X509 證書的使用</font></font></a></li>
+<li><a href="../../../guide/contribute.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">添加native 模塊</font></font></a></li>
+</ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_module" aria-controls="collapse_module"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 基礎模塊 </font></font></a></h4></div><div id="collapse_module" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="../../module/ifs/assert.md.html" class="notranslate">assert</a></li>
+<li><a href="../../module/ifs/base32.md.html" class="notranslate">base32</a></li>
+<li><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a></li>
+<li><a href="../../module/ifs/base64vlq.md.html" class="notranslate">base64vlq</a></li>
+<li><a href="../../module/ifs/bson.md.html" class="notranslate">bson</a></li>
+<li><a href="../../module/ifs/child_process.md.html" class="notranslate">child_process</a></li>
+<li><a href="../../module/ifs/console.md.html" class="notranslate">console</a></li>
+<li><a href="../../module/ifs/constants.md.html" class="notranslate">constants</a></li>
+<li><a href="../../module/ifs/coroutine.md.html" class="notranslate">coroutine</a></li>
+<li><a href="../../module/ifs/crypto.md.html" class="notranslate">crypto</a></li>
+<li><a href="../../module/ifs/db.md.html" class="notranslate">db</a></li>
+<li><a href="../../module/ifs/dgram.md.html" class="notranslate">dgram</a></li>
+<li><a href="../../module/ifs/dns.md.html" class="notranslate">dns</a></li>
+<li><a href="../../module/ifs/encoding.md.html" class="notranslate">encoding</a></li>
+<li><a href="../../module/ifs/fs.md.html" class="notranslate">fs</a></li>
+<li><a href="../../module/ifs/gd.md.html" class="notranslate">gd</a></li>
+<li><a href="../../module/ifs/global.md.html" class="notranslate">global</a></li>
+<li><a href="../../module/ifs/gui.md.html" class="notranslate">gui</a></li>
+<li><a href="../../module/ifs/hash.md.html" class="notranslate">hash</a></li>
+<li><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a></li>
+<li><a href="../../module/ifs/http.md.html" class="notranslate">http</a></li>
+<li><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a></li>
+<li><a href="../../module/ifs/io.md.html" class="notranslate">io</a></li>
+<li><a href="../../module/ifs/json.md.html" class="notranslate">json</a></li>
+<li><a href="../../module/ifs/mq.md.html" class="notranslate">mq</a></li>
+<li><a href="../../module/ifs/msgpack.md.html" class="notranslate">msgpack</a></li>
+<li><a href="../../module/ifs/net.md.html" class="notranslate">net</a></li>
+<li><a href="../../module/ifs/os.md.html" class="notranslate">os</a></li>
+<li><a href="../../module/ifs/path.md.html" class="notranslate">path</a></li>
+<li><a href="../../module/ifs/path_posix.md.html" class="notranslate">path_posix</a></li>
+<li><a href="../../module/ifs/path_win32.md.html" class="notranslate">path_win32</a></li>
+<li><a href="../../module/ifs/process.md.html" class="notranslate">process</a></li>
+<li><a href="../../module/ifs/profiler.md.html" class="notranslate">profiler</a></li>
+<li><a href="../../module/ifs/punycode.md.html" class="notranslate">punycode</a></li>
+<li><a href="../../module/ifs/querystring.md.html" class="notranslate">querystring</a></li>
+<li><a href="../../module/ifs/registry.md.html" class="notranslate">registry</a></li>
+<li><a href="../../module/ifs/ssl.md.html" class="notranslate">ssl</a></li>
+<li><a href="../../module/ifs/string_decoder.md.html" class="notranslate">string_decoder</a></li>
+<li><a href="../../module/ifs/test.md.html" class="notranslate">test</a></li>
+<li><a href="../../module/ifs/timers.md.html" class="notranslate">timers</a></li>
+<li><a href="../../module/ifs/tty.md.html" class="notranslate">tty</a></li>
+<li><a href="../../module/ifs/url.md.html" class="notranslate">url</a></li>
+<li><a href="../../module/ifs/util.md.html" class="notranslate">util</a></li>
+<li><a href="../../module/ifs/uuid.md.html" class="notranslate">uuid</a></li>
+<li><a href="../../module/ifs/vm.md.html" class="notranslate">vm</a></li>
+<li><a href="../../module/ifs/ws.md.html" class="notranslate">ws</a></li>
+<li><a href="../../module/ifs/xml.md.html" class="notranslate">xml</a></li>
+<li><a href="../../module/ifs/zip.md.html" class="notranslate">zip</a></li>
+<li><a href="../../module/ifs/zlib.md.html" class="notranslate">zlib</a></li>
+</ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_object" aria-controls="collapse_object"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 內置對象 </font></font></a></h4></div><div id="collapse_object" class="panel-collapse collapse in" aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="buffer.md.html" class="notranslate">Buffer</a></li>
+<li><a href="bufferedstream.md.html" class="notranslate">BufferedStream</a></li>
+<li><a href="chain.md.html" class="notranslate">Chain</a></li>
+<li><a href="childprocess.md.html" class="notranslate">ChildProcess</a></li>
+<li><a href="cipher.md.html" class="notranslate">Cipher</a></li>
+<li><a href="condition.md.html" class="notranslate">Condition</a></li>
+<li><a href="dbconnection.md.html" class="notranslate">DbConnection</a></li>
+<li><a href="dgramsocket.md.html" class="notranslate">DgramSocket</a></li>
+<li><a href="digest.md.html" class="notranslate">Digest</a></li>
+<li><a href="event.md.html" class="notranslate">Event</a></li>
+<li><a href="eventemitter.md.html" class="notranslate">EventEmitter</a></li>
+<li><a href="fswatcher.md.html" class="notranslate">FSWatcher</a></li>
+<li><a href="fiber.md.html" class="notranslate">Fiber</a></li>
+<li><a href="file.md.html" class="notranslate">File</a></li>
+<li><a href="handler.md.html" class="notranslate">Handler</a></li>
+<li><a href="heapgraphedge.md.html" class="notranslate">HeapGraphEdge</a></li>
+<li><a href="heapgraphnode.md.html" class="notranslate">HeapGraphNode</a></li>
+<li><a href="heapsnapshot.md.html" class="notranslate">HeapSnapshot</a></li>
+<li><a href="httpclient.md.html" class="notranslate">HttpClient</a></li>
+<li><a href="httpcollection.md.html" class="notranslate">HttpCollection</a></li>
+<li><a href="httpcookie.md.html" class="notranslate">HttpCookie</a></li>
+<li><a href="httphandler.md.html" class="notranslate">HttpHandler</a></li>
+<li><a href="httpmessage.md.html" class="notranslate">HttpMessage</a></li>
+<li><a href="httprepeater.md.html" class="notranslate">HttpRepeater</a></li>
+<li><a href="httprequest.md.html" class="notranslate">HttpRequest</a></li>
+<li><a href="httpresponse.md.html" class="notranslate">HttpResponse</a></li>
+<li><a href="httpserver.md.html" class="notranslate">HttpServer</a></li>
+<li><a href="httpuploaddata.md.html" class="notranslate">HttpUploadData</a></li>
+<li><a href="httpsserver.md.html" class="notranslate">HttpsServer</a></li>
+<li><a href="image.md.html" class="notranslate">Image</a></li>
+<li><a href="leveldb.md.html" class="notranslate">LevelDB</a></li>
+<li><a href="lock.md.html" class="notranslate">Lock</a></li>
+<li class="active"><a href="lrucache.md.html" class="notranslate">LruCache</a></li>
+<li><a href="mssql.md.html" class="notranslate">MSSQL</a></li>
+<li><a href="memorystream.md.html" class="notranslate">MemoryStream</a></li>
+<li><a href="message.md.html" class="notranslate">Message</a></li>
+<li><a href="mongocollection.md.html" class="notranslate">MongoCollection</a></li>
+<li><a href="mongocursor.md.html" class="notranslate">MongoCursor</a></li>
+<li><a href="mongodb.md.html" class="notranslate">MongoDB</a></li>
+<li><a href="mongoid.md.html" class="notranslate">MongoID</a></li>
+<li><a href="mysql.md.html" class="notranslate">MySQL</a></li>
+<li><a href="pkey.md.html" class="notranslate">PKey</a></li>
+<li><a href="rangestream.md.html" class="notranslate">RangeStream</a></li>
+<li><a href="redis.md.html" class="notranslate">Redis</a></li>
+<li><a href="redishash.md.html" class="notranslate">RedisHash</a></li>
+<li><a href="redislist.md.html" class="notranslate">RedisList</a></li>
+<li><a href="redisset.md.html" class="notranslate">RedisSet</a></li>
+<li><a href="redissortedset.md.html" class="notranslate">RedisSortedSet</a></li>
+<li><a href="routing.md.html" class="notranslate">Routing</a></li>
+<li><a href="sqlite.md.html" class="notranslate">SQLite</a></li>
+<li><a href="sandbox.md.html" class="notranslate">SandBox</a></li>
+<li><a href="seekablestream.md.html" class="notranslate">SeekableStream</a></li>
+<li><a href="semaphore.md.html" class="notranslate">Semaphore</a></li>
+<li><a href="service.md.html" class="notranslate">Service</a></li>
+<li><a href="smtp.md.html" class="notranslate">Smtp</a></li>
+<li><a href="socket.md.html" class="notranslate">Socket</a></li>
+<li><a href="sslhandler.md.html" class="notranslate">SslHandler</a></li>
+<li><a href="sslserver.md.html" class="notranslate">SslServer</a></li>
+<li><a href="sslsocket.md.html" class="notranslate">SslSocket</a></li>
+<li><a href="stat.md.html" class="notranslate">Stat</a></li>
+<li><a href="statswatcher.md.html" class="notranslate">StatsWatcher</a></li>
+<li><a href="stream.md.html" class="notranslate">Stream</a></li>
+<li><a href="stringdecoder.md.html" class="notranslate">StringDecoder</a></li>
+<li><a href="tcpserver.md.html" class="notranslate">TcpServer</a></li>
+<li><a href="timer.md.html" class="notranslate">Timer</a></li>
+<li><a href="urlobject.md.html" class="notranslate">UrlObject</a></li>
+<li><a href="websocket.md.html" class="notranslate">WebSocket</a></li>
+<li><a href="websocketmessage.md.html" class="notranslate">WebSocketMessage</a></li>
+<li><a href="webview.md.html" class="notranslate">WebView</a></li>
+<li><a href="worker.md.html" class="notranslate">Worker</a></li>
+<li><a href="x509cert.md.html" class="notranslate">X509Cert</a></li>
+<li><a href="x509crl.md.html" class="notranslate">X509Crl</a></li>
+<li><a href="x509req.md.html" class="notranslate">X509Req</a></li>
+<li><a href="xmlattr.md.html" class="notranslate">XmlAttr</a></li>
+<li><a href="xmlcdatasection.md.html" class="notranslate">XmlCDATASection</a></li>
+<li><a href="xmlcharacterdata.md.html" class="notranslate">XmlCharacterData</a></li>
+<li><a href="xmlcomment.md.html" class="notranslate">XmlComment</a></li>
+<li><a href="xmldocument.md.html" class="notranslate">XmlDocument</a></li>
+<li><a href="xmldocumenttype.md.html" class="notranslate">XmlDocumentType</a></li>
+<li><a href="xmlelement.md.html" class="notranslate">XmlElement</a></li>
+<li><a href="xmlnamednodemap.md.html" class="notranslate">XmlNamedNodeMap</a></li>
+<li><a href="xmlnode.md.html" class="notranslate">XmlNode</a></li>
+<li><a href="xmlnodelist.md.html" class="notranslate">XmlNodeList</a></li>
+<li><a href="xmlprocessinginstruction.md.html" class="notranslate">XmlProcessingInstruction</a></li>
+<li><a href="xmltext.md.html" class="notranslate">XmlText</a></li>
+<li><a href="zipfile.md.html" class="notranslate">ZipFile</a></li>
+<li><a href="object.md.html" class="notranslate">object</a></li>
+</ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_awesome" aria-controls="collapse_awesome"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 社區模塊 </font></font></a></h4></div><div id="collapse_awesome" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="../../../awesome/module/fib-session.md.html" class="notranslate">fib-session</a></li>
+<li><a href="../../../awesome/module/fib-pool.md.html" class="notranslate">fib-pool</a></li>
+<li><a href="../../../awesome/module/fib-orm.md.html" class="notranslate">fib-orm</a></li>
+<li><a href="../../../awesome/module/fib-app.md.html" class="notranslate">fib-app</a></li>
+<li><a href="../../../awesome/module/fib-kv.md.html" class="notranslate">fib-kv</a></li>
+<li><a href="../../../awesome/module/fib-rpc.md.html" class="notranslate">fib-rpc</a></li>
+<li><a href="../../../awesome/module/fib-qr.md.html" class="notranslate">fib-qr</a></li>
+<li><a href="../../../awesome/module/fib-pug.md.html" class="notranslate">fib-pug</a></li>
+<li><a href="../../../awesome/module/ejs.md.html" class="notranslate">ejs</a></li>
+<li><a href="../../../awesome/module/juicer.md.html" class="notranslate">Juicer</a></li>
+<li><a href="../../../awesome/module/highlight.js.md.html" class="notranslate">highlight.js</a></li>
+<li><a href="../../../awesome/module/marked.md.html" class="notranslate">marked</a></li>
+<li><a href="../../../awesome/module/node-cron.md.html" class="notranslate">node-cron</a></li>
+<li><a href="../../../awesome/module/debug.md.html" class="notranslate">debug</a></li>
+<li><a href="../../../awesome/module/benchmark.js.md.html" class="notranslate">benchmark.js</a></li>
+<li><a href="../../../awesome/module/sinon.md.html" class="notranslate">sinon</a></li>
+<li><a href="../../../awesome/module/node-mime.md.html" class="notranslate">node-mime</a></li>
+<li><a href="../../../awesome/module/validatorjs.md.html" class="notranslate">validatorjs</a></li>
+<li><a href="../../../awesome/module/superstruct.md.html" class="notranslate">superstruct</a></li>
+<li><a href="../../../awesome/module/cluster-server.md.html" class="notranslate">cluster-server</a></li>
+<li><a href="../../../awesome/module/synaptic.md.html" class="notranslate">synaptic</a></li>
+<li><a href="../../../awesome/module/source-map.md.html" class="notranslate">source-map</a></li>
+<li><a href="../../../awesome/module/json-format.md.html" class="notranslate">json-format</a></li>
+<li><a href="../../../awesome/module/viz.js.md.html" class="notranslate">viz.js</a></li>
+<li><a href="../../../awesome/module/nomnoml.md.html" class="notranslate">nomnoml</a></li>
+<li><a href="../../../awesome/module/pegjs.md.html" class="notranslate">pegjs</a></li>
+<li><a href="../../../awesome/module/uglify-js.md.html" class="notranslate">uglify-js</a></li>
+<li><a href="../../../awesome/module/js-beautify.md.html" class="notranslate">js-beautify</a></li>
+<li><a href="../../../awesome/module/chalk-animation.md.html" class="notranslate">chalk-animation</a></li>
+<li><a href="../../../awesome/module/jsrsasign.md.html" class="notranslate">jsrsasign</a></li>
+<li><a href="../../../awesome/module/crypto-js.md.html" class="notranslate">crypto-js</a></li>
+<li><a href="../../../awesome/module/ascii-table.md.html" class="notranslate">ascii-table</a></li>
+<li><a href="../../../awesome/module/logstream.md.html" class="notranslate">logstream</a></li>
+<li><a href="../../../awesome/module/ci.md.html" class="notranslate">ci</a></li>
+<li><a href="../../../awesome/module/fs-readdir-recursive.md.html" class="notranslate">fs-readdir-recursive</a></li>
+<li><a href="../../../awesome/module/mkdirp.md.html" class="notranslate">mkdirp</a></li>
+<li><a href="../../../awesome/module/rmdirr.md.html" class="notranslate">rmdirr</a></li>
+<li><a href="../../../awesome/module/detect-port.md.html" class="notranslate">detect-port</a></li>
+<li><a href="../../../awesome/module/bitcoinjs-lib.md.html" class="notranslate">bitcoinjs-lib</a></li>
+<li><a href="../../../awesome/module/rakuten.md.html" class="notranslate">Rakuten</a></li>
+</ul>
+ </div></div></div>  </div></div><div class="content"><div class="social-share share-component" data-sites="weibo,twitter" data-description="分享"></div> <div name="对象-LruCache" data-unique="对象-LruCache"></div><h1 id="对象-LruCache"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">對象LruCache</font></font></h1>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">LRU(least recently used) 緩存對象</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">LruCache 用以維護一個LRU 緩存，創建方法：</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">var</span> util = <span class="hljs-built_in">require</span>(<span class="hljs-string">"util"</span>);
+<span class="hljs-keyword">var</span> c = <span class="hljs-keyword">new</span> util.LruCache(<span class="hljs-number">10</span>, <span class="hljs-number">100</span>);
+</code></pre>
+<div name="继承关系" data-unique="继承关系"></div><h2 id="继承关系"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">繼承關係</font></font></h2>
+<div class="dot notranslate">
+<!-- Generated by graphviz version 2.40.1 (20161225.0304)
+ -->
+<!-- Title: %0 Pages: 1 -->
+<svg width="127pt" height="555pt" viewBox="0.00 0.00 126.80 555.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 551)">
+<title>%0</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-551 122.801,-551 122.801,4 -4,4"></polygon>
+<!-- object -->
+<g id="node1" class="node">
+<title>object</title>
+<g id="a_node1"><a xlink:href="object.md.html" xlink:title="object">
+<polygon fill="#ffffff" stroke="#000000" points="30.569,-494.5 30.569,-546.5 88.232,-546.5 88.232,-494.5 30.569,-494.5"></polygon>
+<text text-anchor="middle" x="59.4005" y="-533.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
+<polyline fill="none" stroke="#000000" points="30.569,-526.5 88.232,-526.5 "></polyline>
+<text text-anchor="start" x="38.569" y="-513.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toString()</text>
+<text text-anchor="start" x="38.569" y="-501.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toJSON()</text>
+</a>
+</g>
+</g>
+<!-- EventEmitter -->
+<g id="node2" class="node">
+<title>EventEmitter</title>
+<g id="a_node2"><a xlink:href="eventemitter.md.html" xlink:title="EventEmitter">
+<polygon fill="#ffffff" stroke="#000000" points="0,-201.5 0,-457.5 118.801,-457.5 118.801,-201.5 0,-201.5"></polygon>
+<text text-anchor="middle" x="59.4005" y="-444.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">EventEmitter</text>
+<polyline fill="none" stroke="#000000" points="0,-437.5 118.801,-437.5 "></polyline>
+<text text-anchor="start" x="8" y="-424.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">new EventEmitter()</text>
+<polyline fill="none" stroke="#000000" points="0,-417.5 118.801,-417.5 "></polyline>
+<text text-anchor="start" x="8" y="-404.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">EventEmitter</text>
+<polyline fill="none" stroke="#000000" points="0,-397.5 118.801,-397.5 "></polyline>
+<text text-anchor="start" x="8" y="-384.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">defaultMaxListeners</text>
+<polyline fill="none" stroke="#000000" points="0,-377.5 118.801,-377.5 "></polyline>
+<text text-anchor="start" x="8" y="-364.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">on()</text>
+<text text-anchor="start" x="8" y="-352.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">addListener()</text>
+<text text-anchor="start" x="8" y="-340.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">prependListener()</text>
+<text text-anchor="start" x="8" y="-328.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">once()</text>
+<text text-anchor="start" x="8" y="-316.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">prependOnceListener()</text>
+<text text-anchor="start" x="8" y="-304.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">off()</text>
+<text text-anchor="start" x="8" y="-292.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">removeListener()</text>
+<text text-anchor="start" x="8" y="-280.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">removeAllListeners()</text>
+<text text-anchor="start" x="8" y="-268.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">setMaxListeners()</text>
+<text text-anchor="start" x="8" y="-256.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">getMaxListeners()</text>
+<text text-anchor="start" x="8" y="-244.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">listeners()</text>
+<text text-anchor="start" x="8" y="-232.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">listenerCount()</text>
+<text text-anchor="start" x="8" y="-220.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">eventNames()</text>
+<text text-anchor="start" x="8" y="-208.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">emit()</text>
+</a>
+</g>
+</g>
+<!-- object&#45;&gt;EventEmitter -->
+<g id="edge1" class="edge">
+<title>object-&gt;EventEmitter</title>
+<path fill="none" stroke="#000000" d="M59.4005,-484.2954C59.4005,-476.2131 59.4005,-467.1932 59.4005,-457.6815"></path>
+<polygon fill="#000000" stroke="#000000" points="55.9006,-484.3427 59.4005,-494.3427 62.9006,-484.3428 55.9006,-484.3427"></polygon>
+</g>
+<!-- LruCache -->
+<g id="me" class="node">
+<title>LruCache</title>
+<g id="a_me"><a xlink:title="LruCache">
+<polygon fill="#d3d3d3" stroke="#000000" points="15.842,-.5 15.842,-164.5 102.959,-164.5 102.959,-.5 15.842,-.5"></polygon>
+<text text-anchor="middle" x="59.4005" y="-151.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">LruCache</text>
+<polyline fill="none" stroke="#000000" points="15.842,-144.5 102.959,-144.5 "></polyline>
+<text text-anchor="start" x="23.842" y="-131.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">new LruCache()</text>
+<polyline fill="none" stroke="#000000" points="15.842,-124.5 102.959,-124.5 "></polyline>
+<text text-anchor="start" x="23.842" y="-111.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">size</text>
+<text text-anchor="start" x="23.842" y="-99.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">timeout</text>
+<text text-anchor="start" x="23.842" y="-87.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">onexpire</text>
+<polyline fill="none" stroke="#000000" points="15.842,-80.5 102.959,-80.5 "></polyline>
+<text text-anchor="start" x="23.842" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">clear()</text>
+<text text-anchor="start" x="23.842" y="-55.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">has()</text>
+<text text-anchor="start" x="23.842" y="-43.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">get()</text>
+<text text-anchor="start" x="23.842" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">set()</text>
+<text text-anchor="start" x="23.842" y="-19.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">remove()</text>
+<text text-anchor="start" x="23.842" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">isEmpty()</text>
+</a>
+</g>
+</g>
+<!-- EventEmitter&#45;&gt;LruCache -->
+<g id="edge2" class="edge">
+<title>EventEmitter-&gt;LruCache</title>
+<path fill="none" stroke="#000000" d="M59.4005,-191.1079C59.4005,-182.114 59.4005,-173.227 59.4005,-164.6415"></path>
+<polygon fill="#000000" stroke="#000000" points="55.9006,-191.2974 59.4005,-201.2974 62.9006,-191.2974 55.9006,-191.2974"></polygon>
+</g>
+</g>
+</svg>
+</div>
+
+<div name="构造函数" data-unique="构造函数"></div><h2 id="构造函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">構造函數</font></font></h2>
+<div name="LruCache" data-unique="LruCache"></div><h3 id="LruCache" class="notranslate">LruCache</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">LruCache 對象構造函數</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">new</span> LruCache(Integer size,<font></font>
+    Integer timeout = <span class="hljs-number">0</span>);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">調用參數:</font></font></p>
+<ul>
+<li><span class="notranslate">size</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Integer, 緩存最大尺寸</font></font></li>
+<li><span class="notranslate">timeout</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Integer, 元素失效時間，單位是ms，小於等於0 不失效，缺省為 0</font></font></li>
+</ul>
+<div name="静态属性" data-unique="静态属性"></div><h2 id="静态属性"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">靜態屬性</font></font></h2>
+<div name="defaultMaxListeners" data-unique="defaultMaxListeners"></div><h3 id="defaultMaxListeners" class="notranslate">defaultMaxListeners</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Integer, 默認全局最大監聽器數</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Integer LruCache.defaultMaxListeners;
+</code></pre>
+<div name="成员属性" data-unique="成员属性"></div><h2 id="成员属性"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">成員屬性</font></font></h2>
+<div name="size" data-unique="size"></div><h3 id="size" class="notranslate">size</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Integer, 查詢容器內數值個數</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly Integer LruCache.size;
+</code></pre>
+<hr>
+<div name="timeout" data-unique="timeout"></div><h3 id="timeout" class="notranslate">timeout</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Integer, 查詢和設置容器內元素失效時間，單位是ms，小於等於0 不失效</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer LruCache.timeout;
+</code></pre>
+<hr>
+<div name="onexpire" data-unique="onexpire"></div><h3 id="onexpire" class="notranslate">onexpire</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Function, 查詢和綁定數據超時事件，相當於on("expire", func);</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Function</span> LruCache.onexpire;
+</code></pre>
+<div name="成员函数" data-unique="成员函数"></div><h2 id="成员函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">成員函數</font></font></h2>
+<div name="clear" data-unique="clear"></div><h3 id="clear" class="notranslate">clear</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">清除容器數據</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>LruCache.clear();
+</code></pre>
+<hr>
+<div name="has" data-unique="has"></div><h3 id="has" class="notranslate">has</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">檢查容器內是否存在指定鍵值的數據</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Boolean</span> LruCache.has(<span class="hljs-built_in">String</span> name);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">調用參數:</font></font></p>
+<ul>
+<li><span class="notranslate">name</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, 指定要檢查的鍵值</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返回結果:</font></font></p>
+<ul>
+<li><span class="notranslate">Boolean</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 返回鍵值是否存在</font></font></li>
+</ul>
+<hr>
+<div name="get" data-unique="get"></div><h3 id="get" class="notranslate">get</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">查詢指定鍵值的值</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Value LruCache.get(<span class="hljs-built_in">String</span> name);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">調用參數:</font></font></p>
+<ul>
+<li><span class="notranslate">name</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, 指定要查詢的鍵值</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返回結果:</font></font></p>
+<ul>
+<li><span class="notranslate">Value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 返回鍵值所對應的值，若不存在，則返回undefined</font></font></li>
+</ul>
+<hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">查詢指定鍵值的值，若不存在或過期，則調用回調函數更新數據</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div>Value LruCache.get(<span class="hljs-built_in">String</span> name,
+    <span class="hljs-built_in">Function</span> updater);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">調用參數:</font></font></p>
+<ul>
+<li><span class="notranslate">name</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, 指定要查詢的鍵值</font></font></li>
+<li><span class="notranslate">updater</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Function, 指定更新函數</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返回結果:</font></font></p>
+<ul>
+<li><span class="notranslate">Value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 返回鍵值所對應的值</font></font></li>
+</ul>
+<hr>
+<div name="set" data-unique="set"></div><h3 id="set" class="notranslate">set</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">設定一個鍵值數據，鍵值不存在則插入一條新數據</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div>LruCache.set(<span class="hljs-built_in">String</span> name,<font></font>
+    Value value);<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">調用參數:</font></font></p>
+<ul>
+<li><span class="notranslate">name</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, 指定要設定的鍵值</font></font></li>
+<li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Value, 指定要設定的數據</font></font></li>
+</ul>
+<hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">設定一個鍵值數據，鍵值不存在則插入新數據</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>LruCache.set(<span class="hljs-built_in">Object</span> map);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">調用參數:</font></font></p>
+<ul>
+<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Object, 指定要設定的鍵值數據字典</font></font></li>
+</ul>
+<hr>
+<div name="remove" data-unique="remove"></div><h3 id="remove" class="notranslate">remove</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">刪除指定鍵值的全部值</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>LruCache.remove(<span class="hljs-built_in">String</span> name);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">調用參數:</font></font></p>
+<ul>
+<li><span class="notranslate">name</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, 指定要刪除的鍵值</font></font></li>
+</ul>
+<hr>
+<div name="isEmpty" data-unique="isEmpty"></div><h3 id="isEmpty" class="notranslate">isEmpty</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">檢查容器是否為空</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Boolean</span> LruCache.isEmpty();
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返回結果:</font></font></p>
+<ul>
+<li><span class="notranslate">Boolean</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 容器內無數值則返回true</font></font></li>
+</ul>
+<hr>
+<div name="on" data-unique="on"></div><h3 id="on" class="notranslate">on</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">綁定一個事件處理函數到對象</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-built_in">Object</span> LruCache.on(<span class="hljs-built_in">String</span> ev,
+    <span class="hljs-built_in">Function</span> func);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">調用參數:</font></font></p>
+<ul>
+<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, 指定事件的名稱</font></font></li>
+<li><span class="notranslate">func</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Function, 指定事件處理函數</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返回結果:</font></font></p>
+<ul>
+<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 返回事件對象本身，便於鍊式調用</font></font></li>
+</ul>
+<hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">綁定一個事件處理函數到對象</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> LruCache.on(<span class="hljs-built_in">Object</span> map);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">調用參數:</font></font></p>
+<ul>
+<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Object, 指定事件映射關係，對象屬性名稱將作為事件名稱，屬性的值將作為事件處理函數</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返回結果:</font></font></p>
+<ul>
+<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 返回事件對象本身，便於鍊式調用</font></font></li>
+</ul>
+<hr>
+<div name="addListener" data-unique="addListener"></div><h3 id="addListener" class="notranslate">addListener</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">綁定一個事件處理函數到對象</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-built_in">Object</span> LruCache.addListener(<span class="hljs-built_in">String</span> ev,
+    <span class="hljs-built_in">Function</span> func);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">調用參數:</font></font></p>
+<ul>
+<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, 指定事件的名稱</font></font></li>
+<li><span class="notranslate">func</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Function, 指定事件處理函數</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返回結果:</font></font></p>
+<ul>
+<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 返回事件對象本身，便於鍊式調用</font></font></li>
+</ul>
+<hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">綁定一個事件處理函數到對象</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> LruCache.addListener(<span class="hljs-built_in">Object</span> map);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">調用參數:</font></font></p>
+<ul>
+<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Object, 指定事件映射關係，對象屬性名稱將作為事件名稱，屬性的值將作為事件處理函數</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返回結果:</font></font></p>
+<ul>
+<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 返回事件對象本身，便於鍊式調用</font></font></li>
+</ul>
+<hr>
+<div name="prependListener" data-unique="prependListener"></div><h3 id="prependListener" class="notranslate">prependListener</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">綁定一個事件處理函數到對象起始</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-built_in">Object</span> LruCache.prependListener(<span class="hljs-built_in">String</span> ev,
+    <span class="hljs-built_in">Function</span> func);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">調用參數:</font></font></p>
+<ul>
+<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, 指定事件的名稱</font></font></li>
+<li><span class="notranslate">func</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Function, 指定事件處理函數</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返回結果:</font></font></p>
+<ul>
+<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 返回事件對象本身，便於鍊式調用</font></font></li>
+</ul>
+<hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">綁定一個事件處理函數到對象起始</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> LruCache.prependListener(<span class="hljs-built_in">Object</span> map);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">調用參數:</font></font></p>
+<ul>
+<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Object, 指定事件映射關係，對象屬性名稱將作為事件名稱，屬性的值將作為事件處理函數</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返回結果:</font></font></p>
+<ul>
+<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 返回事件對象本身，便於鍊式調用</font></font></li>
+</ul>
+<hr>
+<div name="once" data-unique="once"></div><h3 id="once" class="notranslate">once</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">綁定一個一次性事件處理函數到對象，一次性處理函數只會觸發一次</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-built_in">Object</span> LruCache.once(<span class="hljs-built_in">String</span> ev,
+    <span class="hljs-built_in">Function</span> func);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">調用參數:</font></font></p>
+<ul>
+<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, 指定事件的名稱</font></font></li>
+<li><span class="notranslate">func</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Function, 指定事件處理函數</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返回結果:</font></font></p>
+<ul>
+<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 返回事件對象本身，便於鍊式調用</font></font></li>
+</ul>
+<hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">綁定一個一次性事件處理函數到對象，一次性處理函數只會觸發一次</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> LruCache.once(<span class="hljs-built_in">Object</span> map);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">調用參數:</font></font></p>
+<ul>
+<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Object, 指定事件映射關係，對象屬性名稱將作為事件名稱，屬性的值將作為事件處理函數</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返回結果:</font></font></p>
+<ul>
+<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 返回事件對象本身，便於鍊式調用</font></font></li>
+</ul>
+<hr>
+<div name="prependOnceListener" data-unique="prependOnceListener"></div><h3 id="prependOnceListener" class="notranslate">prependOnceListener</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">綁定一個事件處理函數到對象起始</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-built_in">Object</span> LruCache.prependOnceListener(<span class="hljs-built_in">String</span> ev,
+    <span class="hljs-built_in">Function</span> func);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">調用參數:</font></font></p>
+<ul>
+<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, 指定事件的名稱</font></font></li>
+<li><span class="notranslate">func</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Function, 指定事件處理函數</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返回結果:</font></font></p>
+<ul>
+<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 返回事件對象本身，便於鍊式調用</font></font></li>
+</ul>
+<hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">綁定一個事件處理函數到對象起始</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> LruCache.prependOnceListener(<span class="hljs-built_in">Object</span> map);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">調用參數:</font></font></p>
+<ul>
+<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Object, 指定事件映射關係，對象屬性名稱將作為事件名稱，屬性的值將作為事件處理函數</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返回結果:</font></font></p>
+<ul>
+<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 返回事件對象本身，便於鍊式調用</font></font></li>
+</ul>
+<hr>
+<div name="off" data-unique="off"></div><h3 id="off" class="notranslate">off</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">從對象處理隊列中取消指定函數</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-built_in">Object</span> LruCache.off(<span class="hljs-built_in">String</span> ev,
+    <span class="hljs-built_in">Function</span> func);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">調用參數:</font></font></p>
+<ul>
+<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, 指定事件的名稱</font></font></li>
+<li><span class="notranslate">func</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Function, 指定事件處理函數</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返回結果:</font></font></p>
+<ul>
+<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 返回事件對象本身，便於鍊式調用</font></font></li>
+</ul>
+<hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">取消對象處理隊列中的全部函數</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> LruCache.off(<span class="hljs-built_in">String</span> ev);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">調用參數:</font></font></p>
+<ul>
+<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, 指定事件的名稱</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返回結果:</font></font></p>
+<ul>
+<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 返回事件對象本身，便於鍊式調用</font></font></li>
+</ul>
+<hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">從對象處理隊列中取消指定函數</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> LruCache.off(<span class="hljs-built_in">Object</span> map);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">調用參數:</font></font></p>
+<ul>
+<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Object, 指定事件映射關係，對象屬性名稱作為事件名稱，屬性的值作為事件處理函數</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返回結果:</font></font></p>
+<ul>
+<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 返回事件對象本身，便於鍊式調用</font></font></li>
+</ul>
+<hr>
+<div name="removeListener" data-unique="removeListener"></div><h3 id="removeListener" class="notranslate">removeListener</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">從對象處理隊列中取消指定函數</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-built_in">Object</span> LruCache.removeListener(<span class="hljs-built_in">String</span> ev,
+    <span class="hljs-built_in">Function</span> func);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">調用參數:</font></font></p>
+<ul>
+<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, 指定事件的名稱</font></font></li>
+<li><span class="notranslate">func</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Function, 指定事件處理函數</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返回結果:</font></font></p>
+<ul>
+<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 返回事件對象本身，便於鍊式調用</font></font></li>
+</ul>
+<hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">取消對象處理隊列中的全部函數</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> LruCache.removeListener(<span class="hljs-built_in">String</span> ev);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">調用參數:</font></font></p>
+<ul>
+<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, 指定事件的名稱</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返回結果:</font></font></p>
+<ul>
+<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 返回事件對象本身，便於鍊式調用</font></font></li>
+</ul>
+<hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">從對象處理隊列中取消指定函數</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> LruCache.removeListener(<span class="hljs-built_in">Object</span> map);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">調用參數:</font></font></p>
+<ul>
+<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Object, 指定事件映射關係，對象屬性名稱作為事件名稱，屬性的值作為事件處理函數</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返回結果:</font></font></p>
+<ul>
+<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 返回事件對象本身，便於鍊式調用</font></font></li>
+</ul>
+<hr>
+<div name="removeAllListeners" data-unique="removeAllListeners"></div><h3 id="removeAllListeners" class="notranslate">removeAllListeners</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">從對象處理隊列中取消所有事件的所有監聽器， 如果指定事件，則移除指定事件的所有監聽器。</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> LruCache.removeAllListeners(<span class="hljs-built_in">Array</span> evs = []);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">調用參數:</font></font></p>
+<ul>
+<li><span class="notranslate">evs</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Array, 指定事件的名稱</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返回結果:</font></font></p>
+<ul>
+<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 返回事件對象本身，便於鍊式調用</font></font></li>
+</ul>
+<hr>
+<div name="setMaxListeners" data-unique="setMaxListeners"></div><h3 id="setMaxListeners" class="notranslate">setMaxListeners</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">監聽器的默認限制的數量，僅用於兼容</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>LruCache.setMaxListeners(Integer n);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">調用參數:</font></font></p>
+<ul>
+<li><span class="notranslate">n</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Integer, 指定事件的數量</font></font></li>
+</ul>
+<hr>
+<div name="getMaxListeners" data-unique="getMaxListeners"></div><h3 id="getMaxListeners" class="notranslate">getMaxListeners</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">獲取監聽器的默認限制的數量，僅用於兼容</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer LruCache.getMaxListeners();
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返回結果:</font></font></p>
+<ul>
+<li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 返回默認限制數量</font></font></li>
+</ul>
+<hr>
+<div name="listeners" data-unique="listeners"></div><h3 id="listeners" class="notranslate">listeners</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">查詢對象指定事件的監聽器數組</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Array</span> LruCache.listeners(<span class="hljs-built_in">String</span> ev);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">調用參數:</font></font></p>
+<ul>
+<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, 指定事件的名稱</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返回結果:</font></font></p>
+<ul>
+<li><span class="notranslate">Array</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 返回指定事件的監聽器數組</font></font></li>
+</ul>
+<hr>
+<div name="listenerCount" data-unique="listenerCount"></div><h3 id="listenerCount" class="notranslate">listenerCount</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">查詢對象指定事件的監聽器數量</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer LruCache.listenerCount(<span class="hljs-built_in">String</span> ev);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">調用參數:</font></font></p>
+<ul>
+<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, 指定事件的名稱</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返回結果:</font></font></p>
+<ul>
+<li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 返回指定事件的監聽器數量</font></font></li>
+</ul>
+<hr>
+<div name="eventNames" data-unique="eventNames"></div><h3 id="eventNames" class="notranslate">eventNames</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">查詢監聽器事件名稱</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Array</span> LruCache.eventNames();
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返回結果:</font></font></p>
+<ul>
+<li><span class="notranslate">Array</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 返回事件名稱數組</font></font></li>
+</ul>
+<hr>
+<div name="emit" data-unique="emit"></div><h3 id="emit" class="notranslate">emit</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">主動觸發一個事件</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-built_in">Boolean</span> LruCache.emit(<span class="hljs-built_in">String</span> ev,<font></font>
+    ...args);<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">調用參數:</font></font></p>
+<ul>
+<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, 事件名稱</font></font></li>
+<li><span class="notranslate">args</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: ..., 事件參數，將會傳遞給事件處理函數</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返回結果:</font></font></p>
+<ul>
+<li><span class="notranslate">Boolean</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 返回事件觸發狀態，有響應事件返回true，否則返回false</font></font></li>
+</ul>
+<hr>
+<div name="toString" data-unique="toString"></div><h3 id="toString" class="notranslate">toString</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返回對象的字符串表示，一般返回"[Native Object]"，對象可以根據自己的特性重新實現</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> LruCache.toString();
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返回結果:</font></font></p>
+<ul>
+<li><span class="notranslate">String</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 返回對象的字符串表示</font></font></li>
+</ul>
+<hr>
+<div name="toJSON" data-unique="toJSON"></div><h3 id="toJSON" class="notranslate">toJSON</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返回對象的JSON 格式表示，一般返回對象定義的可讀屬性集合</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Value LruCache.toJSON(<span class="hljs-built_in">String</span> key = <span class="hljs-string">""</span>);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">調用參數:</font></font></p>
+<ul>
+<li><span class="notranslate">key</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, 未使用</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返回結果:</font></font></p>
+<ul>
+<li><span class="notranslate">Value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 返回包含可JSON 序列化的值</font></font></li>
+</ul>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org |</font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持我們</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip454337"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip454337" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Click to return on the top page</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>

@@ -1,0 +1,430 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../../imgs/icon.png"><title>EJS - JavaScript on Fiber</title><link href="../../../../css/common.css" rel="stylesheet"><link href="../../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Toggle navigation</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../../index.html"><img src="../../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../../index.html">HOME</a></li><li><a href="../../guide/readme.md.html">GUIDE</a></li><li><a href="../../manual/module/readme.md.html">MODULE</a></li><li><a href="../../manual/object/readme.md.html">OBJECT</a></li><li><a href="../readme.md.html">AWESOME</a></li><li><a href="../../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../../docs/awesome/module/ejs.md.html">中文</a> <a href="../../../../ca/docs/awesome/module/ejs.md.html">Catalan</a> <a href="../../../../de/docs/awesome/module/ejs.md.html">Deutsch</a> <a href="../../../../en/docs/awesome/module/ejs.md.html">English</a> <a href="../../../../es/docs/awesome/module/ejs.md.html">Español</a> <a href="../../../../fr/docs/awesome/module/ejs.md.html">Français</a> <a href="../../../../gl/docs/awesome/module/ejs.md.html">Galego</a> <a href="../../../../it/docs/awesome/module/ejs.md.html">Italiano</a> <a href="../../../../ru/docs/awesome/module/ejs.md.html">Русский</a> <a href="../../../../ja/docs/awesome/module/ejs.md.html">日本語</a> <a href="../../../../ko/docs/awesome/module/ejs.md.html">한국어</a> <a href="../../../../zh-tw/docs/awesome/module/ejs.md.html">繁體中文</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Awesome 社區模塊 </font></font></span><div class="search"><span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input type="text" class="searchbox ds-input" placeholder="Search" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-label="search input" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Avenir, &quot;Segoe UI&quot;, Arial, &quot;Hiragino Sans GB&quot;, 冬青黑, &quot;Microsoft YaHei&quot;, 微软雅黑, SimSun, 宋体, Helvetica, Tahoma, &quot;Arial sans-serif&quot;; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div class="ds-dataset-1"></div></span></span></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">首頁</font></font></a></li><li><a href="../readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 社區模塊 </font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> EJS </font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 開髮指南 </font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="../../guide/about.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs 是什麼？</font></font></a></li>
+<li><a href="../../guide/install.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">安裝運行環境</font></font></a></li>
+<li><a href="../../guide/hello.md.html" class="notranslate">hello, world</a></li>
+<li><a href="../../guide/test.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">美好生活從測試開始</font></font></a></li>
+<li><a href="../../guide/profiler.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">找出性能殺手</font></font></a></li>
+<li><a href="../../guide/desktop.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">快速開發桌面應用</font></font></a></li>
+<li><a href="../../guide/server-hot-update.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">服務端模塊熱更新</font></font></a></li>
+<li><a href="../../guide/host-routes.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">域名路由</font></font></a></li>
+<li><a href="../../guide/x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs 中X509 證書的使用</font></font></a></li>
+<li><a href="../../guide/contribute.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">添加native 模塊</font></font></a></li>
+</ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_module" aria-controls="collapse_module"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 基礎模塊 </font></font></a></h4></div><div id="collapse_module" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="../../manual/module/ifs/assert.md.html" class="notranslate">assert</a></li>
+<li><a href="../../manual/module/ifs/base32.md.html" class="notranslate">base32</a></li>
+<li><a href="../../manual/module/ifs/base64.md.html" class="notranslate">base64</a></li>
+<li><a href="../../manual/module/ifs/base64vlq.md.html" class="notranslate">base64vlq</a></li>
+<li><a href="../../manual/module/ifs/bson.md.html" class="notranslate">bson</a></li>
+<li><a href="../../manual/module/ifs/child_process.md.html" class="notranslate">child_process</a></li>
+<li><a href="../../manual/module/ifs/console.md.html" class="notranslate">console</a></li>
+<li><a href="../../manual/module/ifs/constants.md.html" class="notranslate">constants</a></li>
+<li><a href="../../manual/module/ifs/coroutine.md.html" class="notranslate">coroutine</a></li>
+<li><a href="../../manual/module/ifs/crypto.md.html" class="notranslate">crypto</a></li>
+<li><a href="../../manual/module/ifs/db.md.html" class="notranslate">db</a></li>
+<li><a href="../../manual/module/ifs/dgram.md.html" class="notranslate">dgram</a></li>
+<li><a href="../../manual/module/ifs/dns.md.html" class="notranslate">dns</a></li>
+<li><a href="../../manual/module/ifs/encoding.md.html" class="notranslate">encoding</a></li>
+<li><a href="../../manual/module/ifs/fs.md.html" class="notranslate">fs</a></li>
+<li><a href="../../manual/module/ifs/gd.md.html" class="notranslate">gd</a></li>
+<li><a href="../../manual/module/ifs/global.md.html" class="notranslate">global</a></li>
+<li><a href="../../manual/module/ifs/gui.md.html" class="notranslate">gui</a></li>
+<li><a href="../../manual/module/ifs/hash.md.html" class="notranslate">hash</a></li>
+<li><a href="../../manual/module/ifs/hex.md.html" class="notranslate">hex</a></li>
+<li><a href="../../manual/module/ifs/http.md.html" class="notranslate">http</a></li>
+<li><a href="../../manual/module/ifs/iconv.md.html" class="notranslate">iconv</a></li>
+<li><a href="../../manual/module/ifs/io.md.html" class="notranslate">io</a></li>
+<li><a href="../../manual/module/ifs/json.md.html" class="notranslate">json</a></li>
+<li><a href="../../manual/module/ifs/mq.md.html" class="notranslate">mq</a></li>
+<li><a href="../../manual/module/ifs/msgpack.md.html" class="notranslate">msgpack</a></li>
+<li><a href="../../manual/module/ifs/net.md.html" class="notranslate">net</a></li>
+<li><a href="../../manual/module/ifs/os.md.html" class="notranslate">os</a></li>
+<li><a href="../../manual/module/ifs/path.md.html" class="notranslate">path</a></li>
+<li><a href="../../manual/module/ifs/path_posix.md.html" class="notranslate">path_posix</a></li>
+<li><a href="../../manual/module/ifs/path_win32.md.html" class="notranslate">path_win32</a></li>
+<li><a href="../../manual/module/ifs/process.md.html" class="notranslate">process</a></li>
+<li><a href="../../manual/module/ifs/profiler.md.html" class="notranslate">profiler</a></li>
+<li><a href="../../manual/module/ifs/punycode.md.html" class="notranslate">punycode</a></li>
+<li><a href="../../manual/module/ifs/querystring.md.html" class="notranslate">querystring</a></li>
+<li><a href="../../manual/module/ifs/registry.md.html" class="notranslate">registry</a></li>
+<li><a href="../../manual/module/ifs/ssl.md.html" class="notranslate">ssl</a></li>
+<li><a href="../../manual/module/ifs/string_decoder.md.html" class="notranslate">string_decoder</a></li>
+<li><a href="../../manual/module/ifs/test.md.html" class="notranslate">test</a></li>
+<li><a href="../../manual/module/ifs/timers.md.html" class="notranslate">timers</a></li>
+<li><a href="../../manual/module/ifs/tty.md.html" class="notranslate">tty</a></li>
+<li><a href="../../manual/module/ifs/url.md.html" class="notranslate">url</a></li>
+<li><a href="../../manual/module/ifs/util.md.html" class="notranslate">util</a></li>
+<li><a href="../../manual/module/ifs/uuid.md.html" class="notranslate">uuid</a></li>
+<li><a href="../../manual/module/ifs/vm.md.html" class="notranslate">vm</a></li>
+<li><a href="../../manual/module/ifs/ws.md.html" class="notranslate">ws</a></li>
+<li><a href="../../manual/module/ifs/xml.md.html" class="notranslate">xml</a></li>
+<li><a href="../../manual/module/ifs/zip.md.html" class="notranslate">zip</a></li>
+<li><a href="../../manual/module/ifs/zlib.md.html" class="notranslate">zlib</a></li>
+</ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_object" aria-controls="collapse_object"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 內置對象 </font></font></a></h4></div><div id="collapse_object" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="../../manual/object/ifs/buffer.md.html" class="notranslate">Buffer</a></li>
+<li><a href="../../manual/object/ifs/bufferedstream.md.html" class="notranslate">BufferedStream</a></li>
+<li><a href="../../manual/object/ifs/chain.md.html" class="notranslate">Chain</a></li>
+<li><a href="../../manual/object/ifs/childprocess.md.html" class="notranslate">ChildProcess</a></li>
+<li><a href="../../manual/object/ifs/cipher.md.html" class="notranslate">Cipher</a></li>
+<li><a href="../../manual/object/ifs/condition.md.html" class="notranslate">Condition</a></li>
+<li><a href="../../manual/object/ifs/dbconnection.md.html" class="notranslate">DbConnection</a></li>
+<li><a href="../../manual/object/ifs/dgramsocket.md.html" class="notranslate">DgramSocket</a></li>
+<li><a href="../../manual/object/ifs/digest.md.html" class="notranslate">Digest</a></li>
+<li><a href="../../manual/object/ifs/event.md.html" class="notranslate">Event</a></li>
+<li><a href="../../manual/object/ifs/eventemitter.md.html" class="notranslate">EventEmitter</a></li>
+<li><a href="../../manual/object/ifs/fswatcher.md.html" class="notranslate">FSWatcher</a></li>
+<li><a href="../../manual/object/ifs/fiber.md.html" class="notranslate">Fiber</a></li>
+<li><a href="../../manual/object/ifs/file.md.html" class="notranslate">File</a></li>
+<li><a href="../../manual/object/ifs/handler.md.html" class="notranslate">Handler</a></li>
+<li><a href="../../manual/object/ifs/heapgraphedge.md.html" class="notranslate">HeapGraphEdge</a></li>
+<li><a href="../../manual/object/ifs/heapgraphnode.md.html" class="notranslate">HeapGraphNode</a></li>
+<li><a href="../../manual/object/ifs/heapsnapshot.md.html" class="notranslate">HeapSnapshot</a></li>
+<li><a href="../../manual/object/ifs/httpclient.md.html" class="notranslate">HttpClient</a></li>
+<li><a href="../../manual/object/ifs/httpcollection.md.html" class="notranslate">HttpCollection</a></li>
+<li><a href="../../manual/object/ifs/httpcookie.md.html" class="notranslate">HttpCookie</a></li>
+<li><a href="../../manual/object/ifs/httphandler.md.html" class="notranslate">HttpHandler</a></li>
+<li><a href="../../manual/object/ifs/httpmessage.md.html" class="notranslate">HttpMessage</a></li>
+<li><a href="../../manual/object/ifs/httprepeater.md.html" class="notranslate">HttpRepeater</a></li>
+<li><a href="../../manual/object/ifs/httprequest.md.html" class="notranslate">HttpRequest</a></li>
+<li><a href="../../manual/object/ifs/httpresponse.md.html" class="notranslate">HttpResponse</a></li>
+<li><a href="../../manual/object/ifs/httpserver.md.html" class="notranslate">HttpServer</a></li>
+<li><a href="../../manual/object/ifs/httpuploaddata.md.html" class="notranslate">HttpUploadData</a></li>
+<li><a href="../../manual/object/ifs/httpsserver.md.html" class="notranslate">HttpsServer</a></li>
+<li><a href="../../manual/object/ifs/image.md.html" class="notranslate">Image</a></li>
+<li><a href="../../manual/object/ifs/leveldb.md.html" class="notranslate">LevelDB</a></li>
+<li><a href="../../manual/object/ifs/lock.md.html" class="notranslate">Lock</a></li>
+<li><a href="../../manual/object/ifs/lrucache.md.html" class="notranslate">LruCache</a></li>
+<li><a href="../../manual/object/ifs/mssql.md.html" class="notranslate">MSSQL</a></li>
+<li><a href="../../manual/object/ifs/memorystream.md.html" class="notranslate">MemoryStream</a></li>
+<li><a href="../../manual/object/ifs/message.md.html" class="notranslate">Message</a></li>
+<li><a href="../../manual/object/ifs/mongocollection.md.html" class="notranslate">MongoCollection</a></li>
+<li><a href="../../manual/object/ifs/mongocursor.md.html" class="notranslate">MongoCursor</a></li>
+<li><a href="../../manual/object/ifs/mongodb.md.html" class="notranslate">MongoDB</a></li>
+<li><a href="../../manual/object/ifs/mongoid.md.html" class="notranslate">MongoID</a></li>
+<li><a href="../../manual/object/ifs/mysql.md.html" class="notranslate">MySQL</a></li>
+<li><a href="../../manual/object/ifs/pkey.md.html" class="notranslate">PKey</a></li>
+<li><a href="../../manual/object/ifs/rangestream.md.html" class="notranslate">RangeStream</a></li>
+<li><a href="../../manual/object/ifs/redis.md.html" class="notranslate">Redis</a></li>
+<li><a href="../../manual/object/ifs/redishash.md.html" class="notranslate">RedisHash</a></li>
+<li><a href="../../manual/object/ifs/redislist.md.html" class="notranslate">RedisList</a></li>
+<li><a href="../../manual/object/ifs/redisset.md.html" class="notranslate">RedisSet</a></li>
+<li><a href="../../manual/object/ifs/redissortedset.md.html" class="notranslate">RedisSortedSet</a></li>
+<li><a href="../../manual/object/ifs/routing.md.html" class="notranslate">Routing</a></li>
+<li><a href="../../manual/object/ifs/sqlite.md.html" class="notranslate">SQLite</a></li>
+<li><a href="../../manual/object/ifs/sandbox.md.html" class="notranslate">SandBox</a></li>
+<li><a href="../../manual/object/ifs/seekablestream.md.html" class="notranslate">SeekableStream</a></li>
+<li><a href="../../manual/object/ifs/semaphore.md.html" class="notranslate">Semaphore</a></li>
+<li><a href="../../manual/object/ifs/service.md.html" class="notranslate">Service</a></li>
+<li><a href="../../manual/object/ifs/smtp.md.html" class="notranslate">Smtp</a></li>
+<li><a href="../../manual/object/ifs/socket.md.html" class="notranslate">Socket</a></li>
+<li><a href="../../manual/object/ifs/sslhandler.md.html" class="notranslate">SslHandler</a></li>
+<li><a href="../../manual/object/ifs/sslserver.md.html" class="notranslate">SslServer</a></li>
+<li><a href="../../manual/object/ifs/sslsocket.md.html" class="notranslate">SslSocket</a></li>
+<li><a href="../../manual/object/ifs/stat.md.html" class="notranslate">Stat</a></li>
+<li><a href="../../manual/object/ifs/statswatcher.md.html" class="notranslate">StatsWatcher</a></li>
+<li><a href="../../manual/object/ifs/stream.md.html" class="notranslate">Stream</a></li>
+<li><a href="../../manual/object/ifs/stringdecoder.md.html" class="notranslate">StringDecoder</a></li>
+<li><a href="../../manual/object/ifs/tcpserver.md.html" class="notranslate">TcpServer</a></li>
+<li><a href="../../manual/object/ifs/timer.md.html" class="notranslate">Timer</a></li>
+<li><a href="../../manual/object/ifs/urlobject.md.html" class="notranslate">UrlObject</a></li>
+<li><a href="../../manual/object/ifs/websocket.md.html" class="notranslate">WebSocket</a></li>
+<li><a href="../../manual/object/ifs/websocketmessage.md.html" class="notranslate">WebSocketMessage</a></li>
+<li><a href="../../manual/object/ifs/webview.md.html" class="notranslate">WebView</a></li>
+<li><a href="../../manual/object/ifs/worker.md.html" class="notranslate">Worker</a></li>
+<li><a href="../../manual/object/ifs/x509cert.md.html" class="notranslate">X509Cert</a></li>
+<li><a href="../../manual/object/ifs/x509crl.md.html" class="notranslate">X509Crl</a></li>
+<li><a href="../../manual/object/ifs/x509req.md.html" class="notranslate">X509Req</a></li>
+<li><a href="../../manual/object/ifs/xmlattr.md.html" class="notranslate">XmlAttr</a></li>
+<li><a href="../../manual/object/ifs/xmlcdatasection.md.html" class="notranslate">XmlCDATASection</a></li>
+<li><a href="../../manual/object/ifs/xmlcharacterdata.md.html" class="notranslate">XmlCharacterData</a></li>
+<li><a href="../../manual/object/ifs/xmlcomment.md.html" class="notranslate">XmlComment</a></li>
+<li><a href="../../manual/object/ifs/xmldocument.md.html" class="notranslate">XmlDocument</a></li>
+<li><a href="../../manual/object/ifs/xmldocumenttype.md.html" class="notranslate">XmlDocumentType</a></li>
+<li><a href="../../manual/object/ifs/xmlelement.md.html" class="notranslate">XmlElement</a></li>
+<li><a href="../../manual/object/ifs/xmlnamednodemap.md.html" class="notranslate">XmlNamedNodeMap</a></li>
+<li><a href="../../manual/object/ifs/xmlnode.md.html" class="notranslate">XmlNode</a></li>
+<li><a href="../../manual/object/ifs/xmlnodelist.md.html" class="notranslate">XmlNodeList</a></li>
+<li><a href="../../manual/object/ifs/xmlprocessinginstruction.md.html" class="notranslate">XmlProcessingInstruction</a></li>
+<li><a href="../../manual/object/ifs/xmltext.md.html" class="notranslate">XmlText</a></li>
+<li><a href="../../manual/object/ifs/zipfile.md.html" class="notranslate">ZipFile</a></li>
+<li><a href="../../manual/object/ifs/object.md.html" class="notranslate">object</a></li>
+</ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_awesome" aria-controls="collapse_awesome"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 社區模塊 </font></font></a></h4></div><div id="collapse_awesome" class="panel-collapse collapse in" aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="fib-session.md.html" class="notranslate">fib-session</a></li>
+<li><a href="fib-pool.md.html" class="notranslate">fib-pool</a></li>
+<li><a href="fib-orm.md.html" class="notranslate">fib-orm</a></li>
+<li><a href="fib-app.md.html" class="notranslate">fib-app</a></li>
+<li><a href="fib-kv.md.html" class="notranslate">fib-kv</a></li>
+<li><a href="fib-rpc.md.html" class="notranslate">fib-rpc</a></li>
+<li><a href="fib-qr.md.html" class="notranslate">fib-qr</a></li>
+<li><a href="fib-pug.md.html" class="notranslate">fib-pug</a></li>
+<li class="active"><a href="ejs.md.html" class="notranslate">ejs</a></li>
+<li><a href="juicer.md.html" class="notranslate">Juicer</a></li>
+<li><a href="highlight.js.md.html" class="notranslate">highlight.js</a></li>
+<li><a href="marked.md.html" class="notranslate">marked</a></li>
+<li><a href="node-cron.md.html" class="notranslate">node-cron</a></li>
+<li><a href="debug.md.html" class="notranslate">debug</a></li>
+<li><a href="benchmark.js.md.html" class="notranslate">benchmark.js</a></li>
+<li><a href="sinon.md.html" class="notranslate">sinon</a></li>
+<li><a href="node-mime.md.html" class="notranslate">node-mime</a></li>
+<li><a href="validatorjs.md.html" class="notranslate">validatorjs</a></li>
+<li><a href="superstruct.md.html" class="notranslate">superstruct</a></li>
+<li><a href="cluster-server.md.html" class="notranslate">cluster-server</a></li>
+<li><a href="synaptic.md.html" class="notranslate">synaptic</a></li>
+<li><a href="source-map.md.html" class="notranslate">source-map</a></li>
+<li><a href="json-format.md.html" class="notranslate">json-format</a></li>
+<li><a href="viz.js.md.html" class="notranslate">viz.js</a></li>
+<li><a href="nomnoml.md.html" class="notranslate">nomnoml</a></li>
+<li><a href="pegjs.md.html" class="notranslate">pegjs</a></li>
+<li><a href="uglify-js.md.html" class="notranslate">uglify-js</a></li>
+<li><a href="js-beautify.md.html" class="notranslate">js-beautify</a></li>
+<li><a href="chalk-animation.md.html" class="notranslate">chalk-animation</a></li>
+<li><a href="jsrsasign.md.html" class="notranslate">jsrsasign</a></li>
+<li><a href="crypto-js.md.html" class="notranslate">crypto-js</a></li>
+<li><a href="ascii-table.md.html" class="notranslate">ascii-table</a></li>
+<li><a href="logstream.md.html" class="notranslate">logstream</a></li>
+<li><a href="ci.md.html" class="notranslate">ci</a></li>
+<li><a href="fs-readdir-recursive.md.html" class="notranslate">fs-readdir-recursive</a></li>
+<li><a href="mkdirp.md.html" class="notranslate">mkdirp</a></li>
+<li><a href="rmdirr.md.html" class="notranslate">rmdirr</a></li>
+<li><a href="detect-port.md.html" class="notranslate">detect-port</a></li>
+<li><a href="bitcoinjs-lib.md.html" class="notranslate">bitcoinjs-lib</a></li>
+<li><a href="rakuten.md.html" class="notranslate">Rakuten</a></li>
+</ul>
+ </div></div></div>  </div></div><div class="content"><div class="social-share share-component" data-sites="weibo,twitter" data-description="分享"></div> <div name="EJS" data-unique="EJS"></div><h1 id="EJS"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">EJS</font></font></h1>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Embedded JavaScript templates</font></font></p>
+<p><a href="https://travis-ci.org/mde/ejs"><img src="https://img.shields.io/travis/mde/ejs/master.svg?style=flat" alt="Build Status"></a>
+<a href="https://david-dm.org/mde/ejs?type=dev"><img src="https://img.shields.io/david/dev/mde/ejs.svg?style=flat" alt="Developing Dependencies"></a>
+<a href="https://snyk.io/test/npm/ejs"><img src="https://snyk.io/test/npm/ejs/badge.svg?style=flat-square" alt="Known Vulnerabilities"></a></p>
+<div name="Installation" data-unique="Installation"></div><h2 id="Installation"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Installation</font></font></h2>
+<pre><code class="lang-bash"><div class="line-numbers">1</div>$ npm install ejs
+</code></pre>
+<div name="Features" data-unique="Features"></div><h2 id="Features"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Features</font></font></h2>
+<ul>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Control flow with </font></font><code>&lt;% %&gt;</code></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Escaped output with </font></font><code>&lt;%= %&gt;</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(escape function configurable)</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Unescaped raw output with </font></font><code>&lt;%- %&gt;</code></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Newline-trim mode ('newline slurping') with </font></font><code>-%&gt;</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ending tag</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Whitespace-trim mode (slurp all whitespace) for control flow with </font></font><code>&lt;%_ _%&gt;</code></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Custom delimiters (eg, use </font></font><code>&lt;? ?&gt;</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">instead of </font></font><code>&lt;% %&gt;</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">)</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Includes</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Client-side support</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Static caching of intermediate JavaScript</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Static caching of templates</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Complies with the </font></font><a href="http://expressjs.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Express</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> view system</font></font></li>
+</ul>
+<div name="Example" data-unique="Example"></div><h2 id="Example"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Example</font></font></h2>
+<pre><code class="lang-html"><div class="line-numbers">1
+2
+3</div><span class="hljs-tag">&lt;<span class="hljs-name">%</span> <span class="hljs-attr">if</span> (<span class="hljs-attr">user</span>) { %&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">%=</span> <span class="hljs-attr">user.name</span> %&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">%</span> } %&gt;</span>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Try EJS online at: </font></font><a href="https://ionicabizau.github.io/ejs-playground/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">https://ionicabizau.github.io/ejs-playground/</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> .</font></font></p>
+<div name="Usage" data-unique="Usage"></div><h2 id="Usage"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Usage</font></font></h2>
+<pre><code class="lang-javascript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10</div><span class="hljs-keyword">let</span> template = ejs.compile(str, options);<font></font>
+template(data);<font></font>
+<span class="hljs-comment">// =&gt; Rendered HTML string</span><font></font>
+<font></font>
+ejs.render(str, data, options);<font></font>
+<span class="hljs-comment">// =&gt; Rendered HTML string</span><font></font>
+<font></font>
+ejs.renderFile(filename, data, options, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err, str</span>)</span>{
+    <span class="hljs-comment">// str =&gt; Rendered HTML string</span><font></font>
+});<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">It is also possible to use </font></font><code>ejs.render(dataAndOptions);</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">where you pass everything in a single object. In that case, you'll end up with local variables for all the passed options. However, be aware that your code could break if we add an option with the same name as one of your data object's properties. Therefore, we do not recommend using this shortcut.</font></font></p>
+<div name="Options" data-unique="Options"></div><h2 id="Options"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Options</font></font></h2>
+<ul>
+<li><code>cache</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">                 Compiled functions are cached, requires </font></font><code>filename</code></li>
+<li><code>filename</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">              The name of the file being rendered. Not required if you are using </font></font><code>renderFile()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">. Used by </font></font><code>cache</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">to key caches, and for includes.</font></font></li>
+<li><code>root</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">                  Set project root for includes with an absolute path (/file.ejs).</font></font></li>
+<li><code>context</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">               Function execution context</font></font></li>
+<li><code>compileDebug</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">          When </font></font><code>false</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">no debug instrumentation is compiled</font></font></li>
+<li><code>client</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">                When </font></font><code>true</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, compiles a function that can be rendered in the browser without needing to load the EJS Runtime ( </font></font><a href="https://github.com/mde/ejs/releases/latest"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ejs.min.js</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> ).</font></font></li>
+<li><code>delimiter</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">             Character to use with angle brackets for open/close</font></font></li>
+<li><code>debug</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">                 Output generated function body</font></font></li>
+<li><code>strict</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">                When set to </font></font><code>true</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, generated function is in strict mode</font></font></li>
+<li><code>_with</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">                 Whether or not to use </font></font><code>with() {}</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">constructs. If </font></font><code>false</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">then the locals will be stored in the </font></font><code>locals</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">object. Set to </font></font><code>false</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">in strict mode.</font></font></li>
+<li><code>localsName</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">            Name to use for the object storing local variables when not using </font></font><code>with</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Defaults to</font></font><code>locals</code></li>
+<li><code>rmWhitespace</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">          Remove all safe-to-remove whitespace, including leading and trailing whitespace. It also enables a safer version of </font></font><code>-%&gt;</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">line slurping for all scriptlet tags (it does not strip new lines of tags in the middle of a line).</font></font></li>
+<li><code>escape</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">                The escaping function used with </font></font><code>&lt;%=</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">construct. It is used in rendering and is </font></font><code>.toString()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ed in the generation of client functions. (By default escapes XML).</font></font></li>
+<li><code>outputFunctionName</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">    Set to a string (eg, 'echo' or 'print') for a function to print output inside scriptlet tags.</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">This project uses </font></font><a href="http://usejsdoc.org/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">JSDoc</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> . For the full public API documentation, clone the repository and run </font></font><code>npm run doc</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">. This will run JSDoc with the proper options and output the documentation to </font></font><code>out/</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">. If you want the both the public &amp; private API docs, run </font></font><code>npm run devdoc</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">instead.</font></font></p>
+<div name="Tags" data-unique="Tags"></div><h2 id="Tags"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Tags</font></font></h2>
+<ul>
+<li><code>&lt;%</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">              'Scriptlet' tag, for control-flow, no output</font></font></li>
+<li><code>&lt;%_</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">             'Whitespace Slurping' Scriptlet tag, strips all whitespace before it</font></font></li>
+<li><code>&lt;%=</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">             Outputs the value into the template (escaped)</font></font></li>
+<li><code>&lt;%-</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">             Outputs the unescaped value into the template</font></font></li>
+<li><code>&lt;%#</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">             Comment tag, no execution, no output</font></font></li>
+<li><code>&lt;%%</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">             Outputs a literal '&lt;%'</font></font></li>
+<li><code>%%&gt;</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">             Outputs a literal '%&gt;'</font></font></li>
+<li><code>%&gt;</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">              Plain ending tag</font></font></li>
+<li><code>-%&gt;</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">             Trim-mode ('newline slurp') tag, trims following newline</font></font></li>
+<li><code>_%&gt;</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">             'Whitespace Slurping' ending tag, removes all whitespace after it</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">For the full syntax documentation, please see </font></font><a href="https://github.com/mde/ejs/blob/master/docs/syntax.md" class="notranslate">docs/syntax.md</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">.</font></font></p>
+<div name="Includes" data-unique="Includes"></div><h2 id="Includes"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Includes</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Includes either have to be an absolute path, or, if not, are assumed as relative to the template with the </font></font><code>include</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">call. For example if you are including </font></font><code>./views/user/show.ejs</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">from </font></font><code>./views/users.ejs</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">you would use </font></font><code>&lt;%- include('user/show') %&gt;</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">You must specify the </font></font><code>filename</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">option for the template with the </font></font><code>include</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+call unless you are using </font></font><code>renderFile()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">You'll likely want to use the raw output tag ( </font></font><code>&lt;%-</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">) with your include to avoid double-escaping the HTML output.</font></font></p>
+<pre><code class="lang-html"><div class="line-numbers">1
+2
+3
+4
+5</div><span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">%</span> <span class="hljs-attr">users.forEach</span>(<span class="hljs-attr">function</span>(<span class="hljs-attr">user</span>){ %&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">%-</span> <span class="hljs-attr">include</span>('<span class="hljs-attr">user</span>/<span class="hljs-attr">show</span>', {<span class="hljs-attr">user:</span> <span class="hljs-attr">user</span>}) %&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">%</span> }); %&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Includes are inserted at runtime, so you can use variables for the path in the
+ </font></font><code>include</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">call (for example </font></font><code>&lt;%- include(somePath) %&gt;</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">). Variables in your top-level data object are available to all your includes, but local variables need to be passed down.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">NOTE: Include preprocessor directives ( </font></font><code>&lt;% include user/show %&gt;</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">) are still supported.</font></font></p>
+<div name="Custom-delimiters" data-unique="Custom-delimiters"></div><h2 id="Custom-delimiters"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Custom delimiters</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Custom delimiters can be applied on a per-template basis, or globally:</font></font></p>
+<pre><code class="lang-javascript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11</div><span class="hljs-keyword">let</span> ejs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'ejs'</span>),<font></font>
+    users = [<span class="hljs-string">'geddy'</span>, <span class="hljs-string">'neil'</span>, <span class="hljs-string">'alex'</span>];<font></font>
+<font></font>
+<span class="hljs-comment">// Just one template</span>
+ejs.render(<span class="hljs-string">'&lt;?= users.join(" | "); ?&gt;'</span>, {<span class="hljs-attr">users</span>: users}, {<span class="hljs-attr">delimiter</span>: <span class="hljs-string">'?'</span>});
+<span class="hljs-comment">// =&gt; 'geddy | neil | alex'</span><font></font>
+<font></font>
+<span class="hljs-comment">// Or globally</span>
+ejs.delimiter = <span class="hljs-string">'$'</span>;<font></font>
+ejs.render(<span class="hljs-string">'&lt;$= users.join(" | "); $&gt;'</span>, {<span class="hljs-attr">users</span>: users});
+<span class="hljs-comment">// =&gt; 'geddy | neil | alex'</span>
+</code></pre>
+<div name="Caching" data-unique="Caching"></div><h2 id="Caching"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Caching</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">EJS ships with a basic in-process cache for caching the intermediate JavaScript functions used to render templates. It's easy to plug in LRU caching using Node's </font></font><code>lru-cache</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">library:</font></font></p>
+<pre><code class="lang-javascript"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">let</span> ejs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'ejs'</span>),<font></font>
+    LRU = <span class="hljs-built_in">require</span>(<span class="hljs-string">'lru-cache'</span>);<font></font>
+ejs.cache = LRU(<span class="hljs-number">100</span>); <span class="hljs-comment">// LRU cache with 100-item limit</span>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">If you want to clear the EJS cache, call </font></font><code>ejs.clearCache</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">. If you're using the LRU cache and need a different limit, simple reset </font></font><code>ejs.cache</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">to a new instance of the LRU.</font></font></p>
+<div name="Custom-file-loader" data-unique="Custom-file-loader"></div><h2 id="Custom-file-loader"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Custom file loader</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">The default file loader is </font></font><code>fs.readFileSync</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, if you want to customize it, you can set ejs.fileLoader.</font></font></p>
+<pre><code class="lang-javascript"><div class="line-numbers">1
+2
+3
+4
+5
+6</div><span class="hljs-keyword">let</span> ejs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'ejs'</span>);
+<span class="hljs-keyword">let</span> myFileLoad = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">filePath</span>) </span>{
+  <span class="hljs-keyword">return</span> <span class="hljs-string">'myFileLoad: '</span> + fs.readFileSync(filePath);<font></font>
+};<font></font>
+<font></font>
+ejs.fileLoader = myFileLoad;<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">With this feature, you can preprocess the template before reading it.</font></font></p>
+<div name="Layouts" data-unique="Layouts"></div><h2 id="Layouts"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Layouts</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">EJS does not specifically support blocks, but layouts can be implemented by including headers and footers, like so:</font></font></p>
+<pre><code class="lang-html"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8</div><span class="hljs-tag">&lt;<span class="hljs-name">%-</span> <span class="hljs-attr">include</span>('<span class="hljs-attr">header</span>') <span class="hljs-attr">-</span>%&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span><font></font>
+  Title<font></font>
+<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span><font></font>
+  My page<font></font>
+<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">%-</span> <span class="hljs-attr">include</span>('<span class="hljs-attr">footer</span>') <span class="hljs-attr">-</span>%&gt;</span>
+</code></pre>
+<div name="Client-side-support" data-unique="Client-side-support"></div><h2 id="Client-side-support"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Client-side support</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Go to the </font></font><a href="https://github.com/mde/ejs/releases/latest"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Latest Release</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> , download
+ </font></font><code>./ejs.js</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">or </font></font><code>./ejs.min.js</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">. Alternately, you can compile it yourself by cloning the repository and running </font></font><code>jake build</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(or </font></font><code>$(npm bin)/jake build</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">if jake is not installed globally).</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Include one of these files on your page, and </font></font><code>ejs</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">should be available globally.</font></font></p>
+<div name="Example13" data-unique="Example13"></div><h3 id="Example" class="notranslate">Example</h3>
+<pre><code class="lang-html"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10</div><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"output"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"ejs.min.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
+  <span class="hljs-keyword">let</span> people = [<span class="hljs-string">'geddy'</span>, <span class="hljs-string">'neil'</span>, <span class="hljs-string">'alex'</span>],
+      html = ejs.render(<span class="hljs-string">'&lt;%= people.join(", "); %&gt;'</span>, {<span class="hljs-attr">people</span>: people});
+  <span class="hljs-comment">// With jQuery:</span>
+  $(<span class="hljs-string">'#output'</span>).html(html);
+  <span class="hljs-comment">// Vanilla JS:</span>
+  <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'output'</span>).innerHTML = html;
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+</code></pre>
+<div name="Caveats" data-unique="Caveats"></div><h3 id="Caveats" class="notranslate">Caveats</h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Most of EJS will work as expected; however, there are a few things to note:</font></font></p>
+<ol>
+<li><span class="notranslate">Obviously</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, since you do not have access to the filesystem, </font></font><code>ejs.renderFile()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">won't work.</font></font></li>
+<li><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">For the same reason, </font></font><code>include</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">s do not work unless you use an </font></font><code>include callback</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">. Here is an example:</font></font></p>
+<pre><code class="lang-javascript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9</div><span class="hljs-keyword">let</span> str = <span class="hljs-string">"Hello &lt;%= include('file', {person: 'John'}); %&gt;"</span>,<font></font>
+   fn = ejs.compile(str, {<span class="hljs-attr">client</span>: <span class="hljs-literal">true</span>});<font></font>
+<font></font>
+fn(data, <span class="hljs-literal">null</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">path, d</span>)</span>{ <span class="hljs-comment">// include callback</span>
+ <span class="hljs-comment">// path -&gt; 'file'</span>
+ <span class="hljs-comment">// d -&gt; {person: 'John'}</span>
+ <span class="hljs-comment">// Put your code here</span>
+ <span class="hljs-comment">// Return the contents of file as a string</span>
+}); <span class="hljs-comment">// returns rendered string</span>
+</code></pre>
+</li>
+</ol>
+<div name="IDE-Integration-with-Syntax-Highlighting" data-unique="IDE-Integration-with-Syntax-Highlighting"></div><h3 id="IDE-Integration-with-Syntax-Highlighting" class="notranslate">IDE Integration with Syntax Highlighting</h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">VSCode:Javascript EJS by </font></font><em><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">DigitalBrainstem</font></font></em></p>
+<div name="Related-projects" data-unique="Related-projects"></div><h2 id="Related-projects"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Related projects</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">There are a number of implementations of EJS:</font></font></p>
+<ul>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">TJ's implementation, the v1 of this library: </font></font><a href="https://github.com/tj/ejs"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">https://github.com/tj/ejs</font></font></a></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Jupiter Consulting's EJS: </font></font><a href="http://www.embeddedjs.com/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">http://www.embeddedjs.com/</font></font></a></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">EJS Embedded JavaScript Framework on Google Code: </font></font><a href="https://code.google.com/p/embeddedjavascript/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">https://code.google.com/p/embeddedjavascript/</font></font></a></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sam Stephenson's Ruby implementation: </font></font><a href="https://rubygems.org/gems/ejs"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">https://rubygems.org/gems/ejs</font></font></a></li>
+<li><span class="notranslate">Erubis</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, an ERB implementation which also runs JavaScript: </font></font><a href="http://www.kuwata-lab.com/erubis/users-guide.04.html#lang-javascript"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">http://www.kuwata-lab.com/erubis/users-guide.04.html#lang-javascript</font></font></a></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">DigitalBrainstem EJS Language support: </font></font><a href="https://github.com/Digitalbrainstem/ejs-grammar"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">https://github.com/Digitalbrainstem/ejs-grammar</font></font></a></li>
+</ul>
+<div name="License" data-unique="License"></div><h2 id="License"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">License</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Licensed under the Apache License, Version 2.0 ( </font></font><a href="http://www.apache.org/licenses/LICENSE-2.0"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">http://www.apache.org/licenses/LICENSE-2.0</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> )</font></font></p>
+<hr>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">EJS Embedded JavaScript templates copyright 2112
+ </font></font><a href="mailto:mde@fleegix.org"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">mde@fleegix.org</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> .</font></font></p>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org |</font></font><a href="../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持我們</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip916518"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip916518" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Click to return on the top page</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../js/common.js"></script><script type="text/javascript" src="../../../../js/docs.js"></script></body></html>

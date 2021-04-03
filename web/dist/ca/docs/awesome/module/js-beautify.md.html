@@ -1,0 +1,603 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../../imgs/icon.png"><title>JS Beautifier-JavaScript sobre fibra</title><link href="../../../../css/common.css" rel="stylesheet"><link href="../../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Commuta la navegació</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../../index.html"><img src="../../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../../index.html">HOME</a></li><li><a href="../../guide/readme.md.html">GUIDE</a></li><li><a href="../../manual/module/readme.md.html">MODULE</a></li><li><a href="../../manual/object/readme.md.html">OBJECT</a></li><li><a href="../readme.md.html">AWESOME</a></li><li><a href="../../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../../docs/awesome/module/js-beautify.md.html">中文</a> <a href="../../../../ca/docs/awesome/module/js-beautify.md.html">Catalan</a> <a href="../../../../de/docs/awesome/module/js-beautify.md.html">Deutsch</a> <a href="../../../../en/docs/awesome/module/js-beautify.md.html">English</a> <a href="../../../../es/docs/awesome/module/js-beautify.md.html">Español</a> <a href="../../../../fr/docs/awesome/module/js-beautify.md.html">Français</a> <a href="../../../../gl/docs/awesome/module/js-beautify.md.html">Galego</a> <a href="../../../../it/docs/awesome/module/js-beautify.md.html">Italiano</a> <a href="../../../../ru/docs/awesome/module/js-beautify.md.html">Русский</a> <a href="../../../../ja/docs/awesome/module/js-beautify.md.html">日本語</a> <a href="../../../../ko/docs/awesome/module/js-beautify.md.html">한국어</a> <a href="../../../../zh-tw/docs/awesome/module/js-beautify.md.html">繁體中文</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Mòdul de comunitat impressionant </font></font></span><div class="search"><span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input type="text" class="searchbox ds-input" placeholder="Cerca" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-label="entrada de cerca" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Avenir, &quot;Segoe UI&quot;, Arial, &quot;Hiragino Sans GB&quot;, 冬青黑, &quot;Microsoft YaHei&quot;, 微软雅黑, SimSun, 宋体, Helvetica, Tahoma, &quot;Arial sans-serif&quot;; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div class="ds-dataset-1"></div></span></span></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Pàgina inicial</font></font></a></li><li><a href="../readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Mòdul de comunitat </font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> JS Embellidor </font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Guia de desenvolupament </font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="../../guide/about.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Què és fibjs?</font></font></a></li>
+<li><a href="../../guide/install.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Instal·lació i entorn operatiu</font></font></a></li>
+<li><a href="../../guide/hello.md.html" class="notranslate">hello, world</a></li>
+<li><a href="../../guide/test.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Una bona vida comença amb la prova</font></font></a></li>
+<li><a href="../../guide/profiler.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Troba l'assassí del rendiment</font></font></a></li>
+<li><a href="../../guide/desktop.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Desenvolupeu ràpidament aplicacions d'escriptori</font></font></a></li>
+<li><a href="../../guide/server-hot-update.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Actualització actualitzada del mòdul de servidor</font></font></a></li>
+<li><a href="../../guide/host-routes.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Encaminament de noms de domini</font></font></a></li>
+<li><a href="../../guide/x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ús del certificat X509 a fibjs</font></font></a></li>
+<li><a href="../../guide/contribute.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Afegeix un mòdul natiu</font></font></a></li>
+</ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_module" aria-controls="collapse_module"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Mòdul bàsic </font></font></a></h4></div><div id="collapse_module" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="../../manual/module/ifs/assert.md.html" class="notranslate">assert</a></li>
+<li><a href="../../manual/module/ifs/base32.md.html" class="notranslate">base32</a></li>
+<li><a href="../../manual/module/ifs/base64.md.html" class="notranslate">base64</a></li>
+<li><a href="../../manual/module/ifs/base64vlq.md.html" class="notranslate">base64vlq</a></li>
+<li><a href="../../manual/module/ifs/bson.md.html" class="notranslate">bson</a></li>
+<li><a href="../../manual/module/ifs/child_process.md.html" class="notranslate">child_process</a></li>
+<li><a href="../../manual/module/ifs/console.md.html" class="notranslate">console</a></li>
+<li><a href="../../manual/module/ifs/constants.md.html" class="notranslate">constants</a></li>
+<li><a href="../../manual/module/ifs/coroutine.md.html" class="notranslate">coroutine</a></li>
+<li><a href="../../manual/module/ifs/crypto.md.html" class="notranslate">crypto</a></li>
+<li><a href="../../manual/module/ifs/db.md.html" class="notranslate">db</a></li>
+<li><a href="../../manual/module/ifs/dgram.md.html" class="notranslate">dgram</a></li>
+<li><a href="../../manual/module/ifs/dns.md.html" class="notranslate">dns</a></li>
+<li><a href="../../manual/module/ifs/encoding.md.html" class="notranslate">encoding</a></li>
+<li><a href="../../manual/module/ifs/fs.md.html" class="notranslate">fs</a></li>
+<li><a href="../../manual/module/ifs/gd.md.html" class="notranslate">gd</a></li>
+<li><a href="../../manual/module/ifs/global.md.html" class="notranslate">global</a></li>
+<li><a href="../../manual/module/ifs/gui.md.html" class="notranslate">gui</a></li>
+<li><a href="../../manual/module/ifs/hash.md.html" class="notranslate">hash</a></li>
+<li><a href="../../manual/module/ifs/hex.md.html" class="notranslate">hex</a></li>
+<li><a href="../../manual/module/ifs/http.md.html" class="notranslate">http</a></li>
+<li><a href="../../manual/module/ifs/iconv.md.html" class="notranslate">iconv</a></li>
+<li><a href="../../manual/module/ifs/io.md.html" class="notranslate">io</a></li>
+<li><a href="../../manual/module/ifs/json.md.html" class="notranslate">json</a></li>
+<li><a href="../../manual/module/ifs/mq.md.html" class="notranslate">mq</a></li>
+<li><a href="../../manual/module/ifs/msgpack.md.html" class="notranslate">msgpack</a></li>
+<li><a href="../../manual/module/ifs/net.md.html" class="notranslate">net</a></li>
+<li><a href="../../manual/module/ifs/os.md.html" class="notranslate">os</a></li>
+<li><a href="../../manual/module/ifs/path.md.html" class="notranslate">path</a></li>
+<li><a href="../../manual/module/ifs/path_posix.md.html" class="notranslate">path_posix</a></li>
+<li><a href="../../manual/module/ifs/path_win32.md.html" class="notranslate">path_win32</a></li>
+<li><a href="../../manual/module/ifs/process.md.html" class="notranslate">process</a></li>
+<li><a href="../../manual/module/ifs/profiler.md.html" class="notranslate">profiler</a></li>
+<li><a href="../../manual/module/ifs/punycode.md.html" class="notranslate">punycode</a></li>
+<li><a href="../../manual/module/ifs/querystring.md.html" class="notranslate">querystring</a></li>
+<li><a href="../../manual/module/ifs/registry.md.html" class="notranslate">registry</a></li>
+<li><a href="../../manual/module/ifs/ssl.md.html" class="notranslate">ssl</a></li>
+<li><a href="../../manual/module/ifs/string_decoder.md.html" class="notranslate">string_decoder</a></li>
+<li><a href="../../manual/module/ifs/test.md.html" class="notranslate">test</a></li>
+<li><a href="../../manual/module/ifs/timers.md.html" class="notranslate">timers</a></li>
+<li><a href="../../manual/module/ifs/tty.md.html" class="notranslate">tty</a></li>
+<li><a href="../../manual/module/ifs/url.md.html" class="notranslate">url</a></li>
+<li><a href="../../manual/module/ifs/util.md.html" class="notranslate">util</a></li>
+<li><a href="../../manual/module/ifs/uuid.md.html" class="notranslate">uuid</a></li>
+<li><a href="../../manual/module/ifs/vm.md.html" class="notranslate">vm</a></li>
+<li><a href="../../manual/module/ifs/ws.md.html" class="notranslate">ws</a></li>
+<li><a href="../../manual/module/ifs/xml.md.html" class="notranslate">xml</a></li>
+<li><a href="../../manual/module/ifs/zip.md.html" class="notranslate">zip</a></li>
+<li><a href="../../manual/module/ifs/zlib.md.html" class="notranslate">zlib</a></li>
+</ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_object" aria-controls="collapse_object"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Objectes incorporats </font></font></a></h4></div><div id="collapse_object" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="../../manual/object/ifs/buffer.md.html" class="notranslate">Buffer</a></li>
+<li><a href="../../manual/object/ifs/bufferedstream.md.html" class="notranslate">BufferedStream</a></li>
+<li><a href="../../manual/object/ifs/chain.md.html" class="notranslate">Chain</a></li>
+<li><a href="../../manual/object/ifs/childprocess.md.html" class="notranslate">ChildProcess</a></li>
+<li><a href="../../manual/object/ifs/cipher.md.html" class="notranslate">Cipher</a></li>
+<li><a href="../../manual/object/ifs/condition.md.html" class="notranslate">Condition</a></li>
+<li><a href="../../manual/object/ifs/dbconnection.md.html" class="notranslate">DbConnection</a></li>
+<li><a href="../../manual/object/ifs/dgramsocket.md.html" class="notranslate">DgramSocket</a></li>
+<li><a href="../../manual/object/ifs/digest.md.html" class="notranslate">Digest</a></li>
+<li><a href="../../manual/object/ifs/event.md.html" class="notranslate">Event</a></li>
+<li><a href="../../manual/object/ifs/eventemitter.md.html" class="notranslate">EventEmitter</a></li>
+<li><a href="../../manual/object/ifs/fswatcher.md.html" class="notranslate">FSWatcher</a></li>
+<li><a href="../../manual/object/ifs/fiber.md.html" class="notranslate">Fiber</a></li>
+<li><a href="../../manual/object/ifs/file.md.html" class="notranslate">File</a></li>
+<li><a href="../../manual/object/ifs/handler.md.html" class="notranslate">Handler</a></li>
+<li><a href="../../manual/object/ifs/heapgraphedge.md.html" class="notranslate">HeapGraphEdge</a></li>
+<li><a href="../../manual/object/ifs/heapgraphnode.md.html" class="notranslate">HeapGraphNode</a></li>
+<li><a href="../../manual/object/ifs/heapsnapshot.md.html" class="notranslate">HeapSnapshot</a></li>
+<li><a href="../../manual/object/ifs/httpclient.md.html" class="notranslate">HttpClient</a></li>
+<li><a href="../../manual/object/ifs/httpcollection.md.html" class="notranslate">HttpCollection</a></li>
+<li><a href="../../manual/object/ifs/httpcookie.md.html" class="notranslate">HttpCookie</a></li>
+<li><a href="../../manual/object/ifs/httphandler.md.html" class="notranslate">HttpHandler</a></li>
+<li><a href="../../manual/object/ifs/httpmessage.md.html" class="notranslate">HttpMessage</a></li>
+<li><a href="../../manual/object/ifs/httprepeater.md.html" class="notranslate">HttpRepeater</a></li>
+<li><a href="../../manual/object/ifs/httprequest.md.html" class="notranslate">HttpRequest</a></li>
+<li><a href="../../manual/object/ifs/httpresponse.md.html" class="notranslate">HttpResponse</a></li>
+<li><a href="../../manual/object/ifs/httpserver.md.html" class="notranslate">HttpServer</a></li>
+<li><a href="../../manual/object/ifs/httpuploaddata.md.html" class="notranslate">HttpUploadData</a></li>
+<li><a href="../../manual/object/ifs/httpsserver.md.html" class="notranslate">HttpsServer</a></li>
+<li><a href="../../manual/object/ifs/image.md.html" class="notranslate">Image</a></li>
+<li><a href="../../manual/object/ifs/leveldb.md.html" class="notranslate">LevelDB</a></li>
+<li><a href="../../manual/object/ifs/lock.md.html" class="notranslate">Lock</a></li>
+<li><a href="../../manual/object/ifs/lrucache.md.html" class="notranslate">LruCache</a></li>
+<li><a href="../../manual/object/ifs/mssql.md.html" class="notranslate">MSSQL</a></li>
+<li><a href="../../manual/object/ifs/memorystream.md.html" class="notranslate">MemoryStream</a></li>
+<li><a href="../../manual/object/ifs/message.md.html" class="notranslate">Message</a></li>
+<li><a href="../../manual/object/ifs/mongocollection.md.html" class="notranslate">MongoCollection</a></li>
+<li><a href="../../manual/object/ifs/mongocursor.md.html" class="notranslate">MongoCursor</a></li>
+<li><a href="../../manual/object/ifs/mongodb.md.html" class="notranslate">MongoDB</a></li>
+<li><a href="../../manual/object/ifs/mongoid.md.html" class="notranslate">MongoID</a></li>
+<li><a href="../../manual/object/ifs/mysql.md.html" class="notranslate">MySQL</a></li>
+<li><a href="../../manual/object/ifs/pkey.md.html" class="notranslate">PKey</a></li>
+<li><a href="../../manual/object/ifs/rangestream.md.html" class="notranslate">RangeStream</a></li>
+<li><a href="../../manual/object/ifs/redis.md.html" class="notranslate">Redis</a></li>
+<li><a href="../../manual/object/ifs/redishash.md.html" class="notranslate">RedisHash</a></li>
+<li><a href="../../manual/object/ifs/redislist.md.html" class="notranslate">RedisList</a></li>
+<li><a href="../../manual/object/ifs/redisset.md.html" class="notranslate">RedisSet</a></li>
+<li><a href="../../manual/object/ifs/redissortedset.md.html" class="notranslate">RedisSortedSet</a></li>
+<li><a href="../../manual/object/ifs/routing.md.html" class="notranslate">Routing</a></li>
+<li><a href="../../manual/object/ifs/sqlite.md.html" class="notranslate">SQLite</a></li>
+<li><a href="../../manual/object/ifs/sandbox.md.html" class="notranslate">SandBox</a></li>
+<li><a href="../../manual/object/ifs/seekablestream.md.html" class="notranslate">SeekableStream</a></li>
+<li><a href="../../manual/object/ifs/semaphore.md.html" class="notranslate">Semaphore</a></li>
+<li><a href="../../manual/object/ifs/service.md.html" class="notranslate">Service</a></li>
+<li><a href="../../manual/object/ifs/smtp.md.html" class="notranslate">Smtp</a></li>
+<li><a href="../../manual/object/ifs/socket.md.html" class="notranslate">Socket</a></li>
+<li><a href="../../manual/object/ifs/sslhandler.md.html" class="notranslate">SslHandler</a></li>
+<li><a href="../../manual/object/ifs/sslserver.md.html" class="notranslate">SslServer</a></li>
+<li><a href="../../manual/object/ifs/sslsocket.md.html" class="notranslate">SslSocket</a></li>
+<li><a href="../../manual/object/ifs/stat.md.html" class="notranslate">Stat</a></li>
+<li><a href="../../manual/object/ifs/statswatcher.md.html" class="notranslate">StatsWatcher</a></li>
+<li><a href="../../manual/object/ifs/stream.md.html" class="notranslate">Stream</a></li>
+<li><a href="../../manual/object/ifs/stringdecoder.md.html" class="notranslate">StringDecoder</a></li>
+<li><a href="../../manual/object/ifs/tcpserver.md.html" class="notranslate">TcpServer</a></li>
+<li><a href="../../manual/object/ifs/timer.md.html" class="notranslate">Timer</a></li>
+<li><a href="../../manual/object/ifs/urlobject.md.html" class="notranslate">UrlObject</a></li>
+<li><a href="../../manual/object/ifs/websocket.md.html" class="notranslate">WebSocket</a></li>
+<li><a href="../../manual/object/ifs/websocketmessage.md.html" class="notranslate">WebSocketMessage</a></li>
+<li><a href="../../manual/object/ifs/webview.md.html" class="notranslate">WebView</a></li>
+<li><a href="../../manual/object/ifs/worker.md.html" class="notranslate">Worker</a></li>
+<li><a href="../../manual/object/ifs/x509cert.md.html" class="notranslate">X509Cert</a></li>
+<li><a href="../../manual/object/ifs/x509crl.md.html" class="notranslate">X509Crl</a></li>
+<li><a href="../../manual/object/ifs/x509req.md.html" class="notranslate">X509Req</a></li>
+<li><a href="../../manual/object/ifs/xmlattr.md.html" class="notranslate">XmlAttr</a></li>
+<li><a href="../../manual/object/ifs/xmlcdatasection.md.html" class="notranslate">XmlCDATASection</a></li>
+<li><a href="../../manual/object/ifs/xmlcharacterdata.md.html" class="notranslate">XmlCharacterData</a></li>
+<li><a href="../../manual/object/ifs/xmlcomment.md.html" class="notranslate">XmlComment</a></li>
+<li><a href="../../manual/object/ifs/xmldocument.md.html" class="notranslate">XmlDocument</a></li>
+<li><a href="../../manual/object/ifs/xmldocumenttype.md.html" class="notranslate">XmlDocumentType</a></li>
+<li><a href="../../manual/object/ifs/xmlelement.md.html" class="notranslate">XmlElement</a></li>
+<li><a href="../../manual/object/ifs/xmlnamednodemap.md.html" class="notranslate">XmlNamedNodeMap</a></li>
+<li><a href="../../manual/object/ifs/xmlnode.md.html" class="notranslate">XmlNode</a></li>
+<li><a href="../../manual/object/ifs/xmlnodelist.md.html" class="notranslate">XmlNodeList</a></li>
+<li><a href="../../manual/object/ifs/xmlprocessinginstruction.md.html" class="notranslate">XmlProcessingInstruction</a></li>
+<li><a href="../../manual/object/ifs/xmltext.md.html" class="notranslate">XmlText</a></li>
+<li><a href="../../manual/object/ifs/zipfile.md.html" class="notranslate">ZipFile</a></li>
+<li><a href="../../manual/object/ifs/object.md.html" class="notranslate">object</a></li>
+</ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_awesome" aria-controls="collapse_awesome"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Mòdul de comunitat </font></font></a></h4></div><div id="collapse_awesome" class="panel-collapse collapse in" aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="fib-session.md.html" class="notranslate">fib-session</a></li>
+<li><a href="fib-pool.md.html" class="notranslate">fib-pool</a></li>
+<li><a href="fib-orm.md.html" class="notranslate">fib-orm</a></li>
+<li><a href="fib-app.md.html" class="notranslate">fib-app</a></li>
+<li><a href="fib-kv.md.html" class="notranslate">fib-kv</a></li>
+<li><a href="fib-rpc.md.html" class="notranslate">fib-rpc</a></li>
+<li><a href="fib-qr.md.html" class="notranslate">fib-qr</a></li>
+<li><a href="fib-pug.md.html" class="notranslate">fib-pug</a></li>
+<li><a href="ejs.md.html" class="notranslate">ejs</a></li>
+<li><a href="juicer.md.html" class="notranslate">Juicer</a></li>
+<li><a href="highlight.js.md.html" class="notranslate">highlight.js</a></li>
+<li><a href="marked.md.html" class="notranslate">marked</a></li>
+<li><a href="node-cron.md.html" class="notranslate">node-cron</a></li>
+<li><a href="debug.md.html" class="notranslate">debug</a></li>
+<li><a href="benchmark.js.md.html" class="notranslate">benchmark.js</a></li>
+<li><a href="sinon.md.html" class="notranslate">sinon</a></li>
+<li><a href="node-mime.md.html" class="notranslate">node-mime</a></li>
+<li><a href="validatorjs.md.html" class="notranslate">validatorjs</a></li>
+<li><a href="superstruct.md.html" class="notranslate">superstruct</a></li>
+<li><a href="cluster-server.md.html" class="notranslate">cluster-server</a></li>
+<li><a href="synaptic.md.html" class="notranslate">synaptic</a></li>
+<li><a href="source-map.md.html" class="notranslate">source-map</a></li>
+<li><a href="json-format.md.html" class="notranslate">json-format</a></li>
+<li><a href="viz.js.md.html" class="notranslate">viz.js</a></li>
+<li><a href="nomnoml.md.html" class="notranslate">nomnoml</a></li>
+<li><a href="pegjs.md.html" class="notranslate">pegjs</a></li>
+<li><a href="uglify-js.md.html" class="notranslate">uglify-js</a></li>
+<li class="active"><a href="js-beautify.md.html" class="notranslate">js-beautify</a></li>
+<li><a href="chalk-animation.md.html" class="notranslate">chalk-animation</a></li>
+<li><a href="jsrsasign.md.html" class="notranslate">jsrsasign</a></li>
+<li><a href="crypto-js.md.html" class="notranslate">crypto-js</a></li>
+<li><a href="ascii-table.md.html" class="notranslate">ascii-table</a></li>
+<li><a href="logstream.md.html" class="notranslate">logstream</a></li>
+<li><a href="ci.md.html" class="notranslate">ci</a></li>
+<li><a href="fs-readdir-recursive.md.html" class="notranslate">fs-readdir-recursive</a></li>
+<li><a href="mkdirp.md.html" class="notranslate">mkdirp</a></li>
+<li><a href="rmdirr.md.html" class="notranslate">rmdirr</a></li>
+<li><a href="detect-port.md.html" class="notranslate">detect-port</a></li>
+<li><a href="bitcoinjs-lib.md.html" class="notranslate">bitcoinjs-lib</a></li>
+<li><a href="rakuten.md.html" class="notranslate">Rakuten</a></li>
+</ul>
+ </div></div></div>  </div></div><div class="content"><div class="social-share share-component" data-sites="weibo,twitter" data-description="分享"></div> <div name="JS-Beautifier" data-unique="JS-Beautifier"></div><h1 id="JS-Beautifier"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">JS Embellidor</font></font></h1>
+<p><a href="http://travis-ci.org/beautify-web/js-beautify"><img src="https://api.travis-ci.org/beautify-web/js-beautify.svg?branch=master" alt="Estat de la compilació"></a>
+<a href="https://ci.appveyor.com/project/beautify-web/js-beautify/branch/master"><img src="https://ci.appveyor.com/api/projects/status/5bxmpvew5n3e58te/branch/master?svg=true" alt="Estat de la construcció"></a></p>
+<p><a href="https://pypi.python.org/pypi/jsbeautifier"><img src="https://img.shields.io/pypi/v/jsbeautifier.svg" alt="Versió PyPI"></a>
+<a href="https://cdnjs.com/libraries/js-beautify"><img src="https://img.shields.io/cdnjs/v/js-beautify.svg" alt="Versió CDNJS"></a>
+<a href="https://www.npmjs.com/package/js-beautify"><img src="https://img.shields.io/npm/v/js-beautify.svg" alt="Versió NPM"></a>
+<a href="https://www.npmjs.com/package/js-beautify"><img src="https://img.shields.io/npm/dm/js-beautify.svg" alt="Baixa les estadístiques"></a></p>
+<p><a href="https://gitter.im/beautify-web/js-beautify?utm_source=badge&amp;utm_medium=badge&amp;utm_campaign=pr-badge&amp;utm_content=badge"><img src="https://badges.gitter.im/Join%20Chat.svg" alt="Uniu-vos al xat a https://gitter.im/beautify-web/js-beautify"></a>
+<a href="https://twitter.com/intent/user?screen_name=js_beautifier"><img src="https://img.shields.io/twitter/follow/js_beautifier.svg?style=social&amp;label=Follow" alt="Segueix a Twitter"></a></p>
+<p><a href="https://www.npmjs.org/package/js-beautify"><img src="https://nodei.co/npm/js-beautify.svg?downloadRank=true&amp;downloads=true" alt="Estadístiques de NPM"></a></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Aquest petit embellidor reformatearà i reindentarà els bookmarklets, el lletgeu JavaScript, descomprimirà els scripts empaquetats pel popular empaquetador de Dean Edward, així com desobfuscarà els scripts processats per
+ </font></font><a href="http://javascriptobfuscator.com/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">javascriptobfuscator.com</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> .</font></font></p>
+<div name="Contributors-Needed" data-unique="Contributors-Needed"></div><h1 id="Contributors-Needed"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Es necessiten col·laboradors</font></font></h1>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Estic posant aquest enfocament a la part superior perquè els propietaris existents tenen un temps molt limitat per treballar en aquest projecte actualment. Aquest és un projecte popular i àmpliament utilitzat, però necessita desesperadament col·laboradors que tinguin temps de comprometre’s a solucionar tant els errors que s’enfronten als clients com els problemes subjacents. amb el disseny intern i la implementació.  </font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Si esteu interessats, mireu el </font></font><a href="https://github.com/beautify-web/js-beautify/blob/master/CONTRIBUTING.md" class="notranslate">CONTRIBUTING.md</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">a continuació, solucioneu un problema marcat amb l' </font><font style="vertical-align: inherit;">etiqueta </font></font><a href="https://github.com/beautify-web/js-beautify/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"Bon primer número"</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> i envieu un PR. Repetiu-lo el més sovint possible. Gràcies!</font></font></p>
+<div name="Usage" data-unique="Usage"></div><h1 id="Usage"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ús</font></font></h1>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Podeu embellir javascript mitjançant JS Beautifier al navegador web o a la línia d’ordres mitjançant node.js o python.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">JS Beautifier està allotjat en dos serveis de CDN: </font></font><a href="https://cdnjs.com/libraries/js-beautify"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">cdnjs</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> i rawgit.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Per extreure un d'aquests serveis, incloeu un conjunt d'etiquetes de script a continuació al document:</font></font></p>
+<pre><code class="lang-html"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11</div><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.7.5/beautify.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.7.5/beautify-css.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.7.5/beautify-html.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><font></font>
+<font></font>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.7.5/beautify.min.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.7.5/beautify-css.min.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.7.5/beautify-html.min.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><font></font>
+<font></font>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://cdn.rawgit.com/beautify-web/js-beautify/v1.7.5/js/lib/beautify.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://cdn.rawgit.com/beautify-web/js-beautify/v1.7.5/js/lib/beautify-css.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://cdn.rawgit.com/beautify-web/js-beautify/v1.7.5/js/lib/beautify-html.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Exempció de responsabilitat: es tracta de serveis gratuïts, de manera que no hi </font></font><a href="https://github.com/rgrove/rawgit/wiki/Frequently-Asked-Questions#i-need-guaranteed-100-uptime-should-i-use-cdnrawgitcom"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ha temps d’activitat ni garanties d’assistència</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> .</font></font></p>
+<div name="Web-Browser" data-unique="Web-Browser"></div><h2 id="Web-Browser"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Navegador web</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Obriu </font></font><a href="http://jsbeautifier.org/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">jsbeautifier.org</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> . Les opcions estan disponibles a través de la IU.</font></font></p>
+<div name="Python" data-unique="Python"></div><h2 id="Python"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Python</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Per embellir amb Python:</font></font></p>
+<pre><code class="lang-bash"><div class="line-numbers">1
+2</div>$ pip install jsbeautifier<font></font>
+$ js-beautify file.js<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">La sortida embellida va a </font></font><code>stdout</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Utilitzar </font></font><code>jsbeautifier</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">com a biblioteca és senzill:</font></font></p>
+<pre><code class="lang-python"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">import</span> jsbeautifier<font></font>
+res = jsbeautifier.beautify(<span class="hljs-string">'your javascript string'</span>)<font></font>
+res = jsbeautifier.beautify_file(<span class="hljs-string">'some_file.js'</span>)
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">... o bé, per especificar algunes opcions:</font></font></p>
+<pre><code class="lang-python"><div class="line-numbers">1
+2
+3
+4</div>opts = jsbeautifier.default_options()<font></font>
+opts.indent_size = <span class="hljs-number">2</span>
+opts.space_in_empty_paren = <span class="hljs-literal">True</span>
+res = jsbeautifier.beautify(<span class="hljs-string">'some javascript'</span>, opts)
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Els noms de les opcions de configuració són els mateixos que els noms de la CLI, però amb guions baixos en comptes de guions. L'exemple anterior es definiria a la línia d'ordres com </font></font><code>--indent-size 2 --space-in-empty-paren</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">.</font></font></p>
+<div name="JavaScript" data-unique="JavaScript"></div><h2 id="JavaScript"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">JavaScript</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Com a alternativa a l’escriptura Python, podeu instal·lar el paquet NPM </font></font><code>js-beautify</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">. Quan s’instal·la globalment, proporciona un </font></font><code>js-beautify</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">script </font><font style="vertical-align: inherit;">executable </font><font style="vertical-align: inherit;">. Igual que amb l’escriptura Python, el resultat embellit s’envia a </font></font><code>stdout</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">menys que es configuri el contrari.</font></font></p>
+<pre><code class="lang-bash"><div class="line-numbers">1
+2</div>$ npm -g install js-beautify<font></font>
+$ js-beautify foo.js<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">També podeu utilitzar-lo </font></font><code>js-beautify</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">com a </font></font><code>node</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">biblioteca (instal·leu-lo localment, </font></font><code>npm</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">per defecte):</font></font></p>
+<pre><code class="lang-bash"><div class="line-numbers">1</div>$ npm install js-beautify
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Importeu i truqueu el mètode d’embellidor adequat per a javascript (js), css o html. Les tres signatures del mètode són </font></font><code>beautify(code, options)</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">. </font></font><code>code</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">És una cadena de codi que s’ha d’embellir. Les opcions són un objecte amb la configuració que voleu que s’utilitzi per embellir el codi.  </font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Els noms de les opcions de configuració són els mateixos que els noms de la CLI, però amb guions baixos en lloc de guions. Per exemple, </font></font><code>--indent-size 2 --space-in-empty-paren</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">seria </font></font><code>{ indent_size: 2, space_in_empty_paren: true }</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">.</font></font></p>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9</div><span class="hljs-keyword">var</span> beautify = <span class="hljs-built_in">require</span>(<span class="hljs-string">'js-beautify'</span>).js,<font></font>
+    fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fs'</span>);<font></font>
+<font></font>
+fs.readFile(<span class="hljs-string">'foo.js'</span>, <span class="hljs-string">'utf8'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">err, data</span>) </span>{
+    <span class="hljs-keyword">if</span> (err) {
+        <span class="hljs-keyword">throw</span> err;<font></font>
+    }<font></font>
+    <span class="hljs-built_in">console</span>.log(beautify(data, { <span class="hljs-attr">indent_size</span>: <span class="hljs-number">2</span>, <span class="hljs-attr">space_in_empty_paren</span>: <span class="hljs-literal">true</span> }));<font></font>
+});<font></font>
+</code></pre>
+<div name="Options" data-unique="Options"></div><h2 id="Options"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Opcions</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Aquests són els indicadors de línia d'ordres per als scripts Python i JS:</font></font></p>
+<pre><code class="lang-text"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35</div><span class="hljs-keyword">CLI</span> Options:<font></font>
+  -f, --<span class="hljs-keyword">file</span>       <span class="hljs-keyword">Input</span> <span class="hljs-keyword">file</span>(s) (Pass '-' <span class="hljs-keyword">for</span> stdin)<font></font>
+  -r, --<span class="hljs-keyword">replace</span>    Write output <span class="hljs-keyword">in</span>-place, replacing <span class="hljs-keyword">input</span>
+  -o, --<span class="hljs-keyword">outfile</span>    Write output to <span class="hljs-keyword">file</span> (default stdout)<font></font>
+  --config         Path to config <span class="hljs-keyword">file</span>
+  --<span class="hljs-keyword">type</span>           [js|css|html] [<span class="hljs-string">"js"</span>]<font></font>
+  -q, --quiet      Suppress logging to stdout<font></font>
+  -<span class="hljs-keyword">h</span>, --<span class="hljs-keyword">help</span>       Show this <span class="hljs-keyword">help</span>
+  -v, --<span class="hljs-keyword">version</span>    Show the <span class="hljs-keyword">version</span><font></font>
+<font></font>
+Beautifier Options:<font></font>
+  -s, --indent-size                 Indentation size [4]<font></font>
+  -c, --indent-<span class="hljs-keyword">char</span>                 Indentation character [<span class="hljs-string">" "</span>]<font></font>
+  -t, --indent-with-tabs            Indent with tabs, overrides -s and -c<font></font>
+  -<span class="hljs-keyword">e</span>, --eol                         Character(s) to <span class="hljs-keyword">use</span> <span class="hljs-keyword">as</span> <span class="hljs-keyword">line</span> terminators.<font></font>
+                                    [first newline <span class="hljs-keyword">in</span> <span class="hljs-keyword">file</span>, otherwise "\<span class="hljs-keyword">n</span>]<font></font>
+  -<span class="hljs-keyword">n</span>, --end-with-newline            End output with newline<font></font>
+  --editorconfig                    <span class="hljs-keyword">Use</span> EditorConfig to <span class="hljs-keyword">set</span> up the options<font></font>
+  -<span class="hljs-keyword">l</span>, --indent-level                Initial indentation level [0]<font></font>
+  -p, --<span class="hljs-keyword">preserve</span>-newlines           <span class="hljs-keyword">Preserve</span> <span class="hljs-keyword">line</span>-breaks (--<span class="hljs-keyword">no</span>-<span class="hljs-keyword">preserve</span>-newlines disables)<font></font>
+  -<span class="hljs-keyword">m</span>, --max-<span class="hljs-keyword">preserve</span>-newlines       Number of <span class="hljs-keyword">line</span>-breaks to be preserved <span class="hljs-keyword">in</span> <span class="hljs-keyword">one</span> chunk [10]<font></font>
+  -P, --space-<span class="hljs-keyword">in</span>-paren              Add padding spaces within paren, ie. <span class="hljs-built_in">f</span>( a, b )<font></font>
+  -<span class="hljs-keyword">E</span>, --space-<span class="hljs-keyword">in</span>-empty-paren        Add a single space inside empty paren, ie. <span class="hljs-built_in">f</span>( )<font></font>
+  -j, --jslint-happy                Enable jslint-stricter mode<font></font>
+  -a, --space-after-anon-function   Add a space before <span class="hljs-keyword">an</span> anonymous function's parens, ie. function ()<font></font>
+  -b, --brace-style                 [<span class="hljs-keyword">collapse</span>|<span class="hljs-keyword">expand</span>|end-<span class="hljs-keyword">expand</span>|none][,<span class="hljs-keyword">preserve</span>-inline] [<span class="hljs-keyword">collapse</span>,<span class="hljs-keyword">preserve</span>-inline]<font></font>
+  -<span class="hljs-keyword">u</span>, --unindent-chained-methods    Don't indent chained method calls<font></font>
+  -B, --<span class="hljs-keyword">break</span>-chained-methods       <span class="hljs-keyword">Break</span> chained method calls across subsequent lines<font></font>
+  -k, --<span class="hljs-keyword">keep</span>-array-indentation      <span class="hljs-keyword">Preserve</span> array indentation<font></font>
+  -x, --unescape-strings            <span class="hljs-keyword">Decode</span> printable characters encoded <span class="hljs-keyword">in</span> xNN notation<font></font>
+  -w, --wrap-<span class="hljs-keyword">line</span>-length            Wrap lines at next opportunity after <span class="hljs-keyword">N</span> characters [0]<font></font>
+  -X, --e4x                         Pass E4X xml literals through untouched<font></font>
+  --good-stuff                      Warm the cockles of Crockford's heart<font></font>
+  -C, --comma-first                 Put commas at the beginning of new <span class="hljs-keyword">line</span> instead of end<font></font>
+  -O, --operator-position           <span class="hljs-keyword">Set</span> operator position (before-newline|after-newline|<span class="hljs-keyword">preserve</span>-newline) [before-newline]
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Que corresponen a les claus d'opció subratllades per a les dues interfícies de biblioteca</font></font></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">valors predeterminats per opcions de CLI</font></font></strong></p>
+<pre><code class="lang-json"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23</div>{
+    <span class="hljs-attr">"indent_size"</span>: <span class="hljs-number">4</span>,
+    <span class="hljs-attr">"indent_char"</span>: <span class="hljs-string">" "</span>,
+    <span class="hljs-attr">"indent_with_tabs"</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-attr">"eol"</span>: <span class="hljs-string">"\n"</span>,
+    <span class="hljs-attr">"end_with_newline"</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-attr">"indent_level"</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">"preserve_newlines"</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">"max_preserve_newlines"</span>: <span class="hljs-number">10</span>,
+    <span class="hljs-attr">"space_in_paren"</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-attr">"space_in_empty_paren"</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-attr">"jslint_happy"</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-attr">"space_after_anon_function"</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-attr">"brace_style"</span>: <span class="hljs-string">"collapse"</span>,
+    <span class="hljs-attr">"unindent_chained_methods"</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-attr">"break_chained_methods"</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-attr">"keep_array_indentation"</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-attr">"unescape_strings"</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-attr">"wrap_line_length"</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">"e4x"</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-attr">"comma_first"</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-attr">"operator_position"</span>: <span class="hljs-string">"before-newline"</span><font></font>
+}<font></font>
+</code></pre>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">valors predeterminats no exposats a la cli</font></font></strong></p>
+<pre><code class="lang-json"><div class="line-numbers">1
+2
+3
+4</div>{
+  <span class="hljs-attr">"eval_code"</span>: <span class="hljs-literal">false</span>,
+  <span class="hljs-attr">"space_before_conditional"</span>: <span class="hljs-literal">true</span><font></font>
+}<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Tingueu en compte que no tots els valors predeterminats s’exposen mitjançant la CLI. Històricament, les API de Python i JS no eren 100% idèntiques. Per exemple, </font></font><code>space_before_conditional</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">actualment només és JS i no es pot adreçar des de l’escriptura CLI. Encara hi ha alguns altres casos addicionals que mantenen compatibilitat amb l'API al 100%.</font></font></p>
+<div name="Loading-settings-from-environment-or-.jsbeautifyrc-(JavaScript-Only)" data-unique="Loading-settings-from-environment-or-.jsbeautifyrc-(JavaScript-Only)"></div><h3 id="Loading-settings-from-environment-or-.jsbeautifyrc-(JavaScript-Only)" class="notranslate">Loading settings from environment or .jsbeautifyrc (JavaScript-Only)</h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">A més dels arguments CLI, podeu passar la configuració a l'executable JS mitjançant:</font></font></p>
+<ul>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">qualsevol </font></font><code>jsbeautify_</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">variable d'entorn prefixada</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">un </font></font><code>JSON</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fitxer amb format indicat pel </font></font><code>--config</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">paràmetre</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">un </font></font><code>.jsbeautifyrc</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fitxer que conté </font></font><code>JSON</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">dades a qualsevol nivell del sistema de fitxers anterior</font></font><code>$PWD</code></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Les fonts de configuració proporcionades anteriorment en aquesta pila substituiran les posteriors.</font></font></p>
+<div name="Setting-inheritance-and-Language-specific-overrides" data-unique="Setting-inheritance-and-Language-specific-overrides"></div><h3 id="Setting-inheritance-and-Language-specific-overrides" class="notranslate">Setting inheritance and Language-specific overrides</h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Els paràmetres són un arbre poc profund els valors dels quals s'hereten per a tots els idiomes, però es poden anul·lar. Funciona per a paràmetres que es transmeten directament a l'API en qualsevol de les dues implementacions. A la implementació de Javascript, els paràmetres es carreguen des d'un fitxer de configuració, com ara .jsbeautifyrc , també pot utilitzar herència / anul·lació.  </font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">A continuació es mostra un exemple d'arbre de configuració que mostra totes les ubicacions admeses per als nodes de substitució d'idioma. L'utilitzarem </font></font><code>indent_size</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">per analitzar el comportament d'aquesta configuració, però es pot heretar o </font><font style="vertical-align: inherit;">anul·lar </font><font style="vertical-align: inherit;">qualsevol configuració:</font></font></p>
+<pre><code class="lang-json"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18</div>{
+    <span class="hljs-attr">"indent_size"</span>: <span class="hljs-number">4</span>,
+    <span class="hljs-attr">"html"</span>: {
+        <span class="hljs-attr">"end_with_newline"</span>: <span class="hljs-literal">true</span>,
+        <span class="hljs-attr">"js"</span>: {
+            <span class="hljs-attr">"indent_size"</span>: <span class="hljs-number">2</span><font></font>
+        },<font></font>
+        <span class="hljs-attr">"css"</span>: {
+            <span class="hljs-attr">"indent_size"</span>: <span class="hljs-number">2</span><font></font>
+        }<font></font>
+    },<font></font>
+    <span class="hljs-attr">"css"</span>: {
+        <span class="hljs-attr">"indent_size"</span>: <span class="hljs-number">1</span><font></font>
+    },<font></font>
+    <span class="hljs-attr">"js"</span>: {
+       <span class="hljs-attr">"preserve-newlines"</span>: <span class="hljs-literal">true</span><font></font>
+    }<font></font>
+}<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Si feu servir l’exemple anterior tindríeu el resultat següent:</font></font></p>
+<ul>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Fitxers HTML</font></font><ul>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Hereta </font></font><code>indent_size</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">de 4 espais de la configuració de nivell superior.  </font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Els fitxers també acabarien amb una nova línia.</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">JavaScript i CSS dins de HTML</font></font><ul>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Hereta la </font></font><code>end_with_newline</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">configuració </font><font style="vertical-align: inherit;">HTML</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Substitueix el seu sagnat a 2 espais</font></font></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Fitxers CSS</font></font><ul>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Substitueix la configuració de nivell superior a un </font></font><code>indent_size</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">espai d'1.</font></font></li>
+</ul>
+</li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Fitxers JavaScript</font></font><ul>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Hereta </font></font><code>indent_size</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">de 4 espais de la configuració de nivell superior</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Estableix </font></font><code>preserve-newlines</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">a</font></font><code>true</code></li>
+</ul>
+</li>
+</ul>
+<div name="CSS-&amp;-HTML" data-unique="CSS-&amp;-HTML"></div><h3 id="CSS-HTML" class="notranslate">CSS &amp; HTML</h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">A més de l' </font></font><code>js-beautify</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">executable, </font></font><code>css-beautify</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">i </font></font><code>html-beautify</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+també es proporcionen com una interfície fàcil en aquests scripts. Alternativament,
+ </font></font><code>js-beautify --css</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">o </font></font><code>js-beautify --html</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">va a aconseguir el mateix, respectivament.</font></font></p>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3
+4
+5
+6</div><span class="hljs-comment">// Programmatic access</span>
+<span class="hljs-keyword">var</span> beautify_js = <span class="hljs-built_in">require</span>(<span class="hljs-string">'js-beautify'</span>); <span class="hljs-comment">// also available under "js" export</span>
+<span class="hljs-keyword">var</span> beautify_css = <span class="hljs-built_in">require</span>(<span class="hljs-string">'js-beautify'</span>).css;
+<span class="hljs-keyword">var</span> beautify_html = <span class="hljs-built_in">require</span>(<span class="hljs-string">'js-beautify'</span>).html;<font></font>
+<font></font>
+<span class="hljs-comment">// All methods accept two arguments, the string to be beautified, and an options object.</span>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Els embellidors CSS i HTML tenen un abast molt més senzill i tenen moltes menys opcions.</font></font></p>
+<pre><code class="lang-text"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27</div>CSS Beautifier Option<span class="hljs-variable">s:</span>
+  -s, --<span class="hljs-built_in">indent</span>-size                  Indentation size [<span class="hljs-number">4</span>]<font></font>
+  -<span class="hljs-keyword">c</span>, --<span class="hljs-built_in">indent</span>-char                  Indentation character [<span class="hljs-string">" "</span>]<font></font>
+  -t, --<span class="hljs-built_in">indent</span>-with-<span class="hljs-keyword">tabs</span>             Indent with <span class="hljs-keyword">tabs</span>, overrides -s <span class="hljs-built_in">and</span> -<span class="hljs-keyword">c</span>
+  -<span class="hljs-keyword">e</span>, --eol                          Character(s) <span class="hljs-keyword">to</span> use <span class="hljs-keyword">as</span> <span class="hljs-built_in">line</span> terminators. (default newline - <span class="hljs-string">"\\n"</span>)<font></font>
+  -n, --end-with-newline             End output with newline<font></font>
+  -L, --selector-separator-newline   Add <span class="hljs-keyword">a</span> newline between multiple selectors<font></font>
+  -<span class="hljs-keyword">N</span>, --newline-between-rules        Add <span class="hljs-keyword">a</span> newline between CSS rules<font></font>
+<font></font>
+HTML Beautifier Option<span class="hljs-variable">s:</span>
+  -s, --<span class="hljs-built_in">indent</span>-size                  Indentation size [<span class="hljs-number">4</span>]<font></font>
+  -<span class="hljs-keyword">c</span>, --<span class="hljs-built_in">indent</span>-char                  Indentation character [<span class="hljs-string">" "</span>]<font></font>
+  -t, --<span class="hljs-built_in">indent</span>-with-<span class="hljs-keyword">tabs</span>             Indent with <span class="hljs-keyword">tabs</span>, overrides -s <span class="hljs-built_in">and</span> -<span class="hljs-keyword">c</span>
+  -<span class="hljs-keyword">e</span>, --eol                          Character(s) <span class="hljs-keyword">to</span> use <span class="hljs-keyword">as</span> <span class="hljs-built_in">line</span> terminators. (default newline - <span class="hljs-string">"\\n"</span>)<font></font>
+  -n, --end-with-newline             End output with newline<font></font>
+  -<span class="hljs-keyword">p</span>, --<span class="hljs-keyword">preserve</span>-newlines            Preserve existing <span class="hljs-built_in">line</span>-breaks (--<span class="hljs-keyword">no</span>-<span class="hljs-keyword">preserve</span>-newlines disables)<font></font>
+  -<span class="hljs-keyword">m</span>, --<span class="hljs-built_in">max</span>-<span class="hljs-keyword">preserve</span>-newlines        Maximum <span class="hljs-keyword">number</span> of <span class="hljs-built_in">line</span>-breaks <span class="hljs-keyword">to</span> <span class="hljs-keyword">be</span> preserved in one chunk [<span class="hljs-number">10</span>]<font></font>
+  -I, --<span class="hljs-built_in">indent</span>-inner-html            Indent <span class="hljs-symbol">&lt;head&gt;</span> <span class="hljs-built_in">and</span> <span class="hljs-symbol">&lt;body&gt;</span> sections. Default <span class="hljs-keyword">is</span> false.<font></font>
+  -<span class="hljs-keyword">b</span>, --brace-style                  [collapse-<span class="hljs-keyword">preserve</span>-inline|collapse|<span class="hljs-built_in">expand</span>|end-<span class="hljs-built_in">expand</span>|none] [<span class="hljs-string">"collapse"</span>]<font></font>
+  -S, --<span class="hljs-built_in">indent</span>-scripts               [keep|separate|<span class="hljs-keyword">normal</span>] [<span class="hljs-string">"normal"</span>]<font></font>
+  -<span class="hljs-keyword">w</span>, --wrap-<span class="hljs-built_in">line</span>-length             Maximum characters per <span class="hljs-built_in">line</span> (<span class="hljs-number">0</span> disables) [<span class="hljs-number">250</span>]<font></font>
+  -A, --wrap-attributes              Wrap attributes <span class="hljs-keyword">to</span> <span class="hljs-keyword">new</span> lines [auto|force|force-aligned|force-<span class="hljs-built_in">expand</span>-multiline] [<span class="hljs-string">"auto"</span>]<font></font>
+  -i, --wrap-attributes-<span class="hljs-built_in">indent</span>-size  Indent wrapped attributes <span class="hljs-keyword">to</span> after <span class="hljs-keyword">N</span> characters [<span class="hljs-built_in">indent</span>-size] (ignored <span class="hljs-keyword">if</span> wrap-attributes <span class="hljs-keyword">is</span> <span class="hljs-string">"force-aligned"</span>)<font></font>
+  -U, --unformatted                  List of <span class="hljs-keyword">tags</span> (defaults <span class="hljs-keyword">to</span> inline) that should not <span class="hljs-keyword">be</span> reformatted<font></font>
+  -T, --content_unformatted          List of <span class="hljs-keyword">tags</span> (defaults <span class="hljs-keyword">to</span> <span class="hljs-keyword">pre</span>) whose content should not <span class="hljs-keyword">be</span> reformatted<font></font>
+  -E, --extra_liners                 List of <span class="hljs-keyword">tags</span> (defaults <span class="hljs-keyword">to</span> [head,body,/html] that should have <span class="hljs-keyword">an</span> extra newline before them.<font></font>
+  --editorconfig                     Use EditorConfig <span class="hljs-keyword">to</span> <span class="hljs-keyword">set</span> <span class="hljs-keyword">up</span> the <span class="hljs-keyword">options</span>
+</code></pre>
+<div name="Directives-to-Ignore-or-Preserve-sections-(Javascript-only)" data-unique="Directives-to-Ignore-or-Preserve-sections-(Javascript-only)"></div><h2 id="Directives-to-Ignore-or-Preserve-sections-(Javascript-only)"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Directrius per ignorar o conservar seccions (només Javascript)</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Embellidor per admet directrius als comentaris dins del fitxer. Això us permet dir-li a l’embellidor que conservi el format o ignori completament una part d’un fitxer. L’exemple d’entrada següent es modificarà després de l’embelliment</font></font></p>
+<pre><code class="lang-js"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14</div><span class="hljs-comment">// Use preserve when the content is not javascript, but you don't want it reformatted.</span>
+<span class="hljs-comment">/* beautify preserve:start */</span><font></font>
+{<font></font>
+    <span class="hljs-attr">browserName</span>: <span class="hljs-string">'internet explorer'</span>,
+    <span class="hljs-attr">platform</span>:    <span class="hljs-string">'Windows 7'</span>,
+    <span class="hljs-attr">version</span>:     <span class="hljs-string">'8'</span><font></font>
+}<font></font>
+<span class="hljs-comment">/* beautify preserve:end */</span><font></font>
+<font></font>
+<span class="hljs-comment">// Use ignore when the content is not parsable as javascript.</span>
+<span class="hljs-keyword">var</span> a =  <span class="hljs-number">1</span>;
+<span class="hljs-comment">/* beautify ignore:start */</span><font></font>
+ {This is some strange{template language{using open-braces?<font></font>
+<span class="hljs-comment">/* beautify ignore:end */</span>
+</code></pre>
+<div name="License" data-unique="License"></div><h1 id="License"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Llicència</font></font></h1>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Podeu utilitzar-lo de la manera que vulgueu, en cas que us sigui útil o us funcioni, però heu de mantenir l'avís i la llicència de drets d'autor. (MIT)</font></font></p>
+<div name="Credits" data-unique="Credits"></div><h1 id="Credits"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Crèdits</font></font></h1>
+<ul>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Creat per Einar Lielmanis, </font></font><a href="mailto:einar@jsbeautifier.org"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">einar@jsbeautifier.org</font></font></a></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">La versió de Python florida per Stefano Sanfilippo </font></font><a href="mailto:a.little.coder@gmail.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">a.little.coder@gmail.com</font></font></a></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Línia d'ordres per a node.js de Daniel Stockman </font></font><a href="mailto:daniel.stockman@gmail.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">daniel.stockman@gmail.com</font></font></a></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Mantingut i ampliat per Liam Newman </font></font><a href="mailto:bitwiseman@gmail.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">bitwiseman@gmail.com</font></font></a></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Gràcies també a Jason Diamond, Patrick Hof, Nochum Sossonko, Andreas Schneider, Dave Vasilevsky, Vital Batmanov, Ron Baldwin, Gabriel Harrison, Chris J. Shull, Mathias Bynens, Vittorio Gambaletta i altres.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(README.md: </font></font><a href="mailto:js-beautify@1.7.5"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">js-beautify@1.7.5</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> )</font></font></p>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org | </font></font><a href="../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Doneu-nos suport</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip7514"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip7514" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Feu clic per tornar a la pàgina superior</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../js/common.js"></script><script type="text/javascript" src="../../../../js/docs.js"></script></body></html>

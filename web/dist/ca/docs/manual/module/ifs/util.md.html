@@ -1,0 +1,1135 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../../../imgs/icon.png"><title>Mòdul util-JavaScript a Fiber</title><link href="../../../../../css/common.css" rel="stylesheet"><link href="../../../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Commuta la navegació</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../../../index.html"><img src="../../../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../../../index.html">HOME</a></li><li><a href="../../../guide/readme.md.html">GUIDE</a></li><li><a href="../readme.md.html">MODULE</a></li><li><a href="../../object/readme.md.html">OBJECT</a></li><li><a href="../../../awesome/readme.md.html">AWESOME</a></li><li><a href="../../../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../../../docs/manual/module/ifs/util.md.html">中文</a> <a href="../../../../../ca/docs/manual/module/ifs/util.md.html">Catalan</a> <a href="../../../../../de/docs/manual/module/ifs/util.md.html">Deutsch</a> <a href="../../../../../en/docs/manual/module/ifs/util.md.html">English</a> <a href="../../../../../es/docs/manual/module/ifs/util.md.html">Español</a> <a href="../../../../../fr/docs/manual/module/ifs/util.md.html">Français</a> <a href="../../../../../gl/docs/manual/module/ifs/util.md.html">Galego</a> <a href="../../../../../it/docs/manual/module/ifs/util.md.html">Italiano</a> <a href="../../../../../ru/docs/manual/module/ifs/util.md.html">Русский</a> <a href="../../../../../ja/docs/manual/module/ifs/util.md.html">日本語</a> <a href="../../../../../ko/docs/manual/module/ifs/util.md.html">한국어</a> <a href="../../../../../zh-tw/docs/manual/module/ifs/util.md.html">繁體中文</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Mòdul mòdul bàsic </font></font></span><div class="search"><span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input type="text" class="searchbox ds-input" placeholder="Cerca" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-label="entrada de cerca" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Avenir, &quot;Segoe UI&quot;, Arial, &quot;Hiragino Sans GB&quot;, 冬青黑, &quot;Microsoft YaHei&quot;, 微软雅黑, SimSun, 宋体, Helvetica, Tahoma, &quot;Arial sans-serif&quot;; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div class="ds-dataset-1"></div></span></span></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Pàgina inicial</font></font></a></li><li><a href="../readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Mòdul bàsic </font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Utilització del mòdul </font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Guia de desenvolupament </font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="../../../guide/about.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Què és fibjs?</font></font></a></li>
+<li><a href="../../../guide/install.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Instal·lació i entorn operatiu</font></font></a></li>
+<li><a href="../../../guide/hello.md.html" class="notranslate">hello, world</a></li>
+<li><a href="../../../guide/test.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Una bona vida comença amb la prova</font></font></a></li>
+<li><a href="../../../guide/profiler.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Troba l'assassí del rendiment</font></font></a></li>
+<li><a href="../../../guide/desktop.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Desenvolupeu ràpidament aplicacions d'escriptori</font></font></a></li>
+<li><a href="../../../guide/server-hot-update.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Actualització actualitzada del mòdul de servidor</font></font></a></li>
+<li><a href="../../../guide/host-routes.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Encaminament de noms de domini</font></font></a></li>
+<li><a href="../../../guide/x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ús del certificat X509 a fibjs</font></font></a></li>
+<li><a href="../../../guide/contribute.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Afegeix un mòdul natiu</font></font></a></li>
+</ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_module" aria-controls="collapse_module"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Mòdul bàsic </font></font></a></h4></div><div id="collapse_module" class="panel-collapse collapse in" aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="assert.md.html" class="notranslate">assert</a></li>
+<li><a href="base32.md.html" class="notranslate">base32</a></li>
+<li><a href="base64.md.html" class="notranslate">base64</a></li>
+<li><a href="base64vlq.md.html" class="notranslate">base64vlq</a></li>
+<li><a href="bson.md.html" class="notranslate">bson</a></li>
+<li><a href="child_process.md.html" class="notranslate">child_process</a></li>
+<li><a href="console.md.html" class="notranslate">console</a></li>
+<li><a href="constants.md.html" class="notranslate">constants</a></li>
+<li><a href="coroutine.md.html" class="notranslate">coroutine</a></li>
+<li><a href="crypto.md.html" class="notranslate">crypto</a></li>
+<li><a href="db.md.html" class="notranslate">db</a></li>
+<li><a href="dgram.md.html" class="notranslate">dgram</a></li>
+<li><a href="dns.md.html" class="notranslate">dns</a></li>
+<li><a href="encoding.md.html" class="notranslate">encoding</a></li>
+<li><a href="fs.md.html" class="notranslate">fs</a></li>
+<li><a href="gd.md.html" class="notranslate">gd</a></li>
+<li><a href="global.md.html" class="notranslate">global</a></li>
+<li><a href="gui.md.html" class="notranslate">gui</a></li>
+<li><a href="hash.md.html" class="notranslate">hash</a></li>
+<li><a href="hex.md.html" class="notranslate">hex</a></li>
+<li><a href="http.md.html" class="notranslate">http</a></li>
+<li><a href="iconv.md.html" class="notranslate">iconv</a></li>
+<li><a href="io.md.html" class="notranslate">io</a></li>
+<li><a href="json.md.html" class="notranslate">json</a></li>
+<li><a href="mq.md.html" class="notranslate">mq</a></li>
+<li><a href="msgpack.md.html" class="notranslate">msgpack</a></li>
+<li><a href="net.md.html" class="notranslate">net</a></li>
+<li><a href="os.md.html" class="notranslate">os</a></li>
+<li><a href="path.md.html" class="notranslate">path</a></li>
+<li><a href="path_posix.md.html" class="notranslate">path_posix</a></li>
+<li><a href="path_win32.md.html" class="notranslate">path_win32</a></li>
+<li><a href="process.md.html" class="notranslate">process</a></li>
+<li><a href="profiler.md.html" class="notranslate">profiler</a></li>
+<li><a href="punycode.md.html" class="notranslate">punycode</a></li>
+<li><a href="querystring.md.html" class="notranslate">querystring</a></li>
+<li><a href="registry.md.html" class="notranslate">registry</a></li>
+<li><a href="ssl.md.html" class="notranslate">ssl</a></li>
+<li><a href="string_decoder.md.html" class="notranslate">string_decoder</a></li>
+<li><a href="test.md.html" class="notranslate">test</a></li>
+<li><a href="timers.md.html" class="notranslate">timers</a></li>
+<li><a href="tty.md.html" class="notranslate">tty</a></li>
+<li><a href="url.md.html" class="notranslate">url</a></li>
+<li class="active"><a href="util.md.html" class="notranslate">util</a></li>
+<li><a href="uuid.md.html" class="notranslate">uuid</a></li>
+<li><a href="vm.md.html" class="notranslate">vm</a></li>
+<li><a href="ws.md.html" class="notranslate">ws</a></li>
+<li><a href="xml.md.html" class="notranslate">xml</a></li>
+<li><a href="zip.md.html" class="notranslate">zip</a></li>
+<li><a href="zlib.md.html" class="notranslate">zlib</a></li>
+</ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_object" aria-controls="collapse_object"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Objectes incorporats </font></font></a></h4></div><div id="collapse_object" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="../../object/ifs/buffer.md.html" class="notranslate">Buffer</a></li>
+<li><a href="../../object/ifs/bufferedstream.md.html" class="notranslate">BufferedStream</a></li>
+<li><a href="../../object/ifs/chain.md.html" class="notranslate">Chain</a></li>
+<li><a href="../../object/ifs/childprocess.md.html" class="notranslate">ChildProcess</a></li>
+<li><a href="../../object/ifs/cipher.md.html" class="notranslate">Cipher</a></li>
+<li><a href="../../object/ifs/condition.md.html" class="notranslate">Condition</a></li>
+<li><a href="../../object/ifs/dbconnection.md.html" class="notranslate">DbConnection</a></li>
+<li><a href="../../object/ifs/dgramsocket.md.html" class="notranslate">DgramSocket</a></li>
+<li><a href="../../object/ifs/digest.md.html" class="notranslate">Digest</a></li>
+<li><a href="../../object/ifs/event.md.html" class="notranslate">Event</a></li>
+<li><a href="../../object/ifs/eventemitter.md.html" class="notranslate">EventEmitter</a></li>
+<li><a href="../../object/ifs/fswatcher.md.html" class="notranslate">FSWatcher</a></li>
+<li><a href="../../object/ifs/fiber.md.html" class="notranslate">Fiber</a></li>
+<li><a href="../../object/ifs/file.md.html" class="notranslate">File</a></li>
+<li><a href="../../object/ifs/handler.md.html" class="notranslate">Handler</a></li>
+<li><a href="../../object/ifs/heapgraphedge.md.html" class="notranslate">HeapGraphEdge</a></li>
+<li><a href="../../object/ifs/heapgraphnode.md.html" class="notranslate">HeapGraphNode</a></li>
+<li><a href="../../object/ifs/heapsnapshot.md.html" class="notranslate">HeapSnapshot</a></li>
+<li><a href="../../object/ifs/httpclient.md.html" class="notranslate">HttpClient</a></li>
+<li><a href="../../object/ifs/httpcollection.md.html" class="notranslate">HttpCollection</a></li>
+<li><a href="../../object/ifs/httpcookie.md.html" class="notranslate">HttpCookie</a></li>
+<li><a href="../../object/ifs/httphandler.md.html" class="notranslate">HttpHandler</a></li>
+<li><a href="../../object/ifs/httpmessage.md.html" class="notranslate">HttpMessage</a></li>
+<li><a href="../../object/ifs/httprepeater.md.html" class="notranslate">HttpRepeater</a></li>
+<li><a href="../../object/ifs/httprequest.md.html" class="notranslate">HttpRequest</a></li>
+<li><a href="../../object/ifs/httpresponse.md.html" class="notranslate">HttpResponse</a></li>
+<li><a href="../../object/ifs/httpserver.md.html" class="notranslate">HttpServer</a></li>
+<li><a href="../../object/ifs/httpuploaddata.md.html" class="notranslate">HttpUploadData</a></li>
+<li><a href="../../object/ifs/httpsserver.md.html" class="notranslate">HttpsServer</a></li>
+<li><a href="../../object/ifs/image.md.html" class="notranslate">Image</a></li>
+<li><a href="../../object/ifs/leveldb.md.html" class="notranslate">LevelDB</a></li>
+<li><a href="../../object/ifs/lock.md.html" class="notranslate">Lock</a></li>
+<li><a href="../../object/ifs/lrucache.md.html" class="notranslate">LruCache</a></li>
+<li><a href="../../object/ifs/mssql.md.html" class="notranslate">MSSQL</a></li>
+<li><a href="../../object/ifs/memorystream.md.html" class="notranslate">MemoryStream</a></li>
+<li><a href="../../object/ifs/message.md.html" class="notranslate">Message</a></li>
+<li><a href="../../object/ifs/mongocollection.md.html" class="notranslate">MongoCollection</a></li>
+<li><a href="../../object/ifs/mongocursor.md.html" class="notranslate">MongoCursor</a></li>
+<li><a href="../../object/ifs/mongodb.md.html" class="notranslate">MongoDB</a></li>
+<li><a href="../../object/ifs/mongoid.md.html" class="notranslate">MongoID</a></li>
+<li><a href="../../object/ifs/mysql.md.html" class="notranslate">MySQL</a></li>
+<li><a href="../../object/ifs/pkey.md.html" class="notranslate">PKey</a></li>
+<li><a href="../../object/ifs/rangestream.md.html" class="notranslate">RangeStream</a></li>
+<li><a href="../../object/ifs/redis.md.html" class="notranslate">Redis</a></li>
+<li><a href="../../object/ifs/redishash.md.html" class="notranslate">RedisHash</a></li>
+<li><a href="../../object/ifs/redislist.md.html" class="notranslate">RedisList</a></li>
+<li><a href="../../object/ifs/redisset.md.html" class="notranslate">RedisSet</a></li>
+<li><a href="../../object/ifs/redissortedset.md.html" class="notranslate">RedisSortedSet</a></li>
+<li><a href="../../object/ifs/routing.md.html" class="notranslate">Routing</a></li>
+<li><a href="../../object/ifs/sqlite.md.html" class="notranslate">SQLite</a></li>
+<li><a href="../../object/ifs/sandbox.md.html" class="notranslate">SandBox</a></li>
+<li><a href="../../object/ifs/seekablestream.md.html" class="notranslate">SeekableStream</a></li>
+<li><a href="../../object/ifs/semaphore.md.html" class="notranslate">Semaphore</a></li>
+<li><a href="../../object/ifs/service.md.html" class="notranslate">Service</a></li>
+<li><a href="../../object/ifs/smtp.md.html" class="notranslate">Smtp</a></li>
+<li><a href="../../object/ifs/socket.md.html" class="notranslate">Socket</a></li>
+<li><a href="../../object/ifs/sslhandler.md.html" class="notranslate">SslHandler</a></li>
+<li><a href="../../object/ifs/sslserver.md.html" class="notranslate">SslServer</a></li>
+<li><a href="../../object/ifs/sslsocket.md.html" class="notranslate">SslSocket</a></li>
+<li><a href="../../object/ifs/stat.md.html" class="notranslate">Stat</a></li>
+<li><a href="../../object/ifs/statswatcher.md.html" class="notranslate">StatsWatcher</a></li>
+<li><a href="../../object/ifs/stream.md.html" class="notranslate">Stream</a></li>
+<li><a href="../../object/ifs/stringdecoder.md.html" class="notranslate">StringDecoder</a></li>
+<li><a href="../../object/ifs/tcpserver.md.html" class="notranslate">TcpServer</a></li>
+<li><a href="../../object/ifs/timer.md.html" class="notranslate">Timer</a></li>
+<li><a href="../../object/ifs/urlobject.md.html" class="notranslate">UrlObject</a></li>
+<li><a href="../../object/ifs/websocket.md.html" class="notranslate">WebSocket</a></li>
+<li><a href="../../object/ifs/websocketmessage.md.html" class="notranslate">WebSocketMessage</a></li>
+<li><a href="../../object/ifs/webview.md.html" class="notranslate">WebView</a></li>
+<li><a href="../../object/ifs/worker.md.html" class="notranslate">Worker</a></li>
+<li><a href="../../object/ifs/x509cert.md.html" class="notranslate">X509Cert</a></li>
+<li><a href="../../object/ifs/x509crl.md.html" class="notranslate">X509Crl</a></li>
+<li><a href="../../object/ifs/x509req.md.html" class="notranslate">X509Req</a></li>
+<li><a href="../../object/ifs/xmlattr.md.html" class="notranslate">XmlAttr</a></li>
+<li><a href="../../object/ifs/xmlcdatasection.md.html" class="notranslate">XmlCDATASection</a></li>
+<li><a href="../../object/ifs/xmlcharacterdata.md.html" class="notranslate">XmlCharacterData</a></li>
+<li><a href="../../object/ifs/xmlcomment.md.html" class="notranslate">XmlComment</a></li>
+<li><a href="../../object/ifs/xmldocument.md.html" class="notranslate">XmlDocument</a></li>
+<li><a href="../../object/ifs/xmldocumenttype.md.html" class="notranslate">XmlDocumentType</a></li>
+<li><a href="../../object/ifs/xmlelement.md.html" class="notranslate">XmlElement</a></li>
+<li><a href="../../object/ifs/xmlnamednodemap.md.html" class="notranslate">XmlNamedNodeMap</a></li>
+<li><a href="../../object/ifs/xmlnode.md.html" class="notranslate">XmlNode</a></li>
+<li><a href="../../object/ifs/xmlnodelist.md.html" class="notranslate">XmlNodeList</a></li>
+<li><a href="../../object/ifs/xmlprocessinginstruction.md.html" class="notranslate">XmlProcessingInstruction</a></li>
+<li><a href="../../object/ifs/xmltext.md.html" class="notranslate">XmlText</a></li>
+<li><a href="../../object/ifs/zipfile.md.html" class="notranslate">ZipFile</a></li>
+<li><a href="../../object/ifs/object.md.html" class="notranslate">object</a></li>
+</ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_awesome" aria-controls="collapse_awesome"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Mòdul de comunitat </font></font></a></h4></div><div id="collapse_awesome" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="../../../awesome/module/fib-session.md.html" class="notranslate">fib-session</a></li>
+<li><a href="../../../awesome/module/fib-pool.md.html" class="notranslate">fib-pool</a></li>
+<li><a href="../../../awesome/module/fib-orm.md.html" class="notranslate">fib-orm</a></li>
+<li><a href="../../../awesome/module/fib-app.md.html" class="notranslate">fib-app</a></li>
+<li><a href="../../../awesome/module/fib-kv.md.html" class="notranslate">fib-kv</a></li>
+<li><a href="../../../awesome/module/fib-rpc.md.html" class="notranslate">fib-rpc</a></li>
+<li><a href="../../../awesome/module/fib-qr.md.html" class="notranslate">fib-qr</a></li>
+<li><a href="../../../awesome/module/fib-pug.md.html" class="notranslate">fib-pug</a></li>
+<li><a href="../../../awesome/module/ejs.md.html" class="notranslate">ejs</a></li>
+<li><a href="../../../awesome/module/juicer.md.html" class="notranslate">Juicer</a></li>
+<li><a href="../../../awesome/module/highlight.js.md.html" class="notranslate">highlight.js</a></li>
+<li><a href="../../../awesome/module/marked.md.html" class="notranslate">marked</a></li>
+<li><a href="../../../awesome/module/node-cron.md.html" class="notranslate">node-cron</a></li>
+<li><a href="../../../awesome/module/debug.md.html" class="notranslate">debug</a></li>
+<li><a href="../../../awesome/module/benchmark.js.md.html" class="notranslate">benchmark.js</a></li>
+<li><a href="../../../awesome/module/sinon.md.html" class="notranslate">sinon</a></li>
+<li><a href="../../../awesome/module/node-mime.md.html" class="notranslate">node-mime</a></li>
+<li><a href="../../../awesome/module/validatorjs.md.html" class="notranslate">validatorjs</a></li>
+<li><a href="../../../awesome/module/superstruct.md.html" class="notranslate">superstruct</a></li>
+<li><a href="../../../awesome/module/cluster-server.md.html" class="notranslate">cluster-server</a></li>
+<li><a href="../../../awesome/module/synaptic.md.html" class="notranslate">synaptic</a></li>
+<li><a href="../../../awesome/module/source-map.md.html" class="notranslate">source-map</a></li>
+<li><a href="../../../awesome/module/json-format.md.html" class="notranslate">json-format</a></li>
+<li><a href="../../../awesome/module/viz.js.md.html" class="notranslate">viz.js</a></li>
+<li><a href="../../../awesome/module/nomnoml.md.html" class="notranslate">nomnoml</a></li>
+<li><a href="../../../awesome/module/pegjs.md.html" class="notranslate">pegjs</a></li>
+<li><a href="../../../awesome/module/uglify-js.md.html" class="notranslate">uglify-js</a></li>
+<li><a href="../../../awesome/module/js-beautify.md.html" class="notranslate">js-beautify</a></li>
+<li><a href="../../../awesome/module/chalk-animation.md.html" class="notranslate">chalk-animation</a></li>
+<li><a href="../../../awesome/module/jsrsasign.md.html" class="notranslate">jsrsasign</a></li>
+<li><a href="../../../awesome/module/crypto-js.md.html" class="notranslate">crypto-js</a></li>
+<li><a href="../../../awesome/module/ascii-table.md.html" class="notranslate">ascii-table</a></li>
+<li><a href="../../../awesome/module/logstream.md.html" class="notranslate">logstream</a></li>
+<li><a href="../../../awesome/module/ci.md.html" class="notranslate">ci</a></li>
+<li><a href="../../../awesome/module/fs-readdir-recursive.md.html" class="notranslate">fs-readdir-recursive</a></li>
+<li><a href="../../../awesome/module/mkdirp.md.html" class="notranslate">mkdirp</a></li>
+<li><a href="../../../awesome/module/rmdirr.md.html" class="notranslate">rmdirr</a></li>
+<li><a href="../../../awesome/module/detect-port.md.html" class="notranslate">detect-port</a></li>
+<li><a href="../../../awesome/module/bitcoinjs-lib.md.html" class="notranslate">bitcoinjs-lib</a></li>
+<li><a href="../../../awesome/module/rakuten.md.html" class="notranslate">Rakuten</a></li>
+</ul>
+ </div></div></div>  </div></div><div class="content"><div class="social-share share-component" data-sites="weibo,twitter" data-description="分享"></div> <div name="模块-util" data-unique="模块-util"></div><h1 id="模块-util"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Utilització del mòdul</font></font></h1>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Mòdul d’eines comú</font></font></p>
+<div name="对象" data-unique="对象"></div><h2 id="对象"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Objecte</font></font></h2>
+<div name="LruCache" data-unique="LruCache"></div><h3 id="LruCache" class="notranslate">LruCache</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Objecte de memòria cau LRU (menys utilitzat recentment), vegeu </font></font><a href="../../object/ifs/lrucache.md.html" class="notranslate">LruCache</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Objecte.</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>LruCache util.LruCache;
+</code></pre>
+<div name="静态函数" data-unique="静态函数"></div><h2 id="静态函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Funció estàtica</font></font></h2>
+<div name="format" data-unique="format"></div><h3 id="format" class="notranslate">format</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Variables de format segons el format especificat</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">String</span> util.format(<span class="hljs-built_in">String</span> fmt,<font></font>
+    ...args);<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">fmt</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, format de cadena</font></font></li>
+<li><span class="notranslate">args</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: ..., llista de paràmetres opcionals</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><span class="notranslate">String</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorna la cadena formatada</font></font></li>
+</ul>
+<hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Variables de format</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">String</span> util.format(...args);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">args</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: ..., llista de paràmetres opcionals</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><span class="notranslate">String</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorna la cadena formatada</font></font></li>
+</ul>
+<hr>
+<div name="inherits" data-unique="inherits"></div><h3 id="inherits" class="notranslate">inherits</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Hereta el mètode prototip d'un constructor a un altre. </font><font style="vertical-align: inherit;">El prototip del constructor es definirà en un nou objecte creat a partir del superConstructor.</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> util.inherits(Value <span class="hljs-keyword">constructor</span>,<font></font>
+    Value superConstructor);<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">constructor</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Valor, constructor inicial</font></font></li>
+<li><span class="notranslate">superConstructor</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Valor, superclasse heretada</font></font></li>
+</ul>
+<hr>
+<div name="inspect" data-unique="inspect"></div><h3 id="inspect" class="notranslate">inspect</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">El mètode retorna una representació de cadena d’obj, que s’utilitza principalment per a la depuració. </font><font style="vertical-align: inherit;">Es poden utilitzar opcions addicionals per canviar certs aspectes de la cadena de format.</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">String</span> util.inspect(<span class="hljs-built_in">Object</span> obj,
+    <span class="hljs-built_in">Object</span> options = {});
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">obj</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Objecte, especifiqueu l'objecte a processar</font></font></li>
+<li><span class="notranslate">options</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Objecte, especifiqueu les opcions de control de format</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><span class="notranslate">String</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorna la cadena formatada</font></font></li>
+</ul>
+<hr>
+<div name="deprecate" data-unique="deprecate"></div><h3 id="deprecate" class="notranslate">deprecate</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Encapsuleu el mètode donat, aquest mètode només és compatible i no emet cap advertència</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Function</span> util.deprecate(<span class="hljs-built_in">Function</span> fn,
+    <span class="hljs-built_in">String</span> msg,
+    <span class="hljs-built_in">String</span> code = <span class="hljs-string">""</span>);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">fn</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Funció, donat el mètode a encapsular</font></font></li>
+<li><span class="notranslate">msg</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, amb un missatge d'advertència</font></font></li>
+<li><span class="notranslate">code</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, amb el número d'advertència</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><span class="notranslate">Function</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Si resulta l'encapsulació</font></font></li>
+</ul>
+<hr>
+<div name="isEmpty" data-unique="isEmpty"></div><h3 id="isEmpty" class="notranslate">isEmpty</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Comproveu si la variable donada no conté cap valor (no hi ha atributs enumerables)</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Boolean</span> util.isEmpty(Value v);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">v</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Valor, donada la variable que es vol provar</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><span class="notranslate">Boolean</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorna True si està buit</font></font></li>
+</ul>
+<hr>
+<div name="isArray" data-unique="isArray"></div><h3 id="isArray" class="notranslate">isArray</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Comproveu si la variable donada és una matriu</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Boolean</span> util.isArray(Value v);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">v</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Valor, donada la variable que es vol provar</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><span class="notranslate">Boolean</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorna True si és una matriu</font></font></li>
+</ul>
+<hr>
+<div name="isBoolean" data-unique="isBoolean"></div><h3 id="isBoolean" class="notranslate">isBoolean</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Comproveu si la variable donada és booleana</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Boolean</span> util.isBoolean(Value v);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">v</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Valor, donada la variable que es vol provar</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><span class="notranslate">Boolean</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorna True si és booleà</font></font></li>
+</ul>
+<hr>
+<div name="isNull" data-unique="isNull"></div><h3 id="isNull" class="notranslate">isNull</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Comproveu si la variable indicada és nul·la</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Boolean</span> util.isNull(Value v);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">v</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Valor, donada la variable que es vol provar</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><span class="notranslate">Boolean</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorna True si és nul</font></font></li>
+</ul>
+<hr>
+<div name="isNullOrUndefined" data-unique="isNullOrUndefined"></div><h3 id="isNullOrUndefined" class="notranslate">isNullOrUndefined</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Comproveu si la variable indicada és nul·la o sense definir</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Boolean</span> util.isNullOrUndefined(Value v);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">v</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Valor, donada la variable que es vol provar</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><span class="notranslate">Boolean</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorna True si és nul o sense definir</font></font></li>
+</ul>
+<hr>
+<div name="isNumber" data-unique="isNumber"></div><h3 id="isNumber" class="notranslate">isNumber</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Comproveu si la variable donada és un número</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Boolean</span> util.isNumber(Value v);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">v</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Valor, donada la variable que es vol provar</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><span class="notranslate">Boolean</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorna True si és un número</font></font></li>
+</ul>
+<hr>
+<div name="isBigInt" data-unique="isBigInt"></div><h3 id="isBigInt" class="notranslate">isBigInt</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Comproveu si la variable donada és BigInt</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Boolean</span> util.isBigInt(Value v);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">v</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Valor, donada la variable que es vol provar</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><span class="notranslate">Boolean</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorna True si és un número</font></font></li>
+</ul>
+<hr>
+<div name="isString" data-unique="isString"></div><h3 id="isString" class="notranslate">isString</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Comproveu si la variable donada és una cadena</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Boolean</span> util.isString(Value v);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">v</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Valor, donada la variable que es vol provar</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><span class="notranslate">Boolean</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorna True si és una cadena</font></font></li>
+</ul>
+<hr>
+<div name="isUndefined" data-unique="isUndefined"></div><h3 id="isUndefined" class="notranslate">isUndefined</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Comproveu si la variable donada és Sense definir</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Boolean</span> util.isUndefined(Value v);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">v</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Valor, donada la variable que es vol provar</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><span class="notranslate">Boolean</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Torna a True si no està definit</font></font></li>
+</ul>
+<hr>
+<div name="isRegExp" data-unique="isRegExp"></div><h3 id="isRegExp" class="notranslate">isRegExp</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Comproveu si la variable donada és un objecte normal</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Boolean</span> util.isRegExp(Value v);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">v</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Valor, donada la variable que es vol provar</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><span class="notranslate">Boolean</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorna True si és un objecte normal</font></font></li>
+</ul>
+<hr>
+<div name="isObject" data-unique="isObject"></div><h3 id="isObject" class="notranslate">isObject</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Comproveu si la variable donada és un objecte</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Boolean</span> util.isObject(Value v);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">v</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Valor, donada la variable que es vol provar</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><span class="notranslate">Boolean</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorna True si és un objecte</font></font></li>
+</ul>
+<hr>
+<div name="isDate" data-unique="isDate"></div><h3 id="isDate" class="notranslate">isDate</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Comproveu si la variable donada és un objecte de data</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Boolean</span> util.isDate(Value v);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">v</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Valor, donada la variable que es vol provar</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><span class="notranslate">Boolean</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorna True si és un objecte de data</font></font></li>
+</ul>
+<hr>
+<div name="isNativeError" data-unique="isNativeError"></div><h3 id="isNativeError" class="notranslate">isNativeError</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Comproveu si la variable donada és un objecte incorrecte</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Boolean</span> util.isNativeError(Value v);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">v</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Valor, donada la variable que es vol provar</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><span class="notranslate">Boolean</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorna True si és un objecte d'error</font></font></li>
+</ul>
+<hr>
+<div name="isPrimitive" data-unique="isPrimitive"></div><h3 id="isPrimitive" class="notranslate">isPrimitive</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Comproveu si la variable donada és de tipus primitiu</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Boolean</span> util.isPrimitive(Value v);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">v</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Valor, donada la variable que es vol provar</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><span class="notranslate">Boolean</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorna True si és un tipus primitiu</font></font></li>
+</ul>
+<hr>
+<div name="isSymbol" data-unique="isSymbol"></div><h3 id="isSymbol" class="notranslate">isSymbol</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Comproveu si la variable donada és del tipus Símbol</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Boolean</span> util.isSymbol(Value v);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">v</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Valor, donada la variable que es vol provar</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><span class="notranslate">Boolean</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Si és un tipus de símbol, torna True</font></font></li>
+</ul>
+<hr>
+<div name="isDataView" data-unique="isDataView"></div><h3 id="isDataView" class="notranslate">isDataView</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Comproveu si la variable donada és del tipus DataView</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Boolean</span> util.isDataView(Value v);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">v</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Valor, donada la variable que es vol provar</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><span class="notranslate">Boolean</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorna True si és del tipus DataView</font></font></li>
+</ul>
+<hr>
+<div name="isExternal" data-unique="isExternal"></div><h3 id="isExternal" class="notranslate">isExternal</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Comproveu si la variable donada és de tipus Extern</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Boolean</span> util.isExternal(Value v);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">v</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Valor, donada la variable que es vol provar</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><span class="notranslate">Boolean</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Si és un tipus extern, torna True</font></font></li>
+</ul>
+<hr>
+<div name="isMap" data-unique="isMap"></div><h3 id="isMap" class="notranslate">isMap</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Comproveu si la variable indicada és del tipus Mapa</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Boolean</span> util.isMap(Value v);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">v</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Valor, donada la variable que es vol provar</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><span class="notranslate">Boolean</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorna True si és un tipus de mapa</font></font></li>
+</ul>
+<hr>
+<div name="isMapIterator" data-unique="isMapIterator"></div><h3 id="isMapIterator" class="notranslate">isMapIterator</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Comproveu si la variable indicada és del tipus MapIterator</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Boolean</span> util.isMapIterator(Value v);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">v</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Valor, donada la variable que es vol provar</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><span class="notranslate">Boolean</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorna True si és del tipus MapIterator</font></font></li>
+</ul>
+<hr>
+<div name="isPromise" data-unique="isPromise"></div><h3 id="isPromise" class="notranslate">isPromise</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Comproveu si la variable indicada és de tipus Promise</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Boolean</span> util.isPromise(Value v);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">v</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Valor, donada la variable que es vol provar</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><span class="notranslate">Boolean</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorna True si és un tipus Promise</font></font></li>
+</ul>
+<hr>
+<div name="isAsyncFunction" data-unique="isAsyncFunction"></div><h3 id="isAsyncFunction" class="notranslate">isAsyncFunction</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Comproveu si la variable donada és del tipus AsyncFunction</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Boolean</span> util.isAsyncFunction(Value v);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">v</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Valor, donada la variable que es vol provar</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><span class="notranslate">Boolean</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorna True si és del tipus AsyncFunction</font></font></li>
+</ul>
+<hr>
+<div name="isSet" data-unique="isSet"></div><h3 id="isSet" class="notranslate">isSet</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Comproveu si la variable indicada és del tipus Set</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Boolean</span> util.isSet(Value v);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">v</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Valor, donada la variable que es vol provar</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><span class="notranslate">Boolean</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorna True si és un tipus Set</font></font></li>
+</ul>
+<hr>
+<div name="isSetIterator" data-unique="isSetIterator"></div><h3 id="isSetIterator" class="notranslate">isSetIterator</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Comproveu si la variable donada és del tipus SetIterator</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Boolean</span> util.isSetIterator(Value v);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">v</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Valor, donada la variable que es vol provar</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><span class="notranslate">Boolean</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorna True si és del tipus SetIterator</font></font></li>
+</ul>
+<hr>
+<div name="isTypedArray" data-unique="isTypedArray"></div><h3 id="isTypedArray" class="notranslate">isTypedArray</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Comproveu si la variable donada és de tipus TypedArray</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Boolean</span> util.isTypedArray(Value v);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">v</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Valor, donada la variable que es vol provar</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><span class="notranslate">Boolean</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Si és un tipus TypedArray, torna True</font></font></li>
+</ul>
+<hr>
+<div name="isUint8Array" data-unique="isUint8Array"></div><h3 id="isUint8Array" class="notranslate">isUint8Array</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Comproveu si la variable donada és del tipus Uint8Array</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Boolean</span> util.isUint8Array(Value v);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">v</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Valor, donada la variable que es vol provar</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><span class="notranslate">Boolean</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorna True si és del tipus Uint8Array</font></font></li>
+</ul>
+<hr>
+<div name="isFunction" data-unique="isFunction"></div><h3 id="isFunction" class="notranslate">isFunction</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Comproveu si la variable donada és un objecte de funció</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Boolean</span> util.isFunction(Value v);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">v</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Valor, donada la variable que es vol provar</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><span class="notranslate">Boolean</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorna True si és un objecte de funció</font></font></li>
+</ul>
+<hr>
+<div name="isBuffer" data-unique="isBuffer"></div><h3 id="isBuffer" class="notranslate">isBuffer</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Comproveu si la variable donada és una funció </font></font><a href="../../object/ifs/buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Objecte</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Boolean</span> util.isBuffer(Value v);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">v</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Valor, donada la variable que es vol provar</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><span class="notranslate">Boolean</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Si és una funció </font></font><a href="../../object/ifs/buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> L’objecte torna True</font></font></li>
+</ul>
+<hr>
+<div name="has" data-unique="has"></div><h3 id="has" class="notranslate">has</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Consulteu si l'objecte especificat conté la clau donada</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Boolean</span> util.has(Value v,
+    <span class="hljs-built_in">String</span> key);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">v</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Valor, donat l'objecte a consultar</font></font></li>
+<li><span class="notranslate">key</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifiqueu la clau que voleu consultar</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><span class="notranslate">Boolean</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorna una matriu de totes les claus de l'objecte</font></font></li>
+</ul>
+<hr>
+<div name="keys" data-unique="keys"></div><h3 id="keys" class="notranslate">keys</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Consulteu totes les matrius de claus de l'objecte especificat</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Array</span> util.keys(Value v);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">v</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Valor, donat l'objecte a consultar</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><span class="notranslate">Array</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorna una matriu de totes les claus de l'objecte</font></font></li>
+</ul>
+<hr>
+<div name="values" data-unique="values"></div><h3 id="values" class="notranslate">values</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Consulteu la matriu de tots els valors de l'objecte especificat</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Array</span> util.values(Value v);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">v</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Valor, donat l'objecte a consultar</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><span class="notranslate">Array</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorna una matriu de tots els valors de l'objecte</font></font></li>
+</ul>
+<hr>
+<div name="clone" data-unique="clone"></div><h3 id="clone" class="notranslate">clone</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cloneu la variable donada, si és un objecte o una matriu, copieu el contingut al nou objecte</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Value util.clone(Value v);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">v</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Valor, donada la variable a clonar</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><span class="notranslate">Value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorna el resultat clonat</font></font></li>
+</ul>
+<hr>
+<div name="deepFreeze" data-unique="deepFreeze"></div><h3 id="deepFreeze" class="notranslate">deepFreeze</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">No es podrà modificar la congelació d’un objecte, ni de l’objecte congelat ni dels objectes continguts</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> util.deepFreeze(Value v);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">v</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Valor, especifiqueu l'objecte a congelar</font></font></li>
+</ul>
+<hr>
+<div name="extend" data-unique="extend"></div><h3 id="extend" class="notranslate">extend</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Amplieu el valor clau d'un o més objectes a l'objecte especificat</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> Value util.extend(Value v,<font></font>
+    ...objs);<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">v</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Valor, especifiqueu l'objecte que voleu ampliar</font></font></li>
+<li><span class="notranslate">objs</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: ..., especifiqueu un o més objectes per ampliar</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><span class="notranslate">Value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorna el resultat ampliat</font></font></li>
+</ul>
+<hr>
+<div name="_extend" data-unique="_extend"></div><h3 id="_extend" class="notranslate">_extend</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Amplieu el valor clau d’un o més objectes a l’objecte especificat, que és un àlies d’extension</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> Value util._extend(Value v,<font></font>
+    ...objs);<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">v</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Valor, especifiqueu l'objecte que voleu ampliar</font></font></li>
+<li><span class="notranslate">objs</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: ..., especifiqueu un o més objectes per ampliar</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><span class="notranslate">Value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorna el resultat ampliat</font></font></li>
+</ul>
+<hr>
+<div name="pick" data-unique="pick"></div><h3 id="pick" class="notranslate">pick</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Torna a</font></font><a href="../../object/ifs/object.md.html" class="notranslate">object</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Copieu, només filtreu el valor de l'atribut de la clau especificada</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Object</span> util.pick(Value v,<font></font>
+    ...objs);<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">v</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Valor, especifiqueu l'objecte que voleu filtrar</font></font></li>
+<li><span class="notranslate">objs</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: ..., especifiqueu una o més tecles per a la selecció</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorna el resultat filtrat</font></font></li>
+</ul>
+<hr>
+<div name="omit" data-unique="omit"></div><h3 id="omit" class="notranslate">omit</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Torna a</font></font><a href="../../object/ifs/object.md.html" class="notranslate">object</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Copieu, només heu d'excloure el valor de l'atribut de la clau especificada</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Object</span> util.omit(Value v,<font></font>
+    ...keys);<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">v</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Valor, especifiqueu l'objecte que voleu filtrar</font></font></li>
+<li><span class="notranslate">keys</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: ..., especifiqueu una o més claus per excloure</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorna els resultats exclosos</font></font></li>
+</ul>
+<hr>
+<div name="first" data-unique="first"></div><h3 id="first" class="notranslate">first</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Obteniu el primer element de la matriu</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Value util.first(Value v);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">v</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Valor, donada la matriu que es vol obtenir</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><span class="notranslate">Value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorna l'element recuperat</font></font></li>
+</ul>
+<hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Obteniu els primers elements múltiples de la matriu</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> Value util.first(Value v,<font></font>
+    Integer n);<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">v</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Valor, donada la matriu que es vol obtenir</font></font></li>
+<li><span class="notranslate">n</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu el nombre d’elements que s’han d’obtenir</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><span class="notranslate">Value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorna la matriu d'elements obtinguda</font></font></li>
+</ul>
+<hr>
+<div name="last" data-unique="last"></div><h3 id="last" class="notranslate">last</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Obteniu el primer element de la matriu</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Value util.last(Value v);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">v</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Valor, donada la matriu que es vol obtenir</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><span class="notranslate">Value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorna l'element recuperat</font></font></li>
+</ul>
+<hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Obteniu diversos elements al final de la matriu</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> Value util.last(Value v,<font></font>
+    Integer n);<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">v</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Valor, donada la matriu que es vol obtenir</font></font></li>
+<li><span class="notranslate">n</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu el nombre d’elements que s’han d’obtenir</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><span class="notranslate">Value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorna la matriu d'elements obtinguda</font></font></li>
+</ul>
+<hr>
+<div name="unique" data-unique="unique"></div><h3 id="unique" class="notranslate">unique</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Obteniu una còpia dels elements de la matriu després de la desduplicació</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Array</span> util.unique(Value v,
+    <span class="hljs-built_in">Boolean</span> sorted = <span class="hljs-literal">false</span>);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">v</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Valor, donat el quadre que es deduplicarà</font></font></li>
+<li><span class="notranslate">sorted</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Booleà, especifiqueu si la matriu està ordenada o no, si especifiqueu la classificació de la matriu, s'utilitzarà un algorisme ràpid</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><span class="notranslate">Array</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Torneu la matriu després d'eliminar els elements duplicats</font></font></li>
+</ul>
+<hr>
+<div name="union" data-unique="union"></div><h3 id="union" class="notranslate">union</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Combineu els valors d'una o més matrius en una matriu amb valors únics</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Array</span> util.union(...arrs);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">arrs</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: ..., especifiqueu una o més matrius per combinar</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><span class="notranslate">Array</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorna el resultat combinat</font></font></li>
+</ul>
+<hr>
+<div name="intersection" data-unique="intersection"></div><h3 id="intersection" class="notranslate">intersection</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Retorna la intersecció d'una matriu que conté arr i que exclou un o més elements de matriu</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Array</span> util.intersection(...arrs);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">arrs</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: ..., especifiqueu una o més matrius per calcular la intersecció</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><span class="notranslate">Array</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorna el resultat de calcular la intersecció</font></font></li>
+</ul>
+<hr>
+<div name="flatten" data-unique="flatten"></div><h3 id="flatten" class="notranslate">flatten</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Convertiu una matriu amb diversos nivells de nidificació (la nidificació pot ser qualsevol nombre de nivells) en una matriu amb un sol nivell. </font><font style="vertical-align: inherit;">Si passeu el paràmetre poc profund, la matriu només reduirà la nidificació unidimensional.</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Array</span> util.flatten(Value arr,
+    <span class="hljs-built_in">Boolean</span> shallow = <span class="hljs-literal">false</span>);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">arr</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Valor, especifiqueu la matriu que voleu convertir</font></font></li>
+<li><span class="notranslate">shallow</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Booleà, especifiqueu si voleu reduir només l’anidament unidimensional, el valor per defecte és fals</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><span class="notranslate">Array</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Torneu el resultat de la conversió</font></font></li>
+</ul>
+<hr>
+<div name="without" data-unique="without"></div><h3 id="without" class="notranslate">without</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Retorna una matriu que conté un o més elements exclosos de la matriu arr</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Array</span> util.without(Value arr,<font></font>
+    ...els);<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">arr</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Valor, especifiqueu la matriu que voleu excloure</font></font></li>
+<li><span class="notranslate">els</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: ..., especifiqueu un o més elements per excloure</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><span class="notranslate">Array</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorna els resultats exclosos</font></font></li>
+</ul>
+<hr>
+<div name="difference" data-unique="difference"></div><h3 id="difference" class="notranslate">difference</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Retorna una matriu que conté la matriu arr i exclou l'element sense matriu</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Array</span> util.difference(<span class="hljs-built_in">Array</span> list,<font></font>
+    ...arrs);<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">list</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Matriu, especifiqueu la matriu a excloure</font></font></li>
+<li><span class="notranslate">arrs</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: ..., especifiqueu una o més matrius per excloure</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><span class="notranslate">Array</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorna els resultats exclosos</font></font></li>
+</ul>
+<hr>
+<div name="each" data-unique="each"></div><h3 id="each" class="notranslate">each</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Travesseu tots els elements de la llista i publiqueu-los en ordre amb el recorregut. </font><font style="vertical-align: inherit;">Si es passa el paràmetre context, l'iterador està lligat a l'objecte context. </font><font style="vertical-align: inherit;">Cada trucada a l'iterador passarà tres paràmetres: (element, índex, llista)</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">static</span> Value util.each(Value list,
+    <span class="hljs-built_in">Function</span> iterator,<font></font>
+    Value context = <span class="hljs-literal">undefined</span>);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">list</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Valor, especifiqueu la llista o l'objecte que voleu recórrer</font></font></li>
+<li><span class="notranslate">iterator</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Funció, especifiqueu la funció de devolució de trucada utilitzada per a la travessia</font></font></li>
+<li><span class="notranslate">context</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Valor, especifiqueu l'objecte de context lligat en trucar a l'iterador</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><span class="notranslate">Value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Torneu la llista mateixa</font></font></li>
+</ul>
+<hr>
+<div name="map" data-unique="map"></div><h3 id="map" class="notranslate">map</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Mitjançant la funció de transformació (iterador), cada valor de la llista s’assigna a una nova matriu. </font><font style="vertical-align: inherit;">Si es passa el paràmetre context, l'iterador està lligat a l'objecte context. </font><font style="vertical-align: inherit;">Cada trucada a l'iterador passarà tres paràmetres: (element, índex, llista)</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Array</span> util.map(Value list,
+    <span class="hljs-built_in">Function</span> iterator,<font></font>
+    Value context = <span class="hljs-literal">undefined</span>);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">list</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Valor, especifiqueu la llista o l'objecte que voleu transformar</font></font></li>
+<li><span class="notranslate">iterator</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Funció, especifiqueu la funció de devolució de trucada utilitzada per a la transformació</font></font></li>
+<li><span class="notranslate">context</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Valor, especifiqueu l'objecte de context lligat en trucar a l'iterador</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><span class="notranslate">Array</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorna el resultat de la transformació</font></font></li>
+</ul>
+<hr>
+<div name="reduce" data-unique="reduce"></div><h3 id="reduce" class="notranslate">reduce</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Reduïu els elements de la llista a un valor únic. </font><font style="vertical-align: inherit;">Si es passa el paràmetre context, l'iterador està lligat a l'objecte context. </font><font style="vertical-align: inherit;">Cada trucada a l'iterador passarà tres paràmetres: (nota, element, índex, llista)</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4</div><span class="hljs-keyword">static</span> Value util.reduce(Value list,
+    <span class="hljs-built_in">Function</span> iterator,<font></font>
+    Value memo,<font></font>
+    Value context = <span class="hljs-literal">undefined</span>);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">list</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Valor, especifiqueu la llista o l'objecte que s'ha de resoldre</font></font></li>
+<li><span class="notranslate">iterator</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Funció, especifiqueu la funció de devolució de trucada utilitzada per a la resolució</font></font></li>
+<li><span class="notranslate">memo</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Valor, especifiqueu el valor inicial de la resolució</font></font></li>
+<li><span class="notranslate">context</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Valor, especifiqueu l'objecte de context lligat en trucar a l'iterador</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><span class="notranslate">Value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorna el resultat de la resolució</font></font></li>
+</ul>
+<hr>
+<div name="parseArgs" data-unique="parseArgs"></div><h3 id="parseArgs" class="notranslate">parseArgs</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Analitzeu la cadena de línia d'ordres i torneu la llista de paràmetres</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> NArray util.parseArgs(<span class="hljs-built_in">String</span> command);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">command</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifiqueu la cadena de línia d'ordres a analitzar</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><span class="notranslate">NArray</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorna la llista de paràmetres analitzats</font></font></li>
+</ul>
+<hr>
+<div name="compile" data-unique="compile"></div><h3 id="compile" class="notranslate">compile</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Compileu script a codi binari</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">static</span> Buffer util.compile(<span class="hljs-built_in">String</span> srcname,
+    <span class="hljs-built_in">String</span> script,<font></font>
+    Integer mode = <span class="hljs-number">0</span>);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">srcname</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifiqueu el nom de l'script que voleu afegir</font></font></li>
+<li><span class="notranslate">script</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifiqueu el codi de seqüència d'ordres que voleu compilar</font></font></li>
+<li><span class="notranslate">mode</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, mode de compilació, 0: mòdul, 1: script, 2: treballador, el valor per defecte és 0</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><a href="../../object/ifs/buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorna el codi binari compilat</font></font></li>
+</ul>
+<p><a href="util.md.html#compile" class="notranslate">util.compile</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">L'escriptura es pot compilar en un bloc de dades intern en execució v8 (codi d'execució que no és màquina). </font><font style="vertical-align: inherit;">El codi compilat es pot carregar i executar directament per execució i requerir-lo després de desar-lo com a * .jsc.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Després de la compilació, el codi de destinació no podrà obtenir el codi font al revés i el programa que depèn de Function.toString no s’executarà normalment.</font></font></p>
+<hr>
+<div name="sync" data-unique="sync"></div><h3 id="sync" class="notranslate">sync</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ajusteu el mètode de devolució de trucada o asincronització com a trucada síncrona</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Function</span> util.sync(<span class="hljs-built_in">Function</span> func,
+    <span class="hljs-built_in">Boolean</span> async_func = <span class="hljs-literal">false</span>);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">func</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Funció, donat el mètode que cal embolicar</font></font></li>
+<li><span class="notranslate">async_func</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Booleà, especifiqueu per processar funcions com a funció asíncron, si és falsa, es jutjarà automàticament</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><span class="notranslate">Function</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Torneu al mètode d'operació síncrona</font></font></li>
+</ul>
+<p><a href="util.md.html#sync" class="notranslate">util.sync</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Tracteu el mètode de devolució de trucada o mètode asincronitzat com un mètode de sincronització per facilitar la trucada.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">L'exemple de devolució de trucada és el següent:</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11</div><span class="hljs-comment">// callback</span>
+<span class="hljs-keyword">var</span> util = <span class="hljs-built_in">require</span>(<span class="hljs-string">'util'</span>);<font></font>
+<font></font>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">cb_test</span>(<span class="hljs-params">a, b, cb</span>) </span>{<font></font>
+    setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {<font></font>
+        cb(<span class="hljs-literal">null</span>, a + b);<font></font>
+    }, <span class="hljs-number">100</span>);<font></font>
+}<font></font>
+<font></font>
+<span class="hljs-keyword">var</span> fn_sync = util.sync(cb_test);
+<span class="hljs-built_in">console</span>.log(fn_sync(<span class="hljs-number">100</span>, <span class="hljs-number">200</span>));
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">L'exemple asíncron és el següent:</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9</div><span class="hljs-comment">// async/await</span>
+<span class="hljs-keyword">var</span> util = <span class="hljs-built_in">require</span>(<span class="hljs-string">'util'</span>);<font></font>
+<font></font>
+<span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">async_test</span>(<span class="hljs-params">a, b</span>) </span>{
+    <span class="hljs-keyword">return</span> a + b;<font></font>
+}<font></font>
+<font></font>
+<span class="hljs-keyword">var</span> fn_sync = util.sync(async_test);
+<span class="hljs-built_in">console</span>.log(fn_sync(<span class="hljs-number">100</span>, <span class="hljs-number">200</span>));
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Per a les funcions que retornen promeses que no estan marcades com asincronitzades, podeu especificar manualment el mode de sincronització:</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11</div><span class="hljs-comment">// async/await</span>
+<span class="hljs-keyword">var</span> util = <span class="hljs-built_in">require</span>(<span class="hljs-string">'util'</span>);<font></font>
+<font></font>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">async_test</span>(<span class="hljs-params">a, b</span>) </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">resolve, reject</span>) </span>{<font></font>
+        resolve(a + b);<font></font>
+    });<font></font>
+}<font></font>
+<font></font>
+<span class="hljs-keyword">var</span> fn_sync = util.sync(async_test, <span class="hljs-literal">true</span>);
+<span class="hljs-built_in">console</span>.log(fn_sync(<span class="hljs-number">100</span>, <span class="hljs-number">200</span>));
+</code></pre>
+<hr>
+<div name="buildInfo" data-unique="buildInfo"></div><h3 id="buildInfo" class="notranslate">buildInfo</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Consulteu la informació actual sobre la versió del component i del motor</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Object</span> util.buildInfo();
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorna l'objecte de la versió del component</font></font></li>
+</ul>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24</div>{
+    <span class="hljs-string">"fibjs"</span>: <span class="hljs-string">"0.25.0"</span>,
+    <span class="hljs-string">"clang"</span>: <span class="hljs-string">"9.1"</span>,
+    <span class="hljs-string">"date"</span>: <span class="hljs-string">"Jun 12 2018 07:22:40"</span>,
+    <span class="hljs-string">"vender"</span>: {
+        <span class="hljs-string">"ev"</span>: <span class="hljs-string">"4.24"</span>,
+        <span class="hljs-string">"expat"</span>: <span class="hljs-string">"2.2.5"</span>,
+        <span class="hljs-string">"gd"</span>: <span class="hljs-string">"2.2.4"</span>,
+        <span class="hljs-string">"jpeg"</span>: <span class="hljs-string">"8.3"</span>,
+        <span class="hljs-string">"leveldb"</span>: <span class="hljs-string">"1.17"</span>,
+        <span class="hljs-string">"mongo"</span>: <span class="hljs-string">"0.7"</span>,
+        <span class="hljs-string">"pcre"</span>: <span class="hljs-string">"8.21"</span>,
+        <span class="hljs-string">"png"</span>: <span class="hljs-string">"1.5.4"</span>,
+        <span class="hljs-string">"mbedtls"</span>: <span class="hljs-string">"2.6.1"</span>,
+        <span class="hljs-string">"snappy"</span>: <span class="hljs-string">"1.1.2"</span>,
+        <span class="hljs-string">"sqlite"</span>: <span class="hljs-string">"3.23.0"</span>,
+        <span class="hljs-string">"tiff"</span>: <span class="hljs-string">"3.9.5"</span>,
+        <span class="hljs-string">"uuid"</span>: <span class="hljs-string">"1.6.2"</span>,
+        <span class="hljs-string">"v8"</span>: <span class="hljs-string">"6.7.288.20"</span>,
+        <span class="hljs-string">"v8-snapshot"</span>: <span class="hljs-literal">true</span>,
+        <span class="hljs-string">"zlib"</span>: <span class="hljs-string">"1.2.7"</span>,
+        <span class="hljs-string">"zmq"</span>: <span class="hljs-string">"3.1"</span><font></font>
+    }<font></font>
+}<font></font>
+</code></pre>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org | </font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Doneu-nos suport</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip647420"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip647420" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Feu clic per tornar a la pàgina superior</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>

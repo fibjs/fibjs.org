@@ -1,0 +1,568 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../../../imgs/icon.png"><title>Mòdul zlib-JavaScript a Fiber</title><link href="../../../../../css/common.css" rel="stylesheet"><link href="../../../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Commuta la navegació</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../../../index.html"><img src="../../../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../../../index.html">HOME</a></li><li><a href="../../../guide/readme.md.html">GUIDE</a></li><li><a href="../readme.md.html">MODULE</a></li><li><a href="../../object/readme.md.html">OBJECT</a></li><li><a href="../../../awesome/readme.md.html">AWESOME</a></li><li><a href="../../../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../../../docs/manual/module/ifs/zlib.md.html">中文</a> <a href="../../../../../ca/docs/manual/module/ifs/zlib.md.html">Catalan</a> <a href="../../../../../de/docs/manual/module/ifs/zlib.md.html">Deutsch</a> <a href="../../../../../en/docs/manual/module/ifs/zlib.md.html">English</a> <a href="../../../../../es/docs/manual/module/ifs/zlib.md.html">Español</a> <a href="../../../../../fr/docs/manual/module/ifs/zlib.md.html">Français</a> <a href="../../../../../gl/docs/manual/module/ifs/zlib.md.html">Galego</a> <a href="../../../../../it/docs/manual/module/ifs/zlib.md.html">Italiano</a> <a href="../../../../../ru/docs/manual/module/ifs/zlib.md.html">Русский</a> <a href="../../../../../ja/docs/manual/module/ifs/zlib.md.html">日本語</a> <a href="../../../../../ko/docs/manual/module/ifs/zlib.md.html">한국어</a> <a href="../../../../../zh-tw/docs/manual/module/ifs/zlib.md.html">繁體中文</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Mòdul mòdul bàsic </font></font></span><div class="search"><span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input type="text" class="searchbox ds-input" placeholder="Cerca" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-label="entrada de cerca" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Avenir, &quot;Segoe UI&quot;, Arial, &quot;Hiragino Sans GB&quot;, 冬青黑, &quot;Microsoft YaHei&quot;, 微软雅黑, SimSun, 宋体, Helvetica, Tahoma, &quot;Arial sans-serif&quot;; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div class="ds-dataset-1"></div></span></span></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Pàgina inicial</font></font></a></li><li><a href="../readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Mòdul bàsic </font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Mòdul zlib </font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Guia de desenvolupament </font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="../../../guide/about.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Què és fibjs?</font></font></a></li>
+<li><a href="../../../guide/install.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Instal·lació i entorn operatiu</font></font></a></li>
+<li><a href="../../../guide/hello.md.html" class="notranslate">hello, world</a></li>
+<li><a href="../../../guide/test.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Una bona vida comença amb la prova</font></font></a></li>
+<li><a href="../../../guide/profiler.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Troba l'assassí del rendiment</font></font></a></li>
+<li><a href="../../../guide/desktop.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Desenvolupeu ràpidament aplicacions d'escriptori</font></font></a></li>
+<li><a href="../../../guide/server-hot-update.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Actualització actualitzada del mòdul de servidor</font></font></a></li>
+<li><a href="../../../guide/host-routes.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Encaminament de noms de domini</font></font></a></li>
+<li><a href="../../../guide/x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ús del certificat X509 a fibjs</font></font></a></li>
+<li><a href="../../../guide/contribute.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Afegeix un mòdul natiu</font></font></a></li>
+</ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_module" aria-controls="collapse_module"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Mòdul bàsic </font></font></a></h4></div><div id="collapse_module" class="panel-collapse collapse in" aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="assert.md.html" class="notranslate">assert</a></li>
+<li><a href="base32.md.html" class="notranslate">base32</a></li>
+<li><a href="base64.md.html" class="notranslate">base64</a></li>
+<li><a href="base64vlq.md.html" class="notranslate">base64vlq</a></li>
+<li><a href="bson.md.html" class="notranslate">bson</a></li>
+<li><a href="child_process.md.html" class="notranslate">child_process</a></li>
+<li><a href="console.md.html" class="notranslate">console</a></li>
+<li><a href="constants.md.html" class="notranslate">constants</a></li>
+<li><a href="coroutine.md.html" class="notranslate">coroutine</a></li>
+<li><a href="crypto.md.html" class="notranslate">crypto</a></li>
+<li><a href="db.md.html" class="notranslate">db</a></li>
+<li><a href="dgram.md.html" class="notranslate">dgram</a></li>
+<li><a href="dns.md.html" class="notranslate">dns</a></li>
+<li><a href="encoding.md.html" class="notranslate">encoding</a></li>
+<li><a href="fs.md.html" class="notranslate">fs</a></li>
+<li><a href="gd.md.html" class="notranslate">gd</a></li>
+<li><a href="global.md.html" class="notranslate">global</a></li>
+<li><a href="gui.md.html" class="notranslate">gui</a></li>
+<li><a href="hash.md.html" class="notranslate">hash</a></li>
+<li><a href="hex.md.html" class="notranslate">hex</a></li>
+<li><a href="http.md.html" class="notranslate">http</a></li>
+<li><a href="iconv.md.html" class="notranslate">iconv</a></li>
+<li><a href="io.md.html" class="notranslate">io</a></li>
+<li><a href="json.md.html" class="notranslate">json</a></li>
+<li><a href="mq.md.html" class="notranslate">mq</a></li>
+<li><a href="msgpack.md.html" class="notranslate">msgpack</a></li>
+<li><a href="net.md.html" class="notranslate">net</a></li>
+<li><a href="os.md.html" class="notranslate">os</a></li>
+<li><a href="path.md.html" class="notranslate">path</a></li>
+<li><a href="path_posix.md.html" class="notranslate">path_posix</a></li>
+<li><a href="path_win32.md.html" class="notranslate">path_win32</a></li>
+<li><a href="process.md.html" class="notranslate">process</a></li>
+<li><a href="profiler.md.html" class="notranslate">profiler</a></li>
+<li><a href="punycode.md.html" class="notranslate">punycode</a></li>
+<li><a href="querystring.md.html" class="notranslate">querystring</a></li>
+<li><a href="registry.md.html" class="notranslate">registry</a></li>
+<li><a href="ssl.md.html" class="notranslate">ssl</a></li>
+<li><a href="string_decoder.md.html" class="notranslate">string_decoder</a></li>
+<li><a href="test.md.html" class="notranslate">test</a></li>
+<li><a href="timers.md.html" class="notranslate">timers</a></li>
+<li><a href="tty.md.html" class="notranslate">tty</a></li>
+<li><a href="url.md.html" class="notranslate">url</a></li>
+<li><a href="util.md.html" class="notranslate">util</a></li>
+<li><a href="uuid.md.html" class="notranslate">uuid</a></li>
+<li><a href="vm.md.html" class="notranslate">vm</a></li>
+<li><a href="ws.md.html" class="notranslate">ws</a></li>
+<li><a href="xml.md.html" class="notranslate">xml</a></li>
+<li><a href="zip.md.html" class="notranslate">zip</a></li>
+<li class="active"><a href="zlib.md.html" class="notranslate">zlib</a></li>
+</ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_object" aria-controls="collapse_object"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Objectes incorporats </font></font></a></h4></div><div id="collapse_object" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="../../object/ifs/buffer.md.html" class="notranslate">Buffer</a></li>
+<li><a href="../../object/ifs/bufferedstream.md.html" class="notranslate">BufferedStream</a></li>
+<li><a href="../../object/ifs/chain.md.html" class="notranslate">Chain</a></li>
+<li><a href="../../object/ifs/childprocess.md.html" class="notranslate">ChildProcess</a></li>
+<li><a href="../../object/ifs/cipher.md.html" class="notranslate">Cipher</a></li>
+<li><a href="../../object/ifs/condition.md.html" class="notranslate">Condition</a></li>
+<li><a href="../../object/ifs/dbconnection.md.html" class="notranslate">DbConnection</a></li>
+<li><a href="../../object/ifs/dgramsocket.md.html" class="notranslate">DgramSocket</a></li>
+<li><a href="../../object/ifs/digest.md.html" class="notranslate">Digest</a></li>
+<li><a href="../../object/ifs/event.md.html" class="notranslate">Event</a></li>
+<li><a href="../../object/ifs/eventemitter.md.html" class="notranslate">EventEmitter</a></li>
+<li><a href="../../object/ifs/fswatcher.md.html" class="notranslate">FSWatcher</a></li>
+<li><a href="../../object/ifs/fiber.md.html" class="notranslate">Fiber</a></li>
+<li><a href="../../object/ifs/file.md.html" class="notranslate">File</a></li>
+<li><a href="../../object/ifs/handler.md.html" class="notranslate">Handler</a></li>
+<li><a href="../../object/ifs/heapgraphedge.md.html" class="notranslate">HeapGraphEdge</a></li>
+<li><a href="../../object/ifs/heapgraphnode.md.html" class="notranslate">HeapGraphNode</a></li>
+<li><a href="../../object/ifs/heapsnapshot.md.html" class="notranslate">HeapSnapshot</a></li>
+<li><a href="../../object/ifs/httpclient.md.html" class="notranslate">HttpClient</a></li>
+<li><a href="../../object/ifs/httpcollection.md.html" class="notranslate">HttpCollection</a></li>
+<li><a href="../../object/ifs/httpcookie.md.html" class="notranslate">HttpCookie</a></li>
+<li><a href="../../object/ifs/httphandler.md.html" class="notranslate">HttpHandler</a></li>
+<li><a href="../../object/ifs/httpmessage.md.html" class="notranslate">HttpMessage</a></li>
+<li><a href="../../object/ifs/httprepeater.md.html" class="notranslate">HttpRepeater</a></li>
+<li><a href="../../object/ifs/httprequest.md.html" class="notranslate">HttpRequest</a></li>
+<li><a href="../../object/ifs/httpresponse.md.html" class="notranslate">HttpResponse</a></li>
+<li><a href="../../object/ifs/httpserver.md.html" class="notranslate">HttpServer</a></li>
+<li><a href="../../object/ifs/httpuploaddata.md.html" class="notranslate">HttpUploadData</a></li>
+<li><a href="../../object/ifs/httpsserver.md.html" class="notranslate">HttpsServer</a></li>
+<li><a href="../../object/ifs/image.md.html" class="notranslate">Image</a></li>
+<li><a href="../../object/ifs/leveldb.md.html" class="notranslate">LevelDB</a></li>
+<li><a href="../../object/ifs/lock.md.html" class="notranslate">Lock</a></li>
+<li><a href="../../object/ifs/lrucache.md.html" class="notranslate">LruCache</a></li>
+<li><a href="../../object/ifs/mssql.md.html" class="notranslate">MSSQL</a></li>
+<li><a href="../../object/ifs/memorystream.md.html" class="notranslate">MemoryStream</a></li>
+<li><a href="../../object/ifs/message.md.html" class="notranslate">Message</a></li>
+<li><a href="../../object/ifs/mongocollection.md.html" class="notranslate">MongoCollection</a></li>
+<li><a href="../../object/ifs/mongocursor.md.html" class="notranslate">MongoCursor</a></li>
+<li><a href="../../object/ifs/mongodb.md.html" class="notranslate">MongoDB</a></li>
+<li><a href="../../object/ifs/mongoid.md.html" class="notranslate">MongoID</a></li>
+<li><a href="../../object/ifs/mysql.md.html" class="notranslate">MySQL</a></li>
+<li><a href="../../object/ifs/pkey.md.html" class="notranslate">PKey</a></li>
+<li><a href="../../object/ifs/rangestream.md.html" class="notranslate">RangeStream</a></li>
+<li><a href="../../object/ifs/redis.md.html" class="notranslate">Redis</a></li>
+<li><a href="../../object/ifs/redishash.md.html" class="notranslate">RedisHash</a></li>
+<li><a href="../../object/ifs/redislist.md.html" class="notranslate">RedisList</a></li>
+<li><a href="../../object/ifs/redisset.md.html" class="notranslate">RedisSet</a></li>
+<li><a href="../../object/ifs/redissortedset.md.html" class="notranslate">RedisSortedSet</a></li>
+<li><a href="../../object/ifs/routing.md.html" class="notranslate">Routing</a></li>
+<li><a href="../../object/ifs/sqlite.md.html" class="notranslate">SQLite</a></li>
+<li><a href="../../object/ifs/sandbox.md.html" class="notranslate">SandBox</a></li>
+<li><a href="../../object/ifs/seekablestream.md.html" class="notranslate">SeekableStream</a></li>
+<li><a href="../../object/ifs/semaphore.md.html" class="notranslate">Semaphore</a></li>
+<li><a href="../../object/ifs/service.md.html" class="notranslate">Service</a></li>
+<li><a href="../../object/ifs/smtp.md.html" class="notranslate">Smtp</a></li>
+<li><a href="../../object/ifs/socket.md.html" class="notranslate">Socket</a></li>
+<li><a href="../../object/ifs/sslhandler.md.html" class="notranslate">SslHandler</a></li>
+<li><a href="../../object/ifs/sslserver.md.html" class="notranslate">SslServer</a></li>
+<li><a href="../../object/ifs/sslsocket.md.html" class="notranslate">SslSocket</a></li>
+<li><a href="../../object/ifs/stat.md.html" class="notranslate">Stat</a></li>
+<li><a href="../../object/ifs/statswatcher.md.html" class="notranslate">StatsWatcher</a></li>
+<li><a href="../../object/ifs/stream.md.html" class="notranslate">Stream</a></li>
+<li><a href="../../object/ifs/stringdecoder.md.html" class="notranslate">StringDecoder</a></li>
+<li><a href="../../object/ifs/tcpserver.md.html" class="notranslate">TcpServer</a></li>
+<li><a href="../../object/ifs/timer.md.html" class="notranslate">Timer</a></li>
+<li><a href="../../object/ifs/urlobject.md.html" class="notranslate">UrlObject</a></li>
+<li><a href="../../object/ifs/websocket.md.html" class="notranslate">WebSocket</a></li>
+<li><a href="../../object/ifs/websocketmessage.md.html" class="notranslate">WebSocketMessage</a></li>
+<li><a href="../../object/ifs/webview.md.html" class="notranslate">WebView</a></li>
+<li><a href="../../object/ifs/worker.md.html" class="notranslate">Worker</a></li>
+<li><a href="../../object/ifs/x509cert.md.html" class="notranslate">X509Cert</a></li>
+<li><a href="../../object/ifs/x509crl.md.html" class="notranslate">X509Crl</a></li>
+<li><a href="../../object/ifs/x509req.md.html" class="notranslate">X509Req</a></li>
+<li><a href="../../object/ifs/xmlattr.md.html" class="notranslate">XmlAttr</a></li>
+<li><a href="../../object/ifs/xmlcdatasection.md.html" class="notranslate">XmlCDATASection</a></li>
+<li><a href="../../object/ifs/xmlcharacterdata.md.html" class="notranslate">XmlCharacterData</a></li>
+<li><a href="../../object/ifs/xmlcomment.md.html" class="notranslate">XmlComment</a></li>
+<li><a href="../../object/ifs/xmldocument.md.html" class="notranslate">XmlDocument</a></li>
+<li><a href="../../object/ifs/xmldocumenttype.md.html" class="notranslate">XmlDocumentType</a></li>
+<li><a href="../../object/ifs/xmlelement.md.html" class="notranslate">XmlElement</a></li>
+<li><a href="../../object/ifs/xmlnamednodemap.md.html" class="notranslate">XmlNamedNodeMap</a></li>
+<li><a href="../../object/ifs/xmlnode.md.html" class="notranslate">XmlNode</a></li>
+<li><a href="../../object/ifs/xmlnodelist.md.html" class="notranslate">XmlNodeList</a></li>
+<li><a href="../../object/ifs/xmlprocessinginstruction.md.html" class="notranslate">XmlProcessingInstruction</a></li>
+<li><a href="../../object/ifs/xmltext.md.html" class="notranslate">XmlText</a></li>
+<li><a href="../../object/ifs/zipfile.md.html" class="notranslate">ZipFile</a></li>
+<li><a href="../../object/ifs/object.md.html" class="notranslate">object</a></li>
+</ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_awesome" aria-controls="collapse_awesome"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Mòdul de comunitat </font></font></a></h4></div><div id="collapse_awesome" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="../../../awesome/module/fib-session.md.html" class="notranslate">fib-session</a></li>
+<li><a href="../../../awesome/module/fib-pool.md.html" class="notranslate">fib-pool</a></li>
+<li><a href="../../../awesome/module/fib-orm.md.html" class="notranslate">fib-orm</a></li>
+<li><a href="../../../awesome/module/fib-app.md.html" class="notranslate">fib-app</a></li>
+<li><a href="../../../awesome/module/fib-kv.md.html" class="notranslate">fib-kv</a></li>
+<li><a href="../../../awesome/module/fib-rpc.md.html" class="notranslate">fib-rpc</a></li>
+<li><a href="../../../awesome/module/fib-qr.md.html" class="notranslate">fib-qr</a></li>
+<li><a href="../../../awesome/module/fib-pug.md.html" class="notranslate">fib-pug</a></li>
+<li><a href="../../../awesome/module/ejs.md.html" class="notranslate">ejs</a></li>
+<li><a href="../../../awesome/module/juicer.md.html" class="notranslate">Juicer</a></li>
+<li><a href="../../../awesome/module/highlight.js.md.html" class="notranslate">highlight.js</a></li>
+<li><a href="../../../awesome/module/marked.md.html" class="notranslate">marked</a></li>
+<li><a href="../../../awesome/module/node-cron.md.html" class="notranslate">node-cron</a></li>
+<li><a href="../../../awesome/module/debug.md.html" class="notranslate">debug</a></li>
+<li><a href="../../../awesome/module/benchmark.js.md.html" class="notranslate">benchmark.js</a></li>
+<li><a href="../../../awesome/module/sinon.md.html" class="notranslate">sinon</a></li>
+<li><a href="../../../awesome/module/node-mime.md.html" class="notranslate">node-mime</a></li>
+<li><a href="../../../awesome/module/validatorjs.md.html" class="notranslate">validatorjs</a></li>
+<li><a href="../../../awesome/module/superstruct.md.html" class="notranslate">superstruct</a></li>
+<li><a href="../../../awesome/module/cluster-server.md.html" class="notranslate">cluster-server</a></li>
+<li><a href="../../../awesome/module/synaptic.md.html" class="notranslate">synaptic</a></li>
+<li><a href="../../../awesome/module/source-map.md.html" class="notranslate">source-map</a></li>
+<li><a href="../../../awesome/module/json-format.md.html" class="notranslate">json-format</a></li>
+<li><a href="../../../awesome/module/viz.js.md.html" class="notranslate">viz.js</a></li>
+<li><a href="../../../awesome/module/nomnoml.md.html" class="notranslate">nomnoml</a></li>
+<li><a href="../../../awesome/module/pegjs.md.html" class="notranslate">pegjs</a></li>
+<li><a href="../../../awesome/module/uglify-js.md.html" class="notranslate">uglify-js</a></li>
+<li><a href="../../../awesome/module/js-beautify.md.html" class="notranslate">js-beautify</a></li>
+<li><a href="../../../awesome/module/chalk-animation.md.html" class="notranslate">chalk-animation</a></li>
+<li><a href="../../../awesome/module/jsrsasign.md.html" class="notranslate">jsrsasign</a></li>
+<li><a href="../../../awesome/module/crypto-js.md.html" class="notranslate">crypto-js</a></li>
+<li><a href="../../../awesome/module/ascii-table.md.html" class="notranslate">ascii-table</a></li>
+<li><a href="../../../awesome/module/logstream.md.html" class="notranslate">logstream</a></li>
+<li><a href="../../../awesome/module/ci.md.html" class="notranslate">ci</a></li>
+<li><a href="../../../awesome/module/fs-readdir-recursive.md.html" class="notranslate">fs-readdir-recursive</a></li>
+<li><a href="../../../awesome/module/mkdirp.md.html" class="notranslate">mkdirp</a></li>
+<li><a href="../../../awesome/module/rmdirr.md.html" class="notranslate">rmdirr</a></li>
+<li><a href="../../../awesome/module/detect-port.md.html" class="notranslate">detect-port</a></li>
+<li><a href="../../../awesome/module/bitcoinjs-lib.md.html" class="notranslate">bitcoinjs-lib</a></li>
+<li><a href="../../../awesome/module/rakuten.md.html" class="notranslate">Rakuten</a></li>
+</ul>
+ </div></div></div>  </div></div><div class="content"><div class="social-share share-component" data-sites="weibo,twitter" data-description="分享"></div> <div name="模块-zlib" data-unique="模块-zlib"></div><h1 id="模块-zlib"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Mòdul zlib</font></font></h1>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">mòdul de compressió i descompressió zlib</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Instruccions:</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">var</span> zlib = <span class="hljs-built_in">require</span>(<span class="hljs-string">'zlib'</span>);
+</code></pre>
+<div name="静态函数" data-unique="静态函数"></div><h2 id="静态函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Funció estàtica</font></font></h2>
+<div name="createDeflate" data-unique="createDeflate"></div><h3 id="createDeflate" class="notranslate">createDeflate</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Creeu un objecte de flux desinflat</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Stream zlib.createDeflate(Stream to);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">to</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="../../object/ifs/stream.md.html" class="notranslate">Stream</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, El flux utilitzat per emmagatzemar els resultats del processament</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><a href="../../object/ifs/stream.md.html" class="notranslate">Stream</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorna l'objecte de flux encapsulat</font></font></li>
+</ul>
+<hr>
+<div name="createDeflateRaw" data-unique="createDeflateRaw"></div><h3 id="createDeflateRaw" class="notranslate">createDeflateRaw</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Creeu un objecte de flux deflateRaw</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Stream zlib.createDeflateRaw(Stream to);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">to</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="../../object/ifs/stream.md.html" class="notranslate">Stream</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, El flux utilitzat per emmagatzemar els resultats del processament</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><a href="../../object/ifs/stream.md.html" class="notranslate">Stream</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorna l'objecte de flux encapsulat</font></font></li>
+</ul>
+<hr>
+<div name="createGunzip" data-unique="createGunzip"></div><h3 id="createGunzip" class="notranslate">createGunzip</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Creeu un objecte de flux de pistola</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> Stream zlib.createGunzip(Stream to,<font></font>
+    Integer maxSize = <span class="hljs-number">-1</span>);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">to</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="../../object/ifs/stream.md.html" class="notranslate">Stream</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, El flux utilitzat per emmagatzemar els resultats del processament</font></font></li>
+<li><span class="notranslate">maxSize</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu el límit de mida de descompressió; el valor per defecte és -1, sense límit</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><a href="../../object/ifs/stream.md.html" class="notranslate">Stream</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorna l'objecte de flux encapsulat</font></font></li>
+</ul>
+<hr>
+<div name="createGzip" data-unique="createGzip"></div><h3 id="createGzip" class="notranslate">createGzip</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Creeu un objecte de flux gzip</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Stream zlib.createGzip(Stream to);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">to</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="../../object/ifs/stream.md.html" class="notranslate">Stream</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, El flux utilitzat per emmagatzemar els resultats del processament</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><a href="../../object/ifs/stream.md.html" class="notranslate">Stream</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorna l'objecte de flux encapsulat</font></font></li>
+</ul>
+<hr>
+<div name="createInflate" data-unique="createInflate"></div><h3 id="createInflate" class="notranslate">createInflate</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Creeu un objecte de flux inflat</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> Stream zlib.createInflate(Stream to,<font></font>
+    Integer maxSize = <span class="hljs-number">-1</span>);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">to</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="../../object/ifs/stream.md.html" class="notranslate">Stream</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, El flux utilitzat per emmagatzemar els resultats del processament</font></font></li>
+<li><span class="notranslate">maxSize</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu el límit de mida de descompressió; el valor per defecte és -1, sense límit</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><a href="../../object/ifs/stream.md.html" class="notranslate">Stream</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorna l'objecte de flux encapsulat</font></font></li>
+</ul>
+<hr>
+<div name="createInflateRaw" data-unique="createInflateRaw"></div><h3 id="createInflateRaw" class="notranslate">createInflateRaw</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Creeu un objecte de flux inflateRaw</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> Stream zlib.createInflateRaw(Stream to,<font></font>
+    Integer maxSize = <span class="hljs-number">-1</span>);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">to</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="../../object/ifs/stream.md.html" class="notranslate">Stream</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, El flux utilitzat per emmagatzemar els resultats del processament</font></font></li>
+<li><span class="notranslate">maxSize</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu el límit de mida de descompressió; el valor per defecte és -1, sense límit</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><a href="../../object/ifs/stream.md.html" class="notranslate">Stream</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorna l'objecte de flux encapsulat</font></font></li>
+</ul>
+<hr>
+<div name="deflate" data-unique="deflate"></div><h3 id="deflate" class="notranslate">deflate</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Utilitzeu l'algorisme de desinflar per comprimir dades (format zlib)</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> Buffer zlib.deflate(Buffer data,<font></font>
+    Integer level = DEFAULT_COMPRESSION) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">data</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="../../object/ifs/buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Donades les dades a comprimir</font></font></li>
+<li><span class="notranslate">level</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu el nivell de compressió, el valor per defecte és DEFAULT_COMPRESSION</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><a href="../../object/ifs/buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorna dades binàries comprimides</font></font></li>
+</ul>
+<hr>
+<div name="deflateTo" data-unique="deflateTo"></div><h3 id="deflateTo" class="notranslate">deflateTo</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Utilitzeu l'algorisme de desinflar per comprimir les dades en un objecte de flux (format zlib)</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">static</span> zlib.deflateTo(Buffer data,<font></font>
+    Stream stm,<font></font>
+    Integer level = DEFAULT_COMPRESSION) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">data</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="../../object/ifs/buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Donades les dades a comprimir</font></font></li>
+<li><span class="notranslate">stm</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="../../object/ifs/stream.md.html" class="notranslate">Stream</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Especifiqueu el flux per emmagatzemar dades comprimides</font></font></li>
+<li><span class="notranslate">level</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu el nivell de compressió, el valor per defecte és DEFAULT_COMPRESSION</font></font></li>
+</ul>
+<hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Utilitzeu l'algorisme de desinflar per comprimir les dades del flux d'origen a l'objecte de flux (format zlib)</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">static</span> zlib.deflateTo(Stream src,<font></font>
+    Stream stm,<font></font>
+    Integer level = DEFAULT_COMPRESSION) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">src</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="../../object/ifs/stream.md.html" class="notranslate">Stream</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Donat el flux on es troben les dades a comprimir</font></font></li>
+<li><span class="notranslate">stm</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="../../object/ifs/stream.md.html" class="notranslate">Stream</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Especifiqueu el flux per emmagatzemar dades comprimides</font></font></li>
+<li><span class="notranslate">level</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu el nivell de compressió, el valor per defecte és DEFAULT_COMPRESSION</font></font></li>
+</ul>
+<hr>
+<div name="inflate" data-unique="inflate"></div><h3 id="inflate" class="notranslate">inflate</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Descomprimiu les dades comprimides per l'algorisme de desinflar (format zlib)</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> Buffer zlib.inflate(Buffer data,<font></font>
+    Integer maxSize = <span class="hljs-number">-1</span>) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">data</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="../../object/ifs/buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Donades dades comprimides</font></font></li>
+<li><span class="notranslate">maxSize</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu el límit de mida de descompressió; el valor per defecte és -1, sense límit</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><a href="../../object/ifs/buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorna les dades binàries sense comprimir</font></font></li>
+</ul>
+<hr>
+<div name="inflateTo" data-unique="inflateTo"></div><h3 id="inflateTo" class="notranslate">inflateTo</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Descomprimiu les dades comprimides per l'algorisme de desinflar en un objecte de flux (format zlib)</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">static</span> zlib.inflateTo(Buffer data,<font></font>
+    Stream stm,<font></font>
+    Integer maxSize = <span class="hljs-number">-1</span>) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">data</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="../../object/ifs/buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Donades les dades a descomprimir</font></font></li>
+<li><span class="notranslate">stm</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="../../object/ifs/stream.md.html" class="notranslate">Stream</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Especifiqueu el flux on s’emmagatzemen les dades descomprimides</font></font></li>
+<li><span class="notranslate">maxSize</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu el límit de mida de descompressió; el valor per defecte és -1, sense límit</font></font></li>
+</ul>
+<hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Descomprimiu les dades comprimides per l'algorisme de desinflar al flux d'origen a l'objecte de flux (format zlib)</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">static</span> zlib.inflateTo(Stream src,<font></font>
+    Stream stm,<font></font>
+    Integer maxSize = <span class="hljs-number">-1</span>) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">src</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="../../object/ifs/stream.md.html" class="notranslate">Stream</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Donat el flux on es troben les dades a descomprimir</font></font></li>
+<li><span class="notranslate">stm</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="../../object/ifs/stream.md.html" class="notranslate">Stream</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Especifiqueu el flux on s’emmagatzemen les dades descomprimides</font></font></li>
+<li><span class="notranslate">maxSize</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu el límit de mida de descompressió; el valor per defecte és -1, sense límit</font></font></li>
+</ul>
+<hr>
+<div name="gzip" data-unique="gzip"></div><h3 id="gzip" class="notranslate">gzip</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Utilitzeu l'algorisme gzip per comprimir dades</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Buffer zlib.gzip(Buffer data) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">data</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="../../object/ifs/buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Donades les dades a comprimir</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><a href="../../object/ifs/buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorna dades binàries comprimides</font></font></li>
+</ul>
+<hr>
+<div name="gzipTo" data-unique="gzipTo"></div><h3 id="gzipTo" class="notranslate">gzipTo</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Utilitzeu l'algorisme gzip per comprimir dades a l'objecte de flux</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> zlib.gzipTo(Buffer data,<font></font>
+    Stream stm) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">data</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="../../object/ifs/buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Donades les dades a comprimir</font></font></li>
+<li><span class="notranslate">stm</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="../../object/ifs/stream.md.html" class="notranslate">Stream</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Especifiqueu el flux per emmagatzemar dades comprimides</font></font></li>
+</ul>
+<hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Utilitzeu l'algorisme gzip per comprimir les dades del flux d'origen a l'objecte del flux</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> zlib.gzipTo(Stream src,<font></font>
+    Stream stm) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">src</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="../../object/ifs/stream.md.html" class="notranslate">Stream</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Donat el flux on es troben les dades a comprimir</font></font></li>
+<li><span class="notranslate">stm</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="../../object/ifs/stream.md.html" class="notranslate">Stream</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Especifiqueu el flux per emmagatzemar dades comprimides</font></font></li>
+</ul>
+<hr>
+<div name="gunzip" data-unique="gunzip"></div><h3 id="gunzip" class="notranslate">gunzip</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Descomprimiu les dades comprimides per l'algorisme gzip</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> Buffer zlib.gunzip(Buffer data,<font></font>
+    Integer maxSize = <span class="hljs-number">-1</span>) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">data</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="../../object/ifs/buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Donades dades comprimides</font></font></li>
+<li><span class="notranslate">maxSize</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu el límit de mida de descompressió; el valor per defecte és -1, sense límit</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><a href="../../object/ifs/buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorna les dades binàries sense comprimir</font></font></li>
+</ul>
+<hr>
+<div name="gunzipTo" data-unique="gunzipTo"></div><h3 id="gunzipTo" class="notranslate">gunzipTo</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Descomprimiu les dades comprimides per l'algorisme gzip a l'objecte de flux</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">static</span> zlib.gunzipTo(Buffer data,<font></font>
+    Stream stm,<font></font>
+    Integer maxSize = <span class="hljs-number">-1</span>) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">data</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="../../object/ifs/buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Donades les dades a descomprimir</font></font></li>
+<li><span class="notranslate">stm</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="../../object/ifs/stream.md.html" class="notranslate">Stream</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Especifiqueu el flux on s’emmagatzemen les dades descomprimides</font></font></li>
+<li><span class="notranslate">maxSize</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu el límit de mida de descompressió; el valor per defecte és -1, sense límit</font></font></li>
+</ul>
+<hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Descomprimiu les dades comprimides per l'algorisme gzip al flux d'origen a l'objecte de flux</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">static</span> zlib.gunzipTo(Stream src,<font></font>
+    Stream stm,<font></font>
+    Integer maxSize = <span class="hljs-number">-1</span>) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">src</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="../../object/ifs/stream.md.html" class="notranslate">Stream</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Donat el flux on es troben les dades a descomprimir</font></font></li>
+<li><span class="notranslate">stm</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="../../object/ifs/stream.md.html" class="notranslate">Stream</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Especifiqueu el flux on s’emmagatzemen les dades descomprimides</font></font></li>
+<li><span class="notranslate">maxSize</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu el límit de mida de descompressió; el valor per defecte és -1, sense límit</font></font></li>
+</ul>
+<hr>
+<div name="deflateRaw" data-unique="deflateRaw"></div><h3 id="deflateRaw" class="notranslate">deflateRaw</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Utilitzeu l'algorisme de desinflar per comprimir dades (deflateRaw)</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> Buffer zlib.deflateRaw(Buffer data,<font></font>
+    Integer level = DEFAULT_COMPRESSION) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">data</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="../../object/ifs/buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Donades les dades a comprimir</font></font></li>
+<li><span class="notranslate">level</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu el nivell de compressió, el valor per defecte és DEFAULT_COMPRESSION</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><a href="../../object/ifs/buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorna dades binàries comprimides</font></font></li>
+</ul>
+<hr>
+<div name="deflateRawTo" data-unique="deflateRawTo"></div><h3 id="deflateRawTo" class="notranslate">deflateRawTo</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Utilitzeu l'algorisme de desinflar per comprimir dades en un objecte de flux (deflateRaw)</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">static</span> zlib.deflateRawTo(Buffer data,<font></font>
+    Stream stm,<font></font>
+    Integer level = DEFAULT_COMPRESSION) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">data</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="../../object/ifs/buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Donades les dades a comprimir</font></font></li>
+<li><span class="notranslate">stm</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="../../object/ifs/stream.md.html" class="notranslate">Stream</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Especifiqueu el flux per emmagatzemar dades comprimides</font></font></li>
+<li><span class="notranslate">level</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu el nivell de compressió, el valor per defecte és DEFAULT_COMPRESSION</font></font></li>
+</ul>
+<hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Utilitzeu l'algorisme de desinflar per comprimir les dades del flux d'origen a l'objecte de flux (deflateRaw)</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">static</span> zlib.deflateRawTo(Stream src,<font></font>
+    Stream stm,<font></font>
+    Integer level = DEFAULT_COMPRESSION) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">src</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="../../object/ifs/stream.md.html" class="notranslate">Stream</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Donat el flux on es troben les dades a comprimir</font></font></li>
+<li><span class="notranslate">stm</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="../../object/ifs/stream.md.html" class="notranslate">Stream</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Especifiqueu el flux per emmagatzemar dades comprimides</font></font></li>
+<li><span class="notranslate">level</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu el nivell de compressió, el valor per defecte és DEFAULT_COMPRESSION</font></font></li>
+</ul>
+<hr>
+<div name="inflateRaw" data-unique="inflateRaw"></div><h3 id="inflateRaw" class="notranslate">inflateRaw</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Descomprimiu les dades comprimides per l'algorisme de desinflar (inflateRaw)</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> Buffer zlib.inflateRaw(Buffer data,<font></font>
+    Integer maxSize = <span class="hljs-number">-1</span>) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">data</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="../../object/ifs/buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Donades dades comprimides</font></font></li>
+<li><span class="notranslate">maxSize</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu el límit de mida de descompressió; el valor per defecte és -1, sense límit</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><a href="../../object/ifs/buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorna les dades binàries sense comprimir</font></font></li>
+</ul>
+<hr>
+<div name="inflateRawTo" data-unique="inflateRawTo"></div><h3 id="inflateRawTo" class="notranslate">inflateRawTo</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Descomprimiu les dades comprimides per l'algorisme de desinflar a l'objecte de flux (inflateRaw)</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">static</span> zlib.inflateRawTo(Buffer data,<font></font>
+    Stream stm,<font></font>
+    Integer maxSize = <span class="hljs-number">-1</span>) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">data</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="../../object/ifs/buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Donades les dades a descomprimir</font></font></li>
+<li><span class="notranslate">stm</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="../../object/ifs/stream.md.html" class="notranslate">Stream</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Especifiqueu el flux on s’emmagatzemen les dades descomprimides</font></font></li>
+<li><span class="notranslate">maxSize</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu el límit de mida de descompressió; el valor per defecte és -1, sense límit</font></font></li>
+</ul>
+<hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Descomprimiu les dades comprimides per l'algorisme de desinflar al flux d'origen a l'objecte de flux (inflateRaw)</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">static</span> zlib.inflateRawTo(Stream src,<font></font>
+    Stream stm,<font></font>
+    Integer maxSize = <span class="hljs-number">-1</span>) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">src</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="../../object/ifs/stream.md.html" class="notranslate">Stream</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Donat el flux on es troben les dades a descomprimir</font></font></li>
+<li><span class="notranslate">stm</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="../../object/ifs/stream.md.html" class="notranslate">Stream</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Especifiqueu el flux on s’emmagatzemen les dades descomprimides</font></font></li>
+<li><span class="notranslate">maxSize</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu el límit de mida de descompressió; el valor per defecte és -1, sense límit</font></font></li>
+</ul>
+<div name="常量" data-unique="常量"></div><h2 id="常量"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">constant</font></font></h2>
+<div name="NO_COMPRESSION" data-unique="NO_COMPRESSION"></div><h3 id="NO_COMPRESSION" class="notranslate">NO_COMPRESSION</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">desinfleu el nivell de compressió, no configureu cap compressió</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> zlib.NO_COMPRESSION = <span class="hljs-number">0</span>;
+</code></pre>
+<hr>
+<div name="BEST_SPEED" data-unique="BEST_SPEED"></div><h3 id="BEST_SPEED" class="notranslate">BEST_SPEED</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">desinfleu el nivell de compressió, configureu la compressió més ràpida</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> zlib.BEST_SPEED = <span class="hljs-number">1</span>;
+</code></pre>
+<hr>
+<div name="BEST_COMPRESSION" data-unique="BEST_COMPRESSION"></div><h3 id="BEST_COMPRESSION" class="notranslate">BEST_COMPRESSION</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">desinfleu el nivell de compressió, configureu la compressió més alta</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> zlib.BEST_COMPRESSION = <span class="hljs-number">9</span>;
+</code></pre>
+<hr>
+<div name="DEFAULT_COMPRESSION" data-unique="DEFAULT_COMPRESSION"></div><h3 id="DEFAULT_COMPRESSION" class="notranslate">DEFAULT_COMPRESSION</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">desinfleu el nivell de compressió, configureu la configuració predeterminada</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> zlib.DEFAULT_COMPRESSION = <span class="hljs-number">-1</span>;
+</code></pre>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org | </font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Doneu-nos suport</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip623909"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip623909" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Feu clic per tornar a la pàgina superior</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>

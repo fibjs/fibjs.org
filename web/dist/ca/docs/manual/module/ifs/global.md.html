@@ -1,0 +1,634 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../../../imgs/icon.png"><title>Mòdul global-JavaScript a Fiber</title><link href="../../../../../css/common.css" rel="stylesheet"><link href="../../../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Commuta la navegació</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../../../index.html"><img src="../../../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../../../index.html">HOME</a></li><li><a href="../../../guide/readme.md.html">GUIDE</a></li><li><a href="../readme.md.html">MODULE</a></li><li><a href="../../object/readme.md.html">OBJECT</a></li><li><a href="../../../awesome/readme.md.html">AWESOME</a></li><li><a href="../../../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../../../docs/manual/module/ifs/global.md.html">中文</a> <a href="../../../../../ca/docs/manual/module/ifs/global.md.html">Catalan</a> <a href="../../../../../de/docs/manual/module/ifs/global.md.html">Deutsch</a> <a href="../../../../../en/docs/manual/module/ifs/global.md.html">English</a> <a href="../../../../../es/docs/manual/module/ifs/global.md.html">Español</a> <a href="../../../../../fr/docs/manual/module/ifs/global.md.html">Français</a> <a href="../../../../../gl/docs/manual/module/ifs/global.md.html">Galego</a> <a href="../../../../../it/docs/manual/module/ifs/global.md.html">Italiano</a> <a href="../../../../../ru/docs/manual/module/ifs/global.md.html">Русский</a> <a href="../../../../../ja/docs/manual/module/ifs/global.md.html">日本語</a> <a href="../../../../../ko/docs/manual/module/ifs/global.md.html">한국어</a> <a href="../../../../../zh-tw/docs/manual/module/ifs/global.md.html">繁體中文</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Mòdul mòdul bàsic </font></font></span><div class="search"><span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input type="text" class="searchbox ds-input" placeholder="Cerca" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-label="entrada de cerca" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Avenir, &quot;Segoe UI&quot;, Arial, &quot;Hiragino Sans GB&quot;, 冬青黑, &quot;Microsoft YaHei&quot;, 微软雅黑, SimSun, 宋体, Helvetica, Tahoma, &quot;Arial sans-serif&quot;; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div class="ds-dataset-1"></div></span></span></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Pàgina inicial</font></font></a></li><li><a href="../readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Mòdul bàsic </font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Mòdul global </font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Guia de desenvolupament </font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="../../../guide/about.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Què és fibjs?</font></font></a></li>
+<li><a href="../../../guide/install.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Instal·lació i entorn operatiu</font></font></a></li>
+<li><a href="../../../guide/hello.md.html" class="notranslate">hello, world</a></li>
+<li><a href="../../../guide/test.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Una bona vida comença amb la prova</font></font></a></li>
+<li><a href="../../../guide/profiler.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Troba l'assassí del rendiment</font></font></a></li>
+<li><a href="../../../guide/desktop.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Desenvolupeu ràpidament aplicacions d'escriptori</font></font></a></li>
+<li><a href="../../../guide/server-hot-update.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Actualització actualitzada del mòdul de servidor</font></font></a></li>
+<li><a href="../../../guide/host-routes.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Encaminament de noms de domini</font></font></a></li>
+<li><a href="../../../guide/x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ús del certificat X509 a fibjs</font></font></a></li>
+<li><a href="../../../guide/contribute.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Afegeix un mòdul natiu</font></font></a></li>
+</ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_module" aria-controls="collapse_module"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Mòdul bàsic </font></font></a></h4></div><div id="collapse_module" class="panel-collapse collapse in" aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="assert.md.html" class="notranslate">assert</a></li>
+<li><a href="base32.md.html" class="notranslate">base32</a></li>
+<li><a href="base64.md.html" class="notranslate">base64</a></li>
+<li><a href="base64vlq.md.html" class="notranslate">base64vlq</a></li>
+<li><a href="bson.md.html" class="notranslate">bson</a></li>
+<li><a href="child_process.md.html" class="notranslate">child_process</a></li>
+<li><a href="console.md.html" class="notranslate">console</a></li>
+<li><a href="constants.md.html" class="notranslate">constants</a></li>
+<li><a href="coroutine.md.html" class="notranslate">coroutine</a></li>
+<li><a href="crypto.md.html" class="notranslate">crypto</a></li>
+<li><a href="db.md.html" class="notranslate">db</a></li>
+<li><a href="dgram.md.html" class="notranslate">dgram</a></li>
+<li><a href="dns.md.html" class="notranslate">dns</a></li>
+<li><a href="encoding.md.html" class="notranslate">encoding</a></li>
+<li><a href="fs.md.html" class="notranslate">fs</a></li>
+<li><a href="gd.md.html" class="notranslate">gd</a></li>
+<li class="active"><a href="global.md.html" class="notranslate">global</a></li>
+<li><a href="gui.md.html" class="notranslate">gui</a></li>
+<li><a href="hash.md.html" class="notranslate">hash</a></li>
+<li><a href="hex.md.html" class="notranslate">hex</a></li>
+<li><a href="http.md.html" class="notranslate">http</a></li>
+<li><a href="iconv.md.html" class="notranslate">iconv</a></li>
+<li><a href="io.md.html" class="notranslate">io</a></li>
+<li><a href="json.md.html" class="notranslate">json</a></li>
+<li><a href="mq.md.html" class="notranslate">mq</a></li>
+<li><a href="msgpack.md.html" class="notranslate">msgpack</a></li>
+<li><a href="net.md.html" class="notranslate">net</a></li>
+<li><a href="os.md.html" class="notranslate">os</a></li>
+<li><a href="path.md.html" class="notranslate">path</a></li>
+<li><a href="path_posix.md.html" class="notranslate">path_posix</a></li>
+<li><a href="path_win32.md.html" class="notranslate">path_win32</a></li>
+<li><a href="process.md.html" class="notranslate">process</a></li>
+<li><a href="profiler.md.html" class="notranslate">profiler</a></li>
+<li><a href="punycode.md.html" class="notranslate">punycode</a></li>
+<li><a href="querystring.md.html" class="notranslate">querystring</a></li>
+<li><a href="registry.md.html" class="notranslate">registry</a></li>
+<li><a href="ssl.md.html" class="notranslate">ssl</a></li>
+<li><a href="string_decoder.md.html" class="notranslate">string_decoder</a></li>
+<li><a href="test.md.html" class="notranslate">test</a></li>
+<li><a href="timers.md.html" class="notranslate">timers</a></li>
+<li><a href="tty.md.html" class="notranslate">tty</a></li>
+<li><a href="url.md.html" class="notranslate">url</a></li>
+<li><a href="util.md.html" class="notranslate">util</a></li>
+<li><a href="uuid.md.html" class="notranslate">uuid</a></li>
+<li><a href="vm.md.html" class="notranslate">vm</a></li>
+<li><a href="ws.md.html" class="notranslate">ws</a></li>
+<li><a href="xml.md.html" class="notranslate">xml</a></li>
+<li><a href="zip.md.html" class="notranslate">zip</a></li>
+<li><a href="zlib.md.html" class="notranslate">zlib</a></li>
+</ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_object" aria-controls="collapse_object"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Objectes incorporats </font></font></a></h4></div><div id="collapse_object" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="../../object/ifs/buffer.md.html" class="notranslate">Buffer</a></li>
+<li><a href="../../object/ifs/bufferedstream.md.html" class="notranslate">BufferedStream</a></li>
+<li><a href="../../object/ifs/chain.md.html" class="notranslate">Chain</a></li>
+<li><a href="../../object/ifs/childprocess.md.html" class="notranslate">ChildProcess</a></li>
+<li><a href="../../object/ifs/cipher.md.html" class="notranslate">Cipher</a></li>
+<li><a href="../../object/ifs/condition.md.html" class="notranslate">Condition</a></li>
+<li><a href="../../object/ifs/dbconnection.md.html" class="notranslate">DbConnection</a></li>
+<li><a href="../../object/ifs/dgramsocket.md.html" class="notranslate">DgramSocket</a></li>
+<li><a href="../../object/ifs/digest.md.html" class="notranslate">Digest</a></li>
+<li><a href="../../object/ifs/event.md.html" class="notranslate">Event</a></li>
+<li><a href="../../object/ifs/eventemitter.md.html" class="notranslate">EventEmitter</a></li>
+<li><a href="../../object/ifs/fswatcher.md.html" class="notranslate">FSWatcher</a></li>
+<li><a href="../../object/ifs/fiber.md.html" class="notranslate">Fiber</a></li>
+<li><a href="../../object/ifs/file.md.html" class="notranslate">File</a></li>
+<li><a href="../../object/ifs/handler.md.html" class="notranslate">Handler</a></li>
+<li><a href="../../object/ifs/heapgraphedge.md.html" class="notranslate">HeapGraphEdge</a></li>
+<li><a href="../../object/ifs/heapgraphnode.md.html" class="notranslate">HeapGraphNode</a></li>
+<li><a href="../../object/ifs/heapsnapshot.md.html" class="notranslate">HeapSnapshot</a></li>
+<li><a href="../../object/ifs/httpclient.md.html" class="notranslate">HttpClient</a></li>
+<li><a href="../../object/ifs/httpcollection.md.html" class="notranslate">HttpCollection</a></li>
+<li><a href="../../object/ifs/httpcookie.md.html" class="notranslate">HttpCookie</a></li>
+<li><a href="../../object/ifs/httphandler.md.html" class="notranslate">HttpHandler</a></li>
+<li><a href="../../object/ifs/httpmessage.md.html" class="notranslate">HttpMessage</a></li>
+<li><a href="../../object/ifs/httprepeater.md.html" class="notranslate">HttpRepeater</a></li>
+<li><a href="../../object/ifs/httprequest.md.html" class="notranslate">HttpRequest</a></li>
+<li><a href="../../object/ifs/httpresponse.md.html" class="notranslate">HttpResponse</a></li>
+<li><a href="../../object/ifs/httpserver.md.html" class="notranslate">HttpServer</a></li>
+<li><a href="../../object/ifs/httpuploaddata.md.html" class="notranslate">HttpUploadData</a></li>
+<li><a href="../../object/ifs/httpsserver.md.html" class="notranslate">HttpsServer</a></li>
+<li><a href="../../object/ifs/image.md.html" class="notranslate">Image</a></li>
+<li><a href="../../object/ifs/leveldb.md.html" class="notranslate">LevelDB</a></li>
+<li><a href="../../object/ifs/lock.md.html" class="notranslate">Lock</a></li>
+<li><a href="../../object/ifs/lrucache.md.html" class="notranslate">LruCache</a></li>
+<li><a href="../../object/ifs/mssql.md.html" class="notranslate">MSSQL</a></li>
+<li><a href="../../object/ifs/memorystream.md.html" class="notranslate">MemoryStream</a></li>
+<li><a href="../../object/ifs/message.md.html" class="notranslate">Message</a></li>
+<li><a href="../../object/ifs/mongocollection.md.html" class="notranslate">MongoCollection</a></li>
+<li><a href="../../object/ifs/mongocursor.md.html" class="notranslate">MongoCursor</a></li>
+<li><a href="../../object/ifs/mongodb.md.html" class="notranslate">MongoDB</a></li>
+<li><a href="../../object/ifs/mongoid.md.html" class="notranslate">MongoID</a></li>
+<li><a href="../../object/ifs/mysql.md.html" class="notranslate">MySQL</a></li>
+<li><a href="../../object/ifs/pkey.md.html" class="notranslate">PKey</a></li>
+<li><a href="../../object/ifs/rangestream.md.html" class="notranslate">RangeStream</a></li>
+<li><a href="../../object/ifs/redis.md.html" class="notranslate">Redis</a></li>
+<li><a href="../../object/ifs/redishash.md.html" class="notranslate">RedisHash</a></li>
+<li><a href="../../object/ifs/redislist.md.html" class="notranslate">RedisList</a></li>
+<li><a href="../../object/ifs/redisset.md.html" class="notranslate">RedisSet</a></li>
+<li><a href="../../object/ifs/redissortedset.md.html" class="notranslate">RedisSortedSet</a></li>
+<li><a href="../../object/ifs/routing.md.html" class="notranslate">Routing</a></li>
+<li><a href="../../object/ifs/sqlite.md.html" class="notranslate">SQLite</a></li>
+<li><a href="../../object/ifs/sandbox.md.html" class="notranslate">SandBox</a></li>
+<li><a href="../../object/ifs/seekablestream.md.html" class="notranslate">SeekableStream</a></li>
+<li><a href="../../object/ifs/semaphore.md.html" class="notranslate">Semaphore</a></li>
+<li><a href="../../object/ifs/service.md.html" class="notranslate">Service</a></li>
+<li><a href="../../object/ifs/smtp.md.html" class="notranslate">Smtp</a></li>
+<li><a href="../../object/ifs/socket.md.html" class="notranslate">Socket</a></li>
+<li><a href="../../object/ifs/sslhandler.md.html" class="notranslate">SslHandler</a></li>
+<li><a href="../../object/ifs/sslserver.md.html" class="notranslate">SslServer</a></li>
+<li><a href="../../object/ifs/sslsocket.md.html" class="notranslate">SslSocket</a></li>
+<li><a href="../../object/ifs/stat.md.html" class="notranslate">Stat</a></li>
+<li><a href="../../object/ifs/statswatcher.md.html" class="notranslate">StatsWatcher</a></li>
+<li><a href="../../object/ifs/stream.md.html" class="notranslate">Stream</a></li>
+<li><a href="../../object/ifs/stringdecoder.md.html" class="notranslate">StringDecoder</a></li>
+<li><a href="../../object/ifs/tcpserver.md.html" class="notranslate">TcpServer</a></li>
+<li><a href="../../object/ifs/timer.md.html" class="notranslate">Timer</a></li>
+<li><a href="../../object/ifs/urlobject.md.html" class="notranslate">UrlObject</a></li>
+<li><a href="../../object/ifs/websocket.md.html" class="notranslate">WebSocket</a></li>
+<li><a href="../../object/ifs/websocketmessage.md.html" class="notranslate">WebSocketMessage</a></li>
+<li><a href="../../object/ifs/webview.md.html" class="notranslate">WebView</a></li>
+<li><a href="../../object/ifs/worker.md.html" class="notranslate">Worker</a></li>
+<li><a href="../../object/ifs/x509cert.md.html" class="notranslate">X509Cert</a></li>
+<li><a href="../../object/ifs/x509crl.md.html" class="notranslate">X509Crl</a></li>
+<li><a href="../../object/ifs/x509req.md.html" class="notranslate">X509Req</a></li>
+<li><a href="../../object/ifs/xmlattr.md.html" class="notranslate">XmlAttr</a></li>
+<li><a href="../../object/ifs/xmlcdatasection.md.html" class="notranslate">XmlCDATASection</a></li>
+<li><a href="../../object/ifs/xmlcharacterdata.md.html" class="notranslate">XmlCharacterData</a></li>
+<li><a href="../../object/ifs/xmlcomment.md.html" class="notranslate">XmlComment</a></li>
+<li><a href="../../object/ifs/xmldocument.md.html" class="notranslate">XmlDocument</a></li>
+<li><a href="../../object/ifs/xmldocumenttype.md.html" class="notranslate">XmlDocumentType</a></li>
+<li><a href="../../object/ifs/xmlelement.md.html" class="notranslate">XmlElement</a></li>
+<li><a href="../../object/ifs/xmlnamednodemap.md.html" class="notranslate">XmlNamedNodeMap</a></li>
+<li><a href="../../object/ifs/xmlnode.md.html" class="notranslate">XmlNode</a></li>
+<li><a href="../../object/ifs/xmlnodelist.md.html" class="notranslate">XmlNodeList</a></li>
+<li><a href="../../object/ifs/xmlprocessinginstruction.md.html" class="notranslate">XmlProcessingInstruction</a></li>
+<li><a href="../../object/ifs/xmltext.md.html" class="notranslate">XmlText</a></li>
+<li><a href="../../object/ifs/zipfile.md.html" class="notranslate">ZipFile</a></li>
+<li><a href="../../object/ifs/object.md.html" class="notranslate">object</a></li>
+</ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_awesome" aria-controls="collapse_awesome"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Mòdul de comunitat </font></font></a></h4></div><div id="collapse_awesome" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="../../../awesome/module/fib-session.md.html" class="notranslate">fib-session</a></li>
+<li><a href="../../../awesome/module/fib-pool.md.html" class="notranslate">fib-pool</a></li>
+<li><a href="../../../awesome/module/fib-orm.md.html" class="notranslate">fib-orm</a></li>
+<li><a href="../../../awesome/module/fib-app.md.html" class="notranslate">fib-app</a></li>
+<li><a href="../../../awesome/module/fib-kv.md.html" class="notranslate">fib-kv</a></li>
+<li><a href="../../../awesome/module/fib-rpc.md.html" class="notranslate">fib-rpc</a></li>
+<li><a href="../../../awesome/module/fib-qr.md.html" class="notranslate">fib-qr</a></li>
+<li><a href="../../../awesome/module/fib-pug.md.html" class="notranslate">fib-pug</a></li>
+<li><a href="../../../awesome/module/ejs.md.html" class="notranslate">ejs</a></li>
+<li><a href="../../../awesome/module/juicer.md.html" class="notranslate">Juicer</a></li>
+<li><a href="../../../awesome/module/highlight.js.md.html" class="notranslate">highlight.js</a></li>
+<li><a href="../../../awesome/module/marked.md.html" class="notranslate">marked</a></li>
+<li><a href="../../../awesome/module/node-cron.md.html" class="notranslate">node-cron</a></li>
+<li><a href="../../../awesome/module/debug.md.html" class="notranslate">debug</a></li>
+<li><a href="../../../awesome/module/benchmark.js.md.html" class="notranslate">benchmark.js</a></li>
+<li><a href="../../../awesome/module/sinon.md.html" class="notranslate">sinon</a></li>
+<li><a href="../../../awesome/module/node-mime.md.html" class="notranslate">node-mime</a></li>
+<li><a href="../../../awesome/module/validatorjs.md.html" class="notranslate">validatorjs</a></li>
+<li><a href="../../../awesome/module/superstruct.md.html" class="notranslate">superstruct</a></li>
+<li><a href="../../../awesome/module/cluster-server.md.html" class="notranslate">cluster-server</a></li>
+<li><a href="../../../awesome/module/synaptic.md.html" class="notranslate">synaptic</a></li>
+<li><a href="../../../awesome/module/source-map.md.html" class="notranslate">source-map</a></li>
+<li><a href="../../../awesome/module/json-format.md.html" class="notranslate">json-format</a></li>
+<li><a href="../../../awesome/module/viz.js.md.html" class="notranslate">viz.js</a></li>
+<li><a href="../../../awesome/module/nomnoml.md.html" class="notranslate">nomnoml</a></li>
+<li><a href="../../../awesome/module/pegjs.md.html" class="notranslate">pegjs</a></li>
+<li><a href="../../../awesome/module/uglify-js.md.html" class="notranslate">uglify-js</a></li>
+<li><a href="../../../awesome/module/js-beautify.md.html" class="notranslate">js-beautify</a></li>
+<li><a href="../../../awesome/module/chalk-animation.md.html" class="notranslate">chalk-animation</a></li>
+<li><a href="../../../awesome/module/jsrsasign.md.html" class="notranslate">jsrsasign</a></li>
+<li><a href="../../../awesome/module/crypto-js.md.html" class="notranslate">crypto-js</a></li>
+<li><a href="../../../awesome/module/ascii-table.md.html" class="notranslate">ascii-table</a></li>
+<li><a href="../../../awesome/module/logstream.md.html" class="notranslate">logstream</a></li>
+<li><a href="../../../awesome/module/ci.md.html" class="notranslate">ci</a></li>
+<li><a href="../../../awesome/module/fs-readdir-recursive.md.html" class="notranslate">fs-readdir-recursive</a></li>
+<li><a href="../../../awesome/module/mkdirp.md.html" class="notranslate">mkdirp</a></li>
+<li><a href="../../../awesome/module/rmdirr.md.html" class="notranslate">rmdirr</a></li>
+<li><a href="../../../awesome/module/detect-port.md.html" class="notranslate">detect-port</a></li>
+<li><a href="../../../awesome/module/bitcoinjs-lib.md.html" class="notranslate">bitcoinjs-lib</a></li>
+<li><a href="../../../awesome/module/rakuten.md.html" class="notranslate">Rakuten</a></li>
+</ul>
+ </div></div></div>  </div></div><div class="content"><div class="social-share share-component" data-sites="weibo,twitter" data-description="分享"></div> <div name="模块-global" data-unique="模块-global"></div><h1 id="模块-global"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Mòdul global</font></font></h1>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Objectes globals, objectes base accessibles a tots els scripts</font></font></p>
+<div name="对象" data-unique="对象"></div><h2 id="对象"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Objecte</font></font></h2>
+<div name="Buffer" data-unique="Buffer"></div><h3 id="Buffer" class="notranslate">Buffer</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Objecte de memòria cau de dades binàries per a </font></font><a href="io.md.html" class="notranslate">io</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Llegiu i escriviu el processament de dades, vegeu </font></font><a href="../../object/ifs/buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Objecte.</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Buffer global.Buffer;
+</code></pre>
+<hr>
+<div name="console" data-unique="console"></div><h3 id="console" class="notranslate">console</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Objecte d'accés a la consola</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">console</span> global.console;
+</code></pre>
+<hr>
+<div name="process" data-unique="process"></div><h3 id="process" class="notranslate">process</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Objecte de procés</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>process global.process;
+</code></pre>
+<div name="静态函数" data-unique="静态函数"></div><h2 id="静态函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Funció estàtica</font></font></h2>
+<div name="run" data-unique="run"></div><h3 id="run" class="notranslate">run</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Executeu un script</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> global.run(<span class="hljs-built_in">String</span> fname,
+    <span class="hljs-built_in">Array</span> argv = []);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">fname</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifiqueu el camí de l'script que cal executar</font></font></li>
+<li><span class="notranslate">argv</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Array, especifiqueu el paràmetre que cal executar; aquest paràmetre es pot obtenir mitjançant argv a l'script</font></font></li>
+</ul>
+<hr>
+<div name="require" data-unique="require"></div><h3 id="require" class="notranslate">require</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Carregueu un mòdul i torneu l'objecte del mòdul; consulteu el mòdul @ref per obtenir més informació</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Value global.require(<span class="hljs-built_in">String</span> id);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">id</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifiqueu el nom del mòdul a carregar</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><span class="notranslate">Value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorna l'objecte d'exportació del mòdul carregat</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">require es pot utilitzar per carregar mòduls bàsics i mòduls de fitxers.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">El mòdul bàsic és el mòdul inicialitzat quan es crea el sandbox. Només heu de passar l'identificador corresponent quan feu referència, com ara require ("</font></font><a href="net.md.html" class="notranslate">net</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">").</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">El mòdul de fitxer és un mòdul definit per l’usuari i s’ha de passar un camí relatiu que comença per ./ o ../ a l’hora de citar. </font><font style="vertical-align: inherit;">El mòdul de fitxers admet .js, .jsc i.</font></font><a href="json.md.html" class="notranslate">json</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> dossier.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">El mòdul de fitxer també admet el format package.json. Quan el mòdul té una estructura de directoris, requereix primer que consulti el principal a package.json i, si no es troba, intentarà carregar index.js, index.jsc o index. json al camí.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Si el camí de referència no comença amb ./ o ../ i no és un mòdul bàsic, cal que cerqueu node_modules a la ruta on es troba el mòdul actual i recursivament des del directori de nivell superior.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">El procés bàsic és el següent:</font></font></p>
+<div class="dot notranslate">
+<!-- Generated by graphviz version 2.40.1 (20161225.0304)
+ -->
+<!-- Title: %0 Pages: 1 -->
+<svg width="391pt" height="1006pt" viewBox="0.00 0.00 391.21 1006.30" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 1002.2998)">
+<title>%0</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-1002.2998 387.2145,-1002.2998 387.2145,4 -4,4"></polygon>
+<!-- start -->
+<g id="node1" class="node">
+<title>start</title>
+<ellipse fill="none" stroke="#000000" cx="84.9587" cy="-980.2998" rx="27" ry="18"></ellipse>
+<text text-anchor="middle" x="84.9587" y="-977.2998" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">start</text>
+</g>
+<!-- is_native -->
+<g id="node6" class="node">
+<title>is_native</title>
+<polygon fill="none" stroke="#000000" points="84.9587,-925.2998 .0413,-907.2998 84.9587,-889.2998 169.876,-907.2998 84.9587,-925.2998"></polygon>
+<text text-anchor="middle" x="84.9587" y="-904.2998" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">is internal module?</text>
+</g>
+<!-- start&#45;&gt;is_native -->
+<g id="edge1" class="edge">
+<title>start-&gt;is_native</title>
+<path fill="none" stroke="#000000" d="M84.9587,-962.2549C84.9587,-954.1827 84.9587,-944.4762 84.9587,-935.4816"></path>
+<polygon fill="#000000" stroke="#000000" points="88.4588,-935.3902 84.9587,-925.3902 81.4588,-935.3902 88.4588,-935.3902"></polygon>
+</g>
+<!-- resolve -->
+<g id="node2" class="node">
+<title>resolve</title>
+<polygon fill="none" stroke="#000000" points="243.4202,-641.2998 172.4972,-641.2998 172.4972,-605.2998 243.4202,-605.2998 243.4202,-641.2998"></polygon>
+<text text-anchor="middle" x="207.9587" y="-620.2998" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">path.resolve</text>
+</g>
+<!-- has_file -->
+<g id="node9" class="node">
+<title>has_file</title>
+<polygon fill="none" stroke="#000000" points="207.9587,-568.2998 137.8344,-550.2998 207.9587,-532.2998 278.0829,-550.2998 207.9587,-568.2998"></polygon>
+<text text-anchor="middle" x="207.9587" y="-547.2998" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">module exists?</text>
+</g>
+<!-- resolve&#45;&gt;has_file -->
+<g id="edge9" class="edge">
+<title>resolve-&gt;has_file</title>
+<path fill="none" stroke="#000000" d="M207.9587,-605.2549C207.9587,-597.1827 207.9587,-587.4762 207.9587,-578.4816"></path>
+<polygon fill="#000000" stroke="#000000" points="211.4588,-578.3902 207.9587,-568.3902 204.4588,-578.3902 211.4588,-578.3902"></polygon>
+</g>
+<!-- search -->
+<g id="node3" class="node">
+<title>search</title>
+<polygon fill="none" stroke="#000000" points="199.2588,-703.2998 90.6585,-703.2998 90.6585,-659.2998 199.2588,-659.2998 199.2588,-703.2998"></polygon>
+<text text-anchor="middle" x="144.9587" y="-690.2998" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">recursive lookup</text>
+<text text-anchor="middle" x="144.9587" y="-678.2998" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">node_modules</text>
+<text text-anchor="middle" x="144.9587" y="-666.2998" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">from the current path</text>
+</g>
+<!-- search&#45;&gt;has_file -->
+<g id="edge5" class="edge">
+<title>search-&gt;has_file</title>
+<path fill="none" stroke="#000000" d="M147.9213,-659.138C150.6178,-643.4924 155.508,-622.3625 163.9587,-605.2998 169.7513,-593.604 178.3623,-582.1002 186.4345,-572.6613"></path>
+<polygon fill="#000000" stroke="#000000" points="189.269,-574.7411 193.3053,-564.9452 184.0412,-570.086 189.269,-574.7411"></polygon>
+</g>
+<!-- load -->
+<g id="node4" class="node">
+<title>load</title>
+<polygon fill="none" stroke="#000000" points="209.9587,-120.2998 155.9587,-120.2998 155.9587,-84.2998 209.9587,-84.2998 209.9587,-120.2998"></polygon>
+<text text-anchor="middle" x="182.9587" y="-99.2998" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">load</text>
+</g>
+<!-- end -->
+<g id="node5" class="node">
+<title>end</title>
+<ellipse fill="none" stroke="#000000" cx="182.9587" cy="-23.6499" rx="19.7753" ry="19.7753"></ellipse>
+<ellipse fill="none" stroke="#000000" cx="182.9587" cy="-23.6499" rx="23.8008" ry="23.8008"></ellipse>
+<text text-anchor="middle" x="182.9587" y="-20.6499" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">end</text>
+</g>
+<!-- load&#45;&gt;end -->
+<g id="edge20" class="edge">
+<title>load-&gt;end</title>
+<path fill="none" stroke="#000000" d="M182.9587,-84.0583C182.9587,-76.1453 182.9587,-66.6154 182.9587,-57.4878"></path>
+<polygon fill="#000000" stroke="#000000" points="186.4588,-57.4609 182.9587,-47.4609 179.4588,-57.461 186.4588,-57.4609"></polygon>
+</g>
+<!-- is_native&#45;&gt;end -->
+<g id="edge2" class="edge">
+<title>is_native-&gt;end</title>
+<path fill="none" stroke="#000000" d="M79.7197,-890.1072C75.0534,-873.2556 68.9587,-846.7558 68.9587,-823.2998 68.9587,-823.2998 68.9587,-823.2998 68.9587,-102.2998 68.9587,-62.7498 116.0211,-41.554 149.6691,-31.454"></path>
+<polygon fill="#000000" stroke="#000000" points="150.929,-34.7358 159.614,-28.6677 149.0405,-27.9954 150.929,-34.7358"></polygon>
+<text text-anchor="middle" x="77.5727" y="-463.2998" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Yes</text>
+</g>
+<!-- is_mod -->
+<g id="node7" class="node">
+<title>is_mod</title>
+<polygon fill="none" stroke="#000000" points="151.9587,-841.2998 97.024,-823.2998 151.9587,-805.2998 206.8933,-823.2998 151.9587,-841.2998"></polygon>
+<text text-anchor="middle" x="151.9587" y="-820.2998" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">is module?</text>
+</g>
+<!-- is_native&#45;&gt;is_mod -->
+<g id="edge3" class="edge">
+<title>is_native-&gt;is_mod</title>
+<path fill="none" stroke="#000000" d="M97.2475,-891.8929C107.5426,-878.9857 122.378,-860.3861 134.0038,-845.8104"></path>
+<polygon fill="#000000" stroke="#000000" points="136.9201,-847.7671 140.4195,-837.7668 131.4477,-843.4021 136.9201,-847.7671"></polygon>
+<text text-anchor="middle" x="128.3477" y="-862.2998" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">No</text>
+</g>
+<!-- is_mod&#45;&gt;search -->
+<g id="edge4" class="edge">
+<title>is_mod-&gt;search</title>
+<path fill="none" stroke="#000000" d="M151.0721,-805.3154C149.9369,-782.2865 147.9494,-741.9691 146.5493,-713.5675"></path>
+<polygon fill="#000000" stroke="#000000" points="150.0327,-713.1422 146.0445,-703.3267 143.0412,-713.4869 150.0327,-713.1422"></polygon>
+<text text-anchor="middle" x="158.5727" y="-778.2998" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Yes</text>
+</g>
+<!-- is_abs -->
+<g id="node8" class="node">
+<title>is_abs</title>
+<polygon fill="none" stroke="#000000" points="231.9587,-757.2998 173.0054,-739.2998 231.9587,-721.2998 290.9119,-739.2998 231.9587,-757.2998"></polygon>
+<text text-anchor="middle" x="231.9587" y="-736.2998" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">is absolute?</text>
+</g>
+<!-- is_mod&#45;&gt;is_abs -->
+<g id="edge6" class="edge">
+<title>is_mod-&gt;is_abs</title>
+<path fill="none" stroke="#000000" d="M165.169,-809.4289C177.7159,-796.2547 196.7711,-776.2468 211.3214,-760.969"></path>
+<polygon fill="#000000" stroke="#000000" points="214.0992,-763.1273 218.4613,-753.4721 209.0302,-758.2997 214.0992,-763.1273"></polygon>
+<text text-anchor="middle" x="202.3477" y="-778.2998" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">No</text>
+</g>
+<!-- is_abs&#45;&gt;resolve -->
+<g id="edge8" class="edge">
+<title>is_abs-&gt;resolve</title>
+<path fill="none" stroke="#000000" d="M228.4174,-722.1836C224.5677,-703.5768 218.3549,-673.5483 213.7844,-651.4577"></path>
+<polygon fill="#000000" stroke="#000000" points="217.206,-650.7198 211.7524,-641.6364 210.3512,-652.1381 217.206,-650.7198"></polygon>
+<text text-anchor="middle" x="230.3477" y="-678.2998" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">No</text>
+</g>
+<!-- is_abs&#45;&gt;has_file -->
+<g id="edge7" class="edge">
+<title>is_abs-&gt;has_file</title>
+<path fill="none" stroke="#000000" d="M239.2145,-723.1548C249.6849,-697.4969 266.2846,-646.1398 251.9587,-605.2998 247.5948,-592.8595 239.1027,-581.1426 230.7335,-571.7463"></path>
+<polygon fill="#000000" stroke="#000000" points="233.2371,-569.2997 223.8255,-564.4342 228.1487,-574.1069 233.2371,-569.2997"></polygon>
+<text text-anchor="middle" x="265.5727" y="-620.2998" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Yes</text>
+</g>
+<!-- has_file&#45;&gt;load -->
+<g id="edge10" class="edge">
+<title>has_file-&gt;load</title>
+<path fill="none" stroke="#000000" d="M180.0101,-539.34C152.3014,-526.4229 113.9587,-502.0835 113.9587,-466.2998 113.9587,-466.2998 113.9587,-466.2998 113.9587,-186.2998 113.9587,-162.4054 130.8359,-141.5996 147.8965,-126.6719"></path>
+<polygon fill="#000000" stroke="#000000" points="150.2065,-129.3035 155.688,-120.2369 145.7489,-123.9062 150.2065,-129.3035"></polygon>
+<text text-anchor="middle" x="122.5727" y="-309.2998" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Yes</text>
+</g>
+<!-- has_ext -->
+<g id="node10" class="node">
+<title>has_ext</title>
+<polygon fill="none" stroke="#000000" points="220.9587,-484.2998 142.3295,-466.2998 220.9587,-448.2998 299.5879,-466.2998 220.9587,-484.2998"></polygon>
+<text text-anchor="middle" x="220.9587" y="-463.2998" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">module.js exists?</text>
+</g>
+<!-- has_file&#45;&gt;has_ext -->
+<g id="edge11" class="edge">
+<title>has_file-&gt;has_ext</title>
+<path fill="none" stroke="#000000" d="M210.6523,-532.895C212.3837,-521.7072 214.6715,-506.9244 216.6517,-494.1293"></path>
+<polygon fill="#000000" stroke="#000000" points="220.1531,-494.3891 218.2238,-483.9714 213.2355,-493.3184 220.1531,-494.3891"></polygon>
+<text text-anchor="middle" x="221.3477" y="-505.2998" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">No</text>
+</g>
+<!-- has_ext&#45;&gt;load -->
+<g id="edge12" class="edge">
+<title>has_ext-&gt;load</title>
+<path fill="none" stroke="#000000" d="M204.6118,-451.7725C186.5428,-434.0289 159.9587,-402.1685 159.9587,-368.2998 159.9587,-368.2998 159.9587,-368.2998 159.9587,-186.2998 159.9587,-167.0169 165.6666,-146.0999 171.3955,-129.9623"></path>
+<polygon fill="#000000" stroke="#000000" points="174.6762,-131.1815 174.9144,-120.5893 168.1229,-128.7211 174.6762,-131.1815"></polygon>
+<text text-anchor="middle" x="168.5727" y="-267.2998" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Yes</text>
+</g>
+<!-- has_package -->
+<g id="node11" class="node">
+<title>has_package</title>
+<polygon fill="none" stroke="#000000" points="265.9587,-400.2998 188.0782,-368.2998 265.9587,-336.2998 343.8391,-368.2998 265.9587,-400.2998"></polygon>
+<text text-anchor="middle" x="265.9587" y="-371.2998" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">/package.json</text>
+<text text-anchor="middle" x="265.9587" y="-359.2998" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">exists?</text>
+</g>
+<!-- has_ext&#45;&gt;has_package -->
+<g id="edge13" class="edge">
+<title>has_ext-&gt;has_package</title>
+<path fill="none" stroke="#000000" d="M228.5923,-449.6755C234.2406,-437.3748 242.1512,-420.1471 249.2404,-404.7084"></path>
+<polygon fill="#000000" stroke="#000000" points="252.5284,-405.9352 253.5207,-395.3869 246.167,-403.0141 252.5284,-405.9352"></polygon>
+<text text-anchor="middle" x="248.3477" y="-421.2998" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">No</text>
+</g>
+<!-- has_main -->
+<g id="node12" class="node">
+<title>has_main</title>
+<polygon fill="none" stroke="#000000" points="255.9587,-288.2998 195.2445,-270.2998 255.9587,-252.2998 316.6728,-270.2998 255.9587,-288.2998"></polygon>
+<text text-anchor="middle" x="255.9587" y="-267.2998" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">main exists?</text>
+</g>
+<!-- has_package&#45;&gt;has_main -->
+<g id="edge14" class="edge">
+<title>has_package-&gt;has_main</title>
+<path fill="none" stroke="#000000" d="M262.822,-337.5609C261.5284,-324.8836 260.0406,-310.3032 258.7817,-297.9653"></path>
+<polygon fill="#000000" stroke="#000000" points="262.242,-297.3974 257.7448,-287.8044 255.2781,-298.108 262.242,-297.3974"></polygon>
+<text text-anchor="middle" x="268.5727" y="-309.2998" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Yes</text>
+</g>
+<!-- has_index -->
+<g id="node13" class="node">
+<title>has_index</title>
+<polygon fill="none" stroke="#000000" points="311.9587,-204.2998 240.9461,-186.2998 311.9587,-168.2998 382.9712,-186.2998 311.9587,-204.2998"></polygon>
+<text text-anchor="middle" x="311.9587" y="-183.2998" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">index.js exists?</text>
+</g>
+<!-- has_package&#45;&gt;has_index -->
+<g id="edge15" class="edge">
+<title>has_package-&gt;has_index</title>
+<path fill="none" stroke="#000000" d="M289.1449,-345.813C302.7473,-330.9425 318.6569,-310.2052 325.9587,-288.2998 334.3136,-263.2351 328.353,-233.1098 321.8229,-212.1239"></path>
+<polygon fill="#000000" stroke="#000000" points="325.1323,-210.9842 318.6317,-202.6181 318.4963,-213.2121 325.1323,-210.9842"></polygon>
+<text text-anchor="middle" x="336.3477" y="-267.2998" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">No</text>
+</g>
+<!-- has_main&#45;&gt;load -->
+<g id="edge16" class="edge">
+<title>has_main-&gt;load</title>
+<path fill="none" stroke="#000000" d="M245.1345,-255.4564C236.0532,-242.4724 223.238,-222.8417 214.7307,-204.2998 203.6807,-180.2162 195.069,-151.2468 189.6155,-130.3452"></path>
+<polygon fill="#000000" stroke="#000000" points="192.9717,-129.3403 187.1253,-120.5046 186.1856,-131.0576 192.9717,-129.3403"></polygon>
+<text text-anchor="middle" x="222.5727" y="-183.2998" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Yes</text>
+</g>
+<!-- has_main&#45;&gt;has_index -->
+<g id="edge17" class="edge">
+<title>has_main-&gt;has_index</title>
+<path fill="none" stroke="#000000" d="M266.2299,-254.8929C274.5452,-242.4201 286.4041,-224.6316 295.9616,-210.2954"></path>
+<polygon fill="#000000" stroke="#000000" points="298.928,-212.1555 301.5629,-201.8935 293.1036,-208.2726 298.928,-212.1555"></polygon>
+<text text-anchor="middle" x="293.3477" y="-225.2998" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">No</text>
+</g>
+<!-- has_index&#45;&gt;load -->
+<g id="edge18" class="edge">
+<title>has_index-&gt;load</title>
+<path fill="none" stroke="#000000" d="M291.8024,-173.1748C272.3237,-160.491 242.3873,-140.9975 218.8368,-125.6623"></path>
+<polygon fill="#000000" stroke="#000000" points="220.4485,-122.5352 210.1586,-120.0114 216.6287,-128.4012 220.4485,-122.5352"></polygon>
+<text text-anchor="middle" x="263.5727" y="-141.2998" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Yes</text>
+</g>
+<!-- has_index&#45;&gt;end -->
+<g id="edge19" class="edge">
+<title>has_index-&gt;end</title>
+<path fill="none" stroke="#000000" d="M300.7551,-171.0551C293.7232,-161.564 284.4162,-149.1411 275.9587,-138.2998 252.09,-107.704 223.9242,-73.1954 204.8931,-50.1044"></path>
+<polygon fill="#000000" stroke="#000000" points="207.3854,-47.6256 198.3199,-42.1422 201.9872,-52.0821 207.3854,-47.6256"></polygon>
+<text text-anchor="middle" x="266.3477" y="-99.2998" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">No</text>
+</g>
+</g>
+</svg>
+</div>
+
+<hr>
+<div name="setTimeout" data-unique="setTimeout"></div><h3 id="setTimeout" class="notranslate">setTimeout</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Truqueu a la funció després del temps especificat</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">static</span> Timer global.setTimeout(<span class="hljs-built_in">Function</span> callback,
+    <span class="hljs-built_in">Number</span> timeout = <span class="hljs-number">1</span>,<font></font>
+    ...args);<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">callback</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Funció, especifiqueu la funció de devolució de trucada</font></font></li>
+<li><span class="notranslate">timeout</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Number, especifica el temps de retard, en mil·lisegons. </font><font style="vertical-align: inherit;">Si supera 2 ^ 31, s'executarà immediatament.</font></font></li>
+<li><span class="notranslate">args</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: ..., paràmetres addicionals, passats a la devolució de trucada especificada, opcional.</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><a href="../../object/ifs/timer.md.html" class="notranslate">Timer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorna l'objecte temporitzador</font></font></li>
+</ul>
+<hr>
+<div name="clearTimeout" data-unique="clearTimeout"></div><h3 id="clearTimeout" class="notranslate">clearTimeout</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Esborreu el temporitzador especificat</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> global.clearTimeout(Value t);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">t</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Valor, especifiqueu el temporitzador que es vol esborrar</font></font></li>
+</ul>
+<hr>
+<div name="setInterval" data-unique="setInterval"></div><h3 id="setInterval" class="notranslate">setInterval</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Truqueu a la funció després de cada interval de temps especificat</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">static</span> Timer global.setInterval(<span class="hljs-built_in">Function</span> callback,
+    <span class="hljs-built_in">Number</span> timeout,<font></font>
+    ...args);<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">callback</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Funció, especifiqueu la funció de devolució de trucada</font></font></li>
+<li><span class="notranslate">timeout</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Nombre, el temps de l'interval especificat, en mil·lisegons. </font><font style="vertical-align: inherit;">Si supera 2 ^ 31, s'executarà immediatament.</font></font></li>
+<li><span class="notranslate">args</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: ..., paràmetres addicionals, passats a la devolució de trucada especificada, opcional.</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><a href="../../object/ifs/timer.md.html" class="notranslate">Timer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorna l'objecte temporitzador</font></font></li>
+</ul>
+<hr>
+<div name="clearInterval" data-unique="clearInterval"></div><h3 id="clearInterval" class="notranslate">clearInterval</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Esborreu el temporitzador especificat</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> global.clearInterval(Value t);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">t</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Valor, especifiqueu el temporitzador que es vol esborrar</font></font></li>
+</ul>
+<hr>
+<div name="setHrInterval" data-unique="setHrInterval"></div><h3 id="setHrInterval" class="notranslate">setHrInterval</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">La funció es crida després de cada interval de temps especificat. Es tracta d'un temporitzador d'alta precisió que interromprà activament el temporitzador d'execució de scripts JavaScript en execució.</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">static</span> Timer global.setHrInterval(<span class="hljs-built_in">Function</span> callback,
+    <span class="hljs-built_in">Number</span> timeout,<font></font>
+    ...args);<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">callback</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Funció, especifiqueu la funció de devolució de trucada</font></font></li>
+<li><span class="notranslate">timeout</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Nombre, el temps de l'interval especificat, en mil·lisegons. </font><font style="vertical-align: inherit;">Si supera 2 ^ 31, s'executarà immediatament.</font></font></li>
+<li><span class="notranslate">args</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: ..., paràmetres addicionals, passats a la devolució de trucada especificada, opcional.</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><a href="../../object/ifs/timer.md.html" class="notranslate">Timer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorna l'objecte temporitzador</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Atès que el temporitzador setHrInterval interromprà el codi en execució per executar la devolució de trucada, no modifiqueu les dades que puguin afectar altres mòduls de la funció de devolució de trucades ni truqueu cap funció api marcada com asíncron a la devolució de trucada, en cas contrari produirà resultats imprevisibles. </font><font style="vertical-align: inherit;">Per exemple:</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10</div><span class="hljs-keyword">var</span> timers = <span class="hljs-built_in">require</span>(<span class="hljs-string">'timers'</span>);<font></font>
+<font></font>
+<span class="hljs-keyword">var</span> cnt = <span class="hljs-number">0</span>;<font></font>
+timers.setHrInterval(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {<font></font>
+    cnt++;<font></font>
+}, <span class="hljs-number">100</span>);<font></font>
+<font></font>
+<span class="hljs-keyword">while</span> (cnt &lt; <span class="hljs-number">10</span>);<font></font>
+<font></font>
+<span class="hljs-built_in">console</span>.error(<span class="hljs-string">"===============================&gt; done"</span>);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">En aquest codi, el bucle de la línia 8 no acaba a causa del canvi de cnt, perquè JavaScript determinarà que cnt no es canviarà durant aquest cicle en optimitzar el codi.</font></font></p>
+<hr>
+<div name="clearHrInterval" data-unique="clearHrInterval"></div><h3 id="clearHrInterval" class="notranslate">clearHrInterval</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Esborreu el temporitzador especificat</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> global.clearHrInterval(Value t);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">t</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Valor, especifiqueu el temporitzador que es vol esborrar</font></font></li>
+</ul>
+<hr>
+<div name="setImmediate" data-unique="setImmediate"></div><h3 id="setImmediate" class="notranslate">setImmediate</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Executeu la funció de devolució de trucada immediatament el proper temps lliure</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> Timer global.setImmediate(<span class="hljs-built_in">Function</span> callback,<font></font>
+    ...args);<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">callback</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Funció, especifiqueu la funció de devolució de trucada</font></font></li>
+<li><span class="notranslate">args</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: ..., paràmetres addicionals, passats a la devolució de trucada especificada, opcional.</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><a href="../../object/ifs/timer.md.html" class="notranslate">Timer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorna l'objecte temporitzador</font></font></li>
+</ul>
+<hr>
+<div name="clearImmediate" data-unique="clearImmediate"></div><h3 id="clearImmediate" class="notranslate">clearImmediate</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Esborreu el temporitzador especificat</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> global.clearImmediate(Value t);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">t</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Valor, especifiqueu el temporitzador que es vol esborrar</font></font></li>
+</ul>
+<hr>
+<div name="GC" data-unique="GC"></div><h3 id="GC" class="notranslate">GC</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Recollida d’escombraries obligatòria</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> global.GC();
+</code></pre>
+<div name="静态属性" data-unique="静态属性"></div><h2 id="静态属性"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Propietats estàtiques</font></font></h2>
+<div name="Master" data-unique="Master"></div><h3 id="Master" class="notranslate">Master</h3>
+<p><strong><a href="../../object/ifs/worker.md.html" class="notranslate">Worker</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><a href="../../object/ifs/worker.md.html" class="notranslate">Worker</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Objecte amfitrió, només a </font></font><a href="../../object/ifs/worker.md.html" class="notranslate">Worker</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> L’escriptura d’entrada és vàlida</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly Worker global.Master;
+</code></pre>
+<hr>
+<div name="global" data-unique="global"></div><h3 id="global" class="notranslate">global</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Objecte, objecte global</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly <span class="hljs-built_in">Object</span> <span class="hljs-keyword">new</span> global;
+</code></pre>
+<hr>
+<div name="argv" data-unique="argv"></div><h3 id="argv" class="notranslate">argv</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Array, obteniu els paràmetres d’execució de l’escript actual, inicieu js per obtenir els paràmetres d’inici del procés i l’escript executat per run obté els paràmetres passats</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly <span class="hljs-built_in">Array</span> global.argv;
+</code></pre>
+<hr>
+<div name="__filename" data-unique="__filename"></div><h3 id="__filename" class="notranslate">__filename</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cadena, nom del fitxer de script actual</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly <span class="hljs-built_in">String</span> global.__filename;
+</code></pre>
+<hr>
+<div name="__dirname" data-unique="__dirname"></div><h3 id="__dirname" class="notranslate">__dirname</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">String, el directori on es troba l'script actual</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly <span class="hljs-built_in">String</span> global.__dirname;
+</code></pre>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org | </font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Doneu-nos suport</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip675144"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip675144" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Feu clic per tornar a la pàgina superior</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>

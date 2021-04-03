@@ -1,0 +1,578 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../../../imgs/icon.png"><title>Obxecto HttpClient-JavaScript en fibra</title><link href="../../../../../css/common.css" rel="stylesheet"><link href="../../../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Alternar navegación</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../../../index.html"><img src="../../../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../../../index.html">HOME</a></li><li><a href="../../../guide/readme.md.html">GUIDE</a></li><li><a href="../../module/readme.md.html">MODULE</a></li><li><a href="../readme.md.html">OBJECT</a></li><li><a href="../../../awesome/readme.md.html">AWESOME</a></li><li><a href="../../../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../../../docs/manual/object/ifs/httpclient.md.html">中文</a> <a href="../../../../../ca/docs/manual/object/ifs/httpclient.md.html">Catalan</a> <a href="../../../../../de/docs/manual/object/ifs/httpclient.md.html">Deutsch</a> <a href="../../../../../en/docs/manual/object/ifs/httpclient.md.html">English</a> <a href="../../../../../es/docs/manual/object/ifs/httpclient.md.html">Español</a> <a href="../../../../../fr/docs/manual/object/ifs/httpclient.md.html">Français</a> <a href="../../../../../gl/docs/manual/object/ifs/httpclient.md.html">Galego</a> <a href="../../../../../it/docs/manual/object/ifs/httpclient.md.html">Italiano</a> <a href="../../../../../ru/docs/manual/object/ifs/httpclient.md.html">Русский</a> <a href="../../../../../ja/docs/manual/object/ifs/httpclient.md.html">日本語</a> <a href="../../../../../ko/docs/manual/object/ifs/httpclient.md.html">한국어</a> <a href="../../../../../zh-tw/docs/manual/object/ifs/httpclient.md.html">繁體中文</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Obxecto incorporado </font></font></span><div class="search"><span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input type="text" class="searchbox ds-input" placeholder="Buscar" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-label="entrada de busca" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Avenir, &quot;Segoe UI&quot;, Arial, &quot;Hiragino Sans GB&quot;, 冬青黑, &quot;Microsoft YaHei&quot;, 微软雅黑, SimSun, 宋体, Helvetica, Tahoma, &quot;Arial sans-serif&quot;; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div class="ds-dataset-1"></div></span></span></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Páxina de inicio</font></font></a></li><li><a href="../readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Obxectos incorporados </font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Obxecto HttpClient </font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Guía de desenvolvemento </font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="../../../guide/about.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Que é fibjs?</font></font></a></li>
+<li><a href="../../../guide/install.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Instalación e contorno operativo</font></font></a></li>
+<li><a href="../../../guide/hello.md.html" class="notranslate">hello, world</a></li>
+<li><a href="../../../guide/test.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Unha boa vida comeza coa proba</font></font></a></li>
+<li><a href="../../../guide/profiler.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Atopa o asesino de rendemento</font></font></a></li>
+<li><a href="../../../guide/desktop.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Desenvolve rapidamente aplicacións de escritorio</font></font></a></li>
+<li><a href="../../../guide/server-hot-update.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Actualización activa do módulo de servidor</font></font></a></li>
+<li><a href="../../../guide/host-routes.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Enrutamento de nomes de dominio</font></font></a></li>
+<li><a href="../../../guide/x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Uso do certificado X509 en fibjs</font></font></a></li>
+<li><a href="../../../guide/contribute.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Engadir módulo nativo</font></font></a></li>
+</ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_module" aria-controls="collapse_module"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Módulo básico </font></font></a></h4></div><div id="collapse_module" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="../../module/ifs/assert.md.html" class="notranslate">assert</a></li>
+<li><a href="../../module/ifs/base32.md.html" class="notranslate">base32</a></li>
+<li><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a></li>
+<li><a href="../../module/ifs/base64vlq.md.html" class="notranslate">base64vlq</a></li>
+<li><a href="../../module/ifs/bson.md.html" class="notranslate">bson</a></li>
+<li><a href="../../module/ifs/child_process.md.html" class="notranslate">child_process</a></li>
+<li><a href="../../module/ifs/console.md.html" class="notranslate">console</a></li>
+<li><a href="../../module/ifs/constants.md.html" class="notranslate">constants</a></li>
+<li><a href="../../module/ifs/coroutine.md.html" class="notranslate">coroutine</a></li>
+<li><a href="../../module/ifs/crypto.md.html" class="notranslate">crypto</a></li>
+<li><a href="../../module/ifs/db.md.html" class="notranslate">db</a></li>
+<li><a href="../../module/ifs/dgram.md.html" class="notranslate">dgram</a></li>
+<li><a href="../../module/ifs/dns.md.html" class="notranslate">dns</a></li>
+<li><a href="../../module/ifs/encoding.md.html" class="notranslate">encoding</a></li>
+<li><a href="../../module/ifs/fs.md.html" class="notranslate">fs</a></li>
+<li><a href="../../module/ifs/gd.md.html" class="notranslate">gd</a></li>
+<li><a href="../../module/ifs/global.md.html" class="notranslate">global</a></li>
+<li><a href="../../module/ifs/gui.md.html" class="notranslate">gui</a></li>
+<li><a href="../../module/ifs/hash.md.html" class="notranslate">hash</a></li>
+<li><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a></li>
+<li><a href="../../module/ifs/http.md.html" class="notranslate">http</a></li>
+<li><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a></li>
+<li><a href="../../module/ifs/io.md.html" class="notranslate">io</a></li>
+<li><a href="../../module/ifs/json.md.html" class="notranslate">json</a></li>
+<li><a href="../../module/ifs/mq.md.html" class="notranslate">mq</a></li>
+<li><a href="../../module/ifs/msgpack.md.html" class="notranslate">msgpack</a></li>
+<li><a href="../../module/ifs/net.md.html" class="notranslate">net</a></li>
+<li><a href="../../module/ifs/os.md.html" class="notranslate">os</a></li>
+<li><a href="../../module/ifs/path.md.html" class="notranslate">path</a></li>
+<li><a href="../../module/ifs/path_posix.md.html" class="notranslate">path_posix</a></li>
+<li><a href="../../module/ifs/path_win32.md.html" class="notranslate">path_win32</a></li>
+<li><a href="../../module/ifs/process.md.html" class="notranslate">process</a></li>
+<li><a href="../../module/ifs/profiler.md.html" class="notranslate">profiler</a></li>
+<li><a href="../../module/ifs/punycode.md.html" class="notranslate">punycode</a></li>
+<li><a href="../../module/ifs/querystring.md.html" class="notranslate">querystring</a></li>
+<li><a href="../../module/ifs/registry.md.html" class="notranslate">registry</a></li>
+<li><a href="../../module/ifs/ssl.md.html" class="notranslate">ssl</a></li>
+<li><a href="../../module/ifs/string_decoder.md.html" class="notranslate">string_decoder</a></li>
+<li><a href="../../module/ifs/test.md.html" class="notranslate">test</a></li>
+<li><a href="../../module/ifs/timers.md.html" class="notranslate">timers</a></li>
+<li><a href="../../module/ifs/tty.md.html" class="notranslate">tty</a></li>
+<li><a href="../../module/ifs/url.md.html" class="notranslate">url</a></li>
+<li><a href="../../module/ifs/util.md.html" class="notranslate">util</a></li>
+<li><a href="../../module/ifs/uuid.md.html" class="notranslate">uuid</a></li>
+<li><a href="../../module/ifs/vm.md.html" class="notranslate">vm</a></li>
+<li><a href="../../module/ifs/ws.md.html" class="notranslate">ws</a></li>
+<li><a href="../../module/ifs/xml.md.html" class="notranslate">xml</a></li>
+<li><a href="../../module/ifs/zip.md.html" class="notranslate">zip</a></li>
+<li><a href="../../module/ifs/zlib.md.html" class="notranslate">zlib</a></li>
+</ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_object" aria-controls="collapse_object"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Obxectos incorporados </font></font></a></h4></div><div id="collapse_object" class="panel-collapse collapse in" aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="buffer.md.html" class="notranslate">Buffer</a></li>
+<li><a href="bufferedstream.md.html" class="notranslate">BufferedStream</a></li>
+<li><a href="chain.md.html" class="notranslate">Chain</a></li>
+<li><a href="childprocess.md.html" class="notranslate">ChildProcess</a></li>
+<li><a href="cipher.md.html" class="notranslate">Cipher</a></li>
+<li><a href="condition.md.html" class="notranslate">Condition</a></li>
+<li><a href="dbconnection.md.html" class="notranslate">DbConnection</a></li>
+<li><a href="dgramsocket.md.html" class="notranslate">DgramSocket</a></li>
+<li><a href="digest.md.html" class="notranslate">Digest</a></li>
+<li><a href="event.md.html" class="notranslate">Event</a></li>
+<li><a href="eventemitter.md.html" class="notranslate">EventEmitter</a></li>
+<li><a href="fswatcher.md.html" class="notranslate">FSWatcher</a></li>
+<li><a href="fiber.md.html" class="notranslate">Fiber</a></li>
+<li><a href="file.md.html" class="notranslate">File</a></li>
+<li><a href="handler.md.html" class="notranslate">Handler</a></li>
+<li><a href="heapgraphedge.md.html" class="notranslate">HeapGraphEdge</a></li>
+<li><a href="heapgraphnode.md.html" class="notranslate">HeapGraphNode</a></li>
+<li><a href="heapsnapshot.md.html" class="notranslate">HeapSnapshot</a></li>
+<li class="active"><a href="httpclient.md.html" class="notranslate">HttpClient</a></li>
+<li><a href="httpcollection.md.html" class="notranslate">HttpCollection</a></li>
+<li><a href="httpcookie.md.html" class="notranslate">HttpCookie</a></li>
+<li><a href="httphandler.md.html" class="notranslate">HttpHandler</a></li>
+<li><a href="httpmessage.md.html" class="notranslate">HttpMessage</a></li>
+<li><a href="httprepeater.md.html" class="notranslate">HttpRepeater</a></li>
+<li><a href="httprequest.md.html" class="notranslate">HttpRequest</a></li>
+<li><a href="httpresponse.md.html" class="notranslate">HttpResponse</a></li>
+<li><a href="httpserver.md.html" class="notranslate">HttpServer</a></li>
+<li><a href="httpuploaddata.md.html" class="notranslate">HttpUploadData</a></li>
+<li><a href="httpsserver.md.html" class="notranslate">HttpsServer</a></li>
+<li><a href="image.md.html" class="notranslate">Image</a></li>
+<li><a href="leveldb.md.html" class="notranslate">LevelDB</a></li>
+<li><a href="lock.md.html" class="notranslate">Lock</a></li>
+<li><a href="lrucache.md.html" class="notranslate">LruCache</a></li>
+<li><a href="mssql.md.html" class="notranslate">MSSQL</a></li>
+<li><a href="memorystream.md.html" class="notranslate">MemoryStream</a></li>
+<li><a href="message.md.html" class="notranslate">Message</a></li>
+<li><a href="mongocollection.md.html" class="notranslate">MongoCollection</a></li>
+<li><a href="mongocursor.md.html" class="notranslate">MongoCursor</a></li>
+<li><a href="mongodb.md.html" class="notranslate">MongoDB</a></li>
+<li><a href="mongoid.md.html" class="notranslate">MongoID</a></li>
+<li><a href="mysql.md.html" class="notranslate">MySQL</a></li>
+<li><a href="pkey.md.html" class="notranslate">PKey</a></li>
+<li><a href="rangestream.md.html" class="notranslate">RangeStream</a></li>
+<li><a href="redis.md.html" class="notranslate">Redis</a></li>
+<li><a href="redishash.md.html" class="notranslate">RedisHash</a></li>
+<li><a href="redislist.md.html" class="notranslate">RedisList</a></li>
+<li><a href="redisset.md.html" class="notranslate">RedisSet</a></li>
+<li><a href="redissortedset.md.html" class="notranslate">RedisSortedSet</a></li>
+<li><a href="routing.md.html" class="notranslate">Routing</a></li>
+<li><a href="sqlite.md.html" class="notranslate">SQLite</a></li>
+<li><a href="sandbox.md.html" class="notranslate">SandBox</a></li>
+<li><a href="seekablestream.md.html" class="notranslate">SeekableStream</a></li>
+<li><a href="semaphore.md.html" class="notranslate">Semaphore</a></li>
+<li><a href="service.md.html" class="notranslate">Service</a></li>
+<li><a href="smtp.md.html" class="notranslate">Smtp</a></li>
+<li><a href="socket.md.html" class="notranslate">Socket</a></li>
+<li><a href="sslhandler.md.html" class="notranslate">SslHandler</a></li>
+<li><a href="sslserver.md.html" class="notranslate">SslServer</a></li>
+<li><a href="sslsocket.md.html" class="notranslate">SslSocket</a></li>
+<li><a href="stat.md.html" class="notranslate">Stat</a></li>
+<li><a href="statswatcher.md.html" class="notranslate">StatsWatcher</a></li>
+<li><a href="stream.md.html" class="notranslate">Stream</a></li>
+<li><a href="stringdecoder.md.html" class="notranslate">StringDecoder</a></li>
+<li><a href="tcpserver.md.html" class="notranslate">TcpServer</a></li>
+<li><a href="timer.md.html" class="notranslate">Timer</a></li>
+<li><a href="urlobject.md.html" class="notranslate">UrlObject</a></li>
+<li><a href="websocket.md.html" class="notranslate">WebSocket</a></li>
+<li><a href="websocketmessage.md.html" class="notranslate">WebSocketMessage</a></li>
+<li><a href="webview.md.html" class="notranslate">WebView</a></li>
+<li><a href="worker.md.html" class="notranslate">Worker</a></li>
+<li><a href="x509cert.md.html" class="notranslate">X509Cert</a></li>
+<li><a href="x509crl.md.html" class="notranslate">X509Crl</a></li>
+<li><a href="x509req.md.html" class="notranslate">X509Req</a></li>
+<li><a href="xmlattr.md.html" class="notranslate">XmlAttr</a></li>
+<li><a href="xmlcdatasection.md.html" class="notranslate">XmlCDATASection</a></li>
+<li><a href="xmlcharacterdata.md.html" class="notranslate">XmlCharacterData</a></li>
+<li><a href="xmlcomment.md.html" class="notranslate">XmlComment</a></li>
+<li><a href="xmldocument.md.html" class="notranslate">XmlDocument</a></li>
+<li><a href="xmldocumenttype.md.html" class="notranslate">XmlDocumentType</a></li>
+<li><a href="xmlelement.md.html" class="notranslate">XmlElement</a></li>
+<li><a href="xmlnamednodemap.md.html" class="notranslate">XmlNamedNodeMap</a></li>
+<li><a href="xmlnode.md.html" class="notranslate">XmlNode</a></li>
+<li><a href="xmlnodelist.md.html" class="notranslate">XmlNodeList</a></li>
+<li><a href="xmlprocessinginstruction.md.html" class="notranslate">XmlProcessingInstruction</a></li>
+<li><a href="xmltext.md.html" class="notranslate">XmlText</a></li>
+<li><a href="zipfile.md.html" class="notranslate">ZipFile</a></li>
+<li><a href="object.md.html" class="notranslate">object</a></li>
+</ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_awesome" aria-controls="collapse_awesome"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Módulo comunitario </font></font></a></h4></div><div id="collapse_awesome" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="../../../awesome/module/fib-session.md.html" class="notranslate">fib-session</a></li>
+<li><a href="../../../awesome/module/fib-pool.md.html" class="notranslate">fib-pool</a></li>
+<li><a href="../../../awesome/module/fib-orm.md.html" class="notranslate">fib-orm</a></li>
+<li><a href="../../../awesome/module/fib-app.md.html" class="notranslate">fib-app</a></li>
+<li><a href="../../../awesome/module/fib-kv.md.html" class="notranslate">fib-kv</a></li>
+<li><a href="../../../awesome/module/fib-rpc.md.html" class="notranslate">fib-rpc</a></li>
+<li><a href="../../../awesome/module/fib-qr.md.html" class="notranslate">fib-qr</a></li>
+<li><a href="../../../awesome/module/fib-pug.md.html" class="notranslate">fib-pug</a></li>
+<li><a href="../../../awesome/module/ejs.md.html" class="notranslate">ejs</a></li>
+<li><a href="../../../awesome/module/juicer.md.html" class="notranslate">Juicer</a></li>
+<li><a href="../../../awesome/module/highlight.js.md.html" class="notranslate">highlight.js</a></li>
+<li><a href="../../../awesome/module/marked.md.html" class="notranslate">marked</a></li>
+<li><a href="../../../awesome/module/node-cron.md.html" class="notranslate">node-cron</a></li>
+<li><a href="../../../awesome/module/debug.md.html" class="notranslate">debug</a></li>
+<li><a href="../../../awesome/module/benchmark.js.md.html" class="notranslate">benchmark.js</a></li>
+<li><a href="../../../awesome/module/sinon.md.html" class="notranslate">sinon</a></li>
+<li><a href="../../../awesome/module/node-mime.md.html" class="notranslate">node-mime</a></li>
+<li><a href="../../../awesome/module/validatorjs.md.html" class="notranslate">validatorjs</a></li>
+<li><a href="../../../awesome/module/superstruct.md.html" class="notranslate">superstruct</a></li>
+<li><a href="../../../awesome/module/cluster-server.md.html" class="notranslate">cluster-server</a></li>
+<li><a href="../../../awesome/module/synaptic.md.html" class="notranslate">synaptic</a></li>
+<li><a href="../../../awesome/module/source-map.md.html" class="notranslate">source-map</a></li>
+<li><a href="../../../awesome/module/json-format.md.html" class="notranslate">json-format</a></li>
+<li><a href="../../../awesome/module/viz.js.md.html" class="notranslate">viz.js</a></li>
+<li><a href="../../../awesome/module/nomnoml.md.html" class="notranslate">nomnoml</a></li>
+<li><a href="../../../awesome/module/pegjs.md.html" class="notranslate">pegjs</a></li>
+<li><a href="../../../awesome/module/uglify-js.md.html" class="notranslate">uglify-js</a></li>
+<li><a href="../../../awesome/module/js-beautify.md.html" class="notranslate">js-beautify</a></li>
+<li><a href="../../../awesome/module/chalk-animation.md.html" class="notranslate">chalk-animation</a></li>
+<li><a href="../../../awesome/module/jsrsasign.md.html" class="notranslate">jsrsasign</a></li>
+<li><a href="../../../awesome/module/crypto-js.md.html" class="notranslate">crypto-js</a></li>
+<li><a href="../../../awesome/module/ascii-table.md.html" class="notranslate">ascii-table</a></li>
+<li><a href="../../../awesome/module/logstream.md.html" class="notranslate">logstream</a></li>
+<li><a href="../../../awesome/module/ci.md.html" class="notranslate">ci</a></li>
+<li><a href="../../../awesome/module/fs-readdir-recursive.md.html" class="notranslate">fs-readdir-recursive</a></li>
+<li><a href="../../../awesome/module/mkdirp.md.html" class="notranslate">mkdirp</a></li>
+<li><a href="../../../awesome/module/rmdirr.md.html" class="notranslate">rmdirr</a></li>
+<li><a href="../../../awesome/module/detect-port.md.html" class="notranslate">detect-port</a></li>
+<li><a href="../../../awesome/module/bitcoinjs-lib.md.html" class="notranslate">bitcoinjs-lib</a></li>
+<li><a href="../../../awesome/module/rakuten.md.html" class="notranslate">Rakuten</a></li>
+</ul>
+ </div></div></div>  </div></div><div class="content"><div class="social-share share-component" data-sites="weibo,twitter" data-description="分享"></div> <div name="对象-HttpClient" data-unique="对象-HttpClient"></div><h1 id="对象-HttpClient"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Obxecto HttpClient</font></font></h1>
+<p><a href="../../module/ifs/http.md.html" class="notranslate">http</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Obxecto cliente</font></font></p>
+<p><a href="../../module/ifs/http.md.html" class="notranslate">http</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">O obxecto cliente simula o entorno do navegador para almacenar en caché cookies e accesos</font></font><a href="../../module/ifs/url.md.html" class="notranslate">url</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ao levar a cookie correspondente, diferente</font></font><a href="../../module/ifs/http.md.html" class="notranslate">http</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Os obxectos do cliente están illados entre si, proporcionando</font></font><a href="../../module/ifs/http.md.html" class="notranslate">http</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">A solicitude, obter, publicar e outros métodos. </font><font style="vertical-align: inherit;">O uso é o seguinte:</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">var</span> http = <span class="hljs-built_in">require</span>(<span class="hljs-string">'http'</span>);
+<span class="hljs-keyword">var</span> httpClient = <span class="hljs-keyword">new</span> http.Client();<font></font>
+httpClient.request(<span class="hljs-string">'GET'</span>, <span class="hljs-string">'http://fibjs.org'</span>);
+</code></pre>
+<div name="继承关系" data-unique="继承关系"></div><h2 id="继承关系"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Relación de herdanza</font></font></h2>
+<div class="dot notranslate">
+<!-- Generated by graphviz version 2.40.1 (20161225.0304)
+ -->
+<!-- Title: %0 Pages: 1 -->
+<svg width="96pt" height="370pt" viewBox="0.00 0.00 95.70 370.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 366)">
+<title>%0</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-366 91.697,-366 91.697,4 -4,4"></polygon>
+<!-- object -->
+<g id="node1" class="node">
+<title>object</title>
+<g id="a_node1"><a xlink:href="object.md.html" xlink:title="object">
+<polygon fill="#ffffff" stroke="#000000" points="15.017,-309.5 15.017,-361.5 72.68,-361.5 72.68,-309.5 15.017,-309.5"></polygon>
+<text text-anchor="middle" x="43.8485" y="-348.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
+<polyline fill="none" stroke="#000000" points="15.017,-341.5 72.68,-341.5 "></polyline>
+<text text-anchor="start" x="23.017" y="-328.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toString()</text>
+<text text-anchor="start" x="23.017" y="-316.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toJSON()</text>
+</a>
+</g>
+</g>
+<!-- HttpClient -->
+<g id="me" class="node">
+<title>HttpClient</title>
+<g id="a_me"><a xlink:title="HttpClient">
+<polygon fill="#d3d3d3" stroke="#000000" points="0,-.5 0,-272.5 87.697,-272.5 87.697,-.5 0,-.5"></polygon>
+<text text-anchor="middle" x="43.8485" y="-259.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">HttpClient</text>
+<polyline fill="none" stroke="#000000" points="0,-252.5 87.697,-252.5 "></polyline>
+<text text-anchor="start" x="8" y="-239.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">new HttpClient()</text>
+<polyline fill="none" stroke="#000000" points="0,-232.5 87.697,-232.5 "></polyline>
+<text text-anchor="start" x="8" y="-219.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">cookies</text>
+<text text-anchor="start" x="8" y="-207.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">timeout</text>
+<text text-anchor="start" x="8" y="-195.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">enableCookie</text>
+<text text-anchor="start" x="8" y="-183.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">autoRedirect</text>
+<text text-anchor="start" x="8" y="-171.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">enableEncoding</text>
+<text text-anchor="start" x="8" y="-159.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">maxBodySize</text>
+<text text-anchor="start" x="8" y="-147.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">userAgent</text>
+<text text-anchor="start" x="8" y="-135.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">poolSize</text>
+<text text-anchor="start" x="8" y="-123.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">poolTimeout</text>
+<text text-anchor="start" x="8" y="-111.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">proxyAgent</text>
+<text text-anchor="start" x="8" y="-99.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">sslVerification</text>
+<polyline fill="none" stroke="#000000" points="0,-92.5 87.697,-92.5 "></polyline>
+<text text-anchor="start" x="8" y="-79.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">setClientCert()</text>
+<text text-anchor="start" x="8" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">request()</text>
+<text text-anchor="start" x="8" y="-55.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">get()</text>
+<text text-anchor="start" x="8" y="-43.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">post()</text>
+<text text-anchor="start" x="8" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">del()</text>
+<text text-anchor="start" x="8" y="-19.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">put()</text>
+<text text-anchor="start" x="8" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">patch()</text>
+</a>
+</g>
+</g>
+<!-- object&#45;&gt;HttpClient -->
+<g id="edge1" class="edge">
+<title>object-&gt;HttpClient</title>
+<path fill="none" stroke="#000000" d="M43.8485,-299.4191C43.8485,-291.313 43.8485,-282.244 43.8485,-272.6462"></path>
+<polygon fill="#000000" stroke="#000000" points="40.3486,-299.4842 43.8485,-309.4842 47.3486,-299.4843 40.3486,-299.4842"></polygon>
+</g>
+</g>
+</svg>
+</div>
+
+<div name="构造函数" data-unique="构造函数"></div><h2 id="构造函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Construtor</font></font></h2>
+<div name="HttpClient" data-unique="HttpClient"></div><h3 id="HttpClient" class="notranslate">HttpClient</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Constructor de HttpClient, crea un novo obxecto HttpClient</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">new</span> HttpClient();
+</code></pre>
+<div name="成员属性" data-unique="成员属性"></div><h2 id="成员属性"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Atributos dos membros</font></font></h2>
+<div name="cookies" data-unique="cookies"></div><h3 id="cookies" class="notranslate">cookies</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">NArray, regresa</font></font><a href="../../module/ifs/http.md.html" class="notranslate">http</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Clienta </font></font><a href="httpcookie.md.html" class="notranslate">HttpCookie</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Lista de obxectos</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly NArray HttpClient.cookies;
+</code></pre>
+<hr>
+<div name="timeout" data-unique="timeout"></div><h3 id="timeout" class="notranslate">timeout</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Entero, consulta e define o tempo de espera en milisegundos</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer HttpClient.timeout;
+</code></pre>
+<hr>
+<div name="enableCookie" data-unique="enableCookie"></div><h3 id="enableCookie" class="notranslate">enableCookie</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cambio de función booleana, cookie, habilitado de xeito predeterminado</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Boolean</span> HttpClient.enableCookie;
+</code></pre>
+<hr>
+<div name="autoRedirect" data-unique="autoRedirect"></div><h3 id="autoRedirect" class="notranslate">autoRedirect</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cambio de función de redirección automático booleano, habilitado de xeito predeterminado</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Boolean</span> HttpClient.autoRedirect;
+</code></pre>
+<hr>
+<div name="enableEncoding" data-unique="enableEncoding"></div><h3 id="enableEncoding" class="notranslate">enableEncoding</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cambio de función de descompresión automático booleano, habilitado de xeito predeterminado</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Boolean</span> HttpClient.enableEncoding;
+</code></pre>
+<hr>
+<div name="maxBodySize" data-unique="maxBodySize"></div><h3 id="maxBodySize" class="notranslate">maxBodySize</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Entero, consulta e define o tamaño máximo do corpo, en MB, o valor predeterminado é -1 e o tamaño non está limitado</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer HttpClient.maxBodySize;
+</code></pre>
+<hr>
+<div name="userAgent" data-unique="userAgent"></div><h3 id="userAgent" class="notranslate">userAgent</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cadea, consulta e configuración </font></font><a href="../../module/ifs/http.md.html" class="notranslate">http</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Identificación do navegador na solicitude</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> HttpClient.userAgent;
+</code></pre>
+<hr>
+<div name="poolSize" data-unique="poolSize"></div><h3 id="poolSize" class="notranslate">poolSize</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Entero, consulta e configura o número máximo de conexións de caché para manter vivo, o predeterminado é 128</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer HttpClient.poolSize;
+</code></pre>
+<hr>
+<div name="poolTimeout" data-unique="poolTimeout"></div><h3 id="poolTimeout" class="notranslate">poolTimeout</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Entero, consulta e configura o tempo de espera de conexión da caché para manter vivo, o valor predeterminado é 10000 ms</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer HttpClient.poolTimeout;
+</code></pre>
+<hr>
+<div name="proxyAgent" data-unique="proxyAgent"></div><h3 id="proxyAgent" class="notranslate">proxyAgent</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cadea, consulta e configuración do servidor proxy</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> HttpClient.proxyAgent;
+</code></pre>
+<hr>
+<div name="sslVerification" data-unique="sslVerification"></div><h3 id="sslVerification" class="notranslate">sslVerification</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Entero, consulta e configura o modo de verificación do certificado cando te conectas a https, referencia </font></font><a href="../../module/ifs/ssl.md.html" class="notranslate">ssl</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> VERIFICAR_ * constantes do módulo, o valor predeterminado é </font></font><a href="../../module/ifs/ssl.md.html#verification" class="notranslate">ssl.verification</a></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer HttpClient.sslVerification;
+</code></pre>
+<div name="成员函数" data-unique="成员函数"></div><h2 id="成员函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Función de membro</font></font></h2>
+<div name="setClientCert" data-unique="setClientCert"></div><h3 id="setClientCert" class="notranslate">setClientCert</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Establecer certificado de cliente predeterminado</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div>HttpClient.setClientCert(X509Cert crt,<font></font>
+    PKey key);<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de chamada:</font></font></p>
+<ul>
+<li><span class="notranslate">crt</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="x509cert.md.html" class="notranslate">X509Cert</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><a href="x509cert.md.html" class="notranslate">X509Cert</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Certificado para servidor de autenticación de cliente</font></font></li>
+<li><span class="notranslate">key</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="pkey.md.html" class="notranslate">PKey</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><a href="pkey.md.html" class="notranslate">PKey</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Chave privada, que se usa para falar co cliente</font></font></li>
+</ul>
+<hr>
+<div name="request" data-unique="request"></div><h3 id="request" class="notranslate">request</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">enviar </font></font><a href="../../module/ifs/http.md.html" class="notranslate">http</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Solicite ao obxecto de fluxo especificado e devolva o resultado</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div>HttpResponse HttpClient.request(Stream conn,<font></font>
+    HttpRequest req) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de chamada:</font></font></p>
+<ul>
+<li><span class="notranslate">conn</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="stream.md.html" class="notranslate">Stream</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Especifique o obxecto de fluxo para procesar a solicitude</font></font></li>
+<li><span class="notranslate">req</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="httprequest.md.html" class="notranslate">HttpRequest</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Para ser enviado </font></font><a href="httprequest.md.html" class="notranslate">HttpRequest</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Obxecto</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultado de volta:</font></font></p>
+<ul>
+<li><a href="httpresponse.md.html" class="notranslate">HttpResponse</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Resposta de resposta do servidor</font></font></li>
+</ul>
+<hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">enviar </font></font><a href="../../module/ifs/http.md.html" class="notranslate">http</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Solicite ao obxecto de fluxo especificado e devolva o resultado</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div>HttpResponse HttpClient.request(Stream conn,<font></font>
+    HttpRequest req,<font></font>
+    SeekableStream response_body) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de chamada:</font></font></p>
+<ul>
+<li><span class="notranslate">conn</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="stream.md.html" class="notranslate">Stream</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Especifique o obxecto de fluxo para procesar a solicitude</font></font></li>
+<li><span class="notranslate">req</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="httprequest.md.html" class="notranslate">HttpRequest</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Para ser enviado </font></font><a href="httprequest.md.html" class="notranslate">HttpRequest</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Obxecto</font></font></li>
+<li><span class="notranslate">response_body</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="seekablestream.md.html" class="notranslate">SeekableStream</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Especifique o fluxo de response.body</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultado de volta:</font></font></p>
+<ul>
+<li><a href="httpresponse.md.html" class="notranslate">HttpResponse</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Resposta de resposta do servidor</font></font></li>
+</ul>
+<hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Solicitude especificada </font></font><a href="../../module/ifs/url.md.html" class="notranslate">url</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">E devolve o resultado</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div>HttpResponse HttpClient.request(<span class="hljs-built_in">String</span> method,
+    <span class="hljs-built_in">String</span> url,
+    <span class="hljs-built_in">Object</span> opts = {}) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de chamada:</font></font></p>
+<ul>
+<li><span class="notranslate">method</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadea, especificar </font></font><a href="../../module/ifs/http.md.html" class="notranslate">http</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Método de solicitude: GET, POST, etc.</font></font></li>
+<li><span class="notranslate">url</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadea, especificar </font></font><a href="../../module/ifs/url.md.html" class="notranslate">url</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Debe ser o completo incluído o host </font></font><a href="../../module/ifs/url.md.html" class="notranslate">url</a></li>
+<li><span class="notranslate">opts</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Obxecto, especifique información adicional</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultado de volta:</font></font></p>
+<ul>
+<li><a href="httpresponse.md.html" class="notranslate">HttpResponse</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Resposta de resposta do servidor</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">opts contén opcións adicionais solicitadas e o contido soportado é o seguinte:</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7</div>{
+    <span class="hljs-string">"query"</span>: {},
+    <span class="hljs-string">"body"</span>: SeekableStream | Buffer | <span class="hljs-built_in">String</span> | {},
+    <span class="hljs-string">"json"</span>: {},
+    <span class="hljs-string">"headers"</span>: {},
+    <span class="hljs-string">"response_body"</span>: SeekableStream <span class="hljs-comment">// 指定接受 resposne 数据的流</span><font></font>
+}<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Onde corpo,</font></font><a href="../../module/ifs/json.md.html" class="notranslate">json</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Non debe aparecer ao mesmo tempo. </font><font style="vertical-align: inherit;">O valor predeterminado é {}, non contén ningunha información adicional</font></font></p>
+<hr>
+<div name="get" data-unique="get"></div><h3 id="get" class="notranslate">get</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Use o método GET para solicitar o especificado </font></font><a href="../../module/ifs/url.md.html" class="notranslate">url</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, E devolve o resultado, que equivale a solicitude ("GET", ...)</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div>HttpResponse HttpClient.get(<span class="hljs-built_in">String</span> url,
+    <span class="hljs-built_in">Object</span> opts = {}) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de chamada:</font></font></p>
+<ul>
+<li><span class="notranslate">url</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadea, especificar </font></font><a href="../../module/ifs/url.md.html" class="notranslate">url</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Debe ser o completo incluído o host </font></font><a href="../../module/ifs/url.md.html" class="notranslate">url</a></li>
+<li><span class="notranslate">opts</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Obxecto, especifique información adicional</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultado de volta:</font></font></p>
+<ul>
+<li><a href="httpresponse.md.html" class="notranslate">HttpResponse</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Resposta de resposta do servidor</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">opts contén opcións adicionais solicitadas e o contido soportado é o seguinte:</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6</div>{
+    <span class="hljs-string">"query"</span>: {},
+    <span class="hljs-string">"body"</span>: SeekableStream | Buffer | <span class="hljs-built_in">String</span> | {},
+    <span class="hljs-string">"json"</span>: {},
+    <span class="hljs-string">"headers"</span>: {}<font></font>
+}<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Onde corpo,</font></font><a href="../../module/ifs/json.md.html" class="notranslate">json</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Non debe aparecer ao mesmo tempo. </font><font style="vertical-align: inherit;">O valor predeterminado é {}, non contén ningunha información adicional</font></font></p>
+<hr>
+<div name="post" data-unique="post"></div><h3 id="post" class="notranslate">post</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Use o método POST para solicitar o especificado </font></font><a href="../../module/ifs/url.md.html" class="notranslate">url</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, E devolve o resultado, que equivale a solicitude ("POST", ...)</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div>HttpResponse HttpClient.post(<span class="hljs-built_in">String</span> url,
+    <span class="hljs-built_in">Object</span> opts = {}) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de chamada:</font></font></p>
+<ul>
+<li><span class="notranslate">url</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadea, especificar </font></font><a href="../../module/ifs/url.md.html" class="notranslate">url</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Debe ser o completo incluído o host </font></font><a href="../../module/ifs/url.md.html" class="notranslate">url</a></li>
+<li><span class="notranslate">opts</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Obxecto, especifique información adicional</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultado de volta:</font></font></p>
+<ul>
+<li><a href="httpresponse.md.html" class="notranslate">HttpResponse</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Resposta de resposta do servidor</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">opts contén opcións adicionais solicitadas e o contido soportado é o seguinte:</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6</div>{
+    <span class="hljs-string">"query"</span>: {},
+    <span class="hljs-string">"body"</span>: SeekableStream | Buffer | <span class="hljs-built_in">String</span> | {},
+    <span class="hljs-string">"json"</span>: {},
+    <span class="hljs-string">"headers"</span>: {}<font></font>
+}<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Onde corpo,</font></font><a href="../../module/ifs/json.md.html" class="notranslate">json</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Non debe aparecer ao mesmo tempo. </font><font style="vertical-align: inherit;">O valor predeterminado é {}, non contén ningunha información adicional</font></font></p>
+<hr>
+<div name="del" data-unique="del"></div><h3 id="del" class="notranslate">del</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Use o método DELETE para solicitar o especificado </font></font><a href="../../module/ifs/url.md.html" class="notranslate">url</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, E devolve o resultado, que equivale a solicitude ("ELIMINA", ...)</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div>HttpResponse HttpClient.del(<span class="hljs-built_in">String</span> url,
+    <span class="hljs-built_in">Object</span> opts = {}) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de chamada:</font></font></p>
+<ul>
+<li><span class="notranslate">url</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadea, especificar </font></font><a href="../../module/ifs/url.md.html" class="notranslate">url</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Debe ser o completo incluído o host </font></font><a href="../../module/ifs/url.md.html" class="notranslate">url</a></li>
+<li><span class="notranslate">opts</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Obxecto, especifique información adicional</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultado de volta:</font></font></p>
+<ul>
+<li><a href="httpresponse.md.html" class="notranslate">HttpResponse</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Resposta de resposta do servidor</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">opts contén opcións adicionais solicitadas e o contido soportado é o seguinte:</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6</div>{
+    <span class="hljs-string">"query"</span>: {},
+    <span class="hljs-string">"body"</span>: SeekableStream | Buffer | <span class="hljs-built_in">String</span> | {},
+    <span class="hljs-string">"json"</span>: {},
+    <span class="hljs-string">"headers"</span>: {}<font></font>
+}<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Onde corpo,</font></font><a href="../../module/ifs/json.md.html" class="notranslate">json</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Non debe aparecer ao mesmo tempo. </font><font style="vertical-align: inherit;">O valor predeterminado é {}, non contén ningunha información adicional</font></font></p>
+<hr>
+<div name="put" data-unique="put"></div><h3 id="put" class="notranslate">put</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Use o método PUT para solicitar o especificado </font></font><a href="../../module/ifs/url.md.html" class="notranslate">url</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, E devolve o resultado, que equivale a solicitude ("PUT", ...)</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div>HttpResponse HttpClient.put(<span class="hljs-built_in">String</span> url,
+    <span class="hljs-built_in">Object</span> opts = {}) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de chamada:</font></font></p>
+<ul>
+<li><span class="notranslate">url</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadea, especificar </font></font><a href="../../module/ifs/url.md.html" class="notranslate">url</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Debe ser o completo incluído o host </font></font><a href="../../module/ifs/url.md.html" class="notranslate">url</a></li>
+<li><span class="notranslate">opts</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Obxecto, especifique información adicional</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultado de volta:</font></font></p>
+<ul>
+<li><a href="httpresponse.md.html" class="notranslate">HttpResponse</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Resposta de resposta do servidor</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">opts contén opcións adicionais solicitadas e o contido soportado é o seguinte:</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6</div>{
+    <span class="hljs-string">"query"</span>: {},
+    <span class="hljs-string">"body"</span>: SeekableStream | Buffer | <span class="hljs-built_in">String</span> | {},
+    <span class="hljs-string">"json"</span>: {},
+    <span class="hljs-string">"headers"</span>: {}<font></font>
+}<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Onde corpo,</font></font><a href="../../module/ifs/json.md.html" class="notranslate">json</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Non debe aparecer ao mesmo tempo. </font><font style="vertical-align: inherit;">O valor predeterminado é {}, non contén ningunha información adicional</font></font></p>
+<hr>
+<div name="patch" data-unique="patch"></div><h3 id="patch" class="notranslate">patch</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Use o método PATCH para solicitar o especificado </font></font><a href="../../module/ifs/url.md.html" class="notranslate">url</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, E devolve o resultado, que equivale a solicitude ("PARCHE", ...)</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div>HttpResponse HttpClient.patch(<span class="hljs-built_in">String</span> url,
+    <span class="hljs-built_in">Object</span> opts = {}) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de chamada:</font></font></p>
+<ul>
+<li><span class="notranslate">url</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadea, especificar </font></font><a href="../../module/ifs/url.md.html" class="notranslate">url</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Debe ser o completo incluído o host </font></font><a href="../../module/ifs/url.md.html" class="notranslate">url</a></li>
+<li><span class="notranslate">opts</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Obxecto, especifique información adicional</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultado de volta:</font></font></p>
+<ul>
+<li><a href="httpresponse.md.html" class="notranslate">HttpResponse</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Resposta de resposta do servidor</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">opts contén opcións adicionais solicitadas e o contido soportado é o seguinte:</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6</div>{
+    <span class="hljs-string">"query"</span>: {},
+    <span class="hljs-string">"body"</span>: SeekableStream | Buffer | <span class="hljs-built_in">String</span> | {},
+    <span class="hljs-string">"json"</span>: {},
+    <span class="hljs-string">"headers"</span>: {}<font></font>
+}<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Onde corpo,</font></font><a href="../../module/ifs/json.md.html" class="notranslate">json</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Non debe aparecer ao mesmo tempo. </font><font style="vertical-align: inherit;">O valor predeterminado é {}, non contén ningunha información adicional</font></font></p>
+<hr>
+<div name="toString" data-unique="toString"></div><h3 id="toString" class="notranslate">toString</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Devolve a representación de cadea do obxecto, xeralmente devolve "[Obxecto nativo]", o obxecto pode reimplementarse segundo as súas propias características</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> HttpClient.toString();
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultado de volta:</font></font></p>
+<ul>
+<li><span class="notranslate">String</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Devolve a representación de cadea do obxecto</font></font></li>
+</ul>
+<hr>
+<div name="toJSON" data-unique="toJSON"></div><h3 id="toJSON" class="notranslate">toJSON</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Devolve a representación en formato JSON do obxecto, xeralmente devolve unha colección de atributos lexibles definidos polo obxecto</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Value HttpClient.toJSON(<span class="hljs-built_in">String</span> key = <span class="hljs-string">""</span>);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de chamada:</font></font></p>
+<ul>
+<li><span class="notranslate">key</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadea, sen usar</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultado de volta:</font></font></p>
+<ul>
+<li><span class="notranslate">Value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Devolve un valor que contén JSON serializable</font></font></li>
+</ul>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org | </font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Apóianos</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip624836"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip624836" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Fai clic para volver á páxina superior</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>

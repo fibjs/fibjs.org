@@ -1,0 +1,426 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../../../imgs/icon.png"><title>Object Stream-JavaScript sobre fibra</title><link href="../../../../../css/common.css" rel="stylesheet"><link href="../../../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Commuta la navegació</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../../../index.html"><img src="../../../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../../../index.html">HOME</a></li><li><a href="../../../guide/readme.md.html">GUIDE</a></li><li><a href="../../module/readme.md.html">MODULE</a></li><li><a href="../readme.md.html">OBJECT</a></li><li><a href="../../../awesome/readme.md.html">AWESOME</a></li><li><a href="../../../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../../../docs/manual/object/ifs/stream.md.html">中文</a> <a href="../../../../../ca/docs/manual/object/ifs/stream.md.html">Catalan</a> <a href="../../../../../de/docs/manual/object/ifs/stream.md.html">Deutsch</a> <a href="../../../../../en/docs/manual/object/ifs/stream.md.html">English</a> <a href="../../../../../es/docs/manual/object/ifs/stream.md.html">Español</a> <a href="../../../../../fr/docs/manual/object/ifs/stream.md.html">Français</a> <a href="../../../../../gl/docs/manual/object/ifs/stream.md.html">Galego</a> <a href="../../../../../it/docs/manual/object/ifs/stream.md.html">Italiano</a> <a href="../../../../../ru/docs/manual/object/ifs/stream.md.html">Русский</a> <a href="../../../../../ja/docs/manual/object/ifs/stream.md.html">日本語</a> <a href="../../../../../ko/docs/manual/object/ifs/stream.md.html">한국어</a> <a href="../../../../../zh-tw/docs/manual/object/ifs/stream.md.html">繁體中文</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Objecte objecte incorporat </font></font></span><div class="search"><span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input type="text" class="searchbox ds-input" placeholder="Cerca" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-label="entrada de cerca" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Avenir, &quot;Segoe UI&quot;, Arial, &quot;Hiragino Sans GB&quot;, 冬青黑, &quot;Microsoft YaHei&quot;, 微软雅黑, SimSun, 宋体, Helvetica, Tahoma, &quot;Arial sans-serif&quot;; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div class="ds-dataset-1"></div></span></span></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Pàgina inicial</font></font></a></li><li><a href="../readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Objectes incorporats </font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Corrent d'objectes </font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Guia de desenvolupament </font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="../../../guide/about.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Què és fibjs?</font></font></a></li>
+<li><a href="../../../guide/install.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Instal·lació i entorn operatiu</font></font></a></li>
+<li><a href="../../../guide/hello.md.html" class="notranslate">hello, world</a></li>
+<li><a href="../../../guide/test.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Una bona vida comença amb la prova</font></font></a></li>
+<li><a href="../../../guide/profiler.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Troba l'assassí del rendiment</font></font></a></li>
+<li><a href="../../../guide/desktop.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Desenvolupeu ràpidament aplicacions d'escriptori</font></font></a></li>
+<li><a href="../../../guide/server-hot-update.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Actualització actualitzada del mòdul de servidor</font></font></a></li>
+<li><a href="../../../guide/host-routes.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Encaminament de noms de domini</font></font></a></li>
+<li><a href="../../../guide/x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ús del certificat X509 a fibjs</font></font></a></li>
+<li><a href="../../../guide/contribute.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Afegeix un mòdul natiu</font></font></a></li>
+</ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_module" aria-controls="collapse_module"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Mòdul bàsic </font></font></a></h4></div><div id="collapse_module" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="../../module/ifs/assert.md.html" class="notranslate">assert</a></li>
+<li><a href="../../module/ifs/base32.md.html" class="notranslate">base32</a></li>
+<li><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a></li>
+<li><a href="../../module/ifs/base64vlq.md.html" class="notranslate">base64vlq</a></li>
+<li><a href="../../module/ifs/bson.md.html" class="notranslate">bson</a></li>
+<li><a href="../../module/ifs/child_process.md.html" class="notranslate">child_process</a></li>
+<li><a href="../../module/ifs/console.md.html" class="notranslate">console</a></li>
+<li><a href="../../module/ifs/constants.md.html" class="notranslate">constants</a></li>
+<li><a href="../../module/ifs/coroutine.md.html" class="notranslate">coroutine</a></li>
+<li><a href="../../module/ifs/crypto.md.html" class="notranslate">crypto</a></li>
+<li><a href="../../module/ifs/db.md.html" class="notranslate">db</a></li>
+<li><a href="../../module/ifs/dgram.md.html" class="notranslate">dgram</a></li>
+<li><a href="../../module/ifs/dns.md.html" class="notranslate">dns</a></li>
+<li><a href="../../module/ifs/encoding.md.html" class="notranslate">encoding</a></li>
+<li><a href="../../module/ifs/fs.md.html" class="notranslate">fs</a></li>
+<li><a href="../../module/ifs/gd.md.html" class="notranslate">gd</a></li>
+<li><a href="../../module/ifs/global.md.html" class="notranslate">global</a></li>
+<li><a href="../../module/ifs/gui.md.html" class="notranslate">gui</a></li>
+<li><a href="../../module/ifs/hash.md.html" class="notranslate">hash</a></li>
+<li><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a></li>
+<li><a href="../../module/ifs/http.md.html" class="notranslate">http</a></li>
+<li><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a></li>
+<li><a href="../../module/ifs/io.md.html" class="notranslate">io</a></li>
+<li><a href="../../module/ifs/json.md.html" class="notranslate">json</a></li>
+<li><a href="../../module/ifs/mq.md.html" class="notranslate">mq</a></li>
+<li><a href="../../module/ifs/msgpack.md.html" class="notranslate">msgpack</a></li>
+<li><a href="../../module/ifs/net.md.html" class="notranslate">net</a></li>
+<li><a href="../../module/ifs/os.md.html" class="notranslate">os</a></li>
+<li><a href="../../module/ifs/path.md.html" class="notranslate">path</a></li>
+<li><a href="../../module/ifs/path_posix.md.html" class="notranslate">path_posix</a></li>
+<li><a href="../../module/ifs/path_win32.md.html" class="notranslate">path_win32</a></li>
+<li><a href="../../module/ifs/process.md.html" class="notranslate">process</a></li>
+<li><a href="../../module/ifs/profiler.md.html" class="notranslate">profiler</a></li>
+<li><a href="../../module/ifs/punycode.md.html" class="notranslate">punycode</a></li>
+<li><a href="../../module/ifs/querystring.md.html" class="notranslate">querystring</a></li>
+<li><a href="../../module/ifs/registry.md.html" class="notranslate">registry</a></li>
+<li><a href="../../module/ifs/ssl.md.html" class="notranslate">ssl</a></li>
+<li><a href="../../module/ifs/string_decoder.md.html" class="notranslate">string_decoder</a></li>
+<li><a href="../../module/ifs/test.md.html" class="notranslate">test</a></li>
+<li><a href="../../module/ifs/timers.md.html" class="notranslate">timers</a></li>
+<li><a href="../../module/ifs/tty.md.html" class="notranslate">tty</a></li>
+<li><a href="../../module/ifs/url.md.html" class="notranslate">url</a></li>
+<li><a href="../../module/ifs/util.md.html" class="notranslate">util</a></li>
+<li><a href="../../module/ifs/uuid.md.html" class="notranslate">uuid</a></li>
+<li><a href="../../module/ifs/vm.md.html" class="notranslate">vm</a></li>
+<li><a href="../../module/ifs/ws.md.html" class="notranslate">ws</a></li>
+<li><a href="../../module/ifs/xml.md.html" class="notranslate">xml</a></li>
+<li><a href="../../module/ifs/zip.md.html" class="notranslate">zip</a></li>
+<li><a href="../../module/ifs/zlib.md.html" class="notranslate">zlib</a></li>
+</ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_object" aria-controls="collapse_object"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Objectes incorporats </font></font></a></h4></div><div id="collapse_object" class="panel-collapse collapse in" aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="buffer.md.html" class="notranslate">Buffer</a></li>
+<li><a href="bufferedstream.md.html" class="notranslate">BufferedStream</a></li>
+<li><a href="chain.md.html" class="notranslate">Chain</a></li>
+<li><a href="childprocess.md.html" class="notranslate">ChildProcess</a></li>
+<li><a href="cipher.md.html" class="notranslate">Cipher</a></li>
+<li><a href="condition.md.html" class="notranslate">Condition</a></li>
+<li><a href="dbconnection.md.html" class="notranslate">DbConnection</a></li>
+<li><a href="dgramsocket.md.html" class="notranslate">DgramSocket</a></li>
+<li><a href="digest.md.html" class="notranslate">Digest</a></li>
+<li><a href="event.md.html" class="notranslate">Event</a></li>
+<li><a href="eventemitter.md.html" class="notranslate">EventEmitter</a></li>
+<li><a href="fswatcher.md.html" class="notranslate">FSWatcher</a></li>
+<li><a href="fiber.md.html" class="notranslate">Fiber</a></li>
+<li><a href="file.md.html" class="notranslate">File</a></li>
+<li><a href="handler.md.html" class="notranslate">Handler</a></li>
+<li><a href="heapgraphedge.md.html" class="notranslate">HeapGraphEdge</a></li>
+<li><a href="heapgraphnode.md.html" class="notranslate">HeapGraphNode</a></li>
+<li><a href="heapsnapshot.md.html" class="notranslate">HeapSnapshot</a></li>
+<li><a href="httpclient.md.html" class="notranslate">HttpClient</a></li>
+<li><a href="httpcollection.md.html" class="notranslate">HttpCollection</a></li>
+<li><a href="httpcookie.md.html" class="notranslate">HttpCookie</a></li>
+<li><a href="httphandler.md.html" class="notranslate">HttpHandler</a></li>
+<li><a href="httpmessage.md.html" class="notranslate">HttpMessage</a></li>
+<li><a href="httprepeater.md.html" class="notranslate">HttpRepeater</a></li>
+<li><a href="httprequest.md.html" class="notranslate">HttpRequest</a></li>
+<li><a href="httpresponse.md.html" class="notranslate">HttpResponse</a></li>
+<li><a href="httpserver.md.html" class="notranslate">HttpServer</a></li>
+<li><a href="httpuploaddata.md.html" class="notranslate">HttpUploadData</a></li>
+<li><a href="httpsserver.md.html" class="notranslate">HttpsServer</a></li>
+<li><a href="image.md.html" class="notranslate">Image</a></li>
+<li><a href="leveldb.md.html" class="notranslate">LevelDB</a></li>
+<li><a href="lock.md.html" class="notranslate">Lock</a></li>
+<li><a href="lrucache.md.html" class="notranslate">LruCache</a></li>
+<li><a href="mssql.md.html" class="notranslate">MSSQL</a></li>
+<li><a href="memorystream.md.html" class="notranslate">MemoryStream</a></li>
+<li><a href="message.md.html" class="notranslate">Message</a></li>
+<li><a href="mongocollection.md.html" class="notranslate">MongoCollection</a></li>
+<li><a href="mongocursor.md.html" class="notranslate">MongoCursor</a></li>
+<li><a href="mongodb.md.html" class="notranslate">MongoDB</a></li>
+<li><a href="mongoid.md.html" class="notranslate">MongoID</a></li>
+<li><a href="mysql.md.html" class="notranslate">MySQL</a></li>
+<li><a href="pkey.md.html" class="notranslate">PKey</a></li>
+<li><a href="rangestream.md.html" class="notranslate">RangeStream</a></li>
+<li><a href="redis.md.html" class="notranslate">Redis</a></li>
+<li><a href="redishash.md.html" class="notranslate">RedisHash</a></li>
+<li><a href="redislist.md.html" class="notranslate">RedisList</a></li>
+<li><a href="redisset.md.html" class="notranslate">RedisSet</a></li>
+<li><a href="redissortedset.md.html" class="notranslate">RedisSortedSet</a></li>
+<li><a href="routing.md.html" class="notranslate">Routing</a></li>
+<li><a href="sqlite.md.html" class="notranslate">SQLite</a></li>
+<li><a href="sandbox.md.html" class="notranslate">SandBox</a></li>
+<li><a href="seekablestream.md.html" class="notranslate">SeekableStream</a></li>
+<li><a href="semaphore.md.html" class="notranslate">Semaphore</a></li>
+<li><a href="service.md.html" class="notranslate">Service</a></li>
+<li><a href="smtp.md.html" class="notranslate">Smtp</a></li>
+<li><a href="socket.md.html" class="notranslate">Socket</a></li>
+<li><a href="sslhandler.md.html" class="notranslate">SslHandler</a></li>
+<li><a href="sslserver.md.html" class="notranslate">SslServer</a></li>
+<li><a href="sslsocket.md.html" class="notranslate">SslSocket</a></li>
+<li><a href="stat.md.html" class="notranslate">Stat</a></li>
+<li><a href="statswatcher.md.html" class="notranslate">StatsWatcher</a></li>
+<li class="active"><a href="stream.md.html" class="notranslate">Stream</a></li>
+<li><a href="stringdecoder.md.html" class="notranslate">StringDecoder</a></li>
+<li><a href="tcpserver.md.html" class="notranslate">TcpServer</a></li>
+<li><a href="timer.md.html" class="notranslate">Timer</a></li>
+<li><a href="urlobject.md.html" class="notranslate">UrlObject</a></li>
+<li><a href="websocket.md.html" class="notranslate">WebSocket</a></li>
+<li><a href="websocketmessage.md.html" class="notranslate">WebSocketMessage</a></li>
+<li><a href="webview.md.html" class="notranslate">WebView</a></li>
+<li><a href="worker.md.html" class="notranslate">Worker</a></li>
+<li><a href="x509cert.md.html" class="notranslate">X509Cert</a></li>
+<li><a href="x509crl.md.html" class="notranslate">X509Crl</a></li>
+<li><a href="x509req.md.html" class="notranslate">X509Req</a></li>
+<li><a href="xmlattr.md.html" class="notranslate">XmlAttr</a></li>
+<li><a href="xmlcdatasection.md.html" class="notranslate">XmlCDATASection</a></li>
+<li><a href="xmlcharacterdata.md.html" class="notranslate">XmlCharacterData</a></li>
+<li><a href="xmlcomment.md.html" class="notranslate">XmlComment</a></li>
+<li><a href="xmldocument.md.html" class="notranslate">XmlDocument</a></li>
+<li><a href="xmldocumenttype.md.html" class="notranslate">XmlDocumentType</a></li>
+<li><a href="xmlelement.md.html" class="notranslate">XmlElement</a></li>
+<li><a href="xmlnamednodemap.md.html" class="notranslate">XmlNamedNodeMap</a></li>
+<li><a href="xmlnode.md.html" class="notranslate">XmlNode</a></li>
+<li><a href="xmlnodelist.md.html" class="notranslate">XmlNodeList</a></li>
+<li><a href="xmlprocessinginstruction.md.html" class="notranslate">XmlProcessingInstruction</a></li>
+<li><a href="xmltext.md.html" class="notranslate">XmlText</a></li>
+<li><a href="zipfile.md.html" class="notranslate">ZipFile</a></li>
+<li><a href="object.md.html" class="notranslate">object</a></li>
+</ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_awesome" aria-controls="collapse_awesome"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Mòdul de comunitat </font></font></a></h4></div><div id="collapse_awesome" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="../../../awesome/module/fib-session.md.html" class="notranslate">fib-session</a></li>
+<li><a href="../../../awesome/module/fib-pool.md.html" class="notranslate">fib-pool</a></li>
+<li><a href="../../../awesome/module/fib-orm.md.html" class="notranslate">fib-orm</a></li>
+<li><a href="../../../awesome/module/fib-app.md.html" class="notranslate">fib-app</a></li>
+<li><a href="../../../awesome/module/fib-kv.md.html" class="notranslate">fib-kv</a></li>
+<li><a href="../../../awesome/module/fib-rpc.md.html" class="notranslate">fib-rpc</a></li>
+<li><a href="../../../awesome/module/fib-qr.md.html" class="notranslate">fib-qr</a></li>
+<li><a href="../../../awesome/module/fib-pug.md.html" class="notranslate">fib-pug</a></li>
+<li><a href="../../../awesome/module/ejs.md.html" class="notranslate">ejs</a></li>
+<li><a href="../../../awesome/module/juicer.md.html" class="notranslate">Juicer</a></li>
+<li><a href="../../../awesome/module/highlight.js.md.html" class="notranslate">highlight.js</a></li>
+<li><a href="../../../awesome/module/marked.md.html" class="notranslate">marked</a></li>
+<li><a href="../../../awesome/module/node-cron.md.html" class="notranslate">node-cron</a></li>
+<li><a href="../../../awesome/module/debug.md.html" class="notranslate">debug</a></li>
+<li><a href="../../../awesome/module/benchmark.js.md.html" class="notranslate">benchmark.js</a></li>
+<li><a href="../../../awesome/module/sinon.md.html" class="notranslate">sinon</a></li>
+<li><a href="../../../awesome/module/node-mime.md.html" class="notranslate">node-mime</a></li>
+<li><a href="../../../awesome/module/validatorjs.md.html" class="notranslate">validatorjs</a></li>
+<li><a href="../../../awesome/module/superstruct.md.html" class="notranslate">superstruct</a></li>
+<li><a href="../../../awesome/module/cluster-server.md.html" class="notranslate">cluster-server</a></li>
+<li><a href="../../../awesome/module/synaptic.md.html" class="notranslate">synaptic</a></li>
+<li><a href="../../../awesome/module/source-map.md.html" class="notranslate">source-map</a></li>
+<li><a href="../../../awesome/module/json-format.md.html" class="notranslate">json-format</a></li>
+<li><a href="../../../awesome/module/viz.js.md.html" class="notranslate">viz.js</a></li>
+<li><a href="../../../awesome/module/nomnoml.md.html" class="notranslate">nomnoml</a></li>
+<li><a href="../../../awesome/module/pegjs.md.html" class="notranslate">pegjs</a></li>
+<li><a href="../../../awesome/module/uglify-js.md.html" class="notranslate">uglify-js</a></li>
+<li><a href="../../../awesome/module/js-beautify.md.html" class="notranslate">js-beautify</a></li>
+<li><a href="../../../awesome/module/chalk-animation.md.html" class="notranslate">chalk-animation</a></li>
+<li><a href="../../../awesome/module/jsrsasign.md.html" class="notranslate">jsrsasign</a></li>
+<li><a href="../../../awesome/module/crypto-js.md.html" class="notranslate">crypto-js</a></li>
+<li><a href="../../../awesome/module/ascii-table.md.html" class="notranslate">ascii-table</a></li>
+<li><a href="../../../awesome/module/logstream.md.html" class="notranslate">logstream</a></li>
+<li><a href="../../../awesome/module/ci.md.html" class="notranslate">ci</a></li>
+<li><a href="../../../awesome/module/fs-readdir-recursive.md.html" class="notranslate">fs-readdir-recursive</a></li>
+<li><a href="../../../awesome/module/mkdirp.md.html" class="notranslate">mkdirp</a></li>
+<li><a href="../../../awesome/module/rmdirr.md.html" class="notranslate">rmdirr</a></li>
+<li><a href="../../../awesome/module/detect-port.md.html" class="notranslate">detect-port</a></li>
+<li><a href="../../../awesome/module/bitcoinjs-lib.md.html" class="notranslate">bitcoinjs-lib</a></li>
+<li><a href="../../../awesome/module/rakuten.md.html" class="notranslate">Rakuten</a></li>
+</ul>
+ </div></div></div>  </div></div><div class="content"><div class="social-share share-component" data-sites="weibo,twitter" data-description="分享"></div> <div name="对象-Stream" data-unique="对象-Stream"></div><h1 id="对象-Stream"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Corrent d'objectes</font></font></h1>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Objecte d'operació de flux, utilitzat per a la lectura i l'escriptura de flux de dades binari</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">El flux és l’objecte bàsic que s’utilitza per definir excuses estàndard per al processament del flux i no es pot crear de forma independent</font></font></p>
+<div name="继承关系" data-unique="继承关系"></div><h2 id="继承关系"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Relació d’herència</font></font></h2>
+<div class="dot notranslate">
+<!-- Generated by graphviz version 2.40.1 (20161225.0304)
+ -->
+<!-- Title: %0 Pages: 1 -->
+<svg width="352pt" height="352pt" viewBox="0.00 0.00 352.23 352.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 348)">
+<title>%0</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-348 348.235,-348 348.235,4 -4,4"></polygon>
+<!-- object -->
+<g id="node1" class="node">
+<title>object</title>
+<g id="a_node1"><a xlink:href="object.md.html" xlink:title="object">
+<polygon fill="#ffffff" stroke="#000000" points="165.1765,-291.5 165.1765,-343.5 222.8395,-343.5 222.8395,-291.5 165.1765,-291.5"></polygon>
+<text text-anchor="middle" x="194.008" y="-330.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
+<polyline fill="none" stroke="#000000" points="165.1765,-323.5 222.8395,-323.5 "></polyline>
+<text text-anchor="start" x="173.1765" y="-310.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toString()</text>
+<text text-anchor="start" x="173.1765" y="-298.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toJSON()</text>
+</a>
+</g>
+</g>
+<!-- Stream -->
+<g id="me" class="node">
+<title>Stream</title>
+<g id="a_me"><a xlink:title="Stream">
+<polygon fill="#d3d3d3" stroke="#000000" points="166.286,-146.5 166.286,-254.5 221.73,-254.5 221.73,-146.5 166.286,-146.5"></polygon>
+<text text-anchor="middle" x="194.008" y="-241.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Stream</text>
+<polyline fill="none" stroke="#000000" points="166.286,-234.5 221.73,-234.5 "></polyline>
+<text text-anchor="start" x="174.286" y="-221.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">fd</text>
+<polyline fill="none" stroke="#000000" points="166.286,-214.5 221.73,-214.5 "></polyline>
+<text text-anchor="start" x="174.286" y="-201.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">read()</text>
+<text text-anchor="start" x="174.286" y="-189.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">write()</text>
+<text text-anchor="start" x="174.286" y="-177.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">flush()</text>
+<text text-anchor="start" x="174.286" y="-165.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">close()</text>
+<text text-anchor="start" x="174.286" y="-153.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">copyTo()</text>
+</a>
+</g>
+</g>
+<!-- object&#45;&gt;Stream -->
+<g id="edge1" class="edge">
+<title>object-&gt;Stream</title>
+<path fill="none" stroke="#000000" d="M194.008,-281.1428C194.008,-272.8239 194.008,-263.8042 194.008,-254.9111"></path>
+<polygon fill="#000000" stroke="#000000" points="190.5081,-281.2429 194.008,-291.2429 197.5081,-281.243 190.5081,-281.2429"></polygon>
+</g>
+<!-- BufferedStream -->
+<g id="node3" class="node">
+<title>BufferedStream</title>
+<g id="a_node3"><a xlink:href="bufferedstream.md.html" xlink:title="BufferedStream">
+<polygon fill="#ffffff" stroke="#000000" points="0,-73.5 0,-109.5 86.016,-109.5 86.016,-73.5 0,-73.5"></polygon>
+<text text-anchor="middle" x="43.008" y="-88.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">BufferedStream</text>
+</a>
+</g>
+</g>
+<!-- Stream&#45;&gt;BufferedStream -->
+<g id="edge2" class="edge">
+<title>Stream-&gt;BufferedStream</title>
+<path fill="none" stroke="#000000" d="M157.7315,-174.3137C130.1362,-154.3939 92.8623,-127.4875 68.3937,-109.8248"></path>
+<polygon fill="#000000" stroke="#000000" points="155.8032,-177.2383 165.9599,-180.2534 159.9003,-171.5625 155.8032,-177.2383"></polygon>
+</g>
+<!-- SeekableStream -->
+<g id="node4" class="node">
+<title>SeekableStream</title>
+<g id="a_node4"><a xlink:href="seekablestream.md.html" xlink:title="SeekableStream">
+<polygon fill="#ffffff" stroke="#000000" points="104.0545,-73.5 104.0545,-109.5 193.9615,-109.5 193.9615,-73.5 104.0545,-73.5"></polygon>
+<text text-anchor="middle" x="149.008" y="-88.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">SeekableStream</text>
+</a>
+</g>
+</g>
+<!-- Stream&#45;&gt;SeekableStream -->
+<g id="edge3" class="edge">
+<title>Stream-&gt;SeekableStream</title>
+<path fill="none" stroke="#000000" d="M167.8084,-137.0387C163.6708,-127.0165 159.7048,-117.41 156.4909,-109.6253"></path>
+<polygon fill="#000000" stroke="#000000" points="164.5886,-138.4117 171.6398,-146.3193 171.0589,-135.7404 164.5886,-138.4117"></polygon>
+</g>
+<!-- Socket -->
+<g id="node8" class="node">
+<title>Socket</title>
+<g id="a_node8"><a xlink:href="socket.md.html" xlink:title="Socket">
+<polygon fill="#ffffff" stroke="#000000" points="212.008,-73.5 212.008,-109.5 266.008,-109.5 266.008,-73.5 212.008,-73.5"></polygon>
+<text text-anchor="middle" x="238.791" y="-88.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Socket</text>
+</a>
+</g>
+</g>
+<!-- Stream&#45;&gt;Socket -->
+<g id="edge7" class="edge">
+<title>Stream-&gt;Socket</title>
+<path fill="none" stroke="#000000" d="M220.2076,-137.0387C224.3452,-127.0165 228.3112,-117.41 231.5251,-109.6253"></path>
+<polygon fill="#000000" stroke="#000000" points="216.9571,-135.7404 216.3762,-146.3193 223.4274,-138.4117 216.9571,-135.7404"></polygon>
+</g>
+<!-- SslSocket -->
+<g id="node9" class="node">
+<title>SslSocket</title>
+<g id="a_node9"><a xlink:href="sslsocket.md.html" xlink:title="SslSocket">
+<polygon fill="#ffffff" stroke="#000000" points="283.781,-73.5 283.781,-109.5 344.235,-109.5 344.235,-73.5 283.781,-73.5"></polygon>
+<text text-anchor="middle" x="314.008" y="-88.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">SslSocket</text>
+</a>
+</g>
+</g>
+<!-- Stream&#45;&gt;SslSocket -->
+<g id="edge8" class="edge">
+<title>Stream-&gt;SslSocket</title>
+<path fill="none" stroke="#000000" d="M229.3345,-168.4118C250.343,-149.329 276.2387,-125.8071 293.8212,-109.8363"></path>
+<polygon fill="#000000" stroke="#000000" points="226.889,-165.9048 221.84,-175.2192 231.5955,-171.0863 226.889,-165.9048"></polygon>
+</g>
+<!-- File -->
+<g id="node5" class="node">
+<title>File</title>
+<g id="a_node5"><a xlink:href="file.md.html" xlink:title="File">
+<polygon fill="#ffffff" stroke="#000000" points="35.008,-.5 35.008,-36.5 89.008,-36.5 89.008,-.5 35.008,-.5"></polygon>
+<text text-anchor="middle" x="61.561" y="-15.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">File</text>
+</a>
+</g>
+</g>
+<!-- SeekableStream&#45;&gt;File -->
+<g id="edge4" class="edge">
+<title>SeekableStream-&gt;File</title>
+<path fill="none" stroke="#000000" d="M119.6254,-66.8457C107.8167,-56.9372 94.4511,-45.7224 83.5677,-36.5904"></path>
+<polygon fill="#000000" stroke="#000000" points="117.5921,-69.7084 127.5024,-73.4551 122.0916,-64.346 117.5921,-69.7084"></polygon>
+</g>
+<!-- MemoryStream -->
+<g id="node6" class="node">
+<title>MemoryStream</title>
+<g id="a_node6"><a xlink:href="memorystream.md.html" xlink:title="MemoryStream">
+<polygon fill="#ffffff" stroke="#000000" points="106.8435,-.5 106.8435,-36.5 191.1725,-36.5 191.1725,-.5 106.8435,-.5"></polygon>
+<text text-anchor="middle" x="149.008" y="-15.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">MemoryStream</text>
+</a>
+</g>
+</g>
+<!-- SeekableStream&#45;&gt;MemoryStream -->
+<g id="edge5" class="edge">
+<title>SeekableStream-&gt;MemoryStream</title>
+<path fill="none" stroke="#000000" d="M149.008,-63.3688C149.008,-54.3769 149.008,-44.6687 149.008,-36.5904"></path>
+<polygon fill="#000000" stroke="#000000" points="145.5081,-63.455 149.008,-73.4551 152.5081,-63.4551 145.5081,-63.455"></polygon>
+</g>
+<!-- RangeStream -->
+<g id="node7" class="node">
+<title>RangeStream</title>
+<g id="a_node7"><a xlink:href="rangestream.md.html" xlink:title="RangeStream">
+<polygon fill="#ffffff" stroke="#000000" points="209.1685,-.5 209.1685,-36.5 286.8475,-36.5 286.8475,-.5 209.1685,-.5"></polygon>
+<text text-anchor="middle" x="248.008" y="-15.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">RangeStream</text>
+</a>
+</g>
+</g>
+<!-- SeekableStream&#45;&gt;RangeStream -->
+<g id="edge6" class="edge">
+<title>SeekableStream-&gt;RangeStream</title>
+<path fill="none" stroke="#000000" d="M181.6701,-67.4158C195.2949,-57.3693 210.8518,-45.898 223.4745,-36.5904"></path>
+<polygon fill="#000000" stroke="#000000" points="179.4513,-64.7033 173.4799,-73.4551 183.6056,-70.3372 179.4513,-64.7033"></polygon>
+</g>
+</g>
+</svg>
+</div>
+
+<div name="成员属性" data-unique="成员属性"></div><h2 id="成员属性"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Atributs de membre</font></font></h2>
+<div name="fd" data-unique="fd"></div><h3 id="fd" class="notranslate">fd</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Enter, consulteu el valor del descriptor de fitxer corresponent al flux, implementat per la subclasse</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly Integer Stream.fd;
+</code></pre>
+<div name="成员函数" data-unique="成员函数"></div><h2 id="成员函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Funció de membre</font></font></h2>
+<div name="read" data-unique="read"></div><h3 id="read" class="notranslate">read</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Llegiu les dades de la mida especificada del tauler d'activitat</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Buffer Stream.read(Integer bytes = <span class="hljs-number">-1</span>) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">bytes</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu la quantitat de dades que cal llegir, el valor per defecte és llegir un bloc de dades de mida aleatòria, la mida de les dades llegides depèn del dispositiu</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Torneu les dades llegides del flux, si no hi ha dades per llegir o si la connexió s'interromp, torneu a ser nul</font></font></li>
+</ul>
+<hr>
+<div name="write" data-unique="write"></div><h3 id="write" class="notranslate">write</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Escriviu les dades donades al flux</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Stream.write(Buffer data) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">data</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Tenint en compte les dades a escriure</font></font></li>
+</ul>
+<hr>
+<div name="flush" data-unique="flush"></div><h3 id="flush" class="notranslate">flush</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Escriviu el contingut del buffer de fitxers al dispositiu físic</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Stream.flush() <span class="hljs-keyword">async</span>;
+</code></pre>
+<hr>
+<div name="close" data-unique="close"></div><h3 id="close" class="notranslate">close</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Tanqueu l'objecte de flux actual</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Stream.close() <span class="hljs-keyword">async</span>;
+</code></pre>
+<hr>
+<div name="copyTo" data-unique="copyTo"></div><h3 id="copyTo" class="notranslate">copyTo</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Copieu les dades del flux al flux de destinació</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div>Long Stream.copyTo(Stream stm,<font></font>
+    Long bytes = <span class="hljs-number">-1</span>) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">stm</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Stream, objecte de flux de destinació</font></font></li>
+<li><span class="notranslate">bytes</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Llarg, el nombre de bytes copiats</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><span class="notranslate">Long</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorna el nombre de bytes copiats</font></font></li>
+</ul>
+<hr>
+<div name="toString" data-unique="toString"></div><h3 id="toString" class="notranslate">toString</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Retorna la representació de cadena de l'objecte, generalment retorna "[Objecte natiu]", l'objecte es pot tornar a implementar segons les seves pròpies característiques</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> Stream.toString();
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><span class="notranslate">String</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorna la representació de cadena de l'objecte</font></font></li>
+</ul>
+<hr>
+<div name="toJSON" data-unique="toJSON"></div><h3 id="toJSON" class="notranslate">toJSON</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Retorna la representació en format JSON de l'objecte, generalment retorna una col·lecció d'atributs llegibles definits per l'objecte</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Value Stream.toJSON(<span class="hljs-built_in">String</span> key = <span class="hljs-string">""</span>);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">key</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, sense utilitzar</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<ul>
+<li><span class="notranslate">Value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorna un valor que conté JSON serialitzable</font></font></li>
+</ul>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org | </font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Doneu-nos suport</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip865664"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip865664" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Feu clic per tornar a la pàgina superior</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>
