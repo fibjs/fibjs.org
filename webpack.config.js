@@ -13,6 +13,7 @@ var mkdir = require('mkdir');
 var marked = require('marked');
 var ejs = require('ejs');
 var highlight = require('highlight.js');
+var nomnoml = require('nomnoml');
 var Viz;
 
 var WebpackOnBuildPlugin = require('on-build-webpack');
@@ -141,6 +142,11 @@ function build_docs() {
             }
             dot_cache[code] = svg;
 
+            svg = svg.replace(/^<\?xml(.|\n)*?\?>(.|\n)*?<!DOCTYPE(.|\n)*?>/, '')
+            return '<div class="dot notranslate">' + svg + '</div>';
+        },
+        uml: (txt, lang, code) => {
+            var svg = nomnoml.renderSvg(code);
             svg = svg.replace(/^<\?xml(.|\n)*?\?>(.|\n)*?<!DOCTYPE(.|\n)*?>/, '')
             return '<div class="dot notranslate">' + svg + '</div>';
         }
@@ -273,10 +279,8 @@ function relative() {
 
             html = html.replace(re, (s, t, u) => {
                 u = path.relative(p, u);
-                if (u.endsWith('/download/tmpl.html')) {
+                if (u.endsWith('/download/tmpl.html'))
                     u = u.replace('/download/tmpl.html', '/index.html');
-                    console.log(u);
-                }
                 return t + '=' + u;
             });
 
