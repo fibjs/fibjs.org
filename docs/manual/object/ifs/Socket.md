@@ -8,17 +8,20 @@ var s = new net.Socket();
 ```
 
 ## 继承关系
-```dot
-digraph {
-    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
+```uml
+#lineWidth: 1.5
+#font: Helvetica,sans-Serif
+#fontSize: 10
+#leading: 1.6
+#.this: fill=lightgray
+#.class: fill=white
 
-    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    Stream [tooltip="Stream", URL="Stream.md", label="{Stream|fd\l|read()\lwrite()\lflush()\lclose()\lcopyTo()\l}"];
-    Socket [tooltip="Socket", fillcolor="lightgray", id="me", label="{Socket|new Socket()\l|family\ltype\lremoteAddress\lremotePort\llocalAddress\llocalPort\ltimeout\l|connect()\lbind()\llisten()\laccept()\lrecv()\lrecvfrom()\lsend()\lsendto()\l}"];
+[<class>object|toString();toJSON()]
+[<class>Stream|fd|read();write();flush();close();copyTo()]
+[<this>Socket|new Socket()|family;remoteAddress;remotePort;localAddress;localPort;timeout|connect();bind();listen();accept();recv();send()]
 
-    object -> Stream [dir=back];
-    Stream -> Socket [dir=back];
-}
+[object] <:- [Stream]
+[Stream] <:- [Socket]
 ```
 
 ## 构造函数
@@ -27,13 +30,11 @@ digraph {
 **Socket 构造函数，创建一个新的 Socket 对象**
 
 ```JavaScript
-new Socket(Integer family = net.AF_INET,
-    Integer type = net.SOCK_STREAM);
+new Socket(Integer family = net.AF_INET);
 ```
 
 调用参数:
 * family: Integer, 指定地址集，缺省为 AF_INET，ipv4
-* type: Integer, 指定协议族，缺省为 SOCK_STREAM，tcp
 
 ## 成员属性
         
@@ -42,14 +43,6 @@ new Socket(Integer family = net.AF_INET,
 
 ```JavaScript
 readonly Integer Socket.family;
-```
-
---------------------------
-### type
-**Integer, 查询当前 Socket 对象的协议族**
-
-```JavaScript
-readonly Integer Socket.type;
 ```
 
 --------------------------
@@ -107,12 +100,12 @@ readonly Integer Socket.fd;
 
 ```JavaScript
 Socket.connect(String host,
-    Integer port) async;
+    Integer port = 0) async;
 ```
 
 调用参数:
-* host: String, 指定对方地址或主机名
-* port: Integer, 指定对方端口
+* host: String, 指定对方地址或主机名，也可以指向 unix socket 和 Windows pipe 路径
+* port: Integer, 指定对方端口，连接 unix socket 和 Windows pipe 时，忽略此参数
 
 --------------------------
 ### bind
@@ -132,13 +125,13 @@ Socket.bind(Integer port,
 
 ```JavaScript
 Socket.bind(String addr,
-    Integer port,
+    Integer port = 0,
     Boolean allowIPv4 = true);
 ```
 
 调用参数:
-* addr: String, 指定绑定的地址
-* port: Integer, 指定绑定的端口
+* addr: String, 指定绑定的地址，也可以指向 unix socket 和 Windows pipe 路径
+* port: Integer, 指定绑定的端口，绑定 unix socket 和 Windows pipe 时，忽略此参数
 * allowIPv4: Boolean, 指定是否接受 ipv4 连接，缺省为 true。本参数在 ipv6 时有效，并依赖于操作系统
 
 --------------------------
@@ -178,25 +171,6 @@ Buffer Socket.recv(Integer bytes = -1) async;
 * [Buffer](Buffer.md), 返回从连接读取的数据
 
 --------------------------
-### recvfrom
-**读取一个 UDP 包**
-
-```JavaScript
-NObject Socket.recvfrom(Integer bytes = -1) async;
-```
-
-调用参数:
-* bytes: Integer, 指定要读取的数据量，缺省读取任意尺寸的数据
-
-返回结果:
-* NObject, 返回从连接读取的数据包
-
-recvfrom 返回结果中包含以下内容：
-  - data: 接收到的二进制数据块
-  - address: 发送方的地址
-  - port: 发送方的端口
-
---------------------------
 ### send
 **将给定的数据写入连接，此方法等效于 write 方法**
 
@@ -206,21 +180,6 @@ Socket.send(Buffer data) async;
 
 调用参数:
 * data: [Buffer](Buffer.md), 给定要写入的数据
-
---------------------------
-### sendto
-**向给定 ip:port 发送一个 UDP 包**
-
-```JavaScript
-Socket.sendto(Buffer data,
-    String host,
-    Integer port) async;
-```
-
-调用参数:
-* data: [Buffer](Buffer.md), 给定要写入的数据
-* host: String, 指定目标 ip 或主机名
-* port: Integer, 指定目标端口
 
 --------------------------
 ### read

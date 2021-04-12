@@ -4,15 +4,18 @@
 Stat 对象通过 [fs.stat](../../module/ifs/fs.md#stat), [File.stat](File.md#stat), [fs.readdir](../../module/ifs/fs.md#readdir) 查询，不可独立创建
 
 ## 继承关系
-```dot
-digraph {
-    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
+```uml
+#lineWidth: 1.5
+#font: Helvetica,sans-Serif
+#fontSize: 10
+#leading: 1.6
+#.this: fill=lightgray
+#.class: fill=white
 
-    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    Stat [tooltip="Stat", fillcolor="lightgray", id="me", label="{Stat|name\ldev\lino\lmode\lnlink\luid\lgid\lrdev\lsize\lblksize\lblocks\lmtime\lmtimeMs\latime\latimeMs\lctime\lctimeMs\lbirthtime\lbirthtimeMs\l|isWritable()\lisReadable()\lisExecutable()\lisHidden()\lisBlockDevice()\lisCharacterDevice()\lisDirectory()\lisFIFO()\lisFile()\lisSymbolicLink()\lisMemory()\lisSocket()\l}"];
+[<class>object|toString();toJSON()]
+[<this>Stat|name;dev;ino;mode;nlink;uid;gid;rdev;size;blksize;blocks;mtime;mtimeMs;atime;atimeMs;ctime;ctimeMs;birthtime;birthtimeMs|isWritable();isReadable();isExecutable();isHidden();isBlockDevice();isCharacterDevice();isDirectory();isFIFO();isFile();isSymbolicLink();isMemory();isSocket()]
 
-    object -> Stat [dir=back];
-}
+[object] <:- [Stat]
 ```
 
 ## 成员属性

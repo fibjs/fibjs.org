@@ -2,15 +2,18 @@
 定时器处理器对象
 
 ## 继承关系
-```dot
-digraph {
-    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
+```uml
+#lineWidth: 1.5
+#font: Helvetica,sans-Serif
+#fontSize: 10
+#leading: 1.6
+#.this: fill=lightgray
+#.class: fill=white
 
-    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    Timer [tooltip="Timer", fillcolor="lightgray", id="me", label="{Timer|stopped\l|ref()\lunref()\lclear()\l}"];
+[<class>object|toString();toJSON()]
+[<this>Timer|stopped|ref();unref();clear()]
 
-    object -> Timer [dir=back];
-}
+[object] <:- [Timer]
 ```
 
 ## 成员属性

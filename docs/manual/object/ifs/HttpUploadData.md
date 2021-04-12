@@ -2,15 +2,18 @@
 包含 multipart 的一个条目数据
 
 ## 继承关系
-```dot
-digraph {
-    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
+```uml
+#lineWidth: 1.5
+#font: Helvetica,sans-Serif
+#fontSize: 10
+#leading: 1.6
+#.this: fill=lightgray
+#.class: fill=white
 
-    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    HttpUploadData [tooltip="HttpUploadData", fillcolor="lightgray", id="me", label="{HttpUploadData|fileName\lcontentType\lcontentTransferEncoding\lbody\l}"];
+[<class>object|toString();toJSON()]
+[<this>HttpUploadData|fileName;contentType;contentTransferEncoding;body]
 
-    object -> HttpUploadData [dir=back];
-}
+[object] <:- [HttpUploadData]
 ```
 
 ## 成员属性

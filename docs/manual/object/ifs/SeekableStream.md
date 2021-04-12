@@ -2,23 +2,26 @@
 可移动当前指针的流对象接口
 
 ## 继承关系
-```dot
-digraph {
-    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
+```uml
+#lineWidth: 1.5
+#font: Helvetica,sans-Serif
+#fontSize: 10
+#leading: 1.6
+#.this: fill=lightgray
+#.class: fill=white
 
-    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    Stream [tooltip="Stream", URL="Stream.md", label="{Stream|fd\l|read()\lwrite()\lflush()\lclose()\lcopyTo()\l}"];
-    SeekableStream [tooltip="SeekableStream", fillcolor="lightgray", id="me", label="{SeekableStream|seek()\ltell()\lrewind()\lsize()\lreadAll()\ltruncate()\leof()\lstat()\l}"];
-    File [tooltip="File", URL="File.md", label="{File}"];
-    MemoryStream [tooltip="MemoryStream", URL="MemoryStream.md", label="{MemoryStream}"];
-    RangeStream [tooltip="RangeStream", URL="RangeStream.md", label="{RangeStream}"];
+[<class>object|toString();toJSON()]
+[<class>Stream|fd|read();write();flush();close();copyTo()]
+[<this>SeekableStream|seek();tell();rewind();size();readAll();truncate();eof();stat()]
+[<class>File]
+[<class>MemoryStream]
+[<class>RangeStream]
 
-    object -> Stream [dir=back];
-    Stream -> SeekableStream [dir=back];
-    SeekableStream -> File [dir=back];
-    SeekableStream -> MemoryStream [dir=back];
-    SeekableStream -> RangeStream [dir=back];
-}
+[object] <:- [Stream]
+[Stream] <:- [SeekableStream]
+[SeekableStream] <:- [File]
+[SeekableStream] <:- [MemoryStream]
+[SeekableStream] <:- [RangeStream]
 ```
 
 ## 成员属性

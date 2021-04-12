@@ -17,21 +17,24 @@ new net.TcpServer(8080, func).start();
 ```
 
 ## 继承关系
-```dot
-digraph {
-    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
+```uml
+#lineWidth: 1.5
+#font: Helvetica,sans-Serif
+#fontSize: 10
+#leading: 1.6
+#.this: fill=lightgray
+#.class: fill=white
 
-    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    TcpServer [tooltip="TcpServer", fillcolor="lightgray", id="me", label="{TcpServer|new TcpServer()\l|socket\lhandler\l|start()\lstop()\l}"];
-    HttpServer [tooltip="HttpServer", URL="HttpServer.md", label="{HttpServer}"];
-    HttpsServer [tooltip="HttpsServer", URL="HttpsServer.md", label="{HttpsServer}"];
-    SslServer [tooltip="SslServer", URL="SslServer.md", label="{SslServer}"];
+[<class>object|toString();toJSON()]
+[<this>TcpServer|new TcpServer()|socket;handler|start();stop()]
+[<class>HttpServer]
+[<class>HttpsServer]
+[<class>SslServer]
 
-    object -> TcpServer [dir=back];
-    TcpServer -> HttpServer [dir=back];
-    HttpServer -> HttpsServer [dir=back];
-    TcpServer -> SslServer [dir=back];
-}
+[object] <:- [TcpServer]
+[TcpServer] <:- [HttpServer]
+[HttpServer] <:- [HttpsServer]
+[TcpServer] <:- [SslServer]
 ```
 
 ## 构造函数
@@ -60,6 +63,18 @@ new TcpServer(String addr,
 调用参数:
 * addr: String, 指定 tcp 服务器侦听地址，为 "" 则在本机所有地址侦听
 * port: Integer, 指定 tcp 服务器侦听端口
+* listener: [Handler](Handler.md), 指定 tcp 接收到的连接的内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq.Handler](../../module/ifs/mq.md#Handler)
+
+--------------------------
+**TcpServer 构造函数**
+
+```JavaScript
+new TcpServer(String addr,
+    Handler listener);
+```
+
+调用参数:
+* addr: String, 指定 unix socket 或者 Windows pipe 服务器侦听地址
 * listener: [Handler](Handler.md), 指定 tcp 接收到的连接的内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq.Handler](../../module/ifs/mq.md#Handler)
 
 ## 成员属性

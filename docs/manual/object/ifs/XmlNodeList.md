@@ -2,15 +2,18 @@
 XmlNodeList 对象代表一个有顺序的节点列表
 
 ## 继承关系
-```dot
-digraph {
-    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
+```uml
+#lineWidth: 1.5
+#font: Helvetica,sans-Serif
+#fontSize: 10
+#leading: 1.6
+#.this: fill=lightgray
+#.class: fill=white
 
-    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    XmlNodeList [tooltip="XmlNodeList", fillcolor="lightgray", id="me", label="{XmlNodeList|operator[]\l|length\l|item()\l}"];
+[<class>object|toString();toJSON()]
+[<this>XmlNodeList|operator\[\]|length|item()]
 
-    object -> XmlNodeList [dir=back];
-}
+[object] <:- [XmlNodeList]
 ```
 
 ## 下标操作

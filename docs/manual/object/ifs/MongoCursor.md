@@ -2,15 +2,18 @@
 mongodb 数据库数据游标对象
 
 ## 继承关系
-```dot
-digraph {
-    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
+```uml
+#lineWidth: 1.5
+#font: Helvetica,sans-Serif
+#fontSize: 10
+#leading: 1.6
+#.this: fill=lightgray
+#.class: fill=white
 
-    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    MongoCursor [tooltip="MongoCursor", fillcolor="lightgray", id="me", label="{MongoCursor|skip()\llimit()\lsort()\lhasNext()\lnext()\lcount()\lsize()\lforEach()\lmap()\ltoArray()\lhint()\l}"];
+[<class>object|toString();toJSON()]
+[<this>MongoCursor|skip();limit();sort();hasNext();next();count();size();forEach();map();toArray();hint()]
 
-    object -> MongoCursor [dir=back];
-}
+[object] <:- [MongoCursor]
 ```
 
 ## 成员函数

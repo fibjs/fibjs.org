@@ -2,15 +2,18 @@
 信息摘要对象
 
 ## 继承关系
-```dot
-digraph {
-    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
+```uml
+#lineWidth: 1.5
+#font: Helvetica,sans-Serif
+#fontSize: 10
+#leading: 1.6
+#.this: fill=lightgray
+#.class: fill=white
 
-    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    Digest [tooltip="Digest", fillcolor="lightgray", id="me", label="{Digest|size\l|update()\ldigest()\l}"];
+[<class>object|toString();toJSON()]
+[<this>Digest|size|update();digest()]
 
-    object -> Digest [dir=back];
-}
+[object] <:- [Digest]
 ```
 
 ## 成员属性

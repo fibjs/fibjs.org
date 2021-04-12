@@ -2,15 +2,18 @@
 流解码对象
 
 ## 继承关系
-```dot
-digraph {
-    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
+```uml
+#lineWidth: 1.5
+#font: Helvetica,sans-Serif
+#fontSize: 10
+#leading: 1.6
+#.this: fill=lightgray
+#.class: fill=white
 
-    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    StringDecoder [tooltip="StringDecoder", fillcolor="lightgray", id="me", label="{StringDecoder|new StringDecoder()\l|lastNeed\llastTotal\llastChar\lencoding\l|end()\lwrite()\ltext()\lfillLast()\l}"];
+[<class>object|toString();toJSON()]
+[<this>StringDecoder|new StringDecoder()|lastNeed;lastTotal;lastChar;encoding|end();write();text();fillLast()]
 
-    object -> StringDecoder [dir=back];
-}
+[object] <:- [StringDecoder]
 ```
 
 ## 构造函数

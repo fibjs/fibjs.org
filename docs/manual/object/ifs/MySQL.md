@@ -8,17 +8,20 @@ var mysql = db.openMySQL("mysql://user:pass@host/db");
 ```
 
 ## 继承关系
-```dot
-digraph {
-    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
+```uml
+#lineWidth: 1.5
+#font: Helvetica,sans-Serif
+#fontSize: 10
+#leading: 1.6
+#.this: fill=lightgray
+#.class: fill=white
 
-    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    DbConnection [tooltip="DbConnection", URL="DbConnection.md", label="{DbConnection|type\l|close()\lbegin()\lcommit()\lrollback()\ltrans()\lexecute()\lcreateTable()\ldropTable()\lcreateIndex()\ldropIndex()\linsert()\lfind()\lcount()\lupdate()\lremove()\lformat()\l}"];
-    MySQL [tooltip="MySQL", fillcolor="lightgray", id="me", label="{MySQL|rxBufferSize\ltxBufferSize\l|use()\l}"];
+[<class>object|toString();toJSON()]
+[<class>DbConnection|type|close();begin();commit();rollback();trans();execute();createTable();dropTable();createIndex();dropIndex();insert();find();count();update();remove();format()]
+[<this>MySQL|rxBufferSize;txBufferSize|use()]
 
-    object -> DbConnection [dir=back];
-    DbConnection -> MySQL [dir=back];
-}
+[object] <:- [DbConnection]
+[DbConnection] <:- [MySQL]
 ```
 
 ## 成员属性

@@ -9,15 +9,18 @@ var col = mdb.test;
 ```
 
 ## 继承关系
-```dot
-digraph {
-    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
+```uml
+#lineWidth: 1.5
+#font: Helvetica,sans-Serif
+#fontSize: 10
+#leading: 1.6
+#.this: fill=lightgray
+#.class: fill=white
 
-    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    MongoCollection [tooltip="MongoCollection", fillcolor="lightgray", id="me", label="{MongoCollection|operator[String]\l|find()\lfindOne()\lfindAndModify()\linsert()\lsave()\lupdate()\lremove()\lrunCommand()\ldrop()\lensureIndex()\lreIndex()\ldropIndex()\ldropIndexes()\lgetIndexes()\lgetCollection()\l}"];
+[<class>object|toString();toJSON()]
+[<this>MongoCollection|operator\[String\]|find();findOne();findAndModify();insert();save();update();remove();runCommand();drop();ensureIndex();reIndex();dropIndex();dropIndexes();getIndexes();getCollection()]
 
-    object -> MongoCollection [dir=back];
-}
+[object] <:- [MongoCollection]
 ```
 
 ## 下标操作

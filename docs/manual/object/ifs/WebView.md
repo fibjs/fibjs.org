@@ -53,17 +53,20 @@ index.html 的内容如下：
 上面的代码中，因为 window.close 本身也会触发 onclose 事件，所以需要增加一个开关变量，用于识别是否需要处理此次事件。
 
 ## 继承关系
-```dot
-digraph {
-    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
+```uml
+#lineWidth: 1.5
+#font: Helvetica,sans-Serif
+#fontSize: 10
+#leading: 1.6
+#.this: fill=lightgray
+#.class: fill=white
 
-    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    EventEmitter [tooltip="EventEmitter", URL="EventEmitter.md", label="{EventEmitter|new EventEmitter()\l|EventEmitter\l|defaultMaxListeners\l|on()\laddListener()\lprependListener()\lonce()\lprependOnceListener()\loff()\lremoveListener()\lremoveAllListeners()\lsetMaxListeners()\lgetMaxListeners()\llisteners()\llistenerCount()\leventNames()\lemit()\l}"];
-    WebView [tooltip="WebView", fillcolor="lightgray", id="me", label="{WebView|type\ldev\lonopen\lonload\lonaddress\lontitle\lonmove\lonresize\lonclosed\lonmessage\l|loadUrl()\lgetUrl()\lsetHtml()\lreload()\lgoBack()\lgoForward()\lprint()\lprintToPDF()\lexecuteJavaScript()\lexecuteDevToolsMethod()\lclose()\lpostMessage()\l}"];
+[<class>object|toString();toJSON()]
+[<class>EventEmitter|new EventEmitter()|EventEmitter|defaultMaxListeners|on();addListener();prependListener();once();prependOnceListener();off();removeListener();removeAllListeners();setMaxListeners();getMaxListeners();listeners();listenerCount();eventNames();emit()]
+[<this>WebView|type;dev;onopen;onload;onaddress;ontitle;onmove;onresize;onclosed;onmessage|loadUrl();getUrl();setHtml();reload();goBack();goForward();print();printToPDF();executeJavaScript();executeDevToolsMethod();close();postMessage()]
 
-    object -> EventEmitter [dir=back];
-    EventEmitter -> WebView [dir=back];
-}
+[object] <:- [EventEmitter]
+[EventEmitter] <:- [WebView]
 ```
 
 ## 静态属性

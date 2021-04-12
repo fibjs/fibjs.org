@@ -8,17 +8,20 @@ var reader = new io.BufferedStream(stream);
 ```
 
 ## 继承关系
-```dot
-digraph {
-    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
+```uml
+#lineWidth: 1.5
+#font: Helvetica,sans-Serif
+#fontSize: 10
+#leading: 1.6
+#.this: fill=lightgray
+#.class: fill=white
 
-    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    Stream [tooltip="Stream", URL="Stream.md", label="{Stream|fd\l|read()\lwrite()\lflush()\lclose()\lcopyTo()\l}"];
-    BufferedStream [tooltip="BufferedStream", fillcolor="lightgray", id="me", label="{BufferedStream|new BufferedStream()\l|stream\lcharset\lEOL\l|readText()\lreadLine()\lreadLines()\lreadUntil()\lwriteText()\lwriteLine()\l}"];
+[<class>object|toString();toJSON()]
+[<class>Stream|fd|read();write();flush();close();copyTo()]
+[<this>BufferedStream|new BufferedStream()|stream;charset;EOL|readText();readLine();readLines();readUntil();writeText();writeLine()]
 
-    object -> Stream [dir=back];
-    Stream -> BufferedStream [dir=back];
-}
+[object] <:- [Stream]
+[Stream] <:- [BufferedStream]
 ```
 
 ## 构造函数

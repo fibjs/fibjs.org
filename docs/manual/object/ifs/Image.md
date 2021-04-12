@@ -9,15 +9,18 @@ var img1 = gd.load(data);
 ```
 
 ## 继承关系
-```dot
-digraph {
-    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
+```uml
+#lineWidth: 1.5
+#font: Helvetica,sans-Serif
+#fontSize: 10
+#leading: 1.6
+#.this: fill=lightgray
+#.class: fill=white
 
-    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    Image [tooltip="Image", fillcolor="lightgray", id="me", label="{Image|width\lheight\lformat\ltype\lcolorsTotal\ltransparent\lprogressive\lalphaBlending\l|getData()\lsave()\lcolorAllocate()\lcolorAllocateAlpha()\lcolorClosest()\lcolorClosestHWB()\lcolorClosestAlpha()\lcolorExact()\lcolorExactAlpha()\lcolorResolve()\lcolorResolveAlpha()\lcolorDeallocate()\lclip()\lgetPixel()\lgetTrueColorPixel()\lsetPixel()\lsetThickness()\lline()\lrectangle()\lfilledRectangle()\lpolygon()\lopenPolygon()\lfilledPolygon()\lellipse()\lfilledEllipse()\larc()\lfilledArc()\lfill()\lfillToBorder()\lcolorReplace()\lclone()\lresample()\lcrop()\lflip()\lrotate()\lconvert()\lcopy()\lcopyMerge()\lcopyMergeGray()\lcopyResized()\lcopyResampled()\lcopyRotated()\lfilter()\laffine()\lgaussianBlur()\l}"];
+[<class>object|toString();toJSON()]
+[<this>Image|width;height;format;type;colorsTotal;transparent;progressive;alphaBlending|getData();save();colorAllocate();colorAllocateAlpha();colorClosest();colorClosestHWB();colorClosestAlpha();colorExact();colorExactAlpha();colorResolve();colorResolveAlpha();colorDeallocate();clip();getPixel();getTrueColorPixel();setPixel();setThickness();line();rectangle();filledRectangle();polygon();openPolygon();filledPolygon();ellipse();filledEllipse();arc();filledArc();fill();fillToBorder();colorReplace();clone();resample();crop();flip();rotate();convert();copy();copyMerge();copyMergeGray();copyResized();copyResampled();copyRotated();filter();affine();gaussianBlur()]
 
-    object -> Image [dir=back];
-}
+[object] <:- [Image]
 ```
 
 ## 成员属性

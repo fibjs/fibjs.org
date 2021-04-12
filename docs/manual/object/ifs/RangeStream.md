@@ -12,19 +12,22 @@ stm.end // 10
 ```
 
 ## 继承关系
-```dot
-digraph {
-    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
+```uml
+#lineWidth: 1.5
+#font: Helvetica,sans-Serif
+#fontSize: 10
+#leading: 1.6
+#.this: fill=lightgray
+#.class: fill=white
 
-    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    Stream [tooltip="Stream", URL="Stream.md", label="{Stream|fd\l|read()\lwrite()\lflush()\lclose()\lcopyTo()\l}"];
-    SeekableStream [tooltip="SeekableStream", URL="SeekableStream.md", label="{SeekableStream|seek()\ltell()\lrewind()\lsize()\lreadAll()\ltruncate()\leof()\lstat()\l}"];
-    RangeStream [tooltip="RangeStream", fillcolor="lightgray", id="me", label="{RangeStream|new RangeStream()\l|begin\lend\l}"];
+[<class>object|toString();toJSON()]
+[<class>Stream|fd|read();write();flush();close();copyTo()]
+[<class>SeekableStream|seek();tell();rewind();size();readAll();truncate();eof();stat()]
+[<this>RangeStream|new RangeStream()|begin;end]
 
-    object -> Stream [dir=back];
-    Stream -> SeekableStream [dir=back];
-    SeekableStream -> RangeStream [dir=back];
-}
+[object] <:- [Stream]
+[Stream] <:- [SeekableStream]
+[SeekableStream] <:- [RangeStream]
 ```
 
 ## 构造函数

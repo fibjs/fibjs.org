@@ -12,6 +12,16 @@ var fs = require('fs');
 - 运行 `fs.watch(filename)` 会返回一个继承自 [EventEmitter](../../object/ifs/EventEmitter.md) 的 watcher, 它支持 'change', 'changeonly', 'renameonly' 三个事件
 - `fs.watchFile(target)` 和 `fs.unwatchFile(target)` 依然可以成对使用
 - `fs.watchFile(target)` 会返回一个继承自 [EventEmitter](../../object/ifs/EventEmitter.md) 的 [StatsWatcher](../../object/ifs/StatsWatcher.md) 对象, 调用 `fs.unwatchFile(target)` 等价于调用 `StatsWatcher.close()`.
+- 因为 uv 在 Linux 上的实现, `fs.watch` 的 `recursive` 选项仅在 win32/darwin 被稳定支持. 你依然可以尝试在 Linux 中尝试使用 `fs.watch('/[path](path.md)/to', { recursive: true }, handler)`, 但可能会发现 `handler` 被回调的时机与你预期的有差异
+
+## 对象
+        
+### constants
+**fs模块的常量对象**
+
+```JavaScript
+fs_constants fs.constants;
+```
 
 ## 静态函数
         
@@ -76,7 +86,28 @@ static fs.mkdir(String path,
 
 调用参数:
 * path: String, 指定要创建的目录名
-* mode: Integer, 指定文件权限，Windows 忽略此参数
+* mode: Integer, 指定文件权限，Windows 忽略此参数，默认值: 0777
+
+--------------------------
+**创建一个目录**
+
+```JavaScript
+static fs.mkdir(String path,
+    Object opt) async;
+```
+
+调用参数:
+* path: String, 指定要创建的目录名
+* opt: Object, 指定创建参数
+
+创建参数可以包含以下值：
+
+```JavaScript
+{
+    recursive: false, // 指定是否父目录不存在是是否自动创建，默认值: false
+    mode: 0777 // 指定文件权限，Windows 忽略此参数，默认值: 0777
+}
+```
 
 --------------------------
 ### rmdir
@@ -103,17 +134,24 @@ static fs.rename(String from,
 * to: String, 指定要修改的新文件名
 
 --------------------------
-### copy
-**复制一个文件**
+### copyFile
+**将 src 拷贝到 dest。 默认情况下，如果 dest 已经存在，则覆盖它。**
 
 ```JavaScript
-static fs.copy(String from,
-    String to) async;
+static fs.copyFile(String from,
+    String to,
+    Integer mode = 0) async;
 ```
 
 调用参数:
-* from: String, 指定更名的文件
-* to: String, 指定要修改的新文件名
+* from: String, 指定要拷贝的源文件名
+* to: String, 指定要拷贝的目标文件名
+* mode: Integer, 指定拷贝操作的修饰符，缺省为 0
+
+mode 是一个可选的整数，指定拷贝操作的行为。 可以创建由两个或更多个值按位或组成的掩码（比如 [fs.constants](fs.md#constants).COPYFILE_EXCL | [fs.constants](fs.md#constants).COPYFILE_FICLONE）。
+- [fs.constants](fs.md#constants).COPYFILE_EXCL - 如果 dest 已存在，则拷贝操作将失败。
+- [fs.constants](fs.md#constants).COPYFILE_FICLONE - 拷贝操作将尝试创建写时拷贝（copy-on-write）链接。如果平台不支持写时拷贝，则使用后备的拷贝机制。
+- [fs.constants](fs.md#constants).COPYFILE_FICLONE_FORCE - 拷贝操作将尝试创建写时拷贝链接。如果平台不支持写时拷贝，则拷贝操作将失败。
 
 --------------------------
 ### chmod
@@ -689,15 +727,6 @@ static fs.unwatchFile(String fname,
 * [StatsWatcher](../../object/ifs/StatsWatcher.md) 对象
 
 即便 callback 不再 [StatsWatcher](../../object/ifs/StatsWatcher.md) 的观察事件回调中也不会报错
-
-## 静态属性
-        
-### constants
-**Object, fs模块的常量对象**
-
-```JavaScript
-static readonly Object fs.constants;
-```
 
 ## 常量
         

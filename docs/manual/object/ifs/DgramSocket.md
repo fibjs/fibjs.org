@@ -32,17 +32,20 @@ DgramSocket 继承于 [EventEmitter](EventEmitter.md)，对象的状态变化，
    - size: number，消息大小
 
 ## 继承关系
-```dot
-digraph {
-    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
+```uml
+#lineWidth: 1.5
+#font: Helvetica,sans-Serif
+#fontSize: 10
+#leading: 1.6
+#.this: fill=lightgray
+#.class: fill=white
 
-    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    EventEmitter [tooltip="EventEmitter", URL="EventEmitter.md", label="{EventEmitter|new EventEmitter()\l|EventEmitter\l|defaultMaxListeners\l|on()\laddListener()\lprependListener()\lonce()\lprependOnceListener()\loff()\lremoveListener()\lremoveAllListeners()\lsetMaxListeners()\lgetMaxListeners()\llisteners()\llistenerCount()\leventNames()\lemit()\l}"];
-    DgramSocket [tooltip="DgramSocket", fillcolor="lightgray", id="me", label="{DgramSocket|bind()\lsend()\laddress()\lclose()\lgetRecvBufferSize()\lgetSendBufferSize()\lsetRecvBufferSize()\lsetSendBufferSize()\lsetBroadcast()\lref()\lunref()\l}"];
+[<class>object|toString();toJSON()]
+[<class>EventEmitter|new EventEmitter()|EventEmitter|defaultMaxListeners|on();addListener();prependListener();once();prependOnceListener();off();removeListener();removeAllListeners();setMaxListeners();getMaxListeners();listeners();listenerCount();eventNames();emit()]
+[<this>DgramSocket|bind();send();address();close();getRecvBufferSize();getSendBufferSize();setRecvBufferSize();setSendBufferSize();setBroadcast();ref();unref()]
 
-    object -> EventEmitter [dir=back];
-    EventEmitter -> DgramSocket [dir=back];
-}
+[object] <:- [EventEmitter]
+[EventEmitter] <:- [DgramSocket]
 ```
 
 ## 静态属性

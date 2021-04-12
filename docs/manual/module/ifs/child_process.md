@@ -5,7 +5,7 @@
 
 ```JavaScript
 var child_process = require("child_process");
-var child = child_process.spwan("ls");
+var child = child_process.spawn("ls");
 ```
 
 对于同时使用 nodejs 的用户, 需注意
@@ -166,6 +166,69 @@ options 支持的内容如下：
     "cwd": "", // 子进程的当前的工作目录，缺省使用当前目录
     "env": {}, // 环境变量的键值对
     "encoding": "utf8", // 指定返回结果的编码，缺省为 utf8
+    "detached": false, // 子进程将会变成一个进程组的领导者，缺省为 false
+    "uid": 0, // 设置用户进程的ID
+    "gid": 0, // 设置进程组的ID
+    "windowsVerbatimArguments": false, // 在 Windows上不执行引号或转义参数。 在 Unix 上被忽略。 当指定外壳且为 CMD 时，此选项将自动设置为true，缺省为 false
+    "windowsHide": false // 隐藏通常在Windows系统上创建的子进程控制台窗口，缺省为 false
+}
+```
+
+--------------------------
+### fork
+**在子进程中执行一个模块**
+
+```JavaScript
+static ChildProcess child_process.fork(String module,
+    Array args,
+    Object options = {});
+```
+
+调用参数:
+* module: String, 指定要运行的命令
+* args: Array, 指定字符串参数列表
+* options: Object, 指定创建参数
+
+返回结果:
+* [ChildProcess](../../object/ifs/ChildProcess.md), 返回子进程对象
+
+options 支持的内容如下：
+
+```JavaScript
+{
+    "cwd": "", // 子进程的当前的工作目录，缺省使用当前目录
+    "stdio": Array | String, // 子进程 stdio 配置
+    "env": {}, // 环境变量的键值对
+    "detached": false, // 子进程将会变成一个进程组的领导者，缺省为 false
+    "uid": 0, // 设置用户进程的ID
+    "gid": 0, // 设置进程组的ID
+    "windowsVerbatimArguments": false, // 在 Windows上不执行引号或转义参数。 在 Unix 上被忽略。 当指定外壳且为 CMD 时，此选项将自动设置为true，缺省为 false
+    "windowsHide": false // 隐藏通常在Windows系统上创建的子进程控制台窗口，缺省为 false
+}
+```
+
+--------------------------
+**在子进程中执行一个模块**
+
+```JavaScript
+static ChildProcess child_process.fork(String module,
+    Object options = {});
+```
+
+调用参数:
+* module: String, 指定要运行的命令
+* options: Object, 指定创建参数
+
+返回结果:
+* [ChildProcess](../../object/ifs/ChildProcess.md), 返回子进程对象
+
+options 支持的内容如下：
+
+```JavaScript
+{
+    "cwd": "", // 子进程的当前的工作目录，缺省使用当前目录
+    "stdio": Array | String, // 子进程 stdio 配置
+    "env": {}, // 环境变量的键值对
     "detached": false, // 子进程将会变成一个进程组的领导者，缺省为 false
     "uid": 0, // 设置用户进程的ID
     "gid": 0, // 设置进程组的ID

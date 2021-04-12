@@ -8,15 +8,18 @@ var k = new crypto.X509Req();
 ```
 
 ## 继承关系
-```dot
-digraph {
-    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
+```uml
+#lineWidth: 1.5
+#font: Helvetica,sans-Serif
+#fontSize: 10
+#leading: 1.6
+#.this: fill=lightgray
+#.class: fill=white
 
-    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    X509Req [tooltip="X509Req", fillcolor="lightgray", id="me", label="{X509Req|new X509Req()\l|subject\lpublicKey\l|load()\lloadFile()\lexportPem()\lexportDer()\lsign()\l}"];
+[<class>object|toString();toJSON()]
+[<this>X509Req|new X509Req()|subject;publicKey|load();loadFile();exportPem();exportDer();sign()]
 
-    object -> X509Req [dir=back];
-}
+[object] <:- [X509Req]
 ```
 
 ## 构造函数

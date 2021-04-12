@@ -45,15 +45,18 @@ fb.join();
 ```
 
 ## 继承关系
-```dot
-digraph {
-    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
+```uml
+#lineWidth: 1.5
+#font: Helvetica,sans-Serif
+#fontSize: 10
+#leading: 1.6
+#.this: fill=lightgray
+#.class: fill=white
 
-    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    Fiber [tooltip="Fiber", fillcolor="lightgray", id="me", label="{Fiber|id\lcaller\lstack\l|join()\l}"];
+[<class>object|toString();toJSON()]
+[<this>Fiber|id;caller;stack|join()]
 
-    object -> Fiber [dir=back];
-}
+[object] <:- [Fiber]
 ```
 
 ## 成员属性

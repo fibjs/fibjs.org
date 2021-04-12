@@ -15,15 +15,18 @@ var mod_in_sbox = sbox.require('./path/to/mod');
 ```
 
 ## 继承关系
-```dot
-digraph {
-    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
+```uml
+#lineWidth: 1.5
+#font: Helvetica,sans-Serif
+#fontSize: 10
+#leading: 1.6
+#.this: fill=lightgray
+#.class: fill=white
 
-    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    SandBox [tooltip="SandBox", fillcolor="lightgray", id="me", label="{SandBox|new SandBox()\l|global\lmodules\l|add()\laddScript()\lremove()\lhas()\lclone()\lfreeze()\lrefresh()\lrun()\lresolve()\lrequire()\lsetModuleCompiler()\l}"];
+[<class>object|toString();toJSON()]
+[<this>SandBox|new SandBox()|global;modules|add();addScript();remove();has();clone();freeze();refresh();run();resolve();require();setModuleCompiler()]
 
-    object -> SandBox [dir=back];
-}
+[object] <:- [SandBox]
 ```
 
 ## 构造函数

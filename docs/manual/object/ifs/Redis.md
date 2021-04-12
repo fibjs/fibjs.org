@@ -9,15 +9,18 @@ var test = new db.openRedis("redis-server");
 ```
 
 ## 继承关系
-```dot
-digraph {
-    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
+```uml
+#lineWidth: 1.5
+#font: Helvetica,sans-Serif
+#fontSize: 10
+#leading: 1.6
+#.this: fill=lightgray
+#.class: fill=white
 
-    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    Redis [tooltip="Redis", fillcolor="lightgray", id="me", label="{Redis|onsuberror\l|command()\lset()\lsetNX()\lsetXX()\lmset()\lmsetNX()\lappend()\lsetRange()\lgetRange()\lstrlen()\lbitcount()\lget()\lmget()\lgetset()\ldecr()\lincr()\lsetBit()\lgetBit()\lexists()\ltype()\lkeys()\ldel()\lexpire()\lttl()\lpersist()\lrename()\lrenameNX()\lsub()\lunsub()\lpsub()\lunpsub()\lpub()\lgetHash()\lgetList()\lgetSet()\lgetSortedSet()\ldump()\lrestore()\lclose()\l}"];
+[<class>object|toString();toJSON()]
+[<this>Redis|onsuberror|command();set();setNX();setXX();mset();msetNX();append();setRange();getRange();strlen();bitcount();get();mget();getset();decr();incr();setBit();getBit();exists();type();keys();del();expire();ttl();persist();rename();renameNX();sub();unsub();psub();unpsub();pub();getHash();getList();getSet();getSortedSet();dump();restore();close()]
 
-    object -> Redis [dir=back];
-}
+[object] <:- [Redis]
 ```
 
 ## 成员属性

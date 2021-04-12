@@ -93,17 +93,20 @@ var routing = new mq.Routing({
 匹配消息 "/func1/123/456.html" 后，value == "123"，params == ["123"];
 
 ## 继承关系
-```dot
-digraph {
-    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
+```uml
+#lineWidth: 1.5
+#font: Helvetica,sans-Serif
+#fontSize: 10
+#leading: 1.6
+#.this: fill=lightgray
+#.class: fill=white
 
-    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    Handler [tooltip="Handler", URL="Handler.md", label="{Handler|new Handler()\l|invoke()\l}"];
-    Routing [tooltip="Routing", fillcolor="lightgray", id="me", label="{Routing|new Routing()\l|append()\lhost()\lall()\lget()\lpost()\ldel()\lput()\lpatch()\lfind()\l}"];
+[<class>object|toString();toJSON()]
+[<class>Handler|new Handler()|invoke()]
+[<this>Routing|new Routing()|append();host();all();get();post();del();put();patch();find()]
 
-    object -> Handler [dir=back];
-    Handler -> Routing [dir=back];
-}
+[object] <:- [Handler]
+[Handler] <:- [Routing]
 ```
 
 ## 构造函数

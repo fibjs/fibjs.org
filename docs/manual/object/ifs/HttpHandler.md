@@ -14,17 +14,20 @@ var hdlr = new http.Handler(...);
 ```
 
 ## 继承关系
-```dot
-digraph {
-    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
+```uml
+#lineWidth: 1.5
+#font: Helvetica,sans-Serif
+#fontSize: 10
+#leading: 1.6
+#.this: fill=lightgray
+#.class: fill=white
 
-    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    Handler [tooltip="Handler", URL="Handler.md", label="{Handler|new Handler()\l|invoke()\l}"];
-    HttpHandler [tooltip="HttpHandler", fillcolor="lightgray", id="me", label="{HttpHandler|new HttpHandler()\l|maxHeadersCount\lmaxBodySize\lserverName\lhandler\l|enableCrossOrigin()\l}"];
+[<class>object|toString();toJSON()]
+[<class>Handler|new Handler()|invoke()]
+[<this>HttpHandler|new HttpHandler()|maxHeadersCount;maxBodySize;serverName;handler|enableCrossOrigin()]
 
-    object -> Handler [dir=back];
-    Handler -> HttpHandler [dir=back];
-}
+[object] <:- [Handler]
+[Handler] <:- [HttpHandler]
 ```
 
 ## 构造函数

@@ -8,19 +8,22 @@ var f = fs.openFile('test.txt');
 ```
 
 ## 继承关系
-```dot
-digraph {
-    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
+```uml
+#lineWidth: 1.5
+#font: Helvetica,sans-Serif
+#fontSize: 10
+#leading: 1.6
+#.this: fill=lightgray
+#.class: fill=white
 
-    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    Stream [tooltip="Stream", URL="Stream.md", label="{Stream|fd\l|read()\lwrite()\lflush()\lclose()\lcopyTo()\l}"];
-    SeekableStream [tooltip="SeekableStream", URL="SeekableStream.md", label="{SeekableStream|seek()\ltell()\lrewind()\lsize()\lreadAll()\ltruncate()\leof()\lstat()\l}"];
-    File [tooltip="File", fillcolor="lightgray", id="me", label="{File|name\lfd\l|chmod()\l}"];
+[<class>object|toString();toJSON()]
+[<class>Stream|fd|read();write();flush();close();copyTo()]
+[<class>SeekableStream|seek();tell();rewind();size();readAll();truncate();eof();stat()]
+[<this>File|name;fd|chmod()]
 
-    object -> Stream [dir=back];
-    Stream -> SeekableStream [dir=back];
-    SeekableStream -> File [dir=back];
-}
+[object] <:- [Stream]
+[Stream] <:- [SeekableStream]
+[SeekableStream] <:- [File]
 ```
 
 ## 成员属性

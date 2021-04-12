@@ -8,15 +8,18 @@ var mdb = db.openMongoDB("mongodb://host/db");
 ```
 
 ## 继承关系
-```dot
-digraph {
-    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
+```uml
+#lineWidth: 1.5
+#font: Helvetica,sans-Serif
+#fontSize: 10
+#leading: 1.6
+#.this: fill=lightgray
+#.class: fill=white
 
-    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    MongoDB [tooltip="MongoDB", fillcolor="lightgray", id="me", label="{MongoDB|operator[String]\l|getCollection()\lrunCommand()\loid()\lclose()\l}"];
+[<class>object|toString();toJSON()]
+[<this>MongoDB|operator\[String\]|getCollection();runCommand();oid();close()]
 
-    object -> MongoDB [dir=back];
-}
+[object] <:- [MongoDB]
 ```
 
 ## 下标操作

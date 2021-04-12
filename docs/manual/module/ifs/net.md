@@ -106,7 +106,7 @@ static Stream net.connect(String url,
 ```
 
 调用参数:
-* url: String, 指定连接的协议，可以是：tcp://host:port 或者 [ssl](ssl.md)://host:port
+* url: String, 指定连接的协议，可以是：tcp://host:port 或者 [ssl](ssl.md)://host:port，也可以是：unix:/usr/local/proc1 或者 pipe://./pipe/proc1，连接 pipe 时需要用 `/` 替换 `\`
 * timeout: Integer, 指定超时时间，单位是毫秒，默认为0
 
 返回结果:
@@ -181,8 +181,33 @@ static Boolean net.isIPv6(String ip = "");
 返回结果:
 * Boolean, 如果是 IPv6 则返回 true.否则返回 false
 
+## 静态属性
+        
+### use_uv_socket
+**Boolean, 查询和设置 socket 后端是否使用 uv，缺省为 false**
+
+```JavaScript
+static Boolean net.use_uv_socket;
+```
+
 ## 常量
         
+### AF_UNIX
+**地址集常量，指定 unix socket**
+
+```JavaScript
+const net.AF_UNIX = 1;
+```
+
+--------------------------
+### AF_PIPE
+**地址集常量，指定 Windows pipe**
+
+```JavaScript
+const net.AF_PIPE = 1;
+```
+
+--------------------------
 ### AF_INET
 **地址集常量，指定 ipv4**
 
@@ -196,21 +221,5 @@ const net.AF_INET = 2;
 
 ```JavaScript
 const net.AF_INET6 = 10;
-```
-
---------------------------
-### SOCK_STREAM
-**协议族常量，指定 tcp**
-
-```JavaScript
-const net.SOCK_STREAM = 1;
-```
-
---------------------------
-### SOCK_DGRAM
-**协议族常量，指定 udp**
-
-```JavaScript
-const net.SOCK_DGRAM = 2;
 ```
 

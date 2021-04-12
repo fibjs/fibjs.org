@@ -11,21 +11,24 @@ l.release();
 ```
 
 ## 继承关系
-```dot
-digraph {
-    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
+```uml
+#lineWidth: 1.5
+#font: Helvetica,sans-Serif
+#fontSize: 10
+#leading: 1.6
+#.this: fill=lightgray
+#.class: fill=white
 
-    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    Lock [tooltip="Lock", fillcolor="lightgray", id="me", label="{Lock|new Lock()\l|acquire()\lrelease()\lcount()\l}"];
-    Condition [tooltip="Condition", URL="Condition.md", label="{Condition}"];
-    Event [tooltip="Event", URL="Event.md", label="{Event}"];
-    Semaphore [tooltip="Semaphore", URL="Semaphore.md", label="{Semaphore}"];
+[<class>object|toString();toJSON()]
+[<this>Lock|new Lock()|acquire();release();count()]
+[<class>Condition]
+[<class>Event]
+[<class>Semaphore]
 
-    object -> Lock [dir=back];
-    Lock -> Condition [dir=back];
-    Lock -> Event [dir=back];
-    Lock -> Semaphore [dir=back];
-}
+[object] <:- [Lock]
+[Lock] <:- [Condition]
+[Lock] <:- [Event]
+[Lock] <:- [Semaphore]
 ```
 
 ## 构造函数

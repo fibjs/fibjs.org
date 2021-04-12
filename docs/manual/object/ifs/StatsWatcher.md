@@ -21,17 +21,20 @@ var statsWatcher = fs.watchFile(target, (curStat, prevStat) => {
 如果在 watcher 工作途中, )目标文件被删除, 则后续不会再有回调产生
 
 ## 继承关系
-```dot
-digraph {
-    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
+```uml
+#lineWidth: 1.5
+#font: Helvetica,sans-Serif
+#fontSize: 10
+#leading: 1.6
+#.this: fill=lightgray
+#.class: fill=white
 
-    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    EventEmitter [tooltip="EventEmitter", URL="EventEmitter.md", label="{EventEmitter|new EventEmitter()\l|EventEmitter\l|defaultMaxListeners\l|on()\laddListener()\lprependListener()\lonce()\lprependOnceListener()\loff()\lremoveListener()\lremoveAllListeners()\lsetMaxListeners()\lgetMaxListeners()\llisteners()\llistenerCount()\leventNames()\lemit()\l}"];
-    StatsWatcher [tooltip="StatsWatcher", fillcolor="lightgray", id="me", label="{StatsWatcher|onchange\l|close()\lref()\lunref()\l}"];
+[<class>object|toString();toJSON()]
+[<class>EventEmitter|new EventEmitter()|EventEmitter|defaultMaxListeners|on();addListener();prependListener();once();prependOnceListener();off();removeListener();removeAllListeners();setMaxListeners();getMaxListeners();listeners();listenerCount();eventNames();emit()]
+[<this>StatsWatcher|onchange|close();ref();unref()]
 
-    object -> EventEmitter [dir=back];
-    EventEmitter -> StatsWatcher [dir=back];
-}
+[object] <:- [EventEmitter]
+[EventEmitter] <:- [StatsWatcher]
 ```
 
 ## 静态属性

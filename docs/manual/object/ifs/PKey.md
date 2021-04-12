@@ -8,15 +8,18 @@ var k = new crypto.PKey();
 ```
 
 ## 继承关系
-```dot
-digraph {
-    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
+```uml
+#lineWidth: 1.5
+#font: Helvetica,sans-Serif
+#fontSize: 10
+#leading: 1.6
+#.this: fill=lightgray
+#.class: fill=white
 
-    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    PKey [tooltip="PKey", fillcolor="lightgray", id="me", label="{PKey|new PKey()\l|name\lkeySize\lpublicKey\l|genRsaKey()\lgenEcKey()\lgenSm2Key()\lisPrivate()\lclone()\limportKey()\limportFile()\lexportPem()\lexportDer()\lexportJson()\lencrypt()\ldecrypt()\lsign()\lverify()\l}"];
+[<class>object|toString();toJSON()]
+[<this>PKey|new PKey()|name;keySize;publicKey|genRsaKey();genEcKey();genSm2Key();isPrivate();clone();importKey();importFile();exportPem();exportDer();exportJson();encrypt();decrypt();sign();verify()]
 
-    object -> PKey [dir=back];
-}
+[object] <:- [PKey]
 ```
 
 ## 构造函数

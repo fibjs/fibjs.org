@@ -10,17 +10,20 @@ var hr = new http.Repeater('http://10.0.0.100:8080/test');
 ```
 
 ## 继承关系
-```dot
-digraph {
-    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
+```uml
+#lineWidth: 1.5
+#font: Helvetica,sans-Serif
+#fontSize: 10
+#leading: 1.6
+#.this: fill=lightgray
+#.class: fill=white
 
-    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    Handler [tooltip="Handler", URL="Handler.md", label="{Handler|new Handler()\l|invoke()\l}"];
-    HttpRepeater [tooltip="HttpRepeater", fillcolor="lightgray", id="me", label="{HttpRepeater|new HttpRepeater()\l|urls\lclient\l|load()\l}"];
+[<class>object|toString();toJSON()]
+[<class>Handler|new Handler()|invoke()]
+[<this>HttpRepeater|new HttpRepeater()|urls;client|load()]
 
-    object -> Handler [dir=back];
-    Handler -> HttpRepeater [dir=back];
-}
+[object] <:- [Handler]
+[Handler] <:- [HttpRepeater]
 ```
 
 ## 构造函数

@@ -287,7 +287,7 @@ static readonly Integer process.ppid;
 
 --------------------------
 ### stdin
-**[Stream](../../object/ifs/Stream.md), 查询当前进程标准输入对象**
+**[Stream](../../object/ifs/Stream.md), 查询当前进程标准输入对象, 在 [tty](tty.md) 中为 [TTYInputStream](../../object/ifs/TTYInputStream.md), 否则为 [Stream](../../object/ifs/Stream.md)**
 
 ```JavaScript
 static readonly Stream process.stdin;
@@ -295,7 +295,7 @@ static readonly Stream process.stdin;
 
 --------------------------
 ### stdout
-**[Stream](../../object/ifs/Stream.md), 查询当前进程标准输出对象**
+**[Stream](../../object/ifs/Stream.md), 查询当前进程标准输出对象, 在 [tty](tty.md) 中为 [TTYOutputStream](../../object/ifs/TTYOutputStream.md), 否则为 [Stream](../../object/ifs/Stream.md)**
 
 ```JavaScript
 static readonly Stream process.stdout;
@@ -303,7 +303,7 @@ static readonly Stream process.stdout;
 
 --------------------------
 ### stderr
-**[Stream](../../object/ifs/Stream.md), 查询当前进程标准错误输出对象**
+**[Stream](../../object/ifs/Stream.md), 查询当前进程标准错误输出对象, 在 [tty](tty.md) 中为 [TTYOutputStream](../../object/ifs/TTYOutputStream.md), 否则为 [Stream](../../object/ifs/Stream.md)**
 
 ```JavaScript
 static readonly Stream process.stderr;

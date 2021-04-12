@@ -2,21 +2,24 @@
 数据库连接对象，用于建立和维护一个数据库连接会话。
 
 ## 继承关系
-```dot
-digraph {
-    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
+```uml
+#lineWidth: 1.5
+#font: Helvetica,sans-Serif
+#fontSize: 10
+#leading: 1.6
+#.this: fill=lightgray
+#.class: fill=white
 
-    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    DbConnection [tooltip="DbConnection", fillcolor="lightgray", id="me", label="{DbConnection|type\l|close()\lbegin()\lcommit()\lrollback()\ltrans()\lexecute()\lcreateTable()\ldropTable()\lcreateIndex()\ldropIndex()\linsert()\lfind()\lcount()\lupdate()\lremove()\lformat()\l}"];
-    MSSQL [tooltip="MSSQL", URL="MSSQL.md", label="{MSSQL}"];
-    MySQL [tooltip="MySQL", URL="MySQL.md", label="{MySQL}"];
-    SQLite [tooltip="SQLite", URL="SQLite.md", label="{SQLite}"];
+[<class>object|toString();toJSON()]
+[<this>DbConnection|type|close();begin();commit();rollback();trans();execute();createTable();dropTable();createIndex();dropIndex();insert();find();count();update();remove();format()]
+[<class>MSSQL]
+[<class>MySQL]
+[<class>SQLite]
 
-    object -> DbConnection [dir=back];
-    DbConnection -> MSSQL [dir=back];
-    DbConnection -> MySQL [dir=back];
-    DbConnection -> SQLite [dir=back];
-}
+[object] <:- [DbConnection]
+[DbConnection] <:- [MSSQL]
+[DbConnection] <:- [MySQL]
+[DbConnection] <:- [SQLite]
 ```
 
 ## 成员属性

@@ -14,17 +14,20 @@ function(s) {
 ```
 
 ## 继承关系
-```dot
-digraph {
-    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
+```uml
+#lineWidth: 1.5
+#font: Helvetica,sans-Serif
+#fontSize: 10
+#leading: 1.6
+#.this: fill=lightgray
+#.class: fill=white
 
-    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    Handler [tooltip="Handler", URL="Handler.md", label="{Handler|new Handler()\l|invoke()\l}"];
-    SslHandler [tooltip="SslHandler", fillcolor="lightgray", id="me", label="{SslHandler|new SslHandler()\l|verification\lca\lhandler\l}"];
+[<class>object|toString();toJSON()]
+[<class>Handler|new Handler()|invoke()]
+[<this>SslHandler|new SslHandler()|verification;ca;handler]
 
-    object -> Handler [dir=back];
-    Handler -> SslHandler [dir=back];
-}
+[object] <:- [Handler]
+[Handler] <:- [SslHandler]
 ```
 
 ## 构造函数

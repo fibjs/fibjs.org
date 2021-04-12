@@ -10,15 +10,18 @@ var hash = rdb.getHash("test");
 ```
 
 ## 继承关系
-```dot
-digraph {
-    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
+```uml
+#lineWidth: 1.5
+#font: Helvetica,sans-Serif
+#fontSize: 10
+#leading: 1.6
+#.this: fill=lightgray
+#.class: fill=white
 
-    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    RedisHash [tooltip="RedisHash", fillcolor="lightgray", id="me", label="{RedisHash|set()\lsetNX()\lmset()\lget()\lmget()\lincr()\lgetAll()\lkeys()\llen()\lexists()\ldel()\l}"];
+[<class>object|toString();toJSON()]
+[<this>RedisHash|set();setNX();mset();get();mget();incr();getAll();keys();len();exists();del()]
 
-    object -> RedisHash [dir=back];
-}
+[object] <:- [RedisHash]
 ```
 
 ## 成员函数

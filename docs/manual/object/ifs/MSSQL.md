@@ -8,17 +8,20 @@ var sql = db.openMSSQL("mssql://user:pass@host/db");
 ```
 
 ## 继承关系
-```dot
-digraph {
-    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
+```uml
+#lineWidth: 1.5
+#font: Helvetica,sans-Serif
+#fontSize: 10
+#leading: 1.6
+#.this: fill=lightgray
+#.class: fill=white
 
-    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    DbConnection [tooltip="DbConnection", URL="DbConnection.md", label="{DbConnection|type\l|close()\lbegin()\lcommit()\lrollback()\ltrans()\lexecute()\lcreateTable()\ldropTable()\lcreateIndex()\ldropIndex()\linsert()\lfind()\lcount()\lupdate()\lremove()\lformat()\l}"];
-    MSSQL [tooltip="MSSQL", fillcolor="lightgray", id="me", label="{MSSQL|use()\l}"];
+[<class>object|toString();toJSON()]
+[<class>DbConnection|type|close();begin();commit();rollback();trans();execute();createTable();dropTable();createIndex();dropIndex();insert();find();count();update();remove();format()]
+[<this>MSSQL|use()]
 
-    object -> DbConnection [dir=back];
-    DbConnection -> MSSQL [dir=back];
-}
+[object] <:- [DbConnection]
+[DbConnection] <:- [MSSQL]
 ```
 
 ## 成员属性

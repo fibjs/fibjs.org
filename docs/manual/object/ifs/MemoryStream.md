@@ -8,19 +8,22 @@ var ms = new io.MemoryStream();
 ```
 
 ## 继承关系
-```dot
-digraph {
-    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
+```uml
+#lineWidth: 1.5
+#font: Helvetica,sans-Serif
+#fontSize: 10
+#leading: 1.6
+#.this: fill=lightgray
+#.class: fill=white
 
-    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    Stream [tooltip="Stream", URL="Stream.md", label="{Stream|fd\l|read()\lwrite()\lflush()\lclose()\lcopyTo()\l}"];
-    SeekableStream [tooltip="SeekableStream", URL="SeekableStream.md", label="{SeekableStream|seek()\ltell()\lrewind()\lsize()\lreadAll()\ltruncate()\leof()\lstat()\l}"];
-    MemoryStream [tooltip="MemoryStream", fillcolor="lightgray", id="me", label="{MemoryStream|new MemoryStream()\l|setTime()\lclone()\lclear()\l}"];
+[<class>object|toString();toJSON()]
+[<class>Stream|fd|read();write();flush();close();copyTo()]
+[<class>SeekableStream|seek();tell();rewind();size();readAll();truncate();eof();stat()]
+[<this>MemoryStream|new MemoryStream()|setTime();clone();clear()]
 
-    object -> Stream [dir=back];
-    Stream -> SeekableStream [dir=back];
-    SeekableStream -> MemoryStream [dir=back];
-}
+[object] <:- [Stream]
+[Stream] <:- [SeekableStream]
+[SeekableStream] <:- [MemoryStream]
 ```
 
 ## 构造函数

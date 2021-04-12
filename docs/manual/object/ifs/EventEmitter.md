@@ -10,33 +10,36 @@ var e = new EventEmitter();
 ```
 
 ## 继承关系
-```dot
-digraph {
-    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
+```uml
+#lineWidth: 1.5
+#font: Helvetica,sans-Serif
+#fontSize: 10
+#leading: 1.6
+#.this: fill=lightgray
+#.class: fill=white
 
-    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    EventEmitter [tooltip="EventEmitter", fillcolor="lightgray", id="me", label="{EventEmitter|new EventEmitter()\l|EventEmitter\l|defaultMaxListeners\l|on()\laddListener()\lprependListener()\lonce()\lprependOnceListener()\loff()\lremoveListener()\lremoveAllListeners()\lsetMaxListeners()\lgetMaxListeners()\llisteners()\llistenerCount()\leventNames()\lemit()\l}"];
-    ChildProcess [tooltip="ChildProcess", URL="ChildProcess.md", label="{ChildProcess}"];
-    DgramSocket [tooltip="DgramSocket", URL="DgramSocket.md", label="{DgramSocket}"];
-    FSWatcher [tooltip="FSWatcher", URL="FSWatcher.md", label="{FSWatcher}"];
-    LruCache [tooltip="LruCache", URL="LruCache.md", label="{LruCache}"];
-    Service [tooltip="Service", URL="Service.md", label="{Service}"];
-    StatsWatcher [tooltip="StatsWatcher", URL="StatsWatcher.md", label="{StatsWatcher}"];
-    WebSocket [tooltip="WebSocket", URL="WebSocket.md", label="{WebSocket}"];
-    WebView [tooltip="WebView", URL="WebView.md", label="{WebView}"];
-    Worker [tooltip="Worker", URL="Worker.md", label="{Worker}"];
+[<class>object|toString();toJSON()]
+[<this>EventEmitter|new EventEmitter()|EventEmitter|defaultMaxListeners|on();addListener();prependListener();once();prependOnceListener();off();removeListener();removeAllListeners();setMaxListeners();getMaxListeners();listeners();listenerCount();eventNames();emit()]
+[<class>ChildProcess]
+[<class>DgramSocket]
+[<class>FSWatcher]
+[<class>LruCache]
+[<class>Service]
+[<class>StatsWatcher]
+[<class>WebSocket]
+[<class>WebView]
+[<class>Worker]
 
-    object -> EventEmitter [dir=back];
-    EventEmitter -> ChildProcess [dir=back];
-    EventEmitter -> DgramSocket [dir=back];
-    EventEmitter -> FSWatcher [dir=back];
-    EventEmitter -> LruCache [dir=back];
-    EventEmitter -> Service [dir=back];
-    EventEmitter -> StatsWatcher [dir=back];
-    EventEmitter -> WebSocket [dir=back];
-    EventEmitter -> WebView [dir=back];
-    EventEmitter -> Worker [dir=back];
-}
+[object] <:- [EventEmitter]
+[EventEmitter] <:- [ChildProcess]
+[EventEmitter] <:- [DgramSocket]
+[EventEmitter] <:- [FSWatcher]
+[EventEmitter] <:- [LruCache]
+[EventEmitter] <:- [Service]
+[EventEmitter] <:- [StatsWatcher]
+[EventEmitter] <:- [WebSocket]
+[EventEmitter] <:- [WebView]
+[EventEmitter] <:- [Worker]
 ```
 
 ## 构造函数

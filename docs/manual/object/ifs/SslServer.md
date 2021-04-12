@@ -19,17 +19,20 @@ var svr = new http.Server(crt, key, function(req) {
 ```
 
 ## 继承关系
-```dot
-digraph {
-    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
+```uml
+#lineWidth: 1.5
+#font: Helvetica,sans-Serif
+#fontSize: 10
+#leading: 1.6
+#.this: fill=lightgray
+#.class: fill=white
 
-    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    TcpServer [tooltip="TcpServer", URL="TcpServer.md", label="{TcpServer|new TcpServer()\l|socket\lhandler\l|start()\lstop()\l}"];
-    SslServer [tooltip="SslServer", fillcolor="lightgray", id="me", label="{SslServer|new SslServer()\l|verification\lca\l}"];
+[<class>object|toString();toJSON()]
+[<class>TcpServer|new TcpServer()|socket;handler|start();stop()]
+[<this>SslServer|new SslServer()|verification;ca]
 
-    object -> TcpServer [dir=back];
-    TcpServer -> SslServer [dir=back];
-}
+[object] <:- [TcpServer]
+[TcpServer] <:- [SslServer]
 ```
 
 ## 构造函数

@@ -10,17 +10,20 @@ var chain = new mq.Chain([
 ```
 
 ## 继承关系
-```dot
-digraph {
-    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
+```uml
+#lineWidth: 1.5
+#font: Helvetica,sans-Serif
+#fontSize: 10
+#leading: 1.6
+#.this: fill=lightgray
+#.class: fill=white
 
-    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    Handler [tooltip="Handler", URL="Handler.md", label="{Handler|new Handler()\l|invoke()\l}"];
-    Chain [tooltip="Chain", fillcolor="lightgray", id="me", label="{Chain|new Chain()\l|append()\l}"];
+[<class>object|toString();toJSON()]
+[<class>Handler|new Handler()|invoke()]
+[<this>Chain|new Chain()|append()]
 
-    object -> Handler [dir=back];
-    Handler -> Chain [dir=back];
-}
+[object] <:- [Handler]
+[Handler] <:- [Chain]
 ```
 
 ## 构造函数

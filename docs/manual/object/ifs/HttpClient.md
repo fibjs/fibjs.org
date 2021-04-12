@@ -11,15 +11,18 @@ httpClient.request('GET', 'http://fibjs.org');
 ```
 
 ## 继承关系
-```dot
-digraph {
-    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
+```uml
+#lineWidth: 1.5
+#font: Helvetica,sans-Serif
+#fontSize: 10
+#leading: 1.6
+#.this: fill=lightgray
+#.class: fill=white
 
-    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    HttpClient [tooltip="HttpClient", fillcolor="lightgray", id="me", label="{HttpClient|new HttpClient()\l|cookies\ltimeout\lenableCookie\lautoRedirect\lenableEncoding\lmaxBodySize\luserAgent\lpoolSize\lpoolTimeout\lproxyAgent\lsslVerification\l|setClientCert()\lrequest()\lget()\lpost()\ldel()\lput()\lpatch()\l}"];
+[<class>object|toString();toJSON()]
+[<this>HttpClient|new HttpClient()|cookies;timeout;enableCookie;autoRedirect;enableEncoding;maxBodySize;userAgent;poolSize;poolTimeout;proxyAgent;sslVerification|setClientCert();request();get();post();del();put();patch()]
 
-    object -> HttpClient [dir=back];
-}
+[object] <:- [HttpClient]
 ```
 
 ## 构造函数
@@ -191,12 +194,13 @@ opts 包含请求的附加选项，支持的内容如下：
     "query": {},
     "body": SeekableStream | Buffer | String | {},
     "json": {},
+    "pack": {},
     "headers": {},
     "response_body": SeekableStream // 指定接受 resposne 数据的流
 }
 ```
 
-其中 body，[json](../../module/ifs/json.md) 不得同时出现。缺省为 {}，不包含任何附加信息
+其中 body，[json](../../module/ifs/json.md)，pack 不得同时出现。缺省为 {}，不包含任何附加信息
 
 --------------------------
 ### get
@@ -221,11 +225,12 @@ opts 包含请求的附加选项，支持的内容如下：
     "query": {},
     "body": SeekableStream | Buffer | String | {},
     "json": {},
+    "pack": {},
     "headers": {}
 }
 ```
 
-其中 body，[json](../../module/ifs/json.md) 不得同时出现。缺省为 {}，不包含任何附加信息
+其中 body，[json](../../module/ifs/json.md)，pack 不得同时出现。缺省为 {}，不包含任何附加信息
 
 --------------------------
 ### post
@@ -250,11 +255,12 @@ opts 包含请求的附加选项，支持的内容如下：
     "query": {},
     "body": SeekableStream | Buffer | String | {},
     "json": {},
+    "pack": {},
     "headers": {}
 }
 ```
 
-其中 body，[json](../../module/ifs/json.md) 不得同时出现。缺省为 {}，不包含任何附加信息
+其中 body，[json](../../module/ifs/json.md)，pack 不得同时出现。缺省为 {}，不包含任何附加信息
 
 --------------------------
 ### del
@@ -279,11 +285,12 @@ opts 包含请求的附加选项，支持的内容如下：
     "query": {},
     "body": SeekableStream | Buffer | String | {},
     "json": {},
+    "pack": {},
     "headers": {}
 }
 ```
 
-其中 body，[json](../../module/ifs/json.md) 不得同时出现。缺省为 {}，不包含任何附加信息
+其中 body，[json](../../module/ifs/json.md)，pack 不得同时出现。缺省为 {}，不包含任何附加信息
 
 --------------------------
 ### put
@@ -308,11 +315,12 @@ opts 包含请求的附加选项，支持的内容如下：
     "query": {},
     "body": SeekableStream | Buffer | String | {},
     "json": {},
+    "pack": {},
     "headers": {}
 }
 ```
 
-其中 body，[json](../../module/ifs/json.md) 不得同时出现。缺省为 {}，不包含任何附加信息
+其中 body，[json](../../module/ifs/json.md)，pack 不得同时出现。缺省为 {}，不包含任何附加信息
 
 --------------------------
 ### patch
@@ -337,11 +345,12 @@ opts 包含请求的附加选项，支持的内容如下：
     "query": {},
     "body": SeekableStream | Buffer | String | {},
     "json": {},
+    "pack": {},
     "headers": {}
 }
 ```
 
-其中 body，[json](../../module/ifs/json.md) 不得同时出现。缺省为 {}，不包含任何附加信息
+其中 body，[json](../../module/ifs/json.md)，pack 不得同时出现。缺省为 {}，不包含任何附加信息
 
 --------------------------
 ### toString

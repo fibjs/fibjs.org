@@ -42,7 +42,7 @@ static String util.format(...args);
 
 --------------------------
 ### inherits
-**从一个构造函数 constructor 继承原型方法到另一个。构造函数的原型将被设置为一个新的从超类（superConstructor）创建的对象。**
+**从一个构造函数 constructor 继承原型函数到另一个。构造函数的原型将被设置为一个新的从超类（superConstructor）创建的对象。**
 
 ```JavaScript
 static util.inherits(Value constructor,
@@ -55,7 +55,7 @@ static util.inherits(Value constructor,
 
 --------------------------
 ### inspect
-**方法返回 obj 的字符串表示，主要用于调试。 附加的 options 可用于改变格式化字符串的某些方面。**
+**函数返回 obj 的字符串表示，主要用于调试。 附加的 options 可用于改变格式化字符串的某些方面。**
 
 ```JavaScript
 static String util.inspect(Object obj,
@@ -71,7 +71,7 @@ static String util.inspect(Object obj,
 
 --------------------------
 ### deprecate
-**封装给定的方法，本方法仅为兼容，并不输出警告**
+**封装给定的函数，本函数仅为兼容，并不输出警告**
 
 ```JavaScript
 static Function util.deprecate(Function fn,
@@ -80,7 +80,7 @@ static Function util.deprecate(Function fn,
 ```
 
 调用参数:
-* fn: Function, 给定需要封装的方法
+* fn: Function, 给定需要封装的函数
 * msg: String, 给定警告消息
 * code: String, 给定警告编号
 
@@ -842,7 +842,7 @@ static Buffer util.compile(String srcname,
 
 --------------------------
 ### sync
-**包裹 callback 或 async 方法为同步调用**
+**包裹 callback 或 async 函数为同步调用**
 
 ```JavaScript
 static Function util.sync(Function func,
@@ -850,13 +850,13 @@ static Function util.sync(Function func,
 ```
 
 调用参数:
-* func: Function, 给定需要包裹的方法
+* func: Function, 给定需要包裹的函数
 * async_func: Boolean, 指定以 async 函数方式处理 func，为 false 则自动判断
 
 返回结果:
-* Function, 返回同步运行的方法
+* Function, 返回同步运行的函数
 
-[util.sync](util.md#sync) 将 callback 方法或者 async 方法处理为 sync 方法，以方便调用。
+[util.sync](util.md#sync) 将 callback 函数或者 async 函数处理为 sync 函数，以方便调用。
 
 callback 示例如下：
 
@@ -902,6 +902,71 @@ function async_test(a, b) {
 
 var fn_sync = util.sync(async_test, true);
 console.log(fn_sync(100, 200));
+```
+
+--------------------------
+### promisify
+**包裹 callback 函数为 async 调用**
+
+```JavaScript
+static Function util.promisify(Function func);
+```
+
+调用参数:
+* func: Function, 给定需要包裹的函数
+
+返回结果:
+* Function, 返回 async 函数
+
+[util.promisify](util.md#promisify) 将 callback 函数处理为 async 函数，以方便调用。
+
+callback 示例如下：
+
+```JavaScript
+// callback
+var util = require('util');
+
+function cb_test(a, b, cb) {
+    setTimeout(() => {
+        cb(null, a + b);
+    }, 100);
+}
+
+var fn_sync = util.promisify(cb_test);
+console.log(async fn_sync(100, 200));
+```
+
+--------------------------
+### callbackify
+**包裹 async 函数为 callback 调用**
+
+```JavaScript
+static Function util.callbackify(Function func);
+```
+
+调用参数:
+* func: Function, 给定需要包裹的函数
+
+返回结果:
+* Function, 返回 callback 函数
+
+[util.callbackify](util.md#callbackify) 将 async 函数处理为 callback 函数，以方便调用。
+
+async 示例如下：
+
+```JavaScript
+// async
+var util = require('util');
+
+async function async_test(a, b) {
+    return a + b;
+}
+
+var fn_callback = util.callbackify(async_test);
+
+fn_callback(100, 200, (err, result) => {
+    console.log(result);
+});
 ```
 
 --------------------------

@@ -2,17 +2,20 @@
 XmlProcessingInstruction 对象表示 [xml](../../module/ifs/xml.md) 处理指令
 
 ## 继承关系
-```dot
-digraph {
-    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
+```uml
+#lineWidth: 1.5
+#font: Helvetica,sans-Serif
+#fontSize: 10
+#leading: 1.6
+#.this: fill=lightgray
+#.class: fill=white
 
-    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    XmlNode [tooltip="XmlNode", URL="XmlNode.md", label="{XmlNode|nodeType\lnodeName\lnodeValue\lownerDocument\lparentNode\lchildNodes\lfirstChild\llastChild\lpreviousSibling\lnextSibling\l|hasChildNodes()\lnormalize()\lcloneNode()\llookupPrefix()\llookupNamespaceURI()\linsertBefore()\linsertAfter()\lappendChild()\lreplaceChild()\lremoveChild()\l}"];
-    XmlProcessingInstruction [tooltip="XmlProcessingInstruction", fillcolor="lightgray", id="me", label="{XmlProcessingInstruction|target\ldata\l}"];
+[<class>object|toString();toJSON()]
+[<class>XmlNode|nodeType;nodeName;nodeValue;ownerDocument;parentNode;childNodes;firstChild;lastChild;previousSibling;nextSibling|hasChildNodes();normalize();cloneNode();lookupPrefix();lookupNamespaceURI();insertBefore();insertAfter();appendChild();replaceChild();removeChild()]
+[<this>XmlProcessingInstruction|target;data]
 
-    object -> XmlNode [dir=back];
-    XmlNode -> XmlProcessingInstruction [dir=back];
-}
+[object] <:- [XmlNode]
+[XmlNode] <:- [XmlProcessingInstruction]
 ```
 
 ## 成员属性

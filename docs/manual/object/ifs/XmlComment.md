@@ -7,19 +7,22 @@ XmlComment 节点表示 XML 文档中的注释。
 使用 [XmlDocument.createComment](XmlDocument.md#createComment)() 来创建一个注释对象。
 
 ## 继承关系
-```dot
-digraph {
-    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
+```uml
+#lineWidth: 1.5
+#font: Helvetica,sans-Serif
+#fontSize: 10
+#leading: 1.6
+#.this: fill=lightgray
+#.class: fill=white
 
-    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    XmlNode [tooltip="XmlNode", URL="XmlNode.md", label="{XmlNode|nodeType\lnodeName\lnodeValue\lownerDocument\lparentNode\lchildNodes\lfirstChild\llastChild\lpreviousSibling\lnextSibling\l|hasChildNodes()\lnormalize()\lcloneNode()\llookupPrefix()\llookupNamespaceURI()\linsertBefore()\linsertAfter()\lappendChild()\lreplaceChild()\lremoveChild()\l}"];
-    XmlCharacterData [tooltip="XmlCharacterData", URL="XmlCharacterData.md", label="{XmlCharacterData|data\llength\l|substringData()\lappendData()\linsertData()\ldeleteData()\lreplaceData()\l}"];
-    XmlComment [tooltip="XmlComment", fillcolor="lightgray", id="me", label="{XmlComment}"];
+[<class>object|toString();toJSON()]
+[<class>XmlNode|nodeType;nodeName;nodeValue;ownerDocument;parentNode;childNodes;firstChild;lastChild;previousSibling;nextSibling|hasChildNodes();normalize();cloneNode();lookupPrefix();lookupNamespaceURI();insertBefore();insertAfter();appendChild();replaceChild();removeChild()]
+[<class>XmlCharacterData|data;length|substringData();appendData();insertData();deleteData();replaceData()]
+[<this>XmlComment]
 
-    object -> XmlNode [dir=back];
-    XmlNode -> XmlCharacterData [dir=back];
-    XmlCharacterData -> XmlComment [dir=back];
-}
+[object] <:- [XmlNode]
+[XmlNode] <:- [XmlCharacterData]
+[XmlCharacterData] <:- [XmlComment]
 ```
 
 ## 成员属性

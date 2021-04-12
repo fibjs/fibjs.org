@@ -10,15 +10,18 @@ var list = rdb.getList("test");
 ```
 
 ## 继承关系
-```dot
-digraph {
-    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
+```uml
+#lineWidth: 1.5
+#font: Helvetica,sans-Serif
+#fontSize: 10
+#leading: 1.6
+#.this: fill=lightgray
+#.class: fill=white
 
-    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    RedisList [tooltip="RedisList", fillcolor="lightgray", id="me", label="{RedisList|push()\lpop()\lrpush()\lrpop()\lset()\lget()\linsertBefore()\linsertAfter()\lremove()\ltrim()\llen()\lrange()\l}"];
+[<class>object|toString();toJSON()]
+[<this>RedisList|push();pop();rpush();rpop();set();get();insertBefore();insertAfter();remove();trim();len();range()]
 
-    object -> RedisList [dir=back];
-}
+[object] <:- [RedisList]
 ```
 
 ## 成员函数

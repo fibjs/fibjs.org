@@ -19,19 +19,22 @@ var svr = new http.Server(80, function(req) {
 ```
 
 ## 继承关系
-```dot
-digraph {
-    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
+```uml
+#lineWidth: 1.5
+#font: Helvetica,sans-Serif
+#fontSize: 10
+#leading: 1.6
+#.this: fill=lightgray
+#.class: fill=white
 
-    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    TcpServer [tooltip="TcpServer", URL="TcpServer.md", label="{TcpServer|new TcpServer()\l|socket\lhandler\l|start()\lstop()\l}"];
-    HttpServer [tooltip="HttpServer", fillcolor="lightgray", id="me", label="{HttpServer|new HttpServer()\l|maxHeadersCount\lmaxBodySize\lserverName\l|enableCrossOrigin()\l}"];
-    HttpsServer [tooltip="HttpsServer", URL="HttpsServer.md", label="{HttpsServer}"];
+[<class>object|toString();toJSON()]
+[<class>TcpServer|new TcpServer()|socket;handler|start();stop()]
+[<this>HttpServer|new HttpServer()|maxHeadersCount;maxBodySize;serverName|enableCrossOrigin()]
+[<class>HttpsServer]
 
-    object -> TcpServer [dir=back];
-    TcpServer -> HttpServer [dir=back];
-    HttpServer -> HttpsServer [dir=back];
-}
+[object] <:- [TcpServer]
+[TcpServer] <:- [HttpServer]
+[HttpServer] <:- [HttpsServer]
 ```
 
 ## 构造函数
@@ -60,6 +63,18 @@ new HttpServer(String addr,
 调用参数:
 * addr: String, 指定 [http](../../module/ifs/http.md) 服务器侦听地址，为 "" 则在本机所有地址侦听
 * port: Integer, 指定 [http](../../module/ifs/http.md) 服务器侦听端口
+* hdlr: [Handler](Handler.md), [http](../../module/ifs/http.md) 内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq.Handler](../../module/ifs/mq.md#Handler)
+
+--------------------------
+**HttpServer 构造函数**
+
+```JavaScript
+new HttpServer(String addr,
+    Handler hdlr);
+```
+
+调用参数:
+* addr: String, 指定 [http](../../module/ifs/http.md) 服务器侦听地址，为 "" 则在本机所有地址侦听
 * hdlr: [Handler](Handler.md), [http](../../module/ifs/http.md) 内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq.Handler](../../module/ifs/mq.md#Handler)
 
 ## 成员属性

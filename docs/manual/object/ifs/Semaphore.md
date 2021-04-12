@@ -24,17 +24,20 @@ l.release();
 生产者/消费者模式通常则将信号量与队列配合使用。生产者向队列中加入数据，并 post 一个信号，消费者则先 wait 信号，获取信号后去队查询取数据。
 
 ## 继承关系
-```dot
-digraph {
-    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
+```uml
+#lineWidth: 1.5
+#font: Helvetica,sans-Serif
+#fontSize: 10
+#leading: 1.6
+#.this: fill=lightgray
+#.class: fill=white
 
-    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    Lock [tooltip="Lock", URL="Lock.md", label="{Lock|new Lock()\l|acquire()\lrelease()\lcount()\l}"];
-    Semaphore [tooltip="Semaphore", fillcolor="lightgray", id="me", label="{Semaphore|new Semaphore()\l|wait()\lpost()\ltrywait()\l}"];
+[<class>object|toString();toJSON()]
+[<class>Lock|new Lock()|acquire();release();count()]
+[<this>Semaphore|new Semaphore()|wait();post();trywait()]
 
-    object -> Lock [dir=back];
-    Lock -> Semaphore [dir=back];
-}
+[object] <:- [Lock]
+[Lock] <:- [Semaphore]
 ```
 
 ## 构造函数

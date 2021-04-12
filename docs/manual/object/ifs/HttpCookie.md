@@ -2,15 +2,18 @@
 [http](../../module/ifs/http.md) Cookie 对象，用于添加和处理 cookie
 
 ## 继承关系
-```dot
-digraph {
-    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
+```uml
+#lineWidth: 1.5
+#font: Helvetica,sans-Serif
+#fontSize: 10
+#leading: 1.6
+#.this: fill=lightgray
+#.class: fill=white
 
-    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    HttpCookie [tooltip="HttpCookie", fillcolor="lightgray", id="me", label="{HttpCookie|new HttpCookie()\l|name\lvalue\ldomain\lpath\lexpires\lhttpOnly\lsecure\l|parse()\lmatch()\l}"];
+[<class>object|toString();toJSON()]
+[<this>HttpCookie|new HttpCookie()|name;value;domain;path;expires;httpOnly;secure|parse();match()]
 
-    object -> HttpCookie [dir=back];
-}
+[object] <:- [HttpCookie]
 ```
 
 ## 构造函数
@@ -25,6 +28,20 @@ new HttpCookie(Object opts = {});
 调用参数:
 * opts: Object, 指定创建的 cookie 的属性
 
+opts 可以设置的选项如下：
+
+```JavaScript
+{
+    "name": "", // 指定创建的 cookie 名称
+    "value": "", // 指定创建的 cookie 值
+    "expires": Date, // 指定创建的 cookie 过期时间
+    "domain": "", // 指定创建的 cookie 的域名范围
+    "path": "", // 指定创建的 cookie 的路径范围
+    "secure": false, // 指定创建的 cookie 是否仅通过 https 传递
+    "httpOnly": false, // 指定创建的 cookie 仅允许 http 请求
+}
+```
+
 --------------------------
 **HttpCookie 构造函数，创建一个新的 HttpCookie 对象**
 
@@ -38,6 +55,18 @@ new HttpCookie(String name,
 * name: String, 指定创建的 cookie 名称
 * value: String, 指定创建的 cookie 值
 * opts: Object, 指定创建的 cookie 的其它属性
+
+opts 可以设置的选项如下：
+
+```JavaScript
+{
+    "expires": Date, // 指定创建的 cookie 过期时间
+    "domain": "", // 指定创建的 cookie 的域名范围
+    "path": "", // 指定创建的 cookie 的路径范围
+    "secure": false, // 指定创建的 cookie 是否仅通过 https 传递
+    "httpOnly": false, // 指定创建的 cookie 仅允许 http 请求
+}
+```
 
 ## 成员属性
         

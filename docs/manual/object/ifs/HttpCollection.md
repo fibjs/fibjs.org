@@ -2,15 +2,18 @@
 [http](../../module/ifs/http.md) 容器对象，用于 [http](../../module/ifs/http.md) header，cookie，query，form，等数据的存储与组织
 
 ## 继承关系
-```dot
-digraph {
-    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
+```uml
+#lineWidth: 1.5
+#font: Helvetica,sans-Serif
+#fontSize: 10
+#leading: 1.6
+#.this: fill=lightgray
+#.class: fill=white
 
-    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    HttpCollection [tooltip="HttpCollection", fillcolor="lightgray", id="me", label="{HttpCollection|operator[String]\l|clear()\lhas()\lfirst()\lall()\ladd()\lset()\lremove()\ldelete()\lsort()\lkeys()\lvalues()\l}"];
+[<class>object|toString();toJSON()]
+[<this>HttpCollection|operator\[String\]|clear();has();first();all();add();set();remove();delete();sort();keys();values()]
 
-    object -> HttpCollection [dir=back];
-}
+[object] <:- [HttpCollection]
 ```
 
 ## 下标操作

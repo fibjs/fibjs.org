@@ -42,17 +42,20 @@ go
 ```
 
 ## 继承关系
-```dot
-digraph {
-    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
+```uml
+#lineWidth: 1.5
+#font: Helvetica,sans-Serif
+#fontSize: 10
+#leading: 1.6
+#.this: fill=lightgray
+#.class: fill=white
 
-    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    Lock [tooltip="Lock", URL="Lock.md", label="{Lock|new Lock()\l|acquire()\lrelease()\lcount()\l}"];
-    Condition [tooltip="Condition", fillcolor="lightgray", id="me", label="{Condition|new Condition()\l|wait()\lnotify()\lnotifyAll()\l}"];
+[<class>object|toString();toJSON()]
+[<class>Lock|new Lock()|acquire();release();count()]
+[<this>Condition|new Condition()|wait();notify();notifyAll()]
 
-    object -> Lock [dir=back];
-    Lock -> Condition [dir=back];
-}
+[object] <:- [Lock]
+[Lock] <:- [Condition]
 ```
 
 ## 构造函数

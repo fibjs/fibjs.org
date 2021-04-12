@@ -158,12 +158,13 @@ opts 包含请求的附加选项，支持的内容如下：
     "query": {},
     "body": SeekableStream | Buffer | String | {},
     "json": {},
+    "pack": {},
     "headers": {},
     "response_body": SeekableStream //指定接受 resposne 数据的流
 }
 ```
 
-其中 body，[json](json.md) 不得同时出现。缺省为 {}，不包含任何附加信息
+其中 body，[json](json.md)，pack 不得同时出现。缺省为 {}，不包含任何附加信息
 
 --------------------------
 ### get
@@ -188,11 +189,12 @@ opts 包含请求的附加选项，支持的内容如下：
     "query": {},
     "body": SeekableStream | Buffer | String | {},
     "json": {},
+    "pack": {},
     "headers": {}
 }
 ```
 
-其中 body，[json](json.md) 不得同时出现。缺省为 {}，不包含任何附加信息
+其中 body，[json](json.md)，pack 不得同时出现。缺省为 {}，不包含任何附加信息
 
 --------------------------
 ### post
@@ -217,11 +219,12 @@ opts 包含请求的附加选项，支持的内容如下：
     "query": {},
     "body": SeekableStream | Buffer | String | {},
     "json": {},
+    "pack": {},
     "headers": {}
 }
 ```
 
-其中 body，[json](json.md) 不得同时出现。缺省为 {}，不包含任何附加信息
+其中 body，[json](json.md)，pack 不得同时出现。缺省为 {}，不包含任何附加信息
 
 --------------------------
 ### del
@@ -246,11 +249,12 @@ opts 包含请求的附加选项，支持的内容如下：
     "query": {},
     "body": SeekableStream | Buffer | String | {},
     "json": {},
+    "pack": {},
     "headers": {}
 }
 ```
 
-其中 body，[json](json.md) 不得同时出现。缺省为 {}，不包含任何附加信息
+其中 body，[json](json.md)，pack 不得同时出现。缺省为 {}，不包含任何附加信息
 
 --------------------------
 ### put
@@ -275,11 +279,12 @@ opts 包含请求的附加选项，支持的内容如下：
     "query": {},
     "body": SeekableStream | Buffer | String | {},
     "json": {},
+    "pack": {},
     "headers": {}
 }
 ```
 
-其中 body，[json](json.md) 不得同时出现。缺省为 {}，不包含任何附加信息
+其中 body，[json](json.md)，pack 不得同时出现。缺省为 {}，不包含任何附加信息
 
 --------------------------
 ### patch
@@ -304,11 +309,12 @@ opts 包含请求的附加选项，支持的内容如下：
     "query": {},
     "body": SeekableStream | Buffer | String | {},
     "json": {},
+    "pack": {},
     "headers": {}
 }
 ```
 
-其中 body，[json](json.md) 不得同时出现。缺省为 {}，不包含任何附加信息
+其中 body，[json](json.md)，pack 不得同时出现。缺省为 {}，不包含任何附加信息
 
 ## 静态属性
         

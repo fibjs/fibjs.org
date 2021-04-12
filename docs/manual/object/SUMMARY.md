@@ -61,6 +61,8 @@
 * [StatsWatcher](ifs/StatsWatcher.md)
 * [Stream](ifs/Stream.md)
 * [StringDecoder](ifs/StringDecoder.md)
+* [TTYInputStream](ifs/TTYInputStream.md)
+* [TTYOutputStream](ifs/TTYOutputStream.md)
 * [TcpServer](ifs/TcpServer.md)
 * [Timer](ifs/Timer.md)
 * [UrlObject](ifs/UrlObject.md)
