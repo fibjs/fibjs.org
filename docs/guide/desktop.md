@@ -4,7 +4,7 @@
 var gui = require("gui");
 
 gui.open("https://fibjs.org", {
-    "native": true
+    "type": "native"
 });
 ```
 这段代码会打开一个操作系统内置的 WebView 窗口，并进入 fibjs.org 的网站。
@@ -122,10 +122,10 @@ gui.config({
 var gui = require("gui");
 
 gui.open("https://fibjs.org", {
-    // "native": true
+    // "type": "native"
 });
 ```
-同样会看到一个加载了 fibjs 官网的浏览器窗口，但是它的引擎已经是最新的 Chrome 内核了。注意此处需要取消 `native` 选项，否则还将打开 os 内置的 webview。
+同样会看到一个加载了 fibjs 官网的浏览器窗口，但是它的引擎已经是最新的 Chrome 内核了。注意此处需要取消 `type` 选项，否则还将打开 os 内置的 webview。
 
 gui 的基础应用十分简便，参照 gui 文档即可迅速实现，不再赘述。接下来主要介绍一些特别的应用方式。
 
