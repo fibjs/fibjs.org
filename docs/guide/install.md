@@ -83,6 +83,10 @@ apt install g++-arm-linux-gnueabihf
 ```sh
 apt install g++-aarch64-linux-gnu
 ```
+如果要在 Ubuntu 上编译 ARM v6 位版本，准备环境命令如下:
+```sh
+apt install g++-arm-linux-gnueabi
+```
 MIPS on Ubuntu 准备环境如下:
 ```sh
 apt install g++-mips-linux-gnu
@@ -146,6 +150,7 @@ options 的选项:
 * i386: 以 32 位发布方式编译
 * amd64: 以 64 位发布方式编译
 * arm: 交叉编译 32 位 ARM 版本
+* armv6: 交叉编译 32 位 ARM v6 版本
 * arm64: 交叉编译 64 位 ARM 版本
 * mips: 交叉编译 32 位 MIPS 版本
 * mips64: 交叉编译 64 位 MIPS 版本
