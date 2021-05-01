@@ -29,30 +29,26 @@ cef3 是基于 Chomuim Content API 多进程构架的下一代 cef，拥有下�
 - 更快获得当前以及未来的 Web 特性和标准的能力。
 
 ## 准备运行环境
-cef3 的二进制包可以在 [[这个页面](https://cef-builds.spotifycdn.com/index.html)] 下载。其中包含了在特定平台（Windows，Mac OS X 以及 Linux）编译特定版本 cef3 所需的全部文件。不同平台的目录结构不太，你需要在下载后重新组织资源目录结构。
+cef3 的二进制包可以在 [[这个页面](https://cef-builds.spotifycdn.com/index.html)] 下载，当前 fibjs 所对应的版本是 v90。其中包含了在特定平台（Windows，Mac OS X 以及 Linux）编译特定版本 cef3 所需的全部文件。不同平台的目录结构不太，你需要在下载后重新组织资源目录结构。
 
 ### Windows 操作系统(Windows)
 在 Windows 平台上文件夹结构大致如下，你通常可以在二进制包内的 `Release` 和 `Resources` 目录下找到全部文件：
 ```bash
 Application
 ├── fibjs.exe
-├── cef.pak
-├── cef_100_percent.pak
-├── cef_200_percent.pak
-├── cef_extensions.pak
-├── cef_sandbox.lib
+├── chrome_100_percent.pak
+├── chrome_200_percent.pak
 ├── chrome_elf.dll
 ├── d3dcompiler_47.dll
-├── devtools_resources.pak
 ├── icudtl.dat
 ├── libEGL.dll
 ├── libGLESv2.dll
 ├── libcef.dll
-├── libcef.lib
 ├── locales
 │   ├── am.pak
 │   ├── ......
 │   └── zh-TW.pak
+├── resources.pak
 ├── snapshot_blob.bin
 ├── swiftshader
 │   ├── libEGL.dll
@@ -65,11 +61,8 @@ Application
 ```bash
 Application
 ├── fibjs
-├── cef.pak
-├── cef_100_percent.pak
-├── cef_200_percent.pak
-├── cef_extensions.pak
-├── devtools_resources.pak
+├── chrome_100_percent.pak
+├── chrome_200_percent.pak
 ├── icudtl.dat
 ├── libEGL.so
 ├── libGLESv2.so
@@ -78,6 +71,7 @@ Application
 │   ├── am.pak
 │   ├── ......
 │   └── zh-TW.pak
+├── resources.pak
 ├── snapshot_blob.bin
 ├── swiftshader
 │   ├── libEGL.so
