@@ -17,7 +17,7 @@ var buf = new Buffer();
 #.class: fill=white
 
 [<class>object|toString();toJSON()]
-[<this>Buffer|new Buffer()|operator\[\]|Buffer|isBuffer();from();concat();alloc();allocUnsafe();allocUnsafeSlow();byteLength();compare();isEncoding()|length|resize();append();write();fill();indexOf();compare();copy();set();readUInt8();readUInt16LE();readUInt16BE();readUInt32LE();readUInt32BE();readUIntLE();readUIntBE();readInt64LE();readInt64BE();readInt8();readInt16LE();readInt16BE();readInt32LE();readInt32BE();readIntLE();readIntBE();writeInt64LE();writeInt64BE();readFloatLE();readFloatBE();readDoubleLE();readDoubleBE();writeUInt8();writeUInt16LE();writeUInt16BE();writeUInt32LE();writeUInt32BE();writeUIntLE();writeUIntBE();writeInt8();writeInt16LE();writeInt16BE();writeInt32LE();writeInt32BE();writeIntLE();writeIntBE();writeFloatLE();writeFloatBE();writeDoubleLE();writeDoubleBE();slice();join();reverse();equals();hex();base64();keys();values();entries();toArray();toString()]
+[<this>Buffer|new Buffer()|operator\[\];@iterator()|Buffer|isBuffer();from();concat();alloc();allocUnsafe();allocUnsafeSlow();byteLength();compare();isEncoding()|length|resize();append();write();fill();indexOf();compare();copy();set();readUInt8();readUInt16LE();readUInt16BE();readUInt32LE();readUInt32BE();readUIntLE();readUIntBE();readInt64LE();readInt64BE();readInt8();readInt16LE();readInt16BE();readInt32LE();readInt32BE();readIntLE();readIntBE();writeInt64LE();writeInt64BE();readFloatLE();readFloatBE();readDoubleLE();readDoubleBE();writeUInt8();writeUInt16LE();writeUInt16BE();writeUInt32LE();writeUInt32BE();writeUIntLE();writeUIntBE();writeInt8();writeInt16LE();writeInt16BE();writeInt32LE();writeInt32BE();writeIntLE();writeIntBE();writeFloatLE();writeFloatBE();writeDoubleLE();writeDoubleBE();slice();join();reverse();equals();hex();base64();keys();values();entries();toArray();toString()]
 
 [object] <:- [Buffer]
 ```
@@ -84,7 +84,7 @@ new Buffer(String str,
 
 调用参数:
 * str: String, 初始化字符串，字符串将以 utf-8 格式写入，缺省则创建一个空对象
-* codec: String, 指定编码格式，允许值为："[hex](../../module/ifs/hex.md)", "[base64](../../module/ifs/base64.md)", "utf8", 或者系统支持的字符集
+* codec: String, 指定编码格式，允许值为："[hex](../../module/ifs/hex.md)", "[base64](../../module/ifs/base64.md)", "utf8", 或者 [iconv](../../module/ifs/iconv.md) 模块支持的字符集
 
 --------------------------
 **缓存对象构造函数**
@@ -96,16 +96,29 @@ new Buffer(Integer size = 0);
 调用参数:
 * size: Integer, 初始化缓冲区大小
 
-## 下标操作
+## 操作符
         
+### operator[]
 **缓存对象可使用下标直接访问二进制数据**
 
 ```JavaScript
 Integer Buffer[];
 ```
 
+--------------------------
+### @iterator
+**查询当前对象元素的迭代器**
+
+```JavaScript
+Iterator Buffer.@iterator();
+```
+
+返回结果:
+* [Iterator](Iterator.md), 返回当前对象元素的迭代器
+
 ## 对象
         
+### Buffer
 **二进制数据缓存对象，用于 [io](../../module/ifs/io.md) 读写的数据处理**
 
 ```JavaScript
@@ -172,7 +185,7 @@ static Buffer Buffer.from(String str,
 
 调用参数:
 * str: String, 初始化字符串，字符串将以 utf-8 格式写入，缺省则创建一个空对象
-* codec: String, 指定编码格式，允许值为："[hex](../../module/ifs/hex.md)", "[base64](../../module/ifs/base64.md)", "utf8", 或者系统支持的字符集
+* codec: String, 指定编码格式，允许值为："[hex](../../module/ifs/hex.md)", "[base64](../../module/ifs/base64.md)", "utf8", 或者 [iconv](../../module/ifs/iconv.md) 模块支持的字符集
 
 返回结果:
 * Buffer, 返回 Buffer 实例
@@ -206,7 +219,7 @@ static Buffer Buffer.alloc(Integer size,
 调用参数:
 * size: Integer, 缓冲区的所需长度
 * fill: Integer, 预先填充新缓冲区的值，可使用 string/buffer/integer 值类型。 默认值：0
-* codec: String, 指定编码格式，允许值为："[hex](../../module/ifs/hex.md)", "[base64](../../module/ifs/base64.md)", "utf8", 或者系统支持的字符集
+* codec: String, 指定编码格式，允许值为："[hex](../../module/ifs/hex.md)", "[base64](../../module/ifs/base64.md)", "utf8", 或者 [iconv](../../module/ifs/iconv.md) 模块支持的字符集
 
 返回结果:
 * Buffer, 填充好的新 Buffer 对象
@@ -223,7 +236,7 @@ static Buffer Buffer.alloc(Integer size,
 调用参数:
 * size: Integer, 缓冲区的所需长度
 * fill: String, 预先填充新缓冲区的值，可使用 string/buffer/integer 值类型。 默认值：0
-* codec: String, 指定编码格式，允许值为："[hex](../../module/ifs/hex.md)", "[base64](../../module/ifs/base64.md)", "utf8", 或者系统支持的字符集
+* codec: String, 指定编码格式，允许值为："[hex](../../module/ifs/hex.md)", "[base64](../../module/ifs/base64.md)", "utf8", 或者 [iconv](../../module/ifs/iconv.md) 模块支持的字符集
 
 返回结果:
 * Buffer, 填充好的新 Buffer 对象
@@ -240,7 +253,7 @@ static Buffer Buffer.alloc(Integer size,
 调用参数:
 * size: Integer, 缓冲区的所需长度
 * fill: Buffer, 预先填充新缓冲区的值，可使用 string/buffer/integer 值类型。 默认值：0
-* codec: String, 指定编码格式，允许值为："[hex](../../module/ifs/hex.md)", "[base64](../../module/ifs/base64.md)", "utf8", 或者系统支持的字符集
+* codec: String, 指定编码格式，允许值为："[hex](../../module/ifs/hex.md)", "[base64](../../module/ifs/base64.md)", "utf8", 或者 [iconv](../../module/ifs/iconv.md) 模块支持的字符集
 
 返回结果:
 * Buffer, 填充好的新 Buffer 对象
@@ -284,7 +297,7 @@ static Integer Buffer.byteLength(String str,
 
 调用参数:
 * str: String, 待取字节的字符串，如果str为 ArrayBuffer/TypedArray/DataView/Buffer 对象，则返回它们的实际长度
-* codec: String, 指定编码格式，允许值为："[hex](../../module/ifs/hex.md)", "[base64](../../module/ifs/base64.md)", "utf8", 或者系统支持的字符集
+* codec: String, 指定编码格式，允许值为："[hex](../../module/ifs/hex.md)", "[base64](../../module/ifs/base64.md)", "utf8", 或者 [iconv](../../module/ifs/iconv.md) 模块支持的字符集
 
 返回结果:
 * Integer, 返回实际字节长度
@@ -299,7 +312,7 @@ static Integer Buffer.byteLength(ArrayBuffer str,
 
 调用参数:
 * str: ArrayBuffer, 待取字节的字符串，如果str为 ArrayBuffer/TypedArray/DataView/Buffer 对象，则返回它们的实际长度
-* codec: String, 指定编码格式，允许值为："[hex](../../module/ifs/hex.md)", "[base64](../../module/ifs/base64.md)", "utf8", 或者系统支持的字符集
+* codec: String, 指定编码格式，允许值为："[hex](../../module/ifs/hex.md)", "[base64](../../module/ifs/base64.md)", "utf8", 或者 [iconv](../../module/ifs/iconv.md) 模块支持的字符集
 
 返回结果:
 * Integer, 返回实际字节长度
@@ -314,7 +327,7 @@ static Integer Buffer.byteLength(ArrayBufferView str,
 
 调用参数:
 * str: ArrayBufferView, 待取字节的字符串，如果 str 为 ArrayBuffer/TypedArray/DataView/Buffer 对象，则返回它们的实际长度
-* codec: String, 指定编码格式，允许值为："[hex](../../module/ifs/hex.md)", "[base64](../../module/ifs/base64.md)", "utf8", 或者系统支持的字符集
+* codec: String, 指定编码格式，允许值为："[hex](../../module/ifs/hex.md)", "[base64](../../module/ifs/base64.md)", "utf8", 或者 [iconv](../../module/ifs/iconv.md) 模块支持的字符集
 
 返回结果:
 * Integer, 返回实际字节长度
@@ -329,7 +342,7 @@ static Integer Buffer.byteLength(Buffer str,
 
 调用参数:
 * str: Buffer, 待取字节的字符串，如果str为 ArrayBuffer/TypedArray/DataView/Buffer 对象，则返回它们的实际长度
-* codec: String, 指定编码格式，允许值为："[hex](../../module/ifs/hex.md)", "[base64](../../module/ifs/base64.md)", "utf8", 或者系统支持的字符集
+* codec: String, 指定编码格式，允许值为："[hex](../../module/ifs/hex.md)", "[base64](../../module/ifs/base64.md)", "utf8", 或者 [iconv](../../module/ifs/iconv.md) 模块支持的字符集
 
 返回结果:
 * Integer, 返回实际字节长度
@@ -406,7 +419,7 @@ Buffer.append(String str,
 
 调用参数:
 * str: String, 要写入的字符串
-* codec: String, 指定编码格式，允许值为："[hex](../../module/ifs/hex.md)", "[base64](../../module/ifs/base64.md)", "utf8", 或者系统支持的字符集
+* codec: String, 指定编码格式，允许值为："[hex](../../module/ifs/hex.md)", "[base64](../../module/ifs/base64.md)", "utf8", 或者 [iconv](../../module/ifs/iconv.md) 模块支持的字符集
 
 --------------------------
 ### write
@@ -423,7 +436,7 @@ Integer Buffer.write(String str,
 * str: String, 待写入的字符串
 * offset: Integer, 写入起始位置
 * length: Integer, 写入长度（单位字节，默认值-1），未指定时为待写入字符串的长度
-* codec: String, 指定编码格式，允许值为："[hex](../../module/ifs/hex.md)", "[base64](../../module/ifs/base64.md)", "utf8", 或者系统支持的字符集
+* codec: String, 指定编码格式，允许值为："[hex](../../module/ifs/hex.md)", "[base64](../../module/ifs/base64.md)", "utf8", 或者 [iconv](../../module/ifs/iconv.md) 模块支持的字符集
 
 返回结果:
 * Integer, 写入的数据字节长度
@@ -440,7 +453,7 @@ Integer Buffer.write(String str,
 调用参数:
 * str: String, 待写入的字符串
 * offset: Integer, 写入起始位置
-* codec: String, 指定编码格式，允许值为："[hex](../../module/ifs/hex.md)", "[base64](../../module/ifs/base64.md)", "utf8", 或者系统支持的字符集
+* codec: String, 指定编码格式，允许值为："[hex](../../module/ifs/hex.md)", "[base64](../../module/ifs/base64.md)", "utf8", 或者 [iconv](../../module/ifs/iconv.md) 模块支持的字符集
 
 返回结果:
 * Integer, 写入的数据字节长度
@@ -455,7 +468,7 @@ Integer Buffer.write(String str,
 
 调用参数:
 * str: String, 待写入的字符串
-* codec: String, 指定编码格式，允许值为："[hex](../../module/ifs/hex.md)", "[base64](../../module/ifs/base64.md)", "utf8", 或者系统支持的字符集
+* codec: String, 指定编码格式，允许值为："[hex](../../module/ifs/hex.md)", "[base64](../../module/ifs/base64.md)", "utf8", 或者 [iconv](../../module/ifs/iconv.md) 模块支持的字符集
 
 返回结果:
 * Integer, 写入的数据字节长度
@@ -613,13 +626,11 @@ Integer Buffer.set(Buffer src,
 **从缓存对象读取一个 8 位无符号整型数值**
 
 ```JavaScript
-Integer Buffer.readUInt8(Integer offset = 0,
-    Boolean noAssert = false);
+Integer Buffer.readUInt8(Integer offset = 0);
 ```
 
 调用参数:
 * offset: Integer, 指定读取的起始位置，缺省为 0
-* noAssert: Boolean, 指定读取越界时不抛出错误，缺省为 flase，抛出
 
 返回结果:
 * Integer, 返回读取的整型数值
@@ -629,13 +640,11 @@ Integer Buffer.readUInt8(Integer offset = 0,
 **从缓存对象读取一个 16 位无符号整型数值，以低字节序的存储方式**
 
 ```JavaScript
-Integer Buffer.readUInt16LE(Integer offset = 0,
-    Boolean noAssert = false);
+Integer Buffer.readUInt16LE(Integer offset = 0);
 ```
 
 调用参数:
 * offset: Integer, 指定读取的起始位置，缺省为 0
-* noAssert: Boolean, 指定读取越界时不抛出错误，缺省为 flase，抛出
 
 返回结果:
 * Integer, 返回读取的整型数值
@@ -645,13 +654,11 @@ Integer Buffer.readUInt16LE(Integer offset = 0,
 **从缓存对象读取一个 16 位无符号整型数值，以高字节序的存储方式**
 
 ```JavaScript
-Integer Buffer.readUInt16BE(Integer offset = 0,
-    Boolean noAssert = false);
+Integer Buffer.readUInt16BE(Integer offset = 0);
 ```
 
 调用参数:
 * offset: Integer, 指定读取的起始位置，缺省为 0
-* noAssert: Boolean, 指定读取越界时不抛出错误，缺省为 flase，抛出
 
 返回结果:
 * Integer, 返回读取的整型数值
@@ -661,13 +668,11 @@ Integer Buffer.readUInt16BE(Integer offset = 0,
 **从缓存对象读取一个 32 位无符号整型数值，以低字节序的存储方式**
 
 ```JavaScript
-Long Buffer.readUInt32LE(Integer offset = 0,
-    Boolean noAssert = false);
+Long Buffer.readUInt32LE(Integer offset = 0);
 ```
 
 调用参数:
 * offset: Integer, 指定读取的起始位置，缺省为 0
-* noAssert: Boolean, 指定读取越界时不抛出错误，缺省为 flase，抛出
 
 返回结果:
 * Long, 返回读取的整型数值
@@ -677,13 +682,11 @@ Long Buffer.readUInt32LE(Integer offset = 0,
 **从缓存对象读取一个 32 位无符号整型数值，以高字节序的存储方式**
 
 ```JavaScript
-Long Buffer.readUInt32BE(Integer offset = 0,
-    Boolean noAssert = false);
+Long Buffer.readUInt32BE(Integer offset = 0);
 ```
 
 调用参数:
 * offset: Integer, 指定读取的起始位置，缺省为 0
-* noAssert: Boolean, 指定读取越界时不抛出错误，缺省为 flase，抛出
 
 返回结果:
 * Long, 返回读取的整型数值
@@ -694,14 +697,12 @@ Long Buffer.readUInt32BE(Integer offset = 0,
 
 ```JavaScript
 Long Buffer.readUIntLE(Integer offset = 0,
-    Integer byteLength = 8,
-    Boolean noAssert = false);
+    Integer byteLength = 8);
 ```
 
 调用参数:
 * offset: Integer, 指定读取的起始位置，缺省为 0
 * byteLength: Integer, 指定读取的字节数，缺省 8 个字节
-* noAssert: Boolean, 指定读取越界时不抛出错误，缺省为 flase，抛出
 
 返回结果:
 * Long, 返回读取的整型数值
@@ -712,14 +713,12 @@ Long Buffer.readUIntLE(Integer offset = 0,
 
 ```JavaScript
 Long Buffer.readUIntBE(Integer offset = 0,
-    Integer byteLength = 8,
-    Boolean noAssert = false);
+    Integer byteLength = 8);
 ```
 
 调用参数:
 * offset: Integer, 指定读取的起始位置，缺省为 0
 * byteLength: Integer, 指定读取的字节数，缺省 8 个字节
-* noAssert: Boolean, 指定读取越界时不抛出错误，缺省为 flase，抛出
 
 返回结果:
 * Long, 返回读取的整型数值
@@ -729,13 +728,11 @@ Long Buffer.readUIntBE(Integer offset = 0,
 **从缓存对象读取一个 64 位整型数值，以低字节序的存储方式**
 
 ```JavaScript
-Long Buffer.readInt64LE(Integer offset = 0,
-    Boolean noAssert = false);
+Long Buffer.readInt64LE(Integer offset = 0);
 ```
 
 调用参数:
 * offset: Integer, 指定读取的起始位置，缺省为 0
-* noAssert: Boolean, 指定读取越界时不抛出错误，缺省为 flase，抛出
 
 返回结果:
 * Long, 返回读取的整型数值
@@ -745,13 +742,11 @@ Long Buffer.readInt64LE(Integer offset = 0,
 **从缓存对象读取一个 64 位整型数值，以高字节序的存储方式**
 
 ```JavaScript
-Long Buffer.readInt64BE(Integer offset = 0,
-    Boolean noAssert = false);
+Long Buffer.readInt64BE(Integer offset = 0);
 ```
 
 调用参数:
 * offset: Integer, 指定读取的起始位置，缺省为 0
-* noAssert: Boolean, 指定读取越界时不抛出错误，缺省为 flase，抛出
 
 返回结果:
 * Long, 返回读取的整型数值
@@ -761,13 +756,11 @@ Long Buffer.readInt64BE(Integer offset = 0,
 **从缓存对象读取一个 8 位整型数值**
 
 ```JavaScript
-Integer Buffer.readInt8(Integer offset = 0,
-    Boolean noAssert = false);
+Integer Buffer.readInt8(Integer offset = 0);
 ```
 
 调用参数:
 * offset: Integer, 指定读取的起始位置，缺省为 0
-* noAssert: Boolean, 指定读取越界时不抛出错误，缺省为 flase，抛出
 
 返回结果:
 * Integer, 返回读取的整型数值
@@ -777,13 +770,11 @@ Integer Buffer.readInt8(Integer offset = 0,
 **从缓存对象读取一个 16 位整型数值，以低字节序的存储方式**
 
 ```JavaScript
-Integer Buffer.readInt16LE(Integer offset = 0,
-    Boolean noAssert = false);
+Integer Buffer.readInt16LE(Integer offset = 0);
 ```
 
 调用参数:
 * offset: Integer, 指定读取的起始位置，缺省为 0
-* noAssert: Boolean, 指定读取越界时不抛出错误，缺省为 flase，抛出
 
 返回结果:
 * Integer, 返回读取的整型数值
@@ -793,13 +784,11 @@ Integer Buffer.readInt16LE(Integer offset = 0,
 **从缓存对象读取一个 16 位整型数值，以高字节序的存储方式**
 
 ```JavaScript
-Integer Buffer.readInt16BE(Integer offset = 0,
-    Boolean noAssert = false);
+Integer Buffer.readInt16BE(Integer offset = 0);
 ```
 
 调用参数:
 * offset: Integer, 指定读取的起始位置，缺省为 0
-* noAssert: Boolean, 指定读取越界时不抛出错误，缺省为 flase，抛出
 
 返回结果:
 * Integer, 返回读取的整型数值
@@ -809,13 +798,11 @@ Integer Buffer.readInt16BE(Integer offset = 0,
 **从缓存对象读取一个 32 位整型数值，以低字节序的存储方式**
 
 ```JavaScript
-Integer Buffer.readInt32LE(Integer offset = 0,
-    Boolean noAssert = false);
+Integer Buffer.readInt32LE(Integer offset = 0);
 ```
 
 调用参数:
 * offset: Integer, 指定读取的起始位置，缺省为 0
-* noAssert: Boolean, 指定读取越界时不抛出错误，缺省为 flase，抛出
 
 返回结果:
 * Integer, 返回读取的整型数值
@@ -825,13 +812,11 @@ Integer Buffer.readInt32LE(Integer offset = 0,
 **从缓存对象读取一个 32 位整型数值，以高字节序的存储方式**
 
 ```JavaScript
-Integer Buffer.readInt32BE(Integer offset = 0,
-    Boolean noAssert = false);
+Integer Buffer.readInt32BE(Integer offset = 0);
 ```
 
 调用参数:
 * offset: Integer, 指定读取的起始位置，缺省为 0
-* noAssert: Boolean, 指定读取越界时不抛出错误，缺省为 flase，抛出
 
 返回结果:
 * Integer, 返回读取的整型数值
@@ -842,14 +827,12 @@ Integer Buffer.readInt32BE(Integer offset = 0,
 
 ```JavaScript
 Long Buffer.readIntLE(Integer offset = 0,
-    Integer byteLength = 8,
-    Boolean noAssert = false);
+    Integer byteLength = 8);
 ```
 
 调用参数:
 * offset: Integer, 指定读取的起始位置，缺省为 0
 * byteLength: Integer, 指定读取的字节数，缺省 8 个字节
-* noAssert: Boolean, 指定读取越界时不抛出错误，缺省为 flase，抛出
 
 返回结果:
 * Long, 返回读取的整型数值
@@ -860,14 +843,12 @@ Long Buffer.readIntLE(Integer offset = 0,
 
 ```JavaScript
 Long Buffer.readIntBE(Integer offset = 0,
-    Integer byteLength = 8,
-    Boolean noAssert = false);
+    Integer byteLength = 8);
 ```
 
 调用参数:
 * offset: Integer, 指定读取的起始位置，缺省为 0
 * byteLength: Integer, 指定读取的字节数，缺省 8 个字节
-* noAssert: Boolean, 指定读取越界时不抛出错误，缺省为 flase，抛出
 
 返回结果:
 * Long, 返回读取的整型数值
@@ -878,14 +859,12 @@ Long Buffer.readIntBE(Integer offset = 0,
 
 ```JavaScript
 Integer Buffer.writeInt64LE(Long value,
-    Integer offset = 0,
-    Boolean noAssert = false);
+    Integer offset = 0);
 ```
 
 调用参数:
 * value: Long, 指定写入的数值
 * offset: Integer, 指定写入的起始位置
-* noAssert: Boolean, 指定写入越界时不抛出错误，缺省为 flase，抛出
 
 返回结果:
 * Integer, offset 加上写入的字节数
@@ -896,14 +875,12 @@ Integer Buffer.writeInt64LE(Long value,
 
 ```JavaScript
 Integer Buffer.writeInt64BE(Long value,
-    Integer offset = 0,
-    Boolean noAssert = false);
+    Integer offset = 0);
 ```
 
 调用参数:
 * value: Long, 指定写入的数值
 * offset: Integer, 指定写入的起始位置
-* noAssert: Boolean, 指定写入越界时不抛出错误，缺省为 flase，抛出
 
 返回结果:
 * Integer, offset 加上写入的字节数
@@ -913,13 +890,11 @@ Integer Buffer.writeInt64BE(Long value,
 **从缓存对象读取一个浮点数，以低字节序的存储方式**
 
 ```JavaScript
-Number Buffer.readFloatLE(Integer offset = 0,
-    Boolean noAssert = false);
+Number Buffer.readFloatLE(Integer offset = 0);
 ```
 
 调用参数:
 * offset: Integer, 指定读取的起始位置，缺省为 0
-* noAssert: Boolean, 指定读取越界时不抛出错误，缺省为 flase，抛出
 
 返回结果:
 * Number, 返回读取的浮点数
@@ -929,13 +904,11 @@ Number Buffer.readFloatLE(Integer offset = 0,
 **从缓存对象读取一个浮点数，以高字节序的存储方式**
 
 ```JavaScript
-Number Buffer.readFloatBE(Integer offset = 0,
-    Boolean noAssert = false);
+Number Buffer.readFloatBE(Integer offset = 0);
 ```
 
 调用参数:
 * offset: Integer, 指定读取的起始位置，缺省为 0
-* noAssert: Boolean, 指定读取越界时不抛出错误，缺省为 flase，抛出
 
 返回结果:
 * Number, 返回读取的浮点数
@@ -945,13 +918,11 @@ Number Buffer.readFloatBE(Integer offset = 0,
 **从缓存对象读取一个双精度浮点数，以低字节序的存储方式**
 
 ```JavaScript
-Number Buffer.readDoubleLE(Integer offset = 0,
-    Boolean noAssert = false);
+Number Buffer.readDoubleLE(Integer offset = 0);
 ```
 
 调用参数:
 * offset: Integer, 指定读取的起始位置，缺省为 0
-* noAssert: Boolean, 指定读取越界时不抛出错误，缺省为 flase，抛出
 
 返回结果:
 * Number, 返回读取的双精度浮点数
@@ -961,13 +932,11 @@ Number Buffer.readDoubleLE(Integer offset = 0,
 **从缓存对象读取一个双精度浮点数，以高字节序的存储方式**
 
 ```JavaScript
-Number Buffer.readDoubleBE(Integer offset = 0,
-    Boolean noAssert = false);
+Number Buffer.readDoubleBE(Integer offset = 0);
 ```
 
 调用参数:
 * offset: Integer, 指定读取的起始位置，缺省为 0
-* noAssert: Boolean, 指定读取越界时不抛出错误，缺省为 flase，抛出
 
 返回结果:
 * Number, 返回读取的双精度浮点数
@@ -978,14 +947,12 @@ Number Buffer.readDoubleBE(Integer offset = 0,
 
 ```JavaScript
 Integer Buffer.writeUInt8(Integer value,
-    Integer offset = 0,
-    Boolean noAssert = false);
+    Integer offset = 0);
 ```
 
 调用参数:
 * value: Integer, 指定写入的数值
 * offset: Integer, 指定写入的起始位置
-* noAssert: Boolean, 指定写入越界时不抛出错误，缺省为 flase，抛出
 
 返回结果:
 * Integer, offset 加上写入的字节数
@@ -996,14 +963,12 @@ Integer Buffer.writeUInt8(Integer value,
 
 ```JavaScript
 Integer Buffer.writeUInt16LE(Integer value,
-    Integer offset = 0,
-    Boolean noAssert = false);
+    Integer offset = 0);
 ```
 
 调用参数:
 * value: Integer, 指定写入的数值
 * offset: Integer, 指定写入的起始位置
-* noAssert: Boolean, 指定写入越界时不抛出错误，缺省为 flase，抛出
 
 返回结果:
 * Integer, offset 加上写入的字节数
@@ -1014,14 +979,12 @@ Integer Buffer.writeUInt16LE(Integer value,
 
 ```JavaScript
 Integer Buffer.writeUInt16BE(Integer value,
-    Integer offset = 0,
-    Boolean noAssert = false);
+    Integer offset = 0);
 ```
 
 调用参数:
 * value: Integer, 指定写入的数值
 * offset: Integer, 指定写入的起始位置
-* noAssert: Boolean, 指定写入越界时不抛出错误，缺省为 flase，抛出
 
 返回结果:
 * Integer, offset 加上写入的字节数
@@ -1032,14 +995,12 @@ Integer Buffer.writeUInt16BE(Integer value,
 
 ```JavaScript
 Integer Buffer.writeUInt32LE(Long value,
-    Integer offset = 0,
-    Boolean noAssert = false);
+    Integer offset = 0);
 ```
 
 调用参数:
 * value: Long, 指定写入的数值
 * offset: Integer, 指定写入的起始位置
-* noAssert: Boolean, 指定写入越界时不抛出错误，缺省为 flase，抛出
 
 返回结果:
 * Integer, offset 加上写入的字节数
@@ -1050,14 +1011,12 @@ Integer Buffer.writeUInt32LE(Long value,
 
 ```JavaScript
 Integer Buffer.writeUInt32BE(Long value,
-    Integer offset = 0,
-    Boolean noAssert = false);
+    Integer offset = 0);
 ```
 
 调用参数:
 * value: Long, 指定写入的数值
 * offset: Integer, 指定写入的起始位置
-* noAssert: Boolean, 指定写入越界时不抛出错误，缺省为 flase，抛出
 
 返回结果:
 * Integer, offset 加上写入的字节数
@@ -1069,15 +1028,13 @@ Integer Buffer.writeUInt32BE(Long value,
 ```JavaScript
 Integer Buffer.writeUIntLE(Long value,
     Integer offset = 0,
-    Integer byteLength = 8,
-    Boolean noAssert = false);
+    Integer byteLength = 8);
 ```
 
 调用参数:
 * value: Long, 指定写入的数值
 * offset: Integer, 指定写入的起始位置
 * byteLength: Integer, 指定写入的字节数，缺省 8 个字节
-* noAssert: Boolean, 指定写入越界时不抛出错误，缺省为 flase，抛出
 
 返回结果:
 * Integer, offset 加上写入的字节数
@@ -1089,15 +1046,13 @@ Integer Buffer.writeUIntLE(Long value,
 ```JavaScript
 Integer Buffer.writeUIntBE(Long value,
     Integer offset = 0,
-    Integer byteLength = 8,
-    Boolean noAssert = false);
+    Integer byteLength = 8);
 ```
 
 调用参数:
 * value: Long, 指定写入的数值
 * offset: Integer, 指定写入的起始位置
 * byteLength: Integer, 指定写入的字节数，缺省 8 个字节
-* noAssert: Boolean, 指定写入越界时不抛出错误，缺省为 flase，抛出
 
 返回结果:
 * Integer, offset 加上写入的字节数
@@ -1108,14 +1063,12 @@ Integer Buffer.writeUIntBE(Long value,
 
 ```JavaScript
 Integer Buffer.writeInt8(Integer value,
-    Integer offset = 0,
-    Boolean noAssert = false);
+    Integer offset = 0);
 ```
 
 调用参数:
 * value: Integer, 指定写入的数值
 * offset: Integer, 指定写入的起始位置
-* noAssert: Boolean, 指定写入越界时不抛出错误，缺省为 flase，抛出
 
 返回结果:
 * Integer, offset 加上写入的字节数
@@ -1126,14 +1079,12 @@ Integer Buffer.writeInt8(Integer value,
 
 ```JavaScript
 Integer Buffer.writeInt16LE(Integer value,
-    Integer offset = 0,
-    Boolean noAssert = false);
+    Integer offset = 0);
 ```
 
 调用参数:
 * value: Integer, 指定写入的数值
 * offset: Integer, 指定写入的起始位置
-* noAssert: Boolean, 指定写入越界时不抛出错误，缺省为 flase，抛出
 
 返回结果:
 * Integer, offset 加上写入的字节数
@@ -1144,14 +1095,12 @@ Integer Buffer.writeInt16LE(Integer value,
 
 ```JavaScript
 Integer Buffer.writeInt16BE(Integer value,
-    Integer offset = 0,
-    Boolean noAssert = false);
+    Integer offset = 0);
 ```
 
 调用参数:
 * value: Integer, 指定写入的数值
 * offset: Integer, 指定写入的起始位置
-* noAssert: Boolean, 指定写入越界时不抛出错误，缺省为 flase，抛出
 
 返回结果:
 * Integer, offset 加上写入的字节数
@@ -1162,14 +1111,12 @@ Integer Buffer.writeInt16BE(Integer value,
 
 ```JavaScript
 Integer Buffer.writeInt32LE(Integer value,
-    Integer offset = 0,
-    Boolean noAssert = false);
+    Integer offset = 0);
 ```
 
 调用参数:
 * value: Integer, 指定写入的数值
 * offset: Integer, 指定写入的起始位置
-* noAssert: Boolean, 指定写入越界时不抛出错误，缺省为 flase，抛出
 
 返回结果:
 * Integer, offset 加上写入的字节数
@@ -1180,14 +1127,12 @@ Integer Buffer.writeInt32LE(Integer value,
 
 ```JavaScript
 Integer Buffer.writeInt32BE(Integer value,
-    Integer offset = 0,
-    Boolean noAssert = false);
+    Integer offset = 0);
 ```
 
 调用参数:
 * value: Integer, 指定写入的数值
 * offset: Integer, 指定写入的起始位置
-* noAssert: Boolean, 指定写入越界时不抛出错误，缺省为 flase，抛出
 
 返回结果:
 * Integer, offset 加上写入的字节数
@@ -1199,15 +1144,13 @@ Integer Buffer.writeInt32BE(Integer value,
 ```JavaScript
 Integer Buffer.writeIntLE(Long value,
     Integer offset = 0,
-    Integer byteLength = 8,
-    Boolean noAssert = false);
+    Integer byteLength = 8);
 ```
 
 调用参数:
 * value: Long, 指定写入的数值
 * offset: Integer, 指定写入的起始位置
 * byteLength: Integer, 指定写入的字节数，缺省 8 个字节
-* noAssert: Boolean, 指定写入越界时不抛出错误，缺省为 flase，抛出
 
 返回结果:
 * Integer, offset 加上写入的字节数
@@ -1219,15 +1162,13 @@ Integer Buffer.writeIntLE(Long value,
 ```JavaScript
 Integer Buffer.writeIntBE(Long value,
     Integer offset = 0,
-    Integer byteLength = 8,
-    Boolean noAssert = false);
+    Integer byteLength = 8);
 ```
 
 调用参数:
 * value: Long, 指定写入的数值
 * offset: Integer, 指定写入的起始位置
 * byteLength: Integer, 指定写入的字节数，缺省 8 个字节
-* noAssert: Boolean, 指定写入越界时不抛出错误，缺省为 flase，抛出
 
 返回结果:
 * Integer, offset 加上写入的字节数
@@ -1238,14 +1179,12 @@ Integer Buffer.writeIntBE(Long value,
 
 ```JavaScript
 Integer Buffer.writeFloatLE(Number value,
-    Integer offset,
-    Boolean noAssert = false);
+    Integer offset);
 ```
 
 调用参数:
 * value: Number, 指定写入的数值
 * offset: Integer, 指定写入的起始位置
-* noAssert: Boolean, 指定写入越界时不抛出错误，缺省为 flase，抛出
 
 返回结果:
 * Integer, offset 加上写入的字节数
@@ -1256,14 +1195,12 @@ Integer Buffer.writeFloatLE(Number value,
 
 ```JavaScript
 Integer Buffer.writeFloatBE(Number value,
-    Integer offset,
-    Boolean noAssert = false);
+    Integer offset);
 ```
 
 调用参数:
 * value: Number, 指定写入的数值
 * offset: Integer, 指定写入的起始位置
-* noAssert: Boolean, 指定写入越界时不抛出错误，缺省为 flase，抛出
 
 返回结果:
 * Integer, offset 加上写入的字节数
@@ -1274,14 +1211,12 @@ Integer Buffer.writeFloatBE(Number value,
 
 ```JavaScript
 Integer Buffer.writeDoubleLE(Number value,
-    Integer offset,
-    Boolean noAssert = false);
+    Integer offset);
 ```
 
 调用参数:
 * value: Number, 指定写入的数值
 * offset: Integer, 指定写入的起始位置
-* noAssert: Boolean, 指定写入越界时不抛出错误，缺省为 flase，抛出
 
 返回结果:
 * Integer, offset 加上写入的字节数
@@ -1292,14 +1227,12 @@ Integer Buffer.writeDoubleLE(Number value,
 
 ```JavaScript
 Integer Buffer.writeDoubleBE(Number value,
-    Integer offset,
-    Boolean noAssert = false);
+    Integer offset);
 ```
 
 调用参数:
 * value: Number, 指定写入的数值
 * offset: Integer, 指定写入的起始位置
-* noAssert: Boolean, 指定写入越界时不抛出错误，缺省为 flase，抛出
 
 返回结果:
 * Integer, offset 加上写入的字节数
@@ -1403,7 +1336,7 @@ Iterator Buffer.keys();
 ```
 
 返回结果:
-* Iterator, 返回包含对象数据索引的迭代器
+* [Iterator](Iterator.md), 返回包含对象数据索引的迭代器
 
 --------------------------
 ### values
@@ -1414,7 +1347,7 @@ Iterator Buffer.values();
 ```
 
 返回结果:
-* Iterator, 返回包含对象数据值的迭代器
+* [Iterator](Iterator.md), 返回包含对象数据值的迭代器
 
 --------------------------
 ### entries
@@ -1425,7 +1358,7 @@ Iterator Buffer.entries();
 ```
 
 返回结果:
-* Iterator, [index, byte] 对的迭代器
+* [Iterator](Iterator.md), [index, byte] 对的迭代器
 
 --------------------------
 ### toArray
@@ -1449,7 +1382,7 @@ String Buffer.toString(String codec,
 ```
 
 调用参数:
-* codec: String, 指定编码格式，允许值为："[hex](../../module/ifs/hex.md)", "[base64](../../module/ifs/base64.md)", "utf8", 或者系统支持的字符集
+* codec: String, 指定编码格式，允许值为："[hex](../../module/ifs/hex.md)", "[base64](../../module/ifs/base64.md)", "utf8", 或者 [iconv](../../module/ifs/iconv.md) 模块支持的字符集
 * offset: Integer, 读取起始位置
 * end: Integer, 读取终止位置
 
@@ -1465,7 +1398,7 @@ String Buffer.toString(String codec,
 ```
 
 调用参数:
-* codec: String, 指定编码格式，允许值为："[hex](../../module/ifs/hex.md)", "[base64](../../module/ifs/base64.md)", "utf8", 或者系统支持的字符集
+* codec: String, 指定编码格式，允许值为："[hex](../../module/ifs/hex.md)", "[base64](../../module/ifs/base64.md)", "utf8", 或者 [iconv](../../module/ifs/iconv.md) 模块支持的字符集
 * offset: Integer, 读取起始位置
 
 返回结果:

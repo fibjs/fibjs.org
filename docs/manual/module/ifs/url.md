@@ -43,3 +43,19 @@ static UrlObject url.parse(String url,
 返回结果:
 * [UrlObject](../../object/ifs/UrlObject.md), 返回包含解析数据的对象
 
+--------------------------
+### resolve
+**合并相对路径成为一个绝对路径**
+
+```JavaScript
+static String url.resolve(String _from,
+    String to);
+```
+
+调用参数:
+* _from: String, 源路径
+* to: String, 相对路径
+
+返回结果:
+* String, 返回得到的绝对路径
+

@@ -11,7 +11,7 @@
 #.class: fill=white
 
 [<class>object|toString();toJSON()]
-[<this>Digest|size|update();digest()]
+[<this>Digest|size|update();digest();sign();verify()]
 
 [object] <:- [Digest]
 ```
@@ -49,10 +49,40 @@ Value Digest.digest(String codec = "buffer");
 ```
 
 调用参数:
-* codec: String, 指定编码格式，允许值为："buffer", "[hex](../../module/ifs/hex.md)", "[base64](../../module/ifs/base64.md)", "utf8", 或者系统支持的字符集
+* codec: String, 指定编码格式，允许值为："buffer", "[hex](../../module/ifs/hex.md)", "[base64](../../module/ifs/base64.md)", "utf8", 或者 [iconv](../../module/ifs/iconv.md) 模块支持的字符集
 
 返回结果:
 * Value, 返回指定编码的摘要表示
+
+--------------------------
+### sign
+**签名并返回摘要**
+
+```JavaScript
+Buffer Digest.sign(PKey key) async;
+```
+
+调用参数:
+* key: [PKey](PKey.md), 签名的私钥
+
+返回结果:
+* [Buffer](Buffer.md), 返回签名后的数据
+
+--------------------------
+### verify
+**验证签名是否一致**
+
+```JavaScript
+Boolean Digest.verify(PKey key,
+    Buffer sign) async;
+```
+
+调用参数:
+* key: [PKey](PKey.md), 验证签名的公钥
+* sign: [Buffer](Buffer.md), 指定要验证的签名
+
+返回结果:
+* Boolean, 返回验证后的结果
 
 --------------------------
 ### toString

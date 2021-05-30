@@ -23,8 +23,9 @@ var col = mdb.test;
 [object] <:- [MongoCollection]
 ```
 
-## 下标操作
+## 操作符
         
+### operator[String]
 **以属性方式快速获取当前集合子命名空间的集合对象**
 
 ```JavaScript

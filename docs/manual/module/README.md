@@ -30,8 +30,6 @@
 * Encoding
   - [base32](ifs/base32.md) - base32 编码与解码模块
   - [base64](ifs/base64.md) - base64 编码与解码模块
-  - [base64vlq](ifs/base64vlq.md) - base64vlq 编码与解码模块
-  - [bson](ifs/bson.md) - bson 编码与解码模块
   - [encoding](ifs/encoding.md) - 编码与解码模块，用于处理不同的数据编码格式与二进制之间的转换
   - [hex](ifs/hex.md) - hex 编码与解码模块
   - [iconv](ifs/iconv.md) - iconv 编码与解码模块

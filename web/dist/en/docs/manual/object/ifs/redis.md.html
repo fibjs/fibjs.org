@@ -7,15 +7,13 @@
 <li><a href="../../../guide/desktop.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Quickly develop desktop applications</font></font></a></li>
 <li><a href="../../../guide/server-hot-update.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Server module hot update</font></font></a></li>
 <li><a href="../../../guide/host-routes.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Domain name routing</font></font></a></li>
-<li><a href="../../../guide/x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Use of X509 certificate in fibjs</font></font></a></li>
+<li><a href="../../../guide/x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">The use of X509 certificate in fibjs</font></font></a></li>
 <li><a href="../../../guide/contribute.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Add native module</font></font></a></li>
 </ul>
  </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_module" aria-controls="collapse_module"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Basic module </font></font></a></h4></div><div id="collapse_module" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
 <li><a href="../../module/ifs/assert.md.html" class="notranslate">assert</a></li>
 <li><a href="../../module/ifs/base32.md.html" class="notranslate">base32</a></li>
 <li><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a></li>
-<li><a href="../../module/ifs/base64vlq.md.html" class="notranslate">base64vlq</a></li>
-<li><a href="../../module/ifs/bson.md.html" class="notranslate">bson</a></li>
 <li><a href="../../module/ifs/child_process.md.html" class="notranslate">child_process</a></li>
 <li><a href="../../module/ifs/console.md.html" class="notranslate">console</a></li>
 <li><a href="../../module/ifs/constants.md.html" class="notranslate">constants</a></li>
@@ -26,6 +24,7 @@
 <li><a href="../../module/ifs/dns.md.html" class="notranslate">dns</a></li>
 <li><a href="../../module/ifs/encoding.md.html" class="notranslate">encoding</a></li>
 <li><a href="../../module/ifs/fs.md.html" class="notranslate">fs</a></li>
+<li><a href="../../module/ifs/fs_constants.md.html" class="notranslate">fs_constants</a></li>
 <li><a href="../../module/ifs/gd.md.html" class="notranslate">gd</a></li>
 <li><a href="../../module/ifs/global.md.html" class="notranslate">global</a></li>
 <li><a href="../../module/ifs/gui.md.html" class="notranslate">gui</a></li>
@@ -92,10 +91,10 @@
 <li><a href="httpuploaddata.md.html" class="notranslate">HttpUploadData</a></li>
 <li><a href="httpsserver.md.html" class="notranslate">HttpsServer</a></li>
 <li><a href="image.md.html" class="notranslate">Image</a></li>
+<li><a href="iterator.md.html" class="notranslate">Iterator</a></li>
 <li><a href="leveldb.md.html" class="notranslate">LevelDB</a></li>
 <li><a href="lock.md.html" class="notranslate">Lock</a></li>
 <li><a href="lrucache.md.html" class="notranslate">LruCache</a></li>
-<li><a href="mssql.md.html" class="notranslate">MSSQL</a></li>
 <li><a href="memorystream.md.html" class="notranslate">MemoryStream</a></li>
 <li><a href="message.md.html" class="notranslate">Message</a></li>
 <li><a href="mongocollection.md.html" class="notranslate">MongoCollection</a></li>
@@ -103,6 +102,7 @@
 <li><a href="mongodb.md.html" class="notranslate">MongoDB</a></li>
 <li><a href="mongoid.md.html" class="notranslate">MongoID</a></li>
 <li><a href="mysql.md.html" class="notranslate">MySQL</a></li>
+<li><a href="odbc.md.html" class="notranslate">Odbc</a></li>
 <li><a href="pkey.md.html" class="notranslate">PKey</a></li>
 <li><a href="rangestream.md.html" class="notranslate">RangeStream</a></li>
 <li class="active"><a href="redis.md.html" class="notranslate">Redis</a></li>
@@ -125,6 +125,8 @@
 <li><a href="statswatcher.md.html" class="notranslate">StatsWatcher</a></li>
 <li><a href="stream.md.html" class="notranslate">Stream</a></li>
 <li><a href="stringdecoder.md.html" class="notranslate">StringDecoder</a></li>
+<li><a href="ttyinputstream.md.html" class="notranslate">TTYInputStream</a></li>
+<li><a href="ttyoutputstream.md.html" class="notranslate">TTYOutputStream</a></li>
 <li><a href="tcpserver.md.html" class="notranslate">TcpServer</a></li>
 <li><a href="timer.md.html" class="notranslate">Timer</a></li>
 <li><a href="urlobject.md.html" class="notranslate">UrlObject</a></li>
@@ -199,87 +201,74 @@
 2</div><span class="hljs-keyword">var</span> db = <span class="hljs-built_in">require</span>(<span class="hljs-string">"db"</span>);
 <span class="hljs-keyword">var</span> test = <span class="hljs-keyword">new</span> db.openRedis(<span class="hljs-string">"redis-server"</span>);
 </code></pre>
-<div name="继承关系" data-unique="继承关系"></div><h2 id="继承关系"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Inheritance relationship</font></font></h2>
-<div class="dot notranslate">
-<!-- Generated by graphviz version 2.40.1 (20161225.0304)
- -->
-<!-- Title: %0 Pages: 1 -->
-<svg width="89pt" height="614pt" viewBox="0.00 0.00 89.02 614.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 610)">
-<title>%0</title>
-<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-610 85.016,-610 85.016,4 -4,4"></polygon>
-<!-- object -->
-<g id="node1" class="node">
-<title>object</title>
-<g id="a_node1"><a xlink:href="object.md.html" xlink:title="object">
-<polygon fill="#ffffff" stroke="#000000" points="11.6765,-553.5 11.6765,-605.5 69.3395,-605.5 69.3395,-553.5 11.6765,-553.5"></polygon>
-<text text-anchor="middle" x="40.508" y="-592.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
-<polyline fill="none" stroke="#000000" points="11.6765,-585.5 69.3395,-585.5 "></polyline>
-<text text-anchor="start" x="19.6765" y="-572.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toString()</text>
-<text text-anchor="start" x="19.6765" y="-560.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toJSON()</text>
-</a>
-</g>
-</g>
-<!-- Redis -->
-<g id="me" class="node">
-<title>Redis</title>
-<g id="a_me"><a xlink:title="Redis">
-<polygon fill="#d3d3d3" stroke="#000000" points="0,-.5 0,-516.5 81.016,-516.5 81.016,-.5 0,-.5"></polygon>
-<text text-anchor="middle" x="40.508" y="-503.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Redis</text>
-<polyline fill="none" stroke="#000000" points="0,-496.5 81.016,-496.5 "></polyline>
-<text text-anchor="start" x="8" y="-483.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">onsuberror</text>
-<polyline fill="none" stroke="#000000" points="0,-476.5 81.016,-476.5 "></polyline>
-<text text-anchor="start" x="8" y="-463.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">command()</text>
-<text text-anchor="start" x="8" y="-451.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">set()</text>
-<text text-anchor="start" x="8" y="-439.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">setNX()</text>
-<text text-anchor="start" x="8" y="-427.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">setXX()</text>
-<text text-anchor="start" x="8" y="-415.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">mset()</text>
-<text text-anchor="start" x="8" y="-403.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">msetNX()</text>
-<text text-anchor="start" x="8" y="-391.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">append()</text>
-<text text-anchor="start" x="8" y="-379.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">setRange()</text>
-<text text-anchor="start" x="8" y="-367.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">getRange()</text>
-<text text-anchor="start" x="8" y="-355.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">strlen()</text>
-<text text-anchor="start" x="8" y="-343.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">bitcount()</text>
-<text text-anchor="start" x="8" y="-331.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">get()</text>
-<text text-anchor="start" x="8" y="-319.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">mget()</text>
-<text text-anchor="start" x="8" y="-307.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">getset()</text>
-<text text-anchor="start" x="8" y="-295.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">decr()</text>
-<text text-anchor="start" x="8" y="-283.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">incr()</text>
-<text text-anchor="start" x="8" y="-271.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">setBit()</text>
-<text text-anchor="start" x="8" y="-259.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">getBit()</text>
-<text text-anchor="start" x="8" y="-247.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">exists()</text>
-<text text-anchor="start" x="8" y="-235.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">type()</text>
-<text text-anchor="start" x="8" y="-223.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">keys()</text>
-<text text-anchor="start" x="8" y="-211.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">del()</text>
-<text text-anchor="start" x="8" y="-199.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">expire()</text>
-<text text-anchor="start" x="8" y="-187.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">ttl()</text>
-<text text-anchor="start" x="8" y="-175.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">persist()</text>
-<text text-anchor="start" x="8" y="-163.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">rename()</text>
-<text text-anchor="start" x="8" y="-151.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">renameNX()</text>
-<text text-anchor="start" x="8" y="-139.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">sub()</text>
-<text text-anchor="start" x="8" y="-127.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">unsub()</text>
-<text text-anchor="start" x="8" y="-115.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">psub()</text>
-<text text-anchor="start" x="8" y="-103.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">unpsub()</text>
-<text text-anchor="start" x="8" y="-91.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">pub()</text>
-<text text-anchor="start" x="8" y="-79.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">getHash()</text>
-<text text-anchor="start" x="8" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">getList()</text>
-<text text-anchor="start" x="8" y="-55.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">getSet()</text>
-<text text-anchor="start" x="8" y="-43.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">getSortedSet()</text>
-<text text-anchor="start" x="8" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">dump()</text>
-<text text-anchor="start" x="8" y="-19.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">restore()</text>
-<text text-anchor="start" x="8" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">close()</text>
-</a>
-</g>
-</g>
-<!-- object&#45;&gt;Redis -->
-<g id="edge1" class="edge">
-<title>object-&gt;Redis</title>
-<path fill="none" stroke="#000000" d="M40.508,-543.1412C40.508,-535.2577 40.508,-526.3486 40.508,-516.6758"></path>
-<polygon fill="#000000" stroke="#000000" points="37.0081,-543.2312 40.508,-553.2312 44.0081,-543.2313 37.0081,-543.2312"></polygon>
-</g>
-</g>
-</svg>
-</div>
+<div name="继承关系" data-unique="继承关系"></div><h2 id="继承关系"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Inheritance</font></font></h2>
+<div class="dot notranslate"><svg version="1.1" baseProfile="full" width="138" height="850" viewBox="0 0 138 850" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events" style="font:normal normal 10pt Helvetica,sans-Serif, Helvetica, sans-serif;;stroke-linejoin:round;stroke-linecap:round">
+  <desc>
+#lineWidth: 1.5
+#font: Helvetica,sans-Serif
+#fontSize: 10
+#leading: 1.6
+#.this: fill=lightgray
+#.class: fill=white
+
+[&lt;class&gt;object|toString();toJSON()]
+[&lt;this&gt;Redis|onsuberror|command();set();setNX();setXX();mset();msetNX();append();setRange();getRange();strlen();bitcount();get();mget();getset();decr();incr();setBit();getBit();exists();type();keys();del();expire();ttl();persist();rename();renameNX();sub();unsub();psub();unpsub();pub();getHash();getList();getSet();getSortedSet();dump();restore();close()]
+
+[object] &lt;:- [Redis]
+</desc>
+  <rect x="0" y="0" height="850" width="138" style="stroke:none; fill:transparent;"></rect>
+  <path d="M69 93 L69 113 L69 133 L69 133 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M74.3 106.3 L69 106.3 L63.7 106.3 L69 93 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <rect x="13" y="133" height="704" width="112" data-name="Redis" style="stroke:#33322E;fill:lightgray;stroke-dasharray:none;stroke-width:1.5;"></rect>
+  <text x="69" y="154" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="Redis">Redis</text>
+  <text x="21" y="186" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Redis">onsuberror</text>
+  <text x="21" y="218" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Redis">command()</text>
+  <text x="21" y="234" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Redis">set()</text>
+  <text x="21" y="250" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Redis">setNX()</text>
+  <text x="21" y="266" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Redis">setXX()</text>
+  <text x="21" y="282" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Redis">mset()</text>
+  <text x="21" y="298" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Redis">msetNX()</text>
+  <text x="21" y="314" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Redis">append()</text>
+  <text x="21" y="330" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Redis">setRange()</text>
+  <text x="21" y="346" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Redis">getRange()</text>
+  <text x="21" y="362" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Redis">strlen()</text>
+  <text x="21" y="378" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Redis">bitcount()</text>
+  <text x="21" y="394" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Redis">get()</text>
+  <text x="21" y="410" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Redis">mget()</text>
+  <text x="21" y="426" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Redis">getset()</text>
+  <text x="21" y="442" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Redis">decr()</text>
+  <text x="21" y="458" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Redis">incr()</text>
+  <text x="21" y="474" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Redis">setBit()</text>
+  <text x="21" y="490" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Redis">getBit()</text>
+  <text x="21" y="506" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Redis">exists()</text>
+  <text x="21" y="522" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Redis">type()</text>
+  <text x="21" y="538" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Redis">keys()</text>
+  <text x="21" y="554" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Redis">del()</text>
+  <text x="21" y="570" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Redis">expire()</text>
+  <text x="21" y="586" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Redis">ttl()</text>
+  <text x="21" y="602" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Redis">persist()</text>
+  <text x="21" y="618" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Redis">rename()</text>
+  <text x="21" y="634" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Redis">renameNX()</text>
+  <text x="21" y="650" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Redis">sub()</text>
+  <text x="21" y="666" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Redis">unsub()</text>
+  <text x="21" y="682" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Redis">psub()</text>
+  <text x="21" y="698" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Redis">unpsub()</text>
+  <text x="21" y="714" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Redis">pub()</text>
+  <text x="21" y="730" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Redis">getHash()</text>
+  <text x="21" y="746" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Redis">getList()</text>
+  <text x="21" y="762" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Redis">getSet()</text>
+  <text x="21" y="778" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Redis">getSortedSet()</text>
+  <text x="21" y="794" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Redis">dump()</text>
+  <text x="21" y="810" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Redis">restore()</text>
+  <text x="21" y="826" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Redis">close()</text>
+  <path d="M13 165 L125 165" data-name="Redis" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M13 197 L125 197" data-name="Redis" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <rect x="31" y="13" height="80" width="77" data-name="object" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
+  <text x="69.5" y="34" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="object">object</text>
+  <text x="39" y="66" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="object">toString()</text>
+  <text x="39" y="82" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="object">toJSON()</text>
+  <path d="M31 45 L108 45" data-name="object" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+</svg></div>
 
 <div name="成员属性" data-unique="成员属性"></div><h2 id="成员属性"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Member attributes</font></font></h2>
 <div name="onsuberror" data-unique="onsuberror"></div><h3 id="onsuberror" class="notranslate">onsuberror</h3>
@@ -395,7 +384,7 @@
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Return result:</font></font></p>
 <ul>
-<li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, After appending value, the length of the string in key</font></font></li>
+<li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, After appending the value, the length of the string in the key</font></font></li>
 </ul>
 <hr>
 <div name="setRange" data-unique="setRange"></div><h3 id="setRange" class="notranslate">setRange</h3>
@@ -418,7 +407,7 @@
 </ul>
 <hr>
 <div name="getRange" data-unique="getRange"></div><h3 id="getRange" class="notranslate">getRange</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Returns the substring of the string value in the key. The interception range of the string is determined by the two offsets of start and end (including start and end)</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Returns the substring of the string value in key. The interception range of the string is determined by the two offsets of start and end (including start and end)</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3</div>Buffer Redis.getRange(Buffer key,<font></font>
@@ -763,12 +752,12 @@
 <li><span class="notranslate">func</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Function, specify the callback function for unsubscription</font></font></li>
 </ul>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Unsubscribe all callbacks for a given channel</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Unsubscribe all callbacks of a given channel</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Redis.unsub(<span class="hljs-built_in">Array</span> channels);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
 <ul>
-<li><span class="notranslate">channels</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Array, specify the unsubscribed channel array</font></font></li>
+<li><span class="notranslate">channels</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Array, specify unsubscribed channel array</font></font></li>
 </ul>
 <hr>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Unsubscribe the specified callback function of a given set of channels</font></font></strong></p>
@@ -824,7 +813,7 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
 <ul>
-<li><span class="notranslate">patterns</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Array, specify the channel template array to be published</font></font></li>
+<li><span class="notranslate">patterns</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Array, specify the array of channel templates to publish</font></font></li>
 </ul>
 <hr>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">The specified callback function for unsubscribed channels of a set of templates</font></font></strong></p>
@@ -844,7 +833,7 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
 <ul>
 <li><span class="notranslate">channel</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Specify the published channel</font></font></li>
-<li><span class="notranslate">message</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Specify the published message</font></font></li>
+<li><span class="notranslate">message</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Specify the message to be published</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Return result:</font></font></p>
 <ul>
@@ -861,7 +850,7 @@
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Return result:</font></font></p>
 <ul>
-<li><a href="redishash.md.html" class="notranslate">RedisHash</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Returns a Hash object containing the specified key</font></font></li>
+<li><a href="redishash.md.html" class="notranslate">RedisHash</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Return a Hash object containing the specified key</font></font></li>
 </ul>
 <hr>
 <div name="getList" data-unique="getList"></div><h3 id="getList" class="notranslate">getList</h3>
@@ -878,7 +867,7 @@
 </ul>
 <hr>
 <div name="getSet" data-unique="getSet"></div><h3 id="getSet" class="notranslate">getSet</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Get the Set object of the specified key. This object is the client that contains the specified key. The database can only be operated when its method is called</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Get the Set object of the specified key. This object is the client that contains the specified key. The database can only be operated by calling its method</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>RedisSet Redis.getSet(Buffer key);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
@@ -957,4 +946,4 @@
 <ul>
 <li><span class="notranslate">Value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Returns a value containing JSON serializable</font></font></li>
 </ul>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org | </font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Support us</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip119574"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip119574" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Click to return on the top page</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org | </font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Support us</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip140637"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip140637" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Click to return on the top page</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>

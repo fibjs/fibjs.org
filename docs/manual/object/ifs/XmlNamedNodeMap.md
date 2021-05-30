@@ -16,8 +16,9 @@ XmlNamedNodeMap 对象表示一个无顺序的属性列表
 [object] <:- [XmlNamedNodeMap]
 ```
 
-## 下标操作
+## 操作符
         
+### operator[]
 **可使用下标直接访问数据**
 
 ```JavaScript

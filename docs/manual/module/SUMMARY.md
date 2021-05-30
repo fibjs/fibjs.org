@@ -1,8 +1,6 @@
 * [assert](ifs/assert.md)
 * [base32](ifs/base32.md)
 * [base64](ifs/base64.md)
-* [base64vlq](ifs/base64vlq.md)
-* [bson](ifs/bson.md)
 * [child_process](ifs/child_process.md)
 * [console](ifs/console.md)
 * [constants](ifs/constants.md)

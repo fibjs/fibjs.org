@@ -134,8 +134,8 @@ HttpClient.setClientCert(X509Cert crt,
 ```
 
 调用参数:
-* crt: [X509Cert](X509Cert.md), [X509Cert](X509Cert.md) 证书，用于客户端验证服务器
-* key: [PKey](PKey.md), [PKey](PKey.md) 私钥，用于与客户端会话
+* crt: [X509Cert](X509Cert.md), 证书，用于发送给服务器验证客户端
+* key: [PKey](PKey.md), 私钥，用于与客户端会话
 
 --------------------------
 ### request

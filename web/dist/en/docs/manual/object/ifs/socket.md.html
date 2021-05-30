@@ -7,15 +7,13 @@
 <li><a href="../../../guide/desktop.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Quickly develop desktop applications</font></font></a></li>
 <li><a href="../../../guide/server-hot-update.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Server module hot update</font></font></a></li>
 <li><a href="../../../guide/host-routes.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Domain name routing</font></font></a></li>
-<li><a href="../../../guide/x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Use of X509 certificate in fibjs</font></font></a></li>
+<li><a href="../../../guide/x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">The use of X509 certificate in fibjs</font></font></a></li>
 <li><a href="../../../guide/contribute.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Add native module</font></font></a></li>
 </ul>
  </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_module" aria-controls="collapse_module"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Basic module </font></font></a></h4></div><div id="collapse_module" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
 <li><a href="../../module/ifs/assert.md.html" class="notranslate">assert</a></li>
 <li><a href="../../module/ifs/base32.md.html" class="notranslate">base32</a></li>
 <li><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a></li>
-<li><a href="../../module/ifs/base64vlq.md.html" class="notranslate">base64vlq</a></li>
-<li><a href="../../module/ifs/bson.md.html" class="notranslate">bson</a></li>
 <li><a href="../../module/ifs/child_process.md.html" class="notranslate">child_process</a></li>
 <li><a href="../../module/ifs/console.md.html" class="notranslate">console</a></li>
 <li><a href="../../module/ifs/constants.md.html" class="notranslate">constants</a></li>
@@ -26,6 +24,7 @@
 <li><a href="../../module/ifs/dns.md.html" class="notranslate">dns</a></li>
 <li><a href="../../module/ifs/encoding.md.html" class="notranslate">encoding</a></li>
 <li><a href="../../module/ifs/fs.md.html" class="notranslate">fs</a></li>
+<li><a href="../../module/ifs/fs_constants.md.html" class="notranslate">fs_constants</a></li>
 <li><a href="../../module/ifs/gd.md.html" class="notranslate">gd</a></li>
 <li><a href="../../module/ifs/global.md.html" class="notranslate">global</a></li>
 <li><a href="../../module/ifs/gui.md.html" class="notranslate">gui</a></li>
@@ -92,10 +91,10 @@
 <li><a href="httpuploaddata.md.html" class="notranslate">HttpUploadData</a></li>
 <li><a href="httpsserver.md.html" class="notranslate">HttpsServer</a></li>
 <li><a href="image.md.html" class="notranslate">Image</a></li>
+<li><a href="iterator.md.html" class="notranslate">Iterator</a></li>
 <li><a href="leveldb.md.html" class="notranslate">LevelDB</a></li>
 <li><a href="lock.md.html" class="notranslate">Lock</a></li>
 <li><a href="lrucache.md.html" class="notranslate">LruCache</a></li>
-<li><a href="mssql.md.html" class="notranslate">MSSQL</a></li>
 <li><a href="memorystream.md.html" class="notranslate">MemoryStream</a></li>
 <li><a href="message.md.html" class="notranslate">Message</a></li>
 <li><a href="mongocollection.md.html" class="notranslate">MongoCollection</a></li>
@@ -103,6 +102,7 @@
 <li><a href="mongodb.md.html" class="notranslate">MongoDB</a></li>
 <li><a href="mongoid.md.html" class="notranslate">MongoID</a></li>
 <li><a href="mysql.md.html" class="notranslate">MySQL</a></li>
+<li><a href="odbc.md.html" class="notranslate">Odbc</a></li>
 <li><a href="pkey.md.html" class="notranslate">PKey</a></li>
 <li><a href="rangestream.md.html" class="notranslate">RangeStream</a></li>
 <li><a href="redis.md.html" class="notranslate">Redis</a></li>
@@ -125,6 +125,8 @@
 <li><a href="statswatcher.md.html" class="notranslate">StatsWatcher</a></li>
 <li><a href="stream.md.html" class="notranslate">Stream</a></li>
 <li><a href="stringdecoder.md.html" class="notranslate">StringDecoder</a></li>
+<li><a href="ttyinputstream.md.html" class="notranslate">TTYInputStream</a></li>
+<li><a href="ttyoutputstream.md.html" class="notranslate">TTYOutputStream</a></li>
 <li><a href="tcpserver.md.html" class="notranslate">TcpServer</a></li>
 <li><a href="timer.md.html" class="notranslate">Timer</a></li>
 <li><a href="urlobject.md.html" class="notranslate">UrlObject</a></li>
@@ -197,109 +199,76 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Socket belongs to </font></font><a href="../../module/ifs/net.md.html" class="notranslate">net</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Module, creation method</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">var</span> s = <span class="hljs-keyword">new</span> net.Socket();
 </code></pre>
-<div name="继承关系" data-unique="继承关系"></div><h2 id="继承关系"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Inheritance relationship</font></font></h2>
-<div class="dot notranslate">
-<!-- Generated by graphviz version 2.40.1 (20161225.0304)
- -->
-<!-- Title: %0 Pages: 1 -->
-<svg width="92pt" height="479pt" viewBox="0.00 0.00 91.79 479.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 475)">
-<title>%0</title>
-<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-475 87.789,-475 87.789,4 -4,4"></polygon>
-<!-- object -->
-<g id="node1" class="node">
-<title>object</title>
-<g id="a_node1"><a xlink:href="object.md.html" xlink:title="object">
-<polygon fill="#ffffff" stroke="#000000" points="13.063,-418.5 13.063,-470.5 70.726,-470.5 70.726,-418.5 13.063,-418.5"></polygon>
-<text text-anchor="middle" x="41.8945" y="-457.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
-<polyline fill="none" stroke="#000000" points="13.063,-450.5 70.726,-450.5 "></polyline>
-<text text-anchor="start" x="21.063" y="-437.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toString()</text>
-<text text-anchor="start" x="21.063" y="-425.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toJSON()</text>
-</a>
-</g>
-</g>
-<!-- Stream -->
-<g id="node2" class="node">
-<title>Stream</title>
-<g id="a_node2"><a xlink:href="stream.md.html" xlink:title="Stream">
-<polygon fill="#ffffff" stroke="#000000" points="14.1725,-273.5 14.1725,-381.5 69.6165,-381.5 69.6165,-273.5 14.1725,-273.5"></polygon>
-<text text-anchor="middle" x="41.8945" y="-368.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Stream</text>
-<polyline fill="none" stroke="#000000" points="14.1725,-361.5 69.6165,-361.5 "></polyline>
-<text text-anchor="start" x="22.1725" y="-348.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">fd</text>
-<polyline fill="none" stroke="#000000" points="14.1725,-341.5 69.6165,-341.5 "></polyline>
-<text text-anchor="start" x="22.1725" y="-328.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">read()</text>
-<text text-anchor="start" x="22.1725" y="-316.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">write()</text>
-<text text-anchor="start" x="22.1725" y="-304.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">flush()</text>
-<text text-anchor="start" x="22.1725" y="-292.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">close()</text>
-<text text-anchor="start" x="22.1725" y="-280.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">copyTo()</text>
-</a>
-</g>
-</g>
-<!-- object&#45;&gt;Stream -->
-<g id="edge1" class="edge">
-<title>object-&gt;Stream</title>
-<path fill="none" stroke="#000000" d="M41.8945,-408.1428C41.8945,-399.8239 41.8945,-390.8042 41.8945,-381.9111"></path>
-<polygon fill="#000000" stroke="#000000" points="38.3946,-408.2429 41.8945,-418.2429 45.3946,-408.243 38.3946,-408.2429"></polygon>
-</g>
-<!-- Socket -->
-<g id="me" class="node">
-<title>Socket</title>
-<g id="a_me"><a xlink:title="Socket">
-<polygon fill="#d3d3d3" stroke="#000000" points="0,-.5 0,-236.5 83.789,-236.5 83.789,-.5 0,-.5"></polygon>
-<text text-anchor="middle" x="41.8945" y="-223.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Socket</text>
-<polyline fill="none" stroke="#000000" points="0,-216.5 83.789,-216.5 "></polyline>
-<text text-anchor="start" x="8" y="-203.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">new Socket()</text>
-<polyline fill="none" stroke="#000000" points="0,-196.5 83.789,-196.5 "></polyline>
-<text text-anchor="start" x="8" y="-183.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">family</text>
-<text text-anchor="start" x="8" y="-171.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">type</text>
-<text text-anchor="start" x="8" y="-159.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">remoteAddress</text>
-<text text-anchor="start" x="8" y="-147.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">remotePort</text>
-<text text-anchor="start" x="8" y="-135.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">localAddress</text>
-<text text-anchor="start" x="8" y="-123.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">localPort</text>
-<text text-anchor="start" x="8" y="-111.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">timeout</text>
-<polyline fill="none" stroke="#000000" points="0,-104.5 83.789,-104.5 "></polyline>
-<text text-anchor="start" x="8" y="-91.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">connect()</text>
-<text text-anchor="start" x="8" y="-79.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">bind()</text>
-<text text-anchor="start" x="8" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">listen()</text>
-<text text-anchor="start" x="8" y="-55.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">accept()</text>
-<text text-anchor="start" x="8" y="-43.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">recv()</text>
-<text text-anchor="start" x="8" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">recvfrom()</text>
-<text text-anchor="start" x="8" y="-19.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">send()</text>
-<text text-anchor="start" x="8" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">sendto()</text>
-</a>
-</g>
-</g>
-<!-- Stream&#45;&gt;Socket -->
-<g id="edge2" class="edge">
-<title>Stream-&gt;Socket</title>
-<path fill="none" stroke="#000000" d="M41.8945,-263.1925C41.8945,-254.6314 41.8945,-245.6457 41.8945,-236.52"></path>
-<polygon fill="#000000" stroke="#000000" points="38.3946,-263.4055 41.8945,-273.4055 45.3946,-263.4055 38.3946,-263.4055"></polygon>
-</g>
-</g>
-</svg>
-</div>
+<div name="继承关系" data-unique="继承关系"></div><h2 id="继承关系"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Inheritance</font></font></h2>
+<div class="dot notranslate"><svg version="1.1" baseProfile="full" width="142" height="634" viewBox="0 0 142 634" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events" style="font:normal normal 10pt Helvetica,sans-Serif, Helvetica, sans-serif;;stroke-linejoin:round;stroke-linecap:round">
+  <desc>
+#lineWidth: 1.5
+#font: Helvetica,sans-Serif
+#fontSize: 10
+#leading: 1.6
+#.this: fill=lightgray
+#.class: fill=white
+
+[&lt;class&gt;object|toString();toJSON()]
+[&lt;class&gt;Stream|fd|read();write();flush();close();copyTo()]
+[&lt;this&gt;Socket|new Socket()|family;remoteAddress;remotePort;localAddress;localPort;timeout|connect();bind();listen();accept();recv();send()]
+
+[object] &lt;:- [Stream]
+[Stream] &lt;:- [Socket]
+</desc>
+  <rect x="0" y="0" height="634" width="142" style="stroke:none; fill:transparent;"></rect>
+  <path d="M71 93 L71 113 L71 133 L71 133 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M76.3 106.3 L71 106.3 L65.7 106.3 L71 93 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M71 293 L71 313 L71 333 L71 333 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M76.3 306.3 L71 306.3 L65.7 306.3 L71 293 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <rect x="13" y="333" height="288" width="116" data-name="Socket" style="stroke:#33322E;fill:lightgray;stroke-dasharray:none;stroke-width:1.5;"></rect>
+  <text x="71" y="354" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="Socket">Socket</text>
+  <text x="21" y="386" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Socket">new Socket()</text>
+  <text x="21" y="418" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Socket">family</text>
+  <text x="21" y="434" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Socket">remoteAddress</text>
+  <text x="21" y="450" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Socket">remotePort</text>
+  <text x="21" y="466" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Socket">localAddress</text>
+  <text x="21" y="482" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Socket">localPort</text>
+  <text x="21" y="498" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Socket">timeout</text>
+  <text x="21" y="530" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Socket">connect()</text>
+  <text x="21" y="546" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Socket">bind()</text>
+  <text x="21" y="562" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Socket">listen()</text>
+  <text x="21" y="578" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Socket">accept()</text>
+  <text x="21" y="594" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Socket">recv()</text>
+  <text x="21" y="610" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Socket">send()</text>
+  <path d="M13 365 L129 365" data-name="Socket" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M13 397 L129 397" data-name="Socket" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M13 509 L129 509" data-name="Socket" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <rect x="34" y="133" height="160" width="74" data-name="Stream" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
+  <text x="71" y="154" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="Stream">Stream</text>
+  <text x="42" y="186" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Stream">fd</text>
+  <text x="42" y="218" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Stream">read()</text>
+  <text x="42" y="234" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Stream">write()</text>
+  <text x="42" y="250" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Stream">flush()</text>
+  <text x="42" y="266" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Stream">close()</text>
+  <text x="42" y="282" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Stream">copyTo()</text>
+  <path d="M34 165 L108 165" data-name="Stream" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M34 197 L108 197" data-name="Stream" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <rect x="33" y="13" height="80" width="77" data-name="object" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
+  <text x="71.5" y="34" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="object">object</text>
+  <text x="41" y="66" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="object">toString()</text>
+  <text x="41" y="82" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="object">toJSON()</text>
+  <path d="M33 45 L110 45" data-name="object" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+</svg></div>
 
 <div name="构造函数" data-unique="构造函数"></div><h2 id="构造函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Constructor</font></font></h2>
 <div name="Socket" data-unique="Socket"></div><h3 id="Socket" class="notranslate">Socket</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Socket constructor, create a new Socket object</font></font></strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div><span class="hljs-keyword">new</span> Socket(Integer family = net.AF_INET,<font></font>
-    Integer type = net.SOCK_STREAM);<font></font>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">new</span> Socket(Integer family = net.AF_INET);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
 <ul>
 <li><span class="notranslate">family</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Integer, specify the address set, the default is AF_INET, ipv4</font></font></li>
-<li><span class="notranslate">type</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Integer, specify the protocol family, the default is SOCK_STREAM, tcp</font></font></li>
 </ul>
 <div name="成员属性" data-unique="成员属性"></div><h2 id="成员属性"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Member attributes</font></font></h2>
 <div name="family" data-unique="family"></div><h3 id="family" class="notranslate">family</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Integer, query the address set of the current Socket object</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly Integer Socket.family;
-</code></pre>
-<hr>
-<div name="type" data-unique="type"></div><h3 id="type" class="notranslate">type</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Integer, query the protocol family of the current Socket object</font></font></strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly Integer Socket.type;
 </code></pre>
 <hr>
 <div name="remoteAddress" data-unique="remoteAddress"></div><h3 id="remoteAddress" class="notranslate">remoteAddress</h3>
@@ -336,12 +305,12 @@
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Establish a tcp connection</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Socket.connect(<span class="hljs-built_in">String</span> host,<font></font>
-    Integer port) <span class="hljs-keyword">async</span>;
+    Integer port = <span class="hljs-number">0</span>) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
 <ul>
-<li><span class="notranslate">host</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, specify the address or host name of the other party</font></font></li>
-<li><span class="notranslate">port</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Integer, specify the opposite port</font></font></li>
+<li><span class="notranslate">host</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, specify the address or host name of the other party, or point to the path of unix socket and Windows pipe</font></font></li>
+<li><span class="notranslate">port</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Integer, specify the port of the other party, ignore this parameter when connecting unix socket and Windows pipe</font></font></li>
 </ul>
 <hr>
 <div name="bind" data-unique="bind"></div><h3 id="bind" class="notranslate">bind</h3>
@@ -360,13 +329,13 @@
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3</div>Socket.bind(<span class="hljs-built_in">String</span> addr,<font></font>
-    Integer port,<font></font>
+    Integer port = <span class="hljs-number">0</span>,
     <span class="hljs-built_in">Boolean</span> allowIPv4 = <span class="hljs-literal">true</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
 <ul>
-<li><span class="notranslate">addr</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, specify the bound address</font></font></li>
-<li><span class="notranslate">port</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Integer, specify the bound port</font></font></li>
+<li><span class="notranslate">addr</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, specify the binding address, or point to the path of unix socket and Windows pipe</font></font></li>
+<li><span class="notranslate">port</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Integer, specify the bound port. When binding unix socket and Windows pipe, ignore this parameter</font></font></li>
 <li><span class="notranslate">allowIPv4</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Boolean, specify whether to accept ipv4 connection, the default is true. </font><font style="vertical-align: inherit;">This parameter is valid in ipv6 and depends on the operating system</font></font></li>
 </ul>
 <hr>
@@ -376,7 +345,7 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
 <ul>
-<li><span class="notranslate">backlog</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Integer, specify the length of the request queue, requests that exceed it will be rejected, the default is 120</font></font></li>
+<li><span class="notranslate">backlog</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Integer, specify the length of the request queue, requests exceeding the length will be rejected, the default is 120</font></font></li>
 </ul>
 <hr>
 <div name="accept" data-unique="accept"></div><h3 id="accept" class="notranslate">accept</h3>
@@ -401,25 +370,6 @@
 <li><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Return the data read from the connection</font></font></li>
 </ul>
 <hr>
-<div name="recvfrom" data-unique="recvfrom"></div><h3 id="recvfrom" class="notranslate">recvfrom</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Read a UDP packet</font></font></strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>NObject Socket.recvfrom(Integer bytes = <span class="hljs-number">-1</span>) <span class="hljs-keyword">async</span>;
-</code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
-<ul>
-<li><span class="notranslate">bytes</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Integer, specify the amount of data to be read, the default reads data of any size</font></font></li>
-</ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Return result:</font></font></p>
-<ul>
-<li><span class="notranslate">NObject</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Return the data packet read from the connection</font></font></li>
-</ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">The results returned by recvfrom include the following:</font></font></p>
-<ul>
-<li><span class="notranslate">data</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: The received binary data block</font></font></li>
-<li><span class="notranslate">address</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Sender's address</font></font></li>
-<li><span class="notranslate">port</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Sender's port</font></font></li>
-</ul>
-<hr>
 <div name="send" data-unique="send"></div><h3 id="send" class="notranslate">send</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Write the given data to the connection, this method is equivalent to the write method</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Socket.send(Buffer data) <span class="hljs-keyword">async</span>;
@@ -427,21 +377,6 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
 <ul>
 <li><span class="notranslate">data</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Given the data to be written</font></font></li>
-</ul>
-<hr>
-<div name="sendto" data-unique="sendto"></div><h3 id="sendto" class="notranslate">sendto</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Send a UDP packet to the given ip:port</font></font></strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1
-2
-3</div>Socket.sendto(Buffer data,
-    <span class="hljs-built_in">String</span> host,<font></font>
-    Integer port) <span class="hljs-keyword">async</span>;
-</code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
-<ul>
-<li><span class="notranslate">data</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Given the data to be written</font></font></li>
-<li><span class="notranslate">host</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, specify the target ip or host name</font></font></li>
-<li><span class="notranslate">port</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Integer, specify the target port</font></font></li>
 </ul>
 <hr>
 <div name="read" data-unique="read"></div><h3 id="read" class="notranslate">read</h3>
@@ -513,4 +448,4 @@
 <ul>
 <li><span class="notranslate">Value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Returns a value containing JSON serializable</font></font></li>
 </ul>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org | </font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Support us</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip445776"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip445776" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Click to return on the top page</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org | </font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Support us</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip676062"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip676062" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Click to return on the top page</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>

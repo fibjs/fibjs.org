@@ -29,10 +29,10 @@
 * [HttpUploadData](ifs/HttpUploadData.md) - 包含 multipart 的一个条目数据
 * [HttpsServer](ifs/HttpsServer.md) - https 服务器对象
 * [Image](ifs/Image.md) - 图像处理对象，用以对图像进行转换，绘制，存储等操作
+* [Iterator](ifs/Iterator.md) - 迭代器对象，用于遍历集合数据
 * [LevelDB](ifs/LevelDB.md) - LevelDB 数据库对象
 * [Lock](ifs/Lock.md) - 纤程锁对象
 * [LruCache](ifs/LruCache.md) - LRU(least recently used) 缓存对象
-* [MSSQL](ifs/MSSQL.md) - SQL Server 数据库连接对象
 * [MemoryStream](ifs/MemoryStream.md) - 内存流对象
 * [Message](ifs/Message.md) - 基础消息对象
 * [MongoCollection](ifs/MongoCollection.md) - mongodb 数据库数据集对象
@@ -40,6 +40,7 @@
 * [MongoDB](ifs/MongoDB.md) - mongodb 数据库连接对象
 * [MongoID](ifs/MongoID.md) - mongodb 数据库数据唯一标识对象，用于存储传递 oid
 * [MySQL](ifs/MySQL.md) - mysql 数据库连接对象
+* [Odbc](ifs/Odbc.md) - Odbc 数据库连接对象
 * [PKey](ifs/PKey.md) - 不对称加密算法对象
 * [RangeStream](ifs/RangeStream.md) - Range 查询流读取对象
 * [Redis](ifs/Redis.md) - Redis 数据库客户端对象

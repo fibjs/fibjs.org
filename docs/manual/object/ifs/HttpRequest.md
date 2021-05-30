@@ -185,7 +185,7 @@ Integer HttpRequest.type;
 
 --------------------------
 ### data
-**Value, 查询消息的数据**
+**Value, 查询消息的数据，此属性会根据 content-type 返回不同数据，为 text 时，返回文本，为 [json](../../module/ifs/json.md) 时返回 [json](../../module/ifs/json.md)，其它时候返回二进制**
 
 ```JavaScript
 readonly Value HttpRequest.data;

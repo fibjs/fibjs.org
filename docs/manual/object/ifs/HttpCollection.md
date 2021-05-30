@@ -16,8 +16,9 @@
 [object] <:- [HttpCollection]
 ```
 
-## 下标操作
+## 操作符
         
+### operator[String]
 **允许使用键值下标直接访问数值**
 
 ```JavaScript

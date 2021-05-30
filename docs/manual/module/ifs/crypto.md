@@ -324,6 +324,17 @@ static Buffer crypto.pbkdf2(Buffer password,
 返回结果:
 * [Buffer](../../object/ifs/Buffer.md), 返回生成的二进制钥匙
 
+--------------------------
+### getHashes
+**获取 crypto 模块支持的的 [hash](hash.md)(摘要) 算法, 比如 'md5', 'sha224'**
+
+```JavaScript
+static Array crypto.getHashes();
+```
+
+返回结果:
+* Array, 返回 fibjs 支持的 [hash](hash.md) 算法数组
+
 ## 常量
         
 ### AES

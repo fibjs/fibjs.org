@@ -6,7 +6,8 @@ HOST_ARCH=`uname -m`
 case ${HOST_ARCH} in
 	i386|i686) HOST_ARCH="x86";;
 	x86_64|amd64) HOST_ARCH="x64";;
-	armv6|armv7|armv7s|armv7l) HOST_ARCH="arm";;
+	armv6) HOST_ARCH="armv6";;
+	armv7|armv7s|armv7l) HOST_ARCH="arm";;
 	aarch64) HOST_ARCH="arm64";;
 	mips|mipsel) HOST_ARCH="mips";;
 	mips64) HOST_ARCH="mips64";;

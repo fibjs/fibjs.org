@@ -319,6 +319,19 @@ Object FSWatcher.removeListener(Object map);
 **从对象处理队列中取消所有事件的所有监听器， 如果指定事件，则移除指定事件的所有监听器。**
 
 ```JavaScript
+Object FSWatcher.removeAllListeners(String ev);
+```
+
+调用参数:
+* ev: String, 指定事件的名称
+
+返回结果:
+* Object, 返回事件对象本身，便于链式调用
+
+--------------------------
+**从对象处理队列中取消所有事件的所有监听器， 如果指定事件，则移除指定事件的所有监听器。**
+
+```JavaScript
 Object FSWatcher.removeAllListeners(Array evs = []);
 ```
 

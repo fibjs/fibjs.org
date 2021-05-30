@@ -25,14 +25,6 @@ base64 encoding.base64;
 ```
 
 --------------------------
-### base64vlq
-**[base64vlq](base64vlq.md) 编码与解码模块**
-
-```JavaScript
-base64vlq encoding.base64vlq;
-```
-
---------------------------
 ### hex
 **[hex](hex.md) 编码与解码模块**
 
@@ -62,14 +54,6 @@ json encoding.json;
 
 ```JavaScript
 msgpack encoding.msgpack;
-```
-
---------------------------
-### bson
-**[bson](bson.md) 编码与解码模块**
-
-```JavaScript
-bson encoding.bson;
 ```
 
 ## 静态函数

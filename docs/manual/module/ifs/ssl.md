@@ -55,8 +55,8 @@ static Stream ssl.connect(String url,
 
 调用参数:
 * url: String, 指定连接的协议，可以是：ssl://host:port
-* crt: [X509Cert](../../object/ifs/X509Cert.md), [X509Cert](../../object/ifs/X509Cert.md) 证书，用于客户端验证服务器
-* key: [PKey](../../object/ifs/PKey.md), [PKey](../../object/ifs/PKey.md) 私钥，用于与客户端会话
+* crt: [X509Cert](../../object/ifs/X509Cert.md), 证书，用于发送给服务器验证客户端
+* key: [PKey](../../object/ifs/PKey.md), 私钥，用于与客户端会话
 * timeout: Integer, 指定超时时间，单位是毫秒，默认为0
 
 返回结果:
@@ -72,8 +72,8 @@ static ssl.setClientCert(X509Cert crt,
 ```
 
 调用参数:
-* crt: [X509Cert](../../object/ifs/X509Cert.md), [X509Cert](../../object/ifs/X509Cert.md) 证书，用于客户端验证服务器
-* key: [PKey](../../object/ifs/PKey.md), [PKey](../../object/ifs/PKey.md) 私钥，用于与客户端会话
+* crt: [X509Cert](../../object/ifs/X509Cert.md), 证书，用于发送给服务器验证客户端
+* key: [PKey](../../object/ifs/PKey.md), 私钥，用于与客户端会话
 
 --------------------------
 ### loadClientCertFile
@@ -86,8 +86,8 @@ static ssl.loadClientCertFile(String crtFile,
 ```
 
 调用参数:
-* crtFile: String, [X509Cert](../../object/ifs/X509Cert.md) 证书文件，用于客户端验证服务器
-* keyFile: String, [PKey](../../object/ifs/PKey.md) 私钥文件，用于与客户端会话
+* crtFile: String, 证书文件，用于客户端验证服务器
+* keyFile: String, 私钥文件，用于与客户端会话
 * password: String, 解密密码
 
 --------------------------

@@ -1,4 +1,4 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../../../imgs/icon.png"><title>Búfer de objetos-JavaScript en fibra</title><link href="../../../../../css/common.css" rel="stylesheet"><link href="../../../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Navegación de palanca</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../../../index.html"><img src="../../../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../../../index.html">HOME</a></li><li><a href="../../../guide/readme.md.html">GUIDE</a></li><li><a href="../../module/readme.md.html">MODULE</a></li><li><a href="../readme.md.html">OBJECT</a></li><li><a href="../../../awesome/readme.md.html">AWESOME</a></li><li><a href="../../../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../../../docs/manual/object/ifs/buffer.md.html">中文</a> <a href="../../../../../ca/docs/manual/object/ifs/buffer.md.html">Catalan</a> <a href="../../../../../de/docs/manual/object/ifs/buffer.md.html">Deutsch</a> <a href="../../../../../en/docs/manual/object/ifs/buffer.md.html">English</a> <a href="../../../../../es/docs/manual/object/ifs/buffer.md.html">Español</a> <a href="../../../../../fr/docs/manual/object/ifs/buffer.md.html">Français</a> <a href="../../../../../gl/docs/manual/object/ifs/buffer.md.html">Galego</a> <a href="../../../../../it/docs/manual/object/ifs/buffer.md.html">Italiano</a> <a href="../../../../../ru/docs/manual/object/ifs/buffer.md.html">Русский</a> <a href="../../../../../ja/docs/manual/object/ifs/buffer.md.html">日本語</a> <a href="../../../../../ko/docs/manual/object/ifs/buffer.md.html">한국어</a> <a href="../../../../../zh-tw/docs/manual/object/ifs/buffer.md.html">繁體中文</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Objeto objeto integrado </font></font></span><div class="search"><span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input type="text" class="searchbox ds-input" placeholder="Búsqueda" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-label="entrada de búsqueda" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Avenir, &quot;Segoe UI&quot;, Arial, &quot;Hiragino Sans GB&quot;, 冬青黑, &quot;Microsoft YaHei&quot;, 微软雅黑, SimSun, 宋体, Helvetica, Tahoma, &quot;Arial sans-serif&quot;; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div class="ds-dataset-1"></div></span></span></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Página de inicio</font></font></a></li><li><a href="../readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Objetos incorporados </font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Búfer de objetos </font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Guía de desarrollo </font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../../../imgs/icon.png"><title>Búfer de objetos-JavaScript en fibra</title><link href="../../../../../css/common.css" rel="stylesheet"><link href="../../../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Navegación de palanca</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../../../index.html"><img src="../../../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../../../index.html">HOME</a></li><li><a href="../../../guide/readme.md.html">GUIDE</a></li><li><a href="../../module/readme.md.html">MODULE</a></li><li><a href="../readme.md.html">OBJECT</a></li><li><a href="../../../awesome/readme.md.html">AWESOME</a></li><li><a href="../../../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../../../docs/manual/object/ifs/buffer.md.html">中文</a> <a href="../../../../../ca/docs/manual/object/ifs/buffer.md.html">Catalan</a> <a href="../../../../../de/docs/manual/object/ifs/buffer.md.html">Deutsch</a> <a href="../../../../../en/docs/manual/object/ifs/buffer.md.html">English</a> <a href="../../../../../es/docs/manual/object/ifs/buffer.md.html">Español</a> <a href="../../../../../fr/docs/manual/object/ifs/buffer.md.html">Français</a> <a href="../../../../../gl/docs/manual/object/ifs/buffer.md.html">Galego</a> <a href="../../../../../it/docs/manual/object/ifs/buffer.md.html">Italiano</a> <a href="../../../../../ru/docs/manual/object/ifs/buffer.md.html">Русский</a> <a href="../../../../../ja/docs/manual/object/ifs/buffer.md.html">日本語</a> <a href="../../../../../ko/docs/manual/object/ifs/buffer.md.html">한국어</a> <a href="../../../../../zh-tw/docs/manual/object/ifs/buffer.md.html">繁體中文</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Objeto objeto integrado </font></font></span><div class="search"><span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input type="text" class="searchbox ds-input" placeholder="Buscar" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-label="entrada de búsqueda" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Avenir, &quot;Segoe UI&quot;, Arial, &quot;Hiragino Sans GB&quot;, 冬青黑, &quot;Microsoft YaHei&quot;, 微软雅黑, SimSun, 宋体, Helvetica, Tahoma, &quot;Arial sans-serif&quot;; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div class="ds-dataset-1"></div></span></span></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Casa</font></font></a></li><li><a href="../readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Objetos incorporados </font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Búfer de objetos </font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Guía de desarrollo </font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
 <li><a href="../../../guide/about.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">¿Qué es fibjs?</font></font></a></li>
 <li><a href="../../../guide/install.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Entorno operativo y de instalación</font></font></a></li>
 <li><a href="../../../guide/hello.md.html" class="notranslate">hello, world</a></li>
@@ -6,16 +6,14 @@
 <li><a href="../../../guide/profiler.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Encuentra al asesino del rendimiento</font></font></a></li>
 <li><a href="../../../guide/desktop.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Desarrolle rápidamente aplicaciones de escritorio</font></font></a></li>
 <li><a href="../../../guide/server-hot-update.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Actualización en caliente del módulo de servidor</font></font></a></li>
-<li><a href="../../../guide/host-routes.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Enrutamiento de nombre de dominio</font></font></a></li>
-<li><a href="../../../guide/x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Uso del certificado X509 en fibjs</font></font></a></li>
+<li><a href="../../../guide/host-routes.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Enrutamiento de nombres de dominio</font></font></a></li>
+<li><a href="../../../guide/x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">El uso del certificado X509 en fibjs</font></font></a></li>
 <li><a href="../../../guide/contribute.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Agregar módulo nativo</font></font></a></li>
 </ul>
  </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_module" aria-controls="collapse_module"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Módulo básico </font></font></a></h4></div><div id="collapse_module" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
 <li><a href="../../module/ifs/assert.md.html" class="notranslate">assert</a></li>
 <li><a href="../../module/ifs/base32.md.html" class="notranslate">base32</a></li>
 <li><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a></li>
-<li><a href="../../module/ifs/base64vlq.md.html" class="notranslate">base64vlq</a></li>
-<li><a href="../../module/ifs/bson.md.html" class="notranslate">bson</a></li>
 <li><a href="../../module/ifs/child_process.md.html" class="notranslate">child_process</a></li>
 <li><a href="../../module/ifs/console.md.html" class="notranslate">console</a></li>
 <li><a href="../../module/ifs/constants.md.html" class="notranslate">constants</a></li>
@@ -26,6 +24,7 @@
 <li><a href="../../module/ifs/dns.md.html" class="notranslate">dns</a></li>
 <li><a href="../../module/ifs/encoding.md.html" class="notranslate">encoding</a></li>
 <li><a href="../../module/ifs/fs.md.html" class="notranslate">fs</a></li>
+<li><a href="../../module/ifs/fs_constants.md.html" class="notranslate">fs_constants</a></li>
 <li><a href="../../module/ifs/gd.md.html" class="notranslate">gd</a></li>
 <li><a href="../../module/ifs/global.md.html" class="notranslate">global</a></li>
 <li><a href="../../module/ifs/gui.md.html" class="notranslate">gui</a></li>
@@ -92,10 +91,10 @@
 <li><a href="httpuploaddata.md.html" class="notranslate">HttpUploadData</a></li>
 <li><a href="httpsserver.md.html" class="notranslate">HttpsServer</a></li>
 <li><a href="image.md.html" class="notranslate">Image</a></li>
+<li><a href="iterator.md.html" class="notranslate">Iterator</a></li>
 <li><a href="leveldb.md.html" class="notranslate">LevelDB</a></li>
 <li><a href="lock.md.html" class="notranslate">Lock</a></li>
 <li><a href="lrucache.md.html" class="notranslate">LruCache</a></li>
-<li><a href="mssql.md.html" class="notranslate">MSSQL</a></li>
 <li><a href="memorystream.md.html" class="notranslate">MemoryStream</a></li>
 <li><a href="message.md.html" class="notranslate">Message</a></li>
 <li><a href="mongocollection.md.html" class="notranslate">MongoCollection</a></li>
@@ -103,6 +102,7 @@
 <li><a href="mongodb.md.html" class="notranslate">MongoDB</a></li>
 <li><a href="mongoid.md.html" class="notranslate">MongoID</a></li>
 <li><a href="mysql.md.html" class="notranslate">MySQL</a></li>
+<li><a href="odbc.md.html" class="notranslate">Odbc</a></li>
 <li><a href="pkey.md.html" class="notranslate">PKey</a></li>
 <li><a href="rangestream.md.html" class="notranslate">RangeStream</a></li>
 <li><a href="redis.md.html" class="notranslate">Redis</a></li>
@@ -125,6 +125,8 @@
 <li><a href="statswatcher.md.html" class="notranslate">StatsWatcher</a></li>
 <li><a href="stream.md.html" class="notranslate">Stream</a></li>
 <li><a href="stringdecoder.md.html" class="notranslate">StringDecoder</a></li>
+<li><a href="ttyinputstream.md.html" class="notranslate">TTYInputStream</a></li>
+<li><a href="ttyoutputstream.md.html" class="notranslate">TTYOutputStream</a></li>
 <li><a href="tcpserver.md.html" class="notranslate">TcpServer</a></li>
 <li><a href="timer.md.html" class="notranslate">Timer</a></li>
 <li><a href="urlobject.md.html" class="notranslate">UrlObject</a></li>
@@ -197,123 +199,111 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">El objeto Buffer es una clase básica global, que se puede crear directamente con new Buffer (...) en cualquier momento:</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">var</span> buf = <span class="hljs-keyword">new</span> Buffer();
 </code></pre>
-<div name="继承关系" data-unique="继承关系"></div><h2 id="继承关系"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Relación de herencia</font></font></h2>
-<div class="dot notranslate">
-<!-- Generated by graphviz version 2.40.1 (20161225.0304)
- -->
-<!-- Title: %0 Pages: 1 -->
-<svg width="105pt" height="1030pt" viewBox="0.00 0.00 104.56 1030.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 1026)">
-<title>%0</title>
-<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-1026 100.555,-1026 100.555,4 -4,4"></polygon>
-<!-- object -->
-<g id="node1" class="node">
-<title>object</title>
-<g id="a_node1"><a xlink:href="object.md.html" xlink:title="object">
-<polygon fill="#ffffff" stroke="#000000" points="19.446,-969.5 19.446,-1021.5 77.109,-1021.5 77.109,-969.5 19.446,-969.5"></polygon>
-<text text-anchor="middle" x="48.2775" y="-1008.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
-<polyline fill="none" stroke="#000000" points="19.446,-1001.5 77.109,-1001.5 "></polyline>
-<text text-anchor="start" x="27.446" y="-988.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toString()</text>
-<text text-anchor="start" x="27.446" y="-976.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toJSON()</text>
-</a>
-</g>
-</g>
-<!-- Buffer -->
-<g id="me" class="node">
-<title>Buffer</title>
-<g id="a_me"><a xlink:title="Buffer">
-<polygon fill="#d3d3d3" stroke="#000000" points="0,-.5 0,-932.5 96.555,-932.5 96.555,-.5 0,-.5"></polygon>
-<text text-anchor="middle" x="48.2775" y="-919.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Buffer</text>
-<polyline fill="none" stroke="#000000" points="0,-912.5 96.555,-912.5 "></polyline>
-<text text-anchor="start" x="8" y="-899.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">new Buffer()</text>
-<polyline fill="none" stroke="#000000" points="0,-892.5 96.555,-892.5 "></polyline>
-<text text-anchor="start" x="8" y="-879.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">operator[]</text>
-<polyline fill="none" stroke="#000000" points="0,-872.5 96.555,-872.5 "></polyline>
-<text text-anchor="start" x="8" y="-859.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Buffer</text>
-<polyline fill="none" stroke="#000000" points="0,-852.5 96.555,-852.5 "></polyline>
-<text text-anchor="start" x="8" y="-839.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">isBuffer()</text>
-<text text-anchor="start" x="8" y="-827.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">from()</text>
-<text text-anchor="start" x="8" y="-815.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">concat()</text>
-<text text-anchor="start" x="8" y="-803.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">alloc()</text>
-<text text-anchor="start" x="8" y="-791.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">allocUnsafe()</text>
-<text text-anchor="start" x="8" y="-779.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">allocUnsafeSlow()</text>
-<text text-anchor="start" x="8" y="-767.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">byteLength()</text>
-<text text-anchor="start" x="8" y="-755.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">compare()</text>
-<text text-anchor="start" x="8" y="-743.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">isEncoding()</text>
-<polyline fill="none" stroke="#000000" points="0,-736.5 96.555,-736.5 "></polyline>
-<text text-anchor="start" x="8" y="-723.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">length</text>
-<polyline fill="none" stroke="#000000" points="0,-716.5 96.555,-716.5 "></polyline>
-<text text-anchor="start" x="8" y="-703.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">resize()</text>
-<text text-anchor="start" x="8" y="-691.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">append()</text>
-<text text-anchor="start" x="8" y="-679.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">write()</text>
-<text text-anchor="start" x="8" y="-667.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">fill()</text>
-<text text-anchor="start" x="8" y="-655.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">indexOf()</text>
-<text text-anchor="start" x="8" y="-643.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">compare()</text>
-<text text-anchor="start" x="8" y="-631.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">copy()</text>
-<text text-anchor="start" x="8" y="-619.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">set()</text>
-<text text-anchor="start" x="8" y="-607.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readUInt8()</text>
-<text text-anchor="start" x="8" y="-595.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readUInt16LE()</text>
-<text text-anchor="start" x="8" y="-583.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readUInt16BE()</text>
-<text text-anchor="start" x="8" y="-571.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readUInt32LE()</text>
-<text text-anchor="start" x="8" y="-559.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readUInt32BE()</text>
-<text text-anchor="start" x="8" y="-547.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readUIntLE()</text>
-<text text-anchor="start" x="8" y="-535.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readUIntBE()</text>
-<text text-anchor="start" x="8" y="-523.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readInt64LE()</text>
-<text text-anchor="start" x="8" y="-511.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readInt64BE()</text>
-<text text-anchor="start" x="8" y="-499.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readInt8()</text>
-<text text-anchor="start" x="8" y="-487.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readInt16LE()</text>
-<text text-anchor="start" x="8" y="-475.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readInt16BE()</text>
-<text text-anchor="start" x="8" y="-463.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readInt32LE()</text>
-<text text-anchor="start" x="8" y="-451.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readInt32BE()</text>
-<text text-anchor="start" x="8" y="-439.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readIntLE()</text>
-<text text-anchor="start" x="8" y="-427.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readIntBE()</text>
-<text text-anchor="start" x="8" y="-415.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeInt64LE()</text>
-<text text-anchor="start" x="8" y="-403.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeInt64BE()</text>
-<text text-anchor="start" x="8" y="-391.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readFloatLE()</text>
-<text text-anchor="start" x="8" y="-379.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readFloatBE()</text>
-<text text-anchor="start" x="8" y="-367.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readDoubleLE()</text>
-<text text-anchor="start" x="8" y="-355.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readDoubleBE()</text>
-<text text-anchor="start" x="8" y="-343.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeUInt8()</text>
-<text text-anchor="start" x="8" y="-331.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeUInt16LE()</text>
-<text text-anchor="start" x="8" y="-319.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeUInt16BE()</text>
-<text text-anchor="start" x="8" y="-307.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeUInt32LE()</text>
-<text text-anchor="start" x="8" y="-295.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeUInt32BE()</text>
-<text text-anchor="start" x="8" y="-283.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeUIntLE()</text>
-<text text-anchor="start" x="8" y="-271.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeUIntBE()</text>
-<text text-anchor="start" x="8" y="-259.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeInt8()</text>
-<text text-anchor="start" x="8" y="-247.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeInt16LE()</text>
-<text text-anchor="start" x="8" y="-235.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeInt16BE()</text>
-<text text-anchor="start" x="8" y="-223.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeInt32LE()</text>
-<text text-anchor="start" x="8" y="-211.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeInt32BE()</text>
-<text text-anchor="start" x="8" y="-199.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeIntLE()</text>
-<text text-anchor="start" x="8" y="-187.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeIntBE()</text>
-<text text-anchor="start" x="8" y="-175.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeFloatLE()</text>
-<text text-anchor="start" x="8" y="-163.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeFloatBE()</text>
-<text text-anchor="start" x="8" y="-151.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeDoubleLE()</text>
-<text text-anchor="start" x="8" y="-139.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeDoubleBE()</text>
-<text text-anchor="start" x="8" y="-127.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">slice()</text>
-<text text-anchor="start" x="8" y="-115.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">join()</text>
-<text text-anchor="start" x="8" y="-103.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">reverse()</text>
-<text text-anchor="start" x="8" y="-91.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">equals()</text>
-<text text-anchor="start" x="8" y="-79.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">hex()</text>
-<text text-anchor="start" x="8" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">base64()</text>
-<text text-anchor="start" x="8" y="-55.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">keys()</text>
-<text text-anchor="start" x="8" y="-43.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">values()</text>
-<text text-anchor="start" x="8" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">entries()</text>
-<text text-anchor="start" x="8" y="-19.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toArray()</text>
-<text text-anchor="start" x="8" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toString()</text>
-</a>
-</g>
-</g>
-<!-- object&#45;&gt;Buffer -->
-<g id="edge1" class="edge">
-<title>object-&gt;Buffer</title>
-<path fill="none" stroke="#000000" d="M48.2775,-959.0025C48.2775,-951.2257 48.2775,-942.3797 48.2775,-932.6362"></path>
-<polygon fill="#000000" stroke="#000000" points="44.7776,-959.2668 48.2775,-969.2668 51.7776,-959.2668 44.7776,-959.2668"></polygon>
-</g>
-</g>
-</svg>
-</div>
+<div name="继承关系" data-unique="继承关系"></div><h2 id="继承关系"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Herencia</font></font></h2>
+<div class="dot notranslate"><svg version="1.1" baseProfile="full" width="160" height="1442" viewBox="0 0 160 1442" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events" style="font:normal normal 10pt Helvetica,sans-Serif, Helvetica, sans-serif;;stroke-linejoin:round;stroke-linecap:round">
+  <desc>
+#lineWidth: 1.5
+#font: Helvetica,sans-Serif
+#fontSize: 10
+#leading: 1.6
+#.this: fill=lightgray
+#.class: fill=white
+
+[&lt;class&gt;object|toString();toJSON()]
+[&lt;this&gt;Buffer|new Buffer()|operator[];@iterator()|Buffer|isBuffer();from();concat();alloc();allocUnsafe();allocUnsafeSlow();byteLength();compare();isEncoding()|length|resize();append();write();fill();indexOf();compare();copy();set();readUInt8();readUInt16LE();readUInt16BE();readUInt32LE();readUInt32BE();readUIntLE();readUIntBE();readInt64LE();readInt64BE();readInt8();readInt16LE();readInt16BE();readInt32LE();readInt32BE();readIntLE();readIntBE();writeInt64LE();writeInt64BE();readFloatLE();readFloatBE();readDoubleLE();readDoubleBE();writeUInt8();writeUInt16LE();writeUInt16BE();writeUInt32LE();writeUInt32BE();writeUIntLE();writeUIntBE();writeInt8();writeInt16LE();writeInt16BE();writeInt32LE();writeInt32BE();writeIntLE();writeIntBE();writeFloatLE();writeFloatBE();writeDoubleLE();writeDoubleBE();slice();join();reverse();equals();hex();base64();keys();values();entries();toArray();toString()]
+
+[object] &lt;:- [Buffer]
+</desc>
+  <rect x="0" y="0" height="1442" width="160" style="stroke:none; fill:transparent;"></rect>
+  <path d="M80 93 L80 113 L80 133 L80 133 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M85.3 106.3 L80 106.3 L74.7 106.3 L80 93 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <rect x="13" y="133" height="1296" width="134" data-name="Buffer" style="stroke:#33322E;fill:lightgray;stroke-dasharray:none;stroke-width:1.5;"></rect>
+  <text x="80" y="154" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="Buffer">Buffer</text>
+  <text x="21" y="186" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">new Buffer()</text>
+  <text x="21" y="218" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">operator[]</text>
+  <text x="21" y="234" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">@iterator()</text>
+  <text x="21" y="266" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">Buffer</text>
+  <text x="21" y="298" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">isBuffer()</text>
+  <text x="21" y="314" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">from()</text>
+  <text x="21" y="330" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">concat()</text>
+  <text x="21" y="346" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">alloc()</text>
+  <text x="21" y="362" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">allocUnsafe()</text>
+  <text x="21" y="378" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">allocUnsafeSlow()</text>
+  <text x="21" y="394" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">byteLength()</text>
+  <text x="21" y="410" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">compare()</text>
+  <text x="21" y="426" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">isEncoding()</text>
+  <text x="21" y="458" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">length</text>
+  <text x="21" y="490" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">resize()</text>
+  <text x="21" y="506" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">append()</text>
+  <text x="21" y="522" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">write()</text>
+  <text x="21" y="538" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">fill()</text>
+  <text x="21" y="554" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">indexOf()</text>
+  <text x="21" y="570" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">compare()</text>
+  <text x="21" y="586" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">copy()</text>
+  <text x="21" y="602" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">set()</text>
+  <text x="21" y="618" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">readUInt8()</text>
+  <text x="21" y="634" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">readUInt16LE()</text>
+  <text x="21" y="650" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">readUInt16BE()</text>
+  <text x="21" y="666" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">readUInt32LE()</text>
+  <text x="21" y="682" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">readUInt32BE()</text>
+  <text x="21" y="698" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">readUIntLE()</text>
+  <text x="21" y="714" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">readUIntBE()</text>
+  <text x="21" y="730" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">readInt64LE()</text>
+  <text x="21" y="746" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">readInt64BE()</text>
+  <text x="21" y="762" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">readInt8()</text>
+  <text x="21" y="778" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">readInt16LE()</text>
+  <text x="21" y="794" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">readInt16BE()</text>
+  <text x="21" y="810" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">readInt32LE()</text>
+  <text x="21" y="826" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">readInt32BE()</text>
+  <text x="21" y="842" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">readIntLE()</text>
+  <text x="21" y="858" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">readIntBE()</text>
+  <text x="21" y="874" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">writeInt64LE()</text>
+  <text x="21" y="890" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">writeInt64BE()</text>
+  <text x="21" y="906" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">readFloatLE()</text>
+  <text x="21" y="922" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">readFloatBE()</text>
+  <text x="21" y="938" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">readDoubleLE()</text>
+  <text x="21" y="954" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">readDoubleBE()</text>
+  <text x="21" y="970" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">writeUInt8()</text>
+  <text x="21" y="986" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">writeUInt16LE()</text>
+  <text x="21" y="1002" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">writeUInt16BE()</text>
+  <text x="21" y="1018" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">writeUInt32LE()</text>
+  <text x="21" y="1034" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">writeUInt32BE()</text>
+  <text x="21" y="1050" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">writeUIntLE()</text>
+  <text x="21" y="1066" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">writeUIntBE()</text>
+  <text x="21" y="1082" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">writeInt8()</text>
+  <text x="21" y="1098" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">writeInt16LE()</text>
+  <text x="21" y="1114" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">writeInt16BE()</text>
+  <text x="21" y="1130" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">writeInt32LE()</text>
+  <text x="21" y="1146" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">writeInt32BE()</text>
+  <text x="21" y="1162" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">writeIntLE()</text>
+  <text x="21" y="1178" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">writeIntBE()</text>
+  <text x="21" y="1194" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">writeFloatLE()</text>
+  <text x="21" y="1210" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">writeFloatBE()</text>
+  <text x="21" y="1226" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">writeDoubleLE()</text>
+  <text x="21" y="1242" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">writeDoubleBE()</text>
+  <text x="21" y="1258" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">slice()</text>
+  <text x="21" y="1274" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">join()</text>
+  <text x="21" y="1290" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">reverse()</text>
+  <text x="21" y="1306" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">equals()</text>
+  <text x="21" y="1322" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">hex()</text>
+  <text x="21" y="1338" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">base64()</text>
+  <text x="21" y="1354" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">keys()</text>
+  <text x="21" y="1370" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">values()</text>
+  <text x="21" y="1386" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">entries()</text>
+  <text x="21" y="1402" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">toArray()</text>
+  <text x="21" y="1418" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">toString()</text>
+  <path d="M13 165 L147 165" data-name="Buffer" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M13 197 L147 197" data-name="Buffer" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M13 245 L147 245" data-name="Buffer" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M13 277 L147 277" data-name="Buffer" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M13 437 L147 437" data-name="Buffer" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M13 469 L147 469" data-name="Buffer" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <rect x="42" y="13" height="80" width="77" data-name="object" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
+  <text x="80.5" y="34" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="object">object</text>
+  <text x="50" y="66" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="object">toString()</text>
+  <text x="50" y="82" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="object">toJSON()</text>
+  <path d="M42 45 L119 45" data-name="object" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+</svg></div>
 
 <div name="构造函数" data-unique="构造函数"></div><h2 id="构造函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Constructor</font></font></h2>
 <div name="Buffer" data-unique="Buffer"></div><h3 id="Buffer" class="notranslate">Buffer</h3>
@@ -365,7 +355,7 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
 <ul>
 <li><span class="notranslate">str</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, la cadena de inicialización, la cadena se escribirá en formato utf-8 y se creará un objeto vacío de forma predeterminada</font></font></li>
-<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifique el formato de codificación, el valor permitido es: "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">","</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"," utf8 "o un conjunto de caracteres admitido por el sistema</font></font></li>
+<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifique el formato de codificación, el valor permitido es: "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">","</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"," utf8 ", o </font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Juego de caracteres admitido por el módulo</font></font></li>
 </ul>
 <hr>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Constructor de objetos de caché</font></font></strong></p>
@@ -373,19 +363,30 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
 <ul>
-<li><span class="notranslate">size</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Número entero, tamaño de búfer inicial</font></font></li>
+<li><span class="notranslate">size</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Entero, inicializar el tamaño del búfer</font></font></li>
 </ul>
-<div name="下标操作" data-unique="下标操作"></div><h2 id="下标操作"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Operación de subíndice</font></font></h2>
+<div name="操作符" data-unique="操作符"></div><h2 id="操作符"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Operador</font></font></h2>
+<div name="operator[]" data-unique="operator[]"></div><h3 id="operator[]" class="notranslate">operator[]</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Los objetos almacenados en caché pueden acceder directamente a datos binarios mediante subíndices</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer Buffer[];
 </code></pre>
+<hr>
+<div name="@iterator" data-unique="@iterator"></div><h3 id="@iterator" class="notranslate">@iterator</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Consultar el iterador del elemento de objeto actual</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Iterator Buffer.@iterator();
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Devolver resultado:</font></font></p>
+<ul>
+<li><a href="iterator.md.html" class="notranslate">Iterator</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Devuelve un iterador de los elementos del objeto actual</font></font></li>
+</ul>
 <div name="对象" data-unique="对象"></div><h2 id="对象"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Objeto</font></font></h2>
+<div name="Buffer8" data-unique="Buffer8"></div><h3 id="Buffer" class="notranslate">Buffer</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Objeto de caché de datos binarios para </font></font><a href="../../module/ifs/io.md.html" class="notranslate">io</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Procesamiento de datos para lectura y escritura.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Buffer <span class="hljs-keyword">new</span> Buffer;
 </code></pre>
 <div name="静态函数" data-unique="静态函数"></div><h2 id="静态函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Función estática</font></font></h2>
 <div name="isBuffer" data-unique="isBuffer"></div><h3 id="isBuffer" class="notranslate">isBuffer</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Verifique si la variable dada es un objeto Buffer</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Compruebe si la variable dada es un objeto Buffer</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Boolean</span> Buffer.isBuffer(Value v);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
@@ -442,7 +443,7 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
 <ul>
 <li><span class="notranslate">str</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, la cadena de inicialización, la cadena se escribirá en formato utf-8 y se creará un objeto vacío de forma predeterminada</font></font></li>
-<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifique el formato de codificación, el valor permitido es: "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">","</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"," utf8 "o un conjunto de caracteres admitido por el sistema</font></font></li>
+<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifique el formato de codificación, el valor permitido es: "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">","</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"," utf8 ", o </font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Juego de caracteres admitido por el módulo</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Devolver resultado:</font></font></p>
 <ul>
@@ -466,7 +467,7 @@
 </ul>
 <hr>
 <div name="alloc" data-unique="alloc"></div><h3 id="alloc" class="notranslate">alloc</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Asigne una nueva área de amortiguación de la longitud especificada. </font><font style="vertical-align: inherit;">Si el tamaño es 0, se creará un área de búfer de longitud cero.</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Asigne una nueva área de búfer de la longitud especificada. </font><font style="vertical-align: inherit;">Si el tamaño es 0, se creará un área de búfer de longitud cero.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3</div><span class="hljs-keyword">static</span> Buffer Buffer.alloc(Integer size,<font></font>
@@ -477,14 +478,14 @@
 <ul>
 <li><span class="notranslate">size</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Entero, la longitud requerida del búfer</font></font></li>
 <li><span class="notranslate">fill</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Entero, rellene previamente el valor del nuevo búfer, puede usar tipos de valor de cadena / búfer / entero. </font><font style="vertical-align: inherit;">Valor predeterminado: 0</font></font></li>
-<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifique el formato de codificación, el valor permitido es: "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">","</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"," utf8 "o un conjunto de caracteres admitido por el sistema</font></font></li>
+<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifique el formato de codificación, el valor permitido es: "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">","</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"," utf8 ", o </font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Juego de caracteres admitido por el módulo</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Devolver resultado:</font></font></p>
 <ul>
 <li><span class="notranslate">Buffer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, El nuevo objeto Buffer relleno</font></font></li>
 </ul>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Asigne una nueva área de amortiguación de la longitud especificada. </font><font style="vertical-align: inherit;">Si el tamaño es 0, se creará un área de búfer de longitud cero.</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Asigne una nueva área de búfer de la longitud especificada. </font><font style="vertical-align: inherit;">Si el tamaño es 0, se creará un área de búfer de longitud cero.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3</div><span class="hljs-keyword">static</span> Buffer Buffer.alloc(Integer size,
@@ -495,14 +496,14 @@
 <ul>
 <li><span class="notranslate">size</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Entero, la longitud requerida del búfer</font></font></li>
 <li><span class="notranslate">fill</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, rellene previamente el valor del nuevo búfer, puede usar tipos de valor de cadena / búfer / entero. </font><font style="vertical-align: inherit;">Valor predeterminado: 0</font></font></li>
-<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifique el formato de codificación, el valor permitido es: "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">","</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"," utf8 "o un conjunto de caracteres admitido por el sistema</font></font></li>
+<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifique el formato de codificación, el valor permitido es: "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">","</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"," utf8 ", o </font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Juego de caracteres admitido por el módulo</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Devolver resultado:</font></font></p>
 <ul>
 <li><span class="notranslate">Buffer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, El nuevo objeto Buffer relleno</font></font></li>
 </ul>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Asigne una nueva área de amortiguación de la longitud especificada. </font><font style="vertical-align: inherit;">Si el tamaño es 0, se creará un área de búfer de longitud cero.</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Asigne una nueva área de búfer de la longitud especificada. </font><font style="vertical-align: inherit;">Si el tamaño es 0, se creará un área de búfer de longitud cero.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3</div><span class="hljs-keyword">static</span> Buffer Buffer.alloc(Integer size,<font></font>
@@ -513,7 +514,7 @@
 <ul>
 <li><span class="notranslate">size</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Entero, la longitud requerida del búfer</font></font></li>
 <li><span class="notranslate">fill</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Búfer, rellene previamente el valor del nuevo búfer, puede usar tipos de valor de cadena / búfer / entero. </font><font style="vertical-align: inherit;">Valor predeterminado: 0</font></font></li>
-<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifique el formato de codificación, el valor permitido es: "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">","</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"," utf8 "o un conjunto de caracteres admitido por el sistema</font></font></li>
+<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifique el formato de codificación, el valor permitido es: "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">","</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"," utf8 ", o </font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Juego de caracteres admitido por el módulo</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Devolver resultado:</font></font></p>
 <ul>
@@ -521,7 +522,7 @@
 </ul>
 <hr>
 <div name="allocUnsafe" data-unique="allocUnsafe"></div><h3 id="allocUnsafe" class="notranslate">allocUnsafe</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Asigne una nueva área de amortiguación de la longitud especificada. </font><font style="vertical-align: inherit;">Si el tamaño es 0, se creará un área de búfer de longitud cero.</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Asigne una nueva área de búfer de la longitud especificada. </font><font style="vertical-align: inherit;">Si el tamaño es 0, se creará un área de búfer de longitud cero.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Buffer Buffer.allocUnsafe(Integer size);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
@@ -534,7 +535,7 @@
 </ul>
 <hr>
 <div name="allocUnsafeSlow" data-unique="allocUnsafeSlow"></div><h3 id="allocUnsafeSlow" class="notranslate">allocUnsafeSlow</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Asigne una nueva área de amortiguación de la longitud especificada. </font><font style="vertical-align: inherit;">Si el tamaño es 0, se creará un área de búfer de longitud cero.</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Asigne una nueva área de búfer de la longitud especificada. </font><font style="vertical-align: inherit;">Si el tamaño es 0, se creará un área de búfer de longitud cero.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Buffer Buffer.allocUnsafeSlow(Integer size);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
@@ -554,8 +555,8 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
 <ul>
-<li><span class="notranslate">str</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, la cadena de bytes que se van a buscar, si str es un objeto ArrayBuffer / TypedArray / DataView / Buffer, devuelve su longitud real</font></font></li>
-<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifique el formato de codificación, el valor permitido es: "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">","</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"," utf8 "o un conjunto de caracteres admitido por el sistema</font></font></li>
+<li><span class="notranslate">str</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, la cadena de bytes que se van a buscar, si str es un objeto ArrayBuffer / TypedArray / DataView / Buffer, devuelve su longitud real</font></font></li>
+<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifique el formato de codificación, el valor permitido es: "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">","</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"," utf8 ", o </font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Juego de caracteres admitido por el módulo</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Devolver resultado:</font></font></p>
 <ul>
@@ -570,7 +571,7 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
 <ul>
 <li><span class="notranslate">str</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: ArrayBuffer, la cadena de bytes que se van a recuperar, si str es un objeto ArrayBuffer / TypedArray / DataView / Buffer, devuelve su longitud real</font></font></li>
-<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifique el formato de codificación, el valor permitido es: "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">","</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"," utf8 "o un conjunto de caracteres admitido por el sistema</font></font></li>
+<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifique el formato de codificación, el valor permitido es: "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">","</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"," utf8 ", o </font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Juego de caracteres admitido por el módulo</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Devolver resultado:</font></font></p>
 <ul>
@@ -585,7 +586,7 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
 <ul>
 <li><span class="notranslate">str</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: ArrayBufferView, la cadena de bytes a buscar, si str es un objeto ArrayBuffer / TypedArray / DataView / Buffer, devuelve su longitud real</font></font></li>
-<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifique el formato de codificación, el valor permitido es: "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">","</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"," utf8 "o un conjunto de caracteres admitido por el sistema</font></font></li>
+<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifique el formato de codificación, el valor permitido es: "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">","</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"," utf8 ", o </font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Juego de caracteres admitido por el módulo</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Devolver resultado:</font></font></p>
 <ul>
@@ -600,7 +601,7 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
 <ul>
 <li><span class="notranslate">str</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Buffer, la cadena de bytes que se van a buscar, si str es un objeto ArrayBuffer / TypedArray / DataView / Buffer, devuelve su longitud real</font></font></li>
-<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifique el formato de codificación, el valor permitido es: "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">","</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"," utf8 "o un conjunto de caracteres admitido por el sistema</font></font></li>
+<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifique el formato de codificación, el valor permitido es: "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">","</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"," utf8 ", o </font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Juego de caracteres admitido por el módulo</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Devolver resultado:</font></font></p>
 <ul>
@@ -637,17 +638,17 @@
 </ul>
 <div name="成员属性" data-unique="成员属性"></div><h2 id="成员属性"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Atributos de miembros</font></font></h2>
 <div name="length" data-unique="length"></div><h3 id="length" class="notranslate">length</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Entero, obtén el tamaño del objeto almacenado en caché</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Entero, obtenga el tamaño del objeto en caché</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly Integer Buffer.length;
 </code></pre>
 <div name="成员函数" data-unique="成员函数"></div><h2 id="成员函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Función miembro</font></font></h2>
 <div name="resize" data-unique="resize"></div><h3 id="resize" class="notranslate">resize</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Modificar el tamaño del objeto almacenado en caché</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Modificar el tamaño del objeto en caché</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Buffer.resize(Integer sz);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
 <ul>
-<li><span class="notranslate">sz</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Entero, especificar nuevo tamaño</font></font></li>
+<li><span class="notranslate">sz</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Entero, especifique el nuevo tamaño</font></font></li>
 </ul>
 <hr>
 <div name="append" data-unique="append"></div><h3 id="append" class="notranslate">append</h3>
@@ -667,7 +668,7 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
 <ul>
 <li><span class="notranslate">str</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, la cadena que se va a escribir</font></font></li>
-<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifique el formato de codificación, el valor permitido es: "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">","</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"," utf8 "o un conjunto de caracteres admitido por el sistema</font></font></li>
+<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifique el formato de codificación, el valor permitido es: "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">","</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"," utf8 ", o </font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Juego de caracteres admitido por el módulo</font></font></li>
 </ul>
 <hr>
 <div name="write" data-unique="write"></div><h3 id="write" class="notranslate">write</h3>
@@ -685,7 +686,7 @@
 <li><span class="notranslate">str</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, la cadena que se va a escribir</font></font></li>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Entero, posición de inicio de escritura</font></font></li>
 <li><span class="notranslate">length</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Entero, longitud de escritura (byte unitario, valor predeterminado -1), si no se especifica, es la longitud de la cadena que se va a escribir</font></font></li>
-<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifique el formato de codificación, el valor permitido es: "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">","</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"," utf8 "o un conjunto de caracteres admitido por el sistema</font></font></li>
+<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifique el formato de codificación, el valor permitido es: "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">","</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"," utf8 ", o </font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Juego de caracteres admitido por el módulo</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Devolver resultado:</font></font></p>
 <ul>
@@ -703,7 +704,7 @@
 <ul>
 <li><span class="notranslate">str</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, la cadena que se va a escribir</font></font></li>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Entero, posición de inicio de escritura</font></font></li>
-<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifique el formato de codificación, el valor permitido es: "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">","</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"," utf8 "o un conjunto de caracteres admitido por el sistema</font></font></li>
+<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifique el formato de codificación, el valor permitido es: "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">","</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"," utf8 ", o </font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Juego de caracteres admitido por el módulo</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Devolver resultado:</font></font></p>
 <ul>
@@ -718,7 +719,7 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
 <ul>
 <li><span class="notranslate">str</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, la cadena que se va a escribir</font></font></li>
-<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifique el formato de codificación, el valor permitido es: "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">","</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"," utf8 "o un conjunto de caracteres admitido por el sistema</font></font></li>
+<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifique el formato de codificación, el valor permitido es: "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">","</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"," utf8 ", o </font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Juego de caracteres admitido por el módulo</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Devolver resultado:</font></font></p>
 <ul>
@@ -726,7 +727,7 @@
 </ul>
 <hr>
 <div name="fill" data-unique="fill"></div><h3 id="fill" class="notranslate">fill</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Llenar el objeto Buffer con los datos de contenido especificados</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Llene el objeto Buffer con los datos de contenido especificados</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3</div>Buffer Buffer.fill(Integer v,<font></font>
@@ -744,7 +745,7 @@
 <li><span class="notranslate">Buffer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Devuelve el objeto Buffer actual</font></font></li>
 </ul>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Llenar el objeto Buffer con los datos de contenido especificados</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Llene el objeto Buffer con los datos de contenido especificados</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3</div>Buffer Buffer.fill(Buffer v,<font></font>
@@ -762,7 +763,7 @@
 <li><span class="notranslate">Buffer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Devuelve el objeto Buffer actual</font></font></li>
 </ul>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Llenar el objeto Buffer con los datos de contenido especificados</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Llene el objeto Buffer con los datos de contenido especificados</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3</div>Buffer Buffer.fill(<span class="hljs-built_in">String</span> v,<font></font>
@@ -771,7 +772,7 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
 <ul>
-<li><span class="notranslate">v</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, los datos que se deben completar, si no se especifican offset y end, se llenará todo el búfer</font></font></li>
+<li><span class="notranslate">v</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, los datos que se deben completar, si no se especifican el desplazamiento y el final, se llenará todo el búfer</font></font></li>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Entero, llenar la posición de inicio</font></font></li>
 <li><span class="notranslate">end</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Entero, completar la posición final</font></font></li>
 </ul>
@@ -789,7 +790,7 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
 <ul>
 <li><span class="notranslate">v</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Entero, los datos que se buscarán, si no se especifica el desplazamiento, el valor predeterminado comienza desde el bit de inicio</font></font></li>
-<li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Número entero, posición de búsqueda inicial</font></font></li>
+<li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Entero, posición de búsqueda inicial</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Devolver resultado:</font></font></p>
 <ul>
@@ -804,7 +805,7 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
 <ul>
 <li><span class="notranslate">v</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Búfer, los datos que se buscarán, si no se especifica el desplazamiento, el valor predeterminado comienza desde el bit de inicio</font></font></li>
-<li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Número entero, posición de búsqueda inicial</font></font></li>
+<li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Entero, posición de búsqueda inicial</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Devolver resultado:</font></font></p>
 <ul>
@@ -819,14 +820,14 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
 <ul>
 <li><span class="notranslate">v</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, los datos que se buscarán, si no se especifica el desplazamiento, el valor predeterminado comienza desde el bit de inicio</font></font></li>
-<li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Número entero, posición de búsqueda inicial</font></font></li>
+<li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Entero, posición de búsqueda inicial</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Devolver resultado:</font></font></p>
 <ul>
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Devuelve la ubicación encontrada, devuelve -1 si no se encuentra</font></font></li>
 </ul>
 <hr>
-<div name="compare24" data-unique="compare24"></div><h3 id="compare" class="notranslate">compare</h3>
+<div name="compare27" data-unique="compare27"></div><h3 id="compare" class="notranslate">compare</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Compara el contenido de la caché</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer Buffer.compare(Buffer buf);
 </code></pre>
@@ -879,14 +880,11 @@
 <hr>
 <div name="readUInt8" data-unique="readUInt8"></div><h3 id="readUInt8" class="notranslate">readUInt8</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Leer un valor entero sin signo de 8 bits del objeto de caché</font></font></strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div>Integer Buffer.readUInt8(Integer offset = <span class="hljs-number">0</span>,
-    <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer Buffer.readUInt8(Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
 <ul>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Entero, especifique la posición inicial para la lectura, el valor predeterminado es 0</font></font></li>
-<li><span class="notranslate">noAssert</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Booleano, especifica que no se lanzará ningún error al leer fuera de los límites, el valor predeterminado es flase, throw</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Devolver resultado:</font></font></p>
 <ul>
@@ -895,14 +893,11 @@
 <hr>
 <div name="readUInt16LE" data-unique="readUInt16LE"></div><h3 id="readUInt16LE" class="notranslate">readUInt16LE</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Leer un valor entero sin signo de 16 bits del objeto de caché y almacenarlo en orden de bajo nivel.</font></font></strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div>Integer Buffer.readUInt16LE(Integer offset = <span class="hljs-number">0</span>,
-    <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer Buffer.readUInt16LE(Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
 <ul>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Entero, especifique la posición inicial para la lectura, el valor predeterminado es 0</font></font></li>
-<li><span class="notranslate">noAssert</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Booleano, especifica que no se lanzará ningún error al leer fuera de los límites, el valor predeterminado es flase, throw</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Devolver resultado:</font></font></p>
 <ul>
@@ -910,15 +905,12 @@
 </ul>
 <hr>
 <div name="readUInt16BE" data-unique="readUInt16BE"></div><h3 id="readUInt16BE" class="notranslate">readUInt16BE</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Leer un valor entero sin signo de 16 bits del objeto de caché y almacenarlo en orden de alto nivel</font></font></strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div>Integer Buffer.readUInt16BE(Integer offset = <span class="hljs-number">0</span>,
-    <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Leer un valor entero sin signo de 16 bits del objeto de caché y almacenarlo en orden de alta calidad</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer Buffer.readUInt16BE(Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
 <ul>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Entero, especifique la posición inicial para la lectura, el valor predeterminado es 0</font></font></li>
-<li><span class="notranslate">noAssert</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Booleano, especifica que no se lanzará ningún error al leer fuera de los límites, el valor predeterminado es flase, throw</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Devolver resultado:</font></font></p>
 <ul>
@@ -927,14 +919,11 @@
 <hr>
 <div name="readUInt32LE" data-unique="readUInt32LE"></div><h3 id="readUInt32LE" class="notranslate">readUInt32LE</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Leer un valor entero sin signo de 32 bits del objeto de caché y almacenarlo en orden de bajo nivel.</font></font></strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div>Long Buffer.readUInt32LE(Integer offset = <span class="hljs-number">0</span>,
-    <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Long Buffer.readUInt32LE(Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
 <ul>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Entero, especifique la posición inicial para la lectura, el valor predeterminado es 0</font></font></li>
-<li><span class="notranslate">noAssert</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Booleano, especifica que no se lanzará ningún error al leer fuera de los límites, el valor predeterminado es flase, throw</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Devolver resultado:</font></font></p>
 <ul>
@@ -943,14 +932,11 @@
 <hr>
 <div name="readUInt32BE" data-unique="readUInt32BE"></div><h3 id="readUInt32BE" class="notranslate">readUInt32BE</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Leer un valor entero sin signo de 32 bits del objeto de caché y almacenarlo en orden de alto nivel</font></font></strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div>Long Buffer.readUInt32BE(Integer offset = <span class="hljs-number">0</span>,
-    <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Long Buffer.readUInt32BE(Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
 <ul>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Entero, especifique la posición inicial para la lectura, el valor predeterminado es 0</font></font></li>
-<li><span class="notranslate">noAssert</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Booleano, especifica que no se lanzará ningún error al leer fuera de los límites, el valor predeterminado es flase, throw</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Devolver resultado:</font></font></p>
 <ul>
@@ -960,16 +946,13 @@
 <div name="readUIntLE" data-unique="readUIntLE"></div><h3 id="readUIntLE" class="notranslate">readUIntLE</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Leer un valor entero sin signo del objeto de caché, con un soporte máximo de 64 bits, almacenado en orden de bajo nivel.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
-2
-3</div>Long Buffer.readUIntLE(Integer offset = <span class="hljs-number">0</span>,<font></font>
-    Integer byteLength = <span class="hljs-number">8</span>,
-    <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+2</div>Long Buffer.readUIntLE(Integer offset = <span class="hljs-number">0</span>,<font></font>
+    Integer byteLength = <span class="hljs-number">8</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
 <ul>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Entero, especifique la posición inicial para la lectura, el valor predeterminado es 0</font></font></li>
 <li><span class="notranslate">byteLength</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Entero, especifique el número de bytes leídos, el valor predeterminado es 8 bytes</font></font></li>
-<li><span class="notranslate">noAssert</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Booleano, especifica que no se lanzará ningún error al leer fuera de los límites, el valor predeterminado es flase, throw</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Devolver resultado:</font></font></p>
 <ul>
@@ -979,16 +962,13 @@
 <div name="readUIntBE" data-unique="readUIntBE"></div><h3 id="readUIntBE" class="notranslate">readUIntBE</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Leer un valor entero sin signo del objeto de caché, con un soporte máximo de 64 bits, almacenado en orden de alto nivel.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
-2
-3</div>Long Buffer.readUIntBE(Integer offset = <span class="hljs-number">0</span>,<font></font>
-    Integer byteLength = <span class="hljs-number">8</span>,
-    <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+2</div>Long Buffer.readUIntBE(Integer offset = <span class="hljs-number">0</span>,<font></font>
+    Integer byteLength = <span class="hljs-number">8</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
 <ul>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Entero, especifique la posición inicial para la lectura, el valor predeterminado es 0</font></font></li>
 <li><span class="notranslate">byteLength</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Entero, especifique el número de bytes leídos, el valor predeterminado es 8 bytes</font></font></li>
-<li><span class="notranslate">noAssert</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Booleano, especifica que no se lanzará ningún error al leer fuera de los límites, el valor predeterminado es flase, throw</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Devolver resultado:</font></font></p>
 <ul>
@@ -997,14 +977,11 @@
 <hr>
 <div name="readInt64LE" data-unique="readInt64LE"></div><h3 id="readInt64LE" class="notranslate">readInt64LE</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Lea un valor entero de 64 bits del objeto de caché y guárdelo en orden low-endian</font></font></strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div>Long Buffer.readInt64LE(Integer offset = <span class="hljs-number">0</span>,
-    <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Long Buffer.readInt64LE(Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
 <ul>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Entero, especifique la posición inicial para la lectura, el valor predeterminado es 0</font></font></li>
-<li><span class="notranslate">noAssert</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Booleano, especifica que no se lanzará ningún error al leer fuera de los límites, el valor predeterminado es flase, throw</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Devolver resultado:</font></font></p>
 <ul>
@@ -1013,14 +990,11 @@
 <hr>
 <div name="readInt64BE" data-unique="readInt64BE"></div><h3 id="readInt64BE" class="notranslate">readInt64BE</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Leer un valor entero de 64 bits del objeto de caché y almacenarlo en orden de alta calidad</font></font></strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div>Long Buffer.readInt64BE(Integer offset = <span class="hljs-number">0</span>,
-    <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Long Buffer.readInt64BE(Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
 <ul>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Entero, especifique la posición inicial para la lectura, el valor predeterminado es 0</font></font></li>
-<li><span class="notranslate">noAssert</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Booleano, especifica que no se lanzará ningún error al leer fuera de los límites, el valor predeterminado es flase, throw</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Devolver resultado:</font></font></p>
 <ul>
@@ -1029,14 +1003,11 @@
 <hr>
 <div name="readInt8" data-unique="readInt8"></div><h3 id="readInt8" class="notranslate">readInt8</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Leer un valor entero de 8 bits del objeto de caché</font></font></strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div>Integer Buffer.readInt8(Integer offset = <span class="hljs-number">0</span>,
-    <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer Buffer.readInt8(Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
 <ul>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Entero, especifique la posición inicial para la lectura, el valor predeterminado es 0</font></font></li>
-<li><span class="notranslate">noAssert</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Booleano, especifica que no se lanzará ningún error al leer fuera de los límites, el valor predeterminado es flase, throw</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Devolver resultado:</font></font></p>
 <ul>
@@ -1045,14 +1016,11 @@
 <hr>
 <div name="readInt16LE" data-unique="readInt16LE"></div><h3 id="readInt16LE" class="notranslate">readInt16LE</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Leer un valor entero de 16 bits del objeto de caché y almacenarlo en orden low-endian</font></font></strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div>Integer Buffer.readInt16LE(Integer offset = <span class="hljs-number">0</span>,
-    <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer Buffer.readInt16LE(Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
 <ul>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Entero, especifique la posición inicial para la lectura, el valor predeterminado es 0</font></font></li>
-<li><span class="notranslate">noAssert</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Booleano, especifica que no se lanzará ningún error al leer fuera de los límites, el valor predeterminado es flase, throw</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Devolver resultado:</font></font></p>
 <ul>
@@ -1061,14 +1029,11 @@
 <hr>
 <div name="readInt16BE" data-unique="readInt16BE"></div><h3 id="readInt16BE" class="notranslate">readInt16BE</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Leer un valor entero de 16 bits del objeto de caché y almacenarlo en orden de alta calidad</font></font></strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div>Integer Buffer.readInt16BE(Integer offset = <span class="hljs-number">0</span>,
-    <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer Buffer.readInt16BE(Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
 <ul>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Entero, especifique la posición inicial para la lectura, el valor predeterminado es 0</font></font></li>
-<li><span class="notranslate">noAssert</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Booleano, especifica que no se lanzará ningún error al leer fuera de los límites, el valor predeterminado es flase, throw</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Devolver resultado:</font></font></p>
 <ul>
@@ -1077,14 +1042,11 @@
 <hr>
 <div name="readInt32LE" data-unique="readInt32LE"></div><h3 id="readInt32LE" class="notranslate">readInt32LE</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Leer un valor entero de 32 bits del objeto de caché y almacenarlo en orden low-endian</font></font></strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div>Integer Buffer.readInt32LE(Integer offset = <span class="hljs-number">0</span>,
-    <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer Buffer.readInt32LE(Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
 <ul>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Entero, especifique la posición inicial para la lectura, el valor predeterminado es 0</font></font></li>
-<li><span class="notranslate">noAssert</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Booleano, especifica que no se lanzará ningún error al leer fuera de los límites, el valor predeterminado es flase, throw</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Devolver resultado:</font></font></p>
 <ul>
@@ -1093,14 +1055,11 @@
 <hr>
 <div name="readInt32BE" data-unique="readInt32BE"></div><h3 id="readInt32BE" class="notranslate">readInt32BE</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Leer un valor entero de 32 bits del objeto de caché y almacenarlo en orden de alta calidad</font></font></strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div>Integer Buffer.readInt32BE(Integer offset = <span class="hljs-number">0</span>,
-    <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer Buffer.readInt32BE(Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
 <ul>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Entero, especifique la posición inicial para la lectura, el valor predeterminado es 0</font></font></li>
-<li><span class="notranslate">noAssert</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Booleano, especifica que no se lanzará ningún error al leer fuera de los límites, el valor predeterminado es flase, throw</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Devolver resultado:</font></font></p>
 <ul>
@@ -1110,16 +1069,13 @@
 <div name="readIntLE" data-unique="readIntLE"></div><h3 id="readIntLE" class="notranslate">readIntLE</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Leer un valor entero del objeto de caché, con un soporte máximo de 64 bits, almacenado en orden low-endian</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
-2
-3</div>Long Buffer.readIntLE(Integer offset = <span class="hljs-number">0</span>,<font></font>
-    Integer byteLength = <span class="hljs-number">8</span>,
-    <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+2</div>Long Buffer.readIntLE(Integer offset = <span class="hljs-number">0</span>,<font></font>
+    Integer byteLength = <span class="hljs-number">8</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
 <ul>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Entero, especifique la posición inicial para la lectura, el valor predeterminado es 0</font></font></li>
 <li><span class="notranslate">byteLength</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Entero, especifique el número de bytes leídos, el valor predeterminado es 8 bytes</font></font></li>
-<li><span class="notranslate">noAssert</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Booleano, especifica que no se lanzará ningún error al leer fuera de los límites, el valor predeterminado es flase, throw</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Devolver resultado:</font></font></p>
 <ul>
@@ -1129,16 +1085,13 @@
 <div name="readIntBE" data-unique="readIntBE"></div><h3 id="readIntBE" class="notranslate">readIntBE</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Leer un valor entero del objeto de caché, con un soporte máximo de 64 bits, y almacenarlo en orden de alta calidad.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
-2
-3</div>Long Buffer.readIntBE(Integer offset = <span class="hljs-number">0</span>,<font></font>
-    Integer byteLength = <span class="hljs-number">8</span>,
-    <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+2</div>Long Buffer.readIntBE(Integer offset = <span class="hljs-number">0</span>,<font></font>
+    Integer byteLength = <span class="hljs-number">8</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
 <ul>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Entero, especifique la posición inicial para la lectura, el valor predeterminado es 0</font></font></li>
 <li><span class="notranslate">byteLength</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Entero, especifique el número de bytes leídos, el valor predeterminado es 8 bytes</font></font></li>
-<li><span class="notranslate">noAssert</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Booleano, especifica que no se lanzará ningún error al leer fuera de los límites, el valor predeterminado es flase, throw</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Devolver resultado:</font></font></p>
 <ul>
@@ -1148,16 +1101,13 @@
 <div name="writeInt64LE" data-unique="writeInt64LE"></div><h3 id="writeInt64LE" class="notranslate">writeInt64LE</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Escriba un valor entero de 64 bits en el objeto de caché en el almacenamiento de bajo nivel.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
-2
-3</div>Integer Buffer.writeInt64LE(Long value,<font></font>
-    Integer offset = <span class="hljs-number">0</span>,
-    <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+2</div>Integer Buffer.writeInt64LE(Long value,<font></font>
+    Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
 <ul>
 <li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Largo, especifique el valor que se va a escribir</font></font></li>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Entero, especifique la posición inicial de escritura</font></font></li>
-<li><span class="notranslate">noAssert</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Booleano, especifique que no se lanzará ningún error al escribir fuera del rango, el valor predeterminado es flase, throw</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Devolver resultado:</font></font></p>
 <ul>
@@ -1167,16 +1117,13 @@
 <div name="writeInt64BE" data-unique="writeInt64BE"></div><h3 id="writeInt64BE" class="notranslate">writeInt64BE</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Escriba un valor entero de 64 bits en el objeto de caché y guárdelo en orden de alta calidad</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
-2
-3</div>Integer Buffer.writeInt64BE(Long value,<font></font>
-    Integer offset = <span class="hljs-number">0</span>,
-    <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+2</div>Integer Buffer.writeInt64BE(Long value,<font></font>
+    Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
 <ul>
 <li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Largo, especifique el valor que se va a escribir</font></font></li>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Entero, especifique la posición inicial de escritura</font></font></li>
-<li><span class="notranslate">noAssert</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Booleano, especifique que no se lanzará ningún error al escribir fuera del rango, el valor predeterminado es flase, throw</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Devolver resultado:</font></font></p>
 <ul>
@@ -1185,14 +1132,11 @@
 <hr>
 <div name="readFloatLE" data-unique="readFloatLE"></div><h3 id="readFloatLE" class="notranslate">readFloatLE</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Leer un número de punto flotante del objeto de caché y almacenarlo en orden low-endian</font></font></strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div><span class="hljs-built_in">Number</span> Buffer.readFloatLE(Integer offset = <span class="hljs-number">0</span>,
-    <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Number</span> Buffer.readFloatLE(Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
 <ul>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Entero, especifique la posición inicial para la lectura, el valor predeterminado es 0</font></font></li>
-<li><span class="notranslate">noAssert</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Booleano, especifica que no se lanzará ningún error al leer fuera de los límites, el valor predeterminado es flase, throw</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Devolver resultado:</font></font></p>
 <ul>
@@ -1201,14 +1145,11 @@
 <hr>
 <div name="readFloatBE" data-unique="readFloatBE"></div><h3 id="readFloatBE" class="notranslate">readFloatBE</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Leer un número de punto flotante del objeto de caché y almacenarlo en orden de alta gama</font></font></strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div><span class="hljs-built_in">Number</span> Buffer.readFloatBE(Integer offset = <span class="hljs-number">0</span>,
-    <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Number</span> Buffer.readFloatBE(Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
 <ul>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Entero, especifique la posición inicial para la lectura, el valor predeterminado es 0</font></font></li>
-<li><span class="notranslate">noAssert</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Booleano, especifica que no se lanzará ningún error al leer fuera de los límites, el valor predeterminado es flase, throw</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Devolver resultado:</font></font></p>
 <ul>
@@ -1217,14 +1158,11 @@
 <hr>
 <div name="readDoubleLE" data-unique="readDoubleLE"></div><h3 id="readDoubleLE" class="notranslate">readDoubleLE</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Lea un número de punto flotante de doble precisión del objeto de caché y guárdelo en orden low-endian</font></font></strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div><span class="hljs-built_in">Number</span> Buffer.readDoubleLE(Integer offset = <span class="hljs-number">0</span>,
-    <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Number</span> Buffer.readDoubleLE(Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
 <ul>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Entero, especifique la posición inicial para la lectura, el valor predeterminado es 0</font></font></li>
-<li><span class="notranslate">noAssert</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Booleano, especifica que no se lanzará ningún error al leer fuera de los límites, el valor predeterminado es flase, throw</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Devolver resultado:</font></font></p>
 <ul>
@@ -1233,14 +1171,11 @@
 <hr>
 <div name="readDoubleBE" data-unique="readDoubleBE"></div><h3 id="readDoubleBE" class="notranslate">readDoubleBE</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Leer un número de punto flotante de doble precisión del objeto de caché y almacenarlo en orden de alta calidad</font></font></strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div><span class="hljs-built_in">Number</span> Buffer.readDoubleBE(Integer offset = <span class="hljs-number">0</span>,
-    <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Number</span> Buffer.readDoubleBE(Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
 <ul>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Entero, especifique la posición inicial para la lectura, el valor predeterminado es 0</font></font></li>
-<li><span class="notranslate">noAssert</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Booleano, especifica que no se lanzará ningún error al leer fuera de los límites, el valor predeterminado es flase, throw</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Devolver resultado:</font></font></p>
 <ul>
@@ -1250,16 +1185,13 @@
 <div name="writeUInt8" data-unique="writeUInt8"></div><h3 id="writeUInt8" class="notranslate">writeUInt8</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Escriba un valor entero sin signo de 8 bits en el objeto de caché</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
-2
-3</div>Integer Buffer.writeUInt8(Integer value,<font></font>
-    Integer offset = <span class="hljs-number">0</span>,
-    <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+2</div>Integer Buffer.writeUInt8(Integer value,<font></font>
+    Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
 <ul>
 <li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Entero, especifique el valor a escribir</font></font></li>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Entero, especifique la posición inicial de escritura</font></font></li>
-<li><span class="notranslate">noAssert</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Booleano, especifique que no se lanzará ningún error al escribir fuera del rango, el valor predeterminado es flase, throw</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Devolver resultado:</font></font></p>
 <ul>
@@ -1269,16 +1201,13 @@
 <div name="writeUInt16LE" data-unique="writeUInt16LE"></div><h3 id="writeUInt16LE" class="notranslate">writeUInt16LE</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Escriba un valor entero sin signo de 16 bits en el objeto de caché en el almacenamiento de bajo nivel.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
-2
-3</div>Integer Buffer.writeUInt16LE(Integer value,<font></font>
-    Integer offset = <span class="hljs-number">0</span>,
-    <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+2</div>Integer Buffer.writeUInt16LE(Integer value,<font></font>
+    Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
 <ul>
 <li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Entero, especifique el valor a escribir</font></font></li>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Entero, especifique la posición inicial de escritura</font></font></li>
-<li><span class="notranslate">noAssert</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Booleano, especifique que no se lanzará ningún error al escribir fuera del rango, el valor predeterminado es flase, throw</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Devolver resultado:</font></font></p>
 <ul>
@@ -1288,16 +1217,13 @@
 <div name="writeUInt16BE" data-unique="writeUInt16BE"></div><h3 id="writeUInt16BE" class="notranslate">writeUInt16BE</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Escriba un valor entero sin signo de 16 bits en el objeto de la caché y guárdelo en orden de alto nivel.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
-2
-3</div>Integer Buffer.writeUInt16BE(Integer value,<font></font>
-    Integer offset = <span class="hljs-number">0</span>,
-    <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+2</div>Integer Buffer.writeUInt16BE(Integer value,<font></font>
+    Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
 <ul>
 <li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Entero, especifique el valor a escribir</font></font></li>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Entero, especifique la posición inicial de escritura</font></font></li>
-<li><span class="notranslate">noAssert</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Booleano, especifique que no se lanzará ningún error al escribir fuera del rango, el valor predeterminado es flase, throw</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Devolver resultado:</font></font></p>
 <ul>
@@ -1307,16 +1233,13 @@
 <div name="writeUInt32LE" data-unique="writeUInt32LE"></div><h3 id="writeUInt32LE" class="notranslate">writeUInt32LE</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Escriba un valor entero sin signo de 32 bits en el objeto de caché en el almacenamiento de bajo nivel.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
-2
-3</div>Integer Buffer.writeUInt32LE(Long value,<font></font>
-    Integer offset = <span class="hljs-number">0</span>,
-    <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+2</div>Integer Buffer.writeUInt32LE(Long value,<font></font>
+    Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
 <ul>
 <li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Largo, especifique el valor que se va a escribir</font></font></li>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Entero, especifique la posición inicial de escritura</font></font></li>
-<li><span class="notranslate">noAssert</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Booleano, especifique que no se lanzará ningún error al escribir fuera del rango, el valor predeterminado es flase, throw</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Devolver resultado:</font></font></p>
 <ul>
@@ -1326,16 +1249,13 @@
 <div name="writeUInt32BE" data-unique="writeUInt32BE"></div><h3 id="writeUInt32BE" class="notranslate">writeUInt32BE</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Escriba un valor entero sin signo de 32 bits en el objeto de la caché y guárdelo en orden de alto nivel.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
-2
-3</div>Integer Buffer.writeUInt32BE(Long value,<font></font>
-    Integer offset = <span class="hljs-number">0</span>,
-    <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+2</div>Integer Buffer.writeUInt32BE(Long value,<font></font>
+    Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
 <ul>
 <li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Largo, especifique el valor que se va a escribir</font></font></li>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Entero, especifique la posición inicial de escritura</font></font></li>
-<li><span class="notranslate">noAssert</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Booleano, especifique que no se lanzará ningún error al escribir fuera del rango, el valor predeterminado es flase, throw</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Devolver resultado:</font></font></p>
 <ul>
@@ -1346,18 +1266,15 @@
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Escriba un valor entero sin signo en el objeto de la caché, con un soporte máximo de 64 bits, almacenado en orden de bajo nivel.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
-3
-4</div>Integer Buffer.writeUIntLE(Long value,<font></font>
+3</div>Integer Buffer.writeUIntLE(Long value,<font></font>
     Integer offset = <span class="hljs-number">0</span>,<font></font>
-    Integer byteLength = <span class="hljs-number">8</span>,
-    <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+    Integer byteLength = <span class="hljs-number">8</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
 <ul>
 <li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Largo, especifique el valor que se va a escribir</font></font></li>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Entero, especifique la posición inicial de escritura</font></font></li>
 <li><span class="notranslate">byteLength</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Entero, especifique el número de bytes escritos, el valor predeterminado es 8 bytes</font></font></li>
-<li><span class="notranslate">noAssert</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Booleano, especifique que no se lanzará ningún error al escribir fuera del rango, el valor predeterminado es flase, throw</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Devolver resultado:</font></font></p>
 <ul>
@@ -1368,18 +1285,15 @@
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Escriba un valor entero sin signo en el objeto de la caché, con un soporte máximo de 64 bits, almacenado en orden de alto nivel.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
-3
-4</div>Integer Buffer.writeUIntBE(Long value,<font></font>
+3</div>Integer Buffer.writeUIntBE(Long value,<font></font>
     Integer offset = <span class="hljs-number">0</span>,<font></font>
-    Integer byteLength = <span class="hljs-number">8</span>,
-    <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+    Integer byteLength = <span class="hljs-number">8</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
 <ul>
 <li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Largo, especifique el valor que se va a escribir</font></font></li>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Entero, especifique la posición inicial de escritura</font></font></li>
 <li><span class="notranslate">byteLength</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Entero, especifique el número de bytes escritos, el valor predeterminado es 8 bytes</font></font></li>
-<li><span class="notranslate">noAssert</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Booleano, especifique que no se lanzará ningún error al escribir fuera del rango, el valor predeterminado es flase, throw</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Devolver resultado:</font></font></p>
 <ul>
@@ -1389,16 +1303,13 @@
 <div name="writeInt8" data-unique="writeInt8"></div><h3 id="writeInt8" class="notranslate">writeInt8</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Escriba un valor entero de 8 bits en el objeto de caché</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
-2
-3</div>Integer Buffer.writeInt8(Integer value,<font></font>
-    Integer offset = <span class="hljs-number">0</span>,
-    <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+2</div>Integer Buffer.writeInt8(Integer value,<font></font>
+    Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
 <ul>
 <li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Entero, especifique el valor a escribir</font></font></li>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Entero, especifique la posición inicial de escritura</font></font></li>
-<li><span class="notranslate">noAssert</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Booleano, especifique que no se lanzará ningún error al escribir fuera del rango, el valor predeterminado es flase, throw</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Devolver resultado:</font></font></p>
 <ul>
@@ -1408,16 +1319,13 @@
 <div name="writeInt16LE" data-unique="writeInt16LE"></div><h3 id="writeInt16LE" class="notranslate">writeInt16LE</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Escriba un valor entero de 16 bits en el objeto de caché en el almacenamiento low-endian</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
-2
-3</div>Integer Buffer.writeInt16LE(Integer value,<font></font>
-    Integer offset = <span class="hljs-number">0</span>,
-    <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+2</div>Integer Buffer.writeInt16LE(Integer value,<font></font>
+    Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
 <ul>
 <li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Entero, especifique el valor a escribir</font></font></li>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Entero, especifique la posición inicial de escritura</font></font></li>
-<li><span class="notranslate">noAssert</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Booleano, especifique que no se lanzará ningún error al escribir fuera del rango, el valor predeterminado es flase, throw</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Devolver resultado:</font></font></p>
 <ul>
@@ -1427,16 +1335,13 @@
 <div name="writeInt16BE" data-unique="writeInt16BE"></div><h3 id="writeInt16BE" class="notranslate">writeInt16BE</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Escriba un valor entero de 16 bits en el objeto de caché y guárdelo en orden de alta calidad</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
-2
-3</div>Integer Buffer.writeInt16BE(Integer value,<font></font>
-    Integer offset = <span class="hljs-number">0</span>,
-    <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+2</div>Integer Buffer.writeInt16BE(Integer value,<font></font>
+    Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
 <ul>
 <li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Entero, especifique el valor a escribir</font></font></li>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Entero, especifique la posición inicial de escritura</font></font></li>
-<li><span class="notranslate">noAssert</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Booleano, especifique que no se lanzará ningún error al escribir fuera del rango, el valor predeterminado es flase, throw</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Devolver resultado:</font></font></p>
 <ul>
@@ -1446,16 +1351,13 @@
 <div name="writeInt32LE" data-unique="writeInt32LE"></div><h3 id="writeInt32LE" class="notranslate">writeInt32LE</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Escriba un valor entero de 32 bits en el objeto de caché en el almacenamiento low-endian</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
-2
-3</div>Integer Buffer.writeInt32LE(Integer value,<font></font>
-    Integer offset = <span class="hljs-number">0</span>,
-    <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+2</div>Integer Buffer.writeInt32LE(Integer value,<font></font>
+    Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
 <ul>
 <li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Entero, especifique el valor a escribir</font></font></li>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Entero, especifique la posición inicial de escritura</font></font></li>
-<li><span class="notranslate">noAssert</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Booleano, especifique que no se lanzará ningún error al escribir fuera del rango, el valor predeterminado es flase, throw</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Devolver resultado:</font></font></p>
 <ul>
@@ -1465,16 +1367,13 @@
 <div name="writeInt32BE" data-unique="writeInt32BE"></div><h3 id="writeInt32BE" class="notranslate">writeInt32BE</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Escriba un valor entero de 32 bits en el objeto de caché en el almacenamiento de alta gama.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
-2
-3</div>Integer Buffer.writeInt32BE(Integer value,<font></font>
-    Integer offset = <span class="hljs-number">0</span>,
-    <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+2</div>Integer Buffer.writeInt32BE(Integer value,<font></font>
+    Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
 <ul>
 <li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Entero, especifique el valor a escribir</font></font></li>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Entero, especifique la posición inicial de escritura</font></font></li>
-<li><span class="notranslate">noAssert</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Booleano, especifique que no se lanzará ningún error al escribir fuera del rango, el valor predeterminado es flase, throw</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Devolver resultado:</font></font></p>
 <ul>
@@ -1485,18 +1384,15 @@
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Escriba un valor entero en el objeto de la caché, con un soporte máximo de 64 bits, almacenado en orden de bajo nivel.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
-3
-4</div>Integer Buffer.writeIntLE(Long value,<font></font>
+3</div>Integer Buffer.writeIntLE(Long value,<font></font>
     Integer offset = <span class="hljs-number">0</span>,<font></font>
-    Integer byteLength = <span class="hljs-number">8</span>,
-    <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+    Integer byteLength = <span class="hljs-number">8</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
 <ul>
 <li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Largo, especifique el valor que se va a escribir</font></font></li>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Entero, especifique la posición inicial de escritura</font></font></li>
 <li><span class="notranslate">byteLength</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Entero, especifique el número de bytes escritos, el valor predeterminado es 8 bytes</font></font></li>
-<li><span class="notranslate">noAssert</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Booleano, especifique que no se lanzará ningún error al escribir fuera del rango, el valor predeterminado es flase, throw</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Devolver resultado:</font></font></p>
 <ul>
@@ -1507,18 +1403,15 @@
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Escriba un valor entero en el objeto de caché, con un soporte máximo de 64 bits, almacenado en orden de alto nivel.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
-3
-4</div>Integer Buffer.writeIntBE(Long value,<font></font>
+3</div>Integer Buffer.writeIntBE(Long value,<font></font>
     Integer offset = <span class="hljs-number">0</span>,<font></font>
-    Integer byteLength = <span class="hljs-number">8</span>,
-    <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+    Integer byteLength = <span class="hljs-number">8</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
 <ul>
 <li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Largo, especifique el valor que se va a escribir</font></font></li>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Entero, especifique la posición inicial de escritura</font></font></li>
 <li><span class="notranslate">byteLength</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Entero, especifique el número de bytes escritos, el valor predeterminado es 8 bytes</font></font></li>
-<li><span class="notranslate">noAssert</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Booleano, especifique que no se lanzará ningún error al escribir fuera del rango, el valor predeterminado es flase, throw</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Devolver resultado:</font></font></p>
 <ul>
@@ -1528,16 +1421,13 @@
 <div name="writeFloatLE" data-unique="writeFloatLE"></div><h3 id="writeFloatLE" class="notranslate">writeFloatLE</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Escriba un número de punto flotante en el objeto de caché en el almacenamiento de bajo nivel.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
-2
-3</div>Integer Buffer.writeFloatLE(<span class="hljs-built_in">Number</span> value,<font></font>
-    Integer offset,<font></font>
-    <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+2</div>Integer Buffer.writeFloatLE(<span class="hljs-built_in">Number</span> value,<font></font>
+    Integer offset);<font></font>
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
 <ul>
 <li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Número, especifique el valor a escribir</font></font></li>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Entero, especifique la posición inicial de escritura</font></font></li>
-<li><span class="notranslate">noAssert</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Booleano, especifique que no se lanzará ningún error al escribir fuera del rango, el valor predeterminado es flase, throw</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Devolver resultado:</font></font></p>
 <ul>
@@ -1547,16 +1437,13 @@
 <div name="writeFloatBE" data-unique="writeFloatBE"></div><h3 id="writeFloatBE" class="notranslate">writeFloatBE</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Escriba un número de punto flotante en el objeto de caché en el almacenamiento de alta gama.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
-2
-3</div>Integer Buffer.writeFloatBE(<span class="hljs-built_in">Number</span> value,<font></font>
-    Integer offset,<font></font>
-    <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+2</div>Integer Buffer.writeFloatBE(<span class="hljs-built_in">Number</span> value,<font></font>
+    Integer offset);<font></font>
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
 <ul>
 <li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Número, especifique el valor a escribir</font></font></li>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Entero, especifique la posición inicial de escritura</font></font></li>
-<li><span class="notranslate">noAssert</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Booleano, especifique que no se lanzará ningún error al escribir fuera del rango, el valor predeterminado es flase, throw</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Devolver resultado:</font></font></p>
 <ul>
@@ -1566,16 +1453,13 @@
 <div name="writeDoubleLE" data-unique="writeDoubleLE"></div><h3 id="writeDoubleLE" class="notranslate">writeDoubleLE</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Escriba un número de punto flotante de doble precisión en el objeto de caché y guárdelo en un orden de bajo nivel.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
-2
-3</div>Integer Buffer.writeDoubleLE(<span class="hljs-built_in">Number</span> value,<font></font>
-    Integer offset,<font></font>
-    <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+2</div>Integer Buffer.writeDoubleLE(<span class="hljs-built_in">Number</span> value,<font></font>
+    Integer offset);<font></font>
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
 <ul>
 <li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Número, especifique el valor a escribir</font></font></li>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Entero, especifique la posición inicial de escritura</font></font></li>
-<li><span class="notranslate">noAssert</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Booleano, especifique que no se lanzará ningún error al escribir fuera del rango, el valor predeterminado es flase, throw</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Devolver resultado:</font></font></p>
 <ul>
@@ -1585,16 +1469,13 @@
 <div name="writeDoubleBE" data-unique="writeDoubleBE"></div><h3 id="writeDoubleBE" class="notranslate">writeDoubleBE</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Escriba un número de punto flotante de doble precisión en el objeto de caché en el almacenamiento de alta gama.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
-2
-3</div>Integer Buffer.writeDoubleBE(<span class="hljs-built_in">Number</span> value,<font></font>
-    Integer offset,<font></font>
-    <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+2</div>Integer Buffer.writeDoubleBE(<span class="hljs-built_in">Number</span> value,<font></font>
+    Integer offset);<font></font>
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
 <ul>
 <li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Número, especifique el valor a escribir</font></font></li>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Entero, especifique la posición inicial de escritura</font></font></li>
-<li><span class="notranslate">noAssert</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Booleano, especifique que no se lanzará ningún error al escribir fuera del rango, el valor predeterminado es flase, throw</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Devolver resultado:</font></font></p>
 <ul>
@@ -1688,7 +1569,7 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Devolver resultado:</font></font></p>
 <ul>
-<li><span class="notranslate">Iterator</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Devuelve un iterador que contiene el índice de datos del objeto.</font></font></li>
+<li><a href="iterator.md.html" class="notranslate">Iterator</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Devuelve un iterador que contiene el índice de datos del objeto.</font></font></li>
 </ul>
 <hr>
 <div name="values" data-unique="values"></div><h3 id="values" class="notranslate">values</h3>
@@ -1697,7 +1578,7 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Devolver resultado:</font></font></p>
 <ul>
-<li><span class="notranslate">Iterator</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Devuelve un iterador que contiene los valores de datos del objeto.</font></font></li>
+<li><a href="iterator.md.html" class="notranslate">Iterator</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Devuelve un iterador que contiene los valores de datos del objeto.</font></font></li>
 </ul>
 <hr>
 <div name="entries" data-unique="entries"></div><h3 id="entries" class="notranslate">entries</h3>
@@ -1706,7 +1587,7 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Devolver resultado:</font></font></p>
 <ul>
-<li><span class="notranslate">Iterator</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, [índice, byte] iterador de pares</font></font></li>
+<li><a href="iterator.md.html" class="notranslate">Iterator</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, [índice, byte] iterador de pares</font></font></li>
 </ul>
 <hr>
 <div name="toArray" data-unique="toArray"></div><h3 id="toArray" class="notranslate">toArray</h3>
@@ -1728,7 +1609,7 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
 <ul>
-<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifique el formato de codificación, el valor permitido es: "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">","</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"," utf8 "o un conjunto de caracteres admitido por el sistema</font></font></li>
+<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifique el formato de codificación, el valor permitido es: "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">","</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"," utf8 ", o </font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Juego de caracteres admitido por el módulo</font></font></li>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Entero, leer posición de inicio</font></font></li>
 <li><span class="notranslate">end</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Entero, leer posición final</font></font></li>
 </ul>
@@ -1744,7 +1625,7 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
 <ul>
-<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifique el formato de codificación, el valor permitido es: "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">","</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"," utf8 "o un conjunto de caracteres admitido por el sistema</font></font></li>
+<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifique el formato de codificación, el valor permitido es: "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">","</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"," utf8 ", o </font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Juego de caracteres admitido por el módulo</font></font></li>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Entero, leer posición de inicio</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Devolver resultado:</font></font></p>
@@ -1780,4 +1661,4 @@
 <ul>
 <li><span class="notranslate">Value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Devuelve un valor que contiene JSON serializable</font></font></li>
 </ul>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Copyright © 2012-2021 fibjs.org | </font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Nos apoyan</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip176593"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip176593" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Haga clic para volver a la página superior</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Copyright © 2012-2021 fibjs.org | </font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Nos apoyan</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip722444"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip722444" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Haga clic para volver a la página superior</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>

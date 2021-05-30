@@ -8,25 +8,12 @@
 
 ```JavaScript
 static Digest hash.digest(Integer algo,
-    Buffer data);
+    Buffer data = NULL);
 ```
 
 调用参数:
 * algo: Integer, 指定摘要运算算法
-* data: [Buffer](../../object/ifs/Buffer.md), 创建同时更新的二进制数据
-
-返回结果:
-* [Digest](../../object/ifs/Digest.md), 返回构造的信息摘要对象
-
---------------------------
-**根据指定的算法标识创建一个信息摘要运算对象**
-
-```JavaScript
-static Digest hash.digest(Integer algo);
-```
-
-调用参数:
-* algo: Integer, 指定摘要运算算法
+* data: [Buffer](../../object/ifs/Buffer.md), 创建同时更新的二进制数据，缺省为 null，不更新数据
 
 返回结果:
 * [Digest](../../object/ifs/Digest.md), 返回构造的信息摘要对象
@@ -36,11 +23,11 @@ static Digest hash.digest(Integer algo);
 **创建一个 MD2 信息摘要运算对象**
 
 ```JavaScript
-static Digest hash.md2(Buffer data);
+static Digest hash.md2(Buffer data = NULL);
 ```
 
 调用参数:
-* data: [Buffer](../../object/ifs/Buffer.md), 创建同时更新的二进制数据
+* data: [Buffer](../../object/ifs/Buffer.md), 创建同时更新的二进制数据，缺省为 null，不更新数据
 
 返回结果:
 * [Digest](../../object/ifs/Digest.md), 返回构造的信息摘要对象
@@ -50,11 +37,11 @@ static Digest hash.md2(Buffer data);
 **创建一个 MD4 信息摘要运算对象**
 
 ```JavaScript
-static Digest hash.md4(Buffer data);
+static Digest hash.md4(Buffer data = NULL);
 ```
 
 调用参数:
-* data: [Buffer](../../object/ifs/Buffer.md), 创建同时更新的二进制数据
+* data: [Buffer](../../object/ifs/Buffer.md), 创建同时更新的二进制数据，缺省为 null，不更新数据
 
 返回结果:
 * [Digest](../../object/ifs/Digest.md), 返回构造的信息摘要对象
@@ -64,11 +51,11 @@ static Digest hash.md4(Buffer data);
 **创建一个 MD5 信息摘要运算对象**
 
 ```JavaScript
-static Digest hash.md5(Buffer data);
+static Digest hash.md5(Buffer data = NULL);
 ```
 
 调用参数:
-* data: [Buffer](../../object/ifs/Buffer.md), 创建同时更新的二进制数据
+* data: [Buffer](../../object/ifs/Buffer.md), 创建同时更新的二进制数据，缺省为 null，不更新数据
 
 返回结果:
 * [Digest](../../object/ifs/Digest.md), 返回构造的信息摘要对象
@@ -78,11 +65,11 @@ static Digest hash.md5(Buffer data);
 **创建一个 SHA1 信息摘要运算对象**
 
 ```JavaScript
-static Digest hash.sha1(Buffer data);
+static Digest hash.sha1(Buffer data = NULL);
 ```
 
 调用参数:
-* data: [Buffer](../../object/ifs/Buffer.md), 创建同时更新的二进制数据
+* data: [Buffer](../../object/ifs/Buffer.md), 创建同时更新的二进制数据，缺省为 null，不更新数据
 
 返回结果:
 * [Digest](../../object/ifs/Digest.md), 返回构造的信息摘要对象
@@ -92,11 +79,11 @@ static Digest hash.sha1(Buffer data);
 **创建一个 SHA224 信息摘要运算对象**
 
 ```JavaScript
-static Digest hash.sha224(Buffer data);
+static Digest hash.sha224(Buffer data = NULL);
 ```
 
 调用参数:
-* data: [Buffer](../../object/ifs/Buffer.md), 创建同时更新的二进制数据
+* data: [Buffer](../../object/ifs/Buffer.md), 创建同时更新的二进制数据，缺省为 null，不更新数据
 
 返回结果:
 * [Digest](../../object/ifs/Digest.md), 返回构造的信息摘要对象
@@ -106,11 +93,11 @@ static Digest hash.sha224(Buffer data);
 **创建一个 SHA256 信息摘要运算对象**
 
 ```JavaScript
-static Digest hash.sha256(Buffer data);
+static Digest hash.sha256(Buffer data = NULL);
 ```
 
 调用参数:
-* data: [Buffer](../../object/ifs/Buffer.md), 创建同时更新的二进制数据
+* data: [Buffer](../../object/ifs/Buffer.md), 创建同时更新的二进制数据，缺省为 null，不更新数据
 
 返回结果:
 * [Digest](../../object/ifs/Digest.md), 返回构造的信息摘要对象
@@ -120,11 +107,11 @@ static Digest hash.sha256(Buffer data);
 **创建一个 SHA384 信息摘要运算对象**
 
 ```JavaScript
-static Digest hash.sha384(Buffer data);
+static Digest hash.sha384(Buffer data = NULL);
 ```
 
 调用参数:
-* data: [Buffer](../../object/ifs/Buffer.md), 创建同时更新的二进制数据
+* data: [Buffer](../../object/ifs/Buffer.md), 创建同时更新的二进制数据，缺省为 null，不更新数据
 
 返回结果:
 * [Digest](../../object/ifs/Digest.md), 返回构造的信息摘要对象
@@ -134,11 +121,11 @@ static Digest hash.sha384(Buffer data);
 **创建一个 SHA512 信息摘要运算对象**
 
 ```JavaScript
-static Digest hash.sha512(Buffer data);
+static Digest hash.sha512(Buffer data = NULL);
 ```
 
 调用参数:
-* data: [Buffer](../../object/ifs/Buffer.md), 创建同时更新的二进制数据
+* data: [Buffer](../../object/ifs/Buffer.md), 创建同时更新的二进制数据，缺省为 null，不更新数据
 
 返回结果:
 * [Digest](../../object/ifs/Digest.md), 返回构造的信息摘要对象
@@ -148,11 +135,11 @@ static Digest hash.sha512(Buffer data);
 **创建一个 RIPEMD160 信息摘要运算对象**
 
 ```JavaScript
-static Digest hash.ripemd160(Buffer data);
+static Digest hash.ripemd160(Buffer data = NULL);
 ```
 
 调用参数:
-* data: [Buffer](../../object/ifs/Buffer.md), 创建同时更新的二进制数据
+* data: [Buffer](../../object/ifs/Buffer.md), 创建同时更新的二进制数据，缺省为 null，不更新数据
 
 返回结果:
 * [Digest](../../object/ifs/Digest.md), 返回构造的信息摘要对象
@@ -162,11 +149,11 @@ static Digest hash.ripemd160(Buffer data);
 **创建一个 SM3 信息摘要运算对象**
 
 ```JavaScript
-static Digest hash.sm3(Buffer data);
+static Digest hash.sm3(Buffer data = NULL);
 ```
 
 调用参数:
-* data: [Buffer](../../object/ifs/Buffer.md), 创建同时更新的二进制数据
+* data: [Buffer](../../object/ifs/Buffer.md), 创建同时更新的二进制数据，缺省为 null，不更新数据
 
 返回结果:
 * [Digest](../../object/ifs/Digest.md), 返回构造的信息摘要对象
@@ -177,12 +164,14 @@ static Digest hash.sm3(Buffer data);
 
 ```JavaScript
 static Digest hash.hmac(Integer algo,
-    Buffer key);
+    Buffer key,
+    Buffer data = NULL);
 ```
 
 调用参数:
 * algo: Integer, 指定摘要运算算法
 * key: [Buffer](../../object/ifs/Buffer.md), 二进制签名密钥
+* data: [Buffer](../../object/ifs/Buffer.md), 创建同时更新的二进制数据，缺省为 null，不更新数据
 
 返回结果:
 * [Digest](../../object/ifs/Digest.md), 返回构造的信息摘要对象
@@ -192,11 +181,13 @@ static Digest hash.hmac(Integer algo,
 **创建一个 MD2 信息摘要签名运算对象**
 
 ```JavaScript
-static Digest hash.hmac_md2(Buffer key);
+static Digest hash.hmac_md2(Buffer key,
+    Buffer data = NULL);
 ```
 
 调用参数:
 * key: [Buffer](../../object/ifs/Buffer.md), 二进制签名密钥
+* data: [Buffer](../../object/ifs/Buffer.md), 创建同时更新的二进制数据，缺省为 null，不更新数据
 
 返回结果:
 * [Digest](../../object/ifs/Digest.md), 返回构造的信息摘要对象
@@ -206,11 +197,13 @@ static Digest hash.hmac_md2(Buffer key);
 **创建一个 MD4 信息摘要签名运算对象**
 
 ```JavaScript
-static Digest hash.hmac_md4(Buffer key);
+static Digest hash.hmac_md4(Buffer key,
+    Buffer data = NULL);
 ```
 
 调用参数:
 * key: [Buffer](../../object/ifs/Buffer.md), 二进制签名密钥
+* data: [Buffer](../../object/ifs/Buffer.md), 创建同时更新的二进制数据，缺省为 null，不更新数据
 
 返回结果:
 * [Digest](../../object/ifs/Digest.md), 返回构造的信息摘要对象
@@ -220,11 +213,13 @@ static Digest hash.hmac_md4(Buffer key);
 **创建一个 MD5 信息摘要签名运算对象**
 
 ```JavaScript
-static Digest hash.hmac_md5(Buffer key);
+static Digest hash.hmac_md5(Buffer key,
+    Buffer data = NULL);
 ```
 
 调用参数:
 * key: [Buffer](../../object/ifs/Buffer.md), 二进制签名密钥
+* data: [Buffer](../../object/ifs/Buffer.md), 创建同时更新的二进制数据，缺省为 null，不更新数据
 
 返回结果:
 * [Digest](../../object/ifs/Digest.md), 返回构造的信息摘要对象
@@ -234,11 +229,13 @@ static Digest hash.hmac_md5(Buffer key);
 **创建一个 SHA1 信息摘要签名运算对象**
 
 ```JavaScript
-static Digest hash.hmac_sha1(Buffer key);
+static Digest hash.hmac_sha1(Buffer key,
+    Buffer data = NULL);
 ```
 
 调用参数:
 * key: [Buffer](../../object/ifs/Buffer.md), 二进制签名密钥
+* data: [Buffer](../../object/ifs/Buffer.md), 创建同时更新的二进制数据，缺省为 null，不更新数据
 
 返回结果:
 * [Digest](../../object/ifs/Digest.md), 返回构造的信息摘要对象
@@ -248,11 +245,13 @@ static Digest hash.hmac_sha1(Buffer key);
 **创建一个 SHA224 信息摘要签名运算对象**
 
 ```JavaScript
-static Digest hash.hmac_sha224(Buffer key);
+static Digest hash.hmac_sha224(Buffer key,
+    Buffer data = NULL);
 ```
 
 调用参数:
 * key: [Buffer](../../object/ifs/Buffer.md), 二进制签名密钥
+* data: [Buffer](../../object/ifs/Buffer.md), 创建同时更新的二进制数据，缺省为 null，不更新数据
 
 返回结果:
 * [Digest](../../object/ifs/Digest.md), 返回构造的信息摘要对象
@@ -262,11 +261,13 @@ static Digest hash.hmac_sha224(Buffer key);
 **创建一个 SHA256 信息摘要签名运算对象**
 
 ```JavaScript
-static Digest hash.hmac_sha256(Buffer key);
+static Digest hash.hmac_sha256(Buffer key,
+    Buffer data = NULL);
 ```
 
 调用参数:
 * key: [Buffer](../../object/ifs/Buffer.md), 二进制签名密钥
+* data: [Buffer](../../object/ifs/Buffer.md), 创建同时更新的二进制数据，缺省为 null，不更新数据
 
 返回结果:
 * [Digest](../../object/ifs/Digest.md), 返回构造的信息摘要对象
@@ -276,11 +277,13 @@ static Digest hash.hmac_sha256(Buffer key);
 **创建一个 SHA384 信息摘要签名运算对象**
 
 ```JavaScript
-static Digest hash.hmac_sha384(Buffer key);
+static Digest hash.hmac_sha384(Buffer key,
+    Buffer data = NULL);
 ```
 
 调用参数:
 * key: [Buffer](../../object/ifs/Buffer.md), 二进制签名密钥
+* data: [Buffer](../../object/ifs/Buffer.md), 创建同时更新的二进制数据，缺省为 null，不更新数据
 
 返回结果:
 * [Digest](../../object/ifs/Digest.md), 返回构造的信息摘要对象
@@ -290,11 +293,13 @@ static Digest hash.hmac_sha384(Buffer key);
 **创建一个 SHA512 信息摘要签名运算对象**
 
 ```JavaScript
-static Digest hash.hmac_sha512(Buffer key);
+static Digest hash.hmac_sha512(Buffer key,
+    Buffer data = NULL);
 ```
 
 调用参数:
 * key: [Buffer](../../object/ifs/Buffer.md), 二进制签名密钥
+* data: [Buffer](../../object/ifs/Buffer.md), 创建同时更新的二进制数据，缺省为 null，不更新数据
 
 返回结果:
 * [Digest](../../object/ifs/Digest.md), 返回构造的信息摘要对象
@@ -304,11 +309,13 @@ static Digest hash.hmac_sha512(Buffer key);
 **创建一个 RIPEMD160 信息摘要签名运算对象**
 
 ```JavaScript
-static Digest hash.hmac_ripemd160(Buffer key);
+static Digest hash.hmac_ripemd160(Buffer key,
+    Buffer data = NULL);
 ```
 
 调用参数:
 * key: [Buffer](../../object/ifs/Buffer.md), 二进制签名密钥
+* data: [Buffer](../../object/ifs/Buffer.md), 创建同时更新的二进制数据，缺省为 null，不更新数据
 
 返回结果:
 * [Digest](../../object/ifs/Digest.md), 返回构造的信息摘要对象
@@ -318,11 +325,13 @@ static Digest hash.hmac_ripemd160(Buffer key);
 **创建一个 SM3 信息摘要签名运算对象**
 
 ```JavaScript
-static Digest hash.hmac_sm3(Buffer key);
+static Digest hash.hmac_sm3(Buffer key,
+    Buffer data = NULL);
 ```
 
 调用参数:
 * key: [Buffer](../../object/ifs/Buffer.md), 二进制签名密钥
+* data: [Buffer](../../object/ifs/Buffer.md), 创建同时更新的二进制数据，缺省为 null，不更新数据
 
 返回结果:
 * [Digest](../../object/ifs/Digest.md), 返回构造的信息摘要对象

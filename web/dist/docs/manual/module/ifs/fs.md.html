@@ -14,8 +14,6 @@
 <li><a href=assert.md.html class ="notranslate">assert</a></li>
 <li><a href=base32.md.html class ="notranslate">base32</a></li>
 <li><a href=base64.md.html class ="notranslate">base64</a></li>
-<li><a href=base64vlq.md.html class ="notranslate">base64vlq</a></li>
-<li><a href=bson.md.html class ="notranslate">bson</a></li>
 <li><a href=child_process.md.html class ="notranslate">child_process</a></li>
 <li><a href=console.md.html class ="notranslate">console</a></li>
 <li><a href=constants.md.html class ="notranslate">constants</a></li>
@@ -26,6 +24,7 @@
 <li><a href=dns.md.html class ="notranslate">dns</a></li>
 <li><a href=encoding.md.html class ="notranslate">encoding</a></li>
 <li class="active"><a href=fs.md.html class ="notranslate">fs</a></li>
+<li><a href=fs_constants.md.html class ="notranslate">fs_constants</a></li>
 <li><a href=gd.md.html class ="notranslate">gd</a></li>
 <li><a href=global.md.html class ="notranslate">global</a></li>
 <li><a href=gui.md.html class ="notranslate">gui</a></li>
@@ -92,10 +91,10 @@
 <li><a href=../../object/ifs/httpuploaddata.md.html class ="notranslate">HttpUploadData</a></li>
 <li><a href=../../object/ifs/httpsserver.md.html class ="notranslate">HttpsServer</a></li>
 <li><a href=../../object/ifs/image.md.html class ="notranslate">Image</a></li>
+<li><a href=../../object/ifs/iterator.md.html class ="notranslate">Iterator</a></li>
 <li><a href=../../object/ifs/leveldb.md.html class ="notranslate">LevelDB</a></li>
 <li><a href=../../object/ifs/lock.md.html class ="notranslate">Lock</a></li>
 <li><a href=../../object/ifs/lrucache.md.html class ="notranslate">LruCache</a></li>
-<li><a href=../../object/ifs/mssql.md.html class ="notranslate">MSSQL</a></li>
 <li><a href=../../object/ifs/memorystream.md.html class ="notranslate">MemoryStream</a></li>
 <li><a href=../../object/ifs/message.md.html class ="notranslate">Message</a></li>
 <li><a href=../../object/ifs/mongocollection.md.html class ="notranslate">MongoCollection</a></li>
@@ -103,6 +102,7 @@
 <li><a href=../../object/ifs/mongodb.md.html class ="notranslate">MongoDB</a></li>
 <li><a href=../../object/ifs/mongoid.md.html class ="notranslate">MongoID</a></li>
 <li><a href=../../object/ifs/mysql.md.html class ="notranslate">MySQL</a></li>
+<li><a href=../../object/ifs/odbc.md.html class ="notranslate">Odbc</a></li>
 <li><a href=../../object/ifs/pkey.md.html class ="notranslate">PKey</a></li>
 <li><a href=../../object/ifs/rangestream.md.html class ="notranslate">RangeStream</a></li>
 <li><a href=../../object/ifs/redis.md.html class ="notranslate">Redis</a></li>
@@ -125,6 +125,8 @@
 <li><a href=../../object/ifs/statswatcher.md.html class ="notranslate">StatsWatcher</a></li>
 <li><a href=../../object/ifs/stream.md.html class ="notranslate">Stream</a></li>
 <li><a href=../../object/ifs/stringdecoder.md.html class ="notranslate">StringDecoder</a></li>
+<li><a href=../../object/ifs/ttyinputstream.md.html class ="notranslate">TTYInputStream</a></li>
+<li><a href=../../object/ifs/ttyoutputstream.md.html class ="notranslate">TTYOutputStream</a></li>
 <li><a href=../../object/ifs/tcpserver.md.html class ="notranslate">TcpServer</a></li>
 <li><a href=../../object/ifs/timer.md.html class ="notranslate">Timer</a></li>
 <li><a href=../../object/ifs/urlobject.md.html class ="notranslate">UrlObject</a></li>
@@ -202,7 +204,13 @@
 <li>运行 <code>fs.watch(filename)</code> 会返回一个继承自 <a href=../../object/ifs/eventemitter.md.html class ="notranslate">EventEmitter</a> 的 watcher, 它支持 &#39;change&#39;, &#39;changeonly&#39;, &#39;renameonly&#39; 三个事件</li>
 <li><code>fs.watchFile(target)</code> 和 <code>fs.unwatchFile(target)</code> 依然可以成对使用</li>
 <li><code>fs.watchFile(target)</code> 会返回一个继承自 <a href=../../object/ifs/eventemitter.md.html class ="notranslate">EventEmitter</a> 的 <a href=../../object/ifs/statswatcher.md.html class ="notranslate">StatsWatcher</a> 对象, 调用 <code>fs.unwatchFile(target)</code> 等价于调用 <code>StatsWatcher.close()</code>.</li>
+<li>因为 uv 在 Linux 上的实现, <code>fs.watch</code> 的 <code>recursive</code> 选项仅在 win32/darwin 被稳定支持. 你依然可以尝试在 Linux 中尝试使用 <code>fs.watch(&#39;/[path](path.md)/to&#39;, { recursive: true }, handler)</code>, 但可能会发现 <code>handler</code> 被回调的时机与你预期的有差异</li>
 </ul>
+<h2 id="对象">对象</h2>
+<h3 id="constants" class ="notranslate">constants</h3>
+<p><strong>fs模块的常量对象</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>fs_constants fs.constants;
+</code></pre>
 <h2 id="静态函数">静态函数</h2>
 <h3 id="exists" class ="notranslate">exists</h3>
 <p><strong>查询指定的文件或目录是否存在</strong></p>
@@ -259,8 +267,28 @@
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">path</span>: String, 指定要创建的目录名</li>
-<li><span class="notranslate">mode</span>: Integer, 指定文件权限，Windows 忽略此参数</li>
+<li><span class="notranslate">mode</span>: Integer, 指定文件权限，Windows 忽略此参数，默认值: 0777</li>
 </ul>
+<hr>
+<p><strong>创建一个目录</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> fs.mkdir(<span class="hljs-built_in">String</span> path,
+    <span class="hljs-built_in">Object</span> opt) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li><span class="notranslate">path</span>: String, 指定要创建的目录名</li>
+<li><span class="notranslate">opt</span>: Object, 指定创建参数</li>
+</ul>
+<p>创建参数可以包含以下值：</p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4</div>{
+    <span class="hljs-attr">recursive</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// 指定是否父目录不存在是是否自动创建，默认值: false</span>
+    <span class="hljs-attr">mode</span>: <span class="hljs-number">0777</span> <span class="hljs-comment">// 指定文件权限，Windows 忽略此参数，默认值: 0777</span>
+}
+</code></pre>
 <hr>
 <h3 id="rmdir" class ="notranslate">rmdir</h3>
 <p><strong>删除一个目录</strong></p>
@@ -283,16 +311,25 @@
 <li><span class="notranslate">to</span>: String, 指定要修改的新文件名</li>
 </ul>
 <hr>
-<h3 id="copy" class ="notranslate">copy</h3>
-<p><strong>复制一个文件</strong></p>
+<h3 id="copyFile" class ="notranslate">copyFile</h3>
+<p><strong>将 src 拷贝到 dest。 默认情况下，如果 dest 已经存在，则覆盖它。</strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div><span class="hljs-keyword">static</span> fs.copy(<span class="hljs-built_in">String</span> <span class="hljs-keyword">from</span>,
-    <span class="hljs-built_in">String</span> to) <span class="hljs-keyword">async</span>;
+2
+3</div><span class="hljs-keyword">static</span> fs.copyFile(<span class="hljs-built_in">String</span> <span class="hljs-keyword">from</span>,
+    <span class="hljs-built_in">String</span> to,
+    Integer mode = <span class="hljs-number">0</span>) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li><span class="notranslate">from</span>: String, 指定更名的文件</li>
-<li><span class="notranslate">to</span>: String, 指定要修改的新文件名</li>
+<li><span class="notranslate">from</span>: String, 指定要拷贝的源文件名</li>
+<li><span class="notranslate">to</span>: String, 指定要拷贝的目标文件名</li>
+<li><span class="notranslate">mode</span>: Integer, 指定拷贝操作的修饰符，缺省为 0</li>
+</ul>
+<p>mode 是一个可选的整数，指定拷贝操作的行为。 可以创建由两个或更多个值按位或组成的掩码（比如 <a href=fs.md.html#constants class ="notranslate">fs.constants</a>.COPYFILE_EXCL | <a href=fs.md.html#constants class ="notranslate">fs.constants</a>.COPYFILE_FICLONE）。</p>
+<ul>
+<li><a href=fs.md.html#constants class ="notranslate">fs.constants</a>.COPYFILE_EXCL - 如果 dest 已存在，则拷贝操作将失败。</li>
+<li><a href=fs.md.html#constants class ="notranslate">fs.constants</a>.COPYFILE_FICLONE - 拷贝操作将尝试创建写时拷贝（copy-on-write）链接。如果平台不支持写时拷贝，则使用后备的拷贝机制。</li>
+<li><a href=fs.md.html#constants class ="notranslate">fs.constants</a>.COPYFILE_FICLONE_FORCE - 拷贝操作将尝试创建写时拷贝链接。如果平台不支持写时拷贝，则拷贝操作将失败。</li>
 </ul>
 <hr>
 <h3 id="chmod" class ="notranslate">chmod</h3>
@@ -856,11 +893,6 @@
 <li><a href=../../object/ifs/statswatcher.md.html class ="notranslate">StatsWatcher</a> 对象</li>
 </ul>
 <p>即便 callback 不再 <a href=../../object/ifs/statswatcher.md.html class ="notranslate">StatsWatcher</a> 的观察事件回调中也不会报错</p>
-<h2 id="静态属性">静态属性</h2>
-<h3 id="constants" class ="notranslate">constants</h3>
-<p><strong>Object, fs模块的常量对象</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly <span class="hljs-built_in">Object</span> fs.constants;
-</code></pre>
 <h2 id="常量">常量</h2>
 <h3 id="SEEK_SET" class ="notranslate">SEEK_SET</h3>
 <p><strong>seek 方式常量，移动到绝对位置</strong></p>

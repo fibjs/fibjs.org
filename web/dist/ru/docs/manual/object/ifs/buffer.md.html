@@ -1,4 +1,4 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../../../imgs/icon.png"><title>Объектный буфер-JavaScript на оптоволокне</title><link href="../../../../../css/common.css" rel="stylesheet"><link href="../../../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Переключить навигацию</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../../../index.html"><img src="../../../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../../../index.html">HOME</a></li><li><a href="../../../guide/readme.md.html">GUIDE</a></li><li><a href="../../module/readme.md.html">MODULE</a></li><li><a href="../readme.md.html">OBJECT</a></li><li><a href="../../../awesome/readme.md.html">AWESOME</a></li><li><a href="../../../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../../../docs/manual/object/ifs/buffer.md.html">中文</a> <a href="../../../../../ca/docs/manual/object/ifs/buffer.md.html">Catalan</a> <a href="../../../../../de/docs/manual/object/ifs/buffer.md.html">Deutsch</a> <a href="../../../../../en/docs/manual/object/ifs/buffer.md.html">English</a> <a href="../../../../../es/docs/manual/object/ifs/buffer.md.html">Español</a> <a href="../../../../../fr/docs/manual/object/ifs/buffer.md.html">Français</a> <a href="../../../../../gl/docs/manual/object/ifs/buffer.md.html">Galego</a> <a href="../../../../../it/docs/manual/object/ifs/buffer.md.html">Italiano</a> <a href="../../../../../ru/docs/manual/object/ifs/buffer.md.html">Русский</a> <a href="../../../../../ja/docs/manual/object/ifs/buffer.md.html">日本語</a> <a href="../../../../../ko/docs/manual/object/ifs/buffer.md.html">한국어</a> <a href="../../../../../zh-tw/docs/manual/object/ifs/buffer.md.html">繁體中文</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Встроенный объект объекта </font></font></span><div class="search"><span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input type="text" class="searchbox ds-input" placeholder="Поиск" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-label="поисковый ввод" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Avenir, &quot;Segoe UI&quot;, Arial, &quot;Hiragino Sans GB&quot;, 冬青黑, &quot;Microsoft YaHei&quot;, 微软雅黑, SimSun, 宋体, Helvetica, Tahoma, &quot;Arial sans-serif&quot;; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div class="ds-dataset-1"></div></span></span></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Домашняя страница</font></font></a></li><li><a href="../readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Встроенные объекты </font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Буфер объекта </font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Руководство по развитию </font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../../../imgs/icon.png"><title>Объектный буфер JavaScript на оптоволокне</title><link href="../../../../../css/common.css" rel="stylesheet"><link href="../../../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Переключить навигацию</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../../../index.html"><img src="../../../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../../../index.html">HOME</a></li><li><a href="../../../guide/readme.md.html">GUIDE</a></li><li><a href="../../module/readme.md.html">MODULE</a></li><li><a href="../readme.md.html">OBJECT</a></li><li><a href="../../../awesome/readme.md.html">AWESOME</a></li><li><a href="../../../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../../../docs/manual/object/ifs/buffer.md.html">中文</a> <a href="../../../../../ca/docs/manual/object/ifs/buffer.md.html">Catalan</a> <a href="../../../../../de/docs/manual/object/ifs/buffer.md.html">Deutsch</a> <a href="../../../../../en/docs/manual/object/ifs/buffer.md.html">English</a> <a href="../../../../../es/docs/manual/object/ifs/buffer.md.html">Español</a> <a href="../../../../../fr/docs/manual/object/ifs/buffer.md.html">Français</a> <a href="../../../../../gl/docs/manual/object/ifs/buffer.md.html">Galego</a> <a href="../../../../../it/docs/manual/object/ifs/buffer.md.html">Italiano</a> <a href="../../../../../ru/docs/manual/object/ifs/buffer.md.html">Русский</a> <a href="../../../../../ja/docs/manual/object/ifs/buffer.md.html">日本語</a> <a href="../../../../../ko/docs/manual/object/ifs/buffer.md.html">한국어</a> <a href="../../../../../zh-tw/docs/manual/object/ifs/buffer.md.html">繁體中文</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Объект встроенный объект </font></font></span><div class="search"><span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input type="text" class="searchbox ds-input" placeholder="Поиск" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-label="поисковый ввод" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Avenir, &quot;Segoe UI&quot;, Arial, &quot;Hiragino Sans GB&quot;, 冬青黑, &quot;Microsoft YaHei&quot;, 微软雅黑, SimSun, 宋体, Helvetica, Tahoma, &quot;Arial sans-serif&quot;; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div class="ds-dataset-1"></div></span></span></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Дом</font></font></a></li><li><a href="../readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Встроенные объекты </font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Буфер объекта </font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Руководство по развитию </font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
 <li><a href="../../../guide/about.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Что такое fibjs?</font></font></a></li>
 <li><a href="../../../guide/install.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Установка и рабочая среда</font></font></a></li>
 <li><a href="../../../guide/hello.md.html" class="notranslate">hello, world</a></li>
@@ -14,8 +14,6 @@
 <li><a href="../../module/ifs/assert.md.html" class="notranslate">assert</a></li>
 <li><a href="../../module/ifs/base32.md.html" class="notranslate">base32</a></li>
 <li><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a></li>
-<li><a href="../../module/ifs/base64vlq.md.html" class="notranslate">base64vlq</a></li>
-<li><a href="../../module/ifs/bson.md.html" class="notranslate">bson</a></li>
 <li><a href="../../module/ifs/child_process.md.html" class="notranslate">child_process</a></li>
 <li><a href="../../module/ifs/console.md.html" class="notranslate">console</a></li>
 <li><a href="../../module/ifs/constants.md.html" class="notranslate">constants</a></li>
@@ -26,6 +24,7 @@
 <li><a href="../../module/ifs/dns.md.html" class="notranslate">dns</a></li>
 <li><a href="../../module/ifs/encoding.md.html" class="notranslate">encoding</a></li>
 <li><a href="../../module/ifs/fs.md.html" class="notranslate">fs</a></li>
+<li><a href="../../module/ifs/fs_constants.md.html" class="notranslate">fs_constants</a></li>
 <li><a href="../../module/ifs/gd.md.html" class="notranslate">gd</a></li>
 <li><a href="../../module/ifs/global.md.html" class="notranslate">global</a></li>
 <li><a href="../../module/ifs/gui.md.html" class="notranslate">gui</a></li>
@@ -92,10 +91,10 @@
 <li><a href="httpuploaddata.md.html" class="notranslate">HttpUploadData</a></li>
 <li><a href="httpsserver.md.html" class="notranslate">HttpsServer</a></li>
 <li><a href="image.md.html" class="notranslate">Image</a></li>
+<li><a href="iterator.md.html" class="notranslate">Iterator</a></li>
 <li><a href="leveldb.md.html" class="notranslate">LevelDB</a></li>
 <li><a href="lock.md.html" class="notranslate">Lock</a></li>
 <li><a href="lrucache.md.html" class="notranslate">LruCache</a></li>
-<li><a href="mssql.md.html" class="notranslate">MSSQL</a></li>
 <li><a href="memorystream.md.html" class="notranslate">MemoryStream</a></li>
 <li><a href="message.md.html" class="notranslate">Message</a></li>
 <li><a href="mongocollection.md.html" class="notranslate">MongoCollection</a></li>
@@ -103,6 +102,7 @@
 <li><a href="mongodb.md.html" class="notranslate">MongoDB</a></li>
 <li><a href="mongoid.md.html" class="notranslate">MongoID</a></li>
 <li><a href="mysql.md.html" class="notranslate">MySQL</a></li>
+<li><a href="odbc.md.html" class="notranslate">Odbc</a></li>
 <li><a href="pkey.md.html" class="notranslate">PKey</a></li>
 <li><a href="rangestream.md.html" class="notranslate">RangeStream</a></li>
 <li><a href="redis.md.html" class="notranslate">Redis</a></li>
@@ -125,6 +125,8 @@
 <li><a href="statswatcher.md.html" class="notranslate">StatsWatcher</a></li>
 <li><a href="stream.md.html" class="notranslate">Stream</a></li>
 <li><a href="stringdecoder.md.html" class="notranslate">StringDecoder</a></li>
+<li><a href="ttyinputstream.md.html" class="notranslate">TTYInputStream</a></li>
+<li><a href="ttyoutputstream.md.html" class="notranslate">TTYOutputStream</a></li>
 <li><a href="tcpserver.md.html" class="notranslate">TcpServer</a></li>
 <li><a href="timer.md.html" class="notranslate">Timer</a></li>
 <li><a href="urlobject.md.html" class="notranslate">UrlObject</a></li>
@@ -197,123 +199,111 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Объект Buffer - это глобальный базовый класс, который можно создать напрямую с помощью new Buffer (...) в любое время:</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">var</span> buf = <span class="hljs-keyword">new</span> Buffer();
 </code></pre>
-<div name="继承关系" data-unique="继承关系"></div><h2 id="继承关系"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Отношения по наследству</font></font></h2>
-<div class="dot notranslate">
-<!-- Generated by graphviz version 2.40.1 (20161225.0304)
- -->
-<!-- Title: %0 Pages: 1 -->
-<svg width="105pt" height="1030pt" viewBox="0.00 0.00 104.56 1030.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 1026)">
-<title>%0</title>
-<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-1026 100.555,-1026 100.555,4 -4,4"></polygon>
-<!-- object -->
-<g id="node1" class="node">
-<title>object</title>
-<g id="a_node1"><a xlink:href="object.md.html" xlink:title="object">
-<polygon fill="#ffffff" stroke="#000000" points="19.446,-969.5 19.446,-1021.5 77.109,-1021.5 77.109,-969.5 19.446,-969.5"></polygon>
-<text text-anchor="middle" x="48.2775" y="-1008.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
-<polyline fill="none" stroke="#000000" points="19.446,-1001.5 77.109,-1001.5 "></polyline>
-<text text-anchor="start" x="27.446" y="-988.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toString()</text>
-<text text-anchor="start" x="27.446" y="-976.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toJSON()</text>
-</a>
-</g>
-</g>
-<!-- Buffer -->
-<g id="me" class="node">
-<title>Buffer</title>
-<g id="a_me"><a xlink:title="Buffer">
-<polygon fill="#d3d3d3" stroke="#000000" points="0,-.5 0,-932.5 96.555,-932.5 96.555,-.5 0,-.5"></polygon>
-<text text-anchor="middle" x="48.2775" y="-919.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Buffer</text>
-<polyline fill="none" stroke="#000000" points="0,-912.5 96.555,-912.5 "></polyline>
-<text text-anchor="start" x="8" y="-899.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">new Buffer()</text>
-<polyline fill="none" stroke="#000000" points="0,-892.5 96.555,-892.5 "></polyline>
-<text text-anchor="start" x="8" y="-879.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">operator[]</text>
-<polyline fill="none" stroke="#000000" points="0,-872.5 96.555,-872.5 "></polyline>
-<text text-anchor="start" x="8" y="-859.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Buffer</text>
-<polyline fill="none" stroke="#000000" points="0,-852.5 96.555,-852.5 "></polyline>
-<text text-anchor="start" x="8" y="-839.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">isBuffer()</text>
-<text text-anchor="start" x="8" y="-827.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">from()</text>
-<text text-anchor="start" x="8" y="-815.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">concat()</text>
-<text text-anchor="start" x="8" y="-803.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">alloc()</text>
-<text text-anchor="start" x="8" y="-791.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">allocUnsafe()</text>
-<text text-anchor="start" x="8" y="-779.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">allocUnsafeSlow()</text>
-<text text-anchor="start" x="8" y="-767.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">byteLength()</text>
-<text text-anchor="start" x="8" y="-755.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">compare()</text>
-<text text-anchor="start" x="8" y="-743.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">isEncoding()</text>
-<polyline fill="none" stroke="#000000" points="0,-736.5 96.555,-736.5 "></polyline>
-<text text-anchor="start" x="8" y="-723.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">length</text>
-<polyline fill="none" stroke="#000000" points="0,-716.5 96.555,-716.5 "></polyline>
-<text text-anchor="start" x="8" y="-703.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">resize()</text>
-<text text-anchor="start" x="8" y="-691.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">append()</text>
-<text text-anchor="start" x="8" y="-679.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">write()</text>
-<text text-anchor="start" x="8" y="-667.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">fill()</text>
-<text text-anchor="start" x="8" y="-655.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">indexOf()</text>
-<text text-anchor="start" x="8" y="-643.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">compare()</text>
-<text text-anchor="start" x="8" y="-631.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">copy()</text>
-<text text-anchor="start" x="8" y="-619.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">set()</text>
-<text text-anchor="start" x="8" y="-607.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readUInt8()</text>
-<text text-anchor="start" x="8" y="-595.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readUInt16LE()</text>
-<text text-anchor="start" x="8" y="-583.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readUInt16BE()</text>
-<text text-anchor="start" x="8" y="-571.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readUInt32LE()</text>
-<text text-anchor="start" x="8" y="-559.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readUInt32BE()</text>
-<text text-anchor="start" x="8" y="-547.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readUIntLE()</text>
-<text text-anchor="start" x="8" y="-535.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readUIntBE()</text>
-<text text-anchor="start" x="8" y="-523.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readInt64LE()</text>
-<text text-anchor="start" x="8" y="-511.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readInt64BE()</text>
-<text text-anchor="start" x="8" y="-499.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readInt8()</text>
-<text text-anchor="start" x="8" y="-487.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readInt16LE()</text>
-<text text-anchor="start" x="8" y="-475.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readInt16BE()</text>
-<text text-anchor="start" x="8" y="-463.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readInt32LE()</text>
-<text text-anchor="start" x="8" y="-451.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readInt32BE()</text>
-<text text-anchor="start" x="8" y="-439.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readIntLE()</text>
-<text text-anchor="start" x="8" y="-427.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readIntBE()</text>
-<text text-anchor="start" x="8" y="-415.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeInt64LE()</text>
-<text text-anchor="start" x="8" y="-403.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeInt64BE()</text>
-<text text-anchor="start" x="8" y="-391.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readFloatLE()</text>
-<text text-anchor="start" x="8" y="-379.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readFloatBE()</text>
-<text text-anchor="start" x="8" y="-367.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readDoubleLE()</text>
-<text text-anchor="start" x="8" y="-355.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readDoubleBE()</text>
-<text text-anchor="start" x="8" y="-343.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeUInt8()</text>
-<text text-anchor="start" x="8" y="-331.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeUInt16LE()</text>
-<text text-anchor="start" x="8" y="-319.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeUInt16BE()</text>
-<text text-anchor="start" x="8" y="-307.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeUInt32LE()</text>
-<text text-anchor="start" x="8" y="-295.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeUInt32BE()</text>
-<text text-anchor="start" x="8" y="-283.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeUIntLE()</text>
-<text text-anchor="start" x="8" y="-271.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeUIntBE()</text>
-<text text-anchor="start" x="8" y="-259.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeInt8()</text>
-<text text-anchor="start" x="8" y="-247.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeInt16LE()</text>
-<text text-anchor="start" x="8" y="-235.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeInt16BE()</text>
-<text text-anchor="start" x="8" y="-223.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeInt32LE()</text>
-<text text-anchor="start" x="8" y="-211.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeInt32BE()</text>
-<text text-anchor="start" x="8" y="-199.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeIntLE()</text>
-<text text-anchor="start" x="8" y="-187.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeIntBE()</text>
-<text text-anchor="start" x="8" y="-175.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeFloatLE()</text>
-<text text-anchor="start" x="8" y="-163.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeFloatBE()</text>
-<text text-anchor="start" x="8" y="-151.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeDoubleLE()</text>
-<text text-anchor="start" x="8" y="-139.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeDoubleBE()</text>
-<text text-anchor="start" x="8" y="-127.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">slice()</text>
-<text text-anchor="start" x="8" y="-115.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">join()</text>
-<text text-anchor="start" x="8" y="-103.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">reverse()</text>
-<text text-anchor="start" x="8" y="-91.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">equals()</text>
-<text text-anchor="start" x="8" y="-79.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">hex()</text>
-<text text-anchor="start" x="8" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">base64()</text>
-<text text-anchor="start" x="8" y="-55.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">keys()</text>
-<text text-anchor="start" x="8" y="-43.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">values()</text>
-<text text-anchor="start" x="8" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">entries()</text>
-<text text-anchor="start" x="8" y="-19.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toArray()</text>
-<text text-anchor="start" x="8" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toString()</text>
-</a>
-</g>
-</g>
-<!-- object&#45;&gt;Buffer -->
-<g id="edge1" class="edge">
-<title>object-&gt;Buffer</title>
-<path fill="none" stroke="#000000" d="M48.2775,-959.0025C48.2775,-951.2257 48.2775,-942.3797 48.2775,-932.6362"></path>
-<polygon fill="#000000" stroke="#000000" points="44.7776,-959.2668 48.2775,-969.2668 51.7776,-959.2668 44.7776,-959.2668"></polygon>
-</g>
-</g>
-</svg>
-</div>
+<div name="继承关系" data-unique="继承关系"></div><h2 id="继承关系"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Наследование</font></font></h2>
+<div class="dot notranslate"><svg version="1.1" baseProfile="full" width="160" height="1442" viewBox="0 0 160 1442" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events" style="font:normal normal 10pt Helvetica,sans-Serif, Helvetica, sans-serif;;stroke-linejoin:round;stroke-linecap:round">
+  <desc>
+#lineWidth: 1.5
+#font: Helvetica,sans-Serif
+#fontSize: 10
+#leading: 1.6
+#.this: fill=lightgray
+#.class: fill=white
+
+[&lt;class&gt;object|toString();toJSON()]
+[&lt;this&gt;Buffer|new Buffer()|operator[];@iterator()|Buffer|isBuffer();from();concat();alloc();allocUnsafe();allocUnsafeSlow();byteLength();compare();isEncoding()|length|resize();append();write();fill();indexOf();compare();copy();set();readUInt8();readUInt16LE();readUInt16BE();readUInt32LE();readUInt32BE();readUIntLE();readUIntBE();readInt64LE();readInt64BE();readInt8();readInt16LE();readInt16BE();readInt32LE();readInt32BE();readIntLE();readIntBE();writeInt64LE();writeInt64BE();readFloatLE();readFloatBE();readDoubleLE();readDoubleBE();writeUInt8();writeUInt16LE();writeUInt16BE();writeUInt32LE();writeUInt32BE();writeUIntLE();writeUIntBE();writeInt8();writeInt16LE();writeInt16BE();writeInt32LE();writeInt32BE();writeIntLE();writeIntBE();writeFloatLE();writeFloatBE();writeDoubleLE();writeDoubleBE();slice();join();reverse();equals();hex();base64();keys();values();entries();toArray();toString()]
+
+[object] &lt;:- [Buffer]
+</desc>
+  <rect x="0" y="0" height="1442" width="160" style="stroke:none; fill:transparent;"></rect>
+  <path d="M80 93 L80 113 L80 133 L80 133 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M85.3 106.3 L80 106.3 L74.7 106.3 L80 93 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <rect x="13" y="133" height="1296" width="134" data-name="Buffer" style="stroke:#33322E;fill:lightgray;stroke-dasharray:none;stroke-width:1.5;"></rect>
+  <text x="80" y="154" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="Buffer">Buffer</text>
+  <text x="21" y="186" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">new Buffer()</text>
+  <text x="21" y="218" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">operator[]</text>
+  <text x="21" y="234" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">@iterator()</text>
+  <text x="21" y="266" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">Buffer</text>
+  <text x="21" y="298" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">isBuffer()</text>
+  <text x="21" y="314" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">from()</text>
+  <text x="21" y="330" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">concat()</text>
+  <text x="21" y="346" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">alloc()</text>
+  <text x="21" y="362" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">allocUnsafe()</text>
+  <text x="21" y="378" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">allocUnsafeSlow()</text>
+  <text x="21" y="394" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">byteLength()</text>
+  <text x="21" y="410" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">compare()</text>
+  <text x="21" y="426" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">isEncoding()</text>
+  <text x="21" y="458" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">length</text>
+  <text x="21" y="490" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">resize()</text>
+  <text x="21" y="506" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">append()</text>
+  <text x="21" y="522" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">write()</text>
+  <text x="21" y="538" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">fill()</text>
+  <text x="21" y="554" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">indexOf()</text>
+  <text x="21" y="570" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">compare()</text>
+  <text x="21" y="586" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">copy()</text>
+  <text x="21" y="602" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">set()</text>
+  <text x="21" y="618" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">readUInt8()</text>
+  <text x="21" y="634" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">readUInt16LE()</text>
+  <text x="21" y="650" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">readUInt16BE()</text>
+  <text x="21" y="666" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">readUInt32LE()</text>
+  <text x="21" y="682" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">readUInt32BE()</text>
+  <text x="21" y="698" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">readUIntLE()</text>
+  <text x="21" y="714" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">readUIntBE()</text>
+  <text x="21" y="730" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">readInt64LE()</text>
+  <text x="21" y="746" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">readInt64BE()</text>
+  <text x="21" y="762" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">readInt8()</text>
+  <text x="21" y="778" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">readInt16LE()</text>
+  <text x="21" y="794" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">readInt16BE()</text>
+  <text x="21" y="810" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">readInt32LE()</text>
+  <text x="21" y="826" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">readInt32BE()</text>
+  <text x="21" y="842" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">readIntLE()</text>
+  <text x="21" y="858" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">readIntBE()</text>
+  <text x="21" y="874" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">writeInt64LE()</text>
+  <text x="21" y="890" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">writeInt64BE()</text>
+  <text x="21" y="906" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">readFloatLE()</text>
+  <text x="21" y="922" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">readFloatBE()</text>
+  <text x="21" y="938" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">readDoubleLE()</text>
+  <text x="21" y="954" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">readDoubleBE()</text>
+  <text x="21" y="970" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">writeUInt8()</text>
+  <text x="21" y="986" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">writeUInt16LE()</text>
+  <text x="21" y="1002" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">writeUInt16BE()</text>
+  <text x="21" y="1018" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">writeUInt32LE()</text>
+  <text x="21" y="1034" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">writeUInt32BE()</text>
+  <text x="21" y="1050" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">writeUIntLE()</text>
+  <text x="21" y="1066" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">writeUIntBE()</text>
+  <text x="21" y="1082" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">writeInt8()</text>
+  <text x="21" y="1098" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">writeInt16LE()</text>
+  <text x="21" y="1114" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">writeInt16BE()</text>
+  <text x="21" y="1130" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">writeInt32LE()</text>
+  <text x="21" y="1146" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">writeInt32BE()</text>
+  <text x="21" y="1162" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">writeIntLE()</text>
+  <text x="21" y="1178" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">writeIntBE()</text>
+  <text x="21" y="1194" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">writeFloatLE()</text>
+  <text x="21" y="1210" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">writeFloatBE()</text>
+  <text x="21" y="1226" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">writeDoubleLE()</text>
+  <text x="21" y="1242" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">writeDoubleBE()</text>
+  <text x="21" y="1258" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">slice()</text>
+  <text x="21" y="1274" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">join()</text>
+  <text x="21" y="1290" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">reverse()</text>
+  <text x="21" y="1306" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">equals()</text>
+  <text x="21" y="1322" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">hex()</text>
+  <text x="21" y="1338" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">base64()</text>
+  <text x="21" y="1354" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">keys()</text>
+  <text x="21" y="1370" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">values()</text>
+  <text x="21" y="1386" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">entries()</text>
+  <text x="21" y="1402" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">toArray()</text>
+  <text x="21" y="1418" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">toString()</text>
+  <path d="M13 165 L147 165" data-name="Buffer" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M13 197 L147 197" data-name="Buffer" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M13 245 L147 245" data-name="Buffer" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M13 277 L147 277" data-name="Buffer" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M13 437 L147 437" data-name="Buffer" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M13 469 L147 469" data-name="Buffer" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <rect x="42" y="13" height="80" width="77" data-name="object" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
+  <text x="80.5" y="34" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="object">object</text>
+  <text x="50" y="66" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="object">toString()</text>
+  <text x="50" y="82" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="object">toJSON()</text>
+  <path d="M42 45 L119 45" data-name="object" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+</svg></div>
 
 <div name="构造函数" data-unique="构造函数"></div><h2 id="构造函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Конструктор</font></font></h2>
 <div name="Buffer" data-unique="Buffer"></div><h3 id="Buffer" class="notranslate">Buffer</h3>
@@ -364,8 +354,8 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
 <ul>
-<li><span class="notranslate">str</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, строка инициализации, строка будет записана в формате utf-8, а по умолчанию создается пустой объект</font></font></li>
-<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, укажите формат кодировки, допустимое значение: "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">","</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"," utf8 "или набор символов, поддерживаемый системой</font></font></li>
+<li><span class="notranslate">str</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, строка инициализации, строка будет записана в формате utf-8, а по умолчанию создается пустой объект.</font></font></li>
+<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, укажите формат кодировки, допустимое значение: "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">","</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"," utf8 "или </font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Набор символов, поддерживаемый модулем</font></font></li>
 </ul>
 <hr>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Конструктор объекта кеширования</font></font></strong></p>
@@ -373,13 +363,24 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
 <ul>
-<li><span class="notranslate">size</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Целое число, начальный размер буфера</font></font></li>
+<li><span class="notranslate">size</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Целое число, инициализировать размер буфера</font></font></li>
 </ul>
-<div name="下标操作" data-unique="下标操作"></div><h2 id="下标操作"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Подстрочная операция</font></font></h2>
+<div name="操作符" data-unique="操作符"></div><h2 id="操作符"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Оператор</font></font></h2>
+<div name="operator[]" data-unique="operator[]"></div><h3 id="operator[]" class="notranslate">operator[]</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Кэшированные объекты могут напрямую обращаться к двоичным данным с помощью индексов.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer Buffer[];
 </code></pre>
+<hr>
+<div name="@iterator" data-unique="@iterator"></div><h3 id="@iterator" class="notranslate">@iterator</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Запросить итератор текущего элемента объекта</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Iterator Buffer.@iterator();
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Результат возврата:</font></font></p>
+<ul>
+<li><a href="iterator.md.html" class="notranslate">Iterator</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Возвращает итератор текущих элементов объекта</font></font></li>
+</ul>
 <div name="对象" data-unique="对象"></div><h2 id="对象"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Объект</font></font></h2>
+<div name="Buffer8" data-unique="Buffer8"></div><h3 id="Buffer" class="notranslate">Buffer</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Объект кэша двоичных данных для </font></font><a href="../../module/ifs/io.md.html" class="notranslate">io</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Обработка данных для чтения и записи</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Buffer <span class="hljs-keyword">new</span> Buffer;
 </code></pre>
@@ -441,8 +442,8 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
 <ul>
-<li><span class="notranslate">str</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, строка инициализации, строка будет записана в формате utf-8, а по умолчанию создается пустой объект</font></font></li>
-<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, укажите формат кодировки, допустимое значение: "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">","</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"," utf8 "или набор символов, поддерживаемый системой</font></font></li>
+<li><span class="notranslate">str</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, строка инициализации, строка будет записана в формате utf-8, а по умолчанию создается пустой объект.</font></font></li>
+<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, укажите формат кодировки, допустимое значение: "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">","</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"," utf8 "или </font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Набор символов, поддерживаемый модулем</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Результат возврата:</font></font></p>
 <ul>
@@ -477,7 +478,7 @@
 <ul>
 <li><span class="notranslate">size</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Целое число, требуемая длина буфера</font></font></li>
 <li><span class="notranslate">fill</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Integer, предварительно заполните значение нового буфера, вы можете использовать строковые / буферные / целочисленные типы значений. </font><font style="vertical-align: inherit;">Значение по умолчанию: 0</font></font></li>
-<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, укажите формат кодировки, допустимое значение: "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">","</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"," utf8 "или набор символов, поддерживаемый системой</font></font></li>
+<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, укажите формат кодировки, допустимое значение: "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">","</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"," utf8 "или </font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Набор символов, поддерживаемый модулем</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Результат возврата:</font></font></p>
 <ul>
@@ -495,7 +496,7 @@
 <ul>
 <li><span class="notranslate">size</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Целое число, требуемая длина буфера</font></font></li>
 <li><span class="notranslate">fill</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, предварительно заполните значение нового буфера, вы можете использовать строковые / буферные / целочисленные типы значений. </font><font style="vertical-align: inherit;">Значение по умолчанию: 0</font></font></li>
-<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, укажите формат кодировки, допустимое значение: "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">","</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"," utf8 "или набор символов, поддерживаемый системой</font></font></li>
+<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, укажите формат кодировки, допустимое значение: "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">","</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"," utf8 "или </font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Набор символов, поддерживаемый модулем</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Результат возврата:</font></font></p>
 <ul>
@@ -513,7 +514,7 @@
 <ul>
 <li><span class="notranslate">size</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Целое число, требуемая длина буфера</font></font></li>
 <li><span class="notranslate">fill</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Buffer, предварительно заполните значение нового буфера, вы можете использовать строковые / буферные / целочисленные типы значений. </font><font style="vertical-align: inherit;">Значение по умолчанию: 0</font></font></li>
-<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, укажите формат кодировки, допустимое значение: "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">","</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"," utf8 "или набор символов, поддерживаемый системой</font></font></li>
+<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, укажите формат кодировки, допустимое значение: "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">","</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"," utf8 "или </font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Набор символов, поддерживаемый модулем</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Результат возврата:</font></font></p>
 <ul>
@@ -555,7 +556,7 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
 <ul>
 <li><span class="notranslate">str</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, строка извлекаемых байтов, если str является объектом ArrayBuffer / TypedArray / DataView / Buffer, вернуть их фактическую длину</font></font></li>
-<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, укажите формат кодировки, допустимое значение: "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">","</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"," utf8 "или набор символов, поддерживаемый системой</font></font></li>
+<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, укажите формат кодировки, допустимое значение: "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">","</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"," utf8 "или </font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Набор символов, поддерживаемый модулем</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Результат возврата:</font></font></p>
 <ul>
@@ -570,7 +571,7 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
 <ul>
 <li><span class="notranslate">str</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: ArrayBuffer, строка извлекаемых байтов, если str является объектом ArrayBuffer / TypedArray / DataView / Buffer, вернуть их фактическую длину</font></font></li>
-<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, укажите формат кодировки, допустимое значение: "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">","</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"," utf8 "или набор символов, поддерживаемый системой</font></font></li>
+<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, укажите формат кодировки, допустимое значение: "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">","</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"," utf8 "или </font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Набор символов, поддерживаемый модулем</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Результат возврата:</font></font></p>
 <ul>
@@ -585,7 +586,7 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
 <ul>
 <li><span class="notranslate">str</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: ArrayBufferView, строка извлекаемых байтов, если str является объектом ArrayBuffer / TypedArray / DataView / Buffer, вернуть их фактическую длину</font></font></li>
-<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, укажите формат кодировки, допустимое значение: "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">","</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"," utf8 "или набор символов, поддерживаемый системой</font></font></li>
+<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, укажите формат кодировки, допустимое значение: "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">","</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"," utf8 "или </font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Набор символов, поддерживаемый модулем</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Результат возврата:</font></font></p>
 <ul>
@@ -600,7 +601,7 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
 <ul>
 <li><span class="notranslate">str</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Buffer, строка извлекаемых байтов, если str является объектом ArrayBuffer / TypedArray / DataView / Buffer, вернуть их фактическую длину</font></font></li>
-<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, укажите формат кодировки, допустимое значение: "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">","</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"," utf8 "или набор символов, поддерживаемый системой</font></font></li>
+<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, укажите формат кодировки, допустимое значение: "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">","</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"," utf8 "или </font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Набор символов, поддерживаемый модулем</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Результат возврата:</font></font></p>
 <ul>
@@ -656,7 +657,7 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
 <ul>
-<li><span class="notranslate">data</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Буфер, инициализация двоичных данных</font></font></li>
+<li><span class="notranslate">data</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Буфер, инициализировать двоичные данные</font></font></li>
 </ul>
 <hr>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Напишите строку в конце объекта кеша, строка будет записана в формате utf-8</font></font></strong></p>
@@ -667,7 +668,7 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
 <ul>
 <li><span class="notranslate">str</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, строка для записи</font></font></li>
-<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, укажите формат кодировки, допустимое значение: "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">","</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"," utf8 "или набор символов, поддерживаемый системой</font></font></li>
+<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, укажите формат кодировки, допустимое значение: "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">","</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"," utf8 "или </font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Набор символов, поддерживаемый модулем</font></font></li>
 </ul>
 <hr>
 <div name="write" data-unique="write"></div><h3 id="write" class="notranslate">write</h3>
@@ -685,7 +686,7 @@
 <li><span class="notranslate">str</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, строка для записи</font></font></li>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Целое число, запись начальной позиции</font></font></li>
 <li><span class="notranslate">length</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Целое число, длина записи (единичный байт, значение по умолчанию -1), если не указано, это длина записываемой строки</font></font></li>
-<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, укажите формат кодировки, допустимое значение: "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">","</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"," utf8 "или набор символов, поддерживаемый системой</font></font></li>
+<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, укажите формат кодировки, допустимое значение: "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">","</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"," utf8 "или </font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Набор символов, поддерживаемый модулем</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Результат возврата:</font></font></p>
 <ul>
@@ -703,7 +704,7 @@
 <ul>
 <li><span class="notranslate">str</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, строка для записи</font></font></li>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Целое число, запись начальной позиции</font></font></li>
-<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, укажите формат кодировки, допустимое значение: "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">","</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"," utf8 "или набор символов, поддерживаемый системой</font></font></li>
+<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, укажите формат кодировки, допустимое значение: "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">","</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"," utf8 "или </font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Набор символов, поддерживаемый модулем</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Результат возврата:</font></font></p>
 <ul>
@@ -718,7 +719,7 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
 <ul>
 <li><span class="notranslate">str</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, строка для записи</font></font></li>
-<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, укажите формат кодировки, допустимое значение: "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">","</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"," utf8 "или набор символов, поддерживаемый системой</font></font></li>
+<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, укажите формат кодировки, допустимое значение: "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">","</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"," utf8 "или </font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Набор символов, поддерживаемый модулем</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Результат возврата:</font></font></p>
 <ul>
@@ -826,7 +827,7 @@
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Вернуть найденное местоположение, вернуть -1, если не найдено</font></font></li>
 </ul>
 <hr>
-<div name="compare24" data-unique="compare24"></div><h3 id="compare" class="notranslate">compare</h3>
+<div name="compare27" data-unique="compare27"></div><h3 id="compare" class="notranslate">compare</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Сравните содержимое кеша</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer Buffer.compare(Buffer buf);
 </code></pre>
@@ -840,7 +841,7 @@
 </ul>
 <hr>
 <div name="copy" data-unique="copy"></div><h3 id="copy" class="notranslate">copy</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Копирование данных из области объекта исходного кэша в область объекта целевого кэша</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Скопируйте данные из области объекта исходного кэша в область объекта целевого кэша.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
@@ -854,7 +855,7 @@
 <li><span class="notranslate">targetBuffer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Буфер, целевой буферный объект</font></font></li>
 <li><span class="notranslate">targetStart</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Целое число, позиция в байтах целевого объекта кэша для начала копирования, по умолчанию 0</font></font></li>
 <li><span class="notranslate">sourceStart</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Целое число, начальная позиция байта объекта исходного кэша, по умолчанию 0</font></font></li>
-<li><span class="notranslate">sourceEnd</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Целое число, позиция конечного байта объекта исходного кэша, по умолчанию -1, что означает длину исходных данных.</font></font></li>
+<li><span class="notranslate">sourceEnd</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Целое число, позиция в конце байта объекта исходного кэша, по умолчанию -1, что означает длину исходных данных.</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Результат возврата:</font></font></p>
 <ul>
@@ -862,7 +863,7 @@
 </ul>
 <hr>
 <div name="set" data-unique="set"></div><h3 id="set" class="notranslate">set</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Копирование данных из области объекта исходного кэша в область объекта целевого кэша</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Скопируйте данные из области объекта исходного кэша в область объекта целевого кэша.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Integer Buffer.set(Buffer src,<font></font>
     Integer start);<font></font>
@@ -879,14 +880,11 @@
 <hr>
 <div name="readUInt8" data-unique="readUInt8"></div><h3 id="readUInt8" class="notranslate">readUInt8</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Прочитать 8-битное целое число без знака из объекта кеша</font></font></strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div>Integer Buffer.readUInt8(Integer offset = <span class="hljs-number">0</span>,
-    <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer Buffer.readUInt8(Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
 <ul>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Целое число, укажите начальную позицию для чтения, по умолчанию 0</font></font></li>
-<li><span class="notranslate">noAssert</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Boolean, указывает, что при чтении за пределами диапазона ошибок не будет, по умолчанию flase, throw</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Результат возврата:</font></font></p>
 <ul>
@@ -895,14 +893,11 @@
 <hr>
 <div name="readUInt16LE" data-unique="readUInt16LE"></div><h3 id="readUInt16LE" class="notranslate">readUInt16LE</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Прочитать 16-битное целое число без знака из объекта кэша и сохранить его в младшем порядке.</font></font></strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div>Integer Buffer.readUInt16LE(Integer offset = <span class="hljs-number">0</span>,
-    <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer Buffer.readUInt16LE(Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
 <ul>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Целое число, укажите начальную позицию для чтения, по умолчанию 0</font></font></li>
-<li><span class="notranslate">noAssert</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Boolean, указывает, что при чтении за пределами диапазона ошибок не будет, по умолчанию flase, throw</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Результат возврата:</font></font></p>
 <ul>
@@ -911,14 +906,11 @@
 <hr>
 <div name="readUInt16BE" data-unique="readUInt16BE"></div><h3 id="readUInt16BE" class="notranslate">readUInt16BE</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Считать 16-разрядное целое число без знака из объекта кеша и сохранить его в порядке с прямым порядком байтов.</font></font></strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div>Integer Buffer.readUInt16BE(Integer offset = <span class="hljs-number">0</span>,
-    <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer Buffer.readUInt16BE(Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
 <ul>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Целое число, укажите начальную позицию для чтения, по умолчанию 0</font></font></li>
-<li><span class="notranslate">noAssert</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Boolean, указывает, что при чтении за пределами диапазона ошибок не будет, по умолчанию flase, throw</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Результат возврата:</font></font></p>
 <ul>
@@ -927,14 +919,11 @@
 <hr>
 <div name="readUInt32LE" data-unique="readUInt32LE"></div><h3 id="readUInt32LE" class="notranslate">readUInt32LE</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Прочитать 32-битное целое число без знака из объекта кеша и сохранить его в младшем порядке.</font></font></strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div>Long Buffer.readUInt32LE(Integer offset = <span class="hljs-number">0</span>,
-    <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Long Buffer.readUInt32LE(Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
 <ul>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Целое число, укажите начальную позицию для чтения, по умолчанию 0</font></font></li>
-<li><span class="notranslate">noAssert</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Boolean, указывает, что при чтении за пределами диапазона ошибок не будет, по умолчанию flase, throw</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Результат возврата:</font></font></p>
 <ul>
@@ -943,14 +932,11 @@
 <hr>
 <div name="readUInt32BE" data-unique="readUInt32BE"></div><h3 id="readUInt32BE" class="notranslate">readUInt32BE</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Прочитать 32-битное целое число без знака из объекта кеша и сохранить его в порядке с прямым порядком байтов.</font></font></strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div>Long Buffer.readUInt32BE(Integer offset = <span class="hljs-number">0</span>,
-    <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Long Buffer.readUInt32BE(Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
 <ul>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Целое число, укажите начальную позицию для чтения, по умолчанию 0</font></font></li>
-<li><span class="notranslate">noAssert</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Boolean, указывает, что при чтении за пределами диапазона ошибок не будет, по умолчанию flase, throw</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Результат возврата:</font></font></p>
 <ul>
@@ -960,16 +946,13 @@
 <div name="readUIntLE" data-unique="readUIntLE"></div><h3 id="readUIntLE" class="notranslate">readUIntLE</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Чтение беззнакового целого числа из объекта кеша с максимальной поддержкой 64 бита, хранимого в младшем порядке</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
-2
-3</div>Long Buffer.readUIntLE(Integer offset = <span class="hljs-number">0</span>,<font></font>
-    Integer byteLength = <span class="hljs-number">8</span>,
-    <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+2</div>Long Buffer.readUIntLE(Integer offset = <span class="hljs-number">0</span>,<font></font>
+    Integer byteLength = <span class="hljs-number">8</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
 <ul>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Целое число, укажите начальную позицию для чтения, по умолчанию 0</font></font></li>
 <li><span class="notranslate">byteLength</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Целое число, укажите количество прочитанных байтов, по умолчанию 8 байтов.</font></font></li>
-<li><span class="notranslate">noAssert</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Boolean, указывает, что при чтении за пределами диапазона ошибок не будет, по умолчанию flase, throw</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Результат возврата:</font></font></p>
 <ul>
@@ -979,16 +962,13 @@
 <div name="readUIntBE" data-unique="readUIntBE"></div><h3 id="readUIntBE" class="notranslate">readUIntBE</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Чтение целого числа без знака из объекта кэша с максимальной поддержкой 64 бит, хранящихся в порядке с прямым порядком байтов.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
-2
-3</div>Long Buffer.readUIntBE(Integer offset = <span class="hljs-number">0</span>,<font></font>
-    Integer byteLength = <span class="hljs-number">8</span>,
-    <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+2</div>Long Buffer.readUIntBE(Integer offset = <span class="hljs-number">0</span>,<font></font>
+    Integer byteLength = <span class="hljs-number">8</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
 <ul>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Целое число, укажите начальную позицию для чтения, по умолчанию 0</font></font></li>
 <li><span class="notranslate">byteLength</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Целое число, укажите количество прочитанных байтов, по умолчанию 8 байтов.</font></font></li>
-<li><span class="notranslate">noAssert</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Boolean, указывает, что при чтении за пределами диапазона ошибок не будет, по умолчанию flase, throw</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Результат возврата:</font></font></p>
 <ul>
@@ -997,14 +977,11 @@
 <hr>
 <div name="readInt64LE" data-unique="readInt64LE"></div><h3 id="readInt64LE" class="notranslate">readInt64LE</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Считать 64-битное целочисленное значение из объекта кеша и сохранить его в младшем порядке.</font></font></strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div>Long Buffer.readInt64LE(Integer offset = <span class="hljs-number">0</span>,
-    <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Long Buffer.readInt64LE(Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
 <ul>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Целое число, укажите начальную позицию для чтения, по умолчанию 0</font></font></li>
-<li><span class="notranslate">noAssert</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Boolean, указывает, что при чтении за пределами диапазона ошибок не будет, по умолчанию flase, throw</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Результат возврата:</font></font></p>
 <ul>
@@ -1013,14 +990,11 @@
 <hr>
 <div name="readInt64BE" data-unique="readInt64BE"></div><h3 id="readInt64BE" class="notranslate">readInt64BE</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Считайте 64-битное целое число из объекта кеша и сохраните его в порядке с прямым порядком байтов.</font></font></strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div>Long Buffer.readInt64BE(Integer offset = <span class="hljs-number">0</span>,
-    <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Long Buffer.readInt64BE(Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
 <ul>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Целое число, укажите начальную позицию для чтения, по умолчанию 0</font></font></li>
-<li><span class="notranslate">noAssert</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Boolean, указывает, что при чтении за пределами диапазона ошибок не будет, по умолчанию flase, throw</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Результат возврата:</font></font></p>
 <ul>
@@ -1029,14 +1003,11 @@
 <hr>
 <div name="readInt8" data-unique="readInt8"></div><h3 id="readInt8" class="notranslate">readInt8</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Прочитать 8-битное целочисленное значение из объекта кеша</font></font></strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div>Integer Buffer.readInt8(Integer offset = <span class="hljs-number">0</span>,
-    <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer Buffer.readInt8(Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
 <ul>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Целое число, укажите начальную позицию для чтения, по умолчанию 0</font></font></li>
-<li><span class="notranslate">noAssert</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Boolean, указывает, что при чтении за пределами диапазона ошибок не будет, по умолчанию flase, throw</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Результат возврата:</font></font></p>
 <ul>
@@ -1045,14 +1016,11 @@
 <hr>
 <div name="readInt16LE" data-unique="readInt16LE"></div><h3 id="readInt16LE" class="notranslate">readInt16LE</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Считайте 16-битное целое число из объекта кеша и сохраните его в младшем порядке.</font></font></strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div>Integer Buffer.readInt16LE(Integer offset = <span class="hljs-number">0</span>,
-    <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer Buffer.readInt16LE(Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
 <ul>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Целое число, укажите начальную позицию для чтения, по умолчанию 0</font></font></li>
-<li><span class="notranslate">noAssert</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Boolean, указывает, что при чтении за пределами диапазона ошибок не будет, по умолчанию flase, throw</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Результат возврата:</font></font></p>
 <ul>
@@ -1061,14 +1029,11 @@
 <hr>
 <div name="readInt16BE" data-unique="readInt16BE"></div><h3 id="readInt16BE" class="notranslate">readInt16BE</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Считайте 16-битное целое число из объекта кеша и сохраните его в порядке с прямым порядком байтов.</font></font></strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div>Integer Buffer.readInt16BE(Integer offset = <span class="hljs-number">0</span>,
-    <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer Buffer.readInt16BE(Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
 <ul>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Целое число, укажите начальную позицию для чтения, по умолчанию 0</font></font></li>
-<li><span class="notranslate">noAssert</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Boolean, указывает, что при чтении за пределами диапазона ошибок не будет, по умолчанию flase, throw</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Результат возврата:</font></font></p>
 <ul>
@@ -1077,14 +1042,11 @@
 <hr>
 <div name="readInt32LE" data-unique="readInt32LE"></div><h3 id="readInt32LE" class="notranslate">readInt32LE</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Считайте 32-битное целое число из объекта кеша и сохраните его в младшем порядке.</font></font></strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div>Integer Buffer.readInt32LE(Integer offset = <span class="hljs-number">0</span>,
-    <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer Buffer.readInt32LE(Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
 <ul>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Целое число, укажите начальную позицию для чтения, по умолчанию 0</font></font></li>
-<li><span class="notranslate">noAssert</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Boolean, указывает, что при чтении за пределами диапазона ошибок не будет, по умолчанию flase, throw</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Результат возврата:</font></font></p>
 <ul>
@@ -1093,14 +1055,11 @@
 <hr>
 <div name="readInt32BE" data-unique="readInt32BE"></div><h3 id="readInt32BE" class="notranslate">readInt32BE</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Считайте 32-битное целое число из объекта кеша и сохраните его в порядке с прямым порядком байтов.</font></font></strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div>Integer Buffer.readInt32BE(Integer offset = <span class="hljs-number">0</span>,
-    <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer Buffer.readInt32BE(Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
 <ul>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Целое число, укажите начальную позицию для чтения, по умолчанию 0</font></font></li>
-<li><span class="notranslate">noAssert</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Boolean, указывает, что при чтении за пределами диапазона ошибок не будет, по умолчанию flase, throw</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Результат возврата:</font></font></p>
 <ul>
@@ -1110,16 +1069,13 @@
 <div name="readIntLE" data-unique="readIntLE"></div><h3 id="readIntLE" class="notranslate">readIntLE</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Чтение целочисленного значения из объекта кеша с максимальной поддержкой 64 бит, хранящихся в младшем порядке</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
-2
-3</div>Long Buffer.readIntLE(Integer offset = <span class="hljs-number">0</span>,<font></font>
-    Integer byteLength = <span class="hljs-number">8</span>,
-    <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+2</div>Long Buffer.readIntLE(Integer offset = <span class="hljs-number">0</span>,<font></font>
+    Integer byteLength = <span class="hljs-number">8</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
 <ul>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Целое число, укажите начальную позицию для чтения, по умолчанию 0</font></font></li>
 <li><span class="notranslate">byteLength</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Целое число, укажите количество прочитанных байтов, по умолчанию 8 байтов.</font></font></li>
-<li><span class="notranslate">noAssert</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Boolean, указывает, что при чтении за пределами диапазона ошибок не будет, по умолчанию flase, throw</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Результат возврата:</font></font></p>
 <ul>
@@ -1129,16 +1085,13 @@
 <div name="readIntBE" data-unique="readIntBE"></div><h3 id="readIntBE" class="notranslate">readIntBE</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Считайте целочисленное значение из объекта кеша с максимальной поддержкой 64 бит и сохраните его в порядке с прямым порядком байтов.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
-2
-3</div>Long Buffer.readIntBE(Integer offset = <span class="hljs-number">0</span>,<font></font>
-    Integer byteLength = <span class="hljs-number">8</span>,
-    <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+2</div>Long Buffer.readIntBE(Integer offset = <span class="hljs-number">0</span>,<font></font>
+    Integer byteLength = <span class="hljs-number">8</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
 <ul>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Целое число, укажите начальную позицию для чтения, по умолчанию 0</font></font></li>
 <li><span class="notranslate">byteLength</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Целое число, укажите количество прочитанных байтов, по умолчанию 8 байтов.</font></font></li>
-<li><span class="notranslate">noAssert</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Boolean, указывает, что при чтении за пределами диапазона ошибок не будет, по умолчанию flase, throw</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Результат возврата:</font></font></p>
 <ul>
@@ -1148,16 +1101,13 @@
 <div name="writeInt64LE" data-unique="writeInt64LE"></div><h3 id="writeInt64LE" class="notranslate">writeInt64LE</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Записать 64-битное целочисленное значение в объект кэша в хранилище с младшим порядком байтов</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
-2
-3</div>Integer Buffer.writeInt64LE(Long value,<font></font>
-    Integer offset = <span class="hljs-number">0</span>,
-    <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+2</div>Integer Buffer.writeInt64LE(Long value,<font></font>
+    Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
 <ul>
 <li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Long, укажите значение, которое нужно записать</font></font></li>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Целое число, укажите начальную позицию записи</font></font></li>
-<li><span class="notranslate">noAssert</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Boolean, укажите, что при записи вне диапазона ошибок не будет, по умолчанию flase, throw</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Результат возврата:</font></font></p>
 <ul>
@@ -1167,16 +1117,13 @@
 <div name="writeInt64BE" data-unique="writeInt64BE"></div><h3 id="writeInt64BE" class="notranslate">writeInt64BE</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Запишите 64-битное целочисленное значение в объект кеша и сохраните его в порядке с прямым порядком байтов.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
-2
-3</div>Integer Buffer.writeInt64BE(Long value,<font></font>
-    Integer offset = <span class="hljs-number">0</span>,
-    <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+2</div>Integer Buffer.writeInt64BE(Long value,<font></font>
+    Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
 <ul>
 <li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Long, укажите значение, которое нужно записать</font></font></li>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Целое число, укажите начальную позицию записи</font></font></li>
-<li><span class="notranslate">noAssert</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Boolean, укажите, что при записи вне диапазона ошибок не будет, по умолчанию flase, throw</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Результат возврата:</font></font></p>
 <ul>
@@ -1185,14 +1132,11 @@
 <hr>
 <div name="readFloatLE" data-unique="readFloatLE"></div><h3 id="readFloatLE" class="notranslate">readFloatLE</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Считайте число с плавающей запятой из объекта кеша и сохраните его в младшем порядке</font></font></strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div><span class="hljs-built_in">Number</span> Buffer.readFloatLE(Integer offset = <span class="hljs-number">0</span>,
-    <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Number</span> Buffer.readFloatLE(Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
 <ul>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Целое число, укажите начальную позицию для чтения, по умолчанию 0</font></font></li>
-<li><span class="notranslate">noAssert</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Boolean, указывает, что при чтении за пределами диапазона ошибок не будет, по умолчанию flase, throw</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Результат возврата:</font></font></p>
 <ul>
@@ -1201,14 +1145,11 @@
 <hr>
 <div name="readFloatBE" data-unique="readFloatBE"></div><h3 id="readFloatBE" class="notranslate">readFloatBE</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Считайте число с плавающей запятой из объекта кеша и сохраните его в порядке с прямым порядком байтов.</font></font></strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div><span class="hljs-built_in">Number</span> Buffer.readFloatBE(Integer offset = <span class="hljs-number">0</span>,
-    <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Number</span> Buffer.readFloatBE(Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
 <ul>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Целое число, укажите начальную позицию для чтения, по умолчанию 0</font></font></li>
-<li><span class="notranslate">noAssert</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Boolean, указывает, что при чтении за пределами диапазона ошибок не будет, по умолчанию flase, throw</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Результат возврата:</font></font></p>
 <ul>
@@ -1217,14 +1158,11 @@
 <hr>
 <div name="readDoubleLE" data-unique="readDoubleLE"></div><h3 id="readDoubleLE" class="notranslate">readDoubleLE</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Считайте число с плавающей запятой двойной точности из объекта кеша и сохраните его в младшем порядке.</font></font></strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div><span class="hljs-built_in">Number</span> Buffer.readDoubleLE(Integer offset = <span class="hljs-number">0</span>,
-    <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Number</span> Buffer.readDoubleLE(Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
 <ul>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Целое число, укажите начальную позицию для чтения, по умолчанию 0</font></font></li>
-<li><span class="notranslate">noAssert</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Boolean, указывает, что при чтении за пределами диапазона ошибок не будет, по умолчанию flase, throw</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Результат возврата:</font></font></p>
 <ul>
@@ -1233,14 +1171,11 @@
 <hr>
 <div name="readDoubleBE" data-unique="readDoubleBE"></div><h3 id="readDoubleBE" class="notranslate">readDoubleBE</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Считайте число с плавающей запятой двойной точности из объекта кеша и сохраните его в порядке обратного порядка байтов.</font></font></strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div><span class="hljs-built_in">Number</span> Buffer.readDoubleBE(Integer offset = <span class="hljs-number">0</span>,
-    <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Number</span> Buffer.readDoubleBE(Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
 <ul>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Целое число, укажите начальную позицию для чтения, по умолчанию 0</font></font></li>
-<li><span class="notranslate">noAssert</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Boolean, указывает, что при чтении за пределами диапазона ошибок не будет, по умолчанию flase, throw</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Результат возврата:</font></font></p>
 <ul>
@@ -1250,16 +1185,13 @@
 <div name="writeUInt8" data-unique="writeUInt8"></div><h3 id="writeUInt8" class="notranslate">writeUInt8</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Записать 8-битное целое число без знака в объект кеша</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
-2
-3</div>Integer Buffer.writeUInt8(Integer value,<font></font>
-    Integer offset = <span class="hljs-number">0</span>,
-    <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+2</div>Integer Buffer.writeUInt8(Integer value,<font></font>
+    Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
 <ul>
 <li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Целое число, укажите записываемое значение</font></font></li>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Целое число, укажите начальную позицию записи</font></font></li>
-<li><span class="notranslate">noAssert</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Boolean, укажите, что при записи вне диапазона ошибок не будет, по умолчанию flase, throw</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Результат возврата:</font></font></p>
 <ul>
@@ -1269,16 +1201,13 @@
 <div name="writeUInt16LE" data-unique="writeUInt16LE"></div><h3 id="writeUInt16LE" class="notranslate">writeUInt16LE</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Записать 16-битное целое число без знака в объект кэша в младшей памяти</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
-2
-3</div>Integer Buffer.writeUInt16LE(Integer value,<font></font>
-    Integer offset = <span class="hljs-number">0</span>,
-    <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+2</div>Integer Buffer.writeUInt16LE(Integer value,<font></font>
+    Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
 <ul>
 <li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Целое число, укажите записываемое значение</font></font></li>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Целое число, укажите начальную позицию записи</font></font></li>
-<li><span class="notranslate">noAssert</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Boolean, укажите, что при записи вне диапазона ошибок не будет, по умолчанию flase, throw</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Результат возврата:</font></font></p>
 <ul>
@@ -1288,16 +1217,13 @@
 <div name="writeUInt16BE" data-unique="writeUInt16BE"></div><h3 id="writeUInt16BE" class="notranslate">writeUInt16BE</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Запишите 16-битное целое число без знака в объект кеша и сохраните его в порядке с прямым порядком байтов.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
-2
-3</div>Integer Buffer.writeUInt16BE(Integer value,<font></font>
-    Integer offset = <span class="hljs-number">0</span>,
-    <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+2</div>Integer Buffer.writeUInt16BE(Integer value,<font></font>
+    Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
 <ul>
 <li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Целое число, укажите записываемое значение</font></font></li>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Целое число, укажите начальную позицию записи</font></font></li>
-<li><span class="notranslate">noAssert</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Boolean, укажите, что при записи вне диапазона ошибок не будет, по умолчанию flase, throw</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Результат возврата:</font></font></p>
 <ul>
@@ -1307,16 +1233,13 @@
 <div name="writeUInt32LE" data-unique="writeUInt32LE"></div><h3 id="writeUInt32LE" class="notranslate">writeUInt32LE</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Записать 32-битное целое число без знака в объект кэша в младшем хранилище</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
-2
-3</div>Integer Buffer.writeUInt32LE(Long value,<font></font>
-    Integer offset = <span class="hljs-number">0</span>,
-    <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+2</div>Integer Buffer.writeUInt32LE(Long value,<font></font>
+    Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
 <ul>
 <li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Long, укажите значение, которое нужно записать</font></font></li>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Целое число, укажите начальную позицию записи</font></font></li>
-<li><span class="notranslate">noAssert</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Boolean, укажите, что при записи вне диапазона ошибок не будет, по умолчанию flase, throw</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Результат возврата:</font></font></p>
 <ul>
@@ -1324,18 +1247,15 @@
 </ul>
 <hr>
 <div name="writeUInt32BE" data-unique="writeUInt32BE"></div><h3 id="writeUInt32BE" class="notranslate">writeUInt32BE</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Запишите 32-битное целое число без знака в объект кэша и сохраните его в порядке с прямым порядком байтов.</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Запишите 32-битное целое число без знака в объект кеша и сохраните его в порядке с прямым порядком байтов.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
-2
-3</div>Integer Buffer.writeUInt32BE(Long value,<font></font>
-    Integer offset = <span class="hljs-number">0</span>,
-    <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+2</div>Integer Buffer.writeUInt32BE(Long value,<font></font>
+    Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
 <ul>
 <li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Long, укажите значение, которое нужно записать</font></font></li>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Целое число, укажите начальную позицию записи</font></font></li>
-<li><span class="notranslate">noAssert</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Boolean, укажите, что при записи вне диапазона ошибок не будет, по умолчанию flase, throw</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Результат возврата:</font></font></p>
 <ul>
@@ -1346,18 +1266,15 @@
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Записать целочисленное значение без знака в объект кеша с максимальной поддержкой 64 бит, сохраненное в младшем порядке.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
-3
-4</div>Integer Buffer.writeUIntLE(Long value,<font></font>
+3</div>Integer Buffer.writeUIntLE(Long value,<font></font>
     Integer offset = <span class="hljs-number">0</span>,<font></font>
-    Integer byteLength = <span class="hljs-number">8</span>,
-    <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+    Integer byteLength = <span class="hljs-number">8</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
 <ul>
 <li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Long, укажите значение, которое нужно записать</font></font></li>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Целое число, укажите начальную позицию записи</font></font></li>
 <li><span class="notranslate">byteLength</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Целое число, укажите количество записываемых байтов, по умолчанию - 8 байтов.</font></font></li>
-<li><span class="notranslate">noAssert</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Boolean, укажите, что при записи вне диапазона ошибок не будет, по умолчанию flase, throw</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Результат возврата:</font></font></p>
 <ul>
@@ -1368,18 +1285,15 @@
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Записать целое число без знака в объект кэша с максимальной поддержкой 64 бит, сохраненное в порядке с прямым порядком байтов.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
-3
-4</div>Integer Buffer.writeUIntBE(Long value,<font></font>
+3</div>Integer Buffer.writeUIntBE(Long value,<font></font>
     Integer offset = <span class="hljs-number">0</span>,<font></font>
-    Integer byteLength = <span class="hljs-number">8</span>,
-    <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+    Integer byteLength = <span class="hljs-number">8</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
 <ul>
 <li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Long, укажите значение, которое нужно записать</font></font></li>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Целое число, укажите начальную позицию записи</font></font></li>
 <li><span class="notranslate">byteLength</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Целое число, укажите количество записываемых байтов, по умолчанию - 8 байтов.</font></font></li>
-<li><span class="notranslate">noAssert</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Boolean, укажите, что при записи вне диапазона ошибок не будет, по умолчанию flase, throw</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Результат возврата:</font></font></p>
 <ul>
@@ -1389,16 +1303,13 @@
 <div name="writeInt8" data-unique="writeInt8"></div><h3 id="writeInt8" class="notranslate">writeInt8</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Записать 8-битное целочисленное значение в объект кеша</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
-2
-3</div>Integer Buffer.writeInt8(Integer value,<font></font>
-    Integer offset = <span class="hljs-number">0</span>,
-    <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+2</div>Integer Buffer.writeInt8(Integer value,<font></font>
+    Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
 <ul>
 <li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Целое число, укажите записываемое значение</font></font></li>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Целое число, укажите начальную позицию записи</font></font></li>
-<li><span class="notranslate">noAssert</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Boolean, укажите, что при записи вне диапазона ошибок не будет, по умолчанию flase, throw</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Результат возврата:</font></font></p>
 <ul>
@@ -1408,16 +1319,13 @@
 <div name="writeInt16LE" data-unique="writeInt16LE"></div><h3 id="writeInt16LE" class="notranslate">writeInt16LE</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Записать 16-битное целочисленное значение в объект кэша в хранилище с младшим порядком байтов</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
-2
-3</div>Integer Buffer.writeInt16LE(Integer value,<font></font>
-    Integer offset = <span class="hljs-number">0</span>,
-    <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+2</div>Integer Buffer.writeInt16LE(Integer value,<font></font>
+    Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
 <ul>
 <li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Целое число, укажите записываемое значение</font></font></li>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Целое число, укажите начальную позицию записи</font></font></li>
-<li><span class="notranslate">noAssert</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Boolean, укажите, что при записи вне диапазона ошибок не будет, по умолчанию flase, throw</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Результат возврата:</font></font></p>
 <ul>
@@ -1427,16 +1335,13 @@
 <div name="writeInt16BE" data-unique="writeInt16BE"></div><h3 id="writeInt16BE" class="notranslate">writeInt16BE</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Запишите 16-битное целое число в объект кеша и сохраните его в порядке с прямым порядком байтов.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
-2
-3</div>Integer Buffer.writeInt16BE(Integer value,<font></font>
-    Integer offset = <span class="hljs-number">0</span>,
-    <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+2</div>Integer Buffer.writeInt16BE(Integer value,<font></font>
+    Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
 <ul>
 <li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Целое число, укажите записываемое значение</font></font></li>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Целое число, укажите начальную позицию записи</font></font></li>
-<li><span class="notranslate">noAssert</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Boolean, укажите, что при записи вне диапазона ошибок не будет, по умолчанию flase, throw</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Результат возврата:</font></font></p>
 <ul>
@@ -1446,16 +1351,13 @@
 <div name="writeInt32LE" data-unique="writeInt32LE"></div><h3 id="writeInt32LE" class="notranslate">writeInt32LE</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Записать 32-битное целочисленное значение в объект кеша в хранилище с младшим порядком байтов</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
-2
-3</div>Integer Buffer.writeInt32LE(Integer value,<font></font>
-    Integer offset = <span class="hljs-number">0</span>,
-    <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+2</div>Integer Buffer.writeInt32LE(Integer value,<font></font>
+    Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
 <ul>
 <li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Целое число, укажите записываемое значение</font></font></li>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Целое число, укажите начальную позицию записи</font></font></li>
-<li><span class="notranslate">noAssert</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Boolean, укажите, что при записи вне диапазона ошибок не будет, по умолчанию flase, throw</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Результат возврата:</font></font></p>
 <ul>
@@ -1465,16 +1367,13 @@
 <div name="writeInt32BE" data-unique="writeInt32BE"></div><h3 id="writeInt32BE" class="notranslate">writeInt32BE</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Записать 32-битное целочисленное значение в объект кэша в хранилище high-endian</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
-2
-3</div>Integer Buffer.writeInt32BE(Integer value,<font></font>
-    Integer offset = <span class="hljs-number">0</span>,
-    <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+2</div>Integer Buffer.writeInt32BE(Integer value,<font></font>
+    Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
 <ul>
 <li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Целое число, укажите записываемое значение</font></font></li>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Целое число, укажите начальную позицию записи</font></font></li>
-<li><span class="notranslate">noAssert</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Boolean, укажите, что при записи вне диапазона ошибок не будет, по умолчанию flase, throw</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Результат возврата:</font></font></p>
 <ul>
@@ -1485,18 +1384,15 @@
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Записать целочисленное значение в объект кеша с максимальной поддержкой 64 бит, сохраненное в младшем порядке.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
-3
-4</div>Integer Buffer.writeIntLE(Long value,<font></font>
+3</div>Integer Buffer.writeIntLE(Long value,<font></font>
     Integer offset = <span class="hljs-number">0</span>,<font></font>
-    Integer byteLength = <span class="hljs-number">8</span>,
-    <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+    Integer byteLength = <span class="hljs-number">8</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
 <ul>
 <li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Long, укажите значение, которое нужно записать</font></font></li>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Целое число, укажите начальную позицию записи</font></font></li>
 <li><span class="notranslate">byteLength</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Целое число, укажите количество записываемых байтов, по умолчанию - 8 байтов.</font></font></li>
-<li><span class="notranslate">noAssert</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Boolean, укажите, что при записи вне диапазона ошибок не будет, по умолчанию flase, throw</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Результат возврата:</font></font></p>
 <ul>
@@ -1507,18 +1403,15 @@
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Записать целочисленное значение в объект кеша с максимальной поддержкой 64 бит, сохраненное в порядке с прямым порядком байтов.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
-3
-4</div>Integer Buffer.writeIntBE(Long value,<font></font>
+3</div>Integer Buffer.writeIntBE(Long value,<font></font>
     Integer offset = <span class="hljs-number">0</span>,<font></font>
-    Integer byteLength = <span class="hljs-number">8</span>,
-    <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+    Integer byteLength = <span class="hljs-number">8</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
 <ul>
 <li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Long, укажите значение, которое нужно записать</font></font></li>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Целое число, укажите начальную позицию записи</font></font></li>
 <li><span class="notranslate">byteLength</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Целое число, укажите количество записываемых байтов, по умолчанию - 8 байтов.</font></font></li>
-<li><span class="notranslate">noAssert</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Boolean, укажите, что при записи вне диапазона ошибок не будет, по умолчанию flase, throw</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Результат возврата:</font></font></p>
 <ul>
@@ -1528,16 +1421,13 @@
 <div name="writeFloatLE" data-unique="writeFloatLE"></div><h3 id="writeFloatLE" class="notranslate">writeFloatLE</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Записать число с плавающей запятой в объект кеша в младшем хранилище</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
-2
-3</div>Integer Buffer.writeFloatLE(<span class="hljs-built_in">Number</span> value,<font></font>
-    Integer offset,<font></font>
-    <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+2</div>Integer Buffer.writeFloatLE(<span class="hljs-built_in">Number</span> value,<font></font>
+    Integer offset);<font></font>
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
 <ul>
 <li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Число, укажите записываемое значение</font></font></li>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Целое число, укажите начальную позицию записи</font></font></li>
-<li><span class="notranslate">noAssert</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Boolean, укажите, что при записи вне диапазона ошибок не будет, по умолчанию flase, throw</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Результат возврата:</font></font></p>
 <ul>
@@ -1545,18 +1435,15 @@
 </ul>
 <hr>
 <div name="writeFloatBE" data-unique="writeFloatBE"></div><h3 id="writeFloatBE" class="notranslate">writeFloatBE</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Записать число с плавающей запятой в объект кеша в хранилище высокого порядка</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Записать число с плавающей запятой в объект кеша в хранилище с прямым порядком байтов</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
-2
-3</div>Integer Buffer.writeFloatBE(<span class="hljs-built_in">Number</span> value,<font></font>
-    Integer offset,<font></font>
-    <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+2</div>Integer Buffer.writeFloatBE(<span class="hljs-built_in">Number</span> value,<font></font>
+    Integer offset);<font></font>
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
 <ul>
 <li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Число, укажите записываемое значение</font></font></li>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Целое число, укажите начальную позицию записи</font></font></li>
-<li><span class="notranslate">noAssert</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Boolean, укажите, что при записи вне диапазона ошибок не будет, по умолчанию flase, throw</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Результат возврата:</font></font></p>
 <ul>
@@ -1566,16 +1453,13 @@
 <div name="writeDoubleLE" data-unique="writeDoubleLE"></div><h3 id="writeDoubleLE" class="notranslate">writeDoubleLE</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Записать в объект кэша число с плавающей запятой двойной точности и сохранить его в младшем порядке.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
-2
-3</div>Integer Buffer.writeDoubleLE(<span class="hljs-built_in">Number</span> value,<font></font>
-    Integer offset,<font></font>
-    <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+2</div>Integer Buffer.writeDoubleLE(<span class="hljs-built_in">Number</span> value,<font></font>
+    Integer offset);<font></font>
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
 <ul>
 <li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Число, укажите записываемое значение</font></font></li>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Целое число, укажите начальную позицию записи</font></font></li>
-<li><span class="notranslate">noAssert</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Boolean, укажите, что при записи вне диапазона ошибок не будет, по умолчанию flase, throw</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Результат возврата:</font></font></p>
 <ul>
@@ -1585,16 +1469,13 @@
 <div name="writeDoubleBE" data-unique="writeDoubleBE"></div><h3 id="writeDoubleBE" class="notranslate">writeDoubleBE</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Записать число с плавающей запятой двойной точности в объект кэша в хранилище high-endian</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
-2
-3</div>Integer Buffer.writeDoubleBE(<span class="hljs-built_in">Number</span> value,<font></font>
-    Integer offset,<font></font>
-    <span class="hljs-built_in">Boolean</span> noAssert = <span class="hljs-literal">false</span>);
+2</div>Integer Buffer.writeDoubleBE(<span class="hljs-built_in">Number</span> value,<font></font>
+    Integer offset);<font></font>
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
 <ul>
 <li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Число, укажите записываемое значение</font></font></li>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Целое число, укажите начальную позицию записи</font></font></li>
-<li><span class="notranslate">noAssert</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Boolean, укажите, что при записи вне диапазона ошибок не будет, по умолчанию flase, throw</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Результат возврата:</font></font></p>
 <ul>
@@ -1643,7 +1524,7 @@
 </ul>
 <hr>
 <div name="reverse" data-unique="reverse"></div><h3 id="reverse" class="notranslate">reverse</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Вернуть новый объект кеша, содержащий обратный порядок данных текущего объекта</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Вернуть новый объект кеша, содержащий данные текущего объекта в обратном порядке</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Buffer Buffer.reverse();
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Результат возврата:</font></font></p>
@@ -1670,7 +1551,7 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Результат возврата:</font></font></p>
 <ul>
-<li><span class="notranslate">String</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Верните закодированную строку</font></font></li>
+<li><span class="notranslate">String</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Возвращает закодированную строку</font></font></li>
 </ul>
 <hr>
 <div name="base64" data-unique="base64"></div><h3 id="base64" class="notranslate">base64</h3>
@@ -1679,7 +1560,7 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Результат возврата:</font></font></p>
 <ul>
-<li><span class="notranslate">String</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Верните закодированную строку</font></font></li>
+<li><span class="notranslate">String</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Возвращает закодированную строку</font></font></li>
 </ul>
 <hr>
 <div name="keys" data-unique="keys"></div><h3 id="keys" class="notranslate">keys</h3>
@@ -1688,7 +1569,7 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Результат возврата:</font></font></p>
 <ul>
-<li><span class="notranslate">Iterator</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Возвращает итератор, содержащий индекс данных объекта</font></font></li>
+<li><a href="iterator.md.html" class="notranslate">Iterator</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Возвращает итератор, содержащий индекс данных объекта</font></font></li>
 </ul>
 <hr>
 <div name="values" data-unique="values"></div><h3 id="values" class="notranslate">values</h3>
@@ -1697,7 +1578,7 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Результат возврата:</font></font></p>
 <ul>
-<li><span class="notranslate">Iterator</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Возвращает итератор, содержащий значения данных объекта</font></font></li>
+<li><a href="iterator.md.html" class="notranslate">Iterator</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Возвращает итератор, содержащий значения данных объекта</font></font></li>
 </ul>
 <hr>
 <div name="entries" data-unique="entries"></div><h3 id="entries" class="notranslate">entries</h3>
@@ -1706,7 +1587,7 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Результат возврата:</font></font></p>
 <ul>
-<li><span class="notranslate">Iterator</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, [index, byte] итератор пар</font></font></li>
+<li><a href="iterator.md.html" class="notranslate">Iterator</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, [index, byte] итератор пар</font></font></li>
 </ul>
 <hr>
 <div name="toArray" data-unique="toArray"></div><h3 id="toArray" class="notranslate">toArray</h3>
@@ -1728,7 +1609,7 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
 <ul>
-<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, укажите формат кодировки, допустимое значение: "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">","</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"," utf8 "или набор символов, поддерживаемый системой</font></font></li>
+<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, укажите формат кодировки, допустимое значение: "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">","</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"," utf8 "или </font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Набор символов, поддерживаемый модулем</font></font></li>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Целое число, начальная позиция чтения</font></font></li>
 <li><span class="notranslate">end</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Целое число, чтение конечной позиции</font></font></li>
 </ul>
@@ -1744,7 +1625,7 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры звонка:</font></font></p>
 <ul>
-<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, укажите формат кодировки, допустимое значение: "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">","</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"," utf8 "или набор символов, поддерживаемый системой</font></font></li>
+<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, укажите формат кодировки, допустимое значение: "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">","</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"," utf8 "или </font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Набор символов, поддерживаемый модулем</font></font></li>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Целое число, начальная позиция чтения</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Результат возврата:</font></font></p>
@@ -1780,4 +1661,4 @@
 <ul>
 <li><span class="notranslate">Value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Возвращает значение, содержащее сериализуемый JSON</font></font></li>
 </ul>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org | </font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Поддержите нас</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip266162"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip266162" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Нажмите, чтобы вернуться на главную страницу</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org | </font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Поддержите нас</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip481356"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip481356" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Нажмите, чтобы вернуться на главную страницу</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>

@@ -22,8 +22,9 @@ var mdb = db.openMongoDB("mongodb://host/db");
 [object] <:- [MongoDB]
 ```
 
-## 下标操作
+## 操作符
         
+### operator[String]
 **快速获取指定集合访问对象**
 
 ```JavaScript

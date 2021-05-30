@@ -17,8 +17,8 @@ var mysql = db.openMySQL("mysql://user:pass@host/db");
 #.class: fill=white
 
 [<class>object|toString();toJSON()]
-[<class>DbConnection|type|close();begin();commit();rollback();trans();execute();createTable();dropTable();createIndex();dropIndex();insert();find();count();update();remove();format()]
-[<this>MySQL|rxBufferSize;txBufferSize|use()]
+[<class>DbConnection|type|close();use();begin();commit();rollback();trans();execute();createTable();dropTable();createIndex();dropIndex();insert();find();count();update();remove();format()]
+[<this>MySQL|rxBufferSize;txBufferSize]
 
 [object] <:- [DbConnection]
 [DbConnection] <:- [MySQL]
@@ -51,6 +51,14 @@ readonly String MySQL.type;
 
 ## 成员函数
         
+### close
+**关闭当前数据库连接**
+
+```JavaScript
+MySQL.close() async;
+```
+
+--------------------------
 ### use
 **选择当前数据库连接的缺省数据库**
 
@@ -60,14 +68,6 @@ MySQL.use(String dbName) async;
 
 调用参数:
 * dbName: String, 指定数据库名
-
---------------------------
-### close
-**关闭当前数据库连接**
-
-```JavaScript
-MySQL.close() async;
-```
 
 --------------------------
 ### begin
@@ -143,6 +143,19 @@ func 执行有三种结果：
 
 --------------------------
 ### execute
+**执行一个 sql 命令，并返回执行结果**
+
+```JavaScript
+NArray MySQL.execute(String sql) async;
+```
+
+调用参数:
+* sql: String, 字符串
+
+返回结果:
+* NArray, 返回包含结果记录的数组，如果请求是 UPDATE 或者 INSERT，返回结果还会包含 affected 和 insertId，mssql 不支持 insertId。
+
+--------------------------
 **执行一个 sql 命令，并返回执行结果，可根据参数格式化字符串**
 
 ```JavaScript

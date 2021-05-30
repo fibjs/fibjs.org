@@ -16,8 +16,9 @@ XmlNodeList 对象代表一个有顺序的节点列表
 [object] <:- [XmlNodeList]
 ```
 
-## 下标操作
+## 操作符
         
+### operator[]
 **可使用下标直接访问数据**
 
 ```JavaScript

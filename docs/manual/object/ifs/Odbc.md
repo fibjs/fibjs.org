@@ -1,11 +1,5 @@
-# 对象 MSSQL
-SQL Server 数据库连接对象
-
-使用 [db.open](../../module/ifs/db.md#open) 或 [db.openMySQL](../../module/ifs/db.md#openMySQL) 创建，创建方式：
-
-```JavaScript
-var sql = db.openMSSQL("mssql://user:pass@host/db");
-```
+# 对象 Odbc
+Odbc 数据库连接对象
 
 ## 继承关系
 ```uml
@@ -17,48 +11,56 @@ var sql = db.openMSSQL("mssql://user:pass@host/db");
 #.class: fill=white
 
 [<class>object|toString();toJSON()]
-[<class>DbConnection|type|close();begin();commit();rollback();trans();execute();createTable();dropTable();createIndex();dropIndex();insert();find();count();update();remove();format()]
-[<this>MSSQL|use()]
+[<class>DbConnection|type|close();use();begin();commit();rollback();trans();execute();createTable();dropTable();createIndex();dropIndex();insert();find();count();update();remove();format()]
+[<this>Odbc|codec]
 
 [object] <:- [DbConnection]
-[DbConnection] <:- [MSSQL]
+[DbConnection] <:- [Odbc]
 ```
 
 ## 成员属性
         
+### codec
+**String, 查询和设置数据库编码，缺省 "utf8"**
+
+```JavaScript
+String Odbc.codec;
+```
+
+--------------------------
 ### type
 **String, 查询当前连接数据库类型**
 
 ```JavaScript
-readonly String MSSQL.type;
+readonly String Odbc.type;
 ```
 
 ## 成员函数
         
+### close
+**关闭当前数据库连接**
+
+```JavaScript
+Odbc.close() async;
+```
+
+--------------------------
 ### use
 **选择当前数据库连接的缺省数据库**
 
 ```JavaScript
-MSSQL.use(String dbName) async;
+Odbc.use(String dbName) async;
 ```
 
 调用参数:
 * dbName: String, 指定数据库名
 
 --------------------------
-### close
-**关闭当前数据库连接**
-
-```JavaScript
-MSSQL.close() async;
-```
-
---------------------------
 ### begin
 **在当前数据库连接上启动一个事务**
 
 ```JavaScript
-MSSQL.begin(String point = "") async;
+Odbc.begin(String point = "") async;
 ```
 
 调用参数:
@@ -69,7 +71,7 @@ MSSQL.begin(String point = "") async;
 **提交当前数据库连接上的事务**
 
 ```JavaScript
-MSSQL.commit(String point = "") async;
+Odbc.commit(String point = "") async;
 ```
 
 调用参数:
@@ -80,7 +82,7 @@ MSSQL.commit(String point = "") async;
 **回滚当前数据库连接上的事务**
 
 ```JavaScript
-MSSQL.rollback(String point = "") async;
+Odbc.rollback(String point = "") async;
 ```
 
 调用参数:
@@ -91,7 +93,7 @@ MSSQL.rollback(String point = "") async;
 **进入事务执行一个函数，并根据函数执行情况提交或者回滚**
 
 ```JavaScript
-Boolean MSSQL.trans(Function func);
+Boolean Odbc.trans(Function func);
 ```
 
 调用参数:
@@ -109,7 +111,7 @@ func 执行有三种结果：
 **进入事务执行一个函数，并根据函数执行情况提交或者回滚**
 
 ```JavaScript
-Boolean MSSQL.trans(String point,
+Boolean Odbc.trans(String point,
     Function func);
 ```
 
@@ -127,10 +129,23 @@ func 执行有三种结果：
 
 --------------------------
 ### execute
+**执行一个 sql 命令，并返回执行结果**
+
+```JavaScript
+NArray Odbc.execute(String sql) async;
+```
+
+调用参数:
+* sql: String, 字符串
+
+返回结果:
+* NArray, 返回包含结果记录的数组，如果请求是 UPDATE 或者 INSERT，返回结果还会包含 affected 和 insertId，mssql 不支持 insertId。
+
+--------------------------
 **执行一个 sql 命令，并返回执行结果，可根据参数格式化字符串**
 
 ```JavaScript
-NArray MSSQL.execute(String sql,
+NArray Odbc.execute(String sql,
     ...args) async;
 ```
 
@@ -146,7 +161,7 @@ NArray MSSQL.execute(String sql,
 **创建数据表**
 
 ```JavaScript
-MSSQL.createTable(Object opts) async;
+Odbc.createTable(Object opts) async;
 ```
 
 调用参数:
@@ -157,7 +172,7 @@ MSSQL.createTable(Object opts) async;
 **删除数据表**
 
 ```JavaScript
-MSSQL.dropTable(Object opts) async;
+Odbc.dropTable(Object opts) async;
 ```
 
 调用参数:
@@ -168,7 +183,7 @@ MSSQL.dropTable(Object opts) async;
 **创建数据表索引**
 
 ```JavaScript
-MSSQL.createIndex(Object opts) async;
+Odbc.createIndex(Object opts) async;
 ```
 
 调用参数:
@@ -179,7 +194,7 @@ MSSQL.createIndex(Object opts) async;
 **删除数据表索引**
 
 ```JavaScript
-MSSQL.dropIndex(Object opts) async;
+Odbc.dropIndex(Object opts) async;
 ```
 
 调用参数:
@@ -190,7 +205,7 @@ MSSQL.dropIndex(Object opts) async;
 **插入新记录**
 
 ```JavaScript
-Number MSSQL.insert(Object opts) async;
+Number Odbc.insert(Object opts) async;
 ```
 
 调用参数:
@@ -204,7 +219,7 @@ Number MSSQL.insert(Object opts) async;
 **根据指定的条件查询数据**
 
 ```JavaScript
-NArray MSSQL.find(Object opts) async;
+NArray Odbc.find(Object opts) async;
 ```
 
 调用参数:
@@ -218,7 +233,7 @@ NArray MSSQL.find(Object opts) async;
 **根据指定的条件统计数据记录数**
 
 ```JavaScript
-Integer MSSQL.count(Object opts) async;
+Integer Odbc.count(Object opts) async;
 ```
 
 调用参数:
@@ -232,7 +247,7 @@ Integer MSSQL.count(Object opts) async;
 **根据指定的条件更新数据**
 
 ```JavaScript
-Integer MSSQL.update(Object opts) async;
+Integer Odbc.update(Object opts) async;
 ```
 
 调用参数:
@@ -246,7 +261,7 @@ Integer MSSQL.update(Object opts) async;
 **根据指定的条件删除数据**
 
 ```JavaScript
-Integer MSSQL.remove(Object opts) async;
+Integer Odbc.remove(Object opts) async;
 ```
 
 调用参数:
@@ -260,7 +275,7 @@ Integer MSSQL.remove(Object opts) async;
 **格式化一个 sql 命令，并返回格式化结果**
 
 ```JavaScript
-String MSSQL.format(String method,
+String Odbc.format(String method,
     Object opts);
 ```
 
@@ -275,7 +290,7 @@ String MSSQL.format(String method,
 **格式化一个 sql 命令，并返回格式化结果**
 
 ```JavaScript
-String MSSQL.format(String sql,
+String Odbc.format(String sql,
     ...args);
 ```
 
@@ -291,7 +306,7 @@ String MSSQL.format(String sql,
 **返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现**
 
 ```JavaScript
-String MSSQL.toString();
+String Odbc.toString();
 ```
 
 返回结果:
@@ -302,7 +317,7 @@ String MSSQL.toString();
 **返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合**
 
 ```JavaScript
-Value MSSQL.toJSON(String key = "");
+Value Odbc.toJSON(String key = "");
 ```
 
 调用参数:

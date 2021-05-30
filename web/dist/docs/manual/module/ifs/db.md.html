@@ -14,8 +14,6 @@
 <li><a href=assert.md.html class ="notranslate">assert</a></li>
 <li><a href=base32.md.html class ="notranslate">base32</a></li>
 <li><a href=base64.md.html class ="notranslate">base64</a></li>
-<li><a href=base64vlq.md.html class ="notranslate">base64vlq</a></li>
-<li><a href=bson.md.html class ="notranslate">bson</a></li>
 <li><a href=child_process.md.html class ="notranslate">child_process</a></li>
 <li><a href=console.md.html class ="notranslate">console</a></li>
 <li><a href=constants.md.html class ="notranslate">constants</a></li>
@@ -26,6 +24,7 @@
 <li><a href=dns.md.html class ="notranslate">dns</a></li>
 <li><a href=encoding.md.html class ="notranslate">encoding</a></li>
 <li><a href=fs.md.html class ="notranslate">fs</a></li>
+<li><a href=fs_constants.md.html class ="notranslate">fs_constants</a></li>
 <li><a href=gd.md.html class ="notranslate">gd</a></li>
 <li><a href=global.md.html class ="notranslate">global</a></li>
 <li><a href=gui.md.html class ="notranslate">gui</a></li>
@@ -92,10 +91,10 @@
 <li><a href=../../object/ifs/httpuploaddata.md.html class ="notranslate">HttpUploadData</a></li>
 <li><a href=../../object/ifs/httpsserver.md.html class ="notranslate">HttpsServer</a></li>
 <li><a href=../../object/ifs/image.md.html class ="notranslate">Image</a></li>
+<li><a href=../../object/ifs/iterator.md.html class ="notranslate">Iterator</a></li>
 <li><a href=../../object/ifs/leveldb.md.html class ="notranslate">LevelDB</a></li>
 <li><a href=../../object/ifs/lock.md.html class ="notranslate">Lock</a></li>
 <li><a href=../../object/ifs/lrucache.md.html class ="notranslate">LruCache</a></li>
-<li><a href=../../object/ifs/mssql.md.html class ="notranslate">MSSQL</a></li>
 <li><a href=../../object/ifs/memorystream.md.html class ="notranslate">MemoryStream</a></li>
 <li><a href=../../object/ifs/message.md.html class ="notranslate">Message</a></li>
 <li><a href=../../object/ifs/mongocollection.md.html class ="notranslate">MongoCollection</a></li>
@@ -103,6 +102,7 @@
 <li><a href=../../object/ifs/mongodb.md.html class ="notranslate">MongoDB</a></li>
 <li><a href=../../object/ifs/mongoid.md.html class ="notranslate">MongoID</a></li>
 <li><a href=../../object/ifs/mysql.md.html class ="notranslate">MySQL</a></li>
+<li><a href=../../object/ifs/odbc.md.html class ="notranslate">Odbc</a></li>
 <li><a href=../../object/ifs/pkey.md.html class ="notranslate">PKey</a></li>
 <li><a href=../../object/ifs/rangestream.md.html class ="notranslate">RangeStream</a></li>
 <li><a href=../../object/ifs/redis.md.html class ="notranslate">Redis</a></li>
@@ -125,6 +125,8 @@
 <li><a href=../../object/ifs/statswatcher.md.html class ="notranslate">StatsWatcher</a></li>
 <li><a href=../../object/ifs/stream.md.html class ="notranslate">Stream</a></li>
 <li><a href=../../object/ifs/stringdecoder.md.html class ="notranslate">StringDecoder</a></li>
+<li><a href=../../object/ifs/ttyinputstream.md.html class ="notranslate">TTYInputStream</a></li>
+<li><a href=../../object/ifs/ttyoutputstream.md.html class ="notranslate">TTYOutputStream</a></li>
 <li><a href=../../object/ifs/tcpserver.md.html class ="notranslate">TcpServer</a></li>
 <li><a href=../../object/ifs/timer.md.html class ="notranslate">Timer</a></li>
 <li><a href=../../object/ifs/urlobject.md.html class ="notranslate">UrlObject</a></li>
@@ -195,8 +197,13 @@
  </div></div></div>  </div></div><div class=content><div class=social-share data-sites=weibo,twitter data-description=分享></div> <h1 id="模块-db">模块 db</h1>
 <p>数据库访问模块</p>
 <p>基础模块。可用于创建和操作数据库资源，引用方式：</p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">var</span> db = <span class="hljs-built_in">require</span>(<span class="hljs-string">'db'</span>);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">var</span> db = <span class="hljs-built_in">require</span>(<span class="hljs-string">'db'</span>);
+<span class="hljs-keyword">var</span> conn = db.open(<span class="hljs-string">'rng://user:pass@host:port/dbname'</span>);
 </code></pre>
+<p>通过指定数据库引擎，可以建立不同的数据库链接。fibjs 内置两个 sql 引擎：sqlite 和 mysql，同时还支持通过 ODBC/unixODBC 连接更多数据库，基于 ODBC/unixODBC，fibjs 构建了与 mssql 和 PostgreSQL 的驱动。
+为了使用 ODBC/unixODBC，需要安装对应的驱动，在 posix 下使用 mssql 需要安装 freetds，使用 PostgreSQL 需要安装 psqlodbc。
+正常情况下驱动安装成功即可直接使用，无需进一步配置。</p>
 <h2 id="静态函数">静态函数</h2>
 <h3 id="open" class ="notranslate">open</h3>
 <p><strong>打开一个数据库，此方法为通用入口，根据提供的 connString 不同调用不同的引擎</strong></p>
@@ -204,7 +211,7 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li><span class="notranslate">connString</span>: String, 数据库描述，如：mysql://user:pass\@host/db</li>
+<li><span class="notranslate">connString</span>: String, 数据库描述，如：mysql://user:pass@host/db</li>
 </ul>
 <p>返回结果:</p>
 <ul>
@@ -217,24 +224,11 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li><span class="notranslate">connString</span>: String, 数据库描述，如：mysql://user:pass\@host/db</li>
+<li><span class="notranslate">connString</span>: String, 数据库描述，如：mysql://user:pass@host/db</li>
 </ul>
 <p>返回结果:</p>
 <ul>
 <li><a href=../../object/ifs/mysql.md.html class ="notranslate">MySQL</a>, 返回数据库连接对象</li>
-</ul>
-<hr>
-<h3 id="openMSSQL" class ="notranslate">openMSSQL</h3>
-<p><strong>打开一个 mysql 数据库</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> MSSQL db.openMSSQL(<span class="hljs-built_in">String</span> connString) <span class="hljs-keyword">async</span>;
-</code></pre>
-<p>调用参数:</p>
-<ul>
-<li><span class="notranslate">connString</span>: String, 数据库描述，如：mssql://user:pass\@host/db</li>
-</ul>
-<p>返回结果:</p>
-<ul>
-<li><a href=../../object/ifs/mssql.md.html class ="notranslate">MSSQL</a>, 返回数据库连接对象</li>
 </ul>
 <hr>
 <h3 id="openSQLite" class ="notranslate">openSQLite</h3>
@@ -249,6 +243,47 @@
 <ul>
 <li><a href=../../object/ifs/sqlite.md.html class ="notranslate">SQLite</a>, 返回数据库连接对象</li>
 </ul>
+<hr>
+<h3 id="openOdbc" class ="notranslate">openOdbc</h3>
+<p><strong>打开一个 sqlite 数据库</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> DbConnection db.openOdbc(<span class="hljs-built_in">String</span> connString) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li><span class="notranslate">connString</span>: String, 数据库描述，如：odbc://user:pass@host/db?driver=PostgreSQL%20ANSI</li>
+</ul>
+<p>返回结果:</p>
+<ul>
+<li><a href=../../object/ifs/dbconnection.md.html class ="notranslate">DbConnection</a>, 返回数据库连接对象</li>
+</ul>
+<hr>
+<h3 id="openMSSQL" class ="notranslate">openMSSQL</h3>
+<p><strong>打开一个 mssql 数据库</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> DbConnection db.openMSSQL(<span class="hljs-built_in">String</span> connString) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li><span class="notranslate">connString</span>: String, 数据库描述，如：mssql://user:pass@host/db</li>
+</ul>
+<p>返回结果:</p>
+<ul>
+<li><a href=../../object/ifs/dbconnection.md.html class ="notranslate">DbConnection</a>, 返回数据库连接对象</li>
+</ul>
+<p>为了建立与 mssql 的连接，在 posix 下必须安装 freetds 的 odbc 驱动，也可以通过指定驱动来使用微软的 mssql 驱动，指定驱动的方式，是在 <a href=url.md.html class ="notranslate">url</a> 后增加 ?driver=msodbcsql17[.so/.dylib] 的选项。</p>
+<hr>
+<h3 id="openPSQL" class ="notranslate">openPSQL</h3>
+<p><strong>打开一个 PostgresSQL 数据库</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> DbConnection db.openPSQL(<span class="hljs-built_in">String</span> connString) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li><span class="notranslate">connString</span>: String, 数据库描述，如：psql://user:pass@host/db</li>
+</ul>
+<p>返回结果:</p>
+<ul>
+<li><a href=../../object/ifs/dbconnection.md.html class ="notranslate">DbConnection</a>, 返回数据库连接对象</li>
+</ul>
+<p>为了建立与 PostgresSQL 的连接，必须安装 PostgresSQL 的 odbc 驱动。</p>
 <hr>
 <h3 id="openMongoDB" class ="notranslate">openMongoDB</h3>
 <p><strong>打开一个 mongodb 数据库</strong></p>
@@ -287,114 +322,5 @@
 <p>返回结果:</p>
 <ul>
 <li><a href=../../object/ifs/redis.md.html class ="notranslate">Redis</a>, 返回数据库连接对象</li>
-</ul>
-<hr>
-<h3 id="format" class ="notranslate">format</h3>
-<p><strong>格式化一个 sql 命令，并返回格式化结果</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">String</span> db.format(<span class="hljs-built_in">String</span> method,
-    <span class="hljs-built_in">Object</span> opts);
-</code></pre>
-<p>调用参数:</p>
-<ul>
-<li><span class="notranslate">method</span>: String, 指定请求的方法</li>
-<li><span class="notranslate">opts</span>: Object, 参数列表</li>
-</ul>
-<p>返回结果:</p>
-<ul>
-<li><span class="notranslate">String</span>, 返回格式化之后的 sql 命令</li>
-</ul>
-<hr>
-<p><strong>格式化一个 sql 命令，并返回格式化结果</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">String</span> db.format(<span class="hljs-built_in">String</span> sql,
-    ...args);
-</code></pre>
-<p>调用参数:</p>
-<ul>
-<li><span class="notranslate">sql</span>: String, 格式化字符串，可选参数用 ? 指定。例如：&#39;SELECT FROM TEST WHERE [id]=?&#39;</li>
-<li><span class="notranslate">args</span>: ..., 可选参数列表</li>
-</ul>
-<p>返回结果:</p>
-<ul>
-<li><span class="notranslate">String</span>, 返回格式化之后的 sql 命令</li>
-</ul>
-<hr>
-<h3 id="formatMySQL" class ="notranslate">formatMySQL</h3>
-<p><strong>格式化一个 mysql 命令，并返回格式化结果</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">String</span> db.formatMySQL(<span class="hljs-built_in">String</span> method,
-    <span class="hljs-built_in">Object</span> opts);
-</code></pre>
-<p>调用参数:</p>
-<ul>
-<li><span class="notranslate">method</span>: String, 指定请求的方法</li>
-<li><span class="notranslate">opts</span>: Object, 参数列表</li>
-</ul>
-<p>返回结果:</p>
-<ul>
-<li><span class="notranslate">String</span>, 返回格式化之后的 mysql 命令</li>
-</ul>
-<hr>
-<p><strong>格式化一个 mysql 命令，并返回格式化结果</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">String</span> db.formatMySQL(<span class="hljs-built_in">String</span> sql,
-    ...args);
-</code></pre>
-<p>调用参数:</p>
-<ul>
-<li><span class="notranslate">sql</span>: String, 格式化字符串，可选参数用 ? 指定。例如：&#39;SELECT FROM TEST WHERE [id]=?&#39;</li>
-<li><span class="notranslate">args</span>: ..., 可选参数列表</li>
-</ul>
-<p>返回结果:</p>
-<ul>
-<li><span class="notranslate">String</span>, 返回格式化之后的 sql 命令</li>
-</ul>
-<hr>
-<h3 id="formatMSSQL" class ="notranslate">formatMSSQL</h3>
-<p><strong>格式化一个 mssql 命令，并返回格式化结果</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">String</span> db.formatMSSQL(<span class="hljs-built_in">String</span> method,
-    <span class="hljs-built_in">Object</span> opts);
-</code></pre>
-<p>调用参数:</p>
-<ul>
-<li><span class="notranslate">method</span>: String, 指定请求的方法</li>
-<li><span class="notranslate">opts</span>: Object, 参数列表</li>
-</ul>
-<p>返回结果:</p>
-<ul>
-<li><span class="notranslate">String</span>, 返回格式化之后的 mssql 命令</li>
-</ul>
-<hr>
-<p><strong>格式化一个 mssql 命令，并返回格式化结果</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">String</span> db.formatMSSQL(<span class="hljs-built_in">String</span> sql,
-    ...args);
-</code></pre>
-<p>调用参数:</p>
-<ul>
-<li><span class="notranslate">sql</span>: String, 格式化字符串，可选参数用 ? 指定。例如：&#39;SELECT FROM TEST WHERE [id]=?&#39;</li>
-<li><span class="notranslate">args</span>: ..., 可选参数列表</li>
-</ul>
-<p>返回结果:</p>
-<ul>
-<li><span class="notranslate">String</span>, 返回格式化之后的 sql 命令</li>
-</ul>
-<hr>
-<h3 id="escape" class ="notranslate">escape</h3>
-<p><strong>将字符串编码为 SQL 安全编码字符串</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">String</span> db.escape(<span class="hljs-built_in">String</span> str,
-    <span class="hljs-built_in">Boolean</span> mysql = <span class="hljs-literal">false</span>);
-</code></pre>
-<p>调用参数:</p>
-<ul>
-<li><span class="notranslate">str</span>: String, 要编码的字符串</li>
-<li><span class="notranslate">mysql</span>: Boolean, 指定 mysql 编码，缺省为 false</li>
-</ul>
-<p>返回结果:</p>
-<ul>
-<li><span class="notranslate">String</span>, 返回编码后的字符串</li>
 </ul>
  </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id=toc></div></div></div></div><div class=footer><div class=container>&copy; Copyright 2012-2021 fibjs.org | <a href=../../../../support.html>支持我们</a></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="Click to return on the top page" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js></script><script type=text/javascript src=../../../../js/common.js></script><script type=text/javascript src=../../../../js/docs.js></script></body></html>

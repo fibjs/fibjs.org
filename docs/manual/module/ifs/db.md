@@ -5,7 +5,12 @@
 
 ```JavaScript
 var db = require('db');
+var conn = db.open('rng://user:pass@host:port/dbname');
 ```
+
+通过指定数据库引擎，可以建立不同的数据库链接。fibjs 内置两个 sql 引擎：sqlite 和 mysql，同时还支持通过 ODBC/unixODBC 连接更多数据库，基于 ODBC/unixODBC，fibjs 构建了与 mssql 和 PostgreSQL 的驱动。
+为了使用 ODBC/unixODBC，需要安装对应的驱动，在 posix 下使用 mssql 需要安装 freetds，使用 PostgreSQL 需要安装 psqlodbc。
+正常情况下驱动安装成功即可直接使用，无需进一步配置。
 
 ## 静态函数
         
@@ -17,7 +22,7 @@ static object db.open(String connString) async;
 ```
 
 调用参数:
-* connString: String, 数据库描述，如：mysql://user:pass\@host/db
+* connString: String, 数据库描述，如：mysql://user:pass@host/db
 
 返回结果:
 * [object](../../object/ifs/object.md), 返回数据库连接对象
@@ -31,24 +36,10 @@ static MySQL db.openMySQL(String connString) async;
 ```
 
 调用参数:
-* connString: String, 数据库描述，如：mysql://user:pass\@host/db
+* connString: String, 数据库描述，如：mysql://user:pass@host/db
 
 返回结果:
 * [MySQL](../../object/ifs/MySQL.md), 返回数据库连接对象
-
---------------------------
-### openMSSQL
-**打开一个 mysql 数据库**
-
-```JavaScript
-static MSSQL db.openMSSQL(String connString) async;
-```
-
-调用参数:
-* connString: String, 数据库描述，如：mssql://user:pass\@host/db
-
-返回结果:
-* [MSSQL](../../object/ifs/MSSQL.md), 返回数据库连接对象
 
 --------------------------
 ### openSQLite
@@ -63,6 +54,52 @@ static SQLite db.openSQLite(String connString) async;
 
 返回结果:
 * [SQLite](../../object/ifs/SQLite.md), 返回数据库连接对象
+
+--------------------------
+### openOdbc
+**打开一个 sqlite 数据库**
+
+```JavaScript
+static DbConnection db.openOdbc(String connString) async;
+```
+
+调用参数:
+* connString: String, 数据库描述，如：odbc://user:pass@host/db?driver=PostgreSQL%20ANSI
+
+返回结果:
+* [DbConnection](../../object/ifs/DbConnection.md), 返回数据库连接对象
+
+--------------------------
+### openMSSQL
+**打开一个 mssql 数据库**
+
+```JavaScript
+static DbConnection db.openMSSQL(String connString) async;
+```
+
+调用参数:
+* connString: String, 数据库描述，如：mssql://user:pass@host/db
+
+返回结果:
+* [DbConnection](../../object/ifs/DbConnection.md), 返回数据库连接对象
+
+为了建立与 mssql 的连接，在 posix 下必须安装 freetds 的 odbc 驱动，也可以通过指定驱动来使用微软的 mssql 驱动，指定驱动的方式，是在 [url](url.md) 后增加 ?driver=msodbcsql17[.so/.dylib] 的选项。
+
+--------------------------
+### openPSQL
+**打开一个 PostgresSQL 数据库**
+
+```JavaScript
+static DbConnection db.openPSQL(String connString) async;
+```
+
+调用参数:
+* connString: String, 数据库描述，如：psql://user:pass@host/db
+
+返回结果:
+* [DbConnection](../../object/ifs/DbConnection.md), 返回数据库连接对象
+
+为了建立与 PostgresSQL 的连接，必须安装 PostgresSQL 的 odbc 驱动。
 
 --------------------------
 ### openMongoDB
@@ -105,113 +142,4 @@ static Redis db.openRedis(String connString) async;
 
 返回结果:
 * [Redis](../../object/ifs/Redis.md), 返回数据库连接对象
-
---------------------------
-### format
-**格式化一个 sql 命令，并返回格式化结果**
-
-```JavaScript
-static String db.format(String method,
-    Object opts);
-```
-
-调用参数:
-* method: String, 指定请求的方法
-* opts: Object, 参数列表
-
-返回结果:
-* String, 返回格式化之后的 sql 命令
-
---------------------------
-**格式化一个 sql 命令，并返回格式化结果**
-
-```JavaScript
-static String db.format(String sql,
-    ...args);
-```
-
-调用参数:
-* sql: String, 格式化字符串，可选参数用 ? 指定。例如：'SELECT FROM TEST WHERE [id]=?'
-* args: ..., 可选参数列表
-
-返回结果:
-* String, 返回格式化之后的 sql 命令
-
---------------------------
-### formatMySQL
-**格式化一个 mysql 命令，并返回格式化结果**
-
-```JavaScript
-static String db.formatMySQL(String method,
-    Object opts);
-```
-
-调用参数:
-* method: String, 指定请求的方法
-* opts: Object, 参数列表
-
-返回结果:
-* String, 返回格式化之后的 mysql 命令
-
---------------------------
-**格式化一个 mysql 命令，并返回格式化结果**
-
-```JavaScript
-static String db.formatMySQL(String sql,
-    ...args);
-```
-
-调用参数:
-* sql: String, 格式化字符串，可选参数用 ? 指定。例如：'SELECT FROM TEST WHERE [id]=?'
-* args: ..., 可选参数列表
-
-返回结果:
-* String, 返回格式化之后的 sql 命令
-
---------------------------
-### formatMSSQL
-**格式化一个 mssql 命令，并返回格式化结果**
-
-```JavaScript
-static String db.formatMSSQL(String method,
-    Object opts);
-```
-
-调用参数:
-* method: String, 指定请求的方法
-* opts: Object, 参数列表
-
-返回结果:
-* String, 返回格式化之后的 mssql 命令
-
---------------------------
-**格式化一个 mssql 命令，并返回格式化结果**
-
-```JavaScript
-static String db.formatMSSQL(String sql,
-    ...args);
-```
-
-调用参数:
-* sql: String, 格式化字符串，可选参数用 ? 指定。例如：'SELECT FROM TEST WHERE [id]=?'
-* args: ..., 可选参数列表
-
-返回结果:
-* String, 返回格式化之后的 sql 命令
-
---------------------------
-### escape
-**将字符串编码为 SQL 安全编码字符串**
-
-```JavaScript
-static String db.escape(String str,
-    Boolean mysql = false);
-```
-
-调用参数:
-* str: String, 要编码的字符串
-* mysql: Boolean, 指定 mysql 编码，缺省为 false
-
-返回结果:
-* String, 返回编码后的字符串
 
