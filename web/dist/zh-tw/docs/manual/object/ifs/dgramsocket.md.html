@@ -41,6 +41,8 @@
 <li><a href="../../module/ifs/path.md.html" class="notranslate">path</a></li>
 <li><a href="../../module/ifs/path_posix.md.html" class="notranslate">path_posix</a></li>
 <li><a href="../../module/ifs/path_win32.md.html" class="notranslate">path_win32</a></li>
+<li><a href="../../module/ifs/perf_hooks.md.html" class="notranslate">perf_hooks</a></li>
+<li><a href="../../module/ifs/performance.md.html" class="notranslate">performance</a></li>
 <li><a href="../../module/ifs/process.md.html" class="notranslate">process</a></li>
 <li><a href="../../module/ifs/profiler.md.html" class="notranslate">profiler</a></li>
 <li><a href="../../module/ifs/punycode.md.html" class="notranslate">punycode</a></li>
@@ -55,6 +57,7 @@
 <li><a href="../../module/ifs/util.md.html" class="notranslate">util</a></li>
 <li><a href="../../module/ifs/uuid.md.html" class="notranslate">uuid</a></li>
 <li><a href="../../module/ifs/vm.md.html" class="notranslate">vm</a></li>
+<li><a href="../../module/ifs/worker_threads.md.html" class="notranslate">worker_threads</a></li>
 <li><a href="../../module/ifs/ws.md.html" class="notranslate">ws</a></li>
 <li><a href="../../module/ifs/xml.md.html" class="notranslate">xml</a></li>
 <li><a href="../../module/ifs/zip.md.html" class="notranslate">zip</a></li>
@@ -205,13 +208,13 @@
 <div name="事件" data-unique="事件"></div><h2 id="事件"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">事件</font></font></h2>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">DgramSocket 繼承於 </font></font><a href="eventemitter.md.html" class="notranslate">EventEmitter</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，對象的狀態變化，以及數據接受，都是以事件的方式實現。</font></font></p>
 <div name="close-事件" data-unique="close-事件"></div><h3 id="close-事件"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">close 事件</font></font></h3>
-<p><strong> <code>close</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">事件將在使用</font></font><code>close()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">關閉一個</font></font><code>socket</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">之後觸發。</font><font style="vertical-align: inherit;">該事件一旦觸發，這個</font></font><code>socket</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上將不會觸發新的</font></font><code>message</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">事件。</font></font></strong></p>
+<p><strong> <code>close</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">事件將在使用  </font><font style="vertical-align: inherit;">該事件一旦觸發，這個 </font></font><code>close()</code><font style="vertical-align: inherit;"></font><code>socket</code><font style="vertical-align: inherit;"></font><code>socket</code><font style="vertical-align: inherit;"></font><code>message</code><font style="vertical-align: inherit;"></font></strong></p>
 <div name="error-事件" data-unique="error-事件"></div><h3 id="error-事件"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">error 事件</font></font></h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">當有任何錯誤發生時，</font></font><code>error</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">事件將被觸發。</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">當有任何錯誤發生時，</font></font><code>error</code><font style="vertical-align: inherit;"></font></strong></p>
 <div name="listening-事件" data-unique="listening-事件"></div><h3 id="listening-事件"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">listening 事件</font></font></h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">當一個</font></font><code>socket</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">開始監聽數據包信息時，</font></font><code>listening</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">事件將被觸發。</font><font style="vertical-align: inherit;">該事件會在創建UDP socket之後被立即觸發。</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">當一個  </font><font style="vertical-align: inherit;">該事件會在創建UDP socket 之後被立即觸發。</font></font><code>socket</code><font style="vertical-align: inherit;"></font><code>listening</code><font style="vertical-align: inherit;"></font></strong></p>
 <div name="message-事件" data-unique="message-事件"></div><h3 id="message-事件"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">message 事件</font></font></h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">當有新的數據包被</font></font><code>socket</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">接收時，</font></font><code>message</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">事件會被觸發。</font></font><code>msg</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和</font></font><code>rinfo</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">會作為參數傳遞到該事件的處理函數中。</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">當有新的數據包被  </font><font style="vertical-align: inherit;">和 </font></font><code>socket</code><font style="vertical-align: inherit;"></font><code>message</code><font style="vertical-align: inherit;"></font><code>msg</code><font style="vertical-align: inherit;"></font><code>rinfo</code><font style="vertical-align: inherit;"></font></strong></p>
 <ul>
 <li><span class="notranslate">msg</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，消息</font></font></li>
 <li><span class="notranslate">rinfo</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Object，遠程地址信息</font></font><ul>
@@ -223,7 +226,7 @@
 </li>
 </ul>
 <div name="继承关系" data-unique="继承关系"></div><h2 id="继承关系"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">繼承關係</font></font></h2>
-<div class="dot notranslate"><svg version="1.1" baseProfile="full" width="195" height="778" viewBox="0 0 195 778" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events" style="font:normal normal 10pt Helvetica,sans-Serif, Helvetica, sans-serif;;stroke-linejoin:round;stroke-linecap:round">
+<div class="dot notranslate"><svg version="1.1" baseProfile="full" width="225" height="808" viewBox="0 0 225 808" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events" style="font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;;stroke-linejoin:round;stroke-linecap:round">
   <desc>
 #lineWidth: 1.5
 #font: Helvetica,sans-Serif
@@ -239,53 +242,53 @@
 [object] &lt;:- [EventEmitter]
 [EventEmitter] &lt;:- [DgramSocket]
 </desc>
-  <rect x="0" y="0" height="778" width="195" style="stroke:none; fill:transparent;"></rect>
-  <path d="M97.5 93 L97.5 113 L97.5 133 L97.5 133 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M102.8 106.3 L97.5 106.3 L92.2 106.3 L97.5 93 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M97.5 501 L97.5 521 L97.5 541 L97.5 541 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M102.8 514.3 L97.5 514.3 L92.2 514.3 L97.5 501 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <rect x="13" y="133" height="368" width="169" data-name="EventEmitter" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="97.5" y="154" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="EventEmitter">EventEmitter</text>
-  <text x="21" y="186" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">new EventEmitter()</text>
-  <text x="21" y="218" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">EventEmitter</text>
-  <text x="21" y="250" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">defaultMaxListeners</text>
-  <text x="21" y="282" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">on()</text>
-  <text x="21" y="298" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">addListener()</text>
-  <text x="21" y="314" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">prependListener()</text>
-  <text x="21" y="330" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">once()</text>
-  <text x="21" y="346" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">prependOnceListener()</text>
-  <text x="21" y="362" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">off()</text>
-  <text x="21" y="378" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">removeListener()</text>
-  <text x="21" y="394" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">removeAllListeners()</text>
-  <text x="21" y="410" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">setMaxListeners()</text>
-  <text x="21" y="426" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">getMaxListeners()</text>
-  <text x="21" y="442" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">listeners()</text>
-  <text x="21" y="458" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">listenerCount()</text>
-  <text x="21" y="474" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">eventNames()</text>
-  <text x="21" y="490" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">emit()</text>
-  <path d="M13 165 L182 165" data-name="EventEmitter" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M13 197 L182 197" data-name="EventEmitter" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M13 229 L182 229" data-name="EventEmitter" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M13 261 L182 261" data-name="EventEmitter" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <rect x="59" y="13" height="80" width="77" data-name="object" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="97.5" y="34" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="object">object</text>
-  <text x="67" y="66" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="object">toString()</text>
-  <text x="67" y="82" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="object">toJSON()</text>
-  <path d="M59 45 L136 45" data-name="object" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <rect x="23" y="541" height="224" width="149" data-name="DgramSocket" style="stroke:#33322E;fill:lightgray;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="97.5" y="562" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="DgramSocket">DgramSocket</text>
-  <text x="31" y="594" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="DgramSocket">bind()</text>
-  <text x="31" y="610" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="DgramSocket">send()</text>
-  <text x="31" y="626" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="DgramSocket">address()</text>
-  <text x="31" y="642" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="DgramSocket">close()</text>
-  <text x="31" y="658" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="DgramSocket">getRecvBufferSize()</text>
-  <text x="31" y="674" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="DgramSocket">getSendBufferSize()</text>
-  <text x="31" y="690" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="DgramSocket">setRecvBufferSize()</text>
-  <text x="31" y="706" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="DgramSocket">setSendBufferSize()</text>
-  <text x="31" y="722" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="DgramSocket">setBroadcast()</text>
-  <text x="31" y="738" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="DgramSocket">ref()</text>
-  <text x="31" y="754" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="DgramSocket">unref()</text>
-  <path d="M23 573 L172 573" data-name="DgramSocket" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <rect x="0" y="0" height="808" width="225" style="stroke:none; fill:transparent;"></rect>
+  <path d="M112.5 121.3 L112.5 128 L112.5 148 L112.5 148 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M117.8 121.3 L112.5 121.3 L107.2 121.3 L112.5 108 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M112.5 529.3 L112.5 536 L112.5 556 L112.5 556 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M117.8 529.3 L112.5 529.3 L107.2 529.3 L112.5 516 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <rect x="28" y="148" height="368" width="169" data-name="EventEmitter" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
+  <path d="M28 180 L197 180" data-name="EventEmitter" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M28 212 L197 212" data-name="EventEmitter" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M28 244 L197 244" data-name="EventEmitter" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M28 276 L197 276" data-name="EventEmitter" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <text x="112.5" y="169" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="EventEmitter">EventEmitter</text>
+  <text x="36" y="201" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">new EventEmitter()</text>
+  <text x="36" y="233" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">EventEmitter</text>
+  <text x="36" y="265" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">defaultMaxListeners</text>
+  <text x="36" y="297" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">on()</text>
+  <text x="36" y="313" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">addListener()</text>
+  <text x="36" y="329" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">prependListener()</text>
+  <text x="36" y="345" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">once()</text>
+  <text x="36" y="361" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">prependOnceListener()</text>
+  <text x="36" y="377" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">off()</text>
+  <text x="36" y="393" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">removeListener()</text>
+  <text x="36" y="409" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">removeAllListeners()</text>
+  <text x="36" y="425" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">setMaxListeners()</text>
+  <text x="36" y="441" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">getMaxListeners()</text>
+  <text x="36" y="457" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">listeners()</text>
+  <text x="36" y="473" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">listenerCount()</text>
+  <text x="36" y="489" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">eventNames()</text>
+  <text x="36" y="505" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">emit()</text>
+  <rect x="74" y="28" height="80" width="77" data-name="object" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
+  <path d="M74 60 L151 60" data-name="object" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <text x="112.5" y="49" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="object">object</text>
+  <text x="82" y="81" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="object">toString()</text>
+  <text x="82" y="97" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="object">toJSON()</text>
+  <rect x="38" y="556" height="224" width="149" data-name="DgramSocket" style="stroke:#33322E;fill:lightgray;stroke-dasharray:none;stroke-width:1.5;"></rect>
+  <path d="M38 588 L187 588" data-name="DgramSocket" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <text x="112.5" y="577" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="DgramSocket">DgramSocket</text>
+  <text x="46" y="609" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="DgramSocket">bind()</text>
+  <text x="46" y="625" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="DgramSocket">send()</text>
+  <text x="46" y="641" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="DgramSocket">address()</text>
+  <text x="46" y="657" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="DgramSocket">close()</text>
+  <text x="46" y="673" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="DgramSocket">getRecvBufferSize()</text>
+  <text x="46" y="689" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="DgramSocket">getSendBufferSize()</text>
+  <text x="46" y="705" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="DgramSocket">setRecvBufferSize()</text>
+  <text x="46" y="721" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="DgramSocket">setSendBufferSize()</text>
+  <text x="46" y="737" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="DgramSocket">setBroadcast()</text>
+  <text x="46" y="753" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="DgramSocket">ref()</text>
+  <text x="46" y="769" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="DgramSocket">unref()</text>
 </svg></div>
 
 <div name="静态属性" data-unique="静态属性"></div><h2 id="静态属性"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">靜態屬性</font></font></h2>
@@ -295,18 +298,18 @@
 </code></pre>
 <div name="成员函数" data-unique="成员函数"></div><h2 id="成员函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">成員函數</font></font></h2>
 <div name="bind" data-unique="bind"></div><h3 id="bind" class="notranslate">bind</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">該方法會令 </font></font><a href="../../module/ifs/dgram.md.html#Socket" class="notranslate">dgram.Socket</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在指定的</font></font><code>port</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和</font></font><code>addr</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上監聽數據包信息。</font><font style="vertical-align: inherit;">綁定完成時會觸發一個</font></font><code>listening</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">事件。</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">該方法會令 </font></font><a href="../../module/ifs/dgram.md.html#Socket" class="notranslate">dgram.Socket</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在指定的  </font><font style="vertical-align: inherit;">綁定完成時會觸發一個 </font></font><code>port</code><font style="vertical-align: inherit;"></font><code>addr</code><font style="vertical-align: inherit;"></font><code>listening</code><font style="vertical-align: inherit;"></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>DgramSocket.bind(Integer port = <span class="hljs-number">0</span>,
     <span class="hljs-built_in">String</span> addr = <span class="hljs-string">""</span>) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">調用參數:</font></font></p>
 <ul>
-<li><span class="notranslate">port</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Integer,指定綁定端口，若</font></font><code>port</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">未指定或為0，操作系統會嘗試綁定一個隨機的端口</font></font></li>
+<li><span class="notranslate">port</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Integer, 指定綁定端口，若 </font></font><code>port</code><font style="vertical-align: inherit;"></font></li>
 <li><span class="notranslate">addr</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, 指定綁定地址，若address 未指定，操作系統會嘗試在所有地址上監聽。</font></font></li>
 </ul>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">該方法會令 </font></font><a href="../../module/ifs/dgram.md.html#Socket" class="notranslate">dgram.Socket</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在</font></font><code>opts</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">指定的</font></font><code>port</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和</font></font><code>address</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上監聽數據包信息。</font><font style="vertical-align: inherit;">綁定完成時會觸發一個</font></font><code>listening</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">事件。</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">該方法會令 </font></font><a href="../../module/ifs/dgram.md.html#Socket" class="notranslate">dgram.Socket</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在  </font><font style="vertical-align: inherit;">綁定完成時會觸發一個 </font></font><code>opts</code><font style="vertical-align: inherit;"></font><code>port</code><font style="vertical-align: inherit;"></font><code>address</code><font style="vertical-align: inherit;"></font><code>listening</code><font style="vertical-align: inherit;"></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>DgramSocket.bind(<span class="hljs-built_in">Object</span> opts) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">調用參數:</font></font></p>
@@ -376,7 +379,7 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">調用參數:</font></font></p>
 <ul>
-<li><span class="notranslate">callback</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Function,關閉完成後的回調函數，它相當於為</font></font><code>close</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">事件添加了一個監聽器</font></font></li>
+<li><span class="notranslate">callback</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Function, 關閉完成後的回調函數，它相當於為 </font></font><code>close</code><font style="vertical-align: inherit;"></font></li>
 </ul>
 <hr>
 <div name="getRecvBufferSize" data-unique="getRecvBufferSize"></div><h3 id="getRecvBufferSize" class="notranslate">getRecvBufferSize</h3>
@@ -731,6 +734,21 @@
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 返回指定事件的監聽器數量</font></font></li>
 </ul>
 <hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">查詢對象指定事件的監聽器數量</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div>Integer DgramSocket.listenerCount(Value o,
+    <span class="hljs-built_in">String</span> ev);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">調用參數:</font></font></p>
+<ul>
+<li><span class="notranslate">o</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Value, 指定查詢的對象</font></font></li>
+<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, 指定事件的名稱</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返回結果:</font></font></p>
+<ul>
+<li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 返回指定事件的監聽器數量</font></font></li>
+</ul>
+<hr>
 <div name="eventNames" data-unique="eventNames"></div><h3 id="eventNames" class="notranslate">eventNames</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">查詢監聽器事件名稱</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Array</span> DgramSocket.eventNames();
@@ -777,4 +795,4 @@
 <ul>
 <li><span class="notranslate">Value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 返回包含可JSON 序列化的值</font></font></li>
 </ul>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org |</font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持我們</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip188731"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip188731" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Click to return on the top page</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org |</font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip442407"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip442407" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Click to return on the top page</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>

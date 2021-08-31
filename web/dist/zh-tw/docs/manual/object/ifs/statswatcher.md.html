@@ -5,8 +5,8 @@
 <li><a href="../../../guide/test.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">美好生活從測試開始</font></font></a></li>
 <li><a href="../../../guide/profiler.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">找出性能殺手</font></font></a></li>
 <li><a href="../../../guide/desktop.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">快速開發桌面應用</font></font></a></li>
-<li><a href="../../../guide/server-hot-update.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">服務端模塊熱更新</font></font></a></li>
-<li><a href="../../../guide/host-routes.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">域名路由</font></font></a></li>
+<li><a href="../../../guide/server-hot-update.md.html">服务端模块热更新</a></li>
+<li><a href="../../../guide/host-routes.md.html">域名路由</a></li>
 <li><a href="../../../guide/x509.md.html">fibjs 中 X509 证书的使用</a></li>
 <li><a href="../../../guide/contribute.md.html">添加 native 模块</a></li>
 </ul>
@@ -41,6 +41,8 @@
 <li><a href="../../module/ifs/path.md.html" class="notranslate">path</a></li>
 <li><a href="../../module/ifs/path_posix.md.html" class="notranslate">path_posix</a></li>
 <li><a href="../../module/ifs/path_win32.md.html" class="notranslate">path_win32</a></li>
+<li><a href="../../module/ifs/perf_hooks.md.html" class="notranslate">perf_hooks</a></li>
+<li><a href="../../module/ifs/performance.md.html" class="notranslate">performance</a></li>
 <li><a href="../../module/ifs/process.md.html" class="notranslate">process</a></li>
 <li><a href="../../module/ifs/profiler.md.html" class="notranslate">profiler</a></li>
 <li><a href="../../module/ifs/punycode.md.html" class="notranslate">punycode</a></li>
@@ -55,6 +57,7 @@
 <li><a href="../../module/ifs/util.md.html" class="notranslate">util</a></li>
 <li><a href="../../module/ifs/uuid.md.html" class="notranslate">uuid</a></li>
 <li><a href="../../module/ifs/vm.md.html" class="notranslate">vm</a></li>
+<li><a href="../../module/ifs/worker_threads.md.html" class="notranslate">worker_threads</a></li>
 <li><a href="../../module/ifs/ws.md.html" class="notranslate">ws</a></li>
 <li><a href="../../module/ifs/xml.md.html" class="notranslate">xml</a></li>
 <li><a href="../../module/ifs/zip.md.html" class="notranslate">zip</a></li>
@@ -196,7 +199,7 @@
 </ul>
  </div></div></div>  </div></div><div class="content"><div class="social-share share-component" data-sites="weibo,twitter" data-description="分享"></div> <div name="对象-StatsWatcher" data-unique="对象-StatsWatcher"></div><h1 id="对象-StatsWatcher"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">對象StatsWatcher</font></font></h1>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">文件Stats 觀察對象</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">當調用</font></font><code>fs.watchFile(target, onchange)</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">成功時,返回該類型對象</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">當調用 </font></font><code>fs.watchFile(target, onchange)</code><font style="vertical-align: inherit;"></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
@@ -211,11 +214,11 @@
     statsWatcher.unref();<font></font>
 });<font></font>
 </code></pre>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">注意</font></font></strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">當且</font></font><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">僅當</font></font></strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">被觀察的目標文件target的mtime屬性發生變化時才會觸發onchange回調</font></font></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">注意</font></font></strong><font style="vertical-align: inherit;"></font><strong><font style="vertical-align: inherit;"></font></strong><font style="vertical-align: inherit;"></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">單純地訪問(access)目標文件target 不會觸發onchange 回調.</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">如果調用</font></font><code>fs.watchFile(target)</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">時, target表示的文件或目錄還不存在,則onchange回調</font></font><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">不會</font></font></strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">被調用,一直到該target被創建,該回調才會開始被調用.如果在watcher工作途中, )目標文件被刪除,則後續不會再有回調產生</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">如果調用 </font></font><code>fs.watchFile(target)</code><font style="vertical-align: inherit;"></font><strong><font style="vertical-align: inherit;"></font></strong><font style="vertical-align: inherit;"></font></p>
 <div name="继承关系" data-unique="继承关系"></div><h2 id="继承关系"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">繼承關係</font></font></h2>
-<div class="dot notranslate"><svg version="1.1" baseProfile="full" width="195" height="682" viewBox="0 0 195 682" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events" style="font:normal normal 10pt Helvetica,sans-Serif, Helvetica, sans-serif;;stroke-linejoin:round;stroke-linecap:round">
+<div class="dot notranslate"><svg version="1.1" baseProfile="full" width="225" height="712" viewBox="0 0 225 712" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events" style="font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;;stroke-linejoin:round;stroke-linecap:round">
   <desc>
 #lineWidth: 1.5
 #font: Helvetica,sans-Serif
@@ -231,47 +234,47 @@
 [object] &lt;:- [EventEmitter]
 [EventEmitter] &lt;:- [StatsWatcher]
 </desc>
-  <rect x="0" y="0" height="682" width="195" style="stroke:none; fill:transparent;"></rect>
-  <path d="M97.5 93 L97.5 113 L97.5 133 L97.5 133 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M102.8 106.3 L97.5 106.3 L92.2 106.3 L97.5 93 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M97.5 501 L97.5 521 L97.5 541 L97.5 541 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M102.8 514.3 L97.5 514.3 L92.2 514.3 L97.5 501 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <rect x="13" y="133" height="368" width="169" data-name="EventEmitter" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="97.5" y="154" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="EventEmitter">EventEmitter</text>
-  <text x="21" y="186" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">new EventEmitter()</text>
-  <text x="21" y="218" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">EventEmitter</text>
-  <text x="21" y="250" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">defaultMaxListeners</text>
-  <text x="21" y="282" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">on()</text>
-  <text x="21" y="298" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">addListener()</text>
-  <text x="21" y="314" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">prependListener()</text>
-  <text x="21" y="330" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">once()</text>
-  <text x="21" y="346" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">prependOnceListener()</text>
-  <text x="21" y="362" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">off()</text>
-  <text x="21" y="378" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">removeListener()</text>
-  <text x="21" y="394" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">removeAllListeners()</text>
-  <text x="21" y="410" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">setMaxListeners()</text>
-  <text x="21" y="426" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">getMaxListeners()</text>
-  <text x="21" y="442" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">listeners()</text>
-  <text x="21" y="458" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">listenerCount()</text>
-  <text x="21" y="474" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">eventNames()</text>
-  <text x="21" y="490" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">emit()</text>
-  <path d="M13 165 L182 165" data-name="EventEmitter" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M13 197 L182 197" data-name="EventEmitter" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M13 229 L182 229" data-name="EventEmitter" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M13 261 L182 261" data-name="EventEmitter" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <rect x="46" y="541" height="128" width="104" data-name="StatsWatcher" style="stroke:#33322E;fill:lightgray;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="98" y="562" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="StatsWatcher">StatsWatcher</text>
-  <text x="54" y="594" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="StatsWatcher">onchange</text>
-  <text x="54" y="626" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="StatsWatcher">close()</text>
-  <text x="54" y="642" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="StatsWatcher">ref()</text>
-  <text x="54" y="658" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="StatsWatcher">unref()</text>
-  <path d="M46 573 L150 573" data-name="StatsWatcher" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M46 605 L150 605" data-name="StatsWatcher" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <rect x="59" y="13" height="80" width="77" data-name="object" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="97.5" y="34" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="object">object</text>
-  <text x="67" y="66" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="object">toString()</text>
-  <text x="67" y="82" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="object">toJSON()</text>
-  <path d="M59 45 L136 45" data-name="object" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <rect x="0" y="0" height="712" width="225" style="stroke:none; fill:transparent;"></rect>
+  <path d="M112.5 121.3 L112.5 128 L112.5 148 L112.5 148 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M117.8 121.3 L112.5 121.3 L107.2 121.3 L112.5 108 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M112.5 529.3 L112.5 536 L112.5 556 L112.5 556 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M117.8 529.3 L112.5 529.3 L107.2 529.3 L112.5 516 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <rect x="28" y="148" height="368" width="169" data-name="EventEmitter" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
+  <path d="M28 180 L197 180" data-name="EventEmitter" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M28 212 L197 212" data-name="EventEmitter" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M28 244 L197 244" data-name="EventEmitter" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M28 276 L197 276" data-name="EventEmitter" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <text x="112.5" y="169" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="EventEmitter">EventEmitter</text>
+  <text x="36" y="201" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">new EventEmitter()</text>
+  <text x="36" y="233" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">EventEmitter</text>
+  <text x="36" y="265" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">defaultMaxListeners</text>
+  <text x="36" y="297" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">on()</text>
+  <text x="36" y="313" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">addListener()</text>
+  <text x="36" y="329" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">prependListener()</text>
+  <text x="36" y="345" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">once()</text>
+  <text x="36" y="361" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">prependOnceListener()</text>
+  <text x="36" y="377" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">off()</text>
+  <text x="36" y="393" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">removeListener()</text>
+  <text x="36" y="409" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">removeAllListeners()</text>
+  <text x="36" y="425" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">setMaxListeners()</text>
+  <text x="36" y="441" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">getMaxListeners()</text>
+  <text x="36" y="457" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">listeners()</text>
+  <text x="36" y="473" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">listenerCount()</text>
+  <text x="36" y="489" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">eventNames()</text>
+  <text x="36" y="505" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">emit()</text>
+  <rect x="61" y="556" height="128" width="104" data-name="StatsWatcher" style="stroke:#33322E;fill:lightgray;stroke-dasharray:none;stroke-width:1.5;"></rect>
+  <path d="M61 588 L165 588" data-name="StatsWatcher" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M61 620 L165 620" data-name="StatsWatcher" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <text x="113" y="577" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="StatsWatcher">StatsWatcher</text>
+  <text x="69" y="609" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="StatsWatcher">onchange</text>
+  <text x="69" y="641" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="StatsWatcher">close()</text>
+  <text x="69" y="657" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="StatsWatcher">ref()</text>
+  <text x="69" y="673" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="StatsWatcher">unref()</text>
+  <rect x="74" y="28" height="80" width="77" data-name="object" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
+  <path d="M74 60 L151 60" data-name="object" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <text x="112.5" y="49" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="object">object</text>
+  <text x="82" y="81" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="object">toString()</text>
+  <text x="82" y="97" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="object">toJSON()</text>
 </svg></div>
 
 <div name="静态属性" data-unique="静态属性"></div><h2 id="静态属性"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">靜態屬性</font></font></h2>
@@ -298,7 +301,7 @@
 <ul>
 <li><span class="notranslate">StatsWatcher</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 返回StatsWatcher 本身</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">經由</font></font><code>fs.watchFile()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">得到的StatsWatcher默認已調用了該方法,即默認就會hold進程.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">經由 </font></font><code>fs.watchFile()</code><font style="vertical-align: inherit;"></font></p>
 <hr>
 <div name="unref" data-unique="unref"></div><h3 id="unref" class="notranslate">unref</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">減少引用計數</font></font></strong></p>
@@ -598,6 +601,21 @@
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 返回指定事件的監聽器數量</font></font></li>
 </ul>
 <hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">查詢對象指定事件的監聽器數量</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div>Integer StatsWatcher.listenerCount(Value o,
+    <span class="hljs-built_in">String</span> ev);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">調用參數:</font></font></p>
+<ul>
+<li><span class="notranslate">o</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Value, 指定查詢的對象</font></font></li>
+<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, 指定事件的名稱</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返回結果:</font></font></p>
+<ul>
+<li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 返回指定事件的監聽器數量</font></font></li>
+</ul>
+<hr>
 <div name="eventNames" data-unique="eventNames"></div><h3 id="eventNames" class="notranslate">eventNames</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">查詢監聽器事件名稱</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Array</span> StatsWatcher.eventNames();
@@ -644,4 +662,4 @@
 <ul>
 <li><span class="notranslate">Value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 返回包含可JSON 序列化的值</font></font></li>
 </ul>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org |</font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持我們</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip627581"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip627581" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Click to return on the top page</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org |</font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip533775"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip533775" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Click to return on the top page</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>

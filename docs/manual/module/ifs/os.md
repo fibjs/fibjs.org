@@ -84,17 +84,6 @@ static String os.arch();
 * String, 返回 cpu 类型，可能的结果为 'amd64', 'arm', 'arm64', 'ia32'
 
 --------------------------
-### uptime
-**查询运行环境运行时间，以秒为单位**
-
-```JavaScript
-static Number os.uptime();
-```
-
-返回结果:
-* Number, 返回表示时间的数值
-
---------------------------
 ### loadavg
 **查询运行环境 1分钟，5分钟，15分钟平均负载**
 
@@ -253,34 +242,6 @@ static Date os.dateAdd(Date d,
 返回结果:
 * Date, 返回 javascript Date 对象
 
---------------------------
-### memoryUsage
-**查询当前进程内存使用报告**
-
-```JavaScript
-static Object os.memoryUsage();
-```
-
-返回结果:
-* Object, 返回包含内存报告
-
-内存报告生成类似以下结果：
-
-```JavaScript
-{
-    "rss": 8622080,
-    "heapTotal": 4083456,
-    "heapUsed": 1621800,
-    "nativeObjects": 122
-}
-```
-
-其中：
-- rss 返回进程当前占用物理内存大小
-- heapTotal 返回 v8 引擎堆内存大小
-- heapUsed 返回 v8 引擎正在使用堆内存大小
-- nativeObjects 返回当前有效内置对象数
-
 ## 静态属性
         
 ### timezone
@@ -296,13 +257,5 @@ static readonly Integer os.timezone;
 
 ```JavaScript
 static readonly String os.EOL;
-```
-
---------------------------
-### execPath
-**String, 查询当前运行执行文件完整路径**
-
-```JavaScript
-static readonly String os.execPath;
 ```
 

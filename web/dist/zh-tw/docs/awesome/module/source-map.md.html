@@ -41,6 +41,8 @@
 <li><a href="../../manual/module/ifs/path.md.html" class="notranslate">path</a></li>
 <li><a href="../../manual/module/ifs/path_posix.md.html" class="notranslate">path_posix</a></li>
 <li><a href="../../manual/module/ifs/path_win32.md.html" class="notranslate">path_win32</a></li>
+<li><a href="../../manual/module/ifs/perf_hooks.md.html" class="notranslate">perf_hooks</a></li>
+<li><a href="../../manual/module/ifs/performance.md.html" class="notranslate">performance</a></li>
 <li><a href="../../manual/module/ifs/process.md.html" class="notranslate">process</a></li>
 <li><a href="../../manual/module/ifs/profiler.md.html" class="notranslate">profiler</a></li>
 <li><a href="../../manual/module/ifs/punycode.md.html" class="notranslate">punycode</a></li>
@@ -55,6 +57,7 @@
 <li><a href="../../manual/module/ifs/util.md.html" class="notranslate">util</a></li>
 <li><a href="../../manual/module/ifs/uuid.md.html" class="notranslate">uuid</a></li>
 <li><a href="../../manual/module/ifs/vm.md.html" class="notranslate">vm</a></li>
+<li><a href="../../manual/module/ifs/worker_threads.md.html" class="notranslate">worker_threads</a></li>
 <li><a href="../../manual/module/ifs/ws.md.html" class="notranslate">ws</a></li>
 <li><a href="../../manual/module/ifs/xml.md.html" class="notranslate">xml</a></li>
 <li><a href="../../manual/module/ifs/zip.md.html" class="notranslate">zip</a></li>
@@ -197,8 +200,7 @@
  </div></div></div>  </div></div><div class="content"><div class="social-share share-component" data-sites="weibo,twitter" data-description="分享"></div> <div name="Source-Map" data-unique="Source-Map"></div><h1 id="Source-Map"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Source Map</font></font></h1>
 <p><a href="https://travis-ci.org/mozilla/source-map"><img src="https://travis-ci.org/mozilla/source-map.png?branch=master" alt="Build Status"></a></p>
 <p><a href="https://www.npmjs.com/package/source-map"><img src="https://nodei.co/npm/source-map.png?downloads=true&amp;downloadRank=true" alt="NPM"></a></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">This is a library to generate and consume the source map format
- </font></font><a href="https://docs.google.com/document/d/1U1RGAehQwRypUTovF1KRlpiOFze0b-_2gc6fAH0KY0k/edit"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">described here</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> .</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">This is a library to generate and consume the source map format</font></font><a href="https://docs.google.com/document/d/1U1RGAehQwRypUTovF1KRlpiOFze0b-_2gc6fAH0KY0k/edit"><font style="vertical-align: inherit;"></font></a><font style="vertical-align: inherit;"></font></p>
 <div name="Use-with-Node" data-unique="Use-with-Node"></div><h2 id="Use-with-Node"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Use with Node</font></font></h2>
 <pre><code><div class="line-numbers">1</div>$ npm <span class="hljs-keyword">install</span> <span class="hljs-keyword">source</span>-<span class="hljs-keyword">map</span>
 </code></pre><div name="Use-on-the-Web" data-unique="Use-on-the-Web"></div><h2 id="Use-on-the-Web"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Use on the Web</font></font></h2>
@@ -248,12 +250,12 @@
 <li><a href="#sourcemapgeneratorfromsourcemapsourcemapconsumer"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SourceMapGenerator.fromSourceMap(sourceMapConsumer)</font></font></a></li>
 <li><a href="#sourcemapgeneratorprototypeaddmappingmapping"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SourceMapGenerator.prototype.addMapping(mapping)</font></font></a></li>
 <li><a href="#sourcemapgeneratorprototypesetsourcecontentsourcefile-sourcecontent"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SourceMapGenerator.prototype.setSourceContent(sourceFile, sourceContent)</font></font></a></li>
-<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">[SourceMapGenerator.prototype.applySourceMap(sourceMapConsumer </font></font><a href="#sourcemapgeneratorprototypeapplysourcemapsourcemapconsumer-sourcefile-sourcemappath"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, sourceFile[, sourceMapPath]])</font></font></a></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">[SourceMapGenerator.prototype.applySourceMap(sourceMapConsumer</font></font><a href="#sourcemapgeneratorprototypeapplysourcemapsourcemapconsumer-sourcefile-sourcemappath"><font style="vertical-align: inherit;"></font></a></li>
 <li><a href="#sourcemapgeneratorprototypetostring"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SourceMapGenerator.prototype.toString()</font></font></a></li>
 </ul>
 </li>
 <li><a href="#sourcenode"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SourceNode</font></font></a><ul>
-<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">[new SourceNode([line, column, source </font></font><a href="#new-sourcenodeline-column-source-chunk-name"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, chunk[, name]]])</font></font></a></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">[new SourceNode([line, column, source</font></font><a href="#new-sourcenodeline-column-source-chunk-name"><font style="vertical-align: inherit;"></font></a></li>
 <li><a href="#sourcenodefromstringwithsourcemapcode-sourcemapconsumer-relativepath"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SourceNode.fromStringWithSourceMap(code, sourceMapConsumer[, relativePath])</font></font></a></li>
 <li><a href="#sourcenodeprototypeaddchunk"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SourceNode.prototype.add(chunk)</font></font></a></li>
 <li><a href="#sourcenodeprototypeprependchunk"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SourceNode.prototype.prepend(chunk)</font></font></a></li>
@@ -347,8 +349,7 @@
 });<font></font>
 </code></pre>
 <div name="Generating-a-source-map" data-unique="Generating-a-source-map"></div><h3 id="Generating-a-source-map" class="notranslate">Generating a source map</h3>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">In depth guide:
- </font></font><a href="https://hacks.mozilla.org/2013/05/compiling-to-javascript-and-debugging-with-source-maps/"><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Compiling to JavaScript, and Debugging with Source Maps</font></font></strong></a></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">In depth guide:</font></font><a href="https://hacks.mozilla.org/2013/05/compiling-to-javascript-and-debugging-with-source-maps/"><strong><font style="vertical-align: inherit;"></font></strong></a></p>
 <h4 id="With-SourceNode-(high-level-API)"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">With SourceNode (high level API)</font></font></h4>
 <pre><code class="lang-js"><div class="line-numbers">1
 2
@@ -464,13 +465,12 @@ map.addMapping({<font></font>
 <span class="hljs-keyword">const</span> sourceMap = <span class="hljs-built_in">require</span>(<span class="hljs-string">"devtools/toolkit/sourcemap/source-map.js"</span>);
 </code></pre>
 <div name="SourceMapConsumer" data-unique="SourceMapConsumer"></div><h3 id="SourceMapConsumer" class="notranslate">SourceMapConsumer</h3>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">A </font></font><code>SourceMapConsumer</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">instance represents a parsed source map which we can query for information about the original file positions by giving it a file position in the generated source.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">A</font></font><code>SourceMapConsumer</code><font style="vertical-align: inherit;"></font></p>
 <h4 id="SourceMapConsumer.initialize(options)"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SourceMapConsumer.initialize(options)</font></font></h4>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">When using </font></font><code>SourceMapConsumer</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">outside of node.js, for example on the Web, it needs to know from what URL to load </font></font><code>lib/mappings.wasm</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">. You must inform it by calling </font></font><code>initialize</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">before constructing any </font></font><code>SourceMapConsumer</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">s.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">When using</font></font><code>SourceMapConsumer</code><font style="vertical-align: inherit;"></font><code>lib/mappings.wasm</code><font style="vertical-align: inherit;"></font><code>initialize</code><font style="vertical-align: inherit;"></font><code>SourceMapConsumer</code><font style="vertical-align: inherit;"></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">The options object has the following properties:</font></font></p>
 <ul>
-<li><code>"lib/mappings.wasm"</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: A </font></font><code>String</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">containing the URL of the
- </font></font><code>lib/mappings.wasm</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">file.</font></font></li>
+<li><code>"lib/mappings.wasm"</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: A</font></font><code>String</code><font style="vertical-align: inherit;"></font><code>lib/mappings.wasm</code><font style="vertical-align: inherit;"></font></li>
 </ul>
 <pre><code class="lang-js"><div class="line-numbers">1
 2
@@ -479,8 +479,7 @@ map.addMapping({<font></font>
 });<font></font>
 </code></pre>
 <h4 id="new-SourceMapConsumer(rawSourceMap)"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">new SourceMapConsumer(rawSourceMap)</font></font></h4>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">The only parameter is the raw source map (either as a string which can be
- </font></font><code>JSON.parse</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">'d, or an object). According to the spec, source maps have the following attributes:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">The only parameter is the raw source map (either as a string which can be</font></font><code>JSON.parse</code><font style="vertical-align: inherit;"></font></p>
 <ul>
 <li><p><code>version</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Which version of the source map spec this map is following.</font></font></p>
 </li>
@@ -498,21 +497,19 @@ map.addMapping({<font></font>
 </li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">The promise of the constructed souce map consumer is returned.</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">When the </font></font><code>SourceMapConsumer</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">will no longer be used anymore, you must call its
- </font></font><code>destroy</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">method.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">When the</font></font><code>SourceMapConsumer</code><font style="vertical-align: inherit;"></font><code>destroy</code><font style="vertical-align: inherit;"></font></p>
 <pre><code class="lang-js"><div class="line-numbers">1
 2
 3</div><span class="hljs-keyword">const</span> consumer = <span class="hljs-keyword">await</span> <span class="hljs-keyword">new</span> sourceMap.SourceMapConsumer(rawSourceMapJsonData);<font></font>
 doStuffWith(consumer);<font></font>
 consumer.destroy();<font></font>
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Alternatively, you can use </font></font><code>SourceMapConsumer.with</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">to avoid needing to remember to call </font></font><code>destroy</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Alternatively, you can use</font></font><code>SourceMapConsumer.with</code><font style="vertical-align: inherit;"></font><code>destroy</code><font style="vertical-align: inherit;"></font></p>
 <h4 id="SourceMapConsumer.with"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SourceMapConsumer.with</font></font></h4>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Construct a new </font></font><code>SourceMapConsumer</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">from </font></font><code>rawSourceMap</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">and </font></font><code>sourceMapUrl</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
-(see the </font></font><code>SourceMapConsumer</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">constructor for details. Then, invoke the </font></font><code>async
-function f(SourceMapConsumer) -&gt; T</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">with the newly constructed consumer, wait for </font></font><code>f</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">to complete, call </font></font><code>destroy</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">on the consumer, and return </font></font><code>f</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">'s return value.</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">You must not use the consumer after </font></font><code>f</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">completes!</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">By using </font></font><code>with</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, you do not have to remember to manually call </font></font><code>destroy</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">on the consumer, since it will be called automatically once </font></font><code>f</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">completes.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Construct a new</font></font><code>SourceMapConsumer</code><font style="vertical-align: inherit;"></font><code>rawSourceMap</code><font style="vertical-align: inherit;"></font><code>sourceMapUrl</code><font style="vertical-align: inherit;"></font><code>SourceMapConsumer</code><font style="vertical-align: inherit;"></font><code>async
+function f(SourceMapConsumer) -&gt; T</code><font style="vertical-align: inherit;"></font><code>f</code><font style="vertical-align: inherit;"></font><code>destroy</code><font style="vertical-align: inherit;"></font><code>f</code><font style="vertical-align: inherit;"></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">You must not use the consumer after</font></font><code>f</code><font style="vertical-align: inherit;"></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">By using</font></font><code>with</code><font style="vertical-align: inherit;"></font><code>destroy</code><font style="vertical-align: inherit;"></font><code>f</code><font style="vertical-align: inherit;"></font></p>
 <pre><code class="lang-js"><div class="line-numbers">1
 2
 3
@@ -547,7 +544,7 @@ function f(SourceMapConsumer) -&gt; T</code><font style="vertical-align: inherit
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Free this source map consumer's associated wasm data that is manually-managed.</font></font></p>
 <pre><code class="lang-js"><div class="line-numbers">1</div>consumer.destroy();
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Alternatively, you can use </font></font><code>SourceMapConsumer.with</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">to avoid needing to remember to call </font></font><code>destroy</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Alternatively, you can use</font></font><code>SourceMapConsumer.with</code><font style="vertical-align: inherit;"></font><code>destroy</code><font style="vertical-align: inherit;"></font></p>
 <h4 id="SourceMapConsumer.prototype.computeColumnSpans()"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SourceMapConsumer.prototype.computeColumnSpans()</font></font></h4>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Compute the last column for each generated mapping. The last column is inclusive.</font></font></p>
 <pre><code class="lang-js"><div class="line-numbers">1
@@ -601,9 +598,7 @@ consumer.allGeneratedPositionsFor({ <span class="hljs-attr">line</span>: <span c
 </li>
 <li><p><code>column</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: The column number in the generated source. Column numbers in this library are 0-based.</font></font></p>
 </li>
-<li><p><code>bias</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Either </font></font><code>SourceMapConsumer.GREATEST_LOWER_BOUND</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">or
- </font></font><code>SourceMapConsumer.LEAST_UPPER_BOUND</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">. Specifies whether to return the closest element that is smaller than or greater than the one we are searching for, respectively, if the exact element cannot be found. Defaults to
- </font></font><code>SourceMapConsumer.GREATEST_LOWER_BOUND</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">.</font></font></p>
+<li><p><code>bias</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Either</font></font><code>SourceMapConsumer.GREATEST_LOWER_BOUND</code><font style="vertical-align: inherit;"></font><code>SourceMapConsumer.LEAST_UPPER_BOUND</code><font style="vertical-align: inherit;"></font><code>SourceMapConsumer.GREATEST_LOWER_BOUND</code><font style="vertical-align: inherit;"></font></p>
 </li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">and an object is returned with the following properties:</font></font></p>
@@ -696,9 +691,7 @@ consumer.originalPositionFor({ <span class="hljs-attr">line</span>: <span class=
 </code></pre>
 <h4 id="SourceMapConsumer.prototype.hasContentsOfAllSources()"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SourceMapConsumer.prototype.hasContentsOfAllSources()</font></font></h4>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Return true if we have the embedded source content for every source listed in the source map, false otherwise.</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">In other words, if this method returns </font></font><code>true</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, then
- </font></font><code>consumer.sourceContentFor(s)</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">will succeed for every source </font></font><code>s</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">in
- </font></font><code>consumer.sources</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">In other words, if this method returns</font></font><code>true</code><font style="vertical-align: inherit;"></font><code>consumer.sourceContentFor(s)</code><font style="vertical-align: inherit;"></font><code>s</code><font style="vertical-align: inherit;"></font><code>consumer.sources</code><font style="vertical-align: inherit;"></font></p>
 <pre><code class="lang-js"><div class="line-numbers">1
 2
 3
@@ -715,7 +708,7 @@ consumer.originalPositionFor({ <span class="hljs-attr">line</span>: <span class=
 </code></pre>
 <h4 id="SourceMapConsumer.prototype.sourceContentFor(source[,-returnNullOnMissing])"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SourceMapConsumer.prototype.sourceContentFor(source[, returnNullOnMissing])</font></font></h4>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Returns the original source content for the source provided. The only argument is the URL of the original source file.</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">If the source content for the given source is not found, then an error is thrown. Optionally, pass </font></font><code>true</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">as the second param to have </font></font><code>null</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">returned instead.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">If the source content for the given source is not found, then an error is thrown. Optionally, pass</font></font><code>true</code><font style="vertical-align: inherit;"></font><code>null</code><font style="vertical-align: inherit;"></font></p>
 <pre><code class="lang-js"><div class="line-numbers">1
 2
 3
@@ -744,12 +737,9 @@ consumer.sourceContentFor(<span class="hljs-string">"this is not in the source m
 <li><p><code>callback</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: The function that is called with each mapping. Mappings have the form </font></font><code>{ source, generatedLine, generatedColumn, originalLine, originalColumn,
 name }</code></p>
 </li>
-<li><p><code>context</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Optional. If specified, this object will be the value of </font></font><code>this</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
-every time that </font></font><code>callback</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">is called.</font></font></p>
+<li><p><code>context</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Optional. If specified, this object will be the value of</font></font><code>this</code><font style="vertical-align: inherit;"></font><code>callback</code><font style="vertical-align: inherit;"></font></p>
 </li>
-<li><p><code>order</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Either </font></font><code>SourceMapConsumer.GENERATED_ORDER</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">or
- </font></font><code>SourceMapConsumer.ORIGINAL_ORDER</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">. Specifies whether you want to iterate over the mappings sorted by the generated file's line/column order or the original's source/line/column order, respectively. Defaults to
- </font></font><code>SourceMapConsumer.GENERATED_ORDER</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">.</font></font></p>
+<li><p><code>order</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Either</font></font><code>SourceMapConsumer.GENERATED_ORDER</code><font style="vertical-align: inherit;"></font><code>SourceMapConsumer.ORIGINAL_ORDER</code><font style="vertical-align: inherit;"></font><code>SourceMapConsumer.GENERATED_ORDER</code><font style="vertical-align: inherit;"></font></p>
 </li>
 </ul>
 <pre><code class="lang-js"><div class="line-numbers">1
@@ -791,7 +781,7 @@ every time that </font></font><code>callback</code><font style="vertical-align: 
 </li>
 <li><p><code>sourceRoot</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: A root for all relative URLs in this source map.</font></font></p>
 </li>
-<li><p><code>skipValidation</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Optional. When </font></font><code>true</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, disables validation of mappings as they are added. This can improve performance but should be used with discretion, as a last resort. Even then, one should avoid using this flag when running tests, if possible.</font></font></p>
+<li><p><code>skipValidation</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Optional. When</font></font><code>true</code><font style="vertical-align: inherit;"></font></p>
 </li>
 </ul>
 <pre><code class="lang-js"><div class="line-numbers">1
@@ -803,7 +793,7 @@ every time that </font></font><code>callback</code><font style="vertical-align: 
 });<font></font>
 </code></pre>
 <h4 id="SourceMapGenerator.fromSourceMap(sourceMapConsumer)"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SourceMapGenerator.fromSourceMap(sourceMapConsumer)</font></font></h4>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Creates a new </font></font><code>SourceMapGenerator</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">from an existing </font></font><code>SourceMapConsumer</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">instance.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Creates a new</font></font><code>SourceMapGenerator</code><font style="vertical-align: inherit;"></font><code>SourceMapConsumer</code><font style="vertical-align: inherit;"></font></p>
 <ul>
 <li><code>sourceMapConsumer</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> The SourceMap.</font></font></li>
 </ul>
@@ -852,7 +842,7 @@ every time that </font></font><code>callback</code><font style="vertical-align: 
 </li>
 <li><p><code>sourceMapPath</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Optional. The dirname of the path to the SourceMap to be applied. If relative, it is relative to the SourceMap.</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">This parameter is needed when the two SourceMaps aren't in the same directory, and the SourceMap to be applied contains relative source paths. If so, those relative source paths need to be rewritten relative to the SourceMap.</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">If omitted, it is assumed that both SourceMaps are in the same directory, thus not needing any rewriting. (Supplying </font></font><code>'.'</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">has the same effect.)</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">If omitted, it is assumed that both SourceMaps are in the same directory, thus not needing any rewriting. (Supplying</font></font><code>'.'</code><font style="vertical-align: inherit;"></font></p>
 </li>
 </ul>
 <h4 id="SourceMapGenerator.prototype.toString()"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SourceMapGenerator.prototype.toString()</font></font></h4>
@@ -871,7 +861,7 @@ every time that </font></font><code>callback</code><font style="vertical-align: 
 </li>
 <li><p><code>source</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: The original source's filename; null if no filename is provided.</font></font></p>
 </li>
-<li><p><code>chunk</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Optional. Is immediately passed to </font></font><code>SourceNode.prototype.add</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, see below.</font></font></p>
+<li><p><code>chunk</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Optional. Is immediately passed to</font></font><code>SourceNode.prototype.add</code><font style="vertical-align: inherit;"></font></p>
 </li>
 <li><p><code>name</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Optional. The original identifier.</font></font></p>
 </li>
@@ -893,8 +883,7 @@ every time that </font></font><code>callback</code><font style="vertical-align: 
 </li>
 <li><p><code>sourceMapConsumer</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> The SourceMap for the generated code</font></font></p>
 </li>
-<li><p><code>relativePath</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">The optional path that relative sources in </font></font><code>sourceMapConsumer</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
-should be relative to.</font></font></p>
+<li><p><code>relativePath</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">The optional path that relative sources in</font></font><code>sourceMapConsumer</code><font style="vertical-align: inherit;"></font></p>
 </li>
 </ul>
 <pre><code class="lang-js"><div class="line-numbers">1
@@ -904,8 +893,7 @@ should be relative to.</font></font></p>
 <h4 id="SourceNode.prototype.add(chunk)"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SourceNode.prototype.add(chunk)</font></font></h4>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Add a chunk of generated JS to this source node.</font></font></p>
 <ul>
-<li><code>chunk</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: A string snippet of generated JS code, another instance of
-  </font></font><code>SourceNode</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, or an array where each member is one of those things.</font></font></li>
+<li><code>chunk</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: A string snippet of generated JS code, another instance of</font></font><code>SourceNode</code><font style="vertical-align: inherit;"></font></li>
 </ul>
 <pre><code class="lang-js"><div class="line-numbers">1
 2
@@ -916,14 +904,12 @@ node.add([leftHandOperandNode, <span class="hljs-string">" + "</span>, rightHand
 <h4 id="SourceNode.prototype.prepend(chunk)"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SourceNode.prototype.prepend(chunk)</font></font></h4>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Prepend a chunk of generated JS to this source node.</font></font></p>
 <ul>
-<li><code>chunk</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: A string snippet of generated JS code, another instance of
-  </font></font><code>SourceNode</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, or an array where each member is one of those things.</font></font></li>
+<li><code>chunk</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: A string snippet of generated JS code, another instance of</font></font><code>SourceNode</code><font style="vertical-align: inherit;"></font></li>
 </ul>
 <pre><code class="lang-js"><div class="line-numbers">1</div>node.prepend(<span class="hljs-string">"/** Build Id: f783haef86324gf **/\n\n"</span>);
 </code></pre>
 <h4 id="SourceNode.prototype.setSourceContent(sourceFile,-sourceContent)"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SourceNode.prototype.setSourceContent(sourceFile, sourceContent)</font></font></h4>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Set the source content for a source file. This will be added to the
- </font></font><code>SourceMap</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">in the </font></font><code>sourcesContent</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">field.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Set the source content for a source file. This will be added to the</font></font><code>SourceMap</code><font style="vertical-align: inherit;"></font><code>sourcesContent</code><font style="vertical-align: inherit;"></font></p>
 <ul>
 <li><p><code>sourceFile</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: The filename of the source file</font></font></p>
 </li>
@@ -997,7 +983,7 @@ node.walkSourceContents(<span class="hljs-function"><span class="hljs-keyword">f
 <span class="hljs-comment">// WALK: c.js : original c</span>
 </code></pre>
 <h4 id="SourceNode.prototype.join(sep)"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SourceNode.prototype.join(sep)</font></font></h4>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Like </font></font><code>Array.prototype.join</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">except for SourceNodes. Inserts the separator between each of this source node's children.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Like</font></font><code>Array.prototype.join</code><font style="vertical-align: inherit;"></font></p>
 <ul>
 <li><code>sep</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: The separator.</font></font></li>
 </ul>
@@ -1014,7 +1000,7 @@ node.walkSourceContents(<span class="hljs-function"><span class="hljs-keyword">f
 <span class="hljs-keyword">var</span> joinedNode = node.join(<span class="hljs-string">" "</span>);
 </code></pre>
 <h4 id="SourceNode.prototype.replaceRight(pattern,-replacement)"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SourceNode.prototype.replaceRight(pattern, replacement)</font></font></h4>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call </font></font><code>String.prototype.replace</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">on the very right-most source snippet. Useful for trimming white space from the end of a source node, etc.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call</font></font><code>String.prototype.replace</code><font style="vertical-align: inherit;"></font></p>
 <ul>
 <li><p><code>pattern</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: The pattern to replace.</font></font></p>
 </li>
@@ -1051,7 +1037,7 @@ node.toString()<font></font>
 </code></pre>
 <h4 id="SourceNode.prototype.toStringWithSourceMap([startOfSourceMap])"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SourceNode.prototype.toStringWithSourceMap([startOfSourceMap])</font></font></h4>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Returns the string representation of this tree of source nodes, plus a SourceMapGenerator which contains all the mappings between the generated and original sources.</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">The arguments are the same as those to </font></font><code>new SourceMapGenerator</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">The arguments are the same as those to</font></font><code>new SourceMapGenerator</code><font style="vertical-align: inherit;"></font></p>
 <pre><code class="lang-js"><div class="line-numbers">1
 2
 3
@@ -1076,4 +1062,4 @@ node.toStringWithSourceMap({ <span class="hljs-attr">file</span>: <span class="h
 <span class="hljs-comment">// { code: 'unodostresquatro',</span>
 <span class="hljs-comment">//   map: [object SourceMapGenerator] }</span>
 </code></pre>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org |</font></font><a href="../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持我們</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip427145"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip427145" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Click to return on the top page</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../js/common.js"></script><script type="text/javascript" src="../../../../js/docs.js"></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org |</font></font><a href="../../../support.html"><font style="vertical-align: inherit;"></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip105097"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip105097" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Click to return on the top page</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../js/common.js"></script><script type="text/javascript" src="../../../../js/docs.js"></script></body></html>

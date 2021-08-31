@@ -41,6 +41,8 @@
 <li><a href=path.md.html class ="notranslate">path</a></li>
 <li><a href=path_posix.md.html class ="notranslate">path_posix</a></li>
 <li><a href=path_win32.md.html class ="notranslate">path_win32</a></li>
+<li><a href=perf_hooks.md.html class ="notranslate">perf_hooks</a></li>
+<li><a href=performance.md.html class ="notranslate">performance</a></li>
 <li><a href=process.md.html class ="notranslate">process</a></li>
 <li><a href=profiler.md.html class ="notranslate">profiler</a></li>
 <li><a href=punycode.md.html class ="notranslate">punycode</a></li>
@@ -55,6 +57,7 @@
 <li><a href=util.md.html class ="notranslate">util</a></li>
 <li><a href=uuid.md.html class ="notranslate">uuid</a></li>
 <li><a href=vm.md.html class ="notranslate">vm</a></li>
+<li><a href=worker_threads.md.html class ="notranslate">worker_threads</a></li>
 <li><a href=ws.md.html class ="notranslate">ws</a></li>
 <li><a href=xml.md.html class ="notranslate">xml</a></li>
 <li><a href=zip.md.html class ="notranslate">zip</a></li>
@@ -259,15 +262,6 @@
 <li><span class="notranslate">String</span>, 返回 cpu 类型，可能的结果为 &#39;amd64&#39;, &#39;arm&#39;, &#39;arm64&#39;, &#39;ia32&#39;</li>
 </ul>
 <hr>
-<h3 id="uptime" class ="notranslate">uptime</h3>
-<p><strong>查询运行环境运行时间，以秒为单位</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Number</span> os.uptime();
-</code></pre>
-<p>返回结果:</p>
-<ul>
-<li><span class="notranslate">Number</span>, 返回表示时间的数值</li>
-</ul>
-<hr>
 <h3 id="loadavg" class ="notranslate">loadavg</h3>
 <p><strong>查询运行环境 1分钟，5分钟，15分钟平均负载</strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Array</span> os.loadavg();
@@ -406,35 +400,6 @@
 <ul>
 <li><span class="notranslate">Date</span>, 返回 javascript Date 对象</li>
 </ul>
-<hr>
-<h3 id="memoryUsage" class ="notranslate">memoryUsage</h3>
-<p><strong>查询当前进程内存使用报告</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Object</span> os.memoryUsage();
-</code></pre>
-<p>返回结果:</p>
-<ul>
-<li><span class="notranslate">Object</span>, 返回包含内存报告</li>
-</ul>
-<p>内存报告生成类似以下结果：</p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1
-2
-3
-4
-5
-6</div>{
-    <span class="hljs-string">"rss"</span>: <span class="hljs-number">8622080</span>,
-    <span class="hljs-string">"heapTotal"</span>: <span class="hljs-number">4083456</span>,
-    <span class="hljs-string">"heapUsed"</span>: <span class="hljs-number">1621800</span>,
-    <span class="hljs-string">"nativeObjects"</span>: <span class="hljs-number">122</span>
-}
-</code></pre>
-<p>其中：</p>
-<ul>
-<li>rss 返回进程当前占用物理内存大小</li>
-<li>heapTotal 返回 v8 引擎堆内存大小</li>
-<li>heapUsed 返回 v8 引擎正在使用堆内存大小</li>
-<li>nativeObjects 返回当前有效内置对象数</li>
-</ul>
 <h2 id="静态属性">静态属性</h2>
 <h3 id="timezone" class ="notranslate">timezone</h3>
 <p><strong>Integer, 查询运行环境当前时区</strong></p>
@@ -444,10 +409,5 @@
 <h3 id="EOL" class ="notranslate">EOL</h3>
 <p><strong>String, 查询当前运行环境行结尾标识，posix:\&quot;\n\&quot;；windows:\&quot;\r\n\&quot;</strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly <span class="hljs-built_in">String</span> os.EOL;
-</code></pre>
-<hr>
-<h3 id="execPath" class ="notranslate">execPath</h3>
-<p><strong>String, 查询当前运行执行文件完整路径</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly <span class="hljs-built_in">String</span> os.execPath;
 </code></pre>
  </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id=toc></div></div></div></div><div class=footer><div class=container>&copy; Copyright 2012-2021 fibjs.org | <a href=../../../../support.html>支持我们</a></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="Click to return on the top page" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js></script><script type=text/javascript src=../../../../js/common.js></script><script type=text/javascript src=../../../../js/docs.js></script></body></html>

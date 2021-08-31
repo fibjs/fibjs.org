@@ -54,7 +54,7 @@ fb.join();
 #.class: fill=white
 
 [<class>object|toString();toJSON()]
-[<this>Fiber|id;caller;stack|join()]
+[<this>Fiber|id;caller;stack;stack_usage|join()]
 
 [object] <:- [Fiber]
 ```
@@ -82,6 +82,14 @@ readonly Fiber Fiber.caller;
 
 ```JavaScript
 readonly String Fiber.stack;
+```
+
+--------------------------
+### stack_usage
+**Integer, 查询纤程已使用的堆栈尺寸**
+
+```JavaScript
+readonly Integer Fiber.stack_usage;
 ```
 
 ## 成员函数

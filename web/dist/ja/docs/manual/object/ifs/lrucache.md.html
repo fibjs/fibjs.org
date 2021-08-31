@@ -1,14 +1,14 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../../../imgs/icon.png"><title>ファイバー上のオブジェクト LruCache-JavaScript</title><link href="../../../../../css/common.css" rel="stylesheet"><link href="../../../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">トグルナビゲーション</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../../../index.html"><img src="../../../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../../../index.html">HOME</a></li><li><a href="../../../guide/readme.md.html">GUIDE</a></li><li><a href="../../module/readme.md.html">MODULE</a></li><li><a href="../readme.md.html">OBJECT</a></li><li><a href="../../../awesome/readme.md.html">AWESOME</a></li><li><a href="../../../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../../../docs/manual/object/ifs/lrucache.md.html">中文</a> <a href="../../../../../ca/docs/manual/object/ifs/lrucache.md.html">Catalan</a> <a href="../../../../../de/docs/manual/object/ifs/lrucache.md.html">Deutsch</a> <a href="../../../../../en/docs/manual/object/ifs/lrucache.md.html">English</a> <a href="../../../../../es/docs/manual/object/ifs/lrucache.md.html">Español</a> <a href="../../../../../fr/docs/manual/object/ifs/lrucache.md.html">Français</a> <a href="../../../../../gl/docs/manual/object/ifs/lrucache.md.html">Galego</a> <a href="../../../../../it/docs/manual/object/ifs/lrucache.md.html">Italiano</a> <a href="../../../../../ru/docs/manual/object/ifs/lrucache.md.html">Русский</a> <a href="../../../../../ja/docs/manual/object/ifs/lrucache.md.html">日本語</a> <a href="../../../../../ko/docs/manual/object/ifs/lrucache.md.html">한국어</a> <a href="../../../../../zh-tw/docs/manual/object/ifs/lrucache.md.html">繁體中文</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> オブジェクト組み込みオブジェクト </font></font></span><div class="search"><span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input type="text" class="searchbox ds-input" placeholder="探す" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-label="検索入力" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Avenir, &quot;Segoe UI&quot;, Arial, &quot;Hiragino Sans GB&quot;, 冬青黑, &quot;Microsoft YaHei&quot;, 微软雅黑, SimSun, 宋体, Helvetica, Tahoma, &quot;Arial sans-serif&quot;; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div class="ds-dataset-1"></div></span></span></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ホーム</font></font></a></li><li><a href="../readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 組み込みオブジェクト </font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> オブジェクト LruCache </font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 開発ガイド </font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
-<li><a href="../../../guide/about.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">フィブスとは？</font></font></a></li>
-<li><a href="../../../guide/install.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">インストールと動作環境</font></font></a></li>
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../../../imgs/icon.png"><title>オブジェクトLruCache-ファイバー上のJavaScript</title><link href="../../../../../css/common.css" rel="stylesheet"><link href="../../../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ナビゲーションの切り替え</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../../../index.html"><img src="../../../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../../../index.html">HOME</a></li><li><a href="../../../guide/readme.md.html">GUIDE</a></li><li><a href="../../module/readme.md.html">MODULE</a></li><li><a href="../readme.md.html">OBJECT</a></li><li><a href="../../../awesome/readme.md.html">AWESOME</a></li><li><a href="../../../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../../../docs/manual/object/ifs/lrucache.md.html">中文</a> <a href="../../../../../ca/docs/manual/object/ifs/lrucache.md.html">Catalan</a> <a href="../../../../../de/docs/manual/object/ifs/lrucache.md.html">Deutsch</a> <a href="../../../../../en/docs/manual/object/ifs/lrucache.md.html">English</a> <a href="../../../../../es/docs/manual/object/ifs/lrucache.md.html">Español</a> <a href="../../../../../fr/docs/manual/object/ifs/lrucache.md.html">Français</a> <a href="../../../../../gl/docs/manual/object/ifs/lrucache.md.html">Galego</a> <a href="../../../../../it/docs/manual/object/ifs/lrucache.md.html">Italiano</a> <a href="../../../../../ru/docs/manual/object/ifs/lrucache.md.html">Русский</a> <a href="../../../../../ja/docs/manual/object/ifs/lrucache.md.html">日本語</a> <a href="../../../../../ko/docs/manual/object/ifs/lrucache.md.html">한국어</a> <a href="../../../../../zh-tw/docs/manual/object/ifs/lrucache.md.html">繁體中文</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> オブジェクト組み込みオブジェクト </font></font></span><div class="search"><span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input type="text" class="searchbox ds-input" placeholder="検索" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-label="検索入力" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Avenir, &quot;Segoe UI&quot;, Arial, &quot;Hiragino Sans GB&quot;, 冬青黑, &quot;Microsoft YaHei&quot;, 微软雅黑, SimSun, 宋体, Helvetica, Tahoma, &quot;Arial sans-serif&quot;; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div class="ds-dataset-1"></div></span></span></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">表紙</font></font></a></li><li><a href="../readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 組み込みオブジェクト </font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> オブジェクトLruCache </font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 開発ガイド </font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="../../../guide/about.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjsとは何ですか？</font></font></a></li>
+<li><a href="../../../guide/install.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">インストールおよび操作環境</font></font></a></li>
 <li><a href="../../../guide/hello.md.html" class="notranslate">hello, world</a></li>
-<li><a href="../../../guide/test.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">良い人生はテストから始まる</font></font></a></li>
-<li><a href="../../../guide/profiler.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">パフォーマンス キラーを見つける</font></font></a></li>
-<li><a href="../../../guide/desktop.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">デスクトップ アプリケーションをすばやく開発</font></font></a></li>
+<li><a href="../../../guide/test.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">良い人生はテストから始まります</font></font></a></li>
+<li><a href="../../../guide/profiler.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">パフォーマンスキラーを見つける</font></font></a></li>
+<li><a href="../../../guide/desktop.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">デスクトップアプリケーションをすばやく開発する</font></font></a></li>
 <li><a href="../../../guide/server-hot-update.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">サーバーモジュールのホットアップデート</font></font></a></li>
 <li><a href="../../../guide/host-routes.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ドメイン名ルーティング</font></font></a></li>
-<li><a href="../../../guide/x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs での X509 証明書の使用</font></font></a></li>
-<li><a href="../../../guide/contribute.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ネイティブモジュールを追加</font></font></a></li>
+<li><a href="../../../guide/x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjsでのX509証明書の使用</font></font></a></li>
+<li><a href="../../../guide/contribute.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ネイティブモジュールを追加する</font></font></a></li>
 </ul>
  </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_module" aria-controls="collapse_module"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 基本モジュール </font></font></a></h4></div><div id="collapse_module" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
 <li><a href="../../module/ifs/assert.md.html" class="notranslate">assert</a></li>
@@ -41,6 +41,8 @@
 <li><a href="../../module/ifs/path.md.html" class="notranslate">path</a></li>
 <li><a href="../../module/ifs/path_posix.md.html" class="notranslate">path_posix</a></li>
 <li><a href="../../module/ifs/path_win32.md.html" class="notranslate">path_win32</a></li>
+<li><a href="../../module/ifs/perf_hooks.md.html" class="notranslate">perf_hooks</a></li>
+<li><a href="../../module/ifs/performance.md.html" class="notranslate">performance</a></li>
 <li><a href="../../module/ifs/process.md.html" class="notranslate">process</a></li>
 <li><a href="../../module/ifs/profiler.md.html" class="notranslate">profiler</a></li>
 <li><a href="../../module/ifs/punycode.md.html" class="notranslate">punycode</a></li>
@@ -55,6 +57,7 @@
 <li><a href="../../module/ifs/util.md.html" class="notranslate">util</a></li>
 <li><a href="../../module/ifs/uuid.md.html" class="notranslate">uuid</a></li>
 <li><a href="../../module/ifs/vm.md.html" class="notranslate">vm</a></li>
+<li><a href="../../module/ifs/worker_threads.md.html" class="notranslate">worker_threads</a></li>
 <li><a href="../../module/ifs/ws.md.html" class="notranslate">ws</a></li>
 <li><a href="../../module/ifs/xml.md.html" class="notranslate">xml</a></li>
 <li><a href="../../module/ifs/zip.md.html" class="notranslate">zip</a></li>
@@ -194,15 +197,15 @@
 <li><a href="../../../awesome/module/bitcoinjs-lib.md.html" class="notranslate">bitcoinjs-lib</a></li>
 <li><a href="../../../awesome/module/rakuten.md.html" class="notranslate">Rakuten</a></li>
 </ul>
- </div></div></div>  </div></div><div class="content"><div class="social-share share-component" data-sites="weibo,twitter" data-description="分享"></div> <div name="对象-LruCache" data-unique="对象-LruCache"></div><h1 id="对象-LruCache"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">オブジェクト LruCache</font></font></h1>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">LRU (最も長く使用されていない) キャッシュ オブジェクト</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">LruCache は、LRU キャッシュを維持するために使用されます。作成方法は次のとおりです。</font></font></p>
+ </div></div></div>  </div></div><div class="content"><div class="social-share share-component" data-sites="weibo,twitter" data-description="分享"></div> <div name="对象-LruCache" data-unique="对象-LruCache"></div><h1 id="对象-LruCache"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">オブジェクトLruCache</font></font></h1>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">LRU（最近使用されていない）キャッシュオブジェクト</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">LruCacheは、作成方法であるLRUキャッシュを維持するために使用されます。</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">var</span> util = <span class="hljs-built_in">require</span>(<span class="hljs-string">"util"</span>);
 <span class="hljs-keyword">var</span> c = <span class="hljs-keyword">new</span> util.LruCache(<span class="hljs-number">10</span>, <span class="hljs-number">100</span>);
 </code></pre>
 <div name="继承关系" data-unique="继承关系"></div><h2 id="继承关系"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">継承</font></font></h2>
-<div class="dot notranslate"><svg version="1.1" baseProfile="full" width="195" height="794" viewBox="0 0 195 794" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events" style="font:normal normal 10pt Helvetica,sans-Serif, Helvetica, sans-serif;;stroke-linejoin:round;stroke-linecap:round">
+<div class="dot notranslate"><svg version="1.1" baseProfile="full" width="225" height="824" viewBox="0 0 225 824" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events" style="font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;;stroke-linejoin:round;stroke-linecap:round">
   <desc>
 #lineWidth: 1.5
 #font: Helvetica,sans-Serif
@@ -218,133 +221,133 @@
 [object] &lt;:- [EventEmitter]
 [EventEmitter] &lt;:- [LruCache]
 </desc>
-  <rect x="0" y="0" height="794" width="195" style="stroke:none; fill:transparent;"></rect>
-  <path d="M97.5 93 L97.5 113 L97.5 133 L97.5 133 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M102.8 106.3 L97.5 106.3 L92.2 106.3 L97.5 93 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M97.5 501 L97.5 521 L97.5 541 L97.5 541 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M102.8 514.3 L97.5 514.3 L92.2 514.3 L97.5 501 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <rect x="13" y="133" height="368" width="169" data-name="EventEmitter" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="97.5" y="154" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="EventEmitter">EventEmitter</text>
-  <text x="21" y="186" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">new EventEmitter()</text>
-  <text x="21" y="218" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">EventEmitter</text>
-  <text x="21" y="250" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">defaultMaxListeners</text>
-  <text x="21" y="282" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">on()</text>
-  <text x="21" y="298" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">addListener()</text>
-  <text x="21" y="314" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">prependListener()</text>
-  <text x="21" y="330" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">once()</text>
-  <text x="21" y="346" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">prependOnceListener()</text>
-  <text x="21" y="362" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">off()</text>
-  <text x="21" y="378" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">removeListener()</text>
-  <text x="21" y="394" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">removeAllListeners()</text>
-  <text x="21" y="410" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">setMaxListeners()</text>
-  <text x="21" y="426" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">getMaxListeners()</text>
-  <text x="21" y="442" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">listeners()</text>
-  <text x="21" y="458" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">listenerCount()</text>
-  <text x="21" y="474" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">eventNames()</text>
-  <text x="21" y="490" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">emit()</text>
-  <path d="M13 165 L182 165" data-name="EventEmitter" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M13 197 L182 197" data-name="EventEmitter" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M13 229 L182 229" data-name="EventEmitter" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M13 261 L182 261" data-name="EventEmitter" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <rect x="37" y="541" height="240" width="121" data-name="LruCache" style="stroke:#33322E;fill:lightgray;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="97.5" y="562" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="LruCache">LruCache</text>
-  <text x="45" y="594" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="LruCache">new LruCache()</text>
-  <text x="45" y="626" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="LruCache">size</text>
-  <text x="45" y="642" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="LruCache">timeout</text>
-  <text x="45" y="658" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="LruCache">onexpire</text>
-  <text x="45" y="690" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="LruCache">clear()</text>
-  <text x="45" y="706" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="LruCache">has()</text>
-  <text x="45" y="722" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="LruCache">get()</text>
-  <text x="45" y="738" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="LruCache">set()</text>
-  <text x="45" y="754" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="LruCache">remove()</text>
-  <text x="45" y="770" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="LruCache">isEmpty()</text>
-  <path d="M37 573 L158 573" data-name="LruCache" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M37 605 L158 605" data-name="LruCache" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M37 669 L158 669" data-name="LruCache" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <rect x="59" y="13" height="80" width="77" data-name="object" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="97.5" y="34" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="object">object</text>
-  <text x="67" y="66" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="object">toString()</text>
-  <text x="67" y="82" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="object">toJSON()</text>
-  <path d="M59 45 L136 45" data-name="object" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <rect x="0" y="0" height="824" width="225" style="stroke:none; fill:transparent;"></rect>
+  <path d="M112.5 121.3 L112.5 128 L112.5 148 L112.5 148 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M117.8 121.3 L112.5 121.3 L107.2 121.3 L112.5 108 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M112.5 529.3 L112.5 536 L112.5 556 L112.5 556 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M117.8 529.3 L112.5 529.3 L107.2 529.3 L112.5 516 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <rect x="28" y="148" height="368" width="169" data-name="EventEmitter" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
+  <path d="M28 180 L197 180" data-name="EventEmitter" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M28 212 L197 212" data-name="EventEmitter" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M28 244 L197 244" data-name="EventEmitter" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M28 276 L197 276" data-name="EventEmitter" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <text x="112.5" y="169" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="EventEmitter">EventEmitter</text>
+  <text x="36" y="201" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">new EventEmitter()</text>
+  <text x="36" y="233" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">EventEmitter</text>
+  <text x="36" y="265" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">defaultMaxListeners</text>
+  <text x="36" y="297" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">on()</text>
+  <text x="36" y="313" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">addListener()</text>
+  <text x="36" y="329" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">prependListener()</text>
+  <text x="36" y="345" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">once()</text>
+  <text x="36" y="361" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">prependOnceListener()</text>
+  <text x="36" y="377" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">off()</text>
+  <text x="36" y="393" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">removeListener()</text>
+  <text x="36" y="409" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">removeAllListeners()</text>
+  <text x="36" y="425" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">setMaxListeners()</text>
+  <text x="36" y="441" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">getMaxListeners()</text>
+  <text x="36" y="457" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">listeners()</text>
+  <text x="36" y="473" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">listenerCount()</text>
+  <text x="36" y="489" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">eventNames()</text>
+  <text x="36" y="505" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">emit()</text>
+  <rect x="52" y="556" height="240" width="121" data-name="LruCache" style="stroke:#33322E;fill:lightgray;stroke-dasharray:none;stroke-width:1.5;"></rect>
+  <path d="M52 588 L173 588" data-name="LruCache" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M52 620 L173 620" data-name="LruCache" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M52 684 L173 684" data-name="LruCache" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <text x="112.5" y="577" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="LruCache">LruCache</text>
+  <text x="60" y="609" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="LruCache">new LruCache()</text>
+  <text x="60" y="641" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="LruCache">size</text>
+  <text x="60" y="657" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="LruCache">timeout</text>
+  <text x="60" y="673" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="LruCache">onexpire</text>
+  <text x="60" y="705" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="LruCache">clear()</text>
+  <text x="60" y="721" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="LruCache">has()</text>
+  <text x="60" y="737" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="LruCache">get()</text>
+  <text x="60" y="753" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="LruCache">set()</text>
+  <text x="60" y="769" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="LruCache">remove()</text>
+  <text x="60" y="785" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="LruCache">isEmpty()</text>
+  <rect x="74" y="28" height="80" width="77" data-name="object" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
+  <path d="M74 60 L151 60" data-name="object" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <text x="112.5" y="49" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="object">object</text>
+  <text x="82" y="81" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="object">toString()</text>
+  <text x="82" y="97" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="object">toJSON()</text>
 </svg></div>
 
 <div name="构造函数" data-unique="构造函数"></div><h2 id="构造函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">コンストラクタ</font></font></h2>
 <div name="LruCache" data-unique="LruCache"></div><h3 id="LruCache" class="notranslate">LruCache</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">LruCache オブジェクトコンストラクタ</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">LruCacheオブジェクトコンストラクター</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">new</span> LruCache(Integer size,<font></font>
     Integer timeout = <span class="hljs-number">0</span>);
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメータ:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター：</font></font></p>
 <ul>
-<li><span class="notranslate">size</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、キャッシュの最大サイズ</font></font></li>
-<li><span class="notranslate">timeout</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、要素の有効期限、単位は ms、0 以下の場合は有効期限なし、デフォルトは 0</font></font></li>
+<li><span class="notranslate">size</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：整数、キャッシュの最大サイズ</font></font></li>
+<li><span class="notranslate">timeout</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：整数、要素の有効期限、単位はms、0以下の場合は有効期限なし、デフォルトは0</font></font></li>
 </ul>
 <div name="静态属性" data-unique="静态属性"></div><h2 id="静态属性"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">静的プロパティ</font></font></h2>
 <div name="defaultMaxListeners" data-unique="defaultMaxListeners"></div><h3 id="defaultMaxListeners" class="notranslate">defaultMaxListeners</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">整数、リスナーのデフォルトのグローバル最大数</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Integer LruCache.defaultMaxListeners;
 </code></pre>
-<div name="成员属性" data-unique="成员属性"></div><h2 id="成员属性"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">メンバーの属性</font></font></h2>
+<div name="成员属性" data-unique="成员属性"></div><h2 id="成员属性"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">メンバー属性</font></font></h2>
 <div name="size" data-unique="size"></div><h3 id="size" class="notranslate">size</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">整数、コンテナ内の値の数をクエリ</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">整数、コンテナ内の値の数をクエリします</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly Integer LruCache.size;
 </code></pre>
 <hr>
 <div name="timeout" data-unique="timeout"></div><h3 id="timeout" class="notranslate">timeout</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">コンテナ内の要素の有効期限を整数、クエリおよび設定します。単位はmsで、0以下であれば失敗しません</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">整数、クエリを実行し、コンテナ内の要素の有効期限を設定します。単位はmsで、0以下の場合でも失敗しません。</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer LruCache.timeout;
 </code></pre>
 <hr>
 <div name="onexpire" data-unique="onexpire"></div><h3 id="onexpire" class="notranslate">onexpire</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">on("expire", func); と同等の関数、クエリ、バインド データのタイムアウト イベント。</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">on（ "expire"、func）;と同等の関数、クエリ、およびバインドデータタイムアウトイベント。</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Function</span> LruCache.onexpire;
 </code></pre>
 <div name="成员函数" data-unique="成员函数"></div><h2 id="成员函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">メンバー関数</font></font></h2>
 <div name="clear" data-unique="clear"></div><h3 id="clear" class="notranslate">clear</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">コンテナデータをクリア</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">コンテナデータをクリアする</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>LruCache.clear();
 </code></pre>
 <hr>
 <div name="has" data-unique="has"></div><h3 id="has" class="notranslate">has</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">コンテナ内に指定したキー値のデータがあるか確認</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">指定されたキー値のデータがコンテナにあるかどうかを確認します</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Boolean</span> LruCache.has(<span class="hljs-built_in">String</span> name);
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメータ:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター：</font></font></p>
 <ul>
-<li><span class="notranslate">name</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 文字列、チェックするキー値を指定します</font></font></li>
+<li><span class="notranslate">name</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：文字列、チェックするキー値を指定します</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">結果を返す:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り結果：</font></font></p>
 <ul>
-<li><span class="notranslate">Boolean</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, キー値が存在するかどうかを返します</font></font></li>
+<li><span class="notranslate">Boolean</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、キー値が存在するかどうかを返します</font></font></li>
 </ul>
 <hr>
 <div name="get" data-unique="get"></div><h3 id="get" class="notranslate">get</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">指定されたキーの値を照会します</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Value LruCache.get(<span class="hljs-built_in">String</span> name);
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメータ:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター：</font></font></p>
 <ul>
-<li><span class="notranslate">name</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 文字列、照会するキー値を指定します</font></font></li>
+<li><span class="notranslate">name</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：文字列、照会するキー値を指定します</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">結果を返す:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り結果：</font></font></p>
 <ul>
-<li><span class="notranslate">Value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, キー値に対応する値を返し、存在しない場合は undefined を返します</font></font></li>
+<li><span class="notranslate">Value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、キー値に対応する値を返します。存在しない場合は、未定義を返します。</font></font></li>
 </ul>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">指定されたキー値の値を照会し、存在しないか期限切れになった場合は、コールバック関数を呼び出してデータを更新します</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">指定されたキー値の値を照会します。存在しないか期限切れの場合は、コールバック関数を呼び出してデータを更新します</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Value LruCache.get(<span class="hljs-built_in">String</span> name,
     <span class="hljs-built_in">Function</span> updater);
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメータ:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター：</font></font></p>
 <ul>
-<li><span class="notranslate">name</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 文字列、照会するキー値を指定します</font></font></li>
-<li><span class="notranslate">updater</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：関数、更新関数を指定</font></font></li>
+<li><span class="notranslate">name</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：文字列、照会するキー値を指定します</font></font></li>
+<li><span class="notranslate">updater</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：機能、更新機能を指定します</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">結果を返す:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り結果：</font></font></p>
 <ul>
-<li><span class="notranslate">Value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, キー値に対応する値を返す</font></font></li>
+<li><span class="notranslate">Value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、キー値に対応する値を返します</font></font></li>
 </ul>
 <hr>
 <div name="set" data-unique="set"></div><h3 id="set" class="notranslate">set</h3>
@@ -353,332 +356,347 @@
 2</div>LruCache.set(<span class="hljs-built_in">String</span> name,<font></font>
     Value value);<font></font>
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメータ:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター：</font></font></p>
 <ul>
-<li><span class="notranslate">name</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 文字列、設定するキー値を指定</font></font></li>
-<li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：値、設定するデータを指定</font></font></li>
+<li><span class="notranslate">name</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：文字列、設定するキー値を指定します</font></font></li>
+<li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：値、設定するデータを指定します</font></font></li>
 </ul>
 <hr>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">キー値データを設定し、キー値が存在しない場合は新しいデータを挿入します</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>LruCache.set(<span class="hljs-built_in">Object</span> map);
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメータ:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター：</font></font></p>
 <ul>
-<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: オブジェクト、設定するキーと値のデータ ディクショナリを指定します</font></font></li>
+<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：オブジェクト、設定するKey-Valueデータディクショナリを指定します</font></font></li>
 </ul>
 <hr>
 <div name="remove" data-unique="remove"></div><h3 id="remove" class="notranslate">remove</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">指定されたキー値のすべての値を削除します</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>LruCache.remove(<span class="hljs-built_in">String</span> name);
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメータ:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター：</font></font></p>
 <ul>
-<li><span class="notranslate">name</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 文字列、削除するキーを指定</font></font></li>
+<li><span class="notranslate">name</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：文字列、削除するキー値を指定します</font></font></li>
 </ul>
 <hr>
 <div name="isEmpty" data-unique="isEmpty"></div><h3 id="isEmpty" class="notranslate">isEmpty</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">コンテナが空かどうかを確認する</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">コンテナが空かどうかを確認します</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Boolean</span> LruCache.isEmpty();
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">結果を返す:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り結果：</font></font></p>
 <ul>
-<li><span class="notranslate">Boolean</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, コンテナに値がない場合は true を返します</font></font></li>
+<li><span class="notranslate">Boolean</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、コンテナに値がない場合はtrueを返します</font></font></li>
 </ul>
 <hr>
 <div name="on" data-unique="on"></div><h3 id="on" class="notranslate">on</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">イベントハンドラーをオブジェクトにバインドする</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">イベントハンドラーをオブジェクトにバインドします</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-built_in">Object</span> LruCache.on(<span class="hljs-built_in">String</span> ev,
     <span class="hljs-built_in">Function</span> func);
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメータ:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター：</font></font></p>
 <ul>
-<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 文字列、イベントの名前を指定</font></font></li>
-<li><span class="notranslate">func</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：関数、イベント処理関数を指定</font></font></li>
+<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：文字列、イベントの名前を指定します</font></font></li>
+<li><span class="notranslate">func</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：関数、イベント処理関数を指定します</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">結果を返す:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り結果：</font></font></p>
 <ul>
-<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 連鎖呼び出しに便利なイベントオブジェクト自体を返す</font></font></li>
+<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、チェーン呼び出しに便利なイベントオブジェクト自体を返します</font></font></li>
 </ul>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">イベントハンドラーをオブジェクトにバインドする</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">イベントハンドラーをオブジェクトにバインドします</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> LruCache.on(<span class="hljs-built_in">Object</span> map);
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメータ:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター：</font></font></p>
 <ul>
-<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: オブジェクト、イベント マッピング関係を指定します。オブジェクト プロパティ名はイベント名として使用され、プロパティ値はイベント処理関数として使用されます</font></font></li>
+<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：オブジェクト、イベントマッピング関係を指定します。オブジェクトのプロパティ名はイベント名として使用され、プロパティ値はイベント処理関数として使用されます。</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">結果を返す:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り結果：</font></font></p>
 <ul>
-<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 連鎖呼び出しに便利なイベントオブジェクト自体を返す</font></font></li>
+<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、チェーン呼び出しに便利なイベントオブジェクト自体を返します</font></font></li>
 </ul>
 <hr>
 <div name="addListener" data-unique="addListener"></div><h3 id="addListener" class="notranslate">addListener</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">イベントハンドラーをオブジェクトにバインドする</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">イベントハンドラーをオブジェクトにバインドします</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-built_in">Object</span> LruCache.addListener(<span class="hljs-built_in">String</span> ev,
     <span class="hljs-built_in">Function</span> func);
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメータ:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター：</font></font></p>
 <ul>
-<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 文字列、イベントの名前を指定</font></font></li>
-<li><span class="notranslate">func</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：関数、イベント処理関数を指定</font></font></li>
+<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：文字列、イベントの名前を指定します</font></font></li>
+<li><span class="notranslate">func</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：関数、イベント処理関数を指定します</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">結果を返す:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り結果：</font></font></p>
 <ul>
-<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 連鎖呼び出しに便利なイベントオブジェクト自体を返す</font></font></li>
+<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、チェーン呼び出しに便利なイベントオブジェクト自体を返します</font></font></li>
 </ul>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">イベントハンドラーをオブジェクトにバインドする</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">イベントハンドラーをオブジェクトにバインドします</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> LruCache.addListener(<span class="hljs-built_in">Object</span> map);
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメータ:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター：</font></font></p>
 <ul>
-<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: オブジェクト、イベント マッピング関係を指定します。オブジェクト プロパティ名はイベント名として使用され、プロパティ値はイベント処理関数として使用されます</font></font></li>
+<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：オブジェクト、イベントマッピング関係を指定します。オブジェクトのプロパティ名はイベント名として使用され、プロパティ値はイベント処理関数として使用されます。</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">結果を返す:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り結果：</font></font></p>
 <ul>
-<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 連鎖呼び出しに便利なイベントオブジェクト自体を返す</font></font></li>
+<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、チェーン呼び出しに便利なイベントオブジェクト自体を返します</font></font></li>
 </ul>
 <hr>
 <div name="prependListener" data-unique="prependListener"></div><h3 id="prependListener" class="notranslate">prependListener</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">イベント ハンドラーをオブジェクトの先頭にバインドします。</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">イベントハンドラーをオブジェクトの先頭にバインドします</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-built_in">Object</span> LruCache.prependListener(<span class="hljs-built_in">String</span> ev,
     <span class="hljs-built_in">Function</span> func);
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメータ:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター：</font></font></p>
 <ul>
-<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 文字列、イベントの名前を指定</font></font></li>
-<li><span class="notranslate">func</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：関数、イベント処理関数を指定</font></font></li>
+<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：文字列、イベントの名前を指定します</font></font></li>
+<li><span class="notranslate">func</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：関数、イベント処理関数を指定します</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">結果を返す:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り結果：</font></font></p>
 <ul>
-<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 連鎖呼び出しに便利なイベントオブジェクト自体を返す</font></font></li>
+<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、チェーン呼び出しに便利なイベントオブジェクト自体を返します</font></font></li>
 </ul>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">イベント ハンドラーをオブジェクトの先頭にバインドします。</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">イベントハンドラーをオブジェクトの先頭にバインドします</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> LruCache.prependListener(<span class="hljs-built_in">Object</span> map);
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメータ:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター：</font></font></p>
 <ul>
-<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: オブジェクト、イベント マッピング関係を指定します。オブジェクト プロパティ名はイベント名として使用され、プロパティ値はイベント処理関数として使用されます</font></font></li>
+<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：オブジェクト、イベントマッピング関係を指定します。オブジェクトのプロパティ名はイベント名として使用され、プロパティ値はイベント処理関数として使用されます。</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">結果を返す:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り結果：</font></font></p>
 <ul>
-<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 連鎖呼び出しに便利なイベントオブジェクト自体を返す</font></font></li>
+<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、チェーン呼び出しに便利なイベントオブジェクト自体を返します</font></font></li>
 </ul>
 <hr>
 <div name="once" data-unique="once"></div><h3 id="once" class="notranslate">once</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">1 回限りのイベント処理関数をオブジェクトにバインドします。1 回限りの処理関数は 1 回だけトリガーされます。</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ワンタイムイベント処理関数をオブジェクトにバインドします。ワンタイム処理関数は1回だけトリガーされます</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-built_in">Object</span> LruCache.once(<span class="hljs-built_in">String</span> ev,
     <span class="hljs-built_in">Function</span> func);
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメータ:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター：</font></font></p>
 <ul>
-<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 文字列、イベントの名前を指定</font></font></li>
-<li><span class="notranslate">func</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：関数、イベント処理関数を指定</font></font></li>
+<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：文字列、イベントの名前を指定します</font></font></li>
+<li><span class="notranslate">func</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：関数、イベント処理関数を指定します</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">結果を返す:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り結果：</font></font></p>
 <ul>
-<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 連鎖呼び出しに便利なイベントオブジェクト自体を返す</font></font></li>
+<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、チェーン呼び出しに便利なイベントオブジェクト自体を返します</font></font></li>
 </ul>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">1 回限りのイベント処理関数をオブジェクトにバインドします。1 回限りの処理関数は 1 回だけトリガーされます。</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ワンタイムイベント処理関数をオブジェクトにバインドします。ワンタイム処理関数は1回だけトリガーされます</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> LruCache.once(<span class="hljs-built_in">Object</span> map);
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメータ:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター：</font></font></p>
 <ul>
-<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: オブジェクト、イベント マッピング関係を指定します。オブジェクト プロパティ名はイベント名として使用され、プロパティ値はイベント処理関数として使用されます</font></font></li>
+<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：オブジェクト、イベントマッピング関係を指定します。オブジェクトのプロパティ名はイベント名として使用され、プロパティ値はイベント処理関数として使用されます。</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">結果を返す:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り結果：</font></font></p>
 <ul>
-<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 連鎖呼び出しに便利なイベントオブジェクト自体を返す</font></font></li>
+<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、チェーン呼び出しに便利なイベントオブジェクト自体を返します</font></font></li>
 </ul>
 <hr>
 <div name="prependOnceListener" data-unique="prependOnceListener"></div><h3 id="prependOnceListener" class="notranslate">prependOnceListener</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">イベント ハンドラーをオブジェクトの先頭にバインドします。</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">イベントハンドラーをオブジェクトの先頭にバインドします</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-built_in">Object</span> LruCache.prependOnceListener(<span class="hljs-built_in">String</span> ev,
     <span class="hljs-built_in">Function</span> func);
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメータ:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター：</font></font></p>
 <ul>
-<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 文字列、イベントの名前を指定</font></font></li>
-<li><span class="notranslate">func</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：関数、イベント処理関数を指定</font></font></li>
+<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：文字列、イベントの名前を指定します</font></font></li>
+<li><span class="notranslate">func</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：関数、イベント処理関数を指定します</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">結果を返す:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り結果：</font></font></p>
 <ul>
-<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 連鎖呼び出しに便利なイベントオブジェクト自体を返す</font></font></li>
+<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、チェーン呼び出しに便利なイベントオブジェクト自体を返します</font></font></li>
 </ul>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">イベント ハンドラーをオブジェクトの先頭にバインドします。</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">イベントハンドラーをオブジェクトの先頭にバインドします</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> LruCache.prependOnceListener(<span class="hljs-built_in">Object</span> map);
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメータ:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター：</font></font></p>
 <ul>
-<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: オブジェクト、イベント マッピング関係を指定します。オブジェクト プロパティ名はイベント名として使用され、プロパティ値はイベント処理関数として使用されます</font></font></li>
+<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：オブジェクト、イベントマッピング関係を指定します。オブジェクトのプロパティ名はイベント名として使用され、プロパティ値はイベント処理関数として使用されます。</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">結果を返す:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り結果：</font></font></p>
 <ul>
-<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 連鎖呼び出しに便利なイベントオブジェクト自体を返す</font></font></li>
+<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、チェーン呼び出しに便利なイベントオブジェクト自体を返します</font></font></li>
 </ul>
 <hr>
 <div name="off" data-unique="off"></div><h3 id="off" class="notranslate">off</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">指定された関数をオブジェクト処理キューからキャンセルします</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">指定された機能をオブジェクト処理キューからキャンセルします</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-built_in">Object</span> LruCache.off(<span class="hljs-built_in">String</span> ev,
     <span class="hljs-built_in">Function</span> func);
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメータ:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター：</font></font></p>
 <ul>
-<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 文字列、イベントの名前を指定</font></font></li>
-<li><span class="notranslate">func</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：関数、イベント処理関数を指定</font></font></li>
+<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：文字列、イベントの名前を指定します</font></font></li>
+<li><span class="notranslate">func</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：関数、イベント処理関数を指定します</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">結果を返す:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り結果：</font></font></p>
 <ul>
-<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 連鎖呼び出しに便利なイベントオブジェクト自体を返す</font></font></li>
+<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、チェーン呼び出しに便利なイベントオブジェクト自体を返します</font></font></li>
 </ul>
 <hr>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">オブジェクト処理キュー内のすべての機能をキャンセルします</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> LruCache.off(<span class="hljs-built_in">String</span> ev);
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメータ:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター：</font></font></p>
 <ul>
-<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 文字列、イベントの名前を指定</font></font></li>
+<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：文字列、イベントの名前を指定します</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">結果を返す:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り結果：</font></font></p>
 <ul>
-<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 連鎖呼び出しに便利なイベントオブジェクト自体を返す</font></font></li>
+<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、チェーン呼び出しに便利なイベントオブジェクト自体を返します</font></font></li>
 </ul>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">指定された関数をオブジェクト処理キューからキャンセルします</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">指定された機能をオブジェクト処理キューからキャンセルします</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> LruCache.off(<span class="hljs-built_in">Object</span> map);
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメータ:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター：</font></font></p>
 <ul>
-<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: オブジェクト、イベント マッピング関係を指定します。オブジェクト プロパティ名はイベント名として使用され、プロパティ値はイベント処理関数として使用されます</font></font></li>
+<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：オブジェクト、イベントマッピング関係を指定し、オブジェクトのプロパティ名をイベント名として使用し、プロパティ値をイベント処理関数として使用します</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">結果を返す:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り結果：</font></font></p>
 <ul>
-<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 連鎖呼び出しに便利なイベントオブジェクト自体を返す</font></font></li>
+<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、チェーン呼び出しに便利なイベントオブジェクト自体を返します</font></font></li>
 </ul>
 <hr>
 <div name="removeListener" data-unique="removeListener"></div><h3 id="removeListener" class="notranslate">removeListener</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">指定された関数をオブジェクト処理キューからキャンセルします</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">指定された機能をオブジェクト処理キューからキャンセルします</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-built_in">Object</span> LruCache.removeListener(<span class="hljs-built_in">String</span> ev,
     <span class="hljs-built_in">Function</span> func);
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメータ:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター：</font></font></p>
 <ul>
-<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 文字列、イベントの名前を指定</font></font></li>
-<li><span class="notranslate">func</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：関数、イベント処理関数を指定</font></font></li>
+<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：文字列、イベントの名前を指定します</font></font></li>
+<li><span class="notranslate">func</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：関数、イベント処理関数を指定します</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">結果を返す:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り結果：</font></font></p>
 <ul>
-<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 連鎖呼び出しに便利なイベントオブジェクト自体を返す</font></font></li>
+<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、チェーン呼び出しに便利なイベントオブジェクト自体を返します</font></font></li>
 </ul>
 <hr>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">オブジェクト処理キュー内のすべての機能をキャンセルします</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> LruCache.removeListener(<span class="hljs-built_in">String</span> ev);
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメータ:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター：</font></font></p>
 <ul>
-<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 文字列、イベントの名前を指定</font></font></li>
+<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：文字列、イベントの名前を指定します</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">結果を返す:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り結果：</font></font></p>
 <ul>
-<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 連鎖呼び出しに便利なイベントオブジェクト自体を返す</font></font></li>
+<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、チェーン呼び出しに便利なイベントオブジェクト自体を返します</font></font></li>
 </ul>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">指定された関数をオブジェクト処理キューからキャンセルします</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">指定された機能をオブジェクト処理キューからキャンセルします</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> LruCache.removeListener(<span class="hljs-built_in">Object</span> map);
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメータ:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター：</font></font></p>
 <ul>
-<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: オブジェクト、イベント マッピング関係を指定します。オブジェクト プロパティ名はイベント名として使用され、プロパティ値はイベント処理関数として使用されます</font></font></li>
+<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：オブジェクト、イベントマッピング関係を指定し、オブジェクトのプロパティ名をイベント名として使用し、プロパティ値をイベント処理関数として使用します</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">結果を返す:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り結果：</font></font></p>
 <ul>
-<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 連鎖呼び出しに便利なイベントオブジェクト自体を返す</font></font></li>
+<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、チェーン呼び出しに便利なイベントオブジェクト自体を返します</font></font></li>
 </ul>
 <hr>
 <div name="removeAllListeners" data-unique="removeAllListeners"></div><h3 id="removeAllListeners" class="notranslate">removeAllListeners</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">オブジェクト処理キューから全イベントの全リスナーを解除 イベントを指定している場合は、指定したイベントの全リスナーを削除します。</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">オブジェクト処理キューからすべてのイベントのすべてのリスナーをキャンセルします。イベントが指定されている場合は、指定されたイベントのすべてのリスナーを削除します。</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> LruCache.removeAllListeners(<span class="hljs-built_in">String</span> ev);
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメータ:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター：</font></font></p>
 <ul>
-<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 文字列、イベントの名前を指定</font></font></li>
+<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：文字列、イベントの名前を指定します</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">結果を返す:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り結果：</font></font></p>
 <ul>
-<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 連鎖呼び出しに便利なイベントオブジェクト自体を返す</font></font></li>
+<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、チェーン呼び出しに便利なイベントオブジェクト自体を返します</font></font></li>
 </ul>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">オブジェクト処理キューから全イベントの全リスナーを解除 イベントを指定している場合は、指定したイベントの全リスナーを削除します。</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">オブジェクト処理キューからすべてのイベントのすべてのリスナーをキャンセルします。イベントが指定されている場合は、指定されたイベントのすべてのリスナーを削除します。</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> LruCache.removeAllListeners(<span class="hljs-built_in">Array</span> evs = []);
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメータ:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター：</font></font></p>
 <ul>
-<li><span class="notranslate">evs</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 配列、イベントの名前を指定します</font></font></li>
+<li><span class="notranslate">evs</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：配列、イベントの名前を指定します</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">結果を返す:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り結果：</font></font></p>
 <ul>
-<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 連鎖呼び出しに便利なイベントオブジェクト自体を返す</font></font></li>
+<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、チェーン呼び出しに便利なイベントオブジェクト自体を返します</font></font></li>
 </ul>
 <hr>
 <div name="setMaxListeners" data-unique="setMaxListeners"></div><h3 id="setMaxListeners" class="notranslate">setMaxListeners</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">互換性のためだけのリスナー数のデフォルト制限</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">互換性のためだけの、リスナー数のデフォルト制限</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>LruCache.setMaxListeners(Integer n);
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメータ:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター：</font></font></p>
 <ul>
-<li><span class="notranslate">n</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、イベント数を指定</font></font></li>
+<li><span class="notranslate">n</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：整数、イベント数を指定</font></font></li>
 </ul>
 <hr>
 <div name="getMaxListeners" data-unique="getMaxListeners"></div><h3 id="getMaxListeners" class="notranslate">getMaxListeners</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">互換性のためだけに、リスナーの数のデフォルトの制限を取得します</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">互換性のためにのみ、リスナー数のデフォルト制限を取得します</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer LruCache.getMaxListeners();
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">結果を返す:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り結果：</font></font></p>
 <ul>
-<li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, デフォルトの制限数に戻す</font></font></li>
+<li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、デフォルトの制限数に戻ります</font></font></li>
 </ul>
 <hr>
 <div name="listeners" data-unique="listeners"></div><h3 id="listeners" class="notranslate">listeners</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">クエリ オブジェクトの指定されたイベントのリスナーの配列</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">クエリオブジェクトの指定されたイベントのリスナーの配列</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Array</span> LruCache.listeners(<span class="hljs-built_in">String</span> ev);
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメータ:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター：</font></font></p>
 <ul>
-<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 文字列、イベントの名前を指定</font></font></li>
+<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：文字列、イベントの名前を指定します</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">結果を返す:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り結果：</font></font></p>
 <ul>
 <li><span class="notranslate">Array</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、指定されたイベントのリスナーの配列を返します</font></font></li>
 </ul>
 <hr>
 <div name="listenerCount" data-unique="listenerCount"></div><h3 id="listenerCount" class="notranslate">listenerCount</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">クエリ オブジェクトの指定されたイベントのリスナーの数</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">クエリオブジェクトの指定されたイベントのリスナーの数</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer LruCache.listenerCount(<span class="hljs-built_in">String</span> ev);
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメータ:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター：</font></font></p>
 <ul>
-<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 文字列、イベントの名前を指定</font></font></li>
+<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：文字列、イベントの名前を指定します</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">結果を返す:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り結果：</font></font></p>
+<ul>
+<li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、指定されたイベントのリスナーの数を返します</font></font></li>
+</ul>
+<hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">クエリオブジェクトの指定されたイベントのリスナーの数</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div>Integer LruCache.listenerCount(Value o,
+    <span class="hljs-built_in">String</span> ev);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター：</font></font></p>
+<ul>
+<li><span class="notranslate">o</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：値、クエリのオブジェクトを指定します</font></font></li>
+<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：文字列、イベントの名前を指定します</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り結果：</font></font></p>
 <ul>
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、指定されたイベントのリスナーの数を返します</font></font></li>
 </ul>
 <hr>
 <div name="eventNames" data-unique="eventNames"></div><h3 id="eventNames" class="notranslate">eventNames</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">リスナーのイベント名を問い合わせる</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">リスナーのイベント名を照会します</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Array</span> LruCache.eventNames();
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">結果を返す:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り結果：</font></font></p>
 <ul>
 <li><span class="notranslate">Array</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、イベント名の配列を返します</font></font></li>
 </ul>
@@ -689,35 +707,35 @@
 2</div><span class="hljs-built_in">Boolean</span> LruCache.emit(<span class="hljs-built_in">String</span> ev,<font></font>
     ...args);<font></font>
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメータ:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター：</font></font></p>
 <ul>
-<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 文字列、イベント名</font></font></li>
-<li><span class="notranslate">args</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: ...、イベント ハンドラーに渡されるイベント パラメーター</font></font></li>
+<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：文字列、イベント名</font></font></li>
+<li><span class="notranslate">args</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：...、イベントパラメータ。イベントハンドラに渡されます。</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">結果を返す:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り結果：</font></font></p>
 <ul>
-<li><span class="notranslate">Boolean</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、イベントトリガー状態に戻り、レスポンスイベントがあればtrue、そうでなければfalseを返す</font></font></li>
+<li><span class="notranslate">Boolean</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、イベントトリガー状態に戻ります。応答イベントがある場合はtrueを返し、それ以外の場合はfalseを返します。</font></font></li>
 </ul>
 <hr>
 <div name="toString" data-unique="toString"></div><h3 id="toString" class="notranslate">toString</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">オブジェクトの文字列表現を返します。通常は「[ネイティブ オブジェクト]」を返します。オブジェクトは独自の特性に従って再実装できます。</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">オブジェクトの文字列表現を返します。通常は「[NativeObject]」を返します。オブジェクトは、独自の特性に従って再実装できます。</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> LruCache.toString();
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">結果を返す:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り結果：</font></font></p>
 <ul>
 <li><span class="notranslate">String</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、オブジェクトの文字列表現を返します</font></font></li>
 </ul>
 <hr>
 <div name="toJSON" data-unique="toJSON"></div><h3 id="toJSON" class="notranslate">toJSON</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">オブジェクトの JSON 形式の表現を返します。通常は、オブジェクトによって定義された読み取り可能な属性のコレクションを返します。</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">オブジェクトのJSON形式の表現を返します。通常、オブジェクトによって定義された読み取り可能な属性のコレクションを返します。</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Value LruCache.toJSON(<span class="hljs-built_in">String</span> key = <span class="hljs-string">""</span>);
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメータ:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター：</font></font></p>
 <ul>
-<li><span class="notranslate">key</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: ストリング、未使用</font></font></li>
+<li><span class="notranslate">key</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：文字列、未使用</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">結果を返す:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り結果：</font></font></p>
 <ul>
-<li><span class="notranslate">Value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、シリアライズ可能なJSONを含む値を返します</font></font></li>
+<li><span class="notranslate">Value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、シリアル化可能なJSONを含む値を返します</font></font></li>
 </ul>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org |</font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">サポート</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip391791"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip391791" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">クリックするとトップページに戻ります</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">©Copyright2012-2021 fibjs.org |</font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">サポートしてください</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip237470"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip237470" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">クリックしてトップページに戻る</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>

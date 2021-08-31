@@ -41,6 +41,8 @@
 <li><a href=../../module/ifs/path.md.html class ="notranslate">path</a></li>
 <li><a href=../../module/ifs/path_posix.md.html class ="notranslate">path_posix</a></li>
 <li><a href=../../module/ifs/path_win32.md.html class ="notranslate">path_win32</a></li>
+<li><a href=../../module/ifs/perf_hooks.md.html class ="notranslate">perf_hooks</a></li>
+<li><a href=../../module/ifs/performance.md.html class ="notranslate">performance</a></li>
 <li><a href=../../module/ifs/process.md.html class ="notranslate">process</a></li>
 <li><a href=../../module/ifs/profiler.md.html class ="notranslate">profiler</a></li>
 <li><a href=../../module/ifs/punycode.md.html class ="notranslate">punycode</a></li>
@@ -55,6 +57,7 @@
 <li><a href=../../module/ifs/util.md.html class ="notranslate">util</a></li>
 <li><a href=../../module/ifs/uuid.md.html class ="notranslate">uuid</a></li>
 <li><a href=../../module/ifs/vm.md.html class ="notranslate">vm</a></li>
+<li><a href=../../module/ifs/worker_threads.md.html class ="notranslate">worker_threads</a></li>
 <li><a href=../../module/ifs/ws.md.html class ="notranslate">ws</a></li>
 <li><a href=../../module/ifs/xml.md.html class ="notranslate">xml</a></li>
 <li><a href=../../module/ifs/zip.md.html class ="notranslate">zip</a></li>
@@ -203,7 +206,7 @@
 <span class="hljs-keyword">var</span> hr = <span class="hljs-keyword">new</span> http.Repeater(<span class="hljs-string">'http://10.0.0.100:8080/test'</span>);
 </code></pre>
 <h2 id="继承关系">继承关系</h2>
-<div class="dot notranslate"><svg version="1.1" baseProfile="full" width="170" height="426" viewbox="0 0 170 426" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events" style="font:normal normal 10pt Helvetica,sans-Serif, Helvetica, sans-serif;;stroke-linejoin:round;stroke-linecap:round">
+<div class="dot notranslate"><svg version="1.1" baseProfile="full" width="200" height="456" viewbox="0 0 200 456" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events" style="font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;;stroke-linejoin:round;stroke-linecap:round">
   <desc >
 #lineWidth: 1.5
 #font: Helvetica,sans-Serif
@@ -219,31 +222,31 @@
 [object] &lt;:- [Handler]
 [Handler] &lt;:- [HttpRepeater]
 </desc>
-  <rect x="0" y="0" height="426" width="170" style="stroke:none; fill:transparent;"></rect>
-  <path d="M85 93 L85 113 L85 133 L85 133 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M90.3 106.3 L85 106.3 L79.7 106.3 L85 93 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M85 229 L85 249 L85 269 L85 269 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M90.3 242.3 L85 242.3 L79.7 242.3 L85 229 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <rect x="13" y="269" height="144" width="144" data-name="HttpRepeater" style="stroke:#33322E;fill:lightgray;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="85" y="290" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="HttpRepeater">HttpRepeater</text>
-  <text x="21" y="322" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="HttpRepeater">new HttpRepeater()</text>
-  <text x="21" y="354" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="HttpRepeater">urls</text>
-  <text x="21" y="370" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="HttpRepeater">client</text>
-  <text x="21" y="402" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="HttpRepeater">load()</text>
-  <path d="M13 301 L157 301" data-name="HttpRepeater" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M13 333 L157 333" data-name="HttpRepeater" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M13 381 L157 381" data-name="HttpRepeater" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <rect x="31" y="133" height="96" width="109" data-name="Handler" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="85.5" y="154" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="Handler">Handler</text>
-  <text x="39" y="186" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Handler">new Handler()</text>
-  <text x="39" y="218" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Handler">invoke()</text>
-  <path d="M31 165 L140 165" data-name="Handler" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M31 197 L140 197" data-name="Handler" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <rect x="47" y="13" height="80" width="77" data-name="object" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="85.5" y="34" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="object">object</text>
-  <text x="55" y="66" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="object">toString()</text>
-  <text x="55" y="82" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="object">toJSON()</text>
-  <path d="M47 45 L124 45" data-name="object" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <rect x="0" y="0" height="456" width="200" style="stroke:none; fill:transparent;"></rect>
+  <path d="M100 121.3 L100 128 L100 148 L100 148 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M105.3 121.3 L100 121.3 L94.7 121.3 L100 108 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M100 257.3 L100 264 L100 284 L100 284 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M105.3 257.3 L100 257.3 L94.7 257.3 L100 244 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <rect x="28" y="284" height="144" width="144" data-name="HttpRepeater" style="stroke:#33322E;fill:lightgray;stroke-dasharray:none;stroke-width:1.5;"></rect>
+  <path d="M28 316 L172 316" data-name="HttpRepeater" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M28 348 L172 348" data-name="HttpRepeater" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M28 396 L172 396" data-name="HttpRepeater" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <text x="100" y="305" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="HttpRepeater">HttpRepeater</text>
+  <text x="36" y="337" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="HttpRepeater">new HttpRepeater()</text>
+  <text x="36" y="369" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="HttpRepeater">urls</text>
+  <text x="36" y="385" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="HttpRepeater">client</text>
+  <text x="36" y="417" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="HttpRepeater">load()</text>
+  <rect x="46" y="148" height="96" width="109" data-name="Handler" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
+  <path d="M46 180 L155 180" data-name="Handler" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M46 212 L155 212" data-name="Handler" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <text x="100.5" y="169" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="Handler">Handler</text>
+  <text x="54" y="201" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Handler">new Handler()</text>
+  <text x="54" y="233" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Handler">invoke()</text>
+  <rect x="62" y="28" height="80" width="77" data-name="object" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
+  <path d="M62 60 L139 60" data-name="object" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <text x="100.5" y="49" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="object">object</text>
+  <text x="70" y="81" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="object">toString()</text>
+  <text x="70" y="97" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="object">toJSON()</text>
 </svg></div>
 
 <h2 id="构造函数">构造函数</h2>

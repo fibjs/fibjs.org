@@ -41,6 +41,8 @@
 <li><a href="path.md.html" class="notranslate">path</a></li>
 <li><a href="path_posix.md.html" class="notranslate">path_posix</a></li>
 <li><a href="path_win32.md.html" class="notranslate">path_win32</a></li>
+<li><a href="perf_hooks.md.html" class="notranslate">perf_hooks</a></li>
+<li><a href="performance.md.html" class="notranslate">performance</a></li>
 <li><a href="process.md.html" class="notranslate">process</a></li>
 <li><a href="profiler.md.html" class="notranslate">profiler</a></li>
 <li><a href="punycode.md.html" class="notranslate">punycode</a></li>
@@ -55,6 +57,7 @@
 <li><a href="util.md.html" class="notranslate">util</a></li>
 <li><a href="uuid.md.html" class="notranslate">uuid</a></li>
 <li><a href="vm.md.html" class="notranslate">vm</a></li>
+<li><a href="worker_threads.md.html" class="notranslate">worker_threads</a></li>
 <li><a href="ws.md.html" class="notranslate">ws</a></li>
 <li><a href="xml.md.html" class="notranslate">xml</a></li>
 <li><a href="zip.md.html" class="notranslate">zip</a></li>
@@ -201,10 +204,10 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">一些注意點:</font></font></p>
 <ul>
-<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">運行</font></font><code>fs.watch(filename)</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">會返回一個繼承自</font></font><a href="../../object/ifs/eventemitter.md.html" class="notranslate">EventEmitter</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 的watcher, 它支持'change', 'changeonly', 'renameonly' 三個事件</font></font></li>
-<li><code>fs.watchFile(target)</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和</font></font><code>fs.unwatchFile(target)</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">依然可以成對使用</font></font></li>
-<li><code>fs.watchFile(target)</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 會返回一個繼承自 </font></font><a href="../../object/ifs/eventemitter.md.html" class="notranslate">EventEmitter</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 的 </font></font><a href="../../object/ifs/statswatcher.md.html" class="notranslate">StatsWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">對象,調用</font></font><code>fs.unwatchFile(target)</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">等價於調用</font></font><code>StatsWatcher.close()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">.</font></font></li>
-<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">因為uv在Linux上的實現,</font></font><code>fs.watch</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的</font></font><code>recursive</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">選項僅在win32/darwin被穩定支持.你依然可以嘗試在Linux中嘗試使用</font></font><code>fs.watch('/[path](path.md)/to', { recursive: true }, handler)</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">,但可能會發現</font></font><code>handler</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">被回調的時機與你預期的有差異</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">運行 </font></font><code>fs.watch(filename)</code><font style="vertical-align: inherit;"></font><a href="../../object/ifs/eventemitter.md.html" class="notranslate">EventEmitter</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 的watcher, 它支持'change', 'changeonly', 'renameonly' 三個事件</font></font></li>
+<li><code>fs.watchFile(target)</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和 </font></font><code>fs.unwatchFile(target)</code><font style="vertical-align: inherit;"></font></li>
+<li><code>fs.watchFile(target)</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 會返回一個繼承自 </font></font><a href="../../object/ifs/eventemitter.md.html" class="notranslate">EventEmitter</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 的 </font></font><a href="../../object/ifs/statswatcher.md.html" class="notranslate">StatsWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">對象, 調用 </font></font><code>fs.unwatchFile(target)</code><font style="vertical-align: inherit;"></font><code>StatsWatcher.close()</code><font style="vertical-align: inherit;"></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">因為uv 在Linux 上的實現,</font></font><code>fs.watch</code><font style="vertical-align: inherit;"></font><code>recursive</code><font style="vertical-align: inherit;"></font><code>fs.watch('/[path](path.md)/to', { recursive: true }, handler)</code><font style="vertical-align: inherit;"></font><code>handler</code><font style="vertical-align: inherit;"></font></li>
 </ul>
 <div name="对象" data-unique="对象"></div><h2 id="对象"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">對象</font></font></h2>
 <div name="constants" data-unique="constants"></div><h3 id="constants" class="notranslate">constants</h3>
@@ -758,7 +761,7 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">調用參數:</font></font></p>
 <ul>
 <li><span class="notranslate">fname</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, 指定要觀察的文件對象</font></font></li>
-<li><span class="notranslate">callback</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Function,</font></font><code>(evtType: 'change' | 'rename', filename: string) =&gt; any</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">當文件對象發生變化時的處理回調</font></font></li>
+<li><span class="notranslate">callback</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Function,</font></font><code>(evtType: 'change' | 'rename', filename: string) =&gt; any</code><font style="vertical-align: inherit;"></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返回結果:</font></font></p>
 <ul>
@@ -802,7 +805,7 @@
 <ul>
 <li><span class="notranslate">fname</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, 指定要觀察的文件對象</font></font></li>
 <li><span class="notranslate">options</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Object, 觀察選項</font></font></li>
-<li><span class="notranslate">callback</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Function,</font></font><code>(evtType: 'change' | 'rename', filename: string) =&gt; any</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">當文件對象發生變化時的處理回調</font></font></li>
+<li><span class="notranslate">callback</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Function,</font></font><code>(evtType: 'change' | 'rename', filename: string) =&gt; any</code><font style="vertical-align: inherit;"></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返回結果:</font></font></p>
 <ul>
@@ -829,7 +832,7 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">調用參數:</font></font></p>
 <ul>
 <li><span class="notranslate">fname</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, 指定要觀察的文件對象</font></font></li>
-<li><span class="notranslate">callback</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Function,</font></font><code>(curStats: Stats, prevStats: Stats) =&gt; any</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">當文件對象的stats發生變化時的處理回調</font></font></li>
+<li><span class="notranslate">callback</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Function,</font></font><code>(curStats: Stats, prevStats: Stats) =&gt; any</code><font style="vertical-align: inherit;"></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返回結果:</font></font></p>
 <ul>
@@ -847,7 +850,7 @@
 <ul>
 <li><span class="notranslate">fname</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, 指定要觀察的文件對象</font></font></li>
 <li><span class="notranslate">options</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Object, 觀察選項</font></font></li>
-<li><span class="notranslate">callback</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Function,</font></font><code>(curStats: Stats, prevStats: Stats) =&gt; any</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">當文件對象的stats發生變化時的處理回調</font></font></li>
+<li><span class="notranslate">callback</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Function,</font></font><code>(curStats: Stats, prevStats: Stats) =&gt; any</code><font style="vertical-align: inherit;"></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返回結果:</font></font></p>
 <ul>
@@ -878,7 +881,7 @@
 <li><a href="../../object/ifs/statswatcher.md.html" class="notranslate">StatsWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 對象</font></font></li>
 </ul>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">從觀察fname 的 </font></font><a href="../../object/ifs/statswatcher.md.html" class="notranslate">StatsWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的觀察事件回調中移除</font></font><code>callback</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">回調</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">從觀察fname 的 </font></font><a href="../../object/ifs/statswatcher.md.html" class="notranslate">StatsWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的觀察事件回調中移除 </font></font><code>callback</code><font style="vertical-align: inherit;"></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">static</span> fs.unwatchFile(<span class="hljs-built_in">String</span> fname,
     <span class="hljs-built_in">Function</span> callback);
@@ -908,4 +911,4 @@
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">seek 方式常量，移動到文件結尾的相對位置</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> fs.SEEK_END = <span class="hljs-number">2</span>;
 </code></pre>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org |</font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持我們</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip960333"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip960333" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Click to return on the top page</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org |</font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip284391"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip284391" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Click to return on the top page</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>

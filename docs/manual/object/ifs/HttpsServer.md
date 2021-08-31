@@ -29,7 +29,7 @@ var svr = new http.HttpsServer(crt, key, 443, function(req) {
 
 [<class>object|toString();toJSON()]
 [<class>TcpServer|new TcpServer()|socket;handler|start();stop()]
-[<class>HttpServer|new HttpServer()|maxHeadersCount;maxBodySize;serverName|enableCrossOrigin()]
+[<class>HttpServer|new HttpServer()|maxHeadersCount;maxBodySize;enableEncoding;serverName|enableCrossOrigin()]
 [<this>HttpsServer|new HttpsServer()|verification;ca]
 
 [object] <:- [TcpServer]
@@ -166,6 +166,14 @@ Integer HttpsServer.maxHeadersCount;
 
 ```JavaScript
 Integer HttpsServer.maxBodySize;
+```
+
+--------------------------
+### enableEncoding
+**Boolean, 自动解压缩功能开关，默认关闭**
+
+```JavaScript
+Boolean HttpsServer.enableEncoding;
 ```
 
 --------------------------

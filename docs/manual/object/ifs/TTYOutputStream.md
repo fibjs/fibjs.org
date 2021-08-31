@@ -19,7 +19,7 @@ process.stdout.clearLine(1)
 
 [<class>object|toString();toJSON()]
 [<class>Stream|fd|read();write();flush();close();copyTo()]
-[<this>TTYOutputStream|isTTY|clearLine();clearScreenDown()]
+[<this>TTYOutputStream|isTTY;columns;rows|clearLine();clearScreenDown();getWindowSize()]
 
 [object] <:- [Stream]
 [Stream] <:- [TTYOutputStream]
@@ -32,6 +32,22 @@ process.stdout.clearLine(1)
 
 ```JavaScript
 readonly Boolean TTYOutputStream.isTTY;
+```
+
+--------------------------
+### columns
+**Integer, 返回此 TTYOutputStream 对应的终端的列数**
+
+```JavaScript
+readonly Integer TTYOutputStream.columns;
+```
+
+--------------------------
+### rows
+**Integer, 返回此 TTYOutputStream 对应的终端的行数**
+
+```JavaScript
+readonly Integer TTYOutputStream.rows;
 ```
 
 --------------------------
@@ -66,6 +82,17 @@ dir 的方向:
 ```JavaScript
 TTYOutputStream.clearScreenDown();
 ```
+
+--------------------------
+### getWindowSize
+**返回此 TTYOutputStream 对应的终端的尺寸**
+
+```JavaScript
+NArray TTYOutputStream.getWindowSize();
+```
+
+返回结果:
+* NArray, 返回数组 [numColumns, numRows]，其中 numColumns 和 numRows 表示相应终端中的列数和行数
 
 --------------------------
 ### read

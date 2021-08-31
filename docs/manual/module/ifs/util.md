@@ -58,16 +58,27 @@ static util.inherits(Value constructor,
 **函数返回 obj 的字符串表示，主要用于调试。 附加的 options 可用于改变格式化字符串的某些方面。**
 
 ```JavaScript
-static String util.inspect(Object obj,
+static String util.inspect(Value obj,
     Object options = {});
 ```
 
 调用参数:
-* obj: Object, 指定需要处理的对象
+* obj: Value, 指定需要处理的对象
 * options: Object, 指定格式控制选项
 
 返回结果:
 * String, 返回格式化后的字符串
+
+支持以下参数:
+
+```JavaScript
+{
+    "colors": false, // 指定是否输出 ansi 作色字符串，缺省为 false
+    "table": false, // 指定输出 table 格式，缺省为 false
+    "encode_string": true, // 指定表格中的字符串是否编码，缺省为 true
+    "fields": [], // 当 table 为 true 时指定显示字段
+}
+```
 
 --------------------------
 ### deprecate
@@ -464,6 +475,22 @@ static Boolean util.isBuffer(Value v);
 
 返回结果:
 * Boolean, 如果是函数 [Buffer](../../object/ifs/Buffer.md) 对象则返回 True
+
+--------------------------
+### isDeepEqual
+**测试数值深度等于预期值**
+
+```JavaScript
+static Boolean util.isDeepEqual(Value actual,
+    Value expected);
+```
+
+调用参数:
+* actual: Value, 要测试的数值
+* expected: Value, 预期的数值
+
+返回结果:
+* Boolean, 如果深度相等则返回 True
 
 --------------------------
 ### has

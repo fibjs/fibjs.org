@@ -17,7 +17,7 @@ var child = child_process.spawn("ls");
 
 [<class>object|toString();toJSON()]
 [<class>EventEmitter|new EventEmitter()|EventEmitter|defaultMaxListeners|on();addListener();prependListener();once();prependOnceListener();off();removeListener();removeAllListeners();setMaxListeners();getMaxListeners();listeners();listenerCount();eventNames();emit()]
-[<this>ChildProcess|pid;exitCode;stdin;stdout;stderr;onexit|kill();join()]
+[<this>ChildProcess|pid;exitCode;stdin;stdout;stderr;onexit|kill();join();usage()]
 
 [object] <:- [EventEmitter]
 [EventEmitter] <:- [ChildProcess]
@@ -94,6 +94,16 @@ ChildProcess.kill(Integer signal);
 * signal: Integer, 传递的信号
 
 --------------------------
+**杀掉当前对象指向的进程，并传递信号**
+
+```JavaScript
+ChildProcess.kill(String signal);
+```
+
+调用参数:
+* signal: String, 传递的信号
+
+--------------------------
 ### join
 **等待当前对象指向的进程结束，并返回进程结束代码**
 
@@ -103,6 +113,32 @@ ChildProcess.join() async;
 
 返回结果:
 * 进程的结束代码
+
+--------------------------
+### usage
+**查询当前进程占用的内存和花费的时间**
+
+```JavaScript
+Object ChildProcess.usage();
+```
+
+返回结果:
+* Object, 返回包含时间报告
+
+内存报告生成类似以下结果：
+
+```JavaScript
+{
+    "user": 132379,
+    "system": 50507,
+    "rss": 8622080
+}
+```
+
+其中：
+- user 返回进程在用户代码中花费的时间，单位为微秒值（百万分之一秒）
+- system 返回进程在系统代码中花费的时间，单位为微秒值（百万分之一秒）
+- rss 返回进程当前占用物理内存大小
 
 --------------------------
 ### on
@@ -405,6 +441,21 @@ Integer ChildProcess.listenerCount(String ev);
 ```
 
 调用参数:
+* ev: String, 指定事件的名称
+
+返回结果:
+* Integer, 返回指定事件的监听器数量
+
+--------------------------
+**查询对象指定事件的监听器数量**
+
+```JavaScript
+Integer ChildProcess.listenerCount(Value o,
+    String ev);
+```
+
+调用参数:
+* o: Value, 指定查询的对象
 * ev: String, 指定事件的名称
 
 返回结果:

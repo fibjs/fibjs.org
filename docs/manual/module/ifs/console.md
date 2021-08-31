@@ -354,6 +354,29 @@ static console.dir(Value obj);
 * obj: Value, 给定要显示的对象
 
 --------------------------
+### table
+**用 JSON 格式输出对象**
+
+```JavaScript
+static console.table(Value obj);
+```
+
+调用参数:
+* obj: Value, 给定要显示的对象
+
+--------------------------
+**用 JSON 格式输出对象**
+
+```JavaScript
+static console.table(Value obj,
+    Array fields);
+```
+
+调用参数:
+* obj: Value, 给定要显示的对象
+* fields: Array, 给定要显示的字段
+
+--------------------------
 ### time
 **启动一个计时器**
 

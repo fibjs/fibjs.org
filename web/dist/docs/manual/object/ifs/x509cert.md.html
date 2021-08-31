@@ -41,6 +41,8 @@
 <li><a href=../../module/ifs/path.md.html class ="notranslate">path</a></li>
 <li><a href=../../module/ifs/path_posix.md.html class ="notranslate">path_posix</a></li>
 <li><a href=../../module/ifs/path_win32.md.html class ="notranslate">path_win32</a></li>
+<li><a href=../../module/ifs/perf_hooks.md.html class ="notranslate">perf_hooks</a></li>
+<li><a href=../../module/ifs/performance.md.html class ="notranslate">performance</a></li>
 <li><a href=../../module/ifs/process.md.html class ="notranslate">process</a></li>
 <li><a href=../../module/ifs/profiler.md.html class ="notranslate">profiler</a></li>
 <li><a href=../../module/ifs/punycode.md.html class ="notranslate">punycode</a></li>
@@ -55,6 +57,7 @@
 <li><a href=../../module/ifs/util.md.html class ="notranslate">util</a></li>
 <li><a href=../../module/ifs/uuid.md.html class ="notranslate">uuid</a></li>
 <li><a href=../../module/ifs/vm.md.html class ="notranslate">vm</a></li>
+<li><a href=../../module/ifs/worker_threads.md.html class ="notranslate">worker_threads</a></li>
 <li><a href=../../module/ifs/ws.md.html class ="notranslate">ws</a></li>
 <li><a href=../../module/ifs/xml.md.html class ="notranslate">xml</a></li>
 <li><a href=../../module/ifs/zip.md.html class ="notranslate">zip</a></li>
@@ -200,7 +203,7 @@
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">var</span> k = <span class="hljs-keyword">new</span> crypto.X509Cert();
 </code></pre>
 <h2 id="继承关系">继承关系</h2>
-<div class="dot notranslate"><svg version="1.1" baseProfile="full" width="146" height="530" viewbox="0 0 146 530" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events" style="font:normal normal 10pt Helvetica,sans-Serif, Helvetica, sans-serif;;stroke-linejoin:round;stroke-linecap:round">
+<div class="dot notranslate"><svg version="1.1" baseProfile="full" width="176" height="592" viewbox="0 0 176 592" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events" style="font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;;stroke-linejoin:round;stroke-linecap:round">
   <desc >
 #lineWidth: 1.5
 #font: Helvetica,sans-Serif
@@ -210,42 +213,44 @@
 #.class: fill=white
 
 [&lt;class&gt;object|toString();toJSON()]
-[&lt;this&gt;X509Cert|new X509Cert()|version;serial;issuer;subject;notBefore;notAfter;ca;pathlen;usage;type;publicKey;next|load();loadFile();loadRootCerts();verify();dump();clear()]
+[&lt;this&gt;X509Cert|new X509Cert()|version;serial;issuer;subject;notBefore;notAfter;ca;pathlen;usage;type;sig_md;sig_pk;publicKey;next|load();loadFile();loadRootCerts();verify();dump();clear()]
 
 [object] &lt;:- [X509Cert]
 </desc>
-  <rect x="0" y="0" height="530" width="146" style="stroke:none; fill:transparent;"></rect>
-  <path d="M73 93 L73 113 L73 133 L73 133 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M78.3 106.3 L73 106.3 L67.7 106.3 L73 93 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <rect x="13" y="133" height="384" width="120" data-name="X509Cert" style="stroke:#33322E;fill:lightgray;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="73" y="154" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="X509Cert">X509Cert</text>
-  <text x="21" y="186" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="X509Cert">new X509Cert()</text>
-  <text x="21" y="218" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="X509Cert">version</text>
-  <text x="21" y="234" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="X509Cert">serial</text>
-  <text x="21" y="250" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="X509Cert">issuer</text>
-  <text x="21" y="266" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="X509Cert">subject</text>
-  <text x="21" y="282" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="X509Cert">notBefore</text>
-  <text x="21" y="298" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="X509Cert">notAfter</text>
-  <text x="21" y="314" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="X509Cert">ca</text>
-  <text x="21" y="330" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="X509Cert">pathlen</text>
-  <text x="21" y="346" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="X509Cert">usage</text>
-  <text x="21" y="362" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="X509Cert">type</text>
-  <text x="21" y="378" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="X509Cert">publicKey</text>
-  <text x="21" y="394" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="X509Cert">next</text>
-  <text x="21" y="426" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="X509Cert">load()</text>
-  <text x="21" y="442" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="X509Cert">loadFile()</text>
-  <text x="21" y="458" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="X509Cert">loadRootCerts()</text>
-  <text x="21" y="474" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="X509Cert">verify()</text>
-  <text x="21" y="490" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="X509Cert">dump()</text>
-  <text x="21" y="506" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="X509Cert">clear()</text>
-  <path d="M13 165 L133 165" data-name="X509Cert" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M13 197 L133 197" data-name="X509Cert" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M13 405 L133 405" data-name="X509Cert" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <rect x="35" y="13" height="80" width="77" data-name="object" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="73.5" y="34" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="object">object</text>
-  <text x="43" y="66" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="object">toString()</text>
-  <text x="43" y="82" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="object">toJSON()</text>
-  <path d="M35 45 L112 45" data-name="object" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <rect x="0" y="0" height="592" width="176" style="stroke:none; fill:transparent;"></rect>
+  <path d="M88 121.3 L88 128 L88 148 L88 148 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M93.3 121.3 L88 121.3 L82.7 121.3 L88 108 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <rect x="28" y="148" height="416" width="120" data-name="X509Cert" style="stroke:#33322E;fill:lightgray;stroke-dasharray:none;stroke-width:1.5;"></rect>
+  <path d="M28 180 L148 180" data-name="X509Cert" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M28 212 L148 212" data-name="X509Cert" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M28 452 L148 452" data-name="X509Cert" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <text x="88" y="169" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="X509Cert">X509Cert</text>
+  <text x="36" y="201" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="X509Cert">new X509Cert()</text>
+  <text x="36" y="233" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="X509Cert">version</text>
+  <text x="36" y="249" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="X509Cert">serial</text>
+  <text x="36" y="265" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="X509Cert">issuer</text>
+  <text x="36" y="281" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="X509Cert">subject</text>
+  <text x="36" y="297" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="X509Cert">notBefore</text>
+  <text x="36" y="313" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="X509Cert">notAfter</text>
+  <text x="36" y="329" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="X509Cert">ca</text>
+  <text x="36" y="345" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="X509Cert">pathlen</text>
+  <text x="36" y="361" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="X509Cert">usage</text>
+  <text x="36" y="377" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="X509Cert">type</text>
+  <text x="36" y="393" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="X509Cert">sig_md</text>
+  <text x="36" y="409" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="X509Cert">sig_pk</text>
+  <text x="36" y="425" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="X509Cert">publicKey</text>
+  <text x="36" y="441" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="X509Cert">next</text>
+  <text x="36" y="473" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="X509Cert">load()</text>
+  <text x="36" y="489" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="X509Cert">loadFile()</text>
+  <text x="36" y="505" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="X509Cert">loadRootCerts()</text>
+  <text x="36" y="521" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="X509Cert">verify()</text>
+  <text x="36" y="537" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="X509Cert">dump()</text>
+  <text x="36" y="553" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="X509Cert">clear()</text>
+  <rect x="50" y="28" height="80" width="77" data-name="object" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
+  <path d="M50 60 L127 60" data-name="object" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <text x="88.5" y="49" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="object">object</text>
+  <text x="58" y="81" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="object">toString()</text>
+  <text x="58" y="97" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="object">toJSON()</text>
 </svg></div>
 
 <h2 id="构造函数">构造函数</h2>
@@ -322,6 +327,16 @@
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly <span class="hljs-built_in">String</span> X509Cert.type;
 </code></pre>
 <p>结果为全部或部分以下内容：client, server, email, objsign, reserved, sslCA, emailCA, objCA</p>
+<hr>
+<h3 id="sig_md" class ="notranslate">sig_md</h3>
+<p><strong>Integer, 获取证书的摘要算法</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly Integer X509Cert.sig_md;
+</code></pre>
+<hr>
+<h3 id="sig_pk" class ="notranslate">sig_pk</h3>
+<p><strong>Integer, 获取证书的签名算法</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly Integer X509Cert.sig_pk;
+</code></pre>
 <hr>
 <h3 id="publicKey" class ="notranslate">publicKey</h3>
 <p><strong><a href=pkey.md.html class ="notranslate">PKey</a>, 获取证书的公钥</strong></p>

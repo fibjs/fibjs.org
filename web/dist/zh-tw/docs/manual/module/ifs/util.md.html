@@ -41,6 +41,8 @@
 <li><a href="path.md.html" class="notranslate">path</a></li>
 <li><a href="path_posix.md.html" class="notranslate">path_posix</a></li>
 <li><a href="path_win32.md.html" class="notranslate">path_win32</a></li>
+<li><a href="perf_hooks.md.html" class="notranslate">perf_hooks</a></li>
+<li><a href="performance.md.html" class="notranslate">performance</a></li>
 <li><a href="process.md.html" class="notranslate">process</a></li>
 <li><a href="profiler.md.html" class="notranslate">profiler</a></li>
 <li><a href="punycode.md.html" class="notranslate">punycode</a></li>
@@ -55,6 +57,7 @@
 <li class="active"><a href="util.md.html" class="notranslate">util</a></li>
 <li><a href="uuid.md.html" class="notranslate">uuid</a></li>
 <li><a href="vm.md.html" class="notranslate">vm</a></li>
+<li><a href="worker_threads.md.html" class="notranslate">worker_threads</a></li>
 <li><a href="ws.md.html" class="notranslate">ws</a></li>
 <li><a href="xml.md.html" class="notranslate">xml</a></li>
 <li><a href="zip.md.html" class="notranslate">zip</a></li>
@@ -245,18 +248,31 @@
 <div name="inspect" data-unique="inspect"></div><h3 id="inspect" class="notranslate">inspect</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">函數返回obj 的字符串表示，主要用於調試。</font><font style="vertical-align: inherit;">附加的options 可用於改變格式化字符串的某些方面。</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">String</span> util.inspect(<span class="hljs-built_in">Object</span> obj,
+2</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">String</span> util.inspect(Value obj,
     <span class="hljs-built_in">Object</span> options = {});
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">調用參數:</font></font></p>
 <ul>
-<li><span class="notranslate">obj</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Object, 指定需要處理的對象</font></font></li>
+<li><span class="notranslate">obj</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Value, 指定需要處理的對象</font></font></li>
 <li><span class="notranslate">options</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Object, 指定格式控制選項</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返回結果:</font></font></p>
 <ul>
 <li><span class="notranslate">String</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 返回格式化後的字符串</font></font></li>
 </ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持以下參數:</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6</div>{
+    <span class="hljs-string">"colors"</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// 指定是否输出 ansi 作色字符串，缺省为 false</span>
+    <span class="hljs-string">"table"</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// 指定输出 table 格式，缺省为 false</span>
+    <span class="hljs-string">"encode_string"</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">// 指定表格中的字符串是否编码，缺省为 true</span>
+    <span class="hljs-string">"fields"</span>: [], <span class="hljs-comment">// 当 table 为 true 时指定显示字段</span><font></font>
+}<font></font>
+</code></pre>
 <hr>
 <div name="deprecate" data-unique="deprecate"></div><h3 id="deprecate" class="notranslate">deprecate</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">封裝給定的函數，本函數僅為兼容，並不輸出警告</font></font></strong></p>
@@ -269,7 +285,7 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">調用參數:</font></font></p>
 <ul>
 <li><span class="notranslate">fn</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Function, 給定需要封裝的函數</font></font></li>
-<li><span class="notranslate">msg</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, 給定警告消​​息</font></font></li>
+<li><span class="notranslate">msg</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, 給定警告消息</font></font></li>
 <li><span class="notranslate">code</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, 給定警告編號</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返回結果:</font></font></p>
@@ -626,6 +642,22 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返回結果:</font></font></p>
 <ul>
 <li><span class="notranslate">Boolean</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 如果是函數 </font></font><a href="../../object/ifs/buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 對象則返回True</font></font></li>
+</ul>
+<hr>
+<div name="isDeepEqual" data-unique="isDeepEqual"></div><h3 id="isDeepEqual" class="notranslate">isDeepEqual</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">測試數值深度等於預期值</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Boolean</span> util.isDeepEqual(Value actual,<font></font>
+    Value expected);<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">調用參數:</font></font></p>
+<ul>
+<li><span class="notranslate">actual</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Value, 要測試的數值</font></font></li>
+<li><span class="notranslate">expected</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Value, 預期的數值</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返回結果:</font></font></p>
+<ul>
+<li><span class="notranslate">Boolean</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 如果深度相等則返回True</font></font></li>
 </ul>
 <hr>
 <div name="has" data-unique="has"></div><h3 id="has" class="notranslate">has</h3>
@@ -1210,4 +1242,4 @@ fn_callback(<span class="hljs-number">100</span>, <span class="hljs-number">200<
     }<font></font>
 }<font></font>
 </code></pre>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org |</font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持我們</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip422709"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip422709" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Click to return on the top page</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org |</font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip571028"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip571028" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Click to return on the top page</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>

@@ -1,10 +1,10 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../../../imgs/icon.png"><title>Fiber의 Object Stream-JavaScript</title><link href="../../../../../css/common.css" rel="stylesheet"><link href="../../../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">탐색 전환</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../../../index.html"><img src="../../../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../../../index.html">HOME</a></li><li><a href="../../../guide/readme.md.html">GUIDE</a></li><li><a href="../../module/readme.md.html">MODULE</a></li><li><a href="../readme.md.html">OBJECT</a></li><li><a href="../../../awesome/readme.md.html">AWESOME</a></li><li><a href="../../../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../../../docs/manual/object/ifs/stream.md.html">中文</a> <a href="../../../../../ca/docs/manual/object/ifs/stream.md.html">Catalan</a> <a href="../../../../../de/docs/manual/object/ifs/stream.md.html">Deutsch</a> <a href="../../../../../en/docs/manual/object/ifs/stream.md.html">English</a> <a href="../../../../../es/docs/manual/object/ifs/stream.md.html">Español</a> <a href="../../../../../fr/docs/manual/object/ifs/stream.md.html">Français</a> <a href="../../../../../gl/docs/manual/object/ifs/stream.md.html">Galego</a> <a href="../../../../../it/docs/manual/object/ifs/stream.md.html">Italiano</a> <a href="../../../../../ru/docs/manual/object/ifs/stream.md.html">Русский</a> <a href="../../../../../ja/docs/manual/object/ifs/stream.md.html">日本語</a> <a href="../../../../../ko/docs/manual/object/ifs/stream.md.html">한국어</a> <a href="../../../../../zh-tw/docs/manual/object/ifs/stream.md.html">繁體中文</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 개체 내장 개체 </font></font></span><div class="search"><span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input type="text" class="searchbox ds-input" placeholder="검색" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-label="검색 입력" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Avenir, &quot;Segoe UI&quot;, Arial, &quot;Hiragino Sans GB&quot;, 冬青黑, &quot;Microsoft YaHei&quot;, 微软雅黑, SimSun, 宋体, Helvetica, Tahoma, &quot;Arial sans-serif&quot;; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div class="ds-dataset-1"></div></span></span></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">집</font></font></a></li><li><a href="../readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 내장 개체 </font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 개체 스트림 </font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 개발 가이드 </font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
-<li><a href="../../../guide/about.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs는 무엇입니까?</font></font></a></li>
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../../../imgs/icon.png"><title>Fiber의 Object Stream-JavaScript</title><link href="../../../../../css/common.css" rel="stylesheet"><link href="../../../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">탐색 전환</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../../../index.html"><img src="../../../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../../../index.html">HOME</a></li><li><a href="../../../guide/readme.md.html">GUIDE</a></li><li><a href="../../module/readme.md.html">MODULE</a></li><li><a href="../readme.md.html">OBJECT</a></li><li><a href="../../../awesome/readme.md.html">AWESOME</a></li><li><a href="../../../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../../../docs/manual/object/ifs/stream.md.html">中文</a> <a href="../../../../../ca/docs/manual/object/ifs/stream.md.html">Catalan</a> <a href="../../../../../de/docs/manual/object/ifs/stream.md.html">Deutsch</a> <a href="../../../../../en/docs/manual/object/ifs/stream.md.html">English</a> <a href="../../../../../es/docs/manual/object/ifs/stream.md.html">Español</a> <a href="../../../../../fr/docs/manual/object/ifs/stream.md.html">Français</a> <a href="../../../../../gl/docs/manual/object/ifs/stream.md.html">Galego</a> <a href="../../../../../it/docs/manual/object/ifs/stream.md.html">Italiano</a> <a href="../../../../../ru/docs/manual/object/ifs/stream.md.html">Русский</a> <a href="../../../../../ja/docs/manual/object/ifs/stream.md.html">日本語</a> <a href="../../../../../ko/docs/manual/object/ifs/stream.md.html">한국어</a> <a href="../../../../../zh-tw/docs/manual/object/ifs/stream.md.html">繁體中文</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 객체 내장 객체 </font></font></span><div class="search"><span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input type="text" class="searchbox ds-input" placeholder="찾다" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-label="검색 입력" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Avenir, &quot;Segoe UI&quot;, Arial, &quot;Hiragino Sans GB&quot;, 冬青黑, &quot;Microsoft YaHei&quot;, 微软雅黑, SimSun, 宋体, Helvetica, Tahoma, &quot;Arial sans-serif&quot;; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div class="ds-dataset-1"></div></span></span></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">첫 장</font></font></a></li><li><a href="../readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 내장 객체 </font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 개체 스트림 </font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 개발 가이드 </font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="../../../guide/about.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs 란 무엇입니까?</font></font></a></li>
 <li><a href="../../../guide/install.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">설치 및 운영 환경</font></font></a></li>
 <li><a href="../../../guide/hello.md.html" class="notranslate">hello, world</a></li>
-<li><a href="../../../guide/test.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">좋은 삶은 시험에서 시작됩니다</font></font></a></li>
+<li><a href="../../../guide/test.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">좋은 삶은 시험에서 시작된다</font></font></a></li>
 <li><a href="../../../guide/profiler.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">성능 킬러 찾기</font></font></a></li>
-<li><a href="../../../guide/desktop.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">데스크톱 애플리케이션을 빠르게 개발</font></font></a></li>
+<li><a href="../../../guide/desktop.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">데스크탑 애플리케이션을 빠르게 개발</font></font></a></li>
 <li><a href="../../../guide/server-hot-update.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">서버 모듈 핫 업데이트</font></font></a></li>
 <li><a href="../../../guide/host-routes.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">도메인 이름 라우팅</font></font></a></li>
 <li><a href="../../../guide/x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs에서 X509 인증서 사용</font></font></a></li>
@@ -41,6 +41,8 @@
 <li><a href="../../module/ifs/path.md.html" class="notranslate">path</a></li>
 <li><a href="../../module/ifs/path_posix.md.html" class="notranslate">path_posix</a></li>
 <li><a href="../../module/ifs/path_win32.md.html" class="notranslate">path_win32</a></li>
+<li><a href="../../module/ifs/perf_hooks.md.html" class="notranslate">perf_hooks</a></li>
+<li><a href="../../module/ifs/performance.md.html" class="notranslate">performance</a></li>
 <li><a href="../../module/ifs/process.md.html" class="notranslate">process</a></li>
 <li><a href="../../module/ifs/profiler.md.html" class="notranslate">profiler</a></li>
 <li><a href="../../module/ifs/punycode.md.html" class="notranslate">punycode</a></li>
@@ -55,12 +57,13 @@
 <li><a href="../../module/ifs/util.md.html" class="notranslate">util</a></li>
 <li><a href="../../module/ifs/uuid.md.html" class="notranslate">uuid</a></li>
 <li><a href="../../module/ifs/vm.md.html" class="notranslate">vm</a></li>
+<li><a href="../../module/ifs/worker_threads.md.html" class="notranslate">worker_threads</a></li>
 <li><a href="../../module/ifs/ws.md.html" class="notranslate">ws</a></li>
 <li><a href="../../module/ifs/xml.md.html" class="notranslate">xml</a></li>
 <li><a href="../../module/ifs/zip.md.html" class="notranslate">zip</a></li>
 <li><a href="../../module/ifs/zlib.md.html" class="notranslate">zlib</a></li>
 </ul>
- </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_object" aria-controls="collapse_object"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 내장 개체 </font></font></a></h4></div><div id="collapse_object" class="panel-collapse collapse in" aria-labelledby="headingOne"><div class="panel-body"> <ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_object" aria-controls="collapse_object"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 내장 객체 </font></font></a></h4></div><div id="collapse_object" class="panel-collapse collapse in" aria-labelledby="headingOne"><div class="panel-body"> <ul>
 <li><a href="buffer.md.html" class="notranslate">Buffer</a></li>
 <li><a href="bufferedstream.md.html" class="notranslate">BufferedStream</a></li>
 <li><a href="chain.md.html" class="notranslate">Chain</a></li>
@@ -198,7 +201,7 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">이진 데이터 스트림의 읽기 및 쓰기에 사용되는 스트림 작업 개체</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">스트림은 스트림 처리에 대한 표준 변명을 정의하는 데 사용되는 기본 개체이며 독립적으로 만들 수 없습니다.</font></font></p>
 <div name="继承关系" data-unique="继承关系"></div><h2 id="继承关系"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">계승</font></font></h2>
-<div class="dot notranslate"><svg version="1.1" baseProfile="full" width="866" height="450" viewBox="0 0 866 450" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events" style="font:bold normal 10pt Helvetica,sans-Serif, Helvetica, sans-serif;;stroke-linejoin:round;stroke-linecap:round">
+<div class="dot notranslate"><svg version="1.1" baseProfile="full" width="896" height="480" viewBox="0 0 896 480" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events" style="font:bold  10pt Helvetica,sans-Serif, Helvetica, sans-serif;;stroke-linejoin:round;stroke-linecap:round">
   <desc>
 #lineWidth: 1.5
 #font: Helvetica,sans-Serif
@@ -230,86 +233,86 @@
 [Stream] &lt;:- [TTYInputStream]
 [Stream] &lt;:- [TTYOutputStream]
 </desc>
-  <rect x="0" y="0" height="450" width="866" style="stroke:none; fill:transparent;"></rect>
-  <path d="M422 93 L422 113 L422 133 L422 133 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M427.3 106.3 L422 106.3 L416.7 106.3 L422 93 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M385 223.6 L72.5 313 L72.5 333 L72.5 333 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M373.6 232.4 L372.2 227.3 L370.7 222.1 L385 223.6 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M385 232.7 L234 313 L234 333 L234 333 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M375.7 243.7 L373.2 238.9 L370.7 234.2 L385 232.7 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M182 365 L117 385 L117 405 L117 405 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M170.8 374 L169.3 368.9 L167.7 363.8 L182 365 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M234 365 L234 385 L234 405 L234 405 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M239.3 378.3 L234 378.3 L228.7 378.3 L234 365 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M296 363.8 L384.5 385 L384.5 405 L384.5 405 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M310.2 361.7 L309 366.9 L307.7 372.1 L296 363.8 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M385 279.7 L366.5 313 L366.5 333 L366.5 333 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M383.2 293.9 L378.5 291.3 L373.9 288.7 L385 279.7 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M459 279.7 L477.5 313 L477.5 333 L477.5 333 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M470.1 288.7 L465.5 291.3 L460.8 293.9 L459 279.7 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M459 231.8 L619 313 L619 333 L619 333 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M473.3 233.1 L470.9 237.8 L468.5 242.6 L459 231.8 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M459 223.2 L786.5 313 L786.5 333 L786.5 333 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M473.3 221.5 L471.9 226.7 L470.4 231.8 L459 223.2 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <rect x="385" y="133" height="160" width="74" data-name="Stream" style="stroke:#33322E;fill:lightgray;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="422" y="154" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="Stream">Stream</text>
-  <text x="393" y="186" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Stream">fd</text>
-  <text x="393" y="218" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Stream">read()</text>
-  <text x="393" y="234" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Stream">write()</text>
-  <text x="393" y="250" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Stream">flush()</text>
-  <text x="393" y="266" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Stream">close()</text>
-  <text x="393" y="282" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Stream">copyTo()</text>
-  <path d="M385 165 L459 165" data-name="Stream" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M385 197 L459 197" data-name="Stream" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <rect x="384" y="13" height="80" width="77" data-name="object" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="422.5" y="34" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="object">object</text>
-  <text x="392" y="66" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="object">toString()</text>
-  <text x="392" y="82" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="object">toJSON()</text>
-  <path d="M384 45 L461 45" data-name="object" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <rect x="13" y="333" height="32" width="119" data-name="BufferedStream" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="72.5" y="354" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="BufferedStream">BufferedStream</text>
-  <rect x="172" y="333" height="32" width="124" data-name="SeekableStream" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="234" y="354" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="SeekableStream">SeekableStream</text>
-  <rect x="98" y="405" height="32" width="39" data-name="File" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="117.5" y="426" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="File">File</text>
-  <rect x="177" y="405" height="32" width="115" data-name="MemoryStream" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="234.5" y="426" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="MemoryStream">MemoryStream</text>
-  <rect x="332" y="405" height="32" width="106" data-name="RangeStream" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="385" y="426" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="RangeStream">RangeStream</text>
-  <rect x="336" y="333" height="32" width="61" data-name="Socket" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="366.5" y="354" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="Socket">Socket</text>
-  <rect x="437" y="333" height="32" width="81" data-name="SslSocket" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="477.5" y="354" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="SslSocket">SslSocket</text>
-  <rect x="558" y="333" height="32" width="122" data-name="TTYInputStream" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="619" y="354" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="TTYInputStream">TTYInputStream</text>
-  <rect x="720" y="333" height="32" width="133" data-name="TTYOutputStream" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="786.5" y="354" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="TTYOutputStream">TTYOutputStream</text>
+  <rect x="0" y="0" height="480" width="896" style="stroke:none; fill:transparent;"></rect>
+  <path d="M437 121.3 L437 128 L437 148 L437 148 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M442.3 121.3 L437 121.3 L431.7 121.3 L437 108 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M387.2 242.3 L87.5 328 L87.5 348 L87.5 348 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M388.6 247.4 L387.2 242.3 L385.7 237.1 L400 238.6 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M388.2 253.9 L249 328 L249 348 L249 348 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M390.7 258.7 L388.2 253.9 L385.7 249.2 L400 247.7 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M184.3 383.9 L132 400 L132 420 L132 420 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M185.8 389 L184.3 383.9 L182.7 378.8 L197 380 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M249 393.3 L249 400 L249 420 L249 420 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M254.3 393.3 L249 393.3 L243.7 393.3 L249 380 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M324 381.9 L399.5 400 L399.5 420 L399.5 420 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M325.2 376.7 L324 381.9 L322.7 387.1 L311 378.8 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M393.5 306.3 L381.5 328 L381.5 348 L381.5 348 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M398.2 308.9 L393.5 306.3 L388.9 303.7 L400 294.7 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M480.5 306.3 L492.5 328 L492.5 348 L492.5 348 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M485.1 303.7 L480.5 306.3 L475.8 308.9 L474 294.7 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M485.9 252.8 L634 328 L634 348 L634 348 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M488.3 248.1 L485.9 252.8 L483.5 257.6 L474 246.8 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M486.9 241.7 L801.5 328 L801.5 348 L801.5 348 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M488.3 236.5 L486.9 241.7 L485.4 246.8 L474 238.2 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <rect x="400" y="148" height="160" width="74" data-name="Stream" style="stroke:#33322E;fill:lightgray;stroke-dasharray:none;stroke-width:1.5;"></rect>
+  <path d="M400 180 L474 180" data-name="Stream" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M400 212 L474 212" data-name="Stream" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <text x="437" y="169" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="Stream">Stream</text>
+  <text x="408" y="201" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Stream">fd</text>
+  <text x="408" y="233" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Stream">read()</text>
+  <text x="408" y="249" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Stream">write()</text>
+  <text x="408" y="265" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Stream">flush()</text>
+  <text x="408" y="281" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Stream">close()</text>
+  <text x="408" y="297" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Stream">copyTo()</text>
+  <rect x="399" y="28" height="80" width="77" data-name="object" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
+  <path d="M399 60 L476 60" data-name="object" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <text x="437.5" y="49" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="object">object</text>
+  <text x="407" y="81" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="object">toString()</text>
+  <text x="407" y="97" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="object">toJSON()</text>
+  <rect x="28" y="348" height="32" width="119" data-name="BufferedStream" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
+  <text x="87.5" y="369" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="BufferedStream">BufferedStream</text>
+  <rect x="187" y="348" height="32" width="124" data-name="SeekableStream" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
+  <text x="249" y="369" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="SeekableStream">SeekableStream</text>
+  <rect x="113" y="420" height="32" width="39" data-name="File" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
+  <text x="132.5" y="441" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="File">File</text>
+  <rect x="192" y="420" height="32" width="115" data-name="MemoryStream" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
+  <text x="249.5" y="441" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="MemoryStream">MemoryStream</text>
+  <rect x="347" y="420" height="32" width="106" data-name="RangeStream" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
+  <text x="400" y="441" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="RangeStream">RangeStream</text>
+  <rect x="351" y="348" height="32" width="61" data-name="Socket" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
+  <text x="381.5" y="369" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="Socket">Socket</text>
+  <rect x="452" y="348" height="32" width="81" data-name="SslSocket" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
+  <text x="492.5" y="369" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="SslSocket">SslSocket</text>
+  <rect x="573" y="348" height="32" width="122" data-name="TTYInputStream" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
+  <text x="634" y="369" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="TTYInputStream">TTYInputStream</text>
+  <rect x="735" y="348" height="32" width="133" data-name="TTYOutputStream" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
+  <text x="801.5" y="369" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="TTYOutputStream">TTYOutputStream</text>
 </svg></div>
 
 <div name="成员属性" data-unique="成员属性"></div><h2 id="成员属性"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">회원 속성</font></font></h2>
 <div name="fd" data-unique="fd"></div><h3 id="fd" class="notranslate">fd</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">정수, 하위 클래스에 의해 구현 된 Stream에 해당하는 파일 설명자 값을 쿼리합니다.</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">정수, 하위 클래스에 의해 구현된 스트림에 해당하는 파일 설명자 값을 쿼리합니다.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly Integer Stream.fd;
 </code></pre>
-<div name="成员函数" data-unique="成员函数"></div><h2 id="成员函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">회원 기능</font></font></h2>
+<div name="成员函数" data-unique="成员函数"></div><h2 id="成员函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">멤버 함수</font></font></h2>
 <div name="read" data-unique="read"></div><h3 id="read" class="notranslate">read</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">스트림에서 지정된 크기의 데이터 읽기</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Buffer Stream.read(Integer bytes = <span class="hljs-number">-1</span>) <span class="hljs-keyword">async</span>;
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
 <ul>
-<li><span class="notranslate">bytes</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 읽을 데이터 양을 지정합니다. 기본값은 임의 크기의 데이터 블록을 읽는 것입니다. 읽은 데이터의 크기는 장치에 따라 다릅니다.</font></font></li>
+<li><span class="notranslate">bytes</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 읽을 데이터의 양을 지정합니다. 기본값은 임의 크기의 데이터 블록을 읽는 것입니다. 읽은 데이터의 크기는 장치에 따라 다릅니다.</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과 :</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
 <ul>
-<li><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 읽을 데이터가 없거나 연결이 중단 된 경우 스트림에서 읽은 데이터를 반환 한 다음 null을 반환합니다.</font></font></li>
+<li><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 스트림에서 읽은 데이터를 반환합니다. 읽을 데이터가 없거나 연결이 중단되면 null을 반환합니다.</font></font></li>
 </ul>
 <hr>
 <div name="write" data-unique="write"></div><h3 id="write" class="notranslate">write</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">주어진 데이터를 스트림에 씁니다.</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">스트림에 주어진 데이터 쓰기</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Stream.write(Buffer data) <span class="hljs-keyword">async</span>;
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
 <ul>
 <li><span class="notranslate">data</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 쓸 데이터가 주어지면</font></font></li>
 </ul>
@@ -330,35 +333,35 @@
 2</div>Long Stream.copyTo(Stream stm,<font></font>
     Long bytes = <span class="hljs-number">-1</span>) <span class="hljs-keyword">async</span>;
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
 <ul>
 <li><span class="notranslate">stm</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 스트림, 대상 스트림 객체</font></font></li>
-<li><span class="notranslate">bytes</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Long, 복사 된 바이트 수</font></font></li>
+<li><span class="notranslate">bytes</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Long, 복사된 바이트 수</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과 :</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
 <ul>
-<li><span class="notranslate">Long</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 복사 된 바이트 수를 반환합니다.</font></font></li>
+<li><span class="notranslate">Long</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 복사된 바이트 수를 반환합니다.</font></font></li>
 </ul>
 <hr>
 <div name="toString" data-unique="toString"></div><h3 id="toString" class="notranslate">toString</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">객체의 문자열 표현을 반환합니다. 일반적으로 "[Native Object]"를 반환합니다. 객체는 자체 특성에 따라 다시 구현 될 수 있습니다.</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">개체의 문자열 표현을 반환하고 일반적으로 "[네이티브 개체]"를 반환하며 개체는 고유한 특성에 따라 다시 구현할 수 있습니다.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> Stream.toString();
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과 :</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
 <ul>
 <li><span class="notranslate">String</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 객체의 문자열 표현을 반환합니다.</font></font></li>
 </ul>
 <hr>
 <div name="toJSON" data-unique="toJSON"></div><h3 id="toJSON" class="notranslate">toJSON</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">객체의 JSON 형식 표현을 반환하고 일반적으로 객체가 정의한 읽을 수있는 속성 모음을 반환합니다.</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">객체의 JSON 형식 표현을 반환하고 일반적으로 객체에 의해 정의된 읽을 수 있는 속성 모음을 반환합니다.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Value Stream.toJSON(<span class="hljs-built_in">String</span> key = <span class="hljs-string">""</span>);
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개 변수 :</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
 <ul>
 <li><span class="notranslate">key</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 미사용</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과 :</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
 <ul>
-<li><span class="notranslate">Value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 직렬화 가능한 JSON이 포함 된 값을 반환합니다.</font></font></li>
+<li><span class="notranslate">Value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 직렬화 가능한 JSON을 포함하는 값을 반환합니다.</font></font></li>
 </ul>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org | </font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">지원</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip747332"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip747332" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">클릭하면 톱 페이지로 돌아갑니다</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org | </font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">지원</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip105825"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip105825" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">클릭하면 톱 페이지로 돌아갑니다</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>

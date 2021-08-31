@@ -152,6 +152,33 @@ static Number process.uptime();
 * Number, 返回表示时间的数值
 
 --------------------------
+### cpuUsage
+**查询当前进程在用户和系统代码中花费的时间，其值为微秒值（百万分之一秒）**
+
+```JavaScript
+static Object process.cpuUsage(Object previousValue = {});
+```
+
+调用参数:
+* previousValue: Object, 指定上一次查询的时间
+
+返回结果:
+* Object, 返回包含时间报告
+
+内存报告生成类似以下结果：
+
+```JavaScript
+{
+    "user": 132379,
+    "system": 50507
+}
+```
+
+其中：
+- user 返回进程在用户代码中花费的时间
+- system 返回进程在系统代码中花费的时间
+
+--------------------------
 ### memoryUsage
 **查询当前进程内存使用报告**
 

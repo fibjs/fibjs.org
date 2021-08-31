@@ -477,6 +477,21 @@ Integer LruCache.listenerCount(String ev);
 * Integer, 返回指定事件的监听器数量
 
 --------------------------
+**查询对象指定事件的监听器数量**
+
+```JavaScript
+Integer LruCache.listenerCount(Value o,
+    String ev);
+```
+
+调用参数:
+* o: Value, 指定查询的对象
+* ev: String, 指定事件的名称
+
+返回结果:
+* Integer, 返回指定事件的监听器数量
+
+--------------------------
 ### eventNames
 **查询监听器事件名称**
 

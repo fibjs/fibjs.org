@@ -78,7 +78,7 @@ opts 包含请求的附加选项，支持的内容如下：
 {
     "protocol": "", // 指定握手协议，缺省为空
     "origin": "", // 指定握手时模拟的源，缺省为空
-    "perMessageDeflate": true, // 指定是否支持压缩，缺省支持
+    "perMessageDeflate": false, // 指定是否支持压缩，缺省不支持
     "maxPayload": 67108864, // 指定最大数据包尺寸，缺省为 67108864
     "httpClient": hc, // 自定义 httpClient 对象，缺省使用全局 httpClient
     "headers": // 指定 http(s) 连接时携带的 header，缺省为 {}，
@@ -517,6 +517,21 @@ Integer WebSocket.listenerCount(String ev);
 ```
 
 调用参数:
+* ev: String, 指定事件的名称
+
+返回结果:
+* Integer, 返回指定事件的监听器数量
+
+--------------------------
+**查询对象指定事件的监听器数量**
+
+```JavaScript
+Integer WebSocket.listenerCount(Value o,
+    String ev);
+```
+
+调用参数:
+* o: Value, 指定查询的对象
 * ev: String, 指定事件的名称
 
 返回结果:

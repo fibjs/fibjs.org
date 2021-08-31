@@ -41,6 +41,8 @@
 <li><a href=path.md.html class ="notranslate">path</a></li>
 <li><a href=path_posix.md.html class ="notranslate">path_posix</a></li>
 <li><a href=path_win32.md.html class ="notranslate">path_win32</a></li>
+<li><a href=perf_hooks.md.html class ="notranslate">perf_hooks</a></li>
+<li><a href=performance.md.html class ="notranslate">performance</a></li>
 <li><a href=process.md.html class ="notranslate">process</a></li>
 <li><a href=profiler.md.html class ="notranslate">profiler</a></li>
 <li><a href=punycode.md.html class ="notranslate">punycode</a></li>
@@ -55,6 +57,7 @@
 <li><a href=util.md.html class ="notranslate">util</a></li>
 <li><a href=uuid.md.html class ="notranslate">uuid</a></li>
 <li><a href=vm.md.html class ="notranslate">vm</a></li>
+<li><a href=worker_threads.md.html class ="notranslate">worker_threads</a></li>
 <li><a href=ws.md.html class ="notranslate">ws</a></li>
 <li><a href=xml.md.html class ="notranslate">xml</a></li>
 <li><a href=zip.md.html class ="notranslate">zip</a></li>
@@ -343,6 +346,24 @@
 <li><a href=../../object/ifs/digest.md.html class ="notranslate">Digest</a>, 返回构造的信息摘要对象</li>
 </ul>
 <hr>
+<p><strong>创建一个 SM3 信息摘要运算对象并进行预处理</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">static</span> Digest hash.sm3(PKey pubKey,
+    <span class="hljs-built_in">String</span> id,
+    Buffer data = NULL);
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li><span class="notranslate">pubKey</span>: <a href=../../object/ifs/pkey.md.html class ="notranslate">PKey</a>, 签名公钥</li>
+<li><span class="notranslate">id</span>: String, 签名 ID</li>
+<li><span class="notranslate">data</span>: <a href=../../object/ifs/buffer.md.html class ="notranslate">Buffer</a>, 创建同时更新的二进制数据，缺省为 null，不更新数据</li>
+</ul>
+<p>返回结果:</p>
+<ul>
+<li><a href=../../object/ifs/digest.md.html class ="notranslate">Digest</a>, 返回构造的信息摘要对象</li>
+</ul>
+<hr>
 <h3 id="hmac" class ="notranslate">hmac</h3>
 <p><strong>根据指定的算法标识创建一个信息摘要签名运算对象</strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
@@ -514,6 +535,27 @@
 </code></pre>
 <p>调用参数:</p>
 <ul>
+<li><span class="notranslate">key</span>: <a href=../../object/ifs/buffer.md.html class ="notranslate">Buffer</a>, 二进制签名密钥</li>
+<li><span class="notranslate">data</span>: <a href=../../object/ifs/buffer.md.html class ="notranslate">Buffer</a>, 创建同时更新的二进制数据，缺省为 null，不更新数据</li>
+</ul>
+<p>返回结果:</p>
+<ul>
+<li><a href=../../object/ifs/digest.md.html class ="notranslate">Digest</a>, 返回构造的信息摘要对象</li>
+</ul>
+<hr>
+<p><strong>创建一个 SM3 信息摘要签名运算对象并进行预处理</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4</div><span class="hljs-keyword">static</span> Digest hash.hmac_sm3(PKey pubKey,
+    <span class="hljs-built_in">String</span> id,
+    Buffer key,
+    Buffer data = NULL);
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li><span class="notranslate">pubKey</span>: <a href=../../object/ifs/pkey.md.html class ="notranslate">PKey</a>, 签名公钥</li>
+<li><span class="notranslate">id</span>: String, 签名 ID</li>
 <li><span class="notranslate">key</span>: <a href=../../object/ifs/buffer.md.html class ="notranslate">Buffer</a>, 二进制签名密钥</li>
 <li><span class="notranslate">data</span>: <a href=../../object/ifs/buffer.md.html class ="notranslate">Buffer</a>, 创建同时更新的二进制数据，缺省为 null，不更新数据</li>
 </ul>

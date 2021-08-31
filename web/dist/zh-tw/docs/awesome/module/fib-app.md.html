@@ -41,6 +41,8 @@
 <li><a href="../../manual/module/ifs/path.md.html" class="notranslate">path</a></li>
 <li><a href="../../manual/module/ifs/path_posix.md.html" class="notranslate">path_posix</a></li>
 <li><a href="../../manual/module/ifs/path_win32.md.html" class="notranslate">path_win32</a></li>
+<li><a href="../../manual/module/ifs/perf_hooks.md.html" class="notranslate">perf_hooks</a></li>
+<li><a href="../../manual/module/ifs/performance.md.html" class="notranslate">performance</a></li>
 <li><a href="../../manual/module/ifs/process.md.html" class="notranslate">process</a></li>
 <li><a href="../../manual/module/ifs/profiler.md.html" class="notranslate">profiler</a></li>
 <li><a href="../../manual/module/ifs/punycode.md.html" class="notranslate">punycode</a></li>
@@ -55,6 +57,7 @@
 <li><a href="../../manual/module/ifs/util.md.html" class="notranslate">util</a></li>
 <li><a href="../../manual/module/ifs/uuid.md.html" class="notranslate">uuid</a></li>
 <li><a href="../../manual/module/ifs/vm.md.html" class="notranslate">vm</a></li>
+<li><a href="../../manual/module/ifs/worker_threads.md.html" class="notranslate">worker_threads</a></li>
 <li><a href="../../manual/module/ifs/ws.md.html" class="notranslate">ws</a></li>
 <li><a href="../../manual/module/ifs/xml.md.html" class="notranslate">xml</a></li>
 <li><a href="../../manual/module/ifs/zip.md.html" class="notranslate">zip</a></li>
@@ -245,7 +248,7 @@ app.db.use(<span class="hljs-built_in">require</span>(<span class="hljs-string">
 ]);<font></font>
 svr.run();<font></font>
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">其中</font></font><code>person</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">是Model定義模塊，內容如下：</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">其中 </font></font><code>person</code><font style="vertical-align: inherit;"></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
@@ -319,8 +322,8 @@ svr.run();<font></font>
 ]<font></font>
 </code></pre>
 <div name="特殊字段" data-unique="特殊字段"></div><h2 id="特殊字段"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">特殊字段</font></font></h2>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">對像數據中，有四個特殊含義的字段，是不允許通過API更改的。</font><font style="vertical-align: inherit;">分別是</font></font><code>id</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><code>updatedAt</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><code>createdAt</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><code>createdBy</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">其中</font></font><code>id</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><code>updatedAt</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">,</font></font><code>createdAt</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">單個字段會自動創建和修改。</font></font><code>createdBy</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">則需要自行指定類型。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">對像數據中，有四個特殊含義的字段，是不允許通過API 更改的。</font><font style="vertical-align: inherit;">分別是</font></font><code>id</code><font style="vertical-align: inherit;"></font><code>updatedAt</code><font style="vertical-align: inherit;"></font><code>createdAt</code><font style="vertical-align: inherit;"></font><code>createdBy</code><font style="vertical-align: inherit;"></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">其中 </font><font style="vertical-align: inherit;">則需要自行指定類型。</font></font><code>id</code><font style="vertical-align: inherit;"></font><code>updatedAt</code><font style="vertical-align: inherit;"></font><code>createdAt</code><font style="vertical-align: inherit;"></font><code>createdBy</code><font style="vertical-align: inherit;"></font></p>
 <div name="基础对象访问-API" data-unique="基础对象访问-API"></div><h2 id="基础对象访问-API"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">基礎對象訪問API</font></font></h2>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">完成這樣的數據定義，便直接擁有了一整套符合REST api 規範的接口調用：</font></font></p>
 <table>
@@ -382,7 +385,7 @@ svr.run();<font></font>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">當你創建了一個對象時，你可以通過發送一個GET 請求到返回的header 的Location 以獲取它的內容。</font><font style="vertical-align: inherit;">例如，為了得到我們上面創建的對象：</font></font></p>
 <pre><code class="lang-sh"><div class="line-numbers">1</div>curl -X GET http://localhost/1.0/person/57fbbdb0a2400000
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返回的主體是一個JSON對象包含所有用戶提供的field加上</font></font><code>createdAt</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、</font></font><code>updatedAt</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和</font></font><code>id</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">字段：</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返回的主體是一個JSON 對象包含所有用戶提供的field 加上</font></font><code>createdAt</code><font style="vertical-align: inherit;"></font><code>updatedAt</code><font style="vertical-align: inherit;"></font><code>id</code><font style="vertical-align: inherit;"></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
@@ -399,7 +402,7 @@ svr.run();<font></font>
   <span class="hljs-string">"id"</span>: <span class="hljs-string">"57fbbdb0a2400000"</span><font></font>
 }<font></font>
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">通過設置返回字段</font></font><code>keys</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，可以定制返回的內容，</font></font><code>keys</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的內容是一個以</font></font><code>,</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">分割的字段名稱字符串，：</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">通過設置返回字段</font></font><code>keys</code><font style="vertical-align: inherit;"></font><code>keys</code><font style="vertical-align: inherit;"></font><code>,</code><font style="vertical-align: inherit;"></font></p>
 <pre><code class="lang-sh"><div class="line-numbers">1</div>curl -X GET http://localhost/1.0/person/57fbbdb0a2400000?keys=name%2Csex
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">將返回：</font></font></p>
@@ -421,7 +424,7 @@ svr.run();<font></font>
   -d <span class="hljs-string">'{"age": 25}'</span> \<font></font>
   http://localhost/1.0/person/57fbbdb0a2400000<font></font>
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返回的JSON對象會包含</font></font><code>updatedAt</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和</font></font><code>id</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">字段，表明更新發生的時間：</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返回的JSON 對象會包含 </font></font><code>updatedAt</code><font style="vertical-align: inherit;"></font><code>id</code><font style="vertical-align: inherit;"></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
@@ -476,17 +479,17 @@ svr.run();<font></font>
 ]<font></font>
 </code></pre>
 <h4 id="keys-字段定制"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">keys 字段定制</font></font></h4>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">與對象查詢一樣，查詢列表時可以通過設定</font></font><code>keys</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">來定制返回結果所包含的字段。</font></font><code>keys</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的內容是一個以</font></font><code>,</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">分割的字段名稱字符串，例如：</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">與對象查詢一樣，查詢列表時可以通過設定  </font><font style="vertical-align: inherit;">的內容是一個以 </font></font><code>keys</code><font style="vertical-align: inherit;"></font><code>keys</code><font style="vertical-align: inherit;"></font><code>,</code><font style="vertical-align: inherit;"></font></p>
 <pre><code class="lang-sh"><div class="line-numbers">1</div>curl -X GET http://localhost/1.0/person?keys=name%2Cage
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">將指定只返回</font></font><code>name</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和</font></font><code>age</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">兩個字段。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">將指定只返回 </font></font><code>name</code><font style="vertical-align: inherit;"></font><code>age</code><font style="vertical-align: inherit;"></font></p>
 <h4 id="where-过滤条件"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">where 過濾條件</font></font></h4>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">通過</font></font><code>where</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">參數的形式可以對查詢對像做出約束。</font></font></p>
-<p><code>where</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">參數的值應該是JSON編碼過的。</font><font style="vertical-align: inherit;">就是說，如果你查看真正被發出的URL請求，它應該是先被JSON編碼過，然後又被URL編碼過。</font><font style="vertical-align: inherit;">最簡單的使用</font></font><code>where</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">參數的方式就是包含應有的key和value。</font><font style="vertical-align: inherit;">例如，如果我們想要搜索名字為tom的用戶，我們應該這樣構造查詢:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">通過 </font></font><code>where</code><font style="vertical-align: inherit;"></font></p>
+<p><code>where</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">參數的值應該是JSON 編碼過的。</font><font style="vertical-align: inherit;">就是說，如果你查看真正被發出的URL 請求，它應該是先被JSON 編碼過，然後又被URL 編碼過。</font><font style="vertical-align: inherit;">最簡單的使用  </font><font style="vertical-align: inherit;">例如，如果我們想要搜索名字為tom 的用戶，我們應該這樣構造查詢:</font></font><code>where</code><font style="vertical-align: inherit;"></font></p>
 <pre><code class="lang-sh"><div class="line-numbers">1</div>curl -X GET http://localhost/1.0/person?<span class="hljs-built_in">where</span>=%7B%22name%22%3A%22tom%22%7D
 </code></pre>
 <p><code>where</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 的值為一個urlencode 後的JSON 字符串，內容為：</font></font><code>{"name":"tom"}</code></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">除了完全匹配一個給定的值以外，</font></font><code>where</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">也支持比較的方式，比如包含。</font></font><code>where</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">參數支持如下選項：</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">除了完全匹配一個給定的值以外，</font><font style="vertical-align: inherit;">參數支持如下選項：</font></font><code>where</code><font style="vertical-align: inherit;"></font><code>where</code><font style="vertical-align: inherit;"></font></p>
 <table>
 <thead>
 <tr>
@@ -564,22 +567,22 @@ svr.run();<font></font>
 </tbody>
 </table>
 <h4 id="skip-跳过记录"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">skip 跳過記錄</font></font></h4>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">通過</font></font><code>skip</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">選項，可以跳過指定的記錄數，達到翻頁的效果。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">通過 </font></font><code>skip</code><font style="vertical-align: inherit;"></font></p>
 <pre><code class="lang-sh"><div class="line-numbers">1</div>curl -X GET http://localhost/1.0/person?skip=100
 </code></pre>
 <h4 id="limit-返回记录限制"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">limit 返回記錄限制</font></font></h4>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">通過</font></font><code>limit</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">選項，可以限制返回記錄數，</font></font><code>limit</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的有效數字為1-1000，缺省為100。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">通過 </font></font><code>limit</code><font style="vertical-align: inherit;"></font><code>limit</code><font style="vertical-align: inherit;"></font></p>
 <pre><code class="lang-sh"><div class="line-numbers">1</div>curl -X GET http://localhost/1.0/person?<span class="hljs-built_in">limit</span>=100
 </code></pre>
 <h4 id="order-指定排序方式"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">order 指定排序方式</font></font></h4>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">通過</font></font><code>order</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">選項，設定返回結果集的排序方式，字段名前包含</font></font><code>-</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">時為倒序。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">通過 </font></font><code>order</code><font style="vertical-align: inherit;"></font><code>-</code><font style="vertical-align: inherit;"></font></p>
 <pre><code class="lang-sh"><div class="line-numbers">1</div>curl -X GET http://localhost/1.0/person?order=-id
 </code></pre>
 <h4 id="count-返回结果总数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">count 返回結果總數</font></font></h4>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在請求時增加</font></font><code>count</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">可以在返回指定內容的同時返回結果集的總數。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在請求時增加 </font></font><code>count</code><font style="vertical-align: inherit;"></font></p>
 <pre><code class="lang-sh"><div class="line-numbers">1</div>curl -X GET http://localhost/1.0/person?count=1&amp;<span class="hljs-built_in">limit</span>=1
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">此時返回結果將包含</font></font><code>count</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和</font></font><code>results</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">兩個字段，分別包含總數和結果：</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">此時返回結果將包含 </font></font><code>count</code><font style="vertical-align: inherit;"></font><code>results</code><font style="vertical-align: inherit;"></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
@@ -777,7 +780,7 @@ svr.run();<font></font>
 }<font></font>
 </code></pre>
 <div name="主体" data-unique="主体"></div><h3 id="主体"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">主體</font></font></h3>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ACL主體描述有三種，用戶</font></font><code>id</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，用戶</font></font><code>role</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和</font></font><code>*</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，</font></font><code>id</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">表示一個具體的用戶，</font></font><code>role</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">表示具有某個角色的用戶，</font></font><code>*</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">表示所有用戶：</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ACL 主體描述有三種，用戶</font></font><code>id</code><font style="vertical-align: inherit;"></font><code>role</code><font style="vertical-align: inherit;"></font><code>*</code><font style="vertical-align: inherit;"></font><code>id</code><font style="vertical-align: inherit;"></font><code>role</code><font style="vertical-align: inherit;"></font><code>*</code><font style="vertical-align: inherit;"></font></p>
 <table>
 <thead>
 <tr>
@@ -804,8 +807,8 @@ svr.run();<font></font>
 </tr>
 </tbody>
 </table>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在檢查權限時，首先會匹配</font></font><code>id</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">對應的權限，如果未指定，則匹配用戶</font></font><code>role</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">對應的權限，如果仍為指定，則查看是否指定了</font></font><code>*</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的權限，如果</font></font><code>*</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">也未指定，則沒有權限。</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">比如上面的權限配置，指定了</font></font><code>user</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">用戶組可以閱讀，用戶</font></font><code>57fbbdb0a2400000</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">擁有全部權限，而其它用戶沒有任何權限。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在檢查權限時，首先會匹配 </font></font><code>id</code><font style="vertical-align: inherit;"></font><code>role</code><font style="vertical-align: inherit;"></font><code>*</code><font style="vertical-align: inherit;"></font><code>*</code><font style="vertical-align: inherit;"></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">比如上面的權限配置，指定了 </font></font><code>user</code><font style="vertical-align: inherit;"></font><code>57fbbdb0a2400000</code><font style="vertical-align: inherit;"></font></p>
 <div name="权限" data-unique="权限"></div><h3 id="权限"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">權限</font></font></h3>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ACL 根據API 行為將權限分類五種：</font></font></p>
 <table>
@@ -849,8 +852,8 @@ svr.run();<font></font>
 </tr>
 </tbody>
 </table>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">權限制定</font></font><code>true</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">為允許訪問，為</font></font><code>false</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">為禁止訪問，為</font></font><code>array</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">為只允許指定的字段的訪問。</font></font><code>delete</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和</font></font><code>find</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">不接受</font></font><code>array</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，如果設置了</font></font><code>array</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">則視同為</font></font><code>true</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">如果指定的權限不存在，則匹配同主體下的</font></font><code>*</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">權限。</font><font style="vertical-align: inherit;">若都不存在，再一次查詢下一優先級的主體。</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">比如以上例子，如果需要設定</font></font><code>user</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">只允許讀取</font></font><code>title</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和</font></font><code>detail</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，其他人可以讀取  </font></font><code>title</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，則可以這樣設定：</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">權限制定  </font><font style="vertical-align: inherit;">和  </font><font style="vertical-align: inherit;">如果指定的權限不存在，則匹配同主體下的  </font><font style="vertical-align: inherit;">若都不存在，再一次查詢下一優先級的主體。</font></font><code>true</code><font style="vertical-align: inherit;"></font><code>false</code><font style="vertical-align: inherit;"></font><code>array</code><font style="vertical-align: inherit;"></font><code>delete</code><font style="vertical-align: inherit;"></font><code>find</code><font style="vertical-align: inherit;"></font><code>array</code><font style="vertical-align: inherit;"></font><code>array</code><font style="vertical-align: inherit;"></font><code>true</code><font style="vertical-align: inherit;"></font><code>*</code><font style="vertical-align: inherit;"></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">比如以上例子，如果需要設定 </font></font><code>user</code><font style="vertical-align: inherit;"></font><code>title</code><font style="vertical-align: inherit;"></font><code>detail</code><font style="vertical-align: inherit;"></font><code>title</code><font style="vertical-align: inherit;"></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
@@ -1018,21 +1021,20 @@ svr.run();<font></font>
   Person.hasMany(<span class="hljs-string">'pets'</span>, Pet);<font></font>
 };<font></font>
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">這個定義中，任何人都可以查閱個人信息的</font></font><code>name</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和</font></font><code>sex</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，並自由查閱和搜索他的</font></font><code>pets</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，用戶本人可以操作自己的所有數據，以及擁有自己寵物信息的全部權限。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">這個定義中，任何人都可以查閱個人信息的 </font></font><code>name</code><font style="vertical-align: inherit;"></font><code>sex</code><font style="vertical-align: inherit;"></font><code>pets</code><font style="vertical-align: inherit;"></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在檢查擴展對象的訪問權限時，會分別檢查對象權限和擴展對象權限。</font><font style="vertical-align: inherit;">比如以下請求：</font></font></p>
 <pre><code class="lang-sh"><div class="line-numbers">1</div>curl -X GET http://localhost/1.0/person/57fbbdb0a2400000/pets/57fbbdb0a2400007
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">會按照以下步驟檢查權限：</font></font></p>
 <ul>
 <li><code>pets[57fbbdb0a2400007]</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> =&gt; </font></font><code>OACL</code></li>
-<li><code>person[57fbbdb0a2400000]</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">=&gt; </font></font><code>OACL</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">=&gt; </font></font><code>extends</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">=&gt;</font></font><code>pets</code></li>
-<li><code>person</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">=&gt; </font></font><code>ACL</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">=&gt; </font></font><code>extends</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">=&gt;</font></font><code>pets</code></li>
+<li><code>person[57fbbdb0a2400000]</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">=&gt;</font></font><code>OACL</code><font style="vertical-align: inherit;"></font><code>extends</code><font style="vertical-align: inherit;"></font><code>pets</code></li>
+<li><code>person</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">=&gt;</font></font><code>ACL</code><font style="vertical-align: inherit;"></font><code>extends</code><font style="vertical-align: inherit;"></font><code>pets</code></li>
 <li><code>pets</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> =&gt; </font></font><code>ACL</code></li>
 </ul>
 <div name="Function" data-unique="Function"></div><h2 id="Function"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Function</font></font></h2>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">可以為Model 定義api，對於復雜數據操作，可以通過自定義Function 來完成。</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">絕大多數權限可以通過ACL 控製完成，不需要通過Function 來完成基於對象的權限。</font><font style="vertical-align: inherit;">Function 可用於完成基於數據的權限，比如根據審批狀態，賦予不同用戶組權限。</font><font style="vertical-align: inherit;">以及多項修改，比如需要修改多條數據庫記錄。</font></font></p>
 <div name="绘制数据模型" data-unique="绘制数据模型"></div><h2 id="绘制数据模型"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">繪製數據模型</font></font></h2>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在完成數據定義以後，可以使用</font></font><code>app.diagram()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">繪製數據模型的</font></font><code>svg</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">格式類圖，保存至文件會得到類似下面的圖像：
-</font></font><img src="./demo/diagram.svg" alt="diagram"></p>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org |</font></font><a href="../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持我們</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip754331"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip754331" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Click to return on the top page</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../js/common.js"></script><script type="text/javascript" src="../../../../js/docs.js"></script></body></html>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在完成數據定義以後，可以使用 </font></font><code>app.diagram()</code><font style="vertical-align: inherit;"></font><code>svg</code><font style="vertical-align: inherit;"></font><img src="./demo/diagram.svg" alt="diagram"></p>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org |</font></font><a href="../../../support.html"><font style="vertical-align: inherit;"></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip300654"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip300654" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Click to return on the top page</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../js/common.js"></script><script type="text/javascript" src="../../../../js/docs.js"></script></body></html>

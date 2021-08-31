@@ -41,6 +41,8 @@
 <li><a href=../../module/ifs/path.md.html class ="notranslate">path</a></li>
 <li><a href=../../module/ifs/path_posix.md.html class ="notranslate">path_posix</a></li>
 <li><a href=../../module/ifs/path_win32.md.html class ="notranslate">path_win32</a></li>
+<li><a href=../../module/ifs/perf_hooks.md.html class ="notranslate">perf_hooks</a></li>
+<li><a href=../../module/ifs/performance.md.html class ="notranslate">performance</a></li>
 <li><a href=../../module/ifs/process.md.html class ="notranslate">process</a></li>
 <li><a href=../../module/ifs/profiler.md.html class ="notranslate">profiler</a></li>
 <li><a href=../../module/ifs/punycode.md.html class ="notranslate">punycode</a></li>
@@ -55,6 +57,7 @@
 <li><a href=../../module/ifs/util.md.html class ="notranslate">util</a></li>
 <li><a href=../../module/ifs/uuid.md.html class ="notranslate">uuid</a></li>
 <li><a href=../../module/ifs/vm.md.html class ="notranslate">vm</a></li>
+<li><a href=../../module/ifs/worker_threads.md.html class ="notranslate">worker_threads</a></li>
 <li><a href=../../module/ifs/ws.md.html class ="notranslate">ws</a></li>
 <li><a href=../../module/ifs/xml.md.html class ="notranslate">xml</a></li>
 <li><a href=../../module/ifs/zip.md.html class ="notranslate">zip</a></li>
@@ -263,7 +266,7 @@ webview.wait();
 </code></pre>
 <p>上面的代码中，因为 window.close 本身也会触发 onclose 事件，所以需要增加一个开关变量，用于识别是否需要处理此次事件。</p>
 <h2 id="继承关系">继承关系</h2>
-<div class="dot notranslate"><svg version="1.1" baseProfile="full" width="215" height="970" viewbox="0 0 215 970" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events" style="font:normal normal 10pt Helvetica,sans-Serif, Helvetica, sans-serif;;stroke-linejoin:round;stroke-linecap:round">
+<div class="dot notranslate"><svg version="1.1" baseProfile="full" width="245" height="1016" viewbox="0 0 245 1016" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events" style="font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;;stroke-linejoin:round;stroke-linecap:round">
   <desc >
 #lineWidth: 1.5
 #font: Helvetica,sans-Serif
@@ -274,70 +277,71 @@ webview.wait();
 
 [&lt;class&gt;object|toString();toJSON()]
 [&lt;class&gt;EventEmitter|new EventEmitter()|EventEmitter|defaultMaxListeners|on();addListener();prependListener();once();prependOnceListener();off();removeListener();removeAllListeners();setMaxListeners();getMaxListeners();listeners();listenerCount();eventNames();emit()]
-[&lt;this&gt;WebView|type;dev;onopen;onload;onaddress;ontitle;onmove;onresize;onclosed;onmessage|loadUrl();getUrl();setHtml();reload();goBack();goForward();print();printToPDF();executeJavaScript();executeDevToolsMethod();close();postMessage()]
+[&lt;this&gt;WebView|type;dev;onopen;onload;onaddress;ontitle;onmove;onresize;onclosed;onmessage;ondownload|loadUrl();getUrl();setHtml();reload();goBack();goForward();print();printToPDF();executeJavaScript();executeDevToolsMethod();close();postMessage()]
 
 [object] &lt;:- [EventEmitter]
 [EventEmitter] &lt;:- [WebView]
 </desc>
-  <rect x="0" y="0" height="970" width="215" style="stroke:none; fill:transparent;"></rect>
-  <path d="M107.5 93 L107.5 113 L107.5 133 L107.5 133 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M112.8 106.3 L107.5 106.3 L102.2 106.3 L107.5 93 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M107.5 501 L107.5 521 L107.5 541 L107.5 541 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M112.8 514.3 L107.5 514.3 L102.2 514.3 L107.5 501 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <rect x="23" y="133" height="368" width="169" data-name="EventEmitter" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="107.5" y="154" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="EventEmitter">EventEmitter</text>
-  <text x="31" y="186" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">new EventEmitter()</text>
-  <text x="31" y="218" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">EventEmitter</text>
-  <text x="31" y="250" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">defaultMaxListeners</text>
-  <text x="31" y="282" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">on()</text>
-  <text x="31" y="298" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">addListener()</text>
-  <text x="31" y="314" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">prependListener()</text>
-  <text x="31" y="330" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">once()</text>
-  <text x="31" y="346" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">prependOnceListener()</text>
-  <text x="31" y="362" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">off()</text>
-  <text x="31" y="378" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">removeListener()</text>
-  <text x="31" y="394" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">removeAllListeners()</text>
-  <text x="31" y="410" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">setMaxListeners()</text>
-  <text x="31" y="426" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">getMaxListeners()</text>
-  <text x="31" y="442" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">listeners()</text>
-  <text x="31" y="458" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">listenerCount()</text>
-  <text x="31" y="474" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">eventNames()</text>
-  <text x="31" y="490" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">emit()</text>
-  <path d="M23 165 L192 165" data-name="EventEmitter" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M23 197 L192 197" data-name="EventEmitter" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M23 229 L192 229" data-name="EventEmitter" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M23 261 L192 261" data-name="EventEmitter" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <rect x="13" y="541" height="416" width="189" data-name="WebView" style="stroke:#33322E;fill:lightgray;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="107.5" y="562" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="WebView">WebView</text>
-  <text x="21" y="594" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="WebView">type</text>
-  <text x="21" y="610" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="WebView">dev</text>
-  <text x="21" y="626" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="WebView">onopen</text>
-  <text x="21" y="642" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="WebView">onload</text>
-  <text x="21" y="658" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="WebView">onaddress</text>
-  <text x="21" y="674" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="WebView">ontitle</text>
-  <text x="21" y="690" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="WebView">onmove</text>
-  <text x="21" y="706" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="WebView">onresize</text>
-  <text x="21" y="722" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="WebView">onclosed</text>
-  <text x="21" y="738" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="WebView">onmessage</text>
-  <text x="21" y="770" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="WebView">loadUrl()</text>
-  <text x="21" y="786" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="WebView">getUrl()</text>
-  <text x="21" y="802" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="WebView">setHtml()</text>
-  <text x="21" y="818" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="WebView">reload()</text>
-  <text x="21" y="834" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="WebView">goBack()</text>
-  <text x="21" y="850" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="WebView">goForward()</text>
-  <text x="21" y="866" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="WebView">print()</text>
-  <text x="21" y="882" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="WebView">printToPDF()</text>
-  <text x="21" y="898" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="WebView">executeJavaScript()</text>
-  <text x="21" y="914" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="WebView">executeDevToolsMethod()</text>
-  <text x="21" y="930" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="WebView">close()</text>
-  <text x="21" y="946" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="WebView">postMessage()</text>
-  <path d="M13 573 L202 573" data-name="WebView" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M13 749 L202 749" data-name="WebView" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <rect x="69" y="13" height="80" width="77" data-name="object" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="107.5" y="34" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="object">object</text>
-  <text x="77" y="66" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="object">toString()</text>
-  <text x="77" y="82" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="object">toJSON()</text>
-  <path d="M69 45 L146 45" data-name="object" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <rect x="0" y="0" height="1016" width="245" style="stroke:none; fill:transparent;"></rect>
+  <path d="M122.5 121.3 L122.5 128 L122.5 148 L122.5 148 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M127.8 121.3 L122.5 121.3 L117.2 121.3 L122.5 108 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M122.5 529.3 L122.5 536 L122.5 556 L122.5 556 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M127.8 529.3 L122.5 529.3 L117.2 529.3 L122.5 516 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <rect x="38" y="148" height="368" width="169" data-name="EventEmitter" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
+  <path d="M38 180 L207 180" data-name="EventEmitter" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M38 212 L207 212" data-name="EventEmitter" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M38 244 L207 244" data-name="EventEmitter" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M38 276 L207 276" data-name="EventEmitter" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <text x="122.5" y="169" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="EventEmitter">EventEmitter</text>
+  <text x="46" y="201" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">new EventEmitter()</text>
+  <text x="46" y="233" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">EventEmitter</text>
+  <text x="46" y="265" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">defaultMaxListeners</text>
+  <text x="46" y="297" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">on()</text>
+  <text x="46" y="313" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">addListener()</text>
+  <text x="46" y="329" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">prependListener()</text>
+  <text x="46" y="345" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">once()</text>
+  <text x="46" y="361" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">prependOnceListener()</text>
+  <text x="46" y="377" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">off()</text>
+  <text x="46" y="393" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">removeListener()</text>
+  <text x="46" y="409" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">removeAllListeners()</text>
+  <text x="46" y="425" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">setMaxListeners()</text>
+  <text x="46" y="441" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">getMaxListeners()</text>
+  <text x="46" y="457" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">listeners()</text>
+  <text x="46" y="473" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">listenerCount()</text>
+  <text x="46" y="489" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">eventNames()</text>
+  <text x="46" y="505" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">emit()</text>
+  <rect x="28" y="556" height="432" width="189" data-name="WebView" style="stroke:#33322E;fill:lightgray;stroke-dasharray:none;stroke-width:1.5;"></rect>
+  <path d="M28 588 L217 588" data-name="WebView" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M28 780 L217 780" data-name="WebView" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <text x="122.5" y="577" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="WebView">WebView</text>
+  <text x="36" y="609" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="WebView">type</text>
+  <text x="36" y="625" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="WebView">dev</text>
+  <text x="36" y="641" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="WebView">onopen</text>
+  <text x="36" y="657" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="WebView">onload</text>
+  <text x="36" y="673" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="WebView">onaddress</text>
+  <text x="36" y="689" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="WebView">ontitle</text>
+  <text x="36" y="705" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="WebView">onmove</text>
+  <text x="36" y="721" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="WebView">onresize</text>
+  <text x="36" y="737" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="WebView">onclosed</text>
+  <text x="36" y="753" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="WebView">onmessage</text>
+  <text x="36" y="769" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="WebView">ondownload</text>
+  <text x="36" y="801" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="WebView">loadUrl()</text>
+  <text x="36" y="817" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="WebView">getUrl()</text>
+  <text x="36" y="833" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="WebView">setHtml()</text>
+  <text x="36" y="849" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="WebView">reload()</text>
+  <text x="36" y="865" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="WebView">goBack()</text>
+  <text x="36" y="881" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="WebView">goForward()</text>
+  <text x="36" y="897" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="WebView">print()</text>
+  <text x="36" y="913" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="WebView">printToPDF()</text>
+  <text x="36" y="929" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="WebView">executeJavaScript()</text>
+  <text x="36" y="945" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="WebView">executeDevToolsMethod()</text>
+  <text x="36" y="961" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="WebView">close()</text>
+  <text x="36" y="977" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="WebView">postMessage()</text>
+  <rect x="84" y="28" height="80" width="77" data-name="object" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
+  <path d="M84 60 L161 60" data-name="object" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <text x="122.5" y="49" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="object">object</text>
+  <text x="92" y="81" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="object">toString()</text>
+  <text x="92" y="97" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="object">toJSON()</text>
 </svg></div>
 
 <h2 id="静态属性">静态属性</h2>
@@ -412,6 +416,11 @@ webview.onresize = <span class="hljs-function"><span class="hljs-params">evt</sp
 <h3 id="onmessage" class ="notranslate">onmessage</h3>
 <p><strong>Function, 查询和绑定接受 webview 内 postMessage 消息事件，相当于 on(&quot;message&quot;, func);</strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Function</span> WebView.onmessage;
+</code></pre>
+<hr>
+<h3 id="ondownload" class ="notranslate">ondownload</h3>
+<p><strong>Function, 查询和绑定接受 webview 内下载事务状态变化事件，相当于 on(&quot;download&quot;, func);</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Function</span> WebView.ondownload;
 </code></pre>
 <h2 id="成员函数">成员函数</h2>
 <h3 id="loadUrl" class ="notranslate">loadUrl</h3>
@@ -797,6 +806,21 @@ webview.onresize = <span class="hljs-function"><span class="hljs-params">evt</sp
 </code></pre>
 <p>调用参数:</p>
 <ul>
+<li><span class="notranslate">ev</span>: String, 指定事件的名称</li>
+</ul>
+<p>返回结果:</p>
+<ul>
+<li><span class="notranslate">Integer</span>, 返回指定事件的监听器数量</li>
+</ul>
+<hr>
+<p><strong>查询对象指定事件的监听器数量</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div>Integer WebView.listenerCount(Value o,
+    <span class="hljs-built_in">String</span> ev);
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li><span class="notranslate">o</span>: Value, 指定查询的对象</li>
 <li><span class="notranslate">ev</span>: String, 指定事件的名称</li>
 </ul>
 <p>返回结果:</p>

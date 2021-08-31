@@ -41,6 +41,8 @@
 <li><a href="../../manual/module/ifs/path.md.html" class="notranslate">path</a></li>
 <li><a href="../../manual/module/ifs/path_posix.md.html" class="notranslate">path_posix</a></li>
 <li><a href="../../manual/module/ifs/path_win32.md.html" class="notranslate">path_win32</a></li>
+<li><a href="../../manual/module/ifs/perf_hooks.md.html" class="notranslate">perf_hooks</a></li>
+<li><a href="../../manual/module/ifs/performance.md.html" class="notranslate">performance</a></li>
 <li><a href="../../manual/module/ifs/process.md.html" class="notranslate">process</a></li>
 <li><a href="../../manual/module/ifs/profiler.md.html" class="notranslate">profiler</a></li>
 <li><a href="../../manual/module/ifs/punycode.md.html" class="notranslate">punycode</a></li>
@@ -55,6 +57,7 @@
 <li><a href="../../manual/module/ifs/util.md.html" class="notranslate">util</a></li>
 <li><a href="../../manual/module/ifs/uuid.md.html" class="notranslate">uuid</a></li>
 <li><a href="../../manual/module/ifs/vm.md.html" class="notranslate">vm</a></li>
+<li><a href="../../manual/module/ifs/worker_threads.md.html" class="notranslate">worker_threads</a></li>
 <li><a href="../../manual/module/ifs/ws.md.html" class="notranslate">ws</a></li>
 <li><a href="../../manual/module/ifs/xml.md.html" class="notranslate">xml</a></li>
 <li><a href="../../manual/module/ifs/zip.md.html" class="notranslate">zip</a></li>
@@ -202,9 +205,7 @@
     Sinon.JS
 </font></font></h1>
 
-<p align="center"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
-    Standalone and test framework agnostic JavaScript test spies, stubs and mocks (pronounced "sigh-non", named after </font></font><a href="https://en.wikipedia.org/wiki/Sinon"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sinon, the warrior</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> ).
-</font></font></p>
+<p align="center"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Standalone and test framework agnostic JavaScript test spies, stubs and mocks (pronounced "sigh-non", named after</font></font><a href="https://en.wikipedia.org/wiki/Sinon"><font style="vertical-align: inherit;"></font></a><font style="vertical-align: inherit;"></font></p>
 
 <p align="center">
 <a href="https://www.npmjs.com/package/sinon"><img src="https://img.shields.io/npm/v/sinon.svg?style=flat" alt="npm version"></a>
@@ -223,13 +224,13 @@
 </p>
 
 <div name="Installation" data-unique="Installation"></div><h2 id="Installation"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Installation</font></font></h2>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">via </font></font><a href="https://github.com/npm/npm"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">npm</font></font></a></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">via</font></font><a href="https://github.com/npm/npm"><font style="vertical-align: inherit;"></font></a></p>
 <pre><code><div class="line-numbers">1</div>$ npm <span class="hljs-keyword">install</span> sinon
-</code></pre><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">or via sinon's browser builds available for download on the </font></font><a href="http://sinonjs.org/releases/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">homepage</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> . There are also </font></font><a href="http://sinonjs.org/releases#npm-cdns"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">npm based CDNs</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> one can use.</font></font></p>
+</code></pre><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">or via sinon's browser builds available for download on the</font></font><a href="http://sinonjs.org/releases/"><font style="vertical-align: inherit;"></font></a><font style="vertical-align: inherit;"></font><a href="http://sinonjs.org/releases#npm-cdns"><font style="vertical-align: inherit;"></font></a><font style="vertical-align: inherit;"></font></p>
 <div name="Usage" data-unique="Usage"></div><h2 id="Usage"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Usage</font></font></h2>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">See the </font></font><a href="http://sinonjs.org/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sinon project homepage</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> for documentation on usage.</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">If you have questions that are not covered by the documentation, you can </font></font><a href="https://stackoverflow.com/questions/tagged/sinon"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">check out the </font></font><code>sinon</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">tag on Stack Overflow</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> or drop by </font></font><a href="irc://irc.freenode.net:6667/sinon.js"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">#sinon.js on irc.freenode.net:6667</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> .</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">You can also search through the </font></font><a href="http://groups.google.com/group/sinonjs"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sinon.JS mailing list archives</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> .</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">See the</font></font><a href="http://sinonjs.org/"><font style="vertical-align: inherit;"></font></a><font style="vertical-align: inherit;"></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">If you have questions that are not covered by the documentation, you can</font></font><a href="https://stackoverflow.com/questions/tagged/sinon"><font style="vertical-align: inherit;"></font><code>sinon</code><font style="vertical-align: inherit;"></font></a><font style="vertical-align: inherit;"></font><a href="irc://irc.freenode.net:6667/sinon.js"><font style="vertical-align: inherit;"></font></a><font style="vertical-align: inherit;"></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">You can also search through the</font></font><a href="http://groups.google.com/group/sinonjs"><font style="vertical-align: inherit;"></font></a><font style="vertical-align: inherit;"></font></p>
 <div name="Goals" data-unique="Goals"></div><h2 id="Goals"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Goals</font></font></h2>
 <ul>
 <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">No global pollution</font></font></li>
@@ -242,7 +243,7 @@
 <div name="Contribute?" data-unique="Contribute?"></div><h2 id="Contribute?"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Contribute?</font></font></h2>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">See </font></font><a href="contributing.md.html" class="notranslate">CONTRIBUTING.md</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> for details on how you can contribute to Sinon.JS</font></font></p>
 <div name="Backers" data-unique="Backers"></div><h2 id="Backers"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Backers</font></font></h2>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Support us with a monthly donation and help us continue our activities. [ </font></font><a href="https://opencollective.com/sinon#backer"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Become a backer</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> ]</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Support us with a monthly donation and help us continue our activities. [</font></font><a href="https://opencollective.com/sinon#backer"><font style="vertical-align: inherit;"></font></a><font style="vertical-align: inherit;"></font></p>
 <p><a href="https://opencollective.com/sinon/backer/0/website" target="_blank"><img src="https://opencollective.com/sinon/backer/0/avatar.svg"></a>
 <a href="https://opencollective.com/sinon/backer/1/website" target="_blank"><img src="https://opencollective.com/sinon/backer/1/avatar.svg"></a>
 <a href="https://opencollective.com/sinon/backer/2/website" target="_blank"><img src="https://opencollective.com/sinon/backer/2/avatar.svg"></a>
@@ -274,7 +275,7 @@
 <a href="https://opencollective.com/sinon/backer/28/website" target="_blank"><img src="https://opencollective.com/sinon/backer/28/avatar.svg"></a>
 <a href="https://opencollective.com/sinon/backer/29/website" target="_blank"><img src="https://opencollective.com/sinon/backer/29/avatar.svg"></a></p>
 <div name="Sponsors" data-unique="Sponsors"></div><h2 id="Sponsors"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sponsors</font></font></h2>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Become a sponsor and get your logo on our README on GitHub with a link to your site. [ </font></font><a href="https://opencollective.com/sinon#sponsor"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Become a sponsor</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> ]</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Become a sponsor and get your logo on our README on GitHub with a link to your site. [</font></font><a href="https://opencollective.com/sinon#sponsor"><font style="vertical-align: inherit;"></font></a><font style="vertical-align: inherit;"></font></p>
 <p><a href="https://opencollective.com/sinon/sponsor/0/website" target="_blank"><img src="https://opencollective.com/sinon/sponsor/0/avatar.svg"></a>
 <a href="https://opencollective.com/sinon/sponsor/1/website" target="_blank"><img src="https://opencollective.com/sinon/sponsor/1/avatar.svg"></a>
 <a href="https://opencollective.com/sinon/sponsor/2/website" target="_blank"><img src="https://opencollective.com/sinon/sponsor/2/avatar.svg"></a>
@@ -306,5 +307,5 @@
 <a href="https://opencollective.com/sinon/sponsor/28/website" target="_blank"><img src="https://opencollective.com/sinon/sponsor/28/avatar.svg"></a>
 <a href="https://opencollective.com/sinon/sponsor/29/website" target="_blank"><img src="https://opencollective.com/sinon/sponsor/29/avatar.svg"></a></p>
 <div name="Licence" data-unique="Licence"></div><h2 id="Licence"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Licence</font></font></h2>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sinon.js was released under </font></font><a href="LICENSE"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">BSD-3</font></font></a></p>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org |</font></font><a href="../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持我們</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip512182"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip512182" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Click to return on the top page</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../js/common.js"></script><script type="text/javascript" src="../../../../js/docs.js"></script></body></html>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sinon.js was released under</font></font><a href="LICENSE"><font style="vertical-align: inherit;"></font></a></p>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org |</font></font><a href="../../../support.html"><font style="vertical-align: inherit;"></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip682176"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip682176" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Click to return on the top page</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../js/common.js"></script><script type="text/javascript" src="../../../../js/docs.js"></script></body></html>

@@ -41,6 +41,8 @@
 <li><a href=path.md.html class ="notranslate">path</a></li>
 <li><a href=path_posix.md.html class ="notranslate">path_posix</a></li>
 <li><a href=path_win32.md.html class ="notranslate">path_win32</a></li>
+<li><a href=perf_hooks.md.html class ="notranslate">perf_hooks</a></li>
+<li><a href=performance.md.html class ="notranslate">performance</a></li>
 <li><a href=process.md.html class ="notranslate">process</a></li>
 <li><a href=profiler.md.html class ="notranslate">profiler</a></li>
 <li><a href=punycode.md.html class ="notranslate">punycode</a></li>
@@ -55,6 +57,7 @@
 <li class="active"><a href=util.md.html class ="notranslate">util</a></li>
 <li><a href=uuid.md.html class ="notranslate">uuid</a></li>
 <li><a href=vm.md.html class ="notranslate">vm</a></li>
+<li><a href=worker_threads.md.html class ="notranslate">worker_threads</a></li>
 <li><a href=ws.md.html class ="notranslate">ws</a></li>
 <li><a href=xml.md.html class ="notranslate">xml</a></li>
 <li><a href=zip.md.html class ="notranslate">zip</a></li>
@@ -245,18 +248,31 @@
 <h3 id="inspect" class ="notranslate">inspect</h3>
 <p><strong>函数返回 obj 的字符串表示，主要用于调试。 附加的 options 可用于改变格式化字符串的某些方面。</strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">String</span> util.inspect(<span class="hljs-built_in">Object</span> obj,
+2</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">String</span> util.inspect(Value obj,
     <span class="hljs-built_in">Object</span> options = {});
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li><span class="notranslate">obj</span>: Object, 指定需要处理的对象</li>
+<li><span class="notranslate">obj</span>: Value, 指定需要处理的对象</li>
 <li><span class="notranslate">options</span>: Object, 指定格式控制选项</li>
 </ul>
 <p>返回结果:</p>
 <ul>
 <li><span class="notranslate">String</span>, 返回格式化后的字符串</li>
 </ul>
+<p>支持以下参数:</p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6</div>{
+    <span class="hljs-string">"colors"</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// 指定是否输出 ansi 作色字符串，缺省为 false</span>
+    <span class="hljs-string">"table"</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// 指定输出 table 格式，缺省为 false</span>
+    <span class="hljs-string">"encode_string"</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">// 指定表格中的字符串是否编码，缺省为 true</span>
+    <span class="hljs-string">"fields"</span>: [], <span class="hljs-comment">// 当 table 为 true 时指定显示字段</span>
+}
+</code></pre>
 <hr>
 <h3 id="deprecate" class ="notranslate">deprecate</h3>
 <p><strong>封装给定的函数，本函数仅为兼容，并不输出警告</strong></p>
@@ -626,6 +642,22 @@
 <p>返回结果:</p>
 <ul>
 <li><span class="notranslate">Boolean</span>, 如果是函数 <a href=../../object/ifs/buffer.md.html class ="notranslate">Buffer</a> 对象则返回 True</li>
+</ul>
+<hr>
+<h3 id="isDeepEqual" class ="notranslate">isDeepEqual</h3>
+<p><strong>测试数值深度等于预期值</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Boolean</span> util.isDeepEqual(Value actual,
+    Value expected);
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li><span class="notranslate">actual</span>: Value, 要测试的数值</li>
+<li><span class="notranslate">expected</span>: Value, 预期的数值</li>
+</ul>
+<p>返回结果:</p>
+<ul>
+<li><span class="notranslate">Boolean</span>, 如果深度相等则返回 True</li>
 </ul>
 <hr>
 <h3 id="has" class ="notranslate">has</h3>

@@ -1,4 +1,4 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../../../imgs/icon.png"><title>Objekt LruCache-JavaScript auf Glasfaser</title><link href="../../../../../css/common.css" rel="stylesheet"><link href="../../../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Navigation umschalten</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../../../index.html"><img src="../../../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../../../index.html">HOME</a></li><li><a href="../../../guide/readme.md.html">GUIDE</a></li><li><a href="../../module/readme.md.html">MODULE</a></li><li><a href="../readme.md.html">OBJECT</a></li><li><a href="../../../awesome/readme.md.html">AWESOME</a></li><li><a href="../../../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../../../docs/manual/object/ifs/lrucache.md.html">中文</a> <a href="../../../../../ca/docs/manual/object/ifs/lrucache.md.html">Catalan</a> <a href="../../../../../de/docs/manual/object/ifs/lrucache.md.html">Deutsch</a> <a href="../../../../../en/docs/manual/object/ifs/lrucache.md.html">English</a> <a href="../../../../../es/docs/manual/object/ifs/lrucache.md.html">Español</a> <a href="../../../../../fr/docs/manual/object/ifs/lrucache.md.html">Français</a> <a href="../../../../../gl/docs/manual/object/ifs/lrucache.md.html">Galego</a> <a href="../../../../../it/docs/manual/object/ifs/lrucache.md.html">Italiano</a> <a href="../../../../../ru/docs/manual/object/ifs/lrucache.md.html">Русский</a> <a href="../../../../../ja/docs/manual/object/ifs/lrucache.md.html">日本語</a> <a href="../../../../../ko/docs/manual/object/ifs/lrucache.md.html">한국어</a> <a href="../../../../../zh-tw/docs/manual/object/ifs/lrucache.md.html">繁體中文</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Objekt eingebautes Objekt </font></font></span><div class="search"><span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input type="text" class="searchbox ds-input" placeholder="Suche" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-label="Sucheingabe" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Avenir, &quot;Segoe UI&quot;, Arial, &quot;Hiragino Sans GB&quot;, 冬青黑, &quot;Microsoft YaHei&quot;, 微软雅黑, SimSun, 宋体, Helvetica, Tahoma, &quot;Arial sans-serif&quot;; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div class="ds-dataset-1"></div></span></span></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Zuhause</font></font></a></li><li><a href="../readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Eingebaute Objekte </font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Objekt-LruCache </font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Entwicklungsleitfaden </font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../../../imgs/icon.png"><title>Objekt LruCache-JavaScript auf Glasfaser</title><link href="../../../../../css/common.css" rel="stylesheet"><link href="../../../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Navigation umschalten</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../../../index.html"><img src="../../../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../../../index.html">HOME</a></li><li><a href="../../../guide/readme.md.html">GUIDE</a></li><li><a href="../../module/readme.md.html">MODULE</a></li><li><a href="../readme.md.html">OBJECT</a></li><li><a href="../../../awesome/readme.md.html">AWESOME</a></li><li><a href="../../../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../../../docs/manual/object/ifs/lrucache.md.html">中文</a> <a href="../../../../../ca/docs/manual/object/ifs/lrucache.md.html">Catalan</a> <a href="../../../../../de/docs/manual/object/ifs/lrucache.md.html">Deutsch</a> <a href="../../../../../en/docs/manual/object/ifs/lrucache.md.html">English</a> <a href="../../../../../es/docs/manual/object/ifs/lrucache.md.html">Español</a> <a href="../../../../../fr/docs/manual/object/ifs/lrucache.md.html">Français</a> <a href="../../../../../gl/docs/manual/object/ifs/lrucache.md.html">Galego</a> <a href="../../../../../it/docs/manual/object/ifs/lrucache.md.html">Italiano</a> <a href="../../../../../ru/docs/manual/object/ifs/lrucache.md.html">Русский</a> <a href="../../../../../ja/docs/manual/object/ifs/lrucache.md.html">日本語</a> <a href="../../../../../ko/docs/manual/object/ifs/lrucache.md.html">한국어</a> <a href="../../../../../zh-tw/docs/manual/object/ifs/lrucache.md.html">繁體中文</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Objekt eingebautes Objekt </font></font></span><div class="search"><span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input type="text" class="searchbox ds-input" placeholder="Suche" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-label="Sucheingabe" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Avenir, &quot;Segoe UI&quot;, Arial, &quot;Hiragino Sans GB&quot;, 冬青黑, &quot;Microsoft YaHei&quot;, 微软雅黑, SimSun, 宋体, Helvetica, Tahoma, &quot;Arial sans-serif&quot;; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div class="ds-dataset-1"></div></span></span></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Titelseite</font></font></a></li><li><a href="../readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Eingebaute Objekte </font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Objekt-LruCache </font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Entwicklungsleitfaden </font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
 <li><a href="../../../guide/about.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Was ist fibjs?</font></font></a></li>
 <li><a href="../../../guide/install.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Installations- und Betriebsumgebung</font></font></a></li>
 <li><a href="../../../guide/hello.md.html" class="notranslate">hello, world</a></li>
@@ -7,7 +7,7 @@
 <li><a href="../../../guide/desktop.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Desktop-Anwendungen schnell entwickeln</font></font></a></li>
 <li><a href="../../../guide/server-hot-update.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Hot-Update des Servermoduls</font></font></a></li>
 <li><a href="../../../guide/host-routes.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Domainnamen-Routing</font></font></a></li>
-<li><a href="../../../guide/x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Die Verwendung des X509-Zertifikats in fibjs</font></font></a></li>
+<li><a href="../../../guide/x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Verwendung des X509-Zertifikats in fibjs</font></font></a></li>
 <li><a href="../../../guide/contribute.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Natives Modul hinzufügen</font></font></a></li>
 </ul>
  </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_module" aria-controls="collapse_module"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Basismodul </font></font></a></h4></div><div id="collapse_module" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
@@ -41,6 +41,8 @@
 <li><a href="../../module/ifs/path.md.html" class="notranslate">path</a></li>
 <li><a href="../../module/ifs/path_posix.md.html" class="notranslate">path_posix</a></li>
 <li><a href="../../module/ifs/path_win32.md.html" class="notranslate">path_win32</a></li>
+<li><a href="../../module/ifs/perf_hooks.md.html" class="notranslate">perf_hooks</a></li>
+<li><a href="../../module/ifs/performance.md.html" class="notranslate">performance</a></li>
 <li><a href="../../module/ifs/process.md.html" class="notranslate">process</a></li>
 <li><a href="../../module/ifs/profiler.md.html" class="notranslate">profiler</a></li>
 <li><a href="../../module/ifs/punycode.md.html" class="notranslate">punycode</a></li>
@@ -55,6 +57,7 @@
 <li><a href="../../module/ifs/util.md.html" class="notranslate">util</a></li>
 <li><a href="../../module/ifs/uuid.md.html" class="notranslate">uuid</a></li>
 <li><a href="../../module/ifs/vm.md.html" class="notranslate">vm</a></li>
+<li><a href="../../module/ifs/worker_threads.md.html" class="notranslate">worker_threads</a></li>
 <li><a href="../../module/ifs/ws.md.html" class="notranslate">ws</a></li>
 <li><a href="../../module/ifs/xml.md.html" class="notranslate">xml</a></li>
 <li><a href="../../module/ifs/zip.md.html" class="notranslate">zip</a></li>
@@ -195,14 +198,14 @@
 <li><a href="../../../awesome/module/rakuten.md.html" class="notranslate">Rakuten</a></li>
 </ul>
  </div></div></div>  </div></div><div class="content"><div class="social-share share-component" data-sites="weibo,twitter" data-description="分享"></div> <div name="对象-LruCache" data-unique="对象-LruCache"></div><h1 id="对象-LruCache"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Objekt-LruCache</font></font></h1>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">LRU (zuletzt verwendet) Cache-Objekt</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">LRU-Cache-Objekt (zuletzt verwendet)</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">LruCache wird verwendet, um einen LRU-Cache zu verwalten, die Erstellungsmethode:</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">var</span> util = <span class="hljs-built_in">require</span>(<span class="hljs-string">"util"</span>);
 <span class="hljs-keyword">var</span> c = <span class="hljs-keyword">new</span> util.LruCache(<span class="hljs-number">10</span>, <span class="hljs-number">100</span>);
 </code></pre>
-<div name="继承关系" data-unique="继承关系"></div><h2 id="继承关系"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Erbe</font></font></h2>
-<div class="dot notranslate"><svg version="1.1" baseProfile="full" width="195" height="794" viewBox="0 0 195 794" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events" style="font:normal normal 10pt Helvetica,sans-Serif, Helvetica, sans-serif;;stroke-linejoin:round;stroke-linecap:round">
+<div name="继承关系" data-unique="继承关系"></div><h2 id="继承关系"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Nachlass</font></font></h2>
+<div class="dot notranslate"><svg version="1.1" baseProfile="full" width="225" height="824" viewBox="0 0 225 824" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events" style="font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;;stroke-linejoin:round;stroke-linecap:round">
   <desc>
 #lineWidth: 1.5
 #font: Helvetica,sans-Serif
@@ -218,54 +221,54 @@
 [object] &lt;:- [EventEmitter]
 [EventEmitter] &lt;:- [LruCache]
 </desc>
-  <rect x="0" y="0" height="794" width="195" style="stroke:none; fill:transparent;"></rect>
-  <path d="M97.5 93 L97.5 113 L97.5 133 L97.5 133 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M102.8 106.3 L97.5 106.3 L92.2 106.3 L97.5 93 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M97.5 501 L97.5 521 L97.5 541 L97.5 541 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M102.8 514.3 L97.5 514.3 L92.2 514.3 L97.5 501 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <rect x="13" y="133" height="368" width="169" data-name="EventEmitter" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="97.5" y="154" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="EventEmitter">EventEmitter</text>
-  <text x="21" y="186" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">new EventEmitter()</text>
-  <text x="21" y="218" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">EventEmitter</text>
-  <text x="21" y="250" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">defaultMaxListeners</text>
-  <text x="21" y="282" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">on()</text>
-  <text x="21" y="298" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">addListener()</text>
-  <text x="21" y="314" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">prependListener()</text>
-  <text x="21" y="330" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">once()</text>
-  <text x="21" y="346" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">prependOnceListener()</text>
-  <text x="21" y="362" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">off()</text>
-  <text x="21" y="378" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">removeListener()</text>
-  <text x="21" y="394" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">removeAllListeners()</text>
-  <text x="21" y="410" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">setMaxListeners()</text>
-  <text x="21" y="426" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">getMaxListeners()</text>
-  <text x="21" y="442" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">listeners()</text>
-  <text x="21" y="458" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">listenerCount()</text>
-  <text x="21" y="474" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">eventNames()</text>
-  <text x="21" y="490" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">emit()</text>
-  <path d="M13 165 L182 165" data-name="EventEmitter" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M13 197 L182 197" data-name="EventEmitter" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M13 229 L182 229" data-name="EventEmitter" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M13 261 L182 261" data-name="EventEmitter" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <rect x="37" y="541" height="240" width="121" data-name="LruCache" style="stroke:#33322E;fill:lightgray;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="97.5" y="562" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="LruCache">LruCache</text>
-  <text x="45" y="594" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="LruCache">new LruCache()</text>
-  <text x="45" y="626" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="LruCache">size</text>
-  <text x="45" y="642" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="LruCache">timeout</text>
-  <text x="45" y="658" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="LruCache">onexpire</text>
-  <text x="45" y="690" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="LruCache">clear()</text>
-  <text x="45" y="706" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="LruCache">has()</text>
-  <text x="45" y="722" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="LruCache">get()</text>
-  <text x="45" y="738" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="LruCache">set()</text>
-  <text x="45" y="754" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="LruCache">remove()</text>
-  <text x="45" y="770" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="LruCache">isEmpty()</text>
-  <path d="M37 573 L158 573" data-name="LruCache" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M37 605 L158 605" data-name="LruCache" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M37 669 L158 669" data-name="LruCache" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <rect x="59" y="13" height="80" width="77" data-name="object" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="97.5" y="34" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="object">object</text>
-  <text x="67" y="66" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="object">toString()</text>
-  <text x="67" y="82" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="object">toJSON()</text>
-  <path d="M59 45 L136 45" data-name="object" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <rect x="0" y="0" height="824" width="225" style="stroke:none; fill:transparent;"></rect>
+  <path d="M112.5 121.3 L112.5 128 L112.5 148 L112.5 148 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M117.8 121.3 L112.5 121.3 L107.2 121.3 L112.5 108 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M112.5 529.3 L112.5 536 L112.5 556 L112.5 556 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M117.8 529.3 L112.5 529.3 L107.2 529.3 L112.5 516 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <rect x="28" y="148" height="368" width="169" data-name="EventEmitter" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
+  <path d="M28 180 L197 180" data-name="EventEmitter" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M28 212 L197 212" data-name="EventEmitter" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M28 244 L197 244" data-name="EventEmitter" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M28 276 L197 276" data-name="EventEmitter" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <text x="112.5" y="169" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="EventEmitter">EventEmitter</text>
+  <text x="36" y="201" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">new EventEmitter()</text>
+  <text x="36" y="233" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">EventEmitter</text>
+  <text x="36" y="265" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">defaultMaxListeners</text>
+  <text x="36" y="297" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">on()</text>
+  <text x="36" y="313" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">addListener()</text>
+  <text x="36" y="329" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">prependListener()</text>
+  <text x="36" y="345" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">once()</text>
+  <text x="36" y="361" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">prependOnceListener()</text>
+  <text x="36" y="377" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">off()</text>
+  <text x="36" y="393" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">removeListener()</text>
+  <text x="36" y="409" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">removeAllListeners()</text>
+  <text x="36" y="425" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">setMaxListeners()</text>
+  <text x="36" y="441" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">getMaxListeners()</text>
+  <text x="36" y="457" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">listeners()</text>
+  <text x="36" y="473" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">listenerCount()</text>
+  <text x="36" y="489" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">eventNames()</text>
+  <text x="36" y="505" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="EventEmitter">emit()</text>
+  <rect x="52" y="556" height="240" width="121" data-name="LruCache" style="stroke:#33322E;fill:lightgray;stroke-dasharray:none;stroke-width:1.5;"></rect>
+  <path d="M52 588 L173 588" data-name="LruCache" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M52 620 L173 620" data-name="LruCache" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M52 684 L173 684" data-name="LruCache" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <text x="112.5" y="577" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="LruCache">LruCache</text>
+  <text x="60" y="609" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="LruCache">new LruCache()</text>
+  <text x="60" y="641" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="LruCache">size</text>
+  <text x="60" y="657" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="LruCache">timeout</text>
+  <text x="60" y="673" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="LruCache">onexpire</text>
+  <text x="60" y="705" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="LruCache">clear()</text>
+  <text x="60" y="721" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="LruCache">has()</text>
+  <text x="60" y="737" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="LruCache">get()</text>
+  <text x="60" y="753" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="LruCache">set()</text>
+  <text x="60" y="769" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="LruCache">remove()</text>
+  <text x="60" y="785" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="LruCache">isEmpty()</text>
+  <rect x="74" y="28" height="80" width="77" data-name="object" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
+  <path d="M74 60 L151 60" data-name="object" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <text x="112.5" y="49" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="object">object</text>
+  <text x="82" y="81" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="object">toString()</text>
+  <text x="82" y="97" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="object">toJSON()</text>
 </svg></div>
 
 <div name="构造函数" data-unique="构造函数"></div><h2 id="构造函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Konstrukteur</font></font></h2>
@@ -329,7 +332,7 @@
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ergebnis zurückgeben:</font></font></p>
 <ul>
-<li><span class="notranslate">Value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Gibt den Wert zurück, der dem Schlüsselwert entspricht, wenn er nicht existiert, gibt undefined</font></font></li>
+<li><span class="notranslate">Value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Gibt den Wert zurück, der dem Schlüsselwert entspricht, wenn er nicht existiert, gibt undefined zurück</font></font></li>
 </ul>
 <hr>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Fragen Sie den Wert des angegebenen Schlüsselwerts ab, wenn er nicht existiert oder abläuft, rufen Sie die Callback-Funktion auf, um die Daten zu aktualisieren</font></font></strong></p>
@@ -373,7 +376,7 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Aufrufparameter:</font></font></p>
 <ul>
-<li><span class="notranslate">name</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, geben Sie den zu löschenden Schlüssel an</font></font></li>
+<li><span class="notranslate">name</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, geben Sie den zu löschenden Schlüsselwert an</font></font></li>
 </ul>
 <hr>
 <div name="isEmpty" data-unique="isEmpty"></div><h3 id="isEmpty" class="notranslate">isEmpty</h3>
@@ -386,7 +389,7 @@
 </ul>
 <hr>
 <div name="on" data-unique="on"></div><h3 id="on" class="notranslate">on</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Binden Sie einen Ereignishandler an das Objekt the</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Binden Sie einen Ereignishandler an das Objekt</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-built_in">Object</span> LruCache.on(<span class="hljs-built_in">String</span> ev,
     <span class="hljs-built_in">Function</span> func);
@@ -401,12 +404,12 @@
 <li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Geben Sie das Ereignisobjekt selbst zurück, was für Kettenaufrufe praktisch ist</font></font></li>
 </ul>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Binden Sie einen Ereignishandler an das Objekt the</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Binden Sie einen Ereignishandler an das Objekt</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> LruCache.on(<span class="hljs-built_in">Object</span> map);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Aufrufparameter:</font></font></p>
 <ul>
-<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Objekt, geben Sie die Ereigniszuordnungsbeziehung an, der Name der Objekteigenschaft wird als Ereignisname verwendet und der Eigenschaftswert wird als Ereignisverarbeitungsfunktion verwendet</font></font></li>
+<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Objekt, geben Sie die Ereigniszuordnungsbeziehung an, der Objekteigenschaftsname wird als Ereignisname verwendet und der Eigenschaftswert wird als Ereignisverarbeitungsfunktion verwendet</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ergebnis zurückgeben:</font></font></p>
 <ul>
@@ -414,7 +417,7 @@
 </ul>
 <hr>
 <div name="addListener" data-unique="addListener"></div><h3 id="addListener" class="notranslate">addListener</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Binden Sie einen Ereignishandler an das Objekt the</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Binden Sie einen Ereignishandler an das Objekt</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-built_in">Object</span> LruCache.addListener(<span class="hljs-built_in">String</span> ev,
     <span class="hljs-built_in">Function</span> func);
@@ -429,12 +432,12 @@
 <li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Geben Sie das Ereignisobjekt selbst zurück, was für Kettenaufrufe praktisch ist</font></font></li>
 </ul>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Binden Sie einen Ereignishandler an das Objekt the</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Binden Sie einen Ereignishandler an das Objekt</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> LruCache.addListener(<span class="hljs-built_in">Object</span> map);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Aufrufparameter:</font></font></p>
 <ul>
-<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Objekt, geben Sie die Ereigniszuordnungsbeziehung an, der Name der Objekteigenschaft wird als Ereignisname verwendet und der Eigenschaftswert wird als Ereignisverarbeitungsfunktion verwendet</font></font></li>
+<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Objekt, geben Sie die Ereigniszuordnungsbeziehung an, der Objekteigenschaftsname wird als Ereignisname verwendet und der Eigenschaftswert wird als Ereignisverarbeitungsfunktion verwendet</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ergebnis zurückgeben:</font></font></p>
 <ul>
@@ -462,7 +465,7 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Aufrufparameter:</font></font></p>
 <ul>
-<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Objekt, geben Sie die Ereigniszuordnungsbeziehung an, der Name der Objekteigenschaft wird als Ereignisname verwendet und der Eigenschaftswert wird als Ereignisverarbeitungsfunktion verwendet</font></font></li>
+<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Objekt, geben Sie die Ereigniszuordnungsbeziehung an, der Objekteigenschaftsname wird als Ereignisname verwendet und der Eigenschaftswert wird als Ereignisverarbeitungsfunktion verwendet</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ergebnis zurückgeben:</font></font></p>
 <ul>
@@ -490,7 +493,7 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Aufrufparameter:</font></font></p>
 <ul>
-<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Objekt, geben Sie die Ereigniszuordnungsbeziehung an, der Name der Objekteigenschaft wird als Ereignisname verwendet und der Eigenschaftswert wird als Ereignisverarbeitungsfunktion verwendet</font></font></li>
+<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Objekt, geben Sie die Ereigniszuordnungsbeziehung an, der Objekteigenschaftsname wird als Ereignisname verwendet und der Eigenschaftswert wird als Ereignisverarbeitungsfunktion verwendet</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ergebnis zurückgeben:</font></font></p>
 <ul>
@@ -518,7 +521,7 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Aufrufparameter:</font></font></p>
 <ul>
-<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Objekt, geben Sie die Ereigniszuordnungsbeziehung an, der Name der Objekteigenschaft wird als Ereignisname verwendet und der Eigenschaftswert wird als Ereignisverarbeitungsfunktion verwendet</font></font></li>
+<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Objekt, geben Sie die Ereigniszuordnungsbeziehung an, der Objekteigenschaftsname wird als Ereignisname verwendet und der Eigenschaftswert wird als Ereignisverarbeitungsfunktion verwendet</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ergebnis zurückgeben:</font></font></p>
 <ul>
@@ -674,6 +677,21 @@
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Gibt die Anzahl der Listener für das angegebene Ereignis zurück</font></font></li>
 </ul>
 <hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Die Anzahl der Listener für das angegebene Ereignis des Abfrageobjekts</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div>Integer LruCache.listenerCount(Value o,
+    <span class="hljs-built_in">String</span> ev);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Aufrufparameter:</font></font></p>
+<ul>
+<li><span class="notranslate">o</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Wert, spezifizieren Sie das Objekt der Abfrage</font></font></li>
+<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, geben Sie den Namen des Ereignisses an</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ergebnis zurückgeben:</font></font></p>
+<ul>
+<li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Gibt die Anzahl der Listener für das angegebene Ereignis zurück</font></font></li>
+</ul>
+<hr>
 <div name="eventNames" data-unique="eventNames"></div><h3 id="eventNames" class="notranslate">eventNames</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Abfrage des Ereignisnamens des Listeners</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Array</span> LruCache.eventNames();
@@ -696,7 +714,7 @@
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ergebnis zurückgeben:</font></font></p>
 <ul>
-<li><span class="notranslate">Boolean</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Rückkehr zum Ereignis-Trigger-Zustand, true zurückgeben, wenn ein Antwortereignis vorliegt, ansonsten false zurückgeben</font></font></li>
+<li><span class="notranslate">Boolean</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Rückkehr zum Ereignis-Trigger-Zustand, true zurückgeben, wenn ein Antwortereignis vorliegt, andernfalls false zurückgeben</font></font></li>
 </ul>
 <hr>
 <div name="toString" data-unique="toString"></div><h3 id="toString" class="notranslate">toString</h3>
@@ -720,4 +738,4 @@
 <ul>
 <li><span class="notranslate">Value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Gibt einen Wert zurück, der JSON serialisierbar enthält</font></font></li>
 </ul>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org | </font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Unterstützen Sie uns</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip736600"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip736600" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Klicken Sie, um zur Startseite zurückzukehren</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org | </font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Unterstützen Sie uns</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip442535"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip442535" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Klicken Sie, um zur Startseite zurückzukehren</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>

@@ -17,7 +17,7 @@ var k = new crypto.X509Req();
 #.class: fill=white
 
 [<class>object|toString();toJSON()]
-[<this>X509Req|new X509Req()|subject;publicKey|load();loadFile();exportPem();exportDer();sign()]
+[<this>X509Req|new X509Req()|subject;publicKey;sig_md;sig_pk|load();loadFile();exportPem();exportDer();sign()]
 
 [object] <:- [X509Req]
 ```
@@ -80,6 +80,22 @@ readonly String X509Req.subject;
 
 ```JavaScript
 readonly PKey X509Req.publicKey;
+```
+
+--------------------------
+### sig_md
+**Integer, 获取证书的摘要算法**
+
+```JavaScript
+readonly Integer X509Req.sig_md;
+```
+
+--------------------------
+### sig_pk
+**Integer, 获取证书的签名算法**
+
+```JavaScript
+readonly Integer X509Req.sig_pk;
 ```
 
 ## 成员函数

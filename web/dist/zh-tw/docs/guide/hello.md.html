@@ -41,6 +41,8 @@
 <li><a href="../manual/module/ifs/path.md.html" class="notranslate">path</a></li>
 <li><a href="../manual/module/ifs/path_posix.md.html" class="notranslate">path_posix</a></li>
 <li><a href="../manual/module/ifs/path_win32.md.html" class="notranslate">path_win32</a></li>
+<li><a href="../manual/module/ifs/perf_hooks.md.html" class="notranslate">perf_hooks</a></li>
+<li><a href="../manual/module/ifs/performance.md.html" class="notranslate">performance</a></li>
 <li><a href="../manual/module/ifs/process.md.html" class="notranslate">process</a></li>
 <li><a href="../manual/module/ifs/profiler.md.html" class="notranslate">profiler</a></li>
 <li><a href="../manual/module/ifs/punycode.md.html" class="notranslate">punycode</a></li>
@@ -55,6 +57,7 @@
 <li><a href="../manual/module/ifs/util.md.html" class="notranslate">util</a></li>
 <li><a href="../manual/module/ifs/uuid.md.html" class="notranslate">uuid</a></li>
 <li><a href="../manual/module/ifs/vm.md.html" class="notranslate">vm</a></li>
+<li><a href="../manual/module/ifs/worker_threads.md.html" class="notranslate">worker_threads</a></li>
 <li><a href="../manual/module/ifs/ws.md.html" class="notranslate">ws</a></li>
 <li><a href="../manual/module/ifs/xml.md.html" class="notranslate">xml</a></li>
 <li><a href="../manual/module/ifs/zip.md.html" class="notranslate">zip</a></li>
@@ -198,7 +201,7 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">首先，你需要成功在系統中安裝了fibjs。</font><font style="vertical-align: inherit;">依照慣例，我們從最簡單的"hello, world" 開始我們的第一行fibjs 程序：</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">console</span>.log(<span class="hljs-string">'hello, world'</span>);
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">保存文件</font></font><code>main.js</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">後，在命令行輸入</font></font><code>fibjs main.js</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，便可以執行這段代碼。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">保存文件 </font></font><code>main.js</code><font style="vertical-align: inherit;"></font><code>fibjs main.js</code><font style="vertical-align: inherit;"></font></p>
 <div name="第一个-hello-服务器" data-unique="第一个-hello-服务器"></div><h2 id="第一个-hello-服务器"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">第一個hello 服務器</font></font></h2>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs 作為後端開發框架，內置了一個相當強大的應用服務器，我們可以十分方便地迅速搭建起一個web server。</font><font style="vertical-align: inherit;">接下來我們將建立第一個hello 服務器：</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
@@ -217,9 +220,9 @@ svr.start();<font></font>
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">運行後，在瀏覽器內輸入：</font></font></p>
 <pre><code><div class="line-numbers">1</div><span class="hljs-symbol">http:</span><span class="hljs-comment">//127.0.0.1:8080/</span>
-</code></pre><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">你可以看到我們第一個hello服務器的輸出</font></font><code>hello, world</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font></p>
+</code></pre><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">你可以看到我們第一個hello 服務器的輸出</font></font><code>hello, world</code><font style="vertical-align: inherit;"></font></p>
 <div name="聪明一些" data-unique="聪明一些"></div><h2 id="聪明一些"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">聰明一些</font></font></h2>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">第一個hello服務器比較笨，無論你輸入什麼地址，它都只會返回</font></font><code>hello, world</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">接下來我們來讓它變得聰明一些：</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">第一個hello 服務器比較笨，無論你輸入什麼地址，它都只會返回 </font><font style="vertical-align: inherit;">接下來我們來讓它變得聰明一些：</font></font><code>hello, world</code><font style="vertical-align: inherit;"></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
@@ -244,9 +247,9 @@ svr.start();<font></font>
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">運行後，在瀏覽器地址欄內輸入：</font></font></p>
 <pre><code><div class="line-numbers">1</div><span class="hljs-symbol">http:</span><span class="hljs-comment">//127.0.0.1:8080/fibjs</span>
-</code></pre><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">你可以看到服務器的輸出內容變成了</font></font><code>hello, fibjs</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，當你修改地址欄的內容，服務器的輸出也會跟著發生變化。</font></font></p>
+</code></pre><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">你可以看到服務器的輸出內容變成了</font></font><code>hello, fibjs</code><font style="vertical-align: inherit;"></font></p>
 <div name="能者多劳，支持静态网站" data-unique="能者多劳，支持静态网站"></div><h2 id="能者多劳，支持静态网站"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">能者多勞，支持靜態網站</font></font></h2>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">接下來，我們讓服務器多做一些事情，我們希望服務器能夠支持靜態文件瀏覽，同時也可以輸出</font></font><code>hello, world</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，我們設定響應</font></font><code>hello, fibjs</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的地址為：</font></font><code>/hello/fibjs</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">接下來，我們讓服務器多做一些事情，我們希望服務器能夠支持靜態文件瀏覽，同時也可以輸出</font></font><code>hello, world</code><font style="vertical-align: inherit;"></font><code>hello, fibjs</code><font style="vertical-align: inherit;"></font><code>/hello/fibjs</code><font style="vertical-align: inherit;"></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
@@ -273,10 +276,10 @@ svr.start();<font></font>
 <font></font>
 svr.start();<font></font>
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">你需要創建一個目錄</font></font><code>web</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，並且在其中存放一些文件，比如下載一份fibjs文檔放在裡面做為測試。</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">運行後，我們訪問</font></font><code>http://127.0.0.1:8080/hello/fibjs</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，依舊可以看到</font></font><code>hello, fibjs</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，而訪問其它地址，則會看到靜態文件。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">你需要創建一個目錄</font></font><code>web</code><font style="vertical-align: inherit;"></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">運行後，我們訪問</font></font><code>http://127.0.0.1:8080/hello/fibjs</code><font style="vertical-align: inherit;"></font><code>hello, fibjs</code><font style="vertical-align: inherit;"></font></p>
 <div name="增加模块解耦能力" data-unique="增加模块解耦能力"></div><h2 id="增加模块解耦能力"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">增加模塊解耦能力</font></font></h2>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">接下來，我們來讓服務器更複雜一些。</font><font style="vertical-align: inherit;">我們有一組hello服務，完成我們定義的業務請求。</font><font style="vertical-align: inherit;">這組服務的路徑由主服務根據需求指定。</font><font style="vertical-align: inherit;">下面這個例子中，</font></font><code>hello</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和</font></font><code>bonjour</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">都會指向hello的服務。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">接下來，我們來讓服務器更複雜一些。</font><font style="vertical-align: inherit;">我們有一組hello 服務，完成我們定義的業務請求。</font><font style="vertical-align: inherit;">這組服務的路徑由主服務根據需求指定。</font><font style="vertical-align: inherit;">下面這個例子中，</font></font><code>hello</code><font style="vertical-align: inherit;"></font><code>bonjour</code><font style="vertical-align: inherit;"></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
@@ -319,8 +322,8 @@ svr.start();<font></font>
 <font></font>
 svr.start();<font></font>
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">通過這種方式，我們可以很方便地創建出完全解耦的模塊，然後使用主程序組裝成我們需要的接口。</font><font style="vertical-align: inherit;">這在api版本管理中格外方便，比如從</font></font><code>/v1/hello/fibjs</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">修改為</font></font><code>/v2/hello/fibjs</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，模塊本身不需要做任何變動，僅僅在入口處修改即可。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">通過這種方式，我們可以很方便地創建出完全解耦的模塊，然後使用主程序組裝成我們需要的接口。</font><font style="vertical-align: inherit;">這在api 版本管理中格外方便，比如從 </font></font><code>/v1/hello/fibjs</code><font style="vertical-align: inherit;"></font><code>/v2/hello/fibjs</code><font style="vertical-align: inherit;"></font></p>
 <div name="小结" data-unique="小结"></div><h2 id="小结"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">小結</font></font></h2>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">通過這個小節，你已經可以開始自己的fibjs 服務器項目了。</font><font style="vertical-align: inherit;">接下來，我們會在更多的細分領域介紹fibjs 的開發方法。</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">👉 【</font></font><a href="test.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">美好生活從測試開始</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">】</font></font></p>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org |</font></font><a href="../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持我們</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip60152"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip60152" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Click to return on the top page</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../js/common.js"></script><script type="text/javascript" src="../../../js/docs.js"></script></body></html>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">👉 【</font></font><a href="test.md.html"><font style="vertical-align: inherit;"></font></a><font style="vertical-align: inherit;"></font></p>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org |</font></font><a href="../../support.html"><font style="vertical-align: inherit;"></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip314245"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip314245" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Click to return on the top page</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../js/common.js"></script><script type="text/javascript" src="../../../js/docs.js"></script></body></html>

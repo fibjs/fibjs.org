@@ -159,6 +159,23 @@ static Digest hash.sm3(Buffer data = NULL);
 * [Digest](../../object/ifs/Digest.md), 返回构造的信息摘要对象
 
 --------------------------
+**创建一个 SM3 信息摘要运算对象并进行预处理**
+
+```JavaScript
+static Digest hash.sm3(PKey pubKey,
+    String id,
+    Buffer data = NULL);
+```
+
+调用参数:
+* pubKey: [PKey](../../object/ifs/PKey.md), 签名公钥
+* id: String, 签名 ID
+* data: [Buffer](../../object/ifs/Buffer.md), 创建同时更新的二进制数据，缺省为 null，不更新数据
+
+返回结果:
+* [Digest](../../object/ifs/Digest.md), 返回构造的信息摘要对象
+
+--------------------------
 ### hmac
 **根据指定的算法标识创建一个信息摘要签名运算对象**
 
@@ -330,6 +347,25 @@ static Digest hash.hmac_sm3(Buffer key,
 ```
 
 调用参数:
+* key: [Buffer](../../object/ifs/Buffer.md), 二进制签名密钥
+* data: [Buffer](../../object/ifs/Buffer.md), 创建同时更新的二进制数据，缺省为 null，不更新数据
+
+返回结果:
+* [Digest](../../object/ifs/Digest.md), 返回构造的信息摘要对象
+
+--------------------------
+**创建一个 SM3 信息摘要签名运算对象并进行预处理**
+
+```JavaScript
+static Digest hash.hmac_sm3(PKey pubKey,
+    String id,
+    Buffer key,
+    Buffer data = NULL);
+```
+
+调用参数:
+* pubKey: [PKey](../../object/ifs/PKey.md), 签名公钥
+* id: String, 签名 ID
 * key: [Buffer](../../object/ifs/Buffer.md), 二进制签名密钥
 * data: [Buffer](../../object/ifs/Buffer.md), 创建同时更新的二进制数据，缺省为 null，不更新数据
 

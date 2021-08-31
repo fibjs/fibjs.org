@@ -41,6 +41,8 @@
 <li><a href=../../module/ifs/path.md.html class ="notranslate">path</a></li>
 <li><a href=../../module/ifs/path_posix.md.html class ="notranslate">path_posix</a></li>
 <li><a href=../../module/ifs/path_win32.md.html class ="notranslate">path_win32</a></li>
+<li><a href=../../module/ifs/perf_hooks.md.html class ="notranslate">perf_hooks</a></li>
+<li><a href=../../module/ifs/performance.md.html class ="notranslate">performance</a></li>
 <li><a href=../../module/ifs/process.md.html class ="notranslate">process</a></li>
 <li><a href=../../module/ifs/profiler.md.html class ="notranslate">profiler</a></li>
 <li><a href=../../module/ifs/punycode.md.html class ="notranslate">punycode</a></li>
@@ -55,6 +57,7 @@
 <li><a href=../../module/ifs/util.md.html class ="notranslate">util</a></li>
 <li><a href=../../module/ifs/uuid.md.html class ="notranslate">uuid</a></li>
 <li><a href=../../module/ifs/vm.md.html class ="notranslate">vm</a></li>
+<li><a href=../../module/ifs/worker_threads.md.html class ="notranslate">worker_threads</a></li>
 <li><a href=../../module/ifs/ws.md.html class ="notranslate">ws</a></li>
 <li><a href=../../module/ifs/xml.md.html class ="notranslate">xml</a></li>
 <li><a href=../../module/ifs/zip.md.html class ="notranslate">zip</a></li>
@@ -197,7 +200,7 @@
  </div></div></div>  </div></div><div class=content><div class=social-share data-sites=weibo,twitter data-description=分享></div> <h1 id="对象-SeekableStream">对象 SeekableStream</h1>
 <p>可移动当前指针的流对象接口</p>
 <h2 id="继承关系">继承关系</h2>
-<div class="dot notranslate"><svg version="1.1" baseProfile="full" width="366" height="594" viewbox="0 0 366 594" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events" style="font:bold normal 10pt Helvetica,sans-Serif, Helvetica, sans-serif;;stroke-linejoin:round;stroke-linecap:round">
+<div class="dot notranslate"><svg version="1.1" baseProfile="full" width="396" height="624" viewbox="0 0 396 624" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events" style="font:bold  10pt Helvetica,sans-Serif, Helvetica, sans-serif;;stroke-linejoin:round;stroke-linecap:round">
   <desc >
 #lineWidth: 1.5
 #font: Helvetica,sans-Serif
@@ -219,49 +222,49 @@
 [SeekableStream] &lt;:- [MemoryStream]
 [SeekableStream] &lt;:- [RangeStream]
 </desc>
-  <rect x="0" y="0" height="594" width="366" style="stroke:none; fill:transparent;"></rect>
-  <path d="M149.5 93 L149.5 113 L149.5 133 L149.5 133 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M154.8 106.3 L149.5 106.3 L144.2 106.3 L149.5 93 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M149.5 293 L149.5 313 L149.5 333 L149.5 333 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M154.8 306.3 L149.5 306.3 L144.2 306.3 L149.5 293 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M87.5 478.2 L32.5 529 L32.5 549 L32.5 549 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M81.3 491.2 L77.7 487.3 L74.1 483.4 L87.5 478.2 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M149.5 509 L149.5 529 L149.5 549 L149.5 549 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M154.8 522.3 L149.5 522.3 L144.2 522.3 L149.5 509 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M211.5 465.5 L300 529 L300 549 L300 549 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M225.4 468.9 L222.3 473.3 L219.2 477.6 L211.5 465.5 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <rect x="113" y="133" height="160" width="74" data-name="Stream" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="150" y="154" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="Stream">Stream</text>
-  <text x="121" y="186" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Stream">fd</text>
-  <text x="121" y="218" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Stream">read()</text>
-  <text x="121" y="234" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Stream">write()</text>
-  <text x="121" y="250" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Stream">flush()</text>
-  <text x="121" y="266" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Stream">close()</text>
-  <text x="121" y="282" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Stream">copyTo()</text>
-  <path d="M113 165 L187 165" data-name="Stream" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M113 197 L187 197" data-name="Stream" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <rect x="111" y="13" height="80" width="77" data-name="object" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="149.5" y="34" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="object">object</text>
-  <text x="119" y="66" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="object">toString()</text>
-  <text x="119" y="82" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="object">toJSON()</text>
-  <path d="M111 45 L188 45" data-name="object" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <rect x="88" y="333" height="176" width="124" data-name="SeekableStream" style="stroke:#33322E;fill:lightgray;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="150" y="354" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="SeekableStream">SeekableStream</text>
-  <text x="96" y="386" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="SeekableStream">seek()</text>
-  <text x="96" y="402" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="SeekableStream">tell()</text>
-  <text x="96" y="418" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="SeekableStream">rewind()</text>
-  <text x="96" y="434" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="SeekableStream">size()</text>
-  <text x="96" y="450" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="SeekableStream">readAll()</text>
-  <text x="96" y="466" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="SeekableStream">truncate()</text>
-  <text x="96" y="482" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="SeekableStream">eof()</text>
-  <text x="96" y="498" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="SeekableStream">stat()</text>
-  <path d="M88 365 L212 365" data-name="SeekableStream" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <rect x="13" y="549" height="32" width="39" data-name="File" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="32.5" y="570" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="File">File</text>
-  <rect x="92" y="549" height="32" width="115" data-name="MemoryStream" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="149.5" y="570" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="MemoryStream">MemoryStream</text>
-  <rect x="247" y="549" height="32" width="106" data-name="RangeStream" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="300" y="570" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="RangeStream">RangeStream</text>
+  <rect x="0" y="0" height="624" width="396" style="stroke:none; fill:transparent;"></rect>
+  <path d="M164.5 121.3 L164.5 128 L164.5 148 L164.5 148 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M169.8 121.3 L164.5 121.3 L159.2 121.3 L164.5 108 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M164.5 321.3 L164.5 328 L164.5 348 L164.5 348 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M169.8 321.3 L164.5 321.3 L159.2 321.3 L164.5 308 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M92.7 502.3 L47.5 544 L47.5 564 L47.5 564 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M96.3 506.2 L92.7 502.3 L89.1 498.4 L102.5 493.2 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M164.5 537.3 L164.5 544 L164.5 564 L164.5 564 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M169.8 537.3 L164.5 537.3 L159.2 537.3 L164.5 524 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M237.3 488.3 L315 544 L315 564 L315 564 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M240.4 483.9 L237.3 488.3 L234.2 492.6 L226.5 480.5 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <rect x="128" y="148" height="160" width="74" data-name="Stream" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
+  <path d="M128 180 L202 180" data-name="Stream" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M128 212 L202 212" data-name="Stream" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <text x="165" y="169" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="Stream">Stream</text>
+  <text x="136" y="201" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Stream">fd</text>
+  <text x="136" y="233" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Stream">read()</text>
+  <text x="136" y="249" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Stream">write()</text>
+  <text x="136" y="265" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Stream">flush()</text>
+  <text x="136" y="281" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Stream">close()</text>
+  <text x="136" y="297" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Stream">copyTo()</text>
+  <rect x="126" y="28" height="80" width="77" data-name="object" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
+  <path d="M126 60 L203 60" data-name="object" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <text x="164.5" y="49" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="object">object</text>
+  <text x="134" y="81" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="object">toString()</text>
+  <text x="134" y="97" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="object">toJSON()</text>
+  <rect x="103" y="348" height="176" width="124" data-name="SeekableStream" style="stroke:#33322E;fill:lightgray;stroke-dasharray:none;stroke-width:1.5;"></rect>
+  <path d="M103 380 L227 380" data-name="SeekableStream" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <text x="165" y="369" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="SeekableStream">SeekableStream</text>
+  <text x="111" y="401" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="SeekableStream">seek()</text>
+  <text x="111" y="417" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="SeekableStream">tell()</text>
+  <text x="111" y="433" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="SeekableStream">rewind()</text>
+  <text x="111" y="449" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="SeekableStream">size()</text>
+  <text x="111" y="465" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="SeekableStream">readAll()</text>
+  <text x="111" y="481" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="SeekableStream">truncate()</text>
+  <text x="111" y="497" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="SeekableStream">eof()</text>
+  <text x="111" y="513" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="SeekableStream">stat()</text>
+  <rect x="28" y="564" height="32" width="39" data-name="File" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
+  <text x="47.5" y="585" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="File">File</text>
+  <rect x="107" y="564" height="32" width="115" data-name="MemoryStream" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
+  <text x="164.5" y="585" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="MemoryStream">MemoryStream</text>
+  <rect x="262" y="564" height="32" width="106" data-name="RangeStream" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
+  <text x="315" y="585" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="RangeStream">RangeStream</text>
 </svg></div>
 
 <h2 id="成员属性">成员属性</h2>

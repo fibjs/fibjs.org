@@ -41,6 +41,8 @@
 <li><a href="../../manual/module/ifs/path.md.html" class="notranslate">path</a></li>
 <li><a href="../../manual/module/ifs/path_posix.md.html" class="notranslate">path_posix</a></li>
 <li><a href="../../manual/module/ifs/path_win32.md.html" class="notranslate">path_win32</a></li>
+<li><a href="../../manual/module/ifs/perf_hooks.md.html" class="notranslate">perf_hooks</a></li>
+<li><a href="../../manual/module/ifs/performance.md.html" class="notranslate">performance</a></li>
 <li><a href="../../manual/module/ifs/process.md.html" class="notranslate">process</a></li>
 <li><a href="../../manual/module/ifs/profiler.md.html" class="notranslate">profiler</a></li>
 <li><a href="../../manual/module/ifs/punycode.md.html" class="notranslate">punycode</a></li>
@@ -55,6 +57,7 @@
 <li><a href="../../manual/module/ifs/util.md.html" class="notranslate">util</a></li>
 <li><a href="../../manual/module/ifs/uuid.md.html" class="notranslate">uuid</a></li>
 <li><a href="../../manual/module/ifs/vm.md.html" class="notranslate">vm</a></li>
+<li><a href="../../manual/module/ifs/worker_threads.md.html" class="notranslate">worker_threads</a></li>
 <li><a href="../../manual/module/ifs/ws.md.html" class="notranslate">ws</a></li>
 <li><a href="../../manual/module/ifs/xml.md.html" class="notranslate">xml</a></li>
 <li><a href="../../manual/module/ifs/zip.md.html" class="notranslate">zip</a></li>
@@ -197,7 +200,7 @@
  </div></div></div>  </div></div><div class="content"><div class="social-share share-component" data-sites="weibo,twitter" data-description="分享"></div> <h2 id="Juicer-中文文档"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Juicer 中文文檔</font></font></h2>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">當前最新版本: 0.6.14</font></font></strong></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Juicer 是一個高效、輕量的前端(Javascript) 模板引擎，使用Juicer 可以是你的代碼實現數據和視圖模型的分離(MVC)。</font><font style="vertical-align: inherit;">除此之外，它還可以在Node.js 環境中運行。</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">你可以在遵守MIT Licence的前提下隨意使用並分發它。</font><font style="vertical-align: inherit;">Juicer代碼完全開源並託管在</font></font><a href="https://github.com/PaulGuo/Juicer"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Github</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上，如果你在使用的過程中發現什麼Bug抑或是一些好的建議都歡迎在</font></font><a href="https://github.com/PaulGuo/Juicer/issues"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Github Issue</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上提交。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">你可以在遵守MIT Licence 的前提下隨意使用並分發它。</font><font style="vertical-align: inherit;">Juicer 代碼完全開源並託管在</font></font><a href="https://github.com/PaulGuo/Juicer"><font style="vertical-align: inherit;"></font></a><font style="vertical-align: inherit;"></font><a href="https://github.com/PaulGuo/Juicer/issues"><font style="vertical-align: inherit;"></font></a><font style="vertical-align: inherit;"></font></p>
 <p><a href="!about"></a></p>
 <h3 id="名字的由来"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">名字的由來</font></font></h3>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">倘若我們把數據比作新鮮可口的水果，把模板看做是水，Juicer 就是把水果和水榨出我們需要的HTML代碼片段的榨汁機。</font></font></p>
@@ -265,7 +268,7 @@ juicer.<span class="hljs-builtin-name">set</span>(<span class="hljs-string">'cac
 <p><a href="!syntax"></a></p>
 <h2 id="*-语法"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">* 語法</font></font></h2>
 <h4 id="a.-${变量}"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">a. ${變量}</font></font></h4>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用</font></font><code>${}</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">輸出變量值，其中</font></font><code>_</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">為對數據源的引用（如</font></font><code>${_}</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，常用於數據源為數組的情況）。</font><font style="vertical-align: inherit;">支持自定義函數（通過自定義函數你可以實現很多有趣的功能，類似</font></font><code>${data|links}</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">就可以通過事先定義的自定義函數links直接對data拼裝出</font></font><code>&lt;a href=".." alt=".." /&gt;</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">）.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用  </font><font style="vertical-align: inherit;">支持自定義函數（通過自定義函數你可以實現很多有趣的功能，類似 </font></font><code>${}</code><font style="vertical-align: inherit;"></font><code>_</code><font style="vertical-align: inherit;"></font><code>${_}</code><font style="vertical-align: inherit;"></font><code>${data|links}</code><font style="vertical-align: inherit;"></font><code>&lt;a href=".." alt=".." /&gt;</code><font style="vertical-align: inherit;"></font></p>
 <pre><code><div class="line-numbers">1
 2
 3</div>${<span class="hljs-keyword">name</span>}<font></font>
@@ -315,7 +318,7 @@ ${<span class="hljs-keyword">name</span>|<span class="hljs-function"><span class
 <span class="hljs-symbol">&amp;lt;</span>a href=<span class="hljs-symbol">&amp;quot;</span>http://ued.taobao.com<span class="hljs-symbol">&amp;quot;</span> alt=<span class="hljs-symbol">&amp;quot;</span>Taobao UED<span class="hljs-symbol">&amp;quot;</span> <span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
 </code></pre><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">可以看得出，結果被轉義了，如果我們上邊使用$${item|links} 就會得到我們預期的結果，這就是下邊即將提到的避免轉義。</font></font></p>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">轉義/避免轉義</font></font></strong></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">出於安全角度的考慮，</font></font><code>${变量}</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在輸出之前會對其內容進行轉義，如果你不想輸出結果被轉義，可以使用</font></font><code>$${变量}</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">來避免這種情況。</font><font style="vertical-align: inherit;">例如：</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">出於安全角度的考慮，</font><font style="vertical-align: inherit;">例如：</font></font><code>${变量}</code><font style="vertical-align: inherit;"></font><code>$${变量}</code><font style="vertical-align: inherit;"></font></p>
 <pre><code><div class="line-numbers">1
 2
 3
@@ -334,7 +337,7 @@ var unescape_tpl='$${value}';<font></font>
 juicer(escape_tpl, json); //输出 '<span class="hljs-symbol">&amp;lt;</span>strong<span class="hljs-symbol">&amp;gt;</span>juicer<span class="hljs-symbol">&amp;lt;</span>/strong<span class="hljs-symbol">&amp;gt;</span>'<font></font>
 juicer(unescape_tpl, json); //输出 '<span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>juicer<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span>'
 </code></pre><h4 id="b.-循环遍历-{@each}-...-{@/each}"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">b. 循環遍歷{@each} ... {@/each}</font></font></h4>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">如果你需要對數組進行循環遍歷的操作，就可以像這樣使用</font></font><code>each</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">如果你需要對數組進行循環遍歷的操作，就可以像這樣使用</font></font><code>each</code><font style="vertical-align: inherit;"></font></p>
 <pre><code><div class="line-numbers">1
 2
 3</div>{@each <span class="hljs-built_in">list</span> <span class="hljs-keyword">as</span> <span class="hljs-built_in">item</span>}<font></font>
@@ -378,7 +381,7 @@ juicer(unescape_tpl, json); //输出 '<span class="hljs-tag">&lt;<span class="hl
     ${i}; <span class="hljs-comment">//输出 5;6;7;8;9;</span><font></font>
 {@/each}<font></font>
 </code></pre><h4 id="f.-子模板嵌套-{@include-tpl,-data}"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">f. 子模板嵌套{@include tpl, data}</font></font></h4>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">子模板嵌套可以讓你更靈活的組織你的模板代碼，除了可以引入在數據中指定的子模板外，當然你也可以通過指定字符串</font></font><code>#id</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用寫在</font></font><code>script</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">標籤中的模板代碼.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">子模板嵌套可以讓你更靈活的組織你的模板代碼，除了可以引入在數據中指定的子模板外，當然你也可以通過指定字符串</font></font><code>#id</code><font style="vertical-align: inherit;"></font><code>script</code><font style="vertical-align: inherit;"></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">HTML代碼：</font></font></p>
 <pre><code><div class="line-numbers">1
 2
@@ -588,4 +591,4 @@ var data = {<font></font>
 <font></font>
 var tpl = document.getElementById(<span class="hljs-string">'tpl'</span>).innerHTML;<font></font>
 var html = juicer(tpl, data);<font></font>
-</code></pre> </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify-hide"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org |</font></font><a href="../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持我們</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip326348"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip326348" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Click to return on the top page</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../js/common.js"></script><script type="text/javascript" src="../../../../js/docs.js"></script></body></html>
+</code></pre> </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify-hide"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org |</font></font><a href="../../../support.html"><font style="vertical-align: inherit;"></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip209020"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip209020" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Click to return on the top page</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../js/common.js"></script><script type="text/javascript" src="../../../../js/docs.js"></script></body></html>

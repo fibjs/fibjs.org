@@ -41,6 +41,8 @@
 <li><a href="../manual/module/ifs/path.md.html" class="notranslate">path</a></li>
 <li><a href="../manual/module/ifs/path_posix.md.html" class="notranslate">path_posix</a></li>
 <li><a href="../manual/module/ifs/path_win32.md.html" class="notranslate">path_win32</a></li>
+<li><a href="../manual/module/ifs/perf_hooks.md.html" class="notranslate">perf_hooks</a></li>
+<li><a href="../manual/module/ifs/performance.md.html" class="notranslate">performance</a></li>
 <li><a href="../manual/module/ifs/process.md.html" class="notranslate">process</a></li>
 <li><a href="../manual/module/ifs/profiler.md.html" class="notranslate">profiler</a></li>
 <li><a href="../manual/module/ifs/punycode.md.html" class="notranslate">punycode</a></li>
@@ -55,6 +57,7 @@
 <li><a href="../manual/module/ifs/util.md.html" class="notranslate">util</a></li>
 <li><a href="../manual/module/ifs/uuid.md.html" class="notranslate">uuid</a></li>
 <li><a href="../manual/module/ifs/vm.md.html" class="notranslate">vm</a></li>
+<li><a href="../manual/module/ifs/worker_threads.md.html" class="notranslate">worker_threads</a></li>
 <li><a href="../manual/module/ifs/ws.md.html" class="notranslate">ws</a></li>
 <li><a href="../manual/module/ifs/xml.md.html" class="notranslate">xml</a></li>
 <li><a href="../manual/module/ifs/zip.md.html" class="notranslate">zip</a></li>
@@ -229,7 +232,7 @@ module name<font></font>
 };<font></font>
 </code></pre>
 <div name="生成头文件" data-unique="生成头文件"></div><h2 id="生成头文件"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">生成頭文件</font></font></h2>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在tools目錄下執行</font></font><code>fibjs idlc.js</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">命令，這會讀取idl目錄下所有的idl文件並解析，生成對應的頭文件和文檔，其中生成的頭文件都會存放在"fibjs/include/ifs/"目錄下。</font><font style="vertical-align: inherit;">例如name.idl會自動生成${{fibjs_project_dir}}/fibjs/include/ifs/name.h這個頭文件，其中定義了name_base這個類。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在tools 目錄下執行  </font><font style="vertical-align: inherit;">例如name.idl 會自動生成${{fibjs_project_dir}}/fibjs/include/ifs/name.h 這個頭文件，其中定義了name_base 這個類。</font></font><code>fibjs idlc.js</code><font style="vertical-align: inherit;"></font></p>
 <pre><code class="lang-c++"><div class="line-numbers">1
 2
 3
@@ -416,10 +419,9 @@ module name<font></font>
     }<font></font>
 }<font></font>
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">需要注意的是</font></font><code>DECLARE_MODULE(name);</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">這句話，這句話聲明了"name"這個module並把它註冊到javascript對像上。</font><font style="vertical-align: inherit;">在編寫源代碼的時候需要加上這句話。</font><font style="vertical-align: inherit;">在</font></font><code>v0.25.0</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">及以後的版本中，我們將fibjs的模塊剝離了出來以便更好的複用，所以你仍需要在</font></font><code>fibjs/program/src/fibjs.cpp</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">文件中的</font></font><code>importModule</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">函數中添加如下一句話:</font></font><code>IMPORT_MODULE(name);</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">來安裝自定義的模塊。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">需要注意的是  </font><font style="vertical-align: inherit;">在編寫源代碼的時候需要加上這句話。</font><font style="vertical-align: inherit;">在 </font></font><code>DECLARE_MODULE(name);</code><font style="vertical-align: inherit;"></font><code>v0.25.0</code><font style="vertical-align: inherit;"></font><code>fibjs/program/src/fibjs.cpp</code><font style="vertical-align: inherit;"></font><code>importModule</code><font style="vertical-align: inherit;"></font><code>IMPORT_MODULE(name);</code><font style="vertical-align: inherit;"></font></p>
 <div name="编译并测试" data-unique="编译并测试"></div><h2 id="编译并测试"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">編譯並測試</font></font></h2>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在windows上編譯之前，需要先執行一遍</font></font><code>fibjs tools/vsmake.js</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">然後build。</font><font style="vertical-align: inherit;">編譯運行結果如下:
-</font></font><img src="./imgs/name.png" alt="name"></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在windows 上編譯之前，需要先執行一遍  </font><font style="vertical-align: inherit;">編譯運行結果如下:</font></font><code>fibjs tools/vsmake.js</code><font style="vertical-align: inherit;"></font><img src="./imgs/name.png" alt="name"></p>
 <div name="总结" data-unique="总结"></div><h2 id="总结"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">總結</font></font></h2>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">學會瞭如何增加和修改fibjs 的native 模塊和對象。</font><font style="vertical-align: inherit;">我們可以編寫各種各樣複雜的模塊，還可以移植第三方庫到fibjs 作為支持來編寫我們的模塊。</font><font style="vertical-align: inherit;">歡迎您來為fibjs 貢獻更多的力量。</font></font></p>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org |</font></font><a href="../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持我們</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip56189"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip56189" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Click to return on the top page</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../js/common.js"></script><script type="text/javascript" src="../../../js/docs.js"></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org |</font></font><a href="../../support.html"><font style="vertical-align: inherit;"></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip55787"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip55787" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Click to return on the top page</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../js/common.js"></script><script type="text/javascript" src="../../../js/docs.js"></script></body></html>

@@ -41,6 +41,8 @@
 <li><a href="../manual/module/ifs/path.md.html" class="notranslate">path</a></li>
 <li><a href="../manual/module/ifs/path_posix.md.html" class="notranslate">path_posix</a></li>
 <li><a href="../manual/module/ifs/path_win32.md.html" class="notranslate">path_win32</a></li>
+<li><a href="../manual/module/ifs/perf_hooks.md.html" class="notranslate">perf_hooks</a></li>
+<li><a href="../manual/module/ifs/performance.md.html" class="notranslate">performance</a></li>
 <li><a href="../manual/module/ifs/process.md.html" class="notranslate">process</a></li>
 <li><a href="../manual/module/ifs/profiler.md.html" class="notranslate">profiler</a></li>
 <li><a href="../manual/module/ifs/punycode.md.html" class="notranslate">punycode</a></li>
@@ -55,6 +57,7 @@
 <li><a href="../manual/module/ifs/util.md.html" class="notranslate">util</a></li>
 <li><a href="../manual/module/ifs/uuid.md.html" class="notranslate">uuid</a></li>
 <li><a href="../manual/module/ifs/vm.md.html" class="notranslate">vm</a></li>
+<li><a href="../manual/module/ifs/worker_threads.md.html" class="notranslate">worker_threads</a></li>
 <li><a href="../manual/module/ifs/ws.md.html" class="notranslate">ws</a></li>
 <li><a href="../manual/module/ifs/xml.md.html" class="notranslate">xml</a></li>
 <li><a href="../manual/module/ifs/zip.md.html" class="notranslate">zip</a></li>
@@ -211,7 +214,7 @@ gui.open(<span class="hljs-string">"https://fibjs.org"</span>, {
 <div name="cef-简介" data-unique="cef-简介"></div><h2 id="cef-简介"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">cef 簡介</font></font></h2>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">cef 全稱Chromium Embedded Framework，是一個基於Google Chromium 的開源項目。</font><font style="vertical-align: inherit;">Google Chromium 項目主要是為Google Chrome 應用開發的，而cef 的目標則是為第三方應用提供可嵌入瀏覽器支持。</font><font style="vertical-align: inherit;">cef 隔離底層Chromium 和Blink 的複雜代碼，並提供一套產品級穩定的API，發布跟踪具體Chromium 版本的分支，以及二進制包。</font><font style="vertical-align: inherit;">cef 的大部分特性都提供了豐富的默認實現，讓使用者做盡量少的定制即可滿足需求。</font><font style="vertical-align: inherit;">cef 的典型應用場景包括：</font></font></p>
 <ul>
-<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">嵌入一​​個兼容HTML5 的瀏覽器控件到一個已經存在的本地應用。</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">嵌入一個兼容HTML5 的瀏覽器控件到一個已經存在的本地應用。</font></font></li>
 <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">創建一個輕量化的殼瀏覽器，用以託管主要用Web 技術開發的應用。</font></font></li>
 <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">有些應用有獨立的繪製框架，使用cef 對Web 內容做離線渲染。</font></font></li>
 <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用cef 做自動化Web 測試。</font></font></li>
@@ -226,9 +229,9 @@ gui.open(<span class="hljs-string">"https://fibjs.org"</span>, {
 <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">更快獲得當前以及未來的Web 特性和標準的能力。</font></font></li>
 </ul>
 <div name="准备运行环境" data-unique="准备运行环境"></div><h2 id="准备运行环境"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">準備運行環境</font></font></h2>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">cef3的二進制包可以在[</font></font><a href="https://cef-builds.spotifycdn.com/index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">這個頁面</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">]下載，當前fibjs所對應的版本是v90。</font><font style="vertical-align: inherit;">其中包含了在特定平台（Windows，Mac OS X以及Linux）編譯特定版本cef3所需的全部文件。</font><font style="vertical-align: inherit;">不同平台的目錄結構不太，你需要在下載後重新組織資源目錄結構。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">cef3 的二進制包可以在[ </font><font style="vertical-align: inherit;">其中包含了在特定平台（Windows，Mac OS X 以及Linux）編譯特定版本cef3 所需的全部文件。</font><font style="vertical-align: inherit;">不同平台的目錄結構不太，你需要在下載後重新組織資源目錄結構。</font></font><a href="https://cef-builds.spotifycdn.com/index.html"><font style="vertical-align: inherit;"></font></a><font style="vertical-align: inherit;"></font></p>
 <div name="Windows-操作系统(Windows)" data-unique="Windows-操作系统(Windows)"></div><h3 id="Windows-操作系统(Windows)"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Windows 操作系統(Windows)</font></font></h3>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在Windows平台上文件夾結構大致如下，你通常可以在二進制包內的</font></font><code>Release</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和</font></font><code>Resources</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">目錄下找到全部文件：</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在Windows 平台上文件夾結構大致如下，你通常可以在二進制包內的 </font></font><code>Release</code><font style="vertical-align: inherit;"></font><code>Resources</code><font style="vertical-align: inherit;"></font></p>
 <pre><code class="lang-bash"><div class="line-numbers">1
 2
 3
@@ -270,7 +273,7 @@ gui.open(<span class="hljs-string">"https://fibjs.org"</span>, {
 └── v8_context_snapshot.bin<font></font>
 </code></pre>
 <div name="Linux-操作系统(Linux)" data-unique="Linux-操作系统(Linux)"></div><h3 id="Linux-操作系统(Linux)"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Linux 操作系統(Linux)</font></font></h3>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在Linux平台上文件夾結構大致如下，你通常可以在二進制包內的</font></font><code>Release</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和</font></font><code>Resources</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">目錄下找到全部文件：</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在Linux 平台上文件夾結構大致如下，你通常可以在二進制包內的 </font></font><code>Release</code><font style="vertical-align: inherit;"></font><code>Resources</code><font style="vertical-align: inherit;"></font></p>
 <pre><code class="lang-bash"><div class="line-numbers">1
 2
 3
@@ -307,12 +310,12 @@ gui.open(<span class="hljs-string">"https://fibjs.org"</span>, {
 │   └── libGLESv2.so<font></font>
 └── v8_context_snapshot.bin<font></font>
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在Linux Server上因為沒有桌面環境支持，只可以以</font></font><code>--headless</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">模式運行，當以無窗口模式運行時，需要安裝xorg：</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在Linux Server 上因為沒有桌面環境支持，只可以以 </font></font><code>--headless</code><font style="vertical-align: inherit;"></font></p>
 <pre><code class="lang-sh"><div class="line-numbers">1</div>apt install xorg
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在一些gpu支持不好的Linux Desktop，還需要增加</font></font><code>--disable-gpu</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">啟動選項禁用gpu渲染。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在一些gpu 支持不好的Linux Desktop，還需要增加 </font></font><code>--disable-gpu</code><font style="vertical-align: inherit;"></font></p>
 <div name="Mac-X-平台(Mac-OS-X)" data-unique="Mac-X-平台(Mac-OS-X)"></div><h3 id="Mac-X-平台(Mac-OS-X)"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Mac X 平台(Mac OS X)</font></font></h3>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在Mac X平台上文件夾結構大致如下，你通常可以在二進制包內的</font></font><code>Release/Chromium Embedded Framework.framework</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">目錄下找到全部文件，如果你下載的是cefclient，那麼你需要打開app的Contents找到相應的文件：</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在Mac X 平台上文件夾結構大致如下，你通常可以在二進制包內的 </font></font><code>Release/Chromium Embedded Framework.framework</code><font style="vertical-align: inherit;"></font></p>
 <pre><code class="lang-bash"><div class="line-numbers">1
 2
 3
@@ -343,7 +346,7 @@ gui.open(<span class="hljs-string">"https://fibjs.org"</span>, {
     └── zh_TW.lproj<font></font>
         └── locale.pak <font></font>
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">你還可以使用</font></font><code>gui.config</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">設置</font></font><code>cef_path</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">來指定cef的二進制路徑，從而更加靈活地部署運行環境。</font><font style="vertical-align: inherit;">當未設定</font></font><code>cef_path</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">時，cef二進製文件必須與fibjs執行文件部署在同一個目錄下。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">你還可以使用  </font><font style="vertical-align: inherit;">當未設定 </font></font><code>gui.config</code><font style="vertical-align: inherit;"></font><code>cef_path</code><font style="vertical-align: inherit;"></font><code>cef_path</code><font style="vertical-align: inherit;"></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3</div>gui.config({
@@ -361,12 +364,12 @@ gui.open(<span class="hljs-string">"https://fibjs.org"</span>, {
     <span class="hljs-comment">// "type": "native"</span><font></font>
 });<font></font>
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">同樣會看到一個加載了fibjs官網的瀏覽器窗口，但是它的引擎已經是最新的Chrome內核了。</font><font style="vertical-align: inherit;">注意此處需要取消</font></font><code>type</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">選項，否則還將打開os內置的webview。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">同樣會看到一個加載了fibjs 官網的瀏覽器窗口，但是它的引擎已經是最新的Chrome 內核了。</font><font style="vertical-align: inherit;">注意此處需要取消 </font></font><code>type</code><font style="vertical-align: inherit;"></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">gui 的基礎應用十分簡便，參照gui 文檔即可迅速實現，不再贅述。</font><font style="vertical-align: inherit;">接下來主要介紹一些特別的應用方式。</font></font></p>
 <div name="前后端服务对接" data-unique="前后端服务对接"></div><h2 id="前后端服务对接"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">前後端服務對接</font></font></h2>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">基於web 的桌面應用通常有兩種擴展方式，一種是WebView 擴展，另一種是在本地實現前後端分離。</font><font style="vertical-align: inherit;">前一種方式，對WebView 做了侵入式擴展，運行環境與標準的瀏覽器其實已經不再兼容。</font><font style="vertical-align: inherit;">後一種方式則需要在本地開啟一個http Server，這樣又導致服務接口對外暴露。</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs針對桌面應用的擴展，基於cef的協議擴展能力，將WebView和fibjs的</font></font><code>Handler</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">融合在一起，使得WebView可以在進程內直接連接到對應的</font></font><code>Handler</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">處理器，在完全兼容傳統B/S前後端開發範式的同時，確保了安全性和可移植性。</font><font style="vertical-align: inherit;">同時前後端代碼，也與標準的B/S前後端開發完全一致，可以在瀏覽器內開發調試，然後直接移植為本地應用。</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs配置後端處理器的方式，是通過</font></font><code>gui.config</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">完成的。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs 針對桌面應用的擴展，基於cef 的協議擴展能力，將WebView 和fibjs 的  </font><font style="vertical-align: inherit;">同時前後端代碼，也與標準的B/S 前後端開發完全一致，可以在瀏覽器內開發調試，然後直接移植為本地應用。</font></font><code>Handler</code><font style="vertical-align: inherit;"></font><code>Handler</code><font style="vertical-align: inherit;"></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs 配置後端處理器的方式，是通過 </font></font><code>gui.config</code><font style="vertical-align: inherit;"></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
@@ -401,16 +404,16 @@ gui.open(<span class="hljs-string">"https://fibjs.org"</span>, {
     }<font></font>
 });<font></font>
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">這段代碼定義了兩個後端，一個是</font></font><code>cef</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">協議的test domain，指向靜態目錄</font></font><code>cef_files_path</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，另一個是</font></font><code>http</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的cef_test domain，指向一個路由。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">這段代碼定義了兩個後端，一個是 </font></font><code>cef</code><font style="vertical-align: inherit;"></font><code>cef_files_path</code><font style="vertical-align: inherit;"></font><code>http</code><font style="vertical-align: inherit;"></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在cef 裡，對非標準協議的處理有一些限制，比如不支持向服務器post 數據，因此如果希望兼容性更好的前後端通信，需要定義http 或者https 後端，當然這個後端也並不是通過網絡協議完成通信，而是在進程內部直接對接的。</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">關於如何開發Handler 後端，可以參閱：</font></font><a href="hello.md.html" class="notranslate">hello, world</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font></p>
 <div name="无窗口模式" data-unique="无窗口模式"></div><h2 id="无窗口模式"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">無窗口模式</font></font></h2>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在自動化測試或者流程自動化場景中，業務運行過程無需用戶交互，因此可以以無窗口模式在服務器上自動運行。</font><font style="vertical-align: inherit;">這時就需要headless 模式來運行。</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs 支持兩種方式的headless，分別是全局headless 和實例headless。</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">全局模式下，所有的窗口都將以headless模式運行，無論創建窗口是是如何設定的。</font><font style="vertical-align: inherit;">全局模式的運行方式，是指定</font></font><code>--headless</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">啟動選項。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">全局模式下，所有的窗口都將以headless 模式運行，無論創建窗口是是如何設定的。</font><font style="vertical-align: inherit;">全局模式的運行方式，是指定 </font></font><code>--headless</code><font style="vertical-align: inherit;"></font></p>
 <pre><code class="lang-sh"><div class="line-numbers">1</div>fibjs --headless test.js
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在程序啟動時調用</font></font><code>gui.config</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">配置也可以達到同樣的目標：</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在程序啟動時調用 </font></font><code>gui.config</code><font style="vertical-align: inherit;"></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3</div>gui.config({
@@ -430,8 +433,8 @@ gui.open(<span class="hljs-string">"https://fibjs.org"</span>, {
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">需要注意的是，headless 實例因為沒有用戶交互，不能被用戶主動關閉，因此程序要在不需要的時候自行關閉，否則因為實例的存在，進程將不會自動退出。</font></font></p>
 <div name="DevTools-接口" data-unique="DevTools-接口"></div><h2 id="DevTools-接口"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">DevTools 接口</font></font></h2>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Chrome DevTools Protocol 允許工具對Chromium，Chrome 和其它基於Blink 的瀏覽器進行測試、檢查、調試以及配置。</font><font style="vertical-align: inherit;">Chrome DevTools Protocol 被分為多個域（DOM，Debugger，Network 等），每個域定義了相應支持的commands 和相關的events。</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs封裝了cdp的訪問接口，可以充分運用cef內置的cdp接口，直接調試WebView內的網頁。</font><font style="vertical-align: inherit;">WebView用於訪問cdp服務的接口，是WebView.dev。</font><font style="vertical-align: inherit;">關於cdp的詳細文檔，可以參閱：</font></font><a href="https://chromedevtools.github.io/devtools-protocol/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">https://chromedevtools.github.io/devtools-protocol/</font></font></a></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">以下列舉的是幾個常用的代碼片段，用於展示如何使用dev操控頁面元素。</font><font style="vertical-align: inherit;">詳細的使用演示，可以參閱</font></font><code>test/cef_test.js</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs 封裝了cdp 的訪問接口，可以充分運用cef 內置的cdp 接口，直接調試WebView 內的網頁。</font><font style="vertical-align: inherit;">WebView 用於訪問cdp 服務的接口，是WebView.dev。</font><font style="vertical-align: inherit;">關於cdp 的詳細文檔，可以參閱：</font></font><a href="https://chromedevtools.github.io/devtools-protocol/"><font style="vertical-align: inherit;"></font></a></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">以下列舉的是幾個常用的代碼片段，用於展示如何使用dev 操控頁面元素。</font><font style="vertical-align: inherit;">詳細的使用演示，可以參閱</font></font><code>test/cef_test.js</code><font style="vertical-align: inherit;"></font></p>
 <div name="查询-DOM" data-unique="查询-DOM"></div><h3 id="查询-DOM"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">查詢DOM</font></font></h3>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
@@ -622,5 +625,5 @@ win.on(<span class="hljs-string">'open'</span>, () =&gt; {<font></font>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">因為版權問題，cef 的二進制發行版中通常不包含mp4 和mp3 的解碼。</font><font style="vertical-align: inherit;">但是cef 中包含開源的webm 解碼，對於獨立的桌面應用，建議使用免費授權的webm 編碼處理音頻和視頻。</font></font></p>
 <div name="小结" data-unique="小结"></div><h2 id="小结"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">小結</font></font></h2>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">通過這個小節的介紹，我們可以快速開發自己的桌面應用，將html 渲染成圖片或者PDF，利用cdp 的強大接口建立前端自動化測試和流程自動化引擎。</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">👉 【</font></font><a href="server-hot-update.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">服務端模塊熱更新</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">】</font></font></p>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org |</font></font><a href="../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持我們</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip639002"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip639002" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Click to return on the top page</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../js/common.js"></script><script type="text/javascript" src="../../../js/docs.js"></script></body></html>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">👉 【</font></font><a href="server-hot-update.md.html"><font style="vertical-align: inherit;"></font></a><font style="vertical-align: inherit;"></font></p>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org |</font></font><a href="../../support.html"><font style="vertical-align: inherit;"></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip778158"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip778158" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Click to return on the top page</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../js/common.js"></script><script type="text/javascript" src="../../../js/docs.js"></script></body></html>

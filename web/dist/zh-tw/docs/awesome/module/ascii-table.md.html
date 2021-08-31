@@ -41,6 +41,8 @@
 <li><a href="../../manual/module/ifs/path.md.html" class="notranslate">path</a></li>
 <li><a href="../../manual/module/ifs/path_posix.md.html" class="notranslate">path_posix</a></li>
 <li><a href="../../manual/module/ifs/path_win32.md.html" class="notranslate">path_win32</a></li>
+<li><a href="../../manual/module/ifs/perf_hooks.md.html" class="notranslate">perf_hooks</a></li>
+<li><a href="../../manual/module/ifs/performance.md.html" class="notranslate">performance</a></li>
 <li><a href="../../manual/module/ifs/process.md.html" class="notranslate">process</a></li>
 <li><a href="../../manual/module/ifs/profiler.md.html" class="notranslate">profiler</a></li>
 <li><a href="../../manual/module/ifs/punycode.md.html" class="notranslate">punycode</a></li>
@@ -55,6 +57,7 @@
 <li><a href="../../manual/module/ifs/util.md.html" class="notranslate">util</a></li>
 <li><a href="../../manual/module/ifs/uuid.md.html" class="notranslate">uuid</a></li>
 <li><a href="../../manual/module/ifs/vm.md.html" class="notranslate">vm</a></li>
+<li><a href="../../manual/module/ifs/worker_threads.md.html" class="notranslate">worker_threads</a></li>
 <li><a href="../../manual/module/ifs/ws.md.html" class="notranslate">ws</a></li>
 <li><a href="../../manual/module/ifs/xml.md.html" class="notranslate">xml</a></li>
 <li><a href="../../manual/module/ifs/zip.md.html" class="notranslate">zip</a></li>
@@ -257,7 +260,7 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Browser</font></font></p>
 <pre><code class="lang-html"><div class="line-numbers">1</div><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"ascii-table.min.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 </code></pre>
-<p><em><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Note</font></font></em><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> : If using in the browser, it will be placed under</font></font><code>window.AsciiTable</code></p>
+<p><em><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Note</font></font></em><font style="vertical-align: inherit;"></font><code>window.AsciiTable</code></p>
 <div name="Example" data-unique="Example"></div><h2 id="Example"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Example</font></font></h2>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Basic usage</font></font></p>
 <pre><code class="lang-js"><div class="line-numbers">1
@@ -328,18 +331,17 @@ table<font></font>
 </code></pre><div name="API" data-unique="API"></div><h2 id="API"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">API</font></font></h2>
 <div name="Static-Methods" data-unique="Static-Methods"></div><h3 id="Static-Methods" class="notranslate">Static Methods</h3>
 <h4 id="AsciiTable"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">AsciiTable</font></font></h4>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">See: </font></font><code>AsciiTable.factory</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">for details on instantiation</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">See:</font></font><code>AsciiTable.factory</code><font style="vertical-align: inherit;"></font></p>
 <h4 id="AsciiTable.factory([title],-[options])"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">AsciiTable.factory([title], [options])</font></font></h4>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Table instance creator</font></font></p>
 <ul>
-<li><code>title</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">- table title (optional, default </font></font><code>null</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">)</font></font></li>
+<li><code>title</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">- table title (optional, default</font></font><code>null</code><font style="vertical-align: inherit;"></font></li>
 <li><code>options</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> - table options (optional)</font></font><ul>
 <li><code>prefix</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> - string prefix to add to each line on render</font></font></li>
 </ul>
 </li>
 </ul>
-<p><strong><em><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Note:</font></font></em></strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> If an object is passed in place of the</font></font><code>title</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, the</font></font><code>fromJSON</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
-method will be used to populate the table.</font></font></p>
+<p><strong><em><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Note:</font></font></em></strong><font style="vertical-align: inherit;"></font><code>title</code><font style="vertical-align: inherit;"></font><code>fromJSON</code><font style="vertical-align: inherit;"></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Example:</font></font></p>
 <pre><code class="lang-js"><div class="line-numbers">1
 2
@@ -364,10 +366,10 @@ method will be used to populate the table.</font></font></p>
 <h4 id="AsciiTable.align(direction,-val,-len,-[pad])"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">AsciiTable.align(direction, val, len, [pad])</font></font></h4>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Shortcut to one of the three following methods</font></font></p>
 <ul>
-<li><code>direction</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">- alignment direction ( </font></font><code>AsciiTable.LEFT</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><code>AsciiTable.CENTER</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><code>AsciiTable.RIGHT</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">)</font></font></li>
+<li><code>direction</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">- alignment direction (</font></font><code>AsciiTable.LEFT</code><font style="vertical-align: inherit;"></font><code>AsciiTable.CENTER</code><font style="vertical-align: inherit;"></font><code>AsciiTable.RIGHT</code><font style="vertical-align: inherit;"></font></li>
 <li><code>val</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> - string to align</font></font></li>
 <li><code>len</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> - total length of created string</font></font></li>
-<li><code>pad</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">- padding / fill char (optional, default </font></font><code>' '</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">)</font></font></li>
+<li><code>pad</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">- padding / fill char (optional, default</font></font><code>' '</code><font style="vertical-align: inherit;"></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Example:</font></font></p>
 <pre><code class="lang-js"><div class="line-numbers">1</div>table.align(AsciiTable.LEFT, <span class="hljs-string">'hey'</span>, <span class="hljs-number">7</span>) <span class="hljs-comment">// 'hey    '</span>
@@ -376,7 +378,7 @@ method will be used to populate the table.</font></font></p>
 <ul>
 <li><code>val</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> - string to align</font></font></li>
 <li><code>len</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> - total length of created string</font></font></li>
-<li><code>pad</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">- padding / fill char (optional, default </font></font><code>' '</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">)</font></font></li>
+<li><code>pad</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">- padding / fill char (optional, default</font></font><code>' '</code><font style="vertical-align: inherit;"></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Example:</font></font></p>
 <pre><code class="lang-js"><div class="line-numbers">1</div>table.alignLeft(<span class="hljs-string">'hey'</span>, <span class="hljs-number">7</span>, <span class="hljs-string">'-'</span>) <span class="hljs-comment">// 'hey----'</span>
@@ -385,7 +387,7 @@ method will be used to populate the table.</font></font></p>
 <ul>
 <li><code>val</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> - string to align</font></font></li>
 <li><code>len</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> - total length of created string</font></font></li>
-<li><code>pad</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">- padding / fill char (optional, default </font></font><code>' '</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">)</font></font></li>
+<li><code>pad</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">- padding / fill char (optional, default</font></font><code>' '</code><font style="vertical-align: inherit;"></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Example:</font></font></p>
 <pre><code class="lang-js"><div class="line-numbers">1</div>table.alignCenter(<span class="hljs-string">'hey'</span>, <span class="hljs-number">7</span>) <span class="hljs-comment">// '  hey  '</span>
@@ -394,17 +396,17 @@ method will be used to populate the table.</font></font></p>
 <ul>
 <li><code>val</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> - string to align</font></font></li>
 <li><code>len</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> - total length of created string</font></font></li>
-<li><code>pad</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">- padding / fill char (optional, default </font></font><code>' '</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">)</font></font></li>
+<li><code>pad</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">- padding / fill char (optional, default</font></font><code>' '</code><font style="vertical-align: inherit;"></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Example:</font></font></p>
 <pre><code class="lang-js"><div class="line-numbers">1</div>table.alignRight(<span class="hljs-string">'hey'</span>, <span class="hljs-number">7</span>) <span class="hljs-comment">// '    hey'</span>
 </code></pre>
 <h4 id="AsciiTable.alignAuto(val,-len,-[pad])"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">AsciiTable.alignAuto(val, len, [pad])</font></font></h4>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Attempt to do intelligent alignment of provided </font></font><code>val</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><code>String</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">input will be left aligned, </font></font><code>Number</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">types will be right aligned.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Attempt to do intelligent alignment of provided</font></font><code>val</code><font style="vertical-align: inherit;"></font><code>String</code><font style="vertical-align: inherit;"></font><code>Number</code><font style="vertical-align: inherit;"></font></p>
 <ul>
 <li><code>val</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> - string to align</font></font></li>
 <li><code>len</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> - total length of created string</font></font></li>
-<li><code>pad</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">- padding / fill char (optional, default </font></font><code>' '</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">)</font></font></li>
+<li><code>pad</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">- padding / fill char (optional, default</font></font><code>' '</code><font style="vertical-align: inherit;"></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Example:</font></font></p>
 <pre><code class="lang-js"><div class="line-numbers">1</div>table.align(AsciiTable.LEFT, <span class="hljs-string">'hey'</span>, <span class="hljs-number">7</span>) <span class="hljs-comment">// 'hey    '</span>
@@ -420,12 +422,12 @@ method will be used to populate the table.</font></font></p>
 </code></pre>
 <div name="Instance-Methods" data-unique="Instance-Methods"></div><h3 id="Instance-Methods" class="notranslate">Instance Methods</h3>
 <h4 id="instance.setBorder([edge],-[fill],-[top],-[bottom])"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">instance.setBorder([edge], [fill], [top], [bottom])</font></font></h4>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Set the border characters for rendering, if no arguments are passed it will be reset to defaults. If a single </font></font><code>edge</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">arg is passed, it will be used for all borders.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Set the border characters for rendering, if no arguments are passed it will be reset to defaults. If a single</font></font><code>edge</code><font style="vertical-align: inherit;"></font></p>
 <ul>
-<li><code>edge</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">- horizo​​ntal edges (optional, default </font></font><code>|</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">)</font></font></li>
-<li><code>fill</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">- vertical edges (optional, default </font></font><code>-</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">)</font></font></li>
-<li><code>top</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">- top corners (optional, default </font></font><code>.</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">)</font></font></li>
-<li><code>bottom</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">- bottom corners (optional, default </font></font><code>'</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">)</font></font></li>
+<li><code>edge</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">- horizontal edges (optional, default</font></font><code>|</code><font style="vertical-align: inherit;"></font></li>
+<li><code>fill</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">- vertical edges (optional, default</font></font><code>-</code><font style="vertical-align: inherit;"></font></li>
+<li><code>top</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">- top corners (optional, default</font></font><code>.</code><font style="vertical-align: inherit;"></font></li>
+<li><code>bottom</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">- bottom corners (optional, default</font></font><code>'</code><font style="vertical-align: inherit;"></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Example:</font></font></p>
 <pre><code class="lang-js"><div class="line-numbers">1
@@ -477,7 +479,7 @@ table<font></font>
 </code></pre><h4 id="instance.setAlign(idx,-direction)"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">instance.setAlign(idx, direction)</font></font></h4>
 <ul>
 <li><code>idx</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> - column index to align</font></font></li>
-<li><code>direction</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">- alignment direction, ( </font></font><code>AsciiTable.LEFT</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><code>AsciiTable.CENTER</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><code>AsciiTable.RIGHT</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">)</font></font></li>
+<li><code>direction</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">- alignment direction, (</font></font><code>AsciiTable.LEFT</code><font style="vertical-align: inherit;"></font><code>AsciiTable.CENTER</code><font style="vertical-align: inherit;"></font><code>AsciiTable.RIGHT</code><font style="vertical-align: inherit;"></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Example:</font></font></p>
 <pre><code class="lang-js"><div class="line-numbers">1
@@ -630,7 +632,7 @@ table<font></font>
 |<span class="hljs-string"> 2 </span>|<span class="hljs-string"> John </span>|<span class="hljs-string"> 34 </span>|<font></font>
 '---------------'<font></font>
 </code></pre><h4 id="instance.addRowMatrix(rows)"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">instance.addRowMatrix(rows)</font></font></h4>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Bulk </font></font><code>addRow</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">operation</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Bulk</font></font><code>addRow</code><font style="vertical-align: inherit;"></font></p>
 <ul>
 <li><code>rows</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> - multidimentional array of rows</font></font></li>
 </ul>
@@ -648,7 +650,7 @@ table<font></font>
 <h4 id="instance.setJustify(enabled)"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">instance.setJustify(enabled)</font></font></h4>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Justify all columns to be the same width</font></font></p>
 <ul>
-<li><code>enabled</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">- boolean for turning justify on or off, </font></font><code>undefined</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">considered true</font></font></li>
+<li><code>enabled</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">- boolean for turning justify on or off,</font></font><code>undefined</code><font style="vertical-align: inherit;"></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Example:</font></font></p>
 <pre><code class="lang-js"><div class="line-numbers">1
@@ -668,10 +670,9 @@ table<font></font>
 '-----------------------'<font></font>
 </code></pre><h4 id="instance.toString()"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">instance.toString()</font></font></h4>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Render the instance as a string for output</font></font></p>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Alias</font></font></strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> : [ </font></font><code>valueOf</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><code>render</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">]</font></font></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Alias</font></font></strong><font style="vertical-align: inherit;"></font><code>valueOf</code><font style="vertical-align: inherit;"></font><code>render</code><font style="vertical-align: inherit;"></font></p>
 <h4 id="instance.toJSON()"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">instance.toJSON()</font></font></h4>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Return the JSON representation of the table, this also allows us to call 
- </font></font><code>JSON.stringify</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">on the instance.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Return the JSON representation of the table, this also allows us to call</font></font><code>JSON.stringify</code><font style="vertical-align: inherit;"></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Example:</font></font></p>
 <pre><code class="lang-js"><div class="line-numbers">1
 2
@@ -709,8 +710,8 @@ table<font></font>
 </code></pre>
 <pre><code><div class="line-numbers">1</div>{<span class="hljs-attr">"title"</span>:<span class="hljs-string">"Title"</span>,<span class="hljs-attr">"heading"</span>:[<span class="hljs-string">"id"</span>,<span class="hljs-string">"name"</span>],<span class="hljs-attr">"rows"</span>:[[<span class="hljs-number">1</span>,<span class="hljs-string">"Bob"</span>],[<span class="hljs-number">2</span>,<span class="hljs-string">"Steve"</span>]]}
 </code></pre><h4 id="instance.fromJSON(obj)"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">instance.fromJSON(obj)</font></font></h4>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Populate the table from json object, should match the </font></font><code>toJSON</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">output above.</font></font></p>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Alias</font></font></strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> : [ </font></font><code>parse</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">]</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Populate the table from json object, should match the</font></font><code>toJSON</code><font style="vertical-align: inherit;"></font></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Alias</font></font></strong><font style="vertical-align: inherit;"></font><code>parse</code><font style="vertical-align: inherit;"></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Example:</font></font></p>
 <pre><code class="lang-js"><div class="line-numbers">1
 2
@@ -730,19 +731,19 @@ table<font></font>
 </code></pre>
 <h4 id="instance.clear()"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">instance.clear()</font></font></h4>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Clear / reset all table data</font></font></p>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Alias</font></font></strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> : [ </font></font><code>reset</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">]</font></font></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Alias</font></font></strong><font style="vertical-align: inherit;"></font><code>reset</code><font style="vertical-align: inherit;"></font></p>
 <h4 id="instance.clearRows()"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">instance.clearRows()</font></font></h4>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Reset all row data, maintains title and headings.</font></font></p>
 <div name="Install" data-unique="Install"></div><h2 id="Install"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Install</font></font></h2>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">With </font></font><a href="https://npmjs.org"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">npm</font></font></a></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">With</font></font><a href="https://npmjs.org"><font style="vertical-align: inherit;"></font></a></p>
 <pre><code><div class="line-numbers">1</div>npm <span class="hljs-keyword">install</span> <span class="hljs-keyword">ascii</span>-<span class="hljs-keyword">table</span>
 </code></pre><div name="Contributors" data-unique="Contributors"></div><h2 id="Contributors"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Contributors</font></font></h2>
-<p><a href="https://github.com/m4olivei"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Matthew Oliveira </font></font></a>
-<a href="https://github.com/coders-kitchen"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Peter Daum</font></font></a></p>
+<p><a href="https://github.com/m4olivei"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Matthew Oliveira</font></font></a>
+<a href="https://github.com/coders-kitchen"><font style="vertical-align: inherit;"></font></a></p>
 <div name="License" data-unique="License"></div><h2 id="License"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">License</font></font></h2>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(The MIT License)</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Copyright (c) 2013 Beau Sorensen</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge , publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</font></font></p>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org |</font></font><a href="../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持我們</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip945221"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip945221" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Click to return on the top page</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../js/common.js"></script><script type="text/javascript" src="../../../../js/docs.js"></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org |</font></font><a href="../../../support.html"><font style="vertical-align: inherit;"></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip635842"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip635842" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Click to return on the top page</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../js/common.js"></script><script type="text/javascript" src="../../../../js/docs.js"></script></body></html>

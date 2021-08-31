@@ -63,7 +63,7 @@ index.html 的内容如下：
 
 [<class>object|toString();toJSON()]
 [<class>EventEmitter|new EventEmitter()|EventEmitter|defaultMaxListeners|on();addListener();prependListener();once();prependOnceListener();off();removeListener();removeAllListeners();setMaxListeners();getMaxListeners();listeners();listenerCount();eventNames();emit()]
-[<this>WebView|type;dev;onopen;onload;onaddress;ontitle;onmove;onresize;onclosed;onmessage|loadUrl();getUrl();setHtml();reload();goBack();goForward();print();printToPDF();executeJavaScript();executeDevToolsMethod();close();postMessage()]
+[<this>WebView|type;dev;onopen;onload;onaddress;ontitle;onmove;onresize;onclosed;onmessage;ondownload|loadUrl();getUrl();setHtml();reload();goBack();goForward();print();printToPDF();executeJavaScript();executeDevToolsMethod();close();postMessage()]
 
 [object] <:- [EventEmitter]
 [EventEmitter] <:- [WebView]
@@ -175,6 +175,14 @@ Function WebView.onclosed;
 
 ```JavaScript
 Function WebView.onmessage;
+```
+
+--------------------------
+### ondownload
+**Function, 查询和绑定接受 webview 内下载事务状态变化事件，相当于 on("download", func);**
+
+```JavaScript
+Function WebView.ondownload;
 ```
 
 ## 成员函数
@@ -606,6 +614,21 @@ Integer WebView.listenerCount(String ev);
 ```
 
 调用参数:
+* ev: String, 指定事件的名称
+
+返回结果:
+* Integer, 返回指定事件的监听器数量
+
+--------------------------
+**查询对象指定事件的监听器数量**
+
+```JavaScript
+Integer WebView.listenerCount(Value o,
+    String ev);
+```
+
+调用参数:
+* o: Value, 指定查询的对象
 * ev: String, 指定事件的名称
 
 返回结果:

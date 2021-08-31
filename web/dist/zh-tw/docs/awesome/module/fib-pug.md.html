@@ -41,6 +41,8 @@
 <li><a href="../../manual/module/ifs/path.md.html" class="notranslate">path</a></li>
 <li><a href="../../manual/module/ifs/path_posix.md.html" class="notranslate">path_posix</a></li>
 <li><a href="../../manual/module/ifs/path_win32.md.html" class="notranslate">path_win32</a></li>
+<li><a href="../../manual/module/ifs/perf_hooks.md.html" class="notranslate">perf_hooks</a></li>
+<li><a href="../../manual/module/ifs/performance.md.html" class="notranslate">performance</a></li>
 <li><a href="../../manual/module/ifs/process.md.html" class="notranslate">process</a></li>
 <li><a href="../../manual/module/ifs/profiler.md.html" class="notranslate">profiler</a></li>
 <li><a href="../../manual/module/ifs/punycode.md.html" class="notranslate">punycode</a></li>
@@ -55,6 +57,7 @@
 <li><a href="../../manual/module/ifs/util.md.html" class="notranslate">util</a></li>
 <li><a href="../../manual/module/ifs/uuid.md.html" class="notranslate">uuid</a></li>
 <li><a href="../../manual/module/ifs/vm.md.html" class="notranslate">vm</a></li>
+<li><a href="../../manual/module/ifs/worker_threads.md.html" class="notranslate">worker_threads</a></li>
 <li><a href="../../manual/module/ifs/ws.md.html" class="notranslate">ws</a></li>
 <li><a href="../../manual/module/ifs/xml.md.html" class="notranslate">xml</a></li>
 <li><a href="../../manual/module/ifs/zip.md.html" class="notranslate">zip</a></li>
@@ -195,9 +198,9 @@
 <li><a href="rakuten.md.html" class="notranslate">Rakuten</a></li>
 </ul>
  </div></div></div>  </div></div><div class="content"><div class="social-share share-component" data-sites="weibo,twitter" data-description="分享"></div> <div name="fib-pug" data-unique="fib-pug"></div><h1 id="fib-pug"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fib-pug</font></font></h1>
-<p><a href="https://github.com/pugjs/pug"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">pugjs</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> is one popular js template engine formerly known as "Jade". It's indentation-sensitive with high-performance. But at some point, it could only run in nodejs (some version of "Jade" can run in browser), because from that point </font></font><a href="https://github.com/pugjs/pug"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">pugjs</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> support APIs such as </font></font><code>renderFile</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">which required I/O runtime.</font></font></p>
+<p><a href="https://github.com/pugjs/pug"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">pugjs</font></font></a><font style="vertical-align: inherit;"></font><a href="https://github.com/pugjs/pug"><font style="vertical-align: inherit;"></font></a><font style="vertical-align: inherit;"></font><code>renderFile</code><font style="vertical-align: inherit;"></font></p>
 <div name="I/O" data-unique="I/O"></div><h2 id="I/O"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">I/O</font></font></h2>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">As of </font></font><code>fs</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">module, luckily, fibjs has similar API with nodejs, we can run pugjs in fibjs, just do some magic hack with fibjs's </font></font><code>sandbox</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">module.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">As of</font></font><code>fs</code><font style="vertical-align: inherit;"></font><code>sandbox</code><font style="vertical-align: inherit;"></font></p>
 <div name="Mechanism" data-unique="Mechanism"></div><h2 id="Mechanism"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Mechanism</font></font></h2>
 <pre><code class="lang-javascript"><div class="line-numbers">1
 2
@@ -235,16 +238,16 @@
 <span class="hljs-comment">// one valid pug module</span>
 <span class="hljs-keyword">const</span> pug = sbox.require(<span class="hljs-string">'pug'</span>, __filename)
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">as code above, just provide property module for orignal </font></font><code>pug</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">module in nodejs, you can run pugjs in fibjs.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">as code above, just provide property module for orignal</font></font><code>pug</code><font style="vertical-align: inherit;"></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">But I can't test all version of fibjs and pug, so I mark the tested version of fibjs and pug in </font></font><code>package.json</code><del><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">and would notice developer if version when running this module in DEBUG mode</font></font></del><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">.</font></font></p>
 <div name="API" data-unique="API"></div><h2 id="API"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">API</font></font></h2>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">I just support some API of </font></font><a href="https://github.com/pugjs/pug"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">pugjs</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> , but I belive it's enough for your project in most cases.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">I just support some API of</font></font><a href="https://github.com/pugjs/pug"><font style="vertical-align: inherit;"></font></a><font style="vertical-align: inherit;"></font></p>
 <ul>
 <li><code>compile</code></li>
 <li><code>render</code></li>
 <li><code>renderFile</code></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">view the parameters of this api in </font></font><a href="https://github.com/pugjs/pug"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">pugjs</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 's page.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">view the parameters of this api in</font></font><a href="https://github.com/pugjs/pug"><font style="vertical-align: inherit;"></font></a><font style="vertical-align: inherit;"></font></p>
 <div name="Sample" data-unique="Sample"></div><h2 id="Sample"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sample</font></font></h2>
 <pre><code class="lang-javascript"><div class="line-numbers">1
 2
@@ -272,4 +275,4 @@
 <font></font>
 <span class="hljs-built_in">console</span>.log(html) <span class="hljs-comment">// '&lt;div&gt;测试变量&lt;/div&gt;'</span>
 </code></pre>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org |</font></font><a href="../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持我們</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip208482"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip208482" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Click to return on the top page</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../js/common.js"></script><script type="text/javascript" src="../../../../js/docs.js"></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org |</font></font><a href="../../../support.html"><font style="vertical-align: inherit;"></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip487527"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip487527" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Click to return on the top page</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../js/common.js"></script><script type="text/javascript" src="../../../../js/docs.js"></script></body></html>

@@ -41,6 +41,8 @@
 <li><a href="path.md.html" class="notranslate">path</a></li>
 <li><a href="path_posix.md.html" class="notranslate">path_posix</a></li>
 <li><a href="path_win32.md.html" class="notranslate">path_win32</a></li>
+<li><a href="perf_hooks.md.html" class="notranslate">perf_hooks</a></li>
+<li><a href="performance.md.html" class="notranslate">performance</a></li>
 <li class="active"><a href="process.md.html" class="notranslate">process</a></li>
 <li><a href="profiler.md.html" class="notranslate">profiler</a></li>
 <li><a href="punycode.md.html" class="notranslate">punycode</a></li>
@@ -55,6 +57,7 @@
 <li><a href="util.md.html" class="notranslate">util</a></li>
 <li><a href="uuid.md.html" class="notranslate">uuid</a></li>
 <li><a href="vm.md.html" class="notranslate">vm</a></li>
+<li><a href="worker_threads.md.html" class="notranslate">worker_threads</a></li>
 <li><a href="ws.md.html" class="notranslate">ws</a></li>
 <li><a href="xml.md.html" class="notranslate">xml</a></li>
 <li><a href="zip.md.html" class="notranslate">zip</a></li>
@@ -202,16 +205,16 @@
 <div name="进程事件" data-unique="进程事件"></div><h2 id="进程事件"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">進程事件</font></font></h2>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">process 模塊對像是 </font></font><a href="../../object/ifs/eventemitter.md.html" class="notranslate">EventEmitter</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 的實例，可以通過註冊事件監聽器響應進程級別的事件。</font></font></p>
 <div name="beforeExit-事件" data-unique="beforeExit-事件"></div><h3 id="beforeExit-事件"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">beforeExit 事件</font></font></h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">當fibjs的任務已經為空，並且沒有額外的工作被添加進來，事件</font></font><code>beforeExit</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">會被觸發</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">當fibjs 的任務已經為空，並且沒有額外的工作被添加進來，事件 </font></font><code>beforeExit</code><font style="vertical-align: inherit;"></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>process.on(<span class="hljs-string">'beforeExit'</span>, exitCode =&gt; {});
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">正常情況下，如果沒有額外的工作被添加到任務隊列，fibjs進程會結束。</font><font style="vertical-align: inherit;">但是如果</font></font><code>beforeExit</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">事件綁定的監聽器的回調函數中，啟動了一個新的任務，比如開啟一個fiber，那麼fibjs進程會繼續運行。</font></font></p>
-<p><a href="process.md.html#exitCode" class="notranslate">process.exitCode</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">作為唯一的參數值傳遞給</font></font><code>beforeExit</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">事件監聽器的回調函數。</font><font style="vertical-align: inherit;">如果進程由於顯式的原因而將要終止，例如直接調用</font></font><a href="process.md.html#exit" class="notranslate">process.exit</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">或拋出未捕獲的異常，</font></font><code>beforeExit</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">事件不會被觸發。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">正常情況下，如果沒有額外的工作被添加到任務隊列，fibjs 進程會結束。</font><font style="vertical-align: inherit;">但是如果 </font></font><code>beforeExit</code><font style="vertical-align: inherit;"></font></p>
+<p><a href="process.md.html#exitCode" class="notranslate">process.exitCode</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">作為唯一的參數值傳遞給  </font><font style="vertical-align: inherit;">如果進程由於顯式的原因而將要終止，例如直接調用</font></font><code>beforeExit</code><font style="vertical-align: inherit;"></font><a href="process.md.html#exit" class="notranslate">process.exit</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">或拋出未捕獲的異常，</font></font><code>beforeExit</code><font style="vertical-align: inherit;"></font></p>
 <div name="exit-事件" data-unique="exit-事件"></div><h3 id="exit-事件"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">exit 事件</font></font></h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">當fibjs退出時，事件</font></font><code>exit</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">會被觸發，一旦所有與</font></font><code>exit</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">事件綁定的監聽器執行完成，進程會終止</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">當fibjs 退出時，事件 </font></font><code>exit</code><font style="vertical-align: inherit;"></font><code>exit</code><font style="vertical-align: inherit;"></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>process.on(<span class="hljs-string">'exit'</span>, exitCode =&gt; {});
 </code></pre>
-<p><code>exit</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 事件監聽器的回調函數，只有一個入參，這個參數的值可以是 </font></font><a href="process.md.html#exitCode" class="notranslate">process.exitCode</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 的屬性值，或者是調用 </font></font><a href="process.md.html#exit" class="notranslate">process.exit</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">方法時傳入的</font></font><code>exitCode</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">值。</font></font></p>
+<p><code>exit</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 事件監聽器的回調函數，只有一個入參，這個參數的值可以是 </font></font><a href="process.md.html#exitCode" class="notranslate">process.exitCode</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 的屬性值，或者是調用 </font></font><a href="process.md.html#exit" class="notranslate">process.exit</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">方法時傳入的 </font></font><code>exitCode</code><font style="vertical-align: inherit;"></font></p>
 <div name="Signal-事件" data-unique="Signal-事件"></div><h3 id="Signal-事件"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Signal 事件</font></font></h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">當fibjs 進程接收到一個信號時，會觸發信號事件，目前支持的信號有SIGINT 和SIGTERM。</font><font style="vertical-align: inherit;">每個事件名稱，以信號名稱的大寫表示(比如事件'SIGINT' 對應信號SIGINT)。</font></font></strong></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">信號事件不同於其它進程事件，信號事件是搶占的，當信號發生時，無論當前在 </font></font><a href="io.md.html" class="notranslate">io</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">操作，還是JavaScript 運算，都會盡快觸發相應事件。</font><font style="vertical-align: inherit;">比如你可以用下面的代碼，中斷當前應用，並輸出運行狀態：</font></font></p>
@@ -317,6 +320,33 @@ process.on(<span class="hljs-string">'SIGINT'</span>, () =&gt; {<font></font>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返回結果:</font></font></p>
 <ul>
 <li><span class="notranslate">Number</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 返回表示時間的數值</font></font></li>
+</ul>
+<hr>
+<div name="cpuUsage" data-unique="cpuUsage"></div><h3 id="cpuUsage" class="notranslate">cpuUsage</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">查詢當前進程在用戶和系統代碼中花費的時間，其值為微秒值（百萬分之一秒）</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Object</span> process.cpuUsage(<span class="hljs-built_in">Object</span> previousValue = {});
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">調用參數:</font></font></p>
+<ul>
+<li><span class="notranslate">previousValue</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Object, 指定上一次查詢的時間</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返回結果:</font></font></p>
+<ul>
+<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 返回包含時間報告</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">內存報告生成類似以下結果：</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4</div>{
+    <span class="hljs-string">"user"</span>: <span class="hljs-number">132379</span>,
+    <span class="hljs-string">"system"</span>: <span class="hljs-number">50507</span><font></font>
+}<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">其中：</font></font></p>
+<ul>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">user 返回進程在用戶代碼中花費的時間</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">system 返回進程在系統代碼中花費的時間</font></font></li>
 </ul>
 <hr>
 <div name="memoryUsage" data-unique="memoryUsage"></div><h3 id="memoryUsage" class="notranslate">memoryUsage</h3>
@@ -439,4 +469,4 @@ process.on(<span class="hljs-string">'SIGINT'</span>, () =&gt; {<font></font>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Integer, 查詢和設置當前進程的退出碼</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Integer process.exitCode;
 </code></pre>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org |</font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持我們</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip282234"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip282234" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Click to return on the top page</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org |</font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip767954"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip767954" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Click to return on the top page</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>

@@ -41,6 +41,8 @@
 <li><a href="../manual/module/ifs/path.md.html" class="notranslate">path</a></li>
 <li><a href="../manual/module/ifs/path_posix.md.html" class="notranslate">path_posix</a></li>
 <li><a href="../manual/module/ifs/path_win32.md.html" class="notranslate">path_win32</a></li>
+<li><a href="../manual/module/ifs/perf_hooks.md.html" class="notranslate">perf_hooks</a></li>
+<li><a href="../manual/module/ifs/performance.md.html" class="notranslate">performance</a></li>
 <li><a href="../manual/module/ifs/process.md.html" class="notranslate">process</a></li>
 <li><a href="../manual/module/ifs/profiler.md.html" class="notranslate">profiler</a></li>
 <li><a href="../manual/module/ifs/punycode.md.html" class="notranslate">punycode</a></li>
@@ -55,6 +57,7 @@
 <li><a href="../manual/module/ifs/util.md.html" class="notranslate">util</a></li>
 <li><a href="../manual/module/ifs/uuid.md.html" class="notranslate">uuid</a></li>
 <li><a href="../manual/module/ifs/vm.md.html" class="notranslate">vm</a></li>
+<li><a href="../manual/module/ifs/worker_threads.md.html" class="notranslate">worker_threads</a></li>
 <li><a href="../manual/module/ifs/ws.md.html" class="notranslate">ws</a></li>
 <li><a href="../manual/module/ifs/xml.md.html" class="notranslate">xml</a></li>
 <li><a href="../manual/module/ifs/zip.md.html" class="notranslate">zip</a></li>
@@ -195,7 +198,7 @@
 <li><a href="../awesome/module/rakuten.md.html" class="notranslate">Rakuten</a></li>
 </ul>
  </div></div></div>  </div></div><div class="content"><div class="social-share share-component" data-sites="weibo,twitter" data-description="分享"></div> <div name="域名路由" data-unique="域名路由"></div><h1 id="域名路由"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">域名路由</font></font></h1>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">從0.28.0開始,</font></font><code>fibjs</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的mq.Routing對象支持HOST方法作為域名路由.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">從0.28.0 開始,</font></font><code>fibjs</code><font style="vertical-align: inherit;"></font></p>
 <pre><code class="lang-javascript"><div class="line-numbers">1
 2
 3
@@ -225,7 +228,7 @@ rt.append(<span class="hljs-string">'host'</span>, <span class="hljs-string">'fi
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">我們來看一些例子.</font></font></p>
 <div name="简单例子" data-unique="简单例子"></div><h2 id="简单例子"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">簡單例子</font></font></h2>
 <div name="简单的-fileHandlers" data-unique="简单的-fileHandlers"></div><h3 id="简单的-fileHandlers"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">簡單的fileHandlers</font></font></h3>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">假設域名fibjs.org已經被綁定到我們應用所在的機器(出於測試目的,你也可以通過在本地修改Hosts達到這一綁定效果),而我們希望通過</font></font><code>file.fibjs.org</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">可以下載機器上FILE_DIR目錄的文件資源,我們可以這樣做:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">假設域名fibjs.org 已經被綁定到我們應用所在的機器(出於測試目的, 你也可以通過在本地修改Hosts 達到這一綁定效果), 而我們希望通過 </font></font><code>file.fibjs.org</code><font style="vertical-align: inherit;"></font></p>
 <pre><code class="lang-javascript"><div class="line-numbers">1
 2
 3
@@ -239,7 +242,7 @@ rt.append(<span class="hljs-string">'host'</span>, <span class="hljs-string">'fi
 fileRoutes.host(<span class="hljs-string">'file.fibjs.org'</span>, http.fileHandler(FILE_DIR))
 </code></pre>
 <div name="前端资源-host" data-unique="前端资源-host"></div><h3 id="前端资源-host"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">前端資源host</font></font></h3>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">典型的場景是,編譯好的前端應用可能會發佈到機器上,比如存到了</font></font><code>/home/frontend/assets/</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">目錄</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">典型的場景是, 編譯好的前端應用可能會發佈到機器上, 比如存到了 </font></font><code>/home/frontend/assets/</code><font style="vertical-align: inherit;"></font></p>
 <pre><code class="lang-bash"><div class="line-numbers">1
 2
 3
@@ -254,7 +257,7 @@ fileRoutes.host(<span class="hljs-string">'file.fibjs.org'</span>, http.fileHand
 <pre><code class="lang-javascript"><div class="line-numbers">1</div>fileRoutes.host(<span class="hljs-string">'festatic.fibjs.org'</span>, http.fileHandlers(<span class="hljs-string">'/home/frontend/assets/'</span>))
 </code></pre>
 <div name="api-服务器" data-unique="api-服务器"></div><h3 id="api-服务器"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">api 服務器</font></font></h3>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">假設你的機器上存在api服務器,你希望將他們統一到</font></font><code>api.fibjs.org</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">這個域名,但分配不同的path ,如:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">假設你的機器上存在api 服務器, 你希望將他們統一到 </font></font><code>api.fibjs.org</code><font style="vertical-align: inherit;"></font></p>
 <table>
 <thead>
 <tr>
@@ -321,7 +324,7 @@ apiRoutes.host(<span class="hljs-string">'api.fibjs.org'</span>, {
     <span class="hljs-string">'/biz2'</span>: <span class="hljs-function">(<span class="hljs-params">req</span>) =&gt;</span> proxyTo(req, <span class="hljs-string">`http://127.0.0.1:9007`</span>),<font></font>
 })<font></font>
 </code></pre>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">注意</font></font></strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">api.fibjs.org必須已經綁定到當前機器</font></font></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">注意</font></font></strong><font style="vertical-align: inherit;"></font></p>
 <div name="复杂例子" data-unique="复杂例子"></div><h2 id="复杂例子"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">複雜例子</font></font></h2>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">若無其它聲明, 以下例子中, 存在以下函數:</font></font></p>
 <pre><code class="lang-javascript"><div class="line-numbers">1
@@ -442,5 +445,5 @@ assert.equal( invokePathFromHost(<span class="hljs-string">'/user/information'</
 }<font></font>
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">接下來,你只需要將上例中的routes 掛載到一個http(s)Server, 它就可以開始工作了. 如果這個server 監聽了所在機器的默認端口(一般是80), 則一個根據域名分流不同路由的網關服務就搭建好了—— 這意味著, 完成同樣的功能, 你可以僅使用fibjs 的mq.Routing 而不一定非要安裝nginx/apache/tomcat/iis 等傳統網關服務.</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">👉 【</font></font><a href="x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs中X509證書的使用</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">】</font></font></p>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org |</font></font><a href="../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持我們</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip252622"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip252622" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Click to return on the top page</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../js/common.js"></script><script type="text/javascript" src="../../../js/docs.js"></script></body></html>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">👉 【</font></font><a href="x509.md.html"><font style="vertical-align: inherit;"></font></a><font style="vertical-align: inherit;"></font></p>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org |</font></font><a href="../../support.html"><font style="vertical-align: inherit;"></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip267251"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip267251" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Click to return on the top page</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../js/common.js"></script><script type="text/javascript" src="../../../js/docs.js"></script></body></html>

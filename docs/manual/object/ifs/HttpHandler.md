@@ -24,7 +24,7 @@ var hdlr = new http.Handler(...);
 
 [<class>object|toString();toJSON()]
 [<class>Handler|new Handler()|invoke()]
-[<this>HttpHandler|new HttpHandler()|maxHeadersCount;maxBodySize;serverName;handler|enableCrossOrigin()]
+[<this>HttpHandler|new HttpHandler()|maxHeadersCount;maxBodySize;enableEncoding;serverName;handler|enableCrossOrigin()]
 
 [object] <:- [Handler]
 [Handler] <:- [HttpHandler]
@@ -57,6 +57,14 @@ Integer HttpHandler.maxHeadersCount;
 
 ```JavaScript
 Integer HttpHandler.maxBodySize;
+```
+
+--------------------------
+### enableEncoding
+**Boolean, 自动解压缩功能开关，默认关闭**
+
+```JavaScript
+Boolean HttpHandler.enableEncoding;
 ```
 
 --------------------------

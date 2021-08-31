@@ -41,6 +41,8 @@
 <li><a href="../manual/module/ifs/path.md.html" class="notranslate">path</a></li>
 <li><a href="../manual/module/ifs/path_posix.md.html" class="notranslate">path_posix</a></li>
 <li><a href="../manual/module/ifs/path_win32.md.html" class="notranslate">path_win32</a></li>
+<li><a href="../manual/module/ifs/perf_hooks.md.html" class="notranslate">perf_hooks</a></li>
+<li><a href="../manual/module/ifs/performance.md.html" class="notranslate">performance</a></li>
 <li><a href="../manual/module/ifs/process.md.html" class="notranslate">process</a></li>
 <li><a href="../manual/module/ifs/profiler.md.html" class="notranslate">profiler</a></li>
 <li><a href="../manual/module/ifs/punycode.md.html" class="notranslate">punycode</a></li>
@@ -55,6 +57,7 @@
 <li><a href="../manual/module/ifs/util.md.html" class="notranslate">util</a></li>
 <li><a href="../manual/module/ifs/uuid.md.html" class="notranslate">uuid</a></li>
 <li><a href="../manual/module/ifs/vm.md.html" class="notranslate">vm</a></li>
+<li><a href="../manual/module/ifs/worker_threads.md.html" class="notranslate">worker_threads</a></li>
 <li><a href="../manual/module/ifs/ws.md.html" class="notranslate">ws</a></li>
 <li><a href="../manual/module/ifs/xml.md.html" class="notranslate">xml</a></li>
 <li><a href="../manual/module/ifs/zip.md.html" class="notranslate">zip</a></li>
@@ -261,7 +264,7 @@ describe(<span class="hljs-string">'hello, test'</span>, () =&gt; {<font></font>
 <font></font>
 test.run();<font></font>
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">保存為</font></font><code>test.js</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">後，在命令行執行</font></font><code>fibjs test.js</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，會看到下面的輸出，一個基本的測試框架就寫好了。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">保存為 </font></font><code>test.js</code><font style="vertical-align: inherit;"></font><code>fibjs test.js</code><font style="vertical-align: inherit;"></font></p>
 <pre><code class="lang-sh"><div class="line-numbers">1
 2
 3
@@ -466,7 +469,7 @@ test.run();<font></font>
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">根據我們的服務器設計，我們還有一組靜態文件服務，按照上面的示例，相信你很快可以補寫出這部分測試用例。</font></font></p>
 <div name="一键测试" data-unique="一键测试"></div><h2 id="一键测试"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">一鍵測試</font></font></h2>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">經過上面的介紹，我們已經可以很快建立起測試用例了。</font><font style="vertical-align: inherit;">但是為了使用這個測試腳本，必須先啟動服務器，這樣很不方便，我們希望運行</font></font><code>test.js</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">能夠直接完成測試。</font><font style="vertical-align: inherit;">我們可以用以下代碼來實現：</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">經過上面的介紹，我們已經可以很快建立起測試用例了。</font><font style="vertical-align: inherit;">但是為了使用這個測試腳本，必須先啟動服務器，這樣很不方便，我們希望運行  </font><font style="vertical-align: inherit;">我們可以用以下代碼來實現：</font></font><code>test.js</code><font style="vertical-align: inherit;"></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
@@ -553,7 +556,7 @@ describe(<span class="hljs-string">'hello, test'</span>, () =&gt; {
 <font></font>
 process.exit(test.run());<font></font>
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">這段代碼的第6~10行里，我們增加了一段啟動</font></font><code>main.js</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的代碼，並且稍微等待一下，之後再開始測試。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">這段代碼的第6~10 行里，我們增加了一段啟動 </font></font><code>main.js</code><font style="vertical-align: inherit;"></font></p>
 <div name="代码覆盖检查" data-unique="代码覆盖检查"></div><h2 id="代码覆盖检查"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">代碼覆蓋檢查</font></font></h2>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">好的測試用例需要考慮測試用例需要覆蓋業務的每一個分支，以確定業務執行正確，此時可以使用代碼覆蓋檢查，來確定測試是否完整。</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">這個過程很簡單，只需要在測試的時候增加--cov 參數即可：</font></font></p>
@@ -562,8 +565,6 @@ process.exit(test.run());<font></font>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">測試完成後，會在當前目錄生成一個fibjs-xxxx.lcov 的日誌文件，此時需要分析日誌並生成報告：</font></font></p>
 <pre><code class="lang-sh"><div class="line-numbers">1</div>fibjs --cov-process fibjs-xxxx.lcov out
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">便可以在out目錄生成一組分析報告。</font><font style="vertical-align: inherit;">進入目錄查閱，可以看到以下頁面：
-</font></font><img src="./imgs/cov.png" alt="cov"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
-可以看到，</font></font><code>main.js</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的代碼覆蓋達到了100%，表示測試完全覆蓋了業務邏輯。</font><font style="vertical-align: inherit;">點擊</font></font><code>main.js</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">進一步可以看到更詳細的報告。</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">👉 【</font></font><a href="profiler.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">找出性能殺手</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">】</font></font></p>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org |</font></font><a href="../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持我們</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip589846"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip589846" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Click to return on the top page</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../js/common.js"></script><script type="text/javascript" src="../../../js/docs.js"></script></body></html>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">便可以在out 目錄生成一組分析報告。</font><font style="vertical-align: inherit;">進入目錄查閱，可以看到以下頁面：</font><font style="vertical-align: inherit;">點擊 </font></font><img src="./imgs/cov.png" alt="cov"><font style="vertical-align: inherit;"></font><code>main.js</code><font style="vertical-align: inherit;"></font><code>main.js</code><font style="vertical-align: inherit;"></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">👉 【</font></font><a href="profiler.md.html"><font style="vertical-align: inherit;"></font></a><font style="vertical-align: inherit;"></font></p>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org |</font></font><a href="../../support.html"><font style="vertical-align: inherit;"></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip166630"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip166630" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Click to return on the top page</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../js/common.js"></script><script type="text/javascript" src="../../../js/docs.js"></script></body></html>

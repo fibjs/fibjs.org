@@ -17,7 +17,7 @@ var buf = new Buffer();
 #.class: fill=white
 
 [<class>object|toString();toJSON()]
-[<this>Buffer|new Buffer()|operator\[\];@iterator()|Buffer|isBuffer();from();concat();alloc();allocUnsafe();allocUnsafeSlow();byteLength();compare();isEncoding()|length|resize();append();write();fill();indexOf();compare();copy();set();readUInt8();readUInt16LE();readUInt16BE();readUInt32LE();readUInt32BE();readUIntLE();readUIntBE();readInt64LE();readInt64BE();readInt8();readInt16LE();readInt16BE();readInt32LE();readInt32BE();readIntLE();readIntBE();writeInt64LE();writeInt64BE();readFloatLE();readFloatBE();readDoubleLE();readDoubleBE();writeUInt8();writeUInt16LE();writeUInt16BE();writeUInt32LE();writeUInt32BE();writeUIntLE();writeUIntBE();writeInt8();writeInt16LE();writeInt16BE();writeInt32LE();writeInt32BE();writeIntLE();writeIntBE();writeFloatLE();writeFloatBE();writeDoubleLE();writeDoubleBE();slice();join();reverse();equals();hex();base64();keys();values();entries();toArray();toString()]
+[<this>Buffer|new Buffer()|operator\[\];@iterator()|Buffer|isBuffer();from();concat();alloc();allocUnsafe();allocUnsafeSlow();byteLength();compare();isEncoding()|length;buffer|resize();append();write();fill();indexOf();compare();copy();set();readUInt8();readUInt16LE();readUInt16BE();readUInt32LE();readUInt32BE();readUIntLE();readUIntBE();readInt64LE();readInt64BE();readInt8();readInt16LE();readInt16BE();readInt32LE();readInt32BE();readIntLE();readIntBE();writeInt64LE();writeInt64BE();readFloatLE();readFloatBE();readDoubleLE();readDoubleBE();writeUInt8();writeUInt16LE();writeUInt16BE();writeUInt32LE();writeUInt32BE();writeUIntLE();writeUIntBE();writeInt8();writeInt16LE();writeInt16BE();writeInt32LE();writeInt32BE();writeIntLE();writeIntBE();writeFloatLE();writeFloatBE();writeDoubleLE();writeDoubleBE();slice();join();reverse();equals();hex();base64();keys();values();entries();toArray();toString()]
 
 [object] <:- [Buffer]
 ```
@@ -384,6 +384,14 @@ static Boolean Buffer.isEncoding(String codec);
 
 ```JavaScript
 readonly Integer Buffer.length;
+```
+
+--------------------------
+### buffer
+**ArrayBuffer, 以 ArrayBuffer 格式返回缓存数据**
+
+```JavaScript
+readonly ArrayBuffer Buffer.buffer;
 ```
 
 ## 成员函数

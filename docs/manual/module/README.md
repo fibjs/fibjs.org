@@ -7,9 +7,10 @@
   - [gui](ifs/gui.md) - gui 模块
   - [os](ifs/os.md) - 操作系统与文件系统处理模块
   - [process](ifs/process.md) - 进程处理模块，用以管理当前进程的资源
-  - [registry](ifs/registry.md) - Windows 注册表访问模块
   - [timers](ifs/timers.md) - timers 模块
   - [tty](ifs/tty.md) - tty 模块
+  - [vm](ifs/vm.md) - 安全沙箱模块，用于隔离不同安全等级的运行环境
+  - [worker_threads](ifs/worker_threads.md) - worker 基础模块
 * File System
   - [fs](ifs/fs.md) - 文件系统处理模块
   - [io](ifs/io.md) - 输入输出处理模块
@@ -44,14 +45,16 @@
   - [zlib](ifs/zlib.md) - zlib 压缩解压模块
 * Test Suite
   - [assert](ifs/assert.md) - 断言测试模块，如果测试值为假，则报错，报错行为可设定继续运行或者错误抛出
+  - [performance](ifs/performance.md) - performance 基础性能监控模块
+  - [perf_hooks](ifs/perf_hooks.md) - perf_hooks 基础模块
   - [profiler](ifs/profiler.md) - 内存 profiler 模块
   - [test](ifs/test.md) - 测试套件模块，用以定义管理测试套件
 * Utility
   - [db](ifs/db.md) - 数据库访问模块
   - [gd](ifs/gd.md) - 图像文件处理模块
+  - [registry](ifs/registry.md) - Windows 注册表访问模块
   - [util](ifs/util.md) - 常用工具模块
   - [uuid](ifs/uuid.md) - uuid 唯一 id 模块
-  - [vm](ifs/vm.md) - 安全沙箱模块，用于隔离不同安全等级的运行环境
   - [xml](ifs/xml.md) - xml 处理模块
 * [constants](ifs/constants.md) - 常用常量定义模块
 * [fs_constants](ifs/fs_constants.md) - fs 模块常用常量定义模块

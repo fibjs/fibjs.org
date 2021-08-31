@@ -17,7 +17,7 @@ var k = new crypto.X509Cert();
 #.class: fill=white
 
 [<class>object|toString();toJSON()]
-[<this>X509Cert|new X509Cert()|version;serial;issuer;subject;notBefore;notAfter;ca;pathlen;usage;type;publicKey;next|load();loadFile();loadRootCerts();verify();dump();clear()]
+[<this>X509Cert|new X509Cert()|version;serial;issuer;subject;notBefore;notAfter;ca;pathlen;usage;type;sig_md;sig_pk;publicKey;next|load();loadFile();loadRootCerts();verify();dump();clear()]
 
 [object] <:- [X509Cert]
 ```
@@ -137,6 +137,22 @@ readonly String X509Cert.type;
 ```
 
 结果为全部或部分以下内容：client, server, email, objsign, reserved, sslCA, emailCA, objCA
+
+--------------------------
+### sig_md
+**Integer, 获取证书的摘要算法**
+
+```JavaScript
+readonly Integer X509Cert.sig_md;
+```
+
+--------------------------
+### sig_pk
+**Integer, 获取证书的签名算法**
+
+```JavaScript
+readonly Integer X509Cert.sig_pk;
+```
 
 --------------------------
 ### publicKey
