@@ -182,6 +182,24 @@ static Buffer crypto.pseudoRandomBytes(Integer size) async;
 * [Buffer](../../object/ifs/Buffer.md), 返回生成的随机数
 
 --------------------------
+### randomFill
+**使用随机数填充指定的 [Buffer](../../object/ifs/Buffer.md)，使用 havege 生成器**
+
+```JavaScript
+static Buffer crypto.randomFill(Buffer buffer,
+    Integer offset = 0,
+    Integer size = -1) async;
+```
+
+调用参数:
+* buffer: [Buffer](../../object/ifs/Buffer.md), 指定生成的 [Buffer](../../object/ifs/Buffer.md)
+* offset: Integer, 指定起始偏移，缺省为 0
+* size: Integer, 指定生成的随机数尺寸，缺省为 buffer.length - offset
+
+返回结果:
+* [Buffer](../../object/ifs/Buffer.md), 返回生成的随机数
+
+--------------------------
 ### randomArt
 **生成给定数据的可视化字符图像**
 
@@ -345,27 +363,11 @@ const crypto.AES = 1;
 ```
 
 --------------------------
-### CAMELLIA
-**指定对称加密算法 CAMELLIA，支持 128, 192, 256 位 key，分组密码工作模式支持 ECB, CBC, CFB128, CTR, GCM，CCM**
-
-```JavaScript
-const crypto.CAMELLIA = 2;
-```
-
---------------------------
 ### DES
 **指定对称加密算法 DES，支持 64 位 key，分组密码工作模式支持 ECB, CBC**
 
 ```JavaScript
-const crypto.DES = 3;
-```
-
---------------------------
-### DES_EDE
-**指定对称加密算法 DES-EDE，支持 128 位 key，分组密码工作模式支持 ECB, CBC**
-
-```JavaScript
-const crypto.DES_EDE = 4;
+const crypto.DES = 2;
 ```
 
 --------------------------
@@ -373,23 +375,15 @@ const crypto.DES_EDE = 4;
 **指定对称加密算法 DES-EDE3，支持 192 位 key，分组密码工作模式支持 ECB, CBC**
 
 ```JavaScript
-const crypto.DES_EDE3 = 5;
+const crypto.DES_EDE3 = 3;
 ```
 
 --------------------------
-### BLOWFISH
-**指定对称加密算法 BLOWFISH，支持 192 位 key，分组密码工作模式支持 ECB, CBC, CFB64, CTR**
+### CAMELLIA
+**指定对称加密算法 CAMELLIA，支持 128, 192, 256 位 key，分组密码工作模式支持 ECB, CBC, CFB128, CTR, GCM，CCM**
 
 ```JavaScript
-const crypto.BLOWFISH = 6;
-```
-
---------------------------
-### ARC4
-**指定对称加密算法 ARC4，支持 40, 56, 64, 128 位 key**
-
-```JavaScript
-const crypto.ARC4 = 7;
+const crypto.CAMELLIA = 4;
 ```
 
 --------------------------
@@ -397,7 +391,7 @@ const crypto.ARC4 = 7;
 **指定对称加密算法 ARIA，支持 128, 192, 256 位 key，分组密码工作模式支持 ECB, CBC, CFB128, CTR, GCM，CCM**
 
 ```JavaScript
-const crypto.ARIA = 8;
+const crypto.ARIA = 5;
 ```
 
 --------------------------
@@ -405,7 +399,7 @@ const crypto.ARIA = 8;
 **指定对称加密算法 CHACHA20，支持 256 位 key，分组密码工作模式支持 POLY1305**
 
 ```JavaScript
-const crypto.CHACHA20 = 9;
+const crypto.CHACHA20 = 6;
 ```
 
 --------------------------
@@ -413,7 +407,7 @@ const crypto.CHACHA20 = 9;
 **指定对称加密算法 SM4, 分组密码工作模式支持 ECB, CBC**
 
 ```JavaScript
-const crypto.SM4 = 10;
+const crypto.SM4 = 7;
 ```
 
 --------------------------

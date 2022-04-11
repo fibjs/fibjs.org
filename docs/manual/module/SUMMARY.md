@@ -1,5 +1,6 @@
 * [assert](ifs/assert.md)
 * [base32](ifs/base32.md)
+* [base58](ifs/base58.md)
 * [base64](ifs/base64.md)
 * [child_process](ifs/child_process.md)
 * [console](ifs/console.md)

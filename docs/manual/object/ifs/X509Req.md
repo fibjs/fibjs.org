@@ -37,13 +37,13 @@ new X509Req();
 ```JavaScript
 new X509Req(String subject,
     PKey key,
-    Integer hash = hash.SHA1);
+    Integer hash = hash.SHA256);
 ```
 
 调用参数:
 * subject: String, 证书的主题可分辨名称
 * key: [PKey](PKey.md), 证书的公钥
-* hash: Integer, 证书摘要算法，缺省为 [hash.SHA1](../../module/ifs/hash.md#SHA1)
+* hash: Integer, 证书摘要算法，缺省为 [hash.SHA256](../../module/ifs/hash.md#SHA256)
 
 --------------------------
 **X509Req 构造函数，加载一个 DER 格式的证书请求**

@@ -117,22 +117,6 @@ static readonly X509Cert ssl.ca;
 static Integer ssl.verification;
 ```
 
---------------------------
-### min_version
-**Integer, 设定最低版本支持，缺省 ssl3**
-
-```JavaScript
-static Integer ssl.min_version;
-```
-
---------------------------
-### max_version
-**Integer, 设定最高版本支持，缺省 tls1_1**
-
-```JavaScript
-static Integer ssl.max_version;
-```
-
 ## 常量
         
 ### VERIFY_NONE
@@ -188,37 +172,5 @@ const ssl.BADCERT_CN_MISMATCH = 4;
 
 ```JavaScript
 const ssl.BADCERT_NOT_TRUSTED = 8;
-```
-
---------------------------
-### ssl3
-**ssl 协议版本 ssl 3.0**
-
-```JavaScript
-const ssl.ssl3 = 0;
-```
-
---------------------------
-### tls1
-**ssl 协议版本 tls 1.0**
-
-```JavaScript
-const ssl.tls1 = 1;
-```
-
---------------------------
-### tls1_1
-**ssl 协议版本 tls 1.1**
-
-```JavaScript
-const ssl.tls1_1 = 2;
-```
-
---------------------------
-### tls1_2
-**ssl 协议版本 tls 1.2**
-
-```JavaScript
-const ssl.tls1_2 = 3;
 ```
 

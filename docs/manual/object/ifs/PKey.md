@@ -17,7 +17,7 @@ var k = new crypto.PKey();
 #.class: fill=white
 
 [<class>object|toString();toJSON()]
-[<this>PKey|new PKey()|name;keySize;publicKey|genRsaKey();genEcKey();genSm2Key();isPrivate();clone();importKey();importFile();exportPem();exportDer();exportJson();encrypt();decrypt();sign();verify()]
+[<this>PKey|new PKey()|name;curve;keySize;sigType;publicKey|genRsaKey();genEcKey();genSm2Key();isPrivate();clone();importKey();importFile();exportPem();exportDer();exportJson();equal();encrypt();decrypt();sign();verify();computeSecret()]
 
 [object] <:- [PKey]
 ```
@@ -124,11 +124,27 @@ readonly String PKey.name;
 ```
 
 --------------------------
+### curve
+**String, 返回当前算法的椭圆曲线名称，仅用于 EC 和 SM2**
+
+```JavaScript
+readonly String PKey.curve;
+```
+
+--------------------------
 ### keySize
 **Integer, 返回当前算法密码长度，以位为单位**
 
 ```JavaScript
 readonly Integer PKey.keySize;
+```
+
+--------------------------
+### sigType
+**String, 返回和设置当前对象签名算法**
+
+```JavaScript
+String PKey.sigType;
 ```
 
 --------------------------
@@ -326,6 +342,20 @@ Object PKey.exportJson();
 * Object, 当前 key 的 DER 格式编码
 
 --------------------------
+### equal
+**比较两个公/私钥是否相同**
+
+```JavaScript
+Boolean PKey.equal(PKey key);
+```
+
+调用参数:
+* key: PKey, 指定对方的公/私钥
+
+返回结果:
+* Boolean, 相同则返回 true
+
+--------------------------
 ### encrypt
 **使用当前算法密码公钥加密数据**
 
@@ -370,6 +400,21 @@ Buffer PKey.sign(Buffer data,
 * [Buffer](Buffer.md), 返回签名后的数据
 
 --------------------------
+**使用当前算法密码私钥定向签名签名数据**
+
+```JavaScript
+Buffer PKey.sign(Buffer data,
+    PKey key) async;
+```
+
+调用参数:
+* data: [Buffer](Buffer.md), 指定要签名的数据
+* key: PKey, 验证方公钥
+
+返回结果:
+* [Buffer](Buffer.md), 返回签名后的数据
+
+--------------------------
 ### verify
 **使用当前算法密码公钥验证数据**
 
@@ -386,6 +431,37 @@ Boolean PKey.verify(Buffer data,
 
 返回结果:
 * Boolean, 返回验证后的结果
+
+--------------------------
+**使用当前算法密码公钥定向验证签名**
+
+```JavaScript
+Boolean PKey.verify(Buffer data,
+    Buffer sign,
+    PKey key) async;
+```
+
+调用参数:
+* data: [Buffer](Buffer.md), 指定要验证的数据
+* sign: [Buffer](Buffer.md), 指定要验证的签名
+* key: PKey, 验证方私钥
+
+返回结果:
+* Boolean, 返回验证后的结果
+
+--------------------------
+### computeSecret
+**使用当前算法计算椭圆曲线 Diffie-Hellman (ECDH) 共享密钥**
+
+```JavaScript
+Buffer PKey.computeSecret(PKey publicKey) async;
+```
+
+调用参数:
+* publicKey: PKey, 指定对方的公钥
+
+返回结果:
+* [Buffer](Buffer.md), 返回计算出的共享密钥
 
 --------------------------
 ### toString

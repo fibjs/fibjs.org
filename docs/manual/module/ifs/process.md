@@ -231,6 +231,25 @@ static Value process.binding(String name);
 返回结果:
 * Value, 返回指定的内部模块
 
+--------------------------
+### disconnect
+**关闭与父进程的 ipc 管道**
+
+```JavaScript
+static process.disconnect();
+```
+
+--------------------------
+### send
+**向父进程发送一个消息**
+
+```JavaScript
+static process.send(Value msg);
+```
+
+调用参数:
+* msg: Value, 指定发送的消息
+
 ## 静态属性
         
 ### argv
@@ -342,5 +361,13 @@ static readonly Stream process.stderr;
 
 ```JavaScript
 static Integer process.exitCode;
+```
+
+--------------------------
+### connected
+**Boolean, 查询与父进程的管道是否正常连接**
+
+```JavaScript
+static readonly Boolean process.connected;
 ```
 

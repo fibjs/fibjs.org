@@ -19,34 +19,6 @@ static Digest hash.digest(Integer algo,
 * [Digest](../../object/ifs/Digest.md), 返回构造的信息摘要对象
 
 --------------------------
-### md2
-**创建一个 MD2 信息摘要运算对象**
-
-```JavaScript
-static Digest hash.md2(Buffer data = NULL);
-```
-
-调用参数:
-* data: [Buffer](../../object/ifs/Buffer.md), 创建同时更新的二进制数据，缺省为 null，不更新数据
-
-返回结果:
-* [Digest](../../object/ifs/Digest.md), 返回构造的信息摘要对象
-
---------------------------
-### md4
-**创建一个 MD4 信息摘要运算对象**
-
-```JavaScript
-static Digest hash.md4(Buffer data = NULL);
-```
-
-调用参数:
-* data: [Buffer](../../object/ifs/Buffer.md), 创建同时更新的二进制数据，缺省为 null，不更新数据
-
-返回结果:
-* [Digest](../../object/ifs/Digest.md), 返回构造的信息摘要对象
-
---------------------------
 ### md5
 **创建一个 MD5 信息摘要运算对象**
 
@@ -187,38 +159,6 @@ static Digest hash.hmac(Integer algo,
 
 调用参数:
 * algo: Integer, 指定摘要运算算法
-* key: [Buffer](../../object/ifs/Buffer.md), 二进制签名密钥
-* data: [Buffer](../../object/ifs/Buffer.md), 创建同时更新的二进制数据，缺省为 null，不更新数据
-
-返回结果:
-* [Digest](../../object/ifs/Digest.md), 返回构造的信息摘要对象
-
---------------------------
-### hmac_md2
-**创建一个 MD2 信息摘要签名运算对象**
-
-```JavaScript
-static Digest hash.hmac_md2(Buffer key,
-    Buffer data = NULL);
-```
-
-调用参数:
-* key: [Buffer](../../object/ifs/Buffer.md), 二进制签名密钥
-* data: [Buffer](../../object/ifs/Buffer.md), 创建同时更新的二进制数据，缺省为 null，不更新数据
-
-返回结果:
-* [Digest](../../object/ifs/Digest.md), 返回构造的信息摘要对象
-
---------------------------
-### hmac_md4
-**创建一个 MD4 信息摘要签名运算对象**
-
-```JavaScript
-static Digest hash.hmac_md4(Buffer key,
-    Buffer data = NULL);
-```
-
-调用参数:
 * key: [Buffer](../../object/ifs/Buffer.md), 二进制签名密钥
 * data: [Buffer](../../object/ifs/Buffer.md), 创建同时更新的二进制数据，缺省为 null，不更新数据
 
@@ -374,27 +314,11 @@ static Digest hash.hmac_sm3(PKey pubKey,
 
 ## 常量
         
-### MD2
-**MD2 信息摘要算法标识常量**
-
-```JavaScript
-const hash.MD2 = 1;
-```
-
---------------------------
-### MD4
-**MD4 信息摘要算法标识常量**
-
-```JavaScript
-const hash.MD4 = 2;
-```
-
---------------------------
 ### MD5
 **MD5 信息摘要算法标识常量**
 
 ```JavaScript
-const hash.MD5 = 3;
+const hash.MD5 = 1;
 ```
 
 --------------------------
@@ -402,7 +326,7 @@ const hash.MD5 = 3;
 **SHA1 信息摘要算法标识常量**
 
 ```JavaScript
-const hash.SHA1 = 4;
+const hash.SHA1 = 2;
 ```
 
 --------------------------
@@ -410,7 +334,7 @@ const hash.SHA1 = 4;
 **SHA224 信息摘要算法标识常量**
 
 ```JavaScript
-const hash.SHA224 = 5;
+const hash.SHA224 = 3;
 ```
 
 --------------------------
@@ -418,7 +342,7 @@ const hash.SHA224 = 5;
 **SHA256 信息摘要算法标识常量**
 
 ```JavaScript
-const hash.SHA256 = 6;
+const hash.SHA256 = 4;
 ```
 
 --------------------------
@@ -426,7 +350,7 @@ const hash.SHA256 = 6;
 **SHA384 信息摘要算法标识常量**
 
 ```JavaScript
-const hash.SHA384 = 7;
+const hash.SHA384 = 5;
 ```
 
 --------------------------
@@ -434,7 +358,7 @@ const hash.SHA384 = 7;
 **SHA512 信息摘要算法标识常量**
 
 ```JavaScript
-const hash.SHA512 = 8;
+const hash.SHA512 = 6;
 ```
 
 --------------------------
@@ -442,7 +366,7 @@ const hash.SHA512 = 8;
 **RIPEMD160 信息摘要算法标识常量**
 
 ```JavaScript
-const hash.RIPEMD160 = 9;
+const hash.RIPEMD160 = 7;
 ```
 
 --------------------------
@@ -450,6 +374,6 @@ const hash.RIPEMD160 = 9;
 **SM3 信息摘要算法标识常量**
 
 ```JavaScript
-const hash.SM3 = 10;
+const hash.SM3 = 8;
 ```
 

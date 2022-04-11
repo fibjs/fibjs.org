@@ -9,6 +9,39 @@ var profiler = require('profiler');
 
 ## 静态函数
         
+### getHeapCodeStatistics
+**获取= v8 堆中代码及其元数据的统计信息**
+
+```JavaScript
+static Object profiler.getHeapCodeStatistics();
+```
+
+返回结果:
+* Object, 返回元数据的统计信息
+
+--------------------------
+### getHeapSpaceStatistics
+**获取 v8 堆内存的详细使用情况**
+
+```JavaScript
+static Array profiler.getHeapSpaceStatistics();
+```
+
+返回结果:
+* Array, 返回堆内存的详细使用情况
+
+--------------------------
+### getHeapStatistics
+**获取 v8 堆内存使用情况的统计信息**
+
+```JavaScript
+static Object profiler.getHeapStatistics();
+```
+
+返回结果:
+* Object, 返回堆内存使用情况的统计信息
+
+--------------------------
 ### saveSnapshot
 **根据指定名称保存一个堆快照**
 

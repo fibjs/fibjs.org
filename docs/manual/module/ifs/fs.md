@@ -480,7 +480,7 @@ static String fs.readTextFile(String fname) async;
 
 --------------------------
 ### readFile
-**打开二进制文件，并读取内容**
+**打开文件，并读取内容**
 
 ```JavaScript
 static Variant fs.readFile(String fname,
@@ -493,6 +493,29 @@ static Variant fs.readFile(String fname,
 
 返回结果:
 * Variant, 返回文件文本内容
+
+--------------------------
+**打开文件，并读取内容**
+
+```JavaScript
+static Variant fs.readFile(String fname,
+    Object options) async;
+```
+
+调用参数:
+* fname: String, 指定文件名
+* options: Object, 指定读取选项
+
+返回结果:
+* Variant, 返回文件文本内容
+
+options 支持的选项如下：
+
+```JavaScript
+{
+    "encoding": "utf8" // 指定解码方式，缺省不解码
+}
+```
 
 --------------------------
 ### readLines

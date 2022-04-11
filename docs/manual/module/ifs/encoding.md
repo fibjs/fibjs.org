@@ -25,6 +25,14 @@ base64 encoding.base64;
 ```
 
 --------------------------
+### base58
+**[base58](base58.md) 编码与解码模块**
+
+```JavaScript
+base58 encoding.base58;
+```
+
+--------------------------
 ### hex
 **[hex](hex.md) 编码与解码模块**
 

@@ -109,7 +109,7 @@ Integer HttpClient.poolTimeout;
 
 --------------------------
 ### proxyAgent
-**String, 查询和设置代理服务器**
+**String, 查询和设置代理服务器，支持 [http](../../module/ifs/http.md)/https/socks5 代理**
 
 ```JavaScript
 String HttpClient.proxyAgent;

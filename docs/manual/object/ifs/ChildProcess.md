@@ -17,7 +17,7 @@ var child = child_process.spawn("ls");
 
 [<class>object|toString();toJSON()]
 [<class>EventEmitter|new EventEmitter()|EventEmitter|defaultMaxListeners|on();addListener();prependListener();once();prependOnceListener();off();removeListener();removeAllListeners();setMaxListeners();getMaxListeners();listeners();listenerCount();eventNames();emit()]
-[<this>ChildProcess|pid;exitCode;stdin;stdout;stderr;onexit|kill();join();usage()]
+[<this>ChildProcess|connected;pid;exitCode;stdin;stdout;stderr;onexit;onmessage|kill();join();disconnect();send();usage()]
 
 [object] <:- [EventEmitter]
 [EventEmitter] <:- [ChildProcess]
@@ -34,6 +34,14 @@ static Integer ChildProcess.defaultMaxListeners;
 
 ## 成员属性
         
+### connected
+**Boolean, 查询与子进程的管道是否正常连接**
+
+```JavaScript
+readonly Boolean ChildProcess.connected;
+```
+
+--------------------------
 ### pid
 **Integer, 读取当前对象指向的进程的 id**
 
@@ -81,6 +89,14 @@ readonly Stream ChildProcess.stderr;
 Function ChildProcess.onexit;
 ```
 
+--------------------------
+### onmessage
+**Function, 查询和绑定子进程消息事件，相当于 on("message", func);**
+
+```JavaScript
+Function ChildProcess.onmessage;
+```
+
 ## 成员函数
         
 ### kill
@@ -113,6 +129,25 @@ ChildProcess.join() async;
 
 返回结果:
 * 进程的结束代码
+
+--------------------------
+### disconnect
+**关闭与子进程的 ipc 管道**
+
+```JavaScript
+ChildProcess.disconnect();
+```
+
+--------------------------
+### send
+**向当前子进程发送一个消息**
+
+```JavaScript
+ChildProcess.send(Value msg);
+```
+
+调用参数:
+* msg: Value, 指定发送的消息
 
 --------------------------
 ### usage
