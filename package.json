@@ -7,7 +7,8 @@
     "build": "webpack --progress --colors --prod",
     "dev": "webpack --progress --colors",
     "watch": "webpack --progress --colors --watch",
-    "serve": "FIBJS_DOC_PORT=3001 FIBJS_DOC_NO_SYNC=1 fibjs ./tools/svr.js"
+    "serve": "cross-env FIBJS_DOC_PORT=3001 fibjs ./tools/svr.js",
+    "serve-nosync": "cross-env FIBJS_DOC_NO_SYNC=1 fibjs ./tools/svr.js"
   },
   "devDependencies": {
     "babel-core": "^6.21.0",
@@ -19,6 +20,7 @@
     "bootstrap": "^3.3.7",
     "console-polyfill": "^0.2.3",
     "copy-webpack-plugin": "^4.0.1",
+    "cross-env": "^7.0.3",
     "css-loader": "^0.26.1",
     "ejs": "^2.5.6",
     "es5-shim": "^4.5.9",

@@ -11,6 +11,12 @@ var highlight = require('highlight.js');
 
 ssl.ca.loadRootCerts();
 
+const proxyAgent = process.env.http_proxy || process.env.https_proxy || process.env.all_proxy;
+if (proxyAgent) {
+    console.log('[sync] proxy detected, use proxyAgent: ' + proxyAgent);
+    http.proxyAgent = proxyAgent;
+}
+
 marked.setOptions({
     highlight: function (code, lang) {
         if (lang)
@@ -45,7 +51,7 @@ function sync_releases() {
 
     var d = wget('https://api.github.com/repos/fibjs/fibjs/releases');
 
-    var info = JSON.parse(d.toString());
+    var info = typeof d === 'string' ? JSON.parse(d) : d;
 
     var old_version = "";
 
